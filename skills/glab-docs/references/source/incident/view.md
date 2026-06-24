@@ -1,0 +1,52 @@
+---
+title: '`glab incident view`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Display the title, body, and other information about an incident.
+
+## Synopsis
+
+You can use a full GitLab URL instead of an ID. Use `--web`
+to open in a browser.
+
+```plaintext
+glab incident view <id> [flags]
+```
+
+## Aliases
+
+```plaintext
+show
+```
+
+## Examples
+
+```console
+glab incident view 123
+glab incident show 123
+glab incident view --web 123
+glab incident view --comments 123
+glab incident view https://gitlab.com/NAMESPACE/REPO/-/issues/incident/123
+```
+
+## Options
+
+```plaintext
+  -c, --comments        Show incident comments and activities.
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+  -p, --page int        Page number. (default 1)
+  -P, --per-page int    Number of items to list per page. (default 20)
+  -s, --system-logs     Show system activities and logs.
+  -w, --web             Open incident in a browser. Uses the default browser, or the browser specified in the $BROWSER variable.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

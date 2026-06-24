@@ -1,0 +1,668 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# Update an API key
+
+PATCH https://openrouter.ai/api/v1/keys/{hash}
+Content-Type: application/json
+
+Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/update-keys
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.1.0
+info:
+  title: OpenRouter API
+  version: 1.0.0
+paths:
+  /keys/{hash}:
+    patch:
+      operationId: update-keys
+      summary: Update an API key
+      description: >-
+        Update an existing API key. [Management
+        key](/docs/guides/overview/auth/management-api-keys) required.
+      tags:
+        - subpackage_apiKeys
+      parameters:
+        - name: hash
+          in: path
+          description: The hash identifier of the API key to update
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: API key as bearer token in Authorization header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: API key updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API Keys_updateKeys_Response_200'
+        '400':
+          description: Bad Request - Invalid request parameters or malformed input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+        '401':
+          description: Unauthorized - Authentication required or invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Not Found - Resource does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsResponse'
+        '500':
+          description: Internal Server Error - Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                disabled:
+                  type: boolean
+                  description: Whether to disable the API key
+                include_byok_in_limit:
+                  type: boolean
+                  description: Whether to include BYOK usage in the limit
+                limit:
+                  type:
+                    - number
+                    - 'null'
+                  format: double
+                  description: New spending limit for the API key in USD
+                limit_reset:
+                  oneOf:
+                    - $ref: >-
+                        #/components/schemas/KeysHashPatchRequestBodyContentApplicationJsonSchemaLimitReset
+                    - type: 'null'
+                  description: >-
+                    New limit reset type for the API key (daily, weekly,
+                    monthly, or null for no reset). Resets happen automatically
+                    at midnight UTC, and weeks are Monday through Sunday.
+                name:
+                  type: string
+                  description: New name for the API key
+servers:
+  - url: https://openrouter.ai/api/v1
+    description: Production server
+components:
+  schemas:
+    KeysHashPatchRequestBodyContentApplicationJsonSchemaLimitReset:
+      type: string
+      enum:
+        - daily
+        - weekly
+        - monthly
+      description: >-
+        New limit reset type for the API key (daily, weekly, monthly, or null
+        for no reset). Resets happen automatically at midnight UTC, and weeks
+        are Monday through Sunday.
+      title: KeysHashPatchRequestBodyContentApplicationJsonSchemaLimitReset
+    KeysHashPatchResponsesContentApplicationJsonSchemaData:
+      type: object
+      properties:
+        byok_usage:
+          type: number
+          format: double
+          description: Total external BYOK usage (in USD) for the API key
+        byok_usage_daily:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for the current UTC day
+        byok_usage_monthly:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for current UTC month
+        byok_usage_weekly:
+          type: number
+          format: double
+          description: >-
+            External BYOK usage (in USD) for the current UTC week
+            (Monday-Sunday)
+        created_at:
+          type: string
+          description: ISO 8601 timestamp of when the API key was created
+        creator_user_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The user ID of the key creator. For organization-owned keys, this is
+            the member who created the key. For individual users, this is the
+            user's own ID.
+        disabled:
+          type: boolean
+          description: Whether the API key is disabled
+        expires_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            ISO 8601 UTC timestamp when the API key expires, or null if no
+            expiration
+        hash:
+          type: string
+          description: Unique hash identifier for the API key
+        include_byok_in_limit:
+          type: boolean
+          description: Whether to include external BYOK usage in the credit limit
+        label:
+          type: string
+          description: Human-readable label for the API key
+        limit:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: Spending limit for the API key in USD
+        limit_remaining:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: Remaining spending limit in USD
+        limit_reset:
+          type:
+            - string
+            - 'null'
+          description: Type of limit reset for the API key
+        name:
+          type: string
+          description: Name of the API key
+        updated_at:
+          type:
+            - string
+            - 'null'
+          description: ISO 8601 timestamp of when the API key was last updated
+        usage:
+          type: number
+          format: double
+          description: Total OpenRouter credit usage (in USD) for the API key
+        usage_daily:
+          type: number
+          format: double
+          description: OpenRouter credit usage (in USD) for the current UTC day
+        usage_monthly:
+          type: number
+          format: double
+          description: OpenRouter credit usage (in USD) for the current UTC month
+        usage_weekly:
+          type: number
+          format: double
+          description: >-
+            OpenRouter credit usage (in USD) for the current UTC week
+            (Monday-Sunday)
+        workspace_id:
+          type: string
+          description: The workspace ID this API key belongs to.
+      required:
+        - byok_usage
+        - byok_usage_daily
+        - byok_usage_monthly
+        - byok_usage_weekly
+        - created_at
+        - creator_user_id
+        - disabled
+        - hash
+        - include_byok_in_limit
+        - label
+        - limit
+        - limit_remaining
+        - limit_reset
+        - name
+        - updated_at
+        - usage
+        - usage_daily
+        - usage_monthly
+        - usage_weekly
+        - workspace_id
+      description: The updated API key information
+      title: KeysHashPatchResponsesContentApplicationJsonSchemaData
+    API Keys_updateKeys_Response_200:
+      type: object
+      properties:
+        data:
+          $ref: >-
+            #/components/schemas/KeysHashPatchResponsesContentApplicationJsonSchemaData
+          description: The updated API key information
+      required:
+        - data
+      title: API Keys_updateKeys_Response_200
+    BadRequestResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for BadRequestResponse
+      title: BadRequestResponseErrorData
+    BadRequestResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Bad Request - Invalid request parameters or malformed input
+      title: BadRequestResponse
+    UnauthorizedResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for UnauthorizedResponse
+      title: UnauthorizedResponseErrorData
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Unauthorized - Authentication required or invalid credentials
+      title: UnauthorizedResponse
+    NotFoundResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for NotFoundResponse
+      title: NotFoundResponseErrorData
+    NotFoundResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Not Found - Resource does not exist
+      title: NotFoundResponse
+    TooManyRequestsResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for TooManyRequestsResponse
+      title: TooManyRequestsResponseErrorData
+    TooManyRequestsResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Too Many Requests - Rate limit exceeded
+      title: TooManyRequestsResponse
+    InternalServerResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for InternalServerResponse
+      title: InternalServerResponseErrorData
+    InternalServerResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Internal Server Error - Unexpected server error
+      title: InternalServerResponse
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      description: API key as bearer token in Authorization header
+
+```
+
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "disabled": false,
+  "include_byok_in_limit": true,
+  "limit": 75,
+  "limit_reset": "daily",
+  "name": "Updated API Key Name"
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "byok_usage": 17.38,
+    "byok_usage_daily": 17.38,
+    "byok_usage_monthly": 17.38,
+    "byok_usage_weekly": 17.38,
+    "created_at": "2025-08-24T10:30:00Z",
+    "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
+    "disabled": false,
+    "hash": "f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943",
+    "include_byok_in_limit": true,
+    "label": "Updated API Key Name",
+    "limit": 75,
+    "limit_remaining": 49.5,
+    "limit_reset": "daily",
+    "name": "Updated API Key Name",
+    "updated_at": "2025-08-24T16:00:00Z",
+    "usage": 25.5,
+    "usage_daily": 25.5,
+    "usage_monthly": 25.5,
+    "usage_weekly": 25.5,
+    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
+    "expires_at": null
+  }
+}
+```
+
+**SDK Code**
+
+```python API Keys_updateKeys_example
+import requests
+
+url = "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+
+payload = {
+    "disabled": False,
+    "include_byok_in_limit": True,
+    "limit": 75,
+    "limit_reset": "daily",
+    "name": "Updated API Key Name"
+}
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/json"
+}
+
+response = requests.patch(url, json=payload, headers=headers)
+
+print(response.json())
+```
+
+```javascript API Keys_updateKeys_example
+const url = 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
+const options = {
+  method: 'PATCH',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  body: '{"disabled":false,"include_byok_in_limit":true,"limit":75,"limit_reset":"daily","name":"Updated API Key Name"}'
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+```go API Keys_updateKeys_example
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io"
+)
+
+func main() {
+
+	url := "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+
+	payload := strings.NewReader("{\n  \"disabled\": false,\n  \"include_byok_in_limit\": true,\n  \"limit\": 75,\n  \"limit_reset\": \"daily\",\n  \"name\": \"Updated API Key Name\"\n}")
+
+	req, _ := http.NewRequest("PATCH", url, payload)
+
+	req.Header.Add("Authorization", "Bearer <token>")
+	req.Header.Add("Content-Type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```ruby API Keys_updateKeys_example
+require 'uri'
+require 'net/http'
+
+url = URI("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Patch.new(url)
+request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{\n  \"disabled\": false,\n  \"include_byok_in_limit\": true,\n  \"limit\": 75,\n  \"limit_reset\": \"daily\",\n  \"name\": \"Updated API Key Name\"\n}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```java API Keys_updateKeys_example
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+
+HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+  .header("Authorization", "Bearer <token>")
+  .header("Content-Type", "application/json")
+  .body("{\n  \"disabled\": false,\n  \"include_byok_in_limit\": true,\n  \"limit\": 75,\n  \"limit_reset\": \"daily\",\n  \"name\": \"Updated API Key Name\"\n}")
+  .asString();
+```
+
+```php API Keys_updateKeys_example
+<?php
+require_once('vendor/autoload.php');
+
+$client = new \GuzzleHttp\Client();
+
+$response = $client->request('PATCH', 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
+  'body' => '{
+  "disabled": false,
+  "include_byok_in_limit": true,
+  "limit": 75,
+  "limit_reset": "daily",
+  "name": "Updated API Key Name"
+}',
+  'headers' => [
+    'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
+  ],
+]);
+
+echo $response->getBody();
+```
+
+```csharp API Keys_updateKeys_example
+using RestSharp;
+
+var client = new RestClient("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
+var request = new RestRequest(Method.PATCH);
+request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{\n  \"disabled\": false,\n  \"include_byok_in_limit\": true,\n  \"limit\": 75,\n  \"limit_reset\": \"daily\",\n  \"name\": \"Updated API Key Name\"\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```swift API Keys_updateKeys_example
+import Foundation
+
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [
+  "disabled": false,
+  "include_byok_in_limit": true,
+  "limit": 75,
+  "limit_reset": "daily",
+  "name": "Updated API Key Name"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "PATCH"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error as Any)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```

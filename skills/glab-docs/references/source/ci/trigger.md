@@ -1,0 +1,44 @@
+---
+title: '`glab ci trigger`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Trigger a manual CI/CD job.
+
+## Synopsis
+
+Without a job argument, you can select one interactively.
+You can trigger only jobs with manual status.
+
+```plaintext
+glab ci trigger [<job-id | job-name>] [flags]
+```
+
+## Examples
+
+```console
+# Interactively select a job to trigger
+glab ci trigger
+
+# Trigger a manual job by ID
+glab ci trigger 224356863
+
+# Trigger a manual job by name
+glab ci trigger lint
+```
+
+## Options
+
+```plaintext
+  -b, --branch string     The branch to search for the job. Defaults to the current branch.
+  -p, --pipeline-id int   The pipeline ID to search for the job.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

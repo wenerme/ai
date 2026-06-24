@@ -1,0 +1,402 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# List member assignments for a guardrail
+
+GET https://openrouter.ai/api/v1/guardrails/{id}/assignments/members
+
+List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+Reference: https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrail-member-assignments
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.1.0
+info:
+  title: OpenRouter API
+  version: 1.0.0
+paths:
+  /guardrails/{id}/assignments/members:
+    get:
+      operationId: list-guardrail-member-assignments
+      summary: List member assignments for a guardrail
+      description: >-
+        List all organization member assignments for a specific guardrail.
+        [Management key](/docs/guides/overview/auth/management-api-keys)
+        required.
+      tags:
+        - subpackage_guardrails
+      parameters:
+        - name: id
+          in: path
+          description: The unique identifier of the guardrail
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: offset
+          in: query
+          description: Number of records to skip for pagination
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of records to return (max 100)
+          required: false
+          schema:
+            type: integer
+        - name: Authorization
+          in: header
+          description: API key as bearer token in Authorization header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of member assignments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMemberAssignmentsResponse'
+        '401':
+          description: Unauthorized - Authentication required or invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Not Found - Resource does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '500':
+          description: Internal Server Error - Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerResponse'
+servers:
+  - url: https://openrouter.ai/api/v1
+    description: Production server
+components:
+  schemas:
+    MemberAssignment:
+      type: object
+      properties:
+        assigned_by:
+          type:
+            - string
+            - 'null'
+          description: User ID of who made the assignment
+        created_at:
+          type: string
+          description: ISO 8601 timestamp of when the assignment was created
+        guardrail_id:
+          type: string
+          format: uuid
+          description: ID of the guardrail
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the assignment
+        organization_id:
+          type: string
+          description: Organization ID
+        user_id:
+          type: string
+          description: Clerk user ID of the assigned member
+      required:
+        - assigned_by
+        - created_at
+        - guardrail_id
+        - id
+        - organization_id
+        - user_id
+      title: MemberAssignment
+    ListMemberAssignmentsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberAssignment'
+          description: List of member assignments
+        total_count:
+          type: integer
+          description: Total number of member assignments
+      required:
+        - data
+        - total_count
+      title: ListMemberAssignmentsResponse
+    UnauthorizedResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for UnauthorizedResponse
+      title: UnauthorizedResponseErrorData
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Unauthorized - Authentication required or invalid credentials
+      title: UnauthorizedResponse
+    NotFoundResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for NotFoundResponse
+      title: NotFoundResponseErrorData
+    NotFoundResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Not Found - Resource does not exist
+      title: NotFoundResponse
+    InternalServerResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for InternalServerResponse
+      title: InternalServerResponseErrorData
+    InternalServerResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Internal Server Error - Unexpected server error
+      title: InternalServerResponse
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      description: API key as bearer token in Authorization header
+
+```
+
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "assigned_by": "user_abc123",
+      "created_at": "2025-08-24T10:30:00Z",
+      "guardrail_id": "550e8400-e29b-41d4-a716-446655440001",
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "organization_id": "org_xyz789",
+      "user_id": "user_abc123"
+    }
+  ],
+  "total_count": 1
+}
+```
+
+**SDK Code**
+
+```python Guardrails_listGuardrailMemberAssignments_example
+import requests
+
+url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members"
+
+headers = {"Authorization": "Bearer <token>"}
+
+response = requests.get(url, headers=headers)
+
+print(response.json())
+```
+
+```javascript Guardrails_listGuardrailMemberAssignments_example
+const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members';
+const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+```go Guardrails_listGuardrailMemberAssignments_example
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io"
+)
+
+func main() {
+
+	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("Authorization", "Bearer <token>")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```ruby Guardrails_listGuardrailMemberAssignments_example
+require 'uri'
+require 'net/http'
+
+url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+request["Authorization"] = 'Bearer <token>'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```java Guardrails_listGuardrailMemberAssignments_example
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")
+  .header("Authorization", "Bearer <token>")
+  .asString();
+```
+
+```php Guardrails_listGuardrailMemberAssignments_example
+<?php
+require_once('vendor/autoload.php');
+
+$client = new \GuzzleHttp\Client();
+
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members', [
+  'headers' => [
+    'Authorization' => 'Bearer <token>',
+  ],
+]);
+
+echo $response->getBody();
+```
+
+```csharp Guardrails_listGuardrailMemberAssignments_example
+using RestSharp;
+
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members");
+var request = new RestRequest(Method.GET);
+request.AddHeader("Authorization", "Bearer <token>");
+IRestResponse response = client.Execute(request);
+```
+
+```swift Guardrails_listGuardrailMemberAssignments_example
+import Foundation
+
+let headers = ["Authorization": "Bearer <token>"]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error as Any)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```

@@ -1,0 +1,42 @@
+---
+title: '`glab incident note`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Comment on an incident in GitLab.
+
+## Synopsis
+
+Opens an editor for the comment if you don't use `--message`.
+
+```plaintext
+glab incident note <incident-id> [flags]
+```
+
+## Aliases
+
+```plaintext
+comment
+```
+
+## Examples
+
+```console
+glab incident note 123 --message "Looking into this now."
+glab incident note 123
+```
+
+## Options
+
+```plaintext
+  -m, --message string   Message text.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

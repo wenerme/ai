@@ -1,0 +1,60 @@
+---
+title: "Windows — Comfy Desktop"
+description: "在 Windows 上安装和卸载 Comfy Desktop"
+translationSourceHash: 873692f5
+translationFrom: installation/desktop/windows.mdx
+---
+
+**Comfy Desktop** 是一个多安装管理器，让您从一个启动器运行多个 ComfyUI 实例。本指南介绍如何在 Windows 上安装和卸载 Comfy Desktop。
+
+## 系统要求
+
+- **系统：** Windows 10 或更新版本
+- **架构：** x64 或 ARM64
+- **GPU：** 推荐使用独立 GPU（NVIDIA / AMD）以获得更好性能，但不是必须
+- **磁盘空间：** 每个安装至少推荐 4.85 GB
+
+    下载 Windows 最新安装程序。页面会自动检测您的平台。
+
+## 安装
+
+运行下载的 `.exe` 安装程序（NSIS 安装器），按照提示完成安装。安装后从开始菜单或桌面快捷方式启动 Comfy Desktop。
+
+[Windows setup]
+
+首次打开应用时，您将看到 **欢迎** 页面，在此创建您的第一个安装。
+
+<MigrateTip />
+
+  安装完成后，了解如何创建实例、管理安装和配置设置。
+
+## 更新 Comfy Desktop
+
+<UpdateGuide />
+
+## 卸载
+
+### 卸载 Comfy Desktop
+
+1. 前往 **设置 → 应用 → 已安装的应用**
+2. 找到 **Comfy Desktop** 并点击 **卸载**
+
+[在 Windows 上卸载 Comfy Desktop]
+
+### 卸载应用不会删除的内容
+
+卸载 Comfy Desktop 只会移除启动器本身。以下数据**不会被删除**，如需完全清理请手动删除：
+
+| 数据 | 默认位置 | 说明 |
+|------|------|------|
+| 安装实例 | `%USERPROFILE%\ComfyUI-Installs` | 您创建的每个 ComfyUI 安装（也可在应用内删除）。自定义安装路径也不会被删除。 |
+| 共享模型和输出 | `%USERPROFILE%\ComfyUI-Shared` | 共享模型库、输入/输出目录 |
+| 应用设置和记录 | `%APPDATA%\Comfy Desktop` | 设置、安装记录、日志 |
+
+以上目录包含您的**个人 ComfyUI 数据**——模型、输出、设置和安装实例。它们**不是** Comfy Desktop 应用程序文件。删除它们将永久移除您的数据。
+
+要完全清除所有数据：
+
+1. **删除应用数据文件夹** – `%APPDATA%\Comfy Desktop`
+2. **从应用内删除单个安装**，或手动删除 `%USERPROFILE%\ComfyUI-Installs`
+3. **删除共享模型库** `%USERPROFILE%\ComfyUI-Shared`（仅当不再需要这些文件时）

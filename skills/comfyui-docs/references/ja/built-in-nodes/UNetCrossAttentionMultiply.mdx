@@ -1,0 +1,29 @@
+---
+title: "UNetCrossAttentionMultiply - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the UNetCrossAttentionMultiply node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下が翻訳結果です。
+
+UNetCrossAttentionMultiply ノードは、UNet モデルのクロスアテンション機構に乗算係数を適用します。クエリ、キー、バリュー、および出力の各コンポーネントをスケーリングすることで、さまざまなアテンション動作や効果を試すことができます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル` | アテンションスケーリング係数を適用する UNet モデル | MODEL | はい | - |
+| `q` | クロスアテンションにおけるクエリコンポーネントのスケーリング係数（デフォルト: 1.0） | FLOAT | いいえ | 0.0 - 10.0 |
+| `k` | クロスアテンションにおけるキーコンポーネントのスケーリング係数（デフォルト: 1.0） | FLOAT | いいえ | 0.0 - 10.0 |
+| `v` | クロスアテンションにおけるバリューコンポーネントのスケーリング係数（デフォルト: 1.0） | FLOAT | いいえ | 0.0 - 10.0 |
+| `出力` | クロスアテンションにおける出力コンポーネントのスケーリング係数（デフォルト: 1.0） | FLOAT | いいえ | 0.0 - 10.0 |
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `モデル` | クロスアテンションコンポーネントがスケーリングされた変更済み UNet モデル | MODEL |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/UNetCrossAttentionMultiply/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `2623858c11e93ab5952194670c9e4ea74bba4e2ea32089540665eea361dc1491`

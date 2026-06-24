@@ -1,0 +1,33 @@
+---
+title: "CLIPTextEncodeSD3 - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the CLIPTextEncodeSD3 node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+CLIPTextEncodeSD3 ノードは、複数のテキストプロンプトを異なるCLIPモデルを使用してエンコードすることで、Stable Diffusion 3モデル向けのテキスト入力を処理します。このノードは3つの個別のテキスト入力（`clip_g`、`clip_l`、`t5xxl`）を処理し、空のテキストパディングを管理するためのオプションを提供します。ノードは異なるテキスト入力間で適切なトークン位置合わせを保証し、SD3生成パイプラインに適した条件付けデータを返します。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `クリップ` | テキストエンコードに使用されるCLIPモデル | CLIP | はい | - |
+| `クリップ_l` | ローカルCLIPモデル用のテキスト入力。複数行テキストと動的プロンプトに対応しています。 | STRING | はい | - |
+| `クリップ_g` | グローバルCLIPモデル用のテキスト入力。複数行テキストと動的プロンプトに対応しています。 | STRING | はい | - |
+| `t5xxl` | T5-XXLモデル用のテキスト入力。複数行テキストと動的プロンプトに対応しています。 | STRING | はい | - |
+| `空のパディング` | 空のテキスト入力の処理方法を制御します。"none"に設定すると、`クリップ_g`、`クリップ_l`、または`t5xxl`の空のテキスト入力はパディングではなく空のトークンリストになります。これは高度なパラメータです（デフォルト："none"）。 | COMBO | はい | `"none"``"empty_prompt"` |
+
+**パラメータ制約：**
+
+- `empty_padding`が"none"に設定されている場合、`clip_g`、`clip_l`、または`t5xxl`の空のテキスト入力はパディングではなく空のトークンリストになります
+- ノードは`clip_l`と`clip_g`の入力間でトークン長を自動的に調整し、長さが異なる場合は短い方を空のトークンでパディングします
+- すべてのテキスト入力は動的プロンプトと複数行テキスト入力に対応しています
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `CONDITIONING` | SD3生成パイプラインで使用する準備が整った、エンコードされたテキスト条件付けデータ | CONDITIONING |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/CLIPTextEncodeSD3/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `38f7538d05fe48e74f41f265550b83906b2f0c5d31f0783f6859f4df7b5cb9d3`

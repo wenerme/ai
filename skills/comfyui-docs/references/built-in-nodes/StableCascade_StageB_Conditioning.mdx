@@ -1,0 +1,24 @@
+---
+title: "StableCascade_StageB_Conditioning - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the StableCascade_StageB_Conditioning node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The StableCascade_StageB_Conditioning node prepares conditioning data for Stable Cascade Stage B generation by combining existing conditioning information with prior latent representations from Stage C. It modifies the conditioning data to include the latent samples from Stage C, enabling the generation process to leverage the prior information for more coherent outputs.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `conditioning` | The conditioning data to be modified with Stage C prior information | CONDITIONING | Yes | - |
+| `stage_c` | The latent representation from Stage C containing prior samples for conditioning | LATENT | Yes | - |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `CONDITIONING` | The modified conditioning data with Stage C prior information integrated | CONDITIONING |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/StableCascade_StageB_Conditioning/en.md)
+
+---
+**Source fingerprint (SHA-256):** `1679f61320f7f7b929f5166d6f038426256a9e12cc7f72639452fd2734cf712c`

@@ -1,0 +1,27 @@
+---
+title: "ModelSamplingFlux - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the ModelSamplingFlux node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The ModelSamplingFlux node applies Flux model sampling to a given model by calculating a shift parameter based on image dimensions. It creates a specialized sampling configuration that adjusts the model's behavior according to the specified width, height, and shift parameters, then returns the modified model with the new sampling settings applied.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `model` | The model to apply Flux sampling to | MODEL | Yes | - |
+| `max_shift` | Maximum shift value for sampling calculation (default: 1.15) | FLOAT | Yes | 0.0 - 100.0 |
+| `base_shift` | Base shift value for sampling calculation (default: 0.5) | FLOAT | Yes | 0.0 - 100.0 |
+| `width` | Width of the target image in pixels (default: 1024) | INT | Yes | 16 - MAX_RESOLUTION |
+| `height` | Height of the target image in pixels (default: 1024) | INT | Yes | 16 - MAX_RESOLUTION |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `model` | The modified model with Flux sampling configuration applied | MODEL |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelSamplingFlux/en.md)
+
+---
+**Source fingerprint (SHA-256):** `35733ab0cd032884ceada13715cf51e626586844e8e575471a5ba7cf8a1e5e49`

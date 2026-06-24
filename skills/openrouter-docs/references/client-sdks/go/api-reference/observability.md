@@ -1,0 +1,437 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# Observability - Go SDK
+
+The Go SDK and docs are currently in beta.
+Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
+
+## Overview
+
+Observability endpoints
+
+### Available Operations
+
+* [List](#list) - List observability destinations
+* [Create](#create) - Create an observability destination
+* [Delete](#delete) - Delete an observability destination
+* [Get](#get) - Get an observability destination
+* [Update](#update) - Update an observability destination
+
+## List
+
+List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.List(ctx, optionalnullable.From[int64](nil), nil, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                                                                  | Required             | Description                                                                                   | Example                              |
+| ------------- | --------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                                                           |                                      |
+| `offset`      | optionalnullable.OptionalNullable\[`int64`]                           | :heavy\_minus\_sign: | Number of records to skip for pagination                                                      | 0                                    |
+| `limit`       | `*int64`                                                              | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                 | 50                                   |
+| `workspaceID` | `*string`                                                             | :heavy\_minus\_sign: | Optional workspace ID to filter by. Defaults to the authenticated entity's default workspace. | 550e8400-e29b-41d4-a716-446655440000 |
+| `opts`        | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                                                                 |                                      |
+
+### Response
+
+**[\*operations.ListObservabilityDestinationsResponse](/docs/sdks/go/api-reference/operations/listobservabilitydestinationsresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Create
+
+Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.Create(ctx, components.CreateObservabilityDestinationRequest{
+        Config: map[string]any{
+            "baseUrl": "https://us.cloud.langfuse.com",
+            "publicKey": "pk-l...EfGh",
+            "secretKey": "sk-l...AbCd",
+        },
+        Name: "Production Langfuse",
+        Type: components.CreateObservabilityDestinationRequestTypeLangfuse,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        switch res.Data.Type {
+            case components.ObservabilityDestinationTypeArize:
+                // res.Data.ObservabilityArizeDestination is populated
+            case components.ObservabilityDestinationTypeBraintrust:
+                // res.Data.ObservabilityBraintrustDestination is populated
+            case components.ObservabilityDestinationTypeClickhouse:
+                // res.Data.ObservabilityClickhouseDestination is populated
+            case components.ObservabilityDestinationTypeDatadog:
+                // res.Data.ObservabilityDatadogDestination is populated
+            case components.ObservabilityDestinationTypeGrafana:
+                // res.Data.ObservabilityGrafanaDestination is populated
+            case components.ObservabilityDestinationTypeLangfuse:
+                // res.Data.ObservabilityLangfuseDestination is populated
+            case components.ObservabilityDestinationTypeLangsmith:
+                // res.Data.ObservabilityLangsmithDestination is populated
+            case components.ObservabilityDestinationTypeNewrelic:
+                // res.Data.ObservabilityNewrelicDestination is populated
+            case components.ObservabilityDestinationTypeOpik:
+                // res.Data.ObservabilityOpikDestination is populated
+            case components.ObservabilityDestinationTypeOtelCollector:
+                // res.Data.ObservabilityOtelCollectorDestination is populated
+            case components.ObservabilityDestinationTypePosthog:
+                // res.Data.ObservabilityPosthogDestination is populated
+            case components.ObservabilityDestinationTypeRamp:
+                // res.Data.ObservabilityRampDestination is populated
+            case components.ObservabilityDestinationTypeS3:
+                // res.Data.ObservabilityS3Destination is populated
+            case components.ObservabilityDestinationTypeSentry:
+                // res.Data.ObservabilitySentryDestination is populated
+            case components.ObservabilityDestinationTypeSnowflake:
+                // res.Data.ObservabilitySnowflakeDestination is populated
+            case components.ObservabilityDestinationTypeWeave:
+                // res.Data.ObservabilityWeaveDestination is populated
+            case components.ObservabilityDestinationTypeWebhook:
+                // res.Data.ObservabilityWebhookDestination is populated
+            default:
+                // Unknown type - use res.Data.GetUnknownRaw() for raw JSON
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                                                                         | Required             | Description                                |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy\_check\_mark: | The context to use for the request.        |
+| `request` | [components.CreateObservabilityDestinationRequest](/docs/sdks/go/api-reference/models/createobservabilitydestinationrequest) | :heavy\_check\_mark: | The request object to use for the request. |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)                                                        | :heavy\_minus\_sign: | The options for this request.              |
+
+### Response
+
+**[\*components.CreateObservabilityDestinationResponse](/docs/sdks/go/api-reference/models/createobservabilitydestinationresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.ForbiddenResponseError      | 403         | application/json |
+| sdkerrors.ConflictResponseError       | 409         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Delete
+
+Delete an existing observability destination. This performs a soft delete. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.Delete(ctx, "99999999-aaaa-bbbb-cccc-dddddddddddd")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                         | Example                              |
+| --------- | --------------------------------------------------------------------- | -------------------- | ----------------------------------- | ------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request. |                                      |
+| `id`      | `string`                                                              | :heavy\_check\_mark: | The destination ID (UUID).          | 99999999-aaaa-bbbb-cccc-dddddddddddd |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.       |                                      |
+
+### Response
+
+**[\*components.DeleteObservabilityDestinationResponse](/docs/sdks/go/api-reference/models/deleteobservabilitydestinationresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Get
+
+Fetch a single observability destination by its UUID. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.Get(ctx, "99999999-aaaa-bbbb-cccc-dddddddddddd")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        switch res.Data.Type {
+            case components.ObservabilityDestinationTypeArize:
+                // res.Data.ObservabilityArizeDestination is populated
+            case components.ObservabilityDestinationTypeBraintrust:
+                // res.Data.ObservabilityBraintrustDestination is populated
+            case components.ObservabilityDestinationTypeClickhouse:
+                // res.Data.ObservabilityClickhouseDestination is populated
+            case components.ObservabilityDestinationTypeDatadog:
+                // res.Data.ObservabilityDatadogDestination is populated
+            case components.ObservabilityDestinationTypeGrafana:
+                // res.Data.ObservabilityGrafanaDestination is populated
+            case components.ObservabilityDestinationTypeLangfuse:
+                // res.Data.ObservabilityLangfuseDestination is populated
+            case components.ObservabilityDestinationTypeLangsmith:
+                // res.Data.ObservabilityLangsmithDestination is populated
+            case components.ObservabilityDestinationTypeNewrelic:
+                // res.Data.ObservabilityNewrelicDestination is populated
+            case components.ObservabilityDestinationTypeOpik:
+                // res.Data.ObservabilityOpikDestination is populated
+            case components.ObservabilityDestinationTypeOtelCollector:
+                // res.Data.ObservabilityOtelCollectorDestination is populated
+            case components.ObservabilityDestinationTypePosthog:
+                // res.Data.ObservabilityPosthogDestination is populated
+            case components.ObservabilityDestinationTypeRamp:
+                // res.Data.ObservabilityRampDestination is populated
+            case components.ObservabilityDestinationTypeS3:
+                // res.Data.ObservabilityS3Destination is populated
+            case components.ObservabilityDestinationTypeSentry:
+                // res.Data.ObservabilitySentryDestination is populated
+            case components.ObservabilityDestinationTypeSnowflake:
+                // res.Data.ObservabilitySnowflakeDestination is populated
+            case components.ObservabilityDestinationTypeWeave:
+                // res.Data.ObservabilityWeaveDestination is populated
+            case components.ObservabilityDestinationTypeWebhook:
+                // res.Data.ObservabilityWebhookDestination is populated
+            default:
+                // Unknown type - use res.Data.GetUnknownRaw() for raw JSON
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                         | Example                              |
+| --------- | --------------------------------------------------------------------- | -------------------- | ----------------------------------- | ------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request. |                                      |
+| `id`      | `string`                                                              | :heavy\_check\_mark: | The destination ID (UUID).          | 99999999-aaaa-bbbb-cccc-dddddddddddd |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.       |                                      |
+
+### Response
+
+**[\*components.GetObservabilityDestinationResponse](/docs/sdks/go/api-reference/models/getobservabilitydestinationresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Update
+
+Update an existing observability destination. Only the fields provided in the request body are updated. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.Update(ctx, "99999999-aaaa-bbbb-cccc-dddddddddddd", components.UpdateObservabilityDestinationRequest{
+        Enabled: openrouter.Pointer(false),
+        Name: openrouter.Pointer("Updated Langfuse"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        switch res.Data.Type {
+            case components.ObservabilityDestinationTypeArize:
+                // res.Data.ObservabilityArizeDestination is populated
+            case components.ObservabilityDestinationTypeBraintrust:
+                // res.Data.ObservabilityBraintrustDestination is populated
+            case components.ObservabilityDestinationTypeClickhouse:
+                // res.Data.ObservabilityClickhouseDestination is populated
+            case components.ObservabilityDestinationTypeDatadog:
+                // res.Data.ObservabilityDatadogDestination is populated
+            case components.ObservabilityDestinationTypeGrafana:
+                // res.Data.ObservabilityGrafanaDestination is populated
+            case components.ObservabilityDestinationTypeLangfuse:
+                // res.Data.ObservabilityLangfuseDestination is populated
+            case components.ObservabilityDestinationTypeLangsmith:
+                // res.Data.ObservabilityLangsmithDestination is populated
+            case components.ObservabilityDestinationTypeNewrelic:
+                // res.Data.ObservabilityNewrelicDestination is populated
+            case components.ObservabilityDestinationTypeOpik:
+                // res.Data.ObservabilityOpikDestination is populated
+            case components.ObservabilityDestinationTypeOtelCollector:
+                // res.Data.ObservabilityOtelCollectorDestination is populated
+            case components.ObservabilityDestinationTypePosthog:
+                // res.Data.ObservabilityPosthogDestination is populated
+            case components.ObservabilityDestinationTypeRamp:
+                // res.Data.ObservabilityRampDestination is populated
+            case components.ObservabilityDestinationTypeS3:
+                // res.Data.ObservabilityS3Destination is populated
+            case components.ObservabilityDestinationTypeSentry:
+                // res.Data.ObservabilitySentryDestination is populated
+            case components.ObservabilityDestinationTypeSnowflake:
+                // res.Data.ObservabilitySnowflakeDestination is populated
+            case components.ObservabilityDestinationTypeWeave:
+                // res.Data.ObservabilityWeaveDestination is populated
+            case components.ObservabilityDestinationTypeWebhook:
+                // res.Data.ObservabilityWebhookDestination is populated
+            default:
+                // Unknown type - use res.Data.GetUnknownRaw() for raw JSON
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                               | Type                                                                                                                         | Required             | Description                         | Example                                         |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------- | ----------------------------------------------- |
+| `ctx`                                   | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy\_check\_mark: | The context to use for the request. |                                                 |
+| `id`                                    | `string`                                                                                                                     | :heavy\_check\_mark: | The destination ID (UUID).          | 99999999-aaaa-bbbb-cccc-dddddddddddd            |
+| `updateObservabilityDestinationRequest` | [components.UpdateObservabilityDestinationRequest](/docs/sdks/go/api-reference/models/updateobservabilitydestinationrequest) | :heavy\_check\_mark: | N/A                                 | `{"enabled": false,"name": "Updated Langfuse"}` |
+| `opts`                                  | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)                                                        | :heavy\_minus\_sign: | The options for this request.       |                                                 |
+
+### Response
+
+**[\*components.UpdateObservabilityDestinationResponse](/docs/sdks/go/api-reference/models/updateobservabilitydestinationresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.ConflictResponseError       | 409         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |

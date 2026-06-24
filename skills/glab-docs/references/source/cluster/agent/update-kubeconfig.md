@@ -1,0 +1,50 @@
+---
+title: '`glab cluster agent update-kubeconfig`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Update your kubeconfig for use with a GitLab Agent for Kubernetes.
+
+## Synopsis
+
+Configures `kubectl` to authenticate through the GitLab Agent for Kubernetes
+using an exec credential plugin.
+
+- Use `--agent` to specify the agent by its numeric ID.
+- Use `--use-context` to set the agent as the default `kubectl` context.
+- Use `--token-expiry-duration` to control how long the generated token is valid.
+- Use `--cache-mode` to control how generated tokens are cached.
+
+```plaintext
+glab cluster agent update-kubeconfig [flags]
+```
+
+## Examples
+
+```console
+# Update kubeconfig for agent 123
+glab cluster agent update-kubeconfig --agent 123
+
+# Update kubeconfig and set as the default context
+glab cluster agent update-kubeconfig --agent 123 --use-context
+```
+
+## Options
+
+```plaintext
+  -a, --agent int                        The numeric agent ID to create the kubeconfig entry for.
+  -c, --cache-mode string                Mode to use for caching the token. Allowed values: keyring-filesystem-fallback, force-keyring, force-filesystem, no. (default "force-keyring")
+      --check-revoked                    Check if a cached token is revoked. Requires an API call to GitLab, which adds latency every time a cached token is accessed.
+      --kubeconfig string                Use a particular kubeconfig file.
+      --token-expiry-duration duration   Duration for generated token's validity. Minimum is 1 day. Expires at end of day, and ignores time. (default 24h0m0s)
+  -u, --use-context                      Use as default context.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

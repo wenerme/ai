@@ -1,0 +1,415 @@
+# Users
+
+## List group users
+
+**get** `/organization/groups/{group_id}/users`
+
+Lists the users assigned to a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  A cursor for use in pagination. Provide the ID of the last user from the previous list response to retrieve the next page.
+
+- `limit: optional number`
+
+  A limit on the number of users to be returned. Limit can range between 0 and 1000, and the default is 100.
+
+- `order: optional "asc" or "desc"`
+
+  Specifies the sort order of users in the list.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of OrganizationGroupUser`
+
+  Users in the current page.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
+
+- `has_more: boolean`
+
+  Whether more users are available when paginating.
+
+- `next: string`
+
+  Cursor to fetch the next page of results, or `null` when no further users are available.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "email": "email",
+      "name": "name"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "user_abc123",
+            "name": "Ada Lovelace",
+            "email": "ada@example.com"
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Add group user
+
+**post** `/organization/groups/{group_id}/users`
+
+Adds a user to a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Body Parameters
+
+- `user_id: string`
+
+  Identifier of the user to add to the group.
+
+### Returns
+
+- `group_id: string`
+
+  Identifier of the group the user was added to.
+
+- `object: "group.user"`
+
+  Always `group.user`.
+
+  - `"group.user"`
+
+- `user_id: string`
+
+  Identifier of the user that was added.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "user_id": "user_id"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "group_id": "group_id",
+  "object": "group.user",
+  "user_id": "user_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc123"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user",
+    "user_id": "user_abc123",
+    "group_id": "group_01J1F8ABCDXYZ"
+}
+```
+
+## Retrieve group user
+
+**get** `/organization/groups/{group_id}/users/{user_id}`
+
+Retrieves a user in a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `user_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the user.
+
+- `email: string`
+
+  Email address of the user, or `null` for users without an email.
+
+- `is_service_account: boolean`
+
+  Whether the user is a service account.
+
+- `name: string`
+
+  Display name of the user.
+
+- `picture: string`
+
+  URL of the user's profile picture, if available.
+
+- `user_type: "user" or "tenant_user"`
+
+  The type of user.
+
+  - `"user"`
+
+  - `"tenant_user"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "is_service_account": true,
+  "name": "name",
+  "picture": "picture",
+  "user_type": "user"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "user_abc123",
+    "name": "Ada Lovelace",
+    "email": "ada@example.com",
+    "picture": null,
+    "is_service_account": false,
+    "user_type": "user"
+}
+```
+
+## Remove group user
+
+**delete** `/organization/groups/{group_id}/users/{user_id}`
+
+Removes a user from a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `user_id: string`
+
+### Returns
+
+- `deleted: boolean`
+
+  Whether the group membership was removed.
+
+- `object: "group.user.deleted"`
+
+  Always `group.user.deleted`.
+
+  - `"group.user.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "group.user.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user.deleted",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Organization Group User
+
+- `OrganizationGroupUser object { id, email, name }`
+
+  Represents an individual user returned when inspecting group membership.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
+
+### User Create Response
+
+- `UserCreateResponse object { group_id, object, user_id }`
+
+  Confirmation payload returned after adding a user to a group.
+
+  - `group_id: string`
+
+    Identifier of the group the user was added to.
+
+  - `object: "group.user"`
+
+    Always `group.user`.
+
+    - `"group.user"`
+
+  - `user_id: string`
+
+    Identifier of the user that was added.
+
+### User Retrieve Response
+
+- `UserRetrieveResponse object { id, email, is_service_account, 3 more }`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: string`
+
+    Identifier for the user.
+
+  - `email: string`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: boolean`
+
+    Whether the user is a service account.
+
+  - `name: string`
+
+    Display name of the user.
+
+  - `picture: string`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: "user" or "tenant_user"`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`
+
+### User Delete Response
+
+- `UserDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after removing a user from a group.
+
+  - `deleted: boolean`
+
+    Whether the group membership was removed.
+
+  - `object: "group.user.deleted"`
+
+    Always `group.user.deleted`.
+
+    - `"group.user.deleted"`

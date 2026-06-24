@@ -1,0 +1,50 @@
+---
+title: '`glab attestation verify`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Verify the provenance of a specific artifact or file. (EXPERIMENTAL)
+
+## Synopsis
+
+Verify the provenance of an artifact built by a GitLab CI/CD pipeline.
+This command checks the artifact's signed attestation against the expected
+GitLab project and pipeline.
+
+This command requires the cosign binary. To install it, see
+[Cosign installation](https://docs.sigstore.dev/cosign/system_config/installation/).
+
+This command works only on GitLab.com.
+
+For more information about attestations, see:
+
+- [Attestations API](https://docs.gitlab.com/api/attestations/)
+- [SLSA provenance specification](https://docs.gitlab.com/ci/pipeline_security/slsa/provenance_v1/)
+- [SLSA software attestations](https://slsa.dev/spec/v1.2/attestation-model)
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab attestation verify <project-id> <artifact-path> [flags]
+```
+
+## Examples
+
+```console
+# Verify attestation for filename.txt in the gitlab-org/gitlab project
+glab attestation verify gitlab-org/gitlab filename.txt
+
+# Verify attestation for filename.txt in the project with ID 123
+glab attestation verify 123 filename.txt
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

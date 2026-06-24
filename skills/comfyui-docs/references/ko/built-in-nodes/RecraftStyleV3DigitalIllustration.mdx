@@ -1,0 +1,23 @@
+---
+title: "RecraftStyleV3DigitalIllustration - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RecraftStyleV3DigitalIllustration node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+이 노드는 Recraft API와 함께 사용할 스타일을 구성하며, 특히 "digital_illustration" 스타일을 선택합니다. 생성된 이미지의 예술적 방향을 더욱 세분화하기 위해 선택적 하위 스타일을 지정할 수 있습니다.
+
+## 입력
+
+| 매개변수 | 설명 | 데이터 타입 | 필수 여부 | 범위 |
+| --- | --- | --- | --- | --- |
+| `하위 스타일` | 특정 유형의 디지털 일러스트레이션을 지정하는 선택적 하위 스타일입니다. 선택하지 않으면 기본 "digital_illustration" 스타일이 사용됩니다. | STRING | 아니요 | `"digital_illustration"``"digital_illustration_anime"``"digital_illustration_cartoon"``"digital_illustration_comic"``"digital_illustration_concept_art"``"digital_illustration_fantasy"``"digital_illustration_futuristic"``"digital_illustration_graffiti"``"digital_illustration_graphic_novel"``"digital_illustration_hyperrealistic"``"digital_illustration_ink"``"digital_illustration_manga"``"digital_illustration_minimalist"``"digital_illustration_pixel_art"``"digital_illustration_pop_art"``"digital_illustration_retro"``"digital_illustration_sci_fi"``"digital_illustration_sticker"``"digital_illustration_street_art"``"digital_illustration_surreal"``"digital_illustration_vector"` |
+
+## 출력
+
+| 출력 이름 | 설명 | 데이터 타입 |
+| --- | --- | --- |
+| `recraft_style` | 선택한 "digital_illustration" 스타일과 선택적 하위 스타일이 포함된 구성된 스타일 객체로, 다른 Recraft API 노드에 전달할 준비가 되었습니다. | STYLEV3 |
+
+> 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftStyleV3DigitalIllustration/ko.md)
+
+---
+**Source fingerprint (SHA-256):** `e52790a670839608ee1cb576e802a54d3bf2ca879ec288a24acd4ac7db27021a`

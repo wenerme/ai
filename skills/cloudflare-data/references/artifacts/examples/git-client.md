@@ -1,0 +1,63 @@
+---
+title: Git client
+description: Example Artifacts integration with a Git client.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Git client
+
+You can use a standard Git client to interact with Artifacts repos. This example walks through clone, but the same approach works for fetch, pull, push, and any other Git operation.
+
+To do this, you need to:
+
+* Fetch the repo's remote URL from the REST API
+* Mint a short-lived token scoped to that repo
+
+Once you have the remote URL and token, you can use them to run Git commands against the repo.
+
+This example assumes the repo already exists and that you have a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Edit**.
+
+## Fetch the remote and clone the repo
+
+Replace the placeholder values with your account ID, API token, and repo name. The script fetches the repo's remote URL from the API, mints a read-only token that expires in one hour, and clones the repo to a local directory.
+
+The example below uses `jq` to extract fields from the JSON responses.
+
+Terminal window
+
+```
+# Set your account detailsexport ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export ARTIFACTS_NAMESPACE="default"export ARTIFACTS_REPO="starter-repo"export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
+# Fetch the repo's remote URLREPO_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN")
+ARTIFACTS_REMOTE=$(printf '%s' "$REPO_JSON" | jq -r '.result.remote')
+# Mint a short-lived read tokenTOKEN_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/tokens" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data "{\"repo\":\"$ARTIFACTS_REPO\",\"scope\":\"read\",\"ttl\":3600}")
+ARTIFACTS_TOKEN=$(printf '%s' "$TOKEN_JSON" | jq -r '.result.plaintext')
+# Clone the repogit -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
+```
+
+You now have a standard Git checkout in `./artifacts-clone`.
+
+This flow is useful when another system owns repo discovery or access control, but your local tooling still expects a normal git remote.
+
+### Authentication
+
+Treat `ARTIFACTS_TOKEN` as a secret. Keep it out of logs, and prefer `http.extraHeader` over saving credentials in a remote URL.
+
+If you need a self-contained remote URL for a short-lived workflow, extract the token secret and build the authenticated remote only for that command:
+
+Terminal window
+
+```
+ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
+git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
+```
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/git-client/#page","headline":"Git client · Cloudflare Artifacts docs","description":"Example Artifacts integration with a Git client.","url":"https://developers.cloudflare.com/artifacts/examples/git-client/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/git-client/","name":"Git client"}}]}
+```

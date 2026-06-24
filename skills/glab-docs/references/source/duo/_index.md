@@ -1,0 +1,30 @@
+---
+title: '`glab duo`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Work with GitLab Duo.
+
+## Synopsis
+
+Work with GitLab Duo directly in your terminal. Receive AI-native assistance
+across the software development lifecycle, without switching contexts.
+
+Retrieve forgotten Git commands and get guidance on Git operations, or interact
+with the GitLab Duo Agent Platform through the GitLab Duo CLI ([Beta](https://docs.gitlab.com/policy/development_stages_support/#beta)).
+
+```plaintext
+glab duo <command> prompt [flags]
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`cli`](cli.md)

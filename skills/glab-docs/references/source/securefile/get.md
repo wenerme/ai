@@ -1,0 +1,56 @@
+---
+title: '`glab securefile get`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Get details of a secure file by ID.
+
+## Synopsis
+
+Get details of a single secure file in a project, identified by its
+numeric ID. The response includes the file's name, checksum, and
+associated metadata.
+
+This command requires GitLab 18.0 or later.
+
+By default, the file is looked up in the current project. Use
+`--repo` to target another project.
+
+```plaintext
+glab securefile get <id> [flags]
+```
+
+## Aliases
+
+```plaintext
+show
+```
+
+## Examples
+
+```console
+# Get details of a secure file by ID
+glab securefile get 1
+
+# Get details using the 'show' alias
+glab securefile show 1
+
+# Get details from another project
+glab securefile get 1 -R owner/repo
+
+```
+
+## Options
+
+```plaintext
+      --jq string   Filter JSON output with a jq expression.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

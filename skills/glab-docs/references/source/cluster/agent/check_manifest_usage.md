@@ -1,0 +1,52 @@
+---
+title: '`glab cluster agent check_manifest_usage`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Find agents using deprecated GitOps manifest settings. (EXPERIMENTAL)
+
+## Synopsis
+
+Searches a group and its descendant projects for registered agents whose
+configuration files include the deprecated `gitops.manifest_projects` setting.
+
+The output is tab-separated and can be redirected to a TSV file.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab cluster agent check_manifest_usage [flags]
+```
+
+## Examples
+
+```console
+# Check a group for agents using deprecated GitOps manifest settings
+glab cluster agent check_manifest_usage --group my-group
+
+# Recursively check a group and all its subgroups
+glab cluster agent check_manifest_usage --group my-group --recursive
+```
+
+## Options
+
+```plaintext
+  -a, --agent-page int       Page number for agents. (default 1)
+  -A, --agent-per-page int   Number of agents to list per page. (default 30)
+  -g, --group string         Group ID to check.
+  -p, --page int             Page number for projects. (default 1)
+  -P, --per-page int         Number of projects to list per page. (default 30)
+  -r, --recursive            Recursively check subgroups.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

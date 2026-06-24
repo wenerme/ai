@@ -1,0 +1,30 @@
+---
+title: "PairConditioningSetProperties - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the PairConditioningSetProperties node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+**PairConditioningSetProperties** ノードを使用すると、ポジティブとネガティブの両方のコンディショニングペアのプロパティを同時に変更できます。このノードは、強度調整、コンディショニング領域の設定、オプションのマスクやタイミング制御を両方のコンディショニング入力に適用し、変更後のポジティブおよびネガティブコンディショニングデータを返します。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `ポジティブ_NEW` | 変更するポジティブコンディショニング入力 | CONDITIONING | はい | - |
+| `ネガティブ_NEW` | 変更するネガティブコンディショニング入力 | CONDITIONING | はい | - |
+| `強度` | コンディショニングに適用される強度倍率（デフォルト：1.0） | FLOAT | はい | 0.0 ～ 10.0 |
+| `set_cond_area` | コンディショニング領域の計算方法を指定します（デフォルト："default"） | STRING | はい | "default""mask bounds" |
+| `マスク` | コンディショニング領域を制限するオプションのマスク | MASK | いいえ | - |
+| `フック` | 高度なコンディショニング変更のためのオプションのフックグループ | HOOKS | いいえ | - |
+| `タイムステップ` | コンディショニングを適用するタイミングを制限するオプションのタイムステップ範囲 | TIMESTEPS_RANGE | いいえ | - |
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `ネガティブ` | 適用されたプロパティを持つ変更後のポジティブコンディショニング | CONDITIONING |
+| `negative` | 適用されたプロパティを持つ変更後のネガティブコンディショニング | CONDITIONING |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PairConditioningSetProperties/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `3f750c270665b4f3567790ab1ae0bdbfa176527d4f8d96cf10570a5c5deb9636`

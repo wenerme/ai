@@ -1,0 +1,23 @@
+---
+title: "RecraftStyleV3VectorIllustrationNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RecraftStyleV3VectorIllustrationNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+이 노드는 Recraft API에서 사용할 스타일을 구성하며, 특히 `vector_illustration` 스타일을 선택합니다. 해당 카테고리 내에서 더 구체적인 하위 스타일을 선택적으로 지정할 수 있습니다. 이 노드는 다른 Recraft API 노드에 전달할 수 있는 스타일 구성 객체를 출력합니다.
+
+## 입력
+
+| 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
+| --- | --- | --- | --- | --- |
+| `substyle` | `vector_illustration` 카테고리 내에서 선택 가능한 더 구체적인 스타일입니다. 선택하지 않으면 기본 `vector_illustration` 스타일이 사용됩니다. | STRING | 아니요 | `"vector_illustration"``"vector_illustration_flat"``"vector_illustration_3d"``"vector_illustration_hand_drawn"``"vector_illustration_retro"``"vector_illustration_modern"``"vector_illustration_abstract"``"vector_illustration_geometric"``"vector_illustration_organic"``"vector_illustration_minimalist"``"vector_illustration_detailed"``"vector_illustration_colorful"``"vector_illustration_monochrome"``"vector_illustration_grayscale"``"vector_illustration_pastel"``"vector_illustration_vibrant"``"vector_illustration_muted"``"vector_illustration_warm"``"vector_illustration_cool"``"vector_illustration_neutral"``"vector_illustration_bold"``"vector_illustration_subtle"``"vector_illustration_playful"``"vector_illustration_serious"``"vector_illustration_elegant"``"vector_illustration_rustic"``"vector_illustration_urban"``"vector_illustration_nature"``"vector_illustration_fantasy"``"vector_illustration_sci_fi"``"vector_illustration_historical"``"vector_illustration_futuristic"``"vector_illustration_whimsical"``"vector_illustration_surreal"``"vector_illustration_realistic"``"vector_illustration_stylized"``"vector_illustration_cartoony"``"vector_illustration_anime"``"vector_illustration_comic"``"vector_illustration_pixel"``"vector_illustration_low_poly"``"vector_illustration_high_poly"``"vector_illustration_isometric"``"vector_illustration_orthographic"``"vector_illustration_perspective"``"vector_illustration_2d"``"vector_illustration_2.5d"``"vector_illustration_3d"``"vector_illustration_4d"` |
+
+## 출력
+
+| 출력 이름 | 설명 | 데이터 타입 |
+| --- | --- | --- |
+| `recraft_style` | 선택한 `vector_illustration` 스타일과 선택적 하위 스타일이 포함된 Recraft API 스타일 구성 객체입니다. 이 객체는 다른 Recraft 노드에 연결할 수 있습니다. | STYLEV3 |
+
+> 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftStyleV3VectorIllustrationNode/ko.md)
+
+---
+**Source fingerprint (SHA-256):** `acd7a6decfdd052a0ff3c01a66dfdd4aa37a711ed6e2e123cc9a424b738b1346`

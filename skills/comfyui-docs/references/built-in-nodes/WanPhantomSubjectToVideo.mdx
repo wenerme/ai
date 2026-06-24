@@ -1,0 +1,35 @@
+---
+title: "WanPhantomSubjectToVideo - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the WanPhantomSubjectToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The WanPhantomSubjectToVideo node generates video content by processing conditioning inputs and optional reference images. It creates latent representations for video generation and can incorporate visual guidance from input images when provided. The node prepares conditioning data with time-dimensional concatenation for video models and outputs modified conditioning along with generated latent video data.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `positive` | Positive conditioning input for guiding video generation | CONDITIONING | Yes | - |
+| `negative` | Negative conditioning input to avoid certain characteristics | CONDITIONING | Yes | - |
+| `vae` | VAE model for encoding images when provided | VAE | Yes | - |
+| `width` | Output video width in pixels (default: 832, must be divisible by 16) | INT | Yes | 16 to MAX_RESOLUTION |
+| `height` | Output video height in pixels (default: 480, must be divisible by 16) | INT | Yes | 16 to MAX_RESOLUTION |
+| `length` | Number of frames in the generated video (default: 81, must be divisible by 4) | INT | Yes | 1 to MAX_RESOLUTION |
+| `batch_size` | Number of videos to generate simultaneously (default: 1) | INT | Yes | 1 to 4096 |
+| `images` | Optional reference images for time-dimensional conditioning | IMAGE | No | - |
+
+**Note:** When `images` are provided, they are automatically upscaled to match the specified `width` and `height`, and only the first `length` frames are used for processing.
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `positive` | Modified positive conditioning with time-dimensional concatenation when images are provided | CONDITIONING |
+| `negative_text` | Modified negative conditioning with time-dimensional concatenation when images are provided | CONDITIONING |
+| `negative_img_text` | Negative conditioning with zeroed time-dimensional concatenation when images are provided | CONDITIONING |
+| `latent` | Generated latent video representation with specified dimensions and length | LATENT |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanPhantomSubjectToVideo/en.md)
+
+---
+**Source fingerprint (SHA-256):** `9ff1c79f794f96015f099988b5392e3b2e442de3b317c352f2436feb41a1c3ba`

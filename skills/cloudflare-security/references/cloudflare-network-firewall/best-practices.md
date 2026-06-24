@@ -1,0 +1,26 @@
+---
+title: Best practices
+description: Best practices for configuring the Network Firewall.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Best practices
+
+By default, Cloudflare Network Firewall (formerly Magic Firewall) permits all ingress traffic that has passed through Cloudflare's core DDoS mitigations. To proactively mitigate attacks and minimize your attack surface and leakage of attack traffic into your environment, we recommend implementing your Cloudflare Network Firewall rules using the following guidelines.
+
+The best approach is to replicate your current ingress perimeter firewall rules in Network Firewall. If you are unable to export your current perimeter firewall rules, contact your Implementation Manager for help translating the rules into Cloudflare Network Firewall rules.
+
+* [ Minimal ruleset ](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/minimal-ruleset/)
+* [ Extended ruleset ](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/)
+* [ Magic Transit egress ](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/#page","headline":"Best practices · Cloudflare Network Firewall docs","description":"Best practices for configuring the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/best-practices/","name":"Best practices"}}]}
+```

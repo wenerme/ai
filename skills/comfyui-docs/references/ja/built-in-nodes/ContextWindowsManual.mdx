@@ -1,0 +1,44 @@
+---
+title: "ContextWindowsManual - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the ContextWindowsManual node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下が翻訳結果です。
+
+## 概要
+Context Windows (Manual) ノードを使用すると、サンプリング中にモデルにコンテキストウィンドウを手動で設定できます。このノードは、指定された長さ、オーバーラップ、スケジュールパターンを持つ重複するコンテキストセグメントを作成し、セグメント間の連続性を維持しながらデータを管理可能なチャンクに分割して処理します。ノイズシャッフル、コンディショニング保持、因果ウィンドウ修正など、コンテキストウィンドウの適用方法を制御するための高度なオプションを提供します。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル` | サンプリング中にコンテキストウィンドウを適用するモデル。 | MODEL | はい | - |
+| `コンテキスト長` | コンテキストウィンドウの長さ（デフォルト: 16）。 | INT | いいえ | 1+ |
+| `コンテキストオーバーラップ` | コンテキストウィンドウのオーバーラップ（デフォルト: 4）。 | INT | いいえ | 0+ |
+| `コンテキストスケジュール` | コンテキストウィンドウのストライド。 | COMBO | いいえ | `STATIC_STANDARD``UNIFORM_STANDARD``UNIFORM_LOOPED``BATCHED` |
+| `コンテキストストライド` | コンテキストウィンドウのストライド。uniformスケジュールにのみ適用されます（デフォルト: 1）。 | INT | いいえ | 1+ |
+| `closed_loop` | コンテキストウィンドウのループを閉じるかどうか。loopedスケジュールにのみ適用されます（デフォルト: False）。 | BOOLEAN | いいえ | - |
+| `fuse_method` | コンテキストウィンドウを融合するために使用する方法（デフォルト: PYRAMID）。 | COMBO | いいえ | `PYRAMID``LIST_STATIC` |
+| `dim` | コンテキストウィンドウを適用する次元（デフォルト: 0）。 | INT | いいえ | 0-5 |
+| `フリーノイズ` | FreeNoiseノイズシャッフルを適用するかどうか。ウィンドウのブレンドを改善します（デフォルト: False）。 | BOOLEAN | いいえ | - |
+| `cond_retain_index_list` | 各ウィンドウのコンディショニングテンソルに保持する潜在インデックスのリスト。例えば、これを'0'に設定すると、各ウィンドウで初期開始画像が使用されます（デフォルト: ""）。 | STRING | いいえ | - |
+| `split_conds_to_windows` | ConditionCombineによって作成された複数のコンディショニングを、リージョンインデックスに基づいて各ウィンドウに分割するかどうか（デフォルト: False）。 | BOOLEAN | いいえ | - |
+| `causal_window_fix` | 0以外のインデックスを持つコンテキストウィンドウに因果修正フレームを追加するかどうか（デフォルト: True）。 | BOOLEAN | いいえ | - |
+
+**パラメータ制約:**
+
+- `context_stride` は、uniformスケジュールが選択された場合にのみ使用されます。
+- `closed_loop` は、loopedスケジュールにのみ適用されます。
+- `dim` は0から5の間（両端を含む）である必要があります。
+- `cond_retain_index_list` は、カンマ区切りの整数インデックスのリストを文字列として受け取ります（例: "0,1,2"）。
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `モデル` | サンプリング中にコンテキストウィンドウが適用されたモデル。 | MODEL |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ContextWindowsManual/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `b05ddda0ba38588305e6f733cd218c8b462268c39d16226ca961d09054187261`

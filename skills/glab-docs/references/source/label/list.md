@@ -1,0 +1,60 @@
+---
+title: '`glab label list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List labels in a project or group.
+
+## Synopsis
+
+By default, labels are listed for the current repository. Use
+`--group` to list labels for a group or subgroup, or
+`--repo` to target another project.
+
+Use `--output json` to format the result as JSON for use with other tools.
+
+```plaintext
+glab label list [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+# List labels in the current repository
+glab label list
+
+# List labels in another project
+glab label list -R owner/repository
+
+# List labels in a group
+glab label list -g mygroup
+
+# List labels as JSON
+glab label list --output json
+
+```
+
+## Options
+
+```plaintext
+  -g, --group string    List labels for a group.
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+  -p, --page int        Page number. (default 1)
+  -P, --per-page int    Number of items to list per page. (default 30)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

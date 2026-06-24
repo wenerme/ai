@@ -1,0 +1,27 @@
+---
+title: "ResizeAndPadImage - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the ResizeAndPadImage node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The ResizeAndPadImage node resizes an image to fit within specified dimensions while maintaining its original aspect ratio. It scales the image down proportionally to fit within the target width and height, then adds padding around the edges to fill any remaining space. The padding color and interpolation method can be customized to control the appearance of the padded areas and the quality of the resizing.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `image` | The input image to be resized and padded | IMAGE | Yes | - |
+| `target_width` | The desired width of the output image (default: 512) | INT | Yes | 1 to MAX_RESOLUTION |
+| `target_height` | The desired height of the output image (default: 512) | INT | Yes | 1 to MAX_RESOLUTION |
+| `padding_color` | The color to use for padding areas around the resized image (default: "white") | COMBO | Yes | "white""black" |
+| `interpolation` | The interpolation method used for resizing the image (default: "area") | COMBO | Yes | "area""bicubic""nearest-exact""bilinear""lanczos" |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `image` | The resized and padded output image | IMAGE |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ResizeAndPadImage/en.md)
+
+---
+**Source fingerprint (SHA-256):** `cc516caee9f466d557e1c8e3c7fcef25acc1e33d181bc4b100302dc93530cb95`

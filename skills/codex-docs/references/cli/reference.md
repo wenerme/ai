@@ -1,0 +1,1377 @@
+# Command line options
+
+export const globalFlagOptions = [
+  {
+    key: "PROMPT",
+    type: "string",
+    description:
+      "Optional text instruction to start the session. Omit to launch the TUI without a pre-filled message.",
+  },
+  {
+    key: "--image, -i",
+    type: "path[,path...]",
+    description:
+      "Attach one or more image files to the initial prompt. Separate multiple paths with commas or repeat the flag.",
+  },
+  {
+    key: "--model, -m",
+    type: "string",
+    description:
+      "Override the model set in configuration (for example `gpt-5.4`).",
+  },
+  {
+    key: "--oss",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      'Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running.',
+  },
+  {
+    key: "--profile, -p",
+    type: "string",
+    description:
+      "Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config.",
+  },
+  {
+    key: "--sandbox, -s",
+    type: "read-only | workspace-write | danger-full-access",
+    description:
+      "Select the sandbox policy for model-generated shell commands.",
+  },
+  {
+    key: "--ask-for-approval, -a",
+    type: "untrusted | on-request | never",
+    description:
+      "Control when Codex pauses for human approval before running a command. `on-failure` is deprecated; prefer `on-request` for interactive runs or `never` for non-interactive runs.",
+  },
+  {
+    key: "--dangerously-bypass-approvals-and-sandbox, --yolo",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Run every command without approvals or sandboxing. Only use inside an externally hardened environment.",
+  },
+  {
+    key: "--dangerously-bypass-hook-trust",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources.",
+  },
+  {
+    key: "--cd, -C",
+    type: "path",
+    description:
+      "Set the working directory for the agent before it starts processing your request.",
+  },
+  {
+    key: "--search",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      'Enable live web search (sets `web_search = "live"` instead of the default `"cached"`).',
+  },
+  {
+    key: "--add-dir",
+    type: "path",
+    description:
+      "Grant additional directories write access alongside the main workspace. Repeat for multiple paths.",
+  },
+  {
+    key: "--no-alt-screen",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run).",
+  },
+  {
+    key: "--remote",
+    type: "ws://host:port | wss://host:port | unix:// | unix://PATH",
+    description:
+      "Connect to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, `codex fork`, `codex archive`, `codex delete`, and `codex unarchive`; other subcommands reject remote mode.",
+  },
+  {
+    key: "--remote-auth-token-env",
+    type: "ENV_VAR",
+    description:
+      "Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or local-only `ws://` URLs.",
+  },
+  {
+    key: "--strict-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Error when `config.toml` contains fields this Codex version does not recognize. Supported by runtime commands such as `codex`, `exec`, `review`, `resume`, `fork`, `app-server`, `mcp-server`, and `exec-server`.",
+  },
+  {
+    key: "--enable",
+    type: "feature",
+    description:
+      "Force-enable a feature flag (translates to `-c features.<name>=true`). Repeatable.",
+  },
+  {
+    key: "--disable",
+    type: "feature",
+    description:
+      "Force-disable a feature flag (translates to `-c features.<name>=false`). Repeatable.",
+  },
+  {
+    key: "--config, -c",
+    type: "key=value",
+    description:
+      "Override configuration values. Values parse as TOML if possible; otherwise the literal string is used.",
+  },
+];
+
+export const commandOverview = [
+  {
+    key: "codex",
+    href: "/codex/cli/reference#codex-interactive",
+    type: "stable",
+    description:
+      "Launch the terminal UI. Accepts the global flags above plus an optional prompt or image attachments.",
+  },
+  {
+    key: "codex app-server",
+    href: "/codex/cli/reference#codex-app-server",
+    type: "experimental",
+    description:
+      "Launch the Codex app server for local development or debugging over stdio, WebSocket, or a Unix socket.",
+  },
+  {
+    key: "codex remote-control",
+    href: "/codex/cli/reference#codex-remote-control",
+    type: "experimental",
+    description:
+      "Ensure the local app-server daemon is running with remote-control support enabled.",
+  },
+  {
+    key: "codex app",
+    href: "/codex/cli/reference#codex-app",
+    type: "stable",
+    description:
+      "Launch the Codex desktop app on macOS or Windows. On macOS, Codex can open a workspace path; on Windows, Codex prints the path to open.",
+  },
+  {
+    key: "codex debug app-server send-message-v2",
+    href: "/codex/cli/reference#codex-debug-app-server-send-message-v2",
+    type: "experimental",
+    description:
+      "Debug app-server by sending a single V2 message through the built-in test client.",
+  },
+  {
+    key: "codex debug models",
+    href: "/codex/cli/reference#codex-debug-models",
+    type: "experimental",
+    description:
+      "Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog.",
+  },
+  {
+    key: "codex apply",
+    href: "/codex/cli/reference#codex-apply",
+    type: "stable",
+    description:
+      "Apply the latest diff generated by a Codex Cloud task to your local working tree. Alias: `codex a`.",
+  },
+  {
+    key: "codex archive",
+    href: "/codex/cli/reference#codex-archive-and-codex-unarchive",
+    type: "stable",
+    description:
+      "Archive a saved interactive session by session ID or session name.",
+  },
+  {
+    key: "codex delete",
+    href: "/codex/cli/reference#codex-delete",
+    type: "stable",
+    description:
+      "Permanently delete a saved interactive session by session ID or session name.",
+  },
+  {
+    key: "codex cloud",
+    href: "/codex/cli/reference#codex-cloud",
+    type: "experimental",
+    description:
+      "Browse or execute Codex Cloud tasks from the terminal without opening the TUI. Alias: `codex cloud-tasks`.",
+  },
+  {
+    key: "codex completion",
+    href: "/codex/cli/reference#codex-completion",
+    type: "stable",
+    description:
+      "Generate shell completion scripts for Bash, Zsh, Fish, or PowerShell.",
+  },
+  {
+    key: "codex doctor",
+    href: "/codex/cli/reference#codex-doctor",
+    type: "stable",
+    description:
+      "Generate a diagnostic report for local installation, config, auth, runtime, Git, terminal, app-server, and thread inventory issues.",
+  },
+  {
+    key: "codex features",
+    href: "/codex/cli/reference#codex-features",
+    type: "stable",
+    description:
+      "List feature flags and persistently enable or disable them in `config.toml`.",
+  },
+  {
+    key: "codex exec",
+    href: "/codex/cli/reference#codex-exec",
+    type: "stable",
+    description:
+      "Run Codex non-interactively. Alias: `codex e`. Stream results to stdout or JSONL and optionally resume previous sessions.",
+  },
+  {
+    key: "codex execpolicy",
+    href: "/codex/cli/reference#codex-execpolicy",
+    type: "experimental",
+    description:
+      "Evaluate execpolicy rule files and see whether a command would be allowed, prompted, or blocked.",
+  },
+  {
+    key: "codex login",
+    href: "/codex/cli/reference#codex-login",
+    type: "stable",
+    description:
+      "Authenticate Codex using ChatGPT OAuth, device auth, an API key, or an access token piped over stdin.",
+  },
+  {
+    key: "codex logout",
+    href: "/codex/cli/reference#codex-logout",
+    type: "stable",
+    description: "Remove stored authentication credentials.",
+  },
+  {
+    key: "codex mcp",
+    href: "/codex/cli/reference#codex-mcp",
+    type: "experimental",
+    description:
+      "Manage Model Context Protocol servers (list, add, remove, authenticate).",
+  },
+  {
+    key: "codex plugin marketplace",
+    href: "/codex/cli/reference#codex-plugin-marketplace",
+    type: "experimental",
+    description:
+      "Add, list, upgrade, or remove plugin marketplaces from Git or local sources.",
+  },
+  {
+    key: "codex plugin",
+    href: "/codex/cli/reference#codex-plugin",
+    type: "experimental",
+    description:
+      "Install, list, and remove plugins from configured marketplace sources.",
+  },
+  {
+    key: "codex mcp-server",
+    href: "/codex/cli/reference#codex-mcp-server",
+    type: "experimental",
+    description:
+      "Run Codex itself as an MCP server over stdio. Useful when another agent consumes Codex.",
+  },
+  {
+    key: "codex resume",
+    href: "/codex/cli/reference#codex-resume",
+    type: "stable",
+    description:
+      "Continue a previous interactive session by ID or resume the most recent conversation.",
+  },
+  {
+    key: "codex fork",
+    href: "/codex/cli/reference#codex-fork",
+    type: "stable",
+    description:
+      "Fork a previous interactive session into a new thread, preserving the original transcript.",
+  },
+  {
+    key: "codex sandbox",
+    href: "/codex/cli/reference#codex-sandbox",
+    type: "experimental",
+    description:
+      "Run arbitrary commands inside Codex-provided macOS, Linux, or Windows sandboxes.",
+  },
+  {
+    key: "codex update",
+    href: "/codex/cli/reference#codex-update",
+    type: "stable",
+    description:
+      "Check for and apply a Codex CLI update when the installed release supports self-update.",
+  },
+  {
+    key: "codex unarchive",
+    href: "/codex/cli/reference#codex-archive-and-codex-unarchive",
+    type: "stable",
+    description:
+      "Restore an archived interactive session by session ID or session name.",
+  },
+];
+
+export const execOptions = [
+  {
+    key: "PROMPT",
+    type: "string | - (read stdin)",
+    description:
+      "Initial instruction for the task. Use `-` to pipe the prompt from stdin.",
+  },
+  {
+    key: "--image, -i",
+    type: "path[,path...]",
+    description:
+      "Attach images to the first message. Repeatable; supports comma-separated lists.",
+  },
+  {
+    key: "--model, -m",
+    type: "string",
+    description: "Override the configured model for this run.",
+  },
+  {
+    key: "--oss",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Use the local open source provider (requires a running Ollama instance).",
+  },
+  {
+    key: "--sandbox, -s",
+    type: "read-only | workspace-write | danger-full-access",
+    description:
+      "Sandbox policy for model-generated commands. Defaults to configuration.",
+  },
+  {
+    key: "--profile, -p",
+    type: "string",
+    description:
+      "Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config.",
+  },
+  {
+    key: "--full-auto",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Deprecated compatibility flag. Prefer `--sandbox workspace-write`; Codex prints a warning when this flag is used.",
+  },
+  {
+    key: "--dangerously-bypass-approvals-and-sandbox, --yolo",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Bypass approval prompts and sandboxing. Dangerous—only use inside an isolated runner.",
+  },
+  {
+    key: "--dangerously-bypass-hook-trust",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources.",
+  },
+  {
+    key: "--cd, -C",
+    type: "path",
+    description: "Set the workspace root before executing the task.",
+  },
+  {
+    key: "--skip-git-repo-check",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Allow running outside a Git repository (useful for one-off directories).",
+  },
+  {
+    key: "--ephemeral",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Run without persisting session rollout files to disk.",
+  },
+  {
+    key: "--ignore-user-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Do not load `$CODEX_HOME/config.toml`. Authentication still uses `CODEX_HOME`.",
+  },
+  {
+    key: "--ignore-rules",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Do not load user or project execpolicy `.rules` files for this run.",
+  },
+  {
+    key: "--output-schema",
+    type: "path",
+    description:
+      "JSON Schema file describing the expected final response shape. Codex validates tool output against it.",
+  },
+  {
+    key: "--color",
+    type: "always | never | auto",
+    defaultValue: "auto",
+    description: "Control ANSI color in stdout.",
+  },
+  {
+    key: "--json, --experimental-json",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Print newline-delimited JSON events instead of formatted text.",
+  },
+  {
+    key: "--output-last-message, -o",
+    type: "path",
+    description:
+      "Write the assistant’s final message to a file. Useful for downstream scripting.",
+  },
+  {
+    key: "Resume subcommand",
+    type: "codex exec resume [SESSION_ID]",
+    description:
+      "Resume an exec session by ID or add `--last` to continue the most recent session from the current working directory. Add `--all` to consider sessions from any directory. Accepts an optional follow-up prompt.",
+  },
+  {
+    key: "-c, --config",
+    type: "key=value",
+    description:
+      "Inline configuration override for the non-interactive run (repeatable).",
+  },
+];
+
+export const appServerOptions = [
+  {
+    key: "--stdio",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Use stdio transport. Equivalent to `--listen stdio://` and mutually exclusive with `--listen`.",
+  },
+  {
+    key: "--listen",
+    type: "stdio:// | ws://IP:PORT | unix:// | unix://PATH | off",
+    defaultValue: "stdio://",
+    description:
+      "Transport listener URL. Use `stdio://` for JSONL, `ws://IP:PORT` for a TCP WebSocket endpoint, `unix://` for the default Unix socket, `unix://PATH` for a custom Unix socket, or `off` to disable the local transport.",
+  },
+  {
+    key: "--ws-auth",
+    type: "capability-token | signed-bearer-token",
+    description:
+      "Authentication mode for app-server WebSocket clients. If omitted, WebSocket auth is disabled; non-local listeners warn during startup.",
+  },
+  {
+    key: "--ws-token-file",
+    type: "absolute path",
+    description:
+      "File containing the shared capability token. Use with `--ws-auth capability-token` unless you provide `--ws-token-sha256` instead.",
+  },
+  {
+    key: "--ws-token-sha256",
+    type: "hexadecimal SHA-256 digest",
+    description:
+      "Expected SHA-256 digest for capability-token authentication. Use instead of `--ws-token-file` when the client token comes from another source.",
+  },
+  {
+    key: "--ws-shared-secret-file",
+    type: "absolute path",
+    description:
+      "File containing the HMAC shared secret used to validate signed JWT bearer tokens. Required with `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--ws-issuer",
+    type: "string",
+    description:
+      "Expected `iss` claim for signed bearer tokens. Requires `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--ws-audience",
+    type: "string",
+    description:
+      "Expected `aud` claim for signed bearer tokens. Requires `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--ws-max-clock-skew-seconds",
+    type: "number",
+    defaultValue: "30",
+    description:
+      "Clock skew allowance when validating signed bearer token `exp` and `nbf` claims. Requires `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--analytics-default-enabled",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Defaults analytics to enabled for first-party app-server clients unless the user opts out in config.",
+  },
+];
+
+export const appOptions = [
+  {
+    key: "PATH",
+    type: "path",
+    defaultValue: ".",
+    description:
+      "Workspace path for Codex Desktop. On macOS, Codex opens this path; on Windows, Codex prints the path.",
+  },
+  {
+    key: "--download-url",
+    type: "url",
+    description:
+      "Advanced override for the Codex desktop installer URL used during install.",
+  },
+];
+
+export const debugAppServerSendMessageV2Options = [
+  {
+    key: "USER_MESSAGE",
+    type: "string",
+    description:
+      "Message text sent to app-server through the built-in V2 test-client flow.",
+  },
+];
+
+export const debugModelsOptions = [
+  {
+    key: "--bundled",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Skip refresh and print only the model catalog bundled with the current Codex binary.",
+  },
+];
+
+export const doctorOptions = [
+  {
+    key: "--json",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Emit a redacted machine-readable support report.",
+  },
+  {
+    key: "--summary",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Show grouped check rows and the final count summary only.",
+  },
+  {
+    key: "--all",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Expand long lists in the detailed human-readable report.",
+  },
+  {
+    key: "--no-color",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Disable ANSI color in human-readable output.",
+  },
+  {
+    key: "--ascii",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Use ASCII status labels and separators in human-readable output.",
+  },
+];
+
+export const resumeOptions = [
+  {
+    key: "SESSION_ID",
+    type: "uuid",
+    description:
+      "Resume the specified session. Omit and use `--last` to continue the most recent session.",
+  },
+  {
+    key: "--last",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Skip the picker and resume the most recent conversation from the current working directory.",
+  },
+  {
+    key: "--all",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Include sessions outside the current working directory when selecting the most recent session.",
+  },
+];
+
+export const featuresOptions = [
+  {
+    key: "List subcommand",
+    type: "codex features list",
+    description:
+      "Show known feature flags, their maturity stage, and their effective state.",
+  },
+  {
+    key: "Enable subcommand",
+    type: "codex features enable <feature>",
+    description:
+      "Persistently enable a feature flag in `$CODEX_HOME/config.toml`.",
+  },
+  {
+    key: "Disable subcommand",
+    type: "codex features disable <feature>",
+    description:
+      "Persistently disable a feature flag in `$CODEX_HOME/config.toml`.",
+  },
+];
+
+export const execResumeOptions = [
+  {
+    key: "SESSION_ID",
+    type: "uuid",
+    description:
+      "Resume the specified session. Omit and use `--last` to continue the most recent session.",
+  },
+  {
+    key: "--last",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Resume the most recent conversation from the current working directory.",
+  },
+  {
+    key: "--all",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Include sessions outside the current working directory when selecting the most recent session.",
+  },
+  {
+    key: "--image, -i",
+    type: "path[,path...]",
+    description:
+      "Attach one or more images to the follow-up prompt. Separate multiple paths with commas or repeat the flag.",
+  },
+  {
+    key: "PROMPT",
+    type: "string | - (read stdin)",
+    description:
+      "Optional follow-up instruction sent immediately after resuming.",
+  },
+];
+
+export const forkOptions = [
+  {
+    key: "SESSION_ID",
+    type: "uuid",
+    description:
+      "Fork the specified session. Omit and use `--last` to fork the most recent session.",
+  },
+  {
+    key: "--last",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Skip the picker and fork the most recent conversation automatically.",
+  },
+  {
+    key: "--all",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Show sessions beyond the current working directory in the picker.",
+  },
+];
+
+export const execpolicyOptions = [
+  {
+    key: "--rules, -r",
+    type: "path (repeatable)",
+    description:
+      "Path to an execpolicy rule file to evaluate. Provide multiple flags to combine rules across files.",
+  },
+  {
+    key: "--pretty",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Pretty-print the JSON result.",
+  },
+  {
+    key: "COMMAND...",
+    type: "var-args",
+    description: "Command to be checked against the specified policies.",
+  },
+];
+
+export const loginOptions = [
+  {
+    key: "--with-api-key",
+    type: "boolean",
+    description:
+      "Read an API key from stdin (for example `printenv OPENAI_API_KEY | codex login --with-api-key`).",
+  },
+  {
+    key: "--with-access-token",
+    type: "boolean",
+    description:
+      "Read an access token from stdin (for example `printenv CODEX_ACCESS_TOKEN | codex login --with-access-token`).",
+  },
+  {
+    key: "--device-auth",
+    type: "boolean",
+    description:
+      "Use OAuth device code flow instead of launching a browser window.",
+  },
+  {
+    key: "status subcommand",
+    type: "codex login status",
+    description:
+      "Print the active authentication mode and exit with 0 when logged in.",
+  },
+];
+
+export const applyOptions = [
+  {
+    key: "TASK_ID",
+    type: "string",
+    description:
+      "Identifier of the Codex Cloud task whose diff should be applied.",
+  },
+];
+
+export const sandboxMacOptions = [
+  {
+    key: "--profile, -p",
+    type: "NAME",
+    description:
+      "Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.",
+  },
+  {
+    key: "--permissions-profile, -P",
+    type: "NAME",
+    description:
+      "Apply a named permissions profile from the active configuration stack.",
+  },
+  {
+    key: "--cd, -C",
+    type: "DIR",
+    description:
+      "Working directory used for profile resolution and command execution. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--include-managed-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--allow-unix-socket",
+    type: "path",
+    description:
+      "Allow the sandboxed command to bind or connect Unix sockets rooted at this path. Repeat to allow multiple paths.",
+  },
+  {
+    key: "--log-denials",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Capture macOS sandbox denials with `log stream` while the command runs and print them after exit.",
+  },
+  {
+    key: "--config, -c",
+    type: "key=value",
+    description:
+      "Pass configuration overrides into the sandboxed run (repeatable).",
+  },
+  {
+    key: "COMMAND...",
+    type: "var-args",
+    description:
+      "Shell command to execute under macOS Seatbelt. Everything after `--` is forwarded.",
+  },
+];
+
+export const sandboxLinuxOptions = [
+  {
+    key: "--profile, -p",
+    type: "NAME",
+    description:
+      "Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.",
+  },
+  {
+    key: "--permissions-profile, -P",
+    type: "NAME",
+    description:
+      "Apply a named permissions profile from the active configuration stack.",
+  },
+  {
+    key: "--cd, -C",
+    type: "DIR",
+    description:
+      "Working directory used for profile resolution and command execution. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--include-managed-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--config, -c",
+    type: "key=value",
+    description:
+      "Configuration overrides applied before launching the sandbox (repeatable).",
+  },
+  {
+    key: "COMMAND...",
+    type: "var-args",
+    description:
+      "Command to execute under Landlock + seccomp. Provide the executable after `--`.",
+  },
+];
+
+export const sandboxWindowsOptions = [
+  {
+    key: "--profile, -p",
+    type: "NAME",
+    description:
+      "Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.",
+  },
+  {
+    key: "--permissions-profile, -P",
+    type: "NAME",
+    description:
+      "Apply a named permissions profile from the active configuration stack.",
+  },
+  {
+    key: "--cd, -C",
+    type: "DIR",
+    description:
+      "Working directory used for profile resolution and command execution. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--include-managed-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--config, -c",
+    type: "key=value",
+    description:
+      "Configuration overrides applied before launching the sandbox (repeatable).",
+  },
+  {
+    key: "COMMAND...",
+    type: "var-args",
+    description:
+      "Command to execute under the native Windows sandbox. Provide the executable after `--`.",
+  },
+];
+
+export const completionOptions = [
+  {
+    key: "SHELL",
+    type: "bash | zsh | fish | power-shell | elvish",
+    defaultValue: "bash",
+    description: "Shell to generate completions for. Output prints to stdout.",
+  },
+];
+
+export const cloudExecOptions = [
+  {
+    key: "QUERY",
+    type: "string",
+    description:
+      "Task prompt. If omitted, Codex prompts interactively for details.",
+  },
+  {
+    key: "--env",
+    type: "ENV_ID",
+    description:
+      "Target Codex Cloud environment identifier (required). Use `codex cloud` to list options.",
+  },
+  {
+    key: "--attempts",
+    type: "1-4",
+    defaultValue: "1",
+    description:
+      "Number of assistant attempts (best-of-N) Codex Cloud should run.",
+  },
+];
+
+export const cloudListOptions = [
+  {
+    key: "--env",
+    type: "ENV_ID",
+    description: "Filter tasks by environment identifier.",
+  },
+  {
+    key: "--limit",
+    type: "1-20",
+    defaultValue: "20",
+    description: "Maximum number of tasks to return.",
+  },
+  {
+    key: "--cursor",
+    type: "string",
+    description: "Pagination cursor returned by a previous request.",
+  },
+  {
+    key: "--json",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Emit machine-readable JSON instead of plain text.",
+  },
+];
+
+export const mcpCommands = [
+  {
+    key: "list",
+    type: "--json",
+    description:
+      "List configured MCP servers. Add `--json` for machine-readable output.",
+  },
+  {
+    key: "get <name>",
+    type: "--json",
+    description:
+      "Show a specific server configuration. `--json` prints the raw config entry.",
+  },
+  {
+    key: "add <name>",
+    type: "-- <command...> | --url <value>",
+    description:
+      "Register a server using a stdio launcher command or a streamable HTTP URL. Supports `--env KEY=VALUE` for stdio transports.",
+  },
+  {
+    key: "remove <name>",
+    description: "Delete a stored MCP server definition.",
+  },
+  {
+    key: "login <name>",
+    type: "--scopes scope1,scope2",
+    description:
+      "Start an OAuth login for a streamable HTTP server (servers that support OAuth only).",
+  },
+  {
+    key: "logout <name>",
+    description:
+      "Remove stored OAuth credentials for a streamable HTTP server.",
+  },
+];
+
+export const mcpAddOptions = [
+  {
+    key: "COMMAND...",
+    type: "stdio transport",
+    description:
+      "Executable plus arguments to launch the MCP server. Provide after `--`.",
+  },
+  {
+    key: "--env KEY=VALUE",
+    type: "repeatable",
+    description:
+      "Environment variable assignments applied when launching a stdio server.",
+  },
+  {
+    key: "--url",
+    type: "https://…",
+    description:
+      "Register a streamable HTTP server instead of stdio. Mutually exclusive with `COMMAND...`.",
+  },
+  {
+    key: "--bearer-token-env-var",
+    type: "ENV_VAR",
+    description:
+      "Environment variable whose value is sent as a bearer token when connecting to a streamable HTTP server.",
+  },
+  {
+    key: "--oauth-client-id",
+    type: "CLIENT_ID",
+    description:
+      "OAuth client identifier for a streamable HTTP MCP server. Requires `--url`.",
+  },
+  {
+    key: "--oauth-resource",
+    type: "RESOURCE",
+    description:
+      "OAuth resource parameter to include during login for a streamable HTTP MCP server. Requires `--url`.",
+  },
+];
+
+export const marketplaceCommands = [
+  {
+    key: "add <source>",
+    type: "[--ref REF] [--sparse PATH] [--json]",
+    description:
+      "Install a plugin marketplace from GitHub shorthand, a Git URL, an SSH URL, or a local marketplace root directory. `--sparse` is supported only for Git sources and can be repeated.",
+  },
+  {
+    key: "list",
+    type: "[--json]",
+    description:
+      "Show plugin marketplaces Codex is currently considering and the root path for each marketplace.",
+  },
+  {
+    key: "upgrade [marketplace-name]",
+    type: "[--json]",
+    description:
+      "Refresh one configured Git marketplace, or all configured Git marketplaces when no name is provided.",
+  },
+  {
+    key: "remove <marketplace-name>",
+    type: "[--json]",
+    description: "Remove a configured plugin marketplace.",
+  },
+];
+
+export const pluginCommands = [
+  {
+    key: "add <plugin[@marketplace]>",
+    type: "[--marketplace, -m NAME] [--json]",
+    description:
+      "Install a plugin from a configured marketplace. Use `--marketplace` or `-m` when the plugin argument omits `@marketplace`.",
+  },
+  {
+    key: "list",
+    type: "[--marketplace, -m NAME] [--available --json] [--json]",
+    description:
+      "List installed plugins. With `--json`, output has `installed` and `available` arrays; `--available` includes uninstalled marketplace plugins and requires `--json`.",
+  },
+  {
+    key: "remove <plugin[@marketplace]>",
+    type: "[--marketplace, -m NAME] [--json]",
+    description:
+      "Remove an installed plugin from local config and cache. Use `--json` for automation-friendly output.",
+  },
+  {
+    key: "marketplace",
+    description:
+      "Manage configured marketplace sources. See `codex plugin marketplace` below.",
+  },
+];
+
+export const archiveOptions = [
+  {
+    key: "SESSION",
+    type: "session ID | session name",
+    description:
+      "Saved session to archive or restore. Session IDs take precedence over session names.",
+  },
+  {
+    key: "--remote",
+    type: "ws://host:port | wss://host:port | unix:// | unix://PATH",
+    description:
+      "Connect to a remote app-server endpoint before changing archive state.",
+  },
+  {
+    key: "--remote-auth-token-env",
+    type: "ENV_VAR",
+    description:
+      "Read a bearer token from this environment variable when `--remote` requires authentication.",
+  },
+];
+
+export const deleteOptions = [
+  {
+    key: "SESSION",
+    type: "session ID | session name",
+    description:
+      "Saved session to delete. Session IDs take precedence over session names.",
+  },
+  {
+    key: "--force",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Delete without prompting. The session argument must be a UUID; names still require interactive confirmation.",
+  },
+  {
+    key: "--remote",
+    type: "ws://host:port | wss://host:port | unix:// | unix://PATH",
+    description:
+      "Connect to a remote app-server endpoint before deleting the session.",
+  },
+  {
+    key: "--remote-auth-token-env",
+    type: "ENV_VAR",
+    description:
+      "Read a bearer token from this environment variable when `--remote` requires authentication.",
+  },
+];
+
+## How to read this reference
+
+This page catalogs every documented Codex CLI command and flag. Use the interactive tables to search by key or description. Each section indicates whether the option is stable or experimental and calls out risky combinations.
+
+The CLI inherits most defaults from <code>~/.codex/config.toml</code>. Any
+  <code>-c key=value</code> overrides you pass at the command line take
+  precedence for that invocation. See [Config
+  basics](https://developers.openai.com/codex/config-basic#configuration-precedence) for more information.
+
+## Global flags
+
+<ConfigTable client:load options={globalFlagOptions} />
+
+These options apply to the base `codex` command. Most propagate to commands;
+see the notes above or the relevant command help for exceptions. For propagated
+flags, follow the relevant command help. For example, `codex exec --oss ...`
+applies `--oss` to `exec`.
+
+## Command overview
+
+The Maturity column uses feature maturity labels such as Experimental, Beta,
+  and Stable. See [Feature Maturity](https://developers.openai.com/codex/feature-maturity) for how to
+  interpret these labels.
+
+<ConfigTable
+  client:load
+  options={commandOverview}
+  secondColumnTitle="Maturity"
+  secondColumnVariant="maturity"
+/>
+
+## Command details
+
+### `codex` (interactive)
+
+Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing. For low-friction local work, use `--sandbox workspace-write --ask-for-approval on-request`.
+
+Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. For a local Unix socket, use `--remote unix://` for the default socket or `--remote unix://PATH` for an explicit path. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication.
+
+### `codex app-server`
+
+Launch the Codex app server locally. This is primarily for development and debugging and may change without notice.
+
+<ConfigTable client:load options={appServerOptions} />
+
+`codex app-server --listen stdio://` keeps the default JSONL-over-stdio behavior, and `codex app-server --stdio` is an alias for that transport. `--listen ws://IP:PORT` enables WebSocket transport for app-server clients. The server accepts `ws://` listen URLs; use TLS termination or a secure proxy when clients connect with `wss://`. Use `--listen unix://` to accept WebSocket handshakes on Codex's default Unix socket, or `--listen unix:///absolute/path.sock` to choose a socket path. If you generate schemas for client bindings, add `--experimental` to include gated fields and methods.
+
+### `codex remote-control`
+
+Ensure the app-server daemon is running with remote-control support enabled.
+Managed remote-control clients and SSH remote workflows use this command; it's
+not a replacement for `codex app-server --listen` when you are building a local
+protocol client.
+
+### `codex app`
+
+Launch Codex Desktop from the terminal on macOS or Windows. On macOS, Codex can open a specific workspace path; on Windows, Codex prints the path to open.
+
+<ConfigTable client:load options={appOptions} />
+
+`codex app` opens an installed Codex Desktop app, or starts the installer when
+the app is missing. On macOS, Codex opens the provided workspace path; on
+Windows, it prints the path to open after installation.
+
+### `codex debug app-server send-message-v2`
+
+Send one message through app-server's V2 thread/turn flow using the built-in app-server test client.
+
+<ConfigTable client:load options={debugAppServerSendMessageV2Options} />
+
+This debug flow initializes with `experimentalApi: true`, starts a thread, sends a turn, and streams server notifications. Use it to reproduce and inspect app-server protocol behavior locally.
+
+### `codex debug models`
+
+Print the raw model catalog Codex sees as JSON.
+
+<ConfigTable client:load options={debugModelsOptions} />
+
+Use `--bundled` when you want to inspect only the catalog bundled with the current binary, without refreshing from the remote models endpoint.
+
+### `codex apply`
+
+Apply the most recent diff from a Codex cloud task to your local repository. You must authenticate and have access to the task.
+
+<ConfigTable client:load options={applyOptions} />
+
+Codex prints the patched files and exits non-zero if `git apply` fails (for example, due to conflicts).
+
+### `codex archive` and `codex unarchive`
+
+Archive or restore a saved interactive session by session ID or session name.
+Use these commands when you want to clean up the session picker without deleting
+the transcript. Session IDs take precedence over session names.
+
+```bash
+codex archive <SESSION>
+codex unarchive <SESSION>
+```
+
+<ConfigTable client:load options={archiveOptions} />
+
+### `codex delete`
+
+Permanently delete a saved interactive session by session ID or session name.
+Use this only when you want to remove the transcript instead of hiding it from
+active session lists.
+
+```bash
+codex delete <SESSION>
+codex delete <SESSION_UUID> --force
+```
+
+<ConfigTable client:load options={deleteOptions} />
+
+Use `--force` only with a session UUID. Named sessions still require
+confirmation so Codex doesn't delete a repeated or ambiguous name without a prompt.
+
+### `codex cloud`
+
+Interact with Codex cloud tasks from the terminal. The default command opens an interactive picker; `codex cloud exec` submits a task directly, and `codex cloud list` returns recent tasks for scripting or quick inspection.
+
+<ConfigTable client:load options={cloudExecOptions} />
+
+Authentication follows the same credentials as the main CLI. Codex exits non-zero if the task submission fails.
+
+#### `codex cloud list`
+
+List recent cloud tasks with optional filtering and pagination.
+
+<ConfigTable client:load options={cloudListOptions} />
+
+Plain-text output prints a task URL followed by status details. Use `--json` for automation. The JSON payload contains a `tasks` array plus an optional `cursor` value. Each task includes `id`, `url`, `title`, `status`, `updated_at`, `environment_id`, `environment_label`, `summary`, `is_review`, and `attempt_total`.
+
+### `codex completion`
+
+Generate shell completion scripts and redirect the output to the appropriate location, for example `codex completion zsh > "${fpath[1]}/_codex"`.
+
+<ConfigTable client:load options={completionOptions} />
+
+### `codex doctor`
+
+Generate a local diagnostic report before filing a support issue or
+while investigating a broken Codex installation. The report checks installation,
+configuration, authentication, runtime, Git, terminal, app-server, and thread
+inventory health.
+
+<ConfigTable client:load options={doctorOptions} />
+
+### `codex features`
+
+Manage feature flags stored in `$CODEX_HOME/config.toml`. The `enable` and
+`disable` commands persist changes so they apply to future sessions. The
+`features` subcommand doesn't accept `--profile`.
+
+<ConfigTable client:load options={featuresOptions} />
+
+### `codex exec`
+
+Use `codex exec` (or the short form `codex e`) for scripted or CI-style runs that should finish without human interaction.
+
+<ConfigTable client:load options={execOptions} />
+
+Codex writes formatted output by default. Add `--json` to receive newline-delimited JSON events (one per state change). The optional `resume` subcommand lets you continue non-interactive tasks. Use `--last` to pick the most recent session from the current working directory, or add `--all` to search across all sessions:
+
+<ConfigTable client:load options={execResumeOptions} />
+
+### `codex execpolicy`
+
+Check `execpolicy` rule files before you save them. `codex execpolicy check` accepts one or more `--rules` flags (for example, files under `~/.codex/rules`) and emits JSON showing the strictest decision and any matching rules. Add `--pretty` to format the output. The `execpolicy` command is currently in preview.
+
+<ConfigTable client:load options={execpolicyOptions} />
+
+### `codex login`
+
+Authenticate the CLI with a ChatGPT account, API key, or access token. With no flags, Codex opens a browser for the ChatGPT OAuth flow.
+
+<ConfigTable client:load options={loginOptions} />
+
+`codex login status` exits with `0` when credentials are present, which is helpful in automation scripts.
+
+### `codex logout`
+
+Remove saved credentials for both API key and ChatGPT authentication. This command has no flags.
+
+### `codex mcp`
+
+Manage Model Context Protocol server entries stored in `~/.codex/config.toml`.
+
+<ConfigTable client:load options={mcpCommands} />
+
+The `add` subcommand supports both stdio and streamable HTTP transports:
+
+<ConfigTable client:load options={mcpAddOptions} />
+
+OAuth actions (`login`, `logout`) only work with streamable HTTP servers (and only when the server supports OAuth).
+
+### `codex plugin`
+
+Install, list, and remove plugins from configured marketplaces.
+
+<ConfigTable client:load options={pluginCommands} />
+
+`codex plugin add --json` prints `pluginId`, `name`, `marketplaceName`,
+`version`, `installedPath`, and `authPolicy`. `codex plugin list --json` prints
+`installed` and `available` arrays. Entries include `pluginId`, `name`,
+`marketplaceName`, `version`, `installed`, `enabled`, `source`, `installPolicy`,
+`authPolicy`, and, when available, `marketplaceSource` with the configured
+marketplace source type and value. `codex plugin remove --json` prints
+`pluginId`, `name`, and `marketplaceName`.
+
+### `codex plugin marketplace`
+
+Manage plugin marketplace sources that Codex can browse and install from.
+
+<ConfigTable client:load options={marketplaceCommands} />
+
+`codex plugin marketplace add` accepts GitHub shorthand such as `owner/repo` or
+`owner/repo@ref`, HTTP or HTTPS Git URLs, SSH Git URLs, and local marketplace
+root directories. Use `--ref` to pin a Git ref, and repeat `--sparse PATH` to
+use a sparse checkout for Git-backed marketplace repositories.
+
+`codex plugin marketplace list` prints in-scope marketplace names and roots,
+including implicitly discovered default marketplaces and configured marketplace
+snapshots.
+
+Add `--json` to marketplace add, list, upgrade, or remove commands for
+automation-friendly output. Marketplace add JSON includes `marketplaceName`,
+`installedRoot`, and `alreadyAdded`; list JSON includes a `marketplaces` array
+with `name`, `root`, and optional `marketplaceSource`; upgrade JSON includes
+`selectedMarketplaces`, `upgradedRoots`, and `errors`; remove JSON includes
+`marketplaceName` and `installedRoot`.
+
+### `codex mcp-server`
+
+Run Codex as an MCP server over stdio so that other tools can connect. This command inherits global configuration overrides and exits when the downstream client closes the connection.
+
+### `codex resume`
+
+Continue an interactive session by ID or resume the most recent conversation. `codex resume` scopes `--last` to the current working directory unless you pass `--all`. It accepts the same global flags as `codex`, including model and sandbox overrides.
+
+<ConfigTable client:load options={resumeOptions} />
+
+### `codex fork`
+
+Fork a previous interactive session into a new thread. By default, `codex fork` opens the session picker; add `--last` to fork your most recent session instead.
+
+<ConfigTable client:load options={forkOptions} />
+
+### `codex sandbox`
+
+Use the sandbox helper to run a command under the same policies Codex uses internally.
+
+#### macOS seatbelt
+
+<ConfigTable client:load options={sandboxMacOptions} />
+
+#### Linux Landlock
+
+<ConfigTable client:load options={sandboxLinuxOptions} />
+
+#### Windows
+
+<ConfigTable client:load options={sandboxWindowsOptions} />
+
+### `codex update`
+
+Check for and apply a Codex CLI update when the installed release supports self-update. Debug builds print a message telling you to install a release build instead.
+
+## Flag combinations and safety tips
+
+- Use `--sandbox workspace-write` for unattended local work that can stay inside the workspace, and avoid `--dangerously-bypass-approvals-and-sandbox` unless you are inside a dedicated sandbox VM.
+- When you need to grant Codex write access to more directories, prefer `--add-dir` rather than forcing `--sandbox danger-full-access`.
+- Pair `--json` with `--output-last-message` in CI to capture machine-readable progress and a final natural-language summary.
+
+## Related resources
+
+- [Codex CLI overview](https://developers.openai.com/codex/cli): installation, upgrades, and quick tips.
+- [Config basics](https://developers.openai.com/codex/config-basic): persist defaults like the model and provider.
+- [Advanced Config](https://developers.openai.com/codex/config-advanced): profiles, providers, sandbox tuning, and integrations.
+- [AGENTS.md](https://developers.openai.com/codex/guides/agents-md): conceptual overview of Codex agent capabilities and best practices.

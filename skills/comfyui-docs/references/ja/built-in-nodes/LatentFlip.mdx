@@ -1,0 +1,25 @@
+---
+title: "LatentFlip - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the LatentFlip node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下は、提供された英語ドキュメントを日本語に翻訳したものです。
+
+---
+
+LatentFlipノードは、潜在表現を垂直または水平に反転させることで操作するように設計されています。この操作により、潜在空間の変換が可能になり、データ内の新しいバリエーションや視点を明らかにすることができます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 |
+| --- | --- | --- |
+| `samples` | `samples`パラメータは、反転される潜在表現を表します。反転操作は、`反転方法`パラメータに応じて、これらの表現を垂直または水平に変更し、潜在空間内のデータを変換します。 | `LATENT` |
+| `反転方法` | `反転方法`パラメータは、潜在サンプルが反転される軸を指定します。`'x-axis: vertically'`（垂直）または`'y-axis: horizontally'`（水平）のいずれかを指定でき、反転の方向、ひいては潜在表現に適用される変換の性質を決定します。 | COMBO[STRING] |
+
+## 出力
+
+| パラメータ | 説明 | データ型 |
+| --- | --- | --- |
+| `latent` | 出力は、入力された潜在表現を指定された方法に従って反転した修正バージョンです。この変換により、潜在空間内に新しいバリエーションが導入される可能性があります。 | `LATENT` |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LatentFlip/ja.md)

@@ -1,0 +1,25 @@
+---
+title: Policies
+description: Review Cloudflare policies covering content security, video delivery, licensing, and compliance programs.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Policies
+
+* [ Cloudflare Cookies ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)
+* [ Compliance documentation ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/)
+* [ Content Security Policies (CSPs) ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/)
+* [ Delivering Videos with Cloudflare ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/)
+* [ Licenses ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)
+* [ Project Cybersafe Schools ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/#page","headline":"Policies · Cloudflare Fundamentals docs","description":"Review Cloudflare policies covering content security, video delivery, licensing, and compliance programs.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/policies-compliances/","name":"Policies"}}]}
+```

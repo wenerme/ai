@@ -1,0 +1,32 @@
+---
+title: "KSamplerAdvanced - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the KSamplerAdvanced node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The KSamplerAdvanced node is designed to enhance the sampling process by providing advanced configurations and techniques. It aims to offer more sophisticated options for generating samples from a model, improving upon the basic KSampler functionalities.
+
+## Inputs
+
+| Parameter | Description | Data Type |
+| --- | --- | --- |
+| `model` | Specifies the model from which samples are to be generated, playing a crucial role in the sampling process. | MODEL |
+| `add_noise` | Determines whether noise should be added to the sampling process, affecting the diversity and quality of the generated samples. | COMBO[STRING] |
+| `noise_seed` | Sets the seed for noise generation, ensuring reproducibility in the sampling process. | INT |
+| `steps` | Defines the number of steps to be taken in the sampling process, impacting the detail and quality of the output. | INT |
+| `cfg` | Controls the conditioning factor, influencing the direction and space of the sampling process. | FLOAT |
+| `sampler_name` | Selects the specific sampler to be used, allowing for customization of the sampling technique. | COMBO[STRING] |
+| `scheduler` | Chooses the scheduler for controlling the sampling process, affecting the progression and quality of samples. | COMBO[STRING] |
+| `positive` | Specifies the positive conditioning to guide the sampling towards desired attributes. | CONDITIONING |
+| `negative` | Specifies the negative conditioning to steer the sampling away from certain attributes. | CONDITIONING |
+| `latent_image` | Provides the initial latent image to be used in the sampling process, serving as a starting point. | LATENT |
+| `start_at_step` | Determines the starting step of the sampling process, allowing for control over the sampling progression. | INT |
+| `end_at_step` | Sets the ending step of the sampling process, defining the scope of the sampling. | INT |
+| `return_with_leftover_noise` | Indicates whether to return the sample with leftover noise, affecting the final output's appearance. | COMBO[STRING] |
+
+## Outputs
+
+| Parameter | Description | Data Type |
+| --- | --- | --- |
+| `latent` | The output represents the latent image generated from the model, reflecting the applied configurations and techniques. | LATENT |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KSamplerAdvanced/en.md)

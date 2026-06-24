@@ -1,0 +1,102 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# PostHog
+
+[PostHog](https://posthog.com) is an open-source product analytics platform that helps you understand user behavior. With PostHog's LLM analytics, you can track and analyze your AI application usage.
+
+## Step 1: Get your PostHog project API key
+
+In PostHog, navigate to your project settings:
+
+1. Log in to your PostHog account
+2. Go to **Project Settings**
+3. Copy your Project API Key (starts with `phc_...`)
+
+## Step 2: Enable Broadcast in OpenRouter
+
+Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
+
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+
+## Step 3: Configure PostHog
+
+Click the edit icon next to **PostHog** and enter:
+
+* **Api Key**: Your PostHog project API key (starts with `phc_...`)
+* **Endpoint** (optional): Default is `https://us.i.posthog.com`. For EU region, use `https://eu.i.posthog.com`
+
+## Step 4: Test and save
+
+Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
+
+## Step 5: Send a test trace
+
+Make an API request through OpenRouter and view the LLM analytics in your
+PostHog dashboard.
+
+![PostHog LLM Analytics](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c4b6f05846279a1425ed82450ff599981a7770f8ef5a80c560cc91d56e5e1b39/content/pages/features/broadcast/broadcast-posthog-analytics.png)
+
+## Custom Metadata
+
+PostHog receives LLM analytics events with custom metadata included as event properties. Use the `trace` field to attach additional context to your analytics data.
+
+### Supported Metadata Keys
+
+OpenRouter maps the reserved `trace` fields below to PostHog's native `$ai_*` properties,
+which power PostHog's built-in LLM analytics dashboards.
+
+| Key               | PostHog Property | Description                                         |
+| ----------------- | ---------------- | --------------------------------------------------- |
+| `trace_id`        | `$ai_trace_id`   | Custom trace identifier for grouping related events |
+| `generation_name` | `$ai_span_name`  | Name for the LLM generation event                   |
+
+### Custom property pass-through
+
+`trace_name` is forwarded as a plain custom property `trace_name` (not as `$ai_trace_name`),
+so you can filter events by trace name in PostHog without knowing PostHog's `$ai_*` naming
+convention.
+
+Every other key inside `trace` that is not in the table above is forwarded as
+`metadata_<key>` (e.g. `feature` → `metadata_feature`).
+
+> **Depth cap:** Custom property values are limited to 3 levels of nesting. Values nested
+> deeper than 3 levels are replaced with `'[truncated]'`. This keeps event payloads compact
+> and PostHog parse latency low.
+
+### Example
+
+```json
+{
+  "model": "openai/gpt-4o",
+  "messages": [{ "role": "user", "content": "Recommend a product..." }],
+  "user": "user_12345",
+  "session_id": "session_abc",
+  "trace": {
+    "trace_name": "Product Recommendations",
+    "generation_name": "Generate Recommendation",
+    "feature": "shopping-assistant",
+    "ab_test_group": "variant_b"
+  }
+}
+```
+
+The above request produces a `$ai_generation` event with these properties (among others):
+
+| PostHog property         | Value                       |
+| ------------------------ | --------------------------- |
+| `trace_name`             | `"Product Recommendations"` |
+| `$ai_span_name`          | `"Generate Recommendation"` |
+| `metadata_feature`       | `"shopping-assistant"`      |
+| `metadata_ab_test_group` | `"variant_b"`               |
+
+### Additional Context
+
+* The `user` field maps to PostHog's `distinct_id` for user-level LLM analytics
+* The `session_id` field maps to `$ai_session_id` for session grouping
+* PostHog's LLM analytics dashboard automatically tracks token usage, costs, and model performance
+
+## Privacy Mode
+
+When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, the `$ai_input` and `$ai_output_choices` properties are excluded from events. All other analytics data — token usage, costs, model information, and custom metadata — is still sent normally.

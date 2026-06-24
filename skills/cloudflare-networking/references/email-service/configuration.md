@@ -1,0 +1,26 @@
+---
+title: Configuration
+description: Configure domains, routing rules, and MTA-STS for Cloudflare Email Service.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Configuration
+
+Configure domains, routing rules, subdomains, and MTA-STS for Cloudflare Email Service.
+
+* [ Domain configuration ](https://developers.cloudflare.com/email-service/configuration/domains/)
+* [ Email routing rules and addresses ](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/)
+* [ Subdomains ](https://developers.cloudflare.com/email-service/configuration/subdomains/)
+* [ Configure MTA-STS ](https://developers.cloudflare.com/email-service/configuration/mta-sts/)
+* [ Configure send bindings ](https://developers.cloudflare.com/email-service/configuration/send-bindings/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/configuration/#page","headline":"Configuration · Cloudflare Email Service docs","description":"Configure domains, routing rules, and MTA-STS for Cloudflare Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}}]}
+```

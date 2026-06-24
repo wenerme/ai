@@ -1,0 +1,67 @@
+---
+title: "PixelDiT ComfyUI ワークフロー例"
+description: "PixelDiT は NVIDIA のピクセル空間拡散トランスフォーマーで、1024px のテキストから画像への生成を行います。VAE エンコード/デコードを必要とせず、ピクセル空間で直接生成します。"
+translationSourceHash: adbdf347
+translationFrom: tutorials/image/pixeldit/pixeldit.mdx
+---
+
+**PixelDiT** は NVIDIA が開発したピクセル空間拡散トランスフォーマーで、**1024px** のテキストから画像への生成を行います。従来の潜在空間で動作する拡散モデルとは異なり、PixelDiT はデュアルレベル DiT アーキテクチャを使用してピクセル空間で直接画像を生成します——パッチレベル DiT とピクセルレベル DiT を組み合わせ、MM-DiT フュージョンによるテキストと画像トークン間の joint attention を実現します。
+
+**モデルのハイライト**：
+- **VAE不要** — ピクセル空間で直接生成、従来の VAE エンコード/デコードは不要
+- **デュアルレベル DiT** — パッチレベル DiT + ピクセルレベル DiT による高品質生成
+- **マルチアスペクト比** — 1024px ベース解像度、複数のアスペクト比に対応
+- **約 1.3B パラメータ** — コンシューマー GPU でも実行可能
+- **ライセンス**: NSCLv1（非商用研究/評価のみ）
+
+**関連リンク**：
+- [Hugging Face 公式モデル](https://huggingface.co/nvidia/PixelDiT-1300M-1024px)
+- [Comfy-Org/PixelDiT](https://huggingface.co/Comfy-Org/PixelDiT)
+
+## PixelDiT テキストから画像へのワークフロー
+
+[PixelDiT テキストから画像へのワークフロー]
+
+    JSON をダウンロード、またはテンプレートライブラリで "PixelDiT" を検索
+  
+
+ワークフローは 3 つの主要ノードで構成されています：
+
+1. **ResolutionSelector** — 出力解像度を選択
+2. **Text to Image (PixelDiT) サブグラフ** — プロンプト、シード、モデル選択、解像度などの制御パラメータを外部公開したコア生成ノード
+3. **SaveImage** — 生成された画像を保存
+
+  このワークフローはサブグラフノードを使用してモジュール化された処理を行います。サブグラフのドキュメントを参照して、ワークフローをカスタマイズおよび拡張する方法を学んでください。
+
+### ワークフローコントロール
+
+**Text to Image (PixelDiT)** サブグラフノードで外部公開されているコントロール：
+
+| コントロール | 説明 |
+|-------------|------|
+| **Positive Prompt** | 生成したい画像を説明するテキストプロンプト |
+| **Negative Prompt** | 生成画像で避けたい内容を説明するテキスト |
+| **Seed** | 再現性のためのランダムシード |
+| **UNet Model** | PixelDiT モデルチェックポイントの選択 |
+| **CLIP Model** | テキストエンコーダーモデルの選択 |
+
+## モデルダウンロード
+
+PixelDiT はテキストエンコーダーと拡散モデルの 2 つのモデルファイルを使用します。
+
+    gemma_2_2b_it_elm_bf16.safetensors — Gemma-2-2B-IT テキストエンコーダー
+  
+
+    pixeldit_1300m_1024px_bf16.safetensors — PixelDiT 1300M 1024px 拡散モデル
+  
+
+### モデル保存場所
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── gemma_2_2b_it_elm_bf16.safetensors
+│   └── 📂 diffusion_models/
+│          └── pixeldit_1300m_1024px_bf16.safetensors
+```

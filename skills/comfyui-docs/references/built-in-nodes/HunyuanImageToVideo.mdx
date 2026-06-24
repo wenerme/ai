@@ -1,0 +1,37 @@
+---
+title: "HunyuanImageToVideo - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the HunyuanImageToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The HunyuanImageToVideo node converts images into video latent representations using the Hunyuan video model. It takes conditioning inputs and optional starting images to generate video latents that can be further processed by video generation models. The node supports different guidance types for controlling how the starting image influences the video generation process.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `positive` | Positive conditioning input for guiding the video generation | CONDITIONING | Yes | - |
+| `vae` | VAE model used for encoding images into latent space | VAE | Yes | - |
+| `width` | Width of the output video in pixels (default: 848, step: 16) | INT | Yes | 16 to MAX_RESOLUTION |
+| `height` | Height of the output video in pixels (default: 480, step: 16) | INT | Yes | 16 to MAX_RESOLUTION |
+| `length` | Number of frames in the output video (default: 53, step: 4) | INT | Yes | 1 to MAX_RESOLUTION |
+| `batch_size` | Number of videos to generate simultaneously (default: 1) | INT | Yes | 1 to 4096 |
+| `guidance_type` | Method for incorporating the starting image into video generation (default: "v1 (concat)") | COMBO | Yes | "v1 (concat)""v2 (replace)""custom" |
+| `start_image` | Optional starting image to initialize the video generation | IMAGE | No | - |
+
+**Note:** When `start_image` is provided, the node uses different guidance methods based on the selected `guidance_type`:
+
+- "v1 (concat)": Concatenates the image latent with the video latent and applies a mask to blend the image into the video
+- "v2 (replace)": Replaces initial video frames with the image latent and applies a noise mask
+- "custom": Uses the image as a reference latent for guidance
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `positive` | Modified positive conditioning with image guidance applied when start_image is provided | CONDITIONING |
+| `latent` | Video latent representation ready for further processing by video generation models | LATENT |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HunyuanImageToVideo/en.md)
+
+---
+**Source fingerprint (SHA-256):** `171e60e0ff5bbe2715b83693212e91dd9a3e2236e7b4437c7e33929d6143ae4f`

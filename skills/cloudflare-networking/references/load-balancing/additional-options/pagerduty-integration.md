@@ -1,0 +1,24 @@
+---
+title: Integrate with PagerDuty
+description: Send load balancing alerts to PagerDuty.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Integrate with PagerDuty
+
+To integrate Cloudflare health monitor notifications with PagerDuty, follow the steps outlined in PagerDuty’s [Email Integration Guide ↗](https://www.pagerduty.com/docs/guides/email-integration-guide/). If you do not have a PagerDuty account, you will first need to set that up.
+
+PagerDuty will generate an email address that will create incidents based on emails sent to that address. For help locating that email address, refer to the [PagerDuty documentation ↗](https://www.pagerduty.com/docs/guides/email-integration-guide/).
+
+When creating the Notifier object, configure the email to go to the PagerDuty integration email. Consequently, whenever a pool or endpoint goes down, an Incident will be created to capture it.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/#page","headline":"Integrate with PagerDuty · Cloudflare Load Balancing docs","description":"Send load balancing alerts to PagerDuty.","url":"https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/pagerduty-integration/","name":"Integrate with PagerDuty"}}]}
+```

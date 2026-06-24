@@ -1,0 +1,42 @@
+---
+title: "HappyHorseVideoEditApi - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the HappyHorseVideoEditApi node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下は、指定された英語ドキュメントを日本語に翻訳したものです。
+
+## 概要
+
+HappyHorseモデルを使用して、テキスト指示または参照画像を用いて動画を編集します。出力の長さは3～15秒で、入力動画に合わせられます。15秒を超える入力は切り捨てられます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル` | モデルの選択、プロンプト、解像度、アスペクト比、およびオプションの参照画像を含むモデル設定。 | DICT | はい | 下記参照 |
+| `動画` | 編集する動画。 | VIDEO | はい | - |
+| `シード` | 生成に使用するシード値（デフォルト：0）。 | INT | はい | 0 ～ 2147483647 |
+| `ウォーターマーク` | 結果にAI生成の透かしを追加するかどうか（デフォルト：False）。 | BOOLEAN | いいえ | True / False |
+
+### `model` パラメータの詳細
+
+`model` パラメータは、以下のフィールドを持つ辞書です。
+
+| フィールド | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル` | 使用するHappyHorse動画編集モデル。 | STRING | はい | `"happyhorse-1.0-video-edit"` |
+| `prompt` | 編集指示またはスタイル変換の要件。1文字以上である必要があります。 | STRING | はい | - |
+| `resolution` | 出力解像度。 | STRING | はい | `"720P"``"1080P"` |
+| `ratio` | アスペクト比。変更しない場合は、入力動画の比率に近似します。 | STRING | はい | `"16:9"``"9:16"``"1:1"``"4:3"``"3:4"` |
+| `reference_images` | 編集をガイドするためのオプションの参照画像（image1、image2、image3、image4、image5）。 | DICT | いいえ | 0 ～ 5枚の画像 |
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `動画` | 編集された動画出力。 | VIDEO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HappyHorseVideoEditApi/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `af6747efbea1c65e4909d35dad009cbc2ffaad787d0f2031581c227deb9bf53c`

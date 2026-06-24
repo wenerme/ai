@@ -1,0 +1,43 @@
+---
+title: '`glab mr revoke`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Revoke approval on a merge request.
+
+## Synopsis
+
+Defaults to the currently checked-out branch.
+
+```plaintext
+glab mr revoke [<id> | <branch>] [flags]
+```
+
+## Aliases
+
+```plaintext
+unapprove
+```
+
+## Examples
+
+```console
+# Revoke approval on a merge request
+glab mr revoke 123
+glab mr unapprove 123
+glab mr revoke branch
+
+# Revoke approval on the currently checked out branch
+glab mr revoke
+# Revoke approval on merge request 123 on branch 456
+glab mr revoke 123 branch 456
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

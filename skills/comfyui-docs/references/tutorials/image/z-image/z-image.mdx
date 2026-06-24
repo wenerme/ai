@@ -1,0 +1,51 @@
+---
+title: "Z-Image ComfyUI Workflow Example"
+description: "Z-Image is a 6B parameter efficient image generation foundation model with single-stream diffusion transformer for community-driven fine-tuning and custom development."
+---
+
+**Z-Image (造相)** is a powerful and highly efficient image generation model with **6B** parameters, developed by Alibaba's Tongyi Lab. It uses a **Scalable Single-Stream DiT** (S3-DiT) architecture where text, visual semantic tokens, and image VAE tokens are concatenated at the sequence level to serve as a unified input stream, maximizing parameter efficiency.
+
+Z-Image (Base) is the non-distilled foundation model designed for community-driven fine-tuning and custom development.
+
+**Model Highlights**:
+- **Photorealistic Quality**: Delivers strong photorealistic image generation while maintaining excellent aesthetic quality
+- **Accurate Bilingual Text Rendering**: Excels at accurately rendering complex Chinese and English text
+- **Prompt Enhancing & Reasoning**: Prompt Enhancer empowers the model with reasoning capabilities
+- **Fine-tuning Ready**: Ideal base model for custom training and adaptation
+
+**Related Links**:
+- [GitHub](https://github.com/Tongyi-MAI/Z-Image)
+- [Hugging Face](https://huggingface.co/Tongyi-MAI/Z-Image)
+- [ModelScope](https://modelscope.cn/models/Tongyi-MAI/Z-Image)
+
+## Z-Image text-to-image workflow
+
+    Download the Z-Image text-to-image workflow JSON file.
+  
+
+    Run this workflow directly on ComfyUI Cloud.
+  
+
+## Z-Image model downloads
+
+    Text encoder for Z-Image.
+  
+
+    Diffusion model for Z-Image.
+  
+
+    VAE for Z-Image.
+  
+
+**Model Storage Location**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_bf16.safetensors
+│   └── 📂 vae/
+│          └── ae.safetensors
+```

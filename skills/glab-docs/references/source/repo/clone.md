@@ -1,0 +1,87 @@
+---
+title: '`glab repo clone`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Clone a GitLab repository or project.
+
+## Synopsis
+
+Clone a GitLab repository to your local machine. Specify the
+repository by name, namespace/repo path, full URL, or project ID.
+
+The command uses your configured protocol (SSH or HTTPS).
+
+To pass Git clone flags, add them after `--`. For example:
+`glab repo clone <repo> -- --branch <branch-name>`
+
+When you clone a fork you own, the command adds an `upstream`
+remote that points to the parent project.
+
+```plaintext
+glab repo clone [<repo> | -g <group>] [<dir>] [flags] [-- <gitflags>...]
+```
+
+## Examples
+
+```console
+# Clones repository into current directory
+glab repo clone gitlab-org/cli
+glab repo clone https://gitlab.com/gitlab-org/cli
+
+# Clones repository into 'mydirectory'
+glab repo clone gitlab-org/cli mydirectory
+
+# Clones repository 'glab' for current user
+glab repo clone glab
+
+# Finds the project by the ID provided and clones it
+glab repo clone 4356677
+
+# Clones a specific branch
+glab repo clone gitlab-org/cli -- --branch development
+
+# Clones with a shallow clone (depth 1)
+glab repo clone gitlab-org/cli -- --depth 1
+
+# Clones with multiple Git flags
+glab repo clone gitlab-org/cli -- --branch main --single-branch --depth 1
+
+# Clones all repos in a group
+glab repo clone -g everyonecancontribute --paginate
+
+# Clones all non-archived repos in a group
+glab repo clone -g everyonecancontribute --archived=false --paginate
+
+# Clones only active projects in a group
+glab repo clone -g everyonecancontribute --active=true --paginate
+
+# Clones from a GitLab Self-Managed or GitLab Dedicated instance
+GITLAB_HOST=salsa.debian.org glab repo clone myrepo
+```
+
+## Options
+
+```plaintext
+  -g, --group string          Specify the group to clone repositories from.
+  -p, --preserve-namespace    Clone the repository in a subdirectory based on namespace.
+      --active                Limit by project status. When true, returns active projects. When false, returns projects that are archived or marked for deletion. Used with the --group flag.
+  -a, --archived              Limit by archived status. Use with '-a=false' to exclude archived repositories. Used with the --group flag.
+  -G, --include-subgroups     Include projects in subgroups of this group. Default is true. Used with the --group flag. (default true)
+  -m, --mine                  Limit by projects in the group owned by the current authenticated user. Used with the --group flag.
+  -v, --visibility string     Limit by visibility: public, internal, private. Used with the --group flag.
+  -I, --with-issues-enabled   Limit by projects with the issues feature enabled. Default is false. Used with the --group flag.
+  -M, --with-mr-enabled       Limit by projects with the merge request feature enabled. Default is false. Used with the --group flag.
+  -S, --with-shared           Include projects shared to this group. Default is true. Used with the --group flag. (default true)
+      --paginate              Make additional HTTP requests to fetch all pages of projects before cloning. Respects --per-page.
+      --page int              Page number. (default 1)
+      --per-page int          Number of items to list per page. (default 30)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

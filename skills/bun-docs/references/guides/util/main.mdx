@@ -1,0 +1,38 @@
+---
+title: Get the absolute path to the current entrypoint
+mode: center
+---
+
+The `Bun.main` property contains the absolute path to the current entrypoint.
+
+```ts foo.ts icon="/icons/typescript.svg"
+console.log(Bun.main);
+```
+
+```ts index.ts icon="/icons/typescript.svg"
+import "./foo.ts";
+```
+
+---
+
+The printed path corresponds to the file that is executed with `bun run`.
+
+```sh terminal icon="terminal"
+bun run index.ts
+```
+
+```txt
+/path/to/index.ts
+```
+
+```sh terminal icon="terminal"
+bun run foo.ts
+```
+
+```txt
+/path/to/foo.ts
+```
+
+---
+
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

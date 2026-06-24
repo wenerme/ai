@@ -1,0 +1,78 @@
+---
+title: Example SQL queries
+description: SQL queries for traffic, security, and performance analysis.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Example SQL queries
+
+The following examples show practical SQL queries you can use with the `http_requests` dataset in Log Explorer. For the full list of supported SQL syntax, refer to [SQL queries supported](https://developers.cloudflare.com/log-explorer/sql-queries/).
+
+Adjust the date ranges in each example to match the time period you want to query.
+
+## Summarize CDN usage
+
+Get a high-level summary of total requests and data transfer for a specific time period. Results include total bytes transferred and conversions to megabytes and gigabytes.
+
+```
+SELECT  COUNT(*) AS total_requests,  SUM(EdgeResponseBytes) AS total_data_transfer,  SUM(EdgeResponseBytes) / (1024.0 * 1024.0 * 1024.0) AS total_data_transfer_gb,  SUM(EdgeResponseBytes) / (1024.0 * 1024.0) AS total_data_transfer_mbFROM  http_requestsWHERE {{ timeFilter }}
+```
+
+## Review distribution of security actions
+
+Understand how security actions, such as blocks and challenges, are distributed across your traffic and identify the most common security responses applied to requests.
+
+```
+SELECT  SecurityAction,  COUNT(*) AS ActionCountFROM http_requestsWHERE SecurityAction != 'unknown'  AND SecurityAction IS NOT NULLGROUP BY SecurityActionORDER BY ActionCount DESC
+```
+
+## Find IPs that triggered challenges
+
+Identify the top client IP addresses and request URIs that triggered managed, JavaScript, or interactive challenges to investigate potential bot activity or targeted attacks.
+
+```
+SELECT  ClientIP,  ClientRequestURI,  SecurityActions,  COUNT(*) AS CountFROM http_requestsWHERE {{ timeFilter }}  AND (    ARRAY_CONTAINS(SecurityActions, 'challenge')    OR ARRAY_CONTAINS(SecurityActions, 'managedChallenge')    OR ARRAY_CONTAINS(SecurityActions, 'jsChallenge')    OR ARRAY_CONTAINS(SecurityActions, 'challengeSolved')  )GROUP BY  ClientIP,  ClientRequestURI,  SecurityActionsORDER BY Count DESCLIMIT 20
+```
+
+## Find highest bandwidth consumers by URI
+
+Identify which request URIs consume the most bandwidth to pinpoint large assets or endpoints that drive the most data transfer.
+
+```
+SELECT  ClientRequestURI,  SUM(EdgeResponseBytes) / (1024 * 1024) AS MegabytesTransferredFROM http_requestsWHERE  {{ timeFilter }}GROUP BY ClientRequestURIORDER BY MegabytesTransferred DESCLIMIT 10
+```
+
+## Analyze client round-trip time by country
+
+Analyze client TCP round-trip time (RTT) across different countries to identify regions with high latency that might benefit from additional optimization.
+
+```
+SELECT  ClientCountry,  COUNT(*) AS requests,  AVG(ClientTCPRttMs) AS avg_rtt,  MIN(ClientTCPRttMs) AS min_rtt,  MAX(ClientTCPRttMs) AS max_rttFROM http_requestsWHERE {{ timeFilter }}GROUP BY ClientCountryORDER BY avg_rtt DESCLIMIT 20
+```
+
+## Summarize CDN traffic by cache status
+
+Break down traffic by cache status and measure the average time to first byte (TTFB) for each status to evaluate cache effectiveness and identify opportunities to improve cache hit ratios.
+
+```
+SELECT  CacheCacheStatus,  COUNT(*) AS requests,  SUM(EdgeResponseBytes) AS total_bytes,  AVG(EdgeTimeToFirstByteMs) AS avg_ttfbFROM http_requestsWHERE {{ timeFilter }}GROUP BY CacheCacheStatusORDER BY requests DESC
+```
+
+## Find slowest paths by time to first byte
+
+Find request paths with the highest average time to first byte (TTFB), along with request counts and server error counts toidentify slow endpoints that may need optimization.
+
+```
+SELECT  ClientRequestPath,  AVG(EdgeTimeToFirstByteMs) AS avg_ttfb,  COUNT(*) AS requests,  SUM(CASE WHEN EdgeResponseStatus >= 500 THEN 1 ELSE 0 END) AS errorsFROM http_requestsWHERE {{ timeFilter }}GROUP BY ClientRequestPathORDER BY avg_ttfb DESCLIMIT 10
+```
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/example-queries/#page","headline":"Example SQL queries · Cloudflare Log Explorer docs","description":"SQL queries for traffic, security, and performance analysis.","url":"https://developers.cloudflare.com/log-explorer/example-queries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/example-queries/","name":"Example SQL queries"}}]}
+```

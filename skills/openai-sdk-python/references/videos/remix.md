@@ -1,0 +1,191 @@
+## Remix video
+
+`videos.remix(strvideo_id, VideoRemixParams**kwargs)  -> Video`
+
+**post** `/videos/{video_id}/remix`
+
+Create a remix of a completed video using a refreshed prompt.
+
+### Parameters
+
+- `video_id: str`
+
+- `prompt: str`
+
+  Updated text prompt that directs the remix generation.
+
+### Returns
+
+- `class Video: …`
+
+  Structured information describing a generated video job.
+
+  - `id: str`
+
+    Unique identifier for the video job.
+
+  - `completed_at: Optional[int]`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: int`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: Optional[VideoCreateError]`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: str`
+
+      A machine-readable error code that was returned.
+
+    - `message: str`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: Optional[int]`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `str`
+
+    - `Literal["sora-2", "sora-2-pro", "sora-2-2025-10-06", 2 more]`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: Literal["video"]`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: int`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: Optional[str]`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: Optional[str]`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: Union[str, VideoSeconds]`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `str`
+
+    - `Literal["4", "8", "12"]`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: Literal["queued", "in_progress", "completed", "failed"]`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+)
+video = client.videos.remix(
+    video_id="video_123",
+    prompt="x",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "sora-2",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "4",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+video = client.videos.remix(
+    video_id="video_123",
+    prompt="Extend the scene with the cat taking a bow to the cheering audience",
+)
+print(video.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
+```

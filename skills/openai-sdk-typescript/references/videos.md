@@ -1,0 +1,1651 @@
+# Videos
+
+## Create video
+
+`client.videos.create(VideoCreateParamsbody, RequestOptionsoptions?): Video`
+
+**post** `/videos`
+
+Create a new video generation job from a prompt and optional reference assets.
+
+### Parameters
+
+- `body: VideoCreateParams`
+
+  - `prompt: string`
+
+    Text prompt that describes the video to generate.
+
+  - `input_reference?: Uploadable | ImageInputReferenceParam`
+
+    Optional reference asset upload or reference object that guides generation.
+
+    - `Uploadable`
+
+    - `ImageInputReferenceParam`
+
+      - `file_id?: string`
+
+      - `image_url?: string`
+
+        A fully qualified URL or base64-encoded data URL.
+
+  - `model?: VideoModel`
+
+    The video generation model to use (allowed values: sora-2, sora-2-pro). Defaults to `sora-2`.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `seconds?: VideoSeconds`
+
+    Clip duration in seconds (allowed values: 4, 8, 12). Defaults to 4 seconds.
+
+    - `"4"`
+
+    - `"8"`
+
+    - `"12"`
+
+  - `size?: VideoSize`
+
+    Output resolution formatted as width x height (allowed values: 720x1280, 1280x720, 1024x1792, 1792x1024). Defaults to 720x1280.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+### Returns
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const video = await client.videos.create({ prompt: 'x' });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "sora-2",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "4",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+const video = await openai.videos.create({ prompt: 'A calico cat playing a piano on stage' });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "video_123",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712697600,
+  "size": "1024x1792",
+  "seconds": "8",
+  "quality": "standard"
+}
+```
+
+## Create a new video generation job by editing a source video or existing generated video.
+
+`client.videos.edit(VideoEditParamsbody, RequestOptionsoptions?): Video`
+
+**post** `/videos/edits`
+
+Create a new video generation job by editing a source video or existing generated video.
+
+### Parameters
+
+- `body: VideoEditParams`
+
+  - `prompt: string`
+
+    Text prompt that describes how to edit the source video.
+
+  - `video: Uploadable | VideoReferenceInputParam`
+
+    Reference to the completed video to edit.
+
+    - `Uploadable`
+
+    - `VideoReferenceInputParam`
+
+      Reference to the completed video to edit.
+
+      - `id: string`
+
+        The identifier of the completed video.
+
+### Returns
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const video = await client.videos.edit({ prompt: 'x', video: fs.createReadStream('path/to/file') });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "sora-2",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "4",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create an extension of a completed video.
+
+`client.videos.extend(VideoExtendParamsbody, RequestOptionsoptions?): Video`
+
+**post** `/videos/extensions`
+
+Create an extension of a completed video.
+
+### Parameters
+
+- `body: VideoExtendParams`
+
+  - `prompt: string`
+
+    Updated text prompt that directs the extension generation.
+
+  - `seconds: VideoSeconds`
+
+    Length of the newly generated extension segment in seconds (allowed values: 4, 8, 12, 16, 20).
+
+    - `"4"`
+
+    - `"8"`
+
+    - `"12"`
+
+  - `video: Uploadable | VideoReferenceInputParam`
+
+    Reference to the completed video to extend.
+
+    - `Uploadable`
+
+    - `VideoReferenceInputParam`
+
+      Reference to the completed video.
+
+      - `id: string`
+
+        The identifier of the completed video.
+
+### Returns
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const video = await client.videos.extend({
+  prompt: 'x',
+  seconds: '4',
+  video: fs.createReadStream('path/to/file'),
+});
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "sora-2",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "4",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+## Create a character from an uploaded video.
+
+`client.videos.createCharacter(VideoCreateCharacterParamsbody, RequestOptionsoptions?): VideoCreateCharacterResponse`
+
+**post** `/videos/characters`
+
+Create a character from an uploaded video.
+
+### Parameters
+
+- `body: VideoCreateCharacterParams`
+
+  - `name: string`
+
+    Display name for this API character.
+
+  - `video: Uploadable`
+
+    Video file used to create a character.
+
+### Returns
+
+- `VideoCreateCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Example
+
+```typescript
+import fs from 'fs';
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const response = await client.videos.createCharacter({
+  name: 'x',
+  video: fs.createReadStream('path/to/file'),
+});
+
+console.log(response.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## Fetch a character.
+
+`client.videos.getCharacter(stringcharacterID, RequestOptionsoptions?): VideoGetCharacterResponse`
+
+**get** `/videos/characters/{character_id}`
+
+Fetch a character.
+
+### Parameters
+
+- `characterID: string`
+
+### Returns
+
+- `VideoGetCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const response = await client.videos.getCharacter('char_123');
+
+console.log(response.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name"
+}
+```
+
+## List videos
+
+`client.videos.list(VideoListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Video>`
+
+**get** `/videos`
+
+List recently generated videos for the current project.
+
+### Parameters
+
+- `query: VideoListParams`
+
+  - `after?: string`
+
+    Identifier for the last item from the previous pagination request
+
+  - `limit?: number`
+
+    Number of items to retrieve
+
+  - `order?: "asc" | "desc"`
+
+    Sort order of results by timestamp. Use `asc` for ascending order or `desc` for descending order.
+
+    - `"asc"`
+
+    - `"desc"`
+
+### Returns
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+// Automatically fetches more pages as needed.
+for await (const video of client.videos.list()) {
+  console.log(video.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "completed_at": 0,
+      "created_at": 0,
+      "error": {
+        "code": "code",
+        "message": "message"
+      },
+      "expires_at": 0,
+      "model": "sora-2",
+      "object": "video",
+      "progress": 0,
+      "prompt": "prompt",
+      "remixed_from_video_id": "remixed_from_video_id",
+      "seconds": "4",
+      "size": "720x1280",
+      "status": "queued"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+// Automatically fetches more pages as needed.
+for await (const video of openai.videos.list()) {
+  console.log(video.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "video_123",
+      "object": "video",
+      "model": "sora-2",
+      "status": "completed"
+    }
+  ],
+  "object": "list"
+}
+```
+
+## Retrieve video
+
+`client.videos.retrieve(stringvideoID, RequestOptionsoptions?): Video`
+
+**get** `/videos/{video_id}`
+
+Fetch the latest metadata for a generated video.
+
+### Parameters
+
+- `videoID: string`
+
+### Returns
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const video = await client.videos.retrieve('video_123');
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "sora-2",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "4",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const video = await client.videos.retrieve('video_123');
+
+console.log(video.id);
+```
+
+## Delete video
+
+`client.videos.delete(stringvideoID, RequestOptionsoptions?): VideoDeleteResponse`
+
+**delete** `/videos/{video_id}`
+
+Permanently delete a completed or failed video and its stored assets.
+
+### Parameters
+
+- `videoID: string`
+
+### Returns
+
+- `VideoDeleteResponse`
+
+  Confirmation payload returned after deleting a video.
+
+  - `id: string`
+
+    Identifier of the deleted video.
+
+  - `deleted: boolean`
+
+    Indicates that the video resource was deleted.
+
+  - `object: "video.deleted"`
+
+    The object type that signals the deletion response.
+
+    - `"video.deleted"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const video = await client.videos.delete('video_123');
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "video.deleted"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const video = await client.videos.delete('video_123');
+
+console.log(video.id);
+```
+
+## Remix video
+
+`client.videos.remix(stringvideoID, VideoRemixParamsbody, RequestOptionsoptions?): Video`
+
+**post** `/videos/{video_id}/remix`
+
+Create a remix of a completed video using a refreshed prompt.
+
+### Parameters
+
+- `videoID: string`
+
+- `body: VideoRemixParams`
+
+  - `prompt: string`
+
+    Updated text prompt that directs the remix generation.
+
+### Returns
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const video = await client.videos.remix('video_123', { prompt: 'x' });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "completed_at": 0,
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message"
+  },
+  "expires_at": 0,
+  "model": "sora-2",
+  "object": "video",
+  "progress": 0,
+  "prompt": "prompt",
+  "remixed_from_video_id": "remixed_from_video_id",
+  "seconds": "4",
+  "size": "720x1280",
+  "status": "queued"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const video = await client.videos.remix('video_123', { prompt: 'Extend the scene with the cat taking a bow to the cheering audience' });
+
+console.log(video.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "video_456",
+  "object": "video",
+  "model": "sora-2",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1712698600,
+  "size": "720x1280",
+  "seconds": "8",
+  "remixed_from_video_id": "video_123"
+}
+```
+
+## Retrieve video content
+
+`client.videos.downloadContent(stringvideoID, VideoDownloadContentParamsquery?, RequestOptionsoptions?): Response`
+
+**get** `/videos/{video_id}/content`
+
+Download the generated video bytes or a derived preview asset.
+
+Streams the rendered video content for the specified video job.
+
+### Parameters
+
+- `videoID: string`
+
+- `query: VideoDownloadContentParams`
+
+  - `variant?: "video" | "thumbnail" | "spritesheet"`
+
+    Which downloadable asset to return. Defaults to the MP4 video.
+
+    - `"video"`
+
+    - `"thumbnail"`
+
+    - `"spritesheet"`
+
+### Returns
+
+- `unnamed_schema_12 = Response`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+const response = await client.videos.downloadContent('video_123');
+
+console.log(response);
+
+const content = await response.blob();
+console.log(content);
+```
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI();
+
+const response = await client.videos.downloadContent('video_123');
+
+console.log(response);
+
+const content = await response.blob();
+console.log(content);
+```
+
+## Domain Types
+
+### Image Input Reference Param
+
+- `ImageInputReferenceParam`
+
+  - `file_id?: string`
+
+  - `image_url?: string`
+
+    A fully qualified URL or base64-encoded data URL.
+
+### Video
+
+- `Video`
+
+  Structured information describing a generated video job.
+
+  - `id: string`
+
+    Unique identifier for the video job.
+
+  - `completed_at: number | null`
+
+    Unix timestamp (seconds) for when the job completed, if finished.
+
+  - `created_at: number`
+
+    Unix timestamp (seconds) for when the job was created.
+
+  - `error: VideoCreateError | null`
+
+    Error payload that explains why generation failed, if applicable.
+
+    - `code: string`
+
+      A machine-readable error code that was returned.
+
+    - `message: string`
+
+      A human-readable description of the error that was returned.
+
+  - `expires_at: number | null`
+
+    Unix timestamp (seconds) for when the downloadable assets expire, if set.
+
+  - `model: VideoModel`
+
+    The video generation model that produced the job.
+
+    - `(string & {})`
+
+    - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+      - `"sora-2"`
+
+      - `"sora-2-pro"`
+
+      - `"sora-2-2025-10-06"`
+
+      - `"sora-2-pro-2025-10-06"`
+
+      - `"sora-2-2025-12-08"`
+
+  - `object: "video"`
+
+    The object type, which is always `video`.
+
+    - `"video"`
+
+  - `progress: number`
+
+    Approximate completion percentage for the generation task.
+
+  - `prompt: string | null`
+
+    The prompt that was used to generate the video.
+
+  - `remixed_from_video_id: string | null`
+
+    Identifier of the source video if this video is a remix.
+
+  - `seconds: (string & {}) | VideoSeconds`
+
+    Duration of the generated clip in seconds. For extensions, this is the stitched total duration.
+
+    - `(string & {})`
+
+    - `VideoSeconds = "4" | "8" | "12"`
+
+      - `"4"`
+
+      - `"8"`
+
+      - `"12"`
+
+  - `size: VideoSize`
+
+    The resolution of the generated video.
+
+    - `"720x1280"`
+
+    - `"1280x720"`
+
+    - `"1024x1792"`
+
+    - `"1792x1024"`
+
+  - `status: "queued" | "in_progress" | "completed" | "failed"`
+
+    Current lifecycle status of the video job.
+
+    - `"queued"`
+
+    - `"in_progress"`
+
+    - `"completed"`
+
+    - `"failed"`
+
+### Video Create Error
+
+- `VideoCreateError`
+
+  An error that occurred while generating the response.
+
+  - `code: string`
+
+    A machine-readable error code that was returned.
+
+  - `message: string`
+
+    A human-readable description of the error that was returned.
+
+### Video Model
+
+- `VideoModel = (string & {}) | "sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+  - `(string & {})`
+
+  - `"sora-2" | "sora-2-pro" | "sora-2-2025-10-06" | 2 more`
+
+    - `"sora-2"`
+
+    - `"sora-2-pro"`
+
+    - `"sora-2-2025-10-06"`
+
+    - `"sora-2-pro-2025-10-06"`
+
+    - `"sora-2-2025-12-08"`
+
+### Video Seconds
+
+- `VideoSeconds = "4" | "8" | "12"`
+
+  - `"4"`
+
+  - `"8"`
+
+  - `"12"`
+
+### Video Size
+
+- `VideoSize = "720x1280" | "1280x720" | "1024x1792" | "1792x1024"`
+
+  - `"720x1280"`
+
+  - `"1280x720"`
+
+  - `"1024x1792"`
+
+  - `"1792x1024"`
+
+### Video Create Character Response
+
+- `VideoCreateCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Video Get Character Response
+
+- `VideoGetCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Video Delete Response
+
+- `VideoDeleteResponse`
+
+  Confirmation payload returned after deleting a video.
+
+  - `id: string`
+
+    Identifier of the deleted video.
+
+  - `deleted: boolean`
+
+    Indicates that the video resource was deleted.
+
+  - `object: "video.deleted"`
+
+    The object type that signals the deletion response.
+
+    - `"video.deleted"`

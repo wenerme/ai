@@ -1,0 +1,61 @@
+---
+title: '`glab securefile list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List secure files in a project.
+
+## Synopsis
+
+List the secure files configured for a project. Use `--page` and
+`--per-page` to paginate the result.
+
+By default, files are listed for the current project. Use `--repo`
+to target another project.
+
+```plaintext
+glab securefile list [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+# List all secure files in the current project
+glab securefile list
+
+# Use the 'ls' alias
+glab securefile ls
+
+# List a specific page
+glab securefile list --page 2
+
+# List a specific page with a custom page size
+glab securefile list --page 2 --per-page 10
+
+# List files from another project
+glab securefile list -R owner/repo
+
+```
+
+## Options
+
+```plaintext
+      --jq string      Filter JSON output with a jq expression.
+  -p, --page int       Page number. (default 1)
+  -P, --per-page int   Number of items to list per page. (default 30)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

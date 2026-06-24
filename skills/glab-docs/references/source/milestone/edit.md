@@ -1,0 +1,55 @@
+---
+title: '`glab milestone edit`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Edit a milestone in a project or group.
+
+## Synopsis
+
+Edit a milestone, identified by its numeric ID, in a project or group.
+Use the flags to update the title, description, due date, start date,
+or state. Only the fields you specify are updated.
+
+By default, the milestone is edited in the current project. Use
+`--project` to target a different project, or `--group` to edit a
+group-level milestone. `--project` and `--group` are mutually exclusive.
+
+```plaintext
+glab milestone edit <id> [flags]
+```
+
+## Examples
+
+```console
+# Update a milestone's title and due date in the current project
+glab milestone edit 123 --title='Example title' --due-date='2025-12-16'
+
+# Update a milestone in a different project
+glab milestone edit 123 --title='Q4 release' --due-date='2025-12-16' --project owner/project
+
+# Update a group milestone
+glab milestone edit 123 --title='FY26 planning' --due-date='2026-01-31' --group 789
+
+```
+
+## Options
+
+```plaintext
+      --description string   Description of the milestone.
+      --due-date string      Due date for the milestone. Expected in ISO 8601 format (2025-04-15T08:00:00Z).
+      --group string         The ID or URL-encoded path of the group.
+      --project string       The ID or URL-encoded path of the project.
+      --start-date string    Start date for the milestone. Expected in ISO 8601 format (2025-04-15T08:00:00Z).
+      --state string         State of the milestone. Can be 'activate' or 'close'.
+      --title string         Title of the milestone.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

@@ -1,0 +1,53 @@
+---
+title: '`glab job artifact`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Download all artifacts from the most recent pipeline.
+
+## Synopsis
+
+Downloads all artifacts from the most recent successful pipeline.
+
+`<refName>` is a branch name, tag, or merge request reference. For a branch
+or tag, use the name directly. For a merge request pipeline, replace `<iid>`
+with the merge request IID and use the format that matches the pipeline type:
+
+- `refs/merge-requests/<iid>/head`: Pipeline on the latest commit of the source branch.
+- `refs/merge-requests/<iid>/merge`: Pipeline on the merged result (pipelines for merged results).
+
+```plaintext
+glab job artifact <refName> <jobName> [flags]
+```
+
+## Aliases
+
+```plaintext
+push
+```
+
+## Examples
+
+```console
+glab job artifact main build
+glab job artifact main deploy --path="artifacts/"
+glab job artifact main deploy --list-paths
+glab job artifact refs/merge-requests/123/head build
+glab job artifact refs/merge-requests/123/merge build
+```
+
+## Options
+
+```plaintext
+  -l, --list-paths    Print the paths of downloaded artifacts.
+  -p, --path string   Path to download the artifact files. (default "./")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

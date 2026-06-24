@@ -1,0 +1,29 @@
+---
+title: "LatentCompositeMasked - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the LatentCompositeMasked node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下は、ご依頼いただいたComfyUIノードドキュメントの日本語訳です。
+
+---
+
+LatentCompositeMaskedノードは、2つの潜在表現を指定された座標でブレンドするために設計されており、オプションでマスクを使用することで、より制御された合成を実現します。このノードを使用すると、一方の画像の一部を別の画像に重ね合わせることで複雑な潜在画像を作成でき、ソース画像をリサイズして完全にフィットさせることも可能です。
+
+## 入力
+
+| パラメータ | 説明 | データ型 |
+| --- | --- | --- |
+| `destination` | 別の潜在表現が合成される元となる潜在表現です。合成操作のベースレイヤーとして機能します。 | `LATENT` |
+| `source` | デスティネーションに合成される潜在表現です。このソースレイヤーは、指定されたパラメータに従ってリサイズおよび配置できます。 | `LATENT` |
+| `x` | ソースが配置されるデスティネーション潜在表現内のX座標です。ソースレイヤーの正確な位置決めを可能にします。 | `INT` |
+| `y` | ソースが配置されるデスティネーション潜在表現内のY座標です。正確なオーバーレイ配置を実現します。 | `INT` |
+| `resize_source` | 合成前にソース潜在表現をデスティネーションの寸法に合わせてリサイズするかどうかを示すブール値フラグです。 | `BOOLEAN` |
+| `マスク` | ソースをデスティネーションにブレンドする際の制御に使用できるオプションのマスクです。マスクは、最終的な合成画像においてソースのどの部分が表示されるかを定義します。 | `MASK` |
+
+## 出力
+
+| パラメータ | 説明 | データ型 |
+| --- | --- | --- |
+| `latent` | ソースをデスティネーションに合成した結果の潜在表現です。選択的なブレンドのためにマスクが使用される場合もあります。 | `LATENT` |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LatentCompositeMasked/ja.md)

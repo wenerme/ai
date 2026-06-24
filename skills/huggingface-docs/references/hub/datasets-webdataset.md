@@ -1,0 +1,88 @@
+# WebDataset
+
+[WebDataset](https://github.com/webdataset/webdataset) is a library for writing I/O pipelines for large datasets.
+Its sequential I/O and sharding features make it especially useful for streaming large-scale datasets to a DataLoader.
+
+## The WebDataset format
+
+A WebDataset file is a TAR archive containing a series of data files.
+All successive data files with the same prefix are considered to be part of the same example (e.g., an image/audio file and its label or metadata):
+
+<div class="flex justify-center">
+
+</div>
+
+Labels and metadata can be in a `.json` file, in a `.txt` (for a caption, a description), or in a `.cls` (for a class index).
+
+A large scale WebDataset is made of many files called shards, where each shard is a TAR archive.
+Each shard is often ~1GB but the full dataset can be multiple terabytes!
+
+## Multimodal support
+
+WebDataset is designed for multimodal datasets, i.e. for image, audio and/or video datasets.
+
+Indeed, since media files tend to be quite big, WebDataset's sequential I/O enables large reads and buffering, resulting in the best data loading speed.
+
+Here is a non-exhaustive list of supported data formats:
+
+- image: jpeg, png, tiff
+- audio: mp3, m4a, wav, flac
+- video: mp4, mov, avi
+- other: npy, npz
+
+The full list evolves over time and depends on the implementation. For example, you can find which formats the `webdataset` package supports in the source code [here](https://github.com/webdataset/webdataset/blob/main/src/webdataset/autodecode.py).
+
+## Streaming
+
+Streaming TAR archives is fast because it reads contiguous chunks of data.
+It can be orders of magnitude faster than reading separate data files one by one.
+
+WebDataset streaming offers high-speed performance both when reading from disk and from cloud storage, which makes it an ideal format to feed to a DataLoader:
+
+<div class="flex justify-center">
+
+</div>
+
+For example here is how to stream the [timm/imagenet-12k-wds](https://huggingface.co/datasets/timm/imagenet-12k-wds) dataset directly from Hugging Face:
+
+First you need to [Login with your Hugging Face account](/docs/huggingface_hub/quick-start#login), for example using:
+
+```
+hf auth login
+```
+
+And then you can stream the dataset with WebDataset:
+
+```python
+>>> import webdataset as wds
+>>> from huggingface_hub import get_token
+>>> from torch.utils.data import DataLoader
+
+>>> hf_token = get_token()
+>>> url = "https://huggingface.co/datasets/timm/imagenet-12k-wds/resolve/main/imagenet12k-train-{{0000..1023}}.tar"
+>>> url = f"pipe:curl -s -L {url} -H 'Authorization:Bearer {hf_token}'"
+>>> dataset = wds.WebDataset(url).decode()
+>>> dataloader = DataLoader(dataset, batch_size=64, num_workers=4)
+```
+
+## Shuffle
+
+Generally, datasets in WebDataset formats are already shuffled and ready to feed to a DataLoader.
+But you can still reshuffle the data with WebDataset's approximate shuffling.
+
+In addition to shuffling the list of shards, WebDataset uses a buffer to shuffle a dataset without any cost to speed:
+
+<div class="flex justify-center">
+
+</div>
+
+To shuffle a list of sharded files and randomly sample from the shuffle buffer:
+
+```python
+>>> buffer_size = 1000
+>>> dataset = (
+...     wds.WebDataset(url, shardshuffle=True)
+...     .shuffle(buffer_size)
+...     .decode()
+... )
+```

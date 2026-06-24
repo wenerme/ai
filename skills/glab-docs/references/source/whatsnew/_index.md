@@ -1,0 +1,51 @@
+---
+title: '`glab whatsnew`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Show release notes for new versions of glab.
+
+## Synopsis
+
+With no arguments, shows release notes for every glab release
+published since the last time you ran 'whatsnew' or saw the
+post-upgrade banner — capped at the most recent 10 releases.
+
+Pass a version argument to view notes for a specific release,
+or use --since to set an explicit baseline.
+
+```plaintext
+glab whatsnew [version] [flags]
+```
+
+## Examples
+
+```console
+# Show release notes for every release since you last looked
+glab whatsnew
+
+# Show notes for the latest published release
+glab whatsnew --latest
+
+# Show notes for a specific version
+glab whatsnew v1.85.0
+
+# Show notes for every release published after a given version
+glab whatsnew --since v1.80.0
+
+```
+
+## Options
+
+```plaintext
+      --latest         Show release notes for the latest published release only.
+      --since string   Show release notes for every release newer than this version.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

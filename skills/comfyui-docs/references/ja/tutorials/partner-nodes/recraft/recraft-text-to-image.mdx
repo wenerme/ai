@@ -1,0 +1,37 @@
+---
+title: "Recraft Text to Image パートナーノード｜ComfyUI 公式サンプル"
+description: "ComfyUI で Recraft Text to Image パートナーノードを使用する方法を学びましょう"
+translationSourceHash: c559478e
+translationFrom: tutorials/partner-nodes/recraft/recraft-text-to-image.mdx
+---
+
+Recraft Text to Image ノードは、テキストの説明をもとに、Recraft AI の画像生成技術を使ってさまざまなスタイルの高品質な画像を作成できます。
+
+このガイドでは、このノードを使用してテキストから画像へのワークフローを構築する方法を説明します。
+
+## Recraft Text to Image パートナーノードのワークフロー
+
+### 1. ワークフローファイルのダウンロード
+
+下記の画像のメタデータにワークフロー情報が含まれています。画像をダウンロードして ComfyUI にドラッグ＆ドロップすると、ワークフローが読み込まれます。
+
+![Recraft Text to Image ワークフロー](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/recraft/t2i/recraft_t2i.png)
+
+### 2. ワークフローを実行する手順に従う
+
+[Recraft Text to Image ワークフロー手順]
+
+以下の番号付き手順に従って、基本的なワークフローを実行します：
+
+1. （任意）`Color` ノードの `Recraft Color RGB` をお好みの色に変更します
+2. （任意）`Recraft Style` ノードを変更して、デジタルアート、リアルな写真、ロゴデザインなどのビジュアルスタイルを制御します。このグループには、必要に応じて有効にできる他のスタイルノードも含まれています
+3. （任意）`Recraft Text to Image` ノードの `prompt` パラメーターを編集します。`size` パラメーターを変更することもできます
+4. `Run` ボタンをクリックするか、ショートカット `Ctrl（Cmd）+ Enter` を使用して画像を生成します
+5. API から結果が返されたら、`Save Image` ノードで生成された画像を表示できます。画像は `ComfyUI/output/` ディレクトリにも保存されます
+
+> （任意）ワークフロー内には **Convert to SVG** グループが含まれています。このグループの `Recraft Vectorize Image` ノードは追加のクレジットを消費するため、生成された画像を SVG 形式に変換する必要がある場合にのみ有効にしてください
+
+### 3. 補足情報
+
+- **Recraft Style**：リアルな写真、デジタルアート、ロゴデザインなどのさまざまなプリセットスタイルを提供します
+- **Seed パラメーター**：ノードを再実行するかどうかを判断するためだけに使用され、実際の生成結果にはシード値は影響しません

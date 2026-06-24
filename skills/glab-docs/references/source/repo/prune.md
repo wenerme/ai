@@ -1,0 +1,68 @@
+---
+title: '`glab repo prune`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete local Git branches whose merge request has been merged.
+
+## Synopsis
+
+Delete local Git branches whose merge request has been merged on GitLab.
+
+By default, the command queries GitLab for each local branch and only
+deletes branches that have at least one merged merge request and no
+merge requests still open from the same source branch.
+
+Protected branches, the default branch, and the currently checked-out
+branch are never deleted.
+
+This command only affects your local Git repository. Remote branches
+on GitLab are not touched.
+
+Use --merged to skip the per-branch merge request lookup and instead
+rely on `git branch --merged` to decide which branches to delete.
+The default branch and protected branches are still fetched from
+GitLab in this mode. Falling back to Git is faster, but only detects
+fast-forward merges — squash and rebase merges look like distinct
+commits to Git and will not be reported as merged.
+
+```plaintext
+glab repo prune [flags]
+```
+
+## Examples
+
+```console
+# Preview branches that would be deleted
+glab repo prune --dry-run
+
+# Delete branches with merged MRs (after confirmation)
+glab repo prune
+
+# Delete without confirmation
+glab repo prune --yes
+
+# Exclude additional branches by name or glob pattern
+glab repo prune --exclude wip-*,demo-branch
+
+# Detect merged branches with Git instead of GitLab (faster, but misses squash and rebase merges)
+glab repo prune --merged
+
+```
+
+## Options
+
+```plaintext
+      --dry-run           Preview branches that would be deleted without deleting them.
+  -e, --exclude strings   Branch name or glob pattern to exclude. Comma-separated or repeated.
+      --merged            Use 'git branch --merged' instead of querying GitLab. Detects fast-forward merges only.
+  -y, --yes               Skip the confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

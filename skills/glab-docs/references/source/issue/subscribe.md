@@ -1,0 +1,38 @@
+---
+title: '`glab issue subscribe`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Subscribe to an issue.
+
+## Synopsis
+
+You receive notifications when the issue is updated, commented on,
+or has its state changed.
+
+```plaintext
+glab issue subscribe <id> [flags]
+```
+
+## Aliases
+
+```plaintext
+sub
+```
+
+## Examples
+
+```console
+glab issue subscribe 123
+glab issue sub 123
+glab issue subscribe https://gitlab.com/OWNER/REPO/-/issues/123
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

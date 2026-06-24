@@ -1,0 +1,21 @@
+---
+title: 'Deploying additional infrastructure'
+keywords: ['BYOC', 'cloud', 'bring your own cloud', 'onboarding', 'additional infrastructure', 'multi-region', 'multi-account']
+description: 'Deploy additional BYOC infrastructure in new regions or accounts'
+doc_type: 'reference'
+---
+
+After completing the initial onboarding, you may wish to deploy additional BYOC infrastructure in a different region or in another AWS account, GCP project, or Azure subscription.
+
+To add a new BYOC deployment:
+
+<VerticalStepper headerLevel="list">
+1. Navigate to your organization's "Infrastructure" page in the ClickHouse Cloud console.
+
+<Image img={byoc_new_infra_1} size="lg" alt="BYOC infra page" />
+
+1. Select "Add new infrastructure" and follow the guided interface to complete the setup process.
+
+<Image img={byoc_new_infra_2} size="lg" alt="BYOC infra page" />
+
+</VerticalStepper>

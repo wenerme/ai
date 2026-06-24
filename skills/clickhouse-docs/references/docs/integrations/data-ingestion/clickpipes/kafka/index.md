@@ -1,0 +1,18 @@
+---
+
+description: 'Landing page with table of contents for the Kafka ClickPipes section'
+title: 'Kafka ClickPipes'
+doc_type: 'landing-page'
+keywords: ['Kafka ClickPipes', 'Apache Kafka', 'streaming ingestion', 'real-time data', 'message broker']
+integration:
+  - support_level: 'core'
+  - category: 'clickpipes'
+---
+
+| Page | Description |
+|-----|-----|
+| [Creating your first Kafka ClickPipe](/integrations/clickpipes/kafka/create-your-first-kafka-clickpipe) | Step-by-step guide to creating your first Kafka ClickPipe. |
+| [Schema registries for Kafka ClickPipe](/integrations/clickpipes/kafka/schema-registries) | How to integrate for ClickPipes with a schema registry for schema management. |
+| [Reference](/integrations/clickpipes/kafka/reference) | Details supported formats, sources, delivery semantics, authentication and experimental features supported by Kafka ClickPipes. |
+| [Best practices](/integrations/clickpipes/kafka/best-practices) | Details best practices to follow when working with Kafka ClickPipes. |
+| [Kafka ClickPipes FAQ](/integrations/clickpipes/kafka/faq) | Frequently asked questions about ClickPipes for Kafka. |

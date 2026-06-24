@@ -1,0 +1,37 @@
+---
+title: "CheckpointSave - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the CheckpointSave node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+`Save Checkpoint`ノードは、完全なStable Diffusionモデル（UNet、CLIP、VAEコンポーネントを含む）を **.safetensors** 形式のチェックポイントファイルとして保存するために設計されています。
+
+Save Checkpointは主にモデルマージワークフローで使用されます。`ModelMergeSimple`、`ModelMergeBlocks`などのノードを通じて新しいマージモデルを作成した後、このノードを使用して結果を再利用可能なチェックポイントファイルとして保存できます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 |
+| --- | --- | --- |
+| `モデル` | このパラメータは、状態を保存する主要なモデルを表します。将来の復元や分析のためにモデルの現在の状態をキャプチャするために不可欠です。 | MODEL |
+| `clip` | このパラメータは、主要モデルに関連付けられたCLIPモデルを対象としており、その状態をメインモデルと一緒に保存できます。 | CLIP |
+| `vae` | このパラメータは、Variational Autoencoder（VAE）モデルを対象としており、その状態をメインモデルやCLIPと一緒に将来の使用や分析のために保存できます。 | VAE |
+| `ファイル名プレフィックス` | このパラメータは、チェックポイントが保存されるファイル名のプレフィックスを指定します。 | STRING |
+
+さらに、このノードにはメタデータ用の2つの隠し入力があります。
+
+**prompt (PROMPT)**：ワークフローのプロンプト情報
+**extra_pnginfo (EXTRA_PNGINFO)**：追加のPNG情報
+
+## 出力
+
+このノードはチェックポイントファイルを出力し、対応する出力ファイルパスは `output/checkpoints/` ディレクトリです。
+
+## アーキテクチャ互換性
+
+- **完全対応（現在）**：SDXL、SD3、SVDおよびその他の主要なアーキテクチャ。詳細は[ソースコード](https://github.com/comfyanonymous/ComfyUI/blob/master/comfy_extras/nodes_model_merging.py#L176-L189)を参照してください。
+- **基本対応**：その他のアーキテクチャも保存可能ですが、標準化されたメタデータ情報はありません。
+
+## 関連リンク
+
+関連ソースコード：[nodes_model_merging.py#L227](https://github.com/comfyanonymous/ComfyUI/blob/master/comfy_extras/nodes_model_merging.py#L227)
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/CheckpointSave/ja.md)

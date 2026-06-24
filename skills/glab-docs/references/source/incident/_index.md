@@ -1,0 +1,44 @@
+---
+title: '`glab incident`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Work with GitLab incidents.
+
+## Synopsis
+
+Incidents track service disruptions and their resolution. List and
+view incidents, comment on them, and subscribe, close, or reopen
+them.
+
+Use `--repo` to target a project other than the current one.
+
+## Examples
+
+```console
+glab incident list
+```
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`close`](close.md)
+- [`list`](list.md)
+- [`note`](note.md)
+- [`reopen`](reopen.md)
+- [`subscribe`](subscribe.md)
+- [`unsubscribe`](unsubscribe.md)
+- [`view`](view.md)

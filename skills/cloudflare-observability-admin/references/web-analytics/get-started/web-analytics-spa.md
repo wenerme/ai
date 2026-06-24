@@ -1,0 +1,36 @@
+---
+title: Web Analytics for SPAs
+description: Configure Web Analytics for single-page applications.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Web Analytics for SPAs
+
+Cloudflare Web Analytics can automatically track user interactions on Single Page Applications (SPAs) by overriding the History API's `pushState` function and listening to the `onpopstate` event. Note that hash-based routers are not supported.
+
+## Disable SPA measurement
+
+If you want to disable the automatic tracking for SPAs, you can do so by adding the `spa` option with a value of `false` in the data attribute of the script tag, as shown below:
+
+```
+<script  defer  src="https://static.cloudflareinsights.com/beacon.min.js"  data-cf-beacon=' {"token": "42e216b9090ru59384ygu891dce9eecde", "spa": false} '></script>
+```
+
+### Google Tag Manager (GTM)
+
+If you are using Google Tag Manager (GTM), you can disable SPA tracking by passing the spa option via the query string in the script URL:
+
+```
+<script  defer  src="https://static.cloudflareinsights.com/beacon.min.js?token=42e216b9090ru59384ygu891dce9eecde&spa=false"></script>
+```
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/#page","headline":"Web Analytics for Single Page Applications (SPAs) · Cloudflare Web Analytics docs","description":"Configure Web Analytics for single-page applications.","url":"https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SPA"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/get-started/web-analytics-spa/","name":"Web Analytics for SPAs"}}]}
+```

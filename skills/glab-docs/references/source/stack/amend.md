@@ -1,0 +1,53 @@
+---
+title: '`glab stack amend`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Save more changes to a stacked diff. (EXPERIMENTAL)
+
+## Synopsis
+
+Add more changes to an existing stacked diff.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack amend [flags]
+```
+
+## Examples
+
+```console
+# Amend diff with currently staged changes
+glab stack amend -m "Fix a function"
+
+# Add specified file to staged changes and amend diff
+glab stack amend newfile -m "forgot to add this"
+
+# Add all tracked files to staged changes and amend diff
+glab stack amend -a -m "fixed a function in exisiting file"
+
+# Add all tracked and untracked files to staged changes and amend diff
+glab stack amend . -m "refactored file into new files"
+```
+
+## Options
+
+```plaintext
+  -a, --all                  Automatically stage modified and deleted tracked files.
+  -d, --description string   A description of the change.
+  -m, --message string       Alias for the description flag.
+      --no-verify            Bypass the pre-commit and commit-msg hooks of git-commit(1).
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

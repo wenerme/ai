@@ -1,0 +1,53 @@
+---
+title: '`glab milestone create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a milestone in a project or group.
+
+## Synopsis
+
+The `--title` flag is required.
+Optionally provide a description, due date, and start date.
+
+By default, the milestone is created in the current project. Use
+`--project` to target a different project, or `--group` to create a
+group-level milestone. `--project` and `--group` are mutually exclusive.
+
+```plaintext
+glab milestone create [flags]
+```
+
+## Examples
+
+```console
+# Create a milestone in the current project
+glab milestone create --title='Example title' --due-date='2025-12-16'
+
+# Create a milestone in a different project
+glab milestone create --title='Q4 release' --due-date='2025-12-16' --project 123
+
+# Create a milestone in a group
+glab milestone create --title='FY26 planning' --due-date='2026-01-31' --group 456
+
+```
+
+## Options
+
+```plaintext
+      --description string   Description of the milestone.
+      --due-date string      Due date for the milestone. Expected in ISO 8601 format (2025-04-15T08:00:00Z).
+      --group string         The ID or URL-encoded path of the group.
+      --project string       The ID or URL-encoded path of the project.
+      --start-date string    Start date for the milestone. Expected in ISO 8601 format (2025-04-15T08:00:00Z).
+      --title string         Title of the milestone.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

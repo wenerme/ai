@@ -1,0 +1,29 @@
+---
+title: "KlingDualCharacterVideoEffectNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the KlingDualCharacterVideoEffectNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The Kling Dual Character Video Effect Node creates videos with special effects based on the selected scene. It takes two images and positions the first image on the left side and the second image on the right side of the composite video. Different visual effects are applied depending on the chosen effect scene.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `image_left` | Left side image | IMAGE | Yes | - |
+| `image_right` | Right side image | IMAGE | Yes | - |
+| `effect_scene` | The type of special effect scene to apply to the video generation | COMBO | Yes | `"chat"``"dance"``"hug"``"kill"``"kiss"``"pat"``"punch"``"shrug"``"slap"``"tickle"` |
+| `model_name` | The model to use for character effects (default: "kling-v1") | COMBO | No | `"kling-v1"``"kling-v1-5"``"kling-v1-6"` |
+| `mode` | The video generation mode (default: "std") | COMBO | No | `"std"``"pro"` |
+| `duration` | The duration of the generated video in seconds | COMBO | Yes | `"5"``"10"` |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `output` | The generated video with dual character effects | VIDEO |
+| `duration` | The duration information of the generated video | STRING |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingDualCharacterVideoEffectNode/en.md)
+
+---
+**Source fingerprint (SHA-256):** `995616159d0b61a5398ec93e847b04fed8133a28a37f597427f0335ca17920b9`

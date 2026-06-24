@@ -1,0 +1,23 @@
+---
+title: '`glab user`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Interact with a GitLab user account.
+
+## Synopsis
+
+Look up information about GitLab users, such as the events a user has
+generated.
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`events`](events.md)

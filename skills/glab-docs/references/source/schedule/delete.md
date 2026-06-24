@@ -1,0 +1,39 @@
+---
+title: '`glab schedule delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete a pipeline schedule by ID.
+
+## Synopsis
+
+Delete a CI/CD pipeline schedule, identified by its numeric ID. The
+schedule is removed from the project; pipelines previously triggered
+by it are not affected.
+
+By default, the schedule is deleted from the current project. Use
+`--repo` to target another project.
+
+```plaintext
+glab schedule delete <id> [flags]
+```
+
+## Examples
+
+```console
+# Delete the schedule with ID 10
+glab schedule delete 10
+
+# Delete a schedule in another project
+glab schedule delete 10 -R owner/repo
+
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

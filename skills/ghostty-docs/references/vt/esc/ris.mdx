@@ -1,0 +1,29 @@
+---
+title: Full Reset (RIS)
+description: Reset the terminal to its initial state.
+---
+
+<VTSequence sequence={["ESC", "c"]} />
+
+The full reset operation does the following:
+
+- Set the cursor shape to the default
+- Reset the scroll region to the full screen
+- Disable [left and right margin mode (mode 69)](#TODO)
+- Disable [origin mode (mode 6)](#TODO)
+- Unset cursor foreground and background colors
+- Reset charsets to the default
+- Reset [cursor key mode (DECCKM)](#TODO)
+- Reset [disable keyboard input (KAM)](#TODO)
+- Reset [application keypad mode](/docs/vt/esc/deckpnm)
+- Reset xterm keyboard modifier state to the default
+- Disable cursor [protected attribute](#TODO)
+- Disable any [protected area](#TODO)
+- Reset all [mouse tracking modes](#TODO)
+- Reset tabstops to default
+- Enable [send-receive mode (mode 12)](#TODO)
+- Reset [backspace sends delete (mode 67)](#TODO)
+- Return to the primary screen and clear it
+- Move the cursor to the top-left corner
+- Reset the pending wrap state
+- Reset saved cursor state

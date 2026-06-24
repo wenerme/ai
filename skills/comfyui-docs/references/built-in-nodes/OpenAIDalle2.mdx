@@ -1,0 +1,34 @@
+---
+title: "OpenAIDalle2 - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the OpenAIDalle2 node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+# OpenAIDalle2
+
+Generates images synchronously via OpenAI's DALL·E 2 endpoint.
+
+## How It Works
+
+This node connects to OpenAI's DALL·E 2 API to create images based on text descriptions. When you provide a text prompt, the node sends it to OpenAI's servers which generate corresponding images and return them to ComfyUI. The node can operate in two modes: standard image generation using just a text prompt, or image editing mode when both an image and mask are provided. In editing mode, it uses the mask to determine which parts of the original image should be modified while keeping other areas unchanged.
+
+## Inputs
+
+| Parameter | Description | Data Type | Input Type | Default | Range |
+| --- | --- | --- | --- | --- | --- |
+| `prompt` | Text prompt for DALL·E | STRING | required | "" | - |
+| `seed` | not implemented yet in backend | INT | optional | 0 | 0 to 2147483647 |
+| `size` | Image size | COMBO | optional | "1024x1024" | "256x256", "512x512", "1024x1024" |
+| `n` | How many images to generate | INT | optional | 1 | 1 to 8 |
+| `image` | Optional reference image for image editing. | IMAGE | optional | None | - |
+| `mask` | Optional mask for inpainting (white areas will be replaced) | MASK | optional | None | - |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `IMAGE` | The generated or edited image(s) from DALL·E 2 | IMAGE |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIDalle2/en.md)
+
+---
+**Source fingerprint (SHA-256):** `ad10b149ac28559ad18c09e0f071286509680603d953833106ad6a2d578f7efe`

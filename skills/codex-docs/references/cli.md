@@ -1,0 +1,114 @@
+# Codex CLI
+
+Codex CLI is OpenAI's coding agent that you can run locally from your terminal. It can read, change, and run code on your machine in the selected directory.
+It's [open source](https://github.com/openai/codex) and built in Rust for speed and efficiency.
+
+ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what's included](https://developers.openai.com/codex/pricing).
+
+<YouTubeEmbed
+  title="Codex CLI overview"
+  videoId="iqNzfK4_meQ"
+  class="max-w-md"
+/>
+<br />
+
+## CLI setup
+
+<CliSetupSteps client:load />
+
+The Codex CLI is available on macOS, Windows, and Linux. On Windows, run Codex
+  natively in PowerShell with the Windows sandbox, or use WSL2 when you need a
+  Linux-native environment. For setup details, see the 
+  <a href="/codex/windows">Windows setup guide</a>.
+
+If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
+
+---
+
+## Work with the Codex CLI
+
+<BentoContainer>
+  <BentoContent href="/codex/cli/features#running-in-interactive-mode">
+
+### Run Codex interactively
+
+Run `codex` to start an interactive terminal UI (TUI) session.
+
+  </BentoContent>
+  <BentoContent href="/codex/cli/features#models-and-reasoning">
+
+### Control model and reasoning
+
+Use `/model` to switch between available models or adjust reasoning levels.
+
+  </BentoContent>
+  <BentoContent href="/codex/cli/features#image-inputs">
+
+### Image inputs
+
+Attach screenshots or design specs so Codex reads them alongside your prompt.
+
+  </BentoContent>
+  <BentoContent href="/codex/cli/features#image-generation">
+
+### Image generation
+
+Generate or edit images directly in the CLI, and attach references when you want Codex to iterate on an existing asset.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/cli/features#running-local-code-review">
+
+### Run local code review
+
+Get your code reviewed by a separate Codex agent before you commit or push your changes.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/subagents">
+
+### Use subagents
+
+Use subagents to parallelize complex tasks.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/cli/features#web-search">
+
+### Web search
+
+Use Codex to search the web and get up-to-date information for your task.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/cli/features#working-with-codex-cloud">
+
+### Codex Cloud tasks
+
+Launch a Codex Cloud task, choose environments, and apply the resulting diffs without leaving your terminal.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/noninteractive">
+
+### Scripting Codex
+
+Automate repeatable workflows by scripting Codex with the `exec` command.
+
+  </BentoContent>
+  <BentoContent href="/codex/mcp">
+
+### Model Context Protocol
+
+Give Codex access to additional third-party tools and context with Model Context Protocol (MCP).
+
+  </BentoContent>
+  
+  <BentoContent href="/codex/cli/features#approval-modes">
+
+### Approval modes
+
+Choose the approval mode that matches your comfort level before Codex edits or runs commands.
+
+  </BentoContent>
+</BentoContainer>

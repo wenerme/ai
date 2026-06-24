@@ -1,0 +1,29 @@
+---
+title: "KlingOmniProImageNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the KlingOmniProImageNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+Kling Omni Image (Pro) 节点使用最新的 Kling AI 模型创建或编辑图像。它基于文本描述生成图像，并可选择使用参考图像来引导风格或内容。该节点向外部 API 发送请求，由 API 处理任务并返回最终图像。
+
+## 输入
+
+| 参数 | 描述 | 数据类型 | 是否必填 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `模型` | 用于图像生成的特定 Kling AI 模型。 | COMBO | 是 | `"kling-v3-omni"``"kling-image-o1"` |
+| `提示词` | 描述图像内容的文本提示。可包含正面和负面描述。文本长度必须在 1 到 2500 个字符之间。 | STRING | 是 | - |
+| `分辨率` | 生成图像的目标分辨率。注意：`kling-image-o1` 模型不支持 4K 分辨率。 | COMBO | 是 | `"1K"``"2K"``"4K"` |
+| `宽高比` | 生成图像的期望宽高比（宽度与高度之比）。 | COMBO | 是 | `"16:9"``"9:16"``"1:1"``"4:3"``"3:4"``"3:2"``"2:3"``"21:9"` |
+| `系列数量` | 生成一系列图像。`kling-image-o1` 模型不支持此功能。（默认值："disabled"） | COMBO | 是 | `"disabled"``"2"``"3"``"4"``"5"``"6"``"7"``"8"``"9"` |
+| `参考图像` | 最多 10 张附加参考图像。每张图像的宽度和高度均需至少 300 像素，且宽高比必须在 1:2.5 到 2.5:1 之间。 | IMAGE | 否 | - |
+| `种子` | 种子控制节点是否应重新运行；无论种子如何，结果均非确定性。（默认值：0） | INT | 否 | 0 到 2147483647 |
+
+## 输出
+
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `image` | Kling AI 模型生成或编辑的最终图像。如果请求了系列图像，则返回多张图像作为批次。 | IMAGE |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingOmniProImageNode/zh.md)
+
+---
+**Source fingerprint (SHA-256):** `7bbed260436bc60e284c99e091cd28b2b0cf50e98e876f94278f1ac2834e61f8`

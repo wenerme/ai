@@ -1,0 +1,13 @@
+---
+title: 'Updating Data'
+description: 'Updating Data Table Of Contents'
+keywords: ['update', 'updating data']
+doc_type: 'landing-page'
+---
+
+In this section of the documentation, you will learn how you can update your data.
+
+| Page                                                            | Description                                                                                                                                                      |
+|-----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Working with updates](/updating-data/overview)                  | Provides an overview of the differences in updating data between ClickHouse and OLTP databases, as well as the various methods available to do so in ClickHouse. | |
+| [Working with ReplacingMergeTree](/guides/replacing-merge-tree) | Learn how to update using the ReplacingMergeTree.                                                                                                                |

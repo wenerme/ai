@@ -1,0 +1,81 @@
+---
+title: '`glab packages download`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Download a file from a project's package registry.
+
+## Synopsis
+
+Download a generic package file, identified by its package name, version,
+and file name.
+
+Use `--path` to choose where the file is saved. If it names a directory
+(it ends with a separator or already exists as one), the file is saved
+there under its original name. Otherwise it is saved as that exact path,
+letting you rename the file. By default the file is saved in the current
+directory under its original name.
+
+By default, the downloaded file is verified against the checksum stored in
+the registry. This requires extra API calls to look up the file's metadata.
+Use `--no-verify` to skip verification. This can allow corrupted or
+tampered files; use with caution.
+
+If the target file already exists, the download fails. Use `--force` to
+overwrite it.
+
+By default, files are downloaded from the current project. Use `--repo`
+to target another project.
+
+```plaintext
+glab packages download --name <package> --version <version> --filename <file> [flags]
+```
+
+## Aliases
+
+```plaintext
+dl
+```
+
+## Examples
+
+```console
+# Download a package file to the current directory
+glab packages download --name my-package --version 1.0.0 --filename app.zip
+
+# Download into a directory, keeping the original file name
+glab packages download -n my-package --version 1.0.0 --filename app.zip --path ./downloads/
+
+# Download to an exact path, renaming the file
+glab packages download -n my-package --version 1.0.0 --filename app.zip --path ./downloads/renamed.zip
+
+# Download without verifying the checksum
+glab packages download -n my-package --version 1.0.0 --filename app.zip --no-verify
+
+# Overwrite an existing file
+glab packages download -n my-package --version 1.0.0 --filename app.zip --force
+
+# Use the 'dl' alias and target another project
+glab packages dl -n my-package --version 1.0.0 --filename app.zip -R owner/repo
+
+```
+
+## Options
+
+```plaintext
+      --filename string   Name of the file within the package to download.
+      --force             Overwrite the target file if it already exists.
+  -n, --name string       Name of the package.
+      --no-verify         Do not verify the checksum of the downloaded file. Warning: when enabled, this setting allows the download of files that are corrupt or tampered with.
+  -p, --path string       Directory to save the file in (keeps its original name) or a full file path to rename it. Defaults to the original name in the current directory.
+      --version string    Version of the package.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

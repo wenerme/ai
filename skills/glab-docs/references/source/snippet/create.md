@@ -1,0 +1,55 @@
+---
+title: '`glab snippet create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a new snippet.
+
+## Synopsis
+
+Provide one or more file paths to upload, or pass `--filename` and
+pipe content from standard input.
+
+Snippets are created in the current project by default. Use
+`--personal` to create the snippet in your personal account instead,
+and `--visibility` to control who can see it.
+
+```plaintext
+glab snippet create [flags] -t <title> <file1> [<file2>...]
+glab snippet create [flags] -t <title> -f <filename>  # reads from stdin
+```
+
+## Aliases
+
+```plaintext
+new
+```
+
+## Examples
+
+```console
+glab snippet create script.py --title "Title of the snippet"
+echo "package main" | glab snippet new --title "Title of the snippet" --filename "main.go"
+glab snippet create -t Title -f "different.go" -d Description main.go
+glab snippet create -t Title -f "different.go" -d Description --filename different.go main.go
+glab snippet create --personal --title "Personal snippet" script.py
+```
+
+## Options
+
+```plaintext
+  -d, --description string   Description of the snippet. Set to "-" to open an editor.
+  -f, --filename string      Filename of the snippet in GitLab.
+  -p, --personal             Create a personal snippet.
+  -t, --title string         (required) Title of the snippet.
+  -v, --visibility string    Limit by visibility: 'public', 'internal', or 'private'. (default "private")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

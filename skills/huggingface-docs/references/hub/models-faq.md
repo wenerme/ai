@@ -1,0 +1,46 @@
+# Models Frequently Asked Questions
+
+## How can I see what dataset was used to train the model?
+
+It's up to the person who uploaded the model to include the training information! A user can [specify](./model-cards#specifying-a-dataset) the dataset used for training a model. If the datasets used for the model are on the Hub, the uploader may have included them in the [model card's metadata](https://huggingface.co/Jiva/xlm-roberta-large-it-mnli/blob/main/README.md#L7-L9). In that case, the datasets would be linked with a handy card on the right side of the model page:
+
+<div class="flex justify-center">
+
+</div>
+
+## How can I see an example of the model in action?
+
+Models can have inference widgets that let you try out the model in the browser! Inference widgets are easy to configure, and there are many different options at your disposal. Visit the [Widgets documentation](models-widgets) to learn more.
+
+The Hugging Face Hub is also home to Spaces, which are interactive demos used to showcase models. If a model has any Spaces associated with it, you'll find them linked on the model page like so:
+
+<div class="flex justify-center">
+
+</div>
+
+Spaces are a great way to show off a model you've made or explore new ways to use existing models! Visit the [Spaces documentation](./spaces) to learn how to make your own.
+
+## Are community blog articles linked to models?
+
+Yes — if you publish a [blog article](./blog-articles) that mentions a model you own (as a user or organization), it will automatically appear in the model page sidebar. The same applies to dataset pages. See [Linking to Models and Datasets](./blog-articles#linking-to-models-and-datasets) for details.
+
+## How do I upload an update / new version of the model?
+
+Releasing an update to a model that you've already published can be done by pushing a new commit to your model's repo. To do this, go through the same process that you followed to upload your initial model. Your previous model versions will remain in the repository's commit history, so you can still download previous model versions from a specific git commit or tag or revert to previous versions if needed.
+
+## What if I have a different checkpoint of the model trained on a different dataset?
+
+By convention, each model repo should contain a single checkpoint. You should upload any new checkpoints trained on different datasets to the Hub in a new model repo. You can link the models together by using a tag specified in the `tags` key in your [model card's metadata](./model-cards), by using [Collections](./collections) to group distinct related repositories together or by linking to them in the model cards. The [akiyamasho/AnimeBackgroundGAN-Shinkai](https://huggingface.co/akiyamasho/AnimeBackgroundGAN-Shinkai#other-pre-trained-model-versions) model, for example, references other checkpoints in the model card under *"Other pre-trained model versions"*.
+
+## Can I link my model to a paper on arXiv?
+
+If the model card includes a link to a paper on arXiv, the Hugging Face Hub will extract the arXiv ID  and include it in the model tags with the format `arxiv:<PAPER ID>`. Clicking on the tag will let you:
+
+* Visit the paper page
+* Filter for other models on the Hub that cite the same paper.
+
+<div class="flex justify-center">
+
+</div>
+
+Read more about paper pages [here](./paper-pages).

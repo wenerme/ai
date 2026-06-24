@@ -1,0 +1,24 @@
+---
+title: Get started with Cloudflare bot solutions
+description: Set up Bot Fight Mode, Super Bot Fight Mode, or Bot Management for Enterprise.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Get started with Cloudflare bot solutions
+
+Refer to the following pages to get started with Cloudflare's bot solutions based on your plan type:
+
+* [ Bot Fight Mode ](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/)
+* [ Super Bot Fight Mode ](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/)
+* [ Bot Management ](https://developers.cloudflare.com/bots/get-started/bot-management/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/get-started/#page","headline":"Get started with Cloudflare bot solutions · Cloudflare bot solutions docs","description":"Set up Bot Fight Mode, Super Bot Fight Mode, or Bot Management for Enterprise.","url":"https://developers.cloudflare.com/bots/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/get-started/","name":"Get started with Cloudflare bot solutions"}}]}
+```

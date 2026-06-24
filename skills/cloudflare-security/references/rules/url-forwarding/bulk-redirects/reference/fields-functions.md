@@ -1,0 +1,89 @@
+---
+title: Available fields and functions
+description: Available fields and functions for Bulk Redirect rules.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Available fields and functions
+
+The available fields when defining a Bulk Redirect Rule filter expression are the following:
+
+* `cf.edge.server_ip`
+* `cf.edge.server_port`
+* `cf.edge.client_port`
+* `cf.edge.client_tcp`
+* `cf.edge.l4.delivery_rate`
+* `cf.hostname.metadata`
+* `cf.zone.name`
+* `cf.random_seed`
+* `cf.ray_id`
+* `cf.timings.client_quic_rtt_msec`
+* `cf.timings.client_tcp_rtt_msec`
+* `cf.tls_version`
+* `cf.tls_cipher`
+* `cf.tls_client_hello_length`
+* `cf.tls_client_random`
+* `cf.tls_client_extensions_sha1`
+* `cf.tls_client_extensions_sha1_le`
+* `cf.tls_client_ciphers_sha1`
+* `cf.tls_client_auth.*`
+* `cf.worker.upstream_zone`
+* `http.cookie`
+* `http.host`
+* `http.referer`
+* `http.request.accepted_languages`
+* `http.request.cookies`
+* `http.request.headers`
+* `http.request.headers.*`
+* `http.request.method`
+* `http.request.timestamp.sec`
+* `http.request.timestamp.msec`
+* `http.request.full_uri`
+* `http.request.uri`
+* `http.request.uri.*`
+* `http.request.version`
+* `raw.http.request.full_uri`
+* `raw.http.request.headers`
+* `raw.http.request.headers.*`
+* `raw.http.request.uri`
+* `raw.http.request.uri.*`
+* `http.user_agent`
+* `http.x_forwarded_for`
+* `ip.src`
+* `ip.src.lat`
+* `ip.src.lon`
+* `ip.src.asnum`
+* `ip.src.city`
+* `ip.src.country`
+* `ip.src.continent`
+* `ip.src.metro_code`
+* `ip.src.postal_code`
+* `ip.src.region`
+* `ip.src.region_code`
+* `ip.src.is_in_european_union`
+* `ip.src.subdivision_1_iso_code`
+* `ip.src.subdivision_2_iso_code`
+* `ssl`
+* `cf.sequence.current_op`
+* `cf.sequence.msec_since_op`
+* `cf.sequence.previous_ops`
+
+Refer to [Fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) for reference information on these fields.
+
+Important
+
+* To obtain the value of an HTTP request header using the [http.request.headers](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/) field, specify the header name in **lowercase**. For example, to get the first value of the `Accept-Encoding` request header in an expression, use: `http.request.headers["accept-encoding"][0]`.
+* Use the `to_string()` function to get the string representation of a non-string value like an Integer value.
+
+For information on the available functions, refer to [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/fields-functions/#page","headline":"Available fields and functions in Bulk Redirect Rules · Cloudflare Rules docs","description":"Available fields and functions for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/fields-functions/","name":"Available fields and functions"}}]}
+```

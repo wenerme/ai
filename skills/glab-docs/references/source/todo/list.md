@@ -1,0 +1,55 @@
+---
+title: '`glab todo list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List your to-do items.
+
+## Synopsis
+
+By default, lists your pending to-do items. Use `--state` to
+show done or all items instead.
+
+Narrow the results with `--action` to filter by why an item was
+created, or `--type` to filter by its target type.
+
+```plaintext
+glab todo list [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+glab todo list
+glab todo list --state=done
+glab todo list --action=assigned
+glab todo list --type=MergeRequest
+glab todo list --output=json
+
+```
+
+## Options
+
+```plaintext
+  -a, --action string   Filter by action: assigned, mentioned, build_failed, marked, approval_required, directly_addressed.
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+  -p, --page int        Page number. (default 1)
+  -P, --per-page int    Number of items to list per page. (default 30)
+  -s, --state string    Filter by state: pending, done, all. (default "pending")
+  -t, --type string     Filter by target type: Issue, MergeRequest.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

@@ -1,0 +1,45 @@
+---
+title: "OpenAIGPTImageNodeV2 - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the OpenAIGPTImageNodeV2 node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下は、ご依頼いただいたComfyUIノードドキュメントの日本語翻訳です。
+
+## 概要
+
+このノードは、OpenAIのGPT Image APIを使用して画像を生成します。複数のモデルをサポートし、編集用の入力画像を提供したり、マスクを使用して画像のどの部分を変更するかを指定したりできます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `プロンプト` | GPT Image用のテキストプロンプト（デフォルト：""）。 | STRING | はい | N/A |
+| `モデル` | 使用するOpenAI GPT Imageモデル。モデルを選択すると、そのモデル固有の追加パラメータが表示されます。 | COMBO | はい | `"gpt-image-2"``"gpt-image-1.5"``"gpt-image-1"` |
+| `model.size` | 画像サイズ。「Custom」を選択すると、カスタムの幅と高さを使用できます（デフォルト："auto"）。`gpt-image-2`でのみ使用可能です。 | COMBO | はい | `"auto"``"1024x1024"``"1024x1536"``"1536x1024"``"2048x2048"``"2048x1152"``"1152x2048"``"3840x2160"``"2160x3840"``"Custom"` |
+| `model.custom_width` | `size`が「Custom」の場合のみ使用されます。16の倍数である必要があります（デフォルト：1024）。`gpt-image-2`でのみ使用可能です。 | INT | いいえ | 1024 ～ 3840 |
+| `model.custom_height` | `size`が「Custom」の場合のみ使用されます。16の倍数である必要があります（デフォルト：1024）。`gpt-image-2`でのみ使用可能です。 | INT | いいえ | 1024 ～ 3840 |
+| `model.background` | 背景ありまたは背景なしの画像を返します（デフォルト："auto"）。`gpt-image-2`でのみ使用可能です。 | COMBO | はい | `"auto"``"opaque"` |
+| `model.quality` | 生成される画像の品質。`gpt-image-2`でのみ使用可能です。 | COMBO | はい | `"standard"``"hd"` |
+| `model.images` | 編集用の入力画像。`gpt-image-2`でのみ使用可能です。 | IMAGE | いいえ | N/A |
+| `model.mask` | 入力画像のどの部分を編集するかを指定するマスク。`gpt-image-2`でのみ使用可能です。 | MASK | いいえ | N/A |
+| `n` | 生成する画像の数（デフォルト：1）。 | INT | はい | 1 ～ 8 |
+| `シード` | 再現性のためのシード値（デフォルト：0）。注意：バックエンドではまだ実装されていません。 | INT | はい | 0 ～ 2147483647 |
+
+**パラメータの制約と制限事項：**
+
+- `gpt-image-2`で`model.size`に「Custom」を使用する場合、`custom_width`と`custom_height`は16の倍数である必要があり、最大辺は3840以下、アスペクト比は3:1を超えてはならず、総ピクセル数は655,360から8,294,400の間である必要があります。
+- `mask`が提供される場合、入力画像（`model.images`）が必要です。マスクは入力画像なしでは使用できません。
+- マスクは複数の入力画像と併用できません。
+- マスクが提供される場合、マスクの寸法は入力画像の寸法と一致している必要があります。
+- `seed`パラメータは現在機能しません。
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `image` | 生成された画像、または画像群。 | IMAGE |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIGPTImageNodeV2/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `a757208cf6cc151594599b35b0ef73f2caf7274189e948799211c0714a6a8f89`

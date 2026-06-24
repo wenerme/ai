@@ -1,0 +1,45 @@
+---
+title: '`glab ci lint`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Check if your `.gitlab-ci.yml` file is valid.
+
+## Synopsis
+
+Defaults to the `.gitlab-ci.yml` file in the current directory.
+You can also pass a URL to validate a remote file. Use `--dry-run`
+to simulate pipeline creation, and `--ref` to set the branch or
+tag context for the simulation.
+
+```plaintext
+glab ci lint [flags]
+```
+
+## Examples
+
+```console
+# Uses .gitlab-ci.yml in the current directory
+glab ci lint
+
+# Lint a specific file
+glab ci lint .gitlab-ci.yml
+glab ci lint path/to/.gitlab-ci.yml
+```
+
+## Options
+
+```plaintext
+      --dry-run        Run pipeline creation simulation.
+      --include-jobs   Include the list of jobs that would exist in a static check or pipeline simulation.
+      --ref string     When '--dry-run' is true, sets the branch or tag context for validating the CI/CD YAML configuration.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

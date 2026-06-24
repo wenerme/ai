@@ -1,0 +1,63 @@
+---
+title: '`glab repo create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a new GitLab project/repository.
+
+## Synopsis
+
+Creates the new project with your first configured host in your `glab`
+configuration. The host defaults to `GitLab.com` if not set. To set a host,
+provide either:
+
+- A `GITLAB_HOST` environment variable.
+- A full URL for the project.
+
+```plaintext
+glab repo create [path] [flags]
+```
+
+## Examples
+
+```console
+# Create a repository under your account using the current directory name.
+glab repo create
+
+# Create a repository under a group using the current directory name.
+glab repo create --group glab-cli
+
+# Create a repository with a specific name.
+glab repo create my-project
+
+# Create a repository for a group.
+glab repo create glab-cli/my-project
+
+# Create on a host other than gitlab.com.
+GITLAB_HOST=example.com glab repo create
+glab repo create <host>/path/to/repository
+```
+
+## Options
+
+```plaintext
+      --defaultBranch string   Branch name for the new project, overriding both the GitLab instance default and your local git configuration.
+  -d, --description string     Description of the new project. Set to "-" to open an editor.
+  -g, --group string           Namespace or group for the new project. Defaults to the current user's namespace.
+      --internal               Make project internal: visible to any authenticated user. Default.
+  -n, --name string            Name of the new project.
+  -p, --private                Make project private: visible only to project members.
+  -P, --public                 Make project public: visible without any authentication.
+      --readme README.md       Initialize project with README.md. The repository is cloned locally after creation to ensure the local branch matches the remote.
+      --remoteName origin      Remote name for the Git repository you're in. Defaults to origin if not provided. (default "origin")
+  -s, --skipGitInit            Skip local repository setup (skips both 'git init' and cloning).
+  -t, --tag stringArray        The list of tags for the project.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

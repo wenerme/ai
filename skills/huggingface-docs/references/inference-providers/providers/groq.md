@@ -1,0 +1,52 @@
+
+
+# Groq
+
+> [!TIP]
+> All supported Groq models can be found [here](https://huggingface.co/models?inference_provider=groq&sort=trending)
+
+<div class="flex justify-center">
+    <a href="https://groq.com/" target="_blank">
+
+
+    </a>
+</div>
+
+<div class="flex">
+    <a href="https://huggingface.co/groq" target="_blank">
+
+
+    </a>
+</div>
+
+Groq is fast AI inference. Their groundbreaking LPU technology delivers record-setting performance and efficiency for GenAI models. With custom chips specifically designed for AI inference workloads and a deterministic, software-first approach, Groq eliminates the bottlenecks of conventional hardware to enable real-time AI applications with predictable latency and exceptional throughput so developers can build fast.
+
+For latest pricing, visit our [pricing page](https://groq.com/pricing/).
+
+## Resources
+ - **Website**: https://groq.com/
+ - **Documentation**: https://console.groq.com/docs
+ - **Community Forum**: https://community.groq.com/
+ - **X**: [@GroqInc](https://x.com/GroqInc)
+ - **LinkedIn**: [Groq](https://www.linkedin.com/company/groq/)
+ - **YouTube**: [Groq](https://www.youtube.com/@GroqInc)
+
+## Supported tasks
+
+### Chat Completion (LLM)
+
+Find out more about Chat Completion (LLM) [here](../tasks/chat-completion).
+
+<InferenceSnippet
+    pipeline=text-generation
+    providersMapping={ {"groq":{"modelId":"openai/gpt-oss-120b","providerModelId":"openai/gpt-oss-120b"} } }
+conversational />
+
+### Chat Completion (VLM)
+
+Find out more about Chat Completion (VLM) [here](../tasks/chat-completion).
+
+<InferenceSnippet
+    pipeline=image-text-to-text
+    providersMapping={ {"groq":{"modelId":"meta-llama/Llama-4-Scout-17B-16E-Instruct","providerModelId":"meta-llama/llama-4-scout-17b-16e-instruct"} } }
+conversational />

@@ -1,0 +1,59 @@
+---
+title: "Windows — Comfy Desktop"
+description: "Windows に Comfy Desktop をインストール・アンインストールする"
+translationSourceHash: 873692f5
+translationFrom: installation/desktop/windows.mdx
+---
+
+**Comfy Desktop** は複数の ComfyUI インスタンスを1つのランチャーから実行できるマルチインストールマネージャーです。このガイドでは、Windows に Comfy Desktop をインストールおよびアンインストールする方法を説明します。
+
+## システム要件
+
+- **OS:** Windows 10 以降
+- **アーキテクチャ:** x64 または ARM64
+- **GPU:** 良好なパフォーマンスのために、専用 GPU（NVIDIA / AMD）を推奨しますが、必須ではありません
+- **ディスク容量:** インストールごとに最低 4.85 GB を推奨
+
+    Windows 用の最新インストーラーをダウンロードしてください。ページが自動的にプラットフォームを検出します。
+
+## インストール
+
+ダウンロードした `.exe` インストーラー（NSIS インストーラー）を実行し、画面の指示に従ってインストールします。インストール後、スタートメニューまたはデスクトップのショートカットから Comfy Desktop を起動します。
+
+[Windows setup]
+初めてアプリを開くと、最初のインストールを作成するための **Welcome** 画面が表示されます。
+
+<MigrateTip />
+
+  インストール後は、インスタンスの作成、インストール管理、設定の構成方法をご確認ください。
+
+## Comfy Desktop の更新
+
+<UpdateGuide />
+
+## アンインストール
+
+### Comfy Desktop の削除
+
+1. **設定 → アプリ → インストールされているアプリ** に移動
+2. **Comfy Desktop** を見つけて **アンインストール** をクリック
+
+[Windows で Comfy Desktop をアンインストール]
+
+### アンインストールで削除されないもの
+
+Comfy Desktop のアンインストールはランチャーアプリ自体のみを削除します。以下のデータは**削除されません**。完全にクリーンアップするには手動で削除が必要です：
+
+| データ | 場所 | 説明 |
+|------|------|------|
+| インストール | `%USERPROFILE%\ComfyUI-Installs` | 作成した各 ComfyUI インストール（アプリ内からも削除可能）。カスタムインストールパスも削除されません。 |
+| 共有モデルと出力 | `%USERPROFILE%\ComfyUI-Shared` | 共有モデルライブラリ、入出力ディレクトリ |
+| アプリ設定とレジストリ | `%APPDATA%\Comfy Desktop` | 設定、インストール記録、ログ |
+
+上記のディレクトリには、あなたの**個人のComfyUIデータ**（モデル、出力、設定、インストール）が含まれています。これらはComfy Desktopアプリケーションファイルでは**ありません**。削除するとデータが完全に失われます。
+
+完全にすべてを削除するには：
+
+1. **アプリデータフォルダを削除** – `%APPDATA%\Comfy Desktop`
+2. **アプリ内から個別のインストールを削除**、または `%USERPROFILE%\ComfyUI-Installs` を手動で削除
+3. **共有モデルライブラリ** `%USERPROFILE%\ComfyUI-Shared` を削除（ファイルが不要な場合のみ）

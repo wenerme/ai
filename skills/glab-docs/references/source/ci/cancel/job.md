@@ -1,0 +1,57 @@
+---
+title: '`glab ci cancel job`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Cancel CI/CD jobs.
+
+## Synopsis
+
+Cancels one or more running CI/CD jobs by ID. You can pass multiple
+job IDs as separate arguments, in a comma-separated list, or in a
+quoted space-separated list.
+
+To preview which jobs would be canceled without making changes, use
+`--dry-run`.
+
+Use `--force` to cancel jobs that are in a protected environment.
+
+```plaintext
+glab ci cancel job <id> [<id>...] [flags]
+```
+
+## Examples
+
+```console
+# Cancel a single job
+glab ci cancel job 1504182795
+
+# Cancel multiple jobs, comma-separated
+glab ci cancel job 1504182795,1504182796
+
+# Cancel multiple jobs, space-separated in quotes
+glab ci cancel job "1504182795 1504182796"
+
+# Preview which jobs would be canceled
+glab ci cancel job 1504182795,1504182796 --dry-run
+
+# Force-cancel a job in a protected environment
+glab ci cancel job 1504182795 --force
+
+```
+
+## Options
+
+```plaintext
+      --dry-run   Show which jobs would be canceled, without canceling them.
+  -f, --force     Force-cancel the job, even if it runs in a protected environment.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

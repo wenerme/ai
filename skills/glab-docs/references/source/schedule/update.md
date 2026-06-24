@@ -1,0 +1,60 @@
+---
+title: '`glab schedule update`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Update a pipeline schedule.
+
+## Synopsis
+
+Update a CI/CD pipeline schedule, identified by its numeric ID. Use
+the flags to change the cron expression, description, ref, time zone,
+or active state. Only the fields you specify are updated.
+
+To change pipeline variables, use `--create-variable`, `--update-variable`,
+and `--delete-variable`. The `create` and `update` flags take
+`key:value` pairs; `delete` takes a key. Pass each flag multiple times
+to change several variables.
+
+By default, the schedule is updated in the current project. Use
+`--repo` to target another project.
+
+```plaintext
+glab schedule update <id> [flags]
+```
+
+## Examples
+
+```console
+# Update the cron expression for a schedule
+glab schedule update 10 --cron "0 * * * *"
+
+# Update a schedule's description and ref
+glab schedule update 10 --description "Hourly build" --ref main
+
+# Add, change, and remove variables in one call
+glab schedule update 10 --create-variable "foo:bar" --update-variable "baz:qux" --delete-variable "old"
+
+```
+
+## Options
+
+```plaintext
+      --active                    Whether or not the schedule is active. (default to not change)
+      --create-variable strings   Pass new variables to schedule in format <key>:<value>.
+      --cron string               Cron interval pattern.
+      --cronTimeZone string       Cron timezone.
+      --delete-variable strings   Pass variables you want to delete from schedule in format <key>.
+      --description string        Description of the schedule.
+      --ref string                Target branch or tag.
+      --update-variable strings   Pass updated variables to schedule in format <key>:<value>.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

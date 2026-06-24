@@ -1,0 +1,110 @@
+# How to configure SAML SSO with Microsoft Entra ID (Azure AD)
+
+In this guide, we will use Microsoft Entra ID as the SSO provider and with the Security Assertion Markup Language (SAML) protocol as our preferred identity protocol.
+
+We currently support SP-initiated and IdP-initiated authentication. For user provisioning, see [SCIM](./enterprise-scim).
+
+> [!WARNING]
+> This feature is part of the <a href="https://huggingface.co/enterprise">Team & Enterprise</a> plans.
+
+## Step 1: Create a new application in your Identity Provider
+
+Open a new tab/window in your browser and sign in to the Azure portal of your organization.
+
+Navigate to "Enterprise applications" and click the "New application" button.
+
+<div class="flex justify-center">
+
+</div>
+
+You'll be redirected to this page, click on "Create your own application", fill the name of your application, and then "Create" the application.
+
+<div class="flex justify-center">
+
+</div>
+
+Then select "Single Sign-On", and select SAML
+
+<div class="flex justify-center">
+
+</div>
+
+## Step 2: Configure your application on Azure
+
+Open a new tab/window in your browser and navigate to the SSO section of your organization's settings. Select the SAML protocol.
+
+<div class="flex justify-center">
+
+</div>
+
+<div class="flex justify-center">
+
+</div>
+
+Copy the "SP Entity Id" from the organization's settings on Hugging Face, and paste it in the "Identifier (Entity Id)" field on Azure (1).
+
+Copy the "Assertion Consumer Service URL" from the organization's settings on Hugging Face, and paste it in the "Reply URL" field on Azure (2).
+
+The URL looks like this: `https://huggingface.co/organizations/[organizationIdentifier]/saml/consume`.
+
+<div class="flex justify-center">
+
+</div>
+
+Then under "SAML Certificates", verify that "Signin Option" is set to "Sign SAML response and assertion".
+
+<div class="flex justify-center">
+
+</div>
+
+Save your new application.
+
+## Step 3: Finalize configuration on Hugging Face
+
+In your Azure application, under "Set up", find the following field:
+
+- Login Url
+
+And under "SAML Certificates":
+
+- Download the "Certificate (base64)"
+
+You will need them to finalize the SSO setup on Hugging Face.
+
+<div class="flex justify-center">
+
+</div>
+
+In the SSO section of your organization's settings, copy-paste these values from Azure:
+
+- Login Url -> Sign-on URL
+- Certificate -> Public certificate
+
+The public certificate must have the following format:
+
+```
+-----BEGIN CERTIFICATE-----
+{certificate}
+-----END CERTIFICATE-----
+```
+
+<div class="flex justify-center">
+
+</div>
+
+You can now click on "Update and Test SAML configuration" to save the settings.
+
+You should be redirected to your SSO provider (IdP) login prompt. Once logged in, you'll be redirected to your organization's settings page.
+
+A green check mark near the SAML selector will attest that the test was successful.
+
+<div class="flex justify-center">
+
+
+</div>
+
+## Step 4: Enable SSO in your organization
+
+Now that Single Sign-On is configured and tested, you can enable it for members of your organization by clicking on the "Enable" button.
+
+Once enabled, members of your organization must complete the SSO authentication flow described in the [How it works](./security-sso-basic#how-it-works) section.

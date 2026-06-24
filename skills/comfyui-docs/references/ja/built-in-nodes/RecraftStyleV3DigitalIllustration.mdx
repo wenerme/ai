@@ -1,0 +1,23 @@
+---
+title: "RecraftStyleV3DigitalIllustration - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RecraftStyleV3DigitalIllustration node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+このノードは、Recraft APIで使用するスタイルを設定するもので、特に「digital_illustration（デジタルイラスト）」スタイルを選択します。生成される画像の芸術的な方向性をさらに絞り込むために、オプションのサブスタイルを選択できます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `サブスタイル` | 特定のデジタルイラストの種類を指定するオプションのサブスタイルです。選択しない場合は、基本の「digital_illustration」スタイルが使用されます。 | STRING | いいえ | `"digital_illustration"``"digital_illustration_anime"``"digital_illustration_cartoon"``"digital_illustration_comic"``"digital_illustration_concept_art"``"digital_illustration_fantasy"``"digital_illustration_futuristic"``"digital_illustration_graffiti"``"digital_illustration_graphic_novel"``"digital_illustration_hyperrealistic"``"digital_illustration_ink"``"digital_illustration_manga"``"digital_illustration_minimalist"``"digital_illustration_pixel_art"``"digital_illustration_pop_art"``"digital_illustration_retro"``"digital_illustration_sci_fi"``"digital_illustration_sticker"``"digital_illustration_street_art"``"digital_illustration_surreal"``"digital_illustration_vector"` |
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `recraft_style` | 選択された「digital_illustration」スタイルとオプションのサブスタイルを含む設定済みのスタイルオブジェクトです。他のRecraft APIノードに渡す準備ができています。 | STYLEV3 |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftStyleV3DigitalIllustration/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `e52790a670839608ee1cb576e802a54d3bf2ca879ec288a24acd4ac7db27021a`

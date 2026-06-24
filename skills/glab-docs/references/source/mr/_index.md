@@ -1,0 +1,58 @@
+---
+title: '`glab mr`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create, view, and manage merge requests.
+
+## Synopsis
+
+Open a merge request from your current branch, list and view existing
+merge requests, and manage them: approve, merge, rebase, comment, and
+more.
+
+Use `--repo` to target a project other than the current one.
+
+## Examples
+
+```console
+glab mr create --fill --label bugfix
+glab mr merge 123
+glab mr note -m "needs to do X before it can be merged" branch-foo
+```
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`approve`](approve.md)
+- [`approvers`](approvers.md)
+- [`checkout`](checkout.md)
+- [`close`](close.md)
+- [`create`](create.md)
+- [`delete`](delete.md)
+- [`diff`](diff.md)
+- [`issues`](issues.md)
+- [`list`](list.md)
+- [`merge`](merge.md)
+- [`note`](note/_index.md)
+- [`rebase`](rebase.md)
+- [`reopen`](reopen.md)
+- [`revoke`](revoke.md)
+- [`subscribe`](subscribe.md)
+- [`todo`](todo.md)
+- [`unsubscribe`](unsubscribe.md)
+- [`update`](update.md)
+- [`view`](view.md)

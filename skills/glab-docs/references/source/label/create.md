@@ -1,0 +1,54 @@
+---
+title: '`glab label create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a label in a project.
+
+## Synopsis
+
+Use the flags to set the label name, color, description, and priority.
+The `--name` flag is required; `--color` defaults to
+`#428BCA` if not specified.
+
+By default, the label is created in the current repository. Use
+`--repo` to target another project.
+
+```plaintext
+glab label create [flags]
+```
+
+## Aliases
+
+```plaintext
+new
+```
+
+## Examples
+
+```console
+# Create a label in the current repository
+glab label create --name bug --color "#FF0000" --description "Something is broken"
+
+# Create a label in another project
+glab label create --name bug -R owner/repo
+
+```
+
+## Options
+
+```plaintext
+  -c, --color string         Color of the label, in plain or HEX code. (default "#428BCA")
+  -d, --description string   Label description.
+  -n, --name string          Name of the label.
+  -p, --priority int         Label priority.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

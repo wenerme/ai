@@ -1,0 +1,46 @@
+---
+title: '`glab ssh-key delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Deletes a single SSH key specified by the ID.
+
+## Synopsis
+
+Pass the key ID as an argument, or run the command without arguments
+to select a key interactively. Find key IDs by running `glab ssh-key list --show-id`.
+
+This action is permanent and cannot be undone.
+
+```plaintext
+glab ssh-key delete <key-id> [flags]
+```
+
+## Examples
+
+```console
+# Delete SSH key with ID as argument
+glab ssh-key delete 7750633
+
+# Interactive
+glab ssh-key delete
+
+# Interactive, with pagination
+glab ssh-key delete -P 50 -p 2
+```
+
+## Options
+
+```plaintext
+  -p, --page int       Page number. (default 1)
+  -P, --per-page int   Number of items to list per page. (default 30)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

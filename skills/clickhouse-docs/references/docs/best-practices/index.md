@@ -1,0 +1,11 @@
+---
+keywords: ['Cloud', 'Primary key', 'Ordering key', 'Materialized Views', 'Best Practices', 'Bulk Inserts', 'Asynchronous Inserts', 'Avoid Mutations', 'Avoid nullable Columns', 'Avoid Optimize Final', 'Partitioning Key']
+title: 'Best practices in ClickHouse'
+hide_title: true
+description: 'Landing page for Best Practices section in ClickHouse'
+doc_type: 'landing-page'
+---
+
+This section provides the best practices you will want to follow to get the most out of ClickHouse.
+
+<TableOfContents/>

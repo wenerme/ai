@@ -1,0 +1,60 @@
+---
+title: '`glab ci view`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+View, run, retry, and cancel CI/CD pipeline jobs.
+
+## Synopsis
+
+Supports viewing, running, tracing, and canceling jobs.
+
+Use arrow keys to navigate jobs and logs.
+
+- `Enter` to toggle through a job's logs / traces, or display a child pipeline.
+  Trigger jobs are marked with a `»`.
+- `Esc` or `q` to close the logs or trace, or return to the parent pipeline.
+- `Ctrl+R`, `Ctrl+P` to run, retry, or play a job. Use `Tab` or arrow keys to
+  navigate the modal, and `Enter` to confirm.
+- `Ctrl+D` to cancel a job. If the selected job isn't running or pending,
+  quits the CI/CD view.
+- `Ctrl+Q` to quit the CI/CD view.
+- `Ctrl+Space` to suspend application and view the logs. Similar to `glab ci trace`.
+- Supports `vi` style bindings and arrow keys for navigating jobs and logs.
+
+```plaintext
+glab ci view [<branch | tag>] [flags]
+```
+
+## Examples
+
+```console
+# Use the current branch
+glab ci view
+
+# View the latest pipeline on main
+glab ci view main
+
+# View the latest pipeline on main using a flag
+glab ci view -b main
+
+# View the latest pipeline on main for another project
+glab ci view -b main -R myusername/myproject
+```
+
+## Options
+
+```plaintext
+  -b, --branch string    Check pipeline status for a branch or tag. Defaults to the current branch.
+  -p, --pipelineid int   Check pipeline status for a specific pipeline ID.
+  -w, --web              Open pipeline in a browser. Uses the default browser, or the browser specified in the BROWSER environment variable.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

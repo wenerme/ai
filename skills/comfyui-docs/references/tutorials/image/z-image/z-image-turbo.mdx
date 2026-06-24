@@ -1,0 +1,82 @@
+---
+title: "Z-Image-Turbo ComfyUI Workflow Example"
+description: "Z-Image-Turbo is a distilled 6B parameter efficient image generation model with sub-second inference latency."
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HvaEsnyOfSw?si=bsOQzcL0vsPcaE83" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Z-Image (造相)** is a powerful and highly efficient image generation model with **6B** parameters, developed by Alibaba's Tongyi Lab. It uses a **Scalable Single-Stream DiT** (S3-DiT) architecture where text, visual semantic tokens, and image VAE tokens are concatenated at the sequence level to serve as a unified input stream, maximizing parameter efficiency.
+
+**Model Variants**:
+- 🚀 **Z-Image-Turbo** – A distilled version that matches or exceeds leading competitors with only **8 NFEs** (Number of Function Evaluations). It offers **sub-second inference latency** on enterprise-grade H800 GPUs and fits within **16GB VRAM consumer devices**.
+- 🧱 **Z-Image-Base** – The non-distilled foundation model for community-driven fine-tuning and custom development.
+- ✍️ **Z-Image-Edit** – A variant fine-tuned for image editing tasks with impressive instruction-following capabilities.
+
+**Model Highlights**:
+- **Photorealistic Quality**: Delivers strong photorealistic image generation while maintaining excellent aesthetic quality
+- **Accurate Bilingual Text Rendering**: Excels at accurately rendering complex Chinese and English text
+- **Prompt Enhancing & Reasoning**: Prompt Enhancer empowers the model with reasoning capabilities
+- **Sub-second Inference**: Achieves fast generation speed on supported hardware
+
+**Related Links**:
+- [GitHub](https://github.com/Tongyi-MAI/Z-Image)
+- [Hugging Face](https://huggingface.co/Tongyi-MAI/Z-Image-Turbo)
+
+## Z-Image-Turbo text-to-image workflow
+
+    Download the Z-Image-Turbo text-to-image workflow JSON file.
+  
+
+    Run this workflow directly on ComfyUI Cloud.
+  
+
+### Z-Image-Turbo model downloads
+
+    Text encoder for Z-Image-Turbo.
+  
+
+    Diffusion model for Z-Image-Turbo.
+  
+
+    VAE for Z-Image-Turbo.
+  
+
+**Z-Image-Turbo Model Storage Location**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_turbo_bf16.safetensors
+│   └── 📂 vae/
+│          └── ae.safetensors
+```
+
+## Z-Image-Turbo Fun Union ControlNet workflow
+
+This workflow uses the Z-Image-Turbo Fun Union ControlNet model to generate images with ControlNet guidance. It applies Canny edge detection to a reference image and uses the ControlNet to guide the generation process.
+
+    Download the Z-Image-Turbo Fun Union ControlNet workflow JSON file.
+  
+
+### Additional model for ControlNet
+
+    ControlNet model patch for Z-Image-Turbo.
+  
+
+**Model Storage Location**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_turbo_bf16.safetensors
+│   ├── 📂 vae/
+│   │      └── ae.safetensors
+│   └── 📂 model_patches/
+│          └── Z-Image-Turbo-Fun-Controlnet-Union.safetensors
+```

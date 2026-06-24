@@ -1,0 +1,44 @@
+---
+title: '`glab runner-controller token revoke`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Revoke a token from a runner controller. (EXPERIMENTAL)
+
+## Synopsis
+
+Revokes a token immediately. Prompts for confirmation before revocation.
+Use `--force` to skip the confirmation prompt in non-interactive contexts.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab runner-controller token revoke <controller-id> <token-id> [flags]
+```
+
+## Examples
+
+```console
+# Revoke token 1 from runner controller 42 (with confirmation prompt)
+glab runner-controller token revoke 42 1
+
+# Revoke without confirmation
+glab runner-controller token revoke 42 1 --force
+```
+
+## Options
+
+```plaintext
+  -f, --force   Skip confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

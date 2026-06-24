@@ -1,0 +1,32 @@
+---
+title: "SamplerDPMAdaptative - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the SamplerDPMAdaptative node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The SamplerDPMAdaptative node implements an adaptive DPM (Diffusion Probabilistic Model) sampler that automatically adjusts step sizes during the sampling process. It uses tolerance-based error control to determine optimal step sizes, balancing computational efficiency with sampling accuracy. This adaptive approach helps maintain quality while potentially reducing the number of steps needed.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `order` | The order of the sampler method (default: 3) | INT | Yes | 2-3 |
+| `rtol` | Relative tolerance for error control (default: 0.05) | FLOAT | Yes | 0.0-100.0 |
+| `atol` | Absolute tolerance for error control (default: 0.0078) | FLOAT | Yes | 0.0-100.0 |
+| `h_init` | Initial step size (default: 0.05) | FLOAT | Yes | 0.0-100.0 |
+| `pcoeff` | Proportional coefficient for step size control (default: 0.0) | FLOAT | Yes | 0.0-100.0 |
+| `icoeff` | Integral coefficient for step size control (default: 1.0) | FLOAT | Yes | 0.0-100.0 |
+| `dcoeff` | Derivative coefficient for step size control (default: 0.0) | FLOAT | Yes | 0.0-100.0 |
+| `accept_safety` | Safety factor for step acceptance (default: 0.81) | FLOAT | Yes | 0.0-100.0 |
+| `eta` | Stochasticity parameter (default: 0.0) | FLOAT | Yes | 0.0-100.0 |
+| `s_noise` | Noise scaling factor (default: 1.0) | FLOAT | Yes | 0.0-100.0 |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `sampler` | Returns a configured DPM adaptive sampler instance | SAMPLER |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/SamplerDPMAdaptative/en.md)
+
+---
+**Source fingerprint (SHA-256):** `6f7bc9c02604d2645a3b33aa418c99706228ec5947722a7e45a0a519f7a42a9f`

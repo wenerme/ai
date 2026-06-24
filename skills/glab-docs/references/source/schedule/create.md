@@ -1,0 +1,56 @@
+---
+title: '`glab schedule create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a new pipeline schedule.
+
+## Synopsis
+
+Create a new CI/CD pipeline schedule. The `--cron`, `--description`, and `--ref` flags
+are required:
+
+- `--cron` sets the schedule's recurrence in cron syntax.
+- `--ref` sets the branch or tag the pipeline runs against.
+- `--description` provides a human-readable label.
+
+Use `--variable` to add pipeline variables in `key:value` format.
+Pass `--variable` multiple times to add several variables.
+
+By default, the schedule is created in the current project. Use
+`--repo` to target another project.
+
+```plaintext
+glab schedule create [flags]
+```
+
+## Examples
+
+```console
+# Create a scheduled pipeline that runs every hour
+glab schedule create --cron "0 * * * *" --description "Hourly build" --ref main
+
+# Create a schedule with pipeline variables
+glab schedule create --cron "0 0 * * *" --description "Daily build" --ref main --variable "foo:bar" --variable "baz:qux"
+
+```
+
+## Options
+
+```plaintext
+      --active                Whether or not the schedule is active. (default true)
+      --cron string           Cron interval pattern.
+      --cronTimeZone string   Cron timezone. (default "UTC")
+      --description string    Description of the schedule.
+      --ref string            Target branch or tag.
+      --variable strings      Pass variables to schedule in the format <key>:<value>. Repeat flag for multiple variables.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

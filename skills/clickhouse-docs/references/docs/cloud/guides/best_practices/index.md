@@ -1,0 +1,18 @@
+---
+keywords: ['Cloud', 'Best Practices', 'Bulk Inserts', 'Asynchronous Inserts', 'Avoid Mutations', 'Avoid Nullable Columns', 'Avoid Optimize Final', 'Low Cardinality Partitioning Key', 'Multi Tenancy', 'Usage Limits']
+title: 'Best practices in ClickHouse Cloud'
+hide_title: true
+description: 'Landing page for Best Practices section in ClickHouse Cloud'
+doc_type: 'landing-page'
+---
+
+This section provides best practices you will want to follow to get the most out of ClickHouse Cloud.
+
+| Page                                                     | Description                                                                |
+|----------------------------------------------------------|----------------------------------------------------------------------------|
+| [Usage Limits](/cloud/bestpractices/usage-limits)| Explore the limits of ClickHouse.                                          |
+| [Multi tenancy](/cloud/bestpractices/multi-tenancy)| Learn about different strategies to implement multi-tenancy.                                          |
+
+These are in addition to the standard best practices which apply to all deployments of ClickHouse.
+
+<TableOfContents />

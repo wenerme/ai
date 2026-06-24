@@ -1,0 +1,76 @@
+---
+title: '`glab securefile download`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Download one or more secure files from a project.
+
+## Synopsis
+
+To download a single file, identify it by its numeric ID (as a positional
+argument or with `--id`) or by its name with `--name`. To download every
+secure file in the project (up to a limit of 100), use `--all`.
+
+Use `--path` to save a single download to a specific filename, or
+`--output-dir` to choose the destination directory when downloading
+multiple files.
+
+By default, downloaded files are verified against their checksum.
+Use `--no-verify` to skip verification, or `--force-download` to keep
+files even when verification fails. Both options can allow corrupted
+or tampered files; use with caution.
+
+By default, files are downloaded from the current project. Use
+`--repo` to target another project.
+
+```plaintext
+glab securefile download [<id>] [flags]
+```
+
+## Examples
+
+```console
+# Download a file by ID (positional or flag)
+glab securefile download 1
+glab securefile download --id 1
+
+# Download a file by ID to a specific path
+glab securefile download 1 --path "securefiles/file.txt"
+
+# Download a file by name to the current directory
+glab securefile download --name my-secure-file.pem
+
+# Download a file by name to a chosen path
+glab securefile download --name my-secure-file.pem --path securefiles/some-other-name.pem
+
+# Download without verifying the checksum
+glab securefile download 1 --no-verify
+
+# Download all secure files in the project (up to 100)
+glab securefile download --all
+
+# Download all secure files to a specific directory
+glab securefile download --all --output-dir secure_files/
+
+```
+
+## Options
+
+```plaintext
+      --all                 Download all (limit 100) of a project's secure files. Files are downloaded with their original name and file extension.
+      --force-download      Force download file(s) even if checksum verification fails. Warning: when enabled, this setting allows the download of files that are corrupt or tampered with.
+      --id int              ID of the secure file to download.
+      --name string         Name of the secure file to download. Saves the file with this name, or to the path specified by --path.
+      --no-verify           Do not verify the checksum of the downloaded file(s). Warning: when enabled, this setting allows the download of files that are corrupt or tampered with.
+      --output-dir string   Output directory for files downloaded with --all. (default ".")
+  -p, --path string         Path to download the secure file to, including filename and extension. (default "./downloaded.tmp")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

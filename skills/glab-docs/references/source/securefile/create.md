@@ -1,0 +1,51 @@
+---
+title: '`glab securefile create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Upload a new secure file to a project.
+
+## Synopsis
+
+Provide the name to store the file under, followed by the local path
+to the file to upload.
+
+Secure files are stored outside the project's repository and not in
+version control. Both plain text and binary files are supported, up
+to a maximum size of 5 MB.
+
+By default, the file is uploaded to the current project. Use `--repo`
+to target another project.
+
+```plaintext
+glab securefile create <name> <path> [flags]
+```
+
+## Aliases
+
+```plaintext
+upload
+```
+
+## Examples
+
+```console
+# Upload a secure file from a local path
+glab securefile create "newfile.txt" "securefiles/localfile.txt"
+
+# Upload using the 'upload' alias
+glab securefile upload "newfile.txt" "securefiles/localfile.txt"
+
+# Upload to another project
+glab securefile create "newfile.txt" "securefiles/localfile.txt" -R owner/repo
+
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

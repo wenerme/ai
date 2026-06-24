@@ -1,0 +1,91 @@
+---
+title: Email deliverability
+description: Understand bounce handling and reputation management for optimal email delivery with Email Service.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Email deliverability
+
+Understand bounce handling and reputation management for optimal email delivery.
+
+When you send an email, there is no guarantee it reaches the recipient's inbox. Inbox providers like Gmail, Yahoo, Outlook, and iCloud invest heavily in filtering out unwanted email. If you send poorly targeted emails, have high bounce rates, or trigger spam complaints, these providers may flag your domain as untrustworthy. Once that happens, even your legitimate emails can end up in spam or be blocked outright.
+
+This concept is referred to as email deliverability: maintaining a healthy sending reputation so that inbox providers trust your emails. Cloudflare Email Service helps with this by automatically handling bounces, managing suppression lists, and authenticating your emails through SPF, DKIM, and DMARC.
+
+## Bounces
+
+Bounces occur when emails cannot be delivered to recipients. There are two types of bounces: **hard bounces** and **soft bounces**.
+
+### Hard bounces
+
+Hard bounces are permanent delivery failures that occur when:
+
+* Email address doesn't exist (`user@domain.com` → No such user)
+* Domain does not exist (`user@nonexistentdomain.com`)
+* Recipient server permanently blocks your domain
+* Content rejected as spam by recipient filters
+
+**Hard bounces are never retried** because the failure is permanent. Emails that hard bounce will generate a bounce notification to the sender address and can be monitored through [analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/).
+
+Hard bounced addresses are automatically added to your [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/) to protect your sender reputation.
+
+### Soft bounces
+
+Soft bounces are temporary failures that may succeed if retried:
+
+* Recipient mailbox is full
+* Email server temporarily down
+* Rate limiting or greylisting
+
+Cloudflare automatically retries soft bounces with exponential backoff over an extended period.
+
+## Reputation management
+
+Cloudflare automatically manages:
+
+* **IP reputation**: Managed sending infrastructure optimized for deliverability
+* **Domain authentication**: DKIM signing, SPF alignment, DMARC compliance
+* **Feedback processing**: ISP complaint handling and suppression list management
+
+### Best practices
+
+#### Content and list hygiene
+
+Avoid content that can trigger spam-detection or can be perceived as unwanted content:
+
+* Avoid spam trigger words (FREE, URGENT, GUARANTEED)
+* Include both HTML and plain text versions
+* Use legitimate URLs and clear sender identification
+
+Ensure that your email lists are clean and contain intended recipients:
+
+* Validate emails before sending
+* Implement double opt-in for subscriptions
+* Remove hard bounced addresses immediately
+
+Ensure that your deliverability stays above key metrics to avoid affecting your email sending reputation:
+
+* Delivery rate >95%
+* Hard bounce rate < 2%
+* Complaint rate < 0.1%
+
+#### Use separate domains for separate purposes
+
+Each domain builds its own deliverability reputation with inbox providers. Use separate domains or subdomains for different types of email so that one category does not affect the reputation of another. For example:
+
+* `notifications.yourdomain.com` for transactional emails (order confirmations, password resets)
+* `marketing.yourdomain.com` for marketing and promotional emails
+* `yourdomain.com` for important account-related communications
+
+This way, if marketing emails generate higher complaint rates, your transactional email deliverability is not impacted. Each domain can be onboarded separately through [domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/).
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/deliverability/#page","headline":"Email deliverability · Cloudflare Email Service docs","description":"Understand bounce handling and reputation management for optimal email delivery with Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/deliverability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/concepts/deliverability/","name":"Email deliverability"}}]}
+```

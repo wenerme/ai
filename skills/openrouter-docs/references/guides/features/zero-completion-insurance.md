@@ -1,0 +1,20 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# Zero Completion Insurance
+
+OpenRouter provides zero completion insurance to protect users from being charged for failed or empty responses. When a response contains no output tokens and either has a blank finish reason or an error, you will not be charged for the request, even if the underlying provider charges for prompt processing.
+
+Zero completion insurance is automatically enabled for all accounts and requires no configuration.
+
+## How It Works
+
+Zero completion insurance automatically applies to all requests across all models and providers. When a response meets either of these conditions, no credits will be deducted from your account:
+
+* The response has zero completion tokens AND a blank/null finish reason
+* The response has an error finish reason
+
+## Viewing Protected Requests
+
+On your activity page, requests that were protected by zero completion insurance will show zero credits deducted. This applies even in cases where OpenRouter may have been charged by the provider for prompt processing.

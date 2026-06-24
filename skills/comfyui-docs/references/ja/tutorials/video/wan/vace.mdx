@@ -1,0 +1,104 @@
+---
+title: "ComfyUI Wan2.1 VACE 動画サンプル"
+description: "本記事では、ComfyUI で Wan VACE 動画生成のサンプルを完了する方法を紹介します。"
+translationSourceHash: 379bd35f
+translationFrom: tutorials/video/wan/vace.mdx
+---
+
+テンプレートの調整および CausVid LoRA に関する使用方法・説明の追加を行ったため、本ドキュメントは更新が必要です。更新作業には一定の準備期間が必要となるため、その間はテンプレート内の注記を参照してご使用ください。
+
+## VACE について
+
+VACE 14B は、アリババ Tongyi Wanxiang チームが公開したオープンソースの統合型動画編集モデルです。このモデルは、複数のタスクを統合した機能、高解像度処理のサポート、および柔軟なマルチモーダル入力機構を備えており、動画制作の効率性と品質を大幅に向上させます。
+
+本モデルは [Apache-2.0](https://github.com/ali-vilab/VACE?tab=Apache-2.0-1-ov-file) ライセンスの下でオープンソース化されており、個人利用および商用利用が可能です。
+
+以下に、その主な特徴および技術的ハイライトを総合的に解説します：
+
+- マルチモーダル入力：テキスト、画像、動画、マスク、制御信号など、複数の入力形式をサポート
+- 統合アーキテクチャ：単一のモデルで複数のタスクをサポートし、機能を自由に組み合わせ可能
+- モーション転送：参照動画に基づいて連続的かつ自然な動作を生成
+- 局所的置換：マスクを用いて動画内の特定領域を置換
+- 動画拡張：動作の補完や背景の延長を実行
+- 背景置換：被写体を保持したまま、環境の背景を変更
+
+現在、VACE は 1.3B および 14B の 2 つのバージョンをリリースしています。1.3B バージョンと比較して、14B バージョンは 720P 解像度での出力をサポートし、画質のディテールと安定性が向上しています。
+
+| モデル                                                       | 480P | 720P |
+| ----------------------------------------------------------- | ---- | ---- |
+| [VACE-1.3B](https://huggingface.co/Wan-AI/Wan2.1-VACE-1.3B) | ✅   | ❌   |
+| [VACE-14B](https://huggingface.co/Wan-AI/Wan2.1-VACE-14B)   | ✅   | ✅   |
+
+関連するモデル重みおよびコードリポジトリ：
+
+- [VACE-1.3B](https://huggingface.co/Wan-AI/Wan2.1-VACE-1.3B)
+- [VACE-14B](https://huggingface.co/Wan-AI/Wan2.1-VACE-14B)
+- [Github](https://github.com/ali-vilab/VACE)
+- [VACE プロジェクトホームページ](https://ali-vilab.github.io/VACE-Page/)
+
+## モデルのダウンロードおよびワークフローへの読み込み
+
+本ドキュメントで紹介するすべてのワークフローは同一のテンプレートを使用しているため、まずモデルのダウンロードおよび読み込み手順を説明し、その後、異なるノードを Bypass（無効化）することで、各種入力の有効／無効を切り替えて、異なるワークフローを実現できます。  
+なお、具体的なサンプルワークフローの情報内には既にモデルのダウンロード情報が埋め込まれているため、サンプルワークフローをダウンロードする際に同時にモデルも取得できます。
+
+### モデルのダウンロード
+**diffusion_models**  
+[wan2.1_vace_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)  
+[wan2.1_vace_1.3B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors)  
+
+以前に Wan Video 関連のワークフローをご利用になったことがある場合、以下のモデルファイルはすでにダウンロード済みです。
+
+**VAE**  
+- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)
+
+**Text encoders** からいずれか 1 つのバージョンを選択してダウンロードしてください：  
+- [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)  
+- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true)
+
+ファイルの保存先：
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └─── wan2.1_vace_14B_fp16.safetensors
+│   ├── 📂 text_encoders/
+│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors # または umt5_xxl_fp16.safetensors
+│   └── 📂 vae/
+│       └──  wan_2.1_vae.safetensors
+```
+
+### モデルの読み込み
+
+本ドキュメントで扱うワークフローでは、使用するモデルが共通であり、ワークフロー自体も同一であるため、各ワークフローにおいて異なる入力を有効／無効にするためにノードの Bypass を切り替えるだけです。以下の画像を参考に、それぞれのワークフローで対応するモデルが正しく読み込まれていることを確認してください。
+
+[Wan2.1 VACE モデル読み込み]
+
+1. `Load Diffusion Model` ノードが `wan2.1_vace_14B_fp16.safetensors` を読み込んでいることを確認してください  
+2. `Load CLIP` ノードが `umt5_xxl_fp8_e4m3fn_scaled.safetensors` または `umt5_xxl_fp16.safetensors` を読み込んでいることを確認してください  
+3. `Load VAE` ノードが `wan_2.1_vae.safetensors` を読み込んでいることを確認してください  
+
+<CancelBypass/>
+
+## VACE テキストから動画へ（Text-to-Video）ワークフロー
+
+MP4 ファイルからワークフローを読み込めない場合は、ComfyUI のフロントエンドが最新版であることを確認してください。[requirements.txt](https://github.com/Comfy-Org/ComfyUI/blob/master/requirements.txt) をご参照ください。MP4 ファイルからのワークフロー読み込みが可能であることを確認してください。
+
+現在、requirements.txt に記載されている最新の ComfyUI フロントエンドバージョンは 1.19.9 です。
+
+### 1. ワークフローのダウンロード  
+以下の動画をダウンロードし、ComfyUI にドラッグ＆ドロップすることで、対応するワークフローを読み込んでください。
+
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://github.com/Comfy-Org/example_workflows/raw/refs/heads/main/video/wan/vace/vace-t2v.mp4"
+></video>
+
+### 2. ステップ・バイ・ステップでワークフローを完了する
+
+[image]
+
+画像中の番号順に操作を行い、ワークフローがスムーズに実行されるようご確認ください。
+
+1. `CLIP Text Encode (Positive Prompt)` ノードにポジティブプロンプトを入力してください  
+2. `

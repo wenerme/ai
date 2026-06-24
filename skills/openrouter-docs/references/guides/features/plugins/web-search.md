@@ -1,0 +1,324 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# Web Search
+
+For improved quality results, try the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search). Server tools give the model control over when and how often to search, rather than always running once per request.
+
+You can incorporate relevant web search results for *any* model on OpenRouter by activating and customizing the `web` plugin, or by appending `:online` to the model slug:
+
+```json
+{
+  "model": "openai/gpt-5.2:online"
+}
+```
+
+You can also append `:online` to `:free` model variants like so:
+
+```json
+{
+  "model": "openai/gpt-oss-20b:free:online"
+}
+```
+
+Using web search will incur extra costs, even with free models. See the [pricing section](#pricing) below for details.
+
+`:online` is a shortcut for using the `web` plugin, and is exactly equivalent to:
+
+```json
+{
+  "model": "openrouter/auto",
+  "plugins": [{ "id": "web" }]
+}
+```
+
+The web search plugin is powered by native search for Anthropic, Google, OpenAI, Perplexity, and xAI models. See the [server tools web search docs](/docs/guides/features/server-tools/web-search#native-search-providers) for the full list of supported model families per provider.
+
+For xAI models, the web search plugin enables both Web Search and X Search.
+
+For other models, the web search plugin is powered by [Exa](https://exa.ai). It uses their ["auto"](https://docs.exa.ai/reference/how-exa-search-works#combining-neural-and-keyword-the-best-of-both-worlds-through-exa-auto-search) method (a combination of keyword search and embeddings-based web search) to find the most relevant results and augment/ground your prompt. For each result, OpenRouter requests Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) — extractive excerpts drawn from the page that Exa selects as most relevant to the search query, sized adaptively (typically \~2,000–4,000 characters per result). These are returned to the model and surfaced via `url_citation` annotations, with Exa's `[...]` markers separating excerpts that come from different parts of the same page.
+
+## Parsing web search results
+
+Web search results for all models (including native-only models like Perplexity and OpenAI Online) are available in the API and standardized by OpenRouter to follow the same annotation schema in the [OpenAI Chat Completion Message type](https://platform.openai.com/docs/api-reference/chat/object):
+
+```json
+{
+  "message": {
+    "role": "assistant",
+    "content": "Here's the latest news I found: ...",
+    "annotations": [
+      {
+        "type": "url_citation",
+        "url_citation": {
+          "url": "https://www.example.com/web-search-result",
+          "title": "Title of the web search result",
+          "content": "Content of the web search result", // Added by OpenRouter if available
+          "start_index": 100, // The index of the first character of the URL citation in the message.
+          "end_index": 200 // The index of the last character of the URL citation in the message.
+        }
+      }
+    ]
+  }
+}
+```
+
+## Customizing the Web Plugin
+
+The maximum results allowed by the web plugin and the prompt used to attach them to your message stream can be customized:
+
+```json
+{
+  "model": "openai/gpt-5.2:online",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "exa", // Optional: "native", "exa", "firecrawl", "parallel", "perplexity", or undefined
+      "max_results": 1, // Defaults to 5
+      "search_prompt": "Some relevant web results:", // See default below
+      "include_domains": ["example.com", "*.substack.com"], // Optional
+      "exclude_domains": ["reddit.com"] // Optional
+    }
+  ]
+}
+```
+
+By default, the web plugin uses the following search prompt, using the current date:
+
+```
+A web search was conducted on `date`. Incorporate the following web search results into your response.
+
+IMPORTANT: Cite them using markdown links named using the domain of the source.
+Example: [nytimes.com](https://nytimes.com/some-page).
+```
+
+## Domain Filtering
+
+You can restrict which domains appear in web search results using `include_domains` and `exclude_domains`:
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "include_domains": ["example.com", "*.substack.com"],
+      "exclude_domains": ["reddit.com"]
+    }
+  ]
+}
+```
+
+Both fields accept an array of domain strings. You can use wildcards (`*.substack.com`) and path filtering (`openai.com/blog`).
+
+### Engine Compatibility
+
+| Engine         | `include_domains` | `exclude_domains` | Notes                                                           |
+| -------------- | :---------------: | :---------------: | --------------------------------------------------------------- |
+| **Exa**        |        Yes        |        Yes        | Both can be used simultaneously                                 |
+| **Parallel**   |        Yes        |        Yes        | Either can be used, they are mutually exclusive                 |
+| **Perplexity** |        Yes        |        Yes        | Mutually exclusive (when both provided, `include_domains` wins) |
+| **Native**     |       Varies      |       Varies      | See provider notes below                                        |
+| **Firecrawl**  |        Yes        |        Yes        | Mutually exclusive (cannot use both at once)                    |
+
+### Native Provider Behavior
+
+When using native search, domain filter support depends on the provider:
+
+* **Anthropic**: Supports both `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both at once
+* **Google**: Domain filtering is not supported. With the default engine (auto), OpenRouter falls back to Exa when filters are set. With `"engine": "native"`, returns a 400 error
+* **OpenAI**: Supports `include_domains` only; `exclude_domains` is silently ignored
+* **xAI**: Supports both, but they are mutually exclusive with a maximum of 5 domains each
+
+## X Search Filters (xAI only)
+
+When using xAI models with web search enabled,
+OpenRouter automatically adds the `x_search` tool
+alongside `web_search`. You can pass filter
+parameters to control X/Twitter search results
+using the top-level `x_search_filter` parameter:
+
+```json
+{
+  "model": "x-ai/grok-4.1-fast",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What are people saying about OpenRouter?"
+    }
+  ],
+  "plugins": [{ "id": "web" }],
+  "x_search_filter": {
+    "allowed_x_handles": ["OpenRouterAI"],
+    "from_date": "2025-01-01",
+    "to_date": "2025-12-31"
+  }
+}
+```
+
+### Filter Parameters
+
+| Parameter                    | Type      | Description                                                 |
+| ---------------------------- | --------- | ----------------------------------------------------------- |
+| `allowed_x_handles`          | string\[] | Only include posts from these handles (max 10)              |
+| `excluded_x_handles`         | string\[] | Exclude posts from these handles (max 10)                   |
+| `from_date`                  | string    | Start date for search range (ISO 8601, e.g. `"2025-01-01"`) |
+| `to_date`                    | string    | End date for search range (ISO 8601, e.g. `"2025-12-31"`)   |
+| `enable_image_understanding` | boolean   | Enable analysis of images within posts                      |
+| `enable_video_understanding` | boolean   | Enable analysis of videos within posts                      |
+
+`allowed_x_handles` and `excluded_x_handles` are
+mutually exclusive — you cannot use both in the
+same request. If validation fails, the filter is
+silently dropped and a basic `x_search` tool is
+used instead.
+
+## Engine Selection
+
+The web search plugin supports the following options for the `engine` parameter:
+
+* **`native`**: Always uses the model provider's built-in web search capabilities
+* **`exa`**: Uses Exa's search API for web results
+* **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s search API
+* **`parallel`**: Uses [Parallel](https://parallel.ai)'s search API for web results
+* **`perplexity`**: Uses the [Perplexity](https://docs.perplexity.ai/api-reference/search-post) Search API for ranked web results
+* **`undefined` (not specified)**: Uses native search if available for the provider, otherwise falls back to Exa
+
+### Default Behavior
+
+When the `engine` parameter is not specified:
+
+* **Native search is used by default** for OpenAI, Anthropic, Google, Perplexity, and xAI models that support it
+* **Exa search is used** for all other models or when native search is not supported
+
+When you explicitly specify `"engine": "native"`, it will always attempt to use the provider's native search, even if the model doesn't support it (which may result in an error).
+
+### Forcing Engine Selection
+
+You can explicitly specify which engine to use:
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "native"
+    }
+  ]
+}
+```
+
+Or force Exa search even for models that support native search:
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "exa",
+      "max_results": 3
+    }
+  ]
+}
+```
+
+### Firecrawl
+
+Firecrawl is a BYOK (bring your own key) search engine. To use it:
+
+1. Go to your [OpenRouter plugin settings](https://openrouter.ai/settings/plugins) and select Firecrawl as the web search engine
+2. Accept the [Firecrawl Terms of Service](https://www.firecrawl.dev/terms-of-service) — this automatically creates a Firecrawl account linked to your email
+3. Your account starts with **10,000 free credits** (credits expire after 3 months)
+
+Once set up, Firecrawl searches use your Firecrawl credits directly — there is no additional charge from OpenRouter. Each search costs 2 credits per 10 results, plus 5 credits per result scraped (1 base scrape + 4 for [highlights extraction](https://docs.firecrawl.dev/features/scrape#output-formats)). See [Firecrawl pricing](https://www.firecrawl.dev/pricing) for details.
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "firecrawl",
+      "max_results": 5
+    }
+  ]
+}
+```
+
+Firecrawl supports `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both in the same request.
+
+### Parallel
+
+[Parallel](https://parallel.ai) is a search engine that supports domain filtering and uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result.
+
+```json
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "parallel",
+      "max_results": 5,
+      "include_domains": ["arxiv.org"]
+    }
+  ]
+}
+```
+
+### Engine-Specific Pricing
+
+* **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
+* **Exa search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results, then \$0.001 per additional result
+* **Parallel search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result
+* **Perplexity search**: Uses OpenRouter credits at \$0.005 per request
+* **Firecrawl search**: Uses your Firecrawl credits directly (2 credits per 10 results + 5 per result scraped with highlights). Refill at [Firecrawl.dev](https://www.firecrawl.dev)
+
+## Pricing
+
+### Exa Search Pricing
+
+When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges *\$0.005 per request*. This includes up to 10 results; additional results are charged at \$0.001 each, in addition to the LLM usage for the search result prompt tokens.
+
+### Native Search Pricing (Provider Passthrough)
+
+Some models have built-in web search. These models charge a fee based on the search context size, which determines how much search data is retrieved and processed for a query.
+
+### Search Context Size Thresholds
+
+Search context can be 'low', 'medium', or 'high' and determines how much search context is retrieved for a query:
+
+* **Low**: Minimal search context, suitable for basic queries
+* **Medium**: Moderate search context, good for general queries
+* **High**: Extensive search context, ideal for detailed research
+
+### Specifying Search Context Size
+
+You can specify the search context size in your API request using the `web_search_options` parameter:
+
+```json
+{
+  "model": "openai/gpt-4.1",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What are the latest developments in quantum computing?"
+    }
+  ],
+  "web_search_options": {
+    "search_context_size": "high"
+  }
+}
+```
+
+Refer to each provider's documentation for their native web search pricing info:
+
+* [OpenAI Pricing](https://platform.openai.com/docs/pricing#built-in-tools)
+* [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
+* [Google Pricing](https://ai.google.dev/pricing)
+* [Perplexity Pricing](https://docs.perplexity.ai/getting-started/pricing)
+* [xAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
+
+Native web search pricing only applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing applies instead.

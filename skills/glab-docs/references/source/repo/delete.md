@@ -1,0 +1,50 @@
+---
+title: '`glab repo delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete an existing project on GitLab.
+
+## Synopsis
+
+Delete an existing project on GitLab.
+
+This permanently deletes the entire project, including:
+
+- The Git repository.
+- Issues and merge requests.
+- Wiki pages.
+- CI/CD pipelines and job artifacts.
+- Other project content and settings.
+
+This action cannot be undone.
+
+```plaintext
+glab repo delete [<NAMESPACE>/]<NAME> [flags]
+```
+
+## Examples
+
+```console
+# Delete a personal project.
+glab repo delete dotfiles
+
+# Delete a project in a GitLab group, or another project
+# you have write access to:
+glab repo delete mygroup/dotfiles
+glab repo delete myorg/mynamespace/dotfiles
+```
+
+## Options
+
+```plaintext
+  -y, --yes   Skip the confirmation prompt and immediately delete the project.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

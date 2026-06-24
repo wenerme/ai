@@ -1,0 +1,17 @@
+name: Schedule Update Skills
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"   # 08:00 UTC+8
+    - cron: "0 10 * * *"  # 18:00 UTC+8
+
+concurrency:
+  group: update-skills
+  cancel-in-progress: false
+
+jobs:
+  update:
+    permissions:
+      contents: write
+    uses: wenerme/ai/.github/workflows/update-skills.yaml@develop

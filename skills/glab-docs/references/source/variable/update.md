@@ -1,0 +1,50 @@
+---
+title: '`glab variable update`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Update an existing variable for a project or group.
+
+## Synopsis
+
+You can pass the variable value from standard input. Use `--group`
+to update a variable for a group instead of the current project.
+The `--scope` flag does not apply to group variables.
+
+```plaintext
+glab variable update <key> <value> [flags]
+```
+
+## Examples
+
+```console
+glab variable update WITH_ARG "some value"
+glab variable update FROM_FLAG -v "some value"
+glab variable update FROM_ENV_WITH_ARG "${ENV_VAR}"
+glab variable update FROM_ENV_WITH_FLAG -v"${ENV_VAR}"
+glab variable update FROM_FILE < secret.txt
+cat file.txt | glab variable update SERVER_TOKEN
+cat token.txt | glab variable update GROUP_TOKEN -g mygroup --scope=prod
+```
+
+## Options
+
+```plaintext
+  -d, --description string   Set description of a variable.
+  -g, --group string         Set variable for a group.
+  -m, --masked               Whether the variable is masked.
+  -p, --protected            Whether the variable is protected.
+  -r, --raw                  Whether the variable is treated as a raw string.
+  -s, --scope string         The environment_scope of the variable. Values: all (*), or specific environments. (default "*")
+  -t, --type string          The type of a variable: env_var, file. (default "env_var")
+  -v, --value string         The value of a variable.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

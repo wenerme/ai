@@ -1,0 +1,43 @@
+---
+title: '`glab cluster agent get-token`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a personal access token for a GitLab Agent for Kubernetes.
+
+## Synopsis
+
+The token has the `k8s_proxy` scope and is valid until the end of the current day.
+
+You might receive an email from your GitLab instance that a new personal
+access token has been created.
+
+```plaintext
+glab cluster agent get-token [flags]
+```
+
+## Examples
+
+```console
+# Get a token for agent 123
+glab cluster agent get-token --agent 123
+```
+
+## Options
+
+```plaintext
+  -a, --agent int                        The numerical Agent ID to connect to.
+  -c, --cache-mode string                Mode to use for caching the token. Allowed values: keyring-filesystem-fallback, force-keyring, force-filesystem, no. (default "force-keyring")
+      --check-revoked                    Check if a cached token is revoked. This requires an API call to GitLab which adds latency every time a cached token is accessed.
+      --jq string                        Filter JSON output with a jq expression.
+      --token-expiry-duration duration   Duration for how long the generated tokens should be valid for. Minimum is 1 day and the effective expiry is always at the end of the day, the time is ignored. (default 24h0m0s)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

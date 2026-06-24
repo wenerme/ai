@@ -1,0 +1,55 @@
+---
+title: '`glab milestone get`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Get a milestone by ID in a project or group.
+
+## Synopsis
+
+Get information about a single milestone in a project or group,
+identified by its numeric ID. Use `--output json` to format the result
+as JSON for use with other tools.
+
+By default, the milestone is looked up in the current project. Use
+`--project` to target a different project, or `--group` to look up a
+group-level milestone. `--project` and `--group` are mutually exclusive.
+
+```plaintext
+glab milestone get [<id>] [flags]
+```
+
+## Examples
+
+```console
+# Get a milestone from the current project
+glab milestone get 123
+
+# Get a milestone from a different project
+glab milestone get 123 --project owner/project
+
+# Get a group milestone
+glab milestone get 123 --group example-group
+
+# Get a milestone as JSON
+glab milestone get 123 --output json
+
+```
+
+## Options
+
+```plaintext
+      --group string     The ID or URL-encoded path of the group.
+      --jq string        Filter JSON output with a jq expression.
+  -F, --output string    Format output as: text, json. (default "text")
+      --project string   The ID or URL-encoded path of the project.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

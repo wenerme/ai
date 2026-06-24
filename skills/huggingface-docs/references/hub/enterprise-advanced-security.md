@@ -1,0 +1,29 @@
+# Advanced Security
+
+> [!WARNING]
+> This feature is part of the <a href="https://huggingface.co/enterprise">Team & Enterprise</a> plans.
+
+Team & Enterprise organizations can improve their security with advanced security controls for both members and repositories.
+
+<div class="flex justify-center" style="max-width: 550px">
+    [screenshot of the Organization settings page for Advanced security.]
+    [screenshot of the Organization settings page for Advanced security in dark mode.]
+</div>
+
+## Members Security
+
+Configure additional security settings to protect your organization:
+
+- **Two-Factor Authentication (2FA)**: Require all organization members to enable 2FA for enhanced account security.
+- **User Approval**: For organizations with a verified domain name, require admin approval for new users with matching email addresses. This adds a verified badge to your organization page.
+- **Hide members list**: When enabled, the list of members will not be visible on the organization page. Note that users can potentially find organization membership information through other means, so do not use for critical use cases.
+
+## Repository Visibility Controls
+
+Manage the default visibility of repositories in your organization:
+
+- **Public by default**: New repositories are created with public visibility
+- **Private by default**: New repositories are created with private visibility. Note that changing this setting will not affect existing repositories.
+- **Private only**: Enforce private visibility for all new repositories, with only organization admins able to change visibility settings
+
+These settings help organizations maintain control of their ownership while enabling collaboration when needed.

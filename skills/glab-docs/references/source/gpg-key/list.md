@@ -1,0 +1,43 @@
+---
+title: '`glab gpg-key list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Get a list of GPG keys for the currently authenticated user.
+
+## Synopsis
+
+Each row shows the key and its creation date. Pass `--show-id` to
+also display the key ID, which the `get` and `delete` commands accept
+as an argument.
+
+```plaintext
+glab gpg-key list [flags]
+```
+
+## Examples
+
+```console
+# List your GPG keys
+glab gpg-key list
+
+# Include the key ID in the output
+glab gpg-key list --show-id
+```
+
+## Options
+
+```plaintext
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+      --show-id         Shows IDs of GPG keys.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

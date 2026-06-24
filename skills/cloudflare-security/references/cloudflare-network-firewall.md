@@ -1,0 +1,50 @@
+---
+title: Cloudflare Network Firewall
+description: Filter and inspect network traffic with Cloudflare Network Firewall.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Cloudflare Network Firewall
+
+Filter and block unwanted traffic at Cloudflare's global network, before it reaches your infrastructure.
+
+ Enterprise-only
+
+Cloudflare Network Firewall (formerly Magic Firewall) is a firewall-as-a-service (FWaaS) delivered from the Cloudflare global network to protect office networks and cloud infrastructure with advanced, scalable protection. With Cloudflare Network Firewall, you can apply filter rules on a variety of criteria, such as protocol and packet length, to filter unwanted traffic before it reaches your network.
+
+Rules are written using the [Cloudflare Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/), which is inspired by Wireshark syntax, a widely used packet analysis filter language and the same syntax used across our other products. With this syntax, you can craft powerful rules to precisely allow or deny any traffic in or out of your network.
+
+Cloudflare Network Firewall is available with the purchase of [Magic Transit](https://developers.cloudflare.com/magic-transit/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/).
+
+---
+
+## Features
+
+###  Intrusion Detection System (IDS)
+
+Actively monitor for a wide range of known threat signatures in your traffic, expanding your security coverage beyond packet-filtering rules to detect sophisticated attacks such as ransomware, data exfiltration, and network scanning.
+
+[ Use Intrusion Detection System (IDS) ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/)
+
+---
+
+## Related products
+
+**[Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/)**
+
+Secure your network from incoming Internet traffic, and improve performance at Cloudflare scale.
+
+**[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)**
+
+Improve security and performance for your entire corporate networking, reducing cost and operation complexity.
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/#page","headline":"Overview · Cloudflare Network Firewall docs","description":"Filter and inspect network traffic with Cloudflare Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}}]}
+```

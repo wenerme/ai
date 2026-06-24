@@ -1,0 +1,31 @@
+---
+title: "WavespeedFlashVSRNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the WavespeedFlashVSRNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+## 概述
+
+WavespeedFlashVSRNode 是一款快速、高质量的视频超分辨率节点，可提升低分辨率或模糊视频的分辨率并恢复清晰度。它处理视频输入，并以用户选择的更高分辨率输出新视频。
+
+## 输入
+
+| 参数 | 描述 | 数据类型 | 是否必填 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `video` | 待超分辨率的输入视频文件。必须为 MP4 容器格式，时长在 5 秒至 10 分钟之间。 | VIDEO | 是 | 不适用 |
+| `target_resolution` | 超分辨率输出视频的目标分辨率。 | STRING | 是 | `"720p"``"1080p"``"2K"``"4K"` |
+
+**输入约束：**
+
+* 输入 `video` 文件必须为 MP4 容器格式。
+* 输入 `video` 的时长必须在 5 秒至 10 分钟（600 秒）之间。
+
+## 输出
+
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `output` | 以所选目标分辨率输出的超分辨率视频文件。 | VIDEO |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WavespeedFlashVSRNode/zh.md)
+
+---
+**Source fingerprint (SHA-256):** `9a495889753ac866177921727228846d8ef9516c54ccd9aa425350b87237c397`

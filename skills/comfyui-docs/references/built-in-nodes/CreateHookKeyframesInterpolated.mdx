@@ -1,0 +1,30 @@
+---
+title: "CreateHookKeyframesInterpolated - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the CreateHookKeyframesInterpolated node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+Creates a sequence of hook keyframes with interpolated strength values between a start and end point. The node generates multiple keyframes that smoothly transition the strength parameter across a specified percentage range of the generation process, using various interpolation methods to control the transition curve.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `strength_start` | The starting strength value for the interpolation sequence (default: 1.0) | FLOAT | Yes | 0.0 - 10.0 |
+| `strength_end` | The ending strength value for the interpolation sequence (default: 1.0) | FLOAT | Yes | 0.0 - 10.0 |
+| `interpolation` | The interpolation method used to transition between strength values (default: LINEAR) | COMBO | Yes | `LINEAR``EASE_IN``EASE_OUT``EASE_IN_OUT``EASE_OUT_IN``SINE``CUBIC``QUARTIC``QUINTIC``EXPO``CIRC``BACK``BOUNCE``ELASTIC` |
+| `start_percent` | The starting percentage position in the generation process (default: 0.0) | FLOAT | Yes | 0.0 - 1.0 |
+| `end_percent` | The ending percentage position in the generation process (default: 1.0) | FLOAT | Yes | 0.0 - 1.0 |
+| `keyframes_count` | The number of keyframes to generate in the interpolation sequence (default: 5) | INT | Yes | 2 - 100 |
+| `print_keyframes` | Whether to print generated keyframe information to the log (default: False) | BOOLEAN | Yes | True/False |
+| `prev_hook_kf` | Optional previous hook keyframes group to append to | HOOK_KEYFRAMES | No | - |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `HOOK_KF` | The generated hook keyframes group containing the interpolated sequence | HOOK_KEYFRAMES |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/CreateHookKeyframesInterpolated/en.md)
+
+---
+**Source fingerprint (SHA-256):** `f90c96745ca1f02bbb02e08d2d82be1bbb1f3c80ac5d53a4c6bc07a0e2b8d76f`

@@ -1,0 +1,37 @@
+---
+title: "TextEncodeAceStepAudio1.5 - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the TextEncodeAceStepAudio1.5 node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+The TextEncodeAceStepAudio1.5 node prepares text and audio-related metadata for use with the AceStepAudio 1.5 model. It takes descriptive tags, lyrics, and musical parameters, then uses a CLIP model to convert them into a conditioning format suitable for audio generation.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `clip` | The CLIP model used to tokenize and encode the input text. | CLIP | Yes | N/A |
+| `tags` | Descriptive tags for the audio, such as genre, mood, or instruments. Supports multiline input and dynamic prompts. | STRING | Yes | N/A |
+| `lyrics` | The lyrics for the audio track. Supports multiline input and dynamic prompts. | STRING | Yes | N/A |
+| `seed` | A random seed value for reproducible generation. Has a control_after_generate widget. Default: 0. | INT | No | 0 to 18446744073709551615 |
+| `bpm` | The beats per minute (BPM) for the generated audio. Default: 120. | INT | No | 10 to 300 |
+| `duration` | The desired duration of the audio in seconds. Default: 120.0. | FLOAT | No | 0.0 to 2000.0 |
+| `timesignature` | The musical time signature. | COMBO | No | `"2"``"3"``"4"``"6"` |
+| `language` | The language of the input text. Default: "en". | COMBO | No | `"ar"``"az"``"bg"``"bn"``"ca"``"cs"``"da"``"de"``"el"``"en"``"es"``"fa"``"fi"``"fr"``"he"``"hi"``"hr"``"ht"``"hu"``"id"``"is"``"it"``"ja"``"ko"``"la"``"lt"``"ms"``"ne"``"nl"``"no"``"pa"``"pl"``"pt"``"ro"``"ru"``"sa"``"sk"``"sr"``"sv"``"sw"``"ta"``"te"``"th"``"tl"``"tr"``"uk"``"ur"``"vi"``"yue"``"zh"``"unknown"` |
+| `keyscale` | The musical key and scale (major or minor). | COMBO | No | `"C major"``"C minor"``"C# major"``"C# minor"``"Db major"``"Db minor"``"D major"``"D minor"``"D# major"``"D# minor"``"Eb major"``"Eb minor"``"E major"``"E minor"``"F major"``"F minor"``"F# major"``"F# minor"``"Gb major"``"Gb minor"``"G major"``"G minor"``"G# major"``"G# minor"``"Ab major"``"Ab minor"``"A major"``"A minor"``"A# major"``"A# minor"``"Bb major"``"Bb minor"``"B major"``"B minor"` |
+| `generate_audio_codes` | Enable the LLM that generates audio codes. This can be slow but will increase the quality of the generated audio. Turn this off if you are giving the model an audio reference. Default: True. | BOOLEAN | No | N/A |
+| `cfg_scale` | The classifier-free guidance scale. Higher values make the output more closely follow the prompt. Default: 2.0. | FLOAT | No | 0.0 to 100.0 |
+| `temperature` | A sampling temperature. Lower values make the output more deterministic. Default: 0.85. | FLOAT | No | 0.0 to 2.0 |
+| `top_p` | The nucleus sampling probability (top-p). Default: 0.9. | FLOAT | No | 0.0 to 2000.0 |
+| `top_k` | The number of highest probability tokens to consider (top-k). Default: 0. | INT | No | 0 to 100 |
+| `min_p` | The minimum probability threshold for token sampling (min-p). Default: 0.000. | FLOAT | No | 0.0 to 1.0 |
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `CONDITIONING` | The conditioning data, which contains the encoded text and audio parameters for the AceStepAudio 1.5 model. | CONDITIONING |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextEncodeAceStepAudio1.5/en.md)
+
+---
+**Source fingerprint (SHA-256):** `cf948180c3576cd484593f03e849c04857cfb57a198071123ed44ec7b5067521`

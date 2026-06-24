@@ -1,0 +1,49 @@
+---
+title: '`glab label edit`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Edit a label in a project.
+
+## Synopsis
+
+Edit an existing label in a project. The `--label-id` flag is required
+to identify the label to update. At least one of `--new-name` or
+`--color` must be provided; `--description` and `--priority` are optional.
+
+By default, the label is edited in the current repository. Use
+`--repo` to target another project.
+
+```plaintext
+glab label edit [flags]
+```
+
+## Examples
+
+```console
+# Rename a label in the current repository
+glab label edit --label-id 1234 --new-name critical
+
+# Change a label's color and description in another project
+glab label edit --label-id 1234 --color "#FF0000" --description "Top priority" -R owner/repo
+
+```
+
+## Options
+
+```plaintext
+  -c, --color string         The color of the label given in 6-digit hex notation with leading ‘#’ sign.
+  -d, --description string   Label description.
+  -l, --label-id int         The label ID we are updating.
+  -n, --new-name string      The new name of the label.
+  -p, --priority int         Label priority.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

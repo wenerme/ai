@@ -1,0 +1,40 @@
+---
+title: "MagnificImageStyleTransferNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the MagnificImageStyleTransferNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+このノードは、参照画像から視覚的なスタイルを抽出し、入力画像に適用します。外部のAIサービスを使用して画像を処理し、スタイル変換の強度や元画像の構造保持度合いを制御できます。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `image` | スタイル変換を適用する画像です。 | IMAGE | はい | - |
+| `reference_image` | スタイルを抽出するための参照画像です。 | IMAGE | はい | - |
+| `prompt` | スタイル変換をガイドするオプションのテキストプロンプトです。 | STRING | いいえ | - |
+| `style_strength` | スタイルの強度のパーセンテージです（デフォルト：100）。 | INT | いいえ | 0～100 |
+| `structure_strength` | 元画像の構造を維持する度合いです（デフォルト：50）。 | INT | いいえ | 0～100 |
+| `flavor` | スタイル変換のフレーバーです。 | COMBO | いいえ | "faithful""gen_z""psychedelia""detaily""clear""donotstyle""donotstyle_sharp" |
+| `engine` | 処理エンジンの選択です。 | COMBO | いいえ | "balanced""definio""illusio""3d_cartoon""colorful_anime""caricature""real""super_real""softy" |
+| `portrait_mode` | 顔の補正を行うポートレートモードを有効にします。 | COMBO | いいえ | "disabled""enabled" |
+| `portrait_style` | ポートレート画像に適用する視覚スタイルです。この入力は、`portrait_mode`が"enabled"に設定されている場合のみ使用可能です。 | COMBO | いいえ | "standard""pop""super_pop" |
+| `portrait_beautifier` | ポートレートに対する顔の美化の強度です。この入力は、`portrait_mode`が"enabled"に設定されている場合のみ使用可能です。 | COMBO | いいえ | "none""beautify_face""beautify_face_max" |
+| `fixed_generation` | 無効にすると、生成ごとにランダム性が加わり、より多様な結果が得られます（デフォルト：True）。 | BOOLEAN | いいえ | - |
+
+**制約事項：**
+
+* `image`と`reference_image`は、それぞれ1つずつ正確に必要です。
+* 両方の画像のアスペクト比は、1:3から3:1の間である必要があります。
+* 両方の画像の高さと幅は、最低160ピクセルである必要があります。
+* `portrait_style`と`portrait_beautifier`のパラメータは、`portrait_mode`が"enabled"に設定されている場合にのみアクティブになり、必須となります。
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `image` | スタイル変換が適用された結果の画像です。 | IMAGE |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MagnificImageStyleTransferNode/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `4ae400183618953c369d089d39b878f0a24592967c29d779c577fb8b7339dea8`

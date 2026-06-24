@@ -1,0 +1,35 @@
+---
+title: '`glab label`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Manage labels on remote.
+
+## Synopsis
+
+Manage labels on projects and groups. Labels are used to categorize
+and filter issues, merge requests, and epics. Use the subcommands to
+create, list, edit, delete, or look up labels in the current repository
+or in another project or group.
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`create`](create.md)
+- [`delete`](delete.md)
+- [`edit`](edit.md)
+- [`get`](get.md)
+- [`list`](list.md)

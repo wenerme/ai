@@ -1,0 +1,37 @@
+---
+title: "Vidu2ImageToVideoNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the Vidu2ImageToVideoNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+## 概要
+
+Vidu2 画像から動画への生成ノードは、1枚の入力画像から動画シーケンスを作成します。指定されたVidu2モデルを使用し、オプションのテキストプロンプトに基づいてシーンをアニメーション化し、動画の長さ、解像度、および動きの強度を制御します。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `model` | 動画生成に使用するVidu2モデルです。モデルによって速度と品質のトレードオフが異なります。 | COMBO | はい | `"viduq2-pro-fast"``"viduq2-pro"``"viduq2-turbo"` |
+| `image` | 生成される動画の開始フレームとして使用する画像です。1枚の画像のみ許可されます。 | IMAGE | はい | - |
+| `prompt` | 動画生成のためのオプションのテキストプロンプトです（最大2000文字）。デフォルトは空文字列です。 | STRING | いいえ | - |
+| `duration` | 生成される動画の長さ（秒単位）です。デフォルトは5です。 | INT | はい | 1～10 |
+| `seed` | 再現可能な結果を得るための乱数生成のシード値です。デフォルトは1です。 | INT | いいえ | 0～2147483647 |
+| `resolution` | 生成される動画の出力解像度です。このパラメータは高度な設定です。 | COMBO | はい | `"720p"``"1080p"` |
+| `movement_amplitude` | フレーム内のオブジェクトの動きの振幅です。このパラメータは高度な設定です。 | COMBO | はい | `"auto"``"small"``"medium"``"large"` |
+
+**制約事項：**
+
+* `image` 入力には、必ず1枚の画像が含まれている必要があります。
+* 入力画像のアスペクト比は、1:4から4:1の間である必要があります。
+* `prompt` テキストは最大2000文字に制限されています。
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `output` | 生成された動画ファイルです。 | VIDEO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Vidu2ImageToVideoNode/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `204f8d2b9edf17c2c180480f98a852718416a54725d92e5fec574b8517ada398`

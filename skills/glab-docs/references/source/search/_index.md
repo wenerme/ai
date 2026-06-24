@@ -1,0 +1,36 @@
+---
+title: '`glab search`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Search for code and resources in a GitLab project. (BETA)
+
+## Synopsis
+
+Search a GitLab project for code and other resources. The
+`semantic` subcommand runs an AI-powered semantic code search.
+
+Use `--repo` to target a project other than the current one.
+
+This feature is in beta and might not be ready for production use.
+It might be unstable and breaking changes can occur outside of major releases.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`semantic`](semantic.md)

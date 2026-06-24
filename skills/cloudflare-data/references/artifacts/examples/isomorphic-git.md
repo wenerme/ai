@@ -1,0 +1,198 @@
+---
+title: isomorphic-git
+description: Push commits to Artifacts repos from Workers.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# isomorphic-git
+
+Use [isomorphic-git ↗](https://isomorphic-git.org/) to run Git operations on Artifacts repos directly from a Cloudflare Worker.
+
+The Artifacts binding creates and manages repos, but it cannot read or write files inside them — for that, you need Git. Since Workers do not have a git binary or a local filesystem, `isomorphic-git` fills that gap. It provides Git operations like init, commit, and push as JavaScript function calls, using an in-memory filesystem in place of a real disk.
+
+Use this when your Worker needs to programmatically build and push file trees to an Artifacts repo — for example, an AI agent that generates code and commits it, or an automation that clones a repo, modifies files, and pushes changes back.
+
+## Prerequisites
+
+Follow the [Artifacts Workers setup guide](https://developers.cloudflare.com/artifacts/get-started/workers/) to set up a Worker with an Artifacts binding.
+
+### Install the dependency
+
+Install `isomorphic-git` in your Worker project:
+
+ npm  yarn  pnpm  bun
+
+```
+npm i isomorphic-git
+```
+
+```
+yarn add isomorphic-git
+```
+
+```
+pnpm add isomorphic-git
+```
+
+```
+bun add isomorphic-git
+```
+
+## Example
+
+This demo creates a new repo on each request, writes two files, commits them, and pushes `main` to the new remote.
+
+Use this as a reference for the end-to-end flow. In a production Worker, look up or reuse an existing repo instead of creating a new one for every request.
+
+Protect write-capable routes
+
+This example omits authentication so it can focus on the Git flow. In production, authorize the caller before creating repos or granting write capability.
+
+* [  JavaScript ](#tab-panel-6870)
+* [  TypeScript ](#tab-panel-6871)
+
+src/index.js
+
+```
+import git from "isomorphic-git";import http from "isomorphic-git/http/web";import { MemoryFS } from "./memory-fs";
+export default {  async fetch(_request, env) {    // Create a new Artifacts repo    const repoName = `worker-demo-${crypto.randomUUID().slice(0, 8)}`;    const created = await env.ARTIFACTS.create(repoName);
+    // Artifacts tokens include expiry metadata: art_v1_<secret>?expires=<unix_seconds>    // Git Basic auth expects only the token secret as the password    const tokenSecret = created.token.split("?expires=")[0];
+    // Set up an in-memory filesystem and initialize a Git repo    const dir = "/workspace";    const fs = new MemoryFS();    await git.init({ fs, dir, defaultBranch: "main" });
+    // Write files    await fs.promises.writeFile(      `${dir}/README.md`,      "# Artifacts repo created from a Worker\n",    );    await fs.promises.writeFile(      `${dir}/src/index.ts`,      'export const message = "hello from Artifacts";\n',    );
+    // Stage and commit    await git.add({ fs, dir, filepath: "README.md" });    await git.add({ fs, dir, filepath: "src/index.ts" });
+    const commit = await git.commit({      fs,      dir,      message: "Create starter files",      author: {        name: "Artifacts example",        email: "artifacts@example.com",      },    });
+    // Push to the Artifacts remote    const push = await git.push({      fs,      http,      dir,      url: created.remote,      ref: "main",      onAuth: () => ({        username: "x",        password: tokenSecret,      }),    });
+    return Response.json({      repo: created.name,      remote: created.remote,      commit,      refs: push.refs,    });  },};
+```
+
+src/index.ts
+
+```
+import git from "isomorphic-git";import http from "isomorphic-git/http/web";import { MemoryFS } from "./memory-fs";
+export interface Env {  ARTIFACTS: Artifacts;}
+export default {  async fetch(_request: Request, env: Env) {    // Create a new Artifacts repo    const repoName = `worker-demo-${crypto.randomUUID().slice(0, 8)}`;    const created = await env.ARTIFACTS.create(repoName);
+    // Artifacts tokens include expiry metadata: art_v1_<secret>?expires=<unix_seconds>    // Git Basic auth expects only the token secret as the password    const tokenSecret = created.token.split("?expires=")[0];
+    // Set up an in-memory filesystem and initialize a Git repo    const dir = "/workspace";    const fs = new MemoryFS();    await git.init({ fs, dir, defaultBranch: "main" });
+    // Write files    await fs.promises.writeFile(      `${dir}/README.md`,      "# Artifacts repo created from a Worker\n",    );    await fs.promises.writeFile(      `${dir}/src/index.ts`,      'export const message = "hello from Artifacts";\n',    );
+    // Stage and commit    await git.add({ fs, dir, filepath: "README.md" });    await git.add({ fs, dir, filepath: "src/index.ts" });
+    const commit = await git.commit({      fs,      dir,      message: "Create starter files",      author: {        name: "Artifacts example",        email: "artifacts@example.com",      },    });
+    // Push to the Artifacts remote    const push = await git.push({      fs,      http,      dir,      url: created.remote,      ref: "main",      onAuth: () => ({        username: "x",        password: tokenSecret,      }),    });
+    return Response.json({      repo: created.name,      remote: created.remote,      commit,      refs: push.refs,    });  },} satisfies ExportedHandler<Env>;
+```
+
+In-memory filesystem helper
+
+Use this helper with `isomorphic-git` in Workers when you need a short-lived working tree in memory.
+
+* [  JavaScript ](#tab-panel-6872)
+* [  TypeScript ](#tab-panel-6873)
+
+src/memory-fs.js
+
+```
+class MemoryStats {  entry;
+  constructor(entry) {    this.entry = entry;  }
+  get size() {    return this.entry.kind === "file" ? this.entry.data.byteLength : 0;  }
+  get mtimeMs() {    return this.entry.mtimeMs;  }
+  get ctimeMs() {    return this.entry.mtimeMs;  }
+  get mode() {    return this.entry.kind === "file" ? 0o100644 : 0o040000;  }
+  isFile() {    return this.entry.kind === "file";  }
+  isDirectory() {    return this.entry.kind === "dir";  }
+  isSymbolicLink() {    return false;  }}
+export class MemoryFS {  encoder = new TextEncoder();  decoder = new TextDecoder();  entries = new Map([    ["/", { kind: "dir", children: new Set(), mtimeMs: Date.now() }],  ]);
+  promises = {    readFile: this.readFile.bind(this),    writeFile: this.writeFile.bind(this),    unlink: this.unlink.bind(this),    readdir: this.readdir.bind(this),    mkdir: this.mkdir.bind(this),    rmdir: this.rmdir.bind(this),    stat: this.stat.bind(this),    lstat: this.lstat.bind(this),  };
+  normalize(input) {    const segments = [];
+    for (const part of input.split("/")) {      if (!part || part === ".") {        continue;      }
+      if (part === "..") {        segments.pop();        continue;      }
+      segments.push(part);    }
+    return `/${segments.join("/")}` || "/";  }
+  parent(path) {    const normalized = this.normalize(path);    if (normalized === "/") {      return "/";    }
+    const parts = normalized.split("/").filter(Boolean);    parts.pop();    return parts.length ? `/${parts.join("/")}` : "/";  }
+  basename(path) {    return this.normalize(path).split("/").filter(Boolean).pop() ?? "";  }
+  getEntry(path) {    return this.entries.get(this.normalize(path));  }
+  requireEntry(path) {    const entry = this.getEntry(path);    if (!entry) {      throw new Error(`ENOENT: ${path}`);    }
+    return entry;  }
+  requireDir(path) {    const entry = this.requireEntry(path);    if (entry.kind !== "dir") {      throw new Error(`ENOTDIR: ${path}`);    }
+    return entry;  }
+  async mkdir(path, options) {    const target = this.normalize(path);    if (target === "/") {      return;    }
+    const recursive =      typeof options === "object" && options !== null && options.recursive;    const parent = this.parent(target);
+    if (!this.entries.has(parent)) {      if (!recursive) {        throw new Error(`ENOENT: ${parent}`);      }
+      await this.mkdir(parent, { recursive: true });    }
+    if (this.entries.has(target)) {      return;    }
+    this.entries.set(target, {      kind: "dir",      children: new Set(),      mtimeMs: Date.now(),    });
+    this.requireDir(parent).children.add(this.basename(target));  }
+  async writeFile(path, data) {    const target = this.normalize(path);    await this.mkdir(this.parent(target), { recursive: true });
+    const bytes =      typeof data === "string"        ? this.encoder.encode(data)        : data instanceof Uint8Array          ? data          : new Uint8Array(data);
+    this.entries.set(target, {      kind: "file",      data: bytes,      mtimeMs: Date.now(),    });
+    this.requireDir(this.parent(target)).children.add(this.basename(target));  }
+  async readFile(path, options) {    const entry = this.requireEntry(path);    if (entry.kind !== "file") {      throw new Error(`EISDIR: ${path}`);    }
+    const encoding = typeof options === "string" ? options : options?.encoding;    return encoding ? this.decoder.decode(entry.data) : entry.data;  }
+  async readdir(path) {    return [...this.requireDir(path).children].sort();  }
+  async unlink(path) {    const target = this.normalize(path);    const entry = this.requireEntry(target);    if (entry.kind !== "file") {      throw new Error(`EISDIR: ${path}`);    }
+    this.entries.delete(target);    this.requireDir(this.parent(target)).children.delete(this.basename(target));  }
+  async rmdir(path) {    const target = this.normalize(path);    const entry = this.requireDir(target);    if (entry.children.size > 0) {      throw new Error(`ENOTEMPTY: ${path}`);    }
+    this.entries.delete(target);    this.requireDir(this.parent(target)).children.delete(this.basename(target));  }
+  async stat(path) {    return new MemoryStats(this.requireEntry(path));  }
+  async lstat(path) {    return this.stat(path);  }}
+```
+
+src/memory-fs.ts
+
+```
+type Entry =  | {      kind: "dir";      children: Set<string>;      mtimeMs: number;    }  | {      kind: "file";      data: Uint8Array;      mtimeMs: number;    };
+class MemoryStats {  entry: Entry;
+  constructor(entry: Entry) {    this.entry = entry;  }
+  get size() {    return this.entry.kind === "file" ? this.entry.data.byteLength : 0;  }
+  get mtimeMs() {    return this.entry.mtimeMs;  }
+  get ctimeMs() {    return this.entry.mtimeMs;  }
+  get mode() {    return this.entry.kind === "file" ? 0o100644 : 0o040000;  }
+  isFile() {    return this.entry.kind === "file";  }
+  isDirectory() {    return this.entry.kind === "dir";  }
+  isSymbolicLink() {    return false;  }}
+export class MemoryFS {  encoder = new TextEncoder();  decoder = new TextDecoder();  entries = new Map<string, Entry>([    ["/", { kind: "dir", children: new Set(), mtimeMs: Date.now() }],  ]);
+  promises = {    readFile: this.readFile.bind(this),    writeFile: this.writeFile.bind(this),    unlink: this.unlink.bind(this),    readdir: this.readdir.bind(this),    mkdir: this.mkdir.bind(this),    rmdir: this.rmdir.bind(this),    stat: this.stat.bind(this),    lstat: this.lstat.bind(this),  };
+  normalize(input: string) {    const segments: string[] = [];
+    for (const part of input.split("/")) {      if (!part || part === ".") {        continue;      }
+      if (part === "..") {        segments.pop();        continue;      }
+      segments.push(part);    }
+    return `/${segments.join("/")}` || "/";  }
+  parent(path: string) {    const normalized = this.normalize(path);    if (normalized === "/") {      return "/";    }
+    const parts = normalized.split("/").filter(Boolean);    parts.pop();    return parts.length ? `/${parts.join("/")}` : "/";  }
+  basename(path: string) {    return this.normalize(path).split("/").filter(Boolean).pop() ?? "";  }
+  getEntry(path: string) {    return this.entries.get(this.normalize(path));  }
+  requireEntry(path: string) {    const entry = this.getEntry(path);    if (!entry) {      throw new Error(`ENOENT: ${path}`);    }
+    return entry;  }
+  requireDir(path: string) {    const entry = this.requireEntry(path);    if (entry.kind !== "dir") {      throw new Error(`ENOTDIR: ${path}`);    }
+    return entry;  }
+  async mkdir(path: string, options?: { recursive?: boolean } | number) {    const target = this.normalize(path);    if (target === "/") {      return;    }
+    const recursive =      typeof options === "object" && options !== null && options.recursive;    const parent = this.parent(target);
+    if (!this.entries.has(parent)) {      if (!recursive) {        throw new Error(`ENOENT: ${parent}`);      }
+      await this.mkdir(parent, { recursive: true });    }
+    if (this.entries.has(target)) {      return;    }
+    this.entries.set(target, {      kind: "dir",      children: new Set(),      mtimeMs: Date.now(),    });
+    this.requireDir(parent).children.add(this.basename(target));  }
+  async writeFile(path: string, data: string | Uint8Array | ArrayBuffer) {    const target = this.normalize(path);    await this.mkdir(this.parent(target), { recursive: true });
+    const bytes =      typeof data === "string"        ? this.encoder.encode(data)        : data instanceof Uint8Array          ? data          : new Uint8Array(data);
+    this.entries.set(target, {      kind: "file",      data: bytes,      mtimeMs: Date.now(),    });
+    this.requireDir(this.parent(target)).children.add(this.basename(target));  }
+  async readFile(path: string, options?: string | { encoding?: string }) {    const entry = this.requireEntry(path);    if (entry.kind !== "file") {      throw new Error(`EISDIR: ${path}`);    }
+    const encoding = typeof options === "string" ? options : options?.encoding;    return encoding ? this.decoder.decode(entry.data) : entry.data;  }
+  async readdir(path: string) {    return [...this.requireDir(path).children].sort();  }
+  async unlink(path: string) {    const target = this.normalize(path);    const entry = this.requireEntry(target);    if (entry.kind !== "file") {      throw new Error(`EISDIR: ${path}`);    }
+    this.entries.delete(target);    this.requireDir(this.parent(target)).children.delete(this.basename(target));  }
+  async rmdir(path: string) {    const target = this.normalize(path);    const entry = this.requireDir(target);    if (entry.children.size > 0) {      throw new Error(`ENOTEMPTY: ${path}`);    }
+    this.entries.delete(target);    this.requireDir(this.parent(target)).children.delete(this.basename(target));  }
+  async stat(path: string) {    return new MemoryStats(this.requireEntry(path));  }
+  async lstat(path: string) {    return this.stat(path);  }}
+```
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/isomorphic-git/#page","headline":"isomorphic-git · Cloudflare Artifacts docs","description":"Push commits to Artifacts repos from Workers.","url":"https://developers.cloudflare.com/artifacts/examples/isomorphic-git/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/isomorphic-git/","name":"isomorphic-git"}}]}
+```

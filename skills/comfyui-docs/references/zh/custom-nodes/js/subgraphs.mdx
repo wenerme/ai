@@ -1,0 +1,215 @@
+---
+title: "子图"
+description: "在 ComfyUI 扩展中使用子图：节点 ID、图遍历、事件、控件提升和清理。"
+translationSourceHash: 66a72faa
+translationFrom: custom-nodes/js/subgraphs.mdx
+---
+
+## 概述
+
+子图让用户可以将节点分组为可复用、可嵌套的组件。每个子图都是一个独立的 `LGraph`，带有 UUID。面向用户的指南请参阅[子图](/zh/interface/features/subgraph)。
+
+## 节点标识符
+
+ComfyUI 使用三种不同的节点标识符类型。使用了错误的类型会导致静默失败。
+
+| 类型 | 格式 | 用途 |
+|------|--------|----------|
+| `node.id` | `42`（数字） | 仅限于当前直接图层级。`graph.getNodeById(id)` |
+| 执行 ID | `"1:2:3"`（冒号分隔的字符串） | 后端进度消息、`UNIQUE_ID` |
+| 定位器 ID | `"<uuid>:<localId>"` 或 `"<localId>"` | UI 状态：徽章、错误、图像 |
+
+从扩展内部构造节点的定位器 ID：
+
+```javascript
+function getLocatorId(node) {
+  const graphId = node.graph?.id
+  return graphId ? `${graphId}:${node.id}` : String(node.id)
+}
+```
+
+## 遍历节点
+
+### 仅当前层级
+
+```javascript
+for (const node of app.graph.nodes) {
+  console.log(node.id, node.type)
+}
+```
+
+### 递归遍历所有节点
+
+要进入嵌套子图，使用递归辅助函数，对每个节点调用回调：
+
+```javascript
+function walkGraph(graph, callback) {
+  for (const node of graph.nodes ?? []) {
+    callback(node, graph)
+    if (node.subgraph) walkGraph(node.subgraph, callback)
+  }
+}
+```
+
+完整示例：
+
+```javascript
+import { app } from "../../scripts/app.js"
+
+function walkGraph(graph, callback) {
+  for (const node of graph.nodes ?? []) {
+    callback(node, graph)
+    if (node.subgraph) walkGraph(node.subgraph, callback)
+  }
+}
+
+app.registerExtension({
+  name: "MyExtension.SubgraphWalker",
+  async afterConfigureGraph() {
+    walkGraph(app.graph, (node, graph) => {
+      console.log(`[${graph.id ?? "root"}] node ${node.id}: ${node.type}`)
+    })
+  }
+})
+```
+
+## 根图与当前活动图
+
+| 需求 | 使用 |
+|-----------------|-----|
+| 对工作流中所有节点进行操作 | `app.graph`（根图） |
+| 仅对当前可见层级进行操作 | `app.canvas?.graph` |
+| 访问特定子图 | `someNode.subgraph` |
+
+```javascript
+// 所有节点（包括嵌套子图）
+walkGraph(app.graph, (node) => { /* ... */ })
+
+// 仅用户当前可见的节点
+for (const node of app.canvas?.graph?.nodes ?? []) { /* ... */ }
+```
+
+## 事件
+
+### 子图层级事件
+
+通过 `subgraph.events` 分发：
+
+| 事件 | 载荷 | 触发时机 |
+|-------|---------|------|
+| `widget-promoted` | `{ widget, subgraphNode }` | 控件提升到父节点 |
+| `widget-demoted` | `{ widget, subgraphNode }` | 控件从父节点移除 |
+| `input-added` | `{ input }` | 输入槽添加 |
+| `removing-input` | `{ input, index }` | 输入槽正在被移除 |
+| `output-added` | `{ output }` | 输出槽添加 |
+| `removing-output` | `{ output, index }` | 输出槽正在被移除 |
+| `renaming-input` | `{ input, index, oldName, newName }` | 输入槽重命名 |
+| `renaming-output` | `{ output, index, oldName, newName }` | 输出槽重命名 |
+
+### 画布层级事件
+
+通过 `app.canvas.canvas`（HTML canvas 元素）分发：
+
+| 事件 | 载荷 | 触发时机 |
+|-------|---------|------|
+| `subgraph-opened` | `{ subgraph, closingGraph, fromNode }` | 用户导航进入一个子图 |
+| `subgraph-converted` | `{ subgraphNode }` | 选区被转换为子图 |
+
+### 监听模式
+
+```javascript
+import { app } from "../../scripts/app.js"
+
+app.registerExtension({
+  name: "MyExtension.SubgraphEvents",
+  async setup() {
+    app.canvas.canvas.addEventListener("subgraph-opened", (e) => {
+      const { subgraph, fromNode } = e.detail
+      console.log(`Opened subgraph from node ${fromNode.id}`)
+    })
+  }
+})
+```
+
+## 控件提升
+
+当 `SubgraphInput` 连接到子图内部的某个控件时，该控件的一个副本会出现在父级子图节点上。这会触发 `widget-promoted` 事件。断开连接则会触发 `widget-demoted`。
+
+控件提升行为仍在演进中，未来版本可能会发生变化。
+
+```javascript
+import { app } from "../../scripts/app.js"
+
+function walkGraph(graph, callback) {
+  for (const node of graph.nodes ?? []) {
+    callback(node, graph)
+    if (node.subgraph) walkGraph(node.subgraph, callback)
+  }
+}
+
+app.registerExtension({
+  name: "MyExtension.WidgetPromotion",
+  async afterConfigureGraph() {
+    walkGraph(app.graph, (node) => {
+      if (!node.subgraph) return
+      if (node._promCleanup) node._promCleanup.abort()
+      const controller = new AbortController()
+      node._promCleanup = controller
+      const { signal } = controller
+
+      node.subgraph.events.addEventListener("widget-promoted", (e) => {
+        console.log(`Widget "${e.detail.widget.name}" promoted`)
+      }, { signal })
+
+      node.subgraph.events.addEventListener("widget-demoted", (e) => {
+        console.log(`Widget "${e.detail.widget.name}" demoted`)
+      }, { signal })
+
+      const origRemoved = node.onRemoved
+      node.onRemoved = function () {
+        controller.abort()
+        origRemoved?.apply(this, arguments)
+      }
+    })
+  }
+})
+```
+
+## 清理
+
+使用 `AbortController` 在节点被移除时清理所有事件监听器。
+
+```javascript
+import { app } from "../../scripts/app.js"
+
+app.registerExtension({
+  name: "MyExtension.Cleanup",
+  async nodeCreated(node) {
+    if (!node.subgraph) return
+
+    const controller = new AbortController()
+    const { signal } = controller
+
+    node.subgraph.events.addEventListener("input-added", (e) => {
+      console.log(`Input added: ${e.detail.input.name}`)
+    }, { signal })
+
+    node.subgraph.events.addEventListener("removing-input", (e) => {
+      console.log(`Input removing: ${e.detail.input.name}`)
+    }, { signal })
+
+    const origRemoved = node.onRemoved
+    node.onRemoved = function () {
+      controller.abort()
+      origRemoved?.apply(this, arguments)
+    }
+  }
+})
+```
+
+`onRemoved` 不仅会在删除时触发，也可能在子图转换时触发。如果需要在重构过程中保留状态，请对销毁逻辑进行防护。
+
+## 参见
+
+- [子图（用户指南）](/zh/interface/features/subgraph)
+- [扩展钩子](/zh/custom-nodes/js/javascript_hooks)

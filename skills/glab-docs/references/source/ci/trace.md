@@ -1,0 +1,45 @@
+---
+title: '`glab ci trace`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Trace a CI/CD job log in real time.
+
+## Synopsis
+
+Streams the job log to the terminal. The output updates in real time
+while the job runs. Without a job argument, you can select one
+interactively.
+
+```plaintext
+glab ci trace [<job-id>|<job-name>] [flags]
+```
+
+## Examples
+
+```console
+# Interactively select a job to trace
+glab ci trace
+
+# Trace job with ID 224356863
+glab ci trace 224356863
+
+# Trace job with the name 'lint'
+glab ci trace lint
+```
+
+## Options
+
+```plaintext
+  -b, --branch string     The branch to search for the job. Defaults to the current branch.
+  -p, --pipeline-id int   The pipeline ID to search for the job.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

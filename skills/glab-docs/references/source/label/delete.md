@@ -1,0 +1,39 @@
+---
+title: '`glab label delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete a label from a project.
+
+## Synopsis
+
+Delete a label from a project by name. The label is removed from
+the project; it is not removed from issues, merge requests, or
+epics that already use it.
+
+By default, the label is deleted from the current repository. Use
+`--repo` to target another project.
+
+```plaintext
+glab label delete <name> [flags]
+```
+
+## Examples
+
+```console
+# Delete a label from the current repository
+glab label delete bug
+
+# Delete a label from another project
+glab label delete bug -R owner/repo
+
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

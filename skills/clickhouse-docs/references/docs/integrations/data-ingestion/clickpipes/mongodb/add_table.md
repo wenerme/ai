@@ -1,0 +1,27 @@
+---
+title: 'Adding specific tables to a ClickPipe'
+description: 'Describes the steps needed to add specific tables to a ClickPipe.'
+show_title: false
+doc_type: 'guide'
+keywords: ['clickpipes', 'mongodb', 'cdc', 'data ingestion', 'real-time sync']
+integration:
+  - support_level: 'core'
+  - category: 'clickpipes'
+---
+
+There are scenarios where it would be useful to add specific tables to a pipe. This becomes a common necessity as your transactional or analytical workload scales.
+
+## Steps to add specific tables to a ClickPipe {#add-tables-steps}
+
+This can be done by the following steps:
+1. [Pause](./pause_and_resume.md) the pipe.
+2. Click on Edit Table settings.
+3. Locate your table - this can be done by searching it in the search bar.
+4. Select the table by clicking on the checkbox.
+
+<Image img={add_table} border size="md"/>
+
+5. Click update.
+6. Upon successful update, the pipe will have statuses `Setup`, `Snapshot` and `Running` in that order. The table's initial load can be tracked in the **Tables** tab.
+
+> **info**: CDC for existing tables resumes automatically after the new table’s snapshot completes.

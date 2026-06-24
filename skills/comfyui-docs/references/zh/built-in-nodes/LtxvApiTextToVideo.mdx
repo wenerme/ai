@@ -1,0 +1,33 @@
+---
+title: "LtxvApiTextToVideo - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the LtxvApiTextToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+LTXV 文本转视频节点可根据文本描述生成专业质量的视频。它通过连接外部 API 创建视频，支持自定义时长、分辨率和帧率。您还可以选择为视频添加 AI 生成的音频。
+
+## 输入
+
+| 参数 | 描述 | 数据类型 | 必填 | 范围 |
+| --- | --- | --- | --- | --- |
+| `模型` | 用于视频生成的 AI 模型。可用模型映射自源代码中的 `MODELS_MAP`。 | COMBO | 是 | `"LTX-2 (Fast)"``"LTX-2 (Quality)"``"LTX-2 (Turbo)"` |
+| `提示词` | AI 用于生成视频的文本描述。此字段支持多行文本。 | STRING | 是 | - |
+| `时长` | 生成视频的时长（秒），默认值为 8。 | COMBO | 是 | `6``8``10``12``14``16``18``20` |
+| `分辨率` | 输出视频的像素尺寸（宽 x 高）。 | COMBO | 是 | `"1920x1080"``"2560x1440"``"3840x2160"` |
+| `帧率` | 视频的帧率，默认值为 25。 | COMBO | 是 | `25``50` |
+| `生成音频` | 启用后，生成的视频将包含与场景匹配的 AI 生成音频，默认值为 False。 | BOOLEAN | 否 | - |
+
+**重要限制：**
+
+* `prompt` 的长度必须在 1 到 10,000 个字符之间。
+* 如果选择的 `duration` 大于 10 秒，则必须使用 `"LTX-2 (Fast)"` 模型、`"1920x1080"` 分辨率和 `25` 的 `fps`。生成长视频时必须使用此组合。
+
+## 输出
+
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `output` | 生成的视频文件。 | VIDEO |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LtxvApiTextToVideo/zh.md)
+
+---
+**Source fingerprint (SHA-256):** `a0c16995a07d879113bd3ca8fea64be414feee96bd8293a3e7737ede7d30e11d`

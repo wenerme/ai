@@ -1,0 +1,83 @@
+---
+title: Monitor the Auditor
+description: Verify Key Transparency audit proofs locally using the Plexi CLI tool.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/key-transparency/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Monitor the Auditor
+
+Cloudflare's Key Transparency Auditor validates Log audit proofs and provides a signature for them. The Log can then distribute these signatures to its end-users, and provides users with confidence that keys have not been tampered with.
+
+In order to verify our work, you can use [Plexi ↗](https://github.com/cloudflare/plexi), a CLI tool that allows anyone to perform proof verification locally via a public [API](https://developers.cloudflare.com/key-transparency/api/).
+
+## Features
+
+* Verify authenticity of a signature, to confirm it has been signed by a given public key
+* Verify the validity of [facebook/akd ↗](https://github.com/facebook/akd) proofs
+* List Logs an Auditor monitors
+
+## Installation
+
+| Environment                                                     | CLI Command         |
+| --------------------------------------------------------------- | ------------------- |
+| [Cargo ↗](https://www.rust-lang.org/tools/install) (Rust 1.81+) | cargo install plexi |
+
+## Usage
+
+Use the `--help` option for more details about the commands and their options.
+
+Terminal window
+
+```
+plexi [OPTIONS] <COMMAND>
+```
+
+### Configure your auditor remote
+
+`plexi` does not come with a default remote auditor, and you will need to choose your own.
+
+You can do so either by passing `--remote-url=<REMOTE>` or setting the `PLEXI_REMOTE_URL` environment variable.
+
+A common remote is provided below:
+
+| Name       | Remote                                        |
+| ---------- | --------------------------------------------- |
+| Cloudflare | https://plexi.key-transparency.cloudflare.com |
+
+If you have deployed your own auditor, you can add a remote by filing a [GitHub issue ↗](https://github.com/cloudflare/plexi/issues).
+
+### List monitored Logs
+
+An auditor monitors multiple Logs at once. To discover which Logs an auditor is monitoring, run the following:
+
+Terminal window
+
+```
+plexi ls --remote-url 'https://plexi.key-transparency.cloudflare.com'whatsapp.key-transparency.v1
+```
+
+### Audit a signature
+
+The Key Transparency Auditor vouches for Log validity by ensuring epoch uniqueness and verifying the associated proof.
+
+`plexi audit` provides information about a given epoch and its validity. It can perform a local audit to confirm the auditor behaviour.
+
+For instance, to verify WhatsApp Log auditted by Cloudflare Auditor, run the following:
+
+Terminal window
+
+```
+> plexi audit --remote-url 'https://plexi.key-transparency.cloudflare.com' --namespace 'whatsapp.key-transparency.v1' --longNamespace  Name               : whatsapp.key-transparency.v1  Ciphersuite        : ed25519(protobuf)
+Signature (2024-09-23T16:53:45Z)  Epoch height        : 489193  Epoch digest        : cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe  Signature           : fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08  Signature verification: success  Proof verification  : success
+```
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/#page","headline":"Monitor the Auditor · Cloudflare Key Transparency Auditor docs","description":"Verify Key Transparency audit proofs locally using the Plexi CLI tool.","url":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/key-transparency/","name":"Key Transparency Auditor"}},{"@type":"ListItem","position":3,"item":{"@id":"/key-transparency/monitor-the-auditor/","name":"Monitor the Auditor"}}]}
+```

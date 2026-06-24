@@ -1,0 +1,40 @@
+---
+title: "MagnificImageStyleTransferNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the MagnificImageStyleTransferNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+此节点将参考图像的视觉风格应用于您的输入图像。它使用外部 AI 服务处理图像，让您能够控制风格迁移的强度以及原始图像结构的保留程度。
+
+## 输入
+
+| 参数 | 描述 | 数据类型 | 是否必填 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `image` | 要应用风格迁移的图像。 | IMAGE | 是 | - |
+| `reference_image` | 用于提取风格的参考图像。 | IMAGE | 是 | - |
+| `prompt` | 可选的文本提示，用于引导风格迁移。 | STRING | 否 | - |
+| `style_strength` | 风格强度百分比（默认值：100）。 | INT | 否 | 0 到 100 |
+| `structure_strength` | 保持原始图像结构的程度（默认值：50）。 | INT | 否 | 0 到 100 |
+| `flavor` | 风格迁移的风格类型。 | COMBO | 否 | "faithful""gen_z""psychedelia""detaily""clear""donotstyle""donotstyle_sharp" |
+| `engine` | 处理引擎选择。 | COMBO | 否 | "balanced""definio""illusio""3d_cartoon""colorful_anime""caricature""real""super_real""softy" |
+| `portrait_mode` | 启用肖像模式以进行面部增强。 | COMBO | 否 | "disabled""enabled" |
+| `portrait_style` | 应用于肖像图像的视觉风格。此输入仅在 `portrait_mode` 设置为 "enabled" 时可用。 | COMBO | 否 | "standard""pop""super_pop" |
+| `portrait_beautifier` | 肖像的面部美化强度。此输入仅在 `portrait_mode` 设置为 "enabled" 时可用。 | COMBO | 否 | "none""beautify_face""beautify_face_max" |
+| `fixed_generation` | 禁用时，每次生成都会引入一定程度的随机性，从而产生更多样化的结果（默认值：True）。 | BOOLEAN | 否 | - |
+
+**约束条件：**
+
+* 必须恰好提供一个 `image` 和一个 `reference_image`。
+* 两张图像的宽高比必须在 1:3 到 3:1 之间。
+* 两张图像的最小高度和宽度必须为 160 像素。
+* `portrait_style` 和 `portrait_beautifier` 参数仅在 `portrait_mode` 设置为 "enabled" 时激活并必填。
+
+## 输出
+
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `image` | 应用风格迁移后生成的图像。 | IMAGE |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MagnificImageStyleTransferNode/zh.md)
+
+---
+**Source fingerprint (SHA-256):** `4ae400183618953c369d089d39b878f0a24592967c29d779c577fb8b7339dea8`

@@ -1,0 +1,38 @@
+---
+title: "KlingOmniProVideoToVideoNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the KlingOmniProVideoToVideoNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+This node uses the Kling AI model to generate a new video based on an input video and optional reference images. You provide a text prompt describing the desired content, and the node transforms the reference video accordingly. It can also incorporate up to four additional reference images to guide the style and content of the output.
+
+## Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `model_name` | The specific Kling model to use for video generation (default: "kling-v3-omni"). | COMBO | Yes | `"kling-v3-omni"``"kling-video-o1"` |
+| `prompt` | A text prompt describing the video content. This can include both positive and negative descriptions. | STRING | Yes | N/A |
+| `aspect_ratio` | The desired aspect ratio for the generated video. | COMBO | Yes | `"16:9"``"9:16"``"1:1"` |
+| `duration` | The length of the generated video in seconds (default: 3). | INT | Yes | 3 to 10 |
+| `reference_video` | Video to use as a reference. | VIDEO | Yes | N/A |
+| `keep_original_sound` | Determines if the audio from the reference video is kept in the output (default: True). | BOOLEAN | Yes | N/A |
+| `reference_images` | Up to 4 additional reference images. | IMAGE | No | N/A |
+| `resolution` | The resolution for the generated video (default: "1080p"). | COMBO | No | `"1080p"``"720p"` |
+| `seed` | Seed controls whether the node should re-run; results are non-deterministic regardless of seed (default: 0). | INT | No | 0 to 2147483647 |
+
+**Parameter Constraints:**
+
+* The `prompt` must be between 1 and 2500 characters long.
+* The `reference_video` must be between 3.0 and 10.05 seconds in duration.
+* The `reference_video` must have dimensions between 720x720 and 2160x2160 pixels.
+* A maximum of 4 `reference_images` can be provided. Each image must be at least 300x300 pixels and have an aspect ratio between 1:2.5 and 2.5:1.
+
+## Outputs
+
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `output` | The newly generated video. | VIDEO |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingOmniProVideoToVideoNode/en.md)
+
+---
+**Source fingerprint (SHA-256):** `aa99b865ca96ec5c2d5535d3392e8dc94dd5e56ebf624f8fdff09302767ab300`

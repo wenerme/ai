@@ -1,0 +1,80 @@
+---
+title: '`glab mr create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create a new merge request.
+
+## Synopsis
+
+Defaults to the current branch as the source branch. Use `--fill`
+to automatically fill the title and description from the commit history. Use
+`--draft` to create a draft merge request.
+
+The `--recover` flag is an experiment: it might be unstable or
+removed at any time, and is not ready for production use. For more
+information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab mr create [flags]
+```
+
+## Aliases
+
+```plaintext
+new
+```
+
+## Examples
+
+```console
+glab mr new
+glab mr create -a username -t "fix annoying bug"
+glab mr create -f --draft --label RFC
+glab mr create --fill --web
+glab mr create --fill --fill-commit-body --yes
+glab mr create -t "Fix login bug" --template bug_fix
+glab mr create -t "Security patch" --template security_fix.md --yes
+```
+
+## Options
+
+```plaintext
+      --allow-collaboration    Allow commits from other members. Set to true/false to override project defaults, or omit to use project settings.
+  -a, --assignee usernames     Assign merge request to people by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --auto-merge             Set the merge request to merge when all merge checks pass.
+      --copy-issue-labels      Copy labels from issue to the merge request. Used with --related-issue.
+      --create-source-branch   Create a source branch if it does not exist.
+  -d, --description string     Supply a description for the merge request. Set to "-" to open an editor.
+      --draft                  Mark merge request as a draft.
+  -f, --fill push              Do not prompt for title or description, and just use commit info. Sets push to `true`, and pushes the branch.
+      --fill-commit-body       Fill description with each commit body when multiple commits. Can only be used with --fill.
+  -H, --head OWNER/REPO        Select another head repository using the OWNER/REPO or `GROUP/NAMESPACE/REPO` format, the project ID, or the full URL.
+  -l, --label strings          Add label by name. Multiple labels can be comma-separated or specified by repeating the flag.
+  -m, --milestone string       The global ID or title of a milestone to assign.
+      --no-editor              Don't open editor to enter a description. If true, uses prompt. Defaults to false.
+      --push                   Push committed changes after creating merge request. Make sure you have committed changes.
+      --recover                Save the options to a file if the merge request creation fails. If the file exists, the options are loaded from the recovery file. (EXPERIMENTAL)
+  -i, --related-issue string   Create a merge request for an issue. If --title is not provided, uses the issue title.
+      --remove-source-branch   Remove source branch on merge. Set to true/false to override project defaults, or omit to use project settings.
+      --reviewer usernames     Request review from users by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --signoff                Append a DCO signoff to the merge request description.
+  -s, --source-branch string   Create a merge request from this branch. Default is the current branch.
+      --squash-before-merge    Squash commits into a single commit when merging. Set to true/false to override project defaults, or omit to use project settings.
+  -b, --target-branch string   The target or base branch into which you want your code merged into.
+      --template string        Name of a template in '.gitlab/merge_request_templates/' to pre-populate the description. The '.md' extension is optional. Templates are loaded from the local repository only.
+  -t, --title string           Supply a title for the merge request.
+  -w, --web                    Continue merge request creation in a browser.
+      --wip                    Mark merge request as a draft. Alternative to --draft.
+  -y, --yes                    Skip submission confirmation prompt. Use --fill to skip all optional prompts.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

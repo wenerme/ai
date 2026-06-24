@@ -1,0 +1,68 @@
+---
+title: '`glab milestone list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List milestones in a project or group.
+
+## Synopsis
+
+Filter by state with `--state` (`active` or `closed`), by title with `--title`,
+or by free-text search with `--search`. For group milestones, use
+`--include-ancestors` to also include milestones from ancestor groups.
+
+By default, milestones are listed for the current project. Use
+`--project` to target a different project, or `--group` to list
+group-level milestones. `--project` and `--group` are mutually exclusive.
+
+Use `--output json` to format the result as JSON for use with other tools.
+
+```plaintext
+glab milestone list [flags]
+```
+
+## Examples
+
+```console
+# List milestones in a project
+glab milestone list --project 123
+glab milestone list --project owner/project
+
+# List milestones in a group
+glab milestone list --group example-group
+
+# List only active milestones in a group
+glab milestone list --group example-group --state active
+
+# List group milestones, including those from ancestor groups
+glab milestone list --group example-group --include-ancestors
+
+# List milestones as JSON
+glab milestone list --project owner/project --output json
+
+```
+
+## Options
+
+```plaintext
+      --group string        The ID or URL-encoded path of the group.
+      --include-ancestors   Include milestones from all parent groups.
+      --jq string           Filter JSON output with a jq expression.
+  -F, --output string       Format output as: text, json. (default "text")
+  -p, --page int            Page number. (default 1)
+  -P, --per-page int        Number of items to list per page. (default 20)
+      --project string      The ID or URL-encoded path of the project.
+      --search string       Return only milestones with a title or description matching the provided string.
+      --show-id             Show IDs in table output.
+      --state string        Return only 'active' or 'closed' milestones.
+      --title string        Return only the milestones having the given title.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

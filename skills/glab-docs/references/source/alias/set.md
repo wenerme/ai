@@ -1,0 +1,67 @@
+---
+title: '`glab alias set`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Set an alias for a longer command.
+
+## Synopsis
+
+Declare a word as an alias for a longer command.
+
+Use quotation marks when you define a command, as shown in the examples.
+
+Your expansion can include arguments and flags. If your expansion
+includes positional placeholders such as `$1` or `$2`, any extra
+arguments that follow the invocation of the alias are inserted into
+those placeholders.
+
+To run an alias through `sh`, a shell converter, specify the
+`--shell` flag. With shell conversion, you can compose commands
+with `|` or redirect with `>`. Shell aliases have these caveats:
+
+- Extra arguments that follow the alias are not passed to the expansion.
+  To accept arguments, use `$1`, `$2`, and so on.
+- To accept all arguments, use `$@`.
+
+On Windows, shell aliases run through `sh` as installed by Git for
+Windows. If you installed Git in another way on Windows, shell aliases
+might not work.
+
+```plaintext
+glab alias set <alias name> '<command>' [flags]
+```
+
+## Examples
+
+```console
+# Define an alias for "mr view"
+glab alias set mrv 'mr view'
+# Run the alias; it expands to "glab mr view -w 123"
+glab mrv -w 123
+
+# Define an alias with a positional placeholder
+glab alias set createissue 'glab create issue --title "$1"'
+# Run the alias with an argument and an extra flag
+glab createissue "My Issue" --description "Something is broken."
+
+# Define a shell alias that pipes glab output to grep
+glab alias set --shell igrep 'glab issue list --assignee="$1" | grep $2'
+# Run the shell alias with two arguments
+glab igrep user foo
+
+```
+
+## Options
+
+```plaintext
+  -s, --shell   Declare an alias to be passed through a shell interpreter.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

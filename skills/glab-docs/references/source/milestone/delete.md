@@ -1,0 +1,50 @@
+---
+title: '`glab milestone delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete a milestone from a project or group.
+
+## Synopsis
+
+Delete a milestone, identified by its numeric ID, from a project or
+group. The milestone is removed; issues, merge requests, and epics
+that referenced it are no longer associated with it.
+
+By default, the milestone is deleted from the current project. Use
+`--project` to target a different project, or `--group` to delete a
+group-level milestone. `--project` and `--group` are mutually exclusive.
+
+```plaintext
+glab milestone delete <id> [flags]
+```
+
+## Examples
+
+```console
+# Delete a milestone from the current project
+glab milestone delete 123
+
+# Delete a milestone from a different project
+glab milestone delete 123 --project owner/project
+
+# Delete a group milestone
+glab milestone delete 123 --group example-group
+
+```
+
+## Options
+
+```plaintext
+      --group string     The ID or URL-encoded path of the group.
+      --project string   The ID or URL-encoded path of the project.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

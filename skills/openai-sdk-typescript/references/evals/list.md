@@ -1,0 +1,534 @@
+## List evals
+
+`client.evals.list(EvalListParamsquery?, RequestOptionsoptions?): CursorPage<EvalListResponse>`
+
+**get** `/evals`
+
+List evaluations for a project.
+
+### Parameters
+
+- `query: EvalListParams`
+
+  - `after?: string`
+
+    Identifier for the last eval from the previous pagination request.
+
+  - `limit?: number`
+
+    Number of evals to retrieve.
+
+  - `order?: "asc" | "desc"`
+
+    Sort order for evals by timestamp. Use `asc` for ascending order or `desc` for descending order.
+
+    - `"asc"`
+
+    - `"desc"`
+
+  - `order_by?: "created_at" | "updated_at"`
+
+    Evals can be ordered by creation time or last updated time. Use
+    `created_at` for creation time or `updated_at` for last updated time.
+
+    - `"created_at"`
+
+    - `"updated_at"`
+
+### Returns
+
+- `EvalListResponse`
+
+  An Eval object with a data source config and testing criteria.
+  An Eval represents a task to be done for your LLM integration.
+  Like:
+
+  - Improve the quality of my chatbot
+  - See how well my chatbot handles customer support
+  - Check if o4-mini is better at my usecase than gpt-4o
+
+  - `id: string`
+
+    Unique identifier for the evaluation.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the eval was created.
+
+  - `data_source_config: EvalCustomDataSourceConfig | Logs | EvalStoredCompletionsDataSourceConfig`
+
+    Configuration of data sources used in runs of the evaluation.
+
+    - `EvalCustomDataSourceConfig`
+
+      A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
+      The response schema defines the shape of the data that will be:
+
+      - Used to define your testing criteria and
+      - What data is required when creating a run
+
+      - `schema: Record<string, unknown>`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: "custom"`
+
+        The type of data source. Always `custom`.
+
+        - `"custom"`
+
+    - `Logs`
+
+      A LogsDataSourceConfig which specifies the metadata property of your logs query.
+      This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
+      The schema returned by this data source config is used to defined what variables are available in your evals.
+      `item` and `sample` are both defined when using this data source config.
+
+      - `schema: Record<string, unknown>`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: "logs"`
+
+        The type of data source. Always `logs`.
+
+        - `"logs"`
+
+      - `metadata?: Metadata | null`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+    - `EvalStoredCompletionsDataSourceConfig`
+
+      Deprecated in favor of LogsDataSourceConfig.
+
+      - `schema: Record<string, unknown>`
+
+        The json schema for the run data source items.
+        Learn how to build JSON schemas [here](https://json-schema.org/).
+
+      - `type: "stored_completions"`
+
+        The type of data source. Always `stored_completions`.
+
+        - `"stored_completions"`
+
+      - `metadata?: Metadata | null`
+
+        Set of 16 key-value pairs that can be attached to an object. This can be
+        useful for storing additional information about the object in a structured
+        format, and querying for objects via API or the dashboard.
+
+        Keys are strings with a maximum length of 64 characters. Values are strings
+        with a maximum length of 512 characters.
+
+  - `metadata: Metadata | null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `name: string`
+
+    The name of the evaluation.
+
+  - `object: "eval"`
+
+    The object type.
+
+    - `"eval"`
+
+  - `testing_criteria: Array<LabelModelGrader | StringCheckGrader | EvalGraderTextSimilarity | 2 more>`
+
+    A list of testing criteria.
+
+    - `LabelModelGrader`
+
+      A LabelModelGrader object which uses a model to assign labels to each item
+      in the evaluation.
+
+      - `input: Array<Input>`
+
+        - `content: string | ResponseInputText | OutputText | 3 more`
+
+          Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+          - `string`
+
+          - `ResponseInputText`
+
+            A text input to the model.
+
+            - `text: string`
+
+              The text input to the model.
+
+            - `type: "input_text"`
+
+              The type of the input item. Always `input_text`.
+
+              - `"input_text"`
+
+          - `OutputText`
+
+            A text output from the model.
+
+            - `text: string`
+
+              The text output from the model.
+
+            - `type: "output_text"`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `InputImage`
+
+            An image input block used within EvalItem content arrays.
+
+            - `image_url: string`
+
+              The URL of the image input.
+
+            - `type: "input_image"`
+
+              The type of the image input. Always `input_image`.
+
+              - `"input_image"`
+
+            - `detail?: string`
+
+              The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+          - `ResponseInputAudio`
+
+            An audio input to the model.
+
+            - `input_audio: InputAudio`
+
+              - `data: string`
+
+                Base64-encoded audio data.
+
+              - `format: "mp3" | "wav"`
+
+                The format of the audio data. Currently supported formats are `mp3` and
+                `wav`.
+
+                - `"mp3"`
+
+                - `"wav"`
+
+            - `type: "input_audio"`
+
+              The type of the input item. Always `input_audio`.
+
+              - `"input_audio"`
+
+          - `GraderInputs = Array<string | ResponseInputText | OutputText | 2 more>`
+
+            A list of inputs, each of which may be either an input text, output text, input
+            image, or input audio object.
+
+            - `string`
+
+            - `ResponseInputText`
+
+              A text input to the model.
+
+            - `OutputText`
+
+              A text output from the model.
+
+              - `text: string`
+
+                The text output from the model.
+
+              - `type: "output_text"`
+
+                The type of the output text. Always `output_text`.
+
+                - `"output_text"`
+
+            - `InputImage`
+
+              An image input block used within EvalItem content arrays.
+
+              - `image_url: string`
+
+                The URL of the image input.
+
+              - `type: "input_image"`
+
+                The type of the image input. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail?: string`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+            - `ResponseInputAudio`
+
+              An audio input to the model.
+
+        - `role: "user" | "assistant" | "system" | "developer"`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `type?: "message"`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
+      - `labels: Array<string>`
+
+        The labels to assign to each item in the evaluation.
+
+      - `model: string`
+
+        The model to use for the evaluation. Must support structured outputs.
+
+      - `name: string`
+
+        The name of the grader.
+
+      - `passing_labels: Array<string>`
+
+        The labels that indicate a passing result. Must be a subset of labels.
+
+      - `type: "label_model"`
+
+        The object type, which is always `label_model`.
+
+        - `"label_model"`
+
+    - `StringCheckGrader`
+
+      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+      - `input: string`
+
+        The input text. This may include template strings.
+
+      - `name: string`
+
+        The name of the grader.
+
+      - `operation: "eq" | "ne" | "like" | "ilike"`
+
+        The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+        - `"eq"`
+
+        - `"ne"`
+
+        - `"like"`
+
+        - `"ilike"`
+
+      - `reference: string`
+
+        The reference text. This may include template strings.
+
+      - `type: "string_check"`
+
+        The object type, which is always `string_check`.
+
+        - `"string_check"`
+
+    - `EvalGraderTextSimilarity extends TextSimilarityGrader`
+
+      A TextSimilarityGrader object which grades text based on similarity metrics.
+
+      - `pass_threshold: number`
+
+        The threshold for the score.
+
+    - `EvalGraderPython extends PythonGrader`
+
+      A PythonGrader object that runs a python script on the input.
+
+      - `pass_threshold?: number`
+
+        The threshold for the score.
+
+    - `EvalGraderScoreModel extends ScoreModelGrader`
+
+      A ScoreModelGrader object that uses a model to assign a score to the input.
+
+      - `pass_threshold?: number`
+
+        The threshold for the score.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+});
+
+// Automatically fetches more pages as needed.
+for await (const evalListResponse of client.evals.list()) {
+  console.log(evalListResponse.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "data_source_config": {
+        "schema": {
+          "foo": "bar"
+        },
+        "type": "custom"
+      },
+      "metadata": {
+        "foo": "string"
+      },
+      "name": "Chatbot effectiveness Evaluation",
+      "object": "eval",
+      "testing_criteria": [
+        {
+          "input": [
+            {
+              "content": "string",
+              "role": "user",
+              "type": "message"
+            }
+          ],
+          "labels": [
+            "string"
+          ],
+          "model": "model",
+          "name": "name",
+          "passing_labels": [
+            "string"
+          ],
+          "type": "label_model"
+        }
+      ]
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```typescript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const evals = await openai.evals.list({ limit: 1 });
+console.log(evals);
+```
+
+#### Response
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "eval_67abd54d9b0081909a86353f6fb9317a",
+      "object": "eval",
+      "data_source_config": {
+        "type": "stored_completions",
+        "metadata": {
+          "usecase": "push_notifications_summarizer"
+        },
+        "schema": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "object"
+            },
+            "sample": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "item",
+            "sample"
+          ]
+        }
+      },
+      "testing_criteria": [
+        {
+          "name": "Push Notification Summary Grader",
+          "id": "Push Notification Summary Grader-9b876f24-4762-4be9-aff4-db7a9b31c673",
+          "type": "label_model",
+          "model": "o3-mini",
+          "input": [
+            {
+              "type": "message",
+              "role": "developer",
+              "content": {
+                "type": "input_text",
+                "text": "\nLabel the following push notification summary as either correct or incorrect.\nThe push notification and the summary will be provided below.\nA good push notificiation summary is concise and snappy.\nIf it is good, then label it as correct, if not, then incorrect.\n"
+              }
+            },
+            {
+              "type": "message",
+              "role": "user",
+              "content": {
+                "type": "input_text",
+                "text": "\nPush notifications: {{item.input}}\nSummary: {{sample.output_text}}\n"
+              }
+            }
+          ],
+          "passing_labels": [
+            "correct"
+          ],
+          "labels": [
+            "correct",
+            "incorrect"
+          ],
+          "sampling_params": null
+        }
+      ],
+      "name": "Push Notification Summary Grader",
+      "created_at": 1739314509,
+      "metadata": {
+        "description": "A stored completions eval for push notification summaries"
+      }
+    }
+  ],
+  "first_id": "eval_67abd54d9b0081909a86353f6fb9317a",
+  "last_id": "eval_67aa884cf6688190b58f657d4441c8b7",
+  "has_more": true
+}
+```

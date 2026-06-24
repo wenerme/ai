@@ -1,0 +1,29 @@
+---
+title: "LoadAudio - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the LoadAudio node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+以下が翻訳結果です。
+
+## 概要：概要
+
+LoadAudioノードは、入力ディレクトリからオーディオファイルを読み込み、ComfyUI内の他のオーディオノードで処理可能な形式に変換します。このノードはオーディオファイルを読み取り、波形データとサンプルレートの両方を抽出し、後続のオーディオ処理タスクで利用できるようにします。
+
+## 入力：入力
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `オーディオ` | 入力ディレクトリから読み込むオーディオファイル | AUDIO | はい | 入力ディレクトリ内のサポートされているすべてのオーディオファイルおよびビデオファイル |
+
+**注記：** このノードは、ComfyUIの入力ディレクトリに存在するオーディオファイルおよびビデオファイルのみを受け付けます。ファイルが存在し、アクセス可能である必要があります。そうでないと正常に読み込めません。
+
+## 出力：出力
+
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `AUDIO` | 波形とサンプルレートの情報を含むオーディオデータ | AUDIO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LoadAudio/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `a7fe63cbbb3a854359189e8685936a2b8b855e22c3c282fc77affacf640af010`
