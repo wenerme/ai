@@ -5,83 +5,90 @@ description: Configure syslog server integration for collecting system logs, ser
 # Syslog Server - System & Network Log Collection
 
 !!! warning "Deprecation Notice"
-    Built-in Syslog ingestion (via TCP/UDP on port 5514) has been **deprecated as of August 2025** and is no longer available in OpenObserve.  
+    Built-in Syslog ingestion (via TCP/UDP on port 5514) has been **deprecated as of August 2025** and is no longer available in OpenObserve.
 
-    **Recommended alternatives:**  
-    - [AxoSyslog](https://axoflow.com/docs/axosyslog-core/chapter-destinations/openobserve/)  
-    - [syslog-ng](https://www.syslog-ng.com/community/b/blog/posts/sending-logs-to-openobserve-using-syslog-ng)  
-    - [Vector](../logs/vector.md)  
-    - [Fluent Bit](../logs/fluent-bit.md)  
+    **Recommended alternatives:**
+
+    - [AxoSyslog](https://axoflow.com/docs/axosyslog-core/chapter-destinations/openobserve/)
+    - [syslog-ng](https://www.syslog-ng.com/community/b/blog/posts/sending-logs-to-openobserve-using-syslog-ng)
+    - [Vector](../logs/vector.md)
+    - [Fluent Bit](../logs/fluent-bit.md)
 
     We suggest using **AxoSyslog or syslog-ng** if you want protocol-native support for Syslog.
 
-OpenObserve can act as a syslog server. This means that you can send logs to OpenObserve using the syslog protocol. OpenObserve supports both UDP and TCP syslog.
+??? "Legacy reference (pre-August 2025)"
 
-## Enable syslog
+    The configuration below is preserved for historical context. Use one of the alternatives above for new deployments.
 
-Before you can send logs to OpenObserve, you need to enable OpenObserve to act as a syslog server. This is done by enabling syslog in the `Ingestion > Logs > Syslog` section of the OpenObserve UI.
+    
+    OpenObserve can act as a syslog server. This means that you can send logs to OpenObserve using the syslog protocol. OpenObserve supports both UDP and TCP syslog.
 
-[[Enable syslog]](./images/syslog.png)
+    ### Enable syslog
 
-## Subnets to allow traffic from
+    Before you can send logs to OpenObserve, you need to enable OpenObserve to act as a syslog server. This is done by enabling syslog in the `Ingestion > Logs > Syslog` section of the OpenObserve UI.
 
-OpenObserve will only accept syslog traffic from the subnets that you specify. You must specify a minimum of 3 things:
+    [[Enable syslog]](./images/syslog.png)
 
-- Organization
-- Stream name
-- Subnets
+    ### Subnets to allow traffic from
 
-## Configuration
+    OpenObserve will only accept syslog traffic from the subnets that you specify. You must specify a minimum of 3 things:
 
-Default port: `5514`
+    - Organization
+    - Stream name
+    - Subnets
 
-You can change the default port number using the following environment variables:
+    ### Configuration
 
-- `ZO_TCP_PORT` - TCP port number to listen on. Default: `5514`
-- `ZO_UDP_PORT` - UDP port number to listen on. Default: `5514`
+    Default port: `5514`
 
-You can also configure the TLS settings for syslog TCP server using the following environment variables:
+    You can change the default port number using the following environment variables:
 
-- `ZO_TCP_TLS_ENABLED` - Enable TLS for TCP syslog server. If enabled, `ZO_TCP_PORT` will be used for the TLS connection over TCP. Default: `false`
+    - `ZO_TCP_PORT` - TCP port number to listen on. Default: `5514`
+    - `ZO_UDP_PORT` - UDP port number to listen on. Default: `5514`
 
-If `ZO_TCP_TLS_ENABLED` is set to `true`, then ensure all the below variables are set:
+    You can also configure the TLS settings for syslog TCP server using the following environment variables:
 
-- `ZO_TCP_TLS_CERT_PATH` - Path to the TLS certificate file to be used on the server.
-- `ZO_TCP_TLS_KEY_PATH` - Path to the TLS key file to be used on the server.
-- `ZO_TCP_TLS_CA_CERT_PATH` - Path to the TLS CA certificate file to be used on the server.
+    - `ZO_TCP_TLS_ENABLED` - Enable TLS for TCP syslog server. If enabled, `ZO_TCP_PORT` will be used for the TLS connection over TCP. Default: `false`
 
-## Testing
+    If `ZO_TCP_TLS_ENABLED` is set to `true`, then ensure all the below variables are set:
 
-Select an organization and stream. Then set the subnet to `0.0.0.0/0`. This config allows accepting syslog data from any IP address.
+    - `ZO_TCP_TLS_CERT_PATH` - Path to the TLS certificate file to be used on the server.
+    - `ZO_TCP_TLS_KEY_PATH` - Path to the TLS key file to be used on the server.
+    - `ZO_TCP_TLS_CA_CERT_PATH` - Path to the TLS CA certificate file to be used on the server.
 
-You can then use the syslog generator script from [this repo](https://github.com/openobserve/syslog_log_generator) to test if you are able to accept syslog data in OpenObserve.
+    ### Testing
 
-Steps:
+    Select an organization and stream. Then set the subnet to `0.0.0.0/0`. This config allows accepting syslog data from any IP address.
 
-### Clone the repo
+    You can then use the syslog generator script from [this repo](https://github.com/openobserve/syslog_log_generator) to test if you are able to accept syslog data in OpenObserve.
 
-```shell
-git clone https://github.com/openobserve/syslog_log_generator
-cd syslog_log_generator
-```
+    Steps:
 
-### Modify the script
+    #### Clone the repo
 
-file `generate_logs.sh`
+    ```bash
+    git clone https://github.com/openobserve/syslog_log_generator
+    cd syslog_log_generator
+    ```
 
-```shell
-#!/bin/sh
-python syslog_gen.py --host 127.0.0.1 --port 5514 --file sample_logs.txt --count 1000
-```
+    #### Modify the script
 
-Modify the file with the appropriate IP address.
+    file `generate_logs.sh`
 
-### Start generating test syslog data
+    ```bash
+    #!/bin/sh
+    python syslog_gen.py --host 127.0.0.1 --port 5514 --file sample_logs.txt --count 1000
+    ```
 
-```shell
-./generate_logs.sh
-```
+    Modify the file with the appropriate IP address.
 
-Watch a youtube demo here:
+    #### Start generating test syslog data
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dF1IEEY-R54?si=tW8E-LFAqGkAP4ey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    ```bash
+    ./generate_logs.sh
+    ```
+
+**Need some help?**
+
+- Join our [Community Slack](https://short.openobserve.ai/community) 
+- Or [Contact support](https://openobserve.ai/contactus/)

@@ -12,14 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Bulk origin override
 
-**Last reviewed:**  over 5 years ago
-
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-11671)
-* [  TypeScript ](#tab-panel-11672)
-* [  Hono ](#tab-panel-11673)
-* [  Python ](#tab-panel-11674)
+* [  JavaScript ](#tab-panel-11711)
+* [  TypeScript ](#tab-panel-11712)
+* [  Hono ](#tab-panel-11713)
+* [  Python ](#tab-panel-11714)
 
 JavaScript
 

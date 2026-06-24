@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Create your first AI Gateway using Workers AI
 
-**Last reviewed:**  almost 2 years ago
-
 This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard. The intended audience is beginners who are new to AI Gateway and Workers AI. Creating an AI Gateway enables the user to efficiently manage and secure AI requests, allowing them to utilize AI models for tasks such as content generation, data processing, or predictive analysis with enhanced control and performance.
 
 ## Sign up and log in
@@ -25,8 +23,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-6644)
-* [ API ](#tab-panel-6645)
+* [ Dashboard ](#tab-panel-6684)
+* [ API ](#tab-panel-6685)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

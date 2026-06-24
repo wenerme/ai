@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # On-demand Object Storage Data Migration
 
-**Last reviewed:**  almost 2 years ago
-
 ## Introduction
 
 Migrating data between cloud object storage providers can be challenging and expensive. You need to ensure no objects are missed, especially when new data is coming in during your migration. Additionally, there may be a significant one-time data transfer fee to consider.

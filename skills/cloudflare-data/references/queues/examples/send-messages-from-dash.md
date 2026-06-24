@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Send messages from the dashboard
 
-**Last reviewed:**  almost 3 years ago
-
 Use the dashboard to send messages to a queue.
 
 Sending messages from the dashboard allows you to debug Queues or queue consumers without a producer Worker.

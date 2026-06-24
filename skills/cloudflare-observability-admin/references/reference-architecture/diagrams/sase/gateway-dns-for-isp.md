@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # DNS filtering solution for Internet service providers
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Internet service providers are constantly exploring new revenue opportunities to expand their business, and many are now turning to security as a value-added service alongside their connectivity offerings. Traditionally, integrating security with connectivity posed significant challenges due to the reliance on legacy solutions that required costly on-premises hardware. This makes it difficult to deploy and manage and introduces post-deployment struggles with scalability and availability.

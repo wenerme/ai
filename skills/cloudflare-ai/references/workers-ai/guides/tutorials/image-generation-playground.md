@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # How to Build an Image Generator using Workers AI
 
-**Last reviewed:**  over 1 year ago
-
 In this series of videos, Kristian Freeman builds an AI Image Playground. To get started, click on part 1 below.
 
 Video Series

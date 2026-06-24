@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Isolate risky Entra ID users
 
-**Last reviewed:**  over 3 years ago
-
 Microsoft Entra ID (formerly Azure Active Directory) calculates a user's [risk level ↗](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk) based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.
 
 This tutorial demonstrates how to automatically redirect users to a remote browser when they are deemed risky by Entra ID.
@@ -83,8 +81,8 @@ cd risky-users
   * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).
   * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).
 
-  * [  wrangler.jsonc ](#tab-panel-7808)
-  * [  wrangler.toml ](#tab-panel-7809)
+  * [  wrangler.jsonc ](#tab-panel-7848)
+  * [  wrangler.toml ](#tab-panel-7849)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "risky-users",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "src/index.js",  "workers_dev": false,  "account_id": "<ACCOUNT-ID>",  "vars": {    "AZURE_AD_TENANT_ID": "<TENANT-ID>",    "AZURE_AD_CLIENT_ID": "<CLIENT-ID>",  },  "triggers": {    "crons": ["* * * * *"],  },}

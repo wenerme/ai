@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # PyIceberg
 
-**Last reviewed:**  about 1 year ago
-
 Below is an example of using [PyIceberg ↗](https://py.iceberg.apache.org/) to connect to R2 Data Catalog.
 
 ## Prerequisites

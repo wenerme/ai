@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Event notifications for storage
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Cloudflare [R2](https://developers.cloudflare.com/r2/) Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services. The lifecycle of data in object storage often extends beyond uploading, modifying, or deleting the data. There may be a requirement to transform, analyze, or perform post-processing on the data. R2 provides [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to manage these event-driven workflows.

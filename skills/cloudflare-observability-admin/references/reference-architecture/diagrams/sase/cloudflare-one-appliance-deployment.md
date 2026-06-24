@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Cloudflare One Appliance deployment options
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Cloudflare helps organizations transform their networks by providing secure, high-performance connectivity for on-premises networks, virtual cloud networks and access to SaaS applications. As applications migrate to the cloud, [Cloudflare's SASE ↗](https://www.cloudflare.com/zero-trust/) platform enables businesses to replace traditional on-premise solutions, ensuring secure access, low latency, and automated scalability across distributed environments. This approach reduces reliance on legacy hardware, simplifies IT management, and improves user experience for cloud-based services.

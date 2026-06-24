@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Zoom
 
-**Last reviewed:**  almost 2 years ago
-
 This guide covers how to configure [Zoom ↗](https://support.zoom.com/hc/en/article?id=zm%5Fkb&sysparm%5Farticle=KB0060673) as a SAML application in Cloudflare One.
 
 ## Prerequisites

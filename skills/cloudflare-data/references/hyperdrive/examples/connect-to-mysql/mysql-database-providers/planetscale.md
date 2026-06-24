@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # PlanetScale
 
-**Last reviewed:**  about 1 year ago
-
 Connect Hyperdrive to a PlanetScale MySQL database.
 
 This example shows you how to connect Hyperdrive to a [PlanetScale ↗](https://planetscale.com/) MySQL database.
@@ -74,8 +72,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8769)
-* [  wrangler.toml ](#tab-panel-8770)
+* [  wrangler.jsonc ](#tab-panel-8809)
+* [  wrangler.toml ](#tab-panel-8810)
 
 JSONC
 
@@ -118,8 +116,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8771)
-* [  wrangler.toml ](#tab-panel-8772)
+* [  wrangler.jsonc ](#tab-panel-8811)
+* [  wrangler.toml ](#tab-panel-8812)
 
 JSONC
 

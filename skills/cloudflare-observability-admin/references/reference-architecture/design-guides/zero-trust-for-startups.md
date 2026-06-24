@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Building zero trust architecture into your startup
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Most of Cloudflare's documentation (and, generally, documentation by most vendors in the space) is written with the assumption that adopting Zero Trust products will require shifting away from something. In scenarios in which nothing is built, or there is no tool that fulfills the goals which your team is trying to accomplish, this can sometimes be confusing and alienating. New startups are especially underserved; as you focus all your energy on getting your business off the ground, it can be time consuming or confusing to read documentation that is angled towards enterprises undergoing network transformation.

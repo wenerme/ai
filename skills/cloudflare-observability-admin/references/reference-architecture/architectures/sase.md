@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Evolving to a SASE architecture with Cloudflare
 
-**Last reviewed:**  almost 2 years ago
-
 Download a [PDF version](https://developers.cloudflare.com/reference-architecture/static/cloudflare-evolving-to-a-sase-architecture.pdf) of this reference architecture.
 
 ## Introduction

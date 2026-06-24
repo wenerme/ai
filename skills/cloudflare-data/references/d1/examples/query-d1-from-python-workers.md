@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Query D1 from Python Workers
 
-**Last reviewed:**  about 2 years ago
-
 Learn how to query D1 from a Python Worker
 
 The Cloudflare Workers platform supports [multiple languages](https://developers.cloudflare.com/workers/languages/), including TypeScript, JavaScript, Rust and Python. This guide shows you how to query a D1 database from [Python](https://developers.cloudflare.com/workers/languages/python/) and deploy your application globally.
@@ -58,8 +56,8 @@ npx wrangler d1 info some-existing-db
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-7964)
-* [  wrangler.toml ](#tab-panel-7965)
+* [  wrangler.jsonc ](#tab-panel-8004)
+* [  wrangler.toml ](#tab-panel-8005)
 
 JSONC
 

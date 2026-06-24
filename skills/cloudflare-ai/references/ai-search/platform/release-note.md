@@ -14,6 +14,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-06-24
+
+**Configurable similarity cache duration and on-demand purge**
+
+You can now control how long AI Search retains cached responses with the `cache_ttl` setting, from 10 minutes up to 6 days. The default is now 48 hours, from the previous fixed duration of 30 days. You can also purge all cached responses for an instance on demand. Refer to [similarity cache](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/).
+
+## 2026-06-24
+
+**Additional file type support**
+
+Built-in storage, R2, and website data sources now support `.mdoc`, `.sql`, and `.log.gz` files. Refer to [supported file types](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types) for the full list.
+
 ## 2026-06-18
 
 **Migration to managed infrastructure complete**

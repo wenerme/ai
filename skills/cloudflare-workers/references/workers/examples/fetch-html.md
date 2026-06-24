@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Fetch HTML
 
-**Last reviewed:**  over 2 years ago
-
 Send a request to a remote server, read HTML from the response, and serve that HTML.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11734)
-* [  TypeScript ](#tab-panel-11735)
-* [  Python ](#tab-panel-11736)
-* [  Hono ](#tab-panel-11737)
+* [  JavaScript ](#tab-panel-11774)
+* [  TypeScript ](#tab-panel-11775)
+* [  Python ](#tab-panel-11776)
+* [  Hono ](#tab-panel-11777)
 
 JavaScript
 
@@ -34,7 +32,7 @@ export default {  async fetch(request) {    /**     * Replace `remote` with the 
     return await fetch(remote, request);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAGxjRggBwBWYcICcALhYs2wDnC40+AkeNGTZ8hQFgAUAGF0VCAFNb2ACJQAzjHSuo0G0pLq8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3NkmQAKlen59eSACU7RrgvDsJAABucRvYQSQAO7eI4kCBHYFHTwrOiUGFueEQdAkVwOXAkc5XG4QVwI9CfTavZBU3g2W5EuwQ4EMEiRI4QCAwVxKZDIeJhRp2BL04BpcxU84QEAIKhbaFwbz7Q6ncHoewAGiZJNudyITwAvprzIaiBZVMx1JptDx+EIxBJpHJFMUbPZHC53J5vK0qH4AppSKFwlFwoRNGl-JlsqHImQwOgyEUrO6ypVqrUtg0mrwWm0UjZJuZVpFgEqqAB9EZjLKRJR5eYFVKGi2W61BW26B0GIwuhTMCxAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOAGwBGAExiAHIJniAzAC4WLNsA5wuNPgJETpouQsUBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skyABUb88vbyQASvZNOC8ewkAAGF1GDlBJAA7j5jiQIMcQccvKs6JRYe4ERB0CQ3I5cCQLtdbhA3Ij0F8tm9kNTeLY7sT7JCQQwSFFjhAIDA3MpkMgEuEmvZEgzgOkLNSLhAQAgqNsYXAfAcjmcIegHAAaZmku73IjPAC+WosRqIljUzA0Wh0PH4QjEUlk8iUJVsDicrg8Xh8bSo-kCWlIYQi0QihC06QCWRyYaiZDA6DIxWsHvKVRqdW2jWavFa7VStimFjWUWAyqoAH1RuNslFlPkFoU0kbLVabcE7XpHYYXaZmJYgA)
 
 TypeScript
 

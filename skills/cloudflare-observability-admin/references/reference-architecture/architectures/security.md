@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Cloudflare Security Architecture
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Today, everything and everyone needs to be connected to everything everywhere, all the time, and everything must be secure. However, many businesses are not built on infrastructure that supports this reality. Historically, employees worked in an office where most business systems (file servers, printers, applications) were located on and accessible only from the private office network. A security perimeter was created around the network to protect against outsider threats, most of which came from the public Internet.

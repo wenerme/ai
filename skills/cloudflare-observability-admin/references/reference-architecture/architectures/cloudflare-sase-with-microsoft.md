@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Reference Architecture using Cloudflare SASE with Microsoft
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 In today's rapidly evolving digital landscape, organizations are increasingly embracing cloud migration to modernize their environments and enhance productivity. Microsoft has emerged as a leading provider of cloud applications and services, offering a comprehensive suite of solutions to support hybrid work. However, this shift to the cloud also presents new challenges and risks that must be addressed to ensure the security and integrity of an organization's resources.

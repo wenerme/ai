@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrate from Vercel to Workers
 
-**Last reviewed:**  about 1 year ago
-
 In this tutorial, you will learn how to migrate your Vercel application to Cloudflare Workers.
 
 You should already have an existing project deployed on Vercel that you would like to host on Cloudflare Workers. Vercel specific features are not supported by Cloudflare Workers. Review the [Workers compatibility matrix](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#compatibility-matrix) for more information on what is supported.
@@ -38,8 +36,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12195)
-* [  wrangler.toml ](#tab-panel-12196)
+* [  wrangler.jsonc ](#tab-panel-12235)
+* [  wrangler.toml ](#tab-panel-12236)
 
 JSONC
 
@@ -56,8 +54,8 @@ name = "<your-project-name>"# Set this to today's datecompatibility_date = "2026
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-12197)
-* [  wrangler.toml ](#tab-panel-12198)
+* [  wrangler.jsonc ](#tab-panel-12237)
+* [  wrangler.toml ](#tab-panel-12238)
 
 JSONC
 

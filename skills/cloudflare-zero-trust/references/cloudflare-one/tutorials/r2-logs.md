@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Use Cloudflare R2 as a Zero Trust log destination
 
-**Last reviewed:**  over 2 years ago
-
 Note
 
 Only available on Zero Trust Enterprise plans.

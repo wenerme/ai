@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Using timingSafeEqual
 
-**Last reviewed:**  almost 3 years ago
-
 Protect against timing attacks by safely comparing values using `timingSafeEqual`.
 
 If you want to get started quickly, click on the button below.
@@ -34,9 +32,9 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-11783)
-* [  Python ](#tab-panel-11784)
-* [  Hono ](#tab-panel-11785)
+* [  TypeScript ](#tab-panel-11823)
+* [  Python ](#tab-panel-11824)
+* [  Hono ](#tab-panel-11825)
 
 TypeScript
 

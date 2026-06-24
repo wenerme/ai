@@ -12,14 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use Queues to store data in R2
 
-**Last reviewed:**  over 3 years ago
-
 Example of how to use Queues to batch data and store it in an R2 bucket.
 
 The following Worker will catch JavaScript errors and send them to a queue. The same Worker will receive those errors in batches and store them to a log file in an R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-9737)
-* [  wrangler.toml ](#tab-panel-9738)
+* [  wrangler.jsonc ](#tab-panel-9777)
+* [  wrangler.toml ](#tab-panel-9778)
 
 JSONC
 

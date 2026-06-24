@@ -107,8 +107,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7252)
-* [  wrangler.toml ](#tab-panel-7253)
+* [  wrangler.jsonc ](#tab-panel-7292)
+* [  wrangler.toml ](#tab-panel-7293)
 
 JSONC
 
@@ -122,8 +122,8 @@ TOML
 [[vpc_networks]]binding = "EGRESS"network_id = "cf1:network"remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7254)
-* [  TypeScript ](#tab-panel-7255)
+* [  JavaScript ](#tab-panel-7294)
+* [  TypeScript ](#tab-panel-7295)
 
 JavaScript
 
@@ -1536,7 +1536,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 **Code Mode for MCP server portals**
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code Mode is turned on by default on all portals.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [Code Mode MCP server patterns](https://developers.cloudflare.com/agents/model-context-protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code Mode is turned on by default on all portals.
 
 To turn it off, edit the portal in **Access controls** \> **AI controls** and turn off **Code Mode** under **Basic information**.
 
@@ -4780,8 +4780,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7250)
-* [ Core Dashboard ](#tab-panel-7251)
+* [ Zero Trust Dashboard ](#tab-panel-7290)
+* [ Core Dashboard ](#tab-panel-7291)
 
 To update your view preference in the Zero Trust dashboard:
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Publish to a Queue via HTTP
 
-**Last reviewed:**  11 months ago
-
 Publish to a Queue directly via HTTP.
 
 The following example shows you how to publish messages to a Queue from any HTTP client, using a Cloudflare API token to authenticate.

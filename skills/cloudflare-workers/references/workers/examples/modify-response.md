@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Modify response
 
-**Last reviewed:**  over 5 years ago
-
 Fetch and modify response properties which are immutable by creating a copy first.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11770)
-* [  TypeScript ](#tab-panel-11771)
-* [  Python ](#tab-panel-11772)
-* [  Hono ](#tab-panel-11773)
+* [  JavaScript ](#tab-panel-11810)
+* [  TypeScript ](#tab-panel-11811)
+* [  Python ](#tab-panel-11812)
+* [  Hono ](#tab-panel-11813)
 
 JavaScript
 

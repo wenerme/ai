@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Optimizing device roaming experience with geolocated IPs
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 A private [Access Point Name ↗](https://en.wikipedia.org/wiki/Access%5FPoint%5FName) (APN) enables devices, like connected vehicles, connected containers, healthcare devices or drones, to be connected while roaming across different countries. The device connects with a SIM or eSIM card to a dedicated network, and as the device moves to a new country, it automatically selects the appropriate private APN for the local provider.

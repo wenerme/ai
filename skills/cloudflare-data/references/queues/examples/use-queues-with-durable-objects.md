@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use Queues from Durable Objects
 
-**Last reviewed:**  almost 3 years ago
-
 Publish to a queue from within a Durable Object.
 
 The following example shows you how to write a Worker script to publish to [Cloudflare Queues](https://developers.cloudflare.com/queues/) from within a [Durable Object](https://developers.cloudflare.com/durable-objects/).
@@ -26,8 +24,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-9739)
-* [  wrangler.toml ](#tab-panel-9740)
+* [  wrangler.jsonc ](#tab-panel-9779)
+* [  wrangler.toml ](#tab-panel-9780)
 
 JSONC
 

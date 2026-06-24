@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Access and secure a MySQL database using Cloudflare Tunnel and network policies
 
-**Last reviewed:**  over 2 years ago
-
 Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.
 
 By the end of this tutorial, users that pass network policies will be able to access a remote MySQL database available through a Cloudflare Tunnel on TCP port 3306.

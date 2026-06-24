@@ -1,0 +1,160 @@
+---
+title: Logs in OpenObserve | OpenObserve
+description: Run your first log search in OpenObserve. Filter by stream and time range, switch between non-SQL and SQL mode, transform results with VRL, save views, and export or schedule searches.
+---
+# Logs
+
+This page explains how to run your first log search in OpenObserve, set a time range, execute a query, apply VRL transformations, adjust display settings, and save or export the results. 
+
+!!! note "Before you begin"
+    Make sure you have the required access to use the **Logs** page. Ensure that at least one stream with data is available in your organization. Learn more about [streams](../../data-processing/streams/streams-in-openobserve.md).
+
+## Get Started with Logs
+To start using the **Logs** page:
+
+1. Select the **organization** from the dropdown at the top.
+2. In the **Logs** page, choose a log stream using the stream selector.
+3. Set the time range using the time range selector.
+4. Click **Run query** to view the logs for the selected time range.
+
+[Log search]
+
+This is the minimum setup required to explore log data for the selected time range. 
+
+!!! note "Auto Run"
+    When Auto Run is enabled (an administrator sets `ZO_AUTO_QUERY_ENABLED`), the query re-runs automatically when you change a filter, time range, query, or function, so you do not need to click **Run query** manually.
+
+## Use the Query Editor
+The **Query Editor** allows you to define filters, expressions, and transformations on your log data.
+
+Use the **SQL mode** toggle to switch between two editor modes, non-SQL mode and SQL mode.
+
+[Logs query toggle]
+
+**Non-SQL mode**: When the toggle is off. Use this mode to apply filters, functions such as `match_all`, or other field-based conditions without writing full SQL. Learn more about [SQL functions](../../../reference/sql-functions/index.md).
+
+[Logs query non-SQL mode]
+
+**SQL mode**: When the toggle is on. It enables full SQL syntax. You can write complete SQL queries to control the selection, filtering, and ordering of log records.
+
+For example,
+
+```sql
+SELECT * FROM "default" where k8s_namespace_name = 'openobserve'
+```
+
+[Logs query SQL mode]
+
+Toggling between these modes updates the behavior and syntax of the query editor.
+
+## Set Time Range
+Click the time range selector to define a time window for your query:
+
+1. Choose a relative range such as **Past 1 hour** or **Past 7 days**. Or select an absolute range using the calendar.
+2. Click **Apply**.
+
+**Relative:**
+
+[Logs time-range selector relative]
+
+**Absolute:**
+
+[Logs time-range selector absolute]
+
+This setting limits the query to logs that fall within the selected time range, which helps reduce the amount of data scanned and improves query speed.
+
+## View and Explore Logs
+After the query runs successfully, the results table shows all log entries that match the selected stream, time range, and query conditions.
+Click a row to expand the full log record.
+
+[Logs view row]
+
+### Filter by field values
+In the left field list, fields are organized into collapsible groups. **Key Fields** (the high-value fields configured for the stream) appear first, followed by data-type groups (**String**, **Number**, **Boolean**) and semantic or prefix-based groups (for example, Kubernetes and HTTP), with **Other** listed last. When viewing a single stream, the groups are expanded by default.
+
+Expand a field in the left field list to see its values. Use the value search box to find a specific value, then click a value to add it as a filter condition:
+
+- Adding it as an **include** condition applies `field = 'value'`.
+- Adding it as an **exclude** condition applies `field != 'value'`.
+
+Your selections persist when you toggle between include and exclude. The `_timestamp` field also supports include and exclude conditions. Previously used filters are restored from your last session.
+
+## Use the Histogram and Chart
+- The histogram displays log event distribution over time. Use the **Histogram** toggle to hide it when not needed.
+
+    [Logs histogram disabled]
+
+    When the stream contains a recognized category field, such as `severity`, `log_level`, `level`, or `status`, the histogram is automatically rendered as a stacked bar chart, with each category colored separately and a scrollable legend. The set of recognized fields is configurable by an administrator using the `ZO_HISTOGRAM_BREAKDOWN_FIELDS` environment variable.
+
+    In SQL mode, the histogram is not shown for queries that use `LIMIT`, `DISTINCT`, `JOIN`, or CTEs (`WITH`). In these cases, the UI displays the message: **Histogram unavailable for CTEs, DISTINCT, JOIN and LIMIT queries.**
+
+- The **Visualize** toggle enables or disables the chart panel, which allows you to plot logs using the available chart options for visual analysis.
+
+    [Logs visualize]
+
+These tools help you quickly identify trends or activity spikes within the selected time range.
+
+## Transform Logs with VRL
+Click the **VRL Function Editor** toggle to write and apply a VRL function to the query output.
+
+1. Go to the VRL Function Editor.
+2. Select a saved function or write one manually. Learn more about [VRL functions](../../data-processing/functions/index.md).
+3. Run the query to apply the transformation.
+
+[Transform logs with VRL]
+
+## Adjust Display Options
+
+- **Wrap Table Content**: Toggle to enable word wrapping in the results table.
+
+    [Logs wrap table content]
+
+- **Auto Refresh**: Set a refresh interval to update query results continuously.
+
+    [Logs auto refresh]
+
+These options help customize the view for your analysis needs.
+
+## Save and Reuse Views
+To save a query and its configuration:
+
+1. Click the **Save View** icon.
+2. Enter a name in the dialog box.
+3. Click **Save**.
+
+[Logs save view]
+
+View names must be unique within the organization (case-insensitive); saving with a name that already exists returns an error.
+
+Use the dropdown next to the **Save** icon to reopen saved views at any time.
+
+## Export and Schedule Searches
+
+Click the more options menu or the three-bar icon to access:
+
+1. **Search History**: View your recently executed queries.
+
+    [Logs search history]
+
+2. **Download results**: Export the results of the current query in CSV format.
+3. **Download results for custom range**: Export logs for a different time range in CSV format, without modifying the active query.
+
+    [Logs download results for custom range]
+
+4. **Create Scheduled Search**: Set up recurring queries that run on a schedule.
+
+    [Logs create scheduled search]
+
+5. **List Scheduled Search**: View and manage scheduled searches.
+
+    [Logs scheduled search list]
+
+## Next Steps
+
+- To learn how to visualize logs, refer to the [Dashboards](../../analytics/dashboards/dashboards-in-openobserve.md) documentation.
+- To learn how to monitor logs continuously, refer to the [Alerts](../../analytics/alerts/index.md) documentation.
+
+**Need some help?**
+
+- Join our [Community Slack](https://short.openobserve.ai/community) 
+- Or [Contact support](https://openobserve.ai/contactus/)

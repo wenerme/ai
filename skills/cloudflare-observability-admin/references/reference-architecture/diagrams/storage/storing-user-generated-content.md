@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Storing user generated content
 
-**Last reviewed:**  about 1 year ago
-
 ## Introduction
 
 User generated content (UGC) is an essential aspect of modern applications. This includes users uploading profile photos, documents, and videos, as well as AI models generating images, summaries, or structured data. Therefore, applications require a reliable, scalable, and cost-effective solution for storing and accessing this content.

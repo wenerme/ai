@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Content Delivery Network (CDN) Reference Architecture
 
-**Last reviewed:**  over 3 years ago
-
 ## Introduction
 
 Every day, users of the Internet enjoy the benefits of performance and reliability provided by [content delivery networks ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (CDNs). CDNs have become a must-have to combat latency and a requirement for any major company delivering content to users on the Internet. While providing performance and reliability for customers, CDNs also enable companies to further secure their applications and cut costs. This document discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.

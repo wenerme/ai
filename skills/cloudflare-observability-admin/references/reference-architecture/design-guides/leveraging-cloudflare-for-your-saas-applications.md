@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Leveraging Cloudflare for your SaaS applications
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 When building a SaaS application, it is common to create unique hostnames for each customer account (or tenant), for example `app.customer.com`. It is important to ensure that all communication to this application hostname is done using SSL/TLS and therefore a certificate must be created for your customer's hostname on your application. Certificate management is hard, and often application architects and developers would use a [multi-domain certificate ↗](https://www.cloudflare.com/learning/ssl/types-of-ssl-certificates/) (MDC), so they can buy and add just one certificate that has hundreds of domains listed. However, this does not scale well when your application reaches thousands and millions of customers.

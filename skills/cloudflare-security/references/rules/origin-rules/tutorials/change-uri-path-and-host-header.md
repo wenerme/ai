@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Change URI path and Host header
 
-**Last reviewed:**  over 1 year ago
-
 This tutorial will instruct you how to modify both the URI path and the `Host` header of incoming requests using [Transform Rules](https://developers.cloudflare.com/rules/transform/) and Origin Rules.
 
 Your website visitors will be routed from `https://<YOUR_SOURCE_HOSTNAME>/uploads/*` to `https://<YOUR_TARGET_HOSTNAME>/*`.

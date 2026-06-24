@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Protective DNS for governments
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Protective DNS services are security services that analyze DNS queries and block access to malicious websites and other harmful online content. As technology becomes increasingly vital for public sector operations, government departments are looking to adopt these cybersecurity services to bolster incident detection and response, and to build more resilient enterprise networks. Traditionally, deploying this type of solution posed significant challenges due to the reliance on legacy systems that required costly on-premises hardware. This makes it difficult to deploy and manage, and introduces post-deployment struggles with scalability and availability.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Protect access to Amazon S3 buckets with Cloudflare Zero Trust
 
-**Last reviewed:**  over 2 years ago
-
 This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet. You can combine Cloudflare Access and AWS VPC endpoints. Enterprise may also use Cloudflare Gateway egress policies with dedicated egress IPs.
 
 ## Method 1: Via Cloudflare Access and VPC endpoints

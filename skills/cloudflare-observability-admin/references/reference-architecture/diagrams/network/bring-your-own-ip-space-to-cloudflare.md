@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Bring your own IP space to Cloudflare
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Cloudflare brings security and performance to our customers' digital estates. However, one of the characteristics of proxying services is that interactions on the web that go to Cloudflare (DNS queries or requests to SaaS providers, for example) will appear to the world as coming from the Cloudflare IP space. This can create challenges for some enterprises.

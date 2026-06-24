@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Accessing the Cloudflare Object
 
-**Last reviewed:**  over 4 years ago
-
 Access custom Cloudflare properties and control how Cloudflare features are applied to every request.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11643)
-* [  TypeScript ](#tab-panel-11644)
-* [  Hono ](#tab-panel-11645)
-* [  Python ](#tab-panel-11646)
+* [  JavaScript ](#tab-panel-11683)
+* [  TypeScript ](#tab-panel-11684)
+* [  Hono ](#tab-panel-11685)
+* [  Python ](#tab-panel-11686)
 
 JavaScript
 

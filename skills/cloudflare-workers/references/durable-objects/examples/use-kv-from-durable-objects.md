@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use Workers KV from Durable Objects
 
-**Last reviewed:**  almost 3 years ago
-
 Read and write to/from Workers KV within a Durable Object
 
 The following Worker script shows you how to configure a Durable Object to read from and/or write to a [Workers KV namespace](https://developers.cloudflare.com/kv/concepts/how-kv-works/). This is useful when using a Durable Object to coordinate between multiple clients, and allows you to serialize writes to KV and/or broadcast a single read from KV to hundreds or thousands of clients connected to a single Durable Object [using WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
@@ -26,8 +24,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-8431)
-* [  wrangler.toml ](#tab-panel-8432)
+* [  wrangler.jsonc ](#tab-panel-8471)
+* [  wrangler.toml ](#tab-panel-8472)
 
 JSONC
 
@@ -43,8 +41,8 @@ TOML
 [[durable_objects.bindings]]name = "YOUR_DO_CLASS"class_name = "YourDurableObject"
 ```
 
-* [  TypeScript ](#tab-panel-8429)
-* [  Python ](#tab-panel-8430)
+* [  TypeScript ](#tab-panel-8469)
+* [  Python ](#tab-panel-8470)
 
 TypeScript
 

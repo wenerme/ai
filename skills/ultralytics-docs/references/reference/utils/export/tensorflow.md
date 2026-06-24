@@ -1,0 +1,41 @@
+---
+title: utils.export.tensorflow API Reference
+description: TensorFlow export utilities for converting PyTorch models to various TensorFlow formats. Provides functions for converting models to TensorFlow SavedModel, Protocol Buffer (.pb), TensorFlow Lite, Edge TPU, and TensorFlow.js formats via ONNX intermediate representation with support for INT8 quantization and calibration.
+keywords: Ultralytics, TensorFlow, SavedModel, Protocol Buffer, TensorFlow Lite, TFLite, Edge TPU, TensorFlow.js, ONNX conversion, PyTorch to TensorFlow, INT8 quantization, model calibration, frozen graph, onnx2tf, model export, web deployment, mobile deployment
+---
+
+# Reference for `ultralytics/utils/export/tensorflow.py`
+
+!!! success "Improvements"
+
+    This page is sourced from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/utils/export/tensorflow.py](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/utils/export/tensorflow.py). Have an improvement or example to add? Open a [Pull Request](https://docs.ultralytics.com/help/contributing) — thank you! 🙏
+
+## ::: ultralytics.utils.export.tensorflow.tf_wrapper
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow._tf_decode_boxes
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow._tf_kpts_decode
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow.onnx2saved_model
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow.keras2pb
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow.tflite2edgetpu
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow.pb2tfjs
+
+<hr>
+
+## ::: ultralytics.utils.export.tensorflow.gd_outputs

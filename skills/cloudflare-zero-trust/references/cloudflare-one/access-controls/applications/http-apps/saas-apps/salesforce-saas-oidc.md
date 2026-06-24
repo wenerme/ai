@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Salesforce (OIDC)
 
-**Last reviewed:**  almost 2 years ago
-
 This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/s/articleView?id=sf.sso%5Fprovider%5Fopenid%5Fconnect.htm&type=5) as an OpenID Connect (OIDC) application in Cloudflare One.
 
 ## Prerequisites

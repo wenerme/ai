@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Enhancing security posture with SentinelOne and Cloudflare One
 
-**Last reviewed:**  about 1 year ago
-
 ## Introduction
 
 The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution that combines endpoint protection with [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/). This integration enables organizations to make access decisions based on device security posture, ensuring that only healthy and compliant devices can access protected resources. This reference architecture describes how organizations can implement and leverage this integration to enhance their security posture. The integration can assist in advancing an organization's or agency's Zero Trust Architecture Maturity Model, with the goal of one's organization eventually achieving Advanced or Optimal across all [CISA's 5 Pillars of Zero Trust. ↗](https://www.cisa.gov/sites/default/files/2023-04/CISA%5FZero%5FTrust%5FMaturity%5FModel%5FVersion%5F2%5F508c.pdf)

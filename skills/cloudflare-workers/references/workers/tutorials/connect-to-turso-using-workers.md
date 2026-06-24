@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Connect to and query your Turso database using Workers
 
-**Last reviewed:**  about 3 years ago
-
 This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
 
 Note
@@ -166,8 +164,8 @@ libsql://my-db-<your-github-username>.turso.io
 
 Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in your editor and at the bottom of the file, create a new `[vars]` section representing the [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) for your project:
 
-* [  wrangler.jsonc ](#tab-panel-12239)
-* [  wrangler.toml ](#tab-panel-12240)
+* [  wrangler.jsonc ](#tab-panel-12279)
+* [  wrangler.toml ](#tab-panel-12280)
 
 JSONC
 

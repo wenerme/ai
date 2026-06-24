@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Whisper-large-v3-turbo with Cloudflare Workers AI
 
-**Last reviewed:**  about 1 year ago
-
 In this tutorial you will learn how to:
 
 * **Transcribe large audio files:** Use the [Whisper-large-v3-turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) model from Cloudflare Workers AI to perform automatic speech recognition (ASR) or translation.
@@ -76,8 +74,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11392)
-* [  wrangler.toml ](#tab-panel-11393)
+* [  wrangler.jsonc ](#tab-panel-11432)
+* [  wrangler.toml ](#tab-panel-11433)
 
 JSONC
 
@@ -97,8 +95,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
-* [  wrangler.jsonc ](#tab-panel-11394)
-* [  wrangler.toml ](#tab-panel-11395)
+* [  wrangler.jsonc ](#tab-panel-11434)
+* [  wrangler.toml ](#tab-panel-11435)
 
 JSONC
 

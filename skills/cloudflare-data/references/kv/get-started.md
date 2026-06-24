@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Getting started
 
-**Last reviewed:**  about 1 year ago
-
 Create a basic key-value store which stores the notification configuration of all users in an application, where each user may have `enabled` or `disabled` notifications.
 
 Workers KV provides low-latency, high-throughput global storage to your [Cloudflare Workers](https://developers.cloudflare.com/workers/) applications. Workers KV is ideal for storing user configuration data, routing data, A/B testing configurations and authentication tokens, and is well suited for read-heavy workloads.
@@ -51,8 +49,8 @@ New to Workers?
 
 Refer to [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) to learn about the Workers serverless execution model works. Go to the [Workers Get started guide](https://developers.cloudflare.com/workers/get-started/guide/) to set up your first Worker.
 
-* [ CLI ](#tab-panel-9094)
-* [ Dashboard ](#tab-panel-9095)
+* [ CLI ](#tab-panel-9134)
+* [ Dashboard ](#tab-panel-9135)
 
 Create a new Worker to read and write to your KV namespace.
 
@@ -113,8 +111,8 @@ For example: `CI=true npm create cloudflare@latest kv-tutorial --type=simple --g
 
 A [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) is a key-value database replicated to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-9086)
-* [ Dashboard ](#tab-panel-9087)
+* [ CLI ](#tab-panel-9126)
+* [ Dashboard ](#tab-panel-9127)
 
 You can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to create a new KV namespace. You can also use it to perform operations such as put, list, get, and delete within your KV namespace.
 
@@ -157,13 +155,13 @@ Refer to [Environment](https://developers.cloudflare.com/kv/reference/environmen
 
 To bind your KV namespace to your Worker:
 
-* [ CLI ](#tab-panel-9098)
-* [ Dashboard ](#tab-panel-9099)
+* [ CLI ](#tab-panel-9138)
+* [ Dashboard ](#tab-panel-9139)
 
 1. In your Wrangler file, add the following with the values generated in your terminal from [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace):
 
-  * [  wrangler.jsonc ](#tab-panel-9096)
-  * [  wrangler.toml ](#tab-panel-9097)
+  * [  wrangler.jsonc ](#tab-panel-9136)
+  * [  wrangler.toml ](#tab-panel-9137)
 JSONC
 ```
 {  "kv_namespaces": [    {      "binding": "USERS_NOTIFICATION_CONFIG",      "id": "<BINDING_ID>"    }  ]}
@@ -192,8 +190,8 @@ You can interact with your KV namespace via [Wrangler](https://developers.cloudf
 
 ### 4.1\. Write a value
 
-* [ CLI ](#tab-panel-9088)
-* [ Dashboard ](#tab-panel-9089)
+* [ CLI ](#tab-panel-9128)
+* [ Dashboard ](#tab-panel-9129)
 
 To write a value to your empty KV namespace using Wrangler:
 
@@ -245,8 +243,8 @@ npx wrangler kv key put --namespace-id=xxxxxxxxxxxxxxxx "<KEY>" "<VALUE>" --remo
 
 ### 4.2\. Get a value
 
-* [ CLI ](#tab-panel-9092)
-* [ Dashboard ](#tab-panel-9093)
+* [ CLI ](#tab-panel-9132)
+* [ Dashboard ](#tab-panel-9133)
 
 To access the value from your KV namespace using Wrangler:
 
@@ -279,8 +277,8 @@ You can view key-value pairs directly from the dashboard.
 
 ## 5\. Access your KV namespace from your Worker
 
-* [ CLI ](#tab-panel-9104)
-* [ Dashboard ](#tab-panel-9105)
+* [ CLI ](#tab-panel-9144)
+* [ Dashboard ](#tab-panel-9145)
 
 Note
 
@@ -308,8 +306,8 @@ let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
 
 Your Worker code should look like this:
 
-* [  JavaScript ](#tab-panel-9100)
-* [  TypeScript ](#tab-panel-9101)
+* [  JavaScript ](#tab-panel-9142)
+* [  TypeScript ](#tab-panel-9143)
 
 JavaScript
 
@@ -338,8 +336,8 @@ The code above:
 3. Select **Edit Code**.
 4. Clear the contents of the `workers.js` file, then paste the following code.
 
-  * [  JavaScript ](#tab-panel-9102)
-  * [  TypeScript ](#tab-panel-9103)
+  * [  JavaScript ](#tab-panel-9140)
+  * [  TypeScript ](#tab-panel-9141)
 JavaScript
 ```
 export default {  async fetch(request, env, ctx) {    try {      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");      if (value === null) {        return new Response("Value not found", { status: 404 });      }      return new Response(value);    } catch (err) {      console.error(`KV returned error:`, err);      const errorMessage =        err instanceof Error          ? err.message          : "An unknown error occurred when accessing KV storage";      return new Response(errorMessage, {        status: 500,        headers: { "Content-Type": "text/plain" },      });    }  },};
@@ -361,8 +359,8 @@ The browser should simply return the `VALUE` corresponding to the `KEY` you have
 
 Deploy your Worker to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-9090)
-* [ Dashboard ](#tab-panel-9091)
+* [ CLI ](#tab-panel-9130)
+* [ Dashboard ](#tab-panel-9131)
 
 1. Run the following command to deploy KV to Cloudflare's global network:
 Terminal window

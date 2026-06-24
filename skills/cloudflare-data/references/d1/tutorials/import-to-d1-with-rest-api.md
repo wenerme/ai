@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Bulk import to D1 using REST API
 
-**Last reviewed:**  over 1 year ago
-
 In this tutorial, you will learn how to import a database into D1 using the [REST API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/import/).
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Detect MCP traffic in Gateway logs
 
-**Last reviewed:**  3 months ago
-
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
 As an IT administrator, you want to identify shadow MCP traffic to prevent unauthorized data exfiltration while still supporting governed use cases. In this tutorial, you will use the Cloudflare GraphQL Analytics API to scan Gateway HTTP logs for MCP traffic patterns, create DLP profiles that detect MCP JSON-RPC methods, and classify traffic to differentiate between authorized traffic sent to MCP server portals and traffic sent to "shadow" remote MCP servers.
@@ -49,8 +47,8 @@ MCP traffic can be identified by three signals:
 
 The following GraphQL query scans Gateway logs for the first two signals:
 
-* [  JavaScript ](#tab-panel-7804)
-* [  TypeScript ](#tab-panel-7805)
+* [  JavaScript ](#tab-panel-7844)
+* [  TypeScript ](#tab-panel-7845)
 
 JavaScript
 
@@ -76,8 +74,8 @@ Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DAT
 
 Each group in the response represents aggregated traffic for a specific `httpHost` and `action` combination. Parse the results to identify unblocked MCP connections:
 
-* [  JavaScript ](#tab-panel-7798)
-* [  TypeScript ](#tab-panel-7799)
+* [  JavaScript ](#tab-panel-7838)
+* [  TypeScript ](#tab-panel-7839)
 
 JavaScript
 
@@ -127,8 +125,8 @@ Before building detection patterns, note the following DLP limitations:
 
 MCP indicators can be found in JSON-RPC method fields. The following regex patterns cover the core MCP protocol methods:
 
-* [  JavaScript ](#tab-panel-7806)
-* [  TypeScript ](#tab-panel-7807)
+* [  JavaScript ](#tab-panel-7846)
+* [  TypeScript ](#tab-panel-7847)
 
 JavaScript
 
@@ -153,8 +151,8 @@ Pattern explanation:
 
 Send a `POST` request to create a custom DLP profile containing all detection patterns:
 
-* [  JavaScript ](#tab-panel-7802)
-* [  TypeScript ](#tab-panel-7803)
+* [  JavaScript ](#tab-panel-7842)
+* [  TypeScript ](#tab-panel-7843)
 
 JavaScript
 
@@ -178,8 +176,8 @@ Replace `${accountId}` with your Cloudflare account ID and `${apiToken}` with yo
 
 After the DLP profile exists, create a Gateway HTTP policy that blocks requests matching the profile:
 
-* [  JavaScript ](#tab-panel-7796)
-* [  TypeScript ](#tab-panel-7797)
+* [  JavaScript ](#tab-panel-7836)
+* [  TypeScript ](#tab-panel-7837)
 
 JavaScript
 
@@ -213,8 +211,8 @@ When analyzing Gateway logs, it is helpful to differentiate between two types of
 
 Extend the query processing from [Process the query results](#3-process-the-query-results) to classify traffic by comparing hostnames against your list of approved portal domains:
 
-* [  JavaScript ](#tab-panel-7800)
-* [  TypeScript ](#tab-panel-7801)
+* [  JavaScript ](#tab-panel-7840)
+* [  TypeScript ](#tab-panel-7841)
 
 JavaScript
 

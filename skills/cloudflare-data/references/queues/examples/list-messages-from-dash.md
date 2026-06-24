@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # List and acknowledge messages from the dashboard
 
-**Last reviewed:**  almost 3 years ago
-
 Use the dashboard to fetch and acknowledge the messages currently in a queue.
 
 ## List messages from the dashboard

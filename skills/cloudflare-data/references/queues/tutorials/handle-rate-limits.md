@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Handle rate limits of external APIs
 
-**Last reviewed:**  over 1 year ago
-
 Example of how to use Queues to handle rate limits of external APIs.
 
 This tutorial explains how to use Queues to handle rate limits of external APIs by building an application that sends email notifications using [Resend ↗](https://www.resend.com/). However, you can use this pattern to handle rate limits of any external API.
@@ -92,8 +90,8 @@ Creating queue rate-limit-queue.Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-9815)
-* [  wrangler.toml ](#tab-panel-9816)
+* [  wrangler.jsonc ](#tab-panel-9855)
+* [  wrangler.toml ](#tab-panel-9856)
 
 JSONC
 
@@ -112,8 +110,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-9817)
-* [  wrangler.toml ](#tab-panel-9818)
+* [  wrangler.jsonc ](#tab-panel-9857)
+* [  wrangler.toml ](#tab-panel-9858)
 
 JSONC
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Connect to a PostgreSQL database with Cloudflare Workers
 
-**Last reviewed:**  12 months ago
-
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a PostgreSQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of PostgreSQL.
 
 ## Prerequisites
@@ -69,8 +67,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-12271)
-* [  wrangler.toml ](#tab-panel-12272)
+* [  wrangler.jsonc ](#tab-panel-12311)
+* [  wrangler.toml ](#tab-panel-12312)
 
 JSONC
 
@@ -171,8 +169,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12267)
-* [  wrangler.toml ](#tab-panel-12268)
+* [  wrangler.jsonc ](#tab-panel-12307)
+* [  wrangler.toml ](#tab-panel-12308)
 
 JSONC
 
@@ -324,8 +322,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12269)
-* [  wrangler.toml ](#tab-panel-12270)
+* [  wrangler.jsonc ](#tab-panel-12309)
+* [  wrangler.toml ](#tab-panel-12310)
 
 JSONC
 

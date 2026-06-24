@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Encrypt network flow data
 
-**Last reviewed:**  over 1 year ago
-
 You can encrypt the network flow data sent from your router to Cloudflare by [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) your network flow traffic through a device running the Cloudflare One Client. Encrypted network flow traffic is then forwarded from the Cloudflare One Client device to Cloudflare's network flow endpoints.
 
 To learn more about the Cloudflare One Client, and to install it on Linux, macOS, or Windows, refer to the [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).

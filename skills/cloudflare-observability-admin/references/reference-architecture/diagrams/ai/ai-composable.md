@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Composable AI architecture
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 The AI market is witnessing a rapid evolution, propelled by the swift pace of technological advancement. With breakthroughs occurring frequently, staying up-to-date with the latest innovations is imperative for organizations aiming to remain competitive. Short iteration cycles and agility have become indispensable in this landscape, allowing businesses to swiftly adopt and leverage the newest advancements in AI technology.

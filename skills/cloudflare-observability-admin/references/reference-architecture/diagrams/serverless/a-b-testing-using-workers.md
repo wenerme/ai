@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # A/B-testing using Workers
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 A/B testing, also known as split testing, is a fundamental technique in the realm of web development, allowing teams to iteratively refine and optimize their digital experiences. A/B testing involves comparing two versions of a web page or app feature to determine which one performs better in achieving a predefined goal, such as increasing conversions, engagement, or user satisfaction.

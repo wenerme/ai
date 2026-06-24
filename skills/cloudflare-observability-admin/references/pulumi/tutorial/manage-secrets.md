@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Manage secrets with Pulumi ESC
 
-**Last reviewed:**  almost 2 years ago
-
 In this tutorial, you will receive step-by-step instructions on using Pulumi ESC (Environments, Secrets, and Configuration), which is a secure and robust secrets management solution.
 
 The tutorial will walk you through how to develop with Wrangler while following security best practices.

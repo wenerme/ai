@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use fetch() handler
 
-**Last reviewed:**  almost 2 years ago
-
 A very common use case is to provide the LLM with the ability to perform API calls via function calling.
 
 In this example the LLM will retrieve the weather forecast for the next 5 days. To do so a `getWeather` function is defined that is passed to the LLM as tool.

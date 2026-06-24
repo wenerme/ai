@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use SSE-C
 
-**Last reviewed:**  over 1 year ago
-
 The following tutorial shows some snippets for how to use Server-Side Encryption with Customer-Provided Keys (SSE-C) on R2.
 
 ## Before you begin
@@ -23,8 +21,8 @@ The following tutorial shows some snippets for how to use Server-Side Encryption
 
 ## Workers
 
-* [  TypeScript ](#tab-panel-9887)
-* [  JavaScript ](#tab-panel-9888)
+* [  TypeScript ](#tab-panel-9927)
+* [  JavaScript ](#tab-panel-9928)
 
 TypeScript
 
@@ -40,7 +38,7 @@ JavaScript
 
 ## S3-API
 
-* [  @aws-sdk/client-s3 ](#tab-panel-9886)
+* [  @aws-sdk/client-s3 ](#tab-panel-9926)
 
 TypeScript
 

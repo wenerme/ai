@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Cron Container
 
-**Last reviewed:**  about 1 year ago
-
 Running a container on a schedule using Cron Triggers
 
 To launch a container on a schedule, you can use a Workers [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/).
@@ -22,8 +20,8 @@ For a full example, see the [Cron Container Template ↗](https://github.com/mik
 
 Use a cron expression in your Wrangler config to specify the schedule:
 
-* [  wrangler.jsonc ](#tab-panel-7910)
-* [  wrangler.toml ](#tab-panel-7911)
+* [  wrangler.jsonc ](#tab-panel-7950)
+* [  wrangler.toml ](#tab-panel-7951)
 
 JSONC
 

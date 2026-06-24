@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Choose the Right Text Generation Model
 
-**Last reviewed:**  over 2 years ago
-
 A great way to explore the models that are available to you on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 
 You can [download the Workers AI Text Generation Exploration notebook](https://developers.cloudflare.com/workers-ai/static/documentation/notebooks/text-generation-model-exploration.ipynb) or view the embedded notebook below.

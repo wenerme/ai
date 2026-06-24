@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # GitHub SMS notifications using Twilio
 
-**Last reviewed:**  over 2 years ago
-
 In this tutorial, you will learn to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.
 
 You will learn how to:
@@ -137,8 +135,8 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12257)
-* [  wrangler.toml ](#tab-panel-12258)
+* [  wrangler.jsonc ](#tab-panel-12297)
+* [  wrangler.toml ](#tab-panel-12298)
 
 JSONC
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Neon
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to a Neon Postgres database.
 
 This example shows you how to connect Hyperdrive to a [Neon ↗](https://neon.tech/) Postgres database.
@@ -48,8 +46,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8831)
-* [ Wrangler CLI ](#tab-panel-8832)
+* [ Dashboard ](#tab-panel-8871)
+* [ Wrangler CLI ](#tab-panel-8872)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -68,8 +66,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8829)
-  * [  wrangler.toml ](#tab-panel-8830)
+  * [  wrangler.jsonc ](#tab-panel-8869)
+  * [  wrangler.toml ](#tab-panel-8870)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -132,8 +130,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8833)
-* [  wrangler.toml ](#tab-panel-8834)
+* [  wrangler.jsonc ](#tab-panel-8873)
+* [  wrangler.toml ](#tab-panel-8874)
 
 JSONC
 

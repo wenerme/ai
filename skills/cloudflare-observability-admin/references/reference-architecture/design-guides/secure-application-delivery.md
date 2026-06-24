@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Securely deliver applications with Cloudflare
 
-**Last reviewed:**  over 2 years ago
-
 ## Overview and the Cloudflare advantage
 
 Cloudflare provides a complete suite of services around application performance, security, reliability, development, and Zero Trust. Cloudflare’s global network is approximately 50 ms away from about 95% of the Internet-connected population and consists of services that run on every server in every data center. The global scale of Cloudflare also allows for a robust threat intelligence source which is constantly fed back into Cloudflare security products to enhance the machine learning models and services even further.

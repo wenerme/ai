@@ -18,6 +18,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Securing MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/)
 * [ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
 * [ Handle OAuth with MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/)
+* [ Build a single-tool Code Mode MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/)
+* [ Build a search and execute MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/#page","headline":"Guides · Cloudflare Agents docs","description":"Step-by-step guides for building and extending Cloudflare Agents with real-world patterns.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

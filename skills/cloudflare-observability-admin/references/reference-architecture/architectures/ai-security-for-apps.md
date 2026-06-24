@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # AI Security for Apps Reference Architecture
 
-**Last reviewed:**  4 months ago
-
 ## Abstract
 
 The purpose of this document is to highlight how Cloudflare's AI Security for Apps complements Cloudflare WAF by providing an AI protection layer for detecting and mitigating threats to AI-powered applications. Additionally, use cases, specific AI threats, and architecture are discussed.

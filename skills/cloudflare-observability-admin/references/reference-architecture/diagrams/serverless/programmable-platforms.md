@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Programmable Platforms
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 A programmable platform allows customers to customize a product by writing code. Unlike traditional SaaS with fixed features, it enables users to extend functionality, deploy backend logic, and build full-stack experiences—all within the platform’s infrastructure.

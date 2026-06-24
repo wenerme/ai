@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Protect access to Microsoft 365 with dedicated egress IPs
 
-**Last reviewed:**  over 2 years ago
-
 Note
 
 Only available on Zero Trust Enterprise plans.

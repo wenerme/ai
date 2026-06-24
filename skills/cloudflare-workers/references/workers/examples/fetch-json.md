@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Fetch JSON
 
-**Last reviewed:**  over 4 years ago
-
 Send a GET request and read in JSON from the response. Use to fetch external data.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11738)
-* [  TypeScript ](#tab-panel-11739)
-* [  Python ](#tab-panel-11740)
-* [  Hono ](#tab-panel-11741)
+* [  JavaScript ](#tab-panel-11778)
+* [  TypeScript ](#tab-panel-11779)
+* [  Python ](#tab-panel-11780)
+* [  Hono ](#tab-panel-11781)
 
 JavaScript
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a WebSocket server
 
-**Last reviewed:**  over 2 years ago
-
 Build a WebSocket server using Durable Objects and Workers.
 
 This example shows how to build a WebSocket server using Durable Objects and Workers. The example exposes an endpoint to create a new WebSocket connection. This WebSocket connection echos any message while including the total number of WebSocket connections currently established. For more information, refer to [Use Durable Objects with WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
@@ -22,9 +20,9 @@ Warning
 
 WebSocket connections pin your Durable Object to memory, and so duration charges will be incurred so long as the WebSocket is connected (regardless of activity). To avoid duration charges during periods of inactivity, use the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/), which only charges for duration when JavaScript is actively executing.
 
-* [  JavaScript ](#tab-panel-8440)
-* [  TypeScript ](#tab-panel-8441)
-* [  Python ](#tab-panel-8442)
+* [  JavaScript ](#tab-panel-8480)
+* [  TypeScript ](#tab-panel-8481)
+* [  Python ](#tab-panel-8482)
 
 JavaScript
 
@@ -103,8 +101,8 @@ class Session:  def __init__(self, *, ws):    self.ws = ws
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-8438)
-* [  wrangler.toml ](#tab-panel-8439)
+* [  wrangler.jsonc ](#tab-panel-8478)
+* [  wrangler.toml ](#tab-panel-8479)
 
 JSONC
 

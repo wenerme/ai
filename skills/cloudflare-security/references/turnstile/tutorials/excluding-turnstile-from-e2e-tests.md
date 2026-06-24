@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Exclude Turnstile from E2E tests
 
-**Last reviewed:**  over 1 year ago
-
 This tutorial explains how to handle Turnstile in your end-to-end (E2E) tests by using Turnstile's dedicated testing keys.
 
 ## Overview

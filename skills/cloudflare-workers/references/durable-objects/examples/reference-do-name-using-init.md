@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use RpcTarget class to handle Durable Object metadata
 
-**Last reviewed:**  about 1 year ago
-
 Access the name from within a Durable Object using RpcTarget.
 
 When working with Durable Objects, you will need to access the name that was used to create the Durable Object via `idFromName()`. This name is typically a meaningful identifier that represents what the Durable Object is responsible for (like a user ID, room name, or resource identifier).

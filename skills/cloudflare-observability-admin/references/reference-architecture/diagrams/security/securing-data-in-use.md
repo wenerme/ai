@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Securing data in use
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Data in use refers to data that is being actively interacted with, processed, or manipulated by applications, systems, or users. For organizations, protecting data in use can be a challenge as it must remain accessible and usable by applications and users who need it to fulfill their duties, yet still protected against unauthorized access or tampering.

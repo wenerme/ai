@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Query D1 from Hono
 
-**Last reviewed:**  almost 3 years ago
-
 Query D1 from the Hono web framework
 
 Hono is a fast web framework for building API-first applications, and it includes first-class support for both [Workers](https://developers.cloudflare.com/workers/) and [Pages](https://developers.cloudflare.com/pages/).
@@ -32,8 +30,8 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-7960)
-* [ pages ](#tab-panel-7961)
+* [ workers ](#tab-panel-8000)
+* [ pages ](#tab-panel-8001)
 
 TypeScript
 

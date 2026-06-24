@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Code interpreter with Workers AI
 
-**Last reviewed:**  5 months ago
-
 Build a powerful code interpreter that gives the [gpt-oss model](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) on Workers AI the ability to execute Python code using the Cloudflare Sandbox SDK.
 
 **Time to complete:** 15 minutes
@@ -84,8 +82,8 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {  cons
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10649)
-* [  wrangler.toml ](#tab-panel-10650)
+* [  wrangler.jsonc ](#tab-panel-10689)
+* [  wrangler.toml ](#tab-panel-10690)
 
 JSONC
 

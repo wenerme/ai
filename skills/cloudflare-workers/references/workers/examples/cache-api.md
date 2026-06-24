@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Using the Cache API
 
-**Last reviewed:**  over 5 years ago
-
 Use the Cache API to store responses in Cloudflare's cache.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11679)
-* [  TypeScript ](#tab-panel-11680)
-* [  Python ](#tab-panel-11681)
-* [  Hono ](#tab-panel-11682)
+* [  JavaScript ](#tab-panel-11719)
+* [  TypeScript ](#tab-panel-11720)
+* [  Python ](#tab-panel-11721)
+* [  Hono ](#tab-panel-11722)
 
 JavaScript
 

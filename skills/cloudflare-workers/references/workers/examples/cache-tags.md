@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Cache Tags using Workers
 
-**Last reviewed:**  about 4 years ago
-
 Send Additional Cache Tags using Workers
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11687)
-* [  TypeScript ](#tab-panel-11688)
-* [  Hono ](#tab-panel-11689)
-* [  Python ](#tab-panel-11690)
+* [  JavaScript ](#tab-panel-11727)
+* [  TypeScript ](#tab-panel-11728)
+* [  Hono ](#tab-panel-11729)
+* [  Python ](#tab-panel-11730)
 
 JavaScript
 

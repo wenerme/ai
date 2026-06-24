@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Query D1 from SvelteKit
 
-**Last reviewed:**  almost 3 years ago
-
 Query a D1 database from a SvelteKit application.
 
 [SvelteKit ↗](https://kit.svelte.dev/) is a full-stack framework that combines the Svelte front-end framework with Vite for server-side capabilities and rendering. You can query D1 from SvelteKit by configuring a [server endpoint ↗](https://kit.svelte.dev/docs/routing#server) with a binding to your D1 database(s).
@@ -32,7 +30,7 @@ The following example shows you how to create a server endpoint configured to qu
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 
-* [  TypeScript ](#tab-panel-7963)
+* [  TypeScript ](#tab-panel-8003)
 
 TypeScript
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Fraud detection with Ephemeral IDs
 
-**Last reviewed:**  5 months ago
-
 [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) let you detect fraud patterns that evade traditional IP-based detection. This tutorial will show you how to log Ephemeral IDs, detect suspicious patterns, and block bad actors.
 
 Attackers often create hundreds of fake accounts to abuse promotions, rotate through proxy pools to avoid IP-based rate limiting, and use real browsers to evade basic bot detection.

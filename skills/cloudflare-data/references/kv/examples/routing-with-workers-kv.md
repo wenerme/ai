@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Route requests across various web servers
 
-**Last reviewed:**  about 1 year ago
-
 Store routing data in Workers KV to route requests across various web servers with Workers
 
 Using Workers KV to store routing data to route requests across various web servers with Workers is an ideal use case for Workers KV. Routing workloads can have high read volume, and Workers KV's low-latency reads can help ensure that routing decisions are made quickly and efficiently.
@@ -32,8 +30,8 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where `https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-* [ index.ts ](#tab-panel-9080)
-* [ wrangler.jsonc ](#tab-panel-9081)
+* [ index.ts ](#tab-panel-9120)
+* [ wrangler.jsonc ](#tab-panel-9121)
 
 index.ts
 

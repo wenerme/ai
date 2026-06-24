@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Optimizing image delivery with Cloudflare image resizing and R2
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Optimizing image delivery for websites is crucial for enhancing user experience. Since images often represent the largest portion of a website's data, they significantly affect page load times, search engine rankings, delivery costs, and overall performance. This reference architecture diagram will guide you through a straightforward, scalable, and high-performance solution. By simply adjusting the URL string to specify image size and quality, you can cache and deliver the optimized image to any user requesting that format. Below are the Cloudflare components involved in this solution:

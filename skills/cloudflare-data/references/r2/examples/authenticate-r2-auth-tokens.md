@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Authenticate against R2 API using auth tokens
 
-**Last reviewed:**  almost 2 years ago
-
 The following example shows how to authenticate against R2 using the S3 API and an API token.
 
 Note
@@ -30,9 +28,9 @@ Terminal window
 export AWS_REGION=autoexport AWS_ENDPOINT_URL=https://<account_id>.r2.cloudflarestorage.comexport AWS_ACCESS_KEY_ID=your_access_key_idexport AWS_SECRET_ACCESS_KEY=your_secret_access_key
 ```
 
-* [  JavaScript ](#tab-panel-9883)
-* [  Python ](#tab-panel-9884)
-* [  Go ](#tab-panel-9885)
+* [  JavaScript ](#tab-panel-9923)
+* [  Python ](#tab-panel-9924)
+* [  Go ](#tab-panel-9925)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 

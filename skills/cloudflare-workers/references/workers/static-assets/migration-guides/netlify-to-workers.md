@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrate from Netlify to Workers
 
-**Last reviewed:**  about 1 year ago
-
 In this tutorial, you will learn how to migrate your Netlify application to Cloudflare Workers.
 
 You should already have an existing project deployed on Netlify that you would like to host on Cloudflare Workers. Netlify specific features are not supported by Cloudflare Workers. Review the [Workers compatibility matrix](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#compatibility-matrix) for more information on what is supported.
@@ -38,8 +36,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12191)
-* [  wrangler.toml ](#tab-panel-12192)
+* [  wrangler.jsonc ](#tab-panel-12231)
+* [  wrangler.toml ](#tab-panel-12232)
 
 JSONC
 
@@ -56,8 +54,8 @@ name = "<your-project-name>"# Set this to today's datecompatibility_date = "2026
 
 For a **Single Page Application**, you will need to add the following to your Wrangler configuration file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-12193)
-* [  wrangler.toml ](#tab-panel-12194)
+* [  wrangler.jsonc ](#tab-panel-12233)
+* [  wrangler.toml ](#tab-panel-12234)
 
 JSONC
 

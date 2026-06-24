@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Egress-free object storage in multi-cloud setups
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Object storage is a modern data storage approach that stores data as objects rather than in a hierarchical structure like traditional file systems, making object storage highly scalable and flexible for managing vast amounts of data across diverse applications and environments.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Materialize
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to a Materialize streaming database.
 
 This example shows you how to connect Hyperdrive to a [Materialize ↗](https://materialize.com/) database. Materialize is a Postgres-compatible streaming database that can automatically compute real-time results against your streaming data sources.
@@ -61,8 +59,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8825)
-* [ Wrangler CLI ](#tab-panel-8826)
+* [ Dashboard ](#tab-panel-8865)
+* [ Wrangler CLI ](#tab-panel-8866)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -81,8 +79,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8823)
-  * [  wrangler.toml ](#tab-panel-8824)
+  * [  wrangler.jsonc ](#tab-panel-8863)
+  * [  wrangler.toml ](#tab-panel-8864)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -145,8 +143,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8827)
-* [  wrangler.toml ](#tab-panel-8828)
+* [  wrangler.jsonc ](#tab-panel-8867)
+* [  wrangler.toml ](#tab-panel-8868)
 
 JSONC
 

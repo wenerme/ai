@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Post JSON
 
-**Last reviewed:**  over 4 years ago
-
 Send a POST request with JSON data. Use to share data with external servers.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11779)
-* [  TypeScript ](#tab-panel-11780)
-* [  Python ](#tab-panel-11781)
-* [  Hono ](#tab-panel-11782)
+* [  JavaScript ](#tab-panel-11819)
+* [  TypeScript ](#tab-panel-11820)
+* [  Python ](#tab-panel-11821)
+* [  Hono ](#tab-panel-11822)
 
 JavaScript
 

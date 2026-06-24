@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Ingesting BigQuery Data into Workers AI
 
-**Last reviewed:**  over 1 year ago
-
 You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs. This will allow you to enhance data with AI-generated responses, such as detecting the sentiment score of some text or generating tags for an article. This document describes a simple way to get started if you are looking to give Workers AI a try and see how the [new and different AI models](https://developers.cloudflare.com/workers-ai/models/) would perform with your data hosted in BigQuery.
 
 ## User-based approach

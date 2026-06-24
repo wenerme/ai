@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 98 skills available
+> 100 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -88,6 +88,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
 | `peekaboo` | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
+| `pytorch-docs` | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
@@ -102,6 +103,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... | [huggingface/transformers](https://github.com/huggingface/transformers) |
 | `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| `ultralytics-docs` | Use when working with Ultralytics YOLO, including YOLO26/YOLO11/YOLOv8 models, detect/segment/classify/pose/OBB tasks,... | [ultralytics/ultralytics/docs](https://github.com/ultralytics/ultralytics/tree/main/docs) |
 | `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... | [vitejs/vite](https://github.com/vitejs/vite) |
 | `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
@@ -854,6 +856,16 @@ Use when using Peekaboo as an installed macOS automation CLI or MCP server: scre
 
 </details>
 <details>
+<summary><code>pytorch-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill pytorch-docs
+```
+
+Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC, CUDA/MPS/XPU backends, profiling, quantization, ONNX export, C++/LibTorch, or PyTorch runtime/debugging behavior.
+
+</details>
+<details>
 <summary><code>react-resizable-panels-v3-to-v4</code></summary>
 
 ```bash
@@ -994,6 +1006,16 @@ UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color pal
 
 </details>
 <details>
+<summary><code>ultralytics-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill ultralytics-docs
+```
+
+Use when working with Ultralytics YOLO, including YOLO26/YOLO11/YOLOv8 models, detect/segment/classify/pose/OBB tasks, train/val/predict/export/track/benchmark modes, dataset YAML formats, HUB/platform workflows, integrations, solutions, or ultralytics Python API behavior.
+
+</details>
+<details>
 <summary><code>vite-docs</code></summary>
 
 ```bash
@@ -1095,7 +1117,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 98 skills, 24845 files, 270 MiB total
+> 100 skills, 25667 files, 277 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1120,8 +1142,8 @@ Use when implementing React state management with Zustand, including context-sco
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 110 | 3.8 MiB |
-| `clickhouse-docs` | 1086 | 9.9 MiB |
-| `cloudflare-ai` | 1488 | 11 MiB |
+| `clickhouse-docs` | 1087 | 9.9 MiB |
+| `cloudflare-ai` | 1499 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 31 KiB |
 | `cloudflare-networking` | 823 | 4.9 MiB |
@@ -1130,7 +1152,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-workers` | 768 | 6.9 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4620 | 14 MiB |
+| `comfyui-docs` | 4632 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1572 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
@@ -1142,7 +1164,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `glab-cli` | 5 | 21 KiB |
 | `glab-docs` | 290 | 451 KiB |
 | `google-ai-api` | 13 | 682 KiB |
-| `google-ai-docs` | 87 | 1.9 MiB |
+| `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
@@ -1173,6 +1195,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |
+| `pytorch-docs` | 314 | 2.0 MiB |
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
 | `requesting-code-review` | 2 | 7.9 KiB |
 | `shadcn` | 14 | 82 KiB |
@@ -1182,11 +1205,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `swift-ms-docs` | 67 | 1.1 MiB |
 | `tea-cli` | 26 | 81 KiB |
 | `tencent-cls` | 4 | 12 KiB |
-| `threejs-docs` | 789 | 1.9 MiB |
+| `threejs-docs` | 794 | 2.0 MiB |
 | `threejs-guide` | 11 | 134 KiB |
 | `tmux-session-manager` | 1 | 1.7 KiB |
-| `transformers-docs` | 164 | 1.2 MiB |
+| `transformers-docs` | 165 | 1.2 MiB |
 | `ui-ux-pro-max` | 36 | 1.7 MiB |
+| `ultralytics-docs` | 478 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |

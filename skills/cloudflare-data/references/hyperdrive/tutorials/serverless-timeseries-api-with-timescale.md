@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Create a serverless, globally distributed time-series API with Timescale
 
-**Last reviewed:**  over 2 years ago
-
 In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
 
 You will create and deploy a Worker function that exposes API routes for ingesting data, and use [Hyperdrive ↗](https://developers.cloudflare.com/hyperdrive/) to proxy your database connection from the edge and maintain a connection pool to prevent us having to make a new database connection on every request.
@@ -147,8 +145,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-8914)
-* [  wrangler.toml ](#tab-panel-8915)
+* [  wrangler.jsonc ](#tab-panel-8954)
+* [  wrangler.toml ](#tab-panel-8955)
 
 JSONC
 

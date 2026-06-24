@@ -70,11 +70,31 @@ Do you need to manage subdomains separately?
 
 If you are on an Enterprise plan, you can use [subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) to manage the Cloudflare settings for one or more subdomains separately from your domain apex.
 
+## Configure DNS-only zones via API
+
+You can configure zones to operate in DNS-only mode (no HTTP proxying) at the account level or per zone using the API.
+
+**Account-level default** (applies to zones created after the setting is applied):
+
+Terminal window
+
+```
+curl --request PATCH \  https://api.cloudflare.com/client/v4/accounts/{account_id}/dns_settings \  --header "Content-Type: application/json" \  --data '{"zone_defaults":{"zone_mode":"dns_only"}}'
+```
+
+**Per-zone** (for existing zones):
+
+Terminal window
+
+```
+curl --request PATCH \  https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_settings \  --header "Content-Type: application/json" \  --data '{"zone_mode":"dns_only"}'
+```
+
 Note
 
 If you run your own authoritative nameservers but still want to benefit from Cloudflare's global anycast network, check out [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/#page","headline":"DNS setups · Cloudflare DNS docs","description":"Available DNS zone setup types and how to configure them.","url":"https://developers.cloudflare.com/dns/zone-setups/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/#page","headline":"DNS setups · Cloudflare DNS docs","description":"Available DNS zone setup types and how to configure them.","url":"https://developers.cloudflare.com/dns/zone-setups/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}}]}
 ```

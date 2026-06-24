@@ -27,8 +27,8 @@ To build an MCP server instead, refer to [Model Context Protocol (MCP)](https://
 
 Call `addMcpServer()` to connect to a remote MCP server, then pass `this.mcp.getAITools()` to the AI SDK.
 
-* [  JavaScript ](#tab-panel-6585)
-* [  TypeScript ](#tab-panel-6586)
+* [  JavaScript ](#tab-panel-6625)
+* [  TypeScript ](#tab-panel-6626)
 
 JavaScript
 
@@ -58,8 +58,8 @@ For public MCP servers, no binding configuration is required. Store server URLs,
 
 For MCP servers that require bearer tokens or Cloudflare Access headers, pass custom transport headers when connecting.
 
-* [  JavaScript ](#tab-panel-6583)
-* [  TypeScript ](#tab-panel-6584)
+* [  JavaScript ](#tab-panel-6623)
+* [  TypeScript ](#tab-panel-6624)
 
 JavaScript
 
@@ -79,9 +79,11 @@ await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {  transport: {    
 
 [ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/) Create an Agent that connects to an external MCP server and uses its tools.
 
+[ Use MCP tools with Code Mode ](https://developers.cloudflare.com/agents/tools/codemode/mcp/) Use progressive discovery, code-based composition, and durable approvals with MCP tools.
+
 [ Model Context Protocol specification ](https://modelcontextprotocol.io/) Learn about the open protocol for connecting AI applications to external tools and data.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP · Cloudflare Agents docs","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP · Cloudflare Agents docs","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/mcp/","name":"MCP"}}]}
 ```

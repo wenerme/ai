@@ -53,7 +53,10 @@ paths:
             context-high-to-low (context length), throughput-high-to-low,
             latency-low-to-high (recent median performance), most-popular,
             top-weekly (tokens processed in the last week), newest (creation
-            date). When omitted, the existing default ordering is preserved.
+            date), intelligence-high-to-low (Artificial Analysis intelligence
+            index), design-arena-elo-high-to-low (best Design Arena ELO across
+            arenas). Models without a score for the chosen benchmark are placed
+            last. When omitted, the existing default ordering is preserved.
           required: false
           schema:
             $ref: '#/components/schemas/ModelsGetParametersSort'
@@ -211,14 +214,19 @@ components:
         - context-high-to-low
         - throughput-high-to-low
         - latency-low-to-high
+        - intelligence-high-to-low
+        - design-arena-elo-high-to-low
       description: >-
         Sort the returned models server-side. Prefer this over fetching the full
         list and sorting client-side. Options: pricing-low-to-high,
         pricing-high-to-low (average prompt/completion price),
         context-high-to-low (context length), throughput-high-to-low,
         latency-low-to-high (recent median performance), most-popular,
-        top-weekly (tokens processed in the last week), newest (creation date).
-        When omitted, the existing default ordering is preserved.
+        top-weekly (tokens processed in the last week), newest (creation date),
+        intelligence-high-to-low (Artificial Analysis intelligence index),
+        design-arena-elo-high-to-low (best Design Arena ELO across arenas).
+        Models without a score for the chosen benchmark are placed last. When
+        omitted, the existing default ordering is preserved.
       title: ModelsGetParametersSort
     ModelsGetParametersDistillable:
       type: string

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Deploy a Worker
 
-**Last reviewed:**  almost 2 years ago
-
 In this tutorial, you will follow step-by-step instructions to deploy a Hello World application using Cloudflare Workers and Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle. In particular, you will create a Worker, a Route, and a DNS Record to access the application before cleaning up all the resources.
 
 Note
@@ -65,13 +63,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-9647)
-* [  TypeScript ](#tab-panel-9648)
-* [  Python ](#tab-panel-9649)
-* [ go ](#tab-panel-9650)
-* [ Java ](#tab-panel-9651)
-* [ .NET ](#tab-panel-9652)
-* [ YAML ](#tab-panel-9653)
+* [  JavaScript ](#tab-panel-9687)
+* [  TypeScript ](#tab-panel-9688)
+* [  Python ](#tab-panel-9689)
+* [ go ](#tab-panel-9690)
+* [ Java ](#tab-panel-9691)
+* [ .NET ](#tab-panel-9692)
+* [ YAML ](#tab-panel-9693)
 
 Terminal window
 
@@ -162,13 +160,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-9654)
-* [  TypeScript ](#tab-panel-9655)
-* [  Python ](#tab-panel-9656)
-* [ go ](#tab-panel-9657)
-* [ Java ](#tab-panel-9658)
-* [ .NET ](#tab-panel-9659)
-* [ YAML ](#tab-panel-9660)
+* [  JavaScript ](#tab-panel-9694)
+* [  TypeScript ](#tab-panel-9695)
+* [  Python ](#tab-panel-9696)
+* [ go ](#tab-panel-9697)
+* [ Java ](#tab-panel-9698)
+* [ .NET ](#tab-panel-9699)
+* [ YAML ](#tab-panel-9700)
 
 Terminal window
 
@@ -253,13 +251,13 @@ The [Workers Script resource ↗](https://www.pulumi.com/registry/packages/cloud
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-9661)
-* [  TypeScript ](#tab-panel-9662)
-* [  Python ](#tab-panel-9663)
-* [ go ](#tab-panel-9664)
-* [ Java ](#tab-panel-9665)
-* [ .NET ](#tab-panel-9666)
-* [ YAML ](#tab-panel-9667)
+* [  JavaScript ](#tab-panel-9701)
+* [  TypeScript ](#tab-panel-9702)
+* [  Python ](#tab-panel-9703)
+* [ go ](#tab-panel-9704)
+* [ Java ](#tab-panel-9705)
+* [ .NET ](#tab-panel-9706)
+* [ YAML ](#tab-panel-9707)
 
 **Filename: `index.js`**
 
@@ -334,13 +332,13 @@ You will now add a [Workers Route resource ↗](https://www.pulumi.com/registry/
 
 Add the following code snippet to your entrypoint file **after** the Worker script resource:
 
-* [  JavaScript ](#tab-panel-9668)
-* [  TypeScript ](#tab-panel-9669)
-* [  Python ](#tab-panel-9670)
-* [ go ](#tab-panel-9671)
-* [ Java ](#tab-panel-9672)
-* [ .NET ](#tab-panel-9673)
-* [ YAML ](#tab-panel-9674)
+* [  JavaScript ](#tab-panel-9708)
+* [  TypeScript ](#tab-panel-9709)
+* [  Python ](#tab-panel-9710)
+* [ go ](#tab-panel-9711)
+* [ Java ](#tab-panel-9712)
+* [ .NET ](#tab-panel-9713)
+* [ YAML ](#tab-panel-9714)
 
 **Filename: `index.js`**
 
@@ -413,13 +411,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Route resource:
 
-* [  JavaScript ](#tab-panel-9675)
-* [  TypeScript ](#tab-panel-9676)
-* [  Python ](#tab-panel-9677)
-* [ go ](#tab-panel-9678)
-* [ Java ](#tab-panel-9679)
-* [ .NET ](#tab-panel-9680)
-* [ YAML ](#tab-panel-9681)
+* [  JavaScript ](#tab-panel-9715)
+* [  TypeScript ](#tab-panel-9716)
+* [  Python ](#tab-panel-9717)
+* [ go ](#tab-panel-9718)
+* [ Java ](#tab-panel-9719)
+* [ .NET ](#tab-panel-9720)
+* [ YAML ](#tab-panel-9721)
 
 **Filename: `index.js`**
 
@@ -488,13 +486,13 @@ You may need to use `http` instead depending on your domain settings.
 
 Confirm all your changes match the full solution below:
 
-* [  JavaScript ](#tab-panel-9682)
-* [  TypeScript ](#tab-panel-9683)
-* [  Python ](#tab-panel-9684)
-* [ go ](#tab-panel-9685)
-* [ Java ](#tab-panel-9686)
-* [ .NET ](#tab-panel-9687)
-* [ YAML ](#tab-panel-9688)
+* [  JavaScript ](#tab-panel-9722)
+* [  TypeScript ](#tab-panel-9723)
+* [  Python ](#tab-panel-9724)
+* [ go ](#tab-panel-9725)
+* [ Java ](#tab-panel-9726)
+* [ .NET ](#tab-panel-9727)
+* [ YAML ](#tab-panel-9728)
 
 **Filename: `index.js`**
 

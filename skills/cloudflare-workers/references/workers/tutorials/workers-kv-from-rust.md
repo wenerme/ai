@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use Workers KV directly from Rust
 
-**Last reviewed:**  about 2 years ago
-
 This tutorial will teach you how to read and write to KV directly from Rust using [workers-rs ↗](https://github.com/cloudflare/workers-rs).
 
 ## Before you start
@@ -61,8 +59,8 @@ npx wrangler kv namespace create cities
 
 To add this configuration to your project, open the Wrangler file and create an entry for `kv_namespaces` above the build command:
 
-* [  wrangler.jsonc ](#tab-panel-12275)
-* [  wrangler.toml ](#tab-panel-12276)
+* [  wrangler.jsonc ](#tab-panel-12315)
+* [  wrangler.toml ](#tab-panel-12316)
 
 JSONC
 

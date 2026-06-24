@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Mastodon
 
-**Last reviewed:**  over 3 years ago
-
 [Mastodon ↗](https://joinmastodon.org/) is a popular [fediverse ↗](https://en.wikipedia.org/wiki/Fediverse) software. This guide will explain how to configure R2 to be the object storage for a self hosted Mastodon instance, for either [a new instance](#set-up-a-new-instance) or [an existing instance](#migrate-to-r2).
 
 ## Set up a new instance

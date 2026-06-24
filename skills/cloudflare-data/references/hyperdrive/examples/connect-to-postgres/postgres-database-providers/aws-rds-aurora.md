@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # AWS RDS and Aurora
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to an AWS RDS or Aurora Postgres database instance.
 
 This example shows you how to connect Hyperdrive to an Amazon Relational Database Service (Amazon RDS) Postgres or Amazon Aurora database instance.
@@ -105,8 +103,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8789)
-* [ Wrangler CLI ](#tab-panel-8790)
+* [ Dashboard ](#tab-panel-8829)
+* [ Wrangler CLI ](#tab-panel-8830)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -125,8 +123,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8787)
-  * [  wrangler.toml ](#tab-panel-8788)
+  * [  wrangler.jsonc ](#tab-panel-8827)
+  * [  wrangler.toml ](#tab-panel-8828)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -189,8 +187,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8791)
-* [  wrangler.toml ](#tab-panel-8792)
+* [  wrangler.jsonc ](#tab-panel-8831)
+* [  wrangler.toml ](#tab-panel-8832)
 
 JSONC
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Implement regional private DNS servers with Gateway resolver policies
 
-**Last reviewed:**  7 months ago
-
 Gateway resolver policies allow you to route DNS queries to custom DNS resolvers based on various criteria. This tutorial demonstrates how to configure region-specific private DNS servers to ensure your users are directed to the closest internal resources based on their geographic location.
 
 This approach is particularly useful for organizations with internal networks spanning multiple locations where DNS routes and manages access to private network resources.

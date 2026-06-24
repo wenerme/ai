@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Google Cloud
 
-**Last reviewed:**  almost 2 years ago
-
 This guide covers how to configure [Google Cloud ↗](https://support.google.com/cloudidentity/topic/7558767) as a SAML application in Cloudflare One.
 
 Warning

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Websocket to Container
 
-**Last reviewed:**  about 1 year ago
-
 Forwarding a Websocket request to a Container
 
 WebSocket requests are automatically forwarded to a container using the default `fetch`method on the `Container` class:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Deploy self-hosted VoIP services for hybrid users
 
-**Last reviewed:**  6 months ago
-
 ## Introduction
 
 Traditional VPN solutions create several problems for VoIP deployments, primarily due to their inefficiencies in handling real-time traffic protocols such as [SIP ↗](https://en.wikipedia.org/wiki/Session%5FInitiation%5FProtocol) and [RTP ↗](https://en.wikipedia.org/wiki/Real-time%5FTransport%5FProtocol). Legacy VPN deployments introduce high latency and jitter, which negatively impact voice call quality. Additionally, they often struggle with [NAT ↗](https://en.wikipedia.org/wiki/Network%5Faddress%5Ftranslation) traversal, leading to connection issues for VoIP calls.

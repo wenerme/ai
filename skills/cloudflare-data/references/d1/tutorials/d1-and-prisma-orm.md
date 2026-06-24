@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Query D1 using Prisma ORM
 
-**Last reviewed:**  about 1 year ago
-
 ## What is Prisma ORM?
 
 [Prisma ORM ↗](https://www.prisma.io/orm) is a next-generation JavaScript and TypeScript ORM that unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety and auto-completion.
@@ -162,8 +160,8 @@ You now have a D1 database in your Cloudflare account with a binding to your Clo
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
 
-* [  wrangler.jsonc ](#tab-panel-8015)
-* [  wrangler.toml ](#tab-panel-8016)
+* [  wrangler.jsonc ](#tab-panel-8055)
+* [  wrangler.toml ](#tab-panel-8056)
 
 JSONC
 
@@ -221,8 +219,8 @@ model User {  id    Int     @id @default(autoincrement())  email String  @unique
 
 Now, run the following command in your terminal to generate the SQL statement that creates a `User` table equivalent to the `User` model above:
 
-* [ Prisma (v7) ](#tab-panel-8013)
-* [ Prisma (v6) ](#tab-panel-8014)
+* [ Prisma (v7) ](#tab-panel-8053)
+* [ Prisma (v6) ](#tab-panel-8054)
 
 Terminal window
 
@@ -306,8 +304,8 @@ To query your database from the Worker using Prisma ORM, you need to:
 
 Open `src/index.ts` and replace the entire content with the following:
 
-* [  JavaScript ](#tab-panel-8017)
-* [  TypeScript ](#tab-panel-8018)
+* [  JavaScript ](#tab-panel-8057)
+* [  TypeScript ](#tab-panel-8058)
 
 JavaScript
 

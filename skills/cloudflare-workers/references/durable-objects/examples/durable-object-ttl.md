@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Durable Object Time To Live
 
-**Last reviewed:**  over 1 year ago
-
 Implement a Time To Live (TTL) for Durable Object instances.
 
 A common feature request for Durable Objects is a Time To Live (TTL) for Durable Object instances. Durable Objects give developers the tools to implement a custom TTL in only a few lines of code. This example demonstrates how to implement a TTL making use of `alarms`. While this TTL will be extended upon every new request to the Durable Object, this can be customized based on a particular use case.
@@ -22,9 +20,9 @@ Be careful when calling `setAlarm` in the Durable Object class constructor
 
 In this example the TTL is extended upon every new fetch request to the Durable Object. It might be tempting to instead extend the TTL in the constructor of the Durable Object. This is not advised because the Durable Object's constructor will be called before invoking the alarm handler if the alarm wakes the Durable Object up from hibernation. This approach will naively result in the constructor continually extending the TTL without running the alarm handler. If you must call `setAlarm` in the Durable Object class constructor be sure to check that there is no alarm previously set.
 
-* [  JavaScript ](#tab-panel-8403)
-* [  TypeScript ](#tab-panel-8404)
-* [  Python ](#tab-panel-8405)
+* [  JavaScript ](#tab-panel-8443)
+* [  TypeScript ](#tab-panel-8444)
+* [  Python ](#tab-panel-8445)
 
 JavaScript
 
@@ -62,8 +60,8 @@ from workers import DurableObject, Response, WorkerEntrypointimport time
 
 To test and deploy this example, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-8406)
-* [  wrangler.toml ](#tab-panel-8407)
+* [  wrangler.jsonc ](#tab-panel-8446)
+* [  wrangler.toml ](#tab-panel-8447)
 
 JSONC
 

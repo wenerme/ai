@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Analyze data with AI
 
-**Last reviewed:**  8 months ago
-
 Build an AI-powered data analysis system that accepts CSV uploads, uses Claude to generate Python analysis code, executes it in sandboxes, and returns visualizations.
 
 **Time to complete**: 25 minutes

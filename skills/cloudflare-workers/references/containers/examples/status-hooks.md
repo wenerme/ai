@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Status Hooks
 
-**Last reviewed:**  about 1 year ago
-
 Execute Workers code in reaction to Container status changes
 
 When a Container starts, stops, becomes idle, and errors, it can trigger code execution in a Worker that has defined status hooks on the `Container` class. Refer to the [Container class lifecycle hooks](https://developers.cloudflare.com/containers/container-class/#lifecycle-hooks) for more details.

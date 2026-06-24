@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Designing a distributed web performance architecture
 
-**Last reviewed:**  4 months ago
-
 ## Introduction
 
 This guide describes a comprehensive layer 7 (L7) Application Performance strategy for architects and developers. In today's competitive digital landscape, **application performance is a critical business differentiator**. However, the ultimate objective is finding the performance-security equilibrium point.

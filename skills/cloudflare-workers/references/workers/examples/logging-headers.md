@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Logging headers to console
 
-**Last reviewed:**  over 5 years ago
-
 Examine the contents of a Headers object by logging to console with a Map.
 
 If you want to get started quickly, click on the button below.
@@ -22,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11761)
-* [  TypeScript ](#tab-panel-11762)
-* [  Python ](#tab-panel-11763)
-* [  Rust ](#tab-panel-11764)
-* [  Hono ](#tab-panel-11765)
+* [  JavaScript ](#tab-panel-11801)
+* [  TypeScript ](#tab-panel-11802)
+* [  Python ](#tab-panel-11803)
+* [  Rust ](#tab-panel-11804)
+* [  Hono ](#tab-panel-11805)
 
 JavaScript
 

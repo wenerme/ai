@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build an AI code executor
 
-**Last reviewed:**  8 months ago
-
 Build an AI-powered code execution system using Sandbox SDK and Claude. Turn natural language questions into Python code, execute it securely, and return results.
 
 **Time to complete:** 20 minutes

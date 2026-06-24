@@ -12,12 +12,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Watermarks
 
-**Last reviewed:**  about 1 year ago
-
 Draw a watermark from KV on an image from R2
 
-* [  JavaScript ](#tab-panel-8916)
-* [  TypeScript ](#tab-panel-8917)
+* [  JavaScript ](#tab-panel-8956)
+* [  TypeScript ](#tab-panel-8957)
 
 JavaScript
 

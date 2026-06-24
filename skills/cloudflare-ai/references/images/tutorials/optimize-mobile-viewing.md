@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Optimize mobile viewing
 
-**Last reviewed:**  12 months ago
-
 You can use lazy loading to optimize the images on your webpages for mobile viewing. This helps address common challenges of mobile viewing, like slow network connections or weak processing capabilities.
 
 Lazy loading has two main advantages:

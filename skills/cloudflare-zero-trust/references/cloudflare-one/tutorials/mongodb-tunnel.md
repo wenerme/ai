@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # MongoDB SSH
 
-**Last reviewed:**  over 5 years ago
-
 You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel. Cloudflare Tunnel requires a lightweight daemon, `cloudflared`, running alongside the deployment and as on the client side.
 
 In this tutorial, a client running `cloudflared` connects over SSH to a MongoDB deployment running on Kubernetes. The deployment example is structured to connect [Compass ↗](https://www.mongodb.com/products/compass) to the MongoDB instance. The MongoDB Kubernetes deployment runs both the MongoDB database service and `cloudflared` as a ingress service that operates like a jump host.

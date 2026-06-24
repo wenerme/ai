@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Serverless ETL pipelines
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Extract, Transform, Load (ETL) pipelines are a cornerstone in the realm of data engineering, facilitating the seamless flow of data from its raw state to a structured, usable format. ETL pipelines are instrumental in the data processing journey, particularly in scenarios where data needs to be collected, cleansed, and transformed before being loaded into a target destination.

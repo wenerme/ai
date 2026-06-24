@@ -42,7 +42,7 @@ Cloudflare runs managed remote MCP servers that give your agent the ability to s
 
 There are two approaches:
 
-* **[Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/)**: A single MCP server that covers the entire Cloudflare API (over 2,500 endpoints). Use this when your agent needs broad access across multiple Cloudflare products.
+* **[Cloudflare API MCP server](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)**: A Code Mode server that covers the entire Cloudflare API (over 2,500 endpoints). Use this when your agent needs broad access across multiple Cloudflare products.
 * **Domain-specific servers**: Focused servers for documentation, observability, DNS analytics, and more. Use these when your agent only needs access to a specific area. The full catalog is in the [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare) repository.
 
 Each agent's [Agent setup](#set-up-your-agent) guide includes MCP server installation as part of its Quick start. For the full list of available MCP servers, refer to [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/).
@@ -131,6 +131,6 @@ The full Cloudflare API OpenAPI specification is available for AI coding tools, 
 For the full API reference, refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/docs-for-agents/#page","headline":"Docs for agents · Docs for agents docs","description":"Connect AI agents and LLMs to Cloudflare docs","url":"https://developers.cloudflare.com/docs-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/docs-for-agents/#page","headline":"Docs for agents · Docs for agents docs","description":"Connect AI agents and LLMs to Cloudflare docs","url":"https://developers.cloudflare.com/docs-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/docs-for-agents/","name":"Docs for agents"}}]}
 ```

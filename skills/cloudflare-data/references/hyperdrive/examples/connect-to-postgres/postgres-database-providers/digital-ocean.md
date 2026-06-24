@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Digital Ocean
 
-**Last reviewed:**  over 1 year ago
-
 Connect Hyperdrive to a Digital Ocean Postgres database instance.
 
 This example shows you how to connect Hyperdrive to a Digital Ocean database instance.
@@ -45,8 +43,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8807)
-* [ Wrangler CLI ](#tab-panel-8808)
+* [ Dashboard ](#tab-panel-8847)
+* [ Wrangler CLI ](#tab-panel-8848)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -65,8 +63,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8805)
-  * [  wrangler.toml ](#tab-panel-8806)
+  * [  wrangler.jsonc ](#tab-panel-8845)
+  * [  wrangler.toml ](#tab-panel-8846)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -129,8 +127,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8809)
-* [  wrangler.toml ](#tab-panel-8810)
+* [  wrangler.jsonc ](#tab-panel-8849)
+* [  wrangler.toml ](#tab-panel-8850)
 
 JSONC
 

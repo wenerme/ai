@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Prisma ORM
 
-**Last reviewed:**  10 months ago
-
 [Prisma ORM ↗](https://www.prisma.io/docs) is a Node.js and TypeScript ORM with a focus on type safety and developer experience. This example demonstrates how to use Prisma ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
@@ -87,8 +85,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8885)
-* [  wrangler.toml ](#tab-panel-8886)
+* [  wrangler.jsonc ](#tab-panel-8925)
+* [  wrangler.toml ](#tab-panel-8926)
 
 JSONC
 

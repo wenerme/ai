@@ -1,5 +1,8 @@
 # Annotated Model Card Template
 
+> [!TIP]
+> Getting ready to publish? See the [Model Release Checklist](./model-release-checklist) for the essential steps to a concise, informative, and user-friendly model release.
+
 ## Template
 
 [modelcard_template.md file](https://github.com/huggingface/huggingface_hub/blob/main/src/huggingface_hub/templates/modelcard_template.md)

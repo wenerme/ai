@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Examples
 
-**Last reviewed:**  about 2 years ago
-
 Cloudflare has a wide range of Python examples in the [Workers Example gallery](https://developers.cloudflare.com/workers/examples/?languages=Python).
 
 In addition to those examples, consider the following ones that illustrate Python-specific behavior.

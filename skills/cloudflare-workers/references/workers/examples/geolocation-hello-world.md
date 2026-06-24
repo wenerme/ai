@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Geolocation: Hello World
 
-**Last reviewed:**  over 4 years ago
-
 Get all geolocation data fields and display them in HTML.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11749)
-* [  TypeScript ](#tab-panel-11750)
-* [  Python ](#tab-panel-11751)
-* [  Hono ](#tab-panel-11752)
+* [  JavaScript ](#tab-panel-11789)
+* [  TypeScript ](#tab-panel-11790)
+* [  Python ](#tab-panel-11791)
+* [  Hono ](#tab-panel-11792)
 
 JavaScript
 

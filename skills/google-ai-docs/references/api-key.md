@@ -309,9 +309,9 @@ these restrictions are applied.**
 
 1. Visit the [Google Cloud Console Credentials page](https://console.cloud.google.com/apis/credentials).
 2. Select the project and the API key.
-3. Under **API restrictions** , select **Restrict key**.
-4. From the drop-down, select the APIs you want this key to access. Do not select the **Generative Language API**.
-5. Click **Save**. Create a separate, restricted key in AI Studio to continue using the Gemini API.
+3. Under **API restrictions** , use the **Select API restrictions** drop-down to select the APIs you want this key to access. Do not select the **Generative
+   Language API**.
+4. Click **Save**. Create a separate, restricted key in AI Studio to continue using the Gemini API.
 
 ### Blocked dormant keys
 

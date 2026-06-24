@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Multi-vendor Application Security and Performance Reference Architecture
 
-**Last reviewed:**  almost 3 years ago
-
 ## Introduction
 
 Over time and with the rapidly evolving application security and performance industries, companies have come to deploy multiple vendors to provide services. Sometimes customers opt for using multiple vendors for reasons of regulatory/company compliance, resiliency, performance, or cost.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Cache data with Workers KV
 
-**Last reviewed:**  about 1 year ago
-
 Cache data or API responses in Workers KV to improve application performance
 
 Workers KV can be used as a persistent, single, global cache accessible from Cloudflare Workers to speed up your application. Data cached in Workers KV is accessible from all other Cloudflare locations as well, and persists until expiry or deletion.
@@ -32,8 +30,8 @@ With Workers KV, the data is persisted by default to [central stores](https://de
 
 In the following `index.ts` file, the Worker fetches data from an external server and caches the response in Workers KV. If the data is already cached in Workers KV, the Worker reads the cached data from Workers KV instead of calling the external API.
 
-* [ index.ts ](#tab-panel-9073)
-* [ wrangler.jsonc ](#tab-panel-9074)
+* [ index.ts ](#tab-panel-9113)
+* [ wrangler.jsonc ](#tab-panel-9114)
 
 index.ts
 

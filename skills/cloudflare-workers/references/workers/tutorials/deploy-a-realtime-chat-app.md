@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Deploy a real-time chat application
 
-**Last reviewed:**  almost 3 years ago
-
 In this tutorial, you will deploy a serverless, real-time chat application that runs using [Durable Objects](https://developers.cloudflare.com/durable-objects/).
 
 This chat application uses a Durable Object to control each chat room. Users connect to the Object using WebSockets. Messages from one user are broadcast to all the other users. The chat history is also stored in durable storage. Real-time messages are relayed directly from one user to others without going through the storage layer.
@@ -60,8 +58,8 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-12243)
-* [  wrangler.toml ](#tab-panel-12244)
+* [  wrangler.jsonc ](#tab-panel-12283)
+* [  wrangler.toml ](#tab-panel-12284)
 
 JSONC
 
@@ -79,8 +77,8 @@ If you have specified your zone ID in the environment of your Wrangler configura
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-12245)
-* [  wrangler.toml ](#tab-panel-12246)
+* [  wrangler.jsonc ](#tab-panel-12285)
+* [  wrangler.toml ](#tab-panel-12286)
 
 JSONC
 
@@ -107,8 +105,8 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-12247)
-* [  wrangler.toml ](#tab-panel-12248)
+* [  wrangler.jsonc ](#tab-panel-12287)
+* [  wrangler.toml ](#tab-panel-12288)
 
 JSONC
 

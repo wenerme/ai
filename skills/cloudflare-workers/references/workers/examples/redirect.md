@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Redirect
 
-**Last reviewed:**  over 4 years ago
-
 Redirect requests from one URL to another or from one set of URLs to another set.
 
 If you want to get started quickly, click on the button below.
@@ -24,11 +22,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-11796)
-* [  TypeScript ](#tab-panel-11797)
-* [  Python ](#tab-panel-11798)
-* [  Rust ](#tab-panel-11799)
-* [  Hono ](#tab-panel-11800)
+* [  JavaScript ](#tab-panel-11836)
+* [  TypeScript ](#tab-panel-11837)
+* [  Python ](#tab-panel-11838)
+* [  Rust ](#tab-panel-11839)
+* [  Hono ](#tab-panel-11840)
 
 JavaScript
 
@@ -36,7 +34,7 @@ JavaScript
 export default {  async fetch(request) {    const destinationURL = "https://example.com";    const statusCode = 301;    return Response.redirect(destinationURL, statusCode);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwA2ACwBWAJwB2SYPEBmaQA4AXCxZtgHOFxp8BIiTLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4W76HC-KgBVABKABkSAwSNEThAIDB3KpkMhEhFmg4ku9gBkXtt3lRPvcCCB3LZFmCSApBABGIhYkiXCAgBBUEiAu5eXGoy48S68CBnRb3OJtOxA4EAGhI+PpRPGDge1O2AF9RZYFUQrBpmFodHoePwhGIpLJ5EplKU7I5nG5PN5fO0qAEgjpSOFIjFIoQdBlAtlcq7omQwOgyCUbOaKtVavUdk0WrwhVROu47NNLOtosA4HEAPpjCY5aKqAqLIrpBXqjVakI6gz64xGszKZhWIA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWUQGYAnAA4A7IIBsAJhkAuFizbAOcLjT4CR46XKUyAsACgAwuioQApnewARKAGcY6N1Gi2VJTTwCYhIqOGB7BgAiKBp7AA8AOgArNyjSVCgwR3DImLik1KjLGztHCGwAFToYe384GBgwPgIoW2RkuAA3ODdeBFgIAGpgdFxwe0tLBM8kElx7VDhwCBIAbwsSEl66Kl4A+wheAAsACgR7AEcQezcIAEp1za2SXls7+dvoMN8qAFUAEoAGRIDBIUWOEAgMDcKmQyAS4Sa9kSb2A6WeWzeVA+dwIIDcNgWoJIYkEAEYiJiSBcICAEFQSADbp4cSiLjwLrwIKcFndYq1bICgQAaEh4umEsb2e5UrYAXxFFnlREs6mYmm0uh4-CEomEklkCmUJVsDicrg8Xh8bSo-kC2lIYQi0QihG06QCWRyLqiZDA6DIxWsZvKVRqdW2jWavEFVA6blsUwsayiwDgsQA+qNxtkoip8gtCml5Wr1Zrgtr9HqjEbTMxLEA)
 
 TypeScript
 
@@ -67,11 +65,11 @@ export default app;
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-11791)
-* [  TypeScript ](#tab-panel-11792)
-* [  Python ](#tab-panel-11793)
-* [  Rust ](#tab-panel-11794)
-* [  Hono ](#tab-panel-11795)
+* [  JavaScript ](#tab-panel-11831)
+* [  TypeScript ](#tab-panel-11832)
+* [  Python ](#tab-panel-11833)
+* [  Rust ](#tab-panel-11834)
+* [  Hono ](#tab-panel-11835)
 
 JavaScript
 
