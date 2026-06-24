@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 99 skills available
+> 100 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -103,6 +103,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
 | `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... | [huggingface/transformers](https://github.com/huggingface/transformers) |
 | `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| `ultralytics-docs` | Use when working with Ultralytics YOLO, including YOLO26/YOLO11/YOLOv8 models, detect/segment/classify/pose/OBB tasks,... | [ultralytics/ultralytics/docs](https://github.com/ultralytics/ultralytics/tree/main/docs) |
 | `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... | [vitejs/vite](https://github.com/vitejs/vite) |
 | `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
@@ -1005,6 +1006,16 @@ UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color pal
 
 </details>
 <details>
+<summary><code>ultralytics-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill ultralytics-docs
+```
+
+Use when working with Ultralytics YOLO, including YOLO26/YOLO11/YOLOv8 models, detect/segment/classify/pose/OBB tasks, train/val/predict/export/track/benchmark modes, dataset YAML formats, HUB/platform workflows, integrations, solutions, or ultralytics Python API behavior.
+
+</details>
+<details>
 <summary><code>vite-docs</code></summary>
 
 ```bash
@@ -1106,7 +1117,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 99 skills, 25155 files, 272 MiB total
+> 100 skills, 25633 files, 276 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1199,6 +1210,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 164 | 1.2 MiB |
 | `ui-ux-pro-max` | 36 | 1.7 MiB |
+| `ultralytics-docs` | 478 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |

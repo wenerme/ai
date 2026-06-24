@@ -64,6 +64,10 @@ update-vllm-docs:
 update-orpc-docs:
     bun scripts/sync-orpc-docs.ts
 
+# Sync Ultralytics docs from local ultralytics/ultralytics clone
+update-ultralytics-docs:
+    bun scripts/sync-ultralytics-docs.ts
+
 # Sync PyTorch docs from local pytorch/pytorch clone
 update-pytorch-docs:
     bun scripts/sync-pytorch-docs.ts
@@ -193,6 +197,7 @@ update:
     -just update-llamacpp-docs
     -just update-vllm-docs
     -just update-orpc-docs
+    -just update-ultralytics-docs
     -just update-pytorch-docs
     -just update-huggingface-docs
     -just update-transformers-docs

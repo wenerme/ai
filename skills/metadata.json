@@ -72,6 +72,7 @@
     "tencent-cls": { "url": "https://cloud.tencent.com/document/product/614" },
     "threejs-docs": { "repo": "mrdoob/three.js" },
     "transformers-docs": { "repo": "huggingface/transformers" },
+    "ultralytics-docs": { "repo": "ultralytics/ultralytics", "path": "docs" },
     "vite-docs": { "repo": "vitejs/vite" },
     "vitest-docs": { "repo": "vitest-dev/vitest" },
     "vllm-docs": { "repo": "vllm-project/vllm" },
