@@ -39,6 +39,7 @@
     "google-ai-api": { "url": "https://ai.google.dev" },
     "google-ai-docs": { "url": "https://ai.google.dev" },
     "grafana-docs": { "repo": "grafana/grafana" },
+    "huggingface-docs": { "repo": "huggingface/hub-docs", "path": "docs" },
     "humanizer": { "repo": "blader/humanizer" },
     "immich-docs": { "repo": "immich-app/immich" },
     "justfile-docs": { "repo": "casey/just" },

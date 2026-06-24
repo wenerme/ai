@@ -64,6 +64,10 @@ update-vllm-docs:
 update-orpc-docs:
     bun scripts/sync-orpc-docs.ts
 
+# Sync Hugging Face Hub docs from local huggingface/hub-docs clone
+update-huggingface-docs:
+    bun scripts/sync-huggingface-docs.ts
+
 # Sync HuggingFace Transformers docs from local huggingface/transformers clone
 update-transformers-docs:
     bun scripts/sync-transformers-docs.ts
@@ -185,6 +189,7 @@ update:
     -just update-llamacpp-docs
     -just update-vllm-docs
     -just update-orpc-docs
+    -just update-huggingface-docs
     -just update-transformers-docs
     -just update-evalscope-docs
     -just update-swift-ms-docs

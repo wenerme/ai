@@ -1,0 +1,287 @@
+# Pandas
+
+[Pandas](https://github.com/pandas-dev/pandas) is a widely used Python data analysis toolkit.
+Since it uses [fsspec](https://filesystem-spec.readthedocs.io) to read and write remote data, you can use the Hugging Face paths ([`hf://`](/docs/huggingface_hub/guides/hf_file_system#integrations)) to read and write data on the Hub.
+
+## Load a DataFrame
+
+You can load data from local files or from remote storage like Hugging Face Datasets. Pandas supports many formats including CSV, JSON and Parquet:
+
+```python
+>>> import pandas as pd
+>>> df = pd.read_csv("path/to/data.csv")
+```
+
+To load a file from Hugging Face, the path needs to start with `hf://`. For example, the path to the [stanfordnlp/imdb](https://huggingface.co/datasets/stanfordnlp/imdb) dataset repository is `hf://datasets/stanfordnlp/imdb`. The dataset on Hugging Face contains multiple Parquet files. The Parquet file format is designed to make reading and writing data frames efficient, and to make sharing data across data analysis languages easy. Here is how to load the file `plain_text/train-00000-of-00001.parquet`:
+
+```python
+>>> import pandas as pd
+>>> df = pd.read_parquet("hf://datasets/stanfordnlp/imdb/plain_text/train-00000-of-00001.parquet")
+>>> df
+                                                    text  label
+0      I rented I AM CURIOUS-YELLOW from my video sto...      0
+1      "I Am Curious: Yellow" is a risible and preten...      0
+2      If only to avoid making this type of film in t...      0
+3      This film was probably inspired by Godard's Ma...      0
+4      Oh, brother...after hearing about this ridicul...      0
+...                                                  ...    ...
+24995  A hit at the time but now better categorised a...      1
+24996  I love this movie like no other. Another time ...      1
+24997  This film and it's sequel Barry Mckenzie holds...      1
+24998  'The Adventures Of Barry McKenzie' started lif...      1
+24999  The story centers around Barry McKenzie who mu...      1
+```
+
+For more information on the Hugging Face paths and how they are implemented, please refer to the [the client library's documentation on the HfFileSystem](/docs/huggingface_hub/guides/hf_file_system).
+
+> [!TIP]
+> The same `hf://` paths also work with [Storage Buckets](./storage-buckets):
+> ```python
+> >>> df = pd.read_parquet("hf://buckets/username/my-bucket/data.parquet")
+> >>> df.to_parquet("hf://buckets/username/my-bucket/output.parquet")
+> ```
+
+## Save a DataFrame
+
+You can save a pandas DataFrame using `to_csv/to_json/to_parquet` to a local file or to Hugging Face directly.
+
+To save the DataFrame on Hugging Face, you first need to [Login with your Hugging Face account](/docs/huggingface_hub/quick-start#login), for example using:
+
+```
+hf auth login
+```
+
+Then you can [Create a dataset repository](/docs/huggingface_hub/quick-start#create-a-repository), for example using:
+
+```python
+from huggingface_hub import HfApi
+
+HfApi().create_repo(repo_id="username/my_dataset", repo_type="dataset")
+```
+
+Finally, you can use [Hugging Face paths](/docs/huggingface_hub/guides/hf_file_system#integrations) in Pandas:
+
+```python
+import pandas as pd
+
+df.to_parquet("hf://datasets/username/my_dataset/imdb.parquet")
+
+# or write in separate files if the dataset has train/validation/test splits
+df_train.to_parquet("hf://datasets/username/my_dataset/train.parquet")
+df_valid.to_parquet("hf://datasets/username/my_dataset/validation.parquet")
+df_test .to_parquet("hf://datasets/username/my_dataset/test.parquet")
+```
+
+Note that Parquet files on Hugging Face are optimized to improve storage efficiency, accelerate downloads and uploads, and enable efficient dataset streaming and editing:
+
+* [Parquet Content Defined Chunking](https://huggingface.co/blog/parquet-cdc) optimizes Parquet for [Xet](https://huggingface.co/docs/hub/en/xet/index), Hugging Face's storage backend. It accelerates uploads and downloads thanks to chunk-based deduplication and allows efficient file editing
+* Page index accelerates filters when streaming and enables efficient random access, e.g. in the [Dataset Viewer](https://huggingface.co/docs/dataset-viewer)
+
+Pandas require extra argument to write optimized Parquet files:
+
+```python
+import pandas as pd
+
+df.to_parquet(
+    "hf://datasets/username/my_dataset/imdb.parquet",
+    # Optimize for Xet
+    use_content_defined_chunking=True,
+    write_page_index=True,
+)
+```
+
+* `use_content_defined_chunking=True` to enable Parquet Content Defined Chunking, for [deduplication](https://huggingface.co/blog/parquet-cdc) and [editing](./datasets-editing) (it requires `pyarrow>=21.0`)
+* `write_page_index=True` to include a page index in the Parquet metadata, for [streaming and random access](./datasets-streaming)
+
+> [!TIP]
+> Content defined chunking (CDC) makes the Parquet writer chunk the data pages in a way that makes duplicate data chunked and compressed identically.
+> Without CDC, the pages are arbitrarily chunked and therefore duplicate data are impossible to detect because of compression.
+> Thanks to CDC, Parquet uploads and downloads from Hugging Face are faster, since duplicate data are uploaded or downloaded only once.
+
+Find more information about Xet [here](https://huggingface.co/join/xet).
+
+## Leverage Xet deduplication for Parquet
+
+Optimized Parquet files are written with Content Defined Chunking, which enables deduplication.
+This accelerates uploads since chunks of data that already exist on Hugging Face don't need to be uploaded again, and this saves a lot of I/O.
+
+For example, this code uploads the content of `df` and then for `edited_df` the upload is faster since it only uploads the chunks that changed:
+
+```python
+import pandas as pd
+
+df.to_parquet(
+    "hf://datasets/username/my_dataset/imdb.parquet",
+    # Optimize for Xet
+    use_content_defined_chunking=True,
+    write_page_index=True,
+)
+
+edited_df = ...  # e.g. with added/modified/removed rows or columns
+
+edited_df.to_parquet(
+    "hf://datasets/username/my_dataset/imdb.parquet",
+    # Optimize for Xet
+    use_content_defined_chunking=True,
+    write_page_index=True,
+)
+```
+
+Chunks are ~64kB and Parquet saves data column per column, so in practice this is what happens when editing an Optimized Parquet file:
+
+* add a new column -> only the chunks of the new column are uploaded
+* add/edit/delete a row -> one chunk per column is uploaded
+
+And in addition to this, the chunks of the Parquet footer containing metadata are also uploaded.
+
+## Use Images
+
+You can load a folder with a metadata file containing a field for the names or paths to the images, structured like this:
+
+```
+Example 1:            Example 2:
+folder/               folder/
+├── metadata.csv      ├── metadata.csv
+├── img000.png        └── images
+├── img001.png            ├── img000.png
+...                       ...
+└── imgNNN.png            └── imgNNN.png
+```
+
+You can iterate on the images paths like this:
+
+```python
+import pandas as pd
+
+folder_path = "path/to/folder/"
+df = pd.read_csv(folder_path + "metadata.csv")
+for image_path in (folder_path + df["file_name"]):
+    ...
+```
+
+Since the dataset is in a [supported structure](https://huggingface.co/docs/hub/en/datasets-image#additional-columns) (a `metadata.csv` or `.jsonl` file with a `file_name` field), you can save this dataset to Hugging Face and the Dataset Viewer shows both the metadata and images on Hugging Face.
+
+```python
+from huggingface_hub import HfApi
+api = HfApi()
+
+api.upload_folder(
+    folder_path=folder_path,
+    repo_id="username/my_image_dataset",
+    repo_type="dataset",
+)
+```
+
+### Image methods and Parquet
+
+Using [pandas-image-methods](https://github.com/lhoestq/pandas-image-methods) you enable `PIL.Image` methods on an image column. It also enables saving the dataset as one single Parquet file containing both the images and the metadata:
+
+```python
+import pandas as pd
+from pandas_image_methods import PILMethods
+
+pd.api.extensions.register_series_accessor("pil")(PILMethods)
+
+df["image"] = (folder_path + df["file_name"]).pil.open()
+df.to_parquet("data.parquet")
+```
+
+All the `PIL.Image` methods are available, e.g.
+
+```python
+df["image"] = df["image"].pil.rotate(90)
+```
+
+## Use Audios
+
+You can load a folder with a metadata file containing a field for the names or paths to the audios, structured like this:
+
+```
+Example 1:            Example 2:
+folder/               folder/
+├── metadata.csv      ├── metadata.csv
+├── rec000.wav        └── audios
+├── rec001.wav            ├── rec000.wav
+...                       ...
+└── recNNN.wav            └── recNNN.wav
+```
+
+You can iterate on the audios paths like this:
+
+```python
+import pandas as pd
+
+folder_path = "path/to/folder/"
+df = pd.read_csv(folder_path + "metadata.csv")
+for audio_path in (folder_path + df["file_name"]):
+    ...
+```
+
+Since the dataset is in a [supported structure](https://huggingface.co/docs/hub/en/datasets-audio#additional-columns) (a `metadata.csv` or `.jsonl` file with a `file_name` field), you can save it to Hugging Face, and the Hub Dataset Viewer shows both the metadata and audio.
+
+```python
+from huggingface_hub import HfApi
+api = HfApi()
+
+api.upload_folder(
+    folder_path=folder_path,
+    repo_id="username/my_audio_dataset",
+    repo_type="dataset",
+)
+```
+
+### Audio methods and Parquet
+
+Using [pandas-audio-methods](https://github.com/lhoestq/pandas-audio-methods) you enable `soundfile` methods on an audio column. It also enables saving the dataset as one single Parquet file containing both the audios and the metadata:
+
+```python
+import pandas as pd
+from pandas_audio_methods import SFMethods
+
+pd.api.extensions.register_series_accessor("sf")(SFMethods)
+
+df["audio"] = (folder_path + df["file_name"]).sf.open()
+df.to_parquet("data.parquet")
+```
+
+This makes it easy to use with `librosa` e.g. for resampling:
+
+```python
+df["audio"] = [librosa.load(audio, sr=16_000) for audio in df["audio"]]
+df["audio"] = df["audio"].sf.write()
+```
+
+## Use Transformers
+
+You can use `transformers` pipelines on pandas DataFrames to classify, generate text, images, etc.
+This section shows a few examples with `tqdm` for progress bars.
+
+> [!TIP]
+> Pipelines don't accept a `tqdm` object as input but you can use a python generator instead, in the form `x for x in tqdm(...)`
+
+### Text Classification
+
+```python
+from transformers import pipeline
+from tqdm import tqdm
+
+pipe = pipeline("text-classification", model="clapAI/modernBERT-base-multilingual-sentiment")
+
+# Compute labels
+df["label"] = [y["label"] for y in pipe(x for x in tqdm(df["text"]))]
+# Compute labels and scores
+df[["label", "score"]] = [(y["label"], y["score"]) for y in pipe(x for x in tqdm(df["text"]))]
+```
+
+### Text Generation
+
+```python
+from transformers import pipeline
+from tqdm import tqdm
+
+pipe = pipeline("text-generation", model="Qwen/Qwen2.5-1.5B-Instruct")
+
+# Generate chat response
+prompt = "What is the main topic of this sentence ? REPLY IN LESS THAN 3 WORDS. Sentence: '{}'"
+df["output"] = [y["generated_text"][1]["content"] for y in pipe([{"role": "user", "content": prompt.format(x)}] for x in tqdm(df["text"]))]
+```
