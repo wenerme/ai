@@ -6,6 +6,14 @@ on:
     - cron: "0 0 * * *"   # 08:00 UTC+8
     - cron: "0 10 * * *"  # 18:00 UTC+8
 
+concurrency:
+  group: update-skills
+  cancel-in-progress: false
+
+env:
+  SOURCE_BRANCH: develop
+  PUBLISH_BRANCH: main
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -13,8 +21,11 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source branch
+        uses: actions/checkout@v4
         with:
+          ref: ${{ env.SOURCE_BRANCH }}
+          path: source
           fetch-depth: 0
 
       - uses: oven-sh/setup-bun@v2
@@ -27,15 +38,57 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/gits
-          key: sparse-clones-${{ runner.os }}-${{ hashFiles('skills/skills.json') }}
+          key: sparse-clones-${{ runner.os }}-${{ hashFiles('source/skills/skills.json') }}
           restore-keys: |
             sparse-clones-${{ runner.os }}-
 
-      - name: Update skills
+      - name: Update skills on source branch
+        working-directory: source
         run: just update
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit source updates
+        working-directory: source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No source changes"
+          else
+            git commit -m "chore: update skills source [skip ci]"
+            git push origin "HEAD:${SOURCE_BRANCH}"
+          fi
+
+      - name: Checkout publish branch
+        uses: actions/checkout@v4
         with:
-          commit_message: "chore: update skills [skip ci]"
-          commit_user_name: github-actions[bot]
-          commit_user_email: github-actions[bot]@users.noreply.github.com
+          ref: ${{ env.PUBLISH_BRANCH }}
+          path: publish
+          fetch-depth: 0
+
+      - name: Publish clean skills branch
+        run: |
+          set -euo pipefail
+          shopt -s dotglob nullglob
+          cd publish
+          for path in *; do
+            if [ "$path" != ".git" ]; then
+              rm -rf "$path"
+            fi
+          done
+          mkdir -p .github/workflows skills
+          cp ../source/README.md README.md
+          cp ../source/LICENSE LICENSE
+          cp ../source/.github/workflows/update-skills.yaml .github/workflows/update-skills.yaml
+          for skill_dir in ../source/skills/*/; do
+            rsync -a --delete "$skill_dir" "skills/$(basename "$skill_dir")/"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No publish changes"
+          else
+            git commit -m "chore: publish skills dist [skip ci]"
+            git push origin "HEAD:${PUBLISH_BRANCH}"
+          fi
