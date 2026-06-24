@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 98 skills available
+> 99 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -88,6 +88,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
 | `peekaboo` | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
+| `pytorch-docs` | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
@@ -854,6 +855,16 @@ Use when using Peekaboo as an installed macOS automation CLI or MCP server: scre
 
 </details>
 <details>
+<summary><code>pytorch-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill pytorch-docs
+```
+
+Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC, CUDA/MPS/XPU backends, profiling, quantization, ONNX export, C++/LibTorch, or PyTorch runtime/debugging behavior.
+
+</details>
+<details>
 <summary><code>react-resizable-panels-v3-to-v4</code></summary>
 
 ```bash
@@ -1095,7 +1106,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 98 skills, 24845 files, 270 MiB total
+> 99 skills, 25155 files, 272 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1140,13 +1151,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 451 KiB |
+| `glab-docs` | 289 | 449 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 1.9 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1167,12 +1178,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 445 | 2.3 MiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
 | `openrouter-docs` | 496 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |
+| `pytorch-docs` | 314 | 2.0 MiB |
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
 | `requesting-code-review` | 2 | 7.9 KiB |
 | `shadcn` | 14 | 82 KiB |

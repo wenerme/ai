@@ -64,6 +64,10 @@ update-vllm-docs:
 update-orpc-docs:
     bun scripts/sync-orpc-docs.ts
 
+# Sync PyTorch docs from local pytorch/pytorch clone
+update-pytorch-docs:
+    bun scripts/sync-pytorch-docs.ts
+
 # Sync Hugging Face Hub docs from local huggingface/hub-docs clone
 update-huggingface-docs:
     bun scripts/sync-huggingface-docs.ts
@@ -189,6 +193,7 @@ update:
     -just update-llamacpp-docs
     -just update-vllm-docs
     -just update-orpc-docs
+    -just update-pytorch-docs
     -just update-huggingface-docs
     -just update-transformers-docs
     -just update-evalscope-docs
