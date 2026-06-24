@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 90 skills available
+> 97 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -36,7 +36,14 @@ npx skills add wenerme/ai --skill <skill-name>
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
 | `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
-| `cloudflare-docs` | USE THIS SKILL WHEN working with Cloudflare: Workers, Pages, D1, R2, KV, Durable Objects, Queues, Vectorize, Hyperdrive,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-ai` | Use when working with Cloudflare AI and media products: Workers AI, AI Gateway, Agents, Agent Memory, AI Search, AI... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-data` | Use when working with Cloudflare data and storage products: D1, R2, R2 SQL, KV, Queues, Hyperdrive, Vectorize,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-docs` | Use when a Cloudflare question is broad or you need to choose the right Cloudflare skill. Routes to Cloudflare Workers,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-networking` | Use when working with Cloudflare networking products: DNS, SSL/TLS, cache, load balancing, Magic Transit, Spectrum,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-observability-admin` | Use when working with Cloudflare observability and account administration: Analytics, Logs, Logpush, Log Explorer,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-security` | Use when working with Cloudflare security products: WAF, DDoS protection, Bot Management, API Shield, Turnstile, Rules,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-workers` | Use when working with Cloudflare Workers platform: Workers runtime APIs, Wrangler deployment, Pages, Durable Objects,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| `cloudflare-zero-trust` | Use when working with Cloudflare Zero Trust: Cloudflare One, Access, Gateway, WARP, Tunnel, device posture, DEX, CASB,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
 | `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... | [openai/codex](https://github.com/openai/codex) |
 | `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
@@ -326,13 +333,83 @@ Use when working with ClickHouse: MergeTree engine family, SQL syntax, data type
 
 </details>
 <details>
+<summary><code>cloudflare-ai</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-ai
+```
+
+Use when working with Cloudflare AI and media products: Workers AI, AI Gateway, Agents, Agent Memory, AI Search, AI Crawl Control, Realtime, Stream, Images, Videos, model inference, agent workflows, media delivery, or AI observability.
+
+</details>
+<details>
+<summary><code>cloudflare-data</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-data
+```
+
+Use when working with Cloudflare data and storage products: D1, R2, R2 SQL, KV, Queues, Hyperdrive, Vectorize, Pipelines, Artifacts, Secrets Store, bindings, limits, migrations, SQL, object storage, or data pipeline troubleshooting.
+
+</details>
+<details>
 <summary><code>cloudflare-docs</code></summary>
 
 ```bash
 npx skills add wenerme/ai --skill cloudflare-docs
 ```
 
-USE THIS SKILL WHEN working with Cloudflare: Workers, Pages, D1, R2, KV, Durable Objects, Queues, Vectorize, Hyperdrive, AI Gateway, Workers AI, Cloudflare Tunnel, Zero Trust, WAF, DNS, SSL/TLS, Load Balancing, CDN/Cache, Stream, Images, Turnstile, Terraform provider, Pulumi, Email Routing, or any Cloudflare developer product.
+Use when a Cloudflare question is broad or you need to choose the right Cloudflare skill. Routes to Cloudflare Workers, Data, AI, Zero Trust, Security, Networking, or Observability/Admin docs.
+
+</details>
+<details>
+<summary><code>cloudflare-networking</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-networking
+```
+
+Use when working with Cloudflare networking products: DNS, SSL/TLS, cache, load balancing, Magic Transit, Spectrum, BYOIP, network flow, interconnect, registrar, Web3, email routing/service, health checks, waiting room, or traffic routing.
+
+</details>
+<details>
+<summary><code>cloudflare-observability-admin</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-observability-admin
+```
+
+Use when working with Cloudflare observability and account administration: Analytics, Logs, Logpush, Log Explorer, Radar, notifications, billing, support, Terraform/Pulumi, fundamentals, learning paths, reference architectures, account resources, or admin docs.
+
+</details>
+<details>
+<summary><code>cloudflare-security</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-security
+```
+
+Use when working with Cloudflare security products: WAF, DDoS protection, Bot Management, API Shield, Turnstile, Rules, Ruleset Engine, firewall rules, network firewall, client-side security, challenges, DMARC, or security troubleshooting.
+
+</details>
+<details>
+<summary><code>cloudflare-workers</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-workers
+```
+
+Use when working with Cloudflare Workers platform: Workers runtime APIs, Wrangler deployment, Pages, Durable Objects, Workflows, Containers, Browser Rendering, Sandbox, Workers VPC, bindings, routing, compatibility dates, or edge application troubleshooting.
+
+</details>
+<details>
+<summary><code>cloudflare-zero-trust</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-zero-trust
+```
+
+Use when working with Cloudflare Zero Trust: Cloudflare One, Access, Gateway, WARP, Tunnel, device posture, DEX, CASB, Magic WAN/Cloudflare WAN, Zero Trust networking, 1.1.1.1, privacy proxy, or secure access troubleshooting.
 
 </details>
 <details>
@@ -1007,7 +1084,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 90 skills, 24544 files, 269 MiB total
+> 97 skills, 24665 files, 270 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1033,7 +1110,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 110 | 3.8 MiB |
 | `clickhouse-docs` | 1086 | 9.9 MiB |
-| `cloudflare-docs` | 6499 | 48 MiB |
+| `cloudflare-ai` | 1488 | 11 MiB |
+| `cloudflare-data` | 393 | 3.0 MiB |
+| `cloudflare-docs` | 3 | 31 KiB |
+| `cloudflare-networking` | 823 | 4.9 MiB |
+| `cloudflare-observability-admin` | 1220 | 8.1 MiB |
+| `cloudflare-security` | 1001 | 5.5 MiB |
+| `cloudflare-workers` | 768 | 6.9 MiB |
+| `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4612 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
@@ -1045,12 +1129,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 451 KiB |
+| `glab-docs` | 289 | 449 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 1.9 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1071,7 +1155,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 445 | 2.3 MiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
 | `openrouter-docs` | 496 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |

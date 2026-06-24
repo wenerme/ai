@@ -1,88 +1,26 @@
 ---
 name: cloudflare-docs
-description: "USE THIS SKILL WHEN working with Cloudflare: Workers, Pages, D1, R2, KV, Durable Objects, Queues, Vectorize, Hyperdrive, AI Gateway, Workers AI, Cloudflare Tunnel, Zero Trust, WAF, DNS, SSL/TLS, Load Balancing, CDN/Cache, Stream, Images, Turnstile, Terraform provider, Pulumi, Email Routing, or any Cloudflare developer product."
+description: "Use when a Cloudflare question is broad or you need to choose the right Cloudflare skill. Routes to Cloudflare Workers, Data, AI, Zero Trust, Security, Networking, or Observability/Admin docs."
 ---
 
-# Cloudflare Developer Documentation
+# Cloudflare Docs Router
 
 Official Cloudflare developer docs fetched from [developers.cloudflare.com](https://developers.cloudflare.com).
 
-## URL ↔ File Path Mapping
+Use this router skill when the request is broad, spans multiple Cloudflare product families, or you need to pick the best focused Cloudflare skill.
 
-```
-URL:  https://developers.cloudflare.com/workers/runtime-apis/fetch/
-File: references/workers/runtime-apis/fetch.md
+## Route by Topic
 
-URL:  https://developers.cloudflare.com/d1/
-File: references/d1.md
+- `cloudflare-workers` — Workers runtime, Pages, Durable Objects, Workflows, Containers, Browser Rendering, Sandbox, Workers VPC.
+- `cloudflare-data` — D1, R2, R2 SQL, KV, Queues, Hyperdrive, Vectorize, Pipelines, Artifacts, Secrets Store.
+- `cloudflare-ai` — Workers AI, AI Gateway, Agents, Agent Memory, AI Search, AI Crawl Control, Realtime, Stream, Images, Videos.
+- `cloudflare-zero-trust` — Cloudflare One, Access/Gateway/WARP, Tunnel, Zero Trust networking, 1.1.1.1, privacy proxy/gateway.
+- `cloudflare-security` — WAF, DDoS, Bots, API Shield, Turnstile, Rules/Ruleset Engine, firewall, client-side security.
+- `cloudflare-networking` — DNS, SSL/TLS, cache, load balancing, Magic Transit, Spectrum, registrar, networking products.
+- `cloudflare-observability-admin` — Analytics, Logs/Logpush, Radar, billing, support, fundamentals, Terraform/Pulumi, learning paths.
 
-URL:  https://developers.cloudflare.com/
-File: references/index.md
-```
+## Routing Rules
 
-**Rule**: strip `https://developers.cloudflare.com`, drop trailing `/`, append `.md`. Subdirectories map to nested file paths.
-
-CRITICAL: grep `references/` for keywords before answering.
-
-## Topic Index
-
-### Compute & Serverless
-- `workers/` — Workers runtime, APIs, configuration, Wrangler CLI, bindings
-- `pages/` — Cloudflare Pages, framework guides, build config, functions
-- `durable-objects/` — Durable Objects (stateful serverless), storage API, alarms
-- `workflows/` — Workflows (durable execution engine)
-- `containers/` — Container support on Workers
-- `browser-rendering/` — Headless browser rendering
-
-### Storage & Databases
-- `d1/` — D1 serverless SQL database
-- `r2/` — R2 object storage (S3-compatible)
-- `kv/` — Workers KV (key-value store)
-- `queues/` — Cloudflare Queues (message queues)
-- `vectorize/` — Vectorize (vector database)
-- `hyperdrive/` — Hyperdrive (database connection pooling/caching)
-- `pipelines/` — Data pipelines
-
-### AI & ML
-- `workers-ai/` — Workers AI (inference API)
-- `ai-gateway/` — AI Gateway (proxy, caching, rate limiting for AI APIs)
-- `ai-search/` — AI Search
-- `ai-crawl-control/` — AI crawl control (robots.txt for AI)
-
-### Networking & Security
-- `cloudflare-one/` — Cloudflare Zero Trust (Access, Gateway, WARP, Tunnel)
-- `waf/` — Web Application Firewall
-- `ddos-protection/` — DDoS protection
-- `ssl/` — SSL/TLS certificates and encryption
-- `dns/` — DNS management
-- `load-balancing/` — Load Balancing
-- `tunnel/` — Cloudflare Tunnel (Argo Tunnel)
-- `spectrum/` — Spectrum (TCP/UDP proxy)
-- `magic-transit/` — Magic Transit (network-layer DDoS)
-- `turnstile/` — Turnstile (CAPTCHA alternative)
-- `firewall/` — Firewall rules
-- `rules/` — Transform Rules, redirect rules, etc.
-- `warp-client/` — WARP client
-
-### Content Delivery & Optimization
-- `cache/` — CDN cache configuration
-- `speed/` — Speed optimizations
-- `images/` — Cloudflare Images (transform, deliver)
-- `stream/` — Cloudflare Stream (video)
-- `zaraz/` — Zaraz (third-party tool manager)
-- `web-analytics/` — Web Analytics
-
-### Platform & Infrastructure
-- `fundamentals/` — Account setup, API tokens, dashboard basics
-- `registrar/` — Domain registration
-- `email-routing/` — Email Routing
-- `notifications/` — Notification system
-- `logs/` — Logpush, Logpull
-- `terraform/` — Terraform provider
-- `pulumi/` — Pulumi provider
-- `analytics/` — Analytics
-
-### Reference
-- `reference-architecture/` — Reference architectures
-- `learning-paths/` — Learning paths / tutorials
-- `glossary.md` — Cloudflare glossary
+- MUST use a focused Cloudflare skill when the product family is known.
+- Use this skill only for triage, broad cross-product questions, or top-level docs lookup.
+- Search `references/directory.md` or `references/index.md` only when product routing is unclear.

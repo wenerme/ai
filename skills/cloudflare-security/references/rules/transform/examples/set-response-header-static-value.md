@@ -1,0 +1,36 @@
+---
+title: Set response header with a static value
+description: Create a response header transform rule (part of Transform Rules) to set an `X-Bot-Score` HTTP header in the response to a static value (`Cloudflare`).
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Set response header with a static value
+
+Create a response header transform rule (part of Transform Rules) to set an `X-Bot-Score` HTTP header in the response to a static value (`Cloudflare`).
+
+The following response header transform rule sets a header named `X-Source` to a static value (`Cloudflare`) in the HTTP response:
+
+Text in **Expression Editor**:
+
+```
+starts_with(http.request.uri.path, "/en/")
+```
+
+Selected operation under **Modify response header**: _Set static_
+
+**Header name**: `X-Source`
+
+**Value**: `Cloudflare`
+
+This rule would overwrite any existing `X-Source` headers already present in the HTTP response.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/set-response-header-static-value/#page","headline":"Set response header with a static value · Cloudflare Rules docs","description":"Create a response header transform rule (part of Transform Rules) to set an X-Bot-Score HTTP header in the response to a static value (Cloudflare).","url":"https://developers.cloudflare.com/rules/transform/examples/set-response-header-static-value/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Response modification"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/examples/","name":"Transform Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/examples/set-response-header-static-value/","name":"Set response header with a static value"}}]}
+```

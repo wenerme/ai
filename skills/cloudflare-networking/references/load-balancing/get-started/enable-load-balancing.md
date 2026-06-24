@@ -1,0 +1,31 @@
+---
+title: Enable
+description: Learn how to enable load balancing.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Enable
+
+Load balancing is an add-on for your account, meaning your account needs a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/).
+
+To enable [Load Balancing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing):
+
+1. In the Cloudflare dashboard, go to the **Load Balancing** page.
+[ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+2. Select **Enable Load Balancing** in the **Status** column.
+3. Choose your plan options and confirm payment.
+
+Note
+
+Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/#page","headline":"Enable Load Balancing · Cloudflare Load Balancing docs","description":"Learn how to enable load balancing.","url":"https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/get-started/enable-load-balancing/","name":"Enable"}}]}
+```

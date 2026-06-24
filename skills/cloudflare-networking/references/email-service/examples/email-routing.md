@@ -1,0 +1,24 @@
+---
+title: Email routing
+description: Advanced patterns and examples for routing incoming emails with Email Service Workers.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Email routing
+
+Advanced patterns and examples for routing incoming emails with Cloudflare Email Service.
+
+* [ Email storage and processing ](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/)
+* [ Spam filtering ](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/)
+* [ Handle hard bounce emails ](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/#page","headline":"Email routing · Cloudflare Email Service docs","description":"Advanced patterns and examples for routing incoming emails with Email Service Workers.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-routing/","name":"Email routing"}}]}
+```

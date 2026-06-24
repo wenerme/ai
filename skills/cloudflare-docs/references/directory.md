@@ -4,11 +4,11 @@ description: Explore the different areas of our documentation site.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
-> Documentation Index  
-> Fetch the complete documentation index at: https://developers.cloudflare.com/directory/llms.txt  
-> Use this file to discover all available pages before exploring further. 
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/directory/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop) 
+[Skip to content](#%5Ftop)
 
 # Docs directory
 

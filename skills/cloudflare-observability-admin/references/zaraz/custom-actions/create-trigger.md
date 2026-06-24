@@ -1,0 +1,35 @@
+---
+title: Create a trigger
+description: Create triggers that fire actions based on page events.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Create a trigger
+
+Triggers define the conditions under which a tool will start an action. Since a tool must have actions in order to work, and actions must have triggers, it is important to set up your website's triggers correctly. A trigger can be made out of one or more Rules. Zaraz supports [multiple types of Trigger Rules](https://developers.cloudflare.com/zaraz/reference/triggers/).
+
+1. In the Cloudflare dashboard, go to the **Tag setup** page.
+[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+2. Go to **Tools Configuration**.
+3. Select the **Triggers** tab.
+4. Select **Create trigger**.
+5. In **Trigger Name** enter a descriptive name for your trigger.
+6. In **Rule type**, choose from the actions available in the drop-down menu to start building your rule. Refer to [Triggers and rules](https://developers.cloudflare.com/zaraz/reference/triggers/) for more information on what each rule type means.
+7. In **Variable name**, input the variable you want as the trigger. For example, use _Event Name_ if you are using [zaraz.track()](https://developers.cloudflare.com/zaraz/web-api/track/) in your website. If you want to use a variable you have previously [created in Variables](https://developers.cloudflare.com/zaraz/variables/create-variables/), select the `+` sign in the drop-down menu, scroll to **Variables**, and choose your variable.
+8. Use the **Match operation** drop-down list to choose a comparison operator. For an expression to match, the value in **Variable name** and **Match string** must satisfy the comparison operator.
+9. In **Match string**, input the string that completes the rule.
+10. You can add more than one rule to your trigger. Select **Add rule** and repeat steps 5-8 to add another set of rules and conditions. If you add more than one rule, your trigger will only be valid when all conditions are true.
+11. Select **Save**.
+
+Your trigger is now complete. If you go back to the main page you will see it listed under **Triggers**, as well as which tools use it. You can also [**Edit** or **Delete** your trigger](https://developers.cloudflare.com/zaraz/custom-actions/edit-triggers/).
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/#page","headline":"Create a trigger · Cloudflare Zaraz docs","description":"Create triggers that fire actions based on page events.","url":"https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/custom-actions/","name":"Custom actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/custom-actions/create-trigger/","name":"Create a trigger"}}]}
+```

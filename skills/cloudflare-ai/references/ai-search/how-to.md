@@ -1,0 +1,23 @@
+---
+title: How to
+description: Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# How to
+
+* [ Bring your own generation model ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/)
+* [ Build per-tenant search ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+* [ Create a simple search engine ](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/)
+* [ NLWeb ](https://developers.cloudflare.com/ai-search/how-to/nlweb/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/how-to/#page","headline":"How to · Cloudflare AI Search docs","description":"Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.","url":"https://developers.cloudflare.com/ai-search/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}}]}
+```

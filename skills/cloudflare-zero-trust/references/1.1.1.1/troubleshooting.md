@@ -1,0 +1,132 @@
+---
+title: Troubleshooting
+description: Learn how to diagnose and report issues with Cloudflare's DNS Resolver
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Troubleshooting
+
+This guide helps you diagnose and resolve common issues with Cloudflare's DNS Resolver. Before proceeding with manual troubleshooting steps, [verify your connection](https://developers.cloudflare.com/1.1.1.1/check/) to automatically gather relevant information.
+
+## Name resolution issues
+
+If a domain name is not resolving correctly, test DNS resolution against 1.1.1.1 and compare the result to another resolver (such as `8.8.8.8`). The CHAOS TXT queries (`id.server`) identify which Cloudflare server handled your request, which is useful when reporting issues.
+
+### Linux/macOS
+
+Terminal window
+
+```
+# Test DNS resolutiondig example.com @1.1.1.1dig example.com @1.0.0.1dig example.com @8.8.8.8
+# Check connected nameserverdig +short CHAOS TXT id.server @1.1.1.1dig +short CHAOS TXT id.server @1.0.0.1
+# Optional: Network informationdig @ns3.cloudflare.com whoami.cloudflare.com txt +short
+```
+
+### Windows
+
+Terminal window
+
+```
+# Test DNS resolutionnslookup example.com 1.1.1.1nslookup example.com 1.0.0.1nslookup example.com 8.8.8.8
+# Check connected nameservernslookup -class=chaos -type=txt id.server 1.1.1.1nslookup -class=chaos -type=txt id.server 1.0.0.1
+# Optional: Network informationnslookup -type=txt whoami.cloudflare.com ns3.cloudflare.com
+```
+
+Warning
+
+The network information command reveals your IP address. Only include this in reports to Cloudflare if you are comfortable sharing this information.
+
+For additional analysis, you can generate a [DNSViz ↗](http://dnsviz.net/) report for the domain in question.
+
+## Connectivity and routing issues
+
+If DNS queries time out or you cannot reach 1.1.1.1 at all, the problem may be a network routing issue between your device and Cloudflare. Run traceroutes to both resolver addresses to identify where packets are being dropped.
+
+Before reporting connectivity issues:
+
+1. Search for existing reports from your country and ISP.
+2. Run traceroutes to both Cloudflare DNS resolvers.
+
+### Linux/macOS
+
+Terminal window
+
+```
+# Basic connectivity teststraceroute 1.1.1.1traceroute 1.0.0.1
+# If reachable, check nameserver identitydig +short CHAOS TXT id.server @1.1.1.1dig +short CHAOS TXT id.server @1.0.0.1
+# TCP connection testsdig +tcp @1.1.1.1 id.server CH TXTdig +tcp @1.0.0.1 id.server CH TXT
+```
+
+### Windows
+
+Terminal window
+
+```
+# Basic connectivity teststracert 1.1.1.1tracert 1.0.0.1
+# If reachable, check nameserver identitynslookup -class=chaos -type=txt id.server 1.1.1.1nslookup -class=chaos -type=txt id.server 1.0.0.1
+# TCP connection testsnslookup -vc -class=chaos -type=txt id.server 1.1.1.1nslookup -vc -class=chaos -type=txt id.server 1.0.0.1
+```
+
+## DNS-over-TLS (DoT) troubleshooting
+
+DNS over TLS encrypts DNS queries using TLS on port `853`. If your DoT connection is not working, test TLS connectivity and then DNS resolution over TLS.
+
+### Linux/macOS
+
+Terminal window
+
+```
+# Test TLS connectivityopenssl s_client -connect 1.1.1.1:853openssl s_client -connect 1.0.0.1:853
+# Test DNS resolution over TLSkdig +tls @1.1.1.1 id.server CH TXTkdig +tls @1.0.0.1 id.server CH TXT
+```
+
+### Windows
+
+Windows does not include a standalone DoT client. You can test TLS connectivity using OpenSSL after installing it manually.
+
+## DNS-over-HTTPS (DoH) troubleshooting
+
+DNS over HTTPS sends DNS queries as HTTPS requests. If your DoH connection is not working, test it by querying the Cloudflare DNS endpoint directly.
+
+### Linux/macOS
+
+Terminal window
+
+```
+curl -H 'accept: application/dns-json' 'https://cloudflare-dns.com/dns-query?name=cloudflare.com&type=AAAA'
+```
+
+### Windows
+
+PowerShell
+
+```
+(Invoke-WebRequest -Uri 'https://cloudflare-dns.com/dns-query?name=cloudflare.com&type=AAAA').RawContent
+```
+
+## Common issues
+
+### First hop failures
+
+If your traceroute fails at the first hop (the first network device after your computer, usually your router), the issue is likely hardware-related. Your router may have a hardcoded route for `1.1.1.1` that conflicts with using it as a DNS resolver. When reporting this issue, include:
+
+* Router make and model
+* ISP name
+* Any relevant router configuration details
+
+## Additional resources
+
+* [1.1.1.1 DNS Resolver homepage ↗](https://1.1.1.1)
+* [DNS over TLS documentation](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/)
+* [Diagnostic tool ↗](https://one.one.one.one/help/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/#page","headline":"Troubleshooting DNS Resolver","description":"Learn how to diagnose and report issues with Cloudflare's DNS Resolver","url":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","CLI"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/troubleshooting/","name":"Troubleshooting"}}]}
+```

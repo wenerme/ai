@@ -1,0 +1,159 @@
+---
+title: REST API
+description: Create an Artifacts repo over HTTP.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# REST API
+
+Create an Artifacts repo with the REST API, then use a regular Git client to push and pull content.
+
+By the end of this guide, you will create a repo inside a namespace, read back the repo remote URL, push a commit, and clone the same repo with a standard Git client.
+
+Start by reading [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/), then choose the namespace name you will use. This guide uses `default` in the examples.
+
+## Prerequisites
+
+You need:
+
+* Access to Artifacts.
+* A namespace name, for example `default`.
+* A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Read** and **Artifacts** \> **Edit**.
+* A local `git` client.
+* `jq`, if you want to extract response fields automatically.
+
+If you want to create and manage repos directly from a Worker (instead of calling the REST API), use the [Workers get started guide](https://developers.cloudflare.com/artifacts/get-started/workers/).
+
+## 1\. Export your environment variables
+
+Set the following variables using your Cloudflare account ID and Artifacts API token:
+
+Terminal window
+
+```
+export ARTIFACTS_NAMESPACE="default"export ARTIFACTS_REPO="starter-repo"export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
+```
+
+Use a unique repo name each time you run this guide.
+
+Artifacts uses Bearer authentication for API requests:
+
+```
+Authorization: Bearer $CLOUDFLARE_API_TOKEN
+```
+
+## 2\. Create a repo
+
+Choose one of the following ways to create a repo inside that namespace:
+
+* [ Manual ](#tab-panel-6880)
+* [ jq ](#tab-panel-6881)
+
+Terminal window
+
+```
+curl --request POST "$ARTIFACTS_BASE_URL/repos" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data "{\"name\":\"$ARTIFACTS_REPO\"}"
+```
+
+The response resembles the following:
+
+```
+{  "result": {    "id": "repo_123",    "name": "starter-repo",    "description": null,    "default_branch": "main",    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"  },  "success": true,  "errors": [],  "messages": []}
+```
+
+The response includes two values which you will need for Git operations:
+
+* `remote`: the Git remote URL for this repo. `<ACCOUNT_ID>` will be your actual Cloudflare account ID. Use this URL for all Git commands (git push, git clone). Note that this uses a different URL than the REST API you used to create the repo.
+* `token`: a short-lived credential for Git operations. The token encodes its expiry directly in the `?expires=` suffix as a Unix timestamp.
+
+Copy the `remote` and `token` values from `result` into local shell variables:
+
+Terminal window
+
+```
+export ARTIFACTS_REMOTE="<PASTE_RESULT_REMOTE_FROM_RESPONSE>"export ARTIFACTS_TOKEN="<PASTE_RESULT_TOKEN_FROM_RESPONSE>"
+```
+
+Capture the create response once and extract the fields with `jq`:
+
+Terminal window
+
+```
+CREATE_RESPONSE=$(curl --silent --request POST "$ARTIFACTS_BASE_URL/repos" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data "{\"name\":\"$ARTIFACTS_REPO\"}")
+export ARTIFACTS_REMOTE=$(printf '%s' "$CREATE_RESPONSE" | jq -r '.result.remote')export ARTIFACTS_TOKEN=$(printf '%s' "$CREATE_RESPONSE" | jq -r '.result.token')
+```
+
+## 3\. Get the repo URL again
+
+Fetch the repo metadata when you need to recover the remote URL later:
+
+Terminal window
+
+```
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+```
+{  "result": {    "id": "repo_123",    "name": "starter-repo",    "description": null,    "default_branch": "main",    "created_at": "<ISO_TIMESTAMP>",    "updated_at": "<ISO_TIMESTAMP>",    "last_push_at": null,    "source": null,    "read_only": false,    "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"  },  "success": true,  "errors": [],  "messages": []}
+```
+
+This endpoint returns repo metadata only. If you need a new repo token, mint one with `POST /tokens`.
+
+## 4\. Push your first commit with git
+
+Create a local repository and push it to the Artifacts remote:
+
+Terminal window
+
+```
+mkdir artifacts-democd artifacts-demogit init -b mainprintf '# Artifacts demo\n' > README.mdgit add README.mdgit commit -m "Initial commit"git remote add origin "$ARTIFACTS_REMOTE"git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" push -u origin main
+```
+
+This uses the recommended header-based form and keeps the token out of the remote URL.
+
+If you need a self-contained remote URL for a short-lived command, build one from the token secret instead:
+
+Terminal window
+
+```
+export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
+```
+
+## 5\. Pull the repo with a regular git client
+
+Clone the same repo into a second directory:
+
+Terminal window
+
+```
+cd ..git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clonegit -C artifacts-clone log --oneline -1
+```
+
+You should see the commit you pushed in the previous step.
+
+You can also clone with a self-contained remote URL for a short-lived command:
+
+Terminal window
+
+```
+git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
+```
+
+## Next steps
+
+[ REST API reference ](https://developers.cloudflare.com/artifacts/api/rest-api/) Review every repo and token endpoint with request and response examples.
+
+[ Git client example ](https://developers.cloudflare.com/artifacts/examples/git-client/) Use repo discovery and token minting with a standard Git client flow.
+
+[ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/) Use repo isolation, least-privilege tokens, and namespace separation effectively.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Artifacts docs","description":"Create an Artifacts repo over HTTP.","url":"https://developers.cloudflare.com/artifacts/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/get-started/rest-api/","name":"REST API"}}]}
+```

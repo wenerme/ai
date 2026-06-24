@@ -1,0 +1,48 @@
+---
+title: Dimensions
+description: Dimensions available for filtering and grouping Web Analytics data.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Dimensions
+
+Dimensions are the labels used to describe different types of metrics or data. For example, **Referer** is the data collected from external links referring visits to a page, while **Browser** shows which browsers accessed your website.
+
+Below you can find a list of the different dimensions you can use to filter Web Analytics:
+
+* **Country**: The visitor's country.
+* **Host**: The domain of the site's URL.
+* **Path**: The links within your site referring visits to a page.
+* **Referer**: The external links referring visits to a page. You can access `referer host` data on the dashboard. Additionally, you can access data for the `referer path` from the GraphQL API.
+* **Device type**: The device visitors use to access a page (for example, desktop, mobile, or tablet).
+* **Browser**: The web browser (for example, Chrome, Safari) visitors use to access your website.
+* **Operating system**: The operating system visitors use to access a page.
+* **Site**: The website's domain name. Used for high-level segmentation of data. For example, you can use it for a particular zone or gray-clouded website.
+* **Exclude Bots**: Exclude bot traffic from the dataset. With this dimension set to `Yes`, the resulting dataset will be a closer representation of real user traffic.
+* **Navigation type**: Which method was used to load the HTML document. Refer to [Navigation types](#navigation-types) for a breakdown.
+![Web Analytics dimensions page](https://developers.cloudflare.com/_astro/dash-web_analytics-dimensions.DqK_-eil_Z1zFiTJ.webp)
+
+## Navigation types
+
+| Type                    | Cache hit? | Explanation                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Navigate                | ❌          | The visitor clicked a link or submitted a form but the document was either not found or stale in the browsers HTTP cache, so a network request was made to load the document.                                                                                                                                                                                |
+| Navigate Cache          | ✅          | The visitor clicked a link or submitted a form and the document was found and fresh within the browsers HTTP cache, so no network request was necessary for the document.                                                                                                                                                                                    |
+| Navigate Prefetch Cache | ✅          | The visitor clicked a link or submitted a form and the document has been prefetched into the browsers HTTP cache, so no network request was necessary for the document.                                                                                                                                                                                      |
+| Prerender               | ✅          | The visitor clicked a link or submitted a form but the browser had already prerendered the page, so no network request was necessary for the document.                                                                                                                                                                                                       |
+| Reload                  | ❌          | The visitor reloaded the page but the document was either not found or stale in the browsers HTTP cache, so a network request was made to load the document.                                                                                                                                                                                                 |
+| Reload Cache            | ✅          | The visitor reloaded the page and the document was found and fresh within the browsers HTTP cache, so no network request was necessary for the document.                                                                                                                                                                                                     |
+| Back-forward            | ❌          | The visitor used the back/forward buttons/gestures in their browser but the previously-loaded document either not found or stale in the browsers HTTP cache OR a feature was used which prevents using the cache (refer to the explanation in [Back/forward cache ↗](https://web.dev/articles/bfcache)), so a network request was made to load the document. |
+| Back-forward Cache      | ✅          | The visitor used the back/forward buttons/gestures in their browser and the document was found and fresh within the browsers HTTP cache, so no network request was necessary for the document.                                                                                                                                                               |
+| Restore                 | ✅          | The browser was able to restore this page, for example when a tab has been paused due to inactivity.                                                                                                                                                                                                                                                         |
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/#page","headline":"Dimensions · Cloudflare Web Analytics docs","description":"Dimensions available for filtering and grouping Web Analytics data.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/data-metrics/","name":"Data and metrics"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/data-metrics/dimensions/","name":"Dimensions"}}]}
+```

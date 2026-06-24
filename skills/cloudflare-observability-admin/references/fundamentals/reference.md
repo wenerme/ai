@@ -1,0 +1,43 @@
+---
+title: Reference
+description: Find Cloudflare reference material including network details, HTTP headers, policies, and troubleshooting resources.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Reference
+
+* [ /cdn-cgi/ endpoint ](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/)
+* [ Account and domain management best practices ](https://developers.cloudflare.com/fundamentals/reference/best-practices/)
+* [ Cloudflare and Google Analytics ](https://developers.cloudflare.com/fundamentals/reference/google-analytics/)
+* [ Cloudflare crawlers ](https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/)
+* [ Cloudflare HTTP headers ](https://developers.cloudflare.com/fundamentals/reference/http-headers/)
+* [ Cloudflare Ray ID ](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/)
+* [ Cloudy AI agent (beta) ](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/)
+* [ Connection limits ](https://developers.cloudflare.com/fundamentals/reference/connection-limits/)
+* [ Cryptographic Attestation of Personhood ](https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/)
+* [ Error responses ](https://developers.cloudflare.com/fundamentals/reference/error-responses/)
+* [ Glossary ](https://developers.cloudflare.com/fundamentals/reference/glossary/)
+* [ Markdown for Agents ](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/)
+* [ Migration guides ](https://developers.cloudflare.com/fundamentals/reference/migration-guides/)
+* [ Network Layers ](https://developers.cloudflare.com/fundamentals/reference/network-layers/)
+* [ Network ports ](https://developers.cloudflare.com/fundamentals/reference/network-ports/)
+* [ Partners ](https://developers.cloudflare.com/fundamentals/reference/partners/)
+* [ Policies ](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/)
+* [ Redirects ](https://developers.cloudflare.com/fundamentals/reference/redirects/)
+* [ Abuse ](https://developers.cloudflare.com/fundamentals/reference/report-abuse/)
+* [ Scans and penetration testing policy ](https://developers.cloudflare.com/fundamentals/reference/scans-penetration/)
+* [ SDK ecosystem support policy ](https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/)
+* [ TCP connections ](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/)
+* [ Troubleshooting ](https://developers.cloudflare.com/fundamentals/reference/troubleshooting/)
+* [ Under Attack mode ](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/#page","headline":"Reference - Get started · Cloudflare Fundamentals docs","description":"Find Cloudflare reference material including network details, HTTP headers, policies, and troubleshooting resources.","url":"https://developers.cloudflare.com/fundamentals/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}}]}
+```
