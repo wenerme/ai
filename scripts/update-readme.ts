@@ -18,6 +18,8 @@ interface SourceMeta {
   repo?: string;
   url?: string;
   host?: string; // non-GitHub host, e.g. "gitlab.alpinelinux.org"
+  path?: string;
+  ref?: string;
 }
 
 interface SkillMeta {
@@ -46,6 +48,13 @@ function resolveSource(name: string): string {
 
   if (meta.repo) {
     const host = meta.host ?? "github.com";
+    if (meta.path) {
+      const cleanPath = meta.path.replace(/^\/+/, "").replace(/\/+$/, "");
+      const label = `${meta.repo}/${cleanPath}`;
+      const ref = meta.ref ?? "main";
+      const treePath = host === "github.com" ? `tree/${ref}/${cleanPath}` : `-/tree/${ref}/${cleanPath}`;
+      return `[${label}](https://${host}/${meta.repo}/${treePath})`;
+    }
     return `[${meta.repo}](https://${host}/${meta.repo})`;
   }
   if (meta.url) {

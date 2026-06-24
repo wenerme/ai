@@ -108,7 +108,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
-| `zellij-docs` | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... |  |
+| `zellij-docs` | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... | [zellij-org/zellij-org.github.io/docs](https://github.com/zellij-org/zellij-org.github.io/tree/main/docs) |
 | `zellij-session-manager` | Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces... |  |
 | `zustand-mutative-pattern` | Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions... |  |
 
