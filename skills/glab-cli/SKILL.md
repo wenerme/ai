@@ -9,11 +9,12 @@ description: "Use when interacting with GitLab via the glab CLI: creating/review
 
 - ALWAYS verify auth before first command: `glab auth status`
 - ALWAYS use `-R owner/repo` when not inside the target git repo
-- For self-hosted GitLab, set `GITLAB_HOST` or use `--hostname`
+- For self-hosted GitLab, set `GITLAB_HOST` in the command environment when this installed `glab` does not support a global `--hostname` flag. Check `glab <command> --help` before using `--hostname`; some versions accept `--hostname` for auth but not for MR commands.
 - Use `--output=json` when parsing output programmatically
 - NEVER hardcode tokens in commands — use `glab auth login` or `GITLAB_TOKEN` env var
 - Pagination params go in URL, not flags: `glab api "projects/:id/jobs?per_page=100"` (NOT `--per-page`)
-- When creating MRs, ALWAYS add `--remove-source-branch --squash-before-merge` unless the user explicitly says otherwise
+- When creating MRs, ALWAYS add `--remove-source-branch --squash-before-merge` unless the user explicitly says otherwise.
+- Some `glab` versions do not support `--hostname` on MR commands. For self-hosted GitLab operations, prefer running inside the target repo with the correct remote, or set `GITLAB_HOST=<host>` and use `-R owner/repo`.
 
 ## Auth
 
@@ -27,13 +28,20 @@ glab auth status                                   # Verify
 
 ```bash
 git push -u origin feature-branch
-glab mr create --title "Fix bug" --description "Closes #123" \
-  --remove-source-branch --squash-before-merge --reviewer=alice,bob
+GITLAB_HOST=gitlab.paigod.work glab mr create -R owner/repo \
+  --source-branch feature-branch --target-branch main \
+  --title "Fix bug" --description "Closes #123" \
+  --remove-source-branch --squash-before-merge --yes
+GITLAB_HOST=gitlab.paigod.work glab mr view 42 -R owner/repo --output=json
 glab mr list --reviewer=@me                        # MRs to review
 glab mr checkout 42                                # Test locally
 glab mr approve 42
 glab mr merge 42 --remove-source-branch
 ```
+
+Notes:
+- Some `glab` versions do not have `--description-file` on `mr create`; use `--description "$(cat /tmp/body.md)"` if help confirms only `--description` is available.
+- After creating an MR, verify `web_url`, `head_pipeline.status`, conflicts, squash, and source-branch removal settings with `glab mr view --output=json`.
 
 ## Issue Workflow
 
@@ -91,7 +99,7 @@ glab api --method POST projects/:id/issues --field title="Bug"
 | `404 Project Not Found` | Check repo name + access permissions |
 | `not a git repository` | `cd` to repo or use `-R owner/repo` |
 | `source branch already has MR` | `glab mr list` to find existing |
-| `pipeline must succeed` | `glab ci status` then fix/retry |
+| Direct local `glab` returns `EOF`/timeout for self-hosted GitLab but another trusted host can reach it | Do not conclude MR is impossible. Push using SSH ProxyCommand through the reachable host when appropriate, or run GitLab REST API/glab from that host. Still verify MR URL, pipeline, mergeability, and discussions before marking complete. |
 
 ## References
 

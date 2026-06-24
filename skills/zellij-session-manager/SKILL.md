@@ -246,6 +246,13 @@ wait
 - **独占写入**：避免多 process 同时向同一 pane 写入（会乱序）
 - **卡住时主动补火**：如果 pane 长时间没有新进展，且最后一条可见消息还是你发出的指令，直接再发一条轻量 follow-up（例如 `continue` / `继续`）而不是静默等待；这通常能把 agent 从“看起来没响应”状态拉回到下一轮处理
 
+### Agent session 监控补充
+
+- **区分控制进程与真实 agent session**：如果曾经用后台 process 启动 agent，后来切到 Zellij pane 托管，后台 process 的退出通知可能只是旧控制进程结束，不代表当前 Zellij agent 失败。收到这类通知时，先核对 Zellij pane、session JSONL、cwd/branch 和最新 tool activity，再汇报状态。
+- **不要只看 pane 视口**：某些 agent/TUI pane 的 `dump-screen` 可能为空或只显示最近注入文本；同时检查 session JSONL 或项目日志是否增长，避免误判为无进展。
+- **发现旧 pane/旧 worktree 输出时要交叉验证**：同名 pane 可能残留历史任务。用 `list-panes --json` 查看 pane id/title/tab，再读取 session header 的 cwd/branch，必要时明确标记旧 pane 为 obsolete。
+- **handoff 不完整时继续 nudging**：如果 session 已更新文件但还没输出最终 handoff，直接向正确 pane 发送简短指令（如“继续，输出最终 handoff；不要创建 MR，只确认代码/验证/待 manager 创建 MR。”），然后再次读取 session tail 验证 stop/handoff。
+
 ---
 
 ## 与 tmux 的关键差异

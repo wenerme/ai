@@ -12,7 +12,7 @@ Create and optimize Claude Skills following best practices and validation rules.
 1. **Context is scarce** — Claude is already smart. Only add what it doesn't know. Challenge each paragraph: "Does this justify its token cost?"
 2. **Description is the trigger** — Description determines WHEN a skill loads. It MUST describe triggering conditions, NEVER summarize workflow.
 3. **Progressive disclosure** — Three-level loading: metadata (~100 tokens, always loaded) → SKILL.md body (<5000 tokens, on trigger) → references/scripts/assets (on demand, unlimited).
-4. **English-first** — Write descriptions in English for reliable LLM matching. Body can be bilingual.
+4. **English trigger, localized body** — Frontmatter `description` should stay English for reliable triggering. For Wener/PPIO project skills, write the SKILL.md body and reference prose in Chinese by default so Wener can review and refine it efficiently; keep command names, API fields, code identifiers, and established English terms unchanged.
 5. **Directive-style** — Use `MUST`, `NEVER`, `CRITICAL RULE` for hard constraints (not just "should" or "try to").
 6. **No duplication** — Information lives in EITHER SKILL.md or references, never both. Keep core workflow in SKILL.md; move detailed reference material out.
 
@@ -172,9 +172,17 @@ Track external skill sources in `skills/skills.json`:
 
 Workflow: add entry → `just update-skills` → `just update-readme`
 
-## Checklist
+## Git Hygiene for Skill Updates
 
-**Before creating:**
+When editing skills inside a git-backed skill library or project repository:
+
+1. Treat skill edits as repo changes, not invisible local state.
+2. Before committing, stage only the skill/library files relevant to the current learning; do not sweep in unrelated dirty snapshots, generated data, logs, dashboards, or task artifacts.
+3. Run the lightest available validation for touched files, such as `just lint-skills`, `bun --check`, or the repository's skill linter when available.
+4. If the user asks for repo contents to be committed, or the local workflow expects committed skills, create a focused commit for the skill-library update with a clear message.
+5. If unrelated dirty files exist, explicitly leave them unstaged and mention that they were not included.
+
+
 - [ ] Identify 2-3 concrete use cases
 - [ ] Determine scope (generic / user / project / case)
 - [ ] Choose type (reference / pattern / migration / discipline)

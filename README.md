@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 88 skills available
+> 89 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -80,6 +80,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
 | `peekaboo` | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
+| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... |  |
@@ -761,6 +762,16 @@ npx skills add wenerme/ai --skill react-resizable-panels-v3-to-v4
 ```
 
 Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported, direction prop invalid, layout broken), adapting to the new Group/Separator API and percentage string syntax, or updating CSS selectors for renamed data attributes. Triggers on "react-resizable-panels v4", "PanelGroup not found", "PanelResizeHandle not found", "panel layout broken after upgrade".
+
+</details>
+<details>
+<summary><code>requesting-code-review</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill requesting-code-review
+```
+
+Use when completing tasks, implementing major features, or before merging to verify work meets requirements
 
 </details>
 <details>
