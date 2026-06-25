@@ -32,6 +32,10 @@ update-google-ai-docs:
 update-bun-docs:
     bun scripts/sync-bun-docs.ts
 
+# Fetch Grafana plugin docs from grafana.com llms-full.txt
+update-grafana-plugin-docs:
+    bun scripts/fetch-grafana-plugin-docs.ts
+
 # Sync Grafana docs from local grafana/grafana clone
 update-grafana-docs:
     bun scripts/sync-grafana-docs.ts
@@ -190,6 +194,7 @@ update:
     -just update-google-ai-docs
     -just update-bun-docs
     -just update-grafana-docs
+    -just update-grafana-plugin-docs
     -just update-doris-docs
     -just update-clickhouse-docs
     -just update-gemini-cli-docs

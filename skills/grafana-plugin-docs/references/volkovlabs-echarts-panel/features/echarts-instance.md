@@ -1,0 +1,130 @@
+---
+title: "ECharts instance | Grafana Plugins documentation"
+description: "Learn how to interact with the ECharts container instance to get dimensions, DOM elements, and handle chart operations."
+---
+
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
+
+# ECharts instance
+
+The `context.panel.chart` (formerly `echartsInstance`) is an instance (container) of the Apache ECharts library. It lets you:
+
+- Get the width and height of the ECharts container
+- Get the DOM (Document Object Model) to include additional elements
+- Resize the chart
+- Handle events
+- Update options
+
+For more details, see the documentation for [echartsInstance](https://echarts.apache.org/en/api.html#echartsInstance).
+
+## Scale when resizing
+
+To scale the content for fitting the resized panel, you need to use the instance methods to retrieve the width and height of the panel.
+
+js [Copy code to clipboard] Copy
+
+```js
+  graphic: {
+    type: "image",
+    style: {
+      image: `data:image/svg+xml;utf8,${SVG}`,
+      width: context.panel.chart.getWidth(),
+      height: context.panel.chart.getHeight(),
+    },
+  },
+```
+
+## Create DOM elements
+
+You can add elements (buttons, checkboxes, dropdown boxes, etc.) to the DOM (Document Object Model) using the instance.
+
+## Button
+
+You can add a button with an on-click event handler on top of the Business Charts panel.
+
+[](/media/docs/grafana/panels-visualizations/business-charts/dom.png)
+
+js [Copy code to clipboard] Copy
+
+```js
+const myFunction = () => {
+  alert("myFunction() called!");
+};
+
+//Get the DOM for the panel
+let dom = context.panel.chart.getDom();
+
+//Get the child nodes
+let nodeList = dom.childNodes;
+
+//If we haven't added our controls to the DOM yet
+if (nodeList.length < 2) {
+  //Create a new button
+  const btn = document.createElement("button");
+
+  //Establish button name
+  const textnode = document.createTextNode("My Button");
+  btn.appendChild(textnode);
+
+  //Add click event handler
+  btn.addEventListener("click", myFunction);
+
+  //Create a new <div>
+  const div = document.createElement("div");
+
+  //Add button to <div>
+  div.appendChild(btn);
+
+  //Insert new <div> ahead of existing chart div
+  dom.insertBefore(div, dom.firstChild);
+}
+```
+
+## Select
+
+Add a select box with an on-change event handler.
+
+[](/media/docs/grafana/panels-visualizations/business-charts/select.png)
+
+js [Copy code to clipboard] Copy
+
+```js
+//Get the DOM for the panel
+let dom = context.panel.chart.getDom();
+
+//Get the child nodes
+let nodeList = dom.childNodes;
+
+//If we haven't added our controls to the DOM yet
+if (nodeList.length < 2) {
+  //Create a select list
+  const selectList = document.createElement("select");
+  selectList.id = "mySelect";
+  selectList.style.borderStyle = "solid";
+
+  //Add options
+  const array = ["value1", "value2", "value3", "value4"];
+  array.forEach((value) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.text = value;
+    selectList.appendChild(option);
+  });
+
+  //Add click event handler
+  selectList.addEventListener("change", () => {
+    alert("Selected value: " + selectList.value);
+  });
+
+  //Create a new <div>
+  const div = document.createElement("div");
+  div.innerHTML += "Select ";
+  div.style.marginLeft = "10px";
+
+  //Add select to <div>
+  div.appendChild(selectList);
+
+  //Insert new <div> ahead of existing chart div
+  dom.insertBefore(div, dom.firstChild);
+}
+```

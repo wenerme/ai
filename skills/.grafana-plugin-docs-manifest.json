@@ -1,0 +1,2902 @@
+{
+  "alexanderzobnin-zabbix-app/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting.md",
+    "size": 2457,
+    "updatedAt": "2026-06-25T05:40:49.464Z"
+  },
+  "alexanderzobnin-zabbix-app/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/annotations.md",
+    "size": 3496,
+    "updatedAt": "2026-06-25T05:40:49.828Z"
+  },
+  "alexanderzobnin-zabbix-app/configure.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configure.md",
+    "size": 15072,
+    "updatedAt": "2026-06-25T05:40:50.200Z"
+  },
+  "alexanderzobnin-zabbix-app/functions.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/functions.md",
+    "size": 11050,
+    "updatedAt": "2026-06-25T05:40:50.578Z"
+  },
+  "alexanderzobnin-zabbix-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest.md",
+    "size": 3838,
+    "updatedAt": "2026-06-25T05:40:50.958Z"
+  },
+  "alexanderzobnin-zabbix-app/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor.md",
+    "size": 16749,
+    "updatedAt": "2026-06-25T05:41:26.934Z"
+  },
+  "alexanderzobnin-zabbix-app/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables.md",
+    "size": 6201,
+    "updatedAt": "2026-06-25T05:41:27.302Z"
+  },
+  "alexanderzobnin-zabbix-app/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting.md",
+    "size": 14252,
+    "updatedAt": "2026-06-25T05:41:27.675Z"
+  },
+  "cloudwatch/aws-authentication.md": {
+    "url": "https://grafana.com/docs/plugins/cloudwatch/latest/aws-authentication.md",
+    "size": 12550,
+    "updatedAt": "2026-06-25T05:41:28.308Z"
+  },
+  "cloudwatch/configure.md": {
+    "url": "https://grafana.com/docs/plugins/cloudwatch/latest/configure.md",
+    "size": 20137,
+    "updatedAt": "2026-06-25T05:41:28.736Z"
+  },
+  "cloudwatch/index.md": {
+    "url": "https://grafana.com/docs/plugins/cloudwatch/latest.md",
+    "size": 5733,
+    "updatedAt": "2026-06-25T05:41:29.096Z"
+  },
+  "cloudwatch/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/cloudwatch/latest/query-editor.md",
+    "size": 26984,
+    "updatedAt": "2026-06-25T05:41:29.483Z"
+  },
+  "cloudwatch/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/cloudwatch/latest/template-variables.md",
+    "size": 5414,
+    "updatedAt": "2026-06-25T05:41:29.844Z"
+  },
+  "dlopes7-appdynamics-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/alerting.md",
+    "size": 7305,
+    "updatedAt": "2026-06-25T05:41:30.214Z"
+  },
+  "dlopes7-appdynamics-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/annotations.md",
+    "size": 9014,
+    "updatedAt": "2026-06-25T05:41:30.580Z"
+  },
+  "dlopes7-appdynamics-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/configure.md",
+    "size": 12788,
+    "updatedAt": "2026-06-25T05:41:30.948Z"
+  },
+  "dlopes7-appdynamics-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest.md",
+    "size": 3609,
+    "updatedAt": "2026-06-25T05:41:31.312Z"
+  },
+  "dlopes7-appdynamics-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor.md",
+    "size": 11307,
+    "updatedAt": "2026-06-25T05:41:31.679Z"
+  },
+  "dlopes7-appdynamics-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables.md",
+    "size": 6230,
+    "updatedAt": "2026-06-25T05:41:32.059Z"
+  },
+  "dlopes7-appdynamics-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting.md",
+    "size": 13079,
+    "updatedAt": "2026-06-25T05:41:32.440Z"
+  },
+  "grafana-adobeanalytics-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-adobeanalytics-datasource/latest.md",
+    "size": 27005,
+    "updatedAt": "2026-06-25T05:41:32.825Z"
+  },
+  "grafana-adobeanalytics-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-adobeanalytics-datasource/latest/troubleshooting.md",
+    "size": 11521,
+    "updatedAt": "2026-06-25T05:41:33.461Z"
+  },
+  "grafana-amazonprometheus-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest.md",
+    "size": 2932,
+    "updatedAt": "2026-06-25T05:41:33.823Z"
+  },
+  "grafana-athena-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/alerting.md",
+    "size": 4037,
+    "updatedAt": "2026-06-25T05:41:34.180Z"
+  },
+  "grafana-athena-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/annotations.md",
+    "size": 2507,
+    "updatedAt": "2026-06-25T05:41:34.542Z"
+  },
+  "grafana-athena-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/configure.md",
+    "size": 11627,
+    "updatedAt": "2026-06-25T05:41:34.911Z"
+  },
+  "grafana-athena-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest.md",
+    "size": 3086,
+    "updatedAt": "2026-06-25T05:41:35.269Z"
+  },
+  "grafana-athena-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/query-editor.md",
+    "size": 13048,
+    "updatedAt": "2026-06-25T05:41:35.628Z"
+  },
+  "grafana-athena-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/template-variables.md",
+    "size": 2832,
+    "updatedAt": "2026-06-25T05:41:35.994Z"
+  },
+  "grafana-athena-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/troubleshooting.md",
+    "size": 13335,
+    "updatedAt": "2026-06-25T05:41:36.369Z"
+  },
+  "grafana-atlassianstatuspage-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-atlassianstatuspage-datasource/latest.md",
+    "size": 4925,
+    "updatedAt": "2026-06-25T05:41:36.732Z"
+  },
+  "grafana-aurora-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest.md",
+    "size": 13373,
+    "updatedAt": "2026-06-25T05:41:37.106Z"
+  },
+  "grafana-azurecosmosdb-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure.md",
+    "size": 2023,
+    "updatedAt": "2026-06-25T05:41:37.471Z"
+  },
+  "grafana-azurecosmosdb-datasource/editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/editor.md",
+    "size": 2192,
+    "updatedAt": "2026-06-25T05:41:37.828Z"
+  },
+  "grafana-azurecosmosdb-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest.md",
+    "size": 1782,
+    "updatedAt": "2026-06-25T05:41:38.188Z"
+  },
+  "grafana-azurecosmosdb-datasource/templates-and-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/templates-and-variables.md",
+    "size": 1937,
+    "updatedAt": "2026-06-25T05:41:38.548Z"
+  },
+  "grafana-azuredevops-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/annotations.md",
+    "size": 2841,
+    "updatedAt": "2026-06-25T05:41:38.909Z"
+  },
+  "grafana-azuredevops-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure.md",
+    "size": 8495,
+    "updatedAt": "2026-06-25T05:41:39.279Z"
+  },
+  "grafana-azuredevops-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest.md",
+    "size": 4418,
+    "updatedAt": "2026-06-25T05:41:39.635Z"
+  },
+  "grafana-azuredevops-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/query-editor.md",
+    "size": 25676,
+    "updatedAt": "2026-06-25T05:41:40.027Z"
+  },
+  "grafana-azuredevops-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/template-variables.md",
+    "size": 4699,
+    "updatedAt": "2026-06-25T05:41:40.390Z"
+  },
+  "grafana-azuredevops-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting.md",
+    "size": 16442,
+    "updatedAt": "2026-06-25T05:41:40.766Z"
+  },
+  "grafana-bigquery-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/alerting.md",
+    "size": 7681,
+    "updatedAt": "2026-06-25T05:41:41.134Z"
+  },
+  "grafana-bigquery-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/annotations.md",
+    "size": 4965,
+    "updatedAt": "2026-06-25T05:41:41.498Z"
+  },
+  "grafana-bigquery-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure.md",
+    "size": 19540,
+    "updatedAt": "2026-06-25T05:41:41.877Z"
+  },
+  "grafana-bigquery-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest.md",
+    "size": 3884,
+    "updatedAt": "2026-06-25T05:41:42.246Z"
+  },
+  "grafana-bigquery-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/query-editor.md",
+    "size": 10806,
+    "updatedAt": "2026-06-25T05:41:42.620Z"
+  },
+  "grafana-bigquery-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/template-variables.md",
+    "size": 9634,
+    "updatedAt": "2026-06-25T05:41:42.984Z"
+  },
+  "grafana-bigquery-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting.md",
+    "size": 12860,
+    "updatedAt": "2026-06-25T05:41:43.360Z"
+  },
+  "grafana-catchpoint-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest.md",
+    "size": 4276,
+    "updatedAt": "2026-06-25T05:41:43.718Z"
+  },
+  "grafana-clickhouse-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/alerting.md",
+    "size": 11449,
+    "updatedAt": "2026-06-25T05:41:44.087Z"
+  },
+  "grafana-clickhouse-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/annotations.md",
+    "size": 7784,
+    "updatedAt": "2026-06-25T05:41:44.448Z"
+  },
+  "grafana-clickhouse-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure.md",
+    "size": 26740,
+    "updatedAt": "2026-06-25T05:41:44.835Z"
+  },
+  "grafana-clickhouse-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest.md",
+    "size": 4556,
+    "updatedAt": "2026-06-25T05:41:45.189Z"
+  },
+  "grafana-clickhouse-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor.md",
+    "size": 24047,
+    "updatedAt": "2026-06-25T05:41:45.574Z"
+  },
+  "grafana-clickhouse-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables.md",
+    "size": 15387,
+    "updatedAt": "2026-06-25T05:41:45.951Z"
+  },
+  "grafana-clickhouse-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting.md",
+    "size": 29232,
+    "updatedAt": "2026-06-25T05:41:46.338Z"
+  },
+  "grafana-cloudflare-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/alerting.md",
+    "size": 3983,
+    "updatedAt": "2026-06-25T05:41:46.699Z"
+  },
+  "grafana-cloudflare-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/annotations.md",
+    "size": 3092,
+    "updatedAt": "2026-06-25T05:41:47.058Z"
+  },
+  "grafana-cloudflare-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure.md",
+    "size": 4922,
+    "updatedAt": "2026-06-25T05:41:47.417Z"
+  },
+  "grafana-cloudflare-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest.md",
+    "size": 3239,
+    "updatedAt": "2026-06-25T05:41:47.785Z"
+  },
+  "grafana-cloudflare-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/query-editor.md",
+    "size": 16720,
+    "updatedAt": "2026-06-25T05:41:48.160Z"
+  },
+  "grafana-cloudflare-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting.md",
+    "size": 7169,
+    "updatedAt": "2026-06-25T05:41:48.530Z"
+  },
+  "grafana-cockroachdb-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/alerting.md",
+    "size": 5382,
+    "updatedAt": "2026-06-25T05:41:48.906Z"
+  },
+  "grafana-cockroachdb-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/annotations.md",
+    "size": 5138,
+    "updatedAt": "2026-06-25T05:41:49.276Z"
+  },
+  "grafana-cockroachdb-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/configure.md",
+    "size": 10382,
+    "updatedAt": "2026-06-25T05:41:49.645Z"
+  },
+  "grafana-cockroachdb-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest.md",
+    "size": 3213,
+    "updatedAt": "2026-06-25T05:41:50.007Z"
+  },
+  "grafana-cockroachdb-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/query-editor.md",
+    "size": 6631,
+    "updatedAt": "2026-06-25T05:41:50.371Z"
+  },
+  "grafana-cockroachdb-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/template-variables.md",
+    "size": 4862,
+    "updatedAt": "2026-06-25T05:41:50.747Z"
+  },
+  "grafana-cockroachdb-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/troubleshooting.md",
+    "size": 24646,
+    "updatedAt": "2026-06-25T05:41:51.138Z"
+  },
+  "grafana-databricks-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/annotations.md",
+    "size": 2625,
+    "updatedAt": "2026-06-25T05:41:51.501Z"
+  },
+  "grafana-databricks-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure.md",
+    "size": 23233,
+    "updatedAt": "2026-06-25T05:41:51.867Z"
+  },
+  "grafana-databricks-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest.md",
+    "size": 2464,
+    "updatedAt": "2026-06-25T05:41:52.212Z"
+  },
+  "grafana-databricks-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/query-editor.md",
+    "size": 14247,
+    "updatedAt": "2026-06-25T05:41:52.572Z"
+  },
+  "grafana-databricks-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/template-variables.md",
+    "size": 1533,
+    "updatedAt": "2026-06-25T05:41:52.914Z"
+  },
+  "grafana-databricks-datasource/troubleshoot.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshoot.md",
+    "size": 11707,
+    "updatedAt": "2026-06-25T05:41:53.271Z"
+  },
+  "grafana-datadog-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure.md",
+    "size": 6177,
+    "updatedAt": "2026-06-25T05:41:53.632Z"
+  },
+  "grafana-datadog-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest.md",
+    "size": 2390,
+    "updatedAt": "2026-06-25T05:41:54.002Z"
+  },
+  "grafana-datadog-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor.md",
+    "size": 15388,
+    "updatedAt": "2026-06-25T05:41:54.371Z"
+  },
+  "grafana-datadog-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/template-variables.md",
+    "size": 4952,
+    "updatedAt": "2026-06-25T05:41:54.738Z"
+  },
+  "grafana-datadog-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting.md",
+    "size": 9137,
+    "updatedAt": "2026-06-25T05:41:55.108Z"
+  },
+  "grafana-drone-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest.md",
+    "size": 5936,
+    "updatedAt": "2026-06-25T05:41:55.464Z"
+  },
+  "grafana-dynamodb-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest.md",
+    "size": 8423,
+    "updatedAt": "2026-06-25T05:41:55.826Z"
+  },
+  "grafana-dynatrace-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/alerting.md",
+    "size": 5585,
+    "updatedAt": "2026-06-25T05:41:56.186Z"
+  },
+  "grafana-dynatrace-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/annotations.md",
+    "size": 4201,
+    "updatedAt": "2026-06-25T05:41:56.543Z"
+  },
+  "grafana-dynatrace-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure.md",
+    "size": 13263,
+    "updatedAt": "2026-06-25T05:41:57.182Z"
+  },
+  "grafana-dynatrace-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest.md",
+    "size": 3497,
+    "updatedAt": "2026-06-25T05:41:57.540Z"
+  },
+  "grafana-dynatrace-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/query-editor.md",
+    "size": 27563,
+    "updatedAt": "2026-06-25T05:41:57.918Z"
+  },
+  "grafana-dynatrace-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/template-variables.md",
+    "size": 8470,
+    "updatedAt": "2026-06-25T05:41:58.290Z"
+  },
+  "grafana-dynatrace-datasource/troubleshoot.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot.md",
+    "size": 17525,
+    "updatedAt": "2026-06-25T05:41:58.666Z"
+  },
+  "grafana-exploretraces-app/access.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/access.md",
+    "size": 3370,
+    "updatedAt": "2026-06-25T05:41:59.032Z"
+  },
+  "grafana-exploretraces-app/concepts.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts.md",
+    "size": 2746,
+    "updatedAt": "2026-06-25T05:41:59.396Z"
+  },
+  "grafana-exploretraces-app/determine-use-case.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/determine-use-case.md",
+    "size": 8921,
+    "updatedAt": "2026-06-25T05:41:59.770Z"
+  },
+  "grafana-exploretraces-app/get-started.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started.md",
+    "size": 6323,
+    "updatedAt": "2026-06-25T05:42:00.153Z"
+  },
+  "grafana-exploretraces-app/get-started/example-investigation.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation.md",
+    "size": 5760,
+    "updatedAt": "2026-06-25T05:42:00.516Z"
+  },
+  "grafana-exploretraces-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest.md",
+    "size": 2987,
+    "updatedAt": "2026-06-25T05:42:00.865Z"
+  },
+  "grafana-exploretraces-app/investigate.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate.md",
+    "size": 1705,
+    "updatedAt": "2026-06-25T05:42:01.226Z"
+  },
+  "grafana-exploretraces-app/investigate/add-filters.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters.md",
+    "size": 2946,
+    "updatedAt": "2026-06-25T05:42:01.579Z"
+  },
+  "grafana-exploretraces-app/investigate/analyze-tracing-data.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data.md",
+    "size": 9952,
+    "updatedAt": "2026-06-25T05:42:01.948Z"
+  },
+  "grafana-exploretraces-app/investigate/choose-red-metric.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric.md",
+    "size": 1858,
+    "updatedAt": "2026-06-25T05:42:02.304Z"
+  },
+  "grafana-exploretraces-app/investigate/choose-span-data.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data.md",
+    "size": 2984,
+    "updatedAt": "2026-06-25T05:42:02.666Z"
+  },
+  "grafana-exploretraces-app/investigate/save-load-queries.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/save-load-queries.md",
+    "size": 2410,
+    "updatedAt": "2026-06-25T05:42:03.030Z"
+  },
+  "grafana-exploretraces-app/investigate/view-exemplars.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/view-exemplars.md",
+    "size": 2399,
+    "updatedAt": "2026-06-25T05:42:03.388Z"
+  },
+  "grafana-exploretraces-app/ui-reference.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/ui-reference.md",
+    "size": 4451,
+    "updatedAt": "2026-06-25T05:42:03.738Z"
+  },
+  "grafana-falconlogscale-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-falconlogscale-datasource/latest/configure.md",
+    "size": 8642,
+    "updatedAt": "2026-06-25T05:42:04.107Z"
+  },
+  "grafana-falconlogscale-datasource/editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-falconlogscale-datasource/latest/editor.md",
+    "size": 3869,
+    "updatedAt": "2026-06-25T05:42:04.468Z"
+  },
+  "grafana-falconlogscale-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-falconlogscale-datasource/latest.md",
+    "size": 1535,
+    "updatedAt": "2026-06-25T05:42:04.829Z"
+  },
+  "grafana-falconlogscale-datasource/templates-and-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-falconlogscale-datasource/latest/templates-and-variables.md",
+    "size": 1617,
+    "updatedAt": "2026-06-25T05:42:05.202Z"
+  },
+  "grafana-github-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/alerting.md",
+    "size": 4119,
+    "updatedAt": "2026-06-25T05:42:05.576Z"
+  },
+  "grafana-github-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/annotations.md",
+    "size": 3751,
+    "updatedAt": "2026-06-25T05:42:05.938Z"
+  },
+  "grafana-github-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure.md",
+    "size": 12769,
+    "updatedAt": "2026-06-25T05:42:06.311Z"
+  },
+  "grafana-github-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest.md",
+    "size": 5785,
+    "updatedAt": "2026-06-25T05:42:06.683Z"
+  },
+  "grafana-github-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor.md",
+    "size": 58852,
+    "updatedAt": "2026-06-25T05:42:07.101Z"
+  },
+  "grafana-github-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/template-variables.md",
+    "size": 6000,
+    "updatedAt": "2026-06-25T05:42:07.473Z"
+  },
+  "grafana-github-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/troubleshooting.md",
+    "size": 10404,
+    "updatedAt": "2026-06-25T05:42:07.841Z"
+  },
+  "grafana-gitlab-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/alerting.md",
+    "size": 3700,
+    "updatedAt": "2026-06-25T05:42:08.206Z"
+  },
+  "grafana-gitlab-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/annotations.md",
+    "size": 5083,
+    "updatedAt": "2026-06-25T05:42:08.574Z"
+  },
+  "grafana-gitlab-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/configure.md",
+    "size": 4901,
+    "updatedAt": "2026-06-25T05:42:08.936Z"
+  },
+  "grafana-gitlab-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest.md",
+    "size": 5597,
+    "updatedAt": "2026-06-25T05:42:09.301Z"
+  },
+  "grafana-gitlab-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/query-editor.md",
+    "size": 19433,
+    "updatedAt": "2026-06-25T05:42:09.680Z"
+  },
+  "grafana-gitlab-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/template-variables.md",
+    "size": 3684,
+    "updatedAt": "2026-06-25T05:42:10.036Z"
+  },
+  "grafana-gitlab-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting.md",
+    "size": 15079,
+    "updatedAt": "2026-06-25T05:42:10.410Z"
+  },
+  "grafana-googlesheets-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/alerting.md",
+    "size": 4866,
+    "updatedAt": "2026-06-25T05:42:10.778Z"
+  },
+  "grafana-googlesheets-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/annotations.md",
+    "size": 4786,
+    "updatedAt": "2026-06-25T05:42:11.142Z"
+  },
+  "grafana-googlesheets-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure.md",
+    "size": 15371,
+    "updatedAt": "2026-06-25T05:42:11.519Z"
+  },
+  "grafana-googlesheets-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest.md",
+    "size": 7028,
+    "updatedAt": "2026-06-25T05:42:11.878Z"
+  },
+  "grafana-googlesheets-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/query-editor.md",
+    "size": 14194,
+    "updatedAt": "2026-06-25T05:42:12.255Z"
+  },
+  "grafana-googlesheets-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/template-variables.md",
+    "size": 5682,
+    "updatedAt": "2026-06-25T05:42:12.616Z"
+  },
+  "grafana-googlesheets-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/troubleshooting.md",
+    "size": 17429,
+    "updatedAt": "2026-06-25T05:42:12.985Z"
+  },
+  "grafana-helloworld-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-helloworld-datasource/latest.md",
+    "size": 804,
+    "updatedAt": "2026-06-25T05:42:13.346Z"
+  },
+  "grafana-honeycomb-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/configure.md",
+    "size": 4693,
+    "updatedAt": "2026-06-25T05:42:13.710Z"
+  },
+  "grafana-honeycomb-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest.md",
+    "size": 5315,
+    "updatedAt": "2026-06-25T05:42:14.069Z"
+  },
+  "grafana-honeycomb-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/query-editor.md",
+    "size": 10194,
+    "updatedAt": "2026-06-25T05:42:14.435Z"
+  },
+  "grafana-honeycomb-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/template-variables.md",
+    "size": 2842,
+    "updatedAt": "2026-06-25T05:42:14.789Z"
+  },
+  "grafana-honeycomb-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting.md",
+    "size": 5779,
+    "updatedAt": "2026-06-25T05:42:15.154Z"
+  },
+  "grafana-ibmdb2-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/configure.md",
+    "size": 8700,
+    "updatedAt": "2026-06-25T05:42:15.511Z"
+  },
+  "grafana-ibmdb2-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest.md",
+    "size": 2605,
+    "updatedAt": "2026-06-25T05:42:15.867Z"
+  },
+  "grafana-ibmdb2-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/query-editor.md",
+    "size": 4610,
+    "updatedAt": "2026-06-25T05:42:16.233Z"
+  },
+  "grafana-ibmdb2-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables.md",
+    "size": 4159,
+    "updatedAt": "2026-06-25T05:42:16.585Z"
+  },
+  "grafana-ibmdb2-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting.md",
+    "size": 11287,
+    "updatedAt": "2026-06-25T05:42:16.940Z"
+  },
+  "grafana-investigations-app/compare-time-ranges.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-investigations-app/latest/compare-time-ranges.md",
+    "size": 1309,
+    "updatedAt": "2026-06-25T05:42:17.304Z"
+  },
+  "grafana-investigations-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-investigations-app/latest.md",
+    "size": 2448,
+    "updatedAt": "2026-06-25T05:42:17.656Z"
+  },
+  "grafana-investigations-app/sidebar.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-investigations-app/latest/sidebar.md",
+    "size": 4330,
+    "updatedAt": "2026-06-25T05:42:18.021Z"
+  },
+  "grafana-investigations-app/timeline.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-investigations-app/latest/timeline.md",
+    "size": 1070,
+    "updatedAt": "2026-06-25T05:42:18.368Z"
+  },
+  "grafana-iot-sitewise-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest.md",
+    "size": 3664,
+    "updatedAt": "2026-06-25T05:42:18.729Z"
+  },
+  "grafana-iot-twinmaker-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest.md",
+    "size": 10758,
+    "updatedAt": "2026-06-25T05:42:19.096Z"
+  },
+  "grafana-jenkins-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest.md",
+    "size": 7784,
+    "updatedAt": "2026-06-25T05:42:19.461Z"
+  },
+  "grafana-jira-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/alerting.md",
+    "size": 5030,
+    "updatedAt": "2026-06-25T05:42:19.808Z"
+  },
+  "grafana-jira-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/annotations.md",
+    "size": 3154,
+    "updatedAt": "2026-06-25T05:42:20.148Z"
+  },
+  "grafana-jira-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/configure.md",
+    "size": 10635,
+    "updatedAt": "2026-06-25T05:42:20.501Z"
+  },
+  "grafana-jira-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest.md",
+    "size": 4151,
+    "updatedAt": "2026-06-25T05:42:20.857Z"
+  },
+  "grafana-jira-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/query-editor.md",
+    "size": 10749,
+    "updatedAt": "2026-06-25T05:42:21.226Z"
+  },
+  "grafana-jira-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/template-variables.md",
+    "size": 4098,
+    "updatedAt": "2026-06-25T05:42:21.597Z"
+  },
+  "grafana-jira-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/troubleshooting.md",
+    "size": 11975,
+    "updatedAt": "2026-06-25T05:42:21.970Z"
+  },
+  "grafana-logicmonitor-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest.md",
+    "size": 17864,
+    "updatedAt": "2026-06-25T05:42:22.343Z"
+  },
+  "grafana-lokiexplore-app/access.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access.md",
+    "size": 5240,
+    "updatedAt": "2026-06-25T05:42:22.693Z"
+  },
+  "grafana-lokiexplore-app/access/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/configure.md",
+    "size": 6117,
+    "updatedAt": "2026-06-25T05:42:23.058Z"
+  },
+  "grafana-lokiexplore-app/get-started.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/get-started.md",
+    "size": 4250,
+    "updatedAt": "2026-06-25T05:42:23.418Z"
+  },
+  "grafana-lokiexplore-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest.md",
+    "size": 3809,
+    "updatedAt": "2026-06-25T05:42:23.775Z"
+  },
+  "grafana-lokiexplore-app/labels-and-fields.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields.md",
+    "size": 4718,
+    "updatedAt": "2026-06-25T05:42:24.191Z"
+  },
+  "grafana-lokiexplore-app/ordering.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/ordering.md",
+    "size": 3094,
+    "updatedAt": "2026-06-25T05:42:24.551Z"
+  },
+  "grafana-lokiexplore-app/patterns.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/patterns.md",
+    "size": 5921,
+    "updatedAt": "2026-06-25T05:42:24.957Z"
+  },
+  "grafana-lokiexplore-app/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting.md",
+    "size": 15583,
+    "updatedAt": "2026-06-25T05:42:25.322Z"
+  },
+  "grafana-lokiexplore-app/view-logs.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",
+    "size": 6159,
+    "updatedAt": "2026-06-25T05:42:25.669Z"
+  },
+  "grafana-lokiexplore-app/viewing-json-logs.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/viewing-json-logs.md",
+    "size": 2483,
+    "updatedAt": "2026-06-25T05:42:26.014Z"
+  },
+  "grafana-lokioperational-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokioperational-app.md",
+    "size": 401,
+    "updatedAt": "2026-06-25T05:56:27.181Z"
+  },
+  "grafana-looker-datasource/frequently-asked-questions.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-looker-datasource/latest/frequently-asked-questions.md",
+    "size": 2599,
+    "updatedAt": "2026-06-25T05:42:26.708Z"
+  },
+  "grafana-looker-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-looker-datasource/latest.md",
+    "size": 7410,
+    "updatedAt": "2026-06-25T05:42:27.080Z"
+  },
+  "grafana-metricsdrilldown-app/about-metrics.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/about-metrics.md",
+    "size": 3615,
+    "updatedAt": "2026-06-25T05:42:27.414Z"
+  },
+  "grafana-metricsdrilldown-app/drill-down-metrics.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/drill-down-metrics.md",
+    "size": 5932,
+    "updatedAt": "2026-06-25T05:42:27.782Z"
+  },
+  "grafana-metricsdrilldown-app/get-started.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/get-started.md",
+    "size": 3198,
+    "updatedAt": "2026-06-25T05:42:28.140Z"
+  },
+  "grafana-metricsdrilldown-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest.md",
+    "size": 2599,
+    "updatedAt": "2026-06-25T05:42:28.489Z"
+  },
+  "grafana-ml-app/billing.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/billing.md",
+    "size": 1415,
+    "updatedAt": "2026-06-25T05:42:28.850Z"
+  },
+  "grafana-ml-app/dynamic-alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting.md",
+    "size": 1054,
+    "updatedAt": "2026-06-25T05:42:29.210Z"
+  },
+  "grafana-ml-app/dynamic-alerting/forecasting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting.md",
+    "size": 3957,
+    "updatedAt": "2026-06-25T05:42:29.575Z"
+  },
+  "grafana-ml-app/dynamic-alerting/forecasting/config.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting/config.md",
+    "size": 4298,
+    "updatedAt": "2026-06-25T05:42:29.925Z"
+  },
+  "grafana-ml-app/dynamic-alerting/forecasting/holidays.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting/holidays.md",
+    "size": 5124,
+    "updatedAt": "2026-06-25T05:42:30.286Z"
+  },
+  "grafana-ml-app/dynamic-alerting/forecasting/models.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting/models.md",
+    "size": 6666,
+    "updatedAt": "2026-06-25T05:42:30.645Z"
+  },
+  "grafana-ml-app/dynamic-alerting/outlier-detection.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/outlier-detection.md",
+    "size": 7474,
+    "updatedAt": "2026-06-25T05:42:31.009Z"
+  },
+  "grafana-ml-app/dynamic-alerting/querying.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/querying.md",
+    "size": 5262,
+    "updatedAt": "2026-06-25T05:42:31.374Z"
+  },
+  "grafana-ml-app/dynamic-alerting/rbac.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/rbac.md",
+    "size": 2112,
+    "updatedAt": "2026-06-25T05:42:31.738Z"
+  },
+  "grafana-ml-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest.md",
+    "size": 2624,
+    "updatedAt": "2026-06-25T05:42:32.088Z"
+  },
+  "grafana-ml-app/intro.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/intro.md",
+    "size": 3769,
+    "updatedAt": "2026-06-25T05:42:32.447Z"
+  },
+  "grafana-ml-app/llm.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/llm.md",
+    "size": 2646,
+    "updatedAt": "2026-06-25T05:42:32.790Z"
+  },
+  "grafana-ml-app/llm/llm-setup.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/llm/llm-setup.md",
+    "size": 3187,
+    "updatedAt": "2026-06-25T05:42:33.155Z"
+  },
+  "grafana-ml-app/sift.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift.md",
+    "size": 1813,
+    "updatedAt": "2026-06-25T05:42:33.509Z"
+  },
+  "grafana-ml-app/sift/analyses.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses.md",
+    "size": 2070,
+    "updatedAt": "2026-06-25T05:42:33.864Z"
+  },
+  "grafana-ml-app/sift/analyses/error-pattern-logs.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/error-pattern-logs.md",
+    "size": 2521,
+    "updatedAt": "2026-06-25T05:42:34.266Z"
+  },
+  "grafana-ml-app/sift/analyses/http-error-series.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/http-error-series.md",
+    "size": 3222,
+    "updatedAt": "2026-06-25T05:42:34.621Z"
+  },
+  "grafana-ml-app/sift/analyses/kube-crashes.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/kube-crashes.md",
+    "size": 2009,
+    "updatedAt": "2026-06-25T05:42:34.983Z"
+  },
+  "grafana-ml-app/sift/analyses/log-query.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/log-query.md",
+    "size": 2956,
+    "updatedAt": "2026-06-25T06:16:06.541Z"
+  },
+  "grafana-ml-app/sift/analyses/metric-query.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/metric-query.md",
+    "size": 2536,
+    "updatedAt": "2026-06-25T05:42:35.681Z"
+  },
+  "grafana-ml-app/sift/analyses/noisy-neighbors.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/noisy-neighbors.md",
+    "size": 1792,
+    "updatedAt": "2026-06-25T05:42:36.026Z"
+  },
+  "grafana-ml-app/sift/analyses/recent-deployments.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/recent-deployments.md",
+    "size": 1247,
+    "updatedAt": "2026-06-25T05:42:36.444Z"
+  },
+  "grafana-ml-app/sift/analyses/resource-contentions.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/resource-contentions.md",
+    "size": 1627,
+    "updatedAt": "2026-06-25T05:42:36.791Z"
+  },
+  "grafana-ml-app/sift/sift-config.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/sift-config.md",
+    "size": 3935,
+    "updatedAt": "2026-06-25T05:42:37.135Z"
+  },
+  "grafana-ml-app/sift/sift-panel.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/sift-panel.md",
+    "size": 2514,
+    "updatedAt": "2026-06-25T05:42:37.514Z"
+  },
+  "grafana-ml-app/sift/sift.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/sift.md",
+    "size": 5579,
+    "updatedAt": "2026-06-25T05:42:37.868Z"
+  },
+  "grafana-mock-datasource/configuration.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/configuration.md",
+    "size": 547,
+    "updatedAt": "2026-06-25T05:42:38.226Z"
+  },
+  "grafana-mock-datasource/features.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/features.md",
+    "size": 499,
+    "updatedAt": "2026-06-25T05:42:38.591Z"
+  },
+  "grafana-mock-datasource/features/any-framer.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/features/any-framer.md",
+    "size": 556,
+    "updatedAt": "2026-06-25T05:42:38.937Z"
+  },
+  "grafana-mock-datasource/features/frames-builder.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/features/frames-builder.md",
+    "size": 569,
+    "updatedAt": "2026-06-25T05:42:39.369Z"
+  },
+  "grafana-mock-datasource/features/raw-frame.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/features/raw-frame.md",
+    "size": 564,
+    "updatedAt": "2026-06-25T05:42:39.728Z"
+  },
+  "grafana-mock-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest.md",
+    "size": 465,
+    "updatedAt": "2026-06-25T05:42:40.130Z"
+  },
+  "grafana-mock-datasource/installation.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/installation.md",
+    "size": 543,
+    "updatedAt": "2026-06-25T05:42:40.477Z"
+  },
+  "grafana-mongodb-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure.md",
+    "size": 9353,
+    "updatedAt": "2026-06-25T05:42:40.827Z"
+  },
+  "grafana-mongodb-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest.md",
+    "size": 2633,
+    "updatedAt": "2026-06-25T05:42:41.169Z"
+  },
+  "grafana-mongodb-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/query-editor.md",
+    "size": 6087,
+    "updatedAt": "2026-06-25T05:42:41.517Z"
+  },
+  "grafana-mongodb-datasource/templates-and-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/templates-and-variables.md",
+    "size": 7162,
+    "updatedAt": "2026-06-25T05:42:41.869Z"
+  },
+  "grafana-mongodb-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting.md",
+    "size": 11360,
+    "updatedAt": "2026-06-25T05:42:42.284Z"
+  },
+  "grafana-mqtt-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure.md",
+    "size": 9815,
+    "updatedAt": "2026-06-25T05:42:42.652Z"
+  },
+  "grafana-mqtt-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest.md",
+    "size": 3664,
+    "updatedAt": "2026-06-25T05:42:43.044Z"
+  },
+  "grafana-mqtt-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/query-editor.md",
+    "size": 6724,
+    "updatedAt": "2026-06-25T05:42:43.399Z"
+  },
+  "grafana-mqtt-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/template-variables.md",
+    "size": 3319,
+    "updatedAt": "2026-06-25T05:42:43.743Z"
+  },
+  "grafana-mqtt-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/troubleshooting.md",
+    "size": 10109,
+    "updatedAt": "2026-06-25T05:42:44.096Z"
+  },
+  "grafana-netlify-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-netlify-datasource/latest.md",
+    "size": 6154,
+    "updatedAt": "2026-06-25T05:42:44.446Z"
+  },
+  "grafana-newrelic-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/alerting.md",
+    "size": 7031,
+    "updatedAt": "2026-06-25T05:42:44.795Z"
+  },
+  "grafana-newrelic-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/annotations.md",
+    "size": 4063,
+    "updatedAt": "2026-06-25T05:42:45.160Z"
+  },
+  "grafana-newrelic-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/configure.md",
+    "size": 5603,
+    "updatedAt": "2026-06-25T05:42:45.521Z"
+  },
+  "grafana-newrelic-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest.md",
+    "size": 4293,
+    "updatedAt": "2026-06-25T05:42:45.875Z"
+  },
+  "grafana-newrelic-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/query-editor.md",
+    "size": 14669,
+    "updatedAt": "2026-06-25T05:42:46.509Z"
+  },
+  "grafana-newrelic-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/template-variables.md",
+    "size": 5608,
+    "updatedAt": "2026-06-25T05:42:46.916Z"
+  },
+  "grafana-newrelic-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting.md",
+    "size": 16862,
+    "updatedAt": "2026-06-25T05:42:47.294Z"
+  },
+  "grafana-odbc-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-odbc-datasource/latest.md",
+    "size": 11772,
+    "updatedAt": "2026-06-25T05:42:47.664Z"
+  },
+  "grafana-opcua-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opcua-datasource.md",
+    "size": 377,
+    "updatedAt": "2026-06-25T05:56:49.892Z"
+  },
+  "grafana-opensearch-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/alerting.md",
+    "size": 4460,
+    "updatedAt": "2026-06-25T05:42:48.840Z"
+  },
+  "grafana-opensearch-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/annotations.md",
+    "size": 3934,
+    "updatedAt": "2026-06-25T05:42:49.193Z"
+  },
+  "grafana-opensearch-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure.md",
+    "size": 18896,
+    "updatedAt": "2026-06-25T05:42:49.552Z"
+  },
+  "grafana-opensearch-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest.md",
+    "size": 3238,
+    "updatedAt": "2026-06-25T05:42:49.898Z"
+  },
+  "grafana-opensearch-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/query-editor.md",
+    "size": 16277,
+    "updatedAt": "2026-06-25T05:42:50.741Z"
+  },
+  "grafana-opensearch-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/template-variables.md",
+    "size": 8537,
+    "updatedAt": "2026-06-25T05:42:51.094Z"
+  },
+  "grafana-opensearch-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting.md",
+    "size": 15642,
+    "updatedAt": "2026-06-25T05:42:51.449Z"
+  },
+  "grafana-oracle-datasource/configure-oracle-data-source.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure-oracle-data-source.md",
+    "size": 8610,
+    "updatedAt": "2026-06-25T05:42:51.803Z"
+  },
+  "grafana-oracle-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest.md",
+    "size": 1931,
+    "updatedAt": "2026-06-25T05:42:52.415Z"
+  },
+  "grafana-oracle-datasource/oracle-and-kerberos.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/oracle-and-kerberos.md",
+    "size": 6676,
+    "updatedAt": "2026-06-25T05:42:52.777Z"
+  },
+  "grafana-oracle-datasource/oracle-query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/oracle-query-editor.md",
+    "size": 9533,
+    "updatedAt": "2026-06-25T05:42:53.131Z"
+  },
+  "grafana-oracle-datasource/oracle-templates-and-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/oracle-templates-and-variables.md",
+    "size": 3885,
+    "updatedAt": "2026-06-25T05:42:53.482Z"
+  },
+  "grafana-oracle-datasource/troubleshoot-oracle-data-source.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshoot-oracle-data-source.md",
+    "size": 11795,
+    "updatedAt": "2026-06-25T05:42:53.848Z"
+  },
+  "grafana-pagerduty-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest.md",
+    "size": 16877,
+    "updatedAt": "2026-06-25T05:42:54.241Z"
+  },
+  "grafana-pagerduty-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest/troubleshooting.md",
+    "size": 15264,
+    "updatedAt": "2026-06-25T05:42:55.259Z"
+  },
+  "grafana-pathfinder-app/administrators-reference.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
+    "size": 10044,
+    "updatedAt": "2026-06-25T05:42:55.621Z"
+  },
+  "grafana-pathfinder-app/architecture.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",
+    "size": 15088,
+    "updatedAt": "2026-06-25T05:42:56.001Z"
+  },
+  "grafana-pathfinder-app/block-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor.md",
+    "size": 16061,
+    "updatedAt": "2026-06-25T05:42:56.356Z"
+  },
+  "grafana-pathfinder-app/getting-started.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started.md",
+    "size": 5564,
+    "updatedAt": "2026-06-25T05:42:56.707Z"
+  },
+  "grafana-pathfinder-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest.md",
+    "size": 2421,
+    "updatedAt": "2026-06-25T05:42:57.326Z"
+  },
+  "grafana-pathfinder-app/terms-and-conditions.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/terms-and-conditions.md",
+    "size": 3745,
+    "updatedAt": "2026-06-25T05:42:57.701Z"
+  },
+  "grafana-pathfinder-app/upgrade-notes.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",
+    "size": 9430,
+    "updatedAt": "2026-06-25T05:42:58.050Z"
+  },
+  "grafana-pyroscope-app/access.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access.md",
+    "size": 1468,
+    "updatedAt": "2026-06-25T05:42:58.396Z"
+  },
+  "grafana-pyroscope-app/access/profile-settings.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access/profile-settings.md",
+    "size": 2156,
+    "updatedAt": "2026-06-25T05:42:58.745Z"
+  },
+  "grafana-pyroscope-app/choose-a-view.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view.md",
+    "size": 5270,
+    "updatedAt": "2026-06-25T05:42:59.107Z"
+  },
+  "grafana-pyroscope-app/concepts.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts.md",
+    "size": 4973,
+    "updatedAt": "2026-06-25T05:42:59.467Z"
+  },
+  "grafana-pyroscope-app/concepts/continuous-profiling.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/continuous-profiling.md",
+    "size": 4118,
+    "updatedAt": "2026-06-25T05:42:59.827Z"
+  },
+  "grafana-pyroscope-app/concepts/flame-graphs.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/flame-graphs.md",
+    "size": 2620,
+    "updatedAt": "2026-06-25T05:43:00.193Z"
+  },
+  "grafana-pyroscope-app/concepts/profile-types.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/profile-types.md",
+    "size": 5208,
+    "updatedAt": "2026-06-25T05:43:00.552Z"
+  },
+  "grafana-pyroscope-app/concepts/what-is-profiling.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/what-is-profiling.md",
+    "size": 5442,
+    "updatedAt": "2026-06-25T05:43:01.397Z"
+  },
+  "grafana-pyroscope-app/determine-use-case.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/determine-use-case.md",
+    "size": 3954,
+    "updatedAt": "2026-06-25T05:43:01.760Z"
+  },
+  "grafana-pyroscope-app/get-started.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/get-started.md",
+    "size": 1967,
+    "updatedAt": "2026-06-25T05:43:02.122Z"
+  },
+  "grafana-pyroscope-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest.md",
+    "size": 2145,
+    "updatedAt": "2026-06-25T05:43:02.487Z"
+  },
+  "grafana-pyroscope-app/investigate.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate.md",
+    "size": 4023,
+    "updatedAt": "2026-06-25T05:43:02.855Z"
+  },
+  "grafana-pyroscope-app/investigate/flame-graph-ai.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/flame-graph-ai.md",
+    "size": 5209,
+    "updatedAt": "2026-06-25T05:43:03.213Z"
+  },
+  "grafana-redshift-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-redshift-datasource/latest.md",
+    "size": 21780,
+    "updatedAt": "2026-06-25T05:43:04.500Z"
+  },
+  "grafana-salesforce-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/alerting.md",
+    "size": 7499,
+    "updatedAt": "2026-06-25T05:43:05.498Z"
+  },
+  "grafana-salesforce-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/annotations.md",
+    "size": 4980,
+    "updatedAt": "2026-06-25T05:43:05.858Z"
+  },
+  "grafana-salesforce-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/configure.md",
+    "size": 15053,
+    "updatedAt": "2026-06-25T05:43:06.274Z"
+  },
+  "grafana-salesforce-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest.md",
+    "size": 3029,
+    "updatedAt": "2026-06-25T05:43:06.632Z"
+  },
+  "grafana-salesforce-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/query-editor.md",
+    "size": 5742,
+    "updatedAt": "2026-06-25T05:43:06.997Z"
+  },
+  "grafana-salesforce-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/template-variables.md",
+    "size": 4206,
+    "updatedAt": "2026-06-25T05:43:07.358Z"
+  },
+  "grafana-salesforce-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting.md",
+    "size": 13961,
+    "updatedAt": "2026-06-25T05:43:07.728Z"
+  },
+  "grafana-saphana-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/alerting.md",
+    "size": 6598,
+    "updatedAt": "2026-06-25T05:43:08.097Z"
+  },
+  "grafana-saphana-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/annotations.md",
+    "size": 3543,
+    "updatedAt": "2026-06-25T05:43:08.451Z"
+  },
+  "grafana-saphana-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/configure.md",
+    "size": 13104,
+    "updatedAt": "2026-06-25T05:43:08.828Z"
+  },
+  "grafana-saphana-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest.md",
+    "size": 3296,
+    "updatedAt": "2026-06-25T05:43:09.193Z"
+  },
+  "grafana-saphana-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/query-editor.md",
+    "size": 18731,
+    "updatedAt": "2026-06-25T05:43:09.573Z"
+  },
+  "grafana-saphana-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/template-variables.md",
+    "size": 5315,
+    "updatedAt": "2026-06-25T05:43:09.935Z"
+  },
+  "grafana-saphana-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/troubleshooting.md",
+    "size": 10580,
+    "updatedAt": "2026-06-25T05:43:10.307Z"
+  },
+  "grafana-servicenow-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/alerting.md",
+    "size": 7703,
+    "updatedAt": "2026-06-25T05:43:10.668Z"
+  },
+  "grafana-servicenow-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/annotations.md",
+    "size": 7669,
+    "updatedAt": "2026-06-25T05:43:11.030Z"
+  },
+  "grafana-servicenow-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/configure.md",
+    "size": 13425,
+    "updatedAt": "2026-06-25T05:43:11.399Z"
+  },
+  "grafana-servicenow-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest.md",
+    "size": 4994,
+    "updatedAt": "2026-06-25T05:43:11.758Z"
+  },
+  "grafana-servicenow-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/query-editor.md",
+    "size": 13845,
+    "updatedAt": "2026-06-25T05:43:12.129Z"
+  },
+  "grafana-servicenow-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/template-variables.md",
+    "size": 5371,
+    "updatedAt": "2026-06-25T05:43:12.505Z"
+  },
+  "grafana-servicenow-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting.md",
+    "size": 15027,
+    "updatedAt": "2026-06-25T05:43:12.875Z"
+  },
+  "grafana-slo-app/best-practices.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/best-practices.md",
+    "size": 8993,
+    "updatedAt": "2026-06-25T05:43:13.242Z"
+  },
+  "grafana-slo-app/create.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/create.md",
+    "size": 9386,
+    "updatedAt": "2026-06-25T05:43:13.607Z"
+  },
+  "grafana-slo-app/dashboard.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/dashboard.md",
+    "size": 8414,
+    "updatedAt": "2026-06-25T05:43:13.975Z"
+  },
+  "grafana-slo-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest.md",
+    "size": 1608,
+    "updatedAt": "2026-06-25T05:43:14.332Z"
+  },
+  "grafana-slo-app/introduction.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/introduction.md",
+    "size": 6193,
+    "updatedAt": "2026-06-25T05:43:14.690Z"
+  },
+  "grafana-slo-app/manage.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/manage.md",
+    "size": 1268,
+    "updatedAt": "2026-06-25T05:43:15.052Z"
+  },
+  "grafana-slo-app/performance.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/performance.md",
+    "size": 1372,
+    "updatedAt": "2026-06-25T05:43:15.398Z"
+  },
+  "grafana-slo-app/reports.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/reports.md",
+    "size": 3757,
+    "updatedAt": "2026-06-25T05:43:15.757Z"
+  },
+  "grafana-slo-app/service-center.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center.md",
+    "size": 2147,
+    "updatedAt": "2026-06-25T05:43:16.117Z"
+  },
+  "grafana-slo-app/service-center/create-a-service.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center/create-a-service.md",
+    "size": 3206,
+    "updatedAt": "2026-06-25T05:43:16.478Z"
+  },
+  "grafana-slo-app/service-center/escalate-to-irm.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center/escalate-to-irm.md",
+    "size": 4486,
+    "updatedAt": "2026-06-25T05:43:16.846Z"
+  },
+  "grafana-slo-app/service-center/overview.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/service-center/overview.md",
+    "size": 4552,
+    "updatedAt": "2026-06-25T05:43:17.212Z"
+  },
+  "grafana-slo-app/set-up.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up.md",
+    "size": 891,
+    "updatedAt": "2026-06-25T05:43:17.570Z"
+  },
+  "grafana-slo-app/set-up/additionaldatasources.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources.md",
+    "size": 3137,
+    "updatedAt": "2026-06-25T05:43:17.925Z"
+  },
+  "grafana-slo-app/set-up/api.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/api.md",
+    "size": 2598,
+    "updatedAt": "2026-06-25T05:43:18.285Z"
+  },
+  "grafana-slo-app/set-up/configure-burn-rate-notifications.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications.md",
+    "size": 4064,
+    "updatedAt": "2026-06-25T05:43:18.640Z"
+  },
+  "grafana-slo-app/set-up/rbac.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/rbac.md",
+    "size": 10097,
+    "updatedAt": "2026-06-25T05:43:18.998Z"
+  },
+  "grafana-slo-app/set-up/terraform.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform.md",
+    "size": 11356,
+    "updatedAt": "2026-06-25T05:43:19.361Z"
+  },
+  "grafana-slo-app/sli-examples.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples.md",
+    "size": 5278,
+    "updatedAt": "2026-06-25T06:16:46.826Z"
+  },
+  "grafana-slo-app/sli-examples/availability.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/availability.md",
+    "size": 17121,
+    "updatedAt": "2026-06-25T05:43:20.098Z"
+  },
+  "grafana-slo-app/sli-examples/latency.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/latency.md",
+    "size": 15320,
+    "updatedAt": "2026-06-25T05:43:20.467Z"
+  },
+  "grafana-slo-app/sli-examples/multidimensional.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/multidimensional.md",
+    "size": 6161,
+    "updatedAt": "2026-06-25T05:43:20.827Z"
+  },
+  "grafana-slo-app/sli-examples/time-based.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/time-based.md",
+    "size": 16191,
+    "updatedAt": "2026-06-25T05:43:21.214Z"
+  },
+  "grafana-slo-app/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/troubleshooting.md",
+    "size": 7600,
+    "updatedAt": "2026-06-25T05:43:21.581Z"
+  },
+  "grafana-snowflake-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/alerting.md",
+    "size": 7214,
+    "updatedAt": "2026-06-25T05:43:21.949Z"
+  },
+  "grafana-snowflake-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/annotations.md",
+    "size": 5608,
+    "updatedAt": "2026-06-25T05:43:22.315Z"
+  },
+  "grafana-snowflake-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/configure.md",
+    "size": 24653,
+    "updatedAt": "2026-06-25T05:43:22.703Z"
+  },
+  "grafana-snowflake-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest.md",
+    "size": 3751,
+    "updatedAt": "2026-06-25T05:43:23.064Z"
+  },
+  "grafana-snowflake-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/query-editor.md",
+    "size": 7906,
+    "updatedAt": "2026-06-25T05:43:23.431Z"
+  },
+  "grafana-snowflake-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/template-variables.md",
+    "size": 4952,
+    "updatedAt": "2026-06-25T05:43:23.795Z"
+  },
+  "grafana-snowflake-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting.md",
+    "size": 8018,
+    "updatedAt": "2026-06-25T05:43:24.162Z"
+  },
+  "grafana-solarwinds-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest.md",
+    "size": 5954,
+    "updatedAt": "2026-06-25T05:43:24.516Z"
+  },
+  "grafana-splunk-datasource/configure-splunk-data-source.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure-splunk-data-source.md",
+    "size": 9075,
+    "updatedAt": "2026-06-25T05:43:24.874Z"
+  },
+  "grafana-splunk-datasource/dashboards-and-splunk.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/dashboards-and-splunk.md",
+    "size": 2051,
+    "updatedAt": "2026-06-25T05:43:25.241Z"
+  },
+  "grafana-splunk-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest.md",
+    "size": 2533,
+    "updatedAt": "2026-06-25T05:43:25.604Z"
+  },
+  "grafana-splunk-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/query-editor.md",
+    "size": 9092,
+    "updatedAt": "2026-06-25T05:43:25.968Z"
+  },
+  "grafana-splunk-datasource/templates-and-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/templates-and-variables.md",
+    "size": 3553,
+    "updatedAt": "2026-06-25T05:43:26.328Z"
+  },
+  "grafana-splunk-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting.md",
+    "size": 10338,
+    "updatedAt": "2026-06-25T05:43:26.698Z"
+  },
+  "grafana-splunk-monitoring-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-monitoring-datasource/latest.md",
+    "size": 14357,
+    "updatedAt": "2026-06-25T05:43:27.077Z"
+  },
+  "grafana-splunk-monitoring-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-splunk-monitoring-datasource/latest/troubleshooting.md",
+    "size": 10129,
+    "updatedAt": "2026-06-25T05:43:27.441Z"
+  },
+  "grafana-sumologic-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/alerting.md",
+    "size": 4277,
+    "updatedAt": "2026-06-25T05:43:27.803Z"
+  },
+  "grafana-sumologic-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/annotations.md",
+    "size": 3074,
+    "updatedAt": "2026-06-25T05:43:28.159Z"
+  },
+  "grafana-sumologic-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure.md",
+    "size": 8247,
+    "updatedAt": "2026-06-25T05:43:28.521Z"
+  },
+  "grafana-sumologic-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest.md",
+    "size": 3229,
+    "updatedAt": "2026-06-25T05:43:28.877Z"
+  },
+  "grafana-sumologic-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/query-editor.md",
+    "size": 14738,
+    "updatedAt": "2026-06-25T05:43:29.251Z"
+  },
+  "grafana-sumologic-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/template-variables.md",
+    "size": 4437,
+    "updatedAt": "2026-06-25T05:43:29.613Z"
+  },
+  "grafana-sumologic-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/troubleshooting.md",
+    "size": 16273,
+    "updatedAt": "2026-06-25T05:43:29.990Z"
+  },
+  "grafana-timestream-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/alerting.md",
+    "size": 4724,
+    "updatedAt": "2026-06-25T05:43:30.351Z"
+  },
+  "grafana-timestream-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/annotations.md",
+    "size": 3549,
+    "updatedAt": "2026-06-25T05:43:30.718Z"
+  },
+  "grafana-timestream-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/configure.md",
+    "size": 12814,
+    "updatedAt": "2026-06-25T05:43:31.091Z"
+  },
+  "grafana-timestream-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest.md",
+    "size": 3453,
+    "updatedAt": "2026-06-25T05:43:31.450Z"
+  },
+  "grafana-timestream-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/query-editor.md",
+    "size": 14476,
+    "updatedAt": "2026-06-25T05:43:31.834Z"
+  },
+  "grafana-timestream-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/template-variables.md",
+    "size": 4303,
+    "updatedAt": "2026-06-25T05:43:32.200Z"
+  },
+  "grafana-timestream-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/troubleshooting.md",
+    "size": 16455,
+    "updatedAt": "2026-06-25T05:43:32.572Z"
+  },
+  "grafana-vercel-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest.md",
+    "size": 2882,
+    "updatedAt": "2026-06-25T05:43:32.950Z"
+  },
+  "grafana-wavefront-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest.md",
+    "size": 10330,
+    "updatedAt": "2026-06-25T05:43:33.316Z"
+  },
+  "grafana-workflows-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-workflows-app.md",
+    "size": 2182,
+    "updatedAt": "2026-06-25T05:43:33.681Z"
+  },
+  "grafana-x-ray-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting.md",
+    "size": 19349,
+    "updatedAt": "2026-06-25T05:43:34.071Z"
+  },
+  "grafana-x-ray-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure.md",
+    "size": 19679,
+    "updatedAt": "2026-06-25T05:43:34.444Z"
+  },
+  "grafana-x-ray-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest.md",
+    "size": 5192,
+    "updatedAt": "2026-06-25T05:43:34.806Z"
+  },
+  "grafana-x-ray-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor.md",
+    "size": 27939,
+    "updatedAt": "2026-06-25T05:43:35.186Z"
+  },
+  "grafana-x-ray-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables.md",
+    "size": 12002,
+    "updatedAt": "2026-06-25T05:43:35.570Z"
+  },
+  "grafana-x-ray-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting.md",
+    "size": 25028,
+    "updatedAt": "2026-06-25T05:43:35.945Z"
+  },
+  "grafana-yugabyte-datasource/editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/editor.md",
+    "size": 1235,
+    "updatedAt": "2026-06-25T05:43:36.297Z"
+  },
+  "grafana-yugabyte-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest.md",
+    "size": 1354,
+    "updatedAt": "2026-06-25T05:43:36.656Z"
+  },
+  "grafana-yugabyte-datasource/setup.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/setup.md",
+    "size": 2717,
+    "updatedAt": "2026-06-25T05:43:37.043Z"
+  },
+  "grafana-zendesk-datasource/configuration.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configuration.md",
+    "size": 2969,
+    "updatedAt": "2026-06-25T05:43:37.408Z"
+  },
+  "grafana-zendesk-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest.md",
+    "size": 958,
+    "updatedAt": "2026-06-25T05:43:37.769Z"
+  },
+  "grafana-zendesk-datasource/queries.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/queries.md",
+    "size": 4006,
+    "updatedAt": "2026-06-25T05:43:38.137Z"
+  },
+  "index.md": {
+    "url": "https://grafana.com/docs/plugins.md",
+    "size": 8688,
+    "updatedAt": "2026-06-25T05:57:38.055Z"
+  },
+  "marcusolsson-calendar-panel/basic-config.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",
+    "size": 2507,
+    "updatedAt": "2026-06-25T05:43:38.507Z"
+  },
+  "marcusolsson-calendar-panel/configuration.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/configuration.md",
+    "size": 1719,
+    "updatedAt": "2026-06-25T05:43:38.882Z"
+  },
+  "marcusolsson-calendar-panel/configuration/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/configuration/annotations.md",
+    "size": 867,
+    "updatedAt": "2026-06-25T05:43:39.243Z"
+  },
+  "marcusolsson-calendar-panel/configuration/calendar.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/configuration/calendar.md",
+    "size": 1576,
+    "updatedAt": "2026-06-25T05:43:39.601Z"
+  },
+  "marcusolsson-calendar-panel/configuration/events.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/configuration/events.md",
+    "size": 2612,
+    "updatedAt": "2026-06-25T05:43:39.971Z"
+  },
+  "marcusolsson-calendar-panel/configuration/layout.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/configuration/layout.md",
+    "size": 3906,
+    "updatedAt": "2026-06-25T05:43:40.331Z"
+  },
+  "marcusolsson-calendar-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features.md",
+    "size": 1228,
+    "updatedAt": "2026-06-25T05:43:40.689Z"
+  },
+  "marcusolsson-calendar-panel/features/color.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features/color.md",
+    "size": 1373,
+    "updatedAt": "2026-06-25T05:43:41.051Z"
+  },
+  "marcusolsson-calendar-panel/features/dashboard-timezones.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features/dashboard-timezones.md",
+    "size": 546,
+    "updatedAt": "2026-06-25T05:43:41.417Z"
+  },
+  "marcusolsson-calendar-panel/features/internationalization.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features/internationalization.md",
+    "size": 788,
+    "updatedAt": "2026-06-25T05:43:41.785Z"
+  },
+  "marcusolsson-calendar-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest.md",
+    "size": 2856,
+    "updatedAt": "2026-06-25T05:43:42.143Z"
+  },
+  "marcusolsson-calendar-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/release.md",
+    "size": 654,
+    "updatedAt": "2026-06-25T05:43:42.507Z"
+  },
+  "marcusolsson-csv-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/annotations.md",
+    "size": 1621,
+    "updatedAt": "2026-06-25T05:43:42.863Z"
+  },
+  "marcusolsson-csv-datasource/configuration.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/configuration.md",
+    "size": 1800,
+    "updatedAt": "2026-06-25T05:43:43.225Z"
+  },
+  "marcusolsson-csv-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest.md",
+    "size": 1276,
+    "updatedAt": "2026-06-25T05:43:43.583Z"
+  },
+  "marcusolsson-csv-datasource/installation.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/installation.md",
+    "size": 2372,
+    "updatedAt": "2026-06-25T05:43:43.946Z"
+  },
+  "marcusolsson-csv-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/query-editor.md",
+    "size": 4785,
+    "updatedAt": "2026-06-25T05:43:44.305Z"
+  },
+  "marcusolsson-csv-datasource/variables.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/variables.md",
+    "size": 1389,
+    "updatedAt": "2026-06-25T05:43:44.664Z"
+  },
+  "marcusolsson-dynamictext-panel/exploring-eventbus.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-eventbus.md",
+    "size": 4378,
+    "updatedAt": "2026-06-25T05:43:45.027Z"
+  },
+  "marcusolsson-dynamictext-panel/exploring-variables.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-variables.md",
+    "size": 2282,
+    "updatedAt": "2026-06-25T05:43:45.383Z"
+  },
+  "marcusolsson-dynamictext-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features.md",
+    "size": 2163,
+    "updatedAt": "2026-06-25T05:43:45.742Z"
+  },
+  "marcusolsson-dynamictext-panel/features/code-editor.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/code-editor.md",
+    "size": 1236,
+    "updatedAt": "2026-06-25T05:43:46.106Z"
+  },
+  "marcusolsson-dynamictext-panel/features/content-wrapping.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/content-wrapping.md",
+    "size": 1253,
+    "updatedAt": "2026-06-25T05:43:46.460Z"
+  },
+  "marcusolsson-dynamictext-panel/features/grafana-events.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/grafana-events.md",
+    "size": 2466,
+    "updatedAt": "2026-06-25T05:43:46.816Z"
+  },
+  "marcusolsson-dynamictext-panel/features/helpers.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers.md",
+    "size": 6663,
+    "updatedAt": "2026-06-25T05:43:47.180Z"
+  },
+  "marcusolsson-dynamictext-panel/features/standard-options.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/standard-options.md",
+    "size": 824,
+    "updatedAt": "2026-06-25T05:43:47.538Z"
+  },
+  "marcusolsson-dynamictext-panel/features/status-field.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/status-field.md",
+    "size": 836,
+    "updatedAt": "2026-06-25T05:43:47.896Z"
+  },
+  "marcusolsson-dynamictext-panel/features/variables.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/variables.md",
+    "size": 2311,
+    "updatedAt": "2026-06-25T05:43:48.277Z"
+  },
+  "marcusolsson-dynamictext-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest.md",
+    "size": 3826,
+    "updatedAt": "2026-06-25T05:43:48.637Z"
+  },
+  "marcusolsson-dynamictext-panel/javascript-code.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code.md",
+    "size": 17390,
+    "updatedAt": "2026-06-25T05:43:49.015Z"
+  },
+  "marcusolsson-dynamictext-panel/javascript-code/context-parameters.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters.md",
+    "size": 7566,
+    "updatedAt": "2026-06-25T05:43:49.381Z"
+  },
+  "marcusolsson-dynamictext-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/release.md",
+    "size": 691,
+    "updatedAt": "2026-06-25T05:43:49.736Z"
+  },
+  "marcusolsson-dynamictext-panel/rendering.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/rendering.md",
+    "size": 6521,
+    "updatedAt": "2026-06-25T05:43:50.102Z"
+  },
+  "marcusolsson-dynamictext-panel/rendering/content.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/rendering/content.md",
+    "size": 682,
+    "updatedAt": "2026-06-25T05:43:50.464Z"
+  },
+  "marcusolsson-dynamictext-panel/rendering/recipes.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/rendering/recipes.md",
+    "size": 1766,
+    "updatedAt": "2026-06-25T05:43:50.825Z"
+  },
+  "marcusolsson-dynamictext-panel/rendering/styles.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/rendering/styles.md",
+    "size": 8103,
+    "updatedAt": "2026-06-25T05:43:51.202Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases.md",
+    "size": 4423,
+    "updatedAt": "2026-06-25T05:43:51.564Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/bootstrap.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/bootstrap.md",
+    "size": 4597,
+    "updatedAt": "2026-06-25T05:43:51.925Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/chart-js.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/chart-js.md",
+    "size": 1736,
+    "updatedAt": "2026-06-25T05:43:52.291Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/d3.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/d3.md",
+    "size": 2621,
+    "updatedAt": "2026-06-25T05:43:52.652Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/flowchart.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/flowchart.md",
+    "size": 1985,
+    "updatedAt": "2026-06-25T05:43:53.017Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/leaflet-js.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/leaflet-js.md",
+    "size": 3539,
+    "updatedAt": "2026-06-25T05:43:53.379Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/mapbox-gl.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/mapbox-gl.md",
+    "size": 2912,
+    "updatedAt": "2026-06-25T05:43:53.741Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/mermaid.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/mermaid.md",
+    "size": 1965,
+    "updatedAt": "2026-06-25T05:43:54.106Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/plotly.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/plotly.md",
+    "size": 3354,
+    "updatedAt": "2026-06-25T05:43:54.467Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/tailwind.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/tailwind.md",
+    "size": 3254,
+    "updatedAt": "2026-06-25T05:43:54.833Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/tensorflow.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/tensorflow.md",
+    "size": 1098,
+    "updatedAt": "2026-06-25T05:43:55.197Z"
+  },
+  "marcusolsson-dynamictext-panel/use-cases/youtube.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/youtube.md",
+    "size": 1463,
+    "updatedAt": "2026-06-25T05:43:55.563Z"
+  },
+  "marcusolsson-json-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/annotations.md",
+    "size": 1419,
+    "updatedAt": "2026-06-25T05:43:55.924Z"
+  },
+  "marcusolsson-json-datasource/configuration.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/configuration.md",
+    "size": 893,
+    "updatedAt": "2026-06-25T05:43:56.291Z"
+  },
+  "marcusolsson-json-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest.md",
+    "size": 1602,
+    "updatedAt": "2026-06-25T05:43:56.649Z"
+  },
+  "marcusolsson-json-datasource/installation.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/installation.md",
+    "size": 2051,
+    "updatedAt": "2026-06-25T05:43:57.014Z"
+  },
+  "marcusolsson-json-datasource/jsonata.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/jsonata.md",
+    "size": 1006,
+    "updatedAt": "2026-06-25T05:43:57.378Z"
+  },
+  "marcusolsson-json-datasource/jsonpath.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/jsonpath.md",
+    "size": 3010,
+    "updatedAt": "2026-06-25T05:43:57.741Z"
+  },
+  "marcusolsson-json-datasource/macros.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/macros.md",
+    "size": 1331,
+    "updatedAt": "2026-06-25T05:43:58.103Z"
+  },
+  "marcusolsson-json-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/query-editor.md",
+    "size": 4338,
+    "updatedAt": "2026-06-25T05:43:58.460Z"
+  },
+  "marcusolsson-json-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/troubleshooting.md",
+    "size": 1511,
+    "updatedAt": "2026-06-25T05:43:58.821Z"
+  },
+  "marcusolsson-json-datasource/variables.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/variables.md",
+    "size": 1150,
+    "updatedAt": "2026-06-25T05:43:59.198Z"
+  },
+  "marcusolsson-static-datasource/exploring-variables.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/exploring-variables.md",
+    "size": 2282,
+    "updatedAt": "2026-06-25T05:43:59.560Z"
+  },
+  "marcusolsson-static-datasource/features.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/features.md",
+    "size": 1080,
+    "updatedAt": "2026-06-25T05:43:59.908Z"
+  },
+  "marcusolsson-static-datasource/features/javascript.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/features/javascript.md",
+    "size": 1361,
+    "updatedAt": "2026-06-25T05:44:00.281Z"
+  },
+  "marcusolsson-static-datasource/features/llm-app.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/features/llm-app.md",
+    "size": 1973,
+    "updatedAt": "2026-06-25T05:44:00.638Z"
+  },
+  "marcusolsson-static-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest.md",
+    "size": 2856,
+    "updatedAt": "2026-06-25T05:44:00.994Z"
+  },
+  "marcusolsson-static-datasource/panels.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/panels.md",
+    "size": 1946,
+    "updatedAt": "2026-06-25T05:44:01.347Z"
+  },
+  "marcusolsson-static-datasource/panels/business-charts.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/panels/business-charts.md",
+    "size": 2324,
+    "updatedAt": "2026-06-25T05:44:01.705Z"
+  },
+  "marcusolsson-static-datasource/panels/business-media.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/panels/business-media.md",
+    "size": 880,
+    "updatedAt": "2026-06-25T05:44:02.065Z"
+  },
+  "marcusolsson-static-datasource/panels/logs.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/panels/logs.md",
+    "size": 626,
+    "updatedAt": "2026-06-25T05:44:02.419Z"
+  },
+  "marcusolsson-static-datasource/panels/node-graph.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/panels/node-graph.md",
+    "size": 769,
+    "updatedAt": "2026-06-25T05:44:02.776Z"
+  },
+  "marcusolsson-static-datasource/panels/pie.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/panels/pie.md",
+    "size": 575,
+    "updatedAt": "2026-06-25T05:44:03.132Z"
+  },
+  "marcusolsson-static-datasource/provisioning.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/provisioning.md",
+    "size": 931,
+    "updatedAt": "2026-06-25T05:44:03.494Z"
+  },
+  "marcusolsson-static-datasource/release.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/release.md",
+    "size": 690,
+    "updatedAt": "2026-06-25T05:44:03.847Z"
+  },
+  "marcusolsson-static-datasource/variables.md": {
+    "url": "https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/variables.md",
+    "size": 2406,
+    "updatedAt": "2026-06-25T05:44:04.217Z"
+  },
+  "volkovlabs-echarts-panel/charts-function.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/charts-function.md",
+    "size": 6026,
+    "updatedAt": "2026-06-25T05:44:04.581Z"
+  },
+  "volkovlabs-echarts-panel/charts-function/context-parameters.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters.md",
+    "size": 5906,
+    "updatedAt": "2026-06-25T05:44:04.937Z"
+  },
+  "volkovlabs-echarts-panel/examples.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/examples.md",
+    "size": 1356,
+    "updatedAt": "2026-06-25T05:44:05.294Z"
+  },
+  "volkovlabs-echarts-panel/exploring-annotations.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/exploring-annotations.md",
+    "size": 1813,
+    "updatedAt": "2026-06-25T05:44:05.650Z"
+  },
+  "volkovlabs-echarts-panel/exploring-eventbus.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/exploring-eventbus.md",
+    "size": 4378,
+    "updatedAt": "2026-06-25T05:44:06.013Z"
+  },
+  "volkovlabs-echarts-panel/exploring-variables.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/exploring-variables.md",
+    "size": 2282,
+    "updatedAt": "2026-06-25T05:44:06.371Z"
+  },
+  "volkovlabs-echarts-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features.md",
+    "size": 3904,
+    "updatedAt": "2026-06-25T05:44:06.731Z"
+  },
+  "volkovlabs-echarts-panel/features/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/annotations.md",
+    "size": 2894,
+    "updatedAt": "2026-06-25T05:44:07.104Z"
+  },
+  "volkovlabs-echarts-panel/features/code-editor.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/code-editor.md",
+    "size": 1198,
+    "updatedAt": "2026-06-25T05:44:07.460Z"
+  },
+  "volkovlabs-echarts-panel/features/data-sources.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/data-sources.md",
+    "size": 6138,
+    "updatedAt": "2026-06-25T05:44:07.819Z"
+  },
+  "volkovlabs-echarts-panel/features/echarts-instance.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/echarts-instance.md",
+    "size": 3477,
+    "updatedAt": "2026-06-25T05:44:08.181Z"
+  },
+  "volkovlabs-echarts-panel/features/event-handling.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/event-handling.md",
+    "size": 3243,
+    "updatedAt": "2026-06-25T05:44:08.549Z"
+  },
+  "volkovlabs-echarts-panel/features/extended-result.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/extended-result.md",
+    "size": 2409,
+    "updatedAt": "2026-06-25T05:44:08.914Z"
+  },
+  "volkovlabs-echarts-panel/features/grafana-events.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/grafana-events.md",
+    "size": 1360,
+    "updatedAt": "2026-06-25T05:44:09.277Z"
+  },
+  "volkovlabs-echarts-panel/features/images.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/images.md",
+    "size": 3207,
+    "updatedAt": "2026-06-25T05:44:09.637Z"
+  },
+  "volkovlabs-echarts-panel/features/library-imports.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/library-imports.md",
+    "size": 10832,
+    "updatedAt": "2026-06-25T05:44:10.003Z"
+  },
+  "volkovlabs-echarts-panel/features/streaming.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/streaming.md",
+    "size": 4350,
+    "updatedAt": "2026-06-25T05:44:10.348Z"
+  },
+  "volkovlabs-echarts-panel/features/theme-editor.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/theme-editor.md",
+    "size": 7421,
+    "updatedAt": "2026-06-25T05:44:10.704Z"
+  },
+  "volkovlabs-echarts-panel/features/transformations.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/transformations.md",
+    "size": 1582,
+    "updatedAt": "2026-06-25T05:44:11.069Z"
+  },
+  "volkovlabs-echarts-panel/features/variables.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/variables.md",
+    "size": 1981,
+    "updatedAt": "2026-06-25T05:44:11.429Z"
+  },
+  "volkovlabs-echarts-panel/features/wordcloud.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/wordcloud.md",
+    "size": 617,
+    "updatedAt": "2026-06-25T05:44:11.785Z"
+  },
+  "volkovlabs-echarts-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest.md",
+    "size": 4726,
+    "updatedAt": "2026-06-25T05:44:12.148Z"
+  },
+  "volkovlabs-echarts-panel/maps.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/maps.md",
+    "size": 1223,
+    "updatedAt": "2026-06-25T05:44:12.510Z"
+  },
+  "volkovlabs-echarts-panel/maps/baidu.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/maps/baidu.md",
+    "size": 2263,
+    "updatedAt": "2026-06-25T05:44:12.879Z"
+  },
+  "volkovlabs-echarts-panel/maps/gaode.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/maps/gaode.md",
+    "size": 3238,
+    "updatedAt": "2026-06-25T05:44:13.250Z"
+  },
+  "volkovlabs-echarts-panel/maps/geojson.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/maps/geojson.md",
+    "size": 7079,
+    "updatedAt": "2026-06-25T05:44:13.613Z"
+  },
+  "volkovlabs-echarts-panel/maps/google.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/maps/google.md",
+    "size": 2922,
+    "updatedAt": "2026-06-25T05:44:13.983Z"
+  },
+  "volkovlabs-echarts-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/release.md",
+    "size": 674,
+    "updatedAt": "2026-06-25T05:44:14.344Z"
+  },
+  "volkovlabs-echarts-panel/visual-editor.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor.md",
+    "size": 10420,
+    "updatedAt": "2026-06-25T05:44:14.712Z"
+  },
+  "volkovlabs-form-panel/custom-code.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/custom-code.md",
+    "size": 22406,
+    "updatedAt": "2026-06-25T05:44:15.108Z"
+  },
+  "volkovlabs-form-panel/custom-code/context-parameters.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/custom-code/context-parameters.md",
+    "size": 20313,
+    "updatedAt": "2026-06-25T05:44:15.493Z"
+  },
+  "volkovlabs-form-panel/data-flow.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/data-flow.md",
+    "size": 13196,
+    "updatedAt": "2026-06-25T05:44:15.866Z"
+  },
+  "volkovlabs-form-panel/exploring-variables.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/exploring-variables.md",
+    "size": 2282,
+    "updatedAt": "2026-06-25T05:44:16.230Z"
+  },
+  "volkovlabs-form-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features.md",
+    "size": 1860,
+    "updatedAt": "2026-06-25T05:44:16.591Z"
+  },
+  "volkovlabs-form-panel/features/code-editor.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/code-editor.md",
+    "size": 1180,
+    "updatedAt": "2026-06-25T05:44:16.952Z"
+  },
+  "volkovlabs-form-panel/features/confirm-window.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/confirm-window.md",
+    "size": 1164,
+    "updatedAt": "2026-06-25T05:44:17.317Z"
+  },
+  "volkovlabs-form-panel/features/control-panel.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/control-panel.md",
+    "size": 856,
+    "updatedAt": "2026-06-25T05:44:17.687Z"
+  },
+  "volkovlabs-form-panel/features/custom-requests.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/custom-requests.md",
+    "size": 2793,
+    "updatedAt": "2026-06-25T05:44:18.050Z"
+  },
+  "volkovlabs-form-panel/features/dynamic-forms.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/dynamic-forms.md",
+    "size": 4879,
+    "updatedAt": "2026-06-25T05:44:18.409Z"
+  },
+  "volkovlabs-form-panel/features/load.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/load.md",
+    "size": 1171,
+    "updatedAt": "2026-06-25T05:44:18.766Z"
+  },
+  "volkovlabs-form-panel/features/variables.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features/variables.md",
+    "size": 1119,
+    "updatedAt": "2026-06-25T05:44:19.131Z"
+  },
+  "volkovlabs-form-panel/form-elements.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements.md",
+    "size": 10093,
+    "updatedAt": "2026-06-25T05:44:19.496Z"
+  },
+  "volkovlabs-form-panel/form-elements/checkbox-list.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/checkbox-list.md",
+    "size": 10288,
+    "updatedAt": "2026-06-25T05:44:19.865Z"
+  },
+  "volkovlabs-form-panel/form-elements/code-editor.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/code-editor.md",
+    "size": 9933,
+    "updatedAt": "2026-06-25T05:44:20.236Z"
+  },
+  "volkovlabs-form-panel/form-elements/color-picker.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/color-picker.md",
+    "size": 9273,
+    "updatedAt": "2026-06-25T05:44:20.609Z"
+  },
+  "volkovlabs-form-panel/form-elements/custom-button.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/custom-button.md",
+    "size": 12529,
+    "updatedAt": "2026-06-25T05:44:20.985Z"
+  },
+  "volkovlabs-form-panel/form-elements/date-time.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/date-time.md",
+    "size": 10303,
+    "updatedAt": "2026-06-25T05:44:21.351Z"
+  },
+  "volkovlabs-form-panel/form-elements/date.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/date.md",
+    "size": 9494,
+    "updatedAt": "2026-06-25T05:44:21.719Z"
+  },
+  "volkovlabs-form-panel/form-elements/file.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/file.md",
+    "size": 9689,
+    "updatedAt": "2026-06-25T05:44:22.086Z"
+  },
+  "volkovlabs-form-panel/form-elements/link.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/link.md",
+    "size": 9662,
+    "updatedAt": "2026-06-25T05:44:22.466Z"
+  },
+  "volkovlabs-form-panel/form-elements/multi-select.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/multi-select.md",
+    "size": 11236,
+    "updatedAt": "2026-06-25T05:44:22.839Z"
+  },
+  "volkovlabs-form-panel/form-elements/number-input.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/number-input.md",
+    "size": 9471,
+    "updatedAt": "2026-06-25T05:44:23.207Z"
+  },
+  "volkovlabs-form-panel/form-elements/number-slider.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/number-slider.md",
+    "size": 9913,
+    "updatedAt": "2026-06-25T05:44:23.581Z"
+  },
+  "volkovlabs-form-panel/form-elements/password-input.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/password-input.md",
+    "size": 8970,
+    "updatedAt": "2026-06-25T05:44:23.948Z"
+  },
+  "volkovlabs-form-panel/form-elements/radio-group-boolean-options.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/radio-group-boolean-options.md",
+    "size": 9009,
+    "updatedAt": "2026-06-25T05:44:24.315Z"
+  },
+  "volkovlabs-form-panel/form-elements/radio-group-custom-options.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/radio-group-custom-options.md",
+    "size": 10134,
+    "updatedAt": "2026-06-25T05:44:24.695Z"
+  },
+  "volkovlabs-form-panel/form-elements/read-only-text-area.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/read-only-text-area.md",
+    "size": 9209,
+    "updatedAt": "2026-06-25T05:44:25.068Z"
+  },
+  "volkovlabs-form-panel/form-elements/read-only.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/read-only.md",
+    "size": 10269,
+    "updatedAt": "2026-06-25T05:44:25.436Z"
+  },
+  "volkovlabs-form-panel/form-elements/select-with-options.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/select-with-options.md",
+    "size": 10256,
+    "updatedAt": "2026-06-25T05:44:25.804Z"
+  },
+  "volkovlabs-form-panel/form-elements/string-input.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/string-input.md",
+    "size": 9164,
+    "updatedAt": "2026-06-25T05:44:26.163Z"
+  },
+  "volkovlabs-form-panel/form-elements/text-area.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/text-area.md",
+    "size": 9139,
+    "updatedAt": "2026-06-25T05:44:26.527Z"
+  },
+  "volkovlabs-form-panel/form-elements/time.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/time.md",
+    "size": 9123,
+    "updatedAt": "2026-06-25T05:44:26.888Z"
+  },
+  "volkovlabs-form-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest.md",
+    "size": 3782,
+    "updatedAt": "2026-06-25T05:44:27.238Z"
+  },
+  "volkovlabs-form-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/release.md",
+    "size": 681,
+    "updatedAt": "2026-06-25T05:44:27.615Z"
+  },
+  "volkovlabs-form-panel/rest-api.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/rest-api.md",
+    "size": 2377,
+    "updatedAt": "2026-06-25T05:44:27.977Z"
+  },
+  "volkovlabs-form-panel/servers.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/servers.md",
+    "size": 1598,
+    "updatedAt": "2026-06-25T05:44:28.337Z"
+  },
+  "volkovlabs-form-panel/servers/influx.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/servers/influx.md",
+    "size": 3761,
+    "updatedAt": "2026-06-25T06:17:58.251Z"
+  },
+  "volkovlabs-form-panel/servers/json.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/servers/json.md",
+    "size": 3851,
+    "updatedAt": "2026-06-25T05:44:29.070Z"
+  },
+  "volkovlabs-form-panel/servers/mysql.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/servers/mysql.md",
+    "size": 4631,
+    "updatedAt": "2026-06-25T05:44:29.428Z"
+  },
+  "volkovlabs-form-panel/servers/nodered.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/servers/nodered.md",
+    "size": 1237,
+    "updatedAt": "2026-06-25T05:44:29.791Z"
+  },
+  "volkovlabs-form-panel/servers/postgresql.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/servers/postgresql.md",
+    "size": 3892,
+    "updatedAt": "2026-06-25T05:44:30.156Z"
+  },
+  "volkovlabs-image-panel/exploring-variables.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/exploring-variables.md",
+    "size": 2282,
+    "updatedAt": "2026-06-25T05:44:30.521Z"
+  },
+  "volkovlabs-image-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/features.md",
+    "size": 933,
+    "updatedAt": "2026-06-25T05:44:30.885Z"
+  },
+  "volkovlabs-image-panel/features/data-sources.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/features/data-sources.md",
+    "size": 2219,
+    "updatedAt": "2026-06-25T05:44:31.244Z"
+  },
+  "volkovlabs-image-panel/features/variables.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/features/variables.md",
+    "size": 595,
+    "updatedAt": "2026-06-25T05:44:31.600Z"
+  },
+  "volkovlabs-image-panel/formats.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/formats.md",
+    "size": 1434,
+    "updatedAt": "2026-06-25T05:44:31.961Z"
+  },
+  "volkovlabs-image-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest.md",
+    "size": 3198,
+    "updatedAt": "2026-06-25T05:44:32.323Z"
+  },
+  "volkovlabs-image-panel/options.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/options.md",
+    "size": 6019,
+    "updatedAt": "2026-06-25T05:44:32.692Z"
+  },
+  "volkovlabs-image-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/release.md",
+    "size": 774,
+    "updatedAt": "2026-06-25T05:44:33.055Z"
+  },
+  "volkovlabs-links-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-links-panel/latest.md",
+    "size": 2398,
+    "updatedAt": "2026-06-25T05:44:33.414Z"
+  },
+  "volkovlabs-links-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-links-panel/latest/release.md",
+    "size": 683,
+    "updatedAt": "2026-06-25T05:44:33.775Z"
+  },
+  "volkovlabs-links-panel/tutorials.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-links-panel/latest/tutorials.md",
+    "size": 1058,
+    "updatedAt": "2026-06-25T05:44:34.147Z"
+  },
+  "volkovlabs-rss-datasource/business-text.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-rss-datasource/latest/business-text.md",
+    "size": 2062,
+    "updatedAt": "2026-06-25T05:44:34.518Z"
+  },
+  "volkovlabs-rss-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-rss-datasource/latest.md",
+    "size": 3879,
+    "updatedAt": "2026-06-25T05:44:34.891Z"
+  },
+  "volkovlabs-rss-datasource/provisioning.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-rss-datasource/latest/provisioning.md",
+    "size": 1646,
+    "updatedAt": "2026-06-25T05:44:35.260Z"
+  },
+  "volkovlabs-rss-datasource/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-rss-datasource/latest/release.md",
+    "size": 680,
+    "updatedAt": "2026-06-25T05:44:35.660Z"
+  },
+  "volkovlabs-table-panel/editable-data.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data.md",
+    "size": 3870,
+    "updatedAt": "2026-06-25T05:44:36.155Z"
+  },
+  "volkovlabs-table-panel/editable-data/add.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/add.md",
+    "size": 2036,
+    "updatedAt": "2026-06-25T05:44:36.546Z"
+  },
+  "volkovlabs-table-panel/editable-data/delete.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/delete.md",
+    "size": 1529,
+    "updatedAt": "2026-06-25T05:44:36.925Z"
+  },
+  "volkovlabs-table-panel/editable-data/edit.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/edit.md",
+    "size": 1393,
+    "updatedAt": "2026-06-25T05:44:37.302Z"
+  },
+  "volkovlabs-table-panel/editable-data/editor-types.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/editor-types.md",
+    "size": 2495,
+    "updatedAt": "2026-06-25T05:44:37.679Z"
+  },
+  "volkovlabs-table-panel/editable-data/layout.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout.md",
+    "size": 8707,
+    "updatedAt": "2026-06-25T05:44:38.059Z"
+  },
+  "volkovlabs-table-panel/editable-data/nested.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/nested.md",
+    "size": 11463,
+    "updatedAt": "2026-06-25T05:44:38.441Z"
+  },
+  "volkovlabs-table-panel/editable-data/permission.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/permission.md",
+    "size": 1112,
+    "updatedAt": "2026-06-25T05:44:38.807Z"
+  },
+  "volkovlabs-table-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features.md",
+    "size": 7378,
+    "updatedAt": "2026-06-25T05:44:39.183Z"
+  },
+  "volkovlabs-table-panel/features/download-button.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/download-button.md",
+    "size": 1123,
+    "updatedAt": "2026-06-25T05:44:39.552Z"
+  },
+  "volkovlabs-table-panel/features/external-export.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/external-export.md",
+    "size": 7164,
+    "updatedAt": "2026-06-25T05:44:39.930Z"
+  },
+  "volkovlabs-table-panel/features/infinity.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/infinity.md",
+    "size": 2819,
+    "updatedAt": "2026-06-25T05:44:40.309Z"
+  },
+  "volkovlabs-table-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest.md",
+    "size": 2847,
+    "updatedAt": "2026-06-25T05:44:40.679Z"
+  },
+  "volkovlabs-table-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/release.md",
+    "size": 701,
+    "updatedAt": "2026-06-25T05:44:41.060Z"
+  },
+  "volkovlabs-variable-panel/data-flow.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/data-flow.md",
+    "size": 1379,
+    "updatedAt": "2026-06-25T05:44:41.437Z"
+  },
+  "volkovlabs-variable-panel/display-mode.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode.md",
+    "size": 1887,
+    "updatedAt": "2026-06-25T05:44:41.808Z"
+  },
+  "volkovlabs-variable-panel/display-mode/button.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/button.md",
+    "size": 599,
+    "updatedAt": "2026-06-25T05:44:42.181Z"
+  },
+  "volkovlabs-variable-panel/display-mode/minimize.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/minimize.md",
+    "size": 3252,
+    "updatedAt": "2026-06-25T05:44:42.555Z"
+  },
+  "volkovlabs-variable-panel/display-mode/slider.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/slider.md",
+    "size": 1075,
+    "updatedAt": "2026-06-25T05:44:42.938Z"
+  },
+  "volkovlabs-variable-panel/display-mode/table.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/table.md",
+    "size": 14397,
+    "updatedAt": "2026-06-25T05:44:43.321Z"
+  },
+  "volkovlabs-variable-panel/features.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features.md",
+    "size": 1709,
+    "updatedAt": "2026-06-25T05:44:43.689Z"
+  },
+  "volkovlabs-variable-panel/features/empty.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/empty.md",
+    "size": 913,
+    "updatedAt": "2026-06-25T05:44:44.060Z"
+  },
+  "volkovlabs-variable-panel/features/input.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/input.md",
+    "size": 1010,
+    "updatedAt": "2026-06-25T05:44:44.431Z"
+  },
+  "volkovlabs-variable-panel/features/key.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/key.md",
+    "size": 1092,
+    "updatedAt": "2026-06-25T05:44:44.810Z"
+  },
+  "volkovlabs-variable-panel/features/persistent.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/persistent.md",
+    "size": 1348,
+    "updatedAt": "2026-06-25T05:44:45.223Z"
+  },
+  "volkovlabs-variable-panel/features/redirect.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/redirect.md",
+    "size": 1621,
+    "updatedAt": "2026-06-25T05:44:45.600Z"
+  },
+  "volkovlabs-variable-panel/features/sort.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/sort.md",
+    "size": 1059,
+    "updatedAt": "2026-06-25T05:44:45.980Z"
+  },
+  "volkovlabs-variable-panel/index.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest.md",
+    "size": 2773,
+    "updatedAt": "2026-06-25T05:44:46.346Z"
+  },
+  "volkovlabs-variable-panel/release.md": {
+    "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/release.md",
+    "size": 640,
+    "updatedAt": "2026-06-25T05:44:46.718Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features.md",
+    "size": 1921,
+    "updatedAt": "2026-06-25T05:44:47.092Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/advanced-features/oauth2-custom-tokens.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/advanced-features/oauth2-custom-tokens.md",
+    "size": 5811,
+    "updatedAt": "2026-06-25T05:44:47.466Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/global-queries.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/global-queries.md",
+    "size": 2352,
+    "updatedAt": "2026-06-25T05:44:47.842Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/logs.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/logs.md",
+    "size": 4611,
+    "updatedAt": "2026-06-25T05:44:48.217Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/node-graph.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/node-graph.md",
+    "size": 6221,
+    "updatedAt": "2026-06-25T05:44:48.591Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/reference-data.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/reference-data.md",
+    "size": 2813,
+    "updatedAt": "2026-06-25T05:44:48.961Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/series.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/series.md",
+    "size": 5758,
+    "updatedAt": "2026-06-25T05:44:49.335Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/tracing.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/tracing.md",
+    "size": 4668,
+    "updatedAt": "2026-06-25T05:44:49.717Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/transformations.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/transformations.md",
+    "size": 5012,
+    "updatedAt": "2026-06-25T05:44:50.097Z"
+  },
+  "yesoreyeram-infinity-datasource/advanced-features/url.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/url.md",
+    "size": 5953,
+    "updatedAt": "2026-06-25T05:44:50.476Z"
+  },
+  "yesoreyeram-infinity-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/annotations.md",
+    "size": 7406,
+    "updatedAt": "2026-06-25T05:44:50.869Z"
+  },
+  "yesoreyeram-infinity-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure.md",
+    "size": 22090,
+    "updatedAt": "2026-06-25T05:44:51.381Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats.md",
+    "size": 2690,
+    "updatedAt": "2026-06-25T05:44:51.769Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats/azure-blob-storage.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/azure-blob-storage.md",
+    "size": 2739,
+    "updatedAt": "2026-06-25T05:44:52.181Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats/csv.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/csv.md",
+    "size": 4779,
+    "updatedAt": "2026-06-25T05:44:52.565Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats/graphql.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/graphql.md",
+    "size": 2450,
+    "updatedAt": "2026-06-25T05:44:52.951Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats/html.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/html.md",
+    "size": 1997,
+    "updatedAt": "2026-06-25T05:44:53.331Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats/json.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/json.md",
+    "size": 4994,
+    "updatedAt": "2026-06-25T05:44:53.709Z"
+  },
+  "yesoreyeram-infinity-datasource/data-formats/xml.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/xml.md",
+    "size": 1900,
+    "updatedAt": "2026-06-25T05:44:54.090Z"
+  },
+  "yesoreyeram-infinity-datasource/examples.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples.md",
+    "size": 2516,
+    "updatedAt": "2026-06-25T05:44:54.482Z"
+  },
+  "yesoreyeram-infinity-datasource/examples/examples/aws.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/aws.md",
+    "size": 5401,
+    "updatedAt": "2026-06-25T05:44:54.858Z"
+  },
+  "yesoreyeram-infinity-datasource/examples/examples/azure.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/azure.md",
+    "size": 5799,
+    "updatedAt": "2026-06-25T05:44:55.236Z"
+  },
+  "yesoreyeram-infinity-datasource/examples/examples/github.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/github.md",
+    "size": 5564,
+    "updatedAt": "2026-06-25T05:44:55.623Z"
+  },
+  "yesoreyeram-infinity-datasource/examples/examples/google-sheets.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/google-sheets.md",
+    "size": 5892,
+    "updatedAt": "2026-06-25T05:44:56.006Z"
+  },
+  "yesoreyeram-infinity-datasource/examples/examples/rss-feeds.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/rss-feeds.md",
+    "size": 5999,
+    "updatedAt": "2026-06-25T05:44:56.390Z"
+  },
+  "yesoreyeram-infinity-datasource/examples/examples/thingspeak.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/thingspeak.md",
+    "size": 6091,
+    "updatedAt": "2026-06-25T05:44:56.777Z"
+  },
+  "yesoreyeram-infinity-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest.md",
+    "size": 3668,
+    "updatedAt": "2026-06-25T05:44:57.161Z"
+  },
+  "yesoreyeram-infinity-datasource/installation.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/installation.md",
+    "size": 4735,
+    "updatedAt": "2026-06-25T05:44:57.528Z"
+  },
+  "yesoreyeram-infinity-datasource/query.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query.md",
+    "size": 9391,
+    "updatedAt": "2026-06-25T05:44:57.901Z"
+  },
+  "yesoreyeram-infinity-datasource/query/backend.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend.md",
+    "size": 7275,
+    "updatedAt": "2026-06-25T05:44:58.282Z"
+  },
+  "yesoreyeram-infinity-datasource/query/filters.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/filters.md",
+    "size": 7467,
+    "updatedAt": "2026-06-25T05:44:58.660Z"
+  },
+  "yesoreyeram-infinity-datasource/query/groq.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/groq.md",
+    "size": 3641,
+    "updatedAt": "2026-06-25T05:44:59.030Z"
+  },
+  "yesoreyeram-infinity-datasource/query/jq-backend.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend.md",
+    "size": 4646,
+    "updatedAt": "2026-06-25T05:44:59.408Z"
+  },
+  "yesoreyeram-infinity-datasource/query/macros.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros.md",
+    "size": 8983,
+    "updatedAt": "2026-06-25T05:44:59.800Z"
+  },
+  "yesoreyeram-infinity-datasource/query/time-formats.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/time-formats.md",
+    "size": 6079,
+    "updatedAt": "2026-06-25T05:45:00.288Z"
+  },
+  "yesoreyeram-infinity-datasource/query/uql.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql.md",
+    "size": 19858,
+    "updatedAt": "2026-06-25T05:45:00.683Z"
+  },
+  "yesoreyeram-infinity-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting.md",
+    "size": 14514,
+    "updatedAt": "2026-06-25T05:45:01.078Z"
+  },
+  "yesoreyeram-infinity-datasource/variables.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables.md",
+    "size": 1463,
+    "updatedAt": "2026-06-25T05:45:01.468Z"
+  },
+  "yesoreyeram-infinity-datasource/variables/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/template-variables.md",
+    "size": 8675,
+    "updatedAt": "2026-06-25T05:45:01.850Z"
+  },
+  "yesoreyeram-infinity-datasource/variables/utility-variables.md": {
+    "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables.md",
+    "size": 6648,
+    "updatedAt": "2026-06-25T05:45:02.225Z"
+  },
+  "zipkin/index.md": {
+    "url": "https://grafana.com/docs/plugins/zipkin/latest.md",
+    "size": 20726,
+    "updatedAt": "2026-06-25T05:45:02.618Z"
+  }
+}

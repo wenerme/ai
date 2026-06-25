@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 100 skills available
+> 101 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -59,6 +59,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
+| `grafana-plugin-docs` | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
 | `huggingface-docs` | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
@@ -563,6 +564,16 @@ npx skills add wenerme/ai --skill grafana-docs
 ```
 
 Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki, Elasticsearch, InfluxDB, MySQL, PostgreSQL, CloudWatch, Azure Monitor), provisioning, as-code (Terraform, Ansible, Grafana Operator), RBAC, SSO/SAML/LDAP, plugins, API, or Grafana setup and administration.
+
+</details>
+<details>
+<summary><code>grafana-plugin-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill grafana-plugin-docs
+```
+
+Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as Infinity, CloudWatch, ClickHouse, Zabbix, GitHub, GitLab, Jira, ServiceNow, MongoDB, OpenSearch, Volkov Labs panels, plugin configuration, query editors, variables, annotations, alerting, provisioning, or troubleshooting.
 
 </details>
 <details>
@@ -1117,7 +1128,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 100 skills, 25671 files, 277 MiB total
+> 101 skills, 26248 files, 280 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1162,13 +1173,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 451 KiB |
+| `glab-docs` | 289 | 449 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
+| `grafana-plugin-docs` | 581 | 3.5 MiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1189,7 +1201,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 445 | 2.3 MiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
