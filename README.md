@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 102 skills available
+> 103 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -60,6 +60,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
 | `grafana-plugin-docs` | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
+| `hono-docs` | Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request... | [honojs/website/docs](https://github.com/honojs/website/tree/main/docs) |
 | `huggingface-docs` | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
@@ -575,6 +576,16 @@ npx skills add wenerme/ai --skill grafana-plugin-docs
 ```
 
 Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as Infinity, CloudWatch, ClickHouse, Zabbix, GitHub, GitLab, Jira, ServiceNow, MongoDB, OpenSearch, Volkov Labs panels, plugin configuration, query editors, variables, annotations, alerting, provisioning, or troubleshooting.
+
+</details>
+<details>
+<summary><code>hono-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill hono-docs
+```
+
+Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request APIs, middleware, helpers, RPC client, validation, JSX, testing, deployment on Cloudflare Workers/Pages, Bun, Deno, Node.js, AWS Lambda, Vercel, Netlify, Fastly, service workers, or runtime-specific adapters.
 
 </details>
 <details>
@@ -1139,7 +1150,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 102 skills, 26277 files, 281 MiB total
+> 103 skills, 26362 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1189,6 +1200,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `grafana-plugin-docs` | 581 | 3.5 MiB |
+| `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 324 KiB |

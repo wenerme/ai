@@ -76,6 +76,10 @@ update-ultralytics-docs:
 update-pytorch-docs:
     bun scripts/sync-pytorch-docs.ts
 
+# Sync Hono docs from local honojs/website clone
+update-hono-docs:
+    bun scripts/sync-hono-docs.ts
+
 # Sync Hugging Face Hub docs from local huggingface/hub-docs clone
 update-huggingface-docs:
     bun scripts/sync-huggingface-docs.ts
@@ -208,6 +212,7 @@ update:
     -just update-orpc-docs
     -just update-ultralytics-docs
     -just update-pytorch-docs
+    -just update-hono-docs
     -just update-huggingface-docs
     -just update-transformers-docs
     -just update-evalscope-docs

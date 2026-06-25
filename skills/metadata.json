@@ -40,6 +40,7 @@
     "google-ai-docs": { "url": "https://ai.google.dev" },
     "grafana-docs": { "repo": "grafana/grafana" },
     "grafana-plugin-docs": { "url": "https://grafana.com/docs/plugins" },
+    "hono-docs": { "repo": "honojs/website", "path": "docs" },
     "huggingface-docs": { "repo": "huggingface/hub-docs", "path": "docs" },
     "humanizer": { "repo": "blader/humanizer" },
     "immich-docs": { "repo": "immich-app/immich" },
