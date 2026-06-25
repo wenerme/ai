@@ -1150,7 +1150,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 103 skills, 26362 files, 281 MiB total
+> 103 skills, 26366 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1189,13 +1189,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1572 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 274 | 1.7 MiB |
+| `evalscope-docs` | 274 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 289 | 449 KiB |
+| `glab-docs` | 290 | 451 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
@@ -1203,7 +1203,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1224,7 +1224,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 442 | 2.3 MiB |
+| `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
