@@ -275,6 +275,39 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
+**Version:**  macOS 2026.6.782.1 **Date:**  2026-06-24 **Size:** 152 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.782.1)
+
+#### Release notes
+
+This beta release introduces upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation.
+
+**Additional changes and improvements**
+
+This release also introduces multiple fixes and improvements including:
+
+* Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
+* Path MTU Discovery (PMTUD) is now enabled by default.
+* Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+* Users can now register with team names in any case format without errors.
+* New UI fixes
+  * Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  * Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  * Added clear error messaging when the Cloudflare certificate needs to be installed.
+  * Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  * New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  * Added ability to configure proxy mode for consumer users.
+  * Added back the option to quit for consumer users.
+
+**Known issues**
+
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+
+Previous version history (7)
+
+macOS 2026.5.1155.1
+
 **Version:**  macOS 2026.5.1155.1 **Date:**  2026-05-29 **Size:** 143 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.5.1155.1)
@@ -302,8 +335,6 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
-
-Previous version history (6)
 
 macOS 2026.3.566.1
 

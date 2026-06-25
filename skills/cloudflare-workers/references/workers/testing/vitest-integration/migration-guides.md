@@ -12,6 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migration guides
 
+* [ Migrate from Vitest 3 to Vitest 4 ](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/)
 * [ Migrate from Miniflare 2's test environments ](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/)
 * [ Migrate from unstable\_dev ](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/)
 

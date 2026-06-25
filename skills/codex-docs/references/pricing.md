@@ -93,15 +93,13 @@
       <PricingCard
         name="Business"
         subtitle="Bring Codex into your startup or growing business."
-        price="Pay as you go"
-        interval=""
+        price="$20"
+        interval="/ user / month*"
         ctaLabel="Get Business"
-        ctaHref="https://chatgpt.com/codex/team/start"
-        highlight="Everything in Plus and:"
+        ctaHref="https://chatgpt.com/team-sign-up"
+        footnoteLabel="*2+ users, billed annually. $25 per user per month when billed monthly."
       >
-        - Assign standard or usage-based Codex seats based on your team's needs.
-          [Learn
-          more](https://help.openai.com/en/articles/8792828-what-is-chatgpt-business)
+        - Access ChatGPT and Codex across desktop and mobile apps
         - Larger virtual machines to run cloud tasks faster
         - Flexibly extend usage with [ChatGPT credits](#credits-overview)
         - A secure, dedicated workspace with essential admin controls, SAML SSO,

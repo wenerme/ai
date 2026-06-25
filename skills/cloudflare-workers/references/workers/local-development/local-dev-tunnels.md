@@ -62,8 +62,8 @@ Run `vite dev`, then press `t + Enter` to start or close the tunnel. Add `tunnel
 
 To use a named tunnel with stable hostnames:
 
-* [  JavaScript ](#tab-panel-11631)
-* [  TypeScript ](#tab-panel-11632)
+* [  JavaScript ](#tab-panel-11942)
+* [  TypeScript ](#tab-panel-11943)
 
 vite.config.js
 
@@ -88,8 +88,8 @@ When using `vite preview`, Vite's preview host validation still applies:
 
 For example:
 
-* [  JavaScript ](#tab-panel-11633)
-* [  TypeScript ](#tab-panel-11634)
+* [  JavaScript ](#tab-panel-11944)
+* [  TypeScript ](#tab-panel-11945)
 
 vite.config.js
 
@@ -110,7 +110,7 @@ export default defineConfig({  preview: {    allowedHosts: [      // For Quick t
 Anyone with the tunnel URL can reach your dev server, so review what your app exposes before enabling a tunnel.
 
 * Pay special attention to ungated preview or admin endpoints.
-* Review any [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) connected to real resources.
+* Review any [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) connected to real resources.
 * Review any code that proxies requests to private or internal services.
 * If you are using the Cloudflare Vite plugin with `vite dev`, HMR and module serving may expose source files, file paths, or project structure over the tunnel. If you only need to share a built preview, prefer `vite preview` for public sharing.
 * Local dev-related routes, such as `/cdn-cgi/*`, remain restricted and are not exposed over the tunnel.
@@ -121,6 +121,6 @@ Anyone with the tunnel URL can reach your dev server, so review what your app ex
 * [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/development-testing/local-dev-tunnels/#page","headline":"Share a local dev server · Cloudflare Workers docs","description":"Expose a local Wrangler or Vite dev server over a public tunnel URL.","url":"https://developers.cloudflare.com/workers/development-testing/local-dev-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/development-testing/","name":"Development & testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/development-testing/local-dev-tunnels/","name":"Share a local dev server"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/#page","headline":"Share a local dev server · Cloudflare Workers docs","description":"Expose a local Wrangler or Vite dev server over a public tunnel URL.","url":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/local-dev-tunnels/","name":"Share a local dev server"}}]}
 ```

@@ -110,11 +110,11 @@ The workflow proceeds in this order:
 | `not_actionable` | Repository evidence rules out the claim, such as by showing an unaffected version, unreachable path, effective guard, or non-shipped surface.                 |
 | `needs_review`   | Repository evidence isn't enough to decide because required information is missing, ambiguous, runtime-dependent, environment-dependent, or policy-dependent. |
 
-Exploitability ranks use `P0`, `P1`, `P2`, and so on, independently within
-  each verdict queue. This keeps remediation priorities separate from unresolved
-  review work. `P0` is the most exploitable `confirmed` finding or the
-  highest-priority `needs_review` finding in that result set. The rank isn't a
-  scanner severity score, and `not_actionable` findings aren't ranked.
+Exploitability ranks use positive integers starting at `1`, independently
+  within each verdict queue. This keeps remediation priorities separate from
+  unresolved review work. Rank `1` is the most exploitable `confirmed` finding
+  or the highest-priority `needs_review` finding in that result set. The rank
+  isn't a scanner severity score, and `not_actionable` findings aren't ranked.
 
 For each finding, review:
 

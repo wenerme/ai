@@ -1,5 +1,5 @@
 ---
-title: Development &amp; testing
+title: Local development
 description: Develop and test your Workers locally.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,11 +10,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-# Development & testing
+# Local development
 
 You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [workerd ↗](https://github.com/cloudflare/workerd).
 
-[By default](https://developers.cloudflare.com/workers/development-testing/#defaults), your Worker's bindings [connect to locally simulated resources](https://developers.cloudflare.com/workers/development-testing/#bindings-during-local-development), but can be configured to interact with the real, production resource with [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+[By default](https://developers.cloudflare.com/workers/local-development/#defaults), your Worker's bindings [connect to locally simulated resources](https://developers.cloudflare.com/workers/local-development/#bindings-during-local-development), but can be configured to interact with the real, production resource with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 ## Core concepts
 
@@ -25,9 +25,9 @@ When developing Workers, it's important to understand two distinct concepts:
 * **Worker execution**: Where your Worker code actually runs (on your local machine vs on Cloudflare's infrastructure).
 * [**Bindings**](https://developers.cloudflare.com/workers/runtime-apis/bindings/): How your Worker interacts with Cloudflare resources (like [KV namespaces](https://developers.cloudflare.com/kv), [R2 buckets](https://developers.cloudflare.com/r2), [D1 databases](https://developers.cloudflare.com/d1), [Queues](https://developers.cloudflare.com/queues/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), etc). In your Worker code, these are accessed via the `env` object (such as `env.MY_KV`).
 
-## Local development
+## Start a local development server
 
-**You can start a local development server using:**
+You can start a local development server using:
 
 1. The Cloudflare Workers CLI [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/), using the built-in [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command.
 
@@ -61,7 +61,7 @@ yarn vite dev
 pnpm vite dev
 ```
 
-Both Wrangler and the Cloudflare Vite plugin use [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) under the hood, and are developed and maintained by the Cloudflare team. For guidance on choosing when to use Wrangler versus Vite, see our guide [Choosing between Wrangler & Vite](https://developers.cloudflare.com/workers/development-testing/wrangler-vs-vite/).
+Both Wrangler and the Cloudflare Vite plugin use [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) under the hood, and are developed and maintained by the Cloudflare team. For guidance on choosing when to use Wrangler versus Vite, see our guide [Choosing between Wrangler & Vite](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/).
 
 * [Get started with Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
 * [Get started with the Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/get-started/)
@@ -78,11 +78,11 @@ By default, running `wrangler dev` / `vite dev` (when using the [Vite plugin](ht
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) are interfaces that allow your Worker to interact with various Cloudflare resources (like [KV namespaces](https://developers.cloudflare.com/kv), [R2 buckets](https://developers.cloudflare.com/r2), [D1 databases](https://developers.cloudflare.com/d1), [Queues](https://developers.cloudflare.com/queues/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), etc). In your Worker code, these are accessed via the `env` object (such as `env.MY_KV`).
 
-During local development, your Worker code interacts with these bindings using the exact same API calls (such as `env.MY_KV.put()`) as it would in a deployed environment. These local resources are initially empty, but you can populate them with data, as documented in [Adding local data](https://developers.cloudflare.com/workers/development-testing/local-data/).
+During local development, your Worker code interacts with these bindings using the exact same API calls (such as `env.MY_KV.put()`) as it would in a deployed environment. These local resources are initially empty, but you can populate them with data, as documented in [Adding local data](https://developers.cloudflare.com/workers/local-development/local-data/).
 
 * By default, bindings connect to **local resource simulations** (except for [AI bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/), as AI models always run remotely).
-* You can override this default behavior and **connect to the remote resource** on a per-binding basis with [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings). This lets you connect to real, production resources while still running your Worker code locally.
-* When using `wrangler dev`, you can temporarily disable all [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) (and connect only to local resources) by providing the `--local` flag (i.e. `wrangler dev --local`)
+* You can override this default behavior and **connect to the remote resource** on a per-binding basis with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings). This lets you connect to real, production resources while still running your Worker code locally.
+* When using `wrangler dev`, you can temporarily disable all [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) (and connect only to local resources) by providing the `--local` flag (i.e. `wrangler dev --local`)
 
 ## Remote bindings
 
@@ -90,20 +90,20 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-11615)
-* [  wrangler.toml ](#tab-panel-11616)
+* [  wrangler.jsonc ](#tab-panel-11926)
+* [  wrangler.toml ](#tab-panel-11927)
 
 JSONC
 
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",
   "r2_buckets": [    {      "bucket_name": "screenshots-bucket",      "binding": "screenshots_bucket",      "remote": true,    },  ],}
 ```
 
 TOML
 
 ```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-25"
 [[r2_buckets]]bucket_name = "screenshots-bucket"binding = "screenshots_bucket"remote = true
 ```
 
@@ -115,20 +115,20 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-11627)
-* [  wrangler.toml ](#tab-panel-11628)
+* [  wrangler.jsonc ](#tab-panel-11938)
+* [  wrangler.toml ](#tab-panel-11939)
 
 JSONC
 
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",
   "env": {    "production": {      "r2_buckets": [        {          "bucket_name": "screenshots-bucket",          "binding": "screenshots_bucket",        },      ],    },    "staging": {      "r2_buckets": [        {          "bucket_name": "preview-screenshots-bucket",          "binding": "screenshots_bucket",          "remote": true,        },      ],    },  },}
 ```
 
 TOML
 
 ```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-25"
 [[env.production.r2_buckets]]bucket_name = "screenshots-bucket"binding = "screenshots_bucket"
 [[env.staging.r2_buckets]]bucket_name = "preview-screenshots-bucket"binding = "screenshots_bucket"remote = true
 ```
@@ -148,8 +148,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-11613)
-* [  wrangler.toml ](#tab-panel-11614)
+* [  wrangler.jsonc ](#tab-panel-11924)
+* [  wrangler.toml ](#tab-panel-11925)
 
 JSONC
 
@@ -167,8 +167,8 @@ TOML
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-11617)
-* [  wrangler.toml ](#tab-panel-11618)
+* [  wrangler.jsonc ](#tab-panel-11928)
+* [  wrangler.toml ](#tab-panel-11929)
 
 JSONC
 
@@ -186,8 +186,8 @@ TOML
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-11619)
-* [  wrangler.toml ](#tab-panel-11620)
+* [  wrangler.jsonc ](#tab-panel-11930)
+* [  wrangler.toml ](#tab-panel-11931)
 
 JSONC
 
@@ -205,8 +205,8 @@ TOML
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-11623)
-* [  wrangler.toml ](#tab-panel-11624)
+* [  wrangler.jsonc ](#tab-panel-11934)
+* [  wrangler.toml ](#tab-panel-11935)
 
 JSONC
 
@@ -224,8 +224,8 @@ TOML
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/binding/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-11621)
-* [  wrangler.toml ](#tab-panel-11622)
+* [  wrangler.jsonc ](#tab-panel-11932)
+* [  wrangler.toml ](#tab-panel-11933)
 
 JSONC
 
@@ -249,8 +249,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-11625)
-* [  wrangler.toml ](#tab-panel-11626)
+* [  wrangler.jsonc ](#tab-panel-11936)
+* [  wrangler.toml ](#tab-panel-11937)
 
 JSONC
 
@@ -270,7 +270,7 @@ This allows you to run your [dynamic dispatch Worker](https://developers.cloudfl
 
 Certain bindings are not supported for remote connections (i.e. with `remote: true`) during local development. These will always use local simulations or local values.
 
-If `remote: true` is specified in Wrangler configuration for any of the following unsupported binding types, Cloudflare **will issue an error**. See [all supported and unsupported bindings for remote bindings](https://developers.cloudflare.com/workers/development-testing/bindings-per-env/).
+If `remote: true` is specified in Wrangler configuration for any of the following unsupported binding types, Cloudflare **will issue an error**. See [all supported and unsupported bindings for remote bindings](https://developers.cloudflare.com/workers/local-development/bindings-per-env/).
 
 * [**Durable Objects**](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects): Enabling remote connections for Durable Objects may be supported in the future, but currently will always run locally. However, using Durable Objects in combination with remote bindings is possible. Refer to [Using remote resources with Durable Objects and Workflows](#using-remote-resources-with-durable-objects-and-workflows) below.
 * [**Workflows**](https://developers.cloudflare.com/workflows/): Enabling remote connections for Workflows may be supported in the future, but currently will only run locally. However, using Workflows in combination with remote bindings is possible. Refer to [Using remote resources with Durable Objects and Workflows](#using-remote-resources-with-durable-objects-and-workflows) below.
@@ -385,8 +385,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-11629)
-* [  TypeScript ](#tab-panel-11630)
+* [  JavaScript ](#tab-panel-11940)
+* [  TypeScript ](#tab-panel-11941)
 
 JavaScript
 
@@ -416,7 +416,7 @@ async function startOrUpdateDevSession() {  remoteProxySessionDetails = await ma
 
 ## `wrangler dev --remote` (Legacy)
 
-Separate from Miniflare-powered local development, Wrangler also offers a fully remote development mode via [wrangler dev --remote](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). Remote development is [**not** supported in the Vite plugin](https://developers.cloudflare.com/workers/development-testing/wrangler-vs-vite/).
+Separate from Miniflare-powered local development, Wrangler also offers a fully remote development mode via [wrangler dev --remote](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). Remote development is [**not** supported in the Vite plugin](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/).
 
  npm  yarn  pnpm
 
@@ -438,7 +438,7 @@ When using remote development, all bindings automatically connect to their remot
 
 ### When to use Remote development
 
-* For most development tasks, the most efficient and productive experience will be local development along with [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) when needed.
+* For most development tasks, the most efficient and productive experience will be local development along with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) when needed.
 * You may want to use `wrangler dev --remote` for testing features or behaviors that are highly specific to Cloudflare's network and cannot be adequately simulated locally or tested via remote bindings.
 
 ### Considerations
@@ -450,6 +450,6 @@ When using remote development, all bindings automatically connect to their remot
 * When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in[ Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/development-testing/#page","headline":"Development & testing · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/development-testing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/development-testing/","name":"Development & testing"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}}]}
 ```

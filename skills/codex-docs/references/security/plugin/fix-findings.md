@@ -70,6 +70,10 @@ and verify its patch.
 Use the Codex CLI when you already have a finding from a scan, ticket, advisory,
 disclosure, security assessment, or internal review:
 
+The commands below assume Codex Security is already installed in the
+`CODEX_HOME` used by `codex exec`. A fresh CI runner doesn't have marketplace
+plugins installed by default.
+
 ```text
 Use $codex-security:fix-finding to fix finding <finding-id> from <report-path>. Validate the issue, make the smallest safe change, add focused regression coverage, and verify that the issue no longer reproduces.
 ```
@@ -79,14 +83,19 @@ reproducer, affected files, and validation command. Codex can inspect the
 repository for missing technical details, but it should ask before guessing a
 product policy or intended security invariant.
 
-For an automated run, pass the prompt to `codex exec` after checking out the code
-and making the finding report available:
+For an automated run, pass the prompt to `codex exec` after checking out the
+code, making the finding report available, and provisioning the plugin in that
+`CODEX_HOME`:
 
 ```bash
 codex exec 'Use $codex-security:fix-finding to fix finding <finding-id> from <report-path>. Validate the issue, make the smallest safe change, add focused regression coverage, and verify that the issue no longer reproduces.'
 ```
 
 ## Scan and fix findings in CI/CD
+
+Provision Codex Security in the runner's `CODEX_HOME` before invoking these
+skills. The command below uses the installed plugin; it doesn't install the
+plugin itself.
 
 In CI/CD, use one Codex run to scan the diff and generate fixes for every
 finding it discovers. The job doesn't need finding IDs or report paths as

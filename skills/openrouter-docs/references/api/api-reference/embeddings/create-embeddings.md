@@ -343,12 +343,14 @@ components:
         - Google
         - Google AI Studio
         - Groq
+        - HeyGen
         - Inception
         - Inceptron
         - InferenceNet
         - Ionstream
         - Infermatic
         - Io Net
+        - Inferact vLLM
         - Inflection
         - Liquid
         - Mara

@@ -395,6 +395,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        heygen:
+          type: object
+          additionalProperties:
+            description: Any type
         huggingface:
           type: object
           additionalProperties:
@@ -412,6 +416,10 @@ components:
           additionalProperties:
             description: Any type
         inceptron:
+          type: object
+          additionalProperties:
+            description: Any type
+        inferact-vllm:
           type: object
           additionalProperties:
             description: Any type

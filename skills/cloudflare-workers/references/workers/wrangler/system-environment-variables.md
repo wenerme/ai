@@ -34,7 +34,7 @@ JavaScript
 const apiHost = env.API_HOST;
 ```
 
-See the [Environment variables and secrets](https://developers.cloudflare.com/workers/development-testing/environment-variables/) page for more information on how to use `.env` files in local development.
+See the [Environment variables and secrets](https://developers.cloudflare.com/workers/local-development/environment-variables/) page for more information on how to use `.env` files in local development.
 
 ## Supported environment variables
 
@@ -54,10 +54,10 @@ Wrangler supports the following environment variables:
   * The email address associated with your Cloudflare account, usually used for older authentication method with `CLOUDFLARE_API_KEY=`.
 * `CLOUDFLARE_ACCESS_CLIENT_ID` ` string ` optional
 
-  * The Client ID of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used to authenticate with Access-protected domains in non-interactive environments such as CI/CD pipelines. Must be set together with `CLOUDFLARE_ACCESS_CLIENT_SECRET`. When both variables are set, Wrangler authenticates using the service token instead of launching `cloudflared access login`. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/development-testing/#connect-to-access-protected-workers).
+  * The Client ID of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used to authenticate with Access-protected domains in non-interactive environments such as CI/CD pipelines. Must be set together with `CLOUDFLARE_ACCESS_CLIENT_SECRET`. When both variables are set, Wrangler authenticates using the service token instead of launching `cloudflared access login`. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/local-development/#connect-to-access-protected-workers).
 * `CLOUDFLARE_ACCESS_CLIENT_SECRET` ` string ` optional
 
-  * The Client Secret of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used together with `CLOUDFLARE_ACCESS_CLIENT_ID` to authenticate with Access-protected domains in non-interactive environments. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/development-testing/#connect-to-access-protected-workers).
+  * The Client Secret of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used together with `CLOUDFLARE_ACCESS_CLIENT_ID` to authenticate with Access-protected domains in non-interactive environments. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/local-development/#connect-to-access-protected-workers).
 * `CLOUDFLARE_ENV` ` string ` optional
 
   * The [environment](https://developers.cloudflare.com/workers/wrangler/environments/) to use for Wrangler commands. This allows you to select an environment without using the `--env` flag. For example, `CLOUDFLARE_ENV=production wrangler deploy` will deploy to the `production` environment. The `--env` command line argument takes precedence over this environment variable.
@@ -157,6 +157,6 @@ The following variables are deprecated. Use the new variables listed above to pr
 * `CF_API_BASE_URL`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#page","headline":"System environment variables · Cloudflare Workers docs","description":"Local environment variables that can change Wrangler's behavior.","url":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#page","headline":"System environment variables · Cloudflare Workers docs","description":"Local environment variables that can change Wrangler's behavior.","url":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/system-environment-variables/","name":"System environment variables"}}]}
 ```

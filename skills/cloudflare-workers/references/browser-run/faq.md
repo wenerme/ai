@@ -99,7 +99,7 @@ X_BROWSER_HEADFUL=true npx wrangler dev
 
 Use real headless browser during local development
 
-To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 ### How do I render authenticated pages using Quick Actions?
 

@@ -284,7 +284,7 @@ Note
 
 When using [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to develop locally, Wrangler defaults to using a local version of KV to avoid interfering with any of your live production data in KV. This means that reading keys that you have not written locally returns null.
 
-To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, you can set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
+To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, you can set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information.
 
 Also refer to [KV binding docs](https://developers.cloudflare.com/kv/concepts/kv-bindings/#use-kv-bindings-when-developing-locally).
 
@@ -306,8 +306,8 @@ let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
 
 Your Worker code should look like this:
 
-* [  JavaScript ](#tab-panel-9142)
-* [  TypeScript ](#tab-panel-9143)
+* [  JavaScript ](#tab-panel-9140)
+* [  TypeScript ](#tab-panel-9141)
 
 JavaScript
 
@@ -336,8 +336,8 @@ The code above:
 3. Select **Edit Code**.
 4. Clear the contents of the `workers.js` file, then paste the following code.
 
-  * [  JavaScript ](#tab-panel-9140)
-  * [  TypeScript ](#tab-panel-9141)
+  * [  JavaScript ](#tab-panel-9142)
+  * [  TypeScript ](#tab-panel-9143)
 JavaScript
 ```
 export default {  async fetch(request, env, ctx) {    try {      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");      if (value === null) {        return new Response("Value not found", { status: 404 });      }      return new Response(value);    } catch (err) {      console.error(`KV returned error:`, err);      const errorMessage =        err instanceof Error          ? err.message          : "An unknown error occurred when accessing KV storage";      return new Response(errorMessage, {        status: 500,        headers: { "Content-Type": "text/plain" },      });    }  },};
@@ -395,6 +395,6 @@ If you have any feature requests or notice any bugs, share your feedback directl
 * Read the Wrangler [kv command documentation](https://developers.cloudflare.com/kv/reference/kv-commands/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/get-started/","name":"Getting started"}}]}
 ```

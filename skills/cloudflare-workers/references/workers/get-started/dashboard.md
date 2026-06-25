@@ -47,7 +47,7 @@ Terminal window
 # make sure you are in the root directorycd <directory>
 ```
 
-Now, you can preview and test your changes by [running Wrangler in your local development environment](https://developers.cloudflare.com/workers/development-testing/). Once you are ready to deploy you can run:
+Now, you can preview and test your changes by [running Wrangler in your local development environment](https://developers.cloudflare.com/workers/local-development/). Once you are ready to deploy you can run:
 
 Terminal window
 
@@ -65,6 +65,6 @@ To do more:
 * Read about [Workers limits and pricing](https://developers.cloudflare.com/workers/platform/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers docs","description":"Create and deploy a Cloudflare Worker using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers docs","description":"Create and deploy a Cloudflare Worker using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/get-started/dashboard/","name":"Dashboard"}}]}
 ```

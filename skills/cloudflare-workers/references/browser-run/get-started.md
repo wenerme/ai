@@ -34,8 +34,8 @@ Browser Run offers two categories of integration methods:
 
 Quick Actions can be used via the REST API or directly from a Cloudflare Worker using a browser binding.
 
-* [ REST API ](#tab-panel-6950)
-* [ Workers binding ](#tab-panel-6951)
+* [ REST API ](#tab-panel-6990)
+* [ Workers binding ](#tab-panel-6991)
 
 ### Prerequisites
 
@@ -87,19 +87,19 @@ For setup, select the following options:
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with a browser [binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings):
 
-* [  wrangler.jsonc ](#tab-panel-6944)
-* [  wrangler.toml ](#tab-panel-6945)
+* [  wrangler.jsonc ](#tab-panel-6984)
+* [  wrangler.toml ](#tab-panel-6985)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-quick-action",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "browser": {    "binding": "BROWSER"  }}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-quick-action",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-25",  "browser": {    "binding": "BROWSER"  }}
 ```
 
 TOML
 
 ```
-name = "browser-quick-action"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "browser-quick-action"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-25"
 [browser]binding = "BROWSER"
 ```
 
@@ -111,8 +111,8 @@ Using the `.quickAction()` method requires a `compatibility_date` of `2026-03-24
 
 Replace the contents of `src/index.ts` with the following:
 
-* [  JavaScript ](#tab-panel-6946)
-* [  TypeScript ](#tab-panel-6947)
+* [  JavaScript ](#tab-panel-6986)
+* [  TypeScript ](#tab-panel-6987)
 
 JavaScript
 
@@ -135,7 +135,7 @@ Run `npx wrangler dev --remote` to test your Worker locally.
 
 Use real headless browser during local development
 
-To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 Visit your local URL to see the screenshot.
 
@@ -236,27 +236,27 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-6948)
-* [  wrangler.toml ](#tab-panel-6949)
+* [  wrangler.jsonc ](#tab-panel-6988)
+* [  wrangler.toml ](#tab-panel-6989)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER"  },  "kv_namespaces": [    {      "binding": "BROWSER_KV_DEMO",      "id": "22cf855786094a88a6906f8edac425cd",      "preview_id": "e1f8b68b68d24381b57071445f96e623"    }  ]}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-25",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER"  },  "kv_namespaces": [    {      "binding": "BROWSER_KV_DEMO",      "id": "22cf855786094a88a6906f8edac425cd",      "preview_id": "e1f8b68b68d24381b57071445f96e623"    }  ]}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-25"compatibility_flags = [ "nodejs_compat" ]
 [browser]binding = "MYBROWSER"
 [[kv_namespaces]]binding = "BROWSER_KV_DEMO"id = "22cf855786094a88a6906f8edac425cd"preview_id = "e1f8b68b68d24381b57071445f96e623"
 ```
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-6942)
-* [  TypeScript ](#tab-panel-6943)
+* [  JavaScript ](#tab-panel-6982)
+* [  TypeScript ](#tab-panel-6983)
 
 Update `src/index.js` with your Worker code:
 
@@ -289,7 +289,7 @@ Run `npx wrangler dev` to test your Worker locally.
 
 Use real headless browser during local development
 
-To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 To test taking your first screenshot, go to the following URL:
 

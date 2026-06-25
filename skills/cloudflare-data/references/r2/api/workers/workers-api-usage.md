@@ -80,8 +80,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the `<YOUR_BUCKET_NAME>` you used to create your bucket in [step 2](#2-create-your-bucket):
 
-* [  wrangler.jsonc ](#tab-panel-9861)
-* [  wrangler.toml ](#tab-panel-9862)
+* [  wrangler.jsonc ](#tab-panel-9901)
+* [  wrangler.toml ](#tab-panel-9902)
 
 JSONC
 
@@ -105,13 +105,13 @@ Local Development mode in Wrangler
 
 By default `wrangler dev` runs in local development mode. In this mode, all operations performed by your local worker will operate against local storage on your machine.
 
-If you want the R2 operations that are performed during development to be performed against a real R2 bucket, you can set `"remote" : true` in the R2 binding configuration. Refer to [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
+If you want the R2 operations that are performed during development to be performed against a real R2 bucket, you can set `"remote" : true` in the R2 binding configuration. Refer to [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information.
 
 An R2 bucket is able to READ, LIST, WRITE, and DELETE objects. You can see an example of all operations below using the Module Worker syntax. Add the following snippet into your project's `index.js` file:
 
-* [  TypeScript ](#tab-panel-9856)
-* [  JavaScript ](#tab-panel-9857)
-* [  Python ](#tab-panel-9858)
+* [  TypeScript ](#tab-panel-9896)
+* [  JavaScript ](#tab-panel-9897)
+* [  Python ](#tab-panel-9898)
 
 TypeScript
 
@@ -167,8 +167,8 @@ For `PUT` and `DELETE` requests, you will make use of a new `AUTH_KEY_SECRET` en
 
 For `GET` requests, you will ensure that only a specific file can be requested. All of this custom logic occurs inside of an `authorizeRequest` function, with the `hasValidHeader` function handling the custom header logic. If all validation passes, then the operation is allowed.
 
-* [  JavaScript ](#tab-panel-9859)
-* [  Python ](#tab-panel-9860)
+* [  JavaScript ](#tab-panel-9899)
+* [  Python ](#tab-panel-9900)
 
 JavaScript
 
@@ -249,6 +249,6 @@ By completing this guide, you have successfully installed Wrangler and deployed 
 2. [Workers Examples](https://developers.cloudflare.com/workers/examples/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-api-usage/","name":"Use R2 from Workers"}}]}
 ```

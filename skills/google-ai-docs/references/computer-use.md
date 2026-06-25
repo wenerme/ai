@@ -250,9 +250,9 @@ Use curl to send a request:
 The response model suggests a function call. For **Gemini 3.5 Flash**, the
 response contains a tailored reasoning intent alongside coordinates. The
 following shows examples of both responses:
-\* {Gemini 3.5 Flash}
 
-    ```json
+### Gemini 3.5 Flash
+
     {
       "steps": [
         {
@@ -266,7 +266,6 @@ following shows examples of both responses:
         }
       ]
     }
-    ```
 
 ### Gemini 2.5 (Legacy)
 
