@@ -1,0 +1,62 @@
+---
+title: "Business Text | Grafana Plugins documentation"
+description: "Learn how to use the Business Text visualization panel to display RSS feed content with HTML and Handlebars templates."
+---
+
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
+
+# Business Text
+
+The [Business Text visualization panel](/docs/plugins/marcusolsson-dynamictext-panel/latest/) is a perfect companion to Business News Data Source.
+
+[](/media/docs/grafana/panels-visualizations/business-news/dynamic-text.png)
+
+## Disable Sanitize HTML
+
+To display HTML returned from feeds, disable the **Sanitize HTML** parameter.
+
+### Docker
+
+sh [Copy code to clipboard] Copy
+
+```sh
+GF_PANELS_DISABLE_SANITIZE_HTML=true
+```
+
+## Example
+
+To display the YouTube feed with the latest videos, this example uses HTML and Handlebars templates for data fields.
+
+Expand table
+
+| Handlebar value                       | Description                          |
+|---------------------------------------|--------------------------------------|
+| `{{author}}`                          | Author.                              |
+| `{{date updated 'MMM, DD YYYY'}}`     | Updated date in the specific format. |
+| `{{link}}`                            | URL.                                 |
+| `{{media:group:media:thumbnail:url}}` | Thumbnail URL.                       |
+| `{{title}}`                           | Title.                               |
+
+The template (Content) displays for each row as defined in the options.
+
+HTML [Copy code to clipboard] Copy
+
+```html
+<table width="100%" style="border: 0">
+  <tr>
+    <td width="*" style="border: 0">
+      <h3>
+        <a target="_blank" style="color: blue" href="{{link}}">{{title}}</a>
+      </h3>
+    </td>
+    <td rowspan="2" style="border: 0" width="30%">
+      <div><img src="{{media:group:media:thumbnail:url}}" /></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="border: 0">
+      <b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b>
+    </td>
+  </tr>
+</table>
+```

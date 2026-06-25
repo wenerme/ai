@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 100 skills available
+> 101 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -59,6 +59,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
+| `grafana-plugin-docs` | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
 | `huggingface-docs` | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
@@ -563,6 +564,16 @@ npx skills add wenerme/ai --skill grafana-docs
 ```
 
 Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki, Elasticsearch, InfluxDB, MySQL, PostgreSQL, CloudWatch, Azure Monitor), provisioning, as-code (Terraform, Ansible, Grafana Operator), RBAC, SSO/SAML/LDAP, plugins, API, or Grafana setup and administration.
+
+</details>
+<details>
+<summary><code>grafana-plugin-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill grafana-plugin-docs
+```
+
+Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as Infinity, CloudWatch, ClickHouse, Zabbix, GitHub, GitLab, Jira, ServiceNow, MongoDB, OpenSearch, Volkov Labs panels, plugin configuration, query editors, variables, annotations, alerting, provisioning, or troubleshooting.
 
 </details>
 <details>
@@ -1117,7 +1128,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 100 skills, 25671 files, 277 MiB total
+> 101 skills, 26257 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1141,7 +1152,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 110 | 3.8 MiB |
+| `claude-code-docs` | 113 | 3.9 MiB |
 | `clickhouse-docs` | 1087 | 9.9 MiB |
 | `cloudflare-ai` | 1499 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
@@ -1166,6 +1177,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
+| `grafana-plugin-docs` | 581 | 3.5 MiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
@@ -1174,7 +1186,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
-| `llamacpp-docs` | 46 | 415 KiB |
+| `llamacpp-docs` | 46 | 416 KiB |
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
@@ -1210,7 +1222,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
 | `ui-ux-pro-max` | 36 | 1.7 MiB |
-| `ultralytics-docs` | 478 | 4.1 MiB |
+| `ultralytics-docs` | 480 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
