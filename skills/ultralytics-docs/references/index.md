@@ -65,6 +65,12 @@ Request an Enterprise License for commercial use at [Ultralytics Licensing](http
   <a href="https://discord.com/invite/ultralytics">[Ultralytics Discord]</a>
 </div>
 
+!!! tip "🚀 New: Knowledge Distillation"
+
+    Train smaller YOLO models with guidance from a larger teacher model — no extra inference cost, just better accuracy.
+
+    [:octicons-arrow-right-24: Learn more](guides/knowledge-distillation.md)
+
 ## Where to Start
 
 <div class="grid cards" markdown>

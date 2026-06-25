@@ -1128,7 +1128,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 101 skills, 26248 files, 280 MiB total
+> 101 skills, 26257 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1152,7 +1152,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 110 | 3.8 MiB |
+| `claude-code-docs` | 113 | 3.9 MiB |
 | `clickhouse-docs` | 1087 | 9.9 MiB |
 | `cloudflare-ai` | 1499 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
@@ -1173,20 +1173,20 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 289 | 449 KiB |
+| `glab-docs` | 290 | 451 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `grafana-plugin-docs` | 581 | 3.5 MiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
-| `llamacpp-docs` | 46 | 415 KiB |
+| `llamacpp-docs` | 46 | 416 KiB |
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
@@ -1201,7 +1201,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 442 | 2.3 MiB |
+| `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
@@ -1222,7 +1222,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
 | `ui-ux-pro-max` | 36 | 1.7 MiB |
-| `ultralytics-docs` | 478 | 4.1 MiB |
+| `ultralytics-docs` | 480 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
