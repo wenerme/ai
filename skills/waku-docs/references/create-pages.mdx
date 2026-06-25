@@ -1,0 +1,811 @@
+---
+title: createPages
+description: The low-level routing API.
+---
+
+## Routing (low-level API)
+
+The entry point for programmatic routing in Waku projects is `./src/waku.server.tsx`. In that file, call `createPages(...)` and pass the result to an adapter.
+
+`createPage`, `createLayout`, `createRoot`, `createSlice`, and `createApi` register programmatic routes and renderable entries. Pages, layouts, roots, and slices specify a React component and render method. APIs specify HTTP handlers. Waku currently supports two render options: `'static'` for static prerendering (SSG) or `'dynamic'` for server-side rendering (SSR).
+
+For example, you can statically prerender a global header and footer in the root layout at build time, but dynamically render the rest of a home page at request time for personalized user experiences.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { RootLayout } from './templates/root-layout';
+import { HomePage } from './templates/home-page';
+import { Root } from './components/root';
+import { Slice } from './components/slice';
+
+const pages = createPages(
+  async ({ createPage, createLayout, createRoot, createSlice, createApi }) => [
+    // Create root component
+    // not required, but supported for customizing
+    // `<html>`, `<head>`, and `<body>` tags
+    createRoot({
+      render: 'static',
+      component: Root,
+    }),
+
+    // Create root layout
+    createLayout({
+      render: 'static',
+      path: '/',
+      component: RootLayout,
+    }),
+
+    // Create home page
+    createPage({
+      render: 'dynamic',
+      path: '/',
+      component: HomePage,
+    }),
+
+    // Create slice
+    createSlice({
+      render: 'static',
+      component: Slice,
+      id: 'slice-1',
+    }),
+
+    // Create API endpoint
+    createApi({
+      render: 'static',
+      path: '/health',
+      method: 'GET',
+      handler: async () => new Response('OK'),
+    }),
+  ],
+);
+
+export default adapter(pages);
+```
+
+### Pages
+
+#### Single routes
+
+Pages can be rendered as a single route (e.g., `/about`).
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { AboutPage } from './templates/about-page';
+import { BlogIndexPage } from './templates/blog-index-page';
+
+const pages = createPages(async ({ createPage }) => [
+  // Create about page
+  createPage({
+    render: 'static',
+    path: '/about',
+    component: AboutPage,
+  }),
+
+  // Create blog index page
+  createPage({
+    render: 'static',
+    path: '/blog',
+    component: BlogIndexPage,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+#### Segment routes
+
+Pages can also render a segment route (e.g., `/blog/[slug]`). The rendered React component automatically receives a prop named by the segment (e.g, `slug`) with the value of the rendered segment (e.g., `'introducing-waku'`). If statically prerendering a segment route at build time, a `staticPaths` array must also be provided.
+
+**Note:** When using `staticPaths`, spaces in slug values are sanitized to `-`.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { BlogArticlePage } from './templates/blog-article-page';
+import { ProductCategoryPage } from './templates/product-category-page';
+
+const pages = createPages(async ({ createPage }) => [
+  // Create blog article pages
+  // `<BlogArticlePage>` receives `slug` prop
+  createPage({
+    render: 'static',
+    path: '/blog/[slug]',
+    staticPaths: ['introducing-waku', 'introducing-create-pages'],
+    component: BlogArticlePage,
+  }),
+
+  // Create product category pages
+  // `<ProductCategoryPage>` receives `category` prop
+  createPage({
+    render: 'dynamic',
+    path: '/shop/[category]',
+    component: ProductCategoryPage,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+Static paths (or other values) could also be generated programmatically.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { getBlogPaths } from './lib/get-blog-paths';
+import { BlogArticlePage } from './templates/blog-article-page';
+
+const pages = createPages(async ({ createPage }) => {
+  const blogPaths = await getBlogPaths();
+
+  return [
+    createPage({
+      render: 'static',
+      path: '/blog/[slug]',
+      staticPaths: blogPaths,
+      component: BlogArticlePage,
+    }),
+  ];
+});
+
+export default adapter(pages);
+```
+
+#### Nested segment routes
+
+Routes can contain multiple segments (e.g., `/shop/[category]/[product]`).
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { ProductDetailPage } from './templates/product-detail-page';
+
+const pages = createPages(async ({ createPage }) => [
+  // Create product detail pages
+  // `<ProductDetailPage>` receives `category` and `product` props
+  createPage({
+    render: 'dynamic',
+    path: '/shop/[category]/[product]',
+    component: ProductDetailPage,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+For static prerendering of nested segment routes, the `staticPaths` array is instead composed of ordered arrays.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { ProductDetailPage } from './templates/product-detail-page';
+
+const pages = createPages(async ({ createPage }) => [
+  // Create product detail pages
+  // `<ProductDetailPage>` receives `category` and `product` props
+  createPage({
+    render: 'static',
+    path: '/shop/[category]/[product]',
+    staticPaths: [
+      ['some-category', 'some-product'],
+      ['some-category', 'another-product'],
+    ],
+    component: ProductDetailPage,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+#### Catch-all routes
+
+Catch-all or "wildcard" routes (e.g., `/app/[...catchAll]`) have indefinite segments. Wildcard routes receive a prop with segment values as an ordered array.
+
+For example, the `/app/profile/settings` route would receive a `catchAll` prop with the value `['profile', 'settings']`. These values can then be used to determine what to render in the component.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { DashboardPage } from './templates/dashboard-page';
+
+const pages = createPages(async ({ createPage }) => [
+  // Create account dashboard
+  // `<DashboardPage>` receives `catchAll` prop (string[])
+  createPage({
+    render: 'dynamic',
+    path: '/app/[...catchAll]',
+    component: DashboardPage,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+### Advanced page options
+
+#### Disabling SSR
+
+`unstable_disableSSR` disables document SSR for a page. Runtime document requests return Waku's fallback HTML shell, and build output uses fallback HTML for that route. The RSC payload is still available to the client router.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { AppPage } from './templates/app-page';
+
+const pages = createPages(async ({ createPage }) => [
+  createPage({
+    render: 'static',
+    path: '/app',
+    component: AppPage,
+    unstable_disableSSR: true,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+This option is unstable and may change.
+
+#### Exact paths
+
+`exactPath: true` treats the path string literally. Slug and wildcard tokens such as `[slug]` or `[...path]` are matched as literal path segments instead of dynamic route patterns.
+
+```tsx
+createPage({
+  render: 'static',
+  path: '/legacy/[literal]',
+  exactPath: true,
+  component: LegacyPage,
+});
+```
+
+This is primarily intended for custom router integrations.
+
+### Router paths type safety
+
+Waku provides inference for the router paths when created pages are returned from the callback passed into `createPages`. The following example shows how to setup router paths type safety.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+import type { PathsForPages } from 'waku/router';
+
+import { RootLayout } from './templates/root-layout';
+import { HomePage } from './templates/home-page';
+
+const pages = createPages(async ({ createPage, createLayout }) => [
+  createLayout({
+    render: 'static',
+    path: '/',
+    component: RootLayout,
+  }),
+
+  createPage({
+    render: 'dynamic',
+    path: '/',
+    component: HomePage,
+  }),
+]);
+
+declare module 'waku/router' {
+  interface RouteConfig {
+    paths: PathsForPages<typeof pages>;
+  }
+  interface CreatePagesConfig {
+    pages: typeof pages;
+  }
+}
+
+export default adapter(pages);
+```
+
+Once this is done, any `<Link />` component or hook from `waku/router` that uses paths in your app will use this type. In this case, the one valid use would be `<Link to="/" />`, but as you add more pages to the router, this type will grow to include them.
+
+#### PageProps
+
+The `PageProps` type gives you type safety for the path and slug parameters in your pages.
+
+```tsx
+// ./src/templates/about-page.tsx
+import type { PageProps } from 'waku/router';
+
+// PageProps<'/about/[foo]'> => { path: `/about/${string}`; foo: string; query: string; hash: string; }
+export const AboutPage = ({ foo }: PageProps<'/about/[foo]'>) => {
+  return <>{/* ...*/}</>;
+};
+```
+
+### Layouts
+
+Layouts wrap an entire route and its descendents. They must accept a `children` prop of type `ReactNode`. While not required, you will typically want at least a root layout.
+
+#### Root layout
+
+The root layout rendered at `path: '/'` is especially useful. It can be used for setting global styles, global metadata, global providers, global data, and global components, such as a header and footer.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { RootLayout } from './templates/root-layout';
+
+const pages = createPages(async ({ createLayout }) => [
+  // Add a global header and footer
+  createLayout({
+    render: 'static',
+    path: '/',
+    component: RootLayout,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+```tsx
+// ./src/templates/root-layout.tsx
+import '../styles.css';
+
+import { Providers } from '../components/providers';
+import { Header } from '../components/header';
+import { Footer } from '../components/footer';
+
+export const RootLayout = async ({ children }) => {
+  return (
+    <Providers>
+      <link rel="icon" type="image/png" href="/images/favicon.png" />
+      <meta property="og:image" content="/images/opengraph.png" />
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </Providers>
+  );
+};
+```
+
+```tsx
+// ./src/components/providers.tsx
+'use client';
+
+import { createStore, Provider } from 'jotai';
+
+const store = createStore();
+
+export const Providers = ({ children }) => {
+  return <Provider store={store}>{children}</Provider>;
+};
+```
+
+#### Other layouts
+
+Layouts are also helpful further down the tree. For example, you could add a layout at `path: '/blog'` to add a sidebar to both the blog index and all blog article pages.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { BlogLayout } from './templates/blog-layout';
+
+const pages = createPages(async ({ createLayout }) => [
+  createLayout({
+    render: 'static',
+    path: '/blog',
+    component: BlogLayout,
+  }),
+]);
+
+export default adapter(pages);
+```
+
+```tsx
+// ./src/templates/blog-layout.tsx
+import { Sidebar } from '../components/sidebar';
+
+export const BlogLayout = async ({ children }) => {
+  return (
+    <div className="flex">
+      <div>{children}</div>
+      <Sidebar />
+    </div>
+  );
+};
+```
+
+### Root component
+
+Root component is a special component that is rendered at the root of html document. It is useful for customizing `<html>`, `<head>`, and `<body>` tags.
+
+```tsx
+// ./src/components/root.tsx
+
+export const Root = ({ children }) => {
+  return (
+    <html lang="en">
+      <head></head>
+      <body>{children}</body>
+    </html>
+  );
+};
+```
+
+Add this with `createRoot` function inside `createPages`.
+
+#### Note About `<head>`
+
+If you only need to customize `<head>`, you can rely on React's [Support for Document Metadata](https://react.dev/blog/2024/04/25/react-19#support-for-metadata-tags) and do not need to use `createRoot`.
+
+### Client entry point
+
+The file `./src/waku.server.tsx` is the entry point for the server.
+For the client, the entry point file is `./src/waku.client.tsx`.
+
+The default client entry file content is the following.
+
+```tsx
+import { Component, StrictMode } from 'react';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { Router } from 'waku/router/client';
+
+const rootElement = (
+  <StrictMode>
+    <Router />
+  </StrictMode>
+);
+
+if (globalThis.__WAKU_HYDRATE__) {
+  hydrateRoot(document, rootElement);
+} else {
+  createRoot(document).render(rootElement);
+}
+```
+
+You can omit `./src/waku.client.tsx` unless you need to modify it.
+
+### APIs
+
+APIs are created with `createApi` inside `createPages`. Unlike file-system API routes, programmatic API paths are used as written.
+
+Static APIs support `GET` handlers and can be emitted at build time:
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+const pages = createPages(async ({ createApi }) => [
+  createApi({
+    render: 'static',
+    path: '/rss.xml',
+    method: 'GET',
+    handler: async () => {
+      return new Response('<rss />', {
+        headers: { 'Content-Type': 'application/rss+xml' },
+      });
+    },
+  }),
+]);
+
+export default adapter(pages);
+```
+
+Dynamic APIs use a `handlers` object. Named methods take precedence over `all`.
+
+```tsx
+const pages = createPages(async ({ createApi }) => [
+  createApi({
+    render: 'dynamic',
+    path: '/api/users/[id]',
+    handlers: {
+      GET: async (_req, { params }) => {
+        return Response.json({ id: params.id });
+      },
+      all: async () => new Response('Method not allowed', { status: 405 }),
+    },
+  }),
+]);
+```
+
+Static APIs with dynamic segments can use `staticPaths`, similar to static pages:
+
+```tsx
+createApi({
+  render: 'static',
+  path: '/feeds/[category]',
+  method: 'GET',
+  staticPaths: ['news', 'docs'],
+  handler: async (_req, { params }) => {
+    return new Response(`Feed for ${params.category}`);
+  },
+});
+```
+
+Wildcard API params are passed as `string[]`, and named segment params are passed as `string`.
+
+### Slices
+
+Slices are reusable components that can be rendered `static` or `dynamic` in their own right. This allows for patterns like adding `static` components wherever they'll compose nicely inside your `dynamic` or `static` layouts & pages.
+
+#### Creating slices
+
+Slices are created with `createSlice` inside `createPages`. Each slice needs a unique `id`, a `component`, and a `render` mode.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { SliceOne } from './components/slice-one';
+import { SliceTwo } from './components/slice-two';
+
+const pages = createPages(async ({ createSlice }) => [
+  // Create static slice
+  createSlice({
+    render: 'static',
+    component: SliceOne,
+    id: 'one',
+  }),
+
+  // Create dynamic slice
+  createSlice({
+    render: 'dynamic',
+    component: SliceTwo,
+    id: 'two',
+  }),
+]);
+
+export default adapter(pages);
+```
+
+```tsx
+// ./src/components/slice-one.tsx
+
+export const SliceOne = () => {
+  return <p>Static slice content</p>;
+};
+```
+
+#### Using slices
+
+Slices are used in pages and layouts by importing the `Slice` component from Waku and specifying the slice ID. The `slices` array in the page's config must include all slice IDs used on that page.
+
+```tsx
+// ./src/templates/home-page.tsx
+import { Slice } from 'waku';
+
+export const HomePage = () => {
+  return (
+    <div>
+      <Slice id="one" />
+      <Slice id="two" />
+    </div>
+  );
+};
+```
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { HomePage } from './templates/home-page';
+import { SliceOne } from './components/slice-one';
+import { SliceTwo } from './components/slice-two';
+
+const pages = createPages(async ({ createPage, createSlice }) => [
+  createPage({
+    render: 'static',
+    path: '/',
+    component: HomePage,
+    slices: ['one', 'two'],
+  }),
+
+  createSlice({
+    render: 'static',
+    component: SliceOne,
+    id: 'one',
+  }),
+
+  createSlice({
+    render: 'dynamic',
+    component: SliceTwo,
+    id: 'two',
+  }),
+]);
+
+export default adapter(pages);
+```
+
+#### Lazy slices
+
+Lazy slices allow components to be requested independently from the page they are used on, similar to Astro's server islands feature. This is useful for components that will be dynamically rendered on otherwise static pages.
+
+Lazy slices are marked with the `lazy` prop and can include a `fallback` component to display while loading.
+
+```tsx
+// ./src/templates/home-page.tsx
+import { Slice } from 'waku';
+
+export const HomePage = () => {
+  return (
+    <div>
+      <Slice id="one" />
+      <Slice id="two" lazy fallback={<p>Loading...</p>} />
+    </div>
+  );
+};
+```
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { HomePage } from './templates/home-page';
+import { SliceOne } from './components/slice-one';
+import { SliceTwo } from './components/slice-two';
+
+const pages = createPages(async ({ createPage, createSlice }) => [
+  createPage({
+    render: 'static',
+    path: '/',
+    component: HomePage,
+    slices: ['one'], // Note: 'two' is lazy, so it is not included
+  }),
+
+  createSlice({
+    render: 'static',
+    component: SliceOne,
+    id: 'one',
+  }),
+
+  createSlice({
+    render: 'dynamic',
+    component: SliceTwo,
+    id: 'two',
+  }),
+]);
+
+export default adapter(pages);
+```
+
+This allows you to have a `dynamic` slice component while keeping the rest of the page static.
+
+#### Slug slices
+
+Slug slices support dynamic segments in their ID, similar to dynamic route paths. This lets you create a single slice definition that handles many concrete IDs by extracting parameters from the path and passing them as props.
+
+Slug slices use `render: 'dynamic'` and are always loaded lazily, since concrete IDs are not known at build time.
+
+```tsx
+// ./src/components/tooltip-slice.tsx
+
+export const TooltipSlice = ({ id }: { id: string }) => {
+  // fetch tooltip data based on id...
+  return <p>Tooltip content for {id}</p>;
+};
+```
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { HomePage } from './templates/home-page';
+import { TooltipSlice } from './components/tooltip-slice';
+
+const pages = createPages(async ({ createPage, createSlice }) => [
+  createPage({
+    render: 'static',
+    path: '/',
+    component: HomePage,
+  }),
+
+  createSlice({
+    render: 'dynamic',
+    component: TooltipSlice,
+    id: 'tooltip/[id]',
+  }),
+]);
+
+export default adapter(pages);
+```
+
+```tsx
+// ./src/templates/home-page.tsx
+import { Slice } from 'waku';
+
+export const HomePage = () => {
+  return (
+    <div>
+      <Slice id="tooltip/123" lazy fallback={<p>Loading...</p>} />
+      <Slice id="tooltip/456" lazy fallback={<p>Loading...</p>} />
+    </div>
+  );
+};
+```
+
+When `<Slice id="tooltip/123" lazy />` is requested, Waku matches it against the `tooltip/[id]` pattern, extracts `{ id: "123" }`, and passes those params as props to the component.
+
+With the file-system router, slug slices work the same way as slug pages — create a file at `src/pages/_slices/tooltip/[id].tsx` and the ID pattern is derived from the file path.
+
+Multiple dynamic segments are also supported (e.g., `items/[category]/[id]`), and each extracted parameter is passed as a separate prop.
+
+### Handler interceptors
+
+A handler interceptor wraps each render, in both the request and build phases, so it runs inside the request scope where `unstable_getRequest` is available. It also wraps API route handlers. Use it to install an `AsyncLocalStorage` for the render or to set the inline-script nonce.
+
+```ts
+type HandlerInterceptor = <T>(next: () => Promise<T>) => Promise<T>;
+```
+
+Register interceptors with `createInterceptor` inside `createPages`. They compose as onion wrappers around `next`: the first registered interceptor is the outermost, so it runs first on the way in and last on the way out.
+
+```tsx
+// ./src/waku.server.tsx
+import { createPages } from 'waku';
+import adapter from 'waku/adapters/default';
+
+import { HomePage } from './templates/home-page';
+
+const pages = createPages(async ({ createPage, createInterceptor }) => {
+  createInterceptor(async (next) => {
+    console.log('render start');
+    const result = await next();
+    console.log('render end');
+    return result;
+  });
+  return [
+    createPage({
+      render: 'dynamic',
+      path: '/',
+      component: HomePage,
+    }),
+  ];
+});
+
+export default adapter(pages);
+```
+
+The `HandlerInterceptor` type is available from `waku/router/server`. The file-system router has an equivalent `src/pages/_interceptors/` convention, where modules are registered in sorted filename order (so the first becomes the outermost wrapper).
+
+See [Request Context](/guides/request-context) for seeding your own store and [Configure CSP](/guides/csp) for the nonce recipe.
+
+### Build options
+
+`createPages` accepts an optional second argument with `unstable_skipBuild`. This callback receives a route path and can skip static build output for matching static routes or APIs.
+
+```tsx
+const pages = createPages(
+  async ({ createPage }) => [
+    createPage({
+      render: 'static',
+      path: '/preview',
+      component: PreviewPage,
+    }),
+  ],
+  {
+    unstable_skipBuild: (routePath) => routePath === '/preview',
+  },
+);
+```
+
+This option only affects build output. It does not remove the route from runtime routing.

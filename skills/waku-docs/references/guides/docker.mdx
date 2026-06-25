@@ -1,0 +1,99 @@
+---
+title: Dockerise a Waku app
+description: How to package a Waku app into a Docker image.
+category: Deployment
+order: 30
+---
+
+## Build a Docker Image
+
+Bundle your Waku app into a Docker image for portability and deployment in container-based environments.
+
+### Prerequisites
+
+Make sure Docker is installed on your machine. This guide assumes an npm-based Waku app. If your project uses pnpm or another package manager, use the matching lockfile and install commands in the Dockerfile.
+
+### Dockerfile
+
+Create a `Dockerfile` in your project root:
+
+```dockerfile
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+FROM node:22-alpine AS runner
+
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 8080
+
+CMD ["npm", "run", "start"]
+```
+
+This Dockerfile uses Docker's [multi-stage build](https://docs.docker.com/build/building/multi-stage/) pattern:
+
+- the `builder` stage installs all dependencies and runs `npm run build`
+- the `runner` stage installs production dependencies and copies only the built `dist` output
+- the container starts the app with `npm run start`
+
+A health check command can be optionally included at the end of the Dockerfile. An example would be:
+`HEALTHCHECK --interval=30s CMD wget -qO- http://localhost:8080 || exit 1`
+
+### .dockerignore file
+
+Use an ignore file to avoid copying unnecessary/undesirable files into the image. For example:
+
+```
+/node_modules
+.git
+dist
+.vscode
+```
+
+This way `node_modules` files will not be copied in the above Dockerfile setup.
+
+### Compose File
+
+To streamline local container startup, create a compose file:
+
+```yaml
+services:
+  waku-app:
+    build:
+      context: .
+    image: waku-app
+    environment:
+      NODE_ENV: production
+    ports:
+      - '8080:8080'
+```
+
+Specify the name of the service, and within it add the following:
+
+- build context ( _cwd_ ) where the build process should take place
+- image name so that the correct image is used to create the container
+- environment variables
+- port forwarding so the app is accessible on the host machine (e.g. in your browser)
+
+### Build the container
+
+Finally, build and start the container:
+
+```sh
+docker compose up --build
+```
+
+The app should be available at [http://localhost:8080](http://localhost:8080).

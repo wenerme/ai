@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 101 skills available
+> 103 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -60,6 +60,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
 | `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
 | `grafana-plugin-docs` | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
+| `hono-docs` | Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request... | [honojs/website/docs](https://github.com/honojs/website/tree/main/docs) |
 | `huggingface-docs` | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
 | `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
 | `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
@@ -109,6 +110,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
 | `wails-docs` | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... | [wailsapp/wails](https://github.com/wailsapp/wails) |
+| `waku-docs` | Use when working with Waku, the React 19 framework for React Server Components: file-system routing, createPages... | [wakujs/waku/docs](https://github.com/wakujs/waku/tree/main/docs) |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -574,6 +576,16 @@ npx skills add wenerme/ai --skill grafana-plugin-docs
 ```
 
 Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as Infinity, CloudWatch, ClickHouse, Zabbix, GitHub, GitLab, Jira, ServiceNow, MongoDB, OpenSearch, Volkov Labs panels, plugin configuration, query editors, variables, annotations, alerting, provisioning, or troubleshooting.
+
+</details>
+<details>
+<summary><code>hono-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill hono-docs
+```
+
+Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request APIs, middleware, helpers, RPC client, validation, JSX, testing, deployment on Cloudflare Workers/Pages, Bun, Deno, Node.js, AWS Lambda, Vercel, Netlify, Fastly, service workers, or runtime-specific adapters.
 
 </details>
 <details>
@@ -1067,6 +1079,16 @@ Wails documentation — build desktop applications using Go and web technologies
 
 </details>
 <details>
+<summary><code>waku-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill waku-docs
+```
+
+Use when working with Waku, the React 19 framework for React Server Components: file-system routing, createPages low-level routing, server/client components, API routes, server actions, navigation/prefetching, request context, custom routers, adapters, static or dynamic deployments, Cloudflare/AWS Lambda/Docker deployment, CSP, redirects, typed routes, no-SSR, or Waku build/runtime behavior.
+
+</details>
+<details>
 <summary><code>wode-db-schema-pattern</code></summary>
 
 ```bash
@@ -1128,7 +1150,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 101 skills, 26257 files, 281 MiB total
+> 103 skills, 26366 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1167,7 +1189,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1572 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 274 | 1.7 MiB |
+| `evalscope-docs` | 274 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
@@ -1178,6 +1200,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `grafana-plugin-docs` | 581 | 3.5 MiB |
+| `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
@@ -1227,6 +1250,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
 | `wails-docs` | 56 | 314 KiB |
+| `waku-docs` | 24 | 140 KiB |
 | `wode-db-schema-pattern` | 2 | 8.8 KiB |
 | `wode-emittery-pattern` | 2 | 9.8 KiB |
 | `writing-skills` | 7 | 105 KiB |

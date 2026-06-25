@@ -1,0 +1,328 @@
+---
+title: Deploy Waku to AWS Lambda
+description: Deploy a Waku application with the experimental AWS Lambda adapter.
+category: Deployment
+order: 20
+tags: [Experimental]
+---
+
+## Configure the AWS Lambda Adapter
+
+Use `waku/adapters/aws-lambda` in `src/waku.server.tsx`:
+
+```ts
+import { fsRouter } from 'waku';
+import adapter from 'waku/adapters/aws-lambda';
+
+export default adapter(
+  fsRouter(import.meta.glob('./**/*.{tsx,ts}', { base: './pages' })),
+  { streaming: false },
+);
+```
+
+The AWS Lambda adapter adds a generated handler module during `waku build`:
+
+- generated file: `dist/serve-aws-lambda.js`
+- exported handler: `handler`
+
+If the deployment package root is your project root, use `dist/serve-aws-lambda.handler` as the Lambda handler. If the deployment package root is `dist`, use `serve-aws-lambda.handler`.
+
+To enable Lambda response streaming, set `streaming: true` in the adapter options:
+
+```ts
+export default adapter(
+  fsRouter(import.meta.glob('./**/*.{tsx,ts}', { base: './pages' })),
+  { streaming: true },
+);
+```
+
+Files that your server code reads directly, such as `fs.readFile('./private/data.json')`, must be included in your deployment package.
+
+## [Serverless Framework](https://www.serverless.com)
+
+### Installation
+
+Add this Serverless Framework plugin to your project:
+
+```sh
+pnpm add -D serverless-scriptable-plugin
+```
+
+### Setup
+
+Create a `serverless.yml` with this content and change `service:` to your project name.
+
+```yml
+service: waku-aws-lambda
+frameworkVersion: '3'
+configValidationMode: error
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  architecture: arm64
+  deploymentMethod: direct
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  versionFunctions: false
+
+plugins:
+  - serverless-scriptable-plugin
+
+package:
+  patterns:
+    - '!**/**'
+    - 'private/**' # include all static files and directories from ./private directory
+    - 'dist/**'
+
+functions:
+  ssr:
+    handler: dist/serve-aws-lambda.handler
+    events:
+      - httpApi: '*'
+
+custom:
+  scriptable:
+    # add custom hooks
+    hooks:
+      before:package:createDeploymentArtifacts:
+        - pnpm exec waku build
+```
+
+This configuration will include all files from the `./private` directory in the final deployment.
+
+### Deploy
+
+```sh
+pnpx serverless deploy
+```
+
+Output:
+
+```
+✔ Service deployed to stack waku-aws-lambda-m-dev (95s)
+
+endpoint: ANY - https://<your-application>.execute-api.us-east-1.amazonaws.com
+functions:
+  ssr: waku-aws-lambda-m-dev-ssr (325 kB)
+```
+
+You can access the frontend through the url provided as the `endpoint:`
+
+For more configuration options and how to use a custom domain visit the Serverless framework [documentation](https://www.serverless.com/framework/docs).
+
+## AWS CDK
+
+### Setup
+
+Initialize your project with the `cdk` CLI:
+
+```sh
+mkdir cdk && cd "$_"
+pnpx cdk init app -l typescript --generate-only
+cd ..
+cp cdk/cdk.json .
+```
+
+Change the entry in `cdk.json`:
+
+```diff
+-  "app": "npx ts-node --prefer-ts-exts bin/cdk.ts",
++  "app": "infra/main.js",
+```
+
+Remove these lines:
+
+```diff
+-  "watch": {
+-    "include": [
+-      "**"
+-    ],
+-    "exclude": [
+-      "README.md",
+-      "cdk*.json",
+-      "**/*.d.ts",
+-      "**/*.js",
+-      "tsconfig.json",
+-      "package*.json",
+-      "yarn.lock",
+-      "node_modules",
+-      "test"
+-    ]
+-  },
+```
+
+Remove the `cdk` directory:
+
+```sh
+rm -fr cdk
+```
+
+Add packages:
+
+```sh
+pnpm add -D aws-cdk
+pnpm add aws-cdk-lib constructs
+```
+
+Create the infrastructure directory:
+
+```sh
+mkdir -p  infra/lib
+```
+
+Bootstrap the AWS CDK:
+
+```sh
+pnpm cdk bootstrap
+```
+
+Create `infra/main.js`:
+
+```js
+#!/usr/bin/env node
+//import 'source-map-support/register';
+import * as cdk from 'aws-cdk-lib';
+import { WakuStack } from './lib/waku-stack.js';
+
+const app = new cdk.App();
+new WakuStack(app, 'WakuStack', {
+  /* If you don't specify 'env', this stack will be environment-agnostic.
+   * Account/Region-dependent features and context lookups will not work,
+   * but a single synthesized template can be deployed anywhere. */
+  /* Uncomment the next line to specialize this stack for the AWS Account
+   * and Region that are implied by the current CLI configuration. */
+  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+  /* Uncomment the next line if you know exactly what Account and Region you
+   * want to deploy the stack to. */
+  // env: { account: '123456789012', region: 'us-east-1' },
+  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+});
+```
+
+Create `infra/lib/waku-stack.js`:
+
+```js
+import * as cdk from 'aws-cdk-lib';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import { HttpLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
+import { HttpApi } from 'aws-cdk-lib/aws-apigatewayv2';
+import { spawnSync } from 'node:child_process';
+import { existsSync, cpSync } from 'node:fs';
+import { join } from 'node:path';
+
+export class WakuStack extends cdk.Stack {
+  constructor(scope, id, props) {
+    super(scope, id, props);
+
+    const fn = new lambda.Function(this, 'waku-lambda', {
+      code: lambda.Code.fromAsset('dist', {
+        bundling: {
+          image: cdk.DockerImage.fromRegistry('local'),
+          local: {
+            tryBundle(outputDir) {
+              spawnSync('pnpm', ['exec', 'waku', 'build'], {
+                stdio: 'inherit',
+              });
+              cpSync('dist', outputDir, { recursive: true, dereference: true });
+              if (existsSync('private')) {
+                cpSync('private', join(outputDir, 'private'), {
+                  recursive: true,
+                  dereference: true,
+                });
+              }
+              return true;
+            },
+          },
+        },
+      }),
+      handler: 'serve-aws-lambda.handler',
+      architecture: lambda.Architecture.ARM_64,
+      runtime: lambda.Runtime.NODEJS_20_X,
+    });
+
+    const httpApi = new HttpApi(this, 'waku-http-api', {
+      defaultIntegration: new HttpLambdaIntegration('waku-integration', fn),
+    });
+
+    fn.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    });
+
+    // Add an output with the API URL.
+    new cdk.CfnOutput(this, 'waku-http-api-url', {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      value: httpApi.url,
+    });
+  }
+}
+```
+
+This configuration will include all files from the `./private` directory in the final deployment.
+
+Deploy to AWS:
+
+```sh
+pnpm cdk deploy WakuStack
+```
+
+For more configuration options and how to use a custom domain, visit the AWS CDK [documentation](https://docs.aws.amazon.com/cdk/v2/guide/home.html).
+
+## sst.dev V3
+
+This example uses Lambda response streaming, so set `streaming: true` in the adapter options.
+
+### Setup
+
+1. Run `pnpm sst@latest init`
+
+### Configuration
+
+Use this as an example to run Waku as a Lambda function:
+
+sst.config.ts
+
+```ts
+/// <reference path="./.sst/platform/config.d.ts" />
+
+export default $config({
+  app(input) {
+    return {
+      name: 'waku03demo',
+      removal: input?.stage === 'production' ? 'retain' : 'remove',
+      home: 'aws',
+    };
+  },
+  async run() {
+    const WakuDemoApp = new sst.aws.Function('WakuDemoApp', {
+      url: true,
+      streaming: true,
+      //timeout: "15 minutes",
+      handler: 'dist/serve-aws-lambda.handler',
+      bundle: 'bundle', // disable bundling with esbuild
+      copyFiles: [
+        {
+          from: 'dist',
+        },
+        {
+          from: 'private',
+        },
+      ],
+      environment: {
+        NODE_ENV: 'production',
+      },
+    });
+    return {
+      api: WakuDemoApp.url,
+    };
+  },
+});
+```
+
+### Deploy
+
+```sh
+pnpx sst deploy
+```
+
+[sst.dev documentation](https://sst.dev/docs)
