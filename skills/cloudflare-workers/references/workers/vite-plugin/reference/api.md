@@ -53,8 +53,8 @@ See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/
 Expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).
 Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.
 
-  * [  JavaScript ](#tab-panel-12279)
-  * [  TypeScript ](#tab-panel-12280)
+  * [  JavaScript ](#tab-panel-12319)
+  * [  TypeScript ](#tab-panel-12320)
 vite.config.js
 ```
 import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
@@ -65,13 +65,13 @@ vite.config.ts
 import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
 export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
 ```
-See [Share a local dev server](https://developers.cloudflare.com/workers/development-testing/local-dev-tunnels/) for more information.
+See [Share a local dev server](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/) for more information.
 * `auxiliaryWorkers` ` Array<AuxiliaryWorkerConfig> ` optional
 An optional array of auxiliary Workers. Auxiliary Workers are additional Workers that are used as part of your application. You can use [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to call auxiliary Workers from your main (entry) Worker. All requests are routed through your entry Worker. During the build, each Worker is output to a separate subdirectory of `dist`.
 Note
 When running `wrangler deploy`, only your main (entry) Worker will be deployed. If using multiple Workers, each auxiliary Worker must be deployed individually. You can inspect the `dist` directory and then run `wrangler deploy -c dist/<auxiliary-worker>/wrangler.json` for each.
 * `remoteBindings` ` boolean ` optional
-Whether or not [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) should be enabled. Defaults to `true`.
+Whether or not [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) should be enabled. Defaults to `true`.
 
 ## `interface AuxiliaryWorkerConfig`
 
@@ -89,6 +89,6 @@ The `childEnvironments` option is for supporting React Server Components via [@v
 See [Vite Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/api/#page","headline":"API · Cloudflare Workers docs","description":"Vite plugin API","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/api/#page","headline":"API · Cloudflare Workers docs","description":"Vite plugin API","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/vite-plugin/reference/api/","name":"API"}}]}
 ```

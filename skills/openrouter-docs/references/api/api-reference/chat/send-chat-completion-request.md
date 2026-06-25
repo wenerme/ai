@@ -773,6 +773,7 @@ components:
       enum:
         - general-high
         - general-budget
+        - general-fast
       description: >-
         A curated OpenRouter fusion preset (slugs follow `<task>-<tier>`, e.g.
         `general-high`). Expands server-side into the preset's analysis_models
@@ -1200,12 +1201,14 @@ components:
         - Google
         - Google AI Studio
         - Groq
+        - HeyGen
         - Inception
         - Inceptron
         - InferenceNet
         - Ionstream
         - Infermatic
         - Io Net
+        - Inferact vLLM
         - Inflection
         - Liquid
         - Mara

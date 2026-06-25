@@ -1117,7 +1117,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 100 skills, 25667 files, 277 MiB total
+> 100 skills, 25671 files, 277 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1145,11 +1145,11 @@ Use when implementing React state management with Zustand, including context-sco
 | `clickhouse-docs` | 1087 | 9.9 MiB |
 | `cloudflare-ai` | 1499 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
-| `cloudflare-docs` | 3 | 31 KiB |
+| `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 823 | 4.9 MiB |
 | `cloudflare-observability-admin` | 1222 | 8.1 MiB |
 | `cloudflare-security` | 1001 | 5.5 MiB |
-| `cloudflare-workers` | 768 | 6.9 MiB |
+| `cloudflare-workers` | 769 | 6.9 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
@@ -1178,7 +1178,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 756 | 5.9 MiB |
+| `mastra-docs` | 757 | 5.9 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1190,7 +1190,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
 | `openobserve-docs` | 445 | 2.3 MiB |
-| `openrouter-docs` | 496 | 6.4 MiB |
+| `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |

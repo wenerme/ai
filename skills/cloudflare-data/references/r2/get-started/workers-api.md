@@ -18,8 +18,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-9903)
-* [ Dashboard ](#tab-panel-9904)
+* [ Wrangler CLI ](#tab-panel-9943)
+* [ Dashboard ](#tab-panel-9944)
 
 1. Log in to your Cloudflare account:
 Terminal window
@@ -66,8 +66,8 @@ cd r2-worker
 ```
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:
 
-  * [  wrangler.jsonc ](#tab-panel-9905)
-  * [  wrangler.toml ](#tab-panel-9906)
+  * [  wrangler.jsonc ](#tab-panel-9945)
+  * [  wrangler.toml ](#tab-panel-9946)
 JSONC
 ```
 {  "r2_buckets": [    {      "binding": "MY_BUCKET",      "bucket_name": "my-bucket"    }  ]}
@@ -86,8 +86,8 @@ npx wrangler types
 
 Use the binding to interact with your bucket. This example stores and retrieves objects based on the URL path:
 
-* [ JavaScript ](#tab-panel-9901)
-* [ TypeScript ](#tab-panel-9902)
+* [ JavaScript ](#tab-panel-9941)
+* [ TypeScript ](#tab-panel-9942)
 
 src/index.js
 
@@ -114,7 +114,7 @@ npx wrangler dev
 ```
 Local development
 By default, `wrangler dev` uses a local R2 simulation. Objects you store during development exist only on your machine in the `.wrangler/state` folder and do not affect your production bucket.
-To connect to your real R2 bucket during development, add `"remote": true` to your R2 binding in your Wrangler configuration file. Refer to [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
+To connect to your real R2 bucket during development, add `"remote": true` to your R2 binding in your Wrangler configuration file. Refer to [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information.
 2. Once the dev server is running, test storing and retrieving objects:
 Terminal window
 ```
@@ -146,6 +146,6 @@ Refer to the [Workers R2 API documentation](https://developers.cloudflare.com/r2
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/workers-api/#page","headline":"Workers API · Cloudflare R2 docs","description":"Use R2 from Cloudflare Workers with the Workers API.","url":"https://developers.cloudflare.com/r2/get-started/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/workers-api/#page","headline":"Workers API · Cloudflare R2 docs","description":"Use R2 from Cloudflare Workers with the Workers API.","url":"https://developers.cloudflare.com/r2/get-started/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/get-started/workers-api/","name":"Workers API"}}]}
 ```

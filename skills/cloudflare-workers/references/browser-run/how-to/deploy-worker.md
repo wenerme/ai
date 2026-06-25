@@ -93,27 +93,27 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-6958)
-* [  wrangler.toml ](#tab-panel-6959)
+* [  wrangler.jsonc ](#tab-panel-6998)
+* [  wrangler.toml ](#tab-panel-6999)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER"  },  "kv_namespaces": [    {      "binding": "BROWSER_KV_DEMO",      "id": "22cf855786094a88a6906f8edac425cd",      "preview_id": "e1f8b68b68d24381b57071445f96e623"    }  ]}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-25",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER"  },  "kv_namespaces": [    {      "binding": "BROWSER_KV_DEMO",      "id": "22cf855786094a88a6906f8edac425cd",      "preview_id": "e1f8b68b68d24381b57071445f96e623"    }  ]}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-25"compatibility_flags = [ "nodejs_compat" ]
 [browser]binding = "MYBROWSER"
 [[kv_namespaces]]binding = "BROWSER_KV_DEMO"id = "22cf855786094a88a6906f8edac425cd"preview_id = "e1f8b68b68d24381b57071445f96e623"
 ```
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-6956)
-* [  TypeScript ](#tab-panel-6957)
+* [  JavaScript ](#tab-panel-6996)
+* [  TypeScript ](#tab-panel-6997)
 
 Update `src/index.js` with your Worker code:
 
@@ -146,7 +146,7 @@ Run `npx wrangler dev` to test your Worker locally.
 
 Use real headless browser during local development
 
-To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 To test taking your first screenshot, go to the following URL:
 

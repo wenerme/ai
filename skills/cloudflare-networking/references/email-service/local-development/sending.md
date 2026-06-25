@@ -33,41 +33,41 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-8603)
-* [  wrangler.toml ](#tab-panel-8604)
+* [  wrangler.jsonc ](#tab-panel-8643)
+* [  wrangler.toml ](#tab-panel-8644)
 
 JSONC
 
 ```
-{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "send_email": [{ "name": "EMAIL" }],}
+{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",  "send_email": [{ "name": "EMAIL" }],}
 ```
 
 TOML
 
 ```
-name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-25"
 [[send_email]]name = "EMAIL"
 ```
 
 ## Remote bindings (recommended)
 
-Using [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) is the recommended way to develop with Email Service locally. By default, `wrangler dev` simulates the email binding locally -- emails are logged to the console but not actually sent. With remote bindings, your Worker runs locally but sends real emails through Email Service.
+Using [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) is the recommended way to develop with Email Service locally. By default, `wrangler dev` simulates the email binding locally -- emails are logged to the console but not actually sent. With remote bindings, your Worker runs locally but sends real emails through Email Service.
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8605)
-* [  wrangler.toml ](#tab-panel-8606)
+* [  wrangler.jsonc ](#tab-panel-8645)
+* [  wrangler.toml ](#tab-panel-8646)
 
 JSONC
 
 ```
-{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "send_email": [    {      "name": "EMAIL",      "remote": true,    },  ],}
+{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",  "send_email": [    {      "name": "EMAIL",      "remote": true,    },  ],}
 ```
 
 TOML
 
 ```
-name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-25"
 [[send_email]]name = "EMAIL"remote = true
 ```
 
@@ -140,6 +140,6 @@ This limitation only affects local development — `ArrayBuffer` content works c
 * See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/local-development/sending/","name":"Email sending"}}]}
 ```

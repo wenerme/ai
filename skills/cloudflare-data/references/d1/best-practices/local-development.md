@@ -48,8 +48,8 @@ wrangler dev
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-7938)
-* [  wrangler.toml ](#tab-panel-7939)
+* [  wrangler.jsonc ](#tab-panel-7978)
+* [  wrangler.toml ](#tab-panel-7979)
 
 JSONC
 
@@ -63,7 +63,7 @@ TOML
 [[d1_databases]]binding = "DB"database_name = "test-db"database_id = "c020574a-5623-407b-be0c-cd192bab9545"
 ```
 
-Note that `wrangler dev` separates local and production (remote) data. A local session does not have access to your production data by default. To access your production (remote) database, set `"remote" : true` in the D1 binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information. Any changes you make when running against a remote database cannot be undone.
+Note that `wrangler dev` separates local and production (remote) data. A local session does not have access to your production data by default. To access your production (remote) database, set `"remote" : true` in the D1 binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information. Any changes you make when running against a remote database cannot be undone.
 
 Refer to the [wrangler dev documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
 
@@ -77,8 +77,8 @@ It is currently not possible to develop against a _remote_ D1 database when usin
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) should resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-7940)
-* [  wrangler.toml ](#tab-panel-7941)
+* [  wrangler.jsonc ](#tab-panel-7980)
+* [  wrangler.toml ](#tab-panel-7981)
 
 JSONC
 
@@ -120,8 +120,8 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
-* [  wrangler.jsonc ](#tab-panel-7942)
-* [  wrangler.toml ](#tab-panel-7943)
+* [  wrangler.jsonc ](#tab-panel-7982)
+* [  wrangler.toml ](#tab-panel-7983)
 
 JSONC
 
@@ -157,8 +157,8 @@ Wrangler exposes an [unstable\_dev()](https://developers.cloudflare.com/workers/
 
 Given the below Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7944)
-* [  wrangler.toml ](#tab-panel-7945)
+* [  wrangler.jsonc ](#tab-panel-7984)
+* [  wrangler.toml ](#tab-panel-7985)
 
 JSONC
 
@@ -208,6 +208,6 @@ Review the [unstable\_dev()](https://developers.cloudflare.com/workers/wrangler/
 * Understand how to [access logs](https://developers.cloudflare.com/workers/observability/logs/) generated from your Worker and D1.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/local-development/#page","headline":"Local development · Cloudflare D1 docs","description":"Run D1 locally with Wrangler to test your Worker and database before deploying to production.","url":"https://developers.cloudflare.com/d1/best-practices/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/local-development/#page","headline":"Local development · Cloudflare D1 docs","description":"Run D1 locally with Wrangler to test your Worker and database before deploying to production.","url":"https://developers.cloudflare.com/d1/best-practices/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/local-development/","name":"Local development"}}]}
 ```

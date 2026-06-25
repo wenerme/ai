@@ -97,8 +97,8 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-11424)
-* [ Wrangler CLI ](#tab-panel-11425)
+* [ Dashboard ](#tab-panel-11464)
+* [ Wrangler CLI ](#tab-panel-11465)
 
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
@@ -153,19 +153,19 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11426)
-* [  wrangler.toml ](#tab-panel-11427)
+* [  wrangler.jsonc ](#tab-panel-11466)
+* [  wrangler.toml ](#tab-panel-11467)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "workers-vpc-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "vpc_services": [    {      "binding": "VPC_SERVICE",      "service_id": "<YOUR_SERVICE_ID>"    }  ]}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "workers-vpc-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-25",  "vpc_services": [    {      "binding": "VPC_SERVICE",      "service_id": "<YOUR_SERVICE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "workers-vpc-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "workers-vpc-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-25"
 [[vpc_services]]binding = "VPC_SERVICE"service_id = "<YOUR_SERVICE_ID>"
 ```
 
@@ -187,7 +187,7 @@ export default {  async fetch(request, env, ctx): Promise<Response> {    const u
 
 ## 6\. Test locally
 
-Test your Worker locally. You must use remote VPC Services, using either [Workers remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) as was configured in your `wrangler.jsonc` configuration file, or using `npx wrangler dev --remote`:
+Test your Worker locally. You must use remote VPC Services, using either [Workers remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) as was configured in your `wrangler.jsonc` configuration file, or using `npx wrangler dev --remote`:
 
 Terminal window
 
@@ -217,6 +217,6 @@ Your Worker is now deployed and can access your private network resources secure
 * Check out [examples](https://developers.cloudflare.com/workers-vpc/examples/) for common use cases
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/get-started/","name":"Get started"}}]}
 ```

@@ -20,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11844)
-* [  TypeScript ](#tab-panel-11845)
-* [  Python ](#tab-panel-11846)
-* [  Rust ](#tab-panel-11847)
-* [  Hono ](#tab-panel-11848)
+* [  JavaScript ](#tab-panel-11822)
+* [  TypeScript ](#tab-panel-11823)
+* [  Python ](#tab-panel-11824)
+* [  Rust ](#tab-panel-11825)
+* [  Hono ](#tab-panel-11826)
 
 JavaScript
 
@@ -33,7 +33,7 @@ export default {  async fetch(request) {    const html = `<!DOCTYPE html>    <bo
     return new Response(html, {      headers: {        "content-type": "text/html;charset=UTF-8",      },    });  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAKwBGCZPHCALKIBcLFm2Ac4XGnwEiJUiXNEBYAFABhdFQgBTK9gAiUAM4x0TqNEsKSqvAWIkVHDA1gwARFA01gAeAHQAVk5hpKhQYLbBoRFRcYlhphZWthDYACp0MNbecDAwYHwEUJbI8XAAbnBOvAiwEADUwOi44NampjGuSCS41qhw4BAkAN4mJCSddFS8PtYQvAAWABQI1gCOINZOEACUy6trJLyWVyT7EMBgJAwkAAYAPABCewAeTMpQAmgAFACir3eYAAfPc1n8KLg6EiHg8-vtxAiABLWMBgdAkADqmDAuD+yFxmKxJD+MARpX2zhIwEQAGsQDASAB3TokADmtmsCAI1lw5Do6xIZhJIFwqDAiGs5MwXPFsRpzORjOQaIxPyIJn1JwgIAQVEC1n5JAASpdXFQnNZDm8PgAaO4M17WOAzBBObwrP1rMJPIp2CAVaxhbxhGzRFCesBEA6IN0QBgAVVKADFsAAOMJe-VrAC+5axleupqr5crRFMymYqnUmh4-CEYmk0kMBUsNjsjhcbg8TSo3l86lIQRC4RChHUyR8aQyi7CZBJZHy5mHxTKceqtXqvEazUSljGJiWYU5kQA+oNhukE9kZrkkpXW22O-4XbaL2ejiAO8jMKYQA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AMwAmABwBWAGzTRogCyCAXCxZtgHOFxp8BIiTPmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e5ITiGAwEgYSAADAA8AEIXAB5axVACaAAUAKJfH5gAB8L22wIouDo6Ner2BJwAjKiABIOMBgdAkADqmDAuGByGJePxJGBMFRVROHhIwEQAGsQDASAB3PokADmTgcCAIDlw5DoOxI1ipIFwqDAiActMwAtlSSZnIx7OQ2NxgKIllNlwgIAQVDCDlFJAASncvFR3A4zt9fgAaZ5sr4OOCLBDuAKbEPbaLvcrOCC1BzRALRRwJFD+sBEU6IH0QBgAVSqADFsJJogHTdsAL41-F1h7W+s1utEKwaZhaHR6Hj8IRiKRyBTKQSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXIb6JkKlkEo2KcVaophpNFq8NodNJ2aaWdbRflxAD6YwmOTTBUWIp0jrLtu17EJ+wMIdjFHMxBGYKwgA)
 
 TypeScript
 

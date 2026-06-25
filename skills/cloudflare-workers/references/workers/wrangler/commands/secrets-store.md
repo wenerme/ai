@@ -20,15 +20,15 @@ Use the following commands to manage your account secrets.
 
 `--remote` option
 
-In order to interact with Secrets Store in production, you should append `--remote` to your command. Without it, your command will default to [local development mode](https://developers.cloudflare.com/workers/development-testing/).
+In order to interact with Secrets Store in production, you should append `--remote` to your command. Without it, your command will default to [local development mode](https://developers.cloudflare.com/workers/local-development/).
 
 ### `secrets-store secret create`
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-12725)
-* [  pnpm ](#tab-panel-12726)
-* [  yarn ](#tab-panel-12727)
+* [  npm ](#tab-panel-12765)
+* [  pnpm ](#tab-panel-12766)
+* [  yarn ](#tab-panel-12767)
 
 Terminal window
 
@@ -99,9 +99,9 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-12728)
-* [  pnpm ](#tab-panel-12729)
-* [  yarn ](#tab-panel-12730)
+* [  npm ](#tab-panel-12768)
+* [  pnpm ](#tab-panel-12769)
+* [  yarn ](#tab-panel-12770)
 
 Terminal window
 
@@ -159,9 +159,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-12731)
-* [  pnpm ](#tab-panel-12732)
-* [  yarn ](#tab-panel-12733)
+* [  npm ](#tab-panel-12771)
+* [  pnpm ](#tab-panel-12772)
+* [  yarn ](#tab-panel-12773)
 
 Terminal window
 
@@ -219,9 +219,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-12734)
-* [  pnpm ](#tab-panel-12735)
-* [  yarn ](#tab-panel-12736)
+* [  npm ](#tab-panel-12774)
+* [  pnpm ](#tab-panel-12775)
+* [  yarn ](#tab-panel-12776)
 
 Terminal window
 
@@ -285,9 +285,9 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-12737)
-* [  pnpm ](#tab-panel-12738)
-* [  yarn ](#tab-panel-12739)
+* [  npm ](#tab-panel-12777)
+* [  pnpm ](#tab-panel-12778)
+* [  yarn ](#tab-panel-12779)
 
 Terminal window
 
@@ -339,9 +339,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List secrets within a store
 
-* [  npm ](#tab-panel-12740)
-* [  pnpm ](#tab-panel-12741)
-* [  yarn ](#tab-panel-12742)
+* [  npm ](#tab-panel-12780)
+* [  pnpm ](#tab-panel-12781)
+* [  yarn ](#tab-panel-12782)
 
 Terminal window
 
@@ -403,9 +403,9 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-12743)
-* [  pnpm ](#tab-panel-12744)
-* [  yarn ](#tab-panel-12745)
+* [  npm ](#tab-panel-12783)
+* [  pnpm ](#tab-panel-12784)
+* [  yarn ](#tab-panel-12785)
 
 Terminal window
 
@@ -465,9 +465,9 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-12746)
-* [  pnpm ](#tab-panel-12747)
-* [  yarn ](#tab-panel-12748)
+* [  npm ](#tab-panel-12786)
+* [  pnpm ](#tab-panel-12787)
+* [  yarn ](#tab-panel-12788)
 
 Terminal window
 
@@ -527,9 +527,9 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-12749)
-* [  pnpm ](#tab-panel-12750)
-* [  yarn ](#tab-panel-12751)
+* [  npm ](#tab-panel-12789)
+* [  pnpm ](#tab-panel-12790)
+* [  yarn ](#tab-panel-12791)
 
 Terminal window
 
@@ -588,6 +588,6 @@ npx wrangler secrets-store store list --remote
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#page","headline":"Secrets Store · Cloudflare Workers docs","description":"Wrangler commands for managing account secrets within a Secrets Store.","url":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#page","headline":"Secrets Store · Cloudflare Workers docs","description":"Wrangler commands for managing account secrets within a Secrets Store.","url":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/secrets-store/","name":"Secrets Store"}}]}
 ```

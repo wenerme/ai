@@ -138,13 +138,13 @@ JSONC
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-11406)
-* [  wrangler.toml ](#tab-panel-11407)
+* [  wrangler.jsonc ](#tab-panel-11446)
+* [  wrangler.toml ](#tab-panel-11447)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "main": "src/index.js",  "vpc_services": [    {      "binding": "PRIVATE_API",      "service_id": "e6a0817c-79c5-40ca-9776-a1c019defe70",      "remote": true // When true, utilizes [remote bindings](/workers/development-testing/#remote-bindings) to allow access to the VPC Service during local development.    }  ]}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "main": "src/index.js",  "vpc_services": [    {      "binding": "PRIVATE_API",      "service_id": "e6a0817c-79c5-40ca-9776-a1c019defe70",      "remote": true // When true, utilizes [remote bindings](/workers/local-development/#remote-bindings) to allow access to the VPC Service during local development.    }  ]}
 ```
 
 TOML
@@ -156,8 +156,8 @@ TOML
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-11408)
-* [  wrangler.toml ](#tab-panel-11409)
+* [  wrangler.jsonc ](#tab-panel-11448)
+* [  wrangler.toml ](#tab-panel-11449)
 
 JSONC
 
@@ -201,6 +201,6 @@ If you authenticate with an API token (`CLOUDFLARE_API_TOKEN`), ensure the token
 * Refer to [examples](https://developers.cloudflare.com/workers-vpc/examples/) of common use cases
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#page","headline":"VPC Services · Cloudflare Workers VPC","description":"Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#page","headline":"VPC Services · Cloudflare Workers VPC","description":"Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-services/","name":"VPC Services"}}]}
 ```

@@ -73,9 +73,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"faccf9591af957bf99d5bc64f16d3ac736f69b8e634579b4325d0245e8344ac0\"",
-    "size": 394701,
-    "updatedAt": "2026-06-24T18:22:35.593Z"
+    "etag": "W/\"cce87f5ca18cbf8620ecb2e539c85ea8b3bccb2a48616ee9bda25a4a4c1e96d1\"",
+    "size": 397006,
+    "updatedAt": "2026-06-25T01:14:00.627Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -211,9 +211,9 @@
   },
   "discover-plugins.md": {
     "url": "https://code.claude.com/docs/en/discover-plugins",
-    "lastModified": "Wed, 24 Jun 2026 18:20:48 GMT",
-    "size": 23685,
-    "updatedAt": "2026-06-24T18:20:48.835Z"
+    "lastModified": "Thu, 25 Jun 2026 01:13:06 GMT",
+    "size": 23856,
+    "updatedAt": "2026-06-25T01:13:06.754Z"
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
@@ -307,9 +307,9 @@
   },
   "interactive-mode.md": {
     "url": "https://code.claude.com/docs/en/interactive-mode",
-    "lastModified": "Wed, 24 Jun 2026 18:21:13 GMT",
-    "size": 37380,
-    "updatedAt": "2026-06-24T18:21:13.179Z"
+    "lastModified": "Thu, 25 Jun 2026 01:13:20 GMT",
+    "size": 37494,
+    "updatedAt": "2026-06-25T01:13:20.504Z"
   },
   "jetbrains.md": {
     "url": "https://code.claude.com/docs/en/jetbrains",
@@ -403,9 +403,9 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Sat, 20 Jun 2026 00:30:27 GMT",
-    "size": 26495,
-    "updatedAt": "2026-06-20T00:30:27.175Z"
+    "lastModified": "Thu, 25 Jun 2026 01:13:32 GMT",
+    "size": 26576,
+    "updatedAt": "2026-06-25T01:13:32.998Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
@@ -553,9 +553,9 @@
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Wed, 24 Jun 2026 18:22:06 GMT",
-    "size": 68907,
-    "updatedAt": "2026-06-24T18:22:06.294Z"
+    "lastModified": "Thu, 25 Jun 2026 01:13:46 GMT",
+    "size": 69386,
+    "updatedAt": "2026-06-25T01:13:46.941Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",

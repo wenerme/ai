@@ -66,11 +66,17 @@ Security Insights scans run periodically and use heuristics to detect potential 
 
 To remove a resolved or inaccurate insight from your dashboard, [archive the insight](https://developers.cloudflare.com/security/security-insights/review-insights/#archive-insights) or wait for the next automatic scan.
 
+Accounts with more than 10,000 zones
+
+Cloudflare aggregates account-level Security Insights for accounts with up to 10,000 zones. For accounts with more than 10,000 zones, Cloudflare does not aggregate insights at the account level, so the dashboard cannot display account-level Security Insights.
+
+To review security findings for these accounts, use per-zone [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) on individual domains. To analyze or retain activity across your entire account, export logs to a security information and event management (SIEM) system with [Logpush](https://developers.cloudflare.com/logs/logpush/).
+
 ## More resources
 
 For more information on available operations for Security Insights, refer to [Review Security Insights](https://developers.cloudflare.com/security/security-insights/review-insights/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/#page","headline":"Security Insights · Security dashboard docs","description":"Scan your account for misconfigurations and potential security risks across all domains.","url":"https://developers.cloudflare.com/security/security-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/#page","headline":"Security Insights · Security dashboard docs","description":"Scan your account for misconfigurations and potential security risks across all domains.","url":"https://developers.cloudflare.com/security/security-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}}]}
 ```

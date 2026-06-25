@@ -45,9 +45,9 @@ Once your domain is onboarded, you can start sending emails.
 
 You can send your first email using the Workers binding, the REST API, or SMTP.
 
-* [ Workers ](#tab-panel-8598)
-* [ API ](#tab-panel-8599)
-* [ SMTP ](#tab-panel-8600)
+* [ Workers ](#tab-panel-8638)
+* [ API ](#tab-panel-8639)
+* [ SMTP ](#tab-panel-8640)
 
 If you are building on Cloudflare Workers, you can use the Workers binding for native email sending. Start by creating a new Worker project.
 
@@ -65,8 +65,8 @@ pnpm create cloudflare@latest email-service-tutorial
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:
 
-  * [  wrangler.jsonc ](#tab-panel-8596)
-  * [  wrangler.toml ](#tab-panel-8597)
+  * [  wrangler.jsonc ](#tab-panel-8636)
+  * [  wrangler.toml ](#tab-panel-8637)
 JSONC
 ```
 {  "send_email": [    {      "name": "EMAIL",      "remote": true,    },  ],}
@@ -82,7 +82,7 @@ TypeScript
 export default {  async fetch(request: Request, env: Env): Promise<Response> {    // Send a welcome email    const response = await env.EMAIL.send({      to: RECIPIENT_EMAIL,      from: `welcome@${YOUR_DOMAIN}`,      subject: "Welcome to our service!",      html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",      text: "Welcome! Thanks for signing up.",    });
     return new Response(`Email sent: ${response.messageId}`);  },} satisfies ExportedHandler<Env>;
 ```
-4. Use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings)).
+4. Use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings)).
 Terminal window
 ```
 npx wrangler dev# ⎔ Starting remote preview...# Total Upload: 24.96 KiB / gzip: 6.17 KiB# [wrangler:info] Ready on http://localhost:8787
@@ -138,6 +138,6 @@ Now that you can send emails, explore advanced features:
 * **[Examples](https://developers.cloudflare.com/email-service/examples/)** \- Real-world implementation patterns
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/get-started/send-emails/","name":"Send emails"}}]}
 ```

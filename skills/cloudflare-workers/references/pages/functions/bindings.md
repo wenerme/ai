@@ -38,8 +38,8 @@ To configure a KV namespace binding via the Cloudflare dashboard:
 
 Below is an example of how to use KV in your Function. In the following example, your KV namespace binding is called `TODO_LIST` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9522)
-* [  TypeScript ](#tab-panel-9523)
+* [  JavaScript ](#tab-panel-9562)
+* [  TypeScript ](#tab-panel-9563)
 
 JavaScript
 
@@ -93,8 +93,8 @@ To configure a Durable Object binding via the Cloudflare dashboard:
 
 Below is an example of how to use Durable Objects in your Function. In the following example, your DO binding is called `DURABLE_OBJECT` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9524)
-* [  TypeScript ](#tab-panel-9525)
+* [  JavaScript ](#tab-panel-9564)
+* [  TypeScript ](#tab-panel-9565)
 
 JavaScript
 
@@ -146,8 +146,8 @@ To configure a R2 bucket binding via the Cloudflare dashboard:
 
 Below is an example of how to use R2 buckets in your Function. In the following example, your R2 bucket binding is called `BUCKET` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9526)
-* [  TypeScript ](#tab-panel-9527)
+* [  JavaScript ](#tab-panel-9566)
+* [  TypeScript ](#tab-panel-9567)
 
 JavaScript
 
@@ -171,7 +171,7 @@ You can interact with your R2 bucket bindings locally in one of two ways:
 
 Note
 
-By default, Wrangler automatically persists data to local storage. For more information, refer to [Local development](https://developers.cloudflare.com/workers/development-testing/).
+By default, Wrangler automatically persists data to local storage. For more information, refer to [Local development](https://developers.cloudflare.com/workers/local-development/).
 
 To interact with an R2 bucket locally via the Wrangler CLI, add `--r2=<BINDING_NAME>` to the `wrangler pages dev` command. If your R2 bucket is bound to your Function with the `BUCKET` binding, access this R2 bucket in local development by running:
 
@@ -205,8 +205,8 @@ To configure a D1 database binding via the Cloudflare dashboard:
 
 Below is an example of how to use D1 in your Function. In the following example, your D1 database binding is `NORTHWIND_DB` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9528)
-* [  TypeScript ](#tab-panel-9529)
+* [  JavaScript ](#tab-panel-9568)
+* [  TypeScript ](#tab-panel-9569)
 
 JavaScript
 
@@ -244,7 +244,7 @@ Interact with this binding by using `context.env` (for example, `context.env.NOR
 
 Note
 
-By default, Wrangler automatically persists data to local storage. For more information, refer to [Local development](https://developers.cloudflare.com/workers/development-testing/).
+By default, Wrangler automatically persists data to local storage. For more information, refer to [Local development](https://developers.cloudflare.com/workers/local-development/).
 
 Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/) for the API methods available on your D1 binding.
 
@@ -273,8 +273,8 @@ To configure a Vectorize index binding via the Cloudflare dashboard:
 
 To use Vectorize index in your Pages Function, you can access your Vectorize index binding in your Pages Function code. In the following example, your Vectorize index binding is called `VECTORIZE_INDEX` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-9530)
-* [  TypeScript ](#tab-panel-9531)
+* [  JavaScript ](#tab-panel-9570)
+* [  TypeScript ](#tab-panel-9571)
 
 JavaScript
 
@@ -316,8 +316,8 @@ To configure a Workers AI binding via the Cloudflare dashboard:
 
 To use Workers AI in your Pages Function, you can access your Workers AI binding in your Pages Function code. In the following example, your Workers AI binding is called `AI` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-9532)
-* [  TypeScript ](#tab-panel-9533)
+* [  JavaScript ](#tab-panel-9572)
+* [  TypeScript ](#tab-panel-9573)
 
 JavaScript
 
@@ -377,8 +377,8 @@ To configure a Service binding via the Cloudflare dashboard:
 
 Below is an example of how to use Service bindings in your Function. In the following example, your Service binding is called `SERVICE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9534)
-* [  TypeScript ](#tab-panel-9535)
+* [  JavaScript ](#tab-panel-9574)
+* [  TypeScript ](#tab-panel-9575)
 
 JavaScript
 
@@ -434,8 +434,8 @@ To configure a queue producer binding via the Cloudflare dashboard:
 
 Below is an example of how to use a queue producer binding in your Function. In this example, the binding is named `MY_QUEUE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9536)
-* [  TypeScript ](#tab-panel-9537)
+* [  JavaScript ](#tab-panel-9576)
+* [  TypeScript ](#tab-panel-9577)
 
 JavaScript
 
@@ -462,19 +462,19 @@ Note
 
 PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
-* [  wrangler.jsonc ](#tab-panel-9544)
-* [  wrangler.toml ](#tab-panel-9545)
+* [  wrangler.jsonc ](#tab-panel-9584)
+* [  wrangler.toml ](#tab-panel-9585)
 
 JSONC
 
 ```
-{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24"}
+{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-25"}
 ```
 
 TOML
 
 ```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-25"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -493,8 +493,8 @@ To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 Below is an example of how to use Hyperdrive in your Function. In the following example, your Hyperdrive config is named `HYPERDRIVE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9538)
-* [  TypeScript ](#tab-panel-9539)
+* [  JavaScript ](#tab-panel-9578)
+* [  TypeScript ](#tab-panel-9579)
 
 JavaScript
 
@@ -538,8 +538,8 @@ To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 Below is an example of how to use an Analytics Engine binding in your Function. In the following example, the binding is called `ANALYTICS_ENGINE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9540)
-* [  TypeScript ](#tab-panel-9541)
+* [  JavaScript ](#tab-panel-9580)
+* [  TypeScript ](#tab-panel-9581)
 
 JavaScript
 
@@ -578,8 +578,8 @@ To configure an environment variable via the Cloudflare dashboard:
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
 
-* [  JavaScript ](#tab-panel-9542)
-* [  TypeScript ](#tab-panel-9543)
+* [  JavaScript ](#tab-panel-9582)
+* [  TypeScript ](#tab-panel-9583)
 
 JavaScript
 
@@ -670,6 +670,6 @@ It is possible to control how `.env` files are loaded in local development by se
 * To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings · Cloudflare Pages docs","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings · Cloudflare Pages docs","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/bindings/","name":"Bindings"}}]}
 ```

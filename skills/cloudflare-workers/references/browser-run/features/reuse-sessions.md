@@ -77,19 +77,19 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-6936)
-* [  wrangler.toml ](#tab-panel-6937)
+* [  wrangler.jsonc ](#tab-panel-6976)
+* [  wrangler.toml ](#tab-panel-6977)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER",  },}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-25",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER",  },}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-25"compatibility_flags = [ "nodejs_compat" ]
 [browser]binding = "MYBROWSER"
 ```
 
@@ -99,8 +99,8 @@ The script below starts by fetching the current running sessions. If there are a
 
 Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-run/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
 
-* [  JavaScript ](#tab-panel-6938)
-* [  TypeScript ](#tab-panel-6939)
+* [  JavaScript ](#tab-panel-6978)
+* [  TypeScript ](#tab-panel-6979)
 
 JavaScript
 
@@ -141,7 +141,7 @@ Run `npx wrangler dev` to test your Worker locally.
 
 Use real headless browser during local development
 
-To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 To test go to the following URL:
 

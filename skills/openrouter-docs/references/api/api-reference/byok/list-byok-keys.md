@@ -129,8 +129,10 @@ components:
         - google-ai-studio
         - google-vertex
         - groq
+        - heygen
         - inception
         - inceptron
+        - inferact-vllm
         - inference-net
         - infermatic
         - inflection
@@ -221,8 +223,10 @@ components:
         - google-ai-studio
         - google-vertex
         - groq
+        - heygen
         - inception
         - inceptron
+        - inferact-vllm
         - inference-net
         - infermatic
         - inflection
