@@ -46,7 +46,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**
 For example:
 ```
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Cloudflare platform access

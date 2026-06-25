@@ -20,6 +20,7 @@ Current respected settings:
 - `glab_pager`: Your desired pager command to use, such as `less -R`.
 - `glamour_style`: Your desired Markdown renderer style. Options are dark, light, notty. Custom styles are available using [glamour](https://github.com/charmbracelet/glamour#styles).
 - `host`: If unset, defaults to `https://gitlab.com`.
+- `show_whats_new`: If true, shows a one-time post-upgrade banner pointing at `glab whatsnew` when a new version is detected. Defaults to `true`. Override with environment variable `$GLAB_SHOW_WHATS_NEW`.
 - `token`: Your GitLab access token. Defaults to environment variables.
 - `visual`: Takes precedence over `editor`. If unset, uses the default editor. Override with environment variable `$VISUAL`.
 

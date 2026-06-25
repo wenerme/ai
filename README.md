@@ -1150,7 +1150,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 103 skills, 26366 files, 281 MiB total
+> 103 skills, 26371 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1195,7 +1195,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 451 KiB |
+| `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
@@ -1213,7 +1213,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 757 | 5.9 MiB |
+| `mastra-docs` | 758 | 5.9 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1240,7 +1240,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `swift-ms-docs` | 67 | 1.1 MiB |
 | `tea-cli` | 26 | 81 KiB |
 | `tencent-cls` | 4 | 12 KiB |
-| `threejs-docs` | 794 | 2.0 MiB |
+| `threejs-docs` | 798 | 2.0 MiB |
 | `threejs-guide` | 11 | 134 KiB |
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
