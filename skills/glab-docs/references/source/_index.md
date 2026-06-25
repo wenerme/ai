@@ -63,6 +63,7 @@ GitLab instance.
 | `GLAB_FORCE_HYPERLINKS` | Set to true to force hyperlinks in output, even when not outputting to a TTY. |
 | `GLAB_GLAMOUR_STYLE` | The environment variable to set your desired Markdown renderer style. Available options: dark, light, notty. To set a custom style, read <https://github.com/charmbracelet/glamour#styles> |
 | `GLAB_NO_PROMPT` | Set to true (or 1) to disable prompts, or false (or 0) to enable them. |
+| `GLAB_SHOW_WHATS_NEW` | Set to false to suppress the one-time post-upgrade banner that points at `glab whatsnew` when a new version is detected. Can be set in the config with `glab config set show_whats_new false`. |
 
 ## Options
 

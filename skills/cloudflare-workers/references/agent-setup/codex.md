@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 1. **Download Codex**
