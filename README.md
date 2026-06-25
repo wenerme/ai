@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 101 skills available
+> 102 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -109,6 +109,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
 | `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
 | `wails-docs` | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... | [wailsapp/wails](https://github.com/wailsapp/wails) |
+| `waku-docs` | Use when working with Waku, the React 19 framework for React Server Components: file-system routing, createPages... | [wakujs/waku/docs](https://github.com/wakujs/waku/tree/main/docs) |
 | `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
 | `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -1067,6 +1068,16 @@ Wails documentation — build desktop applications using Go and web technologies
 
 </details>
 <details>
+<summary><code>waku-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill waku-docs
+```
+
+Use when working with Waku, the React 19 framework for React Server Components: file-system routing, createPages low-level routing, server/client components, API routes, server actions, navigation/prefetching, request context, custom routers, adapters, static or dynamic deployments, Cloudflare/AWS Lambda/Docker deployment, CSP, redirects, typed routes, no-SSR, or Waku build/runtime behavior.
+
+</details>
+<details>
 <summary><code>wode-db-schema-pattern</code></summary>
 
 ```bash
@@ -1128,7 +1139,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 101 skills, 26257 files, 281 MiB total
+> 102 skills, 26277 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1173,14 +1184,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 451 KiB |
+| `glab-docs` | 289 | 449 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `grafana-plugin-docs` | 581 | 3.5 MiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1201,7 +1212,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 445 | 2.3 MiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
@@ -1227,6 +1238,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
 | `wails-docs` | 56 | 314 KiB |
+| `waku-docs` | 24 | 140 KiB |
 | `wode-db-schema-pattern` | 2 | 8.8 KiB |
 | `wode-emittery-pattern` | 2 | 9.8 KiB |
 | `writing-skills` | 7 | 105 KiB |

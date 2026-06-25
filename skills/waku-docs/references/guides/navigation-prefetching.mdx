@@ -1,0 +1,141 @@
+---
+title: Navigation and Prefetching
+description: How Waku navigates between routes, caches static RSC payloads, and prefetches likely next pages.
+category: Routing and Navigation
+order: 10
+tags: [Experimental]
+---
+
+## How Client Navigation Works
+
+Waku's `<Link>` component renders an anchor element and handles normal same-tab clicks with the client router. On navigation, Waku fetches the route's RSC payload and updates the current route without a full document reload.
+
+Use `<Link>` for internal app routes:
+
+```tsx
+import { Link } from 'waku';
+
+export const Nav = () => (
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+  </nav>
+);
+```
+
+Use a regular `<a>` element for external URLs, downloads, and links that intentionally open in another browsing context.
+
+## Static Route Caching
+
+After a static route has been loaded, Waku can reuse its cached RSC payload on later visits. For example, if the user starts on `/`, navigates to `/about`, and then returns to `/`, the client can render `/` from the cache instead of requesting that static route again.
+
+Dynamic routes are different. Waku expects dynamic route output to be request-specific, so a visit to a dynamic route may need a fresh server request. Prefetching is most useful when you want to start that work before the user clicks.
+
+## Manual Prefetching
+
+Use `router.prefetch()` when a client component knows which route the user is likely to visit next.
+
+```tsx
+'use client';
+
+import { useRouter } from 'waku';
+
+export const DashboardButton = () => {
+  const router = useRouter();
+
+  return (
+    <button
+      onFocus={() => router.prefetch('/dashboard')}
+      onMouseEnter={() => router.prefetch('/dashboard')}
+      onClick={() => router.push('/dashboard')}
+    >
+      Dashboard
+    </button>
+  );
+};
+```
+
+For navigating to dynamic routes with typed params, see [Typed Routes](/guides/typed-routes).
+
+## Link Prefetching
+
+`<Link>` also has experimental prefetch helpers for common interaction patterns:
+
+```tsx
+import { Link } from 'waku';
+
+export const Nav = () => (
+  <nav>
+    <Link to="/docs" unstable_prefetchOnEnter>
+      Docs
+    </Link>
+    <Link to="/blog" unstable_prefetchOnView>
+      Blog
+    </Link>
+  </nav>
+);
+```
+
+- `unstable_prefetchOnEnter` starts prefetching when the pointer enters the link.
+- `unstable_prefetchOnView` starts prefetching when the link enters the viewport.
+
+Prefer intent-based prefetching for expensive dynamic routes. View-based prefetching can be useful for short pages with a small number of important links, but it can waste server work if applied to every link in a large list.
+
+## Pending UI
+
+A descendant of `<Link>` can read the navigation status with `useNavigationStatus_UNSTABLE()` and render pending UI while a navigation transition is in progress. It works like React's `useFormStatus`: it reflects the nearest enclosing `<Link>`, and `pending` stays `true` until the destination route's async components resolve (including client-only Suspense).
+
+```tsx
+'use client';
+
+import { useNavigationStatus_UNSTABLE as useNavigationStatus } from 'waku/router/client';
+
+export const PendingIndicator = () => {
+  const { pending } = useNavigationStatus();
+  return (
+    <span aria-hidden style={{ opacity: pending ? 1 : 0 }}>
+      Loading...
+    </span>
+  );
+};
+```
+
+```tsx
+import { Link } from 'waku';
+import { PendingIndicator } from './pending-indicator';
+
+export const NavLink = () => (
+  <Link to="/reports">
+    Reports
+    <PendingIndicator />
+  </Link>
+);
+```
+
+`useNavigationStatus_UNSTABLE()` must be called from a Client Component rendered inside the `<Link>`, which means the indicator lives inside the `<a>`. Keep it non-interactive and `aria-hidden` (as above), since it becomes part of the link's accessible name and click target; to render pending UI outside the anchor, drive it from route-change events instead. Called outside any `<Link>`, the hook returns an empty object (not `{ pending: false }`).
+
+## Custom Transitions
+
+For advanced navigation effects, pass `unstable_startTransition` to control how Waku starts the route transition. One common use case is integrating the browser View Transitions API:
+
+```tsx
+'use client';
+
+import type { ComponentProps } from 'react';
+import { Link as WakuLink } from 'waku';
+
+const startViewTransition =
+  typeof document !== 'undefined' && document.startViewTransition
+    ? (fn: () => void) => {
+        document.startViewTransition(fn);
+      }
+    : undefined;
+
+export const Link = (props: ComponentProps<typeof WakuLink>) => (
+  <WakuLink {...props} unstable_startTransition={startViewTransition} />
+);
+```
+
+Because `unstable_startTransition` replaces React's transition, `useNavigationStatus_UNSTABLE()` stays `{ pending: false }` for links that use it.
+
+The prefetch and transition props in this guide are experimental and may change.

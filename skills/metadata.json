@@ -78,6 +78,7 @@
     "vitest-docs": { "repo": "vitest-dev/vitest" },
     "vllm-docs": { "repo": "vllm-project/vllm" },
     "wails-docs": { "repo": "wailsapp/wails" },
+    "waku-docs": { "repo": "wakujs/waku", "path": "docs" },
     "zellij-docs": { "repo": "zellij-org/zellij-org.github.io", "path": "docs" }
   }
 }

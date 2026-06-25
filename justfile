@@ -132,6 +132,10 @@ update-threejs-docs:
 update-comfyui-docs:
     bun scripts/sync-comfyui-docs.ts
 
+# Sync Waku docs from local wakujs/waku clone
+update-waku-docs:
+    bun scripts/sync-waku-docs.ts
+
 # Sync Wails docs from local wailsapp/wails clone
 update-wails-docs:
     bun scripts/sync-wails-docs.ts
@@ -219,6 +223,7 @@ update:
     -just update-threejs-docs
     -just update-comfyui-docs
     -just update-wails-docs
+    -just update-waku-docs
     -just update-biome-docs
     -just update-vite-docs
     -just update-vitest-docs
