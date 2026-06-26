@@ -1756,6 +1756,7 @@ components:
         - Venice
         - Wafer
         - WandB
+        - Quiver
         - Xiaomi
         - xAI
         - Z.AI

@@ -41,8 +41,8 @@ Terminal window
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6758)
-* [  TypeScript ](#tab-panel-6759)
+* [  JavaScript ](#tab-panel-6874)
+* [  TypeScript ](#tab-panel-6875)
 
 JavaScript
 
@@ -72,8 +72,8 @@ Terminal window
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6754)
-* [  TypeScript ](#tab-panel-6755)
+* [  JavaScript ](#tab-panel-6870)
+* [  TypeScript ](#tab-panel-6871)
 
 JavaScript
 
@@ -105,8 +105,8 @@ Terminal window
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6756)
-* [  TypeScript ](#tab-panel-6757)
+* [  JavaScript ](#tab-panel-6872)
+* [  TypeScript ](#tab-panel-6873)
 
 JavaScript
 
@@ -136,8 +136,8 @@ Terminal window
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6760)
-* [  TypeScript ](#tab-panel-6761)
+* [  JavaScript ](#tab-panel-6876)
+* [  TypeScript ](#tab-panel-6877)
 
 JavaScript
 
@@ -184,7 +184,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1b
 The following models do not accept web search through AI Gateway:
 
 * **Google Gemini** — not available through the unified `web_search` tool, because Vertex's OpenAI-compatible surface does not translate it into Gemini's native `googleSearch` tool. To use Gemini grounding, pass the native `google_search` tool to the [provider-specific Vertex endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/#using-provider-specific-endpoint).
-* **Anthropic `claude-fable-5`** — AI Gateway does not provision the Anthropic credential this model requires.
 * **Grok chat-completions models** — `xai/grok-4.20-0309-non-reasoning`, `xai/grok-4.20-0309-reasoning`, and `xai/grok-4.3` use the chat-completions endpoint, which does not accept the `web_search` tool. For Grok web search, refer to [xAI web search](#xai-web-search).
 * **DeepSeek `deepseek-v4-flash`, `deepseek-v4-pro`** — these models accept function tools only.
 * **MiniMax `m2.7`, `m3`** — these models accept `{ "type": "function" }` tools only.

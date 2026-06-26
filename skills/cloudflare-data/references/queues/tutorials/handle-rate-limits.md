@@ -90,8 +90,8 @@ Creating queue rate-limit-queue.Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-9855)
-* [  wrangler.toml ](#tab-panel-9856)
+* [  wrangler.jsonc ](#tab-panel-10031)
+* [  wrangler.toml ](#tab-panel-10032)
 
 JSONC
 
@@ -110,19 +110,19 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-9857)
-* [  wrangler.toml ](#tab-panel-9858)
+* [  wrangler.jsonc ](#tab-panel-10033)
+* [  wrangler.toml ](#tab-panel-10034)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "resend-rate-limit-queue",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "queues": {    "producers": [      {        "binding": "EMAIL_QUEUE",        "queue": "rate-limit-queue"      }    ],    "consumers": [      {        "queue": "rate-limit-queue",        "max_batch_size": 2,        "max_batch_timeout": 10,        "max_retries": 3      }    ]  }}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "resend-rate-limit-queue",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-26",  "compatibility_flags": [    "nodejs_compat"  ],  "queues": {    "producers": [      {        "binding": "EMAIL_QUEUE",        "queue": "rate-limit-queue"      }    ],    "consumers": [      {        "queue": "rate-limit-queue",        "max_batch_size": 2,        "max_batch_timeout": 10,        "max_retries": 3      }    ]  }}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "resend-rate-limit-queue"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "resend-rate-limit-queue"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-26"compatibility_flags = [ "nodejs_compat" ]
 [[queues.producers]]binding = "EMAIL_QUEUE"queue = "rate-limit-queue"
 [[queues.consumers]]queue = "rate-limit-queue"max_batch_size = 2max_batch_timeout = 10max_retries = 3
 ```

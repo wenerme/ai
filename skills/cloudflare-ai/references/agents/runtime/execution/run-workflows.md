@@ -26,8 +26,8 @@ Use Agents alone for chat, messaging, and quick API calls. Use Agent + Workflow 
 
 Extend `AgentWorkflow` for typed access to the originating Agent:
 
-* [  JavaScript ](#tab-panel-6189)
-* [  TypeScript ](#tab-panel-6190)
+* [  JavaScript ](#tab-panel-6333)
+* [  TypeScript ](#tab-panel-6334)
 
 JavaScript
 
@@ -58,8 +58,8 @@ export class ProcessingWorkflow extends AgentWorkflow<MyAgent, TaskParams> {  as
 
 Use `runWorkflow()` to start and track workflows:
 
-* [  JavaScript ](#tab-panel-6191)
-* [  TypeScript ](#tab-panel-6192)
+* [  JavaScript ](#tab-panel-6335)
+* [  TypeScript ](#tab-panel-6336)
 
 JavaScript
 
@@ -83,19 +83,19 @@ export class MyAgent extends Agent {  async startTask(taskId: string, data: stri
 
 ### 3\. Configure Wrangler
 
-* [  wrangler.jsonc ](#tab-panel-6161)
-* [  wrangler.toml ](#tab-panel-6162)
+* [  wrangler.jsonc ](#tab-panel-6309)
+* [  wrangler.toml ](#tab-panel-6310)
 
 JSONC
 
 ```
-{  "name": "my-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "durable_objects": {    "bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],  },  "workflows": [    {      "name": "processing-workflow",      "binding": "PROCESSING_WORKFLOW",      "class_name": "ProcessingWorkflow",    },  ],  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],}
+{  "name": "my-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-26",  "durable_objects": {    "bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],  },  "workflows": [    {      "name": "processing-workflow",      "binding": "PROCESSING_WORKFLOW",      "class_name": "ProcessingWorkflow",    },  ],  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],}
 ```
 
 TOML
 
 ```
-name = "my-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "my-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-26"
 [[durable_objects.bindings]]name = "MY_AGENT"class_name = "MyAgent"
 [[workflows]]name = "processing-workflow"binding = "PROCESSING_WORKFLOW"class_name = "ProcessingWorkflow"
 [[migrations]]tag = "v1"new_sqlite_classes = [ "MyAgent" ]
@@ -116,12 +116,12 @@ Base class for Workflows that integrate with Agents.
 
 ### Properties
 
-| Property     | Type   | Description                          |
-| ------------ | ------ | ------------------------------------ |
-| agent        | Stub   | Typed stub for calling Agent methods |
-| instanceId   | string | The workflow instance ID             |
-| workflowName | string | The workflow binding name            |
-| env          | Env    | Environment bindings                 |
+| Property     | Type   | Description                                                                                                                                                                                       |
+| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| agent        | Stub   | Typed stub for calling Agent methods. For workflows started from a sub-agent, this is an RPC-only stub back to the originating facet; use sub-agent routing for HTTP or WebSocket fetch() traffic |
+| instanceId   | string | The workflow instance ID                                                                                                                                                                          |
+| workflowName | string | The workflow binding name                                                                                                                                                                         |
+| env          | Env    | Environment bindings                                                                                                                                                                              |
 
 ### Instance methods (non-durable)
 
@@ -131,8 +131,8 @@ These methods may repeat on retry. Use for lightweight, frequent updates.
 
 Report progress to the Agent. Triggers `onWorkflowProgress` callback.
 
-* [  JavaScript ](#tab-panel-6165)
-* [  TypeScript ](#tab-panel-6166)
+* [  JavaScript ](#tab-panel-6313)
+* [  TypeScript ](#tab-panel-6314)
 
 JavaScript
 
@@ -150,8 +150,8 @@ await this.reportProgress({  step: "processing",  status: "running",  percent: 0
 
 Broadcast a message to all WebSocket clients connected to the Agent.
 
-* [  JavaScript ](#tab-panel-6163)
-* [  TypeScript ](#tab-panel-6164)
+* [  JavaScript ](#tab-panel-6311)
+* [  TypeScript ](#tab-panel-6312)
 
 JavaScript
 
@@ -169,8 +169,8 @@ this.broadcastToClients({ type: "update", data: result });
 
 Wait for an approval event. Throws `WorkflowRejectedError` if rejected.
 
-* [  JavaScript ](#tab-panel-6167)
-* [  TypeScript ](#tab-panel-6168)
+* [  JavaScript ](#tab-panel-6315)
+* [  TypeScript ](#tab-panel-6316)
 
 JavaScript
 
@@ -215,18 +215,18 @@ Start a workflow instance and track it in the Agent database.
 
 **Parameters:**
 
-| Parameter            | Type   | Description                                           |
-| -------------------- | ------ | ----------------------------------------------------- |
-| workflowName         | string | Workflow binding name from env                        |
-| params               | object | Parameters to pass to the workflow                    |
-| options.id           | string | Custom workflow ID (auto-generated if not provided)   |
-| options.metadata     | object | Metadata stored for querying (not passed to workflow) |
-| options.agentBinding | string | Agent binding name (auto-detected if not provided)    |
+| Parameter            | Type   | Description                                                                                                           |
+| -------------------- | ------ | --------------------------------------------------------------------------------------------------------------------- |
+| workflowName         | string | Workflow binding name from env                                                                                        |
+| params               | object | Parameters to pass to the workflow                                                                                    |
+| options.id           | string | Custom workflow ID (auto-generated if not provided)                                                                   |
+| options.metadata     | object | Metadata stored for querying (not passed to workflow)                                                                 |
+| options.agentBinding | string | Agent binding name (auto-detected if not provided). When called from a sub-agent, this is the root Agent binding name |
 
 **Returns:** `Promise<string>` \- Workflow instance ID
 
-* [  JavaScript ](#tab-panel-6173)
-* [  TypeScript ](#tab-panel-6174)
+* [  JavaScript ](#tab-panel-6317)
+* [  TypeScript ](#tab-panel-6318)
 
 JavaScript
 
@@ -240,12 +240,51 @@ TypeScript
 const instanceId = await this.runWorkflow(  "MY_WORKFLOW",  { taskId: "123" },  {    metadata: { userId: "user-456", priority: "high" },  },);
 ```
 
+#### Starting workflows from sub-agents
+
+Sub-agents can call `this.runWorkflow()` directly. The workflow is tracked in the originating sub-agent's SQLite database, and `this.agent` inside `AgentWorkflow` routes back to that same sub-agent for RPC calls, callbacks, state updates, and broadcasts.
+
+Parent agents do not automatically list or control workflows that a sub-agent starts. `SubAgentStub<T>` only exposes user-defined methods, not inherited `Agent` methods such as `approveWorkflow()` or `getWorkflow()`. To control a child-started workflow from the parent, define small wrapper methods on the child and call those wrappers through the sub-agent stub.
+
+* [  JavaScript ](#tab-panel-6343)
+* [  TypeScript ](#tab-panel-6344)
+
+JavaScript
+
+```
+export class ParentAgent extends Agent {  async startChildWorkflow(childName, task) {    const child = await this.subAgent(ChildAgent, childName);    return child.startWorkflow(task);  }
+  async approveChildWorkflow(childName, workflowId) {    const child = await this.subAgent(ChildAgent, childName);    return child.approveChildWorkflow(workflowId);  }}
+export class ChildAgent extends Agent {  async startWorkflow(task) {    return this.runWorkflow("CHILD_WORKFLOW", { task });  }
+  async approveChildWorkflow(workflowId) {    return this.approveWorkflow(workflowId);  }
+  async getChildWorkflow(workflowId) {    return this.getWorkflow(workflowId);  }}
+```
+
+TypeScript
+
+```
+export class ParentAgent extends Agent {  async startChildWorkflow(childName: string, task: string) {    const child = await this.subAgent(ChildAgent, childName);    return child.startWorkflow(task);  }
+  async approveChildWorkflow(childName: string, workflowId: string) {    const child = await this.subAgent(ChildAgent, childName);    return child.approveChildWorkflow(workflowId);  }}
+export class ChildAgent extends Agent {  async startWorkflow(task: string) {    return this.runWorkflow("CHILD_WORKFLOW", { task });  }
+  async approveChildWorkflow(workflowId: string) {    return this.approveWorkflow(workflowId);  }
+  async getChildWorkflow(workflowId: string) {    return this.getWorkflow(workflowId);  }}
+```
+
+For sub-agent origins, `AgentWorkflow.agent` is an RPC-only stub. Use it to call Agent methods, but use `routeSubAgentRequest()` or the `/agents/{parent}/{name}/sub/{child}/{name}` URL shape for external HTTP or WebSocket routing instead of `this.agent.fetch()`.
+
+#### Routing constraints
+
+Because the originating identity is persisted durably in the workflow params and replayed on every callback, a few constraints apply to all workflows (sub-agent and top-level alike):
+
+* **Callbacks resolve the Agent by name.** The runtime re-resolves the originating Agent with `getAgentByName(...)`. If you addressed the Agent by a raw Durable Object ID (`idFromString` / `get(id)`) instead of by name, callbacks land on a different instance. Start workflows from name-addressed Agents.
+* **Class names must survive bundling.** The originating path is keyed by `constructor.name`. Configure your bundler to preserve class names (esbuild `keepNames: true`) so progress, completion, and `this.agent` RPC can be routed back to the right facet.
+* **`agentBinding` is the root binding.** When you pass `options.agentBinding` from a sub-agent, use the **root** Agent's Durable Object binding name, not a child binding.
+
 ### sendWorkflowEvent(workflowName, instanceId, event)
 
 Send an event to a running workflow.
 
-* [  JavaScript ](#tab-panel-6169)
-* [  TypeScript ](#tab-panel-6170)
+* [  JavaScript ](#tab-panel-6319)
+* [  TypeScript ](#tab-panel-6320)
 
 JavaScript
 
@@ -263,8 +302,8 @@ await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {  type: "custom-event",
 
 Get the status of a workflow and update the tracking record.
 
-* [  JavaScript ](#tab-panel-6171)
-* [  TypeScript ](#tab-panel-6172)
+* [  JavaScript ](#tab-panel-6321)
+* [  TypeScript ](#tab-panel-6322)
 
 JavaScript
 
@@ -282,8 +321,8 @@ const status = await this.getWorkflowStatus("MY_WORKFLOW", instanceId);// { stat
 
 Get a tracked workflow by ID.
 
-* [  JavaScript ](#tab-panel-6175)
-* [  TypeScript ](#tab-panel-6176)
+* [  JavaScript ](#tab-panel-6323)
+* [  TypeScript ](#tab-panel-6324)
 
 JavaScript
 
@@ -301,8 +340,8 @@ const workflow = this.getWorkflow(instanceId);// { instanceId, workflowName, sta
 
 Query tracked workflows with cursor-based pagination. Returns a `WorkflowPage` with workflows, total count, and cursor for the next page.
 
-* [  JavaScript ](#tab-panel-6197)
-* [  TypeScript ](#tab-panel-6198)
+* [  JavaScript ](#tab-panel-6347)
+* [  TypeScript ](#tab-panel-6348)
 
 JavaScript
 
@@ -340,8 +379,8 @@ Delete a single workflow instance tracking record. Returns `true` if deleted, `f
 
 Delete workflow instance tracking records matching criteria.
 
-* [  JavaScript ](#tab-panel-6183)
-* [  TypeScript ](#tab-panel-6184)
+* [  JavaScript ](#tab-panel-6331)
+* [  TypeScript ](#tab-panel-6332)
 
 JavaScript
 
@@ -361,8 +400,8 @@ TypeScript
 
 Terminate a running workflow immediately. Sets status to `"terminated"`.
 
-* [  JavaScript ](#tab-panel-6177)
-* [  TypeScript ](#tab-panel-6178)
+* [  JavaScript ](#tab-panel-6325)
+* [  TypeScript ](#tab-panel-6326)
 
 JavaScript
 
@@ -384,8 +423,8 @@ Note
 
 Pause a running workflow. The workflow can be resumed later with `resumeWorkflow()`.
 
-* [  JavaScript ](#tab-panel-6179)
-* [  TypeScript ](#tab-panel-6180)
+* [  JavaScript ](#tab-panel-6327)
+* [  TypeScript ](#tab-panel-6328)
 
 JavaScript
 
@@ -407,8 +446,8 @@ Note
 
 Resume a paused workflow.
 
-* [  JavaScript ](#tab-panel-6181)
-* [  TypeScript ](#tab-panel-6182)
+* [  JavaScript ](#tab-panel-6329)
+* [  TypeScript ](#tab-panel-6330)
 
 JavaScript
 
@@ -430,8 +469,8 @@ Note
 
 Restart a workflow instance from the beginning with the same ID.
 
-* [  JavaScript ](#tab-panel-6185)
-* [  TypeScript ](#tab-panel-6186)
+* [  JavaScript ](#tab-panel-6337)
+* [  TypeScript ](#tab-panel-6338)
 
 JavaScript
 
@@ -455,8 +494,8 @@ Note
 
 Approve a waiting workflow. Use with `waitForApproval()` in the workflow.
 
-* [  JavaScript ](#tab-panel-6193)
-* [  TypeScript ](#tab-panel-6194)
+* [  JavaScript ](#tab-panel-6341)
+* [  TypeScript ](#tab-panel-6342)
 
 JavaScript
 
@@ -474,8 +513,8 @@ await this.approveWorkflow(instanceId, {  reason: "Approved by admin",  metadata
 
 Reject a waiting workflow. Causes `waitForApproval()` to throw `WorkflowRejectedError`.
 
-* [  JavaScript ](#tab-panel-6187)
-* [  TypeScript ](#tab-panel-6188)
+* [  JavaScript ](#tab-panel-6339)
+* [  TypeScript ](#tab-panel-6340)
 
 JavaScript
 
@@ -493,8 +532,8 @@ await this.rejectWorkflow(instanceId, { reason: "Request denied" });
 
 Migrate tracked workflows after renaming a workflow binding.
 
-* [  JavaScript ](#tab-panel-6195)
-* [  TypeScript ](#tab-panel-6196)
+* [  JavaScript ](#tab-panel-6345)
+* [  TypeScript ](#tab-panel-6346)
 
 JavaScript
 
@@ -520,8 +559,8 @@ Override these methods in your Agent to handle workflow events:
 | onWorkflowEvent    | workflowName, instanceId, event    | Called when workflow sends an event   |
 | onWorkflowCallback | callback: WorkflowCallback         | Called for all callback types         |
 
-* [  JavaScript ](#tab-panel-6199)
-* [  TypeScript ](#tab-panel-6200)
+* [  JavaScript ](#tab-panel-6349)
+* [  TypeScript ](#tab-panel-6350)
 
 JavaScript
 
@@ -541,7 +580,11 @@ class MyAgent extends Agent {  async onWorkflowProgress(    workflowName: string
 
 ## Workflow tracking
 
-Workflows started with `runWorkflow()` are automatically tracked in the Agent's internal database. You can query, filter, and manage workflows using the methods described above (`getWorkflow()`, `getWorkflows()`, `deleteWorkflow()`, etc.).
+Workflows started with `runWorkflow()` are automatically tracked in the originating Agent's internal database. You can query, filter, and manage workflows using the methods described above (`getWorkflow()`, `getWorkflows()`, `deleteWorkflow()`, etc.).
+
+Sub-agent scoping
+
+`getWorkflows()` and `getWorkflowById()` only see workflows tracked in **this** Agent's storage. If a sub-agent starts the workflow, the row lives in that sub-agent's own `cf_agents_workflows` table, not in the parent's. To build a combined view, expose a wrapper method on each child (for example, `listMyWorkflows()`) and aggregate the results across your sub-agents yourself.
 
 ### Status values
 
@@ -561,8 +604,8 @@ Use the `metadata` option in `runWorkflow()` to store queryable information (lik
 
 ### Human-in-the-loop approval
 
-* [  JavaScript ](#tab-panel-6211)
-* [  TypeScript ](#tab-panel-6212)
+* [  JavaScript ](#tab-panel-6361)
+* [  TypeScript ](#tab-panel-6362)
 
 JavaScript
 
@@ -594,8 +637,8 @@ class MyAgent extends Agent {  async handleApproval(instanceId: string, userId: 
 
 ### Retry with backoff
 
-* [  JavaScript ](#tab-panel-6205)
-* [  TypeScript ](#tab-panel-6206)
+* [  JavaScript ](#tab-panel-6355)
+* [  TypeScript ](#tab-panel-6356)
 
 JavaScript
 
@@ -617,8 +660,8 @@ export class ResilientWorkflow extends AgentWorkflow<MyAgent, TaskParams> {  asy
 
 Workflows can update Agent state durably via `step`, which automatically broadcasts to all connected clients:
 
-* [  JavaScript ](#tab-panel-6209)
-* [  TypeScript ](#tab-panel-6210)
+* [  JavaScript ](#tab-panel-6359)
+* [  TypeScript ](#tab-panel-6360)
 
 JavaScript
 
@@ -644,8 +687,8 @@ export class StatefulWorkflow extends AgentWorkflow<MyAgent, TaskParams> {  asyn
 
 Define custom progress types for domain-specific reporting:
 
-* [  JavaScript ](#tab-panel-6213)
-* [  TypeScript ](#tab-panel-6214)
+* [  JavaScript ](#tab-panel-6363)
+* [  TypeScript ](#tab-panel-6364)
 
 JavaScript
 
@@ -671,8 +714,8 @@ import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEven
 
 The internal `cf_agents_workflows` table can grow unbounded, so implement a retention policy:
 
-* [  JavaScript ](#tab-panel-6207)
-* [  TypeScript ](#tab-panel-6208)
+* [  JavaScript ](#tab-panel-6357)
+* [  TypeScript ](#tab-panel-6358)
 
 JavaScript
 
@@ -694,8 +737,8 @@ class MyAgent extends Agent {  // Option 1: Delete on completion  async onWorkfl
 
 ### Workflow to Agent
 
-* [  JavaScript ](#tab-panel-6203)
-* [  TypeScript ](#tab-panel-6204)
+* [  JavaScript ](#tab-panel-6353)
+* [  TypeScript ](#tab-panel-6354)
 
 JavaScript
 
@@ -717,8 +760,8 @@ TypeScript
 
 ### Agent to Workflow
 
-* [  JavaScript ](#tab-panel-6201)
-* [  TypeScript ](#tab-panel-6202)
+* [  JavaScript ](#tab-panel-6351)
+* [  TypeScript ](#tab-panel-6352)
 
 JavaScript
 
@@ -767,6 +810,6 @@ Workflows cannot open WebSocket connections directly. Use `broadcastToClients()`
 [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention patterns.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/#page","headline":"Run Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/#page","headline":"Run Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/run-workflows/","name":"Run Workflows"}}]}
 ```

@@ -1,5 +1,3 @@
-# Gemini Deep Research Agent
-
 The Gemini Deep Research Agent autonomously plans, executes, and synthesizes
 multi-step research tasks. Powered by Gemini, it navigates complex
 information landscapes to produce detailed, cited reports. New
@@ -8,10 +6,9 @@ external tools using MCP servers, include
 visualizations (like charts and graphs), and provide documents directly
 as input.
 
-Research tasks involve iterative searching and reading and can take several
-minutes to complete. You must use background execution (set `background=true`)
+Research tasks involve iterative searching and reading and can take several minutes to complete. You must use [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (set `background=true`)
 to run the agent asynchronously and poll for results or stream updates. See
-[Handling long running tasks](https://ai.google.dev/gemini-api/docs/deep-research#long-running-tasks) for more details.
+[Handling long-running tasks](https://ai.google.dev/gemini-api/docs/deep-research#long-running-tasks) for more details.
 
 > [!WARNING]
 > **Preview:** The Gemini Deep Research Agent is currently in preview. The Deep Research agent is exclusively available using the [Interactions
@@ -843,7 +840,7 @@ synchronous API calls.
 Agents are required to use `background=True`. The API returns a partial
 `Interaction` object immediately. You can use the `id` property to retrieve an
 interaction for polling. The interaction state will transition from
-`in_progress` to `completed` or `failed`.
+`in_progress` to `completed` or `failed`. For a comprehensive guide on managing background tasks, see [Background execution](https://ai.google.dev/gemini-api/docs/background-execution).
 
 ### Streaming
 

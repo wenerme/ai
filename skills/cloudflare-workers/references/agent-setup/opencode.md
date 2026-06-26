@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Cloudflare platform access

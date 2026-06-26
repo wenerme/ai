@@ -18,6 +18,8 @@ SELECT statements are used to transform data in Cloudflare Pipelines. The genera
 [WITH with_query [, ...]]SELECT select_expr [, ...]FROM from_item[WHERE condition]
 ```
 
+A pipeline runs one or more `INSERT INTO sink SELECT ... FROM stream` statements. To write to multiple sinks from the same pipeline, separate the statements with semicolons. See [Multiple statements](#multiple-statements).
+
 ## WITH clause
 
 The WITH clause allows you to define named subqueries that can be referenced in the main query. This can improve query readability by breaking down complex transformations.
@@ -102,7 +104,26 @@ This will produce:
 +---------+| numbers |+---------+|       1 ||       2 ||       3 |+---------+
 ```
 
+## Multiple statements
+
+A pipeline can contain multiple `INSERT` statements, separated by semicolons. Each statement reads from a stream and writes to a sink. Use multiple statements to route events from a single stream into several sinks based on their content.
+
+```
+INSERT INTO purchases_sinkSELECT user_id, product_id, amount FROM eventsWHERE event_type = 'purchase';
+INSERT INTO signups_sinkSELECT user_id, created_at FROM eventsWHERE event_type = 'signup';
+```
+
+To provide multiple statements with the Wrangler CLI, pass a file with the `--sql-file` flag:
+
+Terminal window
+
+```
+npx wrangler pipelines create my-pipeline --sql-file pipeline.sql
+```
+
+For a worked example, refer to [Fan out a stream to multiple Iceberg tables](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/).
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/#page","headline":"SELECT statements · Cloudflare Pipelines Docs","description":"Query syntax for data transformation in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/#page","headline":"SELECT statements · Cloudflare Pipelines Docs","description":"Query syntax for data transformation in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sql-reference/select-statements/","name":"SELECT statements"}}]}
 ```

@@ -58,6 +58,12 @@ The maximum length of a rule expression is 4,096 characters.
 
 This limit applies whether you use the visual [Expression Builder](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder) to define your expression, or write the expression manually in the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor).
 
+## Maximum regular expressions per rule
+
+Each rule can contain a maximum of 64 regular expressions in its expression. This limit applies across all rule types that use the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/).
+
+Rules that exceed this limit cannot be created or updated. Existing rules above this limit continue to work but cannot be modified until the expression is simplified.
+
 ## Additional features
 
 You can also use the following Rules language features in your expressions:
@@ -66,6 +72,6 @@ You can also use the following Rules language features in your expressions:
 * [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) allow you to manipulate and validate values in expressions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/#page","headline":"Rule expressions · Cloudflare Ruleset Engine docs","description":"Write expressions that match request characteristics for rule evaluation.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/#page","headline":"Rule expressions · Cloudflare Ruleset Engine docs","description":"Write expressions that match request characteristics for rule evaluation.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/expressions/","name":"Expressions"}}]}
 ```

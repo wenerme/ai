@@ -252,8 +252,9 @@ $ just foo --bar=hello
 bar=hello
 ```
 
-The value of `long` can be omitted, in which case the option defaults to the
-name of the parameter:
+The value of `long` may be omitted, in which case the option defaults to the
+name of the parameter. With the following justfile, `bar` may be passed with
+`--bar`:
 
 ```just
 [arg("bar", long)]
@@ -277,9 +278,33 @@ $ just foo -b hello
 bar=hello
 ```
 
+The value of `short` may be omitted, in which case the option defaults to the
+first character of the name of the parameter. With the following justfile,
+`bar` may be passed with `-b`:
+
+```just
+[arg("bar", short)]
+foo bar:
+```
+
 If a parameter has both a long and short option, it may be passed using either.
 
-Variadic `*` and `+` parameters cannot be options.
+Variadic `*` and `+` parameters may be options, in which case the option is
+repeatable, with each occurrence contributing one value:
+
+```just
+[arg('file', long)]
+backup +file:
+  scp {{file}} me@server.com:
+```
+
+```console
+$ just backup --file FAQ.md --file GRAMMAR.md
+scp FAQ.md GRAMMAR.md me@server.com:
+```
+
+As with positional variadic parameters, `+` options must be passed at least
+once, whereas `*` options may be omitted.
 
 The `[arg(ARG, value=VALUE, …)]`<sup>1.46.0</sup> attribute can be used with
 `long` or `short` to make a parameter a flag which does not take a value.

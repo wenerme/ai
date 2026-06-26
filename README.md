@@ -10,12 +10,13 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 104 skills available
+> 105 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
 | `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
+| `aliyun-cli-docs` | Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure`... | [help.aliyun.com](https://help.aliyun.com/zh/cli/) |
 | `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... | [alpinelinux/aports](https://gitlab.alpinelinux.org/alpinelinux/aports) |
 | `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
 | `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... | [docs.anthropic.com](https://docs.anthropic.com) |
@@ -137,6 +138,16 @@ npx skills add wenerme/ai --skill ai-sdk
 ```
 
 Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK functions like generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to build AI agents, chatbots, RAG systems, or text generation features, (3) Have questions about AI providers (OpenAI, Anthropic, Google, etc.), streaming, tool calling, structured output, or embeddings, (4) Use React hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI SDK", "generateText", "streamText", "add AI to my app", "build an agent", "tool calling", "structured output", "useChat".
+
+</details>
+<details>
+<summary><code>aliyun-cli-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill aliyun-cli-docs
+```
+
+Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure` credentials/profiles, environment variables, command structure, parameter formats, JMESPath `--cli-query`, table output, `--pager`, `--waiter`, `--cli-dry-run`, safety policy, AI mode, `aliyun mcp-proxy`, Docker usage, migration from pre-3.3.0 CLI, or aliyun CLI troubleshooting.
 
 </details>
 <details>
@@ -1161,12 +1172,13 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 104 skills, 26432 files, 282 MiB total
+> 105 skills, 26476 files, 282 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
 | `agent-browser` | 1 | 3.2 KiB |
 | `ai-sdk` | 5 | 24 KiB |
+| `aliyun-cli-docs` | 27 | 183 KiB |
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
@@ -1187,12 +1199,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 114 | 3.9 MiB |
 | `clickhouse-docs` | 1088 | 9.9 MiB |
-| `cloudflare-ai` | 1504 | 11 MiB |
-| `cloudflare-data` | 393 | 3.0 MiB |
-| `cloudflare-docs` | 3 | 30 KiB |
+| `cloudflare-ai` | 1506 | 11 MiB |
+| `cloudflare-data` | 395 | 3.0 MiB |
+| `cloudflare-docs` | 3 | 31 KiB |
 | `cloudflare-networking` | 823 | 4.9 MiB |
 | `cloudflare-observability-admin` | 1222 | 8.1 MiB |
-| `cloudflare-security` | 1001 | 5.5 MiB |
+| `cloudflare-security` | 1005 | 5.5 MiB |
 | `cloudflare-workers` | 769 | 6.9 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
@@ -1210,13 +1222,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 6.0 MiB |
-| `grafana-plugin-docs` | 580 | 3.5 MiB |
+| `grafana-plugin-docs` | 587 | 3.5 MiB |
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
-| `immich-docs` | 76 | 481 KiB |
-| `justfile-docs` | 95 | 160 KiB |
+| `immich-docs` | 77 | 482 KiB |
+| `justfile-docs` | 95 | 161 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
@@ -1224,7 +1236,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 758 | 5.9 MiB |
+| `mastra-docs` | 760 | 5.9 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1234,7 +1246,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-docs` | 156 | 2.2 MiB |
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
-| `opencode-docs` | 53 | 454 KiB |
+| `opencode-docs` | 53 | 455 KiB |
 | `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
@@ -1256,13 +1268,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `threejs-guide` | 11 | 134 KiB |
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
-| `ui-ux-pro-max` | 36 | 1.7 MiB |
+| `ui-ux-pro-max` | 35 | 1.7 MiB |
 | `ultralytics-docs` | 480 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
 | `wails-docs` | 56 | 314 KiB |
-| `waku-docs` | 24 | 140 KiB |
+| `waku-docs` | 24 | 145 KiB |
 | `wode-db-schema-pattern` | 2 | 8.8 KiB |
 | `wode-emittery-pattern` | 2 | 9.8 KiB |
 | `writing-skills` | 7 | 105 KiB |

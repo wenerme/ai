@@ -26,8 +26,8 @@ Use `agentTool()` or `runAgentTool()` when a parent model or workflow delegates 
 
 Use `agentTool()` when the parent model should decide when to call the helper.
 
-* [  JavaScript ](#tab-panel-6103)
-* [  TypeScript ](#tab-panel-6104)
+* [  JavaScript ](#tab-panel-6235)
+* [  TypeScript ](#tab-panel-6236)
 
 JavaScript
 
@@ -47,8 +47,8 @@ export class Assistant extends Think<Env> {  getTools() {    return {      resea
 
 The child can also be an `AIChatAgent`:
 
-* [  JavaScript ](#tab-panel-6107)
-* [  TypeScript ](#tab-panel-6108)
+* [  JavaScript ](#tab-panel-6255)
+* [  TypeScript ](#tab-panel-6256)
 
 JavaScript
 
@@ -76,7 +76,7 @@ TypeScript
 
 ```
 type AgentToolFailure = {  ok: false;  status: "error" | "aborted" | "interrupted";  error: string; // human-readable, safe to surface  retryable: boolean;  // Present only when `status` is "interrupted":  reason?: AgentToolInterruptedReason;  childStillRunning?: boolean;};
-type AgentToolInterruptedReason =  | "no-progress"  | "window-exceeded"  | "not-tailable"  | "inspect-timeout"  | "inspect-failed"  | "recovery-deadline";
+type AgentToolInterruptedReason =  | "no-progress"  | "window-exceeded"  | "not-tailable"  | "inspect-timeout"  | "inspect-failed"  | "recovery-deadline"  | "budget-exceeded";
 ```
 
 `retryable` is `true` only for an `interrupted` run — the child was reset or superseded by a deploy or parent recovery and never reached a logical outcome, so re-dispatching the same call can succeed. A genuine `error` or an intentional `aborted` is `retryable: false`. This lets a parent prompt convention or an orchestration harness re-run a transient interruption rather than reporting it to the user as a final failure. `AgentToolFailure` is exported from `agents`.
@@ -87,8 +87,8 @@ For Think children that do workflow-style work without user-facing assistant tex
 
 Persist any structured output before the child turn finishes, because `getAgentToolOutput()` is read as soon as `saveMessages()` resolves. Keep `getAgentToolSummary()` concise for display; the full structured value is stored separately as the tool output.
 
-* [  JavaScript ](#tab-panel-6095)
-* [  TypeScript ](#tab-panel-6096)
+* [  JavaScript ](#tab-panel-6229)
+* [  TypeScript ](#tab-panel-6230)
 
 JavaScript
 
@@ -108,8 +108,8 @@ export class Extractor extends Think<Env> {  protected override getAgentToolOutp
 
 Use `runAgentTool()` for deterministic workflows, scheduled work, HTTP handlers, or fan-out code.
 
-* [  JavaScript ](#tab-panel-6099)
-* [  TypeScript ](#tab-panel-6100)
+* [  JavaScript ](#tab-panel-6231)
+* [  TypeScript ](#tab-panel-6232)
 
 JavaScript
 
@@ -125,12 +125,203 @@ const [a, b] = await Promise.allSettled([  this.runAgentTool(Researcher, {    in
 
 `runAgentTool()` is idempotent by `runId`. Passing the same `runId` never starts a duplicate child turn. Completed, failed, aborted, and interrupted runs are retained until you explicitly clear them.
 
+## Detached (background) runs
+
+By default `runAgentTool()` **awaits** the child to terminal before returning. For long-running work — large imports, video renders, deep research — that you do not want to block the dispatching turn on, pass `detached`. The run is dispatched, the current turn continues, and `runAgentTool()` returns a handle immediately:
+
+TypeScript
+
+```
+type DetachedRunAgentToolResult = {  runId: string;  agentType: string;  status: "running" | "error"; // "error" only if dispatch itself was rejected};
+```
+
+`detached: true` is fire-and-forget — observe the run through `agent-tool-event` frames (the same ones `useAgentToolEvents()` consumes) and the global `onAgentToolFinish()` hook. Pass an object to wire a targeted, durable completion callback:
+
+* [  JavaScript ](#tab-panel-6249)
+* [  TypeScript ](#tab-panel-6250)
+
+JavaScript
+
+```
+export class Importer extends Think {  async startImport(input) {    const { runId } = await this.runAgentTool(ImportAgent, {      input,      detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },    });    return runId;  }
+  // Fires once, even if the Durable Object was evicted and rehydrated while the  // child ran. Referenced by METHOD NAME (like schedule()) — never a closure,  // which cannot survive eviction.  async onImportDone(run, result) {    switch (result.status) {      case "completed":        await this.markImportReady(run.runId, result.summary);        break;      case "error":        await this.markImportFailed(run.runId, result.error);        break;      case "interrupted":        // reason "budget-exceeded" ⇒ the run hit its maxBudgetMs ceiling.        // interrupted is soft: a child that finishes anyway re-fires this        // hook with "completed", so make the handler idempotent.        break;    }  }}
+```
+
+TypeScript
+
+```
+export class Importer extends Think<Env> {  async startImport(input: ImportInput) {    const { runId } = await this.runAgentTool(ImportAgent, {      input,      detached: { onFinish: "onImportDone", maxBudgetMs: 60 * 60 * 1000 },    });    return runId;  }
+  // Fires once, even if the Durable Object was evicted and rehydrated while the  // child ran. Referenced by METHOD NAME (like schedule()) — never a closure,  // which cannot survive eviction.  async onImportDone(run: AgentToolRunInfo, result: AgentToolLifecycleResult) {    switch (result.status) {      case "completed":        await this.markImportReady(run.runId, result.summary);        break;      case "error":        await this.markImportFailed(run.runId, result.error);        break;      case "interrupted":        // reason "budget-exceeded" ⇒ the run hit its maxBudgetMs ceiling.        // interrupted is soft: a child that finishes anyway re-fires this        // hook with "completed", so make the handler idempotent.        break;    }  }}
+```
+
+Key behaviors:
+
+* **Durable completion.** Delivery survives eviction and deploys: a warm fast path delivers with low latency while the isolate is alive, and a self-scheduling reconcile backbone finalizes anything the fast path missed. Delivery is exactly-once on the happy path; under a crash it is at-least-once, so `onFinish` handlers must be idempotent.
+* **Give-up vs. finish are independent.** A budget give-up is delivered as `status: "interrupted"`, `reason: "budget-exceeded"`. Because `interrupted` is soft, a child that completes after the give-up still re-fires `onFinish` with the real result — a premature give-up never hides a late completion.
+* **Bounded.** Every detached run has an absolute `maxBudgetMs` ceiling (per-run, or the `detachedMaxBudgetMs` static option; default 24h). On expiry the parent gives up watching and tears the child down so an abandoned run cannot hold a `maxConcurrentAgentTools` slot forever.
+* **No inherited signal.** A detached run must outlive the spawning turn, so it does **not** inherit `options.signal`. Cancel it explicitly:
+
+* [  JavaScript ](#tab-panel-6225)
+* [  TypeScript ](#tab-panel-6226)
+
+JavaScript
+
+```
+await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
+```
+
+TypeScript
+
+```
+await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
+```
+
+### Notify the chat on completion (Think / AIChatAgent)
+
+On a chat agent (`@cloudflare/think` or `AIChatAgent`) you usually want the model to _react_ to a finished background run. Instead of wiring `onFinish` by hand, pass `notify: true` — when the run finishes the agent injects a message into the chat (idempotent per run + status, so an exactly-once finish never duplicates) and the model takes its next turn with the result in context:
+
+* [  JavaScript ](#tab-panel-6227)
+* [  TypeScript ](#tab-panel-6228)
+
+JavaScript
+
+```
+await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
+```
+
+TypeScript
+
+```
+await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
+```
+
+If your app routes or hides synthetic messages by `metadata.source`, pass your own source:
+
+* [  JavaScript ](#tab-panel-6233)
+* [  TypeScript ](#tab-panel-6234)
+
+JavaScript
+
+```
+await this.runAgentTool(ResearchAgent, {  input,  detached: { notify: { source: "research-background" } },});
+```
+
+TypeScript
+
+```
+await this.runAgentTool(ResearchAgent, {  input,  detached: { notify: { source: "research-background" } },});
+```
+
+Override `formatDetachedCompletion(run, result)` to customize the injected text, or return an empty string to suppress the notification for a given outcome. An explicit `onFinish` takes precedence over `notify`.
+
+### The `inspectAgentToolRun` contract
+
+A child's `inspectAgentToolRun(runId)` returns the run's current status snapshot, or `null`. **`null` does not mean "failed"** — it means the child has no record of that run _yet_. This is normal immediately after dispatch (the child may still be persisting its first row) and is also what a freshly-rehydrated child returns before it has lazily reconciled a stale `running` row. Callers — and the framework's own reconcile backbone — treat `null` as "not terminal, keep watching within budget", never as a terminal failure. Only a non-`null` inspection with a terminal `status` (`completed` / `error` / `aborted`) finalizes a run.
+
+## Report progress and milestones
+
+A sub-agent running as an agent tool — awaited or detached — can report mid-run progress so a parent can render a live status line, meter the run server-side, or react to a named checkpoint before the run finishes. Call `reportProgress()` from inside the child (for example, from a tool's `execute`):
+
+* [  JavaScript ](#tab-panel-6245)
+* [  TypeScript ](#tab-panel-6246)
+
+JavaScript
+
+```
+export class ImportAgent extends Think {  getTools() {    return {      ingest: tool({        inputSchema: z.object({ url: z.string() }),        execute: async ({ url }) => {          // Ephemeral progress: drives a generic bar / phase / status line.          await this.reportProgress({            fraction: 0.6,            phase: "ingesting",            message: "Ingested 40k/80k rows",          });          // ...        },      }),    };  }}
+```
+
+TypeScript
+
+```
+export class ImportAgent extends Think<Env> {  getTools() {    return {      ingest: tool({        inputSchema: z.object({ url: z.string() }),        execute: async ({ url }) => {          // Ephemeral progress: drives a generic bar / phase / status line.          await this.reportProgress({            fraction: 0.6,            phase: "ingesting",            message: "Ingested 40k/80k rows",          });          // ...        },      }),    };  }}
+```
+
+`reportProgress()` is available on chat agents (`@cloudflare/think` and `AIChatAgent`). It is a no-op with a development warning on the base `Agent` class and when called outside an active agent-tool run, so the same child code is safe to run standalone. The framework resolves the active run from the current turn — you never thread a run ID.
+
+TypeScript
+
+```
+reportProgress<T>(  progress: {    fraction?: number; // 0..1 — drives a progress bar    message?: string; // human-readable status line    phase?: string; // coarse phase label, e.g. "ingesting"    milestone?: string; // present ⇒ a durable milestone (see below)    data?: T; // app-specific payload; live-only unless persisted  },  options?: { persist?: boolean },): Promise<void>;
+```
+
+Ephemeral signals ride the child's own turn stream as a transient `data-agent-progress` part, so they re-broadcast to the parent's connected clients and surface on `AgentToolRunState.progress` through `useAgentToolEvents()` — a background-runs tray can render a live bar, phase, and status line without drilling in. Bursts are coalesced (latest-wins; a `fraction >= 1` frame always flushes). The `data` field is live-only unless you pass `{ persist: true }`.
+
+### Observe progress on the parent
+
+Override `onProgress()` to meter, steer, or surface progress server-side. It fires best-effort whenever a child progress signal is forwarded through the parent, for both awaited and detached runs:
+
+* [  JavaScript ](#tab-panel-6239)
+* [  TypeScript ](#tab-panel-6240)
+
+JavaScript
+
+```
+export class Assistant extends Think {  async onProgress(run, progress) {    if (progress.milestone) {      // A durable milestone landed — branch on it.    }    console.log(run.runId, progress.phase, progress.fraction);  }}
+```
+
+TypeScript
+
+```
+export class Assistant extends Think<Env> {  override async onProgress(    run: AgentToolRunInfo,    progress: AgentToolProgressSnapshot,  ) {    if (progress.milestone) {      // A durable milestone landed — branch on it.    }    console.log(run.runId, progress.phase, progress.fraction);  }}
+```
+
+`onProgress()` is not durable: after eviction a detached run's latest snapshot is reconstructed from `inspectAgentToolRun().progress` on reconcile rather than re-firing the hook. The latest snapshot is also persisted on the child run row, so a rehydrated parent can answer "where is this run" without having tailed the live stream.
+
+### Durable milestones
+
+Naming a `milestone` promotes a signal from the ephemeral tier to a **durable** one — there is still only one emit method:
+
+* [  JavaScript ](#tab-panel-6237)
+* [  TypeScript ](#tab-panel-6238)
+
+JavaScript
+
+```
+await this.reportProgress({  milestone: "sources-gathered",  data: { sources: 2 },});
+```
+
+TypeScript
+
+```
+await this.reportProgress({  milestone: "sources-gathered",  data: { sources: 2 },});
+```
+
+A milestone is persisted as one row on the child with a monotonic per-run `sequence`, and rides the stream as a **persisted** `data-agent-milestone` part (unlike transient progress). It therefore survives eviction, replays on drill-in, and is surfaced — deduped by `sequence` — on `AgentToolRunState.milestones` and `inspectAgentToolRun().milestones`. `onProgress()` fires for milestones too, with `progress.milestone` set, so a consumer can branch on milestone versus ephemeral progress.
+
+### Notify the chat on a milestone (Think / AIChatAgent)
+
+For a detached run on a chat agent, `detached: { onMilestones }` surfaces a chat message when a configured milestone lands, _before_ the run finishes. Each `(runId, name)` fires at most once — whether observed live or reconciled after eviction — so the deterministic ID collapses warm and cold delivery to at-most-once:
+
+* [  JavaScript ](#tab-panel-6247)
+* [  TypeScript ](#tab-panel-6248)
+
+JavaScript
+
+```
+// "narrate" (default): inject a synthetic assistant status line — no model turn.await this.runAgentTool(Researcher, {  input,  detached: { onMilestones: ["sources-gathered"] },});
+// "react": post a user-role turn so the model responds (steer, start dependent// work). Costs a model turn.await this.runAgentTool(Researcher, {  input,  detached: { onMilestones: { names: ["needs-approval"], mode: "react" } },});
+```
+
+TypeScript
+
+```
+// "narrate" (default): inject a synthetic assistant status line — no model turn.await this.runAgentTool(Researcher, {  input,  detached: { onMilestones: ["sources-gathered"] },});
+// "react": post a user-role turn so the model responds (steer, start dependent// work). Costs a model turn.await this.runAgentTool(Researcher, {  input,  detached: { onMilestones: { names: ["needs-approval"], mode: "react" } },});
+```
+
+Override `formatDetachedMilestone(run, milestone)` to customize the wording, or return an empty string to suppress a given milestone. Synthetic narrate messages carry `metadata.source`, so clients can render them as an agent event rather than a human turn.
+
+### Resetting no-progress budget for detached runs
+
+Once a detached child has reported at least one signal, the reconcile backbone gives up if the run then goes silent for `detachedNoProgressBudgetMs` (default 1 hour; per-run override via `detached: { noProgressBudgetMs }`). This surfaces as `status: "interrupted"`, `reason: "no-progress"`. A child that never reports is bounded only by the absolute `detachedMaxBudgetMs` ceiling — a run is never given up on merely for being slow. Set `noProgressBudgetMs` to `0` or `Infinity` to disable the resetting window for a run.
+
 ## Render child timelines in React
 
-`useAgentToolEvents()` is a headless hook. It subscribes to the existing parent connection, deduplicates replay/live races, applies child `UIMessageChunk` bodies to message parts, and groups sibling runs by parent tool call ID.
+`useAgentToolEvents()` is a headless hook. It subscribes to the existing parent connection, deduplicates replay/live races, applies child `UIMessageChunk` bodies to message parts, and groups sibling runs by parent tool call ID. Each run state carries `progress` and `milestones`, so a background-runs tray can render a live bar, phase, and milestone chips without drilling in.
 
-* [  JavaScript ](#tab-panel-6105)
-* [  TypeScript ](#tab-panel-6106)
+* [  JavaScript ](#tab-panel-6253)
+* [  TypeScript ](#tab-panel-6254)
 
 JavaScript
 
@@ -154,8 +345,8 @@ Imperative runs without a parent tool call are available as `agentTools.unboundR
 
 Agents as tools are normal sub-agents. Connect to a retained child through the parent route:
 
-* [  JavaScript ](#tab-panel-6093)
-* [  TypeScript ](#tab-panel-6094)
+* [  JavaScript ](#tab-panel-6241)
+* [  TypeScript ](#tab-panel-6242)
 
 JavaScript
 
@@ -181,8 +372,8 @@ override async onBeforeSubAgent(_request, child) {  if (!this.hasAgentToolRun(ch
 
 Runs and child facets are retained by default for refresh, drill-in, and later inspection. Delete them explicitly when clearing chat history or applying your own retention policy:
 
-* [  JavaScript ](#tab-panel-6097)
-* [  TypeScript ](#tab-panel-6098)
+* [  JavaScript ](#tab-panel-6243)
+* [  TypeScript ](#tab-panel-6244)
 
 JavaScript
 
@@ -219,8 +410,8 @@ A hung child can never block recovery forever. The no-progress budget bounds a s
 
 Monitor parent reconciliation through the `agentTool` observability channel:
 
-* [  JavaScript ](#tab-panel-6101)
-* [  TypeScript ](#tab-panel-6102)
+* [  JavaScript ](#tab-panel-6251)
+* [  TypeScript ](#tab-panel-6252)
 
 JavaScript
 
@@ -249,6 +440,6 @@ Raw `diagnostics_channel` subscribers should use the channel name `agents:agent_
 [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) Build AI chat interfaces with AIChatAgent and useAgentChat.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-tools/","name":"Agents as tools"}}]}
 ```

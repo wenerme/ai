@@ -16,12 +16,12 @@ The `getCurrentAgent()` function allows you to access the current agent context 
 
 ## Automatic context for custom methods
 
-All custom methods automatically have full agent context. The framework automatically detects and wraps your custom methods during initialization, ensuring `getCurrentAgent()` works everywhere.
+The framework detects and wraps custom Agent methods during initialization so `getCurrentAgent()` can resolve the active agent inside them and the functions they call.
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-6355)
-* [  TypeScript ](#tab-panel-6356)
+* [  JavaScript ](#tab-panel-6505)
+* [  TypeScript ](#tab-panel-6506)
 
 JavaScript
 
@@ -47,8 +47,8 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-6371)
-* [  TypeScript ](#tab-panel-6372)
+* [  JavaScript ](#tab-panel-6521)
+* [  TypeScript ](#tab-panel-6522)
 
 JavaScript
 
@@ -78,8 +78,8 @@ export class MyAgent extends AIChatAgent {  async customMethod(message: string) 
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-6353)
-* [  TypeScript ](#tab-panel-6354)
+* [  JavaScript ](#tab-panel-6503)
+* [  TypeScript ](#tab-panel-6504)
 
 JavaScript
 
@@ -97,8 +97,8 @@ TypeScript
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-6365)
-* [  TypeScript ](#tab-panel-6366)
+* [  JavaScript ](#tab-panel-6515)
+* [  TypeScript ](#tab-panel-6516)
 
 JavaScript
 
@@ -118,8 +118,8 @@ export class MyAgent extends AIChatAgent {  async generateResponse(prompt: strin
 
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-6363)
-* [  TypeScript ](#tab-panel-6364)
+* [  JavaScript ](#tab-panel-6511)
+* [  TypeScript ](#tab-panel-6512)
 
 JavaScript
 
@@ -139,8 +139,8 @@ export class MyAgent extends AIChatAgent {  async processData(data: any) {    //
 
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-6367)
-* [  TypeScript ](#tab-panel-6368)
+* [  JavaScript ](#tab-panel-6517)
+* [  TypeScript ](#tab-panel-6518)
 
 JavaScript
 
@@ -160,14 +160,51 @@ function logRequestInfo() {  const { agent, connection, request } = getCurrentAg
   if (connection) {    console.log("Connection ID:", connection.id);  }}
 ```
 
+## When context is lost
+
+The agent context only propagates along the call tree of the original invocation. Code reached outside that call tree starts with an empty context, so `getCurrentAgent()` returns an object whose fields are `undefined`. Common cases include:
+
+* a host callback invoked through RPC from a Worker Loader child isolate, such as sandboxed Codemode execution;
+* a service binding or Durable Object RPC entrypoint;
+* a queue consumer or another entrypoint that retains an agent reference.
+
+Route the callback through a public method on the agent. Custom methods are wrapped automatically, so calling `agent.someMethod()` re-enters that agent's context:
+
+* [  JavaScript ](#tab-panel-6523)
+* [  TypeScript ](#tab-panel-6524)
+
+JavaScript
+
+```
+import { RpcTarget } from "cloudflare:workers";
+class HostCallbackBridge extends RpcTarget {  agent;
+  constructor(agent) {    super();    this.agent = agent;  }
+  // Invoked through RPC from a Worker Loader child isolate. There is no context  // ancestry. Calling a public agent method restores it automatically.  async invoke() {    return this.agent.handleSandboxCallback();  }}
+export class MyMcpAgent extends McpAgent {  async handleSandboxCallback() {    const { agent } = getCurrentAgent();    // `agent` is available again.  }}
+```
+
+TypeScript
+
+```
+import { RpcTarget } from "cloudflare:workers";
+class HostCallbackBridge extends RpcTarget {  agent: MyMcpAgent;
+  constructor(agent: MyMcpAgent) {    super();    this.agent = agent;  }
+  // Invoked through RPC from a Worker Loader child isolate. There is no context  // ancestry. Calling a public agent method restores it automatically.  async invoke() {    return this.agent.handleSandboxCallback();  }}
+export class MyMcpAgent extends McpAgent {  async handleSandboxCallback() {    const { agent } = getCurrentAgent<MyMcpAgent>();    // `agent` is available again.  }}
+```
+
+Context restored this way has `connection`, `request`, and `email` unset. It is not tied to live client I/O.
+
+Server-initiated MCP requests (`elicitInput`, `createMessage`, and `listRoots`) on `McpAgent` do not require this indirection because the MCP transport retains its owning agent.
+
 ## API reference
 
 ### `getCurrentAgent()`
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-6357)
-* [  TypeScript ](#tab-panel-6358)
+* [  JavaScript ](#tab-panel-6507)
+* [  TypeScript ](#tab-panel-6508)
 
 JavaScript
 
@@ -193,8 +230,8 @@ function getCurrentAgent<T extends Agent>(): {  agent: T | undefined;  connectio
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-6369)
-* [  TypeScript ](#tab-panel-6370)
+* [  JavaScript ](#tab-panel-6519)
+* [  TypeScript ](#tab-panel-6520)
 
 JavaScript
 
@@ -230,8 +267,8 @@ The context available depends on how the method was invoked:
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.
 
-  * [  JavaScript ](#tab-panel-6361)
-  * [  TypeScript ](#tab-panel-6362)
+  * [  JavaScript ](#tab-panel-6513)
+  * [  TypeScript ](#tab-panel-6514)
 JavaScript
 ```
 const { agent } = getCurrentAgent();if (agent) {  // Safe to use agent  console.log(agent.name);}
@@ -242,8 +279,8 @@ const { agent } = getCurrentAgent();if (agent) {  // Safe to use agent  console.
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.
 
-  * [  JavaScript ](#tab-panel-6359)
-  * [  TypeScript ](#tab-panel-6360)
+  * [  JavaScript ](#tab-panel-6509)
+  * [  TypeScript ](#tab-panel-6510)
 JavaScript
 ```
 const { agent } = getCurrentAgent();// agent is typed as MyAgent | undefined
@@ -262,6 +299,6 @@ const { agent } = getCurrentAgent<MyAgent>();// agent is typed as MyAgent | unde
 [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Manage and sync agent state.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/get-current-agent/","name":"getCurrentAgent()"}}]}
 ```

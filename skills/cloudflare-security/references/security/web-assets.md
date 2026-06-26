@@ -1,6 +1,6 @@
 ---
-title: Web assets
-description: Discover web assets such as your API endpoints and instruct Cloudflare how to best protect them.
+title: Web Assets
+description: Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -10,94 +10,65 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop)
 
-# Web assets
+# Web Assets
 
-Discover web assets such as your API endpoints and instruct Cloudflare how to best protect them.
+Web Assets automatically discovers operations in web applications proxied through Cloudflare. Operation context helps you define security protections against application-specific functionalities.
 
-To access web assets in the new security dashboard, go to the **Web assets** page.
+For example, discovering operations that receive LLM prompts so [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) can help you define targeted protections such as deterring prompt injections.
+
+To access Web Assets in the Cloudflare dashboard, go to the **Web Assets** page.
 
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 
-## Endpoints
+## Definition of an operation
 
-Use the **Endpoints** tab to manage endpoints available on your domain and monitor their health.
+An operation is a group of HTTP requests that serve the same purpose in your application. Each operation is defined by:
 
-You can save endpoints directly from [API Discovery](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-from-api-discovery), [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-manually) by method, path, and host, or via [Schema Validation](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-from-schema-validation).
+* HTTP method
+* Hostname pattern
+* Path pattern
 
-This will add the specified endpoints to your list of managed endpoints. You can view your list of managed endpoints in the **Endpoints** tab.
+For example, Web Assets can group requests to product detail pages into one operation:
 
-For saved endpoints:
+```
+GET example.com/products/{var1}
+```
 
-* Cloudflare will start collecting [performance data](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#endpoint-analysis) per endpoint.
-* You can use the [labeling service](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) to organize your endpoints by use case.
+The operation can match requests such as:
 
-For more information on how to manage your endpoints, refer to the following resources.
+```
+GET https://example.com/products/shoesGET https://example.com/products/hatsGET https://example.com/products/jackets
+```
 
-* [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/)
-* [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
-* [Endpoint Analysis](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#endpoint-analysis)
+This lets Cloudflare identify requests that serve the same purpose in your application.
 
-## Discovery
+## How Cloudflare identifies operations
 
-**Discovery** continuously finds your active API endpoints via path normalization.
+Operations can come from several sources:
 
-[Add endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-from-api-discovery) to produce recommendations and analytics of your APIs. Your [session identifiers](https://developers.cloudflare.com/api-shield/management-and-monitoring/session-identifiers/) must match your API traffic. Otherwise, API endpoints are also discoverable via [Machine Learning](https://developers.cloudflare.com/api-shield/security/api-discovery/#machine-learning-based-discovery).
+* **Discovery**: Web Assets continuously reviews proxied HTTP traffic and groups similar requests into operations using machine learning (for [API discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/)) and heuristics.
+* **Manual entry**: You can add operations by method, hostname pattern, and path pattern.
+* **Schema upload**: You can [upload an OpenAPI schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-from-schema-validation) to create operations from an existing API definition.
 
-Note
+These sources contribute to the same operation inventory. You do not need to review every discovered operation before security detections can use operation context.
 
-**Discovery** is only available for Enterprise customers. If you are an Enterprise customer and interested in this product, contact your account team.
+## Describe operations context
 
-## Sequences
+[Labels](https://developers.cloudflare.com/security/web-assets/label-operations/) describe what an operation does, such as a login flow, sign-up flow, AI-powered operation, or another use case.
 
-Use **Sequences** to discover how users interact with your API, by tracking the order of API session requests over time. Sequences will group and highlight popular user journeys across your API.
+Cloudflare defines managed labels. Some managed labels can be discovered automatically, but not every managed label is currently auto-discovered.
 
-Once you configure [session identifiers](https://developers.cloudflare.com/api-shield/management-and-monitoring/session-identifiers/), the **Sequences** tab will start grouping and highlighting important user journeys (sequences) across your API.
+Custom labels let you organize operations for your own workflows. They do not replace managed labels for Cloudflare security detections.
 
-To configure session identifiers:
+## Define security protections
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
-2. Next to **Session identifiers**, select **Configure session identifiers** .
+Security detections can use Web Assets to focus on the operations where their signals matter. For example, [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) uses the `cf-llm` managed label to scan requests to AI-powered operations. For more information, refer to [Define security protections](https://developers.cloudflare.com/security/web-assets/define-security-protections/).
 
-For more information on how Cloudflare identifies API sequences and how you can configure API sequence rules, refer to the following resources:
+Related API Shield features
 
-* [Sequence analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/)
-* [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/)
-
-Note
-
-The **Sequences** tab includes functionality available in [API Shield](https://developers.cloudflare.com/api-shield/) in the previous dashboard navigation structure.
-
-## Schema validation
-
-Use **Schema validation** to check if your incoming traffic complies with a previously supplied API Schema.
-
-API Schemas are defined by the validity of the API request's properties such as target endpoint, path or query variable format, and HTTP method. A rule is created for incoming traffic and defines which traffic is allowed and which traffic is logged or blocked based on the API schema that you provide or select from the list of learned schemas.
-
-You can add schema validation by:
-
-* [Uploading a schema](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-uploading-a-schema)
-* [Applying a learned schema to a single endpoint](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-applying-a-learned-schema-to-a-single-endpoint)
-* [Applying a learned schema to an entire hostname](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-applying-a-learned-schema-to-an-entire-hostname)
-* [Adding a fallthrough rule](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-adding-a-fallthrough-rule)
-
-Note
-
-The **Schema validation** tab includes functionality available in [API Shield](https://developers.cloudflare.com/api-shield/) in the previous dashboard navigation structure.
-
-## Client-side resources
-
-Use **Client-side resources** to [monitor scripts, connections, and cookies](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/) on your domain.
-
-If you notice unexpected scripts or connections on the dashboard, check them for signs of malicious activity. You should also check for any new or unexpected cookies.
-
-Customers with Client-Side Security Advanced will have their connections and scripts [classified as potentially malicious](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) based on threat feeds.
-
-Note
-
-The **Client-side resources** tab includes functionality available in [client-side security](https://developers.cloudflare.com/client-side-security/) (formerly known as Page Shield) in the previous dashboard navigation structure.
+Web Assets focuses on HTTP request operations. For API-specific protections such as schema validation, schema learning, mutual TLS, and JWT validation, refer to [API Shield](https://developers.cloudflare.com/api-shield/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web assets · Security dashboard docs","description":"Discover web assets such as your API endpoints and instruct Cloudflare how to best protect them.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/web-assets/","name":"Web assets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web Assets · Security dashboard docs","description":"Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/web-assets/","name":"Web Assets"}}]}
 ```

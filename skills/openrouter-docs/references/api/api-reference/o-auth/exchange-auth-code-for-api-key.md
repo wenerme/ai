@@ -247,7 +247,7 @@ components:
 
 ```json
 {
-  "key": "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",
+  "key": "OPENROUTER_API_KEY_EXAMPLE",
   "user_id": "user_2yOPcMpKoQhcd4bVgSMlELRaIah"
 }
 ```

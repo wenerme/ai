@@ -160,7 +160,11 @@ components:
         - png
         - jpeg
         - webp
-      description: Encoding of the returned image bytes.
+        - svg
+      description: >-
+        Encoding of the returned image bytes. Most models produce raster formats
+        (png, jpeg, webp). SVG is supported by vectorization models (e.g.
+        Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`.
       title: ImageGenerationRequestOutputFormat
     ImageGenerationRequestProviderOptions:
       type: object
@@ -525,6 +529,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        quiver:
+          type: object
+          additionalProperties:
+            description: Any type
         recraft:
           type: object
           additionalProperties:
@@ -708,7 +716,11 @@ components:
             by providers without a compression knob.
         output_format:
           $ref: '#/components/schemas/ImageGenerationRequestOutputFormat'
-          description: Encoding of the returned image bytes.
+          description: >-
+            Encoding of the returned image bytes. Most models produce raster
+            formats (png, jpeg, webp). SVG is supported by vectorization models
+            (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in
+            `b64_json`.
         prompt:
           type: string
           description: Text description of the desired image
@@ -757,6 +769,12 @@ components:
         b64_json:
           type: string
           description: Base64-encoded image bytes
+        media_type:
+          type: string
+          description: >-
+            Media type (MIME type) of the image. Omitted when the output is a
+            standard raster format (PNG). Present for non-raster outputs such as
+            SVG (`image/svg+xml`).
       required:
         - b64_json
       title: ImageGenerationResponseDataItems

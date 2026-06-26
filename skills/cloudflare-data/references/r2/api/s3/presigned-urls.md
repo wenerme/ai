@@ -43,9 +43,9 @@ R2 supports two patterns for time-limited access. They overlap but have differen
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-9844)
-* [ Python ](#tab-panel-9845)
-* [ CLI ](#tab-panel-9846)
+* [ JavaScript ](#tab-panel-10060)
+* [ Python ](#tab-panel-10061)
+* [ CLI ](#tab-panel-10062)
 
 TypeScript
 

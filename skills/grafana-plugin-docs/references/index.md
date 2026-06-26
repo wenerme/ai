@@ -36,6 +36,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/ "ClickHouse data source")
 - [Cloudflare data source](/docs/plugins/grafana-cloudflare-datasource/latest/ "Cloudflare data source")
 - [CockroachDB data source](/docs/plugins/grafana-cockroachdb-datasource/latest/ "CockroachDB data source")
+- [Configure the Sentry data source](/docs/plugins/grafana-sentry-datasource/latest/configure/ "Configure the Sentry data source")
 - [CSV data source for Grafana](/docs/plugins/marcusolsson-csv-datasource/latest/ "CSV data source for Grafana")
 - [Databricks data source for Grafana](/docs/plugins/grafana-databricks-datasource/latest/ "Databricks data source for Grafana")
 - [Datadog data source](/docs/plugins/grafana-datadog-datasource/latest/ "Datadog data source")

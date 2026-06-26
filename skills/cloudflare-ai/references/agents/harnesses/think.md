@@ -32,8 +32,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5639)
-* [  TypeScript ](#tab-panel-5640)
+* [  JavaScript ](#tab-panel-5755)
+* [  TypeScript ](#tab-panel-5756)
 
 JavaScript
 
@@ -55,8 +55,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-5641)
-* [  TypeScript ](#tab-panel-5642)
+* [  JavaScript ](#tab-panel-5757)
+* [  TypeScript ](#tab-panel-5758)
 
 JavaScript
 
@@ -78,19 +78,19 @@ function Chat() {  const agent = useAgent({ agent: "MyAgent" });  const { messag
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5637)
-* [  wrangler.toml ](#tab-panel-5638)
+* [  wrangler.jsonc ](#tab-panel-5751)
+* [  wrangler.toml ](#tab-panel-5752)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "ai": {    "binding": "AI"  },  "durable_objects": {    "bindings": [      {        "class_name": "MyAgent",        "name": "MyAgent"      }    ]  },  "migrations": [    {      "new_sqlite_classes": [        "MyAgent"      ],      "tag": "v1"    }  ]}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-26",  "compatibility_flags": [    "nodejs_compat"  ],  "ai": {    "binding": "AI"  },  "durable_objects": {    "bindings": [      {        "class_name": "MyAgent",        "name": "MyAgent"      }    ]  },  "migrations": [    {      "new_sqlite_classes": [        "MyAgent"      ],      "tag": "v1"    }  ]}
 ```
 
 TOML
 
 ```
-# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = ["nodejs_compat"]
+# Set this to today's datecompatibility_date = "2026-06-26"compatibility_flags = ["nodejs_compat"]
 [ai]binding = "AI"
 [[durable_objects.bindings]]class_name = "MyAgent"name = "MyAgent"
 [[migrations]]new_sqlite_classes = ["MyAgent"]tag = "v1"
@@ -133,7 +133,56 @@ Both Think and [AIChatAgent](https://developers.cloudflare.com/agents/communicat
 
 ## Choose a turn API
 
-Think has several ways to start or continue a turn. Choose based on who starts the work and what the caller needs back.
+Think has several ways to start or continue a turn. They all funnel through one public entry point — `runTurn(options)` — and the older methods remain as convenience shortcuts.
+
+### runTurn()
+
+Experimental
+
+`runTurn()` is stable in shape, but may evolve before Think graduates out of experimental.
+
+`runTurn()` is the unified turn-admission API. One method, three modes, selected by `options.mode`:
+
+| Mode             | Use when                                                     | Returns                       | Shortcut for     |
+| ---------------- | ------------------------------------------------------------ | ----------------------------- | ---------------- |
+| "wait" (default) | The caller can block until the model response is finished    | Promise<TurnResult>           | saveMessages()   |
+| "submit"         | The caller needs fast, durable acceptance and a later status | Promise<SubmitMessagesResult> | submitMessages() |
+| "stream"         | The caller wants the response streamed to a callback (RPC)   | Promise<void>                 | chat()           |
+
+The `input` accepts a string, a `UIMessage`, an array of messages, or — in `wait` and `stream` modes — a function `(current) => UIMessage[]` evaluated at admission. (`submit` does not accept function input.)
+
+* [  JavaScript ](#tab-panel-5759)
+* [  TypeScript ](#tab-panel-5760)
+
+JavaScript
+
+```
+export class Assistant extends Think {  async examples(inboundEventId) {    // wait — block for the result    const result = await this.runTurn({ input: "Summarize the latest thread" });    if (result.status === "completed") {      // result.message is the assistant message; result.continuation is false    }
+    // submit — durable acceptance, check status later    const submission = await this.runTurn({      mode: "submit",      input: "Process this webhook",      idempotencyKey: inboundEventId, // dedupe; safe to retry    });    // submission.accepted is true on first accept; submission.status is "pending"
+    // stream — drive a callback (the same surface as chat())    await this.runTurn({      mode: "stream",      input: "Stream me",      callback: {        onStart({ requestId }) {},        onEvent(json) {}, // UIMessageChunk JSON        onDone() {},        onError(error) {},      },    });
+    // continuation — continue the last assistant turn instead of sending input    await this.runTurn({ continuation: true });  }}
+```
+
+TypeScript
+
+```
+export class Assistant extends Think<Env> {  async examples(inboundEventId: string) {    // wait — block for the result    const result = await this.runTurn({ input: "Summarize the latest thread" });    if (result.status === "completed") {      // result.message is the assistant message; result.continuation is false    }
+    // submit — durable acceptance, check status later    const submission = await this.runTurn({      mode: "submit",      input: "Process this webhook",      idempotencyKey: inboundEventId, // dedupe; safe to retry    });    // submission.accepted is true on first accept; submission.status is "pending"
+    // stream — drive a callback (the same surface as chat())    await this.runTurn({      mode: "stream",      input: "Stream me",      callback: {        onStart({ requestId }) {},        onEvent(json) {}, // UIMessageChunk JSON        onDone() {},        onError(error) {},      },    });
+    // continuation — continue the last assistant turn instead of sending input    await this.runTurn({ continuation: true });  }}
+```
+
+Key behaviors:
+
+* **Blocking modes cannot nest.** Calling `wait`/`stream`/`continuation` (or the equivalent shortcut) from _inside_ an active turn — for example, from a tool's `execute` — throws, because it would deadlock the turn queue. From inside a turn, use `runTurn({ mode: "submit" })` (durable, runs after the current turn frees the queue) or [addMessages()](#add-messages-without-a-turn) (transcript only, no inference).
+* **`submit` is idempotent.** Pass `submissionId` and/or `idempotencyKey`; re-submitting a known key returns the existing record with `accepted: false` instead of starting a second turn. See [Programmatic submissions](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/).
+* **Recovery-safe.** When `chatRecovery` is enabled, the `wait`, `stream`, and drained `submit` paths all run inference inside a recovery fiber, so an interrupted turn resumes after eviction.
+
+`runTurn` is exported alongside its option and result types: `RunTurnOptions`, `RunTurnWait`, `RunTurnSubmit`, `RunTurnStream`, `TurnInputMessages`, and `TurnResult`.
+
+### Pick a shortcut
+
+The table below maps each scenario to the most direct call. Each shortcut has an unchanged signature; reach for them when you want the narrower surface, or use `runTurn()` when you want one mental model.
 
 | Use case                                                       | API                                           |
 | -------------------------------------------------------------- | --------------------------------------------- |
@@ -145,10 +194,37 @@ Think has several ways to start or continue a turn. Choose based on who starts t
 | A parent delegates work to a retained child agent              | agentTool() or runAgentTool()                 |
 | Surround a turn with idempotent app-owned side effects         | startFiber()                                  |
 | Coordinate multi-step durable orchestration                    | Workflows                                     |
-| Add context or messages without starting a model turn          | persistMessages()                             |
+| Add context or messages without starting a model turn          | addMessages()                                 |
 | Advanced subclass or recovery code continues an assistant turn | continueLastTurn()                            |
 
 Use `saveMessages()` when the caller owns the trigger and can wait for the turn to finish. Use [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/) when timeout ambiguity would make retries unsafe.
+
+### Add messages without a turn
+
+Use `addMessages()` to write to the transcript **without** starting a model turn — for importing prior history or injecting background context the next turn should see:
+
+* [  JavaScript ](#tab-panel-5753)
+* [  TypeScript ](#tab-panel-5754)
+
+JavaScript
+
+```
+export class Assistant extends Think {  async importContext() {    await this.addMessages([      {        id: crypto.randomUUID(),        role: "user",        parts: [{ type: "text", text: "Imported context" }],      },    ]);  }}
+```
+
+TypeScript
+
+```
+export class Assistant extends Think<Env> {  async importContext() {    await this.addMessages([      {        id: crypto.randomUUID(),        role: "user",        parts: [{ type: "text", text: "Imported context" }],      },    ]);  }}
+```
+
+`addMessages()` appends (or upserts) into the Session tree:
+
+* It does **not** run inference and does **not** enter the turn queue, so it is safe to call from inside a tool's `execute` without deadlocking.
+* Array entries are appended **linearly** (each attaches under the previous one), so imported history stays a single path. By default the first message attaches to the latest committed leaf; pass `parentId` to attach elsewhere, or `null` for a root message.
+* Appends are **idempotent by message id**. Pass `{ mode: "upsert" }` to update an existing message in place instead.
+
+The supported pattern is "add context, then run a turn": call `addMessages()`, then `runTurn()`.
 
 Use `chat()` for low-level parent-to-child streaming when your code owns forwarding, cancellation, and replay policy. Use [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) when a parent model or workflow delegates to a child agent and you want retained child runs, event replay, abort bridging, and UI drill-in.
 
@@ -161,6 +237,10 @@ Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/du
 [ Configuration ](https://developers.cloudflare.com/agents/harnesses/think/configuration/) Configuration overrides, dynamic configuration, and Session integration.
 
 [ Tools ](https://developers.cloudflare.com/agents/harnesses/think/tools/) Workspace tools, code execution, browser tools, and extensions.
+
+[ Actions ](https://developers.cloudflare.com/agents/harnesses/think/actions/) Server actions with idempotency, approvals, authorization, and reply attachments.
+
+[ Channels ](https://developers.cloudflare.com/agents/harnesses/think/channels/) Per-channel policy, channel selection, and out-of-band notices.
 
 [ Lifecycle hooks ](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/) beforeTurn, beforeStep, onStepFinish, onChatResponse, and more.
 
@@ -198,6 +278,6 @@ Think's design is inspired by [Pi ↗](https://pi.dev).
 * [Browse the web](https://developers.cloudflare.com/agents/tools/browser/) — full CDP helper API reference
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}}]}
 ```

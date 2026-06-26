@@ -1,5 +1,3 @@
-# Interactions API
-
 The Interactions API is our new interface and the most straightforward way
 to build with Gemini models and agents. As of June 2026, it is Generally
 Available and the recommended interface for all new projects.
@@ -10,7 +8,7 @@ remains fully supported.
 
 ## Why use the Interactions API?
 
-- **New capabilities out of the box** : Optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and background execution for long-running tasks using `background=true`.
+- **New capabilities out of the box** : Optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
 - **Lower cost with higher cache hit rates**: Server-side state management enables more efficient context caching across turns, reducing token costs for multi-turn conversations.
 - **Built for frontier models and agents**: Purpose-built for thinking models, multi-step tool use, and complex reasoning flows --- simplifying the process of building, debugging, and orchestrating agentic applications.
 - **Single API for models and agents**: One unified interface for calling Gemini models and agents directly such as Deep Research and custom managed agents --- no separate endpoints or patterns to learn.
@@ -77,7 +75,7 @@ request.
 
 By default, the API stores all Interaction objects (`store=true`) in order to
 simplify use of server-side state management features (with
-`previous_interaction_id`), background execution (using `background=true`) and
+`previous_interaction_id`), [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (using `background=true`) and
 observability purposes.
 
 - **Paid Tier** : The system retains interactions for **55 days**.
@@ -86,7 +84,7 @@ observability purposes.
 If you don't want this, you can
 set `store=false` in your request. This control is separate from state
 management; you can opt out of storage for any interaction. However, note that
-`store=false` is incompatible with `background=true` and prevents using
+`store=false` is incompatible with [background execution](https://ai.google.dev/gemini-api/docs/background-execution) and prevents using
 `previous_interaction_id` for subsequent turns.
 
 You can delete stored interactions at any time using the delete method found in
@@ -107,16 +105,20 @@ The system processes Interaction objects according to the [terms](https://ai.goo
 
 | Model Name | Type | Model ID |
 |---|---|---|
-| Gemini 3.1 Flash-Lite | Model | `gemini-3.1-flash-lite` |
-| Gemini 3.1 Flash-Lite Preview | Model | `gemini-3.1-flash-lite-preview` |
+| Gemini 3.5 Flash | Model | `gemini-3.5-flash` |
 | Gemini 3.1 Pro Preview | Model | `gemini-3.1-pro-preview` |
+| Gemini 3.1 Flash-Lite | Model | `gemini-3.1-flash-lite` |
 | Gemini 3 Flash Preview | Model | `gemini-3-flash-preview` |
 | Gemini 2.5 Pro | Model | `gemini-2.5-pro` |
 | Gemini 2.5 Flash | Model | `gemini-2.5-flash` |
 | Gemini 2.5 Flash-lite | Model | `gemini-2.5-flash-lite` |
+| Gemini 3 Pro Image | Model | `gemini-3-pro-image` |
+| Gemini 3.1 Flash Image | Model | `gemini-3.1-flash-image` |
+| Gemini 3.1 Flash TTS Preview | Model | `gemini-3.1-flash-tts-preview` |
+| Gemma 4 31B IT | Model | `gemma-4-31b-it` |
+| Gemma 4 26B MoE IT | Model | `gemma-4-26b-a4b-it` |
 | Lyria 3 Clip Preview | Model | `lyria-3-clip-preview` |
 | Lyria 3 Pro Preview | Model | `lyria-3-pro-preview` |
-| Deep Research Preview | Agent | `deep-research-pro-preview-12-2025` |
 | Deep Research Preview | Agent | `deep-research-preview-04-2026` |
 | Deep Research Preview | Agent | `deep-research-max-preview-04-2026` |
 | Antigravity Preview | Agent | `antigravity-preview-05-2026` |
@@ -126,8 +128,8 @@ The system processes Interaction objects according to the [terms](https://ai.goo
 You can use latest version of the Google GenAI SDKs in order to access
 Interactions API.
 
-- On Python, this is `google-genai` package from `1.55.0` version onwards.
-- On JavaScript, this is `@google/genai` package from `1.33.0` version onwards.
+- On Python, this is `google-genai` package from `2.3.0` version onwards.
+- On JavaScript, this is `@google/genai` package from `2.3.0` version onwards.
 
 You can learn more about how to install the SDKs on
 [Libraries](https://ai.google.dev/gemini-api/docs/libraries) page.

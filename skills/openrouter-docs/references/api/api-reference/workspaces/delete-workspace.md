@@ -6,7 +6,7 @@
 
 DELETE https://openrouter.ai/api/v1/workspaces/{id}
 
-Delete an existing workspace. The default workspace cannot be deleted. Workspaces with active API keys cannot be deleted. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+Delete an existing workspace. The default workspace cannot be deleted. Workspaces with active API keys cannot be deleted; remove the keys first. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 Reference: https://openrouter.ai/docs/api/api-reference/workspaces/delete-workspace
 
@@ -24,8 +24,9 @@ paths:
       summary: Delete a workspace
       description: >-
         Delete an existing workspace. The default workspace cannot be deleted.
-        Workspaces with active API keys cannot be deleted. [Management
-        key](/docs/guides/overview/auth/management-api-keys) required.
+        Workspaces with active API keys cannot be deleted; remove the keys
+        first. [Management key](/docs/guides/overview/auth/management-api-keys)
+        required.
       tags:
         - subpackage_workspaces
       parameters:

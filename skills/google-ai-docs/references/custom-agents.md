@@ -1,5 +1,3 @@
-# Building Managed Agents
-
 Managed agents on the Gemini API let you extend the Antigravity agent with your own instructions, skills, and data. You can [customize the agent inline](https://ai.google.dev/gemini-api/docs/custom-agents#customize-inline) at interaction time, or [save the configuration](https://ai.google.dev/gemini-api/docs/custom-agents#save-agent) as a managed agent you invoke by ID.
 
 ## Customize the Antigravity agent
@@ -594,6 +592,8 @@ Call your managed agent with your agent ID by creating a new interaction. Each i
       }'
 
 For multi-turn conversations and streaming, see the [Quickstart](https://ai.google.dev/gemini-api/docs/managed-agents-quickstart). The same `previous_interaction_id` and `environment` patterns apply to managed agents.
+
+Managed agents also support background execution and cancellation. For details and code examples, see [Antigravity Agent: Background execution](https://ai.google.dev/gemini-api/docs/antigravity-agent#background-execution).
 
 ## Overriding configuration at invocation
 

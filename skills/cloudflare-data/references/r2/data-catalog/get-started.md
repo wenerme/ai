@@ -30,8 +30,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket and enable the data catalog
 
-* [ Wrangler CLI ](#tab-panel-9869)
-* [ Dashboard ](#tab-panel-9870)
+* [ Wrangler CLI ](#tab-panel-10085)
+* [ Dashboard ](#tab-panel-10086)
 
 1. If not already logged in, run:
 Terminal window

@@ -73,8 +73,8 @@ npx wrangler login
 
 ## 2\. Create an R2 bucket and enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-9876)
-* [ Dashboard ](#tab-panel-9877)
+* [ Wrangler CLI ](#tab-panel-10052)
+* [ Dashboard ](#tab-panel-10053)
 
 Create an R2 bucket:
 
@@ -92,8 +92,8 @@ npx wrangler r2 bucket create fraud-pipeline
 
 Enable the catalog on your R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-9878)
-* [ Dashboard ](#tab-panel-9879)
+* [ Wrangler CLI ](#tab-panel-10054)
+* [ Dashboard ](#tab-panel-10055)
 
 Terminal window
 
@@ -123,8 +123,8 @@ export WAREHOUSE= #Paste your warehouse here
 
 R2 Data Catalog can automatically compact tables for you. In production event streaming use cases, it is common to end up with many small files, so it is recommended to enable compaction. Since the tutorial only demonstrates a sample use case, this step is optional.
 
-* [ Wrangler CLI ](#tab-panel-9880)
-* [ Dashboard ](#tab-panel-9881)
+* [ Wrangler CLI ](#tab-panel-10056)
+* [ Dashboard ](#tab-panel-10057)
 
 Terminal window
 
@@ -142,8 +142,8 @@ npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLE
 
 ### 3.1\. Create the Pipeline stream
 
-* [ Wrangler CLI ](#tab-panel-9882)
-* [ Dashboard ](#tab-panel-9883)
+* [ Wrangler CLI ](#tab-panel-10058)
+* [ Dashboard ](#tab-panel-10059)
 
 First, create a schema file called `raw_transactions_schema.json` with the following `json` schema:
 

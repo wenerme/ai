@@ -64,6 +64,10 @@ If `true`, the redirect URL will keep the query string of the original request.
 
 For example, a URL redirect from `/my-folder/` to `/other-folder/` with **Preserve query string** enabled will redirect a request from `/my-folder/?name=value` to `/other-folder/?name=value`. If **Preserve query string** is disabled, the request will be redirected from `/my-folder/?name=value` to `/other-folder/`.
 
+Warning
+
+When **Preserve query string** is enabled, the final redirect URL uses the original request's query string. Any query string on the target URL is discarded — even when the original request has no query string of its own. To add a fixed query parameter to redirected URLs, leave **Preserve query string** disabled and include the parameter directly in the target URL.
+
 ## Preserve path suffix
 
 API field: `preserve_path_suffix` ` Boolean ` default: true
@@ -85,6 +89,6 @@ The HTTP status code returned to the client when redirecting:
 * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#page","headline":"URL redirect parameters · Cloudflare Rules docs","description":"Configurable parameters for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#page","headline":"URL redirect parameters · Cloudflare Rules docs","description":"Configurable parameters for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/parameters/","name":"URL redirect parameters"}}]}
 ```

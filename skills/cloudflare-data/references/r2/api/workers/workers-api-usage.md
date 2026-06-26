@@ -80,8 +80,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the `<YOUR_BUCKET_NAME>` you used to create your bucket in [step 2](#2-create-your-bucket):
 
-* [  wrangler.jsonc ](#tab-panel-9901)
-* [  wrangler.toml ](#tab-panel-9902)
+* [  wrangler.jsonc ](#tab-panel-10077)
+* [  wrangler.toml ](#tab-panel-10078)
 
 JSONC
 
@@ -109,9 +109,9 @@ If you want the R2 operations that are performed during development to be perfor
 
 An R2 bucket is able to READ, LIST, WRITE, and DELETE objects. You can see an example of all operations below using the Module Worker syntax. Add the following snippet into your project's `index.js` file:
 
-* [  TypeScript ](#tab-panel-9896)
-* [  JavaScript ](#tab-panel-9897)
-* [  Python ](#tab-panel-9898)
+* [  TypeScript ](#tab-panel-10072)
+* [  JavaScript ](#tab-panel-10073)
+* [  Python ](#tab-panel-10074)
 
 TypeScript
 
@@ -167,8 +167,8 @@ For `PUT` and `DELETE` requests, you will make use of a new `AUTH_KEY_SECRET` en
 
 For `GET` requests, you will ensure that only a specific file can be requested. All of this custom logic occurs inside of an `authorizeRequest` function, with the `hasValidHeader` function handling the custom header logic. If all validation passes, then the operation is allowed.
 
-* [  JavaScript ](#tab-panel-9899)
-* [  Python ](#tab-panel-9900)
+* [  JavaScript ](#tab-panel-10075)
+* [  Python ](#tab-panel-10076)
 
 JavaScript
 

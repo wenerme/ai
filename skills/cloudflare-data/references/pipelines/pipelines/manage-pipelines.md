@@ -93,6 +93,19 @@ Apply transformations to fields:
 INSERT INTO my_sinkSELECT  user_id,  UPPER(event_type) as event_type,  timestamp,  amount * 1.1 as amount_with_taxFROM my_stream
 ```
 
+#### Route one stream to multiple tables
+
+A single pipeline can run multiple `INSERT` statements, separated by semicolons. Each statement reads from the same stream and writes to a different sink, so you can route ("fan out") events from one stream into several tables based on their content.
+
+This avoids running a separate pipeline for each destination. Each statement filters the stream with its own `WHERE` clause and projects only the columns relevant to that table. This can also be a used as a cost optimization as you will be [billed](https://developers.cloudflare.com/pipelines/platform/pricing/) once for the transformations, not per statement.
+
+```
+INSERT INTO purchases_sinkSELECT user_id, product_id, amount FROM my_streamWHERE event_type = 'purchase';
+INSERT INTO page_views_sinkSELECT user_id, product_id FROM my_streamWHERE event_type = 'view_product';
+```
+
+For a complete example that fans a live event stream out into five tables, refer to [Fan out a stream to multiple Iceberg tables](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/).
+
 ## View pipeline configuration
 
 ### Dashboard
@@ -146,6 +159,6 @@ Deleting a pipeline immediately stops data flow between the stream and sink.
 Pipeline SQL cannot be modified after creation. To change the SQL transformation, you must delete and recreate the pipeline.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/pipelines/manage-pipelines/#page","headline":"Manage pipelines · Cloudflare Pipelines Docs","description":"Create, configure, and manage SQL transformations between streams and sinks","url":"https://developers.cloudflare.com/pipelines/pipelines/manage-pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/pipelines/manage-pipelines/#page","headline":"Manage pipelines · Cloudflare Pipelines Docs","description":"Create, configure, and manage SQL transformations between streams and sinks","url":"https://developers.cloudflare.com/pipelines/pipelines/manage-pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/pipelines/manage-pipelines/","name":"Manage pipelines"}}]}
 ```

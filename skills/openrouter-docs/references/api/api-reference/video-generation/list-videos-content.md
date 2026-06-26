@@ -45,7 +45,10 @@ paths:
             type: string
       responses:
         '200':
-          description: Video content stream
+          description: >-
+            Video content stream. The body is the raw video bytes proxied from
+            the upstream provider, and the Content-Type reflects the provider
+            media type (video/mp4).
           content:
             application/octet-stream:
               schema:
