@@ -2,6 +2,7 @@
   "$comment": "Manual source mapping for skills synced via custom scripts or hand-maintained. skills.json handles rsync-based external skills separately.",
   "sources": {
     "alpine-aports-docs": { "repo": "alpinelinux/aports", "host": "gitlab.alpinelinux.org" },
+    "aliyun-cli-docs": { "url": "https://help.aliyun.com/zh/cli/" },
     "anthropic-agent-sdk": { "repo": "anthropics/anthropic-sdk-python" },
     "anthropic-api": { "url": "https://docs.anthropic.com" },
     "anthropic-docs": { "url": "https://docs.anthropic.com" },

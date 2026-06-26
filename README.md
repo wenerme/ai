@@ -10,12 +10,13 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 104 skills available
+> 105 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
 | `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
+| `aliyun-cli-docs` | Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure`... | [help.aliyun.com](https://help.aliyun.com/zh/cli/) |
 | `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... | [alpinelinux/aports](https://gitlab.alpinelinux.org/alpinelinux/aports) |
 | `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
 | `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... | [docs.anthropic.com](https://docs.anthropic.com) |
@@ -137,6 +138,16 @@ npx skills add wenerme/ai --skill ai-sdk
 ```
 
 Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK functions like generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to build AI agents, chatbots, RAG systems, or text generation features, (3) Have questions about AI providers (OpenAI, Anthropic, Google, etc.), streaming, tool calling, structured output, or embeddings, (4) Use React hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI SDK", "generateText", "streamText", "add AI to my app", "build an agent", "tool calling", "structured output", "useChat".
+
+</details>
+<details>
+<summary><code>aliyun-cli-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill aliyun-cli-docs
+```
+
+Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure` credentials/profiles, environment variables, command structure, parameter formats, JMESPath `--cli-query`, table output, `--pager`, `--waiter`, `--cli-dry-run`, safety policy, AI mode, `aliyun mcp-proxy`, Docker usage, migration from pre-3.3.0 CLI, or aliyun CLI troubleshooting.
 
 </details>
 <details>
@@ -1161,12 +1172,13 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 104 skills, 26432 files, 282 MiB total
+> 105 skills, 26455 files, 282 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
 | `agent-browser` | 1 | 3.2 KiB |
 | `ai-sdk` | 5 | 24 KiB |
+| `aliyun-cli-docs` | 27 | 183 KiB |
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
@@ -1206,7 +1218,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 452 KiB |
+| `glab-docs` | 289 | 450 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 6.0 MiB |
@@ -1214,7 +1226,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 160 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1235,7 +1247,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 454 KiB |
-| `openobserve-docs` | 445 | 2.3 MiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |

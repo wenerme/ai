@@ -28,6 +28,10 @@ update-openrouter-docs:
 update-google-ai-docs:
     bun scripts/fetch-google-ai-docs.ts
 
+# Fetch Alibaba Cloud CLI docs from help.aliyun.com
+update-aliyun-cli-docs:
+    bun scripts/fetch-aliyun-cli-docs.ts
+
 # Sync Bun docs from local oven-sh/bun clone
 update-bun-docs:
     bun scripts/sync-bun-docs.ts
