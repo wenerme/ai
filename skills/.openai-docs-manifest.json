@@ -682,10 +682,10 @@
   "openai-docs/guides/rate-limits.md": {
     "url": "https://developers.openai.com/api/docs/guides/rate-limits.md",
     "skill": "openai-docs",
-    "etag": "W/\"1d287dffda8c4a49664bfa0f74cbc1ee\"",
-    "lastModified": "Sat, 13 Jun 2026 00:37:20 GMT",
-    "size": 11039,
-    "updatedAt": "2026-06-13T00:44:02.480Z"
+    "etag": "W/\"3e1d8dc41da74d3af0d50bfc7eb1cdf2\"",
+    "lastModified": "Fri, 26 Jun 2026 17:54:27 GMT",
+    "size": 11710,
+    "updatedAt": "2026-06-26T18:10:52.884Z"
   },
   "openai-docs/guides/rbac.md": {
     "url": "https://developers.openai.com/api/docs/guides/rbac.md",

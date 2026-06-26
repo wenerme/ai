@@ -104,8 +104,8 @@ pnpm wrangler kv namespace create crawler_screenshots
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-9861)
-* [  wrangler.toml ](#tab-panel-9862)
+* [  wrangler.jsonc ](#tab-panel-10037)
+* [  wrangler.toml ](#tab-panel-10038)
 
 JSONC
 
@@ -164,8 +164,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-9859)
-* [  wrangler.toml ](#tab-panel-9860)
+* [  wrangler.jsonc ](#tab-panel-10035)
+* [  wrangler.toml ](#tab-panel-10036)
 
 JSONC
 
@@ -207,8 +207,8 @@ Creating queue queues-web-crawler.Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-9863)
-* [  wrangler.toml ](#tab-panel-9864)
+* [  wrangler.jsonc ](#tab-panel-10039)
+* [  wrangler.toml ](#tab-panel-10040)
 
 JSONC
 
@@ -227,19 +227,19 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-9865)
-* [  wrangler.toml ](#tab-panel-9866)
+* [  wrangler.jsonc ](#tab-panel-10041)
+* [  wrangler.toml ](#tab-panel-10042)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "web-crawler",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "kv_namespaces": [    {      "binding": "CRAWLER_SCREENSHOTS_KV",      "id": "<GENERATED_NAMESPACE_ID>",    },    {      "binding": "CRAWLER_LINKS_KV",      "id": "<GENERATED_NAMESPACE_ID>",    },  ],  "browser": {    "binding": "CRAWLER_BROWSER",  },  "queues": {    "consumers": [      {        "queue": "queues-web-crawler",        "max_batch_timeout": 60,      },    ],    "producers": [      {        "queue": "queues-web-crawler",        "binding": "CRAWLER_QUEUE",      },    ],  },}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "web-crawler",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-26",  "compatibility_flags": ["nodejs_compat"],  "kv_namespaces": [    {      "binding": "CRAWLER_SCREENSHOTS_KV",      "id": "<GENERATED_NAMESPACE_ID>",    },    {      "binding": "CRAWLER_LINKS_KV",      "id": "<GENERATED_NAMESPACE_ID>",    },  ],  "browser": {    "binding": "CRAWLER_BROWSER",  },  "queues": {    "consumers": [      {        "queue": "queues-web-crawler",        "max_batch_timeout": 60,      },    ],    "producers": [      {        "queue": "queues-web-crawler",        "binding": "CRAWLER_QUEUE",      },    ],  },}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "web-crawler"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "web-crawler"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-26"compatibility_flags = [ "nodejs_compat" ]
 [[kv_namespaces]]binding = "CRAWLER_SCREENSHOTS_KV"id = "<GENERATED_NAMESPACE_ID>"
 [[kv_namespaces]]binding = "CRAWLER_LINKS_KV"id = "<GENERATED_NAMESPACE_ID>"
 [browser]binding = "CRAWLER_BROWSER"

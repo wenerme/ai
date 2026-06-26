@@ -28,9 +28,9 @@ Terminal window
 export AWS_REGION=autoexport AWS_ENDPOINT_URL=https://<account_id>.r2.cloudflarestorage.comexport AWS_ACCESS_KEY_ID=your_access_key_idexport AWS_SECRET_ACCESS_KEY=your_secret_access_key
 ```
 
-* [  JavaScript ](#tab-panel-9923)
-* [  Python ](#tab-panel-9924)
-* [  Go ](#tab-panel-9925)
+* [  JavaScript ](#tab-panel-10099)
+* [  Python ](#tab-panel-10100)
+* [  Go ](#tab-panel-10101)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 

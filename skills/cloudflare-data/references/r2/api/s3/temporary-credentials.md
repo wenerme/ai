@@ -125,9 +125,9 @@ JSONC
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-9847)
-* [ Python ](#tab-panel-9848)
-* [ Environment variables ](#tab-panel-9849)
+* [ JavaScript ](#tab-panel-10063)
+* [ Python ](#tab-panel-10064)
+* [ Environment variables ](#tab-panel-10065)
 
 TypeScript
 

@@ -160,6 +160,7 @@ components:
         - perplexity
         - phala
         - poolside
+        - quiver
         - recraft
         - reka
         - relace
@@ -254,6 +255,7 @@ components:
         - perplexity
         - phala
         - poolside
+        - quiver
         - recraft
         - reka
         - relace

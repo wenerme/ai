@@ -18,9 +18,9 @@ Queues Wrangler commands use REST APIs to interact with the control plane. This 
 
 List queues
 
-* [  npm ](#tab-panel-9749)
-* [  pnpm ](#tab-panel-9750)
-* [  yarn ](#tab-panel-9751)
+* [  npm ](#tab-panel-9965)
+* [  pnpm ](#tab-panel-9966)
+* [  yarn ](#tab-panel-9967)
 
 Terminal window
 
@@ -66,9 +66,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a queue
 
-* [  npm ](#tab-panel-9752)
-* [  pnpm ](#tab-panel-9753)
-* [  yarn ](#tab-panel-9754)
+* [  npm ](#tab-panel-9968)
+* [  pnpm ](#tab-panel-9969)
+* [  yarn ](#tab-panel-9970)
 
 Terminal window
 
@@ -118,9 +118,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a queue
 
-* [  npm ](#tab-panel-9755)
-* [  pnpm ](#tab-panel-9756)
-* [  yarn ](#tab-panel-9757)
+* [  npm ](#tab-panel-9971)
+* [  pnpm ](#tab-panel-9972)
+* [  yarn ](#tab-panel-9973)
 
 Terminal window
 
@@ -170,9 +170,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a queue
 
-* [  npm ](#tab-panel-9758)
-* [  pnpm ](#tab-panel-9759)
-* [  yarn ](#tab-panel-9760)
+* [  npm ](#tab-panel-9974)
+* [  pnpm ](#tab-panel-9975)
+* [  yarn ](#tab-panel-9976)
 
 Terminal window
 
@@ -218,9 +218,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get queue information
 
-* [  npm ](#tab-panel-9761)
-* [  pnpm ](#tab-panel-9762)
-* [  yarn ](#tab-panel-9763)
+* [  npm ](#tab-panel-9977)
+* [  pnpm ](#tab-panel-9978)
+* [  yarn ](#tab-panel-9979)
 
 Terminal window
 
@@ -266,9 +266,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-9764)
-* [  pnpm ](#tab-panel-9765)
-* [  yarn ](#tab-panel-9766)
+* [  npm ](#tab-panel-9980)
+* [  pnpm ](#tab-panel-9981)
+* [  yarn ](#tab-panel-9982)
 
 Terminal window
 
@@ -328,9 +328,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-9767)
-* [  pnpm ](#tab-panel-9768)
-* [  yarn ](#tab-panel-9769)
+* [  npm ](#tab-panel-9983)
+* [  pnpm ](#tab-panel-9984)
+* [  yarn ](#tab-panel-9985)
 
 Terminal window
 
@@ -378,9 +378,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List consumers for a queue
 
-* [  npm ](#tab-panel-9770)
-* [  pnpm ](#tab-panel-9771)
-* [  yarn ](#tab-panel-9772)
+* [  npm ](#tab-panel-9986)
+* [  pnpm ](#tab-panel-9987)
+* [  yarn ](#tab-panel-9988)
 
 Terminal window
 
@@ -428,9 +428,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-9773)
-* [  pnpm ](#tab-panel-9774)
-* [  yarn ](#tab-panel-9775)
+* [  npm ](#tab-panel-9989)
+* [  pnpm ](#tab-panel-9990)
+* [  yarn ](#tab-panel-9991)
 
 Terminal window
 
@@ -486,9 +486,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-9776)
-* [  pnpm ](#tab-panel-9777)
-* [  yarn ](#tab-panel-9778)
+* [  npm ](#tab-panel-9992)
+* [  pnpm ](#tab-panel-9993)
+* [  yarn ](#tab-panel-9994)
 
 Terminal window
 
@@ -534,9 +534,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List HTTP pull consumers for a queue
 
-* [  npm ](#tab-panel-9779)
-* [  pnpm ](#tab-panel-9780)
-* [  yarn ](#tab-panel-9781)
+* [  npm ](#tab-panel-9995)
+* [  pnpm ](#tab-panel-9996)
+* [  yarn ](#tab-panel-9997)
 
 Terminal window
 
@@ -584,9 +584,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-9782)
-* [  pnpm ](#tab-panel-9783)
-* [  yarn ](#tab-panel-9784)
+* [  npm ](#tab-panel-9998)
+* [  pnpm ](#tab-panel-9999)
+* [  yarn ](#tab-panel-10000)
 
 Terminal window
 
@@ -646,9 +646,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-9785)
-* [  pnpm ](#tab-panel-9786)
-* [  yarn ](#tab-panel-9787)
+* [  npm ](#tab-panel-10001)
+* [  pnpm ](#tab-panel-10002)
+* [  yarn ](#tab-panel-10003)
 
 Terminal window
 
@@ -696,9 +696,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List worker consumers for a queue
 
-* [  npm ](#tab-panel-9788)
-* [  pnpm ](#tab-panel-9789)
-* [  yarn ](#tab-panel-9790)
+* [  npm ](#tab-panel-10004)
+* [  pnpm ](#tab-panel-10005)
+* [  yarn ](#tab-panel-10006)
 
 Terminal window
 
@@ -746,9 +746,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-9791)
-* [  pnpm ](#tab-panel-9792)
-* [  yarn ](#tab-panel-9793)
+* [  npm ](#tab-panel-10007)
+* [  pnpm ](#tab-panel-10008)
+* [  yarn ](#tab-panel-10009)
 
 Terminal window
 
@@ -794,9 +794,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-9794)
-* [  pnpm ](#tab-panel-9795)
-* [  yarn ](#tab-panel-9796)
+* [  npm ](#tab-panel-10010)
+* [  pnpm ](#tab-panel-10011)
+* [  yarn ](#tab-panel-10012)
 
 Terminal window
 
@@ -842,9 +842,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-9797)
-* [  pnpm ](#tab-panel-9798)
-* [  yarn ](#tab-panel-9799)
+* [  npm ](#tab-panel-10013)
+* [  pnpm ](#tab-panel-10014)
+* [  yarn ](#tab-panel-10015)
 
 Terminal window
 
@@ -892,9 +892,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-9800)
-* [  pnpm ](#tab-panel-9801)
-* [  yarn ](#tab-panel-9802)
+* [  npm ](#tab-panel-10016)
+* [  pnpm ](#tab-panel-10017)
+* [  yarn ](#tab-panel-10018)
 
 Terminal window
 
@@ -954,9 +954,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-9803)
-* [  pnpm ](#tab-panel-9804)
-* [  yarn ](#tab-panel-9805)
+* [  npm ](#tab-panel-10019)
+* [  pnpm ](#tab-panel-10020)
+* [  yarn ](#tab-panel-10021)
 
 Terminal window
 
@@ -1008,9 +1008,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-9806)
-* [  pnpm ](#tab-panel-9807)
-* [  yarn ](#tab-panel-9808)
+* [  npm ](#tab-panel-10022)
+* [  pnpm ](#tab-panel-10023)
+* [  yarn ](#tab-panel-10024)
 
 Terminal window
 
@@ -1060,9 +1060,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-9809)
-* [  pnpm ](#tab-panel-9810)
-* [  yarn ](#tab-panel-9811)
+* [  npm ](#tab-panel-10025)
+* [  pnpm ](#tab-panel-10026)
+* [  yarn ](#tab-panel-10027)
 
 Terminal window
 
@@ -1112,9 +1112,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-9812)
-* [  pnpm ](#tab-panel-9813)
-* [  yarn ](#tab-panel-9814)
+* [  npm ](#tab-panel-10028)
+* [  pnpm ](#tab-panel-10029)
+* [  yarn ](#tab-panel-10030)
 
 Terminal window
 

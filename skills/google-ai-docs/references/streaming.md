@@ -1,5 +1,3 @@
-# Streaming interactions
-
 When creating an Interaction, you can set `stream: true` to incrementally stream the response using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) (SSE).
 
 ### Python
@@ -707,7 +705,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
 
 ## Streaming with agents
 
-The Interactions API supports agents like Deep Research. Agents use `background=True` and return results asynchronously, but you can also stream agent interactions to receive progress updates and intermediate steps as they happen. For more details, see the [Deep Research guide](https://ai.google.dev/gemini-api/docs/deep-research).
+The Interactions API supports agents like Deep Research. Agents use `background=True` and return results asynchronously, but you can also stream agent interactions to receive progress updates and intermediate steps as they happen. For more details, see the [Background execution guide](https://ai.google.dev/gemini-api/docs/background-execution) and the [Deep Research guide](https://ai.google.dev/gemini-api/docs/deep-research).
 
 ### Python
 

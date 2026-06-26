@@ -1,5 +1,3 @@
-# Getting started
-
 <br />
 
 > [!NOTE]
@@ -1331,7 +1329,7 @@ Visual playground for prototyping agents without writing code.](https://ai.googl
 
 ## 11. Run tasks in the background
 
-Set `background=True` to run long tasks asynchronously. Poll for results with `interactions.get()`.
+Set `background=True` to run long tasks asynchronously. Poll for results with `interactions.get()`. For more details, see the [Background execution guide](https://ai.google.dev/gemini-api/docs/background-execution).
 
 ### Python
 
@@ -1451,10 +1449,11 @@ Once the background task is fully executed, checking the interaction state retur
       "model": "gemini-3.5-flash",
     }
 
-Read about running models and agents asynchronously in the [background execution guide](https://ai.google.dev/gemini-api/docs/interactions-overview#background-execution).
+Read about running models and agents asynchronously in the [background execution guide](https://ai.google.dev/gemini-api/docs/background-execution).
 
 ## What's next
 
+- [Background execution](https://ai.google.dev/gemini-api/docs/background-execution): Run long-running tasks asynchronously and manage state.
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation): System instructions, generation config, and advanced text patterns.
 - [Image generation](https://ai.google.dev/gemini-api/docs/image-generation): Aspect ratios, image editing, and style references.
 - [Image understanding](https://ai.google.dev/gemini-api/docs/image-understanding): Classification, object detection, and visual Q\&A.

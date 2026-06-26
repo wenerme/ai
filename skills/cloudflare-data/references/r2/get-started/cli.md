@@ -24,8 +24,8 @@ Manage R2 buckets and objects directly from your terminal. Use CLI tools to auto
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-9895)
-* [ Dashboard ](#tab-panel-9896)
+* [ Wrangler CLI ](#tab-panel-10111)
+* [ Dashboard ](#tab-panel-10112)
 
 1. Log in to your Cloudflare account:
 Terminal window
@@ -64,9 +64,9 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 ## 3\. Set up a CLI tool
 
-* [ Wrangler ](#tab-panel-9892)
-* [ rclone ](#tab-panel-9893)
-* [ AWS CLI ](#tab-panel-9894)
+* [ Wrangler ](#tab-panel-10108)
+* [ rclone ](#tab-panel-10109)
+* [ AWS CLI ](#tab-panel-10110)
 
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
@@ -132,9 +132,9 @@ Terminal window
 echo 'Hello, R2!' > myfile.txt
 ```
 
-* [ Wrangler ](#tab-panel-9889)
-* [ rclone ](#tab-panel-9890)
-* [ AWS CLI ](#tab-panel-9891)
+* [ Wrangler ](#tab-panel-10105)
+* [ rclone ](#tab-panel-10106)
+* [ AWS CLI ](#tab-panel-10107)
 
 Terminal window
 

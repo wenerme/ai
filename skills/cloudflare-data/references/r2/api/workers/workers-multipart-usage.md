@@ -26,8 +26,8 @@ The following example Worker includes any new information about the state of the
 
 Add the following code to your project's `index.js` file and replace `MY_BUCKET` with your bucket's name:
 
-* [  JavaScript ](#tab-panel-9863)
-* [  Python ](#tab-panel-9864)
+* [  JavaScript ](#tab-panel-10079)
+* [  Python ](#tab-panel-10080)
 
 JavaScript
 

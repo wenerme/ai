@@ -20,9 +20,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11875)
-* [  TypeScript ](#tab-panel-11876)
-* [  Python ](#tab-panel-11877)
+* [  JavaScript ](#tab-panel-11995)
+* [  TypeScript ](#tab-panel-11996)
+* [  Python ](#tab-panel-11997)
 
 JavaScript
 
@@ -30,7 +30,7 @@ JavaScript
 export default {  async fetch(request) {    function MethodNotAllowed(request) {      return new Response(`Method ${request.method} not allowed.`, {        status: 405,        headers: {          Allow: "GET",        },      });    }    // Only GET requests work with this proxy.    if (request.method !== "GET") return MethodNotAllowed(request);    return fetch(`https://example.com`);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAIwBOAOwAOWYNkAWAFwsWbYBzhcafASIky5igLAAoAMLoqEAKbXsAESgBnGOmdRoVpSXV4CxCRUcMA2DABEUDQ2AB4AdABWzuGkqFBgdiFhkdHxSeFmltZ2ENgAKnQwNj5wMDBgfARQVsgJcABucM68CLAQANTA6LjgNmZmsW5IJLg2qHDgECQA3qYkJF10VLy+NhC8ABYAFAg2AI4gNs4QAJQra+u+1LxeVCQAsnsHwwBy6BAAQTAYHQAHcbLgTudLtc7qtHo9ThAQAg3lQbKCSAAlK5uKjOGxHAAGnwg31wJAAJMtThcrhA4qEycMAL5Bf4bYFgiFxIkAGnuCIR1wIIGcPgUggArHyHkKSAcbHBZghxYL5Y8gSDQT5wgBxACiZXCso1JBZpqFLJuRDl5rtyGQJAA8lQwHQSIayiRaTCIM4SKDMABrQOeA4kMkuEgwBDoGJ0OJ2qCoEhQunXRlfYYkACEDAYJH1RvCdyRKLepPJf0BXPBkN99JtdvLqN2+2ORIOEAgMHFjtiIXqNjivHQwCJzfWFtMLKIZlUzHUmm0PH4QjEUlk0nk0gUhSstnsTlc7k8zSoPj8mlIwVCESZyoCKV86Uy9-CZBBZAKFkPJXKSpqg2OoGl4JoWiSKxxlMZZwmAOAogAfSGEYMnCJQclmPJkhZBdF2XAJV10DcDG3XcFGYMwgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AEwBmYQE4AHAFZxANgCMwgFwsWbYBzhcafASInT5S1QFgAUAGF0VCAFMH2ACJQAzjHQeo0e2ok2ngExCRUcMCODABEUDSOAB4AdABWHjGkqFBgzpHRcQkp6THWdg7OENgAKnQwjoFwMDBgfARQ9sipcABucB68CLAQANTA6LjgjtbWSd5IJLiOqHDgECQA3lYkJP10VLxBjhC8ABYAFAiOAI4gjh4QAJSb2ztB1Lz+VCQAssenEwAcugIABBMBgdAAd0cuEuNzuD2eWzebyuEBACG+VEcUJIACV7t4qB5HOcAAZ-CAA3AkAAkGyut3uEGSUWpEwAvuEQbsIdDYclyQAaF6o1EPAggDyBAAsgjkwte4pIp0ccCWCBlYpVb3BkKhgRiAHEAKLVGJK3UkTlW8Wcx5EZU253IZAkADyVDAdBIZuqJCZiIgHhIUMwAGsw35TiRqZ4SDAEOhEnRks6oKgSPDmQ82f8JiQAIQMBgkE3mmLPdGY75UmnAsH8mFwoMsx3OmtYo4nC7k04QCAwGVupKRFqOZK8dDAckdna2qycojWTTMbS6fQ8fhCMSSWQKFTCMr2JwudxeHx+DpUQLBXSkCJRWLsjWhTJBHJ5Z8xMiQsilLYp6VDUdQNLszStLw7SdOk9gzFYGwxMAcDxAA+uMky5DEaiFEsxQZJyq5rhuoRboYu4mAe5jCMw1hAA)
 
 TypeScript
 

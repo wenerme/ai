@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) and [signed agents](https://developers.cloudflare.com/bots/concepts/bot/signed-agents/).
 
-It relies on two active IETF drafts: a [directory draft ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory) allowing the crawler to share their public keys, and a [protocol draft ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture) defining how these keys should be used to attach crawler's identity to HTTP requests.
+It relies on IETF drafts: a [directory draft ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03) allowing the crawler to share their public keys, and a [protocol draft ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture-02) defining how these keys should be used to attach the crawler's identity to HTTP requests.
 
 This documentation goes over specific integration within Cloudflare.
 
@@ -50,7 +50,7 @@ Many existing [JWK libraries ↗](https://jwt.io/libraries) support WebCrypto AP
 
 ## 2\. Host a key directory
 
-You need to host a key directory which creates a way for your bot to authenticate its requests to Cloudflare. This directory should follow the definition from the active IETF draft [draft-meunier-http-message-signatures-directory-01 ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-01).
+You need to host a key directory which creates a way for your bot to authenticate its requests to Cloudflare. This directory should follow the definition from [draft-meunier-http-message-signatures-directory-03 ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03).
 
 1. Host a key directory at `/.well-known/http-message-signatures-directory` (note that this is a requirement). This key directory should serve a JSON Web Key Set (JWKS) including the public key derived from your signing key.
 2. Serve the web page over HTTPS (not HTTP).
@@ -153,10 +153,13 @@ Construct a [Signature header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-t
 
 #### `Signature-Agent` header
 
-Construct a [Signature-Agent header ↗](https://www.ietf.org/archive/id/draft-meunier-http-message-signatures-directory-01.html#name-header-field-definition) that points to your key directory. Note that Cloudflare will fail to verify a message if:
+Construct a [Signature-Agent header ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03#name-header-field-definition) that points to your key directory. Cloudflare implements the `Signature-Agent` format from `draft-meunier-http-message-signatures-directory-03`, where the header value is a structured string such as `"https://signature-agent.test"`.
+
+Cloudflare will fail to verify a message if:
 
 * The message includes a `Signature-Agent` header that is not an `https://`.
 * The message includes a valid URI but does not enclose it in double quotes. This is due to Signature-Agent being a structured field.
+* The message uses the dictionary form from later drafts, such as `sig2="https://signature-agent.test"`.
 * The message has a valid `Signature-Agent` header, but does not include it in the component list in `Signature-Input`.
 
 ### 4.4\. Add the headers to your bot's requests
@@ -199,6 +202,7 @@ The following component parameters defined in IETF RFC 9421 are not supported, a
 If your message is failing validation, the cause(s) may include:
 
 * Ensure you have a [Signature-Agent header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header), and that its value is in double-quotes.
+* Ensure your [Signature-Agent header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header) uses a structured string, not a dictionary.
 * Ensure you include `signature-agent` in the component list in your [Signature-Input header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header).
 * Ensure your `expires` timestamp is not too short, such that, by the time it arrives at Cloudflare servers, it has already expired. A minute is often sufficient.
 * Ensure you are not signing components containing non-ASCII values, or on the unsupported list.
@@ -221,6 +225,6 @@ You may wish to refer to the following resources.
 * Cloudflare's [web-bot-auth npm package in Typescript ↗](https://www.npmjs.com/package/web-bot-auth).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/bot-verification/","name":"Bot verification methods"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/reference/bot-verification/web-bot-auth/","name":"Web Bot Auth"}}]}
 ```

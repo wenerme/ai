@@ -1,11 +1,11 @@
 ---
 title: "Scaleway | Models"
-description: "Use Scaleway models with Mastra. 15 models available."
+description: "Use Scaleway models with Mastra. 16 models available."
 ---
 
 # [Scaleway logo]Scaleway
 
-Access 15 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
+Access 16 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
 
 Learn more in the [Scaleway documentation](https://www.scaleway.com/en/docs/generative-apis/).
 
@@ -74,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.25,
     "outputCost": 0.5
+  },
+  {
+    "model": "scaleway/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 16384,
+    "inputCost": 1.8,
+    "outputCost": 5.5
   },
   {
     "model": "scaleway/gpt-oss-120b",

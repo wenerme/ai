@@ -20,9 +20,9 @@ R2 SQL is currently in open beta. Report R2 SQL bugs in [GitHub ↗](https://git
 
 Execute SQL query against R2 Data Catalog
 
-* [  npm ](#tab-panel-9833)
-* [  pnpm ](#tab-panel-9834)
-* [  yarn ](#tab-panel-9835)
+* [  npm ](#tab-panel-10049)
+* [  pnpm ](#tab-panel-10050)
+* [  yarn ](#tab-panel-10051)
 
 Terminal window
 

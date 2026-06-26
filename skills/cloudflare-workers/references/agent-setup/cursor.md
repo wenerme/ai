@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ## Cloudflare platform access

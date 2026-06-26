@@ -1,5 +1,3 @@
-# Antigravity Agent
-
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
 It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity IDE. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
@@ -477,6 +475,209 @@ You can extend the Antigravity agent by customizing its instructions, tools, and
 
 For full details on how to build custom agents, see [Building Managed Agents](https://ai.google.dev/gemini-api/docs/custom-agents).
 
+## Background execution
+
+Agent tasks that involve multi-step reasoning, code execution, or file operations can take minutes to complete. Use `background=True` to run the interaction asynchronously. The API returns immediately with an interaction ID that you poll until the status is `completed` or `failed`.
+
+### Python
+
+    import time
+    from google import genai
+
+    client = genai.Client()
+
+    # 1. Start the interaction in the background
+    interaction = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="Run a complex analysis on the repository.",
+        environment="remote",
+        background=True,
+    )
+
+    print(f"Interaction started in background: {interaction.id}")
+
+    # 2. Poll for completion
+    while interaction.status == "in_progress":
+        time.sleep(5)
+        interaction = client.interactions.get(id=interaction.id)
+
+    if interaction.status == "completed":
+        print(interaction.output_text)
+    else:
+        print(f"Finished with status: {interaction.status}")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "Run a complex analysis on the repository.",
+        environment: "remote",
+        background: true,
+    });
+
+    console.log(`Interaction started in background: ${interaction.id}`);
+
+    let result = interaction;
+    while (result.status === "in_progress") {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        result = await client.interactions.get(interaction.id);
+    }
+
+    if (result.status === "completed") {
+        console.log(result.output_text);
+    } else {
+        console.log(`Finished with status: ${result.status}`);
+    }
+
+### REST
+
+    # 1. Start the interaction in the background
+    RESPONSE=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Api-Revision: 2026-05-20" \
+      -d '{
+          "agent": "antigravity-preview-05-2026",
+          "input": "Run a complex analysis on the repository.",
+          "environment": "remote",
+          "background": true
+      }')
+
+    INTERACTION_ID=$(echo $RESPONSE | jq -r '.id')
+
+    # 2. Poll for results (repeat until status is "completed")
+    curl -s -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/$INTERACTION_ID" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
+Background execution requires `store=True`, which is the default. For real-time progress updates during background execution, see [Streaming background interactions](https://ai.google.dev/gemini-api/docs/interactions/streaming#streaming-background).
+
+You can cancel a running background interaction using the `cancel` method.
+
+### Python
+
+    client.interactions.cancel(id="INTERACTION_ID")
+
+### JavaScript
+
+    await client.interactions.cancel({ id: "INTERACTION_ID" });
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions/INTERACTION_ID:cancel" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
+
+**Multi-turn with background execution**
+
+When a background interaction involves stateful tools (like code execution in a sandbox), use the `environment_id` from the completed interaction to continue in the same environment. This ensures the agent picks up where it left off with all files and state intact.
+
+### Python
+
+    import time
+    from google import genai
+
+    client = genai.Client()
+
+    # First turn: run a task in the background
+    interaction = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="Clone https://github.com/google/generative-ai-python and run its tests.",
+        environment="remote",
+        background=True,
+    )
+
+    while interaction.status == "in_progress":
+        time.sleep(5)
+        interaction = client.interactions.get(id=interaction.id)
+
+    # Second turn: continue in the same environment
+    followup = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="Fix any failing tests and re-run them.",
+        previous_interaction_id=interaction.id,
+        environment=interaction.environment_id,
+        background=True,
+    )
+
+    while followup.status == "in_progress":
+        time.sleep(5)
+        followup = client.interactions.get(id=followup.id)
+
+    print(followup.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    // First turn: run a task in the background
+    let interaction = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "Clone https://github.com/google/generative-ai-python and run its tests.",
+        environment: "remote",
+        background: true,
+    });
+
+    while (interaction.status === "in_progress") {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        interaction = await client.interactions.get(interaction.id);
+    }
+
+    // Second turn: continue in the same environment
+    let followup = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "Fix any failing tests and re-run them.",
+        previous_interaction_id: interaction.id,
+        environment: interaction.environment_id,
+        background: true,
+    });
+
+    while (followup.status === "in_progress") {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        followup = await client.interactions.get(followup.id);
+    }
+
+    console.log(followup.output_text);
+
+### REST
+
+    # 1. Start first interaction in the background
+    RESPONSE=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Api-Revision: 2026-05-20" \
+      -d '{
+          "agent": "antigravity-preview-05-2026",
+          "input": "Clone https://github.com/google/generative-ai-python and run its tests.",
+          "environment": "remote",
+          "background": true
+      }')
+
+    INTERACTION_ID=$(echo $RESPONSE | jq -r '.id')
+
+    # 2. Poll until completed (repeat until status is "completed")
+    RESULT=$(curl -s -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/$INTERACTION_ID" \
+      -H "x-goog-api-key: $GEMINI_API_KEY")
+
+    ENVIRONMENT_ID=$(echo $RESULT | jq -r '.environment_id')
+
+    # 3. Continue in the same environment
+    curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Api-Revision: 2026-05-20" \
+      -d "{
+          \"agent\": \"antigravity-preview-05-2026\",
+          \"input\": \"Fix any failing tests and re-run them.\",
+          \"previous_interaction_id\": \"$INTERACTION_ID\",
+          \"environment\": \"$ENVIRONMENT_ID\",
+          \"background\": true
+      }"
+
 ## Environments
 
 Each call creates or reuses a Linux sandbox. The `environment` parameter takes three forms:
@@ -521,7 +722,7 @@ Costs vary based on task complexity. The agent autonomously determines how many 
 - **Unavailable tools:** `file_search`, `computer_use`, and `google_maps` are not yet supported.
 - **Remote MCP limitations:** Server-Sent Events (SSE) transport is not supported (use Streamable HTTP). Additionally, the server `name` must be strictly lowercase and alphanumeric (using uppercase letters triggers a generic `400 Bad Request` error).
 - **Filesystem tool:** There is no filesystem tool at the moment. It is part of the `environment`.
-- **Background:** Agent does not support using `background=True` and requires `store=True`.
+- **Store requirement:** Agent execution using `background=True` requires `store=True`.
 - **Stateful only function calling:** Function calling is only supported in stateful mode. You must use `previous_interaction_id` to continue the turn; reconstructing history manually (stateless mode) is not supported.
 - **Unsupported multimodal types.** Audio, video, and document inputs are not supported at the moment. Only text and image are allowed.
 

@@ -30,8 +30,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the name of your R2 bucket:
 
-* [  wrangler.jsonc ](#tab-panel-9854)
-* [  wrangler.toml ](#tab-panel-9855)
+* [  wrangler.jsonc ](#tab-panel-10070)
+* [  wrangler.toml ](#tab-panel-10071)
 
 JSONC
 
@@ -53,8 +53,8 @@ The following methods are available on the bucket binding object injected into y
 
 For example, to issue a `PUT` object request using the binding above:
 
-* [  JavaScript ](#tab-panel-9850)
-* [  Python ](#tab-panel-9851)
+* [  JavaScript ](#tab-panel-10066)
+* [  Python ](#tab-panel-10067)
 
 JavaScript
 
@@ -313,8 +313,8 @@ Only a single hashing algorithm can be specified at once.
   * The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) must be set to `2022-08-04` or later in your Wrangler file. If not, then the `r2_list_honor_include` compatibility flag must be set. Otherwise it is treated as `include: ['httpMetadata', 'customMetadata']` regardless of what the `include` option provided actually is.
 This means applications must be careful to avoid comparing the amount of returned objects against your `limit`. Instead, use the `truncated` property to determine if the `list` request has more data to be returned.
 
-* [  JavaScript ](#tab-panel-9852)
-* [  Python ](#tab-panel-9853)
+* [  JavaScript ](#tab-panel-10068)
+* [  Python ](#tab-panel-10069)
 
 JavaScript
 

@@ -22,8 +22,8 @@ Learn how to:
 
 Enabling the catalog on a bucket turns on the REST catalog interface and provides a **Catalog URI** and **Warehouse name** required by Iceberg clients. Once enabled, you can create and manage Iceberg tables in that bucket.
 
-* [ Dashboard ](#tab-panel-9871)
-* [ Wrangler CLI ](#tab-panel-9872)
+* [ Dashboard ](#tab-panel-10087)
+* [ Wrangler CLI ](#tab-panel-10088)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -47,8 +47,8 @@ After enabling, Wrangler will return your catalog URI and warehouse name.
 
 When you disable the catalog on a bucket, it immediately stops serving requests from the catalog interface. Any Iceberg table references stored in that catalog become inaccessible until you re-enable it.
 
-* [ Dashboard ](#tab-panel-9873)
-* [ Wrangler CLI ](#tab-panel-9874)
+* [ Dashboard ](#tab-panel-10089)
+* [ Wrangler CLI ](#tab-panel-10090)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -74,8 +74,8 @@ Table maintenance operations such as compaction and snapshot expiration require 
 
 Refer to [Authenticate your Iceberg engine](#authenticate-your-iceberg-engine) for details on creating a token with the required permissions.
 
-* [ Dashboard ](#tab-panel-9881)
-* [ Wrangler CLI ](#tab-panel-9882)
+* [ Dashboard ](#tab-panel-10097)
+* [ Wrangler CLI ](#tab-panel-10098)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -109,8 +109,8 @@ Once enabled, compaction applies retroactively to all existing tables (for catal
 
 Disabling compaction will prevent the process from running for all tables (catalog level) or a specific table (table level). You can re-enable it at any time.
 
-* [ Dashboard ](#tab-panel-9875)
-* [ Wrangler CLI ](#tab-panel-9876)
+* [ Dashboard ](#tab-panel-10091)
+* [ Wrangler CLI ](#tab-panel-10092)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -136,8 +136,8 @@ Snapshot expiration automatically removes old table snapshots and any unreferenc
 * **Max snapshot age** \- Snapshots older than this duration are expired. Specify a value followed by a unit (`d` for days, `h` for hours, `m` for minutes, `s` for seconds). For example, `7d` expires snapshots older than 7 days.
 * **Min snapshots to keep** \- The minimum number of snapshots to retain, regardless of age.
 
-* [ Dashboard ](#tab-panel-9877)
-* [ Wrangler CLI ](#tab-panel-9878)
+* [ Dashboard ](#tab-panel-10093)
+* [ Wrangler CLI ](#tab-panel-10094)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -165,8 +165,8 @@ Terminal window
 
 Disabling snapshot expiration prevents the process from running for all tables (catalog level) or a specific table (table level). You can re-enable snapshot expiration at any time.
 
-* [ Dashboard ](#tab-panel-9879)
-* [ Wrangler CLI ](#tab-panel-9880)
+* [ Dashboard ](#tab-panel-10095)
+* [ Wrangler CLI ](#tab-panel-10096)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)

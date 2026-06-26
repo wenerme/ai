@@ -1374,6 +1374,41 @@
     "size": 10580,
     "updatedAt": "2026-06-25T05:43:10.307Z"
   },
+  "grafana-sentry-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/alerting.md",
+    "size": 5881,
+    "updatedAt": "2026-06-26T18:54:12.090Z"
+  },
+  "grafana-sentry-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/annotations.md",
+    "size": 4540,
+    "updatedAt": "2026-06-26T18:54:12.224Z"
+  },
+  "grafana-sentry-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure.md",
+    "size": 8150,
+    "updatedAt": "2026-06-26T18:54:12.362Z"
+  },
+  "grafana-sentry-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest.md",
+    "size": 4176,
+    "updatedAt": "2026-06-26T18:54:12.500Z"
+  },
+  "grafana-sentry-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/query-editor.md",
+    "size": 15972,
+    "updatedAt": "2026-06-26T18:54:12.633Z"
+  },
+  "grafana-sentry-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/template-variables.md",
+    "size": 4095,
+    "updatedAt": "2026-06-26T18:54:12.761Z"
+  },
+  "grafana-sentry-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/troubleshooting.md",
+    "size": 13733,
+    "updatedAt": "2026-06-26T18:54:12.898Z"
+  },
   "grafana-servicenow-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/alerting.md",
     "size": 7703,
@@ -1756,8 +1791,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8688,
-    "updatedAt": "2026-06-25T05:57:38.055Z"
+    "size": 8819,
+    "updatedAt": "2026-06-26T18:54:24.455Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

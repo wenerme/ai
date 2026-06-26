@@ -194,8 +194,8 @@
   "google-ai-docs/get-started.md": {
     "url": "https://ai.google.dev/gemini-api/docs/get-started",
     "skill": "google-ai-docs",
-    "size": 47993,
-    "updatedAt": "2026-06-24T01:21:58.833Z"
+    "size": 48210,
+    "updatedAt": "2026-06-26T18:52:51.900Z"
   },
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
@@ -260,14 +260,14 @@
   "google-ai-docs/interactions-overview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
     "skill": "google-ai-docs",
-    "size": 9683,
-    "updatedAt": "2026-06-24T01:22:09.019Z"
+    "size": 10042,
+    "updatedAt": "2026-06-26T18:53:01.174Z"
   },
   "google-ai-docs/streaming.md": {
     "url": "https://ai.google.dev/gemini-api/docs/streaming",
     "skill": "google-ai-docs",
-    "size": 39039,
-    "updatedAt": "2026-06-24T01:22:09.507Z"
+    "size": 39110,
+    "updatedAt": "2026-06-26T18:53:01.575Z"
   },
   "google-ai-docs/video-understanding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video-understanding",
@@ -332,8 +332,8 @@
   "google-ai-docs/custom-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/custom-agents",
     "skill": "google-ai-docs",
-    "size": 28885,
-    "updatedAt": "2026-06-24T01:22:15.120Z"
+    "size": 29082,
+    "updatedAt": "2026-06-26T18:53:06.088Z"
   },
   "google-ai-docs/managed-agents-quickstart.md": {
     "url": "https://ai.google.dev/gemini-api/docs/managed-agents-quickstart",
@@ -344,8 +344,8 @@
   "google-ai-docs/antigravity-agent.md": {
     "url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
     "skill": "google-ai-docs",
-    "size": 22120,
-    "updatedAt": "2026-06-24T01:22:15.977Z"
+    "size": 29163,
+    "updatedAt": "2026-06-26T18:53:06.916Z"
   },
   "google-ai-docs/aistudio-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/aistudio-agents",
@@ -356,8 +356,8 @@
   "google-ai-docs/deep-research.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deep-research",
     "skill": "google-ai-docs",
-    "size": 41907,
-    "updatedAt": "2026-06-24T01:22:16.838Z"
+    "size": 42083,
+    "updatedAt": "2026-06-26T18:53:07.742Z"
   },
   "google-ai-docs/generate-content/thinking.md": {
     "url": "https://ai.google.dev/gemini-api/docs/generate-content/thinking",
