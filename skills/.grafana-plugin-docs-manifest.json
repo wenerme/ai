@@ -2516,18 +2516,13 @@
   },
   "volkovlabs-links-panel/index.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-links-panel/latest.md",
-    "size": 2398,
-    "updatedAt": "2026-06-25T05:44:33.414Z"
+    "size": 1984,
+    "updatedAt": "2026-06-26T09:26:05.132Z"
   },
   "volkovlabs-links-panel/release.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-links-panel/latest/release.md",
     "size": 683,
     "updatedAt": "2026-06-25T05:44:33.775Z"
-  },
-  "volkovlabs-links-panel/tutorials.md": {
-    "url": "https://grafana.com/docs/plugins/volkovlabs-links-panel/latest/tutorials.md",
-    "size": 1058,
-    "updatedAt": "2026-06-25T05:44:34.147Z"
   },
   "volkovlabs-rss-datasource/business-text.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-rss-datasource/latest/business-text.md",

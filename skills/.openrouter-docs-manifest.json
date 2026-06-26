@@ -731,8 +731,8 @@
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",
-    "size": 21903,
-    "updatedAt": "2026-06-26T01:43:56.074Z"
+    "size": 22320,
+    "updatedAt": "2026-06-26T09:16:39.944Z"
   },
   "api/api-reference/endpoints/list-endpoints-zdr.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr.md",
@@ -886,8 +886,8 @@
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
-    "size": 28551,
-    "updatedAt": "2026-06-26T01:47:15.054Z"
+    "size": 28968,
+    "updatedAt": "2026-06-26T09:19:08.414Z"
   },
   "api/api-reference/models/list-models-count.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-count.md",

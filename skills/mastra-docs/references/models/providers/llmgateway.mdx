@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 182 models available."
+description: "Use LLM Gateway models with Mastra. 181 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 182 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 181 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1538,18 +1538,6 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 4,
     "outputCost": 12
-  },
-  {
-    "model": "llmgateway/mistral-ocr-latest",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "llmgateway/mistral-small-2506",

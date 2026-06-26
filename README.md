@@ -1161,7 +1161,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 104 skills, 26423 files, 282 MiB total
+> 104 skills, 26432 files, 282 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1186,7 +1186,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 114 | 3.9 MiB |
-| `clickhouse-docs` | 1087 | 9.9 MiB |
+| `clickhouse-docs` | 1088 | 9.9 MiB |
 | `cloudflare-ai` | 1504 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
@@ -1198,7 +1198,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
-| `doris-docs` | 1579 | 9.4 MiB |
+| `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
 | `evalscope-docs` | 274 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
@@ -1206,15 +1206,15 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 289 | 450 KiB |
+| `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
-| `grafana-docs` | 623 | 5.9 MiB |
-| `grafana-plugin-docs` | 581 | 3.5 MiB |
+| `grafana-docs` | 623 | 6.0 MiB |
+| `grafana-plugin-docs` | 580 | 3.5 MiB |
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1235,7 +1235,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 454 KiB |
-| `openobserve-docs` | 442 | 2.3 MiB |
+| `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
@@ -1248,7 +1248,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `skill-writer` | 4 | 23 KiB |
 | `sling-cli` | 3 | 14 KiB |
 | `slopus-happy-docs` | 75 | 716 KiB |
-| `swift-ms-docs` | 67 | 1.1 MiB |
+| `swift-ms-docs` | 67 | 1.2 MiB |
 | `tea-cli` | 26 | 81 KiB |
 | `tencent-cls` | 4 | 12 KiB |
 | `terraform-docs` | 43 | 166 KiB |

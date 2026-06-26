@@ -50,7 +50,7 @@ Query parameters:
 GET /api/search?query=&starred=false HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 ```
 
 **Example response for retrieving folders and dashboards at the root level**:
@@ -91,7 +91,7 @@ Content-Type: application/json
 GET /api/search?query=Production%20Overview&starred=true&tag=prod HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 ```
 
 **Example response searching for dashboards**:

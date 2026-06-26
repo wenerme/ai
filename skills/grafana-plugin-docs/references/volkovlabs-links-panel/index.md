@@ -38,12 +38,7 @@ The Business Links panel is ideal for teams that need centralized access to dive
 
 ## Documentation
 
-Expand table
-
-| Section                                                               | Description                                           |
-|-----------------------------------------------------------------------|-------------------------------------------------------|
-| [Tutorials](/docs/plugins/volkovlabs-links-panel/latest/tutorials/)   | Easy to follow tutorials                              |
-| [Release notes](/docs/plugins/volkovlabs-links-panel/latest/release/) | Stay up to date with the latest features and updates. |
+Stay up to date with features and updates in the [Release notes](/docs/plugins/volkovlabs-links-panel/latest/release/).
 
 ## License
 
