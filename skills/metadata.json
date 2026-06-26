@@ -71,6 +71,7 @@
     "slopus-happy-docs": { "repo": "slopus/happy" },
     "swift-ms-docs": { "repo": "modelscope/swift" },
     "tea-cli": { "url": "https://gitea.com/gitea/tea" },
+    "terraform-docs": { "repo": "terraform-docs/terraform-docs", "path": "docs", "ref": "master" },
     "tencent-cls": { "url": "https://cloud.tencent.com/document/product/614" },
     "threejs-docs": { "repo": "mrdoob/three.js" },
     "transformers-docs": { "repo": "huggingface/transformers" },

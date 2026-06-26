@@ -176,6 +176,10 @@ update-k3s-docs:
 update-glab-docs:
     bun scripts/sync-glab-docs.ts
 
+# Sync terraform-docs CLI docs from local terraform-docs/terraform-docs clone
+update-terraform-docs:
+    bun scripts/sync-terraform-docs.ts
+
 # Sync tea CLI docs from local gitea/tea clone
 update-tea-cli-docs:
     bun scripts/sync-tea-cli-docs.ts
@@ -239,6 +243,7 @@ update:
     -just update-immich-docs
     -just update-zellij-docs
     -just update-glab-docs
+    -just update-terraform-docs
     -just update-tea-cli-docs
     -just update-cloudflare-docs
     just update-readme

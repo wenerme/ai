@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 103 skills available
+> 104 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -100,6 +100,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
 | `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
+| `terraform-docs` | Use when working with the terraform-docs CLI for generating Terraform module documentation:... | [terraform-docs/terraform-docs/docs](https://github.com/terraform-docs/terraform-docs/tree/master/docs) |
 | `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... | [mrdoob/three.js](https://github.com/mrdoob/three.js) |
 | `threejs-guide` | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
@@ -979,6 +980,16 @@ Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writi
 
 </details>
 <details>
+<summary><code>terraform-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill terraform-docs
+```
+
+Use when working with the terraform-docs CLI for generating Terraform module documentation: markdown/asciidoc/json/yaml/toml/xml/tfvars output formats, .terraform-docs.yml configuration, formatter options, output injection, recursive modules, sections visibility, pre-commit hooks, GitHub Actions, plugins, or terraform-docs troubleshooting.
+
+</details>
+<details>
 <summary><code>threejs-docs</code></summary>
 
 ```bash
@@ -1150,7 +1161,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 103 skills, 26384 files, 281 MiB total
+> 104 skills, 26423 files, 282 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1195,7 +1206,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 452 KiB |
+| `glab-docs` | 289 | 450 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
@@ -1203,7 +1214,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1224,7 +1235,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 454 KiB |
-| `openobserve-docs` | 445 | 2.3 MiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
@@ -1240,6 +1251,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `swift-ms-docs` | 67 | 1.1 MiB |
 | `tea-cli` | 26 | 81 KiB |
 | `tencent-cls` | 4 | 12 KiB |
+| `terraform-docs` | 43 | 166 KiB |
 | `threejs-docs` | 798 | 2.0 MiB |
 | `threejs-guide` | 11 | 134 KiB |
 | `tmux-session-manager` | 1 | 1.7 KiB |
