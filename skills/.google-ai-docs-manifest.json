@@ -158,8 +158,8 @@
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
     "skill": "google-ai-docs",
-    "size": 8062,
-    "updatedAt": "2026-06-24T01:21:55.628Z"
+    "size": 8521,
+    "updatedAt": "2026-06-26T02:08:35.290Z"
   },
   "google-ai-docs/openai.md": {
     "url": "https://ai.google.dev/gemini-api/docs/openai",
@@ -326,8 +326,8 @@
   "google-ai-docs/computer-use.md": {
     "url": "https://ai.google.dev/gemini-api/docs/computer-use",
     "skill": "google-ai-docs",
-    "size": 58527,
-    "updatedAt": "2026-06-25T01:57:47.714Z"
+    "size": 58886,
+    "updatedAt": "2026-06-26T02:08:53.927Z"
   },
   "google-ai-docs/custom-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/custom-agents",

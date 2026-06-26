@@ -73,7 +73,7 @@ will do at each step:
 2. [**Receive the model response**](https://ai.google.dev/gemini-api/docs/computer-use#model-response)
    - The model analyzes the screen and the prompt, returning a response which includes a suggested `function_call` representing a UI action (such as a click, scroll, or keystroke).
    - For **Gemini 3.5 Flash** , the response also includes a reasoning `intent` explaining why the model chose that action.
-   - For legacy models (such as `gemini-2.5-computer-use-preview-10-2025`), the response may include a `safety_decision` from an internal safety system that classifies the action as regular/allowed, `require_confirmation` (requiring user approval), or blocked.
+   - The response may also include a `safety_decision` from an internal safety system that classifies the action as regular/allowed, `require_confirmation` (requiring user approval), or blocked.
 3. [**Execute the received action**](https://ai.google.dev/gemini-api/docs/computer-use#execute-actions)
    - If the action is allowed (or the user confirms it), your client-side code parses the `function_call`, scales the normalized coordinates to match your viewport, and executes the action in your target environment using automation tools (such as Playwright). If the action is blocked, your client should halt the execution or handle the interruption.
 4. [**Capture the new environment state**](https://ai.google.dev/gemini-api/docs/computer-use#capture-state)
@@ -992,6 +992,9 @@ The Gemini 3.5 Flash model includes a built-in safety service categories that au
 
 You can override select policies by passing overrides:
 
+> [!NOTE]
+> **Note:** Safety overrides indicate your preference, but the model may still return a `safety_decision` with `require_confirmation` in some cases. Your application should always implement safety decision handling regardless of configured overrides.
+
 ### Python
 
     from google import genai
@@ -1005,8 +1008,8 @@ You can override select policies by passing overrides:
             {
                 "type": "computer_use",
                 "environment": "desktop",
-                "safety_policy_overrides": [
-                    {"category": "DATA_MODIFICATION"}
+                "disabled_safety_policies": [
+                    "data_modification"
                 ]
             }
         ]
@@ -1025,8 +1028,8 @@ You can override select policies by passing overrides:
             {
                 type: "computer_use",
                 environment: "desktop",
-                safety_policy_overrides: [
-                    { category: "DATA_MODIFICATION" }
+                disabled_safety_policies: [
+                    "data_modification"
                 ]
             }
         ]
@@ -1036,9 +1039,9 @@ You can override select policies by passing overrides:
 
 Opt-in safety mechanism that scans screenshot pixels for hidden adversarial prompt instructions (e.g. "Ignore previous commands") and blocks execution when detected.
 
-### Acknowledge safety decision (Gemini 2.5 Legacy)
+### Acknowledge safety decision
 
-For legacy models, the response may include a `safety_decision` parameter:
+The response may include a `safety_decision` parameter in the function call arguments:
 
     {
       "steps": [
@@ -1062,15 +1065,17 @@ If the `safety_decision` is `require_confirmation`, prompt the end user. If the 
 ### Python
 
     def get_safety_confirmation(safety_decision):
-        # Prompt user
+        # Prompt user for confirmation
+        print(f"Safety confirmation required: {safety_decision.get('explanation', '')}")
         return "CONTINUE" # Or TERMINATE
 
-    # Inside execute_function_calls:
+    # Inside execute_function_calls, check for safety_decision:
     if 'safety_decision' in function_call.arguments:
         decision = get_safety_confirmation(function_call.arguments['safety_decision'])
         if decision == "TERMINATE":
             break
-        extra_fr_fields["safety_acknowledgement"] = True
+        # Include safety_acknowledgement inside the action result
+        action_result["safety_acknowledgement"] = True
 
 ### Safety best practices
 

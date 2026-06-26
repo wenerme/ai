@@ -25,14 +25,13 @@ GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth 
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                         |
-| Zero data retention                                                        | Yes                                                                                                                   |
 | Request formats                                                            | Chat Completions                                                                                                      |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1174)
-* [ cURL ](#tab-panel-1175)
+* [ TypeScript ](#tab-panel-1222)
+* [ cURL ](#tab-panel-1223)
 
 TypeScript
 
@@ -46,8 +45,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-5.1-chat",  "messages": [    {      "content": "What are the three laws of thermodynamics?",      "role": "user"    }  ]}'
 ```
 
-* [ Output ](#tab-panel-1184)
-* [ Raw response ](#tab-panel-1185)
+* [ Output ](#tab-panel-1232)
+* [ Raw response ](#tab-panel-1233)
 
 The three laws of thermodynamics can be stated simply as:
 
@@ -70,8 +69,8 @@ If you want, I can also include the "zeroth" law for completeness.
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1176)
-* [ cURL ](#tab-panel-1177)
+* [ TypeScript ](#tab-panel-1224)
+* [ cURL ](#tab-panel-1225)
 
 TypeScript
 
@@ -85,8 +84,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-5.1-chat",  "messages": [    {      "content": "You are a helpful coding assistant specializing in Python.",      "role": "system"    },    {      "content": "How do I read a JSON file in Python?",      "role": "user"    }  ]}'
 ```
 
-* [ Output ](#tab-panel-1186)
-* [ Raw response ](#tab-panel-1187)
+* [ Output ](#tab-panel-1234)
+* [ Raw response ](#tab-panel-1235)
 
 The easiest way to read a JSON file in Python is to use the built‑in json module.
 
@@ -109,8 +108,8 @@ Notes:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1180)
-* [ cURL ](#tab-panel-1181)
+* [ TypeScript ](#tab-panel-1228)
+* [ cURL ](#tab-panel-1229)
 
 TypeScript
 
@@ -124,8 +123,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-5.1-chat",  "max_completion_tokens": 8192,  "messages": [    {      "content": "I need help planning a road trip from San Francisco to Los Angeles.",      "role": "user"    },    {      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",      "role": "assistant"    },    {      "content": "Yes, what are some good places to stop?",      "role": "user"    }  ]}'
 ```
 
-* [ Output ](#tab-panel-1188)
-* [ Raw response ](#tab-panel-1189)
+* [ Output ](#tab-panel-1236)
+* [ Raw response ](#tab-panel-1237)
 
 Here are some great stops along the way from San Francisco to Los Angeles, depending on which route you choose:
 
@@ -158,8 +157,8 @@ If you tell me your preferred pace, interests (food, nature, beaches, wineries, 
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1178)
-* [ cURL ](#tab-panel-1179)
+* [ TypeScript ](#tab-panel-1226)
+* [ cURL ](#tab-panel-1227)
 
 TypeScript
 
@@ -173,8 +172,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-5.1-chat",  "max_completion_tokens": 8192,  "messages": [    {      "content": "Write a short story opening about a detective finding an unusual clue.",      "role": "user"    }  ]}'
 ```
 
-* [ Output ](#tab-panel-1190)
-* [ Raw response ](#tab-panel-1191)
+* [ Output ](#tab-panel-1238)
+* [ Raw response ](#tab-panel-1239)
 
 Detective Mara Lorne had seen her share of strange crime scenes, but none as quietly unsettling as the abandoned greenhouse on Cinder Street. The air was warm and sweet, thick with the scent of overgrown jasmine. Glass panes lay shattered underfoot like frozen puddles.
 
@@ -186,8 +185,8 @@ She crouched beside the body, careful not to disturb the latticework of vines th
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1182)
-* [ cURL ](#tab-panel-1183)
+* [ TypeScript ](#tab-panel-1230)
+* [ cURL ](#tab-panel-1231)
 
 TypeScript
 
@@ -201,8 +200,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-5.1-chat",  "messages": [    {      "content": "Explain the concept of recursion with a simple example.",      "role": "user"    }  ],  "stream": true,  "stream_options": {    "include_usage": true  }}'
 ```
 
-* [ Output ](#tab-panel-1192)
-* [ Raw response ](#tab-panel-1193)
+* [ Output ](#tab-panel-1240)
+* [ Raw response ](#tab-panel-1241)
 
 Recursion is a programming technique where a function calls itself to solve a smaller version of the same problem. It continues doing this until it reaches a simple stopping point called the base case.
 
@@ -226,40 +225,36 @@ This shows how a big task is broken into smaller tasks until it’s simple enoug
 
 ## Parameters
 
-* [ Input ](#tab-panel-1194)
-* [ Output ](#tab-panel-1195)
-
-▶audio{}
-
-`object`
-
-frequency\_penalty
-
-`number`maximum: 2minimum: \-2
-
-max\_completion\_tokens
-
-`number`exclusiveMinimum: 0
-
-max\_tokens
-
-`number`exclusiveMinimum: 0
+* [ Input ](#tab-panel-1242)
+* [ Output ](#tab-panel-1243)
 
 ▶messages\[\]
 
 `array`required
 
-▶modalities\[\]
+temperature
 
-`array`
+`number`minimum: 0maximum: 2
+
+max\_tokens
+
+`number`exclusiveMinimum: 0
+
+max\_completion\_tokens
+
+`number`exclusiveMinimum: 0
+
+top\_p
+
+`number`minimum: 0maximum: 1
+
+frequency\_penalty
+
+`number`minimum: \-2maximum: 2
 
 presence\_penalty
 
-`number`maximum: 2minimum: \-2
-
-response\_format
-
-``
+`number`minimum: \-2maximum: 2
 
 stream
 
@@ -269,41 +264,45 @@ stream
 
 `object`
 
-temperature
+▶tools\[\]
 
-`number`maximum: 2minimum: 0
+`array`
 
 tool\_choice
 
 ``
 
-▶tools\[\]
+response\_format
+
+``
+
+▶modalities\[\]
 
 `array`
 
-top\_p
+▶audio{}
 
-`number`maximum: 1minimum: 0
-
-▶choices\[\]
-
-`array`
-
-created
-
-`number`
+`object`
 
 id
-
-`string`
-
-model
 
 `string`
 
 object
 
 `string`
+
+created
+
+`number`
+
+model
+
+`string`
+
+▶choices\[\]
+
+`array`
 
 ▶usage{}
 

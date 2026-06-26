@@ -72,7 +72,7 @@ As Let's Encrypt - one of the [certificate authorities (CAs)](https://developers
 
 If you are using a Let's Encrypt certificate uploaded by yourself as a custom certificate, consider the following:
 
-* If you use **compatible** or **modern** [bundle method](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/) and have uploaded your certificate before September 9, 2024, [update your custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-an-existing-custom-certificate) so that it can be bundled with the new chain.
+* If you use **compatible** or **modern** [bundle method](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/) and have uploaded your certificate before September 9, 2024, [update your custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) so that it can be bundled with the new chain.
 * If you use **user-defined** bundle method, make sure that your certificates uploaded after September 30, 2024, do not use the Let's Encrypt cross-signed chain.
 
 ## Error codes
@@ -105,7 +105,13 @@ You have used up your custom certificate quota.
 
 **Solution**
 
-Delete some existing certificates to add a new one. If you are an Enterprise customer, you can contact your account team to acquire more custom certificates.
+If you are renewing an existing certificate, [update the existing certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) instead of uploading a new one. Updating an existing certificate via the dashboard (or the API `PATCH` method) reuses its quota slot and avoids downtime.
+
+If you genuinely need a new certificate for a different hostname, delete an unused certificate first or contact your account team (Enterprise) to increase your quota.
+
+Warning
+
+Deleting a certificate removes it from Cloudflare's edge immediately. If no other certificate covers the same hostnames, visitors will see TLS errors until a replacement is uploaded and active.
 
 ### This certificate has already been submitted. (Code: 1220)
 
@@ -115,7 +121,7 @@ You are trying to upload a custom certificate that you have already uploaded.
 
 **Solution**
 
-Delete the existing one and try again.
+If you are renewing the certificate with updated expiry or key material, [update the existing certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) instead of uploading a new one. Updating via the dashboard (or the API `PATCH` method) avoids downtime and does not consume an additional quota slot.
 
 ### You already have a certificate of this signature type. (Code: 1228)
 
@@ -252,6 +258,6 @@ An internal error occurred while processing your request.
 Wait a few minutes and try again. If the issue persists, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with a [HAR file](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file) capturing the failed upload attempt.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#page","headline":"Troubleshooting · Cloudflare SSL/TLS docs","description":"Troubleshoot issues with custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#page","headline":"Troubleshooting · Cloudflare SSL/TLS docs","description":"Troubleshoot issues with custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/custom-certificates/","name":"Custom certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/custom-certificates/troubleshooting/","name":"Troubleshooting"}}]}
 ```

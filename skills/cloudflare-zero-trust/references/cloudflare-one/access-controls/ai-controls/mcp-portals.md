@@ -123,7 +123,7 @@ The MCP server status indicates the synchronization status of the MCP server to 
 
 #### Error details
 
-When an MCP server is in the **Error** state, the API returns an `error_details` object with structured information to help you diagnose the issue:
+When an MCP server is in the **Error** or **Sync Required** state, Cloudflare Access surfaces structured information to help you diagnose the issue. In the dashboard, hover over the server's status to view the error message, the error category (upstream or connection), the HTTP status code, and the MCP protocol error code (if applicable). The same details are returned by the API as an `error_details` object:
 
 | Field              | Description                                                                                                                                      |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -272,10 +272,12 @@ When multiple names exist, the portal resolves them in this order: `portal_alias
 
 If no alias is set, the portal uses the original name and description from the upstream server.
 
+Custom descriptions follow the same precedence. Set a description by including the `description` field on an entry in `updated_tools` or `updated_prompts`. In API responses, server-level descriptions are returned as `server_description` and portal-level descriptions are returned as `portal_description`. Portal-level descriptions take precedence over server-level descriptions when both are set.
+
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-7201)
-* [ Server-level alias ](#tab-panel-7202)
+* [ Portal-level alias ](#tab-panel-7257)
+* [ Server-level alias ](#tab-panel-7258)
 
 To set an alias that applies to a specific portal:
 
@@ -528,8 +530,8 @@ For more information on building with Code Mode, refer to the [Code Mode SDK ref
 
 To turn off Code Mode for a portal:
 
-* [ Dashboard ](#tab-panel-7203)
-* [ API ](#tab-panel-7204)
+* [ Dashboard ](#tab-panel-7259)
+* [ API ](#tab-panel-7260)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -819,6 +821,7 @@ MCP server portals have the following known limitations:
 * **Some MCP servers block proxy-based clients.** Certain MCP servers reject requests from proxy-based clients like MCP server portals, returning a `403` error on the registration endpoint. These servers are not compatible with MCP server portals until those providers add Cloudflare as a supported MCP client.
 * **Not all MCP servers support OAuth dynamic client registration.** MCP servers that do not support [OAuth dynamic client registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration) cannot use the portal's OAuth authentication flow. For these servers, select **Custom Headers** as the authentication method and provide static credentials (for example, API keys or personal access tokens) instead.
 * **Admin OAuth tokens can expire silently.** The admin credential used to [authenticate an MCP server](#reauthenticate-the-mcp-server) is subject to the upstream provider's token expiration policy. When the token expires, the server status changes to **Error** or **Sync Required** and the server will not appear in the portal for end users. Admins are not notified when this happens. Periodically check the [server status](#server-status) and [reauthenticate](#reauthenticate-the-mcp-server) servers that show an error.
+* **Each portal supports up to 40 MCP servers.** If you need to aggregate more than 40 servers into a single portal, contact your Cloudflare account team to request a higher limit. The dashboard displays a warning as you approach the limit.
 
 ## Policy limitations
 
@@ -900,6 +903,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

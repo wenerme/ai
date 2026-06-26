@@ -18,6 +18,10 @@ keywords: ultralytics, plotting, utilities, documentation, data visualization, a
 
 <hr>
 
+## ::: ultralytics.utils.plotting._gaussian_filter1d
+
+<hr>
+
 ## ::: ultralytics.utils.plotting.plot_labels
 
 <hr>

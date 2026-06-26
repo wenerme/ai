@@ -51,7 +51,7 @@ dotnet add package Anthropic.Foundry
 <Tabs>
 <Tab title="Gradle">
 ```kotlin
-implementation("com.anthropic:anthropic-java-foundry:2.39.0")
+implementation("com.anthropic:anthropic-java-foundry:2.40.0")
 ```
 </Tab>
 <Tab title="Maven">
@@ -59,7 +59,7 @@ implementation("com.anthropic:anthropic-java-foundry:2.39.0")
 <dependency>
     <groupId>com.anthropic</groupId>
     <artifactId>anthropic-java-foundry</artifactId>
-    <version>2.39.0</version>
+    <version>2.40.0</version>
 </dependency>
 ```
 </Tab>
@@ -508,7 +508,7 @@ Claude Fable 5, Claude Opus 4.7, Claude Opus 4.6, and Claude Sonnet 4.6 have a [
 
 ## API responses
 
-API responses from Claude in Foundry follow the standard [Claude API response format](/docs/en/api/messages/create). This includes the `usage` object in response bodies, which provides detailed token consumption information for your requests. The `usage` object is consistent across all platforms (Claude API, Foundry, Claude Platform on AWS, Amazon Bedrock, and Vertex AI).
+API responses from Claude in Foundry follow the standard [Claude API response format](/docs/en/api/messages/create). This includes the `usage` object in response bodies, which provides detailed token consumption information for your requests. The `usage` object is consistent across all platforms (Claude API, Foundry, Claude Platform on AWS, Amazon Bedrock, and Google Cloud).
 
 For details on response headers specific to Foundry, see [Correlation request IDs](#correlation-request-ids).
 

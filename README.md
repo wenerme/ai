@@ -1150,7 +1150,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 103 skills, 26371 files, 281 MiB total
+> 103 skills, 26384 files, 281 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1159,11 +1159,11 @@ Use when implementing React state management with Zustand, including context-sco
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
-| `anthropic-docs` | 186 | 5.0 MiB |
+| `anthropic-docs` | 187 | 5.1 MiB |
 | `anthropic-sdk-csharp` | 147 | 8.4 MiB |
 | `anthropic-sdk-go` | 147 | 11 MiB |
 | `anthropic-sdk-java` | 147 | 8.7 MiB |
-| `anthropic-sdk-python` | 147 | 8.6 MiB |
+| `anthropic-sdk-python` | 147 | 8.5 MiB |
 | `anthropic-sdk-ruby` | 147 | 8.2 MiB |
 | `anthropic-sdk-typescript` | 147 | 8.3 MiB |
 | `argocd-cli-guide` | 2 | 7.5 KiB |
@@ -1174,9 +1174,9 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 113 | 3.9 MiB |
+| `claude-code-docs` | 114 | 3.9 MiB |
 | `clickhouse-docs` | 1087 | 9.9 MiB |
-| `cloudflare-ai` | 1499 | 11 MiB |
+| `cloudflare-ai` | 1504 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 823 | 4.9 MiB |
@@ -1187,7 +1187,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
-| `doris-docs` | 1572 | 9.4 MiB |
+| `doris-docs` | 1579 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
 | `evalscope-docs` | 274 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
@@ -1209,7 +1209,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
-| `llamacpp-docs` | 46 | 416 KiB |
+| `llamacpp-docs` | 46 | 419 KiB |
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
@@ -1223,14 +1223,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-docs` | 156 | 2.2 MiB |
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
-| `opencode-docs` | 53 | 453 KiB |
+| `opencode-docs` | 53 | 454 KiB |
 | `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |
-| `pytorch-docs` | 314 | 2.0 MiB |
+| `pytorch-docs` | 313 | 2.0 MiB |
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
 | `requesting-code-review` | 2 | 7.9 KiB |
 | `shadcn` | 14 | 82 KiB |

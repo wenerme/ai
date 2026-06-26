@@ -402,23 +402,24 @@ components:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems
-    BigNumberUnion:
-      type: string
-      description: Price per million prompt tokens
-      title: BigNumberUnion
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Maximum price in USD per audio unit
         completion:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Maximum price in USD per million completion tokens
         image:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Maximum price in USD per image
         prompt:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Maximum price in USD per million prompt tokens
         request:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Maximum price in USD per request
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.

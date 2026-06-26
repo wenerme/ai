@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: R2 Data Catalog pricing for catalog operations, compaction, and free tier details.
+description: R2 Data Catalog pricing for catalog operations, compaction, and included usage details.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -21,17 +21,17 @@ All included usage is on a monthly basis.
 
 ## R2 Data Catalog pricing
 
-|                                                            | Free                         | Paid                         |
-| ---------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| **Catalog operations**                                     |                              |                              |
-| Included                                                   | 1 million operations / month | 1 million operations / month |
-| Additional                                                 | N/A                          | $9.00 / million operations   |
-| **Data processed (Compaction)** [1](#user-content-fn-1)    |                              |                              |
-| Included                                                   | 10 GB / month                | 10 GB / month                |
-| Additional (data processed)                                | N/A                          | $0.005 / GB processed        |
-| **Objects processed (Compaction)** [1](#user-content-fn-1) |                              |                              |
-| Included                                                   | 1 million objects / month    | 1 million objects / month    |
-| Additional                                                 | N/A                          | $2.00 / million objects      |
+|                                                            | Pricing                      |
+| ---------------------------------------------------------- | ---------------------------- |
+| **Catalog operations**                                     |                              |
+| Included                                                   | 1 million operations / month |
+| Additional                                                 | $9.00 / million operations   |
+| **Data processed (Compaction)** [1](#user-content-fn-1)    |                              |
+| Included                                                   | 10 GB / month                |
+| Additional (data processed)                                | $0.005 / GB processed        |
+| **Objects processed (Compaction)** [1](#user-content-fn-1) |                              |
+| Included                                                   | 1 million objects / month    |
+| Additional                                                 | $2.00 / million objects      |
 
 ### Catalog operations
 
@@ -92,6 +92,6 @@ To learn more about how usage is billed, refer to [Cloudflare Billing Policy](ht
 1. Only applies when compaction is enabled for a table. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 Data Catalog pricing for catalog operations, compaction, and free tier details.","url":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 Data Catalog pricing for catalog operations, compaction, and included usage details.","url":"https://developers.cloudflare.com/r2/data-catalog/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/platform/","name":"Platform"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/platform/pricing/","name":"Pricing"}}]}
 ```

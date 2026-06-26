@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Cloudflare platform access

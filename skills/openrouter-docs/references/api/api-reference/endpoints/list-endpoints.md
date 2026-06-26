@@ -200,42 +200,63 @@ components:
         measures time to first token. Only visible when authenticated with an
         API key or cookie; returns null for unauthenticated requests.
       title: PercentileStats
-    BigNumberUnion:
-      type: string
-      description: Price per million prompt tokens
-      title: BigNumberUnion
     PublicEndpointPricing:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per audio input token
         audio_output:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per audio output token
         completion:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per token for completion (output) generation
         discount:
           type: number
           format: double
+          description: >-
+            Fractional discount applied to this endpoint's pricing; the price is
+            multiplied by (1 - discount) (0 = no discount, 1 = free)
         image:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per input image
         image_output:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per output image
         image_token:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per image token
         input_audio_cache:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per cached audio input token
         input_cache_read:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per cached input token (read)
         input_cache_write:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: >-
+            Price per cache-write token, in USD per token. For providers with
+            multiple cache TTLs (e.g. Anthropic), this is the default (5-minute)
+            cache-write rate.
+        input_cache_write_1h:
+          type: string
+          description: >-
+            Price per 1-hour cache-write token, in USD per token. Only present
+            for providers that price an extended (1-hour) cache TTL separately,
+            such as Anthropic.
         internal_reasoning:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per internal reasoning token
         prompt:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per token for prompt (input) processing
         request:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per request
         web_search:
-          $ref: '#/components/schemas/BigNumberUnion'
+          type: string
+          description: Price in USD per web search
       required:
         - completion
         - prompt

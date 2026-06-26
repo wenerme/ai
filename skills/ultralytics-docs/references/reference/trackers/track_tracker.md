@@ -18,10 +18,6 @@ keywords: Ultralytics, TrackTrack, TTSTrack, HMIoU, iterative assignment, Track-
 
 <hr>
 
-## ::: ultralytics.trackers.track_tracker._nsa_kalman_update
-
-<hr>
-
 ## ::: ultralytics.trackers.track_tracker._hmiou_distance
 
 <hr>

@@ -1,10 +1,6 @@
 ---
 title: Claude Fable 5
-description: **NOTE: Anthropic is limiting access to Claude Fable 5 due to a directive from the US Government. During that time, the model will return errors. Read more here: https://www.anthropic.com/news/fable-mythos-access **
-
-
-
-Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
+description: Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,7 +18,7 @@ Text Generation • Anthropic
 
 `anthropic/claude-fable-5`
 
-\*\*NOTE: Anthropic is limiting access to Claude Fable 5 due to a directive from the US Government. During that time, the model will return errors. Read more here: https://www.anthropic.com/news/fable-mythos-access \*\* Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
+Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
 
 Warning
 
@@ -38,8 +34,8 @@ Warning
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-112)
-* [ cURL ](#tab-panel-113)
+* [ TypeScript ](#tab-panel-130)
+* [ cURL ](#tab-panel-131)
 
 TypeScript
 
@@ -53,8 +49,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-fable-5",  "max_tokens": 1024,  "messages": [    {      "content": "What are the three laws of thermodynamics?",      "role": "user"    }  ]}'
 ```
 
-* [ Output ](#tab-panel-116)
-* [ Raw response ](#tab-panel-117)
+* [ Output ](#tab-panel-134)
+* [ Raw response ](#tab-panel-135)
 
 # The Three Laws of Thermodynamics
 
@@ -94,8 +90,8 @@ A popular summary: *"You can't win (1st), you can't break even (2nd), and you ca
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-114)
-* [ cURL ](#tab-panel-115)
+* [ TypeScript ](#tab-panel-132)
+* [ cURL ](#tab-panel-133)
 
 TypeScript
 
@@ -109,8 +105,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-fable-5",  "max_tokens": 1024,  "messages": [    {      "content": "How do I read a JSON file in Python?",      "role": "user"    }  ],  "system": "You are a helpful coding assistant specializing in Python."}'
 ```
 
-* [ Output ](#tab-panel-124)
-* [ Raw response ](#tab-panel-125)
+* [ Output ](#tab-panel-142)
+* [ Raw response ](#tab-panel-143)
 
 # Reading a JSON File in Python
 
@@ -181,8 +177,8 @@ That's all you need for most use cases. For very large files, consider streaming
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-120)
-* [ cURL ](#tab-panel-121)
+* [ TypeScript ](#tab-panel-138)
+* [ cURL ](#tab-panel-139)
 
 TypeScript
 
@@ -196,8 +192,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-fable-5",  "max_tokens": 1024,  "messages": [    {      "content": "I need help planning a road trip from San Francisco to Los Angeles.",      "role": "user"    },    {      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",      "role": "assistant"    },    {      "content": "Yes, what are some good places to stop?",      "role": "user"    }  ]}'
 ```
 
-* [ Output ](#tab-panel-126)
-* [ Raw response ](#tab-panel-127)
+* [ Output ](#tab-panel-144)
+* [ Raw response ](#tab-panel-145)
 
 Great question! Your stops depend a lot on which route you take, so let me break it down:
 
@@ -235,8 +231,8 @@ How much time do you have for the trip? That'll help narrow down the best plan!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output. Adaptive thinking is always on for Claude Fable 5; use the \`effort\` parameter to control depth.
 
-* [ TypeScript ](#tab-panel-122)
-* [ cURL ](#tab-panel-123)
+* [ TypeScript ](#tab-panel-140)
+* [ cURL ](#tab-panel-141)
 
 TypeScript
 
@@ -250,8 +246,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-fable-5",  "max_tokens": 2048,  "messages": [    {      "content": "Write a short story opening about a detective finding an unusual clue.",      "role": "user"    }  ],  "output_config": {    "effort": "high"  },  "thinking": {    "type": "adaptive"  }}'
 ```
 
-* [ Output ](#tab-panel-128)
-* [ Raw response ](#tab-panel-129)
+* [ Output ](#tab-panel-146)
+* [ Raw response ](#tab-panel-147)
 
 # The Paper Bird
 
@@ -275,8 +271,8 @@ It was an invitation.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-118)
-* [ cURL ](#tab-panel-119)
+* [ TypeScript ](#tab-panel-136)
+* [ cURL ](#tab-panel-137)
 
 TypeScript
 
@@ -290,8 +286,8 @@ Terminal window
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-fable-5",  "max_tokens": 1024,  "messages": [    {      "content": "Explain the concept of recursion with a simple example.",      "role": "user"    }  ],  "stream": true}'
 ```
 
-* [ Output ](#tab-panel-130)
-* [ Raw response ](#tab-panel-131)
+* [ Output ](#tab-panel-148)
+* [ Raw response ](#tab-panel-149)
 
 # Recursion
 
@@ -355,52 +351,52 @@ Recursion shines for naturally recursive structures like:
 
 ## Parameters
 
-* [ Input ](#tab-panel-132)
-* [ Output ](#tab-panel-133)
-
-max\_tokens
-
-`number`requiredexclusiveMinimum: 0
+* [ Input ](#tab-panel-150)
+* [ Output ](#tab-panel-151)
 
 ▶messages\[\]
 
 `array`required
 
-▶metadata{}
+max\_tokens
 
-`object`
-
-stream
-
-`boolean`
+`number`requiredexclusiveMinimum: 0
 
 system
 
 `string`
 
-▶content\[\]
+stream
 
-`array`
+`boolean`
+
+▶metadata{}
+
+`object`
 
 id
 
 `string`
 
-model
+type
 
-`string`
+`string`const: message
 
 role
 
 `string`const: assistant
 
+▶content\[\]
+
+`array`
+
+model
+
+`string`
+
 stop\_reason
 
 `string | null`
-
-type
-
-`string`const: message
 
 ▶usage{}
 
@@ -413,6 +409,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/s
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/#page","headline":"Claude Fable 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"\\*\\*NOTE: Anthropic is limiting access to Claude Fable 5 due to a directive from the US Government. During that time, the model will return errors. Read more here: https://www.anthropic.com/news/fable-mythos-access \\*\\*\n\nClaude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/#page","headline":"Claude Fable 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```
