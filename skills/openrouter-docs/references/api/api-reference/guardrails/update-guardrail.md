@@ -7,7 +7,7 @@
 PATCH https://openrouter.ai/api/v1/guardrails/{id}
 Content-Type: application/json
 
-Update an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+Update an existing guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 Reference: https://openrouter.ai/docs/api/api-reference/guardrails/update-guardrail
 
@@ -24,7 +24,8 @@ paths:
       operationId: update-guardrail
       summary: Update a guardrail
       description: >-
-        Update an existing guardrail. [Management
+        Update an existing guardrail. Collection fields use replace semantics:
+        send the full desired set on every update. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       tags:
         - subpackage_guardrails

@@ -50,6 +50,12 @@ function stripFrontmatter(content: string): string {
   return content;
 }
 
+function redactSecrets(content: string): string {
+  return content
+    .replace(/sk-or-v1-[A-Za-z0-9_-]{20,}/g, "OPENROUTER_API_KEY_EXAMPLE")
+    .replace(/sk-or-[A-Za-z0-9_-]{20,}/g, "OPENROUTER_API_KEY_EXAMPLE");
+}
+
 async function fetchSitemap(): Promise<string[]> {
   console.log(`Fetching sitemap: ${SITEMAP_URL}`);
   const res = await fetch(SITEMAP_URL);
@@ -75,7 +81,7 @@ async function fetchMd(
   const content = await res.text();
   if (content.startsWith("<!DOCTYPE") || content.includes("<html")) throw new Error("got HTML");
   return {
-    content: stripFrontmatter(content),
+    content: redactSecrets(stripFrontmatter(content)),
     etag: res.headers.get("etag") ?? undefined,
     lastModified: res.headers.get("last-modified") ?? undefined,
   };

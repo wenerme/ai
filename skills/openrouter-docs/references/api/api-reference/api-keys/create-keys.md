@@ -7,7 +7,7 @@
 POST https://openrouter.ai/api/v1/keys
 Content-Type: application/json
 
-Create a new API key for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 Reference: https://openrouter.ai/docs/api/api-reference/api-keys/create-keys
 
@@ -24,7 +24,9 @@ paths:
       operationId: create-keys
       summary: Create a new API key
       description: >-
-        Create a new API key for the authenticated user. [Management
+        Create a new API key for the authenticated user. The plaintext `key` is
+        returned only in this response. Treat it as a write-only, sensitive
+        value; it cannot be retrieved later. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       tags:
         - subpackage_apiKeys
@@ -475,11 +477,11 @@ components:
 
 ```json
 {
-  "name": "Analytics Service Key",
-  "expires_at": "2029-11-30T23:59:59Z",
-  "include_byok_in_limit": false,
-  "limit": 100,
-  "limit_reset": "weekly"
+  "name": "My New API Key",
+  "expires_at": "2027-12-31T23:59:59Z",
+  "include_byok_in_limit": true,
+  "limit": 50,
+  "limit_reset": "monthly"
 }
 ```
 
@@ -488,29 +490,29 @@ components:
 ```json
 {
   "data": {
-    "byok_usage": 12,
-    "byok_usage_daily": 1,
-    "byok_usage_monthly": 45,
-    "byok_usage_weekly": 10,
-    "created_at": "2024-06-15T09:00:00Z",
-    "creator_user_id": "user_7a9XvLq3pZ8bN1cD0000000000",
+    "byok_usage": 0,
+    "byok_usage_daily": 0,
+    "byok_usage_monthly": 0,
+    "byok_usage_weekly": 0,
+    "created_at": "2025-08-24T10:30:00Z",
+    "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
     "disabled": false,
-    "hash": "a3f5b7c9d8e1f23456789abcdef0123456789abcdef0123456789abcdef0123",
-    "include_byok_in_limit": false,
-    "label": "sk-or-v1-analytics-1a2b3c",
-    "limit": 100,
-    "limit_remaining": 88,
-    "limit_reset": "weekly",
-    "name": "Analytics Service Key",
-    "updated_at": "2024-06-20T14:45:00Z",
-    "usage": 12,
-    "usage_daily": 1,
-    "usage_monthly": 50,
-    "usage_weekly": 12,
-    "workspace_id": "3f9e665d-d932-5740-b2c7-b52af166bc11",
-    "expires_at": "2029-11-30T23:59:59Z"
+    "hash": "f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943",
+    "include_byok_in_limit": true,
+    "label": "My New API Key",
+    "limit": 50,
+    "limit_remaining": 50,
+    "limit_reset": "monthly",
+    "name": "My New API Key",
+    "updated_at": null,
+    "usage": 0,
+    "usage_daily": 0,
+    "usage_monthly": 0,
+    "usage_weekly": 0,
+    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
+    "expires_at": "2027-12-31T23:59:59Z"
   },
-  "key": "sk-or-v1-7b8c9d0e1f2a3b4c5d6e7f8091a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b"
+  "key": "OPENROUTER_API_KEY_EXAMPLE"
 }
 ```
 
@@ -522,11 +524,11 @@ import requests
 url = "https://openrouter.ai/api/v1/keys"
 
 payload = {
-    "name": "Analytics Service Key",
-    "expires_at": "2029-11-30T23:59:59Z",
-    "include_byok_in_limit": False,
-    "limit": 100,
-    "limit_reset": "weekly"
+    "name": "My New API Key",
+    "expires_at": "2027-12-31T23:59:59Z",
+    "include_byok_in_limit": True,
+    "limit": 50,
+    "limit_reset": "monthly"
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -543,7 +545,7 @@ const url = 'https://openrouter.ai/api/v1/keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"name":"Analytics Service Key","expires_at":"2029-11-30T23:59:59Z","include_byok_in_limit":false,"limit":100,"limit_reset":"weekly"}'
+  body: '{"name":"My New API Key","expires_at":"2027-12-31T23:59:59Z","include_byok_in_limit":true,"limit":50,"limit_reset":"monthly"}'
 };
 
 try {
@@ -569,7 +571,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/keys"
 
-	payload := strings.NewReader("{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}")
+	payload := strings.NewReader("{\n  \"name\": \"My New API Key\",\n  \"expires_at\": \"2027-12-31T23:59:59Z\",\n  \"include_byok_in_limit\": true,\n  \"limit\": 50,\n  \"limit_reset\": \"monthly\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -599,7 +601,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}"
+request.body = "{\n  \"name\": \"My New API Key\",\n  \"expires_at\": \"2027-12-31T23:59:59Z\",\n  \"include_byok_in_limit\": true,\n  \"limit\": 50,\n  \"limit_reset\": \"monthly\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -612,7 +614,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}")
+  .body("{\n  \"name\": \"My New API Key\",\n  \"expires_at\": \"2027-12-31T23:59:59Z\",\n  \"include_byok_in_limit\": true,\n  \"limit\": 50,\n  \"limit_reset\": \"monthly\"\n}")
   .asString();
 ```
 
@@ -624,11 +626,11 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/keys', [
   'body' => '{
-  "name": "Analytics Service Key",
-  "expires_at": "2029-11-30T23:59:59Z",
-  "include_byok_in_limit": false,
-  "limit": 100,
-  "limit_reset": "weekly"
+  "name": "My New API Key",
+  "expires_at": "2027-12-31T23:59:59Z",
+  "include_byok_in_limit": true,
+  "limit": 50,
+  "limit_reset": "monthly"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -646,7 +648,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"My New API Key\",\n  \"expires_at\": \"2027-12-31T23:59:59Z\",\n  \"include_byok_in_limit\": true,\n  \"limit\": 50,\n  \"limit_reset\": \"monthly\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -658,11 +660,11 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "name": "Analytics Service Key",
-  "expires_at": "2029-11-30T23:59:59Z",
-  "include_byok_in_limit": false,
-  "limit": 100,
-  "limit_reset": "weekly"
+  "name": "My New API Key",
+  "expires_at": "2027-12-31T23:59:59Z",
+  "include_byok_in_limit": true,
+  "limit": 50,
+  "limit_reset": "monthly"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

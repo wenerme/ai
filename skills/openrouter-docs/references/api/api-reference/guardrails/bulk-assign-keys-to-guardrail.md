@@ -7,7 +7,7 @@
 POST https://openrouter.ai/api/v1/guardrails/{id}/assignments/keys
 Content-Type: application/json
 
-Assign multiple API keys to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+Assign multiple API keys to a specific guardrail. A key may hold at most one guardrail; assigning replaces any existing assignment. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 Reference: https://openrouter.ai/docs/api/api-reference/guardrails/bulk-assign-keys-to-guardrail
 
@@ -24,7 +24,8 @@ paths:
       operationId: bulk-assign-keys-to-guardrail
       summary: Bulk assign keys to a guardrail
       description: >-
-        Assign multiple API keys to a specific guardrail. [Management
+        Assign multiple API keys to a specific guardrail. A key may hold at most
+        one guardrail; assigning replaces any existing assignment. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       tags:
         - subpackage_guardrails

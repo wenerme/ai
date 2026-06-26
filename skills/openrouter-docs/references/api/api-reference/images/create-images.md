@@ -757,6 +757,12 @@ components:
         b64_json:
           type: string
           description: Base64-encoded image bytes
+        media_type:
+          type: string
+          description: >-
+            Media type (MIME type) of the image. Omitted when the output is a
+            standard raster format (PNG). Present for non-raster outputs such as
+            SVG (`image/svg+xml`).
       required:
         - b64_json
       title: ImageGenerationResponseDataItems
