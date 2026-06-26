@@ -60,7 +60,7 @@ See note in the [introduction](#dashboard-permission-api) for an explanation.
 GET /api/dashboards/uid/dHEquNzGz/permissions HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 ```
 
 **Example Response**
@@ -140,7 +140,7 @@ See note in the [introduction](#dashboard-permission-api) for an explanation.
 POST /api/dashboards/uid/dHEquNzGz/permissions
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 
 {
   "items": [

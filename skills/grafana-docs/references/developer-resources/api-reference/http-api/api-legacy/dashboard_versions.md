@@ -42,7 +42,7 @@ Gets all existing dashboard versions for the dashboard with the given `uid`.
 GET /api/dashboards/uid/QA7wKklGz/versions?limit=2?start=0 HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 ```
 
 **Example Response**
@@ -100,7 +100,7 @@ Get the dashboard version with the given version, for the dashboard with the giv
 GET /api/dashboards/uid/QA7wKklGz/versions/1 HTTP/1.1
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 ```
 
 **Example response**:

@@ -223,7 +223,7 @@ Only works with Basic Authentication (username and password). Refer to [Requirem
 PUT /api/admin/settings
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
+Authorization: Bearer <SERVICE_ACCOUNT_TOKEN>
 
 {
   "updates": {

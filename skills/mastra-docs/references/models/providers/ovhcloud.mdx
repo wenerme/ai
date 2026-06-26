@@ -1,11 +1,11 @@
 ---
 title: "OVHcloud AI Endpoints | Models"
-description: "Use OVHcloud AI Endpoints models with Mastra. 15 models available."
+description: "Use OVHcloud AI Endpoints models with Mastra. 14 models available."
 ---
 
 # [OVHcloud AI Endpoints logo]OVHcloud AI Endpoints
 
-Access 15 OVHcloud AI Endpoints models through Mastra's model router. Authentication is handled automatically using the `OVHCLOUD_API_KEY` environment variable.
+Access 14 OVHcloud AI Endpoints models through Mastra's model router. Authentication is handled automatically using the `OVHCLOUD_API_KEY` environment variable.
 
 Learn more in the [OVHcloud AI Endpoints documentation](https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog//).
 
@@ -62,18 +62,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.05,
     "outputCost": 0.18
-  },
-  {
-    "model": "ovhcloud/llama-3.1-8b-instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
-    "inputCost": 0.11,
-    "outputCost": 0.11
   },
   {
     "model": "ovhcloud/meta-llama-3_3-70b-instruct",

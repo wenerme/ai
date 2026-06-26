@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 103 skills available
+> 104 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -100,6 +100,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
 | `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
 | `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
+| `terraform-docs` | Use when working with the terraform-docs CLI for generating Terraform module documentation:... | [terraform-docs/terraform-docs/docs](https://github.com/terraform-docs/terraform-docs/tree/master/docs) |
 | `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... | [mrdoob/three.js](https://github.com/mrdoob/three.js) |
 | `threejs-guide` | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
 | `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
@@ -979,6 +980,16 @@ Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writi
 
 </details>
 <details>
+<summary><code>terraform-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill terraform-docs
+```
+
+Use when working with the terraform-docs CLI for generating Terraform module documentation: markdown/asciidoc/json/yaml/toml/xml/tfvars output formats, .terraform-docs.yml configuration, formatter options, output injection, recursive modules, sections visibility, pre-commit hooks, GitHub Actions, plugins, or terraform-docs troubleshooting.
+
+</details>
+<details>
 <summary><code>threejs-docs</code></summary>
 
 ```bash
@@ -1150,7 +1161,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 103 skills, 26384 files, 281 MiB total
+> 104 skills, 26432 files, 282 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1175,7 +1186,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 114 | 3.9 MiB |
-| `clickhouse-docs` | 1087 | 9.9 MiB |
+| `clickhouse-docs` | 1088 | 9.9 MiB |
 | `cloudflare-ai` | 1504 | 11 MiB |
 | `cloudflare-data` | 393 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
@@ -1187,7 +1198,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
-| `doris-docs` | 1579 | 9.4 MiB |
+| `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
 | `evalscope-docs` | 274 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
@@ -1198,8 +1209,8 @@ Use when implementing React state management with Zustand, including context-sco
 | `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
-| `grafana-docs` | 623 | 5.9 MiB |
-| `grafana-plugin-docs` | 581 | 3.5 MiB |
+| `grafana-docs` | 623 | 6.0 MiB |
+| `grafana-plugin-docs` | 580 | 3.5 MiB |
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
@@ -1237,9 +1248,10 @@ Use when implementing React state management with Zustand, including context-sco
 | `skill-writer` | 4 | 23 KiB |
 | `sling-cli` | 3 | 14 KiB |
 | `slopus-happy-docs` | 75 | 716 KiB |
-| `swift-ms-docs` | 67 | 1.1 MiB |
+| `swift-ms-docs` | 67 | 1.2 MiB |
 | `tea-cli` | 26 | 81 KiB |
 | `tencent-cls` | 4 | 12 KiB |
+| `terraform-docs` | 43 | 166 KiB |
 | `threejs-docs` | 798 | 2.0 MiB |
 | `threejs-guide` | 11 | 134 KiB |
 | `tmux-session-manager` | 1 | 1.7 KiB |
