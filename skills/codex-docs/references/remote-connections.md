@@ -56,6 +56,12 @@ Remote Control access before you can connect from your phone.
 
 Start in the Codex App on the host you want to connect. The setup flow enables
 remote access for that host, then shows a QR code you can scan from your phone.
+The QR code pairs that phone with that host. Pair every phone or supported Codex
+App device with every host you want it to control.
+
+Existing connections used since June 8, 2026, remain paired. If you haven't
+  used an existing connection since June 8, 2026, update both apps and pair the
+  devices again.
 
 <WorkflowSteps variant="headings">
 
@@ -279,7 +285,17 @@ internet.
 
 Confirm that the Codex App is running on the host, you've enabled **Allow other
 devices to connect**, and both devices use the same ChatGPT account and
-workspace.
+workspace. If you haven't used the connection since June 8, 2026, update both
+apps and pair the devices again.
+
+### Remote Control is off after you sign back in
+
+Signing out of ChatGPT turns off **Remote Control**, but it doesn't remove your
+existing device pairings. After you sign back in, turn on **Remote Control** to
+restore the previous connection state.
+
+If you see an error after you turn on **Remote Control** and select **Add**,
+restart the Codex App on the host, then try again.
 
 ### The approval request doesn't appear
 

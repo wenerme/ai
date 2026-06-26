@@ -4,9 +4,6 @@
 
 # Speech - TypeScript SDK
 
-The TypeScript SDK and docs are currently in beta.
-Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
-
 ## Overview
 
 Text-to-speech endpoints

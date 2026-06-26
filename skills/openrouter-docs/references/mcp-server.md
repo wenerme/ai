@@ -4,8 +4,6 @@
 
 # MCP
 
-![OpenRouter MCP Server](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/d7a46451b2c7eff24e021eac02893a1430e3273d76fccc1453c97d48f58961a7/content/assets/mcp-server-header.png)
-
 The **OpenRouter MCP server** plugs OpenRouter into the AI tools you already use. Once connected, your assistant can pull live OpenRouter data (models, prices, your credits, rankings, and docs) and send quick test messages, all without leaving your editor.
 
 It's a remote server hosted by OpenRouter (nothing is installed locally). You connect by adding one URL to your MCP client and approving an OAuth login in your browser.
@@ -71,6 +69,7 @@ The MCP exposes these tools. All are read-only lookups against live OpenRouter d
 | `generation-get`  | Cost, token counts, and serving provider for a specific generation id                                                                                                                                                                                                                           |
 | `benchmarks`      | Third-party quality scores from Artificial Analysis (intelligence, coding, agentic indexes) and Design Arena (head-to-head elo, win rate)                                                                                                                                                       |
 | `docs-search`     | Search the full OpenRouter docs to answer "how do I..." questions                                                                                                                                                                                                                               |
+| `view-skill`      | Read bundled skill files from the OpenRouter knowledge base                                                                                                                                                                                                                                     |
 | `ping`            | Health check to verify the connection                                                                                                                                                                                                                                                           |
 
 ## Pick the right model for a task

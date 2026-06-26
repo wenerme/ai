@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: R2 SQL pricing based on data scanned, with free tier details and billing examples.
+description: R2 SQL pricing based on data scanned, with included usage details and billing examples.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,10 +22,10 @@ All included usage is on a monthly basis.
 
 ## R2 SQL pricing
 
-|              | Free plan    | Paid plan                 |
-| ------------ | ------------ | ------------------------- |
-| Included     | 1 GB / month | 10 GB / month             |
-| Data scanned | N/A          | $0.0025 / GB ($2.50 / TB) |
+|              | Pricing                   |
+| ------------ | ------------------------- |
+| Included     | 10 GB / month             |
+| Data scanned | $0.0025 / GB ($2.50 / TB) |
 
 ### What counts as data scanned
 
@@ -74,6 +74,6 @@ No. R2 does not charge for egress. The query engine runs within the Cloudflare n
 To learn more about how usage is billed, refer to [Cloudflare Billing Policy](https://developers.cloudflare.com/billing/understand/billing-policy/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/platform/pricing/#page","headline":"R2 SQL - Pricing · R2 SQL docs","description":"R2 SQL pricing based on data scanned, with free tier details and billing examples.","url":"https://developers.cloudflare.com/r2-sql/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/platform/pricing/#page","headline":"R2 SQL - Pricing · R2 SQL docs","description":"R2 SQL pricing based on data scanned, with included usage details and billing examples.","url":"https://developers.cloudflare.com/r2-sql/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/platform/pricing/","name":"Pricing"}}]}
 ```

@@ -53,8 +53,8 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 
 Use `put()` to upload an object in a single request. This is the simplest approach for small to medium objects.
 
-* [  JavaScript ](#tab-panel-9923)
-* [  TypeScript ](#tab-panel-9924)
+* [  JavaScript ](#tab-panel-10019)
+* [  TypeScript ](#tab-panel-10020)
 
 JavaScript
 
@@ -76,8 +76,8 @@ export default {  async fetch(request: Request, env: Env): Promise<Response> {  
 
 Use `createMultipartUpload()` and `resumeMultipartUpload()` for large files or when you need to upload parts in parallel. Each part must be at least 5 MiB (except the last part).
 
-* [  JavaScript ](#tab-panel-9925)
-* [  TypeScript ](#tab-panel-9926)
+* [  JavaScript ](#tab-panel-10021)
+* [  TypeScript ](#tab-panel-10022)
 
 JavaScript
 
@@ -103,8 +103,8 @@ export default {  async fetch(request: Request, env: Env): Promise<Response> {  
 
 In most cases, the multipart state (the `uploadId` and uploaded part ETags) is tracked by the client sending requests to your Worker. The following example exposes an HTTP API that a client application can call to create, upload parts for, and complete a multipart upload:
 
-* [  JavaScript ](#tab-panel-9929)
-* [  TypeScript ](#tab-panel-9930)
+* [  JavaScript ](#tab-panel-10025)
+* [  TypeScript ](#tab-panel-10026)
 
 JavaScript
 
@@ -136,8 +136,8 @@ For the complete Workers API reference, refer to [Workers API reference](https:/
 
 When you need clients (browsers, mobile apps) to upload directly to R2 without proxying through your Worker, generate a presigned URL server-side and hand it to the client:
 
-* [  JavaScript ](#tab-panel-9927)
-* [  TypeScript ](#tab-panel-9928)
+* [  JavaScript ](#tab-panel-10023)
+* [  TypeScript ](#tab-panel-10024)
 
 JavaScript
 
@@ -168,9 +168,9 @@ Use S3-compatible SDKs to upload objects. You will need your [account ID](https:
 
 ### Single upload
 
-* [  TypeScript ](#tab-panel-9911)
-* [  JavaScript ](#tab-panel-9912)
-* [  Python ](#tab-panel-9913)
+* [  TypeScript ](#tab-panel-10007)
+* [  JavaScript ](#tab-panel-10008)
+* [  Python ](#tab-panel-10009)
 
 TypeScript
 
@@ -206,9 +206,9 @@ Most S3 SDKs handle multipart uploads automatically when the file exceeds a conf
 
 The SDK splits the file and uploads parts in parallel.
 
-* [  TypeScript ](#tab-panel-9914)
-* [  JavaScript ](#tab-panel-9915)
-* [  Python ](#tab-panel-9916)
+* [  TypeScript ](#tab-panel-10010)
+* [  JavaScript ](#tab-panel-10011)
+* [  Python ](#tab-panel-10012)
 
 TypeScript
 
@@ -242,9 +242,9 @@ s3 = boto3.client(    service_name="s3",    endpoint_url="https://<ACCOUNT_ID>.r
 
 Use the low-level API when you need full control over part sizes or upload order.
 
-* [  TypeScript ](#tab-panel-9917)
-* [  JavaScript ](#tab-panel-9918)
-* [  Python ](#tab-panel-9919)
+* [  TypeScript ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10014)
+* [  Python ](#tab-panel-10015)
 
 TypeScript
 
@@ -288,9 +288,9 @@ try:    file_size = os.path.getsize(file_path)    part_count = math.ceil(file_si
 
 For client-side uploads where users upload directly to R2 without going through your server, generate a presigned PUT URL. Your server creates the URL and the client uploads to it — no API credentials are exposed to the client.
 
-* [  TypeScript ](#tab-panel-9920)
-* [  JavaScript ](#tab-panel-9921)
-* [  Python ](#tab-panel-9922)
+* [  TypeScript ](#tab-panel-10016)
+* [  JavaScript ](#tab-panel-10017)
+* [  Python ](#tab-panel-10018)
 
 TypeScript
 

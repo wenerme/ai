@@ -42,8 +42,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to delete objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-9907)
-* [ Python ](#tab-panel-9908)
+* [ JavaScript ](#tab-panel-10003)
+* [ Python ](#tab-panel-10004)
 
 TypeScript
 

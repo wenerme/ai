@@ -429,64 +429,6 @@ Use `reasoning_details` when working with models that return special reasoning t
 
 For models that only return raw reasoning strings, you can use the simpler `reasoning` field. You can also use `reasoning_content` as an alias - it functions identically to `reasoning`.
 
-Preserving reasoning is currently supported by these proprietary models:
-
-<ul>
-  <li>
-    All OpenAI reasoning models (o1 series, o3 series, GPT-5 series and newer)
-  </li>
-
-  <li>
-    All Anthropic reasoning models (Claude 3.7 series and newer)
-  </li>
-
-  <li>
-    All Gemini Reasoning models
-  </li>
-
-  <li>
-    All xAI reasoning models
-  </li>
-</ul>
-
-And these open source models:
-
-<ul>
-  <li>
-    Alibaba: Qwen3.5 and newer
-  </li>
-
-  <li>
-    Arcee AI: Trinity Large Thinking and newer
-  </li>
-
-  <li>
-    MiniMax: MiniMax M2 and newer
-  </li>
-
-  <li>
-    MoonShot: Kimi K2 Thinking and newer
-  </li>
-
-  <li>
-    NVIDIA: Nemotron 3 Nano and newer
-  </li>
-
-  <li>
-    Prime Intellect: INTELLECT-3
-  </li>
-
-  <li>
-    Xiaomi: MiMo-V2-Flash and newer
-  </li>
-
-  <li>
-    Z.ai: GLM 4.5 and newer
-  </li>
-</ul>
-
-Note: standard interleaved thinking only. The <a href="https://docs.z.ai/guides/capabilities/thinking-mode#preserved-thinking">preserved thinking</a> feature for Z.ai models is currently not supported.
-
 The `reasoning_details` functionality works identically across all supported reasoning models. You can easily switch between OpenAI reasoning models (like `~openai/gpt-latest`) and Anthropic reasoning models (like `~anthropic/claude-sonnet-latest`) without changing your code structure.
 
 Preserving reasoning blocks is useful specifically for tool calling. When models like Claude invoke tools, it is pausing its construction of a response to await external information. When tool results are returned, the model will continue building that existing response. This necessitates preserving reasoning blocks during tool use, for a couple of reasons:

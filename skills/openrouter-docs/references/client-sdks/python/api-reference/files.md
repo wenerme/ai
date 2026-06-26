@@ -4,9 +4,6 @@
 
 # Files - Python SDK
 
-The Python SDK and docs are currently in beta.
-Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
-
 ## Overview
 
 Files endpoints

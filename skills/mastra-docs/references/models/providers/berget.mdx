@@ -1,11 +1,11 @@
 ---
 title: "Berget.AI | Models"
-description: "Use Berget.AI models with Mastra. 7 models available."
+description: "Use Berget.AI models with Mastra. 8 models available."
 ---
 
 # [Berget.AI logo]Berget.AI
 
-Access 7 Berget.AI models through Mastra's model router. Authentication is handled automatically using the `BERGET_API_KEY` environment variable.
+Access 8 Berget.AI models through Mastra's model router. Authentication is handled automatically using the `BERGET_API_KEY` environment variable.
 
 Learn more in the [Berget.AI documentation](https://api.berget.ai).
 
@@ -108,8 +108,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 8192,
-    "inputCost": 0.44,
-    "outputCost": 0.99
+    "inputCost": 0.22,
+    "outputCost": 0.83
   },
   {
     "model": "berget/zai-org/GLM-4.7",
@@ -122,6 +122,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.77,
     "outputCost": 2.75
+  },
+  {
+    "model": "berget/zai-org/GLM-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 32768,
+    "inputCost": 1.54,
+    "outputCost": 4.84
   }
 ]}
 />
@@ -154,7 +166,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "berget/zai-org/GLM-4.7"
+      ? "berget/zai-org/GLM-5.2"
       : "berget/google/gemma-4-31B-it";
   }
 });

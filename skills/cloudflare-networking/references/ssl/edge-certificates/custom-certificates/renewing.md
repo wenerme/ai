@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ## Renew custom certificates
 
-Since Cloudflare cannot renew uploaded certificates, you should ensure that you replace or [update](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-an-existing-custom-certificate) an expiring custom certificate before it expires, otherwise your visitors may not be able to connect.
+Since Cloudflare cannot renew uploaded certificates, you should ensure that you replace or [update](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) an expiring custom certificate before it expires, otherwise your visitors may not be able to connect.
 
 Cloudflare automatically sends email notifications 30 and 14 days before your custom certificate expires. The email is sent to users who have the SSL/TLS, Administrator, or Super Administrator [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/).
 
@@ -48,6 +48,6 @@ If you no longer want to use your custom certificate but still want your website
 3. Delete your custom certificate.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/#page","headline":"Renewal and expiration · Cloudflare SSL/TLS docs","description":"Learn how renewal and expiration work when using Cloudflare Custom SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/#page","headline":"Renewal and expiration · Cloudflare SSL/TLS docs","description":"Learn how renewal and expiration work when using Cloudflare Custom SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/custom-certificates/","name":"Custom certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/custom-certificates/renewing/","name":"Renewal and expiration"}}]}
 ```

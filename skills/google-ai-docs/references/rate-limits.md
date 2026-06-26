@@ -31,8 +31,20 @@ Rate limits are more restricted for experimental and preview models.
 
 In addition to requests per minute (RPM) and tokens per minute (TPM) limits, the
 Gemini API enforces spend-based rate limits to protect against unexpected
-charges. These limits vary based on your account's billing history and
-[usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers).
+charges. Whether these limits apply to your account depends on your billing
+history and [usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers).
+
+The following table shows the spend-based rate limits for each
+[usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers). These limits are evaluated on a rolling 10-minute
+window. Whether these limits apply to your account depends on your billing
+history and account standing.
+
+| Usage tier | Spend rate limit (per 10 minutes) |
+|---|---|
+| **Free** | N/A |
+| **Tier 1** | $10 |
+| **Tier 2** | $200 |
+| **Tier 3** | $200 |
 
 If you hit a spend-based rate limit, the API returns a `429 RESOURCE_EXHAUSTED`
 error. To resolve this:

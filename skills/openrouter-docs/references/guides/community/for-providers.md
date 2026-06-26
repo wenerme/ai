@@ -133,6 +133,7 @@ Behavior:
 * The discount applies to every priced SKU (prompt, completion, image, cache reads, and so on) and to both flat and tiered pricing.
 * `0`, an omitted field, or an absent field all mean no discount.
 * A negative value applies a markup instead of a discount, so `-0.1` shows prices 10% higher.
+* A value of `1` or higher would make the model free (or negative-priced), which isn't a valid discount. We treat it as a misconfiguration and fall back to no discount (`0`), so use a value below `1`.
 
 Send `discount_to_user` as a number, not a string. Unlike the `pricing` fields, it isn't quoted.
 
