@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Cloudflare platform access

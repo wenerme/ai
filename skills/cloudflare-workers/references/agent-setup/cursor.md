@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```
-Check my Workers deployment logs for errors and suggest fixes.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Cloudflare platform access

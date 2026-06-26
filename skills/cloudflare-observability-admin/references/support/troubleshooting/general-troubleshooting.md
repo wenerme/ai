@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Below you will find links to the relevant sections for General Troubleshooting support-focused material.
 
-* [ Cannot locate dashboard account ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/kcannot-locate-dashboard-account/)
+* [ Cannot locate dashboard account ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/)
 * [ Cloudflare traffic not being sent to the geographically closest data center ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/)
 * [ Gathering information for troubleshooting sites ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/)
 * [ Not receiving emails from Cloudflare ](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/)

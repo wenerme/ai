@@ -1216,7 +1216,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 76 | 481 KiB |
-| `justfile-docs` | 95 | 159 KiB |
+| `justfile-docs` | 95 | 160 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |

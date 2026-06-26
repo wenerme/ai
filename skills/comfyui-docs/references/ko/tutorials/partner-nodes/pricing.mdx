@@ -2,7 +2,7 @@
 title: "가격 정책"
 description: "이 문서에는 현재 파트너 노드의 가격 정책이 나와 있습니다. 모든 가격은 크레딧 단위로 표시됩니다(211 크레딧 = 1 USD)."
 mode: wide
-translationSourceHash: 41a5c5ff
+translationSourceHash: 95568d14
 translationFrom: tutorials/partner-nodes/pricing.mdx
 translationBlockHashes:
   "_intro": 845592d4
@@ -10,17 +10,17 @@ translationBlockHashes:
   "BFL": c049375b
   "Anthropic": 7966fafa
   "Bria": c7c492a1
-  "ByteDance": ab10ad06
+  "ByteDance": 8a575368
   "ElevenLabs": 6adeca08
   "Freepik": cf21eaf2
   "Google": 22aa3ea9
-  "HappyHorse": 1fdc6023
+  "HappyHorse": 28d2c09d
   "Hitpaw": 3f19a1ce
   "Ideogram": 6b1fa01c
   "Krea": 67613c4e
   "Kling": ba141835
   "Lightricks": c29a5b7e
-  "Luma": 0fadfe09
+  "Luma": 41bd0a3f
   "Meshy": 3a0f5a43
   "Minimax": e2e387a5
   "Moonvalley": 8ca8c186
@@ -41,9 +41,10 @@ translationBlockHashes:
   "Vidu": 50f09885
   "WAN": b01edeb4
   "Wavespeed": 17bdbfd6
-  "xAI": e3f7e425
+  "xAI": edfd0753
   "Other (Cloud)": 9101685b
 ---
+
 다음 표에는 현재 파트너 노드의 가격 정책이 나와 있습니다. 모든 가격은 크레딧 단위로 표시됩니다.
 
 211 크레딧 = 1 USD
@@ -140,6 +141,9 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0, resolution: 1080P, video_type: text-to-video (비디오 입력 없음: 텍스트 또는 이미지)  | 5.281 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0, resolution: 1080P, video_type: image-to-video (비디오 입력 없음: 텍스트 또는 이미지) | 5.281 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0, resolution: 1080P, video_type: video-to-video (비디오 입력 있음)              | 3.243 / K 토큰 | 비디오    |
+| BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0, resolution: 4K, video_type: text-to-video (비디오 입력 없음: 텍스트 또는 이미지)     | 1.207 / K 토큰 | 비디오    |
+| BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0, resolution: 4K, video_type: image-to-video (비디오 입력 없음: 텍스트 또는 이미지)    | 1.207 / K 토큰 | 비디오    |
+| BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0, resolution: 4K, video_type: video-to-video (비디오 입력 있음)                 | 0.724 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 720P, video_type: text-to-video (비디오 입력 없음: 텍스트 또는 이미지)  | 1.690 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 720P, video_type: image-to-video (비디오 입력 없음: 텍스트 또는 이미지) | 1.690 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 720P, video_type: video-to-video (비디오 입력 있음)              | 0.995 / K 토큰 | 비디오    |
@@ -147,7 +151,7 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 1080P, video_type: image-to-video (비디오 입력 없음: 텍스트 또는 이미지) | 4.226 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 1080P, video_type: video-to-video (비디오 입력 있음)              | 2.488 / K 토큰 | 비디오    |
 
-> **Seedance 2.0 토큰 계산:** 출력 토큰 = (입력 비디오 지속 시간 + 출력 비디오 지속 시간) × 출력 비디오 길이 × 출력 비디오 너비 × 출력 비디오 프레임 레이트 ÷ 1024. 입력이 텍스트, 이미지, 또는 오디오인 경우 입력 지속 시간 = 0. Seedance 2.0은 24fps로 출력합니다. 비디오-투-비디오 입력에는 최소 토큰 사용 제한이 적용됩니다. **K 토큰당 크레딧**은 출력 해상도에 따라 달라집니다: 동일한 모델과 `video_type`에서 **1080P는 720P 요금의 2.5배**입니다.
+> **Seedance 2.0 토큰 계산:** 출력 토큰 = (입력 비디오 지속 시간 + 출력 비디오 지속 시간) × 출력 비디오 길이 × 출력 비디오 너비 × 출력 비디오 프레임 레이트 ÷ 1024. 입력이 텍스트, 이미지, 또는 오디오인 경우 입력 지속 시간 = 0. Seedance 2.0은 24fps로 출력합니다. 비디오-투-비디오 입력에는 최소 토큰 사용 제한이 적용됩니다. **K 토큰당 크레딧**은 출력 해상도에 따라 달라집니다: 동일한 모델과 `video_type`에서 **1080P는 720P 요금의 2.5배**입니다. `Seedance 2.0 Fast` 모델은 최대 1080P까지 지원하며, 표준 `Seedance 2.0` 모델은 추가로 4K 출력을 지원합니다.
 
 ## ElevenLabs
 
@@ -246,10 +250,14 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 
 ## HappyHorse
 
-| 제품 이름                                     | 구성                                            | 크레딧        | 카테고리 |
-| :------------------------------------------- | :---------------------------------------------- | :---------- | :------- |
-| HappyHorse 비디오 생성 제품                  | 모델: happyhorse1.0, 해상도: 720P               | 29.54 / 초  | 비디오    |
-| HappyHorse 비디오 생성 제품                  | 모델: happyhorse1.0, 해상도: 1080P              | 50.64 / 초  | 비디오    |
+| 제품 이름 | 구성 | 크레딧 | 카테고리 |
+| :--- | :--- | :--- | :--- |
+| HappyHorse 비디오 생성 제품 | 모델: happyhorse1.0, 해상도: 720P | 29.54 / 초 | 비디오 |
+| HappyHorse 비디오 생성 제품 | 모델: happyhorse1.0, 해상도: 1080P | 50.64 / 초 | 비디오 |
+| HappyHorse 비디오 생성 제품 | 모델: happyhorse1.1, 해상도: 720P | 42.24 / 초 | 비디오 |
+| HappyHorse 비디오 생성 제품 | 모델: happyhorse1.1, 해상도: 1080P | 54.31 / 초 | 비디오 |
+
+HappyHorse 1.1은 텍스트 기반 비디오 생성, 이미지 기반 비디오 생성, 레퍼런스 기반 비디오 생성을 동일한 가격에 지원합니다.
 
 ## Hitpaw
 
@@ -1078,27 +1086,28 @@ USD는 **(초당 요율) × (기간(초))** 입니다. 기간은 4, 8 또는 12�
 
 비디오 엔드포인트는 검토된 콘텐츠에 대해 요금이 부과됩니다.
 
-| 제품명                                              | 구성                                                                                                    | 크레딧          | 카테고리 |
+| 제품명 | 구성 | 크레딧 | 카테고리 |
 | :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------ | :-------------- | :------- |
-| xAI 이미지 생성                                     | endpoint: v1/images/generations, model: grok-imagine-image-beta, resolution: 1k                         | 6.96 / 회       | 이미지   |
-| xAI 이미지 생성                                     | endpoint: v1/images/generations, model: grok-imagine-image-quality, resolution: 1k                      | 10.55 / 회      | 이미지   |
-| xAI 이미지 생성                                     | endpoint: v1/images/generations, model: grok-imagine-image-quality, resolution: 2k                      | 14.77 / 회      | 이미지   |
-| xAI 이미지 편집 출력                                | endpoint: v1/images/edits, model: grok-imagine-image-beta, resolution: 1k                               | 6.96 / 회       | 이미지   |
-| xAI 이미지 편집 출력                                | endpoint: v1/images/edits, model: grok-imagine-image-quality, resolution: 1k                            | 10.55 / 회      | 이미지   |
-| xAI 이미지 편집 출력                                | endpoint: v1/images/edits, model: grok-imagine-image-quality, resolution: 2k                            | 14.77 / 회      | 이미지   |
-| xAI 이미지 편집 입력                                | endpoint: v1/images/edits, model: grok-imagine-image-beta, resolution: 1k                               | 0.42 / 회       | 이미지   |
-| xAI 이미지 편집 입력                                | endpoint: v1/images/edits, model: grok-imagine-image-quality                                           | 2.11 / 회       | 이미지   |
-| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p                       | 38.19 / 초      | 비디오   |
-| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 720p                       | 38.19 / 초      | 비디오   |
-| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-1.5-preview, resolution: 480p                 | 24.14 / 초      | 비디오   |
-| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-1.5-preview, resolution: 720p                 | 42.24 / 초      | 비디오   |
-| xAI 비디오 생성 입력 이미지                         | endpoint: v1/videos/generations, model: grok-imagine-video-1.5-preview, type: image-to-video           | 3.02 / 초       | 비디오   |
-| xAI 비디오 생성 입력 이미지                         | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p, type: image-to-video | 0.42 / 초       | 비디오   |
-| xAI 비디오 생성 입력 이미지                         | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 720p, type: image-to-video | 0.42 / 초       | 비디오   |
-| xAI 비디오 편집 입력+출력 비디오 (초당)             | endpoint: v1/videos/edits, model: grok-imagine-video-beta, resolution: 480p                             | 40.3 / 초       | 비디오   |
-| xAI 이미지 편집 입력                                | endpoint: v1/images/edits, model: v1/images/edits, resolution: 1k                                       | 0.42 / 회       | 이미지   |
-| xAI 비디오 편집 입력+출력 비디오 (초당)             | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p                       | 40.3 / 초       | 비디오   |
-| xAI 크레딧                                         | NA                                                                                                      | 2.11 / 회       | 이미지   |
+| xAI 이미지 생성 | endpoint: v1/images/generations, model: grok-imagine-image-beta, resolution: 1k | 6.96 / 회 | 이미지 |
+| xAI 이미지 생성 | endpoint: v1/images/generations, model: grok-imagine-image-quality, resolution: 1k | 10.55 / 회 | 이미지 |
+| xAI 이미지 생성 | endpoint: v1/images/generations, model: grok-imagine-image-quality, resolution: 2k | 14.77 / 회 | 이미지 |
+| xAI 이미지 편집 출력 | endpoint: v1/images/edits, model: grok-imagine-image-beta, resolution: 1k | 6.96 / 회 | 이미지 |
+| xAI 이미지 편집 출력 | endpoint: v1/images/edits, model: grok-imagine-image-quality, resolution: 1k | 10.55 / 회 | 이미지 |
+| xAI 이미지 편집 출력 | endpoint: v1/images/edits, model: grok-imagine-image-quality, resolution: 2k | 14.77 / 회 | 이미지 |
+| xAI 이미지 편집 입력 | endpoint: v1/images/edits, model: grok-imagine-image-beta, resolution: 1k | 0.42 / 회 | 이미지 |
+| xAI 이미지 편집 입력 | endpoint: v1/images/edits, model: grok-imagine-image-quality | 2.11 / 회 | 이미지 |
+| xAI 비디오 생성 출력 비디오 (초당) | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p | 38.19 / 초 | 비디오 |
+| xAI 비디오 생성 출력 비디오 (초당) | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 720p | 38.19 / 초 | 비디오 |
+| xAI 비디오 생성 출력 비디오 (초당) | endpoint: v1/videos/generations, model: grok-imagine-video-1.5, resolution: 480p | 24.14 / 초 | 비디오 |
+| xAI 비디오 생성 출력 비디오 (초당) | endpoint: v1/videos/generations, model: grok-imagine-video-1.5, resolution: 720p | 42.24 / 초 | 비디오 |
+| xAI 비디오 생성 출력 비디오 (초당) | endpoint: v1/videos/generations, model: grok-imagine-video-1.5, resolution: 1080p | 75.43 / 초 | 비디오 |
+| xAI 비디오 생성 입력 이미지 | endpoint: v1/videos/generations, model: grok-imagine-video-1.5, type: image-to-video | 3.02 / 초 | 비디오 |
+| xAI 비디오 생성 입력 이미지 | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p, type: image-to-video | 0.42 / 초 | 비디오 |
+| xAI 비디오 생성 입력 이미지 | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 720p, type: image-to-video | 0.42 / 초 | 비디오 |
+| xAI 비디오 편집 입력+출력 비디오 (초당) | endpoint: v1/videos/edits, model: grok-imagine-video-beta, resolution: 480p | 40.3 / 초 | 비디오 |
+| xAI 이미지 편집 입력 | endpoint: v1/images/edits, model: v1/images/edits, resolution: 1k | 0.42 / 회 | 이미지 |
+| xAI 비디오 편집 입력+출력 비디오 (초당) | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p | 40.3 / 초 | 비디오 |
+| xAI 크레딧 | NA | 2.11 / 회 | 이미지 |
 
 ## 기타 (클라우드)
 

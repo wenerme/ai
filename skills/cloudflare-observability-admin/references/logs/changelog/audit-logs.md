@@ -14,6 +14,27 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
+## 2026-06-24
+
+
+**Audit Logs v2 — Organization-level audit logs in Cloudflare dashboard**
+
+You can now, as an [Organization](https://developers.cloudflare.com/fundamentals/organizations/) Super Administrator, view organization-level [audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/) in the Cloudflare dashboard, in addition to the existing [API access](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#organization-activity-logs).
+
+Organization audit logs help you monitor activity across your organization. You can see who performed an action, what changed, when it happened, how it was performed, and whether it succeeded or failed.
+
+You can filter and search logs by actor, action, result, resource, request details, and timestamp. Use these logs to troubleshoot changes, investigate unexpected access, and support security or compliance workflows.
+
+![Organization audit logs in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/Audit_logs_v2_organization_dashboard.De-uwPva_Z1QU6mw.webp)
+
+If you are viewing account-level audit logs and the account belongs to an organization where you are an Organization Super Administrator, select **View Organization Audit Logs** to open the parent organization's audit logs.
+
+![View Organization Audit Logs button](https://developers.cloudflare.com/_astro/Audit_logs_v2_view_organization_button.Ch7CaBB-_Z10mKrb.webp)
+
+To get started, go to **Organizations**, select your organization, then go to **Manage Organization** \> **Audit Logs**.
+
+For more information, refer to the [Audit Logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+
 ## 2026-04-23
 
 
