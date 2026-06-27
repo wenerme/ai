@@ -27,7 +27,9 @@ This means you can allowlist one phrase while still catching other injection pat
 
 ## Managing Patterns
 
-Allowlist patterns are managed per-user from [Settings > Privacy](https://openrouter.ai/settings/privacy). Your allowlist applies across every guardrail that scans your requests — unlike detection configuration, which is set per-guardrail, the allowlist is user-scoped.
+Allowlist patterns are managed per-user from [Settings > Privacy](https://openrouter.ai/settings/privacy). Your allowlist applies across every guardrail that scans your requests — unlike detection configuration, which is set per-guardrail, the allowlist is entity-scoped.
+
+In an organization, only **org admins** can view and manage the allowlist — both in [Settings > Privacy](https://openrouter.ai/settings/privacy) and via the quick-add banner in [Logs](https://openrouter.ai/logs). Non-admin members do not see these controls. On personal accounts, the account owner manages their own allowlist.
 
 ### Adding a Pattern
 
@@ -66,7 +68,7 @@ The quick-add banner only appears for regex-based detections. Events triggered b
 * Each pattern can be up to **1,000 bytes** when UTF-8 encoded (multibyte characters count as multiple bytes).
 * **Regex-based patterns only.** The allowlist does not affect typoglycemia detection or Base64/hex encoding detection. If a message triggers one of those evasion detectors, the full message is flagged/redacted regardless of any allowlist entries.
 * **Exact match only.** You cannot use wildcards, regex, or fuzzy matching in allowlist entries. The phrase must appear verbatim in the message text.
-* **Per-user scope.** Allowlist patterns are scoped to the individual user, not to a guardrail or organization. Each user manages their own allowlist.
+* **Per-entity scope.** Allowlist patterns are scoped to the account entity, not to a guardrail. On a personal account that entity is the individual user, who manages their own allowlist. In an organization the entity is the org itself, and only org admins can manage its allowlist (non-admin members do not see the controls).
 * **Duplicate detection is case-insensitive.** You cannot add two patterns that differ only in letter casing (e.g., "Ignore" and "ignore" are treated as the same pattern).
 
 ## Further Reading

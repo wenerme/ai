@@ -306,8 +306,8 @@
   },
   "guides/features/guardrails/prompt-injection/allowlist.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/prompt-injection/allowlist.md",
-    "size": 6091,
-    "updatedAt": "2026-06-24T00:49:10.280Z"
+    "size": 6597,
+    "updatedAt": "2026-06-27T11:11:45.626Z"
   },
   "guides/features/guardrails/sensitive-info.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/sensitive-info.md",

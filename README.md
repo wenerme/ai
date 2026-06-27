@@ -1172,7 +1172,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 105 skills, 26481 files, 282 MiB total
+> 105 skills, 26482 files, 283 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1182,7 +1182,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
-| `anthropic-docs` | 187 | 5.2 MiB |
+| `anthropic-docs` | 187 | 5.3 MiB |
 | `anthropic-sdk-csharp` | 147 | 8.4 MiB |
 | `anthropic-sdk-go` | 147 | 11 MiB |
 | `anthropic-sdk-java` | 147 | 8.7 MiB |
@@ -1236,7 +1236,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 763 | 6.0 MiB |
+| `mastra-docs` | 764 | 6.0 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1274,7 +1274,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
 | `wails-docs` | 56 | 314 KiB |
-| `waku-docs` | 24 | 145 KiB |
+| `waku-docs` | 24 | 148 KiB |
 | `wode-db-schema-pattern` | 2 | 8.8 KiB |
 | `wode-emittery-pattern` | 2 | 9.8 KiB |
 | `writing-skills` | 7 | 105 KiB |
