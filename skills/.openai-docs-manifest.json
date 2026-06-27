@@ -10394,10 +10394,10 @@
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"f3d2eebfabc2254dc295cfad08f6eddc\"",
-    "lastModified": "Sat, 20 Jun 2026 03:09:20 GMT",
-    "size": 73788,
-    "updatedAt": "2026-06-20T11:01:38.656Z"
+    "etag": "W/\"486b8139020a6ef3d601f795c687013a\"",
+    "lastModified": "Fri, 26 Jun 2026 23:25:01 GMT",
+    "size": 80748,
+    "updatedAt": "2026-06-27T01:29:55.504Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
@@ -10442,10 +10442,10 @@
   "codex-docs/enterprise/managed-configuration.md": {
     "url": "https://developers.openai.com/codex/enterprise/managed-configuration.md",
     "skill": "codex-docs",
-    "etag": "W/\"43f2676d25dbc5bb40347acaff3bc2f0\"",
-    "lastModified": "Thu, 18 Jun 2026 22:39:29 GMT",
-    "size": 22743,
-    "updatedAt": "2026-06-19T00:52:44.514Z"
+    "etag": "W/\"eb805a724a840805383046de73c5c053\"",
+    "lastModified": "Fri, 26 Jun 2026 23:25:03 GMT",
+    "size": 24894,
+    "updatedAt": "2026-06-27T01:29:56.910Z"
   },
   "codex-docs/environment-variables.md": {
     "url": "https://developers.openai.com/codex/environment-variables.md",

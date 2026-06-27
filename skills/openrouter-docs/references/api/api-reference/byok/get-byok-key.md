@@ -142,6 +142,7 @@ components:
         - perplexity
         - phala
         - poolside
+        - quiver
         - recraft
         - reka
         - relace

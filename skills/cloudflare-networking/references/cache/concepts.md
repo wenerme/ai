@@ -22,6 +22,7 @@ Review the following topics to learn more about the basic concepts and component
 * [ Origin Cache Control ](https://developers.cloudflare.com/cache/concepts/cache-control/)
 * [ Retention vs Freshness (TTL) ](https://developers.cloudflare.com/cache/concepts/retention-vs-freshness/)
 * [ Revalidation ](https://developers.cloudflare.com/cache/concepts/revalidation/)
+* [ Vary ](https://developers.cloudflare.com/cache/concepts/vary/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cache/concepts/#page","headline":"Concepts · Cloudflare Cache (CDN) docs","description":"Core caching concepts including TTL, revalidation, and cache control.","url":"https://developers.cloudflare.com/cache/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

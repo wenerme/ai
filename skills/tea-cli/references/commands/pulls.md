@@ -220,6 +220,18 @@ Merge a pull request
 
 **--title, -t**="": Merge commit title
 
+### reply
+
+Reply to a pull request review comment
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
 ### review-comments, rc
 
 List review comments on a pull request

@@ -29,10 +29,10 @@ The Monitoring API includes the following core entities, which each provide dist
 
 You can construct any query you'd like using the above datasets, but here are some example queries you can use.
 
-* [ Events ](#tab-panel-13278)
-* [ Loads ](#tab-panel-13279)
-* [ Triggers ](#tab-panel-13280)
-* [ Erroneous responses ](#tab-panel-13281)
+* [ Events ](#tab-panel-13446)
+* [ Loads ](#tab-panel-13447)
+* [ Triggers ](#tab-panel-13448)
+* [ Erroneous responses ](#tab-panel-13449)
 
 Query for the count of Zaraz events, grouped by time.
 
@@ -40,7 +40,7 @@ Query for the count of Zaraz events, grouped by time.
 query ZarazEvents(  $zoneTag: string  $limit: uint64!  $start: Time  $end: Time  $orderBy: ZoneZarazTrackAdaptiveGroupsOrderBy!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      data: zarazTrackAdaptiveGroups(        limit: $limit        filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }        orderBy: [$orderBy]      ) {        count        dimensions {          ts: datetimeHour        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lCArHCFDUQgCyoWADgwUQMKABM0IEeKkyxcNmtXqtOiH30w+AIQCeR-QkYxG9GAASEACufAQAggDKAMIgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ni4LAByoALEtQsArBgogYUACZoQI8VJkB2OB2WqNWyhD56YfAEIBPQ3oSMYjejAAJCABXPgIAQQBlAGEQAF8gA)
 
 Query for the count of Zaraz loads, grouped by time.
 
@@ -48,7 +48,7 @@ Query for the count of Zaraz loads, grouped by time.
 query ZarazLoads(  $zoneTag: string  $limit: uint64!  $start: Date  $end: Date  $orderBy: ZoneZarazTriggersAdaptiveGroupsOrderBy!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      data: zarazTriggersAdaptiveGroups(        limit: $limit        filter: { date_geq: $start, date_leq: $end, triggerName: Pageview }        orderBy: [$orderBy]      ) {        count        dimensions {          ts: date        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgGQPYICYGcAUAUDDACQoYB2YAKggOYBcMuALhAJaX3FkA2HALYdWzEF1YA2ACwBCXqTZJRMACIJWYBWErZm6zQowRskAEJRmcKmETIUNTvXqRcAQWwIADqw4A3MABxCAwQL1wAeRNzKHkAShgAb14-DjAAd0gk3hIKagIAMw4+TQhmRJg82gZmchs6ehgAXwTkknaYT1YEZhQkVEcOZ1cPb18A4NDwog6OgWEVUnmRHNmikshyzo0wAH0XYFqlCFYAGm3NXb4wQ7IdbHP2IZcIADkEQTBmAAUGMFSMs1Vh1jKYIBZmABtUigmIAXWBMFaiJIAGNQpRWCjOkIdLgOFRcNlZrNWLhmF0tCSSE1EbSOvSgU0gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lCArBRAwoAEzQgR4qTLEKIfZTD4AhAJ5rlCRjAIBBAMoBhEAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgGQPYICYGcAUAUDDACQoYB2YAKggOYBcMuALhAJaX3FkA2HALYdWzEF1YA2ACwBCXqTZJRMACIJWYBWErZm6zQowRskAEJRmcKmETIUNTvXqRcAQWwIADqw4A3MABxCAwQL1wAeRNzKHkAShgAb14-DjAAd0gk3hIKagIAMw4+TQhmRJg82gZmchs6ehgAXwTkknaYT1YEZhQkVEcOZ1cPb18A4NDwog6OgWEVUnmRHNmikshyzo0wAH0XYFqlCFYAGm3NXb4wQ7IdbHP2IZcIADkEQTBmAAUGMFSMs1Vh1jKYIBZmABtUigmIAXWBMFaiJIAGNQpRWCjOkIdLgOFRcNlZrNWLhmF0tCSSE1EbSOvSgU0gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0niKIGFAAmaECPFSZAdjkQ+imHwBCATxWKEjGAQCCAZQDCIAL5A)
 
 Query for the total execution count of each trigger processed by Zaraz.
 
@@ -56,7 +56,7 @@ Query for the total execution count of each trigger processed by Zaraz.
 query ZarazTriggers(  $zoneTag: string  $limit: uint64!  $start: Date  $end: Date) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      data: zarazTriggersAdaptiveGroups(        limit: $limit        filter: { date_geq: $start, date_leq: $end }        orderBy: [count_DESC]      ) {        count        dimensions {          name: triggerName        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgFQgSwObcgZwAoAoGGAEhQHsA7MNBbALhnwBcsbtSKAbTALaY2LEJhpsAbABYAhD3LskImABEEbMArA0AJi3WbiAShgBvHgDdMYAO6RzPMtTpEAZpl6aILMzBf0jCyUtIHYMAC+phZksTC6GggsKEioGDh4EPgAggkADmyYlmAA4hBUIHlETnEw-EIq5PXCNXEeXpC+8RpgAPp4wMFKEGwANN2avbxggxQ6upGtsVQQupAAQlAsANoAxhUSvaoAogDKAMIAukvRS2T7IBJ38YI6+Ji0+I61tTQIAmAWBwMpAAHL-LQ-MgRJYwuJwxYRIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lCArBRAwoAEzQgR4qTLEgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgFQgSwObcgZwAoAoGGAEhQHsA7MNBbALhnwBcsbtSKAbTALaY2LEJhpsAbABYAhD3LskImABEEbMArA0AJi3WbiAShgBvHgDdMYAO6RzPMtTpEAZpl6aILMzBf0jCyUtIHYMAC+phZksTC6GggsKEioGDh4EPgAggkADmyYlmAA4hBUIHlETnEw-EIq5PXCNXEeXpC+8RpgAPp4wMFKEGwANN2avbxggxQ6upGtsVQQupAAQlAsANoAxhUSvaoAogDKAMIAukvRS2T7IBJ38YI6+Ji0+I61tTQIAmAWBwMpAAHL-LQ-MgRJYwuJwxYRIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0niKIGFAAmaECPFSZAdhABfIA)
 
 Query for the count of 400 server-side responses, grouped by time and URL.
 
@@ -64,7 +64,7 @@ Query for the count of 400 server-side responses, grouped by time and URL.
 query ErroneousResponses(  $zoneTag: string  $limit: uint64!  $start: Time  $end: Time  $orderBy: ZoneZarazFetchAdaptiveGroupsOrderBy!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      data: zarazFetchAdaptiveGroups(        limit: $limit        filter: {          datetimeHour_geq: $start          datetimeHour_leq: $end          url_neq: ""          status: 400        }        orderBy: [$orderBy]      ) {        count        dimensions {          ts: datetimeHour          name: url        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lCArHCFDUQgCyoWADgwUQMKABM0IEeKkyxcNmtXqtOiH30w+AIQCeR-QkYxG9GAASEACufAQAggDKAMIgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ni4LAByoALEtQsArBgogYUACZoQI8VJkB2OB2WqNWyhD56YfAEIBPQ3oSMYjejAAJCABXPgIAQQBlAGEQAF8gA)
 
 ### Variables Example
 

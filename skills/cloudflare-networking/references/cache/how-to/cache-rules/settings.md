@@ -308,7 +308,64 @@ API configuration example
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
 
+#### Vary
+
+The `Vary` response header lets your origin cache multiple versions of the same URL based on request headers. Use the `vary` object to configure how Cloudflare handles each header your origin lists in its `Vary` response. For how Vary affects cache keys and how normalization works, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/).
+
+The `vary` object supports these keys:
+
+| Key     | Required | Description                                                                                    |
+| ------- | -------- | ---------------------------------------------------------------------------------------------- |
+| default | Yes      | Configuration for any header name in the origin Vary response that is not included in headers. |
+| headers | No       | A map of lowercase request header names to configuration objects.                              |
+
+If the `vary` object is omitted, this Cache Rules Vary setting is turned off. Other Vary behavior, such as `Vary: *`, [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/), and compression handling, is unaffected. If the `vary` object is present, `default` is required. An empty `vary` object is invalid.
+
+Each header configuration object, and the `default` object, must include an `action` key set to one of `normalize`, `passthrough`, or `bypass`. Refer to [Actions](https://developers.cloudflare.com/cache/concepts/vary/#actions) for guidance on when to use each.
+
+Additional parameters can be specified for certain header names:
+
+| Header          | Additional key | Description                                                                                 |
+| --------------- | -------------- | ------------------------------------------------------------------------------------------- |
+| accept          | media\_types   | List of MIME types to include when normalizing the Accept header. Maximum 10 items.         |
+| accept-language | languages      | List of languages to include when normalizing the Accept-Language header. Maximum 20 items. |
+
+For most deployments, start with a restrictive `default` and explicit per-header configuration:
+
+* Use `default` set to `bypass` to avoid caching variants for unexpected origin `Vary` headers.
+* Add explicit `headers` entries for the headers you expect your origin to vary on.
+* Use `normalize` for `accept`, `accept-language`, and `accept-encoding` unless your origin requires raw header values.
+* Use `media_types` and `languages` allowlists when you know the exact variants your origin can serve.
+* Use `passthrough` only when exact raw header values should select different cached versions.
+* Use `bypass` for high-cardinality headers such as `user-agent`, cookies, or request headers with per-user values.
+
+The following limits and validation rules apply:
+
+* Header names in `headers` must be lowercase.
+* Header names can contain letters, numbers, underscores, and hyphens.
+* Header names cannot exceed 128 characters.
+* Header names beginning with `cf-` or `cf_` are not allowed.
+* Certain hop-by-hop or cache-control headers, such as `connection`, `host`, and `cache-control`, are not allowed.
+* `headers` can contain up to 50 entries.
+* `accept.media_types` can contain up to 10 entries.
+* `accept-language.languages` can contain up to 20 entries.
+* Values in `media_types` and `languages` must be non-empty printable ASCII.
+
+API information
+
+API configuration object name: `"vary"`.
+
+The following example normalizes `accept` and `accept-language`, and bypasses cache for any other header in the origin `Vary` response:
+
+API configuration example
+
+```
+"action_parameters": {  "cache": true,  "vary": {    "default": {      "action": "bypass"    },    "headers": {      "accept": {        "action": "normalize",        "media_types": ["text/html", "application/json"]      },      "accept-language": {        "action": "normalize",        "languages": ["en", "fr", "de"]      }    }  }}
+```
+
+Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples, or to the [Terraform example](https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/).
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#page","headline":"Cache Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#page","headline":"Cache Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/settings/","name":"Available settings"}}]}
 ```

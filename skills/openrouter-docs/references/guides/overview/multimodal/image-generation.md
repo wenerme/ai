@@ -172,6 +172,10 @@ curl -X POST "https://openrouter.ai/api/v1/images" \
 
 ### Response Format
 
+Images are returned as base64-encoded bytes. The `usage` field reports token counts and cost when available.
+
+For raster PNG outputs (most models), `media_type` is omitted:
+
 ```json
 {
   "created": 1748372400,
@@ -189,7 +193,25 @@ curl -X POST "https://openrouter.ai/api/v1/images" \
 }
 ```
 
-Images are returned as base64-encoded bytes. The `usage` field reports token counts and cost when available.
+For vector outputs (e.g., SVG from Recraft vector models), the `media_type` field is included:
+
+```json
+{
+  "created": 1748372400,
+  "data": [
+    {
+      "b64_json": "<base64-encoded-image>",
+      "media_type": "image/svg+xml"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 4175,
+    "total_tokens": 4175,
+    "cost": 0.04
+  }
+}
+```
 
 ## Image Configuration Options
 
@@ -305,10 +327,16 @@ The response is an SSE stream with three event types:
 data: {"type":"image_generation.partial_image","partial_image_index":0,"b64_json":"<base64>"}
 ```
 
-**Completed** — emitted when the final image is ready:
+**Completed** — emitted when the final image is ready. For raster PNG outputs, `media_type` is omitted:
 
 ```
 data: {"type":"image_generation.completed","b64_json":"<base64>","created":1748372400,"usage":{"prompt_tokens":16,"completion_tokens":272,"total_tokens":288,"cost":0.011}}
+```
+
+For vector outputs (e.g., SVG from Recraft vector models), `media_type` is included:
+
+```
+data: {"type":"image_generation.completed","b64_json":"<base64>","media_type":"image/svg+xml","created":1748372400,"usage":{"prompt_tokens":16,"completion_tokens":272,"total_tokens":288,"cost":0.011}}
 ```
 
 The `usage` object in the completed event includes `cost` (USD), matching the buffered response shape.

@@ -1889,6 +1889,20 @@ components:
       required:
         - model
       title: OutputItemsDiscriminatorMappingOpenrouterFusionResponsesItems
+    FusionSource:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the retrieved web page.
+        url:
+          type: string
+          description: URL of the web page a panel or the judge retrieved during the run.
+      required:
+        - title
+        - url
+      description: A web page retrieved via web search during a fusion run.
+      title: FusionSource
     OutputFusionServerToolItem:
       type: object
       properties:
@@ -1926,6 +1940,14 @@ components:
           description: >-
             Analysis models that produced a response in this fusion run, with
             each model's full panel content.
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/FusionSource'
+          description: >-
+            Web pages the analysis panels and judge retrieved via web search
+            during this fusion run, deduplicated by URL across the whole run.
+            Present when at least one model cited a source.
         status:
           $ref: '#/components/schemas/ToolCallStatus'
       required:
@@ -6841,6 +6863,14 @@ components:
               description: >-
                 Analysis models that produced a response in this fusion run,
                 with each model's full panel content.
+            sources:
+              type: array
+              items:
+                $ref: '#/components/schemas/FusionSource'
+              description: >-
+                Web pages the analysis panels and judge retrieved via web search
+                during this fusion run, deduplicated by URL across the whole
+                run. Present when at least one model cited a source.
             status:
               $ref: '#/components/schemas/ToolCallStatus'
           required:

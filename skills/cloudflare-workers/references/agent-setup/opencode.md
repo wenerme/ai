@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Add bot protection and rate limiting to my login and checkout endpoints.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Cloudflare platform access

@@ -1895,33 +1895,187 @@ deployments, use `allowed_permission_profiles` with managed
     },
     {
       key: "mcp_servers.<id>.identity.command",
+      type: "string | table",
+      description:
+        "Allow an MCP stdio server by exact command string, or use a matcher table to require an exact executable and ordered argument matchers. The string form doesn't inspect arguments, `cwd`, `env`, or `env_vars`.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.command.executable",
       type: "string",
       description:
-        "Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command.",
+        "Executable that the stdio server's configured `command` must match exactly.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.command.args",
+      type: "array<table>",
+      description:
+        "Ordered argument matchers for a stdio server. The configured argument list must have the same length, and every position must match. Command matchers don't inspect `cwd`, `env`, or `env_vars`.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.command.args[].match",
+      type: "exact | prefix | regex",
+      description: "Match operation for this argument position.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.command.args[].value",
+      type: "string",
+      description: "Value used by an `exact` or `prefix` argument matcher.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.command.args[].expression",
+      type: "string",
+      description:
+        "Regular expression used by a `regex` argument matcher. The expression must be valid and match the complete argument value.",
     },
     {
       key: "mcp_servers.<id>.identity.url",
+      type: "string | table",
+      description:
+        "Allow an MCP streamable HTTP server by exact URL string, or use an `exact`, `prefix`, or `regex` value matcher table.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.url.match",
+      type: "exact | prefix | regex",
+      description: "Match operation for the configured MCP server URL.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.url.value",
+      type: "string",
+      description: "Value used by an `exact` or `prefix` URL matcher.",
+    },
+    {
+      key: "mcp_servers.<id>.identity.url.expression",
       type: "string",
       description:
-        "Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL.",
+        "Regular expression used by a `regex` URL matcher. The expression must be valid and match the complete URL value.",
     },
     {
       key: "plugins",
       type: "table",
       description:
-        "Plugin-specific MCP server allowlists keyed by plugin identifier.",
+        "Plugin-specific MCP server allowlists keyed by plugin identifier. When this table is present, plugin-bundled servers without a matching plugin and server entry are disabled.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers",
+      type: "table",
+      description:
+        "Allowlist for MCP servers bundled with one plugin. Plugin server requirements use the same exact identity and matcher forms as top-level `mcp_servers` requirements.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity",
+      type: "table",
+      description:
+        "Identity rule for one plugin-bundled MCP server. Set either `command` (stdio) or `url` (streamable HTTP).",
     },
     {
       key: "plugins.<plugin>.mcp_servers.<server>.identity.command",
+      type: "string | table",
+      description:
+        "Allow a plugin's stdio MCP server by exact command string, or use a matcher table to require an exact executable and ordered argument matchers.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.command.executable",
       type: "string",
       description:
-        "Allow a plugin's stdio MCP server when its configured command matches this value.",
+        "Executable that the plugin-bundled stdio server's configured command must match exactly.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.command.args",
+      type: "array<table>",
+      description:
+        "Ordered argument matchers for a plugin-bundled stdio server. The configured argument list must have the same length, and every position must match.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.command.args[].match",
+      type: "exact | prefix | regex",
+      description: "Match operation for this argument position.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.command.args[].value",
+      type: "string",
+      description: "Value used by an `exact` or `prefix` argument matcher.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.command.args[].expression",
+      type: "string",
+      description:
+        "Regular expression used by a `regex` argument matcher. The expression must match the complete argument value.",
     },
     {
       key: "plugins.<plugin>.mcp_servers.<server>.identity.url",
+      type: "string | table",
+      description:
+        "Allow a plugin's streamable HTTP MCP server by exact URL string, or use an `exact`, `prefix`, or `regex` value matcher table.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.url.match",
+      type: "exact | prefix | regex",
+      description: "Match operation for the plugin-bundled MCP server URL.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.url.value",
+      type: "string",
+      description: "Value used by an `exact` or `prefix` URL matcher.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.url.expression",
       type: "string",
       description:
-        "Allow a plugin's streamable HTTP MCP server when its configured URL matches this value.",
+        "Regular expression used by a `regex` URL matcher. The expression must match the complete URL value.",
+    },
+    {
+      key: "marketplaces",
+      type: "table",
+      description:
+        "Admin requirements for plugin marketplace sources. Rules take effect when `restrict_to_allowed_sources` is `true`.",
+    },
+    {
+      key: "marketplaces.restrict_to_allowed_sources",
+      type: "boolean",
+      description:
+        "When `true`, require user-configured marketplace sources to match `allowed_sources` for marketplace add, plugin install, and configured Git marketplace refresh operations. Codex-managed OpenAI marketplaces remain allowed when their reserved source and name match. This doesn't filter already configured user marketplaces at runtime.",
+    },
+    {
+      key: "marketplaces.allowed_sources",
+      type: "table",
+      description:
+        "Allowed marketplace sources keyed by administrator-chosen rule name. Distinct names accumulate across requirements layers; fields under the same name use normal layer precedence.",
+    },
+    {
+      key: "marketplaces.allowed_sources.<name>",
+      type: "table",
+      description:
+        "One allowed source rule. The final `source` value after requirements merge determines which sibling fields Codex interprets.",
+    },
+    {
+      key: "marketplaces.allowed_sources.<name>.source",
+      type: "git | host_pattern | local",
+      description:
+        "Marketplace source matcher type. Use `git` for one repository, `host_pattern` for Git hosts matched by regular expression, or `local` for one directory.",
+    },
+    {
+      key: "marketplaces.allowed_sources.<name>.url",
+      type: "string",
+      description:
+        'Git repository URL required when `source = "git"`. Codex normalizes the configured and allowed URLs before requiring an exact repository match.',
+    },
+    {
+      key: "marketplaces.allowed_sources.<name>.ref",
+      type: "string",
+      description:
+        "Optional exact Git ref for a `git` rule. When omitted, the rule allows any ref for the matching repository.",
+    },
+    {
+      key: "marketplaces.allowed_sources.<name>.host_pattern",
+      type: "string",
+      description:
+        'Regular expression required when `source = "host_pattern"`. Codex matches it against the lowercase hostname parsed from an HTTPS, SSH, or SCP-style Git source. Use `^` and `$` to require a whole-host match.',
+    },
+    {
+      key: "marketplaces.allowed_sources.<name>.path",
+      type: "string (absolute path)",
+      description:
+        'Local marketplace directory required when `source = "local"`. Codex requires an absolute path and compares paths after normalization.',
     },
     {
       key: "apps",

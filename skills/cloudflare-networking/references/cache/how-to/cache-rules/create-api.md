@@ -67,6 +67,14 @@ Update a zone ruleset
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(http.host eq \"example.com\")",            "description": "turn off default cache ttls",            "action": "set_cache_settings",            "action_parameters": {                "cache": true,                "edge_ttl": {                    "mode": "bypass_by_default"                }            }        }    ]  }'
 ```
 
+Example: Cache expected Vary responses
+
+Update a zone entry point ruleset
+
+```
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(http.host eq \"example.com\")",            "description": "cache expected vary responses",            "action": "set_cache_settings",            "action_parameters": {                "cache": true,                "vary": {                    "default": {                        "action": "bypass"                    },                    "headers": {                        "accept": {                            "action": "normalize",                            "media_types": [                                "text/html",                                "application/json"                            ]                        },                        "accept-language": {                            "action": "normalize",                            "languages": [                                "en",                                "fr",                                "de"                            ]                        }                    }                }            }        }    ]  }'
+```
+
 Example: Update the position of an existing rule
 
 Update a zone ruleset rule
@@ -84,6 +92,6 @@ The API token used in API requests to manage Cache Rules must have the following
 * _Account Filter Lists_ \> _Edit_
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#page","headline":"Create a cache rule via API · Cloudflare Cache (CDN) docs","description":"Create cache rules using the Rulesets API.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#page","headline":"Create a cache rule via API · Cloudflare Cache (CDN) docs","description":"Create cache rules using the Rulesets API.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/create-api/","name":"Create a rule via API"}}]}
 ```

@@ -48,7 +48,19 @@ The Cursor CLI (`cursor-agent`) reads the same config as the IDE. Add this to `~
 }
 ```
 
-Go to **Settings > Connectors > OpenRouter MCP** and log in to run the OAuth flow.
+OpenRouter isn't in Claude's connector directory, so add it as a custom connector:
+
+1. Go to **Settings > Connectors > Customize > Connectors**, click the **+**, then choose **Add custom connector**.
+
+   ![Claude's Connectors page with the + menu open and Add custom connector highlighted](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/6fb7da29e9429d3b2478d6cca8794b9dbeb64d239f2ef8626701a56b2d539497/content/pages/guides/claude-connectors-menu.png)
+
+2. Enter the **Name** `OpenRouter MCP` and set the **Remote MCP server URL** to `https://mcp.openrouter.ai/mcp`. Leave the OAuth fields blank.
+
+3. Click **Add**, then open the connector and **Connect** to run the OAuth flow.
+
+   ![Claude's Add custom connector dialog with the Name set to OpenRouter MCP and the Remote MCP server URL set to https://mcp.openrouter.ai/mcp](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c097d0548cbdfc902eaac698ad17aca20c3e5dc64e89d2bd9355902d04f67fea/content/pages/guides/claude-add-custom-connector.png)
+
+Some organizations don't allow adding custom connectors, so this option may not appear for everyone. If you don't see it, talk to your admin.
 
 Not all clients pop up the auth automatically; some need a one-time login step after you add the server. When you trigger it, an OpenRouter consent page opens in your browser where you approve a **dedicated key just for this connection**, separate from your other keys. The key expires after 7 days and starts with a `$10` spend cap (editable on the approval screen). You can disconnect anytime.
 
