@@ -276,8 +276,8 @@ Custom descriptions follow the same precedence. Set a description by including t
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-7257)
-* [ Server-level alias ](#tab-panel-7258)
+* [ Portal-level alias ](#tab-panel-7393)
+* [ Server-level alias ](#tab-panel-7394)
 
 To set an alias that applies to a specific portal:
 
@@ -530,8 +530,8 @@ For more information on building with Code Mode, refer to the [Code Mode SDK ref
 
 To turn off Code Mode for a portal:
 
-* [ Dashboard ](#tab-panel-7259)
-* [ API ](#tab-panel-7260)
+* [ Dashboard ](#tab-panel-7395)
+* [ API ](#tab-panel-7396)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -668,17 +668,52 @@ After sign-out, the portal displays a confirmation page with a summary of the re
 
 ### Connect with a service token
 
-You can connect to an MCP portal using an [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for machine-to-machine access. Service tokens bypass the browser-based OAuth flow and authenticate directly using the `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers.
+You can connect to an MCP portal using an [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for machine-to-machine access. Service tokens bypass the browser-based OAuth flow and authenticate using the `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers.
 
-To connect with a service token:
+A service token session is authorized twice: once at the portal URL, and once for each upstream MCP server it tries to reach through the portal. Both checks need a matching [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth).
 
-1. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token) in your Zero Trust account.
-2. Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) to your portal's Access application. The policy action must be **Service Auth**, not Allow. Service Auth policies specifically match requests that include valid `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers.
-3. Include the service token headers when connecting from your MCP client.
+#### Required configuration
+
+| Where                             | Policy action | Include rule       | Purpose                                                                        |
+| --------------------------------- | ------------- | ------------------ | ------------------------------------------------------------------------------ |
+| Portal Access application         | Service Auth  | Your service token | Lets the bot connect to the portal URL.                                        |
+| Each linked MCP server Access app | Service Auth  | Your service token | Lets the bot see and call that server's tools through the portal.              |
+| Server's portal mapping           | n/a           | n/a                | **Require user auth** must be **off** so the portal uses the admin credential. |
 
 Note
 
-Service tokens do not support per-user OAuth with upstream MCP servers. When connected via a service token, the portal uses the [admin credential](#reauthenticate-the-mcp-server) for all upstream server requests. Servers configured with **Require user auth** turned on will not be available to service token sessions.
+**Require user auth** in the dashboard maps to the `on_behalf` field on the portal-server mapping in the API and Terraform. For each linked server you want a service token to reach, set `on_behalf` to `false`. Servers with `on_behalf: true` are excluded from service token sessions because they require a per-user OAuth grant that a service token cannot provide.
+
+If a linked MCP server does not have a Service Auth policy matching the token, that server is hidden from the bot's tool list.
+
+#### Set up a service token connection
+
+1. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token) in your Zero Trust account.
+2. Open the portal's Access application and add a Service Auth policy that includes the service token.
+3. For each upstream MCP server you want the bot to reach:
+  1. Open the server's Access application and add a Service Auth policy that includes the same service token.
+  2. Open the portal and edit the server. Turn **Require user auth** off so the portal uses the [admin credential](#reauthenticate-the-mcp-server) for that server.
+4. Connect from your MCP client with the service token headers.
+
+For a CLI client, set the headers directly:
+
+Terminal window
+
+```
+curl https://<subdomain>.<domain>/mcp \  -H "CF-Access-Client-Id: <CLIENT_ID>" \  -H "CF-Access-Client-Secret: <CLIENT_SECRET>"
+```
+
+For `mcp-remote`, pass the headers with `--header`:
+
+MCP client configuration for service token connections
+
+```
+{  "mcpServers": {    "example-portal": {      "command": "npx",      "args": [        "-y",        "mcp-remote@latest",        "https://<subdomain>.<domain>/mcp",        "--header",        "CF-Access-Client-Id: <CLIENT_ID>",        "--header",        "CF-Access-Client-Secret: <CLIENT_SECRET>"      ]    }  }}
+```
+
+Note
+
+Service tokens do not support per-user OAuth with upstream MCP servers. The portal uses the [admin credential](#reauthenticate-the-mcp-server) for every upstream request made by a service token session. Servers with **Require user auth** turned on are excluded from service token sessions because they require a per-user OAuth grant that a service token cannot provide.
 
 ### Device authentication
 
@@ -903,6 +938,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

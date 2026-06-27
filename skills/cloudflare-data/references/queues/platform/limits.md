@@ -53,8 +53,8 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 By default, the maximum CPU time per consumer Worker invocation is set to 30 seconds, but can be increased by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9745)
-* [  wrangler.toml ](#tab-panel-9746)
+* [  wrangler.jsonc ](#tab-panel-10009)
+* [  wrangler.toml ](#tab-panel-10010)
 
 JSONC
 

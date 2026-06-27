@@ -346,6 +346,16 @@ Available on all plans
 * **Business:** No
 * **Enterprise:** Yes
 
+### Vary
+
+**Link:**[Vary](https://developers.cloudflare.com/cache/concepts/vary/)
+
+**Feature availability**
+* **Free:** Yes
+* **Pro:** Yes
+* **Business:** Yes
+* **Enterprise:** Yes
+
 ### Vary for images
 
 **Link:**[Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/)

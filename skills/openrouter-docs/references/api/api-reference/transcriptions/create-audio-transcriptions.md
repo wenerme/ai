@@ -479,6 +479,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        quiver:
+          type: object
+          additionalProperties:
+            description: Any type
         recraft:
           type: object
           additionalProperties:

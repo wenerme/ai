@@ -24,8 +24,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-9779)
-* [  wrangler.toml ](#tab-panel-9780)
+* [  wrangler.jsonc ](#tab-panel-10003)
+* [  wrangler.toml ](#tab-panel-10004)
 
 JSONC
 

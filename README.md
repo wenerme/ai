@@ -1172,7 +1172,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 105 skills, 26476 files, 282 MiB total
+> 105 skills, 26481 files, 282 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1182,7 +1182,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
-| `anthropic-docs` | 187 | 5.1 MiB |
+| `anthropic-docs` | 187 | 5.2 MiB |
 | `anthropic-sdk-csharp` | 147 | 8.4 MiB |
 | `anthropic-sdk-go` | 147 | 11 MiB |
 | `anthropic-sdk-java` | 147 | 8.7 MiB |
@@ -1202,10 +1202,10 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-ai` | 1506 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 31 KiB |
-| `cloudflare-networking` | 823 | 4.9 MiB |
+| `cloudflare-networking` | 824 | 4.9 MiB |
 | `cloudflare-observability-admin` | 1222 | 8.1 MiB |
 | `cloudflare-security` | 1005 | 5.5 MiB |
-| `cloudflare-workers` | 769 | 6.9 MiB |
+| `cloudflare-workers` | 770 | 7.0 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
@@ -1236,7 +1236,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 760 | 5.9 MiB |
+| `mastra-docs` | 763 | 6.0 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |

@@ -20,8 +20,8 @@ The low-level API documented on this page is available on `this.ctx.container` i
 
 Because the `Container` class extends `DurableObject`, you also have access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) via `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs.
 
-* [  JavaScript ](#tab-panel-8265)
-* [  TypeScript ](#tab-panel-8266)
+* [  JavaScript ](#tab-panel-8523)
+* [  TypeScript ](#tab-panel-8524)
 
 index.js
 
@@ -72,6 +72,84 @@ this.ctx.container.start({  env: {    FOO: "bar",  },  enableInternet: false,  e
 #### Return values
 
 * None.
+
+### `exec`
+
+`exec` starts another process inside an already-running Container. It does not start a stopped Container.
+
+The following example calls `this.ctx.container.exec()` inside a class extending `Container` from `@cloudflare/containers`. In RPC methods, check `this.ctx.container.running` and call `await this.start()` when needed. You can also use the `onStart()` hook to run any series of commands whenever the Container starts.
+
+TypeScript
+
+```
+exec(  cmd: string[],  options?: ContainerExecOptions,): Promise<ExecProcess>
+```
+
+The `exec` operation starts the executable directly with the provided arguments. It does not start a shell or interpret pipes, redirects, expansion, or other shell syntax. Invoke Bash explicitly with `["bash", "-lc", "<COMMAND>"]` when Bash exists in the image. Use `["sh", "-c", "<COMMAND>"]` for images with only a Portable Operating System Interface (POSIX) shell.
+
+The following RPC method starts the Container before executing a command:
+
+* [  JavaScript ](#tab-panel-8525)
+* [  TypeScript ](#tab-panel-8526)
+
+JavaScript
+
+```
+import { Container } from "@cloudflare/containers";
+export class MyContainer extends Container {  async runCommand() {    if (!this.ctx.container.running) {      await this.start();    }
+    const process = await this.ctx.container.exec(["node", "--version"]);    const output = await process.output();
+    return {      pid: process.pid,      exitCode: output.exitCode,      stdout: new TextDecoder().decode(output.stdout),    };  }}
+```
+
+TypeScript
+
+```
+import { Container } from "@cloudflare/containers";
+export class MyContainer extends Container {  async runCommand() {    if (!this.ctx.container.running) {      await this.start();    }
+    const process = await this.ctx.container.exec(["node", "--version"]);    const output = await process.output();
+    return {      pid: process.pid,      exitCode: output.exitCode,      stdout: new TextDecoder().decode(output.stdout),    };  }}
+```
+
+#### Parameters
+
+* `cmd` (`string[]`) — executable followed by its arguments.
+* `options` (`ContainerExecOptions`, optional) — process configuration:
+  * `stdin` (`ReadableStream | "pipe"`) — source for standard input. Use `"pipe"` to write through the returned `stdin` stream. When omitted, standard input closes and sends end-of-file (EOF).
+  * `stdout` (`"pipe" | "ignore"`, default `"pipe"`) — captures or discards standard output.
+  * `stderr` (`"pipe" | "ignore" | "combined"`, default `"pipe"`) — captures, discards, or merges standard error into standard output. The `"combined"` value requires `stdout: "pipe"`. Combined output does not guarantee ordering between its source streams.
+  * `cwd` (`string`) — working directory for the process.
+  * `env` (`Record<string, string>`) — environment additions and overrides. The process inherits existing Container variables. Matching keys use the per-execution value.
+  * `user` (`string`) — image user for the process.
+
+#### Return values
+
+Returns `Promise<ExecProcess>`.
+
+An `ExecProcess` has these fields and methods:
+
+* `stdin` (`WritableStream | null`) — writable standard input when `stdin` is `"pipe"`.
+* `stdout` (`ReadableStream | null`) — readable standard output when piped.
+* `stderr` (`ReadableStream | null`) — readable standard error when piped separately.
+* `pid` (`number`) — process identifier.
+* `exitCode` (`Promise<number>`) — resolves when the process exits. Nonzero codes resolve normally instead of rejecting.
+* `output()` (`Promise<ExecOutput>`) — reads buffered output once. `ExecOutput` contains `stdout` (`ArrayBuffer`), `stderr` (`ArrayBuffer`), and `exitCode` (`number`). Ignored streams produce empty buffers. Use `TextDecoder` to decode text.
+* `kill(signal?: number)` (`void`) — queues a signal for the process. The default is `SIGTERM`, signal `15`. The signal must be from `1` through `64`.
+
+With `stderr: "combined"`, `stderr` is `null` on `ExecProcess` and an empty `ArrayBuffer` on `ExecOutput`. Read both output channels from `stdout`.
+
+`output()` throws a `TypeError` when called more than once or after either readable stream starts being consumed. For large output, consume both readable streams concurrently instead of buffering them with `output()`.
+
+`exec` has no built-in timeout. Use `kill()` to request termination, then observe completion through `exitCode`. A process can handle or ignore a signal, so this does not enforce a hard deadline. Do not infer a specific exit code from the signal.
+
+#### Exceptions
+
+* `exec()` throws when the Container is not running.
+* `exec()` throws a `TypeError` when `cmd` is empty, an option mode is invalid, or `stderr: "combined"` is used with `stdout: "ignore"`.
+* `exec()` rejects if the runtime cannot create or start the process.
+* Environment variable names cannot contain `=` or null characters. Environment values, `cwd`, and `user` cannot contain null characters.
+* `kill()` throws a `RangeError` when the signal is outside the supported range.
+
+For task-oriented examples, refer to [Execute commands](https://developers.cloudflare.com/containers/execute-commands/).
 
 ### `destroy`
 
@@ -228,6 +306,6 @@ const worker = this.ctx.exports.MyWorker({ props: {} });
 * [Durable Objects](https://developers.cloudflare.com/durable-objects/) — the underlying platform that powers Containers
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/container/#page","headline":"Durable Object Container · Cloudflare Durable Objects docs","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/durable-objects/api/container/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/container/#page","headline":"Durable Object Container · Cloudflare Durable Objects docs","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/durable-objects/api/container/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/container/","name":"Durable Object Container"}}]}
 ```

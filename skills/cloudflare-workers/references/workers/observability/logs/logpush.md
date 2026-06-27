@@ -66,19 +66,19 @@ In Logpush, you can configure [filters](https://developers.cloudflare.com/logs/l
 
 Enable logging on your Worker by adding a new property, `logpush = true`, to your Wrangler file. This can be added either in the top-level configuration or under an [environment](https://developers.cloudflare.com/workers/wrangler/environments/). Any new Workers with this property will automatically get picked up by the Logpush job.
 
-* [  wrangler.jsonc ](#tab-panel-12138)
-* [  wrangler.toml ](#tab-panel-12139)
+* [  wrangler.jsonc ](#tab-panel-12186)
+* [  wrangler.toml ](#tab-panel-12187)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Top-level configuration  "name": "my-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-26",  "workers_dev": false,  "logpush": true,  "route": {    "pattern": "example.org/*",    "zone_name": "example.org"  }}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  // Top-level configuration  "name": "my-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-27",  "workers_dev": false,  "logpush": true,  "route": {    "pattern": "example.org/*",    "zone_name": "example.org"  }}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-26"workers_dev = falselogpush = true
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-27"workers_dev = falselogpush = true
 [route]pattern = "example.org/*"zone_name = "example.org"
 ```
 

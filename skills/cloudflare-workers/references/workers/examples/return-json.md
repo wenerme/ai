@@ -20,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12003)
-* [  TypeScript ](#tab-panel-12004)
-* [  Python ](#tab-panel-12005)
-* [  Rust ](#tab-panel-12006)
-* [  Hono ](#tab-panel-12007)
+* [  JavaScript ](#tab-panel-12051)
+* [  TypeScript ](#tab-panel-12052)
+* [  Python ](#tab-panel-12053)
+* [  Rust ](#tab-panel-12054)
+* [  Hono ](#tab-panel-12055)
 
 JavaScript
 
@@ -33,7 +33,7 @@ export default {  async fetch(request) {    const data = {      hello: "world", 
     return Response.json(data);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOABwBGACziZ4gMyDRALhYs2wDnC40+AkROmyFogLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2cCSBgenp8PbMDA6F8EQA7pgwLgIgAaR4bAC+RDMsJIZwgIAQVBIACVru4qC5bEkXNZjppboj4TCEeZVMx1JptDx+EIxFJZPJFEVrHYHM43B4vC0qL5-JpSCEwpEwoRNKk-BkspKImRAWRCpZuaUKlUapt6o1eM1WslrBMzCsIsA4NEAPrDUaZCJKXJzfIpOE02n0wKM3Qsgzs4zMcxAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCA7AEYRADgCcAVgBsAZkHSAXCxZtgHOFxp8Bw8VLlKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnHQPFFI+HIqwaZhaHR6Hj8ISiCQyBTKaSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXKy6JkEFkEo2fkVaq1eo7JotXhtDppOzTSzraLAOBxAD6YwmOWiqgKiyK6UR9IZTJCLIM7OMXLM0mYViAA)
 
 TypeScript
 

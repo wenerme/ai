@@ -107,8 +107,8 @@ export default {  async queue(batch, env, ctx): Promise<void> {    // Do somethi
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-9747)
-* [  wrangler.toml ](#tab-panel-9748)
+* [  wrangler.jsonc ](#tab-panel-10011)
+* [  wrangler.toml ](#tab-panel-10012)
 
 JSONC
 

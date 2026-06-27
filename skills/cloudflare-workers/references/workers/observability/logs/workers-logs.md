@@ -28,8 +28,8 @@ Minimum required Wrangler version: 3.78.6\. Check your version by running `wrang
 
 You must add the observability setting for your Worker to write logs to Workers Logs. Add the following setting to your Worker's Wrangler file and redeploy your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-12144)
-* [  wrangler.toml ](#tab-panel-12145)
+* [  wrangler.jsonc ](#tab-panel-12192)
+* [  wrangler.toml ](#tab-panel-12193)
 
 JSONC
 
@@ -49,8 +49,8 @@ TOML
 
 [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) allow you to deploy the same Worker application with different configurations. For example, you may want to configure a different `head_sampling_rate` to staging and production. To configure observability for an environment named `staging`: 1\. Add the following configuration below `[env.staging]`
 
-* [  wrangler.jsonc ](#tab-panel-12148)
-* [  wrangler.toml ](#tab-panel-12149)
+* [  wrangler.jsonc ](#tab-panel-12196)
+* [  wrangler.toml ](#tab-panel-12197)
 
 JSONC
 
@@ -100,8 +100,8 @@ In the Workers Logs UI, logs are presented with a localized timestamp and a mess
 
 Invocation logs can be disabled in wrangler by adding the `invocation_logs = false` configuration.
 
-* [  wrangler.jsonc ](#tab-panel-12146)
-* [  wrangler.toml ](#tab-panel-12147)
+* [  wrangler.jsonc ](#tab-panel-12194)
+* [  wrangler.toml ](#tab-panel-12195)
 
 JSONC
 
@@ -132,8 +132,8 @@ By default a Worker will emit [invocation logs](https://developers.cloudflare.co
 
 You can also add custom logs throughout your code. Any `console.log` statements within your Worker will be visible in Workers Logs. The following example demonstrates a custom `console.log` within a Worker request handler.
 
-* [  Module Worker ](#tab-panel-12142)
-* [  Service Worker ](#tab-panel-12143)
+* [  Module Worker ](#tab-panel-12190)
+* [  Service Worker ](#tab-panel-12191)
 
 JavaScript
 
@@ -164,8 +164,8 @@ Head-based sampling allows you to log a percentage of incoming requests to your 
 
 To enable head-based sampling, set `head_sampling_rate` within the observability configuration. The valid range is from 0 to 1, where 0 indicates zero out of one hundred requests are logged, and 1 indicates every request is logged. If `head_sampling_rate` is unspecified, it is configured to a default value of 1 (100%). In the example below, `head_sampling_rate` is set to 0.01, which means one out of every one hundred requests is logged.
 
-* [  wrangler.jsonc ](#tab-panel-12150)
-* [  wrangler.toml ](#tab-panel-12151)
+* [  wrangler.jsonc ](#tab-panel-12198)
+* [  wrangler.toml ](#tab-panel-12199)
 
 JSONC
 
