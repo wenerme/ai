@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26602 files, 283 MiB total
+> 106 skills, 26606 files, 283 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1230,7 +1230,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 102 | 693 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 289 | 450 KiB |
+| `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 6.0 MiB |
@@ -1238,13 +1238,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `hono-docs` | 85 | 348 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 77 | 482 KiB |
 | `justfile-docs` | 107 | 162 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
-| `llamacpp-docs` | 46 | 419 KiB |
+| `llamacpp-docs` | 46 | 420 KiB |
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
@@ -1259,7 +1259,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 455 KiB |
-| `openobserve-docs` | 442 | 2.3 MiB |
+| `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 498 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |

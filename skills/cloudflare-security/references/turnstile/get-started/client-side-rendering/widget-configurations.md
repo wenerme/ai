@@ -18,8 +18,8 @@ Configure your Turnstile widget's appearance, behavior, and functionality using 
 
 Turnstile widgets can be implemented using implicit or explicit rendering.
 
-* [ Implicit rendering ](#tab-panel-11089)
-* [ Explicit rendering ](#tab-panel-11090)
+* [ Implicit rendering ](#tab-panel-11353)
+* [ Explicit rendering ](#tab-panel-11354)
 
 Implicit rendering automatically scans your HTML for elements with the `cf-turnstile` class and renders the widget when the page loads. It is best used for simple implementations, static websites, or when you want widgets to appear immediately on page load.
 
@@ -72,8 +72,8 @@ Note
 
 Widget size only applies to Managed and Non-Interactive modes. Invisible widgets have no visual footprint regardless of size configuration.
 
-* [ Implicit rendering ](#tab-panel-11077)
-* [ Explicit rendering ](#tab-panel-11078)
+* [ Implicit rendering ](#tab-panel-11341)
+* [ Explicit rendering ](#tab-panel-11342)
 
 Normal size (default)
 
@@ -121,8 +121,8 @@ Customize the widget's visual appearance to match your website's design.
 * `light`: Light theme with bright colors and clear contrast. Light theme works best on bright backgrounds and provides high contrast for readability.
 * `dark`: Dark theme optimized for dark interfaces. Dark theme is ideal for dark interfaces, gaming sites, or applications with dark color schemes.
 
-* [ Implicit rendering ](#tab-panel-11079)
-* [ Explicit rendering ](#tab-panel-11080)
+* [ Implicit rendering ](#tab-panel-11343)
+* [ Explicit rendering ](#tab-panel-11344)
 
 Auto theme (default)
 
@@ -174,8 +174,8 @@ Note
 
 Appearance modes only affect visible widget types (Managed and Non-Interactive). Invisible widgets are never shown regardless of the appearance setting.
 
-* [ Implicit rendering ](#tab-panel-11081)
-* [ Explicit rendering ](#tab-panel-11082)
+* [ Implicit rendering ](#tab-panel-11345)
+* [ Explicit rendering ](#tab-panel-11346)
 
 Always visible (default)
 
@@ -229,8 +229,8 @@ Control when the challenge runs and a token is generated.
   * Performance optimization: Defer verification to reduce initial page load time.
   * User-triggered verification: Let visitors manually start the verification process.
 
-* [ Implicit rendering ](#tab-panel-11083)
-* [ Explicit rendering ](#tab-panel-11084)
+* [ Implicit rendering ](#tab-panel-11347)
+* [ Explicit rendering ](#tab-panel-11348)
 
 Auto execution (default)
 
@@ -279,8 +279,8 @@ Notes
 * Language affects all visitor-facing text including loading messages, error states, and accessibility labels.
 * Setting specific languages can improve visitor experience for international audiences.
 
-* [ Implicit rendering ](#tab-panel-11085)
-* [ Explicit rendering ](#tab-panel-11086)
+* [ Implicit rendering ](#tab-panel-11349)
+* [ Explicit rendering ](#tab-panel-11350)
 
 Auto language (default)
 
@@ -325,8 +325,8 @@ Handle widget events with callbacks.
 
 The success callback receives a token that must be validated on your server using the Siteverify API. Tokens are single-use and expire after 300 seconds (five minutes).
 
-* [ Implicit rendering ](#tab-panel-11087)
-* [ Explicit rendering ](#tab-panel-11088)
+* [ Implicit rendering ](#tab-panel-11351)
+* [ Explicit rendering ](#tab-panel-11352)
 
 ```
   <div class="cf-turnstile"    data-sitekey="<YOUR-SITE-KEY>"    data-callback="onSuccess"    data-error-callback="onError"    data-expired-callback="onExpired"    data-timeout-callback="onTimeout"></div>  <script>  function onSuccess(token) {  console.log('Challenge Success:', token);  }  function onError(errorCode) {  console.log('Challenge Error:', errorCode);  }  function onExpired() {  console.log('Token expired');  }  function onTimeout() {  console.log('Challenge timed out');  }  </script>
@@ -502,16 +502,16 @@ Disable response field
 Responsive design widget
 
 ```
-<div style="max-width: 500px;">  <div class="cf-turnstile" data-sitekey=<YOUR-SITE-KEY> data-size="flexible" data-theme="auto"></div></div>
+<div style="max-width: 500px;">  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="flexible" data-theme="auto"></div></div>
 ```
 
 Mobile-optimized compact widget
 
 ```
-<div class="cf-turnstile" data-sitekey=<YOUR-SITE-KEY> data-size="compact" data-theme="light" data-language="en"></div>
+<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="compact" data-theme="light" data-language="en"></div>
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#page","headline":"Widget configurations · Cloudflare Turnstile docs","description":"Configure widget appearance, language, and callback functions.","url":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#page","headline":"Widget configurations · Cloudflare Turnstile docs","description":"Configure widget appearance, language, and callback functions.","url":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/get-started/client-side-rendering/","name":"Embed the widget"}},{"@type":"ListItem","position":5,"item":{"@id":"/turnstile/get-started/client-side-rendering/widget-configurations/","name":"Widget configurations"}}]}
 ```

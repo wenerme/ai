@@ -266,8 +266,8 @@
   },
   "guides/features/plugins/fusion.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/fusion.md",
-    "size": 9183,
-    "updatedAt": "2026-06-18T00:56:07.323Z"
+    "size": 9451,
+    "updatedAt": "2026-06-28T17:07:22.553Z"
   },
   "guides/features/structured-outputs.md": {
     "url": "https://openrouter.ai/docs/guides/features/structured-outputs.md",
@@ -701,8 +701,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 128614,
-    "updatedAt": "2026-06-27T01:45:31.101Z"
+    "size": 129127,
+    "updatedAt": "2026-06-28T17:16:13.907Z"
   },
   "api/api-reference/classifications/get-task-classifications.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/classifications/get-task-classifications.md",
@@ -941,8 +941,8 @@
   },
   "api/api-reference/presets/create-presets-chat-completions.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-chat-completions.md",
-    "size": 110780,
-    "updatedAt": "2026-06-26T18:33:07.642Z"
+    "size": 111293,
+    "updatedAt": "2026-06-28T17:20:57.224Z"
   },
   "api/api-reference/presets/create-presets-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-messages.md",
