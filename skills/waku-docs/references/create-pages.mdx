@@ -327,7 +327,7 @@ The `PageProps` type gives you type safety for the path and slug parameters in y
 // ./src/templates/about-page.tsx
 import type { PageProps } from 'waku/router';
 
-// PageProps<'/about/[foo]'> => { path: `/about/${string}`; foo: string; query: string; hash: string; }
+// PageProps<'/about/[foo]'> => { path: `/about/${string}`; foo: string; query: string; }
 export const AboutPage = ({ foo }: PageProps<'/about/[foo]'>) => {
   return <>{/* ...*/}</>;
 };
@@ -461,8 +461,9 @@ For the client, the entry point file is `./src/waku.client.tsx`.
 The default client entry file content is the following.
 
 ```tsx
-import { Component, StrictMode } from 'react';
+import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
+import { unstable_defaultRootOptions as defaultRootOptions } from 'waku/client';
 import { Router } from 'waku/router/client';
 
 const rootElement = (
@@ -472,9 +473,9 @@ const rootElement = (
 );
 
 if (globalThis.__WAKU_HYDRATE__) {
-  hydrateRoot(document, rootElement);
+  hydrateRoot(document, rootElement, defaultRootOptions);
 } else {
-  createRoot(document).render(rootElement);
+  createRoot(document, defaultRootOptions).render(rootElement);
 }
 ```
 
@@ -745,7 +746,7 @@ export const HomePage = () => {
 
 When `<Slice id="tooltip/123" lazy />` is requested, Waku matches it against the `tooltip/[id]` pattern, extracts `{ id: "123" }`, and passes those params as props to the component.
 
-With the file-system router, slug slices work the same way as slug pages — create a file at `src/pages/_slices/tooltip/[id].tsx` and the ID pattern is derived from the file path.
+With the file-system router, slug slices work the same way as slug pages: create a file at `src/pages/_slices/tooltip/[id].tsx` and the ID pattern is derived from the file path.
 
 Multiple dynamic segments are also supported (e.g., `items/[category]/[id]`), and each extracted parameter is passed as a separate prop.
 

@@ -32,3 +32,16 @@ run:
 
 This workaround doesn't work with shell recipes, which spawn a new shell for
 each command.
+
+Contributing
+------------
+
+> [!NOTE]
+> `just` is not currently accepting pull requests. The contributing section is
+> retained for posterity.
+
+`just` welcomes your contributions! `just` is released under the maximally
+permissive
+[CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt) public
+domain dedication and fallback license, so your changes must also be released
+under this license.

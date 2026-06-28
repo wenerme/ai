@@ -1172,7 +1172,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 105 skills, 26482 files, 283 MiB total
+> 105 skills, 26495 files, 283 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1182,7 +1182,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
-| `anthropic-docs` | 187 | 5.3 MiB |
+| `anthropic-docs` | 187 | 5.4 MiB |
 | `anthropic-sdk-csharp` | 147 | 8.4 MiB |
 | `anthropic-sdk-go` | 147 | 11 MiB |
 | `anthropic-sdk-java` | 147 | 8.7 MiB |
@@ -1228,7 +1228,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 77 | 482 KiB |
-| `justfile-docs` | 95 | 161 KiB |
+| `justfile-docs` | 107 | 162 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
@@ -1269,7 +1269,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
 | `ui-ux-pro-max` | 35 | 1.7 MiB |
-| `ultralytics-docs` | 480 | 4.1 MiB |
+| `ultralytics-docs` | 481 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |

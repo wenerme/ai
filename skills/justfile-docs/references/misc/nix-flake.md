@@ -38,9 +38,3 @@ be changed or removed at any time. Using unstable features produces an error by
 default, which can be suppressed by passing the `--unstable` flag,
 `set unstable`, or setting the environment variable `JUST_UNSTABLE` to any
 value other than `false`, `0`, or the empty string.
-
-Editor Support
---------------
-
-`justfile` syntax is close enough to `make` that you may want to tell your
-editor to use `make` syntax highlighting for `just`.

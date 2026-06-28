@@ -72,15 +72,3 @@ commands<sup>1.41.0</sup>.
 
 On Windows, `just` behaves as if it had received `SIGINT` when the user types
 `ctrl-c`. Other signals are unsupported.
-
-Changelog
----------
-
-A changelog for the latest release is available in
-[CHANGELOG.md](https://raw.githubusercontent.com/casey/just/master/CHANGELOG.md).
-Changelogs for previous releases are available on
-[the releases page](https://github.com/casey/just/releases). `just --changelog`
-can also be used to make a `just` binary print its changelog.
-
-Miscellanea
------------
