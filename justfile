@@ -32,6 +32,10 @@ update-google-ai-docs:
 update-aliyun-cli-docs:
     bun scripts/fetch-aliyun-cli-docs.ts
 
+# Sync Ant Design zh-CN docs from local ant-design/ant-design clone
+update-ant-design-docs:
+    bun scripts/sync-ant-design-docs.ts
+
 # Sync Bun docs from local oven-sh/bun clone
 update-bun-docs:
     bun scripts/sync-bun-docs.ts
@@ -208,6 +212,7 @@ update:
     -just update-openai-docs
     -just update-openrouter-docs
     -just update-google-ai-docs
+    -just update-ant-design-docs
     -just update-bun-docs
     -just update-grafana-docs
     -just update-grafana-plugin-docs
