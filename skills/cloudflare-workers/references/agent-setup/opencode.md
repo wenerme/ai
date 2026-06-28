@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Add mTLS authentication and schema validation to protect my API endpoints.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Cloudflare platform access

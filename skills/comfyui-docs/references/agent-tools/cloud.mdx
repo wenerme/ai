@@ -9,6 +9,10 @@ description: "Use Comfy Cloud from Claude Code and Claude Desktop through the Co
 
   Comfy Cloud MCP is in **closed beta — invite only**. Access is gated by a per-user feature flag. If you don't have access yet, [sign up for the waitlist](https://form.typeform.com/to/hHmvw1UH).
 
+  
+    Don't have access yet? Sign up for the Comfy Cloud MCP beta waitlist.
+  
+
 The **Comfy Cloud MCP server** connects AI agents to [Comfy Cloud](https://cloud.comfy.org) over the [Model Context Protocol](https://modelcontextprotocol.io). Once connected, you can generate images, video, audio, and 3D, search models, nodes, and templates, and run ComfyUI workflows — all from a chat with your agent.
 
 Support is currently scoped to **Claude Code** and **Claude Desktop**, which sign in with **OAuth** — a one-time browser sign-in. Support for more clients is coming.
@@ -57,13 +61,15 @@ The plugin adds these slash commands:
 | `/comfy-cloud:search-templates` | Find pre-built workflows |
 | `/comfy-cloud:help` | See what you can do |
 
-  Add the server directly (no slash commands):
+  Add the server directly:
 
   ```bash
   claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp
   ```
 
   Then run `/mcp`, select **comfy-cloud** → **Authenticate**. Add `-s user` to make it available in all your projects.
+
+  This path still gives you slash commands, but in raw MCP form — `/mcp__comfy-cloud__generate-image`, `/mcp__comfy-cloud__search-models`, and so on (the `/mcp__<name>__` prefix uses the name you passed to `claude mcp add`). The plugin above is recommended because it wraps these as the friendlier `/comfy-cloud:*` commands.
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Desktop
 
@@ -117,6 +123,14 @@ Claude Code and Claude Desktop use OAuth, so you do not need an API key. For **h
   
   
     No. The slash commands ship in the Claude Code plugin. Claude Desktop connects to the same MCP server (so the tools work — just ask in plain language), but it doesn't support Claude Code plugins or slash commands.
+  
+  
+    There is no `/comfy` or `/cloud` command. Commands appear under one of two prefixes depending on how you connected:
+
+    - **Plugin (recommended):** `/comfy-cloud:generate-image`, `/comfy-cloud:generate-video`, … — type `/comfy-cloud:` to see them all.
+    - **Direct connection (no plugin):** `/mcp__comfy-cloud__generate-image`, … — type `/mcp__` to see them.
+
+    Either way you can also just ask in plain language ("generate an image of …") — the MCP tools are model-invoked and don't need a slash command.
   
   
     In Claude Code, run `/mcp`, select **comfy-cloud**, and choose **Authenticate**. In Claude Desktop, reopen the connector from **Customize → Connectors** and trigger sign-in.

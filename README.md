@@ -1172,7 +1172,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 105 skills, 26495 files, 283 MiB total
+> 105 skills, 26504 files, 283 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1208,7 +1208,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-workers` | 770 | 7.0 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4632 | 14 MiB |
+| `comfyui-docs` | 4640 | 15 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
@@ -1216,7 +1216,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
-| `gitea-docs` | 101 | 686 KiB |
+| `gitea-docs` | 102 | 693 KiB |
 | `glab-cli` | 5 | 21 KiB |
 | `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
@@ -1274,7 +1274,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
 | `wails-docs` | 56 | 314 KiB |
-| `waku-docs` | 24 | 148 KiB |
+| `waku-docs` | 24 | 152 KiB |
 | `wode-db-schema-pattern` | 2 | 8.8 KiB |
 | `wode-emittery-pattern` | 2 | 9.8 KiB |
 | `writing-skills` | 7 | 105 KiB |
