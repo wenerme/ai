@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 105 skills available
+> 106 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -18,6 +18,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
 | `aliyun-cli-docs` | Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure`... | [help.aliyun.com](https://help.aliyun.com/zh/cli/) |
 | `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... | [alpinelinux/aports](https://gitlab.alpinelinux.org/alpinelinux/aports) |
+| `ant-design-docs` | Use when working with Ant Design React (`antd`) official docs in Chinese: getting started, ConfigProvider, theme tokens,... | [ant-design/ant-design/docs](https://github.com/ant-design/ant-design/tree/master/docs) |
 | `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
 | `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... | [docs.anthropic.com](https://docs.anthropic.com) |
 | `anthropic-docs` | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... | [docs.anthropic.com](https://docs.anthropic.com) |
@@ -158,6 +159,16 @@ npx skills add wenerme/ai --skill alpine-aports-docs
 ```
 
 USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package management, APKINDEX format, commit/coding style, contributing to aports, package upgrade/rebuild/move/rename, subpackages, cross-compilation, secfixes, checksum handling, testing packages, or Alpine Linux packaging best practices. Triggers on: APKBUILD, abuild, apk add, apk del, aports, Alpine package, pkgname, pkgver, pkgrel.
+
+</details>
+<details>
+<summary><code>ant-design-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill ant-design-docs
+```
+
+Use when working with Ant Design React (`antd`) official docs in Chinese: getting started, ConfigProvider, theme tokens, CSS-in-JS, SSR, compatibility, i18n, migration to v6, CLI/MCP/LLMs.txt for agents, integrations with Vite/Next/Umi/Farm/Rsbuild/Refine, design spec/patterns, resources, and Ant Design architecture/blog guidance.
 
 </details>
 <details>
@@ -1172,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 105 skills, 26504 files, 283 MiB total
+> 106 skills, 26606 files, 283 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1180,6 +1191,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `ai-sdk` | 5 | 24 KiB |
 | `aliyun-cli-docs` | 27 | 183 KiB |
 | `alpine-aports-docs` | 7 | 41 KiB |
+| `ant-design-docs` | 102 | 552 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
 | `anthropic-docs` | 187 | 5.4 MiB |
@@ -1232,7 +1244,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
-| `llamacpp-docs` | 46 | 419 KiB |
+| `llamacpp-docs` | 46 | 420 KiB |
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |

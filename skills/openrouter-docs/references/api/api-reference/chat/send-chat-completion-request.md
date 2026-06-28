@@ -228,7 +228,12 @@ components:
         - auto
         - low
         - high
-      description: Image detail level for vision models
+        - original
+      description: >-
+        Image detail level for vision models. `original` is an OpenRouter
+        extension (not in the OpenAI Chat Completions spec) requesting true
+        original-resolution media; it is downgraded to `high` for providers that
+        lack an original-resolution tier.
       title: ChatContentItemsDiscriminatorMappingImageUrlImageUrlDetail
     ChatContentItemsDiscriminatorMappingImageUrlImageUrl:
       type: object
@@ -236,7 +241,11 @@ components:
         detail:
           $ref: >-
             #/components/schemas/ChatContentItemsDiscriminatorMappingImageUrlImageUrlDetail
-          description: Image detail level for vision models
+          description: >-
+            Image detail level for vision models. `original` is an OpenRouter
+            extension (not in the OpenAI Chat Completions spec) requesting true
+            original-resolution media; it is downgraded to `high` for providers
+            that lack an original-resolution tier.
         url:
           type: string
           description: 'URL of the image (data: URLs supported)'

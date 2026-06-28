@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 1. **Download Codex**
