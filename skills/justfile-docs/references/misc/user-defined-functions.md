@@ -27,3 +27,6 @@ create:
   touch {{ join("html") }}
   touch {{ join("txt") }}
 ```
+
+Execution
+---------
