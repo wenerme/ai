@@ -1684,6 +1684,7 @@ PROXY_HOSTS = *.github.com
 - `ABANDONED_JOB_TIMEOUT`: **24h**: Timeout to cancel the jobs which have waiting status, but haven't been picked by a runner for a long time
 - `SKIP_WORKFLOW_STRINGS`: **[skip ci],[ci skip],[no ci],[skip actions],[actions skip]**: Strings committers can place inside a commit message or PR title to skip executing the corresponding actions workflow
 - `WORKFLOW_DIRS`: **.gitea/workflows,.github/workflows**: Comma-separated list of workflow directories, the first one to exist in a repo is used to find Actions workflow files.
+- `SCOPED_WORKFLOW_DIRS`: **.gitea/scoped_workflows**: Comma-separated list of directories holding [scoped workflows](usage/actions/scoped-workflows.md) (workflows defined in a central source repository that run on other repositories). Must not overlap with `WORKFLOW_DIRS`. Leave empty so no directory is scanned for scoped workflows; none are found or run.
 - `MAX_RERUN_ATTEMPTS`: **50**: Maximum number of attempts a single workflow run can have (initial run + reruns). Defaults value is 50. Set any positive value that fits your workflow needs.
 
 `DEFAULT_ACTIONS_URL` indicates where the Gitea Actions runners should find the actions with relative path.

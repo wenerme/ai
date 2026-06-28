@@ -1,7 +1,7 @@
 ---
 title: "Comfy Cloud MCP"
-description: "Comfy Cloud MCP サーバー経由で Claude Code と Claude Desktop から Comfy Cloud を利用 — 画像・動画・音声・3D の生成、モデルとノードの検索、ワークフローの実行。"
-translationSourceHash: 5ac69783
+description: "Comfy Cloud MCP サーバー経由で Claude Code と Claude Desktop から Comfy Cloud を利用: 画像・動画・音声・3D の生成、モデルとノードの検索、ワークフローの実行。"
+translationSourceHash: 24b3c23c
 translationFrom: agent-tools/cloud.mdx
 ---
 
@@ -9,18 +9,22 @@ translationFrom: agent-tools/cloud.mdx
 
 ## 概要
 
-  Comfy Cloud MCP は**クローズドベータ版です — 招待制**です。アクセスはユーザー単位の機能フラグによって制御されています。まだアクセス権がない場合は、[ウェイトリストに登録](https://form.typeform.com/to/hHmvw1UH)してください。
+  Comfy Cloud MCP は**クローズドベータ版です: 招待制**です。アクセスはユーザー単位の機能フラグによって制御されています。まだアクセス権がない場合は、[ウェイトリストに登録](https://form.typeform.com/to/hHmvw1UH)してください。
+
+  
+    まだアクセス権がありませんか？ Comfy Cloud MCP ベータ版のウェイトリストにご登録ください。
+  
 
 **Comfy Cloud MCP サーバー**は、[モデルコンテキストプロトコル（MCP）](https://modelcontextprotocol.io)を通じて AI エージェントを [Comfy Cloud](https://cloud.comfy.org) に接続します。接続後、チャットから画像・動画・音声・3D の生成、モデル・ノード・テンプレートの検索、ComfyUI ワークフローの実行ができます。
 
-現在は **Claude Code** と **Claude Desktop** に対応しており、どちらも **OAuth** でサインインします — ブラウザでの一度きりのログインで完了します。他のクライアントへの対応も予定されています。
+現在は **Claude Code** と **Claude Desktop** に対応しており、どちらも **OAuth** でサインインします: ブラウザでの一度きりのログインで完了します。他のクライアントへの対応も予定されています。
 
 ## インストール
 
-クライアントを選択してください：
+クライアントを選択してください:
 
   
-    プラグインをインストール — 接続とコマンドを一度に設定。
+    プラグインをインストール: 接続とコマンドを一度に設定。
   
   
     アプリでカスタムコネクタを追加し、サインイン。
@@ -28,7 +32,7 @@ translationFrom: agent-tools/cloud.mdx
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Code
 
-**comfy-cloud** プラグインをインストール — MCP 接続とスラッシュコマンドを一度に追加します。
+**comfy-cloud** プラグインをインストール: MCP 接続とスラッシュコマンドを一度に追加します。
 
   
     ```
@@ -44,7 +48,7 @@ translationFrom: agent-tools/cloud.mdx
     `/mcp` を実行し、**comfy-cloud** → **Authenticate** を選択。ブラウザでサインインし、トークンは自動更新されます。
   
 
-プラグインは次のスラッシュコマンドを追加します：
+プラグインは次のスラッシュコマンドを追加します:
 
 | コマンド | 機能 |
 | --- | --- |
@@ -59,13 +63,15 @@ translationFrom: agent-tools/cloud.mdx
 | `/comfy-cloud:search-templates` | プリビルトワークフローを検索 |
 | `/comfy-cloud:help` | 利用可能な機能を確認 |
 
-  サーバーを直接追加（スラッシュコマンドなし）：
+  サーバーを直接追加:
 
   ```bash
   claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp
   ```
 
   次に `/mcp` を実行し、**comfy-cloud** → **Authenticate** を選択。`-s user` を付けると全プロジェクトで利用できます。
+
+  この方法でもスラッシュコマンドは利用できますが、`/mcp__comfy-cloud__generate-image` や `/mcp__comfy-cloud__search-models` のような生の MCP 形式になります（`/mcp__<name>__` プレフィックスは `claude mcp add` で指定した名前を使用）。上記のプラグインはこれらをより親しみやすい `/comfy-cloud:*` コマンドとしてラップするため、推奨されます。
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Desktop
 
@@ -82,7 +88,7 @@ Claude Desktop は UI から Comfy Cloud を**カスタムコネクタ**とし�
     [Add custom connector]
   
   
-    名前は任意（例：*Comfy Cloud*）で、**Remote MCP server URL** を次のように設定：
+    名前は任意（例: *Comfy Cloud*）で、**Remote MCP server URL** を次のように設定:
 
     ```
     https://cloud.comfy.org/mcp
@@ -98,7 +104,7 @@ Claude Desktop は UI から Comfy Cloud を**カスタムコネクタ**とし�
 
 ### ヘッドレス / CI（API キー）
 
-Claude Code と Claude Desktop は OAuth を使用するため API キーは不要です。**ブラウザが使えないヘッドレスまたは CI** 環境では、API キーで認証してください：
+Claude Code と Claude Desktop は OAuth を使用するため API キーは不要です。**ブラウザが使えないヘッドレスまたは CI** 環境では、API キーで認証してください:
 
   
     [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) で **New API Key** をクリックし、キーをコピー（`comfyui-` で始まる）。
@@ -115,10 +121,18 @@ Claude Code と Claude Desktop は OAuth を使用するため API キーは不�
     現在は Claude Code と Claude Desktop で、どちらも OAuth でサインインします。他のクライアントへの対応も予定されています。
   
   
-    Claude Code と Claude Desktop では不要 — OAuth を使用します。ブラウザが使えないヘッドレスまたは CI 環境でのみ API キーが必要です。
+    Claude Code と Claude Desktop では不要: OAuth を使用します。ブラウザが使えないヘッドレスまたは CI 環境でのみ API キーが必要です。
   
   
     いいえ。スラッシュコマンドは Claude Code プラグインに含まれます。Claude Desktop は同じ MCP サーバーに接続するためツールは利用できます（自然言語で依頼するだけ）が、Claude Code プラグインやスラッシュコマンドはサポートしていません。
+  
+  
+    `/comfy` や `/cloud` というコマンドは存在しません。コマンドは接続方法に応じて2つのプレフィックスのいずれかで表示されます:
+
+    - **プラグイン（推奨）:** `/comfy-cloud:generate-image`、`/comfy-cloud:generate-video`... すべて表示するには `/comfy-cloud:` と入力します。
+    - **直接接続（プラグインなし）:** `/mcp__comfy-cloud__generate-image`... 表示するには `/mcp__` と入力します。
+
+    どちらの場合でも、自然言語で依頼することもできます（例: 「...の画像を生成して」）。MCP ツールはモデルによって呼び出されるため、スラッシュコマンドは必須ではありません。
   
   
     Claude Code では `/mcp` を実行し、**comfy-cloud** を選択して **Authenticate** を選んでください。Claude Desktop では **Customize → Connectors** からコネクタを再度開き、サインインをトリガーしてください。
