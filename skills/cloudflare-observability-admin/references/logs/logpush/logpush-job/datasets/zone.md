@@ -18,6 +18,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ NEL reports ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel%5Freports/)
 * [ Page Shield events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page%5Fshield%5Fevents/)
 * [ Spectrum events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum%5Fevents/)
+* [ WebSocket Analytics ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket%5Fanalytics/)
 * [ Zaraz Events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/zaraz%5Fevents/)
 
 ```json
