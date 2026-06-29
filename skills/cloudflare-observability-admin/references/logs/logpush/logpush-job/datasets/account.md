@@ -24,6 +24,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ DNS Firewall Logs ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dns%5Ffirewall%5Flogs/)
 * [ Email Security Alerts ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email%5Fsecurity%5Falerts/)
 * [ Email Security Post-Delivery Events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email%5Fsecurity%5Fpost%5Fdelivery%5Fevents/)
+* [ Firewall events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall%5Fevents/)
 * [ Gateway DNS ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/)
 * [ Gateway HTTP ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/)
 * [ Gateway Network ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fnetwork/)
@@ -37,6 +38,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Turnstile Events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/turnstile%5Fevents/)
 * [ WARP Config Changes ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp%5Fconfig%5Fchanges/)
 * [ WARP Toggle Changes ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp%5Ftoggle%5Fchanges/)
+* [ WebSocket Analytics ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/websocket%5Fanalytics/)
 * [ Workers Trace Events ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/)
 * [ Zero Trust Network Session Logs ](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/)
 

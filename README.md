@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26606 files, 283 MiB total
+> 106 skills, 26610 files, 283 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1210,12 +1210,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 114 | 3.9 MiB |
-| `clickhouse-docs` | 1088 | 9.9 MiB |
+| `clickhouse-docs` | 1088 | 10.0 MiB |
 | `cloudflare-ai` | 1506 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 31 KiB |
 | `cloudflare-networking` | 824 | 4.9 MiB |
-| `cloudflare-observability-admin` | 1222 | 8.1 MiB |
+| `cloudflare-observability-admin` | 1225 | 8.1 MiB |
 | `cloudflare-security` | 1005 | 5.5 MiB |
 | `cloudflare-workers` | 770 | 7.0 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
@@ -1224,7 +1224,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 274 | 1.8 MiB |
+| `evalscope-docs` | 275 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |

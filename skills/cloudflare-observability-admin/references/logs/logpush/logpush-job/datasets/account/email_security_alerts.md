@@ -32,6 +32,12 @@ Type: `array[object]`
 
 List of objects containing metadata of attachments contained in this message (for example, \[{"Md5": "91f073bd208689ddbd248e8989ecae90", "Sha1": "62b77e14e2c43049c45b5725018e78d0f9986930", "Sha256": "3b57505305e7162141fd898ed87d08f92fc42579b5047495859e56b3275a6c06", "Ssdeep": "McAQ8tPlH25e85Q2OiYpD08NvHmjJ97UfPMO47sekO:uN9M553OiiN/OJ9MM+e3", "Name": "attachment.gif", "ContentTypeProvided": "image/gif", "ContentTypeComputed": "application/x-msi", "Encrypted": true, "Decrypted": true}, ...\]).
 
+## BCC
+
+Type: `array[string]`
+
+Email address portions of the BCC header provided by the sender, if present (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+
 ## CC
 
 Type: `array[string]`
@@ -43,6 +49,27 @@ Email address portions of the CC header provided by the sender (for example, '[f
 Type: `array[string]`
 
 Email address portions of the CC header provided by the sender (for example, 'First Last').
+
+## DKIMResult
+
+Type: `string`
+
+Summary of the DKIM authentication result for the message.
+Possible values are _pass_ | _neutral_ | _fail_ | _error_ | _permerror_ | _temperror_ | _none_.
+
+## DMARCPolicy
+
+Type: `string`
+
+Effective DMARC policy for the sending domain.
+Possible values are _none_ | _quarantine_ | _reject_ | _undefined_.
+
+## DMARCResult
+
+Type: `string`
+
+Overall DMARC authentication result for the message.
+Possible values are _pass_ | _fail_ | _none_.
 
 ## FinalDisposition
 
@@ -149,6 +176,13 @@ Type: `string`
 
 Hostname provided by the SMTP HELO server.
 
+## SPFResult
+
+Type: `string`
+
+Summary of the SPF authentication result for the message.
+Possible values are _pass_ | _neutral_ | _fail_ | _softfail_ | _permerror_ | _temperror_ | _none_.
+
 ## Subject
 
 Type: `string`
@@ -180,6 +214,6 @@ Type: `array[string]`
 Name portions of the To header provided by the sender (for example, 'First Last').
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/#page","headline":"Email Security Alerts · Cloudflare Logs docs","description":"The descriptions below detail the fields available for email_security_alerts.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/#page","headline":"Email Security Alerts · Cloudflare Logs docs","description":"The descriptions below detail the fields available for email_security_alerts.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/datasets/","name":"Datasets"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/datasets/account/","name":"Account-scoped datasets"}},{"@type":"ListItem","position":7,"item":{"@id":"/logs/logpush/logpush-job/datasets/account/email_security_alerts/","name":"Email Security Alerts"}}]}
 ```
