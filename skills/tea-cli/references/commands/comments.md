@@ -2,6 +2,8 @@
 
 Manage comments on issues and pull requests
 
+**--description, -d**="": comment body (alternative to the positional argument)
+
 **--login, -l**="": Use a different Gitea Login. Optional
 
 **--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
@@ -13,6 +15,8 @@ Manage comments on issues and pull requests
 ### add, a
 
 Add a comment to an issue or pull request
+
+**--description, -d**="": comment body (alternative to the positional argument)
 
 **--login, -l**="": Use a different Gitea Login. Optional
 
@@ -41,6 +45,8 @@ List comments on an issue or pull request
 ### edit, e
 
 Edit the body of an existing comment
+
+**--description, -d**="": new comment body (alternative to the positional argument)
 
 **--login, -l**="": Use a different Gitea Login. Optional
 
