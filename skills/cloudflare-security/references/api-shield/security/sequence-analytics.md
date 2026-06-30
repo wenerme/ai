@@ -29,7 +29,7 @@ For example, a portion of a sequence made during a bank funds transfer could loo
 | 3     | GET    | /api/v1/accounts/{account\_id}/balance | account\_id is a different account belonging to the user.                                                                                      |
 | 4     | POST   | /api/v1/transferFunds                  | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
 
-API Shield uses your configured session identifier and your saved endpoints to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
+API Shield uses your configured session identifier and operations in the `full` or `candidate` state to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
 
 ### Sequence scoring
 
@@ -57,11 +57,11 @@ Sequence Analytics is available for all API Shield customers. Pro, Business, and
 
 ## Limitations
 
-Sequence Analytics currently requires a session identifier and saved endpoints in order to build and track sequences made by an API consumer. Ensure that you have [set up your session identifier(s)](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers) and [saved your endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/).
+Sequence Analytics currently requires a session identifier and operations that API Shield can match at the edge. Ensure that you have [set up your session identifier(s)](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers) and reviewed your operations in the `full` and `candidate` states in [Web Assets](https://developers.cloudflare.com/security/web-assets/manage-operations/#operation-states).
 
 Sequences are currently limited to nine operations in length.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics · Cloudflare API Shield docs","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics · Cloudflare API Shield docs","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/sequence-analytics/","name":"Sequence Analytics"}}]}
 ```

@@ -1,119 +1,66 @@
 ---
-title: "DynamoDB data source for Grafana | Grafana Enterprise Plugins documentation"
-description: "DynamoDB data source for Grafana The DynamoDB data source allows a direct connection to DynamoDB to query and visualize DynamoDB data in Grafana. This data source supports PartiQL and provides an editor to format and color code your PartiQL statements."
+title: "DynamoDB data source | Grafana Enterprise Plugins documentation"
+description: "Guide for using the DynamoDB data source in Grafana"
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# DynamoDB data source for Grafana
+# DynamoDB data source
 
-The DynamoDB data source allows a direct connection to DynamoDB to query and visualize DynamoDB data in Grafana.
+The DynamoDB data source plugin lets you connect directly to Amazon DynamoDB to query and visualize your DynamoDB data in Grafana. The plugin uses [PartiQL](https://partiql.org/) as its query language and provides a built-in code editor with syntax highlighting.
 
-This data source supports PartiQL and provides an editor to format and color code your PartiQL statements.
+> Note
+>
+> The DynamoDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
-DynamoDB plugin is available for the following account types:
+## Supported features
 
-- Users with a [Grafana Cloud](/products/cloud/) Free, Advanced or Trial account or with an [activated Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
-
-## Installation
-
-For detailed instructions on how to install the plugin on Grafana Cloud or locally, please checkout the [Plugin installation docs](/docs/grafana/latest/plugins/installation/).
-
-### Manual configuration
-
-Once the plugin is installed on your Grafana instance, follow [these instructions](/docs/grafana/latest/datasources/add-a-data-source/) to add a new DynamoDB data source, and enter configuration options.
-
-### Configuration options
-
-The DynamoDB Data Source uses [the AWS SDK for Go](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk) to connect to your DB cluster with AWS IAM Credentials. There are a few possible ways to configure your data source instance with Grafana to specify how you’d like to connect with AWS:
+The following table lists supported features for the DynamoDB data source:
 
 Expand table
 
-| Configuration Option    | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Authentication Provider | Depending on the environment in which it is run, Grafana supports different authentication providers such as keys, a credentials file, or using the “Default” provider from AWS which supports using service-based IAM roles. These providers can be manually enabled/disabled with the allowed\_auth\_providers field. To read more about supported authentication providers please see [the Cloud Watch Data Source’s documentation](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/#select-an-authentication-method) |
-| Access Key              | A required field, Enter AWS Access Key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| Secret Key              | A required field, Enter AWS Access Secret Key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Default Region          | A required field, Specify the region of your cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| Endpoint                | An optional field, by default, all requests will use whatever endpoint is specified in the [aws sdk](https://github.com/aws/aws-sdk-go-v2) however if you would like to override this, you can.                                                                                                                                                                                                                                                                                                                                             |
+| Feature            | Supported |
+|--------------------|-----------|
+| Metrics            | Yes       |
+| Logs               | No        |
+| Annotations        | Yes       |
+| Alerting           | Yes       |
+| Template variables | Yes       |
 
-### Configure data source with a provision file
+## Get started
 
-It is possible to configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, including all the settings that you can set for this data source, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+The following documents help you set up and use the DynamoDB data source:
 
-Here are some provisioning examples for this data source using basic authentication:
+- [Configure the DynamoDB data source](/docs/plugins/grafana-dynamodb-datasource/latest/configure/)
+- [DynamoDB query editor](/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/)
+- [DynamoDB template variables](/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/)
+- [DynamoDB annotations](/docs/plugins/grafana-dynamodb-datasource/latest/annotations/)
+- [DynamoDB alerting](/docs/plugins/grafana-dynamodb-datasource/latest/alerting/)
+- [Troubleshoot DynamoDB data source issues](/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/)
 
-YAML [Copy code to clipboard] Copy
+## Additional features
 
-```yaml
-apiVersion: 1
-datasources:
-  - name: DynamoDB
-    type: grafana-dynamodb-datasource
-    jsonData:
-      authType: keys
-      endpoint: local/remote endpoint
-      defaultRegion: us-west-2
-      migrated: true
-    secureJsonData:
-      accessKey: <YOUR ACCESS KEY>
-      secretKey: <YOUR SECRET KEY>
-```
+After configuring the data source, you can:
 
-or for ~.aws/credentials
+- Use [Explore](/docs/grafana/latest/explore/) to run PartiQL queries without building a dashboard.
+- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](/docs/grafana/latest/alerting/) rules based on DynamoDB data.
+- Add [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) to mark events on your dashboards.
 
-YAML [Copy code to clipboard] Copy
+## Known limitations
 
-```yaml
-apiVersion: 1
-datasources:
-  - name: DynamoDB
-    type: grafana-dynamodb-datasource
-    jsonData:
-      authType: credentials
-      endpoint: local/remote endpoint
-      profile: <YOUR PROFILE>
-      defaultRegion: us-west-2
-      migrated: true
-    secureJsonData:
-```
+Querying data from nested maps isn’t supported and returns null values.
 
-### Time series
+## Plugin updates
 
-Time series visualization options are selectable after adding a `datetime` field type to your query. This field will be used as the timestamp. You can select time series visualizations using the visualization options. Grafana interprets timestamp rows without explicit time zone as UTC. Any column except `time` is treated as a value column.
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
 
-#### Multi-line time series
+> Note
+>
+> Plugins are automatically updated in Grafana Cloud.
 
-To create multi-line time series, the query must return at least 3 fields in the following order:
+## Related resources
 
-- Field 1: `datetime` field with an alias of `time`
-- Field 2: value to group by
-- Field 3+: the metric values
-
-For example:
-
-SQL [Copy code to clipboard] Copy
-
-```sql
-SELECT log_time AS time, machine_group, avg(disk_free) AS avg_disk_free
-FROM mgbench.logs1
-GROUP BY machine_group, log_time
-ORDER BY log_time
-```
-
-### Templates and variables
-
-To add a new DynamoDB query variable, refer to [Add a query variable](/docs/grafana/latest/variables/variable-types/add-query-variable/).
-
-After creating a variable, you can use it in your DynamoDB queries by using [Variable syntax](/docs/grafana/latest/variables/syntax/). For more information about variables, refer to [Templates and variables](/docs/grafana/latest/variables/).
-
-### Known limitations
-
-Currently querying data from nested maps is not supported and will return null value.
-
-## Learn more
-
-- Add [Annotations](/docs/grafana/latest/dashboards/annotations/).
-- Configure and use [Templates and variables](/docs/grafana/latest/variables/).
-- Add [Transformations](/docs/grafana/latest/panels/transformations/).
-- Set up alerting; refer to [Alerts overview](/docs/grafana/latest/alerting/).
+- [Amazon DynamoDB documentation](https://docs.aws.amazon.com/dynamodb/)
+- [PartiQL documentation](https://partiql.org/docs.html)
+- [Grafana community forum](https://community.grafana.com/)

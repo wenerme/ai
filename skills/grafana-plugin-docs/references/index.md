@@ -41,7 +41,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Databricks data source for Grafana](/docs/plugins/grafana-databricks-datasource/latest/ "Databricks data source for Grafana")
 - [Datadog data source](/docs/plugins/grafana-datadog-datasource/latest/ "Datadog data source")
 - [Drone CI data source for Grafana](/docs/plugins/grafana-drone-datasource/latest/ "Drone CI data source for Grafana")
-- [DynamoDB data source for Grafana](/docs/plugins/grafana-dynamodb-datasource/latest/ "DynamoDB data source for Grafana")
+- [DynamoDB data source](/docs/plugins/grafana-dynamodb-datasource/latest/ "DynamoDB data source")
 - [Dynatrace data source for Grafana](/docs/plugins/grafana-dynatrace-datasource/latest/ "Dynatrace data source for Grafana")
 - [Falcon LogScale data source](/docs/plugins/grafana-falconlogscale-datasource/latest/ "Falcon LogScale data source")
 - [GitHub data source](/docs/plugins/grafana-github-datasource/latest/ "GitHub data source")

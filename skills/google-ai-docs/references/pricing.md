@@ -250,7 +250,7 @@ acoustic nuance detection, numeric precision, and multimodal awareness.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
-## Gemini 3.1 Flash Image 🍌
+## Gemini 3.1 Flash Image (Nano Banana 2) 🍌
 
 *`gemini-3.1-flash-image`*
 
@@ -378,7 +378,7 @@ superior search and grounding.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
-## Gemini 3 Pro Image 🍌
+## Gemini 3 Pro Image (Nano Banana Pro) 🍌
 
 *`gemini-3-pro-image`*
 
@@ -645,7 +645,7 @@ limits.
 | Output price (including thinking tokens) | Free of charge | $2.00 (text) $12.00 (audio) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Flash Image 🍌
+## Gemini 2.5 Flash Image (Nano Banana) 🍌
 
 *`gemini-2.5-flash-image`*
 

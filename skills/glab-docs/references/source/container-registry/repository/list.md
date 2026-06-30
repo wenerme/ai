@@ -9,7 +9,8 @@ List container registry repositories.
 
 ## Synopsis
 
-List container registry repositories for a project or group.
+By default, repositories are listed for the current project. Use `--repo`
+to target another project, or `--group` to list repositories for a group.
 
 ```plaintext
 glab container-registry repository list [flags]

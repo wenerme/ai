@@ -12,7 +12,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Managed deployment
 
-Organizations can deploy the Cloudflare One Client (formerly WARP) automatically to their fleet of devices in a single operation. The Cloudflare One Client is compatible with the vast majority of managed deployment workflows, including [mobility management solutions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/) such as Intune or JAMF, or by executing an `.msi` file on desktop machines.
+Organizations can deploy and manage the Cloudflare One Client (formerly WARP) across their fleet of devices in two complementary ways:
+
+* **Through a mobility management solution (MDM)** — Push the client installer and its deployment parameters using a tool such as [Intune, JAMF, Kandji, or JumpCloud](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/), or by executing an `.msi` file on desktop machines. This page covers the MDM-driven workflow.
+* **From the Cloudflare dashboard** — Manage client versions for groups of devices directly from the Zero Trust dashboard, without relying on a third-party MDM solution. For more information, refer to [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/).
 
 This page provides generic instructions for an automated deployment. If you want to deploy the Cloudflare One Client manually, refer to the [instructions for manual deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/).
 

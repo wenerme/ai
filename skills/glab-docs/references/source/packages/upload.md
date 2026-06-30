@@ -9,7 +9,8 @@ Upload a file to a project's package registry.
 
 ## Synopsis
 
-Upload a local file to a project's package registry as a generic package.
+Uploaded files are stored as generic packages: arbitrary files identified
+by a package name, version, and file name.
 
 The file is stored under the given package name and version. By default
 it keeps its original file name; use `--filename` to store it under a

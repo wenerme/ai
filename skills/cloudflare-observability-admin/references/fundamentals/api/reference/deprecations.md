@@ -20,6 +20,31 @@ Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.c
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
+## 2026-06-29
+
+**Legacy Registrar Domain Management API**
+
+Deprecation date: April 10, 2026
+
+End of life date: September 27, 2026
+
+The legacy Registrar domain management endpoints are deprecated and will reach their end of life on September 27, 2026\. These endpoints have been replaced by the new [Registrar API](https://developers.cloudflare.com/api/resources/registrar/), which provides domain search, availability checking, and registration capabilities.
+
+Deprecated APIs:
+
+* `GET /accounts/{account_id}/registrar/domains` — List domains
+* `GET /accounts/{account_id}/registrar/domains/{domain_name}` — Get domain
+* `PUT /accounts/{account_id}/registrar/domains/{domain_name}` — Update domain
+
+Replacement: [Registrar API](https://developers.cloudflare.com/api/resources/registrar/)
+
+* [Search for available domains](https://developers.cloudflare.com/api/resources/registrar/methods/search/) — `GET /accounts/{account_id}/registrar/domain-search`
+* [Check domain availability](https://developers.cloudflare.com/api/resources/registrar/methods/check/) — `POST /accounts/{account_id}/registrar/domain-check`
+* [List registrations](https://developers.cloudflare.com/api/resources/registrar/subresources/registrations/methods/list/) — `GET /accounts/{account_id}/registrar/registrations`
+* [Create registration](https://developers.cloudflare.com/api/resources/registrar/subresources/registrations/methods/create/) — `POST /accounts/{account_id}/registrar/registrations`
+
+Customers and integrations using the legacy domain management endpoints must migrate to the new Registrar API before September 27, 2026 to ensure uninterrupted service. After this date, the legacy endpoints will no longer be available.
+
 ## 2026-06-16
 
 **Zone Settings Batch API**

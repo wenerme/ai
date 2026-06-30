@@ -1002,7 +1002,10 @@ you can also explore dedicated image generation models:
 ## Generate images in batch
 
 All of the image generation capabilities described on this page can also be
-run as batch jobs using the [Batch API](https://ai.google.dev/gemini-api/docs/batch).
+run as batch jobs using the
+[Batch API](https://ai.google.dev/gemini-api/docs/batch-api#image-generation), which is ideal if you
+need to generate many images.You get higher rate limits in exchange for a
+turnaround of up to 24 hours.
 
 ## Prompting guide and strategies
 

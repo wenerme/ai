@@ -162,14 +162,15 @@ Expand the **Options** section to access additional settings:
 
 Expand table
 
-| Option                   | Description                                                                     |
-|--------------------------|---------------------------------------------------------------------------------|
-| **Acknowledged**         | Filter by acknowledgment status: all triggers, unacknowledged, or acknowledged. |
-| **Sort by**              | Sort order: Default, Last change, or Severity.                                  |
-| **Use time range**       | Restrict results to the dashboard time range.                                   |
-| **Hosts in maintenance** | Include hosts that are currently in maintenance.                                |
-| **Host proxy**           | Include proxy information in the results.                                       |
-| **Limit**                | Maximum number of problems to return. Default: `1001`.                          |
+| Option                         | Description                                                                                                                                                                                                                                                                                          |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Acknowledged**               | Filter by acknowledgment status: all triggers, unacknowledged, or acknowledged.                                                                                                                                                                                                                      |
+| **Sort by**                    | Sort order: Default, Last change, or Severity.                                                                                                                                                                                                                                                       |
+| **Use time range**             | Restrict results to the dashboard time range.                                                                                                                                                                                                                                                        |
+| **Hosts in maintenance**       | Include hosts that are currently in maintenance.                                                                                                                                                                                                                                                     |
+| **Host proxy**                 | Include proxy information in the results.                                                                                                                                                                                                                                                            |
+| **Item value at problem time** | Resolve each problem’s item value at its creation time (used by `{ITEM.VALUE}` and operational data) via a `history.get` lookup. Disabled by default — it adds load and can impact performance in large environments with many active problems. Leave off unless you need historical-value accuracy. |
+| **Limit**                      | Maximum number of problems to return. Default: `1001`.                                                                                                                                                                                                                                               |
 
 ### User macros
 

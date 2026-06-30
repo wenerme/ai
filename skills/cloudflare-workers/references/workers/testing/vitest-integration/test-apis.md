@@ -101,6 +101,27 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 * `runDurableObjectAlarm(stub:DurableObjectStub)`: Promise<boolean>
 
   * Immediately runs and removes the Durable Object pointed to by `stub`'s alarm if one is scheduled. Returns `true` if an alarm ran, and `false` otherwise. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
+* `evictDurableObject(stub:DurableObjectStub, options?:DurableObjectEvictionOptions)`: Promise<void>
+
+  * Evicts the currently-running Durable Object pointed to by `stub`, tearing down its instance to reset in-memory state. By default, hibernatable WebSockets are hibernated rather than closed, and eviction waits up to 30 seconds for in-flight requests to drain.
+
+  Useful for testing how a Durable Object behaves across evictions, such as recovering state from storage or resuming hibernated WebSockets.
+
+  Rejects if `stub` is not a Durable Object stub, if the target Durable Object is not currently running, or if its namespace has eviction prevented. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
+
+  TypeScript
+  ```
+  import { env } from "cloudflare:workers";import { evictDurableObject } from "cloudflare:test";import { it, expect } from "vitest";
+  it("preserves stored data across eviction", async () => {  const id = env.COUNTER.idFromName("evict-test");  const stub = env.COUNTER.get(id);
+    // Each request increments and persists the count to storage  expect(await (await stub.fetch("https://example.com")).text()).toBe("1");  expect(await (await stub.fetch("https://example.com")).text()).toBe("2");
+    // Evict the Durable Object. The in-memory instance is torn down,  // but durable storage is preserved.  await evictDurableObject(stub);
+    // The next request reconstructs the instance and reads the persisted count  expect(await (await stub.fetch("https://example.com")).text()).toBe("3");});
+  ```
+  * The `DurableObjectEvictionOptions` interface controls eviction behavior:
+
+| Property   | Type                   | Default     | Description                                                                                                                                                                                      |
+| ---------- | ---------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| webSockets | "close" \| "hibernate" | "hibernate" | Controls what happens to hibernatable WebSockets when evicting a Durable Object. With "hibernate", WebSockets are hibernated and can resume after eviction. With "close", WebSockets are closed. |
 * `listDurableObjectIds(namespace:DurableObjectNamespace)`: Promise<DurableObjectId\[\]>
 
   * Gets the IDs of all objects that have been created in the `namespace`. Respects per-file storage isolation, meaning objects created in a different test file will not be returned.
@@ -110,6 +131,35 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
   import { env } from "cloudflare:workers";import { listDurableObjectIds } from "cloudflare:test";import { it, expect } from "vitest";
   it("increments count", async () => {  const id = env.COUNTER.newUniqueId();  const stub = env.COUNTER.get(id);  const response = await stub.fetch("https://example.com");  expect(await response.text()).toBe("1");
     const ids = await listDurableObjectIds(env.COUNTER);  expect(ids.length).toBe(1);  expect(ids[0].equals(id)).toBe(true);});
+  ```
+* `reset()`: Promise<void>
+
+  * Deletes all data from all attached bindings. This is useful for resetting state between test blocks.
+
+  TypeScript
+  ```
+  import { reset } from "cloudflare:test";import { afterEach } from "vitest";
+  afterEach(async () => {  await reset();});
+  ```
+* `abortAllDurableObjects()`: Promise<void>
+
+  * Resets all Durable Object instances. Unlike `reset()`, this does not delete persisted data. This forcibly tears down all running Durable Object instances, discarding in-memory state without waiting for in-flight requests to drain.
+
+  TypeScript
+  ```
+  import { abortAllDurableObjects } from "cloudflare:test";import { afterEach } from "vitest";
+  afterEach(async () => {  await abortAllDurableObjects();});
+  ```
+* `evictAllDurableObjects(options?:DurableObjectEvictionOptions)`: Promise<void>
+
+  * Evicts all currently-running Durable Objects in evictable namespaces. Unlike `abortAllDurableObjects()`, eviction is graceful: hibernatable WebSockets are hibernated rather than closed by default, and eviction waits up to 30 seconds for in-flight requests to drain. In-memory state is reset by tearing down each instance.
+
+  Non-running or idle Durable Objects are skipped, and namespaces with eviction prevented are respected. Accepts the same [DurableObjectEvictionOptions](#durable-objects) as `evictDurableObject()`.
+
+  TypeScript
+  ```
+  import { evictAllDurableObjects } from "cloudflare:test";import { afterEach } from "vitest";
+  afterEach(async () => {  await evictAllDurableObjects();});
   ```
 
 ### D1
@@ -206,6 +256,6 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
   When targeting a step, use its `name`. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to specify the occurrence.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/test-apis/","name":"Test APIs"}}]}
 ```

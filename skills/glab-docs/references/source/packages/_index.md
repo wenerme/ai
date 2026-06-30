@@ -13,7 +13,7 @@ Upload, download, list, and delete packages in a project's package
 registry, using your existing `glab` authentication.
 
 `list` and `delete` operate on packages of any type. `upload` and `download`
-are currently limited to generic packages, which let you store and retrieve
+are limited to generic packages, which let you store and retrieve
 arbitrary files identified by a package name, version, and file name.
 
 ## Options

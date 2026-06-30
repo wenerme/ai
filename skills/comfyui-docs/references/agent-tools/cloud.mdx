@@ -5,13 +5,9 @@ description: "Use Comfy Cloud from Claude Code and Claude Desktop through the Co
 
 <CloudFeature/>
 
+  **Public beta.** Comfy Cloud MCP is in public beta. APIs, tools, and behavior may change while we iterate. See [Feedback](#feedback) to report issues or share suggestions.
+
 ## Overview
-
-  Comfy Cloud MCP is in **closed beta — invite only**. Access is gated by a per-user feature flag. If you don't have access yet, [sign up for the waitlist](https://form.typeform.com/to/hHmvw1UH).
-
-  
-    Don't have access yet? Sign up for the Comfy Cloud MCP beta waitlist.
-  
 
 The **Comfy Cloud MCP server** connects AI agents to [Comfy Cloud](https://cloud.comfy.org) over the [Model Context Protocol](https://modelcontextprotocol.io). Once connected, you can generate images, video, audio, and 3D, search models, nodes, and templates, and run ComfyUI workflows — all from a chat with your agent.
 
@@ -30,9 +26,11 @@ Pick your client:
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Code
 
-Install the **comfy-cloud** plugin — it adds the MCP connection and the slash commands in one step.
+Install the **comfy-cloud** plugin. It adds the MCP connection and the slash commands in one step. The plugin is published through the [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) repository, which hosts Claude Code plugins and community agent skills for Comfy.
 
   
+    Register the Comfy Skills marketplace (one-time):
+
     ```
     /plugin marketplace add Comfy-Org/comfy-skills
     ```
@@ -75,6 +73,12 @@ The plugin adds these slash commands:
 
 Claude Desktop adds Comfy Cloud as a **custom connector** through its UI, then runs the OAuth sign-in.
 
+<video
+  controls
+  className="w-full aspect-video rounded-xl"
+  src="/images/agent_tools/Claude_desktop.mp4"
+></video>
+
   
     In Claude Desktop, open **Customize**, then choose **Connectors**.
 
@@ -113,6 +117,20 @@ Claude Code and Claude Desktop use OAuth, so you do not need an API key. For **h
     ```
   
 
+## Related resources
+
+| Resource | What it's for |
+| --- | --- |
+| [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code plugin marketplace and community skill library. The **comfy-cloud** plugin used above is distributed here; browse or contribute additional skills for Comfy workflows. |
+| [Comfy CLI](/agent-tools/comfy-cli) | Command-line tool for local ComfyUI install/launch and for calling hosted partner nodes from scripts or CI (`comfy generate`, in beta). Complements MCP when you need terminal or automation workflows. |
+
+## Feedback
+
+Comfy Cloud MCP is in public beta. Please try it out and tell us what works and what doesn't:
+
+- **[Feedback survey](https://links.comfy.org/cloudmcpbeta)**: report bugs, request features, or share general impressions.
+- **Discord**: [#comfy-mcp-and-cli](https://discord.gg/xWJn6nhE3R) on the Comfy Discord for questions and discussion.
+
 ## FAQ
 
   
@@ -134,3 +152,6 @@ Claude Code and Claude Desktop use OAuth, so you do not need an API key. For **h
   
   
     In Claude Code, run `/mcp`, select **comfy-cloud**, and choose **Authenticate**. In Claude Desktop, reopen the connector from **Customize → Connectors** and trigger sign-in.
+  
+  
+    Comfy Cloud MCP is our hosted offering, but local agent workflows have existed since ComfyUI was open-sourced. See [What about local ComfyUI?](/agent-tools#what-about-local-comfyui) on the Agent Tools overview for why Cloud shipped first, community MCP servers you can use today, and [Comfy CLI](/agent-tools/comfy-cli) as another option.

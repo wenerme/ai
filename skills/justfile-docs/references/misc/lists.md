@@ -47,7 +47,7 @@ lengths is an error.
 
 The `++` operator performs list concatenation.
 
-##### Booleans
+#### Booleans
 
 The canonical boolean true value is the string `"true"`, and the canonical
 boolean false value is the empty list `[]`. All values other than the empty
@@ -68,7 +68,7 @@ just in `if` and `assert()`, and evaluate to `"true"` or `[]`.
 Values may be negated with `!`. `!expression` evaluates to `"true"` if
 `expression` is `[]`, otherwise it evaluates to `[]`.
 
-##### Settings
+#### Settings
 
 The `script-interpreter`, `shell`, and `windows-shell` settings flatten their
 elements like list literals.
@@ -90,7 +90,7 @@ Each element of the value of `set dotenv-command` is run as a command, with
 variables from commands later in the list taking precedence over variables from
 commands earlier in the list.
 
-##### Attributes
+#### Attributes
 
 The `[arg(flag)]` attribute makes the parameter a flag which does not take a
 value on the command line. For example, with `[arg('foo', long, flag)]`, `foo`
@@ -115,7 +115,7 @@ any argument is accepted. For example, with
 In `[env(variable, value)]` if `value` is `[]`, `variable` is not set.
 Otherwise it is set to `value` joined with spaces.
 
-##### Functions
+#### Functions
 
 - `absolute_path()` - Applies to each list element individually.
 - `append()` - Applies to each list element individually and does not split
@@ -145,7 +145,7 @@ Otherwise it is set to `value` joined with spaces.
   with leading and trailing whitespace trimmed.
 - `which()` - Returns the empty list when no executable is found.
 
-##### Examples
+#### Examples
 
 Each list element is `quote()`'ed separately:
 

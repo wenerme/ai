@@ -1,23 +1,19 @@
 ---
 title: "Comfy Cloud MCP"
 description: "Comfy Cloud MCP サーバー経由で Claude Code と Claude Desktop から Comfy Cloud を利用: 画像・動画・音声・3D の生成、モデルとノードの検索、ワークフローの実行。"
-translationSourceHash: 24b3c23c
+translationSourceHash: c587774a
 translationFrom: agent-tools/cloud.mdx
 ---
 
 <CloudFeature/>
 
+  **公開ベータ版.** Comfy Cloud MCP は公開ベータ版です。API、ツール、動作は開発中に変更される可能性があります。問題の報告や提案は[フィードバック](#フィードバック)をご覧ください。
+
 ## 概要
-
-  Comfy Cloud MCP は**クローズドベータ版です: 招待制**です。アクセスはユーザー単位の機能フラグによって制御されています。まだアクセス権がない場合は、[ウェイトリストに登録](https://form.typeform.com/to/hHmvw1UH)してください。
-
-  
-    まだアクセス権がありませんか？ Comfy Cloud MCP ベータ版のウェイトリストにご登録ください。
-  
 
 **Comfy Cloud MCP サーバー**は、[モデルコンテキストプロトコル（MCP）](https://modelcontextprotocol.io)を通じて AI エージェントを [Comfy Cloud](https://cloud.comfy.org) に接続します。接続後、チャットから画像・動画・音声・3D の生成、モデル・ノード・テンプレートの検索、ComfyUI ワークフローの実行ができます。
 
-現在は **Claude Code** と **Claude Desktop** に対応しており、どちらも **OAuth** でサインインします: ブラウザでの一度きりのログインで完了します。他のクライアントへの対応も予定されています。
+現在は **Claude Code** と **Claude Desktop** に対応しており、どちらも **OAuth** でログインします: ブラウザでの一度きりのログインで完了します。他のクライアントへの対応も予定されています。
 
 ## インストール
 
@@ -27,14 +23,16 @@ translationFrom: agent-tools/cloud.mdx
     プラグインをインストール: 接続とコマンドを一度に設定。
   
   
-    アプリでカスタムコネクタを追加し、サインイン。
+    アプリでカスタムコネクタを追加し、ログイン。
   
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Code
 
-**comfy-cloud** プラグインをインストール: MCP 接続とスラッシュコマンドを一度に追加します。
+**comfy-cloud** プラグインをインストール: MCP 接続とスラッシュコマンドを一度に追加します。このプラグインは [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) リポジトリから公開されています。このリポジトリには Claude Code プラグインと Comfy 用のコミュニティエージェントスキルがホストされています。
 
   
+    Comfy Skills マーケットプレイスを登録（初回のみ）:
+
     ```
     /plugin marketplace add Comfy-Org/comfy-skills
     ```
@@ -45,7 +43,7 @@ translationFrom: agent-tools/cloud.mdx
     ```
   
   
-    `/mcp` を実行し、**comfy-cloud** → **Authenticate** を選択。ブラウザでサインインし、トークンは自動更新されます。
+    `/mcp` を実行し、**comfy-cloud** → **Authenticate** を選択。ブラウザが開いてログインし、トークンは自動更新されます。
   
 
 プラグインは次のスラッシュコマンドを追加します:
@@ -54,9 +52,9 @@ translationFrom: agent-tools/cloud.mdx
 | --- | --- |
 | `/comfy-cloud:generate-image` | 画像の生成・編集・修正 |
 | `/comfy-cloud:generate-video` | 動画の生成・編集・延長 |
-| `/comfy-cloud:generate-audio` | 音声の生成 |
+| `/comfy-cloud:generate-audio` | オーディオの生成 |
 | `/comfy-cloud:generate-3d` | 3D モデルの生成 |
-| `/comfy-cloud:remove-background` | 画像の背景を除去 |
+| `/comfy-cloud:remove-background` | 画像の背景を削除 |
 | `/comfy-cloud:upscale-image` | 画像をアップスケール |
 | `/comfy-cloud:search-models` | 利用可能なモデルを検索 |
 | `/comfy-cloud:search-nodes` | ノードを検索 |
@@ -75,7 +73,13 @@ translationFrom: agent-tools/cloud.mdx
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Desktop
 
-Claude Desktop は UI から Comfy Cloud を**カスタムコネクタ**として追加し、OAuth サインインを行います。
+Claude Desktop は UI から Comfy Cloud を**カスタムコネクタ**として追加し、OAuth ログインを行います。
+
+<video
+  controls
+  className="w-full aspect-video rounded-xl"
+  src="/images/agent_tools/Claude_desktop.mp4"
+></video>
 
   
     Claude Desktop で **Customize** を開き、**Connectors** を選択。
@@ -97,7 +101,7 @@ Claude Desktop は UI から Comfy Cloud を**カスタムコネクタ**とし�
     [Connector details]
   
   
-    **Add** をクリックし、Claude Desktop のプロンプトに従ってサインイン。接続完了。
+    **Add** をクリックし、Claude Desktop のプロンプトに従ってログイン。接続完了。
 
     [Sign in through Claude Desktop]
   
@@ -115,10 +119,24 @@ Claude Code と Claude Desktop は OAuth を使用するため API キーは不�
     ```
   
 
+## 関連リソース
+
+| リソース | 用途 |
+| --- | --- |
+| [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code プラグインマーケットプレイスとコミュニティスキルライブラリ。上記の **comfy-cloud** プラグインはここで配布されています。Comfy ワークフロー用の追加スキルをブラウズしたりコントリビュートしたりできます。 |
+| [Comfy CLI](/ja/comfy-cli/getting-started) | ローカル ComfyUI のインストール/起動、スクリプトや CI からホスト型パートナーノードを呼び出すためのコマンドラインツール（`comfy generate`、ベータ版）。ターミナルや自動化ワークフローが必要な場合に MCP を補完します。 |
+
+## フィードバック
+
+Comfy Cloud MCP は公開ベータ版です。ぜひ試してみて、良い点や改善点をお聞かせください:
+
+- **[フィードバックアンケート](https://links.comfy.org/cloudmcpbeta)**: バグの報告、機能リクエスト、全体的な感想を共有。
+- **Discord**: Comfy Discord の [#comfy-mcp-and-cli](https://discord.gg/xWJn6nhE3R) で質問や議論。
+
 ## FAQ
 
   
-    現在は Claude Code と Claude Desktop で、どちらも OAuth でサインインします。他のクライアントへの対応も予定されています。
+    現在は Claude Code と Claude Desktop で、どちらも OAuth でログインします。他のクライアントへの対応も予定されています。
   
   
     Claude Code と Claude Desktop では不要: OAuth を使用します。ブラウザが使えないヘッドレスまたは CI 環境でのみ API キーが必要です。
@@ -135,4 +153,7 @@ Claude Code と Claude Desktop は OAuth を使用するため API キーは不�
     どちらの場合でも、自然言語で依頼することもできます（例: 「...の画像を生成して」）。MCP ツールはモデルによって呼び出されるため、スラッシュコマンドは必須ではありません。
   
   
-    Claude Code では `/mcp` を実行し、**comfy-cloud** を選択して **Authenticate** を選んでください。Claude Desktop では **Customize → Connectors** からコネクタを再度開き、サインインをトリガーしてください。
+    Claude Code では `/mcp` を実行し、**comfy-cloud** を選択して **Authenticate** を選んでください。Claude Desktop では **Customize → Connectors** からコネクタを再度開き、ログインをトリガーしてください。
+  
+  
+    Comfy Cloud MCP は Comfy のホステッドサービスですが、ローカルエージェントワークフローは ComfyUI がオープンソース化されて以来存在しています。なぜ Cloud が先に出荷されたのか、現在利用可能なコミュニティ MCP サーバー、および別のオプションとして [Comfy CLI](/ja/comfy-cli/getting-started) については、Agent Tools の概要ページの [ローカル ComfyUI について](/ja/agent-tools#what-about-local-comfyui) を参照してください。

@@ -22,11 +22,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-12038)
-* [  TypeScript ](#tab-panel-12039)
-* [  Python ](#tab-panel-12040)
-* [  Rust ](#tab-panel-12041)
-* [  Hono ](#tab-panel-12042)
+* [  JavaScript ](#tab-panel-12049)
+* [  TypeScript ](#tab-panel-12050)
+* [  Python ](#tab-panel-12051)
+* [  Rust ](#tab-panel-12052)
+* [  Hono ](#tab-panel-12053)
 
 JavaScript
 
@@ -34,7 +34,7 @@ JavaScript
 export default {  async fetch(request) {    const destinationURL = "https://example.com";    const statusCode = 301;    return Response.redirect(destinationURL, statusCode);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAzCAjAHYAHACYAzFJHiAXCxZtgHOFxp8BwweOlyFYgLAAoAMLoqEAKY3sAESgBnGOhdRo1xSTV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2evoEO8qAFUAJQAMiQGCQIocIBAYC5FMhkHFQg1bPEXsBUo8Ni8qG8bgQQC4rHNgSQZPoiOiSGcICAEFQSH9ru4sUizjwzrwIMc5jdos1rP8AQAaEg4qn4ka2W5kjYAXwFZmlRHMKmYag0Wh4-CEokksnk4iK1jsDmcbg8XhaVF8-g0pBCYUiYUIGlSfgyWXtETIYHQZEKlkNpQqVRqm3qjV4vKobRc1gmZhWEWAcGiAH1hqNMhFFLk5vkUtKlcrVYF1TotfodUZxMxzEA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWAGyiATAHYALGIkzRALhYs2wDnC40+AkeOlzJigLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2evoEO8qAFUAJQAMiQGCQIocIBAYC4lMhkHFQg1bPEXsBUo8Ni8qG8bgQQC4rHNgSQAMyCACMRHRJDOEBACCoJD+13cWKRZx4Z14EGOcxu0Wa1n+AIANCQcbT8SNbLdKRsAL7CsxyojmVTMdSabQ8fhCMSSWTyUyWax2BzONweLwtKi+fyaUghMKRMKETSpPwZLJOiJkMDoMiFY0lByVaq1eqNXgCqhtFzWCZmFYRYBwaIAfWGo0yESUuTm+RSctVao1gS1ul1BgNxlEzHMQA)
 
 TypeScript
 
@@ -65,11 +65,11 @@ export default app;
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-12033)
-* [  TypeScript ](#tab-panel-12034)
-* [  Python ](#tab-panel-12035)
-* [  Rust ](#tab-panel-12036)
-* [  Hono ](#tab-panel-12037)
+* [  JavaScript ](#tab-panel-12044)
+* [  TypeScript ](#tab-panel-12045)
+* [  Python ](#tab-panel-12046)
+* [  Rust ](#tab-panel-12047)
+* [  Hono ](#tab-panel-12048)
 
 JavaScript
 

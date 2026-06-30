@@ -31,7 +31,7 @@ Expand table
 
 ## Get started
 
-The following pages help you set up and use the Zabbix data source:
+The following documents help you set up and use the Zabbix data source:
 
 - [Configure the Zabbix data source](./configure/)
 - [Zabbix query editor](./query-editor/)
@@ -53,6 +53,17 @@ After configuring the data source, you can:
 - **Use Direct DB Connection** to query history data from MySQL, PostgreSQL, or InfluxDB for faster performance on wide time ranges.
 - **Use [Explore](/docs/grafana/latest/explore/)** to query Zabbix data without building a dashboard.
 - **Set up [alerting rules](/docs/grafana/latest/alerting/)** based on Zabbix data.
+- **Use [Grafana Assistant](/docs/grafana/latest/administration/assistant/)** to explore your Zabbix infrastructure, inspect problems, and build dashboards from natural language prompts.
+
+## Grafana Assistant
+
+[Grafana Assistant](/docs/grafana/latest/administration/assistant/) is an AI-powered observability agent that works with your Zabbix data using natural language prompts. After you configure the data source, you can ask the Assistant to:
+
+- **Discover resources** by listing host groups, hosts, and items across your Zabbix infrastructure.
+- **Inspect problems** by retrieving active problems and filtering them by severity.
+- **Build dashboards** by querying metrics and generating ready-to-use time series panels from your prompts.
+
+Grafana Assistant is available in Grafana Cloud and in self-managed Grafana connected to a Grafana Cloud stack. To learn more, refer to [Grafana Assistant](/docs/grafana/latest/administration/assistant/).
 
 ## Pre-built dashboards
 
