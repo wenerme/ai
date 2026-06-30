@@ -5,7 +5,7 @@ title: clearMocks | Config
 # clearMocks
 
 - **Type:** `boolean`
-- **Default:** `false`
+- **Default:** `true`
 
 Should Vitest automatically call [`vi.clearAllMocks()`](/api/vi#vi-clearallmocks) before each test.
 
@@ -16,7 +16,7 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    clearMocks: true,
+    clearMocks: false,
   },
 })
 ```

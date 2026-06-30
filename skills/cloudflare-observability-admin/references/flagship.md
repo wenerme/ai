@@ -16,7 +16,7 @@ Ship features safely with feature flags.
 
 Flagship is Cloudflare's feature flag service. It lets you control feature visibility in your applications without redeploying code. Define flags with targeting rules and percentage-based rollouts, then evaluate them directly inside your Workers through a [native binding](https://developers.cloudflare.com/flagship/binding/) or from server and browser applications with [OpenFeature SDKs](https://developers.cloudflare.com/flagship/sdk/).
 
-[OpenFeature ↗](https://openfeature.dev/) is the CNCF open standard for feature flag management. Flagship is compatible with OpenFeature, so you can use the official TypeScript and Python SDKs and swap providers without changing evaluation code.
+[OpenFeature ↗](https://openfeature.dev/) is the CNCF open standard for feature flag management. Flagship ships official SDKs for TypeScript (Workers, Node.js, and browsers), Python, and Go. You can swap providers without changing evaluation code.
 
 Check out the [Get started guide](https://developers.cloudflare.com/flagship/get-started/) to create your first feature flag.
 
@@ -30,7 +30,7 @@ Evaluate flags with a native Workers binding. Type-safe methods with automatic f
 
 ###  OpenFeature SDK
 
-Use the official OpenFeature SDKs to evaluate flags from Workers, Node.js, browsers, and Python server applications. Switch from another flag provider by changing provider configuration.
+Use the official OpenFeature SDKs to evaluate flags from Workers, Node.js, browsers, Python, and Go server applications. Switch from another flag provider by changing one line of configuration.
 
 [ View SDK docs ](https://developers.cloudflare.com/flagship/sdk/)
 
@@ -81,6 +81,6 @@ Connect with the Workers community on Discord to ask questions, show what you ar
 Follow @CloudflareDev on Twitter to learn about product announcements and what is new in Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/#page","headline":"Overview · Cloudflare Flagship docs","description":"Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.","url":"https://developers.cloudflare.com/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/#page","headline":"Overview · Cloudflare Flagship docs","description":"Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.","url":"https://developers.cloudflare.com/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}}]}
 ```

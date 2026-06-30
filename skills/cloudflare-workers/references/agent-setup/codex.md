@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 1. **Download Codex**

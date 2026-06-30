@@ -1151,8 +1151,8 @@
   },
   "grafana-opcua-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opcua-datasource.md",
-    "size": 377,
-    "updatedAt": "2026-06-25T05:56:49.892Z"
+    "size": 3458,
+    "updatedAt": "2026-06-30T12:06:45.669Z"
   },
   "grafana-opensearch-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/alerting.md",
@@ -1821,8 +1821,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8795,
-    "updatedAt": "2026-06-30T02:11:52.740Z"
+    "size": 8757,
+    "updatedAt": "2026-06-30T12:07:12.905Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",
