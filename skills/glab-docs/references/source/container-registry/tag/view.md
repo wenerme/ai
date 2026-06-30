@@ -9,8 +9,6 @@ View a container registry tag.
 
 ## Synopsis
 
-View details for a single container registry tag.
-
 The repository ID must belong to the selected project. Use -R/--repo
 to specify the owning project when running this command outside that
 project's Git checkout.

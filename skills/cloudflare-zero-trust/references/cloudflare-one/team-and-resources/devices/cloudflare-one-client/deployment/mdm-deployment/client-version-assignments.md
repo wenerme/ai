@@ -1,0 +1,132 @@
+---
+title: Client version assignments
+description: Assign a target Cloudflare One Client version to groups of devices from the Cloudflare dashboard.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Client version assignments
+
+Client version assignments let you target a specific Cloudflare One Client (formerly WARP) version at a group of devices from the Cloudflare dashboard, without touching your MDM file or asking users to update the client themselves.
+
+Once an assignment is in place, matching devices silently upgrade or downgrade to the target version. End users see an **Update in progress** banner in the client GUI while the install runs. The client returns to normal operation once the update completes.
+
+Feature availability
+
+| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| All modes                                                                                                                          | All plans                                                       |
+
+| System   | Availability | Minimum client version |
+| -------- | ------------ | ---------------------- |
+| Windows  | ✅            | 2026.6.0               |
+| macOS    | ✅            | 2026.6.0               |
+| Linux    | ❌            | —                      |
+| iOS      | ❌            | —                      |
+| Android  | ❌            | —                      |
+| ChromeOS | ❌            | —                      |
+
+Note
+
+In the first general availability (GA) release of the Cloudflare One Client that supports this feature (`2026.6.0`), client version assignments will be effectively a no-op: there is only one version available, so any assignment targeting `2026.6.0` resolves to the version devices are already running. Client version assignments become meaningful starting with the second GA release, when there is a previous version to upgrade from or roll back to.
+
+## How it works
+
+A **deployment group** links one or more target client versions to one or more policy IDs from your [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/). Each entry in the group specifies a `target_environment` (`windows` or `macos`) and the `version` to deploy on that platform. A single deployment group can target both platforms at once.
+
+When you save a deployment group, the Cloudflare API pushes the assignment to every device whose device profile policy ID is in the group. Each device then:
+
+1. Compares its running version against the assigned version on its next registration refresh.
+2. If the versions differ, downloads the target installer and verifies its cryptographic signature.
+3. Runs the installer silently and resumes normal operation once the new version is in place.
+
+The client coordinates the install through a separate persistent OS service that ships alongside the existing service in client version `2026.6.0` and later. If any step fails — download, signature verification, or install — the device stays on its previous version and remains functional.
+
+Note
+
+When a device is targeted by a deployment group, the client suppresses the local **[Allow updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-updates)** notification flow on that device, so end users do not see a dashboard-managed install and a local update prompt at the same time.
+
+## Set up a deployment group
+
+* [ Dashboard ](#tab-panel-7794)
+* [ API ](#tab-panel-7795)
+* [ Terraform (v6) ](#tab-panel-7796)
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices**.
+2. Select the **Management** tab.
+3. Under **Client version assignments**, select **Manage**.
+4. Select **Create new deployment group**.
+5. Under **Name your deployment group**, enter a name.
+6. Under **Select device profiles**, select one or more device profiles whose devices should receive this assignment.
+7. Under **Assign client version**, select an operating system, a release track, and a client version. To target additional platforms with the same group, select **Add OS** and repeat.
+8. Select **Save**.
+
+Send a `POST` request to the [Deployment Groups API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/deployment%5Fgroups/methods/create/):
+
+Create deployment group
+
+```
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployment-groups" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Engineering Ring 0",    "version_config": [        {            "target_environment": "windows",            "version": "2026.6.0"        },        {            "target_environment": "macos",            "version": "2026.6.0"        }    ],    "policy_ids": [        "<POLICY_UUID_1>",        "<POLICY_UUID_2>"    ]  }'
+```
+
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
+2. Create a deployment group using the [cloudflare\_zero\_trust\_device\_deployment\_groups ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdeployment%5Fgroups) resource:
+```
+resource "cloudflare_zero_trust_device_deployment_groups" "example" {  account_id = var.cloudflare_account_id  name       = "Engineering Ring 0"  version_config = [    {      target_environment = "windows"      version            = "2026.6.0"    },    {      target_environment = "macos"      version            = "2026.6.0"    },  ]  policy_ids = [    "<POLICY_UUID_1>",    "<POLICY_UUID_2>",  ]}
+```
+
+## When a device evaluates an assignment
+
+After you create, update, or delete a deployment group, the API notifies affected devices of the change. Delivery can take up to 15 minutes. Once a device receives the notification, it evaluates the assignment shortly after and installs the target version if it differs from the running version.
+
+Devices also re-evaluate the most recent assignment they have received in these additional situations:
+
+* **When the client service starts or restarts.**
+* **When the device wakes from sleep.**
+
+## Verify a device received the assignment
+
+To confirm a device has received its assigned version, open a terminal on the device and run:
+
+Terminal window
+
+```
+warp-cli settings
+```
+
+The output includes the resolved target version under `version_config`. If the device is not yet running that version, the next evaluation triggers an install.
+
+## Override an assignment with MDM
+
+You can suppress client version assignments on individual devices by setting [allow\_managed\_deployments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#allow%5Fmanaged%5Fdeployments) to `false` in your MDM file. When this parameter is `false`, the device ignores any assignment from the dashboard and stays on its current version. Use this for devices that must be pinned through MDM rather than the dashboard.
+
+## Limitations
+
+* Devices must be running client version `2026.6.0` or later to apply an assignment. Older versions ignore the assignment entirely.
+* Once an install has started on a device, it cannot be cancelled. Changing the target version while a device is still downloading the previous target cancels the download cleanly.
+* Each device profile policy ID can belong to only one deployment group at a time.
+
+## Antivirus and endpoint security configuration
+
+Starting in version `2026.6.0`, the client install adds a second persistent OS service that handles updates triggered by client version assignments. If your endpoint protection or antivirus tools maintain process or service allowlists, add the following alongside your existing entries for the Cloudflare One Client:
+
+| Platform | Service identifier          | Process name           |
+| -------- | --------------------------- | ---------------------- |
+| macOS    | com.cloudflare.warp.updater | warp-updater           |
+| Windows  | CloudflareWARPUpdater       | warp-updater-armed.exe |
+
+## Troubleshoot a failed update
+
+If a device does not receive its assigned version, collect diagnostic logs using [warp-diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/). The diagnostic archive includes an `updater/` directory with per-attempt installer logs and a human-readable update history summary that you can share with Cloudflare Support.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/#page","headline":"Client version assignments · Cloudflare One docs","description":"Assign a target Cloudflare One Client version to groups of devices from the Cloudflare dashboard.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/","name":"Client version assignments"}}]}
+```

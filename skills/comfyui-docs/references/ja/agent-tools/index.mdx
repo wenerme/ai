@@ -1,48 +1,74 @@
 ---
 title: "Agent Tools / MCP"
 description: "Model Context Protocol (MCP) を使用して AI エージェントを ComfyUI に接続し、画像、動画、オーディオ、3D コンテンツを生成します。"
-translationSourceHash: 5f22f918
+translationSourceHash: 925e510c
 translationFrom: agent-tools/index.mdx
 ---
 
-ComfyUI は **2 つの MCP サーバー** を提供しており、AI エージェント（Claude Desktop、Claude Code、Cursor、Amp など）が、ローカルの ComfyUI インストールや GPU を必要とせずに、画像、動画、オーディオ、3D コンテンツを生成できます。
+ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので、AI エージェントや開発者は、常に ComfyUI キャンバスを開かなくても、画像、動画、オーディオ、3D コンテンツを生成できます。
+
+  **Comfy Cloud MCP はパブリックベータです。** セットアップ、フィードバックチャンネル、および関連ツール（Comfy Skills、Comfy CLI）については、[Comfy Cloud MCP](/ja/agent-tools/cloud) ページをご覧ください。
 
   
-    ホスト型 MCP サーバー <code>cloud.comfy.org</code> に接続。Cloud GPU でワークフローを実行し、プリインストールモデルを使用。
-    
-    **クローズドベータ** — ウェイトリストに登録。
+    ホスト型 MCP サーバー <code>cloud.comfy.org</code> に接続。Cloud GPU でワークフローを実行し、プリインストール済みのモデルを使用し、テンプレートライブラリ全体を検索します。
   
   
-    Comfy Partner-Node SDK を使用したローカル MCP サーバー。30以上のパートナープロバイダーに対応する統一された生成ツールを提供。
-    
-    **ウェイトリスト** — 早期アクセスに登録。
+    Comfy Partner-Node SDK を使用したローカル MCP サーバー。30以上のパートナープロバイダーに対応する統一された <code>generate_image</code>、<code>generate_video</code>、<code>generate_3d</code> などのツールを提供します。
+  
+  
+    <code>comfy generate</code>（ベータ）のエージェント向け簡単な概要です。完全なCLIガイドは <a href="/ja/comfy-cli/getting-started">はじめに</a> をご覧ください。
   
 
 ---
 
 ## どちらを使うべき？
 
-| | Comfy Cloud MCP | Comfy Partner MCP |
-|---|---|---|
-| **タイプ** | リモート（ホスト型） | ローカル（自分のマシンで実行） |
-| **必要条件** | Comfy Cloud サブスクリプション | Comfy API キー |
-| **モデル** | Comfy Cloud プリインストールモデル | 30以上のパートナープロバイダー（BFL、Ideogram、Kling、Runway、Veo、ElevenLabs など） |
-| **ワークフロー** | 完全な ComfyUI ワークフロー実行 | パートナー API 生成（カスタムワークフローなし） |
-| **GPU** | Cloud GPU（ローカル GPU 不要） | GPU 不要（API ベース） |
-| **アクセス** | クローズドベータ（ウェイトリスト） | ウェイトリスト |
+| | Comfy Cloud MCP | Comfy Partner MCP | Comfy CLI |
+|---|---|---|---|
+| **タイプ** | リモート（ホスト型） | ローカル MCP サーバー | ローカル CLI |
+| **必要条件** | Comfy Cloud サブスクリプション | [Comfy APIキー](/ja/development/api-development/getting-an-api-key) | [Comfy APIキー](/ja/development/api-development/getting-an-api-key) |
+| **モデル** | Comfy Cloud モデル（プリインストール済み） | 30以上のパートナープロバイダー（BFL、Ideogram、Kling、Runway、Veo、ElevenLabs など） | `comfy generate` によるパートナーノード |
+| **ワークフロー** | 完全な ComfyUI ワークフロー実行 | パートナーAPI生成（カスタムワークフローなし） | 単発のパートナーAPI呼び出し（ワークフローJSON不要） |
+| **GPU** | Cloud GPU（ローカル GPU 不要） | GPU不要（APIベース） | GPU不要（APIベース） |
+| **最適な用途** | チャット駆動のエージェント、テンプレート検索 | プロバイダー間の統一MCPツール | スクリプト、CI、バッチジョブ |
+
+---
+
+## ローカルのComfyUIは？
+
+多くの方が、Comfy Cloud MCP の代わりに（または併用して）**ローカル**の ComfyUI インストールをエージェントで操作することについて質問されます。
+
+**なぜ Comfy Cloud MCP が先にリリースされたのですか？** cloud.comfy.org のホスト型サーバーは、Comfy チームだけが構築し運用できるものです。そのため、当社のファーストパーティ MCP リリースはクラウドベースになりました。
+
+**ローカルエージェントは新しいものではありません。** エージェントを自分のマシンの ComfyUI に接続することは、ComfyUI がオープンソース化されて以来可能でした。ローカルサーバーを実行すると、MCP ブリッジや他のツールが呼び出すことができるワークフローと API が公開されます。
+
+**より優れたローカルエージェントの UX はロードマップに含まれています。** ファーストパーティのローカルエージェントエクスペリエンスの向上は、私たちのビジョンの一部です。Cloud MCP は最初にリリースできる部分でした。今後、ローカル機能のさらなる改良が続きます。
+
+**現在試用できるコミュニティ MCP サーバー** いくつかのコミュニティプロジェクトがすでに MCP クライアントをローカルの ComfyUI インスタンスに接続しています：
+
+| プロジェクト | リポジトリ |
+| --- | --- |
+| comfyui-mcp | [artokun/comfyui-mcp](https://github.com/artokun/comfyui-mcp) |
+| comfyui-mcp | [shawnrushefsky/comfyui-mcp](https://github.com/shawnrushefsky/comfyui-mcp) |
+| comfyui-mcp-server | [joenorton/comfyui-mcp-server](https://github.com/joenorton/comfyui-mcp-server) |
+| comfy-mcp-server | [lalanikarim/comfy-mcp-server](https://github.com/lalanikarim/comfy-mcp-server) |
+
+これらは**コミュニティメンテナンス**です。便宜上リンクしています。サポート、機能、互換性はプロジェクトによって異なります。
+
+**チャットではなくターミナルワークフローをご希望ですか？** スクリプトと自動化には [Comfy CLI](/ja/agent-tools/comfy-cli)（`comfy generate`、ベータ）をご覧ください。ターミナルからローカル ComfyUI をインストールして起動するには、[Comfy CLI はじめに](/ja/comfy-cli/getting-started)から始めてください。
 
 ---
 
 ## MCP とは？
 
-**Model Context Protocol (MCP)** は、AI アシスタントが標準化されたインターフェースを通じて外部ツールやサービスと連携するためのオープン標準です。各サービスのカスタム API 形式を AI エージェントが学習する必要がなく、MCP はツールを統一された方法で公開します。
+**Model Context Protocol (MCP)** は、AI アシスタントが標準化されたインターフェースを通じて外部ツールやサービスと連携するためのオープンスタンダードです。各サービスのカスタム API 形式を AI エージェントが学習する必要がなく、MCP はツールを統一された方法で公開します。
 
 MCP サーバーを Claude Desktop、Claude Code、Cursor、Amp に接続すると、AI アシスタントは以下のことが可能になります：
 
-- **画像生成** — テキスト説明から
-- **動画作成** — テキストや画像から
-- **3D モデル生成** — テキストや画像から
-- **オーディオ・音楽生成** — AI モデルを使用
-- **モデル・テンプレート検索** — 適切なツールを見つける
+- **画像生成**: テキスト説明から
+- **動画作成**: テキストや画像から
+- **3D モデル生成**: テキストや画像から
+- **オーディオ・音楽生成**: AI モデルを使用
+- **モデル・テンプレート検索**: タスクに適したツールを見つける
 
 ……すべて自然言語の対話を通じて、API 呼び出しを手動で書く必要はありません。

@@ -95,7 +95,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `pytorch-docs` | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
-| `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
+| `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
 | `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
@@ -938,7 +938,7 @@ Use when completing tasks, implementing major features, or before merging to ver
 npx skills add wenerme/ai --skill shadcn
 ```
 
-Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
+Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat interfaces. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
 
 </details>
 <details>
@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26610 files, 283 MiB total
+> 106 skills, 26638 files, 284 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1194,7 +1194,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `ant-design-docs` | 102 | 552 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
 | `anthropic-api` | 337 | 15 MiB |
-| `anthropic-docs` | 187 | 5.4 MiB |
+| `anthropic-docs` | 187 | 5.5 MiB |
 | `anthropic-sdk-csharp` | 147 | 8.4 MiB |
 | `anthropic-sdk-go` | 147 | 11 MiB |
 | `anthropic-sdk-java` | 147 | 8.7 MiB |
@@ -1209,18 +1209,18 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 114 | 3.9 MiB |
+| `claude-code-docs` | 120 | 4.1 MiB |
 | `clickhouse-docs` | 1088 | 10.0 MiB |
 | `cloudflare-ai` | 1506 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
-| `cloudflare-docs` | 3 | 31 KiB |
+| `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 824 | 4.9 MiB |
 | `cloudflare-observability-admin` | 1225 | 8.1 MiB |
 | `cloudflare-security` | 1005 | 5.5 MiB |
 | `cloudflare-workers` | 770 | 7.0 MiB |
-| `cloudflare-zero-trust` | 928 | 9.5 MiB |
+| `cloudflare-zero-trust` | 929 | 9.6 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4640 | 15 MiB |
+| `comfyui-docs` | 4644 | 15 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
@@ -1234,13 +1234,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 2.0 MiB |
 | `grafana-docs` | 623 | 6.0 MiB |
-| `grafana-plugin-docs` | 587 | 3.5 MiB |
+| `grafana-plugin-docs` | 593 | 3.6 MiB |
 | `hono-docs` | 85 | 348 KiB |
-| `huggingface-docs` | 358 | 2.0 MiB |
+| `huggingface-docs` | 357 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 77 | 482 KiB |
-| `justfile-docs` | 107 | 162 KiB |
+| `justfile-docs` | 112 | 162 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
@@ -1248,7 +1248,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 764 | 6.0 MiB |
+| `mastra-docs` | 767 | 6.0 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1268,7 +1268,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `pytorch-docs` | 313 | 2.0 MiB |
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
 | `requesting-code-review` | 2 | 7.9 KiB |
-| `shadcn` | 14 | 82 KiB |
+| `shadcn` | 15 | 94 KiB |
 | `skill-writer` | 4 | 23 KiB |
 | `sling-cli` | 3 | 14 KiB |
 | `slopus-happy-docs` | 75 | 716 KiB |
@@ -1281,7 +1281,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
 | `ui-ux-pro-max` | 35 | 1.7 MiB |
-| `ultralytics-docs` | 481 | 4.1 MiB |
+| `ultralytics-docs` | 484 | 4.1 MiB |
 | `vite-docs` | 58 | 538 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |

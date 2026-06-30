@@ -23,7 +23,7 @@ mod foo
 alias baz := foo::bar
 ```
 
-Or a module<sup>master</sup>:
+Or a module<sup>1.55.0</sup>:
 
 ```justfile
 mod frontend

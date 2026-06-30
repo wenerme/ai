@@ -212,7 +212,7 @@ within a submodule.
 
 - `just_executable()` - Absolute path to the `just` executable.
 - `just_pid()` - Process ID of the `just` executable.
-- `just_version()`<sup>master</sup> - Version of the `just` executable.
+- `just_version()`<sup>1.55.0</sup> - Version of the `just` executable.
 
 For example:
 
@@ -373,7 +373,7 @@ for details.
   - `error`: errors
   - `warning`: warnings
 
-  Additional styles supported by <sup>master</sup> and later include
+  Additional styles supported by <sup>1.55.0</sup> and later include
   named colors:
 
   - `black`
@@ -402,7 +402,7 @@ for details.
   - `strikethrough`
   - `underline`
 
-  Two stream names<sup>master</sup> gate the style on whether `just` would
+  Two stream names<sup>1.55.0</sup> gate the style on whether `just` would
   color the output stream, determined by `--color`, `JUST_COLOR`, and whether
   the stream is connected to a terminal:
 
@@ -424,7 +424,7 @@ for details.
     echo '{{style("error") + message + NORMAL}}'
   ```
 
-- `style(styles, text)`<sup>master</sup> Style `text` with `styles` as in the
+- `style(styles, text)`<sup>1.55.0</sup> Style `text` with `styles` as in the
   one-argument form. The style is reset automatically, so use of `NORMAL` to
   reset the terminal is not needed:
 

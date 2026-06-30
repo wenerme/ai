@@ -9,9 +9,9 @@ List packages in a project's package registry.
 
 ## Synopsis
 
-List the packages in a project's package registry. All package types
-(generic, npm, maven, etc.) are returned. Use `--page` and `--per-page`
-to paginate the result, and `--name` to filter by package name.
+Packages of all types (generic, npm, maven, etc.) are returned. Use
+`--package-type` to filter by type and `--name` to filter by name. Use
+`--page` and `--per-page` to paginate the result.
 
 By default, packages are listed for the current project. Use `--repo`
 to target another project.
@@ -51,7 +51,7 @@ glab packages list -R owner/repo
 ```plaintext
       --jq string             Filter JSON output with a jq expression.
   -n, --name string           Filter packages by name (substring match).
-      --package-type string   Package type composer, conan, debian, generic, golang, helm, maven, npm, nuget, pypi, terraform_module
+      --package-type string   Filter packages by type. One of: composer, conan, debian, generic, golang, helm, maven, npm, nuget, pypi, terraform_module.
   -p, --page int              Page number. (default 1)
   -P, --per-page int          Number of items to list per page. (default 30)
 ```

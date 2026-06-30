@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 1. **Download Codex**

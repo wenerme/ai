@@ -22,8 +22,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-10995)
-* [ API ](#tab-panel-10996)
+* [ Dashboard ](#tab-panel-11270)
+* [ API ](#tab-panel-11271)
 
 To create an account under your tenant using the dashboard:
 
@@ -103,8 +103,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <E
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-10993)
-* [ API ](#tab-panel-10994)
+* [ Dashboard ](#tab-panel-11268)
+* [ API ](#tab-panel-11269)
 
 To view any accounts owned by your tenant using the dashboard:
 
@@ -137,6 +137,27 @@ To delete an account you have created, send a `DELETE` request to the `/accounts
 
 Account deletion is permanent and will delete any zones or other resources under the account.
 
+Some resources require manual deletion
+
+The following resources are **not** automatically deleted when you delete an account and must be removed manually beforehand:
+
+* **Logpush jobs**: Will continue delivering logs after account deletion.
+* **Zero Trust Gateway configurations**: May continue resolving DNS queries after account deletion.
+
+To ensure complete cleanup, delete these resources before deleting the account by calling the following endpoints in sequence:
+
+1. Delete Zero Trust Gateway configuration:
+Terminal window
+```
+curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```
+2. Delete Access organization:
+Terminal window
+```
+curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/organizations \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```
+3. Then delete the account (see below).
+
 Request
 
 ```
@@ -152,6 +173,6 @@ Response
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/manage-accounts/","name":"Manage accounts"}}]}
 ```

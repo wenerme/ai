@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Cloudflare platform access

@@ -9,8 +9,8 @@ Delete a package from a project's package registry.
 
 ## Synopsis
 
-Delete a package from a project's package registry, identified by its
-numeric ID. Use `glab packages list` to find the ID.
+Packages are identified by their numeric ID. Use `glab packages list`
+to find the ID.
 
 The command asks for confirmation before deleting; use `-y` to skip
 the prompt in scripts.
@@ -45,7 +45,7 @@ glab packages rm 1
 ## Options
 
 ```plaintext
-  -y, --yes   Skip the confirmation prompt. (default false)
+  -y, --yes   Skip the confirmation prompt.
 ```
 
 ## Options inherited from parent commands

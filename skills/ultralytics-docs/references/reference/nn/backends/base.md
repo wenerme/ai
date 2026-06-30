@@ -11,3 +11,7 @@ keywords: Ultralytics, BaseBackend, inference backend, abstract class, model loa
     This page is sourced from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/nn/backends/base.py](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/nn/backends/base.py). Have an improvement or example to add? Open a [Pull Request](https://docs.ultralytics.com/help/contributing) — thank you! 🙏
 
 ## ::: ultralytics.nn.backends.base.BaseBackend
+
+<hr>
+
+## ::: ultralytics.nn.backends.base.read_tflite_metadata

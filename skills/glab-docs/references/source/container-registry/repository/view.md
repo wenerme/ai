@@ -9,7 +9,8 @@ View a container registry repository.
 
 ## Synopsis
 
-View details for a single container registry repository.
+Returns the container registry repository's details. Use `--include-tags` to include its
+tags in the output.
 
 ```plaintext
 glab container-registry repository view <repository-id> [flags]

@@ -163,7 +163,7 @@ double n:
   echo $(({{n}} * 2))
 ```
 
-The value of `pattern` may be a const expression<sup>master</sup>.
+The value of `pattern` may be a const expression<sup>1.55.0</sup>.
 
 A leading `^` and trailing `$` are added to the pattern, so it must match the
 entire argument value.
@@ -200,7 +200,7 @@ Help strings may be added to arguments using the `[arg(ARG, help=HELP)]` attribu
 foo bar:
 ```
 
-The value `help` may be a const expression<sup>master</sup>.
+The value `help` may be a const expression<sup>1.55.0</sup>.
 
 ```console
 $ just --usage foo
@@ -289,7 +289,7 @@ foo bar:
 
 If a parameter has both a long and short option, it may be passed using either.
 
-Multiple short options may be combined<sup>master</sup>, for example `-abc` is
+Multiple short options may be combined<sup>1.55.0</sup>, for example `-abc` is
 equivalent to `-a -b -c`. A short option which takes a value may appear last,
 for example `-abcd VALUE`.
 

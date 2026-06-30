@@ -21,19 +21,18 @@ Set up Cloudflare Mesh so your devices and servers can reach each other by priva
 * (Optional) A Linux server to deploy a Mesh node
 Linux server requirements
 
-|                            |                                                                                                                                                          |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35 [2](#user-content-fn-3), Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
-| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                                        |
-| **HD space**               | 75 MB                                                                                                                                                    |
-| **Memory**                 | 35 MB                                                                                                                                                    |
-| **Network interface type** | Wi-Fi or LAN                                                                                                                                             |
-| **MTU**                    | 1381 bytes recommended [3](#user-content-fn-2)                                                                                                           |
+|                            |                                                                                                                                           |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **OS version**             | RHEL 9 [1](#user-content-fn-1), RHEL 10, Debian 12, Debian 13, Fedora 43, Fedora 44, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS, Ubuntu 26.04 LTS |
+| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                         |
+| **HD space**               | 75 MB                                                                                                                                     |
+| **Memory**                 | 35 MB                                                                                                                                     |
+| **Network interface type** | Wi-Fi or LAN                                                                                                                              |
+| **MTU**                    | 1381 bytes recommended [2](#user-content-fn-2)                                                                                            |
 ## Footnotes
 
   1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗](https://docs.fedoraproject.org/en-US/epel/) repository (`sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
-  2. The Linux client UI depends on the `webkit2gtk3` library. Fedora releases newer than those listed (Fedora 41 and later) ship `webkit2gtk4.x` instead of `webkit2gtk3` and do not provide a `webkit2gtk3` package, so the `cloudflare-warp` RPM cannot currently be installed on them. [↩](#user-content-fnref-3)
-  3. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
+  2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 Mesh nodes are optional
 Client-to-client connectivity works without any Mesh nodes. Two enrolled laptops can reach each other directly by Mesh IP. Mesh nodes are for running the client in headless mode on a server — either to make that server reachable by its Mesh IP, or to [route traffic to a private subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) behind it. You still need to complete the setup wizard to configure your account — you can skip the Mesh node installation step and connect the node later.
 
@@ -49,8 +48,8 @@ The setup wizard [configures your account for Mesh networking](#what-the-wizard-
 5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.
 Installation commands
 
-  * [ Debian / Ubuntu ](#tab-panel-7305)
-  * [ RedHat / CentOS ](#tab-panel-7306)
+  * [ Debian / Ubuntu ](#tab-panel-7537)
+  * [ RedHat / CentOS ](#tab-panel-7538)
 Terminal window
 ```
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&sudo sysctl --system
@@ -85,8 +84,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-7307)
-* [ Version 2026.1 and earlier ](#tab-panel-7308)
+* [ Version 2026.2+ ](#tab-panel-7539)
+* [ Version 2026.1 and earlier ](#tab-panel-7540)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

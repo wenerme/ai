@@ -1,11 +1,11 @@
 ### Requiring a Minimum Just Version
 
 If you use features of `just` which require a particular version, you may use
-the `minimum-version`<sup>master</sup> setting to make it an error to use older
+the `minimum-version`<sup>1.55.0</sup> setting to make it an error to use older
 versions of `just`:
 
 ```justfile
-set minimum-version := <sup>master</sup>
+set minimum-version := '1.55.0'
 ```
 
 If `just` encounters a minimum version greater than its own version, it will

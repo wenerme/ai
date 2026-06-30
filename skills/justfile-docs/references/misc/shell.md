@@ -18,7 +18,7 @@ foo:
 `just` passes the command to be executed as an argument. Many shells will need
 an additional flag, often `-c`, to make them evaluate the first argument.
 
-##### Windows Shell
+#### Windows Shell
 
 `just` uses `sh` on Windows by default. To use a different shell on Windows,
 use `windows-shell`:
@@ -34,7 +34,7 @@ See
 [powershell.just](https://github.com/casey/just/blob/master/examples/powershell.just)
 for a justfile that uses PowerShell on all platforms.
 
-##### Windows PowerShell
+#### Windows PowerShell
 
 *`set windows-powershell` uses the legacy `powershell.exe` binary, and is no
 longer recommended. See the `windows-shell` setting above for a more flexible
@@ -50,31 +50,31 @@ hello:
   Write-Host "Hello, world!"
 ```
 
-##### Python 3
+#### Python 3
 
 ```just
 set shell := ["python3", "-c"]
 ```
 
-##### Bash
+#### Bash
 
 ```just
 set shell := ["bash", "-uc"]
 ```
 
-##### Z Shell
+#### Z Shell
 
 ```just
 set shell := ["zsh", "-uc"]
 ```
 
-##### Fish
+#### Fish
 
 ```just
 set shell := ["fish", "-c"]
 ```
 
-##### Nushell
+#### Nushell
 
 ```just
 set shell := ["nu", "-c"]

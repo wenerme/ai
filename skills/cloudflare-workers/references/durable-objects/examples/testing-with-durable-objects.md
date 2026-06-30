@@ -20,9 +20,9 @@ Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@clo
 
 Install Vitest and the Workers Vitest integration as dev dependencies:
 
-* [ npm ](#tab-panel-8450)
-* [ pnpm ](#tab-panel-8451)
-* [ yarn ](#tab-panel-8452)
+* [ npm ](#tab-panel-8673)
+* [ pnpm ](#tab-panel-8674)
+* [ yarn ](#tab-panel-8675)
 
 Terminal window
 
@@ -46,8 +46,8 @@ yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
 
 This example tests a simple counter Durable Object with SQLite storage:
 
-* [  JavaScript ](#tab-panel-8465)
-* [  TypeScript ](#tab-panel-8466)
+* [  JavaScript ](#tab-panel-8698)
+* [  TypeScript ](#tab-panel-8699)
 
 src/index.js
 
@@ -55,6 +55,9 @@ src/index.js
 import { DurableObject } from "cloudflare:workers";
 export class Counter extends DurableObject {  constructor(ctx, env) {    super(ctx, env);
     ctx.blockConcurrencyWhile(async () => {      this.ctx.storage.sql.exec(`        CREATE TABLE IF NOT EXISTS counters (          name TEXT PRIMARY KEY,          value INTEGER NOT NULL DEFAULT 0        )      `);    });  }
+  // In-memory only. This field lives on the instance and is not persisted  // to storage, so it is reset whenever the Durable Object is evicted and  // reconstructed.  cachedHits = 0;
+  recordHit() {    return ++this.cachedHits;  }
+  getHits() {    return this.cachedHits;  }
   async increment(name = "default") {    this.ctx.storage.sql.exec(      `INSERT INTO counters (name, value) VALUES (?, 1)       ON CONFLICT(name) DO UPDATE SET value = value + 1`,      name,    );    const result = this.ctx.storage.sql      .exec("SELECT value FROM counters WHERE name = ?", name)      .one();    return result.value;  }
   async getCount(name = "default") {    const result = this.ctx.storage.sql      .exec("SELECT value FROM counters WHERE name = ?", name)      .toArray();    return result[0]?.value ?? 0;  }
   async reset(name = "default") {    this.ctx.storage.sql.exec("DELETE FROM counters WHERE name = ?", name);  }}
@@ -71,6 +74,9 @@ import { DurableObject } from "cloudflare:workers";
 export interface Env {  COUNTER: DurableObjectNamespace<Counter>;}
 export class Counter extends DurableObject<Env> {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);
     ctx.blockConcurrencyWhile(async () => {      this.ctx.storage.sql.exec(`        CREATE TABLE IF NOT EXISTS counters (          name TEXT PRIMARY KEY,          value INTEGER NOT NULL DEFAULT 0        )      `);    });  }
+  // In-memory only. This field lives on the instance and is not persisted  // to storage, so it is reset whenever the Durable Object is evicted and  // reconstructed.  cachedHits = 0;
+  recordHit(): number {    return ++this.cachedHits;  }
+  getHits(): number {    return this.cachedHits;  }
   async increment(name: string = "default"): Promise<number> {    this.ctx.storage.sql.exec(      `INSERT INTO counters (name, value) VALUES (?, 1)       ON CONFLICT(name) DO UPDATE SET value = value + 1`,      name    );    const result = this.ctx.storage.sql      .exec<{ value: number }>("SELECT value FROM counters WHERE name = ?", name)      .one();    return result.value;  }
   async getCount(name: string = "default"): Promise<number> {    const result = this.ctx.storage.sql      .exec<{ value: number }>("SELECT value FROM counters WHERE name = ?", name)      .toArray();    return result[0]?.value ?? 0;  }
   async reset(name: string = "default"): Promise<void> {    this.ctx.storage.sql.exec("DELETE FROM counters WHERE name = ?", name);  }}
@@ -93,19 +99,19 @@ export default defineConfig({  plugins: [    cloudflareTest({      wrangler: { c
 
 Make sure your Wrangler configuration includes the Durable Object binding and SQLite migration:
 
-* [  wrangler.jsonc ](#tab-panel-8453)
-* [  wrangler.toml ](#tab-panel-8454)
+* [  wrangler.jsonc ](#tab-panel-8676)
+* [  wrangler.toml ](#tab-panel-8677)
 
 JSONC
 
 ```
-{  "name": "counter-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "durable_objects": {    "bindings": [      { "name": "COUNTER", "class_name": "Counter" }    ]  },  "migrations": [    { "tag": "v1", "new_sqlite_classes": ["Counter"] }  ]}
+{  "name": "counter-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-29",  "durable_objects": {    "bindings": [      { "name": "COUNTER", "class_name": "Counter" }    ]  },  "migrations": [    { "tag": "v1", "new_sqlite_classes": ["Counter"] }  ]}
 ```
 
 TOML
 
 ```
-name = "counter-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
+name = "counter-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-29"
 [[durable_objects.bindings]]name = "COUNTER"class_name = "Counter"
 [[migrations]]tag = "v1"new_sqlite_classes = [ "Counter" ]
 ```
@@ -134,8 +140,8 @@ declare module "cloudflare:workers" {  interface ProvidedEnv extends Env {}}
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
 
-* [  JavaScript ](#tab-panel-8463)
-* [  TypeScript ](#tab-panel-8464)
+* [  JavaScript ](#tab-panel-8692)
+* [  TypeScript ](#tab-panel-8693)
 
 test/counter.test.js
 
@@ -179,8 +185,8 @@ describe("Counter Durable Object", () => {  it("should increment the counter", a
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
 
-* [  JavaScript ](#tab-panel-8467)
-* [  TypeScript ](#tab-panel-8468)
+* [  JavaScript ](#tab-panel-8694)
+* [  TypeScript ](#tab-panel-8695)
 
 test/integration.test.js
 
@@ -214,8 +220,8 @@ describe("Counter Worker integration", () => {  it("should increment via HTTP PO
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
-* [  JavaScript ](#tab-panel-8461)
-* [  TypeScript ](#tab-panel-8462)
+* [  JavaScript ](#tab-panel-8690)
+* [  TypeScript ](#tab-panel-8691)
 
 test/direct-access.test.js
 
@@ -227,7 +233,7 @@ describe("Direct Durable Object access", () => {  it("can access instance intern
       // Access storage directly for verification      const result = state.storage.sql        .exec("SELECT value FROM counters WHERE name = ?", "default")        .one();      expect(result.value).toBe(2);    });  });
   it("can list all Durable Object IDs in a namespace", async () => {    // Create some Durable Objects    const id1 = env.COUNTER.idFromName("list-test-1");    const id2 = env.COUNTER.idFromName("list-test-2");
     await env.COUNTER.get(id1).increment();    await env.COUNTER.get(id2).increment();
-    // List all IDs in the namespace    const ids = await listDurableObjectIds(env.COUNTER);    expect(ids.length).toBe(2);    expect(ids.some((id) => id.equals(id1))).toBe(true);    expect(ids.some((id) => id.equals(id2))).toBe(true);  });});
+    // List all IDs in the namespace    const ids = await listDurableObjectIds(env.COUNTER);    expect(ids.length).toBeGreaterThanOrEqual(2);    expect(ids.some((id) => id.equals(id1))).toBe(true);    expect(ids.some((id) => id.equals(id2))).toBe(true);  });});
 ```
 
 test/direct-access.test.ts
@@ -240,15 +246,15 @@ describe("Direct Durable Object access", () => {  it("can access instance intern
       // Access storage directly for verification      const result = state.storage.sql        .exec<{ value: number }>(          "SELECT value FROM counters WHERE name = ?",          "default"        )        .one();      expect(result.value).toBe(2);    });  });
   it("can list all Durable Object IDs in a namespace", async () => {    // Create some Durable Objects    const id1 = env.COUNTER.idFromName("list-test-1");    const id2 = env.COUNTER.idFromName("list-test-2");
     await env.COUNTER.get(id1).increment();    await env.COUNTER.get(id2).increment();
-    // List all IDs in the namespace    const ids = await listDurableObjectIds(env.COUNTER);    expect(ids.length).toBe(2);    expect(ids.some((id) => id.equals(id1))).toBe(true);    expect(ids.some((id) => id.equals(id2))).toBe(true);  });});
+    // List all IDs in the namespace    const ids = await listDurableObjectIds(env.COUNTER);    expect(ids.length).toBeGreaterThanOrEqual(2);    expect(ids.some((id) => id.equals(id1))).toBe(true);    expect(ids.some((id) => id.equals(id2))).toBe(true);  });});
 ```
 
 ### Testing SQLite storage
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
-* [  JavaScript ](#tab-panel-8457)
-* [  TypeScript ](#tab-panel-8458)
+* [  JavaScript ](#tab-panel-8684)
+* [  TypeScript ](#tab-panel-8685)
 
 test/sqlite.test.js
 
@@ -276,8 +282,8 @@ describe("SQLite in Durable Objects", () => {  it("can query and verify SQLite s
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
-* [  JavaScript ](#tab-panel-8459)
-* [  TypeScript ](#tab-panel-8460)
+* [  JavaScript ](#tab-panel-8688)
+* [  TypeScript ](#tab-panel-8689)
 
 test/alarm.test.js
 
@@ -305,8 +311,8 @@ describe("Durable Object alarms", () => {  it("can trigger alarms immediately", 
 
 To test alarms, add an `alarm()` method to your Durable Object:
 
-* [  JavaScript ](#tab-panel-8455)
-* [  TypeScript ](#tab-panel-8456)
+* [  JavaScript ](#tab-panel-8680)
+* [  TypeScript ](#tab-panel-8681)
 
 src/index.js
 
@@ -325,6 +331,137 @@ export class Counter extends DurableObject {  // ... other methods ...
   async alarm() {    // This method is called when the alarm fires    // Reset all counters    this.ctx.storage.sql.exec("DELETE FROM counters");  }
   async scheduleReset(afterMs: number) {    await this.ctx.storage.setAlarm(Date.now() + afterMs);  }}
 ```
+
+### Testing eviction
+
+Use `evictDurableObject()` to evict a Durable Object instance during tests. Eviction tears down the instance to reset its in-memory state. This lets you test how your Durable Object recovers state from storage after being evicted.
+
+By default, hibernatable WebSockets are hibernated rather than closed, and eviction waits up to 30 seconds for in-flight requests to drain before tearing down the instance.
+
+The following test sets both in-memory state (`cachedHits`) and durable storage (the counter value), evicts the Durable Object, and verifies that the in-memory state is wiped while the stored count survives:
+
+* [  JavaScript ](#tab-panel-8686)
+* [  TypeScript ](#tab-panel-8687)
+
+test/eviction.test.js
+
+```
+import { env } from "cloudflare:workers";import { evictDurableObject } from "cloudflare:test";import { describe, it, expect } from "vitest";
+describe("Durable Object eviction", () => {  it("wipes in-memory state but preserves storage across eviction", async () => {    const id = env.COUNTER.idFromName("evict-test");    const stub = env.COUNTER.get(id);
+    // Persist a value to SQLite storage    await stub.increment();    await stub.increment();    expect(await stub.getCount()).toBe(2);
+    // Set in-memory only state, which is not persisted to storage    await stub.recordHit();    await stub.recordHit();    expect(await stub.getHits()).toBe(2);
+    // Evict the Durable Object. The in-memory instance is torn down,    // but durable storage is preserved.    await evictDurableObject(stub);
+    // In-memory state is wiped: the reconstructed instance starts fresh    expect(await stub.getHits()).toBe(0);
+    // Durable storage survives: the persisted count is read back    expect(await stub.getCount()).toBe(2);  });});
+```
+
+test/eviction.test.ts
+
+```
+import { env } from "cloudflare:workers";import { evictDurableObject } from "cloudflare:test";import { describe, it, expect } from "vitest";
+describe("Durable Object eviction", () => {  it("wipes in-memory state but preserves storage across eviction", async () => {    const id = env.COUNTER.idFromName("evict-test");    const stub = env.COUNTER.get(id);
+    // Persist a value to SQLite storage    await stub.increment();    await stub.increment();    expect(await stub.getCount()).toBe(2);
+    // Set in-memory only state, which is not persisted to storage    await stub.recordHit();    await stub.recordHit();    expect(await stub.getHits()).toBe(2);
+    // Evict the Durable Object. The in-memory instance is torn down,    // but durable storage is preserved.    await evictDurableObject(stub);
+    // In-memory state is wiped: the reconstructed instance starts fresh    expect(await stub.getHits()).toBe(0);
+    // Durable storage survives: the persisted count is read back    expect(await stub.getCount()).toBe(2);  });});
+```
+
+#### Testing WebSocket behavior across eviction
+
+You can control what happens to hibernatable WebSockets when a Durable Object is evicted by passing the `options` parameter:
+
+* `{ webSockets: "hibernate" }` (the default) hibernates WebSockets so they can resume after eviction.
+* `{ webSockets: "close" }` closes WebSockets during eviction.
+
+The following example uses a Durable Object that accepts WebSocket connections with the [hibernatable WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/):
+
+* [  JavaScript ](#tab-panel-8682)
+* [  TypeScript ](#tab-panel-8683)
+
+src/websocket-server.js
+
+```
+import { DurableObject } from "cloudflare:workers";
+export class WebSocketServer extends DurableObject {  async fetch(request) {    const [client, server] = Object.values(new WebSocketPair());
+    // Accept the WebSocket as hibernatable so it can survive eviction    this.ctx.acceptWebSocket(server);
+    return new Response(null, { status: 101, webSocket: client });  }
+  webSocketMessage(ws, message) {    // Echo the received message back to the client    ws.send(message);  }
+  webSocketClose(ws, code, reason, wasClean) {    // Handle WebSocket close events  }}
+```
+
+src/websocket-server.ts
+
+```
+import { DurableObject } from "cloudflare:workers";
+export class WebSocketServer extends DurableObject<Env> {  async fetch(request: Request): Promise<Response> {    const [client, server] = Object.values(new WebSocketPair());
+    // Accept the WebSocket as hibernatable so it can survive eviction    this.ctx.acceptWebSocket(server);
+    return new Response(null, { status: 101, webSocket: client });  }
+  webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {    // Echo the received message back to the client    ws.send(message);  }
+  webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {    // Handle WebSocket close events  }}
+```
+
+Add a binding and migration for the Durable Object in your Wrangler configuration, alongside the existing `COUNTER` binding:
+
+* [  wrangler.jsonc ](#tab-panel-8678)
+* [  wrangler.toml ](#tab-panel-8679)
+
+JSONC
+
+```
+{  "durable_objects": {    "bindings": [      { "name": "WEBSOCKET_SERVER", "class_name": "WebSocketServer" }    ]  },  "migrations": [    { "tag": "v2", "new_sqlite_classes": ["WebSocketServer"] }  ]}
+```
+
+TOML
+
+```
+[[durable_objects.bindings]]name = "WEBSOCKET_SERVER"class_name = "WebSocketServer"
+[[migrations]]tag = "v2"new_sqlite_classes = [ "WebSocketServer" ]
+```
+
+With the default options, hibernatable WebSockets remain open across eviction, so messages still round-trip afterwards. Passing `{ webSockets: "close" }` closes them instead:
+
+* [  JavaScript ](#tab-panel-8696)
+* [  TypeScript ](#tab-panel-8697)
+
+test/eviction-websockets.test.js
+
+```
+import { env } from "cloudflare:workers";import { evictDurableObject } from "cloudflare:test";import { describe, it, expect } from "vitest";
+describe("WebSocket eviction behavior", () => {  it("hibernates WebSockets across eviction by default", async () => {    const id = env.WEBSOCKET_SERVER.idFromName("ws-test");    const stub = env.WEBSOCKET_SERVER.get(id);
+    const response = await stub.fetch("https://example.com", {      headers: { Upgrade: "websocket" },    });    const socket = response.webSocket;    if (!socket) throw new Error("Expected WebSocket response");    socket.accept();
+    // Hibernatable WebSockets are hibernated, not closed    await evictDurableObject(stub);
+    // Messages still round-trip after eviction wakes the Durable Object    const message = new Promise((resolve) => {      socket.addEventListener("message", (event) => {        resolve(event.data);      });    });    socket.send("after-eviction");    expect(await message).toBe("after-eviction");    socket.close(1000, "done");  });
+  it("closes WebSockets when requested", async () => {    const id = env.WEBSOCKET_SERVER.idFromName("ws-close-test");    const stub = env.WEBSOCKET_SERVER.get(id);
+    const response = await stub.fetch("https://example.com", {      headers: { Upgrade: "websocket" },    });    const socket = response.webSocket;    if (!socket) throw new Error("Expected WebSocket response");    socket.accept();
+    const closed = new Promise((resolve) => {      socket.addEventListener("close", (event) => resolve(event));    });
+    // Close WebSockets instead of hibernating them    await evictDurableObject(stub, { webSockets: "close" });    expect(await closed).toBeDefined();  });});
+```
+
+test/eviction-websockets.test.ts
+
+```
+import { env } from "cloudflare:workers";import { evictDurableObject } from "cloudflare:test";import { describe, it, expect } from "vitest";
+describe("WebSocket eviction behavior", () => {  it("hibernates WebSockets across eviction by default", async () => {    const id = env.WEBSOCKET_SERVER.idFromName("ws-test");    const stub = env.WEBSOCKET_SERVER.get(id);
+    const response = await stub.fetch("https://example.com", {      headers: { Upgrade: "websocket" },    });    const socket = response.webSocket;    if (!socket) throw new Error("Expected WebSocket response");    socket.accept();
+    // Hibernatable WebSockets are hibernated, not closed    await evictDurableObject(stub);
+    // Messages still round-trip after eviction wakes the Durable Object    const message = new Promise<string>((resolve) => {      socket.addEventListener("message", (event) => {        resolve(event.data as string);      });    });    socket.send("after-eviction");    expect(await message).toBe("after-eviction");    socket.close(1000, "done");  });
+  it("closes WebSockets when requested", async () => {    const id = env.WEBSOCKET_SERVER.idFromName("ws-close-test");    const stub = env.WEBSOCKET_SERVER.get(id);
+    const response = await stub.fetch("https://example.com", {      headers: { Upgrade: "websocket" },    });    const socket = response.webSocket;    if (!socket) throw new Error("Expected WebSocket response");    socket.accept();
+    const closed = new Promise<CloseEvent>((resolve) => {      socket.addEventListener("close", (event) => resolve(event));    });
+    // Close WebSockets instead of hibernating them    await evictDurableObject(stub, { webSockets: "close" });    expect(await closed).toBeDefined();  });});
+```
+
+To evict all currently-running Durable Objects at once (for example, to reset state between tests without deleting persisted data), use `evictAllDurableObjects()`:
+
+TypeScript
+
+```
+import { evictAllDurableObjects } from "cloudflare:test";import { afterEach } from "vitest";
+afterEach(async () => {  await evictAllDurableObjects();});
+```
+
+For more details on the eviction helpers, including the `DurableObjectEvictionOptions` interface, refer to the [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#durable-objects).
 
 ## Running tests
 
@@ -349,6 +486,6 @@ Or add a script to your `package.json`:
 * [RPC testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/rpc) \- Testing JSRPC with Durable Objects
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#page","headline":"Testing Durable Objects · Cloudflare Durable Objects docs","description":"Write tests for Durable Objects using the Workers Vitest integration.","url":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#page","headline":"Testing Durable Objects · Cloudflare Durable Objects docs","description":"Write tests for Durable Objects using the Workers Vitest integration.","url":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/testing-with-durable-objects/","name":"Testing Durable Objects"}}]}
 ```

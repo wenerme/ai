@@ -1,30 +1,26 @@
 ---
 title: "Comfy Cloud MCP"
-description: "通过 Comfy Cloud MCP 服务器，在 Claude Code 和 Claude Desktop 中使用 Comfy Cloud — 生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
-translationSourceHash: 24b3c23c
+description: "通过 Comfy Cloud MCP 服务器，在 Claude Code 和 Claude Desktop 中使用 Comfy Cloud：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
+translationSourceHash: c587774a
 translationFrom: agent-tools/cloud.mdx
 ---
 
 <CloudFeature/>
 
+  **公开测试版。** Comfy Cloud MCP 目前处于公开测试阶段。API、工具和行为在迭代过程中可能会发生变化。请参阅[反馈](#反馈)来报告问题或分享建议。
+
 ## 概述
-
-  Comfy Cloud MCP 目前处于**封闭测试阶段 — 仅限邀请**。访问权限由用户级别的功能开关控制。如果你还没有权限，请[加入等待列表](https://form.typeform.com/to/hHmvw1UH)。
-
-  
-    还没有权限？注册 Comfy Cloud MCP 测试版等待列表。
-  
 
 **Comfy Cloud MCP 服务器**通过[模型上下文协议（MCP）](https://modelcontextprotocol.io)将 AI 代理连接到 [Comfy Cloud](https://cloud.comfy.org)。连接成功后，你可以在代理对话中生成图像、视频、音频和 3D 内容，搜索模型、节点和模板，并运行 ComfyUI 工作流。
 
-目前支持 **Claude Code** 和 **Claude Desktop**，两者均通过 **OAuth** 登录 — 只需在浏览器中完成一次性登录。更多客户端支持即将推出。
+目前支持 **Claude Code** 和 **Claude Desktop**，两者均通过 **OAuth** 登录：只需在浏览器中完成一次性登录。更多客户端支持即将推出。
 
 ## 安装
 
 选择你的客户端：
 
   
-    安装插件 — 一步完成连接与命令配置。
+    安装插件：一步完成连接与命令配置。
   
   
     在应用中添加自定义连接器，然后登录。
@@ -32,9 +28,11 @@ translationFrom: agent-tools/cloud.mdx
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Code
 
-安装 **comfy-cloud** 插件 — 它会同时添加 MCP 连接和斜杠命令。
+安装 **comfy-cloud** 插件：它会同时添加 MCP 连接和斜杠命令。该插件通过 [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) 仓库发布，该仓库托管了适用于 Comfy 的 Claude Code 插件和社区代理技能。
 
   
+    注册 Comfy Skills marketplace（一次性操作）：
+
     ```
     /plugin marketplace add Comfy-Org/comfy-skills
     ```
@@ -71,11 +69,17 @@ translationFrom: agent-tools/cloud.mdx
 
   然后运行 `/mcp`，选择 **comfy-cloud** → **Authenticate**。添加 `-s user` 可让所有项目都能使用。
 
-  这种方式仍然提供斜杠命令，但以原始 MCP 形式出现 — `/mcp__comfy-cloud__generate-image`、`/mcp__comfy-cloud__search-models` 等等（`/mcp__<名称>__` 前缀使用你在 `claude mcp add` 中传入的名称）。推荐使用上面的插件，因为它将这些命令包装为更友好的 `/comfy-cloud:*` 命令。
+  这种方式仍然提供斜杠命令，但以原始 MCP 形式出现：`/mcp__comfy-cloud__generate-image`、`/mcp__comfy-cloud__search-models` 等等（`/mcp__<名称>__` 前缀使用你在 `claude mcp add` 中传入的名称）。推荐使用上面的插件，因为它将这些命令包装为更友好的 `/comfy-cloud:*` 命令。
 
 ### <span style={{ marginRight: "0.6rem" }}></span> Claude Desktop
 
 Claude Desktop 通过界面将 Comfy Cloud 添加为**自定义连接器**，然后执行 OAuth 登录。
+
+<video
+  controls
+  className="w-full aspect-video rounded-xl"
+  src="/images/agent_tools/Claude_desktop.mp4"
+></video>
 
   
     在 Claude Desktop 中打开 **自定义**，然后选择 **连接器**。
@@ -115,16 +119,30 @@ Claude Code 和 Claude Desktop 使用 OAuth，无需 API 密钥。对于**无浏
     ```
   
 
+## 相关资源
+
+| 资源 | 用途 |
+| --- | --- |
+| [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) | Claude Code 插件市场和社区技能库。上面使用的 **comfy-cloud** 插件在此分发；可浏览或贡献其他用于 Comfy 工作流的技能。 |
+| [Comfy CLI](/zh/comfy-cli/getting-started) | 用于本地 ComfyUI 安装/启动以及从脚本或 CI 调用托管合作节点的命令行工具（`comfy generate`，测试版）。当需要终端或自动化工作流时，可以补充 MCP 使用。 |
+
+## 反馈
+
+Comfy Cloud MCP 处于公开测试阶段。请试用并告诉我们哪些地方好用，哪些地方需要改进：
+
+- **[反馈调查](https://links.comfy.org/cloudmcpbeta)**：报告错误、请求功能或分享一般印象。
+- **Discord**：如果对 Comfy Cloud MCP 有疑问或想讨论，欢迎加入 Comfy Discord 的 [#comfy-mcp-and-cli](https://discord.gg/xWJn6nhE3R) 频道。
+
 ## 常见问题
 
   
     目前支持 Claude Code 和 Claude Desktop，均通过 OAuth 登录。更多客户端支持即将推出。
   
   
-    Claude Code 和 Claude Desktop 不需要 — 它们使用 OAuth。只有在无浏览器的无头或 CI 环境中才需要 API 密钥。
+    Claude Code 和 Claude Desktop 不需要：它们使用 OAuth。只有在无浏览器的无头或 CI 环境中才需要 API 密钥。
   
   
-    不可用。斜杠命令随 Claude Code 插件提供。Claude Desktop 连接到同一 MCP 服务器（工具可用 — 直接用自然语言提问即可），但不支持 Claude Code 插件或斜杠命令。
+    不可用。斜杠命令随 Claude Code 插件提供。Claude Desktop 连接到同一 MCP 服务器（工具可用：直接用自然语言提问即可），但不支持 Claude Code 插件或斜杠命令。
   
   
     没有 `/comfy` 或 `/cloud` 命令。命令根据连接方式出现在以下两个前缀之一下：
@@ -132,7 +150,10 @@ Claude Code 和 Claude Desktop 使用 OAuth，无需 API 密钥。对于**无浏
     - **插件（推荐）：** `/comfy-cloud:generate-image`、`/comfy-cloud:generate-video`……输入 `/comfy-cloud:` 即可查看全部。
     - **直接连接（无插件）：** `/mcp__comfy-cloud__generate-image`……输入 `/mcp__` 即可查看。
 
-    你也可以直接用自然语言提问（例如“生成一张……的图片”）—— MCP 工具由模型自动调用，无需斜杠命令。
+    你也可以直接用自然语言提问（例如“生成一张……的图片”）：MCP 工具由模型自动调用，无需斜杠命令。
   
   
     在 Claude Code 中，运行 `/mcp`，选择 **comfy-cloud**，然后选择 **Authenticate**。在 Claude Desktop 中，从 **自定义 → 连接器** 重新打开连接器并触发登录。
+  
+  
+    Comfy Cloud MCP 是我们提供的托管服务，但从 ComfyUI 开源以来，本地代理工作流就已存在。请参阅代理工具概览中的<a href="/zh/agent-tools#what-about-local-comfyui">本地 ComfyUI 呢？</a>了解为什么 Cloud 先发布、你现在可以使用的社区 MCP 服务器，以及 <a href="/zh/comfy-cli/getting-started">Comfy CLI</a> 作为另一种选择。

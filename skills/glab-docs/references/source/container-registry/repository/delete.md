@@ -9,8 +9,6 @@ Delete a container registry repository.
 
 ## Synopsis
 
-Delete a container registry repository.
-
 This action permanently deletes the repository and all images and tags
 published to it.
 

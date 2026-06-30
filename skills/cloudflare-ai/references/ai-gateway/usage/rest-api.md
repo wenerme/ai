@@ -20,12 +20,16 @@ No provider SDKs or API keys are needed. Authentication and billing are handled 
 
 Four endpoints are available, each suited to different use cases:
 
-| Endpoint                     | Format                     | Use case                                         |
-| ---------------------------- | -------------------------- | ------------------------------------------------ |
-| POST /ai/run                 | Envelope with model, input | All models and modalities (LLM, image, TTS, ASR) |
-| POST /ai/v1/chat/completions | OpenAI chat completions    | LLMs — OpenAI SDK compatible                     |
-| POST /ai/v1/responses        | OpenAI Responses API       | Agentic workflows — OpenAI SDK compatible        |
-| POST /ai/v1/messages         | Anthropic Messages API     | LLMs — Anthropic SDK compatible                  |
+| Endpoint                     | Format                     | Use case                                         | Third-Party Models | Workers AI Models (@cf/) |
+| ---------------------------- | -------------------------- | ------------------------------------------------ | ------------------ | ------------------------ |
+| POST /ai/run                 | Envelope with model, input | All models and modalities (LLM, image, TTS, ASR) | ✅ Yes              | ✅ Yes                    |
+| POST /ai/v1/chat/completions | OpenAI chat completions    | LLMs — OpenAI SDK compatible                     | ✅ Yes              | ✅ Yes                    |
+| POST /ai/v1/responses        | OpenAI Responses API       | Agentic workflows — OpenAI SDK compatible        | ✅ Yes              | ✅ Model dependent        |
+| POST /ai/v1/messages         | Anthropic Messages API     | LLMs — Anthropic SDK compatible                  | ✅ Yes              | ❌ No                     |
+
+Note
+
+The `/ai/v1/messages` endpoint strictly uses Anthropic's API schema and supports routing to Anthropic and other third-party models. Workers AI models (`@cf/`) do not support this schema. Use `/ai/run` or `/ai/v1/chat/completions` for Workers AI models, or `/ai/v1/responses` only for Workers AI models that support the Responses API, such as GPT-OSS.
 
 ## Authentication
 
@@ -179,6 +183,6 @@ For more details on these options, refer to [Request handling](https://developer
 * [Model catalog](https://developers.cloudflare.com/ai/models/) — browse models supported by the REST API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API · Cloudflare AI Gateway docs","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API · Cloudflare AI Gateway docs","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/rest-api/","name":"REST API"}}]}
 ```
