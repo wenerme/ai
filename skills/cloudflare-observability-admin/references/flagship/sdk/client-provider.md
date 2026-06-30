@@ -34,8 +34,8 @@ We do not recommend using the client provider in public-facing apps right now. I
 
 The following example initializes the provider with a set of pre-fetched flags and evaluates them in a browser application.
 
-* [  JavaScript ](#tab-panel-8631)
-* [  TypeScript ](#tab-panel-8632)
+* [  JavaScript ](#tab-panel-8902)
+* [  TypeScript ](#tab-panel-8903)
 
 JavaScript
 
@@ -84,5 +84,5 @@ Evaluations are synchronous, so they do not block rendering. Flag values are fet
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/client-provider/#page","headline":"TypeScript Client SDK · Cloudflare Flagship docs","description":"Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.","url":"https://developers.cloudflare.com/flagship/sdk/client-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDKs"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/client-provider/","name":"TypeScript Client SDK"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/client-provider/","name":"TypeScript Client SDK"}}]}
 ```
