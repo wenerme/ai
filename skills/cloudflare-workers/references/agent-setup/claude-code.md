@@ -46,7 +46,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**
 For example:
 ```
-Check my Workers deployment logs for errors and suggest fixes.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Cloudflare platform access

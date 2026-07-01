@@ -34,8 +34,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve plan is required.
 
-* [ Dashboard ](#tab-panel-7035)
-* [ API ](#tab-panel-7036)
+* [ Dashboard ](#tab-panel-7267)
+* [ API ](#tab-panel-7268)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -57,6 +57,12 @@ Not all assets are eligible for Cache Reserve. To be admitted into Cache Reserve
 * Have a freshness time-to-live (TTL) of at least 10 hours (set by any means such as Cache-Control / [CDN-Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) origin response headers, [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl), [Cache TTL By Status](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/), or [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)),
 * Have a Content-Length response header.
 * When using [Image transformations](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/), original files are eligible for Cache Reserve, but resized file variants are not eligible because transformations happen after Cache Reserve in the response flow.
+
+## Purge behavior
+
+To remove all data from Cache Reserve, refer to [Cache Reserve clear button](#cache-reserve-clear-button).
+
+Note that [Purge Everything](https://developers.cloudflare.com/cache/how-to/purge-cache/) performs a soft purge on Cache Reserve and does not update metadata set by [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) (such as cache tags). To refresh that metadata, purge the individual asset or wait for it to fully expire.
 
 ## Limits
 
@@ -193,8 +199,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-7037)
-* [ API ](#tab-panel-7038)
+* [ Dashboard ](#tab-panel-7269)
+* [ API ](#tab-panel-7270)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -247,6 +253,6 @@ Response
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/cache-reserve/","name":"Cache Reserve"}}]}
 ```

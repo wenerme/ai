@@ -62,6 +62,12 @@ Consider the following scenario:
 
 In this case, the Cache Response Rule takes precedence. Cloudflare caches the asset for `3600` seconds (1 hour) based on the `s-maxage` directive set by the Cache Response Rule, while visitors still receive the original `s-maxage=600` from the origin because `cloudflare_only` is enabled.
 
+## Difference from Workers and Transform Rules
+
+Workers and [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/) execute after the caching decision has been made and cannot influence whether or how a response is cached. Only [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) can modify caching behavior based on origin response headers.
+
+If you need to override `Cache-Control` directives from the origin (for example, remove `private` or add `s-maxage`), use a [Cache Response Rule](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) — not a Worker or Transform Rule.
+
 ## Notes
 
 * If you strip last modified then Smart Edge Revalidation will be turned off.
@@ -69,6 +75,6 @@ In this case, the Cache Response Rule takes precedence. Cloudflare caches the as
 * Cache Response Rules can be versioned. Refer to the [Version Management](https://developers.cloudflare.com/version-management/) documentation for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/#page","headline":"Cache Response Rules · Cloudflare Cache (CDN) docs","description":"Control response headers and settings for cached content.","url":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/#page","headline":"Cache Response Rules · Cloudflare Cache (CDN) docs","description":"Control response headers and settings for cached content.","url":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-response-rules/","name":"Cache Response Rules"}}]}
 ```

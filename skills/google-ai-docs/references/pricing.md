@@ -170,6 +170,25 @@ translation, and simple data processing.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
+## Gemini Omni Flash Preview
+
+*`gemini-omni-flash-preview`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-omni-flash-preview)
+
+Our next-generation video generation and editing model, available to developers on the paid tier of the Gemini API.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $1.50 (text / image / video / audio) |
+| Output price (including thinking tokens) | Not available | $9.00 (text) $17.50 (video)^\*^ |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Billing is based on total output token consumption, calculated at a rate of 5,792 tokens per second of 720p video. Under Standard pricing, this equates to an effective price of approximately $0.10 per second.
+
 ## Gemini 3.1 Pro Preview
 
 *`gemini-3.1-pro-preview` and `gemini-3.1-pro-preview-customtools`*
@@ -288,6 +307,35 @@ are equivalent to $0.101 per image. Output images at 4K (4096x4096px) consume
 queries to Google Search. You will be charged for each individual search query
 performed. Retrieved context (text or images) provided by Grounding with Google
 Search is not charged as input tokens.
+
+## Gemini 3.1 Flash Lite Image 🍌
+
+*`gemini-3.1-flash-lite-image`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-lite-image)
+
+Designed as the efficiency specialist of the image generation family, the Gemini 3.1
+Flash Lite Image model is designed for ultra-low latency and cost-effective image
+generation and editing.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.25 (text/image/video) |
+| Output price | Not available | $1.50 (text and thinking) $30.00 (images) Equivalent to $0.0336 per 1K resolution image^\*^ |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.125 (text/image/video) |
+| Output price | Not available | $0.75 (text and thinking) $15.00 (images) Equivalent to $0.0168 per 1K resolution image^\*^ |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Image output is priced at $30 per 1,000,000 tokens. Output images at 1K (1024x1024px) consume 1120 tokens and are equivalent to $0.0336 per image.
 
 ## Gemini 3.1 Flash TTS Preview
 

@@ -1,28 +1,36 @@
-# Models
-
 *** ** * ** ***
 
 ## Gemini 3
 
-[### Gemini 3.1 Pro
-Advanced intelligence, complex problem-solving skills, and powerful agentic and vibe coding capabilities.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [### Gemini 3.5 Flash
+### Stable
+
+[### Gemini 3.5 Flash
 Most intelligent model for sustained frontier performance on agentic and coding tasks.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3 Flash
-Frontier-class performance rivaling larger models at a fraction of the cost.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.1 Flash-Lite
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana Pro
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana Lite
+Ultra-low latency and cost-effective image generation and editing, designed for high-volume interactive use cases.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) [### Gemini 3.5 Live Translate
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image)
+
+### Preview
+
+[### Gemini 3.1 Pro
+Advanced intelligence, complex problem-solving skills, and powerful agentic and vibe coding capabilities.
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [### Gemini 3 Flash
+Frontier-class performance rivaling larger models at a fraction of the cost.
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.5 Live Translate
 Low-latency, real-time speech to speech translation model that supports 70+ languages.
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) [### Gemini 3.1 Flash Live
 High-quality, low-latency Live API model for real-time dialogue and voice-first AI applications.
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Powerful, low-latency speech generation.
-New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview)
+New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) [### Gemini Omni Flash
+Fast, conversational video generation and editing. Turn text and images into video, and refine results through natural language.
+New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 *** ** * ** ***
 
@@ -100,6 +108,10 @@ High-fidelity speech synthesis optimized for quality in structured workflows lik
 
 High-efficiency production-scale visual creation, combining the intelligence of the Gemini 3 series with lightning-fast generation speeds.
 
+### [Nano Banana Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image)
+
+Designed as the efficiency specialist of the image generation family, offering ultra-low latency and cost-effective image generation and editing.
+
 ### [Veo 3.1 Preview](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview)
 
 State-of-the-art cinematic video generation with advanced creative controls and natively synchronized audio.
@@ -112,6 +124,12 @@ A professional design engine with a reasoning core for studio-quality 4K visuals
 
 High-efficiency, low-cost, developer-first video generation, editing, and cinematic control from the Veo 3.1 family.
 
+### [Gemini Omni Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
+
+Fast, conversational video generation and editing. Turn text and images into video, and refine results through natural language.
+
+<br />
+
 ### [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)
 
 State-of-the-art native image generation and editing designed for fast, creative workflows.
@@ -121,6 +139,8 @@ State-of-the-art native image generation and editing designed for fast, creative
 Text-to-image model yet, featuring fast and ultra-fast generation and exceptional clarity up to 2K resolution.
 
 *** ** * ** ***
+
+<br />
 
 ## Music generation models
 

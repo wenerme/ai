@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Check my Workers deployment logs for errors and suggest fixes.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 1. **Download Codex**

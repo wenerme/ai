@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Zen | Models"
-description: "Use OpenCode Zen models with Mastra. 46 models available."
+description: "Use OpenCode Zen models with Mastra. 49 models available."
 ---
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 46 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 49 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -158,6 +158,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "opencode/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "opencode/deepseek-v4-flash",
@@ -508,6 +520,18 @@ for await (const chunk of stream) {
     "outputCost": 4
   },
   {
+    "model": "opencode/kimi-k2.7-code",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.95,
+    "outputCost": 4
+  },
+  {
     "model": "opencode/mimo-v2.5-free",
     "imageInput": true,
     "audioInput": true,
@@ -540,6 +564,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 204800,
     "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "opencode/minimax-m3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 512000,
+    "maxOutput": 128000,
     "inputCost": 0.3,
     "outputCost": 1.2
   },

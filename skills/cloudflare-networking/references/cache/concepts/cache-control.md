@@ -86,6 +86,10 @@ For more details, refer to [Revalidation](https://developers.cloudflare.com/cach
 
 * `stale-if-error=<seconds>` — Indicates that when an error is encountered, a cached stale response may be used to satisfy the request, regardless of other freshness information. To avoid this behavior, include `stale-if-error=0` directive with the object returned from the origin. This directive is not supported when using the Cache API methods `cache.match` or `cache.put`. For more information, refer to the [Workers documentation for Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/#methods).
 
+Error status codes
+
+The `stale-if-error` directive triggers when your origin returns a `5xx` status code (`500`, `502`, `503`, `504`). Other responses such as `404` are not considered errors for this purpose — the origin response replaces the stale cached content. There is currently no way to customize which status codes trigger `stale-if-error`.
+
 The `stale-if-error` directive is ignored if [Always Online](https://developers.cloudflare.com/cache/how-to/always-online/) is enabled or if an explicit in-protocol directive is passed. Examples of explicit in-protocol directives include a `no-store` or `no-cache cache` directive, a `must-revalidate` cache-response-directive, or an applicable `s-maxage` or `proxy-revalidate` cache-response-directive.
 
 ### Other
@@ -122,6 +126,10 @@ If you enable Origin Cache Control, Cloudflare will aim to strictly adhere to [R
 ## Origin Cache Control behavior
 
 The following section covers the directives and behavioral conditions associated with enabling or disabling Origin Cache Control.
+
+Integer values required
+
+The `max-age`, `s-maxage`, and `stale-while-revalidate` directives require integer values per RFC 9111\. Floating-point values (for example, `max-age=2.5`) are not valid and will be ignored, potentially causing cache bypass. Ensure your origin returns integer TTL values.
 
 ### Directives
 
@@ -234,6 +242,6 @@ Compression is disabled when the `no-transform` directive is present. If the ori
 [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) injection is disabled when the `no-transform` directive is present. The `cf.bot_management.js_detection.passed` field will show as `missing` for affected requests.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-control/#page","headline":"Origin Cache Control · Cloudflare Cache (CDN) docs","description":"How origin Cache-Control headers affect Cloudflare caching behavior.","url":"https://developers.cloudflare.com/cache/concepts/cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-control/#page","headline":"Origin Cache Control · Cloudflare Cache (CDN) docs","description":"How origin Cache-Control headers affect Cloudflare caching behavior.","url":"https://developers.cloudflare.com/cache/concepts/cache-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/cache-control/","name":"Origin Cache Control"}}]}
 ```

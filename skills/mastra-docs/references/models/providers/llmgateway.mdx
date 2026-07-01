@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 178 models available."
+description: "Use LLM Gateway models with Mastra. 179 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 178 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 179 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -216,6 +216,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 64000,
+    "inputCost": 3,
+    "outputCost": 15
+  },
+  {
+    "model": "llmgateway/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
     "inputCost": 3,
     "outputCost": 15
   },
@@ -1068,8 +1080,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 2000000,
     "maxOutput": 30000,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "llmgateway/grok-4-20-reasoning",
@@ -1080,8 +1092,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 2000000,
     "maxOutput": 30000,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "llmgateway/grok-4-3",
@@ -1750,7 +1762,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262000,
+    "contextWindow": 262144,
     "maxOutput": 8192,
     "inputCost": 0.09,
     "outputCost": 0.58
@@ -1897,7 +1909,7 @@ for await (const chunk of stream) {
     "contextWindow": 131072,
     "maxOutput": 32768,
     "inputCost": 0.15,
-    "outputCost": 1.5
+    "outputCost": 1.2
   },
   {
     "model": "llmgateway/qwen3-next-80b-a3b-thinking",
