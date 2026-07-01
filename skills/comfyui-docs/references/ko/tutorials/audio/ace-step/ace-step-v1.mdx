@@ -1,35 +1,41 @@
 ---
 title: "ComfyUI ACE-Step 네이티브 예제"
 description: "이 가이드는 ComfyUI에서 ACE-Step 모델을 사용해 다이내믹한 음악을 만드는 데 도움을 줄 것입니다."
-translationSourceHash: 68826c13
+translationSourceHash: 0090114c
 translationFrom: tutorials/audio/ace-step/ace-step-v1.mdx
+translationBlockHashes:
+  "_intro": 56ef7364
+  "ACE-Step ComfyUI Text-to-Audio Generation Workflow Example": 3f211bda
+  "ACE-Step ComfyUI Audio-to-Audio Workflow": fe7381f0
+  "ACE-Step Prompt Guide": 90bf0bf7
+  "ACE-Step Related Resources": f74e2db9
 ---
 
-ACE-Step는 중국 팀 StepFun과 ACE Studio가 공동 개발한 오픈소스 기반 음악 생성 모델로, 음악 창작자들에게 효율적이고 유연하며 고품질의 음악 생성 및 편집 도구를 제공하는 것을 목표로 합니다.
+ACE-Step은 중국 팀 StepFun과 ACE Studio가 공동 개발한 오픈소스 기초 음악 생성 모델로, 음악 창작자들에게 효율적이고 유연하며 고품질의 음악 생성 및 편집 도구를 제공하는 것을 목표로 합니다.
 
 이 모델은 [Apache-2.0](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-license) 라이선스로 배포되며 상업적 사용도 무료입니다.
 
-강력한 음악 생성 기반인 ACE-Step는 풍부한 확장성을 제공합니다. LoRA와 ControlNet 같은 미세 조정 기법을 통해 개발자들은 실제 필요에 맞게 모델을 커스터마이징할 수 있습니다.
+강력한 음악 생성 기반인 ACE-Step은 풍부한 확장성을 제공합니다. LoRA와 ControlNet 같은 미세 조정 기법을 통해 개발자들은 실제 필요에 맞게 모델을 커스터마이징할 수 있습니다.
 
-오디오 편집, 보컬 합성, 반주 제작, 음성 클론, 스타일 전송 등 다양한 애플리케이션에서 ACE-Step는 안정적이고 신뢰할 수 있는 기술 지원을 제공합니다.
+오디오 편집, 보컬 합성, 반주 제작, 음성 클론, 스타일 전송 등 다양한 애플리케이션에서 ACE-Step은 안정적이고 신뢰할 수 있는 기술 지원을 제공합니다.
 
 이 유연한 아키텍처는 음악 AI 애플리케이션 개발 과정을 크게 간소화하여 더 많은 창작자가 AI 기술을 음악 제작에 빠르게 적용할 수 있도록 해줍니다.
 
-현재 ACE-Step는 LoRA 모델 훈련을 포함한 관련 훈련 코드를 공개했으며, 향후 해당 ControlNet 훈련 코드도 공개될 예정입니다. 자세한 내용은 그들의 [Github](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-roadmap)를 방문해 확인하실 수 있습니다.
+현재 ACE-Step는 LoRA 모델 학습을 포함한 관련 학습 코드를 공개했으며, 향후 해당 ControlNet 학습 코드도 공개될 예정입니다. 자세한 내용은 그들의 [Github](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-roadmap)를 방문해 확인하실 수 있습니다.
 
-## ACE-Step ComfyUI 텍스트-to-오디오 생성 워크플로우 예시
+## ACE-Step ComfyUI 텍스트 기반 오디오 생성 워크플로 예시
 
-### 1. 워크플로우 및 관련 모델 다운로드
+### 1. 워크플로 및 관련 모델 다운로드
 
-아래 버튼을 클릭해 해당 워크플로우 파일을 다운로드하세요. 이를 ComfyUI로 드래그해 워크플로우 정보를 로드하세요. 워크플로우에는 모델 다운로드 정보도 포함되어 있습니다.
+아래 버튼을 클릭해 해당 워크플로 파일을 다운로드하세요. 이를 ComfyUI로 드래그해 워크플로 정보를 로드하세요. 워크플로에는 모델 다운로드 정보도 포함되어 있습니다.
 
 <a className="prose"  target='_blank' href="https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/audio/ace-step/ace_step_1_t2m.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Json 형식 워크플로우 파일 다운로드</p>
+    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Json 형식 워크플로 파일 다운로드</p>
 </a>
 
 또는 [ace_step_v1_3.5b.safetensors](https://huggingface.co/Comfy-Org/ACE-Step_ComfyUI_repackaged/blob/main/all_in_one/ace_step_v1_3.5b.safetensors)를 수동으로 다운로드해 `ComfyUI/models/checkpoints` 폴더에 저장할 수도 있습니다.
 
-### 2. 워크플로우 단계별 완료하기
+### 2. 워크플로 단계별 완료하기
 
 [단계 안내]
 1. `Load Checkpoints` 노드가 `ace_step_v1_3.5b.safetensors` 모델을 로드했는지 확인하세요.
@@ -38,11 +44,11 @@ ACE-Step는 중국 팀 StepFun과 ACE Studio가 공동 개발한 오픈소스 �
 4. (선택사항) `TextEncodeAceStepAudio`의 `tags` 필드에 해당하는 음악 스타일 등을 입력하세요.
 5. (선택사항) `TextEncodeAceStepAudio`의 `lyrics` 필드에 해당하는 가사를 입력하세요.
 6. `Run` 버튼을 클릭하거나 단축키 `Ctrl(cmd) + Enter`를 사용해 오디오 생성을 실행하세요.
-7. 워크플로우가 완료된 후, `Save Audio` 노드에서 생성된 오디오를 미리 들을 수 있습니다. 클릭해 재생하고 들어보세요. 또한 오디오는 `ComfyUI/output/audio` 폴더에 저장됩니다(저장 위치는 `Save Audio` 노드에 따라 결정됨).
+7. 워크플로가 완료된 후, `Save Audio` 노드에서 생성된 오디오를 미리 들을 수 있습니다. 클릭해 재생하고 들어보세요. 또한 오디오는 `ComfyUI/output/audio` 폴더에 저장됩니다(저장 위치는 `Save Audio` 노드에 따라 결정됨).
 
-## ACE-Step ComfyUI 오디오-to-오디오 워크플로우
+## ACE-Step ComfyUI 오디오 기반 오디오 생성 워크플로우
 
-이미지-to-이미지 워크플로우와 비슷하게, 한 곡의 음악을 입력해 아래 워크플로우를 사용해 리샘플링하고 음악을 생성할 수 있습니다. 또한 `Ksampler`의 `denoise` 파라미터를 조정해 원본 오디오와의 차이를 조절할 수 있습니다.
+텍스트 기반 오디오 생성 워크플로우와 비슷하게, 한 곡의 음악을 입력해 아래 워크플로우를 사용해 리샘플링하고 음악을 생성할 수 있습니다. 또한 `Ksampler`의 `denoise` 파라미터를 조정해 원본 오디오와의 차이를 조절할 수 있습니다.
 
 ### 1. 워크플로우 파일 다운로드
 
@@ -105,7 +111,7 @@ ACE는 현재 두 가지 유형의 프롬프트를 사용합니다: `tags`와 `l
 
 #### 장면 유형
 
-특정 사용场景과 분위기를 결합해 해당 분위기에 맞는 음악을 생성하세요.
+특정 사용 장면과 분위기를 결합하여 해당 분위기에 맞는 음악을 생성합니다.
 
 - 파티용 배경음악
 - 라디오 방송
@@ -202,4 +208,4 @@ ACE는 현재 두 가지 유형의 프롬프트를 사용합니다: `tags`와 `l
 - [프로젝트 페이지](https://ace-step.github.io/)
 - [Hugging Face](https://huggingface.co/ACE-Step/ACE-Step-v1-3.5B) 
 - [GitHub](https://github.com/ace-step/ACE-Step)
-- [훈련 스크립트](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-train)
+- [학습 스크립트](https://github.com/ace-step/ACE-Step?tab=readme-ov-file#-train)

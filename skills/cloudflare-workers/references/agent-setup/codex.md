@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 1. **Download Codex**

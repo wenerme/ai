@@ -272,7 +272,7 @@ Configure how [event iterators](/docs/event-iterator) are streamed to the server
 
 ```ts
 const link = new RPCLink({
-  toFetchBody: {
+  toFetchRequest: {
     eventStream: {
       initialComment: {
         /**

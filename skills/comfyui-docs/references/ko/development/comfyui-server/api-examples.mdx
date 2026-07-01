@@ -97,7 +97,7 @@ if __name__ == "__main__":
 WebSocket을 사용해 실행이 완료될 때까지 기다린 후, `/history` 엔드포인트를 통해 출력물을 가져옵니다. 대부분의 사용 사례에 권장되는 방식입니다.
 
 ```python
-"""websockets_api_example.py — WebSocket을 통해 실행 상태를 모니터링하고, /history를 통해 다운로드합니다."""
+"""websockets_api_example.py: WebSocket을 통해 실행 상태를 모니터링하고, /history를 통해 다운로드합니다."""
 
 import websocket  # pip install websocket-client
 import uuid
@@ -199,7 +199,7 @@ WebSocket 이진 프레임에는 생성 중인 미리보기 이미지가 포함�
 이미지를 디스크에 저장하지 않고 싶은 경우, `SaveImageWebsocket` 노드를 사용하세요. 이미지는 WebSocket 이진 프레임을 통해 바로 전송됩니다.
 
 ```python
-"""websockets_api_example_ws_images.py — WebSocket을 통해 직접 이미지를 수신합니다."""
+"""websockets_api_example_ws_images.py: WebSocket을 통해 직접 이미지를 수신합니다."""
 
 import websocket  # pip install websocket-client
 import uuid
@@ -234,7 +234,7 @@ def get_images(ws, prompt):
                         break  # 실행 완료
                     current_node = data["node"]
         else:
-            # 이진 프레임 — SaveImageWebsocket에서 온 이미지 데이터
+            # 이진 프레임; SaveImageWebsocket에서 온 이미지 데이터
             if current_node == "save_image_websocket_node":
                 images_output = output_images.get(current_node, [])
                 # 처음 8바이트는 타입/메타데이터, 나머지는 이미지 데이터

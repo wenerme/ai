@@ -39,7 +39,7 @@ Workers for Platforms provides tools to manage and control your customers' code:
 
 Explore reference architectures that use Workers for Platforms:
 
-[Programmable PlatformsWorkers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)[AI Vibe Coding PlatformCloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
+[Programmable PlatformsWorkers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)[AI Vibe Coding PlatformCloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)[Enterprise AI Vibe Coding PlatformReference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
 
 ---
 

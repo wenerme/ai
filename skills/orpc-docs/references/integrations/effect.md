@@ -65,7 +65,7 @@ export const base = os
 
 ### Effect Services
 
-You can provide Effect services through the oRPC context in a typesafe way with `WithEffectContext` and `~effect/context`:
+You can provide Effect services through the oRPC context in a typesafe way with `WithEffectContext` and `effect/context`:
 
 ```ts twoslash
 import { call, os } from '@orpc/server'
@@ -73,12 +73,12 @@ import { call, os } from '@orpc/server'
 import { handlerGen, WithEffectContext } from '@orpc/experimental-effect'
 import { Context, Effect } from 'effect'
 
-class Random extends Context.Tag('MyRandomService')<
+class Random extends Context.Service<
   Random,
   {
     readonly next: Effect.Effect<number>
   }
->() {}
+>()('MyRandomService') {}
 
 interface ServerContext extends WithEffectContext<Random> {}
 
@@ -92,7 +92,7 @@ const procedure = os
 
 const random = await call(procedure, undefined, {
   context: {
-    '~effect/context': Context.empty().pipe(
+    'effect/context': Context.empty().pipe(
       Context.add(Random, {
         next: Effect.succeed(Math.random()),
       }),
@@ -109,7 +109,7 @@ const procedure = os
   .use(({ context, next }) => {
     return next({
       context: {
-        '~effect/context': context['~effect/context'].pipe(
+        'effect/context': context['effect/context'].pipe(
           Context.add(AdditionService, {}),
         )
       }
@@ -124,7 +124,7 @@ const procedure = os
 
 This integration preserves the original error whenever possible. If you call `Effect.fail(error)`, the error is forwarded to [middleware](/docs/middleware) and interceptors, just like a regular thrown error.
 
-To customize this behavior, wrap the effect before execution using `~effect/wrap` in the context:
+To customize this behavior, wrap the effect before execution using `effect/wrap` in the context:
 
 ```ts
 import { Context, Effect } from 'effect'
@@ -134,9 +134,9 @@ interface ServerContext extends WithEffectContext<never> {}
 export async function fetch(request: Request) {
   const { response } = await handler.fetch(request, {
     context: {
-      '~effect/context': Context.empty(),
-      '~effect/wrap': (effect, opts) => effect.pipe(
-        Effect.catchAllCause((cause) => {
+      'effect/context': Context.empty(),
+      'effect/wrap': (effect, opts) => effect.pipe(
+        Effect.catchCause((cause) => {
 
         })
       ),
@@ -177,13 +177,13 @@ if (isInferableError(error)) {
 
 ## Effect Schema
 
-oRPC natively supports [Standard Schema](https://standardschema.dev/schema#what-schema-libraries-implement-the-spec), and [Effect Schema](https://effect.website/docs/schema/introduction/) implements that spec through [Schema.standardSchemaV1](https://effect.website/docs/schema/standard-schema/):
+oRPC natively supports [Standard Schema](https://standardschema.dev/schema#what-schema-libraries-implement-the-spec), and [Effect Schema](https://effect.website/docs/schema/introduction/) implements that spec through [Schema.toStandardSchemaV1](https://effect.website/docs/schema/standard-schema/):
 
 ```ts
 import { Schema } from 'effect'
 
 const procedure = os
-  .input(Schema.standardSchemaV1(Schema.Struct({ name: Schema.String })))
+  .input(Schema.toStandardSchemaV1(Schema.Struct({ name: Schema.String })))
   .handler(handlerGen(function* ({ input, context }) {
     return `Hello ${input.name}!`
   }))
@@ -226,7 +226,7 @@ const generator = new OpenAPIGenerator({
 
 ## OpenTelemetry Integration
 
-First, set up the [oRPC OpenTelemetry integration](/docs/integrations/opentelemetry). Then instrument your Effect to work seamlessly with OpenTelemetry by providing `TracingLive` through `~effect/wrap` in the context. This makes Effect tracing equivalent to OpenTelemetry tracing:
+First, set up the [oRPC OpenTelemetry integration](/docs/integrations/opentelemetry). Then instrument your Effect to work seamlessly with OpenTelemetry by providing `TracingLive` through `effect/wrap` in the context. This makes Effect tracing equivalent to OpenTelemetry tracing:
 
 ```ts
 import { Resource, Tracer } from '@effect/opentelemetry'
@@ -241,8 +241,8 @@ const TracingLive = Tracer.layerGlobal.pipe(
 export async function fetch(request: Request) {
   const { response } = await handler.fetch(request, {
     context: {
-      '~effect/context': Context.empty(),
-      '~effect/wrap': (effect, opts) => effect.pipe(Effect.provide(TracingLive)),
+      'effect/context': Context.empty(),
+      'effect/wrap': (effect, opts) => effect.pipe(Effect.provide(TracingLive)),
     }
   })
 

@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26731 files, 285 MiB total
+> 106 skills, 26746 files, 285 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1202,7 +1202,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `anthropic-sdk-ruby` | 159 | 8.3 MiB |
 | `anthropic-sdk-typescript` | 159 | 8.5 MiB |
 | `argocd-cli-guide` | 2 | 7.5 KiB |
-| `biome-docs` | 603 | 7.5 MiB |
+| `biome-docs` | 604 | 7.5 MiB |
 | `biome-lint` | 4 | 13 KiB |
 | `brainstorming` | 1 | 4.6 KiB |
 | `bun-docs` | 318 | 1.6 MiB |
@@ -1215,20 +1215,20 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-data` | 395 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 826 | 5.0 MiB |
-| `cloudflare-observability-admin` | 1227 | 8.1 MiB |
-| `cloudflare-security` | 1005 | 5.5 MiB |
+| `cloudflare-observability-admin` | 1228 | 8.1 MiB |
+| `cloudflare-security` | 1006 | 5.5 MiB |
 | `cloudflare-workers` | 770 | 7.0 MiB |
-| `cloudflare-zero-trust` | 929 | 9.6 MiB |
+| `cloudflare-zero-trust` | 929 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4644 | 14 MiB |
+| `comfyui-docs` | 4652 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 275 | 1.8 MiB |
+| `evalscope-docs` | 276 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
-| `gitea-docs` | 102 | 693 KiB |
+| `gitea-docs` | 102 | 692 KiB |
 | `glab-cli` | 5 | 21 KiB |
 | `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
@@ -1248,7 +1248,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 771 | 6.0 MiB |
+| `mastra-docs` | 772 | 6.0 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1261,7 +1261,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `opencode-docs` | 53 | 455 KiB |
 | `openobserve-docs` | 443 | 2.3 MiB |
 | `openrouter-docs` | 499 | 6.4 MiB |
-| `orpc-docs` | 73 | 286 KiB |
+| `orpc-docs` | 75 | 299 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |

@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Cloudflare platform access

@@ -26,8 +26,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-11503)
-* [  wrangler.toml ](#tab-panel-11504)
+* [  wrangler.jsonc ](#tab-panel-11778)
+* [  wrangler.toml ](#tab-panel-11779)
 
 JSONC
 
@@ -61,23 +61,23 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-11507)
-* [  wrangler.toml ](#tab-panel-11508)
+* [  wrangler.jsonc ](#tab-panel-11782)
+* [  wrangler.toml ](#tab-panel-11783)
 
 JSONC
 
 ```
-{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24"}
+{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-07-01"}
 ```
 
 TOML
 
 ```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-07-01"
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11501)
-* [  wrangler.toml ](#tab-panel-11502)
+* [  wrangler.jsonc ](#tab-panel-11776)
+* [  wrangler.toml ](#tab-panel-11777)
 
 JSONC
 
@@ -95,8 +95,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-11505)
-* [  wrangler.toml ](#tab-panel-11506)
+* [  wrangler.jsonc ](#tab-panel-11780)
+* [  wrangler.toml ](#tab-panel-11781)
 
 JSONC
 
@@ -1533,18 +1533,41 @@ const response = await fetch("https://example.com");let cookieValues = response.
 
 Enables [Node.js APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) in the Workers Runtime.
 
-Note that some Node.js APIs are only enabled if your Worker's compatibility date is set to on or after the following dates:
+Note that some Node.js APIs are only enabled when your Worker's compatibility date is on or after the following dates:
 
-| Node.js API                                                                                                                                                 | Enabled after |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| [http.server](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-nodejs-http-server-modules)                               | 2025-09-01    |
-| [node:http, node:https](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-availability-of-nodehttp-and-nodehttps-modules) | 2025-08-15    |
-| [process.env](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-auto-populating-processenv)                               | 2025-04-01    |
-| [Disable Top-level Await in require()](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#disable-top-level-await-in-require)     | 2024-12-02    |
+| Node.js API                                                                                                                                                 | Enabled with nodejs\_compat on or after |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| [Disable Top-level Await in require()](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#disable-top-level-await-in-require)     | 2024-12-02                              |
+| [process.env](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-auto-populating-processenv)                               | 2025-04-01                              |
+| [node:http, node:https](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-availability-of-nodehttp-and-nodehttps-modules) | 2025-08-15                              |
+| [http.server](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-nodejs-http-server-modules)                               | 2025-09-01                              |
 
-When enabling `nodejs_compat`, we recommend using the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/), and the latest compatiblity date, in order to maximize compatibility. Some older versions of Wrangler inject additional polyfills that are no longer neccessary, as they are provided by the Workers runtime, if your Worker is using a more recent compatibility date.
+Some Node.js modules are available in Workers only as non-functional stubs. These modules can be imported or required, but do not provide working implementations of the corresponding Node.js APIs. Stubs exist for compatibility with packages that check whether a module exists, and should not be used directly in application code.
 
-If you see errors using a particular NPM package on Workers, you should first try updating your compatibility date and use the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you still encounter issues, please report them by [opening a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
+The following stubs are enabled automatically only when `nodejs_compat` is enabled and your Worker's compatibility date is on or after the date shown:
+
+| Stub module                                                                        | Enabled with nodejs\_compat on or after | Enable flag                             | Disable flag                             |
+| ---------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------- | ---------------------------------------- |
+| [node:http2 ↗](https://nodejs.org/docs/latest/api/http2.html)                      | 2025-09-01                              | enable\_nodejs\_http2\_module           | disable\_nodejs\_http2\_module           |
+| [node:vm ↗](https://nodejs.org/docs/latest/api/vm.html)                            | 2025-10-01                              | enable\_nodejs\_vm\_module              | disable\_nodejs\_vm\_module              |
+| [node:cluster ↗](https://nodejs.org/docs/latest/api/cluster.html)                  | 2025-12-04                              | enable\_nodejs\_cluster\_module         | disable\_nodejs\_cluster\_module         |
+| [node:domain ↗](https://nodejs.org/docs/latest/api/domain.html)                    | 2025-12-04                              | enable\_nodejs\_domain\_module          | disable\_nodejs\_domain\_module          |
+| [node:trace\_events ↗](https://nodejs.org/docs/latest/api/tracing.html)            | 2025-12-04                              | enable\_nodejs\_trace\_events\_module   | disable\_nodejs\_trace\_events\_module   |
+| [node:wasi ↗](https://nodejs.org/docs/latest/api/wasi.html)                        | 2025-12-04                              | enable\_nodejs\_wasi\_module            | disable\_nodejs\_wasi\_module            |
+| node:\_stream\_wrap                                                                | 2026-01-29                              | enable\_nodejs\_stream\_wrap\_module    | disable\_nodejs\_stream\_wrap\_module    |
+| [node:dgram ↗](https://nodejs.org/docs/latest/api/dgram.html)                      | 2026-01-29                              | enable\_nodejs\_dgram\_module           | disable\_nodejs\_dgram\_module           |
+| [node:inspector ↗](https://nodejs.org/docs/latest/api/inspector.html)              | 2026-01-29                              | enable\_nodejs\_inspector\_module       | disable\_nodejs\_inspector\_module       |
+| [node:sqlite ↗](https://nodejs.org/docs/latest/api/sqlite.html)                    | 2026-01-29                              | enable\_nodejs\_sqlite\_module          | disable\_nodejs\_sqlite\_module          |
+| [node:child\_process ↗](https://nodejs.org/docs/latest/api/child%5Fprocess.html)   | 2026-03-17                              | enable\_nodejs\_child\_process\_module  | disable\_nodejs\_child\_process\_module  |
+| [node:readline ↗](https://nodejs.org/docs/latest/api/readline.html)                | 2026-03-17                              | enable\_nodejs\_readline\_module        | disable\_nodejs\_readline\_module        |
+| [node:repl ↗](https://nodejs.org/docs/latest/api/repl.html)                        | 2026-03-17                              | enable\_nodejs\_repl\_module            | disable\_nodejs\_repl\_module            |
+| [node:tty ↗](https://nodejs.org/docs/latest/api/tty.html)                          | 2026-03-17                              | enable\_nodejs\_tty\_module             | disable\_nodejs\_tty\_module             |
+| [node:v8 ↗](https://nodejs.org/docs/latest/api/v8.html)                            | 2026-03-17                              | enable\_nodejs\_v8\_module              | disable\_nodejs\_v8\_module              |
+| [node:worker\_threads ↗](https://nodejs.org/docs/latest/api/worker%5Fthreads.html) | 2026-03-17                              | enable\_nodejs\_worker\_threads\_module | disable\_nodejs\_worker\_threads\_module |
+
+When enabling `nodejs_compat`, we recommend using the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/), and the latest compatibility date, in order to maximize compatibility. Some older versions of Wrangler inject additional polyfills that are no longer necessary when your Worker uses a more recent compatibility date, because they are provided by the Workers runtime.
+
+If you see errors using a particular npm package on Workers, you should first try updating your compatibility date and use the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you still encounter issues, please report them by [opening a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
 
 ### Streams Constructors
 

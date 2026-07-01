@@ -68,7 +68,7 @@ const link = new OpenAPILink(contractRef, {
   ]
 })
 
-export const call = createContractCaller(link, { contractRef })
+export const call = createContractJsonifiedCaller(link, { contractRef })
 ```
 
 The idea behind `contractRef` is simple: every time `call` is used, the caller automatically registers the called procedure contract into `contractRef` at the path defined by `meta.path`.
