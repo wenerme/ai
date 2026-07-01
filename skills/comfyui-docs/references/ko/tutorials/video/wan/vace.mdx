@@ -1,8 +1,17 @@
 ---
-title: "ComfyUI Wan2.1 VACE 동영상 예제"
-description: "이 기사에서는 ComfyUI에서 Wan VACE 동영상 생성 예제를 완료하는 방법을 소개합니다."
-translationSourceHash: 379bd35f
+title: "ComfyUI Wan2.1 VACE 비디오 예제"
+description: "이 기사에서는 ComfyUI에서 Wan VACE 비디오 생성 예제를 완료하는 방법을 소개합니다."
+translationSourceHash: 9b04cff5
 translationFrom: tutorials/video/wan/vace.mdx
+translationBlockHashes:
+  "_intro": f6c2c850
+  "About VACE": 4fa63090
+  "Model Download and Loading in Workflows": 61bc1fa6
+  "VACE Text-to-Video Workflow": 0275c575
+  "VACE Image-to-Video Workflow": 6dbc84f2
+  "VACE Video-to-Video Workflow": 0b58d1d2
+  "VACE Video Outpainting Workflow": 22da2682
+  "VACE First-Last Frame Video Generation": 0f2de66b
 ---
 
 템플릿을 조정하고 CausVid LoRA에 대한 관련 사용법과 지침을 추가했으므로, 이 문서를 업데이트해야 하며 일정 준비 시간이 필요합니다. 그때까지는 템플릿의 참고사항을 참조해 주시기 바랍니다.
@@ -79,9 +88,9 @@ VACE 14B는 알리바바 통이 완샹팀이 출시한 오픈소스 통합 비�
 
 <CancelBypass/>
 
-## VACE 텍스트-to-비디오 워크플로
+## VACE 텍스트 기반 비디오 생성 워크플로
 
-mp4 파일로 워크플로를 로드할 수 없는 경우, ComfyUI 프론트엔드 버전이 [requirements.txt](https://github.com/Comfy-Org/ComfyUI/blob/master/requirements.txt)에 명시된 최신 버전인지 확인해 주세요. mp4 파일로 워크플로를 로드할 수 있는지 확인해 주세요.
+mp4 파일로 워크플로를 로드할 수 없는 경우, ComfyUI 프론트엔드 버전이 [requirements.txt](https://github.com/Comfy-Org/ComfyUI/blob/master/requirements.txt)에 명시된 최신 버전인지 확인하여 mp4 파일에서 워크플로를 로드할 수 있도록 해주세요.
 
 현재 requirements.txt 파일에 명시된 ComfyUI 프론트엔드 최신 버전은 1.19.9입니다.
 
@@ -101,7 +110,7 @@ mp4 파일로 워크플로를 로드할 수 없는 경우, ComfyUI 프론트엔�
 이미지의 번호순대로 진행해 원활한 워크플로 실행을 보장해 주세요.
 
 1. `CLIP Text Encode (Positive Prompt)` 노드에 긍정적 프롬프트를 입력하세요.
-2. `CLIP Text Encode (Negative Prompt)` 노드에 부정적 프롬프트를 입력하세요.
+2. `CLIP Text Encode (Negative Prompt)` 노드에 네거티브 프롬프트를 입력하세요.
 3. `WanVaceToVideo`에서 이미지 크기(첫 실행 시 640x640 해상도 권장)와 프레임 수(비디오 길이)를 설정하세요.
 4. `Run` 버튼을 클릭하거나 단축키 `Ctrl(cmd) + Enter`를 사용해 비디오 생성을 실행하세요.
 5. 생성이 완료되면 비디오는 자동으로 `ComfyUI/output/video` 디렉토리에 저장됩니다(저장 위치는 `save video` 노드 설정에 따라 달라집니다).
@@ -112,6 +121,95 @@ mp4 파일로 워크플로를 로드할 수 없는 경우, ComfyUI 프론트엔�
 
 하지만 720P 화질이 더 우수합니다.
 
-## VACE 이미지-to-비디오 워크플로
+## VACE 이미지 기반 비디오 생성 워크플로
 
-위 워크플로를 그대로 사용할 수 있으며, **Load reference image
+위 워크플로를 그대로 사용할 수 있으며, **Load reference image** 그룹에서 `Load image` 노드의 바이패스를 해제하고 이미지를 입력하면 됩니다. 이 파일에는 아래 이미지를 사용할 수 있도록 파라미터가 이미 설정되어 있습니다.
+
+### 1. 워크플로 다운로드
+아래 비디오를 다운로드하여 ComfyUI에 드래그하면 해당 워크플로가 로드됩니다.
+
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/vace/i2v/vace_i2v.mp4"
+></video>
+
+아래 이미지를 입력으로 다운로드하세요.
+
+![vace-i2v-input](https://github.com/Comfy-Org/example_workflows/raw/refs/heads/main/video/wan/vace/i2v/input.jpg)
+
+### 2. 워크플로 단계별로 완료하기
+
+[워크플로 단계 안내]
+
+워크플로가 부드럽게 실행되도록 이미지에 표시된 번호 순서대로 따라주세요.
+
+1. `Load image` 노드에 해당 이미지를 입력하세요.
+2. 텍스트 기반 비디오 생성 워크플로에서와 같이 프롬프트를 수정 및 편집할 수 있습니다.
+3. `WanVaceToVideo`에서 이미지 크기(첫 실행 시 640x640 해상도 권장)와 프레임 수(비디오 길이)를 설정하세요.
+4. 비디오 생성을 실행하려면 `Run` 버튼을 클릭하거나 단축키 `Ctrl(cmd) + Enter`를 사용하세요.
+5. 생성된 비디오는 자동으로 `ComfyUI/output/video` 디렉토리에 저장됩니다 (하위 폴더 위치는 `save video` 노드 설정에 따라 달라집니다).
+
+이미지 크기를 가져오는 노드 등을 사용하여 해상도를 설정할 수 있지만, 해당 노드의 너비/높이 스텝 요구사항으로 인해 이미지 크기가 16으로 나누어 떨어지지 않으면 오류 메시지가 표시될 수 있습니다.
+
+### 3. 추가 워크플로 참고 사항
+
+VACE는 또한 하나의 이미지에 여러 참조 이미지를 입력하여 해당 비디오를 생성하는 것도 지원합니다. 관련 예제는 VACE 프로젝트 [페이지](https://ali-vilab.github.io/VACE-Page/)에서 확인할 수 있습니다.
+
+## VACE 비디오 기반 비디오 생성 워크플로
+
+### 1. 워크플로 다운로드
+
+아래 비디오를 다운로드하고 ComfyUI에 끌어다 놓아 해당 워크플로를 불러오세요
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/vace/v2v/vace_v2v.mp4"
+></video>
+
+다음 자료를 입력으로 사용합니다:
+
+1. 참조 이미지로 사용할 입력 이미지
+![v2v-input](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/vace/v2v/input.jpg)
+
+2. 아래 비디오는 전처리되었으며 비디오 생성 제어에 사용됩니다
+
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/vace/v2v/post+depth.mp4"
+></video>
+
+3. 아래 비디오는 원본 비디오입니다. 이 자료들을 다운로드하고 전처리 노드(예: [comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux))를 사용하여 이미지를 전처리할 수 있습니다
+
+<video
+  controls
+  className="w-full aspect-video"
+  src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/vace/v2v/original.mp4"
+></video>
+
+### 2. 워크플로 단계별 완료
+
+[워크플로 단계]
+
+이미지에 번호가 매겨진 단계를 따라 워크플로가 부드럽게 실행되도록 하세요
+
+1. `Load reference image` 아래에 있는 `Load Image` 노드에 참조 이미지를 입력합니다
+2. `Load control video` 아래에 있는 `Load Video` 노드에 제어 비디오를 입력합니다. 제공된 비디오는 이미 전처리되었으므로 추가 처리가 필요하지 않습니다
+3. 원본 비디오를 직접 전처리해야 하는 경우 `Image preprocessing` 그룹을 수정하거나 `comfyui_controlnet_aux` 노드를 사용하여 전처리를 완료할 수 있습니다
+4. 프롬프트 수정
+5. `WanVaceToVideo`에서 이미지 크기(첫 실행 시 640x640 해상도 권장)와 프레임 수(비디오 길이)를 설정합니다
+6. `Run` 버튼을 클릭하거나 단축키 `Ctrl(cmd) + Enter`를 사용하여 비디오 생성을 실행합니다
+7. 생성되면 비디오가 자동으로 `ComfyUI/output/video` 디렉토리에 저장됩니다(하위 폴더 위치는 `save video` 노드 설정에 따라 다릅니다)
+
+## VACE 비디오 아웃페인팅 워크플로
+
+[업데이트 예정]
+
+## VACE 첫-마지막 프레임 비디오 생성
+
+[업데이트 예정]
+
+첫 번째와 마지막 프레임이 효과적으로 작동하려면 비디오 `length` 설정이 `length-1`이 4로 나누어 떨어지도록 해야 합니다.
+
+그에 해당하는 `Batch_size` 설정은 `Batch_size = length - 2`를 충족해야 합니다.

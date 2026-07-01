@@ -3308,10 +3308,8 @@
   "anthropic-sdk-python/beta/vaults/credentials/update.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/vaults/credentials/update",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1bdd-19e9937a3c8\"",
-    "lastModified": "Fri, 05 Jun 2026 19:17:01 GMT",
-    "size": 7113,
-    "updatedAt": "2026-07-01T01:24:40.563Z"
+    "size": 9593,
+    "updatedAt": "2026-07-01T11:21:14.561Z"
   },
   "anthropic-sdk-python/beta/vaults/credentials/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/vaults/credentials/delete",

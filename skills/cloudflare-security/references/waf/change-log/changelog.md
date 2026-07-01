@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This week's release introduces new managed protection to address a critical pre-authentication OS command injection vulnerability in Ivanti Sentry (CVE-2026-10520).
+description: This release adds targeted coverage for a path traversal flaw in Fortinet FortiSandbox (CVE-2026-39813) and transitions the Anomaly:Header:User-Agent - Fake Bing or MSN Bot rule action from Block to Disabled.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,30 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-07-01
+
+
+**WAF Release - 2026-07-01**
+
+This release adds targeted coverage for a path traversal flaw in Fortinet FortiSandbox (CVE-2026-39813) and transitions the Anomaly:Header:User-Agent - Fake Bing or MSN Bot rule action from Block to Disabled.
+
+**Key Findings**
+
+* CVE-2026-39813: A path traversal vulnerability in Fortinet FortiSandbox allows remote, unauthenticated attackers to read arbitrary files from the underlying filesystem due to insufficient validation of user-supplied input paths.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                 | Previous Action | New Action | Comments                                                        |
+| -------------------------- | ----------- | -------------- | ----------------------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...d84c92c9 | N/A            | Fortinet FortiSandbox - Path Traversal - CVE:CVE-2026-39813 | Log             | Block      | This is a new detection.                                        |
+| Cloudflare Managed Ruleset | ...c12cf9c8 | N/A            | Anomaly:Header:User-Agent - Fake Bing or MSN Bot            | Enabled         | Disabled   | We are changing the action for this rule from BLOCK to Disabled |
+
+## 2026-07-01
+
+
+**WAF Release - Scheduled changes for 2026-07-06**
+
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
+| ----------------- | ------------ | ---------------- | -------------- | ------- | ----------- | -------- |
 
 ## 2026-06-23
 
@@ -573,41 +597,7 @@ This week’s release introduces new detections for CVE-2025-64459 and CVE-2025-
 | Cloudflare Managed Ruleset | ...da8ba7e6 | N/A            | Django SQLI - CVE:CVE-2025-64459                     | Log             | Block      | This is a new detection.                                |
 | Cloudflare Managed Ruleset | ...8d667511 | N/A            | NoSQL, MongoDB - SQLi - Comparison - 2               | Block           | Block      | Rule metadata description refined. Detection unchanged. |
 
-## 2026-01-26
-
-
-**WAF Release - 2026-01-26**
-
-This week’s release introduces new detections for denial-of-service attempts targeting React CVE-2026-23864 ([https://www.cve.org/CVERecord?id=CVE-2026-23864 ↗](https://www.cve.org/CVERecord?id=CVE-2026-23864)).
-
-**Key Findings**
-
-* CVE-2026-23864 ([https://www.cve.org/CVERecord?id=CVE-2026-23864 ↗](https://www.cve.org/CVERecord?id=CVE-2026-23864)) affects `react-server-dom-parcel`, `react-server-dom-turbopack`, and `react-server-dom-webpack` packages.
-* Attackers can send crafted HTTP requests to Server Function endpoints, causing server crashes, out-of-memory exceptions, or excessive CPU usage.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                 | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | ------------------------------------------- | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...61680354 | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 1 | N/A             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...dcdffcf8 | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 2 | N/A             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...349edbc6 | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 3 | N/A             | Block      | This is a new detection. |
-
-## 2026-01-20
-
-
-**WAF Release - 2026-01-20**
-
-This week's release focuses on improvements to existing detections to enhance coverage.
-
-**Key Findings**
-
-* Existing rule enhancements have been deployed to improve detection resilience against SQL injection.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description              | Previous Action | New Action | Comments                                                                           |
-| -------------------------- | ----------- | -------------- | ------------------------ | --------------- | ---------- | ---------------------------------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...68d90c8f | N/A            | SQLi - Comment - Beta    | Log             | Block      | This rule is merged into the original rule "SQLi - Comment" (ID: ...6d8d8fe4  )    |
-| Cloudflare Managed Ruleset | ...faa045cf | N/A            | SQLi - Comparison - Beta | Log             | Block      | This rule is merged into the original rule "SQLi - Comparison" (ID: ...e7907480  ) |
-
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This week's release introduces new managed protection to address a critical pre-authentication OS command injection vulnerability in Ivanti Sentry (CVE-2026-10520).","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release adds targeted coverage for a path traversal flaw in Fortinet FortiSandbox (CVE-2026-39813) and transitions the Anomaly:Header:User-Agent - Fake Bing or MSN Bot rule action from Block to Disabled.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}
 ```

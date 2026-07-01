@@ -24,18 +24,6 @@ Github Actions doesn't support that. https://docs.github.com/en/actions/using-wo
 
 ## Unsupported workflows syntax
 
-### `jobs.<job_id>.timeout-minutes`
-
-See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).
-
-It's ignored by Gitea Actions now.
-
-### `jobs.<job_id>.continue-on-error`
-
-See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontinue-on-error).
-
-It's ignored by Gitea Actions now.
-
 ### `jobs.<job_id>.environment`
 
 See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idenvironment).
