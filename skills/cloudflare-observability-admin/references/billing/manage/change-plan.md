@@ -16,7 +16,7 @@ Occasionally, you may want to upgrade or downgrade the plan associated with a sp
 
 ## Limitations
 
-Only Super Administrators can manage changes to domain plans.
+Only [Super Administrators](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles) can manage changes to domain plans.
 
 If you decide to downgrade or remove a domain, Cloudflare does not issue refunds. Refer to our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) for more information.
 
@@ -30,14 +30,14 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-6890)
-* [ API ](#tab-panel-6891)
+* [ Dashboard ](#tab-panel-7122)
+* [ API ](#tab-panel-7123)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
-3. For Plan Extensions, select **Change**.
+3. For Active Subscriptions, select **Change**.
 ![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/_astro/change-plan.MkI9crmU_eMjgp.webp)
 4. Choose the appropriate plan type, then select **Continue**.
 5. Select **Confirm**.
@@ -52,14 +52,14 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-6892)
-* [ API ](#tab-panel-6893)
+* [ Dashboard ](#tab-panel-7124)
+* [ API ](#tab-panel-7125)
 
 To change the duration of your Cloudflare plan in the dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
-3. For Plan Extensions, select **Change**.
+3. For Active Subscriptions, select **Change**.
 ![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/_astro/change-plan.MkI9crmU_eMjgp.webp)
 4. Switch the toggle between **Monthly** or **Annual**.
 ![Screenshot of the Plan choice with the annual or monthly toggle highlighted](https://developers.cloudflare.com/_astro/plan-duration.BZ11r_rH_u9VOU.webp)
@@ -75,6 +75,6 @@ To change the duration of a Cloudflare plan for a domain using the API, send a [
 * [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When upgrades and downgrades take effect
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/change-plan/#page","headline":"Change domain plan · Cloudflare Billing docs","description":"Upgrade or downgrade a domain's Cloudflare plan.","url":"https://developers.cloudflare.com/billing/manage/change-plan/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/change-plan/#page","headline":"Change domain plan · Cloudflare Billing docs","description":"Upgrade or downgrade a domain's Cloudflare plan.","url":"https://developers.cloudflare.com/billing/manage/change-plan/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/change-plan/","name":"Change domain plan"}}]}
 ```

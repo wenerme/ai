@@ -374,11 +374,12 @@ lets you control reasoning behavior.
 
 The following table details the `thinkingLevel` settings for each model type:
 
-| Thinking Level | Gemini 3.1 Pro | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Gemini 3.5 Flash | Description |
-|---|---|---|---|---|---|
-| **`low`** | Supported | Supported (Default) | Supported | Supported | Minimizes latency and cost. Best for simple instruction following, chat, or high-throughput applications. |
-| **`medium`** | Supported | Supported | Supported | Supported (Default) | Balanced thinking for most tasks. |
-| **`high`** | Supported (Default, Dynamic) | Supported (Dynamic) | Supported (Default, Dynamic) | Supported (Dynamic) | Maximizes reasoning depth. The model may take significantly longer to reach a first (non thinking) output token, but the output will be more carefully reasoned. |
+| Thinking Level | Gemini 3.5 Flash | Gemini 3.1 Pro | Gemini 3.1 Flash-Lite | Gemini 3.1 Flash-Lite Image | Gemini 3 Flash | Description |
+|---|---|---|---|---|---|---|
+| **`minimal`** | Supported | Not supported | Supported (Default) | Supported (Default) | Supported | Matches the "no thinking" setting for most queries. Note, `minimal` does not guarantee that thinking is off, the model may reason very minimally for complex tasks. |
+| **`low`** | Supported | Supported | Supported | Not Supported | Supported | Minimizes latency and cost. |
+| **`medium`** | Supported (Default) | Supported | Supported | Not supported | Supported | Balanced thinking for most tasks. |
+| **`high`** | Supported (Dynamic) | Supported (Default, Dynamic) | Supported (Dynamic) | Supported (Dynamic) | Supported (Default, Dynamic) | Maximizes reasoning depth. The model may take significantly longer to reach a first (non thinking) output token, but the output will be more carefully reasoned. |
 
 The following example shows how to set the thinking level.
 

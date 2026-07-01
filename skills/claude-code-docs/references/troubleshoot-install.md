@@ -30,7 +30,7 @@ Match the error message or symptom you're seeing to a fix:
 | `Error loading shared library`                                                              | [Wrong binary variant for your system](#linux-musl-or-glibc-binary-mismatch)                                            |
 | `Illegal instruction`                                                                       | [Architecture or CPU instruction set mismatch](#illegal-instruction)                                                    |
 | `cannot execute binary file: Exec format error` in WSL                                      | [WSL1 native-binary regression](#exec-format-error-on-wsl1)                                                             |
-| PowerShell installer completes but `claude` is not found or shows an old version            | [Restart your terminal and verify PATH](#verify-your-path)                                                              |
+| PowerShell installer completes but `claude` is not found or shows an old version            | [Add the install directory to your PATH](#verify-your-path), then open a new terminal                                   |
 | `dyld: cannot load`, `dyld: Symbol not found`, or `Abort trap` on macOS                     | [Binary incompatibility](#dyld-cannot-load-on-macos)                                                                    |
 | `Invoke-Expression: Missing argument in parameter list`                                     | [Install script returns HTML](#install-script-returns-html-instead-of-a-shell-script)                                   |
 | `App unavailable in region`                                                                 | Claude Code is not available in your country. See [supported countries](https://www.anthropic.com/supported-countries). |
@@ -43,7 +43,7 @@ Match the error message or symptom you're seeing to a fix:
 If your issue isn't listed, work through the diagnostic checks below to narrow down the cause.
 
 <Tip>
-  If you'd rather skip the terminal entirely, the [Claude Code Desktop app](/en/desktop-quickstart) lets you install and use Claude Code through a graphical interface. Download it for [macOS](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect?utm_source=claude_code\&utm_medium=docs) or [Windows](https://claude.com/download?utm_source=claude_code\&utm_medium=docs) and start coding without any command-line setup.
+  If you'd rather skip the terminal entirely, the [Claude Code Desktop app](/en/desktop-quickstart) lets you install and use Claude Code through a graphical interface. Download it for [macOS](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect?utm_source=claude_code\&utm_medium=docs), [Windows](https://claude.com/download?utm_source=claude_code\&utm_medium=docs), or [Linux](https://claude.com/download?utm_source=claude_code\&utm_medium=docs) and start coding without any command-line setup.
 </Tip>
 
 ## Run diagnostic checks

@@ -1,7 +1,7 @@
 ---
 title: "Agent Tools / MCP"
 description: "Model Context Protocol (MCP) を使用して AI エージェントを ComfyUI に接続し、画像、動画、オーディオ、3D コンテンツを生成します。"
-translationSourceHash: 925e510c
+translationSourceHash: 60b31b79
 translationFrom: agent-tools/index.mdx
 ---
 
@@ -10,13 +10,13 @@ ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので�
   **Comfy Cloud MCP はパブリックベータです。** セットアップ、フィードバックチャンネル、および関連ツール（Comfy Skills、Comfy CLI）については、[Comfy Cloud MCP](/ja/agent-tools/cloud) ページをご覧ください。
 
   
-    ホスト型 MCP サーバー <code>cloud.comfy.org</code> に接続。Cloud GPU でワークフローを実行し、プリインストール済みのモデルを使用し、テンプレートライブラリ全体を検索します。
+    ホスト型 MCP サーバー <code>cloud.comfy.org/mcp</code> に接続。Cloud GPU で画像、動画、オーディオ、3D を生成し、テンプレート/モデル/ノードを検索し、ワークフローを実行し、チャットから保存したワークフローを共有できます。
   
   
     Comfy Partner-Node SDK を使用したローカル MCP サーバー。30以上のパートナープロバイダーに対応する統一された <code>generate_image</code>、<code>generate_video</code>、<code>generate_3d</code> などのツールを提供します。
   
   
-    <code>comfy generate</code>（ベータ）のエージェント向け簡単な概要です。完全なCLIガイドは <a href="/ja/comfy-cli/getting-started">はじめに</a> をご覧ください。
+    <code>comfy generate</code> の短いエージェント向け概要。完全な CLI ガイドは [はじめに](/ja/comfy-cli/getting-started) をご覧ください。
   
 
 ---
@@ -38,11 +38,11 @@ ComfyUI は **MCP サーバー** と **Comfy CLI** を提供しているので�
 
 多くの方が、Comfy Cloud MCP の代わりに（または併用して）**ローカル**の ComfyUI インストールをエージェントで操作することについて質問されます。
 
-**なぜ Comfy Cloud MCP が先にリリースされたのですか？** cloud.comfy.org のホスト型サーバーは、Comfy チームだけが構築し運用できるものです。そのため、当社のファーストパーティ MCP リリースはクラウドベースになりました。
+**なぜ Comfy Cloud MCP が先にリリースされたのですか？** `cloud.comfy.org` のホスト型サーバーは、Comfy チームだけが構築し運用できるものです。そのため、当社のファーストパーティ MCP リリースはクラウドベースになりました。
 
 **ローカルエージェントは新しいものではありません。** エージェントを自分のマシンの ComfyUI に接続することは、ComfyUI がオープンソース化されて以来可能でした。ローカルサーバーを実行すると、MCP ブリッジや他のツールが呼び出すことができるワークフローと API が公開されます。
 
-**より優れたローカルエージェントの UX はロードマップに含まれています。** ファーストパーティのローカルエージェントエクスペリエンスの向上は、私たちのビジョンの一部です。Cloud MCP は最初にリリースできる部分でした。今後、ローカル機能のさらなる改良が続きます。
+**より優れたローカルエージェントの UX はロードマップに含まれています。** ファーストパーティのローカルエージェントエクスペリエンスの向上は、私たちのビジョンの一部です。Cloud MCP は最初にリリースできる部分でした。今後、さらなるローカル機能の改良が続きます。
 
 **現在試用できるコミュニティ MCP サーバー** いくつかのコミュニティプロジェクトがすでに MCP クライアントをローカルの ComfyUI インスタンスに接続しています：
 

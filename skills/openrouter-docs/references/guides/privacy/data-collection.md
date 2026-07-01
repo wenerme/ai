@@ -4,6 +4,8 @@
 
 # Data Collection
 
+Any prompt retention on OpenRouter is always opt-in. OpenRouter has never shared, sold, or licensed underlying prompt data to any third party. We document which providers may capture data for training, and provide settings to control how your own prompts may be used.
+
 When using AI through OpenRouter, whether via the chat interface or the API, your prompts and responses go through multiple touchpoints. You control how your data is handled at each step.
 
 This page gives an overview of how your data is stored and used by OpenRouter. More information is available in the [privacy policy](https://openrouter.ai/privacy) and [terms of service](https://openrouter.ai/terms).

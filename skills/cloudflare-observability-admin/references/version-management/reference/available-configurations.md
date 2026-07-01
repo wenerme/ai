@@ -62,8 +62,8 @@ China Network
 
 Cloudflare API
 
-* Version Management does not currently expose a public [API](https://developers.cloudflare.com/api/).
-* Customers can only use Version Management through the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+* Version Management environments — including their routing expressions and version assignments — can be managed through the public [Environments API](https://developers.cloudflare.com/api/resources/zones/subresources/environments/).
+* Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 
 Domain-scoped Roles
 

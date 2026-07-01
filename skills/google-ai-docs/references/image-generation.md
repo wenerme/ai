@@ -23,11 +23,16 @@ Gemini can generate and process images conversationally
 with text, images, or a combination of both. This lets you create, edit, and
 iterate on visuals with unprecedented control.
 
-Nano Banana refers to two distinct models available in the Gemini API:
+Nano Banana refers to four distinct models available in the Gemini API:
 
-- **Nano Banana 2** : The [Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) model (`gemini-3.1-flash-image`). This model serves as the high-efficiency counterpart to Gemini 3 Pro Image, optimized for speed and high-volume developer use cases.
-- **Nano Banana Pro** : The [Gemini 3 Pro Image](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) model (`gemini-3-pro-image`). This model is designed for professional asset production, utilizing advanced reasoning ("Thinking") to follow complex instructions and render high-fidelity text.
-- **Nano Banana** : The [Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) model (`gemini-2.5-flash-image`). This model is designed for speed and efficiency, optimized for high-volume, low-latency tasks.
+- **Nano Banana 2 Lite ([Gemini 3.1 Flash Lite Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image))
+  (`gemini-3.1-flash-lite-image`):** Our fastest and cheapest Gemini image model, engineered for velocity and scale where speed and cost are the primary operational constraints. Not optimized for multiple reference inputs or multi-turn sequential editing.
+- **Nano Banana 2 ([Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image))
+  (`gemini-3.1-flash-image`):** Serves as the most versatile model, generalist workhorse model for all tasks. It balances speed with state-of-the-art 4K generation, world knowledge, and reliable text rendering. Excelling at multiple reference image processing and consistency.
+- **Nano Banana Pro ([Gemini 3 Pro Image](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image))
+  (`gemini-3-pro-image`):** The premium choice for the most complex visual tasks, offering the highest level of world knowledge, advanced localization, accurate brand consistency, and precision creative control.
+- **Nano Banana ([Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image))
+  (`gemini-2.5-flash-image`):** The legacy pioneer of the Nano Banana series. While it has been a reliable workhorse, we strongly recommend that customers transition to Nano Banana 2 Lite to experience enhanced quality, faster generation speeds, and lower API pricing.
 
 All generated images include a [SynthID watermark](https://ai.google.dev/responsible/docs/safeguards/synthid).
 
@@ -330,23 +335,25 @@ they excel at complex, multi-turn creation and modification tasks.
 
 - **High-resolution output** : Built-in generation capabilities for 1K, 2K, and 4K visuals.
   - **Gemini 3.1 Flash Image** adds the smaller 512px (0.5K) resolution.
+  - **Gemini 3.1 Flash Lite Image** only supports 1K resolution.
 - **Advanced text rendering**: Capable of generating legible, stylized text for infographics, menus, diagrams, and marketing assets.
 - **Grounding with Google Search** : The model can use Google Search as a tool to verify facts and generate imagery based on real-time data (e.g., current weather maps, stock charts, recent events).
+  - **Not supported by Gemini 3.1 Flash Lite Image model.**
   - **Gemini 3.1 Flash Image** adds the integration of Google Image Search Grounding alongside Web Search.
 - **Thinking mode**: The model utilizes a "thinking" process to reason through complex prompts. It generates interim "thought images" (visible in the backend but not charged) to refine the composition before producing the final high-quality output.
 - **Up to 14 reference images**: You can now mix up to 14 reference images to produce the final image.
-- **New aspect ratios** : Gemini 3.1 Flash Image adds 1:4, 4:1, 1:8, and 8:1 [aspect ratios](https://ai.google.dev/gemini-api/docs/image-generation#aspect_ratios_and_image_size).
+- **New aspect ratios** : Gemini 3.1 Flash Lite Image adds `1:1`, `3:2`, `2:3`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9` [aspect ratios](https://ai.google.dev/gemini-api/docs/image-generation#aspect_ratios_and_image_size).
 
 ### Use up to 14 reference images
 
 Gemini 3 image models let you to mix up to 14 reference images. These 14 images
 can include the following:
 
-| Gemini 3.1 Flash Image | Gemini 3 Pro Image |
-|---|---|
-| Up to 10 images of objects with high-fidelity to include in the final image | Up to 6 images of objects with high-fidelity to include in the final image |
-| Up to 4 images of characters to maintain character consistency | Up to 5 images of characters to maintain character consistency |
-| N/A | Up to 3 images to be used as style references |
+| Gemini 3.1 Flash Lite Image | Gemini 3.1 Flash Image | Gemini 3 Pro Image |
+|---|---|---|
+| Up to 14 images of objects with high-fidelity to include in the final image | Up to 10 images of objects with high-fidelity to include in the final image | Up to 6 images of objects with high-fidelity to include in the final image |
+| N/A | Up to 4 images of characters to maintain character consistency | Up to 5 images of characters to maintain character consistency |
+| N/A | N/A | Up to 3 images to be used as style references |
 
 ### Python
 
@@ -752,6 +759,9 @@ directly in your API request or upload local video files using the
 Gemini 3 image models generate 1K images by default but can also output 2K,
 4K, and 512px (05.K) (Gemini 3.1 Flash Image only) images. To generate higher
 resolution assets, specify the `image_size` in the `response_format`.
+
+> [!NOTE]
+> **Note:** **Gemini 3.1 Flash Lite image model** only supports 1K images.
 
 You must use an uppercase 'K' (e.g. 512px (05.K), 1K, 2K, 4K). Lowercase
 parameters (e.g., 1k) will be rejected.
@@ -2463,7 +2473,7 @@ the following tables:
 | **16:9** | 688x384 | 747 | 1376x768 | 1120 | 2752x1536 | 1120 | 5504x3072 | 2000 |
 | **21:9** | 792x168 | 747 | 1584x672 | 1120 | 3168x1344 | 1120 | 6336x2688 | 2000 |
 
-### 3 Pro Image
+### 3.1 Pro Image
 
 | Aspect ratio | 1K resolution | 1K tokens | 2K resolution | 2K tokens | 4K resolution | 4K tokens |
 |---|---|---|---|---|---|---|
@@ -2501,6 +2511,13 @@ Choose the model best suited for your specific use case.
   go-to image generation model, as the best all around performance and
   intelligence to cost and latency balance. Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image) and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) page for more
   details.
+
+- **Gemini 3.1 Flash Lite Image (Nano Banana Lite)** is the most efficient
+  model in the image generation family, offering
+  ultra-low latency and cost-effective image generation and editing.
+  Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-lite-image)
+  and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) page
+  for more details.
 
 - **Gemini 3 Pro Image (Nano Banana Pro)** is designed for
   professional asset production and complex instructions. This model features

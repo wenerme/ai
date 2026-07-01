@@ -46,13 +46,26 @@ Below the chart, a sortable table breaks down usage by product for the full bill
 | **Billable usage** | Usage that exceeds the free tier and will be charged.                                                                                                    |
 | **Usage cost**     | Cumulative cost for the product in the selected billing period.                                                                                          |
 
-Use the **product filter** at the top of the page to narrow the chart and table to specific products.
+## Filter usage by product family or product
+
+Use the filters sidebar to narrow the dashboard to a subset of products.
+
+* **Product family** — Group products by family (for example, Workers or R2) to compare costs across related usage metrics.
+* **Product** — Filter to specific usage metrics. The list of available products narrows based on the families you select.
+
+Applied filters scope the cost breakdown chart, product usage table, and summary totals to your selection. On mobile, the sidebar opens as a drawer with an **Apply** action. Select **Reset** to clear all filters.
 
 ## Select a billing period
 
 By default, the dashboard shows data for your current billing period. Use the date picker to view a previous billing period.
 
 Usage data is aligned to your billing cycle, not the calendar month. Your billing period start date is determined by the first purchase date on your account.
+
+## Switch between subscriptions
+
+In rare cases, an account has more than one usage-based subscription — usually because a previous subscription was replaced. If this applies to your account, a **Subscription** filter appears in the sidebar, with each subscription labeled by its start date.
+
+Selecting a different subscription scopes the chart, product usage table, and available billing periods to that subscription's data. Each subscription has its own billing cycle.
 
 ## Data alignment with your invoice
 
@@ -72,6 +85,6 @@ To get notified when your spend crosses a dollar threshold, you can create budge
 * [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) — How a request generates charges across products
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/billable-usage/#page","headline":"Monitor billable usage · Cloudflare Billing docs","description":"Track daily usage-based costs across products.","url":"https://developers.cloudflare.com/billing/manage/billable-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/billable-usage/#page","headline":"Monitor billable usage · Cloudflare Billing docs","description":"Track daily usage-based costs across products.","url":"https://developers.cloudflare.com/billing/manage/billable-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/billable-usage/","name":"Monitor billable usage"}}]}
 ```
