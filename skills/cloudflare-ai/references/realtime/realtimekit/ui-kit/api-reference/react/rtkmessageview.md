@@ -35,16 +35,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMessageView />;}
+
+
+function MyComponent() {
+  return <RtkMessageView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMessageView      actions={[]}      authorName="example"      avatarUrl="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMessageView
+      actions={[]}
+      authorName="example"
+      avatarUrl="example"
+    />
+  );
+}
 ```
 
 ```json

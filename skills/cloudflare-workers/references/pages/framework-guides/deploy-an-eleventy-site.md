@@ -18,9 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Install the `eleventy` CLI by running the following command in your terminal:
 
-Terminal window
-
-```
+```sh
 npm install -g @11ty/eleventy
 ```
 
@@ -28,10 +26,10 @@ npm install -g @11ty/eleventy
 
 There are a lot of [starter projects ↗](https://www.11ty.dev/docs/starter/) available on the Eleventy website. As an example, use the `eleventy-base-blog` project by running the following commands in your terminal:
 
-Terminal window
-
-```
-git clone https://github.com/11ty/eleventy-base-blog.git my-blog-namecd my-blog-namenpm install
+```sh
+git clone https://github.com/11ty/eleventy-base-blog.git my-blog-name
+cd my-blog-name
+npm install
 ```
 
 ## Before you continue
@@ -46,10 +44,10 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, prepare and push your local application to GitHub by running the following command in your terminal:
 
-Terminal window
-
-```
-git remote set-url origin https://github.com/yourgithubusername/githubrepogit branch -M maingit push -u origin main
+```sh
+git remote set-url origin https://github.com/yourgithubusername/githubrepo
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

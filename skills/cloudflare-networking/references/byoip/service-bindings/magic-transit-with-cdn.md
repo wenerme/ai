@@ -62,10 +62,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `IP Prefixes: Write`
 * `IP Prefixes: Read`
 
-List Service Bindings
+**List Service Bindings**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ## 2\. Create service bindings
@@ -85,16 +88,36 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `IP Prefixes: Write`
 
-Create Service Binding
+**Create Service Binding**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "cidr": "203.0.113.100/32",    "service_id": "<SERVICE_ID>"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "cidr": "203.0.113.100/32",
+    "service_id": "<SERVICE_ID>"
+  }'
 ```
 
 In the response body, the initial provisioning state should be `provisioning`.
 
-```
-{  "errors": [],  "messages": [],  "success": true,  "result": {    "cidr": "203.0.113.100/32",    "id": "<SERVICE_BINDING_ID>",    "provisioning": {      "state": "provisioning"      },    "service_id": "<SERVICE_ID>",    "service_name": "<SERVICE_NAME>"  }}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "success": true,
+  "result": {
+    "cidr": "203.0.113.100/32",
+    "id": "<SERVICE_BINDING_ID>",
+    "provisioning": {
+      "state": "provisioning"
+      },
+    "service_id": "<SERVICE_ID>",
+    "service_name": "<SERVICE_NAME>"
+  }
+}
 ```
 
 You can periodically check the service binding status using the [List Service Bindings](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/list/) endpoint.
@@ -112,8 +135,8 @@ Tip
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a zone on [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-7031)
-* [ API ](#tab-panel-7032)
+* [ Dashboard ](#tab-panel-7279)
+* [ API ](#tab-panel-7280)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -129,8 +152,8 @@ Make sure you have the correct Key/Token and permissions.
 
 ## 4\. Create DNS records
 
-* [ Dashboard ](#tab-panel-7033)
-* [ API ](#tab-panel-7034)
+* [ Dashboard ](#tab-panel-7281)
+* [ API ](#tab-panel-7282)
 
 To create a DNS record in the dashboard:
 

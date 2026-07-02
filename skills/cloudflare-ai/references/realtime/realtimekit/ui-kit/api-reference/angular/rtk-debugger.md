@@ -28,14 +28,19 @@ A troubleshooting component to identify and fix any issues in the meeting.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-debugger></rtk-debugger>
+```html
+<!-- component.html -->
+<rtk-debugger></rtk-debugger>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-debugger [meeting]="meeting" size="md"></rtk-debugger>
+```html
+<!-- component.html -->
+<rtk-debugger
+ [meeting]="meeting"
+ size="md">
+</rtk-debugger>
 ```
 
 ```json

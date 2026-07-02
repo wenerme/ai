@@ -32,32 +32,62 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-13071)
-* [  TypeScript ](#tab-panel-13072)
+* [  JavaScript ](#tab-panel-13366)
+* [  TypeScript ](#tab-panel-13367)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(req, env) {
+    let someEvent = { url: req.url, createdTimestamp: Date.now() };
+    // Trigger our Workflow
+    // Pass our event as the second parameter to the `create` method
+    // on our Workflow binding.
+    let instance = await env.MY_WORKFLOW.create({
+      id: crypto.randomUUID(),
+      params: someEvent,
+    });
+
+
+    return Response.json({
+      id: instance.id,
+      details: await instance.status(),
+    });
+  },
+};
 ```
-export default {  async fetch(req, env) {    let someEvent = { url: req.url, createdTimestamp: Date.now() };    // Trigger our Workflow    // Pass our event as the second parameter to the `create` method    // on our Workflow binding.    let instance = await env.MY_WORKFLOW.create({      id: crypto.randomUUID(),      params: someEvent,    });
-    return Response.json({      id: instance.id,      details: await instance.status(),    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(req: Request, env: Env) {    let someEvent = { url: req.url, createdTimestamp: Date.now() };    // Trigger our Workflow    // Pass our event as the second parameter to the `create` method    // on our Workflow binding.    let instance = await env.MY_WORKFLOW.create({      id: crypto.randomUUID(),      params: someEvent,    });
-    return Response.json({      id: instance.id,      details: await instance.status(),    });  },};
+```ts
+export default {
+  async fetch(req: Request, env: Env) {
+    let someEvent = { url: req.url, createdTimestamp: Date.now() };
+    // Trigger our Workflow
+    // Pass our event as the second parameter to the `create` method
+    // on our Workflow binding.
+    let instance = await env.MY_WORKFLOW.create({
+      id: crypto.randomUUID(),
+      params: someEvent,
+    });
+
+
+    return Response.json({
+      id: instance.id,
+      details: await instance.status(),
+    });
+  },
+};
 ```
 
 To pass parameters via the `wrangler` command-line interface, pass a JSON string as the second parameter to the `workflows trigger` sub-command:
 
-Terminal window
-
-```
+```sh
 npx wrangler@latest workflows trigger workflows-starter '{"some":"data"}'
 ```
 
-```
+```sh
 🚀 Workflow instance "57c7913b-8e1d-4a78-a0dd-dce5a0b7aa30" has been queued successfully
 ```
 
@@ -78,19 +108,37 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-13067)
-* [  TypeScript ](#tab-panel-13068)
+* [  JavaScript ](#tab-panel-13362)
+* [  TypeScript ](#tab-panel-13363)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyWorkflow extends WorkflowEntrypoint {
+  async run(event, step) {
+    // Other steps in your Workflow
+    let stripeEvent = await step.waitForEvent(
+      "receive invoice paid webhook from Stripe",
+      { type: "stripe-webhook", timeout: "1 hour" },
+    );
+    // Rest of your Workflow
+  }
+}
 ```
-export class MyWorkflow extends WorkflowEntrypoint {  async run(event, step) {    // Other steps in your Workflow    let stripeEvent = await step.waitForEvent(      "receive invoice paid webhook from Stripe",      { type: "stripe-webhook", timeout: "1 hour" },    );    // Rest of your Workflow  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {    // Other steps in your Workflow    let stripeEvent = await step.waitForEvent<IncomingStripeWebhook>(      "receive invoice paid webhook from Stripe",      { type: "stripe-webhook", timeout: "1 hour" },    );    // Rest of your Workflow  }}
+```ts
+export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
+  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+    // Other steps in your Workflow
+    let stripeEvent = await step.waitForEvent<IncomingStripeWebhook>(
+      "receive invoice paid webhook from Stripe",
+      { type: "stripe-webhook", timeout: "1 hour" },
+    );
+    // Rest of your Workflow
+  }
+}
 ```
 
 The above example:
@@ -101,19 +149,25 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-13065)
-* [  TypeScript ](#tab-panel-13066)
+* [  JavaScript ](#tab-panel-13360)
+* [  TypeScript ](#tab-panel-13361)
 
-JavaScript
+**JavaScript**
 
+```js
+let event = await step.waitForEvent("wait for human approval", {
+  type: "approval-flow",
+  timeout: "15 minutes",
+});
 ```
-let event = await step.waitForEvent("wait for human approval", {  type: "approval-flow",  timeout: "15 minutes",});
-```
 
-TypeScript
+**TypeScript**
 
-```
-let event = await step.waitForEvent(    "wait for human approval",    { type: "approval-flow", timeout: "15 minutes" },  );
+```ts
+let event = await step.waitForEvent(
+    "wait for human approval",
+    { type: "approval-flow", timeout: "15 minutes" },
+  );
 ```
 
 You can specify a timeout between 1 second and up to 365 days.
@@ -122,42 +176,94 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-13069)
-* [  TypeScript ](#tab-panel-13070)
+* [  JavaScript ](#tab-panel-13364)
+* [  TypeScript ](#tab-panel-13365)
 
-JavaScript
+**JavaScript**
 
+```js
+try {
+  const event = await step.waitForEvent("wait for approval", {
+    type: "approval",
+    timeout: "1 hour",
+  });
+  // Handle the received event
+} catch (e) {
+  // Timeout occurred - handle the case where no event was received
+  console.log("No approval received, proceeding with default action");
+}
 ```
-try {  const event = await step.waitForEvent("wait for approval", {    type: "approval",    timeout: "1 hour",  });  // Handle the received event} catch (e) {  // Timeout occurred - handle the case where no event was received  console.log("No approval received, proceeding with default action");}
-```
 
-TypeScript
+**TypeScript**
 
-```
-try {  const event = await step.waitForEvent("wait for approval", {    type: "approval",    timeout: "1 hour",  });  // Handle the received event} catch (e) {  // Timeout occurred - handle the case where no event was received  console.log("No approval received, proceeding with default action");}
+```ts
+try {
+  const event = await step.waitForEvent("wait for approval", {
+    type: "approval",
+    timeout: "1 hour",
+  });
+  // Handle the received event
+} catch (e) {
+  // Timeout occurred - handle the case where no event was received
+  console.log("No approval received, proceeding with default action");
+}
 ```
 
 ### Send events to running workflows
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-13073)
-* [  TypeScript ](#tab-panel-13074)
+* [  JavaScript ](#tab-panel-13368)
+* [  TypeScript ](#tab-panel-13369)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(req, env) {
+    const instanceId = new URL(req.url).searchParams.get("instanceId");
+    const webhookPayload = await req.json();
+
+
+    let instance = await env.MY_WORKFLOW.get(instanceId);
+    // Send our event, with `type` matching the event type defined in
+    // our step.waitForEvent call
+    await instance.sendEvent({
+      type: "stripe-webhook",
+      payload: webhookPayload,
+    });
+
+
+    return Response.json({
+      status: await instance.status(),
+    });
+  },
+};
 ```
-export default {  async fetch(req, env) {    const instanceId = new URL(req.url).searchParams.get("instanceId");    const webhookPayload = await req.json();
-    let instance = await env.MY_WORKFLOW.get(instanceId);    // Send our event, with `type` matching the event type defined in    // our step.waitForEvent call    await instance.sendEvent({      type: "stripe-webhook",      payload: webhookPayload,    });
-    return Response.json({      status: await instance.status(),    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(req: Request, env: Env) {    const instanceId = new URL(req.url).searchParams.get("instanceId");    const webhookPayload = await req.json<Payload>();
-    let instance = await env.MY_WORKFLOW.get(instanceId);    // Send our event, with `type` matching the event type defined in    // our step.waitForEvent call    await instance.sendEvent({      type: "stripe-webhook",      payload: webhookPayload,    });
-    return Response.json({      status: await instance.status(),    });  },};
+```ts
+export default {
+  async fetch(req: Request, env: Env) {
+    const instanceId = new URL(req.url).searchParams.get("instanceId");
+    const webhookPayload = await req.json<Payload>();
+
+
+    let instance = await env.MY_WORKFLOW.get(instanceId);
+    // Send our event, with `type` matching the event type defined in
+    // our step.waitForEvent call
+    await instance.sendEvent({
+      type: "stripe-webhook",
+      payload: webhookPayload,
+    });
+
+
+    return Response.json({
+      status: await instance.status(),
+    });
+  },
+};
 ```
 
 * Similar to the [waitForEvent](#wait-for-events) example in this guide, the `type` property in our `waitForEvent` and `sendEvent` fields must match.
@@ -172,37 +278,83 @@ You can send an event to a Workflow instance _before_ it reaches the correspondi
 
 By default, the `WorkflowEvent` passed to the `run` method of your Workflow definition has a type that conforms to the following:
 
-TypeScript
+**TypeScript**
 
-```
-export type WorkflowCronSchedule = {  /** Cron expression that triggered this event. */  cron: string;  /** Timestamp of the scheduled trigger, in milliseconds since the Unix epoch. */  scheduledTime: number;};
-export type WorkflowEvent<T> = {  /** The data passed as the parameter when the Workflow instance was triggered. */  payload: Readonly<T>;  /** The timestamp that the Workflow was triggered. */  timestamp: Date;  /** ID of the current Workflow instance. */  instanceId: string;  /** Name of the current Workflow. */  workflowName: string;  /** Metadata for Workflow instances created by a cron schedule. */  schedule?: WorkflowCronSchedule;};
+```ts
+export type WorkflowCronSchedule = {
+  /** Cron expression that triggered this event. */
+  cron: string;
+  /** Timestamp of the scheduled trigger, in milliseconds since the Unix epoch. */
+  scheduledTime: number;
+};
+
+
+export type WorkflowEvent<T> = {
+  /** The data passed as the parameter when the Workflow instance was triggered. */
+  payload: Readonly<T>;
+  /** The timestamp that the Workflow was triggered. */
+  timestamp: Date;
+  /** ID of the current Workflow instance. */
+  instanceId: string;
+  /** Name of the current Workflow. */
+  workflowName: string;
+  /** Metadata for Workflow instances created by a cron schedule. */
+  schedule?: WorkflowCronSchedule;
+};
 ```
 
 When a Workflow instance is created by a cron schedule configured on a Workflow binding, `event.schedule` includes the cron expression that created the instance and the scheduled trigger time:
 
-TypeScript
+**TypeScript**
 
-```
-export class MyWorkflow extends WorkflowEntrypoint<Env> {  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {    if (event.schedule) {      console.log(event.schedule.cron);      console.log(new Date(event.schedule.scheduledTime));    }  }}
+```ts
+export class MyWorkflow extends WorkflowEntrypoint<Env> {
+  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
+    if (event.schedule) {
+      console.log(event.schedule.cron);
+      console.log(new Date(event.schedule.scheduledTime));
+    }
+  }
+}
 ```
 
 You can optionally type these events by defining your own type and passing it as a [type parameter ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html#working-with-generic-type-variables) to the `WorkflowEvent`:
 
-TypeScript
+**TypeScript**
 
-```
-// Define a type that conforms to the events your Workflow instance is// instantiated withinterface YourEventType {  userEmail: string;  createdTimestamp: number;  metadata?: Record<string, string>;}
+```ts
+// Define a type that conforms to the events your Workflow instance is
+// instantiated with
+interface YourEventType {
+  userEmail: string;
+  createdTimestamp: number;
+  metadata?: Record<string, string>;
+}
 ```
 
 When you pass your `YourEventType` to `WorkflowEvent` as a type parameter, the `event.payload` property now has the type `YourEventType` throughout your workflow definition:
 
-src/index.ts
+**src/index.ts**
 
-```
-// Import the Workflow definitionimport { WorkflowEntrypoint, WorkflowStep, WorkflowEvent} from 'cloudflare:workers';
-export class MyWorkflow extends WorkflowEntrypoint {  // Pass your type as a type parameter to WorkflowEvent  // The 'payload' property will have the type of your parameter.  async run(event: WorkflowEvent<YourEventType>, step: WorkflowStep) {    let state = await step.do("my first step", async () => {      // Access your properties via event.payload          let userEmail = event.payload.userEmail          let createdTimestamp = event.payload.createdTimestamp        })
-        await step.do("my second step", async () => { /* your code here */ })  }}
+```ts
+// Import the Workflow definition
+import { WorkflowEntrypoint, WorkflowStep, WorkflowEvent} from 'cloudflare:workers';
+
+
+export class MyWorkflow extends WorkflowEntrypoint {
+  // Pass your type as a type parameter to WorkflowEvent
+  // The 'payload' property will have the type of your parameter.
+  async run(event: WorkflowEvent<YourEventType>, step: WorkflowStep) {
+    let state = await step.do("my first step", async () => {
+      // Access your properties via event.payload
+          let userEmail = event.payload.userEmail
+          let createdTimestamp = event.payload.createdTimestamp
+        })
+
+
+        await step.do("my second step", async () => { /* your code here */ })
+  }
+}
 ```
 
 Warning

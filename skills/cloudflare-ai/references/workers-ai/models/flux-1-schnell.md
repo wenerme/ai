@@ -27,34 +27,69 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-4864)
-* [  Worker (Image) ](#tab-panel-4865)
-* [  curl ](#tab-panel-4866)
+* [  Worker (Data URI) ](#tab-panel-5010)
+* [  Worker (Image) ](#tab-panel-5011)
+* [  curl ](#tab-panel-5012)
 
-TypeScript
+**TypeScript**
 
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run('@cf/black-forest-labs/flux-1-schnell', {
+      prompt: 'a cyberpunk lizard',
+      seed: Math.floor(Math.random() * 10)
+    });
+    // response.image is base64 encoded which can be used directly as an <img src=""> data URI
+    const dataURI = `data:image/jpeg;charset=utf-8;base64,${response.image}`;
+    return Response.json({ dataURI });
+  },
+} satisfies ExportedHandler<Env>;
 ```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run('@cf/black-forest-labs/flux-1-schnell', {      prompt: 'a cyberpunk lizard',      seed: Math.floor(Math.random() * 10)    });    // response.image is base64 encoded which can be used directly as an <img src=""> data URI    const dataURI = `data:image/jpeg;charset=utf-8;base64,${response.image}`;    return Response.json({ dataURI });  },} satisfies ExportedHandler<Env>;
+
+**TypeScript**
+
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run('@cf/black-forest-labs/flux-1-schnell', {
+      prompt: 'a cyberpunk lizard',
+      seed: Math.floor(Math.random() * 10)
+    });
+    // Convert from base64 string
+    const binaryString = atob(response.image);
+    // Create byte representation
+    const img = Uint8Array.from(binaryString, (m) => m.codePointAt(0));
+    return new Response(img, {
+      headers: {
+        'Content-Type': 'image/jpeg',
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-TypeScript
-
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run('@cf/black-forest-labs/flux-1-schnell', {      prompt: 'a cyberpunk lizard',      seed: Math.floor(Math.random() * 10)    });    // Convert from base64 string    const binaryString = atob(response.image);    // Create byte representation    const img = Uint8Array.from(binaryString, (m) => m.codePointAt(0));    return new Response(img, {      headers: {        'Content-Type': 'image/jpeg',      },    });  },} satisfies ExportedHandler<Env>;
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/black-forest-labs/flux-1-schnell  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat", "seed": "Random positive integer" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/black-forest-labs/flux-1-schnell  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "prompt": "cyberpunk cat", "seed": "Random positive integer" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4867)
-* [ Output ](#tab-panel-4868)
+* [ Input ](#tab-panel-5013)
+* [ Output ](#tab-panel-5014)
 
 prompt
 

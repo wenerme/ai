@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Attributes are added in the `<stream>` tag without quotes, as you can see below:
 
-```
+```plaintext
 <stream attribute-added-here src="https://developers.cloudflare.com/stream/uploading-videos/player-api/5d5bc37ffcf54c9b82e996823bffbb81"></stream>
 ```
 
 Multiple attributes can be used together, added one after each other like this:
 
-```
+```plaintext
 <stream attribute-1 attribute-2 attribute-3 src="https://developers.cloudflare.com/stream/uploading-videos/player-api/5d5bc37ffcf54c9b82e996823bffbb81"></stream>
 ```
 

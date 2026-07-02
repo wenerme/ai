@@ -28,19 +28,28 @@ A component which lists all participants, with ability to run privileged actions
 
 ### Basic Usage
 
-```
+```html
 <rtk-breakout-room-participants></rtk-breakout-room-participants>
 ```
 
 ### With Properties
 
-```
-<rtk-breakout-room-participants participantIds="example" selectedParticipantIds="example"></rtk-breakout-room-participants>
+```html
+<rtk-breakout-room-participants
+ participantIds="example"
+ selectedParticipantIds="example">
+</rtk-breakout-room-participants>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-breakout-room-participants");
-  el.meeting= meeting  el.participantIds= [];  el.selectedParticipantIds= [];</script>
+```html
+<script>
+  const el = document.querySelector("rtk-breakout-room-participants");
+
+
+  el.meeting= meeting
+  el.participantIds= [];
+  el.selectedParticipantIds= [];
+</script>
 ```
 
 ```json

@@ -28,16 +28,30 @@ Leave meeting confirmation dialog with options to leave or end the meeting for a
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLeaveMeeting } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLeaveMeeting meeting={meeting} onClose={() => setOpen(false)} />;}
+
+
+function MyComponent() {
+  return <RtkLeaveMeeting meeting={meeting} onClose={() => setOpen(false)} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLeaveMeeting } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkLeaveMeeting      meeting={meeting}      onClose={() => setOpen(false)}      states={states}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLeaveMeeting
+      meeting={meeting}
+      onClose={() => setOpen(false)}
+      states={states}
+    />
+  );
+}
 ```
 
 ```json

@@ -27,16 +27,24 @@ Button to trigger the leave meeting confirmation dialog.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLeaveButton } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLeaveButton />;}
+
+
+function MyComponent() {
+  return <RtkLeaveButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLeaveButton } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLeaveButton variant="button" size="md" />;}
+
+
+function MyComponent() {
+  return <RtkLeaveButton variant="button" size="md" />;
+}
 ```
 
 ```json

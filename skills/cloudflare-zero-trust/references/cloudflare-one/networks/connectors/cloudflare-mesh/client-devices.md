@@ -26,8 +26,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-7303)
-* [ Version 2026.1 and earlier ](#tab-panel-7304)
+* [ Version 2026.2+ ](#tab-panel-7553)
+* [ Version 2026.1 and earlier ](#tab-panel-7554)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.
@@ -66,9 +66,7 @@ After enrollment, the device receives a Mesh IP and connects to your Mesh networ
 
 Test that the device can reach a Mesh node or another client device:
 
-Terminal window
-
-```
+```sh
 ping <MESH-IP>
 ```
 

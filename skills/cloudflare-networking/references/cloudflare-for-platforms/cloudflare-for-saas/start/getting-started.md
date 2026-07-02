@@ -50,8 +50,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-7105)
-* [ API ](#tab-panel-7106)
+* [ Dashboard ](#tab-panel-7353)
+* [ API ](#tab-panel-7354)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -111,8 +111,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-7107)
-* [ API ](#tab-panel-7108)
+* [ Dashboard ](#tab-panel-7355)
+* [ API ](#tab-panel-7356)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -184,7 +184,7 @@ If you use [automatic HTTP certificate validation](https://developers.cloudflare
 
 Your customer's CNAME record might look like the following:
 
-```
+```txt
 mystore.example.com CNAME customers.saasprovider.com
 ```
 

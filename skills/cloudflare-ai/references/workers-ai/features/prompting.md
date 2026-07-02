@@ -36,18 +36,32 @@ OpenAI has a [good explanation ↗](https://platform.openai.com/docs/guides/text
 
 Here's an input example of a scoped prompt using system and user roles:
 
-JavaScript
+**JavaScript**
 
-```
-{  messages: [    { role: "system", content: "you are a very funny comedian and you like emojis" },    { role: "user", content: "tell me a joke about cloudflare" },  ],};
+```js
+{
+  messages: [
+    { role: "system", content: "you are a very funny comedian and you like emojis" },
+    { role: "user", content: "tell me a joke about cloudflare" },
+  ],
+};
 ```
 
 Here's a better example of a chat session using multiple iterations between the user and the assistant.
 
-JavaScript
+**JavaScript**
 
-```
-{  messages: [    { role: "system", content: "you are a professional computer science assistant" },    { role: "user", content: "what is WASM?" },    { role: "assistant", content: "WASM (WebAssembly) is a binary instruction format that is designed to be a platform-agnostic" },    { role: "user", content: "does Python compile to WASM?" },    { role: "assistant", content: "No, Python does not directly compile to WebAssembly" },    { role: "user", content: "what about Rust?" },  ],};
+```js
+{
+  messages: [
+    { role: "system", content: "you are a professional computer science assistant" },
+    { role: "user", content: "what is WASM?" },
+    { role: "assistant", content: "WASM (WebAssembly) is a binary instruction format that is designed to be a platform-agnostic" },
+    { role: "user", content: "does Python compile to WASM?" },
+    { role: "assistant", content: "No, Python does not directly compile to WebAssembly" },
+    { role: "user", content: "what about Rust?" },
+  ],
+};
 ```
 
 Note that different LLMs are trained with different templates for different use cases. While Workers AI tries its best to abstract the specifics of each LLM template from the developer through a unified API, you should always refer to the model documentation for details. For example, instruct models like Codellama are fine-tuned to respond to a user-provided instruction, while chat models expect fragments of dialogs as input.
@@ -56,18 +70,24 @@ Note that different LLMs are trained with different templates for different use 
 
 You can use unscoped prompts to send a single question to the model without worrying about providing any context. Workers AI will automatically convert your `prompt` input to a reasonable default scoped prompt internally so that you get the best possible prediction.
 
-JavaScript
+**JavaScript**
 
-```
-{  prompt: "tell me a joke about cloudflare";}
+```js
+{
+  prompt: "tell me a joke about cloudflare";
+}
 ```
 
 You can also use unscoped prompts to construct the model chat template manually. In this case, you can use the raw parameter. Here's an input example of a [Mistral ↗](https://docs.mistral.ai/models/#chat-template) chat template prompt:
 
-JavaScript
+**JavaScript**
 
-```
-{  prompt: "<s>[INST]comedian[/INST]</s>[INST]tell me a joke about cloudflare[/INST]",  raw: true};
+```js
+{
+  prompt: "<s>[INST]comedian[/INST]</s>
+[INST]tell me a joke about cloudflare[/INST]",
+  raw: true
+};
 ```
 
 ```json

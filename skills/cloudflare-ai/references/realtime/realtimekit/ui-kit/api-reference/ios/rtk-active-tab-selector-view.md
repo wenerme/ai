@@ -31,11 +31,19 @@ A horizontally scrollable tab selector for switching between plugins and screen 
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let tabSelector = RtkActiveTabSelectorView()let buttons = [    RtkPluginScreenShareTabButton(image: nil, title: "Screen Share"),    RtkPluginScreenShareTabButton(image: nil, title: "Whiteboard")]tabSelector.setAndDisplayButtons(buttons)view.addSubview(tabSelector)
+
+
+let tabSelector = RtkActiveTabSelectorView()
+let buttons = [
+    RtkPluginScreenShareTabButton(image: nil, title: "Screen Share"),
+    RtkPluginScreenShareTabButton(image: nil, title: "Whiteboard")
+]
+tabSelector.setAndDisplayButtons(buttons)
+view.addSubview(tabSelector)
 ```
 
 ```json

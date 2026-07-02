@@ -20,28 +20,61 @@ You can use [node:net ↗](https://nodejs.org/api/net.html) to create a direct c
 
 These functions use [connect](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) functionality from the built-in `cloudflare:sockets` module.
 
-* [  JavaScript ](#tab-panel-12083)
-* [  TypeScript ](#tab-panel-12084)
+* [  JavaScript ](#tab-panel-12378)
+* [  TypeScript ](#tab-panel-12379)
 
-index.js
+**index.js**
 
-```
+```js
 import net from "node:net";
-const exampleIP = "127.0.0.1";
-export default {  async fetch(req) {    const socket = new net.Socket();    socket.connect(4000, exampleIP, function () {      console.log("Connected");    });
-    socket.write("Hello, Server!");    socket.end();
-    return new Response("Wrote to server", { status: 200 });  },};
-```
 
-index.ts
 
-```
-import net from "node:net";
 const exampleIP = "127.0.0.1";
-export default {  async fetch(req): Promise<Response> {    const socket = new net.Socket();    socket.connect(4000, exampleIP, function () {      console.log("Connected");    });
-    socket.write("Hello, Server!");    socket.end();
+
+
+export default {
+  async fetch(req) {
+    const socket = new net.Socket();
+    socket.connect(4000, exampleIP, function () {
+      console.log("Connected");
+    });
+
+
+    socket.write("Hello, Server!");
+    socket.end();
+
+
     return new Response("Wrote to server", { status: 200 });
-},} satisfies ExportedHandler;
+  },
+};
+```
+
+**index.ts**
+
+```ts
+import net from "node:net";
+
+
+const exampleIP = "127.0.0.1";
+
+
+export default {
+  async fetch(req): Promise<Response> {
+    const socket = new net.Socket();
+    socket.connect(4000, exampleIP, function () {
+      console.log("Connected");
+    });
+
+
+    socket.write("Hello, Server!");
+    socket.end();
+
+
+    return new Response("Wrote to server", { status: 200 });
+
+
+},
+} satisfies ExportedHandler;
 ```
 
 Additionally, other APIs such as [net.BlockList ↗](https://nodejs.org/api/net.html#class-netblocklist)and [net.SocketAddress ↗](https://nodejs.org/api/net.html#class-netsocketaddress) are available.
@@ -50,7 +83,7 @@ Note that the [net.Server ↗](https://nodejs.org/api/net.html#class-netserver) 
 
 The full `node:net` API is documented in the [Node.js documentation for node:net ↗](https://nodejs.org/api/net.html).
 
-```
+```plaintext
 
 ```
 

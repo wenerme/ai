@@ -27,16 +27,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantsStageQueue } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipantsStageQueue />;}
+
+
+function MyComponent() {
+  return <RtkParticipantsStageQueue />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantsStageQueue } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipantsStageQueue      meeting={meeting}      size="md"      view={participantsviewmode}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantsStageQueue
+      meeting={meeting}
+      size="md"
+      view={participantsviewmode}
+    />
+  );
+}
 ```
 
 ```json

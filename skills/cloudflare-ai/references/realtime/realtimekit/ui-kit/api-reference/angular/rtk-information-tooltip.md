@@ -22,14 +22,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-information-tooltip></rtk-information-tooltip>
+```html
+<!-- component.html -->
+<rtk-information-tooltip></rtk-information-tooltip>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-information-tooltip [iconPack]="defaultIconPack"></rtk-information-tooltip>
+```html
+<!-- component.html -->
+<rtk-information-tooltip
+ [iconPack]="defaultIconPack">
+</rtk-information-tooltip>
 ```
 
 ```json

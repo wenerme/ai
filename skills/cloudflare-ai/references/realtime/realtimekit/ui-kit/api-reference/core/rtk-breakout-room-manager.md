@@ -31,19 +31,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-breakout-room-manager></rtk-breakout-room-manager>
 ```
 
 ### With Properties
 
-```
-<rtk-breakout-room-manager></rtk-breakout-room-manager>
+```html
+<rtk-breakout-room-manager>
+</rtk-breakout-room-manager>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-breakout-room-manager");
-  el.allowDelete= true;  el.assigningParticipants= true;  el.defaultExpanded= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-breakout-room-manager");
+
+
+  el.allowDelete= true;
+  el.assigningParticipants= true;
+  el.defaultExpanded= true;
+</script>
 ```
 
 ```json

@@ -27,14 +27,18 @@ A confirmation modal.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-confirmation-modal></rtk-confirmation-modal>
+```html
+<!-- component.html -->
+<rtk-confirmation-modal></rtk-confirmation-modal>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-confirmation-modal [meeting]="meeting"></rtk-confirmation-modal>
+```html
+<!-- component.html -->
+<rtk-confirmation-modal
+ [meeting]="meeting">
+</rtk-confirmation-modal>
 ```
 
 ```json

@@ -25,16 +25,20 @@ A component which indicates the recording status of a meeting. It does not rende
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkRecordingIndicator    android:id="@+id/rtk_recording_indicator"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkRecordingIndicator
+    android:id="@+id/rtk_recording_indicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val recordingIndicator = findViewById<RtkRecordingIndicator>(R.id.rtk_recording_indicator)recordingIndicator.activate(meeting)
+```kotlin
+val recordingIndicator = findViewById<RtkRecordingIndicator>(R.id.rtk_recording_indicator)
+recordingIndicator.activate(meeting)
 ```
 
 ```json

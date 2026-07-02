@@ -73,7 +73,7 @@ Vector embeddings represent the features of a machine learning model as a numeri
 
 For example, a [text embedding model](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) available in Workers AI is able to take text input and represent it as a 768-dimension vector. The text `This is a story about an orange cloud`, when represented as a vector embedding, resembles the following:
 
-```
+```json
 [-0.019273685291409492,-0.01913292706012726,<764 dimensions here>,0.0007094172760844231,0.043409910053014755]
 ```
 

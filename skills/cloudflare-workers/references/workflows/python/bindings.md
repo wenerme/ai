@@ -22,29 +22,63 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-13143)
-* [  wrangler.toml ](#tab-panel-13144)
+* [  wrangler.jsonc ](#tab-panel-13438)
+* [  wrangler.toml ](#tab-panel-13439)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "workflows-starter",
+  "main": "src/index.py",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["python_workflows", "python_workers"],
+  "workflows": [
+    {
+      // name of your workflow
+      "name": "workflows-starter",
+      // binding name env.MY_WORKFLOW
+      "binding": "MY_WORKFLOW",
+      // this is class that extends the Workflow class in src/index.py
+      "class_name": "MyWorkflow",
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "workflows-starter",  "main": "src/index.py",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["python_workflows", "python_workers"],  "workflows": [    {      // name of your workflow      "name": "workflows-starter",      // binding name env.MY_WORKFLOW      "binding": "MY_WORKFLOW",      // this is class that extends the Workflow class in src/index.py      "class_name": "MyWorkflow",    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "workflows-starter"main = "src/index.py"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "python_workflows", "python_workers" ]
-[[workflows]]name = "workflows-starter"binding = "MY_WORKFLOW"class_name = "MyWorkflow"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "workflows-starter"
+main = "src/index.py"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "python_workflows", "python_workers" ]
+
+
+[[workflows]]
+name = "workflows-starter"
+binding = "MY_WORKFLOW"
+class_name = "MyWorkflow"
 ```
 
 And this is how you use the payload in your workflow:
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkflowEntrypoint
-class DemoWorkflowClass(WorkflowEntrypoint):    async def run(self, event, step):        @step.do('step-name')        async def first_step():            payload = event["payload"]            return payload
+
+
+class DemoWorkflowClass(WorkflowEntrypoint):
+    async def run(self, event, step):
+        @step.do('step-name')
+        async def first_step():
+            payload = event["payload"]
+            return payload
 ```
 
 ## Workflow
@@ -59,12 +93,20 @@ Create (trigger) a new instance of a given Workflow.
 
 * `create(options=None)`\* `options` \- an **optional** dictionary of options to pass to the workflow instance. Should contain the same keys as the [WorkflowInstanceCreateOptions](https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstancecreateoptions)type.
 
-Python
+**Python**
 
-```
-from js import Objectfrom pyodide.ffi import to_jsfrom workers import WorkerEntrypoint, Response
+```python
+from js import Object
+from pyodide.ffi import to_js
+from workers import WorkerEntrypoint, Response
 
-class Default(WorkerEntrypoint):    async def fetch(self, request):        event = {"foo": "bar"}        options = to_js({"params": event}, dict_converter=Object.fromEntries)        await self.env.MY_WORKFLOW.create(options)        return Response.json({"status": "success"})
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        event = {"foo": "bar"}
+        options = to_js({"params": event}, dict_converter=Object.fromEntries)
+        await self.env.MY_WORKFLOW.create(options)
+        return Response.json({"status": "success"})
 ```
 
 Note
@@ -81,11 +123,24 @@ Create (trigger) a batch of new workflow instances, up to 100 instances at a tim
 
 Each element of the `batch` list is expected to include both `id` and `params` properties:
 
-Python
+**Python**
 
-```
-from pyodide.ffi import to_jsfrom js import Objectfrom workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        # Create a new batch of 3 Workflow instances, each with its own ID and pass params to the Workflow instances        listOfInstances = [            to_js({ "id": "id-abc123", "params": { "hello": "world-0" } }, dict_converter=Object.fromEntries),            to_js({ "id": "id-def456", "params": { "hello": "world-1" } }, dict_converter=Object.fromEntries),            to_js({ "id": "id-ghi789", "params": { "hello": "world-2" } }, dict_converter=Object.fromEntries)        ]        await self.env.MY_WORKFLOW.create_batch(listOfInstances)        return Response.json({"status": "success"})
+```python
+from pyodide.ffi import to_js
+from js import Object
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        # Create a new batch of 3 Workflow instances, each with its own ID and pass params to the Workflow instances
+        listOfInstances = [
+            to_js({ "id": "id-abc123", "params": { "hello": "world-0" } }, dict_converter=Object.fromEntries),
+            to_js({ "id": "id-def456", "params": { "hello": "world-1" } }, dict_converter=Object.fromEntries),
+            to_js({ "id": "id-ghi789", "params": { "hello": "world-2" } }, dict_converter=Object.fromEntries)
+        ]
+        await self.env.MY_WORKFLOW.create_batch(listOfInstances)
+        return Response.json({"status": "success"})
 ```
 
 ### `get`
@@ -96,12 +151,24 @@ Get a workflow instance by ID.
 
 Returns a [WorkflowInstance](https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance) object, which can be used to query the status of the workflow instance.
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        instance = await self.env.MY_WORKFLOW.get("abc-123")
-        # FFI methods available for WorkflowInstance        await instance.status()        await instance.pause()        await instance.resume()        await instance.restart()        await instance.terminate()        return Response.json({"status": "success"})
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        instance = await self.env.MY_WORKFLOW.get("abc-123")
+
+
+        # FFI methods available for WorkflowInstance
+        await instance.status()
+        await instance.pause()
+        await instance.resume()
+        await instance.restart()
+        await instance.terminate()
+        return Response.json({"status": "success"})
 ```
 
 ### `send_event`
@@ -110,11 +177,18 @@ Send an event to a workflow instance.
 
 * `send_event(options)`\* `type` \- the type of event to send to the workflow instance. \* `payload` \- the payload to send to the workflow instance.
 
-Python
+**Python**
 
-```
-from pyodide.ffi import to_jsfrom js import Objectfrom workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        await self.env.MY_WORKFLOW.send_event(to_js({ "type": "my-event-type", "payload": { "foo": "bar" } }, dict_converter=Object.fromEntries))        return Response.json({"status": "success"})
+```python
+from pyodide.ffi import to_js
+from js import Object
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        await self.env.MY_WORKFLOW.send_event(to_js({ "type": "my-event-type", "payload": { "foo": "bar" } }, dict_converter=Object.fromEntries))
+        return Response.json({"status": "success"})
 ```
 
 Note

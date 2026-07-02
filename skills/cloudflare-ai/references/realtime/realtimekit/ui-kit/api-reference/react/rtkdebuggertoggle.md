@@ -27,16 +27,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDebuggerToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkDebuggerToggle />;}
+
+
+function MyComponent() {
+  return <RtkDebuggerToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDebuggerToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkDebuggerToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDebuggerToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

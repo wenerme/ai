@@ -25,20 +25,29 @@ A widget that displays the title of a RealtimeKit meeting. Integrates with the R
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkMeetingTitle(  meeting: yourMeetingInstance,)
+
+
+RtkMeetingTitle(
+  meeting: yourMeetingInstance,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkMeetingTitle(  meeting: yourMeetingInstance,  individualDesignToken: yourDesignToken,)
+
+
+RtkMeetingTitle(
+  meeting: yourMeetingInstance,
+  individualDesignToken: yourDesignToken,
+)
 ```
 
 ```json

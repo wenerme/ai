@@ -24,10 +24,12 @@ API information
 
 API configuration property name: `"automatic_https_rewrites"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "automatic_https_rewrites": true}
+```json
+"action_parameters": {
+  "automatic_https_rewrites": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -42,10 +44,12 @@ API information
 
 API configuration property name: `"bic"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "bic": true}
+```json
+"action_parameters": {
+  "bic": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -64,10 +68,12 @@ API information
 
 API configuration property name: `"disable_rum"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "disable_rum": true}
+```json
+"action_parameters": {
+  "disable_rum": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -82,10 +88,12 @@ API information
 
 API configuration property name: `"disable_zaraz"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "disable_zaraz": true}
+```json
+"action_parameters": {
+  "disable_zaraz": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -100,10 +108,12 @@ API information
 
 API configuration property name: `"email_obfuscation"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "email_obfuscation": false}
+```json
+"action_parameters": {
+  "email_obfuscation": false
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -118,10 +128,12 @@ API information
 
 API configuration property name: `"fonts"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "fonts": false}
+```json
+"action_parameters": {
+  "fonts": false
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -136,10 +148,12 @@ API information
 
 API configuration property name: `"hotlink_protection"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {    "hotlink_protection": false}
+```json
+"action_parameters": {
+    "hotlink_protection": false
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -156,10 +170,12 @@ API configuration property name: `"security_level"` (string).
 
 API values: `"off"`, `"essentially_off"`, `"under_attack"`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "security_level": "under_attack"}
+```json
+"action_parameters": {
+  "security_level": "under_attack"
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -174,10 +190,12 @@ API information
 
 API configuration property name: `"content_converter"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "content_converter": true}
+```json
+"action_parameters": {
+  "content_converter": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -192,10 +210,12 @@ API information
 
 API configuration property name: `"opportunistic_encryption"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "opportunistic_encryption": true}
+```json
+"action_parameters": {
+  "opportunistic_encryption": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -219,10 +239,12 @@ API configuration property name: `"polish"` (string).
 
 API values: `"off"`, `"lossless"`, `"lossy"`, `"webp"`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "polish": "webp"}
+```json
+"action_parameters": {
+  "polish": "webp"
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -245,10 +267,12 @@ API configuration property name: `"request_body_buffering"` (string).
 
 API values: `"standard"`, `"full"`, `"none"`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "request_body_buffering": "full"}
+```json
+"action_parameters": {
+  "request_body_buffering": "full"
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -270,10 +294,12 @@ API configuration property name: `"response_body_buffering"` (string).
 
 API values: `"standard"`, `"none"`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "response_body_buffering": "standard"}
+```json
+"action_parameters": {
+  "response_body_buffering": "standard"
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -288,10 +314,12 @@ API information
 
 API configuration property name: `"rocket_loader"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "rocket_loader": true}
+```json
+"action_parameters": {
+  "rocket_loader": true
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
@@ -316,10 +344,12 @@ API configuration property name: `"ssl"` (string).
 
 API values: `"off"`, `"flexible"`, `"full"`, `"strict"`, `"origin_pull"`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "ssl": "flexible"}
+```json
+"action_parameters": {
+  "ssl": "flexible"
+}
 ```
 
 Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.

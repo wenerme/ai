@@ -74,7 +74,7 @@ The rule expression, or filter expression, specifies the conditions that must be
 
 The default expression of a Bulk Redirect Rule is the following:
 
-```
+```txt
 http.request.full_uri in $<LIST_NAME>
 ```
 
@@ -82,7 +82,7 @@ This expression means that the request URL, after some basic normalization (if [
 
 You can use an expression different from the default one to increase the specificity of URL redirect matches. For example, if you set the expression of a Bulk Redirect Rule to the following expression, there will only be a match for requests coming from the United Kingdom:
 
-```
+```txt
 ip.src.country == "GB" and http.request.full_uri in $<LIST_NAME>
 ```
 

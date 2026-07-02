@@ -24,18 +24,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-file-dropzone></rtk-file-dropzone>
 ```
 
 ### With Properties
 
-```
-<rtk-file-dropzone></rtk-file-dropzone>
+```html
+<rtk-file-dropzone>
+</rtk-file-dropzone>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-file-dropzone");
+```html
+<script>
+  const el = document.querySelector("rtk-file-dropzone");
+
+
 </script>
 ```
 

@@ -28,14 +28,20 @@ A number picker with increment and decrement buttons.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-counter></rtk-counter>
+```html
+<!-- component.html -->
+<rtk-counter></rtk-counter>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-counter minValue="42" size="md" value="42"></rtk-counter>
+```html
+<!-- component.html -->
+<rtk-counter
+ minValue="42"
+ size="md"
+ value="42">
+</rtk-counter>
 ```
 
 ```json

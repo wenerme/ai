@@ -56,20 +56,31 @@ You can also create your secret with the newly available **ai\_gateway** scope v
 
 Then, pass the key in the request header using its Secrets Store reference:
 
-Terminal window
-
-```
-curl -X POST https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic/v1/messages \ --header 'cf-aig-authorization: ANTHROPIC_KEY_1 \ --header 'anthropic-version: 2023-06-01' \ --header 'Content-Type: application/json' \ --data  '{"model": "claude-3-opus-20240229", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
+```bash
+curl -X POST https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic/v1/messages \
+ --header 'cf-aig-authorization: ANTHROPIC_KEY_1 \
+ --header 'anthropic-version: 2023-06-01' \
+ --header 'Content-Type: application/json' \
+ --data  '{"model": "claude-3-opus-20240229", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
 ```
 
 Or, using Javascript:
 
-```
+```plaintext
 import Anthropic from '@anthropic-ai/sdk';
 
-const anthropic = new Anthropic({ apiKey: "ANTHROPIC_KEY_1", baseURL: "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic",});
 
-const message = await anthropic.messages.create({ model: 'claude-3-opus-20240229', messages: [{role: "user", content: "What is Cloudflare?"}], max_tokens: 1024});
+const anthropic = new Anthropic({
+ apiKey: "ANTHROPIC_KEY_1",
+ baseURL: "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic",
+});
+
+
+const message = await anthropic.messages.create({
+ model: 'claude-3-opus-20240229',
+ messages: [{role: "user", content: "What is Cloudflare?"}],
+ max_tokens: 1024
+});
 ```
 
 For more information, check out the [blog ↗](https://blog.cloudflare.com/ai-gateway-aug-2025-refresh)!
@@ -102,9 +113,7 @@ Cloudflare Secrets Store is available today in Beta. You can now store, manage, 
 
 To spin up your Cloudflare Secrets Store, simply click the new Secrets Store tab [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store) or use this Wrangler command:
 
-Terminal window
-
-```
+```sh
 wrangler secrets-store store create <name> --remote
 ```
 
@@ -126,8 +135,31 @@ Cloudflare has supported both RSA and ECDSA certificates across our platform for
 
 Now, you can upload both an RSA and ECDSA certificate on a custom hostname via the API.
 
-```
-curl -X POST https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames \    -H 'Content-Type: application/json' \    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \    -d '{    "hostname": "hostname",    "ssl": {        "custom_cert_bundle": [            {                "custom_certificate": "RSA Cert",                "custom_key": "RSA Key"            },            {                "custom_certificate": "ECDSA Cert",                "custom_key": "ECDSA Key"            }        ],        "bundle_method": "force",        "wildcard": false,        "settings": {            "min_tls_version": "1.0"        }    }}’
+```plaintext
+curl -X POST https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames \
+    -H 'Content-Type: application/json' \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+    -d '{
+    "hostname": "hostname",
+    "ssl": {
+        "custom_cert_bundle": [
+            {
+                "custom_certificate": "RSA Cert",
+                "custom_key": "RSA Key"
+            },
+            {
+                "custom_certificate": "ECDSA Cert",
+                "custom_key": "ECDSA Key"
+            }
+        ],
+        "bundle_method": "force",
+        "wildcard": false,
+        "settings": {
+            "min_tls_version": "1.0"
+        }
+    }
+}’
 ```
 
 You can also:

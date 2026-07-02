@@ -160,10 +160,20 @@ An additional access rule is required for Cloudflare WAN health checks to work p
 
 You have to [configure Cloudflare WAN health checks](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) correctly. Here is an example of how to set up health checks:
 
-Terminal window
-
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "health_check": {    "direction": "bidirectional",    "enabled": true,    "type": "request",    "rate": "low"  }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "health_check": {
+    "direction": "bidirectional",
+    "enabled": true,
+    "type": "request",
+    "rate": "low"
+  }
+}'
 ```
 
 Health checks might take some time to stabilize after the configuration is changed.

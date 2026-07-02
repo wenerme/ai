@@ -22,19 +22,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-information-tooltip></rtk-information-tooltip>
 ```
 
 ### With Properties
 
-```
-<rtk-information-tooltip></rtk-information-tooltip>
+```html
+<rtk-information-tooltip>
+</rtk-information-tooltip>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-information-tooltip");
-  el.iconPack= defaultIconPack</script>
+```html
+<script>
+  const el = document.querySelector("rtk-information-tooltip");
+
+
+  el.iconPack= defaultIconPack
+</script>
 ```
 
 ```json

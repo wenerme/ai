@@ -30,23 +30,49 @@ ByteDance's next-generation video model with a unified multimodal architecture. 
 * [ TypeScript ](#tab-panel-374)
 * [ cURL ](#tab-panel-375)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'bytedance/seedance-2.0',  {    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',    aspect_ratio: '16:9',    duration: 5,    resolution: '720p',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0',
+  {
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+    aspect_ratio: '16:9',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0",  "input": {    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",    "aspect_ratio": "16:9",    "duration": 5,    "resolution": "720p"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0",
+  "input": {
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-370)
 * [ Raw response ](#tab-panel-371)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/simple-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/simple-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
@@ -56,23 +82,50 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-378)
 * [ cURL ](#tab-panel-379)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'bytedance/seedance-2.0',  {    prompt:      'A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog',    aspect_ratio: '16:9',    duration: 10,    resolution: '1080p',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0',
+  {
+    prompt:
+      'A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog',
+    aspect_ratio: '16:9',
+    duration: 10,
+    resolution: '1080p',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0",  "input": {    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog",    "aspect_ratio": "16:9",    "duration": 10,    "resolution": "1080p"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0",
+  "input": {
+    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog",
+    "aspect_ratio": "16:9",
+    "duration": 10,
+    "resolution": "1080p"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-372)
 * [ Raw response ](#tab-panel-373)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/high-resolution-cinematic.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/high-resolution-cinematic.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Image to Video**  — Generate video from a reference image
@@ -80,23 +133,52 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-382)
 * [ cURL ](#tab-panel-383)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'bytedance/seedance-2.0',  {    image:      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=',    prompt: 'The character begins walking forward through the scene',    aspect_ratio: '16:9',    duration: 5,    resolution: '720p',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0',
+  {
+    image:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=',
+    prompt: 'The character begins walking forward through the scene',
+    aspect_ratio: '16:9',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0",  "input": {    "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=",    "prompt": "The character begins walking forward through the scene",    "aspect_ratio": "16:9",    "duration": 5,    "resolution": "720p"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0",
+  "input": {
+    "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=",
+    "prompt": "The character begins walking forward through the scene",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-376)
 * [ Raw response ](#tab-panel-377)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/image-to-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/image-to-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Portrait Video**  — Vertical video for social media
@@ -104,23 +186,49 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-386)
 * [ cURL ](#tab-panel-387)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'bytedance/seedance-2.0',  {    prompt: 'Abstract ink drops spreading through water, vivid colors mixing in slow motion',    aspect_ratio: '9:16',    duration: 5,    resolution: '720p',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0',
+  {
+    prompt: 'Abstract ink drops spreading through water, vivid colors mixing in slow motion',
+    aspect_ratio: '9:16',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0",  "input": {    "prompt": "Abstract ink drops spreading through water, vivid colors mixing in slow motion",    "aspect_ratio": "9:16",    "duration": 5,    "resolution": "720p"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0",
+  "input": {
+    "prompt": "Abstract ink drops spreading through water, vivid colors mixing in slow motion",
+    "aspect_ratio": "9:16",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-380)
 * [ Raw response ](#tab-panel-381)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/portrait-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/portrait-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **4K Cinematic Video**  — Generate a detailed cinematic video in 4K
@@ -128,23 +236,50 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-388)
 * [ cURL ](#tab-panel-389)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'bytedance/seedance-2.0',  {    prompt:      'A sweeping cinematic shot of a futuristic city skyline at dusk, flying past glass towers with neon reflections and dramatic clouds',    aspect_ratio: '16:9',    duration: 5,    resolution: '4k',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0',
+  {
+    prompt:
+      'A sweeping cinematic shot of a futuristic city skyline at dusk, flying past glass towers with neon reflections and dramatic clouds',
+    aspect_ratio: '16:9',
+    duration: 5,
+    resolution: '4k',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0",  "input": {    "prompt": "A sweeping cinematic shot of a futuristic city skyline at dusk, flying past glass towers with neon reflections and dramatic clouds",    "aspect_ratio": "16:9",    "duration": 5,    "resolution": "4k"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0",
+  "input": {
+    "prompt": "A sweeping cinematic shot of a futuristic city skyline at dusk, flying past glass towers with neon reflections and dramatic clouds",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "resolution": "4k"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-384)
 * [ Raw response ](#tab-panel-385)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/4k-cinematic-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0/4k-cinematic-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters

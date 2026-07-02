@@ -26,8 +26,11 @@ Cache Analytics and the dashboard filter these subrequests out by design. Logpus
 
 A typical entry in your SIEM looks like this:
 
-```
-EdgeResponseStatus: 504OriginResponseStatus: 0ClientRequestHost: www.example.comEdgeStartTimestamp: 2026-04-15T10:23:17Z
+```txt
+EdgeResponseStatus: 504
+OriginResponseStatus: 0
+ClientRequestHost: www.example.com
+EdgeStartTimestamp: 2026-04-15T10:23:17Z
 ```
 
 Your application is working normally, your origin is healthy, and no 504 responses appear in the dashboard for this zone. Your SIEM dashboards may still show tens of thousands of these entries per day.
@@ -79,10 +82,15 @@ To replicate the dashboard's filter in the GraphQL Analytics API, refer to [Filt
 
 Add the `RequestSource` field to your Logpush job's `output_options.field_names`. Field changes propagate in approximately 10–15 minutes, per the [API configuration reference](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/).
 
-Terminal window
-
-```
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  --data '{    "output_options": {      "field_names": ["...existing fields...", "RequestSource"]    }  }'
+```bash
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "output_options": {
+      "field_names": ["...existing fields...", "RequestSource"]
+    }
+  }'
 ```
 
 Once the field flows, re-check your `504` / `0` entries:
@@ -99,19 +107,19 @@ Add a filter equivalent to the following to your SIEM dashboards, alerts, and qu
 
 **Splunk:**
 
-```
+```txt
 NOT RequestSource IN ("earlyHintsCache", "edgeWorkerCacheAPI")
 ```
 
 **Datadog:**
 
-```
+```txt
 NOT @RequestSource:("earlyHintsCache" OR "edgeWorkerCacheAPI")
 ```
 
 **Sumo Logic or generic:**
 
-```
+```txt
 !(RequestSource = "earlyHintsCache" OR RequestSource = "edgeWorkerCacheAPI")
 ```
 

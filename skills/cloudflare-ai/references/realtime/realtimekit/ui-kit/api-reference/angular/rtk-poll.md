@@ -28,14 +28,20 @@ A poll component. Shows a poll where a user can vote.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-poll></rtk-poll>
+```html
+<!-- component.html -->
+<rtk-poll></rtk-poll>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-poll [permissions]="rtkpermissionspreset" [poll]="poll" self="example"></rtk-poll>
+```html
+<!-- component.html -->
+<rtk-poll
+ [permissions]="rtkpermissionspreset"
+ [poll]="poll"
+ self="example">
+</rtk-poll>
 ```
 
 ```json

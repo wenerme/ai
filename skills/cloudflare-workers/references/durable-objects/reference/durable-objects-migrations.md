@@ -38,15 +38,28 @@ To apply a Create migration:
 
 1. Add the following lines to your Wrangler configuration file:
 
-  * [  wrangler.jsonc ](#tab-panel-8463)
-  * [  wrangler.toml ](#tab-panel-8464)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8754)
+  * [  wrangler.toml ](#tab-panel-8755)
+
+**JSONC**
+```jsonc
+{
+  "migrations": [
+    {
+      "tag": "<v1>", // Migration identifier. This should be unique for each migration entry
+      "new_sqlite_classes": [ // Array of new classes
+        "<NewDurableObjectClass>"
+      ]
+    }
+  ]
+}
 ```
-{  "migrations": [    {      "tag": "<v1>", // Migration identifier. This should be unique for each migration entry      "new_sqlite_classes": [ // Array of new classes        "<NewDurableObjectClass>"      ]    }  ]}
-```
-TOML
-```
-[[migrations]]tag = "<v1>"new_sqlite_classes = [ "<NewDurableObjectClass>" ]
+
+**TOML**
+```toml
+[[migrations]]
+tag = "<v1>"
+new_sqlite_classes = [ "<NewDurableObjectClass>" ]
 ```
 The Create migration contains:
 
@@ -59,20 +72,45 @@ Create migration example
 
 To create a new Durable Object binding `DURABLE_OBJECT_A`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-8469)
-* [  wrangler.toml ](#tab-panel-8470)
+* [  wrangler.jsonc ](#tab-panel-8760)
+* [  wrangler.toml ](#tab-panel-8761)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // Creating a new Durable Object class
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "DURABLE_OBJECT_A",
+        "class_name": "DurableObjectAClass"
+      }
+    ]
+  },
+  // Add the lines below for a Create migration.
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "DurableObjectAClass"
+      ]
+    }
+  ]
+}
 ```
-{  // Creating a new Durable Object class  "durable_objects": {    "bindings": [      {        "name": "DURABLE_OBJECT_A",        "class_name": "DurableObjectAClass"      }    ]  },  // Add the lines below for a Create migration.  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "DurableObjectAClass"      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[durable_objects.bindings]]name = "DURABLE_OBJECT_A"class_name = "DurableObjectAClass"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "DurableObjectAClass" ]
+```toml
+[[durable_objects.bindings]]
+name = "DURABLE_OBJECT_A"
+class_name = "DurableObjectAClass"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "DurableObjectAClass" ]
 ```
 
 ### Create Durable Object class with key-value storage
@@ -87,19 +125,31 @@ The [key-value storage backend](https://developers.cloudflare.com/durable-object
 
 Use `new_classes` on the migration in your Worker's Wrangler file to create a Durable Object class with the key-value storage backend:
 
-* [  wrangler.jsonc ](#tab-panel-8465)
-* [  wrangler.toml ](#tab-panel-8466)
+* [  wrangler.jsonc ](#tab-panel-8756)
+* [  wrangler.toml ](#tab-panel-8757)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "migrations": [
+    {
+      "tag": "v1", // Should be unique for each entry
+      "new_classes": [
+        // Array of new classes
+        "MyDurableObject",
+      ],
+    },
+  ],
+}
 ```
-{  "migrations": [    {      "tag": "v1", // Should be unique for each entry      "new_classes": [        // Array of new classes        "MyDurableObject",      ],    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[migrations]]tag = "v1"new_classes = [ "MyDurableObject" ]
+```toml
+[[migrations]]
+tag = "v1"
+new_classes = [ "MyDurableObject" ]
 ```
 
 Note
@@ -125,15 +175,28 @@ To apply a Delete migration:
 2. Remove references for the class you wish to delete from your Worker code.
 3. Add the following lines to your Wrangler configuration file.
 
-  * [  wrangler.jsonc ](#tab-panel-8467)
-  * [  wrangler.toml ](#tab-panel-8468)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8758)
+  * [  wrangler.toml ](#tab-panel-8759)
+
+**JSONC**
+```jsonc
+{
+  "migrations": [
+    {
+      "tag": "<v2>", // Migration identifier. This should be unique for each migration entry
+      "deleted_classes": [ // Array of deleted class names
+        "<ClassToDelete>"
+      ]
+    }
+  ]
+}
 ```
-{  "migrations": [    {      "tag": "<v2>", // Migration identifier. This should be unique for each migration entry      "deleted_classes": [ // Array of deleted class names        "<ClassToDelete>"      ]    }  ]}
-```
-TOML
-```
-[[migrations]]tag = "<v2>"deleted_classes = [ "<ClassToDelete>" ]
+
+**TOML**
+```toml
+[[migrations]]
+tag = "<v2>"
+deleted_classes = [ "<ClassToDelete>" ]
 ```
 The Delete migration contains:
 
@@ -145,19 +208,37 @@ Delete migration example
 
 To delete a Durable Object binding `DEPRECATED_OBJECT`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-8471)
-* [  wrangler.toml ](#tab-panel-8472)
+* [  wrangler.jsonc ](#tab-panel-8762)
+* [  wrangler.toml ](#tab-panel-8763)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // Remove the binding for the DeprecatedObjectClass DO
+  // {"durable_objects": {"bindings": [
+  //   {
+  //     "name": "DEPRECATED_OBJECT",
+  //     "class_name": "DeprecatedObjectClass"
+  //   }
+  // ]}}
+  "migrations": [
+    {
+      "tag": "v3", // Should be unique for each entry
+      "deleted_classes": [ // Array of deleted classes
+        "DeprecatedObjectClass"
+      ]
+    }
+  ]
+}
 ```
-{  // Remove the binding for the DeprecatedObjectClass DO  // {"durable_objects": {"bindings": [  //   {  //     "name": "DEPRECATED_OBJECT",  //     "class_name": "DeprecatedObjectClass"  //   }  // ]}}  "migrations": [    {      "tag": "v3", // Should be unique for each entry      "deleted_classes": [ // Array of deleted classes        "DeprecatedObjectClass"      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[migrations]]tag = "v3"deleted_classes = [ "DeprecatedObjectClass" ]
+```toml
+[[migrations]]
+tag = "v3"
+deleted_classes = [ "DeprecatedObjectClass" ]
 ```
 
 ## Rename migration
@@ -168,17 +249,44 @@ To apply a Rename migration:
 
 1. Update the previous class name to the new class name by editing your Wrangler configuration file in the following way:
 
-  * [  wrangler.jsonc ](#tab-panel-8473)
-  * [  wrangler.toml ](#tab-panel-8474)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8764)
+  * [  wrangler.toml ](#tab-panel-8765)
+
+**JSONC**
+```jsonc
+{
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "<MY_DURABLE_OBJECT>",
+        "class_name": "<UpdatedDurableObject>" // Update the class name to the new class name
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "<v3>", // Migration identifier. This should be unique for each migration entry
+      "renamed_classes": [ // Array of rename directives
+        {
+          "from": "<OldDurableObject>",
+          "to": "<UpdatedDurableObject>"
+        }
+      ]
+    }
+  ]
+}
 ```
-{  "durable_objects": {    "bindings": [      {        "name": "<MY_DURABLE_OBJECT>",        "class_name": "<UpdatedDurableObject>" // Update the class name to the new class name      }    ]  },  "migrations": [    {      "tag": "<v3>", // Migration identifier. This should be unique for each migration entry      "renamed_classes": [ // Array of rename directives        {          "from": "<OldDurableObject>",          "to": "<UpdatedDurableObject>"        }      ]    }  ]}
-```
-TOML
-```
-[[durable_objects.bindings]]name = "<MY_DURABLE_OBJECT>"class_name = "<UpdatedDurableObject>"
-[[migrations]]tag = "<v3>"
-  [[migrations.renamed_classes]]  from = "<OldDurableObject>"  to = "<UpdatedDurableObject>"
+
+**TOML**
+```toml
+[[durable_objects.bindings]]
+name = "<MY_DURABLE_OBJECT>"
+class_name = "<UpdatedDurableObject>"
+[[migrations]]
+tag = "<v3>"
+  [[migrations.renamed_classes]]
+  from = "<OldDurableObject>"
+  to = "<UpdatedDurableObject>"
 ```
 The Rename migration contains:
 
@@ -193,21 +301,53 @@ Rename migration example
 
 To rename a Durable Object class, from `OldName` to `UpdatedName`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-8475)
-* [  wrangler.toml ](#tab-panel-8476)
+* [  wrangler.jsonc ](#tab-panel-8766)
+* [  wrangler.toml ](#tab-panel-8767)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // Before deleting the `DeprecatedClass` remove the binding for the `DeprecatedClass`.
+  // Update the binding for the `DurableObjectExample` to the new class name `UpdatedName`.
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_DURABLE_OBJECT",
+        "class_name": "UpdatedName"
+      }
+    ]
+  },
+  // Renaming classes
+  "migrations": [
+    {
+      "tag": "v3",
+      "renamed_classes": [ // Array of rename directives
+        {
+          "from": "OldName",
+          "to": "UpdatedName"
+        }
+      ]
+    }
+  ]
+}
 ```
-{  // Before deleting the `DeprecatedClass` remove the binding for the `DeprecatedClass`.  // Update the binding for the `DurableObjectExample` to the new class name `UpdatedName`.  "durable_objects": {    "bindings": [      {        "name": "MY_DURABLE_OBJECT",        "class_name": "UpdatedName"      }    ]  },  // Renaming classes  "migrations": [    {      "tag": "v3",      "renamed_classes": [ // Array of rename directives        {          "from": "OldName",          "to": "UpdatedName"        }      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[durable_objects.bindings]]name = "MY_DURABLE_OBJECT"class_name = "UpdatedName"
-[[migrations]]tag = "v3"
-  [[migrations.renamed_classes]]  from = "OldName"  to = "UpdatedName"
+```toml
+[[durable_objects.bindings]]
+name = "MY_DURABLE_OBJECT"
+class_name = "UpdatedName"
+
+
+[[migrations]]
+tag = "v3"
+
+
+  [[migrations.renamed_classes]]
+  from = "OldName"
+  to = "UpdatedName"
 ```
 
 ## Transfer migration
@@ -224,17 +364,46 @@ To apply a Transfer migration:
 
 1. Edit your Wrangler configuration file in the following way:
 
-  * [  wrangler.jsonc ](#tab-panel-8477)
-  * [  wrangler.toml ](#tab-panel-8478)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8768)
+  * [  wrangler.toml ](#tab-panel-8769)
+
+**JSONC**
+```jsonc
+{
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "<MY_DURABLE_OBJECT>",
+        "class_name": "<DestinationDurableObjectClass>"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "<v4>", // Migration identifier. This should be unique for each migration entry
+      "transferred_classes": [
+        {
+          "from": "<SourceDurableObjectClass>",
+          "from_script": "<SourceWorkerScript>",
+          "to": "<DestinationDurableObjectClass>"
+        }
+      ]
+    }
+  ]
+}
 ```
-{  "durable_objects": {    "bindings": [      {        "name": "<MY_DURABLE_OBJECT>",        "class_name": "<DestinationDurableObjectClass>"      }    ]  },  "migrations": [    {      "tag": "<v4>", // Migration identifier. This should be unique for each migration entry      "transferred_classes": [        {          "from": "<SourceDurableObjectClass>",          "from_script": "<SourceWorkerScript>",          "to": "<DestinationDurableObjectClass>"        }      ]    }  ]}
-```
-TOML
-```
-[[durable_objects.bindings]]name = "<MY_DURABLE_OBJECT>"class_name = "<DestinationDurableObjectClass>"
-[[migrations]]tag = "<v4>"
-  [[migrations.transferred_classes]]  from = "<SourceDurableObjectClass>"  from_script = "<SourceWorkerScript>"  to = "<DestinationDurableObjectClass>"
+
+**TOML**
+```toml
+[[durable_objects.bindings]]
+name = "<MY_DURABLE_OBJECT>"
+class_name = "<DestinationDurableObjectClass>"
+[[migrations]]
+tag = "<v4>"
+  [[migrations.transferred_classes]]
+  from = "<SourceDurableObjectClass>"
+  from_script = "<SourceWorkerScript>"
+  to = "<DestinationDurableObjectClass>"
 ```
 The Transfer migration contains:
 
@@ -250,21 +419,54 @@ Transfer migration example
 
 You can transfer stored Durable Objects from `DurableObjectExample` to `TransferredClass` from a Worker script named `OldWorkerScript`. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-8479)
-* [  wrangler.toml ](#tab-panel-8480)
+* [  wrangler.jsonc ](#tab-panel-8770)
+* [  wrangler.toml ](#tab-panel-8771)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // destination worker
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_DURABLE_OBJECT",
+        "class_name": "TransferredClass"
+      }
+    ]
+  },
+  // Transferring class
+  "migrations": [
+    {
+      "tag": "v4",
+      "transferred_classes": [
+        {
+          "from": "DurableObjectExample",
+          "from_script": "OldWorkerScript",
+          "to": "TransferredClass"
+        }
+      ]
+    }
+  ]
+}
 ```
-{  // destination worker  "durable_objects": {    "bindings": [      {        "name": "MY_DURABLE_OBJECT",        "class_name": "TransferredClass"      }    ]  },  // Transferring class  "migrations": [    {      "tag": "v4",      "transferred_classes": [        {          "from": "DurableObjectExample",          "from_script": "OldWorkerScript",          "to": "TransferredClass"        }      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[durable_objects.bindings]]name = "MY_DURABLE_OBJECT"class_name = "TransferredClass"
-[[migrations]]tag = "v4"
-  [[migrations.transferred_classes]]  from = "DurableObjectExample"  from_script = "OldWorkerScript"  to = "TransferredClass"
+```toml
+[[durable_objects.bindings]]
+name = "MY_DURABLE_OBJECT"
+class_name = "TransferredClass"
+
+
+[[migrations]]
+tag = "v4"
+
+
+  [[migrations.transferred_classes]]
+  from = "DurableObjectExample"
+  from_script = "OldWorkerScript"
+  to = "TransferredClass"
 ```
 
 ## Migration Wrangler configuration
@@ -278,9 +480,19 @@ TOML
   * Top-level migration is specified at the top-level `migrations` key in the Wrangler configuration file.
   * Environment-level migration is specified by a `migrations` key inside the `env` key of the Wrangler configuration file (`[env.<environment_name>.migrations]`).
     * Example Wrangler file:
-  wrangler.jsonc
-  ```
-  {// top-level default migrations"migrations": [{ ... }],"env": {"staging": {  // migration override for staging  "migrations": [{...}]  } }}
+
+**wrangler.jsonc**
+  ```jsonc
+  {
+  // top-level default migrations
+  "migrations": [{ ... }],
+  "env": {
+  "staging": {
+    // migration override for staging
+    "migrations": [{...}]
+    }
+   }
+  }
   ```
   * If a migration is only specified at the top-level, but not at the environment-level, the environment will inherit the top-level migration.
   * Migrations at at the environment-level override migrations at the top level.

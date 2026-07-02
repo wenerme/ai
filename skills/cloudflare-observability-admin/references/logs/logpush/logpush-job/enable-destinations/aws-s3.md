@@ -66,8 +66,22 @@ Note
 Buckets in China regions (`cn-north-1`, `cn-northwest-1`) are currently not supported.
 2. Edit and paste the policy below into **S3** \> **Bucket** \> **Permissions** \> **Bucket Policy**, replacing the `Resource` value with your own bucket path. The `AWS` `Principal` is owned by Cloudflare and should not be changed.
 
-```
-{  "Id": "<POLICY_ID>",  "Version": "2012-10-17",  "Statement": [    {      "Sid": "Stmt1506627150918",      "Action": ["s3:PutObject"],      "Effect": "Allow",      "Resource": "arn:aws:s3:::burritobot/logs/*",      "Principal": {        "AWS": ["arn:aws:iam::391854517948:user/cloudflare-logpush"]      }    }  ]}
+```json
+{
+  "Id": "<POLICY_ID>",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1506627150918",
+      "Action": ["s3:PutObject"],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::burritobot/logs/*",
+      "Principal": {
+        "AWS": ["arn:aws:iam::391854517948:user/cloudflare-logpush"]
+      }
+    }
+  ]
+}
 ```
 
 Note

@@ -23,8 +23,8 @@ Make sure that you:
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-8211)
-* [ API ](#tab-panel-8212)
+* [ Dashboard ](#tab-panel-8492)
+* [ API ](#tab-panel-8493)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
 [ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
@@ -38,10 +38,18 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
-Create Zone
+**Create Zone**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<YOUR_DOMAIN>",    "account": {        "id": "<YOUR_ACCOUNT_ID>"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<YOUR_DOMAIN>",
+    "account": {
+        "id": "<YOUR_ACCOUNT_ID>"
+    }
+  }'
 ```
 
 Note
@@ -110,8 +118,8 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 ### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-8209)
-* [ API ](#tab-panel-8210)
+* [ Dashboard ](#tab-panel-8490)
+* [ API ](#tab-panel-8491)
 
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 
@@ -160,10 +168,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: Apps and Policies Write`
 * `Access: Apps and Policies Read`
 
-Zone Details
+**Zone Details**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Note
@@ -271,11 +281,21 @@ When your domain is **Active**:
 * Online tools such as [https://www.whatsmydns.net/ ↗](https://www.whatsmydns.net/) will show your Cloudflare-assigned nameservers (most of these tools use cached query results, so it may take longer for them to show the updated nameservers).
 * CLI commands will show your Cloudflare-assigned nameservers
 
-```
+```txt
 *macOS/Linux*
-whois <DOMAIN_NAME>dig ns <DOMAIN_NAME> @1.1.1.1dig ns <DOMAIN_NAME> @8.8.8.8dig <DOMAIN_NAME> +trace
+
+
+whois <DOMAIN_NAME>
+dig ns <DOMAIN_NAME> @1.1.1.1
+dig ns <DOMAIN_NAME> @8.8.8.8
+dig <DOMAIN_NAME> +trace
+
+
 *Windows*
-nslookup -type=ns <DOMAIN_NAME> 1.1.1.1nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
+
+
+nslookup -type=ns <DOMAIN_NAME> 1.1.1.1
+nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
 ```
 
 Note

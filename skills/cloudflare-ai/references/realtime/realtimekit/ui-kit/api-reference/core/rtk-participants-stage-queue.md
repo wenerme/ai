@@ -27,19 +27,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-participants-stage-queue></rtk-participants-stage-queue>
 ```
 
 ### With Properties
 
-```
-<rtk-participants-stage-queue size="md"></rtk-participants-stage-queue>
+```html
+<rtk-participants-stage-queue
+ size="md">
+</rtk-participants-stage-queue>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participants-stage-queue");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participants-stage-queue");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

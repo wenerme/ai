@@ -20,21 +20,41 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
-* [  JavaScript ](#tab-panel-5881)
-* [  TypeScript ](#tab-panel-5882)
+* [  JavaScript ](#tab-panel-6065)
+* [  TypeScript ](#tab-panel-6066)
 
-JavaScript
+**JavaScript**
 
+```js
+import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
+import { MyMCP } from "./mcp";
+
+
+export default new OAuthProvider({
+  authorizeEndpoint: "/authorize",
+  tokenEndpoint: "/token",
+  clientRegistrationEndpoint: "/register",
+  apiRoute: "/mcp",
+  apiHandler: MyMCP.serve("/mcp"),
+  defaultHandler: AuthHandler,
+});
 ```
-import { OAuthProvider } from "@cloudflare/workers-oauth-provider";import { MyMCP } from "./mcp";
-export default new OAuthProvider({  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",  apiRoute: "/mcp",  apiHandler: MyMCP.serve("/mcp"),  defaultHandler: AuthHandler,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { OAuthProvider } from "@cloudflare/workers-oauth-provider";import { MyMCP } from "./mcp";
-export default new OAuthProvider({  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",  apiRoute: "/mcp",  apiHandler: MyMCP.serve("/mcp"),  defaultHandler: AuthHandler,});
+```ts
+import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
+import { MyMCP } from "./mcp";
+
+
+export default new OAuthProvider({
+  authorizeEndpoint: "/authorize",
+  tokenEndpoint: "/token",
+  clientRegistrationEndpoint: "/register",
+  apiRoute: "/mcp",
+  apiHandler: MyMCP.serve("/mcp"),
+  defaultHandler: AuthHandler,
+});
 ```
 
 ## Consent dialog security
@@ -45,30 +65,78 @@ When your MCP server proxies to third-party OAuth providers, you must implement 
 
 Without CSRF protection, attackers can trick users into approving malicious OAuth clients. Use a random token stored in a secure cookie:
 
-* [  JavaScript ](#tab-panel-5885)
-* [  TypeScript ](#tab-panel-5886)
+* [  JavaScript ](#tab-panel-6069)
+* [  TypeScript ](#tab-panel-6070)
 
-JavaScript
+**JavaScript**
 
+```js
+// Generate CSRF token when showing consent form
+function generateCSRFProtection() {
+  const token = crypto.randomUUID();
+  const setCookie = `__Host-CSRF_TOKEN=${token}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`;
+  return { token, setCookie };
+}
+
+
+// Validate CSRF token on form submission
+function validateCSRFToken(formData, request) {
+  const tokenFromForm = formData.get("csrf_token");
+  const cookieHeader = request.headers.get("Cookie") || "";
+  const tokenFromCookie = cookieHeader
+    .split(";")
+    .find((c) => c.trim().startsWith("__Host-CSRF_TOKEN="))
+    ?.split("=")[1];
+
+
+  if (!tokenFromForm || !tokenFromCookie || tokenFromForm !== tokenFromCookie) {
+    throw new Error("CSRF token mismatch");
+  }
+
+
+  // Clear cookie after use (one-time use)
+  return {
+    clearCookie: `__Host-CSRF_TOKEN=; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=0`,
+  };
+}
 ```
-// Generate CSRF token when showing consent formfunction generateCSRFProtection() {  const token = crypto.randomUUID();  const setCookie = `__Host-CSRF_TOKEN=${token}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`;  return { token, setCookie };}
-// Validate CSRF token on form submissionfunction validateCSRFToken(formData, request) {  const tokenFromForm = formData.get("csrf_token");  const cookieHeader = request.headers.get("Cookie") || "";  const tokenFromCookie = cookieHeader    .split(";")    .find((c) => c.trim().startsWith("__Host-CSRF_TOKEN="))    ?.split("=")[1];
-  if (!tokenFromForm || !tokenFromCookie || tokenFromForm !== tokenFromCookie) {    throw new Error("CSRF token mismatch");  }
-  // Clear cookie after use (one-time use)  return {    clearCookie: `__Host-CSRF_TOKEN=; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=0`,  };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Generate CSRF token when showing consent formfunction generateCSRFProtection() {  const token = crypto.randomUUID();  const setCookie = `__Host-CSRF_TOKEN=${token}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`;  return { token, setCookie };}
-// Validate CSRF token on form submissionfunction validateCSRFToken(formData: FormData, request: Request) {  const tokenFromForm = formData.get("csrf_token");  const cookieHeader = request.headers.get("Cookie") || "";  const tokenFromCookie = cookieHeader    .split(";")    .find((c) => c.trim().startsWith("__Host-CSRF_TOKEN="))    ?.split("=")[1];
-  if (!tokenFromForm || !tokenFromCookie || tokenFromForm !== tokenFromCookie) {    throw new Error("CSRF token mismatch");  }
-  // Clear cookie after use (one-time use)  return {    clearCookie: `__Host-CSRF_TOKEN=; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=0`,  };}
+```ts
+// Generate CSRF token when showing consent form
+function generateCSRFProtection() {
+  const token = crypto.randomUUID();
+  const setCookie = `__Host-CSRF_TOKEN=${token}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`;
+  return { token, setCookie };
+}
+
+
+// Validate CSRF token on form submission
+function validateCSRFToken(formData: FormData, request: Request) {
+  const tokenFromForm = formData.get("csrf_token");
+  const cookieHeader = request.headers.get("Cookie") || "";
+  const tokenFromCookie = cookieHeader
+    .split(";")
+    .find((c) => c.trim().startsWith("__Host-CSRF_TOKEN="))
+    ?.split("=")[1];
+
+
+  if (!tokenFromForm || !tokenFromCookie || tokenFromForm !== tokenFromCookie) {
+    throw new Error("CSRF token mismatch");
+  }
+
+
+  // Clear cookie after use (one-time use)
+  return {
+    clearCookie: `__Host-CSRF_TOKEN=; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=0`,
+  };
+}
 ```
 
 Include the token as a hidden field in your consent form:
 
-```
+```html
 <input type="hidden" name="csrf_token" value="${csrfToken}" />
 ```
 
@@ -76,77 +144,257 @@ Include the token as a hidden field in your consent form:
 
 User-controlled content (client names, logos, URIs) can execute malicious scripts if not sanitized:
 
-* [  JavaScript ](#tab-panel-5889)
-* [  TypeScript ](#tab-panel-5890)
+* [  JavaScript ](#tab-panel-6073)
+* [  TypeScript ](#tab-panel-6074)
 
-JavaScript
+**JavaScript**
 
+```js
+function sanitizeText(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+function sanitizeUrl(url) {
+  if (!url) return "";
+  try {
+    const parsed = new URL(url);
+    // Only allow http/https - reject javascript:, data:, file:
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      return "";
+    }
+    return url;
+  } catch {
+    return "";
+  }
+}
+
+
+// Always sanitize before rendering
+const clientName = sanitizeText(client.clientName);
+const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 ```
-function sanitizeText(text) {  return text    .replace(/&/g, "&amp;")    .replace(/</g, "&lt;")    .replace(/>/g, "&gt;")    .replace(/"/g, "&quot;")    .replace(/'/g, "&#039;");}
-function sanitizeUrl(url) {  if (!url) return "";  try {    const parsed = new URL(url);    // Only allow http/https - reject javascript:, data:, file:    if (!["http:", "https:"].includes(parsed.protocol)) {      return "";    }    return url;  } catch {    return "";  }}
-// Always sanitize before renderingconst clientName = sanitizeText(client.clientName);const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
-```
 
-TypeScript
+**TypeScript**
 
-```
-function sanitizeText(text: string): string {  return text    .replace(/&/g, "&amp;")    .replace(/</g, "&lt;")    .replace(/>/g, "&gt;")    .replace(/"/g, "&quot;")    .replace(/'/g, "&#039;");}
-function sanitizeUrl(url: string): string {  if (!url) return "";  try {    const parsed = new URL(url);    // Only allow http/https - reject javascript:, data:, file:    if (!["http:", "https:"].includes(parsed.protocol)) {      return "";    }    return url;  } catch {    return "";  }}
-// Always sanitize before renderingconst clientName = sanitizeText(client.clientName);const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
+```ts
+function sanitizeText(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+function sanitizeUrl(url: string): string {
+  if (!url) return "";
+  try {
+    const parsed = new URL(url);
+    // Only allow http/https - reject javascript:, data:, file:
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      return "";
+    }
+    return url;
+  } catch {
+    return "";
+  }
+}
+
+
+// Always sanitize before rendering
+const clientName = sanitizeText(client.clientName);
+const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 ```
 
 ### Content Security Policy
 
 CSP headers instruct browsers to block dangerous content:
 
-* [  JavaScript ](#tab-panel-5887)
-* [  TypeScript ](#tab-panel-5888)
+* [  JavaScript ](#tab-panel-6071)
+* [  TypeScript ](#tab-panel-6072)
 
-JavaScript
+**JavaScript**
 
+```js
+function buildSecurityHeaders(setCookie, nonce) {
+  const cspDirectives = [
+    "default-src 'none'",
+    "script-src 'self'" + (nonce ? ` 'nonce-${nonce}'` : ""),
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' https:",
+    "font-src 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'", // Prevent clickjacking
+    "base-uri 'self'",
+    "connect-src 'self'",
+  ].join("; ");
+
+
+  return {
+    "Content-Security-Policy": cspDirectives,
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Type": "text/html; charset=utf-8",
+    "Set-Cookie": setCookie,
+  };
+}
 ```
-function buildSecurityHeaders(setCookie, nonce) {  const cspDirectives = [    "default-src 'none'",    "script-src 'self'" + (nonce ? ` 'nonce-${nonce}'` : ""),    "style-src 'self' 'unsafe-inline'",    "img-src 'self' https:",    "font-src 'self'",    "form-action 'self'",    "frame-ancestors 'none'", // Prevent clickjacking    "base-uri 'self'",    "connect-src 'self'",  ].join("; ");
-  return {    "Content-Security-Policy": cspDirectives,    "X-Frame-Options": "DENY",    "X-Content-Type-Options": "nosniff",    "Content-Type": "text/html; charset=utf-8",    "Set-Cookie": setCookie,  };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {  const cspDirectives = [    "default-src 'none'",    "script-src 'self'" + (nonce ? ` 'nonce-${nonce}'` : ""),    "style-src 'self' 'unsafe-inline'",    "img-src 'self' https:",    "font-src 'self'",    "form-action 'self'",    "frame-ancestors 'none'", // Prevent clickjacking    "base-uri 'self'",    "connect-src 'self'",  ].join("; ");
-  return {    "Content-Security-Policy": cspDirectives,    "X-Frame-Options": "DENY",    "X-Content-Type-Options": "nosniff",    "Content-Type": "text/html; charset=utf-8",    "Set-Cookie": setCookie,  };}
+```ts
+function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {
+  const cspDirectives = [
+    "default-src 'none'",
+    "script-src 'self'" + (nonce ? ` 'nonce-${nonce}'` : ""),
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' https:",
+    "font-src 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'", // Prevent clickjacking
+    "base-uri 'self'",
+    "connect-src 'self'",
+  ].join("; ");
+
+
+  return {
+    "Content-Security-Policy": cspDirectives,
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Type": "text/html; charset=utf-8",
+    "Set-Cookie": setCookie,
+  };
+}
 ```
 
 ## State handling
 
 Between the consent dialog and the OAuth callback, you need to ensure it is the same user. Use a state token stored in KV with a short expiration:
 
-* [  JavaScript ](#tab-panel-5891)
-* [  TypeScript ](#tab-panel-5892)
+* [  JavaScript ](#tab-panel-6075)
+* [  TypeScript ](#tab-panel-6076)
 
-JavaScript
+**JavaScript**
 
+```js
+// Create state token before redirecting to upstream provider
+async function createOAuthState(oauthReqInfo, kv) {
+  const stateToken = crypto.randomUUID();
+  await kv.put(`oauth:state:${stateToken}`, JSON.stringify(oauthReqInfo), {
+    expirationTtl: 600, // 10 minutes
+  });
+  return { stateToken };
+}
+
+
+// Bind state to browser session with a hashed cookie
+async function bindStateToSession(stateToken) {
+  const encoder = new TextEncoder();
+  const hashBuffer = await crypto.subtle.digest(
+    "SHA-256",
+    encoder.encode(stateToken),
+  );
+  const hashHex = Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+
+  return {
+    setCookie: `__Host-CONSENTED_STATE=${hashHex}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`,
+  };
+}
+
+
+// Validate state in callback
+async function validateOAuthState(request, kv) {
+  const url = new URL(request.url);
+  const stateFromQuery = url.searchParams.get("state");
+
+
+  if (!stateFromQuery) {
+    throw new Error("Missing state parameter");
+  }
+
+
+  // Check state exists in KV
+  const storedData = await kv.get(`oauth:state:${stateFromQuery}`);
+  if (!storedData) {
+    throw new Error("Invalid or expired state");
+  }
+
+
+  // Validate state matches session cookie
+  // ... (hash comparison logic)
+
+
+  await kv.delete(`oauth:state:${stateFromQuery}`);
+  return JSON.parse(storedData);
+}
 ```
-// Create state token before redirecting to upstream providerasync function createOAuthState(oauthReqInfo, kv) {  const stateToken = crypto.randomUUID();  await kv.put(`oauth:state:${stateToken}`, JSON.stringify(oauthReqInfo), {    expirationTtl: 600, // 10 minutes  });  return { stateToken };}
-// Bind state to browser session with a hashed cookieasync function bindStateToSession(stateToken) {  const encoder = new TextEncoder();  const hashBuffer = await crypto.subtle.digest(    "SHA-256",    encoder.encode(stateToken),  );  const hashHex = Array.from(new Uint8Array(hashBuffer))    .map((b) => b.toString(16).padStart(2, "0"))    .join("");
-  return {    setCookie: `__Host-CONSENTED_STATE=${hashHex}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`,  };}
-// Validate state in callbackasync function validateOAuthState(request, kv) {  const url = new URL(request.url);  const stateFromQuery = url.searchParams.get("state");
-  if (!stateFromQuery) {    throw new Error("Missing state parameter");  }
-  // Check state exists in KV  const storedData = await kv.get(`oauth:state:${stateFromQuery}`);  if (!storedData) {    throw new Error("Invalid or expired state");  }
-  // Validate state matches session cookie  // ... (hash comparison logic)
-  await kv.delete(`oauth:state:${stateFromQuery}`);  return JSON.parse(storedData);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Create state token before redirecting to upstream providerasync function createOAuthState(oauthReqInfo: AuthRequest, kv: KVNamespace) {  const stateToken = crypto.randomUUID();  await kv.put(`oauth:state:${stateToken}`, JSON.stringify(oauthReqInfo), {    expirationTtl: 600, // 10 minutes  });  return { stateToken };}
-// Bind state to browser session with a hashed cookieasync function bindStateToSession(stateToken: string) {  const encoder = new TextEncoder();  const hashBuffer = await crypto.subtle.digest(    "SHA-256",    encoder.encode(stateToken),  );  const hashHex = Array.from(new Uint8Array(hashBuffer))    .map((b) => b.toString(16).padStart(2, "0"))    .join("");
-  return {    setCookie: `__Host-CONSENTED_STATE=${hashHex}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`,  };}
-// Validate state in callbackasync function validateOAuthState(request: Request, kv: KVNamespace) {  const url = new URL(request.url);  const stateFromQuery = url.searchParams.get("state");
-  if (!stateFromQuery) {    throw new Error("Missing state parameter");  }
-  // Check state exists in KV  const storedData = await kv.get(`oauth:state:${stateFromQuery}`);  if (!storedData) {    throw new Error("Invalid or expired state");  }
-  // Validate state matches session cookie  // ... (hash comparison logic)
-  await kv.delete(`oauth:state:${stateFromQuery}`);  return JSON.parse(storedData);}
+```ts
+// Create state token before redirecting to upstream provider
+async function createOAuthState(oauthReqInfo: AuthRequest, kv: KVNamespace) {
+  const stateToken = crypto.randomUUID();
+  await kv.put(`oauth:state:${stateToken}`, JSON.stringify(oauthReqInfo), {
+    expirationTtl: 600, // 10 minutes
+  });
+  return { stateToken };
+}
+
+
+// Bind state to browser session with a hashed cookie
+async function bindStateToSession(stateToken: string) {
+  const encoder = new TextEncoder();
+  const hashBuffer = await crypto.subtle.digest(
+    "SHA-256",
+    encoder.encode(stateToken),
+  );
+  const hashHex = Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+
+  return {
+    setCookie: `__Host-CONSENTED_STATE=${hashHex}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600`,
+  };
+}
+
+
+// Validate state in callback
+async function validateOAuthState(request: Request, kv: KVNamespace) {
+  const url = new URL(request.url);
+  const stateFromQuery = url.searchParams.get("state");
+
+
+  if (!stateFromQuery) {
+    throw new Error("Missing state parameter");
+  }
+
+
+  // Check state exists in KV
+  const storedData = await kv.get(`oauth:state:${stateFromQuery}`);
+  if (!storedData) {
+    throw new Error("Invalid or expired state");
+  }
+
+
+  // Validate state matches session cookie
+  // ... (hash comparison logic)
+
+
+  await kv.delete(`oauth:state:${stateFromQuery}`);
+  return JSON.parse(storedData);
+}
 ```
 
 ## Cookie security
@@ -165,31 +413,58 @@ Without `__Host-`, an attacker controlling `evil.workers.dev` could set cookies 
 
 If running multiple OAuth flows on the same domain, namespace your cookies:
 
-```
-__Host-CSRF_TOKEN_GITHUB__Host-CSRF_TOKEN_GOOGLE__Host-APPROVED_CLIENTS_GITHUB__Host-APPROVED_CLIENTS_GOOGLE
+```txt
+__Host-CSRF_TOKEN_GITHUB
+__Host-CSRF_TOKEN_GOOGLE
+__Host-APPROVED_CLIENTS_GITHUB
+__Host-APPROVED_CLIENTS_GOOGLE
 ```
 
 ## Approved clients registry
 
 Maintain a registry of approved client IDs per user to avoid showing the consent dialog repeatedly:
 
-* [  JavaScript ](#tab-panel-5883)
-* [  TypeScript ](#tab-panel-5884)
+* [  JavaScript ](#tab-panel-6067)
+* [  TypeScript ](#tab-panel-6068)
 
-JavaScript
+**JavaScript**
 
+```js
+async function addApprovedClient(request, clientId, cookieSecret) {
+  const existingClients =
+    (await getApprovedClientsFromCookie(request, cookieSecret)) || [];
+  const updatedClients = [...new Set([...existingClients, clientId])];
+
+
+  const payload = JSON.stringify(updatedClients);
+  const signature = await signData(payload, cookieSecret); // HMAC-SHA256
+  const cookieValue = `${signature}.${btoa(payload)}`;
+
+
+  return `__Host-APPROVED_CLIENTS=${cookieValue}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=2592000`;
+}
 ```
-async function addApprovedClient(request, clientId, cookieSecret) {  const existingClients =    (await getApprovedClientsFromCookie(request, cookieSecret)) || [];  const updatedClients = [...new Set([...existingClients, clientId])];
-  const payload = JSON.stringify(updatedClients);  const signature = await signData(payload, cookieSecret); // HMAC-SHA256  const cookieValue = `${signature}.${btoa(payload)}`;
-  return `__Host-APPROVED_CLIENTS=${cookieValue}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=2592000`;}
-```
 
-TypeScript
+**TypeScript**
 
-```
-async function addApprovedClient(  request: Request,  clientId: string,  cookieSecret: string,) {  const existingClients =    (await getApprovedClientsFromCookie(request, cookieSecret)) || [];  const updatedClients = [...new Set([...existingClients, clientId])];
-  const payload = JSON.stringify(updatedClients);  const signature = await signData(payload, cookieSecret); // HMAC-SHA256  const cookieValue = `${signature}.${btoa(payload)}`;
-  return `__Host-APPROVED_CLIENTS=${cookieValue}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=2592000`;}
+```ts
+async function addApprovedClient(
+  request: Request,
+  clientId: string,
+  cookieSecret: string,
+) {
+  const existingClients =
+    (await getApprovedClientsFromCookie(request, cookieSecret)) || [];
+  const updatedClients = [...new Set([...existingClients, clientId])];
+
+
+  const payload = JSON.stringify(updatedClients);
+  const signature = await signData(payload, cookieSecret); // HMAC-SHA256
+  const cookieValue = `${signature}.${btoa(payload)}`;
+
+
+  return `__Host-APPROVED_CLIENTS=${cookieValue}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=2592000`;
+}
 ```
 
 When reading the cookie, verify the HMAC signature before trusting the data. If the client is not in the approved list, show the consent dialog.

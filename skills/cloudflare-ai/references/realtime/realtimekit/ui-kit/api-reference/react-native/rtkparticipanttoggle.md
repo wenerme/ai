@@ -29,16 +29,24 @@ Toggle button to open the participants sidebar panel. Shows a badge with pending
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkParticipantToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkParticipantToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkParticipantToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkParticipantToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

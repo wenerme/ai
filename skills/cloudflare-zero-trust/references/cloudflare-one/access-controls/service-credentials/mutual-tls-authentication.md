@@ -51,8 +51,13 @@ The mTLS certificate is used only to verify the client certificate. It does not 
 3. Enter any name for the root CA.
 4. In **Certificate content**, paste the contents of your root CA.
 If the client certificate is directly signed by the root CA, you only need to upload the root. If the client certificate is signed by an intermediate certificate, you must upload the entire CA chain (intermediate and root). For example:
-```
------BEGIN CERTIFICATE-----<intermediate.pem>-----END CERTIFICATE----------BEGIN CERTIFICATE-----<rootCA.pem>-----END CERTIFICATE-----
+```txt
+-----BEGIN CERTIFICATE-----
+<intermediate.pem>
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+<rootCA.pem>
+-----END CERTIFICATE-----
 ```
 Do not include any SSL/TLS server certificates; Access only uses the CA chain to verify the connection between the user's device and Cloudflare.
 1. In **Associated hostnames**, enter the fully-qualified domain names (FQDN) that will use this certificate.
@@ -84,14 +89,12 @@ You can now authenticate to the application using a client certificate. For inst
 To test the application protected by an mTLS policy:
 
 1. First, attempt to curl the site without a client certificate. This curl command example is for the site `example.com` that has an [Access application and policy](#add-mtls-to-your-access-application) set for `https://auth.example.com`:
-Terminal window
-```
+```sh
 curl -sv https://auth.example.com
 ```
 Without a client certificate in the request, a `403 forbidden` response displays and the site cannot be accessed.
 2. Now, add your client certificate and key to the request:
-Terminal window
-```
+```sh
 curl -sv https://auth.example.com --cert example.pem --key key.pem
 ```
 
@@ -130,14 +133,12 @@ This section covers how to use [OpenSSL ↗](https://www.openssl.org/) to genera
 #### Generate the root CA
 
 1. Generate the root CA private key:
-Terminal window
-```
+```sh
  openssl genrsa -aes256 -out rootCA.key 4096
 ```
 When prompted, enter a password to use with `rootCA.key`.
 2. Create a self-signed root certificate called `rootCA.pem`:
-Terminal window
-```
+```sh
 openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 3650 -out rootCA.pem
 ```
 You will be prompted to enter your private key password and fill in some optional fields. For testing purposes, you can leave the optional fields blank.
@@ -145,33 +146,32 @@ You will be prompted to enter your private key password and fill in some optiona
 #### Generate an intermediate certificate
 
 1. Generate the intermediate CA private key:
-Terminal window
-```
+```sh
  openssl genrsa -aes256 -out intermediate.key 4096
 ```
 When prompted, enter a password to use with `intermediate.key`.
 2. Create a certificate signing request (CSR) for the intermediate certificate:
-Terminal window
-```
+```sh
 openssl req -new -sha256 -key intermediate.key -out intermediate.csr
 ```
 You will be prompted to enter your private key password and fill in some optional fields. For testing purposes, you can leave the optional fields blank.
 3. Create a CA Extension file called `v3_intermediate_ca.ext`. For example,
-```
-subjectKeyIdentifier = hashauthorityKeyIdentifier = keyid:always,issuerbasicConstraints = critical, CA:truekeyUsage = critical, cRLSign, keyCertSign
+```txt
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, cRLSign, keyCertSign
 ```
 Make sure that `basicConstraints` includes the `CA:true` property. This property allows the intermediate certificate to act as a CA and sign client certificates.
 4. Sign the intermediate certificate with the root CA:
-Terminal window
-```
+```sh
  openssl x509 -req -in intermediate.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out intermediate.pem -days 1825 -sha256 -extfile v3_intermediate_ca.ext
 ```
 
 #### Create a CA chain file
 
 1. Combine the intermediate and root certificates into a single file:
-Terminal window
-```
+```sh
 cat intermediate.pem rootCA.pem > ca-chain.pem
 ```
 The intermediate certificate should be at the top of the file, followed by its signing certificate.
@@ -180,27 +180,23 @@ The intermediate certificate should be at the top of the file, followed by its s
 #### Generate a client certificate
 
 1. Generate a private key for the client:
-Terminal window
-```
+```sh
  openssl genrsa -out client.key 2048
 ```
 2. Create a CSR for the client certificate:
-Terminal window
-```
+```sh
 openssl req -new -key client.key -out client.csr
 ```
 You will be prompted to fill in some optional fields. For testing purposes, you can set **Common Name** to something like `John Doe`.
 3. Sign the client certificate with the intermediate certificate:
-Terminal window
-```
+```sh
  openssl x509 -req -in client.csr -CA intermediate.pem -CAkey intermediate.key -CAcreateserial -out client.pem -days 365 -sha256
 ```
 4. Validate the client certificate against the certificate chain:
-Terminal window
-```
+```sh
 openssl verify -CAfile ca-chain.pem client.pem
 ```
-```
+```sh
 client.pem: OK
 ```
 
@@ -225,24 +221,53 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗](h
 2. Within that directory, create two new files:
 
   * **CSR**. Create a file named `ca-csr.json` and add the following JSON blob, then save the file.
-  ```
-  {  "CN": "Access Testing CA",  "key": {    "algo": "rsa",    "size": 4096  },  "names": [    {      "C": "US",      "L": "Austin",      "O": "Access Testing",      "OU": "TX",      "ST": "Texas"    }  ]}
+  ```json
+  {
+    "CN": "Access Testing CA",
+    "key": {
+      "algo": "rsa",
+      "size": 4096
+    },
+    "names": [
+      {
+        "C": "US",
+        "L": "Austin",
+        "O": "Access Testing",
+        "OU": "TX",
+        "ST": "Texas"
+      }
+    ]
+  }
   ```
   * **config**. Create a file named `ca-config.json` and add the following JSON blob, then save the file.
-  ```
-  {  "signing": {    "default": {      "expiry": "8760h"    },    "profiles": {      "server": {        "usages": ["signing", "key encipherment", "server auth"],        "expiry": "8760h"      },      "client": {        "usages": ["signing", "key encipherment", "client auth"],        "expiry": "8760h"      }    }  }}
+  ```json
+  {
+    "signing": {
+      "default": {
+        "expiry": "8760h"
+      },
+      "profiles": {
+        "server": {
+          "usages": ["signing", "key encipherment", "server auth"],
+          "expiry": "8760h"
+        },
+        "client": {
+          "usages": ["signing", "key encipherment", "client auth"],
+          "expiry": "8760h"
+        }
+      }
+    }
+  }
   ```
 3. Now, run the following command to generate the root CA with those files.
-Terminal window
-```
+```sh
 cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 ```
 4. The command will output a root certificate (`ca.pem`) and its key (`ca-key.pem`).
-Terminal window
-```
+```sh
 ls
 ```
-```
+```sh
 ca-config.json ca-csr.json ca-key.pem ca.csr  ca.pem
 ```
 5. Upload the contents of `ca.pem` to Cloudflare Access. For instructions, refer to [Add mTLS to your Access application](#add-mtls-to-your-access-application).
@@ -252,12 +277,27 @@ ca-config.json ca-csr.json ca-key.pem ca.csr  ca.pem
 To generate a client certificate that will authenticate against the uploaded root CA:
 
 1. Create a file named `client-csr.json` and add the following JSON blob:
-```
-{  "CN": "James Royal",  "hosts": [""],  "key": {    "algo": "rsa",    "size": 4096  },  "names": [    {      "C": "US",      "L": "Austin",      "O": "Access",      "OU": "Access Admins",      "ST": "Texas"    }  ]}
+```json
+{
+  "CN": "James Royal",
+  "hosts": [""],
+  "key": {
+    "algo": "rsa",
+    "size": 4096
+  },
+  "names": [
+    {
+      "C": "US",
+      "L": "Austin",
+      "O": "Access",
+      "OU": "Access Admins",
+      "ST": "Texas"
+    }
+  ]
+}
 ```
 2. Now, use the following command to generate a client certificate with the Cloudflare PKI toolkit:
-Terminal window
-```
+```sh
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem  -config=ca-config.json -profile=client client-csr.json | cfssljson -bare client
 ```
 
@@ -269,8 +309,7 @@ You can use the Cloudflare PKI toolkit to generate a certificate revocation list
 
 1. Get the serial number from the client certificate generated earlier. Add that serial number, or any others you intend to revoke, in hex format in a text file. This example uses a file named `serials.txt`.
 2. Create the CRL with the following command.
-Terminal window
-```
+```sh
 cfssl gencrl serials.txt ../mtls-test/ca.pem ../mtls-test/ca-key.pem | base64 -D > ca.crl
 ```
 
@@ -319,7 +358,7 @@ This rule unconditionally removes any `Client-Cert` header sent by the client.
 
 Text in **Expression Editor**:
 
-```
+```txt
 true
 ```
 
@@ -333,7 +372,7 @@ This rule unconditionally removes any `Client-Cert-Chain` header sent by the cli
 
 Text in **Expression Editor**:
 
-```
+```txt
 true
 ```
 
@@ -347,8 +386,10 @@ This rule sets the `Client-Cert` header only when the client presented a valid, 
 
 Text in **Expression Editor**:
 
-```
-cf.tls_client_auth.cert_verifiedand not cf.tls_client_auth.cert_revokedand not cf.tls_client_auth.cert_rfc9440_too_large
+```txt
+cf.tls_client_auth.cert_verified
+and not cf.tls_client_auth.cert_revoked
+and not cf.tls_client_auth.cert_rfc9440_too_large
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -363,8 +404,11 @@ This rule sets the `Client-Cert-Chain` header only when the client presented a v
 
 Text in **Expression Editor**:
 
-```
-cf.tls_client_auth.cert_verifiedand not cf.tls_client_auth.cert_revokedand cf.tls_client_auth.cert_chain_rfc9440 ne ""and not cf.tls_client_auth.cert_chain_rfc9440_too_large
+```txt
+cf.tls_client_auth.cert_verified
+and not cf.tls_client_auth.cert_revoked
+and cf.tls_client_auth.cert_chain_rfc9440 ne ""
+and not cf.tls_client_auth.cert_chain_rfc9440_too_large
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -398,10 +442,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Mutual TLS Certificates Write`
 
-Update an mTLS certificate's hostname settings
+**Update an mTLS certificate's hostname settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "settings": [        {            "hostname": "<HOSTNAME>",            "china_network": false,            "client_certificate_forwarding": true        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
+  --request PUT \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "settings": [
+        {
+            "hostname": "<HOSTNAME>",
+            "china_network": false,
+            "client_certificate_forwarding": true
+        }
+    ]
+  }'
 ```
 
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
@@ -421,10 +477,20 @@ You can also [modify HTTP response headers](https://developers.cloudflare.com/ru
 
 Additionally, Workers can provide details around the [client certificate](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
 
-JavaScript
+**JavaScript**
 
-```
-const tlsHeaders = {  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,};
+```js
+const tlsHeaders = {
+  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
+  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
+  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
+  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
+  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
+  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
+  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
+  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
+  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
+};
 ```
 
 ## Known limitations

@@ -20,8 +20,9 @@ Requires a Cloudflare Enterprise plan with [malicious uploads detection](https:/
 
 Example usage:
 
-```
-# Check if requests to a specific endpoint contain more than two content objectscf.waf.content_scan.num_obj > 2 and http.request.uri.path eq "/upload"
+```txt
+# Check if requests to a specific endpoint contain more than two content objects
+cf.waf.content_scan.num_obj > 2 and http.request.uri.path eq "/upload"
 ```
 
 Categories:

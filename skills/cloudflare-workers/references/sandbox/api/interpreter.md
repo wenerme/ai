@@ -20,9 +20,9 @@ Execute Python, JavaScript, and TypeScript code with support for data visualizat
 
 Create a persistent execution context for running code.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const context = await sandbox.createCodeContext(options?: CreateContextOptions): Promise<CodeContext>
 ```
 
@@ -36,28 +36,34 @@ const context = await sandbox.createCodeContext(options?: CreateContextOptions):
 
 **Returns**: `Promise<CodeContext>` with `id`, `language`, `cwd`, `createdAt`, `lastUsed`
 
-* [  JavaScript ](#tab-panel-10261)
-* [  TypeScript ](#tab-panel-10262)
+* [  JavaScript ](#tab-panel-10556)
+* [  TypeScript ](#tab-panel-10557)
 
-JavaScript
+**JavaScript**
 
+```js
+const ctx = await sandbox.createCodeContext({
+  language: "python",
+  envVars: { API_KEY: env.API_KEY },
+});
 ```
-const ctx = await sandbox.createCodeContext({  language: "python",  envVars: { API_KEY: env.API_KEY },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const ctx = await sandbox.createCodeContext({  language: 'python',  envVars: { API_KEY: env.API_KEY }});
+```ts
+const ctx = await sandbox.createCodeContext({
+  language: 'python',
+  envVars: { API_KEY: env.API_KEY }
+});
 ```
 
 ### `runCode()`
 
 Execute code in a context and return the complete result.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await sandbox.runCode(code: string, options?: RunCodeOptions): Promise<ExecutionResult>
 ```
 
@@ -80,22 +86,32 @@ const result = await sandbox.runCode(code: string, options?: RunCodeOptions): Pr
 
 **Recommended usage - create explicit context**:
 
-* [  JavaScript ](#tab-panel-10263)
-* [  TypeScript ](#tab-panel-10264)
+* [  JavaScript ](#tab-panel-10558)
+* [  TypeScript ](#tab-panel-10559)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const ctx = await sandbox.createCodeContext({ language: "python" });
-await sandbox.runCode("import math; radius = 5", { context: ctx });const result = await sandbox.runCode("math.pi * radius ** 2", { context: ctx });
+
+
+await sandbox.runCode("import math; radius = 5", { context: ctx });
+const result = await sandbox.runCode("math.pi * radius ** 2", { context: ctx });
+
+
 console.log(result.results[0].text); // "78.53981633974483"
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const ctx = await sandbox.createCodeContext({ language: 'python' });
-await sandbox.runCode('import math; radius = 5', { context: ctx });const result = await sandbox.runCode('math.pi * radius ** 2', { context: ctx });
+
+
+await sandbox.runCode('import math; radius = 5', { context: ctx });
+const result = await sandbox.runCode('math.pi * radius ** 2', { context: ctx });
+
+
 console.log(result.results[0].text); // "78.53981633974483"
 ```
 
@@ -103,83 +119,147 @@ Default context behavior
 
 If no `context` is provided, a default context is automatically created/reused for the specified `language`. While convenient for quick tests, **explicitly creating contexts is recommended** for production use to maintain predictable state.
 
-* [  JavaScript ](#tab-panel-10269)
-* [  TypeScript ](#tab-panel-10270)
+* [  JavaScript ](#tab-panel-10564)
+* [  TypeScript ](#tab-panel-10565)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await sandbox.runCode(
+  `
+data = [1, 2, 3, 4, 5]
+print(f"Sum: {sum(data)}")
+sum(data)
+`,
+  { language: "python" },
+);
+
+
+console.log(result.logs.stdout); // ["Sum: 15"]
+console.log(result.results[0].text); // "15"
 ```
-const result = await sandbox.runCode(  `data = [1, 2, 3, 4, 5]print(f"Sum: {sum(data)}")sum(data)`,  { language: "python" },);
-console.log(result.logs.stdout); // ["Sum: 15"]console.log(result.results[0].text); // "15"
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await sandbox.runCode(`data = [1, 2, 3, 4, 5]print(f"Sum: {sum(data)}")sum(data)`, { language: 'python' });
-console.log(result.logs.stdout); // ["Sum: 15"]console.log(result.results[0].text); // "15"
+```ts
+const result = await sandbox.runCode(`
+data = [1, 2, 3, 4, 5]
+print(f"Sum: {sum(data)}")
+sum(data)
+`, { language: 'python' });
+
+
+console.log(result.logs.stdout); // ["Sum: 15"]
+console.log(result.results[0].text); // "15"
 ```
 
 **Error handling**:
 
-* [  JavaScript ](#tab-panel-10265)
-* [  TypeScript ](#tab-panel-10266)
+* [  JavaScript ](#tab-panel-10560)
+* [  TypeScript ](#tab-panel-10561)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const result = await sandbox.runCode("x = 1 / 0", { language: "python" });
-if (result.error) {  console.error(result.error.name); // "ZeroDivisionError"  console.error(result.error.value); // "division by zero"  console.error(result.error.traceback); // Stack trace array}
+
+
+if (result.error) {
+  console.error(result.error.name); // "ZeroDivisionError"
+  console.error(result.error.value); // "division by zero"
+  console.error(result.error.traceback); // Stack trace array
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await sandbox.runCode('x = 1 / 0', { language: 'python' });
-if (result.error) {  console.error(result.error.name);      // "ZeroDivisionError"  console.error(result.error.value);     // "division by zero"  console.error(result.error.traceback); // Stack trace array}
+
+
+if (result.error) {
+  console.error(result.error.name);      // "ZeroDivisionError"
+  console.error(result.error.value);     // "division by zero"
+  console.error(result.error.traceback); // Stack trace array
+}
 ```
 
 **JavaScript and TypeScript features**:
 
 JavaScript and TypeScript code execution supports top-level `await` and persistent variables across executions within the same context.
 
-* [  JavaScript ](#tab-panel-10275)
-* [  TypeScript ](#tab-panel-10276)
+* [  JavaScript ](#tab-panel-10570)
+* [  TypeScript ](#tab-panel-10571)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const ctx = await sandbox.createCodeContext({ language: "javascript" });
-// Execution 1: Fetch data with top-level awaitawait sandbox.runCode(  `const response = await fetch('https://api.example.com/data');const data = await response.json();`,  { context: ctx },);
-// Execution 2: Use the data from previous executionconst result = await sandbox.runCode("console.log(data)", { context: ctx });console.log(result.logs.stdout); // Data persists across executions
+
+
+// Execution 1: Fetch data with top-level await
+await sandbox.runCode(
+  `
+const response = await fetch('https://api.example.com/data');
+const data = await response.json();
+`,
+  { context: ctx },
+);
+
+
+// Execution 2: Use the data from previous execution
+const result = await sandbox.runCode("console.log(data)", { context: ctx });
+console.log(result.logs.stdout); // Data persists across executions
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const ctx = await sandbox.createCodeContext({ language: 'javascript' });
-// Execution 1: Fetch data with top-level awaitawait sandbox.runCode(`const response = await fetch('https://api.example.com/data');const data = await response.json();`, { context: ctx });
-// Execution 2: Use the data from previous executionconst result = await sandbox.runCode('console.log(data)', { context: ctx });console.log(result.logs.stdout); // Data persists across executions
+
+
+// Execution 1: Fetch data with top-level await
+await sandbox.runCode(`
+const response = await fetch('https://api.example.com/data');
+const data = await response.json();
+`, { context: ctx });
+
+
+// Execution 2: Use the data from previous execution
+const result = await sandbox.runCode('console.log(data)', { context: ctx });
+console.log(result.logs.stdout); // Data persists across executions
 ```
 
 Variables declared with `const`, `let`, or `var` persist across executions, enabling multi-step workflows:
 
-* [  JavaScript ](#tab-panel-10271)
-* [  TypeScript ](#tab-panel-10272)
+* [  JavaScript ](#tab-panel-10566)
+* [  TypeScript ](#tab-panel-10567)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const ctx = await sandbox.createCodeContext({ language: "javascript" });
-await sandbox.runCode("const x = 10", { context: ctx });await sandbox.runCode("let y = 20", { context: ctx });const result = await sandbox.runCode("x + y", { context: ctx });
+
+
+await sandbox.runCode("const x = 10", { context: ctx });
+await sandbox.runCode("let y = 20", { context: ctx });
+const result = await sandbox.runCode("x + y", { context: ctx });
+
+
 console.log(result.results[0].text); // "30"
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const ctx = await sandbox.createCodeContext({ language: 'javascript' });
-await sandbox.runCode('const x = 10', { context: ctx });await sandbox.runCode('let y = 20', { context: ctx });const result = await sandbox.runCode('x + y', { context: ctx });
+
+
+await sandbox.runCode('const x = 10', { context: ctx });
+await sandbox.runCode('let y = 20', { context: ctx });
+const result = await sandbox.runCode('x + y', { context: ctx });
+
+
 console.log(result.results[0].text); // "30"
 ```
 
@@ -187,50 +267,56 @@ console.log(result.results[0].text); // "30"
 
 List all active code execution contexts.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const contexts = await sandbox.listCodeContexts(): Promise<CodeContext[]>
 ```
 
-* [  JavaScript ](#tab-panel-10267)
-* [  TypeScript ](#tab-panel-10268)
+* [  JavaScript ](#tab-panel-10562)
+* [  TypeScript ](#tab-panel-10563)
 
-JavaScript
+**JavaScript**
 
+```js
+const contexts = await sandbox.listCodeContexts();
+console.log(`Found ${contexts.length} contexts`);
 ```
-const contexts = await sandbox.listCodeContexts();console.log(`Found ${contexts.length} contexts`);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const contexts = await sandbox.listCodeContexts();console.log(`Found ${contexts.length} contexts`);
+```ts
+const contexts = await sandbox.listCodeContexts();
+console.log(`Found ${contexts.length} contexts`);
 ```
 
 ### `deleteCodeContext()`
 
 Delete a code execution context and free its resources.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.deleteCodeContext(contextId: string): Promise<void>
 ```
 
-* [  JavaScript ](#tab-panel-10273)
-* [  TypeScript ](#tab-panel-10274)
+* [  JavaScript ](#tab-panel-10568)
+* [  TypeScript ](#tab-panel-10569)
 
-JavaScript
+**JavaScript**
 
+```js
+const ctx = await sandbox.createCodeContext({ language: "python" });
+await sandbox.runCode('print("Hello")', { context: ctx });
+await sandbox.deleteCodeContext(ctx.id);
 ```
-const ctx = await sandbox.createCodeContext({ language: "python" });await sandbox.runCode('print("Hello")', { context: ctx });await sandbox.deleteCodeContext(ctx.id);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const ctx = await sandbox.createCodeContext({ language: 'python' });await sandbox.runCode('print("Hello")', { context: ctx });await sandbox.deleteCodeContext(ctx.id);
+```ts
+const ctx = await sandbox.createCodeContext({ language: 'python' });
+await sandbox.runCode('print("Hello")', { context: ctx });
+await sandbox.deleteCodeContext(ctx.id);
 ```
 
 ## Rich Output Formats
@@ -239,42 +325,96 @@ Results include: `text`, `html`, `png`, `jpeg`, `svg`, `latex`, `markdown`, `jso
 
 **Charts (matplotlib)**:
 
-* [  JavaScript ](#tab-panel-10279)
-* [  TypeScript ](#tab-panel-10280)
+* [  JavaScript ](#tab-panel-10574)
+* [  TypeScript ](#tab-panel-10575)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await sandbox.runCode(
+  `
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+x = np.linspace(0, 10, 100)
+plt.plot(x, np.sin(x))
+plt.show()
+`,
+  { language: "python" },
+);
+
+
+if (result.results[0]?.png) {
+  const imageBuffer = Buffer.from(result.results[0].png, "base64");
+  return new Response(imageBuffer, {
+    headers: { "Content-Type": "image/png" },
+  });
+}
 ```
-const result = await sandbox.runCode(  `import matplotlib.pyplot as pltimport numpy as np
-x = np.linspace(0, 10, 100)plt.plot(x, np.sin(x))plt.show()`,  { language: "python" },);
-if (result.results[0]?.png) {  const imageBuffer = Buffer.from(result.results[0].png, "base64");  return new Response(imageBuffer, {    headers: { "Content-Type": "image/png" },  });}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await sandbox.runCode(`import matplotlib.pyplot as pltimport numpy as np
-x = np.linspace(0, 10, 100)plt.plot(x, np.sin(x))plt.show()`, { language: 'python' });
-if (result.results[0]?.png) {  const imageBuffer = Buffer.from(result.results[0].png, 'base64');  return new Response(imageBuffer, {    headers: { 'Content-Type': 'image/png' }  });}
+```ts
+const result = await sandbox.runCode(`
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+x = np.linspace(0, 10, 100)
+plt.plot(x, np.sin(x))
+plt.show()
+`, { language: 'python' });
+
+
+if (result.results[0]?.png) {
+  const imageBuffer = Buffer.from(result.results[0].png, 'base64');
+  return new Response(imageBuffer, {
+    headers: { 'Content-Type': 'image/png' }
+  });
+}
 ```
 
 **Tables (pandas)**:
 
-* [  JavaScript ](#tab-panel-10277)
-* [  TypeScript ](#tab-panel-10278)
+* [  JavaScript ](#tab-panel-10572)
+* [  TypeScript ](#tab-panel-10573)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await sandbox.runCode(
+  `
+import pandas as pd
+df = pd.DataFrame({'Name': ['Alice', 'Bob'], 'Age': [25, 30]})
+df
+`,
+  { language: "python" },
+);
+
+
+if (result.results[0]?.html) {
+  return new Response(result.results[0].html, {
+    headers: { "Content-Type": "text/html" },
+  });
+}
 ```
-const result = await sandbox.runCode(  `import pandas as pddf = pd.DataFrame({'Name': ['Alice', 'Bob'], 'Age': [25, 30]})df`,  { language: "python" },);
-if (result.results[0]?.html) {  return new Response(result.results[0].html, {    headers: { "Content-Type": "text/html" },  });}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await sandbox.runCode(`import pandas as pddf = pd.DataFrame({'Name': ['Alice', 'Bob'], 'Age': [25, 30]})df`, { language: 'python' });
-if (result.results[0]?.html) {  return new Response(result.results[0].html, {    headers: { 'Content-Type': 'text/html' }  });}
+```ts
+const result = await sandbox.runCode(`
+import pandas as pd
+df = pd.DataFrame({'Name': ['Alice', 'Bob'], 'Age': [25, 30]})
+df
+`, { language: 'python' });
+
+
+if (result.results[0]?.html) {
+  return new Response(result.results[0].html, {
+    headers: { 'Content-Type': 'text/html' }
+  });
+}
 ```
 
 ## Related resources

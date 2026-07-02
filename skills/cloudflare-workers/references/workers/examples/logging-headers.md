@@ -20,48 +20,94 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11801)
-* [  TypeScript ](#tab-panel-11802)
-* [  Python ](#tab-panel-11803)
-* [  Rust ](#tab-panel-11804)
-* [  Hono ](#tab-panel-11805)
+* [  JavaScript ](#tab-panel-12034)
+* [  TypeScript ](#tab-panel-12035)
+* [  Python ](#tab-panel-12036)
+* [  Rust ](#tab-panel-12037)
+* [  Hono ](#tab-panel-12038)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request) {
+    console.log(new Map(request.headers));
+    return new Response("Hello world");
+  },
+};
 ```
-export default {  async fetch(request) {    console.log(new Map(request.headers));    return new Response("Hello world");  },};
+
+**TypeScript**
+
+```ts
+export default {
+  async fetch(request): Promise<Response> {
+    console.log(new Map(request.headers));
+    return new Response("Hello world");
+  },
+} satisfies ExportedHandler;
 ```
 
-TypeScript
+**Python**
 
-```
-export default {  async fetch(request): Promise<Response> {    console.log(new Map(request.headers));    return new Response("Hello world");  },} satisfies ExportedHandler;
-```
-
-Python
-
-```
+```py
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        print(dict(request.headers))        return Response('Hello world')
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        print(dict(request.headers))
+        return Response('Hello world')
 ```
 
-```
+```rs
 use worker::*;
-#[event(fetch)]async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<Response> {    console_log!("{:?}", req.headers());    Response::ok("hello world")}
+
+
+#[event(fetch)]
+async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<Response> {
+    console_log!("{:?}", req.headers());
+    Response::ok("hello world")
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Hono } from 'hono';
+
+
 const app = new Hono();
-app.get('*', (c) => {  // Different ways to log headers in Hono:
-  // 1. Using Map to display headers in console  console.log('Headers as Map:', new Map(c.req.raw.headers));
-  // 2. Using spread operator to log headers  console.log('Headers spread:', [...c.req.raw.headers]);
-  // 3. Using Object.fromEntries to convert to an object  console.log('Headers as Object:', Object.fromEntries(c.req.raw.headers));
-  // 4. Hono's built-in header accessor (for individual headers)  console.log('User-Agent:', c.req.header('User-Agent'));
-  // 5. Using c.req.headers to get all headers  console.log('All headers from Hono context:', c.req.header());
-  return c.text('Hello world');});
+
+
+app.get('*', (c) => {
+  // Different ways to log headers in Hono:
+
+
+  // 1. Using Map to display headers in console
+  console.log('Headers as Map:', new Map(c.req.raw.headers));
+
+
+  // 2. Using spread operator to log headers
+  console.log('Headers spread:', [...c.req.raw.headers]);
+
+
+  // 3. Using Object.fromEntries to convert to an object
+  console.log('Headers as Object:', Object.fromEntries(c.req.raw.headers));
+
+
+  // 4. Hono's built-in header accessor (for individual headers)
+  console.log('User-Agent:', c.req.header('User-Agent'));
+
+
+  // 5. Using c.req.headers to get all headers
+  console.log('All headers from Hono context:', c.req.header());
+
+
+  return c.text('Hello world');
+});
+
+
 export default app;
 ```
 
@@ -71,25 +117,25 @@ export default app;
 
 Use a `Map` if you need to log a `Headers` object to the console:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 console.log(new Map(request.headers));
 ```
 
 Use the `spread` operator if you need to quickly stringify a `Headers` object:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let requestHeaders = JSON.stringify([...request.headers]);
 ```
 
 Use `Object.fromEntries` to convert the headers to an object:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let requestHeaders = Object.fromEntries(request.headers);
 ```
 
@@ -97,17 +143,17 @@ let requestHeaders = Object.fromEntries(request.headers);
 
 When debugging Workers, examine the headers on a request or response. A common mistake is to try to log headers to the developer console via code like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 console.log(request.headers);
 ```
 
 Or this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 console.log(`Request headers: ${JSON.stringify(request.headers)}`);
 ```
 
@@ -121,9 +167,9 @@ The reason this happens is because [Headers ↗](https://developer.mozilla.org/e
 
 The first common idiom for making Headers `console.log()`\-friendly is to construct a `Map` object from the `Headers` object and log the `Map` object.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 console.log(new Map(request.headers));
 ```
 
@@ -140,28 +186,37 @@ Even though a `Map` stores its data in enumerable properties, those properties a
 
 Instead, you can take advantage of the iterability of the `Headers` object in a new way by applying the [spread operator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread%5Fsyntax) (`...`) to it.
 
-JavaScript
+**JavaScript**
 
-```
-let requestHeaders = JSON.stringify([...request.headers], null, 2);console.log(`Request headers: ${requestHeaders}`);
+```js
+let requestHeaders = JSON.stringify([...request.headers], null, 2);
+console.log(`Request headers: ${requestHeaders}`);
 ```
 
 ### Convert headers into an object with Object.fromEntries (ES2019)
 
 ES2019 provides [Object.fromEntries ↗](https://github.com/tc39/proposal-object-from-entries) which is a call to convert the headers into an object:
 
-JavaScript
+**JavaScript**
 
-```
-let headersObject = Object.fromEntries(request.headers);let requestHeaders = JSON.stringify(headersObject, null, 2);console.log(`Request headers: ${requestHeaders}`);
+```js
+let headersObject = Object.fromEntries(request.headers);
+let requestHeaders = JSON.stringify(headersObject, null, 2);
+console.log(`Request headers: ${requestHeaders}`);
 ```
 
 This results in something like:
 
-JavaScript
+**JavaScript**
 
-```
-Request headers: {  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",  "accept-encoding": "gzip",  "accept-language": "en-US,en;q=0.9",  "cf-ipcountry": "US",  // ...}"
+```js
+Request headers: {
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+  "accept-encoding": "gzip",
+  "accept-language": "en-US,en;q=0.9",
+  "cf-ipcountry": "US",
+  // ...
+}"
 ```
 
 ```json

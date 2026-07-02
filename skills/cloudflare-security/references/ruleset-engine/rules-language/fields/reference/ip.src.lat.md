@@ -18,7 +18,7 @@ The latitude associated with the client IP address.
 
 Example value:
 
-```
+```txt
 "37.78044"
 ```
 

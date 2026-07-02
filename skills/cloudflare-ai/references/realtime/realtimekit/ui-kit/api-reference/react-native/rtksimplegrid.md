@@ -33,16 +33,32 @@ A simple grid layout that arranges participant tiles in rows and columns with au
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSimpleGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSimpleGrid meeting={meeting} participants={participants} />;}
+
+
+function MyComponent() {
+  return <RtkSimpleGrid meeting={meeting} participants={participants} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSimpleGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkSimpleGrid      meeting={meeting}      participants={participants}      aspectRatio="16:9"      gap={12}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSimpleGrid
+      meeting={meeting}
+      participants={participants}
+      aspectRatio="16:9"
+      gap={12}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

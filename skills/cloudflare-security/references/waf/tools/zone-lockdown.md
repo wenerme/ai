@@ -38,9 +38,9 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-11345)
-* [ Old dashboard ](#tab-panel-11346)
-* [ API ](#tab-panel-11347)
+* [  New dashboard ](#tab-panel-11640)
+* [ Old dashboard ](#tab-panel-11641)
+* [ API ](#tab-panel-11642)
 
 Note
 
@@ -83,10 +83,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Firewall Services Write`
 
-Create a Zone Lockdown rule
+**Create a Zone Lockdown rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Block all traffic to staging and wiki unless it comes from HQ or branch offices",    "urls": [        "staging.example.com/*",        "example.com/wiki/*"    ],    "configurations": [        {            "target": "ip_range",            "value": "192.0.2.0/24"        },        {            "target": "ip_range",            "value": "2001:DB8::/64"        },        {            "target": "ip",            "value": "203.0.133.1"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Block all traffic to staging and wiki unless it comes from HQ or branch offices",
+    "urls": [
+        "staging.example.com/*",
+        "example.com/wiki/*"
+    ],
+    "configurations": [
+        {
+            "target": "ip_range",
+            "value": "192.0.2.0/24"
+        },
+        {
+            "target": "ip_range",
+            "value": "2001:DB8::/64"
+        },
+        {
+            "target": "ip",
+            "value": "203.0.133.1"
+        }
+    ]
+  }'
 ```
 
 ### Example rule
@@ -94,16 +117,19 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \ 
 The following example rule will only allow visitors connecting from a company’s headquarters or branch offices to access the staging environment and the wiki:
 
 * Name:
-```
+```txt
 Block all traffic to staging and wiki unless it comes from HQ or branch offices
 ```
 * URLs:
-```
-staging.example.com/*example.com/wiki/*
+```txt
+staging.example.com/*
+example.com/wiki/*
 ```
 * IP Range:
-```
-192.0.2.0/242001:DB8::/64203.0.133.1
+```txt
+192.0.2.0/24
+2001:DB8::/64
+203.0.133.1
 ```
 
 This example would not protect an internal wiki located on a different directory path such as `example.com/internal/wiki`.
@@ -117,7 +143,7 @@ A [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashbo
 
 **Expression**:
 
-```
+```txt
 ((http.host eq "staging.example.com") or (http.host eq "example.com" and http.request.uri.path wildcard "/wiki/*")) and not ip.src in {192.0.2.0/24 2001:DB8::/64 203.0.133.1}
 ```
 

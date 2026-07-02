@@ -20,28 +20,42 @@ When you write a Python Worker, your code is interpreted directly by Pyodide, wi
 
 A basic Python Worker includes a Python file with a `Default` class extending `WorkerEntrypoint`, such as:
 
-Python
+**Python**
 
-```
+```python
 from workers import Response, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello world!")
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response("Hello world!")
 ```
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-11898)
-* [  wrangler.toml ](#tab-panel-11899)
+* [  wrangler.jsonc ](#tab-panel-12171)
+* [  wrangler.toml ](#tab-panel-12172)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hello-world-python-worker",
+  "main": "src/entry.py",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01"
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hello-world-python-worker",  "main": "src/entry.py",  // Set this to today's date  "compatibility_date": "2026-06-24"}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "hello-world-python-worker"main = "src/entry.py"# Set this to today's datecompatibility_date = "2026-06-24"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "hello-world-python-worker"
+main = "src/entry.py"
+# Set this to today's date
+compatibility_date = "2026-07-01"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:

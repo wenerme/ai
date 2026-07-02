@@ -37,9 +37,7 @@ This tutorial covers how to create the metrics endpoint, set up the Prometheus s
 
 If your tunnel was created via the CLI, run the following command on the `cloudflared` server (`192.168.1.1`):
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel --metrics 192.168.1.1:60123 run my-tunnel
 ```
 
@@ -51,23 +49,44 @@ On the Prometheus and Grafana server (`192.168.1.2`):
 
 1. [Download ↗](https://prometheus.io/download/) Prometheus.
 2. Extract Prometheus:
-Terminal window
-```
-tar xvfz prometheus-*.tar.gzcd prometheus-*
+```sh
+tar xvfz prometheus-*.tar.gz
+cd prometheus-*
 ```
 3. Open `prometheus.yml` in a text editor and add the `cloudflared` job to the end of the file:
-```
-# my global configglobal:  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.  # scrape_timeout is set to the global default (10s).
-# Alertmanager configurationalerting:  alertmanagers:    - static_configs:        - targets:          # - alertmanager:9093
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.rule_files:  # - "first_rules.yml"  # - "second_rules.yml"
-# A scrape configuration containing exactly one endpoint to scrape:# Here it's Prometheus itself.scrape_configs:  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.  - job_name: "prometheus"
-    # metrics_path defaults to '/metrics'    # scheme defaults to 'http'.
-    static_configs:      - targets: ["localhost:9090"] ## Address of Prometheus dashboard
-  - job_name: "cloudflared"    static_configs:      - targets: ["198.168.1.1:60123"] ## cloudflared server IP and the --metrics port configured for the tunnel
+```yml
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ["localhost:9090"] ## Address of Prometheus dashboard
+
+
+  - job_name: "cloudflared"
+    static_configs:
+      - targets: ["198.168.1.1:60123"] ## cloudflared server IP and the --metrics port configured for the tunnel
 ```
 4. Start Prometheus:
-Terminal window
-```
+```sh
 ./prometheus --config.file="prometheus.yml"
 ```
 You can optionally configure Prometheus to run as a service so that it does not need to be manually started if the machine reboots.
@@ -81,13 +100,12 @@ Refer to [Available metrics](https://developers.cloudflare.com/cloudflare-one/ne
 
 1. [Download ↗](https://grafana.com/grafana/download) and install Grafana.
 2. Start Grafana as a system service:
-Terminal window
-```
-sudo systemctl daemon-reloadsudo systemctl start grafana-server
+```sh
+sudo systemctl daemon-reload
+sudo systemctl start grafana-server
 ```
 3. Verify that Grafana is running:
-Terminal window
-```
+```sh
 sudo systemctl status grafana-server
 ```
 4. Open a browser and go to `http://localhost:3000/`. The default HTTP port that Grafana listens to is `3000` unless you have configured a different port.

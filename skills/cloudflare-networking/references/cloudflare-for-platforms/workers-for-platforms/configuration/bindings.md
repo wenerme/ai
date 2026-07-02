@@ -47,20 +47,43 @@ When using the API to upload scripts, bindings must be specified in the `metadat
 
 ##### Example API request
 
-Terminal window
-
-```
-curl -X PUT \  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \  -H "Content-Type: multipart/form-data" \  -H "Authorization: Bearer <api-token>" \  -F 'metadata={    "main_module": "worker.js",    "bindings": [      {        "type": "kv_namespace",        "name": "USER_KV",        "namespace_id": "<your-namespace-id>"      }    ]  }' \  -F 'worker.js=@/path/to/worker.js'
+```bash
+curl -X PUT \
+  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \
+  -H "Content-Type: multipart/form-data" \
+  -H "Authorization: Bearer <api-token>" \
+  -F 'metadata={
+    "main_module": "worker.js",
+    "bindings": [
+      {
+        "type": "kv_namespace",
+        "name": "USER_KV",
+        "namespace_id": "<your-namespace-id>"
+      }
+    ]
+  }' \
+  -F 'worker.js=@/path/to/worker.js'
 ```
 
 Now, the User Worker has can access the `USER_KV` binding through the `env` argument using `env.USER_DATA.get()`, `env.USER_DATA.put()`, and other KV methods.
 
 Note: If you plan to add new bindings to the Worker, use the `keep_bindings` parameter to ensure existing bindings are preserved while adding new ones.
 
-Terminal window
-
-```
-curl -X PUT \  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \  -H "Content-Type: multipart/form-data" \  -H "Authorization: Bearer <api-token>" \  -F 'metadata={    "bindings": [      {        "type": "r2_bucket",        "name": "STORAGE",        "bucket_name": "<your-bucket-name>"      }    ],    "keep_bindings": ["kv_namespace"]  }'
+```bash
+curl -X PUT \
+  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \
+  -H "Content-Type: multipart/form-data" \
+  -H "Authorization: Bearer <api-token>" \
+  -F 'metadata={
+    "bindings": [
+      {
+        "type": "r2_bucket",
+        "name": "STORAGE",
+        "bucket_name": "<your-bucket-name>"
+      }
+    ],
+    "keep_bindings": ["kv_namespace"]
+  }'
 ```
 
 ```json

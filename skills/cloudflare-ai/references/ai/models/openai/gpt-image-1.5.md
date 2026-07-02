@@ -29,148 +29,257 @@ OpenAI's image generation model that creates and edits images from text prompts,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1330)
-* [ cURL ](#tab-panel-1331)
+* [ TypeScript ](#tab-panel-1378)
+* [ cURL ](#tab-panel-1379)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'openai/gpt-image-1.5',  { prompt: 'A golden retriever puppy playing in autumn leaves' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-image-1.5",  "input": {    "prompt": "A golden retriever puppy playing in autumn leaves"  }}'
+```ts
+const response = await env.AI.run(
+  'openai/gpt-image-1.5',
+  { prompt: 'A golden retriever puppy playing in autumn leaves' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1328)
-* [ Raw response ](#tab-panel-1329)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-image-1.5",
+  "input": {
+    "prompt": "A golden retriever puppy playing in autumn leaves"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1376)
+* [ Raw response ](#tab-panel-1377)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **High Quality**  — Generate a high-quality detailed image
 
-* [ TypeScript ](#tab-panel-1334)
-* [ cURL ](#tab-panel-1335)
+* [ TypeScript ](#tab-panel-1382)
+* [ cURL ](#tab-panel-1383)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/gpt-image-1.5',
+  {
+    prompt:
+      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',
+    quality: 'high',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/gpt-image-1.5',  {    prompt:      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',    quality: 'high',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-image-1.5",
+  "input": {
+    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
+    "quality": "high"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-image-1.5",  "input": {    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",    "quality": "high"  }}'
-```
-
-* [ Output ](#tab-panel-1332)
-* [ Raw response ](#tab-panel-1333)
+* [ Output ](#tab-panel-1380)
+* [ Raw response ](#tab-panel-1381)
 
 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Low Quality Draft**  — Fast, rough draft for iteration
 
-* [ TypeScript ](#tab-panel-1338)
-* [ cURL ](#tab-panel-1339)
+* [ TypeScript ](#tab-panel-1386)
+* [ cURL ](#tab-panel-1387)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/gpt-image-1.5',
+  {
+    prompt: 'A quiet Japanese garden in morning mist with a stone lantern and koi pond',
+    quality: 'low',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/gpt-image-1.5',  {    prompt: 'A quiet Japanese garden in morning mist with a stone lantern and koi pond',    quality: 'low',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-image-1.5",
+  "input": {
+    "prompt": "A quiet Japanese garden in morning mist with a stone lantern and koi pond",
+    "quality": "low"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-image-1.5",  "input": {    "prompt": "A quiet Japanese garden in morning mist with a stone lantern and koi pond",    "quality": "low"  }}'
-```
-
-* [ Output ](#tab-panel-1336)
-* [ Raw response ](#tab-panel-1337)
+* [ Output ](#tab-panel-1384)
+* [ Raw response ](#tab-panel-1385)
 
 ![Low Quality Draft](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Medium Quality**  — Balanced quality for most uses
 
-* [ TypeScript ](#tab-panel-1342)
-* [ cURL ](#tab-panel-1343)
+* [ TypeScript ](#tab-panel-1390)
+* [ cURL ](#tab-panel-1391)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/gpt-image-1.5',
+  {
+    prompt:
+      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
+    quality: 'medium',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/gpt-image-1.5',  {    prompt:      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',    quality: 'medium',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-image-1.5",
+  "input": {
+    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
+    "quality": "medium"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-image-1.5",  "input": {    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",    "quality": "medium"  }}'
-```
-
-* [ Output ](#tab-panel-1340)
-* [ Raw response ](#tab-panel-1341)
+* [ Output ](#tab-panel-1388)
+* [ Raw response ](#tab-panel-1389)
 
 ![Medium Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Auto Quality**  — Let the model pick an appropriate quality level
 
-* [ TypeScript ](#tab-panel-1346)
-* [ cURL ](#tab-panel-1347)
+* [ TypeScript ](#tab-panel-1394)
+* [ cURL ](#tab-panel-1395)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/gpt-image-1.5',
+  {
+    prompt:
+      'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',
+    quality: 'auto',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/gpt-image-1.5',  {    prompt:      'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',    quality: 'auto',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-image-1.5",
+  "input": {
+    "prompt": "A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky",
+    "quality": "auto"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-image-1.5",  "input": {    "prompt": "A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky",    "quality": "auto"  }}'
-```
-
-* [ Output ](#tab-panel-1344)
-* [ Raw response ](#tab-panel-1345)
+* [ Output ](#tab-panel-1392)
+* [ Raw response ](#tab-panel-1393)
 
 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1348)
-* [ Output ](#tab-panel-1349)
-
-▶images\[\]
-
-`array`maxItems: 16Input images for image editing, 1-16 entries. Each entry is base64-encoded (raw string or data:image/{png|jpeg|webp};base64,... URI).
+* [ Input ](#tab-panel-1396)
+* [ Output ](#tab-panel-1397)
 
 prompt
 
 `string`requiredText prompt describing the image to generate or edit
+
+▶images\[\]
+
+`array`maxItems: 16Input images for image editing, 1-16 entries. Each entry is base64-encoded (raw string or data:image/{png|jpeg|webp};base64,... URI).
 
 quality
 

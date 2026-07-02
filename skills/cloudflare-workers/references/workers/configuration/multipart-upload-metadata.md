@@ -20,8 +20,18 @@ If you're using the [Workers Script Upload API](https://developers.cloudflare.co
 
 ## Sample `metadata`
 
-```
-{  "main_module": "main.js",  "bindings": [    {      "type": "plain_text",      "name": "MESSAGE",      "text": "Hello, world!"    }  ],  "compatibility_date": "2021-09-14"}
+```json
+{
+  "main_module": "main.js",
+  "bindings": [
+    {
+      "type": "plain_text",
+      "name": "MESSAGE",
+      "text": "Hello, world!"
+    }
+  ],
+  "compatibility_date": "2021-09-14"
+}
 ```
 
 Note
@@ -103,8 +113,88 @@ For [version uploads](https://developers.cloudflare.com/workers/configuration/ve
 
 Workers can interact with resources on the Cloudflare Developer Platform using [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Refer to the JSON example below that shows how to add bindings in the `metadata` part.
 
-```
-{  "bindings": [    {      "type": "ai",      "name": "<VARIABLE_NAME>"    },    {      "type": "analytics_engine",      "name": "<VARIABLE_NAME>",      "dataset": "<DATASET>"    },    {      "type": "assets",      "name": "<VARIABLE_NAME>"    },    {      "type": "browser_rendering",      "name": "<VARIABLE_NAME>"    },    {      "type": "d1",      "name": "<VARIABLE_NAME>",      "id": "<D1_ID>"    },    {      "type": "durable_object_namespace",      "name": "<VARIABLE_NAME>",      "class_name": "<DO_CLASS_NAME>"    },    {      "type": "hyperdrive",      "name": "<VARIABLE_NAME>",      "id": "<HYPERDRIVE_ID>"    },    {      "type": "kv_namespace",      "name": "<VARIABLE_NAME>",      "namespace_id": "<KV_ID>"    },    {      "type": "mtls_certificate",      "name": "<VARIABLE_NAME>",      "certificate_id": "<MTLS_CERTIFICATE_ID>"    },    {      "type": "plain_text",      "name": "<VARIABLE_NAME>",      "text": "<VARIABLE_VALUE>"    },    {      "type": "queue",      "name": "<VARIABLE_NAME>",      "queue_name": "<QUEUE_NAME>"    },    {      "type": "r2_bucket",      "name": "<VARIABLE_NAME>",      "bucket_name": "<R2_BUCKET_NAME>"    },    {      "type": "secret_text",      "name": "<VARIABLE_NAME>",      "text": "<SECRET_VALUE>"    },    {      "type": "service",      "name": "<VARIABLE_NAME>",      "service": "<SERVICE_NAME>",      "environment": "production"    },    {      "type": "vectorize",      "name": "<VARIABLE_NAME>",      "index_name": "<INDEX_NAME>"    },    {      "type": "version_metadata",      "name": "<VARIABLE_NAME>"    }  ]}
+```json
+{
+  "bindings": [
+    {
+      "type": "ai",
+      "name": "<VARIABLE_NAME>"
+    },
+    {
+      "type": "analytics_engine",
+      "name": "<VARIABLE_NAME>",
+      "dataset": "<DATASET>"
+    },
+    {
+      "type": "assets",
+      "name": "<VARIABLE_NAME>"
+    },
+    {
+      "type": "browser_rendering",
+      "name": "<VARIABLE_NAME>"
+    },
+    {
+      "type": "d1",
+      "name": "<VARIABLE_NAME>",
+      "id": "<D1_ID>"
+    },
+    {
+      "type": "durable_object_namespace",
+      "name": "<VARIABLE_NAME>",
+      "class_name": "<DO_CLASS_NAME>"
+    },
+    {
+      "type": "hyperdrive",
+      "name": "<VARIABLE_NAME>",
+      "id": "<HYPERDRIVE_ID>"
+    },
+    {
+      "type": "kv_namespace",
+      "name": "<VARIABLE_NAME>",
+      "namespace_id": "<KV_ID>"
+    },
+    {
+      "type": "mtls_certificate",
+      "name": "<VARIABLE_NAME>",
+      "certificate_id": "<MTLS_CERTIFICATE_ID>"
+    },
+    {
+      "type": "plain_text",
+      "name": "<VARIABLE_NAME>",
+      "text": "<VARIABLE_VALUE>"
+    },
+    {
+      "type": "queue",
+      "name": "<VARIABLE_NAME>",
+      "queue_name": "<QUEUE_NAME>"
+    },
+    {
+      "type": "r2_bucket",
+      "name": "<VARIABLE_NAME>",
+      "bucket_name": "<R2_BUCKET_NAME>"
+    },
+    {
+      "type": "secret_text",
+      "name": "<VARIABLE_NAME>",
+      "text": "<SECRET_VALUE>"
+    },
+    {
+      "type": "service",
+      "name": "<VARIABLE_NAME>",
+      "service": "<SERVICE_NAME>",
+      "environment": "production"
+    },
+    {
+      "type": "vectorize",
+      "name": "<VARIABLE_NAME>",
+      "index_name": "<INDEX_NAME>"
+    },
+    {
+      "type": "version_metadata",
+      "name": "<VARIABLE_NAME>"
+    }
+  ]
+}
 ```
 
 ```json

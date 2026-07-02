@@ -36,40 +36,72 @@ This example assumes you have an existing D1 database. To allow your Python Work
 
 You will need the `database_name` and `database_id` for a D1 database. You can use the `wrangler` CLI to create a new database or fetch the ID for an existing database as follows:
 
-Create a database
+**Create a database**
 
-```
+```sh
 npx wrangler d1 create my-first-db
 ```
 
-Retrieve a database ID
+**Retrieve a database ID**
 
-```
+```sh
 npx wrangler d1 info some-existing-db
 ```
 
-```
-# ┌───────────────────┬──────────────────────────────────────┐# │                   │ c89db32e-83f4-4e62-8cd7-7c8f97659029 │# ├───────────────────┼──────────────────────────────────────┤# │ name              │ db-enam                              │# ├───────────────────┼──────────────────────────────────────┤# │ created_at        │ 2023-06-12T16:52:03.071Z             │# └───────────────────┴──────────────────────────────────────┘
+```sh
+# ┌───────────────────┬──────────────────────────────────────┐
+# │                   │ c89db32e-83f4-4e62-8cd7-7c8f97659029 │
+# ├───────────────────┼──────────────────────────────────────┤
+# │ name              │ db-enam                              │
+# ├───────────────────┼──────────────────────────────────────┤
+# │ created_at        │ 2023-06-12T16:52:03.071Z             │
+# └───────────────────┴──────────────────────────────────────┘
 ```
 
 ### 1\. Configure bindings
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-8004)
-* [  wrangler.toml ](#tab-panel-8005)
+* [  wrangler.jsonc ](#tab-panel-8245)
+* [  wrangler.toml ](#tab-panel-8246)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "python-and-d1",
+  "main": "src/entry.py",
+  "compatibility_flags": [ // Required for Python Workers
+    "python_workers"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "d1_databases": [
+    {
+      "binding": "DB", // This will be how you refer to your database in your Worker
+      "database_name": "YOUR_DATABASE_NAME",
+      "database_id": "YOUR_DATABASE_ID"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "python-and-d1",  "main": "src/entry.py",  "compatibility_flags": [ // Required for Python Workers    "python_workers"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "d1_databases": [    {      "binding": "DB", // This will be how you refer to your database in your Worker      "database_name": "YOUR_DATABASE_NAME",      "database_id": "YOUR_DATABASE_ID"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "python-and-d1"main = "src/entry.py"compatibility_flags = [ "python_workers" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[d1_databases]]binding = "DB"database_name = "YOUR_DATABASE_NAME"database_id = "YOUR_DATABASE_ID"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "python-and-d1"
+main = "src/entry.py"
+compatibility_flags = [ "python_workers" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[d1_databases]]
+binding = "DB"
+database_name = "YOUR_DATABASE_NAME"
+database_id = "YOUR_DATABASE_ID"
 ```
 
 The value of `binding` is how you will refer to your database from within your Worker. If you change this, you must change this in your Worker script as well.
@@ -78,26 +110,45 @@ The value of `binding` is how you will refer to your database from within your W
 
 To create a Python Worker, create an empty file at `src/entry.py`, matching the value of `main` in your Wrangler file with the contents below:
 
-Python
+**Python**
 
-```
+```python
 from workers import Response, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        # Do anything else you'd like on request here!
-        try:            # Query D1 - we'll list all tables in our database in this example            results = await self.env.DB.prepare("PRAGMA table_list").run()            # Return a JSON response            return Response.json(results)        except Exception as e:            return Response.json({"error": "Database query failed"}, status=500)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        # Do anything else you'd like on request here!
+
+
+        try:
+            # Query D1 - we'll list all tables in our database in this example
+            results = await self.env.DB.prepare("PRAGMA table_list").run()
+            # Return a JSON response
+            return Response.json(results)
+        except Exception as e:
+            return Response.json({"error": "Database query failed"}, status=500)
 ```
 
 The value of `binding` in your Wrangler file exactly must match the name of the variable in your Python code. This example refers to the database via a `DB` binding, and queries this binding via `await self.env.DB.prepare(...)`.
 
 You can then deploy your Python Worker directly:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
-```
-# Example output## Your worker has access to the following bindings:# - D1 Databases:#   - DB: db-enam (c89db32e-83f4-4e62-8cd7-7c8f97659029)# Total Upload: 0.18 KiB / gzip: 0.17 KiB# Uploaded python-and-d1 (4.93 sec)# Published python-and-d1 (0.51 sec)#   https://python-and-d1.YOUR_SUBDOMAIN.workers.dev# Current Deployment ID: 80b72e19-da82-4465-83a2-c12fb11ccc72
+```sh
+# Example output
+#
+# Your worker has access to the following bindings:
+# - D1 Databases:
+#   - DB: db-enam (c89db32e-83f4-4e62-8cd7-7c8f97659029)
+# Total Upload: 0.18 KiB / gzip: 0.17 KiB
+# Uploaded python-and-d1 (4.93 sec)
+# Published python-and-d1 (0.51 sec)
+#   https://python-and-d1.YOUR_SUBDOMAIN.workers.dev
+# Current Deployment ID: 80b72e19-da82-4465-83a2-c12fb11ccc72
 ```
 
 Your Worker will be available at `https://python-and-d1.YOUR_SUBDOMAIN.workers.dev`.

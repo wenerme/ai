@@ -31,14 +31,25 @@ A component which plays a participant's screenshared video. It also allows for p
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-screenshare-view></rtk-screenshare-view>
+```html
+<!-- component.html -->
+<rtk-screenshare-view></rtk-screenshare-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-screenshare-view [hideFullScreenButton]="true" [meeting]="meeting" [nameTagPosition]="| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'"></rtk-screenshare-view>
+```html
+<!-- component.html -->
+<rtk-screenshare-view
+ [hideFullScreenButton]="true"
+ [meeting]="meeting"
+ [nameTagPosition]="| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'">
+</rtk-screenshare-view>
 ```
 
 ```json

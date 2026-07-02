@@ -22,11 +22,23 @@ If you are using the legacy AutoRAG API, refer to [Metadata filter format (legac
 
 Here is an example of metadata filtering using the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/):
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      filters: {        folder: "docs/getting-started/",        timestamp: { $gte: 1735689600 },      },    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      filters: {
+        folder: "docs/getting-started/",
+        timestamp: { $gte: 1735689600 },
+      },
+    },
+  },
+});
 ```
 
 ## Filter syntax
@@ -50,38 +62,71 @@ Filters are JSON objects where keys are metadata attribute names and values spec
 
 When you provide a direct value without an operator, it is treated as an equality check:
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": { "folder": "docs/getting-started/" }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": { "folder": "docs/getting-started/" }
+    }
+  }
+}
 ```
 
 This is equivalent to:
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": { "folder": { "$eq": "docs/getting-started/" } }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": { "folder": { "$eq": "docs/getting-started/" } }
+    }
+  }
+}
 ```
 
 ### Range queries
 
 Combine upper and lower bound operators to filter by ranges:
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }
+    }
+  }
+}
 ```
 
 ### Multiple conditions (implicit AND)
 
 When you specify multiple keys, all conditions must match:
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": {        "folder": "docs/getting-started/",        "timestamp": { "$gte": 1735689600 }      }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": {
+        "folder": "docs/getting-started/",
+        "timestamp": { "$gte": 1735689600 }
+      }
+    }
+  }
+}
 ```
 
 ### `$in` operator
 
 Match any value in an array:
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }
+    }
+  }
+}
 ```
 
 ## "Starts with" filter for folders
@@ -100,8 +145,14 @@ Using `{ "folder": "docs/" }` only matches files directly in that folder (like `
 
 To match all files starting with `docs/`, use a range query:
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }
+    }
+  }
+}
 ```
 
 This works because:

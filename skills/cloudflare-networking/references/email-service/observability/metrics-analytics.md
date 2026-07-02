@@ -110,16 +110,36 @@ The `emailRoutingAdaptive` dataset includes all of the above plus per-event fiel
 
 The following are common GraphQL queries that you can use to retrieve information about Email Service analytics. These queries use the variable `$zoneTag`, which should be set to your Cloudflare Zone ID. You can find this in the Cloudflare dashboard under your domain's **Overview** page.
 
-```
-{  "zoneTag": "<YOUR_ZONE_ID>",  "start": "2024-07-15",  "end": "2024-07-30"}
+```json
+{
+  "zoneTag": "<YOUR_ZONE_ID>",
+  "start": "2024-07-15",
+  "end": "2024-07-30"
+}
 ```
 
 #### Email sending operations
 
 To query the count of emails for a given date range, grouped by `date` and `status` (for example, `delivered`, `deliveryFailed`):
 
-```
-query EmailSendingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailSendingAdaptiveGroups(        filter: { date_geq: $start, date_leq: $end }        limit: 10000        orderBy: [date_DESC]      ) {        count        dimensions {          date          status        }      }    }  }}
+```graphql
+query EmailSendingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailSendingAdaptiveGroups(
+        filter: { date_geq: $start, date_leq: $end }
+        limit: 10000
+        orderBy: [date_DESC]
+      ) {
+        count
+        dimensions {
+          date
+          status
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwCEoMAXJckAZwAoASALwHtswAVJQgLhhvIQChAIQAaGAwFII5PgBEqYcZJy4FSkQEoYAbwBQMGADcUYAO6Q9hozFbt6AM3TlIfXXbadufZl66EMAC+Oga2tmDI6Fh4wgCCuEgADuQoxmAA4hAsIEn0NuFGzmiuEO4wia4A+oRgwL7SshKVYFVodb5qwQWFaCgIKHIwAIwADOOjPeEsELiQpHwA2i1V8nAYAMIAulMwobtGAMY52OQHFf04NChsNNaFhS3nRtLUNOdBu5-h391BQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBmNhRAwoAE2bsuvAOy8AjCAC+QA)
@@ -128,8 +148,25 @@ query EmailSendingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {  vie
 
 To investigate delivery failure causes for a specific date range, grouped by `errorCause` and `sendingDomain`:
 
-```
-query EmailDeliveryFailures($zoneTag: string!, $start: Date!, $end: Date!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailSendingAdaptiveGroups(        filter: { date_geq: $start, date_leq: $end, status: "deliveryFailed" }        limit: 10000        orderBy: [date_DESC]      ) {        count        dimensions {          date          errorCause          sendingDomain        }      }    }  }}
+```graphql
+query EmailDeliveryFailures($zoneTag: string!, $start: Date!, $end: Date!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailSendingAdaptiveGroups(
+        filter: { date_geq: $start, date_leq: $end, status: "deliveryFailed" }
+        limit: 10000
+        orderBy: [date_DESC]
+      ) {
+        count
+        dimensions {
+          date
+          errorCause
+          sendingDomain
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2ARMaUDdJQBiqaIEYAzgBQAkAXgPYB2YAKkgOYBcMFALhBRMOAQgA0MGvyQQ+PDEj5hxksEwAm8xcoCUMAN4AoGDFwowAd0gHjJmIxbUAZuiUQe++8zace9b+wcMAC+ekZ2dmDI6ADKaupCHACC6kgADnx4YADiEAwgadS2ESYuaG4eMKlKAPocYMB+0rIS1WA1aA1+8RLSfCAUPABE6thZ0MToYOpDIcUlOAgocjAAjAAMm+vzEQwQoxAAQlA8ANptNRhwMQDCALo7MGGPJgDG+Ux8L1UoCGoUKGYFBsJRKbW+JkgeQgNyQAzAEN48USGAY0SY32CjyxERxc2CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBmNhRAwoAE2bsuvAOy8AjCAC+QA)
@@ -138,28 +175,85 @@ query EmailDeliveryFailures($zoneTag: string!, $start: Date!, $end: Date!) {  vi
 
 To query email sending volume grouped by hour, useful for identifying traffic patterns:
 
-```
-query EmailSendingHourlyVolume($zoneTag: string!, $start: Time!, $end: Time!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailSendingAdaptiveGroups(        filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }        limit: 10000        orderBy: [datetimeHour_ASC]      ) {        count        dimensions {          datetimeHour          status        }      }    }  }}
+```graphql
+query EmailSendingHourlyVolume($zoneTag: string!, $start: Time!, $end: Time!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailSendingAdaptiveGroups(
+        filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }
+        limit: 10000
+        orderBy: [datetimeHour_ASC]
+      ) {
+        count
+        dimensions {
+          datetimeHour
+          status
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlQBmURgogYUACbN2XXgLbDBgidLkKAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg6oAzAFYMFEDCgATZuy68BbYS0niWU2SAC+QA)
 
 #### Individual email events
 
 To query individual email events for troubleshooting specific delivery issues. This uses the `emailSendingAdaptive` dataset and filters by `datetime` (Time type):
 
-```
-query RecentEmailEvents($zoneTag: string!, $start: Time!, $end: Time!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailSendingAdaptive(        filter: { datetime_geq: $start, datetime_leq: $end }        limit: 50        orderBy: [datetime_DESC]      ) {        datetime        from        to        subject        status        eventType        sendingDomain        messageId        errorCause        errorDetail        dkim        dmarc        spf        isSpam      }    }  }}
+```graphql
+query RecentEmailEvents($zoneTag: string!, $start: Time!, $end: Time!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailSendingAdaptive(
+        filter: { datetime_geq: $start, datetime_leq: $end }
+        limit: 50
+        orderBy: [datetime_DESC]
+      ) {
+        datetime
+        from
+        to
+        subject
+        status
+        eventType
+        sendingDomain
+        messageId
+        errorCause
+        errorDetail
+        dkim
+        dmarc
+        spf
+        isSpam
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlQBmURgogYUACbN2XXgLbDBgidLkKAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg6oAzAFYMFEDCgATZuy68BbYS0niWU2SAC+QA)
 
 #### Email routing operations
 
 To query the count of routed emails for a given date range, grouped by `date` and `status`:
 
-```
-query EmailRoutingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailRoutingAdaptiveGroups(        filter: { date_geq: $start, date_leq: $end }        limit: 10000        orderBy: [date_DESC]      ) {        count        dimensions {          date          status        }      }    }  }}
+```graphql
+query EmailRoutingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailRoutingAdaptiveGroups(
+        filter: { date_geq: $start, date_leq: $end }
+        limit: 10000
+        orderBy: [date_DESC]
+      ) {
+        count
+        dimensions {
+          date
+          status
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2AlA9iALigOwHMAhKAZVyVxAGcAKAEgC8sCwAVJIgLhltwRCRAIQAaGIwFIIuPgBFqYcZLAEAJgqUiAlDADeAKBgwAbijAB3SAeMmYrdgwBm6XJD76HbTtz4sfLiIYAF89I3t7MGR0bDxhAEF1JAAHfFMwAHEIHBSGO0iTVzR3CE8YZPcAfSIwYH9pWQlKsCq0Ov81dVCCwrQUBBQ5GABGAAYJsd7IrAh1SDI+AG0Wqvk4cgBhAF1pmHC9kwBjHAJcQ4qBtVoUNlpbQsKWi5NpGloLkL2vyJ+ekKAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBmNhRAwoAE2bsuvAOy8AjCAC+QA)
@@ -168,8 +262,25 @@ query EmailRoutingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {  vie
 
 To see which routing rules are matching emails, grouped by `ruleMatched` and `action`:
 
-```
-query EmailRoutingRuleActivity($zoneTag: string!, $start: Date!, $end: Date!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailRoutingAdaptiveGroups(        filter: { date_geq: $start, date_leq: $end }        limit: 10000        orderBy: [date_DESC]      ) {        count        dimensions {          date          ruleMatched          action        }      }    }  }}
+```graphql
+query EmailRoutingRuleActivity($zoneTag: string!, $start: Date!, $end: Date!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailRoutingAdaptiveGroups(
+        filter: { date_geq: $start, date_leq: $end }
+        limit: 10000
+        orderBy: [date_DESC]
+      ) {
+        count
+        dimensions {
+          date
+          ruleMatched
+          action
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2AlA9iALigOwHMMQ0wBBAY3wDcVcoAKAEgC8sCwAVJIgLhgBnXBEJEAhABoYLEUgi5BAESS4w02WAIATFWo0BKGAG8AUDBj0wAd0imLlmBy5CmAM3TqIgk8848fILsAbxEMAC+xuZOTmDI6Nh44hQ6SAAOdGAA4hA46W6OsZaeaN6+MGnqAPpEYMDB8ooyVWDV5A1aupFFxWgoCAyCAIwADOOjvbFYEDqQAEJQggDardXKcADKAMIAulMw0QeWVDgEuMeVA9pCKJxCDsXFrZeWEGRgALJqVAAWYDpXjAkDQ7gRLhEDpDYtCehEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBmNhRAwoAE2bsuvAOy8AjCAC+QA)
@@ -178,11 +289,35 @@ query EmailRoutingRuleActivity($zoneTag: string!, $start: Date!, $end: Date!) { 
 
 To query individual routing events for troubleshooting:
 
-```
-query RecentRoutingEvents($zoneTag: string!, $start: Time!, $end: Time!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailRoutingAdaptive(        filter: { datetime_geq: $start, datetime_leq: $end }        limit: 50        orderBy: [datetime_DESC]      ) {        datetime        from        to        subject        status        action        ruleMatched        messageId        errorDetail        dkim        dmarc        spf        isSpam      }    }  }}
+```graphql
+query RecentRoutingEvents($zoneTag: string!, $start: Time!, $end: Time!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      emailRoutingAdaptive(
+        filter: { datetime_geq: $start, datetime_leq: $end }
+        limit: 50
+        orderBy: [datetime_DESC]
+      ) {
+        datetime
+        from
+        to
+        subject
+        status
+        action
+        ruleMatched
+        messageId
+        errorDetail
+        dkim
+        dmarc
+        spf
+        isSpam
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlQBmURgogYUACbN2XXgLbDBgidLkKAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg6oAzAFYMFEDCgATZuy68BbYS0niWU2SAC+QA)
 
 Note
 

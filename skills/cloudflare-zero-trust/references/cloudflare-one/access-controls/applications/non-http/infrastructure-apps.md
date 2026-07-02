@@ -31,7 +31,7 @@ Access for Infrastructure allows you to have granular control over how users acc
 
 Note
 
-Access for Infrastructure currently only supports [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/). To connect using other protocols, [add a self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/). For browser-based SSH, RDP, or VNC, refer to [browser-rendered terminal](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/).
+Access for Infrastructure currently supports [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/). To connect using other protocols, [add a self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/). For browser-based SSH, RDP, or VNC, refer to [browser-rendered terminal](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/).
 
 ## Prerequisites
 
@@ -44,9 +44,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target:
 
-* [ Dashboard ](#tab-panel-7193)
-* [ API ](#tab-panel-7194)
-* [ Terraform ](#tab-panel-7195)
+* [ Dashboard ](#tab-panel-7443)
+* [ API ](#tab-panel-7444)
+* [ Terraform ](#tab-panel-7445)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -68,10 +68,25 @@ If the target IP does not appear in the dropdown, go to **Networking** \> **Rout
 
 Make a `POST` request to the [Infrastructure Access Targets](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/infrastructure/subresources/targets/methods/create/) endpoint:
 
-Create new target
+**Create new target**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "infra-access-target",    "ip": {        "ipv4": {            "ip_addr": "187.26.29.249",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        },        "ipv6": {            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "hostname": "infra-access-target",
+    "ip": {
+        "ipv4": {
+            "ip_addr": "187.26.29.249",
+            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
+        },
+        "ipv6": {
+            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
+        }
+    }
+  }'
 ```
 
 Provider versions
@@ -82,17 +97,30 @@ The following example requires Cloudflare provider version `>=4.45.0`.
 
   * `Zero Trust Write`
 2. Configure the [cloudflare\_zero\_trust\_infrastructure\_access\_target ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Finfrastructure%5Faccess%5Ftarget) resource:
-```
-resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {  account_id = var.cloudflare_account_id    hostname   = "infra-access-target"    ip = {      ipv4 = {        ip_addr = "187.26.29.249"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }      ipv6 = {        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }    }}
+```tf
+resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {
+  account_id = var.cloudflare_account_id
+    hostname   = "infra-access-target"
+    ip = {
+      ipv4 = {
+        ip_addr = "187.26.29.249"
+        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
+      }
+      ipv6 = {
+        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"
+        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
+      }
+    }
+}
 ```
 
 Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-7196)
-* [ API ](#tab-panel-7197)
-* [ Terraform (v4) ](#tab-panel-7198)
+* [ Dashboard ](#tab-panel-7446)
+* [ API ](#tab-panel-7447)
+* [ Terraform (v4) ](#tab-panel-7448)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -123,10 +151,48 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Apps and Policies Write`
 
-Add an Access application
+**Add an Access application**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Example infrastructure app",    "type": "infrastructure",    "target_criteria": [        {            "target_attributes": {                "hostname": [                    "infra-access-target"                ]            },            "port": 22,            "protocol": "SSH"        }    ],    "policies": [        {            "name": "Allow a specific email",            "decision": "allow",            "include": [                {                    "email": {                        "email": "jdoe@company.com"                    }                }            ],            "connection_rules": {                "ssh": {                    "usernames": [                        "root",                        "ec2-user"                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Example infrastructure app",
+    "type": "infrastructure",
+    "target_criteria": [
+        {
+            "target_attributes": {
+                "hostname": [
+                    "infra-access-target"
+                ]
+            },
+            "port": 22,
+            "protocol": "SSH"
+        }
+    ],
+    "policies": [
+        {
+            "name": "Allow a specific email",
+            "decision": "allow",
+            "include": [
+                {
+                    "email": {
+                        "email": "jdoe@company.com"
+                    }
+                }
+            ],
+            "connection_rules": {
+                "ssh": {
+                    "usernames": [
+                        "root",
+                        "ec2-user"
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Provider versions
@@ -137,15 +203,38 @@ The following example requires Cloudflare provider version `>=4.45.0`.
 
   * `Access: Apps and Policies Write`
 2. Use the [cloudflare\_zero\_trust\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fapplication) resource to create an infrastructure application:
-```
-resource "cloudflare_zero_trust_access_application" "infra-app" {  account_id = var.cloudflare_account_id  name       = "Example infrastructure app"  type       = "infrastructure"
-  target_criteria {    port     = 22    protocol = "SSH"    target_attributes {      name = "hostname"      values = ["infra-access-target"]    }  }}
+```tf
+resource "cloudflare_zero_trust_access_application" "infra-app" {
+  account_id = var.cloudflare_account_id
+  name       = "Example infrastructure app"
+  type       = "infrastructure"
+  target_criteria {
+    port     = 22
+    protocol = "SSH"
+    target_attributes {
+      name = "hostname"
+      values = ["infra-access-target"]
+    }
+  }
+}
 ```
 3. Use the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource to add an infrastructure policy to the application:
-```
-resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {  application_id = cloudflare_zero_trust_access_application.infra-app.id  account_id = var.cloudflare_account_id  name       = "Allow a specific email"  decision   = "allow"  precedence = 1
-  include {    email = ["jdoe@company.com"]  }
-  connection_rules {    ssh {      usernames = ["root", "ec2-user"]    }  }}
+```tf
+resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {
+  application_id = cloudflare_zero_trust_access_application.infra-app.id
+  account_id = var.cloudflare_account_id
+  name       = "Allow a specific email"
+  decision   = "allow"
+  precedence = 1
+  include {
+    email = ["jdoe@company.com"]
+  }
+  connection_rules {
+    ssh {
+      usernames = ["root", "ec2-user"]
+    }
+  }
+}
 ```
 
 The targets in this application are now secured by your infrastructure policies.
@@ -167,13 +256,19 @@ Note
 
 Users must pass the policies in your Access application before they are granted access. The Gateway Allow policy is strictly for routing and connectivity purposes.
 
-## 4\. Configure the server
+## 4\. (Optional) Require independent MFA
+
+You can require users to authenticate with a [YubiKey PIV key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps) before connecting with SSH to targets. You can configure MFA at the application level or at the policy level, allowing you to enforce stricter requirements for sensitive usernames.
+
+For setup instructions, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
+
+## 5\. Configure the server
 
 Certain protocols require configuring the server to trust connections through Access for Infrastructure. For more information, refer to the protocol-specific tutorial:
 
-* [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#6-configure-ssh-server)
+* [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#7-configure-ssh-server)
 
-## 5\. Connect as a user
+## 6\. Connect as a user
 
 Users connect to the target's IP address using their preferred client software. The user must be logged into the Cloudflare One Client on their device, but no other system configuration is required. You can optionally configure a [private DNS resolver](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to allow connections to the target's private hostname.
 
@@ -200,21 +295,25 @@ Feature availability
 
 Users can use `warp-cli` to display a list of targets they can access. On the device, open a terminal and run the following command:
 
-Terminal window
-
-```
+```sh
 warp-cli target list
 ```
 
-```
-╭──────────────────────────────────────┬──────────┬───────┬───────────────────────┬──────────────────────┬────────────╮│ Target ID                            │ Protocol │ Port  │ Attributes            │ IP (Virtual Network) │ Usernames  │├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 22    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ alice      │├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 23    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ root       │├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤│ 01943cff-6130-7989-8bff-cbc02b59a2b1 │ SSH      │ 80    │ hostname: az-target   │ 172.16.0.0 (b1net)   │ alice, bob │╰──────────────────────────────────────┴──────────┴───────┴───────────────────────┴──────────────────────┴────────────╯
+```sh
+╭──────────────────────────────────────┬──────────┬───────┬───────────────────────┬──────────────────────┬────────────╮
+│ Target ID                            │ Protocol │ Port  │ Attributes            │ IP (Virtual Network) │ Usernames  │
+├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤
+│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 22    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ alice      │
+├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤
+│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 23    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ root       │
+├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤
+│ 01943cff-6130-7989-8bff-cbc02b59a2b1 │ SSH      │ 80    │ hostname: az-target   │ 172.16.0.0 (b1net)   │ alice, bob │
+╰──────────────────────────────────────┴──────────┴───────┴───────────────────────┴──────────────────────┴────────────╯
 ```
 
 You can optionally add flags to filter the output. For example:
 
-Terminal window
-
-```
+```sh
 warp-cli target list --attribute hostname=do-target --username root
 ```
 
@@ -243,6 +342,6 @@ The following [Access policy selectors](https://developers.cloudflare.com/cloudf
 * Entra group, GitHub organization, Google Workspace group, Okta group
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application · Cloudflare One docs","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application · Cloudflare One docs","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/","name":"Non-HTTP applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","name":"Add an infrastructure application"}}]}
 ```

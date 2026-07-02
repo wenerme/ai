@@ -38,8 +38,9 @@ To check the domain value on your Windows device:
 
 1. Open a PowerShell window.
 2. Run the following command:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 (Get-WmiObject Win32_ComputerSystem).Domain
 ```
 

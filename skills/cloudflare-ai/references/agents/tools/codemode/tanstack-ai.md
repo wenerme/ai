@@ -36,48 +36,187 @@ bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
 ```
 2. Add a Worker Loader binding to your Wrangler configuration:
 
-  * [  wrangler.jsonc ](#tab-panel-6617)
-  * [  wrangler.toml ](#tab-panel-6618)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-6813)
+  * [  wrangler.toml ](#tab-panel-6814)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "tanstack-codemode",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "tanstack-codemode",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
-```
-TOML
-```
-name = "tanstack-codemode"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = ["nodejs_compat"]
-[[worker_loaders]]binding = "LOADER"
+
+**TOML**
+```toml
+name = "tanstack-codemode"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+[[worker_loaders]]
+binding = "LOADER"
 ```
 3. Define TanStack AI server tools, group them into namespaces, and pass the Code Mode tool to `chat()`:
 
-  * [  JavaScript ](#tab-panel-6621)
-  * [  TypeScript ](#tab-panel-6622)
-src/index.js
+  * [  JavaScript ](#tab-panel-6817)
+  * [  TypeScript ](#tab-panel-6818)
+
+**src/index.js**
+```js
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import {
+  createCodeTool,
+  tanstackTools,
+} from "@cloudflare/codemode/tanstack-ai";
+import { chat, toolDefinition, toHttpResponse } from "@tanstack/ai";
+import { openaiText } from "@tanstack/ai-openai";
+import { z } from "zod";
+const getWeather = toolDefinition({
+  name: "get_weather",
+  description: "Get the current weather for a city",
+  inputSchema: z.object({
+    city: z.string().meta({ description: "City name" }),
+  }),
+  outputSchema: z.object({
+    city: z.string(),
+    temperatureCelsius: z.number(),
+    conditions: z.string(),
+  }),
+}).server(async ({ city }) => ({
+  city,
+  temperatureCelsius: 22,
+  conditions: "sunny",
+}));
+const findContacts = toolDefinition({
+  name: "find_contacts",
+  description: "Find contacts for a team",
+  inputSchema: z.object({
+    team: z.string().meta({ description: "Team name" }),
+  }),
+  outputSchema: z.array(
+    z.object({
+      name: z.string(),
+      email: z.string(),
+    }),
+  ),
+}).server(async ({ team }) => [
+  {
+    name: `${team} contact`,
+    email: "team@example.com",
+  },
+]);
+function startChat(env, prompt) {
+  const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+  const codeTool = createCodeTool({
+    tools: [
+      tanstackTools([getWeather], "weather"),
+      tanstackTools([findContacts], "directory"),
+    ],
+    executor,
+  });
+  return chat({
+    adapter: openaiText("gpt-4o"),
+    messages: [{ role: "user", content: prompt }],
+    tools: [codeTool],
+  });
+}
+export default {
+  async fetch(request, env) {
+    const prompt = await request.text();
+    return toHttpResponse(startChat(env, prompt));
+  },
+};
 ```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import {  createCodeTool,  tanstackTools,} from "@cloudflare/codemode/tanstack-ai";import { chat, toolDefinition, toHttpResponse } from "@tanstack/ai";import { openaiText } from "@tanstack/ai-openai";import { z } from "zod";
-const getWeather = toolDefinition({  name: "get_weather",  description: "Get the current weather for a city",  inputSchema: z.object({    city: z.string().meta({ description: "City name" }),  }),  outputSchema: z.object({    city: z.string(),    temperatureCelsius: z.number(),    conditions: z.string(),  }),}).server(async ({ city }) => ({  city,  temperatureCelsius: 22,  conditions: "sunny",}));
-const findContacts = toolDefinition({  name: "find_contacts",  description: "Find contacts for a team",  inputSchema: z.object({    team: z.string().meta({ description: "Team name" }),  }),  outputSchema: z.array(    z.object({      name: z.string(),      email: z.string(),    }),  ),}).server(async ({ team }) => [  {    name: `${team} contact`,    email: "team@example.com",  },]);
-function startChat(env, prompt) {  const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
-  const codeTool = createCodeTool({    tools: [      tanstackTools([getWeather], "weather"),      tanstackTools([findContacts], "directory"),    ],    executor,  });
-  return chat({    adapter: openaiText("gpt-4o"),    messages: [{ role: "user", content: prompt }],    tools: [codeTool],  });}
-export default {  async fetch(request, env) {    const prompt = await request.text();    return toHttpResponse(startChat(env, prompt));  },};
-```
-src/index.ts
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import {  createCodeTool,  tanstackTools,} from "@cloudflare/codemode/tanstack-ai";import { chat, toolDefinition, toHttpResponse } from "@tanstack/ai";import { openaiText } from "@tanstack/ai-openai";import { z } from "zod";
-const getWeather = toolDefinition({  name: "get_weather",  description: "Get the current weather for a city",  inputSchema: z.object({    city: z.string().meta({ description: "City name" }),  }),  outputSchema: z.object({    city: z.string(),    temperatureCelsius: z.number(),    conditions: z.string(),  }),}).server(async ({ city }) => ({  city,  temperatureCelsius: 22,  conditions: "sunny",}));
-const findContacts = toolDefinition({  name: "find_contacts",  description: "Find contacts for a team",  inputSchema: z.object({    team: z.string().meta({ description: "Team name" }),  }),  outputSchema: z.array(    z.object({      name: z.string(),      email: z.string(),    }),  ),}).server(async ({ team }) => [  {    name: `${team} contact`,    email: "team@example.com",  },]);
-function startChat(env: Env, prompt: string) {  const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
-  const codeTool = createCodeTool({    tools: [      tanstackTools([getWeather], "weather"),      tanstackTools([findContacts], "directory"),    ],    executor,  });
-  return chat({    adapter: openaiText("gpt-4o"),    messages: [{ role: "user", content: prompt }],    tools: [codeTool],  });}
-export default {  async fetch(request, env): Promise<Response> {    const prompt = await request.text();    return toHttpResponse(startChat(env, prompt));  },} satisfies ExportedHandler<Env>;
+
+**src/index.ts**
+```ts
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import {
+  createCodeTool,
+  tanstackTools,
+} from "@cloudflare/codemode/tanstack-ai";
+import { chat, toolDefinition, toHttpResponse } from "@tanstack/ai";
+import { openaiText } from "@tanstack/ai-openai";
+import { z } from "zod";
+const getWeather = toolDefinition({
+  name: "get_weather",
+  description: "Get the current weather for a city",
+  inputSchema: z.object({
+    city: z.string().meta({ description: "City name" }),
+  }),
+  outputSchema: z.object({
+    city: z.string(),
+    temperatureCelsius: z.number(),
+    conditions: z.string(),
+  }),
+}).server(async ({ city }) => ({
+  city,
+  temperatureCelsius: 22,
+  conditions: "sunny",
+}));
+const findContacts = toolDefinition({
+  name: "find_contacts",
+  description: "Find contacts for a team",
+  inputSchema: z.object({
+    team: z.string().meta({ description: "Team name" }),
+  }),
+  outputSchema: z.array(
+    z.object({
+      name: z.string(),
+      email: z.string(),
+    }),
+  ),
+}).server(async ({ team }) => [
+  {
+    name: `${team} contact`,
+    email: "team@example.com",
+  },
+]);
+function startChat(env: Env, prompt: string) {
+  const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+  const codeTool = createCodeTool({
+    tools: [
+      tanstackTools([getWeather], "weather"),
+      tanstackTools([findContacts], "directory"),
+    ],
+    executor,
+  });
+  return chat({
+    adapter: openaiText("gpt-4o"),
+    messages: [{ role: "user", content: prompt }],
+    tools: [codeTool],
+  });
+}
+export default {
+  async fetch(request, env): Promise<Response> {
+    const prompt = await request.text();
+    return toHttpResponse(startChat(env, prompt));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 `createCodeTool()` returns a TanStack AI `ServerTool` named `codemode_execute`. Its description contains the generated types for both namespaces. The model can write code similar to this:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const weatherResult = await weather.get_weather({ city: "London" });  const contacts = await directory.find_contacts({ team: "travel" });  return { weatherResult, contacts };};
+```js
+async () => {
+  const weatherResult = await weather.get_weather({ city: "London" });
+  const contacts = await directory.find_contacts({ team: "travel" });
+  return { weatherResult, contacts };
+};
 ```
 
 ## Namespace behavior
@@ -86,20 +225,30 @@ async () => {  const weatherResult = await weather.get_weather({ city: "London" 
 
 The optional second argument sets the sandbox namespace. For example, `tanstackTools([getWeather], "weather")` exposes `weather.get_weather()`. If you omit the name, Code Mode uses the default `codemode` namespace:
 
-* [  JavaScript ](#tab-panel-6619)
-* [  TypeScript ](#tab-panel-6620)
+* [  JavaScript ](#tab-panel-6815)
+* [  TypeScript ](#tab-panel-6816)
 
-JavaScript
+**JavaScript**
 
-```
-const codeTool = createCodeTool({  tools: [tanstackTools([getWeather])],  executor,});
+```js
+const codeTool = createCodeTool({
+  tools: [tanstackTools([getWeather])],
+  executor,
+});
+
+
 // Available to model-generated code as codemode.get_weather().
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const codeTool = createCodeTool({  tools: [tanstackTools([getWeather])],  executor,});
+```ts
+const codeTool = createCodeTool({
+  tools: [tanstackTools([getWeather])],
+  executor,
+});
+
+
 // Available to model-generated code as codemode.get_weather().
 ```
 

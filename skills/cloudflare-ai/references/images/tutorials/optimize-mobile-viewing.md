@@ -37,7 +37,7 @@ Lazy loading is recommended for most images. With Lazy loading, resources like i
 
 Example of modifying the `loading` attribute of your `<img>` tags to be `"lazy"`:
 
-```
+```html
 <img src="example.com/cdn-cgi/width=300/image.png" loading="lazy" />
 ```
 
@@ -47,7 +47,7 @@ If you have images that are in the viewport, eager loading, instead of lazy load
 
 Example of modifying the `loading` attribute of your `<img>` tags to be `"eager"`:
 
-```
+```html
 <img src="example.com/cdn-cgi/width=300/image.png" loading="eager" />
 ```
 

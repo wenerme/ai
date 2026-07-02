@@ -28,10 +28,16 @@ You can set environment variables when defining a Container in your Worker, or w
 
 For example:
 
-JavaScript
+**JavaScript**
 
-```
-class MyContainer extends Container {  defaultPort = 4000;  envVars = {    MY_CUSTOM_VAR: "value",    ANOTHER_VAR: "another_value",  };}
+```javascript
+class MyContainer extends Container {
+  defaultPort = 4000;
+  envVars = {
+    MY_CUSTOM_VAR: "value",
+    ANOTHER_VAR: "another_value",
+  };
+}
 ```
 
 More details about defining environment variables and secrets can be found in [this example](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets).

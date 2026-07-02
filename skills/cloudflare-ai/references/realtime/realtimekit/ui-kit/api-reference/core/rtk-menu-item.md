@@ -27,18 +27,23 @@ A menu item component.
 
 ### Basic Usage
 
-```
+```html
 <rtk-menu-item></rtk-menu-item>
 ```
 
 ### With Properties
 
-```
-<rtk-menu-item size="md"></rtk-menu-item>
+```html
+<rtk-menu-item
+ size="md">
+</rtk-menu-item>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-menu-item");
+```html
+<script>
+  const el = document.querySelector("rtk-menu-item");
+
+
 </script>
 ```
 

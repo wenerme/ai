@@ -30,16 +30,59 @@ If this is your first time building a form and you would like to follow a tutori
 
 Review a simplified example of the form used in this tuttorial. Note that the `action` parameter of the `<form>` tag should point to the deployed Workers application that you will build in this tutorial.
 
-Your front-end code
+**Your front-end code**
 
-```
-<form action="https://workers-airtable-form.signalnerve.workers.dev/submit" method="POST">  <div>    <label for="first_name">First name</label>    <input type="text" name="first_name" id="first_name" autocomplete="given-name" placeholder="Ellen" required />  </div>
-  <div>    <label for="last_name">Last name</label>    <input type="text" name="last_name" id="last_name" autocomplete="family-name" placeholder="Ripley" required />  </div>
-  <div>    <label for="email">Email</label>      <input id="email" name="email" type="email" autocomplete="email" placeholder="eripley@nostromo.com" required />    </div>  </div>
-  <div>    <label for="phone">      Phone      <span>Optional</span>    </label>    <input type="text" name="phone" id="phone" autocomplete="tel" placeholder="+1 (123) 456-7890" />  </div>
-  <div>    <label for="subject">Subject</label>    <input type="text" name="subject" id="subject" placeholder="Your example subject" required />  </div>
-  <div>    <label for="message">      Message      <span>Max 500 characters</span>    </label>    <textarea id="message" name="message" rows="4" placeholder="Tenetur quaerat expedita vero et illo. Tenetur explicabo dolor voluptatem eveniet. Commodi est beatae id voluptatum porro laudantium. Quam placeat accusamus vel officiis vel. Et perferendis dicta ut perspiciatis quos iste. Tempore autem molestias voluptates in sapiente enim doloremque." required></textarea>  </div>
-  <div>    <button type="submit">      Submit    </button>  </div></form>
+```html
+<form action="https://workers-airtable-form.signalnerve.workers.dev/submit" method="POST">
+  <div>
+    <label for="first_name">First name</label>
+    <input type="text" name="first_name" id="first_name" autocomplete="given-name" placeholder="Ellen" required />
+  </div>
+
+
+  <div>
+    <label for="last_name">Last name</label>
+    <input type="text" name="last_name" id="last_name" autocomplete="family-name" placeholder="Ripley" required />
+  </div>
+
+
+  <div>
+    <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="eripley@nostromo.com" required />
+    </div>
+  </div>
+
+
+  <div>
+    <label for="phone">
+      Phone
+      <span>Optional</span>
+    </label>
+    <input type="text" name="phone" id="phone" autocomplete="tel" placeholder="+1 (123) 456-7890" />
+  </div>
+
+
+  <div>
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" id="subject" placeholder="Your example subject" required />
+  </div>
+
+
+  <div>
+    <label for="message">
+      Message
+      <span>Max 500 characters</span>
+    </label>
+    <textarea id="message" name="message" rows="4" placeholder="Tenetur quaerat expedita vero et illo. Tenetur explicabo dolor voluptatem eveniet. Commodi est beatae id voluptatum porro laudantium. Quam placeat accusamus vel officiis vel. Et perferendis dicta ut perspiciatis quos iste. Tempore autem molestias voluptates in sapiente enim doloremque." required></textarea>
+  </div>
+
+
+  <div>
+    <button type="submit">
+      Submit
+    </button>
+  </div>
+</form>
 ```
 
 ## 2\. Create a Worker project
@@ -72,9 +115,7 @@ For setup, select the following options:
 
 Then, move into the newly created directory:
 
-Terminal window
-
-```
+```sh
 cd airtable-form-handler
 ```
 
@@ -108,14 +149,15 @@ The results access token should now be set in your application. To make the toke
 
 Run `wrangler secret put`, passing `AIRTABLE_ACCESS_TOKEN` as the name of your secret:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put AIRTABLE_ACCESS_TOKEN
 ```
 
-```
-Enter the secret text you would like assigned to the variable AIRTABLE_ACCESS_TOKEN on the script named airtable-form-handler:******🌀  Creating the secret for script name airtable-form-handler✨  Success! Uploaded secret AIRTABLE_ACCESS_TOKEN.
+```sh
+Enter the secret text you would like assigned to the variable AIRTABLE_ACCESS_TOKEN on the script named airtable-form-handler:
+******
+🌀  Creating the secret for script name airtable-form-handler
+✨  Success! Uploaded secret AIRTABLE_ACCESS_TOKEN.
 ```
 
 Before you continue, review the keys that you should have from Airtable:
@@ -130,21 +172,57 @@ With your Airtable base set up, and the keys and IDs you need to communicate wit
 
 In your Worker project's `index.js` file, replace the default code with a Workers fetch handler that can respond to requests. When the URL requested has a pathname of `/submit`, you will handle a new form submission, otherwise, you will return a `404 Not Found` response.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const url = new URL(request.url);    if (url.pathname === "/submit") {      await submitHandler(request, env);    }    return new Response("Not found", { status: 404 });  },};
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (url.pathname === "/submit") {
+      await submitHandler(request, env);
+    }
+    return new Response("Not found", { status: 404 });
+  },
+};
 ```
 
 The `submitHandler` has two functions. First, it will parse the form data coming from your HTML5 form. Once the data is parsed, use the Airtable API to persist a new row (a new form submission) to your table:
 
-JavaScript
+**JavaScript**
 
-```
-async function submitHandler(request, env) {  if (request.method !== "POST") {    return new Response("Method Not Allowed", {      status: 405,    });  }  const body = await request.formData();
-  const { first_name, last_name, email, phone, subject, message } =    Object.fromEntries(body);
-  // The keys in "fields" are case-sensitive, and  // should exactly match the field names you set up  // in your Airtable table, such as "First Name".  const reqBody = {    fields: {      "First Name": first_name,      "Last Name": last_name,      Email: email,      "Phone Number": phone,      Subject: subject,      Message: message,    },  };  await createAirtableRecord(env, reqBody);}
-// Existing code// export default ...
+```js
+async function submitHandler(request, env) {
+  if (request.method !== "POST") {
+    return new Response("Method Not Allowed", {
+      status: 405,
+    });
+  }
+  const body = await request.formData();
+
+
+  const { first_name, last_name, email, phone, subject, message } =
+    Object.fromEntries(body);
+
+
+  // The keys in "fields" are case-sensitive, and
+  // should exactly match the field names you set up
+  // in your Airtable table, such as "First Name".
+  const reqBody = {
+    fields: {
+      "First Name": first_name,
+      "Last Name": last_name,
+      Email: email,
+      "Phone Number": phone,
+      Subject: subject,
+      Message: message,
+    },
+  };
+  await createAirtableRecord(env, reqBody);
+}
+
+
+// Existing code
+// export default ...
 ```
 
 Prevent potential errors when accessing request.body
@@ -159,45 +237,90 @@ The variable `reqBody` represents a collection of fields, which are key-value pa
 
 Then you call `createAirtableRecord` (the function you will define next). The `createAirtableRecord` function accepts a `body` parameter, which conforms to the Airtable API's required format — namely, a JavaScript object containing key-value pairs under `fields`, representing a single record to be created on your table:
 
-JavaScript
+**JavaScript**
 
-```
-async function createAirtableRecord(env, body) {  try {    const result = fetch(      `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(env.AIRTABLE_TABLE_NAME)}`,      {        method: "POST",        body: JSON.stringify(body),        headers: {          Authorization: `Bearer ${env.AIRTABLE_ACCESS_TOKEN}`,          "Content-Type": "application/json",        },      },    );    return result;  } catch (error) {    console.error(error);  }}
-// Existing code// async function submitHandler// export default ...
+```js
+async function createAirtableRecord(env, body) {
+  try {
+    const result = fetch(
+      `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(env.AIRTABLE_TABLE_NAME)}`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          Authorization: `Bearer ${env.AIRTABLE_ACCESS_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+// Existing code
+// async function submitHandler
+// export default ...
 ```
 
 To make an authenticated request to Airtable, you need to provide four constants that represent data about your Airtable account, base, and table name. You have already set `AIRTABLE_ACCESS_TOKEN` using `wrangler secret`, since it is a value that should be encrypted. The **Airtable base ID** and **table name**, and `FORM_URL` are values that can be publicly shared in places like GitHub. Use Wrangler's [vars](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#vars) feature to pass public environment variables from your Wrangler file.
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12299)
-* [  wrangler.toml ](#tab-panel-12300)
+* [  wrangler.jsonc ](#tab-panel-12554)
+* [  wrangler.toml ](#tab-panel-12555)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "workers-airtable-form",
+  "main": "src/index.js",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "vars": {
+    "AIRTABLE_BASE_ID": "exampleBaseId",
+    "AIRTABLE_TABLE_NAME": "Form Submissions"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "workers-airtable-form",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "vars": {    "AIRTABLE_BASE_ID": "exampleBaseId",    "AIRTABLE_TABLE_NAME": "Form Submissions"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "workers-airtable-form"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-24"
-[vars]AIRTABLE_BASE_ID = "exampleBaseId"AIRTABLE_TABLE_NAME = "Form Submissions"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "workers-airtable-form"
+main = "src/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[vars]
+AIRTABLE_BASE_ID = "exampleBaseId"
+AIRTABLE_TABLE_NAME = "Form Submissions"
 ```
 
 With all these fields submitted, it is time to deploy your Workers serverless function and get your form communicating with it. First, publish your Worker:
 
-Deploy your Worker
+**Deploy your Worker**
 
-```
+```sh
 npx wrangler deploy
 ```
 
 Your Worker project will deploy to a unique URL — for example, `https://workers-airtable-form.cloudflare.workers.dev`. This represents the first part of your front-end form's `action` attribute — the second part is the path for your form handler, which is `/submit`. In your front-end UI, configure your `form` tag as seen below:
 
-```
-<form  action="https://workers-airtable-form.cloudflare.workers.dev/submit"  method="POST"  class="...">  <!-- The rest of your HTML form --></form>
+```html
+<form
+  action="https://workers-airtable-form.cloudflare.workers.dev/submit"
+  method="POST"
+  class="..."
+>
+  <!-- The rest of your HTML form -->
+</form>
 ```
 
 After you have deployed your new form (refer to the [HTML forms](https://developers.cloudflare.com/pages/tutorials/forms) tutorial if you need help creating a form), you should be able to submit a new form submission and see the value show up immediately in Airtable:

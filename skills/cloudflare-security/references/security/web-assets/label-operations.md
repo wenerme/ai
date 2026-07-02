@@ -86,8 +86,29 @@ You can query matched operation and managed label data using the [GraphQL Analyt
 
 The following query returns request counts by operation ID and managed label set for traffic carrying the `cf-llm` managed label:
 
-```
-query GetAdaptiveGroups($zoneTag: string, $start: DateTime!, $end: DateTime!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: $start          datetime_leq: $end          requestSource: "eyeball"          webAssetsLabelsManaged_hasany: ["cf-llm"]        }        limit: 25        orderBy: [count_DESC]      ) {        count        dimensions {          webAssetsOperationId          webAssetsLabelsManaged        }      }    }  }}
+```graphql
+query GetAdaptiveGroups($zoneTag: string, $start: DateTime!, $end: DateTime!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: $start
+          datetime_leq: $end
+          requestSource: "eyeball"
+          webAssetsLabelsManaged_hasany: ["cf-llm"]
+        }
+        limit: 25
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          webAssetsOperationId
+          webAssetsLabelsManaged
+        }
+      }
+    }
+  }
+}
 ```
 
 Replace `cf-llm` with another [managed label](#managed-labels). You can also use `webAssetsOperationId` as the only dimension to group traffic by matched operation.

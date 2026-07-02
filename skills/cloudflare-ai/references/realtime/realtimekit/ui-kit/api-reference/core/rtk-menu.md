@@ -28,19 +28,25 @@ A menu component.
 
 ### Basic Usage
 
-```
+```html
 <rtk-menu></rtk-menu>
 ```
 
 ### With Properties
 
-```
-<rtk-menu size="md"></rtk-menu>
+```html
+<rtk-menu
+ size="md">
+</rtk-menu>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-menu");
-  el.offset= 42;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-menu");
+
+
+  el.offset= 42;
+</script>
 ```
 
 ```json

@@ -40,16 +40,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatMessage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatMessage />;}
+
+
+function MyComponent() {
+  return <RtkChatMessage />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatMessage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatMessage      alignRight={true}      canDelete={true}      canEdit={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatMessage
+      alignRight={true}
+      canDelete={true}
+      canEdit={true}
+    />
+  );
+}
 ```
 
 ```json

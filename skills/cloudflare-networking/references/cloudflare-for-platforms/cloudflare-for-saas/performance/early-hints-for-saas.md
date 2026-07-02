@@ -33,10 +33,27 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-Create Custom Hostname
+**Create Custom Hostname**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "<CUSTOM_HOSTNAME>",    "ssl": {        "method": "http",        "type": "dv",        "settings": {            "http2": "on",            "min_tls_version": "1.2",            "tls_1_3": "on",            "early_hints": "on"        },        "bundle_method": "ubiquitous",        "wildcard": false    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "hostname": "<CUSTOM_HOSTNAME>",
+    "ssl": {
+        "method": "http",
+        "type": "dv",
+        "settings": {
+            "http2": "on",
+            "min_tls_version": "1.2",
+            "tls_1_3": "on",
+            "early_hints": "on"
+        },
+        "bundle_method": "ubiquitous",
+        "wildcard": false
+    }
+  }'
 ```
 
 1. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
@@ -47,10 +64,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-List Custom Hostnames
+**List Custom Hostnames**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostname=%7Bhostname%7D" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostname=%7Bhostname%7D" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Then make an API call such as the example below, specifying `"early_hints": "on"`:
@@ -60,10 +79,24 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-Edit Custom Hostname
+**Edit Custom Hostname**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ssl": {        "method": "http",        "type": "dv",        "settings": {            "http2": "on",            "min_tls_version": "1.2",            "tls_1_3": "on",            "early_hints": "on"        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "ssl": {
+        "method": "http",
+        "type": "dv",
+        "settings": {
+            "http2": "on",
+            "min_tls_version": "1.2",
+            "tls_1_3": "on",
+            "early_hints": "on"
+        }
+    }
+  }'
 ```
 
 Currently, all options within `settings` are required in order to prevent those options from being set to default. You can pull the current settings state prior to updating Early Hints by leveraging the output that returns the `id` for the hostname.

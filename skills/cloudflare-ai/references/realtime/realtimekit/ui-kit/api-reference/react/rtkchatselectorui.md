@@ -27,16 +27,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatSelectorUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatSelectorUi />;}
+
+
+function MyComponent() {
+  return <RtkChatSelectorUi />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatSelectorUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatSelectorUi      groups={[]}      selectedGroupId="example"      selfUserId="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatSelectorUi
+      groups={[]}
+      selectedGroupId="example"
+      selfUserId="example"
+    />
+  );
+}
 ```
 
 ```json

@@ -34,16 +34,30 @@ To remove an HTTP response header, set the following parameter in the `action_pa
 
 The full syntax of the `action_parameters` field to define a static HTTP response header value is the following:
 
-```
-"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "<set|add>",      "value": "<URI_PATH_VALUE>"    }  }}
+```json
+"action_parameters": {
+  "headers": {
+    "<HEADER_NAME>": {
+      "operation": "<set|add>",
+      "value": "<URI_PATH_VALUE>"
+    }
+  }
+}
 ```
 
 ## Dynamic header value parameters
 
 The full syntax of the `action_parameters` field to define a dynamic HTTP response header value using an expression is the following:
 
-```
-"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "<set|add>",      "expression": "<EXPRESSION>"    }  }}
+```json
+"action_parameters": {
+  "headers": {
+    "<HEADER_NAME>": {
+      "operation": "<set|add>",
+      "expression": "<EXPRESSION>"
+    }
+  }
+}
 ```
 
 Note
@@ -54,16 +68,32 @@ Check the [available fields and functions](https://developers.cloudflare.com/rul
 
 The full syntax of the `action_parameters` field to remove an HTTP response header is the following:
 
-```
-"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "remove"    }  }}
+```json
+"action_parameters": {
+  "headers": {
+    "<HEADER_NAME>": {
+      "operation": "remove"
+    }
+  }
+}
 ```
 
 ## Different header modifications in the same rule
 
 The same rule can modify different HTTP response headers using different operations. For example, a single rule can set the value of a header and remove a different header. The syntax of such a rule could be the following:
 
-```
-"action_parameters": {  "headers": {    "<HEADER_NAME_1>": {      "operation": "set",      "value": "<HEADER_VALUE_1>"    },    "<HEADER_NAME_2>": {      "operation": "remove"    }  }}
+```json
+"action_parameters": {
+  "headers": {
+    "<HEADER_NAME_1>": {
+      "operation": "set",
+      "value": "<HEADER_VALUE_1>"
+    },
+    "<HEADER_NAME_2>": {
+      "operation": "remove"
+    }
+  }
+}
 ```
 
 ```json

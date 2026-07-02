@@ -25,19 +25,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-spotlight-indicator></rtk-spotlight-indicator>
 ```
 
 ### With Properties
 
-```
-<rtk-spotlight-indicator size="md"></rtk-spotlight-indicator>
+```html
+<rtk-spotlight-indicator
+ size="md">
+</rtk-spotlight-indicator>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-spotlight-indicator");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-spotlight-indicator");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

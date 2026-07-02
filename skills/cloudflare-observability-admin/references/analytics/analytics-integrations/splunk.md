@@ -54,7 +54,7 @@ To install the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app
 5. Verify whether Splunk is using a self-signed certificate. You'll need this information when creating the Logpush job.
 6. Determine the endpoint to use to send the data to. The endpoint should be:
 
-```
+```sql
 "<protocol>://input-<host>:<port>/<endpoint>" or "<protocol>://http-inputs-<host>:<port>/<endpoint>"
 ```
 

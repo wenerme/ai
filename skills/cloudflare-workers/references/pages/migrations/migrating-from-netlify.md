@@ -56,18 +56,25 @@ Netlify functions export an async event handler that accepts an event and a cont
 
 Hello World with Netlify functions:
 
-JavaScript
+**JavaScript**
 
-```
-exports.handler = async function (event, context) {  return {    statusCode: 200,    body: JSON.stringify({ message: "Hello World" }),  };};
+```js
+exports.handler = async function (event, context) {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Hello World" }),
+  };
+};
 ```
 
 Hello World with Pages Functions:
 
-JavaScript
+**JavaScript**
 
-```
-export async function onRequestPost(request) {  return new Response(`Hello world`);}
+```js
+export async function onRequestPost(request) {
+  return new Response(`Hello world`);
+}
 ```
 
 ## Other Netlify configurations

@@ -28,19 +28,24 @@ The Stream binding is enabled on a per-Worker basis.
 
 To bind Stream to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10885)
-* [  wrangler.toml ](#tab-panel-10886)
+* [  wrangler.jsonc ](#tab-panel-11180)
+* [  wrangler.toml ](#tab-panel-11181)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
-{  "stream": {    "binding": "STREAM"  }}
-```
 
-TOML
+**TOML**
 
-```
-[stream]binding = "STREAM"
+```toml
+[stream]
+binding = "STREAM"
 ```
 
 For more detailed information on configuring your Worker, refer to the [Wrangler Configuration documentation](https://developers.cloudflare.com/workers/wrangler/configuration/).
@@ -177,223 +182,421 @@ Delete a watermark profile. Returns `Promise<void>`.
 
 ### Upload a video from a URL
 
-* [  JavaScript ](#tab-panel-10887)
-* [  TypeScript ](#tab-panel-10888)
+* [  JavaScript ](#tab-panel-11182)
+* [  TypeScript ](#tab-panel-11183)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const video = await env.STREAM.upload("https://example.com/video.mp4", {
+      creator: "user-123",
+      meta: { category: "tutorial" },
+      allowedOrigins: ["example.com"],
+    });
+    return Response.json(video);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const video = await env.STREAM.upload("https://example.com/video.mp4", {      creator: "user-123",      meta: { category: "tutorial" },      allowedOrigins: ["example.com"],    });    return Response.json(video);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = await env.STREAM.upload("https://example.com/video.mp4", {      creator: "user-123",      meta: { category: "tutorial" },      allowedOrigins: ["example.com"],    });    return Response.json(video);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = await env.STREAM.upload("https://example.com/video.mp4", {
+      creator: "user-123",
+      meta: { category: "tutorial" },
+      allowedOrigins: ["example.com"],
+    });
+    return Response.json(video);
+  },
+};
 ```
 
 ### Create a direct upload
 
-* [  JavaScript ](#tab-panel-10889)
-* [  TypeScript ](#tab-panel-10890)
+* [  JavaScript ](#tab-panel-11184)
+* [  TypeScript ](#tab-panel-11185)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const directUpload = await env.STREAM.createDirectUpload({
+      maxDurationSeconds: 300,
+      creator: "user-123",
+      meta: { source: "browser-upload" },
+    });
+    return Response.json(directUpload);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const directUpload = await env.STREAM.createDirectUpload({      maxDurationSeconds: 300,      creator: "user-123",      meta: { source: "browser-upload" },    });    return Response.json(directUpload);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const directUpload = await env.STREAM.createDirectUpload({      maxDurationSeconds: 300,      creator: "user-123",      meta: { source: "browser-upload" },    });    return Response.json(directUpload);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const directUpload = await env.STREAM.createDirectUpload({
+      maxDurationSeconds: 300,
+      creator: "user-123",
+      meta: { source: "browser-upload" },
+    });
+    return Response.json(directUpload);
+  },
+};
 ```
 
 ### List videos
 
-* [  JavaScript ](#tab-panel-10893)
-* [  TypeScript ](#tab-panel-10894)
+* [  JavaScript ](#tab-panel-11188)
+* [  TypeScript ](#tab-panel-11189)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const videos = await env.STREAM.videos.list({
+      limit: 10,
+      after: "2025-01-01T00:00:00Z",
+    });
+    return Response.json(videos);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const videos = await env.STREAM.videos.list({      limit: 10,      after: "2025-01-01T00:00:00Z",    });    return Response.json(videos);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videos = await env.STREAM.videos.list({      limit: 10,      after: "2025-01-01T00:00:00Z",    });    return Response.json(videos);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videos = await env.STREAM.videos.list({
+      limit: 10,
+      after: "2025-01-01T00:00:00Z",
+    });
+    return Response.json(videos);
+  },
+};
 ```
 
 ### Get video details
 
-* [  JavaScript ](#tab-panel-10891)
-* [  TypeScript ](#tab-panel-10892)
+* [  JavaScript ](#tab-panel-11186)
+* [  TypeScript ](#tab-panel-11187)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const videoDetails = await env.STREAM.video("VIDEO_ID").details();
+    return Response.json(videoDetails);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const videoDetails = await env.STREAM.video("VIDEO_ID").details();    return Response.json(videoDetails);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videoDetails = await env.STREAM.video("VIDEO_ID").details();    return Response.json(videoDetails);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videoDetails = await env.STREAM.video("VIDEO_ID").details();
+    return Response.json(videoDetails);
+  },
+};
 ```
 
 ### Update video metadata
 
-* [  JavaScript ](#tab-panel-10897)
-* [  TypeScript ](#tab-panel-10898)
+* [  JavaScript ](#tab-panel-11192)
+* [  TypeScript ](#tab-panel-11193)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const videoDetails = await env.STREAM.video("VIDEO_ID").update({
+      meta: { category: "updated-tutorial" },
+      allowedOrigins: ["example.com", "*.example.com"],
+    });
+    return Response.json(videoDetails);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const videoDetails = await env.STREAM.video("VIDEO_ID").update({      meta: { category: "updated-tutorial" },      allowedOrigins: ["example.com", "*.example.com"],    });    return Response.json(videoDetails);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videoDetails = await env.STREAM.video("VIDEO_ID").update({      meta: { category: "updated-tutorial" },      allowedOrigins: ["example.com", "*.example.com"],    });    return Response.json(videoDetails);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videoDetails = await env.STREAM.video("VIDEO_ID").update({
+      meta: { category: "updated-tutorial" },
+      allowedOrigins: ["example.com", "*.example.com"],
+    });
+    return Response.json(videoDetails);
+  },
+};
 ```
 
 ### Delete a video
 
-* [  JavaScript ](#tab-panel-10895)
-* [  TypeScript ](#tab-panel-10896)
+* [  JavaScript ](#tab-panel-11190)
+* [  TypeScript ](#tab-panel-11191)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    await env.STREAM.video("VIDEO_ID").delete();
+    return new Response("Video deleted", { status: 200 });
+  },
+};
 ```
-export default {  async fetch(request, env) {    await env.STREAM.video("VIDEO_ID").delete();    return new Response("Video deleted", { status: 200 });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    await env.STREAM.video("VIDEO_ID").delete();    return new Response("Video deleted", { status: 200 });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    await env.STREAM.video("VIDEO_ID").delete();
+    return new Response("Video deleted", { status: 200 });
+  },
+};
 ```
 
 ### Generate a signed URL token
 
-* [  JavaScript ](#tab-panel-10899)
-* [  TypeScript ](#tab-panel-10900)
+* [  JavaScript ](#tab-panel-11194)
+* [  TypeScript ](#tab-panel-11195)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const token = await env.STREAM.video("VIDEO_ID").generateToken();
+    return Response.json({ token });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const token = await env.STREAM.video("VIDEO_ID").generateToken();
+    return Response.json({ token });
+  },
+};
 ```
 
 ### Upload captions
 
-* [  JavaScript ](#tab-panel-10903)
-* [  TypeScript ](#tab-panel-10904)
+* [  JavaScript ](#tab-panel-11198)
+* [  TypeScript ](#tab-panel-11199)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const captionResponse = await fetch("https://example.com/captions-en.vtt");
+    const caption = await env.STREAM.video("VIDEO_ID").captions.upload(
+      "en",
+      captionResponse.body,
+    );
+    return Response.json(caption);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const captionResponse = await fetch("https://example.com/captions-en.vtt");    const caption = await env.STREAM.video("VIDEO_ID").captions.upload(      "en",      captionResponse.body,    );    return Response.json(caption);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const captionResponse = await fetch("https://example.com/captions-en.vtt");    const caption = await env.STREAM.video("VIDEO_ID").captions.upload(      "en",      captionResponse.body,    );    return Response.json(caption);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const captionResponse = await fetch("https://example.com/captions-en.vtt");
+    const caption = await env.STREAM.video("VIDEO_ID").captions.upload(
+      "en",
+      captionResponse.body,
+    );
+    return Response.json(caption);
+  },
+};
 ```
 
 ### Generate AI captions
 
-* [  JavaScript ](#tab-panel-10901)
-* [  TypeScript ](#tab-panel-10902)
+* [  JavaScript ](#tab-panel-11196)
+* [  TypeScript ](#tab-panel-11197)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");
+    return Response.json(caption);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");    return Response.json(caption);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");    return Response.json(caption);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");
+    return Response.json(caption);
+  },
+};
 ```
 
 ### List and delete captions
 
-* [  JavaScript ](#tab-panel-10905)
-* [  TypeScript ](#tab-panel-10906)
+* [  JavaScript ](#tab-panel-11200)
+* [  TypeScript ](#tab-panel-11201)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const video = env.STREAM.video("VIDEO_ID");
+    const captions = await video.captions.list();
+    await video.captions.delete("en");
+    return Response.json(captions);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const video = env.STREAM.video("VIDEO_ID");    const captions = await video.captions.list();    await video.captions.delete("en");    return Response.json(captions);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = env.STREAM.video("VIDEO_ID");    const captions = await video.captions.list();    await video.captions.delete("en");    return Response.json(captions);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = env.STREAM.video("VIDEO_ID");
+    const captions = await video.captions.list();
+    await video.captions.delete("en");
+    return Response.json(captions);
+  },
+};
 ```
 
 ### Generate and list downloads
 
-* [  JavaScript ](#tab-panel-10907)
-* [  TypeScript ](#tab-panel-10908)
+* [  JavaScript ](#tab-panel-11202)
+* [  TypeScript ](#tab-panel-11203)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const video = env.STREAM.video("VIDEO_ID");
+    const downloads = await video.downloads.generate();
+    const audioDownloads = await video.downloads.generate("audio");
+    const allDownloads = await video.downloads.get();
+    return Response.json({ downloads, audioDownloads, allDownloads });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const video = env.STREAM.video("VIDEO_ID");    const downloads = await video.downloads.generate();    const audioDownloads = await video.downloads.generate("audio");    const allDownloads = await video.downloads.get();    return Response.json({ downloads, audioDownloads, allDownloads });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = env.STREAM.video("VIDEO_ID");    const downloads = await video.downloads.generate();    const audioDownloads = await video.downloads.generate("audio");    const allDownloads = await video.downloads.get();    return Response.json({ downloads, audioDownloads, allDownloads });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = env.STREAM.video("VIDEO_ID");
+    const downloads = await video.downloads.generate();
+    const audioDownloads = await video.downloads.generate("audio");
+    const allDownloads = await video.downloads.get();
+    return Response.json({ downloads, audioDownloads, allDownloads });
+  },
+};
 ```
 
 ### Create a watermark profile
 
-* [  JavaScript ](#tab-panel-10911)
-* [  TypeScript ](#tab-panel-10912)
+* [  JavaScript ](#tab-panel-11206)
+* [  TypeScript ](#tab-panel-11207)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const watermark = await env.STREAM.watermarks.generate(
+      "https://example.com/watermark.png",
+      {
+        name: "My Watermark",
+        opacity: 0.5,
+        position: "lowerRight",
+        padding: 0.05,
+        scale: 0.1,
+      },
+    );
+    return Response.json(watermark);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const watermark = await env.STREAM.watermarks.generate(      "https://example.com/watermark.png",      {        name: "My Watermark",        opacity: 0.5,        position: "lowerRight",        padding: 0.05,        scale: 0.1,      },    );    return Response.json(watermark);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const watermark = await env.STREAM.watermarks.generate(      "https://example.com/watermark.png",      {        name: "My Watermark",        opacity: 0.5,        position: "lowerRight",        padding: 0.05,        scale: 0.1,      },    );    return Response.json(watermark);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const watermark = await env.STREAM.watermarks.generate(
+      "https://example.com/watermark.png",
+      {
+        name: "My Watermark",
+        opacity: 0.5,
+        position: "lowerRight",
+        padding: 0.05,
+        scale: 0.1,
+      },
+    );
+    return Response.json(watermark);
+  },
+};
 ```
 
 ### List and delete watermark profiles
 
-* [  JavaScript ](#tab-panel-10909)
-* [  TypeScript ](#tab-panel-10910)
+* [  JavaScript ](#tab-panel-11204)
+* [  TypeScript ](#tab-panel-11205)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const watermarks = await env.STREAM.watermarks.list();
+    const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");
+    await env.STREAM.watermarks.delete("WATERMARK_ID");
+    return Response.json({ watermarks, watermark });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const watermarks = await env.STREAM.watermarks.list();    const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");    await env.STREAM.watermarks.delete("WATERMARK_ID");    return Response.json({ watermarks, watermark });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const watermarks = await env.STREAM.watermarks.list();    const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");    await env.STREAM.watermarks.delete("WATERMARK_ID");    return Response.json({ watermarks, watermark });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const watermarks = await env.STREAM.watermarks.list();
+    const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");
+    await env.STREAM.watermarks.delete("WATERMARK_ID");
+    return Response.json({ watermarks, watermark });
+  },
+};
 ```
 
 ## Type definitions
@@ -826,19 +1029,45 @@ The following error subtypes may be thrown:
 
 Use a `try...catch` block to handle errors:
 
-* [  JavaScript ](#tab-panel-10913)
-* [  TypeScript ](#tab-panel-10914)
+* [  JavaScript ](#tab-panel-11208)
+* [  TypeScript ](#tab-panel-11209)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    try {
+      const videoDetails = await env.STREAM.upload(
+        "https://example.com/video.mp4",
+      );
+      return Response.json(videoDetails);
+    } catch (e) {
+      if (e instanceof Error) {
+        return new Response(`Stream error: ${e.message}`, { status: 500 });
+      }
+      throw e;
+    }
+  },
+};
 ```
-export default {  async fetch(request, env) {    try {      const videoDetails = await env.STREAM.upload(        "https://example.com/video.mp4",      );      return Response.json(videoDetails);    } catch (e) {      if (e instanceof Error) {        return new Response(`Stream error: ${e.message}`, { status: 500 });      }      throw e;    }  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    try {      const videoDetails = await env.STREAM.upload("https://example.com/video.mp4");      return Response.json(videoDetails);    } catch (e) {      if (e instanceof Error) {        return new Response(`Stream error: ${e.message}`, { status: 500 });      }      throw e;    }  },};
+```ts
+export default {
+  async fetch(request, env) {
+    try {
+      const videoDetails = await env.STREAM.upload("https://example.com/video.mp4");
+      return Response.json(videoDetails);
+    } catch (e) {
+      if (e instanceof Error) {
+        return new Response(`Stream error: ${e.message}`, { status: 500 });
+      }
+      throw e;
+    }
+  },
+};
 ```
 
 ```json

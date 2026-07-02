@@ -49,9 +49,7 @@ Cloudflare Tunnel is made possible through a lightweight daemon from Cloudflare 
 
 Run the following command to authenticate cloudflared into your Cloudflare account.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel login
 ```
 
@@ -63,9 +61,7 @@ Choose any hostname presented in the list. Cloudflare will issue a certificate s
 
 Next, create a tunnel with the command below.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel create <NAME>
 ```
 
@@ -73,9 +69,7 @@ Replacing `<NAME>` with a name for the Tunnel. This name can be any value. A sin
 
 The command will output an ID for the Tunnel and generate an associated credentials file. At any time you can list the Tunnels in your account with the following command.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel list
 ```
 
@@ -85,19 +79,27 @@ You can now [configure the tunnel](https://developers.cloudflare.com/cloudflare-
 
 Create a `YAML` file that `cloudflared` can reach. By default, `cloudflared` will look for the file in the same folder where `cloudflared` has been installed.
 
-Terminal window
-
-```
+```sh
 vim ~/.cloudflared/config.yml
 ```
 
 Next, configure the Tunnel, replacing the example ID below with the ID of the Tunnel created above. Additionally, replace the hostname in this example with the hostname of the application configured with Cloudflare Access.
 
-YAML
+**YAML**
 
-```
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-ingress:  - hostname: azure.widgetcorp.tech    service: tcp://kubernetes.docker.internal:6443    originRequest:      proxyType: socks  - service: http_status:404  # Catch-all rule, which responds with 404 if traffic doesn't match any of  # the earlier rules
+```yaml
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
+credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
+
+
+ingress:
+  - hostname: azure.widgetcorp.tech
+    service: tcp://kubernetes.docker.internal:6443
+    originRequest:
+      proxyType: socks
+  - service: http_status:404
+  # Catch-all rule, which responds with 404 if traffic doesn't match any of
+  # the earlier rules
 ```
 
 ## Route to the Tunnel
@@ -109,7 +111,7 @@ You can now create a DNS record that will route traffic to this Tunnel. Multiple
 2. Select **Add record**. Choose `CNAME` as the record type. For **Name**, choose the hostname where you want to create a Tunnel. This should match the hostname of the Access policy.
 3. For **Target**, input the ID of your Tunnel followed by `.cfargotunnel.com`. For example:
 
-```
+```txt
   6ff42ae2-765d-4adf-8112-31c55c1551ef.cfargotunnel.com
 ```
 
@@ -119,9 +121,7 @@ You can now create a DNS record that will route traffic to this Tunnel. Multiple
 
 You can now run the Tunnel to connect the target service to Cloudflare. Use the following command to run the Tunnel, replacing `<NAME>` with the name created for your Tunnel.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel run <NAME>
 ```
 
@@ -133,17 +133,13 @@ You can now connect from a client machine using `cloudflared`.
 
 This example uses a macOS laptop. On macOS, you can install `cloudflared` with the following command using Homebrew.
 
-Terminal window
-
-```
+```sh
 brew install cloudflared
 ```
 
 Run the following command to create a connection from the device to Cloudflare. Any available port can be specified.
 
-Terminal window
-
-```
+```sh
 cloudflared access tcp --hostname azure.widgetcorp.tech --url 127.0.0.1:1234
 ```
 
@@ -151,9 +147,7 @@ With this service running, you can run a `kubectl` command and `cloudflared` wil
 
 `kubeconfig` does not support proxy command configurations at this time, though the community has submitted plans to do so. In the interim, users can alias the cluster's API server to save time.
 
-Terminal window
-
-```
+```sh
 alias kubeone="env HTTPS_PROXY=socks5://127.0.0.1:1234 kubectl"
 ```
 

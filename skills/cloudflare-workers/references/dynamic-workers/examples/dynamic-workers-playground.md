@@ -31,43 +31,91 @@ The playground uses [@cloudflare/worker-bundler ↗](https://www.npmjs.com/packa
 
 Pass source files and a `package.json` to `createWorker()`, which resolves dependencies and returns bundled modules ready to load as a Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-8499)
-* [  TypeScript ](#tab-panel-8500)
+* [  JavaScript ](#tab-panel-8790)
+* [  TypeScript ](#tab-panel-8791)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createWorker } from "@cloudflare/worker-bundler";
-const { mainModule, modules, warnings } = await createWorker({  files: {    "src/index.ts": userCode,    "package.json": JSON.stringify({      dependencies: { hono: "^4.0.0" },    }),  },  bundle: true,  minify: false,});
+
+
+const { mainModule, modules, warnings } = await createWorker({
+  files: {
+    "src/index.ts": userCode,
+    "package.json": JSON.stringify({
+      dependencies: { hono: "^4.0.0" },
+    }),
+  },
+  bundle: true,
+  minify: false,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createWorker } from "@cloudflare/worker-bundler";
-const { mainModule, modules, warnings } = await createWorker({  files: {    "src/index.ts": userCode,    "package.json": JSON.stringify({      dependencies: { hono: "^4.0.0" },    }),  },  bundle: true,  minify: false,});
+
+
+const { mainModule, modules, warnings } = await createWorker({
+  files: {
+    "src/index.ts": userCode,
+    "package.json": JSON.stringify({
+      dependencies: { hono: "^4.0.0" },
+    }),
+  },
+  bundle: true,
+  minify: false,
+});
 ```
 
 ## Caching Dynamic Workers
 
 `env.LOADER.load()` creates a new Dynamic Worker on every call. To avoid re-bundling unchanged code, use `env.LOADER.get(id, callback)` instead. The runtime returns an existing Worker on a cache hit, or calls your callback to build one on a miss:
 
-* [  JavaScript ](#tab-panel-8501)
-* [  TypeScript ](#tab-panel-8502)
+* [  JavaScript ](#tab-panel-8792)
+* [  TypeScript ](#tab-panel-8793)
 
-JavaScript
+**JavaScript**
 
-```
-const worker = env.LOADER.get(workerId, async () => {  // This callback only runs on cache miss  const { mainModule, modules } = await createWorker({ files });
-  return {    mainModule,    modules,    compatibilityDate: "2026-05-01",    tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],  };});
+```js
+const worker = env.LOADER.get(workerId, async () => {
+  // This callback only runs on cache miss
+  const { mainModule, modules } = await createWorker({ files });
+
+
+  return {
+    mainModule,
+    modules,
+    compatibilityDate: "2026-05-01",
+    tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
+  };
+});
+
+
 const response = await worker.getEntrypoint().fetch(request);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const worker = env.LOADER.get(workerId, async () => {  // This callback only runs on cache miss  const { mainModule, modules } = await createWorker({ files });
-  return {    mainModule,    modules,    compatibilityDate: "2026-05-01",    tails: [      contextExports.DynamicWorkerTail({ props: { workerId } }),    ],  };});
+```ts
+const worker = env.LOADER.get(workerId, async () => {
+  // This callback only runs on cache miss
+  const { mainModule, modules } = await createWorker({ files });
+
+
+  return {
+    mainModule,
+    modules,
+    compatibilityDate: "2026-05-01",
+    tails: [
+      contextExports.DynamicWorkerTail({ props: { workerId } }),
+    ],
+  };
+});
+
+
 const response = await worker.getEntrypoint().fetch(request);
 ```
 
@@ -83,19 +131,29 @@ When you run code in the playground, console output from the Dynamic Worker stre
 
 To wire this up, include the Tail Worker in the `tails` array when creating the Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-8497)
-* [  TypeScript ](#tab-panel-8498)
+* [  JavaScript ](#tab-panel-8788)
+* [  TypeScript ](#tab-panel-8789)
 
-JavaScript
+**JavaScript**
 
+```js
+const worker = env.LOADER.get(workerId, async () => ({
+  mainModule,
+  modules,
+  compatibilityDate: "2026-05-01",
+  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
+}));
 ```
-const worker = env.LOADER.get(workerId, async () => ({  mainModule,  modules,  compatibilityDate: "2026-05-01",  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],}));
-```
 
-TypeScript
+**TypeScript**
 
-```
-const worker = env.LOADER.get(workerId, async () => ({  mainModule,  modules,  compatibilityDate: "2026-05-01",  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],}));
+```ts
+const worker = env.LOADER.get(workerId, async () => ({
+  mainModule,
+  modules,
+  compatibilityDate: "2026-05-01",
+  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
+}));
 ```
 
 For more information on how to capture and stream logs from Dynamic Workers, refer to [Observability with Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/usage/observability/).
@@ -104,10 +162,9 @@ For more information on how to capture and stream logs from Dynamic Workers, ref
 
 Clone the repo and start the dev server:
 
-Terminal window
-
-```
-npm installnpm run dev
+```sh
+npm install
+npm run dev
 ```
 
 ```json

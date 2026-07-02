@@ -37,20 +37,35 @@ The page you pre-render can run anywhere. The Worker in this tutorial only acts 
 
 Add a Browser Run binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6962)
-* [  wrangler.toml ](#tab-panel-6963)
+* [  wrangler.jsonc ](#tab-panel-7210)
+* [  wrangler.toml ](#tab-panel-7211)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-prerender-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "browser": {
+    "binding": "BROWSER"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-prerender-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "browser": {    "binding": "BROWSER"  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-prerender-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[browser]binding = "BROWSER"
+```toml
+name = "my-prerender-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[browser]
+binding = "BROWSER"
 ```
 
 Warning
@@ -61,46 +76,201 @@ Using the `.quickAction()` method for Browser Run Quick Actions requires a `comp
 
 Replace the contents of `src/index.ts` with the following Worker. Update `ALLOWED_HOSTNAMES` to include the hostnames that your Worker can pre-render.
 
-* [  JavaScript ](#tab-panel-6964)
-* [  TypeScript ](#tab-panel-6965)
+* [  JavaScript ](#tab-panel-7212)
+* [  TypeScript ](#tab-panel-7213)
 
-JavaScript
+**JavaScript**
 
-```
-// Only render pages you control. This prevents the Worker from becoming// an open browser-rendering proxy for arbitrary websites.const ALLOWED_HOSTNAMES = new Set(["example.com", "www.example.com"]);
-const getTargetUrl = (request) => {  const requestUrl = new URL(request.url);  const target = requestUrl.searchParams.get("url");
-  if (!target) {    throw new Error("Missing url query parameter");  }
+```js
+// Only render pages you control. This prevents the Worker from becoming
+// an open browser-rendering proxy for arbitrary websites.
+const ALLOWED_HOSTNAMES = new Set(["example.com", "www.example.com"]);
+
+
+const getTargetUrl = (request) => {
+  const requestUrl = new URL(request.url);
+  const target = requestUrl.searchParams.get("url");
+
+
+  if (!target) {
+    throw new Error("Missing url query parameter");
+  }
+
+
   const targetUrl = new URL(target);
-  // Only render HTTP(S) pages. Other protocols are not valid web pages.  if (!["http:", "https:"].includes(targetUrl.protocol)) {    throw new Error("Only HTTP and HTTPS URLs are allowed");  }
-  if (!ALLOWED_HOSTNAMES.has(targetUrl.hostname)) {    throw new Error("This hostname is not allowed");  }
-  return targetUrl;};
-const renderHtml = async (env, targetUrl) => {  // The /content Quick Actions endpoint loads the page in Browser Run and returns  // a JSON envelope containing the rendered HTML in the result field.  const response = await env.BROWSER.quickAction("content", {    url: targetUrl.toString(),    gotoOptions: {      waitUntil: "networkidle2",      timeout: 30000,    },    // If your page has a specific readiness signal, use waitForSelector    // instead of relying only on network activity.    // waitForSelector: { selector: "[data-prerender-ready='true']", timeout: 30000 },  });
-  if (!response.ok) {    const detail = (await response.text()).slice(0, 500);    throw new Error(`Browser Run failed with ${response.status}: ${detail}`);  }
+
+
+  // Only render HTTP(S) pages. Other protocols are not valid web pages.
+  if (!["http:", "https:"].includes(targetUrl.protocol)) {
+    throw new Error("Only HTTP and HTTPS URLs are allowed");
+  }
+
+
+  if (!ALLOWED_HOSTNAMES.has(targetUrl.hostname)) {
+    throw new Error("This hostname is not allowed");
+  }
+
+
+  return targetUrl;
+};
+
+
+const renderHtml = async (env, targetUrl) => {
+  // The /content Quick Actions endpoint loads the page in Browser Run and returns
+  // a JSON envelope containing the rendered HTML in the result field.
+  const response = await env.BROWSER.quickAction("content", {
+    url: targetUrl.toString(),
+    gotoOptions: {
+      waitUntil: "networkidle2",
+      timeout: 30000,
+    },
+    // If your page has a specific readiness signal, use waitForSelector
+    // instead of relying only on network activity.
+    // waitForSelector: { selector: "[data-prerender-ready='true']", timeout: 30000 },
+  });
+
+
+  if (!response.ok) {
+    const detail = (await response.text()).slice(0, 500);
+    throw new Error(`Browser Run failed with ${response.status}: ${detail}`);
+  }
+
+
   const data = await response.json();
-  if (!data.success || typeof data.result !== "string") {    throw new Error("Browser Run returned an unsuccessful response");  }
-  return data.result;};
-export default {  async fetch(request, env) {    try {      // Read and validate the URL before sending it to Browser Run.      const targetUrl = getTargetUrl(request);      const html = await renderHtml(env, targetUrl);
-      // Return the rendered HTML to the crawler or integration.      return new Response(html, {        headers: {          "content-type": "text/html; charset=utf-8",        },      });    } catch (error) {      return Response.json(        { error: error instanceof Error ? error.message : "Unknown error" },        { status: 400 },      );    }  },};
+
+
+  if (!data.success || typeof data.result !== "string") {
+    throw new Error("Browser Run returned an unsuccessful response");
+  }
+
+
+  return data.result;
+};
+
+
+export default {
+  async fetch(request, env) {
+    try {
+      // Read and validate the URL before sending it to Browser Run.
+      const targetUrl = getTargetUrl(request);
+      const html = await renderHtml(env, targetUrl);
+
+
+      // Return the rendered HTML to the crawler or integration.
+      return new Response(html, {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+        },
+      });
+    } catch (error) {
+      return Response.json(
+        { error: error instanceof Error ? error.message : "Unknown error" },
+        { status: 400 },
+      );
+    }
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  BROWSER: BrowserRun;}
-// Only render pages you control. This prevents the Worker from becoming// an open browser-rendering proxy for arbitrary websites.const ALLOWED_HOSTNAMES = new Set(["example.com", "www.example.com"]);
-const getTargetUrl = (request: Request) => {  const requestUrl = new URL(request.url);  const target = requestUrl.searchParams.get("url");
-  if (!target) {    throw new Error("Missing url query parameter");  }
+```ts
+interface Env {
+  BROWSER: BrowserRun;
+}
+
+
+// Only render pages you control. This prevents the Worker from becoming
+// an open browser-rendering proxy for arbitrary websites.
+const ALLOWED_HOSTNAMES = new Set(["example.com", "www.example.com"]);
+
+
+const getTargetUrl = (request: Request) => {
+  const requestUrl = new URL(request.url);
+  const target = requestUrl.searchParams.get("url");
+
+
+  if (!target) {
+    throw new Error("Missing url query parameter");
+  }
+
+
   const targetUrl = new URL(target);
-  // Only render HTTP(S) pages. Other protocols are not valid web pages.  if (!["http:", "https:"].includes(targetUrl.protocol)) {    throw new Error("Only HTTP and HTTPS URLs are allowed");  }
-  if (!ALLOWED_HOSTNAMES.has(targetUrl.hostname)) {    throw new Error("This hostname is not allowed");  }
-  return targetUrl;};
-const renderHtml = async (env: Env, targetUrl: URL) => {  // The /content Quick Actions endpoint loads the page in Browser Run and returns  // a JSON envelope containing the rendered HTML in the result field.  const response = await env.BROWSER.quickAction("content", {    url: targetUrl.toString(),    gotoOptions: {      waitUntil: "networkidle2",      timeout: 30000,    },    // If your page has a specific readiness signal, use waitForSelector    // instead of relying only on network activity.    // waitForSelector: { selector: "[data-prerender-ready='true']", timeout: 30000 },  });
-  if (!response.ok) {    const detail = (await response.text()).slice(0, 500);    throw new Error(`Browser Run failed with ${response.status}: ${detail}`);  }
-  const data = (await response.json()) as {    success: boolean;    result?: string;  };
-  if (!data.success || typeof data.result !== "string") {    throw new Error("Browser Run returned an unsuccessful response");  }
-  return data.result;};
-export default {  async fetch(request, env): Promise<Response> {    try {      // Read and validate the URL before sending it to Browser Run.      const targetUrl = getTargetUrl(request);      const html = await renderHtml(env, targetUrl);
-      // Return the rendered HTML to the crawler or integration.      return new Response(html, {        headers: {          "content-type": "text/html; charset=utf-8",        },      });    } catch (error) {      return Response.json(        { error: error instanceof Error ? error.message : "Unknown error" },        { status: 400 },      );    }  },} satisfies ExportedHandler<Env>;
+
+
+  // Only render HTTP(S) pages. Other protocols are not valid web pages.
+  if (!["http:", "https:"].includes(targetUrl.protocol)) {
+    throw new Error("Only HTTP and HTTPS URLs are allowed");
+  }
+
+
+  if (!ALLOWED_HOSTNAMES.has(targetUrl.hostname)) {
+    throw new Error("This hostname is not allowed");
+  }
+
+
+  return targetUrl;
+};
+
+
+const renderHtml = async (env: Env, targetUrl: URL) => {
+  // The /content Quick Actions endpoint loads the page in Browser Run and returns
+  // a JSON envelope containing the rendered HTML in the result field.
+  const response = await env.BROWSER.quickAction("content", {
+    url: targetUrl.toString(),
+    gotoOptions: {
+      waitUntil: "networkidle2",
+      timeout: 30000,
+    },
+    // If your page has a specific readiness signal, use waitForSelector
+    // instead of relying only on network activity.
+    // waitForSelector: { selector: "[data-prerender-ready='true']", timeout: 30000 },
+  });
+
+
+  if (!response.ok) {
+    const detail = (await response.text()).slice(0, 500);
+    throw new Error(`Browser Run failed with ${response.status}: ${detail}`);
+  }
+
+
+  const data = (await response.json()) as {
+    success: boolean;
+    result?: string;
+  };
+
+
+  if (!data.success || typeof data.result !== "string") {
+    throw new Error("Browser Run returned an unsuccessful response");
+  }
+
+
+  return data.result;
+};
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    try {
+      // Read and validate the URL before sending it to Browser Run.
+      const targetUrl = getTargetUrl(request);
+      const html = await renderHtml(env, targetUrl);
+
+
+      // Return the rendered HTML to the crawler or integration.
+      return new Response(html, {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+        },
+      });
+    } catch (error) {
+      return Response.json(
+        { error: error instanceof Error ? error.message : "Unknown error" },
+        { status: 400 },
+      );
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 The Worker accepts a `url` query parameter, validates the hostname, asks Browser Run to render that URL, and returns the rendered HTML.
@@ -122,8 +292,7 @@ pnpm wrangler dev --remote
 ```
 The `.quickAction()` method is not yet supported in local development mode. Use `wrangler dev --remote` when testing Browser Run Quick Actions locally.
 2. In another terminal, request a rendered page:
-Terminal window
-```
+```bash
 curl "http://localhost:8787/?url=https://example.com/"
 ```
 The response should contain the rendered HTML for the target page.
@@ -142,8 +311,7 @@ yarn wrangler deploy
 pnpm wrangler deploy
 ```
 2. After deployment, request a rendered page from your Worker URL:
-Terminal window
-```
+```bash
 curl "https://<YOUR_WORKER_HOSTNAME>/?url=https://example.com/"
 ```
 

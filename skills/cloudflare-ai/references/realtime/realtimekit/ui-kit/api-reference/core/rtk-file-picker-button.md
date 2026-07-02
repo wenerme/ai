@@ -26,19 +26,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-file-picker-button></rtk-file-picker-button>
 ```
 
 ### With Properties
 
-```
-<rtk-file-picker-button filter="example" label="example"></rtk-file-picker-button>
+```html
+<rtk-file-picker-button
+ filter="example"
+ label="example">
+</rtk-file-picker-button>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-file-picker-button");
-  el.icon= defaultIconPack</script>
+```html
+<script>
+  const el = document.querySelector("rtk-file-picker-button");
+
+
+  el.icon= defaultIconPack
+</script>
 ```
 
 ```json

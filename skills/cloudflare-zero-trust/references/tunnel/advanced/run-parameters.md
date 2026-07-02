@@ -18,62 +18,86 @@ This page lists the configuration flags for the `cloudflared tunnel run` command
 
 Remotely-managed tunnels run as a service on your OS. To add run parameters to the tunnel service file:
 
-* [ Linux ](#tab-panel-11042)
-* [ macOS ](#tab-panel-11043)
-* [ Windows ](#tab-panel-11044)
+* [ Linux ](#tab-panel-11337)
+* [ macOS ](#tab-panel-11338)
+* [ Windows ](#tab-panel-11339)
 
 On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl`. By default, the service will be named `cloudflared.service`. To configure your tunnel on Linux:
 
 1. Open `cloudflared.service`.
-Terminal window
-```
+```sh
 sudo systemctl edit --full cloudflared.service
 ```
 2. Modify the `cloudflared tunnel run` command with the desired configuration flag. For example,
-```
-[Unit]Description=Cloudflare TunnelAfter=network.target
-[Service]TimeoutStartSec=0Type=notifyExecStart=/usr/local/bin/cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token <TOKEN VALUE>Restart=on-failureRestartSec=5s
-[Install]WantedBy=multi-user.target
+```txt
+[Unit]
+Description=Cloudflare Tunnel
+After=network.target
+[Service]
+TimeoutStartSec=0
+Type=notify
+ExecStart=/usr/local/bin/cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token <TOKEN VALUE>
+Restart=on-failure
+RestartSec=5s
+[Install]
+WantedBy=multi-user.target
 ```
 3. Restart `cloudflared.service`:
-Terminal window
-```
+```sh
 sudo systemctl restart cloudflared
 ```
 4. To verify the new configuration, check the service status:
-Terminal window
-```
+```sh
 sudo systemctl status cloudflared
 ```
-```
-● cloudflared.service - cloudflared  Loaded: loaded (/etc/systemd/system/cloudflared.service; enabled; preset: enabled)  Active: active (running) since Wed 2024-10-09 20:02:59 UTC; 2s agoMain PID: 2157 (cloudflared)   Tasks: 8 (limit: 1136)  Memory: 16.3M     CPU: 136ms  CGroup: /system.slice/cloudflared.service          └─2157 /usr/bin/cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token eyJhIjoi...
+```sh
+● cloudflared.service - cloudflared
+  Loaded: loaded (/etc/systemd/system/cloudflared.service; enabled; preset: enabled)
+  Active: active (running) since Wed 2024-10-09 20:02:59 UTC; 2s ago
+Main PID: 2157 (cloudflared)
+   Tasks: 8 (limit: 1136)
+  Memory: 16.3M
+     CPU: 136ms
+  CGroup: /system.slice/cloudflared.service
+          └─2157 /usr/bin/cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token eyJhIjoi...
 ```
 
 On macOS, Cloudflare Tunnel installs itself as a launch agent using `launchctl`. By default, the agent will be called `com.cloudflare.cloudflared`. To configure your tunnel on macOS:
 
 1. Stop the `cloudflared` service.
-Terminal window
-```
+```sh
 sudo launchctl stop com.cloudflare.cloudflared
 ```
 2. Unload the configuration file.
-Terminal window
-```
+```sh
 sudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
 ```
 3. Open `/Library/LaunchDaemons/com.cloudflare.cloudflared.plist` in a text editor.
 4. Modify the `ProgramArguments` key with the desired configuration flag. For example,
-```
-<plist version="1.0">    <dict>        <key>Label</key>        <string>com.cloudflare.cloudflared</string>        <key>ProgramArguments</key>        <array>            <string>/opt/homebrew/bin/cloudflared</string>            <string>tunnel</string>            <string>--logfile</string>            <string><PATH></string>            <string>--loglevel</string>            <string>debug</string>            <string>run</string>            <string>--token</string>            <string><TOKEN VALUE> </string>        </array>
+```txt
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.cloudflare.cloudflared</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/opt/homebrew/bin/cloudflared</string>
+            <string>tunnel</string>
+            <string>--logfile</string>
+            <string><PATH></string>
+            <string>--loglevel</string>
+            <string>debug</string>
+            <string>run</string>
+            <string>--token</string>
+            <string><TOKEN VALUE> </string>
+        </array>
 ```
 5. Load the updated configuration file.
-Terminal window
-```
+```sh
 sudo launchctl load /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
 ```
 6. Start the `cloudflared` service.
-Terminal window
-```
+```sh
 sudo launchctl start com.cloudflare.cloudflared
 ```
 
@@ -83,7 +107,7 @@ On Windows, Cloudflare Tunnel installs itself as a system service using the Regi
 2. Go to **HKEY\_LOCAL\_MACHINE** \> **SYSTEM** \> **CurrentControlSet** \> **Services** \> **cloudflared**.
 3. Double-click **ImagePath**.
 4. Modify **Value data** with the desired configuration flag. For example,
-```
+```txt
 C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --logfile <PATH> run --token <TOKEN VALUE>
 ```
 
@@ -125,9 +149,7 @@ Requires `cloudflared` version 2025.7.0 or later.
 
 Specifies custom DNS resolver addresses for `cloudflared` to use instead of the host machine's default resolvers. Each address must be in `ip:port` format — providing an IP address without a port will cause `cloudflared` to fail to start. You can specify multiple resolvers by repeating the flag. For example,
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel run --dns-resolver-addrs 1.1.1.1:53 --dns-resolver-addrs 1.0.0.1:53 <UUID or NAME>
 ```
 

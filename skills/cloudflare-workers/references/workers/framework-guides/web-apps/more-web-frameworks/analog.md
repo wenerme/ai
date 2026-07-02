@@ -82,9 +82,7 @@ pnpm create cloudflare@latest my-analog-app --framework=analog
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-analog-app
 ```
 

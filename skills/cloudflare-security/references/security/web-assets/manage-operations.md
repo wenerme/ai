@@ -38,13 +38,14 @@ Discovery continuously identifies operations from proxied HTTP traffic. Discover
 
 For example, discovery can group these requests:
 
-```
-GET https://api.example.com/profile/238GET https://api.example.com/profile/392
+```txt
+GET https://api.example.com/profile/238
+GET https://api.example.com/profile/392
 ```
 
 Discovery can group them into one operation:
 
-```
+```txt
 GET api.example.com/profile/{var1}
 ```
 
@@ -62,8 +63,9 @@ Operations in the `full` state always match before operations in the `candidate`
 
 For example, these operations could both match `GET https://example.com/checkout/pay`:
 
-```
-GET example.com/checkout/payGET example.com/checkout/{var1}
+```txt
+GET example.com/checkout/pay
+GET example.com/checkout/{var1}
 ```
 
 Cloudflare uses `GET example.com/checkout/pay` because it is more specific.
@@ -87,19 +89,21 @@ When you add an operation manually, use variables to match similar traffic with 
 
 For path variables, enclose the variable in braces:
 
-```
+```txt
 /api/users/{var1}/details
 ```
 
 For hostname variables, the variable must occupy a complete hostname label. Cloudflare supports patterns such as:
 
-```
-{hostVar1}.example.comfoo.{hostVar1}.example.com{hostVar2}.{hostVar1}.example.com
+```txt
+{hostVar1}.example.com
+foo.{hostVar1}.example.com
+{hostVar2}.{hostVar1}.example.com
 ```
 
 Do not combine a hostname variable with other characters in the same label. The following pattern is not supported:
 
-```
+```txt
 foo-{hostVar1}.example.com
 ```
 

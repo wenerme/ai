@@ -37,46 +37,129 @@ To use Outbound Workers:
 
 Make sure that you have `wrangler@3.3.0` or later [installed](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-* [  wrangler.jsonc ](#tab-panel-7111)
-* [  wrangler.toml ](#tab-panel-7112)
+* [  wrangler.jsonc ](#tab-panel-7359)
+* [  wrangler.toml ](#tab-panel-7360)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "dispatch_namespaces": [
+    {
+      "binding": "dispatcher",
+      "namespace": "<NAMESPACE_NAME>",
+      "outbound": {
+        "service": "<SERVICE_NAME>",
+        "parameters": [
+          "params_object"
+        ]
+      }
+    }
+  ]
+}
 ```
-{  "dispatch_namespaces": [    {      "binding": "dispatcher",      "namespace": "<NAMESPACE_NAME>",      "outbound": {        "service": "<SERVICE_NAME>",        "parameters": [          "params_object"        ]      }    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[dispatch_namespaces]]binding = "dispatcher"namespace = "<NAMESPACE_NAME>"
-  [dispatch_namespaces.outbound]  service = "<SERVICE_NAME>"  parameters = [ "params_object" ]
+```toml
+[[dispatch_namespaces]]
+binding = "dispatcher"
+namespace = "<NAMESPACE_NAME>"
+
+
+  [dispatch_namespaces.outbound]
+  service = "<SERVICE_NAME>"
+  parameters = [ "params_object" ]
 ```
 
 1. Edit your dynamic dispatch Worker to call the Outbound Worker and declare variables to pass on `dispatcher.get()`.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    try {      // parse the URL, read the subdomain      let workerName = new URL(request.url).host.split(".")[0];
-      let context_from_dispatcher = {        customer_name: workerName,        url: request.url,      };
-      let userWorker = env.dispatcher.get(        workerName,        {},        {          // outbound arguments. object name must match parameters in the binding          outbound: {            params_object: context_from_dispatcher,          },        },      );      return await userWorker.fetch(request);    } catch (e) {      if (e.message.startsWith("Worker not found")) {        // we tried to get a worker that doesn't exist in our dispatch namespace        return new Response("", { status: 404 });      }      return new Response(e.message, { status: 500 });    }  },};
+```js
+export default {
+  async fetch(request, env) {
+    try {
+      // parse the URL, read the subdomain
+      let workerName = new URL(request.url).host.split(".")[0];
+
+
+      let context_from_dispatcher = {
+        customer_name: workerName,
+        url: request.url,
+      };
+
+
+      let userWorker = env.dispatcher.get(
+        workerName,
+        {},
+        {
+          // outbound arguments. object name must match parameters in the binding
+          outbound: {
+            params_object: context_from_dispatcher,
+          },
+        },
+      );
+      return await userWorker.fetch(request);
+    } catch (e) {
+      if (e.message.startsWith("Worker not found")) {
+        // we tried to get a worker that doesn't exist in our dispatch namespace
+        return new Response("", { status: 404 });
+      }
+      return new Response(e.message, { status: 500 });
+    }
+  },
+};
 ```
 
 1. The Outbound Worker will now be invoked on any `fetch()` requests from a user Worker. The user Worker will trigger a [FetchEvent](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) on the Outbound Worker. The variables declared in the binding can be accessed in the Outbound Worker through `env.<VAR_NAME>`.
 
 The following is an example of an Outbound Worker that logs the fetch request from user Worker and creates a JWT if the fetch request matches `api.example.com`.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  // this event is fired when the dispatched Workers make a subrequest  async fetch(request, env, ctx) {    // env contains the values we set in `dispatcher.get()`    const customer_name = env.customer_name;    const original_url = env.url;
-    // log the request    ctx.waitUntil(      fetch("https://logs.example.com", {        method: "POST",        body: JSON.stringify({          customer_name,          original_url,        }),      }),    );
-    const url = new URL(original_url);    if (url.host === "api.example.com") {      // pre-auth requests to our API      const jwt = make_jwt_for_customer(customer_name);
-      let headers = new Headers(request.headers);      headers.set("Authorization", `Bearer ${jwt}`);
-      // clone the request to set new headers using existing body      let new_request = new Request(request, { headers });
-      return fetch(new_request);    }
-    return fetch(request);  },};
+```js
+export default {
+  // this event is fired when the dispatched Workers make a subrequest
+  async fetch(request, env, ctx) {
+    // env contains the values we set in `dispatcher.get()`
+    const customer_name = env.customer_name;
+    const original_url = env.url;
+
+
+    // log the request
+    ctx.waitUntil(
+      fetch("https://logs.example.com", {
+        method: "POST",
+        body: JSON.stringify({
+          customer_name,
+          original_url,
+        }),
+      }),
+    );
+
+
+    const url = new URL(original_url);
+    if (url.host === "api.example.com") {
+      // pre-auth requests to our API
+      const jwt = make_jwt_for_customer(customer_name);
+
+
+      let headers = new Headers(request.headers);
+      headers.set("Authorization", `Bearer ${jwt}`);
+
+
+      // clone the request to set new headers using existing body
+      let new_request = new Request(request, { headers });
+
+
+      return fetch(new_request);
+    }
+
+
+    return fetch(request);
+  },
+};
 ```
 
 Note

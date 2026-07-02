@@ -20,23 +20,53 @@ The framework detects and wraps custom Agent methods during initialization so `g
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-6505)
-* [  TypeScript ](#tab-panel-6506)
+* [  JavaScript ](#tab-panel-6537)
+* [  TypeScript ](#tab-panel-6538)
 
-JavaScript
+**JavaScript**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+
+
+export class MyAgent extends AIChatAgent {
+  async customMethod() {
+    const { agent } = getCurrentAgent();
+    // agent is automatically available
+    console.log(agent.name);
+  }
+
+
+  async anotherMethod() {
+    // This works too - no setup needed
+    const { agent } = getCurrentAgent();
+    return agent.state;
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";
-export class MyAgent extends AIChatAgent {  async customMethod() {    const { agent } = getCurrentAgent();    // agent is automatically available    console.log(agent.name);  }
-  async anotherMethod() {    // This works too - no setup needed    const { agent } = getCurrentAgent();    return agent.state;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";
-export class MyAgent extends AIChatAgent {  async customMethod() {    const { agent } = getCurrentAgent();    // agent is automatically available    console.log(agent.name);  }
-  async anotherMethod() {    // This works too - no setup needed    const { agent } = getCurrentAgent();    return agent.state;  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+
+
+export class MyAgent extends AIChatAgent {
+  async customMethod() {
+    const { agent } = getCurrentAgent();
+    // agent is automatically available
+    console.log(agent.name);
+  }
+
+
+  async anotherMethod() {
+    // This works too - no setup needed
+    const { agent } = getCurrentAgent();
+    return agent.state;
+  }
+}
 ```
 
 No configuration is required. The framework automatically:
@@ -47,27 +77,79 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-6521)
-* [  TypeScript ](#tab-panel-6522)
+* [  JavaScript ](#tab-panel-6553)
+* [  TypeScript ](#tab-panel-6554)
 
-JavaScript
+**JavaScript**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+// External utility function that needs agent context
+async function processWithAI(prompt) {
+  const { agent } = getCurrentAgent();
+  // External functions can access the current agent
+
+
+  return await generateText({
+    model: openai("gpt-4"),
+    prompt: `Agent ${agent?.name}: ${prompt}`,
+  });
+}
+
+
+export class MyAgent extends AIChatAgent {
+  async customMethod(message) {
+    // Use this.* to access agent properties directly
+    console.log("Agent name:", this.name);
+    console.log("Agent state:", this.state);
+
+
+    // External functions automatically work
+    const result = await processWithAI(message);
+    return result.text;
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";import { generateText } from "ai";import { openai } from "@ai-sdk/openai";
-// External utility function that needs agent contextasync function processWithAI(prompt) {  const { agent } = getCurrentAgent();  // External functions can access the current agent
-  return await generateText({    model: openai("gpt-4"),    prompt: `Agent ${agent?.name}: ${prompt}`,  });}
-export class MyAgent extends AIChatAgent {  async customMethod(message) {    // Use this.* to access agent properties directly    console.log("Agent name:", this.name);    console.log("Agent state:", this.state);
-    // External functions automatically work    const result = await processWithAI(message);    return result.text;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";import { generateText } from "ai";import { openai } from "@ai-sdk/openai";
-// External utility function that needs agent contextasync function processWithAI(prompt: string) {  const { agent } = getCurrentAgent();  // External functions can access the current agent
-  return await generateText({    model: openai("gpt-4"),    prompt: `Agent ${agent?.name}: ${prompt}`,  });}
-export class MyAgent extends AIChatAgent {  async customMethod(message: string) {    // Use this.* to access agent properties directly    console.log("Agent name:", this.name);    console.log("Agent state:", this.state);
-    // External functions automatically work    const result = await processWithAI(message);    return result.text;  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+// External utility function that needs agent context
+async function processWithAI(prompt: string) {
+  const { agent } = getCurrentAgent();
+  // External functions can access the current agent
+
+
+  return await generateText({
+    model: openai("gpt-4"),
+    prompt: `Agent ${agent?.name}: ${prompt}`,
+  });
+}
+
+
+export class MyAgent extends AIChatAgent {
+  async customMethod(message: string) {
+    // Use this.* to access agent properties directly
+    console.log("Agent name:", this.name);
+    console.log("Agent state:", this.state);
+
+
+    // External functions automatically work
+    const result = await processWithAI(message);
+    return result.text;
+  }
+}
 ```
 
 ### Built-in vs custom methods
@@ -78,86 +160,182 @@ export class MyAgent extends AIChatAgent {  async customMethod(message: string) 
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-6503)
-* [  TypeScript ](#tab-panel-6504)
+* [  JavaScript ](#tab-panel-6535)
+* [  TypeScript ](#tab-panel-6536)
 
-JavaScript
+**JavaScript**
 
+```js
+// When you call a custom method:
+agent.customMethod();
+// → automatically wrapped with agentContext.run()
+// → your method executes with full context
+// → external functions can use getCurrentAgent()
 ```
-// When you call a custom method:agent.customMethod();// → automatically wrapped with agentContext.run()// → your method executes with full context// → external functions can use getCurrentAgent()
-```
 
-TypeScript
+**TypeScript**
 
-```
-// When you call a custom method:agent.customMethod();// → automatically wrapped with agentContext.run()// → your method executes with full context// → external functions can use getCurrentAgent()
+```ts
+// When you call a custom method:
+agent.customMethod();
+// → automatically wrapped with agentContext.run()
+// → your method executes with full context
+// → external functions can use getCurrentAgent()
 ```
 
 ## Common use cases
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-6515)
-* [  TypeScript ](#tab-panel-6516)
+* [  JavaScript ](#tab-panel-6547)
+* [  TypeScript ](#tab-panel-6548)
 
-JavaScript
+**JavaScript**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+export class MyAgent extends AIChatAgent {
+  async generateResponse(prompt) {
+    // AI SDK tools automatically work
+    const response = await generateText({
+      model: openai("gpt-4"),
+      prompt,
+      tools: {
+        // Tools that use getCurrentAgent() work perfectly
+      },
+    });
+
+
+    return response.text;
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { generateText } from "ai";import { openai } from "@ai-sdk/openai";
-export class MyAgent extends AIChatAgent {  async generateResponse(prompt) {    // AI SDK tools automatically work    const response = await generateText({      model: openai("gpt-4"),      prompt,      tools: {        // Tools that use getCurrentAgent() work perfectly      },    });
-    return response.text;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { generateText } from "ai";import { openai } from "@ai-sdk/openai";
-export class MyAgent extends AIChatAgent {  async generateResponse(prompt: string) {    // AI SDK tools automatically work    const response = await generateText({      model: openai("gpt-4"),      prompt,      tools: {        // Tools that use getCurrentAgent() work perfectly      },    });
-    return response.text;  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+export class MyAgent extends AIChatAgent {
+  async generateResponse(prompt: string) {
+    // AI SDK tools automatically work
+    const response = await generateText({
+      model: openai("gpt-4"),
+      prompt,
+      tools: {
+        // Tools that use getCurrentAgent() work perfectly
+      },
+    });
+
+
+    return response.text;
+  }
+}
 ```
 
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-6511)
-* [  TypeScript ](#tab-panel-6512)
+* [  JavaScript ](#tab-panel-6543)
+* [  TypeScript ](#tab-panel-6544)
 
-JavaScript
+**JavaScript**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+
+
+async function saveToDatabase(data) {
+  const { agent } = getCurrentAgent();
+  // Can access agent info for logging, context, etc.
+  console.log(`Saving data for agent: ${agent?.name}`);
+}
+
+
+export class MyAgent extends AIChatAgent {
+  async processData(data) {
+    // External functions automatically have context
+    await saveToDatabase(data);
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";
-async function saveToDatabase(data) {  const { agent } = getCurrentAgent();  // Can access agent info for logging, context, etc.  console.log(`Saving data for agent: ${agent?.name}`);}
-export class MyAgent extends AIChatAgent {  async processData(data) {    // External functions automatically have context    await saveToDatabase(data);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";
-async function saveToDatabase(data: any) {  const { agent } = getCurrentAgent();  // Can access agent info for logging, context, etc.  console.log(`Saving data for agent: ${agent?.name}`);}
-export class MyAgent extends AIChatAgent {  async processData(data: any) {    // External functions automatically have context    await saveToDatabase(data);  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+
+
+async function saveToDatabase(data: any) {
+  const { agent } = getCurrentAgent();
+  // Can access agent info for logging, context, etc.
+  console.log(`Saving data for agent: ${agent?.name}`);
+}
+
+
+export class MyAgent extends AIChatAgent {
+  async processData(data: any) {
+    // External functions automatically have context
+    await saveToDatabase(data);
+  }
+}
 ```
 
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-6517)
-* [  TypeScript ](#tab-panel-6518)
+* [  JavaScript ](#tab-panel-6549)
+* [  TypeScript ](#tab-panel-6550)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getCurrentAgent } from "agents";
-function logRequestInfo() {  const { agent, connection, request } = getCurrentAgent();
-  if (request) {    console.log("Request URL:", request.url);    console.log("Request method:", request.method);  }
-  if (connection) {    console.log("Connection ID:", connection.id);  }}
+
+
+function logRequestInfo() {
+  const { agent, connection, request } = getCurrentAgent();
+
+
+  if (request) {
+    console.log("Request URL:", request.url);
+    console.log("Request method:", request.method);
+  }
+
+
+  if (connection) {
+    console.log("Connection ID:", connection.id);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getCurrentAgent } from "agents";
-function logRequestInfo() {  const { agent, connection, request } = getCurrentAgent();
-  if (request) {    console.log("Request URL:", request.url);    console.log("Request method:", request.method);  }
-  if (connection) {    console.log("Connection ID:", connection.id);  }}
+
+
+function logRequestInfo() {
+  const { agent, connection, request } = getCurrentAgent();
+
+
+  if (request) {
+    console.log("Request URL:", request.url);
+    console.log("Request method:", request.method);
+  }
+
+
+  if (connection) {
+    console.log("Connection ID:", connection.id);
+  }
+}
 ```
 
 ## When context is lost
@@ -170,27 +348,71 @@ The agent context only propagates along the call tree of the original invocation
 
 Route the callback through a public method on the agent. Custom methods are wrapped automatically, so calling `agent.someMethod()` re-enters that agent's context:
 
-* [  JavaScript ](#tab-panel-6523)
-* [  TypeScript ](#tab-panel-6524)
+* [  JavaScript ](#tab-panel-6555)
+* [  TypeScript ](#tab-panel-6556)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { RpcTarget } from "cloudflare:workers";
-class HostCallbackBridge extends RpcTarget {  agent;
-  constructor(agent) {    super();    this.agent = agent;  }
-  // Invoked through RPC from a Worker Loader child isolate. There is no context  // ancestry. Calling a public agent method restores it automatically.  async invoke() {    return this.agent.handleSandboxCallback();  }}
-export class MyMcpAgent extends McpAgent {  async handleSandboxCallback() {    const { agent } = getCurrentAgent();    // `agent` is available again.  }}
+
+
+class HostCallbackBridge extends RpcTarget {
+  agent;
+
+
+  constructor(agent) {
+    super();
+    this.agent = agent;
+  }
+
+
+  // Invoked through RPC from a Worker Loader child isolate. There is no context
+  // ancestry. Calling a public agent method restores it automatically.
+  async invoke() {
+    return this.agent.handleSandboxCallback();
+  }
+}
+
+
+export class MyMcpAgent extends McpAgent {
+  async handleSandboxCallback() {
+    const { agent } = getCurrentAgent();
+    // `agent` is available again.
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { RpcTarget } from "cloudflare:workers";
-class HostCallbackBridge extends RpcTarget {  agent: MyMcpAgent;
-  constructor(agent: MyMcpAgent) {    super();    this.agent = agent;  }
-  // Invoked through RPC from a Worker Loader child isolate. There is no context  // ancestry. Calling a public agent method restores it automatically.  async invoke() {    return this.agent.handleSandboxCallback();  }}
-export class MyMcpAgent extends McpAgent {  async handleSandboxCallback() {    const { agent } = getCurrentAgent<MyMcpAgent>();    // `agent` is available again.  }}
+
+
+class HostCallbackBridge extends RpcTarget {
+  agent: MyMcpAgent;
+
+
+  constructor(agent: MyMcpAgent) {
+    super();
+    this.agent = agent;
+  }
+
+
+  // Invoked through RPC from a Worker Loader child isolate. There is no context
+  // ancestry. Calling a public agent method restores it automatically.
+  async invoke() {
+    return this.agent.handleSandboxCallback();
+  }
+}
+
+
+export class MyMcpAgent extends McpAgent {
+  async handleSandboxCallback() {
+    const { agent } = getCurrentAgent<MyMcpAgent>();
+    // `agent` is available again.
+  }
+}
 ```
 
 Context restored this way has `connection`, `request`, and `email` unset. It is not tied to live client I/O.
@@ -203,20 +425,27 @@ Server-initiated MCP requests (`elicitInput`, `createMessage`, and `listRoots`) 
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-6507)
-* [  TypeScript ](#tab-panel-6508)
+* [  JavaScript ](#tab-panel-6539)
+* [  TypeScript ](#tab-panel-6540)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getCurrentAgent } from "agents";
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getCurrentAgent } from "agents";
-function getCurrentAgent<T extends Agent>(): {  agent: T | undefined;  connection: Connection | undefined;  request: Request | undefined;  email: AgentEmail | undefined;};
+
+
+function getCurrentAgent<T extends Agent>(): {
+  agent: T | undefined;
+  connection: Connection | undefined;
+  request: Request | undefined;
+  email: AgentEmail | undefined;
+};
 ```
 
 #### Returns:
@@ -230,21 +459,39 @@ function getCurrentAgent<T extends Agent>(): {  agent: T | undefined;  connectio
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-6519)
-* [  TypeScript ](#tab-panel-6520)
+* [  JavaScript ](#tab-panel-6551)
+* [  TypeScript ](#tab-panel-6552)
 
-JavaScript
+**JavaScript**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+
+
+export class MyAgent extends AIChatAgent {
+  async customMethod() {
+    const { agent, connection, request } = getCurrentAgent();
+    // agent is properly typed as MyAgent
+    // connection and request available if called from a request handler
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";
-export class MyAgent extends AIChatAgent {  async customMethod() {    const { agent, connection, request } = getCurrentAgent();    // agent is properly typed as MyAgent    // connection and request available if called from a request handler  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { getCurrentAgent } from "agents";
-export class MyAgent extends AIChatAgent {  async customMethod() {    const { agent, connection, request } = getCurrentAgent<MyAgent>();    // agent is properly typed as MyAgent    // connection and request available if called from a request handler  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { getCurrentAgent } from "agents";
+
+
+export class MyAgent extends AIChatAgent {
+  async customMethod() {
+    const { agent, connection, request } = getCurrentAgent<MyAgent>();
+    // agent is properly typed as MyAgent
+    // connection and request available if called from a request handler
+  }
+}
 ```
 
 ### Context availability
@@ -267,27 +514,41 @@ The context available depends on how the method was invoked:
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.
 
-  * [  JavaScript ](#tab-panel-6513)
-  * [  TypeScript ](#tab-panel-6514)
-JavaScript
+  * [  JavaScript ](#tab-panel-6545)
+  * [  TypeScript ](#tab-panel-6546)
+
+**JavaScript**
+```js
+const { agent } = getCurrentAgent();
+if (agent) {
+  // Safe to use agent
+  console.log(agent.name);
+}
 ```
-const { agent } = getCurrentAgent();if (agent) {  // Safe to use agent  console.log(agent.name);}
-```
-TypeScript
-```
-const { agent } = getCurrentAgent();if (agent) {  // Safe to use agent  console.log(agent.name);}
+
+**TypeScript**
+```ts
+const { agent } = getCurrentAgent();
+if (agent) {
+  // Safe to use agent
+  console.log(agent.name);
+}
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.
 
-  * [  JavaScript ](#tab-panel-6509)
-  * [  TypeScript ](#tab-panel-6510)
-JavaScript
+  * [  JavaScript ](#tab-panel-6541)
+  * [  TypeScript ](#tab-panel-6542)
+
+**JavaScript**
+```js
+const { agent } = getCurrentAgent();
+// agent is typed as MyAgent | undefined
 ```
-const { agent } = getCurrentAgent();// agent is typed as MyAgent | undefined
-```
-TypeScript
-```
-const { agent } = getCurrentAgent<MyAgent>();// agent is typed as MyAgent | undefined
+
+**TypeScript**
+```ts
+const { agent } = getCurrentAgent<MyAgent>();
+// agent is typed as MyAgent | undefined
 ```
 
 ## Next steps

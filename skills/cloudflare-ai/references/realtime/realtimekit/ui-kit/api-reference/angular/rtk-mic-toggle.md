@@ -28,14 +28,20 @@ A button which toggles your microphone.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-mic-toggle></rtk-mic-toggle>
+```html
+<!-- component.html -->
+<rtk-mic-toggle></rtk-mic-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-mic-toggle [meeting]="meeting" size="md" variant="button"></rtk-mic-toggle>
+```html
+<!-- component.html -->
+<rtk-mic-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-mic-toggle>
 ```
 
 ```json

@@ -27,19 +27,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-participants-waiting-list></rtk-participants-waiting-list>
 ```
 
 ### With Properties
 
-```
-<rtk-participants-waiting-list size="md"></rtk-participants-waiting-list>
+```html
+<rtk-participants-waiting-list
+ size="md">
+</rtk-participants-waiting-list>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participants-waiting-list");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participants-waiting-list");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

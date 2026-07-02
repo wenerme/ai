@@ -76,18 +76,20 @@ You can configure zones to operate in DNS-only mode (no HTTP proxying) at the ac
 
 **Account-level default** (applies to zones created after the setting is applied):
 
-Terminal window
-
-```
-curl --request PATCH \  https://api.cloudflare.com/client/v4/accounts/{account_id}/dns_settings \  --header "Content-Type: application/json" \  --data '{"zone_defaults":{"zone_mode":"dns_only"}}'
+```bash
+curl --request PATCH \
+  https://api.cloudflare.com/client/v4/accounts/{account_id}/dns_settings \
+  --header "Content-Type: application/json" \
+  --data '{"zone_defaults":{"zone_mode":"dns_only"}}'
 ```
 
 **Per-zone** (for existing zones):
 
-Terminal window
-
-```
-curl --request PATCH \  https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_settings \  --header "Content-Type: application/json" \  --data '{"zone_mode":"dns_only"}'
+```bash
+curl --request PATCH \
+  https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_settings \
+  --header "Content-Type: application/json" \
+  --data '{"zone_mode":"dns_only"}'
 ```
 
 Note

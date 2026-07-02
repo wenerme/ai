@@ -26,19 +26,24 @@ A component which renders the draft attachment to send
 
 ### Basic Usage
 
-```
+```html
 <rtk-draft-attachment-view></rtk-draft-attachment-view>
 ```
 
 ### With Properties
 
-```
-<rtk-draft-attachment-view></rtk-draft-attachment-view>
+```html
+<rtk-draft-attachment-view>
+</rtk-draft-attachment-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-draft-attachment-view");
-  el.attachment= {};</script>
+```html
+<script>
+  const el = document.querySelector("rtk-draft-attachment-view");
+
+
+  el.attachment= {};
+</script>
 ```
 
 ```json

@@ -47,8 +47,8 @@ The Minimum TLS version that you set up following these steps does not apply to 
 
 To manage the TLS version applied to your whole zone when proxied through Cloudflare:
 
-* [ Dashboard ](#tab-panel-10718)
-* [ API ](#tab-panel-10719)
+* [ Dashboard ](#tab-panel-11013)
+* [ API ](#tab-panel-11014)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -63,10 +63,16 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/min_tls_version" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "min_tls_version",    "value": "1.2"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/min_tls_version" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "id": "min_tls_version",
+    "value": "1.2"
+  }'
 ```
 
 ### Per-hostname
@@ -87,10 +93,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-Edit TLS setting for hostname
+**Edit TLS setting for hostname**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/min_tls_version/$HOSTNAME" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "1.2"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/min_tls_version/$HOSTNAME" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "1.2"
+  }'
 ```
 
 ### Cloudflare for SaaS
@@ -103,9 +114,7 @@ To test supported TLS versions, attempt a request to your website or application
 
 For example, to test TLS 1.1, use the `curl` command below. Replace `www.example.com` with your Cloudflare domain and hostname.
 
-Terminal window
-
-```
+```sh
 curl https://www.example.com -svo /dev/null --tls-max 1.1
 ```
 

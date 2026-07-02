@@ -59,9 +59,7 @@ This creates a `my-sandbox` directory with everything you need:
 * `wrangler.jsonc` \- Configuration for Workers and Containers
 * `Dockerfile` \- Container environment definition
 
-Terminal window
-
-```
+```sh
 cd my-sandbox
 ```
 
@@ -69,17 +67,55 @@ cd my-sandbox
 
 The template provides a minimal Worker that demonstrates core sandbox capabilities:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox, proxyToSandbox, type Sandbox } from "@cloudflare/sandbox";
+
+
 export { Sandbox } from "@cloudflare/sandbox";
-type Env = {  Sandbox: DurableObjectNamespace<Sandbox>;};
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
-    // Get or create a sandbox instance. For user-facing apps,    // derive this ID from the authenticated user.    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-    // Execute Python code    if (url.pathname === "/run") {      const result = await sandbox.exec('python3 -c "print(2 + 2)"');      return Response.json({        output: result.stdout,        error: result.stderr,        exitCode: result.exitCode,        success: result.success,      });    }
-    // Work with files    if (url.pathname === "/file") {      await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");      const file = await sandbox.readFile("/workspace/hello.txt");      return Response.json({        content: file.content,      });    }
-    return new Response("Try /run or /file");  },};
+
+
+type Env = {
+  Sandbox: DurableObjectNamespace<Sandbox>;
+};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    // Get or create a sandbox instance. For user-facing apps,
+    // derive this ID from the authenticated user.
+    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+
+
+    // Execute Python code
+    if (url.pathname === "/run") {
+      const result = await sandbox.exec('python3 -c "print(2 + 2)"');
+      return Response.json({
+        output: result.stdout,
+        error: result.stderr,
+        exitCode: result.exitCode,
+        success: result.success,
+      });
+    }
+
+
+    // Work with files
+    if (url.pathname === "/file") {
+      await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");
+      const file = await sandbox.readFile("/workspace/hello.txt");
+      return Response.json({
+        content: file.content,
+      });
+    }
+
+
+    return new Response("Try /run or /file");
+  },
+};
 ```
 
 **Key concepts**:
@@ -92,10 +128,9 @@ export default {  async fetch(request: Request, env: Env): Promise<Response> {  
 
 Start the development server:
 
-Terminal window
-
-```
-npm run dev# If you expect to have multiple sandbox instances, you can increase `max_instances`.
+```sh
+npm run dev
+# If you expect to have multiple sandbox instances, you can increase `max_instances`.
 ```
 
 Note
@@ -104,11 +139,13 @@ First run builds the Docker container (2-3 minutes). Subsequent runs are much fa
 
 Test the endpoints:
 
-Terminal window
+```sh
+# Execute Python code
+curl http://localhost:8787/run
 
-```
-# Execute Python codecurl http://localhost:8787/run
-# File operationscurl http://localhost:8787/file
+
+# File operations
+curl http://localhost:8787/file
 ```
 
 You should see JSON responses with the command output and file contents.
@@ -117,9 +154,7 @@ You should see JSON responses with the command output and file contents.
 
 Deploy your Worker and container:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -135,9 +170,7 @@ After first deployment, wait 2-3 minutes before making requests. The Worker depl
 
 Check deployment status:
 
-Terminal window
-
-```
+```sh
 npx wrangler containers list
 ```
 
@@ -145,10 +178,9 @@ npx wrangler containers list
 
 Visit your Worker URL (shown in deploy output):
 
-Terminal window
-
-```
-# Replace with your actual URLcurl https://my-sandbox.YOUR_SUBDOMAIN.workers.dev/run
+```sh
+# Replace with your actual URL
+curl https://my-sandbox.YOUR_SUBDOMAIN.workers.dev/run
 ```
 
 Your sandbox is now deployed and can execute code in isolated containers.
@@ -157,21 +189,56 @@ Your sandbox is now deployed and can execute code in isolated containers.
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-10369)
-* [  wrangler.toml ](#tab-panel-10370)
+* [  wrangler.jsonc ](#tab-panel-10664)
+* [  wrangler.toml ](#tab-panel-10665)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "class_name": "Sandbox",
+      "image": "./Dockerfile",
+      "instance_type": "lite",
+      "max_instances": 1,
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "Sandbox",
+        "name": "Sandbox",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": ["Sandbox"],
+      "tag": "v1",
+    },
+  ],
+}
 ```
-{  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",      "instance_type": "lite",      "max_instances": 1,    },  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },  "migrations": [    {      "new_sqlite_classes": ["Sandbox"],      "tag": "v1",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]class_name = "Sandbox"image = "./Dockerfile"instance_type = "lite"max_instances = 1
-[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
-[[migrations]]new_sqlite_classes = [ "Sandbox" ]tag = "v1"
+```toml
+[[containers]]
+class_name = "Sandbox"
+image = "./Dockerfile"
+instance_type = "lite"
+max_instances = 1
+
+
+[[durable_objects.bindings]]
+class_name = "Sandbox"
+name = "Sandbox"
+
+
+[[migrations]]
+new_sqlite_classes = [ "Sandbox" ]
+tag = "v1"
 ```
 
 * **containers** \- Defines the [container image, instance type, and resource limits](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) for your sandbox environment. If you expect to have multiple sandbox instances, you can increase `max_instances`.

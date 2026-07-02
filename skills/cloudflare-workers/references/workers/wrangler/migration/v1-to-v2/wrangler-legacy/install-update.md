@@ -20,9 +20,7 @@ This page is for Wrangler v1, which has been deprecated. [Learn how to update to
 
 ### Install with `npm`
 
-Terminal window
-
-```
+```sh
 npm i @cloudflare/wrangler -g
 ```
 
@@ -34,17 +32,13 @@ You may have already installed npm. It is possible that an `EACCES` error may be
 
 Assuming you have Rust’s package manager, [Cargo ↗](https://github.com/rust-lang/cargo), installed, run:
 
-Terminal window
-
-```
+```sh
 cargo install wrangler
 ```
 
 Otherwise, to install Cargo, you must first install rustup. On Linux and macOS systems, `rustup` can be installed as follows:
 
-Terminal window
-
-```
+```sh
 curl https://sh.rustup.rs -sSf | sh
 ```
 
@@ -54,9 +48,7 @@ Windows users will need to install Perl as a dependency for `openssl-sys` — [S
 
 After Cargo is installed, you may now install Wrangler:
 
-Terminal window
-
-```
+```sh
 cargo install wrangler
 ```
 
@@ -64,9 +56,7 @@ Customize OpenSSL
 
 By default, a copy of OpenSSL is included to make things easier during installation, but this can make the binary size larger. If you want to use your system's OpenSSL installation, provide the feature flag `sys-openssl` when running install:
 
-Terminal window
-
-```
+```sh
 cargo install wrangler --features sys-openssl
 ```
 
@@ -81,17 +71,13 @@ To update [Wrangler ↗](https://github.com/cloudflare/wrangler-legacy), run one
 
 ### Update with `npm`
 
-Terminal window
-
-```
+```sh
 npm update -g @cloudflare/wrangler
 ```
 
 ### Update with `cargo`
 
-Terminal window
-
-```
+```sh
 cargo install wrangler --force
 ```
 

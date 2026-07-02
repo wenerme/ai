@@ -24,16 +24,20 @@ Displays the current viewer count for a livestream.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkLivestreamViewerCount    android:id="@+id/rtk_viewer_count"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkLivestreamViewerCount
+    android:id="@+id/rtk_viewer_count"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val viewerCount = findViewById<RtkLivestreamViewerCount>(R.id.rtk_viewer_count)viewerCount.refresh(meeting)
+```kotlin
+val viewerCount = findViewById<RtkLivestreamViewerCount>(R.id.rtk_viewer_count)
+viewerCount.refresh(meeting)
 ```
 
 ```json

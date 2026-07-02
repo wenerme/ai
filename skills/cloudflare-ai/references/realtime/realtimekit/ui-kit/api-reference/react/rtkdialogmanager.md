@@ -35,16 +35,29 @@ A component which handles all dialog elements in a component such as:
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDialogManager } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkDialogManager />;}
+
+
+function MyComponent() {
+  return <RtkDialogManager />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDialogManager } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkDialogManager      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDialogManager
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

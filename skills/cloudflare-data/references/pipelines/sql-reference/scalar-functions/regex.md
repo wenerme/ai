@@ -20,7 +20,7 @@ Cloudflare Pipelines uses a [PCRE-like ↗](https://en.wikibooks.org/wiki/Regula
 
 Returns true if a [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax) has at least one match in a string, false otherwise.
 
-```
+```plaintext
 regexp_like(str, regexp[, flags])
 ```
 
@@ -37,8 +37,19 @@ regexp_like(str, regexp[, flags])
 
 **Example**
 
-```
-select regexp_like('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');+--------------------------------------------------------+| regexp_like(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |+--------------------------------------------------------+| true                                                   |+--------------------------------------------------------+SELECT regexp_like('aBc', '(b|d)', 'i');+--------------------------------------------------+| regexp_like(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |+--------------------------------------------------+| true                                             |+--------------------------------------------------+
+```sql
+select regexp_like('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');
++--------------------------------------------------------+
+| regexp_like(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |
++--------------------------------------------------------+
+| true                                                   |
++--------------------------------------------------------+
+SELECT regexp_like('aBc', '(b|d)', 'i');
++--------------------------------------------------+
+| regexp_like(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |
++--------------------------------------------------+
+| true                                             |
++--------------------------------------------------+
 ```
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
@@ -47,7 +58,7 @@ Additional examples can be found [here ↗](https://github.com/apache/datafusion
 
 Returns a list of [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax) matches in a string.
 
-```
+```plaintext
 regexp_match(str, regexp[, flags])
 ```
 
@@ -64,8 +75,19 @@ regexp_match(str, regexp[, flags])
 
 **Example**
 
-```
-select regexp_match('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');+---------------------------------------------------------+| regexp_match(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |+---------------------------------------------------------+| [Köln]                                                  |+---------------------------------------------------------+SELECT regexp_match('aBc', '(b|d)', 'i');+---------------------------------------------------+| regexp_match(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |+---------------------------------------------------+| [B]                                               |+---------------------------------------------------+
+```sql
+select regexp_match('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');
++---------------------------------------------------------+
+| regexp_match(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |
++---------------------------------------------------------+
+| [Köln]                                                  |
++---------------------------------------------------------+
+SELECT regexp_match('aBc', '(b|d)', 'i');
++---------------------------------------------------+
+| regexp_match(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |
++---------------------------------------------------+
+| [B]                                               |
++---------------------------------------------------+
 ```
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
@@ -74,7 +96,7 @@ Additional examples can be found [here ↗](https://github.com/apache/datafusion
 
 Replaces substrings in a string that match a [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax).
 
-```
+```plaintext
 regexp_replace(str, regexp, replacement[, flags])
 ```
 
@@ -93,8 +115,19 @@ regexp_replace(str, regexp, replacement[, flags])
 
 **Example**
 
-```
-SELECT regexp_replace('foobarbaz', 'b(..)', 'X\\1Y', 'g');+------------------------------------------------------------------------+| regexp_replace(Utf8("foobarbaz"),Utf8("b(..)"),Utf8("X\1Y"),Utf8("g")) |+------------------------------------------------------------------------+| fooXarYXazY                                                            |+------------------------------------------------------------------------+SELECT regexp_replace('aBc', '(b|d)', 'Ab\\1a', 'i');+-------------------------------------------------------------------+| regexp_replace(Utf8("aBc"),Utf8("(b|d)"),Utf8("Ab\1a"),Utf8("i")) |+-------------------------------------------------------------------+| aAbBac                                                            |+-------------------------------------------------------------------+
+```sql
+SELECT regexp_replace('foobarbaz', 'b(..)', 'X\\1Y', 'g');
++------------------------------------------------------------------------+
+| regexp_replace(Utf8("foobarbaz"),Utf8("b(..)"),Utf8("X\1Y"),Utf8("g")) |
++------------------------------------------------------------------------+
+| fooXarYXazY                                                            |
++------------------------------------------------------------------------+
+SELECT regexp_replace('aBc', '(b|d)', 'Ab\\1a', 'i');
++-------------------------------------------------------------------+
+| regexp_replace(Utf8("aBc"),Utf8("(b|d)"),Utf8("Ab\1a"),Utf8("i")) |
++-------------------------------------------------------------------+
+| aAbBac                                                            |
++-------------------------------------------------------------------+
 ```
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
@@ -103,7 +136,7 @@ Additional examples can be found [here ↗](https://github.com/apache/datafusion
 
 Returns the position of `substr` in `origstr` (counting from 1). If `substr` does not appear in `origstr`, return 0.
 
-```
+```plaintext
 position(substr in origstr)
 ```
 

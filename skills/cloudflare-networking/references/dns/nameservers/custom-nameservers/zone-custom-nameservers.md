@@ -26,8 +26,8 @@ Zone custom nameservers are available for zones on Business or Enterprise plans.
 
 To create zone custom nameservers:
 
-* [ Dashboard ](#tab-panel-8191)
-* [ API ](#tab-panel-8192)
+* [ Dashboard ](#tab-panel-8472)
+* [ API ](#tab-panel-8473)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -37,7 +37,7 @@ To create zone custom nameservers:
 
 Use the [Edit zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) and specify the custom nameservers in the payload:
 
-```
+```txt
 "vanity_name_servers": ["ns1.example.com","ns2.example.com"]
 ```
 
@@ -60,8 +60,8 @@ If you are using [Cloudflare as a secondary DNS provider](https://developers.clo
 
 To remove zone custom nameservers (and their associated, read-only DNS records):
 
-* [ Dashboard ](#tab-panel-8193)
-* [ API ](#tab-panel-8194)
+* [ Dashboard ](#tab-panel-8474)
+* [ API ](#tab-panel-8475)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -69,7 +69,7 @@ To remove zone custom nameservers (and their associated, read-only DNS records):
 
 Use the [Edit zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) and include an empty array in the payload:
 
-```
+```txt
 "vanity_name_servers": []
 ```
 

@@ -66,31 +66,31 @@ Both [namespaces](https://developers.cloudflare.com/vectorize/best-practices/ins
 
 #### Implicit `$eq` operator
 
-```
+```json
 { "streaming_platform": "netflix" }
 ```
 
 #### Explicit operator
 
-```
+```json
 { "someKey": { "$ne": "hbo" } }
 ```
 
 #### `$in` operator
 
-```
+```json
 { "someKey": { "$in": ["hbo", "netflix"] } }
 ```
 
 #### `$nin` operator
 
-```
+```json
 { "someKey": { "$nin": ["hbo", "netflix"] } }
 ```
 
 #### Range query involving numbers
 
-```
+```json
 { "timestamp": { "$gte": 1734242400, "$lt": 1734328800 } }
 ```
 
@@ -100,20 +100,22 @@ Range queries can implement **prefix searching** on string metadata fields. This
 
 For example, the following filter matches all values starting with "net":
 
-```
+```json
 { "someKey": { "$gte": "net", "$lt": "neu" } }
 ```
 
 #### Implicit logical `AND` with multiple keys
 
-```
+```json
 { "pandas.nice": 42, "someKey": { "$ne": "someValue" } }
 ```
 
 #### Keys define nesting with `.` (dot)
 
-```
+```json
 { "pandas.nice": 42 }
+
+
 // looks for { "pandas": { "nice": 42 } }
 ```
 
@@ -131,63 +133,150 @@ Refer to the [legacy transition](https://developers.cloudflare.com/vectorize/ref
 
 With the following index definition:
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize create tutorial-index --dimensions=32 --metric=cosine
 ```
 
 Create metadata indexes:
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize create-metadata-index tutorial-index --property-name=url --type=string
 ```
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize create-metadata-index tutorial-index --property-name=streaming_platform --type=string
 ```
 
 Metadata can be added when [inserting or upserting vectors](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#examples).
 
-TypeScript
+**TypeScript**
 
-```
-const newMetadataVectors: Array<VectorizeVector> = [  {    id: "1",    values: [32.4, 74.1, 3.2, ...],    metadata: { url: "/products/sku/13913913", streaming_platform: "netflix" },  },  {    id: "2",    values: [15.1, 19.2, 15.8, ...],    metadata: { url: "/products/sku/10148191", streaming_platform: "hbo" },  },  {    id: "3",    values: [0.16, 1.2, 3.8, ...],    metadata: { url: "/products/sku/97913813", streaming_platform: "amazon" },  },  {    id: "4",    values: [75.1, 67.1, 29.9, ...],    metadata: { url: "/products/sku/418313", streaming_platform: "netflix" },  },  {    id: "5",    values: [58.8, 6.7, 3.4, ...],    metadata: { url: "/products/sku/55519183", streaming_platform: "hbo" },  },];
-// Upsert vectors with added metadata, returning a count of the vectors upserted and their vector IDslet upserted = await env.YOUR_INDEX.upsert(newMetadataVectors);
+```ts
+const newMetadataVectors: Array<VectorizeVector> = [
+  {
+    id: "1",
+    values: [32.4, 74.1, 3.2, ...],
+    metadata: { url: "/products/sku/13913913", streaming_platform: "netflix" },
+  },
+  {
+    id: "2",
+    values: [15.1, 19.2, 15.8, ...],
+    metadata: { url: "/products/sku/10148191", streaming_platform: "hbo" },
+  },
+  {
+    id: "3",
+    values: [0.16, 1.2, 3.8, ...],
+    metadata: { url: "/products/sku/97913813", streaming_platform: "amazon" },
+  },
+  {
+    id: "4",
+    values: [75.1, 67.1, 29.9, ...],
+    metadata: { url: "/products/sku/418313", streaming_platform: "netflix" },
+  },
+  {
+    id: "5",
+    values: [58.8, 6.7, 3.4, ...],
+    metadata: { url: "/products/sku/55519183", streaming_platform: "hbo" },
+  },
+];
+
+
+// Upsert vectors with added metadata, returning a count of the vectors upserted and their vector IDs
+let upserted = await env.YOUR_INDEX.upsert(newMetadataVectors);
 ```
 
 ### Query examples
 
 Use the `query()` method:
 
-TypeScript
+**TypeScript**
 
-```
-let queryVector: Array<number> = [54.8, 5.5, 3.1, ...];let originalMatches = await env.YOUR_INDEX.query(queryVector, {  topK: 3,  returnValues: true,  returnMetadata: 'all',});
+```ts
+let queryVector: Array<number> = [54.8, 5.5, 3.1, ...];
+let originalMatches = await env.YOUR_INDEX.query(queryVector, {
+  topK: 3,
+  returnValues: true,
+  returnMetadata: 'all',
+});
 ```
 
 Results without metadata filtering:
 
-```
-{  "count": 3,  "matches": [    {      "id": "5",      "score": 0.999909486,      "values": [58.79999923706055, 6.699999809265137, 3.4000000953674316],      "metadata": {        "url": "/products/sku/55519183",        "streaming_platform": "hbo"      }    },    {      "id": "4",      "score": 0.789848214,      "values": [75.0999984741211, 67.0999984741211, 29.899999618530273],      "metadata": {        "url": "/products/sku/418313",        "streaming_platform": "netflix"      }    },    {      "id": "2",      "score": 0.611976262,      "values": [15.100000381469727, 19.200000762939453, 15.800000190734863],      "metadata": {        "url": "/products/sku/10148191",        "streaming_platform": "hbo"      }    }  ]}
+```json
+{
+  "count": 3,
+  "matches": [
+    {
+      "id": "5",
+      "score": 0.999909486,
+      "values": [58.79999923706055, 6.699999809265137, 3.4000000953674316],
+      "metadata": {
+        "url": "/products/sku/55519183",
+        "streaming_platform": "hbo"
+      }
+    },
+    {
+      "id": "4",
+      "score": 0.789848214,
+      "values": [75.0999984741211, 67.0999984741211, 29.899999618530273],
+      "metadata": {
+        "url": "/products/sku/418313",
+        "streaming_platform": "netflix"
+      }
+    },
+    {
+      "id": "2",
+      "score": 0.611976262,
+      "values": [15.100000381469727, 19.200000762939453, 15.800000190734863],
+      "metadata": {
+        "url": "/products/sku/10148191",
+        "streaming_platform": "hbo"
+      }
+    }
+  ]
+}
 ```
 
 The same `query()` method with a `filter` property supports metadata filtering.
 
-TypeScript
+**TypeScript**
 
-```
-let queryVector: Array<number> = [54.8, 5.5, 3.1, ...];let metadataMatches = await env.YOUR_INDEX.query(queryVector, {  topK: 3,  filter: { streaming_platform: "netflix" },  returnValues: true,  returnMetadata: 'all',});
+```ts
+let queryVector: Array<number> = [54.8, 5.5, 3.1, ...];
+let metadataMatches = await env.YOUR_INDEX.query(queryVector, {
+  topK: 3,
+  filter: { streaming_platform: "netflix" },
+  returnValues: true,
+  returnMetadata: 'all',
+});
 ```
 
 Results with metadata filtering:
 
-```
-{  "count": 2,  "matches": [    {      "id": "4",      "score": 0.789848214,      "values": [75.0999984741211, 67.0999984741211, 29.899999618530273],      "metadata": {        "url": "/products/sku/418313",        "streaming_platform": "netflix"      }    },    {      "id": "1",      "score": 0.491185264,      "values": [32.400001525878906, 74.0999984741211, 3.200000047683716],      "metadata": {        "url": "/products/sku/13913913",        "streaming_platform": "netflix"      }    }  ]}
+```json
+{
+  "count": 2,
+  "matches": [
+    {
+      "id": "4",
+      "score": 0.789848214,
+      "values": [75.0999984741211, 67.0999984741211, 29.899999618530273],
+      "metadata": {
+        "url": "/products/sku/418313",
+        "streaming_platform": "netflix"
+      }
+    },
+    {
+      "id": "1",
+      "score": 0.491185264,
+      "values": [32.400001525878906, 74.0999984741211, 3.200000047683716],
+      "metadata": {
+        "url": "/products/sku/13913913",
+        "streaming_platform": "netflix"
+      }
+    }
+  ]
+}
 ```
 
 ## Limitations

@@ -33,20 +33,34 @@ Note
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkSelfVideoToggleButton(  meeting: yourMeetingInstance,)
+
+
+RtkSelfVideoToggleButton(
+  meeting: yourMeetingInstance,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkSelfVideoToggleButton(  meeting: yourMeetingInstance,  onVideoToggle: () {    // Handle video toggle  },  iconSize: 24.0,  iconColor: Colors.red,  showLabel: true,)
+
+
+RtkSelfVideoToggleButton(
+  meeting: yourMeetingInstance,
+  onVideoToggle: () {
+    // Handle video toggle
+  },
+  iconSize: 24.0,
+  iconColor: Colors.red,
+  showLabel: true,
+)
 ```
 
 ```json

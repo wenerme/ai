@@ -29,16 +29,30 @@ Settings dialog with audio device selection, video device selection, and network
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettings } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettings meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkSettings meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettings } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkSettings      meeting={meeting}      size="md"      onClose={() => setSettingsOpen(false)}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSettings
+      meeting={meeting}
+      size="md"
+      onClose={() => setSettingsOpen(false)}
+    />
+  );
+}
 ```
 
 ```json

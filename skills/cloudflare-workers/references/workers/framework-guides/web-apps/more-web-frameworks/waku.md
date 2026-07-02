@@ -88,9 +88,7 @@ For setup, select the following options:
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-waku-app
 ```
 

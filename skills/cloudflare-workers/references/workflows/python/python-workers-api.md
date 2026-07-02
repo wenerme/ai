@@ -18,11 +18,15 @@ This guide covers the Python Workflows SDK, with instructions on how to build an
 
 The `WorkflowEntrypoint` is the main entrypoint for a Python workflow. It extends the `WorkflowEntrypoint` class, and implements the `run` method.
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkflowEntrypoint
-class MyWorkflow(WorkflowEntrypoint):    async def run(self, event, step):        # steps here
+
+
+class MyWorkflow(WorkflowEntrypoint):
+    async def run(self, event, step):
+        # steps here
 ```
 
 ## WorkflowStep
@@ -42,11 +46,20 @@ Note
 
 Older compatibility behavior supports explicit dependency lists with `depends=[...]`. For new workflows, prefer implicit dependency resolution by parameter name.
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkflowEntrypoint
-class MyWorkflow(WorkflowEntrypoint):    async def run(self, event, step):        @step.do()        async def my_first_step():            # do some work            return "Hello World!"
+
+
+class MyWorkflow(WorkflowEntrypoint):
+    async def run(self, event, step):
+        @step.do()
+        async def my_first_step():
+            # do some work
+            return "Hello World!"
+
+
         await my_first_step()
 ```
 
@@ -58,21 +71,25 @@ When returning state from a step, you must make sure that the returned value is 
   * `name` — the name of the step.
   * `duration` — the duration to sleep until, in either seconds or as a `WorkflowDuration` compatible string.
 
-Python
+**Python**
 
-```
-async def run(self, event, step):    await step.sleep("my-sleep-step", "10 seconds")
+```python
+async def run(self, event, step):
+    await step.sleep("my-sleep-step", "10 seconds")
 ```
 
 * `step.sleep_until(name, timestamp)`
   * `name` — the name of the step.
   * `timestamp` — a `datetime.datetime` object or seconds from the Unix epoch to sleep the workflow instance until.
 
-Python
+**Python**
 
-```
+```python
 import datetime
-async def run(self, event, step):    await step.sleep_until("my-sleep-step", datetime.datetime.now() + datetime.timedelta(seconds=10))
+
+
+async def run(self, event, step):
+    await step.sleep_until("my-sleep-step", datetime.datetime.now() + datetime.timedelta(seconds=10))
 ```
 
 * `step.wait_for_event(name, event_type, timeout="24 hours")`
@@ -80,10 +97,11 @@ async def run(self, event, step):    await step.sleep_until("my-sleep-step", dat
   * `event_type` — the type of event to wait for.
   * `timeout` — the timeout for the `wait_for_event` call. The default timeout is 24 hours.
 
-Python
+**Python**
 
-```
-async def run(self, event, step):    await step.wait_for_event("my-wait-for-event-step", "my-event-type")
+```python
+async def run(self, event, step):
+    await step.wait_for_event("my-wait-for-event-step", "my-event-type")
 ```
 
 ### `event` parameter
@@ -105,11 +123,23 @@ Note
 
 Some built-in Python errors (e.g.: `ValueError`, `TypeError`) will work correctly. User defined exceptions, as well as other built-in Python errors will not and should be caught with the `Exception` class.
 
-Python
+**Python**
 
-```
-async def run(self, event, step):    async def try_step(fn):        try:            return await fn()        except Exception as e:            print(f"Successfully caught {type(e).__name__}: {e}")
-    @step.do("my_failing")    async def my_failing():        print("Executing my_failing")        raise TypeError("Intentional error in my_failing")
+```python
+async def run(self, event, step):
+    async def try_step(fn):
+        try:
+            return await fn()
+        except Exception as e:
+            print(f"Successfully caught {type(e).__name__}: {e}")
+
+
+    @step.do("my_failing")
+    async def my_failing():
+        print("Executing my_failing")
+        raise TypeError("Intentional error in my_failing")
+
+
     await try_step(my_failing)
 ```
 
@@ -117,10 +147,12 @@ async def run(self, event, step):    async def try_step(fn):        try:        
 
 The Python Workflows SDK provides a `NonRetryableError` class that can be used to signal that a step should not be retried.
 
-Python
+**Python**
 
-```
+```python
 from workers.workflows import NonRetryableError
+
+
 raise NonRetryableError(message)
 ```
 
@@ -128,11 +160,18 @@ raise NonRetryableError(message)
 
 You can bind a step to a specific retry policy by passing a `WorkflowStepConfig` object to the `config` parameter of the `step.do` decorator. With Python Workflows, you need to make sure that your `dict` respects the [WorkflowStepConfig](https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig) type.
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkflowEntrypoint
-class DemoWorkflowClass(WorkflowEntrypoint):    async def run(self, event, step):        @step.do('step-name', config={"retries": {"limit": 1, "delay": "10 seconds"}})        async def first_step():            # do some work            pass
+
+
+class DemoWorkflowClass(WorkflowEntrypoint):
+    async def run(self, event, step):
+        @step.do('step-name', config={"retries": {"limit": 1, "delay": "10 seconds"}})
+        async def first_step():
+            # do some work
+            pass
 ```
 
 ### Access step context (`ctx`)
@@ -145,11 +184,23 @@ If you define a `ctx` parameter, the [step context](https://developers.cloudflar
 | attempt | int  | The current attempt number (1-indexed).                                                          |
 | config  | dict | The resolved retry and timeout configuration for this step.                                      |
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkflowEntrypoint
-class CtxWorkflow(WorkflowEntrypoint):    async def run(self, event, step):        @step.do()        async def read_context(ctx):            print(ctx["step"]["name"])    # step name            print(ctx["step"]["count"])   # step count            print(ctx["attempt"])         # attempt number            print(ctx["config"])          # resolved step config            return ctx["attempt"]
+
+
+class CtxWorkflow(WorkflowEntrypoint):
+    async def run(self, event, step):
+        @step.do()
+        async def read_context(ctx):
+            print(ctx["step"]["name"])    # step name
+            print(ctx["step"]["count"])   # step count
+            print(ctx["attempt"])         # attempt number
+            print(ctx["config"])          # resolved step config
+            return ctx["attempt"]
+
+
         return await read_context()
 ```
 
@@ -159,11 +210,16 @@ Note that `env` is a JavaScript object exposed to the Python script via [JsProxy
 
 Let's consider the previous binding called `MY_WORKFLOW`. Here's how you would create a new instance:
 
-Python
+**Python**
 
-```
+```python
 from workers import Response, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        instance = await self.env.MY_WORKFLOW.create()        return Response.json({"status": "success"})
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        instance = await self.env.MY_WORKFLOW.create()
+        return Response.json({"status": "success"})
 ```
 
 ```json

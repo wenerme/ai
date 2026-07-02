@@ -48,10 +48,38 @@ The `enabled` and `action` properties for a rule are set in the Managed phase Ma
 
 The example below contains a request for a Managed phase Managed Kind ruleset.
 
-Example request - Create a Managed phase Managed Kind ruleset
+**Example request - Create a Managed phase Managed Kind ruleset**
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "execute ruleset",  "description": "Ruleset containing execute rules",  "kind": "root",  "phase": "magic_transit_managed",  "rules": [    {      "expression": "true",      "action": "execute",      "description": "Enable one rule ",      "action_parameters": {        "id": "<MANAGED_RULESET_ID>",        "version": "latest",        "overrides": {          "rules": [            {              "id": "<MANAGED_RULE_ID>",              "enabled": true,              "action": "log"            }          ]        }      }    }  ]}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "execute ruleset",
+  "description": "Ruleset containing execute rules",
+  "kind": "root",
+  "phase": "magic_transit_managed",
+  "rules": [
+    {
+      "expression": "true",
+      "action": "execute",
+      "description": "Enable one rule ",
+      "action_parameters": {
+        "id": "<MANAGED_RULESET_ID>",
+        "version": "latest",
+        "overrides": {
+          "rules": [
+            {
+              "id": "<MANAGED_RULE_ID>",
+              "enabled": true,
+              "action": "log"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}'
 ```
 
 ### 2\. Patch a Managed phase Managed kind ruleset
@@ -60,20 +88,60 @@ Because the root ruleset can only contain one rule, you must PATCH that existing
 
 Building off the example from the previous step, the example below enables a category to select multiple rules instead of a single rule. The category will be set to `log` mode, which means the rule can produce logs but will not accept or drop packets.
 
-Example request - Patch a Managed phase Managed kind ruleset
+**Example request - Patch a Managed phase Managed kind ruleset**
 
-```
-curl --request PATCH \https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_ruleset}/rules/{root_kind_rule} \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "expression": "true",  "action": "execute",  "action_parameters": {    "id": "<MANAGED_RULESET_ID>",    "version": "latest",    "overrides": {      "rules": [        {          "id": "<MANAGED_RULE_ID>",          "enabled": true        }      ],      "categories": [        {          "category": "simple",          "enabled": true,          "action": "log"        }      ]    }  }}'
+```bash
+curl --request PATCH \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_ruleset}/rules/{root_kind_rule} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "expression": "true",
+  "action": "execute",
+  "action_parameters": {
+    "id": "<MANAGED_RULESET_ID>",
+    "version": "latest",
+    "overrides": {
+      "rules": [
+        {
+          "id": "<MANAGED_RULE_ID>",
+          "enabled": true
+        }
+      ],
+      "categories": [
+        {
+          "category": "simple",
+          "enabled": true,
+          "action": "log"
+        }
+      ]
+    }
+  }
+}'
 ```
 
 ### 3\. Enable all rules
 
 To enable the complete ruleset or enable all rules, send the request below.
 
-Example request to enable all rules
+**Example request to enable all rules**
 
-```
-curl --request PATCH \https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_ruleset}/rules/{root_kind_rule} \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "expression": "true",  "action": "execute",  "action_parameters": {    "id": "<MANAGED_RULESET_ID>",    "version": "latest",    "overrides": {      "enabled": true    }  }}'
+```bash
+curl --request PATCH \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_ruleset}/rules/{root_kind_rule} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "expression": "true",
+  "action": "execute",
+  "action_parameters": {
+    "id": "<MANAGED_RULESET_ID>",
+    "version": "latest",
+    "overrides": {
+      "enabled": true
+    }
+  }
+}'
 ```
 
 ### 4\. Delete a ruleset

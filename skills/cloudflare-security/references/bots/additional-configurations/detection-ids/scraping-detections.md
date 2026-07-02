@@ -25,8 +25,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access scraping detections:
 
-* [  New dashboard ](#tab-panel-6904)
-* [ Old dashboard ](#tab-panel-6905)
+* [  New dashboard ](#tab-panel-7152)
+* [ Old dashboard ](#tab-panel-7153)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -40,9 +40,9 @@ To access scraping detections:
 4. Fill out the form using **Bot Detection IDs** along with other necessary information.
 5. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
 
-Rule example
+**Rule example**
 
-```
+```js
 (any(cf.bot_management.detection_ids[*] in {50331648 50331649}) and not cf.bot_management.verified_bot)
 ```
 

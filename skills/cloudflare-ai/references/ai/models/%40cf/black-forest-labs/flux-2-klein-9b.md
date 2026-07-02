@@ -28,27 +28,59 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2188)
-* [  curl ](#tab-panel-2189)
+* [  TypeScript ](#tab-panel-2236)
+* [  curl ](#tab-panel-2237)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const form = new FormData();    form.append('prompt', 'a sunset with a dog');    form.append('width', '1024');    form.append('height', '1024');
-    // FormData doesn't expose its serialized body or boundary. Passing it to a    // Request (or Response) constructor serializes it and generates the Content-Type    // header with the boundary, which is required for the server to parse the multipart fields.    const formResponse = new Response(form);    const formStream = formResponse.body;    const formContentType = formResponse.headers.get('content-type')!;
-    const resp = await env.AI.run("@cf/black-forest-labs/flux-2-klein-9b", {      multipart: {        body: formStream,        contentType: formContentType      }    });
-    return Response.json(resp);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const form = new FormData();
+    form.append('prompt', 'a sunset with a dog');
+    form.append('width', '1024');
+    form.append('height', '1024');
+
+
+    // FormData doesn't expose its serialized body or boundary. Passing it to a
+    // Request (or Response) constructor serializes it and generates the Content-Type
+    // header with the boundary, which is required for the server to parse the multipart fields.
+    const formResponse = new Response(form);
+    const formStream = formResponse.body;
+    const formContentType = formResponse.headers.get('content-type')!;
+
+
+    const resp = await env.AI.run("@cf/black-forest-labs/flux-2-klein-9b", {
+      multipart: {
+        body: formStream,
+        contentType: formContentType
+      }
+    });
+
+
+    return Response.json(resp);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl --request POST \  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-klein-9b' \  --header 'Authorization: Bearer {TOKEN}' \  --header 'Content-Type: multipart/form-data' \  --form 'prompt=a sunset at the alps' \  --form steps=25 \  --form width=1024 \  --form height=1024
+```sh
+curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-klein-9b' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=a sunset at the alps' \
+  --form steps=25 \
+  --form width=1024 \
+  --form height=1024
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2190)
-* [ Output ](#tab-panel-2191)
+* [ Input ](#tab-panel-2238)
+* [ Output ](#tab-panel-2239)
 
 ▶multipart{}
 

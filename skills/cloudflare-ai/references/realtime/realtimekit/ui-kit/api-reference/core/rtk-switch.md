@@ -28,19 +28,26 @@ A switch component which follows RTK Design System.
 
 ### Basic Usage
 
-```
+```html
 <rtk-switch></rtk-switch>
 ```
 
 ### With Properties
 
-```
-<rtk-switch></rtk-switch>
+```html
+<rtk-switch>
+</rtk-switch>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-switch");
-  el.checked= true;  el.disabled= true;  el.readonly= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-switch");
+
+
+  el.checked= true;
+  el.disabled= true;
+  el.readonly= true;
+</script>
 ```
 
 ```json

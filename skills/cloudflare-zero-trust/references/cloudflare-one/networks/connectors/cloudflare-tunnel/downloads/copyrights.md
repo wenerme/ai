@@ -95,15 +95,22 @@ END OF TERMS AND CONDITIONS
 
 APPENDIX: How to apply the Apache License to your work.
 
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 
 Copyright \[yyyy\] \[name of copyright owner\]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 
@@ -163,7 +170,7 @@ Copyright 2010 The Go Authors. All rights reserved. [https://github.com/golang/p
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-```
+```plaintext
 * Redistributions of source code must retain the above copyright
 ```
 
@@ -187,8 +194,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [https://godoc.org/github.com/matttproud/golang\\\_protobuf\\\_extensions/pbutil ↗](https://godoc.org/github.com/matttproud/golang%5C%5Fprotobuf%5C%5Fextensions/pbutil)
 
-```
-                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/
+```plaintext
+                             Apache License
+                       Version 2.0, January 2004
+                    http://www.apache.org/licenses/
 ```
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
@@ -222,15 +231,22 @@ END OF TERMS AND CONDITIONS
 
 APPENDIX: How to apply the Apache License to your work.
 
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 
 Copyright \[yyyy\] \[name of copyright owner\]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 
@@ -267,8 +283,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 [https://github.com/prometheus/client\_golang ↗](https://github.com/prometheus/client%5Fgolang) [https://github.com/prometheus/client\_model ↗](https://github.com/prometheus/client%5Fmodel) [https://github.com/prometheus/common ↗](https://github.com/prometheus/common) [https://github.com/prometheus/procfs ↗](https://github.com/prometheus/procfs)
 
-```
-                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/
+```plaintext
+                             Apache License
+                       Version 2.0, January 2004
+                    http://www.apache.org/licenses/
 ```
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
@@ -302,15 +320,22 @@ END OF TERMS AND CONDITIONS
 
 APPENDIX: How to apply the Apache License to your work.
 
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "[]"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "[]"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 
 Copyright \[yyyy\] \[name of copyright owner\]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 
@@ -334,8 +359,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [https://github.com/go-yaml/yaml ↗](https://github.com/go-yaml/yaml)
 
-```
-                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/
+```plaintext
+                             Apache License
+                       Version 2.0, January 2004
+                    http://www.apache.org/licenses/
 ```
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
@@ -369,15 +396,22 @@ END OF TERMS AND CONDITIONS
 
 APPENDIX: How to apply the Apache License to your work.
 
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 
 Copyright \[yyyy\] \[name of copyright owner\]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 

@@ -22,8 +22,9 @@ Requires a Cloudflare Enterprise plan with [malicious uploads detection](https:/
 
 Example usage:
 
-```
-# Check if requests to a specific endpoint contain content objects other than PDFsany(cf.waf.content_scan.obj_types[*] != "application/pdf") and http.request.uri.path eq "/upload"
+```txt
+# Check if requests to a specific endpoint contain content objects other than PDFs
+any(cf.waf.content_scan.obj_types[*] != "application/pdf") and http.request.uri.path eq "/upload"
 ```
 
 Categories:

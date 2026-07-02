@@ -27,19 +27,24 @@ A component which shows permission related troubleshooting information.
 
 ### Basic Usage
 
-```
+```html
 <rtk-permissions-message></rtk-permissions-message>
 ```
 
 ### With Properties
 
-```
-<rtk-permissions-message></rtk-permissions-message>
+```html
+<rtk-permissions-message>
+</rtk-permissions-message>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-permissions-message");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-permissions-message");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

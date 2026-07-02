@@ -18,20 +18,33 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 An [EventEmitter ↗](https://nodejs.org/docs/latest/api/events.html#class-eventemitter)is an object that emits named events that cause listeners to be called.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { EventEmitter } from "node:events";
-const emitter = new EventEmitter();emitter.on("hello", (...args) => {  console.log(...args); // 1 2 3});
+
+
+const emitter = new EventEmitter();
+emitter.on("hello", (...args) => {
+  console.log(...args); // 1 2 3
+});
+
+
 emitter.emit("hello", 1, 2, 3);
 ```
 
 The implementation in the Workers runtime supports the entire Node.js `EventEmitter` API. This includes the [captureRejections ↗](https://nodejs.org/docs/latest/api/events.html#capture-rejections-of-promises)option that allows improved handling of async functions as event handlers:
 
-JavaScript
+**JavaScript**
 
-```
-const emitter = new EventEmitter({ captureRejections: true });emitter.on("hello", async (...args) => {  throw new Error("boom");});emitter.on("error", (err) => {  // the async promise rejection is emitted here!});
+```js
+const emitter = new EventEmitter({ captureRejections: true });
+emitter.on("hello", async (...args) => {
+  throw new Error("boom");
+});
+emitter.on("error", (err) => {
+  // the async promise rejection is emitted here!
+});
 ```
 
 Like Node.js, when an `'error'` event is emitted on an `EventEmitter` and there is no listener for it, the error will be immediately thrown. However, in Node.js it is possible to add a handler on the `process` object for the `'uncaughtException'` event to catch globally uncaught exceptions. The `'uncaughtException'` event, however, is currently not implemented in the Workers runtime. It is strongly recommended to always add an `'error'` listener to any `EventEmitter` instance.

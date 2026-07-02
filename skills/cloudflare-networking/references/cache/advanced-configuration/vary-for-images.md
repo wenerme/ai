@@ -55,10 +55,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Change variants setting
+**Change variants setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": {        "jpeg": [            "image/webp",            "image/avif"        ],        "jpg": [            "image/webp",            "image/avif"        ]    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": {
+        "jpeg": [
+            "image/webp",
+            "image/avif"
+        ],
+        "jpg": [
+            "image/webp",
+            "image/avif"
+        ]
+    }
+  }'
 ```
 
 ### Modify to only allow WebP variants
@@ -69,10 +83,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Change variants setting
+**Change variants setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": {        "jpeg": [            "image/webp"        ],        "jpg": [            "image/webp"        ]    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": {
+        "jpeg": [
+            "image/webp"
+        ],
+        "jpg": [
+            "image/webp"
+        ]
+    }
+  }'
 ```
 
 ### Delete the rule
@@ -83,10 +109,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Delete variants setting
+**Delete variants setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Get the rule
@@ -99,10 +127,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Read`
 * `Zone Write`
 
-Get variants setting
+**Get variants setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 To learn more about purging varied images, refer to [Purge varied images](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-varied-images/).

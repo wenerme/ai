@@ -28,26 +28,93 @@ RealtimeKit's default icon set is available at [icons.realtime.cloudflare.com â†
 
 To replace RealtimeKit's default icon set with your own, pass the link to your icon set in the UI component.
 
-```
-<body>  <rtk-meeting id="my-meeting"></rtk-meeting>
-  <script>    const init = async () => {      const meeting = await RealtimeKitClient.init({        authToken: "<participant_auth_token>",        defaults: {          audio: true,          video: true,        },      });
-      const meetingEl = document.getElementById("my-meeting");      meetingEl.meeting = meeting;
-      // Pass custom icon pack URL      meetingEl.iconPackUrl = "https://example.com/my-icon-pack.json";    };
-    init();  </script></body>
+```html
+<body>
+  <rtk-meeting id="my-meeting"></rtk-meeting>
+
+
+  <script>
+    const init = async () => {
+      const meeting = await RealtimeKitClient.init({
+        authToken: "<participant_auth_token>",
+        defaults: {
+          audio: true,
+          video: true,
+        },
+      });
+
+
+      const meetingEl = document.getElementById("my-meeting");
+      meetingEl.meeting = meeting;
+
+
+      // Pass custom icon pack URL
+      meetingEl.iconPackUrl = "https://example.com/my-icon-pack.json";
+    };
+
+
+    init();
+  </script>
+</body>
 ```
 
-```
-import {  RealtimeKitProvider,  useRealtimeKitClient,} from "@cloudflare/realtimekit-react";import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";import { useEffect } from "react";
-function App() {  const [meeting, initMeeting] = useRealtimeKitClient();
-  useEffect(() => {    initMeeting({      authToken: "<participant_auth_token>",      defaults: {        audio: true,        video: true,      },    });  }, []);
-  return (    <RealtimeKitProvider value={meeting}>      <RtkMeeting        meeting={meeting}        iconPackUrl="https://example.com/my-icon-pack.json"      />    </RealtimeKitProvider>  );}
+```jsx
+import {
+  RealtimeKitProvider,
+  useRealtimeKitClient,
+} from "@cloudflare/realtimekit-react";
+import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
+import { useEffect } from "react";
+
+
+function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+
+
+  useEffect(() => {
+    initMeeting({
+      authToken: "<participant_auth_token>",
+      defaults: {
+        audio: true,
+        video: true,
+      },
+    });
+  }, []);
+
+
+  return (
+    <RealtimeKitProvider value={meeting}>
+      <RtkMeeting
+        meeting={meeting}
+        iconPackUrl="https://example.com/my-icon-pack.json"
+      />
+    </RealtimeKitProvider>
+  );
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-class AppComponent {  title = "MyProject";  @ViewChild("myid") meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
-  async ngAfterViewInit() {    const meeting = await RealtimeKitClient.init({      authToken: "<auth-token>",    });    meeting.join();    this.rtkMeeting = meeting;    if (this.meetingComponent) {      this.meetingComponent.meeting = meeting;      this.meetingComponent.iconPackUrl =        "https://example.com/my-icon-pack.json";    }  }}
+```typescript
+class AppComponent {
+  title = "MyProject";
+  @ViewChild("myid") meetingComponent: RtkMeeting;
+  rtkMeeting: RealtimeKitClient;
+
+
+  async ngAfterViewInit() {
+    const meeting = await RealtimeKitClient.init({
+      authToken: "<auth-token>",
+    });
+    meeting.join();
+    this.rtkMeeting = meeting;
+    if (this.meetingComponent) {
+      this.meetingComponent.meeting = meeting;
+      this.meetingComponent.iconPackUrl =
+        "https://example.com/my-icon-pack.json";
+    }
+  }
+}
 ```
 
 ## IconPack reference

@@ -31,14 +31,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-paginated-list></rtk-paginated-list>
+```html
+<!-- component.html -->
+<rtk-paginated-list></rtk-paginated-list>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-paginated-list [autoScroll]="true" [createNodes]="[]" emptyListLabel="example"></rtk-paginated-list>
+```html
+<!-- component.html -->
+<rtk-paginated-list
+ [autoScroll]="true"
+ [createNodes]="[]"
+ emptyListLabel="example">
+</rtk-paginated-list>
 ```
 
 ```json

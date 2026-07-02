@@ -22,7 +22,7 @@ Cloudflare supports HTTP/2 Server Push and it can be enabled for stylesheets and
 
 Once the plugin is installed, you can enable HTTP/2 Server Push by adding the following line to your `wp-config.php` file:
 
-```
+```php
 define('CLOUDFLARE_HTTP2_SERVER_PUSH_ACTIVE', true);
 ```
 

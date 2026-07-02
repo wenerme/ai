@@ -26,8 +26,12 @@ Resource Tagging is in public beta. The API is stable, but behavior may change a
 
 Tags are simple key-value string pairs stored as a JSON object:
 
-```
-{  "environment": "production",  "team": "platform",  "region": "us-west-1"}
+```json
+{
+  "environment": "production",
+  "team": "platform",
+  "region": "us-west-1"
+}
 ```
 
 You manage tags through the Tagging API using `GET`, `PUT`, and `DELETE` operations. The API supports [filtering resources by tags](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/) with AND/OR logic, negation, and key-only matching.

@@ -25,11 +25,35 @@ To draw overlays on a [fetch() subrequest](https://developers.cloudflare.com/ima
 
 Each entry in the array specifies an overlay and its options, including [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) like [width](https://developers.cloudflare.com/images/optimization/features/#width--w), [height](https://developers.cloudflare.com/images/optimization/features/#height--h), [fit](https://developers.cloudflare.com/images/optimization/features/#fit), [blur](https://developers.cloudflare.com/images/optimization/features/#blur), and [rotate](https://developers.cloudflare.com/images/optimization/features/#rotate). Overlays are drawn in the order they appear — the last entry is the topmost layer.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request) {    const imageURL = "https://example.com/image.png";
-    return fetch(imageURL, {      cf: {        image: {          width: 800,          height: 600,          draw: [            {              url: "https://example.com/branding/logo.png",              bottom: 5,              right: 5,              fit: "contain",              width: 100,              height: 50,              opacity: 0.8,            },          ],        },      },    });  },};
+```js
+export default {
+  async fetch(request) {
+    const imageURL = "https://example.com/image.png";
+
+
+    return fetch(imageURL, {
+      cf: {
+        image: {
+          width: 800,
+          height: 600,
+          draw: [
+            {
+              url: "https://example.com/branding/logo.png",
+              bottom: 5,
+              right: 5,
+              fit: "contain",
+              width: 100,
+              height: 50,
+              opacity: 0.8,
+            },
+          ],
+        },
+      },
+    });
+  },
+};
 ```
 
 ## Draw with the Images binding
@@ -38,12 +62,29 @@ The [Images binding](https://developers.cloudflare.com/images/optimization/bindi
 
 Pass the overlay image as the first argument, then the draw options as the second. To apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) to the overlay image, pass an `.input()` chain with `.transform()` as the first argument.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const img = await fetch("https://zzzdna.com/blue.png");    const watermark = await fetch("https://zzzdna.com/purple.png");
-    const response = (      await env.IMAGES        .input(img.body)        .draw(          env.IMAGES.input(watermark.body).transform({ width: 100 }),          { bottom: 10, right: 10, opacity: 0.5 }        )        .output({ format: "image/avif" })    ).response();
-    return response;  },};
+```js
+export default {
+  async fetch(request, env) {
+    const img = await fetch("https://zzzdna.com/blue.png");
+    const watermark = await fetch("https://zzzdna.com/purple.png");
+
+
+    const response = (
+      await env.IMAGES
+        .input(img.body)
+        .draw(
+          env.IMAGES.input(watermark.body).transform({ width: 100 }),
+          { bottom: 10, right: 10, opacity: 0.5 }
+        )
+        .output({ format: "image/avif" })
+    ).response();
+
+
+    return response;
+  },
+};
 ```
 
 ## Options
@@ -142,30 +183,64 @@ Adds the color values of both images, which makes the overlapping areas brighter
 
 Tile a semitransparent watermark across the entire image using `cf.image`.
 
-JavaScript
+**JavaScript**
 
-```
-fetch(imageURL, {  cf: {    image: {      draw: [        {          url: "https://example.com/watermark.png",          repeat: true,          opacity: 0.2,        },      ],    },  },});
+```js
+fetch(imageURL, {
+  cf: {
+    image: {
+      draw: [
+        {
+          url: "https://example.com/watermark.png",
+          repeat: true,
+          opacity: 0.2,
+        },
+      ],
+    },
+  },
+});
 ```
 
 ### Logo in the corner
 
 Position a logo at the bottom-right corner using `cf.image`.
 
-JavaScript
+**JavaScript**
 
-```
-fetch(imageURL, {  cf: {    image: {      draw: [        {          url: "https://example.com/logo.png",          bottom: 5,          right: 5,        },      ],    },  },});
+```js
+fetch(imageURL, {
+  cf: {
+    image: {
+      draw: [
+        {
+          url: "https://example.com/logo.png",
+          bottom: 5,
+          right: 5,
+        },
+      ],
+    },
+  },
+});
 ```
 
 ### Multiple overlays
 
 Combine multiple overlays in one request using `cf.image`. They are drawn in order — the last entry is the topmost layer.
 
-JavaScript
+**JavaScript**
 
-```
-fetch(imageURL, {  cf: {    image: {      draw: [        { url: "https://example.com/watermark.png", repeat: true, opacity: 0.2 },        { url: "https://example.com/play-button.png" },        { url: "https://example.com/logo.png", bottom: 5, right: 5 },      ],    },  },});
+```js
+fetch(imageURL, {
+  cf: {
+    image: {
+      draw: [
+        { url: "https://example.com/watermark.png", repeat: true, opacity: 0.2 },
+        { url: "https://example.com/play-button.png" },
+        { url: "https://example.com/logo.png", bottom: 5, right: 5 },
+      ],
+    },
+  },
+});
 ```
 
 ### Rounded corners
@@ -174,12 +249,44 @@ Cut rounded corners from an image. A corner mask is drawn at each corner and rot
 
 The example below shows how this can be done using the [Images binding](https://developers.cloudflare.com/images/optimization/binding/).
 
-TypeScript
+**TypeScript**
 
-```
-const image = await fetch("https://example.com/photo.png");const mask = await fetch("https://example.com/corner-mask.png");
-let [topLeft, topRight] = mask.body.tee();let bottomLeft, bottomRight;[topLeft, bottomLeft] = topLeft.tee();[topLeft, bottomRight] = topLeft.tee();
-const output = await env.IMAGES  .input(image.body)  .draw(env.IMAGES.input(topLeft).transform({ rotate: 0 }), {    left: 0,    top: 0,    composite: "xor",  })  .draw(env.IMAGES.input(topRight).transform({ rotate: 90 }), {    right: 0,    top: 0,    composite: "xor",  })  .draw(env.IMAGES.input(bottomRight).transform({ rotate: 180 }), {    bottom: 0,    right: 0,    composite: "xor",  })  .draw(env.IMAGES.input(bottomLeft).transform({ rotate: 270 }), {    bottom: 0,    left: 0,    composite: "xor",  })  .output({ format: "image/png" });
+```ts
+const image = await fetch("https://example.com/photo.png");
+const mask = await fetch("https://example.com/corner-mask.png");
+
+
+let [topLeft, topRight] = mask.body.tee();
+let bottomLeft, bottomRight;
+[topLeft, bottomLeft] = topLeft.tee();
+[topLeft, bottomRight] = topLeft.tee();
+
+
+const output = await env.IMAGES
+  .input(image.body)
+  .draw(env.IMAGES.input(topLeft).transform({ rotate: 0 }), {
+    left: 0,
+    top: 0,
+    composite: "xor",
+  })
+  .draw(env.IMAGES.input(topRight).transform({ rotate: 90 }), {
+    right: 0,
+    top: 0,
+    composite: "xor",
+  })
+  .draw(env.IMAGES.input(bottomRight).transform({ rotate: 180 }), {
+    bottom: 0,
+    right: 0,
+    composite: "xor",
+  })
+  .draw(env.IMAGES.input(bottomLeft).transform({ rotate: 270 }), {
+    bottom: 0,
+    left: 0,
+    composite: "xor",
+  })
+  .output({ format: "image/png" });
+
+
 return output.response();
 ```
 

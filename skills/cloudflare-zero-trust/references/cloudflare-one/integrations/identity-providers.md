@@ -26,8 +26,8 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-* [ Dashboard ](#tab-panel-7284)
-* [ Terraform (v5) ](#tab-panel-7285)
+* [ Dashboard ](#tab-panel-7534)
+* [ Terraform (v5) ](#tab-panel-7535)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
@@ -41,8 +41,18 @@ Each identity provider will have different required fields for you to fill in. S
 
   * `Access: Organizations, Identity Providers, and Groups Write`
 2. Add an identity provider to Cloudflare One using the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource. For example, to add a Microsoft Entra ID integration:
-```
-resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {  account_id = var.cloudflare_account_id  name       = "Entra ID example"  type       = "azureAD"  config      = {    client_id                  = var.entra_id_client_id    client_secret              = var.entra_id_client_secret    directory_id               = var.entra_id_directory_id    support_groups             = true    }}
+```tf
+resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {
+  account_id = var.cloudflare_account_id
+  name       = "Entra ID example"
+  type       = "azureAD"
+  config      = {
+    client_id                  = var.entra_id_client_id
+    client_secret              = var.entra_id_client_secret
+    directory_id               = var.entra_id_directory_id
+    support_groups             = true
+    }
+}
 ```
 Each identity provider integration has different required attributes. You will need to obtain these attribute values from your identity provider. For more information, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 If you do not see your identity provider listed, these providers can typically still be enabled. If they support OIDC or OAuth, use the [generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) option. If they support SAML, use the [generic SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/) option. Cloudflare supports all SAML and OIDC providers and can integrate with the majority of OAuth providers. If your provider supports both SAML and OIDC, we recommend OIDC for ease of configuration.

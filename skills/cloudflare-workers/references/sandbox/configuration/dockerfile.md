@@ -24,10 +24,17 @@ The Sandbox SDK provides multiple Ubuntu-based image variants. Choose the one th
 | Python   | \-python   | Data science, ML, Python code execution        |
 | OpenCode | \-opencode | AI coding agents with OpenCode CLI             |
 
-```
-# Default - lean, no PythonFROM docker.io/cloudflare/sandbox:0.7.0
-# Python - includes Python 3.11 + data science packagesFROM docker.io/cloudflare/sandbox:0.7.0-python
-# OpenCode - includes OpenCode CLI for AI codingFROM docker.io/cloudflare/sandbox:0.7.0-opencode
+```dockerfile
+# Default - lean, no Python
+FROM docker.io/cloudflare/sandbox:0.7.0
+
+
+# Python - includes Python 3.11 + data science packages
+FROM docker.io/cloudflare/sandbox:0.7.0-python
+
+
+# OpenCode - includes OpenCode CLI for AI coding
+FROM docker.io/cloudflare/sandbox:0.7.0-opencode
 ```
 
 Version synchronization required
@@ -64,21 +71,43 @@ The `-opencode` variant includes everything in the default image plus:
 
 Create a `Dockerfile` in your project root:
 
-Dockerfile
+**Dockerfile**
 
-```
+```dockerfile
 FROM docker.io/cloudflare/sandbox:0.7.0-python
-# Install additional Python packagesRUN pip install --no-cache-dir \    scikit-learn==1.3.0 \    tensorflow==2.13.0 \    transformers==4.30.0
-# Install Node.js packages globallyRUN npm install -g typescript ts-node prettier
-# Install system packagesRUN apt-get update && apt-get install -y \    postgresql-client \    redis-tools \    && rm -rf /var/lib/apt/lists/*
+
+
+# Install additional Python packages
+RUN pip install --no-cache-dir \
+    scikit-learn==1.3.0 \
+    tensorflow==2.13.0 \
+    transformers==4.30.0
+
+
+# Install Node.js packages globally
+RUN npm install -g typescript ts-node prettier
+
+
+# Install system packages
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    redis-tools \
+    && rm -rf /var/lib/apt/lists/*
 ```
 
 Update `wrangler.jsonc` to reference your Dockerfile:
 
-wrangler.jsonc
+**wrangler.jsonc**
 
-```
-{  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",    },  ],}
+```jsonc
+{
+  "containers": [
+    {
+      "class_name": "Sandbox",
+      "image": "./Dockerfile",
+    },
+  ],
+}
 ```
 
 When you run `wrangler dev` or `wrangler deploy`, Wrangler automatically builds your Docker image and pushes it to Cloudflare's container registry. You don't need to manually build or publish images.
@@ -87,23 +116,37 @@ When you run `wrangler dev` or `wrangler deploy`, Wrangler automatically builds 
 
 You can add sandbox capabilities to any Docker image using the standalone binary. This approach lets you use your existing images without depending on the Cloudflare base images:
 
-Dockerfile
+**Dockerfile**
 
-```
+```dockerfile
 FROM your-custom-image:tag
-# Copy the sandbox binary from the official imageCOPY --from=docker.io/cloudflare/sandbox:0.7.0 /container-server/sandbox /sandbox
+
+
+# Copy the sandbox binary from the official image
+COPY --from=docker.io/cloudflare/sandbox:0.7.0 /container-server/sandbox /sandbox
+
+
 ENTRYPOINT ["/sandbox"]
 ```
 
 The `/sandbox` binary starts the HTTP API server that enables SDK communication. You can optionally run your own startup command:
 
-Dockerfile
+**Dockerfile**
 
-```
+```dockerfile
 FROM node:20-slim
+
+
 COPY --from=docker.io/cloudflare/sandbox:0.7.0 /container-server/sandbox /sandbox
-# Copy your applicationCOPY . /appWORKDIR /app
-ENTRYPOINT ["/sandbox"]CMD ["node", "server.js"]
+
+
+# Copy your application
+COPY . /app
+WORKDIR /app
+
+
+ENTRYPOINT ["/sandbox"]
+CMD ["node", "server.js"]
 ```
 
 When using `CMD`, the sandbox binary runs your command as a child process with proper signal forwarding.
@@ -112,23 +155,39 @@ When using `CMD`, the sandbox binary runs your command as a child process with p
 
 For more complex startup sequences, create a custom startup script:
 
-Dockerfile
+**Dockerfile**
 
-```
+```dockerfile
 FROM docker.io/cloudflare/sandbox:0.7.0-python
-COPY my-app.js /workspace/my-app.jsCOPY startup.sh /workspace/startup.shRUN chmod +x /workspace/startup.sh
+
+
+COPY my-app.js /workspace/my-app.js
+COPY startup.sh /workspace/startup.sh
+RUN chmod +x /workspace/startup.sh
+
+
 CMD ["/workspace/startup.sh"]
 ```
 
 The base image already sets the correct `ENTRYPOINT`, so you only need to provide a `CMD`. The sandbox binary starts the HTTP API server, then spawns your `CMD` as a child process with proper signal forwarding.
 
-startup.sh
+**startup.sh**
 
-```
+```bash
 #!/bin/bash
-# Start your services in the backgroundnode /workspace/my-app.js &
-# Start additional servicesredis-server --daemonize yesuntil redis-cli ping; do sleep 1; done
-# Keep the script running (the sandbox binary handles the API server)wait
+
+
+# Start your services in the background
+node /workspace/my-app.js &
+
+
+# Start additional services
+redis-server --daemonize yes
+until redis-cli ping; do sleep 1; done
+
+
+# Keep the script running (the sandbox binary handles the API server)
+wait
 ```
 
 Legacy startup scripts

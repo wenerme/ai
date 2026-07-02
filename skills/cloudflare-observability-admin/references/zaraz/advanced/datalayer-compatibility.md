@@ -29,10 +29,15 @@ Zaraz does not support automatic e-commerce mapping through the `dataLayer` comp
 
 Events will only be sent to Zaraz if your pushed object includes an `event` key. The `event`key is used as the name for the Zaraz event. Other keys will become part of the `eventProperties` object. The following example shows how a purchase event will be sent using the data layer to Zaraz — note that the parameters inside the object depend on what you want to track:
 
-JavaScript
+**JavaScript**
 
-```
-dataLayer.push({  event: 'purchase',  price: '24',  currency: 'USD',  transactionID: '12345678',});
+```js
+dataLayer.push({
+  event: 'purchase',
+  price: '24',
+  currency: 'USD',
+  transactionID: '12345678',
+});
 ```
 
 Cloudflare Zaraz then translates the `dataLayer.push()` call to a `zaraz.track()` call. So, `dataLayer.push({event: "purchase", price: "24", "currency": "USD"})` is equivalent to `zaraz.track("purchase", {"price": "24", "currency": "USD"})`.

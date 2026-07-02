@@ -45,42 +45,84 @@ You need an [API token](https://developers.cloudflare.com/fundamentals/api/get-s
 
 Use the [Create token API](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/create/) to create a service token with the AI Search Index Engine permission. Replace `<CREATOR_TOKEN>` with the token from step 1 and `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \  -H "Authorization: Bearer <CREATOR_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "name": "AI Search Service API Token",    "policies": [      {        "effect": "allow",        "resources": {          "com.cloudflare.api.account.<ACCOUNT_ID>": "*"        },        "permission_groups": [          { "id": "9e9b428a0bcd46fd80e580b46a69963c" }        ]      }    ]  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \
+  -H "Authorization: Bearer <CREATOR_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "name": "AI Search Service API Token",
+    "policies": [
+      {
+        "effect": "allow",
+        "resources": {
+          "com.cloudflare.api.account.<ACCOUNT_ID>": "*"
+        },
+        "permission_groups": [
+          { "id": "9e9b428a0bcd46fd80e580b46a69963c" }
+        ]
+      }
+    ]
+  }'
 ```
 
 Save the `id` and `value` from the response:
 
-```
-{  "result": {    "id": "<CF_API_ID>",    "name": "AI Search Service API Token",    "status": "active",    "value": "<CF_API_KEY>"  },  "success": true}
+```json
+{
+  "result": {
+    "id": "<CF_API_ID>",
+    "name": "AI Search Service API Token",
+    "status": "active",
+    "value": "<CF_API_KEY>"
+  },
+  "success": true
+}
 ```
 
 ### 3\. Register the token with AI Search
 
 Use the [AI Search tokens API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/tokens/methods/create/) to register the service token. Replace `<API_TOKEN>` with an API token that has AI Search Edit permissions.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/tokens" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "cf_api_id": "<CF_API_ID>",    "cf_api_key": "<CF_API_KEY>",    "name": "AI Search Service Token"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/tokens" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "cf_api_id": "<CF_API_ID>",
+    "cf_api_key": "<CF_API_KEY>",
+    "name": "AI Search Service Token"
+  }'
 ```
 
 Save the `id` from the response. This is your `token_id` to pass when creating R2-backed instances:
 
-```
-{  "success": true,  "result": {    "id": "<TOKEN_ID>",    "name": "AI Search Service Token",    "cf_api_id": "<CF_API_ID>",    "created_at": "2025-12-25 01:52:28",    "enabled": true  }}
+```json
+{
+  "success": true,
+  "result": {
+    "id": "<TOKEN_ID>",
+    "name": "AI Search Service Token",
+    "cf_api_id": "<CF_API_ID>",
+    "created_at": "2025-12-25 01:52:28",
+    "enabled": true
+  }
+}
 ```
 
 ### 4\. Use the token when creating an instance
 
 Pass the `token_id` when creating an R2-backed instance:
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-r2-docs",    "type": "r2",    "source": "<R2_BUCKET_NAME>",    "token_id": "<TOKEN_ID>"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "id": "my-r2-docs",
+    "type": "r2",
+    "source": "<R2_BUCKET_NAME>",
+    "token_id": "<TOKEN_ID>"
+  }'
 ```
 
 ## Manage your token
@@ -108,10 +150,9 @@ To create a new token via the API, follow [steps 1 through 3](#1-create-an-api-t
 
 List the service API tokens registered with AI Search in your account:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/tokens \  -H "Authorization: Bearer <API_TOKEN>"
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/tokens \
+  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```json

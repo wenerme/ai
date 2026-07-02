@@ -24,12 +24,30 @@ Consider the following example of a `shouldRetry(...)` function, taken from the 
 
 You should make sure your retries apply an exponential backoff with jitter strategy for more successful retries. You can use libraries abstracting that already like [@cloudflare/actors ↗](https://github.com/cloudflare/actors), or [copy the retry logic ↗](https://github.com/cloudflare/actors/blob/9ba112503132ddf6b5cef37ff145e7a2dd5ffbfc/packages/core/src/retries.ts#L18) in your own code directly.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { tryWhile } from "@cloudflare/actors";
-function queryD1Example(d1: D1Database, sql: string) {  return await tryWhile(async () => {    return await d1.prepare(sql).run();  }, shouldRetry);}
-function shouldRetry(err: unknown, nextAttempt: number) {  const errMsg = String(err);  const isRetryableError =    errMsg.includes("Network connection lost") ||    errMsg.includes("storage caused object to be reset") ||    errMsg.includes("reset because its code was updated");  if (nextAttempt <= 5 && isRetryableError) {    return true;  }  return false;}
+
+
+function queryD1Example(d1: D1Database, sql: string) {
+  return await tryWhile(async () => {
+    return await d1.prepare(sql).run();
+  }, shouldRetry);
+}
+
+
+function shouldRetry(err: unknown, nextAttempt: number) {
+  const errMsg = String(err);
+  const isRetryableError =
+    errMsg.includes("Network connection lost") ||
+    errMsg.includes("storage caused object to be reset") ||
+    errMsg.includes("reset because its code was updated");
+  if (nextAttempt <= 5 && isRetryableError) {
+    return true;
+  }
+  return false;
+}
 ```
 
 ```json

@@ -28,14 +28,16 @@ The [Ruleset Engine documentation](https://developers.cloudflare.com/ruleset-eng
 
 Gateway expressions follow this pattern:
 
-```
+```txt
 <field> <operator> <value>
 ```
 
 For example:
 
-```
-dns.fqdn == "example.com"http.request.host == "api.example.com"identity.email == "user@company.com"
+```txt
+dns.fqdn == "example.com"
+http.request.host == "api.example.com"
+identity.email == "user@company.com"
 ```
 
 ### Operators
@@ -67,15 +69,15 @@ Combine multiple conditions using logical operators:
 
 Some Gateway fields return arrays (multiple values). Use the `any()` function to match if any element in the array meets the condition:
 
-```
+```txt
 any(http.request.uri.content_category[*] in {17 85 102})
 ```
 
-```
+```txt
 any(identity.groups[*].name in {"Engineering" "Security"})
 ```
 
-```
+```txt
 any(http.request.domains[*] == "example.com")
 ```
 
@@ -85,11 +87,11 @@ The `[*]` notation indicates that the function should evaluate all elements in t
 
 You can reference [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) in your expressions using the list UUID:
 
-```
+```txt
 http.request.host in $<LIST_UUID>
 ```
 
-```
+```txt
 any(http.request.domains[*] in $<LIST_UUID>)
 ```
 
@@ -113,31 +115,31 @@ For a complete list of available fields for each policy type, refer to the selec
 
 ### Block a domain in a DNS policy
 
-```
+```txt
 dns.fqdn == "example.com"
 ```
 
 ### Block multiple content categories in an HTTP policy
 
-```
+```txt
 any(http.request.uri.content_category[*] in {17 85 102})
 ```
 
 ### Allow traffic from a specific user group
 
-```
+```txt
 any(identity.groups[*].name in {"Engineering"})
 ```
 
 ### Block traffic to a destination IP range in a Network policy
 
-```
+```txt
 net.dst.ip in {10.0.0.0/8}
 ```
 
 ### Combine identity and traffic conditions
 
-```
+```txt
 http.request.host == "internal.example.com" and identity.email matches ".*@company.com"
 ```
 

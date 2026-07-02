@@ -40,22 +40,39 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-6862)
-* [  TypeScript ](#tab-panel-6863)
+* [  JavaScript ](#tab-panel-7110)
+* [  TypeScript ](#tab-panel-7111)
 
-src/index.js
+**src/index.js**
 
+```js
+async function createRepoCopy(env, agentName, sessionId, repoName) {
+  const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
+
+
+  return env.ARTIFACTS.create(uniqueRepoName);
+}
 ```
-async function createRepoCopy(env, agentName, sessionId, repoName) {  const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
-  return env.ARTIFACTS.create(uniqueRepoName);}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-interface Env {  ARTIFACTS: Artifacts;}
-async function createRepoCopy(  env: Env,  agentName: string,  sessionId: string,  repoName: string,) {  const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
-  return env.ARTIFACTS.create(uniqueRepoName);}
+```ts
+interface Env {
+  ARTIFACTS: Artifacts;
+}
+
+
+async function createRepoCopy(
+  env: Env,
+  agentName: string,
+  sessionId: string,
+  repoName: string,
+) {
+  const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
+
+
+  return env.ARTIFACTS.create(uniqueRepoName);
+}
 ```
 
 ### Fork from a stable baseline
@@ -66,22 +83,50 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-6864)
-* [  TypeScript ](#tab-panel-6865)
+* [  JavaScript ](#tab-panel-7112)
+* [  TypeScript ](#tab-panel-7113)
 
-src/index.js
+**src/index.js**
 
+```js
+async function forkFromBaseline(env, sessionId) {
+  const baseline = await env.ARTIFACTS.get("starter-repo");
+  const forked = await baseline.fork(`starter-repo-${sessionId}`, {
+    description: `Fork for session ${sessionId}`,
+    defaultBranchOnly: true,
+    readOnly: false,
+  });
+
+
+  return {
+    name: forked.name,
+    remote: forked.remote,
+  };
+}
 ```
-async function forkFromBaseline(env, sessionId) {  const baseline = await env.ARTIFACTS.get("starter-repo");  const forked = await baseline.fork(`starter-repo-${sessionId}`, {    description: `Fork for session ${sessionId}`,    defaultBranchOnly: true,    readOnly: false,  });
-  return {    name: forked.name,    remote: forked.remote,  };}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-interface Env {  ARTIFACTS: Artifacts;}
-async function forkFromBaseline(env: Env, sessionId: string) {  const baseline = await env.ARTIFACTS.get("starter-repo");  const forked = await baseline.fork(`starter-repo-${sessionId}`, {    description: `Fork for session ${sessionId}`,    defaultBranchOnly: true,    readOnly: false,  });
-  return {    name: forked.name,    remote: forked.remote,  };}
+```ts
+interface Env {
+  ARTIFACTS: Artifacts;
+}
+
+
+async function forkFromBaseline(env: Env, sessionId: string) {
+  const baseline = await env.ARTIFACTS.get("starter-repo");
+  const forked = await baseline.fork(`starter-repo-${sessionId}`, {
+    description: `Fork for session ${sessionId}`,
+    defaultBranchOnly: true,
+    readOnly: false,
+  });
+
+
+  return {
+    name: forked.name,
+    remote: forked.remote,
+  };
+}
 ```
 
 ## Scope access narrowly
@@ -96,24 +141,58 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-6866)
-* [  TypeScript ](#tab-panel-6867)
+* [  JavaScript ](#tab-panel-7114)
+* [  TypeScript ](#tab-panel-7115)
 
-src/index.js
+**src/index.js**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const repoName = url.searchParams.get("repo") ?? "starter-repo";
+
+
+    const repo = await env.ARTIFACTS.get(repoName);
+    const token = await repo.createToken("read", 900);
+
+
+    return Response.json({
+      repo: repoName,
+      scope: token.scope,
+      expiresAt: token.expiresAt,
+      token: token.plaintext,
+    });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);    const repoName = url.searchParams.get("repo") ?? "starter-repo";
-    const repo = await env.ARTIFACTS.get(repoName);    const token = await repo.createToken("read", 900);
-    return Response.json({      repo: repoName,      scope: token.scope,      expiresAt: token.expiresAt,      token: token.plaintext,    });  },};
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-interface Env {  ARTIFACTS: Artifacts;}
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);    const repoName = url.searchParams.get("repo") ?? "starter-repo";
-    const repo = await env.ARTIFACTS.get(repoName);    const token = await repo.createToken("read", 900);
-    return Response.json({      repo: repoName,      scope: token.scope,      expiresAt: token.expiresAt,      token: token.plaintext,    });  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  ARTIFACTS: Artifacts;
+}
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    const repoName = url.searchParams.get("repo") ?? "starter-repo";
+
+
+    const repo = await env.ARTIFACTS.get(repoName);
+    const token = await repo.createToken("read", 900);
+
+
+    return Response.json({
+      repo: repoName,
+      scope: token.scope,
+      expiresAt: token.expiresAt,
+      token: token.plaintext,
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Use the same pattern for `write` tokens only after your Worker authorizes a session that must push changes.
@@ -130,10 +209,10 @@ This lets you use Artifacts as both the versioned filesystem for agent work and 
 
 This example stores the user prompt and the assistant summary on the current commit, then reads the note back.
 
-Terminal window
-
-```
-git notes add -m 'user: Add a best-practices section for unique repo names.' HEADgit notes append -m 'assistant: Added naming guidance and a code example.' HEADgit notes show HEAD
+```bash
+git notes add -m 'user: Add a best-practices section for unique repo names.' HEAD
+git notes append -m 'assistant: Added naming guidance and a code example.' HEAD
+git notes show HEAD
 ```
 
 If you sync repos between systems, remember that notes live on separate refs. Push and fetch `refs/notes/*` with the rest of your repo data when you want that metadata to travel with the repository.

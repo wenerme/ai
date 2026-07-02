@@ -24,16 +24,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAiTranscriptions } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAiTranscriptions />;}
+
+
+function MyComponent() {
+  return <RtkAiTranscriptions />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAiTranscriptions } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAiTranscriptions      initialTranscriptions={[]}      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAiTranscriptions
+      initialTranscriptions={[]}
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

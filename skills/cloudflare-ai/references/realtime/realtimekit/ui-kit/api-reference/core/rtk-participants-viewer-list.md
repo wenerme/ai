@@ -29,19 +29,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-participants-viewer-list></rtk-participants-viewer-list>
 ```
 
 ### With Properties
 
-```
-<rtk-participants-viewer-list search="example"></rtk-participants-viewer-list>
+```html
+<rtk-participants-viewer-list
+ search="example">
+</rtk-participants-viewer-list>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participants-viewer-list");
-  el.hideHeader= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participants-viewer-list");
+
+
+  el.hideHeader= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

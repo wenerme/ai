@@ -43,7 +43,7 @@ All requests to the Discovery API must be authenticated using HTTP message signa
 
 ### API endpoint
 
-```
+```txt
 GET https://crawlers-api.ai-audit.cfdata.org/charged_zones
 ```
 
@@ -56,24 +56,41 @@ GET https://crawlers-api.ai-audit.cfdata.org/charged_zones
 
 Include the HTTP message signature headers generated using Web Bot Auth:
 
-```
-Signature: <your-signature>Signature-Input: <signature-metadata>Signature-Agent: <agent-information>
+```txt
+Signature: <your-signature>
+Signature-Input: <signature-metadata>
+Signature-Agent: <agent-information>
 ```
 
 ### Example request
 
-Terminal window
-
-```
-curl -X GET "https://crawlers-api.ai-audit.cfdata.org/charged_zones?limit=50" \  -H "Signature: <your-signature>" \  -H "Signature-Input: <signature-metadata>" \  -H "Signature-Agent: <agent-information>"
+```sh
+curl -X GET "https://crawlers-api.ai-audit.cfdata.org/charged_zones?limit=50" \
+  -H "Signature: <your-signature>" \
+  -H "Signature-Input: <signature-metadata>" \
+  -H "Signature-Agent: <agent-information>"
 ```
 
 ### Response format
 
 The API returns a list of zones (domains) that have Pay Per Crawl enabled and are accepting payments from your crawler.
 
-```
-{  "result": {    "zones": [      {        "domain": "example.com"      },      {        "domain": "news-site.com"      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "zones": [
+      {
+        "domain": "example.com"
+      },
+      {
+        "domain": "news-site.com"
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Response fields

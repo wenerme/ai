@@ -26,69 +26,274 @@ You need a project with the [durable Code Mode runtime](https://developers.cloud
 
 1. Add the OpenAPI document to your project. Give each operation a unique `operationId` so it produces a stable sandbox method name:
 
-  * [  JavaScript ](#tab-panel-6613)
-  * [  TypeScript ](#tab-panel-6614)
-src/orders-openapi.js
+  * [  JavaScript ](#tab-panel-6809)
+  * [  TypeScript ](#tab-panel-6810)
+
+**src/orders-openapi.js**
+```js
+export const ordersOpenApiSpec = {
+  openapi: "3.1.0",
+  info: { title: "Orders API", version: "1.0.0" },
+  paths: {
+    "/orders/{orderId}": {
+      get: {
+        operationId: "get_order",
+        summary: "Get an order by ID.",
+        parameters: [
+          {
+            name: "orderId",
+            in: "path",
+            required: true,
+            schema: { type: "string" },
+          },
+        ],
+      },
+    },
+    "/orders": {
+      post: {
+        operationId: "create_order",
+        summary: "Create an order.",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  productId: { type: "string" },
+                  quantity: { type: "integer" },
+                },
+                required: ["productId", "quantity"],
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
 ```
-export const ordersOpenApiSpec = {  openapi: "3.1.0",  info: { title: "Orders API", version: "1.0.0" },  paths: {    "/orders/{orderId}": {      get: {        operationId: "get_order",        summary: "Get an order by ID.",        parameters: [          {            name: "orderId",            in: "path",            required: true,            schema: { type: "string" },          },        ],      },    },    "/orders": {      post: {        operationId: "create_order",        summary: "Create an order.",        requestBody: {          required: true,          content: {            "application/json": {              schema: {                type: "object",                properties: {                  productId: { type: "string" },                  quantity: { type: "integer" },                },                required: ["productId", "quantity"],              },            },          },        },      },    },  },};
-```
-src/orders-openapi.ts
-```
-export const ordersOpenApiSpec = {  openapi: "3.1.0",  info: { title: "Orders API", version: "1.0.0" },  paths: {    "/orders/{orderId}": {      get: {        operationId: "get_order",        summary: "Get an order by ID.",        parameters: [          {            name: "orderId",            in: "path",            required: true,            schema: { type: "string" },          },        ],      },    },    "/orders": {      post: {        operationId: "create_order",        summary: "Create an order.",        requestBody: {          required: true,          content: {            "application/json": {              schema: {                type: "object",                properties: {                  productId: { type: "string" },                  quantity: { type: "integer" },                },                required: ["productId", "quantity"],              },            },          },        },      },    },  },} as const;
+
+**src/orders-openapi.ts**
+```ts
+export const ordersOpenApiSpec = {
+  openapi: "3.1.0",
+  info: { title: "Orders API", version: "1.0.0" },
+  paths: {
+    "/orders/{orderId}": {
+      get: {
+        operationId: "get_order",
+        summary: "Get an order by ID.",
+        parameters: [
+          {
+            name: "orderId",
+            in: "path",
+            required: true,
+            schema: { type: "string" },
+          },
+        ],
+      },
+    },
+    "/orders": {
+      post: {
+        operationId: "create_order",
+        summary: "Create an order.",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  productId: { type: "string" },
+                  quantity: { type: "integer" },
+                },
+                required: ["productId", "quantity"],
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const;
 ```
 2. Create the connector. Implement `spec()` to return the document and `request()` to make authenticated host-side requests:
 
-  * [  JavaScript ](#tab-panel-6615)
-  * [  TypeScript ](#tab-panel-6616)
-src/orders-connector.js
-```
-import { OpenApiConnector } from "@cloudflare/codemode";import { ordersOpenApiSpec } from "./orders-openapi";
+  * [  JavaScript ](#tab-panel-6811)
+  * [  TypeScript ](#tab-panel-6812)
+
+**src/orders-connector.js**
+```js
+import { OpenApiConnector } from "@cloudflare/codemode";
+import { ordersOpenApiSpec } from "./orders-openapi";
 const API_ORIGIN = "https://api.example.com";
-export class OrdersConnector extends OpenApiConnector {  name() {    return "orders";  }
-  instructions() {    return "Use for reading and creating orders.";  }
-  spec() {    return ordersOpenApiSpec;  }
-  async request(options) {    if (!options.path.startsWith("/")) {      throw new Error("Orders API path must start with a slash");    }
-    const url = new URL(options.path, API_ORIGIN);    for (const [key, value] of Object.entries(options.params ?? {})) {      if (value !== undefined) {        url.searchParams.set(key, String(value));      }    }
-    const response = await fetch(url, {      method: options.method ?? "GET",      headers: {        ...(options.body !== undefined          ? { "Content-Type": "application/json" }          : {}),        ...options.headers,        Authorization: `Bearer ${this.env.ORDERS_API_TOKEN}`,      },      body:        options.body === undefined ? undefined : JSON.stringify(options.body),    });
-    if (!response.ok) {      throw new Error(`Orders API request failed: ${response.status}`);    }    if (response.status === 204) return null;    return response.json();  }
-  tool(name, tool) {    if (name === "create_order") {      return { ...tool, requiresApproval: true };    }    return tool;  }}
+export class OrdersConnector extends OpenApiConnector {
+  name() {
+    return "orders";
+  }
+  instructions() {
+    return "Use for reading and creating orders.";
+  }
+  spec() {
+    return ordersOpenApiSpec;
+  }
+  async request(options) {
+    if (!options.path.startsWith("/")) {
+      throw new Error("Orders API path must start with a slash");
+    }
+    const url = new URL(options.path, API_ORIGIN);
+    for (const [key, value] of Object.entries(options.params ?? {})) {
+      if (value !== undefined) {
+        url.searchParams.set(key, String(value));
+      }
+    }
+    const response = await fetch(url, {
+      method: options.method ?? "GET",
+      headers: {
+        ...(options.body !== undefined
+          ? { "Content-Type": "application/json" }
+          : {}),
+        ...options.headers,
+        Authorization: `Bearer ${this.env.ORDERS_API_TOKEN}`,
+      },
+      body:
+        options.body === undefined ? undefined : JSON.stringify(options.body),
+    });
+    if (!response.ok) {
+      throw new Error(`Orders API request failed: ${response.status}`);
+    }
+    if (response.status === 204) return null;
+    return response.json();
+  }
+  tool(name, tool) {
+    if (name === "create_order") {
+      return { ...tool, requiresApproval: true };
+    }
+    return tool;
+  }
+}
 ```
-src/orders-connector.ts
-```
-import {  OpenApiConnector,  type ConnectorTool,  type OpenApiRequestOptions,} from "@cloudflare/codemode";import { ordersOpenApiSpec } from "./orders-openapi";
+
+**src/orders-connector.ts**
+```ts
+import {
+  OpenApiConnector,
+  type ConnectorTool,
+  type OpenApiRequestOptions,
+} from "@cloudflare/codemode";
+import { ordersOpenApiSpec } from "./orders-openapi";
 const API_ORIGIN = "https://api.example.com";
-export class OrdersConnector extends OpenApiConnector<Env> {  override name() {    return "orders";  }
-  protected override instructions() {    return "Use for reading and creating orders.";  }
-  protected override spec() {    return ordersOpenApiSpec;  }
-  protected override async request(options: OpenApiRequestOptions) {    if (!options.path.startsWith("/")) {      throw new Error("Orders API path must start with a slash");    }
-    const url = new URL(options.path, API_ORIGIN);    for (const [key, value] of Object.entries(options.params ?? {})) {      if (value !== undefined) {        url.searchParams.set(key, String(value));      }    }
-    const response = await fetch(url, {      method: options.method ?? "GET",      headers: {        ...(options.body !== undefined          ? { "Content-Type": "application/json" }          : {}),        ...options.headers,        Authorization: `Bearer ${this.env.ORDERS_API_TOKEN}`,      },      body:        options.body === undefined          ? undefined          : JSON.stringify(options.body),    });
-    if (!response.ok) {      throw new Error(`Orders API request failed: ${response.status}`);    }    if (response.status === 204) return null;    return response.json();  }
-  protected override tool(name: string, tool: ConnectorTool): ConnectorTool {    if (name === "create_order") {      return { ...tool, requiresApproval: true };    }    return tool;  }}
+export class OrdersConnector extends OpenApiConnector<Env> {
+  override name() {
+    return "orders";
+  }
+  protected override instructions() {
+    return "Use for reading and creating orders.";
+  }
+  protected override spec() {
+    return ordersOpenApiSpec;
+  }
+  protected override async request(options: OpenApiRequestOptions) {
+    if (!options.path.startsWith("/")) {
+      throw new Error("Orders API path must start with a slash");
+    }
+    const url = new URL(options.path, API_ORIGIN);
+    for (const [key, value] of Object.entries(options.params ?? {})) {
+      if (value !== undefined) {
+        url.searchParams.set(key, String(value));
+      }
+    }
+    const response = await fetch(url, {
+      method: options.method ?? "GET",
+      headers: {
+        ...(options.body !== undefined
+          ? { "Content-Type": "application/json" }
+          : {}),
+        ...options.headers,
+        Authorization: `Bearer ${this.env.ORDERS_API_TOKEN}`,
+      },
+      body:
+        options.body === undefined
+          ? undefined
+          : JSON.stringify(options.body),
+    });
+    if (!response.ok) {
+      throw new Error(`Orders API request failed: ${response.status}`);
+    }
+    if (response.status === 204) return null;
+    return response.json();
+  }
+  protected override tool(name: string, tool: ConnectorTool): ConnectorTool {
+    if (name === "create_order") {
+      return { ...tool, requiresApproval: true };
+    }
+    return tool;
+  }
+}
 ```
 Credentials remain in the host Worker. Model-written code receives connector methods and their results, not `ORDERS_API_TOKEN`.
 The `tool()` hook decorates derived operations. This example requires approval before `create_order` executes. You can also use the hook to add replay or rollback behavior.
 3. Import the connector and add it to the runtime:
 
-  * [  JavaScript ](#tab-panel-6611)
-  * [  TypeScript ](#tab-panel-6612)
-src/server.js
+  * [  JavaScript ](#tab-panel-6807)
+  * [  TypeScript ](#tab-panel-6808)
+
+**src/server.js**
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+import { OrdersConnector } from "./orders-connector";
+export class Chat extends AIChatAgent {
+  #runtime() {
+    return createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [new OrdersConnector(this.ctx, this.env)],
+    });
+  }
+  async onChatMessage() {
+    const tools = { codemode: this.#runtime().tool() };
+    // Pass tools to your model call.
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { OrdersConnector } from "./orders-connector";
-export class Chat extends AIChatAgent {  #runtime() {    return createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [new OrdersConnector(this.ctx, this.env)],    });  }
-  async onChatMessage() {    const tools = { codemode: this.#runtime().tool() };    // Pass tools to your model call.  }}
-```
-src/server.ts
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { OrdersConnector } from "./orders-connector";
-export class Chat extends AIChatAgent<Env> {  #runtime() {    return createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [new OrdersConnector(this.ctx, this.env)],    });  }
-  async onChatMessage() {    const tools = { codemode: this.#runtime().tool() };    // Pass tools to your model call.  }}
+
+**src/server.ts**
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+import { OrdersConnector } from "./orders-connector";
+export class Chat extends AIChatAgent<Env> {
+  #runtime() {
+    return createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [new OrdersConnector(this.ctx, this.env)],
+    });
+  }
+  async onChatMessage() {
+    const tools = { codemode: this.#runtime().tool() };
+    // Pass tools to your model call.
+  }
+}
 ```
 4. Let the model discover the operations and call the generated connector methods:
-JavaScript
-```
-async () => {  const matches = await codemode.search("get an order by ID");  const docs = await codemode.describe(matches.results[0].path);
-  const order = await orders.get_order({ orderId: "order-123" });  return { docs, order };};
+
+**JavaScript**
+```js
+async () => {
+  const matches = await codemode.search("get an order by ID");
+  const docs = await codemode.describe(matches.results[0].path);
+  const order = await orders.get_order({ orderId: "order-123" });
+  return { docs, order };
+};
 ```
 
 ## Derived method behavior
@@ -110,10 +315,14 @@ The current connector derives input types but does not derive response types fro
 
 Every OpenAPI connector also exposes a low-level `request()` sandbox method. Use it when the OpenAPI document does not describe an operation the model needs:
 
-JavaScript
+**JavaScript**
 
-```
-const result = await orders.request({  path: "/orders",  method: "GET",  params: { status: "processing" },});
+```js
+const result = await orders.request({
+  path: "/orders",
+  method: "GET",
+  params: { status: "processing" },
+});
 ```
 
 Prefer derived operation methods when available. They provide discoverable descriptions and generated input types.

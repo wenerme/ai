@@ -26,18 +26,23 @@ A component which renders an image message.
 
 ### Basic Usage
 
-```
+```html
 <rtk-image-message-view></rtk-image-message-view>
 ```
 
 ### With Properties
 
-```
-<rtk-image-message-view url="example"></rtk-image-message-view>
+```html
+<rtk-image-message-view
+ url="example">
+</rtk-image-message-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-image-message-view");
+```html
+<script>
+  const el = document.querySelector("rtk-image-message-view");
+
+
 </script>
 ```
 

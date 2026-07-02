@@ -74,17 +74,16 @@ To enable [WARP+ Unlimited](https://developers.cloudflare.com/warp-client/warp-m
 1. On your iOS or Android device, launch the **1.1.1.1 Faster Internet** app.
 2. Go to **Settings** \> **Account** and copy the **Key** value.
 3. On your Linux device, run the following command:
-Terminal window
-```
+```sh
 warp-cli registration license <KEY>
 ```
 4. Verify the new registration:
-Terminal window
-```
+```sh
 warp-cli registration show
 ```
-```
-Account type: Unlimited...
+```sh
+Account type: Unlimited
+...
 ```
 
 Your WARP+ Unlimited subscription is now active on this device.
@@ -93,9 +92,7 @@ Your WARP+ Unlimited subscription is now active on this device.
 
 A complete list of all supported commands can be found by running:
 
-Terminal window
-
-```
+```sh
 warp-cli --help
 ```
 

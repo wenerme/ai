@@ -58,9 +58,7 @@ For setup, select the following options:
 
 Go to your new `openai-function-calling-workers` Worker project:
 
-Terminal window
-
-```
+```sh
 cd openai-function-calling-workers
 ```
 
@@ -92,55 +90,116 @@ bun add openai cheerio
 
 Now, define the structure of your Worker in `index.js`:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // Initialize OpenAI API    // Handle incoming requests    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    // Initialize OpenAI API
+    // Handle incoming requests
+    return new Response("Hello World!");
+  },
+};
 ```
 
 Above `export default`, add the imports for `openai` and `cheerio`:
 
-JavaScript
+**JavaScript**
 
-```
-import OpenAI from "openai";import * as cheerio from "cheerio";
+```js
+import OpenAI from "openai";
+import * as cheerio from "cheerio";
 ```
 
 Within your `fetch` function, instantiate your `OpenAI` client:
 
-JavaScript
+**JavaScript**
 
-```
-async fetch(request, env, ctx) {  const openai = new OpenAI({    apiKey: env.OPENAI_API_KEY,  });
-  // Handle incoming requests  return new Response('Hello World!');},
+```js
+async fetch(request, env, ctx) {
+  const openai = new OpenAI({
+    apiKey: env.OPENAI_API_KEY,
+  });
+
+
+  // Handle incoming requests
+  return new Response('Hello World!');
+},
 ```
 
 Use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set `OPENAI_API_KEY`. This [secret's](https://developers.cloudflare.com/workers/configuration/secrets/) value is the API key you created earlier in the OpenAI dashboard:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put <OPENAI_API_KEY>
 ```
 
 For local development, create a new file `.dev.vars` in your Worker project and add this line. Make sure to replace `OPENAI_API_KEY` with your own OpenAI API key:
 
-```
+```txt
 OPENAI_API_KEY = "<YOUR_OPENAI_API_KEY>"
 ```
 
 Now, make a request to the OpenAI [Chat Completions API ↗](https://platform.openai.com/docs/guides/gpt/chat-completions-api):
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    const openai = new OpenAI({      apiKey: env.OPENAI_API_KEY,    });
-    const url = new URL(request.url);    const message = url.searchParams.get("message");
-    const messages = [      {        role: "user",        content: message ? message : "What's in the news today?",      },    ];
-    const tools = [      {        type: "function",        function: {          name: "read_website_content",          description: "Read the content on a given website",          parameters: {            type: "object",            properties: {              url: {                type: "string",                description: "The URL to the website to read",              },            },            required: ["url"],          },        },      },    ];
-    const chatCompletion = await openai.chat.completions.create({      model: "gpt-4o-mini",      messages: messages,      tools: tools,      tool_choice: "auto",    });
-    const assistantMessage = chatCompletion.choices[0].message;    console.log(assistantMessage);
-    //Later you will continue handling the assistant's response here    return new Response(assistantMessage.content);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const openai = new OpenAI({
+      apiKey: env.OPENAI_API_KEY,
+    });
+
+
+    const url = new URL(request.url);
+    const message = url.searchParams.get("message");
+
+
+    const messages = [
+      {
+        role: "user",
+        content: message ? message : "What's in the news today?",
+      },
+    ];
+
+
+    const tools = [
+      {
+        type: "function",
+        function: {
+          name: "read_website_content",
+          description: "Read the content on a given website",
+          parameters: {
+            type: "object",
+            properties: {
+              url: {
+                type: "string",
+                description: "The URL to the website to read",
+              },
+            },
+            required: ["url"],
+          },
+        },
+      },
+    ];
+
+
+    const chatCompletion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: messages,
+      tools: tools,
+      tool_choice: "auto",
+    });
+
+
+    const assistantMessage = chatCompletion.choices[0].message;
+    console.log(assistantMessage);
+
+
+    //Later you will continue handling the assistant's response here
+    return new Response(assistantMessage.content);
+  },
+};
 ```
 
 Review the arguments you are passing to OpenAI:
@@ -159,11 +218,22 @@ You will now need to define the `read_website_content` function, which is refere
 
 Add this code above the `export default` block in your `index.js` file:
 
-JavaScript
+**JavaScript**
 
-```
-async function read_website_content(url) {  console.log("reading website content");
-  const response = await fetch(url);  const body = await response.text();  let cheerioBody = cheerio.load(body);  const resp = {    website_body: cheerioBody("p").text(),    url: url,  };  return JSON.stringify(resp);}
+```js
+async function read_website_content(url) {
+  console.log("reading website content");
+
+
+  const response = await fetch(url);
+  const body = await response.text();
+  let cheerioBody = cheerio.load(body);
+  const resp = {
+    website_body: cheerioBody("p").text(),
+    url: url,
+  };
+  return JSON.stringify(resp);
+}
 ```
 
 In this function, you take the URL that you received from OpenAI and use JavaScript's [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch%5FAPI/Using%5FFetch) to pull the content of the website and extract the paragraph text. Now we need to determine when to call this function.
@@ -174,13 +244,38 @@ Next, we need to process the response from the OpenAI API to check if it include
 
 Modify the fetch method within the `export default` block as follows:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 // ... your previous code ...
-if (assistantMessage.tool_calls) {  for (const toolCall of assistantMessage.tool_calls) {    if (toolCall.function.name === "read_website_content") {      const url = JSON.parse(toolCall.function.arguments).url;      const websiteContent = await read_website_content(url);      messages.push({        role: "tool",        tool_call_id: toolCall.id,        name: toolCall.function.name,        content: websiteContent,      });    }  }
-  const secondChatCompletion = await openai.chat.completions.create({    model: "gpt-4o-mini",    messages: messages,  });
-  return new Response(secondChatCompletion.choices[0].message.content);} else {  // this is your existing return statement  return new Response(assistantMessage.content);}
+
+
+if (assistantMessage.tool_calls) {
+  for (const toolCall of assistantMessage.tool_calls) {
+    if (toolCall.function.name === "read_website_content") {
+      const url = JSON.parse(toolCall.function.arguments).url;
+      const websiteContent = await read_website_content(url);
+      messages.push({
+        role: "tool",
+        tool_call_id: toolCall.id,
+        name: toolCall.function.name,
+        content: websiteContent,
+      });
+    }
+  }
+
+
+  const secondChatCompletion = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: messages,
+  });
+
+
+  return new Response(secondChatCompletion.choices[0].message.content);
+} else {
+  // this is your existing return statement
+  return new Response(assistantMessage.content);
+}
 ```
 
 Check if the assistant message contains any function calls by checking for the `tool_calls` property. Because the AI model can call multiple functions by default, you need to loop through any potential function calls and add them to the `messages` array. Each `read_website_content` call will invoke the `read_website_content` function you defined earlier and pass the URL generated by OpenAI as an argument. \`
@@ -193,9 +288,7 @@ Test your code by running `npx wrangler dev` and open the provided url in your b
 
 To deploy your application, run the `npx wrangler deploy` command to deploy your Worker application:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 

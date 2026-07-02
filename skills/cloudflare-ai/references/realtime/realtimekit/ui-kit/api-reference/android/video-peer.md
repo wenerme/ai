@@ -24,16 +24,20 @@ A view that renders a participant's video stream with an avatar fallback when vi
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkVideoPeer    android:id="@+id/rtk_video_peer"    android:layout_width="match_parent"    android:layout_height="200dp" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkVideoPeer
+    android:id="@+id/rtk_video_peer"
+    android:layout_width="match_parent"
+    android:layout_height="200dp" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val videoPeer = findViewById<RtkVideoPeer>(R.id.rtk_video_peer)videoPeer.refresh(participant, isScreenShare = false)
+```kotlin
+val videoPeer = findViewById<RtkVideoPeer>(R.id.rtk_video_peer)
+videoPeer.refresh(participant, isScreenShare = false)
 ```
 
 ```json

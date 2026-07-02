@@ -56,10 +56,10 @@ If Wrangler is not installed, running `npx wrangler` will use the latest version
 
 To check your Wrangler version, run:
 
-Terminal window
-
-```
-npx wrangler --version// ornpx wrangler -v
+```sh
+npx wrangler --version
+// or
+npx wrangler -v
 ```
 
 ## Update Wrangler

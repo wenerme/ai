@@ -25,10 +25,13 @@ Our examples assume that the `date` and `clientCountryName` relationships are un
 
 To limit results, add the `limit` parameter as an integer. For example, query the first two records:
 
-JavaScript
+**JavaScript**
 
-```
-firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC]) {    datetime    clientCountryName}
+```javascript
+firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC]) {
+    datetime
+    clientCountryName
+}
 ```
 
 Note
@@ -37,46 +40,85 @@ Specifying a sort order by date returns less specific results than specifying a 
 
 **Response**
 
-JavaScript
+**JavaScript**
 
-```
-{  "firewallEventsAdaptive" : [    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UM"    },    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "US"    }  ]}
+```javascript
+{
+  "firewallEventsAdaptive" : [
+    {
+      "datetime": "2018-11-12T00:00:00Z",
+      "clientCountryName": "UM"
+    },
+    {
+      "datetime": "2018-11-12T00:00:00Z",
+      "clientCountryName": "US"
+    }
+  ]
+}
 ```
 
 ### Query for the next page using filters
 
 To get the next _n_ results, specify a filter to exclude the last result from the previous query. Taking the previous example, you can do this by appending the greater-than operator (`_gt`) to the `clientCountryName` field and the greater-or-equal operator (`_geq`) to the `datetime` field. This is where being specific about sort order comes into play. You are less likely to miss results using a more granular sort order.
 
-JavaScript
+**JavaScript**
 
-```
-firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC], filter: {datetime_geq: "2018-11-12T00:00:00Z", clientCountryName_gt: "US"}) {    datetime    clientCountryName}
+```javascript
+firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC], filter: {datetime_geq: "2018-11-12T00:00:00Z", clientCountryName_gt: "US"}) {
+    datetime
+    clientCountryName
+}
 ```
 
 **Response**
 
-JavaScript
+**JavaScript**
 
-```
-{  "firewallEventsAdaptive" : [    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UY"    },    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UZ"    }  ]}
+```javascript
+{
+  "firewallEventsAdaptive" : [
+    {
+      "datetime": "2018-11-12T00:00:00Z",
+      "clientCountryName": "UY"
+    },
+    {
+      "datetime": "2018-11-12T00:00:00Z",
+      "clientCountryName": "UZ"
+    }
+  ]
+}
 ```
 
 ### Query the previous page
 
 To get the previous _n_ results, reverse the filters and sort order.
 
-JavaScript
+**JavaScript**
 
-```
-firewallEventsAdaptive (limit: 2, orderBy: [datetime_DESC, clientCountryName_DESC, filter: {datetime_leq: "2018-11-12T00:00:00Z", clientCountryName_lt: "UY"}]) {  datetime  clientCountryName}
+```javascript
+firewallEventsAdaptive (limit: 2, orderBy: [datetime_DESC, clientCountryName_DESC, filter: {datetime_leq: "2018-11-12T00:00:00Z", clientCountryName_lt: "UY"}]) {
+  datetime
+  clientCountryName
+}
 ```
 
 **Response**
 
-JavaScript
+**JavaScript**
 
-```
-{  "firewallEventsAdaptive" : [    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "US"    },    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UM"    }  ]}
+```javascript
+{
+  "firewallEventsAdaptive" : [
+    {
+      "datetime": "2018-11-12T00:00:00Z",
+      "clientCountryName": "US"
+    },
+    {
+      "datetime": "2018-11-12T00:00:00Z",
+      "clientCountryName": "UM"
+    }
+  ]
+}
 ```
 
 ```json

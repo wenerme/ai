@@ -48,28 +48,30 @@ The setup wizard [configures your account for Mesh networking](#what-the-wizard-
 5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.
 Installation commands
 
-  * [ Debian / Ubuntu ](#tab-panel-7537)
-  * [ RedHat / CentOS ](#tab-panel-7538)
-Terminal window
+  * [ Debian / Ubuntu ](#tab-panel-7555)
+  * [ RedHat / CentOS ](#tab-panel-7556)
+```sh
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
+sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
+sudo sysctl --system
 ```
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&sudo sysctl --system
-```
-Terminal window
-```
+```sh
 sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 ```
 On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
-Terminal window
-```
+```sh
 sudo dnf install -y epel-release
 ```
 Then install the package:
-Terminal window
+```sh
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
+sudo yum install -y cloudflare-warp &&
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
+sudo sysctl --system
 ```
-curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&sudo yum install -y cloudflare-warp &&printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&sudo sysctl --system
-```
-Terminal window
-```
+```sh
 sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 ```
 6. Select **View node details** to complete the setup wizard.
@@ -84,8 +86,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-7539)
-* [ Version 2026.1 and earlier ](#tab-panel-7540)
+* [ Version 2026.2+ ](#tab-panel-7557)
+* [ Version 2026.1 and earlier ](#tab-panel-7558)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.
@@ -124,9 +126,7 @@ Once you see a **Connected** status, your device is on the mesh and receives its
 
 From your client device, verify you can reach a Mesh node or another enrolled device:
 
-Terminal window
-
-```
+```sh
 ping <MESH-IP>
 ```
 

@@ -207,23 +207,61 @@ The upgrade process can take up to an hour. During this period you may observe s
 ### Using the API
 
 1. Use the [Check WAF update compatibility](#api-operations) operation to determine if the zone can update to the new WAF, given its current configuration:
-Terminal window
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/waf_migration/check?phase_two=1" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/waf_migration/check?phase_two=1" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 Example response:
-```
-{  "result": {    "compatible": true,    "migration_state": "start"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "compatible": true,
+    "migration_state": "start"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 If the response includes `"compatible": true`, this means that the zone can update to the new WAF and you can proceed with the upgrade process. If the response includes `"compatible": false`, this means that your zone is not eligible for the upgrade, given its current configuration. Refer to [Eligible zones](#eligible-zones) for details.
 2. To get the new WAF configuration corresponding to your current configuration, use the [Get new WAF configuration](#api-operations) operation:
-Terminal window
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/waf_migration/config?phase_two=1" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/waf_migration/config?phase_two=1" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 Example response:
-```
-{  "result": {    "name": "default",    "rules": [      {        "id": "",        "version": "",        "action": "execute",        "expression": "true",        "description": "",        "ref": "",        "enabled": true,        "action_parameters": {          "id": "efb7b8c949ac4650a09736fc376e9aee",          "overrides": {            "rules": [              {                "id": "23ee7cebe6e8443e99ecf932ab579455",                "action": "log",                "enabled": false              }            ]          }        }      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "name": "default",
+    "rules": [
+      {
+        "id": "",
+        "version": "",
+        "action": "execute",
+        "expression": "true",
+        "description": "",
+        "ref": "",
+        "enabled": true,
+        "action_parameters": {
+          "id": "efb7b8c949ac4650a09736fc376e9aee",
+          "overrides": {
+            "rules": [
+              {
+                "id": "23ee7cebe6e8443e99ecf932ab579455",
+                "action": "log",
+                "enabled": false
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 The returned configuration in the example above, which would match the existing configuration for the previous WAF version, contains:
@@ -231,15 +269,68 @@ The returned configuration in the example above, which would match the existing 
 * A rule that executes the Cloudflare Managed Ruleset (ruleset ID efb7b8c949ac4650a09736fc376e9aee).
 * A single override for the rule `Apache Struts - Open Redirect - CVE:CVE-2013-2248` (rule ID `23ee7cebe6e8443e99ecf932ab579455`) in the same ruleset, setting the action to `log` and disabling the rule.
 1. (Optional, for Enterprise customers only) If you are upgrading an Enterprise zone to WAF Managed Rules, you can enter validation mode before finishing the upgrade. In this mode, both WAF implementations will be enabled. Use the [Update a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/update/) operation, making sure you include the `waf_migration=validation&phase_two=1` query string parameters:
-Terminal window
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=validation&phase_two=1" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "default",  "rules": [    {      "action": "execute",      "expression": "true",      "description": "",      "enabled": true,      "action_parameters": {        "id": "efb7b8c949ac4650a09736fc376e9aee",        "overrides": {          "rules": [            {              "id": "23ee7cebe6e8443e99ecf932ab579455",              "action": "log",              "enabled": false            }          ]        }      }    }  ]}'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=validation&phase_two=1" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "default",
+  "rules": [
+    {
+      "action": "execute",
+      "expression": "true",
+      "description": "",
+      "enabled": true,
+      "action_parameters": {
+        "id": "efb7b8c949ac4650a09736fc376e9aee",
+        "overrides": {
+          "rules": [
+            {
+              "id": "23ee7cebe6e8443e99ecf932ab579455",
+              "action": "log",
+              "enabled": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}'
 ```
 After invoking this API endpoint, both WAF managed rules and WAF Managed Rules will be enabled. Check [sampled logs](https://developers.cloudflare.com/waf/analytics/security-events/#sampled-logs) in Security Events for any legitimate traffic getting blocked, and perform any required adjustments to the WAF Managed Rules configuration. For example, you can [add an override](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) for a single rule that disables it or changes its action.
 2. To finish the upgrade and disable WAF managed rules, set the configuration for the new WAF using the settings you obtained in step 2 and possibly adjusted in step 3\. Make sure you include the `waf_migration=pending&phase_two=1` query string parameters.
-Terminal window
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=pending&phase_two=1" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "default",  "rules": [    {      "id": "",      "version": "",      "action": "execute",      "expression": "true",      "description": "",      "ref": "",      "enabled": true,      "action_parameters": {        "id": "efb7b8c949ac4650a09736fc376e9aee",        "overrides": {          "rules": [            {              "id": "23ee7cebe6e8443e99ecf932ab579455",              "action": "log",              "enabled": false            }          ]        }      }    }  ]}'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=pending&phase_two=1" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "default",
+  "rules": [
+    {
+      "id": "",
+      "version": "",
+      "action": "execute",
+      "expression": "true",
+      "description": "",
+      "ref": "",
+      "enabled": true,
+      "action_parameters": {
+        "id": "efb7b8c949ac4650a09736fc376e9aee",
+        "overrides": {
+          "rules": [
+            {
+              "id": "23ee7cebe6e8443e99ecf932ab579455",
+              "action": "log",
+              "enabled": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}'
 ```
 
 Once the provided configuration is saved and the new WAF Managed Rules are enabled, the previous version of the WAF managed rules will be automatically disabled, due to the presence of the `waf_migration=pending&phase_two=1` parameters. This will make sure that your zone stays protected by one of the WAF versions during the update process.
@@ -321,68 +412,84 @@ You can use the [cf-terraforming ↗](https://github.com/cloudflare/cf-terraform
 The recommended steps for replacing your old WAF managed rules configuration in Terraform with a new ruleset-based configuration for the new WAF Managed Rules are the following:
 
 1. Run the following command to generate all ruleset configurations for a zone:
-Terminal window
-```
+```sh
 cf-terraforming generate --zone <ZONE_ID> --resource-type "cloudflare_ruleset"
 ```
-```
-resource "cloudflare_ruleset" "terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31" {  kind    = "zone"  name    = "default"  phase   = "http_request_firewall_managed"  zone_id = "<ZONE_ID>"  rules {    [...]  }  [...]}[...]
+```txt
+resource "cloudflare_ruleset" "terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31" {
+  kind    = "zone"
+  name    = "default"
+  phase   = "http_request_firewall_managed"
+  zone_id = "<ZONE_ID>"
+  rules {
+    [...]
+  }
+  [...]
+}
+[...]
 ```
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are looking for the WAF Managed Rules configuration, keep only the Terraform resource for the `http_request_firewall_managed` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:
-Terminal window
-```
+```sh
 terraform import cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31 zone/<ZONE_ID>/3c0b456bc2aa443089c5f40f45f51b31
 ```
-```
- cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Importing from ID "zone/<ZONE_ID>/3c0b456bc2aa443089c5f40f45f51b31"... cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Import prepared!   Prepared cloudflare_ruleset for import cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]
+```txt
+ cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Importing from ID "zone/<ZONE_ID>/3c0b456bc2aa443089c5f40f45f51b31"...
+ cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Import prepared!
+   Prepared cloudflare_ruleset for import
+ cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]
  Import successful!
- The resources that were imported are shown above. These resources are now in your Terraform state and will henceforth be managed by Terraform.
+ The resources that were imported are shown above. These resources are now in
+ your Terraform state and will henceforth be managed by Terraform.
 ```
 4. Run `terraform plan` to validate that Terraform now checks the state of the new `cloudflare_ruleset` resource, in addition to other existing resources already managed by Terraform. For example:
-Terminal window
-```
+```sh
 terraform plan
 ```
-```
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31][...]cloudflare_waf_package.my_package: Refreshing state... [id=14a2524fd75c419f8d273116815b6349]cloudflare_waf_group.my_group: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf][...]
+```txt
+cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]
+[...]
+cloudflare_waf_package.my_package: Refreshing state... [id=14a2524fd75c419f8d273116815b6349]
+cloudflare_waf_group.my_group: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf]
+[...]
 ```
 5. Remove any state related to the previous version of WAF managed rules from your Terraform state:
 Warning
 You must remove WAF packages, groups, and rules from Terraform state before deleting their configuration from `.tf` configuration files to prevent issues.
 
   1. Run the following command to find all resources related to the previous version of WAF managed rules:
-  Terminal window
-  ```
+  ```sh
   terraform state list | grep -E '^cloudflare_waf_(package|group|rule)\.'
   ```
-  ```
-  cloudflare_waf_package.my_packagecloudflare_waf_group.my_group
+  ```txt
+  cloudflare_waf_package.my_package
+  cloudflare_waf_group.my_group
   ```
   2. Run the `terraform state rm ...` command in dry-run mode to understand the impact of removing those resources without performing any changes:
-  Terminal window
-  ```
+  ```sh
   terraform state rm -dry-run cloudflare_waf_package.my_package cloudflare_waf_group.my_group
   ```
-  ```
-  Would remove cloudflare_waf_package.my_packageWould remove cloudflare_waf_group.my_group
+  ```txt
+  Would remove cloudflare_waf_package.my_package
+  Would remove cloudflare_waf_group.my_group
   ```
   3. If the impact looks correct, run the same command without the `-dry-run` parameter to actually remove the resources from Terraform state:
-  Terminal window
-  ```
+  ```sh
   terraform state rm cloudflare_waf_package.my_package cloudflare_waf_group.my_group
   ```
-  ```
-  Removed cloudflare_waf_package.my_packageRemoved cloudflare_waf_group.my_groupSuccessfully removed 2 resource instance(s).
+  ```txt
+  Removed cloudflare_waf_package.my_package
+  Removed cloudflare_waf_group.my_group
+  Successfully removed 2 resource instance(s).
   ```
 6. After removing WAF package, group, and rule resources from Terraform state, delete `cloudflare_waf_package`, `cloudflare_waf_group`, and `cloudflare_waf_rule` resources from `.tf` configuration files.
 7. Run `terraform plan` to verify that the resources you deleted from configuration files no longer appear. You should not have any pending changes.
-Terminal window
-```
+```sh
 terraform plan
 ```
-```
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31][...]
+```txt
+cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]
+[...]
 No changes. Your infrastructure matches the configuration.
 Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
 ```

@@ -51,17 +51,13 @@ When you create an object lifecycle rule, you can specify which prefix you would
 3. Log in to Wrangler with the [wrangler login command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login).
 4. Add a lifecycle rule to your bucket by running the [r2 bucket lifecycle add command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lifecycle-add).
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lifecycle add <BUCKET_NAME> [OPTIONS]
 ```
 
 Alternatively you can set the entire lifecycle configuration for a bucket from a JSON file using the [r2 bucket lifecycle set command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lifecycle-set).
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lifecycle set <BUCKET_NAME> --file <FILE_PATH>
 ```
 
@@ -71,16 +67,88 @@ The JSON file should be in the format of the request body of the [put object lif
 
 Below is an example of configuring a lifecycle configuration (a collection of lifecycle rules) with different sets of rules for different potential use cases.
 
-Configure the S3 client to interact with R2
+**Configure the S3 client to interact with R2**
 
-```
-const client = new S3({  endpoint: "https://<account_id>.r2.cloudflarestorage.com",  credentials: {    accessKeyId: "<access_key_id>",    secretAccessKey: "<access_key_secret>",  },  region: "auto",});
+```js
+const client = new S3({
+  endpoint: "https://<account_id>.r2.cloudflarestorage.com",
+  credentials: {
+    accessKeyId: "<access_key_id>",
+    secretAccessKey: "<access_key_secret>",
+  },
+  region: "auto",
+});
 ```
 
-Set the lifecycle configuration for a bucket
+**Set the lifecycle configuration for a bucket**
 
-```
-await client  .putBucketLifecycleConfiguration({    Bucket: "testBucket",    LifecycleConfiguration: {      Rules: [        // Example: deleting objects on a specific date        // Delete 2019 documents in 2024        {          ID: "Delete 2019 Documents",          Status: "Enabled",          Filter: {            Prefix: "2019/",          },          Expiration: {            Date: new Date("2024-01-01"),          },        },        // Example: transitioning objects to Infrequent Access storage by age        // Transition objects older than 30 days to Infrequent Access storage        {          ID: "Transition Objects To Infrequent Access",          Status: "Enabled",          Transitions: [            {              Days: 30,              StorageClass: "STANDARD_IA",            },          ],        },        // Example: deleting objects by age        // Delete logs older than 90 days        {          ID: "Delete Old Logs",          Status: "Enabled",          Filter: {            Prefix: "logs/",          },          Expiration: {            Days: 90,          },        },        // Example: abort all incomplete multipart uploads after a week        {          ID: "Abort Incomplete Multipart Uploads",          Status: "Enabled",          AbortIncompleteMultipartUpload: {            DaysAfterInitiation: 7,          },        },        // Example: abort user multipart uploads after a day        {          ID: "Abort User Incomplete Multipart Uploads",          Status: "Enabled",          Filter: {            Prefix: "useruploads/",          },          AbortIncompleteMultipartUpload: {            // For uploads matching the prefix, this rule will take precedence            // over the one above due to its earlier expiration.            DaysAfterInitiation: 1,          },        },      ],    },  })  .promise();
+```javascript
+await client
+  .putBucketLifecycleConfiguration({
+    Bucket: "testBucket",
+    LifecycleConfiguration: {
+      Rules: [
+        // Example: deleting objects on a specific date
+        // Delete 2019 documents in 2024
+        {
+          ID: "Delete 2019 Documents",
+          Status: "Enabled",
+          Filter: {
+            Prefix: "2019/",
+          },
+          Expiration: {
+            Date: new Date("2024-01-01"),
+          },
+        },
+        // Example: transitioning objects to Infrequent Access storage by age
+        // Transition objects older than 30 days to Infrequent Access storage
+        {
+          ID: "Transition Objects To Infrequent Access",
+          Status: "Enabled",
+          Transitions: [
+            {
+              Days: 30,
+              StorageClass: "STANDARD_IA",
+            },
+          ],
+        },
+        // Example: deleting objects by age
+        // Delete logs older than 90 days
+        {
+          ID: "Delete Old Logs",
+          Status: "Enabled",
+          Filter: {
+            Prefix: "logs/",
+          },
+          Expiration: {
+            Days: 90,
+          },
+        },
+        // Example: abort all incomplete multipart uploads after a week
+        {
+          ID: "Abort Incomplete Multipart Uploads",
+          Status: "Enabled",
+          AbortIncompleteMultipartUpload: {
+            DaysAfterInitiation: 7,
+          },
+        },
+        // Example: abort user multipart uploads after a day
+        {
+          ID: "Abort User Incomplete Multipart Uploads",
+          Status: "Enabled",
+          Filter: {
+            Prefix: "useruploads/",
+          },
+          AbortIncompleteMultipartUpload: {
+            // For uploads matching the prefix, this rule will take precedence
+            // over the one above due to its earlier expiration.
+            DaysAfterInitiation: 1,
+          },
+        },
+      ],
+    },
+  })
+  .promise();
 ```
 
 ## Get lifecycle rules for your bucket
@@ -89,20 +157,37 @@ await client  .putBucketLifecycleConfiguration({    Bucket: "testBucket",    Lif
 
 To get the list of lifecycle rules associated with your bucket, run the [r2 bucket lifecycle list command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lifecycle-list).
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lifecycle list <BUCKET_NAME>
 ```
 
 ### S3 API
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import S3 from "aws-sdk/clients/s3.js";
-// Configure the S3 client to talk to R2.const client = new S3({  endpoint: "https://<account_id>.r2.cloudflarestorage.com",  credentials: {    accessKeyId: "<access_key_id>",    secretAccessKey: "<access_key_secret>",  },  region: "auto",});
-// Get lifecycle configuration for bucketconsole.log(  await client    .getBucketLifecycleConfiguration({      Bucket: "bucketName",    })    .promise(),);
+
+
+// Configure the S3 client to talk to R2.
+const client = new S3({
+  endpoint: "https://<account_id>.r2.cloudflarestorage.com",
+  credentials: {
+    accessKeyId: "<access_key_id>",
+    secretAccessKey: "<access_key_secret>",
+  },
+  region: "auto",
+});
+
+
+// Get lifecycle configuration for bucket
+console.log(
+  await client
+    .getBucketLifecycleConfiguration({
+      Bucket: "bucketName",
+    })
+    .promise(),
+);
 ```
 
 ## Delete lifecycle rules from your bucket
@@ -120,20 +205,35 @@ import S3 from "aws-sdk/clients/s3.js";
 
 To remove a specific lifecycle rule from your bucket, run the [r2 bucket lifecycle remove command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lifecycle-remove).
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lifecycle remove <BUCKET_NAME> --id <RULE_ID>
 ```
 
 ### S3 API
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import S3 from "aws-sdk/clients/s3.js";
-// Configure the S3 client to talk to R2.const client = new S3({  endpoint: "https://<account_id>.r2.cloudflarestorage.com",  credentials: {    accessKeyId: "<access_key_id>",    secretAccessKey: "<access_key_secret>",  },  region: "auto",});
-// Delete lifecycle configuration for bucketawait client  .deleteBucketLifecycle({    Bucket: "bucketName",  })  .promise();
+
+
+// Configure the S3 client to talk to R2.
+const client = new S3({
+  endpoint: "https://<account_id>.r2.cloudflarestorage.com",
+  credentials: {
+    accessKeyId: "<access_key_id>",
+    secretAccessKey: "<access_key_secret>",
+  },
+  region: "auto",
+});
+
+
+// Delete lifecycle configuration for bucket
+await client
+  .deleteBucketLifecycle({
+    Bucket: "bucketName",
+  })
+  .promise();
 ```
 
 ```json

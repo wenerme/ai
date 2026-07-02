@@ -51,166 +51,570 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5443)
-* [  TypeScript ](#tab-panel-5444)
+* [  JavaScript ](#tab-panel-5589)
+* [  TypeScript ](#tab-panel-5590)
 
-JavaScript
+**JavaScript**
 
-```
-import { Agent } from "agents";import { AgentWorkflow } from "agents/workflows";
-export class ExpenseWorkflow extends AgentWorkflow {  async run(event, step) {    const expense = event.payload;
-    // Step 1: Validate the expense    const validated = await step.do("validate", async () => {      if (expense.amount <= 0) {        throw new Error("Invalid expense amount");      }      return { ...expense, validatedAt: Date.now() };    });
-    // Step 2: Report that we are waiting for approval    await this.reportProgress({      step: "approval",      status: "pending",      message: `Awaiting approval for $${expense.amount}`,    });
-    // Step 3: Wait for human approval (pauses the workflow)    const approval = await this.waitForApproval(step, {      timeout: "7 days",    });
+```js
+import { Agent } from "agents";
+import { AgentWorkflow } from "agents/workflows";
+
+
+export class ExpenseWorkflow extends AgentWorkflow {
+  async run(event, step) {
+    const expense = event.payload;
+
+
+    // Step 1: Validate the expense
+    const validated = await step.do("validate", async () => {
+      if (expense.amount <= 0) {
+        throw new Error("Invalid expense amount");
+      }
+      return { ...expense, validatedAt: Date.now() };
+    });
+
+
+    // Step 2: Report that we are waiting for approval
+    await this.reportProgress({
+      step: "approval",
+      status: "pending",
+      message: `Awaiting approval for $${expense.amount}`,
+    });
+
+
+    // Step 3: Wait for human approval (pauses the workflow)
+    const approval = await this.waitForApproval(step, {
+      timeout: "7 days",
+    });
+
+
     console.log(`Approved by: ${approval?.approvedBy}`);
-    // Step 4: Process the approved expense    const result = await step.do("process", async () => {      return { expenseId: crypto.randomUUID(), ...validated };    });
-    await step.reportComplete(result);    return result;  }}
+
+
+    // Step 4: Process the approved expense
+    const result = await step.do("process", async () => {
+      return { expenseId: crypto.randomUUID(), ...validated };
+    });
+
+
+    await step.reportComplete(result);
+    return result;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent } from "agents";import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
-type ExpenseParams = {  amount: number;  description: string;  requestedBy: string;};
-export class ExpenseWorkflow extends AgentWorkflow<  ExpenseAgent,  ExpenseParams> {  async run(event: AgentWorkflowEvent<ExpenseParams>, step: AgentWorkflowStep) {    const expense = event.payload;
-    // Step 1: Validate the expense    const validated = await step.do("validate", async () => {      if (expense.amount <= 0) {        throw new Error("Invalid expense amount");      }      return { ...expense, validatedAt: Date.now() };    });
-    // Step 2: Report that we are waiting for approval    await this.reportProgress({      step: "approval",      status: "pending",      message: `Awaiting approval for $${expense.amount}`,    });
-    // Step 3: Wait for human approval (pauses the workflow)    const approval = await this.waitForApproval<{ approvedBy: string }>(step, {      timeout: "7 days",    });
+```ts
+import { Agent } from "agents";
+import { AgentWorkflow } from "agents/workflows";
+import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
+
+
+type ExpenseParams = {
+  amount: number;
+  description: string;
+  requestedBy: string;
+};
+
+
+export class ExpenseWorkflow extends AgentWorkflow<
+  ExpenseAgent,
+  ExpenseParams
+> {
+  async run(event: AgentWorkflowEvent<ExpenseParams>, step: AgentWorkflowStep) {
+    const expense = event.payload;
+
+
+    // Step 1: Validate the expense
+    const validated = await step.do("validate", async () => {
+      if (expense.amount <= 0) {
+        throw new Error("Invalid expense amount");
+      }
+      return { ...expense, validatedAt: Date.now() };
+    });
+
+
+    // Step 2: Report that we are waiting for approval
+    await this.reportProgress({
+      step: "approval",
+      status: "pending",
+      message: `Awaiting approval for $${expense.amount}`,
+    });
+
+
+    // Step 3: Wait for human approval (pauses the workflow)
+    const approval = await this.waitForApproval<{ approvedBy: string }>(step, {
+      timeout: "7 days",
+    });
+
+
     console.log(`Approved by: ${approval?.approvedBy}`);
-    // Step 4: Process the approved expense    const result = await step.do("process", async () => {      return { expenseId: crypto.randomUUID(), ...validated };    });
-    await step.reportComplete(result);    return result;  }}
+
+
+    // Step 4: Process the approved expense
+    const result = await step.do("process", async () => {
+      return { expenseId: crypto.randomUUID(), ...validated };
+    });
+
+
+    await step.reportComplete(result);
+    return result;
+  }
+}
 ```
 
 ### Agent methods for approval
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-5447)
-* [  TypeScript ](#tab-panel-5448)
+* [  JavaScript ](#tab-panel-5593)
+* [  TypeScript ](#tab-panel-5594)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, callable } from "agents";
-export class ExpenseAgent extends Agent {  initialState = {    pendingApprovals: [],  };
-  // Approve a waiting workflow  @callable()  async approve(workflowId, approvedBy) {    await this.approveWorkflow(workflowId, {      reason: "Expense approved",      metadata: { approvedBy, approvedAt: Date.now() },    });
-    // Update state to reflect approval    this.setState({      ...this.state,      pendingApprovals: this.state.pendingApprovals.filter(        (p) => p.workflowId !== workflowId,      ),    });  }
-  // Reject a waiting workflow  @callable()  async reject(workflowId, reason) {    await this.rejectWorkflow(workflowId, { reason });
-    this.setState({      ...this.state,      pendingApprovals: this.state.pendingApprovals.filter(        (p) => p.workflowId !== workflowId,      ),    });  }
-  // Track workflow progress to update pending approvals  async onWorkflowProgress(workflowName, workflowId, progress) {    const p = progress;
-    if (p.step === "approval" && p.status === "pending") {      // Add to pending approvals list for UI display      this.setState({        ...this.state,        pendingApprovals: [          ...this.state.pendingApprovals,          {            workflowId,            amount: 0, // Would come from workflow params            description: p.message || "",            requestedBy: "user",            requestedAt: Date.now(),          },        ],      });    }  }}
+
+
+export class ExpenseAgent extends Agent {
+  initialState = {
+    pendingApprovals: [],
+  };
+
+
+  // Approve a waiting workflow
+  @callable()
+  async approve(workflowId, approvedBy) {
+    await this.approveWorkflow(workflowId, {
+      reason: "Expense approved",
+      metadata: { approvedBy, approvedAt: Date.now() },
+    });
+
+
+    // Update state to reflect approval
+    this.setState({
+      ...this.state,
+      pendingApprovals: this.state.pendingApprovals.filter(
+        (p) => p.workflowId !== workflowId,
+      ),
+    });
+  }
+
+
+  // Reject a waiting workflow
+  @callable()
+  async reject(workflowId, reason) {
+    await this.rejectWorkflow(workflowId, { reason });
+
+
+    this.setState({
+      ...this.state,
+      pendingApprovals: this.state.pendingApprovals.filter(
+        (p) => p.workflowId !== workflowId,
+      ),
+    });
+  }
+
+
+  // Track workflow progress to update pending approvals
+  async onWorkflowProgress(workflowName, workflowId, progress) {
+    const p = progress;
+
+
+    if (p.step === "approval" && p.status === "pending") {
+      // Add to pending approvals list for UI display
+      this.setState({
+        ...this.state,
+        pendingApprovals: [
+          ...this.state.pendingApprovals,
+          {
+            workflowId,
+            amount: 0, // Would come from workflow params
+            description: p.message || "",
+            requestedBy: "user",
+            requestedAt: Date.now(),
+          },
+        ],
+      });
+    }
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, callable } from "agents";
-type PendingApproval = {  workflowId: string;  amount: number;  description: string;  requestedBy: string;  requestedAt: number;};
-type ExpenseState = {  pendingApprovals: PendingApproval[];};
-export class ExpenseAgent extends Agent<Env, ExpenseState> {  initialState: ExpenseState = {    pendingApprovals: [],  };
-  // Approve a waiting workflow  @callable()  async approve(workflowId: string, approvedBy: string): Promise<void> {    await this.approveWorkflow(workflowId, {      reason: "Expense approved",      metadata: { approvedBy, approvedAt: Date.now() },    });
-    // Update state to reflect approval    this.setState({      ...this.state,      pendingApprovals: this.state.pendingApprovals.filter(        (p) => p.workflowId !== workflowId,      ),    });  }
-  // Reject a waiting workflow  @callable()  async reject(workflowId: string, reason: string): Promise<void> {    await this.rejectWorkflow(workflowId, { reason });
-    this.setState({      ...this.state,      pendingApprovals: this.state.pendingApprovals.filter(        (p) => p.workflowId !== workflowId,      ),    });  }
-  // Track workflow progress to update pending approvals  async onWorkflowProgress(    workflowName: string,    workflowId: string,    progress: unknown,  ): Promise<void> {    const p = progress as { step: string; status: string; message?: string };
-    if (p.step === "approval" && p.status === "pending") {      // Add to pending approvals list for UI display      this.setState({        ...this.state,        pendingApprovals: [          ...this.state.pendingApprovals,          {            workflowId,            amount: 0, // Would come from workflow params            description: p.message || "",            requestedBy: "user",            requestedAt: Date.now(),          },        ],      });    }  }}
+
+
+type PendingApproval = {
+  workflowId: string;
+  amount: number;
+  description: string;
+  requestedBy: string;
+  requestedAt: number;
+};
+
+
+type ExpenseState = {
+  pendingApprovals: PendingApproval[];
+};
+
+
+export class ExpenseAgent extends Agent<Env, ExpenseState> {
+  initialState: ExpenseState = {
+    pendingApprovals: [],
+  };
+
+
+  // Approve a waiting workflow
+  @callable()
+  async approve(workflowId: string, approvedBy: string): Promise<void> {
+    await this.approveWorkflow(workflowId, {
+      reason: "Expense approved",
+      metadata: { approvedBy, approvedAt: Date.now() },
+    });
+
+
+    // Update state to reflect approval
+    this.setState({
+      ...this.state,
+      pendingApprovals: this.state.pendingApprovals.filter(
+        (p) => p.workflowId !== workflowId,
+      ),
+    });
+  }
+
+
+  // Reject a waiting workflow
+  @callable()
+  async reject(workflowId: string, reason: string): Promise<void> {
+    await this.rejectWorkflow(workflowId, { reason });
+
+
+    this.setState({
+      ...this.state,
+      pendingApprovals: this.state.pendingApprovals.filter(
+        (p) => p.workflowId !== workflowId,
+      ),
+    });
+  }
+
+
+  // Track workflow progress to update pending approvals
+  async onWorkflowProgress(
+    workflowName: string,
+    workflowId: string,
+    progress: unknown,
+  ): Promise<void> {
+    const p = progress as { step: string; status: string; message?: string };
+
+
+    if (p.step === "approval" && p.status === "pending") {
+      // Add to pending approvals list for UI display
+      this.setState({
+        ...this.state,
+        pendingApprovals: [
+          ...this.state.pendingApprovals,
+          {
+            workflowId,
+            amount: 0, // Would come from workflow params
+            description: p.message || "",
+            requestedBy: "user",
+            requestedAt: Date.now(),
+          },
+        ],
+      });
+    }
+  }
+}
 ```
 
 ### Timeout handling
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-5437)
-* [  TypeScript ](#tab-panel-5438)
+* [  JavaScript ](#tab-panel-5583)
+* [  TypeScript ](#tab-panel-5584)
 
-JavaScript
+**JavaScript**
 
+```js
+const approval = await this.waitForApproval(step, {
+  timeout: "7 days", // Also supports: "1 hour", "30 minutes", etc.
+});
+
+
+if (!approval) {
+  // Timeout expired - escalate or auto-reject
+  await step.reportError("Approval timeout - escalating to manager");
+  throw new Error("Approval timeout");
+}
 ```
-const approval = await this.waitForApproval(step, {  timeout: "7 days", // Also supports: "1 hour", "30 minutes", etc.});
-if (!approval) {  // Timeout expired - escalate or auto-reject  await step.reportError("Approval timeout - escalating to manager");  throw new Error("Approval timeout");}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const approval = await this.waitForApproval<{ approvedBy: string }>(step, {  timeout: "7 days", // Also supports: "1 hour", "30 minutes", etc.});
-if (!approval) {  // Timeout expired - escalate or auto-reject  await step.reportError("Approval timeout - escalating to manager");  throw new Error("Approval timeout");}
+```ts
+const approval = await this.waitForApproval<{ approvedBy: string }>(step, {
+  timeout: "7 days", // Also supports: "1 hour", "30 minutes", etc.
+});
+
+
+if (!approval) {
+  // Timeout expired - escalate or auto-reject
+  await step.reportError("Approval timeout - escalating to manager");
+  throw new Error("Approval timeout");
+}
 ```
 
 ### Escalation with scheduling
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-5439)
-* [  TypeScript ](#tab-panel-5440)
+* [  JavaScript ](#tab-panel-5585)
+* [  TypeScript ](#tab-panel-5586)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, callable } from "agents";
-class ExpenseAgent extends Agent {  @callable()  async submitForApproval(expense) {    // Start the approval workflow    const workflowId = await this.runWorkflow("EXPENSE_WORKFLOW", expense);
-    // Schedule reminder after 4 hours    await this.schedule(Date.now() + 4 * 60 * 60 * 1000, "sendReminder", {      workflowId,    });
-    // Schedule escalation after 24 hours    await this.schedule(Date.now() + 24 * 60 * 60 * 1000, "escalateApproval", {      workflowId,    });
-    return workflowId;  }
-  async sendReminder(payload) {    const workflow = this.getWorkflow(payload.workflowId);    if (workflow?.status === "waiting") {      // Send reminder notification      console.log("Reminder: approval still pending");    }  }
-  async escalateApproval(payload) {    const workflow = this.getWorkflow(payload.workflowId);    if (workflow?.status === "waiting") {      // Escalate to manager      console.log("Escalating to manager");    }  }}
+
+
+class ExpenseAgent extends Agent {
+  @callable()
+  async submitForApproval(expense) {
+    // Start the approval workflow
+    const workflowId = await this.runWorkflow("EXPENSE_WORKFLOW", expense);
+
+
+    // Schedule reminder after 4 hours
+    await this.schedule(Date.now() + 4 * 60 * 60 * 1000, "sendReminder", {
+      workflowId,
+    });
+
+
+    // Schedule escalation after 24 hours
+    await this.schedule(Date.now() + 24 * 60 * 60 * 1000, "escalateApproval", {
+      workflowId,
+    });
+
+
+    return workflowId;
+  }
+
+
+  async sendReminder(payload) {
+    const workflow = this.getWorkflow(payload.workflowId);
+    if (workflow?.status === "waiting") {
+      // Send reminder notification
+      console.log("Reminder: approval still pending");
+    }
+  }
+
+
+  async escalateApproval(payload) {
+    const workflow = this.getWorkflow(payload.workflowId);
+    if (workflow?.status === "waiting") {
+      // Escalate to manager
+      console.log("Escalating to manager");
+    }
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, callable } from "agents";
-class ExpenseAgent extends Agent<Env, ExpenseState> {  @callable()  async submitForApproval(expense: ExpenseParams): Promise<string> {    // Start the approval workflow    const workflowId = await this.runWorkflow("EXPENSE_WORKFLOW", expense);
-    // Schedule reminder after 4 hours    await this.schedule(Date.now() + 4 * 60 * 60 * 1000, "sendReminder", {      workflowId,    });
-    // Schedule escalation after 24 hours    await this.schedule(Date.now() + 24 * 60 * 60 * 1000, "escalateApproval", {      workflowId,    });
-    return workflowId;  }
-  async sendReminder(payload: { workflowId: string }) {    const workflow = this.getWorkflow(payload.workflowId);    if (workflow?.status === "waiting") {      // Send reminder notification      console.log("Reminder: approval still pending");    }  }
-  async escalateApproval(payload: { workflowId: string }) {    const workflow = this.getWorkflow(payload.workflowId);    if (workflow?.status === "waiting") {      // Escalate to manager      console.log("Escalating to manager");    }  }}
+
+
+class ExpenseAgent extends Agent<Env, ExpenseState> {
+  @callable()
+  async submitForApproval(expense: ExpenseParams): Promise<string> {
+    // Start the approval workflow
+    const workflowId = await this.runWorkflow("EXPENSE_WORKFLOW", expense);
+
+
+    // Schedule reminder after 4 hours
+    await this.schedule(Date.now() + 4 * 60 * 60 * 1000, "sendReminder", {
+      workflowId,
+    });
+
+
+    // Schedule escalation after 24 hours
+    await this.schedule(Date.now() + 24 * 60 * 60 * 1000, "escalateApproval", {
+      workflowId,
+    });
+
+
+    return workflowId;
+  }
+
+
+  async sendReminder(payload: { workflowId: string }) {
+    const workflow = this.getWorkflow(payload.workflowId);
+    if (workflow?.status === "waiting") {
+      // Send reminder notification
+      console.log("Reminder: approval still pending");
+    }
+  }
+
+
+  async escalateApproval(payload: { workflowId: string }) {
+    const workflow = this.getWorkflow(payload.workflowId);
+    if (workflow?.status === "waiting") {
+      // Escalate to manager
+      console.log("Escalating to manager");
+    }
+  }
+}
 ```
 
 ### Audit trail with SQL
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-5441)
-* [  TypeScript ](#tab-panel-5442)
+* [  JavaScript ](#tab-panel-5587)
+* [  TypeScript ](#tab-panel-5588)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, callable } from "agents";
-class ExpenseAgent extends Agent {  async onStart() {    // Create audit table    this.sql`      CREATE TABLE IF NOT EXISTS approval_audit (        id INTEGER PRIMARY KEY AUTOINCREMENT,        workflow_id TEXT NOT NULL,        decision TEXT NOT NULL CHECK(decision IN ('approved', 'rejected')),        decided_by TEXT NOT NULL,        decided_at INTEGER NOT NULL,        reason TEXT      )    `;  }
-  @callable()  async approve(workflowId, userId, reason) {    // Record the decision in SQL (immutable audit log)    this.sql`      INSERT INTO approval_audit (workflow_id, decision, decided_by, decided_at, reason)      VALUES (${workflowId}, 'approved', ${userId}, ${Date.now()}, ${reason || null})    `;
-    // Process the approval    await this.approveWorkflow(workflowId, {      reason: reason || "Approved",      metadata: { approvedBy: userId },    });  }}
+
+
+class ExpenseAgent extends Agent {
+  async onStart() {
+    // Create audit table
+    this.sql`
+      CREATE TABLE IF NOT EXISTS approval_audit (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        workflow_id TEXT NOT NULL,
+        decision TEXT NOT NULL CHECK(decision IN ('approved', 'rejected')),
+        decided_by TEXT NOT NULL,
+        decided_at INTEGER NOT NULL,
+        reason TEXT
+      )
+    `;
+  }
+
+
+  @callable()
+  async approve(workflowId, userId, reason) {
+    // Record the decision in SQL (immutable audit log)
+    this.sql`
+      INSERT INTO approval_audit (workflow_id, decision, decided_by, decided_at, reason)
+      VALUES (${workflowId}, 'approved', ${userId}, ${Date.now()}, ${reason || null})
+    `;
+
+
+    // Process the approval
+    await this.approveWorkflow(workflowId, {
+      reason: reason || "Approved",
+      metadata: { approvedBy: userId },
+    });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, callable } from "agents";
-class ExpenseAgent extends Agent<Env, ExpenseState> {  async onStart() {    // Create audit table    this.sql`      CREATE TABLE IF NOT EXISTS approval_audit (        id INTEGER PRIMARY KEY AUTOINCREMENT,        workflow_id TEXT NOT NULL,        decision TEXT NOT NULL CHECK(decision IN ('approved', 'rejected')),        decided_by TEXT NOT NULL,        decided_at INTEGER NOT NULL,        reason TEXT      )    `;  }
-  @callable()  async approve(    workflowId: string,    userId: string,    reason?: string,  ): Promise<void> {    // Record the decision in SQL (immutable audit log)    this.sql`      INSERT INTO approval_audit (workflow_id, decision, decided_by, decided_at, reason)      VALUES (${workflowId}, 'approved', ${userId}, ${Date.now()}, ${reason || null})    `;
-    // Process the approval    await this.approveWorkflow(workflowId, {      reason: reason || "Approved",      metadata: { approvedBy: userId },    });  }}
+
+
+class ExpenseAgent extends Agent<Env, ExpenseState> {
+  async onStart() {
+    // Create audit table
+    this.sql`
+      CREATE TABLE IF NOT EXISTS approval_audit (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        workflow_id TEXT NOT NULL,
+        decision TEXT NOT NULL CHECK(decision IN ('approved', 'rejected')),
+        decided_by TEXT NOT NULL,
+        decided_at INTEGER NOT NULL,
+        reason TEXT
+      )
+    `;
+  }
+
+
+  @callable()
+  async approve(
+    workflowId: string,
+    userId: string,
+    reason?: string,
+  ): Promise<void> {
+    // Record the decision in SQL (immutable audit log)
+    this.sql`
+      INSERT INTO approval_audit (workflow_id, decision, decided_by, decided_at, reason)
+      VALUES (${workflowId}, 'approved', ${userId}, ${Date.now()}, ${reason || null})
+    `;
+
+
+    // Process the approval
+    await this.approveWorkflow(workflowId, {
+      reason: reason || "Approved",
+      metadata: { approvedBy: userId },
+    });
+  }
+}
 ```
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5435)
-* [  wrangler.toml ](#tab-panel-5436)
+* [  wrangler.jsonc ](#tab-panel-5581)
+* [  wrangler.toml ](#tab-panel-5582)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "expense-approval",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
+  },
+  "workflows": [
+    {
+      "name": "expense-workflow",
+      "binding": "EXPENSE_WORKFLOW",
+      "class_name": "ExpenseWorkflow",
+    },
+  ],
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ExpenseAgent"] }],
+}
 ```
-{  "name": "expense-approval",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "durable_objects": {    "bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],  },  "workflows": [    {      "name": "expense-workflow",      "binding": "EXPENSE_WORKFLOW",      "class_name": "ExpenseWorkflow",    },  ],  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ExpenseAgent"] }],}
-```
 
-TOML
+**TOML**
 
-```
-name = "expense-approval"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[[durable_objects.bindings]]name = "EXPENSE_AGENT"class_name = "ExpenseAgent"
-[[workflows]]name = "expense-workflow"binding = "EXPENSE_WORKFLOW"class_name = "ExpenseWorkflow"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "ExpenseAgent" ]
+```toml
+name = "expense-approval"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[[durable_objects.bindings]]
+name = "EXPENSE_AGENT"
+class_name = "ExpenseAgent"
+
+
+[[workflows]]
+name = "expense-workflow"
+binding = "EXPENSE_WORKFLOW"
+class_name = "ExpenseWorkflow"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "ExpenseAgent" ]
 ```
 
 ## MCP elicitation
@@ -219,34 +623,164 @@ When building MCP servers with `McpAgent`, you can request additional user input
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5449)
-* [  TypeScript ](#tab-panel-5450)
+* [  JavaScript ](#tab-panel-5595)
+* [  TypeScript ](#tab-panel-5596)
 
-JavaScript
+**JavaScript**
 
-```
-import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
-export class CounterMCP extends McpAgent {  server = new McpServer({    name: "counter-server",    version: "1.0.0",  });
+```js
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+
+export class CounterMCP extends McpAgent {
+  server = new McpServer({
+    name: "counter-server",
+    version: "1.0.0",
+  });
+
+
   initialState = { counter: 0 };
-  async init() {    this.server.tool(      "increase-counter",      "Increase the counter by a user-specified amount",      { confirm: z.boolean().describe("Do you want to increase the counter?") },      async ({ confirm }, extra) => {        if (!confirm) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
-        // Request additional input from the user        const userInput = await this.server.server.elicitInput(          {            message: "By how much do you want to increase the counter?",            requestedSchema: {              type: "object",              properties: {                amount: {                  type: "number",                  title: "Amount",                  description: "The amount to increase the counter by",                },              },              required: ["amount"],            },          },          { relatedRequestId: extra.requestId },        );
-        // Check if user accepted or cancelled        if (userInput.action !== "accept" || !userInput.content) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
-        // Use the input        const amount = Number(userInput.content.amount);        this.setState({          ...this.state,          counter: this.state.counter + amount,        });
-        return {          content: [            {              type: "text",              text: `Counter increased by ${amount}, now at ${this.state.counter}`,            },          ],        };      },    );  }}
+
+
+  async init() {
+    this.server.tool(
+      "increase-counter",
+      "Increase the counter by a user-specified amount",
+      { confirm: z.boolean().describe("Do you want to increase the counter?") },
+      async ({ confirm }, extra) => {
+        if (!confirm) {
+          return { content: [{ type: "text", text: "Cancelled." }] };
+        }
+
+
+        // Request additional input from the user
+        const userInput = await this.server.server.elicitInput(
+          {
+            message: "By how much do you want to increase the counter?",
+            requestedSchema: {
+              type: "object",
+              properties: {
+                amount: {
+                  type: "number",
+                  title: "Amount",
+                  description: "The amount to increase the counter by",
+                },
+              },
+              required: ["amount"],
+            },
+          },
+          { relatedRequestId: extra.requestId },
+        );
+
+
+        // Check if user accepted or cancelled
+        if (userInput.action !== "accept" || !userInput.content) {
+          return { content: [{ type: "text", text: "Cancelled." }] };
+        }
+
+
+        // Use the input
+        const amount = Number(userInput.content.amount);
+        this.setState({
+          ...this.state,
+          counter: this.state.counter + amount,
+        });
+
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
+            },
+          ],
+        };
+      },
+    );
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+```ts
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+
 type State = { counter: number };
-export class CounterMCP extends McpAgent<Env, State, {}> {  server = new McpServer({    name: "counter-server",    version: "1.0.0",  });
+
+
+export class CounterMCP extends McpAgent<Env, State, {}> {
+  server = new McpServer({
+    name: "counter-server",
+    version: "1.0.0",
+  });
+
+
   initialState: State = { counter: 0 };
-  async init() {    this.server.tool(      "increase-counter",      "Increase the counter by a user-specified amount",      { confirm: z.boolean().describe("Do you want to increase the counter?") },      async ({ confirm }, extra) => {        if (!confirm) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
-        // Request additional input from the user        const userInput = await this.server.server.elicitInput(          {            message: "By how much do you want to increase the counter?",            requestedSchema: {              type: "object",              properties: {                amount: {                  type: "number",                  title: "Amount",                  description: "The amount to increase the counter by",                },              },              required: ["amount"],            },          },          { relatedRequestId: extra.requestId },        );
-        // Check if user accepted or cancelled        if (userInput.action !== "accept" || !userInput.content) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
-        // Use the input        const amount = Number(userInput.content.amount);        this.setState({          ...this.state,          counter: this.state.counter + amount,        });
-        return {          content: [            {              type: "text",              text: `Counter increased by ${amount}, now at ${this.state.counter}`,            },          ],        };      },    );  }}
+
+
+  async init() {
+    this.server.tool(
+      "increase-counter",
+      "Increase the counter by a user-specified amount",
+      { confirm: z.boolean().describe("Do you want to increase the counter?") },
+      async ({ confirm }, extra) => {
+        if (!confirm) {
+          return { content: [{ type: "text", text: "Cancelled." }] };
+        }
+
+
+        // Request additional input from the user
+        const userInput = await this.server.server.elicitInput(
+          {
+            message: "By how much do you want to increase the counter?",
+            requestedSchema: {
+              type: "object",
+              properties: {
+                amount: {
+                  type: "number",
+                  title: "Amount",
+                  description: "The amount to increase the counter by",
+                },
+              },
+              required: ["amount"],
+            },
+          },
+          { relatedRequestId: extra.requestId },
+        );
+
+
+        // Check if user accepted or cancelled
+        if (userInput.action !== "accept" || !userInput.content) {
+          return { content: [{ type: "text", text: "Cancelled." }] };
+        }
+
+
+        // Use the input
+        const amount = Number(userInput.content.amount);
+        this.setState({
+          ...this.state,
+          counter: this.state.counter + amount,
+        });
+
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
+            },
+          ],
+        };
+      },
+    );
+  }
+}
 ```
 
 ## Elicitation vs workflow approval
@@ -265,43 +799,150 @@ export class CounterMCP extends McpAgent<Env, State, {}> {  server = new McpServ
 
 Use the agent's state to display pending approvals in your UI:
 
-```
+```tsx
 import { useAgent } from "agents/react";
-function PendingApprovals() {  const { state, agent } = useAgent({    agent: "expense-agent",    name: "main",  });
-  if (!state?.pendingApprovals?.length) {    return <p>No pending approvals</p>;  }
-  return (    <div className="approval-list">      {state.pendingApprovals.map((item) => (        <div key={item.workflowId} className="approval-card">          <h3>${item.amount}</h3>          <p>{item.description}</p>          <p>Requested by {item.requestedBy}</p>
-          <div className="actions">            <button              onClick={() => agent.stub.approve(item.workflowId, "admin")}            >              Approve            </button>            <button              onClick={() => agent.stub.reject(item.workflowId, "Declined")}            >              Reject            </button>          </div>        </div>      ))}    </div>  );}
+
+
+function PendingApprovals() {
+  const { state, agent } = useAgent({
+    agent: "expense-agent",
+    name: "main",
+  });
+
+
+  if (!state?.pendingApprovals?.length) {
+    return <p>No pending approvals</p>;
+  }
+
+
+  return (
+    <div className="approval-list">
+      {state.pendingApprovals.map((item) => (
+        <div key={item.workflowId} className="approval-card">
+          <h3>${item.amount}</h3>
+          <p>{item.description}</p>
+          <p>Requested by {item.requestedBy}</p>
+
+
+          <div className="actions">
+            <button
+              onClick={() => agent.stub.approve(item.workflowId, "admin")}
+            >
+              Approve
+            </button>
+            <button
+              onClick={() => agent.stub.reject(item.workflowId, "Declined")}
+            >
+              Reject
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
 ## Multi-approver patterns
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-5445)
-* [  TypeScript ](#tab-panel-5446)
+* [  JavaScript ](#tab-panel-5591)
+* [  TypeScript ](#tab-panel-5592)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, callable } from "agents";
-class MultiApprovalAgent extends Agent {  @callable()  async approveMulti(workflowId, userId) {    const approval = this.state.pendingMultiApprovals.find(      (p) => p.workflowId === workflowId,    );    if (!approval) throw new Error("Approval not found");
-    // Check if user already approved    if (approval.currentApprovals.some((a) => a.userId === userId)) {      throw new Error("Already approved by this user");    }
-    // Add this user's approval    approval.currentApprovals.push({ userId, approvedAt: Date.now() });
-    // Check if we have enough approvals    if (approval.currentApprovals.length >= approval.requiredApprovals) {      // Execute the approved action      await this.approveWorkflow(workflowId, {        metadata: { approvers: approval.currentApprovals },      });      return true;    }
-    this.setState({ ...this.state });    return false; // Still waiting for more approvals  }}
+
+
+class MultiApprovalAgent extends Agent {
+  @callable()
+  async approveMulti(workflowId, userId) {
+    const approval = this.state.pendingMultiApprovals.find(
+      (p) => p.workflowId === workflowId,
+    );
+    if (!approval) throw new Error("Approval not found");
+
+
+    // Check if user already approved
+    if (approval.currentApprovals.some((a) => a.userId === userId)) {
+      throw new Error("Already approved by this user");
+    }
+
+
+    // Add this user's approval
+    approval.currentApprovals.push({ userId, approvedAt: Date.now() });
+
+
+    // Check if we have enough approvals
+    if (approval.currentApprovals.length >= approval.requiredApprovals) {
+      // Execute the approved action
+      await this.approveWorkflow(workflowId, {
+        metadata: { approvers: approval.currentApprovals },
+      });
+      return true;
+    }
+
+
+    this.setState({ ...this.state });
+    return false; // Still waiting for more approvals
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, callable } from "agents";
-type MultiApproval = {  workflowId: string;  requiredApprovals: number;  currentApprovals: Array<{ userId: string; approvedAt: number }>;  rejections: Array<{ userId: string; rejectedAt: number; reason: string }>;};
-type State = {  pendingMultiApprovals: MultiApproval[];};
-class MultiApprovalAgent extends Agent<Env, State> {  @callable()  async approveMulti(workflowId: string, userId: string): Promise<boolean> {    const approval = this.state.pendingMultiApprovals.find(      (p) => p.workflowId === workflowId,    );    if (!approval) throw new Error("Approval not found");
-    // Check if user already approved    if (approval.currentApprovals.some((a) => a.userId === userId)) {      throw new Error("Already approved by this user");    }
-    // Add this user's approval    approval.currentApprovals.push({ userId, approvedAt: Date.now() });
-    // Check if we have enough approvals    if (approval.currentApprovals.length >= approval.requiredApprovals) {      // Execute the approved action      await this.approveWorkflow(workflowId, {        metadata: { approvers: approval.currentApprovals },      });      return true;    }
-    this.setState({ ...this.state });    return false; // Still waiting for more approvals  }}
+
+
+type MultiApproval = {
+  workflowId: string;
+  requiredApprovals: number;
+  currentApprovals: Array<{ userId: string; approvedAt: number }>;
+  rejections: Array<{ userId: string; rejectedAt: number; reason: string }>;
+};
+
+
+type State = {
+  pendingMultiApprovals: MultiApproval[];
+};
+
+
+class MultiApprovalAgent extends Agent<Env, State> {
+  @callable()
+  async approveMulti(workflowId: string, userId: string): Promise<boolean> {
+    const approval = this.state.pendingMultiApprovals.find(
+      (p) => p.workflowId === workflowId,
+    );
+    if (!approval) throw new Error("Approval not found");
+
+
+    // Check if user already approved
+    if (approval.currentApprovals.some((a) => a.userId === userId)) {
+      throw new Error("Already approved by this user");
+    }
+
+
+    // Add this user's approval
+    approval.currentApprovals.push({ userId, approvedAt: Date.now() });
+
+
+    // Check if we have enough approvals
+    if (approval.currentApprovals.length >= approval.requiredApprovals) {
+      // Execute the approved action
+      await this.approveWorkflow(workflowId, {
+        metadata: { approvers: approval.currentApprovals },
+      });
+      return true;
+    }
+
+
+    this.setState({ ...this.state });
+    return false; // Still waiting for more approvals
+  }
+}
 ```
 
 ## Best practices

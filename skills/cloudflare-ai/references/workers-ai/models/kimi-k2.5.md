@@ -39,38 +39,99 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4962)
-* [  TypeScript ](#tab-panel-4963)
-* [  Python ](#tab-panel-4964)
-* [  curl ](#tab-panel-4965)
+* [  Worker (Streaming) ](#tab-panel-5108)
+* [  TypeScript ](#tab-panel-5109)
+* [  Python ](#tab-panel-5110)
+* [  curl ](#tab-panel-5111)
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
-    const stream = await env.AI.run("@cf/moonshotai/kimi-k2.5", {      messages,      stream: true,    });
-    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+
+
+    const stream = await env.AI.run("@cf/moonshotai/kimi-k2.5", {
+      messages,
+      stream: true,
+    });
+
+
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/moonshotai/kimi-k2.5", { messages });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+    const response = await env.AI.run("@cf/moonshotai/kimi-k2.5", { messages });
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/moonshotai/kimi-k2.5",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
+```py
+import os
+import requests
+
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+prompt = "Tell me all about PEP-8"
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/moonshotai/kimi-k2.5",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+      "messages": [
+        {"role": "system", "content": "You are a friendly assistant"},
+        {"role": "user", "content": prompt}
+      ]
+    }
+)
+result = response.json()
+print(result)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.5 \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.5 \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints
@@ -81,8 +142,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-4966)
-* [ Output ](#tab-panel-4967)
+* [ Input ](#tab-panel-5112)
+* [ Output ](#tab-panel-5113)
 
 Input format
 
@@ -256,8 +317,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-4968)
-* [ Output ](#tab-panel-4969)
+* [ Input ](#tab-panel-5114)
+* [ Output ](#tab-panel-5115)
 
 Input format
 
@@ -411,8 +472,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-4970)
-* [ Output ](#tab-panel-4971)
+* [ Input ](#tab-panel-5116)
+* [ Output ](#tab-panel-5117)
 
 ▶requests\[\]
 

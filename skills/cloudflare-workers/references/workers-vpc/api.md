@@ -35,9 +35,9 @@ A VPC Network binding grants access to any service reachable through the bound C
 
 Makes an HTTP request to the private service through the bound Cloudflare Tunnel or Cloudflare Mesh. Available on both VPC Service and VPC Network bindings.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const response = await env.MY_BINDING.fetch(resource, options);
 ```
 
@@ -64,40 +64,87 @@ The following examples apply to both VPC Service and VPC Network bindings.
 
 #### Basic GET request
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const privateRequest = new Request(      "http://internal-api.company.local/users",    );    const response = await env.MY_BINDING.fetch(privateRequest);    const users = await response.json();
-    return new Response(JSON.stringify(users), {      headers: { "Content-Type": "application/json" },    });  },};
+```js
+export default {
+  async fetch(request, env) {
+    const privateRequest = new Request(
+      "http://internal-api.company.local/users",
+    );
+    const response = await env.MY_BINDING.fetch(privateRequest);
+    const users = await response.json();
+
+
+    return new Response(JSON.stringify(users), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
 
 #### POST request with body
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const privateRequest = new Request(      "http://internal-api.company.local/users",      {        method: "POST",        headers: {          "Content-Type": "application/json",          Authorization: `Bearer ${env.API_TOKEN}`,        },        body: JSON.stringify({          name: "John Doe",          email: "john@example.com",        }),      },    );
+```js
+export default {
+  async fetch(request, env) {
+    const privateRequest = new Request(
+      "http://internal-api.company.local/users",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${env.API_TOKEN}`,
+        },
+        body: JSON.stringify({
+          name: "John Doe",
+          email: "john@example.com",
+        }),
+      },
+    );
+
+
     const response = await env.MY_BINDING.fetch(privateRequest);
-    if (!response.ok) {      return new Response("Failed to create user", { status: response.status });    }
-    const user = await response.json();    return new Response(JSON.stringify(user), {      headers: { "Content-Type": "application/json" },    });  },};
+
+
+    if (!response.ok) {
+      return new Response("Failed to create user", { status: response.status });
+    }
+
+
+    const user = await response.json();
+    return new Response(JSON.stringify(user), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
 
 #### Request with HTTPS and IP address
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const privateRequest = new Request("https://10.0.1.50/api/data");    const response = await env.MY_BINDING.fetch(privateRequest);
-    return response;  },};
+```js
+export default {
+  async fetch(request, env) {
+    const privateRequest = new Request("https://10.0.1.50/api/data");
+    const response = await env.MY_BINDING.fetch(privateRequest);
+
+
+    return response;
+  },
+};
 ```
 
 ## connect()
 
 Opens a raw TCP connection to a private destination through the bound Cloudflare Tunnel or Cloudflare Mesh. Available on VPC Network bindings only.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const socket = await env.MY_BINDING.connect(address);
 ```
 
@@ -117,22 +164,45 @@ Note
 
 #### Connect to a private Redis instance
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
-    const writer = socket.writable.getWriter();    await writer.write(new TextEncoder().encode("PING\r\n"));    await writer.close();
-    return new Response(socket.readable);  },};
+```js
+export default {
+  async fetch(request, env) {
+    const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
+
+
+    const writer = socket.writable.getWriter();
+    await writer.write(new TextEncoder().encode("PING\r\n"));
+    await writer.close();
+
+
+    return new Response(socket.readable);
+  },
+};
 ```
 
 #### Connect using a SocketAddress object
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const socket = await env.MY_BINDING.connect({      hostname: "10.0.1.50",      port: 6379,    });
-    const writer = socket.writable.getWriter();    await writer.write(new TextEncoder().encode("PING\r\n"));    await writer.close();
-    return new Response(socket.readable);  },};
+```js
+export default {
+  async fetch(request, env) {
+    const socket = await env.MY_BINDING.connect({
+      hostname: "10.0.1.50",
+      port: 6379,
+    });
+
+
+    const writer = socket.writable.getWriter();
+    await writer.write(new TextEncoder().encode("PING\r\n"));
+    await writer.close();
+
+
+    return new Response(socket.readable);
+  },
+};
 ```
 
 ## Required roles

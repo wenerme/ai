@@ -27,20 +27,38 @@ A partial zone cannot be created in the same Cloudflare account as the parent do
 
 Add the zone configuration and apply the change to create the zone:
 
-```
-resource "cloudflare_zone" "subdomain_example_com" {  account = {    id = var.cloudflare_account_id  }  name = "subdomain.example.com"}
+```hcl
+resource "cloudflare_zone" "subdomain_example_com" {
+  account = {
+    id = var.cloudflare_account_id
+  }
+  name = "subdomain.example.com"
+}
 ```
 
 Then, in a new Terraform plan and apply cycle, upgrade the zone to a Business plan or higher:
 
-```
-resource "cloudflare_zone_subscription" "example_zone_subscription" {  zone_id = cloudflare_zone.subdomain_example_com.id  frequency = "monthly"  rate_plan = {    id = "business"    currency = "USD"  }}
+```hcl
+resource "cloudflare_zone_subscription" "example_zone_subscription" {
+  zone_id = cloudflare_zone.subdomain_example_com.id
+  frequency = "monthly"
+  rate_plan = {
+    id = "business"
+    currency = "USD"
+  }
+}
 ```
 
 Then, again in a new Terraform plan and apply cycle, update your Terraform configuration to add `type = "partial"` to the zone:
 
-```
-resource "cloudflare_zone" "subdomain_example_com" {  account = {    id = var.cloudflare_account_id  }  name = "subdomain.example.com"  type = "partial"}
+```hcl
+resource "cloudflare_zone" "subdomain_example_com" {
+  account = {
+    id = var.cloudflare_account_id
+  }
+  name = "subdomain.example.com"
+  type = "partial"
+}
 ```
 
 Terraform places the zone in a **Pending** state. You must add the necessary DNS records and verify domain ownership before Cloudflare activates it.

@@ -101,18 +101,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Change Origin H2 Max Streams Setting
+**Change Origin H2 Max Streams Setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max_streams" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": 100  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max_streams" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": 100
+  }'
 ```
 
 Refer to the [API documentation](https://developers.cloudflare.com/api/python/resources/zones/subresources/settings/methods/edit/) for more information.
 
 Terraform
 
-```
-resource "cloudflare_zone_setting" "example" {  zone_id    = "<ZONE_ID>"  setting_id = "origin_h2_max_streams"  value      = 50}
+```hcl
+resource "cloudflare_zone_setting" "example" {
+  zone_id    = "<ZONE_ID>"
+  setting_id = "origin_h2_max_streams"
+  value      = 50
+}
 ```
 
 Note

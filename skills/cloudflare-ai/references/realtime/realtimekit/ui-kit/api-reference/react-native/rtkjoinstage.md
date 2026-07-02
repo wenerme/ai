@@ -27,16 +27,26 @@ Join stage confirmation dialog with video preview and mic/camera toggles for web
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkJoinStage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkJoinStage meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkJoinStage meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkJoinStage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkJoinStage meeting={meeting} iconPack={customIconPack} states={states} />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkJoinStage meeting={meeting} iconPack={customIconPack} states={states} />
+  );
+}
 ```
 
 ```json

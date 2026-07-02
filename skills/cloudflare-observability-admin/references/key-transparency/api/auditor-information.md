@@ -20,10 +20,19 @@ If the Log is setup to provide [AKD ↗](https://github.com/facebook/akd) audit 
 
 `keys` contain Auditor public keys which allow for key rotation later.
 
-Terminal window
-
-```
-curl 'https://plexi.key-transparency.cloudflare.com/info'{  "keys": [    {      "public_key": "d1036a33a8731e82a29dc68210988b32b60b7c1bd22d2341f2e339f4db3a2f4a",      "not_before": 1712311441501    }  ],  "logs": [    "508607faff7cb16be841e901eca41a6239461f239e7e610c9ea2576f334bc144"  ]}
+```sh
+curl 'https://plexi.key-transparency.cloudflare.com/info'
+{
+  "keys": [
+    {
+      "public_key": "d1036a33a8731e82a29dc68210988b32b60b7c1bd22d2341f2e339f4db3a2f4a",
+      "not_before": 1712311441501
+    }
+  ],
+  "logs": [
+    "508607faff7cb16be841e901eca41a6239461f239e7e610c9ea2576f334bc144"
+  ]
+}
 ```
 
 ```json

@@ -20,27 +20,69 @@ Use [node:timers ↗](https://nodejs.org/api/timers.html) APIs to schedule funct
 
 This includes [setTimeout ↗](https://nodejs.org/api/timers.html#settimeoutcallback-delay-args) for calling a function after a delay, [setInterval ↗](https://nodejs.org/api/timers.html#clearintervaltimeout) for calling a function repeatedly, and [setImmediate ↗](https://nodejs.org/api/timers.html#setimmediatecallback-args) for calling a function in the next iteration of the event loop.
 
-* [  JavaScript ](#tab-panel-12085)
-* [  TypeScript ](#tab-panel-12086)
+* [  JavaScript ](#tab-panel-12380)
+* [  TypeScript ](#tab-panel-12381)
 
-index.js
+**index.js**
 
-```
+```js
 import timers from "node:timers";
-export default {  async fetch() {    console.log("first");    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers();    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers();    timers.setTimeout(() => {      console.log("last");      resolve1();    }, 10);
-    timers.setTimeout(() => {      console.log("next");      resolve2();    });
+
+
+export default {
+  async fetch() {
+    console.log("first");
+    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers();
+    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers();
+    timers.setTimeout(() => {
+      console.log("last");
+      resolve1();
+    }, 10);
+
+
+    timers.setTimeout(() => {
+      console.log("next");
+      resolve2();
+    });
+
+
     await Promise.all([promise1, promise2]);
-    return new Response("ok");  },};
+
+
+    return new Response("ok");
+  },
+};
 ```
 
-index.ts
+**index.ts**
 
-```
+```ts
 import timers from "node:timers";
-export default {  async fetch(): Promise<Response> {    console.log("first");    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers<void>();    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers<void>();    timers.setTimeout(() => {      console.log("last");      resolve1();    }, 10);
-    timers.setTimeout(() => {      console.log("next");      resolve2();    });
+
+
+export default {
+  async fetch(): Promise<Response> {
+    console.log("first");
+    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers<void>();
+    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers<void>();
+    timers.setTimeout(() => {
+      console.log("last");
+      resolve1();
+    }, 10);
+
+
+    timers.setTimeout(() => {
+      console.log("next");
+      resolve2();
+    });
+
+
     await Promise.all([promise1, promise2]);
-    return new Response("ok");  }} satisfies ExportedHandler<Env>;
+
+
+    return new Response("ok");
+  }
+} satisfies ExportedHandler<Env>;
 ```
 
 Note

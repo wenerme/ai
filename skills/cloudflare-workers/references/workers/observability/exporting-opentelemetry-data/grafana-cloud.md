@@ -53,20 +53,39 @@ Before you begin, ensure you have:
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11914)
-* [  wrangler.toml ](#tab-panel-11915)
+* [  wrangler.jsonc ](#tab-panel-12209)
+* [  wrangler.toml ](#tab-panel-12210)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["grafana-traces"]
+    },
+    "logs": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["grafana-logs"]
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["grafana-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["grafana-logs"]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truedestinations = [ "grafana-traces" ]
-[observability.logs]enabled = truedestinations = [ "grafana-logs" ]
+```toml
+[observability.traces]
+enabled = true
+destinations = [ "grafana-traces" ]
+
+
+[observability.logs]
+enabled = true
+destinations = [ "grafana-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

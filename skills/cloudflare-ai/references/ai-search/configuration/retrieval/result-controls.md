@@ -43,11 +43,21 @@ If [reranking](https://developers.cloudflare.com/ai-search/configuration/retriev
 
 These values can be configured at the instance level or overridden per request:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      match_threshold: 0.5,      max_num_results: 10,    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      match_threshold: 0.5,
+      max_num_results: 10,
+    },
+  },
+});
 ```
 
 ```json

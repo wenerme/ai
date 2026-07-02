@@ -47,8 +47,18 @@ When Cloudflare's Speed Brain feature is enabled, an HTTP header called `Specula
 
 The configuration looks like this:
 
-```
-{  "prefetch": [    {      "source": "document",      "where": {        "and": [{ "href_matches": "/*", "relative_to": "document" }]      },      "eagerness": "conservative"    }  ]}
+```json
+{
+  "prefetch": [
+    {
+      "source": "document",
+      "where": {
+        "and": [{ "href_matches": "/*", "relative_to": "document" }]
+      },
+      "eagerness": "conservative"
+    }
+  ]
+}
 ```
 
 This configuration instructs the browser to initiate prefetch requests for future navigations. These prefetch requests will include the `sec-purpose: prefetch` HTTP request header. Prefetches that are not successful will respond with a `503` status code. Prefetches that are successful will respond with a `200` status code.
@@ -69,9 +79,9 @@ While you can use Speed Brain without RUM enabled, you will not have visibility 
 
 Speed Brain is available in Cloudflare's **Speed** tab of the dashboard and also in the API.
 
-* [ Dashboard ](#tab-panel-10675)
-* [ API ](#tab-panel-10676)
-* [ Terraform ](#tab-panel-10677)
+* [ Dashboard ](#tab-panel-10970)
+* [ API ](#tab-panel-10971)
+* [ Terraform ](#tab-panel-10972)
 
 To enable or disable **Speed Brain** in the dashboard:
 
@@ -87,10 +97,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Change Cloudflare Speed Brain setting
+**Change Cloudflare Speed Brain setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/speed_brain" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/speed_brain" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "on"
+  }'
 ```
 
 To disable Speed Brain, set `value:` to `"off"`.

@@ -23,12 +23,12 @@ To configure GitHub access in both GitHub and Cloudflare One:
 3. In **Developer Settings**, select **OAuth Apps** and select **New OAuth app**.
 4. On the **Register a new OAuth application** page, enter an **Application name**. Your users will see this application name on the login page.
 5. In the **Homepage URL** field, enter your team domain:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 6. In the GitHub **Authorization callback URL** field, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 7. Select **Register application**.
@@ -53,8 +53,15 @@ When using a GitHub organization policy, if a user joins the required organizati
 
 ## Example API Configuration
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>"  },  "type": "github",  "name": "my example idp"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>"
+  },
+  "type": "github",
+  "name": "my example idp"
+}
 ```
 
 ```json

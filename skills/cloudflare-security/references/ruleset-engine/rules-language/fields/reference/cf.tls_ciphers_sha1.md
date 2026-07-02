@@ -18,7 +18,7 @@ The SHA-1 fingerprint of the client TLS cipher list in received order, encoded i
 
 Example value:
 
-```
+```txt
 "GXSPDLP4G3X+prK73a4wBuOaHRc="
 ```
 

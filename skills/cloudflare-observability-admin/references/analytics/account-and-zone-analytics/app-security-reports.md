@@ -84,27 +84,27 @@ A Cloudflare user must have one of the following [roles](https://developers.clou
 
 ## API
 
-List all report policies for a specific account
+**List all report policies for a specific account**
 
-```
+```sh
 GET /accounts/{account_id}/reporting/policies
 ```
 
-Retrieve the details of a single, specific report policy
+**Retrieve the details of a single, specific report policy**
 
-```
+```sh
 GET /accounts/{account_id}/reporting/policies/{policy_id}
 ```
 
-List all generated reports for a specific account
+**List all generated reports for a specific account**
 
-```
+```sh
 GET /accounts/{account_id}/reporting/reports
 ```
 
-Retrieve a single, specific report, including its data and findings
+**Retrieve a single, specific report, including its data and findings**
 
-```
+```sh
 GET /accounts/{account_id}/reporting/reports/{report_id}
 ```
 

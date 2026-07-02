@@ -24,10 +24,11 @@ A settings bottom sheet that contains audio and video device selectors and a sel
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val settingsBottomSheet = RtkSettingsBottomsheet()settingsBottomSheet.show(fragmentManager, "SETTINGS_TAG")
+```kotlin
+val settingsBottomSheet = RtkSettingsBottomsheet()
+settingsBottomSheet.show(fragmentManager, "SETTINGS_TAG")
 ```
 
 ```json

@@ -20,7 +20,7 @@ Specifically, the length of the bytestring of the client hello.
 
 Example value:
 
-```
+```txt
 508
 ```
 

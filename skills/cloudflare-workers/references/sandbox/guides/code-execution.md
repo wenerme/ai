@@ -34,76 +34,179 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-10435)
-* [  TypeScript ](#tab-panel-10436)
+* [  JavaScript ](#tab-panel-10730)
+* [  TypeScript ](#tab-panel-10731)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Create a Python contextconst pythonContext = await sandbox.createCodeContext({  language: "python",});
-console.log("Context ID:", pythonContext.id);console.log("Language:", pythonContext.language);
-// Create a JavaScript contextconst jsContext = await sandbox.createCodeContext({  language: "javascript",});
+
+
+// Create a Python context
+const pythonContext = await sandbox.createCodeContext({
+  language: "python",
+});
+
+
+console.log("Context ID:", pythonContext.id);
+console.log("Language:", pythonContext.language);
+
+
+// Create a JavaScript context
+const jsContext = await sandbox.createCodeContext({
+  language: "javascript",
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-// Create a Python contextconst pythonContext = await sandbox.createCodeContext({  language: 'python'});
-console.log('Context ID:', pythonContext.id);console.log('Language:', pythonContext.language);
-// Create a JavaScript contextconst jsContext = await sandbox.createCodeContext({  language: 'javascript'});
+
+
+// Create a Python context
+const pythonContext = await sandbox.createCodeContext({
+  language: 'python'
+});
+
+
+console.log('Context ID:', pythonContext.id);
+console.log('Language:', pythonContext.language);
+
+
+// Create a JavaScript context
+const jsContext = await sandbox.createCodeContext({
+  language: 'javascript'
+});
 ```
 
 ## Execute code
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-10437)
-* [  TypeScript ](#tab-panel-10438)
+* [  JavaScript ](#tab-panel-10732)
+* [  TypeScript ](#tab-panel-10733)
 
-JavaScript
+**JavaScript**
 
+```js
+// Create context
+const context = await sandbox.createCodeContext({
+  language: "python",
+});
+
+
+// Execute code
+const result = await sandbox.runCode(
+  `
+print("Hello from Code Interpreter!")
+result = 2 + 2
+print(f"2 + 2 = {result}")
+`,
+  { context: context.id },
+);
+
+
+console.log("Output:", result.output);
+console.log("Success:", result.success);
 ```
-// Create contextconst context = await sandbox.createCodeContext({  language: "python",});
-// Execute codeconst result = await sandbox.runCode(  `print("Hello from Code Interpreter!")result = 2 + 2print(f"2 + 2 = {result}")`,  { context: context.id },);
-console.log("Output:", result.output);console.log("Success:", result.success);
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Create contextconst context = await sandbox.createCodeContext({  language: 'python'});
-// Execute codeconst result = await sandbox.runCode(`print("Hello from Code Interpreter!")result = 2 + 2print(f"2 + 2 = {result}")`, { context: context.id });
-console.log('Output:', result.output);console.log('Success:', result.success);
+```ts
+// Create context
+const context = await sandbox.createCodeContext({
+  language: 'python'
+});
+
+
+// Execute code
+const result = await sandbox.runCode(`
+print("Hello from Code Interpreter!")
+result = 2 + 2
+print(f"2 + 2 = {result}")
+`, { context: context.id });
+
+
+console.log('Output:', result.output);
+console.log('Success:', result.success);
 ```
 
 ### State within a context
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-10443)
-* [  TypeScript ](#tab-panel-10444)
+* [  JavaScript ](#tab-panel-10738)
+* [  TypeScript ](#tab-panel-10739)
 
-JavaScript
+**JavaScript**
 
-```
-const context = await sandbox.createCodeContext({  language: "python",});
-// First execution - import and define variablesawait sandbox.runCode(  `import pandas as pdimport numpy as np
-data = [1, 2, 3, 4, 5]print("Data initialized")`,  { context: context.id },);
-// Second execution - use previously defined variablesconst result = await sandbox.runCode(  `mean = np.mean(data)print(f"Mean: {mean}")`,  { context: context.id },);
+```js
+const context = await sandbox.createCodeContext({
+  language: "python",
+});
+
+
+// First execution - import and define variables
+await sandbox.runCode(
+  `
+import pandas as pd
+import numpy as np
+
+
+data = [1, 2, 3, 4, 5]
+print("Data initialized")
+`,
+  { context: context.id },
+);
+
+
+// Second execution - use previously defined variables
+const result = await sandbox.runCode(
+  `
+mean = np.mean(data)
+print(f"Mean: {mean}")
+`,
+  { context: context.id },
+);
+
+
 console.log(result.output); // "Mean: 3.0"
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const context = await sandbox.createCodeContext({  language: 'python'});
-// First execution - import and define variablesawait sandbox.runCode(`import pandas as pdimport numpy as np
-data = [1, 2, 3, 4, 5]print("Data initialized")`, { context: context.id });
-// Second execution - use previously defined variablesconst result = await sandbox.runCode(`mean = np.mean(data)print(f"Mean: {mean}")`, { context: context.id });
+```ts
+const context = await sandbox.createCodeContext({
+  language: 'python'
+});
+
+
+// First execution - import and define variables
+await sandbox.runCode(`
+import pandas as pd
+import numpy as np
+
+
+data = [1, 2, 3, 4, 5]
+print("Data initialized")
+`, { context: context.id });
+
+
+// Second execution - use previously defined variables
+const result = await sandbox.runCode(`
+mean = np.mean(data)
+print(f"Mean: {mean}")
+`, { context: context.id });
+
+
 console.log(result.output); // "Mean: 3.0"
 ```
 
@@ -115,121 +218,322 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-10447)
-* [  TypeScript ](#tab-panel-10448)
+* [  JavaScript ](#tab-panel-10742)
+* [  TypeScript ](#tab-panel-10743)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await sandbox.runCode(
+  `
+import matplotlib.pyplot as plt
+
+
+plt.plot([1, 2, 3], [1, 4, 9])
+plt.title('Simple Chart')
+plt.show()
+`,
+  { context: context.id },
+);
+
+
+// Check available formats
+console.log("Formats:", result.formats); // ['text', 'png']
+
+
+// Access outputs
+if (result.outputs.png) {
+  // Return as image
+  return new Response(atob(result.outputs.png), {
+    headers: { "Content-Type": "image/png" },
+  });
+}
+
+
+if (result.outputs.html) {
+  // Return as HTML (pandas DataFrames)
+  return new Response(result.outputs.html, {
+    headers: { "Content-Type": "text/html" },
+  });
+}
+
+
+if (result.outputs.json) {
+  // Return as JSON
+  return Response.json(result.outputs.json);
+}
 ```
-const result = await sandbox.runCode(  `import matplotlib.pyplot as plt
-plt.plot([1, 2, 3], [1, 4, 9])plt.title('Simple Chart')plt.show()`,  { context: context.id },);
-// Check available formatsconsole.log("Formats:", result.formats); // ['text', 'png']
-// Access outputsif (result.outputs.png) {  // Return as image  return new Response(atob(result.outputs.png), {    headers: { "Content-Type": "image/png" },  });}
-if (result.outputs.html) {  // Return as HTML (pandas DataFrames)  return new Response(result.outputs.html, {    headers: { "Content-Type": "text/html" },  });}
-if (result.outputs.json) {  // Return as JSON  return Response.json(result.outputs.json);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await sandbox.runCode(`import matplotlib.pyplot as plt
-plt.plot([1, 2, 3], [1, 4, 9])plt.title('Simple Chart')plt.show()`, { context: context.id });
-// Check available formatsconsole.log('Formats:', result.formats);  // ['text', 'png']
-// Access outputsif (result.outputs.png) {  // Return as image  return new Response(atob(result.outputs.png), {    headers: { 'Content-Type': 'image/png' }  });}
-if (result.outputs.html) {  // Return as HTML (pandas DataFrames)  return new Response(result.outputs.html, {    headers: { 'Content-Type': 'text/html' }  });}
-if (result.outputs.json) {  // Return as JSON  return Response.json(result.outputs.json);}
+```ts
+const result = await sandbox.runCode(`
+import matplotlib.pyplot as plt
+
+
+plt.plot([1, 2, 3], [1, 4, 9])
+plt.title('Simple Chart')
+plt.show()
+`, { context: context.id });
+
+
+// Check available formats
+console.log('Formats:', result.formats);  // ['text', 'png']
+
+
+// Access outputs
+if (result.outputs.png) {
+  // Return as image
+  return new Response(atob(result.outputs.png), {
+    headers: { 'Content-Type': 'image/png' }
+  });
+}
+
+
+if (result.outputs.html) {
+  // Return as HTML (pandas DataFrames)
+  return new Response(result.outputs.html, {
+    headers: { 'Content-Type': 'text/html' }
+  });
+}
+
+
+if (result.outputs.json) {
+  // Return as JSON
+  return Response.json(result.outputs.json);
+}
 ```
 
 ## Stream execution output
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-10445)
-* [  TypeScript ](#tab-panel-10446)
+* [  JavaScript ](#tab-panel-10740)
+* [  TypeScript ](#tab-panel-10741)
 
-JavaScript
+**JavaScript**
 
+```js
+const context = await sandbox.createCodeContext({
+  language: "python",
+});
+
+
+const result = await sandbox.runCode(
+  `
+import time
+
+
+for i in range(10):
+    print(f"Processing item {i+1}/10...")
+    time.sleep(0.5)
+
+
+print("Done!")
+`,
+  {
+    context: context.id,
+    stream: true,
+    onOutput: (data) => {
+      console.log("Output:", data);
+    },
+    onResult: (result) => {
+      console.log("Result:", result);
+    },
+    onError: (error) => {
+      console.error("Error:", error);
+    },
+  },
+);
 ```
-const context = await sandbox.createCodeContext({  language: "python",});
-const result = await sandbox.runCode(  `import time
-for i in range(10):    print(f"Processing item {i+1}/10...")    time.sleep(0.5)
-print("Done!")`,  {    context: context.id,    stream: true,    onOutput: (data) => {      console.log("Output:", data);    },    onResult: (result) => {      console.log("Result:", result);    },    onError: (error) => {      console.error("Error:", error);    },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const context = await sandbox.createCodeContext({  language: 'python'});
-const result = await sandbox.runCode(  `import time
-for i in range(10):    print(f"Processing item {i+1}/10...")    time.sleep(0.5)
-print("Done!")`,  {    context: context.id,    stream: true,    onOutput: (data) => {      console.log('Output:', data);    },    onResult: (result) => {      console.log('Result:', result);    },    onError: (error) => {      console.error('Error:', error);    }  });
+```ts
+const context = await sandbox.createCodeContext({
+  language: 'python'
+});
+
+
+const result = await sandbox.runCode(
+  `
+import time
+
+
+for i in range(10):
+    print(f"Processing item {i+1}/10...")
+    time.sleep(0.5)
+
+
+print("Done!")
+`,
+  {
+    context: context.id,
+    stream: true,
+    onOutput: (data) => {
+      console.log('Output:', data);
+    },
+    onResult: (result) => {
+      console.log('Result:', result);
+    },
+    onError: (error) => {
+      console.error('Error:', error);
+    }
+  }
+);
 ```
 
 ## Execute AI-generated code
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-10449)
-* [  TypeScript ](#tab-panel-10450)
+* [  JavaScript ](#tab-panel-10744)
+* [  TypeScript ](#tab-panel-10745)
 
-JavaScript
+**JavaScript**
 
+```js
+// 1. Generate code with Claude
+const response = await fetch("https://api.anthropic.com/v1/messages", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": env.ANTHROPIC_API_KEY,
+    "anthropic-version": "2023-06-01",
+  },
+  body: JSON.stringify({
+    model: "claude-3-5-sonnet-20241022",
+    max_tokens: 1024,
+    messages: [
+      {
+        role: "user",
+        content: "Write Python code to calculate fibonacci sequence up to 100",
+      },
+    ],
+  }),
+});
+
+
+const { content } = await response.json();
+const code = content[0].text;
+
+
+// 2. Execute in sandbox
+const context = await sandbox.createCodeContext({ language: "python" });
+const result = await sandbox.runCode(code, { context: context.id });
+
+
+console.log("Generated code:", code);
+console.log("Output:", result.output);
+console.log("Success:", result.success);
 ```
-// 1. Generate code with Claudeconst response = await fetch("https://api.anthropic.com/v1/messages", {  method: "POST",  headers: {    "Content-Type": "application/json",    "x-api-key": env.ANTHROPIC_API_KEY,    "anthropic-version": "2023-06-01",  },  body: JSON.stringify({    model: "claude-3-5-sonnet-20241022",    max_tokens: 1024,    messages: [      {        role: "user",        content: "Write Python code to calculate fibonacci sequence up to 100",      },    ],  }),});
-const { content } = await response.json();const code = content[0].text;
-// 2. Execute in sandboxconst context = await sandbox.createCodeContext({ language: "python" });const result = await sandbox.runCode(code, { context: context.id });
-console.log("Generated code:", code);console.log("Output:", result.output);console.log("Success:", result.success);
-```
 
-TypeScript
+**TypeScript**
 
-```
-// 1. Generate code with Claudeconst response = await fetch('https://api.anthropic.com/v1/messages', {  method: 'POST',  headers: {    'Content-Type': 'application/json',    'x-api-key': env.ANTHROPIC_API_KEY,    'anthropic-version': '2023-06-01'  },  body: JSON.stringify({    model: 'claude-3-5-sonnet-20241022',    max_tokens: 1024,    messages: [{      role: 'user',      content: 'Write Python code to calculate fibonacci sequence up to 100'    }]  })});
-const { content } = await response.json();const code = content[0].text;
-// 2. Execute in sandboxconst context = await sandbox.createCodeContext({ language: 'python' });const result = await sandbox.runCode(code, { context: context.id });
-console.log('Generated code:', code);console.log('Output:', result.output);console.log('Success:', result.success);
+```ts
+// 1. Generate code with Claude
+const response = await fetch('https://api.anthropic.com/v1/messages', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-api-key': env.ANTHROPIC_API_KEY,
+    'anthropic-version': '2023-06-01'
+  },
+  body: JSON.stringify({
+    model: 'claude-3-5-sonnet-20241022',
+    max_tokens: 1024,
+    messages: [{
+      role: 'user',
+      content: 'Write Python code to calculate fibonacci sequence up to 100'
+    }]
+  })
+});
+
+
+const { content } = await response.json();
+const code = content[0].text;
+
+
+// 2. Execute in sandbox
+const context = await sandbox.createCodeContext({ language: 'python' });
+const result = await sandbox.runCode(code, { context: context.id });
+
+
+console.log('Generated code:', code);
+console.log('Output:', result.output);
+console.log('Success:', result.success);
 ```
 
 ## Manage contexts
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-10439)
-* [  TypeScript ](#tab-panel-10440)
+* [  JavaScript ](#tab-panel-10734)
+* [  TypeScript ](#tab-panel-10735)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const contexts = await sandbox.listCodeContexts();
+
+
 console.log(`${contexts.length} active contexts:`);
-for (const ctx of contexts) {  console.log(`  ${ctx.id} (${ctx.language})`);}
+
+
+for (const ctx of contexts) {
+  console.log(`  ${ctx.id} (${ctx.language})`);
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const contexts = await sandbox.listCodeContexts();
+
+
 console.log(`${contexts.length} active contexts:`);
-for (const ctx of contexts) {  console.log(`  ${ctx.id} (${ctx.language})`);}
+
+
+for (const ctx of contexts) {
+  console.log(`  ${ctx.id} (${ctx.language})`);
+}
 ```
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-10441)
-* [  TypeScript ](#tab-panel-10442)
+* [  JavaScript ](#tab-panel-10736)
+* [  TypeScript ](#tab-panel-10737)
 
-JavaScript
+**JavaScript**
 
+```js
+// Delete specific context
+await sandbox.deleteCodeContext(context.id);
+console.log("Context deleted");
+
+
+// Clean up all contexts
+const contexts = await sandbox.listCodeContexts();
+for (const ctx of contexts) {
+  await sandbox.deleteCodeContext(ctx.id);
+}
+console.log("All contexts deleted");
 ```
-// Delete specific contextawait sandbox.deleteCodeContext(context.id);console.log("Context deleted");
-// Clean up all contextsconst contexts = await sandbox.listCodeContexts();for (const ctx of contexts) {  await sandbox.deleteCodeContext(ctx.id);}console.log("All contexts deleted");
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Delete specific contextawait sandbox.deleteCodeContext(context.id);console.log('Context deleted');
-// Clean up all contextsconst contexts = await sandbox.listCodeContexts();for (const ctx of contexts) {  await sandbox.deleteCodeContext(ctx.id);}console.log('All contexts deleted');
+```ts
+// Delete specific context
+await sandbox.deleteCodeContext(context.id);
+console.log('Context deleted');
+
+
+// Clean up all contexts
+const contexts = await sandbox.listCodeContexts();
+for (const ctx of contexts) {
+  await sandbox.deleteCodeContext(ctx.id);
+}
+console.log('All contexts deleted');
 ```
 
 ## Best practices

@@ -121,48 +121,162 @@ Fetch values for total active users and new users per minute over a certain peri
 
 This is a simple query to fetch metrics values. You can filter the data with the zone tag and query the `waitingRoomAnalyticsAdaptive` dataset. In this example, we have applied this query only on two metrics, but you can explore the schema and fetch the raw values from the GraphQL dataset without applying any aggregation methods.
 
-Request
+**Request**
 
-```
-{  viewer {    zones(filter: {zoneTag: "example-zone"}) {      waitingRoomAnalyticsAdaptive(limit: 3, filter: {datetime_gt: "2023-03-05T19:14:30Z", datetime_lt: "2023-03-07T19:13:00Z", waitingRoomId: "example-waiting-room-id"}) {        totalActiveUsers          newUsersPerMinutes      }    }  }
+```bash
+{
+  viewer {
+    zones(filter: {zoneTag: "example-zone"}) {
+      waitingRoomAnalyticsAdaptive(limit: 3, filter: {datetime_gt: "2023-03-05T19:14:30Z", datetime_lt: "2023-03-07T19:13:00Z", waitingRoomId: "example-waiting-room-id"}) {
+        totalActiveUsers
+          newUsersPerMinutes
+      }
+    }
+  }
 ```
 
-Response
+**Response**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "waitingRoomAnalyticsAdaptive": [            {              "newUsersPerMinute": 77,              "totalActiveUsers": 1023            },            {              "newUsersPerMinute": 113,              "totalActiveUsers": 1009            },            {              "newUsersPerMinute": 99,              "totalActiveUsers": 927            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "waitingRoomAnalyticsAdaptive": [
+            {
+              "newUsersPerMinute": 77,
+              "totalActiveUsers": 1023
+            },
+            {
+              "newUsersPerMinute": 113,
+              "totalActiveUsers": 1009
+            },
+            {
+              "newUsersPerMinute": 99,
+              "totalActiveUsers": 927
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 Find the average of total active users and new users per minute over a certain period, and aggregate this data over a period of 15 minutes.
 
 This query calculates the average of total active users and new users per minute. The time dimension in the query is 15 minutes, therefore the data is aggregated over 15 minutes for the selected time period.
 
-Request
+**Request**
 
-```
-{  viewer {    zones(filter: {zoneTag: "example-zone"}) {      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeFifteenMinutes_ASC]) {        avg {          totalActiveUsers          newUsersPerMinute        }        dimensions {          datetimeFifteenMinutes        }      }
+```bash
+{
+  viewer {
+    zones(filter: {zoneTag: "example-zone"}) {
+      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeFifteenMinutes_ASC]) {
+        avg {
+          totalActiveUsers
+          newUsersPerMinute
+        }
+        dimensions {
+          datetimeFifteenMinutes
+        }
+      }
 ```
 
-Response
+**Response**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "waitingRoomAnalyticsAdaptiveGroups": [            {              "avg": {                "newUsersPerMinute": 119,                "totalActiveUsers": 1180              },              "dimensions": {                "datetimeFifteenMinutes": "2023-03-15T04:00:00Z"              }            },            {              "avg": {                "newUsersPerMinute": 146,                "totalActiveUsers": 961              },              "dimensions": {                "datetimeFifteenMinutes": "2023-03-15T04:15:00Z"              }            },            {              "avg": {                "newUsersPerMinute": 144,                "totalActiveUsers": 1015              },              "dimensions": {                "datetimeFifteenMinutes": "2023-03-15T04:30:00Z"              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "waitingRoomAnalyticsAdaptiveGroups": [
+            {
+              "avg": {
+                "newUsersPerMinute": 119,
+                "totalActiveUsers": 1180
+              },
+              "dimensions": {
+                "datetimeFifteenMinutes": "2023-03-15T04:00:00Z"
+              }
+            },
+            {
+              "avg": {
+                "newUsersPerMinute": 146,
+                "totalActiveUsers": 961
+              },
+              "dimensions": {
+                "datetimeFifteenMinutes": "2023-03-15T04:15:00Z"
+              }
+            },
+            {
+              "avg": {
+                "newUsersPerMinute": 144,
+                "totalActiveUsers": 1015
+              },
+              "dimensions": {
+                "datetimeFifteenMinutes": "2023-03-15T04:30:00Z"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 Find the weighted averages of time on origin (50th percentile) and total time waited (90th percentile) for a certain period and aggregate this data over one hour.
 
 This query calculates the weighted averages of the metrics for a certain period of time aggregated hourly.
 
-Request
+**Request**
 
-```
-{  viewer {    zones(filter: {zoneTag: "example-zone"}) {      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeHour_ASC]) {        avgWeighted {          timeOnOriginP50          totalTimeWaitedP90        }        dimensions {          datetimeHour        }      }
+```bash
+{
+  viewer {
+    zones(filter: {zoneTag: "example-zone"}) {
+      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeHour_ASC]) {
+        avgWeighted {
+          timeOnOriginP50
+          totalTimeWaitedP90
+        }
+        dimensions {
+          datetimeHour
+        }
+      }
 ```
 
-Response
+**Response**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "waitingRoomAnalyticsAdaptiveGroups": [            {              "avgWeighted": {                "timeOnOriginP50": 99.19,                "totalTimeWaitedP90": 1625.63              },              "dimensions": {                "datetimeHour": "2023-03-15T04:00:00Z"              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "waitingRoomAnalyticsAdaptiveGroups": [
+            {
+              "avgWeighted": {
+                "timeOnOriginP50": 99.19,
+                "totalTimeWaitedP90": 1625.63
+              },
+              "dimensions": {
+                "datetimeHour": "2023-03-15T04:00:00Z"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ## Why is there no data for my waiting room?

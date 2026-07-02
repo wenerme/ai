@@ -22,45 +22,114 @@ Unlike logs, Analytics Engine is designed for aggregated queries over high-cardi
 
 Add an Analytics Engine dataset binding to your Wrangler configuration file. The dataset is created automatically when you first write to it.
 
-* [  wrangler.jsonc ](#tab-panel-11695)
-* [  wrangler.toml ](#tab-panel-11696)
+* [  wrangler.jsonc ](#tab-panel-11928)
+* [  wrangler.toml ](#tab-panel-11929)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "analytics_engine_datasets": [
+    {
+      "binding": "ANALYTICS",
+      "dataset": "my_dataset",
+    },
+  ],
+}
 ```
-{  "analytics_engine_datasets": [    {      "binding": "ANALYTICS",      "dataset": "my_dataset",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[analytics_engine_datasets]]binding = "ANALYTICS"dataset = "my_dataset"
+```toml
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+dataset = "my_dataset"
 ```
 
 ## Write data points
 
-* [  JavaScript ](#tab-panel-11697)
-* [  TypeScript ](#tab-panel-11698)
+* [  JavaScript ](#tab-panel-11930)
+* [  TypeScript ](#tab-panel-11931)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    // Write a page view event
+    env.ANALYTICS.writeDataPoint({
+      blobs: [
+        url.pathname,
+        request.headers.get("cf-connecting-country") ?? "unknown",
+      ],
+      doubles: [1], // Count
+      indexes: [url.hostname], // Sampling key
+    });
+
+
+    // Write a response timing event
+    const start = Date.now();
+    const response = await fetch(request);
+    const duration = Date.now() - start;
+
+
+    env.ANALYTICS.writeDataPoint({
+      blobs: [url.pathname, response.status.toString()],
+      doubles: [duration],
+      indexes: [url.hostname],
+    });
+
+
+    // Writes are non-blocking - no need to await or use waitUntil()
+    return response;
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    // Write a page view event    env.ANALYTICS.writeDataPoint({      blobs: [        url.pathname,        request.headers.get("cf-connecting-country") ?? "unknown",      ],      doubles: [1], // Count      indexes: [url.hostname], // Sampling key    });
-    // Write a response timing event    const start = Date.now();    const response = await fetch(request);    const duration = Date.now() - start;
-    env.ANALYTICS.writeDataPoint({      blobs: [url.pathname, response.status.toString()],      doubles: [duration],      indexes: [url.hostname],    });
-    // Writes are non-blocking - no need to await or use waitUntil()    return response;  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  ANALYTICS: AnalyticsEngineDataset;}
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
-    // Write a page view event    env.ANALYTICS.writeDataPoint({      blobs: [        url.pathname,        request.headers.get("cf-connecting-country") ?? "unknown",      ],      doubles: [1], // Count      indexes: [url.hostname], // Sampling key    });
-    // Write a response timing event    const start = Date.now();    const response = await fetch(request);    const duration = Date.now() - start;
-    env.ANALYTICS.writeDataPoint({      blobs: [url.pathname, response.status.toString()],      doubles: [duration],      indexes: [url.hostname],    });
-    // Writes are non-blocking - no need to await or use waitUntil()    return response;  },};
+```ts
+interface Env {
+  ANALYTICS: AnalyticsEngineDataset;
+}
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    // Write a page view event
+    env.ANALYTICS.writeDataPoint({
+      blobs: [
+        url.pathname,
+        request.headers.get("cf-connecting-country") ?? "unknown",
+      ],
+      doubles: [1], // Count
+      indexes: [url.hostname], // Sampling key
+    });
+
+
+    // Write a response timing event
+    const start = Date.now();
+    const response = await fetch(request);
+    const duration = Date.now() - start;
+
+
+    env.ANALYTICS.writeDataPoint({
+      blobs: [url.pathname, response.status.toString()],
+      doubles: [duration],
+      indexes: [url.hostname],
+    });
+
+
+    // Writes are non-blocking - no need to await or use waitUntil()
+    return response;
+  },
+};
 ```
 
 ## Data point structure
@@ -75,10 +144,10 @@ Each data point consists of:
 
 Query your data using the [SQL API](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/):
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/analytics_engine/sql" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --data "SELECT blob1 AS path, SUM(_sample_interval) AS views FROM my_dataset WHERE timestamp > NOW() - INTERVAL '1' HOUR GROUP BY path ORDER BY views DESC LIMIT 10"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/analytics_engine/sql" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --data "SELECT blob1 AS path, SUM(_sample_interval) AS views FROM my_dataset WHERE timestamp > NOW() - INTERVAL '1' HOUR GROUP BY path ORDER BY views DESC LIMIT 10"
 ```
 
 ## Related resources

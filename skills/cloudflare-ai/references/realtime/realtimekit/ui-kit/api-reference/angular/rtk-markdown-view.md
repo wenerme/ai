@@ -23,14 +23,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-markdown-view></rtk-markdown-view>
+```html
+<!-- component.html -->
+<rtk-markdown-view></rtk-markdown-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-markdown-view maxLength="42" text="example"></rtk-markdown-view>
+```html
+<!-- component.html -->
+<rtk-markdown-view
+ maxLength="42"
+ text="example">
+</rtk-markdown-view>
 ```
 
 ```json

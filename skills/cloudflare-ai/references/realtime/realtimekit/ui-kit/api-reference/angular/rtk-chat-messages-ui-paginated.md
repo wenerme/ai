@@ -26,14 +26,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-messages-ui-paginated></rtk-chat-messages-ui-paginated>
+```html
+<!-- component.html -->
+<rtk-chat-messages-ui-paginated></rtk-chat-messages-ui-paginated>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-messages-ui-paginated [meeting]="meeting" [privateChatRecipient]="participant | null" size="md"></rtk-chat-messages-ui-paginated>
+```html
+<!-- component.html -->
+<rtk-chat-messages-ui-paginated
+ [meeting]="meeting"
+ [privateChatRecipient]="participant | null"
+ size="md">
+</rtk-chat-messages-ui-paginated>
 ```
 
 ```json

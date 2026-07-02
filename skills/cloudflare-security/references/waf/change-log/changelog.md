@@ -70,7 +70,7 @@ The detection populates the following fields. Use the [any()](https://developers
 
 For example, the following custom rule expression blocks requests from IP addresses associated with DDoS activity that have targeted France:
 
-```
+```txt
 any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
 ```
 

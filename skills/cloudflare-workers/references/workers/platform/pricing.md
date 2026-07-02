@@ -206,7 +206,7 @@ Cloudflare Queues charges for the total number of operations against each of you
 
 In most cases, it takes 3 operations to deliver a message: 1 write, 1 read, and 1 delete. Therefore, you can use the following formula to estimate your monthly bill:
 
-```
+```txt
 ((Number of Messages * 3) - 1,000,000) / 1,000,000  * $0.40
 ```
 
@@ -277,10 +277,13 @@ Footnotes
 
 RPC method calls can return objects (stubs) extending [RpcTarget](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#lifetimes-memory-and-resource-management) and invoke calls on those stubs. Subsequent calls on the returned stub are part of the same RPC session and are not billed as separate requests. For example:
 
-JavaScript
+**JavaScript**
 
-```
-let durableObjectStub = OBJECT_NAMESPACE.get(id); // retrieve Durable Object stubusing foo = await durableObjectStub.bar(); // billed as a requestawait foo.baz(); // treated as part of the same RPC session created by calling bar(), not billed as a requestawait durableObjectStub.cat(); // billed as a request
+```js
+let durableObjectStub = OBJECT_NAMESPACE.get(id); // retrieve Durable Object stub
+using foo = await durableObjectStub.bar(); // billed as a request
+await foo.baz(); // treated as part of the same RPC session created by calling bar(), not billed as a request
+await durableObjectStub.cat(); // billed as a request
 ```
 
 2 A request is needed to create a WebSocket connection. There is no charge for outgoing WebSocket messages, nor for incoming [WebSocket protocol pings ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2). For compute requests billing-only, a 20:1 ratio is applied to incoming WebSocket messages to factor in smaller messages for real-time communication. For example, 100 WebSocket incoming messages would be charged as 5 requests for billing purposes. The 20:1 ratio does not affect Durable Object metrics and analytics, which reflect actual usage.

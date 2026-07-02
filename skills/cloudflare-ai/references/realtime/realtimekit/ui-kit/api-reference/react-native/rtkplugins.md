@@ -28,16 +28,24 @@ Plugin management panel showing active plugins and the plugin store with activat
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPlugins } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPlugins meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkPlugins meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPlugins } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPlugins meeting={meeting} size="md" config={customConfig} />;}
+
+
+function MyComponent() {
+  return <RtkPlugins meeting={meeting} size="md" config={customConfig} />;
+}
 ```
 
 ```json

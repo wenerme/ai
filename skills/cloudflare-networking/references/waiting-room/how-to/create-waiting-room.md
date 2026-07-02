@@ -18,8 +18,8 @@ Note
 
 For additional context on creating a waiting room, refer to [Get started](https://developers.cloudflare.com/waiting-room/get-started/).
 
-* [ Dashboard ](#tab-panel-11348)
-* [ API ](#tab-panel-11349)
+* [ Dashboard ](#tab-panel-11643)
+* [ API ](#tab-panel-11644)
 
 1. Within your application, go to **Traffic** \> **Waiting Room**.
 2. Select **Create**.
@@ -43,18 +43,65 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Waiting Rooms Write`
 
-Create waiting room
+**Create waiting room**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "shop_waiting_room",    "description": "Waiting room for webshop",    "host": "shop.example.com",    "path": "/shop",    "queue_all": true,    "new_users_per_minute": 200,    "total_active_users": 300,    "session_duration": 1,    "disable_session_renewal": false,    "json_response_enabled": false,    "queueing_method": "fifo",    "queueing_status_code": 202,    "cookie_attributes": {        "samesite": "auto",        "secure": "auto"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "shop_waiting_room",
+    "description": "Waiting room for webshop",
+    "host": "shop.example.com",
+    "path": "/shop",
+    "queue_all": true,
+    "new_users_per_minute": 200,
+    "total_active_users": 300,
+    "session_duration": 1,
+    "disable_session_renewal": false,
+    "json_response_enabled": false,
+    "queueing_method": "fifo",
+    "queueing_status_code": 202,
+    "cookie_attributes": {
+        "samesite": "auto",
+        "secure": "auto"
+    }
+  }'
 ```
 
 The response contains the complete definition of the newly created Waiting Room.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": [    {      "id": "1111111111111111111111",      "created_on": "2023-01-01T05:20:00.12345Z",      "modified_on": "2023-01-01T05:20:00.12345Z",      "name": "shop_waiting_room",      "description": "Waiting room for webshop",      "host": "shop.example.com",      "path": "/shop",      "queue_all": true,      "new_users_per_minute": 200,      "total_active_users": 300,      "session_duration": 1,      "disable_session_renewal": false,      "json_response_enabled": false,      "queueing_method": "fifo",      "queueing_status_code": 202,      "cookie_attributes": {        "samesite": "auto",        "secure": "auto"      }    }  ]}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "1111111111111111111111",
+      "created_on": "2023-01-01T05:20:00.12345Z",
+      "modified_on": "2023-01-01T05:20:00.12345Z",
+      "name": "shop_waiting_room",
+      "description": "Waiting room for webshop",
+      "host": "shop.example.com",
+      "path": "/shop",
+      "queue_all": true,
+      "new_users_per_minute": 200,
+      "total_active_users": 300,
+      "session_duration": 1,
+      "disable_session_renewal": false,
+      "json_response_enabled": false,
+      "queueing_method": "fifo",
+      "queueing_status_code": 202,
+      "cookie_attributes": {
+        "samesite": "auto",
+        "secure": "auto"
+      }
+    }
+  ]
+}
 ```
 
 ```json

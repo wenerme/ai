@@ -18,9 +18,7 @@ The server is powered by [@discourse/mcp ↗](https://www.npmjs.com/package/@dis
 
 ## Install
 
-Terminal window
-
-```
+```bash
 npx @discourse/mcp@latest
 ```
 
@@ -30,31 +28,49 @@ npx @discourse/mcp@latest
 
 Add to `~/.config/opencode/opencode.jsonc` inside the `"mcp"` block:
 
-```
-"discourse": {  "type": "local",  "command": ["npx", "-y", "@discourse/mcp@latest"],  "enabled": true}
+```json
+"discourse": {
+  "type": "local",
+  "command": ["npx", "-y", "@discourse/mcp@latest"],
+  "enabled": true
+}
 ```
 
 ### Claude Desktop
 
 Add to `claude_desktop_config.json`:
 
-```
-{  "mcpServers": {    "discourse": {      "command": "npx",      "args": ["-y", "@discourse/mcp@latest"]    }  }}
+```json
+{
+  "mcpServers": {
+    "discourse": {
+      "command": "npx",
+      "args": ["-y", "@discourse/mcp@latest"]
+    }
+  }
+}
 ```
 
 ### Cursor
 
 Add to `.cursor/mcp.json` in your project root:
 
-```
-{  "mcpServers": {    "discourse": {      "command": "npx",      "args": ["-y", "@discourse/mcp@latest"]    }  }}
+```json
+{
+  "mcpServers": {
+    "discourse": {
+      "command": "npx",
+      "args": ["-y", "@discourse/mcp@latest"]
+    }
+  }
+}
 ```
 
 ## Connect to the Cloudflare Community
 
 After configuring your client, use the `discourse_select_site` tool with:
 
-```
+```txt
 https://community.cloudflare.com
 ```
 

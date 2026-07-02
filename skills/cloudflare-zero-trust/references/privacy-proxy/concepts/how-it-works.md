@@ -16,8 +16,19 @@ Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between
 
 ## Traffic flow
 
-```
-┌──────────┐      1. Connect + Auth      ┌──────────┐      4. Connect        ┌─────────────┐│          │ ──────────────────────────▶ │          │ ────────────────────▶  │             ││  Client  │      2. CONNECT request     │  Privacy │      (Egress IP)       │ Destination ││          │ ──────────────────────────▶ │  Proxy   │                        │   Server    ││          │                             │          │ ◀────────────────────  │             ││          │      3. 200 OK              │          │      5. Connected      │             ││          │ ◀────────────────────────── │          │                        │             ││          │                             │          │                        │             ││          │  ◀───── 6. Encrypted data tunnel ─────▶  ◀─────────────────────▶│             │└──────────┘                             └──────────┘                        └─────────────┘
+```plaintext
+┌──────────┐      1. Connect + Auth      ┌──────────┐      4. Connect        ┌─────────────┐
+│          │ ──────────────────────────▶ │          │ ────────────────────▶  │             │
+│  Client  │      2. CONNECT request     │  Privacy │      (Egress IP)       │ Destination │
+│          │ ──────────────────────────▶ │  Proxy   │                        │   Server    │
+│          │                             │          │ ◀────────────────────  │             │
+│          │      3. 200 OK              │          │      5. Connected      │             │
+│          │ ◀────────────────────────── │          │                        │             │
+│          │                             │          │                        │             │
+│          │  ◀───── 6. Encrypted data tunnel ─────▶  ◀─────────────────────▶│             │
+└──────────┘                             └──────────┘                        └─────────────┘
+
+
            │◀──── Client IP hidden ────▶│◀──── Cloudflare Egress IP visible ──────────▶│
 ```
 

@@ -27,14 +27,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participants-stage-queue></rtk-participants-stage-queue>
+```html
+<!-- component.html -->
+<rtk-participants-stage-queue></rtk-participants-stage-queue>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participants-stage-queue [meeting]="meeting" size="md" [view]="participantsviewmode"></rtk-participants-stage-queue>
+```html
+<!-- component.html -->
+<rtk-participants-stage-queue
+ [meeting]="meeting"
+ size="md"
+ [view]="participantsviewmode">
+</rtk-participants-stage-queue>
 ```
 
 ```json

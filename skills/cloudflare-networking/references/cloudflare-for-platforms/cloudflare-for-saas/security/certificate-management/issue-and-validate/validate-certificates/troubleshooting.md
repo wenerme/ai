@@ -28,8 +28,10 @@ CAA is a DNS resource record type defined in [RFC 6844 ↗](https://datatracker.
 
 If your customer has CAA records set on their domain, they will either need to add the following or remove CAA entirely:
 
-```
-example.com. IN CAA 0 issue "pki.goog"example.com. IN CAA 0 issue "letsencrypt.org"example.com. IN CAA 0 issue "ssl.com"
+```txt
+example.com. IN CAA 0 issue "pki.goog"
+example.com. IN CAA 0 issue "letsencrypt.org"
+example.com. IN CAA 0 issue "ssl.com"
 ```
 
 While it is possible for CAA records to be set on the subdomain your customer wishes to use with your service, it will usually be set on the domain apex. If they have CAA records on the subdomain, those will also have to be removed.

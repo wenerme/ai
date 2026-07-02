@@ -19,55 +19,74 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 To set up an integration with Turso:
 
 1. You need to install Turso CLI to create and populate a database. Use one of the following two commands in your terminal to install the Turso CLI:
-Terminal window
-```
-# On macOS and linux with homebrewbrew install tursodatabase/tap/turso
-# Manual scripted installationcurl -sSfL https://get.tur.so/install.sh | bash
+```sh
+# On macOS and linux with homebrew
+brew install tursodatabase/tap/turso
+# Manual scripted installation
+curl -sSfL https://get.tur.so/install.sh | bash
 ```
 Next, run the following command to make sure the Turso CLI is installed:
-Terminal window
-```
+```sh
 turso --version
 ```
 2. Before you create your first Turso database, you have to authenticate with your GitHub account by running:
-Terminal window
-```
+```sh
 turso auth login
 ```
-```
-Waiting for authentication...✔  Success! Logged in as <YOUR_GITHUB_USERNAME>
+```sh
+Waiting for authentication...
+✔  Success! Logged in as <YOUR_GITHUB_USERNAME>
 ```
 After you have authenticated, you can create a database using the command `turso db create <DATABASE_NAME>`. Turso will create a database and automatically choose a location closest to you.
-Terminal window
-```
+```sh
 turso db create my-db
 ```
-```
-# Example:Creating database my-db in Amsterdam, Netherlands (ams)
-# Once succeeded:Created database my-db in Amsterdam, Netherlands (ams) in 13 seconds.
+```sh
+# Example:
+Creating database my-db in Amsterdam, Netherlands (ams)
+# Once succeeded:
+Created database my-db in Amsterdam, Netherlands (ams) in 13 seconds.
 ```
 With the first database created, you can now connect to it directly and execute SQL queries against it.
-Terminal window
-```
+```sh
 turso db shell my-db
 ```
 3. Copy the following SQL query into the shell you just opened:
-```
-CREATE TABLE elements (  id INTEGER NOT NULL,  elementName TEXT NOT NULL,  atomicNumber INTEGER NOT NULL,  symbol TEXT NOT NULL);
-INSERT INTO elements (id, elementName, atomicNumber, symbol)VALUES (1, 'Hydrogen', 1, 'H'),  (2, 'Helium', 2, 'He'),  (3, 'Lithium', 3, 'Li'),  (4, 'Beryllium', 4, 'Be'),  (5, 'Boron', 5, 'B'),  (6, 'Carbon', 6, 'C'),  (7, 'Nitrogen', 7, 'N'),  (8, 'Oxygen', 8, 'O'),  (9, 'Fluorine', 9, 'F'),  (10, 'Neon', 10, 'Ne');
+```sql
+CREATE TABLE elements (
+  id INTEGER NOT NULL,
+  elementName TEXT NOT NULL,
+  atomicNumber INTEGER NOT NULL,
+  symbol TEXT NOT NULL
+);
+INSERT INTO elements (id, elementName, atomicNumber, symbol)
+VALUES (1, 'Hydrogen', 1, 'H'),
+  (2, 'Helium', 2, 'He'),
+  (3, 'Lithium', 3, 'Li'),
+  (4, 'Beryllium', 4, 'Be'),
+  (5, 'Boron', 5, 'B'),
+  (6, 'Carbon', 6, 'C'),
+  (7, 'Nitrogen', 7, 'N'),
+  (8, 'Oxygen', 8, 'O'),
+  (9, 'Fluorine', 9, 'F'),
+  (10, 'Neon', 10, 'Ne');
 ```
 4. Configure the Turso database credentials in your Worker:
 You need to add your Turso database URL and authentication token as secrets to your Worker. First, get your database URL and create an authentication token:
-Terminal window
-```
-# Get your database URLturso db show my-db --url
-# Create an authentication tokenturso db tokens create my-db
+```sh
+# Get your database URL
+turso db show my-db --url
+# Create an authentication token
+turso db tokens create my-db
 ```
 Then add these as secrets to your Worker using Wrangler:
-Terminal window
-```
-# Add the database URL as a secretnpx wrangler secret put TURSO_URL# When prompted, paste your database URL
-# Add the authentication token as a secretnpx wrangler secret put TURSO_AUTH_TOKEN# When prompted, paste your authentication token
+```sh
+# Add the database URL as a secret
+npx wrangler secret put TURSO_URL
+# When prompted, paste your database URL
+# Add the authentication token as a secret
+npx wrangler secret put TURSO_AUTH_TOKEN
+# When prompted, paste your authentication token
 ```
 5. In your Worker, install the Turso client library:
  npm  yarn  pnpm  bun
@@ -84,15 +103,45 @@ pnpm add @libsql/client
 bun add @libsql/client
 ```
 6. The following example shows how to make a query to your Turso database in a Worker. The credentials needed to connect to Turso have been added as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) to your Worker.
-TypeScript
-```
+
+**TypeScript**
+```ts
 import { Client as LibsqlClient, createClient } from "@libsql/client/web";
-export interface Env {  TURSO_URL?: string;  TURSO_AUTH_TOKEN?: string;}
-export default {  async fetch(request, env, ctx): Promise<Response> {    const client = buildLibsqlClient(env);
-    try {      const res = await client.execute("SELECT * FROM elements");      return new Response(JSON.stringify(res), {        status: 200,        headers: { "Content-Type": "application/json" },      });    } catch (error) {      console.error("Error executing SQL query:", error);      return new Response(        JSON.stringify({ error: "Internal Server Error" }),        {          status: 500,        },      );    }  },} satisfies ExportedHandler<Env>;
-function buildLibsqlClient(env: Env): LibsqlClient {  const url = env.TURSO_URL?.trim();  if (url === undefined) {    throw new Error("TURSO_URL env var is not defined");  }
-  const authToken = env.TURSO_AUTH_TOKEN?.trim();  if (authToken == undefined) {    throw new Error("TURSO_AUTH_TOKEN env var is not defined");  }
-  return createClient({ url, authToken });}
+export interface Env {
+  TURSO_URL?: string;
+  TURSO_AUTH_TOKEN?: string;
+}
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const client = buildLibsqlClient(env);
+    try {
+      const res = await client.execute("SELECT * FROM elements");
+      return new Response(JSON.stringify(res), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (error) {
+      console.error("Error executing SQL query:", error);
+      return new Response(
+        JSON.stringify({ error: "Internal Server Error" }),
+        {
+          status: 500,
+        },
+      );
+    }
+  },
+} satisfies ExportedHandler<Env>;
+function buildLibsqlClient(env: Env): LibsqlClient {
+  const url = env.TURSO_URL?.trim();
+  if (url === undefined) {
+    throw new Error("TURSO_URL env var is not defined");
+  }
+  const authToken = env.TURSO_AUTH_TOKEN?.trim();
+  if (authToken == undefined) {
+    throw new Error("TURSO_AUTH_TOKEN env var is not defined");
+  }
+  return createClient({ url, authToken });
+}
 ```
 
   * The libSQL client library import `@libsql/client/web` must be imported exactly as shown when working with Cloudflare Workers. The non-web import will not work in the Workers environment.

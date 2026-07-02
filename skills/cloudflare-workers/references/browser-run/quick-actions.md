@@ -44,10 +44,14 @@ To use Quick Actions via the REST API, [create a custom API Token](https://devel
 
 To use Quick Actions from a [Worker](https://developers.cloudflare.com/workers/), configure a [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) in your `wrangler.json`. No API token is needed when using the Workers binding.
 
-JSONC
+**JSONC**
 
-```
-{  "browser": {    "binding": "BROWSER"  }}
+```jsonc
+{
+  "browser": {
+    "binding": "BROWSER"
+  }
+}
 ```
 
 Warning
@@ -57,10 +61,16 @@ The `.quickAction()` method has two requirements:
 * **Compatibility date:** Your Worker must use a compatibility date of `2026-03-24` or later.
 * **Remote mode for local development:** The `.quickAction()` method is not yet supported in local development mode. When developing locally with `wrangler dev`, you must use `npx wrangler dev --remote` or set `"remote": true` in your browser binding configuration. Without remote mode, you will receive the error: `The RPC receiver does not implement the method "quickAction"`.
 
-JSONC
+**JSONC**
 
-```
-{  "compatibility_date": "2026-03-24",  "browser": {    "binding": "BROWSER",    "remote": true  }}
+```jsonc
+{
+  "compatibility_date": "2026-03-24",
+  "browser": {
+    "binding": "BROWSER",
+    "remote": true
+  }
+}
 ```
 
 Note

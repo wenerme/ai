@@ -27,14 +27,19 @@ A button which toggles visilibility of the leave confirmation dialog.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-leave-button></rtk-leave-button>
+```html
+<!-- component.html -->
+<rtk-leave-button></rtk-leave-button>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-leave-button size="md" variant="button"></rtk-leave-button>
+```html
+<!-- component.html -->
+<rtk-leave-button
+ size="md"
+ variant="button">
+</rtk-leave-button>
 ```
 
 ```json

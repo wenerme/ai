@@ -29,14 +29,19 @@ A screen shown before joining the meeting, where you can edit your display name,
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-setup-screen></rtk-setup-screen>
+```html
+<!-- component.html -->
+<rtk-setup-screen></rtk-setup-screen>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-setup-screen [meeting]="meeting" size="md"></rtk-setup-screen>
+```html
+<!-- component.html -->
+<rtk-setup-screen
+ [meeting]="meeting"
+ size="md">
+</rtk-setup-screen>
 ```
 
 ```json

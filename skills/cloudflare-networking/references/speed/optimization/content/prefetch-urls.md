@@ -30,8 +30,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-10668)
-* [ API ](#tab-panel-10669)
+* [ Dashboard ](#tab-panel-10963)
+* [ API ](#tab-panel-10964)
 
 To enable **Prefetch URLs** in the dashboard:
 
@@ -53,8 +53,10 @@ Example HTTP response header:
 
 Example `manifest.txt` file:
 
-```
-/static/fetch1//other.example.com/fetch2http://another.example.com/fetch3
+```txt
+/static/fetch1
+//other.example.com/fetch2
+http://another.example.com/fetch3
 ```
 
 The manifest file should contain URIs, protocol-relative URLs or full URLs, separated by new lines. These files must be on your websites that are on Cloudflare. If you reference HTML pages, only the HTML page itself will be pre-fetched - any sub-requests from that HTML will not be fetched unless they are also defined explicitly in your manifest.

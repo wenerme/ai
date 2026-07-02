@@ -26,10 +26,15 @@ You can use two custom settings to control the Browser TTL, an account or a name
 
 Setting the Browser TTL per account overrides the default TTL.
 
-Example
+**Example**
 
-```
-curl --request PATCH 'https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "browser_ttl": 31536000}'
+```bash
+curl --request PATCH 'https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "browser_ttl": 31536000
+}'
 ```
 
 When the Browser TTL is set to one year for all images, the response for the `cache-control` header is essentially `public`, `max-age=31536000`, `stale-while-revalidate=7200`.
@@ -38,10 +43,19 @@ When the Browser TTL is set to one year for all images, the response for the `ca
 
 Setting the Browser TTL for a named variant is a more granular option that overrides all of the above when creating or updating an image variant, specifically the `browser_ttl` option in seconds.
 
-Example
+**Example**
 
-```
-curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/variants' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "id":"avatar",  "options": {    "width":100,    "browser_ttl": 86400  }}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/variants' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "id":"avatar",
+  "options": {
+    "width":100,
+    "browser_ttl": 86400
+  }
+}'
 ```
 
 When the Browser TTL is set to one day for images requested with this variant, the response for the `cache-control` header is essentially `public`, `max-age=86400`, `stale-while-revalidate=7200`.

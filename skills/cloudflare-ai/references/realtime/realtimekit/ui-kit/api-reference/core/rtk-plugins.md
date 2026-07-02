@@ -28,19 +28,25 @@ A component which lists all available plugins from their preset, and ability to 
 
 ### Basic Usage
 
-```
+```html
 <rtk-plugins></rtk-plugins>
 ```
 
 ### With Properties
 
-```
-<rtk-plugins size="md"></rtk-plugins>
+```html
+<rtk-plugins
+ size="md">
+</rtk-plugins>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-plugins");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-plugins");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

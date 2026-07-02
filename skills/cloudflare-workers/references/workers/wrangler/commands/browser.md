@@ -18,25 +18,19 @@ Interact with the [Browser Run](https://developers.cloudflare.com/browser-run/) 
 
 Create a new Browser Run session
 
-* [  npm ](#tab-panel-12326)
-* [  pnpm ](#tab-panel-12327)
-* [  yarn ](#tab-panel-12328)
+* [  npm ](#tab-panel-12621)
+* [  pnpm ](#tab-panel-12622)
+* [  yarn ](#tab-panel-12623)
 
-Terminal window
-
-```
+```sh
 npx wrangler browser create
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler browser create
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler browser create
 ```
 
@@ -72,25 +66,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Close a Browser Run session
 
-* [  npm ](#tab-panel-12329)
-* [  pnpm ](#tab-panel-12330)
-* [  yarn ](#tab-panel-12331)
+* [  npm ](#tab-panel-12624)
+* [  pnpm ](#tab-panel-12625)
+* [  yarn ](#tab-panel-12626)
 
-Terminal window
-
-```
+```sh
 npx wrangler browser close [SESSIONID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler browser close [SESSIONID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler browser close [SESSIONID]
 ```
 
@@ -122,25 +110,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List active Browser Run sessions
 
-* [  npm ](#tab-panel-12332)
-* [  pnpm ](#tab-panel-12333)
-* [  yarn ](#tab-panel-12334)
+* [  npm ](#tab-panel-12627)
+* [  pnpm ](#tab-panel-12628)
+* [  yarn ](#tab-panel-12629)
 
-Terminal window
-
-```
+```sh
 npx wrangler browser list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler browser list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler browser list
 ```
 
@@ -170,25 +152,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View a live browser session
 
-* [  npm ](#tab-panel-12335)
-* [  pnpm ](#tab-panel-12336)
-* [  yarn ](#tab-panel-12337)
+* [  npm ](#tab-panel-12630)
+* [  pnpm ](#tab-panel-12631)
+* [  yarn ](#tab-panel-12632)
 
-Terminal window
-
-```
+```sh
 npx wrangler browser view [SESSIONID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler browser view [SESSIONID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler browser view [SESSIONID]
 ```
 

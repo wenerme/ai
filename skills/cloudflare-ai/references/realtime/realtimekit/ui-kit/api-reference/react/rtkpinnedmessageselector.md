@@ -24,16 +24,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPinnedMessageSelector } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPinnedMessageSelector />;}
+
+
+function MyComponent() {
+  return <RtkPinnedMessageSelector />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPinnedMessageSelector } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPinnedMessageSelector      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPinnedMessageSelector
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

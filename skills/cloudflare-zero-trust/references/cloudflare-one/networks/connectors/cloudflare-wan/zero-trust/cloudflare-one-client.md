@@ -42,9 +42,7 @@ Cloudflare will assign IP addresses from the virtual IP (VIP) space to your devi
 
 All packets with a destination IP in the VIP space need to be routed back through the tunnel. For example, with a single GRE tunnel named `gre1`, in Linux, the following command would add a routing rule that would route such packets:
 
-Terminal window
-
-```
+```sh
 ip route add 100.96.0.0/12 dev gre1
 ```
 
@@ -101,9 +99,7 @@ To check if the Cloudflare One Client is working correctly as an on-ramp, you ca
 
 For example:
 
-Terminal window
-
-```
+```sh
 nslookup <SERVER_BEHIND_CLOUDFLARE_WAN>
 ```
 

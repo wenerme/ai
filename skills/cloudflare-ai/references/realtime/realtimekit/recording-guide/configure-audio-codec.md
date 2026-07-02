@@ -34,8 +34,13 @@ Audio signal pathway within an audio file that carries a specific sound source. 
 
 You can modify the configs by specifying it in the `audio_config` field in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/), for example:
 
-```
-{  "audio_config": {    "codec": "AAC"    "channel": "stereo"  }}
+```json
+{
+  "audio_config": {
+    "codec": "AAC"
+    "channel": "stereo"
+  }
+}
 ```
 
 ## Download Audio Files

@@ -28,9 +28,9 @@ During local development, the values in `.env` files are also loaded into the `e
 
 For example, if you set `API_HOST="localhost:3000"` in your `.env` file, you can access it in your Worker like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const apiHost = env.API_HOST;
 ```
 
@@ -123,8 +123,9 @@ Wrangler supports the following environment variables:
 
 When these environment variables are set, Wrangler writes one JSON object per line to the output file. Each entry includes a `timestamp` field and a `type` field indicating the kind of operation. Here is an example of what the file might contain after running `wrangler deploy`:
 
-```
-{"type":"wrangler-session","version":1,"wrangler_version":"3.78.0","command_line_args":["deploy"],"log_file_path":"/path/to/logs/wrangler-2024-11-03_12-00-00_abc.log","timestamp":"2024-11-03T12:00:00.000Z"}{"type":"deploy","version":1,"worker_name":"my-worker","worker_tag":"abc123def456","version_id":"v1-abc123","targets":["https://my-worker.example.workers.dev"],"worker_name_overridden":false,"wrangler_environment":"production","timestamp":"2024-11-03T12:00:05.000Z"}
+```json
+{"type":"wrangler-session","version":1,"wrangler_version":"3.78.0","command_line_args":["deploy"],"log_file_path":"/path/to/logs/wrangler-2024-11-03_12-00-00_abc.log","timestamp":"2024-11-03T12:00:00.000Z"}
+{"type":"deploy","version":1,"worker_name":"my-worker","worker_tag":"abc123def456","version_id":"v1-abc123","targets":["https://my-worker.example.workers.dev"],"worker_name_overridden":false,"wrangler_environment":"production","timestamp":"2024-11-03T12:00:05.000Z"}
 ```
 
 The `wrangler-session` entry is written when Wrangler starts and contains information about the command being run. The `deploy` entry is written when a deployment completes successfully and includes the worker name, version ID, and deployment URLs.
@@ -140,10 +141,16 @@ Other entry types include:
 
 The following is an example `.env` file:
 
-Terminal window
-
-```
-CLOUDFLARE_ACCOUNT_ID=<YOUR_ACCOUNT_ID_VALUE>CLOUDFLARE_API_TOKEN=<YOUR_API_TOKEN_VALUE>CLOUDFLARE_EMAIL=<YOUR_EMAIL>WRANGLER_SEND_METRICS=trueCLOUDFLARE_API_BASE_URL=https://api.cloudflare.com/client/v4WRANGLER_LOG=debugWRANGLER_LOG_PATH=../Desktop/my-logs/my-log-file.logWRANGLER_R2_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>CLOUDFLARE_CF_FETCH_ENABLED=false
+```bash
+CLOUDFLARE_ACCOUNT_ID=<YOUR_ACCOUNT_ID_VALUE>
+CLOUDFLARE_API_TOKEN=<YOUR_API_TOKEN_VALUE>
+CLOUDFLARE_EMAIL=<YOUR_EMAIL>
+WRANGLER_SEND_METRICS=true
+CLOUDFLARE_API_BASE_URL=https://api.cloudflare.com/client/v4
+WRANGLER_LOG=debug
+WRANGLER_LOG_PATH=../Desktop/my-logs/my-log-file.log
+WRANGLER_R2_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>
+CLOUDFLARE_CF_FETCH_ENABLED=false
 ```
 
 ## Deprecated global variables

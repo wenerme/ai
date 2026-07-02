@@ -46,16 +46,28 @@ If you're using this method to start the recording, you must specify the `storag
 
 Specify the `record_on_start` parameter. If this flag is true, then a recording will be started as soon as a meeting starts on RealtimeKit, i.e, when the first participant joins the meeting.
 
-Terminal window
-
-```
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings' \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <api_token>' \  --data '{  "title": "Lorem Ipsum",  "record_on_start": true}'
+```bash
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer <api_token>' \
+  --data '{
+  "title": "Lorem Ipsum",
+  "record_on_start": true
+}'
 ```
 
 ### Response
 
-```
-{  "success": true,  "data": {    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",    "record_on_start": true,    "created_at": "2025-08-24T14:15:22Z",    "updated_at": "2025-08-24T14:15:22Z"  }}
+```json
+{
+  "success": true,
+  "data": {
+    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+    "record_on_start": true,
+    "created_at": "2025-08-24T14:15:22Z",
+    "updated_at": "2025-08-24T14:15:22Z"
+  }
+}
 ```
 
 ## Using the Start Recording API
@@ -68,16 +80,42 @@ Use the [List meetings API](https://developers.cloudflare.com/api/resources/real
 
 ### Request
 
-Calling Start Recording API
+**Calling Start Recording API**
 
-```
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings' \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <api_token>' \  --data '{  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"}'
+```bash
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer <api_token>' \
+  --data '{
+  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"
+}'
 ```
 
 ### Response
 
-```
-{  "success": true,  "data": {    "id": "97440c6a-140b-40a9-9499-b23fd7a3868a",    "download_url": "http://example.com",    "download_url_expiry": "2025-08-24T14:15:22Z",    "download_audio_url": "http://example1.com",    "file_size": 0,    "session_id": "1ffd059c-17ea-40a8-8aef-70fd0307db82",    "output_file_name": "string",    "status": "INVOKED",    "invoked_time": "2025-08-24T14:15:22Z",    "started_time": "2025-08-24T14:15:22Z",    "stopped_time": "2025-08-24T14:15:22Z",    "storage_config": {      "type": "cloudflare",      "secret_key": "string",      "bucket": "string",      "path": "string"    }  }}
+```json
+{
+  "success": true,
+  "data": {
+    "id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+    "download_url": "http://example.com",
+    "download_url_expiry": "2025-08-24T14:15:22Z",
+    "download_audio_url": "http://example1.com",
+    "file_size": 0,
+    "session_id": "1ffd059c-17ea-40a8-8aef-70fd0307db82",
+    "output_file_name": "string",
+    "status": "INVOKED",
+    "invoked_time": "2025-08-24T14:15:22Z",
+    "started_time": "2025-08-24T14:15:22Z",
+    "stopped_time": "2025-08-24T14:15:22Z",
+    "storage_config": {
+      "type": "cloudflare",
+      "secret_key": "string",
+      "bucket": "string",
+      "path": "string"
+    }
+  }
+}
 ```
 
 ```json

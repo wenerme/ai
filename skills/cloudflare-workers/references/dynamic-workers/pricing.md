@@ -53,14 +53,33 @@ Dynamic Workers usage data only goes back to June 1, 2026.
 
 You can also query this count through the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) by using `workersInvocationsByOwnerAndScriptGroups` and selecting `distinctDynamicWorkerCount`:
 
-```
-query getDynamicWorkersCount(  $accountTag: string!  $filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {        uniq {          distinctDynamicWorkerCount        }      }    }  }}
+```graphql
+query getDynamicWorkersCount(
+  $accountTag: string!
+  $filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {
+        uniq {
+          distinctDynamicWorkerCount
+        }
+      }
+    }
+  }
+}
 ```
 
 Use variables to set the account and billing-period date range:
 
-```
-{  "accountTag": "<ACCOUNT_ID>",  "filter": {    "date_geq": "2026-06-01",    "date_leq": "2026-06-30"  }}
+```json
+{
+  "accountTag": "<ACCOUNT_ID>",
+  "filter": {
+    "date_geq": "2026-06-01",
+    "date_leq": "2026-06-30"
+  }
+}
 ```
 
 The `distinctDynamicWorkerCount` field returns the unique Dynamic Workers count for the selected period.

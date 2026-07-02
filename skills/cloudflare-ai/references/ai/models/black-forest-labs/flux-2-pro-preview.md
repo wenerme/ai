@@ -28,116 +28,189 @@ FLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-336)
-* [ cURL ](#tab-panel-337)
+* [ TypeScript ](#tab-panel-358)
+* [ cURL ](#tab-panel-359)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-pro-preview',
+  {
+    prompt:
+      'A serene mountain landscape at golden hour, soft diffused light filtering through clouds',
+    height: 1024,
+    width: 1024,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-pro-preview',  {    prompt:      'A serene mountain landscape at golden hour, soft diffused light filtering through clouds',    height: 1024,    width: 1024,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-pro-preview",
+  "input": {
+    "prompt": "A serene mountain landscape at golden hour, soft diffused light filtering through clouds",
+    "height": 1024,
+    "width": 1024
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-pro-preview",  "input": {    "prompt": "A serene mountain landscape at golden hour, soft diffused light filtering through clouds",    "height": 1024,    "width": 1024  }}'
-```
-
-* [ Output ](#tab-panel-334)
-* [ Raw response ](#tab-panel-335)
+* [ Output ](#tab-panel-356)
+* [ Raw response ](#tab-panel-357)
 
 ![Simple Prompt](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/simple-prompt.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/simple-prompt.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/simple-prompt.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **Multi-Reference Editing**  — Multi-reference editing — combine two reference images in a single composition
 
-* [ TypeScript ](#tab-panel-342)
-* [ cURL ](#tab-panel-343)
+* [ TypeScript ](#tab-panel-364)
+* [ cURL ](#tab-panel-365)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-pro-preview',
+  {
+    prompt: 'Combine the subjects of these images into a single editorial fashion scene',
+    input_images: [
+      'https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg',
+      'https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg',
+    ],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-pro-preview',  {    prompt: 'Combine the subjects of these images into a single editorial fashion scene',    input_images: [      'https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg',      'https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg',    ],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-pro-preview",
+  "input": {
+    "prompt": "Combine the subjects of these images into a single editorial fashion scene",
+    "input_images": [
+      "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg",
+      "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"
+    ]
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-pro-preview",  "input": {    "prompt": "Combine the subjects of these images into a single editorial fashion scene",    "input_images": [      "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg",      "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"    ]  }}'
-```
-
-* [ Output ](#tab-panel-338)
-* [ Raw response ](#tab-panel-339)
+* [ Output ](#tab-panel-360)
+* [ Raw response ](#tab-panel-361)
 
 ![Multi-Reference Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/multi-reference-editing.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/multi-reference-editing.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/multi-reference-editing.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Reproducible PNG Output**  — Seeded generation with PNG output for downstream editing pipelines
 
-* [ TypeScript ](#tab-panel-344)
-* [ cURL ](#tab-panel-345)
+* [ TypeScript ](#tab-panel-366)
+* [ cURL ](#tab-panel-367)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'black-forest-labs/flux-2-pro-preview',  { prompt: 'A pastel watercolor of a koi pond at sunrise', output_format: 'png', seed: 1337 },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-pro-preview",  "input": {    "prompt": "A pastel watercolor of a koi pond at sunrise",    "output_format": "png",    "seed": 1337  }}'
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-pro-preview',
+  { prompt: 'A pastel watercolor of a koi pond at sunrise', output_format: 'png', seed: 1337 },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-340)
-* [ Raw response ](#tab-panel-341)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-pro-preview",
+  "input": {
+    "prompt": "A pastel watercolor of a koi pond at sunrise",
+    "output_format": "png",
+    "seed": 1337
+  }
+}'
+```
+
+* [ Output ](#tab-panel-362)
+* [ Raw response ](#tab-panel-363)
 
 ![Reproducible PNG Output](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/reproducible-png-output.png)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/reproducible-png-output.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/reproducible-png-output.png"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-346)
-* [ Output ](#tab-panel-347)
-
-height
-
-`integer`maximum: 9007199254740991minimum: 64Height of the generated image in pixels (minimum 64). Omit to let BFL pick.
-
-▶input\_images\[\]
-
-`array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
-
-output\_format
-
-`string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
+* [ Input ](#tab-panel-368)
+* [ Output ](#tab-panel-369)
 
 prompt
 
 `string`requiredText prompt for image generation or editing.
 
-safety\_tolerance
-
-`integer`maximum: 5minimum: 0Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.
-
 seed
 
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Optional seed for reproducible generation.
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
 
 width
 
-`integer`maximum: 9007199254740991minimum: 64Width of the generated image in pixels (minimum 64). Omit to let BFL pick.
+`integer`minimum: 64maximum: 9007199254740991Width of the generated image in pixels (minimum 64). Omit to let BFL pick.
+
+height
+
+`integer`minimum: 64maximum: 9007199254740991Height of the generated image in pixels (minimum 64). Omit to let BFL pick.
+
+safety\_tolerance
+
+`integer`minimum: 0maximum: 5Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.
+
+output\_format
+
+`string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
+
+▶input\_images\[\]
+
+`array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
 
 image
 

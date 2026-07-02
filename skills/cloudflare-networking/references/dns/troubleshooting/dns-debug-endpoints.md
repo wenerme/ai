@@ -20,9 +20,7 @@ For all commands, replace `alex.ns.cloudflare.com` with your Cloudflare-assigned
 
 ## Get your public IP address
 
-Terminal window
-
-```
+```sh
 dig @alex.ns.cloudflare.com chaos txt myip.cloudflare +short
 ```
 
@@ -30,9 +28,7 @@ This command returns your public IP address, meaning the IP address that Cloudfl
 
 ## Find your connected data center
 
-Terminal window
-
-```
+```sh
 dig @alex.ns.cloudflare.com chaos txt id.server +short
 ```
 
@@ -40,9 +36,7 @@ This command returns the Cloudflare data center you are connecting to, for DNS q
 
 ## Check the DNS software version
 
-Terminal window
-
-```
+```sh
 dig @alex.ns.cloudflare.com chaos txt version.bind +short
 ```
 
@@ -50,9 +44,7 @@ This command returns the version of Cloudflare's authoritative DNS software that
 
 ## Get your IP, ASN, and country code
 
-Terminal window
-
-```
+```sh
 dig @alex.ns.cloudflare.com txt whoami.cloudflare.net +short
 ```
 

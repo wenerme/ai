@@ -30,10 +30,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Set Leaked Credential Checks Status
+**Set Leaked Credential Checks Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enabled": true
+  }'
 ```
 
 ### Turn off leaked credentials detection
@@ -46,10 +51,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Set Leaked Credential Checks Status
+**Set Leaked Credential Checks Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enabled": false
+  }'
 ```
 
 ### Get status of leaked credentials detection
@@ -64,14 +74,23 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account WAF Read`
 
-Get Leaked Credential Checks Status
+**Get Leaked Credential Checks Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": {    "enabled": true  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "enabled": true
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Custom detection location operations
@@ -88,10 +107,16 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Create Leaked Credential Checks Custom Detection
+**Create Leaked Credential Checks Custom Detection**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "username": "lookup_json_string(http.request.body.raw, \"user\")",    "password": "lookup_json_string(http.request.body.raw, \"secret\")"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "username": "lookup_json_string(http.request.body.raw, \"user\")",
+    "password": "lookup_json_string(http.request.body.raw, \"secret\")"
+  }'
 ```
 
 ### Get existing custom detection locations
@@ -106,14 +131,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account WAF Read`
 
-List Leaked Credential Checks Custom Detections
+**List Leaked Credential Checks Custom Detections**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": [    {      "id": "<DETECTION_ID>",      "username": "lookup_json_string(http.request.body.raw, \"user\")",      "password": "lookup_json_string(http.request.body.raw, \"secret\")"    }    // (...)  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<DETECTION_ID>",
+      "username": "lookup_json_string(http.request.body.raw, \"user\")",
+      "password": "lookup_json_string(http.request.body.raw, \"secret\")"
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Delete a custom detection location
@@ -126,10 +165,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Delete Leaked Credential Checks Custom Detection
+**Delete Leaked Credential Checks Custom Detection**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections/$DETECTION_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections/$DETECTION_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

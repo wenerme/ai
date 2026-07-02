@@ -26,16 +26,20 @@ A pre-built control bar for webinar meetings. Contains mic toggle, camera toggle
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbars.RtkWebinarControlBarView    android:id="@+id/rtk_webinar_control_bar"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbars.RtkWebinarControlBarView
+    android:id="@+id/rtk_webinar_control_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val controlBar = findViewById<RtkWebinarControlBarView>(R.id.rtk_webinar_control_bar)controlBar.activate(meeting)
+```kotlin
+val controlBar = findViewById<RtkWebinarControlBarView>(R.id.rtk_webinar_control_bar)
+controlBar.activate(meeting)
 ```
 
 ```json

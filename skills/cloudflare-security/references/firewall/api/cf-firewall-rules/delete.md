@@ -20,32 +20,59 @@ The `DELETE` operation does not delete any filter related to the firewall rule. 
 
 This example deletes firewall rules with IDs `{rule_id_1}` and `{rule_id_2}`.
 
-Request
+**Request**
 
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules?id={rule_id_1}&id={rule_id_2}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules?id={rule_id_1}&id={rule_id_2}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<RULE_ID_1>"    },    {      "id": "<RULE_ID_2>"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<RULE_ID_1>"
+    },
+    {
+      "id": "<RULE_ID_2>"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Delete a single rule
 
 This example deletes the rule with ID `{rule_id}`.
 
-Request
+**Request**
 
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<RULE_ID>"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<RULE_ID>"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

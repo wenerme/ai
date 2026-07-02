@@ -20,48 +20,97 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12062)
-* [  TypeScript ](#tab-panel-12063)
-* [  Python ](#tab-panel-12064)
-* [  Rust ](#tab-panel-12065)
-* [  Hono ](#tab-panel-12066)
+* [  JavaScript ](#tab-panel-12082)
+* [  TypeScript ](#tab-panel-12083)
+* [  Python ](#tab-panel-12084)
+* [  Rust ](#tab-panel-12085)
+* [  Hono ](#tab-panel-12086)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request) {    const data = {      hello: "world",    };
-    return Response.json(data);  },};
-```
+```js
+export default {
+  async fetch(request) {
+    const data = {
+      hello: "world",
+    };
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWQQCYAbGIAcARjGCAzMIBcLFm2Ac4XGnwEjxUuQuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ388EkDE8vL8f2MBgdD+KIAd0wYFwUQANM8tgBfIgWeEkC4QEAIKgkABKt08VDc9hSblsp2092RiLhSMs6mYmm0uh4-CEokkMnkSmEJVsDicrg8Xh8bSo-kC2lIYQi0QihG06QCWRyMqiZGBZGK1j55SqNTq20azV4rXaqVsUwsayiwDgsQA+qNxtkoip8gtCmkEXT6Yzgsz9GyjJzTMJmJYgA)
 
-TypeScript
-
-```
-export default {  async fetch(request): Promise<Response> {    const data = {      hello: "world",    };
-    return Response.json(data);  },} satisfies ExportedHandler;
-```
-
-Python
-
-```
-from workers import WorkerEntrypoint, Responseimport json
-class Default(WorkerEntrypoint):    def fetch(self, request):        data = json.dumps({"hello": "world"})        headers = {"content-type": "application/json"}        return Response(data, headers=headers)
+    return Response.json(data);
+  },
+};
 ```
 
-```
-use serde::{Deserialize, Serialize};use worker::*;
-#[derive(Deserialize, Serialize, Debug)]struct Json {    hello: String,}
-#[event(fetch)]async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {    let data = Json {        hello: String::from("world"),    };    Response::from_json(&data)}
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAEwBWAByCALDMGSAbAE4AXCxZtgHOFxp8BIidLkKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnHQPFFI+HIqwaZhaHR6Hj8IRiKSyeRKZSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXKy6JkEFkEo2fkVaq1eo7JotXhtDppOzTSzraLAOBxAD6YwmOWiqgKiyK6UR9IZTJCLIM7OMXLMymYViAA)
+
+**TypeScript**
+
+```ts
+export default {
+  async fetch(request): Promise<Response> {
+    const data = {
+      hello: "world",
+    };
+
+
+    return Response.json(data);
+  },
+} satisfies ExportedHandler;
 ```
 
-TypeScript
+**Python**
 
+```py
+from workers import WorkerEntrypoint, Response
+import json
+
+
+class Default(WorkerEntrypoint):
+    def fetch(self, request):
+        data = json.dumps({"hello": "world"})
+        headers = {"content-type": "application/json"}
+        return Response(data, headers=headers)
 ```
+
+```rs
+use serde::{Deserialize, Serialize};
+use worker::*;
+
+
+#[derive(Deserialize, Serialize, Debug)]
+struct Json {
+    hello: String,
+}
+
+
+#[event(fetch)]
+async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
+    let data = Json {
+        hello: String::from("world"),
+    };
+    Response::from_json(&data)
+}
+```
+
+**TypeScript**
+
+```ts
 import { Hono } from "hono";
+
+
 const app = new Hono();
-app.get("*", (c) => {  const data = {    hello: "world",  };
-  return c.json(data);});
+
+
+app.get("*", (c) => {
+  const data = {
+    hello: "world",
+  };
+
+
+  return c.json(data);
+});
+
+
 export default app;
 ```
 

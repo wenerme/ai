@@ -38,21 +38,32 @@ Refer to [Bundling configuration](https://developers.cloudflare.com/workers/wran
 
 For example, with the following import, `text` will be a string containing the contents of `example.txt`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import text from "./example.txt";
 ```
 
 This is also the basis for importing Wasm, as in the following example:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import wasm from "./example.wasm";
-// Instantiate Wasm modules in the module scopeconst instance = await WebAssembly.instantiate(wasm);
-export default {  fetch() {    const result = instance.exports.exported_func();
-    return new Response(result);  },};
+
+
+// Instantiate Wasm modules in the module scope
+const instance = await WebAssembly.instantiate(wasm);
+
+
+export default {
+  fetch() {
+    const result = instance.exports.exported_func();
+
+
+    return new Response(result);
+  },
+};
 ```
 
 Note
@@ -80,10 +91,12 @@ This approach is useful for supporting lazy loading of large or dynamically impo
 
 You can use `process.env.NODE_ENV` to conditionally run code based on the build context:
 
-TypeScript
+**TypeScript**
 
-```
-if (process.env.NODE_ENV === "development") {  console.log("Running in development mode");}
+```ts
+if (process.env.NODE_ENV === "development") {
+  console.log("Running in development mode");
+}
 ```
 
 Because `process.env.NODE_ENV` is replaced at build time, development only code can be removed from the production bundle.

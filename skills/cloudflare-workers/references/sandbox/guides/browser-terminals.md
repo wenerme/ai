@@ -44,61 +44,168 @@ If you are not using xterm.js, you only need `@cloudflare/sandbox` for types.
 
 Add a route that proxies WebSocket connections to the sandbox terminal. The example below supports both the default session and named sessions via a query parameter:
 
-* [  JavaScript ](#tab-panel-10429)
-* [  TypeScript ](#tab-panel-10430)
+* [  JavaScript ](#tab-panel-10724)
+* [  TypeScript ](#tab-panel-10725)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 export { Sandbox } from "@cloudflare/sandbox";
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    if (      url.pathname === "/ws/terminal" &&      request.headers.get("Upgrade") === "websocket"    ) {      const sandbox = getSandbox(env.Sandbox, "my-sandbox");      const sessionId = url.searchParams.get("session");
-      if (sessionId) {        const session = await sandbox.getSession(sessionId);        return await session.terminal(request);      }
-      return await sandbox.terminal(request, { cols: 80, rows: 24 });    }
-    return new Response("Not found", { status: 404 });  },};
+
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    if (
+      url.pathname === "/ws/terminal" &&
+      request.headers.get("Upgrade") === "websocket"
+    ) {
+      const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+      const sessionId = url.searchParams.get("session");
+
+
+      if (sessionId) {
+        const session = await sandbox.getSession(sessionId);
+        return await session.terminal(request);
+      }
+
+
+      return await sandbox.terminal(request, { cols: 80, rows: 24 });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
-    if (url.pathname === '/ws/terminal' && request.headers.get('Upgrade') === 'websocket') {      const sandbox = getSandbox(env.Sandbox, 'my-sandbox');      const sessionId = url.searchParams.get('session');
-      if (sessionId) {        const session = await sandbox.getSession(sessionId);        return await session.terminal(request);      }
-      return await sandbox.terminal(request, { cols: 80, rows: 24 });    }
-    return new Response('Not found', { status: 404 });  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    if (url.pathname === '/ws/terminal' && request.headers.get('Upgrade') === 'websocket') {
+      const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
+      const sessionId = url.searchParams.get('session');
+
+
+      if (sessionId) {
+        const session = await sandbox.getSession(sessionId);
+        return await session.terminal(request);
+      }
+
+
+      return await sandbox.terminal(request, { cols: 80, rows: 24 });
+    }
+
+
+    return new Response('Not found', { status: 404 });
+  }
+};
 ```
 
 ## Connect with xterm.js and SandboxAddon
 
 Create the terminal in your browser code and attach the `SandboxAddon`. The addon manages the WebSocket connection, automatic reconnection, and resize forwarding.
 
-* [  JavaScript ](#tab-panel-10431)
-* [  TypeScript ](#tab-panel-10432)
+* [  JavaScript ](#tab-panel-10726)
+* [  TypeScript ](#tab-panel-10727)
 
-JavaScript
+**JavaScript**
 
-```
-import { Terminal } from "@xterm/xterm";import { FitAddon } from "@xterm/addon-fit";import { SandboxAddon } from "@cloudflare/sandbox/xterm";import "@xterm/xterm/css/xterm.css";
-const terminal = new Terminal({ cursorBlink: true });const fitAddon = new FitAddon();terminal.loadAddon(fitAddon);
-const addon = new SandboxAddon({  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {    const params = new URLSearchParams({ id: sandboxId });    if (sessionId) params.set("session", sessionId);    return `${origin}/ws/terminal?${params}`;  },  onStateChange: (state, error) => {    console.log(`Terminal ${state}`, error ?? "");  },});
-terminal.loadAddon(addon);terminal.open(document.getElementById("terminal"));fitAddon.fit();
-// Connect to the default sessionaddon.connect({ sandboxId: "my-sandbox" });
-// Or connect to a specific session// addon.connect({ sandboxId: 'my-sandbox', sessionId: 'development' });
+```js
+import { Terminal } from "@xterm/xterm";
+import { FitAddon } from "@xterm/addon-fit";
+import { SandboxAddon } from "@cloudflare/sandbox/xterm";
+import "@xterm/xterm/css/xterm.css";
+
+
+const terminal = new Terminal({ cursorBlink: true });
+const fitAddon = new FitAddon();
+terminal.loadAddon(fitAddon);
+
+
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+    const params = new URLSearchParams({ id: sandboxId });
+    if (sessionId) params.set("session", sessionId);
+    return `${origin}/ws/terminal?${params}`;
+  },
+  onStateChange: (state, error) => {
+    console.log(`Terminal ${state}`, error ?? "");
+  },
+});
+
+
+terminal.loadAddon(addon);
+terminal.open(document.getElementById("terminal"));
+fitAddon.fit();
+
+
+// Connect to the default session
+addon.connect({ sandboxId: "my-sandbox" });
+
+
+// Or connect to a specific session
+// addon.connect({ sandboxId: 'my-sandbox', sessionId: 'development' });
+
+
 window.addEventListener("resize", () => fitAddon.fit());
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Terminal } from '@xterm/xterm';import { FitAddon } from '@xterm/addon-fit';import { SandboxAddon } from '@cloudflare/sandbox/xterm';import '@xterm/xterm/css/xterm.css';
-const terminal = new Terminal({ cursorBlink: true });const fitAddon = new FitAddon();terminal.loadAddon(fitAddon);
-const addon = new SandboxAddon({  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {    const params = new URLSearchParams({ id: sandboxId });    if (sessionId) params.set('session', sessionId);    return `${origin}/ws/terminal?${params}`;  },  onStateChange: (state, error) => {    console.log(`Terminal ${state}`, error ?? '');  }});
-terminal.loadAddon(addon);terminal.open(document.getElementById('terminal'));fitAddon.fit();
-// Connect to the default sessionaddon.connect({ sandboxId: 'my-sandbox' });
-// Or connect to a specific session// addon.connect({ sandboxId: 'my-sandbox', sessionId: 'development' });
+```ts
+import { Terminal } from '@xterm/xterm';
+import { FitAddon } from '@xterm/addon-fit';
+import { SandboxAddon } from '@cloudflare/sandbox/xterm';
+import '@xterm/xterm/css/xterm.css';
+
+
+const terminal = new Terminal({ cursorBlink: true });
+const fitAddon = new FitAddon();
+terminal.loadAddon(fitAddon);
+
+
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+    const params = new URLSearchParams({ id: sandboxId });
+    if (sessionId) params.set('session', sessionId);
+    return `${origin}/ws/terminal?${params}`;
+  },
+  onStateChange: (state, error) => {
+    console.log(`Terminal ${state}`, error ?? '');
+  }
+});
+
+
+terminal.loadAddon(addon);
+terminal.open(document.getElementById('terminal'));
+fitAddon.fit();
+
+
+// Connect to the default session
+addon.connect({ sandboxId: 'my-sandbox' });
+
+
+// Or connect to a specific session
+// addon.connect({ sandboxId: 'my-sandbox', sessionId: 'development' });
+
+
 window.addEventListener('resize', () => fitAddon.fit());
 ```
 
@@ -108,33 +215,109 @@ For the full addon API, refer to the [Terminal API reference](https://developers
 
 If you are building a custom terminal UI or running in an environment without xterm.js, connect directly over WebSockets. The protocol uses binary frames for terminal data and JSON text frames for control messages.
 
-* [  JavaScript ](#tab-panel-10433)
-* [  TypeScript ](#tab-panel-10434)
+* [  JavaScript ](#tab-panel-10728)
+* [  TypeScript ](#tab-panel-10729)
 
-JavaScript
+**JavaScript**
 
+```js
+const ws = new WebSocket("wss://example.com/ws/terminal?id=my-sandbox");
+ws.binaryType = "arraybuffer";
+
+
+const decoder = new TextDecoder();
+const encoder = new TextEncoder();
+
+
+ws.addEventListener("message", (event) => {
+  if (event.data instanceof ArrayBuffer) {
+    // Terminal output (binary) — includes ANSI escape sequences
+    const text = decoder.decode(event.data);
+    appendToDisplay(text);
+    return;
+  }
+
+
+  // Control message (JSON text)
+  const msg = JSON.parse(event.data);
+
+
+  switch (msg.type) {
+    case "ready":
+      // Terminal is accepting input — send initial resize
+      ws.send(JSON.stringify({ type: "resize", cols: 80, rows: 24 }));
+      break;
+
+
+    case "exit":
+      console.log(`Shell exited: code ${msg.code}`);
+      break;
+
+
+    case "error":
+      console.error("Terminal error:", msg.message);
+      break;
+  }
+});
+
+
+// Send keystrokes as binary
+function sendInput(text) {
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(encoder.encode(text));
+  }
+}
 ```
-const ws = new WebSocket("wss://example.com/ws/terminal?id=my-sandbox");ws.binaryType = "arraybuffer";
-const decoder = new TextDecoder();const encoder = new TextEncoder();
-ws.addEventListener("message", (event) => {  if (event.data instanceof ArrayBuffer) {    // Terminal output (binary) — includes ANSI escape sequences    const text = decoder.decode(event.data);    appendToDisplay(text);    return;  }
-  // Control message (JSON text)  const msg = JSON.parse(event.data);
-  switch (msg.type) {    case "ready":      // Terminal is accepting input — send initial resize      ws.send(JSON.stringify({ type: "resize", cols: 80, rows: 24 }));      break;
-    case "exit":      console.log(`Shell exited: code ${msg.code}`);      break;
-    case "error":      console.error("Terminal error:", msg.message);      break;  }});
-// Send keystrokes as binaryfunction sendInput(text) {  if (ws.readyState === WebSocket.OPEN) {    ws.send(encoder.encode(text));  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const ws = new WebSocket('wss://example.com/ws/terminal?id=my-sandbox');ws.binaryType = 'arraybuffer';
-const decoder = new TextDecoder();const encoder = new TextEncoder();
-ws.addEventListener('message', (event) => {  if (event.data instanceof ArrayBuffer) {    // Terminal output (binary) — includes ANSI escape sequences    const text = decoder.decode(event.data);    appendToDisplay(text);    return;  }
-  // Control message (JSON text)  const msg = JSON.parse(event.data);
-  switch (msg.type) {    case 'ready':      // Terminal is accepting input — send initial resize      ws.send(JSON.stringify({ type: 'resize', cols: 80, rows: 24 }));      break;
-    case 'exit':      console.log(`Shell exited: code ${msg.code}`);      break;
-    case 'error':      console.error('Terminal error:', msg.message);      break;  }});
-// Send keystrokes as binaryfunction sendInput(text: string): void {  if (ws.readyState === WebSocket.OPEN) {    ws.send(encoder.encode(text));  }}
+```ts
+const ws = new WebSocket('wss://example.com/ws/terminal?id=my-sandbox');
+ws.binaryType = 'arraybuffer';
+
+
+const decoder = new TextDecoder();
+const encoder = new TextEncoder();
+
+
+ws.addEventListener('message', (event) => {
+  if (event.data instanceof ArrayBuffer) {
+    // Terminal output (binary) — includes ANSI escape sequences
+    const text = decoder.decode(event.data);
+    appendToDisplay(text);
+    return;
+  }
+
+
+  // Control message (JSON text)
+  const msg = JSON.parse(event.data);
+
+
+  switch (msg.type) {
+    case 'ready':
+      // Terminal is accepting input — send initial resize
+      ws.send(JSON.stringify({ type: 'resize', cols: 80, rows: 24 }));
+      break;
+
+
+    case 'exit':
+      console.log(`Shell exited: code ${msg.code}`);
+      break;
+
+
+    case 'error':
+      console.error('Terminal error:', msg.message);
+      break;
+  }
+});
+
+
+// Send keystrokes as binary
+function sendInput(text: string): void {
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(encoder.encode(text));
+  }
+}
 ```
 
 Key protocol details:

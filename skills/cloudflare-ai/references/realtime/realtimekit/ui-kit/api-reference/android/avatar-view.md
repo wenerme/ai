@@ -26,16 +26,20 @@ Avatar component which renders a participant's profile picture or their initials
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.avatarview.RtkAvatarView    android:id="@+id/rtk_avatar"    android:layout_width="48dp"    android:layout_height="48dp" />
+```xml
+<com.cloudflare.realtimekit.ui.view.avatarview.RtkAvatarView
+    android:id="@+id/rtk_avatar"
+    android:layout_width="48dp"
+    android:layout_height="48dp" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val avatar = findViewById<RtkAvatarView>(R.id.rtk_avatar)avatar.activate(participant)
+```kotlin
+val avatar = findViewById<RtkAvatarView>(R.id.rtk_avatar)
+avatar.activate(participant)
 ```
 
 ```json

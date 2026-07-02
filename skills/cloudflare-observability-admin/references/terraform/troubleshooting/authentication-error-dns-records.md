@@ -20,13 +20,13 @@ This is caused by an error in your code syntax, when you are not using index `[0
 
 Instead of this:
 
-```
+```txt
 zone_id = data.cloudflare_zones.example_com.id
 ```
 
 Use this:
 
-```
+```txt
 zone_id = data.cloudflare_zones.example_com.zones[0].id`
 ```
 

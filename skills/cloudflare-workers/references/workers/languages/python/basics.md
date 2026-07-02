@@ -16,11 +16,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 As mentioned in the [introduction to Python Workers](https://developers.cloudflare.com/workers/languages/python/), a Python Worker can be as simple as four lines of code:
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello World!")
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response("Hello World!")
 ```
 
 Similar to other Workers, the main entry point for a Python worker is the [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming requests sent to the Worker.
@@ -35,11 +39,18 @@ Let's try editing the worker to accept a POST request. We know from the [documen
 
 In a Python Worker, you would write:
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responsefrom hello import hello
-class Default(WorkerEntrypoint):    async def fetch(self, request):        body = await request.json()        name = body["name"]        return Response(hello(name))
+```python
+from workers import WorkerEntrypoint, Response
+from hello import hello
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        body = await request.json()
+        name = body["name"]
+        return Response(hello(name))
 ```
 
 Many other JavaScript APIs are available in Python Workers via the FFI, so you can call other methods in a similar way.
@@ -48,13 +59,13 @@ Once you edit the `src/entry.py`, Wrangler will automatically restart the local 
 
 Now, if you send a POST request with the appropriate body, your Worker will respond with a personalized message.
 
-Terminal window
+```bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"name": "Python"}' http://localhost:8787
+```
 
-```
-curl --header "Content-Type: application/json" \  --request POST \  --data '{"name": "Python"}' http://localhost:8787
-```
-
-```
+```bash
 Hello, Python!
 ```
 
@@ -62,11 +73,16 @@ Hello, Python!
 
 To return JSON from a Python Worker, use `Response.json()`:
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        data = {"message": "Hello", "status": "ok"}        return Response.json(data)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        data = {"message": "Hello", "status": "ok"}
+        return Response.json(data)
 ```
 
 ## The `env` Attribute
@@ -75,29 +91,53 @@ The `env` attribute on the `WorkerEntrypoint` can be used to access [environment
 
 For example, let us try setting and using an environment variable in a Python Worker. First, add the environment variable to your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11894)
-* [  wrangler.toml ](#tab-panel-11895)
+* [  wrangler.jsonc ](#tab-panel-12167)
+* [  wrangler.toml ](#tab-panel-12168)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hello-python-worker",
+  "main": "src/entry.py",
+  "compatibility_flags": [
+    "python_workers"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "vars": {
+    "API_HOST": "example.com"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hello-python-worker",  "main": "src/entry.py",  "compatibility_flags": [    "python_workers"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "vars": {    "API_HOST": "example.com"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "hello-python-worker"main = "src/entry.py"compatibility_flags = [ "python_workers" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[vars]API_HOST = "example.com"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "hello-python-worker"
+main = "src/entry.py"
+compatibility_flags = [ "python_workers" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[vars]
+API_HOST = "example.com"
 ```
 
 Then, you can access the `API_HOST` environment variable via the `env` parameter:
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response(self.env.API_HOST)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response(self.env.API_HOST)
 ```
 
 ## Modules
@@ -106,19 +146,25 @@ Python workers can be split across multiple files.
 
 Let's create a new Python file, called `src/hello.py`:
 
-Python
+**Python**
 
-```
-def hello(name):    return "Hello, " + name + "!"
+```python
+def hello(name):
+    return "Hello, " + name + "!"
 ```
 
 Now, we can modify `src/entry.py` to make use of the new module.
 
-Python
+**Python**
 
-```
-from hello import hellofrom workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response(hello("World"))
+```python
+from hello import hello
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response(hello("World"))
 ```
 
 Once you edit `src/entry.py`, [pywrangler](https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool) will automatically detect the change and reload your Worker.
@@ -129,10 +175,12 @@ The `workers-runtime-sdk` package provides the runtime SDK for Python Workers. T
 
 To enable them, add the `workers-runtime-sdk` package to your `pyproject.toml` file.
 
-TOML
+**TOML**
 
-```
-dependencies = [  "workers-runtime-sdk"]
+```toml
+dependencies = [
+  "workers-runtime-sdk"
+]
 ```
 
 Additionally, you can generate types based on your Worker configuration using `uv run pywrangler types`
@@ -143,17 +191,13 @@ This includes `Env` types based on your bindings, module rules, and runtime type
 
 To upgrade to the latest version of [pywrangler](https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool) globally, run the following command:
 
-Terminal window
-
-```
+```bash
 uv tool upgrade workers-py
 ```
 
 To upgrade to the latest version of `pywrangler` in a specific project, run the following command:
 
-Terminal window
-
-```
+```bash
 uv lock --upgrade-package workers-py
 ```
 

@@ -18,25 +18,19 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-12401)
-* [  pnpm ](#tab-panel-12402)
-* [  yarn ](#tab-panel-12403)
+* [  npm ](#tab-panel-12696)
+* [  pnpm ](#tab-panel-12697)
+* [  yarn ](#tab-panel-12698)
 
-Terminal window
-
-```
+```sh
 npx wrangler docs [SEARCH]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler docs [SEARCH]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler docs [SEARCH]
 ```
 
@@ -70,7 +64,7 @@ Authorize Wrangler with your Cloudflare account using OAuth. Wrangler will attem
 
 If you prefer to use API tokens for authentication, such as in headless or continuous integration environments, refer to [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
 
-```
+```txt
 wrangler login [OPTIONS]
 ```
 
@@ -104,23 +98,22 @@ If you are using Wrangler from a remote machine, but run the login flow from you
 
 To finish the login flow, run `wrangler login` and go through the login flow in the browser:
 
-Terminal window
-
-```
+```sh
 npx wrangler login
 ```
 
-```
- ⛅️ wrangler 2.1.6-------------------Attempting to login via OAuth...Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth?xyz...
+```sh
+ ⛅️ wrangler 2.1.6
+-------------------
+Attempting to login via OAuth...
+Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth?xyz...
 ```
 
 The browser login flow will redirect you to a `localhost` URL on your machine.
 
 Leave the login flow active. Open a second terminal session. In that second terminal session, use `curl` or an equivalent request library on the remote machine to fetch this `localhost` URL. Copy and paste the `localhost` URL that was generated during the `wrangler login` flow and run:
 
-Terminal window
-
-```
+```sh
 curl <LOCALHOST_URL>
 ```
 
@@ -132,17 +125,13 @@ You must configure your container to map port `8976` on your host machine to the
 
 For example, if you are running Wrangler in a Docker container:
 
-Terminal window
-
-```
+```sh
 docker run -p 8976:8976 <your-image>
 ```
 
 And when you run `npx wrangler login` inside your container, set the callback host to listen on all network interfaces:
 
-Terminal window
-
-```
+```sh
 npx wrangler login --callback-host=0.0.0.0
 ```
 
@@ -150,11 +139,13 @@ Now when the browser redirects to `localhost:8976`, the request will be forwarde
 
 If you need to use a different port inside the container, use `--callback-port` as well and adjust your port mapping accordingly, for example:
 
-Terminal window
+```sh
+# When starting your container
+docker run -p 8976:9000 <your-image>
 
-```
-# When starting your containerdocker run -p 8976:9000 <your-image>
-# Inside the containernpx wrangler login --callback-host=0.0.0.0 --callback-port=9000
+
+# Inside the container
+npx wrangler login --callback-host=0.0.0.0 --callback-port=9000
 ```
 
 ---
@@ -163,7 +154,7 @@ Terminal window
 
 Remove Wrangler's authorization for accessing your account. This command will invalidate your current OAuth token.
 
-```
+```txt
 wrangler logout
 ```
 
@@ -191,7 +182,7 @@ If you are using `CLOUDFLARE_API_TOKEN` instead of OAuth, and you can logout by 
 
 Retrieve your current authentication token or credentials for use with other tools and scripts.
 
-```
+```txt
 wrangler auth token [OPTIONS]
 ```
 
@@ -206,12 +197,19 @@ The command returns whichever authentication method is currently configured, in 
 
 When using `--json`, the output includes the token type:
 
-JSONC
+**JSONC**
 
-```
-// API token{ "type": "api_token", "token": "..." }
-// OAuth token{ "type": "oauth", "token": "..." }
-// API key/email (only available with --json){ "type": "api_key", "key": "...", "email": "..." }
+```jsonc
+// API token
+{ "type": "api_token", "token": "..." }
+
+
+// OAuth token
+{ "type": "oauth", "token": "..." }
+
+
+// API key/email (only available with --json)
+{ "type": "api_key", "key": "...", "email": "..." }
 ```
 
 An error is returned if no authentication method is available, or if API key/email is configured without `--json`.
@@ -231,25 +229,19 @@ The following global flags work on every command:
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-12404)
-* [  pnpm ](#tab-panel-12405)
-* [  yarn ](#tab-panel-12406)
+* [  npm ](#tab-panel-12699)
+* [  pnpm ](#tab-panel-12700)
+* [  yarn ](#tab-panel-12701)
 
-Terminal window
-
-```
+```sh
 npx wrangler whoami
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler whoami
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler whoami
 ```
 
@@ -289,7 +281,7 @@ You can manage sharing of usage data at any time using these commands.
 
 Disable telemetry collection for Wrangler.
 
-```
+```txt
 wrangler telemetry disable
 ```
 
@@ -297,7 +289,7 @@ wrangler telemetry disable
 
 Enable telemetry collection for Wrangler.
 
-```
+```txt
 wrangler telemetry enable
 ```
 
@@ -307,7 +299,7 @@ Check whether telemetry collection is currently enabled. The return result is sp
 
 This will resolve the global status set by `wrangler telemetry disable / enable`, the environment variable [WRANGLER\_SEND\_METRICS](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables), and the [send\_metrics](https://developers.cloudflare.com/workers/wrangler/configuration/#top-level-only-keys) key in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-```
+```txt
 wrangler telemetry status
 ```
 
@@ -326,7 +318,7 @@ The following global flags work on every command:
 
 Generate shell completion scripts for Wrangler commands. Shell completions allow you to autocomplete commands, subcommands, and flags by pressing Tab as you type.
 
-```
+```txt
 wrangler complete <SHELL>
 ```
 
@@ -337,38 +329,32 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-12397)
-* [ Zsh ](#tab-panel-12398)
-* [ Fish ](#tab-panel-12399)
-* [ PowerShell ](#tab-panel-12400)
+* [ Bash ](#tab-panel-12692)
+* [ Zsh ](#tab-panel-12693)
+* [ Fish ](#tab-panel-12694)
+* [ PowerShell ](#tab-panel-12695)
 
-Terminal window
-
-```
+```sh
 wrangler complete bash >> ~/.bashrc
 ```
 
 Then restart your terminal or run `source ~/.bashrc`.
 
-Terminal window
-
-```
+```sh
 wrangler complete zsh >> ~/.zshrc
 ```
 
 Then restart your terminal or run `source ~/.zshrc`.
 
-Terminal window
-
-```
+```sh
 wrangler complete fish >> ~/.config/fish/config.fish
 ```
 
 Then restart your terminal or run `source ~/.config/fish/config.fish`.
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 wrangler complete powershell >> $PROFILE
 ```
 
@@ -378,10 +364,9 @@ Then restart PowerShell or run `. $PROFILE`.
 
 After setup, press Tab to autocomplete commands, subcommands, and flags:
 
-Terminal window
-
-```
-wrangler d<TAB>          # completes to 'deploy', 'dev', 'd1', etc.wrangler kv <TAB>        # shows subcommands: namespace, key, bulk
+```sh
+wrangler d<TAB>          # completes to 'deploy', 'dev', 'd1', etc.
+wrangler kv <TAB>        # shows subcommands: namespace, key, bulk
 ```
 
 The following global flags work on every command:

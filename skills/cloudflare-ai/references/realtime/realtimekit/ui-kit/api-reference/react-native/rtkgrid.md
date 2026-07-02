@@ -31,16 +31,24 @@ The main participant grid that automatically switches between simple, mixed, spo
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkGrid meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkGrid meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkGrid meeting={meeting} aspectRatio="16:9" gap={12} size="md" />;}
+
+
+function MyComponent() {
+  return <RtkGrid meeting={meeting} aspectRatio="16:9" gap={12} size="md" />;
+}
 ```
 
 ```json

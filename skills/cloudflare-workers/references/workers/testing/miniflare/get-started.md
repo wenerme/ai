@@ -40,20 +40,39 @@ bun add -d miniflare
 
 In all future examples, we'll assume Node.js is running in ES module mode. You can do this by setting the `type` field in your `package.json`:
 
-package.json
+**package.json**
 
-```
-{  ...  "type": "module"  ...}
+```json
+{
+  ...
+  "type": "module"
+  ...
+}
 ```
 
 To initialise Miniflare, import the `Miniflare` class from `miniflare`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare } from "miniflare";
-const mf = new Miniflare({  modules: true,  script: `  export default {    async fetch(request, env, ctx) {      return new Response("Hello Miniflare!");    }  }  `,});
-const res = await mf.dispatchFetch("http://localhost:8787/");console.log(await res.text()); // Hello Miniflare!await mf.dispose();
+
+
+const mf = new Miniflare({
+  modules: true,
+  script: `
+  export default {
+    async fetch(request, env, ctx) {
+      return new Response("Hello Miniflare!");
+    }
+  }
+  `,
+});
+
+
+const res = await mf.dispatchFetch("http://localhost:8787/");
+console.log(await res.text()); // Hello Miniflare!
+await mf.dispose();
 ```
 
 The [rest of these docs](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch) go into more detail on configuring specific features.
@@ -62,10 +81,12 @@ The [rest of these docs](https://developers.cloudflare.com/workers/testing/minif
 
 Note in the above example we're specifying `script` as a string. We could've equally put the script in a file such as `worker.js`, then used the `scriptPath`property instead:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  scriptPath: "worker.js",});
+```js
+const mf = new Miniflare({
+  scriptPath: "worker.js",
+});
 ```
 
 ### Watching, Reloading and Disposing
@@ -74,9 +95,9 @@ Miniflare's API is primarily intended for testing use cases, where file watching
 
 To cleanup and stop listening for requests, you should `dispose()` your instances:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await mf.dispose();
 ```
 
@@ -86,26 +107,97 @@ You can also manually reload scripts (main and Durable Objects') and options by 
 
 You can use the `setOptions` method to update the options of an existing `Miniflare` instance. This accepts the same options object as the `new Miniflare` constructor, applies those options, then reloads the worker.
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  script: "...",  kvNamespaces: ["TEST_NAMESPACE"],  bindings: { KEY: "value1" },});
-await mf.setOptions({  script: "...",  kvNamespaces: ["TEST_NAMESPACE"],  bindings: { KEY: "value2" },});
+```js
+const mf = new Miniflare({
+  script: "...",
+  kvNamespaces: ["TEST_NAMESPACE"],
+  bindings: { KEY: "value1" },
+});
+
+
+await mf.setOptions({
+  script: "...",
+  kvNamespaces: ["TEST_NAMESPACE"],
+  bindings: { KEY: "value2" },
+});
 ```
 
 ### Dispatching Events
 
 `getWorker` dispatches `fetch`, `queues`, and `scheduled` events to workers respectively:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare } from "miniflare";
-const mf = new Miniflare({  modules: true,  script: `  let lastScheduledController;  let lastQueueBatch;  export default {    async fetch(request, env, ctx) {      const { pathname } = new URL(request.url);      if (pathname === "/scheduled") {        return Response.json({          scheduledTime: lastScheduledController?.scheduledTime,          cron: lastScheduledController?.cron,        });      } else if (pathname === "/queue") {        return Response.json({          queue: lastQueueBatch.queue,          messages: lastQueueBatch.messages.map((message) => ({          id: message.id,          timestamp: message.timestamp.getTime(),          body: message.body,          bodyType: message.body.constructor.name,          })),        });      } else if (pathname === "/get-url") {        return new Response(request.url);      } else {        return new Response(null, { status: 404 });      }    },    async scheduled(controller, env, ctx) {      lastScheduledController = controller;      if (controller.cron === "* * * * *") controller.noRetry();    },    async queue(batch, env, ctx) {      lastQueueBatch = batch;      if (batch.queue === "needy") batch.retryAll();      for (const message of batch.messages) {        if (message.id === "perfect") message.ack();      }    }  }`,});
-const res = await mf.dispatchFetch("http://localhost:8787/", {  headers: { "X-Message": "Hello Miniflare!" },});console.log(await res.text()); // Hello Miniflare!
+
+
+const mf = new Miniflare({
+  modules: true,
+  script: `
+  let lastScheduledController;
+  let lastQueueBatch;
+  export default {
+    async fetch(request, env, ctx) {
+      const { pathname } = new URL(request.url);
+      if (pathname === "/scheduled") {
+        return Response.json({
+          scheduledTime: lastScheduledController?.scheduledTime,
+          cron: lastScheduledController?.cron,
+        });
+      } else if (pathname === "/queue") {
+        return Response.json({
+          queue: lastQueueBatch.queue,
+          messages: lastQueueBatch.messages.map((message) => ({
+          id: message.id,
+          timestamp: message.timestamp.getTime(),
+          body: message.body,
+          bodyType: message.body.constructor.name,
+          })),
+        });
+      } else if (pathname === "/get-url") {
+        return new Response(request.url);
+      } else {
+        return new Response(null, { status: 404 });
+      }
+    },
+    async scheduled(controller, env, ctx) {
+      lastScheduledController = controller;
+      if (controller.cron === "* * * * *") controller.noRetry();
+    },
+    async queue(batch, env, ctx) {
+      lastQueueBatch = batch;
+      if (batch.queue === "needy") batch.retryAll();
+      for (const message of batch.messages) {
+        if (message.id === "perfect") message.ack();
+      }
+    }
+  }`,
+});
+
+
+const res = await mf.dispatchFetch("http://localhost:8787/", {
+  headers: { "X-Message": "Hello Miniflare!" },
+});
+console.log(await res.text()); // Hello Miniflare!
+
+
 const worker = await mf.getWorker();
-const scheduledResult = await worker.scheduled({  cron: "* * * * *",});console.log(scheduledResult); // { outcome: "ok", noRetry: true });
-const queueResult = await worker.queue("needy", [  { id: "a", timestamp: new Date(1000), body: "a", attempts: 1 },  { id: "b", timestamp: new Date(2000), body: { b: 1 }, attempts: 1 },]);console.log(queueResult); // { outcome: "ok", retryAll: true, ackAll: false, explicitRetries: [], explicitAcks: []}
+
+
+const scheduledResult = await worker.scheduled({
+  cron: "* * * * *",
+});
+console.log(scheduledResult); // { outcome: "ok", noRetry: true });
+
+
+const queueResult = await worker.queue("needy", [
+  { id: "a", timestamp: new Date(1000), body: "a", attempts: 1 },
+  { id: "b", timestamp: new Date(2000), body: { b: 1 }, attempts: 1 },
+]);
+console.log(queueResult); // { outcome: "ok", retryAll: true, ackAll: false, explicitRetries: [], explicitAcks: []}
 ```
 
 See [📨 Fetch Events](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch) and [⏰ Scheduled Events](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled)for more details.
@@ -114,38 +206,60 @@ See [📨 Fetch Events](https://developers.cloudflare.com/workers/testing/minifl
 
 Miniflare starts an HTTP server automatically. To wait for it to be ready, `await` the `ready` property:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare } from "miniflare";
-const mf = new Miniflare({  modules: true,  script: `  export default {    async fetch(request, env, ctx) {      return new Response("Hello Miniflare!");    })  }  `,  port: 5000,});await mf.ready;console.log("Listening on :5000");
+
+
+const mf = new Miniflare({
+  modules: true,
+  script: `
+  export default {
+    async fetch(request, env, ctx) {
+      return new Response("Hello Miniflare!");
+    })
+  }
+  `,
+  port: 5000,
+});
+await mf.ready;
+console.log("Listening on :5000");
 ```
 
 #### `Request#cf` Object
 
 By default, Miniflare will fetch the `Request#cf` object from a trusted Cloudflare endpoint and cache it to `node_modules/.mf/cf.json`. You can disable this behaviour, using the `cf` option:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  cf: false,});
+```js
+const mf = new Miniflare({
+  cf: false,
+});
 ```
 
 You can also provide a custom cf object via a filepath:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  cf: "cf.json",});
+```js
+const mf = new Miniflare({
+  cf: "cf.json",
+});
 ```
 
 You can also control this behaviour using [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/), which is useful when you are not using the Miniflare API directly (for example, when running `wrangler dev`):
 
-Terminal window
+```sh
+# Disable cf fetching entirely (uses fallback data)
+export CLOUDFLARE_CF_FETCH_ENABLED=false
+npx wrangler dev
 
-```
-# Disable cf fetching entirely (uses fallback data)export CLOUDFLARE_CF_FETCH_ENABLED=falsenpx wrangler dev
-# Use a custom cache location for cf.jsonexport CLOUDFLARE_CF_FETCH_PATH=/tmp/.cf-cache.jsonnpx wrangler dev
+
+# Use a custom cache location for cf.json
+export CLOUDFLARE_CF_FETCH_PATH=/tmp/.cf-cache.json
+npx wrangler dev
 ```
 
 The explicit `cf` option in the Miniflare API takes precedence over both environment variables.
@@ -154,26 +268,36 @@ The explicit `cf` option in the Miniflare API takes precedence over both environ
 
 To start an HTTPS server instead, set the `https` option. To use the [default shared self-signed certificate ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare/src/http/cert.ts), set `https` to `true`:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  https: true,});
+```js
+const mf = new Miniflare({
+  https: true,
+});
 ```
 
 To load an existing certificate from the file system:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  // These are all optional, you don't need to include them all  httpsKeyPath: "./key.pem",  httpsCertPath: "./cert.pem",});
+```js
+const mf = new Miniflare({
+  // These are all optional, you don't need to include them all
+  httpsKeyPath: "./key.pem",
+  httpsCertPath: "./cert.pem",
+});
 ```
 
 To load an existing certificate from strings instead:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  // These are all optional, you don't need to include them all  httpsKey: "-----BEGIN RSA PRIVATE KEY-----...",  httpsCert: "-----BEGIN CERTIFICATE-----...",});
+```js
+const mf = new Miniflare({
+  // These are all optional, you don't need to include them all
+  httpsKey: "-----BEGIN RSA PRIVATE KEY-----...",
+  httpsCert: "-----BEGIN CERTIFICATE-----...",
+});
 ```
 
 If both a string and path are specified for an option (e.g. `httpsKey` and `httpsKeyPath`), the string will be preferred.
@@ -182,47 +306,178 @@ If both a string and path are specified for an option (e.g. `httpsKey` and `http
 
 By default, `[mf:*]` logs are disabled when using the API. To enable these, set the `log` property to an instance of the `Log` class. Its only parameter is a log level indicating which messages should be logged:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare, Log, LogLevel } from "miniflare";
-const mf = new Miniflare({  scriptPath: "worker.js",  log: new Log(LogLevel.DEBUG), // Enable debug messages});
+
+
+const mf = new Miniflare({
+  scriptPath: "worker.js",
+  log: new Log(LogLevel.DEBUG), // Enable debug messages
+});
 ```
 
 ## Reference
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare, Log, LogLevel } from "miniflare";
-const mf = new Miniflare({  // All options are optional, but one of script or scriptPath is required
+
+
+const mf = new Miniflare({
+  // All options are optional, but one of script or scriptPath is required
+
+
   log: new Log(LogLevel.INFO), // Logger Miniflare uses for debugging
-  script: `    export default {      async fetch(request, env, ctx) {        return new Response("Hello Miniflare!");      }    }  `,  scriptPath: "./index.js",
-  modules: true, // Enable modules  modulesRules: [    // Modules import rule    { type: "ESModule", include: ["**/*.js"], fallthrough: true },    { type: "Text", include: ["**/*.text"] },  ],  compatibilityDate: "2021-11-23", // Opt into backwards-incompatible changes from  compatibilityFlags: ["formdata_parser_supports_files"], // Control specific backwards-incompatible changes  upstream: "https://miniflare.dev", // URL of upstream origin  workers: [{    // reference additional named workers    name: "worker2",    kvNamespaces: { COUNTS: "counts" },    serviceBindings: {      INCREMENTER: "incrementer",      // Service bindings can also be defined as custom functions, with access      // to anything defined outside Miniflare.      async CUSTOM(request) {        // `request` is the incoming `Request` object.        return new Response(message);      },    },    modules: true,    script: `export default {        async fetch(request, env, ctx) {          // Get the message defined outside          const response = await env.CUSTOM.fetch("http://host/");          const message = await response.text();
-          // Increment the count 3 times          await env.INCREMENTER.fetch("http://host/");          await env.INCREMENTER.fetch("http://host/");          await env.INCREMENTER.fetch("http://host/");          const count = await env.COUNTS.get("count");
-          return new Response(message + count);        }      }`,    },  }],  name: "worker", // Name of service  routes: ["*site.mf/worker"],
-
-  host: "127.0.0.1", // Host for HTTP(S) server to listen on  port: 8787, // Port for HTTP(S) server to listen on  https: true, // Enable self-signed HTTPS (with optional cert path)  httpsKey: "-----BEGIN RSA PRIVATE KEY-----...",  httpsKeyPath: "./key.pem", // Path to PEM SSL key  httpsCert: "-----BEGIN CERTIFICATE-----...",  httpsCertPath: "./cert.pem", // Path to PEM SSL cert chain  cf: "./node_modules/.mf/cf.json", // Path for cached Request cf object from Cloudflare  liveReload: true, // Reload HTML pages whenever worker is reloaded
 
 
-  kvNamespaces: ["TEST_NAMESPACE"], // KV namespace to bind  kvPersist: "./kv-data", // Persist KV data (to optional path)
-  r2Buckets: ["BUCKET"], // R2 bucket to bind  r2Persist: "./r2-data", // Persist R2 data (to optional path)
-  durableObjects: {    // Durable Object to bind    TEST_OBJECT: "TestObject", // className    API_OBJECT: { className: "ApiObject", scriptName: "api" },  },  durableObjectsPersist: "./durable-objects-data", // Persist Durable Object data (to optional path)
-  cache: false, // Enable default/named caches (enabled by default)  cachePersist: "./cache-data", // Persist cached data (to optional path)  cacheWarnUsage: true, // Warn on cache usage, for workers.dev subdomains
-  sitePath: "./site", // Path to serve Workers Site files from  siteInclude: ["**/*.html", "**/*.css", "**/*.js"], // Glob pattern of site files to serve  siteExclude: ["node_modules"], // Glob pattern of site files not to serve
+  script: `
+    export default {
+      async fetch(request, env, ctx) {
+        return new Response("Hello Miniflare!");
+      }
+    }
+  `,
+  scriptPath: "./index.js",
 
-  bindings: { SECRET: "sssh" }, // Binds variable/secret to environment  wasmBindings: { ADD_MODULE: "./add.wasm" }, // WASM module to bind  textBlobBindings: { TEXT: "./text.txt" }, // Text blob to bind  dataBlobBindings: { DATA: "./data.bin" }, // Data blob to bind});
+
+  modules: true, // Enable modules
+  modulesRules: [
+    // Modules import rule
+    { type: "ESModule", include: ["**/*.js"], fallthrough: true },
+    { type: "Text", include: ["**/*.text"] },
+  ],
+  compatibilityDate: "2021-11-23", // Opt into backwards-incompatible changes from
+  compatibilityFlags: ["formdata_parser_supports_files"], // Control specific backwards-incompatible changes
+  upstream: "https://miniflare.dev", // URL of upstream origin
+  workers: [{
+    // reference additional named workers
+    name: "worker2",
+    kvNamespaces: { COUNTS: "counts" },
+    serviceBindings: {
+      INCREMENTER: "incrementer",
+      // Service bindings can also be defined as custom functions, with access
+      // to anything defined outside Miniflare.
+      async CUSTOM(request) {
+        // `request` is the incoming `Request` object.
+        return new Response(message);
+      },
+    },
+    modules: true,
+    script: `export default {
+        async fetch(request, env, ctx) {
+          // Get the message defined outside
+          const response = await env.CUSTOM.fetch("http://host/");
+          const message = await response.text();
+
+
+          // Increment the count 3 times
+          await env.INCREMENTER.fetch("http://host/");
+          await env.INCREMENTER.fetch("http://host/");
+          await env.INCREMENTER.fetch("http://host/");
+          const count = await env.COUNTS.get("count");
+
+
+          return new Response(message + count);
+        }
+      }`,
+    },
+  }],
+  name: "worker", // Name of service
+  routes: ["*site.mf/worker"],
+
+
+  host: "127.0.0.1", // Host for HTTP(S) server to listen on
+  port: 8787, // Port for HTTP(S) server to listen on
+  https: true, // Enable self-signed HTTPS (with optional cert path)
+  httpsKey: "-----BEGIN RSA PRIVATE KEY-----...",
+  httpsKeyPath: "./key.pem", // Path to PEM SSL key
+  httpsCert: "-----BEGIN CERTIFICATE-----...",
+  httpsCertPath: "./cert.pem", // Path to PEM SSL cert chain
+  cf: "./node_modules/.mf/cf.json", // Path for cached Request cf object from Cloudflare
+  liveReload: true, // Reload HTML pages whenever worker is reloaded
+
+
+  kvNamespaces: ["TEST_NAMESPACE"], // KV namespace to bind
+  kvPersist: "./kv-data", // Persist KV data (to optional path)
+
+
+  r2Buckets: ["BUCKET"], // R2 bucket to bind
+  r2Persist: "./r2-data", // Persist R2 data (to optional path)
+
+
+  durableObjects: {
+    // Durable Object to bind
+    TEST_OBJECT: "TestObject", // className
+    API_OBJECT: { className: "ApiObject", scriptName: "api" },
+  },
+  durableObjectsPersist: "./durable-objects-data", // Persist Durable Object data (to optional path)
+
+
+  cache: false, // Enable default/named caches (enabled by default)
+  cachePersist: "./cache-data", // Persist cached data (to optional path)
+  cacheWarnUsage: true, // Warn on cache usage, for workers.dev subdomains
+
+
+  sitePath: "./site", // Path to serve Workers Site files from
+  siteInclude: ["**/*.html", "**/*.css", "**/*.js"], // Glob pattern of site files to serve
+  siteExclude: ["node_modules"], // Glob pattern of site files not to serve
+
+
+  bindings: { SECRET: "sssh" }, // Binds variable/secret to environment
+  wasmBindings: { ADD_MODULE: "./add.wasm" }, // WASM module to bind
+  textBlobBindings: { TEXT: "./text.txt" }, // Text blob to bind
+  dataBlobBindings: { DATA: "./data.bin" }, // Data blob to bind
+});
+
+
 await mf.setOptions({ kvNamespaces: ["TEST_NAMESPACE2"] }); // Apply options and reload
+
+
 const bindings = await mf.getBindings(); // Get bindings (KV/Durable Object namespaces, variables, etc)
-// Dispatch "fetch" event to workerconst res = await mf.dispatchFetch("http://localhost:8787/", {  headers: { Authorization: "Bearer ..." },});const text = await res.text();
+
+
+// Dispatch "fetch" event to worker
+const res = await mf.dispatchFetch("http://localhost:8787/", {
+  headers: { Authorization: "Bearer ..." },
+});
+const text = await res.text();
+
+
 const worker = await mf.getWorker();
-// Dispatch "scheduled" event to workerconst scheduledResult = await worker.scheduled({ cron: "30 * * * *" })
+
+
+// Dispatch "scheduled" event to worker
+const scheduledResult = await worker.scheduled({ cron: "30 * * * *" })
+
+
 const TEST_NAMESPACE = await mf.getKVNamespace("TEST_NAMESPACE");
+
+
 const BUCKET = await mf.getR2Bucket("BUCKET");
-const caches = await mf.getCaches(); // Get global `CacheStorage` instanceconst defaultCache = caches.default;const namedCache = await caches.open("name");
-// Get Durable Object namespace and storage for IDconst TEST_OBJECT = await mf.getDurableObjectNamespace("TEST_OBJECT");const id = TEST_OBJECT.newUniqueId();const storage = await mf.getDurableObjectStorage(id);
-// Get Queue Producerconst producer = await mf.getQueueProducer("QUEUE_BINDING");
-// Get D1 Databaseconst db = await mf.getD1Database("D1_BINDING")
+
+
+const caches = await mf.getCaches(); // Get global `CacheStorage` instance
+const defaultCache = caches.default;
+const namedCache = await caches.open("name");
+
+
+// Get Durable Object namespace and storage for ID
+const TEST_OBJECT = await mf.getDurableObjectNamespace("TEST_OBJECT");
+const id = TEST_OBJECT.newUniqueId();
+const storage = await mf.getDurableObjectStorage(id);
+
+
+// Get Queue Producer
+const producer = await mf.getQueueProducer("QUEUE_BINDING");
+
+
+// Get D1 Database
+const db = await mf.getD1Database("D1_BINDING")
+
+
 await mf.dispose(); // Cleanup storage database connections and watcher
 ```
 

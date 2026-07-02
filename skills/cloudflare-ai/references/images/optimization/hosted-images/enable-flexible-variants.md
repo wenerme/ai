@@ -25,10 +25,11 @@ Flexible variants allow you to create variants with dynamic resizing which can p
 
 Make a `PATCH` request to the [Update a variant endpoint](https://developers.cloudflare.com/api/resources/images/subresources/v1/subresources/variants/methods/edit/).
 
-Terminal window
-
-```
-curl --request PATCH https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{"flexible_variants": true}'
+```bash
+curl --request PATCH https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{"flexible_variants": true}'
 ```
 
 After activation, you can use [optimization parameters](https://developers.cloudflare.com/images/optimization/features/#parameters) on any Cloudflare image. For example,

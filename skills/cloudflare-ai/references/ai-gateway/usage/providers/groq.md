@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq
 ```
 
@@ -37,38 +37,69 @@ When making requests to Groq, ensure you have the following:
 
 ### cURL
 
-Example fetch request
+**Example fetch request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/completions \  --header 'Authorization: Bearer {groq_api_key}' \  --header 'Content-Type: application/json' \  --data '{    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ],    "model": "llama3-8b-8192"}'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/completions \
+  --header 'Authorization: Bearer {groq_api_key}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ],
+    "model": "llama3-8b-8192"
+}'
 ```
 
 ### Use Groq SDK with JavaScript
 
 If using the [groq-sdk ↗](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import Groq from "groq-sdk";
-const apiKey = env.GROQ_API_KEY;const accountId = "{account_id}";const gatewayId = "{gateway_id}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/groq`;
-const groq = new Groq({  apiKey,  baseURL,});
-const messages = [{ role: "user", content: "What is Cloudflare?" }];const model = "llama3-8b-8192";
-const chatCompletion = await groq.chat.completions.create({  messages,  model,});
+
+
+const apiKey = env.GROQ_API_KEY;
+const accountId = "{account_id}";
+const gatewayId = "{gateway_id}";
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/groq`;
+
+
+const groq = new Groq({
+  apiKey,
+  baseURL,
+});
+
+
+const messages = [{ role: "user", content: "What is Cloudflare?" }];
+const model = "llama3-8b-8192";
+
+
+const chatCompletion = await groq.chat.completions.create({
+  messages,
+  model,
+});
 ```
 
 ## OpenAI-Compatible Endpoint
 
 You can also access Groq models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 ```
 
 Specify:
 
-```
-{"model": "groq/{model}"}
+```json
+{
+"model": "groq/{model}"
+}
 ```
 
 ```json

@@ -24,16 +24,20 @@ A pre-built control bar for group call meetings. Contains mic toggle, camera tog
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbars.RtkMeetingControlBarView    android:id="@+id/rtk_meeting_control_bar"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbars.RtkMeetingControlBarView
+    android:id="@+id/rtk_meeting_control_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val controlBar = findViewById<RtkMeetingControlBarView>(R.id.rtk_meeting_control_bar)controlBar.activate(meeting)
+```kotlin
+val controlBar = findViewById<RtkMeetingControlBarView>(R.id.rtk_meeting_control_bar)
+controlBar.activate(meeting)
 ```
 
 ```json

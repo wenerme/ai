@@ -46,8 +46,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-* [  New dashboard ](#tab-panel-6908)
-* [ Old dashboard ](#tab-panel-6909)
+* [  New dashboard ](#tab-panel-7156)
+* [ Old dashboard ](#tab-panel-7157)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -102,10 +102,14 @@ Note
 
 The short ID will not be visible until your account team has enabled this feature for you.
 
-API call
+**API call**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{"enabled": true}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{"enabled": true}'
 ```
 
 1. Use the expression editor to write sequence or timing based rules via [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), or [transform rules](https://developers.cloudflare.com/rules/transform/). You can put these rules in log only mode to monitor.
@@ -128,10 +132,12 @@ Note
 
 The short ID will not be visible until your account team has enabled this feature for you.
 
-API call
+**API call**
 
-```
-curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \--header "Authorization: Bearer <API_TOKEN>" \--data '{"enabled": false}'
+```bash
+curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"enabled": false}'
 ```
 
 ---
@@ -146,30 +152,34 @@ Cloudflare only stores up to the 10 most recent operations in a sequence for up 
 
 The customer must request endpoint A before endpoint B.
 
-Valid sequence
+**Valid sequence**
 
-```
-cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "aaaaaaaa")
+```txt
+cf.sequence.current_op eq "bbbbbbbb" and
+any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
 
-Invalid sequence
+**Invalid sequence**
 
-```
-cf.sequence.current_op eq "bbbbbbbb" andnot any(cf.sequence.previous_ops[*] == "aaaaaaaa")
+```txt
+cf.sequence.current_op eq "bbbbbbbb" and
+not any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
 
 Customer must request endpoint A at least one second before endpoint B.
 
-Valid sequence
+**Valid sequence**
 
-```
-cf.sequence.current_op eq "bbbbbbbb" andcf.sequence.msec_since_op["aaaaaaaa"] ge 1000
+```txt
+cf.sequence.current_op eq "bbbbbbbb" and
+cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
 ```
 
-Invalid sequence
+**Invalid sequence**
 
-```
-cf.sequence.current_op eq "bbbbbbbb" andnot cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
+```txt
+cf.sequence.current_op eq "bbbbbbbb" and
+not cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
 ```
 
 ---

@@ -26,9 +26,9 @@ Copy the RTMPS _playback_ key for your live input from either:
 
 Paste it into the URL below, replacing `<RTMPS_PLAYBACK_KEY>`:
 
-RTMPS playback with ffplay
+**RTMPS playback with ffplay**
 
-```
+```sh
 ffplay -analyzeduration 1 -fflags -nobuffer -sync ext 'rtmps://live.cloudflare.com:443/live/<RTMPS_PLAYBACK_KEY>'
 ```
 

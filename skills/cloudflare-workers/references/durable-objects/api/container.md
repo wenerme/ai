@@ -20,21 +20,40 @@ The low-level API documented on this page is available on `this.ctx.container` i
 
 Because the `Container` class extends `DurableObject`, you also have access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) via `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs.
 
-* [  JavaScript ](#tab-panel-8523)
-* [  TypeScript ](#tab-panel-8524)
+* [  JavaScript ](#tab-panel-8546)
+* [  TypeScript ](#tab-panel-8547)
 
-index.js
+**index.js**
 
+```js
+export class MyDurableObject extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+
+
+    // boot the container when starting the DO
+    this.ctx.blockConcurrencyWhile(async () => {
+      this.ctx.container.start();
+    });
+  }
+}
 ```
-export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);
-    // boot the container when starting the DO    this.ctx.blockConcurrencyWhile(async () => {      this.ctx.container.start();    });  }}
-```
 
-index.ts
+**index.ts**
 
-```
-export class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);
-      // boot the container when starting the DO      this.ctx.blockConcurrencyWhile(async () => {        this.ctx.container.start();    });    }
+```ts
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+
+
+      // boot the container when starting the DO
+      this.ctx.blockConcurrencyWhile(async () => {
+        this.ctx.container.start();
+    });
+    }
+
+
 }
 ```
 
@@ -44,9 +63,9 @@ export class MyDurableObject extends DurableObject {  constructor(ctx: DurableOb
 
 `running` returns `true` if the container is currently running. It does not ensure that the container has fully started and ready to accept requests.
 
-JavaScript
+**JavaScript**
 
-```
+```js
   this.ctx.container.running;
 ```
 
@@ -56,10 +75,16 @@ JavaScript
 
 `start` boots a container. This method does not block until the container is fully started. You may want to confirm the container is ready to accept requests before using it.
 
-JavaScript
+**JavaScript**
 
-```
-this.ctx.container.start({  env: {    FOO: "bar",  },  enableInternet: false,  entrypoint: ["node", "server.js"],});
+```js
+this.ctx.container.start({
+  env: {
+    FOO: "bar",
+  },
+  enableInternet: false,
+  entrypoint: ["node", "server.js"],
+});
 ```
 
 #### Parameters
@@ -79,35 +104,72 @@ this.ctx.container.start({  env: {    FOO: "bar",  },  enableInternet: false,  e
 
 The following example calls `this.ctx.container.exec()` inside a class extending `Container` from `@cloudflare/containers`. In RPC methods, check `this.ctx.container.running` and call `await this.start()` when needed. You can also use the `onStart()` hook to run any series of commands whenever the Container starts.
 
-TypeScript
+**TypeScript**
 
-```
-exec(  cmd: string[],  options?: ContainerExecOptions,): Promise<ExecProcess>
+```ts
+exec(
+  cmd: string[],
+  options?: ContainerExecOptions,
+): Promise<ExecProcess>
 ```
 
 The `exec` operation starts the executable directly with the provided arguments. It does not start a shell or interpret pipes, redirects, expansion, or other shell syntax. Invoke Bash explicitly with `["bash", "-lc", "<COMMAND>"]` when Bash exists in the image. Use `["sh", "-c", "<COMMAND>"]` for images with only a Portable Operating System Interface (POSIX) shell.
 
 The following RPC method starts the Container before executing a command:
 
-* [  JavaScript ](#tab-panel-8525)
-* [  TypeScript ](#tab-panel-8526)
+* [  JavaScript ](#tab-panel-8548)
+* [  TypeScript ](#tab-panel-8549)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  async runCommand() {    if (!this.ctx.container.running) {      await this.start();    }
-    const process = await this.ctx.container.exec(["node", "--version"]);    const output = await process.output();
-    return {      pid: process.pid,      exitCode: output.exitCode,      stdout: new TextDecoder().decode(output.stdout),    };  }}
+
+
+export class MyContainer extends Container {
+  async runCommand() {
+    if (!this.ctx.container.running) {
+      await this.start();
+    }
+
+
+    const process = await this.ctx.container.exec(["node", "--version"]);
+    const output = await process.output();
+
+
+    return {
+      pid: process.pid,
+      exitCode: output.exitCode,
+      stdout: new TextDecoder().decode(output.stdout),
+    };
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  async runCommand() {    if (!this.ctx.container.running) {      await this.start();    }
-    const process = await this.ctx.container.exec(["node", "--version"]);    const output = await process.output();
-    return {      pid: process.pid,      exitCode: output.exitCode,      stdout: new TextDecoder().decode(output.stdout),    };  }}
+
+
+export class MyContainer extends Container {
+  async runCommand() {
+    if (!this.ctx.container.running) {
+      await this.start();
+    }
+
+
+    const process = await this.ctx.container.exec(["node", "--version"]);
+    const output = await process.output();
+
+
+    return {
+      pid: process.pid,
+      exitCode: output.exitCode,
+      stdout: new TextDecoder().decode(output.stdout),
+    };
+  }
+}
 ```
 
 #### Parameters
@@ -155,9 +217,9 @@ For task-oriented examples, refer to [Execute commands](https://developers.cloud
 
 `destroy` stops the container and optionally returns a custom error message to the `monitor()` error callback.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 this.ctx.container.destroy("Manually Destroyed");
 ```
 
@@ -173,10 +235,11 @@ this.ctx.container.destroy("Manually Destroyed");
 
 `signal` sends an IPC signal to the container, such as SIGKILL or SIGTERM. This is useful for stopping the container gracefully or forcefully.
 
-JavaScript
+**JavaScript**
 
-```
-const SIGTERM = 15;this.ctx.container.signal(SIGTERM);
+```js
+const SIGTERM = 15;
+this.ctx.container.signal(SIGTERM);
 ```
 
 #### Parameters
@@ -191,17 +254,32 @@ const SIGTERM = 15;this.ctx.container.signal(SIGTERM);
 
 `getTcpPort` returns a TCP port from the container. This can be used to communicate with the container over TCP and HTTP.
 
-JavaScript
+**JavaScript**
 
-```
-const port = this.ctx.container.getTcpPort(8080);const res = await port.fetch("http://container/set-state", {  body: initialState,  method: "POST",});
+```js
+const port = this.ctx.container.getTcpPort(8080);
+const res = await port.fetch("http://container/set-state", {
+  body: initialState,
+  method: "POST",
+});
 ```
 
-JavaScript
+**JavaScript**
 
-```
-const conn = this.ctx.container.getTcpPort(8080).connect("10.0.0.1:8080");await conn.opened;
-try {  if (request.body) {    await request.body.pipeTo(conn.writable);  }  return new Response(conn.readable);} catch (err) {  console.error("Request body piping failed:", err);  return new Response("Failed to proxy request body", { status: 502 });}
+```js
+const conn = this.ctx.container.getTcpPort(8080).connect("10.0.0.1:8080");
+await conn.opened;
+
+
+try {
+  if (request.body) {
+    await request.body.pipeTo(conn.writable);
+  }
+  return new Response(conn.readable);
+} catch (err) {
+  console.error("Request body piping failed:", err);
+  return new Response("Failed to proxy request body", { status: 502 });
+}
 ```
 
 #### Parameters
@@ -216,12 +294,27 @@ try {  if (request.body) {    await request.body.pipeTo(conn.writable);  }  retu
 
 `monitor` returns a promise that resolves when a container exits and errors if a container errors. This is useful for setting up callbacks to handle container status changes in your Workers code.
 
-JavaScript
+**JavaScript**
 
-```
-class MyContainer extends DurableObject {  constructor(ctx, env) {    super(ctx, env);    function onContainerExit() {      console.log("Container exited");    }
-    // the "err" value can be customized by the destroy() method    async function onContainerError(err) {      console.log("Container errored", err);    }
-    this.ctx.container.start();    this.ctx.container.monitor().then(onContainerExit).catch(onContainerError);  }}
+```js
+class MyContainer extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+    function onContainerExit() {
+      console.log("Container exited");
+    }
+
+
+    // the "err" value can be customized by the destroy() method
+    async function onContainerError(err) {
+      console.log("Container errored", err);
+    }
+
+
+    this.ctx.container.start();
+    this.ctx.container.monitor().then(onContainerExit).catch(onContainerError);
+  }
+}
 ```
 
 #### Parameters
@@ -236,14 +329,26 @@ class MyContainer extends DurableObject {  constructor(ctx, env) {    super(ctx,
 
 `interceptOutboundHttp` routes outbound HTTP requests matching a hostname, hostname glob, IP address, IP:port, or CIDR range through a `WorkerEntrypoint`. Can be called before or after starting the container. Open connections pick up the new handler without being dropped.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const worker = this.ctx.exports.MyWorker({ props: { message: "hello" } });
-// Match a specific hostnamethis.ctx.container.interceptOutboundHttp("api.example.com", worker);
-// Match a hostname glob patternthis.ctx.container.interceptOutboundHttp("*.example.com", worker);
-// Match an IP:portawait this.ctx.container.interceptOutboundHttp("15.0.0.1:80", worker);
-// Match a CIDR range (IPv4 and IPv6)await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
+
+
+// Match a specific hostname
+this.ctx.container.interceptOutboundHttp("api.example.com", worker);
+
+
+// Match a hostname glob pattern
+this.ctx.container.interceptOutboundHttp("*.example.com", worker);
+
+
+// Match an IP:port
+await this.ctx.container.interceptOutboundHttp("15.0.0.1:80", worker);
+
+
+// Match a CIDR range (IPv4 and IPv6)
+await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 ```
 
 #### Parameters
@@ -259,9 +364,9 @@ const worker = this.ctx.exports.MyWorker({ props: { message: "hello" } });
 
 `interceptAllOutboundHttp` routes all outbound HTTP requests from the container through a `WorkerEntrypoint`, regardless of destination.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await this.ctx.container.interceptAllOutboundHttp(worker);
 ```
 
@@ -279,13 +384,22 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 Supports glob patterns where `*` matches any sequence of characters.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const worker = this.ctx.exports.MyWorker({ props: {} });
-// Match a specific hostnamethis.ctx.container.interceptOutboundHttps("api.example.com", worker);
-// Match a hostname glob patternthis.ctx.container.interceptOutboundHttps("*.example.com", worker);
-// Intercept all HTTPS trafficthis.ctx.container.interceptOutboundHttps("*", worker);
+
+
+// Match a specific hostname
+this.ctx.container.interceptOutboundHttps("api.example.com", worker);
+
+
+// Match a hostname glob pattern
+this.ctx.container.interceptOutboundHttps("*.example.com", worker);
+
+
+// Intercept all HTTPS traffic
+this.ctx.container.interceptOutboundHttps("*", worker);
 ```
 
 #### Parameters

@@ -35,68 +35,206 @@ Use Ephemeral IDs to detect high-volume abuse patterns, not to uniquely identify
 
 Create a table to store events with Ephemeral IDs.
 
-```
-CREATE TABLE turnstile_events (    id              BIGSERIAL PRIMARY KEY,    ephemeral_id    VARCHAR(64) NOT NULL,    event_type      VARCHAR(50) NOT NULL,  -- 'signup', 'login', 'checkout'    ip_address      VARCHAR(45),    user_id         VARCHAR(128),          -- NULL for signups, populated after    created_at      TIMESTAMPTZ DEFAULT NOW());
-CREATE TABLE blocked_ephemeral_ids (    ephemeral_id    VARCHAR(64) PRIMARY KEY,    reason          VARCHAR(255),    created_at      TIMESTAMPTZ DEFAULT NOW());
+```sql
+CREATE TABLE turnstile_events (
+    id              BIGSERIAL PRIMARY KEY,
+    ephemeral_id    VARCHAR(64) NOT NULL,
+    event_type      VARCHAR(50) NOT NULL,  -- 'signup', 'login', 'checkout'
+    ip_address      VARCHAR(45),
+    user_id         VARCHAR(128),          -- NULL for signups, populated after
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+
+CREATE TABLE blocked_ephemeral_ids (
+    ephemeral_id    VARCHAR(64) PRIMARY KEY,
+    reason          VARCHAR(255),
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
 ```
 
 ### Extract and log the Ephemeral IDs
 
 When you call Siteverify, the Ephemeral ID is returned in the `metadata` field. Log it with every protected action.
 
-TypeScript
+**TypeScript**
 
-```
-async function verifyAndLogTurnstile(  token: string,  ip: string,  secretKey: string,  eventType: string,  db: Database,): Promise<{ success: boolean; ephemeralId?: string; isBlocked: boolean }> {  // Call Siteverify API  const response = await fetch(    "https://challenges.cloudflare.com/turnstile/v0/siteverify",    {      method: "POST",      headers: { "Content-Type": "application/x-www-form-urlencoded" },      body: new URLSearchParams({        secret: secretKey,        response: token,        remoteip: ip,      }),    },  );
+```typescript
+async function verifyAndLogTurnstile(
+  token: string,
+  ip: string,
+  secretKey: string,
+  eventType: string,
+  db: Database,
+): Promise<{ success: boolean; ephemeralId?: string; isBlocked: boolean }> {
+  // Call Siteverify API
+  const response = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: secretKey,
+        response: token,
+        remoteip: ip,
+      }),
+    },
+  );
+
+
   const result = await response.json();
-  if (!result.success) {    return { success: false, isBlocked: false };  }
+
+
+  if (!result.success) {
+    return { success: false, isBlocked: false };
+  }
+
+
   const ephemeralId = result.metadata?.ephemeral_id;
-  if (ephemeralId) {    // Log the event    await db.query(      `INSERT INTO turnstile_events (ephemeral_id, event_type, ip_address)       VALUES ($1, $2, $3)`,      [ephemeralId, eventType, ip],    );
-    // Check if already blocked    const blocked = await db.query(      `SELECT 1 FROM blocked_ephemeral_ids WHERE ephemeral_id = $1`,      [ephemeralId],    );
-    if (blocked.rows.length > 0) {      return { success: true, ephemeralId, isBlocked: true };    }  }
-  return { success: true, ephemeralId, isBlocked: false };}
+
+
+  if (ephemeralId) {
+    // Log the event
+    await db.query(
+      `INSERT INTO turnstile_events (ephemeral_id, event_type, ip_address)
+       VALUES ($1, $2, $3)`,
+      [ephemeralId, eventType, ip],
+    );
+
+
+    // Check if already blocked
+    const blocked = await db.query(
+      `SELECT 1 FROM blocked_ephemeral_ids WHERE ephemeral_id = $1`,
+      [ephemeralId],
+    );
+
+
+    if (blocked.rows.length > 0) {
+      return { success: true, ephemeralId, isBlocked: true };
+    }
+  }
+
+
+  return { success: true, ephemeralId, isBlocked: false };
+}
 ```
 
 ### Use the Ephemeral ID in your sign up flow
 
-TypeScript
+**TypeScript**
 
-```
-export async function handleSignup(request: Request, env: Env) {  const formData = await request.formData();  const email = formData.get("email") as string;  const turnstileToken = formData.get("cf-turnstile-response") as string;  const ip = request.headers.get("CF-Connecting-IP") || "";
-  // Verify Turnstile and log the Ephemeral ID  const verification = await verifyAndLogTurnstile(    turnstileToken,    ip,    env.TURNSTILE_SECRET_KEY,    "signup",    env.DB,  );
-  if (!verification.success) {    return new Response("Verification failed", { status: 400 });  }
-  // Block if this device is flagged  if (verification.isBlocked) {    // Return a generic message - don't reveal detection    return new Response("Please verify your email to continue", {      status: 202,    });  }
-  // Proceed with normal signup  const userId = await createUser(email, formData.get("password"));
-  // Update the log with the new user ID  if (verification.ephemeralId) {    await env.DB.query(      `UPDATE turnstile_events       SET user_id = $1       WHERE ephemeral_id = $2 AND event_type = 'signup' AND user_id IS NULL       ORDER BY created_at DESC LIMIT 1`,      [userId, verification.ephemeralId],    );  }
-  return new Response("Account created", { status: 201 });}
+```typescript
+export async function handleSignup(request: Request, env: Env) {
+  const formData = await request.formData();
+  const email = formData.get("email") as string;
+  const turnstileToken = formData.get("cf-turnstile-response") as string;
+  const ip = request.headers.get("CF-Connecting-IP") || "";
+
+
+  // Verify Turnstile and log the Ephemeral ID
+  const verification = await verifyAndLogTurnstile(
+    turnstileToken,
+    ip,
+    env.TURNSTILE_SECRET_KEY,
+    "signup",
+    env.DB,
+  );
+
+
+  if (!verification.success) {
+    return new Response("Verification failed", { status: 400 });
+  }
+
+
+  // Block if this device is flagged
+  if (verification.isBlocked) {
+    // Return a generic message - don't reveal detection
+    return new Response("Please verify your email to continue", {
+      status: 202,
+    });
+  }
+
+
+  // Proceed with normal signup
+  const userId = await createUser(email, formData.get("password"));
+
+
+  // Update the log with the new user ID
+  if (verification.ephemeralId) {
+    await env.DB.query(
+      `UPDATE turnstile_events
+       SET user_id = $1
+       WHERE ephemeral_id = $2 AND event_type = 'signup' AND user_id IS NULL
+       ORDER BY created_at DESC LIMIT 1`,
+      [userId, verification.ephemeralId],
+    );
+  }
+
+
+  return new Response("Account created", { status: 201 });
+}
 ```
 
 ### Detect fraud patterns
 
 Run the following query periodically (for example, every five minutes) to find suspicious Ephemeral IDs:
 
-```
--- Find devices creating multiple accounts in the last hourSELECT    ephemeral_id,    COUNT(*) as signup_count,    COUNT(DISTINCT ip_address) as unique_ipsFROM turnstile_eventsWHERE    event_type = 'signup'    AND created_at > NOW() - INTERVAL '1 hour'GROUP BY ephemeral_idHAVING COUNT(*) > 3;  -- More than 3 signups = suspicious
+```sql
+-- Find devices creating multiple accounts in the last hour
+SELECT
+    ephemeral_id,
+    COUNT(*) as signup_count,
+    COUNT(DISTINCT ip_address) as unique_ips
+FROM turnstile_events
+WHERE
+    event_type = 'signup'
+    AND created_at > NOW() - INTERVAL '1 hour'
+GROUP BY ephemeral_id
+HAVING COUNT(*) > 3;  -- More than 3 signups = suspicious
 ```
 
 When you find suspicious IDs, block them:
 
-```
-INSERT INTO blocked_ephemeral_ids (ephemeral_id, reason)SELECT    ephemeral_id,    'Multiple signups: ' || COUNT(*) || ' in 1 hour'FROM turnstile_eventsWHERE    event_type = 'signup'    AND created_at > NOW() - INTERVAL '1 hour'GROUP BY ephemeral_idHAVING COUNT(*) > 3ON CONFLICT (ephemeral_id) DO NOTHING;
+```sql
+INSERT INTO blocked_ephemeral_ids (ephemeral_id, reason)
+SELECT
+    ephemeral_id,
+    'Multiple signups: ' || COUNT(*) || ' in 1 hour'
+FROM turnstile_events
+WHERE
+    event_type = 'signup'
+    AND created_at > NOW() - INTERVAL '1 hour'
+GROUP BY ephemeral_id
+HAVING COUNT(*) > 3
+ON CONFLICT (ephemeral_id) DO NOTHING;
 ```
 
 ### Investigate and take action
 
 When you ban accounts for abuse, find other accounts from the same device:
 
-```
--- Find all accounts created from the same device as a banned userSELECT DISTINCT te2.user_id, te2.created_atFROM turnstile_events te1JOIN turnstile_events te2 ON te1.ephemeral_id = te2.ephemeral_idWHERE te1.user_id = 'BANNED_USER_ID'  AND te2.user_id IS NOT NULL  AND te2.user_id != 'BANNED_USER_ID';
+```sql
+-- Find all accounts created from the same device as a banned user
+SELECT DISTINCT te2.user_id, te2.created_at
+FROM turnstile_events te1
+JOIN turnstile_events te2 ON te1.ephemeral_id = te2.ephemeral_id
+WHERE te1.user_id = 'BANNED_USER_ID'
+  AND te2.user_id IS NOT NULL
+  AND te2.user_id != 'BANNED_USER_ID';
 ```
 
 Bulk-flag accounts for review:
 
-```
--- Flag all accounts from a suspicious deviceUPDATE usersSET status = 'under_review'WHERE id IN (    SELECT DISTINCT user_id    FROM turnstile_events    WHERE ephemeral_id = 'x:SUSPICIOUS_ID_HERE'      AND user_id IS NOT NULL);
+```sql
+-- Flag all accounts from a suspicious device
+UPDATE users
+SET status = 'under_review'
+WHERE id IN (
+    SELECT DISTINCT user_id
+    FROM turnstile_events
+    WHERE ephemeral_id = 'x:SUSPICIOUS_ID_HERE'
+      AND user_id IS NOT NULL
+);
 ```
 
 ---

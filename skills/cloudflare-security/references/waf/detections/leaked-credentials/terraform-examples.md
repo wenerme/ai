@@ -22,16 +22,23 @@ If you are using the Cloudflare API, refer to [Common API calls](https://develop
 
 Use the `cloudflare_leaked_credential_check` resource to enable leaked credentials detection for a zone. For example:
 
-```
-resource "cloudflare_leaked_credential_check" "zone_lcc_example" {  zone_id = var.cloudflare_zone_id  enabled = true}
+```terraform
+resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
+  zone_id = var.cloudflare_zone_id
+  enabled = true
+}
 ```
 
 ## Configure a custom detection location
 
 Use the `cloudflare_leaked_credential_check_rule` resource to add a custom detection location. For example:
 
-```
-resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {  zone_id = var.cloudflare_zone_id  username = "lookup_json_string(http.request.body.raw, \"user\")"  password = "lookup_json_string(http.request.body.raw, \"secret\")"}
+```terraform
+resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {
+  zone_id = var.cloudflare_zone_id
+  username = "lookup_json_string(http.request.body.raw, \"user\")"
+  password = "lookup_json_string(http.request.body.raw, \"secret\")"
+}
 ```
 
 You only need to provide an expression for the username in custom detection locations.
@@ -42,8 +49,8 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
 
-* [ Terraform (v5) ](#tab-panel-11251)
-* [ Terraform (v4) ](#tab-panel-11252)
+* [ Terraform (v5) ](#tab-panel-11546)
+* [ Terraform (v4) ](#tab-panel-11547)
 
 Required API token permissions
 
@@ -53,14 +60,40 @@ At least one of the following [token permissions](https://developers.cloudflare.
 
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
-```
-resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {  zone_id     = var.cloudflare_zone_id  name        = "Phase entry point ruleset for custom rules in my zone"  description = ""  kind        = "zone"  phase       = "http_request_firewall_custom"
-  rules = [{    ref         = "challenge_leaked_username_password"    description = "Challenge requests with a leaked username and password"    expression  = "(cf.waf.credential_check.username_and_password_leaked)"    action      = "managed_challenge"  }]}
+```tf
+resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Phase entry point ruleset for custom rules in my zone"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_firewall_custom"
+
+
+  rules = [{
+    ref         = "challenge_leaked_username_password"
+    description = "Challenge requests with a leaked username and password"
+    expression  = "(cf.waf.credential_check.username_and_password_leaked)"
+    action      = "managed_challenge"
+  }]
+}
 ```
 
-```
-resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {  zone_id     = var.cloudflare_zone_id  name        = "Phase entry point ruleset for custom rules in my zone"  description = ""  kind        = "zone"  phase       = "http_request_firewall_custom"
-  rules {    ref         = "challenge_leaked_username_password"    description = "Challenge requests with a leaked username and password"    expression  = "(cf.waf.credential_check.username_and_password_leaked)"    action      = "managed_challenge"  }}
+```tf
+resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Phase entry point ruleset for custom rules in my zone"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_firewall_custom"
+
+
+  rules {
+    ref         = "challenge_leaked_username_password"
+    description = "Challenge requests with a leaked username and password"
+    expression  = "(cf.waf.credential_check.username_and_password_leaked)"
+    action      = "managed_challenge"
+  }
+}
 ```
 
 ## More resources

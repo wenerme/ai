@@ -36,7 +36,7 @@ The error message text references `:` as the tag filter separator (for example, 
 
 In the current beta, `GET /accounts/{account_id}/tags` returns `500 Internal Server Error` for resources that do not exist or have never been tagged:
 
-```
+```plaintext
 "resource not found: type={resource_type} id={resource_id}"
 ```
 

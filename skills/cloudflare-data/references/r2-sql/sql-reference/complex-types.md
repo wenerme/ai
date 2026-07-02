@@ -22,39 +22,67 @@ Struct columns contain named fields. Access fields using bracket notation or the
 
 ### Bracket notation
 
-```
-SELECT pricing['price'] AS price,       pricing['discount_percent'] AS discountFROM my_namespace.productsLIMIT 5
+```sql
+SELECT pricing['price'] AS price,
+       pricing['discount_percent'] AS discount
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ### get\_field function
 
-```
-SELECT get_field(pricing, 'price') AS price,       get_field(pricing, 'discount_percent') AS discountFROM my_namespace.productsLIMIT 5
+```sql
+SELECT get_field(pricing, 'price') AS price,
+       get_field(pricing, 'discount_percent') AS discount
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ### Struct fields in WHERE
 
-```
-SELECT customer_id, pricing['price'] AS priceFROM my_namespace.productsWHERE pricing['price'] > 50LIMIT 10
+```sql
+SELECT customer_id, pricing['price'] AS price
+FROM my_namespace.products
+WHERE pricing['price'] > 50
+LIMIT 10
 ```
 
 ### Struct fields in ORDER BY
 
-```
-SELECT customer_id, pricing['price'] AS priceFROM my_namespace.productsWHERE pricing['price'] IS NOT NULLORDER BY pricing['price'] DESCLIMIT 10
+```sql
+SELECT customer_id, pricing['price'] AS price
+FROM my_namespace.products
+WHERE pricing['price'] IS NOT NULL
+ORDER BY pricing['price'] DESC
+LIMIT 10
 ```
 
 ### Struct fields in GROUP BY
 
-```
-SELECT platforms['windows'] AS windows_support,       COUNT(*) AS product_count,       AVG(pricing['price']) AS avg_priceFROM my_namespace.productsWHERE pricing['price'] IS NOT NULLGROUP BY platforms['windows']
+```sql
+SELECT platforms['windows'] AS windows_support,
+       COUNT(*) AS product_count,
+       AVG(pricing['price']) AS avg_price
+FROM my_namespace.products
+WHERE pricing['price'] IS NOT NULL
+GROUP BY platforms['windows']
 ```
 
 ### Creating structs inline
 
-```
--- named_struct creates a struct with named fieldsSELECT named_struct('id', customer_id, 'amount', total_amount) AS infoFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLLIMIT 1
--- struct creates a struct with positional fieldsSELECT struct(customer_id, total_amount, region) AS infoFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLLIMIT 1
+```sql
+-- named_struct creates a struct with named fields
+SELECT named_struct('id', customer_id, 'amount', total_amount) AS info
+FROM my_namespace.sales_data
+WHERE total_amount IS NOT NULL
+LIMIT 1
+
+
+-- struct creates a struct with positional fields
+SELECT struct(customer_id, total_amount, region) AS info
+FROM my_namespace.sales_data
+WHERE total_amount IS NOT NULL
+LIMIT 1
 ```
 
 ---
@@ -65,8 +93,10 @@ Array columns contain ordered lists of values. Array indexing is **1-based**.
 
 ### Index access
 
-```
-SELECT customer_id, tags[1] AS first_tag, tags[2] AS second_tagFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, tags[1] AS first_tag, tags[2] AS second_tag
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ### Create arrays
@@ -75,32 +105,41 @@ SELECT customer_id, tags[1] AS first_tag, tags[2] AS second_tagFROM my_namespace
 
 Creates an array from a list of values.
 
-```
-SELECT make_array(1, 2, 3) AS numsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT make_array(1, 2, 3) AS nums
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### string\_to\_array
 
 Splits a string into an array by a delimiter.
 
-```
-SELECT string_to_array(categories, ',') AS cat_arrayFROM my_namespace.productsWHERE categories IS NOT NULLLIMIT 5
+```sql
+SELECT string_to_array(categories, ',') AS cat_array
+FROM my_namespace.products
+WHERE categories IS NOT NULL
+LIMIT 5
 ```
 
 #### range
 
 Generates an array of integers from start (inclusive) to stop (exclusive).
 
-```
-SELECT range(0, 5) AS numsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT range(0, 5) AS nums
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### generate\_series
 
 Generates an array of integers from start to stop (inclusive).
 
-```
-SELECT generate_series(1, 5) AS numsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT generate_series(1, 5) AS nums
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Inspect arrays
@@ -109,40 +148,50 @@ SELECT generate_series(1, 5) AS numsFROM my_namespace.sales_dataLIMIT 1
 
 Returns the number of elements in an array.
 
-```
-SELECT customer_id, array_length(tags) AS tag_countFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, array_length(tags) AS tag_count
+FROM my_namespace.products
+LIMIT 5
 ```
 
 #### cardinality
 
 Returns the total number of elements in an array. Alias for `array_length`.
 
-```
-SELECT customer_id, cardinality(tags) AS tag_countFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, cardinality(tags) AS tag_count
+FROM my_namespace.products
+LIMIT 5
 ```
 
 #### empty
 
 Returns true if an array has zero elements.
 
-```
-SELECT customer_id, empty(tags) AS has_no_tagsFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, empty(tags) AS has_no_tags
+FROM my_namespace.products
+LIMIT 5
 ```
 
 #### array\_ndims
 
 Returns the number of dimensions of an array.
 
-```
-SELECT array_ndims(make_array(1, 2, 3)) AS ndimsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_ndims(make_array(1, 2, 3)) AS ndims
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_dims
 
 Returns the dimensions of an array.
 
-```
-SELECT array_dims(make_array(1, 2, 3)) AS dimsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_dims(make_array(1, 2, 3)) AS dims
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Search arrays
@@ -151,40 +200,50 @@ SELECT array_dims(make_array(1, 2, 3)) AS dimsFROM my_namespace.sales_dataLIMIT 
 
 Returns true if an array contains a value.
 
-```
-SELECT customer_id, array_has(tags, 'premium') AS is_premiumFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, array_has(tags, 'premium') AS is_premium
+FROM my_namespace.products
+LIMIT 5
 ```
 
 #### array\_has\_all
 
 Returns true if the first array contains all elements of the second.
 
-```
-SELECT array_has_all(make_array(1, 2, 3, 4), make_array(2, 3)) AS has_allFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_has_all(make_array(1, 2, 3, 4), make_array(2, 3)) AS has_all
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_has\_any
 
 Returns true if the first array contains any element of the second.
 
-```
-SELECT array_has_any(make_array(1, 2, 3), make_array(3, 4, 5)) AS has_anyFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_has_any(make_array(1, 2, 3), make_array(3, 4, 5)) AS has_any
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_position
 
 Returns the position of the first occurrence of a value (1-indexed). Returns 0 if not found.
 
-```
-SELECT array_position(make_array('a', 'b', 'c', 'b'), 'b') AS posFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_position(make_array('a', 'b', 'c', 'b'), 'b') AS pos
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_positions
 
 Returns all positions of a value as an array.
 
-```
-SELECT array_positions(make_array(1, 2, 1, 3, 1), 1) AS positionsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_positions(make_array(1, 2, 1, 3, 1), 1) AS positions
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Transform arrays
@@ -193,40 +252,50 @@ SELECT array_positions(make_array(1, 2, 1, 3, 1), 1) AS positionsFROM my_namespa
 
 Sorts array elements.
 
-```
-SELECT array_sort(make_array(3, 1, 2)) AS sortedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_sort(make_array(3, 1, 2)) AS sorted
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_reverse
 
 Reverses the order of array elements.
 
-```
-SELECT array_reverse(make_array(1, 2, 3)) AS reversedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_reverse(make_array(1, 2, 3)) AS reversed
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_distinct
 
 Removes duplicate elements from an array.
 
-```
-SELECT array_distinct(make_array(1, 2, 2, 3, 3, 3)) AS unique_valsFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_distinct(make_array(1, 2, 2, 3, 3, 3)) AS unique_vals
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### flatten
 
 Flattens a nested array by one level.
 
-```
-SELECT flatten(make_array(make_array(1, 2), make_array(3, 4))) AS flatFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT flatten(make_array(make_array(1, 2), make_array(3, 4))) AS flat
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_slice
 
 Returns a slice of an array from a start index to an end index (both inclusive, 1-indexed).
 
-```
-SELECT array_slice(make_array(10, 20, 30, 40, 50), 2, 4) AS slicedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_slice(make_array(10, 20, 30, 40, 50), 2, 4) AS sliced
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Modify arrays
@@ -235,104 +304,130 @@ SELECT array_slice(make_array(10, 20, 30, 40, 50), 2, 4) AS slicedFROM my_namesp
 
 Appends a value to the end of an array.
 
-```
-SELECT array_append(make_array(1, 2, 3), 4) AS appendedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_append(make_array(1, 2, 3), 4) AS appended
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_prepend
 
 Prepends a value to the beginning of an array.
 
-```
-SELECT array_prepend(0, make_array(1, 2, 3)) AS prependedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_prepend(0, make_array(1, 2, 3)) AS prepended
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_concat
 
 Concatenates two or more arrays.
 
-```
-SELECT array_concat(make_array(1, 2), make_array(3, 4)) AS mergedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_concat(make_array(1, 2), make_array(3, 4)) AS merged
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_remove
 
 Removes the first occurrence of a value from an array.
 
-```
-SELECT array_remove(make_array(1, 2, 3, 2), 2) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_remove(make_array(1, 2, 3, 2), 2) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_remove\_all
 
 Removes all occurrences of a value from an array.
 
-```
-SELECT array_remove_all(make_array(1, 2, 3, 2, 2), 2) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_remove_all(make_array(1, 2, 3, 2, 2), 2) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_remove\_n
 
 Removes the first _n_ occurrences of a value from an array.
 
-```
-SELECT array_remove_n(make_array(1, 2, 2, 2, 3), 2, 2) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_remove_n(make_array(1, 2, 2, 2, 3), 2, 2) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_replace
 
 Replaces the first occurrence of a value in an array.
 
-```
-SELECT array_replace(make_array(1, 2, 3), 2, 99) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_replace(make_array(1, 2, 3), 2, 99) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_replace\_n
 
 Replaces the first _n_ occurrences of a value in an array.
 
-```
-SELECT array_replace_n(make_array(1, 2, 2, 2, 3), 2, 99, 2) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_replace_n(make_array(1, 2, 2, 2, 3), 2, 99, 2) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_replace\_all
 
 Replaces all occurrences of a value in an array.
 
-```
-SELECT array_replace_all(make_array(1, 2, 3, 2), 2, 99) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_replace_all(make_array(1, 2, 3, 2), 2, 99) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_pop\_back
 
 Removes the last element from an array.
 
-```
-SELECT array_pop_back(make_array(1, 2, 3)) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_pop_back(make_array(1, 2, 3)) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_pop\_front
 
 Removes the first element from an array.
 
-```
-SELECT array_pop_front(make_array(1, 2, 3)) AS resultFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_pop_front(make_array(1, 2, 3)) AS result
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_repeat
 
 Repeats a value a given number of times as an array.
 
-```
-SELECT array_repeat(region, 3) AS repeatedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_repeat(region, 3) AS repeated
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_resize
 
 Resizes an array to a given length, filling with a default value.
 
-```
-SELECT array_resize(make_array(1, 2), 5, 0) AS resizedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_resize(make_array(1, 2), 5, 0) AS resized
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Set operations on arrays
@@ -341,24 +436,30 @@ SELECT array_resize(make_array(1, 2), 5, 0) AS resizedFROM my_namespace.sales_da
 
 Returns elements common to both arrays.
 
-```
-SELECT array_intersect(make_array(1, 2, 3), make_array(2, 3, 4)) AS commonFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_intersect(make_array(1, 2, 3), make_array(2, 3, 4)) AS common
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_union
 
 Returns all unique elements from both arrays.
 
-```
-SELECT array_union(make_array(1, 2, 3), make_array(3, 4, 5)) AS mergedFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_union(make_array(1, 2, 3), make_array(3, 4, 5)) AS merged
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_except
 
 Returns elements in the first array that are not in the second.
 
-```
-SELECT array_except(make_array(1, 2, 3, 4), make_array(2, 4)) AS diffFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_except(make_array(1, 2, 3, 4), make_array(2, 4)) AS diff
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Aggregate array values
@@ -367,32 +468,40 @@ SELECT array_except(make_array(1, 2, 3, 4), make_array(2, 4)) AS diffFROM my_nam
 
 Returns the maximum value in an array.
 
-```
-SELECT customer_id, array_max(scores) AS max_scoreFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, array_max(scores) AS max_score
+FROM my_namespace.products
+LIMIT 5
 ```
 
 #### array\_min
 
 Returns the minimum value in an array.
 
-```
-SELECT customer_id, array_min(scores) AS min_scoreFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, array_min(scores) AS min_score
+FROM my_namespace.products
+LIMIT 5
 ```
 
 #### array\_any\_value
 
 Returns the first non-NULL value in an array.
 
-```
-SELECT array_any_value(make_array(NULL, 42, NULL)) AS first_valFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_any_value(make_array(NULL, 42, NULL)) AS first_val
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 #### array\_element
 
 Returns the element at a given index (1-indexed). Equivalent to bracket-notation access (`arr[idx]`).
 
-```
-SELECT array_element(make_array(10, 20, 30), 2) AS second_valFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT array_element(make_array(10, 20, 30), 2) AS second_val
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ### Convert arrays
@@ -401,8 +510,10 @@ SELECT array_element(make_array(10, 20, 30), 2) AS second_valFROM my_namespace.s
 
 Joins array elements into a string with a separator.
 
-```
-SELECT customer_id, array_to_string(tags, ', ') AS tag_listFROM my_namespace.productsLIMIT 5
+```sql
+SELECT customer_id, array_to_string(tags, ', ') AS tag_list
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ---
@@ -415,30 +526,39 @@ Map columns store key-value pairs. Use `map_keys`, `map_values`, and `map_extrac
 
 Returns all keys from a map as an array.
 
-```
-SELECT map_keys(metadata) AS keysFROM my_namespace.productsLIMIT 5
+```sql
+SELECT map_keys(metadata) AS keys
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ### map\_values
 
 Returns all values from a map as an array.
 
-```
-SELECT map_values(metadata) AS valsFROM my_namespace.productsLIMIT 5
+```sql
+SELECT map_values(metadata) AS vals
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ### map\_extract
 
 Returns the value for a specific key.
 
-```
-SELECT map_extract(metadata, 'source') AS source,       map_extract(metadata, 'store_name') AS storeFROM my_namespace.productsLIMIT 5
+```sql
+SELECT map_extract(metadata, 'source') AS source,
+       map_extract(metadata, 'store_name') AS store
+FROM my_namespace.products
+LIMIT 5
 ```
 
 ### Creating maps inline
 
-```
-SELECT map(make_array('a', 'b'), make_array(1, 2)) AS mFROM my_namespace.sales_dataLIMIT 1
+```sql
+SELECT map(make_array('a', 'b'), make_array(1, 2)) AS m
+FROM my_namespace.sales_data
+LIMIT 1
 ```
 
 ---

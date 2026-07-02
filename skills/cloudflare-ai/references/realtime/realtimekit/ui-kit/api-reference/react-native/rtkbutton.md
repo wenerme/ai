@@ -31,16 +31,33 @@ A general-purpose button component with multiple variants and sizes.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkButton } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkButton onClick={() => console.log("pressed")}>Press Me</RtkButton>;}
+
+
+function MyComponent() {
+  return <RtkButton onClick={() => console.log("pressed")}>Press Me</RtkButton>;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkButton } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkButton      onClick={() => console.log("pressed")}      variant="primary"      size="md"      kind="wide"    >      Join Meeting    </RtkButton>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkButton
+      onClick={() => console.log("pressed")}
+      variant="primary"
+      size="md"
+      kind="wide"
+    >
+      Join Meeting
+    </RtkButton>
+  );
+}
 ```
 
 ```json

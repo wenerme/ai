@@ -22,8 +22,8 @@ There is **no expected downtime** when setting up or updating your address maps.
 
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
-* [ Dashboard ](#tab-panel-7021)
-* [ API ](#tab-panel-7022)
+* [ Dashboard ](#tab-panel-7269)
+* [ API ](#tab-panel-7270)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -42,10 +42,27 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Address Maps Write`
 
-Create Address Map
+**Create Address Map**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "description": "Example address map",    "enabled": true,    "ips": [        "203.0.113.1",        "203.0.113.2"    ],    "memberships": [        {            "identifier": "<ZONE_ID>",            "kind": "zone"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "description": "Example address map",
+    "enabled": true,
+    "ips": [
+        "203.0.113.1",
+        "203.0.113.2"
+    ],
+    "memberships": [
+        {
+            "identifier": "<ZONE_ID>",
+            "kind": "zone"
+        }
+    ]
+  }'
 ```
 
 Note
@@ -54,8 +71,8 @@ A zone membership will take priority over an account membership.
 
 ## Manage address maps
 
-* [ Dashboard ](#tab-panel-7019)
-* [ API ](#tab-panel-7020)
+* [ Dashboard ](#tab-panel-7267)
+* [ API ](#tab-panel-7268)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -104,10 +121,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Address Maps Write`
 
-Create Address Map
+**Create Address Map**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "description": "default_sni",    "default_sni": "sni.example.com",    "enabled": false,    "ips": [        "192.0.0.1"    ],    "memberships": []  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "description": "default_sni",
+    "default_sni": "sni.example.com",
+    "enabled": false,
+    "ips": [
+        "192.0.0.1"
+    ],
+    "memberships": []
+  }'
 ```
 
 ```json

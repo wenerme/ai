@@ -16,10 +16,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Incoming HTTP requests to a Worker are passed to the `fetch()` handler as a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object. To respond to the request with a response, return a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response('Hello World!');
+  },
+};
 ```
 
 Note

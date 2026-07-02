@@ -18,9 +18,9 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 The node:zlib module provides compression functionality implemented using Gzip, Deflate/Inflate, and Brotli. To access it:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import zlib from "node:zlib";
 ```
 

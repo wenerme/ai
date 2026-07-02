@@ -16,8 +16,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 A JSON response for the [Filters API](https://developers.cloudflare.com/api/resources/filters/methods/list/) has this structure:
 
-```
-{  "id": "6f58318e7fa2477a23112e8118c66f61",  "expression": "http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",  "paused": true,  "description": "WordPress login paths",  "ref": ""}
+```json
+{
+  "id": "6f58318e7fa2477a23112e8118c66f61",
+  "expression": "http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",
+  "paused": true,
+  "description": "WordPress login paths",
+  "ref": ""
+}
 ```
 
 The following table summarizes the object properties:

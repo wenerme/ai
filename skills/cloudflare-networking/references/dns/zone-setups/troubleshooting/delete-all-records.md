@@ -28,10 +28,16 @@ Warning
 
 This script uses [jq ↗](https://jqlang.github.io/jq/) to format `JSON` outputs for readability. Refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/) for details.
 
-Terminal window
-
-```
-zoneid=<ZONE_ID>bearer=<API_TOKEN>curl --silent "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records?per_page=50000" \--header "Authorization: Bearer $bearer" \| jq --raw-output '.result[].id' | while read iddo  curl --silent --request DELETE "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records/$id" \--header "Authorization: Bearer $bearer"done
+```bash
+zoneid=<ZONE_ID>
+bearer=<API_TOKEN>
+curl --silent "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records?per_page=50000" \
+--header "Authorization: Bearer $bearer" \
+| jq --raw-output '.result[].id' | while read id
+do
+  curl --silent --request DELETE "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records/$id" \
+--header "Authorization: Bearer $bearer"
+done
 ```
 
 ```json

@@ -27,7 +27,7 @@ The PingOne cloud platform from PingIdentity provides SSO identity management. C
 7. Copy the **Client ID**, **Client Secret**, and **Environment ID** to a safe place. These IDs will be used in a later step to add PingOne to Cloudflare One.
 8. In the **Configuration** tab, select the pencil icon.
 9. In the **Redirect URIs** field, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -48,8 +48,16 @@ You can now [test your connection](https://developers.cloudflare.com/cloudflare-
 
 ## Example API configuration
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "ping_env_id": "<your ping environment id>"  },  "type": "ping",  "name": "my example idp"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>",
+    "ping_env_id": "<your ping environment id>"
+  },
+  "type": "ping",
+  "name": "my example idp"
+}
 ```
 
 ```json

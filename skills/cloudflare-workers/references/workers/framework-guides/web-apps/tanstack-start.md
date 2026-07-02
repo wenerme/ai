@@ -112,35 +112,82 @@ bun add @cloudflare/vite-plugin wrangler -D
 ```
 2. Add the Cloudflare plugin to your Vite configuration:
 
-  * [  JavaScript ](#tab-panel-11898)
-  * [  TypeScript ](#tab-panel-11899)
-vite.config.js
+  * [  JavaScript ](#tab-panel-12153)
+  * [  TypeScript ](#tab-panel-12154)
+
+**vite.config.js**
+```js
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import react from "@vitejs/plugin-react";
+export default defineConfig({
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tanstackStart(),
+    react(),
+  ],
+});
 ```
-import { defineConfig } from "vite";import { tanstackStart } from "@tanstack/react-start/plugin/vite";import { cloudflare } from "@cloudflare/vite-plugin";import react from "@vitejs/plugin-react";
-export default defineConfig({  plugins: [    cloudflare({ viteEnvironment: { name: "ssr" } }),    tanstackStart(),    react(),  ],});
-```
-vite.config.ts
-```
-import { defineConfig } from "vite";import { tanstackStart } from "@tanstack/react-start/plugin/vite";import { cloudflare } from "@cloudflare/vite-plugin";import react from "@vitejs/plugin-react";
-export default defineConfig({  plugins: [    cloudflare({ viteEnvironment: { name: "ssr" } }),    tanstackStart(),    react(),  ],});
+
+**vite.config.ts**
+```ts
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import react from "@vitejs/plugin-react";
+export default defineConfig({
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tanstackStart(),
+    react(),
+  ],
+});
 ```
 3. Add a `wrangler.jsonc` configuration file:
 
-  * [  wrangler.jsonc ](#tab-panel-11890)
-  * [  wrangler.toml ](#tab-panel-11891)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12145)
+  * [  wrangler.toml ](#tab-panel-12146)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<YOUR_PROJECT_NAME>",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "observability": {
+    "enabled": true,
+  },
+}
 ```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<YOUR_PROJECT_NAME>",  // Set this to today's date  "compatibility_date": "2026-06-25",  "compatibility_flags": ["nodejs_compat"],  "main": "@tanstack/react-start/server-entry",  "observability": {    "enabled": true,  },}
-```
-TOML
-```
-"$schema" = "node_modules/wrangler/config-schema.json"name = "<YOUR_PROJECT_NAME>"# Set this to today's datecompatibility_date = "2026-06-25"compatibility_flags = [ "nodejs_compat" ]main = "@tanstack/react-start/server-entry"
-[observability]enabled = true
+
+**TOML**
+```toml
+"$schema" = "node_modules/wrangler/config-schema.json"
+name = "<YOUR_PROJECT_NAME>"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+main = "@tanstack/react-start/server-entry"
+[observability]
+enabled = true
 ```
 4. Update the `scripts` section in `package.json`:
-package.json
-```
-{  "scripts": {    "dev": "vite dev",    "build": "vite build",    "preview": "vite preview",    "deploy": "npm run build && wrangler deploy",    "cf-typegen": "wrangler types"  }}
+
+**package.json**
+```json
+{
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
+  }
+}
 ```
 
 ## Deploy
@@ -185,34 +232,64 @@ TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypo
 
 1. Create a custom server entrypoint file:
 
-  * [  JavaScript ](#tab-panel-11902)
-  * [  TypeScript ](#tab-panel-11903)
-src/server.js
-```
+  * [  JavaScript ](#tab-panel-12157)
+  * [  TypeScript ](#tab-panel-12158)
+
+**src/server.js**
+```js
 import handler from "@tanstack/react-start/server-entry";
-// Export Durable Objects as named exportsexport { MyDurableObject } from "./my-durable-object";
-export default {  fetch: handler.fetch,
-  // Handle Queue messages  async queue(batch, env, ctx) {    for (const message of batch.messages) {      console.log("Processing message:", message.body);      message.ack();    }  },
-  // Handle Cron Triggers  async scheduled(event, env, ctx) {    console.log("Cron triggered:", event.cron);  },};
+// Export Durable Objects as named exports
+export { MyDurableObject } from "./my-durable-object";
+export default {
+  fetch: handler.fetch,
+  // Handle Queue messages
+  async queue(batch, env, ctx) {
+    for (const message of batch.messages) {
+      console.log("Processing message:", message.body);
+      message.ack();
+    }
+  },
+  // Handle Cron Triggers
+  async scheduled(event, env, ctx) {
+    console.log("Cron triggered:", event.cron);
+  },
+};
 ```
-src/server.ts
-```
+
+**src/server.ts**
+```ts
 import handler from "@tanstack/react-start/server-entry";
-// Export Durable Objects as named exportsexport { MyDurableObject } from "./my-durable-object";
-export default {  fetch: handler.fetch,
-  // Handle Queue messages  async queue(batch, env, ctx) {    for (const message of batch.messages) {      console.log("Processing message:", message.body);      message.ack();    }  },
-  // Handle Cron Triggers  async scheduled(event, env, ctx) {    console.log("Cron triggered:", event.cron);  },};
+// Export Durable Objects as named exports
+export { MyDurableObject } from "./my-durable-object";
+export default {
+  fetch: handler.fetch,
+  // Handle Queue messages
+  async queue(batch, env, ctx) {
+    for (const message of batch.messages) {
+      console.log("Processing message:", message.body);
+      message.ack();
+    }
+  },
+  // Handle Cron Triggers
+  async scheduled(event, env, ctx) {
+    console.log("Cron triggered:", event.cron);
+  },
+};
 ```
 2. Update your Wrangler configuration to point to your custom entrypoint:
 
-  * [  wrangler.jsonc ](#tab-panel-11888)
-  * [  wrangler.toml ](#tab-panel-11889)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12143)
+  * [  wrangler.toml ](#tab-panel-12144)
+
+**JSONC**
+```jsonc
+{
+  "main": "src/server.ts",
+}
 ```
-{  "main": "src/server.ts",}
-```
-TOML
-```
+
+**TOML**
+```toml
 main = "src/server.ts"
 ```
 
@@ -220,9 +297,7 @@ main = "src/server.ts"
 
 Test your scheduled handler locally using the `/cdn-cgi/handler/scheduled` endpoint:
 
-Terminal window
-
-```
+```sh
 curl "http://localhost:3000/cdn-cgi/handler/scheduled?cron=*+*+*+*+*"
 ```
 
@@ -230,80 +305,152 @@ Example: Using Workflows
 
 Export a Workflow class from your custom entrypoint to run durable, multi-step tasks:
 
-* [  JavaScript ](#tab-panel-11904)
-* [  TypeScript ](#tab-panel-11905)
+* [  JavaScript ](#tab-panel-12159)
+* [  TypeScript ](#tab-panel-12160)
 
-app/server.js
+**app/server.js**
 
-```
-import {  WorkflowEntrypoint,  WorkflowStep,  WorkflowEvent,} from "cloudflare:workers";
-export class MyWorkflow extends WorkflowEntrypoint {  async run(event, step) {    const result = await step.do("process data", async () => {      return `Processed: ${event.payload.input}`;    });
+```js
+import {
+  WorkflowEntrypoint,
+  WorkflowStep,
+  WorkflowEvent,
+} from "cloudflare:workers";
+
+
+export class MyWorkflow extends WorkflowEntrypoint {
+  async run(event, step) {
+    const result = await step.do("process data", async () => {
+      return `Processed: ${event.payload.input}`;
+    });
+
+
     await step.sleep("wait", "10 seconds");
-    await step.do("finalize", async () => {      console.log("Workflow complete:", result);    });  }}
+
+
+    await step.do("finalize", async () => {
+      console.log("Workflow complete:", result);
+    });
+  }
+}
 ```
 
-app/server.ts
+**app/server.ts**
 
-```
-import {  WorkflowEntrypoint,  WorkflowStep,  WorkflowEvent,} from "cloudflare:workers";
-export class MyWorkflow extends WorkflowEntrypoint<Env> {  async run(event: WorkflowEvent<{ input: string }>, step: WorkflowStep) {    const result = await step.do("process data", async () => {      return `Processed: ${event.payload.input}`;    });
+```ts
+import {
+  WorkflowEntrypoint,
+  WorkflowStep,
+  WorkflowEvent,
+} from "cloudflare:workers";
+
+
+export class MyWorkflow extends WorkflowEntrypoint<Env> {
+  async run(event: WorkflowEvent<{ input: string }>, step: WorkflowStep) {
+    const result = await step.do("process data", async () => {
+      return `Processed: ${event.payload.input}`;
+    });
+
+
     await step.sleep("wait", "10 seconds");
-    await step.do("finalize", async () => {      console.log("Workflow complete:", result);    });  }}
+
+
+    await step.do("finalize", async () => {
+      console.log("Workflow complete:", result);
+    });
+  }
+}
 ```
 
 Add the Workflow configuration to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11892)
-* [  wrangler.toml ](#tab-panel-11893)
+* [  wrangler.jsonc ](#tab-panel-12147)
+* [  wrangler.toml ](#tab-panel-12148)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "workflows": [
+    {
+      "name": "my-workflow",
+      "binding": "MY_WORKFLOW",
+      "class_name": "MyWorkflow",
+    },
+  ],
+}
 ```
-{  "workflows": [    {      "name": "my-workflow",      "binding": "MY_WORKFLOW",      "class_name": "MyWorkflow",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[workflows]]name = "my-workflow"binding = "MY_WORKFLOW"class_name = "MyWorkflow"
+```toml
+[[workflows]]
+name = "my-workflow"
+binding = "MY_WORKFLOW"
+class_name = "MyWorkflow"
 ```
 
 Example: Using Service Bindings
 
 Add a service binding to call another Worker's RPC methods from your TanStack Start application:
 
-* [  wrangler.jsonc ](#tab-panel-11894)
-* [  wrangler.toml ](#tab-panel-11895)
+* [  wrangler.jsonc ](#tab-panel-12149)
+* [  wrangler.toml ](#tab-panel-12150)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "services": [
+    {
+      "binding": "AUTH_SERVICE",
+      "service": "auth-worker",
+    },
+  ],
+}
 ```
-{  "services": [    {      "binding": "AUTH_SERVICE",      "service": "auth-worker",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[services]]binding = "AUTH_SERVICE"service = "auth-worker"
+```toml
+[[services]]
+binding = "AUTH_SERVICE"
+service = "auth-worker"
 ```
 
 Call the bound Worker's methods from a server function:
 
-* [  JavaScript ](#tab-panel-11900)
-* [  TypeScript ](#tab-panel-11901)
+* [  JavaScript ](#tab-panel-12155)
+* [  TypeScript ](#tab-panel-12156)
 
-app/routes/index.jsx
+**app/routes/index.jsx**
 
+```js
+import { createServerFn } from "@tanstack/react-start";
+import { env } from "cloudflare:workers";
+
+
+const verifyUser = createServerFn()
+  .inputValidator((token) => token)
+  .handler(async ({ data: token }) => {
+    const result = await env.AUTH_SERVICE.verify(token);
+    return result;
+  });
 ```
-import { createServerFn } from "@tanstack/react-start";import { env } from "cloudflare:workers";
-const verifyUser = createServerFn()  .inputValidator((token) => token)  .handler(async ({ data: token }) => {    const result = await env.AUTH_SERVICE.verify(token);    return result;  });
-```
 
-app/routes/index.tsx
+**app/routes/index.tsx**
 
-```
-import { createServerFn } from "@tanstack/react-start";import { env } from "cloudflare:workers";
-const verifyUser = createServerFn()  .inputValidator((token: string) => token)  .handler(async ({ data: token }) => {    const result = await env.AUTH_SERVICE.verify(token);    return result;  });
+```ts
+import { createServerFn } from "@tanstack/react-start";
+import { env } from "cloudflare:workers";
+
+
+const verifyUser = createServerFn()
+  .inputValidator((token: string) => token)
+  .handler(async ({ data: token }) => {
+    const result = await env.AUTH_SERVICE.verify(token);
+    return result;
+  });
 ```
 
 ## Bindings
@@ -312,25 +459,57 @@ Your TanStack Start application can be fully integrated with the Cloudflare Deve
 
 Access bindings by [importing the env object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) in your server-side code:
 
-* [  JavaScript ](#tab-panel-11906)
-* [  TypeScript ](#tab-panel-11907)
+* [  JavaScript ](#tab-panel-12161)
+* [  TypeScript ](#tab-panel-12162)
 
-app/routes/index.jsx
+**app/routes/index.jsx**
 
+```js
+import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import { env } from "cloudflare:workers";
+
+
+export const Route = createFileRoute("/")({
+  loader: () => getData(),
+  component: RouteComponent,
+});
+
+
+const getData = createServerFn().handler(() => {
+  // Access bindings via env
+  // For example: env.MY_KV, env.MY_BUCKET, env.AI, etc.
+});
+
+
+function RouteComponent() {
+  // ...
+}
 ```
-import { createFileRoute } from "@tanstack/react-router";import { createServerFn } from "@tanstack/react-start";import { env } from "cloudflare:workers";
-export const Route = createFileRoute("/")({  loader: () => getData(),  component: RouteComponent,});
-const getData = createServerFn().handler(() => {  // Access bindings via env  // For example: env.MY_KV, env.MY_BUCKET, env.AI, etc.});
-function RouteComponent() {  // ...}
-```
 
-app/routes/index.tsx
+**app/routes/index.tsx**
 
-```
-import { createFileRoute } from "@tanstack/react-router";import { createServerFn } from "@tanstack/react-start";import { env } from "cloudflare:workers";
-export const Route = createFileRoute("/")({  loader: () => getData(),  component: RouteComponent,});
-const getData = createServerFn().handler(() => {  // Access bindings via env  // For example: env.MY_KV, env.MY_BUCKET, env.AI, etc.});
-function RouteComponent() {  // ...}
+```ts
+import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import { env } from "cloudflare:workers";
+
+
+export const Route = createFileRoute("/")({
+  loader: () => getData(),
+  component: RouteComponent,
+});
+
+
+const getData = createServerFn().handler(() => {
+  // Access bindings via env
+  // For example: env.MY_KV, env.MY_BUCKET, env.AI, etc.
+});
+
+
+function RouteComponent() {
+  // ...
+}
 ```
 
 Generate TypeScript types for your bindings based on your Wrangler configuration:
@@ -357,61 +536,130 @@ With bindings, your application can be fully integrated with the Cloudflare Deve
 
 Add an [R2 bucket binding](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#4-bind-your-bucket-to-a-worker) to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11896)
-* [  wrangler.toml ](#tab-panel-11897)
+* [  wrangler.jsonc ](#tab-panel-12151)
+* [  wrangler.toml ](#tab-panel-12152)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "r2_buckets": [
+    {
+      "binding": "MY_BUCKET",
+      "bucket_name": "<YOUR_BUCKET_NAME>",
+    },
+  ],
+}
 ```
-{  "r2_buckets": [    {      "binding": "MY_BUCKET",      "bucket_name": "<YOUR_BUCKET_NAME>",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[r2_buckets]]binding = "MY_BUCKET"bucket_name = "<YOUR_BUCKET_NAME>"
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "<YOUR_BUCKET_NAME>"
 ```
 
 Access the bucket in a server function:
 
-* [  JavaScript ](#tab-panel-11908)
-* [  TypeScript ](#tab-panel-11909)
+* [  JavaScript ](#tab-panel-12163)
+* [  TypeScript ](#tab-panel-12164)
 
-app/routes/index.jsx
+**app/routes/index.jsx**
 
+```js
+import { createServerFn } from "@tanstack/react-start";
+import { env } from "cloudflare:workers";
+
+
+const uploadFile = createServerFn({ method: "POST" })
+  .validator((data) => data)
+  .handler(async ({ data }) => {
+    await env.MY_BUCKET.put(data.key, data.content);
+    return { success: true };
+  });
+
+
+const getFile = createServerFn()
+  .validator((key) => key)
+  .handler(async ({ data: key }) => {
+    const object = await env.MY_BUCKET.get(key);
+    return object ? await object.text() : null;
+  });
 ```
-import { createServerFn } from "@tanstack/react-start";import { env } from "cloudflare:workers";
-const uploadFile = createServerFn({ method: "POST" })  .validator((data) => data)  .handler(async ({ data }) => {    await env.MY_BUCKET.put(data.key, data.content);    return { success: true };  });
-const getFile = createServerFn()  .validator((key) => key)  .handler(async ({ data: key }) => {    const object = await env.MY_BUCKET.get(key);    return object ? await object.text() : null;  });
-```
 
-app/routes/index.tsx
+**app/routes/index.tsx**
 
-```
-import { createServerFn } from "@tanstack/react-start";import { env } from "cloudflare:workers";
-const uploadFile = createServerFn({ method: "POST" })  .validator((data: { key: string; content: string }) => data)  .handler(async ({ data }) => {    await env.MY_BUCKET.put(data.key, data.content);    return { success: true };  });
-const getFile = createServerFn()  .validator((key: string) => key)  .handler(async ({ data: key }) => {    const object = await env.MY_BUCKET.get(key);    return object ? await object.text() : null;  });
+```ts
+import { createServerFn } from "@tanstack/react-start";
+import { env } from "cloudflare:workers";
+
+
+const uploadFile = createServerFn({ method: "POST" })
+  .validator((data: { key: string; content: string }) => data)
+  .handler(async ({ data }) => {
+    await env.MY_BUCKET.put(data.key, data.content);
+    return { success: true };
+  });
+
+
+const getFile = createServerFn()
+  .validator((key: string) => key)
+  .handler(async ({ data: key }) => {
+    const object = await env.MY_BUCKET.get(key);
+    return object ? await object.text() : null;
+  });
 ```
 
 ## Static prerendering
 
 Prerender your application to static HTML at build time and serve as [static assets](https://developers.cloudflare.com/workers/static-assets/).
 
-* [  JavaScript ](#tab-panel-11910)
-* [  TypeScript ](#tab-panel-11911)
+* [  JavaScript ](#tab-panel-12165)
+* [  TypeScript ](#tab-panel-12166)
 
-vite.config.js
+**vite.config.js**
 
+```js
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import react from "@vitejs/plugin-react";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+      },
+    }),
+    react(),
+  ],
+});
 ```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";import { tanstackStart } from "@tanstack/react-start/plugin/vite";import react from "@vitejs/plugin-react";
-export default defineConfig({  plugins: [    cloudflare({ viteEnvironment: { name: "ssr" } }),    tanstackStart({      prerender: {        enabled: true,      },    }),    react(),  ],});
-```
 
-vite.config.ts
+**vite.config.ts**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";import { tanstackStart } from "@tanstack/react-start/plugin/vite";import react from "@vitejs/plugin-react";
-export default defineConfig({  plugins: [    cloudflare({ viteEnvironment: { name: "ssr" } }),    tanstackStart({      prerender: {        enabled: true,      },    }),    react(),  ],});
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import react from "@vitejs/plugin-react";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+      },
+    }),
+    react(),
+  ],
+});
 ```
 
 For more options, refer to [TanStack Start static prerendering ↗](https://tanstack.com/start/latest/docs/framework/react/guide/static-prerendering).

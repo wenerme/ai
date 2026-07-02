@@ -31,18 +31,32 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-7262)
-* [ API ](#tab-panel-7263)
+* [ Dashboard ](#tab-panel-7512)
+* [ API ](#tab-panel-7513)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |
 | Upload File Types   | in       | _Microsoft Office Word Document (docx)_ | And   | Block  |
 | Download File Types | in       | _PDF (pdf)_                             |       |        |
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block file types",    "description": "Block the upload or download of files based on their type",    "enabled": true,    "action": "block",    "filters": [        "http"    ],    "traffic": "any(http.upload.file.types[*] in {\"docx\"}) and any(http.download.file.types[*] in {\"pdf\"})",    "identity": "",    "device_posture": ""  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Block file types",
+    "description": "Block the upload or download of files based on their type",
+    "enabled": true,
+    "action": "block",
+    "filters": [
+        "http"
+    ],
+    "traffic": "any(http.upload.file.types[*] in {\"docx\"}) and any(http.download.file.types[*] in {\"pdf\"})",
+    "identity": "",
+    "device_posture": ""
+  }'
 ```
 
 For more information on what file formats DLP can scan, refer to [Supported file types](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types).

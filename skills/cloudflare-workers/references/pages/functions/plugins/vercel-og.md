@@ -40,12 +40,36 @@ bun add @cloudflare/pages-plugin-vercel-og
 
 ## Use
 
-TypeScript
+**TypeScript**
 
-```
-import React from "react";import vercelOGPagesPlugin from "@cloudflare/pages-plugin-vercel-og";
-interface Props {  ogTitle: string;}
-export const onRequest = vercelOGPagesPlugin<Props>({  imagePathSuffix: "/social-image.png",  component: ({ ogTitle, pathname }) => {    return <div style={{ display: "flex" }}>{ogTitle}</div>;  },  extractors: {    on: {      'meta[property="og:title"]': (props) => ({        element(element) {          props.ogTitle = element.getAttribute("content");        },      }),    },  },  autoInject: {    openGraph: true,  },});
+```typescript
+import React from "react";
+import vercelOGPagesPlugin from "@cloudflare/pages-plugin-vercel-og";
+
+
+interface Props {
+  ogTitle: string;
+}
+
+
+export const onRequest = vercelOGPagesPlugin<Props>({
+  imagePathSuffix: "/social-image.png",
+  component: ({ ogTitle, pathname }) => {
+    return <div style={{ display: "flex" }}>{ogTitle}</div>;
+  },
+  extractors: {
+    on: {
+      'meta[property="og:title"]': (props) => ({
+        element(element) {
+          props.ogTitle = element.getAttribute("content");
+        },
+      }),
+    },
+  },
+  autoInject: {
+    openGraph: true,
+  },
+});
 ```
 
 The Plugin takes an object with six properties:
@@ -63,11 +87,22 @@ Use this Plugin's API to generate arbitrary images, not just as middleware.
 
 For example, the below code will generate an image saying "Hello, world!" which is available at `/greet`.
 
-TypeScript
+**TypeScript**
 
-```
-import React from "react";import { ImageResponse } from "@cloudflare/pages-plugin-vercel-og/api";
-export const onRequest: PagesFunction = async () => {  return new ImageResponse(    <div style={{ display: "flex" }}>Hello, world!</div>,    {      width: 1200,      height: 630,    }  );};
+```typescript
+import React from "react";
+import { ImageResponse } from "@cloudflare/pages-plugin-vercel-og/api";
+
+
+export const onRequest: PagesFunction = async () => {
+  return new ImageResponse(
+    <div style={{ display: "flex" }}>Hello, world!</div>,
+    {
+      width: 1200,
+      height: 630,
+    }
+  );
+};
 ```
 
 This is the same API that the underlying [@vercel/og library ↗](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation/og-image-api) offers.

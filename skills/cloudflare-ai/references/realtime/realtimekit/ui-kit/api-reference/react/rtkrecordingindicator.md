@@ -27,16 +27,29 @@ A component which indicates the recording status of a meeting. It will not rende
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkRecordingIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkRecordingIndicator />;}
+
+
+function MyComponent() {
+  return <RtkRecordingIndicator />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkRecordingIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkRecordingIndicator      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkRecordingIndicator
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

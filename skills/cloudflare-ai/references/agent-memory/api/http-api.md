@@ -22,7 +22,7 @@ All requests require an [API token](https://developers.cloudflare.com/fundamenta
 
 Include your API token in the `Authorization` header:
 
-```
+```txt
 Authorization: Bearer <API_TOKEN>
 ```
 
@@ -36,58 +36,98 @@ A [namespace](https://developers.cloudflare.com/agent-memory/concepts/namespaces
 
 Creates a new namespace for the given account.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{"name": "support-agent"}'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "support-agent"}'
 ```
 
 The response includes the namespace name that you use in Worker bindings and HTTP API calls.
 
-```
-{  "result": {    "id": "01JSGCEXAMPLE000000000000",    "name": "support-agent",    "created_at": "2026-04-21T00:00:00.000Z",    "updated_at": "2026-04-21T00:00:00.000Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "01JSGCEXAMPLE000000000000",
+    "name": "support-agent",
+    "created_at": "2026-04-21T00:00:00.000Z",
+    "updated_at": "2026-04-21T00:00:00.000Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### List namespaces
 
 Lists all namespaces for the given account. Results are paginated.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces?per_page=50" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces?per_page=50" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": [    {      "id": "01JSGCEXAMPLE000000000000",      "name": "support-agent",      "created_at": "2026-04-21T00:00:00.000Z",      "updated_at": "2026-04-21T00:00:00.000Z"    }  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "cursor": "next-cursor",    "per_page": 50,    "count": 1  }}
+```json
+{
+  "result": [
+    {
+      "id": "01JSGCEXAMPLE000000000000",
+      "name": "support-agent",
+      "created_at": "2026-04-21T00:00:00.000Z",
+      "updated_at": "2026-04-21T00:00:00.000Z"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "cursor": "next-cursor",
+    "per_page": 50,
+    "count": 1
+  }
+}
 ```
 
 ### Get a namespace
 
 Retrieves a single namespace by name.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": {    "id": "01JSGCEXAMPLE000000000000",    "name": "support-agent",    "created_at": "2026-04-21T00:00:00.000Z",    "updated_at": "2026-04-21T00:00:00.000Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "01JSGCEXAMPLE000000000000",
+    "name": "support-agent",
+    "created_at": "2026-04-21T00:00:00.000Z",
+    "updated_at": "2026-04-21T00:00:00.000Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Delete a namespace
 
 Marks a namespace for deletion. The namespace name becomes available for reuse after deletion.
 
-Terminal window
+```bash
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Profiles
@@ -98,42 +138,65 @@ Use profile endpoints to manage profiles and operate on memory stored in a named
 
 Marks a profile and all its memories and messages for deletion.
 
-Terminal window
+```bash
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Delete a session
 
 Marks all memories and messages in a profile that are tagged with the given session ID for deletion. Rows from other sessions in the same profile are untouched. Idempotent: deleting a session ID that has no rows is a no-op.
 
-Terminal window
+```bash
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/sessions/<SESSION_ID>" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/sessions/<SESSION_ID>" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Ingest messages
 
 Processes a conversation and extracts structured memories from it. Agent Memory identifies facts, events, instructions, and tasks automatically, so you do not need to specify what to remember.
 
-Terminal window
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/ingest" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "role": "user",
+        "content": "I prefer concise answers.",
+        "timestamp": "2026-04-21T00:00:00.000Z"
+      }
+    ],
+    "sessionId": "chat-2026-04-21"
+  }'
+```
 
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/ingest" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "role": "user",        "content": "I prefer concise answers.",        "timestamp": "2026-04-21T00:00:00.000Z"      }    ],    "sessionId": "chat-2026-04-21"  }'
-```
-
-```
-{  "result": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 `ingest` is idempotent. Re-ingesting the same conversation does not create duplicate memories.
@@ -142,28 +205,66 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-m
 
 Stores a single memory explicitly. Use `remember` when your application or agent already knows what should be stored.
 
-Terminal window
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/remember" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content": "The user prefers concise answers.",
+    "sessionId": "chat-2026-04-21"
+  }'
+```
 
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/remember" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "content": "The user prefers concise answers.",    "sessionId": "chat-2026-04-21"  }'
-```
-
-```
-{  "result": {    "id": "01JSGCEXAMPLE000000000000",    "type": "instruction",    "summary": "The user prefers concise answers.",    "content": "The user prefers concise answers.",    "sessionId": "chat-2026-04-21",    "createdAt": "2026-04-21T00:00:00.000Z",    "updatedAt": "2026-04-21T00:00:00.000Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "01JSGCEXAMPLE000000000000",
+    "type": "instruction",
+    "summary": "The user prefers concise answers.",
+    "content": "The user prefers concise answers.",
+    "sessionId": "chat-2026-04-21",
+    "createdAt": "2026-04-21T00:00:00.000Z",
+    "updatedAt": "2026-04-21T00:00:00.000Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Recall memories
 
 Searches stored memories in the profile and returns a synthesized answer grounded in the stored content.
 
-Terminal window
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/recall" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "How should I answer this user?",
+    "thinkingLevel": "low",
+    "responseLength": "medium"
+  }'
+```
 
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/recall" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "query": "How should I answer this user?",    "thinkingLevel": "low",    "responseLength": "medium"  }'
-```
-
-```
-{  "result": {    "answer": "The user prefers concise answers.",    "count": 1,    "candidates": [      {        "id": "01JSGCEXAMPLE000000000000",        "summary": "The user prefers concise answers.",        "sessionId": "chat-2026-04-21",        "score": 0.87      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "answer": "The user prefers concise answers.",
+    "count": 1,
+    "candidates": [
+      {
+        "id": "01JSGCEXAMPLE000000000000",
+        "summary": "The user prefers concise answers.",
+        "sessionId": "chat-2026-04-21",
+        "score": 0.87
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 If no memories match the query, `recall` returns an empty answer.
@@ -172,14 +273,32 @@ If no memories match the query, `recall` returns an empty answer.
 
 Lists memories stored in the profile.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/memories?per_page=50" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/memories?per_page=50" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": [    {      "id": "01JSGCEXAMPLE000000000000",      "type": "instruction",      "summary": "The user prefers concise answers.",      "sessionId": "chat-2026-04-21",      "createdAt": "2026-04-21T00:00:00.000Z",      "updatedAt": "2026-04-21T00:00:00.000Z"    }  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "cursor": "next-cursor",    "per_page": 50,    "count": 1  }}
+```json
+{
+  "result": [
+    {
+      "id": "01JSGCEXAMPLE000000000000",
+      "type": "instruction",
+      "summary": "The user prefers concise answers.",
+      "sessionId": "chat-2026-04-21",
+      "createdAt": "2026-04-21T00:00:00.000Z",
+      "updatedAt": "2026-04-21T00:00:00.000Z"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "cursor": "next-cursor",
+    "per_page": 50,
+    "count": 1
+  }
+}
 ```
 
 List entries omit `content`. Use the get memory endpoint to retrieve the full memory.
@@ -190,42 +309,74 @@ To filter memories, use the `session_id` and `type` query parameters.
 
 Retrieves a memory by ID.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/memories/<MEMORY_ID>" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/memories/<MEMORY_ID>" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": {    "id": "01JSGCEXAMPLE000000000000",    "type": "instruction",    "summary": "The user prefers concise answers.",    "content": "The user prefers concise answers.",    "sessionId": "chat-2026-04-21",    "createdAt": "2026-04-21T00:00:00.000Z",    "updatedAt": "2026-04-21T00:00:00.000Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "01JSGCEXAMPLE000000000000",
+    "type": "instruction",
+    "summary": "The user prefers concise answers.",
+    "content": "The user prefers concise answers.",
+    "sessionId": "chat-2026-04-21",
+    "createdAt": "2026-04-21T00:00:00.000Z",
+    "updatedAt": "2026-04-21T00:00:00.000Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Delete a memory
 
 Deletes a memory by ID. Removes the memory and any source messages linked to it. Returns the deleted memory.
 
-Terminal window
+```bash
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/memories/<MEMORY_ID>" \
+  -H "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/memories/<MEMORY_ID>" \  -H "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": {    "id": "01JSGCEXAMPLE000000000000",    "type": "instruction",    "summary": "The user prefers concise answers.",    "content": "The user prefers concise answers.",    "sessionId": "chat-2026-04-21",    "createdAt": "2026-04-21T00:00:00.000Z",    "updatedAt": "2026-04-21T00:00:00.000Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "01JSGCEXAMPLE000000000000",
+    "type": "instruction",
+    "summary": "The user prefers concise answers.",
+    "content": "The user prefers concise answers.",
+    "sessionId": "chat-2026-04-21",
+    "createdAt": "2026-04-21T00:00:00.000Z",
+    "updatedAt": "2026-04-21T00:00:00.000Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Get a summary
 
 Generates a structured Markdown summary of everything stored in a memory profile. Use it to inspect what Agent Memory remembers about a profile.
 
-Terminal window
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/summary" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
 
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/namespaces/<NAMESPACE_NAME>/profiles/<PROFILE_NAME>/summary" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{}'
-```
-
-```
-{  "result": {    "summary": "## Summary\n\nThe user prefers concise answers."  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "summary": "## Summary\n\nThe user prefers concise answers."
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 To scope the "Last Session" section of the summary, include the `sessionId` field in the request body.
@@ -234,8 +385,18 @@ To scope the "Last Session" section of the summary, include the `sessionId` fiel
 
 All endpoints return standard Cloudflare V4 error responses on failure:
 
-```
-{  "result": null,  "success": false,  "errors": [    {      "code": 10008,      "message": "Namespace name already exists"    }  ],  "messages": []}
+```json
+{
+  "result": null,
+  "success": false,
+  "errors": [
+    {
+      "code": 10008,
+      "message": "Namespace name already exists"
+    }
+  ],
+  "messages": []
+}
 ```
 
 Common error scenarios include:

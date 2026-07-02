@@ -43,9 +43,7 @@ This example uses a macOS machine to configure the Droplet. Copy the IP address 
 
 Open Terminal and run the following command, replacing the IP address with the IP assigned by DigitalOcean.
 
-Terminal window
-
-```
+```sh
 ssh root@134.209.124.123
 ```
 
@@ -53,18 +51,17 @@ Next, install GitLab. This example uses the [Ubuntu package ↗](https://about.g
 
 Run the following commands to begin.
 
-Terminal window
-
-```
+```sh
 sudo apt-get update
-sudo apt-get install -y curl openssh-server ca-certificatescurl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
+
+
+sudo apt-get install -y curl openssh-server ca-certificates
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
 ```
 
 The commands above download the GitLab software to this machine. You must now install it. This is the first place this tutorial will diverge from the operations in the GitLab documentation. The next step in the GitLab-provided tutorial sets an external hostname. Instead, you can just install the software.
 
-Terminal window
-
-```
+```sh
 sudo apt-get install gitlab-ee
 ```
 
@@ -74,29 +71,26 @@ After a minute or so, GitLab will be installed.
 
 However, the application is not running yet. You can check to see what ports are listening to confirm by using `ss`.
 
-Terminal window
-
-```
+```sh
 sudo ss -lntup
 ```
 
 The result should be only the services currently active on the machine:
 
-Terminal window
-
-```
+```bash
 sudo ss -lntup
 ```
 
-```
-Netid   State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Processudp     UNCONN   0        0                      *:9094                *:*tcp     LISTEN   0        128              0.0.0.0:22            0.0.0.0:*       users:(("sshd",pid=29,fd=3))tcp     LISTEN   0        128                 [::]:22               [::]:*       users:(("sshd",pid=29,fd=4))
+```bash
+Netid   State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
+udp     UNCONN   0        0                      *:9094                *:*
+tcp     LISTEN   0        128              0.0.0.0:22            0.0.0.0:*       users:(("sshd",pid=29,fd=3))
+tcp     LISTEN   0        128                 [::]:22               [::]:*       users:(("sshd",pid=29,fd=4))
 ```
 
 To start GitLab, run the software's reconfigure command.
 
-Terminal window
-
-```
+```sh
 sudo gitlab-ctl reconfigure
 ```
 
@@ -104,14 +98,33 @@ GitLab will launch its component services. Once complete, confirm that GitLab is
 
 ![GitLab Services](https://developers.cloudflare.com/_astro/gitlab-services.DWHydQAd_1zXwjJ.webp)
 
-Terminal window
-
-```
+```bash
 sudo ss -lntup
 ```
 
-```
-Netid   State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Processudp     UNCONN   0        0                      *:9094                *:*tcp     LISTEN   0        4096           127.0.0.1:9236          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:8150          0.0.0.0:*tcp     LISTEN   0        128              0.0.0.0:22            0.0.0.0:*       users:(("sshd",pid=29,fd=3))tcp     LISTEN   0        4096           127.0.0.1:8151          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:3000          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:8153          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:8154          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:8155          0.0.0.0:*tcp     LISTEN   0        511              0.0.0.0:8060          0.0.0.0:*       users:(("nginx",pid=324,fd=8))tcp     LISTEN   0        4096           127.0.0.1:9121          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:9090          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:9187          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:9093          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:9229          0.0.0.0:*tcp     LISTEN   0        1024           127.0.0.1:8080          0.0.0.0:*tcp     LISTEN   0        511              0.0.0.0:80            0.0.0.0:*       users:(("nginx",pid=324,fd=7))tcp     LISTEN   0        4096           127.0.0.1:9168          0.0.0.0:*tcp     LISTEN   0        4096           127.0.0.1:8082          0.0.0.0:*tcp     LISTEN   0        128                 [::]:22               [::]:*       users:(("sshd",pid=29,fd=4))tcp     LISTEN   0        4096                   *:9094                *:*
+```bash
+Netid   State    Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
+udp     UNCONN   0        0                      *:9094                *:*
+tcp     LISTEN   0        4096           127.0.0.1:9236          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:8150          0.0.0.0:*
+tcp     LISTEN   0        128              0.0.0.0:22            0.0.0.0:*       users:(("sshd",pid=29,fd=3))
+tcp     LISTEN   0        4096           127.0.0.1:8151          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:3000          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:8153          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:8154          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:8155          0.0.0.0:*
+tcp     LISTEN   0        511              0.0.0.0:8060          0.0.0.0:*       users:(("nginx",pid=324,fd=8))
+tcp     LISTEN   0        4096           127.0.0.1:9121          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:9090          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:9187          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:9093          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:9229          0.0.0.0:*
+tcp     LISTEN   0        1024           127.0.0.1:8080          0.0.0.0:*
+tcp     LISTEN   0        511              0.0.0.0:80            0.0.0.0:*       users:(("nginx",pid=324,fd=7))
+tcp     LISTEN   0        4096           127.0.0.1:9168          0.0.0.0:*
+tcp     LISTEN   0        4096           127.0.0.1:8082          0.0.0.0:*
+tcp     LISTEN   0        128                 [::]:22               [::]:*       users:(("sshd",pid=29,fd=4))
+tcp     LISTEN   0        4096                   *:9094                *:*
 ```
 
 Users connect to GitLab over SSH (port 22 here) and HTTP for the web app (port 80). In the next step, you will make it possible for users to try both through Cloudflare Access. I'll leave this running and head over to the Cloudflare dashboard.
@@ -154,9 +167,7 @@ Cloudflare Tunnel is made possible through a lightweight daemon from Cloudflare 
 
 Once installed, authenticate the instance of `cloudflared` with the following command.
 
-Terminal window
-
-```
+```sh
 cloudflared login
 ```
 
@@ -174,9 +185,7 @@ You can now connect GitLab to Cloudflare using Cloudflare Tunnel.
 
 1. Create a new Tunnel by running the following command.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel create gitlab
 ```
 
@@ -186,33 +195,37 @@ cloudflared tunnel create gitlab
 
 You use the text editor of your choice to edit the configuration file. The example relies on `Vi`.
 
-Terminal window
-
-```
+```sh
 vim ~/.cloudflared/config.yml
 ```
 
 1. Configure the Tunnel to serve traffic.
 
-```
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-ingress:  - hostname: gitlab.widgetcorp.tech    service: http://localhost:80  - hostname: gitlab-ssh.widgetcorp.tech    service: ssh://localhost:22  # Catch-all rule, which just responds with 404 if traffic doesn't match any of  # the earlier rules  - service: http_status:404
+```yml
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
+credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
+
+
+ingress:
+  - hostname: gitlab.widgetcorp.tech
+    service: http://localhost:80
+  - hostname: gitlab-ssh.widgetcorp.tech
+    service: ssh://localhost:22
+  # Catch-all rule, which just responds with 404 if traffic doesn't match any of
+  # the earlier rules
+  - service: http_status:404
 ```
 
 ![Self Hosted](https://developers.cloudflare.com/_astro/config-file.C9yhlhb3_fa9dL.webp)
 1. You can test that the configuration file is set correctly with the following command:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel ingress validate
 ```
 
 `cloudflared` should indicate the Tunnel is okay. You can now begin running the Tunnel.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel run
 ```
 
@@ -232,7 +245,7 @@ You can now create DNS records for GitLab in the Cloudflare dashboard. Remember,
 3. In the **Name** field, input `gitlab`.
 4. In the **Target** field, input the ID of the Tunnel created followed by `cfargotunnel.com`. In this example, that value is:
 
-```
+```txt
 6ff42ae2-765d-4adf-8112-31c55c1551ef.cfargotunnel.com
 ```
 
@@ -262,31 +275,26 @@ To pull or push code, you must also add an SSH key to your profile in GitLab.
 
 To push and pull code over SSH, you will need to install `cloudflared` on the client machine as well. This example uses a macOS laptop. On macOS, you can install `cloudflared` with the following command.
 
-Terminal window
-
-```
+```sh
 brew install cloudflared
 ```
 
 While you need to install `cloudflared`, you do not need to wrap your SSH commands in any unique way. Instead, you will need to make a one-time change to your SSH configuration file.
 
-Terminal window
-
-```
+```sh
 vim /Users/samrhea/.ssh/config
 ```
 
 Input the following values; replacing `gitlab-ssh.widgetcorp.tech` with the hostname you created.
 
-```
-Host gitlab-ssh.widgetcorp.tech  ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+```txt
+Host gitlab-ssh.widgetcorp.tech
+  ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
 ```
 
 You can now test the SSH flow by attempting to clone the project created earlier.
 
-Terminal window
-
-```
+```sh
 git clone git@gitlab-ssh.widgetcorp.tech:samrhea/demo
 ```
 
@@ -310,9 +318,7 @@ You can also view logs of the events that are allowed and blocked. Open the `Acc
 
 If you are using Git Large File Storage (LFS), note that Git LFS is not automatically supported by `cloudflared`. To access repositories protected by Cloudflare Access, you need to authenticate manually by running:
 
-Terminal window
-
-```
+```sh
 cloudflared access login <your-git-access-url>
 ```
 

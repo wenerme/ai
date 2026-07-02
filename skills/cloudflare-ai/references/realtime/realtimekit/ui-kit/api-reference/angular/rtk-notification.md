@@ -28,14 +28,20 @@ A component which shows a notification. You need to remove the element after you
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-notification></rtk-notification>
+```html
+<!-- component.html -->
+<rtk-notification></rtk-notification>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-notification [notification]="notification" [paused]="true" size="md"></rtk-notification>
+```html
+<!-- component.html -->
+<rtk-notification
+ [notification]="notification"
+ [paused]="true"
+ size="md">
+</rtk-notification>
 ```
 
 ```json

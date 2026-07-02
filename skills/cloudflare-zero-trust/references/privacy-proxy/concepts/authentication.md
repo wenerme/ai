@@ -34,8 +34,10 @@ Pre-shared keys provide a simple way to authenticate during development and proo
 
 Include the PSK in the `Proxy-Authorization` header:
 
-```
-CONNECT example.com:443 HTTP/2Host: example.comProxy-Authorization: Preshared <YOUR_PSK>
+```http
+CONNECT example.com:443 HTTP/2
+Host: example.com
+Proxy-Authorization: Preshared <YOUR_PSK>
 ```
 
 The proxy validates the key and allows the connection if it matches.
@@ -66,16 +68,38 @@ Privacy Pass uses a three-party architecture:
 
 ### Token issuance
 
-```
-┌──────────┐    1. Attestation request   ┌──────────┐│          │ ──────────────────────────▶ │          ││  Client  │                             │ Attester ││          │ ◀────────────────────────── │          │└──────────┘    2. Attestation OK        └──────────┘     │     │ 3. Blinded token request     ▼┌──────────┐    4. Forward request       ┌──────────┐│          │ ──────────────────────────▶ │          ││ Attester │                             │  Issuer  ││          │ ◀────────────────────────── │          │└──────────┘    5. Signed blinded token  └──────────┘     │     │ 6. Return to Client     ▼┌──────────┐│  Client  │  (unblinds and stores token)└──────────┘
+```plaintext
+┌──────────┐    1. Attestation request   ┌──────────┐
+│          │ ──────────────────────────▶ │          │
+│  Client  │                             │ Attester │
+│          │ ◀────────────────────────── │          │
+└──────────┘    2. Attestation OK        └──────────┘
+     │
+     │ 3. Blinded token request
+     ▼
+┌──────────┐    4. Forward request       ┌──────────┐
+│          │ ──────────────────────────▶ │          │
+│ Attester │                             │  Issuer  │
+│          │ ◀────────────────────────── │          │
+└──────────┘    5. Signed blinded token  └──────────┘
+     │
+     │ 6. Return to Client
+     ▼
+┌──────────┐
+│  Client  │  (unblinds and stores token)
+└──────────┘
 ```
 
 The Client sends the token request through the Attester to maintain unlinkability. This ensures the Issuer cannot correlate token requests with specific attestation events or Client identities.
 
 ### Token redemption
 
-```
-┌──────────┐    1. Present token         ┌──────────┐│          │ ──────────────────────────▶ │          ││  Client  │                             │  Privacy ││          │ ◀────────────────────────── │  Proxy   │└──────────┘    2. Connection OK         └──────────┘
+```plaintext
+┌──────────┐    1. Present token         ┌──────────┐
+│          │ ──────────────────────────▶ │          │
+│  Client  │                             │  Privacy │
+│          │ ◀────────────────────────── │  Proxy   │
+└──────────┘    2. Connection OK         └──────────┘
 ```
 
 The Privacy Proxy validates the token using the Issuer's public key. The proxy learns only that the token is valid, not who it was issued to.
@@ -100,8 +124,10 @@ Because tokens are blinded during issuance, the issuer cannot link tokens to spe
 
 Privacy Pass tokens are included in the `Proxy-Authorization` header using the `PrivateToken` scheme:
 
-```
-CONNECT example.com:443 HTTP/2Host: example.comProxy-Authorization: PrivateToken token=<base64-encoded-token>
+```http
+CONNECT example.com:443 HTTP/2
+Host: example.com
+Proxy-Authorization: PrivateToken token=<base64-encoded-token>
 ```
 
 ### Set up Privacy Pass

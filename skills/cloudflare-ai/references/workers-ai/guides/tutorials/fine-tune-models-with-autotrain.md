@@ -24,19 +24,19 @@ Now you need to figure out what you want to add to your model.
 
 Example formats are below:
 
-```
+```text
 ### Human: What is the meaning of life? ### Assistant: 42.
 ```
 
 If your training row contains newlines, you should wrap it with quotes.
 
-```
+```text
 "human: What is the meaning of life? \n bot: 42."
 ```
 
 Different models, like Mistral, will provide a specific [chat template/instruction format ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1#instruction-format)
 
-```
+```text
 <s>[INST] What is the meaning of life? [/INST] 42</s>
 ```
 
@@ -104,9 +104,7 @@ This might take some time depending on the size of your train.csv file.
 
 If you encounter the following error, it is caused by an Out of Memory error. You might want to change your runtime to a bigger GPU backend.
 
-Terminal window
-
-```
+```bash
 subprocess.CalledProcessError: Command '['/usr/bin/python3', '-m', 'autotrain.trainers.clm', '--training_config', 'blog-instruct/training_params.json']' died with <Signals.SIGKILL: 9>.
 ```
 

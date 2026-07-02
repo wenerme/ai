@@ -26,16 +26,28 @@ A menu list component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMenuList } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMenuList />;}
+
+
+function MyComponent() {
+  return <RtkMenuList />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMenuList } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMenuList      menuVariant={'primary' | 'secondary'}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenuList
+      menuVariant={'primary' | 'secondary'}
+    />
+  );
+}
 ```
 
 ```json

@@ -70,9 +70,9 @@ The work of creating dictionaries and compressing new responses against them hap
 
 ### 1\. Enable passthrough in Cloudflare
 
-* [ Dashboard ](#tab-panel-10672)
-* [ API ](#tab-panel-10673)
-* [ Terraform ](#tab-panel-10674)
+* [ Dashboard ](#tab-panel-10967)
+* [ API ](#tab-panel-10968)
+* [ Terraform ](#tab-panel-10969)
 
 To enable shared dictionaries in the dashboard:
 
@@ -83,10 +83,13 @@ To enable shared dictionaries in the dashboard:
 
 Use the following `PATCH` request to enable shared dictionaries:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/shared_dictionary_mode" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "passthrough"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/shared_dictionary_mode" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "passthrough"
+  }'
 ```
 
 To turn shared dictionaries off, set `value` to `"disabled"`.
@@ -108,8 +111,10 @@ Because `shared_dictionary_mode` is a zone setting, it is not compatible with [C
 
 For each versioned asset you want to use as a dictionary, include a `Use-As-Dictionary` header on the first response:
 
-```
-Use-As-Dictionary: match="/static/app-*.js", type="raw"Cache-Control: public, max-age=31536000, immutableContent-Encoding: br
+```txt
+Use-As-Dictionary: match="/static/app-*.js", type="raw"
+Cache-Control: public, max-age=31536000, immutable
+Content-Encoding: br
 ```
 
 The `match` value tells the browser which future request URLs should advertise this dictionary. It is a WHATWG URL Pattern, does not support regular expressions, and must resolve to the same origin as the dictionary.
@@ -118,8 +123,10 @@ The `match` value tells the browser which future request URLs should advertise t
 
 When a request arrives with an `Available-Dictionary` header, look up the dictionary by its SHA-256 hash. If you have it, compress the response against it and return:
 
-```
-Content-Encoding: dczVary: Accept-Encoding, Available-DictionaryCache-Control: public, max-age=31536000, immutable
+```txt
+Content-Encoding: dcz
+Vary: Accept-Encoding, Available-Dictionary
+Cache-Control: public, max-age=31536000, immutable
 ```
 
 [RFC 9842, Section 6.2 ↗](https://www.rfc-editor.org/rfc/rfc9842.html#section-6.2) requires the `Vary: Accept-Encoding, Available-Dictionary` response header so that browser caches do not serve the wrong variant. Cloudflare's cache also varies on these headers when passthrough is on.
@@ -141,11 +148,19 @@ Cloudflare does not prescribe a specific origin implementation. Common starting 
 
 To confirm a request is using a shared dictionary, request the asset twice. The second request advertises the dictionary you received in the first response.
 
-Terminal window
+```sh
+# Prime the dictionary.
+curl -sI -H "Accept-Encoding: br, gzip, zstd, dcb, dcz" \
+  https://example.com/static/app.v1.js
 
-```
-# Prime the dictionary.curl -sI -H "Accept-Encoding: br, gzip, zstd, dcb, dcz" \  https://example.com/static/app.v1.js
-# Request the next version, advertising the dictionary you just received.# Replace <hash> with the base64-encoded SHA-256 of the first response.# The surrounding colons are part of the Structured Field syntax# and are required by RFC 9842, Section 2.2.curl -sI -H "Accept-Encoding: br, gzip, zstd, dcb, dcz" \  -H "Available-Dictionary: :<hash>:" \  https://example.com/static/app.v2.js
+
+# Request the next version, advertising the dictionary you just received.
+# Replace <hash> with the base64-encoded SHA-256 of the first response.
+# The surrounding colons are part of the Structured Field syntax
+# and are required by RFC 9842, Section 2.2.
+curl -sI -H "Accept-Encoding: br, gzip, zstd, dcb, dcz" \
+  -H "Available-Dictionary: :<hash>:" \
+  https://example.com/static/app.v2.js
 ```
 
 The second response should include `Content-Encoding: dcz` (or `dcb`), `Vary: Accept-Encoding, Available-Dictionary`, and a `Content-Length` significantly smaller than a non-delta response.

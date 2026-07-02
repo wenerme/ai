@@ -31,10 +31,22 @@ Custom costs will appear in the logs with an underline, making it easy to identi
 
 In this example, if you have a negotiated price of $1 per million input tokens and $2 per million output tokens, include the `cf-aig-custom-cost` header as shown below.
 
-Request with custom cost
+**Request with custom cost**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header "Authorization: Bearer $TOKEN" \  --header 'Content-Type: application/json' \  --header 'cf-aig-custom-cost: {"per_token_in":0.000001,"per_token_out":0.000002}' \  --data ' {        "model": "gpt-4o-mini",        "messages": [          {            "role": "user",            "content": "When is Cloudflare’s Birthday Week?"          }        ]      }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  --header "Authorization: Bearer $TOKEN" \
+  --header 'Content-Type: application/json' \
+  --header 'cf-aig-custom-cost: {"per_token_in":0.000001,"per_token_out":0.000002}' \
+  --data ' {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "user",
+            "content": "When is Cloudflare’s Birthday Week?"
+          }
+        ]
+      }'
 ```
 
 Note

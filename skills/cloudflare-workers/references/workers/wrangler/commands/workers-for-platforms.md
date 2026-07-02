@@ -18,25 +18,19 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-12857)
-* [  pnpm ](#tab-panel-12858)
-* [  yarn ](#tab-panel-12859)
+* [  npm ](#tab-panel-13152)
+* [  pnpm ](#tab-panel-13153)
+* [  yarn ](#tab-panel-13154)
 
-Terminal window
-
-```
+```sh
 npx wrangler dispatch-namespace list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler dispatch-namespace list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler dispatch-namespace list
 ```
 
@@ -63,25 +57,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-12860)
-* [  pnpm ](#tab-panel-12861)
-* [  yarn ](#tab-panel-12862)
+* [  npm ](#tab-panel-13155)
+* [  pnpm ](#tab-panel-13156)
+* [  yarn ](#tab-panel-13157)
 
-Terminal window
-
-```
+```sh
 npx wrangler dispatch-namespace get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler dispatch-namespace get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler dispatch-namespace get [NAME]
 ```
 
@@ -111,25 +99,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-12863)
-* [  pnpm ](#tab-panel-12864)
-* [  yarn ](#tab-panel-12865)
+* [  npm ](#tab-panel-13158)
+* [  pnpm ](#tab-panel-13159)
+* [  yarn ](#tab-panel-13160)
 
-Terminal window
-
-```
+```sh
 npx wrangler dispatch-namespace create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler dispatch-namespace create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler dispatch-namespace create [NAME]
 ```
 
@@ -159,25 +141,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-12866)
-* [  pnpm ](#tab-panel-12867)
-* [  yarn ](#tab-panel-12868)
+* [  npm ](#tab-panel-13161)
+* [  pnpm ](#tab-panel-13162)
+* [  yarn ](#tab-panel-13163)
 
-Terminal window
-
-```
+```sh
 npx wrangler dispatch-namespace delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler dispatch-namespace delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler dispatch-namespace delete [NAME]
 ```
 
@@ -211,25 +187,19 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-12869)
-* [  pnpm ](#tab-panel-12870)
-* [  yarn ](#tab-panel-12871)
+* [  npm ](#tab-panel-13164)
+* [  pnpm ](#tab-panel-13165)
+* [  yarn ](#tab-panel-13166)
 
-Terminal window
-
-```
+```sh
 npx wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
 ```
 

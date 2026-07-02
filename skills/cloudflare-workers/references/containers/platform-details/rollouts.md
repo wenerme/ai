@@ -24,21 +24,58 @@ Because Worker code updates immediately while container instances roll out gradu
 
 Here is an example configuration that sets a 5 minute grace period and a two step rollout where the first step updates 10% of instances and the second step updates 100% of instances:
 
-* [  wrangler.jsonc ](#tab-panel-7934)
-* [  wrangler.toml ](#tab-panel-7935)
+* [  wrangler.jsonc ](#tab-panel-8215)
+* [  wrangler.toml ](#tab-panel-8216)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "max_instances": 10,
+      "class_name": "MyContainer",
+      "image": "./Dockerfile",
+      "rollout_active_grace_period": 300,
+      "rollout_step_percentage": [10, 100],
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_CONTAINER",
+        "class_name": "MyContainer",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["MyContainer"],
+    },
+  ],
+}
 ```
-{  "containers": [    {      "max_instances": 10,      "class_name": "MyContainer",      "image": "./Dockerfile",      "rollout_active_grace_period": 300,      "rollout_step_percentage": [10, 100],    },  ],  "durable_objects": {    "bindings": [      {        "name": "MY_CONTAINER",        "class_name": "MyContainer",      },    ],  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["MyContainer"],    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]max_instances = 10class_name = "MyContainer"image = "./Dockerfile"rollout_active_grace_period = 300rollout_step_percentage = [ 10, 100 ]
-[[durable_objects.bindings]]name = "MY_CONTAINER"class_name = "MyContainer"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "MyContainer" ]
+```toml
+[[containers]]
+max_instances = 10
+class_name = "MyContainer"
+image = "./Dockerfile"
+rollout_active_grace_period = 300
+rollout_step_percentage = [ 10, 100 ]
+
+
+[[durable_objects.bindings]]
+name = "MY_CONTAINER"
+class_name = "MyContainer"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "MyContainer" ]
 ```
 
 ## Immediate rollouts

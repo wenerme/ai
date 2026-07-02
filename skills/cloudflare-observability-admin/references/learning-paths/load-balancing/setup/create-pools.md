@@ -16,8 +16,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-9195)
-* [ API ](#tab-panel-9196)
+* [ Dashboard ](#tab-panel-9486)
+* [ API ](#tab-panel-9487)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -59,24 +59,124 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Create Pool
+**Create Pool**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Primary data center - Provider XYZ",    "name": "primary-dc-1",    "enabled": false,    "load_shedding": {        "default_percent": 0,        "default_policy": "random",        "session_percent": 0,        "session_policy": "hash"    },    "minimum_origins": 2,    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",    "check_regions": [        "WEU",        "ENAM"    ],    "origins": [        {            "name": "app-server-1",            "address": "0.0.0.0",            "enabled": true,            "weight": 0.56,            "header": {                "Host": [                    "example.com"                ]            }        }    ],    "origin_steering": {        "policy": "random"    },    "notification_filter": {        "origin": {            "disable": false,            "healthy": null        },        "pool": {            "disable": false,            "healthy": null        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Primary data center - Provider XYZ",
+    "name": "primary-dc-1",
+    "enabled": false,
+    "load_shedding": {
+        "default_percent": 0,
+        "default_policy": "random",
+        "session_percent": 0,
+        "session_policy": "hash"
+    },
+    "minimum_origins": 2,
+    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+    "check_regions": [
+        "WEU",
+        "ENAM"
+    ],
+    "origins": [
+        {
+            "name": "app-server-1",
+            "address": "0.0.0.0",
+            "enabled": true,
+            "weight": 0.56,
+            "header": {
+                "Host": [
+                    "example.com"
+                ]
+            }
+        }
+    ],
+    "origin_steering": {
+        "policy": "random"
+    },
+    "notification_filter": {
+        "origin": {
+            "disable": false,
+            "healthy": null
+        },
+        "pool": {
+            "disable": false,
+            "healthy": null
+        }
+    }
+  }'
 ```
 
 The response contains the complete definition of the new pool.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "17b5962d775c646f3f9725cbc7a53df4",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "description": "Primary data center - Provider XYZ",    "name": "primary-dc-1",    "enabled": false,    "load_shedding": {      "default_percent": 0,      "default_policy": "random",      "session_percent": 0,      "session_policy": "hash"    },    "minimum_origins": 2,    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",    "check_regions": [      "WEU",      "ENAM"    ],    "origins": [      {        "name": "app-server-1",        "address": "0.0.0.0",        "enabled": true,        "weight": 0.56,        "header": {          "Host": [            "example.com"          ]        }      }    ],    "origin_steering": {      "policy": "random"    },    "notification_filter": {      "origin": {        "disable": false,        "healthy": null      },      "pool": {        "disable": false,        "healthy": null      }    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "17b5962d775c646f3f9725cbc7a53df4",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "description": "Primary data center - Provider XYZ",
+    "name": "primary-dc-1",
+    "enabled": false,
+    "load_shedding": {
+      "default_percent": 0,
+      "default_policy": "random",
+      "session_percent": 0,
+      "session_policy": "hash"
+    },
+    "minimum_origins": 2,
+    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+    "check_regions": [
+      "WEU",
+      "ENAM"
+    ],
+    "origins": [
+      {
+        "name": "app-server-1",
+        "address": "0.0.0.0",
+        "enabled": true,
+        "weight": 0.56,
+        "header": {
+          "Host": [
+            "example.com"
+          ]
+        }
+      }
+    ],
+    "origin_steering": {
+      "policy": "random"
+    },
+    "notification_filter": {
+      "origin": {
+        "disable": false,
+        "healthy": null
+      },
+      "pool": {
+        "disable": false,
+        "healthy": null
+      }
+    }
+  }
+}
 ```
 
 After creating the pool, you would also want to [create a new notification](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
 
-```
-"alert_type": "load_balancing_health_alert","filters": {  "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,  "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],  "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]}
+```json
+"alert_type": "load_balancing_health_alert",
+"filters": {
+  "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,
+  "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],
+  "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]
+}
 ```
 
 ```json

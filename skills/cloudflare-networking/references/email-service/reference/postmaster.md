@@ -38,18 +38,18 @@ Email Service adds DKIM signatures to outgoing emails on behalf of the customer'
 
 Email Sending and Email Routing use separate DKIM selectors. You can find the DKIM keys for your domain by querying the following:
 
-Terminal window
+```sh
+# Email Sending DKIM
+dig TXT cf-bounce._domainkey.example.com +short
 
-```
-# Email Sending DKIMdig TXT cf-bounce._domainkey.example.com +short
-# Email Routing DKIMdig TXT cf2024-1._domainkey.example.com +short
+
+# Email Routing DKIM
+dig TXT cf2024-1._domainkey.example.com +short
 ```
 
 For forwarded emails, Email Routing adds two DKIM signatures: one for `email.cloudflare.net`, which covers [sender rewriting](#sender-rewriting), and one for the recipient domain configured by the customer. You can query the Cloudflare sender rewriting key directly:
 
-Terminal window
-
-```
+```sh
 dig TXT cf2024-1._domainkey.email.cloudflare.net +short
 ```
 
@@ -71,10 +71,9 @@ Email Service supports IPv6 for both inbound and outbound email delivery. For ou
 
 You can verify IPv6 connectivity for any destination using `dig`:
 
-Terminal window
-
-```
-dig mx gmail.comdig AAAA gmail-smtp-in.l.google.com
+```sh
+dig mx gmail.com
+dig AAAA gmail-smtp-in.l.google.com
 ```
 
 ### MX and SPF records
@@ -83,14 +82,16 @@ When using Email Service for sending emails, no special MX records are required 
 
 For SPF records, Email Service uses `_spf.mx.cloudflare.net`. Email Sending configures SPF on the `cf-bounce` subdomain, while Email Routing configures SPF on the root domain:
 
-```
+```txt
 v=spf1 include:_spf.mx.cloudflare.net ~all
 ```
 
 For inbound mail, Email Routing announces multiple MX servers under the `*.mx.cloudflare.net` zone with different priorities. For example:
 
-```
-example.com.    IN    MX    13 amir.mx.cloudflare.net.example.com.    IN    MX    86 linda.mx.cloudflare.net.example.com.    IN    MX    24 isaac.mx.cloudflare.net.
+```txt
+example.com.    IN    MX    13 amir.mx.cloudflare.net.
+example.com.    IN    MX    86 linda.mx.cloudflare.net.
+example.com.    IN    MX    24 isaac.mx.cloudflare.net.
 ```
 
 ### Outbound prefixes
@@ -109,9 +110,7 @@ If you are a postmaster and are having trouble receiving Email Service emails, a
 
 To verify the current authoritative ranges, query the SPF record directly:
 
-Terminal window
-
-```
+```sh
 dig TXT _spf.mx.cloudflare.net +short
 ```
 
@@ -125,23 +124,19 @@ Email Service will use the following outbound domains for the `HELO/EHLO` comman
 
 PTR records (reverse DNS) ensure that each hostname has a corresponding IP. For example:
 
-Terminal window
-
-```
+```sh
 dig a-h.cloudflare-email.net +short
 ```
 
-```
+```sh
 104.30.0.7
 ```
 
-Terminal window
-
-```
+```sh
 dig -x 104.30.0.7 +short
 ```
 
-```
+```sh
 a-h.cloudflare-email.net.
 ```
 
@@ -159,7 +154,7 @@ Email Service monitors sender reputation and may temporarily delay or block emai
 
 For Email Routing, inbound mail from senders on RBLs is rejected with an SMTP error similar to:
 
-```
+```txt
 554 <YOUR_IP_ADDRESS> found on one or more RBLs (abusixip). Refer to https://developers.cloudflare.com/email-service/reference/postmaster/#realtime-block-lists
 ```
 
@@ -169,15 +164,13 @@ You can use tools like [MxToolbox ↗](https://mxtoolbox.com/blacklists.aspx) to
 
 Email Service publishes its SPF data under `_spf.mx.cloudflare.net`. You can resolve the underlying record directly:
 
-Terminal window
-
-```
+```sh
 dig TXT _spf.mx.cloudflare.net +short
 ```
 
 The record uses the format defined in [RFC 7208 ↗](https://datatracker.ietf.org/doc/html/rfc7208):
 
-```
+```txt
 "v=spf1 ip4:104.30.0.0/20 ~all"
 ```
 

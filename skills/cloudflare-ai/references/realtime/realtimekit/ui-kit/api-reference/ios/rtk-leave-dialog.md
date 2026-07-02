@@ -31,20 +31,38 @@ A dialog that presents leave and end meeting options. Displays different options
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let leaveDialog = RtkLeaveDialog(meeting: rtkClient)leaveDialog.show(on: self)
+
+
+let leaveDialog = RtkLeaveDialog(meeting: rtkClient)
+leaveDialog.show(on: self)
 ```
 
 ### With selection handler
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let leaveDialog = RtkLeaveDialog(    meeting: rtkClient,    onClick: { buttonType in        switch buttonType {        case .leaveMeeting:            print("Leaving meeting")        case .endMeeting:            print("Ending meeting for all")        default:            break        }    })leaveDialog.show(on: self)
+
+
+let leaveDialog = RtkLeaveDialog(
+    meeting: rtkClient,
+    onClick: { buttonType in
+        switch buttonType {
+        case .leaveMeeting:
+            print("Leaving meeting")
+        case .endMeeting:
+            print("Ending meeting for all")
+        default:
+            break
+        }
+    }
+)
+leaveDialog.show(on: self)
 ```
 
 ```json

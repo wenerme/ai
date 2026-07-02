@@ -31,23 +31,40 @@ Claude Haiku 4.5 delivers similar levels of coding performance at one-third the 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-134)
-* [ cURL ](#tab-panel-135)
+* [ TypeScript ](#tab-panel-152)
+* [ cURL ](#tab-panel-153)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'anthropic/claude-haiku-4.5',
+  {
+    max_tokens: 1024,
+    messages: [{ content: 'What are the three laws of thermodynamics?', role: 'user' }],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'anthropic/claude-haiku-4.5',  {    max_tokens: 1024,    messages: [{ content: 'What are the three laws of thermodynamics?', role: 'user' }],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "anthropic/claude-haiku-4.5",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "What are the three laws of thermodynamics?",
+      "role": "user"
+    }
+  ]
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-haiku-4.5",  "max_tokens": 1024,  "messages": [    {      "content": "What are the three laws of thermodynamics?",      "role": "user"    }  ]}'
-```
-
-* [ Output ](#tab-panel-138)
-* [ Raw response ](#tab-panel-139)
+* [ Output ](#tab-panel-156)
+* [ Raw response ](#tab-panel-157)
 
 # The Three Laws of Thermodynamics
 
@@ -64,31 +81,73 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 These laws form the foundation of thermodynamics and explain why perpetual motion machines are impossible and why certain processes naturally occur while others don't.
 
-```
-{  "content": [    {      "text": "# The Three Laws of Thermodynamics\n\n## First Law (Conservation of Energy)\nEnergy cannot be created or destroyed, only converted from one form to another. The total energy input to a system equals the change in internal energy plus the work done by the system.\n\n## Second Law (Entropy)\nThe entropy (disorder) of an isolated system always increases over time. Heat naturally flows from hot to cold objects, not the reverse, and no process can be 100% efficient at converting heat to work.\n\n## Third Law (Absolute Zero)\nAs temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of a perfect crystal approaches zero. It's impossible to reach absolute zero through any finite process.\n\n---\n\nThese laws form the foundation of thermodynamics and explain why perpetual motion machines are impossible and why certain processes naturally occur while others don't.",      "type": "text"    }  ],  "gatewayMetadata": {    "keySource": "BYOK"  },  "id": "msg_01AudBc47nYro7MFJatA3KAW",  "model": "claude-haiku-4-5-20251001",  "role": "assistant",  "stop_details": null,  "stop_reason": "end_turn",  "stop_sequence": null,  "type": "message",  "usage": {    "input_tokens": 17,    "output_tokens": 191  }}
+```json
+{
+  "content": [
+    {
+      "text": "# The Three Laws of Thermodynamics\n\n## First Law (Conservation of Energy)\nEnergy cannot be created or destroyed, only converted from one form to another. The total energy input to a system equals the change in internal energy plus the work done by the system.\n\n## Second Law (Entropy)\nThe entropy (disorder) of an isolated system always increases over time. Heat naturally flows from hot to cold objects, not the reverse, and no process can be 100% efficient at converting heat to work.\n\n## Third Law (Absolute Zero)\nAs temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of a perfect crystal approaches zero. It's impossible to reach absolute zero through any finite process.\n\n---\n\nThese laws form the foundation of thermodynamics and explain why perpetual motion machines are impossible and why certain processes naturally occur while others don't.",
+      "type": "text"
+    }
+  ],
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "id": "msg_01AudBc47nYro7MFJatA3KAW",
+  "model": "claude-haiku-4-5-20251001",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "input_tokens": 17,
+    "output_tokens": 191
+  }
+}
 ```
 
 ## Examples
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-136)
-* [ cURL ](#tab-panel-137)
+* [ TypeScript ](#tab-panel-154)
+* [ cURL ](#tab-panel-155)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'anthropic/claude-haiku-4.5',
+  {
+    max_tokens: 1024,
+    messages: [{ content: 'How do I read a JSON file in Python?', role: 'user' }],
+    system: 'You are a helpful coding assistant specializing in Python.',
+    temperature: 0.3,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'anthropic/claude-haiku-4.5',  {    max_tokens: 1024,    messages: [{ content: 'How do I read a JSON file in Python?', role: 'user' }],    system: 'You are a helpful coding assistant specializing in Python.',    temperature: 0.3,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "anthropic/claude-haiku-4.5",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "How do I read a JSON file in Python?",
+      "role": "user"
+    }
+  ],
+  "system": "You are a helpful coding assistant specializing in Python.",
+  "temperature": 0.3
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-haiku-4.5",  "max_tokens": 1024,  "messages": [    {      "content": "How do I read a JSON file in Python?",      "role": "user"    }  ],  "system": "You are a helpful coding assistant specializing in Python.",  "temperature": 0.3}'
-```
-
-* [ Output ](#tab-panel-142)
-* [ Raw response ](#tab-panel-143)
+* [ Output ](#tab-panel-160)
+* [ Raw response ](#tab-panel-161)
 
 # Reading a JSON File in Python
 
@@ -165,29 +224,86 @@ with open('file.json', 'r') as file:
 
 The `with` statement is recommended because it automatically closes the file when done.
 
-```
-{  "content": [    {      "text": "# Reading a JSON File in Python\n\nHere are the most common methods:\n\n## 1. **Basic Method (Recommended)**\n```python\nimport json\n\nwith open('file.json', 'r') as file:\n    data = json.load(file)\n\nprint(data)\n```\n\n## 2. **Reading JSON String**\nIf you have JSON as a string instead:\n```python\nimport json\n\njson_string = '{\"name\": \"John\", \"age\": 30}'\ndata = json.loads(json_string)\n\nprint(data)\n```\n\n## 3. **With Error Handling**\n```python\nimport json\n\ntry:\n    with open('file.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"File not found\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format\")\n```\n\n## 4. **Pretty Print the Data**\n```python\nimport json\n\nwith open('file.json', 'r') as file:\n    data = json.load(file)\n\nprint(json.dumps(data, indent=2))\n```\n\n## Key Differences\n| Method | Use Case |\n|--------|----------|\n| `json.load()` | Read from a file object |\n| `json.loads()` | Parse a JSON string |\n\n## Example\n**file.json:**\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 25,\n  \"city\": \"New York\"\n}\n```\n\n**Python code:**\n```python\nimport json\n\nwith open('file.json', 'r') as file:\n    data = json.load(file)\n    print(data['name'])  # Output: Alice\n```\n\nThe `with` statement is recommended because it automatically closes the file when done.",      "type": "text"    }  ],  "gatewayMetadata": {    "keySource": "BYOK"  },  "id": "msg_018PXaVwoWM8Eo7X51oCHmhz",  "model": "claude-haiku-4-5-20251001",  "role": "assistant",  "stop_details": null,  "stop_reason": "end_turn",  "stop_sequence": null,  "type": "message",  "usage": {    "input_tokens": 28,    "output_tokens": 425  }}
+```json
+{
+  "content": [
+    {
+      "text": "# Reading a JSON File in Python\n\nHere are the most common methods:\n\n## 1. **Basic Method (Recommended)**\n```python\nimport json\n\nwith open('file.json', 'r') as file:\n    data = json.load(file)\n\nprint(data)\n```\n\n## 2. **Reading JSON String**\nIf you have JSON as a string instead:\n```python\nimport json\n\njson_string = '{\"name\": \"John\", \"age\": 30}'\ndata = json.loads(json_string)\n\nprint(data)\n```\n\n## 3. **With Error Handling**\n```python\nimport json\n\ntry:\n    with open('file.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"File not found\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format\")\n```\n\n## 4. **Pretty Print the Data**\n```python\nimport json\n\nwith open('file.json', 'r') as file:\n    data = json.load(file)\n\nprint(json.dumps(data, indent=2))\n```\n\n## Key Differences\n| Method | Use Case |\n|--------|----------|\n| `json.load()` | Read from a file object |\n| `json.loads()` | Parse a JSON string |\n\n## Example\n**file.json:**\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 25,\n  \"city\": \"New York\"\n}\n```\n\n**Python code:**\n```python\nimport json\n\nwith open('file.json', 'r') as file:\n    data = json.load(file)\n    print(data['name'])  # Output: Alice\n```\n\nThe `with` statement is recommended because it automatically closes the file when done.",
+      "type": "text"
+    }
+  ],
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "id": "msg_018PXaVwoWM8Eo7X51oCHmhz",
+  "model": "claude-haiku-4-5-20251001",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "input_tokens": 28,
+    "output_tokens": 425
+  }
+}
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-146)
-* [ cURL ](#tab-panel-147)
+* [ TypeScript ](#tab-panel-164)
+* [ cURL ](#tab-panel-165)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'anthropic/claude-haiku-4.5',
+  {
+    max_tokens: 1024,
+    messages: [
+      {
+        content: 'I need help planning a road trip from San Francisco to Los Angeles.',
+        role: 'user',
+      },
+      {
+        content:
+          "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+        role: 'assistant',
+      },
+      { content: 'Yes, what are some good places to stop?', role: 'user' },
+    ],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'anthropic/claude-haiku-4.5',  {    max_tokens: 1024,    messages: [      {        content: 'I need help planning a road trip from San Francisco to Los Angeles.',        role: 'user',      },      {        content:          "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",        role: 'assistant',      },      { content: 'Yes, what are some good places to stop?', role: 'user' },    ],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "anthropic/claude-haiku-4.5",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "I need help planning a road trip from San Francisco to Los Angeles.",
+      "role": "user"
+    },
+    {
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "role": "assistant"
+    },
+    {
+      "content": "Yes, what are some good places to stop?",
+      "role": "user"
+    }
+  ]
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-haiku-4.5",  "max_tokens": 1024,  "messages": [    {      "content": "I need help planning a road trip from San Francisco to Los Angeles.",      "role": "user"    },    {      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",      "role": "assistant"    },    {      "content": "Yes, what are some good places to stop?",      "role": "user"    }  ]}'
-```
-
-* [ Output ](#tab-panel-148)
-* [ Raw response ](#tab-panel-149)
+* [ Output ](#tab-panel-166)
+* [ Raw response ](#tab-panel-167)
 
 # Good Stops on the SF to LA Route
 
@@ -212,29 +328,74 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 What's your timeline? Are you interested in nature, wine, food, or something else? That would help me narrow down recommendations.
 
-```
-{  "content": [    {      "text": "# Good Stops on the SF to LA Route\n\n**Halfway/Central Coast Options:**\n- **San Luis Obispo** - Charming town with a mission, wineries, and Thursday night farmers market\n- **Santa Barbara** - Beautiful coastal town with beaches, State Street shopping, and wine tasting\n- **Solvang** - Danish village with unique architecture, wineries, and restaurants\n\n**Scenic Detours:**\n- **Big Sur** - Stunning coastal cliffs (adds time but worth it for photos)\n- **Hearst Castle** - Historic mansion with tours in San Simeon\n- **Monterey/Carmel** - Coastal towns with aquariums, beaches, and galleries\n\n**Faster Route Stops:**\n- **Salinas** - Agricultural hub, reasonable break point\n- **Paso Robles** - Wine country with tasting rooms\n\n**Tips:**\n- Plan for 7-8 hours total if you want to stop for a meal and explore\n- Big Sur adds 1-2 hours but offers incredible views\n- Consider stopping overnight if you want a more relaxed trip\n\nWhat's your timeline? Are you interested in nature, wine, food, or something else? That would help me narrow down recommendations.",      "type": "text"    }  ],  "gatewayMetadata": {    "keySource": "BYOK"  },  "id": "msg_01H4xB3mngxiKQMyrfDoJzKe",  "model": "claude-haiku-4-5-20251001",  "role": "assistant",  "stop_details": null,  "stop_reason": "end_turn",  "stop_sequence": null,  "type": "message",  "usage": {    "input_tokens": 76,    "output_tokens": 279  }}
+```json
+{
+  "content": [
+    {
+      "text": "# Good Stops on the SF to LA Route\n\n**Halfway/Central Coast Options:**\n- **San Luis Obispo** - Charming town with a mission, wineries, and Thursday night farmers market\n- **Santa Barbara** - Beautiful coastal town with beaches, State Street shopping, and wine tasting\n- **Solvang** - Danish village with unique architecture, wineries, and restaurants\n\n**Scenic Detours:**\n- **Big Sur** - Stunning coastal cliffs (adds time but worth it for photos)\n- **Hearst Castle** - Historic mansion with tours in San Simeon\n- **Monterey/Carmel** - Coastal towns with aquariums, beaches, and galleries\n\n**Faster Route Stops:**\n- **Salinas** - Agricultural hub, reasonable break point\n- **Paso Robles** - Wine country with tasting rooms\n\n**Tips:**\n- Plan for 7-8 hours total if you want to stop for a meal and explore\n- Big Sur adds 1-2 hours but offers incredible views\n- Consider stopping overnight if you want a more relaxed trip\n\nWhat's your timeline? Are you interested in nature, wine, food, or something else? That would help me narrow down recommendations.",
+      "type": "text"
+    }
+  ],
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "id": "msg_01H4xB3mngxiKQMyrfDoJzKe",
+  "model": "claude-haiku-4-5-20251001",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "input_tokens": 76,
+    "output_tokens": 279
+  }
+}
 ```
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-140)
-* [ cURL ](#tab-panel-141)
+* [ TypeScript ](#tab-panel-158)
+* [ cURL ](#tab-panel-159)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'anthropic/claude-haiku-4.5',
+  {
+    max_tokens: 512,
+    messages: [
+      {
+        content: 'Write a short story opening about a detective finding an unusual clue.',
+        role: 'user',
+      },
+    ],
+    temperature: 0.8,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'anthropic/claude-haiku-4.5',  {    max_tokens: 512,    messages: [      {        content: 'Write a short story opening about a detective finding an unusual clue.',        role: 'user',      },    ],    temperature: 0.8,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "anthropic/claude-haiku-4.5",
+  "max_tokens": 512,
+  "messages": [
+    {
+      "content": "Write a short story opening about a detective finding an unusual clue.",
+      "role": "user"
+    }
+  ],
+  "temperature": 0.8
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-haiku-4.5",  "max_tokens": 512,  "messages": [    {      "content": "Write a short story opening about a detective finding an unusual clue.",      "role": "user"    }  ],  "temperature": 0.8}'
-```
-
-* [ Output ](#tab-panel-150)
-* [ Raw response ](#tab-panel-151)
+* [ Output ](#tab-panel-168)
+* [ Raw response ](#tab-panel-169)
 
 # The Photograph
 
@@ -256,29 +417,69 @@ This photograph wasn't evidence of a crime.
 
 It was a warning.
 
-```
-{  "content": [    {      "text": "# The Photograph\n\nDetective Sarah Chen stood in the victim's apartment, her latex gloves snapping softly as she examined the bookshelf for the third time. The case had gone cold within hours—no signs of forced entry, no witnesses, no motive that made sense.\n\nThen she saw it.\n\nWedged behind a row of paperbacks, barely visible, was a Polaroid photograph. Sarah's breath caught. Not because of what it showed—a lake at sunset, unremarkable—but because of what was written on the back in faded blue ink:\n\n*\"The day before everything changed.\"*\n\nAnd underneath, a date: twenty-three years ago.\n\nSarah turned the photo over again, studying the water, the trees, the single figure standing at the shore. The figure's face was deliberately obscured by a smudge of thumb, as if someone had tried to erase it.\n\nShe'd been a detective for twelve years. She'd learned that most mysteries had ordinary answers: greed, passion, rage. But something about this photograph—the deliberate hiding place, the cryptic message, the erased face—told her this case was different.\n\nThis photograph wasn't evidence of a crime.\n\nIt was a warning.",      "type": "text"    }  ],  "gatewayMetadata": {    "keySource": "BYOK"  },  "id": "msg_01TG861uc7b1Tbn664aaCLPf",  "model": "claude-haiku-4-5-20251001",  "role": "assistant",  "stop_details": null,  "stop_reason": "end_turn",  "stop_sequence": null,  "type": "message",  "usage": {    "input_tokens": 21,    "output_tokens": 269  }}
+```json
+{
+  "content": [
+    {
+      "text": "# The Photograph\n\nDetective Sarah Chen stood in the victim's apartment, her latex gloves snapping softly as she examined the bookshelf for the third time. The case had gone cold within hours—no signs of forced entry, no witnesses, no motive that made sense.\n\nThen she saw it.\n\nWedged behind a row of paperbacks, barely visible, was a Polaroid photograph. Sarah's breath caught. Not because of what it showed—a lake at sunset, unremarkable—but because of what was written on the back in faded blue ink:\n\n*\"The day before everything changed.\"*\n\nAnd underneath, a date: twenty-three years ago.\n\nSarah turned the photo over again, studying the water, the trees, the single figure standing at the shore. The figure's face was deliberately obscured by a smudge of thumb, as if someone had tried to erase it.\n\nShe'd been a detective for twelve years. She'd learned that most mysteries had ordinary answers: greed, passion, rage. But something about this photograph—the deliberate hiding place, the cryptic message, the erased face—told her this case was different.\n\nThis photograph wasn't evidence of a crime.\n\nIt was a warning.",
+      "type": "text"
+    }
+  ],
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "id": "msg_01TG861uc7b1Tbn664aaCLPf",
+  "model": "claude-haiku-4-5-20251001",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "input_tokens": 21,
+    "output_tokens": 269
+  }
+}
 ```
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-144)
-* [ cURL ](#tab-panel-145)
+* [ TypeScript ](#tab-panel-162)
+* [ cURL ](#tab-panel-163)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'anthropic/claude-haiku-4.5',
+  {
+    max_tokens: 1024,
+    messages: [{ content: 'Explain the concept of recursion with a simple example.', role: 'user' }],
+    stream: true,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'anthropic/claude-haiku-4.5',  {    max_tokens: 1024,    messages: [{ content: 'Explain the concept of recursion with a simple example.', role: 'user' }],    stream: true,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "anthropic/claude-haiku-4.5",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "Explain the concept of recursion with a simple example.",
+      "role": "user"
+    }
+  ],
+  "stream": true
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "anthropic/claude-haiku-4.5",  "max_tokens": 1024,  "messages": [    {      "content": "Explain the concept of recursion with a simple example.",      "role": "user"    }  ],  "stream": true}'
-```
-
-* [ Output ](#tab-panel-152)
-* [ Raw response ](#tab-panel-153)
+* [ Output ](#tab-panel-170)
+* [ Raw response ](#tab-panel-171)
 
 # Recursion Explained
 
@@ -335,30 +536,208 @@ It's like opening Russian nesting dolls:
 
 Recursion is elegant but always ensure you have a clear base case!
 
-```
-[  {    "message": {      "content": [],      "id": "msg_01KvQp2GZvMb9V166tjgWh8q",      "model": "claude-haiku-4-5-20251001",      "role": "assistant",      "stop_details": null,      "stop_reason": null,      "stop_sequence": null,      "type": "message",      "usage": {        "cache_creation": {          "ephemeral_1h_input_tokens": 0,          "ephemeral_5m_input_tokens": 0        },        "cache_creation_input_tokens": 0,        "cache_read_input_tokens": 0,        "inference_geo": "not_available",        "input_tokens": 19,        "output_tokens": 2,        "service_tier": "standard"      }    },    "type": "message_start"  },  {    "content_block": {      "text": "",      "type": "text"    },    "index": 0,    "type": "content_block_start"  },  {    "type": "ping"  },  {    "delta": {      "text": "#",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " Recursion Explained\n\n**Recursion** is when a function calls itself to solve smaller instances of the same problem until it reaches a simple",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " base case.\n\n## Key Components\n\n1. **Base Case**: The condition that stops the recursion\n2. **Recursive Case**: The function",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " calling itself with a simpler input\n\n## Simple Example: Factorial\n\nCalculate 5! (5 ×",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " 4 × 3 × 2 × 1)\n\n```python\ndef factorial(n):\n    # Base case: stop here\n    if n == 1:\n        return 1\n    ",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": "\n    # Recursive case: break problem into smaller piece\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # Output: 120\n```\n\n### How It Works\n\n```",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": "\nfactorial(5)\n→ 5 * factorial(4)\n  → 4 * factorial(3)\n    → 3 * factorial(2",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": ")\n      → 2 * factorial(1)\n        → return 1  [BASE CASE]\n      → return 2 ",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": "* 1 = 2\n    → return 3 * 2 = 6\n  → return 4 * 6 = 24\n→ return 5 * 24 =",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " 120\n```\n\n## Real-World Analogy\n\nIt's like opening Russian nesting dolls:\n- Open a d",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": "oll → find a smaller doll inside\n- Open that doll → find an even smaller one\n- Keep",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " going until you reach the tiniest doll (base case)\n- Now work backwards: you've",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " reached the smallest piece\n\n## Why Use Recursion?\n\n✅ **Good for**: Problems with naturally recursive structure (",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": "trees, nested data, divide-and-conquer)  \n⚠️ **Caution**: Can be",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " slow and cause stack overflow if not careful\n\nRecursion is elegant but always ensure",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "delta": {      "text": " you have a clear base case!",      "type": "text_delta"    },    "index": 0,    "type": "content_block_delta"  },  {    "index": 0,    "type": "content_block_stop"  },  {    "delta": {      "stop_details": null,      "stop_reason": "end_turn",      "stop_sequence": null    },    "type": "message_delta",    "usage": {      "cache_creation_input_tokens": 0,      "cache_read_input_tokens": 0,      "input_tokens": 19,      "output_tokens": 444    }  },  {    "type": "message_stop"  }]
+```json
+[
+  {
+    "message": {
+      "content": [],
+      "id": "msg_01KvQp2GZvMb9V166tjgWh8q",
+      "model": "claude-haiku-4-5-20251001",
+      "role": "assistant",
+      "stop_details": null,
+      "stop_reason": null,
+      "stop_sequence": null,
+      "type": "message",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "not_available",
+        "input_tokens": 19,
+        "output_tokens": 2,
+        "service_tier": "standard"
+      }
+    },
+    "type": "message_start"
+  },
+  {
+    "content_block": {
+      "text": "",
+      "type": "text"
+    },
+    "index": 0,
+    "type": "content_block_start"
+  },
+  {
+    "type": "ping"
+  },
+  {
+    "delta": {
+      "text": "#",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " Recursion Explained\n\n**Recursion** is when a function calls itself to solve smaller instances of the same problem until it reaches a simple",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " base case.\n\n## Key Components\n\n1. **Base Case**: The condition that stops the recursion\n2. **Recursive Case**: The function",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " calling itself with a simpler input\n\n## Simple Example: Factorial\n\nCalculate 5! (5 ×",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " 4 × 3 × 2 × 1)\n\n```python\ndef factorial(n):\n    # Base case: stop here\n    if n == 1:\n        return 1\n    ",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": "\n    # Recursive case: break problem into smaller piece\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # Output: 120\n```\n\n### How It Works\n\n```",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": "\nfactorial(5)\n→ 5 * factorial(4)\n  → 4 * factorial(3)\n    → 3 * factorial(2",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": ")\n      → 2 * factorial(1)\n        → return 1  [BASE CASE]\n      → return 2 ",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": "* 1 = 2\n    → return 3 * 2 = 6\n  → return 4 * 6 = 24\n→ return 5 * 24 =",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " 120\n```\n\n## Real-World Analogy\n\nIt's like opening Russian nesting dolls:\n- Open a d",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": "oll → find a smaller doll inside\n- Open that doll → find an even smaller one\n- Keep",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " going until you reach the tiniest doll (base case)\n- Now work backwards: you've",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " reached the smallest piece\n\n## Why Use Recursion?\n\n✅ **Good for**: Problems with naturally recursive structure (",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": "trees, nested data, divide-and-conquer)  \n⚠️ **Caution**: Can be",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " slow and cause stack overflow if not careful\n\nRecursion is elegant but always ensure",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "delta": {
+      "text": " you have a clear base case!",
+      "type": "text_delta"
+    },
+    "index": 0,
+    "type": "content_block_delta"
+  },
+  {
+    "index": 0,
+    "type": "content_block_stop"
+  },
+  {
+    "delta": {
+      "stop_details": null,
+      "stop_reason": "end_turn",
+      "stop_sequence": null
+    },
+    "type": "message_delta",
+    "usage": {
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "input_tokens": 19,
+      "output_tokens": 444
+    }
+  },
+  {
+    "type": "message_stop"
+  }
+]
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-154)
-* [ Output ](#tab-panel-155)
-
-max\_tokens
-
-`number`requiredexclusiveMinimum: 0
+* [ Input ](#tab-panel-172)
+* [ Output ](#tab-panel-173)
 
 ▶messages\[\]
 
 `array`required
 
-▶metadata{}
+max\_tokens
 
-`object`
-
-stream
-
-`boolean`
+`number`requiredexclusiveMinimum: 0
 
 system
 
@@ -366,39 +745,47 @@ system
 
 temperature
 
-`number`maximum: 1minimum: 0
+`number`minimum: 0maximum: 1
+
+top\_p
+
+`number`minimum: 0maximum: 1
 
 top\_k
 
 `number`exclusiveMinimum: 0
 
-top\_p
+stream
 
-`number`maximum: 1minimum: 0
+`boolean`
 
-▶content\[\]
+▶metadata{}
 
-`array`
+`object`
 
 id
 
 `string`
 
-model
+type
 
-`string`
+`string`const: message
 
 role
 
 `string`const: assistant
 
+▶content\[\]
+
+`array`
+
+model
+
+`string`
+
 stop\_reason
 
 `string | null`
-
-type
-
-`string`const: message
 
 ▶usage{}
 

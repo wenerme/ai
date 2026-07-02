@@ -40,13 +40,47 @@ API example
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Write`
-Create DNS Record
+
+**Create DNS Record**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "A",
+    "name": "mail.example.com",
+    "content": "192.0.2.1",
+    "ttl": 3600,
+    "proxied": false
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "A",    "name": "mail.example.com",    "content": "192.0.2.1",    "ttl": 3600,    "proxied": false  }'
-```
-Response
-```
-{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "mail.example.com",    "type": "A",    "content": "192.0.2.1",    "proxiable": true,    "proxied": false,    "ttl": 3600,    "locked": false,    "meta": {      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2023-01-17T20:37:05.368097Z",    "modified_on": "2023-01-17T20:37:05.368097Z"  },  "success": true,  "errors": [],  "messages": []}
+
+**Response**
+```json
+{
+  "result": {
+    "id": "<ID>",
+    "zone_id": "<ZONE_ID>",
+    "zone_name": "example.com",
+    "name": "mail.example.com",
+    "type": "A",
+    "content": "192.0.2.1",
+    "proxiable": true,
+    "proxied": false,
+    "ttl": 3600,
+    "locked": false,
+    "meta": {
+      "source": "primary"
+    },
+    "comment": null,
+    "tags": [],
+    "created_on": "2023-01-17T20:37:05.368097Z",
+    "modified_on": "2023-01-17T20:37:05.368097Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 3. [Add an MX record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that points to that subdomain.
 
@@ -57,13 +91,48 @@ API example
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Write`
-Create DNS Record
+
+**Create DNS Record**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "MX",
+    "name": "example.com",
+    "content": "mail.example.com",
+    "priority": 5,
+    "ttl": 3600
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "MX",    "name": "example.com",    "content": "mail.example.com",    "priority": 5,    "ttl": 3600  }'
-```
-Response
-```
-{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "example.com",    "type": "MX",    "content": "mail.example.com",    "priority": 5,    "proxiable": false,    "proxied": false,    "ttl": 3600,    "locked": false,    "meta": {      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2023-01-17T20:54:23.660869Z",    "modified_on": "2023-01-17T20:54:23.660869Z"  },  "success": true,  "errors": [],  "messages": []}
+
+**Response**
+```json
+{
+  "result": {
+    "id": "<ID>",
+    "zone_id": "<ZONE_ID>",
+    "zone_name": "example.com",
+    "name": "example.com",
+    "type": "MX",
+    "content": "mail.example.com",
+    "priority": 5,
+    "proxiable": false,
+    "proxied": false,
+    "ttl": 3600,
+    "locked": false,
+    "meta": {
+      "source": "primary"
+    },
+    "comment": null,
+    "tags": [],
+    "created_on": "2023-01-17T20:54:23.660869Z",
+    "modified_on": "2023-01-17T20:54:23.660869Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Note

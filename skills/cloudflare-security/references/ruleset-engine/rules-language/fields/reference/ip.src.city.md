@@ -18,7 +18,7 @@ The city associated with the client IP address.
 
 Example value:
 
-```
+```txt
 "San Francisco"
 ```
 

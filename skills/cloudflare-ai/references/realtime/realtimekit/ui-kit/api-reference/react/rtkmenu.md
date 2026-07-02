@@ -28,16 +28,30 @@ A menu component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMenu } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMenu />;}
+
+
+function MyComponent() {
+  return <RtkMenu />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMenu } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMenu      offset={42}      placement={placement}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenu
+      offset={42}
+      placement={placement}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

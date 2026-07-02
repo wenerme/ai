@@ -24,16 +24,27 @@ Renders an SVG icon from an icon string, applying the current theme text color.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkIcon } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkIcon icon={svgIconString} />;}
+
+
+function MyComponent() {
+  return <RtkIcon icon={svgIconString} />;
+}
 ```
 
 ### With Properties
 
-```
-import {  RtkIcon,  defaultIconPack,} from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkIcon icon={defaultIconPack.mic_on} />;}
+```tsx
+import {
+  RtkIcon,
+  defaultIconPack,
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function MyComponent() {
+  return <RtkIcon icon={defaultIconPack.mic_on} />;
+}
 ```
 
 ```json

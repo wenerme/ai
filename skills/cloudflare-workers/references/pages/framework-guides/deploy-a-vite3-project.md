@@ -32,48 +32,53 @@ yarn create vite
 pnpm create vite@latest
 ```
 
-```
-✔ Project name: … vite-on-pages✔ Select a framework: › vue✔ Select a variant: › vue
+```sh
+✔ Project name: … vite-on-pages
+✔ Select a framework: › vue
+✔ Select a variant: › vue
+
+
 Scaffolding project in ~/src/vite-on-pages...
+
+
 Done. Now run:
-  cd vite-on-pages  npm install  npm run dev
+
+
+  cd vite-on-pages
+  npm install
+  npm run dev
 ```
 
 You will now create a new GitHub repository, and push your code using [GitHub's gh command line (CLI) ↗](https://cli.github.com):
 
-Terminal window
-
-```
+```sh
 git init
 ```
 
-```
+```sh
 Initialized empty Git repository in ~/vite-vue3-on-pages/.git/
 ```
 
-Terminal window
-
-```
-git add .git commit -m "Initial commit"                                           vite-vue3-on-pages/git/main +
-```
-
-```
-[main (root-commit) dad4177] Initial commit 14 files changed, 1452 insertions(+)
+```sh
+git add .
+git commit -m "Initial commit"                                           vite-vue3-on-pages/git/main +
 ```
 
-Terminal window
-
+```sh
+[main (root-commit) dad4177] Initial commit
+ 14 files changed, 1452 insertions(+)
 ```
+
+```sh
 gh repo create
 ```
 
-```
-✓ Created repository kristianfreeman/vite-vue3-on-pages on GitHub✓ Added remote git@github.com:kristianfreeman/vite-vue3-on-pages.git
+```sh
+✓ Created repository kristianfreeman/vite-vue3-on-pages on GitHub
+✓ Added remote git@github.com:kristianfreeman/vite-vue3-on-pages.git
 ```
 
-Terminal window
-
-```
+```sh
 git push
 ```
 

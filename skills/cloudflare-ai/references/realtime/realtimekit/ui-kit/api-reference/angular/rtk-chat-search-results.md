@@ -28,14 +28,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-search-results></rtk-chat-search-results>
+```html
+<!-- component.html -->
+<rtk-chat-search-results></rtk-chat-search-results>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-search-results channelId="example" [meeting]="meeting" query="example"></rtk-chat-search-results>
+```html
+<!-- component.html -->
+<rtk-chat-search-results
+ channelId="example"
+ [meeting]="meeting"
+ query="example">
+</rtk-chat-search-results>
 ```
 
 ```json

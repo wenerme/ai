@@ -26,16 +26,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkVirtualizedParticipantList } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkVirtualizedParticipantList />;}
+
+
+function MyComponent() {
+  return <RtkVirtualizedParticipantList />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkVirtualizedParticipantList } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkVirtualizedParticipantList      bufferedItemsCount={42}      emptyListElement={htmlelement}      itemHeight={42}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkVirtualizedParticipantList
+      bufferedItemsCount={42}
+      emptyListElement={htmlelement}
+      itemHeight={42}
+    />
+  );
+}
 ```
 
 ```json

@@ -14,18 +14,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To create a new key-value pair, or to update the value for a particular key, call the `put()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9053)
-* [  Python ](#tab-panel-9054)
+* [  JavaScript ](#tab-panel-9344)
+* [  Python ](#tab-panel-9345)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 env.NAMESPACE.put(key, value);
 ```
 
-Python
+**Python**
 
-```
+```py
 self.env.NAMESPACE.put(key, value)
 ```
 
@@ -33,22 +33,43 @@ self.env.NAMESPACE.put(key, value)
 
 An example of writing a key-value pair from within a Worker:
 
-* [  JavaScript ](#tab-panel-9055)
-* [  Python ](#tab-panel-9056)
+* [  JavaScript ](#tab-panel-9346)
+* [  Python ](#tab-panel-9347)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      await env.NAMESPACE.put("first-key", "This is the value for the key");
+
+
+      return new Response("Successful write", {
+        status: 201,
+      });
+    } catch (e) {
+      return new Response(e.message, { status: 500 });
+    }
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    try {      await env.NAMESPACE.put("first-key", "This is the value for the key");
-      return new Response("Successful write", {        status: 201,      });    } catch (e) {      return new Response(e.message, { status: 500 });    }  },};
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        try:            await self.env.NAMESPACE.put("first-key", "This is the value for the key")
-            return Response("Successful write", status=201)        except Exception as e:            return Response(str(e), status=500)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        try:
+            await self.env.NAMESPACE.put("first-key", "This is the value for the key")
+
+
+            return Response("Successful write", status=201)
+        except Exception as e:
+            return Response(str(e), status=500)
 ```
 
 ## Reference
@@ -61,18 +82,18 @@ The following method is provided to write to KV:
 
 To create a new key-value pair, or to update the value for a particular key, call the `put()` method on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9057)
-* [  Python ](#tab-panel-9058)
+* [  JavaScript ](#tab-panel-9348)
+* [  Python ](#tab-panel-9349)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 env.NAMESPACE.put(key, value, options?);
 ```
 
-Python
+**Python**
 
-```
+```py
 self.env.NAMESPACE.put(key, value, options)
 ```
 
@@ -139,20 +160,28 @@ Expiration targets that are less than 60 seconds into the future are not support
 
 To create expiring keys, set `expiration` in the `put()` options to a number representing the seconds since epoch, or set `expirationTtl` in the `put()` options to a number representing the seconds from now:
 
-* [  JavaScript ](#tab-panel-9059)
-* [  Python ](#tab-panel-9060)
+* [  JavaScript ](#tab-panel-9350)
+* [  Python ](#tab-panel-9351)
 
-JavaScript
+**JavaScript**
 
+```js
+await env.NAMESPACE.put(key, value, {
+  expiration: secondsSinceEpoch,
+});
+
+
+await env.NAMESPACE.put(key, value, {
+  expirationTtl: secondsFromNow,
+});
 ```
-await env.NAMESPACE.put(key, value, {  expiration: secondsSinceEpoch,});
-await env.NAMESPACE.put(key, value, {  expirationTtl: secondsFromNow,});
-```
 
-Python
+**Python**
 
-```
+```py
 await self.env.NAMESPACE.put(key, value, expiration=seconds_since_epoch)
+
+
 await self.env.NAMESPACE.put(key, value, expirationTtl=seconds_from_now)
 ```
 
@@ -162,18 +191,20 @@ These assume that `secondsSinceEpoch`/`seconds_since_epoch` and `secondsFromNow`
 
 To associate metadata with a key-value pair, set `metadata` in the `put()` options to an object (serializable to JSON):
 
-* [  JavaScript ](#tab-panel-9061)
-* [  Python ](#tab-panel-9062)
+* [  JavaScript ](#tab-panel-9352)
+* [  Python ](#tab-panel-9353)
 
-JavaScript
+**JavaScript**
 
+```js
+await env.NAMESPACE.put(key, value, {
+  metadata: { someMetadataKey: "someMetadataValue" },
+});
 ```
-await env.NAMESPACE.put(key, value, {  metadata: { someMetadataKey: "someMetadataValue" },});
-```
 
-Python
+**Python**
 
-```
+```py
 await self.env.NAMESPACE.put(key, value, metadata={"someMetadataKey": "someMetadataValue"})
 ```
 
@@ -185,60 +216,251 @@ You should not write more than once per second to the same key. Consider consoli
 
 The following example serves as a demonstration of how multiple writes to the same key may return errors by forcing concurrent writes within a single Worker invocation. This is not a pattern that should be used in production.
 
-* [  TypeScript ](#tab-panel-9063)
-* [  Python ](#tab-panel-9064)
+* [  TypeScript ](#tab-panel-9354)
+* [  Python ](#tab-panel-9355)
 
-TypeScript
+**TypeScript**
 
+```typescript
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    // Rest of code omitted
+    const key = "common-key";
+    const parallelWritesCount = 20;
+
+
+    // Helper function to attempt a write to KV and handle errors
+    const attemptWrite = async (i: number) => {
+      try {
+        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);
+        return { attempt: i, success: true };
+      } catch (error) {
+        // An error may be thrown if a write to the same key is made within 1 second with a message. For example:
+        // error: {
+        //  "message": "KV PUT failed: 429 Too Many Requests"
+        // }
+
+
+        return {
+          attempt: i,
+          success: false,
+          error: { message: (error as Error).message },
+        };
+      }
+    };
+
+
+    // Send all requests in parallel and collect results
+    const results = await Promise.all(
+      Array.from({ length: parallelWritesCount }, (_, i) =>
+        attemptWrite(i + 1),
+      ),
+    );
+    // Results will look like:
+    // [
+    //     {
+    //       "attempt": 1,
+    //       "success": true
+    //     },
+    //    {
+    //       "attempt": 2,
+    //       "success": false,
+    //       "error": {
+    //         "message": "KV PUT failed: 429 Too Many Requests"
+    //       }
+    //     },
+    //     ...
+    // ]
+
+
+    return new Response(JSON.stringify(results), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
-export default {  async fetch(request, env, ctx): Promise<Response> {    // Rest of code omitted    const key = "common-key";    const parallelWritesCount = 20;
-    // Helper function to attempt a write to KV and handle errors    const attemptWrite = async (i: number) => {      try {        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);        return { attempt: i, success: true };      } catch (error) {        // An error may be thrown if a write to the same key is made within 1 second with a message. For example:        // error: {        //  "message": "KV PUT failed: 429 Too Many Requests"        // }
-        return {          attempt: i,          success: false,          error: { message: (error as Error).message },        };      }    };
-    // Send all requests in parallel and collect results    const results = await Promise.all(      Array.from({ length: parallelWritesCount }, (_, i) =>        attemptWrite(i + 1),      ),    );    // Results will look like:    // [    //     {    //       "attempt": 1,    //       "success": true    //     },    //    {    //       "attempt": 2,    //       "success": false,    //       "error": {    //         "message": "KV PUT failed: 429 Too Many Requests"    //       }    //     },    //     ...    // ]
-    return new Response(JSON.stringify(results), {      headers: { "Content-Type": "application/json" },    });  },};
-```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responseimport asyncio
-class Default(WorkerEntrypoint):    async def fetch(self, request):        key = "common-key"        parallel_writes_count = 20
-        async def attempt_write(i):            try:                await self.env.YOUR_KV_NAMESPACE.put(key, f"Write attempt #{i}")                return {"attempt": i, "success": True}            except Exception as error:                # An error may be thrown if a write to the same key is made                # within 1 second with a message like:                # "KV PUT failed: 429 Too Many Requests"                return {"attempt": i, "success": False, "error": {"message": str(error)}}
-        results = await asyncio.gather(            *[attempt_write(i + 1) for i in range(parallel_writes_count)]        )
-        # Results will look like:        # [        #     {        #         "attempt": 1,        #         "success": True        #     },        #     {        #         "attempt": 2,        #         "success": False,        #         "error": {        #             "message": "KV PUT failed: 429 Too Many Requests"        #         }        #     },        #     ...        # ]
+```py
+from workers import WorkerEntrypoint, Response
+import asyncio
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        key = "common-key"
+        parallel_writes_count = 20
+
+
+        async def attempt_write(i):
+            try:
+                await self.env.YOUR_KV_NAMESPACE.put(key, f"Write attempt #{i}")
+                return {"attempt": i, "success": True}
+            except Exception as error:
+                # An error may be thrown if a write to the same key is made
+                # within 1 second with a message like:
+                # "KV PUT failed: 429 Too Many Requests"
+                return {"attempt": i, "success": False, "error": {"message": str(error)}}
+
+
+        results = await asyncio.gather(
+            *[attempt_write(i + 1) for i in range(parallel_writes_count)]
+        )
+
+
+        # Results will look like:
+        # [
+        #     {
+        #         "attempt": 1,
+        #         "success": True
+        #     },
+        #     {
+        #         "attempt": 2,
+        #         "success": False,
+        #         "error": {
+        #             "message": "KV PUT failed: 429 Too Many Requests"
+        #         }
+        #     },
+        #     ...
+        # ]
+
+
         return Response.json(list(results))
 ```
 
 To handle these errors, we recommend implementing a retry logic, with exponential backoff. Here is a simple approach to add retries to the above code.
 
-* [  TypeScript ](#tab-panel-9065)
-* [  Python ](#tab-panel-9066)
+* [  TypeScript ](#tab-panel-9356)
+* [  Python ](#tab-panel-9357)
 
-TypeScript
+**TypeScript**
 
+```typescript
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    // Rest of code omitted
+    const key = "common-key";
+    const parallelWritesCount = 20;
+
+
+    // Helper function to attempt a write to KV with retries
+    const attemptWrite = async (i: number) => {
+      return await retryWithBackoff(async () => {
+        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);
+        return { attempt: i, success: true };
+      });
+    };
+
+
+    // Send all requests in parallel and collect results
+    const results = await Promise.all(
+      Array.from({ length: parallelWritesCount }, (_, i) =>
+        attemptWrite(i + 1),
+      ),
+    );
+
+
+    return new Response(JSON.stringify(results), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
+
+
+async function retryWithBackoff(
+  fn: Function,
+  maxAttempts = 5,
+  initialDelay = 1000,
+) {
+  let attempts = 0;
+  let delay = initialDelay;
+
+
+  while (attempts < maxAttempts) {
+    try {
+      // Attempt the function
+      return await fn();
+    } catch (error) {
+      // Check if the error is a rate limit error
+      if (
+        (error as Error).message.includes(
+          "KV PUT failed: 429 Too Many Requests",
+        )
+      ) {
+        attempts++;
+        if (attempts >= maxAttempts) {
+          throw new Error("Max retry attempts reached");
+        }
+
+
+        // Wait for the backoff period
+        console.warn(`Attempt ${attempts} failed. Retrying in ${delay} ms...`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+
+
+        // Exponential backoff
+        delay *= 2;
+      } else {
+        // If it's a different error, rethrow it
+        throw error;
+      }
+    }
+  }
+}
 ```
-export default {  async fetch(request, env, ctx): Promise<Response> {    // Rest of code omitted    const key = "common-key";    const parallelWritesCount = 20;
-    // Helper function to attempt a write to KV with retries    const attemptWrite = async (i: number) => {      return await retryWithBackoff(async () => {        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);        return { attempt: i, success: true };      });    };
-    // Send all requests in parallel and collect results    const results = await Promise.all(      Array.from({ length: parallelWritesCount }, (_, i) =>        attemptWrite(i + 1),      ),    );
-    return new Response(JSON.stringify(results), {      headers: { "Content-Type": "application/json" },    });  },};
-async function retryWithBackoff(  fn: Function,  maxAttempts = 5,  initialDelay = 1000,) {  let attempts = 0;  let delay = initialDelay;
-  while (attempts < maxAttempts) {    try {      // Attempt the function      return await fn();    } catch (error) {      // Check if the error is a rate limit error      if (        (error as Error).message.includes(          "KV PUT failed: 429 Too Many Requests",        )      ) {        attempts++;        if (attempts >= maxAttempts) {          throw new Error("Max retry attempts reached");        }
-        // Wait for the backoff period        console.warn(`Attempt ${attempts} failed. Retrying in ${delay} ms...`);        await new Promise((resolve) => setTimeout(resolve, delay));
-        // Exponential backoff        delay *= 2;      } else {        // If it's a different error, rethrow it        throw error;      }    }  }}
-```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responseimport asyncio
-class Default(WorkerEntrypoint):    async def fetch(self, request):        key = "common-key"        parallel_writes_count = 20
-        async def attempt_write(i):            return await retry_with_backoff(                lambda: self.env.YOUR_KV_NAMESPACE.put(key, f"Write attempt #{i}"),                success_result={"attempt": i, "success": True},            )
-        results = await asyncio.gather(            *[attempt_write(i + 1) for i in range(parallel_writes_count)]        )
+```py
+from workers import WorkerEntrypoint, Response
+import asyncio
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        key = "common-key"
+        parallel_writes_count = 20
+
+
+        async def attempt_write(i):
+            return await retry_with_backoff(
+                lambda: self.env.YOUR_KV_NAMESPACE.put(key, f"Write attempt #{i}"),
+                success_result={"attempt": i, "success": True},
+            )
+
+
+        results = await asyncio.gather(
+            *[attempt_write(i + 1) for i in range(parallel_writes_count)]
+        )
+
+
         return Response.json(list(results))
-async def retry_with_backoff(fn, success_result, max_attempts=5, initial_delay=1.0):    attempts = 0    delay = initial_delay
-    while attempts < max_attempts:        try:            await fn()            return success_result        except Exception as error:            if "KV PUT failed: 429 Too Many Requests" in str(error):                attempts += 1                if attempts >= max_attempts:                    raise Exception("Max retry attempts reached")
-                print(f"Attempt {attempts} failed. Retrying in {delay}s...")                await asyncio.sleep(delay)
-                delay *= 2            else:                raise
+
+
+async def retry_with_backoff(fn, success_result, max_attempts=5, initial_delay=1.0):
+    attempts = 0
+    delay = initial_delay
+
+
+    while attempts < max_attempts:
+        try:
+            await fn()
+            return success_result
+        except Exception as error:
+            if "KV PUT failed: 429 Too Many Requests" in str(error):
+                attempts += 1
+                if attempts >= max_attempts:
+                    raise Exception("Max retry attempts reached")
+
+
+                print(f"Attempt {attempts} failed. Retrying in {delay}s...")
+                await asyncio.sleep(delay)
+
+
+                delay *= 2
+            else:
+                raise
 ```
 
 ## Other methods to access KV

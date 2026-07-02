@@ -31,9 +31,9 @@ To make a `POST` call, you must have zone-scoped `edit` permissions, such as Sup
 
 ### Check log retention status
 
-* [ Linux ](#tab-panel-9465)
-* [ CMD ](#tab-panel-9466)
-* [ PowerShell ](#tab-panel-9467)
+* [ Linux ](#tab-panel-9756)
+* [ CMD ](#tab-panel-9757)
+* [ PowerShell ](#tab-panel-9758)
 
 Required API token permissions
 
@@ -41,88 +41,120 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-Get log retention flag
+**Get log retention flag**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-
-```
-curl.exe "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag" ^--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-PowerShell
-
+```txt
+curl.exe "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag" ^
+--header "Authorization: Bearer <API_TOKEN>"
 ```
-$uri = "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag"$headers = @{"Authorization" = "Bearer <API_TOKEN>"}Invoke-RestMethod -Uri $uri -Method Get -Headers $headers
+
+**PowerShell**
+
+```powershell
+$uri = "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag"
+$headers = @{"Authorization" = "Bearer <API_TOKEN>"}
+Invoke-RestMethod -Uri $uri -Method Get -Headers $headers
 ```
 
 If the zone has log retention [enabled](https://developers.cloudflare.com/logs/logpull/enabling-log-retention/#enabled-response) you get the value `true`, whereas a value of `false` is returned when it is [disabled](https://developers.cloudflare.com/logs/logpull/enabling-log-retention/#disabled-response).
 
 ### Turn on log retention
 
-* [ Linux ](#tab-panel-9468)
-* [ CMD ](#tab-panel-9469)
-* [ PowerShell ](#tab-panel-9470)
+* [ Linux ](#tab-panel-9759)
+* [ CMD ](#tab-panel-9760)
+* [ PowerShell ](#tab-panel-9761)
 
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Update log retention flag
+**Update log retention flag**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "flag": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "flag": true
+  }'
 ```
 
-```
-curl.exe "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag" ^--request POST ^--header "Authorization: Bearer <API_TOKEN>" ^--header "Content-Type: application/json" ^--data "{""flag"": true}"
+```txt
+curl.exe "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag" ^
+--request POST ^
+--header "Authorization: Bearer <API_TOKEN>" ^
+--header "Content-Type: application/json" ^
+--data "{""flag"": true}"
 ```
 
-PowerShell
+**PowerShell**
 
-```
-$uri = "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag"$headers = @{"Authorization" = "Bearer <API_TOKEN>"}$bodyFlag = @{flag = $true} | ConvertTo-JsonInvoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -ContentType "application/json"
+```powershell
+$uri = "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag"
+$headers = @{"Authorization" = "Bearer <API_TOKEN>"}
+$bodyFlag = @{flag = $true} | ConvertTo-Json
+Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -ContentType "application/json"
 ```
 
 #### Enabled response
 
-```
-{  "flag": true}
+```json
+{
+  "flag": true
+}
 ```
 
 ### Turn off log retention
 
-* [ Linux ](#tab-panel-9471)
-* [ CMD ](#tab-panel-9472)
-* [ PowerShell ](#tab-panel-9473)
+* [ Linux ](#tab-panel-9762)
+* [ CMD ](#tab-panel-9763)
+* [ PowerShell ](#tab-panel-9764)
 
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Update log retention flag
+**Update log retention flag**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "flag": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "flag": false
+  }'
 ```
 
-```
-curl.exe "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag" ^--header "Authorization: Bearer <API_TOKEN>" ^--header "Content-Type: application/json" ^--data "{""flag"": false}"
+```txt
+curl.exe "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag" ^
+--header "Authorization: Bearer <API_TOKEN>" ^
+--header "Content-Type: application/json" ^
+--data "{""flag"": false}"
 ```
 
-PowerShell
+**PowerShell**
 
-```
-$uri = "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag"$headers = @{"Authorization" = "Bearer <API_TOKEN>"}$bodyFlag = @{flag = $false} | ConvertTo-JsonInvoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -ContentType "application/json"
+```powershell
+$uri = "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/control/retention/flag"
+$headers = @{"Authorization" = "Bearer <API_TOKEN>"}
+$bodyFlag = @{flag = $false} | ConvertTo-Json
+Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -ContentType "application/json"
 ```
 
 #### Disabled response
 
-```
-{  "flag": false}
+```json
+{
+  "flag": false
+}
 ```
 
 ## Audit

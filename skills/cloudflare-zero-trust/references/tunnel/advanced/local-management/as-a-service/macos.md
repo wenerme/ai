@@ -35,9 +35,7 @@ You can install the service to either run at login or at boot.
 
 Open a terminal window and run the following command:
 
-Terminal window
-
-```
+```sh
 cloudflared service install
 ```
 
@@ -47,9 +45,7 @@ Cloudflare Tunnel will be installed as a launch agent and start whenever you log
 
 Open a terminal window and run the following command:
 
-Terminal window
-
-```
+```sh
 sudo cloudflared service install
 ```
 
@@ -59,9 +55,7 @@ Cloudflare Tunnel will be installed as a launch daemon and start whenever your s
 
 Run the following command:
 
-Terminal window
-
-```
+```sh
 sudo launchctl start com.cloudflare.cloudflared
 ```
 
@@ -71,10 +65,9 @@ The output will be logged to `/Library/Logs/com.cloudflare.cloudflared.err.log` 
 
 You can now [route traffic through your tunnel](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/create-local-tunnel/#5-start-routing-traffic). If you add IP routes or otherwise change the configuration, restart the service to load the new configuration:
 
-Terminal window
-
-```
-sudo launchctl stop com.cloudflare.cloudflaredsudo launchctl start com.cloudflare.cloudflared
+```sh
+sudo launchctl stop com.cloudflare.cloudflared
+sudo launchctl start com.cloudflare.cloudflared
 ```
 
 ```json

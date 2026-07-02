@@ -31,20 +31,33 @@ Note
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkNameTag(  participant: participant,  size: 14.0,  color: Colors.white,)
+
+
+RtkNameTag(
+  participant: participant,
+  size: 14.0,
+  color: Colors.white,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkNameTag(  participant: participant,  size: 20.0,  color: Colors.white,  factor: 5,)
+
+
+RtkNameTag(
+  participant: participant,
+  size: 20.0,
+  color: Colors.white,
+  factor: 5,
+)
 ```
 
 ```json

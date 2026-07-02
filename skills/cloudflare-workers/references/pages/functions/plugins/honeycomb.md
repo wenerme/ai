@@ -38,20 +38,35 @@ bun add @cloudflare/pages-plugin-honeycomb
 
 The following usage example uses environment variables you will need to set in your Pages project settings.
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import honeycombPlugin from "@cloudflare/pages-plugin-honeycomb";
-export const onRequest: PagesFunction<{  HONEYCOMB_API_KEY: string;  HONEYCOMB_DATASET: string;}> = (context) => {  return honeycombPlugin({    apiKey: context.env.HONEYCOMB_API_KEY,    dataset: context.env.HONEYCOMB_DATASET,  })(context);};
+
+
+export const onRequest: PagesFunction<{
+  HONEYCOMB_API_KEY: string;
+  HONEYCOMB_DATASET: string;
+}> = (context) => {
+  return honeycombPlugin({
+    apiKey: context.env.HONEYCOMB_API_KEY,
+    dataset: context.env.HONEYCOMB_DATASET,
+  })(context);
+};
 ```
 
 Alternatively, you can hard-code (not advisable for API key) your settings the following way:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import honeycombPlugin from "@cloudflare/pages-plugin-honeycomb";
-export const onRequest = honeycombPlugin({  apiKey: "YOUR_HONEYCOMB_API_KEY",  dataset: "YOUR_HONEYCOMB_DATASET_NAME",});
+
+
+export const onRequest = honeycombPlugin({
+  apiKey: "YOUR_HONEYCOMB_API_KEY",
+  dataset: "YOUR_HONEYCOMB_DATASET_NAME",
+});
 ```
 
 This Plugin is based on the `@cloudflare/workers-honeycomb-logger` and accepts the same [configuration options ↗](https://github.com/cloudflare/workers-honeycomb-logger#config).
@@ -71,13 +86,26 @@ More information about these methods can be seen on [@cloudflare/workers-honeyco
 
 For example, if you wanted to use the `addData` method to attach user information:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import type { PluginData } from "@cloudflare/pages-plugin-honeycomb";
-export const onRequest: PagesFunction<unknown, any, PluginData> = async ({  data,  next,  request,}) => {  // Authenticate the user from the request and extract user's email address  const email = await getEmailFromRequest(request);
+
+
+export const onRequest: PagesFunction<unknown, any, PluginData> = async ({
+  data,
+  next,
+  request,
+}) => {
+  // Authenticate the user from the request and extract user's email address
+  const email = await getEmailFromRequest(request);
+
+
   data.honeycomb.tracer.addData({ email });
-  return next();};
+
+
+  return next();
+};
 ```
 
 ```json

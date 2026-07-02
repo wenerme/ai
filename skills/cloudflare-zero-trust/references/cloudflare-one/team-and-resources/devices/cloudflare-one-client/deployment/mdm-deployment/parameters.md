@@ -84,8 +84,11 @@ Enrolls the device in your Zero Trust organization using a [service token](https
 
 Example configuration:
 
-```
-<key>auth_client_id</key><string>88bf3b6d86161464f6509f7219099e57.access</string><key>auth_client_secret</key><string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
+```xml
+<key>auth_client_id</key>
+<string>88bf3b6d86161464f6509f7219099e57.access</string>
+<key>auth_client_secret</key>
+<string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
 ```
 
 Note
@@ -201,14 +204,74 @@ When using [multiple configurations](https://developers.cloudflare.com/cloudflar
 
 In version 2026.5.0 and above, use [organization\_configs](#organization%5Fconfigs) to set `environment` once per organization rather than repeating it in every config entry:
 
-```
-<dict>  <key>organization_configs</key>  <dict>    <key>mycompany-gov</key>    <dict>      <key>environment</key>      <string>fedramp_high</string>    </dict>  </dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>mycompany-gov</string>      <key>display_name</key>      <string>Production</string>    </dict>    <dict>      <key>organization</key>      <string>mycompany-gov</string>      <key>display_name</key>      <string>Staging</string>    </dict>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Test</string>      <key>environment</key>      <string>normal</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>organization_configs</key>
+  <dict>
+    <key>mycompany-gov</key>
+    <dict>
+      <key>environment</key>
+      <string>fedramp_high</string>
+    </dict>
+  </dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>mycompany-gov</string>
+      <key>display_name</key>
+      <string>Production</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>mycompany-gov</string>
+      <key>display_name</key>
+      <string>Staging</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Test</string>
+      <key>environment</key>
+      <string>normal</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 In earlier versions, each configuration for that organization must include `environment` explicitly:
 
-```
-<dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>mycompany-gov</string>      <key>display_name</key>      <string>Production</string>      <key>environment</key>      <string>fedramp_high</string>    </dict>    <dict>      <key>organization</key>      <string>mycompany-gov</string>      <key>display_name</key>      <string>Staging</string>      <key>environment</key>      <string>fedramp_high</string>    </dict>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Test</string>      <key>environment</key>      <string>normal</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>mycompany-gov</string>
+      <key>display_name</key>
+      <string>Production</string>
+      <key>environment</key>
+      <string>fedramp_high</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>mycompany-gov</string>
+      <key>display_name</key>
+      <string>Staging</string>
+      <key>environment</key>
+      <string>fedramp_high</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Test</string>
+      <key>environment</key>
+      <string>normal</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 ### `external_emergency_signal_fingerprint`
@@ -340,8 +403,11 @@ Allows you to choose the operational mode of the client.
 * `warp` — (default) [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default).
 * `1dot1` — [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode).
 * `proxy` — [Local proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). Use the `proxy_port` parameter to specify the localhost SOCKS proxy port (between `0`\-`66535`). For example,
-```
-<key>service_mode</key><string>proxy</string><key>proxy_port</key><integer>44444</integer>
+```xml
+<key>service_mode</key>
+<string>proxy</string>
+<key>proxy_port</key>
+<integer>44444</integer>
 ```
 * `postureonly` — [Posture only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode).
 * `tunnelonly` \- [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode).
@@ -454,8 +520,32 @@ Use `organization_configs` when you have multiple configurations for the same or
 
 Example configuration where `test-org` has two configs (Production and Staging), both enforced to use `fedramp_high` via `organization_configs`:
 
-```
-<dict>  <key>organization_configs</key>  <dict>    <key>test-org</key>    <dict>      <key>environment</key>      <string>fedramp_high</string>    </dict>  </dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Production</string>    </dict>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Staging</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>organization_configs</key>
+  <dict>
+    <key>test-org</key>
+    <dict>
+      <key>environment</key>
+      <string>fedramp_high</string>
+    </dict>
+  </dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Production</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Staging</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 ### `pre_login`

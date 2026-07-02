@@ -43,10 +43,24 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<PUBLIC_DOMAIN>",    "destination_conf": "https://<PUBLIC_DOMAIN>:<PUBLIC_PORT>?header_<SECRET_HEADER>=<SECRET_VALUE>",    "dataset": "http_requests",    "output_options": {        "field_names": [            "RayID",            "EdgeStartTimestamp"        ],        "timestamp_format": "rfc3339"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<PUBLIC_DOMAIN>",
+    "destination_conf": "https://<PUBLIC_DOMAIN>:<PUBLIC_PORT>?header_<SECRET_HEADER>=<SECRET_VALUE>",
+    "dataset": "http_requests",
+    "output_options": {
+        "field_names": [
+            "RayID",
+            "EdgeStartTimestamp"
+        ],
+        "timestamp_format": "rfc3339"
+    }
+  }'
 ```
 
 ## Enable the Integration in Elastic

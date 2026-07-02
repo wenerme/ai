@@ -143,6 +143,7 @@ The following options control semantic recall behavior:
 
 ```typescript {5-9}
 const agent = new Agent({
+  id: 'agent',
   memory: new Memory({
     options: {
       semanticRecall: {
@@ -164,6 +165,7 @@ The `filter` option restricts semantic recall results to messages with matching 
 
 ```typescript {5-10}
 const agent = new Agent({
+  id: 'agent',
   memory: new Memory({
     options: {
       semanticRecall: {
@@ -230,6 +232,7 @@ import { Agent } from '@mastra/core/agent'
 import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
 
 const agent = new Agent({
+  id: 'agent',
   memory: new Memory({
     embedder: new ModelRouterEmbeddingModel('openai/text-embedding-3-small'),
     options: {
@@ -251,6 +254,7 @@ import { Memory } from '@mastra/memory'
 import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
 
 const agent = new Agent({
+  id: 'agent',
   memory: new Memory({
     embedder: new ModelRouterEmbeddingModel({
       providerId: 'openrouter',
@@ -272,6 +276,7 @@ import { Agent } from '@mastra/core/agent'
 import { ModelRouterEmbeddingModel } from '@mastra/core/llm'
 
 const agent = new Agent({
+  id: 'agent',
   memory: new Memory({
     embedder: new ModelRouterEmbeddingModel('openai/text-embedding-3-small'),
   }),
@@ -294,6 +299,7 @@ import { Agent } from '@mastra/core/agent'
 import { fastembed } from '@mastra/fastembed'
 
 const agent = new Agent({
+  id: 'agent',
   memory: new Memory({
     embedder: fastembed,
   }),

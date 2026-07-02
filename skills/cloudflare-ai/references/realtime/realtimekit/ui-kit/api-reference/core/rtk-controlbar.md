@@ -31,19 +31,26 @@ Controlbar component provides you with various designs as variants.
 
 ### Basic Usage
 
-```
+```html
 <rtk-controlbar></rtk-controlbar>
 ```
 
 ### With Properties
 
-```
-<rtk-controlbar size="md"></rtk-controlbar>
+```html
+<rtk-controlbar
+ size="md">
+</rtk-controlbar>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-controlbar");
-  el.disableRender= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-controlbar");
+
+
+  el.disableRender= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

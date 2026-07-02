@@ -26,36 +26,73 @@ To fetch the Markdown version of any page from a zone with Markdown for Agents e
 
 Here's a curl example with the `Accept` negotiation header requesting this page from our developer documentation:
 
-Terminal window
-
-```
-curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/ \  -H "Accept: text/markdown"
+```bash
+curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/ \
+  -H "Accept: text/markdown"
 ```
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-8694)
-* [  TypeScript ](#tab-panel-8695)
+* [  JavaScript ](#tab-panel-8985)
+* [  TypeScript ](#tab-panel-8986)
 
-JavaScript
+**JavaScript**
 
+```js
+const r = await fetch(
+  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
+  {
+    headers: {
+      Accept: "text/markdown",
+    },
+  },
+);
+const tokenCount = r.headers.get("x-markdown-tokens");
+const originalTokenCount = r.headers.get("x-original-tokens");
+const markdown = await r.text();
 ```
-const r = await fetch(  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,  {    headers: {      Accept: "text/markdown",    },  },);const tokenCount = r.headers.get("x-markdown-tokens");const originalTokenCount = r.headers.get("x-original-tokens");const markdown = await r.text();
-```
 
-TypeScript
+**TypeScript**
 
-```
-const r = await fetch(  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,  {    headers: {      Accept: "text/markdown",    },  },);const tokenCount = r.headers.get("x-markdown-tokens");const originalTokenCount = r.headers.get("x-original-tokens");const markdown = await r.text();
+```ts
+const r = await fetch(
+  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
+  {
+    headers: {
+      Accept: "text/markdown",
+    },
+  },
+);
+const tokenCount = r.headers.get("x-markdown-tokens");
+const originalTokenCount = r.headers.get("x-original-tokens");
+const markdown = await r.text();
 ```
 
 The response to this request is now formatting in markdown:
 
-```
-HTTP/2 200date: Wed, 11 Feb 2026 11:44:48 GMTcontent-type: text/markdown; charset=utf-8content-length: 2899vary: acceptx-markdown-tokens: 725x-original-tokens: 12345content-signal: ai-train=yes, search=yes, ai-input=yes
----title: Markdown for Agents · Cloudflare Agents docs---
+```http
+HTTP/2 200
+date: Wed, 11 Feb 2026 11:44:48 GMT
+content-type: text/markdown; charset=utf-8
+content-length: 2899
+vary: accept
+x-markdown-tokens: 725
+x-original-tokens: 12345
+content-signal: ai-train=yes, search=yes, ai-input=yes
+
+
+---
+title: Markdown for Agents · Cloudflare Agents docs
+---
+
+
 ## What is Markdown for Agents
-Markdown has quickly become the lingua franca for agents and AI systemsas a whole. The format’s explicit structure makes it ideal for AI processing,ultimately resulting in better results while minimizing token waste....
+
+
+Markdown has quickly become the lingua franca for agents and AI systems
+as a whole. The format’s explicit structure makes it ideal for AI processing,
+ultimately resulting in better results while minimizing token waste.
+...
 ```
 
 ### Token count headers
@@ -92,9 +129,17 @@ For `title` and `description`, the standard `<meta name="...">` form always take
 
 Example output:
 
-```
----title: My Page Titledescription: A short summary of the page.image: https://example.com/cover.png---
+```markdown
+---
+title: My Page Title
+description: A short summary of the page.
+image: https://example.com/cover.png
+---
+
+
 # Page heading
+
+
 ...
 ```
 
@@ -108,16 +153,25 @@ JSON-LD is the only `<script>` content preserved in the output — all other `<s
 
 Example output:
 
-```
+```markdown
 ... main markdown content ...
-```json{  "@context": "https://schema.org",  "@type": "Article",  "headline": "Article Title",  "author": { "@type": "Person", "name": "Jane Doe" }}```
+
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article Title",
+  "author": { "@type": "Person", "name": "Jane Doe" }
+}
+```
 ```
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-8691)
-* [ API ](#tab-panel-8692)
-* [ Custom Hostnames ](#tab-panel-8693)
+* [ Dashboard ](#tab-panel-8982)
+* [ API ](#tab-panel-8983)
+* [ Custom Hostnames ](#tab-panel-8984)
 
 To enable Markdown for Agents for your zone in the dashboard:
 
@@ -143,20 +197,35 @@ You will need to create an API token with the Zone Settings edit permissions ena
 
 Example:
 
-Enable Markdown for Agents
+**Enable Markdown for Agents**
 
-```
-curl -X PATCH 'https://api.cloudflare.com/client/v4/zones/{zone_tag}/settings/content_converter' \  --header 'Content-Type: application/json' \  --header "Authorization: Bearer {api_token}" --data-raw '{"value": "on"}'
+```bash
+curl -X PATCH 'https://api.cloudflare.com/client/v4/zones/{zone_tag}/settings/content_converter' \
+  --header 'Content-Type: application/json' \
+  --header "Authorization: Bearer {api_token}" --data-raw '{"value": "on"}'
 ```
 
 ### Enable for specific subdomains or paths
 
 To enable Markdown for Agents for specific subdomains or paths instead of your entire zone, create a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-api/):
 
-Enable Markdown for Agents for a subdomain
+**Enable Markdown for Agents for a subdomain**
 
-```
-curl --request PUT \  --url "https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint" \  --header "Authorization: Bearer {api_token}" \  --header "Content-Type: application/json" \  --data '{    "rules": [{      "expression": "http.host eq \"docs.example.com\"",      "action": "set_config",      "action_parameters": {        "content_converter": true      },      "description": "Enable Markdown for Agents for docs subdomain"    }]  }'
+```bash
+curl --request PUT \
+  --url "https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint" \
+  --header "Authorization: Bearer {api_token}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "rules": [{
+      "expression": "http.host eq \"docs.example.com\"",
+      "action": "set_config",
+      "action_parameters": {
+        "content_converter": true
+      },
+      "description": "Enable Markdown for Agents for docs subdomain"
+    }]
+  }'
 ```
 
 You can also use path-based expressions like `starts_with(http.request.uri.path, "/blog/")`. For more information on building expressions, refer to [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/).
@@ -180,20 +249,37 @@ Enabling Markdown for Agents for specific custom hostnames requires an [advanced
 
 When creating or updating a custom hostname via API, add `content_converter` to the `custom_metadata` object:
 
-Terminal window
-
-```
-curl --request PATCH \  --url "https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \  --header "Authorization: Bearer {api_token}" \  --header "Content-Type: application/json" \  --data '{    "custom_metadata": {      "content_converter": "enabled"    }  }'
+```bash
+curl --request PATCH \
+  --url "https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \
+  --header "Authorization: Bearer {api_token}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "custom_metadata": {
+      "content_converter": "enabled"
+    }
+  }'
 ```
 
 #### Step 2: Create a Configuration Rule
 
 Create a Configuration Rule on your SaaS zone that matches custom hostnames with the metadata and enables content conversion:
 
-Terminal window
-
-```
-curl --request PUT \  --url "https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint" \  --header "Authorization: Bearer {api_token}" \  --header "Content-Type: application/json" \  --data '{    "rules": [{      "expression": "lookup_json_string(cf.hostname.metadata, \"content_converter\") eq \"enabled\"",      "action": "set_config",      "action_parameters": {        "content_converter": true      },      "description": "Enable content converter for opted-in custom hostnames"    }]  }'
+```bash
+curl --request PUT \
+  --url "https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint" \
+  --header "Authorization: Bearer {api_token}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "rules": [{
+      "expression": "lookup_json_string(cf.hostname.metadata, \"content_converter\") eq \"enabled\"",
+      "action": "set_config",
+      "action_parameters": {
+        "content_converter": true
+      },
+      "description": "Enable content converter for opted-in custom hostnames"
+    }]
+  }'
 ```
 
 This will enable the feature on custom hostnames that have the `content_converter` custom metadata tag set.
@@ -206,10 +292,9 @@ Markdown for Agents is available to Pro, Business and Enterprise plans, and SSL 
 
 We have enabled this feature in our [Developer Documentation ↗](https://developers.cloudflare.com/) and our [Blog ↗](https://blog.cloudflare.com/), inviting all AI crawlers and agents to consume our content using markdown instead of HTML.
 
-Terminal window
-
-```
-curl https://blog.cloudflare.com/markdown-for-agents/ \  -H "Accept: text/markdown"
+```bash
+curl https://blog.cloudflare.com/markdown-for-agents/ \
+  -H "Accept: text/markdown"
 ```
 
 ## Limitations

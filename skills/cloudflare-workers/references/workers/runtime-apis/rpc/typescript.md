@@ -36,18 +36,28 @@ pnpm wrangler types -c ./client/wrangler.jsonc -c ../sum-worker/wrangler.jsonc -
 
 This will produce a `worker-configuration.d.ts` file that includes:
 
-worker-configuration.d.ts
+**worker-configuration.d.ts**
 
-```
-interface Env {  SUM_SERVICE: Service<import("../sum-worker/src/index").SumService>;  COUNTER_OBJECT: DurableObjectNamespace<    import("../counter/src/index").Counter  >;}
+```ts
+interface Env {
+  SUM_SERVICE: Service<import("../sum-worker/src/index").SumService>;
+  COUNTER_OBJECT: DurableObjectNamespace<
+    import("../counter/src/index").Counter
+  >;
+}
 ```
 
 Now types for RPC method like the `env.SUM_SERVICE.sum` method will be exposed to the client Worker.
 
-src/index.ts
+**src/index.ts**
 
-```
-export default {  async fetch(req, env, ctx): Promise<Response> {    const result = await env.SUM_SERVICE.sum(1, 2);    return new Response(result.toString());  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(req, env, ctx): Promise<Response> {
+    const result = await env.SUM_SERVICE.sum(1, 2);
+    return new Response(result.toString());
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

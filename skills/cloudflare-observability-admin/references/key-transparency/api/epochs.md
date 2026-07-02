@@ -14,10 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ## Get an epoch
 
-Terminal window
-
-```
-curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits/1'{  "namespace": "your.new.log.com",  "timestamp": 1717084639921,  "epoch": 1,  "digest": "1111111111111111111111111111111111111111111111111111111111111111",  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07"}
+```sh
+curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits/1'
+{
+  "namespace": "your.new.log.com",
+  "timestamp": 1717084639921,
+  "epoch": 1,
+  "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07"
+}
 ```
 
 ## Publish a new epoch
@@ -26,10 +31,18 @@ Refer to the example below to publish a new epoch by requesting its signature.
 
 This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/), so that only a Log owner can publish new epochs.
 
-Terminal window
-
-```
-curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits' \      --header 'Content-Type: application/json' \      --data '{"epoch": 1, "digest": "1111111111111111111111111111111111111111111111111111111111111111"}'{  "namespace": "your.new.log.com",  "timestamp": 1717084639921,  "epoch": 1,  "digest": "1111111111111111111111111111111111111111111111111111111111111111",  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07",  "key_id": 74,}
+```sh
+curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits' \
+      --header 'Content-Type: application/json' \
+      --data '{"epoch": 1, "digest": "1111111111111111111111111111111111111111111111111111111111111111"}'
+{
+  "namespace": "your.new.log.com",
+  "timestamp": 1717084639921,
+  "epoch": 1,
+  "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07",
+  "key_id": 74,
+}
 ```
 
 ### Constraints
@@ -42,8 +55,9 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audit
 
 If a namespace is disabled, you receive the following error:
 
-```
-HTTP 400 Bad RequestNamespace is disabled and read-only.
+```txt
+HTTP 400 Bad Request
+Namespace is disabled and read-only.
 ```
 
 ```json

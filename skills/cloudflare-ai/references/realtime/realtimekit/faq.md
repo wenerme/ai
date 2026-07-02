@@ -34,10 +34,12 @@ You can disable the meeting at the required time by setting its status to `INACT
 
 This prevents participants from joining the meeting and prevents any new Sessions from starting.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings/{MEETING_ID} \--request PATCH \--header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \--header "Content-Type: application/json" \--data '{ "status": "INACTIVE" }'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings/{MEETING_ID} \
+--request PATCH \
+--header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{ "status": "INACTIVE" }'
 ```
 
 ### Participants

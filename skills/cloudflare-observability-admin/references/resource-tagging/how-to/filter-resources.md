@@ -24,30 +24,30 @@ Use `=` as the separator in tag filters (for example, `tag=key=value`), not `:`.
 
 Match resources that have a specific tag key, regardless of value.
 
-Terminal window
-
-```
-# All resources with an "environment" tag (any value)curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+# All resources with an "environment" tag (any value)
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ### Key-value filter
 
 Match resources where a tag key has a specific value.
 
-Terminal window
-
-```
-# All resources with environment=productioncurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+# All resources with environment=production
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ### Multiple values (OR)
 
 Match resources where a tag key has any of the specified values. Separate values with commas.
 
-Terminal window
-
-```
-# environment=production OR environment=stagingcurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production,staging" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+# environment=production OR environment=staging
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production,staging" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 Maximum of 10 OR values per filter (error code `1013` if exceeded).
@@ -56,30 +56,30 @@ Maximum of 10 OR values per filter (error code `1013` if exceeded).
 
 Match resources that do **not** have a specific tag key.
 
-Terminal window
-
-```
-# All resources without an "archived" tagcurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=!archived" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+# All resources without an "archived" tag
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=!archived" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ### Negate key-value
 
 Match resources where a tag key does **not** have a specific value.
 
-Terminal window
-
-```
-# All resources where region is NOT us-west-1curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=region!=us-west-1" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+# All resources where region is NOT us-west-1
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=region!=us-west-1" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ## Combining filters
 
 Multiple `tag` parameters combine with AND logic. All conditions must match.
 
-Terminal window
-
-```
-# Production resources in US regions, excluding archivedcurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production&tag=region=us-west-1,us-east-1&tag=!archived" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+# Production resources in US regions, excluding archived
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production&tag=region=us-west-1,us-east-1&tag=!archived" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 Maximum of 20 tag filters per query (error code `1010` if exceeded).
@@ -88,26 +88,23 @@ Maximum of 20 tag filters per query (error code `1010` if exceeded).
 
 ### List all tag keys
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ### List values for a key
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/values/environment" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/values/environment" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 Optionally filter by resource type:
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/values/environment?type=worker" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/values/environment?type=worker" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ## Pagination
@@ -116,10 +113,9 @@ All list endpoints use cursor-based pagination with a fixed page size of 100 res
 
 When the response includes a non-null `result_info.cursor`, pass it as a query parameter to get the next page:
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production&cursor=$CURSOR" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production&cursor=$CURSOR" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 When `cursor` is `null`, you have reached the last page. Pagination works seamlessly with tag filters.

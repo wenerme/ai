@@ -48,10 +48,10 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
+```sh
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

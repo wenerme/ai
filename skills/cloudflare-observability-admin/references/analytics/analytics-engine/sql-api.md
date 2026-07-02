@@ -38,18 +38,18 @@ Submit the query text in the body of a `POST` request to the API address. The fo
 
 You can use cURL to test the API as follows, replacing the `<account_id>` with your 32 character account ID (available in the dashboard) and the `<token>` with the token string you generated above.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \--header "Authorization: Bearer <API_TOKEN>" \--data "SELECT 'Hello Workers Analytics Engine' AS message"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data "SELECT 'Hello Workers Analytics Engine' AS message"
 ```
 
 If you have already published some data, you might try executing the following to confirm that the dataset has been created in the DB.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \--header "Authorization: Bearer <API_TOKEN>" \--data "SHOW TABLES"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data "SHOW TABLES"
 ```
 
 Refer to the Workers Analytics Engine [SQL reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/), for the full supported query syntax.
@@ -91,22 +91,38 @@ Additionally, the [QUANTILEEXACTWEIGHTED](https://developers.cloudflare.com/anal
 
 Column aliases can be used in queries to give names to the blobs and doubles in your dataset:
 
-```
-SELECT    timestamp,    blob1 AS location_id,    double1 AS inside_temp,    double2 AS outside_tempFROM temperaturesWHERE timestamp > NOW() - INTERVAL '1' DAY
+```sql
+SELECT
+    timestamp,
+    blob1 AS location_id,
+    double1 AS inside_temp,
+    double2 AS outside_temp
+FROM temperatures
+WHERE timestamp > NOW() - INTERVAL '1' DAY
 ```
 
 ### Aggregation taking into account sample interval
 
 Calculate number of readings taken at each location in the last 7 days. In this case, we are grouping by the index field so an exact count can be calculated even in the case that the data has been sampled:
 
-```
-SELECT    index1 AS location_id,    SUM(_sample_interval) AS n_readingsFROM temperaturesWHERE timestamp > NOW() - INTERVAL '7' DAYGROUP BY index1
+```sql
+SELECT
+    index1 AS location_id,
+    SUM(_sample_interval) AS n_readings
+FROM temperatures
+WHERE timestamp > NOW() - INTERVAL '7' DAY
+GROUP BY index1
 ```
 
 Calculate the average temperature over the last 7 days at each location. Sample interval is taken into account:
 
-```
-SELECT    index1 AS location_id,    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_tempFROM temperaturesWHERE timestamp > NOW() - INTERVAL '7' DAYGROUP BY index1
+```sql
+SELECT
+    index1 AS location_id,
+    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_temp
+FROM temperatures
+WHERE timestamp > NOW() - INTERVAL '7' DAY
+GROUP BY index1
 ```
 
 ```json

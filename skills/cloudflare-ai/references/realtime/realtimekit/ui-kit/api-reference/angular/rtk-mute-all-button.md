@@ -26,14 +26,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-mute-all-button></rtk-mute-all-button>
+```html
+<!-- component.html -->
+<rtk-mute-all-button></rtk-mute-all-button>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-mute-all-button [meeting]="meeting" size="md" variant="button"></rtk-mute-all-button>
+```html
+<!-- component.html -->
+<rtk-mute-all-button
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-mute-all-button>
 ```
 
 ```json

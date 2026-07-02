@@ -32,13 +32,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 ["username"]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.form.names[*] == "username")
 ```
 

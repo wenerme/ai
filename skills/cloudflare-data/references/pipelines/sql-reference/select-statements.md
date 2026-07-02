@@ -14,8 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 SELECT statements are used to transform data in Cloudflare Pipelines. The general form is:
 
-```
-[WITH with_query [, ...]]SELECT select_expr [, ...]FROM from_item[WHERE condition]
+```sql
+[WITH with_query [, ...]]
+SELECT select_expr [, ...]
+FROM from_item
+[WHERE condition]
 ```
 
 A pipeline runs one or more `INSERT INTO sink SELECT ... FROM stream` statements. To write to multiple sinks from the same pipeline, separate the statements with semicolons. See [Multiple statements](#multiple-statements).
@@ -26,61 +29,92 @@ The WITH clause allows you to define named subqueries that can be referenced in 
 
 Syntax:
 
-```
+```sql
 WITH query_name AS (subquery) [, ...]
 ```
 
 Simple example:
 
-```
-WITH filtered_events AS    (SELECT user_id, event_type, amount        FROM user_events WHERE amount > 50)SELECT user_id, amount * 1.1 as amount_with_taxFROM filtered_eventsWHERE event_type = 'purchase';
+```sql
+WITH filtered_events AS
+    (SELECT user_id, event_type, amount
+        FROM user_events WHERE amount > 50)
+SELECT user_id, amount * 1.1 as amount_with_tax
+FROM filtered_events
+WHERE event_type = 'purchase';
 ```
 
 ## SELECT clause
 
 The SELECT clause is a comma-separated list of expressions, with optional aliases. Column names must be unique.
 
-```
+```sql
 SELECT select_expr [, ...]
 ```
 
 Examples:
 
-```
--- Select specific columnsSELECT user_id, event_type, amount FROM events
--- Use expressions and aliasesSELECT    user_id,    amount * 1.1 as amount_with_tax,    UPPER(event_type) as event_type_upperFROM events
--- Select all columnsSELECT * FROM events
+```sql
+-- Select specific columns
+SELECT user_id, event_type, amount FROM events
+
+
+-- Use expressions and aliases
+SELECT
+    user_id,
+    amount * 1.1 as amount_with_tax,
+    UPPER(event_type) as event_type_upper
+FROM events
+
+
+-- Select all columns
+SELECT * FROM events
 ```
 
 ## FROM clause
 
 The FROM clause specifies the data source for the query. It will be either a table name or subquery. The table name can be either a stream name or a table created in the WITH clause.
 
-```
+```sql
 FROM from_item
 ```
 
 Tables can be given aliases:
 
-```
-SELECT e.user_id, e.amountFROM user_events eWHERE e.event_type = 'purchase'
+```sql
+SELECT e.user_id, e.amount
+FROM user_events e
+WHERE e.event_type = 'purchase'
 ```
 
 ## WHERE clause
 
 The WHERE clause filters data using boolean conditions. Predicates are applied to input rows.
 
-```
+```sql
 WHERE condition
 ```
 
 Examples:
 
-```
--- Filter by field valueSELECT * FROM events WHERE event_type = 'purchase'
--- Multiple conditionsSELECT * FROM eventsWHERE event_type = 'purchase' AND amount > 50
--- String operationsSELECT * FROM eventsWHERE user_id LIKE 'user_%'
--- Null checksSELECT * FROM eventsWHERE description IS NOT NULL
+```sql
+-- Filter by field value
+SELECT * FROM events WHERE event_type = 'purchase'
+
+
+-- Multiple conditions
+SELECT * FROM events
+WHERE event_type = 'purchase' AND amount > 50
+
+
+-- String operations
+SELECT * FROM events
+WHERE user_id LIKE 'user_%'
+
+
+-- Null checks
+SELECT * FROM events
+WHERE description IS NOT NULL
 ```
 
 ## UNNEST operator
@@ -94,30 +128,42 @@ UNNEST restrictions:
 
 Example:
 
-```
-SELECT    UNNEST([1, 2, 3]) as numbersFROM events;
+```sql
+SELECT
+    UNNEST([1, 2, 3]) as numbers
+FROM events;
 ```
 
 This will produce:
 
-```
-+---------+| numbers |+---------+|       1 ||       2 ||       3 |+---------+
+```plaintext
++---------+
+| numbers |
++---------+
+|       1 |
+|       2 |
+|       3 |
++---------+
 ```
 
 ## Multiple statements
 
 A pipeline can contain multiple `INSERT` statements, separated by semicolons. Each statement reads from a stream and writes to a sink. Use multiple statements to route events from a single stream into several sinks based on their content.
 
-```
-INSERT INTO purchases_sinkSELECT user_id, product_id, amount FROM eventsWHERE event_type = 'purchase';
-INSERT INTO signups_sinkSELECT user_id, created_at FROM eventsWHERE event_type = 'signup';
+```sql
+INSERT INTO purchases_sink
+SELECT user_id, product_id, amount FROM events
+WHERE event_type = 'purchase';
+
+
+INSERT INTO signups_sink
+SELECT user_id, created_at FROM events
+WHERE event_type = 'signup';
 ```
 
 To provide multiple statements with the Wrangler CLI, pass a file with the `--sql-file` flag:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines create my-pipeline --sql-file pipeline.sql
 ```
 

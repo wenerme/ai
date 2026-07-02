@@ -28,19 +28,30 @@ Binding directly to a Cloudflare Tunnel through a VPC Network binding requires t
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-11402)
-* [  wrangler.toml ](#tab-panel-11403)
+* [  wrangler.jsonc ](#tab-panel-11697)
+* [  wrangler.toml ](#tab-panel-11698)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "MY_VPC",
+      "tunnel_id": "550e8400-e29b-41d4-a716-446655440000",
+      "remote": true
+    }
+  ]
+}
 ```
-{  "vpc_networks": [    {      "binding": "MY_VPC",      "tunnel_id": "550e8400-e29b-41d4-a716-446655440000",      "remote": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[vpc_networks]]binding = "MY_VPC"tunnel_id = "550e8400-e29b-41d4-a716-446655440000"remote = true
+```toml
+[[vpc_networks]]
+binding = "MY_VPC"
+tunnel_id = "550e8400-e29b-41d4-a716-446655440000"
+remote = true
 ```
 
 The `remote` flag must be set to `true` to enable remote bindings during local development.
@@ -71,19 +82,30 @@ For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your netwo
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-11404)
-* [  wrangler.toml ](#tab-panel-11405)
+* [  wrangler.jsonc ](#tab-panel-11699)
+* [  wrangler.toml ](#tab-panel-11700)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "MY_VPC",
+      "network_id": "cf1:network",
+      "remote": true
+    }
+  ]
+}
 ```
-{  "vpc_networks": [    {      "binding": "MY_VPC",      "network_id": "cf1:network",      "remote": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[vpc_networks]]binding = "MY_VPC"network_id = "cf1:network"remote = true
+```toml
+[[vpc_networks]]
+binding = "MY_VPC"
+network_id = "cf1:network"
+remote = true
 ```
 
 ## Runtime usage
@@ -92,12 +114,22 @@ TOML
 
 Access any HTTP service in your network at runtime using `fetch()`:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env) {    // Access a service by private IP    const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
-    // Access another service on a different port    const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
-    return response;  },};
+```typescript
+export default {
+  async fetch(request: Request, env: Env) {
+    // Access a service by private IP
+    const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
+
+
+    // Access another service on a different port
+    const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
+
+
+    return response;
+  },
+};
 ```
 
 When a VPC Network cannot establish a connection to your target service, `fetch()` throws an exception.
@@ -106,12 +138,24 @@ When a VPC Network cannot establish a connection to your target service, `fetch(
 
 Open raw TCP connections to any private destination using [connect()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/). This is useful for non-HTTP protocols like Redis, Memcached, MQTT, or custom binary protocols:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env) {    // Open a TCP connection to a private Redis instance    const socket = await env.MY_VPC.connect("10.0.1.50:6379");
-    // Write a Redis PING command    const writer = socket.writable.getWriter();    await writer.write(new TextEncoder().encode("PING\r\n"));    await writer.close();
-    return new Response(socket.readable);  },};
+```typescript
+export default {
+  async fetch(request: Request, env: Env) {
+    // Open a TCP connection to a private Redis instance
+    const socket = await env.MY_VPC.connect("10.0.1.50:6379");
+
+
+    // Write a Redis PING command
+    const writer = socket.writable.getWriter();
+    await writer.write(new TextEncoder().encode("PING\r\n"));
+    await writer.close();
+
+
+    return new Response(socket.readable);
+  },
+};
 ```
 
 When a VPC Network cannot establish a TCP connection, `connect()` throws an exception.

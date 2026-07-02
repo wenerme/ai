@@ -46,15 +46,15 @@ Free and Pro plans support string matching rules (including wildcard operations)
 
 This example lets you rewrite a request from `example.com/images` to `example.com/cdn-cgi/image/`:
 
-Text in Expression Editor
+**Text in Expression Editor**
 
-```
+```txt
 (starts_with(http.request.uri.path, "/images")) and (not (any(http.request.headers["via"][*] contains "image-resizing")))
 ```
 
-Text in Path > Rewrite to > Dynamic
+**Text in Path > Rewrite to > Dynamic**
 
-```
+```txt
 concat("/cdn-cgi/image", substring(http.request.uri.path, 7))
 ```
 
@@ -68,15 +68,15 @@ There is an advanced version of Transform Rules supporting regular expressions.
 
 This example lets you rewrite a request from `example.com/images` to `example.com/cdn-cgi/image/`:
 
-Text in Expression Editor
+**Text in Expression Editor**
 
-```
+```txt
 (http.request.uri.path matches "^/images/.*$") and (not (any(http.request.headers["via"][*] contains "image-resizing")))
 ```
 
-Text in Path > Rewrite to > Dynamic
+**Text in Path > Rewrite to > Dynamic**
 
-```
+```txt
 regex_replace(http.request.uri.path, "^/images/", "/cdn-cgi/image/")
 ```
 
@@ -88,14 +88,18 @@ This feature requires a Business or Enterprise plan to enable regex in Transform
 
 This example lets you rewrite your URL parameters to be compatible with Images:
 
-```
+```txt
 (http.request.uri matches "^/(.*)\\?width=([0-9]+)&height=([0-9]+)$")
 ```
 
-Text in Path > Rewrite to > Dynamic
+**Text in Path > Rewrite to > Dynamic**
 
-```
-regex_replace(  http.request.uri,  "^/(.*)\\?width=([0-9]+)&height=([0-9]+)$",  "/cdn-cgi/image/width=${2},height=${3}/${1}")
+```txt
+regex_replace(
+  http.request.uri,
+  "^/(.*)\\?width=([0-9]+)&height=([0-9]+)$",
+  "/cdn-cgi/image/width=${2},height=${3}/${1}"
+)
 ```
 
 Leave the **Query** \> **Rewrite to** \> _Static_ field empty.
@@ -108,13 +112,13 @@ This feature requires a Business or Enterprise plan to enable regular expression
 
 This example lets you transform every image that is requested on your zone with the `format=auto` option:
 
-```
+```txt
 (http.request.uri.path.extension matches "(jpg)|(jpeg)|(png)|(gif)") and (not (any(http.request.headers["via"][*] contains "image-resizing")))
 ```
 
-Text in Path > Rewrite to > Dynamic
+**Text in Path > Rewrite to > Dynamic**
 
-```
+```txt
 regex_replace(http.request.uri.path, "/(.*)", "/cdn-cgi/image/format=auto/${1}")
 ```
 

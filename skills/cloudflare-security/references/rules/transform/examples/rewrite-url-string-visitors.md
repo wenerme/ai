@@ -18,13 +18,13 @@ To rewrite a request to the `/blog` path to `/blog?sort-by=date`, create a URL r
 
 Text in **Expression Editor**:
 
-```
+```txt
 http.request.uri.path == "/blog"
 ```
 
 Text after **Query** \> **Rewrite to** \> _Static_:
 
-```
+```txt
 sort-by=date
 ```
 

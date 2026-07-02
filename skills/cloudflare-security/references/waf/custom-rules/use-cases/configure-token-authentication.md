@@ -50,7 +50,7 @@ This example illustrates a rule that blocks any visitor that does not pass HMAC 
 
 Consider the following example URL:
 
-```
+```txt
 downloads.example.com/images/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D
 ```
 
@@ -67,7 +67,7 @@ When you do not use the optional `flags` argument for `is_timed_hmac_valid_v0()`
 
 The expression for the custom rule would be similar to the following:
 
-```
+```txt
 (http.host eq "downloads.example.com" and not is_timed_hmac_valid_v0("mysecrettoken", http.request.uri, 10800, http.request.timestamp.sec, 8))
 ```
 
@@ -83,7 +83,7 @@ The [is\_timed\_hmac\_valid\_v0()](https://developers.cloudflare.com/ruleset-eng
 
 If the MAC values match and if the token has not expired yet, according to the following formula:
 
-```
+```txt
 http.request.timestamp.sec < (<TIMESTAMP_ISSUED> + 10800)
 ```
 
@@ -95,27 +95,57 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-11223)
-* [  Python 2.7 ](#tab-panel-11224)
-* [  PHP ](#tab-panel-11225)
-* [ Workers ](#tab-panel-11226)
+* [  Python 3.8 ](#tab-panel-11518)
+* [  Python 2.7 ](#tab-panel-11519)
+* [  PHP ](#tab-panel-11520)
+* [ Workers ](#tab-panel-11521)
 
-Python
+**Python**
 
-```
-import hmacimport base64import timeimport urllib.parsefrom hashlib import sha256
-message = "/images/cat.jpg"secret = "mysecrettoken"separator = "verify"timestamp = str(int(time.time()))digest = hmac.new((secret).encode('utf8'), "{}{}".format(message, timestamp).encode('utf8'), sha256)token = urllib.parse.quote_plus(base64.b64encode(digest.digest()))print("{}={}-{}".format(separator, timestamp, token))
+```python
+import hmac
+import base64
+import time
+import urllib.parse
+from hashlib import sha256
+
+
+message = "/images/cat.jpg"
+secret = "mysecrettoken"
+separator = "verify"
+timestamp = str(int(time.time()))
+digest = hmac.new((secret).encode('utf8'), "{}{}".format(message, timestamp).encode('utf8'), sha256)
+token = urllib.parse.quote_plus(base64.b64encode(digest.digest()))
+print("{}={}-{}".format(separator, timestamp, token))
 ```
 
-Python
+**Python**
 
-```
-import hmacimport base64import timeimport urllibfrom hashlib import sha256
-message = "/images/cat.jpg"secret = "mysecrettoken"separator = "verify"timestamp = str(int(time.time()))digest = hmac.new(secret, message + timestamp, sha256)param = urllib.urlencode({separator: '%s-%s' % (timestamp, base64.b64encode(digest.digest()))})print(param)
+```python
+import hmac
+import base64
+import time
+import urllib
+from hashlib import sha256
+
+
+message = "/images/cat.jpg"
+secret = "mysecrettoken"
+separator = "verify"
+timestamp = str(int(time.time()))
+digest = hmac.new(secret, message + timestamp, sha256)
+param = urllib.urlencode({separator: '%s-%s' % (timestamp, base64.b64encode(digest.digest()))})
+print(param)
 ```
 
-```
-<?php$message = "/images/cat.jpg";$secret = "mysecrettoken";$separator = "verify";$timestamp = time();$token = urlencode(base64_encode(hash_hmac("sha256", $message . $timestamp, $secret, true)));echo("{$separator}={$timestamp}-{$token}");
+```php
+<?php
+$message = "/images/cat.jpg";
+$secret = "mysecrettoken";
+$separator = "verify";
+$timestamp = time();
+$token = urlencode(base64_encode(hash_hmac("sha256", $message . $timestamp, $secret, true)));
+echo("{$separator}={$timestamp}-{$token}");
 ```
 
 For a full example in JavaScript (JS) or TypeScript (TS), refer to the [Sign requests](https://developers.cloudflare.com/workers/examples/signing-requests/) example in the Workers documentation.
@@ -124,13 +154,13 @@ Since the example JS/TS implementation is compatible with `is_timed_hmac_valid_v
 
 This will generate a URL parameter such as the following:
 
-```
+```txt
 verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D
 ```
 
 You will need to append this parameter to the URL you are protecting:
 
-```
+```txt
 /images/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D
 ```
 
@@ -165,7 +195,7 @@ Use the [substring()](https://developers.cloudflare.com/ruleset-engine/rules-lan
 
 In the following example, the URI path prefix requiring a single HMAC signature is always 51 characters long (`x` is a character placeholder):
 
-```
+```txt
 /case-studies/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
 ```
 
@@ -175,7 +205,7 @@ If you wanted to block requests for case study files failing the HMAC validation
 
 Rule expression:
 
-```
+```txt
   (http.host eq "downloads.example.com" and starts_with(http.request.uri.path, "/case-studies") and not is_timed_hmac_valid_v0("mysecrettoken", concat(substring(http.request.uri.path, 0, 51), "?", http.request.uri.query), 10800, http.request.timestamp.sec, 1))
 ```
 
@@ -185,8 +215,10 @@ Action:
 
 Example URI paths of valid incoming requests:
 
-```
-/case-studies/12345678-90ab-4cde-f012-3456789abcde/foobar-report.pdf?1755877101-5WOroVcDINdl2%2BQZxZFHJcJ6l%2Fep4HGIrX3DtSXzWO0%3D/case-studies/12345678-90ab-4cde-f012-3456789abcde/acme-corp.pdf?1755877101-5WOroVcDINdl2%2BQZxZFHJcJ6l%2Fep4HGIrX3DtSXzWO0%3D/case-studies/768bf477-22d5-4545-857d-b155510119ff/another-company-report.pdf?1755878057-jeMS5S1F3MIgxvL61UmiX4vODiWtuLfcPV6q%2B0Y3Rig%3D
+```txt
+/case-studies/12345678-90ab-4cde-f012-3456789abcde/foobar-report.pdf?1755877101-5WOroVcDINdl2%2BQZxZFHJcJ6l%2Fep4HGIrX3DtSXzWO0%3D
+/case-studies/12345678-90ab-4cde-f012-3456789abcde/acme-corp.pdf?1755877101-5WOroVcDINdl2%2BQZxZFHJcJ6l%2Fep4HGIrX3DtSXzWO0%3D
+/case-studies/768bf477-22d5-4545-857d-b155510119ff/another-company-report.pdf?1755878057-jeMS5S1F3MIgxvL61UmiX4vODiWtuLfcPV6q%2B0Y3Rig%3D
 ```
 
 The first two URI paths can use the same HMAC signature because they share the same 51-character prefix (`/case-studies/12345678-90ab-4cde-f012-3456789abcde/`) that is validated by the custom rule.

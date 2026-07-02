@@ -34,24 +34,62 @@ Add the following configuration to your MCP client settings file (the exact loca
 
 Add to `claude_desktop_config.json` (Claude Desktop) or `~/.claude.json` (Claude Code):
 
-```
-{  "mcpServers": {    "browser-rendering": {      "command": "npx",      "args": [        "-y",        "chrome-devtools-mcp@latest",        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"      ]    }  }}
+```json
+{
+  "mcpServers": {
+    "browser-rendering": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+      ]
+    }
+  }
+}
 ```
 
 ### OpenCode
 
 Add to `.opencode.jsonc`:
 
-```
-{  "mcp": {    "browser-rendering": {      "type": "local",      "command": [        "npx",        "-y",        "chrome-devtools-mcp@latest",        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"      ],      "enabled": true    }  }}
+```json
+{
+  "mcp": {
+    "browser-rendering": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+      ],
+      "enabled": true
+    }
+  }
+}
 ```
 
 ### Cursor
 
 Add to `~/.cursor/mcp.json`:
 
-```
-{  "mcpServers": {    "browser-rendering": {      "command": "npx",      "args": [        "-y",        "chrome-devtools-mcp@latest",        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"      ]    }  }}
+```json
+{
+  "mcpServers": {
+    "browser-rendering": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000",
+        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
+      ]
+    }
+  }
+}
 ```
 
 Replace `ACCOUNT_ID` with your Cloudflare account ID and `API_TOKEN` with your Browser Run API token. You can obtain these from your Cloudflare dashboard.
@@ -62,15 +100,15 @@ For other MCP clients, refer to the [chrome-devtools-mcp documentation ↗](http
 
 After configuring the MCP client, you can ask your AI agent to perform browser tasks:
 
-```
+```txt
 Navigate to https://example.com and take a screenshot of the homepage
 ```
 
-```
+```txt
 Check the console messages on the current page for any errors
 ```
 
-```
+```txt
 Run a Lighthouse audit on https://developers.cloudflare.com
 ```
 

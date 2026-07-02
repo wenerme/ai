@@ -30,24 +30,20 @@ By default, Cloudflare Tunnel expects all of the configuration to exist in the `
 ## 2\. Run `cloudflared` as a service
 
 1. Install the `cloudflared` service.
-Terminal window
-```
+```sh
 cloudflared service install
 ```
 Note
 Installing the `cloudflared` systemd service on Linux typically requires elevated privileges. When the install command is run with `sudo`, `$HOME` points to `/root`, which may prevent `cloudflared` from locating a configuration file created in `/home/<USER>/.cloudflared/config.yml`. In this case, the config path can be passed explicitly:
-Terminal window
-```
+```sh
 sudo cloudflared --config /home/<USER>/.cloudflared/config.yml service install
 ```
 2. Start the service.
-Terminal window
-```
+```sh
 systemctl start cloudflared
 ```
 3. (Optional) View the status of the service.
-Terminal window
-```
+```sh
 systemctl status cloudflared
 ```
 
@@ -55,9 +51,7 @@ systemctl status cloudflared
 
 You can now [route traffic through your tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/#5-start-routing-traffic). If you add IP routes or otherwise change the configuration, restart the service to load the new configuration:
 
-Terminal window
-
-```
+```sh
 systemctl restart cloudflared
 ```
 

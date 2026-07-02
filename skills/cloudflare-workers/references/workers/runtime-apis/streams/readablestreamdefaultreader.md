@@ -18,10 +18,11 @@ A reader is used when you want to read from a [ReadableStream](https://developer
 
 A `ReadableStreamDefaultReader` is not instantiated via its constructor. Rather, it is retrieved from a [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/):
 
-JavaScript
+**JavaScript**
 
-```
-const { readable, writable } = new TransformStream();const reader = readable.getReader();
+```js
+const { readable, writable } = new TransformStream();
+const reader = readable.getReader();
 ```
 
 ---

@@ -25,7 +25,7 @@ Comparison operators return `true` when a value from an HTTP request matches a v
 
 This is the general pattern for using comparison operators:
 
-```
+```txt
 <field> <comparison_operator> <value>
 ```
 
@@ -67,16 +67,20 @@ Note
 
 When writing your own custom expressions, you must use the `starts_with()` and `ends_with()` functions in function calls, not as operators. For example:
 
-```
-# Valid function callends_with(http.request.uri.path, ".html")
-# Invalid use of ends_with functionhttp.request.uri.path ends_with ".html"
+```txt
+# Valid function call
+ends_with(http.request.uri.path, ".html")
+
+
+# Invalid use of ends_with function
+http.request.uri.path ends_with ".html"
 ```
 
 ### Comparing string values
 
 String comparison in rule expressions is case-sensitive. To account for possible variations of string capitalization in an expression, you can use the [lower()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function and compare the result with a lowercased string, like in the following example:
 
-```
+```txt
 lower(http.request.uri.path) contains "/wp-login.php"
 ```
 
@@ -88,29 +92,58 @@ The `wildcard` operator performs a case-insensitive match between a field value 
 
 When using the `wildcard`/`strict wildcard` operator, the entire field value must match the literal string with wildcards (the literal after the operator).
 
-Example A
+**Example A**
 
-```
-# The following expression:http.request.full_uri wildcard "http*://example.com/a/*"
-# Would match the following URIs:# - https://example.com/a/           (the '*' matches zero characters)# - http://example.com/a/# - https://example.com/a/page.html# - https://example.com/a/sub/folder/?name=value
-# Would NOT match the following URIs:# - https://example.com/ab/# - https://example.com/b/page.html# - https://sub.example.com/a/
+```txt
+# The following expression:
+http.request.full_uri wildcard "http*://example.com/a/*"
+
+
+# Would match the following URIs:
+# - https://example.com/a/           (the '*' matches zero characters)
+# - http://example.com/a/
+# - https://example.com/a/page.html
+# - https://example.com/a/sub/folder/?name=value
+
+
+# Would NOT match the following URIs:
+# - https://example.com/ab/
+# - https://example.com/b/page.html
+# - https://sub.example.com/a/
 ```
 
 Example B
 
-```
-# The following expression:http.request.full_uri wildcard "*.example.com/*/page.html"
-# Would match the following URIs:# - http://sub.example.com/folder/page.html# - https://admin.example.com/team/page.html# - https://admin.example.com/team/subteam/page.html
-# Would NOT match the following URIs:# - https://example.com/ab/page.html                   ('*.example.com' matches only subdomains)# - https://sub.example.com/folder2/page.html?s=value  (http.request.full_uri includes the query string and its full value does not match)# - https://sub.example.com/a/                         ('page.html' is missing)
+```txt
+# The following expression:
+http.request.full_uri wildcard "*.example.com/*/page.html"
+
+
+# Would match the following URIs:
+# - http://sub.example.com/folder/page.html
+# - https://admin.example.com/team/page.html
+# - https://admin.example.com/team/subteam/page.html
+
+
+# Would NOT match the following URIs:
+# - https://example.com/ab/page.html                   ('*.example.com' matches only subdomains)
+# - https://sub.example.com/folder2/page.html?s=value  (http.request.full_uri includes the query string and its full value does not match)
+# - https://sub.example.com/a/                         ('page.html' is missing)
 ```
 
 Slashes (`/`) have no special meaning in wildcard matches. In this example, the second `*` metacharacter in the expression `http.request.full_uri wildcard "*.example.com/*/page.html"` matched `folder`, `team`, and `team/subteam`.
 
 Example C
 
-```
-# The following expression:http.request.full_uri wildcard "*.example.com/*" or http.request.full_uri wildcard "http*://example.com/*"
-# Would match the following URIs:# - https://example.com/folder/list.htm# - https://admin.example.com/folder/team/app1/# - https://admin.example.com/folder/team/app1/?s=foobar
+```txt
+# The following expression:
+http.request.full_uri wildcard "*.example.com/*" or http.request.full_uri wildcard "http*://example.com/*"
+
+
+# Would match the following URIs:
+# - https://example.com/folder/list.htm
+# - https://admin.example.com/folder/team/app1/
+# - https://admin.example.com/folder/team/app1/?s=foobar
 ```
 
 The matching algorithm used by the `wildcard` operator is case-insensitive. To perform case-sensitive wildcard matching, use the `strict wildcard` operator.
@@ -133,7 +166,7 @@ For more information on regular expressions, refer to [String values and regular
 
 Logical operators combine two or more expressions into a single compound expression. A compound expression has this general syntax:
 
-```
+```txt
 <expression> <logical_operator> <expression>
 ```
 
@@ -158,7 +191,7 @@ When writing compound expressions, it is important to be aware of the precedence
 
 For example, consider the following generic expression, which uses `and` and `or` operators:
 
-```
+```java
 Expression1 and Expression2 or Expression3
 ```
 
@@ -181,7 +214,7 @@ Only the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/ru
 
 Use parentheses to explicitly group expressions that should be evaluated together. In this example, the parentheses do not alter the evaluation of the expression, but they unambiguously call out which logical operators to evaluate first.
 
-```
+```java
 (Expression1 and Expression2) or Expression3
 ```
 
@@ -191,7 +224,7 @@ Because grouping symbols are so explicit, you are less likely to make errors whe
 
 Grouping symbols are a powerful tool to enforce precedence for grouped elements of a compound expression. In this example, parentheses force the logical `or` operator to be evaluated before the logical `and`:
 
-```
+```java
 Expression1 and (Expression2 or Expression3)
 ```
 
@@ -201,13 +234,17 @@ Without parentheses, the logical `and` operator would take precedence.
 
 You can nest expressions grouped by parentheses inside other groups to create very precise, sophisticated expressions, such as this example for a rule designed to block access to a domain:
 
-```
-( (http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example\.com" and http.request.uri.path contains "wp-login.php") or ip.src.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.src.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
+```sql
+(
+ (http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or
+ (http.host matches "^(www|store|blog)\.example\.com" and http.request.uri.path contains "wp-login.php") or
+ ip.src.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.src.asnum in {12345 54321 11111}
+) and not ip.src in {11.22.33.0/24}
 ```
 
 Note that when evaluating the precedence of logical operators, parentheses inside strings delimited by quotes are ignored, such as those in the following regular expression, drawn from the example above:
 
-```
+```sql
 "^(www|store|blog)\.example\.com"
 ```
 

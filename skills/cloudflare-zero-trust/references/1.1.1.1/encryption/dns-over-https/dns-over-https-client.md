@@ -24,26 +24,29 @@ Refer to [WARP client](https://developers.cloudflare.com/warp-client/) for guida
 
 1. [Install DNSCrypt-Proxy ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation).
 2. Verify that `dnscrypt-proxy` is installed and the version is 2.0 or later:
-Terminal window
-```
+```sh
 dnscrypt-proxy -version
 ```
-```
+```sh
 2.0.8
 ```
 3. Set up the configuration file using the [official instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:
-TOML
-```
+
+**TOML**
+```toml
 server_names = ['cloudflare', 'cloudflare-ipv6']
 ```
 4. Make sure that nothing else is running on `localhost:53` (port `53` is the standard DNS port on your local machine), and check that everything works as expected:
-Terminal window
-```
+```sh
 dnscrypt-proxy -resolve cloudflare-dns.com
 ```
-```
+```sh
 Resolving [cloudflare-dns.com]
-Domain exists:  yes, 3 name servers foundCanonical name: cloudflare-dns.com.IP addresses:   2400:cb00:2048:1::6810:6f19, 2400:cb00:2048:1::6810:7019, 104.16.111.25, 104.16.112.25TXT records:    -Resolver IP:    172.68.140.217
+Domain exists:  yes, 3 name servers found
+Canonical name: cloudflare-dns.com.
+IP addresses:   2400:cb00:2048:1::6810:6f19, 2400:cb00:2048:1::6810:7019, 104.16.111.25, 104.16.112.25
+TXT records:    -
+Resolver IP:    172.68.140.217
 ```
 5. Register it as a system service so that it starts automatically when your device boots. Follow the [DNSCrypt-Proxy installation instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation).
 

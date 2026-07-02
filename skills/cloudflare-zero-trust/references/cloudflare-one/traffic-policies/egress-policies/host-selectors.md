@@ -39,18 +39,27 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-7678)
-* [ API ](#tab-panel-7679)
+* [ Dashboard ](#tab-panel-7931)
+* [ API ](#tab-panel-7932)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.
 
 Use the [Patch Zero Trust account configuration](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/configurations/methods/edit/) endpoint to update your Zero Trust configuration. For example:
 
-Patch Zero Trust account configuration
+**Patch Zero Trust account configuration**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "settings": {        "host_selector": {            "enabled": true        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "settings": {
+        "host_selector": {
+            "enabled": true
+        }
+    }
+  }'
 ```
 
 ## Prerequisites
@@ -77,8 +86,13 @@ To configure your Zero Trust organization to use Host selectors with Egress poli
   * **iOS**: [Cloudflare One Client version 1.11](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) or later
   * **Android and Chrome OS**: [Cloudflare One Client version 2.4.2](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#android) or later.
 If you need to support devices running prior versions of WARP, add and deploy the following key-value pair to your devices' [WARP configuration file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) (`mdm.xml` on Windows and Linux or `com.cloudflare.warp.plist` on macOS):
-```
-<array>  <dict>    <key>doh_in_tunnel</key>    <true/>  </dict></array>
+```xml
+<array>
+  <dict>
+    <key>doh_in_tunnel</key>
+    <true/>
+  </dict>
+</array>
 ```
 2. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):
 

@@ -52,9 +52,20 @@ Using the initial request together with the matching subrequest entries lets you
 
 ### Example
 
-```
-# Initial requestClientRequestSource: eyeballRayID: 7b52f2c4f9f64c1aParentRayID:OriginResponseStatus: 0
-# Worker subrequestClientRequestSource: edgeWorkerFetchRayID: 7b52f2c4f9f64c1bParentRayID: 7b52f2c4f9f64c1aOriginResponseStatus: 200OriginIP: 192.0.2.10
+```txt
+# Initial request
+ClientRequestSource: eyeball
+RayID: 7b52f2c4f9f64c1a
+ParentRayID:
+OriginResponseStatus: 0
+
+
+# Worker subrequest
+ClientRequestSource: edgeWorkerFetch
+RayID: 7b52f2c4f9f64c1b
+ParentRayID: 7b52f2c4f9f64c1a
+OriginResponseStatus: 200
+OriginIP: 192.0.2.10
 ```
 
 ### When there is no second log entry

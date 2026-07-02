@@ -27,7 +27,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 
 ## Endpoint
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json
 ```
 
@@ -53,65 +53,295 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-6979)
-* [ TypeScript SDK ](#tab-panel-6980)
-* [ Workers binding ](#tab-panel-6981)
+* [ curl ](#tab-panel-7227)
+* [ TypeScript SDK ](#tab-panel-7228)
+* [ Workers binding ](#tab-panel-7229)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 
-Terminal window
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+  -H 'authorization: Bearer <apiToken>' \
+  -H 'content-type: application/json' \
+  -d '{
+  "url": "https://developers.cloudflare.com/",
+  "prompt": "Get me the list of AI products",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+        "type": "object",
+        "properties": {
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        }
+      }
+  }
+}'
+```
 
-```
-curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID/browser-rendering/json' \  --header 'authorization: Bearer CF_API_TOKEN' \  --header 'content-type: application/json' \  --data '{  "url": "https://developers.cloudflare.com/",  "prompt": "Get me the list of AI products",  "response_format": {    "type": "json_schema",    "schema": {        "type": "object",        "properties": {          "products": {            "type": "array",            "items": {              "type": "object",              "properties": {                "name": {                  "type": "string"                },                "link": {                  "type": "string"                }              },              "required": [                "name"              ]            }          }        }      }  }}'
-```
-
-```
-{  "success": true,  "result": {    "products": [      {        "name": "Build a RAG app",        "link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"      },      {        "name": "Workers AI",        "link": "https://developers.cloudflare.com/workers-ai/"      },      {        "name": "Vectorize",13 collapsed lines        "link": "https://developers.cloudflare.com/vectorize/"      },      {        "name": "AI Gateway",        "link": "https://developers.cloudflare.com/ai-gateway/"      },      {        "name": "AI Playground",        "link": "https://playground.ai.cloudflare.com/"      }    ]  }}
+```json
+{
+  "success": true,
+  "result": {
+    "products": [
+      {
+        "name": "Build a RAG app",
+        "link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"
+      },
+      {
+        "name": "Workers AI",
+        "link": "https://developers.cloudflare.com/workers-ai/"
+      },
+      {
+        "name": "Vectorize",
+13 collapsed lines
+        "link": "https://developers.cloudflare.com/vectorize/"
+      },
+      {
+        "name": "AI Gateway",
+        "link": "https://developers.cloudflare.com/ai-gateway/"
+      },
+      {
+        "name": "AI Playground",
+        "link": "https://playground.ai.cloudflare.com/"
+      }
+    ]
+  }
+}
 ```
 
 Below is an example using the TypeScript SDK:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import Cloudflare from "cloudflare";
-const client = new Cloudflare({  apiToken: process.env["CLOUDFLARE_API_TOKEN"], // This is the default and can be omitted});
-const json = await client.browserRendering.json.create({  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],  url: "https://developers.cloudflare.com/",  prompt: "Get me the list of AI products",  response_format: {    type: "json_schema",    schema: {      type: "object",      properties: {        products: {          type: "array",          items: {            type: "object",            properties: {              name: {                type: "string",              },              link: {                type: "string",              },            },            required: ["name"],          },        },      },    },  },});console.log(json);
+
+
+const client = new Cloudflare({
+  apiToken: process.env["CLOUDFLARE_API_TOKEN"], // This is the default and can be omitted
+});
+
+
+const json = await client.browserRendering.json.create({
+  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+  url: "https://developers.cloudflare.com/",
+  prompt: "Get me the list of AI products",
+  response_format: {
+    type: "json_schema",
+    json_schema: {
+      type: "object",
+      properties: {
+        products: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              name: {
+                type: "string",
+              },
+              link: {
+                type: "string",
+              },
+            },
+            required: ["name"],
+          },
+        },
+      },
+    },
+  },
+});
+console.log(json);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  BROWSER: BrowserRun;}
-export default {  async fetch(request, env): Promise<Response> {    return await env.BROWSER.quickAction("json", {      url: "https://developers.cloudflare.com/",      prompt: "Get me the list of AI products",      response_format: {        type: "json_schema",        schema: {          type: "object",          properties: {            products: {              type: "array",              items: {                type: "object",                properties: {                  name: { type: "string" },                  link: { type: "string" },                },                required: ["name"],              },            },          },        },      },    });  },} satisfies ExportedHandler<Env>;
+```typescript
+interface Env {
+  BROWSER: BrowserRun;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    return await env.BROWSER.quickAction("json", {
+      url: "https://developers.cloudflare.com/",
+      prompt: "Get me the list of AI products",
+      response_format: {
+        type: "json_schema",
+        json_schema: {
+          type: "object",
+          properties: {
+            products: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  name: { type: "string" },
+                  link: { type: "string" },
+                },
+                required: ["name"],
+              },
+            },
+          },
+        },
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### With only a prompt
 
 In this example, only a prompt is provided. The endpoint will use the prompt to extract the data, but the response will not be structured according to a JSON schema. This is useful for simple extractions where you do not need a specific format.
 
-Terminal window
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+  -H 'authorization: Bearer <apiToken>' \
+  -H 'content-type: application/json' \
+  -d '{
+    "url": "https://developers.cloudflare.com/",
+    "prompt": "get me the list of AI products"
+  }'
+```
 
-```
-curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID/browser-rendering/json' \  --header 'authorization: Bearer CF_API_TOKEN' \  --header 'content-type: application/json' \  --data '{    "url": "https://developers.cloudflare.com/",    "prompt": "get me the list of AI products"  }'
-```
-
-```
-  "success": true,  "result": {    "AI Products": [      "Build a RAG app",      "Workers AI",      "Vectorize",      "AI Gateway",      "AI Playground"    ]  }}
+```json
+{
+  "success": true,
+  "result": {
+    "AI Products": [
+      "Build a RAG app",
+      "Workers AI",
+      "Vectorize",
+      "AI Gateway",
+      "AI Playground"
+    ]
+  }
+}
 ```
 
 ### With only a JSON schema (no prompt)
 
 In this case, you supply a JSON schema via the `response_format` parameter. The schema defines the structure of the extracted data.
 
-Terminal window
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+  -H 'authorization: Bearer <apiToken>' \
+  -H 'content-type: application/json' \
+  -d '{
+  "url": "https://developers.cloudflare.com/",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "type": "object",
+      "properties": {
+      "products": {
+        "type": "array",
+        "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+          "type": "string"
+          },
+          "link": {
+          "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+        }
+      }
+      }
+    }
+    }
+  }'
+```
 
-```
-curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID/browser-rendering/json' \  --header 'authorization: Bearer CF_API_TOKEN' \  --header 'content-type: application/json' \  --data '"response_format": {    "type": "json_schema",    "schema": {        "type": "object",        "properties": {          "products": {            "type": "array",            "items": {              "type": "object",              "properties": {                "name": {                  "type": "string"                },                "link": {                  "type": "string"                }              },              "required": [                "name"              ]            }          }        }      }  }'
-```
-
-```
-{  "success": true,  "result": {    "products": [      {        "name": "Workers",        "link": "https://developers.cloudflare.com/workers/"      },      {        "name": "Pages",        "link": "https://developers.cloudflare.com/pages/"      },55 collapsed lines      {        "name": "R2",        "link": "https://developers.cloudflare.com/r2/"      },      {        "name": "Images",        "link": "https://developers.cloudflare.com/images/"      },      {        "name": "Stream",        "link": "https://developers.cloudflare.com/stream/"      },      {        "name": "Build a RAG app",        "link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"      },      {        "name": "Workers AI",        "link": "https://developers.cloudflare.com/workers-ai/"      },      {        "name": "Vectorize",        "link": "https://developers.cloudflare.com/vectorize/"      },      {        "name": "AI Gateway",        "link": "https://developers.cloudflare.com/ai-gateway/"      },      {        "name": "AI Playground",        "link": "https://playground.ai.cloudflare.com/"      },      {        "name": "Access",        "link": "https://developers.cloudflare.com/cloudflare-one/access-controls/policies/"      },      {        "name": "Tunnel",        "link": "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/"      },      {        "name": "Gateway",        "link": "https://developers.cloudflare.com/cloudflare-one/traffic-policies/"      },      {        "name": "Browser Isolation",        "link": "https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/"      },      {        "name": "Replace your VPN",        "link": "https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/"      }    ]  }}
+```json
+{
+  "success": true,
+  "result": {
+    "products": [
+      {
+        "name": "Workers",
+        "link": "https://developers.cloudflare.com/workers/"
+      },
+      {
+        "name": "Pages",
+        "link": "https://developers.cloudflare.com/pages/"
+      },
+55 collapsed lines
+      {
+        "name": "R2",
+        "link": "https://developers.cloudflare.com/r2/"
+      },
+      {
+        "name": "Images",
+        "link": "https://developers.cloudflare.com/images/"
+      },
+      {
+        "name": "Stream",
+        "link": "https://developers.cloudflare.com/stream/"
+      },
+      {
+        "name": "Build a RAG app",
+        "link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"
+      },
+      {
+        "name": "Workers AI",
+        "link": "https://developers.cloudflare.com/workers-ai/"
+      },
+      {
+        "name": "Vectorize",
+        "link": "https://developers.cloudflare.com/vectorize/"
+      },
+      {
+        "name": "AI Gateway",
+        "link": "https://developers.cloudflare.com/ai-gateway/"
+      },
+      {
+        "name": "AI Playground",
+        "link": "https://playground.ai.cloudflare.com/"
+      },
+      {
+        "name": "Access",
+        "link": "https://developers.cloudflare.com/cloudflare-one/access-controls/policies/"
+      },
+      {
+        "name": "Tunnel",
+        "link": "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/"
+      },
+      {
+        "name": "Gateway",
+        "link": "https://developers.cloudflare.com/cloudflare-one/traffic-policies/"
+      },
+      {
+        "name": "Browser Isolation",
+        "link": "https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/"
+      },
+      {
+        "name": "Replace your VPN",
+        "link": "https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/"
+      }
+    ]
+  }
+}
 ```
 
 ## Advanced usage
@@ -129,14 +359,47 @@ Browser Run can use a custom model for which you supply credentials. List the mo
 
 This example uses the `custom_ai` parameter to instruct Browser Run to use a Anthropic's Claude Sonnet 4 model. The prompt asks the model to extract the main `<h1>` and `<h2>` headings from the target URL and return them in a structured JSON object.
 
-Terminal window
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+  -H 'authorization: Bearer <apiToken>' \
+  -H 'content-type: application/json' \
+  -d '{
+  "url": "http://demoto.xyz/headings",
+  "prompt": "Get the heading from the page in the form of an object like h1, h2. If there are many headings of the same kind then grab the first one.",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "type": "object",
+      "properties": {
+        "h1": {
+          "type": "string"
+        },
+        "h2": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "h1"
+      ]
+    }
+  },
+  "custom_ai": [
+    {
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "authorization": "Bearer <ANTHROPIC_API_KEY>"
+    }
+  ]
+}'
+```
 
-```
-curl --request POST \  --url https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID/browser-rendering/json \  --header 'authorization: Bearer CF_API_TOKEN' \  --header 'content-type: application/json' \  --data '{  "url": "http://demoto.xyz/headings",  "prompt": "Get the heading from the page in the form of an object like h1, h2. If there are many headings of the same kind then grab the first one.",  "response_format": {    "type": "json_schema",    "schema": {      "type": "object",      "properties": {        "h1": {          "type": "string"        },        "h2": {          "type": "string"        }      },      "required": [        "h1"      ]    }  },  "custom_ai": [    {      "model": "anthropic/claude-sonnet-4-20250514",      "authorization": "Bearer <ANTHROPIC_API_KEY>"    }  ]}
-```
-
-```
-{  "success": true,  "result": {    "h1": "Heading 1",    "h2": "Heading 2"  }}
+```json
+{
+  "success": true,
+  "result": {
+    "h1": "Heading 1",
+    "h2": "Heading 2"
+  }
+}
 ```
 
 ### Using a custom model with fallbacks
@@ -145,8 +408,21 @@ You may specify multiple models to provide automatic failover. Browser Run will 
 
 In this example, Browser Run first calls Anthropic's Claude Sonnet 4 model. If that request returns an error, it automatically retries with Meta Llama 3.3 70B from [Workers AI](https://developers.cloudflare.com/workers-ai/), then OpenAI's GPT-4o.
 
-```
-"custom_ai": [  {    "model": "anthropic/claude-sonnet-4-20250514",    "authorization": "Bearer <ANTHROPIC_API_KEY>"  },  {    "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",    "authorization": "Bearer <CLOUDFLARE_AUTH_TOKEN>"  },{    "model": "openai/gpt-4o",    "authorization": "Bearer <OPENAI_API_KEY>"  }]
+```plaintext
+"custom_ai": [
+  {
+    "model": "anthropic/claude-sonnet-4-20250514",
+    "authorization": "Bearer <ANTHROPIC_API_KEY>"
+  },
+  {
+    "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "authorization": "Bearer <CLOUDFLARE_AUTH_TOKEN>"
+  },
+{
+    "model": "openai/gpt-4o",
+    "authorization": "Bearer <OPENAI_API_KEY>"
+  }
+]
 ```
 
 ## Troubleshooting
@@ -165,8 +441,13 @@ For JavaScript-heavy pages or Single Page Applications (SPAs), the default page 
 
 The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `networkidle0` or `networkidle2`:
 
-```
-{  "url": "https://example.com",  "gotoOptions": {    "waitUntil": "networkidle0"  }}
+```json
+{
+  "url": "https://example.com",
+  "gotoOptions": {
+    "waitUntil": "networkidle0"
+  }
+}
 ```
 
 For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).
@@ -184,6 +465,6 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI · Cloudflare Browser Run docs","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI · Cloudflare Browser Run docs","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/json-endpoint/","name":"/json - Capture structured data using AI"}}]}
 ```

@@ -28,16 +28,30 @@ Avatar component which renders a participant's image or their initials.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAvatar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAvatar />;}
+
+
+function MyComponent() {
+  return <RtkAvatar />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAvatar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAvatar      participant="example"      size="md"      variant="circular"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAvatar
+      participant="example"
+      size="md"
+      variant="circular"
+    />
+  );
+}
 ```
 
 ```json

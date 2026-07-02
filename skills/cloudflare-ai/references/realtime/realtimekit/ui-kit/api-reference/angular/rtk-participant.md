@@ -30,14 +30,20 @@ A participant entry component used inside `rtk-participants` which shows data li
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participant></rtk-participant>
+```html
+<!-- component.html -->
+<rtk-participant></rtk-participant>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participant [meeting]="meeting" [participant]="participant" [view]="participantviewmode"></rtk-participant>
+```html
+<!-- component.html -->
+<rtk-participant
+ [meeting]="meeting"
+ [participant]="participant"
+ [view]="participantviewmode">
+</rtk-participant>
 ```
 
 ```json

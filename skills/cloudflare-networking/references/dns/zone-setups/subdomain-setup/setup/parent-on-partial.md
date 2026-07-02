@@ -18,8 +18,8 @@ When the parent zone is using a [CNAME setup (partial)](https://developers.cloud
 
 If you have not yet created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-8215)
-* [ child is partial ](#tab-panel-8216)
+* [ child is full or secondary ](#tab-panel-8496)
+* [ child is partial ](#tab-panel-8497)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -53,7 +53,7 @@ Example CNAME record at authoritative DNS provider
 
 The `CNAME` record for `sub.example.com` would be:
 
-```
+```txt
 sub.example.com CNAME sub.example.com.cdn.cloudflare.net
 ```
 
@@ -61,8 +61,8 @@ sub.example.com CNAME sub.example.com.cdn.cloudflare.net
 
 If you have already created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-8217)
-* [ child is partial ](#tab-panel-8218)
+* [ child is full or secondary ](#tab-panel-8498)
+* [ child is partial ](#tab-panel-8499)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -107,7 +107,7 @@ Example CNAME record at authoritative DNS provider
 
 The `CNAME` record for `sub.example.com` would be:
 
-```
+```txt
 sub.example.com CNAME sub.example.com.cdn.cloudflare.net
 ```
 

@@ -20,10 +20,12 @@ Direct Upload
 
 If your project is a [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/) project, you will not have the option to configure production branch controls. To update your production branch, you will need to manually call the [Update Project](https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/edit/) endpoint in the API.
 
-Terminal window
-
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data "{\"production_branch\": \"main\"}"
+```bash
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data "{\"production_branch\": \"main\"}"
 ```
 
 To configure deployment options, go to your Pages project > **Settings** \> **Builds & deployments** \> **Configure Production deployments**. Pages will default to setting your production environment to the branch you first push, but you can set your production to another branch if you choose.

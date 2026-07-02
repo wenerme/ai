@@ -29,19 +29,25 @@ Fully featured chat component with image & file upload, emoji picker and auto-sc
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat></rtk-chat>
 ```
 
 ### With Properties
 
-```
-<rtk-chat size="md"></rtk-chat>
+```html
+<rtk-chat
+ size="md">
+</rtk-chat>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

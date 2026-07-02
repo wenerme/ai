@@ -27,14 +27,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participants-waiting-list></rtk-participants-waiting-list>
+```html
+<!-- component.html -->
+<rtk-participants-waiting-list></rtk-participants-waiting-list>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participants-waiting-list [meeting]="meeting" size="md" [view]="participantsviewmode"></rtk-participants-waiting-list>
+```html
+<!-- component.html -->
+<rtk-participants-waiting-list
+ [meeting]="meeting"
+ size="md"
+ [view]="participantsviewmode">
+</rtk-participants-waiting-list>
 ```
 
 ```json

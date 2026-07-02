@@ -24,21 +24,32 @@ A small circular badge view that displays a notification count. Hides automatica
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let badge = RtkNotificationBadgeView()badge.setBadgeCount(5)view.addSubview(badge)
+
+
+let badge = RtkNotificationBadgeView()
+badge.setBadgeCount(5)
+view.addSubview(badge)
 ```
 
 ### Reset badge
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let badge = RtkNotificationBadgeView()badge.setBadgeCount(3)view.addSubview(badge)
-// Hide the badge by setting count to zerobadge.setBadgeCount(0)
+
+
+let badge = RtkNotificationBadgeView()
+badge.setBadgeCount(3)
+view.addSubview(badge)
+
+
+// Hide the badge by setting count to zero
+badge.setBadgeCount(0)
 ```
 
 ```json

@@ -28,33 +28,85 @@ To use Images with **all** your app's images, define a global [loaderFile ↗](h
 
 Add the following settings to the **next.config.js** file located at the root of your Next.js application.
 
-TypeScript
+**TypeScript**
 
-```
-module.exports = {  images: {    loader: "custom",    loaderFile: "./imageLoader.ts",  },};
+```ts
+module.exports = {
+  images: {
+    loader: "custom",
+    loaderFile: "./imageLoader.ts",
+  },
+};
 ```
 
 Next, create the `imageLoader.ts` file in the specified path (relative to the root of your Next.js application).
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import type { ImageLoaderProps } from "next/image";
-const normalizeSrc = (src: string) => {  return src.startsWith("/") ? src.slice(1) : src;};
-export default function cloudflareLoader({  src,  width,  quality,}: ImageLoaderProps) {  const params = [`width=${width}`];  if (quality) {    params.push(`quality=${quality}`);  }  if (process.env.NODE_ENV === "development") {    return `${src}?${params.join("&")}`;  }  return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;}
+
+
+const normalizeSrc = (src: string) => {
+  return src.startsWith("/") ? src.slice(1) : src;
+};
+
+
+export default function cloudflareLoader({
+  src,
+  width,
+  quality,
+}: ImageLoaderProps) {
+  const params = [`width=${width}`];
+  if (quality) {
+    params.push(`quality=${quality}`);
+  }
+  if (process.env.NODE_ENV === "development") {
+    return `${src}?${params.join("&")}`;
+  }
+  return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;
+}
 ```
 
 ### Custom Loaders
 
 Alternatively, define a loader for each `<Image />` component.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import Image from "next/image";
-const normalizeSrc = (src) => {  return src.startsWith("/") ? src.slice(1) : src;};
-const cloudflareLoader = ({ src, width, quality }) => {  const params = [`width=${width}`];  if (quality) {    params.push(`quality=${quality}`);  }  if (process.env.NODE_ENV === "development") {    return `${src}?${params.join("&")}`;  }  return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;};
-const MyImage = (props) => {  return (    <Image      loader={cloudflareLoader}      src="/me.png"      alt="Picture of the author"      width={500}      height={500}      {...props}    />  );};
+
+
+const normalizeSrc = (src) => {
+  return src.startsWith("/") ? src.slice(1) : src;
+};
+
+
+const cloudflareLoader = ({ src, width, quality }) => {
+  const params = [`width=${width}`];
+  if (quality) {
+    params.push(`quality=${quality}`);
+  }
+  if (process.env.NODE_ENV === "development") {
+    return `${src}?${params.join("&")}`;
+  }
+  return `/cdn-cgi/image/${params.join(",")}/${normalizeSrc(src)}`;
+};
+
+
+const MyImage = (props) => {
+  return (
+    <Image
+      loader={cloudflareLoader}
+      src="/me.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+      {...props}
+    />
+  );
+};
 ```
 
 Note

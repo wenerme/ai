@@ -29,20 +29,33 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6684)
-* [  wrangler.toml ](#tab-panel-6685)
+* [  wrangler.jsonc ](#tab-panel-6932)
+* [  wrangler.toml ](#tab-panel-6933)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search_namespaces": [
+    {
+      "binding": "AI_SEARCH",
+      "namespace": "my-namespace"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "my-namespace"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "my-namespace"
+
+
+[[ai_search_namespaces]]
+binding = "AI_SEARCH"
+namespace = "my-namespace"
 ```
 
 | Field     | Type    | Required | Description                                                                                                                                                                                                                   |
@@ -55,20 +68,33 @@ compatibility_date = "2026-03-27"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6686)
-* [  wrangler.toml ](#tab-panel-6687)
+* [  wrangler.jsonc ](#tab-panel-6934)
+* [  wrangler.toml ](#tab-panel-6935)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search": [
+    {
+      "binding": "MY_SEARCH",
+      "instance_name": "my-instance"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search]]binding = "MY_SEARCH"instance_name = "my-instance"
+
+
+[[ai_search]]
+binding = "MY_SEARCH"
+instance_name = "my-instance"
 ```
 
 | Field          | Type    | Required | Description                                                                                          |
@@ -87,11 +113,15 @@ The examples below use the namespace binding.
 
 Search for relevant content chunks from your indexed data source. Returns scored chunks with source references.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
 ```
 
 #### Parameters
@@ -212,23 +242,51 @@ The response contains the following fields:
 
 Generate chat completions using your AI Search instance as context. This method retrieves relevant content and uses it to generate a response.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const response = await instance.chatCompletions({  messages: [    { role: "system", content: "You are a helpful documentation assistant." },    { role: "user", content: "What is Cloudflare?" },  ],  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",  ai_search_options: {    retrieval: {      max_num_results: 5,    },    query_rewrite: {      enabled: true,    },  },});
+
+
+const response = await instance.chatCompletions({
+  messages: [
+    { role: "system", content: "You are a helpful documentation assistant." },
+    { role: "user", content: "What is Cloudflare?" },
+  ],
+  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  ai_search_options: {
+    retrieval: {
+      max_num_results: 5,
+    },
+    query_rewrite: {
+      enabled: true,
+    },
+  },
+});
 ```
 
 #### Stream responses
 
 Set `stream: true` to receive responses as Server-Sent Events (SSE) as they are generated:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const stream = await instance.chatCompletions({  messages: [{ role: "user", content: "What is Cloudflare?" }],  stream: true,});
-return new Response(stream, {  headers: {    "content-type": "text/event-stream",    "cache-control": "no-cache",  },});
+
+
+const stream = await instance.chatCompletions({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  stream: true,
+});
+
+
+return new Response(stream, {
+  headers: {
+    "content-type": "text/event-stream",
+    "cache-control": "no-cache",
+  },
+});
 ```
 
 When `stream` is enabled, the method returns a `ReadableStream` of SSE events. Each event contains a JSON object with `choices[0].delta.content` for incremental text. The stream ends with a `data: [DONE]` event.
@@ -350,12 +408,23 @@ Configuration options for the search and generation operation.
 
 When `stream: true`, the method returns a `ReadableStream` of Server-Sent Events. The retrieved chunks are sent first as a `chunks` event, followed by the streamed response.
 
-```
-event: chunksdata: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
+```txt
+event: chunks
+data: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" document"}}]}
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" you provided doesn"}}]}
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":"'t contain"}}]}
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" information"}}]}
+
+
 data: [DONE]
 ```
 
@@ -367,10 +436,15 @@ The following methods are only available when using the `ai_search_namespaces` b
 
 Pass `instance_ids` in `ai_search_options` to specify which instances to query. Results are merged and ranked, and each chunk includes an `instance_id` field identifying which instance it came from.
 
-TypeScript
+**TypeScript**
 
-```
-const results = await env.AI_SEARCH.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    instance_ids: ["product-docs", "customer-abc123"],  },});
+```ts
+const results = await env.AI_SEARCH.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    instance_ids: ["product-docs", "customer-abc123"],
+  },
+});
 ```
 
 #### Parameters
@@ -395,10 +469,15 @@ Same as [instance-level search](#response), with additional fields:
 
 Generate chat completions using context retrieved from multiple instances.
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI_SEARCH.chatCompletions({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    instance_ids: ["product-docs", "customer-abc123"],  },});
+```ts
+const response = await env.AI_SEARCH.chatCompletions({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    instance_ids: ["product-docs", "customer-abc123"],
+  },
+});
 ```
 
 Streaming is supported with `stream: true`.
@@ -425,10 +504,19 @@ Same as [instance-level chat completions](#response-non-streaming), with additio
 
 Local development is supported by proxying requests to your deployed AI Search instance. Add `remote: true` to your binding configuration to enable local development with `wrangler dev`.
 
-JSONC
+**JSONC**
 
-```
-// wrangler.jsonc{  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance",      "remote": true,    },  ],}
+```jsonc
+// wrangler.jsonc
+{
+  "ai_search": [
+    {
+      "binding": "MY_SEARCH",
+      "instance_name": "my-instance",
+      "remote": true,
+    },
+  ],
+}
 ```
 
 ```json

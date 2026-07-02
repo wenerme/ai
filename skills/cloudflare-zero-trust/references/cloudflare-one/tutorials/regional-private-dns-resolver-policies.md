@@ -101,8 +101,7 @@ To test your configuration, deploy the Cloudflare One Client on a device in each
 
 1. [Deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) on a device in the US region.
 2. From the device, open a terminal and run:
-Terminal window
-```
+```sh
 nslookup internal.example.com
 ```
 3. Verify that the DNS query returns the expected IP address for your internal resource. The response should show the IP address that your US DNS server is configured to return for `internal.example.com`.

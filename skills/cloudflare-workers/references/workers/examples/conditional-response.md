@@ -20,54 +20,248 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11741)
-* [  TypeScript ](#tab-panel-11742)
-* [  Python ](#tab-panel-11743)
-* [  Hono ](#tab-panel-11744)
+* [  JavaScript ](#tab-panel-11974)
+* [  TypeScript ](#tab-panel-11975)
+* [  Python ](#tab-panel-11976)
+* [  Hono ](#tab-panel-11977)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request) {
+    const BLOCKED_HOSTNAMES = ["nope.mywebsite.com", "bye.website.com"];
+    // Return a new Response based on a URL's hostname
+    const url = new URL(request.url);
+    if (BLOCKED_HOSTNAMES.includes(url.hostname)) {
+      return new Response("Blocked Host", { status: 403 });
+    }
+    // Block paths ending in .doc or .xml based on the URL's file extension
+    const forbiddenExtRegExp = new RegExp(/\.(doc|xml)$/);
+    if (forbiddenExtRegExp.test(url.pathname)) {
+      return new Response("Blocked Extension", { status: 403 });
+    }
+    // On HTTP method
+    if (request.method === "POST") {
+      return new Response("Response for POST");
+    }
+    // On User Agent
+    const userAgent = request.headers.get("User-Agent") || "";
+    if (userAgent.includes("bot")) {
+      return new Response("Block User Agent containing bot", { status: 403 });
+    }
+    // On Client's IP address
+    const clientIP = request.headers.get("CF-Connecting-IP");
+    if (clientIP === "1.2.3.4") {
+      return new Response("Block the IP 1.2.3.4", { status: 403 });
+    }
+    // On ASN
+    if (request.cf && request.cf.asn == 64512) {
+      return new Response("Block the ASN 64512 response");
+    }
+    // On Device Type
+    // Requires Enterprise "CF-Device-Type Header" zone setting or
+    // Page Rule with "Cache By Device Type" setting applied.
+    const device = request.headers.get("CF-Device-Type");
+    if (device === "mobile") {
+      return Response.redirect("https://mobile.example.com");
+    }
+    console.error(
+      "Getting Client's IP address, device type, and ASN are not supported in playground. Must test on a live worker",
+    );
+    return fetch(request);
+  },
+};
 ```
-export default {  async fetch(request) {    const BLOCKED_HOSTNAMES = ["nope.mywebsite.com", "bye.website.com"];    // Return a new Response based on a URL's hostname    const url = new URL(request.url);    if (BLOCKED_HOSTNAMES.includes(url.hostname)) {      return new Response("Blocked Host", { status: 403 });    }    // Block paths ending in .doc or .xml based on the URL's file extension    const forbiddenExtRegExp = new RegExp(/\.(doc|xml)$/);    if (forbiddenExtRegExp.test(url.pathname)) {      return new Response("Blocked Extension", { status: 403 });    }    // On HTTP method    if (request.method === "POST") {      return new Response("Response for POST");    }    // On User Agent    const userAgent = request.headers.get("User-Agent") || "";    if (userAgent.includes("bot")) {      return new Response("Block User Agent containing bot", { status: 403 });    }    // On Client's IP address    const clientIP = request.headers.get("CF-Connecting-IP");    if (clientIP === "1.2.3.4") {      return new Response("Block the IP 1.2.3.4", { status: 403 });    }    // On ASN    if (request.cf && request.cf.asn == 64512) {      return new Response("Block the ASN 64512 response");    }    // On Device Type    // Requires Enterprise "CF-Device-Type Header" zone setting or    // Page Rule with "Cache By Device Type" setting applied.    const device = request.headers.get("CF-Device-Type");    if (device === "mobile") {      return Response.redirect("https://mobile.example.com");    }    console.error(      "Getting Client's IP address, device type, and ASN are not supported in playground. Must test on a live worker",    );    return fetch(request);  },};
+
+**TypeScript**
+
+```ts
+export default {
+  async fetch(request): Promise<Response> {
+    const BLOCKED_HOSTNAMES = ["nope.mywebsite.com", "bye.website.com"];
+    // Return a new Response based on a URL's hostname
+    const url = new URL(request.url);
+    if (BLOCKED_HOSTNAMES.includes(url.hostname)) {
+      return new Response("Blocked Host", { status: 403 });
+    }
+    // Block paths ending in .doc or .xml based on the URL's file extension
+    const forbiddenExtRegExp = new RegExp(/\.(doc|xml)$/);
+    if (forbiddenExtRegExp.test(url.pathname)) {
+      return new Response("Blocked Extension", { status: 403 });
+    }
+    // On HTTP method
+    if (request.method === "POST") {
+      return new Response("Response for POST");
+    }
+    // On User Agent
+    const userAgent = request.headers.get("User-Agent") || "";
+    if (userAgent.includes("bot")) {
+      return new Response("Block User Agent containing bot", { status: 403 });
+    }
+    // On Client's IP address
+    const clientIP = request.headers.get("CF-Connecting-IP");
+    if (clientIP === "1.2.3.4") {
+      return new Response("Block the IP 1.2.3.4", { status: 403 });
+    }
+    // On ASN
+    if (request.cf && request.cf.asn == 64512) {
+      return new Response("Block the ASN 64512 response");
+    }
+    // On Device Type
+    // Requires Enterprise "CF-Device-Type Header" zone setting or
+    // Page Rule with "Cache By Device Type" setting applied.
+    const device = request.headers.get("CF-Device-Type");
+    if (device === "mobile") {
+      return Response.redirect("https://mobile.example.com");
+    }
+    console.error(
+      "Getting Client's IP address, device type, and ASN are not supported in playground. Must test on a live worker",
+    );
+    return fetch(request);
+  },
+} satisfies ExportedHandler;
 ```
 
-TypeScript
+**Python**
 
-```
-export default {  async fetch(request): Promise<Response> {    const BLOCKED_HOSTNAMES = ["nope.mywebsite.com", "bye.website.com"];    // Return a new Response based on a URL's hostname    const url = new URL(request.url);    if (BLOCKED_HOSTNAMES.includes(url.hostname)) {      return new Response("Blocked Host", { status: 403 });    }    // Block paths ending in .doc or .xml based on the URL's file extension    const forbiddenExtRegExp = new RegExp(/\.(doc|xml)$/);    if (forbiddenExtRegExp.test(url.pathname)) {      return new Response("Blocked Extension", { status: 403 });    }    // On HTTP method    if (request.method === "POST") {      return new Response("Response for POST");    }    // On User Agent    const userAgent = request.headers.get("User-Agent") || "";    if (userAgent.includes("bot")) {      return new Response("Block User Agent containing bot", { status: 403 });    }    // On Client's IP address    const clientIP = request.headers.get("CF-Connecting-IP");    if (clientIP === "1.2.3.4") {      return new Response("Block the IP 1.2.3.4", { status: 403 });    }    // On ASN    if (request.cf && request.cf.asn == 64512) {      return new Response("Block the ASN 64512 response");    }    // On Device Type    // Requires Enterprise "CF-Device-Type Header" zone setting or    // Page Rule with "Cache By Device Type" setting applied.    const device = request.headers.get("CF-Device-Type");    if (device === "mobile") {      return Response.redirect("https://mobile.example.com");    }    console.error(      "Getting Client's IP address, device type, and ASN are not supported in playground. Must test on a live worker",    );    return fetch(request);  },} satisfies ExportedHandler;
-```
+```py
+import re
+from workers import WorkerEntrypoint, Response, fetch
+from urllib.parse import urlparse
 
-Python
 
-```
-import refrom workers import WorkerEntrypoint, Response, fetchfrom urllib.parse import urlparse
-class Default(WorkerEntrypoint):    async def fetch(self, request):        blocked_hostnames = ["nope.mywebsite.com", "bye.website.com"]        url = urlparse(request.url)
-        # Block on hostname        if url.hostname in blocked_hostnames:            return Response("Blocked Host", status=403)
-        # On paths ending in .doc or .xml        if re.search(r'\.(doc|xml)$', url.path):            return Response("Blocked Extension", status=403)
-        # On HTTP method        if "POST" in request.method:            return Response("Response for POST")
-        # On User Agent        user_agent = request.headers["User-Agent"] or ""        if "bot" in user_agent:            return Response("Block User Agent containing bot", status=403)
-        # On Client's IP address        client_ip = request.headers["CF-Connecting-IP"]        if client_ip == "1.2.3.4":            return Response("Block the IP 1.2.3.4", status=403)
-        # On ASN        if request.cf and request.cf.asn == 64512:            return Response("Block the ASN 64512 response")
-        # On Device Type        # Requires Enterprise "CF-Device-Type Header" zone setting or        # Page Rule with "Cache By Device Type" setting applied.        device = request.headers["CF-Device-Type"]        if device == "mobile":            return Response.redirect("https://mobile.example.com")
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        blocked_hostnames = ["nope.mywebsite.com", "bye.website.com"]
+        url = urlparse(request.url)
+
+
+        # Block on hostname
+        if url.hostname in blocked_hostnames:
+            return Response("Blocked Host", status=403)
+
+
+        # On paths ending in .doc or .xml
+        if re.search(r'\.(doc|xml)$', url.path):
+            return Response("Blocked Extension", status=403)
+
+
+        # On HTTP method
+        if "POST" in request.method:
+            return Response("Response for POST")
+
+
+        # On User Agent
+        user_agent = request.headers["User-Agent"] or ""
+        if "bot" in user_agent:
+            return Response("Block User Agent containing bot", status=403)
+
+
+        # On Client's IP address
+        client_ip = request.headers["CF-Connecting-IP"]
+        if client_ip == "1.2.3.4":
+            return Response("Block the IP 1.2.3.4", status=403)
+
+
+        # On ASN
+        if request.cf and request.cf.asn == 64512:
+            return Response("Block the ASN 64512 response")
+
+
+        # On Device Type
+        # Requires Enterprise "CF-Device-Type Header" zone setting or
+        # Page Rule with "Cache By Device Type" setting applied.
+        device = request.headers["CF-Device-Type"]
+        if device == "mobile":
+            return Response.redirect("https://mobile.example.com")
+
+
         return fetch(request)
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { HTTPException } from "hono/http-exception";
+```ts
+import { Hono } from "hono";
+import { HTTPException } from "hono/http-exception";
+
+
 const app = new Hono();
-// Middleware to handle all conditions before reaching the main handlerapp.use("*", async (c, next) => {  const request = c.req.raw;  const BLOCKED_HOSTNAMES = ["nope.mywebsite.com", "bye.website.com"];  const hostname = new URL(c.req.url)?.hostname;
-  // Return a new Response based on a URL's hostname  if (BLOCKED_HOSTNAMES.includes(hostname)) {    return c.text("Blocked Host", 403);  }
-  // Block paths ending in .doc or .xml based on the URL's file extension  const forbiddenExtRegExp = new RegExp(/\.(doc|xml)$/);  if (forbiddenExtRegExp.test(c.req.pathname)) {    return c.text("Blocked Extension", 403);  }
-  // On User Agent  const userAgent = c.req.header("User-Agent") || "";  if (userAgent.includes("bot")) {    return c.text("Block User Agent containing bot", 403);  }
-  // On Client's IP address  const clientIP = c.req.header("CF-Connecting-IP");  if (clientIP === "1.2.3.4") {    return c.text("Block the IP 1.2.3.4", 403);  }
-  // On ASN  if (request.cf && request.cf.asn === 64512) {    return c.text("Block the ASN 64512 response");  }
-  // On Device Type  // Requires Enterprise "CF-Device-Type Header" zone setting or  // Page Rule with "Cache By Device Type" setting applied.  const device = c.req.header("CF-Device-Type");  if (device === "mobile") {    return c.redirect("https://mobile.example.com");  }
-  // Continue to the next handler  await next();});
-// Handle POST requests differentlyapp.post("*", (c) => {  return c.text("Response for POST");});
-// Default handler for other methodsapp.get("*", async (c) => {  console.error(    "Getting Client's IP address, device type, and ASN are not supported in playground. Must test on a live worker",  );
-  // Fetch the original request  return fetch(c.req.raw);});
+
+
+// Middleware to handle all conditions before reaching the main handler
+app.use("*", async (c, next) => {
+  const request = c.req.raw;
+  const BLOCKED_HOSTNAMES = ["nope.mywebsite.com", "bye.website.com"];
+  const hostname = new URL(c.req.url)?.hostname;
+
+
+  // Return a new Response based on a URL's hostname
+  if (BLOCKED_HOSTNAMES.includes(hostname)) {
+    return c.text("Blocked Host", 403);
+  }
+
+
+  // Block paths ending in .doc or .xml based on the URL's file extension
+  const forbiddenExtRegExp = new RegExp(/\.(doc|xml)$/);
+  if (forbiddenExtRegExp.test(c.req.pathname)) {
+    return c.text("Blocked Extension", 403);
+  }
+
+
+  // On User Agent
+  const userAgent = c.req.header("User-Agent") || "";
+  if (userAgent.includes("bot")) {
+    return c.text("Block User Agent containing bot", 403);
+  }
+
+
+  // On Client's IP address
+  const clientIP = c.req.header("CF-Connecting-IP");
+  if (clientIP === "1.2.3.4") {
+    return c.text("Block the IP 1.2.3.4", 403);
+  }
+
+
+  // On ASN
+  if (request.cf && request.cf.asn === 64512) {
+    return c.text("Block the ASN 64512 response");
+  }
+
+
+  // On Device Type
+  // Requires Enterprise "CF-Device-Type Header" zone setting or
+  // Page Rule with "Cache By Device Type" setting applied.
+  const device = c.req.header("CF-Device-Type");
+  if (device === "mobile") {
+    return c.redirect("https://mobile.example.com");
+  }
+
+
+  // Continue to the next handler
+  await next();
+});
+
+
+// Handle POST requests differently
+app.post("*", (c) => {
+  return c.text("Response for POST");
+});
+
+
+// Default handler for other methods
+app.get("*", async (c) => {
+  console.error(
+    "Getting Client's IP address, device type, and ASN are not supported in playground. Must test on a live worker",
+  );
+
+
+  // Fetch the original request
+  return fetch(c.req.raw);
+});
+
+
 export default app;
 ```
 

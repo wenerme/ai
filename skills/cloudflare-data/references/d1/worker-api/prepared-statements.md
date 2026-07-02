@@ -20,19 +20,23 @@ This chapter documents the various ways you can run and retrieve the results of 
 
 Binds a parameter to the prepared statement.
 
-* [  JavaScript ](#tab-panel-8047)
-* [  Python ](#tab-panel-8048)
+* [  JavaScript ](#tab-panel-8328)
+* [  Python ](#tab-panel-8329)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-```
 
-Python
+**Python**
 
-```
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare(  "SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+```py
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare(
+  "SELECT * FROM Customers WHERE CompanyName = ?"
+).bind(some_variable)
 ```
 
 #### Parameter
@@ -56,36 +60,49 @@ some_variable = "Bs Beverages"stmt = self.env.DB.prepare(  "SELECT * FROM Custom
 To bind a parameter, use the `.bind` method.
 Order and anonymous examples:
 
-  * [  JavaScript ](#tab-panel-8049)
-  * [  Python ](#tab-panel-8050)
-JavaScript
-```
+  * [  JavaScript ](#tab-panel-8330)
+  * [  Python ](#tab-panel-8331)
+
+**JavaScript**
+```js
 const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("");
 ```
-Python
-```
+
+**Python**
+```py
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("")
 ```
 
-  * [  JavaScript ](#tab-panel-8051)
-  * [  Python ](#tab-panel-8052)
-JavaScript
-```
-const stmt = db  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")  .bind("Alfreds Futterkiste", 1);
-```
-Python
-```
-stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?").bind("Alfreds Futterkiste", 1)
+  * [  JavaScript ](#tab-panel-8332)
+  * [  Python ](#tab-panel-8333)
+
+**JavaScript**
+```js
+const stmt = db
+  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")
+  .bind("Alfreds Futterkiste", 1);
 ```
 
-  * [  JavaScript ](#tab-panel-8053)
-  * [  Python ](#tab-panel-8054)
-JavaScript
+**Python**
+```py
+stmt = db.prepare(
+"SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?"
+).bind("Alfreds Futterkiste", 1)
 ```
-const stmt = db  .prepare(  "SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1").bind(1, "Alfreds Futterkiste");
+
+  * [  JavaScript ](#tab-panel-8334)
+  * [  Python ](#tab-panel-8335)
+
+**JavaScript**
+```js
+const stmt = db
+  .prepare(
+  "SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1"
+).bind(1, "Alfreds Futterkiste");
 ```
-Python
-```
+
+**Python**
+```py
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1").bind(1, "Alfreds Futterkiste")
 ```
 
@@ -99,54 +116,64 @@ The recommended approach is to use [prepared statements](https://developers.clou
 
 Example of a prepared statement with dynamically bound value:
 
-* [  JavaScript ](#tab-panel-8055)
-* [  Python ](#tab-panel-8056)
+* [  JavaScript ](#tab-panel-8336)
+* [  Python ](#tab-panel-8337)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
+// A variable (someVariable) will replace the placeholder '?' in the query.
+// `stmt` is a prepared statement.
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);// A variable (someVariable) will replace the placeholder '?' in the query.// `stmt` is a prepared statement.
-```
 
-Python
+**Python**
 
-```
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)# A variable (some_variable) will replace the placeholder '?' in the query.# `stmt` is a prepared statement.
+```py
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+# A variable (some_variable) will replace the placeholder '?' in the query.
+# `stmt` is a prepared statement.
 ```
 
 Example of a static statement:
 
-* [  JavaScript ](#tab-panel-8057)
-* [  Python ](#tab-panel-8058)
+* [  JavaScript ](#tab-panel-8338)
+* [  Python ](#tab-panel-8339)
 
-JavaScript
+**JavaScript**
 
+```js
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'");
+// "Bs Beverages" is hard-coded into the query.
+// `stmt` is a static statement.
 ```
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'");// "Bs Beverages" is hard-coded into the query.// `stmt` is a static statement.
-```
 
-Python
+**Python**
 
-```
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'")# "Bs Beverages" is hard-coded into the query.# `stmt` is a static statement.
+```py
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'")
+# "Bs Beverages" is hard-coded into the query.
+# `stmt` is a static statement.
 ```
 
 ### `run()`
 
 Runs the prepared query (or queries) and returns results. The returned results includes metadata.
 
-* [  JavaScript ](#tab-panel-8059)
-* [  Python ](#tab-panel-8060)
+* [  JavaScript ](#tab-panel-8340)
+* [  Python ](#tab-panel-8341)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const returnValue = await stmt.run();
 ```
 
-Python
+**Python**
 
-```
+```py
 return_value = await stmt.run()
 ```
 
@@ -162,24 +189,56 @@ return_value = await stmt.run()
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8061)
-* [  Python ](#tab-panel-8062)
+* [  JavaScript ](#tab-panel-8342)
+* [  Python ](#tab-panel-8343)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
+const returnValue = await stmt.run();
+return Response.json(returnValue);
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.run();return Response.json(returnValue);
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.run()return Response.json(return_value)
+
+
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+return_value = await stmt.run()
+return Response.json(return_value)
 ```
 
-```
-{  "success": true,  "meta": {    "served_by": "miniflare.db",    "duration": 1,    "changes": 0,    "last_row_id": 0,    "changed_db": false,    "size_after": 8192,    "rows_read": 4,    "rows_written": 0  },  "results": [    {      "CustomerId": 11,      "CompanyName": "Bs Beverages",      "ContactName": "Victoria Ashworth"    },    {      "CustomerId": 13,      "CompanyName": "Bs Beverages",      "ContactName": "Random Name"    }  ]}
+```json
+{
+  "success": true,
+  "meta": {
+    "served_by": "miniflare.db",
+    "duration": 1,
+    "changes": 0,
+    "last_row_id": 0,
+    "changed_db": false,
+    "size_after": 8192,
+    "rows_read": 4,
+    "rows_written": 0
+  },
+  "results": [
+    {
+      "CustomerId": 11,
+      "CompanyName": "Bs Beverages",
+      "ContactName": "Victoria Ashworth"
+    },
+    {
+      "CustomerId": 13,
+      "CompanyName": "Bs Beverages",
+      "ContactName": "Random Name"
+    }
+  ]
+}
 ```
 
 #### Guidance
@@ -191,24 +250,37 @@ some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customer
 
 Example of returning only the `results`
 
-* [  JavaScript ](#tab-panel-8063)
-* [  Python ](#tab-panel-8064)
+* [  JavaScript ](#tab-panel-8344)
+* [  Python ](#tab-panel-8345)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 return Response.json(returnValue.results);
 ```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
+
+
 return Response.json(return_value.results)
 ```
 
-```
-[  {    "CustomerId": 11,    "CompanyName": "Bs Beverages",    "ContactName": "Victoria Ashworth"  },  {    "CustomerId": 13,    "CompanyName": "Bs Beverages",    "ContactName": "Random Name"  }]
+```json
+[
+  {
+    "CustomerId": 11,
+    "CompanyName": "Bs Beverages",
+    "ContactName": "Victoria Ashworth"
+  },
+  {
+    "CustomerId": 13,
+    "CompanyName": "Bs Beverages",
+    "ContactName": "Random Name"
+  }
+]
 ```
 
 ### `raw()`
@@ -217,18 +289,18 @@ Runs the prepared query (or queries), and returns the results as an array of arr
 
 Column names are not included in the result set by default. To include column names as the first row of the result array, set `.raw({columnNames: true})`.
 
-* [  JavaScript ](#tab-panel-8065)
-* [  Python ](#tab-panel-8066)
+* [  JavaScript ](#tab-panel-8346)
+* [  Python ](#tab-panel-8347)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const returnValue = await stmt.raw();
 ```
 
-Python
+**Python**
 
-```
+```py
 return_value = await stmt.raw()
 ```
 
@@ -244,46 +316,81 @@ return_value = await stmt.raw()
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8067)
-* [  Python ](#tab-panel-8068)
+* [  JavaScript ](#tab-panel-8348)
+* [  Python ](#tab-panel-8349)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
+const returnValue = await stmt.raw();
+return Response.json(returnValue);
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.raw();return Response.json(returnValue);
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.raw()return Response.json(return_value)
+
+
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+return_value = await stmt.raw()
+return Response.json(return_value)
 ```
 
-```
-[  [11, "Bs Beverages",    "Victoria Ashworth"  ],  [13, "Bs Beverages",    "Random Name"  ]]
+```json
+[
+  [11, "Bs Beverages",
+    "Victoria Ashworth"
+  ],
+  [13, "Bs Beverages",
+    "Random Name"
+  ]
+]
 ```
 
 With parameter `columnNames: true`:
 
-* [  JavaScript ](#tab-panel-8069)
-* [  Python ](#tab-panel-8070)
+* [  JavaScript ](#tab-panel-8350)
+* [  Python ](#tab-panel-8351)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
+const returnValue = await stmt.raw({columnNames:true});
+return Response.json(returnValue)
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.raw({columnNames:true});return Response.json(returnValue)
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.raw(columnNames=True)return Response.json(return_value)
+
+
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+return_value = await stmt.raw(columnNames=True)
+return Response.json(return_value)
 ```
 
-```
-[  [    "CustomerId",    "CompanyName",    "ContactName"  ],  [11, "Bs Beverages",    "Victoria Ashworth"  ],  [13, "Bs Beverages",    "Random Name"  ]]
+```json
+[
+  [
+    "CustomerId",
+    "CompanyName",
+    "ContactName"
+  ],
+  [11, "Bs Beverages",
+    "Victoria Ashworth"
+  ],
+  [13, "Bs Beverages",
+    "Random Name"
+  ]
+]
 ```
 
 #### Guidance
@@ -294,18 +401,18 @@ some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customer
 
 Runs the prepared query (or queries), and returns the first row of the query result as an object. This does not return any metadata. Instead, it directly returns the object.
 
-* [  JavaScript ](#tab-panel-8071)
-* [  Python ](#tab-panel-8072)
+* [  JavaScript ](#tab-panel-8352)
+* [  Python ](#tab-panel-8353)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const values = await stmt.first();
 ```
 
-Python
+**Python**
 
-```
+```py
 values = await stmt.first()
 ```
 
@@ -330,45 +437,65 @@ Example of return values
 
 Get all the columns from the first row:
 
-* [  JavaScript ](#tab-panel-8073)
-* [  Python ](#tab-panel-8074)
+* [  JavaScript ](#tab-panel-8354)
+* [  Python ](#tab-panel-8355)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
+const returnValue = await stmt.first();
+return Response.json(returnValue)
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.first();return Response.json(returnValue)
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.first()return Response.json(return_value)
+
+
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+return_value = await stmt.first()
+return Response.json(return_value)
 ```
 
-```
-{  "CustomerId": 11,  "CompanyName": "Bs Beverages",  "ContactName": "Victoria Ashworth"}
+```json
+{
+  "CustomerId": 11,
+  "CompanyName": "Bs Beverages",
+  "ContactName": "Victoria Ashworth"
+}
 ```
 
 Get a specific column from the first row:
 
-* [  JavaScript ](#tab-panel-8075)
-* [  Python ](#tab-panel-8076)
+* [  JavaScript ](#tab-panel-8356)
+* [  Python ](#tab-panel-8357)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
+const returnValue = await stmt.first("CustomerId");
+return Response.json(returnValue)
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.first("CustomerId");return Response.json(returnValue)
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.first("CustomerId")return Response.json(return_value)
+
+
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+return_value = await stmt.first("CustomerId")
+return Response.json(return_value)
 ```
 
-```
+```json
 11
 ```
 

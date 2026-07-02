@@ -24,21 +24,49 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-9520)
-* [  TypeScript ](#tab-panel-9521)
+* [  JavaScript ](#tab-panel-9811)
+* [  TypeScript ](#tab-panel-9812)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (url.pathname.startsWith("/api/")) {
+      // TODO: Add your custom /api/* logic here.
+      return new Response("Ok");
+    }
+    // Otherwise, serve the static assets.
+    // Without this, the Worker will error and no assets will be served.
+    return env.ASSETS.fetch(request);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);    if (url.pathname.startsWith("/api/")) {      // TODO: Add your custom /api/* logic here.      return new Response("Ok");    }    // Otherwise, serve the static assets.    // Without this, the Worker will error and no assets will be served.    return env.ASSETS.fetch(request);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 // Note: You would need to compile your TS into JS and output it as a `_worker.js` file. We do not read `_worker.ts`
-interface Env {  ASSETS: Fetcher;}
-export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);    if (url.pathname.startsWith("/api/")) {      // TODO: Add your custom /api/* logic here.      return new Response("Ok");    }    // Otherwise, serve the static assets.    // Without this, the Worker will error and no assets will be served.    return env.ASSETS.fetch(request);  },} satisfies ExportedHandler<Env>;
+
+
+interface Env {
+  ASSETS: Fetcher;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const url = new URL(request.url);
+    if (url.pathname.startsWith("/api/")) {
+      // TODO: Add your custom /api/* logic here.
+      return new Response("Ok");
+    }
+    // Otherwise, serve the static assets.
+    // Without this, the Worker will error and no assets will be served.
+    return env.ASSETS.fetch(request);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 In the above code, you have configured your Function to return a response under all requests headed for `/api/`. Otherwise, your Function will fallback to returning static assets.
@@ -52,9 +80,9 @@ In the above code, you have configured your Function to return a response under 
 
 To migrate an existing Worker to your Pages project, copy your Worker code and paste it into your new `_worker.js` file. Then handle static assets by adding the following code snippet to `_worker.js`:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 return env.ASSETS.fetch(request);
 ```
 

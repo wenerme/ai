@@ -46,10 +46,12 @@ After deployment, configure `CLOUDFLARE_API_TOKEN` as a secret. Optionally confi
 
 ### Manual deployment
 
-Terminal window
-
-```
-git clone https://github.com/cloudflare/cloudflare-prometheus-exporter.gitcd cloudflare-prometheus-exporterbun installwrangler secret put CLOUDFLARE_API_TOKENbun run deploy
+```bash
+git clone https://github.com/cloudflare/cloudflare-prometheus-exporter.git
+cd cloudflare-prometheus-exporter
+bun install
+wrangler secret put CLOUDFLARE_API_TOKEN
+bun run deploy
 ```
 
 ## Task 2 - Create an API token
@@ -73,20 +75,33 @@ Create a Cloudflare API token with the following permissions:
 
 Add the exporter as a scrape target in your Prometheus configuration:
 
-YAML
+**YAML**
 
-```
-scrape_configs:  - job_name: 'cloudflare'    scrape_interval: 60s    scrape_timeout: 30s    static_configs:      - targets: ['your-worker.your-subdomain.workers.dev']
+```yaml
+scrape_configs:
+  - job_name: 'cloudflare'
+    scrape_interval: 60s
+    scrape_timeout: 30s
+    static_configs:
+      - targets: ['your-worker.your-subdomain.workers.dev']
 ```
 
 ### With Basic Auth
 
 If you configured Basic Auth on the exporter, update your Prometheus configuration:
 
-YAML
+**YAML**
 
-```
-scrape_configs:  - job_name: 'cloudflare'    scrape_interval: 60s    scrape_timeout: 30s    basic_auth:      username: 'your-username'      password: 'your-password'    static_configs:      - targets: ['your-worker.your-subdomain.workers.dev']
+```yaml
+scrape_configs:
+  - job_name: 'cloudflare'
+    scrape_interval: 60s
+    scrape_timeout: 30s
+    basic_auth:
+      username: 'your-username'
+      password: 'your-password'
+    static_configs:
+      - targets: ['your-worker.your-subdomain.workers.dev']
 ```
 
 ## Configuration

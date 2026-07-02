@@ -26,7 +26,7 @@ To set up Yandex for Cloudflare Access:
 6. Select the **Access to email address**, **Access to user avatar,** and **Access to username, first name and surname, gender** options.
 7. Select **Platform** and select **Web Services.**
 8. In the **Callback URL #1** field, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -44,8 +44,15 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 
 ## Example API Config
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>"  },  "type": "yandex",  "name": "my example idp"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>"
+  },
+  "type": "yandex",
+  "name": "my example idp"
+}
 ```
 
 ```json

@@ -31,40 +31,88 @@ Flux is the first conversational speech recognition model built specifically for
 
 Step 1: Create a Worker that establishes a WebSocket connection
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    const resp = await env.AI.run("@cf/deepgram/flux", {      encoding: "linear16",      sample_rate: "16000"    }, {      websocket: true    });    return resp;  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const resp = await env.AI.run("@cf/deepgram/flux", {
+      encoding: "linear16",
+      sample_rate: "16000"
+    }, {
+      websocket: true
+    });
+    return resp;
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Step 2: Deploy your Worker
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
 Step 3: Write a client script to connect to your Worker and send audio
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const ws = new WebSocket('wss://<your-worker-url.com>');
-ws.onopen = () => {  console.log('Connected to WebSocket');
-  // Generate and send random audio bytes  // You can replace this part with a function  // that reads from your mic or other audio source  const audioData = generateRandomAudio();  ws.send(audioData);  console.log('Audio data sent');};
-ws.onmessage = (event) => {  // Transcription will be received here  // Add your custom logic to parse the data  console.log('Received:', event.data);};
-ws.onerror = (error) => {  console.error('WebSocket error:', error);};
-ws.onclose = () => {  console.log('WebSocket closed');};
-// Generate random audio data (1 second of noise at 44.1kHz, mono)function generateRandomAudio() {  const sampleRate = 44100;  const duration = 1;  const numSamples = sampleRate * duration;  const buffer = new ArrayBuffer(numSamples * 2);  const view = new Int16Array(buffer);
-  for (let i = 0; i < numSamples; i++) {    view[i] = Math.floor(Math.random() * 65536 - 32768);  }
-  return buffer;}
+
+
+ws.onopen = () => {
+  console.log('Connected to WebSocket');
+
+
+  // Generate and send random audio bytes
+  // You can replace this part with a function
+  // that reads from your mic or other audio source
+  const audioData = generateRandomAudio();
+  ws.send(audioData);
+  console.log('Audio data sent');
+};
+
+
+ws.onmessage = (event) => {
+  // Transcription will be received here
+  // Add your custom logic to parse the data
+  console.log('Received:', event.data);
+};
+
+
+ws.onerror = (error) => {
+  console.error('WebSocket error:', error);
+};
+
+
+ws.onclose = () => {
+  console.log('WebSocket closed');
+};
+
+
+// Generate random audio data (1 second of noise at 44.1kHz, mono)
+function generateRandomAudio() {
+  const sampleRate = 44100;
+  const duration = 1;
+  const numSamples = sampleRate * duration;
+  const buffer = new ArrayBuffer(numSamples * 2);
+  const view = new Int16Array(buffer);
+
+
+  for (let i = 0; i < numSamples; i++) {
+    view[i] = Math.floor(Math.random() * 65536 - 32768);
+  }
+
+
+  return buffer;
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2173)
-* [ Output ](#tab-panel-2174)
+* [ Input ](#tab-panel-2221)
+* [ Output ](#tab-panel-2222)
 
 encoding
 

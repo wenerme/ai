@@ -49,9 +49,19 @@ Cloudflare Access currently sends the IdP address in place of the _Service Provi
 2. Create an Authentication Policy that refers to the Profile just created, and bind it to the authentication vServer mentioned above.
 ![Citrix AD Configure Authentication SAML IDP Policy](https://developers.cloudflare.com/_astro/citrixadc-saml-4.Ci1ulauO_1NAuTh.webp)
 To configure all of the above using just the CLI, run the following:
-```
-add authentication samlIdPProfile samlProf_CloudflareAccess \    -samlIdPCertName SAML_Signing \    -assertionConsumerServiceURL "https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback" \    -samlIssuerName "https://idp.yourdomain.com/saml/login" \    -rejectUnsignedRequests OFF \    -NameIDFormat emailAddress \    -Attribute1 email \    -Attribute1Expr "AAA.USER.ATTRIBUTE(\"email\")" \    -Attribute1Format Basic \    -serviceProviderID "https://idp.yourdomain.com/saml/login"
-add authentication samlIdPPolicy samlPol_CloudflareAccess -rule true -action samlProf_CloudflareAccessbind authentication vserver nsidp -policy samlPol_CloudflareAccess
+```json
+add authentication samlIdPProfile samlProf_CloudflareAccess \
+    -samlIdPCertName SAML_Signing \
+    -assertionConsumerServiceURL "https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback" \
+    -samlIssuerName "https://idp.yourdomain.com/saml/login" \
+    -rejectUnsignedRequests OFF \
+    -NameIDFormat emailAddress \
+    -Attribute1 email \
+    -Attribute1Expr "AAA.USER.ATTRIBUTE(\"email\")" \
+    -Attribute1Format Basic \
+    -serviceProviderID "https://idp.yourdomain.com/saml/login"
+add authentication samlIdPPolicy samlPol_CloudflareAccess -rule true -action samlProf_CloudflareAccess
+bind authentication vserver nsidp -policy samlPol_CloudflareAccess
 ```
 3. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 4. Under **Your identity providers**, select **Add new identity provider**.

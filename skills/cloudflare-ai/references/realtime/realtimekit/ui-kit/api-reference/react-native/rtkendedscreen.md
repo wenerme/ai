@@ -28,16 +28,24 @@ Screen displayed when the meeting has ended.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkEndedScreen } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkEndedScreen />;}
+
+
+function MyComponent() {
+  return <RtkEndedScreen />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkEndedScreen } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkEndedScreen meeting={meeting} config={customConfig} size="md" />;}
+
+
+function MyComponent() {
+  return <RtkEndedScreen meeting={meeting} config={customConfig} size="md" />;
+}
 ```
 
 ```json

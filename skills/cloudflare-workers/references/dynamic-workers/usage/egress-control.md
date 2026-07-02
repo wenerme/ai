@@ -25,10 +25,14 @@ The `globalOutbound` option in the `WorkerCode` object returned by `get()` or pa
 
 Set `globalOutbound` to `null` to fully isolate the dynamic Worker from the network:
 
-JavaScript
+**JavaScript**
 
-```
-return {  mainModule: "index.js",  modules: { "index.js": code },  globalOutbound: null,};
+```js
+return {
+  mainModule: "index.js",
+  modules: { "index.js": code },
+  globalOutbound: null,
+};
 ```
 
 This causes any `fetch()` or `connect()` request from the dynamic Worker to throw an exception.
@@ -41,14 +45,42 @@ That said, if you need to offer compatibility with existing HTTP client librarie
 
 To intercept outbound requests, define a `WorkerEntrypoint` class in the loader Worker that acts as a gateway. Every `fetch()` and `connect()` call the dynamic Worker makes goes through this gateway instead of hitting the network directly. Pass the gateway to the dynamic Worker with `globalOutbound` and `ctx.exports`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-export class HttpGateway extends WorkerEntrypoint {  async fetch(request) {    // Every outbound fetch() from the dynamic Worker arrives here.    // Inspect, modify, block, or forward the request.    return fetch(request);  }}
-export default {  async fetch(request, env, ctx) {    const worker = env.LOADER.get("my-worker", async () => {      return {        compatibilityDate: "$today",        mainModule: "index.js",        modules: { "index.js": code },
-        // Pass the gateway as a service binding.        // The dynamic Worker's fetch() and connect() calls        // are routed through HttpGateway instead of going        // to the network directly.        globalOutbound: ctx.exports.HttpGateway(),      };    });
-    return worker.getEntrypoint().fetch(request);  },};
+
+
+export class HttpGateway extends WorkerEntrypoint {
+  async fetch(request) {
+    // Every outbound fetch() from the dynamic Worker arrives here.
+    // Inspect, modify, block, or forward the request.
+    return fetch(request);
+  }
+}
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const worker = env.LOADER.get("my-worker", async () => {
+      return {
+        compatibilityDate: "$today",
+        mainModule: "index.js",
+        modules: { "index.js": code },
+
+
+        // Pass the gateway as a service binding.
+        // The dynamic Worker's fetch() and connect() calls
+        // are routed through HttpGateway instead of going
+        // to the network directly.
+        globalOutbound: ctx.exports.HttpGateway(),
+      };
+    });
+
+
+    return worker.getEntrypoint().fetch(request);
+  },
+};
 ```
 
 From here, you can add any logic to the gateway, such as restricting destinations, injecting credentials, or logging requests.
@@ -59,16 +91,58 @@ A common pattern is attaching credentials to outbound requests so the dynamic Wo
 
 The dynamic Worker calls `fetch()` normally. `HttpGateway` intercepts the request, attaches the token from the loader Worker's environment, and forwards it. The dynamic Worker never has access to `API_TOKEN`.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-export class HttpGateway extends WorkerEntrypoint {  async fetch(request) {    let url = new URL(request.url);    const headers = new Headers(request.headers);
-    // For requests to api.example.com, inject credentials.    if (url.hostname === "api.example.com") {      headers.set("Authorization", `Bearer ${this.env.API_TOKEN}`);      headers.set("X-Tenant-Id", this.ctx.props.tenantId);    }
-    return fetch(request, { headers });  }}
-export default {  async fetch(request, env, ctx) {    const tenantId = getTenantFromRequest(request);
-    const worker = env.LOADER.get(`tenant:${tenantId}`, async () => {      return {        mainModule: "index.js",        modules: {          "index.js": `            export default {              async fetch() {                const resp = await fetch("https://api.example.com/data");                return new Response(await resp.text());              },            };          `,        },        globalOutbound: ctx.exports.HttpGateway({          props: { tenantId },        }),      };    });
-    return worker.getEntrypoint().fetch(request);  },};
+
+
+export class HttpGateway extends WorkerEntrypoint {
+  async fetch(request) {
+    let url = new URL(request.url);
+    const headers = new Headers(request.headers);
+
+
+    // For requests to api.example.com, inject credentials.
+    if (url.hostname === "api.example.com") {
+      headers.set("Authorization", `Bearer ${this.env.API_TOKEN}`);
+      headers.set("X-Tenant-Id", this.ctx.props.tenantId);
+    }
+
+
+    return fetch(request, { headers });
+  }
+}
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const tenantId = getTenantFromRequest(request);
+
+
+    const worker = env.LOADER.get(`tenant:${tenantId}`, async () => {
+      return {
+        mainModule: "index.js",
+        modules: {
+          "index.js": `
+            export default {
+              async fetch() {
+                const resp = await fetch("https://api.example.com/data");
+                return new Response(await resp.text());
+              },
+            };
+          `,
+        },
+        globalOutbound: ctx.exports.HttpGateway({
+          props: { tenantId },
+        }),
+      };
+    });
+
+
+    return worker.getEntrypoint().fetch(request);
+  },
+};
 ```
 
 ```json

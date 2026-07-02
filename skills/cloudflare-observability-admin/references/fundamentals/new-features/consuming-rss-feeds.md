@@ -20,8 +20,29 @@ A single product will also appear in the custom `<product>` tag for legacy reaso
 
 ## Example XML
 
-```
-<rss version="2.0">  <channel>    <title>Cloudflare changelogs</title>    <description>Updates to various Cloudflare products</description>    <link>https://developers.cloudflare.com/changelog/</link>    <item>      <title>Agents, Workers, Workflows - Build AI Agents with Example Prompts</title>      <link>https://developers.cloudflare.com/changelog/2025-02-14-example-ai-prompts/</link>      <guid isPermaLink="true">https://developers.cloudflare.com/changelog/2025-02-14-example-ai-prompts/</guid>      <description>        <p>          We've added an <a href="https://developers.cloudflare.com/workers/get-started/prompting/">example prompt</a> to help you get started with building AI agents and applications on Cloudflare ...        </p>      </description>      <pubDate>Fri, 14 Feb 2025 19:00:00 GMT</pubDate>      <product>Agents</product>      <category>Agents</category>      <category>Workers</category>      <category>Workflows</category>    </item>  </channel></rss>
+```xml
+<rss version="2.0">
+  <channel>
+    <title>Cloudflare changelogs</title>
+    <description>Updates to various Cloudflare products</description>
+    <link>https://developers.cloudflare.com/changelog/</link>
+    <item>
+      <title>Agents, Workers, Workflows - Build AI Agents with Example Prompts</title>
+      <link>https://developers.cloudflare.com/changelog/2025-02-14-example-ai-prompts/</link>
+      <guid isPermaLink="true">https://developers.cloudflare.com/changelog/2025-02-14-example-ai-prompts/</guid>
+      <description>
+        <p>
+          We've added an <a href="https://developers.cloudflare.com/workers/get-started/prompting/">example prompt</a> to help you get started with building AI agents and applications on Cloudflare ...
+        </p>
+      </description>
+      <pubDate>Fri, 14 Feb 2025 19:00:00 GMT</pubDate>
+      <product>Agents</product>
+      <category>Agents</category>
+      <category>Workers</category>
+      <category>Workflows</category>
+    </item>
+  </channel>
+</rss>
 ```
 
 ## Related resources

@@ -33,73 +33,153 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the `ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-12133)
-* [  Service Worker ](#tab-panel-12134)
-* [  Python ](#tab-panel-12135)
+* [  Module Worker ](#tab-panel-12428)
+* [  Service Worker ](#tab-panel-12429)
+* [  Python ](#tab-panel-12430)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // Fetch from origin server.    const response = await fetch(request);
-    // ... and deliver our Response while that’s running.    return new Response(response.body, response);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    // Fetch from origin server.
+    const response = await fetch(request);
+
+
+    // ... and deliver our Response while that’s running.
+    return new Response(response.body, response);
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (event) => {  event.respondWith(fetchAndStream(event.request));});
-async function fetchAndStream(request) {  // Fetch from origin server.  const response = await fetch(request);
-  // ... and deliver our Response while that’s running.  return new Response(readable.body, response);}
+```js
+addEventListener("fetch", (event) => {
+  event.respondWith(fetchAndStream(event.request));
+});
+
+
+async function fetchAndStream(request) {
+  // Fetch from origin server.
+  const response = await fetch(request);
+
+
+  // ... and deliver our Response while that’s running.
+  return new Response(readable.body, response);
+}
 ```
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response, fetch
-class Default(WorkerEntrypoint):    async def fetch(self, request):        # Fetch from origin server.        response = await fetch(request)
-        # Stream the response body to the client.        return Response(response.body, headers=response.headers)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        # Fetch from origin server.
+        response = await fetch(request)
+
+
+        # Stream the response body to the client.
+        return Response(response.body, headers=response.headers)
 ```
 
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-12136)
-* [  Service Worker ](#tab-panel-12137)
-* [  Python ](#tab-panel-12138)
+* [  Module Worker ](#tab-panel-12431)
+* [  Service Worker ](#tab-panel-12432)
+* [  Python ](#tab-panel-12433)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // Fetch from origin server.    const response = await fetch(request);
-    const { readable, writable } = new TransformStream({      transform(chunk, controller) {        controller.enqueue(modifyChunkSomehow(chunk));      },    });
-    // Start pumping the body. NOTE: No await!    response.body.pipeTo(writable);
-    // ... and deliver our Response while that’s running.    return new Response(readable, response);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    // Fetch from origin server.
+    const response = await fetch(request);
+
+
+    const { readable, writable } = new TransformStream({
+      transform(chunk, controller) {
+        controller.enqueue(modifyChunkSomehow(chunk));
+      },
+    });
+
+
+    // Start pumping the body. NOTE: No await!
+    response.body.pipeTo(writable);
+
+
+    // ... and deliver our Response while that’s running.
+    return new Response(readable, response);
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (event) => {  event.respondWith(fetchAndStream(event.request));});
-async function fetchAndStream(request) {  // Fetch from origin server.  const response = await fetch(request);
-  const { readable, writable } = new TransformStream({    transform(chunk, controller) {      controller.enqueue(modifyChunkSomehow(chunk));    },  });
-  // Start pumping the body. NOTE: No await!  response.body.pipeTo(writable);
-  // ... and deliver our Response while that’s running.  return new Response(readable, response);}
+```js
+addEventListener("fetch", (event) => {
+  event.respondWith(fetchAndStream(event.request));
+});
+
+
+async function fetchAndStream(request) {
+  // Fetch from origin server.
+  const response = await fetch(request);
+
+
+  const { readable, writable } = new TransformStream({
+    transform(chunk, controller) {
+      controller.enqueue(modifyChunkSomehow(chunk));
+    },
+  });
+
+
+  // Start pumping the body. NOTE: No await!
+  response.body.pipeTo(writable);
+
+
+  // ... and deliver our Response while that’s running.
+  return new Response(readable, response);
+}
 ```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responsefrom js import ReadableStream, TextEncoderfrom pyodide.ffi import create_proxy, to_jsimport asyncio
-class Default(WorkerEntrypoint):    async def fetch(self, request):        enc = TextEncoder.new()
-        async def start(controller):            for i in range(5):                controller.enqueue(enc.encode(f"chunk {i}\n"))                await asyncio.sleep(0.1)            controller.close()
-        stream = ReadableStream.new(            to_js({"start": create_proxy(start)})        )        return Response(stream, headers={"Content-Type": "text/plain"})
+```python
+from workers import WorkerEntrypoint, Response
+from js import ReadableStream, TextEncoder
+from pyodide.ffi import create_proxy, to_js
+import asyncio
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        enc = TextEncoder.new()
+
+
+        async def start(controller):
+            for i in range(5):
+                controller.enqueue(enc.encode(f"chunk {i}\n"))
+                await asyncio.sleep(0.1)
+            controller.close()
+
+
+        stream = ReadableStream.new(
+            to_js({"start": create_proxy(start)})
+        )
+        return Response(stream, headers={"Content-Type": "text/plain"})
 ```
 
 This example calls `response.body.pipeTo(writable)` but does not `await` it. This is so it does not block the forward progress of the remainder of the `fetchAndStream()` function. It continues to run asynchronously until the response is complete or the client disconnects.

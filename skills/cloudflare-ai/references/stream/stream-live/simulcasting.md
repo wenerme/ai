@@ -18,16 +18,28 @@ Simulcasting lets you forward your live stream to third-party platforms such as 
 
 Add an Output to start retransmitting live video. You can add or remove Outputs at any time during a broadcast to start and stop retransmitting.
 
-Request
+**Request**
 
-```
-curl -X POST \--data '{"url": "rtmp://a.rtmp.youtube.com/live2","streamKey": "<redacted>"}' \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<INPUT_UID>/outputs
+```bash
+curl -X POST \
+--data '{"url": "rtmp://a.rtmp.youtube.com/live2","streamKey": "<redacted>"}' \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<INPUT_UID>/outputs
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "uid": "6f8339ed45fe87daa8e7f0fe4e4ef776",    "url": "rtmp://a.rtmp.youtube.com/live2",    "streamKey": "<redacted>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "uid": "6f8339ed45fe87daa8e7f0fe4e4ef776",
+    "url": "rtmp://a.rtmp.youtube.com/live2",
+    "streamKey": "<redacted>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Control when you start and stop simulcasting

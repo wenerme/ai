@@ -32,16 +32,30 @@ A skeleton component used for composing custom controlbar buttons.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkControlbarButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkControlbarButton />;}
+
+
+function MyComponent() {
+  return <RtkControlbarButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkControlbarButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkControlbarButton      brandIcon={true}      disabled={true}      icon="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkControlbarButton
+      brandIcon={true}
+      disabled={true}
+      icon="example"
+    />
+  );
+}
 ```
 
 ```json

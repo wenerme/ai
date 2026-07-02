@@ -27,19 +27,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-ai-toggle></rtk-ai-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-ai-toggle size="md" variant"button"></rtk-ai-toggle>
+```html
+<rtk-ai-toggle
+ size="md"
+ variant"button">
+</rtk-ai-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-ai-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-ai-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -29,16 +29,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSidebarUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSidebarUi />;}
+
+
+function MyComponent() {
+  return <RtkSidebarUi />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSidebarUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSidebarUi      currentTab="example"      focusCloseButton={true}      hideCloseAction={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSidebarUi
+      currentTab="example"
+      focusCloseButton={true}
+      hideCloseAction={true}
+    />
+  );
+}
 ```
 
 ```json

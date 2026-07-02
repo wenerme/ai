@@ -31,16 +31,30 @@ Tooltip component which follows RTK Design System.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTooltip } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkTooltip />;}
+
+
+function MyComponent() {
+  return <RtkTooltip />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTooltip } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkTooltip      delay={42}      disabled={true}      kind={tooltipkind}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTooltip
+      delay={42}
+      disabled={true}
+      kind={tooltipkind}
+    />
+  );
+}
 ```
 
 ```json

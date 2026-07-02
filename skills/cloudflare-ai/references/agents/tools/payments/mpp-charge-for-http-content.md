@@ -28,10 +28,23 @@ Deploy the mpp-proxy template to your Cloudflare account:
 
 Define protected routes in `wrangler.jsonc`:
 
-JSONC
+**JSONC**
 
-```
-{  "vars": {    "PAY_TO": "0xYourWalletAddress",    "TEMPO_TESTNET": false,    "PAYMENT_CURRENCY": "0x20c000000000000000000000b9537d11c60e8b50",    "PROTECTED_PATTERNS": [      {        "pattern": "/premium/*",        "amount": "0.01",        "description": "Access to premium content for 1 hour"      }    ]  }}
+```jsonc
+{
+  "vars": {
+    "PAY_TO": "0xYourWalletAddress",
+    "TEMPO_TESTNET": false,
+    "PAYMENT_CURRENCY": "0x20c000000000000000000000b9537d11c60e8b50",
+    "PROTECTED_PATTERNS": [
+      {
+        "pattern": "/premium/*",
+        "amount": "0.01",
+        "description": "Access to premium content for 1 hour"
+      }
+    ]
+  }
+}
 ```
 
 Note
@@ -42,10 +55,16 @@ Set `TEMPO_TESTNET` to `true` and `PAYMENT_CURRENCY` to `0x20c000000000000000000
 
 With [Bot Management](https://developers.cloudflare.com/bots/), the proxy can charge crawlers while keeping the site free for humans:
 
-JSONC
+**JSONC**
 
-```
-{  "pattern": "/content/*",  "amount": "0.25",  "description": "Content access for 1 hour",  "bot_score_threshold": 30,  "except_detection_ids": [120623194, 117479730]}
+```jsonc
+{
+  "pattern": "/content/*",
+  "amount": "0.25",
+  "description": "Content access for 1 hour",
+  "bot_score_threshold": 30,
+  "except_detection_ids": [120623194, 117479730]
+}
 ```
 
 Requests with a bot score at or below `bot_score_threshold` are directed to the paywall. Use `except_detection_ids` to allowlist specific crawlers by [detection ID](https://developers.cloudflare.com/ai-crawl-control/reference/bots/).
@@ -54,10 +73,13 @@ Requests with a bot score at or below `bot_score_threshold` are directed to the 
 
 Clone the template, edit `wrangler.jsonc`, and deploy:
 
-Terminal window
-
-```
-git clone https://github.com/cloudflare/mpp-proxycd mpp-proxynpm installnpx wrangler secret put JWT_SECRETnpx wrangler secret put MPP_SECRET_KEYnpx wrangler deploy
+```sh
+git clone https://github.com/cloudflare/mpp-proxy
+cd mpp-proxy
+npm install
+npx wrangler secret put JWT_SECRET
+npx wrangler secret put MPP_SECRET_KEY
+npx wrangler deploy
 ```
 
 For full configuration options, proxy modes, and Bot Management examples, refer to the [mpp-proxy README ↗](https://github.com/cloudflare/mpp-proxy).
@@ -66,13 +88,31 @@ For full configuration options, proxy modes, and Bot Management examples, refer 
 
 For more control, add MPP middleware directly to your Worker using Hono:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { Mppx, tempo } from "mppx/hono";
+```ts
+import { Hono } from "hono";
+import { Mppx, tempo } from "mppx/hono";
+
+
 const app = new Hono();
-const mppx = Mppx.create({  methods: [    tempo({      currency: "0x20c0000000000000000000000000000000000000",      recipient: "0xYourWalletAddress",    }),  ],});
-app.get("/premium", mppx.charge({ amount: "0.10" }), (c) =>  c.json({ data: "Thanks for paying!" }),);
+
+
+const mppx = Mppx.create({
+  methods: [
+    tempo({
+      currency: "0x20c0000000000000000000000000000000000000",
+      recipient: "0xYourWalletAddress",
+    }),
+  ],
+});
+
+
+app.get("/premium", mppx.charge({ amount: "0.10" }), (c) =>
+  c.json({ data: "Thanks for paying!" }),
+);
+
+
 export default app;
 ```
 

@@ -29,16 +29,29 @@ A screen shown before joining the meeting, where you can edit your display name,
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSetupScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSetupScreen />;}
+
+
+function MyComponent() {
+  return <RtkSetupScreen />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSetupScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSetupScreen      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSetupScreen
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

@@ -16,8 +16,8 @@ A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 ne
 
 ## Create a gateway
 
-* [ Dashboard ](#tab-panel-11358)
-* [ API ](#tab-panel-11359)
+* [ Dashboard ](#tab-panel-11653)
+* [ API ](#tab-panel-11654)
 
 To create a gateway using the dashboard:
 
@@ -38,18 +38,41 @@ To create a gateway using the API, send a [POST](https://developers.cloudflare.c
 
 If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "gateway.example.com",  "description": "This is my IPFS gateway.",  "target": "ipfs",  "dnslink": "/ipns/onboarding.ipfs.cloudflare.com"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "gateway.example.com",
+  "description": "This is my IPFS gateway.",
+  "target": "ipfs",
+  "dnslink": "/ipns/onboarding.ipfs.cloudflare.com"
+}'
 ```
 
 The response contains the complete definition of the new gateway.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "<WEB3_GATEWAY_ID>",    "name": "gateway.example.com",    "description": "This is my IPFS gateway.",    "status": "active",    "target": "ipfs",    "dnslink": "/ipns/onboarding.ipfs.cloudflare.com",    "created_on": "<CREATED_ON_DATE>",    "modified_on": "<MODIFIED_ON_DATE>"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "<WEB3_GATEWAY_ID>",
+    "name": "gateway.example.com",
+    "description": "This is my IPFS gateway.",
+    "status": "active",
+    "target": "ipfs",
+    "dnslink": "/ipns/onboarding.ipfs.cloudflare.com",
+    "created_on": "<CREATED_ON_DATE>",
+    "modified_on": "<MODIFIED_ON_DATE>"
+  }
+}
 ```
 
 When you create a gateway, Cloudflare automatically:
@@ -66,8 +89,8 @@ Once you have [created a gateway](#create-a-gateway), you can only edit the **Ga
 
 If you need to edit other fields, [delete the gateway](#delete-a-gateway) and create a new one.
 
-* [ Dashboard ](#tab-panel-11350)
-* [ API ](#tab-panel-11351)
+* [ Dashboard ](#tab-panel-11645)
+* [ API ](#tab-panel-11646)
 
 To edit a gateway using the dashboard:
 
@@ -85,8 +108,8 @@ To edit specific settings for a gateway, use a [PATCH](https://developers.cloudf
 
 When your gateway is stuck in an **Error** [status](https://developers.cloudflare.com/web3/reference/gateway-status/), you should try refreshing the gateway, which attempts to re-create the associated DNS records for the hostname.
 
-* [ Dashboard ](#tab-panel-11352)
-* [ API ](#tab-panel-11353)
+* [ Dashboard ](#tab-panel-11647)
+* [ API ](#tab-panel-11648)
 
 To refresh a gateway using the dashboard:
 
@@ -108,8 +131,8 @@ You have the ability to block access to one or more:
 * IPFS content paths (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
 * IPNS content paths (`/ipns/example.com`)
 
-* [ Dashboard ](#tab-panel-11354)
-* [ API ](#tab-panel-11355)
+* [ Dashboard ](#tab-panel-11649)
+* [ API ](#tab-panel-11650)
 
 To add an item to the blocklist using the dashboard:
 
@@ -132,8 +155,8 @@ To add a blocklist item using the API, send a [POST](https://developers.cloudfla
 
 When you delete a gateway, Cloudflare will automatically remove all associated hostname DNS records. This action will impact your traffic and cannot be undone.
 
-* [ Dashboard ](#tab-panel-11356)
-* [ API ](#tab-panel-11357)
+* [ Dashboard ](#tab-panel-11651)
+* [ API ](#tab-panel-11652)
 
 To delete a gateway using the dashboard:
 

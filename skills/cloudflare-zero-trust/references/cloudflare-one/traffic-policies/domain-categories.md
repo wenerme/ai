@@ -255,11 +255,40 @@ Then, the initial categorization is refined via:
 
 Terraform users can retrieve the category list with the `cloudflare_zero_trust_gateway_categories_list` data source. This allows you to create Gateway policies with the category's name rather than its numeric ID. For example:
 
-```
-data "cloudflare_zero_trust_gateway_categories_list" "categories" {  account_id = var.cloudflare_account_id}
-locals {  main_categories_map = {    for idx, c in data.cloudflare_zero_trust_gateway_categories_list.categories.result :    c.name => c.id  }
-  subcategories_map = merge(flatten([    for idx, c in data.cloudflare_zero_trust_gateway_categories_list.categories.result : {      for k, v in coalesce(c.subcategories, []) :      v.name => v.id    }  ])...)}
-resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_tech_categories" {  account_id = var.cloudflare_account_id  name       = "DNS Blocked"  action     = "block"  traffic    = "any(dns.content_category[*] in {${join(" ", [    local.main_categories_map["Technology"],    local.subcategories_map["APIs"],    local.subcategories_map["Artificial Intelligence"],    local.subcategories_map["Content Servers"],    local.subcategories_map["Translator"]  ])}})"}
+```tf
+data "cloudflare_zero_trust_gateway_categories_list" "categories" {
+  account_id = var.cloudflare_account_id
+}
+
+
+locals {
+  main_categories_map = {
+    for idx, c in data.cloudflare_zero_trust_gateway_categories_list.categories.result :
+    c.name => c.id
+  }
+
+
+  subcategories_map = merge(flatten([
+    for idx, c in data.cloudflare_zero_trust_gateway_categories_list.categories.result : {
+      for k, v in coalesce(c.subcategories, []) :
+      v.name => v.id
+    }
+  ])...)
+}
+
+
+resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_tech_categories" {
+  account_id = var.cloudflare_account_id
+  name       = "DNS Blocked"
+  action     = "block"
+  traffic    = "any(dns.content_category[*] in {${join(" ", [
+    local.main_categories_map["Technology"],
+    local.subcategories_map["APIs"],
+    local.subcategories_map["Artificial Intelligence"],
+    local.subcategories_map["Content Servers"],
+    local.subcategories_map["Translator"]
+  ])}})"
+}
 ```
 
 ```json

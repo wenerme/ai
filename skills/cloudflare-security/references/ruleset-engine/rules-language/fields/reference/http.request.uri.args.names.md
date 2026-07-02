@@ -25,13 +25,13 @@ The names are not pre-processed and retain the original case used in the request
 
 Example value:
 
-```
+```txt
 ["search"]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.uri.args.names[*] == "search")
 ```
 

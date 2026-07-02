@@ -38,9 +38,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-11342)
-* [ Old dashboard ](#tab-panel-11343)
-* [ API ](#tab-panel-11344)
+* [  New dashboard ](#tab-panel-11637)
+* [ Old dashboard ](#tab-panel-11638)
+* [ API ](#tab-panel-11639)
 
 Note
 
@@ -69,10 +69,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Firewall Services Write`
 
-Create a User Agent Blocking rule
+**Create a User Agent Blocking rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/ua_rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Block Bad Bot web spider",    "mode": "block",    "configuration": {        "target": "ua",        "value": "BadBot/1.0.2 (+http://bad.bot)"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/ua_rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Block Bad Bot web spider",
+    "mode": "block",
+    "configuration": {
+        "target": "ua",
+        "value": "BadBot/1.0.2 (+http://bad.bot)"
+    }
+  }'
 ```
 
 ## Challenge actions

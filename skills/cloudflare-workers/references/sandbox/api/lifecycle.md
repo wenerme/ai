@@ -20,10 +20,14 @@ Create and manage sandbox containers. Get sandbox instances, configure options, 
 
 Get or create a sandbox instance by ID.
 
-TypeScript
+**TypeScript**
 
-```
-const sandbox = getSandbox(  binding: DurableObjectNamespace<Sandbox>,  sandboxId: string,  options?: SandboxOptions): Sandbox
+```ts
+const sandbox = getSandbox(
+  binding: DurableObjectNamespace<Sandbox>,
+  sandboxId: string,
+  options?: SandboxOptions
+): Sandbox
 ```
 
 **Parameters**:
@@ -47,21 +51,37 @@ Implicit execution mode
 
 By default, sandbox methods that do not specify a `sessionId` run in the sandbox's default session and preserve shell state between calls. It is recommended to set `enableDefaultSession` to `false` to ensure operations run in isolation. The `createSession()` API exists when sessions are required. Default sessions will be removed in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-10281)
-* [  TypeScript ](#tab-panel-10282)
+* [  JavaScript ](#tab-panel-10576)
+* [  TypeScript ](#tab-panel-10577)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
-export default {  async fetch(request, env) {    const sandbox = getSandbox(env.Sandbox, "user-123");    const result = await sandbox.exec("python script.py");    return Response.json(result);  },};
+
+
+export default {
+  async fetch(request, env) {
+    const sandbox = getSandbox(env.Sandbox, "user-123");
+    const result = await sandbox.exec("python script.py");
+    return Response.json(result);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'user-123');    const result = await sandbox.exec('python script.py');    return Response.json(result);  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+    const result = await sandbox.exec('python script.py');
+    return Response.json(result);
+  }
+};
 ```
 
 Warning
@@ -74,9 +94,9 @@ When using `keepAlive: true`, you **must** call `destroy()` when finished to pre
 
 Enable or disable keepAlive mode dynamically after sandbox creation.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 ```
 
@@ -86,23 +106,37 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-10283)
-* [  TypeScript ](#tab-panel-10284)
+* [  JavaScript ](#tab-panel-10578)
+* [  TypeScript ](#tab-panel-10579)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const sandbox = getSandbox(env.Sandbox, "user-123");
-// Enable keepAlive for a long-running processawait sandbox.setKeepAlive(true);await sandbox.startProcess("python long_running_analysis.py");
-// Later, disable keepAlive when doneawait sandbox.setKeepAlive(false);
+
+
+// Enable keepAlive for a long-running process
+await sandbox.setKeepAlive(true);
+await sandbox.startProcess("python long_running_analysis.py");
+
+
+// Later, disable keepAlive when done
+await sandbox.setKeepAlive(false);
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const sandbox = getSandbox(env.Sandbox, 'user-123');
-// Enable keepAlive for a long-running processawait sandbox.setKeepAlive(true);await sandbox.startProcess('python long_running_analysis.py');
-// Later, disable keepAlive when doneawait sandbox.setKeepAlive(false);
+
+
+// Enable keepAlive for a long-running process
+await sandbox.setKeepAlive(true);
+await sandbox.startProcess('python long_running_analysis.py');
+
+
+// Later, disable keepAlive when done
+await sandbox.setKeepAlive(false);
 ```
 
 Heartbeat mechanism
@@ -119,9 +153,9 @@ Containers with `keepAlive: true` will not automatically timeout. Always disable
 
 Destroy the sandbox container and free up resources.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.destroy(): Promise<void>
 ```
 
@@ -132,21 +166,41 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-10285)
-* [  TypeScript ](#tab-panel-10286)
+* [  JavaScript ](#tab-panel-10580)
+* [  TypeScript ](#tab-panel-10581)
 
-JavaScript
+**JavaScript**
 
+```js
+async function executeCode(code) {
+  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
+
+
+  try {
+    await sandbox.writeFile("/tmp/code.py", code);
+    const result = await sandbox.exec("python /tmp/code.py");
+    return result.stdout;
+  } finally {
+    await sandbox.destroy();
+  }
+}
 ```
-async function executeCode(code) {  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
-  try {    await sandbox.writeFile("/tmp/code.py", code);    const result = await sandbox.exec("python /tmp/code.py");    return result.stdout;  } finally {    await sandbox.destroy();  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-async function executeCode(code: string): Promise<string> {  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
-  try {    await sandbox.writeFile('/tmp/code.py', code);    const result = await sandbox.exec('python /tmp/code.py');    return result.stdout;  } finally {    await sandbox.destroy();  }}
+```ts
+async function executeCode(code: string): Promise<string> {
+  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
+
+
+  try {
+    await sandbox.writeFile('/tmp/code.py', code);
+    const result = await sandbox.exec('python /tmp/code.py');
+    return result.stdout;
+  } finally {
+    await sandbox.destroy();
+  }
+}
 ```
 
 Note

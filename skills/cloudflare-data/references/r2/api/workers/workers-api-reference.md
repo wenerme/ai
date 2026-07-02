@@ -30,19 +30,28 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the name of your R2 bucket:
 
-* [  wrangler.jsonc ](#tab-panel-10070)
-* [  wrangler.toml ](#tab-panel-10071)
+* [  wrangler.jsonc ](#tab-panel-10149)
+* [  wrangler.toml ](#tab-panel-10150)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "r2_buckets": [
+    {
+      "binding": "MY_BUCKET", // <~ valid JavaScript variable name
+      "bucket_name": "<YOUR_BUCKET_NAME>"
+    }
+  ]
+}
 ```
-{  "r2_buckets": [    {      "binding": "MY_BUCKET", // <~ valid JavaScript variable name      "bucket_name": "<YOUR_BUCKET_NAME>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[r2_buckets]]binding = "MY_BUCKET"bucket_name = "<YOUR_BUCKET_NAME>"
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "<YOUR_BUCKET_NAME>"
 ```
 
 Within your Worker, your bucket binding is now available under the `MY_BUCKET` variable and you can begin interacting with it using the [bucket methods](#bucket-method-definitions) described below.
@@ -53,23 +62,58 @@ The following methods are available on the bucket binding object injected into y
 
 For example, to issue a `PUT` object request using the binding above:
 
-* [  JavaScript ](#tab-panel-10066)
-* [  Python ](#tab-panel-10067)
+* [  JavaScript ](#tab-panel-10145)
+* [  Python ](#tab-panel-10146)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+
+
+    switch (request.method) {
+      case "PUT":
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+
+      default:
+        return new Response(`${request.method} is not allowed.`, {
+          status: 405,
+          headers: {
+            Allow: "PUT",
+          },
+        });
+    }
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);    const key = url.pathname.slice(1);
-    switch (request.method) {      case "PUT":        await env.MY_BUCKET.put(key, request.body);        return new Response(`Put ${key} successfully!`);
-      default:        return new Response(`${request.method} is not allowed.`, {          status: 405,          headers: {            Allow: "PUT",          },        });    }  },};
-```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responsefrom urllib.parse import urlparse
-class Default(WorkerEntrypoint):  async def fetch(self, request):    url = urlparse(request.url)    key = url.path[1:]
-    if request.method == "PUT":      await self.env.MY_BUCKET.put(key, request.body)      return Response(f"Put {key} successfully!")    else:      return Response(        f"{request.method} is not allowed.",        status=405,        headers={"Allow": "PUT"}      )
+```py
+from workers import WorkerEntrypoint, Response
+from urllib.parse import urlparse
+
+
+class Default(WorkerEntrypoint):
+  async def fetch(self, request):
+    url = urlparse(request.url)
+    key = url.path[1:]
+
+
+    if request.method == "PUT":
+      await self.env.MY_BUCKET.put(key, request.body)
+      return Response(f"Put {key} successfully!")
+    else:
+      return Response(
+        f"{request.method} is not allowed.",
+        status=405,
+        headers={"Allow": "PUT"}
+      )
 ```
 
 * `head` ` (key: string): Promise<R2Object | null> `
@@ -313,29 +357,76 @@ Only a single hashing algorithm can be specified at once.
   * The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) must be set to `2022-08-04` or later in your Wrangler file. If not, then the `r2_list_honor_include` compatibility flag must be set. Otherwise it is treated as `include: ['httpMetadata', 'customMetadata']` regardless of what the `include` option provided actually is.
 This means applications must be careful to avoid comparing the amount of returned objects against your `limit`. Instead, use the `truncated` property to determine if the `list` request has more data to be returned.
 
-* [  JavaScript ](#tab-panel-10068)
-* [  Python ](#tab-panel-10069)
+* [  JavaScript ](#tab-panel-10147)
+* [  Python ](#tab-panel-10148)
 
-JavaScript
+**JavaScript**
 
-```
-const options = {  limit: 500,  include: ["customMetadata"],};
+```js
+const options = {
+  limit: 500,
+  include: ["customMetadata"],
+};
+
+
 const listed = await env.MY_BUCKET.list(options);
-let truncated = listed.truncated;let cursor = truncated ? listed.cursor : undefined;
-// ❌ - if your limit can't fit into a single response or your// bucket has less objects than the limit, it will get stuck here.while (listed.objects.length < options.limit) {  // ...}
-// ✅ - use the truncated property to check if there are more// objects to be returnedwhile (truncated) {  const next = await env.MY_BUCKET.list({    ...options,    cursor: cursor,  });  listed.objects.push(...next.objects);
-  truncated = next.truncated;  cursor = next.cursor;}
+
+
+let truncated = listed.truncated;
+let cursor = truncated ? listed.cursor : undefined;
+
+
+// ❌ - if your limit can't fit into a single response or your
+// bucket has less objects than the limit, it will get stuck here.
+while (listed.objects.length < options.limit) {
+  // ...
+}
+
+
+// ✅ - use the truncated property to check if there are more
+// objects to be returned
+while (truncated) {
+  const next = await env.MY_BUCKET.list({
+    ...options,
+    cursor: cursor,
+  });
+  listed.objects.push(...next.objects);
+
+
+  truncated = next.truncated;
+  cursor = next.cursor;
+}
 ```
 
-Python
+**Python**
 
-```
-limit = 500include = ["customMetadata"]
+```py
+limit = 500
+include = ["customMetadata"]
+
+
 listed = await self.env.MY_BUCKET.list(limit=limit, include=include)
-truncated = listed.truncatedcursor = listed.cursor if truncated else None
-# ❌ - if your limit can't fit into a single response or your# bucket has less objects than the limit, it will get stuck here.while len(listed.objects) < limit:    ...
-# ✅ - use the truncated property to check if there are more# objects to be returnedwhile truncated:    next_page = await self.env.MY_BUCKET.list(limit=limit, include=include, cursor=cursor)    listed.objects.extend(next_page.objects)
-    truncated = next_page.truncated    cursor = next_page.cursor
+
+
+truncated = listed.truncated
+cursor = listed.cursor if truncated else None
+
+
+# ❌ - if your limit can't fit into a single response or your
+# bucket has less objects than the limit, it will get stuck here.
+while len(listed.objects) < limit:
+    ...
+
+
+# ✅ - use the truncated property to check if there are more
+# objects to be returned
+while truncated:
+    next_page = await self.env.MY_BUCKET.list(limit=limit, include=include, cursor=cursor)
+    listed.objects.extend(next_page.objects)
+
+
+    truncated = next_page.truncated
+    cursor = next_page.cursor
 ```
 
 ### R2Objects

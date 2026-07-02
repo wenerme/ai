@@ -40,8 +40,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-11047)
-* [ CLI ](#tab-panel-11048)
+* [ Dashboard ](#tab-panel-11342)
+* [ CLI ](#tab-panel-11343)
 
 To deploy a replica for a remotely-managed tunnel:
 
@@ -151,9 +151,7 @@ The most commonly used parameters:
 
 The following example shows how to manually run a tunnel with configuration flags:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token <TOKEN VALUE>
 ```
 

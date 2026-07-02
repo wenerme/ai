@@ -24,8 +24,8 @@ A JWT validation configuration has two parts: a token validation configuration t
 
 ### Add a token validation configuration
 
-* [  New dashboard ](#tab-panel-6783)
-* [ Old dashboard ](#tab-panel-6784)
+* [  New dashboard ](#tab-panel-7031)
+* [ Old dashboard ](#tab-panel-7032)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -48,8 +48,8 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 
 ### Add a JWT validation rule
 
-* [  New dashboard ](#tab-panel-6785)
-* [ Old dashboard ](#tab-panel-6786)
+* [  New dashboard ](#tab-panel-7033)
+* [ Old dashboard ](#tab-panel-7034)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -117,10 +117,13 @@ If you offer multiple tiers on your website or application and you want to enfor
 
 You can follow the rate limiting rule example below:
 
-Example rule expression
+**Example rule expression**
 
-```
-(http.request.method eq "GET" andhttp.host eq "<YOUR_DOMAIN>" andhttp.request.uri.path matches "</EXAMPLE_PATH>" andlookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
+```txt
+(http.request.method eq "GET" and
+http.host eq "<YOUR_DOMAIN>" and
+http.request.uri.path matches "</EXAMPLE_PATH>" and
+lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
 ```
 
 ### Ignore `OPTIONS` pre-flight CORS requests

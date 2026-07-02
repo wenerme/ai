@@ -24,10 +24,46 @@ You will need to insert your `<CLOUDFLARE_ACCOUNT_TAG>`, your API credentials in
 
 ## API Call
 
-Terminal window
-
-```
-echo '{ "query":  "query accessLoginRequestsAdaptiveGroups($accountTag: string, $rayId: string, $datetimeStart: string, $datetimeEnd: string) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        accessLoginRequestsAdaptiveGroups(limit: 100, filter: {datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd, cfRayId: $rayId}, orderBy: [datetime_ASC]) {          dimensions {            datetime            isSuccessfulLogin            hasWarpEnabled            hasGatewayEnabled            hasExistingJWT            approvingPolicyId            cfRayId            ipAddress            userUuid            identityProvider            country            deviceId            mtlsStatus            mtlsCertSerialId            mtlsCommonName            serviceTokenId          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "rayId": "74e4ac510dfdc44f",    "datetimeStart": "2022-09-20T14:36:38Z",    "datetimeEnd": "2022-09-22T14:36:38Z"}}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
+```bash
+echo '{ "query":
+  "query accessLoginRequestsAdaptiveGroups($accountTag: string, $rayId: string, $datetimeStart: string, $datetimeEnd: string) {
+    viewer {
+      accounts(filter: {accountTag: $accountTag}) {
+        accessLoginRequestsAdaptiveGroups(limit: 100, filter: {datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd, cfRayId: $rayId}, orderBy: [datetime_ASC]) {
+          dimensions {
+            datetime
+            isSuccessfulLogin
+            hasWarpEnabled
+            hasGatewayEnabled
+            hasExistingJWT
+            approvingPolicyId
+            cfRayId
+            ipAddress
+            userUuid
+            identityProvider
+            country
+            deviceId
+            mtlsStatus
+            mtlsCertSerialId
+            mtlsCommonName
+            serviceTokenId
+          }
+        }
+      }
+    }
+  }",
+  "variables": {
+    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
+    "rayId": "74e4ac510dfdc44f",
+    "datetimeStart": "2022-09-20T14:36:38Z",
+    "datetimeEnd": "2022-09-22T14:36:38Z"
+}
+}' | tr -d '\n' | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @- | jq .
 ```
 
 Note
@@ -36,8 +72,40 @@ Rather than filter by `cfRayId`, you may also [filter](https://developers.cloudf
 
 ## Response
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "accessLoginRequestsAdaptiveGroups": [            {              "dimensions": {                "approvingPolicyId": "",                "cfRayId": "744927037ce06d68",                "country": "US",                "datetime": "2022-09-02T20:56:27Z",                "deviceId": "",                "hasExistingJWT": 0,                "hasGatewayEnabled": 0,                "hasWarpEnabled": 0,                "identityProvider": "nonidentity",                "ipAddress": "2a09:bac0:15::814:7b37",                "isSuccessfulLogin": 0,                "mtlsCertSerialId": "",                "mtlsCommonName": "",                "mtlsStatus": "NONE",                "serviceTokenId": "",                "userUuid": ""              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "accessLoginRequestsAdaptiveGroups": [
+            {
+              "dimensions": {
+                "approvingPolicyId": "",
+                "cfRayId": "744927037ce06d68",
+                "country": "US",
+                "datetime": "2022-09-02T20:56:27Z",
+                "deviceId": "",
+                "hasExistingJWT": 0,
+                "hasGatewayEnabled": 0,
+                "hasWarpEnabled": 0,
+                "identityProvider": "nonidentity",
+                "ipAddress": "2a09:bac0:15::814:7b37",
+                "isSuccessfulLogin": 0,
+                "mtlsCertSerialId": "",
+                "mtlsCommonName": "",
+                "mtlsStatus": "NONE",
+                "serviceTokenId": "",
+                "userUuid": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 You can compare the query results to your Access policies to understand why a user was blocked. For example, if your application requires a valid mTLS certificate, Access blocked the request shown above because `mtlsStatus`, `mtlsCommonName`, and `mtlsCertSerialId` are empty.

@@ -29,14 +29,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-composer-ui></rtk-chat-composer-ui>
+```html
+<!-- component.html -->
+<rtk-chat-composer-ui></rtk-chat-composer-ui>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-composer-ui [canSendFiles]="true" [canSendTextMessage]="true" size="md"></rtk-chat-composer-ui>
+```html
+<!-- component.html -->
+<rtk-chat-composer-ui
+ [canSendFiles]="true"
+ [canSendTextMessage]="true"
+ size="md">
+</rtk-chat-composer-ui>
 ```
 
 ```json

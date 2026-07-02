@@ -61,76 +61,142 @@ Use the CLI to configure these settings.
 
 ### Route settings
 
-```
+```txt
 ip route default gateway tunnel 1
+
+
 ip route <Cloudflare Anycast IP> gateway <ISP provided Gateway IP>
+
+
 ip route < ISP's DNS server IP > gateway <ISP provided Gateway IP>
 ```
 
 ### LAN settings
 
-```
+```txt
 ip lan1 address 172.16.2.254/24
 ```
 
 ### Wired WAN settings
 
-```
+```txt
 ip lan2 address 194.xx.xx.xx/29
+
+
 ip lan2 nat descriptor 1000
 ```
 
 ### IPsec VPN main side settings
 
-```
+```txt
 tunnel select 1
+
+
 ipsec tunnel 1
+
+
 ipsec sa policy 1 1 esp aes256-cbc sha256-hmac anti-replay-check=off
+
+
 ipsec ike version 1 2
+
+
 ipsec ike duration ipsec-sa 1 3600
+
+
 ipsec ike duration isakmp-sa 1 28800
+
+
 ipsec ike encryption 1 aes256-cbc
+
+
 ipsec ike group 1 modp2048
+
+
 ipsec ike hash 1 sha256
+
+
 ipsec ike keepalive log 1 off
+
+
 ipsec ike keepalive use 1 on rfc4306 10 6
+
+
 ipsec ike local address 1 194.xx.xx.xx
+
+
 ipsec ike log 1 key-info message-info payload-info
+
+
 ipsec ike local name 1 <Cloudflare Magic IPsec Tunnel FQDN IP> fqdn
+
+
 ipsec ike pfs 1 on
+
+
 ipsec ike proposal-limitation 1 on
+
+
 ipsec ike pre-shared-key 1 text <Pre-shared key>
+
+
 ipsec ike remote address 1 <Cloudflare Anycast IP>
+
+
 ipsec ike remote name 1 <Cloudflare Anycast IP> ipv4-addr
+
+
 ip tunnel address 172.30.223.3/31
+
+
 ip tunnel tcp mss limit auto
+
+
 tunnel enable 1
+
+
 ipsec auto refresh on
+
+
 ! Note: 172.30.223.3/31 is internal tunnel IP on the RTX side.
 ```
 
 ### NAT settings
 
-```
+```txt
 nat descriptor type 1000 masquerade
+
+
 nat descriptor address outer 1000 primary
+
+
 nat descriptor masquerade static 1000 1 194.xx.xx.xx udp 500
+
+
 nat descriptor masquerade static 1000 2 194.xx.xx.xx esp
 ```
 
 ### DHCP settings
 
-```
+```txt
 dhcp service server
+
+
 dhcp server rfc2131 compliant except remain-silent
+
+
 dhcp scope 1 172.16.2.2-172.16.2.191/24
 ```
 
 ### DNS settings
 
-```
+```txt
 dns host lan1
+
+
 dns server select 1 <ISP's DNS server IP> any .
+
+
 dns private address spoof on
 ```
 
@@ -140,34 +206,76 @@ In the Yamaha RTX router CLI, you can run `show ipsec sa` and `show status tunne
 
 ### `show ipsec sa`
 
-```
+```txt
 Total: isakmp:1 send:1 recv:1
+
+
 sa    sgw   isakmp        connection      dir    life[s]              remote-id
+
+
 ------------------------------------------------------------------------------------------
+
+
 1     1           -         ike             -      27384         （Cloudflare Anycast IP）
+
+
 2     1         1         tun[0001]esp  send    2185           （Cloudflare Anycast IP）
+
+
 3     1         1         tun[0001]esp  recv    2185           （Cloudflare Anycast IP）
 ```
 
 ### `show status tunnel 1`
 
-```
+```txt
 TUNNEL[1]:
+
+
 Description:
+
+
 Interface type: IPsec
+
+
 Current status is Online.
+
+
 from 2025/12/08 13:14:20.
+
+
 20 minutes 56 seconds  connection.
+
+
 Maximum Transmission Unit(MTU):
+
+
 IPv4: 1280 octets
+
+
 IPv6: 1280 octets
+
+
 Received:    (IPv4) 171847 packets [58823472 octets]
+
+
 (IPv6) 0 packet [0 octet]
+
+
 Transmitted: (IPv4) 154224 packets [19191955 octets]
+
+
 (IPv6) 0 packet [0 octet]
+
+
 IKE keepalive:
+
+
 [Type]: rfc4306
+
+
 [Status]: OK
+
+
 [Next send]: 1 sec after
 ```
 

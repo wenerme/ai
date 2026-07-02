@@ -26,13 +26,34 @@ Use Docker-in-Docker when you need to:
 
 Cloudflare Containers run without root privileges, so you must use the rootless Docker image. Create a custom Dockerfile that combines the sandbox binary with Docker:
 
-Dockerfile
+**Dockerfile**
 
-```
-FROM docker:dind-rootlessUSER root
-# Use the musl build so it runs on Alpine-based docker:dind-rootlessCOPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /container-server/sandbox /sandboxCOPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /bin/bash /bin/bashCOPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libreadline.so.8 /usr/lib/libreadline.so.8COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libreadline.so.8.2 /usr/lib/libreadline.so.8.2
-# Create startup script that starts dockerd with# iptables disabled, waits for readiness, then keeps runningRUN printf '#!/bin/sh\n\  set -eu\n\  dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false &\n\  until docker version >/dev/null 2>&1; do sleep 0.2; done\n\  echo "Docker is ready"\n\  wait\n' > /home/rootless/boot-docker-for-dind.sh && chmod +x /home/rootless/boot-docker-for-dind.sh
-ENTRYPOINT ["/sandbox"]CMD ["/home/rootless/boot-docker-for-dind.sh"]
+```dockerfile
+FROM docker:dind-rootless
+USER root
+
+
+# Use the musl build so it runs on Alpine-based docker:dind-rootless
+COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /container-server/sandbox /sandbox
+COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
+COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
+COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /bin/bash /bin/bash
+COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libreadline.so.8 /usr/lib/libreadline.so.8
+COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libreadline.so.8.2 /usr/lib/libreadline.so.8.2
+
+
+# Create startup script that starts dockerd with
+# iptables disabled, waits for readiness, then keeps running
+RUN printf '#!/bin/sh\n\
+  set -eu\n\
+  dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false &\n\
+  until docker version >/dev/null 2>&1; do sleep 0.2; done\n\
+  echo "Docker is ready"\n\
+  wait\n' > /home/rootless/boot-docker-for-dind.sh && chmod +x /home/rootless/boot-docker-for-dind.sh
+
+
+ENTRYPOINT ["/sandbox"]
+CMD ["/home/rootless/boot-docker-for-dind.sh"]
 ```
 
 Working with disabled iptables
@@ -47,27 +68,73 @@ This allows you to connect to the container, but it means each inner container h
 
 Once deployed, you can run Docker commands through the sandbox:
 
-* [  JavaScript ](#tab-panel-10451)
-* [  TypeScript ](#tab-panel-10452)
+* [  JavaScript ](#tab-panel-10746)
+* [  TypeScript ](#tab-panel-10747)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "docker-sandbox");
-// Build an imageawait sandbox.writeFile(  "/workspace/Dockerfile",  `FROM alpine:latestRUN apk add --no-cache curlCMD ["echo", "Hello from Docker!"]`,);
-const build = await sandbox.exec(  "docker build --network=host -t my-image /workspace",);if (!build.success) {  console.error("Build failed:", build.stderr);}
-// Run a containerconst run = await sandbox.exec("docker run --network=host --rm my-image");console.log(run.stdout); // "Hello from Docker!"
+
+
+// Build an image
+await sandbox.writeFile(
+  "/workspace/Dockerfile",
+  `
+FROM alpine:latest
+RUN apk add --no-cache curl
+CMD ["echo", "Hello from Docker!"]
+`,
+);
+
+
+const build = await sandbox.exec(
+  "docker build --network=host -t my-image /workspace",
+);
+if (!build.success) {
+  console.error("Build failed:", build.stderr);
+}
+
+
+// Run a container
+const run = await sandbox.exec("docker run --network=host --rm my-image");
+console.log(run.stdout); // "Hello from Docker!"
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "docker-sandbox");
-// Build an imageawait sandbox.writeFile(  "/workspace/Dockerfile",  `FROM alpine:latestRUN apk add --no-cache curlCMD ["echo", "Hello from Docker!"]`,);
-const build = await sandbox.exec(  "docker build --network=host -t my-image /workspace",);if (!build.success) {  console.error("Build failed:", build.stderr);}
-// Run a containerconst run = await sandbox.exec("docker run --network=host --rm my-image");console.log(run.stdout); // "Hello from Docker!"
+
+
+// Build an image
+await sandbox.writeFile(
+  "/workspace/Dockerfile",
+  `
+FROM alpine:latest
+RUN apk add --no-cache curl
+CMD ["echo", "Hello from Docker!"]
+`,
+);
+
+
+const build = await sandbox.exec(
+  "docker build --network=host -t my-image /workspace",
+);
+if (!build.success) {
+  console.error("Build failed:", build.stderr);
+}
+
+
+// Run a container
+const run = await sandbox.exec("docker run --network=host --rm my-image");
+console.log(run.stdout); // "Hello from Docker!"
 ```
 
 ## Limitations

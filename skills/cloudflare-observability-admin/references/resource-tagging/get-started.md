@@ -24,10 +24,10 @@ This guide walks you through verifying that tagging works on your account and ma
 
 Test the API to confirm tagging is active on your account:
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 ### Interpreting the response
@@ -44,29 +44,41 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys
 
 Set tags on a resource using `PUT`:
 
-Terminal window
-
-```
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker",    "resource_id": "'"$RESOURCE_ID"'",    "tags": {      "environment": "production",      "team": "platform"    }  }'
+```bash
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "resource_type": "worker",
+    "resource_id": "'"$RESOURCE_ID"'",
+    "tags": {
+      "environment": "production",
+      "team": "platform"
+    }
+  }'
 ```
 
 Then retrieve the tags:
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 ## 3\. List tagged resources
 
 Query all tagged resources in the account, optionally filtering by tag:
 
-Terminal window
+```bash
+# All tagged resources
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources" \
+  -H "Authorization: Bearer $API_TOKEN"
 
-```
-# All tagged resourcescurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources" \  -H "Authorization: Bearer $API_TOKEN"
-# Filter: only resources with environment=productioncurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \  -H "Authorization: Bearer $API_TOKEN"
+
+# Filter: only resources with environment=production
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ## Next steps

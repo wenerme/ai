@@ -31,10 +31,12 @@ The `experimental_generateTypes()` function has an `experimental_` prefix becaus
 
 ### Syntax
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { experimental_generateTypes } from "wrangler";
+
+
 const result = await experimental_generateTypes(options);
 ```
 
@@ -82,42 +84,79 @@ const result = await experimental_generateTypes(options);
 
 You can use `experimental_generateTypes` to generate types programmatically and write them to disk yourself, or pass them to other tools:
 
-TypeScript
+**TypeScript**
 
-```
-import { experimental_generateTypes } from "wrangler";import * as fs from "node:fs";
-const result = await experimental_generateTypes({  config: "wrangler.json",  includeRuntime: true,  includeEnv: true,});
-// Write the combined content to the path specified in optionsfs.writeFileSync(result.path, result.content, "utf-8");
+```ts
+import { experimental_generateTypes } from "wrangler";
+import * as fs from "node:fs";
+
+
+const result = await experimental_generateTypes({
+  config: "wrangler.json",
+  includeRuntime: true,
+  includeEnv: true,
+});
+
+
+// Write the combined content to the path specified in options
+fs.writeFileSync(result.path, result.content, "utf-8");
 ```
 
 To generate only env types without runtime types:
 
-TypeScript
+**TypeScript**
 
-```
-const result = await experimental_generateTypes({  includeRuntime: false,});
+```ts
+const result = await experimental_generateTypes({
+  includeRuntime: false,
+});
 ```
 
 To generate types for a specific environment with a custom interface name:
 
-TypeScript
+**TypeScript**
 
-```
-const result = await experimental_generateTypes({  env: "staging",  envInterface: "StagingEnv",  path: "./types/staging.d.ts",});
+```ts
+const result = await experimental_generateTypes({
+  env: "staging",
+  envInterface: "StagingEnv",
+  path: "./types/staging.d.ts",
+});
 ```
 
 ## `unstable_startWorker`
 
 This API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. For example, you could use `unstable_startWorker()` to run integration tests against your Worker. This example uses `node:test`, but should apply to any testing framework:
 
-JavaScript
+**JavaScript**
 
-```
-import assert from "node:assert";import test, { after, before, describe } from "node:test";import { unstable_startWorker } from "wrangler";
-describe("worker", () => {  let worker;
-  before(async () => {    worker = await unstable_startWorker({ config: "wrangler.json" });  });
-  test("hello world", async () => {    assert.strictEqual(      await (await worker.fetch("http://example.com")).text(),      "Hello world",    );  });
-  after(async () => {    await worker.dispose();  });});
+```js
+import assert from "node:assert";
+import test, { after, before, describe } from "node:test";
+import { unstable_startWorker } from "wrangler";
+
+
+describe("worker", () => {
+  let worker;
+
+
+  before(async () => {
+    worker = await unstable_startWorker({ config: "wrangler.json" });
+  });
+
+
+  test("hello world", async () => {
+    assert.strictEqual(
+      await (await worker.fetch("http://example.com")).text(),
+      "Hello world",
+    );
+  });
+
+
+  after(async () => {
+    await worker.dispose();
+  });
+});
 ```
 
 ## `unstable_dev`
@@ -136,9 +175,9 @@ If you have been using `unstable_dev()` for integration testing and want to migr
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const worker = await unstable_dev(script, options);
 ```
 
@@ -175,27 +214,68 @@ To wrap up a test suite, call `await worker.stop()` in an `afterAll` function.
 
 #### Single Worker example
 
-* [  JavaScript ](#tab-panel-12335)
-* [  TypeScript ](#tab-panel-12336)
+* [  JavaScript ](#tab-panel-12590)
+* [  TypeScript ](#tab-panel-12591)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const { unstable_dev } = require("wrangler");
-describe("Worker", () => {  let worker;
-  beforeAll(async () => {    worker = await unstable_dev("src/index.js", {      experimental: { disableExperimentalWarning: true },    });  });
-  afterAll(async () => {    await worker.stop();  });
-  it("should return Hello World", async () => {    const resp = await worker.fetch();    const text = await resp.text();    expect(text).toMatchInlineSnapshot(`"Hello World!"`);  });});
+
+
+describe("Worker", () => {
+  let worker;
+
+
+  beforeAll(async () => {
+    worker = await unstable_dev("src/index.js", {
+      experimental: { disableExperimentalWarning: true },
+    });
+  });
+
+
+  afterAll(async () => {
+    await worker.stop();
+  });
+
+
+  it("should return Hello World", async () => {
+    const resp = await worker.fetch();
+    const text = await resp.text();
+    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+  });
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { unstable_dev } from "wrangler";import type { UnstableDevWorker } from "wrangler";
-describe("Worker", () => {  let worker: UnstableDevWorker;
-  beforeAll(async () => {    worker = await unstable_dev("src/index.ts", {      experimental: { disableExperimentalWarning: true },    });  });
-  afterAll(async () => {    await worker.stop();  });
-  it("should return Hello World", async () => {    const resp = await worker.fetch();    const text = await resp.text();    expect(text).toMatchInlineSnapshot(`"Hello World!"`);  });});
+```ts
+import { unstable_dev } from "wrangler";
+import type { UnstableDevWorker } from "wrangler";
+
+
+describe("Worker", () => {
+  let worker: UnstableDevWorker;
+
+
+  beforeAll(async () => {
+    worker = await unstable_dev("src/index.ts", {
+      experimental: { disableExperimentalWarning: true },
+    });
+  });
+
+
+  afterAll(async () => {
+    await worker.stop();
+  });
+
+
+  it("should return Hello World", async () => {
+    const resp = await worker.fetch();
+    const text = await resp.text();
+    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+  });
+});
 ```
 
 #### Multi-Worker example
@@ -204,29 +284,96 @@ You can test Workers that call other Workers. In the below example, we refer to 
 
 If you shut down the child Worker prematurely, the parent Worker will not know the child Worker exists and your tests will fail.
 
-* [  JavaScript ](#tab-panel-12337)
-* [  TypeScript ](#tab-panel-12338)
+* [  JavaScript ](#tab-panel-12592)
+* [  TypeScript ](#tab-panel-12593)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { unstable_dev } from "wrangler";
-describe("multi-worker testing", () => {  let childWorker;  let parentWorker;
-  beforeAll(async () => {    childWorker = await unstable_dev("src/child-worker.js", {      config: "src/child-wrangler.toml",      experimental: { disableExperimentalWarning: true },    });    parentWorker = await unstable_dev("src/parent-worker.js", {      config: "src/parent-wrangler.toml",      experimental: { disableExperimentalWarning: true },    });  });
-  afterAll(async () => {    await childWorker.stop();    await parentWorker.stop();  });
-  it("childWorker should return Hello World itself", async () => {    const resp = await childWorker.fetch();    const text = await resp.text();    expect(text).toMatchInlineSnapshot(`"Hello World!"`);  });
-  it("parentWorker should return Hello World by invoking the child worker", async () => {    const resp = await parentWorker.fetch();    const parsedResp = await resp.text();    expect(parsedResp).toEqual("Parent worker sees: Hello World!");  });});
+
+
+describe("multi-worker testing", () => {
+  let childWorker;
+  let parentWorker;
+
+
+  beforeAll(async () => {
+    childWorker = await unstable_dev("src/child-worker.js", {
+      config: "src/child-wrangler.toml",
+      experimental: { disableExperimentalWarning: true },
+    });
+    parentWorker = await unstable_dev("src/parent-worker.js", {
+      config: "src/parent-wrangler.toml",
+      experimental: { disableExperimentalWarning: true },
+    });
+  });
+
+
+  afterAll(async () => {
+    await childWorker.stop();
+    await parentWorker.stop();
+  });
+
+
+  it("childWorker should return Hello World itself", async () => {
+    const resp = await childWorker.fetch();
+    const text = await resp.text();
+    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+  });
+
+
+  it("parentWorker should return Hello World by invoking the child worker", async () => {
+    const resp = await parentWorker.fetch();
+    const parsedResp = await resp.text();
+    expect(parsedResp).toEqual("Parent worker sees: Hello World!");
+  });
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { unstable_dev } from "wrangler";import type { UnstableDevWorker } from "wrangler";
-describe("multi-worker testing", () => {  let childWorker: UnstableDevWorker;  let parentWorker: UnstableDevWorker;
-  beforeAll(async () => {    childWorker = await unstable_dev("src/child-worker.js", {      config: "src/child-wrangler.toml",      experimental: { disableExperimentalWarning: true },    });    parentWorker = await unstable_dev("src/parent-worker.js", {      config: "src/parent-wrangler.toml",      experimental: { disableExperimentalWarning: true },    });  });
-  afterAll(async () => {    await childWorker.stop();    await parentWorker.stop();  });
-  it("childWorker should return Hello World itself", async () => {    const resp = await childWorker.fetch();    const text = await resp.text();    expect(text).toMatchInlineSnapshot(`"Hello World!"`);  });
-  it("parentWorker should return Hello World by invoking the child worker", async () => {    const resp = await parentWorker.fetch();    const parsedResp = await resp.text();    expect(parsedResp).toEqual("Parent worker sees: Hello World!");  });});
+```ts
+import { unstable_dev } from "wrangler";
+import type { UnstableDevWorker } from "wrangler";
+
+
+describe("multi-worker testing", () => {
+  let childWorker: UnstableDevWorker;
+  let parentWorker: UnstableDevWorker;
+
+
+  beforeAll(async () => {
+    childWorker = await unstable_dev("src/child-worker.js", {
+      config: "src/child-wrangler.toml",
+      experimental: { disableExperimentalWarning: true },
+    });
+    parentWorker = await unstable_dev("src/parent-worker.js", {
+      config: "src/parent-wrangler.toml",
+      experimental: { disableExperimentalWarning: true },
+    });
+  });
+
+
+  afterAll(async () => {
+    await childWorker.stop();
+    await parentWorker.stop();
+  });
+
+
+  it("childWorker should return Hello World itself", async () => {
+    const resp = await childWorker.fetch();
+    const text = await resp.text();
+    expect(text).toMatchInlineSnapshot(`"Hello World!"`);
+  });
+
+
+  it("parentWorker should return Hello World by invoking the child worker", async () => {
+    const resp = await parentWorker.fetch();
+    const parsedResp = await resp.text();
+    expect(parsedResp).toEqual("Parent worker sees: Hello World!");
+  });
+});
 ```
 
 ## `getPlatformProxy`
@@ -245,9 +392,9 @@ Binding proxies provided by this function are a best effort emulation of the rea
 
 ### Syntax
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const platform = await getPlatformProxy(options);
 ```
 
@@ -296,35 +443,42 @@ const platform = await getPlatformProxy(options);
 
 The `getPlatformProxy` function uses bindings found in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). For example, if you have an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler) configuration set up in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12339)
-* [  wrangler.toml ](#tab-panel-12340)
+* [  wrangler.jsonc ](#tab-panel-12594)
+* [  wrangler.toml ](#tab-panel-12595)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "MY_VARIABLE": "test"
+  }
+}
 ```
-{  "vars": {    "MY_VARIABLE": "test"  }}
-```
 
-TOML
+**TOML**
 
-```
-[vars]MY_VARIABLE = "test"
+```toml
+[vars]
+MY_VARIABLE = "test"
 ```
 
 You can access the bindings by importing `getPlatformProxy` like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getPlatformProxy } from "wrangler";
+
+
 const { env } = await getPlatformProxy();
 ```
 
 To access the value of the `MY_VARIABLE` binding add the following to your code:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 console.log(`MY_VARIABLE = ${env.MY_VARIABLE}`);
 ```
 
@@ -353,33 +507,64 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
   * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).
   For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.
 
-    * [  wrangler.jsonc ](#tab-panel-12343)
-    * [  wrangler.toml ](#tab-panel-12344)
-  JSONC
+    * [  wrangler.jsonc ](#tab-panel-12598)
+    * [  wrangler.toml ](#tab-panel-12599)
+
+**JSONC**
+  ```jsonc
+  {
+    "durable_objects": {
+      "bindings": [
+        {
+          "name": "MyDurableObject",
+          "class_name": "MyDurableObject",
+          "script_name": "external-do-worker"
+        }
+      ]
+    }
+  }
   ```
-  {  "durable_objects": {    "bindings": [      {        "name": "MyDurableObject",        "class_name": "MyDurableObject",        "script_name": "external-do-worker"      }    ]  }}
-  ```
-  TOML
-  ```
-  [[durable_objects.bindings]]name = "MyDurableObject"class_name = "MyDurableObject"script_name = "external-do-worker"
+
+**TOML**
+  ```toml
+  [[durable_objects.bindings]]
+  name = "MyDurableObject"
+  class_name = "MyDurableObject"
+  script_name = "external-do-worker"
   ```
   You will need to declare your Durable Object `"MyDurableObject"` in another Worker, called `external-do-worker` in this example.
-  ./external-do-worker/src/index.ts
-  ```
-  export class MyDurableObject extends DurableObject {  // Your DO code goes here}
-  export default {  fetch() {    // Doesn't have to do anything, but a DO cannot be the default export    return new Response("Hello, world!");  },};
+
+**./external-do-worker/src/index.ts**
+  ```ts
+  export class MyDurableObject extends DurableObject {
+    // Your DO code goes here
+  }
+  export default {
+    fetch() {
+      // Doesn't have to do anything, but a DO cannot be the default export
+      return new Response("Hello, world!");
+    },
+  };
   ```
   That Worker also needs a Wrangler configuration file that looks like this:
 
-    * [  wrangler.jsonc ](#tab-panel-12341)
-    * [  wrangler.toml ](#tab-panel-12342)
-  JSONC
+    * [  wrangler.jsonc ](#tab-panel-12596)
+    * [  wrangler.toml ](#tab-panel-12597)
+
+**JSONC**
+  ```jsonc
+  {
+    "name": "external-do-worker",
+    "main": "src/index.ts",
+    "compatibility_date": "XXXX-XX-XX"
+  }
   ```
-  {  "name": "external-do-worker",  "main": "src/index.ts",  "compatibility_date": "XXXX-XX-XX"}
-  ```
-  TOML
-  ```
-  name = "external-do-worker"main = "src/index.ts"compatibility_date = "XXXX-XX-XX"
+
+**TOML**
+  ```toml
+  name = "external-do-worker"
+  main = "src/index.ts"
+  compatibility_date = "XXXX-XX-XX"
   ```
   If you are not using RPC with your Durable Object, you can run a separate Wrangler dev session alongside your framework development server.
   Otherwise, you can build your application and run both Workers in the same Wrangler dev session.

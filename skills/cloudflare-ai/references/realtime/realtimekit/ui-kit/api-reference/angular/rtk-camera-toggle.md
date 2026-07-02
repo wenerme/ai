@@ -28,14 +28,20 @@ A button which toggles your camera.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-camera-toggle></rtk-camera-toggle>
+```html
+<!-- component.html -->
+<rtk-camera-toggle></rtk-camera-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-camera-toggle [meeting]="meeting" size="md" variant="button"></rtk-camera-toggle>
+```html
+<!-- component.html -->
+<rtk-camera-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-camera-toggle>
 ```
 
 ```json

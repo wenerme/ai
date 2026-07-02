@@ -25,19 +25,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-breakout-rooms-manager></rtk-breakout-rooms-manager>
 ```
 
 ### With Properties
 
-```
-<rtk-breakout-rooms-manager></rtk-breakout-rooms-manager>
+```html
+<rtk-breakout-rooms-manager>
+</rtk-breakout-rooms-manager>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-breakout-rooms-manager");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-breakout-rooms-manager");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

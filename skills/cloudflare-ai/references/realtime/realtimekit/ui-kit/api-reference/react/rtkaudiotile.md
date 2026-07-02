@@ -28,16 +28,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAudioTile } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAudioTile />;}
+
+
+function MyComponent() {
+  return <RtkAudioTile />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAudioTile } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAudioTile      config={defaultUiConfig}      meeting={meeting}      participant={participant}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAudioTile
+      config={defaultUiConfig}
+      meeting={meeting}
+      participant={participant}
+    />
+  );
+}
 ```
 
 ```json

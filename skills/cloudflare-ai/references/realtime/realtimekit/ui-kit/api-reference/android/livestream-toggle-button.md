@@ -24,16 +24,20 @@ A toggle button for starting or stopping a livestream.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkLivestreamToggleButton    android:id="@+id/rtk_livestream_toggle"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkLivestreamToggleButton
+    android:id="@+id/rtk_livestream_toggle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val livestreamToggle = findViewById<RtkLivestreamToggleButton>(R.id.rtk_livestream_toggle)livestreamToggle.activate(meeting)
+```kotlin
+val livestreamToggle = findViewById<RtkLivestreamToggleButton>(R.id.rtk_livestream_toggle)
+livestreamToggle.activate(meeting)
 ```
 
 ```json

@@ -25,14 +25,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-broadcast-message-modal></rtk-broadcast-message-modal>
+```html
+<!-- component.html -->
+<rtk-broadcast-message-modal></rtk-broadcast-message-modal>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-broadcast-message-modal [meeting]="meeting"></rtk-broadcast-message-modal>
+```html
+<!-- component.html -->
+<rtk-broadcast-message-modal
+ [meeting]="meeting">
+</rtk-broadcast-message-modal>
 ```
 
 ```json

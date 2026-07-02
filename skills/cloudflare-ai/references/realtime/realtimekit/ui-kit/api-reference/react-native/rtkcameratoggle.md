@@ -28,16 +28,24 @@ Toggle button to enable or disable the local participant's camera. Automatically
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkCameraToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkCameraToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkCameraToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkCameraToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkCameraToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkCameraToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

@@ -27,20 +27,33 @@ Base name tag view with an icon, title, and optional subtitle. Serves as the fou
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let nameTag = RtkNameTag(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "John Doe")view.addSubview(nameTag)
+
+
+let nameTag = RtkNameTag(
+    image: RtkImage(image: UIImage(systemName: "mic")),
+    title: "John Doe"
+)
+view.addSubview(nameTag)
 ```
 
 ### With subtitle
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let nameTag = RtkNameTag(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "John Doe",    subtitle: "Host")view.addSubview(nameTag)
+
+
+let nameTag = RtkNameTag(
+    image: RtkImage(image: UIImage(systemName: "mic")),
+    title: "John Doe",
+    subtitle: "Host"
+)
+view.addSubview(nameTag)
 ```
 
 ```json

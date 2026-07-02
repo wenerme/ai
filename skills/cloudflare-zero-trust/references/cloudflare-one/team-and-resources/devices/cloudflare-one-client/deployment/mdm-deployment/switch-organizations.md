@@ -41,10 +41,38 @@ An MDM file supports a maximum of 25 configurations. The following example inclu
 
 ### XML
 
-mdm.xml
+**mdm.xml**
 
-```
-<dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>mycompany</string>      <key>display_name</key>      <string>Production environment</string>    </dict>    <dict>      <key>organization</key>      <string>mycompany</string>      <key>override_api_endpoint</key>      <string>203.0.113.0</string>      <key>override_doh_endpoint</key>      <string>203.0.113.0</string>      <key>override_warp_endpoint</key>      <string>203.0.113.0:0</string>      <key>display_name</key>      <string>China employees</string>    </dict>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Test environment</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>mycompany</string>
+      <key>display_name</key>
+      <string>Production environment</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>mycompany</string>
+      <key>override_api_endpoint</key>
+      <string>203.0.113.0</string>
+      <key>override_doh_endpoint</key>
+      <string>203.0.113.0</string>
+      <key>override_warp_endpoint</key>
+      <string>203.0.113.0:0</string>
+      <key>display_name</key>
+      <string>China employees</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Test environment</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 ### plist
@@ -59,8 +87,8 @@ mdm.xml
 
 To switch to a different organization as a user:
 
-* [ Windows, macOS, and Linux ](#tab-panel-7564)
-* [ iOS and Android ](#tab-panel-7565)
+* [ Windows, macOS, and Linux ](#tab-panel-7817)
+* [ iOS and Android ](#tab-panel-7818)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.

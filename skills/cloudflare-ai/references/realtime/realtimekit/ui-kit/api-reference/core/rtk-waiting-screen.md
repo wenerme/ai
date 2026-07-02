@@ -25,19 +25,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-waiting-screen></rtk-waiting-screen>
 ```
 
 ### With Properties
 
-```
-<rtk-waiting-screen></rtk-waiting-screen>
+```html
+<rtk-waiting-screen>
+</rtk-waiting-screen>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-waiting-screen");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-waiting-screen");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -37,16 +37,30 @@ A grid component which handles screenshares, plugins and participants.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMixedGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMixedGrid />;}
+
+
+function MyComponent() {
+  return <RtkMixedGrid />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMixedGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMixedGrid      aspectRatio="example"      gap={42}      gridSize="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMixedGrid
+      aspectRatio="example"
+      gap={42}
+      gridSize="md"
+    />
+  );
+}
 ```
 
 ```json

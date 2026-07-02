@@ -34,8 +34,14 @@ This approach uses approximately 1,000 tokens regardless of how many API endpoin
 
 Add the following configuration to your MCP client:
 
-```
-{  "mcpServers": {    "cloudflare-api": {      "url": "https://mcp.cloudflare.com/mcp"    }  }}
+```json
+{
+  "mcpServers": {
+    "cloudflare-api": {
+      "url": "https://mcp.cloudflare.com/mcp"
+    }
+  }
+}
 ```
 
 When you connect, you will be redirected to Cloudflare to authorize via OAuth and select the permissions to grant to your agent.
@@ -52,7 +58,7 @@ You can install the [Cloudflare Skills plugin ↗](https://github.com/cloudflare
 
 Install using the [plugin marketplace ↗](https://code.claude.com/docs/en/discover-plugins#add-from-github):
 
-```
+```txt
 /plugin marketplace add cloudflare/skills
 ```
 
@@ -64,9 +70,7 @@ Install from the **Cursor Marketplace**, or add manually via **Settings** \> **R
 
 Install using the [npx skills ↗](https://skills.sh) CLI:
 
-Terminal window
-
-```
+```sh
 npx skills add https://github.com/cloudflare/skills
 ```
 

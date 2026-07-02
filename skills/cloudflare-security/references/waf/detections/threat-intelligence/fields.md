@@ -40,7 +40,7 @@ Fields reflect all threat activity for an IP address over the past seven days, f
 
 A value in one field does not have to come from the same threat event as a value in another field. For example, this expression matches if the IP has _any_ China-origin activity **and** _any_ banking-targeted activity — even from separate events:
 
-```
+```txt
 any(cf.intel.ip.attacker_countries[*] == "CN") and any(cf.intel.ip.target_industries[*] == "Banking & Financial Services")
 ```
 

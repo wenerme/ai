@@ -31,19 +31,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-paginated-list></rtk-paginated-list>
 ```
 
 ### With Properties
 
-```
-<rtk-paginated-list emptyListLabel="example"></rtk-paginated-list>
+```html
+<rtk-paginated-list
+ emptyListLabel="example">
+</rtk-paginated-list>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-paginated-list");
-  el.autoScroll= true;  el.createNodes= [];</script>
+```html
+<script>
+  const el = document.querySelector("rtk-paginated-list");
+
+
+  el.autoScroll= true;
+  el.createNodes= [];
+</script>
 ```
 
 ```json

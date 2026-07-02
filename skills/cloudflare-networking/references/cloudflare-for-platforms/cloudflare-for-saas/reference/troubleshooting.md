@@ -71,10 +71,17 @@ You can check which CAA records are configured on a domain using the `dig` comma
 
 You will need to ensure that the required CAA records for the selected Certificate Authority are configured. For example, here are the records required to issue [Let's Encrypt ↗](https://letsencrypt.org/docs/caa/) and [Google Trust Services ↗](https://pki.goog/faq/#caa) certificates:
 
-```
-example.com CAA 0 issue "pki.goog; cansignhttpexchanges=yes"example.com CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
-example.com CAA 0 issue "letsencrypt.org"example.com CAA 0 issuewild "letsencrypt.org"
-example.com CAA 0 issue "ssl.com"example.com CAA 0 issuewild "ssl.com"
+```txt
+example.com CAA 0 issue "pki.goog; cansignhttpexchanges=yes"
+example.com CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+
+
+example.com CAA 0 issue "letsencrypt.org"
+example.com CAA 0 issuewild "letsencrypt.org"
+
+
+example.com CAA 0 issue "ssl.com"
+example.com CAA 0 issuewild "ssl.com"
 ```
 
 For more details, refer to [CAA records FAQ](https://developers.cloudflare.com/ssl/faq/#caa-records).
@@ -97,9 +104,19 @@ Consider the following solutions:
 
 * Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to an empty string (`""`): this sets the custom hostname certificate to "default CA", leaving the choice up to Cloudflare. Cloudflare will always attempt to issue the certificate from a more compatible CA, such as [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services), and will only fall back to using Let’s Encrypt if there is a [CAA record](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) in place that blocks Google from issuing a certificate.
 Example API call
-Terminal window
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "ssl": {      "method": "txt",      "type": "dv",      "certificate_authority": ""  }}'
+```sh
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "ssl": {
+      "method": "txt",
+      "type": "dv",
+      "certificate_authority": ""
+  }
+}'
 ```
 * Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, make sure to also include `method` and `type` in the `ssl` object.
 * If you are using a custom certificate for your custom hostname, refer to the [custom certificates troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#lets-encrypt-chain-update).
@@ -114,7 +131,7 @@ The `Blocked` status is terminal — the custom hostname will not retry validati
 
 The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you may find the following error:
 
-```
+```txt
 Since no host is 64 characters or fewer, Cloudflare Branding is required. Please check your input and try again. (1469)
 ```
 

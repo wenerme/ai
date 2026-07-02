@@ -28,19 +28,26 @@ A button which toggles your camera.
 
 ### Basic Usage
 
-```
+```html
 <rtk-camera-toggle></rtk-camera-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-camera-toggle size="md" variant"button"></rtk-camera-toggle>
+```html
+<rtk-camera-toggle
+ size="md"
+ variant"button">
+</rtk-camera-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-camera-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-camera-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

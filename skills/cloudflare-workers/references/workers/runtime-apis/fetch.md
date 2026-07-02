@@ -24,32 +24,53 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-12058)
-* [  Service Worker ](#tab-panel-12059)
-* [  Python Worker ](#tab-panel-12060)
+* [  Module Worker ](#tab-panel-12353)
+* [  Service Worker ](#tab-panel-12354)
+* [  Python Worker ](#tab-panel-12355)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async scheduled(controller, env, ctx) {    return await fetch("https://example.com", {      headers: {        "X-Source": "Cloudflare-Workers",      },    });  },};
+```js
+export default {
+  async scheduled(controller, env, ctx) {
+    return await fetch("https://example.com", {
+      headers: {
+        "X-Source": "Cloudflare-Workers",
+      },
+    });
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (event) => {  // NOTE: can’t use fetch here, as we’re not in an async scope yet  event.respondWith(eventHandler(event));});
-async function eventHandler(event) {  // fetch can be awaited here since `event.respondWith()` waits for the Promise it receives to settle  const resp = await fetch(event.request);  return resp;}
+```js
+addEventListener("fetch", (event) => {
+  // NOTE: can’t use fetch here, as we’re not in an async scope yet
+  event.respondWith(eventHandler(event));
+});
+
+
+async function eventHandler(event) {
+  // fetch can be awaited here since `event.respondWith()` waits for the Promise it receives to settle
+  const resp = await fetch(event.request);
+  return resp;
+}
 ```
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response, fetch
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        return await fetch("https://example.com", headers={"X-Source": "Cloudflare-Workers"})
+
+
+class Default(WorkerEntrypoint):
+    async def scheduled(self, controller, env, ctx):
+        return await fetch("https://example.com", headers={"X-Source": "Cloudflare-Workers"})
 ```
 
 * `fetch(resource, options optional)` : Promise`<Response>`
@@ -80,11 +101,30 @@ One scenario where the Accept-Encoding header is useful is for passing through c
 
 In addition to a change in the content encoding, recompression is also needed when a response uses an encoding not supported by the client. As an example, when a Worker requests either brotli or gzip as the encoding but the client only supports gzip, recompression will still be needed if the server returns brotli-encoded data to the server (and will be applied automatically). Note that this behavior may also vary based on the [compression rules](https://developers.cloudflare.com/rules/compression-rules/), which can be used to configure what compression should be applied for different types of data on the server side.
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request) {    // Accept brotli or gzip compression    const headers = new Headers({      "Accept-Encoding": "br, gzip",    });    let response = await fetch("https://developers.cloudflare.com", {      method: "GET",      headers,    });
-    // As long as the original response body is returned and the Content-Encoding header is    // preserved, the same encoded data will be returned without needing to be compressed again.    return new Response(response.body, {      status: response.status,      statusText: response.statusText,      headers: response.headers,    });  },};
+```typescript
+export default {
+  async fetch(request) {
+    // Accept brotli or gzip compression
+    const headers = new Headers({
+      "Accept-Encoding": "br, gzip",
+    });
+    let response = await fetch("https://developers.cloudflare.com", {
+      method: "GET",
+      headers,
+    });
+
+
+    // As long as the original response body is returned and the Content-Encoding header is
+    // preserved, the same encoded data will be returned without needing to be compressed again.
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: response.headers,
+    });
+  },
+};
 ```
 
 ## Related resources

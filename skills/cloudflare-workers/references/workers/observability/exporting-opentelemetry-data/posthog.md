@@ -73,19 +73,29 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable logs export.
 
-* [  wrangler.jsonc ](#tab-panel-11918)
-* [  wrangler.toml ](#tab-panel-11919)
+* [  wrangler.jsonc ](#tab-panel-12213)
+* [  wrangler.toml ](#tab-panel-12214)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "logs": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["posthog-logs"]
+    }
+  }
+}
 ```
-{  "observability": {    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["posthog-logs"]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.logs]enabled = truedestinations = [ "posthog-logs" ]
+```toml
+[observability.logs]
+enabled = true
+destinations = [ "posthog-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.
@@ -113,13 +123,33 @@ You can filter logs by:
 
 You can add custom attributes to your logs using standard `console` methods with structured data:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // Basic logging    console.log("Processing request");
-    // Logs with additional context    console.info("User action", {      userId: "user_123",      action: "api_call",      path: new URL(request.url).pathname    });
-    // Error logging with details    console.error("Request failed", {      error: "Connection timeout",      retryCount: 3    });
-    return new Response("OK");  }};
+```javascript
+export default {
+  async fetch(request, env) {
+    // Basic logging
+    console.log("Processing request");
+
+
+    // Logs with additional context
+    console.info("User action", {
+      userId: "user_123",
+      action: "api_call",
+      path: new URL(request.url).pathname
+    });
+
+
+    // Error logging with details
+    console.error("Request failed", {
+      error: "Connection timeout",
+      retryCount: 3
+    });
+
+
+    return new Response("OK");
+  }
+};
 ```
 
 These attributes will be searchable and filterable in the PostHog logs interface.

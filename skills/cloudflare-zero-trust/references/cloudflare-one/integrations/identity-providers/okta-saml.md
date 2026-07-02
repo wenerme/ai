@@ -24,7 +24,7 @@ To set up SAML with Okta as your identity provider:
 4. Enter an app name and select **Next**.
 ![Entering your Cloudflare One callback URL into Okta](https://developers.cloudflare.com/_astro/okta-saml-1.BO9WudzS_Z2kyEVM.webp)
 5. In the **Single sign on URL** and the **Audience URI (SP Entity ID)** fields, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -67,8 +67,21 @@ SAML attributes are only refreshed during authentications with the Okta identity
 
 ## Example API configuration
 
-```
-{  "config": {    "issuer_url": "http://www.okta.com/exkbhqj29iGxT7GwT0h7",    "sso_target_url": "https://dev-abc123.oktapreview.com/app/myapp/exkbhqj29iGxT7GwT0h7/sso/saml",    "attributes": ["email", "group"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_certs": [      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"    ]  },  "type": "saml",  "name": "okta saml example"}
+```json
+{
+  "config": {
+    "issuer_url": "http://www.okta.com/exkbhqj29iGxT7GwT0h7",
+    "sso_target_url": "https://dev-abc123.oktapreview.com/app/myapp/exkbhqj29iGxT7GwT0h7/sso/saml",
+    "attributes": ["email", "group"],
+    "email_attribute_name": "",
+    "sign_request": false,
+    "idp_public_certs": [
+      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+    ]
+  },
+  "type": "saml",
+  "name": "okta saml example"
+}
 ```
 
 ```json

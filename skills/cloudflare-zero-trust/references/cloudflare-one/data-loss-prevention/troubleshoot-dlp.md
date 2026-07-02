@@ -20,8 +20,8 @@ DLP not inspecting or blocking content is the most common issue reported. If you
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-7264)
-* [ Terraform (v5) ](#tab-panel-7265)
+* [ Dashboard ](#tab-panel-7514)
+* [ Terraform (v5) ](#tab-panel-7515)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -30,8 +30,15 @@ To turn on TLS decryption:
 
   * `Zero Trust Write`
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
-```
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    tls_decrypt = {      enabled = true    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+  account_id = var.cloudflare_account_id
+  settings = {
+    tls_decrypt = {
+      enabled = true
+    }
+  }
+}
 ```
 
 Once you turn on TLS decryption, you can create a DLP policy to inspect the content of HTTPS requests. For example:

@@ -71,13 +71,13 @@ The screenshot below shows an example where resources in the Media Library are n
 
 When the page `load-scripts.php` loads, the browser sends a request to Cloudflare for:
 
-```
+```txt
 /wp-admin/load-scripts.php?c=0&load%5B%5D=hoverIntent,common,admin-bar,underscore,shortcode,backbone,wp-util,wp-backbone,media-models,wp-plupload,wp-mediaelement,wp-api-r&load%5B%5D=equest,media-views,media-editor,media-audiovideo,mce-view,imgareaselect,image-edit,media-grid,media,svg-painter&ver=5.0.3
 ```
 
 With Query String Sort enabled, Cloudflare will then sort the parameters and values in the request query string, resulting in the following:
 
-```
+```txt
 /wp-admin/load-scripts.php?c=0&load%5B%5D=equest,media-views,media-editor,media-audiovideo,mce-view,imgareaselect,image-edit,media-grid,media,svg-painter&load%5B%5D=hoverIntent,common,admin-bar,underscore,shortcode,backbone,wp-util,wp-backbone,media-models,wp-plupload,wp-mediaelement,wp-api-r&ver=5.0.3
 ```
 

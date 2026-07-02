@@ -29,12 +29,21 @@ The single-tool pattern wraps an existing MCP server with `codeMcpServer()`. Ins
 
 The `code` tool description contains generated TypeScript definitions for every upstream tool. The model writes JavaScript against a `codemode` namespace:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const projects = await codemode.list_projects({ status: "active" });  const tasks = [];
-  for (const project of projects) {    tasks.push(...(await codemode.list_tasks({ projectId: project.id })));  }
-  return tasks.filter((task) => task.status === "blocked");};
+```js
+async () => {
+  const projects = await codemode.list_projects({ status: "active" });
+  const tasks = [];
+
+
+  for (const project of projects) {
+    tasks.push(...(await codemode.list_tasks({ projectId: project.id })));
+  }
+
+
+  return tasks.filter((task) => task.status === "blocked");
+};
 ```
 
 The MCP client makes one outer tool call. Inside the sandbox, the code can make dependent upstream calls, filter intermediate data, and return only the final result.
@@ -54,21 +63,36 @@ The server exposes two MCP tools:
 
 The model first calls `search` with code such as:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const spec = await codemode.spec();  return Object.entries(spec.paths)    .filter(([path]) => path.includes("/rulesets"))    .map(([path, operations]) => ({      path,      methods: Object.keys(operations),    }));};
+```js
+async () => {
+  const spec = await codemode.spec();
+  return Object.entries(spec.paths)
+    .filter(([path]) => path.includes("/rulesets"))
+    .map(([path, operations]) => ({
+      path,
+      methods: Object.keys(operations),
+    }));
+};
 ```
 
 The complete OpenAPI document remains inside the sandbox. Only the returned subset enters the model context.
 
 After selecting an operation, the model calls `execute`:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const response = await codemode.request({    method: "GET",    path: `/zones/${zoneId}/rulesets`,  });
-  return response.result.map(({ id, name, phase }) => ({ id, name, phase }));};
+```js
+async () => {
+  const response = await codemode.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets`,
+  });
+
+
+  return response.result.map(({ id, name, phase }) => ({ id, name, phase }));
+};
 ```
 
 Authentication stays in the host request callback. The generated code receives a request function, not the credential.

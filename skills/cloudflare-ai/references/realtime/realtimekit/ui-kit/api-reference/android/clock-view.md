@@ -25,16 +25,20 @@ A clock component which shows the elapsed time of a meeting.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkClockView    android:id="@+id/rtk_clock_view"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkClockView
+    android:id="@+id/rtk_clock_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val clockView = findViewById<RtkClockView>(R.id.rtk_clock_view)clockView.activate(meeting)
+```kotlin
+val clockView = findViewById<RtkClockView>(R.id.rtk_clock_view)
+clockView.activate(meeting)
 ```
 
 ```json

@@ -13,10 +13,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The RTKPlugin module represents a single plugin in the meeting. A plugin can be obtained from one of the plugin arrays in `meeting.plugins`. For example,
 
-TypeScript
+**TypeScript**
 
-```
-const plugin1 = meeting.plugins.active.get(pluginId);const plugin2 = meeting.plugins.all.get(pluginId);
+```ts
+const plugin1 = meeting.plugins.active.get(pluginId);
+const plugin2 = meeting.plugins.all.get(pluginId);
 ```
 
 * [RTKPlugin](#module%5FRTKPlugin)

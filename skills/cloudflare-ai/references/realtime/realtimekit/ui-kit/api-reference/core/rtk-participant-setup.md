@@ -30,19 +30,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-participant-setup></rtk-participant-setup>
 ```
 
 ### With Properties
 
-```
-<rtk-participant-setup></rtk-participant-setup>
+```html
+<rtk-participant-setup>
+</rtk-participant-setup>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participant-setup");
-  el.isPreview= true;  el.participant= participant</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participant-setup");
+
+
+  el.isPreview= true;
+  el.participant= participant
+</script>
 ```
 
 ```json

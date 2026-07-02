@@ -52,7 +52,7 @@ To set up Delegated DCV:
 4. At your authoritative DNS provider, create `CNAME` record(s) considering the following:
 * If your certificate only covers the apex domain and a wildcard, you only need to create a single `CNAME` record for your apex domain. Any direct subdomains will be covered as well.
 
-```
+```txt
 _acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
 ```
 
@@ -60,15 +60,16 @@ _acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
 
 For example, a certificate covering `example.com`, `*.example.com`, and `sub.example.com` would require the following records.
 
-```
-_acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>._acme-challenge.sub.example.com CNAME sub.example.com.<COPIED_VALIDATION_URL>.
+```txt
+_acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
+_acme-challenge.sub.example.com CNAME sub.example.com.<COPIED_VALIDATION_URL>.
 ```
 
 Remove previous TXT records
 
 Existing TXT records for `_acme-challenge` will conflict with the delegated DCV CNAME record. Make sure to check and remove records such as the following:
 
-```
+```txt
 _acme-challenge.example.com TXT <CERTIFICATE_VALIDATION_VALUE>
 ```
 
@@ -84,10 +85,10 @@ If you use a `dig` command to test, you should only be able see the placed token
 
 This is because Cloudflare places the tokens when needed and then cleans them up.
 
-Terminal window
-
-```
+```sh
 dig TXT +noadditional +noquestion +nocomments +nocmd +nostats _acme-challenge.example.com. @1.1.1.1
+
+
 _acme-challenge.example.com. 3600    IN    CNAME    example.com.<COPIED_VALIDATION_URL>
 ```
 

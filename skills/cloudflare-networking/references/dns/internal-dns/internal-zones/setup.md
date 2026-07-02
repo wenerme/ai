@@ -28,8 +28,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-8165)
-* [ API ](#tab-panel-8166)
+* [ Dashboard ](#tab-panel-8446)
+* [ API ](#tab-panel-8447)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -54,10 +54,19 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
-Create Zone
+**Create Zone**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "account": {        "id": "<ACCOUNT_ID>"    },    "name": "<ZONE_NAME>",    "type": "internal"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "account": {
+        "id": "<ACCOUNT_ID>"
+    },
+    "name": "<ZONE_NAME>",
+    "type": "internal"
+  }'
 ```
 
 1. Add DNS records to your internal zone using your preferred option:

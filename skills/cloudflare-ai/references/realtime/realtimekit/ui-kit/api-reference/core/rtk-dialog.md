@@ -32,19 +32,26 @@ A dialog component.
 
 ### Basic Usage
 
-```
+```html
 <rtk-dialog></rtk-dialog>
 ```
 
 ### With Properties
 
-```
-<rtk-dialog></rtk-dialog>
+```html
+<rtk-dialog>
+</rtk-dialog>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-dialog");
-  el.disableEscapeKey= true;  el.hideCloseButton= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-dialog");
+
+
+  el.disableEscapeKey= true;
+  el.hideCloseButton= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

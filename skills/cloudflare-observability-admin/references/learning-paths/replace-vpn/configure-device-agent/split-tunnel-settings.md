@@ -23,8 +23,8 @@ The Cloudflare One Client offers two different split tunnel modes:
 
 To change your Split Tunnels mode:
 
-* [ Dashboard ](#tab-panel-9246)
-* [ Terraform (v5) ](#tab-panel-9247)
+* [ Dashboard ](#tab-panel-9537)
+* [ Terraform (v5) ](#tab-panel-9538)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Configure**.
@@ -40,15 +40,35 @@ To change your Split Tunnels mode:
 2. Choose a [cloudflare\_zero\_trust\_device\_default\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile) or [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile) resource to modify, or [create a new device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#create-a-new-profile).
 3. In your device profile, configure either the `exclude` or `include` argument. You cannot set both `exclude` and `include` in a given device profile.
 a. To manage Split Tunnel routes in **Exclude** mode, use the `exclude` argument:
-```
-resource "cloudflare_zero_trust_device_custom_profile" "exclude_example" {  account_id            = var.cloudflare_account_id  name                  = "Custom profile in Split Tunnels Exclude mode"  enabled               = true  precedence            = 101  service_mode_v2       = {mode = "warp"}  match                 =  "identity.email == \"test@cloudflare.com\""
-  exclude = [{      address = "10.0.0.0/8"      description = "Example route to exclude from WARP tunnel"  }]}
+```tf
+resource "cloudflare_zero_trust_device_custom_profile" "exclude_example" {
+  account_id            = var.cloudflare_account_id
+  name                  = "Custom profile in Split Tunnels Exclude mode"
+  enabled               = true
+  precedence            = 101
+  service_mode_v2       = {mode = "warp"}
+  match                 =  "identity.email == \"test@cloudflare.com\""
+  exclude = [{
+      address = "10.0.0.0/8"
+      description = "Example route to exclude from WARP tunnel"
+  }]
+}
 ```
 In this example, all traffic will be sent to Cloudflare Gateway except for traffic destined to `10.0.0.0/8`. To exclude the default IPs and domains recommended by Cloudflare, refer to [Add a route](#add-a-route).
 b. To manage Split Tunnel routes in **Include** mode, use the `include` argument:
-```
-resource "cloudflare_zero_trust_device_custom_profile" "include_example" {  account_id            = var.cloudflare_account_id  name                  = "Custom profile in Split Tunnels Include mode"  enabled               = true  precedence            = 101  service_mode_v2       = {mode = "warp"}  match                 =  "identity.email == \"test@cloudflare.com\""
-  include = [{      address = "10.0.0.0/8"      description = "Example route to include in WARP tunnel"  }]}
+```tf
+resource "cloudflare_zero_trust_device_custom_profile" "include_example" {
+  account_id            = var.cloudflare_account_id
+  name                  = "Custom profile in Split Tunnels Include mode"
+  enabled               = true
+  precedence            = 101
+  service_mode_v2       = {mode = "warp"}
+  match                 =  "identity.email == \"test@cloudflare.com\""
+  include = [{
+      address = "10.0.0.0/8"
+      description = "Example route to include in WARP tunnel"
+  }]
+}
 ```
 In this example, only traffic destined to `10.0.0.0/8` will be sent to Cloudflare Gateway.
 
@@ -56,8 +76,8 @@ All clients with this device profile will now switch to the new mode and its def
 
 ## Add a route
 
-* [ Dashboard ](#tab-panel-9252)
-* [ Terraform (v5) ](#tab-panel-9253)
+* [ Dashboard ](#tab-panel-9543)
+* [ Terraform (v5) ](#tab-panel-9544)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Configure**.
@@ -65,8 +85,8 @@ All clients with this device profile will now switch to the new mode and its def
 4. Select **Manage**.
 5. You can exclude or include routes based on either their IP address or domain. When possible we recommend adding an IP address instead of a domain. To learn about the consequences of adding a domain, refer to [Domain-based Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels).
 
-  * [ Add an IP ](#tab-panel-9250)
-  * [ Add a domain ](#tab-panel-9251)
+  * [ Add an IP ](#tab-panel-9541)
+  * [ Add a domain ](#tab-panel-9542)
 To add an IP address to Split Tunnels:
 
   1. Select _IP Address_.
@@ -91,16 +111,93 @@ When a user goes to the domain, the domain gets resolved according to your Local
   * `Zero Trust Write`
 2. Choose a [cloudflare\_zero\_trust\_device\_default\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile) or [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile) resource to modify, or [create a new device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#create-a-new-profile).
 3. (Optional) Create a list of split tunnel routes that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
-split-tunnels.local.tf
-```
-locals {  global_exclude_list = [    # Default Split Tunnel entries recommended by Cloudflare    {      address     = "ff05::/16"    },    {      address     = "ff04::/16"    },    {      address     = "ff03::/16"    },    {      address     = "ff02::/16"    },    {      address     = "ff01::/16"    },    {      address     = "fe80::/10"      description = "IPv6 Link Local"    },    {      address     = "fd00::/8"    },    {      address     = "255.255.255.255/32"      description = "DHCP Broadcast"    },    {      address     = "240.0.0.0/4"    },    {      address     = "224.0.0.0/24"    },    {      address     = "192.168.0.0/16"    },    {      address     = "192.0.0.0/24"    },    {      address     = "172.16.0.0/12"    },    {      address     = "169.254.0.0/16"      description = "DHCP Unspecified"    },    {      address     = "100.64.0.0/10"    },    {      address     = "10.0.0.0/8"    }  ]}
+
+**split-tunnels.local.tf**
+```tf
+locals {
+  global_exclude_list = [
+    # Default Split Tunnel entries recommended by Cloudflare
+    {
+      address     = "ff05::/16"
+    },
+    {
+      address     = "ff04::/16"
+    },
+    {
+      address     = "ff03::/16"
+    },
+    {
+      address     = "ff02::/16"
+    },
+    {
+      address     = "ff01::/16"
+    },
+    {
+      address     = "fe80::/10"
+      description = "IPv6 Link Local"
+    },
+    {
+      address     = "fd00::/8"
+    },
+    {
+      address     = "255.255.255.255/32"
+      description = "DHCP Broadcast"
+    },
+    {
+      address     = "240.0.0.0/4"
+    },
+    {
+      address     = "224.0.0.0/24"
+    },
+    {
+      address     = "192.168.0.0/16"
+    },
+    {
+      address     = "192.0.0.0/24"
+    },
+    {
+      address     = "172.16.0.0/12"
+    },
+    {
+      address     = "169.254.0.0/16"
+      description = "DHCP Unspecified"
+    },
+    {
+      address     = "100.64.0.0/10"
+    },
+    {
+      address     = "10.0.0.0/8"
+    }
+  ]
+}
 ```
 4. In the device profile, exclude or include routes based on either their IP address or domain:
-device-profiles.tf
-```
-resource "cloudflare_zero_trust_device_custom_profile" "example" {  account_id            = var.cloudflare_account_id  name                  = "Example custom profile with split tunnels"  enabled               = true  precedence            = 101  service_mode_v2       = {mode = "warp"}  match                 =  "identity.email == \"test@cloudflare.com\""
-  exclude = concat(    # Global entries    local.global_exclude_list,
-    # Profile-specific entries    [      {        address = "192.0.2.0/24"        description = "Example IP to exclude from WARP"      },      {        host = "example.com"        description = "Example domain to exclude from WARP"      }    ]  )}
+
+**device-profiles.tf**
+```tf
+resource "cloudflare_zero_trust_device_custom_profile" "example" {
+  account_id            = var.cloudflare_account_id
+  name                  = "Example custom profile with split tunnels"
+  enabled               = true
+  precedence            = 101
+  service_mode_v2       = {mode = "warp"}
+  match                 =  "identity.email == \"test@cloudflare.com\""
+  exclude = concat(
+    # Global entries
+    local.global_exclude_list,
+    # Profile-specific entries
+    [
+      {
+        address = "192.0.2.0/24"
+        description = "Example IP to exclude from WARP"
+      },
+      {
+        host = "example.com"
+        description = "Example domain to exclude from WARP"
+      }
+    ]
+  )
+}
 ```
 When possible we recommend adding an IP address instead of a domain. To learn about the consequences of adding a domain, refer to [Domain-based Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels).
 
@@ -115,8 +212,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
 
-  * [ Exclude IPs and domains ](#tab-panel-9248)
-  * [ Include IPs and domains ](#tab-panel-9249)
+  * [ Exclude IPs and domains ](#tab-panel-9539)
+  * [ Include IPs and domains ](#tab-panel-9540)
 If you are using **Exclude** mode:
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.

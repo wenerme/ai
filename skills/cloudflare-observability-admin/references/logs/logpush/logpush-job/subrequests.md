@@ -78,10 +78,31 @@ At least one of the following token permissions is required:
 
 **Create Logpush job**
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "s3://<BUCKET_PATH>?region=us-east-1",    "dataset": "http_requests",    "output_options": {      "field_names": [        "ClientIP",        "ClientRequestHost",        "ClientRequestMethod",        "ClientRequestURI",        "EdgeStartTimestamp",        "EdgeResponseStatus",        "RayID",        "ParentRayID",        "Subrequests"      ],      "timestamp_format": "rfc3339"    },    "merge_subrequests": true,    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-east-1",
+    "dataset": "http_requests",
+    "output_options": {
+      "field_names": [
+        "ClientIP",
+        "ClientRequestHost",
+        "ClientRequestMethod",
+        "ClientRequestURI",
+        "EdgeStartTimestamp",
+        "EdgeResponseStatus",
+        "RayID",
+        "ParentRayID",
+        "Subrequests"
+      ],
+      "timestamp_format": "rfc3339"
+    },
+    "merge_subrequests": true,
+    "enabled": true
+  }'
 ```
 
 **To enable subrequest merging on an existing job:**
@@ -92,24 +113,40 @@ Enabling subrequest merging changes your log schema by adding the Subrequests ar
 
 **Update Logpush job**
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "merge_subrequests": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "merge_subrequests": true
+  }'
 ```
 
 ## Example log output
 
 Without subrequest merging, a Worker that makes one subrequest produces two separate log records:
 
-```
-{"RayID":"abc123","ParentRayID":"","ClientIP":"203.0.113.1","EdgeResponseStatus":200, ...}{"RayID":"def456","ParentRayID":"abc123","ClientIP":"203.0.113.1","EdgeResponseStatus":200, ...}
+```json
+{"RayID":"abc123","ParentRayID":"","ClientIP":"203.0.113.1","EdgeResponseStatus":200, ...}
+{"RayID":"def456","ParentRayID":"abc123","ClientIP":"203.0.113.1","EdgeResponseStatus":200, ...}
 ```
 
 With subrequest merging enabled, a single record is produced with the subrequest nested inside:
 
-```
-{  "RayID": "abc123",  "ParentRayID": "",  "ClientIP": "203.0.113.1",  "EdgeResponseStatus": 200,  "Subrequests": [    {      "RayID": "def456",      "ClientIP": "203.0.113.1",      "EdgeResponseStatus": 200    }  ]}
+```json
+{
+  "RayID": "abc123",
+  "ParentRayID": "",
+  "ClientIP": "203.0.113.1",
+  "EdgeResponseStatus": 200,
+  "Subrequests": [
+    {
+      "RayID": "def456",
+      "ClientIP": "203.0.113.1",
+      "EdgeResponseStatus": 200
+    }
+  ]
+}
 ```
 
 ```json

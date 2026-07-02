@@ -20,8 +20,9 @@ Requires a Cloudflare Enterprise plan with [malicious uploads detection](https:/
 
 Example usage:
 
-```
-# Check if requests to a specific endpoint contain any content objects larger than 500 KB (512,000 bytes)any(cf.waf.content_scan.obj_sizes[*] > 512000) and http.request.uri.path eq "/upload"
+```txt
+# Check if requests to a specific endpoint contain any content objects larger than 500 KB (512,000 bytes)
+any(cf.waf.content_scan.obj_sizes[*] > 512000) and http.request.uri.path eq "/upload"
 ```
 
 Categories:

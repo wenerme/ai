@@ -79,7 +79,7 @@ Important notes
 
 To invoke an API endpoint, append the operation endpoint to the Cloudflare API base URL:
 
-```
+```txt
 https://api.cloudflare.com/client/v4
 ```
 
@@ -98,14 +98,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `DDoS Botnet Feed Write`
 * `DDoS Botnet Feed Read`
 
-Get full report
+**Get full report**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/full_report" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/full_report" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": [    {      "cidr": "127.0.0.1/32",      "date": "1970-01-01T00:00:00Z",      "offense_count": 10000    },    // ... other entries ...  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "cidr": "127.0.0.1/32",
+      "date": "1970-01-01T00:00:00Z",
+      "offense_count": 10000
+    },
+    // ... other entries ...
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Get day report
@@ -125,14 +139,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `DDoS Botnet Feed Write`
 * `DDoS Botnet Feed Read`
 
-Get daily report
+**Get daily report**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/day_report" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/day_report" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": [    {      "cidr": "127.0.0.1/32",      "date": "2024-05-05T00:00:00Z",      "offense_count": 10000    },    // ... other entries ...  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "cidr": "127.0.0.1/32",
+      "date": "2024-05-05T00:00:00Z",
+      "offense_count": 10000
+    },
+    // ... other entries ...
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

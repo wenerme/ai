@@ -28,7 +28,7 @@ User token template URLs open the token creation form at the user profile level 
 
 The basic template URL structure is:
 
-```
+```txt
 https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=[ENCODED_PERMISSIONS]&accountId=*&zoneId=all&name=[TOKEN_NAME]
 ```
 
@@ -47,7 +47,7 @@ Account token template URLs open the token creation form at the account level. T
 
 The basic template URL structure is:
 
-```
+```txt
 https://dash.cloudflare.com/?to=/:account/api-tokens&permissionGroupKeys=[ENCODED_PERMISSIONS]&name=[TOKEN_NAME]
 ```
 
@@ -68,7 +68,7 @@ Account token template URLs do not use `accountId` or `zoneId` parameters. Resou
 
 Both user token and account token template URLs use the same permission encoding. Permissions are encoded as a JSON array with the following structure:
 
-```
+```json
 [{ "key": "permission_name", "type": "read|edit|revoke|run|purge" }]
 ```
 
@@ -92,15 +92,18 @@ List the permissions your use case needs. Refer to the [permission reference](#p
 
 Format your permissions as a JSON array:
 
-```
-[  { "key": "dns", "type": "edit" },  { "key": "analytics", "type": "read" }]
+```json
+[
+  { "key": "dns", "type": "edit" },
+  { "key": "analytics", "type": "read" }
+]
 ```
 
 ### 3\. URL-encode the JSON
 
 Use a URL encoder to convert the JSON string:
 
-```
+```text
 %5B%7B%22key%22%3A%22dns%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22analytics%22%2C%22type%22%3A%22read%22%7D%5D
 ```
 
@@ -108,13 +111,13 @@ Use a URL encoder to convert the JSON string:
 
 For a **user token**, combine all components into the final template URL:
 
-```
+```txt
 https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=[ENCODED_JSON]&accountId=*&zoneId=all&name=Custom%20Token
 ```
 
 For an **account token**, use the account-level path instead:
 
-```
+```txt
 https://dash.cloudflare.com/?to=/:account/api-tokens&permissionGroupKeys=[ENCODED_JSON]&name=Custom%20Token
 ```
 

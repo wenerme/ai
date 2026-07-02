@@ -20,13 +20,13 @@ Supports the most common MIME types of the following general categories: video, 
 
 Example value:
 
-```
+```txt
 "image/jpeg"
 ```
 
 Example usage:
 
-```
+```txt
 http.request.body.mime in {"image/bmp" "image/gif" "image/jpeg" "image/png" "image/tiff"}
 ```
 

@@ -40,14 +40,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-message></rtk-chat-message>
+```html
+<!-- component.html -->
+<rtk-chat-message></rtk-chat-message>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-message [alignRight]="true" [canDelete]="true" [canEdit]="true"></rtk-chat-message>
+```html
+<!-- component.html -->
+<rtk-chat-message
+ [alignRight]="true"
+ [canDelete]="true"
+ [canEdit]="true">
+</rtk-chat-message>
 ```
 
 ```json

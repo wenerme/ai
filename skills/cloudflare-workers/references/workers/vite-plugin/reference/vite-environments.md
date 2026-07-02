@@ -28,26 +28,48 @@ The default Vite environment name for a Worker is always the top-level Worker na
 
 In the following example we have a Worker named `my-worker` that is associated with a Vite environment named `my_worker`. We use the Vite config to set global constant replacements for this environment:
 
-* [  wrangler.jsonc ](#tab-panel-12287)
-* [  wrangler.toml ](#tab-panel-12288)
+* [  wrangler.jsonc ](#tab-panel-12582)
+* [  wrangler.toml ](#tab-panel-12583)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "./src/index.ts"
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "./src/index.ts"}
+
+**TOML**
+
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "./src/index.ts"
 ```
 
-TOML
+**vite.config.ts**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"main = "./src/index.ts"
-```
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 
-vite.config.ts
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  environments: {    my_worker: {      define: {        __APP_VERSION__: JSON.stringify("v1.0.0"),      },    },  },  plugins: [cloudflare()],});
+export default defineConfig({
+  environments: {
+    my_worker: {
+      define: {
+        __APP_VERSION__: JSON.stringify("v1.0.0"),
+      },
+    },
+  },
+  plugins: [cloudflare()],
+});
 ```
 
 For more information about Vite's configuration options, see [Configuring Vite ↗](https://vite.dev/config/).
@@ -58,11 +80,17 @@ The default behavior of using the Worker name as the environment name is appropr
 
 If you are using the Cloudflare Vite plugin with [TanStack Start ↗](https://tanstack.com/start/) or [React Router v8 ↗](https://reactrouter.com/), then your Worker is used for server-side rendering and tightly integrated with the framework. To support this, you should assign it to the `ssr` environment by setting `viteEnvironment.name` in the plugin config.
 
-vite.config.ts
+**vite.config.ts**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";import { reactRouter } from "@react-router/dev/vite";
-export default defineConfig({  plugins: [cloudflare({ viteEnvironment: { name: "ssr" } }), reactRouter()],});
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { reactRouter } from "@react-router/dev/vite";
+
+
+export default defineConfig({
+  plugins: [cloudflare({ viteEnvironment: { name: "ssr" } }), reactRouter()],
+});
 ```
 
 This merges the Worker's environment configuration with the framework's SSR configuration and ensures that the Worker is included as part of the framework's build output.

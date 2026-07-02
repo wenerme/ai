@@ -28,16 +28,24 @@ Toggle button to enable or disable the local participant's microphone. Automatic
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMicToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkMicToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkMicToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMicToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkMicToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkMicToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

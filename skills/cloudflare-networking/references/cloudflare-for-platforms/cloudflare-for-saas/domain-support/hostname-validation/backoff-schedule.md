@@ -18,13 +18,13 @@ Attempts to validate a Custom Hostname are distributed over seven days (a total 
 
 * For the first 10 attempts:
 
-```
+```txt
 now() + min((floor(60 * pow(1.05, retry_attempt)) * INTERVAL '1 second'), INTERVAL '4 hours')
 ```
 
 * For the remaining 65 attempts:
 
-```
+```txt
 now() + min((floor(60 * pow(1.15, retry_attempt)) * INTERVAL '1 second'), INTERVAL '4 hours')
 ```
 

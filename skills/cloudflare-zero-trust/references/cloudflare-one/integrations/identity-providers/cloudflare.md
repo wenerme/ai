@@ -20,8 +20,8 @@ For newly created Zero Trust organizations, Cloudflare adds this identity provid
 
 ## Set up Cloudflare as an identity provider
 
-* [ Dashboard ](#tab-panel-7286)
-* [ API ](#tab-panel-7287)
+* [ Dashboard ](#tab-panel-7536)
+* [ API ](#tab-panel-7537)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -36,10 +36,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-Add an Access identity provider
+**Add an Access identity provider**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Cloudflare",    "type": "cloudflare",    "config": {        "restrict_to_account_members": true    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Cloudflare",
+    "type": "cloudflare",
+    "config": {
+        "restrict_to_account_members": true
+    }
+  }'
 ```
 
 ## Configuration options

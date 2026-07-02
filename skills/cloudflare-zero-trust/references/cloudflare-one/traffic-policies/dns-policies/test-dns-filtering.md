@@ -30,25 +30,43 @@ For example, if you created a policy to block `example.com`, you can do the foll
 1. Open your terminal.
 2. Type `dig example.com` (`nslookup example.com` if you are using Windows) and press **Enter**.
 3. In the `dig` output, check the `status:` field in the header line (the line starting with `;; ->>HEADER<<-`). If the [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) is turned off for the policy, you should see `REFUSED` — a DNS response code meaning the server declined to answer the query:
-Terminal window
-```
+```sh
 dig example.com
 ```
-```
-; <<>> DiG 9.10.6 <<>> example.com;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 6503;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-;; QUESTION SECTION:;example.com.                   IN      A
-;; Query time: 46 msec;; SERVER: 172.64.36.1#53(172.64.36.1);; WHEN: Tue Mar 10 20:22:18 CDT 2020;; MSG SIZE  rcvd: 29
+```sh
+; <<>> DiG 9.10.6 <<>> example.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 6503
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+;; QUESTION SECTION:
+;example.com.                   IN      A
+;; Query time: 46 msec
+;; SERVER: 172.64.36.1#53(172.64.36.1)
+;; WHEN: Tue Mar 10 20:22:18 CDT 2020
+;; MSG SIZE  rcvd: 29
 ```
 If the [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) is enabled for the policy, you should see `NOERROR` (meaning the query was resolved) in the header with `162.159.36.12` and `162.159.46.12` as the answers. These are Cloudflare's block page IP addresses:
-Terminal window
-```
+```sh
 dig example.com
 ```
-```
-; <<>> DiG 9.10.6 <<>> example.com;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR id: 14531;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 1452;; QUESTION SECTION:;example.com.                   IN      A
-;;ANSWER SECTION:example.com.            60      IN      A                  162.159.36.12example.com.            60      IN      A                  162.159.46.12
-;; Query time: 53 msec;; SERVER: 172.64.36.1#53(172.64.36.1);; WHEN: Tue Mar 10 20:19:52 CDT 2020;; MSG SIZE  rcvd: 83
+```sh
+; <<>> DiG 9.10.6 <<>> example.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR id: 14531
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1452
+;; QUESTION SECTION:
+;example.com.                   IN      A
+;;ANSWER SECTION:
+example.com.            60      IN      A                  162.159.36.12
+example.com.            60      IN      A                  162.159.46.12
+;; Query time: 53 msec
+;; SERVER: 172.64.36.1#53(172.64.36.1)
+;; WHEN: Tue Mar 10 20:19:52 CDT 2020
+;; MSG SIZE  rcvd: 83
 ```
 
 ### Test a security or content category
@@ -60,7 +78,7 @@ Once you have configured your Gateway policy to block the category, the test dom
 #### Test domain format
 
 * **One-word category** — For categories with one-word names (for example, _Malware_), the test domain uses the following format:
-```
+```txt
 <NAME_OF_CATEGORY>.testcategory.com
 ```
 * **Multi-word category** — For categories with multiple words in the name (for example, _Parked & For Sale Domains_), the test domain uses the following format:
@@ -97,20 +115,45 @@ EDNS client subnet (ECS) is a DNS extension that sends a portion of the user's I
   2. Select the DNS location you are testing.
   3. Note the value of **DNS over HTTPS**.
 2. Open a terminal and run the following command:
-Terminal window
-```
+```sh
 curl 'https://<DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query?type=TXT&name=o-o.myaddr.google.com' -H 'Accept: application/dns-json' | json_pp
 ```
 The output should contain your EDNS client subnet:
-```
-{  "AD": false,  "Answer": [    {      "TTL": 60,      "data": "\"108.162.218.211\"",      "name": "o-o.myaddr.google.com",      "type": 16    },    {      "TTL": 60,      "data": "\"edns0-client-subnet 136.62.0.0/24\"",      "name": "o-o.myaddr.google.com",      "type": 16    }  ],  "CD": false,  "Question": [    {      "name": "o-o.myaddr.google.com",      "type": 16    }  ],  "RA": true,  "RD": true,  "Status": 0,  "TC": false}
+```json
+{
+  "AD": false,
+  "Answer": [
+    {
+      "TTL": 60,
+      "data": "\"108.162.218.211\"",
+      "name": "o-o.myaddr.google.com",
+      "type": 16
+    },
+    {
+      "TTL": 60,
+      "data": "\"edns0-client-subnet 136.62.0.0/24\"",
+      "name": "o-o.myaddr.google.com",
+      "type": 16
+    }
+  ],
+  "CD": false,
+  "Question": [
+    {
+      "name": "o-o.myaddr.google.com",
+      "type": 16
+    }
+  ],
+  "RA": true,
+  "RD": true,
+  "Status": 0,
+  "TC": false
+}
 ```
 3. To verify your EDNS client subnet, obtain your source IP address:
-Terminal window
-```
+```sh
 curl ifconfig.me
 ```
-```
+```sh
 136.62.12.156%
 ```
 The source IP address should fall within the /24 range specified by your EDNS client subnet.
@@ -131,9 +174,7 @@ Windows
 1. Open the admin command prompt or PowerShell.
 2. Run the following command:
 
-Terminal window
-
-```
+```bash
 ipconfig /flushdns
 ```
 
@@ -142,10 +183,10 @@ macOS
 1. Open Terminal.
 2. Run the following commands:
 
-Terminal window
-
-```
-sudo killall -HUP mDNSRespondersudo killall mDNSResponderHelpersudo dscacheutil -flushcache
+```sh
+sudo killall -HUP mDNSResponder
+sudo killall mDNSResponderHelper
+sudo dscacheutil -flushcache
 ```
 
 ```json

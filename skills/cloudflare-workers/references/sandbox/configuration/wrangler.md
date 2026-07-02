@@ -16,22 +16,64 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The minimum required configuration for using Sandbox SDK:
 
-* [  wrangler.jsonc ](#tab-panel-10367)
-* [  wrangler.toml ](#tab-panel-10368)
+* [  wrangler.jsonc ](#tab-panel-10662)
+* [  wrangler.toml ](#tab-panel-10663)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-sandbox-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "containers": [
+    {
+      "class_name": "Sandbox",
+      "image": "./Dockerfile",
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "Sandbox",
+        "name": "Sandbox",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": ["Sandbox"],
+      "tag": "v1",
+    },
+  ],
+}
 ```
-{  "name": "my-sandbox-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",    },  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },  "migrations": [    {      "new_sqlite_classes": ["Sandbox"],      "tag": "v1",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-sandbox-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[[containers]]class_name = "Sandbox"image = "./Dockerfile"
-[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
-[[migrations]]new_sqlite_classes = [ "Sandbox" ]tag = "v1"
+```toml
+name = "my-sandbox-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[[containers]]
+class_name = "Sandbox"
+image = "./Dockerfile"
+
+
+[[durable_objects.bindings]]
+class_name = "Sandbox"
+name = "Sandbox"
+
+
+[[migrations]]
+new_sqlite_classes = [ "Sandbox" ]
+tag = "v1"
 ```
 
 ## Required settings
@@ -50,36 +92,50 @@ To use the [backup and restore API](https://developers.cloudflare.com/sandbox/ap
 
 ### 1\. Create the R2 bucket
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket create my-backup-bucket
 ```
 
 ### 2\. Add the binding and environment variables
 
-* [  wrangler.jsonc ](#tab-panel-10361)
-* [  wrangler.toml ](#tab-panel-10362)
+* [  wrangler.jsonc ](#tab-panel-10656)
+* [  wrangler.toml ](#tab-panel-10657)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "BACKUP_BUCKET_NAME": "my-backup-bucket",
+    "CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",
+  },
+  "r2_buckets": [
+    {
+      "binding": "BACKUP_BUCKET",
+      "bucket_name": "my-backup-bucket",
+    },
+  ],
+}
 ```
-{  "vars": {    "BACKUP_BUCKET_NAME": "my-backup-bucket",    "CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",  },  "r2_buckets": [    {      "binding": "BACKUP_BUCKET",      "bucket_name": "my-backup-bucket",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[vars]BACKUP_BUCKET_NAME = "my-backup-bucket"CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"
-[[r2_buckets]]binding = "BACKUP_BUCKET"bucket_name = "my-backup-bucket"
+```toml
+[vars]
+BACKUP_BUCKET_NAME = "my-backup-bucket"
+CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"
+
+
+[[r2_buckets]]
+binding = "BACKUP_BUCKET"
+bucket_name = "my-backup-bucket"
 ```
 
 ### 3\. Set R2 API credentials as secrets
 
-Terminal window
-
-```
-npx wrangler secret put R2_ACCESS_KEY_IDnpx wrangler secret put R2_SECRET_ACCESS_KEY
+```sh
+npx wrangler secret put R2_ACCESS_KEY_ID
+npx wrangler secret put R2_SECRET_ACCESS_KEY
 ```
 
 Create an R2 API token in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** \> **Overview** \> **Manage R2 API Tokens**. The token needs **Object Read & Write** permissions for your backup bucket.
@@ -94,19 +150,30 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 **Solution**: Ensure your `wrangler.jsonc` includes the Durable Objects binding:
 
-* [  wrangler.jsonc ](#tab-panel-10363)
-* [  wrangler.toml ](#tab-panel-10364)
+* [  wrangler.jsonc ](#tab-panel-10658)
+* [  wrangler.toml ](#tab-panel-10659)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "Sandbox",
+        "name": "Sandbox",
+      },
+    ],
+  },
+}
 ```
-{  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },}
-```
 
-TOML
+**TOML**
 
-```
-[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
+```toml
+[[durable_objects.bindings]]
+class_name = "Sandbox"
+name = "Sandbox"
 ```
 
 ### Missing migrations
@@ -115,19 +182,28 @@ TOML
 
 **Solution**: Add migrations for the Sandbox class:
 
-* [  wrangler.jsonc ](#tab-panel-10365)
-* [  wrangler.toml ](#tab-panel-10366)
+* [  wrangler.jsonc ](#tab-panel-10660)
+* [  wrangler.toml ](#tab-panel-10661)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "migrations": [
+    {
+      "new_sqlite_classes": ["Sandbox"],
+      "tag": "v1",
+    },
+  ],
+}
 ```
-{  "migrations": [    {      "new_sqlite_classes": ["Sandbox"],      "tag": "v1",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[migrations]]new_sqlite_classes = [ "Sandbox" ]tag = "v1"
+```toml
+[[migrations]]
+new_sqlite_classes = [ "Sandbox" ]
+tag = "v1"
 ```
 
 ## Related resources

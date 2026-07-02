@@ -24,7 +24,7 @@ To add an Embed to Your Website:
 3. Click "add new tool" and activate the desired tools on your Cloudflare Zaraz dashboard.
 4. Add a placeholder in your HTML, specifying the necessary attributes. For a generic embed, the snippet looks like this:
 
-```
+```html
 <componentName-embedName attribute="value"></componentName-embedName>
 ```
 
@@ -34,7 +34,7 @@ Replace `componentName`, `embedName` and `attribute="value"` with the specific M
 
 ### X (Twitter) embed
 
-```
+```html
 <twitter-post tweet-id="12345"></twitter-post>
 ```
 
@@ -42,7 +42,7 @@ Replace `tweet-id` with the actual tweet ID for the content you wish to embed.
 
 ### Instagram embed
 
-```
+```html
 <instagram-post post-url="https://www.instagram.com/p/ABC/" captions="true"></instagram-post>
 ```
 

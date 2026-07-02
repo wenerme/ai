@@ -26,16 +26,30 @@ An icon component which accepts an svg string and renders it.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkIcon } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkIcon />;}
+
+
+function MyComponent() {
+  return <RtkIcon />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkIcon } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkIcon      icon="example"      size="md"      variant="primary"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkIcon
+      icon="example"
+      size="md"
+      variant="primary"
+    />
+  );
+}
 ```
 
 ```json

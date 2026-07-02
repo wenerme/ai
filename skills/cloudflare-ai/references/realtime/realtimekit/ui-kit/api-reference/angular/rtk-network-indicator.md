@@ -26,14 +26,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-network-indicator></rtk-network-indicator>
+```html
+<!-- component.html -->
+<rtk-network-indicator></rtk-network-indicator>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-network-indicator [isScreenShare]="true" [meeting]="meeting" [participant]="participant"></rtk-network-indicator>
+```html
+<!-- component.html -->
+<rtk-network-indicator
+ [isScreenShare]="true"
+ [meeting]="meeting"
+ [participant]="participant">
+</rtk-network-indicator>
 ```
 
 ```json

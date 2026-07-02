@@ -27,15 +27,47 @@ To find out more information about datasets, availability, beta, and deprecation
 
 This example illustrates the structure for Groups:
 
-```
-type WhateverGroup {    count # No subfields, it is just the group size. Not available for roll-up tables.    sum {        # fields that support summing (numbers, maps of numbers)    }    avg {        # fields that support averaging (numbers)    }    uniq {        # fields that support uniqueing (numbers, strings, enums, IPs, dates, etc.)    }}
+```graphql
+type WhateverGroup {
+    count # No subfields, it is just the group size. Not available for roll-up tables.
+    sum {
+        # fields that support summing (numbers, maps of numbers)
+    }
+    avg {
+        # fields that support averaging (numbers)
+    }
+    uniq {
+        # fields that support uniqueing (numbers, strings, enums, IPs, dates, etc.)
+    }
+}
 ```
 
 Unique values are not available as a dimension but can be queried as demonstrated in this example:
 
-```
-{  # Get number of bytes and unique IPs in each minute.  httpRequests1mGroups {    sum {      bytes    }    uniq {      uniques # unique IPs    }    dimensions {      datetimeMinute    }  }
-  # Count the number of events in each hour.  firewallEventsAdaptiveGroups {    count    dimensions {      datetimeHour    }  }}
+```graphql
+{
+  # Get number of bytes and unique IPs in each minute.
+  httpRequests1mGroups {
+    sum {
+      bytes
+    }
+    uniq {
+      uniques # unique IPs
+    }
+    dimensions {
+      datetimeMinute
+    }
+  }
+
+
+  # Count the number of events in each hour.
+  firewallEventsAdaptiveGroups {
+    count
+    dimensions {
+      datetimeHour
+    }
+  }
+}
 ```
 
 ### Schema type definitions
@@ -48,11 +80,37 @@ Every exposed table has a GraphQL type definition. Type definitions observe the 
 
 Here is an example type definition for `ContentTypeMapElem`:
 
-```
-type ContentTypeMapElem {    edgeResponseContentType: UInt32!    requests: UInt64!    bytes: UInt64!}
-# An array of httpRequestsGroup is the result of httpRequests1hGroups or# httpRequests1mGroups query.type httpRequestsGroup {    date: Date!    timeslot: DateTime!    requests: UInt64!    contentTypeMap: [ContentTypeMapElem!]!    # ... other fields}
-enum TrustedClientCategory {    UNKNOWN    REAL_BROWSER    HONEST_BOT}
-# An array of Request is the result of httpRequests query.type Request {    trustedClientCategory: TrustedClientCategory!    # ... other fields}
+```graphql
+type ContentTypeMapElem {
+    edgeResponseContentType: UInt32!
+    requests: UInt64!
+    bytes: UInt64!
+}
+
+
+# An array of httpRequestsGroup is the result of httpRequests1hGroups or
+# httpRequests1mGroups query.
+type httpRequestsGroup {
+    date: Date!
+    timeslot: DateTime!
+    requests: UInt64!
+    contentTypeMap: [ContentTypeMapElem!]!
+    # ... other fields
+}
+
+
+enum TrustedClientCategory {
+    UNKNOWN
+    REAL_BROWSER
+    HONEST_BOT
+}
+
+
+# An array of Request is the result of httpRequests query.
+type Request {
+    trustedClientCategory: TrustedClientCategory!
+    # ... other fields
+}
 ```
 
 ```json

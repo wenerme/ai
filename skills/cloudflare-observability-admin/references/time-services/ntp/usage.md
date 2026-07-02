@@ -61,33 +61,34 @@ Exact configuration will vary by Linux distribution, but below are some example 
 ### [chrony ↗](https://chrony-project.org)
 
 1. Add `time.cloudflare.com` as a server in the configuration file on your system (e.g., `/etc/chrony/chrony.conf`)
-```
+```plaintext
 server time.cloudflare.com iburst
 ```
 2. Restart the chronyd service.
-```
+```plaintext
 systemctl restart chronyd
 ```
 
 ### [systemd-timesyncd ↗](https://man7.org/linux/man-pages/man5/timesyncd.conf.5.html)
 
 1. Add `time.cloudflare.com` to the `[Time]` section of the configuration file on your system (e.g., `/etc/systemd/timesyncd.conf`)
-```
-[Time]NTP=time.cloudflare.com
+```plaintext
+[Time]
+NTP=time.cloudflare.com
 ```
 2. Restart the systemd-timesyncd service.
-```
+```plaintext
 systemctl restart systemd-timesyncd
 ```
 
 ### [ntpd ↗](https://linux.die.net/man/5/ntp.conf)
 
 1. Add `time.cloudflare.com` as a server in the configuration file on your system (e.g., `/etc/ntp.conf`)
-```
+```plaintext
 server time.cloudflare.com iburst
 ```
 2. Restart the ntpd service.
-```
+```plaintext
 systemctl restart ntpd
 ```
 

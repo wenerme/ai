@@ -24,8 +24,23 @@ Triggered when a batch request is queued.
 
 **Example:**
 
-```
-{  "type": "cf.workersAi.model.batch.queued",  "source": {    "type": "workersAi.model",    "modelName": "@cf/baai/bge-base-en-v1.5"  },  "payload": {    "requestId": "req-12345678-90ab-cdef-1234-567890abcdef"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.workersAi.model.batch.queued",
+  "source": {
+    "type": "workersAi.model",
+    "modelName": "@cf/baai/bge-base-en-v1.5"
+  },
+  "payload": {
+    "requestId": "req-12345678-90ab-cdef-1234-567890abcdef"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `batch.succeeded`
@@ -34,8 +49,23 @@ Triggered when a batch request has completed.
 
 **Example:**
 
-```
-{  "type": "cf.workersAi.model.batch.succeeded",  "source": {    "type": "workersAi.model",    "modelName": "@cf/baai/bge-base-en-v1.5"  },  "payload": {    "requestId": "req-12345678-90ab-cdef-1234-567890abcdef"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.workersAi.model.batch.succeeded",
+  "source": {
+    "type": "workersAi.model",
+    "modelName": "@cf/baai/bge-base-en-v1.5"
+  },
+  "payload": {
+    "requestId": "req-12345678-90ab-cdef-1234-567890abcdef"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `batch.failed`
@@ -44,8 +74,26 @@ Triggered when a batch request has failed.
 
 **Example:**
 
-```
-{  "type": "cf.workersAi.model.batch.failed",  "source": {    "type": "workersAi.model",    "modelName": "@cf/baai/bge-base-en-v1.5"  },  "payload": {    "requestId": "req-12345678-90ab-cdef-1234-567890abcdef",    "message": "Model execution failed",    "internalCode": 5001,    "httpCode": 500  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.workersAi.model.batch.failed",
+  "source": {
+    "type": "workersAi.model",
+    "modelName": "@cf/baai/bge-base-en-v1.5"
+  },
+  "payload": {
+    "requestId": "req-12345678-90ab-cdef-1234-567890abcdef",
+    "message": "Model execution failed",
+    "internalCode": 5001,
+    "httpCode": 500
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 ```json

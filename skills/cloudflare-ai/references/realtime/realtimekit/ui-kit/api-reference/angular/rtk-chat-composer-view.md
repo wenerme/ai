@@ -34,14 +34,20 @@ A component which renders a chat composer
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-composer-view></rtk-chat-composer-view>
+```html
+<!-- component.html -->
+<rtk-chat-composer-view></rtk-chat-composer-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-composer-view [canSendFiles]="true" [canSendTextMessage]="true" inputTextPlaceholder="example"></rtk-chat-composer-view>
+```html
+<!-- component.html -->
+<rtk-chat-composer-view
+ [canSendFiles]="true"
+ [canSendTextMessage]="true"
+ inputTextPlaceholder="example">
+</rtk-chat-composer-view>
 ```
 
 ```json

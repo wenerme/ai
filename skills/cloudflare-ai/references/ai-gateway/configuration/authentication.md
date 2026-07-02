@@ -37,29 +37,47 @@ For isolation between gateways or tenants, use separate Cloudflare accounts or a
 
 ## Example requests
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{"model": "openai/gpt-4.1-mini", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{"model": "openai/gpt-4.1-mini", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
 ```
 
 Using the OpenAI SDK:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import OpenAI from "openai";
-const openai = new OpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
-const response = await openai.chat.completions.create({  model: "openai/gpt-4.1-mini",  messages: [{ role: "user", content: "What is Cloudflare?" }],});
+
+
+const openai = new OpenAI({
+  apiKey: CLOUDFLARE_API_TOKEN,
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+});
+
+
+const response = await openai.chat.completions.create({
+  model: "openai/gpt-4.1-mini",
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
 ```
 
 Using the Vercel AI SDK:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import { createOpenAI } from "@ai-sdk/openai";
-const openai = createOpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
+
+
+const openai = createOpenAI({
+  apiKey: CLOUDFLARE_API_TOKEN,
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+});
 ```
 
 ## Expected behavior

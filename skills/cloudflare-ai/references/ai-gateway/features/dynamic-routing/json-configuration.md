@@ -14,8 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Instead of using the **dashboard editor UI** to define the route graph, you can do it using the REST API. Routes are internally represented using a simple JSON structure:
 
-```
-{  "id": "<route id>",  "name": "<route name>",  "elements": [<array of elements>]}
+```json
+{
+  "id": "<route id>",
+  "name": "<route name>",
+  "elements": [<array of elements>]
+}
 ```
 
 ## Supported elements
@@ -30,8 +34,14 @@ Marks the beginning of a route. Every route must start with a Start element.
 * **Outputs**:
   * `next`: Forwards the unchanged request to the next element
 
-```
-{  "id": "<id>",  "type": "start",  "outputs": {    "next": { "elementId": "<id>" }  }}
+```json
+{
+  "id": "<id>",
+  "type": "start",
+  "outputs": {
+    "next": { "elementId": "<id>" }
+  }
+}
 ```
 
 ### Conditional Element (If/Else)
@@ -45,8 +55,20 @@ Evaluates a condition based on request parameters and routes the request accordi
 
 `conditions` supports MongoDB-like operators such as `$eq`, `$ne`, `$in`, `$and`, and `$or`.
 
-```
-{  "id": "<id>",  "type": "conditional",  "properties": {    "conditions": {      "metadata.plan": { "$eq": "free" }    }  },  "outputs": {    "true": { "elementId": "<id>" },    "false": { "elementId": "<id>" }  }}
+```json
+{
+  "id": "<id>",
+  "type": "conditional",
+  "properties": {
+    "conditions": {
+      "metadata.plan": { "$eq": "free" }
+    }
+  },
+  "outputs": {
+    "true": { "elementId": "<id>" },
+    "false": { "elementId": "<id>" }
+  }
+}
 ```
 
 ### Percentage Split
@@ -57,8 +79,16 @@ Routes requests probabilistically across multiple outputs, useful for A/B testin
 * **Outputs**: Up to 5 named percentage outputs
   * Each output key (for example, `"10%"`) is the probability for that branch, and the keys must sum to 100%
 
-```
-{  "id": "<id>",  "type": "percentage",  "outputs": {    "10%": { "elementId": "<id>" },    "40%": { "elementId": "<id>" },    "50%": { "elementId": "<id>" }  }}
+```json
+{
+  "id": "<id>",
+  "type": "percentage",
+  "outputs": {
+    "10%": { "elementId": "<id>" },
+    "40%": { "elementId": "<id>" },
+    "50%": { "elementId": "<id>" }
+  }
+}
 ```
 
 ### Rate/Budget Limit
@@ -77,8 +107,21 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 * `limit`: Maximum allowed requests/cost
 * `window`: Time window in seconds
 
-```
-{  "id": "<id>",  "type": "rate",  "properties": {    "limitType": "count",    "key": "metadata.user_id",    "limit": 100,    "window": 3600  },  "outputs": {    "success": { "elementId": "node_model_workers_ai" },    "fallback": { "elementId": "node_model_openai_mini" }  }}
+```json
+{
+  "id": "<id>",
+  "type": "rate",
+  "properties": {
+    "limitType": "count",
+    "key": "metadata.user_id",
+    "limit": 100,
+    "window": 3600
+  },
+  "outputs": {
+    "success": { "elementId": "node_model_workers_ai" },
+    "fallback": { "elementId": "node_model_openai_mini" }
+  }
+}
 ```
 
 ### Model
@@ -97,8 +140,21 @@ Executes inference using a specified model and provider with configurable timeou
 * `timeout`: Request timeout in milliseconds
 * `retries`: Number of retry attempts
 
-```
-{  "id": "<id>",  "type": "model",  "properties": {    "provider": "openai",    "model": "gpt-4o-mini",    "timeout": 60000,    "retries": 4  },  "outputs": {    "success": { "elementId": "<id>" },    "fallback": { "elementId": "<id>" }  }}
+```json
+{
+  "id": "<id>",
+  "type": "model",
+  "properties": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "timeout": 60000,
+    "retries": 4
+  },
+  "outputs": {
+    "success": { "elementId": "<id>" },
+    "fallback": { "elementId": "<id>" }
+  }
+}
 ```
 
 ### End element
@@ -108,8 +164,12 @@ Marks the end of a route. Returns the last successful model response, or an erro
 * **Inputs**: Request
 * **Outputs**: None (provide an empty `outputs` object)
 
-```
-{  "id": "<id>",  "type": "end",  "outputs": {}}
+```json
+{
+  "id": "<id>",
+  "type": "end",
+  "outputs": {}
+}
 ```
 
 ```json

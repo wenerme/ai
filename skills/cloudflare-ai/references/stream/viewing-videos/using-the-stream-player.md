@@ -20,8 +20,15 @@ To add the Stream Player to a web page, you can either:
 [ Go to **Videos** ](https://dash.cloudflare.com/?to=/:account/stream/videos)
 * Use the code example below, replacing `<VIDEO_UID>` with the video UID (or [signed token](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/)) and `<CODE>` with the your unique customer code, which can be found in the Stream Dashboard.
 
-```
-<iframe  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"  style="border: none"  height="720"  width="1280"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"  allowfullscreen="true"></iframe>
+```html
+<iframe
+  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+  style="border: none"
+  height="720"
+  width="1280"
+  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+  allowfullscreen="true"
+></iframe>
 ```
 
 Stream player is also available as a [React ↗](https://www.npmjs.com/package/@cloudflare/stream-react) or [Angular ↗](https://www.npmjs.com/package/@cloudflare/stream-angular) component.
@@ -53,16 +60,31 @@ Cloudflare Stream is not available on Chromium, as Chromium does not support H.2
 
 Changing the `height` and `width` attributes on the `iframe` will change the pixel value dimensions of the iframe displayed on the host page.
 
-```
-<iframe  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"  style="border: none"  height="400"  width="400"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"  allowfullscreen="true"></iframe>
+```html
+<iframe
+  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+  style="border: none"
+  height="400"
+  width="400"
+  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+  allowfullscreen="true"
+></iframe>
 ```
 
 ### Responsive
 
 To make an iframe responsive, it needs styles to enforce an aspect ratio by setting the `iframe` to `position: absolute;` and having it fill a container that uses a calculated `padding-top` percentage.
 
-```
-<!-- padding-top calculation is height / width (assuming 16:9 aspect ratio) --><div style="position: relative; padding-top: 56.25%">  <iframe    src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"    style="border: none; position: absolute; top: 0; height: 100%; width: 100%"    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"    allowfullscreen="true"  ></iframe></div>
+```html
+<!-- padding-top calculation is height / width (assuming 16:9 aspect ratio) -->
+<div style="position: relative; padding-top: 56.25%">
+  <iframe
+    src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+    style="border: none; position: absolute; top: 0; height: 100%; width: 100%"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen="true"
+  ></iframe>
+</div>
 ```
 
 ## Basic Options

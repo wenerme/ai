@@ -14,10 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A component which lets to manage your audio devices and audio preferences. Emits `rtkStateUpdate` event with data for muting notification sounds:
 
-TypeScript
+**TypeScript**
 
-```
-{ prefs: {   muteNotificationSounds: boolean }}
+```ts
+{
+ prefs: {
+   muteNotificationSounds: boolean
+ }
+}
 ```
 
 ## Properties
@@ -34,19 +38,25 @@ TypeScript
 
 ### Basic Usage
 
-```
+```html
 <rtk-settings-audio></rtk-settings-audio>
 ```
 
 ### With Properties
 
-```
-<rtk-settings-audio size="md"></rtk-settings-audio>
+```html
+<rtk-settings-audio
+ size="md">
+</rtk-settings-audio>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-settings-audio");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-settings-audio");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

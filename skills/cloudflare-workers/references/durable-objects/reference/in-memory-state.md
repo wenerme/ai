@@ -18,12 +18,30 @@ Variables in a Durable Object will maintain state as long as your Durable Object
 
 A common pattern is to initialize a Durable Object from [persistent storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) and set instance variables the first time it is accessed. Since future accesses are routed to the same Durable Object, it is then possible to return any initialized values without making further calls to persistent storage.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-export class Counter extends DurableObject {  constructor(ctx, env) {    super(ctx, env);    // `blockConcurrencyWhile()` ensures no requests are delivered until    // initialization completes.    this.ctx.blockConcurrencyWhile(async () => {      let stored = await this.ctx.storage.get("value");      // After initialization, future reads do not need to access storage.      this.value = stored || 0;    });  }
-  // Handle HTTP requests from clients.  async fetch(request) {    // use this.value rather than storage  }}
+
+
+export class Counter extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+    // `blockConcurrencyWhile()` ensures no requests are delivered until
+    // initialization completes.
+    this.ctx.blockConcurrencyWhile(async () => {
+      let stored = await this.ctx.storage.get("value");
+      // After initialization, future reads do not need to access storage.
+      this.value = stored || 0;
+    });
+  }
+
+
+  // Handle HTTP requests from clients.
+  async fetch(request) {
+    // use this.value rather than storage
+  }
+}
 ```
 
 A given instance of a Durable Object may share global memory with other instances defined in the same Worker code.

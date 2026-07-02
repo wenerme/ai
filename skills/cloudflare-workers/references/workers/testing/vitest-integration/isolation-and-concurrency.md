@@ -47,42 +47,62 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-12229)
-* [  wrangler.toml ](#tab-panel-12230)
+* [  wrangler.jsonc ](#tab-panel-12524)
+* [  wrangler.toml ](#tab-panel-12525)
 
-JSONC
+**JSONC**
 
+```jsonc
+{ "name": "test",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01"
+  # no nodejs_compat flags here
+}
 ```
-{ "name": "test",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24"  # no nodejs_compat flags here}
-```
 
-TOML
+**TOML**
 
-```
-name = "test"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
+```toml
+name = "test"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
 ```
 
 In our `src/index.ts` file, we use the `process` object, which is a Node.js global, unavailable in the Workerd runtime:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    process.env.TEST = "test";    return new Response(process.env.TEST);  },} satisfies ExportedHandler<Env>;
+```typescript
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    process.env.TEST = "test";
+    return new Response(process.env.TEST);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 The test is a simple assertion that the Worker managed to use `process`.
 
-TypeScript
+**TypeScript**
 
-```
-it('responds with "test"', async () => {  const response = await exports.default.fetch("https://example.com/");  expect(await response.text()).toMatchInlineSnapshot(`"test"`);});
+```typescript
+it('responds with "test"', async () => {
+  const response = await exports.default.fetch("https://example.com/");
+  expect(await response.text()).toMatchInlineSnapshot(`"test"`);
+});
 ```
 
 Now, if we run `npm run test`, we see that the tests will _pass_:
 
-```
- ✓ test/index.spec.ts (1)   ✓ responds with "test"
- Test Files  1 passed (1)      Tests  1 passed (1)
+```plaintext
+ ✓ test/index.spec.ts (1)
+   ✓ responds with "test"
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
 ```
 
 And we can run `wrangler dev` and `wrangler deploy` without issues. It _looks like_ our code is fine. However, this code will fail in production as `process` is not available in the Workerd runtime.

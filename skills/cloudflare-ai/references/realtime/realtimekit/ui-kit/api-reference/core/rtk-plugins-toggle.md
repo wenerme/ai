@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of plugins. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSidebar: boolean; sidebar: 'plugins' }
 ```
 
@@ -35,19 +35,26 @@ TypeScript
 
 ### Basic Usage
 
-```
+```html
 <rtk-plugins-toggle></rtk-plugins-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-plugins-toggle size="md" variant"button"></rtk-plugins-toggle>
+```html
+<rtk-plugins-toggle
+ size="md"
+ variant"button">
+</rtk-plugins-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-plugins-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-plugins-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -29,16 +29,24 @@ Toggle button to open the plugins sidebar panel. Hides if plugin permissions are
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPluginsToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPluginsToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkPluginsToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPluginsToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPluginsToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkPluginsToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

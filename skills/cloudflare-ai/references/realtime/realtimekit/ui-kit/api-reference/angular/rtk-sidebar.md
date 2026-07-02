@@ -32,14 +32,20 @@ A component which handles the sidebar and you can customize which sections you w
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-sidebar></rtk-sidebar>
+```html
+<!-- component.html -->
+<rtk-sidebar></rtk-sidebar>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-sidebar [defaultSection]="rtksidebarsection" [enabledSections]="[]" [meeting]="meeting"></rtk-sidebar>
+```html
+<!-- component.html -->
+<rtk-sidebar
+ [defaultSection]="rtksidebarsection"
+ [enabledSections]="[]"
+ [meeting]="meeting">
+</rtk-sidebar>
 ```
 
 ```json

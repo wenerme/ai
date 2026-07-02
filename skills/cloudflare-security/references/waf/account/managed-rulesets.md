@@ -44,8 +44,8 @@ This configuration gives you additional protection by enabling PL3 rules, but wi
 
 The second rule logs any matches for PL4 rules, the most strict set of rules in the ruleset, so that it does not affect live traffic. You could use this configuration to understand which traffic would be affected by PL4 rules.
 
-* [ Dashboard ](#tab-panel-11214)
-* [ API ](#tab-panel-11215)
+* [ Dashboard ](#tab-panel-11509)
+* [ API ](#tab-panel-11510)
 
 1. Deploy the Cloudflare OWASP Core Ruleset by following the [dashboard instructions](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/#deploy-a-managed-ruleset), customizing the ruleset behavior using these settings:
 
@@ -69,10 +69,58 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account Rulesets Write`
 
-Create an account ruleset
+**Create an account ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "My ruleset",    "description": "Entry point ruleset for WAF managed rulesets (account)",    "kind": "root",    "phase": "http_request_firewall_managed",    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "4814384a9e5d4991b9815dcfc25d2f1f",                "overrides": {                    "categories": [                        {                            "category": "paranoia-level-4",                            "enabled": false                        }                    ],                    "rules": [                        {                            "id": "6179ae15870a4bb7b2d480d4843b323c",                            "action": "managed_challenge"                        }                    ]                }            },            "expression": "cf.zone.plan eq \"ENT\"",            "description": "Execute OWASP ruleset at PL3 with Managed Challenge action"        },        {            "action": "execute",            "action_parameters": {                "id": "4814384a9e5d4991b9815dcfc25d2f1f",                "overrides": {                    "rules": [                        {                            "id": "6179ae15870a4bb7b2d480d4843b323c",                            "action": "log"                        }                    ]                }            },            "expression": "cf.zone.plan eq \"ENT\"",            "description": "Execute OWASP ruleset at PL4 with Log action"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "My ruleset",
+    "description": "Entry point ruleset for WAF managed rulesets (account)",
+    "kind": "root",
+    "phase": "http_request_firewall_managed",
+    "rules": [
+        {
+            "action": "execute",
+            "action_parameters": {
+                "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+                "overrides": {
+                    "categories": [
+                        {
+                            "category": "paranoia-level-4",
+                            "enabled": false
+                        }
+                    ],
+                    "rules": [
+                        {
+                            "id": "6179ae15870a4bb7b2d480d4843b323c",
+                            "action": "managed_challenge"
+                        }
+                    ]
+                }
+            },
+            "expression": "cf.zone.plan eq \"ENT\"",
+            "description": "Execute OWASP ruleset at PL3 with Managed Challenge action"
+        },
+        {
+            "action": "execute",
+            "action_parameters": {
+                "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+                "overrides": {
+                    "rules": [
+                        {
+                            "id": "6179ae15870a4bb7b2d480d4843b323c",
+                            "action": "log"
+                        }
+                    ]
+                }
+            },
+            "expression": "cf.zone.plan eq \"ENT\"",
+            "description": "Execute OWASP ruleset at PL4 with Log action"
+        }
+    ]
+  }'
 ```
 
 ## Customize the behavior of managed rulesets

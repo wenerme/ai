@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-* [ Dashboard ](#tab-panel-10101)
-* [ API ](#tab-panel-10102)
+* [ Dashboard ](#tab-panel-10396)
+* [ API ](#tab-panel-10397)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 
@@ -58,10 +58,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "use_only_brotli_for_assets_tar",            "expression": "http.request.uri.path eq \"/download/assets.tar\"",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "brotli"                    }                ]            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "use_only_brotli_for_assets_tar",
+            "expression": "http.request.uri.path eq \"/download/assets.tar\"",
+            "action": "compress_response",
+            "action_parameters": {
+                "algorithms": [
+                    {
+                        "name": "brotli"
+                    }
+                ]
+            }
+        }
+    ]
+  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

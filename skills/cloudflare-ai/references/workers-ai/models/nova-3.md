@@ -58,25 +58,38 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5108)
-* [  curl ](#tab-panel-5109)
+* [  TypeScript ](#tab-panel-5254)
+* [  curl ](#tab-panel-5255)
 
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const URL = "https://URL_TO_MP3_FILE/audio.mp3";
+    const mp3 = await fetch(URL);
+
+
+    const resp = await env.AI.run("@cf/deepgram/nova-3", {
+      "audio": {
+        body: mp3.body,
+        contentType: "audio/mpeg"
+      },
+      "detect_language": true
+    }, {
+      returnRawResponse: true
+    });
+    return resp;
+  },
+} satisfies ExportedHandler<Env>;
 ```
-export default {  async fetch(request, env, ctx): Promise<Response> {    const URL = "https://URL_TO_MP3_FILE/audio.mp3";    const mp3 = await fetch(URL);
 
-    const resp = await env.AI.run("@cf/deepgram/nova-3", {      "audio": {        body: mp3.body,        contentType: "audio/mpeg"      },      "detect_language": true    }, {      returnRawResponse: true    });    return resp;  },} satisfies ExportedHandler<Env>;
-```
-
-Terminal window
-
-```
+```sh
 curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/nova-3?detect_language=true'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: audio/mpeg'   --data-binary "@/path/to/your-mp3-file.mp3"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5110)
-* [ Output ](#tab-panel-5111)
+* [ Input ](#tab-panel-5256)
+* [ Output ](#tab-panel-5257)
 
 ▶audio{}
 

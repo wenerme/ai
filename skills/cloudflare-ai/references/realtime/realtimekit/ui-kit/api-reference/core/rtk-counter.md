@@ -28,19 +28,26 @@ A number picker with increment and decrement buttons.
 
 ### Basic Usage
 
-```
+```html
 <rtk-counter></rtk-counter>
 ```
 
 ### With Properties
 
-```
-<rtk-counter size="md"></rtk-counter>
+```html
+<rtk-counter
+ size="md">
+</rtk-counter>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-counter");
-  el.minValue= 42;  el.value= 42;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-counter");
+
+
+  el.minValue= 42;
+  el.value= 42;
+</script>
 ```
 
 ```json

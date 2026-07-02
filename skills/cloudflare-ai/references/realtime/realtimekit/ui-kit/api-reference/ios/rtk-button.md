@@ -27,20 +27,32 @@ A versatile button that follows the RTK Design System. Supports multiple styles,
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let button = RtkButton()button.setTitle("Join", for: .normal)view.addSubview(button)
+
+
+let button = RtkButton()
+button.setTitle("Join", for: .normal)
+view.addSubview(button)
 ```
 
 ### With custom style
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let button = RtkButton(    style: .line,    rtkButtonState: .active,    size: .large)button.setTitle("Cancel", for: .normal)view.addSubview(button)
+
+
+let button = RtkButton(
+    style: .line,
+    rtkButtonState: .active,
+    size: .large
+)
+button.setTitle("Cancel", for: .normal)
+view.addSubview(button)
 ```
 
 ```json

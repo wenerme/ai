@@ -29,14 +29,19 @@ A component which handles notifications. You can configure which notifications y
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-notifications></rtk-notifications>
+```html
+<!-- component.html -->
+<rtk-notifications></rtk-notifications>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-notifications [meeting]="meeting" size="md"></rtk-notifications>
+```html
+<!-- component.html -->
+<rtk-notifications
+ [meeting]="meeting"
+ size="md">
+</rtk-notifications>
 ```
 
 ```json

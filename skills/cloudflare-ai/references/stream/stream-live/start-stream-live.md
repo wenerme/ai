@@ -38,16 +38,40 @@ In the Stream Dashboard, within seconds of going live, you will see a preview of
 
 To start a live stream programmatically, make a `POST` request to the `/live_inputs` endpoint:
 
-Request
+**Request**
 
-```
-curl -X POST \--header "Authorization: Bearer <API_TOKEN>" \--data '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
+```bash
+curl -X POST \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 ```
 
-Response
+**Response**
 
-```
-{  "uid": "f256e6ea9341d51eea64c9454659e576",  "rtmps": {    "url": "rtmps://live.cloudflare.com:443/live/",    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"  },  "created": "2021-09-23T05:05:53.451415Z",  "modified": "2021-09-23T05:05:53.451415Z",  "meta": {    "name": "test stream"  },  "status": null,  "recording": {    "mode": "automatic",    "requireSignedURLs": false,    "allowedOrigins": null,    "hideLiveViewerCount": false  },  "enabled": true,  "deleteRecordingAfterDays": null,  "preferLowLatency": false}
+```json
+{
+  "uid": "f256e6ea9341d51eea64c9454659e576",
+  "rtmps": {
+    "url": "rtmps://live.cloudflare.com:443/live/",
+    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"
+  },
+  "created": "2021-09-23T05:05:53.451415Z",
+  "modified": "2021-09-23T05:05:53.451415Z",
+  "meta": {
+    "name": "test stream"
+  },
+  "status": null,
+  "recording": {
+    "mode": "automatic",
+    "requireSignedURLs": false,
+    "allowedOrigins": null,
+    "hideLiveViewerCount": false
+  },
+  "enabled": true,
+  "deleteRecordingAfterDays": null,
+  "preferLowLatency": false
+}
 ```
 
 #### Optional API parameters
@@ -88,18 +112,23 @@ The following four properties are nested under the `recording` object.
 
 You can update live inputs by making a `PUT` request:
 
-Request
+**Request**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \--header "Authorization: Bearer <API_TOKEN>" \--data '{"meta": {"name":"test stream 1"},"recording": { "mode": "automatic", "timeoutSeconds": 10 }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"meta": {"name":"test stream 1"},"recording": { "mode": "automatic", "timeoutSeconds": 10 }}'
 ```
 
 Delete a live input by making a `DELETE` request:
 
-Request
+**Request**
 
-```
-curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl --request DELETE \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Recommendations, requirements and limitations

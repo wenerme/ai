@@ -14,40 +14,86 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Set a Cron Trigger for your Worker.
 
-* [  JavaScript ](#tab-panel-11754)
-* [  TypeScript ](#tab-panel-11755)
-* [  Python ](#tab-panel-11756)
-* [  Hono ](#tab-panel-11757)
+* [  JavaScript ](#tab-panel-11987)
+* [  TypeScript ](#tab-panel-11988)
+* [  Python ](#tab-panel-11989)
+* [  Hono ](#tab-panel-11990)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async scheduled(controller, env, ctx) {    console.log("cron processed");  },};
-```
-
-TypeScript
-
-```
-interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    console.log("cron processed");  },};
+```js
+export default {
+  async scheduled(controller, env, ctx) {
+    console.log("cron processed");
+  },
+};
 ```
 
-Python
+**TypeScript**
 
-```
-from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        print("cron processed")
-```
-
-TypeScript
-
-```
-import { Hono } from "hono";
+```ts
 interface Env {}
-// Create Hono appconst app = new Hono<{ Bindings: Env }>();
-// Regular routes for normal HTTP requestsapp.get("/", (c) => c.text("Hello World!"));
-// Export both the app and a scheduled functionexport default {  // The Hono app handles regular HTTP requests  fetch: app.fetch,
-  // The scheduled function handles Cron triggers  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    console.log("cron processed");
-    // You could also perform actions like:    // - Fetching data from external APIs    // - Updating KV or Durable Object storage    // - Running maintenance tasks    // - Sending notifications  },};
+export default {
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    console.log("cron processed");
+  },
+};
+```
+
+**Python**
+
+```python
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+    async def scheduled(self, controller, env, ctx):
+        print("cron processed")
+```
+
+**TypeScript**
+
+```ts
+import { Hono } from "hono";
+
+
+interface Env {}
+
+
+// Create Hono app
+const app = new Hono<{ Bindings: Env }>();
+
+
+// Regular routes for normal HTTP requests
+app.get("/", (c) => c.text("Hello World!"));
+
+
+// Export both the app and a scheduled function
+export default {
+  // The Hono app handles regular HTTP requests
+  fetch: app.fetch,
+
+
+  // The scheduled function handles Cron triggers
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    console.log("cron processed");
+
+
+    // You could also perform actions like:
+    // - Fetching data from external APIs
+    // - Updating KV or Durable Object storage
+    // - Running maintenance tasks
+    // - Sending notifications
+  },
+};
 ```
 
 ## Set Cron Triggers in Wrangler
@@ -56,37 +102,61 @@ Refer to [Cron Triggers](https://developers.cloudflare.com/workers/configuration
 
 If you are deploying with Wrangler, set the cron syntax (once per hour as shown below) by adding this to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11758)
-* [  wrangler.toml ](#tab-panel-11759)
+* [  wrangler.jsonc ](#tab-panel-11991)
+* [  wrangler.toml ](#tab-panel-11992)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker",
+  // ...
+  "triggers": {
+    "crons": [
+      "0 * * * *"
+    ]
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker",  // ...  "triggers": {    "crons": [      "0 * * * *"    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker"
-[triggers]crons = [ "0 * * * *" ]
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker"
+
+
+[triggers]
+crons = [ "0 * * * *" ]
 ```
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `[triggers]` table under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-11760)
-* [  wrangler.toml ](#tab-panel-11761)
+* [  wrangler.jsonc ](#tab-panel-11993)
+* [  wrangler.toml ](#tab-panel-11994)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "dev": {
+      "triggers": {
+        "crons": [
+          "0 * * * *"
+        ]
+      }
+    }
+  }
+}
 ```
-{  "env": {    "dev": {      "triggers": {        "crons": [          "0 * * * *"        ]      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[env.dev.triggers]crons = [ "0 * * * *" ]
+```toml
+[env.dev.triggers]
+crons = [ "0 * * * *" ]
 ```
 
 ## Test Cron Triggers using Wrangler
@@ -95,11 +165,13 @@ The recommended way of testing Cron Triggers is using Wrangler.
 
 Cron Triggers can be tested using Wrangler by passing in the `--test-scheduled` flag to [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). This will expose a `/__scheduled` (or `/cdn-cgi/handler/scheduled` for Python Workers) route which can be used to test using a HTTP request. To simulate different cron patterns, a `cron` query parameter can be passed in.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev --test-scheduled
+
+
 curl "http://localhost:8787/__scheduled?cron=0+*+*+*+*"
+
+
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python Workers
 ```
 

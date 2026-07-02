@@ -18,20 +18,24 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:dns ↗](https://nodejs.org/api/dns.html) for name resolution via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) using [Cloudflare DNS ↗](https://www.cloudflare.com/application-services/products/dns/) at 1.1.1.1.
 
-* [  JavaScript ](#tab-panel-12075)
-* [  TypeScript ](#tab-panel-12076)
+* [  JavaScript ](#tab-panel-12370)
+* [  TypeScript ](#tab-panel-12371)
 
-index.js
+**index.js**
 
-```
+```js
 import dns from "node:dns";
+
+
 let response = await dns.promises.resolve4("cloudflare.com", "NS");
 ```
 
-index.ts
+**index.ts**
 
-```
+```ts
 import dns from 'node:dns';
+
+
 let response = await dns.promises.resolve4('cloudflare.com', 'NS');
 ```
 
@@ -43,7 +47,7 @@ DNS requests will execute a subrequest, counts for your [Worker's subrequest lim
 
 The full `node:dns` API is documented in the [Node.js documentation for node:dns ↗](https://nodejs.org/api/dns.html).
 
-```
+```plaintext
 
 ```
 

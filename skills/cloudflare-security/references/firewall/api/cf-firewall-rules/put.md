@@ -18,10 +18,29 @@ This example updates several firewall rules using a single API call.
 
 You can include up to 25 rules in the JSON object array (`-d` flag) to update as a batch. The batch is handled as a transaction.
 
-Request
+**Request**
 
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '[  {    "id": "<RULE_ID>",    "paused": false,    "description": "Challenge site",    "action": "challenge",    "priority": null,    "filter": {      "id": "<FILTER_ID>",      "expression": "not http.request.uri.path matches \"^/api/.*$\"",      "paused": false,      "description": "not /api"    }  }]'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '[
+  {
+    "id": "<RULE_ID>",
+    "paused": false,
+    "description": "Challenge site",
+    "action": "challenge",
+    "priority": null,
+    "filter": {
+      "id": "<FILTER_ID>",
+      "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+      "paused": false,
+      "description": "not /api"
+    }
+  }
+]'
 ```
 
 Note
@@ -30,10 +49,29 @@ Note
 
 To update the filter, use the [Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/).
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<RULE_ID>",      "paused": false,      "description": "Challenge site",      "action": "challenge",      "priority": null,      "filter": {        "id": "<FILTER_ID>",        "expression": "not http.request.uri.path matches \"^/api/.*$\"",        "paused": false,        "description": "not /api"      }    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<RULE_ID>",
+      "paused": false,
+      "description": "Challenge site",
+      "action": "challenge",
+      "priority": null,
+      "filter": {
+        "id": "<FILTER_ID>",
+        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+        "paused": false,
+        "description": "not /api"
+      }
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Update a single rule
@@ -48,16 +86,50 @@ You must include the following fields in the request body:
 
 All other fields are optional.
 
-Request
+**Request**
 
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "id": "<RULE_ID>",  "paused": false,  "description": "Do not challenge login from office IPv6",  "action": "allow",  "priority": null,  "filter": {    "id": "<FILTER_ID>",    "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",    "paused": false,    "description": "Login from office"  }}'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "id": "<RULE_ID>",
+  "paused": false,
+  "description": "Do not challenge login from office IPv6",
+  "action": "allow",
+  "priority": null,
+  "filter": {
+    "id": "<FILTER_ID>",
+    "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",
+    "paused": false,
+    "description": "Login from office"
+  }
+}'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<RULE_ID>",    "paused": false,    "description": "Do not challenge login from office IPv6",    "action": "allow",    "priority": null,    "filter": {      "id": "<FILTER_ID>",      "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",      "paused": false,      "description": "Login from office"    }  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULE_ID>",
+    "paused": false,
+    "description": "Do not challenge login from office IPv6",
+    "action": "allow",
+    "priority": null,
+    "filter": {
+      "id": "<FILTER_ID>",
+      "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",
+      "paused": false,
+      "description": "Login from office"
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Note

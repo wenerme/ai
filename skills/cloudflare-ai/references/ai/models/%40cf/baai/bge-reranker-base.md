@@ -28,33 +28,72 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2139)
-* [  Python ](#tab-panel-2140)
-* [  curl ](#tab-panel-2141)
+* [  TypeScript ](#tab-panel-2187)
+* [  Python ](#tab-panel-2188)
+* [  curl ](#tab-panel-2189)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const query = 'Which one is cooler?'    const contexts = [      {        text: 'a cyberpunk lizzard'      },      {        text: 'a cyberpunk cat'      }    ];
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const query = 'Which one is cooler?'
+    const contexts = [
+      {
+        text: 'a cyberpunk lizzard'
+      },
+      {
+        text: 'a cyberpunk cat'
+      }
+    ];
+
+
     const response = await env.AI.run('@cf/baai/bge-reranker-base', { query, contexts });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-reranker-base",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={    "query": "Which one is better?",      "contexts": [        {"text": "a cyberpunk lizzard"},        {"text": "a cyberpunk car"},      ]    })result = response.json()print(result)
+```py
+import os
+import requests
+
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-reranker-base",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+    "query": "Which one is better?",
+      "contexts": [
+        {"text": "a cyberpunk lizzard"},
+        {"text": "a cyberpunk car"},
+      ]
+    }
+)
+result = response.json()
+print(result)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-reranker-base \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "query": "Which one is better?", "contexts": [{ "text": "a cyberpunk lizzard" }, {"text": "a cyberpunk cat"}]}'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-reranker-base \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "query": "Which one is better?", "contexts": [{ "text": "a cyberpunk lizzard" }, {"text": "a cyberpunk cat"}]}'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2142)
-* [ Output ](#tab-panel-2143)
+* [ Input ](#tab-panel-2190)
+* [ Output ](#tab-panel-2191)
 
 query
 

@@ -52,8 +52,14 @@ The compression applied by the _Default_ option takes into account any configure
 
 The configuration object supported by the `compress_response` action has the following format:
 
-```
-"action_parameters": {  "algorithms": [    { "name": "<VALUE1>" },    { "name": "<VALUE2>" },    // ...  ]}
+```json
+"action_parameters": {
+  "algorithms": [
+    { "name": "<VALUE1>" },
+    { "name": "<VALUE2>" },
+    // ...
+  ]
+}
 ```
 
 The `algorithms` list must contain at least one item.

@@ -46,10 +46,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Waiting Rooms Read`
 * `Waiting Rooms Write`
 
-Get waiting room status
+**Get waiting room status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/status" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/status" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The response is:
@@ -65,18 +67,42 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Waiting Rooms Read`
 * `Waiting Rooms Write`
 
-Waiting room details
+**Waiting room details**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The endpoint above [fetches all settings](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/get/) for a configured waiting room:
 
-Terminal window
-
-```
-      "success": true,      "errors": [],      "messages": [],      "result": {        "id": "REDACTED",        "created_on": "2014-01-01T05:20:00.12345Z",        "modified_on": "2014-01-01T05:20:00.12345Z",        "name": "shop_waiting_room",        "description": "Waiting room for webshop",        "suspended": false,        "host": "shop.example.com",        "path": "/shop",        "queue_all": true,        "new_users_per_minute": 200,        "total_active_users": 300,        "session_duration": 1,        "disable_session_renewal": false,        "json_response_enabled": false,        "queueing_method": "random",        "cookie_attributes": {          "samesite": "auto",          "secure": "auto"        },        "custom_page_html": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}"      }
+```bash
+      "success": true,
+      "errors": [],
+      "messages": [],
+      "result": {
+        "id": "REDACTED",
+        "created_on": "2014-01-01T05:20:00.12345Z",
+        "modified_on": "2014-01-01T05:20:00.12345Z",
+        "name": "shop_waiting_room",
+        "description": "Waiting room for webshop",
+        "suspended": false,
+        "host": "shop.example.com",
+        "path": "/shop",
+        "queue_all": true,
+        "new_users_per_minute": 200,
+        "total_active_users": 300,
+        "session_duration": 1,
+        "disable_session_renewal": false,
+        "json_response_enabled": false,
+        "queueing_method": "random",
+        "cookie_attributes": {
+          "samesite": "auto",
+          "secure": "auto"
+        },
+        "custom_page_html": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}"
+      }
 ```
 
 The value of `suspended` indicates whether a waiting room is activated or suspended:

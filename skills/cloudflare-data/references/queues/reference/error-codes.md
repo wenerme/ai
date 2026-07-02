@@ -18,16 +18,37 @@ This page documents error codes returned by Queues when using the [Queues Cloudf
 
 For the [JavaScript APIs](https://developers.cloudflare.com/queues/configuration/javascript-apis/), Queues operations throw exceptions that you can catch. The error code is included at the end of the `message` property:
 
-JavaScript
+**JavaScript**
 
-```
-try {  await env.MY_QUEUE.send("message", { delaySeconds: 999999 });    return new Response("Sent message to the queue");} catch (error) {  console.error(error);  return new Response("Failed to send message to the queue", { status: 500 });}
+```js
+try {
+  await env.MY_QUEUE.send("message", { delaySeconds: 999999 });
+    return new Response("Sent message to the queue");
+} catch (error) {
+  console.error(error);
+  return new Response("Failed to send message to the queue", { status: 500 });
+}
 ```
 
 For the [Cloudflare API via HTTP](https://developers.cloudflare.com/api/resources/queues/subresources/messages/), the response will include an `errors` object which has both a `message` and `code` field:
 
-```
-{  "errors": [    {      "code": 7003,      "message": "No route for the URI",      "documentation_url": "documentation_url",      "source": {        "pointer": "pointer"      }    }  ],  "messages": [    "string"  ],  "success": true}
+```json
+{
+  "errors": [
+    {
+      "code": 7003,
+      "message": "No route for the URI",
+      "documentation_url": "documentation_url",
+      "source": {
+        "pointer": "pointer"
+      }
+    }
+  ],
+  "messages": [
+    "string"
+  ],
+  "success": true
+}
 ```
 
 ## Error code reference

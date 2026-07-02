@@ -30,14 +30,20 @@ A component which shows a participant's name.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-name-tag></rtk-name-tag>
+```html
+<!-- component.html -->
+<rtk-name-tag></rtk-name-tag>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-name-tag [isScreenShare]="true" [meeting]="meeting" [participant]="participant"></rtk-name-tag>
+```html
+<!-- component.html -->
+<rtk-name-tag
+ [isScreenShare]="true"
+ [meeting]="meeting"
+ [participant]="participant">
+</rtk-name-tag>
 ```
 
 ```json

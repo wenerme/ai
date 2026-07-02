@@ -18,7 +18,7 @@ The entire cookie as a string.
 
 Example value:
 
-```
+```txt
 "session=8521F670545D7865F79C3D7BEDC29CCE;-background=light"
 ```
 

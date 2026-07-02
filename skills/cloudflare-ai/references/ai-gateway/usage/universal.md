@@ -18,7 +18,7 @@ The Universal Endpoint is deprecated. Use the [OpenAI-compatible endpoint](https
 
 The Universal Endpoint allows you to contact every provider through a single endpoint.
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}
 ```
 
@@ -31,10 +31,51 @@ The payload expects an array of messages. Each message is an object with the fol
 
 ## cURL example
 
-Request
+**Request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \  --header 'Content-Type: application/json' \  --data '[  {    "provider": "workers-ai",    "endpoint": "@cf/meta/llama-3.1-8b-instruct",    "headers": {      "Authorization": "Bearer {cloudflare_token}",      "Content-Type": "application/json"    },    "query": {      "messages": [        {          "role": "system",          "content": "You are a friendly assistant"        },        {          "role": "user",          "content": "What is Cloudflare?"        }      ]    }  },  {    "provider": "openai",    "endpoint": "chat/completions",    "headers": {      "Authorization": "Bearer {open_ai_token}",      "Content-Type": "application/json"    },    "query": {      "model": "gpt-4o-mini",      "stream": true,      "messages": [        {          "role": "user",          "content": "What is Cloudflare?"        }      ]    }  }]'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
+  --header 'Content-Type: application/json' \
+  --data '[
+  {
+    "provider": "workers-ai",
+    "endpoint": "@cf/meta/llama-3.1-8b-instruct",
+    "headers": {
+      "Authorization": "Bearer {cloudflare_token}",
+      "Content-Type": "application/json"
+    },
+    "query": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a friendly assistant"
+        },
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ]
+    }
+  },
+  {
+    "provider": "openai",
+    "endpoint": "chat/completions",
+    "headers": {
+      "Authorization": "Bearer {open_ai_token}",
+      "Content-Type": "application/json"
+    },
+    "query": {
+      "model": "gpt-4o-mini",
+      "stream": true,
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ]
+    }
+  }
+]'
 ```
 
 The above will send a request to Workers AI Inference API. If it fails, it will proceed to OpenAI. You can add as many fallbacks as you need by adding another object in the array.
@@ -62,10 +103,60 @@ Configure the timeout by setting a `requestTimeout` property (in milliseconds) w
 
 The timeout is based on when the first part of the response comes back. As long as the first part of the response returns within the specified timeframe — such as when streaming a response — your gateway will wait for the response.
 
-Request timeout example
+**Request timeout example**
 
-```
-curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \  --header 'Content-Type: application/json' \  --data '[    {        "provider": "workers-ai",        "endpoint": "@cf/meta/llama-3.1-8b-instruct",        "headers": {            "Authorization": "Bearer {cloudflare_token}",            "Content-Type": "application/json"        },        "config": {            "requestTimeout": 1000        },        "query": {34 collapsed lines            "messages": [                {                    "role": "system",                    "content": "You are a friendly assistant"                },                {                    "role": "user",                    "content": "What is Cloudflare?"                }            ]        }    },    {        "provider": "workers-ai",        "endpoint": "@cf/meta/llama-3.1-8b-instruct-fast",        "headers": {            "Authorization": "Bearer {cloudflare_token}",            "Content-Type": "application/json"        },        "query": {            "messages": [                {                    "role": "system",                    "content": "You are a friendly assistant"                },                {                    "role": "user",                    "content": "What is Cloudflare?"                }            ]        },        "config": {            "requestTimeout": 3000        },    }]'
+```bash
+curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
+  --header 'Content-Type: application/json' \
+  --data '[
+    {
+        "provider": "workers-ai",
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct",
+        "headers": {
+            "Authorization": "Bearer {cloudflare_token}",
+            "Content-Type": "application/json"
+        },
+        "config": {
+            "requestTimeout": 1000
+        },
+        "query": {
+34 collapsed lines
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are a friendly assistant"
+                },
+                {
+                    "role": "user",
+                    "content": "What is Cloudflare?"
+                }
+            ]
+        }
+    },
+    {
+        "provider": "workers-ai",
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct-fast",
+        "headers": {
+            "Authorization": "Bearer {cloudflare_token}",
+            "Content-Type": "application/json"
+        },
+        "query": {
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are a friendly assistant"
+                },
+                {
+                    "role": "user",
+                    "content": "What is Cloudflare?"
+                }
+            ]
+        },
+        "config": {
+            "requestTimeout": 3000
+        },
+    }
+]'
 ```
 
 ## Request retries
@@ -74,10 +165,14 @@ The Universal Endpoint supports automatic retries for failed requests, with a ma
 
 Configure the retry settings with the following properties in the provider-specific `config`:
 
-TypeScript
+**TypeScript**
 
-```
-config:{  maxAttempts?: number;  retryDelay?: number;  backoff?: "constant" | "linear" | "exponential";}
+```ts
+config:{
+  maxAttempts?: number;
+  retryDelay?: number;
+  backoff?: "constant" | "linear" | "exponential";
+}
 ```
 
 * `maxAttempts`: Maximum number of retry attempts (up to 5).
@@ -86,10 +181,64 @@ config:{  maxAttempts?: number;  retryDelay?: number;  backoff?: "constant" | "l
 
 On the final retry attempt, your gateway will wait until the request completes, regardless of how long it takes. Each provider can have different retry settings.
 
-Request retry example
+**Request retry example**
 
-```
-curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \  --header 'Content-Type: application/json' \  --data '[    {        "provider": "workers-ai",        "endpoint": "@cf/meta/llama-3.1-8b-instruct",        "headers": {            "Authorization": "Bearer {cloudflare_token}",            "Content-Type": "application/json"        },        "config": {            "maxAttempts": 2,            "retryDelay": 1000,            "backoff": "constant"        },39 collapsed lines        "query": {            "messages": [                {                    "role": "system",                    "content": "You are a friendly assistant"                },                {                    "role": "user",                    "content": "What is Cloudflare?"                }            ]        }    },    {        "provider": "workers-ai",        "endpoint": "@cf/meta/llama-3.1-8b-instruct-fast",        "headers": {            "Authorization": "Bearer {cloudflare_token}",            "Content-Type": "application/json"        },        "query": {            "messages": [                {                    "role": "system",                    "content": "You are a friendly assistant"                },                {                    "role": "user",                    "content": "What is Cloudflare?"                }            ]        },        "config": {            "maxAttempts": 4,            "retryDelay": 1000,            "backoff": "exponential"        },    }]'
+```bash
+curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
+  --header 'Content-Type: application/json' \
+  --data '[
+    {
+        "provider": "workers-ai",
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct",
+        "headers": {
+            "Authorization": "Bearer {cloudflare_token}",
+            "Content-Type": "application/json"
+        },
+        "config": {
+            "maxAttempts": 2,
+            "retryDelay": 1000,
+            "backoff": "constant"
+        },
+39 collapsed lines
+        "query": {
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are a friendly assistant"
+                },
+                {
+                    "role": "user",
+                    "content": "What is Cloudflare?"
+                }
+            ]
+        }
+    },
+    {
+        "provider": "workers-ai",
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct-fast",
+        "headers": {
+            "Authorization": "Bearer {cloudflare_token}",
+            "Content-Type": "application/json"
+        },
+        "query": {
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are a friendly assistant"
+                },
+                {
+                    "role": "user",
+                    "content": "What is Cloudflare?"
+                }
+            ]
+        },
+        "config": {
+            "maxAttempts": 4,
+            "retryDelay": 1000,
+            "backoff": "exponential"
+        },
+    }
+]'
 ```
 
 ## WebSockets API beta
@@ -98,36 +247,88 @@ The Universal Endpoint can also be accessed via a [WebSockets API](https://devel
 
 ### WebSockets example
 
-JavaScript
+**JavaScript**
 
-```
-import WebSocket from "ws";const ws = new WebSocket(  "wss://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/",  {    headers: {      "cf-aig-authorization": "Bearer AI_GATEWAY_TOKEN",    },  },);
-ws.send(  JSON.stringify({    type: "universal.create",    request: {      eventId: "my-request",      provider: "workers-ai",      endpoint: "@cf/meta/llama-3.1-8b-instruct",      headers: {        Authorization: "Bearer WORKERS_AI_TOKEN",        "Content-Type": "application/json",      },      query: {        prompt: "tell me a joke",      },    },  }),);
-ws.on("message", function incoming(message) {  console.log(message.toString());});
+```javascript
+import WebSocket from "ws";
+const ws = new WebSocket(
+  "wss://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/",
+  {
+    headers: {
+      "cf-aig-authorization": "Bearer AI_GATEWAY_TOKEN",
+    },
+  },
+);
+
+
+ws.send(
+  JSON.stringify({
+    type: "universal.create",
+    request: {
+      eventId: "my-request",
+      provider: "workers-ai",
+      endpoint: "@cf/meta/llama-3.1-8b-instruct",
+      headers: {
+        Authorization: "Bearer WORKERS_AI_TOKEN",
+        "Content-Type": "application/json",
+      },
+      query: {
+        prompt: "tell me a joke",
+      },
+    },
+  }),
+);
+
+
+ws.on("message", function incoming(message) {
+  console.log(message.toString());
+});
 ```
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-6664)
-* [  wrangler.toml ](#tab-panel-6665)
+* [  wrangler.jsonc ](#tab-panel-6904)
+* [  wrangler.toml ](#tab-panel-6905)
 
-JSONC
+**JSONC**
 
-```
-{  "ai": {    "binding": "AI",  },}
-```
-
-TOML
-
-```
-[ai]binding = "AI"
+```jsonc
+{
+  "ai": {
+    "binding": "AI",
+  },
+}
 ```
 
-src/index.ts
+**TOML**
 
+```toml
+[ai]
+binding = "AI"
 ```
-type Env = {  AI: Ai;};
-export default {  async fetch(request: Request, env: Env) {    return env.AI.gateway("my-gateway").run({      provider: "workers-ai",      endpoint: "@cf/meta/llama-3.1-8b-instruct",      headers: {        authorization: "Bearer my-api-token",      },      query: {        prompt: "tell me a joke",      },    });  },};
+
+**src/index.ts**
+
+```typescript
+type Env = {
+  AI: Ai;
+};
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return env.AI.gateway("my-gateway").run({
+      provider: "workers-ai",
+      endpoint: "@cf/meta/llama-3.1-8b-instruct",
+      headers: {
+        authorization: "Bearer my-api-token",
+      },
+      query: {
+        prompt: "tell me a joke",
+      },
+    });
+  },
+};
 ```
 
 ## Header configuration hierarchy
@@ -155,10 +356,51 @@ This example demonstrates how headers set at different levels impact caching beh
 
 This shows how provider-level headers take precedence over request-level headers, allowing for granular control of caching behavior.
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \  --header 'Content-Type: application/json' \  --header 'cf-aig-cache-ttl: 3600' \  --data '[    {      "provider": "workers-ai",      "endpoint": "@cf/meta/llama-3.1-8b-instruct",      "headers": {        "Authorization": "Bearer {cloudflare_token}",        "Content-Type": "application/json"      },      "query": {        "messages": [          {            "role": "system",            "content": "You are a friendly assistant"          },          {            "role": "user",            "content": "What is Cloudflare?"          }        ]      }    },    {      "provider": "openai",      "endpoint": "chat/completions",      "headers": {        "Authorization": "Bearer {open_ai_token}",        "Content-Type": "application/json",        "cf-aig-cache-ttl": "0"      },      "query": {        "model": "gpt-4o-mini",        "stream": true,        "messages": [          {            "role": "user",            "content": "What is Cloudflare?"          }        ]      }    }  ]'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
+  --header 'Content-Type: application/json' \
+  --header 'cf-aig-cache-ttl: 3600' \
+  --data '[
+    {
+      "provider": "workers-ai",
+      "endpoint": "@cf/meta/llama-3.1-8b-instruct",
+      "headers": {
+        "Authorization": "Bearer {cloudflare_token}",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a friendly assistant"
+          },
+          {
+            "role": "user",
+            "content": "What is Cloudflare?"
+          }
+        ]
+      }
+    },
+    {
+      "provider": "openai",
+      "endpoint": "chat/completions",
+      "headers": {
+        "Authorization": "Bearer {open_ai_token}",
+        "Content-Type": "application/json",
+        "cf-aig-cache-ttl": "0"
+      },
+      "query": {
+        "model": "gpt-4o-mini",
+        "stream": true,
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is Cloudflare?"
+          }
+        ]
+      }
+    }
+  ]'
 ```
 
 ```json

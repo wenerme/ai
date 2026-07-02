@@ -18,8 +18,8 @@ The following sections describe how to configure Cloudflare for SaaS with Region
 
 To configure Regional Services for both hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and the fallback origin, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-8119)
-* [ API ](#tab-panel-8120)
+* [ Dashboard ](#tab-panel-8400)
+* [ API ](#tab-panel-8401)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -27,7 +27,7 @@ To configure Regional Services for both hostnames [proxied](https://developers.c
 
 1. Set the [fallback record](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/subresources/fallback%5Forigin/methods/update/).
 2. Create a [Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/).
-3. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/get-started/#configure-regional-services-via-api) command on the Custom Hostname to create a `regional_hostnames` with a specific region.
+3. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the Custom Hostname to create a `regional_hostnames` with a specific region.
 
 The Regional Services functionality can be extended to Custom Hostnames and this is dependent on the target of the alias.
 
@@ -52,9 +52,9 @@ Below you can find a breakdown of the different ways that you might configure Cl
 | 3    | regionalservices-custom.example.com    | fallback.saasprovider.com | us.saasprovider.com (custom) | LHR      |
 | 4    | regionalservices-custom2.example.com   | us.saasprovider.com       | us.saasprovider.com (custom) | EWR      |
 
-* In order to set a processing region for the fallback record to any of the available regions for Regional Services, create a new regional hostname entry for the fallback via a [POST](https://developers.cloudflare.com/data-localization/regional-services/get-started/#configure-regional-services-via-api) request.
-* To update the existing region (for example, from `EU` to `US`), make a [PATCH](https://developers.cloudflare.com/data-localization/regional-services/get-started/#configure-regional-services-via-api) request for the fallback to update the processing region accordingly.
-* To remove the regional services processing region and set it back to `Earth`, make a [DELETE](https://developers.cloudflare.com/data-localization/regional-services/get-started/#configure-regional-services-via-api) request to delete the region configuration.
+* In order to set a processing region for the fallback record to any of the available regions for Regional Services, create a new regional hostname entry for the fallback via a [POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) request.
+* To update the existing region (for example, from `EU` to `US`), make a [PATCH](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) request for the fallback to update the processing region accordingly.
+* To remove the regional services processing region and set it back to `Earth`, make a [DELETE](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) request to delete the region configuration.
 
 ## Customer Metadata Boundary
 
@@ -63,6 +63,6 @@ Cloudflare for SaaS [Analytics](https://developers.cloudflare.com/cloudflare-for
 Refer to [Cloudflare for SaaS documentation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/#page","headline":"Cloudflare for SaaS · Cloudflare Data Localization Suite docs","description":"Configure Cloudflare for SaaS with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/#page","headline":"Cloudflare for SaaS · Cloudflare Data Localization Suite docs","description":"Configure Cloudflare for SaaS with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/how-to/","name":"Configuration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/how-to/cloudflare-for-saas/","name":"Cloudflare for SaaS"}}]}
 ```

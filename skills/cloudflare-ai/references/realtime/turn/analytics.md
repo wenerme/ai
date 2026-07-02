@@ -77,91 +77,431 @@ Below are some example queries for common usecases. You can modify them to adapt
 
 This comprehensive query shows how to retrieve multiple metrics simultaneously, including concurrent connections, egress, and ingress bytes in 5-minute intervals. This is useful for building dashboards and monitoring real-time usage.
 
-```
-query concurrentConnections {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        limit: 10000        filter: { date_geq: $dateFrom, date_leq: $dateTo }      ) {        dimensions {          datetimeFiveMinutes        }        avg {          concurrentConnectionsFiveMinutes        }        sum {          egressBytes          ingressBytes        }      }    }  }}
+```graphql
+query concurrentConnections {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        limit: 10000
+        filter: { date_geq: $dateFrom, date_leq: $dateTo }
+      ) {
+        dimensions {
+          datetimeFiveMinutes
+        }
+        avg {
+          concurrentConnectionsFiveMinutes
+        }
+        sum {
+          egressBytes
+          ingressBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "avg": {                "concurrentConnectionsFiveMinutes": 816              },              "dimensions": {                "datetimeFiveMinutes": "2025-12-02T03:45:00Z"              },              "sum": {                "egressBytes": 207314144,                "ingressBytes": 8534200              }            },            {              "avg": {                "concurrentConnectionsFiveMinutes": 1945              },              "dimensions": {                "datetimeFiveMinutes": "2025-12-02T16:00:00Z"              },              "sum": {                "egressBytes": 462909020,                "ingressBytes": 128434592              }            },
-          ]        }      ]    }  ]}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 816
+              },
+              "dimensions": {
+                "datetimeFiveMinutes": "2025-12-02T03:45:00Z"
+              },
+              "sum": {
+                "egressBytes": 207314144,
+                "ingressBytes": 8534200
+              }
+            },
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 1945
+              },
+              "dimensions": {
+                "datetimeFiveMinutes": "2025-12-02T16:00:00Z"
+              },
+              "sum": {
+                "egressBytes": 462909020,
+                "ingressBytes": 128434592
+              }
+            },
+
+
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 
 ### Top TURN keys by egress
 
-```
-query egressByTurnKey{  viewer {    usage: accounts(filter: { accountTag: $accountId }) {        callsTurnUsageAdaptiveGroups(          filter: {          date_geq: $dateFrom,          date_leq: $dateTo        }          limit: 2          orderBy: [sum_egressBytes_DESC]        ) {          dimensions {            keyId          }          sum {            egressBytes          }        }      }    },    "errors": null  }
+```plaintext
+query egressByTurnKey{
+  viewer {
+    usage: accounts(filter: { accountTag: $accountId }) {
+        callsTurnUsageAdaptiveGroups(
+          filter: {
+          date_geq: $dateFrom,
+          date_leq: $dateTo
+        }
+          limit: 2
+          orderBy: [sum_egressBytes_DESC]
+        ) {
+          dimensions {
+            keyId
+          }
+          sum {
+            egressBytes
+          }
+        }
+      }
+    },
+    "errors": null
+  }
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "usage": [        {          "callsTurnUsageAdaptiveGroups": [            {              "dimensions": {                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"              },              "sum": {                "egressBytes": 160040068147              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "usage": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "dimensions": {
+                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+              },
+              "sum": {
+                "egressBytes": 160040068147
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Top TURN custom identifiers
 
-```
-query topTurnCustomIdentifiers {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        filter: { date_geq: $dateFrom, date_leq: $dateTo }        limit: 1        orderBy: [sum_egressBytes_DESC]      ) {        dimensions {          customIdentifier        }        sum {          egressBytes        }      }    }  }}
+```graphql
+query topTurnCustomIdentifiers {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        filter: { date_geq: $dateFrom, date_leq: $dateTo }
+        limit: 1
+        orderBy: [sum_egressBytes_DESC]
+      ) {
+        dimensions {
+          customIdentifier
+        }
+        sum {
+          egressBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "dimensions": {                "customIdentifier": "some identifier"              },              "sum": {                "egressBytes": 160040068147              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "dimensions": {
+                "customIdentifier": "some identifier"
+              },
+              "sum": {
+                "egressBytes": 160040068147
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Usage for a specific custom identifier
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        filter: {          date_geq: $dateFrom          date_leq: $dateTo          customIdentifier: "tango"        }        limit: 100        orderBy: []      ) {        dimensions {          keyId          customIdentifier        }        sum {          egressBytes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        filter: {
+          date_geq: $dateFrom
+          date_leq: $dateTo
+          customIdentifier: "tango"
+        }
+        limit: 100
+        orderBy: []
+      ) {
+        dimensions {
+          keyId
+          customIdentifier
+        }
+        sum {
+          egressBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "usage": [        {          "callsTurnUsageAdaptiveGroups": [            {              "dimensions": {                "customIdentifier": "tango",                "keyId": "74007022d80d7ebac4815fb776b9d3ed"              },              "sum": {                "egressBytes": 162641324              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "usage": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "dimensions": {
+                "customIdentifier": "tango",
+                "keyId": "74007022d80d7ebac4815fb776b9d3ed"
+              },
+              "sum": {
+                "egressBytes": 162641324
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Usage as a timeseries (for graphs)
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        filter: { date_geq: $dateFrom, date_leq: $dateTo }        limit: 100        orderBy: [datetimeMinute_ASC]      ) {        dimensions {          datetimeMinute        }        sum {          egressBytes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        filter: { date_geq: $dateFrom, date_leq: $dateTo }
+        limit: 100
+        orderBy: [datetimeMinute_ASC]
+      ) {
+        dimensions {
+          datetimeMinute
+        }
+        sum {
+          egressBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "dimensions": {                "datetimeMinute": "2025-12-01T00:00:00Z"              },              "sum": {                "egressBytes": 159512              }            },            {              "dimensions": {                "datetimeMinute": "2025-12-01T00:01:00Z"              },              "sum": {                "egressBytes": 133818              }            },            ... (more data here)           ]        }      ]    }  },  "errors": null}
+```plaintext
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "dimensions": {
+                "datetimeMinute": "2025-12-01T00:00:00Z"
+              },
+              "sum": {
+                "egressBytes": 159512
+              }
+            },
+            {
+              "dimensions": {
+                "datetimeMinute": "2025-12-01T00:01:00Z"
+              },
+              "sum": {
+                "egressBytes": 133818
+              }
+            },
+            ... (more data here)
+           ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Usage breakdown by geographic location
 
 You can break down usage data by Cloudflare data center location to understand where your TURN traffic is being served. This is useful for optimizing regional capacity and understanding geographic distribution of your users.
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        limit: 100        filter: { date_geq: $dateFrom, date_leq: $dateTo }        orderBy: [sum_egressBytes_DESC]      ) {        dimensions {          datacenterCity          datacenterCode          datacenterRegion          datacenterCountry        }        sum {          egressBytes          ingressBytes        }        avg {          concurrentConnectionsFiveMinutes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        limit: 100
+        filter: { date_geq: $dateFrom, date_leq: $dateTo }
+        orderBy: [sum_egressBytes_DESC]
+      ) {
+        dimensions {
+          datacenterCity
+          datacenterCode
+          datacenterRegion
+          datacenterCountry
+        }
+        sum {
+          egressBytes
+          ingressBytes
+        }
+        avg {
+          concurrentConnectionsFiveMinutes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "avg": {                "concurrentConnectionsFiveMinutes": 3135              },              "dimensions": {                "datacenterCity": "Columbus",                "datacenterCode": "CMH",                "datacenterCountry": "US",                "datacenterRegion": "ENAM"              },              "sum": {                "egressBytes": 47720931316,                "ingressBytes": 19351966366              }            },            ...          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 3135
+              },
+              "dimensions": {
+                "datacenterCity": "Columbus",
+                "datacenterCode": "CMH",
+                "datacenterCountry": "US",
+                "datacenterRegion": "ENAM"
+              },
+              "sum": {
+                "egressBytes": 47720931316,
+                "ingressBytes": 19351966366
+              }
+            },
+            ...
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Filter by specific key or identifier
 
 You can filter data to analyze a specific TURN key or custom identifier. This is useful for debugging specific connections or analyzing usage patterns for particular clients.
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        limit: 1000        filter: {          keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"          date_geq: $dateFrom          date_leq: $dateTo        }        orderBy: [datetimeFiveMinutes_ASC]      ) {        dimensions {          datetimeFiveMinutes          keyId        }        sum {          egressBytes          ingressBytes        }        avg {          concurrentConnectionsFiveMinutes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        limit: 1000
+        filter: {
+          keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+          date_geq: $dateFrom
+          date_leq: $dateTo
+        }
+        orderBy: [datetimeFiveMinutes_ASC]
+      ) {
+        dimensions {
+          datetimeFiveMinutes
+          keyId
+        }
+        sum {
+          egressBytes
+          ingressBytes
+        }
+        avg {
+          concurrentConnectionsFiveMinutes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "avg": {                "concurrentConnectionsFiveMinutes": 130              },              "dimensions": {                "datetimeFiveMinutes": "2025-12-01T00:00:00Z",                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"              },              "sum": {                "egressBytes": 609156,                "ingressBytes": 464326              }            },            {              "avg": {                "concurrentConnectionsFiveMinutes": 118              },              "dimensions": {                "datetimeFiveMinutes": "2025-12-01T00:05:00Z",                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"              },              "sum": {                "egressBytes": 534948,                "ingressBytes": 401286              }            },            ...          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 130
+              },
+              "dimensions": {
+                "datetimeFiveMinutes": "2025-12-01T00:00:00Z",
+                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+              },
+              "sum": {
+                "egressBytes": 609156,
+                "ingressBytes": 464326
+              }
+            },
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 118
+              },
+              "dimensions": {
+                "datetimeFiveMinutes": "2025-12-01T00:05:00Z",
+                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+              },
+              "sum": {
+                "egressBytes": 534948,
+                "ingressBytes": 401286
+              }
+            },
+            ...
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Time aggregation options
@@ -175,14 +515,79 @@ You can choose different time aggregation intervals depending on your analysis n
 
 Example query with hourly aggregation:
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        limit: 1000        filter: {          keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"          date_geq: $dateFrom          date_leq: $dateTo        }        orderBy: [datetimeFiveMinutes_ASC]      ) {        dimensions {          datetimeFiveMinutes          keyId        }        sum {          egressBytes          ingressBytes        }        avg {          concurrentConnectionsFiveMinutes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        limit: 1000
+        filter: {
+          keyId: "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+          date_geq: $dateFrom
+          date_leq: $dateTo
+        }
+        orderBy: [datetimeFiveMinutes_ASC]
+      ) {
+        dimensions {
+          datetimeFiveMinutes
+          keyId
+        }
+        sum {
+          egressBytes
+          ingressBytes
+        }
+        avg {
+          concurrentConnectionsFiveMinutes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "avg": {                "concurrentConnectionsFiveMinutes": 130              },              "dimensions": {                "datetimeFiveMinutes": "2025-12-01T00:00:00Z",                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"              },              "sum": {                "egressBytes": 609156,                "ingressBytes": 464326              }            },            {              "avg": {                "concurrentConnectionsFiveMinutes": 118              },              "dimensions": {                "datetimeFiveMinutes": "2025-12-01T00:05:00Z",                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"              },              "sum": {                "egressBytes": 534948,                "ingressBytes": 401286              }            },            ...          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 130
+              },
+              "dimensions": {
+                "datetimeFiveMinutes": "2025-12-01T00:00:00Z",
+                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+              },
+              "sum": {
+                "egressBytes": 609156,
+                "ingressBytes": 464326
+              }
+            },
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 118
+              },
+              "dimensions": {
+                "datetimeFiveMinutes": "2025-12-01T00:05:00Z",
+                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+              },
+              "sum": {
+                "egressBytes": 534948,
+                "ingressBytes": 401286
+              }
+            },
+            ...
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ## Advanced use cases
@@ -191,28 +596,130 @@ Example response:
 
 You can combine multiple dimensions in a single query to get more detailed breakdowns. For example, to see usage by both time and location:
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        limit: 10000        filter: { date_geq: $dateFrom, date_leq: $dateTo }        orderBy: [datetimeHour_ASC, sum_egressBytes_DESC]      ) {        dimensions {          datetimeHour          datacenterCity          datacenterCountry        }        sum {          egressBytes          ingressBytes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        limit: 10000
+        filter: { date_geq: $dateFrom, date_leq: $dateTo }
+        orderBy: [datetimeHour_ASC, sum_egressBytes_DESC]
+      ) {
+        dimensions {
+          datetimeHour
+          datacenterCity
+          datacenterCountry
+        }
+        sum {
+          egressBytes
+          ingressBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "dimensions": {                "datacenterCity": "Chennai",                "datacenterCountry": "IN",                "datetimeHour": "2025-12-01T00:00:00Z"              },              "sum": {                "egressBytes": 3416216,                "ingressBytes": 498927214              }            },            {              "dimensions": {                "datacenterCity": "Mumbai",                "datacenterCountry": "IN",                "datetimeHour": "2025-12-01T00:00:00Z"              },              "sum": {                "egressBytes": 1267076,                "ingressBytes": 1140140              }            },            ...          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "dimensions": {
+                "datacenterCity": "Chennai",
+                "datacenterCountry": "IN",
+                "datetimeHour": "2025-12-01T00:00:00Z"
+              },
+              "sum": {
+                "egressBytes": 3416216,
+                "ingressBytes": 498927214
+              }
+            },
+            {
+              "dimensions": {
+                "datacenterCity": "Mumbai",
+                "datacenterCountry": "IN",
+                "datetimeHour": "2025-12-01T00:00:00Z"
+              },
+              "sum": {
+                "egressBytes": 1267076,
+                "ingressBytes": 1140140
+              }
+            },
+            ...
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ### Identifying top consumers
 
 To find which keys or custom identifiers are using the most bandwidth:
 
-```
-query {  viewer {    accounts(filter: { accountTag: $accountId }) {      callsTurnUsageAdaptiveGroups(        limit: 10        filter: { date_geq: $dateFrom, date_leq: $dateTo }        orderBy: [sum_egressBytes_DESC, sum_ingressBytes_DESC]      ) {        dimensions {          keyId          customIdentifier        }        sum {          egressBytes          ingressBytes        }        avg {          concurrentConnectionsFiveMinutes        }      }    }  }}
+```graphql
+query {
+  viewer {
+    accounts(filter: { accountTag: $accountId }) {
+      callsTurnUsageAdaptiveGroups(
+        limit: 10
+        filter: { date_geq: $dateFrom, date_leq: $dateTo }
+        orderBy: [sum_egressBytes_DESC, sum_ingressBytes_DESC]
+      ) {
+        dimensions {
+          keyId
+          customIdentifier
+        }
+        sum {
+          egressBytes
+          ingressBytes
+        }
+        avg {
+          concurrentConnectionsFiveMinutes
+        }
+      }
+    }
+  }
+}
 ```
 
 Example response:
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "callsTurnUsageAdaptiveGroups": [            {              "avg": {                "concurrentConnectionsFiveMinutes": 837305              },              "dimensions": {                "customIdentifier": "",                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"              },              "sum": {                "egressBytes": 160040068147,                "ingressBytes": 154955460564              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "callsTurnUsageAdaptiveGroups": [
+            {
+              "avg": {
+                "concurrentConnectionsFiveMinutes": 837305
+              },
+              "dimensions": {
+                "customIdentifier": "",
+                "keyId": "82a58d0aeabfa8f4a4e0c4a9efc9cda5"
+              },
+              "sum": {
+                "egressBytes": 160040068147,
+                "ingressBytes": 154955460564
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ## Schema exploration

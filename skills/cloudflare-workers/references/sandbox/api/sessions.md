@@ -24,9 +24,9 @@ By default, for backwards compatibility, every sandbox has a default session tha
 
 Create a new shell session.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const session = await sandbox.createSession(options?: SessionOptions): Promise<ExecutionSession>
 ```
 
@@ -40,38 +40,100 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-10307)
-* [  TypeScript ](#tab-panel-10308)
+* [  JavaScript ](#tab-panel-10602)
+* [  TypeScript ](#tab-panel-10603)
 
-JavaScript
+**JavaScript**
 
-```
-// Separate workflow environmentsconst prodSession = await sandbox.createSession({  id: "prod",  env: { NODE_ENV: "production", API_URL: "https://api.example.com" },  cwd: "/workspace/prod",});
-const testSession = await sandbox.createSession({  id: "test",  env: {    NODE_ENV: "test",    API_URL: "http://localhost:3000",    DEBUG_MODE: undefined, // Skipped, not set in this session  },  cwd: "/workspace/test",});
-// Run in parallelconst [prodResult, testResult] = await Promise.all([  prodSession.exec("npm run build"),  testSession.exec("npm run build"),]);
-// Session with a default command timeoutconst session = await sandbox.createSession({  commandTimeoutMs: 5000, // 5s timeout for all commands});
+```js
+// Separate workflow environments
+const prodSession = await sandbox.createSession({
+  id: "prod",
+  env: { NODE_ENV: "production", API_URL: "https://api.example.com" },
+  cwd: "/workspace/prod",
+});
+
+
+const testSession = await sandbox.createSession({
+  id: "test",
+  env: {
+    NODE_ENV: "test",
+    API_URL: "http://localhost:3000",
+    DEBUG_MODE: undefined, // Skipped, not set in this session
+  },
+  cwd: "/workspace/test",
+});
+
+
+// Run in parallel
+const [prodResult, testResult] = await Promise.all([
+  prodSession.exec("npm run build"),
+  testSession.exec("npm run build"),
+]);
+
+
+// Session with a default command timeout
+const session = await sandbox.createSession({
+  commandTimeoutMs: 5000, // 5s timeout for all commands
+});
+
+
 await session.exec("sleep 10"); // Times out after 5s
-// Per-command timeout overrides session-level timeoutawait session.exec("sleep 10", { timeout: 3000 }); // Times out after 3s
+
+
+// Per-command timeout overrides session-level timeout
+await session.exec("sleep 10", { timeout: 3000 }); // Times out after 3s
 ```
 
-TypeScript
+**TypeScript**
 
-```
-// Separate workflow environmentsconst prodSession = await sandbox.createSession({  id: 'prod',  env: { NODE_ENV: 'production', API_URL: 'https://api.example.com' },  cwd: '/workspace/prod'});
-const testSession = await sandbox.createSession({  id: 'test',  env: {    NODE_ENV: 'test',    API_URL: 'http://localhost:3000',    DEBUG_MODE: undefined // Skipped, not set in this session  },  cwd: '/workspace/test'});
-// Run in parallelconst [prodResult, testResult] = await Promise.all([  prodSession.exec('npm run build'),  testSession.exec('npm run build')]);
-// Session with a default command timeoutconst session = await sandbox.createSession({  commandTimeoutMs: 5000 // 5s timeout for all commands});
+```ts
+// Separate workflow environments
+const prodSession = await sandbox.createSession({
+  id: 'prod',
+  env: { NODE_ENV: 'production', API_URL: 'https://api.example.com' },
+  cwd: '/workspace/prod'
+});
+
+
+const testSession = await sandbox.createSession({
+  id: 'test',
+  env: {
+    NODE_ENV: 'test',
+    API_URL: 'http://localhost:3000',
+    DEBUG_MODE: undefined // Skipped, not set in this session
+  },
+  cwd: '/workspace/test'
+});
+
+
+// Run in parallel
+const [prodResult, testResult] = await Promise.all([
+  prodSession.exec('npm run build'),
+  testSession.exec('npm run build')
+]);
+
+
+// Session with a default command timeout
+const session = await sandbox.createSession({
+  commandTimeoutMs: 5000 // 5s timeout for all commands
+});
+
+
 await session.exec('sleep 10'); // Times out after 5s
-// Per-command timeout overrides session-level timeoutawait session.exec('sleep 10', { timeout: 3000 }); // Times out after 3s
+
+
+// Per-command timeout overrides session-level timeout
+await session.exec('sleep 10', { timeout: 3000 }); // Times out after 3s
 ```
 
 ### `getSession()`
 
 Retrieve an existing session by ID.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSession>
 ```
 
@@ -81,21 +143,35 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-10301)
-* [  TypeScript ](#tab-panel-10302)
+* [  JavaScript ](#tab-panel-10596)
+* [  TypeScript ](#tab-panel-10597)
 
-JavaScript
+**JavaScript**
 
+```js
+// First request - create a task-specific session
+const session = await sandbox.createSession({ id: "build" });
+await session.exec("git clone https://github.com/user/repo.git");
+await session.exec("cd repo && npm install");
+
+
+// Second request - resume session (environment and cwd preserved)
+const session = await sandbox.getSession("build");
+const result = await session.exec("cd repo && npm run build");
 ```
-// First request - create a task-specific sessionconst session = await sandbox.createSession({ id: "build" });await session.exec("git clone https://github.com/user/repo.git");await session.exec("cd repo && npm install");
-// Second request - resume session (environment and cwd preserved)const session = await sandbox.getSession("build");const result = await session.exec("cd repo && npm run build");
-```
 
-TypeScript
+**TypeScript**
 
-```
-// First request - create a task-specific sessionconst session = await sandbox.createSession({ id: 'build' });await session.exec('git clone https://github.com/user/repo.git');await session.exec('cd repo && npm install');
-// Second request - resume session (environment and cwd preserved)const session = await sandbox.getSession('build');const result = await session.exec('cd repo && npm run build');
+```ts
+// First request - create a task-specific session
+const session = await sandbox.createSession({ id: 'build' });
+await session.exec('git clone https://github.com/user/repo.git');
+await session.exec('cd repo && npm install');
+
+
+// Second request - resume session (environment and cwd preserved)
+const session = await sandbox.getSession('build');
+const result = await session.exec('cd repo && npm run build');
 ```
 
 ---
@@ -104,9 +180,9 @@ TypeScript
 
 Delete a session and clean up its resources.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDeleteResult>
 ```
 
@@ -120,21 +196,37 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-10303)
-* [  TypeScript ](#tab-panel-10304)
+* [  JavaScript ](#tab-panel-10598)
+* [  TypeScript ](#tab-panel-10599)
 
-JavaScript
+**JavaScript**
 
+```js
+// Create a temporary session for a specific task
+const tempSession = await sandbox.createSession({ id: "temp-task" });
+
+
+try {
+  await tempSession.exec("npm run heavy-task");
+} finally {
+  // Clean up the session when done
+  await sandbox.deleteSession("temp-task");
+}
 ```
-// Create a temporary session for a specific taskconst tempSession = await sandbox.createSession({ id: "temp-task" });
-try {  await tempSession.exec("npm run heavy-task");} finally {  // Clean up the session when done  await sandbox.deleteSession("temp-task");}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Create a temporary session for a specific taskconst tempSession = await sandbox.createSession({ id: 'temp-task' });
-try {  await tempSession.exec('npm run heavy-task');} finally {  // Clean up the session when done  await sandbox.deleteSession('temp-task');}
+```ts
+// Create a temporary session for a specific task
+const tempSession = await sandbox.createSession({ id: 'temp-task' });
+
+
+try {
+  await tempSession.exec('npm run heavy-task');
+} finally {
+  // Clean up the session when done
+  await sandbox.deleteSession('temp-task');
+}
 ```
 
 Warning
@@ -147,9 +239,9 @@ Deleting a session immediately terminates all running commands. The default sess
 
 Set environment variables in the sandbox.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.setEnvVars(envVars: Record<string, string | undefined>): Promise<void>
 ```
 
@@ -163,23 +255,45 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-10305)
-* [  TypeScript ](#tab-panel-10306)
+* [  JavaScript ](#tab-panel-10600)
+* [  TypeScript ](#tab-panel-10601)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const sandbox = getSandbox(env.Sandbox, "user-123");
-// Set environment variables firstawait sandbox.setEnvVars({  API_KEY: env.OPENAI_API_KEY,  DATABASE_URL: env.DATABASE_URL,  NODE_ENV: "production",  OLD_TOKEN: undefined, // Unsets OLD_TOKEN if previously set});
-// Now commands can access these variablesawait sandbox.exec("python script.py");
+
+
+// Set environment variables first
+await sandbox.setEnvVars({
+  API_KEY: env.OPENAI_API_KEY,
+  DATABASE_URL: env.DATABASE_URL,
+  NODE_ENV: "production",
+  OLD_TOKEN: undefined, // Unsets OLD_TOKEN if previously set
+});
+
+
+// Now commands can access these variables
+await sandbox.exec("python script.py");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const sandbox = getSandbox(env.Sandbox, 'user-123');
-// Set environment variables firstawait sandbox.setEnvVars({  API_KEY: env.OPENAI_API_KEY,  DATABASE_URL: env.DATABASE_URL,  NODE_ENV: 'production',  OLD_TOKEN: undefined // Unsets OLD_TOKEN if previously set});
-// Now commands can access these variablesawait sandbox.exec('python script.py');
+
+
+// Set environment variables first
+await sandbox.setEnvVars({
+  API_KEY: env.OPENAI_API_KEY,
+  DATABASE_URL: env.DATABASE_URL,
+  NODE_ENV: 'production',
+  OLD_TOKEN: undefined // Unsets OLD_TOKEN if previously set
+});
+
+
+// Now commands can access these variables
+await sandbox.exec('python script.py');
 ```
 
 ---

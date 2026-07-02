@@ -35,20 +35,37 @@ Control bar for group calls that extends `RtkControlBar` with microphone and vid
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let controlBar = RtkMeetingControlBar(    meeting: rtkClient,    delegate: self,    presentingViewController: self)view.addSubview(controlBar)
+
+
+let controlBar = RtkMeetingControlBar(
+    meeting: rtkClient,
+    delegate: self,
+    presentingViewController: self
+)
+view.addSubview(controlBar)
 ```
 
 ### With leave meeting handler
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let controlBar = RtkMeetingControlBar(    meeting: rtkClient,    delegate: self,    presentingViewController: self,    onLeaveMeetingCompletion: {        self.navigationController?.popViewController(animated: true)    })view.addSubview(controlBar)
+
+
+let controlBar = RtkMeetingControlBar(
+    meeting: rtkClient,
+    delegate: self,
+    presentingViewController: self,
+    onLeaveMeetingCompletion: {
+        self.navigationController?.popViewController(animated: true)
+    }
+)
+view.addSubview(controlBar)
 ```
 
 ```json

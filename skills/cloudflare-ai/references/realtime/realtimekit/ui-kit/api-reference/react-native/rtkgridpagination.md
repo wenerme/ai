@@ -27,16 +27,30 @@ Pagination controls for navigating between pages of participants in the grid. Sh
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkGridPagination } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkGridPagination meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkGridPagination meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkGridPagination } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkGridPagination      meeting={meeting}      iconPack={customIconPack}      states={states}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkGridPagination
+      meeting={meeting}
+      iconPack={customIconPack}
+      states={states}
+    />
+  );
+}
 ```
 
 ```json

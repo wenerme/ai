@@ -29,19 +29,25 @@ A component which renders list of messages.
 
 ### Basic Usage
 
-```
+```html
 <rtk-message-list-view></rtk-message-list-view>
 ```
 
 ### With Properties
 
-```
-<rtk-message-list-view></rtk-message-list-view>
+```html
+<rtk-message-list-view>
+</rtk-message-list-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-message-list-view");
-  el.estimateItemSize= 42;  el.messages= [];</script>
+```html
+<script>
+  const el = document.querySelector("rtk-message-list-view");
+
+
+  el.estimateItemSize= 42;
+  el.messages= [];
+</script>
 ```
 
 ```json

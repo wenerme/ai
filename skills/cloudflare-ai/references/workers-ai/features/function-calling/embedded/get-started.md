@@ -44,22 +44,112 @@ bun add @cloudflare/ai-utils
 
 Update the `index.ts` file in your application directory with the following code:
 
-* [  JavaScript ](#tab-panel-11366)
-* [  TypeScript ](#tab-panel-11367)
+* [  JavaScript ](#tab-panel-11661)
+* [  TypeScript ](#tab-panel-11662)
 
-index.js
+**index.js**
 
-```
+```js
 import { runWithTools } from "@cloudflare/ai-utils";
-export default {  async fetch(request, env, ctx) {    // Define function    const sum = (args) => {      const { a, b } = args;      return Promise.resolve((a + b).toString());    };    // Run AI inference with function calling    const response = await runWithTools(      env.AI,      // Model with function calling support      "@hf/nousresearch/hermes-2-pro-mistral-7b",      {        // Messages        messages: [          {            role: "user",            content: "What the result of 123123123 + 10343030?",          },        ],        // Definition of available tools the AI model can leverage        tools: [          {            name: "sum",            description: "Sum up two numbers and returns the result",            parameters: {              type: "object",              properties: {                a: { type: "number", description: "the first number" },                b: { type: "number", description: "the second number" },              },              required: ["a", "b"],            },            // reference to previously defined function            function: sum,          },        ],      },    );    return new Response(JSON.stringify(response));  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // Define function
+    const sum = (args) => {
+      const { a, b } = args;
+      return Promise.resolve((a + b).toString());
+    };
+    // Run AI inference with function calling
+    const response = await runWithTools(
+      env.AI,
+      // Model with function calling support
+      "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      {
+        // Messages
+        messages: [
+          {
+            role: "user",
+            content: "What the result of 123123123 + 10343030?",
+          },
+        ],
+        // Definition of available tools the AI model can leverage
+        tools: [
+          {
+            name: "sum",
+            description: "Sum up two numbers and returns the result",
+            parameters: {
+              type: "object",
+              properties: {
+                a: { type: "number", description: "the first number" },
+                b: { type: "number", description: "the second number" },
+              },
+              required: ["a", "b"],
+            },
+            // reference to previously defined function
+            function: sum,
+          },
+        ],
+      },
+    );
+    return new Response(JSON.stringify(response));
+  },
+};
 ```
 
-index.ts
+**index.ts**
 
-```
+```ts
 import { runWithTools } from "@cloudflare/ai-utils";
-type Env = {  AI: Ai;};
-export default {  async fetch(request, env, ctx) {    // Define function    const sum = (args: { a: number; b: number }): Promise<string> => {      const { a, b } = args;      return Promise.resolve((a + b).toString());    };    // Run AI inference with function calling    const response = await runWithTools(      env.AI,      // Model with function calling support      "@hf/nousresearch/hermes-2-pro-mistral-7b",      {        // Messages        messages: [          {            role: "user",            content: "What the result of 123123123 + 10343030?",          },        ],        // Definition of available tools the AI model can leverage        tools: [          {            name: "sum",            description: "Sum up two numbers and returns the result",            parameters: {              type: "object",              properties: {                a: { type: "number", description: "the first number" },                b: { type: "number", description: "the second number" },              },              required: ["a", "b"],            },            // reference to previously defined function            function: sum,          },        ],      },    );    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+
+
+type Env = {
+  AI: Ai;
+};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // Define function
+    const sum = (args: { a: number; b: number }): Promise<string> => {
+      const { a, b } = args;
+      return Promise.resolve((a + b).toString());
+    };
+    // Run AI inference with function calling
+    const response = await runWithTools(
+      env.AI,
+      // Model with function calling support
+      "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      {
+        // Messages
+        messages: [
+          {
+            role: "user",
+            content: "What the result of 123123123 + 10343030?",
+          },
+        ],
+        // Definition of available tools the AI model can leverage
+        tools: [
+          {
+            name: "sum",
+            description: "Sum up two numbers and returns the result",
+            parameters: {
+              type: "object",
+              properties: {
+                a: { type: "number", description: "the first number" },
+                b: { type: "number", description: "the second number" },
+              },
+              required: ["a", "b"],
+            },
+            // reference to previously defined function
+            function: sum,
+          },
+        ],
+      },
+    );
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 This example imports the utils with `import { runWithTools} from "@cloudflare/ai-utils"` and follows the API reference below.

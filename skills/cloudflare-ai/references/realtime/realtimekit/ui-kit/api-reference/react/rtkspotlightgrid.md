@@ -38,16 +38,30 @@ A grid component that renders two lists of participants: `pinnedParticipants` an
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSpotlightGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSpotlightGrid />;}
+
+
+function MyComponent() {
+  return <RtkSpotlightGrid />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSpotlightGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSpotlightGrid      aspectRatio="example"      gap={42}      gridSize="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSpotlightGrid
+      aspectRatio="example"
+      gap={42}
+      gridSize="md"
+    />
+  );
+}
 ```
 
 ```json

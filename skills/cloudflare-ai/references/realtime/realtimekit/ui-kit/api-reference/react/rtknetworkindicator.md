@@ -26,16 +26,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkNetworkIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkNetworkIndicator />;}
+
+
+function MyComponent() {
+  return <RtkNetworkIndicator />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkNetworkIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkNetworkIndicator      isScreenShare={true}      meeting={meeting}      participant={participant}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkNetworkIndicator
+      isScreenShare={true}
+      meeting={meeting}
+      participant={participant}
+    />
+  );
+}
 ```
 
 ```json

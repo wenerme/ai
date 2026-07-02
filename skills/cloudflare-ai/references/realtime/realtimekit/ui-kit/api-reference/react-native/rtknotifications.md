@@ -29,16 +29,52 @@ Container that manages and displays meeting notifications (participant join/leav
 
 ### Basic Usage
 
-```
-import {  RtkNotifications,  useLanguage,} from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  const t = useLanguage();  return (    <RtkNotifications      meeting={meeting}      config={config}      iconPack={iconPack}      size="sm"      states={states}      t={t}    />  );}
+```tsx
+import {
+  RtkNotifications,
+  useLanguage,
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function MyComponent() {
+  const t = useLanguage();
+  return (
+    <RtkNotifications
+      meeting={meeting}
+      config={config}
+      iconPack={iconPack}
+      size="sm"
+      states={states}
+      t={t}
+    />
+  );
+}
 ```
 
 ### With Properties
 
-```
-import {  RtkNotifications,  defaultConfig,  defaultIconPack,  useLanguage,} from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  const t = useLanguage();  return (    <RtkNotifications      meeting={meeting}      config={defaultConfig}      iconPack={defaultIconPack}      size="md"      states={states}      t={t}    />  );}
+```tsx
+import {
+  RtkNotifications,
+  defaultConfig,
+  defaultIconPack,
+  useLanguage,
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function MyComponent() {
+  const t = useLanguage();
+  return (
+    <RtkNotifications
+      meeting={meeting}
+      config={defaultConfig}
+      iconPack={defaultIconPack}
+      size="md"
+      states={states}
+      t={t}
+    />
+  );
+}
 ```
 
 ```json

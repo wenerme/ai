@@ -28,16 +28,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAi />;}
+
+
+function MyComponent() {
+  return <RtkAi />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAi      meeting={meeting}      size="md"      view={aiview}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAi
+      meeting={meeting}
+      size="md"
+      view={aiview}
+    />
+  );
+}
 ```
 
 ```json

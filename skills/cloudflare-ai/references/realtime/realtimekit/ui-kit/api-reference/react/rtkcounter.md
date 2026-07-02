@@ -28,16 +28,30 @@ A number picker with increment and decrement buttons.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkCounter } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkCounter />;}
+
+
+function MyComponent() {
+  return <RtkCounter />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkCounter } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkCounter      minValue={42}      size="md"      value={42}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkCounter
+      minValue={42}
+      size="md"
+      value={42}
+    />
+  );
+}
 ```
 
 ```json

@@ -26,16 +26,24 @@ Displays elapsed meeting time as a running clock (HH:MM:SS or MM:SS).
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkClock } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkClock meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkClock meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkClock } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkClock meeting={meeting} iconPack={customIconPack} />;}
+
+
+function MyComponent() {
+  return <RtkClock meeting={meeting} iconPack={customIconPack} />;
+}
 ```
 
 ```json

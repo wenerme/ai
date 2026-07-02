@@ -18,6 +18,22 @@ The Data Localization Suite allows you to restrict where your data is processed 
 * **Regional Services** — restricts which Cloudflare data centers can decrypt and inspect your HTTPS traffic.
 * **Customer Metadata Boundary (CMB)** — restricts where your logs and analytics data are stored.
 
+## Region types
+
+Regional Services regions come in two types:
+
+* **Managed regions** — predefined regions that Cloudflare maintains, identified by a region key (for example, `eu` or `us`). These are the regions listed in the tables below. They are available to all accounts, though some may require specific entitlements. Most customers use a managed region.
+* **Custom regions** — regions tailored to your account that restrict processing to a specific set of data centers, for when the managed regions do not meet your compliance requirements. Custom regions are set up through your account team. They are available for [Regionalized Spectrum Applications](https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/) and [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/), but not for [Regional Hostnames](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/).
+
+Managed and custom regions apply to **Regional Services**. The other Data Localization Suite features use their own region settings:
+
+* **Customer Metadata Boundary** can be set to the **United States** or the **European Union**. By default no boundary is applied. FedRAMP customers set it to the United States.
+* **Geo Key Manager** controls where TLS private keys are stored using its own set of locations.
+
+The tables below show which managed regions each product supports.
+
+## Available regions
+
 Some regions are defined by geography (for example, "Germany"), while others are defined by compliance frameworks:
 
 * **FedRAMP Moderate** — the US Federal Risk and Authorization Management Program, a government security certification standard. "Domestic" means only US-based certified data centers. "International" includes certified data centers outside the US.
@@ -27,7 +43,11 @@ Some regions are defined by geography (for example, "Germany"), while others are
 
 "Exclusive of" regions work in reverse — they exclude specific countries rather than restricting to them. For example, "Exclusive of Russia and Belarus" means Cloudflare will use any data center worldwide except those in Russia and Belarus.
 
-Support by product and region is summarized in the following table:
+Support by product and region is summarized in the following table. In the **Customer Metadata Boundary** column:
+
+* ✅ — the region corresponds to a metadata boundary you can select. CMB supports the **United States** and the **European Union** only; FedRAMP regions use the United States boundary.
+* "Can use EU metadata boundary." — the country is within the European Union, so the EU boundary applies.
+* ✘ — Customer Metadata Boundary is not available for this region.
 
 | Region                                                                                   | Geo Key Manager           | Regional Services | Customer Metadata Boundary    |
 | ---------------------------------------------------------------------------------------- | ------------------------- | ----------------- | ----------------------------- |
@@ -112,6 +132,6 @@ Refer to the table below for the complete list of available regions and their de
 1. Only supported in [Geo Key Manager v2](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/), the current version with expanded region support. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6) [↩7](#user-content-fnref-1-7) [↩8](#user-content-fnref-1-8) [↩9](#user-content-fnref-1-9)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/region-support/#page","headline":"Region support · Cloudflare Data Localization Suite docs","description":"Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/region-support/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/region-support/#page","headline":"Region support · Cloudflare Data Localization Suite docs","description":"Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/region-support/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/region-support/","name":"Region support"}}]}
 ```

@@ -34,8 +34,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-8227)
-* [ API ](#tab-panel-8228)
+* [ Dashboard ](#tab-panel-8508)
+* [ API ](#tab-panel-8509)
 
 To create a TSIG using the dashboard:
 
@@ -59,8 +59,8 @@ You only need to create a peer DNS server if you want:
 * Your secondary nameservers to receive **NOTIFYs** for changes to your Cloudflare DNS records.
 * A **TSIG** to sign zone transfer requests and **NOTIFYs**.
 
-* [ Dashboard ](#tab-panel-8223)
-* [ API ](#tab-panel-8224)
+* [ Dashboard ](#tab-panel-8504)
+* [ API ](#tab-panel-8505)
 
 To create a peer using the dashboard:
 
@@ -86,8 +86,8 @@ Note
 
 The maximum number of linked peers per zone is 30.
 
-* [ Dashboard ](#tab-panel-8225)
-* [ API ](#tab-panel-8226)
+* [ Dashboard ](#tab-panel-8506)
+* [ API ](#tab-panel-8507)
 
 To link a primary zone to a peer using the dashboard:
 
@@ -119,8 +119,8 @@ Note
 
 If your account [zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) are already defined to have **Multi-provider DNS** enabled, this step may not be necessary.
 
-* [ Dashboard ](#tab-panel-8229)
-* [ API ](#tab-panel-8230)
+* [ Dashboard ](#tab-panel-8510)
+* [ API ](#tab-panel-8511)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -134,10 +134,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone DNS Settings Write`
 * `DNS Write`
 
-Update DNS Settings
+**Update DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "multi_provider": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "multi_provider": true
+  }'
 ```
 
 Note
@@ -148,8 +153,8 @@ In case you want to keep Cloudflare as the only authoritative DNS provider, do n
 
 When you enable outgoing zone transfers, this will send a DNS NOTIFY message to your secondary DNS provider.
 
-* [ Dashboard ](#tab-panel-8221)
-* [ API ](#tab-panel-8222)
+* [ Dashboard ](#tab-panel-8502)
+* [ API ](#tab-panel-8503)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

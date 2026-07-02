@@ -43,10 +43,22 @@ To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring t
 
 This allows for the most granular level of control, and lets you specify a storage\_config for a specific [recording started](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) on a meeting.
 
-Terminal window
-
-```
-curl --request POST \  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings \  --header 'Authorization: Bearer <api_authorization_token>' \  --header 'Content-Type: application/json' \  --data '{  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",  "storage_config": {    "type": "cloudflare",    "access_key": "your-access-key",    "secret": "your-secret-key",    "bucket": "your-bucket-name",    "path": "/",    "account_id": "your-account-id"  }}'
+```bash
+curl --request POST \
+  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings \
+  --header 'Authorization: Bearer <api_authorization_token>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+  "storage_config": {
+    "type": "cloudflare",
+    "access_key": "your-access-key",
+    "secret": "your-secret-key",
+    "bucket": "your-bucket-name",
+    "path": "/",
+    "account_id": "your-account-id"
+  }
+}'
 ```
 
 To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring the [RealtimeKit REST API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/).

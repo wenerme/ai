@@ -42,7 +42,7 @@ Since Bot settings apply to all traffic across your domain, you may need an alte
 
 Block likely automated traffic only on your login endpoint:
 
-```
+```txt
 (cf.bot_management.score lt 30 and not cf.bot_management.verified_bot and http.request.uri.path eq "/login")
 ```
 
@@ -58,7 +58,7 @@ If you need to combine bot score with other request fields, such as country, ASN
 
 Challenge likely automated traffic only from specific ASNs:
 
-```
+```txt
 (cf.bot_management.score lt 30 and not cf.bot_management.verified_bot and ip.src.asnum in {64496 65536})
 ```
 

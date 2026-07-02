@@ -28,16 +28,29 @@ A component which lists all available plugins a user can access with the ability
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPolls } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPolls />;}
+
+
+function MyComponent() {
+  return <RtkPolls />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPolls } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPolls      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPolls
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

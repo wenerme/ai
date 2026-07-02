@@ -16,6 +16,24 @@ Review recent changes to the Cloudflare One Client (formerly WARP).
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml)
 
+## 2026-07-01
+
+
+**Cloudflare One Client for Linux (version 2026.6.836.0)**
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This package is the same release as 2026.6.822.0, with a fix for our RPM package. Previously the repository served a single build to every OS version, so an install could pull a dependency that isn't available on that release. The repository now serves the correct build for each operating system version, so installs automatically pull the dependencies that version requires. Debian and Ubuntu were not affected.
+
+If you installed version 2026.6.822.0 on an RPM-based distribution, we recommend refreshing your repository configuration:
+
+```bash
+sudo curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+sudo dnf clean all
+sudo dnf install cloudflare-warp
+
+```
+
 ## 2026-06-29
 
 
@@ -36,6 +54,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional Changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in Windows Accessibility settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -79,6 +98,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional Changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -117,8 +137,9 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Cloudflare Mesh functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-* Cloudflare Mesh now supports hostname-based routing for Cloudflare Tunnel.
+* Cloudflare Mesh now supports hostname-based routing.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.

@@ -24,16 +24,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkFileDropzone } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkFileDropzone />;}
+
+
+function MyComponent() {
+  return <RtkFileDropzone />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkFileDropzone } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkFileDropzone      hostEl={htmlelement}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkFileDropzone
+      hostEl={htmlelement}
+    />
+  );
+}
 ```
 
 ```json

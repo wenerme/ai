@@ -56,7 +56,7 @@ When a client connects to Privacy Proxy:
 
 The `sec-ch-geohash` header includes the geohash and country code:
 
-```
+```http
 sec-ch-geohash: xn76c-JP
 ```
 

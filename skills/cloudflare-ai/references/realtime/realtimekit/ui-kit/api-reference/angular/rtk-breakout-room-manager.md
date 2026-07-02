@@ -31,14 +31,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-breakout-room-manager></rtk-breakout-room-manager>
+```html
+<!-- component.html -->
+<rtk-breakout-room-manager></rtk-breakout-room-manager>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-breakout-room-manager [allowDelete]="true" [assigningParticipants]="true" [defaultExpanded]="true"></rtk-breakout-room-manager>
+```html
+<!-- component.html -->
+<rtk-breakout-room-manager
+ [allowDelete]="true"
+ [assigningParticipants]="true"
+ [defaultExpanded]="true">
+</rtk-breakout-room-manager>
 ```
 
 ```json

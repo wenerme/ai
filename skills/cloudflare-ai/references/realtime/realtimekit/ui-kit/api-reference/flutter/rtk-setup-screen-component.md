@@ -33,21 +33,34 @@ Both parameters are positional. Pass them without named arguments.
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkSetupScreen(  selectedAudioDevice,  selectedVideoDevice,)
+
+
+RtkSetupScreen(
+  selectedAudioDevice,
+  selectedVideoDevice,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-final selectedAudioDevice = meeting.getSelectedAudioDevice();final selectedVideoDevice = meeting.getSelectedVideoDevice();
-RtkSetupScreen(  selectedAudioDevice,  selectedVideoDevice,)
+
+
+final selectedAudioDevice = meeting.getSelectedAudioDevice();
+final selectedVideoDevice = meeting.getSelectedVideoDevice();
+
+
+RtkSetupScreen(
+  selectedAudioDevice,
+  selectedVideoDevice,
+)
 ```
 
 ```json

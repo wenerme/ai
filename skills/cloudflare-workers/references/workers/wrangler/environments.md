@@ -21,29 +21,53 @@ Review the following environments flow:
 1. Create a Worker, named `my-worker` for example.
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.
 
-  * [  wrangler.jsonc ](#tab-panel-12999)
-  * [  wrangler.toml ](#tab-panel-13000)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-13294)
+  * [  wrangler.toml ](#tab-panel-13295)
+
+**JSONC**
+```jsonc
+{
+  "name": "my-worker",
+  "env": {
+    "<ENV_NAME>": {
+      // environment-specific configuration goes here
+    }
+  }
+}
 ```
-{  "name": "my-worker",  "env": {    "<ENV_NAME>": {      // environment-specific configuration goes here    }  }}
-```
-TOML
-```
+
+**TOML**
+```toml
 name = "my-worker"
-[env]"<ENV_NAME>" = { }
+[env]
+"<ENV_NAME>" = { }
 ```
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:
 
-  * [  wrangler.jsonc ](#tab-panel-13001)
-  * [  wrangler.toml ](#tab-panel-13002)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-13296)
+  * [  wrangler.toml ](#tab-panel-13297)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "your-worker",
+  "route": "example.com",
+  "env": {
+    "dev": {
+      "route": "dev.example.com",
+    },
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "your-worker",  "route": "example.com",  "env": {    "dev": {      "route": "dev.example.com",    },  },}
-```
-TOML
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "your-worker"route = "example.com"
-[env.dev]route = "dev.example.com"
+
+**TOML**
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "your-worker"
+route = "example.com"
+[env.dev]
+route = "dev.example.com"
 ```
 4. Environments are used with the `--env` or `-e` flag on Wrangler commands. For example, you can develop the Worker in the `dev` environment by running `npx wrangler dev -e=dev`, and deploy it with `npx wrangler deploy -e=dev`.
 Alternatively, you can use the [CLOUDFLARE\_ENV environment variable](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) to select the active environment. For example, `CLOUDFLARE_ENV=dev npx wrangler deploy` will deploy to the `dev` environment. The `--env` command line argument takes precedence over the `CLOUDFLARE_ENV` environment variable.
@@ -58,61 +82,146 @@ For example, [bindings](https://developers.cloudflare.com/workers/runtime-apis/b
 
 Review the following example Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13009)
-* [  wrangler.toml ](#tab-panel-13010)
+* [  wrangler.jsonc ](#tab-panel-13304)
+* [  wrangler.toml ](#tab-panel-13305)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  "vars": {
+    "API_HOST": "example.com",
+  },
+  "kv_namespaces": [
+    {
+      "binding": "<BINDING_NAME>",
+      "id": "<KV_NAMESPACE_ID_DEV>",
+    },
+  ],
+  "env": {
+    "production": {
+      "vars": {
+        "API_HOST": "production.example.com",
+      },
+      "kv_namespaces": [
+        {
+          "binding": "<BINDING_NAME>",
+          "id": "<KV_NAMESPACE_ID_PRODUCTION>",
+        },
+      ],
+    },
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "vars": {    "API_HOST": "example.com",  },  "kv_namespaces": [    {      "binding": "<BINDING_NAME>",      "id": "<KV_NAMESPACE_ID_DEV>",    },  ],  "env": {    "production": {      "vars": {        "API_HOST": "production.example.com",      },      "kv_namespaces": [        {          "binding": "<BINDING_NAME>",          "id": "<KV_NAMESPACE_ID_PRODUCTION>",        },      ],    },  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"
-[vars]API_HOST = "example.com"
-[[kv_namespaces]]binding = "<BINDING_NAME>"id = "<KV_NAMESPACE_ID_DEV>"
-[env.production.vars]API_HOST = "production.example.com"
-[[env.production.kv_namespaces]]binding = "<BINDING_NAME>"id = "<KV_NAMESPACE_ID_PRODUCTION>"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker"
+
+
+[vars]
+API_HOST = "example.com"
+
+
+[[kv_namespaces]]
+binding = "<BINDING_NAME>"
+id = "<KV_NAMESPACE_ID_DEV>"
+
+
+[env.production.vars]
+API_HOST = "production.example.com"
+
+
+[[env.production.kv_namespaces]]
+binding = "<BINDING_NAME>"
+id = "<KV_NAMESPACE_ID_PRODUCTION>"
 ```
 
 ### Service bindings
 
 To use a [service binding](https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings) that targets a Worker in a specific environment, you need to append the environment name to the target Worker name in the `service` field. This should be in the format `<worker-name>-<environment-name>`. In the example below, we have two Workers, both with a `staging` environment. `worker-b` has a service binding to `worker-a`. Note how the `service` field in the `staging` environment points to `worker-a-staging`, whereas the top-level service binding points to `worker-a`.
 
-* [  wrangler.jsonc ](#tab-panel-13003)
-* [  wrangler.toml ](#tab-panel-13004)
+* [  wrangler.jsonc ](#tab-panel-13298)
+* [  wrangler.toml ](#tab-panel-13299)
 
-JSONC
+**JSONC**
 
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker-a",  "vars": {    "FOO": "<top-level-var>",  },  "env": {    "staging": {      "vars": {        "FOO": "<staging-var>",      },    },  },}
-```
-
-TOML
-
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker-a"
-[vars]FOO = "<top-level-var>"
-[env.staging.vars]FOO = "<staging-var>"
-```
-
-* [  wrangler.jsonc ](#tab-panel-13007)
-* [  wrangler.toml ](#tab-panel-13008)
-
-JSONC
-
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker-b",  "services": {    "binding": "<BINDING_NAME>",    "service": "worker-a",  },  // Note how `service = "worker-a-staging"`  "env": {    "staging": {      "service": {        "binding": "<BINDING_NAME>",        "service": "worker-a-staging",      },    },  },}
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker-a",
+  "vars": {
+    "FOO": "<top-level-var>",
+  },
+  "env": {
+    "staging": {
+      "vars": {
+        "FOO": "<staging-var>",
+      },
+    },
+  },
+}
 ```
 
-TOML
+**TOML**
 
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker-a"
+
+
+[vars]
+FOO = "<top-level-var>"
+
+
+[env.staging.vars]
+FOO = "<staging-var>"
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker-b"
-[services]binding = "<BINDING_NAME>"service = "worker-a"
-[env.staging.service]binding = "<BINDING_NAME>"service = "worker-a-staging"
+
+* [  wrangler.jsonc ](#tab-panel-13302)
+* [  wrangler.toml ](#tab-panel-13303)
+
+**JSONC**
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker-b",
+  "services": {
+    "binding": "<BINDING_NAME>",
+    "service": "worker-a",
+  },
+  // Note how `service = "worker-a-staging"`
+  "env": {
+    "staging": {
+      "service": {
+        "binding": "<BINDING_NAME>",
+        "service": "worker-a-staging",
+      },
+    },
+  },
+}
+```
+
+**TOML**
+
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker-b"
+
+
+[services]
+binding = "<BINDING_NAME>"
+service = "worker-a"
+
+
+[env.staging.service]
+binding = "<BINDING_NAME>"
+service = "worker-a-staging"
 ```
 
 ### Secrets for production
@@ -137,10 +246,11 @@ Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.v
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
-.dev.vars / .env
+**.dev.vars / .env**
 
-```
-SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+```bash
+SECRET_KEY="value"
+API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git
@@ -173,110 +283,170 @@ It is possible to control how `.env` files are loaded in local development by se
 
 The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [route or routes key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
 
-* [  wrangler.jsonc ](#tab-panel-13011)
-* [  wrangler.toml ](#tab-panel-13012)
+* [  wrangler.jsonc ](#tab-panel-13306)
+* [  wrangler.toml ](#tab-panel-13307)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  "route": "dev.example.com/*",
+  "vars": {
+    "ENVIRONMENT": "dev",
+  },
+  "env": {
+    "staging": {
+      "vars": {
+        "ENVIRONMENT": "staging",
+      },
+      "route": "staging.example.com/*",
+    },
+    "production": {
+      "vars": {
+        "ENVIRONMENT": "production",
+      },
+      "routes": ["example.com/foo/*", "example.com/bar/*"],
+    },
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "route": "dev.example.com/*",  "vars": {    "ENVIRONMENT": "dev",  },  "env": {    "staging": {      "vars": {        "ENVIRONMENT": "staging",      },      "route": "staging.example.com/*",    },    "production": {      "vars": {        "ENVIRONMENT": "production",      },      "routes": ["example.com/foo/*", "example.com/bar/*"],    },  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"route = "dev.example.com/*"
-[vars]ENVIRONMENT = "dev"
-[env.staging]route = "staging.example.com/*"
-  [env.staging.vars]  ENVIRONMENT = "staging"
-[env.production]routes = [ "example.com/foo/*", "example.com/bar/*" ]
-  [env.production.vars]  ENVIRONMENT = "production"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker"
+route = "dev.example.com/*"
+
+
+[vars]
+ENVIRONMENT = "dev"
+
+
+[env.staging]
+route = "staging.example.com/*"
+
+
+  [env.staging.vars]
+  ENVIRONMENT = "staging"
+
+
+[env.production]
+routes = [ "example.com/foo/*", "example.com/bar/*" ]
+
+
+  [env.production.vars]
+  ENVIRONMENT = "production"
 ```
 
 You can pass the name of the environment via the `--env` flag to run commands in a specific environment.
 
 With this configuration, Wrangler will behave in the following manner:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
-```
-Uploaded my-workerPublished my-worker  dev.example.com/*
+```sh
+Uploaded my-worker
+Published my-worker
+  dev.example.com/*
 ```
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy --env staging
 ```
 
-```
-Uploaded my-worker-stagingPublished my-worker-staging  staging.example.com/*
+```sh
+Uploaded my-worker-staging
+Published my-worker-staging
+  staging.example.com/*
 ```
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy --env production
 ```
 
-```
-Uploaded my-worker-productionPublished my-worker-production  example.com/*
+```sh
+Uploaded my-worker-production
+Published my-worker-production
+  example.com/*
 ```
 
 Any defined [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) (the [vars](https://developers.cloudflare.com/workers/wrangler/configuration/) key) are available via the [env object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#accessing-bindings) in your Worker.
 
 With this configuration, the `env.ENVIRONMENT` variable can be used to call specific code depending on the given environment:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    if (env.ENVIRONMENT === "staging") {      // staging-specific code    } else if (env.ENVIRONMENT === "production") {      // production-specific code    }  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    if (env.ENVIRONMENT === "staging") {
+      // staging-specific code
+    } else if (env.ENVIRONMENT === "production") {
+      // production-specific code
+    }
+  },
+};
 ```
 
 ### Staging environment with \*.workers.dev
 
 To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = true` in the desired environment. Your Wrangler file may look like this:
 
-* [  wrangler.jsonc ](#tab-panel-13005)
-* [  wrangler.toml ](#tab-panel-13006)
+* [  wrangler.jsonc ](#tab-panel-13300)
+* [  wrangler.toml ](#tab-panel-13301)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  "route": "example.com/*",
+  "env": {
+    "staging": {
+      "workers_dev": true,
+    },
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "route": "example.com/*",  "env": {    "staging": {      "workers_dev": true,    },  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"route = "example.com/*"
-[env.staging]workers_dev = true
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker"
+route = "example.com/*"
+
+
+[env.staging]
+workers_dev = true
 ```
 
 With this configuration, Wrangler will behave in the following manner:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
-```
-Uploaded my-workerPublished my-worker  example.com/*
+```sh
+Uploaded my-worker
+Published my-worker
+  example.com/*
 ```
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy --env staging
 ```
 
-```
-Uploaded my-workerPublished my-worker  https://my-worker-staging.<YOUR_SUBDOMAIN>.workers.dev
+```sh
+Uploaded my-worker
+Published my-worker
+  https://my-worker-staging.<YOUR_SUBDOMAIN>.workers.dev
 ```
 
 Warning

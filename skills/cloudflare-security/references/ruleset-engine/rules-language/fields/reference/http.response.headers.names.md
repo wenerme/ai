@@ -30,13 +30,13 @@ Duplicate headers are listed multiple times.
 
 Example value:
 
-```
+```txt
 ["content-type"]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.response.headers.names[*] == "content-type")
 ```
 

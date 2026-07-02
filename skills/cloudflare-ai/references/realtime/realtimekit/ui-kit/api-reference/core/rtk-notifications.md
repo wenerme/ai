@@ -29,19 +29,25 @@ A component which handles notifications. You can configure which notifications y
 
 ### Basic Usage
 
-```
+```html
 <rtk-notifications></rtk-notifications>
 ```
 
 ### With Properties
 
-```
-<rtk-notifications size="md"></rtk-notifications>
+```html
+<rtk-notifications
+ size="md">
+</rtk-notifications>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-notifications");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-notifications");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

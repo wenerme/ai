@@ -18,30 +18,88 @@ Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/gra
 
 Query size is defined as the number of terminal fields (leaves) in the query, whereas query depth is the deepest level at which a leaf is present. For example, the size of this query will be reported as `4 (terminalField[1-4] all contribute to this counter)`, and the depth will be reported as `3 (terminalField3 and terminalField4 are at depth level 3)`.
 
-GraphQL query
+**GraphQL query**
 
-```
-{  terminalField1  nonTerminalField1(filter: 123) {    terminalField2    nonTerminalField2 {      terminalField3      terminalField4    }  }}
+```graphql
+{
+  terminalField1
+  nonTerminalField1(filter: 123) {
+    terminalField2
+    nonTerminalField2 {
+      terminalField3
+      terminalField4
+    }
+  }
+}
 ```
 
 ## Gather GraphQL statistics
 
 Using the new `apiGatewayGraphqlQueryAnalyticsGroups` node in the Cloudflare GraphQL API, you can retrieve `apiGatewayGraphqlQuerySize` and `apiGatewayGraphqlQueryDepth` dimensions.
 
-GraphQL query
+**GraphQL query**
 
-```
-query ApiGatewayGraphqlQueryAnalytics(  $zoneTag: string  $start: Time  $end: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      apiGatewayGraphqlQueryAnalyticsGroups(        limit: 100        orderBy: [          apiGatewayGraphqlQuerySize_DESC          apiGatewayGraphqlQueryDepth_DESC        ]        filter: { datetime_geq: $start, datetime_leq: $end }      ) {        count        dimensions {          apiGatewayGraphqlQuerySize          apiGatewayGraphqlQueryDepth        }      }    }  }}
+```graphql
+query ApiGatewayGraphqlQueryAnalytics(
+  $zoneTag: string
+  $start: Time
+  $end: Time
+) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      apiGatewayGraphqlQueryAnalyticsGroups(
+        limit: 100
+        orderBy: [
+          apiGatewayGraphqlQuerySize_DESC
+          apiGatewayGraphqlQueryDepth_DESC
+        ]
+        filter: { datetime_geq: $start, datetime_leq: $end }
+      ) {
+        count
+        dimensions {
+          apiGatewayGraphqlQuerySize
+          apiGatewayGraphqlQueryDepth
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlT8MFEDCgATZuy68BbYYMETpskAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg7i+GCiBhQAJs3ZdeAtsJYBmcS0nSAvkA)
 
 With the above query, you will get the following response:
 
-Response
+**Response**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "apiGatewayGraphqlQueryAnalyticsGroups": [            {              "count": 10,              "dimensions": {                "apiGatewayGraphqlQueryDepth": 1,                "apiGatewayGraphqlQuerySize": 11              }            },            {              "count": 10,              "dimensions": {                "apiGatewayGraphqlQueryDepth": 1,                "apiGatewayGraphqlQuerySize": 2              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "apiGatewayGraphqlQueryAnalyticsGroups": [
+            {
+              "count": 10,
+              "dimensions": {
+                "apiGatewayGraphqlQueryDepth": 1,
+                "apiGatewayGraphqlQuerySize": 11
+              }
+            },
+            {
+              "count": 10,
+              "dimensions": {
+                "apiGatewayGraphqlQueryDepth": 1,
+                "apiGatewayGraphqlQuerySize": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 In the response example, Cloudflare observed 10 requests with depth 1 and size 11, and 10 requests with depth 1 and size 2 in the selected timeframe.
@@ -52,19 +110,46 @@ You can use the response to compute percentiles across the attributes and set a 
 
 Here is a simple Python script that will report query size and depth p-levels given the GraphQL API response output above (as a JSON file):
 
-Python script
+**Python script**
 
-```
+```python
 #!/usr/bin/env python3
-import jsonimport numpy as npimport argparse
-parser = argparse.ArgumentParser()parser.add_argument("--response", help="Path to the API JSON response file with the apiGatewayGraphqlQueryAnalyticsGroups node", required=True)args = parser.parse_args()with open(args.response) as f:    query_sizes = np.array([], dtype=np.uint16)    query_depths = np.array([], dtype=np.uint8)    data = json.load(f)['data']['viewer']['zones'][0]['apiGatewayGraphqlQueryAnalyticsGroups']    for datapoint in data:        query_sizes = np.append(query_sizes, [datapoint['dimensions']['apiGatewayGraphqlQuerySize']] * datapoint['count'])        query_depths = np.append(query_depths, [datapoint['dimensions']['apiGatewayGraphqlQueryDepth']] * datapoint['count'])
-    quantiles = [0.99, 0.95, 0.75, 0.5]    print('\n'.join([f"Query size {int(q * 100)}th percentile is {v}" for q, v in zip(quantiles, np.quantile(query_sizes, quantiles))]))    print('\n'.join([f"Query depth {int(q * 100)}th percentile is {v}" for q, v in zip(quantiles, np.quantile(query_depths, quantiles))]))
+
+
+import json
+import numpy as np
+import argparse
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--response", help="Path to the API JSON response file with the apiGatewayGraphqlQueryAnalyticsGroups node", required=True)
+args = parser.parse_args()
+with open(args.response) as f:
+    query_sizes = np.array([], dtype=np.uint16)
+    query_depths = np.array([], dtype=np.uint8)
+    data = json.load(f)['data']['viewer']['zones'][0]['apiGatewayGraphqlQueryAnalyticsGroups']
+    for datapoint in data:
+        query_sizes = np.append(query_sizes, [datapoint['dimensions']['apiGatewayGraphqlQuerySize']] * datapoint['count'])
+        query_depths = np.append(query_depths, [datapoint['dimensions']['apiGatewayGraphqlQueryDepth']] * datapoint['count'])
+
+
+    quantiles = [0.99, 0.95, 0.75, 0.5]
+    print('\n'.join([f"Query size {int(q * 100)}th percentile is {v}" for q, v in zip(quantiles, np.quantile(query_sizes, quantiles))]))
+    print('\n'.join([f"Query depth {int(q * 100)}th percentile is {v}" for q, v in zip(quantiles, np.quantile(query_depths, quantiles))]))
 ```
 
 With the above query, you will get the following output:
 
-```
-./calculator.py --response=response.jsonQuery size 99th percentile is 11.0Query size 95th percentile is 11.0Query size 75th percentile is 11.0Query size 50th percentile is 6.5Query depth 99th percentile is 1.0Query depth 95th percentile is 1.0Query depth 75th percentile is 1.0Query depth 50th percentile is 1.0
+```json
+./calculator.py --response=response.json
+Query size 99th percentile is 11.0
+Query size 95th percentile is 11.0
+Query size 75th percentile is 11.0
+Query size 50th percentile is 6.5
+Query depth 99th percentile is 1.0
+Query depth 95th percentile is 1.0
+Query depth 75th percentile is 1.0
+Query depth 50th percentile is 1.0
 ```
 
 ## Set limits on incoming GraphQL queries
@@ -77,7 +162,7 @@ API Shield customers now have three new fields available in custom rules:
 
 For example, you can deploy the following rule via the API or the dashboard to block queries that are deeply nested and ask for over 30 fields.
 
-```
+```txt
 (cf.api_gateway.graphql.query_size > 30 and cf.api_gateway.graphql.query_depth > 7 and cf.api_gateway.graphql.parsed_successfully)
 ```
 

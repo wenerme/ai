@@ -24,7 +24,7 @@ To obtain the timestamp milliseconds, use the [http.request.timestamp.msec](http
 
 Example value:
 
-```
+```txt
 1484063137
 ```
 

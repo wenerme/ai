@@ -22,9 +22,9 @@ Returns the raw flag value without type checking. Use this method when the flag 
 
 If you provide `defaultValue`, `get()` returns that value for known evaluation failures, such as a missing flag. If you omit `defaultValue`, known evaluation failures are thrown.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext): Promise<unknown>
 ```
 
@@ -34,19 +34,21 @@ get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext
 | defaultValue | unknown                   | No       | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const value = await env.FLAGS.get("checkout-flow", "v1", {  userId: "user-42",});
+```ts
+const value = await env.FLAGS.get("checkout-flow", "v1", {
+  userId: "user-42",
+});
 ```
 
 ## `getBooleanValue()`
 
 Returns the flag value as a `boolean`.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<boolean>
 ```
 
@@ -56,19 +58,21 @@ getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvalua
 | defaultValue | boolean                   | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const enabled = await env.FLAGS.getBooleanValue("dark-mode", false, {  userId: "user-42",});
+```ts
+const enabled = await env.FLAGS.getBooleanValue("dark-mode", false, {
+  userId: "user-42",
+});
 ```
 
 ## `getStringValue()`
 
 Returns the flag value as a `string`.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<string>
 ```
 
@@ -78,19 +82,22 @@ getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluati
 | defaultValue | string                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const variant = await env.FLAGS.getStringValue("checkout-flow", "v1", {  userId: "user-42",  country: "US",});
+```ts
+const variant = await env.FLAGS.getStringValue("checkout-flow", "v1", {
+  userId: "user-42",
+  country: "US",
+});
 ```
 
 ## `getNumberValue()`
 
 Returns the flag value as a `number`.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<number>
 ```
 
@@ -100,19 +107,21 @@ getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluati
 | defaultValue | number                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const maxRetries = await env.FLAGS.getNumberValue("max-retries", 3, {  plan: "enterprise",});
+```ts
+const maxRetries = await env.FLAGS.getNumberValue("max-retries", 3, {
+  plan: "enterprise",
+});
 ```
 
 ## `getObjectValue()`
 
 Returns the flag value as a typed object. Use the generic parameter `T` to specify the expected shape.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<T>
 ```
 
@@ -122,20 +131,29 @@ getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: Fla
 | defaultValue | T                         | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-interface ThemeConfig {  primaryColor: string;  fontSize: number;}
-const theme = await env.FLAGS.getObjectValue<ThemeConfig>(  "theme-config",  { primaryColor: "#000", fontSize: 14 },  { userId: "user-42" },);
+```ts
+interface ThemeConfig {
+  primaryColor: string;
+  fontSize: number;
+}
+
+
+const theme = await env.FLAGS.getObjectValue<ThemeConfig>(
+  "theme-config",
+  { primaryColor: "#000", fontSize: 14 },
+  { userId: "user-42" },
+);
 ```
 
 ## `getBooleanDetails()`
 
 Returns the flag value as a `boolean` with evaluation metadata.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<boolean>>
 ```
 
@@ -145,19 +163,23 @@ getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEval
 | defaultValue | boolean                   | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const details = await env.FLAGS.getBooleanDetails("dark-mode", false, {  userId: "user-42",});console.log(details.value); // trueconsole.log(details.reason); // "TARGETING_MATCH"
+```ts
+const details = await env.FLAGS.getBooleanDetails("dark-mode", false, {
+  userId: "user-42",
+});
+console.log(details.value); // true
+console.log(details.reason); // "TARGETING_MATCH"
 ```
 
 ## `getStringDetails()`
 
 Returns the flag value as a `string` with evaluation metadata.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<string>>
 ```
 
@@ -167,19 +189,24 @@ getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvalua
 | defaultValue | string                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const details = await env.FLAGS.getStringDetails("checkout-flow", "v1", {  userId: "user-42",});console.log(details.value); // "v2"console.log(details.variant); // "new"console.log(details.reason); // "TARGETING_MATCH"
+```ts
+const details = await env.FLAGS.getStringDetails("checkout-flow", "v1", {
+  userId: "user-42",
+});
+console.log(details.value); // "v2"
+console.log(details.variant); // "new"
+console.log(details.reason); // "TARGETING_MATCH"
 ```
 
 ## `getNumberDetails()`
 
 Returns the flag value as a `number` with evaluation metadata.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<number>>
 ```
 
@@ -189,19 +216,23 @@ getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvalua
 | defaultValue | number                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-const details = await env.FLAGS.getNumberDetails("max-retries", 3, {  plan: "enterprise",});console.log(details.value); // 5console.log(details.reason); // "TARGETING_MATCH"
+```ts
+const details = await env.FLAGS.getNumberDetails("max-retries", 3, {
+  plan: "enterprise",
+});
+console.log(details.value); // 5
+console.log(details.reason); // "TARGETING_MATCH"
 ```
 
 ## `getObjectDetails()`
 
 Returns the flag value as a typed object with evaluation metadata. Use the generic parameter `T` to specify the expected shape.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<T>>
 ```
 
@@ -211,11 +242,22 @@ getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: F
 | defaultValue | T                         | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
 | context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
 
-TypeScript
+**TypeScript**
 
-```
-interface ThemeConfig {  primaryColor: string;  fontSize: number;}
-const details = await env.FLAGS.getObjectDetails<ThemeConfig>(  "theme-config",  { primaryColor: "#000", fontSize: 14 },  { userId: "user-42" },);console.log(details.value); // { primaryColor: "#0051FF", fontSize: 16 }console.log(details.variant); // "brand-refresh"
+```ts
+interface ThemeConfig {
+  primaryColor: string;
+  fontSize: number;
+}
+
+
+const details = await env.FLAGS.getObjectDetails<ThemeConfig>(
+  "theme-config",
+  { primaryColor: "#000", fontSize: 14 },
+  { userId: "user-42" },
+);
+console.log(details.value); // { primaryColor: "#0051FF", fontSize: 16 }
+console.log(details.variant); // "brand-refresh"
 ```
 
 ## Error handling
@@ -226,20 +268,28 @@ Typed evaluation methods return the `defaultValue` you provided for known evalua
 
 If you call a typed method on a flag with a different type (for example, `getBooleanValue` on a string flag), the method returns the default value. The `*Details` methods set `errorCode` to `"TYPE_MISMATCH"`.
 
-TypeScript
+**TypeScript**
 
-```
-// Flag "checkout-flow" is a string flag, but you call getBooleanDetails.const details = await env.FLAGS.getBooleanDetails("checkout-flow", false);console.log(details.value); // false (the default value)console.log(details.errorCode); // "TYPE_MISMATCH"
+```ts
+// Flag "checkout-flow" is a string flag, but you call getBooleanDetails.
+const details = await env.FLAGS.getBooleanDetails("checkout-flow", false);
+console.log(details.value); // false (the default value)
+console.log(details.errorCode); // "TYPE_MISMATCH"
 ```
 
 ### Evaluation failure
 
 If evaluation fails for another reason, the method returns the default value. The `*Details` methods include an `errorCode` such as `"FLAG_NOT_FOUND"`, `"INVALID_CONTEXT"`, `"PARSE_ERROR"`, or `"GENERAL"`.
 
-TypeScript
+**TypeScript**
 
-```
-const details = await env.FLAGS.getStringDetails(  "nonexistent-flag",  "fallback",);console.log(details.value); // "fallback"console.log(details.errorCode); // "FLAG_NOT_FOUND"
+```ts
+const details = await env.FLAGS.getStringDetails(
+  "nonexistent-flag",
+  "fallback",
+);
+console.log(details.value); // "fallback"
+console.log(details.errorCode); // "FLAG_NOT_FOUND"
 ```
 
 ## Parameters reference

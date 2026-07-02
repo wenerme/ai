@@ -27,33 +27,58 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2159)
-* [  Python ](#tab-panel-2160)
-* [  curl ](#tab-panel-2161)
+* [  TypeScript ](#tab-panel-2207)
+* [  Python ](#tab-panel-2208)
+* [  curl ](#tab-panel-2209)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const response = await env.AI.run(      "@cf/huggingface/distilbert-sst-2-int8",      {        text: "This pizza is great!",      }    );
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const response = await env.AI.run(
+      "@cf/huggingface/distilbert-sst-2-int8",
+      {
+        text: "This pizza is great!",
+      }
+    );
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"headers = {"Authorization": "Bearer {API_KEY}"}
-def run(model, input):    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)    return response.json()
-output = run("@cf/huggingface/distilbert-sst-2-int8", { "text": "This pizza is great!" })print(output)
+```py
+API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
+headers = {"Authorization": "Bearer {API_KEY}"}
+
+
+def run(model, input):
+    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)
+    return response.json()
+
+
+output = run("@cf/huggingface/distilbert-sst-2-int8", { "text": "This pizza is great!" })
+print(output)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/huggingface/distilbert-sst-2-int8  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": "This pizza is great!" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/huggingface/distilbert-sst-2-int8  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "text": "This pizza is great!" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2162)
-* [ Output ](#tab-panel-2163)
+* [ Input ](#tab-panel-2210)
+* [ Output ](#tab-panel-2211)
 
 text
 

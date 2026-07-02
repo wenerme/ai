@@ -43,10 +43,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-List Logpush jobs
+**List Logpush jobs**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Ownership
@@ -60,16 +62,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Get ownership challenge
+**Get ownership challenge**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
+  }'
 ```
 
 A challenge file will be written to the destination, and the filename will be in the response (the filename may be expressed as a path, if appropriate for your destination):
 
-```
-{  "errors": [],  "messages": [],  "result": {    "valid": true,    "message": "",    "filename": "<PATH_TO_CHALLENGE_FILE>.txt"  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "valid": true,
+    "message": "",
+    "filename": "<PATH_TO_CHALLENGE_FILE>.txt"
+  },
+  "success": true
+}
 ```
 
 You will need to provide the token contained in the file when creating a job.
@@ -88,7 +104,7 @@ As of May 2022, defining a unique destination for a Logpush job will no longer b
 
 The `destination_conf` parameter must follow this format:
 
-```
+```plaintext
 <scheme>://<destination-address>
 ```
 
@@ -139,16 +155,28 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Check destination exists
+**Check destination exists**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/destination/exists" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "s3://foo"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/destination/exists" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "s3://foo"
+  }'
 ```
 
 Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "exists": false  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "exists": false
+  },
+  "success": true
+}
 ```
 
 ## Name
@@ -168,10 +196,32 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "dataset": "http_requests",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            " ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "kind": "edge"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "dataset": "http_requests",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            " ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "kind": "edge"
+  }'
 ```
 
 ## Options
@@ -195,16 +245,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Validate origin
+**Validate origin**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/origin" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "logpull_options": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339&CVE-2021-44228=true",    "dataset": "http_requests"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/origin" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "logpull_options": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339&CVE-2021-44228=true",
+    "dataset": "http_requests"
+  }'
 ```
 
 Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "valid": true,    "message": ""  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "valid": true,
+    "message": ""
+  },
+  "success": true
+}
 ```
 
 ## Configuration change timing

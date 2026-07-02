@@ -24,16 +24,24 @@ An animated loading spinner component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSpinner } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSpinner />;}
+
+
+function MyComponent() {
+  return <RtkSpinner />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSpinner } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSpinner style={{ width: 48, height: 48 }} />;}
+
+
+function MyComponent() {
+  return <RtkSpinner style={{ width: 48, height: 48 }} />;
+}
 ```
 
 ```json

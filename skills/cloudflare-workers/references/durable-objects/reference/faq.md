@@ -61,26 +61,33 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8487)
-* [  wrangler.toml ](#tab-panel-8488)
+* [  wrangler.jsonc ](#tab-panel-8778)
+* [  wrangler.toml ](#tab-panel-8779)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // ...rest of your configuration...
+  "limits": {
+    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
+  },
+  // ...rest of your configuration...
+}
 ```
-{  // ...rest of your configuration...  "limits": {    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes  },  // ...rest of your configuration...}
-```
 
-TOML
+**TOML**
 
-```
-[limits]cpu_ms = 300_000
+```toml
+[limits]
+cpu_ms = 300_000
 ```
 
 ### What happens when a Durable Object exceeds its storage limit?
 
 When a SQLite-backed Durable Object reaches its [maximum storage limit](https://developers.cloudflare.com/durable-objects/platform/limits/) (10 GB on Workers Paid, or 1 GB on the Free plan), write operations (such as `INSERT`, `UPDATE`, or calls to the `put()` and `sql.exec()` storage APIs) will fail with the following error:
 
-```
+```txt
 database or disk is full: SQLITE_FULL
 ```
 
@@ -88,10 +95,22 @@ Read operations (such as `SELECT` queries, `get()`, and `list()` calls) will con
 
 To handle this error in your Durable Object, catch the exception thrown by the storage API:
 
-TypeScript
+**TypeScript**
 
-```
-try {  this.ctx.storage.sql.exec(    "INSERT INTO my_table (key, value) VALUES (?, ?)",    key,    value,  );} catch (e) {  if (e.message.includes("SQLITE_FULL")) {    // Storage limit reached — reads and deletes still work    // Consider deleting old data or returning a meaningful error to the caller  }  throw e;}
+```ts
+try {
+  this.ctx.storage.sql.exec(
+    "INSERT INTO my_table (key, value) VALUES (?, ?)",
+    key,
+    value,
+  );
+} catch (e) {
+  if (e.message.includes("SQLITE_FULL")) {
+    // Storage limit reached — reads and deletes still work
+    // Consider deleting old data or returning a meaningful error to the caller
+  }
+  throw e;
+}
 ```
 
 ## Metrics and analytics

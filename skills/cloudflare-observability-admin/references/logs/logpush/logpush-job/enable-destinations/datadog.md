@@ -26,8 +26,8 @@ For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.c
 
   * **Datadog URL Endpoint**, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
 
-* [ v1 ](#tab-panel-9474)
-* [ v2 ](#tab-panel-9475)
+* [ v1 ](#tab-panel-9765)
+* [ v2 ](#tab-panel-9766)
 
 * `http-intake.logs.datadoghq.com/v1/input`
 
@@ -73,17 +73,15 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
 
   * **<DATADOG\_ENDPOINT\_URL>**: The Datadog HTTP logs intake endpoint, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
 
-  * [ v1 ](#tab-panel-9476)
-  * [ v2 ](#tab-panel-9477)
+  * [ v1 ](#tab-panel-9767)
+  * [ v2 ](#tab-panel-9768)
 [https://http-intake.logs.datadoghq.com/v1/input\` ↗](https://http-intake.logs.datadoghq.com/v1/input%60)
 `https://http-intake.logs.datadoghq.com/api/v2/logs`
 * `<DATADOG_API_KEY>`: The Datadog API token can be retrieved by following [these steps ↗](https://docs.datadoghq.com/account%5Fmanagement/api-app-keys/#add-an-api-key-or-client-token). For example, `20e6d94e8c57924ad1be3c29bcaee0197d`.
 * `ddsource`: Set to `cloudflare`.
 * `service`, `host`, `ddtags`: Optional parameters allowed by Datadog.
 
-Terminal window
-
-```
+```bash
 "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>"
 ```
 
@@ -97,16 +95,57 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Response:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp", "EdgeResponseBytes", "EdgeResponseStatus" ,"EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp", "EdgeResponseBytes", "EdgeResponseStatus" ,"EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/) to update a job (including enabling and disabling).

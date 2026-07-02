@@ -28,18 +28,36 @@ UForm-Gen is a small generative vision-language model primarily designed for Ima
 
 ## Usage
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
+```ts
+export interface Env {
+  AI: Ai;
+}
 
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const res = await fetch("https://cataas.com/cat");    const blob = await res.arrayBuffer();    const input = {      image: [...new Uint8Array(blob)],      prompt: "Generate a caption for this image",      max_tokens: 512,    };    const response = await env.AI.run(      "@cf/unum/uform-gen2-qwen-500m",      input      );    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const res = await fetch("https://cataas.com/cat");
+    const blob = await res.arrayBuffer();
+    const input = {
+      image: [...new Uint8Array(blob)],
+      prompt: "Generate a caption for this image",
+      max_tokens: 512,
+    };
+    const response = await env.AI.run(
+      "@cf/unum/uform-gen2-qwen-500m",
+      input
+      );
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2485)
-* [ Output ](#tab-panel-2486)
+* [ Input ](#tab-panel-2533)
+* [ Output ](#tab-panel-2534)
 
 Option 1
 

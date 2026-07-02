@@ -18,16 +18,25 @@ This page documents error codes returned by R2 when using the [Workers API](http
 
 For the **Workers API**, R2 operations throw exceptions that you can catch. The error code is included at the end of the `message` property:
 
-JavaScript
+**JavaScript**
 
-```
-try {  await env.MY_BUCKET.put("my-key", data, { customMetadata: largeMetadata });} catch (error) {  console.error(error.message);  // "put: Your metadata headers exceed the maximum allowed metadata size. (10012)"}
+```js
+try {
+  await env.MY_BUCKET.put("my-key", data, { customMetadata: largeMetadata });
+} catch (error) {
+  console.error(error.message);
+  // "put: Your metadata headers exceed the maximum allowed metadata size. (10012)"
+}
 ```
 
 For the **S3-compatible API**, errors are returned as XML in the response body:
 
-```
-<?xml version="1.0" encoding="UTF-8"?><Error>  <Code>NoSuchKey</Code>  <Message>The specified key does not exist.</Message></Error>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>NoSuchKey</Code>
+  <Message>The specified key does not exist.</Message>
+</Error>
 ```
 
 ## Error code reference

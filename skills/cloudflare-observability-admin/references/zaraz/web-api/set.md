@@ -14,29 +14,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 You can use `zaraz.set()` anywhere inside the `<body>` tag of a page:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.set(key, value, [options])
 ```
 
 Set is useful if you want to make a variable available in all your events without manually setting it every time you are using `zaraz.track()`. For the purpose of this example, assume users in your system have a unique identifier that you want to send to your tools. You might have many `zaraz.track()` calls all sharing this one parameter:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.track("form completed", {userId: "ABC-123"})
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.track("button clicked", {userId: "ABC-123", value: 200})
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.track("cart viewed", {items: 3, userId: "ABC-123"})
 ```
 
@@ -46,9 +46,9 @@ Using the above data as the example, if you use `zaraz.set("userId", "ABC-123")`
 
 Another example:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.set('product_name', 't-shirt', {scope: 'page'})
 ```
 
@@ -66,9 +66,9 @@ In the previous example, `{scope: 'page'}` makes the `product_name` property ava
 
 To unset a variable, set it to `undefined`. The variable will then be removed from all scopes it was included in, and will not be automatically sent with future `zaraz.track` calls. For example:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.set('product_name', undefined)
 ```
 

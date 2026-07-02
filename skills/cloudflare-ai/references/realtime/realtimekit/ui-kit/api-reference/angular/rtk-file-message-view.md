@@ -27,14 +27,20 @@ A component which renders a file message.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-file-message-view></rtk-file-message-view>
+```html
+<!-- component.html -->
+<rtk-file-message-view></rtk-file-message-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-file-message-view name="example" size="42" url="example"></rtk-file-message-view>
+```html
+<!-- component.html -->
+<rtk-file-message-view
+ name="example"
+ size="42"
+ url="example">
+</rtk-file-message-view>
 ```
 
 ```json

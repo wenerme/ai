@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 {"username": ["alice_doe"], "role": ["editor"], "picture": [<binary_content_of_file>]}
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart["role"][*] == "admin")
 ```
 

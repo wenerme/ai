@@ -81,16 +81,23 @@ Most Builds API operations follow this pattern: first get your Worker's tag, the
 
 Call the [Workers Scripts API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/list/) to list all your Workers and find the `tag` for the Worker you want to work with:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result[] | {name: .id, tag: .tag}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result[] | {name: .id, tag: .tag}'
 ```
 
 Example output:
 
-```
-{  "name": "my-worker",  "tag": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d"}{  "name": "another-worker",  "tag": "8a1b2c3d4e5f67890abcdef123456789"}
+```json
+{
+  "name": "my-worker",
+  "tag": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d"
+}
+{
+  "name": "another-worker",
+  "tag": "8a1b2c3d4e5f67890abcdef123456789"
+}
 ```
 
 Save the `tag` value for your Worker. You will use it in all subsequent API calls.
@@ -99,16 +106,27 @@ Save the `tag` value for your Worker. You will use it in all subsequent API call
 
 Use the [GET /builds/workers/{tag}/triggers](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/triggers/methods/list/) endpoint to list triggers for your Worker:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/workers/{worker_tag}/triggers" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result[] | {trigger_uuid, trigger_name, branch_includes, branch_excludes}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/workers/{worker_tag}/triggers" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result[] | {trigger_uuid, trigger_name, branch_includes, branch_excludes}'
 ```
 
 Example output:
 
-```
-{  "trigger_uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",  "trigger_name": "Deploy production",  "branch_includes": ["main"],  "branch_excludes": []}{  "trigger_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "trigger_name": "Deploy non-production branches",  "branch_includes": ["*"],  "branch_excludes": ["main"]}
+```json
+{
+  "trigger_uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "trigger_name": "Deploy production",
+  "branch_includes": ["main"],
+  "branch_excludes": []
+}
+{
+  "trigger_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "trigger_name": "Deploy non-production branches",
+  "branch_includes": ["*"],
+  "branch_excludes": ["main"]
+}
 ```
 
 Save the `trigger_uuid` for the trigger you want to work with. Remember, you will have at most two triggers: one for your production branch (for example, `main`) that deploys to your live Worker, and optionally one for all other branches that creates preview deployments.
@@ -121,10 +139,12 @@ Now that you have the Worker tag and trigger UUID, you can trigger builds, list 
 
 Use the [POST /builds/triggers/{uuid}/builds](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/builds/methods/create/) endpoint with the `trigger_uuid` from [Step 2](#step-2-get-your-trigger-uuid).
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request POST \  --data '{"branch": "main"}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"branch": "main"}'
 ```
 
 You must specify `branch`, `commit_hash`, or both:
@@ -140,10 +160,10 @@ The response includes the `build_uuid` which you can use to monitor the build.
 
 Use the [GET /builds/workers/{tag}/builds](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/builds/methods/list/) endpoint with the `worker_tag` from [Step 1](#step-1-get-your-worker-tag).
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/workers/{worker_tag}/builds" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result[] | {build_uuid, status, branch, created_at}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/workers/{worker_tag}/builds" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result[] | {build_uuid, status, branch, created_at}'
 ```
 
 The response includes `build_uuid` for each build, which you need for getting logs or canceling builds.
@@ -157,10 +177,9 @@ Use the [GET /builds/builds/{uuid}/logs](https://developers.cloudflare.com/api/r
 * [Get latest builds by script IDs](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/builds/methods/get%5Flatest%5Fby%5Fscript%5Fids/)
 * The last segment of the URL on your build details page in the dashboard
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds/{build_uuid}/logs" \  --header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds/{build_uuid}/logs" \
+  --header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ### Cancel a running build
@@ -172,20 +191,25 @@ Use the [PUT /builds/builds/{uuid}/cancel](https://developers.cloudflare.com/api
 * [Get latest builds by script IDs](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/builds/methods/get%5Flatest%5Fby%5Fscript%5Fids/)
 * The last segment of the URL on your build details page in the dashboard
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds/{build_uuid}/cancel" \  --header "Authorization: Bearer <API_TOKEN>" \  --request PUT
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds/{build_uuid}/cancel" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --request PUT
 ```
 
 ## Update trigger configuration
 
 Use the [PATCH /builds/triggers/{uuid}](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/triggers/methods/update/) endpoint with the `trigger_uuid` from [Step 2](#step-2-get-your-trigger-uuid). You can update any of the trigger fields described in [What is a trigger?](#3-what-is-a-trigger).
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request PATCH \  --data '{    "build_command": "npm run build:prod",    "deploy_command": "npx wrangler deploy"  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{
+    "build_command": "npm run build:prod",
+    "deploy_command": "npx wrangler deploy"
+  }'
 ```
 
 ## Manage build environment variables
@@ -200,28 +224,37 @@ These are **build-time** environment variables, available only during the build 
 
 Use the `trigger_uuid` from [Step 2](#step-2-get-your-trigger-uuid).
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables" \  --header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables" \
+  --header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ### Set environment variables
 
 You can set different variables for each trigger. For example, to set production environment variables:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{production_trigger_uuid}/environment_variables" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request PATCH \  --data '{    "NODE_ENV": {"value": "production", "is_secret": false},    "API_KEY": {"value": "prod-secret-key", "is_secret": true}  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{production_trigger_uuid}/environment_variables" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{
+    "NODE_ENV": {"value": "production", "is_secret": false},
+    "API_KEY": {"value": "prod-secret-key", "is_secret": true}
+  }'
 ```
 
 And different values for preview builds:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{preview_trigger_uuid}/environment_variables" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request PATCH \  --data '{    "NODE_ENV": {"value": "development", "is_secret": false},    "API_KEY": {"value": "dev-secret-key", "is_secret": true}  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{preview_trigger_uuid}/environment_variables" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{
+    "NODE_ENV": {"value": "development", "is_secret": false},
+    "API_KEY": {"value": "dev-secret-key", "is_secret": true}
+  }'
 ```
 
 Set `is_secret` to `false` for plain values and `true` for sensitive values that should be masked in logs.
@@ -230,20 +263,20 @@ Set `is_secret` to `false` for plain values and `true` for sensitive values that
 
 Use the `trigger_uuid` from [Step 2](#step-2-get-your-trigger-uuid). The `variable_key` is the key name you set (for example, `NODE_ENV`).
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{variable_key}" \  --header "Authorization: Bearer <API_TOKEN>" \  --request DELETE
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{variable_key}" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --request DELETE
 ```
 
 ## Purge build cache
 
 Use the [POST /builds/triggers/{uuid}/purge\_build\_cache](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/triggers/methods/purge%5Fbuild%5Fcache/) endpoint with the `trigger_uuid` from [Step 2](#step-2-get-your-trigger-uuid). This clears cached dependencies and build artifacts for that trigger.
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache" \  --header "Authorization: Bearer <API_TOKEN>" \  --request POST
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --request POST
 ```
 
 ## Examples
@@ -283,31 +316,41 @@ After installing the GitHub App, you need your GitHub account ID and repository 
 
 From GitHub's API:
 
-Terminal window
+```bash
+# Get your GitHub user/org ID
+curl -s "https://api.github.com/users/<GITHUB_USERNAME>" | jq '.id'
 
-```
-# Get your GitHub user/org IDcurl -s "https://api.github.com/users/<GITHUB_USERNAME>" | jq '.id'
-# Get a repository IDcurl -s "https://api.github.com/repos/<GITHUB_USERNAME>/<REPO_NAME>" | jq '.id'
+
+# Get a repository ID
+curl -s "https://api.github.com/repos/<GITHUB_USERNAME>/<REPO_NAME>" | jq '.id'
 ```
 
 #### Step 2: Create a repository connection
 
 Create a connection between your GitHub repository and Cloudflare:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/repos/connections" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request PUT \  --data '{    "provider_type": "github",    "provider_account_id": "<GITHUB_USER_ID>",    "provider_account_name": "<GITHUB_USERNAME>",    "repo_id": "<GITHUB_REPO_ID>",    "repo_name": "<REPO_NAME>"  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/repos/connections" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{
+    "provider_type": "github",
+    "provider_account_id": "<GITHUB_USER_ID>",
+    "provider_account_name": "<GITHUB_USERNAME>",
+    "repo_id": "<GITHUB_REPO_ID>",
+    "repo_name": "<REPO_NAME>"
+  }'
 ```
 
 Save the `repo_connection_uuid` from the response.
 
 #### Step 3: Get your Worker tag
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result[] | {name: .id, tag: .tag}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result[] | {name: .id, tag: .tag}'
 ```
 
 #### Step 4: Get your build token UUID
@@ -320,10 +363,10 @@ A build token authorizes the build system to deploy your Worker. To get your bui
 
 You can also list your build tokens via the API:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/tokens" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result[] | {build_token_uuid, build_token_name}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/tokens" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result[] | {build_token_uuid, build_token_name}'
 ```
 
 Save the `build_token_uuid` for the next step.
@@ -332,20 +375,48 @@ Save the `build_token_uuid` for the next step.
 
 Create a trigger that deploys when you push to `main`:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request POST \  --data '{    "external_script_id": "<WORKER_TAG>",    "repo_connection_uuid": "<REPO_CONNECTION_UUID>",    "build_token_uuid": "<BUILD_TOKEN_UUID>",    "trigger_name": "Deploy production",    "build_command": "npm run build",    "deploy_command": "npx wrangler deploy",    "root_directory": "/",    "branch_includes": ["main"],    "branch_excludes": [],    "path_includes": ["*"],    "path_excludes": []  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+    "external_script_id": "<WORKER_TAG>",
+    "repo_connection_uuid": "<REPO_CONNECTION_UUID>",
+    "build_token_uuid": "<BUILD_TOKEN_UUID>",
+    "trigger_name": "Deploy production",
+    "build_command": "npm run build",
+    "deploy_command": "npx wrangler deploy",
+    "root_directory": "/",
+    "branch_includes": ["main"],
+    "branch_excludes": [],
+    "path_includes": ["*"],
+    "path_excludes": []
+  }'
 ```
 
 #### Step 6: Create a preview trigger (optional)
 
 Create a second trigger for preview deployments on all other branches:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request POST \  --data '{    "external_script_id": "<WORKER_TAG>",    "repo_connection_uuid": "<REPO_CONNECTION_UUID>",    "build_token_uuid": "<BUILD_TOKEN_UUID>",    "trigger_name": "Deploy preview branches",    "build_command": "npm run build",    "deploy_command": "npx wrangler versions upload",    "root_directory": "/",    "branch_includes": ["*"],    "branch_excludes": ["main"],    "path_includes": ["*"],    "path_excludes": []  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+    "external_script_id": "<WORKER_TAG>",
+    "repo_connection_uuid": "<REPO_CONNECTION_UUID>",
+    "build_token_uuid": "<BUILD_TOKEN_UUID>",
+    "trigger_name": "Deploy preview branches",
+    "build_command": "npm run build",
+    "deploy_command": "npx wrangler versions upload",
+    "root_directory": "/",
+    "branch_includes": ["*"],
+    "branch_excludes": ["main"],
+    "path_includes": ["*"],
+    "path_excludes": []
+  }'
 ```
 
 Note the different `deploy_command`: production uses `wrangler deploy` while preview uses `wrangler versions upload` to create preview URLs without affecting the live deployment.
@@ -354,26 +425,36 @@ Note the different `deploy_command`: production uses `wrangler deploy` while pre
 
 Set production environment variables:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{production_trigger_uuid}/environment_variables" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request PATCH \  --data '{    "NODE_ENV": {"value": "production", "is_secret": false}  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{production_trigger_uuid}/environment_variables" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{
+    "NODE_ENV": {"value": "production", "is_secret": false}
+  }'
 ```
 
 Set preview environment variables:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{preview_trigger_uuid}/environment_variables" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request PATCH \  --data '{    "NODE_ENV": {"value": "development", "is_secret": false}  }'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{preview_trigger_uuid}/environment_variables" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{
+    "NODE_ENV": {"value": "development", "is_secret": false}
+  }'
 ```
 
 #### Step 8: Trigger your first build
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{production_trigger_uuid}/builds" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request POST \  --data '{"branch": "main"}'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{production_trigger_uuid}/builds" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"branch": "main"}'
 ```
 
 Your Worker is now connected to GitHub. Future pushes to `main` will automatically trigger production deployments, and pushes to other branches will create preview deployments.
@@ -394,10 +475,10 @@ Redeploy your current active deployment to refresh build-time data. This is usef
 
 Use the [GET /workers/scripts/{script\_name}/deployments](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/list/) endpoint with the `worker_name` from [Step 1](#step-1-get-your-worker-tag):
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{worker_name}/deployments" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result.deployments[0].versions[0].version_id'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{worker_name}/deployments" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result.deployments[0].versions[0].version_id'
 ```
 
 Save the `version_id` from the output.
@@ -406,10 +487,10 @@ Save the `version_id` from the output.
 
 Use the [GET /builds/builds](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/builds/methods/get%5Fby%5Fversion%5Fids/) endpoint with the `version_id` from the previous step:
 
-Terminal window
-
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds?version_ids={version_id}" \  --header "Authorization: Bearer <API_TOKEN>" \  | jq '.result.builds'
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds?version_ids={version_id}" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  | jq '.result.builds'
 ```
 
 From the response, note the `trigger.trigger_uuid`, `build_trigger_metadata.branch`, and `build_trigger_metadata.commit_hash`.
@@ -418,10 +499,17 @@ From the response, note the `trigger.trigger_uuid`, `build_trigger_metadata.bran
 
 Use the [POST /builds/triggers/{uuid}/builds](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/builds/methods/create/) endpoint with the values from the previous step:
 
-Terminal window
+```bash
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+    "branch": "{branch}",
+    "commit_hash": "{commit_hash}"
+  }'
 
-```
-curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --request POST \  --data '{    "branch": "{branch}",    "commit_hash": "{commit_hash}"  }'
+
 Passing both `branch` and `commit_hash` pins the build to that exact commit on that branch.
 ```
 

@@ -29,16 +29,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkFileMessage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkFileMessage />;}
+
+
+function MyComponent() {
+  return <RtkFileMessage />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkFileMessage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkFileMessage      isContinued={true}      message={filemessage}      now={date}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkFileMessage
+      isContinued={true}
+      message={filemessage}
+      now={date}
+    />
+  );
+}
 ```
 
 ```json

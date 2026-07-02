@@ -30,6 +30,32 @@ Once you have purchased DLS, your account team will enable DLS on your account, 
 
 Not yet. HTTP/3 uses the QUIC transport protocol, which is not currently compatible with Regional Services.
 
+## Can I apply Regional Services to only part of my traffic?
+
+Yes. [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) is not all-or-nothing. You choose which hostnames or zones are regionalized by assigning a region to each one, and all other traffic continues to be served from Cloudflare's global network as usual. For example, you can regionalize `eu.example.com` to the European Union while `www.example.com` keeps using the global network. Different hostnames can also use different regions.
+
+This also lets you keep latency-sensitive, non-sensitive content global. For instance, you can serve static CDN content that does not normally contain PII — such as product images on a global `assets.example.com` hostname — from Cloudflare's global network for best performance, while regionalizing only the hostnames that handle personal data.
+
+The granularity depends on which [Regional Services option](https://developers.cloudflare.com/data-localization/regional-services/#ways-to-use-regional-services) you use. With Regional Hostnames, you assign a region per hostname. With Regionalized Spectrum Applications, the region is assigned per zone and applies to all Spectrum HTTP/S applications in that zone.
+
+## How is traffic from users outside the configured region handled?
+
+Regional Services accepts connections at any Cloudflare data center worldwide. When a request arrives outside the configured region, Cloudflare forwards it — still encrypted — to a data center inside the region, where TLS termination (decryption) and all Layer 7 processing take place. As a result, requests from users far from the configured region experience additional latency corresponding to the round trip to the in-region data center.
+
+If you want users inside a region to benefit from local processing while still serving a global audience, consider using a regionalized hostname for in-region users (for example, `eu.example.com`) alongside a non-regionalized hostname for everyone else (for example, `www.example.com`).
+
+## Which Regional Services option works with Static IPs or BYOIP?
+
+* [Spectrum Static IPs](https://developers.cloudflare.com/spectrum/about/static-ip/) are supported only by Regionalized Spectrum Applications.
+* [BYOIP](https://developers.cloudflare.com/byoip/) is supported by both Regionalized Spectrum Applications and [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/).
+* Regional Hostnames use Cloudflare's shared anycast IP addresses and do not support Static IPs.
+
+For an overview of each option, refer to [Ways to use Regional Services](https://developers.cloudflare.com/data-localization/regional-services/#ways-to-use-regional-services).
+
+## What is the difference between managed and custom regions?
+
+In short, **managed regions** are predefined regions that Cloudflare maintains and are available to all accounts, while **custom regions** are tailored to your account when the managed regions do not meet your compliance requirements. For full details on both region types and which Regional Services options support them, refer to [Region types](https://developers.cloudflare.com/data-localization/region-support/#region-types).
+
 ## Are there other options if I prefer not to have Cloudflare handle TLS termination (decryption)?
 
 Yes, you have these options available:
@@ -45,6 +71,6 @@ These options only offer L3/L4 DDoS protection (network-layer and transport-laye
 This is typically caused by dynamic network routing. Based on Internet conditions that vary over time, your connection may be routed to a data center that is physically outside your configured region. This can be based on a variety of factors, including latency and network congestion. Enabling [Out of region access](https://developers.cloudflare.com/data-localization/metadata-boundary/out-of-region-access/) allows requests arriving in the United States to pull Customer Logs from the European Union and vice-versa. The analytics are still exclusively stored in the CMB configured region.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/faq/#page","headline":"FAQs · Cloudflare Data Localization Suite docs","description":"Answers to common questions about the Data Localization Suite and GDPR compliance.","url":"https://developers.cloudflare.com/data-localization/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/faq/#page","headline":"FAQs · Cloudflare Data Localization Suite docs","description":"Answers to common questions about the Data Localization Suite and GDPR compliance.","url":"https://developers.cloudflare.com/data-localization/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/faq/","name":"FAQs"}}]}
 ```

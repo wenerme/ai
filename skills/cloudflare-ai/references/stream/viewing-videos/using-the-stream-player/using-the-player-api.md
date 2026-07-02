@@ -16,10 +16,34 @@ For further control and customization, we provide an additional JavaScript SDK t
 
 To use this SDK, add an additional `<script>` tag to your website:
 
-```
-<!-- You can use styles and CSS on this iframe element where the video player will appear --><iframe  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"  style="border: none"  height="720"  width="1280"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"  allowfullscreen="true"  id="stream-player"></iframe>
+```html
+<!-- You can use styles and CSS on this iframe element where the video player will appear -->
+<iframe
+  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+  style="border: none"
+  height="720"
+  width="1280"
+  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+  allowfullscreen="true"
+  id="stream-player"
+></iframe>
+
+
 <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
-<!-- Your JavaScript code below--><script>  const player = Stream(document.getElementById('stream-player'));  player.addEventListener('play', () => {    console.log('playing!');  });  player.play().catch(() => {    console.log('playback failed, muting to try again');    player.muted = true;    player.play();  });</script>
+
+
+<!-- Your JavaScript code below-->
+<script>
+  const player = Stream(document.getElementById('stream-player'));
+  player.addEventListener('play', () => {
+    console.log('playing!');
+  });
+  player.play().catch(() => {
+    console.log('playback failed, muting to try again');
+    player.muted = true;
+    player.play();
+  });
+</script>
 ```
 
 ## Methods

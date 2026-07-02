@@ -26,19 +26,24 @@ Displays the title of the meeting.
 
 ### Basic Usage
 
-```
+```html
 <rtk-meeting-title></rtk-meeting-title>
 ```
 
 ### With Properties
 
-```
-<rtk-meeting-title></rtk-meeting-title>
+```html
+<rtk-meeting-title>
+</rtk-meeting-title>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-meeting-title");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-meeting-title");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

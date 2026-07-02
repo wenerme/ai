@@ -20,9 +20,7 @@ The [@streamparser/json-whatwg ↗](https://www.npmjs.com/package/@streamparser/
 
 Install the dependency:
 
-Terminal window
-
-```
+```sh
 npm install @streamparser/json-whatwg
 ```
 
@@ -30,68 +28,210 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-11875)
-* [  JavaScript ](#tab-panel-11876)
+* [  TypeScript ](#tab-panel-12108)
+* [  JavaScript ](#tab-panel-12109)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { JSONParser } from "@streamparser/json-whatwg";
-export default {  async fetch(request): Promise<Response> {    const parser = new JSONParser({ paths: ["$.users.*"] });
+
+
+export default {
+  async fetch(request): Promise<Response> {
+    const parser = new JSONParser({ paths: ["$.users.*"] });
+
+
     const users: string[] = [];
-    // Pipe the request body through the JSON parser    const reader = request.body      .pipeThrough(parser)      .getReader();
-    // Process matching JSON values as they stream in    while (true) {      const { done, value } = await reader.read();      if (done) break;      // Extract only the name field from each user object      if (value.value?.name) {        users.push(value.value.name);      }    }
-    return Response.json({ userNames: users });  },} satisfies ExportedHandler;
+
+
+    // Pipe the request body through the JSON parser
+    const reader = request.body
+      .pipeThrough(parser)
+      .getReader();
+
+
+    // Process matching JSON values as they stream in
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      // Extract only the name field from each user object
+      if (value.value?.name) {
+        users.push(value.value.name);
+      }
+    }
+
+
+    return Response.json({ userNames: users });
+  },
+} satisfies ExportedHandler;
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { JSONParser } from "@streamparser/json-whatwg";
-export default {  async fetch(request) {    const parser = new JSONParser({ paths: ["$.users.*"] });
+
+
+export default {
+  async fetch(request) {
+    const parser = new JSONParser({ paths: ["$.users.*"] });
+
+
     const users = [];
-    // Pipe the request body through the JSON parser    const reader = request.body      .pipeThrough(parser)      .getReader();
-    // Process matching JSON values as they stream in    while (true) {      const { done, value } = await reader.read();      if (done) break;      // Extract only the name field from each user object      if (value.value?.name) {        users.push(value.value.name);      }    }
-    return Response.json({ userNames: users });  },};
+
+
+    // Pipe the request body through the JSON parser
+    const reader = request.body
+      .pipeThrough(parser)
+      .getReader();
+
+
+    // Process matching JSON values as they stream in
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      // Extract only the name field from each user object
+      if (value.value?.name) {
+        users.push(value.value.name);
+      }
+    }
+
+
+    return Response.json({ userNames: users });
+  },
+};
 ```
 
 ## Stream and transform a JSON response
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-11877)
-* [  JavaScript ](#tab-panel-11878)
+* [  TypeScript ](#tab-panel-12110)
+* [  JavaScript ](#tab-panel-12111)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { JSONParser } from "@streamparser/json-whatwg";
-export default {  async fetch(request): Promise<Response> {    const response = await fetch("https://api.example.com/large-dataset.json");
+
+
+export default {
+  async fetch(request): Promise<Response> {
+    const response = await fetch("https://api.example.com/large-dataset.json");
+
+
     const parser = new JSONParser({ paths: ["$.items.*"] });
-    const { readable, writable } = new TransformStream();    const writer = writable.getWriter();    const encoder = new TextEncoder();
-    // Process the upstream response in the background    (async () => {      const reader = response.body        .pipeThrough(parser)        .getReader();
-      await writer.write(encoder.encode('{"processedItems":['));      let first = true;
-      while (true) {        const { done, value } = await reader.read();        if (done) break;
-        // Transform each item as it streams through        const item = value.value;        const transformed = {          id: item.id,          title: item.title.toUpperCase(),          processed: true,        };
-        if (!first) await writer.write(encoder.encode(","));        first = false;        await writer.write(encoder.encode(JSON.stringify(transformed)));      }
-      await writer.write(encoder.encode("]}"));      await writer.close();    })();
-    return new Response(readable, {      headers: { "Content-Type": "application/json" },    });  },} satisfies ExportedHandler;
+
+
+    const { readable, writable } = new TransformStream();
+    const writer = writable.getWriter();
+    const encoder = new TextEncoder();
+
+
+    // Process the upstream response in the background
+    (async () => {
+      const reader = response.body
+        .pipeThrough(parser)
+        .getReader();
+
+
+      await writer.write(encoder.encode('{"processedItems":['));
+      let first = true;
+
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+
+        // Transform each item as it streams through
+        const item = value.value;
+        const transformed = {
+          id: item.id,
+          title: item.title.toUpperCase(),
+          processed: true,
+        };
+
+
+        if (!first) await writer.write(encoder.encode(","));
+        first = false;
+        await writer.write(encoder.encode(JSON.stringify(transformed)));
+      }
+
+
+      await writer.write(encoder.encode("]}"));
+      await writer.close();
+    })();
+
+
+    return new Response(readable, {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+} satisfies ExportedHandler;
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { JSONParser } from "@streamparser/json-whatwg";
-export default {  async fetch(request) {    const response = await fetch("https://api.example.com/large-dataset.json");
+
+
+export default {
+  async fetch(request) {
+    const response = await fetch("https://api.example.com/large-dataset.json");
+
+
     const parser = new JSONParser({ paths: ["$.items.*"] });
-    const { readable, writable } = new TransformStream();    const writer = writable.getWriter();    const encoder = new TextEncoder();
-    // Process the upstream response in the background    (async () => {      const reader = response.body        .pipeThrough(parser)        .getReader();
-      await writer.write(encoder.encode('{"processedItems":['));      let first = true;
-      while (true) {        const { done, value } = await reader.read();        if (done) break;
-        // Transform each item as it streams through        const item = value.value;        const transformed = {          id: item.id,          title: item.title.toUpperCase(),          processed: true,        };
-        if (!first) await writer.write(encoder.encode(","));        first = false;        await writer.write(encoder.encode(JSON.stringify(transformed)));      }
-      await writer.write(encoder.encode("]}"));      await writer.close();    })();
-    return new Response(readable, {      headers: { "Content-Type": "application/json" },    });  },};
+
+
+    const { readable, writable } = new TransformStream();
+    const writer = writable.getWriter();
+    const encoder = new TextEncoder();
+
+
+    // Process the upstream response in the background
+    (async () => {
+      const reader = response.body
+        .pipeThrough(parser)
+        .getReader();
+
+
+      await writer.write(encoder.encode('{"processedItems":['));
+      let first = true;
+
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+
+        // Transform each item as it streams through
+        const item = value.value;
+        const transformed = {
+          id: item.id,
+          title: item.title.toUpperCase(),
+          processed: true,
+        };
+
+
+        if (!first) await writer.write(encoder.encode(","));
+        first = false;
+        await writer.write(encoder.encode(JSON.stringify(transformed)));
+      }
+
+
+      await writer.write(encoder.encode("]}"));
+      await writer.close();
+    })();
+
+
+    return new Response(readable, {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
 
 ## Related resources

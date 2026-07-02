@@ -26,16 +26,28 @@ A component which renders the draft attachment to send
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDraftAttachmentView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkDraftAttachmentView />;}
+
+
+function MyComponent() {
+  return <RtkDraftAttachmentView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDraftAttachmentView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkDraftAttachmentView      attachment={{}}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDraftAttachmentView
+      attachment={{}}
+    />
+  );
+}
 ```
 
 ```json

@@ -28,14 +28,20 @@ A menu component.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-menu></rtk-menu>
+```html
+<!-- component.html -->
+<rtk-menu></rtk-menu>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-menu offset="42" [placement]="placement" size="md"></rtk-menu>
+```html
+<!-- component.html -->
+<rtk-menu
+ offset="42"
+ [placement]="placement"
+ size="md">
+</rtk-menu>
 ```
 
 ```json

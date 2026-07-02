@@ -30,84 +30,210 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-12221)
-* [  wrangler.toml ](#tab-panel-12222)
+* [  wrangler.jsonc ](#tab-panel-12516)
+* [  wrangler.toml ](#tab-panel-12517)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "./dist/",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  }
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "./worker/index.ts",  "assets": {    "directory": "./dist/",    "binding": "ASSETS",    "run_worker_first": true  }}
+
+**TOML**
+
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "./worker/index.ts"
+
+
+[assets]
+directory = "./dist/"
+binding = "ASSETS"
+run_worker_first = true
 ```
 
-TOML
+* [  JavaScript ](#tab-panel-12520)
+* [  TypeScript ](#tab-panel-12521)
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"main = "./worker/index.ts"
-[assets]directory = "./dist/"binding = "ASSETS"run_worker_first = true
-```
+**./worker/index.js**
 
-* [  JavaScript ](#tab-panel-12225)
-* [  TypeScript ](#tab-panel-12226)
-
-./worker/index.js
-
-```
+```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-export default class extends WorkerEntrypoint {  async fetch(request) {    // You can perform checks before fetching assets    const user = await checkIfRequestIsAuthenticated(request);
-    if (!user) {      return new Response("Unauthorized", { status: 401 });    }
-    // You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset    const assetResponse = await this.env.ASSETS.fetch(request);
-    // You can return static asset response as-is, or you can transform them with something like HTMLRewriter    return new HTMLRewriter()      .on("#user", {        element(element) {          element.setInnerContent(JSON.stringify({ name: user.name }));        },      })      .transform(assetResponse);  }}
+
+
+export default class extends WorkerEntrypoint {
+  async fetch(request) {
+    // You can perform checks before fetching assets
+    const user = await checkIfRequestIsAuthenticated(request);
+
+
+    if (!user) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+
+    // You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset
+    const assetResponse = await this.env.ASSETS.fetch(request);
+
+
+    // You can return static asset response as-is, or you can transform them with something like HTMLRewriter
+    return new HTMLRewriter()
+      .on("#user", {
+        element(element) {
+          element.setInnerContent(JSON.stringify({ name: user.name }));
+        },
+      })
+      .transform(assetResponse);
+  }
+}
 ```
 
-./worker/index.ts
+**./worker/index.ts**
 
-```
+```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-export default class extends WorkerEntrypoint<Env> {  async fetch(request: Request) {    // You can perform checks before fetching assets    const user = await checkIfRequestIsAuthenticated(request);
-    if (!user) {      return new Response("Unauthorized", { status: 401 });    }
-    // You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset    const assetResponse = await this.env.ASSETS.fetch(request);
-    // You can return static asset response as-is, or you can transform them with something like HTMLRewriter    return new HTMLRewriter()      .on("#user", {        element(element) {          element.setInnerContent(JSON.stringify({ name: user.name }));        },      })      .transform(assetResponse);  }}
+
+
+export default class extends WorkerEntrypoint<Env> {
+  async fetch(request: Request) {
+    // You can perform checks before fetching assets
+    const user = await checkIfRequestIsAuthenticated(request);
+
+
+    if (!user) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+
+    // You can then just fetch the assets as normal, or you could pass in a custom Request object here if you wanted to fetch some other specific asset
+    const assetResponse = await this.env.ASSETS.fetch(request);
+
+
+    // You can return static asset response as-is, or you can transform them with something like HTMLRewriter
+    return new HTMLRewriter()
+      .on("#user", {
+        element(element) {
+          element.setInnerContent(JSON.stringify({ name: user.name }));
+        },
+      })
+      .transform(assetResponse);
+  }
+}
 ```
 
 ### Run Worker first for selective paths
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-12223)
-* [  wrangler.toml ](#tab-panel-12224)
+* [  wrangler.jsonc ](#tab-panel-12518)
+* [  wrangler.toml ](#tab-panel-12519)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "./dist/",
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": ["/oauth/callback"]
+  }
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "./worker/index.ts",  "assets": {    "directory": "./dist/",    "not_found_handling": "single-page-application",    "binding": "ASSETS",    "run_worker_first": ["/oauth/callback"]  }}
+
+**TOML**
+
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "./worker/index.ts"
+
+
+[assets]
+directory = "./dist/"
+not_found_handling = "single-page-application"
+binding = "ASSETS"
+run_worker_first = [ "/oauth/callback" ]
 ```
 
-TOML
+* [  JavaScript ](#tab-panel-12522)
+* [  TypeScript ](#tab-panel-12523)
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"main = "./worker/index.ts"
-[assets]directory = "./dist/"not_found_handling = "single-page-application"binding = "ASSETS"run_worker_first = [ "/oauth/callback" ]
-```
+**./worker/index.js**
 
-* [  JavaScript ](#tab-panel-12227)
-* [  TypeScript ](#tab-panel-12228)
-
-./worker/index.js
-
-```
+```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-export default class extends WorkerEntrypoint {  async fetch(request) {    // The only thing this Worker script does is handle an OAuth callback.    // All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.    const url = new URL(request.url);    const code = url.searchParams.get("code");    const state = url.searchParams.get("state");
-    const accessToken = await exchangeCodeForToken(code, state);    const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
-    // Redirect back to the index, but set a cookie that the front-end will use.    return new Response(null, {      headers: {        Location: "/",        "Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,      },    });  }}
+
+
+export default class extends WorkerEntrypoint {
+  async fetch(request) {
+    // The only thing this Worker script does is handle an OAuth callback.
+    // All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.
+    const url = new URL(request.url);
+    const code = url.searchParams.get("code");
+    const state = url.searchParams.get("state");
+
+
+    const accessToken = await exchangeCodeForToken(code, state);
+    const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
+
+
+    // Redirect back to the index, but set a cookie that the front-end will use.
+    return new Response(null, {
+      headers: {
+        Location: "/",
+        "Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,
+      },
+    });
+  }
+}
 ```
 
-./worker/index.ts
+**./worker/index.ts**
 
-```
+```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-export default class extends WorkerEntrypoint<Env> {  async fetch(request: Request) {    // The only thing this Worker script does is handle an OAuth callback.    // All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.    const url = new URL(request.url);    const code = url.searchParams.get("code");    const state = url.searchParams.get("state");
-    const accessToken = await exchangeCodeForToken(code, state);    const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
-    // Redirect back to the index, but set a cookie that the front-end will use.    return new Response(null, {      headers: {        Location: "/",        "Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,      },    });  }}
+
+
+export default class extends WorkerEntrypoint<Env> {
+  async fetch(request: Request) {
+    // The only thing this Worker script does is handle an OAuth callback.
+    // All other requests either serve an asset that matches or serve the index.html fallback, without ever hitting this code.
+    const url = new URL(request.url);
+    const code = url.searchParams.get("code");
+    const state = url.searchParams.get("state");
+
+
+    const accessToken = await exchangeCodeForToken(code, state);
+    const sessionIdentifier = await storeTokenAndGenerateSession(accessToken);
+
+
+    // Redirect back to the index, but set a cookie that the front-end will use.
+    return new Response(null, {
+      headers: {
+        Location: "/",
+        "Set-Cookie": `session_token=${sessionIdentifier}; HttpOnly; Secure; SameSite=Lax; Path=/`,
+      },
+    });
+  }
+}
 ```
 
 ```json

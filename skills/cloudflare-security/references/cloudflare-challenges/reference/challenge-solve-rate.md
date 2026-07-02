@@ -21,7 +21,7 @@ Every challenge involves two separate events:
 
 Most automated traffic abandons immediately upon encountering the challenge script and never reaches the second event. This is why the count of unsolved challenges is typically very large — those abandonments count as failures in the formula.
 
-```
+```txt
 CSR = number of challenges solved / number of challenges issued
 ```
 
@@ -29,8 +29,8 @@ CSR indicates the false positive percentage of a rule. A high CSR means a large 
 
 You can find the CSR of a rule by going to its corresponding dashboard page:
 
-* [  New dashboard ](#tab-panel-7087)
-* [ Old dashboard ](#tab-panel-7088)
+* [  New dashboard ](#tab-panel-7335)
+* [ Old dashboard ](#tab-panel-7336)
 
 For [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), go to your zone > **Security** \> **Security rules**.
 
@@ -57,7 +57,7 @@ The system views any issued challenge that does not result in a successful clear
 
 The official calculation for failures is:
 
-```
+```txt
 Failed Challenges = Total Challenges Issued − Total Challenges Solved
 ```
 

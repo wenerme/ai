@@ -28,16 +28,24 @@ Toggle button to start or stop meeting recording. Only visible for participants 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkRecordingToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkRecordingToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkRecordingToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkRecordingToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkRecordingToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkRecordingToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

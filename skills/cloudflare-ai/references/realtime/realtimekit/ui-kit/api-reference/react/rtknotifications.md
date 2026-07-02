@@ -29,16 +29,29 @@ A component which handles notifications. You can configure which notifications y
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkNotifications } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkNotifications />;}
+
+
+function MyComponent() {
+  return <RtkNotifications />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkNotifications } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkNotifications      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkNotifications
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

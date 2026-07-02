@@ -35,20 +35,31 @@ The `participant` parameter is positional. Pass it without a named argument: `Rt
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkParticipantTile(  participant,)
+
+
+RtkParticipantTile(
+  participant,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkParticipantTile(  participant,  designToken: yourDesignToken,  height: 300,  width: 200,)
+
+
+RtkParticipantTile(
+  participant,
+  designToken: yourDesignToken,
+  height: 300,
+  width: 200,
+)
 ```
 
 ```json

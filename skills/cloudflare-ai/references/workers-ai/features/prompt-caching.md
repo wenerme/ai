@@ -33,18 +33,47 @@ Prefix caching only works when a request routes to the same model instance that 
 
 ### REST API
 
-Terminal window
-
-```
-curl -X POST \  "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/moonshotai/kimi-k2.5" \  -H "Authorization: Bearer {api_token}" \  -H "Content-Type: application/json" \  -H "x-session-affinity: ses_12345678" \  -d '{    "messages": [      {        "role": "system",        "content": "You are a helpful assistant."      },      {        "role": "user",        "content": "What is prefix caching and why does it matter?"      }    ],    "max_tokens": 2400,    "stream": true  }'
+```bash
+curl -X POST \
+  "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/moonshotai/kimi-k2.5" \
+  -H "Authorization: Bearer {api_token}" \
+  -H "Content-Type: application/json" \
+  -H "x-session-affinity: ses_12345678" \
+  -d '{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "What is prefix caching and why does it matter?"
+      }
+    ],
+    "max_tokens": 2400,
+    "stream": true
+  }'
 ```
 
 ### Workers AI binding
 
-JavaScript
+**JavaScript**
 
-```
-const response = await env.AI.run(  "@cf/moonshotai/kimi-k2.5",  {    messages: [      { role: "system", content: "You are a helpful assistant." },      { role: "user", content: "Explain prefix caching." },    ],  },  {    extraHeaders: {      "x-session-affinity": "ses_12345678",    },  },);
+```js
+const response = await env.AI.run(
+  "@cf/moonshotai/kimi-k2.5",
+  {
+    messages: [
+      { role: "system", content: "You are a helpful assistant." },
+      { role: "user", content: "Explain prefix caching." },
+    ],
+  },
+  {
+    extraHeaders: {
+      "x-session-affinity": "ses_12345678",
+    },
+  },
+);
 ```
 
 ## Structuring prompts for caching

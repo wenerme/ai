@@ -30,27 +30,45 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-11509)
-* [  TypeScript ](#tab-panel-11510)
-* [  Python ](#tab-panel-11511)
+* [  JavaScript ](#tab-panel-11804)
+* [  TypeScript ](#tab-panel-11805)
+* [  Python ](#tab-panel-11806)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async scheduled(controller, env, ctx) {    console.log("cron processed");  },};
-```
-
-TypeScript
-
-```
-interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    console.log("cron processed");  },};
+```js
+export default {
+  async scheduled(controller, env, ctx) {
+    console.log("cron processed");
+  },
+};
 ```
 
-Python
+**TypeScript**
 
+```ts
+interface Env {}
+export default {
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    console.log("cron processed");
+  },
+};
 ```
+
+**Python**
+
+```python
 from workers import WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        # All four parameters (self, controller, env, ctx) are required        print("cron processed")
+
+
+class Default(WorkerEntrypoint):
+    async def scheduled(self, controller, env, ctx):
+        # All four parameters (self, controller, env, ctx) are required
+        print("cron processed")
 ```
 
 Refer to the following additional examples to write your code:
@@ -72,36 +90,60 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11514)
-* [  wrangler.toml ](#tab-panel-11515)
+* [  wrangler.jsonc ](#tab-panel-11809)
+* [  wrangler.toml ](#tab-panel-11810)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "triggers": {
+    // Schedule cron triggers:
+    // - At every 3rd minute
+    // - At 15:00 (UTC) on first day of the month
+    // - At 23:59 (UTC) on the last weekday of the month
+    "crons": [
+      "*/3 * * * *",
+      "0 15 1 * *",
+      "59 23 LW * *"
+    ]
+  }
+}
 ```
-{  "triggers": {    // Schedule cron triggers:    // - At every 3rd minute    // - At 15:00 (UTC) on first day of the month    // - At 23:59 (UTC) on the last weekday of the month    "crons": [      "*/3 * * * *",      "0 15 1 * *",      "59 23 LW * *"    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-[triggers]crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
+```toml
+[triggers]
+crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 ```
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-11516)
-* [  wrangler.toml ](#tab-panel-11517)
+* [  wrangler.jsonc ](#tab-panel-11811)
+* [  wrangler.toml ](#tab-panel-11812)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "dev": {
+      "triggers": {
+        "crons": [
+          "0 * * * *"
+        ]
+      }
+    }
+  }
+}
 ```
-{  "env": {    "dev": {      "triggers": {        "crons": [          "0 * * * *"        ]      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[env.dev.triggers]crons = [ "0 * * * *" ]
+```toml
+[env.dev.triggers]
+crons = [ "0 * * * *" ]
 ```
 
 #### Via the dashboard
@@ -161,39 +203,34 @@ Some common time intervals that may be useful for setting up your Cron Trigger:
 
 Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/handler/scheduled` route, which can be used to test using an HTTP request. If you are using the Cloudflare Vite Plugin, ensure that you use the correct vite port for the following commands (Vite defaults to 5173).
 
-Terminal window
-
-```
+```sh
 curl "http://localhost:8787/cdn-cgi/handler/scheduled"
 ```
 
 By default, the endpoint returns the scheduled handler outcome as text. To return the structured scheduled handler result as JSON, pass `?format=json`.
 
-Terminal window
-
-```
+```sh
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 ```
 
-```
-{  "outcome": "ok",  "noRetry": false}
+```json
+{
+  "outcome": "ok",
+  "noRetry": false
+}
 ```
 
 The `noRetry` field is `true` when the scheduled handler calls `controller.noRetry()`.
 
 To simulate different cron patterns, a `cron` query parameter can be passed in.
 
-Terminal window
-
-```
+```sh
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*"
 ```
 
 Optionally, you can also pass a `time` query parameter to override `controller.scheduledTime` in your scheduled event listener.
 
-Terminal window
-
-```
+```sh
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=1745856238000"
 ```
 
@@ -235,19 +272,25 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-11512)
-* [  wrangler.toml ](#tab-panel-11513)
+* [  wrangler.jsonc ](#tab-panel-11807)
+* [  wrangler.toml ](#tab-panel-11808)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "triggers": {
+    // Remove all cron triggers:
+    "crons": []
+  }
+}
 ```
-{  "triggers": {    // Remove all cron triggers:    "crons": []  }}
-```
 
-TOML
+**TOML**
 
-```
-[triggers]crons = [ ]
+```toml
+[triggers]
+crons = [ ]
 ```
 
 ## Limits

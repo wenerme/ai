@@ -29,16 +29,30 @@ A button which toggles full screen mode for any existing `rtk-meeting` component
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkFullscreenToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkFullscreenToggle />;}
+
+
+function MyComponent() {
+  return <RtkFullscreenToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkFullscreenToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkFullscreenToggle      size="md"      targetElement={htmlelement}      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkFullscreenToggle
+      size="md"
+      targetElement={htmlelement}
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

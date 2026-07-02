@@ -104,10 +104,17 @@ For each additional mention of your ASN in the received AS path, Cloudflare adds
 
 For example, if your ASN is `65000` then the `BGP UPDATE` to Cloudflare will be:
 
-```
-# No change to base priority.AS_PATH: 65000 65200
-# Add 10 to base priority for 1 prepend of 65000AS_PATH: 65000 65000 65200
-# Add 20 to base priority for 2 prepend of 65000AS_PATH: 65000 65000 65000 65200
+```txt
+# No change to base priority.
+AS_PATH: 65000 65200
+
+
+# Add 10 to base priority for 1 prepend of 65000
+AS_PATH: 65000 65000 65200
+
+
+# Add 20 to base priority for 2 prepend of 65000
+AS_PATH: 65000 65000 65000 65200
 ```
 
 #### How communities and prepends work together

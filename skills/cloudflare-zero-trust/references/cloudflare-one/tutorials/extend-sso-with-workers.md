@@ -61,16 +61,55 @@ For setup, select the following options:
   * For _Do you want to use git for version control?_, choose `Yes`.
   * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
 2. Change to the project directory:
-Terminal window
-```
+```sh
 $ cd device-posture-worker
 ```
 3. Copy-paste the following code into `src/index.js`. Be sure to replace `<your-team-name>` with your Zero Trust team name.
-index.js
-```
-import { parse } from "cookie";export default {  async fetch(request, env, ctx) {    // The name of the cookie    const COOKIE_NAME = "CF_Authorization";    const CF_GET_IDENTITY =      "https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/get-identity";    const cookie = parse(request.headers.get("Cookie") || "");    if (cookie[COOKIE_NAME] != null) {      try {        let id = await (await fetch(CF_GET_IDENTITY, request)).json();        let diskEncryptionStatus = false;        let firewallStatus = false;
-        for (const checkId in id.devicePosture) {          const check = id.devicePosture[checkId];          if (check.type === "disk_encryption") {            console.log(check.type);            diskEncryptionStatus = check.success;          }          if (check.type === "firewall") {            console.log(check.type);            firewallStatus = check.success;            break;          }        }        //clone request (immutable otherwise) and insert posture values in new header set        let newRequest = await new Request(request);        newRequest.headers.set(          "Cf-Access-Firewall-Activated",          firewallStatus,        );        newRequest.headers.set("Cf-Access-Disk-Encrypted", firewallStatus);
-        //sent modified request to origin        return await fetch(newRequest);      } catch (e) {        console.log(e);        return await fetch(request);      }    }    return await fetch(request);  },};
+
+**index.js**
+```js
+import { parse } from "cookie";
+export default {
+  async fetch(request, env, ctx) {
+    // The name of the cookie
+    const COOKIE_NAME = "CF_Authorization";
+    const CF_GET_IDENTITY =
+      "https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/get-identity";
+    const cookie = parse(request.headers.get("Cookie") || "");
+    if (cookie[COOKIE_NAME] != null) {
+      try {
+        let id = await (await fetch(CF_GET_IDENTITY, request)).json();
+        let diskEncryptionStatus = false;
+        let firewallStatus = false;
+        for (const checkId in id.devicePosture) {
+          const check = id.devicePosture[checkId];
+          if (check.type === "disk_encryption") {
+            console.log(check.type);
+            diskEncryptionStatus = check.success;
+          }
+          if (check.type === "firewall") {
+            console.log(check.type);
+            firewallStatus = check.success;
+            break;
+          }
+        }
+        //clone request (immutable otherwise) and insert posture values in new header set
+        let newRequest = await new Request(request);
+        newRequest.headers.set(
+          "Cf-Access-Firewall-Activated",
+          firewallStatus,
+        );
+        newRequest.headers.set("Cf-Access-Disk-Encrypted", firewallStatus);
+        //sent modified request to origin
+        return await fetch(newRequest);
+      } catch (e) {
+        console.log(e);
+        return await fetch(request);
+      }
+    }
+    return await fetch(request);
+  },
+};
 ```
 
 ## 2\. View the user's identity
@@ -79,45 +118,122 @@ The script in `index.js` uses the [get-identity](https://developers.cloudflare.c
 
 Below is an example of a user identity that includes the `disk_encryption` and `firewall` posture checks. The Worker inserts the posture check results into the request headers **Cf-Access-Firewall-Activated** and **Cf-Access-Disk-Encrypted**.
 
-Example user identity
+**Example user identity**
 
-```
-{  "id": "P51Tuu01fWHMBjIBvrCK1lK-eUDWs2aQMv03WDqT5oY",  "name": "John Doe",  "email": "john.doe@cloudflare.com",  "amr": [    "pwd"  ],  "oidc_fields": {    "principalName": "XXXXXX_cloudflare.com#EXT#@XXXXXXcloudflare.onmicrosoft.com"  },  "groups": [    {      "id": "fdaedb59-e9be-4ab7-8001-3e069da54185",      "name": "XXXXX"    }  ],  "idp": {    "id": "b9f4d68e-dac1-48b0-b728-ae05a5f0d4b2",    "type": "azureAD"  },  "geo": {    "country": "FR"  },  "user_uuid": "ce40d564-c72f-475f-a9b8-f395f19ad986",  "account_id": "121287a0c6e6260ec930655e6b39a3a8",  "iat": 1724056537,  "devicePosture": {    "f6f9391e-6776-4878-9c60-0cc807dc7dc8": {      "id": "f6f9391e-6776-4878-9c60-0cc807dc7dc8",      "schedule": "5m",      "timestamp": "2024-08-19T08:31:59.274Z",      "description": "",      "type": "disk_encryption",      "check": {        "drives": {          "C": {            "encrypted": true          }        }      },      "success": false,      "rule_name": "Disk Encryption - Windows",      "input": {        "requireAll": true,        "checkDisks": []    },    "a0a8e83d-be75-4aa6-bfa0-5791da6e9186": {      "id": "a0a8e83d-be75-4aa6-bfa0-5791da6e9186",      "schedule": "5m",      "timestamp": "2024-08-19T08:31:59.274Z",      "description": "",      "type": "firewall",      "check": {        "firewall": false      },      "success": false,      "rule_name": "Local Firewall Check - Windows",      "input": {        "enabled": true      }    }    ...  }
+```json
+{
+  "id": "P51Tuu01fWHMBjIBvrCK1lK-eUDWs2aQMv03WDqT5oY",
+  "name": "John Doe",
+  "email": "john.doe@cloudflare.com",
+  "amr": [
+    "pwd"
+  ],
+  "oidc_fields": {
+    "principalName": "XXXXXX_cloudflare.com#EXT#@XXXXXXcloudflare.onmicrosoft.com"
+  },
+  "groups": [
+    {
+      "id": "fdaedb59-e9be-4ab7-8001-3e069da54185",
+      "name": "XXXXX"
+    }
+  ],
+  "idp": {
+    "id": "b9f4d68e-dac1-48b0-b728-ae05a5f0d4b2",
+    "type": "azureAD"
+  },
+  "geo": {
+    "country": "FR"
+  },
+  "user_uuid": "ce40d564-c72f-475f-a9b8-f395f19ad986",
+  "account_id": "121287a0c6e6260ec930655e6b39a3a8",
+  "iat": 1724056537,
+  "devicePosture": {
+    "f6f9391e-6776-4878-9c60-0cc807dc7dc8": {
+      "id": "f6f9391e-6776-4878-9c60-0cc807dc7dc8",
+      "schedule": "5m",
+      "timestamp": "2024-08-19T08:31:59.274Z",
+      "description": "",
+      "type": "disk_encryption",
+      "check": {
+        "drives": {
+          "C": {
+            "encrypted": true
+          }
+        }
+      },
+      "success": false,
+      "rule_name": "Disk Encryption - Windows",
+      "input": {
+        "requireAll": true,
+        "checkDisks": []
+    },
+    "a0a8e83d-be75-4aa6-bfa0-5791da6e9186": {
+      "id": "a0a8e83d-be75-4aa6-bfa0-5791da6e9186",
+      "schedule": "5m",
+      "timestamp": "2024-08-19T08:31:59.274Z",
+      "description": "",
+      "type": "firewall",
+      "check": {
+        "firewall": false
+      },
+      "success": false,
+      "rule_name": "Local Firewall Check - Windows",
+      "input": {
+        "enabled": true
+      }
+    }
+    ...
+  }
 ```
 
 ## 3\. Route the Worker to your application
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-7850)
-* [  wrangler.toml ](#tab-panel-7851)
+* [  wrangler.jsonc ](#tab-panel-8063)
+* [  wrangler.toml ](#tab-panel-8064)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "route": {
+    "pattern": "app.example.com/*",
+    "zone_name": "example.com"
+  }
+}
 ```
-{  "route": {    "pattern": "app.example.com/*",    "zone_name": "example.com"  }}
-```
 
-TOML
+**TOML**
 
-```
-[route]pattern = "app.example.com/*"zone_name = "example.com"
+```toml
+[route]
+pattern = "app.example.com/*"
+zone_name = "example.com"
 ```
 
 ## 4\. Deploy the Worker
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
 The Worker will now insert the **Cf-Access-Firewall-Activated** and **Cf-Access-Disk-Encrypted** headers into requests that pass your application's Access policies.
 
-Example request headers
+**Example request headers**
 
-```
-{  "headers": {    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",    "Accept-Encoding": "gzip",    "Accept-Language": "en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-GB;q=0.6",    "Cf-Access-Authenticated-User-Email": "John.Doe@cloudflare.com",    "Cf-Access-Disk-Encrypted": "false",    "Cf-Access-Firewall-Activated": "false",    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"  }}
+```json
+{
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Encoding": "gzip",
+    "Accept-Language": "en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-GB;q=0.6",
+    "Cf-Access-Authenticated-User-Email": "John.Doe@cloudflare.com",
+    "Cf-Access-Disk-Encrypted": "false",
+    "Cf-Access-Firewall-Activated": "false",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+  }
+}
 ```
 
 You can verify that these headers are received by the origin server.

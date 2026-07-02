@@ -25,14 +25,41 @@ Below is an example of using [StarRocks ↗](https://docs.starrocks.io/docs/data
 
 In your running StarRocks instance, run these commands:
 
-```
+```sql
 -- Create an Iceberg catalog named `r2` and set it as the current catalog
-CREATE EXTERNAL CATALOG r2PROPERTIES(    "type" = "iceberg",    "iceberg.catalog.type" = "rest",    "iceberg.catalog.uri" = "<r2_catalog_uri>",    "iceberg.catalog.security" = "oauth2",    "iceberg.catalog.oauth2.token" = "<r2_api_token>",    "iceberg.catalog.warehouse" = "<r2_warehouse_name>");
+
+
+CREATE EXTERNAL CATALOG r2
+PROPERTIES
+(
+    "type" = "iceberg",
+    "iceberg.catalog.type" = "rest",
+    "iceberg.catalog.uri" = "<r2_catalog_uri>",
+    "iceberg.catalog.security" = "oauth2",
+    "iceberg.catalog.oauth2.token" = "<r2_api_token>",
+    "iceberg.catalog.warehouse" = "<r2_warehouse_name>"
+);
+
+
 SET CATALOG r2;
+
+
 -- Create a database and display all databases in newly connected catalog
+
+
 CREATE DATABASE testdb;
+
+
 SHOW DATABASES FROM r2;
-+--------------------+| Database           |+--------------------+| information_schema || testdb             |+--------------------+2 rows in set (0.66 sec)
+
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| testdb             |
++--------------------+
+2 rows in set (0.66 sec)
 ```
 
 ```json

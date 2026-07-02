@@ -36,9 +36,7 @@ Creating a subscription allows your queue to receive messages when events occur 
 
 To create a subscription using Wrangler, run the [queues subscription create command](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-create):
 
-Terminal window
-
-```
+```bash
 npx wrangler queues subscription create <queue-name> --source <source-type> --events <event1,event2> --<source-specific-option> <value>
 ```
 
@@ -59,9 +57,7 @@ You can view all subscriptions configured for a queue to see what events it is c
 
 To list subscriptions for a queue, run the [queues subscription list command](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-list):
 
-Terminal window
-
-```
+```bash
 npx wrangler queues subscription list <queue-name>
 ```
 
@@ -82,9 +78,7 @@ When you delete a subscription, your queue will stop receiving messages for thos
 
 To delete a subscription, run the [queues subscription delete command](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-delete):
 
-Terminal window
-
-```
+```bash
 npx wrangler queues subscription delete <queue-name> --id <subscription-id>
 ```
 

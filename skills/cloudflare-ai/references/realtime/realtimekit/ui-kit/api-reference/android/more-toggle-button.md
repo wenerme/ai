@@ -24,16 +24,20 @@ A button which toggles visibility of a more menu.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton    android:id="@+id/rtk_more_toggle"    android:layout_width="50dp"    android:layout_height="50dp" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton
+    android:id="@+id/rtk_more_toggle"
+    android:layout_width="50dp"
+    android:layout_height="50dp" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val moreToggleButton = findViewById<RtkMoreToggleButton>(R.id.rtk_more_toggle)moreToggleButton.activate(meeting)
+```kotlin
+val moreToggleButton = findViewById<RtkMoreToggleButton>(R.id.rtk_more_toggle)
+moreToggleButton.activate(meeting)
 ```
 
 ```json

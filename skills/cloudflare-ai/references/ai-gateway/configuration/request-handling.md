@@ -33,10 +33,19 @@ A timeout is set in milliseconds. The timeout is based on when the first part of
 
 For a provider-specific endpoint, configure the timeout value by adding a `cf-aig-request-timeout` header.
 
-Request with timeout
+**Request with timeout**
 
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-request-timeout: 5000" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --header "cf-aig-request-timeout: 5000" \
+  --data '{
+    "model": "openai/gpt-4.1-mini",
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
+  }'
 ```
 
 ---

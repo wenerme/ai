@@ -24,13 +24,13 @@ The cookie values are not pre-processed and retain the original case used in the
 
 Example value:
 
-```
+```txt
 { "app": ["test"] }
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.cookies["app"][*] == "test")
 ```
 

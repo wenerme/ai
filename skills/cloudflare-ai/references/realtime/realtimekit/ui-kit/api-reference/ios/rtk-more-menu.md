@@ -33,20 +33,46 @@ A bottom sheet menu that displays meeting action options such as chat, polls, an
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let menu = RtkMoreMenu(    features: [.chat, .polls, .participants],    onSelect: { menuType in        print("Selected: \(menuType)")    })menu.show(on: self.view)
+
+
+let menu = RtkMoreMenu(
+    features: [.chat, .polls, .participants],
+    onSelect: { menuType in
+        print("Selected: \(menuType)")
+    }
+)
+menu.show(on: self.view)
 ```
 
 ### With title
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let menu = RtkMoreMenu(    title: "More Options",    features: [.chat, .polls, .participants],    onSelect: { menuType in        switch menuType {        case .chat:            print("Open chat")        case .polls:            print("Open polls")        case .participants:            print("Open participants")        default:            break        }    })menu.show(on: self.view)
+
+
+let menu = RtkMoreMenu(
+    title: "More Options",
+    features: [.chat, .polls, .participants],
+    onSelect: { menuType in
+        switch menuType {
+        case .chat:
+            print("Open chat")
+        case .polls:
+            print("Open polls")
+        case .participants:
+            print("Open participants")
+        default:
+            break
+        }
+    }
+)
+menu.show(on: self.view)
 ```
 
 ```json

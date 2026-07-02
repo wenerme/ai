@@ -20,10 +20,9 @@ You can use an external tool such as the [SSLShopper Certificate Key Matcher ↗
 
 Alternatively, use `openssl` to verify the match by comparing the public key hash of both files. This method works for both RSA and ECDSA certificates:
 
-Terminal window
-
-```
-openssl x509 -noout -pubkey -in certificate.crt | openssl md5openssl pkey -pubout -in private.key | openssl md5
+```bash
+openssl x509 -noout -pubkey -in certificate.crt | openssl md5
+openssl pkey -pubout -in private.key | openssl md5
 ```
 
 If the two outputs match, the certificate and key are a valid pair.
@@ -32,9 +31,7 @@ If the two outputs match, the certificate and key are a valid pair.
 
 You can use `openssl` to check all the details of your certificate:
 
-Terminal window
-
-```
+```bash
 openssl x509 -in certificate.crt -noout -text
 ```
 
@@ -44,9 +41,7 @@ Then, make sure all the information is correct before uploading.
 
 Cloudflare does not accept password-protected private keys. If your private key requires a password, remove it before uploading. The following command works for both RSA and ECDSA keys:
 
-Terminal window
-
-```
+```bash
 openssl pkey -in protected.key -out unprotected.key
 ```
 
@@ -89,9 +84,7 @@ In the case of an update with the [PATCH API call](https://developers.cloudflare
 
 Carefully check the content of the certificate. You may use `openssl` to check all the details of your certificate:
 
-Terminal window
-
-```
+```bash
 openssl x509 -in certificate.crt -noout -text
 ```
 
@@ -207,9 +200,7 @@ Cloudflare verifies that uploaded custom certificates include a hostname for the
 
 Make sure your certificate contains a Subject Alternative Name (SAN) specifying a hostname in your zone. You can use the `openssl` command below and look for `Subject Alternative Name` in the output.
 
-Terminal window
-
-```
+```bash
 openssl x509 -in certificateFile.pem -noout -text
 ```
 
@@ -239,10 +230,9 @@ The certificate and private key you uploaded do not form a valid pair. The priva
 
 Ensure the private key corresponds to the certificate you are uploading. You can verify this by comparing the public key hash of both files. This method works for both RSA and ECDSA certificates:
 
-Terminal window
-
-```
-openssl x509 -noout -pubkey -in certificate.crt | openssl md5openssl pkey -pubout -in private.key | openssl md5
+```bash
+openssl x509 -noout -pubkey -in certificate.crt | openssl md5
+openssl pkey -pubout -in private.key | openssl md5
 ```
 
 If the outputs do not match, you have mismatched the certificate and key.

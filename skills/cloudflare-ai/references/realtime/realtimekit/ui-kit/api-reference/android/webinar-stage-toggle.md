@@ -26,16 +26,20 @@ Component that lets you add provision for the local user to join the webinar sta
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.webinarstagetogglebutton.RtkWebinarStageToggleButton    android:id="@+id/rtk_webinar_stage_toggle"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.webinarstagetogglebutton.RtkWebinarStageToggleButton
+    android:id="@+id/rtk_webinar_stage_toggle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val stageToggleButton = findViewById<RtkWebinarStageToggleButton>(R.id.rtk_webinar_stage_toggle)stageToggleButton.activate(meeting)
+```kotlin
+val stageToggleButton = findViewById<RtkWebinarStageToggleButton>(R.id.rtk_webinar_stage_toggle)
+stageToggleButton.activate(meeting)
 ```
 
 ```json

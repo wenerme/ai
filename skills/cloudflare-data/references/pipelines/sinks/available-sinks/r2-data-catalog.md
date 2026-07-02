@@ -16,10 +16,13 @@ R2 Data Catalog sinks write processed data from pipelines as [Apache Iceberg ↗
 
 To create an R2 Data Catalog sink, run the [pipelines sinks create](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command and specify the sink type, target bucket, namespace, and table name:
 
-Terminal window
-
-```
-npx wrangler pipelines sinks create my-sink \  --type r2-data-catalog \  --bucket my-bucket \  --namespace my_namespace \  --table my_table \  --catalog-token YOUR_CATALOG_TOKEN
+```bash
+npx wrangler pipelines sinks create my-sink \
+  --type r2-data-catalog \
+  --bucket my-bucket \
+  --namespace my_namespace \
+  --table my_table \
+  --catalog-token YOUR_CATALOG_TOKEN
 ```
 
 The sink will create the specified namespace and table if they do not exist. Sinks cannot be created for existing Iceberg tables.
@@ -32,9 +35,7 @@ R2 Data Catalog sinks only support Parquet format. JSON format is not supported 
 
 Configure Parquet compression for optimal storage and query performance:
 
-Terminal window
-
-```
+```bash
 --compression zstd
 ```
 
@@ -50,9 +51,7 @@ Terminal window
 
 [Row groups ↗](https://parquet.apache.org/docs/file-format/configurations/) are sets of rows in a Parquet file that are stored together, affecting memory usage and query performance. Configure the target row group size in MB:
 
-Terminal window
-
-```
+```bash
 --target-row-group-size 256
 ```
 
@@ -67,9 +66,7 @@ Control when data is written to Iceberg tables. Configure based on your needs:
 
 Set how often files are written (default: 300 seconds, minimum: 60 seconds):
 
-Terminal window
-
-```
+```bash
 --roll-interval 60  # Write files every 60 seconds
 ```
 
@@ -79,9 +76,7 @@ The minimum interval for R2 Data Catalog sinks is 60 seconds to prevent compacti
 
 Set maximum file size in MB before creating a new file:
 
-Terminal window
-
-```
+```bash
 --roll-size 100  # Create new file after 100MB
 ```
 
@@ -89,9 +84,7 @@ Terminal window
 
 R2 Data Catalog sinks require an API token with [R2 Admin Read & Write permissions](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#create-api-token-in-the-dashboard). This permission grants the sink access to both R2 Data Catalog and R2 storage.
 
-Terminal window
-
-```
+```bash
 --catalog-token YOUR_CATALOG_TOKEN
 ```
 

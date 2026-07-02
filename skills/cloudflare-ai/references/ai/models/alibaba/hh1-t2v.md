@@ -32,23 +32,41 @@ Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text promp
 * [ TypeScript ](#tab-panel-16)
 * [ cURL ](#tab-panel-17)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1-t2v',  { prompt: 'A little girl walking on the road' },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1-t2v',
+  { prompt: 'A little girl walking on the road' },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1-t2v",  "input": {    "prompt": "A little girl walking on the road"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1-t2v",
+  "input": {
+    "prompt": "A little girl walking on the road"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-14)
 * [ Raw response ](#tab-panel-15)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/simple-text-to-video.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/simple-text-to-video.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
@@ -58,23 +76,49 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-22)
 * [ cURL ](#tab-panel-23)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1-t2v',  {    prompt: 'A dog running through a field of tall grass, slow motion, golden hour',    duration: 6,    ratio: '9:16',    resolution: '1080P',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1-t2v',
+  {
+    prompt: 'A dog running through a field of tall grass, slow motion, golden hour',
+    duration: 6,
+    ratio: '9:16',
+    resolution: '1080P',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1-t2v",  "input": {    "prompt": "A dog running through a field of tall grass, slow motion, golden hour",    "duration": 6,    "ratio": "9:16",    "resolution": "1080P"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1-t2v",
+  "input": {
+    "prompt": "A dog running through a field of tall grass, slow motion, golden hour",
+    "duration": 6,
+    "ratio": "9:16",
+    "resolution": "1080P"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-18)
 * [ Raw response ](#tab-panel-19)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/vertical-1080p.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/vertical-1080p.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **Reproducible Output**  — Use a fixed seed for reproducibility
@@ -82,23 +126,51 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-24)
 * [ cURL ](#tab-panel-25)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1-t2v',  {    prompt: 'Clouds drifting across a mountain range, time-lapse style',    duration: 5,    ratio: '16:9',    resolution: '720P',    seed: 42,  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1-t2v',
+  {
+    prompt: 'Clouds drifting across a mountain range, time-lapse style',
+    duration: 5,
+    ratio: '16:9',
+    resolution: '720P',
+    seed: 42,
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1-t2v",  "input": {    "prompt": "Clouds drifting across a mountain range, time-lapse style",    "duration": 5,    "ratio": "16:9",    "resolution": "720P",    "seed": 42  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1-t2v",
+  "input": {
+    "prompt": "Clouds drifting across a mountain range, time-lapse style",
+    "duration": 5,
+    "ratio": "16:9",
+    "resolution": "720P",
+    "seed": 42
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-20)
 * [ Raw response ](#tab-panel-21)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/reproducible-output.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/reproducible-output.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
@@ -106,25 +178,25 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ Input ](#tab-panel-26)
 * [ Output ](#tab-panel-27)
 
-duration
-
-`integer`maximum: 15minimum: 3
-
 prompt
 
-`string`requiredmaxLength: 2500minLength: 1
-
-ratio
-
-`string`enum: 16:9, 9:16, 1:1, 4:3, 3:4
+`string`requiredminLength: 1maxLength: 2500
 
 resolution
 
 `string`enum: 720P, 1080P
 
+ratio
+
+`string`enum: 16:9, 9:16, 1:1, 4:3, 3:4
+
+duration
+
+`integer`minimum: 3maximum: 15
+
 seed
 
-`integer`maximum: 2147483647minimum: 0
+`integer`minimum: 0maximum: 2147483647
 
 watermark
 

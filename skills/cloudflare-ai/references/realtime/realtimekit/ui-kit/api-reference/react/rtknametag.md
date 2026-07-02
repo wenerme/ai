@@ -30,16 +30,30 @@ A component which shows a participant's name.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkNameTag } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkNameTag />;}
+
+
+function MyComponent() {
+  return <RtkNameTag />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkNameTag } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkNameTag      isScreenShare={true}      meeting={meeting}      participant={participant}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkNameTag
+      isScreenShare={true}
+      meeting={meeting}
+      participant={participant}
+    />
+  );
+}
 ```
 
 ```json

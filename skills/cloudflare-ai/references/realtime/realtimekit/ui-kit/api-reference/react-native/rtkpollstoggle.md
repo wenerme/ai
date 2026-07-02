@@ -29,16 +29,31 @@ Toggle button to open the polls sidebar panel. Hides if poll permissions are not
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPollsToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPollsToggle meeting={meeting} states={states} />;}
+
+
+function MyComponent() {
+  return <RtkPollsToggle meeting={meeting} states={states} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPollsToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkPollsToggle      meeting={meeting}      states={states}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPollsToggle
+      meeting={meeting}
+      states={states}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

@@ -79,9 +79,7 @@ Cloudflare highly recommends setting this value to `false`. Refer to the [Logpus
   * **<SOURCE\_TYPE>**: The Splunk source type. For example: `cloudflare:json`.
   * **<SPLUNK\_AUTH\_TOKEN>**: The Splunk authorization token that is URL-encoded and must be prefixed with the word `Splunk`. For example: `Splunk e6d94e8c-5792-4ad1-be3c-29bcaee0197d`.
 
-Terminal window
-
-```
+```bash
 "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>"
 ```
 
@@ -95,16 +93,57 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Response:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/) to update a job (including enabling and disabling).
@@ -115,8 +154,8 @@ Refer to the [Logpush FAQ](https://developers.cloudflare.com/logs/faq/logpush/) 
 
 If your logpush destination hostname is proxied through Cloudflare, and you have the Cloudflare Web Application Firewall (WAF) turned on, you may be challenged or blocked when Cloudflare makes a request to Splunk HTTP Event Collector (HEC). To make sure this does not happen, you have to create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that allows Cloudflare to bypass the HEC endpoint.
 
-* [  New dashboard ](#tab-panel-9480)
-* [ Old dashboard ](#tab-panel-9481)
+* [  New dashboard ](#tab-panel-9771)
+* [ Old dashboard ](#tab-panel-9772)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -133,7 +172,7 @@ If your logpush destination hostname is proxied through Cloudflare, and you have
 | AS Num           | is in    | 13335, 132892, 202623                                               |
 | User Agent       | equals   | Go-http-client/2.0                                                  |
 5. After inputting the values as shown in the table, you should have an Expression Preview with the values you added for your specific rule. The example below reflects the hostname `splunk.cf-analytics.com`.
-```
+```txt
 (http.request.method eq "POST" and http.host eq "splunk.cf-analytics.com" and http.request.uri.path eq "/services/collector/raw" and http.request.uri.query contains "channel" and ip.geoip.asnum in {13335 132892 202623} and http.user_agent eq "Go-http-client/2.0")
 ```
 6. Under the **Then** \> **Choose an action** dropdown, select _Skip_.
@@ -153,7 +192,7 @@ If your logpush destination hostname is proxied through Cloudflare, and you have
 | AS Num           | is in    | 13335, 132892, 202623                                               |
 | User Agent       | equals   | Go-http-client/2.0                                                  |
 4. After inputting the values as shown in the table, you should have an Expression Preview with the values you added for your specific rule. The example below reflects the hostname `splunk.cf-analytics.com`.
-```
+```txt
 (http.request.method eq "POST" and http.host eq "splunk.cf-analytics.com" and http.request.uri.path eq "/services/collector/raw" and http.request.uri.query contains "channel" and ip.geoip.asnum in {13335 132892 202623} and http.user_agent eq "Go-http-client/2.0")
 ```
 5. Under the **Then** \> **Choose an action** dropdown, select _Skip_.
@@ -190,15 +229,15 @@ Cloudflare highly recommends setting `insecure-skip-verify` to `false`. Only set
 
 Before creating a Logpush job, verify that your Splunk HEC is working correctly by publishing test events through `curl` without the `-k` flag and with `insecure-skip-verify=false`:
 
-Terminal window
-
-```
-curl "https://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=false&sourcetype=<SOURCE_TYPE>" \--header "Authorization: Splunk <SPLUNK_AUTH_TOKEN>" \--data '{"BotScore":99,"BotScoreSrc":"Machine Learning","CacheCacheStatus":"miss","CacheResponseBytes":2478}'
+```bash
+curl "https://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=false&sourcetype=<SOURCE_TYPE>" \
+--header "Authorization: Splunk <SPLUNK_AUTH_TOKEN>" \
+--data '{"BotScore":99,"BotScoreSrc":"Machine Learning","CacheCacheStatus":"miss","CacheResponseBytes":2478}'
 ```
 
 Expected response:
 
-```
+```json
 {"text":"Success","code":0}
 ```
 

@@ -26,9 +26,7 @@ Whether you're processing server logs, mobile application events, IoT telemetry,
 
 Create your first pipeline by following the [getting started guide](https://developers.cloudflare.com/pipelines/getting-started) or running this [Wrangler](https://developers.cloudflare.com/workers/wrangler/) command:
 
-Terminal window
-
-```
+```sh
 npx wrangler pipelines setup
 ```
 

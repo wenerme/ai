@@ -187,14 +187,26 @@ If you have worked through this guide and still experience routing issues, gathe
 
 Collect output from these commands (syntax varies by vendor):
 
-Terminal window
+```sh
+# Show BGP neighbor status
+show bgp neighbors
 
-```
-# Show BGP neighbor statusshow bgp neighbors
-# Show BGP summaryshow bgp ipv4 unicast summary
-# Show specific prefix in BGP tableshow bgp ipv4 unicast <YOUR_PREFIX>
-# Show interface status (for CNI)show interface <YOUR_INTERFACE_NAME>
-# Show received and advertised routesshow bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> routesshow bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
+
+# Show BGP summary
+show bgp ipv4 unicast summary
+
+
+# Show specific prefix in BGP table
+show bgp ipv4 unicast <YOUR_PREFIX>
+
+
+# Show interface status (for CNI)
+show interface <YOUR_INTERFACE_NAME>
+
+
+# Show received and advertised routes
+show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> routes
+show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 ```
 
 ## Resources

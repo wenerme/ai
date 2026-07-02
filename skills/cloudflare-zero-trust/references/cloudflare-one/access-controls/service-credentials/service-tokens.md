@@ -18,9 +18,9 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-7247)
-* [ API ](#tab-panel-7248)
-* [ Terraform (v5) ](#tab-panel-7249)
+* [ Dashboard ](#tab-panel-7497)
+* [ API ](#tab-panel-7498)
+* [ Terraform (v5) ](#tab-panel-7499)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -35,14 +35,32 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Service Tokens Write`
-Create a service token
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "CI/CD token",    "duration": "8760h"  }'
+
+**Create a service token**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "CI/CD token",
+    "duration": "8760h"
+  }'
 ```
 2. Copy the `client_id` and `client_secret` values returned in the response.
-Response
-```
-"result": {  "client_id": "88bf3b6d86161464f6509f7219099e57.access",  "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",  "created_at": "2025-09-25T22:26:26Z",  "expires_at": "2026-09-25T22:26:26Z",  "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",  "name": "CI/CD token",  "updated_at": "2025-09-25T22:26:26Z",  "duration": "8760h",  "client_secret_version": 1}
+
+**Response**
+```json
+"result": {
+  "client_id": "88bf3b6d86161464f6509f7219099e57.access",
+  "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+  "created_at": "2025-09-25T22:26:26Z",
+  "expires_at": "2026-09-25T22:26:26Z",
+  "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
+  "name": "CI/CD token",
+  "updated_at": "2025-09-25T22:26:26Z",
+  "duration": "8760h",
+  "client_secret_version": 1
+}
 ```
 Warning
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
@@ -51,36 +69,49 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
   * `Access: Service Tokens Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_service\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fservice%5Ftoken) resource:
-```
-resource "cloudflare_zero_trust_access_service_token" "example_service_token" {  account_id = var.cloudflare_account_id  name       = "Example service token"  duration  = "8760h"
-  lifecycle {    create_before_destroy = true  }}
+```tf
+resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
+  account_id = var.cloudflare_account_id
+  name       = "Example service token"
+  duration  = "8760h"
+  lifecycle {
+    create_before_destroy = true
+  }
+}
 ```
 3. Get the Client ID and Client Secret of the service token:
 Example: Output to CLI
 
   1. Output the Client ID and Client Secret to the Terraform state file:
-  ```
-  output "example_service_token_client_id" {  value     = cloudflare_zero_trust_access_service_token.example_service_token.client_id}
-  output "example_service_token_client_secret" {  value     = cloudflare_zero_trust_access_service_token.example_service_token.client_secret  sensitive = true}
+  ```tf
+  output "example_service_token_client_id" {
+    value     = cloudflare_zero_trust_access_service_token.example_service_token.client_id
+  }
+  output "example_service_token_client_secret" {
+    value     = cloudflare_zero_trust_access_service_token.example_service_token.client_secret
+    sensitive = true
+  }
   ```
   2. Apply the configuration:
-  Terminal window
-  ```
+  ```sh
   terraform apply
   ```
   3. Read the Client ID and Client Secret:
-  Terminal window
-  ```
+  ```sh
   terraform output -raw example_service_token_client_id
   ```
-  Terminal window
-  ```
+  ```sh
   terraform output -raw example_service_token_client_secret
   ```
 Example: Store in HashiCorp Vault
-```
-  resource "vault_generic_secret" "example_service_token" {    path         = "kv/cloudflare/example_service_token"
-    data_json = jsonencode({      "CLIENT_ID"     = cloudflare_access_service_token.example_service_token.client_id      "CLIENT_SECRET" = cloudflare_access_service_token.example_service_token.client_secret    })  }
+```tf
+  resource "vault_generic_secret" "example_service_token" {
+    path         = "kv/cloudflare/example_service_token"
+    data_json = jsonencode({
+      "CLIENT_ID"     = cloudflare_access_service_token.example_service_token.client_id
+      "CLIENT_SECRET" = cloudflare_access_service_token.example_service_token.client_secret
+    })
+  }
 ```
 
 You can now configure your Access applications and [device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#check-for-service-token) to accept this service token. Make sure to set the policy action to [**Service Auth**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth); otherwise, Access will prompt for an identity provider login.
@@ -97,9 +128,7 @@ To authenticate to an Access application using your service token, add the follo
 
 For example,
 
-Terminal window
-
-```
+```sh
 curl -H "CF-Access-Client-Id: <CLIENT_ID>" -H "CF-Access-Client-Secret: <CLIENT_SECRET>" https://app.example.com
 ```
 
@@ -116,21 +145,31 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
   * `Access: Apps and Policies Read`
-Get an Access application
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+**Get an Access application**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Make a `PUT` request with the name of the header you want to use for service token authentication. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-Update an Access application
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "domain": "app.example.com",    "type": "self_hosted",    "read_service_tokens_from_header": "Authorization"  }'
+
+**Update an Access application**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "domain": "app.example.com",
+    "type": "self_hosted",
+    "read_service_tokens_from_header": "Authorization"
+  }'
 ```
 3. Add the header to any HTTP request. For example,
-Terminal window
-```
+```sh
 curl -H "Authorization: {\"cf-access-client-id\": \"<CLIENT_ID>\", \"cf-access-client-secret\": \"<CLIENT_SECRET>\"}" https://app.example.com
 ```
 
@@ -138,17 +177,13 @@ curl -H "Authorization: {\"cf-access-client-id\": \"<CLIENT_ID>\", \"cf-access-c
 
 After you have [authenticated to the application](#initial-request) using the service token, add the resulting `CF_Authorization` cookie to the headers of all subsequent requests:
 
-Terminal window
-
-```
+```sh
 curl -H "cookie: CF_Authorization=<CF_AUTHORIZATION_COOKIE>" https://app.example.com
 ```
 
 If you prefer to use a raw header, send the value as `cf-access-token`:
 
-Terminal window
-
-```
+```sh
 curl -H "cf-access-token: <CF_AUTHORIZATION_COOKIE>" https://app.example.com
 ```
 

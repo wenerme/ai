@@ -40,46 +40,133 @@ Objects are not supported as metadata values.
 
 To include custom metadata in your request using cURL:
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header 'cf-aig-metadata: {"team": "AI", "user": 12345, "test":true}' \  --data '{"model": "openai/gpt-4.1", "messages": [{"role": "user", "content": "What should I eat for lunch?"}]}'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --header 'cf-aig-metadata: {"team": "AI", "user": 12345, "test":true}' \
+  --data '{"model": "openai/gpt-4.1", "messages": [{"role": "user", "content": "What should I eat for lunch?"}]}'
 ```
 
 ### Using SDK
 
 To include custom metadata in your request using the OpenAI SDK:
 
-* [  JavaScript ](#tab-panel-6638)
-* [  TypeScript ](#tab-panel-6639)
+* [  JavaScript ](#tab-panel-6878)
+* [  TypeScript ](#tab-panel-6879)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import OpenAI from "openai";
-export default {  async fetch(request, env, ctx) {    const openai = new OpenAI({      apiKey: env.CLOUDFLARE_API_TOKEN,      baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,    });
-    try {      const chatCompletion = await openai.chat.completions.create(        {          model: "openai/gpt-4.1",          messages: [{ role: "user", content: "What should I eat for lunch?" }],          max_tokens: 50,        },        {          headers: {            "cf-aig-metadata": JSON.stringify({              user: "JaneDoe",              team: 12345,              test: true,            }),          },        },      );
-      const response = chatCompletion.choices[0].message;      return new Response(JSON.stringify(response));    } catch (e) {      console.log(e);      return new Response(e);    }  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const openai = new OpenAI({
+      apiKey: env.CLOUDFLARE_API_TOKEN,
+      baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,
+    });
+
+
+    try {
+      const chatCompletion = await openai.chat.completions.create(
+        {
+          model: "openai/gpt-4.1",
+          messages: [{ role: "user", content: "What should I eat for lunch?" }],
+          max_tokens: 50,
+        },
+        {
+          headers: {
+            "cf-aig-metadata": JSON.stringify({
+              user: "JaneDoe",
+              team: 12345,
+              test: true,
+            }),
+          },
+        },
+      );
+
+
+      const response = chatCompletion.choices[0].message;
+      return new Response(JSON.stringify(response));
+    } catch (e) {
+      console.log(e);
+      return new Response(e);
+    }
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import OpenAI from "openai";
-export default {  async fetch(request, env, ctx) {    const openai = new OpenAI({      apiKey: env.CLOUDFLARE_API_TOKEN,      baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,    });
-    try {      const chatCompletion = await openai.chat.completions.create(        {          model: "openai/gpt-4.1",          messages: [{ role: "user", content: "What should I eat for lunch?" }],          max_tokens: 50,        },        {          headers: {            "cf-aig-metadata": JSON.stringify({              user: "JaneDoe",              team: 12345,              test: true,            }),          },        },      );
-      const response = chatCompletion.choices[0].message;      return new Response(JSON.stringify(response));    } catch (e) {      console.log(e);      return new Response(e);    }  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const openai = new OpenAI({
+      apiKey: env.CLOUDFLARE_API_TOKEN,
+      baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,
+    });
+
+
+    try {
+      const chatCompletion = await openai.chat.completions.create(
+        {
+          model: "openai/gpt-4.1",
+          messages: [{ role: "user", content: "What should I eat for lunch?" }],
+          max_tokens: 50,
+        },
+        {
+          headers: {
+            "cf-aig-metadata": JSON.stringify({
+              user: "JaneDoe",
+              team: 12345,
+              test: true,
+            }),
+          },
+        },
+      );
+
+
+      const response = chatCompletion.choices[0].message;
+      return new Response(JSON.stringify(response));
+    } catch (e) {
+      console.log(e);
+      return new Response(e);
+    }
+  },
+};
 ```
 
 ### Using Binding
 
 To include custom metadata in your request using [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/):
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    const aiResp = await env.AI.run(      "@cf/mistral/mistral-7b-instruct-v0.1",      { prompt: "What should I eat for lunch?" },      {        gateway: {          id: "gateway_id",          metadata: { team: "AI", user: 12345, test: true },        },      },    );
-    return new Response(aiResp);  },};
+```javascript
+export default {
+  async fetch(request, env, ctx) {
+    const aiResp = await env.AI.run(
+      "@cf/mistral/mistral-7b-instruct-v0.1",
+      { prompt: "What should I eat for lunch?" },
+      {
+        gateway: {
+          id: "gateway_id",
+          metadata: { team: "AI", user: 12345, test: true },
+        },
+      },
+    );
+
+
+    return new Response(aiResp);
+  },
+};
 ```
 
 ```json

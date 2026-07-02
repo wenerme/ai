@@ -28,16 +28,30 @@ Renders an image message in chat with loading indicator and fullscreen support.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkImageMessage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkImageMessage message={imageMessage} />;}
+
+
+function MyComponent() {
+  return <RtkImageMessage message={imageMessage} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkImageMessage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkImageMessage      message={imageMessage}      isContinued={false}      now={new Date()}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkImageMessage
+      message={imageMessage}
+      isContinued={false}
+      now={new Date()}
+    />
+  );
+}
 ```
 
 ```json

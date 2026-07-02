@@ -36,19 +36,28 @@ To bind KV namespaces to your Worker, assign an array of the below object to the
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-9071)
-* [  wrangler.toml ](#tab-panel-9072)
+* [  wrangler.jsonc ](#tab-panel-9362)
+* [  wrangler.toml ](#tab-panel-9363)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "kv_namespaces": [
+    {
+      "binding": "<TEST_NAMESPACE>",
+      "id": "<TEST_ID>"
+    }
+  ]
+}
 ```
-{  "kv_namespaces": [    {      "binding": "<TEST_NAMESPACE>",      "id": "<TEST_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[kv_namespaces]]binding = "<TEST_NAMESPACE>"id = "<TEST_ID>"
+```toml
+[[kv_namespaces]]
+binding = "<TEST_NAMESPACE>"
+id = "<TEST_ID>"
 ```
 
 ## Bind your KV namespace via the dashboard

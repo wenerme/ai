@@ -26,16 +26,28 @@ A component which renders an image message.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkImageMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkImageMessageView />;}
+
+
+function MyComponent() {
+  return <RtkImageMessageView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkImageMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkImageMessageView      url="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkImageMessageView
+      url="example"
+    />
+  );
+}
 ```
 
 ```json

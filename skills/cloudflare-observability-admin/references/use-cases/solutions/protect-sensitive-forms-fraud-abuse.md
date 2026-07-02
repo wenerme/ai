@@ -44,8 +44,16 @@ Store the sitekey and secret key. You will use the sitekey in the client-side sn
 
 Add the Turnstile script and widget `div` element to each form you want to protect. Replace `<YOUR-SITE-KEY>` with the sitekey from the previous step.
 
-```
-<form id="contact-form" action="/submit" method="POST">  <input type="text" name="name" placeholder="Name" required />  <input type="email" name="email" placeholder="Email" required />  <textarea name="message" placeholder="Message" required></textarea>  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>  <button type="submit">Submit</button></form>
+```html
+<form id="contact-form" action="/submit" method="POST">
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <textarea name="message" placeholder="Message" required></textarea>
+  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
+  <button type="submit">Submit</button>
+</form>
+
+
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 ```
 
@@ -57,12 +65,35 @@ Server-side validation is required. The client-side widget alone does not protec
 
 Call the Siteverify API before processing any form submission:
 
-server.js
+**server.js**
 
-```
+```js
 const SECRET_KEY = "<YOUR-SECRET-KEY>";
-async function validateTurnstile(token, remoteip) {  try {    const response = await fetch(      "https://challenges.cloudflare.com/turnstile/v0/siteverify",      {        method: "POST",        headers: { "Content-Type": "application/json" },        body: JSON.stringify({          secret: SECRET_KEY,          response: token,          remoteip: remoteip,        }),      },    );
-    const result = await response.json();    return result;  } catch (error) {    console.error("Turnstile validation error:", error);    return { success: false, "error-codes": ["internal-error"] };  }}
+
+
+async function validateTurnstile(token, remoteip) {
+  try {
+    const response = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          secret: SECRET_KEY,
+          response: token,
+          remoteip: remoteip,
+        }),
+      },
+    );
+
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Turnstile validation error:", error);
+    return { success: false, "error-codes": ["internal-error"] };
+  }
+}
 ```
 
 Replace `"<YOUR-SECRET-KEY>"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
@@ -126,7 +157,7 @@ Create a custom rule that challenges POST requests to your form endpoints from s
 2. Select **Create rule** \> **Custom rules**.
 3. Enter a name for the rule (for example, "Challenge spam form submissions").
 4. Under **When incoming requests match**, select **Edit expression** and enter:
-```
+```txt
 (http.request.uri.path eq "/contact" and http.request.method eq "POST" and not cf.client.bot)
 ```
 Replace `/contact` with your form endpoint path. The `not cf.client.bot` clause exempts verified bots (such as search engine crawlers) from the rule.
@@ -144,8 +175,8 @@ The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-r
 
 Bot Fight Mode challenges requests that match known bot patterns across your entire domain. It is available on all plans and requires no configuration beyond turning it on.
 
-* [  New dashboard ](#tab-panel-11134)
-* [ Old dashboard ](#tab-panel-11135)
+* [  New dashboard ](#tab-panel-11429)
+* [ Old dashboard ](#tab-panel-11430)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

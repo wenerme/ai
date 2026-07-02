@@ -40,14 +40,29 @@ This example installs ArtifactFS, builds an authenticated Artifacts remote from 
 
 This example assumes you already have a working FUSE implementation on the host, a repo-scoped Artifacts token, and the repo `remote` value from a create or get response.
 
-Terminal window
-
-```
+```bash
 go install github.com/cloudflare/artifact-fs/cmd/artifact-fs@latest
-export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_CREATE_OR_GET_RESPONSE>"export ARTIFACTS_TOKEN="<YOUR_READ_TOKEN>"export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
-artifact-fs add-repo \  --name starter-repo \  --remote "$ARTIFACTS_AUTH_REMOTE" \  --branch main \  --mount-root /tmp
+
+
+export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_CREATE_OR_GET_RESPONSE>"
+export ARTIFACTS_TOKEN="<YOUR_READ_TOKEN>"
+export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
+export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
+
+
+artifact-fs add-repo \
+  --name starter-repo \
+  --remote "$ARTIFACTS_AUTH_REMOTE" \
+  --branch main \
+  --mount-root /tmp
+
+
 artifact-fs daemon --root /tmp &
-ls /tmp/starter-repo/cat /tmp/starter-repo/README.mdgit -C /tmp/starter-repo log --oneline -5
+
+
+ls /tmp/starter-repo/
+cat /tmp/starter-repo/README.md
+git -C /tmp/starter-repo log --oneline -5
 ```
 
 Use a short-lived token in the authenticated remote URL. If you need a smaller repo or a simpler local workflow, use a normal [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/) clone instead.

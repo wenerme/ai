@@ -18,25 +18,19 @@ Interact with a [Vectorize](https://developers.cloudflare.com/vectorize/) vector
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-12752)
-* [  pnpm ](#tab-panel-12753)
-* [  yarn ](#tab-panel-12754)
+* [  npm ](#tab-panel-13047)
+* [  pnpm ](#tab-panel-13048)
+* [  yarn ](#tab-panel-13049)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize create [NAME]
 ```
 
@@ -84,25 +78,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-12755)
-* [  pnpm ](#tab-panel-12756)
-* [  yarn ](#tab-panel-12757)
+* [  npm ](#tab-panel-13050)
+* [  pnpm ](#tab-panel-13051)
+* [  yarn ](#tab-panel-13052)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize delete [NAME]
 ```
 
@@ -136,25 +124,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-12758)
-* [  pnpm ](#tab-panel-12759)
-* [  yarn ](#tab-panel-12760)
+* [  npm ](#tab-panel-13053)
+* [  pnpm ](#tab-panel-13054)
+* [  yarn ](#tab-panel-13055)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize get [NAME]
 ```
 
@@ -188,25 +170,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-12761)
-* [  pnpm ](#tab-panel-12762)
-* [  yarn ](#tab-panel-12763)
+* [  npm ](#tab-panel-13056)
+* [  pnpm ](#tab-panel-13057)
+* [  yarn ](#tab-panel-13058)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize list
 ```
 
@@ -238,25 +214,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-12764)
-* [  pnpm ](#tab-panel-12765)
-* [  yarn ](#tab-panel-12766)
+* [  npm ](#tab-panel-13059)
+* [  pnpm ](#tab-panel-13060)
+* [  yarn ](#tab-panel-13061)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize list-vectors [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize list-vectors [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize list-vectors [NAME]
 ```
 
@@ -292,25 +262,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-12767)
-* [  pnpm ](#tab-panel-12768)
-* [  yarn ](#tab-panel-12769)
+* [  npm ](#tab-panel-13062)
+* [  pnpm ](#tab-panel-13063)
+* [  yarn ](#tab-panel-13064)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize query [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize query [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize query [NAME]
 ```
 
@@ -354,25 +318,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-12770)
-* [  pnpm ](#tab-panel-12771)
-* [  yarn ](#tab-panel-12772)
+* [  npm ](#tab-panel-13065)
+* [  pnpm ](#tab-panel-13066)
+* [  yarn ](#tab-panel-13067)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize insert [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize insert [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize insert [NAME]
 ```
 
@@ -410,25 +368,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-12773)
-* [  pnpm ](#tab-panel-12774)
-* [  yarn ](#tab-panel-12775)
+* [  npm ](#tab-panel-13068)
+* [  pnpm ](#tab-panel-13069)
+* [  yarn ](#tab-panel-13070)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize upsert [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize upsert [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize upsert [NAME]
 ```
 
@@ -464,25 +416,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-12776)
-* [  pnpm ](#tab-panel-12777)
-* [  yarn ](#tab-panel-12778)
+* [  npm ](#tab-panel-13071)
+* [  pnpm ](#tab-panel-13072)
+* [  yarn ](#tab-panel-13073)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize get-vectors [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize get-vectors [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize get-vectors [NAME]
 ```
 
@@ -514,25 +460,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-12779)
-* [  pnpm ](#tab-panel-12780)
-* [  yarn ](#tab-panel-12781)
+* [  npm ](#tab-panel-13074)
+* [  pnpm ](#tab-panel-13075)
+* [  yarn ](#tab-panel-13076)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize delete-vectors [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize delete-vectors [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize delete-vectors [NAME]
 ```
 
@@ -564,25 +504,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-12782)
-* [  pnpm ](#tab-panel-12783)
-* [  yarn ](#tab-panel-12784)
+* [  npm ](#tab-panel-13077)
+* [  pnpm ](#tab-panel-13078)
+* [  yarn ](#tab-panel-13079)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize info [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize info [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize info [NAME]
 ```
 
@@ -614,25 +548,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-12785)
-* [  pnpm ](#tab-panel-12786)
-* [  yarn ](#tab-panel-12787)
+* [  npm ](#tab-panel-13080)
+* [  pnpm ](#tab-panel-13081)
+* [  yarn ](#tab-panel-13082)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize create-metadata-index [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize create-metadata-index [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize create-metadata-index [NAME]
 ```
 
@@ -666,25 +594,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-12788)
-* [  pnpm ](#tab-panel-12789)
-* [  yarn ](#tab-panel-12790)
+* [  npm ](#tab-panel-13083)
+* [  pnpm ](#tab-panel-13084)
+* [  yarn ](#tab-panel-13085)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize list-metadata-index [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize list-metadata-index [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize list-metadata-index [NAME]
 ```
 
@@ -716,25 +638,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-12791)
-* [  pnpm ](#tab-panel-12792)
-* [  yarn ](#tab-panel-12793)
+* [  npm ](#tab-panel-13086)
+* [  pnpm ](#tab-panel-13087)
+* [  yarn ](#tab-panel-13088)
 
-Terminal window
-
-```
+```sh
 npx wrangler vectorize delete-metadata-index [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vectorize delete-metadata-index [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vectorize delete-metadata-index [NAME]
 ```
 

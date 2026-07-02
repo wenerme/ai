@@ -20,24 +20,39 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Exposes the [env object](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) for use as the second argument passed to ES modules format exported handlers. This provides access to [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) that you have defined in your [Vitest configuration file](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/).
 
-  JavaScript
-  ```
+
+**JavaScript**
+  ```js
   import { env } from "cloudflare:workers";
-  it("uses binding", async () => {  await env.KV_NAMESPACE.put("key", "value");  expect(await env.KV_NAMESPACE.get("key")).toBe("value");});
+  it("uses binding", async () => {
+    await env.KV_NAMESPACE.put("key", "value");
+    expect(await env.KV_NAMESPACE.get("key")).toBe("value");
+  });
   ```
   To configure the type of this value, use an ambient module type:
-  TypeScript
-  ```
-  declare module "cloudflare:workers" {  interface ProvidedEnv {    KV_NAMESPACE: KVNamespace;  }  // ...or if you have an existing `Env` type...  interface ProvidedEnv extends Env {}}
+
+**TypeScript**
+  ```ts
+  declare module "cloudflare:workers" {
+    interface ProvidedEnv {
+      KV_NAMESPACE: KVNamespace;
+    }
+    // ...or if you have an existing `Env` type...
+    interface ProvidedEnv extends Env {}
+  }
   ```
 * `exports`: object
 
   * Provides access to the exports of the `main` Worker. Use `exports.default.fetch()` to write integration tests against your Worker's default export handler. The `main` Worker runs in the same isolate/context as tests so any global mocks will apply to it too. Unlike the previous `SELF` binding, `exports` does not expose Assets. To test assets, use [startDevWorker()](https://developers.cloudflare.com/workers/testing/unstable%5Fstartworker/).
 
-  JavaScript
-  ```
+
+**JavaScript**
+  ```js
   import { exports } from "cloudflare:workers";
-  it("dispatches fetch event", async () => {  const response = await exports.default.fetch("https://example.com");  expect(await response.text()).toMatchInlineSnapshot(...);});
+  it("dispatches fetch event", async () => {
+    const response = await exports.default.fetch("https://example.com");
+    expect(await response.text()).toMatchInlineSnapshot(...);
+  });
   ```
 
 ## `cloudflare:test` exports
@@ -51,19 +66,41 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Use this to wait for all Promises passed to `ctx.waitUntil()` to settle, before running test assertions on any side effects. Only accepts instances of `ExecutionContext` returned by `createExecutionContext()`.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";import { it, expect } from "vitest";import worker from "./index.mjs";
-  it("calls fetch handler", async () => {  const request = new Request("https://example.com");  const ctx = createExecutionContext();  const response = await worker.fetch(request, env, ctx);  await waitOnExecutionContext(ctx);  expect(await response.text()).toMatchInlineSnapshot(...);});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
+  import { it, expect } from "vitest";
+  import worker from "./index.mjs";
+  it("calls fetch handler", async () => {
+    const request = new Request("https://example.com");
+    const ctx = createExecutionContext();
+    const response = await worker.fetch(request, env, ctx);
+    await waitOnExecutionContext(ctx);
+    expect(await response.text()).toMatchInlineSnapshot(...);
+  });
   ```
 * `createScheduledController(options?:FetcherScheduledOptions)`: ScheduledController
 
   * Creates an instance of `ScheduledController` for use as the first argument to modules-format [scheduled()](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) exported handlers.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { createScheduledController, createExecutionContext, waitOnExecutionContext } from "cloudflare:test";import { it, expect } from "vitest";import worker from "./index.mjs";
-  it("calls scheduled handler", async () => {  const ctrl = createScheduledController({    scheduledTime: new Date(1000),    cron: "30 * * * *"  });  const ctx = createExecutionContext();  await worker.scheduled(ctrl, env, ctx);  await waitOnExecutionContext(ctx);});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { createScheduledController, createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
+  import { it, expect } from "vitest";
+  import worker from "./index.mjs";
+  it("calls scheduled handler", async () => {
+    const ctrl = createScheduledController({
+      scheduledTime: new Date(1000),
+      cron: "30 * * * *"
+    });
+    const ctx = createExecutionContext();
+    await worker.scheduled(ctrl, env, ctx);
+    await waitOnExecutionContext(ctx);
+  });
   ```
 * `createMessageBatch(queueName:string, messages:ServiceBindingQueueMessage[])`: MessageBatch
 
@@ -72,10 +109,29 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Gets the acknowledged/retry state of messages in the `MessageBatch`, and waits for all `ExecutionContext#waitUntil()`ed `Promise`s to settle. Only accepts instances of `MessageBatch` returned by `createMessageBatch()`, and instances of `ExecutionContext` returned by `createExecutionContext()`.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { createMessageBatch, createExecutionContext, getQueueResult } from "cloudflare:test";import { it, expect } from "vitest";import worker from "./index.mjs";
-  it("calls queue handler", async () => {  const batch = createMessageBatch("my-queue", [    {      id: "message-1",      timestamp: new Date(1000),      body: "body-1"    }  ]);  const ctx = createExecutionContext();  await worker.queue(batch, env, ctx);  const result = await getQueueResult(batch, ctx);  expect(result.ackAll).toBe(false);  expect(result.retryBatch).toMatchObject({ retry: false });  expect(result.explicitAcks).toStrictEqual(["message-1"]);  expect(result.retryMessages).toStrictEqual([]);});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { createMessageBatch, createExecutionContext, getQueueResult } from "cloudflare:test";
+  import { it, expect } from "vitest";
+  import worker from "./index.mjs";
+  it("calls queue handler", async () => {
+    const batch = createMessageBatch("my-queue", [
+      {
+        id: "message-1",
+        timestamp: new Date(1000),
+        body: "body-1"
+      }
+    ]);
+    const ctx = createExecutionContext();
+    await worker.queue(batch, env, ctx);
+    const result = await getQueueResult(batch, ctx);
+    expect(result.ackAll).toBe(false);
+    expect(result.retryBatch).toMatchObject({ retry: false });
+    expect(result.explicitAcks).toStrictEqual(["message-1"]);
+    expect(result.retryMessages).toStrictEqual([]);
+  });
   ```
 
 ### Durable Objects
@@ -86,17 +142,38 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   This temporarily replaces your Durable Object's `fetch()` handler with `callback`, then sends a request to it, returning the result. This can be used to call/spy-on Durable Object methods or seed/get persisted data. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
 
-  TypeScript
+
+**TypeScript**
+  ```ts
+  export class Counter {
+    constructor(readonly state: DurableObjectState) {}
+    async fetch(request: Request): Promise<Response> {
+      let count = (await this.state.storage.get<number>("count")) ?? 0;
+      void this.state.storage.put("count", ++count);
+      return new Response(count.toString());
+    }
+  }
   ```
-  export class Counter {  constructor(readonly state: DurableObjectState) {}
-    async fetch(request: Request): Promise<Response> {    let count = (await this.state.storage.get<number>("count")) ?? 0;    void this.state.storage.put("count", ++count);    return new Response(count.toString());  }}
-  ```
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { runInDurableObject } from "cloudflare:test";import { it, expect } from "vitest";import { Counter } from "./index.ts";
-  it("increments count", async () => {  const id = env.COUNTER.newUniqueId();  const stub = env.COUNTER.get(id);  let response = await stub.fetch("https://example.com");  expect(await response.text()).toBe("1");
-    response = await runInDurableObject(stub, async (instance: Counter, state) => {    expect(instance).toBeInstanceOf(Counter);    expect(await state.storage.get<number>("count")).toBe(1);
-      const request = new Request("https://example.com");    return instance.fetch(request);  });  expect(await response.text()).toBe("2");});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { runInDurableObject } from "cloudflare:test";
+  import { it, expect } from "vitest";
+  import { Counter } from "./index.ts";
+  it("increments count", async () => {
+    const id = env.COUNTER.newUniqueId();
+    const stub = env.COUNTER.get(id);
+    let response = await stub.fetch("https://example.com");
+    expect(await response.text()).toBe("1");
+    response = await runInDurableObject(stub, async (instance: Counter, state) => {
+      expect(instance).toBeInstanceOf(Counter);
+      expect(await state.storage.get<number>("count")).toBe(1);
+      const request = new Request("https://example.com");
+      return instance.fetch(request);
+    });
+    expect(await response.text()).toBe("2");
+  });
   ```
 * `runDurableObjectAlarm(stub:DurableObjectStub)`: Promise<boolean>
 
@@ -109,13 +186,24 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   Rejects if `stub` is not a Durable Object stub, if the target Durable Object is not currently running, or if its namespace has eviction prevented. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { evictDurableObject } from "cloudflare:test";import { it, expect } from "vitest";
-  it("preserves stored data across eviction", async () => {  const id = env.COUNTER.idFromName("evict-test");  const stub = env.COUNTER.get(id);
-    // Each request increments and persists the count to storage  expect(await (await stub.fetch("https://example.com")).text()).toBe("1");  expect(await (await stub.fetch("https://example.com")).text()).toBe("2");
-    // Evict the Durable Object. The in-memory instance is torn down,  // but durable storage is preserved.  await evictDurableObject(stub);
-    // The next request reconstructs the instance and reads the persisted count  expect(await (await stub.fetch("https://example.com")).text()).toBe("3");});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { evictDurableObject } from "cloudflare:test";
+  import { it, expect } from "vitest";
+  it("preserves stored data across eviction", async () => {
+    const id = env.COUNTER.idFromName("evict-test");
+    const stub = env.COUNTER.get(id);
+    // Each request increments and persists the count to storage
+    expect(await (await stub.fetch("https://example.com")).text()).toBe("1");
+    expect(await (await stub.fetch("https://example.com")).text()).toBe("2");
+    // Evict the Durable Object. The in-memory instance is torn down,
+    // but durable storage is preserved.
+    await evictDurableObject(stub);
+    // The next request reconstructs the instance and reads the persisted count
+    expect(await (await stub.fetch("https://example.com")).text()).toBe("3");
+  });
   ```
   * The `DurableObjectEvictionOptions` interface controls eviction behavior:
 
@@ -126,29 +214,47 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   * Gets the IDs of all objects that have been created in the `namespace`. Respects per-file storage isolation, meaning objects created in a different test file will not be returned.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { listDurableObjectIds } from "cloudflare:test";import { it, expect } from "vitest";
-  it("increments count", async () => {  const id = env.COUNTER.newUniqueId();  const stub = env.COUNTER.get(id);  const response = await stub.fetch("https://example.com");  expect(await response.text()).toBe("1");
-    const ids = await listDurableObjectIds(env.COUNTER);  expect(ids.length).toBe(1);  expect(ids[0].equals(id)).toBe(true);});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { listDurableObjectIds } from "cloudflare:test";
+  import { it, expect } from "vitest";
+  it("increments count", async () => {
+    const id = env.COUNTER.newUniqueId();
+    const stub = env.COUNTER.get(id);
+    const response = await stub.fetch("https://example.com");
+    expect(await response.text()).toBe("1");
+    const ids = await listDurableObjectIds(env.COUNTER);
+    expect(ids.length).toBe(1);
+    expect(ids[0].equals(id)).toBe(true);
+  });
   ```
 * `reset()`: Promise<void>
 
   * Deletes all data from all attached bindings. This is useful for resetting state between test blocks.
 
-  TypeScript
-  ```
-  import { reset } from "cloudflare:test";import { afterEach } from "vitest";
-  afterEach(async () => {  await reset();});
+
+**TypeScript**
+  ```ts
+  import { reset } from "cloudflare:test";
+  import { afterEach } from "vitest";
+  afterEach(async () => {
+    await reset();
+  });
   ```
 * `abortAllDurableObjects()`: Promise<void>
 
   * Resets all Durable Object instances. Unlike `reset()`, this does not delete persisted data. This forcibly tears down all running Durable Object instances, discarding in-memory state without waiting for in-flight requests to drain.
 
-  TypeScript
-  ```
-  import { abortAllDurableObjects } from "cloudflare:test";import { afterEach } from "vitest";
-  afterEach(async () => {  await abortAllDurableObjects();});
+
+**TypeScript**
+  ```ts
+  import { abortAllDurableObjects } from "cloudflare:test";
+  import { afterEach } from "vitest";
+  afterEach(async () => {
+    await abortAllDurableObjects();
+  });
   ```
 * `evictAllDurableObjects(options?:DurableObjectEvictionOptions)`: Promise<void>
 
@@ -156,10 +262,14 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
   Non-running or idle Durable Objects are skipped, and namespaces with eviction prevented are respected. Accepts the same [DurableObjectEvictionOptions](#durable-objects) as `evictDurableObject()`.
 
-  TypeScript
-  ```
-  import { evictAllDurableObjects } from "cloudflare:test";import { afterEach } from "vitest";
-  afterEach(async () => {  await evictAllDurableObjects();});
+
+**TypeScript**
+  ```ts
+  import { evictAllDurableObjects } from "cloudflare:test";
+  import { afterEach } from "vitest";
+  afterEach(async () => {
+    await evictAllDurableObjects();
+  });
   ```
 
 ### D1
@@ -185,13 +295,29 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
 
   * Creates an **introspector** for a specific Workflow instance, used to **modify** its behavior, **await** outcomes, and **clear** its state during tests. This is the primary entry point for testing individual Workflow instances with a known ID.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { introspectWorkflowInstance } from "cloudflare:test";
-  it("should disable all sleeps, mock an event and complete", async () => {  // 1. CONFIGURATION  await using instance = await introspectWorkflowInstance(env.MY_WORKFLOW, "123456");  await instance.modify(async (m) => {    await m.disableSleeps();    await m.mockEvent({      type: "user-approval",      payload: { approved: true, approverId: "user-123" },    });  });
-    // 2. EXECUTION  await env.MY_WORKFLOW.create({ id: "123456" });
-    // 3. ASSERTION  await expect(instance.waitForStatus("complete")).resolves.not.toThrow();  const output = await instance.getOutput();  expect(output).toEqual({ success: true });
-    // 4. DISPOSE: is implicit and automatic here.});
+
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { introspectWorkflowInstance } from "cloudflare:test";
+  it("should disable all sleeps, mock an event and complete", async () => {
+    // 1. CONFIGURATION
+    await using instance = await introspectWorkflowInstance(env.MY_WORKFLOW, "123456");
+    await instance.modify(async (m) => {
+      await m.disableSleeps();
+      await m.mockEvent({
+        type: "user-approval",
+        payload: { approved: true, approverId: "user-123" },
+      });
+    });
+    // 2. EXECUTION
+    await env.MY_WORKFLOW.create({ id: "123456" });
+    // 3. ASSERTION
+    await expect(instance.waitForStatus("complete")).resolves.not.toThrow();
+    const output = await instance.getOutput();
+    expect(output).toEqual({ success: true });
+    // 4. DISPOSE: is implicit and automatic here.
+  });
   ```
   * The returned `WorkflowInstanceIntrospector` object has the following methods:
 
@@ -206,18 +332,39 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
 
   * Creates an **introspector** for a Workflow where instance IDs are unknown beforehand. This allows for defining modifications that will apply to **all subsequently created instances**.
 
-  TypeScript
-  ```
-  import { env, exports } from "cloudflare:workers";import { introspectWorkflow } from "cloudflare:test";
-  it("should disable all sleeps, mock an event and complete", async () => {  // 1. CONFIGURATION  await using introspector = await introspectWorkflow(env.MY_WORKFLOW);  await introspector.modifyAll(async (m) => {    await m.disableSleeps();    await m.mockEvent({      type: "user-approval",      payload: { approved: true, approverId: "user-123" },    });  });
-    // 2. EXECUTION  await env.MY_WORKFLOW.create();
-    // 3. ASSERTION  const instances = introspector.get();  for(const instance of instances) {    await expect(instance.waitForStatus("complete")).resolves.not.toThrow();    const output = await instance.getOutput();    expect(output).toEqual({ success: true });  }
-    // 4. DISPOSE: is implicit and automatic here.});
+
+**TypeScript**
+  ```ts
+  import { env, exports } from "cloudflare:workers";
+  import { introspectWorkflow } from "cloudflare:test";
+  it("should disable all sleeps, mock an event and complete", async () => {
+    // 1. CONFIGURATION
+    await using introspector = await introspectWorkflow(env.MY_WORKFLOW);
+    await introspector.modifyAll(async (m) => {
+      await m.disableSleeps();
+      await m.mockEvent({
+        type: "user-approval",
+        payload: { approved: true, approverId: "user-123" },
+      });
+    });
+    // 2. EXECUTION
+    await env.MY_WORKFLOW.create();
+    // 3. ASSERTION
+    const instances = introspector.get();
+    for(const instance of instances) {
+      await expect(instance.waitForStatus("complete")).resolves.not.toThrow();
+      const output = await instance.getOutput();
+      expect(output).toEqual({ success: true });
+    }
+    // 4. DISPOSE: is implicit and automatic here.
+  });
   ```
   The workflow instance doesn't have to be created directly inside the test. The introspector will capture **all** instances created after it is initialized. For example, you could trigger the creation of **one or multiple** instances via a single `fetch` event to your Worker:
-  JavaScript
-  ```
-  // This also works for the EXECUTION phase:await exports.default.fetch("https://example.com/trigger-workflows");
+
+**JavaScript**
+  ```js
+  // This also works for the EXECUTION phase:
+  await exports.default.fetch("https://example.com/trigger-workflows");
   ```
   * The returned `WorkflowIntrospector` object has the following methods:
 
@@ -237,21 +384,59 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
     * `mockEvent(event: { type: string; payload: unknown })`: Sends a mock event to the Workflow instance, causing a `step.waitForEvent()` to resolve with the provided payload. `type` must match the `waitForEvent` type.
     * `forceEventTimeout(step: { name: string; index?: number })`: Forces a `step.waitForEvent()` to time out instantly, causing the step to fail.
 
-  TypeScript
-  ```
-  import { env } from "cloudflare:workers";import { introspectWorkflowInstance } from "cloudflare:test";
-  // This example showcases explicit disposalit("should apply all modifier functions", async () => {  // 1. CONFIGURATION  const instance = await introspectWorkflowInstance(env.COMPLEX_WORKFLOW, "123456");
-    try {    // Modify instance behavior    await instance.modify(async (m) => {      // Disables all sleeps to make the test run instantly      await m.disableSleeps();
-        // Disables retry backoff delays so retries execute without waiting      await m.disableRetryDelays();
-        // Mocks the successful result of a data-fetching step      await m.mockStepResult(        { name: "get-order-details" },        { orderId: "abc-123", amount: 99.99 }      );
-        // Mocks an incoming event to satisfy a `step.waitForEvent()`      await m.mockEvent({        type: "user-approval",        payload: { approved: true, approverId: "user-123" },      });
-        // Forces a step to fail once with a specific error to test retry logic      await m.mockStepError(        { name: "process-payment" },        new Error("Payment gateway timeout"),        1 // Fail only the first time      );
-        // Forces a `step.do()` to time out immediately      await m.forceStepTimeout({ name: "notify-shipping-partner" });
-        // Forces a `step.waitForEvent()` to time out      await m.forceEventTimeout({ name: "wait-for-fraud-check" });    });
-      // 2. EXECUTION    await env.COMPLEX_WORKFLOW.create({ id: "123456" });
-      // 3. ASSERTION    expect(await instance.waitForStepResult({ name: "get-order-details" })).toEqual({      orderId: "abc-123",      amount: 99.99,    });    // Given the forced timeouts, the workflow will end in an errored state    await expect(instance.waitForStatus("errored")).resolves.not.toThrow();
-      const error = await instance.getError();    expect(error.name).toEqual("Error");    expect(error.message).toContain("Execution timed out");
-    } catch {    // 4. DISPOSE    await instance.dispose();  }});
+**TypeScript**
+  ```ts
+  import { env } from "cloudflare:workers";
+  import { introspectWorkflowInstance } from "cloudflare:test";
+  // This example showcases explicit disposal
+  it("should apply all modifier functions", async () => {
+    // 1. CONFIGURATION
+    const instance = await introspectWorkflowInstance(env.COMPLEX_WORKFLOW, "123456");
+    try {
+      // Modify instance behavior
+      await instance.modify(async (m) => {
+        // Disables all sleeps to make the test run instantly
+        await m.disableSleeps();
+        // Disables retry backoff delays so retries execute without waiting
+        await m.disableRetryDelays();
+        // Mocks the successful result of a data-fetching step
+        await m.mockStepResult(
+          { name: "get-order-details" },
+          { orderId: "abc-123", amount: 99.99 }
+        );
+        // Mocks an incoming event to satisfy a `step.waitForEvent()`
+        await m.mockEvent({
+          type: "user-approval",
+          payload: { approved: true, approverId: "user-123" },
+        });
+        // Forces a step to fail once with a specific error to test retry logic
+        await m.mockStepError(
+          { name: "process-payment" },
+          new Error("Payment gateway timeout"),
+          1 // Fail only the first time
+        );
+        // Forces a `step.do()` to time out immediately
+        await m.forceStepTimeout({ name: "notify-shipping-partner" });
+        // Forces a `step.waitForEvent()` to time out
+        await m.forceEventTimeout({ name: "wait-for-fraud-check" });
+      });
+      // 2. EXECUTION
+      await env.COMPLEX_WORKFLOW.create({ id: "123456" });
+      // 3. ASSERTION
+      expect(await instance.waitForStepResult({ name: "get-order-details" })).toEqual({
+        orderId: "abc-123",
+        amount: 99.99,
+      });
+      // Given the forced timeouts, the workflow will end in an errored state
+      await expect(instance.waitForStatus("errored")).resolves.not.toThrow();
+      const error = await instance.getError();
+      expect(error.name).toEqual("Error");
+      expect(error.message).toContain("Execution timed out");
+    } catch {
+      // 4. DISPOSE
+      await instance.dispose();
+    }
+  });
   ```
   When targeting a step, use its `name`. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to specify the occurrence.
 

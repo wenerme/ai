@@ -37,7 +37,7 @@ Z-score compares short-term traffic patterns (five-minute window) against long-t
 
 Z-Score is calculated by using the following formula:
 
-```
+```txt
 Z = (X - μ) / σ
 ```
 

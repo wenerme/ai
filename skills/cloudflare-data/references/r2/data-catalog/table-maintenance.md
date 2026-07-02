@@ -43,13 +43,24 @@ Compacted files are prefixed with `compacted-` in the `/data/` directory of a re
 
 ### Examples
 
-Terminal window
+```bash
+# Enable catalog-level compaction (all tables)
+npx wrangler r2 bucket catalog compaction enable my-bucket \
+  --target-size 128 \
+  --token $R2_CATALOG_TOKEN
 
-```
-# Enable catalog-level compaction (all tables)npx wrangler r2 bucket catalog compaction enable my-bucket \  --target-size 128 \  --token $R2_CATALOG_TOKEN
-# Enable compaction for a specific tablenpx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table \  --target-size 256
-# Disable catalog-level compactionnpx wrangler r2 bucket catalog compaction disable my-bucket
-# Disable compaction for a specific tablenpx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-table
+
+# Enable compaction for a specific table
+npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table \
+  --target-size 256
+
+
+# Disable catalog-level compaction
+npx wrangler r2 bucket catalog compaction disable my-bucket
+
+
+# Disable compaction for a specific table
+npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-table
 ```
 
 For more details on managing compaction, refer to [Manage catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/).
@@ -87,12 +98,25 @@ Both conditions must be met for a snapshot to be expired. This ensures you alway
 
 ### Examples
 
-Terminal window
+```bash
+# Enable snapshot expiration for entire catalog
+# Keep minimum 10 snapshots, expire those older than 7 days
+npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \
+  --token $R2_CATALOG_TOKEN \
+  --older-than-days 7 \
+  --retain-last 10
 
-```
-# Enable snapshot expiration for entire catalog# Keep minimum 10 snapshots, expire those older than 7 daysnpx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \  --token $R2_CATALOG_TOKEN \  --older-than-days 7 \  --retain-last 10
-# Enable for specific table# Keep minimum 5 snapshots, expire those older than 2 daysnpx wrangler r2 bucket catalog snapshot-expiration enable my-bucket my-namespace my-table \  --token $R2_CATALOG_TOKEN \  --older-than-days 2 \  --retain-last 5
-# Disable snapshot expiration for a catalognpx wrangler r2 bucket catalog snapshot-expiration disable my-bucket
+
+# Enable for specific table
+# Keep minimum 5 snapshots, expire those older than 2 days
+npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket my-namespace my-table \
+  --token $R2_CATALOG_TOKEN \
+  --older-than-days 2 \
+  --retain-last 5
+
+
+# Disable snapshot expiration for a catalog
+npx wrangler r2 bucket catalog snapshot-expiration disable my-bucket
 ```
 
 ### Choose the right retention policy

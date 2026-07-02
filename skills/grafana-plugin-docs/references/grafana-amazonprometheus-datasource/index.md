@@ -1,44 +1,109 @@
 ---
-title: "| Grafana Plugins documentation"
-description: "Amazon Managed Service for Prometheus Data Source This data source plugin is for the Amazon Managed Service for Prometheus. It has all the features of the Grafana core Prometheus plugin with Amazon specific authentication in the configuration page."
+title: "Amazon Managed Service for Prometheus data source | Grafana Plugins documentation"
+description: "Use the Amazon Managed Service for Prometheus data source to query and visualize Prometheus-compatible metrics from AWS in Grafana."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# Amazon Managed Service for Prometheus Data Source
+# Amazon Managed Service for Prometheus data source
 
-This data source plugin is for the Amazon Managed Service for Prometheus. It has all the features of the Grafana core Prometheus plugin with Amazon specific authentication in the configuration page.
+The Amazon Managed Service for Prometheus data source plugin lets you query and visualize metrics from [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/) in Grafana. Amazon Managed Service for Prometheus (AMP) is a Prometheus-compatible, fully managed service that monitors and provides alerts on containerized applications and infrastructure at scale.
 
-Amazon Managed Service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale.
+This plugin includes all the features of the core Grafana Prometheus data source, with AWS-specific Signature Version 4 (SigV4) authentication built into the configuration page.
 
-Read more about it here:
+## Supported features
 
-[https://aws.amazon.com/prometheus/](https://aws.amazon.com/prometheus/)
+The following table lists the features that the Amazon Managed Service for Prometheus data source supports.
+
+Expand table
+
+| Feature     | Supported |
+|-------------|-----------|
+| Metrics     | Yes       |
+| Logs        | No        |
+| Traces      | No        |
+| Alerting    | Yes       |
+| Annotations | Yes       |
+| Exemplars   | Yes       |
+
+## Requirements
+
+Before you use the Amazon Managed Service for Prometheus data source, ensure you have the following:
+
+- A supported version of Grafana. This plugin requires Grafana `>=11.6.11 <12`, `>=12.0.10 <12.1`, `>=12.1.7 <12.2`, or `>=12.2.5`. If you run Grafana 11.4.x or earlier, use plugin version 1.0.5.
+- An Amazon Managed Service for Prometheus workspace and its query endpoint URL.
+- AWS credentials or an IAM role with permission to query the workspace.
+
+## Get started
+
+The following topics help you get started with the data source:
+
+- [Install the Amazon Managed Service for Prometheus plugin](/docs/plugins/grafana-amazonprometheus-datasource/latest/install/)
+- [Configure the Amazon Managed Service for Prometheus data source](/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/)
+- [Amazon Managed Service for Prometheus query editor](/docs/plugins/grafana-amazonprometheus-datasource/latest/query-editor/)
+- [Template variables](/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/)
+- [Annotations](/docs/plugins/grafana-amazonprometheus-datasource/latest/annotations/)
+- [Alerting](/docs/plugins/grafana-amazonprometheus-datasource/latest/alerting/)
+- [Troubleshooting](/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/)
+
+To install the plugin and add the data source:
+
+1. [Install the plugin](/docs/plugins/grafana-amazonprometheus-datasource/latest/install/).
+2. [Add a new data source in the UI](/docs/grafana/latest/datasources/#add-a-data-source) or [provision one](/docs/grafana/latest/administration/provisioning/#data-sources).
+3. [Configure the data source](/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
+4. Start querying your metrics.
 
 ## Migrate from core Prometheus to Amazon Managed Service for Prometheus
 
-If you are using core Prometheus with SigV4 authentication, you must migrate to the Amazon Managed Service for Prometheus data source because SigV4 auth is deprecated in core Prometheus. This topic summarizes the steps required to migrate from core Prometheus to Amazon Managed Service for Prometheus. See a detailed list of steps [here](src/README.md).
+SigV4 authentication is deprecated in the core Prometheus data source. If you use the core Prometheus data source with SigV4 authentication, migrate to the Amazon Managed Service for Prometheus data source.
 
-- Get the `UID` for Prometheus using SigV4.
-- Get the `UID` for your new Amazon Managed Service for Prometheus.
-- Update dashboards with the new datasource `UID`.
-- Update alert rules by exporting provisioning files and updating the data source in the model or create new alert rules.
-- Recreate correlations.
-- Recreate recorded queries.
+In Grafana 13, this migration is automatic. Data sources that use SigV4 authentication are migrated to the Amazon Managed Service for Prometheus plugin on startup, and your dashboards, alerts, and queries continue to work without changes. For migration steps, how to check migration status, and rollback instructions, refer to [Migrate from Prometheus SigV4 to Amazon Managed Service for Prometheus](/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/configure/aws-authentication/).
 
-## Getting started
+### Update dashboards and alerts
 
-1. [Install the plugin](/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins)
-2. [Add a new data source with the UI](/docs/grafana/latest/datasources/#add-a-data-source) or [provision one](/docs/grafana/latest/administration/provisioning/)
-3. [Configure the data source](#configuring-the-data-source)
-4. Start making queries
+If you add a new Amazon Managed Service for Prometheus data source instead of relying on the automatic migration, update your existing dashboards and alert rules to use the new data source:
 
-## Configuring the data source
+1. Get the `UID` of your existing Prometheus data source that uses SigV4.
+2. Get the `UID` of your new Amazon Managed Service for Prometheus data source.
+3. Update dashboards to use the new data source `UID`.
+4. Update alert rules. Export the provisioning files and update the data source in the model, or create new alert rules.
+5. Recreate any correlations.
+6. Recreate any recorded queries.
 
-### Authentication
+## Pre-built dashboards
 
-Depending on the environment in which it is run, Grafana supports different authentication providers such as keys, a credentials file, or using the “Default” provider from AWS which supports using service-based IAM roles. These providers can be manually enabled/disabled with the `allowed_auth_providers` field in Grafana’s config file. To read more about supported authentication providers refer to [the AWS authentication section](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/#select-an-authentication-method)
+The plugin includes the following pre-built dashboards that you can import to monitor Prometheus and Grafana itself:
 
-### Plugin repository
+- **Prometheus Stats**
+- **Prometheus 2.0 Stats**
+- **Grafana Stats**
 
-You can request new features, report issues, or contribute code directly through the [Grafana Amazon Prometheus Data Source Github repository](https://github.com/grafana/grafana-amazonprometheus-datasource)
+To import a pre-built dashboard:
+
+1. Click **Connections** in the left-side menu.
+2. Under **Connections**, click **Data sources**.
+3. Select your Amazon Managed Service for Prometheus data source.
+4. Click the **Dashboards** tab.
+5. Click **Import** next to the dashboard you want to use.
+
+## Additional features
+
+After you configure the data source, you can:
+
+- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](/docs/grafana/latest/alerting/) rules.
+
+## Plugin updates
+
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
+
+> Note
+>
+> Plugins are automatically updated in Grafana Cloud.
+
+## Related resources
+
+- [Amazon Managed Service for Prometheus documentation](https://docs.aws.amazon.com/prometheus/)
+- [Grafana community forum](https://community.grafana.com/)
+- [Grafana Amazon Prometheus data source GitHub repository](https://github.com/grafana/grafana-amazonprometheus-datasource)

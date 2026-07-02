@@ -18,7 +18,7 @@ The URI path and query string of the request.
 
 Example value:
 
-```
+```txt
 "/articles/index?section=539061&expand=comments"
 ```
 

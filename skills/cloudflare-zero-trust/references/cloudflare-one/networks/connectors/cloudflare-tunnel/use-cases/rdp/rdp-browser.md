@@ -42,9 +42,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-7385)
-* [ API ](#tab-panel-7386)
-* [ Terraform ](#tab-panel-7387)
+* [ Dashboard ](#tab-panel-7635)
+* [ API ](#tab-panel-7636)
+* [ Terraform ](#tab-panel-7637)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -66,10 +66,25 @@ If the target IP does not appear in the dropdown, go to **Networking** \> **Rout
 
 Make a `POST` request to the [Infrastructure Access Targets](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/infrastructure/subresources/targets/methods/create/) endpoint:
 
-Create new target
+**Create new target**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "infra-access-target",    "ip": {        "ipv4": {            "ip_addr": "187.26.29.249",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        },        "ipv6": {            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "hostname": "infra-access-target",
+    "ip": {
+        "ipv4": {
+            "ip_addr": "187.26.29.249",
+            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
+        },
+        "ipv6": {
+            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
+        }
+    }
+  }'
 ```
 
 Provider versions
@@ -80,8 +95,21 @@ The following example requires Cloudflare provider version `>=4.45.0`.
 
   * `Zero Trust Write`
 2. Configure the [cloudflare\_zero\_trust\_infrastructure\_access\_target ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Finfrastructure%5Faccess%5Ftarget) resource:
-```
-resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {  account_id = var.cloudflare_account_id    hostname   = "infra-access-target"    ip = {      ipv4 = {        ip_addr = "187.26.29.249"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }      ipv6 = {        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }    }}
+```tf
+resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {
+  account_id = var.cloudflare_account_id
+    hostname   = "infra-access-target"
+    ip = {
+      ipv4 = {
+        ip_addr = "187.26.29.249"
+        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
+      }
+      ipv6 = {
+        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"
+        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
+      }
+    }
+}
 ```
 
 Next, create an Access application to secure the target.
@@ -188,7 +216,7 @@ Users must pass the policies in your Access application before they are granted 
 To connect to a Windows machine over RDP:
 
 1. Open a browser and go to your App Launcher URL:
-```
+```text
 https://<your-team-name>.cloudflareaccess.com
 ```
 Replace `<your-team-name>` with your Zero Trust team name.
@@ -231,9 +259,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-7382)
-* [ API ](#tab-panel-7383)
-* [ Terraform ](#tab-panel-7384)
+* [ Dashboard ](#tab-panel-7632)
+* [ API ](#tab-panel-7633)
+* [ Terraform ](#tab-panel-7634)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
@@ -250,18 +278,58 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Apps and Policies Write`
 
-Create an Access reusable policy
+**Create an Access reusable policy**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow engineers with restricted clipboard",    "decision": "allow",    "include": [        {            "email_domain": {                "domain": "example.com"            }        }    ],    "connection_rules": {        "rdp": {            "allowed_clipboard_local_to_remote_formats": [                "text"            ],            "allowed_clipboard_remote_to_local_formats": []        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Allow engineers with restricted clipboard",
+    "decision": "allow",
+    "include": [
+        {
+            "email_domain": {
+                "domain": "example.com"
+            }
+        }
+    ],
+    "connection_rules": {
+        "rdp": {
+            "allowed_clipboard_local_to_remote_formats": [
+                "text"
+            ],
+            "allowed_clipboard_remote_to_local_formats": []
+        }
+    }
+  }'
 ```
 
 Using the `connection_rules` attribute within a [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource, configure the allowed copy/paste formats in each direction. For example, the following policy allows users to copy text from their local client into the browser-based RDP session, but blocks copying content out of the RDP session.
 
-```
-resource "cloudflare_zero_trust_access_policy" "rdp-policy" {  account_id = var.cloudflare_account_id  name       = "Allow engineers with restricted clipboard"  decision   = "allow"
-  include = [    {      email_domain = {        domain = "example.com"      }    }  ]
-  connection_rules = {    rdp = {      allowed_clipboard_local_to_remote_formats = ["text"]      allowed_clipboard_remote_to_local_formats = []    }  }}
+```tf
+resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
+  account_id = var.cloudflare_account_id
+  name       = "Allow engineers with restricted clipboard"
+  decision   = "allow"
+
+
+  include = [
+    {
+      email_domain = {
+        domain = "example.com"
+      }
+    }
+  ]
+
+
+  connection_rules = {
+    rdp = {
+      allowed_clipboard_local_to_remote_formats = ["text"]
+      allowed_clipboard_remote_to_local_formats = []
+    }
+  }
+}
 ```
 
 ## Compatibility

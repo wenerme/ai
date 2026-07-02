@@ -49,13 +49,25 @@ In browsers and other JavaScript runtimes, equivalent code will hang indefinitel
 
 In the example below, the Response relies on a Promise resolution that never happens. Uncommenting the `resolve` callback solves the issue.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  fetch(req) {    let response = new Response("Example response");    let { promise, resolve } = Promise.withResolvers();
-    // If the promise is not resolved, the Workers runtime will    // recognize this and throw an error.
+```js
+export default {
+  fetch(req) {
+    let response = new Response("Example response");
+    let { promise, resolve } = Promise.withResolvers();
+
+
+    // If the promise is not resolved, the Workers runtime will
+    // recognize this and throw an error.
+
+
     // setTimeout(resolve, 0)
-    return promise.then(() => response);  },};
+
+
+    return promise.then(() => response);
+  },
+};
 ```
 
 You can prevent this by enforcing the [no-floating-promises eslint rule ↗](https://typescript-eslint.io/rules/no-floating-promises/), which reports when a Promise is created and not properly handled.
@@ -68,12 +80,27 @@ Note
 
 With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the WebSocket close handshake. This specific error scenario is less likely to occur because the runtime handles the close for you. The example below applies to Workers on older compatibility dates.
 
-JavaScript
+**JavaScript**
 
-```
-async function handleRequest(request) {  let webSocketPair = new WebSocketPair();  let [client, server] = Object.values(webSocketPair);  server.accept();
-  server.addEventListener("close", () => {    // This missing line would keep a WebSocket connection open indefinitely    // and results in "The script will never generate a response" errors    // server.close();  });
-  return new Response(null, {    status: 101,    webSocket: client,  });}
+```js
+async function handleRequest(request) {
+  let webSocketPair = new WebSocketPair();
+  let [client, server] = Object.values(webSocketPair);
+  server.accept();
+
+
+  server.addEventListener("close", () => {
+    // This missing line would keep a WebSocket connection open indefinitely
+    // and results in "The script will never generate a response" errors
+    // server.close();
+  });
+
+
+  return new Response(null, {
+    status: 101,
+    webSocket: client,
+  });
+}
 ```
 
 ### "Illegal invocation" errors
@@ -88,28 +115,51 @@ In practice, this is often seen when destructuring runtime provided Javascript o
 
 The following code will error:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // destructuring ctx makes waitUntil lose its 'this' reference    const { waitUntil } = ctx;    // waitUntil errors, as it has no 'this'    waitUntil(somePromise);
-    return fetch(request);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    // destructuring ctx makes waitUntil lose its 'this' reference
+    const { waitUntil } = ctx;
+    // waitUntil errors, as it has no 'this'
+    waitUntil(somePromise);
+
+
+    return fetch(request);
+  },
+};
 ```
 
 Avoid destructuring or re-bind the function to the original context to avoid the error.
 
 The following code will run properly:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // directly calling the method on ctx avoids the error    ctx.waitUntil(somePromise);
-    // alternatively re-binding to ctx via apply, call, or bind avoids the error    const { waitUntil } = ctx;    waitUntil.apply(ctx, [somePromise]);    waitUntil.call(ctx, somePromise);    const reboundWaitUntil = waitUntil.bind(ctx);    reboundWaitUntil(somePromise);
-    return fetch(request);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    // directly calling the method on ctx avoids the error
+    ctx.waitUntil(somePromise);
+
+
+    // alternatively re-binding to ctx via apply, call, or bind avoids the error
+    const { waitUntil } = ctx;
+    waitUntil.apply(ctx, [somePromise]);
+    waitUntil.call(ctx, somePromise);
+    const reboundWaitUntil = waitUntil.bind(ctx);
+    reboundWaitUntil(somePromise);
+
+
+    return fetch(request);
+  },
+};
 ```
 
 ### Cannot perform I/O on behalf of a different request
 
-```
+```plaintext
 Uncaught (in promise) Error: Cannot perform I/O on behalf of a different request. I/O objects (such as streams, request/response bodies, and others) created in the context of one request handler cannot be accessed from a different request's handler.
 ```
 
@@ -119,20 +169,42 @@ In Cloudflare Workers, each invocation is handled independently and has its own 
 
 This error is most commonly caused by attempting to cache an I/O object, like a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) in global scope, and then access it in a subsequent request. For example, if you create a Worker and run the following code in local development, and make two requests to your Worker in quick succession, you can reproduce this error:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let cachedResponse = null;
-export default {  async fetch(request, env, ctx) {    if (cachedResponse) {      return cachedResponse;    }    cachedResponse = new Response("Hello, world!");    await new Promise((resolve) => setTimeout(resolve, 5000)); // Sleep for 5s to demonstrate this particular error case    return cachedResponse;  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    cachedResponse = new Response("Hello, world!");
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // Sleep for 5s to demonstrate this particular error case
+    return cachedResponse;
+  },
+};
 ```
 
 You can fix this by instead storing only the data in global scope, rather than the I/O object itself:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let cachedData = null;
-export default {  async fetch(request, env, ctx) {    if (cachedData) {      return new Response(cachedData);    }    const response = new Response("Hello, world!");    cachedData = await response.text();    return new Response(cachedData, response);  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    if (cachedData) {
+      return new Response(cachedData);
+    }
+    const response = new Response("Hello, world!");
+    cachedData = await response.text();
+    return new Response(cachedData, response);
+  },
+};
 ```
 
 If you need to share state across requests, consider using [Durable Objects](https://developers.cloudflare.com/durable-objects/). If you need to cache data across requests, consider using [Workers KV](https://developers.cloudflare.com/kv/).
@@ -229,27 +301,57 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
 
-* [  Module Worker ](#tab-panel-11906)
-* [  Service Worker ](#tab-panel-11907)
+* [  Module Worker ](#tab-panel-12201)
+* [  Service Worker ](#tab-panel-12202)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    function postLog(data) {      return fetch("https://log-service.example.com/", {        method: "POST",        body: data,      });    }
-    // Without ctx.waitUntil(), the `postLog` function may or may not complete.    ctx.waitUntil(postLog(stack));    return fetch(request);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    function postLog(data) {
+      return fetch("https://log-service.example.com/", {
+        method: "POST",
+        body: data,
+      });
+    }
+
+
+    // Without ctx.waitUntil(), the `postLog` function may or may not complete.
+    ctx.waitUntil(postLog(stack));
+    return fetch(request);
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (event) => {  event.respondWith(handleEvent(event));});
-async function handleEvent(event) {  // ...
-  // Without event.waitUntil(), the `postLog` function may or may not complete.  event.waitUntil(postLog(stack));  return fetch(event.request);}
-function postLog(data) {  return fetch("https://log-service.example.com/", {    method: "POST",    body: data,  });}
+```js
+addEventListener("fetch", (event) => {
+  event.respondWith(handleEvent(event));
+});
+
+
+async function handleEvent(event) {
+  // ...
+
+
+  // Without event.waitUntil(), the `postLog` function may or may not complete.
+  event.waitUntil(postLog(stack));
+  return fetch(event.request);
+}
+
+
+function postLog(data) {
+  return fetch("https://log-service.example.com/", {
+    method: "POST",
+    body: data,
+  });
+}
 ```
 
 ## Collect and persist Wasm core dumps
@@ -262,24 +364,39 @@ By using [passThroughOnException()](https://developers.cloudflare.com/workers/ru
 
 `ctx.passThroughOnException()` forwards requests for unhandled exceptions in your Worker code, not for errors from the origin `fetch()`. When proxying requests to an origin, wrap `fetch(request)` in `try...catch` and return a `5xx` response on failure. If the origin `fetch()` throws after consuming the request body, `passThroughOnException()` cannot replay the body.
 
-* [  Module Worker ](#tab-panel-11908)
-* [  Service Worker ](#tab-panel-11909)
+* [  Module Worker ](#tab-panel-12203)
+* [  Service Worker ](#tab-panel-12204)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    ctx.passThroughOnException();    // an error here will return the origin response, as if the Worker wasn't present    return fetch(request);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    ctx.passThroughOnException();
+    // an error here will return the origin response, as if the Worker wasn't present
+    return fetch(request);
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (event) => {  event.passThroughOnException();  event.respondWith(handleRequest(event.request));});
-async function handleRequest(request) {  // An error here will return the origin response, as if the Worker wasn’t present.  // ...  return fetch(request);}
+```js
+addEventListener("fetch", (event) => {
+  event.passThroughOnException();
+  event.respondWith(handleRequest(event.request));
+});
+
+
+async function handleRequest(request) {
+  // An error here will return the origin response, as if the Worker wasn’t present.
+  // ...
+  return fetch(request);
+}
 ```
 
 ## Related resources

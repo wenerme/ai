@@ -25,19 +25,23 @@ A struct that wraps a `UIImage` or a `URL` for image content. Used throughout th
 
 ### With a local image
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
+
+
 let rtkImage = RtkImage(image: UIImage(systemName: "mic"))
 ```
 
 ### With a remote URL
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
+
+
 let rtkImage = RtkImage(url: URL(string: "https://example.com/avatar.png"))
 ```
 

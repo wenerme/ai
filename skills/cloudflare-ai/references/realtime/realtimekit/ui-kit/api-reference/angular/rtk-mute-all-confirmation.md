@@ -25,14 +25,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-mute-all-confirmation></rtk-mute-all-confirmation>
+```html
+<!-- component.html -->
+<rtk-mute-all-confirmation></rtk-mute-all-confirmation>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-mute-all-confirmation [meeting]="meeting"></rtk-mute-all-confirmation>
+```html
+<!-- component.html -->
+<rtk-mute-all-confirmation
+ [meeting]="meeting">
+</rtk-mute-all-confirmation>
 ```
 
 ```json

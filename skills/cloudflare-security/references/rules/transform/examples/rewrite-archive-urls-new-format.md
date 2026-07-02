@@ -17,13 +17,13 @@ To rewrite the URLs of a blog archive that follow the URL format `/posts/<YYYY>-
 
 Text in **Expression Editor**:
 
-```
+```txt
 http.request.uri.path ~ "^/posts/[0-9]+-[0-9]+-[0-9]+-.*"
 ```
 
 Text after **Path** \> **Rewrite to** \> _Dynamic_:
 
-```
+```txt
 regex_replace(http.request.uri.path, "^/posts/([0-9]+)-([0-9]+)-([0-9]+)-(.*)$", "/posts/${1}/${2}/${3}/${4}")
 ```
 

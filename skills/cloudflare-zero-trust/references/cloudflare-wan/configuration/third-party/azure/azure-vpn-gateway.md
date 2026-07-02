@@ -182,14 +182,22 @@ More details on how to install the root CA certificate can be found in [User-sid
 
 Once the root CA certificate is installed, open a web browser or use curl to validate Internet connectivity:
 
-Terminal window
-
-```
+```sh
 curl https://ipinfo.io
 ```
 
-```
-{  "ip": "104.xxx.xxx.225",  "city": "Reston",  "region": "Virginia",  "country": "US",  "loc": "xx.xxxx,-xx.xxxx",  "org": "AS13335 Cloudflare, Inc.",  "postal": "20190",  "timezone": "America/New_York",  "readme": "https://ipinfo.io/missingauth"}
+```json
+{
+  "ip": "104.xxx.xxx.225",
+  "city": "Reston",
+  "region": "Virginia",
+  "country": "US",
+  "loc": "xx.xxxx,-xx.xxxx",
+  "org": "AS13335 Cloudflare, Inc.",
+  "postal": "20190",
+  "timezone": "America/New_York",
+  "readme": "https://ipinfo.io/missingauth"
+}
 ```
 
 Note
@@ -202,42 +210,183 @@ Once you have determined that connectivity has been established, Cloudflare reco
 
 1. Determine the API token via PowerShell:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Get-AzAccessToken
 ```
 
-```
-Token: eyJ0e<REDACTED>AH-PdSPgExpiresOn : 04/08/2024 23:32:47 +00:00Type      : BearerTenantId  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxUserId    : user@domain.com
+```txt
+Token: eyJ0e<REDACTED>AH-PdSPg
+ExpiresOn : 04/08/2024 23:32:47 +00:00
+Type      : Bearer
+TenantId  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+UserId    : user@domain.com
 ```
 
 1. Issue the API call to display the details of the site-to-site VPN Connection associated with the Azure Virtual Network Gateway (`GET` request):
 
-Terminal window
-
-```
-curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \--header 'Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg'
+```bash
+curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \
+--header 'Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg'
 ```
 
 1. Copy/paste the entire response into a text editor:
 
-```
-{    "name": "{{virtualNetworkGatewayName}}",    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",    "type": "Microsoft.Network/virtualNetworkGateways",    "location": "eastus"    },    "properties": {        "provisioningState": "Succeeded",        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",        "packetCaptureDiagnosticState": "None",        "enablePrivateIpAddress": false,        "isMigrateToCSES": false,        "ipConfigurations": [            {                "name": "default",                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",                "properties": {                    "provisioningState": "Succeeded",                    "privateIPAllocationMethod": "Dynamic",                    "publicIPAddress": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"                    },                    "subnet": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"                    }                }            }        ],        "natRules": [],        "virtualNetworkGatewayPolicyGroups": [],        "enableBgpRouteTranslationForNat": false,        "disableIPSecReplayProtection": false,        "sku": {            "name": "VpnGw2AZ",            "tier": "VpnGw2AZ",            "capacity": 2        },        "gatewayType": "Vpn",        "vpnType": "RouteBased",        "enableBgp": false,        "activeActive": false,        "bgpSettings": {            "asn": 65515,            "bgpPeeringAddress": "172.25.40.30",            "peerWeight": 0,            "bgpPeeringAddresses": [                {                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                    "defaultBgpIpAddresses": [                        "172.25.40.30"                    ],                    "customBgpIpAddresses": [],                    "tunnelIpAddresses": [                        "{{CF ANYCAST IP}}"                    ]                }            ]        },        "gatewayDefaultSite": {            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"        },        "vpnGatewayGeneration": "Generation2",        "allowRemoteVnetTraffic": false,        "allowVirtualWanTraffic": false    }}
+```json
+{
+    "name": "{{virtualNetworkGatewayName}}",
+    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",
+    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+    "type": "Microsoft.Network/virtualNetworkGateways",
+    "location": "eastus"
+    },
+    "properties": {
+        "provisioningState": "Succeeded",
+        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "packetCaptureDiagnosticState": "None",
+        "enablePrivateIpAddress": false,
+        "isMigrateToCSES": false,
+        "ipConfigurations": [
+            {
+                "name": "default",
+                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
+                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
+                "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "publicIPAddress": {
+                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"
+                    },
+                    "subnet": {
+                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"
+                    }
+                }
+            }
+        ],
+        "natRules": [],
+        "virtualNetworkGatewayPolicyGroups": [],
+        "enableBgpRouteTranslationForNat": false,
+        "disableIPSecReplayProtection": false,
+        "sku": {
+            "name": "VpnGw2AZ",
+            "tier": "VpnGw2AZ",
+            "capacity": 2
+        },
+        "gatewayType": "Vpn",
+        "vpnType": "RouteBased",
+        "enableBgp": false,
+        "activeActive": false,
+        "bgpSettings": {
+            "asn": 65515,
+            "bgpPeeringAddress": "172.25.40.30",
+            "peerWeight": 0,
+            "bgpPeeringAddresses": [
+                {
+                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
+                    "defaultBgpIpAddresses": [
+                        "172.25.40.30"
+                    ],
+                    "customBgpIpAddresses": [],
+                    "tunnelIpAddresses": [
+                        "{{CF ANYCAST IP}}"
+                    ]
+                }
+            ]
+        },
+        "gatewayDefaultSite": {
+            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"
+        },
+        "vpnGatewayGeneration": "Generation2",
+        "allowRemoteVnetTraffic": false,
+        "allowVirtualWanTraffic": false
+    }
+}
 ```
 
 1. Locate the line that controls disabling IPsec anti-replay protection, and change it from `false` to `true`:
 
-```
+```txt
 "disableIPSecReplayProtection": true
 ```
 
 1. Upload the entire response in a subsequent API call (`PUT` request):
 
-Terminal window
-
-```
-curl --location --request PUT \'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \--header "Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg" \--header "Content-Type: application/json" \--data '{    "name": "{{virtualNetworkGatewayName}}",    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",    "type": "Microsoft.Network/virtualNetworkGateways",    "location": "eastus"    },    "properties": {        "provisioningState": "Succeeded",        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",        "packetCaptureDiagnosticState": "None",        "enablePrivateIpAddress": false,        "isMigrateToCSES": false,        "ipConfigurations": [            {                "name": "default",                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",                "properties": {                    "provisioningState": "Succeeded",                    "privateIPAllocationMethod": "Dynamic",                    "publicIPAddress": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"                    },                    "subnet": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"                    }                }            }        ],        "natRules": [],        "virtualNetworkGatewayPolicyGroups": [],        "enableBgpRouteTranslationForNat": false,        "disableIPSecReplayProtection": true,        "sku": {            "name": "VpnGw2AZ",            "tier": "VpnGw2AZ",            "capacity": 2        },        "gatewayType": "Vpn",        "vpnType": "RouteBased",        "enableBgp": false,        "activeActive": false,        "bgpSettings": {            "asn": 65515,            "bgpPeeringAddress": "172.25.40.30",            "peerWeight": 0,            "bgpPeeringAddresses": [                {                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                    "defaultBgpIpAddresses": [                        "172.25.40.30"                    ],                    "customBgpIpAddresses": [],                    "tunnelIpAddresses": [                        "{{CF ANYCAST IP}}"                    ]                }            ]        },        "gatewayDefaultSite": {            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"        },        "vpnGatewayGeneration": "Generation2",        "allowRemoteVnetTraffic": false,        "allowVirtualWanTraffic": false    }}'
+```bash
+curl --location --request PUT \
+'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \
+--header "Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg" \
+--header "Content-Type: application/json" \
+--data '{
+    "name": "{{virtualNetworkGatewayName}}",
+    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",
+    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+    "type": "Microsoft.Network/virtualNetworkGateways",
+    "location": "eastus"
+    },
+    "properties": {
+        "provisioningState": "Succeeded",
+        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "packetCaptureDiagnosticState": "None",
+        "enablePrivateIpAddress": false,
+        "isMigrateToCSES": false,
+        "ipConfigurations": [
+            {
+                "name": "default",
+                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
+                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
+                "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "publicIPAddress": {
+                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"
+                    },
+                    "subnet": {
+                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"
+                    }
+                }
+            }
+        ],
+        "natRules": [],
+        "virtualNetworkGatewayPolicyGroups": [],
+        "enableBgpRouteTranslationForNat": false,
+        "disableIPSecReplayProtection": true,
+        "sku": {
+            "name": "VpnGw2AZ",
+            "tier": "VpnGw2AZ",
+            "capacity": 2
+        },
+        "gatewayType": "Vpn",
+        "vpnType": "RouteBased",
+        "enableBgp": false,
+        "activeActive": false,
+        "bgpSettings": {
+            "asn": 65515,
+            "bgpPeeringAddress": "172.25.40.30",
+            "peerWeight": 0,
+            "bgpPeeringAddresses": [
+                {
+                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
+                    "defaultBgpIpAddresses": [
+                        "172.25.40.30"
+                    ],
+                    "customBgpIpAddresses": [],
+                    "tunnelIpAddresses": [
+                        "{{CF ANYCAST IP}}"
+                    ]
+                }
+            ]
+        },
+        "gatewayDefaultSite": {
+            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"
+        },
+        "vpnGatewayGeneration": "Generation2",
+        "allowRemoteVnetTraffic": false,
+        "allowVirtualWanTraffic": false
+    }
+}'
 ```
 
 1. Leave the replay protection setting checked in the Cloudflare dashboard, and wait several minutes before validating connectivity again.

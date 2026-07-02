@@ -20,7 +20,7 @@ This field is only available in rewrite expressions of [Transform Rules](https:/
 
 Example value:
 
-```
+```txt
 "America/Chicago"
 ```
 

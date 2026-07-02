@@ -44,8 +44,20 @@ The lockdown re-engages automatically any time the device transitions back to an
 
 To enable the feature, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) with the `no_auth_no_internet` top-level key set to `true`:
 
-```
-<dict>  <key>no_auth_no_internet</key>  <true/>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>your-team-name</string>      <key>display_name</key>      <string>Default</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>no_auth_no_internet</key>
+  <true/>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>your-team-name</string>
+      <key>display_name</key>
+      <string>Default</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 When the Cloudflare One Client reads this configuration and detects that no user is authenticated, it applies the firewall lockdown and prompts the user to authenticate. After successful authentication, the lockdown is completely lifted.
@@ -56,8 +68,22 @@ By default, the Cloudflare One Client permits traffic to [RFC 1918 ↗](https://
 
 To block RFC 1918 traffic during lockdown, set `no_auth_no_internet_block_rfc_1918` to `true`:
 
-```
-<dict>  <key>no_auth_no_internet</key>  <true/>  <key>no_auth_no_internet_block_rfc_1918</key>  <true/>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>your-team-name</string>      <key>display_name</key>      <string>Default</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>no_auth_no_internet</key>
+  <true/>
+  <key>no_auth_no_internet_block_rfc_1918</key>
+  <true/>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>your-team-name</string>
+      <key>display_name</key>
+      <string>Default</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 ## Limitations

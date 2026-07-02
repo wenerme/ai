@@ -18,7 +18,7 @@ The entire query string, without the `?` delimiter.
 
 Example value:
 
-```
+```txt
 "section=539061&expand=comments"
 ```
 

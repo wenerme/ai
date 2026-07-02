@@ -31,19 +31,25 @@ Tooltip component which follows RTK Design System.
 
 ### Basic Usage
 
-```
+```html
 <rtk-tooltip></rtk-tooltip>
 ```
 
 ### With Properties
 
-```
-<rtk-tooltip></rtk-tooltip>
+```html
+<rtk-tooltip>
+</rtk-tooltip>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-tooltip");
-  el.delay= 42;  el.disabled= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-tooltip");
+
+
+  el.delay= 42;
+  el.disabled= true;
+</script>
 ```
 
 ```json

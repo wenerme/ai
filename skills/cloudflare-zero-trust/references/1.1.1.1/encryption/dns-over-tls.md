@@ -31,18 +31,41 @@ A stub resolver is the DNS client software on your device that sends queries to 
 
 ## Example
 
-Terminal window
-
-```
+```sh
 kdig -d @1.1.1.1 +tls-ca +tls-host=one.one.one.one example.com
 ```
 
-```
-;; DEBUG: Querying for owner(example.com.), class(1), type(1), server(1.1.1.1), port(853), protocol(TCP);; DEBUG: TLS, imported 138 system certificates;; DEBUG: TLS, received certificate hierarchy:;; DEBUG:  #1, C=US,ST=California,L=San Francisco,O=Cloudflare\, Inc.,CN=cloudflare-dns.com;; DEBUG:      SHA-256 PIN: GP8Knf7qBae+aIfythytMbYnL+yowaWVeD6MoLHkVRg=;; DEBUG:  #2, C=US,O=DigiCert Inc,CN=DigiCert TLS Hybrid ECC SHA384 2020 CA1;; DEBUG:      SHA-256 PIN: e0IRz5Tio3GA1Xs4fUVWmH1xHDiH2dMbVtCBSkOIdqM=;; DEBUG: TLS, skipping certificate PIN check;; DEBUG: TLS, The certificate is trusted.;; TLS session (TLS1.3)-(ECDHE-X25519)-(ECDSA-SECP256R1-SHA256)-(AES-256-GCM);; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 3395;; Flags: qr rd ra; QUERY: 1; ANSWER: 1; AUTHORITY: 0; ADDITIONAL: 1
-;; EDNS PSEUDOSECTION:;; Version: 0; flags: ; UDP size: 1232 B; ext-rcode: NOERROR;; PADDING: 408 B
-;; QUESTION SECTION:;; example.com.            IN  A
-;; ANSWER SECTION:example.com.          75897  IN  A  93.184.216.34
-;; Received 468 B;; Time 2023-06-23 18:05:42 PDT;; From 1.1.1.1@853(TCP) in 12.1 ms
+```sh
+;; DEBUG: Querying for owner(example.com.), class(1), type(1), server(1.1.1.1), port(853), protocol(TCP)
+;; DEBUG: TLS, imported 138 system certificates
+;; DEBUG: TLS, received certificate hierarchy:
+;; DEBUG:  #1, C=US,ST=California,L=San Francisco,O=Cloudflare\, Inc.,CN=cloudflare-dns.com
+;; DEBUG:      SHA-256 PIN: GP8Knf7qBae+aIfythytMbYnL+yowaWVeD6MoLHkVRg=
+;; DEBUG:  #2, C=US,O=DigiCert Inc,CN=DigiCert TLS Hybrid ECC SHA384 2020 CA1
+;; DEBUG:      SHA-256 PIN: e0IRz5Tio3GA1Xs4fUVWmH1xHDiH2dMbVtCBSkOIdqM=
+;; DEBUG: TLS, skipping certificate PIN check
+;; DEBUG: TLS, The certificate is trusted.
+;; TLS session (TLS1.3)-(ECDHE-X25519)-(ECDSA-SECP256R1-SHA256)-(AES-256-GCM)
+;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 3395
+;; Flags: qr rd ra; QUERY: 1; ANSWER: 1; AUTHORITY: 0; ADDITIONAL: 1
+
+
+;; EDNS PSEUDOSECTION:
+;; Version: 0; flags: ; UDP size: 1232 B; ext-rcode: NOERROR
+;; PADDING: 408 B
+
+
+;; QUESTION SECTION:
+;; example.com.            IN  A
+
+
+;; ANSWER SECTION:
+example.com.          75897  IN  A  93.184.216.34
+
+
+;; Received 468 B
+;; Time 2023-06-23 18:05:42 PDT
+;; From 1.1.1.1@853(TCP) in 12.1 ms
 ```
 
 ## Supported TLS versions

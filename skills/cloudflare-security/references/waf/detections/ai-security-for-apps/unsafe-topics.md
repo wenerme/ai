@@ -72,8 +72,8 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-11241)
-* [ API ](#tab-panel-11242)
+* [ Dashboard ](#tab-panel-11536)
+* [ API ](#tab-panel-11537)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -86,10 +86,26 @@ Alternatively, go to the [custom rules creation page](https://developers.cloudfl
 
 Update your custom topics list using a `PUT` request:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "topics": [      {        "label": "competitors",        "topic": "seeking info on competitors"      },      {        "label": "financial-advice",        "topic": "seeking financial advice"      },      {        "label": "hr-internal",        "topic": "asking about internal HR policies"      }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "topics": [
+      {
+        "label": "competitors",
+        "topic": "seeking info on competitors"
+      },
+      {
+        "label": "financial-advice",
+        "topic": "seeking financial advice"
+      },
+      {
+        "label": "hr-internal",
+        "topic": "asking about internal HR policies"
+      }
+    ]
+  }'
 ```
 
 Warning
@@ -98,10 +114,9 @@ This request replaces your entire topic list. Include all topics you want to kee
 
 To retrieve your current topics, use a `GET` request:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Constraints

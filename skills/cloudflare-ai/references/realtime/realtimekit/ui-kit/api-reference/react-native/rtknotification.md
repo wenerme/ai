@@ -28,16 +28,30 @@ A single notification toast with slide-in/slide-out animation, avatar, message t
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkNotification } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkNotification notification={notification} />;}
+
+
+function MyComponent() {
+  return <RtkNotification notification={notification} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkNotification } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkNotification      notification={notification}      onRtkNotificationDismiss={(id) => handleDismiss(id)}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkNotification
+      notification={notification}
+      onRtkNotificationDismiss={(id) => handleDismiss(id)}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

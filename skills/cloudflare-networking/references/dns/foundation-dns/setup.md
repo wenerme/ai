@@ -62,8 +62,8 @@ To enable advanced nameservers on an existing zone:
 
 1. Opt for advanced nameservers on your zone:
 
-  * [ Dashboard ](#tab-panel-8149)
-  * [ API ](#tab-panel-8150)
+  * [ Dashboard ](#tab-panel-8430)
+  * [ API ](#tab-panel-8431)
 
   1. In the Cloudflare dashboard, go to the **DNS Records** page.
   [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -74,9 +74,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Zone DNS Settings Write`
   * `DNS Write`
-Update DNS Settings
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "foundation_dns": true  }'
+
+**Update DNS Settings**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "foundation_dns": true
+  }'
 ```
 The response body will contain your assigned nameservers in the `nameservers` object. You will use these nameservers in the next step.
 2. Update the authoritative nameservers at your registrar. This step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/):

@@ -184,11 +184,20 @@ If `--persist-to` is not specified, Wrangler defaults to using `.wrangler/state`
 
 To customize where the Vite plugin stores local data, configure the [persistState option](https://developers.cloudflare.com/workers/vite-plugin/reference/api/#interface-pluginconfig) in your Vite config file:
 
-vite.config.js
+**vite.config.js**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [    cloudflare({      persistState: { path: "./my-custom-directory" },    }),  ],});
+```js
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflare({
+      persistState: { path: "./my-custom-directory" },
+    }),
+  ],
+});
 ```
 
 #### Sharing state between tools

@@ -28,14 +28,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-audio-tile></rtk-audio-tile>
+```html
+<!-- component.html -->
+<rtk-audio-tile></rtk-audio-tile>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-audio-tile [config]="defaultUiConfig" [meeting]="meeting" [participant]="participant"></rtk-audio-tile>
+```html
+<!-- component.html -->
+<rtk-audio-tile
+ [config]="defaultUiConfig"
+ [meeting]="meeting"
+ [participant]="participant">
+</rtk-audio-tile>
 ```
 
 ```json

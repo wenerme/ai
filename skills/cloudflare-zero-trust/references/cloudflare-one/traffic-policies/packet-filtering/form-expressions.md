@@ -16,13 +16,13 @@ Rules are written using the Cloudflare Rules language - a domain-specific langua
 
 To start with a simple case, review below how you would match a source IP. In this expression, `ip.src` refers to the source IP address of the incoming packet, and `==` means "equals":
 
-```
+```txt
 ip.src == 192.0.2.0
 ```
 
 Expressions can be more complex by joining multiple clauses via a logical operator (`&&` means AND, `||` means OR). The following expression matches packets from `192.0.2.1` that also have the TCP push or reset flag set:
 
-```
+```txt
 ip.src == 192.0.2.1 && (tcp.flags.push || tcp.flags.reset)
 ```
 
@@ -34,13 +34,14 @@ You can use Cloudflare Network Firewall to skip or block packets based on source
 
 The expression engine supports CIDR notation (IP address ranges like `192.0.2.0/24`), but only inside curly-brace sets. A bare comparison will not work as expected:
 
-```
-ip.src == 192.0.2.0/24  # badip.src in { 192.0.2.0/24 }  # good
+```txt
+ip.src == 192.0.2.0/24  # bad
+ip.src in { 192.0.2.0/24 }  # good
 ```
 
 Expressions have a complexity limit that is easily reached when many joined or nested clauses are in the expression. Here's an example:
 
-```
+```txt
 (tcp.dstport == 1000 || tcp.dstport == 1001) && (tcp.dstport == 1002 || tcp.dstport == 1003) && (tcp.dstport == 1004 || tcp.dstport == 1005) && (tcp.dstport == 1006 || tcp.dstport == 1007) && (tcp.dstport == 1008 || tcp.dstport == 1009) && (tcp.dstport == 1010 || tcp.dstport == 1011) && (tcp.dstport == 1012 || tcp.dstport == 1013) && (tcp.dstport == 1014 || tcp.dstport == 1015) && (tcp.dstport == 1016 || tcp.dstport == 1017)
 ```
 

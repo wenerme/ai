@@ -14,10 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A component which lets to manage your camera devices and your video preferences. Emits `rtkStateUpdate` event with data for toggling mirroring of self video:
 
-TypeScript
+**TypeScript**
 
-```
-{ prefs: {   mirrorVideo: boolean }}
+```ts
+{
+ prefs: {
+   mirrorVideo: boolean
+ }
+}
 ```
 
 ## Properties
@@ -34,14 +38,19 @@ TypeScript
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-settings-video></rtk-settings-video>
+```html
+<!-- component.html -->
+<rtk-settings-video></rtk-settings-video>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-settings-video [meeting]="meeting" size="md"></rtk-settings-video>
+```html
+<!-- component.html -->
+<rtk-settings-video
+ [meeting]="meeting"
+ size="md">
+</rtk-settings-video>
 ```
 
 ```json

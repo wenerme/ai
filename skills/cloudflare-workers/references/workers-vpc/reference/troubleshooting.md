@@ -96,10 +96,9 @@ For role definitions, refer to [Roles](https://developers.cloudflare.com/fundame
 
 If your roles were recently updated and commands are still failing, refresh Wrangler authentication:
 
-Terminal window
-
-```
-npx wrangler logoutnpx wrangler login
+```sh
+npx wrangler logout
+npx wrangler login
 ```
 
 If you authenticate with an API token (`CLOUDFLARE_API_TOKEN`), ensure the token belongs to a user with the required roles.

@@ -53,18 +53,90 @@ The following `PUT` example creates a new phase ruleset (or updates the existing
 * All rules tagged with `<TAG_NAME>` will have a sensitivity level of `low`.
 * The rule with ID `<MANAGED_RULESET_RULE_ID>` will use the `block` action.
 
-Request
+**Request**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/ddos_l7/entrypoint \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "description": "Execute HTTP DDoS Attack Protection managed ruleset in the zone-level phase entry point ruleset",  "rules": [    {      "action": "execute",      "action_parameters": {        "id": "<MANAGED_RULESET_ID>",        "overrides": {          "sensitivity_level": "medium",          "action": "managed_challenge",          "categories": [            {              "category": "<TAG_NAME>",              "sensitivity_level": "low"            }          ],          "rules": [            {              "id": "<MANAGED_RULESET_RULE_ID>",              "action": "block"            }          ]        }      },      "expression": "true"    }  ]}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/ddos_l7/entrypoint \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "description": "Execute HTTP DDoS Attack Protection managed ruleset in the zone-level phase entry point ruleset",
+  "rules": [
+    {
+      "action": "execute",
+      "action_parameters": {
+        "id": "<MANAGED_RULESET_ID>",
+        "overrides": {
+          "sensitivity_level": "medium",
+          "action": "managed_challenge",
+          "categories": [
+            {
+              "category": "<TAG_NAME>",
+              "sensitivity_level": "low"
+            }
+          ],
+          "rules": [
+            {
+              "id": "<MANAGED_RULESET_RULE_ID>",
+              "action": "block"
+            }
+          ]
+        }
+      },
+      "expression": "true"
+    }
+  ]
+}'
 ```
 
 The response returns the created (or updated) phase entry point ruleset.
 
 Response
 
-```
-{  "result": {    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",    "name": "default",    "description": "Execute HTTP DDoS Attack Protection managed ruleset in the zone-level phase entry point ruleset",    "kind": "zone",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>",          "version": "latest",          "overrides": {            "action": "managed_challenge",            "categories": [              {                "category": "<TAG_NAME>",                "sensitivity_level": "low"              }            ],            "rules": [              {                "id": "<MANAGED_RULESET_RULE_ID>",                "action": "block"              }            ],            "sensitivity_level": "medium"          }        },        "expression": "true",        "last_updated": "2021-06-16T04:14:47.977741Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2021-06-16T04:14:47.977741Z",    "phase": "ddos_l7"  }}
+```json
+{
+  "result": {
+    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",
+    "name": "default",
+    "description": "Execute HTTP DDoS Attack Protection managed ruleset in the zone-level phase entry point ruleset",
+    "kind": "zone",
+    "version": "1",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "action_parameters": {
+          "id": "<MANAGED_RULESET_ID>",
+          "version": "latest",
+          "overrides": {
+            "action": "managed_challenge",
+            "categories": [
+              {
+                "category": "<TAG_NAME>",
+                "sensitivity_level": "low"
+              }
+            ],
+            "rules": [
+              {
+                "id": "<MANAGED_RULESET_RULE_ID>",
+                "action": "block"
+              }
+            ],
+            "sensitivity_level": "medium"
+          }
+        },
+        "expression": "true",
+        "last_updated": "2021-06-16T04:14:47.977741Z",
+        "ref": "<RULE_REF>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2021-06-16T04:14:47.977741Z",
+    "phase": "ddos_l7"
+  }
+}
 ```
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) in the Ruleset Engine documentation.
@@ -79,18 +151,76 @@ Note
 
 Custom rule expressions (different from `"true"`) and the `log` action require an Enterprise plan with the Advanced DDoS Protection subscription.
 
-Request
+**Request**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_l7/entrypoint \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "description": "Disable a managed ruleset rule for allowlisted IP addresses",  "rules": [    {      "expression": "ip.src in $allowlisted_ips",      "action": "execute",      "action_parameters": {        "id": "<MANAGED_RULESET_ID>",        "overrides": {          "rules": [            {              "id": "<MANAGED_RULESET_RULE_ID>",              "action": "log",              "sensitivity_level": "eoff"            }          ]        }      }    }  ]}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_l7/entrypoint \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "description": "Disable a managed ruleset rule for allowlisted IP addresses",
+  "rules": [
+    {
+      "expression": "ip.src in $allowlisted_ips",
+      "action": "execute",
+      "action_parameters": {
+        "id": "<MANAGED_RULESET_ID>",
+        "overrides": {
+          "rules": [
+            {
+              "id": "<MANAGED_RULESET_RULE_ID>",
+              "action": "log",
+              "sensitivity_level": "eoff"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}'
 ```
 
 The response returns the created (or updated) phase entry point ruleset.
 
 Response
 
-```
-{  "result": {    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",    "name": "default",    "description": "Disable a managed ruleset rule for allowlisted IP addresses",    "kind": "root",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>",          "version": "latest",          "overrides": {            "rules": [              {                "id": "<MANAGED_RULESET_RULE_ID>",                "action": "log",                "sensitivity_level": "eoff"              }            ]          }        },        "expression": "ip.src in $allowlisted_ips",        "last_updated": "2022-10-16T04:14:47.977741Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2022-10-16T04:14:47.977741Z",    "phase": "ddos_l7"  }}
+```json
+{
+  "result": {
+    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",
+    "name": "default",
+    "description": "Disable a managed ruleset rule for allowlisted IP addresses",
+    "kind": "root",
+    "version": "1",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "action_parameters": {
+          "id": "<MANAGED_RULESET_ID>",
+          "version": "latest",
+          "overrides": {
+            "rules": [
+              {
+                "id": "<MANAGED_RULESET_RULE_ID>",
+                "action": "log",
+                "sensitivity_level": "eoff"
+              }
+            ]
+          }
+        },
+        "expression": "ip.src in $allowlisted_ips",
+        "last_updated": "2022-10-16T04:14:47.977741Z",
+        "ref": "<RULE_REF>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2022-10-16T04:14:47.977741Z",
+    "phase": "ddos_l7"
+  }
+}
 ```
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) in the Ruleset Engine documentation.

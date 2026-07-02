@@ -20,7 +20,7 @@ _No properties available._
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-header></rtk-chat-header>
 ```
 

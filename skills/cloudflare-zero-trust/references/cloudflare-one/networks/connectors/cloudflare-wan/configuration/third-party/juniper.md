@@ -192,8 +192,9 @@ Each section will indicate whether the commands are applicable to configuration 
 
 _Perform in Configuration Mode_
 
-```
-set interfaces st0 unit 1 family inet address 169.254.250.1/31set interfaces st0 unit 2 family inet address 169.254.250.3/31
+```txt
+set interfaces st0 unit 1 family inet address 169.254.250.1/31
+set interfaces st0 unit 2 family inet address 169.254.250.3/31
 ```
 
 ### Security Zone
@@ -202,8 +203,9 @@ _Perform in Configuration Mode_
 
 Add `st0.1` and `st0.2` to the Security Zone `cloudflare` and permit `system-services ping`. This is required to ensure the Cloudflare WAN IPsec Tunnel Health Checks are able to verify reachability across the Virtual Tunnel Interfaces.
 
-```
-set security zones security-zone cloudflare interfaces st0.1 host-inbound-traffic system-services pingset security zones security-zone cloudflare interfaces st0.2 host-inbound-traffic system-services ping
+```txt
+set security zones security-zone cloudflare interfaces st0.1 host-inbound-traffic system-services ping
+set security zones security-zone cloudflare interfaces st0.2 host-inbound-traffic system-services ping
 ```
 
 ### IKE - Phase 1
@@ -228,8 +230,12 @@ Define an IKE Proposal with the following settings:
 | encryption-algorithm     | aes-256-cbc     |
 | lifetime-seconds         | 28800           |
 
-```
-set security ike proposal ike-aes256cbc-sha256-dh20 authentication-method pre-shared-keysset security ike proposal ike-aes256cbc-sha256-dh20 dh-group group20set security ike proposal ike-aes256cbc-sha256-dh20 authentication-algorithm sha-256set security ike proposal ike-aes256cbc-sha256-dh20 encryption-algorithm aes-256-cbcset security ike proposal ike-aes256cbc-sha256-dh20 lifetime-seconds 28800
+```txt
+set security ike proposal ike-aes256cbc-sha256-dh20 authentication-method pre-shared-keys
+set security ike proposal ike-aes256cbc-sha256-dh20 dh-group group20
+set security ike proposal ike-aes256cbc-sha256-dh20 authentication-algorithm sha-256
+set security ike proposal ike-aes256cbc-sha256-dh20 encryption-algorithm aes-256-cbc
+set security ike proposal ike-aes256cbc-sha256-dh20 lifetime-seconds 28800
 ```
 
 #### IKE Policies
@@ -242,18 +248,36 @@ Configure one IKE policy per IPsec tunnel:
 | proposals                 | ike-aes256cbc-sha256-dh20 |
 | pre-shared-key ascii-text | _specify pre-shared-key_  |
 
-```
-set security ike policy cf-wan-ike-pol-01 mode mainset security ike policy cf-wan-ike-pol-01 proposals ike-aes256cbc-sha256-dh20set security ike policy cf-wan-ike-pol-01 pre-shared-key ascii-text "Cloudflare-WAN-T1-PSK-1234!"
-set security ike policy cf-wan-ike-pol-02 mode mainset security ike policy cf-wan-ike-pol-02 proposals ike-aes256cbc-sha256-dh20set security ike policy cf-wan-ike-pol-02 pre-shared-key ascii-text "Cloudflare-WAN-T2-PSK-1234!"
+```txt
+set security ike policy cf-wan-ike-pol-01 mode main
+set security ike policy cf-wan-ike-pol-01 proposals ike-aes256cbc-sha256-dh20
+set security ike policy cf-wan-ike-pol-01 pre-shared-key ascii-text "Cloudflare-WAN-T1-PSK-1234!"
+
+
+set security ike policy cf-wan-ike-pol-02 mode main
+set security ike policy cf-wan-ike-pol-02 proposals ike-aes256cbc-sha256-dh20
+set security ike policy cf-wan-ike-pol-02 pre-shared-key ascii-text "Cloudflare-WAN-T2-PSK-1234!"
 ```
 
 #### IKE Gateways
 
 Configure one IKE Gateway per IPsec tunnel:
 
-```
-set security ike gateway cf-wan-ike-gw-01 ike-policy cf-wan-ike-pol-01set security ike gateway cf-wan-ike-gw-01 address 162.159.135.1set security ike gateway cf-wan-ike-gw-01 local-identity hostname bf6c493d03<REDACTED>.ipsec.cloudflare.comset security ike gateway cf-wan-ike-gw-01 external-interface ge-0/0/0.0set security ike gateway cf-wan-ike-gw-01 local-address 203.0.113.100set security ike gateway cf-wan-ike-gw-01 version v2-only
-set security ike gateway cf-wan-ike-gw-02 ike-policy cf-wan-ike-pol-02set security ike gateway cf-wan-ike-gw-02 address 172.64.135.1set security ike gateway cf-wan-ike-gw-02 local-identity hostname 0287844e9d<REDACTED>.ipsec.cloudflare.comset security ike gateway cf-wan-ike-gw-02 external-interface ge-0/0/0.0set security ike gateway cf-wan-ike-gw-02 local-address 203.0.113.100set security ike gateway cf-wan-ike-gw-02 version v2-only
+```txt
+set security ike gateway cf-wan-ike-gw-01 ike-policy cf-wan-ike-pol-01
+set security ike gateway cf-wan-ike-gw-01 address 162.159.135.1
+set security ike gateway cf-wan-ike-gw-01 local-identity hostname bf6c493d03<REDACTED>.ipsec.cloudflare.com
+set security ike gateway cf-wan-ike-gw-01 external-interface ge-0/0/0.0
+set security ike gateway cf-wan-ike-gw-01 local-address 203.0.113.100
+set security ike gateway cf-wan-ike-gw-01 version v2-only
+
+
+set security ike gateway cf-wan-ike-gw-02 ike-policy cf-wan-ike-pol-02
+set security ike gateway cf-wan-ike-gw-02 address 172.64.135.1
+set security ike gateway cf-wan-ike-gw-02 local-identity hostname 0287844e9d<REDACTED>.ipsec.cloudflare.com
+set security ike gateway cf-wan-ike-gw-02 external-interface ge-0/0/0.0
+set security ike gateway cf-wan-ike-gw-02 local-address 203.0.113.100
+set security ike gateway cf-wan-ike-gw-02 version v2-only
 ```
 
 ### IPsec - Phase 2
@@ -277,23 +301,37 @@ Define an IPsec Proposal with the following settings:
 | encryption-algorithm     | aes-256-cbc      |
 | lifetime-seconds         | 28800            |
 
-```
-set security ipsec proposal esp-aes256cbc-sha256-128 protocol espset security ipsec proposal esp-aes256cbc-sha256-128 authentication-algorithm hmac-sha-256-128set security ipsec proposal esp-aes256cbc-sha256-128 encryption-algorithm aes-256-cbcset security ipsec proposal esp-aes256cbc-sha256-128 lifetime-seconds 28800
+```txt
+set security ipsec proposal esp-aes256cbc-sha256-128 protocol esp
+set security ipsec proposal esp-aes256cbc-sha256-128 authentication-algorithm hmac-sha-256-128
+set security ipsec proposal esp-aes256cbc-sha256-128 encryption-algorithm aes-256-cbc
+set security ipsec proposal esp-aes256cbc-sha256-128 lifetime-seconds 28800
 ```
 
 #### IPsec Policy
 
-```
-set security ipsec policy ipsec-aes256cbc-sha256-128-dh20 perfect-forward-secrecy keys group20set security ipsec policy ipsec-aes256cbc-sha256-128-dh20 proposals esp-aes256cbc-sha256-128
+```txt
+set security ipsec policy ipsec-aes256cbc-sha256-128-dh20 perfect-forward-secrecy keys group20
+set security ipsec policy ipsec-aes256cbc-sha256-128-dh20 proposals esp-aes256cbc-sha256-128
 ```
 
 #### IPsec VPN Tunnels
 
 Create two IPsec VPN tunnels - each corresponding to its respective IKE Gateway.
 
-```
-set security ipsec vpn cf-wan-ipsec-vpn-01 bind-interface st0.1set security ipsec vpn cf-wan-ipsec-vpn-01 ike gateway cf-wan-ike-gw-01set security ipsec vpn cf-wan-ipsec-vpn-01 ike no-anti-replayset security ipsec vpn cf-wan-ipsec-vpn-01 ike ipsec-policy ipsec-aes256cbc-sha256-128-dh20set security ipsec vpn cf-wan-ipsec-vpn-01 establish-tunnels immediately
-set security ipsec vpn cf-wan-ipsec-vpn-02 bind-interface st0.2set security ipsec vpn cf-wan-ipsec-vpn-02 ike gateway cf-wan-ike-gw-02set security ipsec vpn cf-wan-ipsec-vpn-02 ike no-anti-replayset security ipsec vpn cf-wan-ipsec-vpn-02 ike ipsec-policy ipsec-aes256cbc-sha256-128-dh20set security ipsec vpn cf-wan-ipsec-vpn-02 establish-tunnels immediately
+```txt
+set security ipsec vpn cf-wan-ipsec-vpn-01 bind-interface st0.1
+set security ipsec vpn cf-wan-ipsec-vpn-01 ike gateway cf-wan-ike-gw-01
+set security ipsec vpn cf-wan-ipsec-vpn-01 ike no-anti-replay
+set security ipsec vpn cf-wan-ipsec-vpn-01 ike ipsec-policy ipsec-aes256cbc-sha256-128-dh20
+set security ipsec vpn cf-wan-ipsec-vpn-01 establish-tunnels immediately
+
+
+set security ipsec vpn cf-wan-ipsec-vpn-02 bind-interface st0.2
+set security ipsec vpn cf-wan-ipsec-vpn-02 ike gateway cf-wan-ike-gw-02
+set security ipsec vpn cf-wan-ipsec-vpn-02 ike no-anti-replay
+set security ipsec vpn cf-wan-ipsec-vpn-02 ike ipsec-policy ipsec-aes256cbc-sha256-128-dh20
+set security ipsec vpn cf-wan-ipsec-vpn-02 establish-tunnels immediately
 ```
 
 Note
@@ -312,7 +350,7 @@ Note
 
 The recommended MSS value 1360 may need to be adjusted based on the nature of the traffic traversing the Cloudflare WAN IPsec Tunnels.
 
-```
+```txt
 set security flow tcp-mss ipsec-vpn mss 1360
 ```
 
@@ -336,9 +374,19 @@ The following example allows all source & destination IPs, ports, and protocols/
 | action              | permit        |
 | log                 | session-close |
 
-```
-set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match source-address anyset security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match destination-address anyset security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match application anyset security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit then permitset security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit then log session-close
-set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match source-address anyset security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match destination-address anyset security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match application anyset security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit then permitset security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit then log session-close
+```txt
+set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match source-address any
+set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match destination-address any
+set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit match application any
+set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit then permit
+set security policies from-zone cloudflare to-zone trust policy cloudflare-to-trust-permit then log session-close
+
+
+set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match source-address any
+set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match destination-address any
+set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit match application any
+set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit then permit
+set security policies from-zone trust to-zone cloudflare policy trust-to-cloudflare-permit then log session-close
 ```
 
 ### Filter-Based Forwarding - Policy-Based Routing
@@ -371,8 +419,10 @@ The Routing Instance defines the destination for your steered traffic. Unlike a 
 
 This example effectively sets the default gateway (0.0.0.0/0) for any traffic landing on this Routing Instance to get routed to the IP address of the VTIs on the Cloudflare side of the IPsec tunnels:
 
-```
-set routing-instances CF_WAN_RI instance-type forwardingset routing-instances CF_WAN_RI routing-options static route 0.0.0.0/0 next-hop 169.254.250.0set routing-instances CF_WAN_RI routing-options static route 0.0.0.0/0 next-hop 169.254.250.2
+```txt
+set routing-instances CF_WAN_RI instance-type forwarding
+set routing-instances CF_WAN_RI routing-options static route 0.0.0.0/0 next-hop 169.254.250.0
+set routing-instances CF_WAN_RI routing-options static route 0.0.0.0/0 next-hop 169.254.250.2
 ```
 
 #### Create a Firewall Filter
@@ -385,21 +435,27 @@ The second term `EVERYTHING_ELSE` effectively instructs the SRX to continue proc
 
 Note the addition of the action `count` in both statements. This option defines a counter you can view to determine how many packets are processed on each `term`.
 
-```
-set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI from source-address 192.168.125.0/24set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI from destination-address 0.0.0.0/0set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI then count CF_WAN_FWD_RI_countset firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI then routing-instance CF_WAN_RIset firewall family inet filter CF_WAN_FBF_ALL term EVERYTHING_ELSE then count EVERYTHING_ELSE_countset firewall family inet filter CF_WAN_FBF_ALL term EVERYTHING_ELSE then accept
+```txt
+set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI from source-address 192.168.125.0/24
+set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI from destination-address 0.0.0.0/0
+set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI then count CF_WAN_FWD_RI_count
+set firewall family inet filter CF_WAN_FBF_ALL term CF_WAN_FWD_RI then routing-instance CF_WAN_RI
+set firewall family inet filter CF_WAN_FBF_ALL term EVERYTHING_ELSE then count EVERYTHING_ELSE_count
+set firewall family inet filter CF_WAN_FBF_ALL term EVERYTHING_ELSE then accept
 ```
 
 #### Configure the RIB Group and Bind Interface Routes
 
 Create a RIB Group and import both the default route table (`inet.0`) and the route table associated with the newly created Forwarding Routing Instance:
 
-```
-set routing-options rib-groups CF_WAN_RG import-rib inet.0set routing-options rib-groups CF_WAN_RG import-rib CF_WAN_RI.inet.0
+```txt
+set routing-options rib-groups CF_WAN_RG import-rib inet.0
+set routing-options rib-groups CF_WAN_RG import-rib CF_WAN_RI.inet.0
 ```
 
 Bind the RIB Group to the Interface Routes:
 
-```
+```txt
 set routing-options interface-routes rib-group inet CF_WAN_RG
 ```
 
@@ -408,7 +464,7 @@ set routing-options interface-routes rib-group inet CF_WAN_RG
 * Traffic originating on the LAN subnet will ingress interface `ge-0/0/1.0`
 * Apply the Firewall Filter `CF_WAN_FBF_ALL` as an `input` filter
 
-```
+```txt
 set interfaces ge-0/0/1 unit 0 family inet filter input CF_WAN_FBF_ALL
 ```
 
@@ -434,16 +490,25 @@ _Perform in Operational Mode_
 
 Use the CLI to verify IKE (Phase 1) and IPsec (Phase 2) security associations established.
 
-```
-admin@srx> show security ike security-associationsIndex   State  Initiator cookie  Responder cookie  Mode           Remote Address403838  UP     a2d16e54c9d83ad5  873b1da714f0ca8f  IKEv2          162.159.135.1403839  UP     476288ac95d878e2  e72ef64e00b623e6  IKEv2          172.64.135.1
+```txt
+admin@srx> show security ike security-associations
+Index   State  Initiator cookie  Responder cookie  Mode           Remote Address
+403838  UP     a2d16e54c9d83ad5  873b1da714f0ca8f  IKEv2          162.159.135.1
+403839  UP     476288ac95d878e2  e72ef64e00b623e6  IKEv2          172.64.135.1
 ```
 
 ### View IPsec Security Associations
 
 _Perform in Operational Mode_
 
-```
-admin@srx> show ipsec security associations  Total active tunnels: 2  ID    Algorithm       SPI      Life:sec/kb  Mon lsys Port  Gateway  <131073 ESP:aes-cbc-256/sha256-96 9b429dd3 27739/unlim - root 500 162.159.135.1  >131073 ESP:aes-cbc-256/sha256-96 28931d57 27739/unlim - root 500 162.159.135.1  <131074 ESP:aes-cbc-256/sha256-96 eb2a275e 27739/unlim - root 500 172.64.135.1  >131074 ESP:aes-cbc-256/sha256-96 4134d7a8 27739/unlim - root 500 172.64.135.1
+```txt
+admin@srx> show ipsec security associations
+  Total active tunnels: 2
+  ID    Algorithm       SPI      Life:sec/kb  Mon lsys Port  Gateway
+  <131073 ESP:aes-cbc-256/sha256-96 9b429dd3 27739/unlim - root 500 162.159.135.1
+  >131073 ESP:aes-cbc-256/sha256-96 28931d57 27739/unlim - root 500 162.159.135.1
+  <131074 ESP:aes-cbc-256/sha256-96 eb2a275e 27739/unlim - root 500 172.64.135.1
+  >131074 ESP:aes-cbc-256/sha256-96 4134d7a8 27739/unlim - root 500 172.64.135.1
 ```
 
 ### Enable Debug Logging (traceoptions) for IKE (Phase 1) and IPsec (Phase 2)
@@ -458,8 +523,12 @@ Debug logging can create significant overhead on firewalls with high utilization
 
 _Perform in Configuration Mode_
 
-```
-set security ike traceoptions file ike-debug.logset security ike traceoptions file size 1mset security ike traceoptions file files 3set security ike traceoptions file world-readableset security ike traceoptions flag all
+```txt
+set security ike traceoptions file ike-debug.log
+set security ike traceoptions file size 1m
+set security ike traceoptions file files 3
+set security ike traceoptions file world-readable
+set security ike traceoptions flag all
 ```
 
 #### View IKE Debug Log
@@ -468,7 +537,7 @@ _Perform in Operational Mode_
 
 View the log with the following command:
 
-```
+```txt
 admin@srx> show log ike-debug.log
 ```
 
@@ -478,16 +547,21 @@ Press `CTRL + C` to stop viewing the log.
 
 _Perform in Configuration Mode_
 
-```
-delete security ike traceoptionscommit
+```txt
+delete security ike traceoptions
+commit
 ```
 
 #### Enable IPsec Traceoptions
 
 _Perform in Configuration Mode_
 
-```
-set security ipsec traceoptions file ipsec-debug.logset security ipsec traceoptions file size 1mset security ipsec traceoptions file files 3set security ipsec traceoptions file world-readableset security ipsec traceoptions flag all
+```txt
+set security ipsec traceoptions file ipsec-debug.log
+set security ipsec traceoptions file size 1m
+set security ipsec traceoptions file files 3
+set security ipsec traceoptions file world-readable
+set security ipsec traceoptions flag all
 ```
 
 #### View IPsec Debug Logging
@@ -496,7 +570,7 @@ _Perform in Operational Mode_
 
 View the log with the following command:
 
-```
+```txt
 admin@srx> show log ipsec-debug.log
 ```
 
@@ -506,8 +580,9 @@ Press `CTRL + C` to stop viewing the log.
 
 _Perform in Configuration Mode_
 
-```
-delete security ipsec traceoptionscommit
+```txt
+delete security ipsec traceoptions
+commit
 ```
 
 ### Disable/Enable IKE Gateways and/or IPsec VPN Tunnels
@@ -518,13 +593,13 @@ Junos provides the ability to administratively enable/disable IKE gateways and I
 
 #### Deactivate IKE Gateway
 
-```
+```txt
 deactivate security ike gateway cf-wan-ike-gw-01
 ```
 
 #### Deactivate IPsec VPN
 
-```
+```txt
 deactivate security ipsec vpn cf-wan-ipsec-vpn-01
 ```
 
@@ -534,23 +609,47 @@ Perform a `commit` to ensure the IKE Gateway and IPSec VPN objects are disabled.
 
 Note the presence of `inactive: security ike gateway cf-wan-ike-gw-01` at the top of the IKE gateway stanza:
 
-```
-admin@srx# show security ike gateway cf-wan-ike-gw-01#### inactive: security ike gateway cf-wan-ike-gw-01##ike-policy cf-wan-ike-pol-01;address 162.159.135.1;local-identity hostname bf6c493d03<REDACTED>.ipsec.cloudflare.com;external-interface ge-0/0/0.0;local-address 203.0.113.100;version v2-only;
+```txt
+admin@srx# show security ike gateway cf-wan-ike-gw-01
+##
+## inactive: security ike gateway cf-wan-ike-gw-01
+##
+ike-policy cf-wan-ike-pol-01;
+address 162.159.135.1;
+local-identity hostname bf6c493d03<REDACTED>.ipsec.cloudflare.com;
+external-interface ge-0/0/0.0;
+local-address 203.0.113.100;
+version v2-only;
 ```
 
 Note the presence of `inactive: security ipsec vpn cf-wan-ike-gw-01` at the top of the IPsec VPN stanza:
 
-```
-[edit]admin@srx# show security ipsec vpn cf-wan-ipsec-vpn-01#### inactive: security ipsec vpn cf-wan-ipsec-vpn-01##bind-interface st0.1;ike {    gateway cf-wan-ike-gw-01;    no-anti-replay;    ipsec-policy ipsec-aes256cbc-sha256-128-dh20;}establish-tunnels immediately;
+```txt
+[edit]
+admin@srx# show security ipsec vpn cf-wan-ipsec-vpn-01
+##
+## inactive: security ipsec vpn cf-wan-ipsec-vpn-01
+##
+bind-interface st0.1;
+ike {
+    gateway cf-wan-ike-gw-01;
+    no-anti-replay;
+    ipsec-policy ipsec-aes256cbc-sha256-128-dh20;
+}
+establish-tunnels immediately;
 ```
 
 #### Activate IKE Gateway and IPsec VPN Objects
 
 Reverse the process with the `activate` command:
 
-```
+```txt
 activate security ike gateway cf-wan-ike-gw-01
+
+
 activate security ipsec vpn cf-wan-ipsec-vpn-01
+
+
 commit
 ```
 
@@ -562,7 +661,7 @@ The IKE and IPsec lifetimes are set to 28800 seconds (8 hours). You can force tu
 
 This can be accomplished with the following command:
 
-```
+```txt
 admin@srx> restart ipsec-key-management
 ```
 
@@ -572,22 +671,28 @@ _Perform in Operational Mode_
 
 Use ping to verify connectivity to the Cloudflare side of the Virtual Tunnel Interface
 
-```
-admin@srx> ping 169.254.250.0 source 169.254.250.1admin@srx> ping 169.254.250.2 source 169.254.250.3
+```txt
+admin@srx> ping 169.254.250.0 source 169.254.250.1
+admin@srx> ping 169.254.250.2 source 169.254.250.3
 ```
 
 ### Show Tunnel Event Statistics
 
 _Perform in Operational Mode_
 
-```
+```txt
 admin@srx> show security ipsec tunnel-events-statistics
 ```
 
 Resulting output:
 
-```
-External interface's zone received. Information updated                     : 2Bind-interface's zone received. Information updated                         : 2Bind-interface's address received. Information updated                      : 2IKE SA negotiation successfully completed                                   : 2IPSec SA negotiation successfully completed                                 : 2Tunnel is ready. Waiting for trigger event or peer to trigger negotiation   : 2
+```txt
+External interface's zone received. Information updated                     : 2
+Bind-interface's zone received. Information updated                         : 2
+Bind-interface's address received. Information updated                      : 2
+IKE SA negotiation successfully completed                                   : 2
+IPSec SA negotiation successfully completed                                 : 2
+Tunnel is ready. Waiting for trigger event or peer to trigger negotiation   : 2
 ```
 
 ### Display Route Tables
@@ -596,30 +701,95 @@ _Perform in Operational Mode_
 
 #### Default Route Table - inet.0
 
-```
+```txt
 show route table inet.0
-inet.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)+ = Active Route, - = Last Active, * = Both
-169.254.247.0/31   *[Direct/0] 00:02:10                    > via st0.1169.254.247.1/32   *[Local/0] 1d 05:35:54                      Local via st0.1169.254.247.2/31   *[Direct/0] 00:02:09                    > via st0.2169.254.247.3/32   *[Local/0] 1d 05:35:54                      Local via st0.2169.254.250.0/31   *[Direct/0] 00:02:09                    > via st0.1169.254.250.1/32   *[Local/0] 00:02:09                      Local via st0.1169.254.250.2/31   *[Direct/0] 00:02:09                    > via st0.2169.254.250.3/32   *[Local/0] 00:02:09                      Local via st0.2192.168.125.0/24   *[Direct/0] 00:02:10                    > via ge-0/0/1.0192.168.125.1/32   *[Local/0] 00:02:10                      Local via ge-0/0/1.0203.0.113.100/32   *[Local/0] 00:02:10                      Reject
+
+
+inet.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+
+169.254.247.0/31   *[Direct/0] 00:02:10
+                    > via st0.1
+169.254.247.1/32   *[Local/0] 1d 05:35:54
+                      Local via st0.1
+169.254.247.2/31   *[Direct/0] 00:02:09
+                    > via st0.2
+169.254.247.3/32   *[Local/0] 1d 05:35:54
+                      Local via st0.2
+169.254.250.0/31   *[Direct/0] 00:02:09
+                    > via st0.1
+169.254.250.1/32   *[Local/0] 00:02:09
+                      Local via st0.1
+169.254.250.2/31   *[Direct/0] 00:02:09
+                    > via st0.2
+169.254.250.3/32   *[Local/0] 00:02:09
+                      Local via st0.2
+192.168.125.0/24   *[Direct/0] 00:02:10
+                    > via ge-0/0/1.0
+192.168.125.1/32   *[Local/0] 00:02:10
+                      Local via ge-0/0/1.0
+203.0.113.100/32   *[Local/0] 00:02:10
+                      Reject
 ```
 
 #### Routing Instance Route Table (CF\_WAN\_RI.inet.0)
 
-```
+```txt
 show route table CF_WAN_RI.inet.0
-CF_WAN_RI.inet.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)+ = Active Route, - = Last Active, * = Both
-0.0.0.0/0          *[Static/5] 00:01:04                    > to 169.254.250.0 via st0.1                      to 169.254.250.2 via st0.2169.254.247.0/31   *[Direct/0] 00:02:58                    > via st0.1169.254.247.1/32   *[Local/0] 00:02:58                      Local via st0.1169.254.247.2/31   *[Direct/0] 00:02:57                    > via st0.2169.254.247.3/32   *[Local/0] 00:02:57                      Local via st0.2169.254.250.0/31   *[Direct/0] 00:02:57                    > via st0.1169.254.250.1/32   *[Local/0] 00:02:57                      Local via st0.1169.254.250.2/31   *[Direct/0] 00:02:57                    > via st0.2169.254.250.3/32   *[Local/0] 00:02:57                      Local via st0.2192.168.125.0/24   *[Direct/0] 00:02:58                    > via ge-0/0/1.0192.168.125.1/32   *[Local/0] 00:02:58                      Local via ge-0/0/1.0203.0.113.100/32   *[Local/0] 00:02:58                      Reject
+
+
+CF_WAN_RI.inet.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+
+0.0.0.0/0          *[Static/5] 00:01:04
+                    > to 169.254.250.0 via st0.1
+                      to 169.254.250.2 via st0.2
+169.254.247.0/31   *[Direct/0] 00:02:58
+                    > via st0.1
+169.254.247.1/32   *[Local/0] 00:02:58
+                      Local via st0.1
+169.254.247.2/31   *[Direct/0] 00:02:57
+                    > via st0.2
+169.254.247.3/32   *[Local/0] 00:02:57
+                      Local via st0.2
+169.254.250.0/31   *[Direct/0] 00:02:57
+                    > via st0.1
+169.254.250.1/32   *[Local/0] 00:02:57
+                      Local via st0.1
+169.254.250.2/31   *[Direct/0] 00:02:57
+                    > via st0.2
+169.254.250.3/32   *[Local/0] 00:02:57
+                      Local via st0.2
+192.168.125.0/24   *[Direct/0] 00:02:58
+                    > via ge-0/0/1.0
+192.168.125.1/32   *[Local/0] 00:02:58
+                      Local via ge-0/0/1.0
+203.0.113.100/32   *[Local/0] 00:02:58
+                      Reject
 ```
 
 ### Display Firewall Filter Counters
 
-```
+```txt
 admin@srx> show firewall counter filter CF_WAN_FBF_ALL CF_WAN_FWD_RI_count
-Filter: CF_WAN_FBF_ALLCounters:Name                                Bytes              PacketsCF_WAN_FWD_RI_count                 14855935          189746
+
+
+Filter: CF_WAN_FBF_ALL
+Counters:
+Name                                Bytes              Packets
+CF_WAN_FWD_RI_count                 14855935          189746
 ```
 
-```
+```txt
 admin@srx> show firewall counter filter CF_WAN_FBF_ALL EVERYTHING_ELSE_count
-Filter: CF_WAN_FBF_ALLCounters:Name                                Bytes              PacketsEVERYTHING_ELSE_count               4371377            18732
+
+
+Filter: CF_WAN_FBF_ALL
+Counters:
+Name                                Bytes              Packets
+EVERYTHING_ELSE_count               4371377            18732
 ```
 
 ## Resources - Juniper Product Documentation

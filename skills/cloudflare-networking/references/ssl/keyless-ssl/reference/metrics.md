@@ -18,7 +18,7 @@ The gokeyless key server exposes a [Prometheus ↗](https://prometheus.io/) metr
 
 By default, metrics are served at:
 
-```
+```txt
 http://<host>:2406/metrics
 ```
 
@@ -167,7 +167,7 @@ For successful requests the value is `no error`. All other values indicate a fai
 
 Measures the total time to satisfy a request, from when the request packet is read off the wire to when the response bytes are written back to the client.
 
-```
+```txt
 total_duration = exec_duration + response_write_time
 ```
 
@@ -243,27 +243,32 @@ Note
 
 ### Signing throughput by key type
 
-```
+```txt
 sum by (opcode) (rate(keyless_requests[1m]))
 ```
 
 ### Error rate by error type
 
-```
-sum by (error) (  rate(keyless_request_exec_duration_per_opcode_count{error!="no error"}[5m]))
+```txt
+sum by (error) (
+  rate(keyless_request_exec_duration_per_opcode_count{error!="no error"}[5m])
+)
 ```
 
 ### 99th percentile signing latency for RSA
 
-```
-histogram_quantile(  0.99,  rate(keyless_request_exec_duration_per_opcode_bucket{type="rsa"}[5m]))
+```txt
+histogram_quantile(
+  0.99,
+  rate(keyless_request_exec_duration_per_opcode_bucket{type="rsa"}[5m])
+)
 ```
 
 A value approaching 10 seconds indicates PKCS#11 session pool exhaustion. Refer to [Scaling and benchmarking](https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/) and your HSM documentation for guidance on increasing the session pool size.
 
 ### 99th percentile key load latency
 
-```
+```txt
 histogram_quantile(0.99, rate(keyless_key_load_duration_bucket[5m]))
 ```
 
@@ -271,7 +276,7 @@ A spike here without a corresponding spike in exec duration suggests the keystor
 
 ### Connection failure rate
 
-```
+```txt
 rate(keyless_failed_connection_total[5m])
 ```
 
@@ -279,7 +284,7 @@ A sustained non-zero rate indicates network or TLS problems between the Cloudfla
 
 ### Alert on certificate expiry within 30 days
 
-```
+```txt
 (certificate_expiration_timestamp_seconds - time()) / 86400 < 30
 ```
 

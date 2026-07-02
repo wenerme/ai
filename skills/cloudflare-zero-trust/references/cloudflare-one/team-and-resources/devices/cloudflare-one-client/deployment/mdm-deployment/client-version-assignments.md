@@ -53,9 +53,9 @@ When a device is targeted by a deployment group, the client suppresses the local
 
 ## Set up a deployment group
 
-* [ Dashboard ](#tab-panel-7794)
-* [ API ](#tab-panel-7795)
-* [ Terraform (v6) ](#tab-panel-7796)
+* [ Dashboard ](#tab-panel-7812)
+* [ API ](#tab-panel-7813)
+* [ Terraform (v6) ](#tab-panel-7814)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices**.
 2. Select the **Management** tab.
@@ -68,18 +68,54 @@ When a device is targeted by a deployment group, the client suppresses the local
 
 Send a `POST` request to the [Deployment Groups API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/deployment%5Fgroups/methods/create/):
 
-Create deployment group
+**Create deployment group**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployment-groups" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Engineering Ring 0",    "version_config": [        {            "target_environment": "windows",            "version": "2026.6.0"        },        {            "target_environment": "macos",            "version": "2026.6.0"        }    ],    "policy_ids": [        "<POLICY_UUID_1>",        "<POLICY_UUID_2>"    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployment-groups" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Engineering Ring 0",
+    "version_config": [
+        {
+            "target_environment": "windows",
+            "version": "2026.6.0"
+        },
+        {
+            "target_environment": "macos",
+            "version": "2026.6.0"
+        }
+    ],
+    "policy_ids": [
+        "<POLICY_UUID_1>",
+        "<POLICY_UUID_2>"
+    ]
+  }'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
 
   * `Zero Trust Write`
 2. Create a deployment group using the [cloudflare\_zero\_trust\_device\_deployment\_groups ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdeployment%5Fgroups) resource:
-```
-resource "cloudflare_zero_trust_device_deployment_groups" "example" {  account_id = var.cloudflare_account_id  name       = "Engineering Ring 0"  version_config = [    {      target_environment = "windows"      version            = "2026.6.0"    },    {      target_environment = "macos"      version            = "2026.6.0"    },  ]  policy_ids = [    "<POLICY_UUID_1>",    "<POLICY_UUID_2>",  ]}
+```tf
+resource "cloudflare_zero_trust_device_deployment_groups" "example" {
+  account_id = var.cloudflare_account_id
+  name       = "Engineering Ring 0"
+  version_config = [
+    {
+      target_environment = "windows"
+      version            = "2026.6.0"
+    },
+    {
+      target_environment = "macos"
+      version            = "2026.6.0"
+    },
+  ]
+  policy_ids = [
+    "<POLICY_UUID_1>",
+    "<POLICY_UUID_2>",
+  ]
+}
 ```
 
 ## When a device evaluates an assignment
@@ -95,9 +131,7 @@ Devices also re-evaluate the most recent assignment they have received in these 
 
 To confirm a device has received its assigned version, open a terminal on the device and run:
 
-Terminal window
-
-```
+```sh
 warp-cli settings
 ```
 

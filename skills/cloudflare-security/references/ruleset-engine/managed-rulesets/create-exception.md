@@ -48,8 +48,14 @@ To skip all the remaining rules in the [entry point ruleset](https://developers.
 
 Example of rule definition:
 
-```
-{  "expression": "<RULE_EXPRESSION>",  "action": "skip",  "action_parameters": {    "ruleset": "current"  }}
+```json
+{
+  "expression": "<RULE_EXPRESSION>",
+  "action": "skip",
+  "action_parameters": {
+    "ruleset": "current"
+  }
+}
 ```
 
 Skipping all remaining rules only affects the rules in the current context (account or zone). For example, adding a rule with `skip` action to the account-level phase entry point ruleset has no impact on the rules defined in the zone-level phase entry point ruleset — these zone-level rules will still be evaluated.
@@ -62,8 +68,14 @@ To skip one or more managed rulesets, create a rule with `skip` action containin
 
 Example of rule definition:
 
-```
-{  "expression": "<RULE_EXPRESSION>",  "action": "skip",  "action_parameters": {    "rulesets": ["<MANAGED_RULESET_1_ID>", "<MANAGED_RULESET_2_ID>"]  }}
+```json
+{
+  "expression": "<RULE_EXPRESSION>",
+  "action": "skip",
+  "action_parameters": {
+    "rulesets": ["<MANAGED_RULESET_1_ID>", "<MANAGED_RULESET_2_ID>"]
+  }
+}
 ```
 
 For a full example, refer to the [WAF documentation](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/#skip-the-cloudflare-managed-ruleset).
@@ -74,8 +86,17 @@ To skip one or more rules of managed rulesets, create a rule with `skip` action 
 
 Example of a rule definition that skips rules `A` and `B` of managed ruleset `1`, and rule `X` of managed ruleset `2`:
 
-```
-{  "expression": "<RULE_EXPRESSION>",  "action": "skip",  "action_parameters": {    "rules": {      "<MANAGED_RULESET_1_ID>": ["<RULE_A_ID>", "<RULE_B_ID>"],      "<MANAGED_RULESET_2_ID>": ["<RULE_X_ID>"]    }  }}
+```json
+{
+  "expression": "<RULE_EXPRESSION>",
+  "action": "skip",
+  "action_parameters": {
+    "rules": {
+      "<MANAGED_RULESET_1_ID>": ["<RULE_A_ID>", "<RULE_B_ID>"],
+      "<MANAGED_RULESET_2_ID>": ["<RULE_X_ID>"]
+    }
+  }
+}
 ```
 
 The rules in the `rules` object must belong to the specified managed rulesets, otherwise you will get an error.

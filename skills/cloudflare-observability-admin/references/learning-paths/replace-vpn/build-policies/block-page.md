@@ -39,8 +39,8 @@ The Gateway custom block page is a different concept from [Access custom block p
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-* [ Dashboard ](#tab-panel-9213)
-* [ Terraform (v5) ](#tab-panel-9214)
+* [ Dashboard ](#tab-panel-9504)
+* [ Terraform (v5) ](#tab-panel-9505)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
@@ -58,9 +58,32 @@ Depending on your settings, Gateway will display a block page in your users' bro
   * `Zero Trust Write`
 2. Choose a DNS policy with a Block action.
 3. In the policy's [rule\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy), turn on `block_page_enabled`. If you have configured a [custom Gateway block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#customize-the-block-page), you can optionally show an additional `block_reason` when traffic is blocked by this policy.
-```
-resource "cloudflare_zero_trust_gateway_policy" "dns_block_security_categories" {  name        = "Block DNS Security Categories"  enabled     = true  account_id  = var.cloudflare_account_id  description = "Managed by Terraform - Generic security policy based on Cloudflare Threat Intelligence categories."  precedence  = 101  action      = "block"  filters     = ["dns"]  /* Categories being enabled here:    - 80:  "Command and Control & Botnet"    - 83:  "Cryptomining"    - 117: "Malware"    - 131: "Phishing"    - 153: "Spyware"    - 175: "DNS Tunneling"    - 176: "DGA Domains"    - 178: "Brand Embedding"  */  traffic = "any(dns.security_category[*] in {80 83 117 131 153 175 176 178})"  identity = ""
-  rule_settings = {    block_page_enabled = true    block_reason  = "This domain has been flagged as a potential security risk." // Adds an additional message to the custom block page. Requires enabling custom block page in cloudflare_zero_trust_gateway_settings.  }}
+```tf
+resource "cloudflare_zero_trust_gateway_policy" "dns_block_security_categories" {
+  name        = "Block DNS Security Categories"
+  enabled     = true
+  account_id  = var.cloudflare_account_id
+  description = "Managed by Terraform - Generic security policy based on Cloudflare Threat Intelligence categories."
+  precedence  = 101
+  action      = "block"
+  filters     = ["dns"]
+  /* Categories being enabled here:
+    - 80:  "Command and Control & Botnet"
+    - 83:  "Cryptomining"
+    - 117: "Malware"
+    - 131: "Phishing"
+    - 153: "Spyware"
+    - 175: "DNS Tunneling"
+    - 176: "DGA Domains"
+    - 178: "Brand Embedding"
+  */
+  traffic = "any(dns.security_category[*] in {80 83 117 131 153 175 176 178})"
+  identity = ""
+  rule_settings = {
+    block_page_enabled = true
+    block_reason  = "This domain has been flagged as a potential security risk." // Adds an additional message to the custom block page. Requires enabling custom block page in cloudflare_zero_trust_gateway_settings.
+  }
+}
 ```
 
 ### Customize the block page
@@ -69,8 +92,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-9211)
-* [ Terraform (v5) ](#tab-panel-9212)
+* [ Dashboard ](#tab-panel-9502)
+* [ Terraform (v5) ](#tab-panel-9503)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -87,8 +110,24 @@ To customize your block page:
 
   * `Zero Trust Write`
 2. In [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings), configure the `block_page` argument with your customizations:
-```
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    block_page = {      enabled = true //do not use the default Gateway block page      mode = "customized_block_page" //use a custom block page      name = "Cloudflare"      logo_path = "https://logos.com/a.png"      header_text = "--header--"      footer_text = "--footer--"      mailto_address = "admin@example.com"      mailto_subject = "Blocked Request"      background_color = "#ffffff"      suppress_footer = false    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+  account_id = var.cloudflare_account_id
+  settings = {
+    block_page = {
+      enabled = true //do not use the default Gateway block page
+      mode = "customized_block_page" //use a custom block page
+      name = "Cloudflare"
+      logo_path = "https://logos.com/a.png"
+      header_text = "--header--"
+      footer_text = "--footer--"
+      mailto_address = "admin@example.com"
+      mailto_subject = "Blocked Request"
+      background_color = "#ffffff"
+      suppress_footer = false
+    }
+  }
+}
 ```
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.

@@ -27,19 +27,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-stage-toggle></rtk-stage-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-stage-toggle size="md" variant"button"></rtk-stage-toggle>
+```html
+<rtk-stage-toggle
+ size="md"
+ variant"button">
+</rtk-stage-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-stage-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-stage-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

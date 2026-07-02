@@ -33,31 +33,32 @@ When `cloudflared` receives a request from a device, it uses the ports on the ho
 * `cloudflared` should be deployed on a dedicated host machine. This model is typically appropriate, but there may be serverless or clustered workflows where a dedicated host is not possible.
 * The host machine should allocate 50,000 ports to be available for use by the `cloudflared` service. The remaining ports are reserved for system administrative processes.
 
-* [ Linux ](#tab-panel-7338)
-* [ Windows ](#tab-panel-7339)
+* [ Linux ](#tab-panel-7588)
+* [ Windows ](#tab-panel-7589)
 
 To increase the number of ports available to `cloudflared` on Linux:
 
 If your machine has a `/etc/sysctl.d/` directory:
 
-Terminal window
-
-```
-echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.d/99-cloudflared.confsudo sysctl -p /etc/sysctl.d/99-cloudflared.conf
+```sh
+echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.d/99-cloudflared.conf
+sudo sysctl -p /etc/sysctl.d/99-cloudflared.conf
 ```
 
 Otherwise:
 
-Terminal window
-
-```
-echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.confsudo sysctl -p /etc/sysctl.conf
+```sh
+echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
 ```
 
 To increase the number of ports available to `cloudflared` on Windows, set the [dynamic port range ↗](https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/tcp-ip-port-exhaustion-troubleshooting) for TCP and UDP:
 
-```
-netsh int ipv4 set dynamicport tcp start=11000 num=50000netsh int ipv4 set dynamicport udp start=11000 num=50000netsh int ipv6 set dynamicport tcp start=11000 num=50000netsh int ipv6 set dynamicport udp start=11000 num=50000
+```txt
+netsh int ipv4 set dynamicport tcp start=11000 num=50000
+netsh int ipv4 set dynamicport udp start=11000 num=50000
+netsh int ipv6 set dynamicport tcp start=11000 num=50000
+netsh int ipv6 set dynamicport udp start=11000 num=50000
 ```
 
 ### Private DNS
@@ -74,17 +75,13 @@ On Linux and macOS, `ulimit` settings determine the system resources available t
 
 To view your current ulimits, open a terminal and run:
 
-Terminal window
-
-```
+```sh
 ulimit -a
 ```
 
 To set the open files `ulimit`:
 
-Terminal window
-
-```
+```sh
 ulimit -n 70000
 ```
 

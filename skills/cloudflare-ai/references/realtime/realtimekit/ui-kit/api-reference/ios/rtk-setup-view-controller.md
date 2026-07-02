@@ -32,20 +32,43 @@ Pre-meeting setup screen view controller. Provides video preview, audio and vide
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let setupVC = RtkSetupViewController(    meetingInfo: meetingInfo,    meeting: rtkClient,    completion: {        print("Setup complete")    })self.present(setupVC, animated: true)
+
+
+let setupVC = RtkSetupViewController(
+    meetingInfo: meetingInfo,
+    meeting: rtkClient,
+    completion: {
+        print("Setup complete")
+    }
+)
+self.present(setupVC, animated: true)
 ```
 
 ### With delegate
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-class ViewController: UIViewController, SetupViewControllerDelegate {    func showSetupScreen() {        let setupVC = RtkSetupViewController(            meetingInfo: meetingInfo,            meeting: rtkClient,            completion: {                self.dismiss(animated: true)            }        )        setupVC.delegate = self        self.present(setupVC, animated: true)    }}
+
+
+class ViewController: UIViewController, SetupViewControllerDelegate {
+    func showSetupScreen() {
+        let setupVC = RtkSetupViewController(
+            meetingInfo: meetingInfo,
+            meeting: rtkClient,
+            completion: {
+                self.dismiss(animated: true)
+            }
+        )
+        setupVC.delegate = self
+        self.present(setupVC, animated: true)
+    }
+}
 ```
 
 ```json

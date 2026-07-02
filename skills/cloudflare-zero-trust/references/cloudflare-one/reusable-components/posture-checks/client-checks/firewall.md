@@ -51,8 +51,7 @@ macOS has two firewalls: an application-based firewall and a port-based firewall
 #### Port-based firewall
 
 1. Open Terminal and run:
-Terminal window
-```
+```sh
 sudo /sbin/pfctl -s info
 ```
 2. Verify that **Status** is `Enabled`.
@@ -60,8 +59,9 @@ sudo /sbin/pfctl -s info
 ### On Windows
 
 1. Open PowerShell and run:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Get-NetFirewallProfile -PolicyStore ActiveStore -Name Public
 ```
 2. Verify that **Enabled** is `True`.

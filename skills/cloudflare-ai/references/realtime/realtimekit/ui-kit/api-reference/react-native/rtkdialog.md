@@ -33,16 +33,38 @@ A modal dialog overlay component with optional close button.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDialog } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkDialog meeting={meeting} onRtkDialogClose={() => setOpen(false)}>      <Text>Dialog content</Text>    </RtkDialog>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDialog meeting={meeting} onRtkDialogClose={() => setOpen(false)}>
+      <Text>Dialog content</Text>
+    </RtkDialog>
+  );
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDialog } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkDialog      meeting={meeting}      open={isOpen}      onRtkDialogClose={() => setOpen(false)}      hideCloseButton={false}      size="md"    >      <Text>Dialog content</Text>    </RtkDialog>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDialog
+      meeting={meeting}
+      open={isOpen}
+      onRtkDialogClose={() => setOpen(false)}
+      hideCloseButton={false}
+      size="md"
+    >
+      <Text>Dialog content</Text>
+    </RtkDialog>
+  );
+}
 ```
 
 ```json

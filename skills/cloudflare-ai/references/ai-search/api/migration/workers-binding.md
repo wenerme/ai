@@ -31,18 +31,34 @@ AI Search provides two new bindings:
 
 **Instance binding (`ai_search`)** binds directly to a single instance. This is the simplest migration path from `env.AI.autorag()`.
 
-JSONC
+**JSONC**
 
-```
-// wrangler.jsonc{  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance",    },  ],}
+```jsonc
+// wrangler.jsonc
+{
+  "ai_search": [
+    {
+      "binding": "MY_SEARCH",
+      "instance_name": "my-instance",
+    },
+  ],
+}
 ```
 
 **Namespace binding (`ai_search_namespaces`)** gives you access to all instances within a namespace. Use this if you need dynamic instance management, cross-instance search, or the Items API.
 
-JSONC
+**JSONC**
 
-```
-// wrangler.jsonc{  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "default",    },  ],}
+```jsonc
+// wrangler.jsonc
+{
+  "ai_search_namespaces": [
+    {
+      "binding": "AI_SEARCH",
+      "namespace": "default",
+    },
+  ],
+}
 ```
 
 For more details on the difference, refer to [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
@@ -62,37 +78,56 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-6680)
-* [  wrangler.toml ](#tab-panel-6681)
+* [  wrangler.jsonc ](#tab-panel-6928)
+* [  wrangler.toml ](#tab-panel-6929)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "ai": {
+    "binding": "AI"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai": {    "binding": "AI"  }}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI"
+```toml
+[ai]
+binding = "AI"
 ```
 
 **After:**
 
-* [  wrangler.jsonc ](#tab-panel-6682)
-* [  wrangler.toml ](#tab-panel-6683)
+* [  wrangler.jsonc ](#tab-panel-6930)
+* [  wrangler.toml ](#tab-panel-6931)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search": [
+    {
+      "binding": "MY_INSTANCE",
+      "instance_name": "my-instance"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_INSTANCE",      "instance_name": "my-instance"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search]]binding = "MY_INSTANCE"instance_name = "my-instance"
+
+
+[[ai_search]]
+binding = "MY_INSTANCE"
+instance_name = "my-instance"
 ```
 
 ## Step 2: Update the type definition
@@ -101,18 +136,22 @@ Update the `Env` interface to use the new binding type.
 
 **Before:**
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
+```ts
+export interface Env {
+  AI: Ai;
+}
 ```
 
 **After:**
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  MY_INSTANCE: AiSearchInstance;}
+```ts
+export interface Env {
+  MY_INSTANCE: AiSearchInstance;
+}
 ```
 
 ## Step 3: Update search calls
@@ -121,18 +160,22 @@ Replace `env.AI.autorag()` calls with the new binding.
 
 **Before:**
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.AI.autorag("my-instance").search({  query: "What is Cloudflare?",});
+```ts
+const result = await env.AI.autorag("my-instance").search({
+  query: "What is Cloudflare?",
+});
 ```
 
 **After:**
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.MY_INSTANCE.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],});
+```ts
+const result = await env.MY_INSTANCE.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
 ```
 
 ## Step 4: Update response handling
@@ -179,18 +222,32 @@ Filter by a single metadata field using implicit equality:
 
 **Before:**
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.AI.autorag("my-instance").search({  query: "What is Cloudflare?",  filters: {    type: "eq",    key: "folder",    value: "customer-a/",  },});
+```ts
+const result = await env.AI.autorag("my-instance").search({
+  query: "What is Cloudflare?",
+  filters: {
+    type: "eq",
+    key: "folder",
+    value: "customer-a/",
+  },
+});
 ```
 
 **After:**
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.MY_INSTANCE.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      filters: { folder: "customer-a/" },    },  },});
+```ts
+const result = await env.MY_INSTANCE.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      filters: { folder: "customer-a/" },
+    },
+  },
+});
 ```
 
 #### Compound filter (AND)
@@ -199,18 +256,37 @@ Combine multiple conditions where all must match:
 
 **Before:**
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.AI.autorag("my-instance").search({  query: "What is Cloudflare?",  filters: {    type: "and",    filters: [      { type: "eq", key: "folder", value: "customer-a/" },      { type: "gte", key: "timestamp", value: "1735689600000" },    ],  },});
+```ts
+const result = await env.AI.autorag("my-instance").search({
+  query: "What is Cloudflare?",
+  filters: {
+    type: "and",
+    filters: [
+      { type: "eq", key: "folder", value: "customer-a/" },
+      { type: "gte", key: "timestamp", value: "1735689600000" },
+    ],
+  },
+});
 ```
 
 **After:**
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.MY_INSTANCE.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      filters: {        folder: "customer-a/",        timestamp: { $gte: 1735689600 },      },    },  },});
+```ts
+const result = await env.MY_INSTANCE.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      filters: {
+        folder: "customer-a/",
+        timestamp: { $gte: 1735689600 },
+      },
+    },
+  },
+});
 ```
 
 ## Backwards compatibility

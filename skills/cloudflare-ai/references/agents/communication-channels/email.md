@@ -31,44 +31,114 @@ For reply handling, include a stable identifier in the reply address, message me
 
 Implement `onEmail()` to handle inbound email, and use `sendEmail()` or `replyToEmail()` when the agent needs to send a response.
 
-* [  JavaScript ](#tab-panel-5357)
-* [  TypeScript ](#tab-panel-5358)
+* [  JavaScript ](#tab-panel-5503)
+* [  TypeScript ](#tab-panel-5504)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Agent, callable, routeAgentEmail } from "agents";
+import { createAddressBasedEmailResolver } from "agents/email";
+
+
+export class EmailAgent extends Agent {
+  @callable()
+  async sendWelcomeEmail(to) {
+    await this.sendEmail({
+      binding: this.env.EMAIL,
+      to,
+      from: "support@yourdomain.com",
+      replyTo: "support@yourdomain.com",
+      subject: "Welcome",
+      text: "Thanks for signing up. Reply to this email if you need help.",
+    });
+  }
+
+
+  async onEmail(email) {
+    await this.replyToEmail(email, {
+      fromName: "Support Agent",
+      body: "Thanks for your email. We received it.",
+    });
+  }
+}
+
+
+export default {
+  async email(message, env) {
+    await routeAgentEmail(message, env, {
+      resolver: createAddressBasedEmailResolver("EmailAgent"),
+    });
+  },
+};
 ```
-import { Agent, callable, routeAgentEmail } from "agents";import { createAddressBasedEmailResolver } from "agents/email";
-export class EmailAgent extends Agent {  @callable()  async sendWelcomeEmail(to) {    await this.sendEmail({      binding: this.env.EMAIL,      to,      from: "support@yourdomain.com",      replyTo: "support@yourdomain.com",      subject: "Welcome",      text: "Thanks for signing up. Reply to this email if you need help.",    });  }
-  async onEmail(email) {    await this.replyToEmail(email, {      fromName: "Support Agent",      body: "Thanks for your email. We received it.",    });  }}
-export default {  async email(message, env) {    await routeAgentEmail(message, env, {      resolver: createAddressBasedEmailResolver("EmailAgent"),    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent, callable, routeAgentEmail } from "agents";import { createAddressBasedEmailResolver, type AgentEmail } from "agents/email";
-export class EmailAgent extends Agent {  @callable()  async sendWelcomeEmail(to: string) {    await this.sendEmail({      binding: this.env.EMAIL,      to,      from: "support@yourdomain.com",      replyTo: "support@yourdomain.com",      subject: "Welcome",      text: "Thanks for signing up. Reply to this email if you need help.",    });  }
-  async onEmail(email: AgentEmail) {    await this.replyToEmail(email, {      fromName: "Support Agent",      body: "Thanks for your email. We received it.",    });  }}
-export default {  async email(message, env) {    await routeAgentEmail(message, env, {      resolver: createAddressBasedEmailResolver("EmailAgent"),    });  },} satisfies ExportedHandler<Env>;
+```ts
+import { Agent, callable, routeAgentEmail } from "agents";
+import { createAddressBasedEmailResolver, type AgentEmail } from "agents/email";
+
+
+export class EmailAgent extends Agent {
+  @callable()
+  async sendWelcomeEmail(to: string) {
+    await this.sendEmail({
+      binding: this.env.EMAIL,
+      to,
+      from: "support@yourdomain.com",
+      replyTo: "support@yourdomain.com",
+      subject: "Welcome",
+      text: "Thanks for signing up. Reply to this email if you need help.",
+    });
+  }
+
+
+  async onEmail(email: AgentEmail) {
+    await this.replyToEmail(email, {
+      fromName: "Support Agent",
+      body: "Thanks for your email. We received it.",
+    });
+  }
+}
+
+
+export default {
+  async email(message, env) {
+    await routeAgentEmail(message, env, {
+      resolver: createAddressBasedEmailResolver("EmailAgent"),
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Configuration
 
 Add a `send_email` binding for outbound email, then configure an Email Service routing rule to send inbound mail to your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-5355)
-* [  wrangler.toml ](#tab-panel-5356)
+* [  wrangler.jsonc ](#tab-panel-5501)
+* [  wrangler.toml ](#tab-panel-5502)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "remote": true
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "send_email": [    {      "name": "EMAIL",      "remote": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[send_email]]name = "EMAIL"remote = true
+```toml
+[[send_email]]
+name = "EMAIL"
+remote = true
 ```
 
 The `remote = true` option lets you call the real Email Service API during local development with `wrangler dev`.

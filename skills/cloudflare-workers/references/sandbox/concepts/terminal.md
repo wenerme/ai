@@ -18,7 +18,7 @@ Terminal connections let browser-based UIs interact directly with sandbox shells
 
 Terminal connections use WebSockets to stream raw bytes between a browser terminal (like [xterm.js ↗](https://xtermjs.org/)) and a pseudo-terminal (PTY) process running inside the sandbox container.
 
-```
+```txt
 Browser (xterm.js) <-- WebSocket --> Worker <-- proxy --> Container PTY (bash)
 ```
 
@@ -52,12 +52,25 @@ The `SandboxAddon` for xterm.js implements this automatically. If you are buildi
 
 Each [session](https://developers.cloudflare.com/sandbox/concepts/sessions/) can have its own terminal with independent shell state:
 
-TypeScript
+**TypeScript**
 
-```
-const devSession = await sandbox.createSession({  id: "dev",  cwd: "/workspace/frontend",  env: { NODE_ENV: "development" },});
-const testSession = await sandbox.createSession({  id: "test",  cwd: "/workspace",  env: { NODE_ENV: "test" },});
-// Each session's terminal has its own working directory,// environment variables, and command history
+```typescript
+const devSession = await sandbox.createSession({
+  id: "dev",
+  cwd: "/workspace/frontend",
+  env: { NODE_ENV: "development" },
+});
+
+
+const testSession = await sandbox.createSession({
+  id: "test",
+  cwd: "/workspace",
+  env: { NODE_ENV: "test" },
+});
+
+
+// Each session's terminal has its own working directory,
+// environment variables, and command history
 ```
 
 Multiple browser clients can connect to the same session's terminal simultaneously. They all see the same shell output and can send input. Use this pattern for intentional collaboration inside one workspace, not to separate independent users.

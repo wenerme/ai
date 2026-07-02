@@ -27,14 +27,18 @@ A component which shows permission related troubleshooting information.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-permissions-message></rtk-permissions-message>
+```html
+<!-- component.html -->
+<rtk-permissions-message></rtk-permissions-message>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-permissions-message [meeting]="meeting"></rtk-permissions-message>
+```html
+<!-- component.html -->
+<rtk-permissions-message
+ [meeting]="meeting">
+</rtk-permissions-message>
 ```
 
 ```json

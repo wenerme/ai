@@ -23,22 +23,61 @@ Each entry in `send_email` can be configured to restrict what the binding can do
 * **`allowed_destination_addresses`**: The binding can only send to addresses listed in this allowlist.
 * **`allowed_sender_addresses`**: The binding can only send from the addresses listed in this allowlist.
 
-* [  wrangler.jsonc ](#tab-panel-8566)
-* [  wrangler.toml ](#tab-panel-8567)
+* [  wrangler.jsonc ](#tab-panel-8857)
+* [  wrangler.toml ](#tab-panel-8858)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "send_email": [
+    // Send to any verified destination
+    { "name": "EMAIL" },
+    // Send only to a single fixed destination
+    {
+      "name": "NOTIFY_OPS",
+      "destination_address": "ops@yourdomain.com",
+    },
+    // Send only to addresses on an allowlist
+    {
+      "name": "EMAIL_TEAM",
+      "allowed_destination_addresses": [
+        "alice@yourdomain.com",
+        "bob@yourdomain.com",
+      ],
+    },
+    // Send only from addresses on an allowlist
+    {
+      "name": "RESTRICTED_EMAIL",
+      "allowed_sender_addresses": [
+        "noreply@yourdomain.com",
+        "support@yourdomain.com",
+      ],
+    },
+  ],
+}
 ```
-{  "send_email": [    // Send to any verified destination    { "name": "EMAIL" },    // Send only to a single fixed destination    {      "name": "NOTIFY_OPS",      "destination_address": "ops@yourdomain.com",    },    // Send only to addresses on an allowlist    {      "name": "EMAIL_TEAM",      "allowed_destination_addresses": [        "alice@yourdomain.com",        "bob@yourdomain.com",      ],    },    // Send only from addresses on an allowlist    {      "name": "RESTRICTED_EMAIL",      "allowed_sender_addresses": [        "noreply@yourdomain.com",        "support@yourdomain.com",      ],    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[send_email]]name = "EMAIL"
-[[send_email]]name = "NOTIFY_OPS"destination_address = "ops@yourdomain.com"
-[[send_email]]name = "EMAIL_TEAM"allowed_destination_addresses = [ "alice@yourdomain.com", "bob@yourdomain.com" ]
-[[send_email]]name = "RESTRICTED_EMAIL"allowed_sender_addresses = [ "noreply@yourdomain.com", "support@yourdomain.com" ]
+```toml
+[[send_email]]
+name = "EMAIL"
+
+
+[[send_email]]
+name = "NOTIFY_OPS"
+destination_address = "ops@yourdomain.com"
+
+
+[[send_email]]
+name = "EMAIL_TEAM"
+allowed_destination_addresses = [ "alice@yourdomain.com", "bob@yourdomain.com" ]
+
+
+[[send_email]]
+name = "RESTRICTED_EMAIL"
+allowed_sender_addresses = [ "noreply@yourdomain.com", "support@yourdomain.com" ]
 ```
 
 ## Next steps

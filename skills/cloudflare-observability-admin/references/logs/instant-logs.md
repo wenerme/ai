@@ -50,22 +50,19 @@ All supported operators can be found in the [Filters](https://developers.cloudfl
 
 Below we have three examples of filters:
 
-Terminal window
-
-```
-# Filter when client IP country is not Canada:"filter": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}"
-```
-
-Terminal window
-
-```
-# Filter when the status code returned from Cloudflare is either 200 or 201:"filter": "{\"where\":{\"and\":[{\"key\":\"EdgeResponseStatus\",\"operator\":\"in\",\"value\":[200,201]}]}}"
+```bash
+# Filter when client IP country is not Canada:
+"filter": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}"
 ```
 
-Terminal window
-
+```bash
+# Filter when the status code returned from Cloudflare is either 200 or 201:
+"filter": "{\"where\":{\"and\":[{\"key\":\"EdgeResponseStatus\",\"operator\":\"in\",\"value\":[200,201]}]}}"
 ```
-# Filter when the request path contains "/static" and the request hostname is "example.com":"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"}, {\"where\":{\"and\":[{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}"
+
+```bash
+# Filter when the request path contains "/static" and the request hostname is "example.com":
+"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"}, {\"where\":{\"and\":[{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}"
 ```
 
 Example request using cURL:
@@ -75,27 +72,45 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Read`
 
-Create Instant Logs job
+**Create Instant Logs job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/edge/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",    "sample": 100,    "filter": "",    "kind": "instant-logs"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/edge/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+    "sample": 100,
+    "filter": "",
+    "kind": "instant-logs"
+  }'
 ```
 
 Response:
 
 The response will include a new field called **destination\_conf**. The value of this field is your unique WebSocket address that will receive messages from Cloudflare's global network.
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",    "sample": 100,    "filter": "",    "destination_conf": "wss://logs.cloudflare.com/instant-logs/ws/sessions/<SESSION_ID>",    "kind": "instant-logs"  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+    "sample": 100,
+    "filter": "",
+    "destination_conf": "wss://logs.cloudflare.com/instant-logs/ws/sessions/<SESSION_ID>",
+    "kind": "instant-logs"
+  },
+  "success": true
+}
 ```
 
 ### 2\. Connect to WebSocket
 
 Using a CLI utility like [Websocat ↗](https://github.com/vi/websocat), you can connect to the WebSocket and start immediately receiving logs.
 
-Terminal window
-
-```
+```bash
 websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/<SESSION_ID>
 ```
 
@@ -107,9 +122,7 @@ Once connected to the websocket, you will receive messages of line-delimited JSO
 
 Now that you have a connection to Cloudflare's websocket and are receiving logs from Cloudflare's global network, you can start slicing and dicing the logs. A handy tool for this is [Angle Grinder ↗](https://github.com/rcoh/angle-grinder). Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country you can sum the number of events by the `ClientCountry` field.
 
-Terminal window
-
-```
+```bash
 websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/<SESSION_ID> | agrind '* | json | sum(sampleInterval) by ClientCountry'
 ```
 

@@ -27,14 +27,18 @@ A screen that handles the idle state, i.e; when you are waiting for data about t
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-idle-screen></rtk-idle-screen>
+```html
+<!-- component.html -->
+<rtk-idle-screen></rtk-idle-screen>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-idle-screen [meeting]="meeting"></rtk-idle-screen>
+```html
+<!-- component.html -->
+<rtk-idle-screen
+ [meeting]="meeting">
+</rtk-idle-screen>
 ```
 
 ```json

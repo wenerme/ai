@@ -20,30 +20,84 @@ Ensure your gateway has [authentication](https://developers.cloudflare.com/ai-ga
 
 ### OpenAI SDK
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import OpenAI from "openai";
-const cloudflareToken = "CF_AIG_TOKEN";const accountId = "{account_id}";const gatewayId = "{gateway_id}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/compat`;
-const openai = new OpenAI({  apiKey: cloudflareToken,  baseURL,});
-try {  const model = "dynamic/<your-dynamic-route-name>";  const messages = [{ role: "user", content: "What is a neuron?" }];  const chatCompletion = await openai.chat.completions.create({    model,    messages,  });  const response = chatCompletion.choices[0].message;  console.log(response);} catch (e) {  console.error(e);}
+
+
+const cloudflareToken = "CF_AIG_TOKEN";
+const accountId = "{account_id}";
+const gatewayId = "{gateway_id}";
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/compat`;
+
+
+const openai = new OpenAI({
+  apiKey: cloudflareToken,
+  baseURL,
+});
+
+
+try {
+  const model = "dynamic/<your-dynamic-route-name>";
+  const messages = [{ role: "user", content: "What is a neuron?" }];
+  const chatCompletion = await openai.chat.completions.create({
+    model,
+    messages,
+  });
+  const response = chatCompletion.choices[0].message;
+  console.log(response);
+} catch (e) {
+  console.error(e);
+}
 ```
 
 ### Fetch
 
-Terminal window
-
-```
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  --header 'Content-Type: application/json' \  --data '{    "model": "dynamic/<your-dynamic-route-name>",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
+```bash
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
+  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "model": "dynamic/<your-dynamic-route-name>",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
 ```
 
 ### Workers
 
-index.ts
+**index.ts**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request: Request, env: Env) {    const response = await env.AI.gateway("default").run({      provider: "compat",      endpoint: "chat/completions",      headers: {},      query: {        model: "dynamic/<your-dynamic-route-name>",        messages: [          {            role: "user",            content: "What is Cloudflare?",          },        ],      },    });    return Response(response);  },};
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    const response = await env.AI.gateway("default").run({
+      provider: "compat",
+      endpoint: "chat/completions",
+      headers: {},
+      query: {
+        model: "dynamic/<your-dynamic-route-name>",
+        messages: [
+          {
+            role: "user",
+            content: "What is Cloudflare?",
+          },
+        ],
+      },
+    });
+    return Response(response);
+  },
+};
 ```
 
 ## Response Metadata

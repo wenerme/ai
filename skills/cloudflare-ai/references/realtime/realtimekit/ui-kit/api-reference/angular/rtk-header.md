@@ -31,14 +31,20 @@ A component that houses all the header components.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-header></rtk-header>
+```html
+<!-- component.html -->
+<rtk-header></rtk-header>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-header [disableRender]="true" [meeting]="meeting" size="md"></rtk-header>
+```html
+<!-- component.html -->
+<rtk-header
+ [disableRender]="true"
+ [meeting]="meeting"
+ size="md">
+</rtk-header>
 ```
 
 ```json

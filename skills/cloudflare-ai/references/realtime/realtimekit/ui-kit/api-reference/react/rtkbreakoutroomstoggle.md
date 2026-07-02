@@ -29,16 +29,30 @@ A button which toggles visibility of breakout rooms. You need to pass the `meeti
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkBreakoutRoomsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkBreakoutRoomsToggle />;}
+
+
+function MyComponent() {
+  return <RtkBreakoutRoomsToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkBreakoutRoomsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkBreakoutRoomsToggle      iconPack={defaultIconPack}      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkBreakoutRoomsToggle
+      iconPack={defaultIconPack}
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

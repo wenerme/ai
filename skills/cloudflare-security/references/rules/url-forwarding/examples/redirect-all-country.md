@@ -23,7 +23,7 @@ In this example, all website visitors from the United Kingdom will be redirected
   * **Subpath matching**: Enabled
   * **Preserve query string**: Enabled
 2. Create a Bulk Redirect Rule that enables the previous Bulk Redirect List and set the rule expression to the following:
-```
+```txt
 ip.src.country == "GB" and http.request.full_uri in $uk_redirect_list
 ```
 

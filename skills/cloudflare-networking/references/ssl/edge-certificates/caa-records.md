@@ -45,14 +45,28 @@ CAA records are inherited. This means that, if you are using a [subdomain setup]
 
 If Cloudflare has automatically added CAA records on your behalf, these records will not appear in the Cloudflare dashboard. However, if you run a command line query using `dig`, you can see any existing CAA records, including those added by Cloudflare (replacing `example.com` with your own domain on Cloudflare):
 
-Terminal window
-
-```
+```bash
 ➜  ~ dig example.com caa +short
-# CAA records added by Google Trust Services0 issue "pki.goog; cansignhttpexchanges=yes"0 issuewild "pki.goog; cansignhttpexchanges=yes"
-# CAA records added by Let's Encrypt0 issue "letsencrypt.org"0 issuewild "letsencrypt.org"
-# CAA records added by SSL.com0 issue "ssl.com"0 issuewild "ssl.com"
-# CAA records added by Sectigo0 issue "sectigo.com"0 issuewild "sectigo.com"
+
+
+# CAA records added by Google Trust Services
+0 issue "pki.goog; cansignhttpexchanges=yes"
+0 issuewild "pki.goog; cansignhttpexchanges=yes"
+
+
+# CAA records added by Let's Encrypt
+0 issue "letsencrypt.org"
+0 issuewild "letsencrypt.org"
+
+
+# CAA records added by SSL.com
+0 issue "ssl.com"
+0 issuewild "ssl.com"
+
+
+# CAA records added by Sectigo
+0 issue "sectigo.com"
+0 issuewild "sectigo.com"
 ```
 
 Note
@@ -63,8 +77,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-10730)
-* [ API ](#tab-panel-10731)
+* [ Dashboard ](#tab-panel-11025)
+* [ API ](#tab-panel-11026)
 
 To add a CAA record in the dashboard,
 
@@ -92,10 +106,9 @@ CAA records on a CNAME target also apply. If your hostname CNAMEs to a domain wh
 
 Check CAA at all levels of your CNAME chain:
 
-Terminal window
-
-```
-dig yourdomain.com CAA +shortdig cname-target.com CAA +short
+```sh
+dig yourdomain.com CAA +short
+dig cname-target.com CAA +short
 ```
 
 ```json

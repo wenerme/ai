@@ -31,16 +31,30 @@ A component that houses all the header components.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkHeader } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkHeader />;}
+
+
+function MyComponent() {
+  return <RtkHeader />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkHeader } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkHeader      disableRender={true}      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkHeader
+      disableRender={true}
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

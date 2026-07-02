@@ -20,9 +20,7 @@ The [Cloudflare Waiting Room API](https://developers.cloudflare.com/api/resource
 
 To invoke a [Cloudflare Waiting Room API](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/list/) operation, append the endpoint to the Cloudflare API base URL:
 
-Terminal window
-
-```
+```shell
 https://api.cloudflare.com/client/v4
 ```
 

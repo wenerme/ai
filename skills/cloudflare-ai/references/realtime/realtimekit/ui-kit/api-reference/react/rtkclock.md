@@ -26,16 +26,29 @@ Shows the time elapsed in a meeting.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkClock } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkClock />;}
+
+
+function MyComponent() {
+  return <RtkClock />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkClock } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkClock      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkClock
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

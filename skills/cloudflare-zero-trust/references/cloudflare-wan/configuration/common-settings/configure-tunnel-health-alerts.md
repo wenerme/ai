@@ -53,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-7848)
-* [ API ](#tab-panel-7849)
+* [ Dashboard ](#tab-panel-8101)
+* [ API ](#tab-panel-8102)
 
 1. Go to the **Notifications** page.
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
@@ -97,14 +97,75 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Notifications Write`
 * `Account Settings Write`
 
-Create a Notification policy
+**Create a Notification policy**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "alert_type": "magic_wan_tunnel_health",    "description": "<DESCRIBE_POLICY>",    "enabled": true,    "filters": {        "slo": [            "99.9"        ]    },    "mechanisms": {        "email": [            {                "id": "EMAIL_ADDRESS"            }        ]    },    "name": "<DESCRIBE_ALERT>"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/policies" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "alert_type": "magic_wan_tunnel_health",
+    "description": "<DESCRIBE_POLICY>",
+    "enabled": true,
+    "filters": {
+        "slo": [
+            "99.9"
+        ]
+    },
+    "mechanisms": {
+        "email": [
+            {
+                "id": "EMAIL_ADDRESS"
+            }
+        ]
+    },
+    "name": "<DESCRIBE_ALERT>"
+  }'
 ```
 
-```
-  {    "result": [      {        "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",        "name": "<POLICY_NAME>",        "description": "<POLICY_DESCRIPTION>",        "enabled": true,        "alert_type": "magic_wan_tunnel_health",        "mechanisms": {          "email": [            {              "id": "<YOUR_EMAIL>"            }          ]        },        "created": "2024-09-11T14:13:29.585658Z",        "modified": "2024-09-11T14:13:29.585658Z",        "conditions": {          "and": [            {              "or": [                {                  "<=": [                    {                      "var": "slo"                    },                    "99.9"                  ]                }              ]            }          ]        },        "filters": {          "slo": ["99.9"]        }      }    ],    "success": true,    "errors": [],    "messages": []  }
+```json
+  {
+    "result": [
+      {
+        "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        "name": "<POLICY_NAME>",
+        "description": "<POLICY_DESCRIPTION>",
+        "enabled": true,
+        "alert_type": "magic_wan_tunnel_health",
+        "mechanisms": {
+          "email": [
+            {
+              "id": "<YOUR_EMAIL>"
+            }
+          ]
+        },
+        "created": "2024-09-11T14:13:29.585658Z",
+        "modified": "2024-09-11T14:13:29.585658Z",
+        "conditions": {
+          "and": [
+            {
+              "or": [
+                {
+                  "<=": [
+                    {
+                      "var": "slo"
+                    },
+                    "99.9"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "filters": {
+          "slo": ["99.9"]
+        }
+      }
+    ],
+    "success": true,
+    "errors": [],
+    "messages": []
+  }
 ```
 
 ## Test SLOs

@@ -27,8 +27,8 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Set up
 
-* [ Dashboard ](#tab-panel-8163)
-* [ API ](#tab-panel-8164)
+* [ Dashboard ](#tab-panel-8444)
+* [ API ](#tab-panel-8445)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -47,10 +47,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone DNS Settings Write`
 * `DNS Write`
 
-Update DNS Settings
+**Update DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "internal_dns": {        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "internal_dns": {
+        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"
+    }
+  }'
 ```
 
 A third zone (C) could also point to zone B as a reference, but zone A cannot add another zone as a reference while also having zone B configured as its reference zone.

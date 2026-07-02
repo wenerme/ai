@@ -106,21 +106,53 @@ Any header starting with `X-` is allowed. This covers common headers like `X-Mai
 
 ## Usage examples
 
-* [ REST API (curl) ](#tab-panel-8607)
-* [ Workers binding ](#tab-panel-8608)
+* [ REST API (curl) ](#tab-panel-8898)
+* [ Workers binding ](#tab-panel-8899)
 
-Terminal window
-
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": "user@example.com",
+    "from": "notifications@yourdomain.com",
+    "subject": "Your weekly digest",
+    "html": "<h1>Weekly Digest</h1>",
+    "headers": {
+      "In-Reply-To": "<original-message-id@yourdomain.com>",
+      "References": "<original-message-id@yourdomain.com>",
+      "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      "X-Campaign-ID": "weekly-digest-2026-03",
+      "X-User-Segment": "premium"
+    }
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "user@example.com",    "from": "notifications@yourdomain.com",    "subject": "Your weekly digest",    "html": "<h1>Weekly Digest</h1>",    "headers": {      "In-Reply-To": "<original-message-id@yourdomain.com>",      "References": "<original-message-id@yourdomain.com>",      "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",      "X-Campaign-ID": "weekly-digest-2026-03",      "X-User-Segment": "premium"    }  }'
-```
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.EMAIL.send({  to: "user@example.com",  from: "notifications@yourdomain.com",  subject: "Your weekly digest",  html: "<h1>Weekly Digest</h1>",  headers: {    // Threading    "In-Reply-To": "<original-message-id@yourdomain.com>",    References: "<original-message-id@yourdomain.com>",
-    // List management (required by Gmail/Yahoo for bulk senders)    "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-    // Custom tracking    "X-Campaign-ID": "weekly-digest-2026-03",    "X-User-Segment": "premium",  },});
+```typescript
+const response = await env.EMAIL.send({
+  to: "user@example.com",
+  from: "notifications@yourdomain.com",
+  subject: "Your weekly digest",
+  html: "<h1>Weekly Digest</h1>",
+  headers: {
+    // Threading
+    "In-Reply-To": "<original-message-id@yourdomain.com>",
+    References: "<original-message-id@yourdomain.com>",
+
+
+    // List management (required by Gmail/Yahoo for bulk senders)
+    "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+
+
+    // Custom tracking
+    "X-Campaign-ID": "weekly-digest-2026-03",
+    "X-User-Segment": "premium",
+  },
+});
 ```
 
 ## Header limits

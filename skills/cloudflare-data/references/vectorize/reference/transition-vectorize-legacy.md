@@ -47,15 +47,25 @@ Watch this space for the upcoming capability to migrate legacy (V1) indexes to t
 1. Wrangler now supports operations on the new version of Vectorize (V2) indexes by default. To use Wrangler commands for legacy (V1) indexes, the `--deprecated-v1` flag must be enabled. Please note that this flag is only supported to create, get, list and delete indexes and to insert vectors.
 2. Refer to the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/create/) page for details on the routes and payload types for the new Vectorize (V2) indexes.
 3. To use the new version of Vectorize indexes in Workers, the environment binding must be defined as a `Vectorize` interface.
-TypeScript
-```
-export interface Env {  // This makes your vector index methods available on env.VECTORIZE.*  // For example, env.VECTORIZE.insert() or query()  VECTORIZE: Vectorize;}
+
+**TypeScript**
+```typescript
+export interface Env {
+  // This makes your vector index methods available on env.VECTORIZE.*
+  // For example, env.VECTORIZE.insert() or query()
+  VECTORIZE: Vectorize;
+}
 ```
 The `Vectorize` interface includes the type changes and the capabilities supported by new Vectorize (V2) indexes.
 For legacy Vectorize (V1) indexes, use the `VectorizeIndex` interface.
-TypeScript
-```
-export interface Env {  // This makes your vector index methods available on env.VECTORIZE.*  // For example, env.VECTORIZE.insert() or query()  VECTORIZE: VectorizeIndex;}
+
+**TypeScript**
+```typescript
+export interface Env {
+  // This makes your vector index methods available on env.VECTORIZE.*
+  // For example, env.VECTORIZE.insert() or query()
+  VECTORIZE: VectorizeIndex;
+}
 ```
 4. With the new Vectorize (V2) version, the `returnMetadata` option for the [query operation](https://developers.cloudflare.com/vectorize/reference/client-api/#query-vectors) now expects either `all`, `indexed` or `none` string values. For legacy Vectorize (V1), the `returnMetadata` option was a boolean field.
 5. With the new Vectorize (V2) indexes, all index and vector mutations are asynchronous and return a `mutationId` in the response as a unique identifier for that mutation operation.

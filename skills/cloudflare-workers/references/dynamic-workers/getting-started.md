@@ -41,19 +41,26 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8547)
-* [  wrangler.toml ](#tab-panel-8548)
+* [  wrangler.jsonc ](#tab-panel-8798)
+* [  wrangler.toml ](#tab-panel-8799)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "worker_loaders": [
+    {
+      "binding": "LOADER",
+    },
+  ],
+}
 ```
-{  "worker_loaders": [    {      "binding": "LOADER",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[worker_loaders]]binding = "LOADER"
+```toml
+[[worker_loaders]]
+binding = "LOADER"
 ```
 
 Your Worker will then have access to the Worker Loader API via `env.LOADER`.
@@ -62,27 +69,83 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-8555)
-* [  TypeScript ](#tab-panel-8556)
+* [  JavaScript ](#tab-panel-8806)
+* [  TypeScript ](#tab-panel-8807)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    // Load a worker.
+    const worker = env.LOADER.load({
+      compatibilityDate: "2026-07-01",
+
+
+      mainModule: "src/index.js",
+      modules: {
+        "src/index.js": `
+          export default {
+            fetch(request) {
+              return new Response("Hello from a dynamic Worker");
+            },
+          };
+        `,
+      },
+
+
+      // Block all outbound network access from the Dynamic Worker.
+      globalOutbound: null,
+    });
+
+
+    // Get the Dynamic Worker's `export default` entrypoint.
+    // (A Worker can also export separate, named entrypoints.)
+    let entrypoint = worker.getEntrypoint();
+
+
+    // Forward the HTTP request to it.
+    return entrypoint.fetch(request);
+  },
+};
 ```
-export default {  async fetch(request, env) {    // Load a worker.    const worker = env.LOADER.load({      compatibilityDate: "2026-06-24",
-      mainModule: "src/index.js",      modules: {        "src/index.js": `          export default {            fetch(request) {              return new Response("Hello from a dynamic Worker");            },          };        `,      },
-      // Block all outbound network access from the Dynamic Worker.      globalOutbound: null,    });
-    // Get the Dynamic Worker's `export default` entrypoint.    // (A Worker can also export separate, named entrypoints.)    let entrypoint = worker.getEntrypoint();
-    // Forward the HTTP request to it.    return entrypoint.fetch(request);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    // Load a worker.    const worker = env.LOADER.load({      compatibilityDate: "2026-06-24",
-      mainModule: "src/index.js",      modules: {        "src/index.js": `          export default {            fetch(request) {              return new Response("Hello from a dynamic Worker");            },          };        `,      },
-      // Block all outbound network access from the Dynamic Worker.      globalOutbound: null,    });
-    // Get the Dynamic Worker's `export default` entrypoint.    // (A Worker can also export separate, named entrypoints.)    let entrypoint = worker.getEntrypoint();
-    // Forward the HTTP request to it.    return entrypoint.fetch(request);  },};
+```ts
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    // Load a worker.
+    const worker = env.LOADER.load({
+      compatibilityDate: "2026-07-01",
+
+
+      mainModule: "src/index.js",
+      modules: {
+        "src/index.js": `
+          export default {
+            fetch(request) {
+              return new Response("Hello from a dynamic Worker");
+            },
+          };
+        `,
+      },
+
+
+      // Block all outbound network access from the Dynamic Worker.
+      globalOutbound: null,
+    });
+
+
+    // Get the Dynamic Worker's `export default` entrypoint.
+    // (A Worker can also export separate, named entrypoints.)
+    let entrypoint = worker.getEntrypoint();
+
+
+    // Forward the HTTP request to it.
+    return entrypoint.fetch(request);
+  },
+};
 ```
 
 In this example, `env.LOADER.load()` creates a Dynamic Worker from the code defined in `modules` and returns a stub that represents it.
@@ -95,23 +158,51 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-8549)
-* [  TypeScript ](#tab-panel-8550)
+* [  JavaScript ](#tab-panel-8800)
+* [  TypeScript ](#tab-panel-8801)
 
-JavaScript
+**JavaScript**
 
+```js
+const worker = env.LOADER.get("hello-v1", async () => {
+  // Callback only runs if there is not already a warm
+  // instance available.
+
+
+  // Load code from storage.
+  let code = await env.MY_CODE_STORAGE.get("hello-v1");
+
+
+  // Return the same format as `env.LOADER.load()` accepts.
+  return {
+    compatibilityDate: "2026-07-01",
+    mainModule: "index.js",
+    modules: { "index.js": code },
+    globalOutbound: null,
+  };
+});
 ```
-const worker = env.LOADER.get("hello-v1", async () => {  // Callback only runs if there is not already a warm  // instance available.
-  // Load code from storage.  let code = await env.MY_CODE_STORAGE.get("hello-v1");
-  // Return the same format as `env.LOADER.load()` accepts.  return {    compatibilityDate: "2026-06-24",    mainModule: "index.js",    modules: { "index.js": code },    globalOutbound: null,  };});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const worker = env.LOADER.get("hello-v1", async () => {  // Callback only runs if there is not already a warm  // instance available.
-  // Load code from storage.  let code = await env.MY_CODE_STORAGE.get("hello-v1");
-  // Return the same format as `env.LOADER.load()` accepts.  return {    compatibilityDate: "2026-06-24",    mainModule: "index.js",    modules: { "index.js": code, },    globalOutbound: null,  };});
+```ts
+const worker = env.LOADER.get("hello-v1", async () => {
+  // Callback only runs if there is not already a warm
+  // instance available.
+
+
+  // Load code from storage.
+  let code = await env.MY_CODE_STORAGE.get("hello-v1");
+
+
+  // Return the same format as `env.LOADER.load()` accepts.
+  return {
+    compatibilityDate: "2026-07-01",
+    mainModule: "index.js",
+    modules: { "index.js": code, },
+    globalOutbound: null,
+  };
+});
 ```
 
 ## Supported languages
@@ -124,21 +215,47 @@ For the full list of supported module types, refer to the [API reference](https:
 
 To run Python code in a Dynamic Worker, you must include the `python_workers` compatibility flag. Without this flag, the Dynamic Worker will fail to load the Python runtime.
 
-* [  JavaScript ](#tab-panel-8551)
-* [  TypeScript ](#tab-panel-8552)
+* [  JavaScript ](#tab-panel-8802)
+* [  TypeScript ](#tab-panel-8803)
 
-JavaScript
+**JavaScript**
 
+```js
+const worker = env.LOADER.load({
+  compatibilityDate: "2026-07-01",
+  compatibilityFlags: ["python_workers"],
+  mainModule: "worker.py",
+  modules: {
+    "worker.py": `
+from workers import Response, WorkerEntrypoint
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response("Hello from Python!")
+    `,
+  },
+});
 ```
-const worker = env.LOADER.load({  compatibilityDate: "2026-06-24",  compatibilityFlags: ["python_workers"],  mainModule: "worker.py",  modules: {    "worker.py": `from workers import Response, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello from Python!")    `,  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const worker = env.LOADER.load({  compatibilityDate: "2026-06-24",  compatibilityFlags: ["python_workers"],  mainModule: "worker.py",  modules: {    "worker.py": `from workers import Response, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello from Python!")    `,  },});
+```ts
+const worker = env.LOADER.load({
+  compatibilityDate: "2026-07-01",
+  compatibilityFlags: ["python_workers"],
+  mainModule: "worker.py",
+  modules: {
+    "worker.py": `
+from workers import Response, WorkerEntrypoint
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response("Hello from Python!")
+    `,
+  },
+});
 ```
 
 ### Using TypeScript and npm dependencies
@@ -147,23 +264,59 @@ If your Dynamic Worker needs TypeScript compilation or npm dependencies, the cod
 
 [@cloudflare/worker-bundler ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
 
-* [  JavaScript ](#tab-panel-8553)
-* [  TypeScript ](#tab-panel-8554)
+* [  JavaScript ](#tab-panel-8804)
+* [  TypeScript ](#tab-panel-8805)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createWorker } from "@cloudflare/worker-bundler";
-const worker = env.LOADER.get("my-worker", async () => {  const { mainModule, modules } = await createWorker({    files: {      "src/index.ts": `        import { Hono } from 'hono';        const app = new Hono();        app.get('/', (c) => c.text('Hello from Hono!'));        export default app;      `,      "package.json": JSON.stringify({        dependencies: { hono: "^4.0.0" },      }),    },  });
-  return { mainModule, modules, compatibilityDate: "2026-06-24" };});
+
+
+const worker = env.LOADER.get("my-worker", async () => {
+  const { mainModule, modules } = await createWorker({
+    files: {
+      "src/index.ts": `
+        import { Hono } from 'hono';
+        const app = new Hono();
+        app.get('/', (c) => c.text('Hello from Hono!'));
+        export default app;
+      `,
+      "package.json": JSON.stringify({
+        dependencies: { hono: "^4.0.0" },
+      }),
+    },
+  });
+
+
+  return { mainModule, modules, compatibilityDate: "2026-07-01" };
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createWorker } from "@cloudflare/worker-bundler";
-const worker = env.LOADER.get("my-worker", async () => {  const { mainModule, modules } = await createWorker({    files: {      "src/index.ts": `        import { Hono } from 'hono';        const app = new Hono();        app.get('/', (c) => c.text('Hello from Hono!'));        export default app;      `,      "package.json": JSON.stringify({        dependencies: { hono: "^4.0.0" },      }),    },  });
-  return { mainModule, modules, compatibilityDate: "2026-06-24" };});
+
+
+const worker = env.LOADER.get("my-worker", async () => {
+  const { mainModule, modules } = await createWorker({
+    files: {
+      "src/index.ts": `
+        import { Hono } from 'hono';
+        const app = new Hono();
+        app.get('/', (c) => c.text('Hello from Hono!'));
+        export default app;
+      `,
+      "package.json": JSON.stringify({
+        dependencies: { hono: "^4.0.0" },
+      }),
+    },
+  });
+
+
+  return { mainModule, modules, compatibilityDate: "2026-07-01" };
+});
 ```
 
 `createWorker()` handles TypeScript compilation, dependency resolution from npm, and bundling. It returns `mainModule` and `modules` ready to pass directly to `load()` or `get()`.

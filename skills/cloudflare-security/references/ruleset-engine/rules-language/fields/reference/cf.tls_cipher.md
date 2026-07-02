@@ -18,7 +18,7 @@ The cipher for the connection to Cloudflare.
 
 Example value:
 
-```
+```txt
 "AES128-SHA256"
 ```
 

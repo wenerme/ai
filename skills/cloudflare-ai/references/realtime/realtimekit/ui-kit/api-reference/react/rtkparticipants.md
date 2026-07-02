@@ -30,16 +30,30 @@ A component which lists all participants, with ability to run privileged actions
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipants } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipants />;}
+
+
+function MyComponent() {
+  return <RtkParticipants />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipants } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipants      defaultParticipantsTabId={participantstabid}      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipants
+      defaultParticipantsTabId={participantstabid}
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

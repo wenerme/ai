@@ -38,9 +38,7 @@ To redirect your `www` subdomain to your domain apex:
 
 It may take a moment for this DNS change to propagate, but once complete, you can run the following command in your terminal.
 
-Terminal window
-
-```
+```sh
 curl --head -i https://www.example.com/
 ```
 

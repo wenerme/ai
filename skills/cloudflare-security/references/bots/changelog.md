@@ -14,6 +14,18 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/bots/changelog/index.xml)
 
+## 2026-07-01
+
+**New options to manage AI traffic**
+
+All customers can now manage AI crawlers by behavior — [Search, Agent, and Training](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots) — instead of a single Block AI bots toggle. Configure these options from [Block AI Bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/). New defaults, in which Training and Agent are blocked on pages that display ads while Search remains allowed, take effect for new domains on September 15, 2026.
+
+## 2026-07-01
+
+**BotBase and Attribution Business Insights for Enterprise Bot Management**
+
+Enterprise Bot Management customers can now use [BotBase](https://developers.cloudflare.com/bots/botbase/), a searchable directory of all tracked bots and agents with their behavior classification and detection IDs, and [Attribution Business Insights](https://developers.cloudflare.com/bots/attribution-business-insights/), a dashboard showing site-wide and per-operator crawl-to-referral ratios alongside bot traffic to your content.
+
 ## 2025-07-02
 
 **Managed robots.txt will prepend existing files**

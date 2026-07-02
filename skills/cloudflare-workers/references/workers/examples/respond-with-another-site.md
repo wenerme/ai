@@ -20,30 +20,71 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12054)
-* [  TypeScript ](#tab-panel-12055)
-* [  Python ](#tab-panel-12056)
+* [  JavaScript ](#tab-panel-12074)
+* [  TypeScript ](#tab-panel-12075)
+* [  Python ](#tab-panel-12076)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request) {
+    function MethodNotAllowed(request) {
+      return new Response(`Method ${request.method} not allowed.`, {
+        status: 405,
+        headers: {
+          Allow: "GET",
+        },
+      });
+    }
+    // Only GET requests work with this proxy.
+    if (request.method !== "GET") return MethodNotAllowed(request);
+    return fetch(`https://example.com`);
+  },
+};
 ```
-export default {  async fetch(request) {    function MethodNotAllowed(request) {      return new Response(`Method ${request.method} not allowed.`, {        status: 405,        headers: {          Allow: "GET",        },      });    }    // Only GET requests work with this proxy.    if (request.method !== "GET") return MethodNotAllowed(request);    return fetch(`https://example.com`);  },};
+
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAOAKyiA7ADYAnAEYZAJkEyAXCxZtgHOFxp8BI8dPlKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3twOpePyoSAFkjk-GAHLoCAAQTAYHQAHcHLgLtdbvcnptXq9LhAQAgvlQHJCSAAlO5eKjuBxnAAGvwg-1wJAAJOtLjc7hAkpEqeMAL5hYE7cFQmFJMkAGmeKJR9wIIHcAQALIJREKXmKSCcHHBFghpaLla8wRDIQFogBxACiVWiip1JA5lrFHIeRCV1qdyGQJAA8lQwHQSKaqiRGQiIO4SJDMABrUO+E4kKkeEgwBDoBJ0JJOqCoEhwpn3Vl-cYkACEDAYJGNZuiTzRGK+lOpQNBfOhsMDzIdTurmMOx3OZJOEAgMGlrsSEWaDiSvHQwDJ7e2NssHKIVg0zC0Oj0PH4QjEklkCmUMlKdkczjcnm8vnaVACQR0pHCkRibPVIQygWyuSf0TIELIJRsE8KmqWp6h2JoWl4NoOjSOxpksdZomAOA4gAfTGCYcmiVQCkWIp0g5FdV3XEJNwMHdjH3MwZGYKwgA)
+
+**TypeScript**
+
+```ts
+export default {
+  async fetch(request): Promise<Response> {
+    function MethodNotAllowed(request) {
+      return new Response(`Method ${request.method} not allowed.`, {
+        status: 405,
+        headers: {
+          Allow: "GET",
+        },
+      });
+    }
+    // Only GET requests work with this proxy.
+    if (request.method !== "GET") return MethodNotAllowed(request);
+    return fetch(`https://example.com`);
+  },
+} satisfies ExportedHandler;
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGQQFYAzGJESALBICcALhYs2wDnC40+AkeKkz5CgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2-al5vKhIAWX3DkYA5dAgAEEwGB0AB3Wy4U4XK43e5rJ5PM4QEAId5UWxgkgAJWu7ioLlsxwABl8ID9cCQACQrM6Xa4QeJhckjAC+wQBmxB4Mh8WJABoHojETcCCAXL5ZOJ+Y9hSRDrY4HMEBKhXKnsDQWDfBEAOIAUXKERl6pIrJNwtZtyIsrNtuQyBIAHkqGA6CQDeUSHTYRAXCQwZgANYBryHEjk1wkGAIdCxOjxW1QVAkaH0m5M74jEgAQgYDBIesNEXuyNR7zJFP+QO5EKhPoZ1ttZbRewOJ2JhwgEBgEodcVCDVs8V46GAxKbG3NZlZRHMqmY6k02h4-CEokk0mEckURWsdgczjcHi8LSovn8mlIITCkWZSsCqT8GSyt4iZFBZEKln3pQqVRqTZ6kaXhmlaZJrAmMwVgiYA4GiAB9YZRkyCIlFyOZ8hSVl5wXJdAhXXR1wMLcdwUZhzCAA)
+**Python**
 
-TypeScript
-
-```
-export default {  async fetch(request): Promise<Response> {    function MethodNotAllowed(request) {      return new Response(`Method ${request.method} not allowed.`, {        status: 405,        headers: {          Allow: "GET",        },      });    }    // Only GET requests work with this proxy.    if (request.method !== "GET") return MethodNotAllowed(request);    return fetch(`https://example.com`);  },} satisfies ExportedHandler;
-```
-
-Python
-
-```
+```py
 from workers import WorkerEntrypoint, Response, fetch
-class Default(WorkerEntrypoint):    def fetch(self, request):        def method_not_allowed(request):            msg = f'Method {request.method} not allowed.'            headers = {"Allow": "GET"}            return Response(msg, headers=headers, status=405)
-        # Only GET requests work with this proxy.        if request.method != "GET":            return method_not_allowed(request)
+
+
+class Default(WorkerEntrypoint):
+    def fetch(self, request):
+        def method_not_allowed(request):
+            msg = f'Method {request.method} not allowed.'
+            headers = {"Allow": "GET"}
+            return Response(msg, headers=headers, status=405)
+
+
+        # Only GET requests work with this proxy.
+        if request.method != "GET":
+            return method_not_allowed(request)
+
+
         return fetch("https://example.com")
 ```
 

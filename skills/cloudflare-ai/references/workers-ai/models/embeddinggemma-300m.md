@@ -22,31 +22,72 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4857)
-* [  Python ](#tab-panel-4858)
-* [  curl ](#tab-panel-4859)
+* [  TypeScript ](#tab-panel-5003)
+* [  Python ](#tab-panel-5004)
+* [  curl ](#tab-panel-5005)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    // Can be a string or array of strings]    const stories = [      "This is a story about an orange cloud",      "This is a story about a llama",      "This is a story about a hugging emoji",    ];
-    const embeddings = await env.AI.run(      "@cf/google/embeddinggemma-300m",      {        text: stories,      }    );
-    return Response.json(embeddings);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    // Can be a string or array of strings]
+    const stories = [
+      "This is a story about an orange cloud",
+      "This is a story about a llama",
+      "This is a story about a hugging emoji",
+    ];
+
+
+    const embeddings = await env.AI.run(
+      "@cf/google/embeddinggemma-300m",
+      {
+        text: stories,
+      }
+    );
+
+
+    return Response.json(embeddings);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
+```py
+import os
+import requests
 
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-stories = [  'This is a story about an orange cloud',  'This is a story about a llama',  'This is a story about a hugging emoji']
-response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/google/embeddinggemma-300m",  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},  json={"text": stories})
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+stories = [
+  'This is a story about an orange cloud',
+  'This is a story about a llama',
+  'This is a story about a hugging emoji'
+]
+
+
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/google/embeddinggemma-300m",
+  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+  json={"text": stories}
+)
+
+
 print(response.json())
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/google/embeddinggemma-300m  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/google/embeddinggemma-300m  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
 ```
 
 OpenAI compatible endpoints
@@ -55,8 +96,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-4860)
-* [ Output ](#tab-panel-4861)
+* [ Input ](#tab-panel-5006)
+* [ Output ](#tab-panel-5007)
 
 ▶text
 

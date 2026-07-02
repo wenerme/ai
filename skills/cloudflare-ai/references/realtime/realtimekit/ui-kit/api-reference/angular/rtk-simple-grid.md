@@ -32,14 +32,20 @@ A grid component which renders only the participants in a simple grid.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-simple-grid></rtk-simple-grid>
+```html
+<!-- component.html -->
+<rtk-simple-grid></rtk-simple-grid>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-simple-grid aspectRatio="example" gap="42" [meeting]="meeting"></rtk-simple-grid>
+```html
+<!-- component.html -->
+<rtk-simple-grid
+ aspectRatio="example"
+ gap="42"
+ [meeting]="meeting">
+</rtk-simple-grid>
 ```
 
 ```json

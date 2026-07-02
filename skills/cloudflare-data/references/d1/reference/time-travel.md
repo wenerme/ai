@@ -53,21 +53,22 @@ Time Travel supports two timestamp formats:
 
 You can retrieve a bookmark for the current timestamp by calling the `d1 info` command, which defaults to returning the current bookmark:
 
-Terminal window
-
-```
+```sh
 wrangler d1 time-travel info YOUR_DATABASE
 ```
 
-```
-🚧 Time Traveling...⚠️ The current bookmark is '00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683'⚡️ To restore to this specific bookmark, run: `wrangler d1 time-travel restore YOUR_DATABASE --bookmark=00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683`
+```sh
+🚧 Time Traveling...
+⚠️ The current bookmark is '00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683'
+⚡️ To restore to this specific bookmark, run:
+ `wrangler d1 time-travel restore YOUR_DATABASE --bookmark=00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683`
 ```
 
 To retrieve the bookmark for a timestamp in the past, pass the `--timestamp` flag with a valid Unix or RFC3339 timestamp:
 
-Using an RFC3339 timestamp, including the timezone
+**Using an RFC3339 timestamp, including the timezone**
 
-```
+```sh
 wrangler d1 time-travel info YOUR_DATABASE --timestamp="2023-07-09T17:31:11+00:00"
 ```
 
@@ -79,16 +80,23 @@ Warning
 
 Restoring a database to a specific point-in-time is a _destructive_ operation, and overwrites the database in place. In the future, D1 will support branching & cloning databases using Time Travel.
 
-Terminal window
-
-```
+```sh
 wrangler d1 time-travel restore YOUR_DATABASE --timestamp=UNIX_TIMESTAMP
 ```
 
-```
+```sh
 🚧 Restoring database YOUR_DATABASE from bookmark 00000080-ffffffff-00004c60-390376cb1c4dd679b74a19d19f5ca5be
-⚠️ This will overwrite all data in database YOUR_DATABASE.In-flight queries and transactions will be cancelled.
-✔ OK to proceed (y/N) … yes⚡️ Time travel in progress...✅ Database YOUR_DATABASE restored back to bookmark 00000080-ffffffff-00004c60-390376cb1c4dd679b74a19d19f5ca5be
+
+
+⚠️ This will overwrite all data in database YOUR_DATABASE.
+In-flight queries and transactions will be cancelled.
+
+
+✔ OK to proceed (y/N) … yes
+⚡️ Time travel in progress...
+✅ Database YOUR_DATABASE restored back to bookmark 00000080-ffffffff-00004c60-390376cb1c4dd679b74a19d19f5ca5be
+
+
 ↩️ To undo this operation, you can restore to the previous bookmark: 00000085-ffffffff-00004c6d-2510c8b03a2eb2c48b2422bb3b33fad5
 ```
 
@@ -107,14 +115,15 @@ You can undo a restore by:
 
 To fetch a bookmark from an earlier state:
 
-Terminal window
-
-```
+```sh
 wrangler d1 time-travel info YOUR_DATABASE
 ```
 
-```
-🚧 Time Traveling...⚠️ The current bookmark is '00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683'⚡️ To restore to this specific bookmark, run: `wrangler d1 time-travel restore YOUR_DATABASE --bookmark=00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683`
+```sh
+🚧 Time Traveling...
+⚠️ The current bookmark is '00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683'
+⚡️ To restore to this specific bookmark, run:
+ `wrangler d1 time-travel restore YOUR_DATABASE --bookmark=00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683`
 ```
 
 ## Export D1 into R2 using Workflows

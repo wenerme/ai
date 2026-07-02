@@ -18,18 +18,28 @@ The [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/Reque
 
 The most common way you will encounter a `Request` object is as a property of an incoming request:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response('Hello World!');
+  },
+};
 ```
 
 You may also want to construct a `Request` yourself when you need to modify a request object, because the incoming `request` parameter that you receive from the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is immutable.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {        const url = "https://example.com";        const modifiedRequest = new Request(url, request);    // ...  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+        const url = "https://example.com";
+        const modifiedRequest = new Request(url, request);
+    // ...
+  },
+};
 ```
 
 The [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) invokes the `Request` constructor. The [RequestInit](#options) and [RequestInitCfProperties](#the-cf-property-requestinitcfproperties) types defined below also describe the valid parameters that can be passed to the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
@@ -38,9 +48,9 @@ The [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/han
 
 ## Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let request = new Request(input, options)
 ```
 
@@ -84,10 +94,11 @@ An object containing properties that you want to apply to the request.
 
 An object containing Cloudflare-specific properties that can be set on the `Request` object. For example:
 
-JavaScript
+**JavaScript**
 
-```
-// Disable ScrapeShield for this request.fetch(event.request, { cf: { scrapeShield: false } })
+```js
+// Disable ScrapeShield for this request.
+fetch(event.request, { cf: { scrapeShield: false } })
 ```
 
 Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and generating types by running [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) to ensure proper use of the `cf` object.
@@ -158,21 +169,59 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
 
   * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:
 
-    * [  JavaScript ](#tab-panel-12087)
-    * [  TypeScript ](#tab-panel-12088)
-  index.js
+    * [  JavaScript ](#tab-panel-12382)
+    * [  TypeScript ](#tab-panel-12383)
+
+**index.js**
+  ```js
+  export default {
+    async fetch(request, env, ctx) {
+      // This sets up an event listener that will be called if the client disconnects from your
+      // worker.
+      request.signal.addEventListener("abort", () => {
+        console.log("The request was aborted!");
+      });
+      const { readable, writable } = new IdentityTransformStream();
+      sendPing(writable);
+      return new Response(readable, {
+        headers: { "Content-Type": "text/plain" },
+      });
+    },
+  };
+  async function sendPing(writable) {
+    const writer = writable.getWriter();
+    const enc = new TextEncoder();
+    for (;;) {
+      // Send 'ping' every second to keep the connection alive
+      await writer.write(enc.encode("ping\r\n"));
+      await scheduler.wait(1000);
+    }
+  }
   ```
-  export default {  async fetch(request, env, ctx) {    // This sets up an event listener that will be called if the client disconnects from your    // worker.    request.signal.addEventListener("abort", () => {      console.log("The request was aborted!");    });
-      const { readable, writable } = new IdentityTransformStream();    sendPing(writable);    return new Response(readable, {      headers: { "Content-Type": "text/plain" },    });  },};
-  async function sendPing(writable) {  const writer = writable.getWriter();  const enc = new TextEncoder();
-    for (;;) {    // Send 'ping' every second to keep the connection alive    await writer.write(enc.encode("ping\r\n"));    await scheduler.wait(1000);  }}
-  ```
-  index.ts
-  ```
-  export default {  async fetch(request, env, ctx): Promise<Response> {    // This sets up an event listener that will be called if the client disconnects from your    // worker.    request.signal.addEventListener('abort', () => {      console.log('The request was aborted!');    });
-      const { readable, writable } = new IdentityTransformStream();    sendPing(writable);    return new Response(readable, { headers: { 'Content-Type': 'text/plain' } });  },} satisfies ExportedHandler<Env>;
-  async function sendPing(writable: WritableStream): Promise<void> {  const writer = writable.getWriter();  const enc = new TextEncoder();
-    for (;;) {    // Send 'ping' every second to keep the connection alive    await writer.write(enc.encode('ping\r\n'));    await scheduler.wait(1000);  }}
+
+**index.ts**
+  ```ts
+  export default {
+    async fetch(request, env, ctx): Promise<Response> {
+      // This sets up an event listener that will be called if the client disconnects from your
+      // worker.
+      request.signal.addEventListener('abort', () => {
+        console.log('The request was aborted!');
+      });
+      const { readable, writable } = new IdentityTransformStream();
+      sendPing(writable);
+      return new Response(readable, { headers: { 'Content-Type': 'text/plain' } });
+    },
+  } satisfies ExportedHandler<Env>;
+  async function sendPing(writable: WritableStream): Promise<void> {
+    const writer = writable.getWriter();
+    const enc = new TextEncoder();
+    for (;;) {
+      // Send 'ping' every second to keep the connection alive
+      await writer.write(enc.encode('ping\r\n'));
+      await scheduler.wait(1000);
+    }
+  }
   ```
 * `url` string read-only
 
@@ -310,32 +359,47 @@ These methods are only available on an instance of a `Request` object or through
 
 Each time a Worker is invoked by an incoming HTTP request, the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) is called on your Worker. The `Request` context starts when the `fetch()` handler is called, and asynchronous tasks (such as making a subrequest using the [fetch() API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)) can only be run inside the `Request` context:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {        // Request context starts here    return new Response('Hello World!');  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+        // Request context starts here
+    return new Response('Hello World!');
+  },
+};
 ```
 
 ### When passing a promise to fetch event `.respondWith()`
 
 If you pass a Response promise to the fetch event `.respondWith()` method, the request context is active during any asynchronous tasks which run before the Response promise has settled. You can pass the event to an async handler, for example:
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", event => {  event.respondWith(eventHandler(event))})
+```js
+addEventListener("fetch", event => {
+  event.respondWith(eventHandler(event))
+})
+
+
 // No request context available here
-async function eventHandler(event){  // Request context available here  return new Response("Hello, Workers!")}
+
+
+async function eventHandler(event){
+  // Request context available here
+  return new Response("Hello, Workers!")
+}
 ```
 
 ### Errors when attempting to access an inactive `Request` context
 
 Any attempt to use APIs such as `fetch()` or access the `Request` context during script startup will throw an exception:
 
-JavaScript
+**JavaScript**
 
-```
-const promise = fetch("https://example.com/") // Errorasync function eventHandler(event){..}
+```js
+const promise = fetch("https://example.com/") // Error
+async function eventHandler(event){..}
 ```
 
 This code snippet will throw during script startup, and the `"fetch"` event listener will never be registered.
@@ -348,11 +412,18 @@ The `Content-Length` header will be automatically set by the runtime based on wh
 
 A `FixedLengthStream` is an identity `TransformStream` that permits only a fixed number of bytes to be written to it.
 
-JavaScript
+**JavaScript**
 
-```
+```js
   const { writable, readable } = new FixedLengthStream(11);
-  const enc = new TextEncoder();  const writer = writable.getWriter();  writer.write(enc.encode("hello world"));  writer.end();
+
+
+  const enc = new TextEncoder();
+  const writer = writable.getWriter();
+  writer.write(enc.encode("hello world"));
+  writer.end();
+
+
   const req = new Request('https://example.org', { method: 'POST', body: readable });
 ```
 

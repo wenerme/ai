@@ -34,9 +34,9 @@ This parameter enables you to add timed metadata to your recordings, which is ma
 
 1. In [RealtimeKitClient ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient), call the `broadcastMessage` method with the parameters, `ID3` (as a string) and `yourData` (the data you want to send as timed metadata) on the [participants ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient#module%5FRealtimeKitClient+participants) object.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 meeting.participants.broadcastMessage(“ID3Data”, yourData);
 ```
 
@@ -48,9 +48,9 @@ The recommended time to perform this action is after the recording indicator has
 
 1. To stop sending the data, call the following method. Once you make this call, you will no longer be able to send additional ID3 data.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 meeting.participants.broadcastMessage(“ID3Data”,”CLOSE_TRANSPORT”)
 ```
 
@@ -63,10 +63,34 @@ It's also important to note that the length of each segment depends on the frame
 
 1. You can play the stream using the [hls.js ↗](https://github.com/video-dev/hls.js/).
 
-JavaScript
+**JavaScript**
 
-```
-const onFragChanged = (_) => {  // We first try to find the right metadata track.  // https://developer.mozilla.org/en-US/docs/Web/API/TextTrack  const textTrackListCount = videoEl.textTracks.length;  let metaTextTrack;  for (let trackIndex = 0; trackIndex < textTrackListCount; trackIndex++) {    const textTrack = videoEl.textTracks[trackIndex];    if (textTrack.kind !== 'metadata') {      continue;    }    textTrack.mode = 'showing';    metaTextTrack = textTrack;    break;  }  if (!metaTextTrack) {    return;  }  // Add an oncuechange listener on that track.  metaTextTrack.oncuechange = (event) => {    let cue = metaTextTrack.activeCues[metaTextTrack.activeCues.length - 1];    console.log(cue.value.data);  };};// listen on Hls.Events.FRAG_CHANGED from hls.jshls.on(Hls.Events.FRAG_CHANGED, onFragChanged);
+```js
+const onFragChanged = (_) => {
+  // We first try to find the right metadata track.
+  // https://developer.mozilla.org/en-US/docs/Web/API/TextTrack
+  const textTrackListCount = videoEl.textTracks.length;
+  let metaTextTrack;
+  for (let trackIndex = 0; trackIndex < textTrackListCount; trackIndex++) {
+    const textTrack = videoEl.textTracks[trackIndex];
+    if (textTrack.kind !== 'metadata') {
+      continue;
+    }
+    textTrack.mode = 'showing';
+    metaTextTrack = textTrack;
+    break;
+  }
+  if (!metaTextTrack) {
+    return;
+  }
+  // Add an oncuechange listener on that track.
+  metaTextTrack.oncuechange = (event) => {
+    let cue = metaTextTrack.activeCues[metaTextTrack.activeCues.length - 1];
+    console.log(cue.value.data);
+  };
+};
+// listen on Hls.Events.FRAG_CHANGED from hls.js
+hls.on(Hls.Events.FRAG_CHANGED, onFragChanged);
 ```
 
 ```json

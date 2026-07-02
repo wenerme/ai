@@ -29,16 +29,29 @@ The plugin's `component` (an HTMLElement) is placed into this element's light DO
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPluginMain } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPluginMain />;}
+
+
+function MyComponent() {
+  return <RtkPluginMain />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPluginMain } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPluginMain      meeting={meeting}      plugin={rtkplugin}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPluginMain
+      meeting={meeting}
+      plugin={rtkplugin}
+    />
+  );
+}
 ```
 
 ```json

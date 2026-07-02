@@ -24,34 +24,86 @@ All Client Certificate details can be found in the [tlsClientAuth](https://devel
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
 
-* [  Module Worker ](#tab-panel-9199)
-* [  Service Worker ](#tab-panel-9200)
+* [  Module Worker ](#tab-panel-9490)
+* [  Service Worker ](#tab-panel-9491)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    const { tlsClientAuth = {} } = request.cf || {};    const tlsHeaders = {      'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,      'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,      'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,      'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,      'X-CERT-SERIAL': tlsClientAuth.certSerial,      'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,      'X-CERT-VERIFY': tlsClientAuth.certVerify,      'X-CERT-NOTBE': tlsClientAuth.certNotBefore,      'X-CERT-NOTAF': tlsClientAuth.certNotAfter    };
-    const headers = Object.fromEntries(request.headers);    return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {      headers: { 'Content-Type': 'application/json' }    });
-}}
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const { tlsClientAuth = {} } = request.cf || {};
+    const tlsHeaders = {
+      'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,
+      'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,
+      'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,
+      'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,
+      'X-CERT-SERIAL': tlsClientAuth.certSerial,
+      'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,
+      'X-CERT-VERIFY': tlsClientAuth.certVerify,
+      'X-CERT-NOTBE': tlsClientAuth.certNotBefore,
+      'X-CERT-NOTAF': tlsClientAuth.certNotAfter
+    };
+
+
+    const headers = Object.fromEntries(request.headers);
+    return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+
+}
+}
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener('fetch', event => {  event.respondWith(    (async request => {      const { tlsClientAuth = {} } = request.cf || {};      const tlsHeaders = {        'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,        'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,        'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,        'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,        'X-CERT-SERIAL': tlsClientAuth.certSerial,        'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,        'X-CERT-VERIFY': tlsClientAuth.certVerify,        'X-CERT-NOTBE': tlsClientAuth.certNotBefore,        'X-CERT-NOTAF': tlsClientAuth.certNotAfter      };
-      const headers = Object.fromEntries(request.headers);      return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {        headers: { 'Content-Type': 'application/json' }      });    })(event.request)  );});
+```js
+addEventListener('fetch', event => {
+  event.respondWith(
+    (async request => {
+      const { tlsClientAuth = {} } = request.cf || {};
+      const tlsHeaders = {
+        'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,
+        'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,
+        'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,
+        'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,
+        'X-CERT-SERIAL': tlsClientAuth.certSerial,
+        'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,
+        'X-CERT-VERIFY': tlsClientAuth.certVerify,
+        'X-CERT-NOTBE': tlsClientAuth.certNotBefore,
+        'X-CERT-NOTAF': tlsClientAuth.certNotAfter
+      };
+
+
+      const headers = Object.fromEntries(request.headers);
+      return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    })(event.request)
+  );
+});
 ```
 
 The response when using the browser with a P12 Certificate to visit the mTLS hostname would look similar to this example:
 
 ![Example response after exposing an mTLS header with Cloudflare Workers](https://developers.cloudflare.com/_astro/expose-mtls-workers.CZtg7nI7_2kyLoG.webp)
 
-```
-{  "X-CERT-ISSUER-DN": "CN=Managed CA abcdefghijklmnopq123456789,OU=www.cloudflare.com,O=Cloudflare\\, Inc.,L=San Francisco,ST=California,C=US",  "X-CERT-SUBJECT-DN": "CN=Cloudflare,C=US",  "X-CERT-ISSUER-DN-L": "/C=US/ST=California/L=San Francisco/O=Cloudflare, Inc./OU=www.cloudflare.com/CN=Managed CA abcdefghijklmnopq123456789",  "X-CERT-SUBJECT-DN-L": "/C=US/CN=Cloudflare",  "X-CERT-SERIAL": "37C52778E2F1820CC6342172A0E0ED33A4555F8B",  "X-CERT-FINGER": "161e3a2089add0b2134ec43c9071f460e9f4b898",  "X-CERT-NOTBE": "May 25 23:11:00 2024 GMT",  "X-CERT-NOTAF": "May 23 23:11:00 2034 GMT"}
+```txt
+{
+  "X-CERT-ISSUER-DN": "CN=Managed CA abcdefghijklmnopq123456789,OU=www.cloudflare.com,O=Cloudflare\\, Inc.,L=San Francisco,ST=California,C=US",
+  "X-CERT-SUBJECT-DN": "CN=Cloudflare,C=US",
+  "X-CERT-ISSUER-DN-L": "/C=US/ST=California/L=San Francisco/O=Cloudflare, Inc./OU=www.cloudflare.com/CN=Managed CA abcdefghijklmnopq123456789",
+  "X-CERT-SUBJECT-DN-L": "/C=US/CN=Cloudflare",
+  "X-CERT-SERIAL": "37C52778E2F1820CC6342172A0E0ED33A4555F8B",
+  "X-CERT-FINGER": "161e3a2089add0b2134ec43c9071f460e9f4b898",
+  "X-CERT-NOTBE": "May 25 23:11:00 2024 GMT",
+  "X-CERT-NOTAF": "May 23 23:11:00 2034 GMT"
+}
 ```
 
 Note

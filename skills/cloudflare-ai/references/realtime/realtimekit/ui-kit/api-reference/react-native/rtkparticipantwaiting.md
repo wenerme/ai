@@ -27,16 +27,30 @@ A waiting participant card with accept/reject buttons for waitlist and stage req
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantWaiting } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkParticipantWaiting participant={waitingParticipant} />;}
+
+
+function MyComponent() {
+  return <RtkParticipantWaiting participant={waitingParticipant} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantWaiting } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkParticipantWaiting      participant={waitingParticipant}      meeting={meeting}      iconPack={customIconPack}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantWaiting
+      participant={waitingParticipant}
+      meeting={meeting}
+      iconPack={customIconPack}
+    />
+  );
+}
 ```
 
 ```json

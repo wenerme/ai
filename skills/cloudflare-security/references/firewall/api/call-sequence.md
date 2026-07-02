@@ -34,16 +34,44 @@ In this sequence, a single `POST` request to the `/firewall/rules` endpoint take
 
 Below is an example call and response using this method:
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '[  {    "filter": {      "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34"    },    "action": "block"  }]'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '[
+  {
+    "filter": {
+      "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34"
+    },
+    "action": "block"
+  }
+]'
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<RULE_ID>",      "paused": false,      "action": "block",      "priority": null,      "filter": {        "id": "<FILTER_ID>",        "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34",        "paused": false      }    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<RULE_ID>",
+      "paused": false,
+      "action": "block",
+      "priority": null,
+      "filter": {
+        "id": "<FILTER_ID>",
+        "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34",
+        "paused": false
+      }
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 However, this approach has some disadvantages:

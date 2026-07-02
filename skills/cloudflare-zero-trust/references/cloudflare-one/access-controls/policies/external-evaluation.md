@@ -33,44 +33,73 @@ You can set up External Evaluation rules using any API service, but to get start
 ### 1\. Create a new Worker
 
 1. Open a terminal and clone our example project.
-Terminal window
-```
+```sh
 npm create cloudflare@latest my-worker -- --template https://github.com/cloudflare/workers-access-external-auth-example
 ```
 2. Go to the project directory.
-Terminal window
-```
+```sh
 cd my-worker
 ```
 3. Create a [Workers KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) to store the key. The binding name should be `KV` if you want to run the example as written.
-Terminal window
-```
+```sh
 npx wrangler kv namespace create "KV"
 ```
 The command will output the binding name and KV namespace ID, for example
-```
-  [[kv_namespaces]]   binding = "KV"   id = "YOUR_KV_NAMESPACE_ID"
+```txt
+  [[kv_namespaces]]
+   binding = "KV"
+   id = "YOUR_KV_NAMESPACE_ID"
 ```
 4. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in an editor and insert the following:
 
   * `[[kv_namespaces]]`: Add the output generated in the previous step.
   * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-7243)
-* [  wrangler.toml ](#tab-panel-7244)
+* [  wrangler.jsonc ](#tab-panel-7493)
+* [  wrangler.toml ](#tab-panel-7494)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  "workers_dev": true,
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "index.js",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "YOUR_KV_NAMESPACE_ID"
+    }
+  ],
+  "vars": {
+    "TEAM_DOMAIN": "<TEAM_NAME>.cloudflareaccess.com",
+    "DEBUG": false
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "workers_dev": true,  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "index.js",  "kv_namespaces": [    {      "binding": "KV",      "id": "YOUR_KV_NAMESPACE_ID"    }  ],  "vars": {    "TEAM_DOMAIN": "<TEAM_NAME>.cloudflareaccess.com",    "DEBUG": false  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"workers_dev = true# Set this to today's datecompatibility_date = "2026-06-24"main = "index.js"
-[[kv_namespaces]]binding = "KV"id = "YOUR_KV_NAMESPACE_ID"
-[vars]TEAM_DOMAIN = "<TEAM_NAME>.cloudflareaccess.com"DEBUG = false
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker"
+workers_dev = true
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "index.js"
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "YOUR_KV_NAMESPACE_ID"
+
+
+[vars]
+TEAM_DOMAIN = "<TEAM_NAME>.cloudflareaccess.com"
+DEBUG = false
 ```
 
 ### 2\. Program your business logic
@@ -83,8 +112,7 @@ Note
 * To view a list of identity-based data fields, log in to your Access application and append `/cdn-cgi/access/get-identity` to the URL. For example, if `www.example.com` is behind Access, visit `https://www.example.com/cdn-cgi/access/get-identity`.
 
 1. Deploy the Worker to Cloudflare's global network.
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -124,28 +152,31 @@ When a user logs in to your application, Access will now check their email, devi
 To debug your External Evaluation rule:
 
 1. Go to your Worker directory.
-Terminal window
-```
+```sh
 cd my-worker
 ```
 2. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in an editor and set the `debug` variable to `TRUE`.
 3. Deploy your changes.
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 4. Next, start a session to output realtime logs from your Worker.
-Terminal window
-```
+```sh
 wrangler tail -f pretty
 ```
 5. Log in to your Access application.
 The session logs should show an incoming and outgoing JWT. The incoming JWT was sent by Access to the Worker API, while the outgoing JWT was sent by the Worker back to Access.
 6. To decode the contents of a JWT, you can copy the token into [jwt.io ↗](https://jwt.io/).
 The incoming JWT should contain the user's identity data. The outgoing JWT should look similar to:
-JavaScript
-```
-{"success": true,"iat": 1655409315,"exp": 1655409375,"nonce": "9J2E9Xg6wYj8tlnA5MV4Zgp6t8rzmS0Q"}
+
+**JavaScript**
+```js
+{
+"success": true,
+"iat": 1655409315,
+"exp": 1655409375,
+"nonce": "9J2E9Xg6wYj8tlnA5MV4Zgp6t8rzmS0Q"
+}
 ```
 Access checks the outgoing JWT for all of the following criteria:
 

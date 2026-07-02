@@ -18,28 +18,71 @@ The following sections contain example requests for common API calls. For a list
 
 The following example retrieves the currently configured rules for Advanced DNS Protection.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-```
----{  "result": [    {      "id": "<RULE_ID>",      "scope": "<SCOPE>",      "name": "<NAME>",      "mode": "<MODE>",      "profile_sensitivity": "<SENSITIVITY>",      "rate_sensitivity": "<RATE>",      "burst_sensitivity": "<BURST>",      "created_on": "2023-10-01T13:10:38.762503+01:00",      "modified_on": "2023-10-01T13:10:38.762503+01:00",      }    ],  "success": true,  "errors": [],  "messages": []}
+```json
+---
+{
+  "result": [
+    {
+      "id": "<RULE_ID>",
+      "scope": "<SCOPE>",
+      "name": "<NAME>",
+      "mode": "<MODE>",
+      "profile_sensitivity": "<SENSITIVITY>",
+      "rate_sensitivity": "<RATE>",
+      "burst_sensitivity": "<BURST>",
+      "created_on": "2023-10-01T13:10:38.762503+01:00",
+      "modified_on": "2023-10-01T13:10:38.762503+01:00",
+      }
+    ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Create DNS protection rule
 
 The following example creates an Advanced DNS Protection rule with a global scope.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \--header "Authorization: Bearer <API_TOKEN>" \--data '{  "scope": "global",  "name": "global",  "mode": "<MODE>",  "rate_sensitivity": "<RATE>",  "burst_sensitivity": "<BURST>",  "profile_sensitivity": "<SENSITIVITY>"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{
+  "scope": "global",
+  "name": "global",
+  "mode": "<MODE>",
+  "rate_sensitivity": "<RATE>",
+  "burst_sensitivity": "<BURST>",
+  "profile_sensitivity": "<SENSITIVITY>"
+}'
 ```
 
-```
-{  "result": {    "id": "<RULE_ID>",    "scope": "global",    "name": "global",    "mode": "<MODE>",    "rate_sensitivity": "<RATE>",    "burst_sensitivity": "<BURST>",    "profile_sensitivity": "<SENSITIVITY>",    "created_on": "2023-10-01T13:10:38.762503+01:00",    "modified_on": "2023-10-01T13:10:38.762503+01:00",  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULE_ID>",
+    "scope": "global",
+    "name": "global",
+    "mode": "<MODE>",
+    "rate_sensitivity": "<RATE>",
+    "burst_sensitivity": "<BURST>",
+    "profile_sensitivity": "<SENSITIVITY>",
+    "created_on": "2023-10-01T13:10:38.762503+01:00",
+    "modified_on": "2023-10-01T13:10:38.762503+01:00",
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.
@@ -50,14 +93,37 @@ The following example updates an existing DNS protection rule with ID `{rule_id}
 
 The request body can contain only the fields you want to update (from `mode`, `profile_sensitivity`, `rate_sensitivity`, and `burst_sensitivity`).
 
-Request
+**Request**
 
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}" \--header "Authorization: Bearer <API_TOKEN>" \--data '{  "mode": "<NEW_MODE>",  "profile_sensitivity": "<NEW_SENSITIVITY>",  "rate_sensitivity": "<NEW_RATE>",  "burst_sensitivity": "<NEW_BURST>"}'
+```bash
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{
+  "mode": "<NEW_MODE>",
+  "profile_sensitivity": "<NEW_SENSITIVITY>",
+  "rate_sensitivity": "<NEW_RATE>",
+  "burst_sensitivity": "<NEW_BURST>"
+}'
 ```
 
-```
-{  "result": {    "id": "<RULE_ID>",    "scope": "<SCOPE>",    "name": "<NAME>",    "mode": "<NEW_MODE>",    "profile_sensitivity": "<NEW_SENSITIVITY>",    "rate_sensitivity": "<NEW_RATE>",    "burst_sensitivity": "<NEW_BURST>",    "created_on": "2023-10-01T13:10:38.762503+01:00",    "modified_on": "2023-10-01T13:10:38.762503+01:00",  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULE_ID>",
+    "scope": "<SCOPE>",
+    "name": "<NAME>",
+    "mode": "<NEW_MODE>",
+    "profile_sensitivity": "<NEW_SENSITIVITY>",
+    "rate_sensitivity": "<NEW_RATE>",
+    "burst_sensitivity": "<NEW_BURST>",
+    "created_on": "2023-10-01T13:10:38.762503+01:00",
+    "modified_on": "2023-10-01T13:10:38.762503+01:00",
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.

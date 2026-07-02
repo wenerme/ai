@@ -22,8 +22,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-11270)
-* [ API ](#tab-panel-11271)
+* [ Dashboard ](#tab-panel-11290)
+* [ API ](#tab-panel-11291)
 
 To create an account under your tenant using the dashboard:
 
@@ -69,42 +69,86 @@ All KYC parameters are text fields, have a 120 character limit, and are optional
 
   * (optional) External metadata for this account.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<ACCOUNT_NAME>",  "type": "standard"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<ACCOUNT_NAME>",
+  "type": "standard"
+}'
 ```
 
 A successful request will return an HTTP status of `200` and the following response body:
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "2bab6ace8c72ed3f09b9eca6db1396bb",    "name": "<ACCOUNT_NAME>",    "type": "standard",    "settings": {      "enforce_twofactor": false    }  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "2bab6ace8c72ed3f09b9eca6db1396bb",
+    "name": "<ACCOUNT_NAME>",
+    "type": "standard",
+    "settings": {
+      "enforce_twofactor": false
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 A request with a unit ID:
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<ACCOUNT_NAME>",  "type": "standard",  "unit": {    "id": "1a2b3c4d5e6f7g8h"  }}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<ACCOUNT_NAME>",
+  "type": "standard",
+  "unit": {
+    "id": "1a2b3c4d5e6f7g8h"
+  }
+}'
 ```
 
 A request with a unit ID and KYC:
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<ACCOUNT_NAME>",  "type": "standard",  "business_name": "Cloudflare",  "business_email": "email@business.com",  "business_address": "San Francisco",  "business_phone": "1234567890",  "external_metadata": "{'\''testKey'\'': '\''testValue'\''}",  "unit": {    "id": "1a2b3c4d5e6f7g8h"  }}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<ACCOUNT_NAME>",
+  "type": "standard",
+  "business_name": "Cloudflare",
+  "business_email": "email@business.com",
+  "business_address": "San Francisco",
+  "business_phone": "1234567890",
+  "external_metadata": "{'\''testKey'\'': '\''testValue'\''}",
+  "unit": {
+    "id": "1a2b3c4d5e6f7g8h"
+  }
+}'
 ```
 
 ## View accounts
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-11268)
-* [ API ](#tab-panel-11269)
+* [ Dashboard ](#tab-panel-11288)
+* [ API ](#tab-panel-11289)
 
 To view any accounts owned by your tenant using the dashboard:
 
@@ -115,16 +159,45 @@ To fetch any accounts owned by your tenant using the API, send a [GET](https://d
 
 You will get back a list of all the accounts you have created plus any accounts your user already had access to.
 
-Request
+**Request**
 
-```
-curl https://api.cloudflare.com/client/v4/accounts \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl https://api.cloudflare.com/client/v4/accounts \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "a34bd6cc645a31486aa2ef71f1b9afb6",      "name": "My Personal Account",      "settings": {        "enforce_twofactor": false      }    },    {      "id": "1b16db169c9cb7853009857198fae1b9",      "name": "Created Account",      "settings": {        "enforce_twofactor": false      }    }  ],  "result_info": {    "page": 1,    "per_page": 20,    "total_pages": 1,    "count": 2,    "total_count": 2  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "a34bd6cc645a31486aa2ef71f1b9afb6",
+      "name": "My Personal Account",
+      "settings": {
+        "enforce_twofactor": false
+      }
+    },
+    {
+      "id": "1b16db169c9cb7853009857198fae1b9",
+      "name": "Created Account",
+      "settings": {
+        "enforce_twofactor": false
+      }
+    }
+  ],
+  "result_info": {
+    "page": 1,
+    "per_page": 20,
+    "total_pages": 1,
+    "count": 2,
+    "total_count": 2
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Update account
@@ -147,29 +220,43 @@ The following resources are **not** automatically deleted when you delete an acc
 To ensure complete cleanup, delete these resources before deleting the account by calling the following endpoints in sequence:
 
 1. Delete Zero Trust Gateway configuration:
-Terminal window
-```
-curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 2. Delete Access organization:
-Terminal window
-```
-curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/organizations \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/organizations \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 3. Then delete the account (see below).
 
-Request
+**Request**
 
-```
-curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id} \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+https://api.cloudflare.com/client/v4/accounts/{account_id} \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 A successful request will return the id to confirm the operation:
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "1b16db169c9cb7853009857198fae1b9"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "1b16db169c9cb7853009857198fae1b9"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

@@ -30,10 +30,12 @@ This component does not accept any properties. It uses the `RealtimekitClient` f
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/src/pages/plugins/plugin_page.dart';
+
+
 RtkPluginsScreen()
 ```
 

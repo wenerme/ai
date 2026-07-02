@@ -24,10 +24,11 @@ A component which lists all available polls a user can access.
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkPollsBottomSheet = RtkPollsBottomSheet()rtkPollsBottomSheet.show(fragmentManager, "POLLS_TAG")
+```kotlin
+val rtkPollsBottomSheet = RtkPollsBottomSheet()
+rtkPollsBottomSheet.show(fragmentManager, "POLLS_TAG")
 ```
 
 ```json

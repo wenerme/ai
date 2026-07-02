@@ -35,19 +35,25 @@ A single component which renders an entire meeting UI. It loads your preset and 
 
 ### Basic Usage
 
-```
+```html
 <rtk-meeting></rtk-meeting>
 ```
 
 ### With Properties
 
-```
-<rtk-meeting></rtk-meeting>
+```html
+<rtk-meeting>
+</rtk-meeting>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-meeting");
-  el.applyDesignSystem= true;  el.config= defaultUiConfig</script>
+```html
+<script>
+  const el = document.querySelector("rtk-meeting");
+
+
+  el.applyDesignSystem= true;
+  el.config= defaultUiConfig
+</script>
 ```
 
 ```json

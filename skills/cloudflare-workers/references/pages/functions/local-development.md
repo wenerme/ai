@@ -24,9 +24,7 @@ The main command for local development on Pages is `wrangler pages dev`. This wi
 
 With your folder of static assets set up, run the following command to start local development:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev <DIRECTORY-OF-ASSETS>
 ```
 
@@ -40,9 +38,7 @@ If you have a [Wrangler configuration file](https://developers.cloudflare.com/pa
 
 To serve your local development server over HTTPS with a self-signed certificate, you can \[set `local_protocol` via the [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/#local-development-settings) or you can pass the `--local-protocol=https` argument to [wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev):
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev --local-protocol=https <DIRECTORY-OF-ASSETS>
 ```
 

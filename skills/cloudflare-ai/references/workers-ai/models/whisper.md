@@ -27,27 +27,50 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5176)
-* [  curl ](#tab-panel-5177)
+* [  TypeScript ](#tab-panel-5322)
+* [  curl ](#tab-panel-5323)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const res = await fetch(      "https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav"    );    const blob = await res.arrayBuffer();
-    const input = {      audio: [...new Uint8Array(blob)],    };
-    const response = await env.AI.run(      "@cf/openai/whisper",      input    );
-    return Response.json({ input: { audio: [] }, response });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const res = await fetch(
+      "https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav"
+    );
+    const blob = await res.arrayBuffer();
+
+
+    const input = {
+      audio: [...new Uint8Array(blob)],
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/openai/whisper",
+      input
+    );
+
+
+    return Response.json({ input: { audio: [] }, response });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  --data-binary "@talking-llama.mp3"
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  --data-binary "@talking-llama.mp3"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5178)
-* [ Output ](#tab-panel-5179)
+* [ Input ](#tab-panel-5324)
+* [ Output ](#tab-panel-5325)
 
 Option 1
 

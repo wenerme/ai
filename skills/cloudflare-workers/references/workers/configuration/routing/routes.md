@@ -61,20 +61,38 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-11553)
-* [  wrangler.toml ](#tab-panel-11554)
+* [  wrangler.jsonc ](#tab-panel-11848)
+* [  wrangler.toml ](#tab-panel-11849)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "routes": [
+    {
+      "pattern": "subdomain.example.com/*",
+      "zone_name": "example.com"
+    },
+    // or
+    {
+      "pattern": "subdomain.example.com/*",
+      "zone_id": "<YOUR_ZONE_ID>"
+    }
+  ]
+}
 ```
-{  "routes": [    {      "pattern": "subdomain.example.com/*",      "zone_name": "example.com"    },    // or    {      "pattern": "subdomain.example.com/*",      "zone_id": "<YOUR_ZONE_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[routes]]pattern = "subdomain.example.com/*"zone_name = "example.com"
-[[routes]]pattern = "subdomain.example.com/*"zone_id = "<YOUR_ZONE_ID>"
+```toml
+[[routes]]
+pattern = "subdomain.example.com/*"
+zone_name = "example.com"
+
+
+[[routes]]
+pattern = "subdomain.example.com/*"
+zone_id = "<YOUR_ZONE_ID>"
 ```
 
 Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `zone_id` options are interchangeable. If using `zone_id`, find your zone ID by:
@@ -85,27 +103,44 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-11555)
-* [  wrangler.toml ](#tab-panel-11556)
+* [  wrangler.jsonc ](#tab-panel-11850)
+* [  wrangler.toml ](#tab-panel-11851)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "routes": [
+    {
+      "pattern": "subdomain.example.com/*",
+      "zone_name": "example.com"
+    },
+    {
+      "pattern": "subdomain-two.example.com/example",
+      "zone_id": "<YOUR_ZONE_ID>"
+    }
+  ]
+}
 ```
-{  "routes": [    {      "pattern": "subdomain.example.com/*",      "zone_name": "example.com"    },    {      "pattern": "subdomain-two.example.com/example",      "zone_id": "<YOUR_ZONE_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[routes]]pattern = "subdomain.example.com/*"zone_name = "example.com"
-[[routes]]pattern = "subdomain-two.example.com/example"zone_id = "<YOUR_ZONE_ID>"
+```toml
+[[routes]]
+pattern = "subdomain.example.com/*"
+zone_name = "example.com"
+
+
+[[routes]]
+pattern = "subdomain-two.example.com/example"
+zone_id = "<YOUR_ZONE_ID>"
 ```
 
 ## Matching behavior
 
 Route patterns look like this:
 
-```
+```txt
 https://*.example.com/images/*
 ```
 
@@ -113,7 +148,7 @@ This pattern would match all HTTPS requests destined for a subhost of example.co
 
 A pattern to match all requests looks like this:
 
-```
+```txt
 *example.com/*
 ```
 
@@ -129,8 +164,9 @@ While they look similar to a [regex ↗](https://en.wikipedia.org/wiki/Regular%5
 
 A route can be specified without being associated with a Worker. This will act to negate any less specific patterns. For example, consider this pair of route patterns, one with a Workers script and one without:
 
-```
-*example.com/images/cat.png -> <no script>*example.com/images/*       -> worker-script
+```txt
+*example.com/images/cat.png -> <no script>
+*example.com/images/*       -> worker-script
 ```
 
 In this example, all requests destined for example.com and whose paths are prefixed by `/images/` would be routed to `worker-script`, _except_ for `/images/cat.png`, which would bypass Workers completely. Requests with a path of `/images/cat.png?foo=bar` would be routed to `worker-script`, due to the presence of the query string.

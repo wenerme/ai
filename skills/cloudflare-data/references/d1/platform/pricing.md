@@ -65,8 +65,13 @@ You will be billed for the additional reads, writes and storage according to [D1
 
 Every query returns a `meta` object that contains a total count of the rows read (`rows_read`) and rows written (`rows_written`) by that query. For example, a query that performs a full table scan (for instance, `SELECT * FROM users`) from a table with 5000 rows would return a `rows_read` value of `5000`:
 
-```
-"meta": {  "duration": 0.20472300052642825,  "size_after": 45137920,  "rows_read": 5000,  "rows_written": 0}
+```json
+"meta": {
+  "duration": 0.20472300052642825,
+  "size_after": 45137920,
+  "rows_read": 5000,
+  "rows_written": 0
+}
 ```
 
 These are also included in the D1 [Cloudflare dashboard ↗](https://dash.cloudflare.com) and the [analytics API](https://developers.cloudflare.com/d1/observability/metrics-analytics/), allowing you to attribute read and write volumes to specific databases, time periods, or both.

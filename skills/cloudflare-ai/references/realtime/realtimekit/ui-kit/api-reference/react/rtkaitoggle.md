@@ -27,16 +27,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAiToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAiToggle />;}
+
+
+function MyComponent() {
+  return <RtkAiToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAiToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAiToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAiToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

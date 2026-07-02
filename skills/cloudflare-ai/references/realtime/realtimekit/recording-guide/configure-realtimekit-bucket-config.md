@@ -18,8 +18,12 @@ However, RealtimeKit provides users with the flexibility to choose whether or no
 
 For example:
 
-```
-{  "realtimekit_bucket_config": {    "enabled": false  }}
+```json
+{
+  "realtimekit_bucket_config": {
+    "enabled": false
+  }
+}
 ```
 
 Note

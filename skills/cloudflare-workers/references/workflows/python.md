@@ -22,57 +22,105 @@ Join the #python-workers channel in the [Cloudflare Developers Discord ↗](http
 
 The main entrypoint for a Python workflow is the [WorkflowEntrypoint](https://developers.cloudflare.com/workflows/build/workers-api/#workflowentrypoint) class. Your workflow logic should exist inside the [run](https://developers.cloudflare.com/workflows/build/workers-api/#run) handler.
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkflowEntrypoint
-class MyWorkflow(WorkflowEntrypoint):    async def run(self, event, step):        # steps here
+
+
+class MyWorkflow(WorkflowEntrypoint):
+    async def run(self, event, step):
+        # steps here
 ```
 
 For example, a Workflow may be defined as:
 
-Python
+**Python**
 
-```
+```python
 from workers import Response, WorkflowEntrypoint, WorkerEntrypoint
-class PythonWorkflowStarter(WorkflowEntrypoint):    async def run(self, event, step):
-        @step.do('step1')        async def step_1():            # does stuff            print('executing step1')
-        @step.do('step2')        async def step_2():            # does stuff            print('executing step2')
-        await step_1()        await step_2()
-class Default(WorkerEntrypoint):    async def fetch(self, request):        await self.env.MY_WORKFLOW.create()        return Response("Hello world!")
+
+
+class PythonWorkflowStarter(WorkflowEntrypoint):
+    async def run(self, event, step):
+
+
+        @step.do('step1')
+        async def step_1():
+            # does stuff
+            print('executing step1')
+
+
+        @step.do('step2')
+        async def step_2():
+            # does stuff
+            print('executing step2')
+
+
+        await step_1()
+        await step_2()
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        await self.env.MY_WORKFLOW.create()
+        return Response("Hello world!")
 ```
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-13141)
-* [  wrangler.toml ](#tab-panel-13142)
+* [  wrangler.jsonc ](#tab-panel-13436)
+* [  wrangler.toml ](#tab-panel-13437)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hello-python",
+  "main": "src/entry.py",
+  "compatibility_flags": [
+    "python_workers",
+    "python_workflows"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "workflows": [
+    {
+      "name": "workflows-demo",
+      "binding": "MY_WORKFLOW",
+      "class_name": "PythonWorkflowStarter"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hello-python",  "main": "src/entry.py",  "compatibility_flags": [    "python_workers",    "python_workflows"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "workflows": [    {      "name": "workflows-demo",      "binding": "MY_WORKFLOW",      "class_name": "PythonWorkflowStarter"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "hello-python"main = "src/entry.py"compatibility_flags = [ "python_workers", "python_workflows" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[workflows]]name = "workflows-demo"binding = "MY_WORKFLOW"class_name = "PythonWorkflowStarter"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "hello-python"
+main = "src/entry.py"
+compatibility_flags = [ "python_workers", "python_workflows" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[workflows]]
+name = "workflows-demo"
+binding = "MY_WORKFLOW"
+class_name = "PythonWorkflowStarter"
 ```
 
 To run a Python Workflow locally, use [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for Cloudflare Workers:
 
-Terminal window
-
-```
+```bash
 npx wrangler@latest dev
 ```
 
 To deploy a Python Workflow to Cloudflare, run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
 
-Terminal window
-
-```
+```bash
 npx wrangler@latest deploy
 ```
 

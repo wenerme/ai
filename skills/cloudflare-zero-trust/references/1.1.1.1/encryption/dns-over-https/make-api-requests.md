@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 Cloudflare offers a DNS over HTTPS resolver at:
 
-```
+```txt
 https://cloudflare-dns.com/dns-query
 ```
 
@@ -40,9 +40,7 @@ HTTP/2 is the minimum recommended version of HTTP for use with DoH. This is not 
 
 Example request:
 
-Terminal window
-
-```
+```sh
 curl --http2 --header "accept: application/dns-json" "https://one.one.one.one/dns-query?name=cloudflare.com" --next --http2 --header "accept: application/dns-json" "https://one.one.one.one/dns-query?name=example.com"
 ```
 

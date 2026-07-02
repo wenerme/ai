@@ -24,19 +24,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-ai-transcriptions></rtk-ai-transcriptions>
 ```
 
 ### With Properties
 
-```
-<rtk-ai-transcriptions></rtk-ai-transcriptions>
+```html
+<rtk-ai-transcriptions>
+</rtk-ai-transcriptions>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-ai-transcriptions");
-  el.initialTranscriptions= [];  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-ai-transcriptions");
+
+
+  el.initialTranscriptions= [];
+  el.meeting= meeting
+</script>
 ```
 
 ```json

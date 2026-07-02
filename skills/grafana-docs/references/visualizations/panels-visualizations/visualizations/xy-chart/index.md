@@ -167,6 +167,8 @@ Tooltip options control the information overlay that appears when you hover over
 | Tooltip mode | When you hover your cursor over the visualization, Grafana can display tooltips. Choose how they behave:<ul><li>**Single** - The hover tooltip shows only a single series, the one that you are hovering over on the visualization.</li><li>**Hidden** - Do not display the tooltip when you interact with the visualization.</li></ul> |
 | Max width    | Set the maximum width of the tooltip box. |
 
+The **All**, **Values sort order**, **Hover proximity**, and **Max height** tooltip options aren't available for XY charts.
+
 ### Legend options
 
 {{< docs/shared lookup="visualizations/legend-options-1.md" source="grafana" version="<GRAFANA_VERSION>" >}}

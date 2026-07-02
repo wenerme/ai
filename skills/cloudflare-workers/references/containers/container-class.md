@@ -36,44 +36,110 @@ bun add @cloudflare/containers
 
 Then, define a class that extends `Container` and set the shared properties on the class:
 
-* [  JavaScript ](#tab-panel-8108)
-* [  TypeScript ](#tab-panel-8109)
+* [  JavaScript ](#tab-panel-8129)
+* [  TypeScript ](#tab-panel-8130)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container, getContainer } from "@cloudflare/containers";
-export class SandboxContainer extends Container {  defaultPort = 8080;  requiredPorts = [8080, 9222];  sleepAfter = "5m";  envVars = {    NODE_ENV: "production",    LOG_LEVEL: "info",  };  entrypoint = ["npm", "run", "start"];  enableInternet = false;  pingEndpoint = "localhost/ready";}
-export default {  async fetch(request, env) {    return getContainer(env.SANDBOX_CONTAINER, "workspace-123").fetch(request);  },};
+
+
+export class SandboxContainer extends Container {
+  defaultPort = 8080;
+  requiredPorts = [8080, 9222];
+  sleepAfter = "5m";
+  envVars = {
+    NODE_ENV: "production",
+    LOG_LEVEL: "info",
+  };
+  entrypoint = ["npm", "run", "start"];
+  enableInternet = false;
+  pingEndpoint = "localhost/ready";
+}
+
+
+export default {
+  async fetch(request, env) {
+    return getContainer(env.SANDBOX_CONTAINER, "workspace-123").fetch(request);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container, getContainer } from "@cloudflare/containers";
-export class SandboxContainer extends Container {  defaultPort = 8080;  requiredPorts = [8080, 9222];  sleepAfter = "5m";  envVars = {    NODE_ENV: "production",    LOG_LEVEL: "info",  };  entrypoint = ["npm", "run", "start"];  enableInternet = false;  pingEndpoint = "localhost/ready";}
-export default {  async fetch(request: Request, env) {    return getContainer(env.SANDBOX_CONTAINER, "workspace-123").fetch(request);  },};
+
+
+export class SandboxContainer extends Container {
+  defaultPort = 8080;
+  requiredPorts = [8080, 9222];
+  sleepAfter = "5m";
+  envVars = {
+    NODE_ENV: "production",
+    LOG_LEVEL: "info",
+  };
+  entrypoint = ["npm", "run", "start"];
+  enableInternet = false;
+  pingEndpoint = "localhost/ready";
+}
+
+
+export default {
+  async fetch(request: Request, env) {
+    return getContainer(env.SANDBOX_CONTAINER, "workspace-123").fetch(request);
+  },
+};
 ```
 
 The `Container` class extends `DurableObject`, so all [Durable Object](https://developers.cloudflare.com/durable-objects/) functionality is available — including [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and [RPC methods](https://developers.cloudflare.com/durable-objects/api/base/#rpc-methods). Container disk is ephemeral by default, but Durable Object storage persists across container restarts.
 
-* [  JavaScript ](#tab-panel-8106)
-* [  TypeScript ](#tab-panel-8107)
+* [  JavaScript ](#tab-panel-8127)
+* [  TypeScript ](#tab-panel-8128)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async runAndPersist() {    const res = await this.containerFetch("/run-task");    const body = await res.text();    this.ctx.storage.sql.exec(      "INSERT OR REPLACE INTO results (value) VALUES (?)",      body,    );    return body;  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async runAndPersist() {
+    const res = await this.containerFetch("/run-task");
+    const body = await res.text();
+    this.ctx.storage.sql.exec(
+      "INSERT OR REPLACE INTO results (value) VALUES (?)",
+      body,
+    );
+    return body;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async runAndPersist() {    const res = await this.containerFetch("/run-task");    const body = await res.text();    this.ctx.storage.sql.exec(      "INSERT OR REPLACE INTO results (value) VALUES (?)",      body,    );    return body;  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async runAndPersist() {
+    const res = await this.containerFetch("/run-task");
+    const body = await res.text();
+    this.ctx.storage.sql.exec(
+      "INSERT OR REPLACE INTO results (value) VALUES (?)",
+      body,
+    );
+    return body;
+  }
+}
 ```
 
 ## Execute commands
@@ -100,9 +166,9 @@ Override these methods to run Worker code when the container changes state. Refe
 
 Run Worker code after the container has started.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 onStart(): void | Promise<void>
 ```
 
@@ -110,23 +176,44 @@ onStart(): void | Promise<void>
 
 Use this to log startup, seed data, or schedule recurring tasks with [schedule()](#schedule).
 
-* [  JavaScript ](#tab-panel-8102)
-* [  TypeScript ](#tab-panel-8103)
+* [  JavaScript ](#tab-panel-8123)
+* [  TypeScript ](#tab-panel-8124)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async onStart() {    await this.containerFetch("http://localhost/bootstrap", {      method: "POST",    });  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async onStart() {
+    await this.containerFetch("http://localhost/bootstrap", {
+      method: "POST",
+    });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    override async onStart() {      await this.containerFetch("http://localhost/bootstrap", {        method: "POST",      });    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    override async onStart() {
+      await this.containerFetch("http://localhost/bootstrap", {
+        method: "POST",
+      });
+    }
+
+
 }
 ```
 
@@ -134,9 +221,9 @@ export class MyContainer extends Container {  defaultPort = 8080;
 
 Run Worker code after the container process exits.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 onStop(params: StopParams): void | Promise<void>
 ```
 
@@ -149,30 +236,42 @@ onStop(params: StopParams): void | Promise<void>
 
 Use this to log, alert, or restart the container.
 
-* [  JavaScript ](#tab-panel-8100)
-* [  TypeScript ](#tab-panel-8101)
+* [  JavaScript ](#tab-panel-8121)
+* [  TypeScript ](#tab-panel-8122)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  onStop({ exitCode, reason }) {    console.log("Container stopped", { exitCode, reason });  }}
+
+
+export class MyContainer extends Container {
+  onStop({ exitCode, reason }) {
+    console.log("Container stopped", { exitCode, reason });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  override onStop({ exitCode, reason }) {    console.log("Container stopped", { exitCode, reason });  }}
+
+
+export class MyContainer extends Container {
+  override onStop({ exitCode, reason }) {
+    console.log("Container stopped", { exitCode, reason });
+  }
+}
 ```
 
 ### `onError`
 
 Handle startup and port-checking errors.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 onError(error: unknown): any
 ```
 
@@ -184,30 +283,44 @@ onError(error: unknown): any
 
 Override this to suppress errors, notify an external service, or attempt a restart.
 
-* [  JavaScript ](#tab-panel-8104)
-* [  TypeScript ](#tab-panel-8105)
+* [  JavaScript ](#tab-panel-8125)
+* [  TypeScript ](#tab-panel-8126)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  onError(error) {    console.error("Container failed to start", error);    throw error;  }}
+
+
+export class MyContainer extends Container {
+  onError(error) {
+    console.error("Container failed to start", error);
+    throw error;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  override onError(error: unknown) {    console.error("Container failed to start", error);    throw error;  }}
+
+
+export class MyContainer extends Container {
+  override onError(error: unknown) {
+    console.error("Container failed to start", error);
+    throw error;
+  }
+}
 ```
 
 ### `onActivityExpired`
 
 Run Worker code when the [sleepAfter](#sleepafter) timer expires.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 onActivityExpired(): Promise<void>
 ```
 
@@ -221,25 +334,48 @@ If you override `onActivityExpired()`, call [await this.stop()](#stop) or [await
 
 If you override this method without stopping the container, the timer renews and the hook fires again on the next expiry.
 
-* [  JavaScript ](#tab-panel-8110)
-* [  TypeScript ](#tab-panel-8111)
+* [  JavaScript ](#tab-panel-8131)
+* [  TypeScript ](#tab-panel-8132)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  sleepAfter = "2m";
-  async onActivityExpired() {    const state = await this.getState();    console.log("Container is idle, stopping it now", state.status);
-    await this.stop();  }}
+
+
+export class MyContainer extends Container {
+  sleepAfter = "2m";
+
+
+  async onActivityExpired() {
+    const state = await this.getState();
+    console.log("Container is idle, stopping it now", state.status);
+
+
+    await this.stop();
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  sleepAfter = "2m";
-    override async onActivityExpired() {      const state = await this.getState();      console.log("Container is idle, stopping it now", state.status);
-      await this.stop();    }
+
+
+export class MyContainer extends Container {
+  sleepAfter = "2m";
+
+
+    override async onActivityExpired() {
+      const state = await this.getState();
+      console.log("Container is idle, stopping it now", state.status);
+
+
+      await this.stop();
+    }
+
+
 }
 ```
 
@@ -249,9 +385,9 @@ export class MyContainer extends Container {  sleepAfter = "2m";
 
 Handle incoming HTTP or WebSocket requests.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 fetch(request: Request): Promise<Response>
 ```
 
@@ -265,27 +401,56 @@ By default, `fetch` forwards the request to the container process at [defaultPor
 
 Override `fetch` when you need routing logic, authentication, or other middleware before forwarding to the container. Inside the override, call [this.containerFetch()](#containerfetch) rather than `this.fetch()` to avoid infinite recursion:
 
-* [  JavaScript ](#tab-panel-8112)
-* [  TypeScript ](#tab-panel-8113)
+* [  JavaScript ](#tab-panel-8133)
+* [  TypeScript ](#tab-panel-8134)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async fetch(request) {    const url = new URL(request.url);
-    if (url.pathname === "/health") {      return new Response("ok");    }
-    return this.containerFetch(request);  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async fetch(request) {
+    const url = new URL(request.url);
+
+
+    if (url.pathname === "/health") {
+      return new Response("ok");
+    }
+
+
+    return this.containerFetch(request);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    override async fetch(request: Request): Promise<Response> {      const url = new URL(request.url);
-      if (url.pathname === "/health") {        return new Response("ok");      }
-      return this.containerFetch(request);    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    override async fetch(request: Request): Promise<Response> {
+      const url = new URL(request.url);
+
+
+      if (url.pathname === "/health") {
+        return new Response("ok");
+      }
+
+
+      return this.containerFetch(request);
+    }
+
+
 }
 ```
 
@@ -295,10 +460,11 @@ export class MyContainer extends Container {  defaultPort = 8080;
 
 Send an HTTP request directly to the container process. Generally, users should prefer to use [fetch](#fetch) unless it has been overridden.
 
-TypeScript
+**TypeScript**
 
-```
-containerFetch(request: Request, port?: number): Promise<Response>containerFetch(url: string | URL, init?: RequestInit, port?: number): Promise<Response>
+```ts
+containerFetch(request: Request, port?: number): Promise<Response>
+containerFetch(url: string | URL, init?: RequestInit, port?: number): Promise<Response>
 ```
 
 **Parameters**:
@@ -314,27 +480,72 @@ This is what the default [fetch()](#fetch) implementation calls internally, and 
 
 Does not support WebSockets. Use [fetch()](#fetch) with [switchPort()](#switchport) for those.
 
-* [  JavaScript ](#tab-panel-8122)
-* [  TypeScript ](#tab-panel-8123)
+* [  JavaScript ](#tab-panel-8143)
+* [  TypeScript ](#tab-panel-8144)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async fetch(request) {    const url = new URL(request.url);
-    if (url.pathname === "/metrics") {      return this.containerFetch(        "http://localhost/internal/metrics",        {          headers: {            authorization: request.headers.get("authorization") ?? "",          },        },        9090,      );    }
-    return this.containerFetch(request);  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async fetch(request) {
+    const url = new URL(request.url);
+
+
+    if (url.pathname === "/metrics") {
+      return this.containerFetch(
+        "http://localhost/internal/metrics",
+        {
+          headers: {
+            authorization: request.headers.get("authorization") ?? "",
+          },
+        },
+        9090,
+      );
+    }
+
+
+    return this.containerFetch(request);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    override async fetch(request: Request): Promise<Response> {      const url = new URL(request.url);
-      if (url.pathname === "/metrics") {        return this.containerFetch(          "http://localhost/internal/metrics",          {            headers: {              authorization: request.headers.get("authorization") ?? "",            },          },          9090,        );      }
-      return this.containerFetch(request);    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    override async fetch(request: Request): Promise<Response> {
+      const url = new URL(request.url);
+
+
+      if (url.pathname === "/metrics") {
+        return this.containerFetch(
+          "http://localhost/internal/metrics",
+          {
+            headers: {
+              authorization: request.headers.get("authorization") ?? "",
+            },
+          },
+          9090,
+        );
+      }
+
+
+      return this.containerFetch(request);
+    }
+
+
 }
 ```
 
@@ -346,10 +557,15 @@ In most cases you do not need to call these methods directly. [fetch()](#fetch) 
 
 Start the container and wait until the target ports are accepting connections.
 
-TypeScript
+**TypeScript**
 
-```
-startAndWaitForPorts(args?: StartAndWaitForPortsOptions): Promise<void>startAndWaitForPorts(  ports?: number | number[],  cancellationOptions?: CancellationOptions,  startOptions?: ContainerStartConfigOptions,): Promise<void>
+```ts
+startAndWaitForPorts(args?: StartAndWaitForPortsOptions): Promise<void>
+startAndWaitForPorts(
+  ports?: number | number[],
+  cancellationOptions?: CancellationOptions,
+  startOptions?: ContainerStartConfigOptions,
+): Promise<void>
 ```
 
 **Parameters**:
@@ -370,23 +586,62 @@ This is the safest way to explicitly start a container when you need to be certa
 
 This method also supports positional `ports`, `cancellationOptions`, and `startOptions` arguments, but the object form is easier to read.
 
-* [  JavaScript ](#tab-panel-8118)
-* [  TypeScript ](#tab-panel-8119)
+* [  JavaScript ](#tab-panel-8139)
+* [  TypeScript ](#tab-panel-8140)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getContainer } from "@cloudflare/containers";
-export default {  async scheduled(_event, env) {    const container = getContainer(env.API_CONTAINER, "tenant-42");
-    await container.startAndWaitForPorts({      ports: [8080, 9222],      startOptions: {        envVars: {          API_KEY: env.API_KEY,          TENANT_ID: "tenant-42",        },      },      cancellationOptions: {        portReadyTimeoutMS: 30_000,      },    });  },};
+
+
+export default {
+  async scheduled(_event, env) {
+    const container = getContainer(env.API_CONTAINER, "tenant-42");
+
+
+    await container.startAndWaitForPorts({
+      ports: [8080, 9222],
+      startOptions: {
+        envVars: {
+          API_KEY: env.API_KEY,
+          TENANT_ID: "tenant-42",
+        },
+      },
+      cancellationOptions: {
+        portReadyTimeoutMS: 30_000,
+      },
+    });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getContainer } from "@cloudflare/containers";
-export default {  async scheduled(_event, env) {    const container = getContainer(env.API_CONTAINER, "tenant-42");
-      await container.startAndWaitForPorts({        ports: [8080, 9222],        startOptions: {          envVars: {            API_KEY: env.API_KEY,            TENANT_ID: "tenant-42",          },        },        cancellationOptions: {          portReadyTimeoutMS: 30_000,        },      });    },
+
+
+export default {
+  async scheduled(_event, env) {
+    const container = getContainer(env.API_CONTAINER, "tenant-42");
+
+
+      await container.startAndWaitForPorts({
+        ports: [8080, 9222],
+        startOptions: {
+          envVars: {
+            API_KEY: env.API_KEY,
+            TENANT_ID: "tenant-42",
+          },
+        },
+        cancellationOptions: {
+          portReadyTimeoutMS: 30_000,
+        },
+      });
+    },
+
+
 };
 ```
 
@@ -396,9 +651,9 @@ Refer to the [env vars and secrets example](https://developers.cloudflare.com/co
 
 Start the container without waiting for all ports to become ready.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 start(startOptions?: ContainerStartConfigOptions, waitOptions?: WaitOptions): Promise<void>
 ```
 
@@ -417,23 +672,52 @@ start(startOptions?: ContainerStartConfigOptions, waitOptions?: WaitOptions): Pr
 
 Use this when the container does not expose ports, such as a batch job or a cron task, or when you want to manage readiness yourself with [waitForPort()](#waitforport). If you need to wait for all ports to be ready, use [startAndWaitForPorts()](#startandwaitforports) instead.
 
-* [  JavaScript ](#tab-panel-8114)
-* [  TypeScript ](#tab-panel-8115)
+* [  JavaScript ](#tab-panel-8135)
+* [  TypeScript ](#tab-panel-8136)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getContainer } from "@cloudflare/containers";
-export default {  async scheduled(_event, env) {    const container = getContainer(env.JOB_CONTAINER, "nightly-report");
-    await container.start({      entrypoint: ["node", "scripts/nightly-report.js"],      envVars: {        REPORT_DATE: new Date().toISOString(),      },      enableInternet: false,    });  },};
+
+
+export default {
+  async scheduled(_event, env) {
+    const container = getContainer(env.JOB_CONTAINER, "nightly-report");
+
+
+    await container.start({
+      entrypoint: ["node", "scripts/nightly-report.js"],
+      envVars: {
+        REPORT_DATE: new Date().toISOString(),
+      },
+      enableInternet: false,
+    });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getContainer } from "@cloudflare/containers";
-export default {  async scheduled(_event, env) {    const container = getContainer(env.JOB_CONTAINER, "nightly-report");
-      await container.start({        entrypoint: ["node", "scripts/nightly-report.js"],        envVars: {          REPORT_DATE: new Date().toISOString(),        },        enableInternet: false,      });    },
+
+
+export default {
+  async scheduled(_event, env) {
+    const container = getContainer(env.JOB_CONTAINER, "nightly-report");
+
+
+      await container.start({
+        entrypoint: ["node", "scripts/nightly-report.js"],
+        envVars: {
+          REPORT_DATE: new Date().toISOString(),
+        },
+        enableInternet: false,
+      });
+    },
+
+
 };
 ```
 
@@ -443,9 +727,9 @@ Refer to the [cron example](https://developers.cloudflare.com/containers/example
 
 Poll a single port until it accepts connections.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 waitForPort(waitOptions: WaitOptions): Promise<number>
 ```
 
@@ -460,25 +744,54 @@ waitForPort(waitOptions: WaitOptions): Promise<number>
 
 Throws if the port does not become available within the retry limit. Use this after [start()](#start) when you need to check multiple ports independently or in a specific sequence.
 
-* [  JavaScript ](#tab-panel-8116)
-* [  TypeScript ](#tab-panel-8117)
+* [  JavaScript ](#tab-panel-8137)
+* [  TypeScript ](#tab-panel-8138)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  async warmInspector() {    await this.start();
-    const retryCount = await this.waitForPort({      portToCheck: 9222,      retries: 20,      waitInterval: 500,    });
-    console.log("Inspector port became ready:", retryCount);  }}
+
+
+export class MyContainer extends Container {
+  async warmInspector() {
+    await this.start();
+
+
+    const retryCount = await this.waitForPort({
+      portToCheck: 9222,
+      retries: 20,
+      waitInterval: 500,
+    });
+
+
+    console.log("Inspector port became ready:", retryCount);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  async warmInspector() {    await this.start();
-      const retryCount = await this.waitForPort({        portToCheck: 9222,        retries: 20,        waitInterval: 500,      });
-      console.log("Inspector port became ready:", retryCount);    }
+
+
+export class MyContainer extends Container {
+  async warmInspector() {
+    await this.start();
+
+
+      const retryCount = await this.waitForPort({
+        portToCheck: 9222,
+        retries: 20,
+        waitInterval: 500,
+      });
+
+
+      console.log("Inspector port became ready:", retryCount);
+    }
+
+
 }
 ```
 
@@ -486,9 +799,9 @@ export class MyContainer extends Container {  async warmInspector() {    await t
 
 Send a signal to the container process.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 stop(signal?: 'SIGTERM' | 'SIGINT' | 'SIGKILL' | number): Promise<void>
 ```
 
@@ -500,25 +813,52 @@ stop(signal?: 'SIGTERM' | 'SIGINT' | 'SIGKILL' | number): Promise<void>
 
 Defaults to `SIGTERM`, which gives the process a chance to shut down gracefully. Triggers [onStop()](#onstop).
 
-* [  JavaScript ](#tab-panel-8120)
-* [  TypeScript ](#tab-panel-8121)
+* [  JavaScript ](#tab-panel-8141)
+* [  TypeScript ](#tab-panel-8142)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async fetch(request) {    if (new URL(request.url).pathname === "/admin/stop") {      await this.stop();      return new Response("Container is stopping");    }
-    return this.containerFetch(request);  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async fetch(request) {
+    if (new URL(request.url).pathname === "/admin/stop") {
+      await this.stop();
+      return new Response("Container is stopping");
+    }
+
+
+    return this.containerFetch(request);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    override async fetch(request: Request): Promise<Response> {      if (new URL(request.url).pathname === "/admin/stop") {        await this.stop();        return new Response("Container is stopping");      }
-      return this.containerFetch(request);    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    override async fetch(request: Request): Promise<Response> {
+      if (new URL(request.url).pathname === "/admin/stop") {
+        await this.stop();
+        return new Response("Container is stopping");
+      }
+
+
+      return this.containerFetch(request);
+    }
+
+
 }
 ```
 
@@ -526,9 +866,9 @@ export class MyContainer extends Container {  defaultPort = 8080;
 
 Immediately kill the container process.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 destroy(): Promise<void>
 ```
 
@@ -536,25 +876,52 @@ destroy(): Promise<void>
 
 This sends `SIGKILL`. Use it when you need the container gone immediately and cannot wait for a graceful shutdown. Triggers [onStop()](#onstop).
 
-* [  JavaScript ](#tab-panel-8124)
-* [  TypeScript ](#tab-panel-8125)
+* [  JavaScript ](#tab-panel-8145)
+* [  TypeScript ](#tab-panel-8146)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async fetch(request) {    if (new URL(request.url).pathname === "/admin/destroy") {      await this.destroy();      return new Response("Container destroyed");    }
-    return this.containerFetch(request);  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async fetch(request) {
+    if (new URL(request.url).pathname === "/admin/destroy") {
+      await this.destroy();
+      return new Response("Container destroyed");
+    }
+
+
+    return this.containerFetch(request);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    override async fetch(request: Request): Promise<Response> {      if (new URL(request.url).pathname === "/admin/destroy") {        await this.destroy();        return new Response("Container destroyed");      }
-      return this.containerFetch(request);    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    override async fetch(request: Request): Promise<Response> {
+      if (new URL(request.url).pathname === "/admin/destroy") {
+        await this.destroy();
+        return new Response("Container destroyed");
+      }
+
+
+      return this.containerFetch(request);
+    }
+
+
 }
 ```
 
@@ -564,9 +931,9 @@ export class MyContainer extends Container {  defaultPort = 8080;
 
 Read the current container state.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getState(): Promise<State>
 ```
 
@@ -578,25 +945,52 @@ getState(): Promise<State>
 
 `running` means the container is starting and has not yet passed its health check. `healthy` means it is up and accepting requests.
 
-* [  JavaScript ](#tab-panel-8126)
-* [  TypeScript ](#tab-panel-8127)
+* [  JavaScript ](#tab-panel-8147)
+* [  TypeScript ](#tab-panel-8148)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  async logState() {    const state = await this.getState();
-    if (state.status === "stopped_with_code") {      console.error("Container exited with code", state.exitCode);      return;    }
-    console.log("Container status:", state.status);  }}
+
+
+export class MyContainer extends Container {
+  async logState() {
+    const state = await this.getState();
+
+
+    if (state.status === "stopped_with_code") {
+      console.error("Container exited with code", state.exitCode);
+      return;
+    }
+
+
+    console.log("Container status:", state.status);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  async logState() {    const state = await this.getState();
-      if (state.status === "stopped_with_code") {        console.error("Container exited with code", state.exitCode);        return;      }
-      console.log("Container status:", state.status);    }
+
+
+export class MyContainer extends Container {
+  async logState() {
+    const state = await this.getState();
+
+
+      if (state.status === "stopped_with_code") {
+        console.error("Container exited with code", state.exitCode);
+        return;
+      }
+
+
+      console.log("Container status:", state.status);
+    }
+
+
 }
 ```
 
@@ -604,9 +998,9 @@ export class MyContainer extends Container {  async logState() {    const state 
 
 Reset the [sleepAfter](#sleepafter) timer.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 renewActivityTimeout(): void
 ```
 
@@ -614,25 +1008,54 @@ renewActivityTimeout(): void
 
 Incoming requests reset the timer automatically. Call this manually from background work, such as a scheduled task or a long-running operation, that should count as activity and prevent the container from sleeping.
 
-* [  JavaScript ](#tab-panel-8130)
-* [  TypeScript ](#tab-panel-8131)
+* [  JavaScript ](#tab-panel-8151)
+* [  TypeScript ](#tab-panel-8152)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async processJobs(jobIds) {    for (const jobId of jobIds) {      this.renewActivityTimeout();
-      await this.containerFetch(`http://localhost/jobs/${jobId}`, {        method: "POST",      });    }  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async processJobs(jobIds) {
+    for (const jobId of jobIds) {
+      this.renewActivityTimeout();
+
+
+      await this.containerFetch(`http://localhost/jobs/${jobId}`, {
+        method: "POST",
+      });
+    }
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    async processJobs(jobIds: string[]) {      for (const jobId of jobIds) {        this.renewActivityTimeout();
-        await this.containerFetch(`http://localhost/jobs/${jobId}`, {          method: "POST",        });      }    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    async processJobs(jobIds: string[]) {
+      for (const jobId of jobIds) {
+        this.renewActivityTimeout();
+
+
+        await this.containerFetch(`http://localhost/jobs/${jobId}`, {
+          method: "POST",
+        });
+      }
+    }
+
+
 }
 ```
 
@@ -642,9 +1065,9 @@ export class MyContainer extends Container {  defaultPort = 8080;
 
 Schedule a method on the class to run later.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 schedule<T>(when: Date | number, callback: string, payload?: T): Promise<Schedule<T>>
 ```
 
@@ -667,25 +1090,54 @@ Do not override [alarm() ↗](https://developers.cloudflare.com/durable-objects/
 
 The following example schedules a recurring health report starting at container startup:
 
-* [  JavaScript ](#tab-panel-8134)
-* [  TypeScript ](#tab-panel-8135)
+* [  JavaScript ](#tab-panel-8155)
+* [  TypeScript ](#tab-panel-8156)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-  async onStart() {    await this.schedule(60, "healthReport");  }
-  async healthReport() {    const state = await this.getState();    console.log("Container status:", state.status);    await this.schedule(60, "healthReport");  }}
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+  async onStart() {
+    await this.schedule(60, "healthReport");
+  }
+
+
+  async healthReport() {
+    const state = await this.getState();
+    console.log("Container status:", state.status);
+    await this.schedule(60, "healthReport");
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Container } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;
-    override async onStart() {      await this.schedule(60, "healthReport");    }
-    async healthReport() {      const state = await this.getState();      console.log("Container status:", state.status);      await this.schedule(60, "healthReport");    }
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+
+
+    override async onStart() {
+      await this.schedule(60, "healthReport");
+    }
+
+
+    async healthReport() {
+      const state = await this.getState();
+      console.log("Container status:", state.status);
+      await this.schedule(60, "healthReport");
+    }
+
+
 }
 ```
 
@@ -693,30 +1145,87 @@ export class MyContainer extends Container {  defaultPort = 8080;
 
 Outbound interception lets you intercept, mock, or block HTTP requests that the container makes to external hosts. This is useful for sandboxing, testing, or proxying outbound traffic through Worker code.
 
-* [  JavaScript ](#tab-panel-8138)
-* [  TypeScript ](#tab-panel-8139)
+* [  JavaScript ](#tab-panel-8159)
+* [  TypeScript ](#tab-panel-8160)
 
-JavaScript
+**JavaScript**
 
-```
-import {  Container,  ContainerProxy,  getContainer,} from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;  enableInternet = true;
-  static outboundByHost = {    "blocked.example.com": () => {      return new Response("Blocked", { status: 403 });    },  };
-  static outbound = async (request, _env, ctx) => {    console.log(`[${ctx.containerId}] outbound:`, request.url);    return fetch(request);  };}
-export { ContainerProxy };
-export default {  async fetch(request, env) {    return getContainer(env.MY_CONTAINER).fetch(request);  },};
-```
+```js
+import {
+  Container,
+  ContainerProxy,
+  getContainer,
+} from "@cloudflare/containers";
 
-TypeScript
 
-```
-import {  Container,  ContainerProxy,  getContainer,} from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 8080;  enableInternet = true;
-    static outboundByHost = {      "blocked.example.com": () => {        return new Response("Blocked", { status: 403 });      },    };
-    static outbound = async (request, _env, ctx) => {      console.log(`[${ctx.containerId}] outbound:`, request.url);      return fetch(request);    };
+export class MyContainer extends Container {
+  defaultPort = 8080;
+  enableInternet = true;
+
+
+  static outboundByHost = {
+    "blocked.example.com": () => {
+      return new Response("Blocked", { status: 403 });
+    },
+  };
+
+
+  static outbound = async (request, _env, ctx) => {
+    console.log(`[${ctx.containerId}] outbound:`, request.url);
+    return fetch(request);
+  };
 }
+
+
 export { ContainerProxy };
-export default {  async fetch(request: Request, env) {    return getContainer(env.MY_CONTAINER).fetch(request);  },};
+
+
+export default {
+  async fetch(request, env) {
+    return getContainer(env.MY_CONTAINER).fetch(request);
+  },
+};
+```
+
+**TypeScript**
+
+```ts
+import {
+  Container,
+  ContainerProxy,
+  getContainer,
+} from "@cloudflare/containers";
+
+
+export class MyContainer extends Container {
+  defaultPort = 8080;
+  enableInternet = true;
+
+
+    static outboundByHost = {
+      "blocked.example.com": () => {
+        return new Response("Blocked", { status: 403 });
+      },
+    };
+
+
+    static outbound = async (request, _env, ctx) => {
+      console.log(`[${ctx.containerId}] outbound:`, request.url);
+      return fetch(request);
+    };
+
+
+}
+
+
+export { ContainerProxy };
+
+
+export default {
+  async fetch(request: Request, env) {
+    return getContainer(env.MY_CONTAINER).fetch(request);
+  },
+};
 ```
 
 For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/).
@@ -729,9 +1238,9 @@ These functions are exported alongside the `Container` class from `@cloudflare/c
 
 Get a stub for a named container instance.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getContainer<T>(binding: DurableObjectNamespace<T>, name?: string): DurableObjectStub<T>
 ```
 
@@ -744,30 +1253,44 @@ getContainer<T>(binding: DurableObjectNamespace<T>, name?: string): DurableObjec
 
 Use this when you want one container per logical entity, such as a user session, a document, or a game room, identified by a stable name.
 
-* [  JavaScript ](#tab-panel-8128)
-* [  TypeScript ](#tab-panel-8129)
+* [  JavaScript ](#tab-panel-8149)
+* [  TypeScript ](#tab-panel-8150)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getContainer } from "@cloudflare/containers";
-export default {  async fetch(request, env) {    const { sessionId } = await request.json();    return getContainer(env.MY_CONTAINER, sessionId).fetch(request);  },};
+
+
+export default {
+  async fetch(request, env) {
+    const { sessionId } = await request.json();
+    return getContainer(env.MY_CONTAINER, sessionId).fetch(request);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getContainer } from "@cloudflare/containers";
-export default {  async fetch(request: Request, env) {    const { sessionId } = await request.json();    return getContainer(env.MY_CONTAINER, sessionId).fetch(request);  },};
+
+
+export default {
+  async fetch(request: Request, env) {
+    const { sessionId } = await request.json();
+    return getContainer(env.MY_CONTAINER, sessionId).fetch(request);
+  },
+};
 ```
 
 ### `getRandom`
 
 Get a stub for a randomly selected container instance.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getRandom<T>(binding: DurableObjectNamespace<T>, instances?: number): Promise<DurableObjectStub<T>>
 ```
 
@@ -780,21 +1303,35 @@ getRandom<T>(binding: DurableObjectNamespace<T>, instances?: number): Promise<Du
 
 Use this for stateless workloads where any container can handle any request and you want to spread load across multiple instances.
 
-* [  JavaScript ](#tab-panel-8132)
-* [  TypeScript ](#tab-panel-8133)
+* [  JavaScript ](#tab-panel-8153)
+* [  TypeScript ](#tab-panel-8154)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getRandom } from "@cloudflare/containers";
-export default {  async fetch(request, env) {    const container = await getRandom(env.WORKER_POOL, 5);    return container.fetch(request);  },};
+
+
+export default {
+  async fetch(request, env) {
+    const container = await getRandom(env.WORKER_POOL, 5);
+    return container.fetch(request);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getRandom } from "@cloudflare/containers";
-export default {  async fetch(request: Request, env) {    const container = await getRandom(env.WORKER_POOL, 5);    return container.fetch(request);  },};
+
+
+export default {
+  async fetch(request: Request, env) {
+    const container = await getRandom(env.WORKER_POOL, 5);
+    return container.fetch(request);
+  },
+};
 ```
 
 Refer to the [stateless instances example](https://developers.cloudflare.com/containers/examples/stateless/) for a full example.
@@ -803,9 +1340,9 @@ Refer to the [stateless instances example](https://developers.cloudflare.com/con
 
 Target a different container port while still using `fetch()`.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 switchPort(request: Request, port: number): Request
 ```
 
@@ -818,21 +1355,35 @@ switchPort(request: Request, port: number): Request
 
 Use this when you need to target a specific port and also need WebSocket support. If you do not need WebSockets, pass the port directly to [containerFetch()](#containerfetch) instead.
 
-* [  JavaScript ](#tab-panel-8136)
-* [  TypeScript ](#tab-panel-8137)
+* [  JavaScript ](#tab-panel-8157)
+* [  TypeScript ](#tab-panel-8158)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getContainer, switchPort } from "@cloudflare/containers";
-export default {  async fetch(request, env) {    const container = getContainer(env.MY_CONTAINER);    return container.fetch(switchPort(request, 9090));  },};
+
+
+export default {
+  async fetch(request, env) {
+    const container = getContainer(env.MY_CONTAINER);
+    return container.fetch(switchPort(request, 9090));
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getContainer, switchPort } from "@cloudflare/containers";
-export default {  async fetch(request: Request, env) {    const container = getContainer(env.MY_CONTAINER);    return container.fetch(switchPort(request, 9090));  },};
+
+
+export default {
+  async fetch(request: Request, env) {
+    const container = getContainer(env.MY_CONTAINER);
+    return container.fetch(switchPort(request, 9090));
+  },
+};
 ```
 
 ```json

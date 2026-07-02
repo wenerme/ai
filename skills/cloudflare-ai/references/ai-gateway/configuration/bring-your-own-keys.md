@@ -50,13 +50,13 @@ When you add a provider key from the dashboard, AI Gateway creates and names the
 
 If you use the API to configure BYOK, create the Secrets Store secret before you create the provider configuration. Name the secret with this format:
 
-```
+```txt
 {gateway_id}_{provider_slug}_{alias}
 ```
 
 For example, for gateway `my-gateway`, provider `anthropic`, and alias `default`, create the Secrets Store secret as:
 
-```
+```txt
 my-gateway_anthropic_default
 ```
 
@@ -77,14 +77,19 @@ Once you've configured your API keys in the dashboard:
 With BYOK enabled, your workflow changes from:
 
 1. **Traditional approach**: Include API key in every request header
-Terminal window
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H "Authorization: Bearer YOUR_OPENAI_API_KEY" \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  -H "Authorization: Bearer YOUR_OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 2. **BYOK approach**: Configure key once in dashboard, make requests without exposing keys
-Terminal window
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 
 ## Managing API keys
@@ -137,22 +142,30 @@ When making requests, AI Gateway uses the key with the `default` alias by defaul
 
 If you have multiple OpenAI keys configured with different aliases (for example, `default`, `production`, and `testing`), you can specify which one to use:
 
-Terminal window
-
-```
-# Uses the key with alias "default" (no header needed)curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
-```
-
-Terminal window
-
-```
-# Uses the key with alias "production"curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H 'cf-aig-byok-alias: production' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
+```bash
+# Uses the key with alias "default" (no header needed)
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 
-Terminal window
-
+```bash
+# Uses the key with alias "production"
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  -H 'cf-aig-byok-alias: production' \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4", "messages": [...]}'
 ```
-# Uses the key with alias "testing"curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H 'cf-aig-byok-alias: testing' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
+
+```bash
+# Uses the key with alias "testing"
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  -H 'cf-aig-byok-alias: testing' \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 
 ```json

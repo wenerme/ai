@@ -16,20 +16,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Variables and secrets are bound as follows:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  bindings: {    KEY1: "value1",    KEY2: "value2",  },});
+```js
+const mf = new Miniflare({
+  bindings: {
+    KEY1: "value1",
+    KEY2: "value2",
+  },
+});
 ```
 
 ## Text and Data Blobs
 
 Text and data blobs can be loaded from files. File contents will be read and bound as `string`s and `ArrayBuffer`s respectively.
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  textBlobBindings: { TEXT: "text.txt" },  dataBlobBindings: { DATA: "data.bin" },});
+```js
+const mf = new Miniflare({
+  textBlobBindings: { TEXT: "text.txt" },
+  dataBlobBindings: { DATA: "data.bin" },
+});
 ```
 
 ## Globals

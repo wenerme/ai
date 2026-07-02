@@ -29,14 +29,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-image-message></rtk-image-message>
+```html
+<!-- component.html -->
+<rtk-image-message></rtk-image-message>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-image-message [isContinued]="true" [message]="imagemessage" [now]="date"></rtk-image-message>
+```html
+<!-- component.html -->
+<rtk-image-message
+ [isContinued]="true"
+ [message]="imagemessage"
+ [now]="date">
+</rtk-image-message>
 ```
 
 ```json

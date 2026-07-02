@@ -16,19 +16,25 @@ Cloudflare’s serverless platform allows you to run code at the edge to build f
 
 To use our Markdown Conversion service directly from your Workers, create an AI binding either in the Cloudflare dashboard (refer to [AI bindings](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai) for instructions), or you can update your [Wrangler file](https://developers.cloudflare.com/workers/wrangler/configuration/). Add the following to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11368)
-* [  wrangler.toml ](#tab-panel-11369)
+* [  wrangler.jsonc ](#tab-panel-11663)
+* [  wrangler.toml ](#tab-panel-11664)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "ai": {
+    "binding": "AI"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai": {    "binding": "AI"  }}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI" # i.e. available in your Worker on env.AI
+```toml
+[ai]
+binding = "AI" # i.e. available in your Worker on env.AI
 ```
 
 ## Examples
@@ -37,44 +43,110 @@ TOML
 
 In this example, we fetch a PDF document and an image from R2 and feed them both to `env.AI.toMarkdown`. The result is a list of converted documents. Workers AI models are used automatically to detect and summarize the image.
 
-* [  JavaScript ](#tab-panel-11378)
-* [  TypeScript ](#tab-panel-11379)
+* [  JavaScript ](#tab-panel-11673)
+* [  TypeScript ](#tab-panel-11674)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Env } from "./env";
-export default {  async fetch(request, env, ctx) {    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf    const pdf = await env.R2.get("somatosensory.pdf");
-    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg    const cat = await env.R2.get("cat.jpeg");
-    return Response.json(      await env.AI.toMarkdown([        {          name: "somatosensory.pdf",          blob: new Blob([await pdf.arrayBuffer()], {            type: "application/pdf",          }),        },        {          name: "cat.jpeg",          blob: new Blob([await cat.arrayBuffer()], {            type: "image/jpeg",          }),        },      ]),    );  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf
+    const pdf = await env.R2.get("somatosensory.pdf");
+
+
+    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg
+    const cat = await env.R2.get("cat.jpeg");
+
+
+    return Response.json(
+      await env.AI.toMarkdown([
+        {
+          name: "somatosensory.pdf",
+          blob: new Blob([await pdf.arrayBuffer()], {
+            type: "application/pdf",
+          }),
+        },
+        {
+          name: "cat.jpeg",
+          blob: new Blob([await cat.arrayBuffer()], {
+            type: "image/jpeg",
+          }),
+        },
+      ]),
+    );
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Env } from "./env";
-export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf    const pdf = await env.R2.get("somatosensory.pdf");
-    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg    const cat = await env.R2.get("cat.jpeg");
-    return Response.json(      await env.AI.toMarkdown([        {          name: "somatosensory.pdf",          blob: new Blob([await pdf.arrayBuffer()], {            type: "application/pdf",          }),        },        {          name: "cat.jpeg",          blob: new Blob([await cat.arrayBuffer()], {            type: "image/jpeg",          }),        },      ]),    );  },};
+
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf
+    const pdf = await env.R2.get("somatosensory.pdf");
+
+
+    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg
+    const cat = await env.R2.get("cat.jpeg");
+
+
+    return Response.json(
+      await env.AI.toMarkdown([
+        {
+          name: "somatosensory.pdf",
+          blob: new Blob([await pdf.arrayBuffer()], {
+            type: "application/pdf",
+          }),
+        },
+        {
+          name: "cat.jpeg",
+          blob: new Blob([await cat.arrayBuffer()], {
+            type: "image/jpeg",
+          }),
+        },
+      ]),
+    );
+  },
+};
 ```
 
 ### Getting supported file formats
 
-* [  JavaScript ](#tab-panel-11372)
-* [  TypeScript ](#tab-panel-11373)
+* [  JavaScript ](#tab-panel-11667)
+* [  TypeScript ](#tab-panel-11668)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Env } from "./env";
-export default {  async fetch(request, env, ctx) {    return Response.json(await env.AI.toMarkdown().supported());  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    return Response.json(await env.AI.toMarkdown().supported());
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Env } from "./env";
-export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    return Response.json(await env.AI.toMarkdown().supported());  },};
+
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    return Response.json(await env.AI.toMarkdown().supported());
+  },
+};
 ```
 
 ## Methods
@@ -83,19 +155,25 @@ export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext)
 
 Takes a document or list of documents in different formats and converts them to Markdown.
 
-* [  JavaScript ](#tab-panel-11370)
-* [  TypeScript ](#tab-panel-11371)
+* [  JavaScript ](#tab-panel-11665)
+* [  TypeScript ](#tab-panel-11666)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await env.AI.toMarkdown({
+  name: "document.pdf",
+  blob: new Blob([documentBuffer]),
+});
 ```
-const result = await env.AI.toMarkdown({  name: "document.pdf",  blob: new Blob([documentBuffer]),});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.AI.toMarkdown({  name: "document.pdf",  blob: new Blob([documentBuffer]),});
+```ts
+const result = await env.AI.toMarkdown({
+  name: "document.pdf",
+  blob: new Blob([documentBuffer]),
+});
 ```
 
 #### Parameter
@@ -144,37 +222,43 @@ const result = await env.AI.toMarkdown({  name: "document.pdf",  blob: new Blob(
 
 This method is similar to `env.AI.toMarkdown` except that it is exposed through a new handle. It takes the same arguments and returns the same values.
 
-* [  JavaScript ](#tab-panel-11376)
-* [  TypeScript ](#tab-panel-11377)
+* [  JavaScript ](#tab-panel-11671)
+* [  TypeScript ](#tab-panel-11672)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await env.AI.toMarkdown().transform({
+  name: "document.pdf",
+  blob: new Blob([documentBuffer]),
+});
 ```
-const result = await env.AI.toMarkdown().transform({  name: "document.pdf",  blob: new Blob([documentBuffer]),});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await env.AI.toMarkdown().transform({  name: "document.pdf",  blob: new Blob([documentBuffer]),});
+```ts
+const result = await env.AI.toMarkdown().transform({
+  name: "document.pdf",
+  blob: new Blob([documentBuffer]),
+});
 ```
 
 ### async env.AI.toMarkdown().supported()
 
 Returns a list of file formats that are currently supported for markdown conversion. See [Supported formats](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/supported-formats/) for the full list of file formats that can be converted into Markdown.
 
-* [  JavaScript ](#tab-panel-11374)
-* [  TypeScript ](#tab-panel-11375)
+* [  JavaScript ](#tab-panel-11669)
+* [  TypeScript ](#tab-panel-11670)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const formats = await env.AI.toMarkdown().supported();
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const formats = await env.AI.toMarkdown().supported();
 ```
 

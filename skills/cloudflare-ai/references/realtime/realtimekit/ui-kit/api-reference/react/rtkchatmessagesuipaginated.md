@@ -26,16 +26,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatMessagesUiPaginated } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatMessagesUiPaginated />;}
+
+
+function MyComponent() {
+  return <RtkChatMessagesUiPaginated />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatMessagesUiPaginated } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatMessagesUiPaginated      meeting={meeting}      privateChatRecipient={participant | null}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatMessagesUiPaginated
+      meeting={meeting}
+      privateChatRecipient={participant | null}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

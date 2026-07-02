@@ -26,36 +26,67 @@ The Workers Vitest integration does not support testing Workers using the servic
 
 First, you will need to uninstall the old environment and install the new pool. Vitest environments can only customize the global scope, whereas pools can run tests using a completely different runtime. In this case, the pool runs your tests inside [workerd ↗](https://github.com/cloudflare/workerd) instead of Node.js.
 
-Terminal window
-
-```
-npm uninstall vitest-environment-miniflarenpm install --save-dev vitest@^4.1.0npm install --save-dev @cloudflare/vitest-pool-workers
+```sh
+npm uninstall vitest-environment-miniflare
+npm install --save-dev vitest@^4.1.0
+npm install --save-dev @cloudflare/vitest-pool-workers
 ```
 
 ## Update your Vitest configuration file
 
 After installing the Workers Vitest integration, update your Vitest configuration file to use the `cloudflareTest()` Vite plugin instead. Most Miniflare configuration previously specified in `environmentOptions` can be moved to the `miniflare` option in `cloudflareTest()`. Refer to [Miniflare's WorkerOptions interface ↗](https://github.com/cloudflare/workers-sdk/blob/main/packages/miniflare/README.md#interface-workeroptions) for supported options and the [Miniflare version 2 to 3 migration guide](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/) for more information. If you relied on configuration stored in a Wrangler file, set `wrangler.configPath` too.
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineWorkersConfig({  test: {    environment: "miniflare",    environmentOptions: { ... },  },});export default defineConfig({  plugins: [    cloudflareTest({      miniflare: { ... },      wrangler: { configPath: "./wrangler.jsonc" },    }),  ],});
+```diff
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineWorkersConfig({
+  test: {
+    environment: "miniflare",
+    environmentOptions: { ... },
+  },
+});
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      miniflare: { ... },
+      wrangler: { configPath: "./wrangler.jsonc" },
+    }),
+  ],
+});
 ```
 
 ## Update your TypeScript configuration file
 
 If you are using TypeScript, update your `tsconfig.json` to include the correct ambient `types`:
 
-```
-{  "compilerOptions": {    ...,    "types": [      ...      "vitest-environment-miniflare/globals"      "@cloudflare/vitest-pool-workers/types"    ]  },}
+```diff
+{
+  "compilerOptions": {
+    ...,
+    "types": [
+      ...
+      "vitest-environment-miniflare/globals"
+      "@cloudflare/vitest-pool-workers/types"
+    ]
+  },
+}
 ```
 
 ## Access bindings
 
 To access [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your tests, use the `env` helper from the `cloudflare:workers` module.
 
-```
-import { it } from "vitest";import { env } from "cloudflare:workers";
-it("does something", () => {  const env = getMiniflareBindings();  // ...});
+```diff
+import { it } from "vitest";
+import { env } from "cloudflare:workers";
+
+
+it("does something", () => {
+  const env = getMiniflareBindings();
+  // ...
+});
 ```
 
 If you are using TypeScript, you need to define the type of `env` for your tests. Refer to [Define types](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#define-types) for setup instructions.
@@ -64,17 +95,27 @@ If you are using TypeScript, you need to define the type of `env` for your tests
 
 Storage isolation is per test file by default. You no longer need to include `setupMiniflareIsolatedStorage()` in your tests.
 
-```
-const describe = setupMiniflareIsolatedStorage();import { describe } from "vitest";
+```diff
+const describe = setupMiniflareIsolatedStorage();
+import { describe } from "vitest";
 ```
 
 ## Work with `waitUntil()`
 
 The `new ExecutionContext()` constructor and `getMiniflareWaitUntil()` function are now `createExecutionContext()` and `waitOnExecutionContext()` respectively. Note `waitOnExecutionContext()` now returns an empty `Promise<void>` instead of a `Promise` resolving to the results of all `waitUntil()`ed `Promise`s.
 
-```
+```diff
 import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
-it("does something", () => {  // ...  const ctx = new ExecutionContext();  const ctx = createExecutionContext();  const response = worker.fetch(request, env, ctx);  await getMiniflareWaitUntil(ctx);  await waitOnExecutionContext(ctx);});
+
+
+it("does something", () => {
+  // ...
+  const ctx = new ExecutionContext();
+  const ctx = createExecutionContext();
+  const response = worker.fetch(request, env, ctx);
+  await getMiniflareWaitUntil(ctx);
+  await waitOnExecutionContext(ctx);
+});
 ```
 
 ## Mock outbound requests
@@ -85,26 +126,68 @@ The `getMiniflareFetchMock()` function is no longer available. To mock outbound 
 
 The `getMiniflareDurableObjectStorage()`, `getMiniflareDurableObjectState()`, `getMiniflareDurableObjectInstance()`, and `runWithMiniflareDurableObjectGates()` functions have all been replaced with a single `runInDurableObject()` function from the `cloudflare:test` module. The `runInDurableObject()` function accepts a `DurableObjectStub` with a callback accepting the Durable Object and corresponding `DurableObjectState` as arguments. Consolidating these functions into a single function simplifies the API surface, and ensures instances are accessed with the correct request context and [gating behavior ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/). Refer to the [Test APIs page](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/) for more details.
 
-```
-import { env } from "cloudflare:workers";import { runInDurableObject } from "cloudflare:test";
-it("does something", async () => {  const env = getMiniflareBindings();  const id = env.OBJECT.newUniqueId();  const stub = env.OBJECT.get(id);
-  const storage = await getMiniflareDurableObjectStorage(id);  doSomethingWith(storage);  await runInDurableObject(stub, async (instance, state) => {    doSomethingWith(state.storage);  });
-  const state = await getMiniflareDurableObjectState(id);  doSomethingWith(state);  await runInDurableObject(stub, async (instance, state) => {    doSomethingWith(state);  });
-  const instance = await getMiniflareDurableObjectInstance(id);  await runWithMiniflareDurableObjectGates(state, async () => {    doSomethingWith(instance);  });  await runInDurableObject(stub, async (instance) => {    doSomethingWith(instance);  });});
+```diff
+import { env } from "cloudflare:workers";
+import { runInDurableObject } from "cloudflare:test";
+
+
+it("does something", async () => {
+  const env = getMiniflareBindings();
+  const id = env.OBJECT.newUniqueId();
+  const stub = env.OBJECT.get(id);
+
+
+  const storage = await getMiniflareDurableObjectStorage(id);
+  doSomethingWith(storage);
+  await runInDurableObject(stub, async (instance, state) => {
+    doSomethingWith(state.storage);
+  });
+
+
+  const state = await getMiniflareDurableObjectState(id);
+  doSomethingWith(state);
+  await runInDurableObject(stub, async (instance, state) => {
+    doSomethingWith(state);
+  });
+
+
+  const instance = await getMiniflareDurableObjectInstance(id);
+  await runWithMiniflareDurableObjectGates(state, async () => {
+    doSomethingWith(instance);
+  });
+  await runInDurableObject(stub, async (instance) => {
+    doSomethingWith(instance);
+  });
+});
 ```
 
 The `flushMiniflareDurableObjectAlarms()` function has been replaced with the `runDurableObjectAlarm()` function from the `cloudflare:test` module. The `runDurableObjectAlarm()` function accepts a single `DurableObjectStub` and returns a `Promise` that resolves to `true` if an alarm was scheduled and the `alarm()` handler was executed, or `false` otherwise. To "flush" multiple instances' alarms, call `runDurableObjectAlarm()` in a loop.
 
-```
-import { env } from "cloudflare:workers";import { runDurableObjectAlarm } from "cloudflare:test";
-it("does something", async () => {  const env = getMiniflareBindings();  const id = env.OBJECT.newUniqueId();  await flushMiniflareDurableObjectAlarms([id]);  const stub = env.OBJECT.get(id);  const ran = await runDurableObjectAlarm(stub);});
+```diff
+import { env } from "cloudflare:workers";
+import { runDurableObjectAlarm } from "cloudflare:test";
+
+
+it("does something", async () => {
+  const env = getMiniflareBindings();
+  const id = env.OBJECT.newUniqueId();
+  await flushMiniflareDurableObjectAlarms([id]);
+  const stub = env.OBJECT.get(id);
+  const ran = await runDurableObjectAlarm(stub);
+});
 ```
 
 Finally, the `getMiniflareDurableObjectIds()` function has been replaced with the `listDurableObjectIds()` function from the `cloudflare:test` module. The `listDurableObjectIds()` function now accepts a `DurableObjectNamespace` instance instead of a namespace `string` to provide stricter typing. Note the `listDurableObjectIds()` function respects storage isolation. IDs of objects created in other test files will not be returned.
 
-```
-import { env } from "cloudflare:workers";import { listDurableObjectIds } from "cloudflare:test";
-it("does something", async () => {  const ids = await getMiniflareDurableObjectIds("OBJECT");  const ids = await listDurableObjectIds(env.OBJECT);});
+```diff
+import { env } from "cloudflare:workers";
+import { listDurableObjectIds } from "cloudflare:test";
+
+
+it("does something", async () => {
+  const ids = await getMiniflareDurableObjectIds("OBJECT");
+  const ids = await listDurableObjectIds(env.OBJECT);
+});
 ```
 
 ```json

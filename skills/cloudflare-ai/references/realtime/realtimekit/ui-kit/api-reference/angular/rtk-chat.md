@@ -29,14 +29,19 @@ Fully featured chat component with image & file upload, emoji picker and auto-sc
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat></rtk-chat>
+```html
+<!-- component.html -->
+<rtk-chat></rtk-chat>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat [meeting]="meeting" size="md"></rtk-chat>
+```html
+<!-- component.html -->
+<rtk-chat
+ [meeting]="meeting"
+ size="md">
+</rtk-chat>
 ```
 
 ```json

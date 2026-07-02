@@ -25,46 +25,94 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 1. Create a directory that will contain the assets in the root of your project (for example, `./public`)
 2. Add configuration to your Wrangler file to point to it.
 
-  * [  wrangler.jsonc ](#tab-panel-11581)
-  * [  wrangler.toml ](#tab-panel-11582)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11876)
+  * [  wrangler.toml ](#tab-panel-11877)
+
+**JSONC**
+```jsonc
+{
+  "site": {
+    "bucket": "./public" // Add the directory with your static assets!
+  }
+}
 ```
-{  "site": {    "bucket": "./public" // Add the directory with your static assets!  }}
-```
-TOML
-```
-[site]bucket = "./public"
+
+**TOML**
+```toml
+[site]
+bucket = "./public"
 ```
 3. Install the `@cloudflare/kv-asset-handler` package in your project:
-Terminal window
-```
+```sh
 npm i -D @cloudflare/kv-asset-handler
 ```
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
-* [  Module Worker ](#tab-panel-11579)
-* [  Service Worker ](#tab-panel-11580)
+* [  Module Worker ](#tab-panel-11874)
+* [  Service Worker ](#tab-panel-11875)
 
-JavaScript
+**JavaScript**
 
-```
-import { getAssetFromKV } from "@cloudflare/kv-asset-handler";import manifestJSON from "__STATIC_CONTENT_MANIFEST";const assetManifest = JSON.parse(manifestJSON);
-export default {  async fetch(request, env, ctx) {    try {      // Add logic to decide whether to serve an asset or run your original Worker code      return await getAssetFromKV(        {          request,          waitUntil: ctx.waitUntil.bind(ctx),        },        {          ASSET_NAMESPACE: env.__STATIC_CONTENT,          ASSET_MANIFEST: assetManifest,        },      );    } catch (e) {      let pathname = new URL(request.url).pathname;      return new Response(`"${pathname}" not found`, {        status: 404,        statusText: "not found",      });    }  },};
-```
-
-JavaScript
-
-```
+```js
 import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
-addEventListener("fetch", (event) => {  event.respondWith(handleEvent(event));});
-async function handleEvent(event) {  try {    // Add logic to decide whether to serve an asset or run your original Worker code    return await getAssetFromKV(event);  } catch (e) {    let pathname = new URL(event.request.url).pathname;    return new Response(`"${pathname}" not found`, {      status: 404,      statusText: "not found",    });  }}
+import manifestJSON from "__STATIC_CONTENT_MANIFEST";
+const assetManifest = JSON.parse(manifestJSON);
+
+
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      // Add logic to decide whether to serve an asset or run your original Worker code
+      return await getAssetFromKV(
+        {
+          request,
+          waitUntil: ctx.waitUntil.bind(ctx),
+        },
+        {
+          ASSET_NAMESPACE: env.__STATIC_CONTENT,
+          ASSET_MANIFEST: assetManifest,
+        },
+      );
+    } catch (e) {
+      let pathname = new URL(request.url).pathname;
+      return new Response(`"${pathname}" not found`, {
+        status: 404,
+        statusText: "not found",
+      });
+    }
+  },
+};
+```
+
+**JavaScript**
+
+```js
+import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
+
+
+addEventListener("fetch", (event) => {
+  event.respondWith(handleEvent(event));
+});
+
+
+async function handleEvent(event) {
+  try {
+    // Add logic to decide whether to serve an asset or run your original Worker code
+    return await getAssetFromKV(event);
+  } catch (e) {
+    let pathname = new URL(event.request.url).pathname;
+    return new Response(`"${pathname}" not found`, {
+      status: 404,
+      statusText: "not found",
+    });
+  }
+}
 ```
 
 For more information on the configurable options of `getAssetFromKV()` refer to [kv-asset-handler docs ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/kv-asset-handler).
 
 1. Run `wrangler deploy` or `npx wrangler deploy` as you would normally with your Worker project. Wrangler will automatically upload the assets found in the configured directory.
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 

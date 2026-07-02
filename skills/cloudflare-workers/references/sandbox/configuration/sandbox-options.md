@@ -16,10 +16,12 @@ Configure sandbox behavior by passing options when creating a sandbox instance w
 
 ## Available options
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 const sandbox = getSandbox(binding, sandboxId, options?: SandboxOptions);
 ```
 
@@ -31,25 +33,57 @@ Controls what happens when you call sandbox methods without an explicit `session
 
 Use `enableDefaultSession: true` for interactive or stateful workflows where commands should share working directory and exported variables. Use `enableDefaultSession: false` for stateless request handling where one call should not affect the next one. It is recommended to set this to `false` — default session support will be removed in a future version of the Sandbox SDK, and using `createSession()` explicitly is the preferred pattern going forward.
 
-* [  JavaScript ](#tab-panel-10347)
-* [  TypeScript ](#tab-panel-10348)
+* [  JavaScript ](#tab-panel-10642)
+* [  TypeScript ](#tab-panel-10643)
 
-JavaScript
+**JavaScript**
 
+```js
+// Default behavior: implicit operations use the default session
+const statefulSandbox = getSandbox(env.Sandbox, "user-123");
+
+
+await statefulSandbox.exec("cd /workspace/app");
+const statefulResult = await statefulSandbox.exec("pwd");
+// statefulResult.stdout: "/workspace/app"
+// The second exec inherited the working directory from the first.
+
+
+// Sessionless behavior: implicit operations do not share shell state
+const statelessSandbox = getSandbox(env.Sandbox, "api-worker", {
+  enableDefaultSession: false,
+});
+
+
+await statelessSandbox.exec("cd /workspace/app");
+const statelessResult = await statelessSandbox.exec("pwd");
+// statelessResult.stdout: "/workspace"
+// The second exec did not inherit shell state from the first.
 ```
-// Default behavior: implicit operations use the default sessionconst statefulSandbox = getSandbox(env.Sandbox, "user-123");
-await statefulSandbox.exec("cd /workspace/app");const statefulResult = await statefulSandbox.exec("pwd");// statefulResult.stdout: "/workspace/app"// The second exec inherited the working directory from the first.
-// Sessionless behavior: implicit operations do not share shell stateconst statelessSandbox = getSandbox(env.Sandbox, "api-worker", {  enableDefaultSession: false,});
-await statelessSandbox.exec("cd /workspace/app");const statelessResult = await statelessSandbox.exec("pwd");// statelessResult.stdout: "/workspace"// The second exec did not inherit shell state from the first.
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Default behavior: implicit operations use the default sessionconst statefulSandbox = getSandbox(env.Sandbox, 'user-123');
-await statefulSandbox.exec('cd /workspace/app');const statefulResult = await statefulSandbox.exec('pwd');// statefulResult.stdout: "/workspace/app"// The second exec inherited the working directory from the first.
-// Sessionless behavior: implicit operations do not share shell stateconst statelessSandbox = getSandbox(env.Sandbox, 'api-worker', {  enableDefaultSession: false});
-await statelessSandbox.exec('cd /workspace/app');const statelessResult = await statelessSandbox.exec('pwd');// statelessResult.stdout: "/workspace"// The second exec did not inherit shell state from the first.
+```ts
+// Default behavior: implicit operations use the default session
+const statefulSandbox = getSandbox(env.Sandbox, 'user-123');
+
+
+await statefulSandbox.exec('cd /workspace/app');
+const statefulResult = await statefulSandbox.exec('pwd');
+// statefulResult.stdout: "/workspace/app"
+// The second exec inherited the working directory from the first.
+
+
+// Sessionless behavior: implicit operations do not share shell state
+const statelessSandbox = getSandbox(env.Sandbox, 'api-worker', {
+  enableDefaultSession: false
+});
+
+
+await statelessSandbox.exec('cd /workspace/app');
+const statelessResult = await statelessSandbox.exec('pwd');
+// statelessResult.stdout: "/workspace"
+// The second exec did not inherit shell state from the first.
 ```
 
 ### keepAlive
@@ -62,23 +96,49 @@ Keep the container alive indefinitely by preventing automatic shutdown. When `tr
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
-* [  JavaScript ](#tab-panel-10345)
-* [  TypeScript ](#tab-panel-10346)
+* [  JavaScript ](#tab-panel-10640)
+* [  TypeScript ](#tab-panel-10641)
 
-JavaScript
+**JavaScript**
 
+```js
+// For long-running processes that need the container to stay alive
+const sandbox = getSandbox(env.Sandbox, "user-123", {
+  keepAlive: true,
+});
+
+
+// Run your long-running process
+await sandbox.startProcess("python long_running_script.py");
+
+
+// Important: Must explicitly destroy when done
+try {
+  // Your work here
+} finally {
+  await sandbox.destroy(); // Required to prevent containers running indefinitely
+}
 ```
-// For long-running processes that need the container to stay aliveconst sandbox = getSandbox(env.Sandbox, "user-123", {  keepAlive: true,});
-// Run your long-running processawait sandbox.startProcess("python long_running_script.py");
-// Important: Must explicitly destroy when donetry {  // Your work here} finally {  await sandbox.destroy(); // Required to prevent containers running indefinitely}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// For long-running processes that need the container to stay aliveconst sandbox = getSandbox(env.Sandbox, 'user-123', {  keepAlive: true});
-// Run your long-running processawait sandbox.startProcess('python long_running_script.py');
-// Important: Must explicitly destroy when donetry {  // Your work here} finally {  await sandbox.destroy(); // Required to prevent containers running indefinitely}
+```ts
+// For long-running processes that need the container to stay alive
+const sandbox = getSandbox(env.Sandbox, 'user-123', {
+  keepAlive: true
+});
+
+
+// Run your long-running process
+await sandbox.startProcess('python long_running_script.py');
+
+
+// Important: Must explicitly destroy when done
+try {
+  // Your work here
+} finally {
+  await sandbox.destroy(); // Required to prevent containers running indefinitely
+}
 ```
 
 Resource management with keepAlive
@@ -95,21 +155,37 @@ Bug fix in v0.2.17
 
 Prior to v0.2.17, the `sleepAfter` option passed to `getSandbox()` was ignored due to a timing issue. The option is now properly applied when creating sandbox instances.
 
-* [  JavaScript ](#tab-panel-10343)
-* [  TypeScript ](#tab-panel-10344)
+* [  JavaScript ](#tab-panel-10638)
+* [  TypeScript ](#tab-panel-10639)
 
-JavaScript
+**JavaScript**
 
+```js
+// Sleep after 30 seconds of inactivity
+const sandbox = getSandbox(env.Sandbox, "user-123", {
+  sleepAfter: "30s",
+});
+
+
+// Sleep after 5 minutes (using number)
+const sandbox2 = getSandbox(env.Sandbox, "user-456", {
+  sleepAfter: 300, // 300 seconds = 5 minutes
+});
 ```
-// Sleep after 30 seconds of inactivityconst sandbox = getSandbox(env.Sandbox, "user-123", {  sleepAfter: "30s",});
-// Sleep after 5 minutes (using number)const sandbox2 = getSandbox(env.Sandbox, "user-456", {  sleepAfter: 300, // 300 seconds = 5 minutes});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Sleep after 30 seconds of inactivityconst sandbox = getSandbox(env.Sandbox, 'user-123', {  sleepAfter: '30s'});
-// Sleep after 5 minutes (using number)const sandbox2 = getSandbox(env.Sandbox, 'user-456', {  sleepAfter: 300  // 300 seconds = 5 minutes});
+```ts
+// Sleep after 30 seconds of inactivity
+const sandbox = getSandbox(env.Sandbox, 'user-123', {
+  sleepAfter: '30s'
+});
+
+
+// Sleep after 5 minutes (using number)
+const sandbox2 = getSandbox(env.Sandbox, 'user-456', {
+  sleepAfter: 300  // 300 seconds = 5 minutes
+});
 ```
 
 Ignored when keepAlive is true
@@ -122,21 +198,47 @@ When `keepAlive: true` is set, `sleepAfter` is ignored and the sandbox never sle
 
 Configure timeouts for container startup operations.
 
-* [  JavaScript ](#tab-panel-10349)
-* [  TypeScript ](#tab-panel-10350)
+* [  JavaScript ](#tab-panel-10644)
+* [  TypeScript ](#tab-panel-10645)
 
-JavaScript
+**JavaScript**
 
+```js
+// Extended startup with custom Dockerfile work
+// (installing packages, starting services before SDK)
+const sandbox = getSandbox(env.Sandbox, "data-processor", {
+  containerTimeouts: {
+    portReadyTimeoutMS: 180_000, // 3 minutes for startup work
+  },
+});
+
+
+// Wait longer during traffic spikes
+const sandbox2 = getSandbox(env.Sandbox, "user-env", {
+  containerTimeouts: {
+    instanceGetTimeoutMS: 60_000, // 1 minute for provisioning
+  },
+});
 ```
-// Extended startup with custom Dockerfile work// (installing packages, starting services before SDK)const sandbox = getSandbox(env.Sandbox, "data-processor", {  containerTimeouts: {    portReadyTimeoutMS: 180_000, // 3 minutes for startup work  },});
-// Wait longer during traffic spikesconst sandbox2 = getSandbox(env.Sandbox, "user-env", {  containerTimeouts: {    instanceGetTimeoutMS: 60_000, // 1 minute for provisioning  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Extended startup with custom Dockerfile work// (installing packages, starting services before SDK)const sandbox = getSandbox(env.Sandbox, 'data-processor', {  containerTimeouts: {    portReadyTimeoutMS: 180_000  // 3 minutes for startup work  }});
-// Wait longer during traffic spikesconst sandbox2 = getSandbox(env.Sandbox, 'user-env', {  containerTimeouts: {    instanceGetTimeoutMS: 60_000   // 1 minute for provisioning  }});
+```ts
+// Extended startup with custom Dockerfile work
+// (installing packages, starting services before SDK)
+const sandbox = getSandbox(env.Sandbox, 'data-processor', {
+  containerTimeouts: {
+    portReadyTimeoutMS: 180_000  // 3 minutes for startup work
+  }
+});
+
+
+// Wait longer during traffic spikes
+const sandbox2 = getSandbox(env.Sandbox, 'user-env', {
+  containerTimeouts: {
+    instanceGetTimeoutMS: 60_000   // 1 minute for provisioning
+  }
+});
 ```
 
 **Available timeout options**:
@@ -162,19 +264,26 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
 * `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
 
-* [  wrangler.jsonc ](#tab-panel-10341)
-* [  wrangler.toml ](#tab-panel-10342)
+* [  wrangler.jsonc ](#tab-panel-10636)
+* [  wrangler.toml ](#tab-panel-10637)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "SANDBOX_LOG_LEVEL": "debug",
+    "SANDBOX_LOG_FORMAT": "pretty"
+  }
+}
 ```
-{  "vars": {    "SANDBOX_LOG_LEVEL": "debug",    "SANDBOX_LOG_FORMAT": "pretty"  }}
-```
 
-TOML
+**TOML**
 
-```
-[vars]SANDBOX_LOG_LEVEL = "debug"SANDBOX_LOG_FORMAT = "pretty"
+```toml
+[vars]
+SANDBOX_LOG_LEVEL = "debug"
+SANDBOX_LOG_FORMAT = "pretty"
 ```
 
 Read at startup
@@ -191,21 +300,45 @@ Lowercase sandbox IDs when creating sandboxes. When `true`, the ID you provide i
 
 **Why this matters**: Preview URLs extract the sandbox ID from the hostname, which is always lowercase due to DNS case-insensitivity. Without normalization, a sandbox created with "MyProject-123" becomes unreachable via preview URL because the URL routing looks for "myproject-123" (different Durable Object).
 
-* [  JavaScript ](#tab-panel-10351)
-* [  TypeScript ](#tab-panel-10352)
+* [  JavaScript ](#tab-panel-10646)
+* [  TypeScript ](#tab-panel-10647)
 
-JavaScript
+**JavaScript**
 
+```js
+// Without normalization (default)
+const sandbox1 = getSandbox(env.Sandbox, "MyProject-123");
+// Creates Durable Object with ID: "MyProject-123"
+// Preview URL: 8000-myproject-123.example.com
+// Problem: URL routes to "myproject-123" (different DO)
+
+
+// With normalization
+const sandbox2 = getSandbox(env.Sandbox, "MyProject-123", {
+  normalizeId: true,
+});
+// Creates Durable Object with ID: "myproject-123"
+// Preview URL: 8000-myproject-123.example.com
+// Works: URL routes to "myproject-123" (same DO)
 ```
-// Without normalization (default)const sandbox1 = getSandbox(env.Sandbox, "MyProject-123");// Creates Durable Object with ID: "MyProject-123"// Preview URL: 8000-myproject-123.example.com// Problem: URL routes to "myproject-123" (different DO)
-// With normalizationconst sandbox2 = getSandbox(env.Sandbox, "MyProject-123", {  normalizeId: true,});// Creates Durable Object with ID: "myproject-123"// Preview URL: 8000-myproject-123.example.com// Works: URL routes to "myproject-123" (same DO)
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Without normalization (default)const sandbox1 = getSandbox(env.Sandbox, 'MyProject-123');// Creates Durable Object with ID: "MyProject-123"// Preview URL: 8000-myproject-123.example.com// Problem: URL routes to "myproject-123" (different DO)
-// With normalizationconst sandbox2 = getSandbox(env.Sandbox, 'MyProject-123', {  normalizeId: true});// Creates Durable Object with ID: "myproject-123"// Preview URL: 8000-myproject-123.example.com// Works: URL routes to "myproject-123" (same DO)
+```ts
+// Without normalization (default)
+const sandbox1 = getSandbox(env.Sandbox, 'MyProject-123');
+// Creates Durable Object with ID: "MyProject-123"
+// Preview URL: 8000-myproject-123.example.com
+// Problem: URL routes to "myproject-123" (different DO)
+
+
+// With normalization
+const sandbox2 = getSandbox(env.Sandbox, 'MyProject-123', {
+  normalizeId: true
+});
+// Creates Durable Object with ID: "myproject-123"
+// Preview URL: 8000-myproject-123.example.com
+// Works: URL routes to "myproject-123" (same DO)
 ```
 
 Different normalizeId values = different sandboxes

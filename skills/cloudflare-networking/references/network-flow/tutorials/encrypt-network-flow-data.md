@@ -23,8 +23,7 @@ Follow the instructions in the [Network Flow (formerly Magic Network Monitoring)
 The `warp_devices` array at the account level is a list of WARP devices through which you can send encrypted flows. Each WARP device must have:
 
 * The Cloudflare One Client UUID. You can obtain the UUID in the UI or through the following command:
-Terminal window
-```
+```sh
 warp-cli registration show
 ```
 * A name.
@@ -38,10 +37,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic Network Monitoring Admin`
 * `Magic Network Monitoring Config Write`
 
-Update account configuration fields
+**Update account configuration fields**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/config" \  --request PATCH \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "warp_devices": [        {            "id": "<YOUR_WARP_DEVICE_UNIQUE_IDENTIFIER>",            "name": "<NAME_OF_WARP_DEVICE>",            "router_ip": "YOUR_ROUTER_IP"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/config" \
+  --request PATCH \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "warp_devices": [
+        {
+            "id": "<YOUR_WARP_DEVICE_UNIQUE_IDENTIFIER>",
+            "name": "<NAME_OF_WARP_DEVICE>",
+            "router_ip": "YOUR_ROUTER_IP"
+        }
+    ]
+  }'
 ```
 
 ## 2\. Route Network Flow traffic through the Cloudflare One Client

@@ -26,9 +26,7 @@ Below are options for queues, refer to the Wrangler documentation for a full ref
 
 The following queue level settings can be configured using Wrangler:
 
-Terminal window
-
-```
+```sh
 npx wrangler queues update <QUEUE-NAME> --delivery-delay-secs 60 --message-retention-period-secs 3000
 ```
 
@@ -49,19 +47,30 @@ A producer is a [Cloudflare Worker](https://developers.cloudflare.com/workers/) 
 
 To produce to a queue, set up a binding in your Wrangler file. These options should be used when a Worker wants to send messages to a queue.
 
-* [  wrangler.jsonc ](#tab-panel-9712)
-* [  wrangler.toml ](#tab-panel-9713)
+* [  wrangler.jsonc ](#tab-panel-10007)
+* [  wrangler.toml ](#tab-panel-10008)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "queues": {
+    "producers": [
+      {
+        "queue": "my-queue",
+        "binding": "MY_QUEUE"
+      }
+    ]
+  }
+}
 ```
-{  "queues": {    "producers": [      {        "queue": "my-queue",        "binding": "MY_QUEUE"      }    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-[[queues.producers]]queue = "my-queue"binding = "MY_QUEUE"
+```toml
+[[queues.producers]]
+queue = "my-queue"
+binding = "MY_QUEUE"
 ```
 
 * `queue` ` string `
@@ -73,19 +82,36 @@ TOML
 
 To consume messages from one or more queues, set up a binding in your Wrangler file. These options should be used when a Worker wants to receive messages from a queue.
 
-* [  wrangler.jsonc ](#tab-panel-9714)
-* [  wrangler.toml ](#tab-panel-9715)
+* [  wrangler.jsonc ](#tab-panel-10009)
+* [  wrangler.toml ](#tab-panel-10010)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "queues": {
+    "consumers": [
+      {
+        "queue": "my-queue",
+        "max_batch_size": 10,
+        "max_batch_timeout": 30,
+        "max_retries": 10,
+        "dead_letter_queue": "my-queue-dlq"
+      }
+    ]
+  }
+}
 ```
-{  "queues": {    "consumers": [      {        "queue": "my-queue",        "max_batch_size": 10,        "max_batch_timeout": 30,        "max_retries": 10,        "dead_letter_queue": "my-queue-dlq"      }    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-[[queues.consumers]]queue = "my-queue"max_batch_size = 10max_batch_timeout = 30max_retries = 10dead_letter_queue = "my-queue-dlq"
+```toml
+[[queues.consumers]]
+queue = "my-queue"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 10
+dead_letter_queue = "my-queue-dlq"
 ```
 
 Refer to [Limits](https://developers.cloudflare.com/queues/platform/limits) to review the maximum values for each of these options.

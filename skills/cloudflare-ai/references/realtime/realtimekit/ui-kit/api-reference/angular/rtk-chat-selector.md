@@ -28,14 +28,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-selector></rtk-chat-selector>
+```html
+<!-- component.html -->
+<rtk-chat-selector></rtk-chat-selector>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-selector [meeting]="meeting" size="md"></rtk-chat-selector>
+```html
+<!-- component.html -->
+<rtk-chat-selector
+ [meeting]="meeting"
+ size="md">
+</rtk-chat-selector>
 ```
 
 ```json

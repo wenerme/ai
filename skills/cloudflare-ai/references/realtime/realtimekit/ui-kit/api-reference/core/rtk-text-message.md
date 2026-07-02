@@ -29,19 +29,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-text-message></rtk-text-message>
 ```
 
 ### With Properties
 
-```
-<rtk-text-message></rtk-text-message>
+```html
+<rtk-text-message>
+</rtk-text-message>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-text-message");
-  el.isContinued= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-text-message");
+
+
+  el.isContinued= true;
+</script>
 ```
 
 ```json

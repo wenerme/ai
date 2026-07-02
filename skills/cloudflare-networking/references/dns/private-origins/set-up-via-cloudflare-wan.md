@@ -54,9 +54,7 @@ In the Cloudflare dashboard, confirm that your IPsec tunnel is healthy. Refer to
 
 From a machine outside your private network, send an HTTPS request to the proxied hostname:
 
-Terminal window
-
-```
+```bash
 curl -v https://<YOUR_DOMAIN>/
 ```
 
@@ -66,9 +64,7 @@ A successful response confirms that Cloudflare accepted the request, applied you
 
 On the origin VM, verify that requests are arriving from the Cloudflare Source IP range. For example, to watch for incoming traffic from `100.64.0.0/12` on port `443`:
 
-Terminal window
-
-```
+```bash
 sudo tcpdump -n -i any 'src net 100.64.0.0/12 and dst port 443'
 ```
 

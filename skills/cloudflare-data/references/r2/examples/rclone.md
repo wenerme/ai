@@ -45,18 +45,24 @@ Ensure you are running `rclone` v1.59 or greater ([rclone downloads ↗](https:/
 
 If you have already configured `rclone` in the past, you may run `rclone config file` to print the location of your `rclone` configuration file:
 
-Terminal window
-
-```
-rclone config file# Configuration file is stored at:# ~/.config/rclone/rclone.conf
+```sh
+rclone config file
+# Configuration file is stored at:
+# ~/.config/rclone/rclone.conf
 ```
 
 Then use an editor (`nano` or `vim`, for example) to add or edit the new provider. This example assumes you are adding a new `r2` provider:
 
-TOML
+**TOML**
 
-```
-[r2]type = s3provider = Cloudflareaccess_key_id = abc123secret_access_key = xyz456endpoint = https://<accountid>.r2.cloudflarestorage.comacl = private
+```toml
+[r2]
+type = s3
+provider = Cloudflare
+access_key_id = abc123
+secret_access_key = xyz456
+endpoint = https://<accountid>.r2.cloudflarestorage.com
+acl = private
 ```
 
 Note
@@ -69,22 +75,37 @@ You may then use the new `rclone` provider for any of your normal workflows.
 
 The [rclone tree ↗](https://rclone.org/commands/rclone%5Ftree/) command can be used to list the contents of the remote, in this case Cloudflare R2.
 
-Terminal window
+```sh
+rclone tree r2:
+# /
+# ├── user-uploads
+# │   └── foobar.png
+# └── my-bucket-name
+#     ├── cat.png
+#     └── todos.txt
 
-```
-rclone tree r2:# /# ├── user-uploads# │   └── foobar.png# └── my-bucket-name#     ├── cat.png#     └── todos.txt
-rclone tree r2:my-bucket-name# /# ├── cat.png# └── todos.txt
+
+rclone tree r2:my-bucket-name
+# /
+# ├── cat.png
+# └── todos.txt
 ```
 
 ## Upload and retrieve objects
 
 The [rclone copy ↗](https://rclone.org/commands/rclone%5Fcopy/) command can be used to upload objects to an R2 bucket and vice versa - this allows you to upload files up to the 5 TB maximum object size that R2 supports.
 
-Terminal window
+```sh
+# Upload dog.txt to the user-uploads bucket
+rclone copy dog.txt r2:user-uploads/
+rclone tree r2:user-uploads
+# /
+# ├── foobar.png
+# └── dog.txt
 
-```
-# Upload dog.txt to the user-uploads bucketrclone copy dog.txt r2:user-uploads/rclone tree r2:user-uploads# /# ├── foobar.png# └── dog.txt
-# Download dog.txt from the user-uploads bucketrclone copy r2:user-uploads/dog.txt .
+
+# Download dog.txt from the user-uploads bucket
+rclone copy r2:user-uploads/dog.txt .
 ```
 
 ### A note about multipart upload part sizes
@@ -95,9 +116,7 @@ Balancing part size depends heavily on your use-case, but these factors can help
 
 You can configure rclone's multipart upload part size using the `--s3-chunk-size` CLI argument. Note that you might also have to adjust the `--s3-upload-cutoff` argument to ensure that rclone is using multipart uploads. Both of these can be set in your configuration file as well. Generally, `--s3-upload-cutoff` will be no less than `--s3-chunk-size`.
 
-Terminal window
-
-```
+```sh
 rclone copy long-video.mp4 r2:user-uploads/ --s3-upload-cutoff=100M --s3-chunk-size=100M
 ```
 
@@ -105,10 +124,10 @@ rclone copy long-video.mp4 r2:user-uploads/ --s3-upload-cutoff=100M --s3-chunk-s
 
 You can also generate presigned links which allow you to share public access to a file temporarily using the [rclone link ↗](https://rclone.org/commands/rclone%5Flink/) command.
 
-Terminal window
-
-```
-# You can pass the --expire flag to determine how long the presigned link is valid. The --unlink flag isn't supported by R2.rclone link r2:my-bucket-name/cat.png --expire 3600# https://<accountid>.r2.cloudflarestorage.com/my-bucket-name/cat.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
+```sh
+# You can pass the --expire flag to determine how long the presigned link is valid. The --unlink flag isn't supported by R2.
+rclone link r2:my-bucket-name/cat.png --expire 3600
+# https://<accountid>.r2.cloudflarestorage.com/my-bucket-name/cat.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
 ```
 
 ```json

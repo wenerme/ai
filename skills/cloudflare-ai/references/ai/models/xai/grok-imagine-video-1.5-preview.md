@@ -28,60 +28,74 @@ xAI's next-generation video generation model. Generates, edits, and extends vide
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2052)
-* [ cURL ](#tab-panel-2053)
+* [ TypeScript ](#tab-panel-2100)
+* [ cURL ](#tab-panel-2101)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-video-1.5-preview',
+  {
+    prompt: 'Generate a slow and serene time-lapse',
+    image: { url: 'https://docs.x.ai/assets/api-examples/video/milkyway-still.png' },
+    duration: 12,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'xai/grok-imagine-video-1.5-preview',  {    prompt: 'Generate a slow and serene time-lapse',    image: { url: 'https://docs.x.ai/assets/api-examples/video/milkyway-still.png' },    duration: 12,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-video-1.5-preview",
+  "input": {
+    "prompt": "Generate a slow and serene time-lapse",
+    "image": {
+      "url": "https://docs.x.ai/assets/api-examples/video/milkyway-still.png"
+    },
+    "duration": 12
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-2098)
+* [ Raw response ](#tab-panel-2099)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-video-1.5-preview",  "input": {    "prompt": "Generate a slow and serene time-lapse",    "image": {      "url": "https://docs.x.ai/assets/api-examples/video/milkyway-still.png"    },    "duration": 12  }}'
-```
-
-* [ Output ](#tab-panel-2050)
-* [ Raw response ](#tab-panel-2051)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video-1.5-preview/image-to-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video-1.5-preview/image-to-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2054)
-* [ Output ](#tab-panel-2055)
+* [ Input ](#tab-panel-2102)
+* [ Output ](#tab-panel-2103)
 
 \_operation
 
 `string`enum: generate, edit, extend
 
-aspect\_ratio
-
-`string`enum: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3
-
-duration
-
-`integer`maximum: 15minimum: 1
-
-▶image{}
-
-`object`
-
-▶output{}
-
-`object`
-
 prompt
 
 `string`
 
-▶reference\_images\[\]
+duration
 
-`array`maxItems: 10
+`integer`minimum: 1maximum: 15
+
+aspect\_ratio
+
+`string`enum: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3
 
 resolution
 
@@ -91,13 +105,25 @@ size
 
 `string`enum: 848x480, 1696x960, 1280x720, 1920x1080
 
-user
+▶image{}
 
-`string`
+`object`
 
 ▶video{}
 
 `object`
+
+▶reference\_images\[\]
+
+`array`maxItems: 10
+
+▶output{}
+
+`object`
+
+user
+
+`string`
 
 video
 

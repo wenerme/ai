@@ -23,32 +23,38 @@ Take note of any DNS addresses you might have set up, and save them in a safe pl
 5. Select **Properties** \> **Use the following DNS server addresses**.
 6. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
 Use 1.1.1.1 resolver
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 Block malware with 1.1.1.1 for Families
-```
-1.1.1.21.0.0.2
+```txt
+1.1.1.2
+1.0.0.2
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-1.1.1.31.0.0.3
+```txt
+1.1.1.3
+1.0.0.3
 ```
 7. Select **OK**.
 8. Select **Internet Protocol Version 6**.
 9. Select **Properties** \> **Use the following DNS server addresses**.
 10. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
 Use 1.1.1.1 resolver
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 Block malware with 1.1.1.1 for Families
-```
-2606:4700:4700::11122606:4700:4700::1002
+```txt
+2606:4700:4700::1112
+2606:4700:4700::1002
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-2606:4700:4700::11132606:4700:4700::1003
+```txt
+2606:4700:4700::1113
+2606:4700:4700::1003
 ```
 11. Select **OK**.
 
@@ -63,30 +69,36 @@ Take note of any DNS addresses you might have set up, and save them in a safe pl
 5. Select the **IPv4** toggle to turn it on.
 6. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
 Use 1.1.1.1 resolver
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 Block malware with 1.1.1.1 for Families
-```
-1.1.1.21.0.0.2
+```txt
+1.1.1.2
+1.0.0.2
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-1.1.1.31.0.0.3
+```txt
+1.1.1.3
+1.0.0.3
 ```
 7. Select the **IPv6** toggle.
 8. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
 Use 1.1.1.1 resolver
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 Block malware with 1.1.1.1 for Families
-```
-2606:4700:4700::11122606:4700:4700::1002
+```txt
+2606:4700:4700::1112
+2606:4700:4700::1002
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-2606:4700:4700::11132606:4700:4700::1003
+```txt
+2606:4700:4700::1113
+2606:4700:4700::1003
 ```
 9. Select **Save**.
 

@@ -41,24 +41,46 @@ A helper class for listening to waitlist participant events. Provides callbacks 
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let waitlistListener = RtkWaitListParticipantUpdateEventListener(    rtkClient: rtkClient)
-waitlistListener.participantJoinedCompletion = {    print("New participant in waitlist")}
-waitlistListener.participantRemovedCompletion = {    print("Participant removed from waitlist")}
+
+
+let waitlistListener = RtkWaitListParticipantUpdateEventListener(
+    rtkClient: rtkClient
+)
+
+
+waitlistListener.participantJoinedCompletion = {
+    print("New participant in waitlist")
+}
+
+
+waitlistListener.participantRemovedCompletion = {
+    print("Participant removed from waitlist")
+}
 ```
 
 ### Accept or reject requests
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let waitlistListener = RtkWaitListParticipantUpdateEventListener(    rtkClient: rtkClient)
-// Accept a waiting participantwaitlistListener.acceptWaitingRequest(participant: waitingParticipant)
-// Reject a waiting participantwaitlistListener.rejectWaitingRequest(participant: waitingParticipant)
+
+
+let waitlistListener = RtkWaitListParticipantUpdateEventListener(
+    rtkClient: rtkClient
+)
+
+
+// Accept a waiting participant
+waitlistListener.acceptWaitingRequest(participant: waitingParticipant)
+
+
+// Reject a waiting participant
+waitlistListener.rejectWaitingRequest(participant: waitingParticipant)
 ```
 
 ```json

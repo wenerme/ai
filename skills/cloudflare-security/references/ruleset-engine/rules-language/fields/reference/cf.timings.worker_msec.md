@@ -24,14 +24,15 @@ If the request did not invoke a Worker, the value of this field will be `0`.
 
 Example value:
 
-```
+```txt
 12
 ```
 
 Example usage:
 
-```
-# Matches requests where the Worker execution time exceeded 500 millisecondscf.timings.worker_msec > 500
+```txt
+# Matches requests where the Worker execution time exceeded 500 milliseconds
+cf.timings.worker_msec > 500
 ```
 
 Categories:

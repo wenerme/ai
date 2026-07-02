@@ -30,8 +30,23 @@ Then, follow the rest of the setup instructions in the [Chat UI GitHub repositor
 
 When setting up your models, specify the `cloudflare` endpoint.
 
-```
-{  "name" : "nousresearch/hermes-2-pro-mistral-7b",  "tokenizer": "nousresearch/hermes-2-pro-mistral-7b",  "parameters": {    "stop": ["<|im_end|>"]  },  "endpoints" : [    {      "type": "cloudflare",      // optionally specify these if not included in .env.local      "accountId": "your-account-id",      "apiToken": "your-api-token"      //    }  ]}
+```json
+{
+  "name" : "nousresearch/hermes-2-pro-mistral-7b",
+  "tokenizer": "nousresearch/hermes-2-pro-mistral-7b",
+  "parameters": {
+    "stop": ["<|im_end|>"]
+  },
+  "endpoints" : [
+    {
+      "type": "cloudflare",
+      // optionally specify these if not included in .env.local
+      "accountId": "your-account-id",
+      "apiToken": "your-api-token"
+      //
+    }
+  ]
+}
 ```
 
 ## Supported models

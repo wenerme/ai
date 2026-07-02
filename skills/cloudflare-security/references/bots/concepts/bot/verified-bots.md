@@ -1,6 +1,6 @@
 ---
 title: Verified bots
-description: Bots confirmed by Cloudflare as legitimate, such as search engine crawlers.
+description: Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -12,47 +12,79 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Verified bots
 
-A verified bot is a bot that Cloudflare has confirmed as legitimate, such as search engine crawlers and monitoring services.
+A Verified bot is a bot or agent that Cloudflare has confirmed is **transparent about who it is and what it does**: it represents itself honestly and does not abuse the access that honesty earns. Examples include search engine crawlers, monitoring services, and user-driven agents.
 
-You can request for your bot to be added to Cloudflare's bots and agents directory by filling out an [online application ↗](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
+Being Verified means a bot or agent meets two bars:
+
+1. **Honest self-identification** — it declares who it is deterministically, through a cryptographic [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/) signature, a published IP list with a stable user-agent, or reverse DNS.
+2. **Non-abusive behavior** — it obeys `robots.txt` and crawl directives, maintains reasonable request rates, and has not been observed evading website owner preferences or attacking sites.
+
+Signed agents are now Verified
+
+As of July 1, 2026, the distinction between a Verified bot and a signed agent is expressed by a new metadata field tracked in [BotBase](https://developers.cloudflare.com/bots/botbase/): Direct versus Intermediary access, which tracks who can operate the bot.
+
+## Classification
 
 Note
 
-A bot cannot be registered as both a verified bot and a signed agent. Review Cloudflare's [signed agents](https://developers.cloudflare.com/bots/concepts/bot/signed-agents/) to determine how to identify your bot.
+These updated classifications reflect the new taxonomy of bots used in [BotBase](https://developers.cloudflare.com/bots/botbase/). They are not individual fields in WAF custom rules, but have backwards-compatible categories from the original taxonomy of Verified bots (see [Legacy categories](#legacy-categories) below).
 
-## Verified bot requirement
+Cloudflare classifies each tracked bot by its behavior — what the bot may do on your site. A single bot can have one or more of the following behaviors:
 
-For a bot to be verified, it must meet the following requirements:
+| Behavior                | Description                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| Search                  | Crawling to build search indexes or RAG databases.                             |
+| Agent                   | User-directed agents visiting a page on behalf of a human.                     |
+| Training                | Crawling to train or fine-tune models.                                         |
+| Transact                | Checkout or other transaction actions on behalf of users.                      |
+| Data Collection         | Price scraping, competitive intelligence gathering, and third-party analytics. |
+| Security Testing        | Vulnerability scanning and penetration testing.                                |
+| SEO                     | SEO crawling, site auditing, and accessibility checks.                         |
+| Ads Verification        | Ad placement verification and ad fraud detection.                              |
+| Social / Link Preview   | Link previews for social platforms and messaging apps.                         |
+| Feed Fetching           | RSS readers, podcast aggregators, and news feed bots.                          |
+| Monitoring & Operations | Uptime monitoring, webhooks, and health checks.                                |
 
-1. The bot must follow [verified bots policy](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/policy/).
-2. The bot must be verified using one of the following verification methods:
-  * [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)
-  * [IP validation](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/)
+Search, Agent, and Training are also available as managed presets you can act on across all plans. For more information, refer to [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
 
-Once Cloudflare approves a verified bot, it should appear on [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/verified-bots).
+Cloudflare also labels every Verified bot or agent by how it is operated.
 
----
+| Label            | Description                                                                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Direct**       | Operated by a single, narrow operator — usually on the operator's own infrastructure. Only that operator can send requests that present as this bot. |
+| **Intermediary** | An agentic service that a wide range of end users can operate. The operator runs the software, but each action is initiated by a different end user. |
 
-## Verification methods
+Because an **intermediary** acts on behalf of many different end users, the operator and the end user are not the same party. This introduces **transitive trust**: you may trust the intermediary operator, but not necessarily every end user driving it. Cloudflare is experimenting with forwarding information about the end user (using the `Forwarded` header defined in [RFC 7239 ↗](https://www.rfc-editor.org/info/rfc7239)) so that website owners can apply their preferences to the party ultimately responsible for a request.
 
-The bot must be verified using one of the following validation methods:
+## Becoming a Verified bot
+
+You can request for your bot or agent to be added to Cloudflare's bots and agents directory by filling out an [online application ↗](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
+
+Once Cloudflare approves a Verified bot, it should appear in [BotBase](https://developers.cloudflare.com/bots/botbase/), shared through [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/verified-bots).
+
+The bot must be Verified using one of the following validation methods:
 
 * [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)
 * [IP validation](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/)
 
----
+### Breach of policy
 
-## Categories
+If any of the requirements to validate are breached, a service will be removed from the global allowlist.
 
-You can segment your verified bot traffic by its type and purpose by adding the Verified Bot Categories field `cf.verified_bot_category` as a filter criteria in [WAF Custom rules](https://developers.cloudflare.com/waf/custom-rules/), [Advanced Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/), and Late Transform rules.
+The following are examples of breaches of policy:
 
-Warning
+* Adding a set of IPs that are not solely used by Verified service.
+* The service IPs are breached by an attacker.
+* The service has vulnerabilities that have not been patched.
+* A block of IPs not briefed on onboarding is added to the list.
+* The disclosed purpose of the service does not reflect on the traffic.
+* An AI Crawler that does not respect the crawl-delay directive in robots.txt.
 
-The Verified Bot Categories field is not compatible with legacy Firewall rules.
+## Legacy categories
 
-Availability
+Note
 
-Verified Bot Categories is available on all plans.
+The original categories of Verified bots continue to be usable in WAF custom rules and currently continue to work as before, even as Cloudflare continues launching new capabilities based on the updated taxonomy.
 
 Academic research
 
@@ -109,6 +141,10 @@ AI Search
 **Definition**: Powers AI-driven search experiences.
 
 **Example**: OAI-SearchBot
+
+Note
+
+Under the taxonomy introduced on July 1, 2026, there is no longer a meaningful distinction between "AI Search" and traditional search — both are treated as **Search** behavior. The `AI Search` category value is retained for backward compatibility with existing rules, but new search crawlers are classified under **Search**. Refer to [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
 
 Archiver
 
@@ -188,39 +224,13 @@ Other
 
 **Definition**: A dedicated category for bots that do not fit into the other classifications.
 
-Cloudflare reserves the right to re-assign verified bot categories if the bot's public documentation and observed behavior differ from the category listed in the bot submission form.
-
----
-
-## Inactive verified bots
-
-Once Cloudflare lists a bot as a verified bot, this entry is cached and may get delisted if no traffic is seen in the Cloudflare network coming from the bot for a defined period of time.
-
-It takes approximately 24 hours for an inactive IP to be removed as a verified bot.
-
----
-
-### Known issues
-
-The Yandex bot is classified as a Verified Bot, but traffic may occasionally be blocked by a [WAF Managed Rule](https://developers.cloudflare.com/waf/managed-rules/) (such as the rule with ID `...f6cbb163`).
-
-This typically occurs when Yandex updates its source IP address ranges. The new IPs are temporarily unrecognized by the WAF Managed Rules until the updated Verified Bot IP list is fully synchronized across the Cloudflare network.
-
-To restore Yandex traffic, deploy a [WAF exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) that temporarily skips the managed rule with ID `<RuleID id="2854e3f18ad946049e6d90ccf6cbb163" />` when a request is coming from the **Yandex IP** and the user-agent contains **Yandex**. This ensures that legitimate Yandex traffic bypasses the blocking rule without disabling security features for other traffic.
-
-You can also create a [WAF Custom Rule](https://developers.cloudflare.com/waf/custom-rules/skip/) with the _Skip_ action targeting the managed ruleset that contains the blocking rule. The rule expression should specifically match the request's Yandex IP and User-Agent.
-
-The issue is transient and will resolve automatically once the new Yandex IP addresses are fully propagated to Cloudflare's systems. This propagation typically takes up to 48 hours. If the bot remains blocked after 48 hours, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
-
----
+Cloudflare reserves the right to re-assign Verified bot categories if the bot's public documentation and observed behavior differ from the category listed in the bot submission form.
 
 ## Availability
 
-Verified bots are excluded by default when [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) is enabled to block definite bots.
-
-[Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) and [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) customers have the option to block or allow verified bots.
+Historically, Verified bots have been excluded in default bot configurations across all plans. Now, all customers have the option to [configure AI bot policies](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/) to define their block vs. allow expectations.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#page","headline":"Verified bots · Cloudflare bot solutions docs","description":"Bots confirmed by Cloudflare as legitimate, such as search engine crawlers.","url":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#page","headline":"Verified bots · Cloudflare bot solutions docs","description":"Bots and agents confirmed by Cloudflare as legitimate, such as search engine crawlers and user-driven agents.","url":"https://developers.cloudflare.com/bots/concepts/bot/verified-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/concepts/bot/","name":"Bots"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/concepts/bot/verified-bots/","name":"Verified bots"}}]}
 ```

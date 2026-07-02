@@ -33,8 +33,13 @@ On iOS and Android / ChromeOS, end users will still be asked questions required 
 
 To skip the Terms and Conditions screens that are usually presented to users, set the [onboarding parameter](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) to `false` in your [MDM deployment file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/). Here is an example `mdm.xml` file:
 
-```
-<dict>  <key>organization</key>  <string>your-team-name</string>  <key>onboarding</key>  <false/></dict>
+```xml
+<dict>
+  <key>organization</key>
+  <string>your-team-name</string>
+  <key>onboarding</key>
+  <false/>
+</dict>
 ```
 
 ## Turn on instant authentication
@@ -53,8 +58,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
-* [ Windows ](#tab-panel-7562)
-* [ macOS ](#tab-panel-7563)
+* [ Windows ](#tab-panel-7815)
+* [ macOS ](#tab-panel-7816)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 
@@ -82,13 +87,86 @@ On macOS, you can configure `AutoLaunchProtocolsFromOrigins` by deploying a prop
   * Google Chrome: `com.google.Chrome.plist`
   * Microsoft Edge: `com.microsoft.Edge.plist`
 2. Using a text editor, add the following content to your plist:
-```
-<key>AutoLaunchProtocolsFromOrigins</key><array>  <dict>    <key>allowed_origins</key>    <array>      <string>https://<your-team-name>.cloudflareaccess.com</string>    </array>    <key>protocol</key>    <string>com.cloudflare.warp</string>  </dict></array>
+```xml
+<key>AutoLaunchProtocolsFromOrigins</key>
+<array>
+  <dict>
+    <key>allowed_origins</key>
+    <array>
+      <string>https://<your-team-name>.cloudflareaccess.com</string>
+    </array>
+    <key>protocol</key>
+    <string>com.cloudflare.warp</string>
+  </dict>
+</array>
 ```
 Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
 3. Some MDMs require converting the `.plist` to a `.mobileconfig` before pushing it to a device. You can use a [file converter ↗](https://github.com/timsutton/mcxToProfile) or modify the following example `com.google.Chrome.mobileconfig`:
-```
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict>    <key>PayloadIdentifier</key>    <string>com.google.chrome</string>    <key>PayloadRemovalDisallowed</key>    <true/>    <key>PayloadScope</key>    <string>System</string>    <key>PayloadType</key>    <string>Configuration</string>    <key>PayloadUUID</key>    <string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>    <key>PayloadOrganization</key>    <string></string>    <key>PayloadVersion</key>    <integer>1</integer>    <key>PayloadDisplayName</key>    <string>Google Chrome Policy</string>    <key>PayloadContent</key>    <array>        <dict>            <key>PayloadType</key>            <string>com.apple.ManagedClient.preferences</string>            <key>PayloadVersion</key>            <integer>1</integer>            <key>PayloadIdentifier</key>            <string>com.normandale</string>            <key>PayloadUUID</key>            <string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>            <key>PayloadEnabled</key>            <true/>            <key>PayloadDisplayName</key>            <string>Custom: (com.google.Chrome)</string>            <key>PayloadContent</key>            <dict>                <key>com.google.Chrome</key>                <dict>                    <key>Forced</key>                    <array>                        <dict>                            <key>mcx_preference_settings</key>                            <dict>                                <key>AutoLaunchProtocolsFromOrigins</key>                                <array>                                <dict>                                <key>allowed_origins</key>                                <array>                                <string>https://<your-team-name>.cloudflareaccess.com</string>                                </array>                                <key>protocol</key>                                <string>com.cloudflare.warp</string>                                </dict>                                </array>                            </dict>                        </dict>                    </array>                </dict>            </dict>        </dict>    </array></dict></plist>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadIdentifier</key>
+    <string>com.google.chrome</string>
+    <key>PayloadRemovalDisallowed</key>
+    <true/>
+    <key>PayloadScope</key>
+    <string>System</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>
+    <key>PayloadOrganization</key>
+    <string></string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <key>PayloadDisplayName</key>
+    <string>Google Chrome Policy</string>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.ManagedClient.preferences</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.normandale</string>
+            <key>PayloadUUID</key>
+            <string>8FCBDCA7-87B3-4610-A01A-B0FE4C5B57C8</string>
+            <key>PayloadEnabled</key>
+            <true/>
+            <key>PayloadDisplayName</key>
+            <string>Custom: (com.google.Chrome)</string>
+            <key>PayloadContent</key>
+            <dict>
+                <key>com.google.Chrome</key>
+                <dict>
+                    <key>Forced</key>
+                    <array>
+                        <dict>
+                            <key>mcx_preference_settings</key>
+                            <dict>
+                                <key>AutoLaunchProtocolsFromOrigins</key>
+                                <array>
+                                <dict>
+                                <key>allowed_origins</key>
+                                <array>
+                                <string>https://<your-team-name>.cloudflareaccess.com</string>
+                                </array>
+                                <key>protocol</key>
+                                <string>com.cloudflare.warp</string>
+                                </dict>
+                                </array>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
 ```
 4. Upload the `.plist` or `.mobileconfig` file to your preferred MDM.
 5. Deploy the configuration profile to your devices.

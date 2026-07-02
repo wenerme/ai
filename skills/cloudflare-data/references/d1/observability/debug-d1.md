@@ -18,16 +18,25 @@ D1's [stmt.](https://developers.cloudflare.com/d1/worker-api/prepared-statements
 
 For example, the code below has a query with an invalid keyword - `INSERTZ` instead of `INSERT`:
 
-JavaScript
+**JavaScript**
 
-```
-try {    // This is an intentional misspelling    await db.exec("INSERTZ INTO my_table (name, employees) VALUES ()");} catch (e: any) {    console.error({        message: e.message    });}
+```js
+try {
+    // This is an intentional misspelling
+    await db.exec("INSERTZ INTO my_table (name, employees) VALUES ()");
+} catch (e: any) {
+    console.error({
+        message: e.message
+    });
+}
 ```
 
 The code above throws the following error message:
 
-```
-{  "message": "D1_EXEC_ERROR: Error in line 1: INSERTZ INTO my_table (name, employees) VALUES (): sql error: near \"INSERTZ\": syntax error in INSERTZ INTO my_table (name, employees) VALUES () at offset 0"}
+```json
+{
+  "message": "D1_EXEC_ERROR: Error in line 1: INSERTZ INTO my_table (name, employees) VALUES (): sql error: near \"INSERTZ\": syntax error in INSERTZ INTO my_table (name, employees) VALUES () at offset 0"
+}
 ```
 
 Note

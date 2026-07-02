@@ -20,9 +20,7 @@ Testing scheduled() handlers in local development
 
 You can test the behavior of your `scheduled()` handler in local development by sending an HTTP request to `/cdn-cgi/handler/scheduled` to trigger the handler. Pass `?format=json` to return the structured scheduled handler result.
 
-Terminal window
-
-```
+```sh
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 ```
 
@@ -30,27 +28,46 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-12061)
-* [  TypeScript ](#tab-panel-12062)
-* [  Python ](#tab-panel-12063)
+* [  JavaScript ](#tab-panel-12356)
+* [  TypeScript ](#tab-panel-12357)
+* [  Python ](#tab-panel-12358)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async scheduled(controller, env, ctx) {    await doSomeTaskOnASchedule();  },};
-```
-
-TypeScript
-
-```
-interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    await doSomeTaskOnASchedule();  },};
+```js
+export default {
+  async scheduled(controller, env, ctx) {
+    await doSomeTaskOnASchedule();
+  },
+};
 ```
 
-Python
+**TypeScript**
 
+```ts
+interface Env {}
+export default {
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    await doSomeTaskOnASchedule();
+  },
+};
 ```
+
+**Python**
+
+```python
 from workers import WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        # controller.cron contains the cron pattern that triggered this event        # controller.scheduledTime contains the scheduled time in ms since epoch        print(f"Cron triggered: {controller.cron}")
+
+
+class Default(WorkerEntrypoint):
+    async def scheduled(self, controller, env, ctx):
+        # controller.cron contains the cron pattern that triggered this event
+        # controller.scheduledTime contains the scheduled time in ms since epoch
+        print(f"Cron triggered: {controller.cron}")
 ```
 
 ### Properties
@@ -75,42 +92,81 @@ class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, c
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-12067)
-* [  wrangler.toml ](#tab-panel-12068)
+* [  wrangler.jsonc ](#tab-panel-12362)
+* [  wrangler.toml ](#tab-panel-12363)
 
-JSONC
+**JSONC**
 
-```
-{  "triggers": {    "crons": ["*/5 * * * *", "0 0 * * *"],  },}
-```
-
-TOML
-
-```
-[triggers]crons = [ "*/5 * * * *", "0 0 * * *" ]
+```jsonc
+{
+  "triggers": {
+    "crons": ["*/5 * * * *", "0 0 * * *"],
+  },
+}
 ```
 
-* [  JavaScript ](#tab-panel-12064)
-* [  TypeScript ](#tab-panel-12065)
-* [  Python ](#tab-panel-12066)
+**TOML**
 
-JavaScript
-
-```
-export default {  async scheduled(controller, env, ctx) {    switch (controller.cron) {      case "*/5 * * * *":        await fetch("https://example.com/api/sync");        break;      case "0 0 * * *":        await env.MY_KV.put("last-cleanup", new Date().toISOString());        break;    }  },};
+```toml
+[triggers]
+crons = [ "*/5 * * * *", "0 0 * * *" ]
 ```
 
-TypeScript
+* [  JavaScript ](#tab-panel-12359)
+* [  TypeScript ](#tab-panel-12360)
+* [  Python ](#tab-panel-12361)
 
-```
-export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    switch (controller.cron) {      case "*/5 * * * *":        await fetch("https://example.com/api/sync");        break;      case "0 0 * * *":        await env.MY_KV.put("last-cleanup", new Date().toISOString());        break;    }  },} satisfies ExportedHandler<Env>;
+**JavaScript**
+
+```js
+export default {
+  async scheduled(controller, env, ctx) {
+    switch (controller.cron) {
+      case "*/5 * * * *":
+        await fetch("https://example.com/api/sync");
+        break;
+      case "0 0 * * *":
+        await env.MY_KV.put("last-cleanup", new Date().toISOString());
+        break;
+    }
+  },
+};
 ```
 
-Python
+**TypeScript**
 
+```ts
+export default {
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    switch (controller.cron) {
+      case "*/5 * * * *":
+        await fetch("https://example.com/api/sync");
+        break;
+      case "0 0 * * *":
+        await env.MY_KV.put("last-cleanup", new Date().toISOString());
+        break;
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
-from workers import WorkerEntrypoint, fetchfrom datetime import datetime, timezone
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        if controller.cron == "*/5 * * * *":            await fetch("https://example.com/api/sync")        elif controller.cron == "0 0 * * *":            await env.MY_KV.put("last-cleanup", datetime.now(timezone.utc).isoformat())
+
+**Python**
+
+```python
+from workers import WorkerEntrypoint, fetch
+from datetime import datetime, timezone
+
+
+class Default(WorkerEntrypoint):
+    async def scheduled(self, controller, env, ctx):
+        if controller.cron == "*/5 * * * *":
+            await fetch("https://example.com/api/sync")
+        elif controller.cron == "0 0 * * *":
+            await env.MY_KV.put("last-cleanup", datetime.now(timezone.utc).isoformat())
 ```
 
 The value of `controller.cron` is the exact cron expression string from your configuration. It must match character-for-character, including spacing.

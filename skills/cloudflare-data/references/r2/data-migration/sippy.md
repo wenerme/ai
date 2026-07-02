@@ -61,9 +61,7 @@ To begin, install [npm ↗](https://docs.npmjs.com/getting-started). Then [insta
 
 Log in to Wrangler with the [wrangler login command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Then run the [r2 bucket sippy enable command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-sippy-enable):
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket sippy enable <BUCKET_NAME>
 ```
 
@@ -109,9 +107,7 @@ You can optionally select a time window to query. This defaults to the last 24 h
 
 To disable Sippy, run the [r2 bucket sippy disable command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-sippy-disable):
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket sippy disable <BUCKET_NAME>
 ```
 
@@ -149,8 +145,20 @@ To create credentials with the correct permissions:
 
 1. Log in to your AWS IAM account.
 2. Create a policy with the following format and replace `<BUCKET_NAME>` with the bucket you want to grant access to:
-```
-{  "Version": "2012-10-17",  "Statement": [    {      "Effect": "Allow",      "Action": ["s3:ListBucket*", "s3:GetObject*"],      "Resource": [        "arn:aws:s3:::<BUCKET_NAME>",        "arn:aws:s3:::<BUCKET_NAME>/*"      ]    }  ]}
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket*", "s3:GetObject*"],
+      "Resource": [
+        "arn:aws:s3:::<BUCKET_NAME>",
+        "arn:aws:s3:::<BUCKET_NAME>/*"
+      ]
+    }
+  ]
+}
 ```
 3. Create a new user and attach the created policy to that user.
 

@@ -291,10 +291,26 @@ Changing the order within the Cloudflare dashboard or API may result in configur
 
 You can manage the order of execution of your Gateway policies using Terraform. With version 5 of the Terraform Cloudflare provider, Gateway users can list their policies in a Terraform file with any desired integer precedence value. Cloudflare recommends starting with a precedence of `1000` and adding extra space between each policy's precedence for any future policies. For example:
 
-```
-resource "cloudflare_zero_trust_gateway_policy" "policy_1" {  account_id = var.cloudflare_account_id  # other attributes...  precedence = 1000}
-resource "cloudflare_zero_trust_gateway_policy" "policy_2" {  account_id = var.cloudflare_account_id  # other attributes...  precedence = 2000}
-resource "cloudflare_zero_trust_gateway_policy" "policy_3" {  account_id = var.cloudflare_account_id  # other attributes...  precedence = 3000}
+```tf
+resource "cloudflare_zero_trust_gateway_policy" "policy_1" {
+  account_id = var.cloudflare_account_id
+  # other attributes...
+  precedence = 1000
+}
+
+
+resource "cloudflare_zero_trust_gateway_policy" "policy_2" {
+  account_id = var.cloudflare_account_id
+  # other attributes...
+  precedence = 2000
+}
+
+
+resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
+  account_id = var.cloudflare_account_id
+  # other attributes...
+  precedence = 3000
+}
 ```
 
 To avoid precedence calculation errors when reordering policies with Terraform, you should move one policy at a time before running `terraform plan` and `terraform apply`. If you use both Terraform and the Cloudflare dashboard or API, sync your polices with `terraform refresh` before reordering policies in Terraform. Alternatively, you can set your account to [read-only in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only), only allowing changes using the API or Terraform.

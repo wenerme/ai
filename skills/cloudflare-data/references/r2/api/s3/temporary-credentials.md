@@ -104,18 +104,26 @@ Restrict access to specific prefixes or objects within the bucket. Omit these fi
 
 **Temporary Credentials API:** pass `prefixes` and `objects` as top-level fields on the request body.
 
-JSONC
+**JSONC**
 
-```
-{  "prefixes": ["uploads/user-123/"],  "objects": ["shared/manifest.json"]}
+```jsonc
+{
+  "prefixes": ["uploads/user-123/"],
+  "objects": ["shared/manifest.json"]
+}
 ```
 
 **Local signing:** set `paths.prefixPaths` and `paths.objectPaths` on the JWT payload.
 
-JSONC
+**JSONC**
 
-```
-{  "paths": {    "prefixPaths": ["uploads/user-123/"],    "objectPaths": ["shared/manifest.json"]  }}
+```jsonc
+{
+  "paths": {
+    "prefixPaths": ["uploads/user-123/"],
+    "objectPaths": ["shared/manifest.json"]
+  }
+}
 ```
 
 * `prefixes` / `prefixPaths`: keys starting with any listed prefix.
@@ -125,32 +133,52 @@ JSONC
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-10063)
-* [ Python ](#tab-panel-10064)
-* [ Environment variables ](#tab-panel-10065)
+* [ JavaScript ](#tab-panel-10142)
+* [ Python ](#tab-panel-10143)
+* [ Environment variables ](#tab-panel-10144)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { AwsClient } from "aws4fetch";
+
+
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
-const client = new AwsClient({  accessKeyId: ACCESS_KEY_ID,  secretAccessKey: SECRET_ACCESS_KEY,  sessionToken: SESSION_TOKEN,  service: "s3",});
+
+
+const client = new AwsClient({
+  accessKeyId: ACCESS_KEY_ID,
+  secretAccessKey: SECRET_ACCESS_KEY,
+  sessionToken: SESSION_TOKEN,
+  service: "s3",
+});
+
+
 const response = await client.fetch(`${R2_URL}/my-bucket/image.png`);
 ```
 
-Python
+**Python**
 
-```
+```python
 import boto3
-s3 = boto3.client(    service_name="s3",    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",    aws_access_key_id="<ACCESS_KEY_ID>",    aws_secret_access_key="<SECRET_ACCESS_KEY>",    aws_session_token="<SESSION_TOKEN>",    region_name="auto",)
+
+
+s3 = boto3.client(
+    service_name="s3",
+    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
+    aws_access_key_id="<ACCESS_KEY_ID>",
+    aws_secret_access_key="<SECRET_ACCESS_KEY>",
+    aws_session_token="<SESSION_TOKEN>",
+    region_name="auto",
+)
 ```
 
 Most AWS SDKs and the AWS CLI read credentials from these environment variables by default:
 
-Terminal window
-
-```
-AWS_ACCESS_KEY_ID=<ACCESS_KEY_ID>AWS_SECRET_ACCESS_KEY=<SECRET_ACCESS_KEY>AWS_SESSION_TOKEN=<SESSION_TOKEN>
+```sh
+AWS_ACCESS_KEY_ID=<ACCESS_KEY_ID>
+AWS_SECRET_ACCESS_KEY=<SECRET_ACCESS_KEY>
+AWS_SESSION_TOKEN=<SESSION_TOKEN>
 ```
 
 ## Security considerations

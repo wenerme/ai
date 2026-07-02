@@ -29,20 +29,33 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6676)
-* [  wrangler.toml ](#tab-panel-6677)
+* [  wrangler.jsonc ](#tab-panel-6924)
+* [  wrangler.toml ](#tab-panel-6925)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search_namespaces": [
+    {
+      "binding": "AI_SEARCH",
+      "namespace": "my-namespace"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "my-namespace"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "my-namespace"
+
+
+[[ai_search_namespaces]]
+binding = "AI_SEARCH"
+namespace = "my-namespace"
 ```
 
 | Field     | Type    | Required | Description                                                                                                                                                                                                                   |
@@ -55,20 +68,33 @@ compatibility_date = "2026-03-27"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6678)
-* [  wrangler.toml ](#tab-panel-6679)
+* [  wrangler.jsonc ](#tab-panel-6926)
+* [  wrangler.toml ](#tab-panel-6927)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search": [
+    {
+      "binding": "MY_SEARCH",
+      "instance_name": "my-instance"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search]]binding = "MY_SEARCH"instance_name = "my-instance"
+
+
+[[ai_search]]
+binding = "MY_SEARCH"
+instance_name = "my-instance"
 ```
 
 | Field          | Type    | Required | Description                                                                                          |
@@ -83,9 +109,9 @@ The Items API methods are available on both the `ai_search_namespaces` and `ai_s
 
 The examples below use the namespace binding.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
 ```
 
@@ -93,22 +119,40 @@ const instance = env.AI_SEARCH.get("my-instance");
 
 Uploads a document for indexing. Returns immediately. The document is queued for processing.
 
-TypeScript
+**TypeScript**
 
-```
-// Upload from a stringawait instance.items.upload(  "faq.md",  "# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",);
-// Upload from an ArrayBufferconst pdfResponse = await fetch("https://example.com/guide.pdf");const pdfBuffer = await pdfResponse.arrayBuffer();await instance.items.upload("guide.pdf", pdfBuffer);
-// Upload from a ReadableStreamawait instance.items.upload("doc.txt", request.body);
+```ts
+// Upload from a string
+await instance.items.upload(
+  "faq.md",
+  "# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",
+);
+
+
+// Upload from an ArrayBuffer
+const pdfResponse = await fetch("https://example.com/guide.pdf");
+const pdfBuffer = await pdfResponse.arrayBuffer();
+await instance.items.upload("guide.pdf", pdfBuffer);
+
+
+// Upload from a ReadableStream
+await instance.items.upload("doc.txt", request.body);
 ```
 
 #### Upload with metadata
 
 Attach [custom metadata](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) to a document for filtering in search queries. Custom metadata fields must be defined on the instance first using the [update()](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) method or at creation time.
 
-TypeScript
+**TypeScript**
 
-```
-await instance.items.upload("guide.pdf", pdfBuffer, {  metadata: {    category: "onboarding",    language: "en",    version: "2.0",  },});
+```ts
+await instance.items.upload("guide.pdf", pdfBuffer, {
+  metadata: {
+    category: "onboarding",
+    language: "en",
+    version: "2.0",
+  },
+});
 ```
 
 #### Parameters
@@ -130,11 +174,21 @@ await instance.items.upload("guide.pdf", pdfBuffer, {  metadata: {    category: 
 
 Uploads a document and polls until processing completes or the timeout is reached. Use this when you need to search the document immediately after upload.
 
-TypeScript
+**TypeScript**
 
-```
-// Wait for a specific document to finish indexing before searchingconst item = await instance.items.uploadAndPoll(  "handbook.txt",  handbookContent,);console.log(`handbook.txt status: ${item.status}`); // "completed"
-// Now search across all uploaded documentsconst results = await instance.search({  messages: [{ role: "user", content: "password reset policy" }],});
+```ts
+// Wait for a specific document to finish indexing before searching
+const item = await instance.items.uploadAndPoll(
+  "handbook.txt",
+  handbookContent,
+);
+console.log(`handbook.txt status: ${item.status}`); // "completed"
+
+
+// Now search across all uploaded documents
+const results = await instance.search({
+  messages: [{ role: "user", content: "password reset policy" }],
+});
 ```
 
 #### Parameters
@@ -166,11 +220,16 @@ Returns the full item object after polling completes:
 
 Returns a paginated list of items in the instance.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const { result, result_info } = await instance.items.list();
-for (const item of result) {  console.log(`${item.key} (${item.status})`);}// result_info.total_count contains the total number of items
+
+
+for (const item of result) {
+  console.log(`${item.key} (${item.status})`);
+}
+// result_info.total_count contains the total number of items
 ```
 
 #### Parameters
@@ -208,9 +267,9 @@ for (const item of result) {  console.log(`${item.key} (${item.status})`);}// re
 
 Deletes an item and its indexed chunks.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await instance.items.delete("item-id-123");
 ```
 
@@ -232,9 +291,9 @@ Returns a handle to a specific item for retrieving its status or downloading the
 
 Returns the status and metadata of a specific item.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const itemInfo = await instance.items.get("item-id-123").info();
 ```
 
@@ -262,10 +321,11 @@ const itemInfo = await instance.items.get("item-id-123").info();
 
 Downloads the original source file for an item.
 
-TypeScript
+**TypeScript**
 
-```
-const file = await instance.items.get("item-id-123").download();// file.body is a ReadableStream
+```ts
+const file = await instance.items.get("item-id-123").download();
+// file.body is a ReadableStream
 ```
 
 ##### Parameters

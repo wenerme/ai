@@ -58,8 +58,28 @@ After you create the VPC endpoint, a new entry in the VPC route table with the t
 3. Disable **Block all public access**.
 4. In **Bucket policy**, add the following policy:
 
-```
-{  "Version": "2012-10-17",  "Id": "VPCe",  "Statement": [    {      "Sid": "VPCe",      "Effect": "Allow",      "Principal": "*",      "Action": "s3:*",      "Resource": [        "arn:aws:s3:::<your-S3-bucket01>",        "arn:aws:s3:::<your-S3-bucket01>/*"      ],      "Condition": {        "StringEquals": {          "aws:SourceVpce": "<your-vpc-endpoint>"        }      }    }  ]}
+```json
+{
+  "Version": "2012-10-17",
+  "Id": "VPCe",
+  "Statement": [
+    {
+      "Sid": "VPCe",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::<your-S3-bucket01>",
+        "arn:aws:s3:::<your-S3-bucket01>/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceVpce": "<your-vpc-endpoint>"
+        }
+      }
+    }
+  ]
+}
 ```
 
 Your bucket policy will allow your VPC to access your S3 bucket.
@@ -127,8 +147,28 @@ flowchart TB
 3. Disable **Block all public access**.
 4. In **Bucket policy**, add the following policy:
 
-```
-{  "Version": "2012-10-17",  "Id": "SourceIP",  "Statement": [    {      "Sid": "SourceIP",      "Effect": "Allow",      "Principal": "*",      "Action": "s3:*",      "Resource": [        "arn:aws:s3:::<your-S3-bucket02>",        "arn:aws:s3:::<your-S3-bucket02>/*"      ],      "Condition": {        "IpAddress": {          "aws:SourceIp": "<your-dedicated-ip>/32"        }      }    }  ]}
+```json
+{
+  "Version": "2012-10-17",
+  "Id": "SourceIP",
+  "Statement": [
+    {
+      "Sid": "SourceIP",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::<your-S3-bucket02>",
+        "arn:aws:s3:::<your-S3-bucket02>/*"
+      ],
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": "<your-dedicated-ip>/32"
+        }
+      }
+    }
+  ]
+}
 ```
 
 ### 2\. Enable static website hosting for the S3 bucket

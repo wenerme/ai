@@ -48,10 +48,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Change Origin Post-Quantum Encryption setting
+**Change Origin Post-Quantum Encryption setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_post_quantum_encryption" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "<YOUR_CHOSEN_SETTING>"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_post_quantum_encryption" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "<YOUR_CHOSEN_SETTING>"
+  }'
 ```
 
 The possible values are:
@@ -64,9 +69,7 @@ The possible values are:
 
 To make sure that your origin server prefers the post-quantum key agreement, use the `bssl` tool of [BoringSSL ↗](https://github.com/google/boringssl):
 
-Terminal window
-
-```
+```bash
 $ bssl client -connect (your server):443 -curves X25519MLKEM768
 ```
 
@@ -95,20 +98,42 @@ ML-DSA private keys must be provided in the [seed-only encoding ↗](https://dat
 
 The following commands create a private certificate authority and a leaf certificate that chains to it, using ML-DSA-44\. Repeat once for an AOP client certificate, and once for a COTS server-facing certificate if you manage that side too.
 
-Terminal window
+```bash
+# Private ML-DSA-44 CA (30-year validity)
+openssl genpkey \
+  -algorithm mldsa44 \
+  -provparam ml-dsa.output_formats=seed-only \
+  -out ca.key
+openssl req -new -x509 \
+  -key ca.key \
+  -out ca.crt \
+  -days 10950 \
+  -subj "/CN=ML-DSA Origin CA"
 
-```
-# Private ML-DSA-44 CA (30-year validity)openssl genpkey \  -algorithm mldsa44 \  -provparam ml-dsa.output_formats=seed-only \  -out ca.keyopenssl req -new -x509 \  -key ca.key \  -out ca.crt \  -days 10950 \  -subj "/CN=ML-DSA Origin CA"
-# Leaf certificate signed by the CA (15-year validity)openssl genpkey \  -algorithm mldsa44 \  -provparam ml-dsa.output_formats=seed-only \  -out leaf.keyopenssl req -new \  -key leaf.key \  -out leaf.csr \  -subj "/CN=origin.example.com"openssl x509 -req \  -in leaf.csr \  -CA ca.crt -CAkey ca.key \  -CAcreateserial \  -out leaf.crt \  -days 5475 \  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature\nsubjectAltName=DNS:origin.example.com\n")
+
+# Leaf certificate signed by the CA (15-year validity)
+openssl genpkey \
+  -algorithm mldsa44 \
+  -provparam ml-dsa.output_formats=seed-only \
+  -out leaf.key
+openssl req -new \
+  -key leaf.key \
+  -out leaf.csr \
+  -subj "/CN=origin.example.com"
+openssl x509 -req \
+  -in leaf.csr \
+  -CA ca.crt -CAkey ca.key \
+  -CAcreateserial \
+  -out leaf.crt \
+  -days 5475 \
+  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature\nsubjectAltName=DNS:origin.example.com\n")
 ```
 
 The `-provparam ml-dsa.output_formats=seed-only` flag is required so that the private key is written in the FIPS 204 seed form rather than as the expanded private key. This is the only form Cloudflare currently accepts on upload.
 
 Verify the generated cert:
 
-Terminal window
-
-```
+```bash
 openssl x509 -in leaf.crt -noout -subject -issuer -dates -ext subjectAltName
 ```
 
@@ -118,8 +143,9 @@ ML-DSA client certificates are supported with both [zone-level](https://develope
 
 On the origin server side, install the ML-DSA CA certificate (the `ca.crt` file generated earlier) so that your TLS server can verify the client certificate that Cloudflare presents. For nginx, this looks like:
 
-```
-ssl_client_certificate /etc/ssl/cloudflare-aop-ca.crt;ssl_verify_client      on;
+```txt
+ssl_client_certificate /etc/ssl/cloudflare-aop-ca.crt;
+ssl_verify_client      on;
 ```
 
 Refer to the [AOP setup guide for origin servers](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/) for complete origin-side configuration.
@@ -134,18 +160,24 @@ Uploading a Custom Origin Trust Store CA replaces the default publicly trusted C
 
 On the origin server side, present the ML-DSA leaf certificate and its private key as the TLS server cert:
 
-```
-ssl_certificate     /etc/ssl/origin-mldsa.pem;ssl_certificate_key /etc/ssl/origin-mldsa.key;ssl_protocols       TLSv1.3;
+```txt
+ssl_certificate     /etc/ssl/origin-mldsa.pem;
+ssl_certificate_key /etc/ssl/origin-mldsa.key;
+ssl_protocols       TLSv1.3;
 ```
 
 ### Verify end-to-end
 
 Once AOP and COTS are configured, you can verify the post-quantum origin handshake from a host that has ML-DSA support. For example, from a machine with OpenSSL 3.5.0 or later, connect directly to your origin and confirm the handshake uses ML-DSA:
 
-Terminal window
-
-```
-openssl s_client \  -connect origin.example.com:443 \  -servername origin.example.com \  -CAfile ca.crt \  -cert leaf.crt \  -key leaf.key \  -brief
+```bash
+openssl s_client \
+  -connect origin.example.com:443 \
+  -servername origin.example.com \
+  -CAfile ca.crt \
+  -cert leaf.crt \
+  -key leaf.key \
+  -brief
 ```
 
 The output should show `Signature type: mldsa44` and `Negotiated TLS1.3 group: X25519MLKEM768`.

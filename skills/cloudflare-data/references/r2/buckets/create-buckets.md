@@ -24,9 +24,7 @@ The R2 support in Wrangler allows you to manage buckets and perform basic operat
 
 Create a bucket with the [r2 bucket create](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-create) command:
 
-Terminal window
-
-```
+```sh
 wrangler r2 bucket create your-bucket-name
 ```
 
@@ -40,9 +38,7 @@ The placeholder text is only for the example.
 
 List buckets in the current account with the [r2 bucket list](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-list) command:
 
-Terminal window
-
-```
+```sh
 wrangler r2 bucket list
 ```
 

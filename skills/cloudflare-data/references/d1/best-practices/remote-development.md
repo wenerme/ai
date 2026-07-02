@@ -38,10 +38,15 @@ Users new to D1 and/or Cloudflare Workers should read the [D1 tutorial](https://
 
 Use the following Worker script to verify that the Worker has access to the bound D1 database:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    const res = await env.DB.prepare("SELECT 1;").run();    return new Response(JSON.stringify(res, null, 2));  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const res = await env.DB.prepare("SELECT 1;").run();
+    return new Response(JSON.stringify(res, null, 2));
+  },
+};
 ```
 
 ## Related resources

@@ -71,8 +71,8 @@ Virtual Appliance uses a DHCP connection at first boot to download your settings
 
 Select the appropriate tab to configure Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-7420)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-7421)
+* [ VMWare ESXi ](#tab-panel-7670)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-7671)
 
 **1\. Obtain the VMWare image**
 
@@ -106,9 +106,7 @@ Refer to [VMware's documentation](https://kb.vmware.com/s/article/1003825) for m
 
 1. Extract the files in the OVA image provided by your Cloudflare account team. For example:
 
-Terminal window
-
-```
+```sh
 tar -xvf mconn-2024-1-3.ova
 ```
 
@@ -208,8 +206,8 @@ For more information, refer to [Configure a virtual machine](#configure-a-virtua
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-7416)
-* [ API ](#tab-panel-7417)
+* [ Dashboard ](#tab-panel-7666)
+* [ API ](#tab-panel-7667)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -236,16 +234,23 @@ The `static_addressing` object is optional. Omit it if you are using DHCP. If yo
 
 Example:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/wans \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<YOUR_WAN_NAME>",  "physport": 1,  "priority": 0,  "vlan_tag": 0}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/wans \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<YOUR_WAN_NAME>",
+  "physport": 1,
+  "priority": 0,
+  "vlan_tag": 0
+}'
 ```
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-7418)
-* [ API ](#tab-panel-7419)
+* [ Dashboard ](#tab-panel-7668)
+* [ API ](#tab-panel-7669)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -271,10 +276,19 @@ Make a `POST` request [using the API](https://developers.cloudflare.com/api/reso
 
 Example:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/lans \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<YOUR_LAN_NAME>",  "physport": 2,  "static_addressing": {    "address": "172.16.14.0/24"  },  "vlan_tag": 0}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/lans \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<YOUR_LAN_NAME>",
+  "physport": 2,
+  "static_addressing": {
+    "address": "172.16.14.0/24"
+  },
+  "vlan_tag": 0
+}'
 ```
 
 #### Network segmentation

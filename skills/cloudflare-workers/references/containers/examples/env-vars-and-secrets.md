@@ -113,22 +113,53 @@ For full details on how to create secrets, see the [Workers Secrets documentatio
 
 Next, we need to add bindings to access our secrets, KV values, and environment variables in Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-7952)
-* [  wrangler.toml ](#tab-panel-7953)
+* [  wrangler.jsonc ](#tab-panel-8165)
+* [  wrangler.toml ](#tab-panel-8166)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-container-worker",
+  "vars": {
+    "ENV_VAR": "my-env-var"
+  },
+  "secrets_store_secrets": [
+    {
+      "binding": "SECRET_STORE",
+      "store_id": "demo",
+      "secret_name": "SECRET_STORE_SECRET"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "DEMO_KV",
+      "id": "<your-kv-namespace-id>"
+    }
+  ]
+  // rest of the configuration...
+}
 ```
-{  "name": "my-container-worker",  "vars": {    "ENV_VAR": "my-env-var"  },  "secrets_store_secrets": [    {      "binding": "SECRET_STORE",      "store_id": "demo",      "secret_name": "SECRET_STORE_SECRET"    }  ],  "kv_namespaces": [    {      "binding": "DEMO_KV",      "id": "<your-kv-namespace-id>"    }  ]  // rest of the configuration...}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 name = "my-container-worker"
-[vars]ENV_VAR = "my-env-var"
-[[secrets_store_secrets]]binding = "SECRET_STORE"store_id = "demo"secret_name = "SECRET_STORE_SECRET"
-[[kv_namespaces]]binding = "DEMO_KV"id = "<your-kv-namespace-id>"
+
+
+[vars]
+ENV_VAR = "my-env-var"
+
+
+[[secrets_store_secrets]]
+binding = "SECRET_STORE"
+store_id = "demo"
+secret_name = "SECRET_STORE_SECRET"
+
+
+[[kv_namespaces]]
+binding = "DEMO_KV"
+id = "<your-kv-namespace-id>"
 ```
 
 Note that `"WORKER_SECRET"` does not need to be specified in the Wrangler config file, as it is automatically added to `env`.
@@ -139,10 +170,20 @@ Also note that we did not configure anything specific for environment variables,
 
 Now, let's pass the env vars and secrets to our container using the `envVars` field in the `Container` class:
 
-JavaScript
+**JavaScript**
 
-```
-// https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-globalimport { env } from "cloudflare:workers";export class MyContainer extends Container {  defaultPort = 8080;  sleepAfter = "10s";  envVars = {    WORKER_SECRET: env.WORKER_SECRET,    ENV_VAR: env.ENV_VAR,    // we can't set the secret store binding or KV values as defaults here, as getting their values is asynchronous  };}
+```js
+// https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global
+import { env } from "cloudflare:workers";
+export class MyContainer extends Container {
+  defaultPort = 8080;
+  sleepAfter = "10s";
+  envVars = {
+    WORKER_SECRET: env.WORKER_SECRET,
+    ENV_VAR: env.ENV_VAR,
+    // we can't set the secret store binding or KV values as defaults here, as getting their values is asynchronous
+  };
+}
 ```
 
 Every instance of this `Container` will now have these variables and secrets set as environment variables when it launches.
@@ -153,15 +194,56 @@ But what if you want to set environment variables on a per-instance basis?
 
 In this case, use the `startAndWaitForPorts()` method to pass in environment variables for each instance.
 
-JavaScript
+**JavaScript**
 
-```
-export class MyContainer extends Container {  defaultPort = 8080;  sleepAfter = "10s";}
-export default {  async fetch(request, env) {    if (new URL(request.url).pathname === "/launch-instances") {      let instanceOne = env.MY_CONTAINER.getByName("foo");      let instanceTwo = env.MY_CONTAINER.getByName("bar");
+```js
+export class MyContainer extends Container {
+  defaultPort = 8080;
+  sleepAfter = "10s";
+}
+
+
+export default {
+  async fetch(request, env) {
+    if (new URL(request.url).pathname === "/launch-instances") {
+      let instanceOne = env.MY_CONTAINER.getByName("foo");
+      let instanceTwo = env.MY_CONTAINER.getByName("bar");
+
+
       // Each instance gets a different set of environment variables
-      await instanceOne.startAndWaitForPorts({        startOptions: {          envVars: {            ENV_VAR: env.ENV_VAR + "foo",            WORKER_SECRET: env.WORKER_SECRET,            SECRET_STORE_SECRET: await env.SECRET_STORE.get(),            KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),          },        },      });
-      await instanceTwo.startAndWaitForPorts({        startOptions: {          envVars: {            ENV_VAR: env.ENV_VAR + "bar",            WORKER_SECRET: env.WORKER_SECRET,            SECRET_STORE_SECRET: await env.SECRET_STORE.get(),            KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),            // You can also read different KV keys for different instances            INSTANCE_CONFIG: await env.DEMO_KV.get("instance-bar-config"),          },        },      });      return new Response("Container instances launched");    }
-    // ... etc ...  },};
+
+
+      await instanceOne.startAndWaitForPorts({
+        startOptions: {
+          envVars: {
+            ENV_VAR: env.ENV_VAR + "foo",
+            WORKER_SECRET: env.WORKER_SECRET,
+            SECRET_STORE_SECRET: await env.SECRET_STORE.get(),
+            KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),
+          },
+        },
+      });
+
+
+      await instanceTwo.startAndWaitForPorts({
+        startOptions: {
+          envVars: {
+            ENV_VAR: env.ENV_VAR + "bar",
+            WORKER_SECRET: env.WORKER_SECRET,
+            SECRET_STORE_SECRET: await env.SECRET_STORE.get(),
+            KV_VALUE: await env.DEMO_KV.get("KV_VALUE"),
+            // You can also read different KV keys for different instances
+            INSTANCE_CONFIG: await env.DEMO_KV.get("instance-bar-config"),
+          },
+        },
+      });
+      return new Response("Container instances launched");
+    }
+
+
+    // ... etc ...
+  },
+};
 ```
 
 ## Reading KV values in containers
@@ -172,24 +254,70 @@ Here are common patterns for using KV with containers:
 
 ### Configuration data
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    if (new URL(request.url).pathname === "/configure-container") {      // Read configuration from KV      const config = await env.DEMO_KV.get("container-config", "json");      const apiUrl = await env.DEMO_KV.get("api-endpoint");
+```js
+export default {
+  async fetch(request, env) {
+    if (new URL(request.url).pathname === "/configure-container") {
+      // Read configuration from KV
+      const config = await env.DEMO_KV.get("container-config", "json");
+      const apiUrl = await env.DEMO_KV.get("api-endpoint");
+
+
       let container = env.MY_CONTAINER.getByName("configured");
-      await container.startAndWaitForPorts({        startOptions: {          envVars: {            CONFIG_JSON: JSON.stringify(config),            API_ENDPOINT: apiUrl,            DEPLOYMENT_ENV: await env.DEMO_KV.get("deployment-env"),          },        },      });
-      return new Response("Container configured and launched");    }  },};
+
+
+      await container.startAndWaitForPorts({
+        startOptions: {
+          envVars: {
+            CONFIG_JSON: JSON.stringify(config),
+            API_ENDPOINT: apiUrl,
+            DEPLOYMENT_ENV: await env.DEMO_KV.get("deployment-env"),
+          },
+        },
+      });
+
+
+      return new Response("Container configured and launched");
+    }
+  },
+};
 ```
 
 ### Feature flags
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    if (new URL(request.url).pathname === "/launch-with-features") {      // Read feature flags from KV      const featureFlags = {        ENABLE_FEATURE_A: await env.DEMO_KV.get("feature-a-enabled"),        ENABLE_FEATURE_B: await env.DEMO_KV.get("feature-b-enabled"),        DEBUG_MODE: await env.DEMO_KV.get("debug-enabled"),      };
+```js
+export default {
+  async fetch(request, env) {
+    if (new URL(request.url).pathname === "/launch-with-features") {
+      // Read feature flags from KV
+      const featureFlags = {
+        ENABLE_FEATURE_A: await env.DEMO_KV.get("feature-a-enabled"),
+        ENABLE_FEATURE_B: await env.DEMO_KV.get("feature-b-enabled"),
+        DEBUG_MODE: await env.DEMO_KV.get("debug-enabled"),
+      };
+
+
       let container = env.MY_CONTAINER.getByName("features");
-      await container.startAndWaitForPorts({        startOptions: {          envVars: {            ...featureFlags,            CONTAINER_VERSION: "1.2.3",          },        },      });
-      return new Response("Container launched with feature flags");    }  },};
+
+
+      await container.startAndWaitForPorts({
+        startOptions: {
+          envVars: {
+            ...featureFlags,
+            CONTAINER_VERSION: "1.2.3",
+          },
+        },
+      });
+
+
+      return new Response("Container launched with feature flags");
+    }
+  },
+};
 ```
 
 ## Build-time environment variables

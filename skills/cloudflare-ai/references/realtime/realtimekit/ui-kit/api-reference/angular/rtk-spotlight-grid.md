@@ -38,14 +38,20 @@ A grid component that renders two lists of participants: `pinnedParticipants` an
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-spotlight-grid></rtk-spotlight-grid>
+```html
+<!-- component.html -->
+<rtk-spotlight-grid></rtk-spotlight-grid>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-spotlight-grid aspectRatio="example" gap="42" gridSize="md"></rtk-spotlight-grid>
+```html
+<!-- component.html -->
+<rtk-spotlight-grid
+ aspectRatio="example"
+ gap="42"
+ gridSize="md">
+</rtk-spotlight-grid>
 ```
 
 ```json

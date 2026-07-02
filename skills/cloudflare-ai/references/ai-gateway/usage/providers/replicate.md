@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate
 ```
 
@@ -37,10 +37,19 @@ When making requests to Replicate, ensure you have the following:
 
 ### cURL
 
-Request
+**Request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \  --header 'Authorization: Bearer {replicate_api_token}' \  --header 'Content-Type: application/json' \  --data '{    "version": "anthropic/claude-4.5-haiku",    "input":      {        "prompt": "Write a haiku about Cloudflare"      }    }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \
+  --header 'Authorization: Bearer {replicate_api_token}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "version": "anthropic/claude-4.5-haiku",
+    "input":
+      {
+        "prompt": "Write a haiku about Cloudflare"
+      }
+    }'
 ```
 
 ```json

@@ -29,16 +29,29 @@ Fully featured chat component with image & file upload, emoji picker and auto-sc
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChat } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChat />;}
+
+
+function MyComponent() {
+  return <RtkChat />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChat } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChat      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChat
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

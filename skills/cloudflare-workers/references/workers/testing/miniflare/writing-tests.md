@@ -44,22 +44,58 @@ Miniflare is a low-level API that exposes a large variety of configuration optio
 
 Before writing a test, you will need to create a Worker. Since Miniflare is a low-level API that emulates the Cloudflare platform primitives, your Worker will need to be written in JavaScript or you'll need to [integrate your own build pipeline](#custom-builds) into your testing setup. Here's an example JavaScript-only Worker:
 
-src/index.js
+**src/index.js**
 
-```
-export default {  async fetch(request) {    return new Response(`Hello World`);  },};
+```js
+export default {
+  async fetch(request) {
+    return new Response(`Hello World`);
+  },
+};
 ```
 
 Next, you will need to create an initial test file:
 
-src/index.test.js
+**src/index.test.js**
 
-```
-import assert from "node:assert";import test, { after, before, describe } from "node:test";import { Miniflare } from "miniflare";
-describe("worker", () => {  /**   * @type {Miniflare}   */  let worker;
-  before(async () => {    worker = new Miniflare({      modules: [        {          type: "ESModule",          path: "src/index.js",        },      ],    });    await worker.ready;  });
-  test("hello world", async () => {    assert.strictEqual(      await (await worker.dispatchFetch("http://example.com")).text(),      "Hello World",    );  });
-  after(async () => {    await worker.dispose();  });});
+```js
+import assert from "node:assert";
+import test, { after, before, describe } from "node:test";
+import { Miniflare } from "miniflare";
+
+
+describe("worker", () => {
+  /**
+   * @type {Miniflare}
+   */
+  let worker;
+
+
+  before(async () => {
+    worker = new Miniflare({
+      modules: [
+        {
+          type: "ESModule",
+          path: "src/index.js",
+        },
+      ],
+    });
+    await worker.ready;
+  });
+
+
+  test("hello world", async () => {
+    assert.strictEqual(
+      await (await worker.dispatchFetch("http://example.com")).text(),
+      "Hello World",
+    );
+  });
+
+
+  after(async () => {
+    await worker.dispose();
+  });
+});
 ```
 
 You should be able to run the above test via `node --test`
@@ -78,48 +114,103 @@ Miniflare does not read [Wrangler's config file](https://developers.cloudflare.c
 
 The `dispatchFetch()` API from Miniflare allows you to send requests to your Worker and assert that the correct response is returned, but sometimes you need to interact directly with bindings in tests. For use cases like that, Miniflare provides the [getBindings()](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#reference) API. For instance, to access an environment variable in your tests, adapt the test file `src/index.test.js` as follows:
 
-src/index.test.js
+**src/index.test.js**
 
-```
-...describe("worker", () => {  ...  before(async () => {    worker = new Miniflare({      ...      bindings: {        FOO: "Hello Bindings",      },    });    ...  });
-  test("text binding", async () => {    const bindings = await worker.getBindings();    assert.strictEqual(bindings.FOO, "Hello Bindings");  });  ...});
+```js
+...
+describe("worker", () => {
+  ...
+  before(async () => {
+    worker = new Miniflare({
+      ...
+      bindings: {
+        FOO: "Hello Bindings",
+      },
+    });
+    ...
+  });
+
+
+  test("text binding", async () => {
+    const bindings = await worker.getBindings();
+    assert.strictEqual(bindings.FOO, "Hello Bindings");
+  });
+  ...
+});
 ```
 
 You can also interact with local resources such as KV and R2 using the same API as you would from a Worker. For example, here's how you would interact with a KV namespace:
 
-src/index.test.js
+**src/index.test.js**
 
-```
-...describe("worker", () => {  ...  before(async () => {    worker = new Miniflare({      ...      kvNamespaces: ["KV"],    });    ...  });
-  test("kv binding", async () => {    const bindings = await worker.getBindings();    await bindings.KV.put("key", "value");    assert.strictEqual(await bindings.KV.get("key"), "value");  });  ...});
+```js
+...
+describe("worker", () => {
+  ...
+  before(async () => {
+    worker = new Miniflare({
+      ...
+      kvNamespaces: ["KV"],
+    });
+    ...
+  });
+
+
+  test("kv binding", async () => {
+    const bindings = await worker.getBindings();
+    await bindings.KV.put("key", "value");
+    assert.strictEqual(await bindings.KV.get("key"), "value");
+  });
+  ...
+});
 ```
 
 ## More complex Workers
 
 The example given above shows how to test a simple Worker consisting of a single JavaScript file. However, most real-world Workers are more complex than that. Miniflare supports providing all constituent files of your Worker directly using the API:
 
-JavaScript
+**JavaScript**
 
-```
-new Miniflare({  modules: [    {      type: "ESModule",      path: "src/index.js",    },    {      type: "ESModule",      path: "src/imported.js",    },  ],});
+```js
+new Miniflare({
+  modules: [
+    {
+      type: "ESModule",
+      path: "src/index.js",
+    },
+    {
+      type: "ESModule",
+      path: "src/imported.js",
+    },
+  ],
+});
 ```
 
 This can be a bit cumbersome as your Worker grows. To help with this, Miniflare can also crawl your module graph to automatically figure out which modules to include:
 
-JavaScript
+**JavaScript**
 
-```
-new Miniflare({  scriptPath: "src/index-with-imports.js",  modules: true,  modulesRules: [{ type: "ESModule", include: ["**/*.js"] }],});
+```js
+new Miniflare({
+  scriptPath: "src/index-with-imports.js",
+  modules: true,
+  modulesRules: [{ type: "ESModule", include: ["**/*.js"] }],
+});
 ```
 
 ## Custom builds
 
 In many real-world cases, Workers are not written in plain JavaScript but instead consist of multiple TypeScript files that import from npm packages and other dependencies, which are then bundled by a build tool. When testing your Worker via Miniflare directly you need to run this build tool before your tests. Exactly how this build is run will depend on the specific test framework you use, but for `node:test` it would likely be in a `setup()` hook. For example, if you use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to build and deploy your Worker, you could spawn a `wrangler build` command like this:
 
-JavaScript
+**JavaScript**
 
-```
-before(() => {  spawnSync("npx wrangler build -c wrangler-build.json", {    shell: true,    stdio: "pipe",  });});
+```js
+before(() => {
+  spawnSync("npx wrangler build -c wrangler-build.json", {
+    shell: true,
+    stdio: "pipe",
+  });
+});
 ```
 
 ```json

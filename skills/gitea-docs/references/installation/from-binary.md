@@ -36,7 +36,22 @@ chmod +x gitea
 
 Note that the above command will download Gitea @version@ for 64-bit Linux.
 
-## Verify GPG signature
+## Verify signature
+
+### Sigstore
+
+Starting with v1.27 Gitea signs all binaries using [sigstore](https://sigstore.dev/) to prevent against unwanted modification of binaries.
+To validate the binary, download the bundle file which ends in `sigstore.json` for the binary you downloaded and use the [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) command line tool.
+
+```sh
+cosign verify-blob gitea-@version@-linux-amd64 --bundle gitea-@version@-linux-amd64.sigstore.json --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity-regexp="https://github.com/go-gitea/gitea/.github/workflows/release-.*"
+```
+
+If the command outputs `Verified OK`, binary was not modified.
+
+> **note**: The above command will match any release workflow. You may choose to restrict the identity further by requiring a specific branch or workflow to be matched. For example this url will match only nightly builds made on main branch: `https://github.com/go-gitea/gitea/.github/workflows/release-nightly.yml@refs/heads/main`
+
+### GPG
 
 Gitea signs all binaries with a [GPG key](https://keys.openpgp.org/search?q=teabot%40gitea.io) to prevent against unwanted modification of binaries.
 To validate the binary, download the signature file which ends in `.asc` for the binary you downloaded and use the GPG command line tool.

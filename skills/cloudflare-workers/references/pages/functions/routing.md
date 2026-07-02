@@ -101,20 +101,24 @@ The URL segment(s) that match the placeholder (`[user]`) will be available in th
 
 For files which match a single URL segment (use a single set of brackets), the values are returned as a string:
 
-JavaScript
+**JavaScript**
 
-```
-export function onRequest(context) {  return new Response(context.params.user);}
+```js
+export function onRequest(context) {
+  return new Response(context.params.user);
+}
 ```
 
 The above logic will return `daniel` for requests to `/users/daniel`.
 
 For files which match against multiple URL segments (use a double set of brackets), the values are returned as an array:
 
-JavaScript
+**JavaScript**
 
-```
-export function onRequest(context) {  return new Response(JSON.stringify(context.params.catchall));}
+```js
+export function onRequest(context) {
+  return new Response(JSON.stringify(context.params.catchall));
+}
 ```
 
 The above logic will return `["daniel", "xyz", "123"]` for requests to `/users/daniel/xyz/123`.
@@ -181,16 +185,24 @@ Wildcards match any number of path segments (slashes). For example, `/users/*` w
 
 Below is an example of a `_routes.json`.
 
-```
-{  "version": 1,  "include": ["/*"],  "exclude": []}
+```json
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": []
+}
 ```
 
 This `_routes.json` will invoke your Functions on all routes.
 
 Below is another example of a `_routes.json` file. Any route inside the `/build` directory will not invoke the Function and will not incur a Functions invocation charge.
 
-```
-{  "version": 1,  "include": ["/*"],  "exclude": ["/build/*"]}
+```json
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": ["/build/*"]
+}
 ```
 
 ## Fail open / closed

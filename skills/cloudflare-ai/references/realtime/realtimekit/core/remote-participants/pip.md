@@ -28,25 +28,25 @@ Picture-in-Picture is not available on this platform.
 
 Picture-in-Picture API might not be supported in your browser. Always check for support before using the API.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const isSupported = meeting.participants.pip.isSupported();
 ```
 
 ## Enable Picture-in-Picture
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await meeting.participants.pip.enable();
 ```
 
 ## Disable Picture-in-Picture
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await meeting.participants.pip.disable();
 ```
 
@@ -54,19 +54,19 @@ await meeting.participants.pip.disable();
 
 Picture-in-Picture API might not be supported in your browser. Always check for support before using the API.
 
-```
+```jsx
 const isSupported = meeting.participants.pip.isSupported();
 ```
 
 ## Enable Picture-in-Picture
 
-```
+```jsx
 await meeting.participants.pip.enable();
 ```
 
 ## Disable Picture-in-Picture
 
-```
+```jsx
 await meeting.participants.pip.disable();
 ```
 

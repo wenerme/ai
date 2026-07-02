@@ -28,202 +28,382 @@ RunwayML's video generation model supporting both text-to-video and image-to-vid
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1844)
-* [ cURL ](#tab-panel-1845)
+* [ TypeScript ](#tab-panel-1892)
+* [ cURL ](#tab-panel-1893)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt: 'A timelapse of the Eiffel Tower on a sunny day with clouds flying by',
+    duration: 5,
+    ratio: '1280:720',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt: 'A timelapse of the Eiffel Tower on a sunny day with clouds flying by',    duration: 5,    ratio: '1280:720',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "A timelapse of the Eiffel Tower on a sunny day with clouds flying by",
+    "duration": 5,
+    "ratio": "1280:720"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1890)
+* [ Raw response ](#tab-panel-1891)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "A timelapse of the Eiffel Tower on a sunny day with clouds flying by",    "duration": 5,    "ratio": "1280:720"  }}'
-```
-
-* [ Output ](#tab-panel-1842)
-* [ Raw response ](#tab-panel-1843)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/fd840364-360e-4903-8500-d5787fd8ab90.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/fd840364-360e-4903-8500-d5787fd8ab90.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Portrait Video**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-1848)
-* [ cURL ](#tab-panel-1849)
+* [ TypeScript ](#tab-panel-1896)
+* [ cURL ](#tab-panel-1897)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt:
+      'A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling',
+    duration: 5,
+    ratio: '720:1280',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt:      'A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling',    duration: 5,    ratio: '720:1280',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling",
+    "duration": 5,
+    "ratio": "720:1280"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1894)
+* [ Raw response ](#tab-panel-1895)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling",    "duration": 5,    "ratio": "720:1280"  }}'
-```
-
-* [ Output ](#tab-panel-1846)
-* [ Raw response ](#tab-panel-1847)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/44f43eac-8c12-4084-ace3-6395fa67c13e.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/44f43eac-8c12-4084-ace3-6395fa67c13e.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **Nature Close-up**  — Close-up wildlife shot in 16:9
 
-* [ TypeScript ](#tab-panel-1852)
-* [ cURL ](#tab-panel-1853)
+* [ TypeScript ](#tab-panel-1900)
+* [ cURL ](#tab-panel-1901)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt:
+      'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
+    duration: 5,
+    ratio: '1280:720',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt:      'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',    duration: 5,    ratio: '1280:720',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",
+    "duration": 5,
+    "ratio": "1280:720"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1898)
+* [ Raw response ](#tab-panel-1899)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",    "duration": 5,    "ratio": "1280:720"  }}'
-```
-
-* [ Output ](#tab-panel-1850)
-* [ Raw response ](#tab-panel-1851)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/e03781eb-2544-45ae-a9a8-6148d556bf2a.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/e03781eb-2544-45ae-a9a8-6148d556bf2a.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **Cinematic Scene**  — Longer duration cinematic video
 
-* [ TypeScript ](#tab-panel-1856)
-* [ cURL ](#tab-panel-1857)
+* [ TypeScript ](#tab-panel-1904)
+* [ cURL ](#tab-panel-1905)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt:
+      'Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees',
+    duration: 10,
+    ratio: '1280:720',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt:      'Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees',    duration: 10,    ratio: '1280:720',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees",
+    "duration": 10,
+    "ratio": "1280:720"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1902)
+* [ Raw response ](#tab-panel-1903)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees",    "duration": 10,    "ratio": "1280:720"  }}'
-```
-
-* [ Output ](#tab-panel-1854)
-* [ Raw response ](#tab-panel-1855)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/23ea177e-523d-45b4-9f8c-c4f8d7238ff0.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/23ea177e-523d-45b4-9f8c-c4f8d7238ff0.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **Image-to-Video**  — Animate an existing image
 
-* [ TypeScript ](#tab-panel-1862)
-* [ cURL ](#tab-panel-1863)
+* [ TypeScript ](#tab-panel-1910)
+* [ cURL ](#tab-panel-1911)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt: 'Camera slowly pans across the scene, gentle wind blowing',
+    duration: 5,
+    image_input:
+      'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
+    ratio: '1280:720',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt: 'Camera slowly pans across the scene, gentle wind blowing',    duration: 5,    image_input:      'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',    ratio: '1280:720',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "Camera slowly pans across the scene, gentle wind blowing",
+    "duration": 5,
+    "image_input": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
+    "ratio": "1280:720"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1906)
+* [ Raw response ](#tab-panel-1907)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "Camera slowly pans across the scene, gentle wind blowing",    "duration": 5,    "image_input": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",    "ratio": "1280:720"  }}'
-```
-
-* [ Output ](#tab-panel-1858)
-* [ Raw response ](#tab-panel-1859)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/ab424367-7431-4a0a-aa39-52604ff9150a.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/ab424367-7431-4a0a-aa39-52604ff9150a.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **Reproducible Generation**  — Use seed for consistent results
 
-* [ TypeScript ](#tab-panel-1866)
-* [ cURL ](#tab-panel-1867)
+* [ TypeScript ](#tab-panel-1914)
+* [ cURL ](#tab-panel-1915)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt: 'A sailboat gliding across calm ocean waters at sunset',
+    duration: 5,
+    ratio: '1280:720',
+    seed: 42,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt: 'A sailboat gliding across calm ocean waters at sunset',    duration: 5,    ratio: '1280:720',    seed: 42,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "A sailboat gliding across calm ocean waters at sunset",
+    "duration": 5,
+    "ratio": "1280:720",
+    "seed": 42
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1908)
+* [ Raw response ](#tab-panel-1909)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "A sailboat gliding across calm ocean waters at sunset",    "duration": 5,    "ratio": "1280:720",    "seed": 42  }}'
-```
-
-* [ Output ](#tab-panel-1860)
-* [ Raw response ](#tab-panel-1861)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/0bdfbec7-0823-4529-bdb5-d37bb24adb0d.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/0bdfbec7-0823-4529-bdb5-d37bb24adb0d.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **With Content Moderation**  — Adjust content moderation settings
 
-* [ TypeScript ](#tab-panel-1868)
-* [ cURL ](#tab-panel-1869)
+* [ TypeScript ](#tab-panel-1916)
+* [ cURL ](#tab-panel-1917)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/gen-4.5',
+  {
+    prompt: 'A press conference with multiple speakers at podiums',
+    content_moderation: { public_figure_threshold: 'low' },
+    duration: 5,
+    ratio: '1280:720',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/gen-4.5',  {    prompt: 'A press conference with multiple speakers at podiums',    content_moderation: { public_figure_threshold: 'low' },    duration: 5,    ratio: '1280:720',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/gen-4.5",
+  "input": {
+    "prompt": "A press conference with multiple speakers at podiums",
+    "content_moderation": {
+      "public_figure_threshold": "low"
+    },
+    "duration": 5,
+    "ratio": "1280:720"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1912)
+* [ Raw response ](#tab-panel-1913)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/gen-4.5",  "input": {    "prompt": "A press conference with multiple speakers at podiums",    "content_moderation": {      "public_figure_threshold": "low"    },    "duration": 5,    "ratio": "1280:720"  }}'
-```
-
-* [ Output ](#tab-panel-1864)
-* [ Raw response ](#tab-panel-1865)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/75c4cb0d-20aa-4824-b1f3-32f33ab9269b.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/75c4cb0d-20aa-4824-b1f3-32f33ab9269b.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1870)
-* [ Output ](#tab-panel-1871)
+* [ Input ](#tab-panel-1918)
+* [ Output ](#tab-panel-1919)
 
-▶content\_moderation{}
+prompt
 
-`object`Content moderation settings
-
-duration
-
-`integer`requireddefault: 5maximum: 10minimum: 2Video duration in seconds
+`string`requiredminLength: 1maxLength: 1000Text prompt describing what should appear in the video
 
 image\_input
 
 `string`HTTPS URL, Runway URI, or data URI containing an image for image-to-video
 
-prompt
-
-`string`requiredmaxLength: 1000minLength: 1Text prompt describing what should appear in the video
-
 ratio
 
 `string`requireddefault: 1280:720enum: 1280:720, 720:1280, 1104:832, 960:960, 832:1104, 1584:672Resolution/aspect ratio of the output video
 
+duration
+
+`integer`requireddefault: 5minimum: 2maximum: 10Video duration in seconds
+
 seed
 
-`integer`maximum: 4294967295minimum: 0Random seed for reproducible results
+`integer`minimum: 0maximum: 4294967295Random seed for reproducible results
+
+▶content\_moderation{}
+
+`object`Content moderation settings
 
 video
 

@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 [["username"], ["picture"]]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart.names[*][0] == "picture")
 ```
 

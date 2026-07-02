@@ -14,15 +14,44 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The Agents SDK includes an MCP client that can pay for x402-protected tools. Use it from your Agents or any MCP client connection.
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent } from "agents";import { withX402Client } from "agents/x402";import { privateKeyToAccount } from "viem/accounts";
-export class MyAgent extends Agent {  // Your Agent definitions...
-  async onStart() {    const { id } = await this.mcp.connect(`${this.env.WORKER_URL}/mcp`);    const account = privateKeyToAccount(this.env.MY_PRIVATE_KEY);
-    this.x402Client = withX402Client(this.mcp.mcpConnections[id].client, {      network: "base-sepolia",      account,    });  }
-  onPaymentRequired(paymentRequirements): Promise<boolean> {    // Your human-in-the-loop confirmation flow...  }
-  async onToolCall(toolName: string, toolArgs: unknown) {    // The first parameter is the confirmation callback.    // Set to `null` for the agent to pay automatically.    return await this.x402Client.callTool(this.onPaymentRequired, {      name: toolName,      arguments: toolArgs,    });  }}
+```ts
+import { Agent } from "agents";
+import { withX402Client } from "agents/x402";
+import { privateKeyToAccount } from "viem/accounts";
+
+
+export class MyAgent extends Agent {
+  // Your Agent definitions...
+
+
+  async onStart() {
+    const { id } = await this.mcp.connect(`${this.env.WORKER_URL}/mcp`);
+    const account = privateKeyToAccount(this.env.MY_PRIVATE_KEY);
+
+
+    this.x402Client = withX402Client(this.mcp.mcpConnections[id].client, {
+      network: "base-sepolia",
+      account,
+    });
+  }
+
+
+  onPaymentRequired(paymentRequirements): Promise<boolean> {
+    // Your human-in-the-loop confirmation flow...
+  }
+
+
+  async onToolCall(toolName: string, toolArgs: unknown) {
+    // The first parameter is the confirmation callback.
+    // Set to `null` for the agent to pay automatically.
+    return await this.x402Client.callTool(this.onPaymentRequired, {
+      name: toolName,
+      arguments: toolArgs,
+    });
+  }
+}
 ```
 
 For a complete working example, see [x402-mcp on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
@@ -31,11 +60,13 @@ For a complete working example, see [x402-mcp on GitHub ↗](https://github.com/
 
 Store your private key securely:
 
-Terminal window
+```sh
+# Local development (.dev.vars)
+MY_PRIVATE_KEY="0x..."
 
-```
-# Local development (.dev.vars)MY_PRIVATE_KEY="0x..."
-# Productionnpx wrangler secret put MY_PRIVATE_KEY
+
+# Production
+npx wrangler secret put MY_PRIVATE_KEY
 ```
 
 Use `base-sepolia` for testing. Get test USDC from the [Circle faucet ↗](https://faucet.circle.com/).

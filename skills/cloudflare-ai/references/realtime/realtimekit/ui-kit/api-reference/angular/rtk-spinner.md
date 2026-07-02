@@ -25,14 +25,18 @@ A component which shows an animating spinner.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-spinner></rtk-spinner>
+```html
+<!-- component.html -->
+<rtk-spinner></rtk-spinner>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-spinner size="md"></rtk-spinner>
+```html
+<!-- component.html -->
+<rtk-spinner
+ size="md">
+</rtk-spinner>
 ```
 
 ```json

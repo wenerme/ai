@@ -29,14 +29,20 @@ A component which allows you to change current page and view mode of active part
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-grid-pagination></rtk-grid-pagination>
+```html
+<!-- component.html -->
+<rtk-grid-pagination></rtk-grid-pagination>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-grid-pagination [meeting]="meeting" size="md" [variant]="gridpaginationvariants"></rtk-grid-pagination>
+```html
+<!-- component.html -->
+<rtk-grid-pagination
+ [meeting]="meeting"
+ size="md"
+ [variant]="gridpaginationvariants">
+</rtk-grid-pagination>
 ```
 
 ```json

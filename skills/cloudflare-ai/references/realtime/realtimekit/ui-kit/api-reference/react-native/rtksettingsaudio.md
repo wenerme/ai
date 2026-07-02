@@ -28,16 +28,24 @@ Audio settings panel with device selection dropdown, audio visualizer preview, a
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettingsAudio } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettingsAudio meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkSettingsAudio meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettingsAudio } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettingsAudio meeting={meeting} size="md" states={states} />;}
+
+
+function MyComponent() {
+  return <RtkSettingsAudio meeting={meeting} size="md" states={states} />;
+}
 ```
 
 ```json

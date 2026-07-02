@@ -22,8 +22,9 @@ Requires a Cloudflare Enterprise plan. You must also enable [AI Security for App
 
 Example usage:
 
-```
-# Matches requests where the estimated token count exceeds 4,000:(cf.llm.prompt.token_count gt 4000)
+```txt
+# Matches requests where the estimated token count exceeds 4,000:
+(cf.llm.prompt.token_count gt 4000)
 ```
 
 Categories:

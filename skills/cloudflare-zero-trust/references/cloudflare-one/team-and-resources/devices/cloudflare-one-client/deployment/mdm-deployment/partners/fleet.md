@@ -85,15 +85,28 @@ To add the Cloudflare One Client installer package for distribution to your host
 5. Select **Advanced options**.
 6. In **Install script**, replace the default script with the following:
 
-Terminal window
-
-```
+```bash
 $logFile = "${env:TEMP}/fleet-install-software.log"
+
+
 try {
-$installProcess = Start-Process msiexec.exe `  -ArgumentList "/quiet /norestart ORGANIZATION=your-team-name SUPPORT_URL=https://example.com /lv ${logFile} /i `"${env:INSTALLER_PATH}`"" `  -PassThru -Verb RunAs -Wait
+
+
+$installProcess = Start-Process msiexec.exe `
+  -ArgumentList "/quiet /norestart ORGANIZATION=your-team-name SUPPORT_URL=https://example.com /lv ${logFile} /i `"${env:INSTALLER_PATH}`"" `
+  -PassThru -Verb RunAs -Wait
+
+
 Get-Content $logFile -Tail 500
+
+
 Exit $installProcess.ExitCode
-} catch {  Write-Host "Error: $_"  Exit 1}
+
+
+} catch {
+  Write-Host "Error: $_"
+  Exit 1
+}
 ```
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument.
@@ -124,12 +137,26 @@ To uninstall the Fleet-deployed Cloudflare One Client:
 
 Fleet allows you to [execute custom scripts ↗](https://fleetdm.com/guides/scripts) on Linux hosts. The following example script creates an [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#linux) and installs the Cloudflare One Client on an Ubuntu 22.04 host:
 
-```
+```sh
 #!/bin/sh
-# Write the mdm.xml filetouch /var/lib/cloudflare-warp/mdm.xmlecho -e "<dict>\n   <key>organization</key>\n   <string>your-team-name</string>\n</dict>" > /var/lib/cloudflare-warp/mdm.xml
-# Add cloudflare gpg keycurl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-# Add this repo to your apt repositoriesecho "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ any main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-# Installsudo apt-get -y update && sudo apt-get -y install cloudflare-warp
+
+
+# Write the mdm.xml file
+touch /var/lib/cloudflare-warp/mdm.xml
+echo -e "<dict>\n   <key>organization</key>\n   <string>your-team-name</string>\n</dict>
+" > /var/lib/cloudflare-warp/mdm.xml
+
+
+# Add cloudflare gpg key
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+
+
+# Add this repo to your apt repositories
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ any main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+
+
+# Install
+sudo apt-get -y update && sudo apt-get -y install cloudflare-warp
 ```
 
 To install the Cloudflare One Client on other Linux distributions, refer to the [package repository ↗](https://pkg.cloudflareclient.com/).

@@ -27,14 +27,19 @@ A component which shows an image sent via chat.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-image-viewer></rtk-image-viewer>
+```html
+<!-- component.html -->
+<rtk-image-viewer></rtk-image-viewer>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-image-viewer [image]="imagemessage" size="md"></rtk-image-viewer>
+```html
+<!-- component.html -->
+<rtk-image-viewer
+ [image]="imagemessage"
+ size="md">
+</rtk-image-viewer>
 ```
 
 ```json

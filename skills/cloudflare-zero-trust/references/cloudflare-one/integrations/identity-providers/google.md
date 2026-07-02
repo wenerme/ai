@@ -34,12 +34,12 @@ You do not need to be a Google Cloud Platform user to integrate Google as an ide
 ![Location to create an OAuth client in the Google Cloud Platform console.](https://developers.cloudflare.com/_astro/create-oauth-client.BkzE5MZU_Z1EL96B.webp)
 6. Choose _Web application_ as the **Application type** and give your OAuth Client ID a name.
 7. Under **Authorized JavaScript origins**, in the **URIs** field, enter your team domain:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 8. Under **Authorized redirect URIs**, in the **URIs** field, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 9. After creating the OAuth client, select the OAuth client that you just created. Google will present the **OAuth Client ID** value and **Client secret** value. The client secret field functions like a password and should not be shared. Copy both the **OAuth Client ID** value and **Client secret** value.
@@ -55,8 +55,15 @@ To test that your connection is working, go to **Integrations** \> **Identity pr
 
 ## Example API Config
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>"  },  "type": "google",  "name": "my example idp"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>"
+  },
+  "type": "google",
+  "name": "my example idp"
+}
 ```
 
 ## Troubleshooting

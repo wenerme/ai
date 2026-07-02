@@ -34,8 +34,7 @@ By default, anyone on the Internet can connect to the server using the hostname 
 
 1. [Install cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) on the client machine.
 2. Run this command to open an RDP listening port:
-Terminal window
-```
+```sh
 cloudflared access rdp --hostname rdp.example.com --url rdp://localhost:3389
 ```
 This process will need to be configured to stay alive and autostart. If the process is killed, users will not be able to connect.

@@ -31,19 +31,26 @@ A component that houses all the header components.
 
 ### Basic Usage
 
-```
+```html
 <rtk-header></rtk-header>
 ```
 
 ### With Properties
 
-```
-<rtk-header size="md"></rtk-header>
+```html
+<rtk-header
+ size="md">
+</rtk-header>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-header");
-  el.disableRender= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-header");
+
+
+  el.disableRender= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

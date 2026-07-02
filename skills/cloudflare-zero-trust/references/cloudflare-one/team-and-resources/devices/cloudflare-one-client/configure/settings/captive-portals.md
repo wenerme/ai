@@ -71,13 +71,12 @@ Captive portal logs are used by Cloudflare Support to troubleshoot Cloudflare On
 
 To get captive portal logs:
 
-* [ Version 2026.2+ ](#tab-panel-7538)
-* [ Version 2026.1 and earlier ](#tab-panel-7539)
+* [ Version 2026.2+ ](#tab-panel-7788)
+* [ Version 2026.1 and earlier ](#tab-panel-7789)
 
 1. Open a terminal window.
 2. Run the following command:
-Terminal window
-```
+```sh
 warp-diag captive-portal
 ```
 3. When prompted with `You're currently connected via interface '<INTERFACE>' (<SSID>). Is this interface connected to the network causing issues?`, select **Yes** to confirm.

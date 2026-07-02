@@ -19,17 +19,18 @@ Do the following:
 1. [Download ↗](https://github.com/cloudflare/matched-data-cli/releases) the `matched-data-cli` tool for your platform from the **Releases** page on GitHub, under **Assets**.
 2. Extract the content of the downloaded `.tar.gz` file to a local folder.
 3. Open a terminal and go to the local folder containing the `matched-data-cli` tool.
-Terminal window
-```
+```sh
 cd matched-data-cli
 ```
 4. Run the following command:
-Terminal window
-```
+```sh
 ./matched-data-cli generate-key-pair
 ```
-```
-{  "private_key": "uBS5eBttHrqkdY41kbZPdvYnNz8Vj0TvKIUpjB1y/GA=",  "public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="}
+```json
+{
+  "private_key": "uBS5eBttHrqkdY41kbZPdvYnNz8Vj0TvKIUpjB1y/GA=",
+  "public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
+}
 ```
 
 After generating the key pair, copy the public key value and enter it in the payload logging configuration.

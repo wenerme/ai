@@ -18,9 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Install the `@gridsome/cli` by running the following command in your terminal:
 
-Terminal window
-
-```
+```sh
 npm install --global @gridsome/cli
 ```
 
@@ -28,9 +26,7 @@ npm install --global @gridsome/cli
 
 With Gridsome installed, set up a new project by running `gridsome create`. The `create` command accepts a name that defines the directory of the project created and an optional starter kit name. You can review more starters in the [Gridsome starters section ↗](https://gridsome.org/docs/starters/).
 
-Terminal window
-
-```
+```sh
 npx gridsome create my-gridsome-website
 ```
 
@@ -46,10 +42,13 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
+```sh
+git init
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

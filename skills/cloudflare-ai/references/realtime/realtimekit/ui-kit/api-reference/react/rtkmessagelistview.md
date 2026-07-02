@@ -29,16 +29,30 @@ A component which renders list of messages.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMessageListView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMessageListView />;}
+
+
+function MyComponent() {
+  return <RtkMessageListView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMessageListView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMessageListView      estimateItemSize={42}      loadMore={(lastmessage: message)}      messages={[]}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMessageListView
+      estimateItemSize={42}
+      loadMore={(lastmessage: message)}
+      messages={[]}
+    />
+  );
+}
 ```
 
 ```json

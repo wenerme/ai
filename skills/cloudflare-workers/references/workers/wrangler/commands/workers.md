@@ -18,7 +18,7 @@ Wrangler commands for creating, developing, deploying, and managing Workers.
 
 Create a new project via the [create-cloudflare-cli (C3) tool](https://developers.cloudflare.com/workers/get-started/guide/#1-create-a-new-worker-project). A variety of web frameworks are available to choose from as well as templates. Dependencies are installed by default, with the option to deploy your project immediately.
 
-```
+```txt
 wrangler init [<NAME>] [OPTIONS]
 ```
 
@@ -45,7 +45,7 @@ The following global flags work on every command:
 
 Start a local server for developing your Worker.
 
-```
+```txt
 wrangler dev [<SCRIPT>] [OPTIONS]
 ```
 
@@ -163,7 +163,7 @@ To deploy from an AI agent or another environment before Cloudflare authenticati
 
 To configure your project without deploying, use [wrangler setup](#setup) instead.
 
-```
+```txt
 wrangler deploy [<PATH>] [OPTIONS]
 ```
 
@@ -299,7 +299,7 @@ The following global flags work on every command:
 
 Delete your Worker and all associated Cloudflare developer platform resources.
 
-```
+```txt
 wrangler delete [<SCRIPT>] [OPTIONS]
 ```
 
@@ -327,25 +327,19 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-12849)
-* [  pnpm ](#tab-panel-12850)
-* [  yarn ](#tab-panel-12851)
+* [  npm ](#tab-panel-13104)
+* [  pnpm ](#tab-panel-13105)
+* [  yarn ](#tab-panel-13106)
 
-Terminal window
-
-```
+```sh
 npx wrangler setup
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler setup
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler setup
 ```
 
@@ -389,25 +383,19 @@ This action creates a new [version](https://developers.cloudflare.com/workers/co
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-12852)
-* [  pnpm ](#tab-panel-12853)
-* [  yarn ](#tab-panel-12854)
+* [  npm ](#tab-panel-13107)
+* [  pnpm ](#tab-panel-13108)
+* [  yarn ](#tab-panel-13109)
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secret put [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secret put [KEY]
 ```
 
@@ -437,21 +425,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 When running this command, you will be prompted to input the secret's value:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put FOO
 ```
 
-```
-? Enter a secret value: > ***🌀 Creating the secret for script worker-app✨ Success! Uploaded secret FOO
+```sh
+? Enter a secret value: > ***
+🌀 Creating the secret for script worker-app
+✨ Success! Uploaded secret FOO
 ```
 
 The `put` command can also receive piped input. For example:
 
-Terminal window
-
-```
+```sh
 echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangler secret put PRIVATE_KEY
 ```
 
@@ -459,25 +445,19 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-12855)
-* [  pnpm ](#tab-panel-12856)
-* [  yarn ](#tab-panel-12857)
+* [  npm ](#tab-panel-13110)
+* [  pnpm ](#tab-panel-13111)
+* [  yarn ](#tab-panel-13112)
 
-Terminal window
-
-```
+```sh
 npx wrangler secret delete [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secret delete [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secret delete [KEY]
 ```
 
@@ -509,25 +489,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-12858)
-* [  pnpm ](#tab-panel-12859)
-* [  yarn ](#tab-panel-12860)
+* [  npm ](#tab-panel-13113)
+* [  pnpm ](#tab-panel-13114)
+* [  yarn ](#tab-panel-13115)
 
-Terminal window
-
-```
+```sh
 npx wrangler secret list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secret list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secret list
 ```
 
@@ -557,14 +531,17 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of listing the secrets for the current Worker.
 
-Terminal window
-
-```
+```sh
 npx wrangler secret list
 ```
 
-```
-[  {    "name": "FOO",    "type": "secret_text"  }]
+```sh
+[
+  {
+    "name": "FOO",
+    "type": "secret_text"
+  }
+]
 ```
 
 ---
@@ -573,25 +550,19 @@ npx wrangler secret list
 
 Create, update, or delete multiple secrets for a Worker in a single request, with up to 100 secrets per command.
 
-* [  npm ](#tab-panel-12861)
-* [  pnpm ](#tab-panel-12862)
-* [  yarn ](#tab-panel-12863)
+* [  npm ](#tab-panel-13116)
+* [  pnpm ](#tab-panel-13117)
+* [  yarn ](#tab-panel-13118)
 
-Terminal window
-
-```
+```sh
 npx wrangler secret bulk [FILE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secret bulk [FILE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secret bulk [FILE]
 ```
 
@@ -625,19 +596,28 @@ Deleting secrets by setting a key to `null` requires wrangler version 4.97.0 or 
 
 The following is an example of creating, updating, and deleting secrets from a JSON file redirected to `stdin`. Set a key to `null` to delete it.
 
-```
-{  "secret-name-1": "secret-value-1",  "secret-name-2": "secret-value-2",  "secret-name-3": null}
+```json
+{
+  "secret-name-1": "secret-value-1",
+  "secret-name-2": "secret-value-2",
+  "secret-name-3": null
+}
 ```
 
-Terminal window
-
-```
+```sh
 npx wrangler secret bulk < secrets.json
 ```
 
-```
-🌀 Processing the secrets for the Worker "script-name"✨ Successfully created secret for key: secret-name-1✨ Successfully created secret for key: secret-name-2💥 Successfully deleted secret for key: secret-name-3
-Finished processing secrets file:✨ 2 secrets successfully created💥 1 secrets successfully deleted
+```sh
+🌀 Processing the secrets for the Worker "script-name"
+✨ Successfully created secret for key: secret-name-1
+✨ Successfully created secret for key: secret-name-2
+💥 Successfully deleted secret for key: secret-name-3
+
+
+Finished processing secrets file:
+✨ 2 secrets successfully created
+💥 1 secrets successfully deleted
 ```
 
 ---
@@ -646,25 +626,19 @@ Finished processing secrets file:✨ 2 secrets successfully created💥 1 secret
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-12864)
-* [  pnpm ](#tab-panel-12865)
-* [  yarn ](#tab-panel-12866)
+* [  npm ](#tab-panel-13119)
+* [  pnpm ](#tab-panel-13120)
+* [  yarn ](#tab-panel-13121)
 
-Terminal window
-
-```
+```sh
 npx wrangler tail [WORKER]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler tail [WORKER]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler tail [WORKER]
 ```
 
@@ -728,25 +702,19 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-12867)
-* [  pnpm ](#tab-panel-12868)
-* [  yarn ](#tab-panel-12869)
+* [  npm ](#tab-panel-13122)
+* [  pnpm ](#tab-panel-13123)
+* [  yarn ](#tab-panel-13124)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions upload [PATH]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions upload [PATH]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions upload [PATH]
 ```
 
@@ -820,25 +788,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-12870)
-* [  pnpm ](#tab-panel-12871)
-* [  yarn ](#tab-panel-12872)
+* [  npm ](#tab-panel-13125)
+* [  pnpm ](#tab-panel-13126)
+* [  yarn ](#tab-panel-13127)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions deploy [VERSION-SPECS]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions deploy [VERSION-SPECS]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions deploy [VERSION-SPECS]
 ```
 
@@ -888,25 +850,19 @@ For example: `wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-12873)
-* [  pnpm ](#tab-panel-12874)
-* [  yarn ](#tab-panel-12875)
+* [  npm ](#tab-panel-13128)
+* [  pnpm ](#tab-panel-13129)
+* [  yarn ](#tab-panel-13130)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions list
 ```
 
@@ -938,25 +894,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-12876)
-* [  pnpm ](#tab-panel-12877)
-* [  yarn ](#tab-panel-12878)
+* [  npm ](#tab-panel-13131)
+* [  pnpm ](#tab-panel-13132)
+* [  yarn ](#tab-panel-13133)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions view [VERSION-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions view [VERSION-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions view [VERSION-ID]
 ```
 
@@ -990,25 +940,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-12879)
-* [  pnpm ](#tab-panel-12880)
-* [  yarn ](#tab-panel-12881)
+* [  npm ](#tab-panel-13134)
+* [  pnpm ](#tab-panel-13135)
+* [  yarn ](#tab-panel-13136)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions secret put [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions secret put [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions secret put [KEY]
 ```
 
@@ -1044,25 +988,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-12882)
-* [  pnpm ](#tab-panel-12883)
-* [  yarn ](#tab-panel-12884)
+* [  npm ](#tab-panel-13137)
+* [  pnpm ](#tab-panel-13138)
+* [  yarn ](#tab-panel-13139)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions secret delete [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions secret delete [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions secret delete [KEY]
 ```
 
@@ -1098,25 +1036,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-12885)
-* [  pnpm ](#tab-panel-12886)
-* [  yarn ](#tab-panel-12887)
+* [  npm ](#tab-panel-13140)
+* [  pnpm ](#tab-panel-13141)
+* [  yarn ](#tab-panel-13142)
 
-Terminal window
-
-```
+```sh
 npx wrangler versions secret bulk [FILE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler versions secret bulk [FILE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler versions secret bulk [FILE]
 ```
 
@@ -1163,25 +1095,19 @@ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-12888)
-* [  pnpm ](#tab-panel-12889)
-* [  yarn ](#tab-panel-12890)
+* [  npm ](#tab-panel-13143)
+* [  pnpm ](#tab-panel-13144)
+* [  yarn ](#tab-panel-13145)
 
-Terminal window
-
-```
+```sh
 npx wrangler triggers deploy
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler triggers deploy
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler triggers deploy
 ```
 
@@ -1227,25 +1153,19 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-12891)
-* [  pnpm ](#tab-panel-12892)
-* [  yarn ](#tab-panel-12893)
+* [  npm ](#tab-panel-13146)
+* [  pnpm ](#tab-panel-13147)
+* [  yarn ](#tab-panel-13148)
 
-Terminal window
-
-```
+```sh
 npx wrangler deployments list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler deployments list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler deployments list
 ```
 
@@ -1277,25 +1197,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View the current state of your production
 
-* [  npm ](#tab-panel-12894)
-* [  pnpm ](#tab-panel-12895)
-* [  yarn ](#tab-panel-12896)
+* [  npm ](#tab-panel-13149)
+* [  pnpm ](#tab-panel-13150)
+* [  yarn ](#tab-panel-13151)
 
-Terminal window
-
-```
+```sh
 npx wrangler deployments status
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler deployments status
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler deployments status
 ```
 
@@ -1329,7 +1243,7 @@ Warning
 
 A rollback will immediately create a new deployment with the specified version of your Worker and become the active deployment across all your deployed routes and domains. This change will not affect work in your local development environment.
 
-```
+```txt
 wrangler rollback [<VERSION_ID>] [OPTIONS]
 ```
 
@@ -1355,7 +1269,7 @@ The following global flags work on every command:
 
 Generate types based on your Worker configuration, including `Env` types based on your bindings, module rules, and [runtime types](https://developers.cloudflare.com/workers/languages/typescript/) based on the`compatibility_date` and `compatibility_flags` in your [config file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-```
+```txt
 wrangler types [<PATH>] [OPTIONS]
 ```
 
@@ -1395,9 +1309,12 @@ To generate types for only a specific environment, use the `--env` flag.
   * Useful for CI/CD pipelines and pre-commit hooks to ensure types have been regenerated after configuration changes.
 * `--config`, `-c` ` string[] ` optional
   * Path(s) to [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If the Worker you are generating types for has service bindings or bindings to Durable Objects, you can also provide the paths to those configuration files so that the generated `Env` type will include RPC types. For example, given a Worker with a service binding, `wrangler types -c wrangler.toml -c ../bound-worker/wrangler.toml` will generate an `Env` type like this:
-TypeScript
-```
-interface Env {  SERVICE_BINDING: Service<import("../bound-worker/src/index").Entrypoint>;}
+
+**TypeScript**
+```ts
+interface Env {
+  SERVICE_BINDING: Service<import("../bound-worker/src/index").Entrypoint>;
+}
 ```
 
 ---
@@ -1416,9 +1333,7 @@ This command measures performance of your Worker locally, on your own machine �
 
 You should use the CPU profile that `wrangler check startup` generates in order to understand where time is spent at startup, but you should not expect the overall startup time in the profile to match exactly what your Worker's startup time will be when deploying to Cloudflare.
 
-Terminal window
-
-```
+```sh
 wrangler check startup
 ```
 

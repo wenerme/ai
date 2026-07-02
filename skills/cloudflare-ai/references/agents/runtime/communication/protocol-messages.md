@@ -38,21 +38,38 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-5959)
-* [  TypeScript ](#tab-panel-5960)
+* [  JavaScript ](#tab-panel-6123)
+* [  TypeScript ](#tab-panel-6124)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-export class IoTAgent extends Agent {  shouldSendProtocolMessages(connection, ctx) {    const url = new URL(ctx.request.url);    return url.searchParams.get("protocol") !== "false";  }}
+
+
+export class IoTAgent extends Agent {
+  shouldSendProtocolMessages(connection, ctx) {
+    const url = new URL(ctx.request.url);
+    return url.searchParams.get("protocol") !== "false";
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, type Connection, type ConnectionContext } from "agents";
-export class IoTAgent extends Agent<Env, State> {  shouldSendProtocolMessages(    connection: Connection,    ctx: ConnectionContext,  ): boolean {    const url = new URL(ctx.request.url);    return url.searchParams.get("protocol") !== "false";  }}
+
+
+export class IoTAgent extends Agent<Env, State> {
+  shouldSendProtocolMessages(
+    connection: Connection,
+    ctx: ConnectionContext,
+  ): boolean {
+    const url = new URL(ctx.request.url);
+    return url.searchParams.get("protocol") !== "false";
+  }
+}
 ```
 
 This hook runs during `onConnect`, before any messages are sent. When it returns `false`:
@@ -65,40 +82,77 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-5961)
-* [  TypeScript ](#tab-panel-5962)
+* [  JavaScript ](#tab-panel-6125)
+* [  TypeScript ](#tab-panel-6126)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MqttAgent extends Agent {
+  shouldSendProtocolMessages(connection, ctx) {
+    // MQTT-over-WebSocket clients negotiate via subprotocol
+    const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
+    return subprotocol !== "mqtt";
+  }
+}
 ```
-export class MqttAgent extends Agent {  shouldSendProtocolMessages(connection, ctx) {    // MQTT-over-WebSocket clients negotiate via subprotocol    const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");    return subprotocol !== "mqtt";  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MqttAgent extends Agent<Env, State> {  shouldSendProtocolMessages(    connection: Connection,    ctx: ConnectionContext,  ): boolean {    // MQTT-over-WebSocket clients negotiate via subprotocol    const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");    return subprotocol !== "mqtt";  }}
+```ts
+export class MqttAgent extends Agent<Env, State> {
+  shouldSendProtocolMessages(
+    connection: Connection,
+    ctx: ConnectionContext,
+  ): boolean {
+    // MQTT-over-WebSocket clients negotiate via subprotocol
+    const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
+    return subprotocol !== "mqtt";
+  }
+}
 ```
 
 ## Checking protocol status
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-5963)
-* [  TypeScript ](#tab-panel-5964)
+* [  JavaScript ](#tab-panel-6127)
+* [  TypeScript ](#tab-panel-6128)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Agent {
+  @callable()
+  async getConnectionInfo() {
+    const { connection } = getCurrentAgent();
+    if (!connection) return null;
+
+
+    return {
+      protocolEnabled: this.isConnectionProtocolEnabled(connection),
+      readonly: this.isConnectionReadonly(connection),
+    };
+  }
+}
 ```
-export class MyAgent extends Agent {  @callable()  async getConnectionInfo() {    const { connection } = getCurrentAgent();    if (!connection) return null;
-    return {      protocolEnabled: this.isConnectionProtocolEnabled(connection),      readonly: this.isConnectionReadonly(connection),    };  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent<Env, State> {  @callable()  async getConnectionInfo() {    const { connection } = getCurrentAgent();    if (!connection) return null;
-    return {      protocolEnabled: this.isConnectionProtocolEnabled(connection),      readonly: this.isConnectionReadonly(connection),    };  }}
+```ts
+export class MyAgent extends Agent<Env, State> {
+  @callable()
+  async getConnectionInfo() {
+    const { connection } = getCurrentAgent();
+    if (!connection) return null;
+
+
+    return {
+      protocolEnabled: this.isConnectionProtocolEnabled(connection),
+      readonly: this.isConnectionReadonly(connection),
+    };
+  }
+}
 ```
 
 ## What is and is not suppressed
@@ -120,23 +174,69 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-5965)
-* [  TypeScript ](#tab-panel-5966)
+* [  JavaScript ](#tab-panel-6129)
+* [  TypeScript ](#tab-panel-6130)
 
-JavaScript
+**JavaScript**
 
+```js
+export class SensorHub extends Agent {
+  shouldSendProtocolMessages(connection, ctx) {
+    const url = new URL(ctx.request.url);
+    // Binary sensors don't handle JSON protocol frames
+    return url.searchParams.get("type") !== "sensor";
+  }
+
+
+  shouldConnectionBeReadonly(connection, ctx) {
+    const url = new URL(ctx.request.url);
+    // Sensors can only report data via RPC, not modify shared state
+    return url.searchParams.get("type") === "sensor";
+  }
+
+
+  @callable()
+  async reportReading(sensorId, value) {
+    // This RPC still works for readonly+no-protocol connections
+    // because it writes to SQL, not agent state
+    this
+      .sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;
+  }
+}
 ```
-export class SensorHub extends Agent {  shouldSendProtocolMessages(connection, ctx) {    const url = new URL(ctx.request.url);    // Binary sensors don't handle JSON protocol frames    return url.searchParams.get("type") !== "sensor";  }
-  shouldConnectionBeReadonly(connection, ctx) {    const url = new URL(ctx.request.url);    // Sensors can only report data via RPC, not modify shared state    return url.searchParams.get("type") === "sensor";  }
-  @callable()  async reportReading(sensorId, value) {    // This RPC still works for readonly+no-protocol connections    // because it writes to SQL, not agent state    this      .sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class SensorHub extends Agent<Env, SensorState> {  shouldSendProtocolMessages(    connection: Connection,    ctx: ConnectionContext,  ): boolean {    const url = new URL(ctx.request.url);    // Binary sensors don't handle JSON protocol frames    return url.searchParams.get("type") !== "sensor";  }
-  shouldConnectionBeReadonly(    connection: Connection,    ctx: ConnectionContext,  ): boolean {    const url = new URL(ctx.request.url);    // Sensors can only report data via RPC, not modify shared state    return url.searchParams.get("type") === "sensor";  }
-  @callable()  async reportReading(sensorId: string, value: number) {    // This RPC still works for readonly+no-protocol connections    // because it writes to SQL, not agent state    this      .sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;  }}
+```ts
+export class SensorHub extends Agent<Env, SensorState> {
+  shouldSendProtocolMessages(
+    connection: Connection,
+    ctx: ConnectionContext,
+  ): boolean {
+    const url = new URL(ctx.request.url);
+    // Binary sensors don't handle JSON protocol frames
+    return url.searchParams.get("type") !== "sensor";
+  }
+
+
+  shouldConnectionBeReadonly(
+    connection: Connection,
+    ctx: ConnectionContext,
+  ): boolean {
+    const url = new URL(ctx.request.url);
+    // Sensors can only report data via RPC, not modify shared state
+    return url.searchParams.get("type") === "sensor";
+  }
+
+
+  @callable()
+  async reportReading(sensorId: string, value: number) {
+    // This RPC still works for readonly+no-protocol connections
+    // because it writes to SQL, not agent state
+    this
+      .sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;
+  }
+}
 ```
 
 Both flags are stored in the connection's WebSocket attachment and hidden from `connection.state` — they do not interfere with each other or with user-defined connection state.

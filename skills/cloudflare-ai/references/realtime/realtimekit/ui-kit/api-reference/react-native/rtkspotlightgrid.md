@@ -33,16 +33,39 @@ A grid layout that highlights pinned participants in a larger view with other pa
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSpotlightGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkSpotlightGrid      meeting={meeting}      participants={participants}      pinnedParticipants={pinned}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSpotlightGrid
+      meeting={meeting}
+      participants={participants}
+      pinnedParticipants={pinned}
+    />
+  );
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSpotlightGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkSpotlightGrid      meeting={meeting}      participants={participants}      pinnedParticipants={pinned}      aspectRatio="16:9"      gap={8}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSpotlightGrid
+      meeting={meeting}
+      participants={participants}
+      pinnedParticipants={pinned}
+      aspectRatio="16:9"
+      gap={8}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

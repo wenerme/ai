@@ -31,8 +31,7 @@ New pipelines offer SQL transformations, multiple output formats, and improved a
 Legacy pipelines will continue to work until Pipelines is Generally Available, but new features and improvements are only available in the new pipeline architecture. To migrate:
 
 1. Create a new pipeline using the interactive setup:
-Terminal window
-```
+```bash
 npx wrangler pipelines setup
 ```
 2. Configure your new pipeline with the desired streams, SQL transformations, and sinks.

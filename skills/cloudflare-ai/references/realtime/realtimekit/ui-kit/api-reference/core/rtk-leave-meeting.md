@@ -27,19 +27,24 @@ A component which allows you to leave a meeting or end meeting for all, if you h
 
 ### Basic Usage
 
-```
+```html
 <rtk-leave-meeting></rtk-leave-meeting>
 ```
 
 ### With Properties
 
-```
-<rtk-leave-meeting></rtk-leave-meeting>
+```html
+<rtk-leave-meeting>
+</rtk-leave-meeting>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-leave-meeting");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-leave-meeting");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

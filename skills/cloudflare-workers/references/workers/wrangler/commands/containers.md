@@ -18,7 +18,7 @@ Interact with [Containers](https://developers.cloudflare.com/containers/) using 
 
 Build a Container image from a Dockerfile.
 
-```
+```txt
 wrangler containers build [PATH] [OPTIONS]
 ```
 
@@ -37,7 +37,7 @@ wrangler containers build [PATH] [OPTIONS]
 
 Delete a Container (application).
 
-```
+```txt
 wrangler containers delete <CONTAINER_ID> [OPTIONS]
 ```
 
@@ -52,7 +52,7 @@ Perform operations on images in your containers registry.
 
 List images in your containers registry.
 
-```
+```txt
 wrangler containers images list [OPTIONS]
 ```
 
@@ -66,7 +66,7 @@ wrangler containers images list [OPTIONS]
 
 Remove an image from your containers registry.
 
-```
+```txt
 wrangler containers images delete [IMAGE] [OPTIONS]
 ```
 
@@ -81,7 +81,7 @@ Configure and view registries available to your container. [Read more](https://d
 
 List registries your containers are able to use.
 
-```
+```txt
 wrangler containers registries list [OPTIONS]
 ```
 
@@ -93,18 +93,24 @@ wrangler containers registries list [OPTIONS]
 
 Configure a new registry for your account.
 
-```
+```txt
 wrangler containers registries configure [DOMAIN] [OPTIONS]
 ```
 
 * `DOMAIN` ` string ` required
   * Domain to configure for the registry.
-* `--public-credential` ` string ` required
-  * The public part of the registry credentials, e.g. `AWS_ACCESS_KEY_ID` for ECR
+* `--dockerhub-username` ` string ` optional
+  * The Docker Hub username to authenticate with. Use with the `docker.io` domain. The secret is a Docker Hub personal access token.
+* `--aws-access-key-id` ` string ` optional
+  * The AWS access key ID to authenticate with. Use with an Amazon ECR domain. The secret is the matching AWS secret access key.
+* `--gar-email` ` string ` optional
+  * The Google service account email to authenticate with. Use with a `*-docker.pkg.dev` domain.
 * `--secret-store-id` ` string ` optional
   * The ID of the secret store to use to store the registry credentials
 * `--secret-name` ` string ` optional
   * The name Wrangler should store the registry credentials under
+
+The credential flags are mutually exclusive. Use the one that matches the registry you are configuring.
 
 When run interactively, wrangler will prompt you for your secret and store it in Secrets Store. To run non-interactively, you can send your secret value to wrangler through stdin to have the secret created for you.
 
@@ -112,7 +118,7 @@ When run interactively, wrangler will prompt you for your secret and store it in
 
 Remove a registry configuration from your account.
 
-```
+```txt
 wrangler containers registries delete [DOMAIN] [OPTIONS]
 ```
 
@@ -123,7 +129,7 @@ wrangler containers registries delete [DOMAIN] [OPTIONS]
 
 Generate temporary credentials to push or pull images from the Cloudflare managed registry (`registry.cloudflare.com`).
 
-```
+```txt
 wrangler containers registries credentials [OPTIONS]
 ```
 
@@ -141,7 +147,7 @@ At least one of `--push` or `--pull` must be specified.
 
 Get information about a specific Container, including top-level details and a list of instances.
 
-```
+```txt
 wrangler containers info <CONTAINER_ID> [OPTIONS]
 ```
 
@@ -156,7 +162,7 @@ In interactive mode, results are paginated. Press `Enter` to load the next page 
 
 Use the `--json` flag to return output as a flat JSON array. Each element contains the fields `id`, `name`, `state`, `location`, `version`, and `created`. This is also the default output format in non-interactive environments.
 
-```
+```txt
 wrangler containers instances <APPLICATION_ID> [OPTIONS]
 ```
 
@@ -171,33 +177,40 @@ wrangler containers instances <APPLICATION_ID> [OPTIONS]
 
 For example, to list instances for an application:
 
-Terminal window
-
-```
+```sh
 wrangler containers instances 12345678-abcd-1234-abcd-123456789abc
 ```
 
-```
-INSTANCE                              NAME        STATE          LOCATION  VERSION  CREATEDa1b2c3d4-e5f6-7890-abcd-ef1234567890  worker-12   running        sfo06     3        2025-06-01T12:00:00Zb2c3d4e5-f6a7-8901-bcde-f12345678901  worker-47   provisioning   iad01     2        2025-06-01T13:00:00Z
+```sh
+INSTANCE                              NAME        STATE          LOCATION  VERSION  CREATED
+a1b2c3d4-e5f6-7890-abcd-ef1234567890  worker-12   running        sfo06     3        2025-06-01T12:00:00Z
+b2c3d4e5-f6a7-8901-bcde-f12345678901  worker-47   provisioning   iad01     2        2025-06-01T13:00:00Z
 ```
 
 To get the same data as JSON:
 
-Terminal window
-
-```
+```sh
 wrangler containers instances 12345678-abcd-1234-abcd-123456789abc --json
 ```
 
-```
-[  {    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",    "name": "worker-12",    "state": "running",    "location": "sfo06",    "version": 3,    "created": "2025-06-01T12:00:00Z"  }]
+```json
+[
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "worker-12",
+    "state": "running",
+    "location": "sfo06",
+    "version": 3,
+    "created": "2025-06-01T12:00:00Z"
+  }
+]
 ```
 
 ### `list`
 
 List the Containers in your account.
 
-```
+```txt
 wrangler containers list [OPTIONS]
 ```
 
@@ -205,7 +218,7 @@ wrangler containers list [OPTIONS]
 
 Push a tagged image to a Cloudflare managed registry, which is automatically integrated with your account.
 
-```
+```txt
 wrangler containers push [TAG] [OPTIONS]
 ```
 
@@ -219,13 +232,13 @@ wrangler containers push [TAG] [OPTIONS]
 
 Connect to a running Container instance using SSH. Refer to [SSH](https://developers.cloudflare.com/containers/ssh/) for configuration details.
 
-```
+```txt
 wrangler containers ssh <INSTANCE_ID>
 ```
 
 You can also specify a command to run, instead of the default shell. For example:
 
-```
+```txt
 wrangler containers ssh <INSTANCE_ID> -- ls -al
 ```
 

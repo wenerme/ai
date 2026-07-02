@@ -28,8 +28,7 @@ To create a client certificate on the Cloudflare dashboard:
 * Use your own private key and CSR. This option allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).
 Example OpenSSL command
 To generate and use your own CSR, you can run a command like the following:
-Terminal window
-```
+```sh
 openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'
 ```
 1. Select a value for **Certificate Validity**, and choose **Continue**.

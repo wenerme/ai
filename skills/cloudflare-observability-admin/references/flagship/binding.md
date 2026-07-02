@@ -14,38 +14,61 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Workers access Flagship through a binding that you add to your Wrangler configuration file. The `binding` field sets the variable name you use in your Worker code.
 
-* [  wrangler.jsonc ](#tab-panel-8609)
-* [  wrangler.toml ](#tab-panel-8610)
+* [  wrangler.jsonc ](#tab-panel-8900)
+* [  wrangler.toml ](#tab-panel-8901)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "flagship": [
+    {
+      "binding": "FLAGS",
+      "app_id": "<APP_ID>",
+    },
+  ],
+}
 ```
-{  "flagship": [    {      "binding": "FLAGS",      "app_id": "<APP_ID>",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[flagship]]binding = "FLAGS"app_id = "<APP_ID>"
+```toml
+[[flagship]]
+binding = "FLAGS"
+app_id = "<APP_ID>"
 ```
 
 Replace `<APP_ID>` with the app ID from your Flagship app. If you have not created an app yet, refer to the [Get started guide](https://developers.cloudflare.com/flagship/get-started/#create-an-app-and-a-flag). With this configuration, the binding is available as `env.FLAGS`. Refer to [Configuration](https://developers.cloudflare.com/flagship/configuration/) for additional options such as binding to multiple apps.
 
 The binding provides type-safe methods for evaluating feature flags. If an evaluation fails or a flag is not found, the method returns the default value you provide.
 
-* [  JavaScript ](#tab-panel-8611)
-* [  TypeScript ](#tab-panel-8612)
+* [  JavaScript ](#tab-panel-8902)
+* [  TypeScript ](#tab-panel-8903)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const enabled = await env.FLAGS.getBooleanValue("new-feature", false, {
+      userId: "user-42",
+    });
+    return new Response(enabled ? "Feature on" : "Feature off");
+  },
+};
 ```
-export default {  async fetch(request, env) {    const enabled = await env.FLAGS.getBooleanValue("new-feature", false, {      userId: "user-42",    });    return new Response(enabled ? "Feature on" : "Feature off");  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const enabled = await env.FLAGS.getBooleanValue("new-feature", false, {      userId: "user-42",    });    return new Response(enabled ? "Feature on" : "Feature off");  },};
+```ts
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const enabled = await env.FLAGS.getBooleanValue("new-feature", false, {
+      userId: "user-42",
+    });
+    return new Response(enabled ? "Feature on" : "Feature off");
+  },
+};
 ```
 
 The binding has the type `Flagship` from the `@cloudflare/workers-types` package.

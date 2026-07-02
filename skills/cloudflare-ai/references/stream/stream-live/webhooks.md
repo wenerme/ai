@@ -56,10 +56,20 @@ Stream notifications are entirely customizable by the customer. Action will depe
 11. By default, you will receive webhook notifications for all Live Inputs. If you only wish to receive webhooks for certain inputs, enter a comma-delimited list of Input IDs in the text field.
 12. When you are done, select **Create**.
 
-Example webhook payload
+**Example webhook payload**
 
-```
-{  "name": "Live Webhook Test",  "text": "Notification type: Stream Live Input\nInput ID: eb222fcca08eeb1ae84c981ebe8aeeb6\nEvent type: live_input.disconnected\nUpdated at: 2022-01-13T11:43:41.855717910Z",  "data": {    "notification_name": "Stream Live Input",    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",    "event_type": "live_input.disconnected",    "updated_at": "2022-01-13T11:43:41.855717910Z"  },  "ts": 1642074233}
+```json
+{
+  "name": "Live Webhook Test",
+  "text": "Notification type: Stream Live Input\nInput ID: eb222fcca08eeb1ae84c981ebe8aeeb6\nEvent type: live_input.disconnected\nUpdated at: 2022-01-13T11:43:41.855717910Z",
+  "data": {
+    "notification_name": "Stream Live Input",
+    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",
+    "event_type": "live_input.disconnected",
+    "updated_at": "2022-01-13T11:43:41.855717910Z"
+  },
+  "ts": 1642074233
+}
 ```
 
 The `event_type` property of the data object will either be `live_input.connected`, `live_input.disconnected`, or `live_input.errored`.
@@ -74,10 +84,28 @@ If there are issues detected with the input, the `event_type` will be `live_inpu
 * `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
 * `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
 
-Example live\_input.errored webhook payload
+**Example live\_input.errored webhook payload**
 
-```
-{  "name": "Live Webhook Test",  "text": "Notification type: Stream Live Input\nInput ID: 2c28dd2cc444cb77578c4840b51e43a8\nEvent type: live_input.errored\nUpdated at: 2024-07-09T18:07:51.077371662Z\nError Code: ERR_GOP_OUT_OF_RANGE\nError Message: Input GOP size or keyframe interval is out of range.\nVideo Codec: \nAudio Codec: ",  "data": {    "notification_name": "Stream Live Input",    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",    "event_type": "live_input.errored",    "updated_at": "2024-07-09T18:07:51.077371662Z",    "live_input_errored": {      "error": {        "code": "ERR_GOP_OUT_OF_RANGE",        "message": "Input GOP size or keyframe interval is out of range."      },      "video_codec": "",      "audio_codec": ""    }  },  "ts": 1720548474,}
+```json
+{
+  "name": "Live Webhook Test",
+  "text": "Notification type: Stream Live Input\nInput ID: 2c28dd2cc444cb77578c4840b51e43a8\nEvent type: live_input.errored\nUpdated at: 2024-07-09T18:07:51.077371662Z\nError Code: ERR_GOP_OUT_OF_RANGE\nError Message: Input GOP size or keyframe interval is out of range.\nVideo Codec: \nAudio Codec: ",
+  "data": {
+    "notification_name": "Stream Live Input",
+    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",
+    "event_type": "live_input.errored",
+    "updated_at": "2024-07-09T18:07:51.077371662Z",
+    "live_input_errored": {
+      "error": {
+        "code": "ERR_GOP_OUT_OF_RANGE",
+        "message": "Input GOP size or keyframe interval is out of range."
+      },
+      "video_codec": "",
+      "audio_codec": ""
+    }
+  },
+  "ts": 1720548474,
+}
 ```
 
 ```json

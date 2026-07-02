@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 [["text/plain"], ["image/jpeg"]]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart.content_types[*][0] == "application/octet-stream")
 ```
 

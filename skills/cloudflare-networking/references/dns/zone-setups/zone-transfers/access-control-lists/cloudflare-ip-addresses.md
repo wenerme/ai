@@ -20,8 +20,10 @@ Depending on your setup ([Cloudflare as Primary](#cloudflare-as-primary) or [Clo
 
 Cloudflare's AXFR/IXFR zone transfer requests and NOTIFY messages originate from the following IP addresses. These need to be allowed at your other DNS servers.
 
-```
-104.30.167.163104.30.167.1732a09:bac0:1000:c47::/64
+```txt
+104.30.167.163
+104.30.167.173
+2a09:bac0:1000:c47::/64
 ```
 
 Action required: IP address migration
@@ -34,8 +36,11 @@ If you have an existing configuration, add the new IP addresses to your allow li
 
 Old source IP addresses (deprecated — removed December 1, 2026)
 
-```
-198.41.144.240/28198.41.150.240/282a06:98c0:3601::/482a06:98c0:1401::/48
+```txt
+198.41.144.240/28
+198.41.150.240/28
+2a06:98c0:3601::/48
+2a06:98c0:1401::/48
 ```
 
 ## Cloudflare as Primary
@@ -50,7 +55,7 @@ Cloudflare's NOTIFY messages originate from the [source IP addresses](#source-ip
 
 Cloudflare will listen to AXFR/IXFR zone transfer requests and SOA queries from your Secondary DNS server on this IP address.
 
-```
+```txt
 172.65.64.6
 ```
 
@@ -66,16 +71,20 @@ Cloudflare's AXFR/IXFR zone transfer requests originate from the [source IP addr
 
 Notify IPs are the IP addresses where you notify Cloudflare's Secondary DNS to initiate a pull of new zone information from your Primary DNS servers:
 
-```
-172.65.30.82172.65.50.1452606:4700:60:0:317:26ee:3bdf:57742606:4700:60:0:35a:4be3:4144:c5ee
+```txt
+172.65.30.82
+172.65.50.145
+2606:4700:60:0:317:26ee:3bdf:5774
+2606:4700:60:0:35a:4be3:4144:c5ee
 ```
 
 ### BIND server configuration
 
 To run a BIND server as a primary, add the following statements to your zone file:
 
-```
-allow-transfer {104.30.167.163;104.30.167.173;2a09:bac0:1000:c47::/64;}also-notify { 172.65.30.82;172.65.50.145;2606:4700:60:0:317:26ee:3bdf:5774;2606:4700:60:0:35a:4be3:4144:c5ee;}
+```txt
+allow-transfer {104.30.167.163;104.30.167.173;2a09:bac0:1000:c47::/64;}
+also-notify { 172.65.30.82;172.65.50.145;2606:4700:60:0:317:26ee:3bdf:5774;2606:4700:60:0:35a:4be3:4144:c5ee;}
 ```
 
 Warning

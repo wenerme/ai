@@ -54,17 +54,13 @@ Objects uploaded while the lifecycle rule is active are also subject to expirati
 
 Add a lifecycle rule that expires all objects after 1 day:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lifecycle add <BUCKET_NAME> --expire-days 1
 ```
 
 After the bucket is empty, remove the rule:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lifecycle remove <BUCKET_NAME> --id <RULE_ID>
 ```
 
@@ -96,9 +92,7 @@ You can delete a bucket in various ways.
 
 Use the [r2 bucket delete](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-delete) command to delete an empty bucket:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket delete <BUCKET_NAME>
 ```
 
@@ -108,18 +102,17 @@ The command fails if the bucket still contains objects. Empty the bucket before 
 
 Use the [delete bucket API endpoint](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/delete/) to delete an empty bucket:
 
-Terminal window
-
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \  -H "Authorization: Bearer <API_TOKEN>"
+```sh
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \
+  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 If the bucket is in a [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions), include the `cf-r2-jurisdiction` header:
 
-Terminal window
-
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "cf-r2-jurisdiction: eu"
+```sh
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "cf-r2-jurisdiction: eu"
 ```
 
 ## Behavior

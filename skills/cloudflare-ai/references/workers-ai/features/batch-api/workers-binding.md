@@ -22,15 +22,49 @@ Note
 
 Ensure that the total payload is under 10 MB.
 
-src/index.ts
+**src/index.ts**
 
-```
-export interface Env {  AI: Ai;}export default {  async fetch(request, env): Promise<Response> {    const embeddings = await env.AI.run(      "@cf/baai/bge-m3",      {        requests: [          {            query: "This is a story about Cloudflare",            contexts: [              {                text: "This is a story about an orange cloud",              },              {                text: "This is a story about a llama",              },              {                text: "This is a story about a hugging emoji",              },            ],          },        ],      },      { queueRequest: true },    );
-    return Response.json(embeddings);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+export default {
+  async fetch(request, env): Promise<Response> {
+    const embeddings = await env.AI.run(
+      "@cf/baai/bge-m3",
+      {
+        requests: [
+          {
+            query: "This is a story about Cloudflare",
+            contexts: [
+              {
+                text: "This is a story about an orange cloud",
+              },
+              {
+                text: "This is a story about a llama",
+              },
+              {
+                text: "This is a story about a hugging emoji",
+              },
+            ],
+          },
+        ],
+      },
+      { queueRequest: true },
+    );
+
+
+    return Response.json(embeddings);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-{  "status": "queued",  "model": "@cf/baai/bge-m3",  "request_id": "000-000-000"}
+```json
+{
+  "status": "queued",
+  "model": "@cf/baai/bge-m3",
+  "request_id": "000-000-000"
+}
 ```
 
 You will get a response with the following values:
@@ -45,16 +79,44 @@ Of these, the `request_id` is important for when you need to [poll the batch sta
 
 Once your batch request is queued, use the `request_id` to poll for its status. During processing, the API returns a status `queued` or `running` indicating that the request is still in the queue or being processed.
 
-src/index.ts
+**src/index.ts**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const status = await env.AI.run("@cf/baai/bge-m3", {      request_id: "000-000-000",    });
-    return Response.json(status);  },} satisfies ExportedHandler<Env>;
+```typescript
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const status = await env.AI.run("@cf/baai/bge-m3", {
+      request_id: "000-000-000",
+    });
+
+
+    return Response.json(status);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-{  "responses": [    {      "id": 0,      "result": {        "response": [          { "id": 0, "score": 0.73974609375 },          { "id": 1, "score": 0.642578125 },          { "id": 2, "score": 0.6220703125 }        ]      },      "success": true,      "external_reference": "reference-1"    }  ],  "usage": { "prompt_tokens": 12, "completion_tokens": 0, "total_tokens": 12 }}
+```json
+{
+  "responses": [
+    {
+      "id": 0,
+      "result": {
+        "response": [
+          { "id": 0, "score": 0.73974609375 },
+          { "id": 1, "score": 0.642578125 },
+          { "id": 2, "score": 0.6220703125 }
+        ]
+      },
+      "success": true,
+      "external_reference": "reference-1"
+    }
+  ],
+  "usage": { "prompt_tokens": 12, "completion_tokens": 0, "total_tokens": 12 }
+}
 ```
 
 When the inference is complete, the API returns a final HTTP status code of `200` along with an array of responses. Each response object corresponds to an individual input prompt, identified by an `id` that maps to the index of the prompt in your original request.

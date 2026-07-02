@@ -18,8 +18,11 @@ A full-screen loader component that can be displayed while a connection is being
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkLoaderView    android:id="@+id/clLoader"    android:layout_width="match_parent"    android:layout_height="match_parent" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkLoaderView
+    android:id="@+id/clLoader"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 ```
 
 ```json

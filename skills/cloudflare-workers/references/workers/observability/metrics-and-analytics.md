@@ -60,6 +60,16 @@ The CPU Time per execution chart shows historical CPU time data broken down into
 
 The Duration per request chart shows historical [duration](https://developers.cloudflare.com/workers/platform/limits/#duration) per Worker invocation. The data is broken down into relevant quantiles, similar to the CPU time chart. Learn more about [interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). Understanding duration on your Worker is especially useful when you are intending to do a significant amount of computation on the Worker itself.
 
+### Memory usage
+
+The Memory usage chart shows how much V8 isolate memory your Worker uses at the time of each invocation, broken down into P50, P90, P99, and P999 percentiles using [reservoir sampling ↗](https://en.wikipedia.org/wiki/Reservoir%5Fsampling). For more information, refer to [Interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
+
+Workers run in V8 [isolates](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates), each with a [128 MB memory limit](https://developers.cloudflare.com/workers/platform/limits/#memory). A single isolate can handle many concurrent requests and shares memory across them. The memory usage metric reflects how much of this shared memory is in use at the time of each invocation.
+
+Deployment markers on the chart let you correlate memory changes with specific code deployments, making it easier to identify whether a new version introduced a memory regression.
+
+If you see memory usage trending upward over time, this may indicate a memory leak. Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to take heap snapshots and identify specific objects causing high memory consumption.
+
 ### Invocation statuses
 
 To review invocation statuses:
@@ -149,6 +159,6 @@ Writes to Analytics Engine are non-blocking and do not add latency to your Worke
 Refer to the [Analytics Engine example](https://developers.cloudflare.com/workers/examples/analytics-engine/) to get started.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers docs","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers docs","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/metrics-and-analytics/","name":"Metrics and analytics"}}]}
 ```

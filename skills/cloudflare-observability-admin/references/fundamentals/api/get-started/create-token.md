@@ -39,16 +39,29 @@ The token secret is **only shown once**. Do not store the secret in plaintext wh
 
 The token secret page also includes an example command to test the token. Use the `/user/tokens/verify` endpoint to fetch the current status of the given token.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The result:
 
-```
-{  "result": {    "id": "100bf38cc8393103870917dd535e0628",    "status": "active"  },  "success": true,  "errors": [],  "messages": [    {      "code": 10000,      "message": "This API Token is valid and active",      "type": null    }  ]}
+```json
+{
+  "result": {
+    "id": "100bf38cc8393103870917dd535e0628",
+    "status": "active"
+  },
+  "success": true,
+  "errors": [],
+  "messages": [
+    {
+      "code": 10000,
+      "message": "This API Token is valid and active",
+      "type": null
+    }
+  ]
+}
 ```
 
 New API tokens use the `cfut_` prefixed [scannable format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which allows credential scanning tools to detect leaked tokens.

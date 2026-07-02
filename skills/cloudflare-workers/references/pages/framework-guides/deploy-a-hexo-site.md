@@ -20,17 +20,15 @@ In this guide, you will create a new Hexo application and deploy it using Cloudf
 
 First, install the Hexo CLI with `npm` or `yarn` by running either of the following commands in your terminal:
 
-Terminal window
-
-```
-npm install hexo-cli -g# oryarn global add hexo-cli
+```sh
+npm install hexo-cli -g
+# or
+yarn global add hexo-cli
 ```
 
 On macOS and Linux, you can install with [brew ↗](https://brew.sh/):
 
-Terminal window
-
-```
+```sh
 brew install hexo
 ```
 
@@ -46,10 +44,9 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 With Hexo CLI installed, create a new project by running the `hexo init` command in your terminal:
 
-Terminal window
-
-```
-hexo init my-hexo-sitecd my-hexo-site
+```sh
+hexo init my-hexo-site
+cd my-hexo-site
 ```
 
 Hexo sites use themes to customize the appearance of statically built HTML sites. Hexo has a default theme automatically installed, which you can find on [Hexo's Themes page ↗](https://hexo.io/themes/).
@@ -58,9 +55,7 @@ Hexo sites use themes to customize the appearance of statically built HTML sites
 
 Create a new post to give your Hexo site some initial content. Run the `hexo new` command in your terminal to generate a new post:
 
-Terminal window
-
-```
+```sh
 hexo new "hello hexo"
 ```
 
@@ -70,10 +65,13 @@ Inside of `hello-hexo.md`, use Markdown to write the content of the article. You
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
+```sh
+git init
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

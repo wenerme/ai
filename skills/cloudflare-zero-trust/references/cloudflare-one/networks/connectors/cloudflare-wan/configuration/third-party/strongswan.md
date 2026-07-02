@@ -20,27 +20,45 @@ Configure the [bidirectional health checks](https://developers.cloudflare.com/cl
 
 This can be set up [with the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/). For example:
 
-Terminal window
-
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "health_check": {    "enabled": true,    "target": "172.64.240.252",    "type": "request",    "rate": "mid"  }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "health_check": {
+    "enabled": true,
+    "target": "172.64.240.252",
+    "type": "request",
+    "rate": "mid"
+  }
+}'
 ```
 
 ## 2\. Configure strongSwan
 
 1. [Install strongSwan ↗](https://docs.strongswan.org/docs/5.9/install/install.html). For example, open the console and run:
 
-Terminal window
-
-```
+```sh
 sudo apt-get install strongswan -y
 ```
 
 1. Open `/etc/strongswan.conf` and add the following settings:
 
-```
-charon {    load_modular = yes    install_routes = no    install_virtual_ip = no
-    plugins {        include strongswan.d/charon/*.conf    }}
+```txt
+charon {
+    load_modular = yes
+    install_routes = no
+    install_virtual_ip = no
+
+
+    plugins {
+        include strongswan.d/charon/*.conf
+    }
+}
+
+
 include strongswan.d/*.conf
 ```
 
@@ -48,20 +66,80 @@ include strongswan.d/*.conf
 
 1. Open `/etc/ipsec.conf` and add the following settings:
 
-```
-# ipsec.conf - strongSwan IPsec configuration fileconfig setup    charondebug="all"    uniqueids = yes
-conn %default    ikelifetime=24h    rekey=yes    reauth=no    keyexchange=ikev2    authby=secret    dpdaction=restart    closeaction=restart
-# Sample VPN connectionsconn cloudflare-ipsec    auto=start    type=tunnel    fragmentation=no    leftauth=psk    # Private IP of the VM    left=%any    # Tunnel ID from dashboard, in this example FQDN is used    leftid=<YOUR_TUNNEL_ID>.<YOUR_ACCOUNT_ID>.ipsec.cloudflare.com    leftsubnet=0.0.0.0/0    # Cloudflare Anycast IP    right=<YOUR_CLOUDFLARE_ANYCAST_IP>    rightid=<YOUR_CLOUDFLARE_ANYCAST_IP>    rightsubnet=0.0.0.0/0    rightauth=psk    ike=aes256-sha256-ecp384!    esp=aes256-sha256-ecp384!    replay_window=0    mark_in=42    mark_out=42    leftupdown=/etc/strongswan.d/ipsec-vti.sh
+```txt
+# ipsec.conf - strongSwan IPsec configuration file
+config setup
+    charondebug="all"
+    uniqueids = yes
+
+
+conn %default
+    ikelifetime=24h
+    rekey=yes
+    reauth=no
+    keyexchange=ikev2
+    authby=secret
+    dpdaction=restart
+    closeaction=restart
+
+
+# Sample VPN connections
+conn cloudflare-ipsec
+    auto=start
+    type=tunnel
+    fragmentation=no
+    leftauth=psk
+    # Private IP of the VM
+    left=%any
+    # Tunnel ID from dashboard, in this example FQDN is used
+    leftid=<YOUR_TUNNEL_ID>.<YOUR_ACCOUNT_ID>.ipsec.cloudflare.com
+    leftsubnet=0.0.0.0/0
+    # Cloudflare Anycast IP
+    right=<YOUR_CLOUDFLARE_ANYCAST_IP>
+    rightid=<YOUR_CLOUDFLARE_ANYCAST_IP>
+    rightsubnet=0.0.0.0/0
+    rightauth=psk
+    ike=aes256-sha256-ecp384!
+    esp=aes256-sha256-ecp384!
+    replay_window=0
+    mark_in=42
+    mark_out=42
+    leftupdown=/etc/strongswan.d/ipsec-vti.sh
 ```
 
 1. Create a virtual tunnel interface (VTI) with the IP configured as the target for Cloudflare's health checks (`172.64.240.252`) to route IPsec packets. Open `/etc/strongswan.d/`.
 2. Create a script called `ipsec-vti.sh` and add the following:
 
-```
+```txt
 #!/bin/bash
-set -o nounsetset -o errexit
+
+
+set -o nounset
+set -o errexit
+
+
 VTI_IF="vti0"
-case "${PLUTO_VERB}" in    up-client)        ip tunnel add "${VTI_IF}" local "${PLUTO_ME}" remote "${PLUTO_PEER}" mode vti \        key "${PLUTO_MARK_OUT%%/*}"        ip link set "${VTI_IF}" up        ip addr add 172.64.240.252/32 dev vti0        sysctl -w "net.ipv4.conf.${VTI_IF}.disable_policy=1"        sysctl -w "net.ipv4.conf.${VTI_IF}.rp_filter=0"        sysctl -w "net.ipv4.conf.all.rp_filter=0"        ip rule add from 172.64.240.252 lookup viatunicmp        ip route add default dev vti0 table viatunicmp        ;;    down-client)        ip tunnel del "${VTI_IF}"        ip rule del from 172.64.240.252 lookup viatunicmp        ip route del default dev vti0 table viatunicmp        ;;esacecho "executed"
+
+
+case "${PLUTO_VERB}" in
+    up-client)
+        ip tunnel add "${VTI_IF}" local "${PLUTO_ME}" remote "${PLUTO_PEER}" mode vti \
+        key "${PLUTO_MARK_OUT%%/*}"
+        ip link set "${VTI_IF}" up
+        ip addr add 172.64.240.252/32 dev vti0
+        sysctl -w "net.ipv4.conf.${VTI_IF}.disable_policy=1"
+        sysctl -w "net.ipv4.conf.${VTI_IF}.rp_filter=0"
+        sysctl -w "net.ipv4.conf.all.rp_filter=0"
+        ip rule add from 172.64.240.252 lookup viatunicmp
+        ip route add default dev vti0 table viatunicmp
+        ;;
+    down-client)
+        ip tunnel del "${VTI_IF}"
+        ip rule del from 172.64.240.252 lookup viatunicmp
+        ip route del default dev vti0 table viatunicmp
+        ;;
+esac
+echo "executed"
 ```
 
 ## 4\. Add policy-based routing
@@ -73,45 +151,51 @@ This tutorial uses [iproute2 ↗](https://en.wikipedia.org/wiki/Iproute2) to rou
 1. Open `/etc/iproute2/`.
 2. Edit the `rt_tables` file to add a routing table number and name. In this example, use `viatunicmp` as the name and `200` as the number for the routing table.
 
-```
-## reserved values#255 local254 main253 default0   unspec200 viatunicmp## local##1  inr.ruhep
+```txt
+#
+# reserved values
+#
+255 local
+254 main
+253 default
+0   unspec
+200 viatunicmp
+#
+# local
+#
+#1  inr.ruhep
 ```
 
 1. Add a rule to match the routing table. This rule instructs the system to use routing table `viatunicmp` if the packet's source address is `172.64.240.252`:
 
-Terminal window
-
-```
+```sh
 ip rule add from 172.64.240.252 lookup viatunicmp
 ```
 
 1. Add a route to the `viatunicmp` routing table. This is the default route through the interface `vti0` in the `viatunicmp` table.
 
-Terminal window
-
-```
+```sh
 ip route add default dev vti0 table viatunicmp
 ```
 
 1. Start IPsec. You can also `stop`, `restart`, and show the `status` for the IPsec connection:
 
-Terminal window
-
-```
+```bash
 ipsec start
 ```
 
-```
-Security Associations (1 up, 0 connecting):cloudflare-ipsec[1]: ESTABLISHED 96 minutes ago, <IPSEC_TUNNEL_IDENTIFIER>.ipsec.cloudflare.com]...162.159.67.88[162.159.67.88]cloudflare-ipsec{4}:  INSTALLED, TUNNEL, reqid 1, ESP SPIs: c4e20a95_i c5373d00_ocloudflare-ipsec{4}:   0.0.0.0/0 === 0.0.0.0/0
+```bash
+Security Associations (1 up, 0 connecting):
+cloudflare-ipsec[1]: ESTABLISHED 96 minutes ago, <IPSEC_TUNNEL_IDENTIFIER>.ipsec.cloudflare.com]...162.159.67.88[162.159.67.88]
+cloudflare-ipsec{4}:  INSTALLED, TUNNEL, reqid 1, ESP SPIs: c4e20a95_i c5373d00_o
+cloudflare-ipsec{4}:   0.0.0.0/0 === 0.0.0.0/0
 ```
 
 ## 5\. Check connection status
 
 Use tcpdump to investigate the status of health checks originated from Cloudflare.
 
-Terminal window
-
-```
+```sh
 sudo tcpdump -i <OUTGOING_INTERFACE> esp and host <TUNNEL_CLOUDFLARE_ENDPOINT_IP>
 ```
 
@@ -121,9 +205,7 @@ In this example, the outgoing Internet interface shows that the IPsec encrypted 
 
 Run tcpdump on `vti0` to check the decrypted packets.
 
-Terminal window
-
-```
+```sh
 sudo tcpdump -i vti0 host 172.64.240.252
 ```
 

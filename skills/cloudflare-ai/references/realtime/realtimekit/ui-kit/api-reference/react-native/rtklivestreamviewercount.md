@@ -26,16 +26,38 @@ Displays the current livestream viewer count. Only visible in livestream mode.
 
 ### Basic Usage
 
-```
-import {  RtkLiveStreamViewerCount,  useLanguage,} from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  const t = useLanguage();  return <RtkLiveStreamViewerCount meeting={meeting} t={t} />;}
+```tsx
+import {
+  RtkLiveStreamViewerCount,
+  useLanguage,
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function MyComponent() {
+  const t = useLanguage();
+  return <RtkLiveStreamViewerCount meeting={meeting} t={t} />;
+}
 ```
 
 ### With Properties
 
-```
-import {  RtkLiveStreamViewerCount,  useLanguage,} from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  const t = useLanguage();  return (    <RtkLiveStreamViewerCount      meeting={meeting}      t={t}      iconPack={customIconPack}    />  );}
+```tsx
+import {
+  RtkLiveStreamViewerCount,
+  useLanguage,
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function MyComponent() {
+  const t = useLanguage();
+  return (
+    <RtkLiveStreamViewerCount
+      meeting={meeting}
+      t={t}
+      iconPack={customIconPack}
+    />
+  );
+}
 ```
 
 ```json

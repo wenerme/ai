@@ -25,10 +25,11 @@ A settings dialog that contains audio and video device selectors and a self-prev
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val settingsFragment = RtkSettingsFragment()settingsFragment.show(fragmentManager, "SETTINGS_TAG")
+```kotlin
+val settingsFragment = RtkSettingsFragment()
+settingsFragment.show(fragmentManager, "SETTINGS_TAG")
 ```
 
 ```json

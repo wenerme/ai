@@ -22,7 +22,7 @@ The WebGPU API is only accessible from within [Durable Objects](https://develope
 
 To use the WebGPU API in local development, enable the `experimental` and `webgpu` [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) of your Durable Object.
 
-```
+```plaintext
 compatibility_flags = ["experimental", "webgpu"]
 ```
 

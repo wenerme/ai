@@ -74,8 +74,8 @@
   "google-ai-docs/thinking.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thinking",
     "skill": "google-ai-docs",
-    "size": 16313,
-    "updatedAt": "2026-07-01T01:37:16.699Z"
+    "size": 16342,
+    "updatedAt": "2026-07-02T01:37:39.771Z"
   },
   "google-ai-docs/text-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/text-generation",
@@ -194,8 +194,8 @@
   "google-ai-docs/get-started.md": {
     "url": "https://ai.google.dev/gemini-api/docs/get-started",
     "skill": "google-ai-docs",
-    "size": 48210,
-    "updatedAt": "2026-06-26T18:52:51.900Z"
+    "size": 49143,
+    "updatedAt": "2026-07-02T01:37:51.433Z"
   },
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",

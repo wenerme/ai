@@ -30,8 +30,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-7589)
-* [ API ](#tab-panel-7590)
+* [ Dashboard ](#tab-panel-7842)
+* [ API ](#tab-panel-7843)
 
 To review how many device registrations are associated with a device:
 
@@ -48,14 +48,35 @@ To review a device registration's status:
 
 To get a list of all device registrations, including active and revoked registrations:
 
-List registrations
+**List registrations**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrations?status=all&per_page=50" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrations?status=all&per_page=50" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{    "created_at": "2026-01-26T19:27:49.770372Z",    "device": {      "client_version": "2025.10.186",      "id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",      "name": "My Device"    },    "id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",    "key": "<U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",    "key_type": "secp256r1",    "last_seen_at": "2026-01-29T00:57:57.925979Z",    "revoked_at": "2026-01-29T00:58:16.704026Z",    "tunnel_type": "masque",    "updated_at": "2026-01-29T00:58:16.704026Z",    "user": {      "email": "user@example.com",      "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",      "name": ""    }  },
+```json
+{
+    "created_at": "2026-01-26T19:27:49.770372Z",
+    "device": {
+      "client_version": "2025.10.186",
+      "id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+      "name": "My Device"
+    },
+    "id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+    "key": "<U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
+    "key_type": "secp256r1",
+    "last_seen_at": "2026-01-29T00:57:57.925979Z",
+    "revoked_at": "2026-01-29T00:58:16.704026Z",
+    "tunnel_type": "masque",
+    "updated_at": "2026-01-29T00:58:16.704026Z",
+    "user": {
+      "email": "user@example.com",
+      "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+      "name": ""
+    }
+  },
 ```
 
 A `revoked_at` timestamp indicates that the device registration has a [revoked status](#registration-status). If `revoked_at` is null or not present, it means the registration status is active.
@@ -91,8 +112,8 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-7591)
-* [ API ](#tab-panel-7592)
+* [ Dashboard ](#tab-panel-7844)
+* [ API ](#tab-panel-7845)
 
 To delete a device registration:
 
@@ -108,16 +129,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zero Trust Write`
 
-Delete registration
+**Delete registration**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrations/$REGISTRATION_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrations/$REGISTRATION_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 To bulk delete multiple device registrations:
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/device/registrations/registrations?id=reg_id_1&id=reg_id_2&id=reg_id_3" \  --request DELETE\  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```curl
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/device/registrations/registrations?id=reg_id_1&id=reg_id_2&id=reg_id_3" \
+  --request DELETE\
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The device registration is now permanently deleted, and its virtual IP address is released back into the available pool for reassignment.

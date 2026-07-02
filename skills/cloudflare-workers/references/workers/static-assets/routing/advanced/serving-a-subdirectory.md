@@ -29,20 +29,34 @@ For example, to serve assets from `example.com/blog/*`, create a `blog` director
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 
-* [  wrangler.jsonc ](#tab-panel-12207)
-* [  wrangler.toml ](#tab-panel-12208)
+* [  wrangler.jsonc ](#tab-panel-12502)
+* [  wrangler.toml ](#tab-panel-12503)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "assets-on-a-path-example",
+  "main": "src/index.js",
+  "route": "example.com/blog/*",
+  "assets": {
+    "directory": "dist"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "assets-on-a-path-example",  "main": "src/index.js",  "route": "example.com/blog/*",  "assets": {    "directory": "dist"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "assets-on-a-path-example"main = "src/index.js"route = "example.com/blog/*"
-[assets]directory = "dist"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "assets-on-a-path-example"
+main = "src/index.js"
+route = "example.com/blog/*"
+
+
+[assets]
+directory = "dist"
 ```
 
 In this example, requests to `example.com/blog/` will serve the `index.html` file, and requests to `example.com/blog/posts/post1` will serve the `post1.html` file.

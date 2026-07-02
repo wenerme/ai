@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 [["file1.txt"], ["photo.jpg"]]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart.filenames[*][0] in {"token.txt" "password.txt"})
 ```
 

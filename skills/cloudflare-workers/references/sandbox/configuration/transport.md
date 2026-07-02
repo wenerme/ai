@@ -41,26 +41,34 @@ RPC transport establishes a single persistent connection to the container and mu
 
 **Example with HTTP transport (4 subrequests):**
 
-TypeScript
+**TypeScript**
 
-```
-await sandbox.exec("python setup.py");await sandbox.writeFile("/app/config.json", config);await sandbox.exec("python process.py");const result = await sandbox.readFile("/app/output.txt");
+```typescript
+await sandbox.exec("python setup.py");
+await sandbox.writeFile("/app/config.json", config);
+await sandbox.exec("python process.py");
+const result = await sandbox.readFile("/app/output.txt");
 ```
 
 **Same code with RPC transport (1 subrequest):**
 
-TypeScript
+**TypeScript**
 
-```
-// Identical code - transport is configured via environment variableawait sandbox.exec("python setup.py");await sandbox.writeFile("/app/config.json", config);await sandbox.exec("python process.py");const result = await sandbox.readFile("/app/output.txt");
+```typescript
+// Identical code - transport is configured via environment variable
+await sandbox.exec("python setup.py");
+await sandbox.writeFile("/app/config.json", config);
+await sandbox.exec("python process.py");
+const result = await sandbox.readFile("/app/output.txt");
 ```
 
 RPC transport also removes the [32 MiB limitation](https://developers.cloudflare.com/workers/runtime-apis/rpc/#limitations) that the HTTP transport has. Pass a `ReadableStream` instance to the `writeFile()` method.
 
-JavaScript
+**JavaScript**
 
-```
-const req = await fetch("https://example.com/archive.tar.gz");await sandbox.writeFile("/archive.tar.gz", req.body);
+```js
+const req = await fetch("https://example.com/archive.tar.gz");
+await sandbox.writeFile("/archive.tar.gz", req.body);
 ```
 
 ## Configuration
@@ -75,22 +83,58 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-10359)
-* [  wrangler.toml ](#tab-panel-10360)
+* [  wrangler.jsonc ](#tab-panel-10654)
+* [  wrangler.toml ](#tab-panel-10655)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-sandbox-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "vars": {
+    "SANDBOX_TRANSPORT": "rpc"
+  },
+  "containers": [
+    {
+      "class_name": "Sandbox",
+      "image": "./Dockerfile",
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "Sandbox",
+        "name": "Sandbox",
+      },
+    ],
+  },
+}
 ```
-{  "name": "my-sandbox-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "vars": {    "SANDBOX_TRANSPORT": "rpc"  },  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",    },  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-sandbox-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[vars]SANDBOX_TRANSPORT = "rpc"
-[[containers]]class_name = "Sandbox"image = "./Dockerfile"
-[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
+```toml
+name = "my-sandbox-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[vars]
+SANDBOX_TRANSPORT = "rpc"
+
+
+[[containers]]
+class_name = "Sandbox"
+image = "./Dockerfile"
+
+
+[[durable_objects.bindings]]
+class_name = "Sandbox"
+name = "Sandbox"
 ```
 
 No application code changes are needed. The SDK automatically uses the configured transport for all operations.
@@ -147,26 +191,29 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-10353)
-* [  wrangler.toml ](#tab-panel-10354)
+* [  wrangler.jsonc ](#tab-panel-10648)
+* [  wrangler.toml ](#tab-panel-10649)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "SANDBOX_TRANSPORT": "rpc"
+  },
+}
 ```
-{  "vars": {    "SANDBOX_TRANSPORT": "rpc"  },}
-```
 
-TOML
+**TOML**
 
-```
-[vars]SANDBOX_TRANSPORT = "rpc"
+```toml
+[vars]
+SANDBOX_TRANSPORT = "rpc"
 ```
 
 Then deploy:
 
-Terminal window
-
-```
+```bash
 npx wrangler deploy
 ```
 
@@ -174,18 +221,22 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-10355)
-* [  wrangler.toml ](#tab-panel-10356)
+* [  wrangler.jsonc ](#tab-panel-10650)
+* [  wrangler.toml ](#tab-panel-10651)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    // Remove SANDBOX_TRANSPORT or set to "http"
+  },
+}
 ```
-{  "vars": {    // Remove SANDBOX_TRANSPORT or set to "http"  },}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 vars = { }
 ```
 
@@ -197,19 +248,24 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
 
-* [  wrangler.jsonc ](#tab-panel-10357)
-* [  wrangler.toml ](#tab-panel-10358)
+* [  wrangler.jsonc ](#tab-panel-10652)
+* [  wrangler.toml ](#tab-panel-10653)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "SANDBOX_TRANSPORT": "rpc"
+  },
+}
 ```
-{  "vars": {    "SANDBOX_TRANSPORT": "rpc"  },}
-```
 
-TOML
+**TOML**
 
-```
-[vars]SANDBOX_TRANSPORT = "rpc"
+```toml
+[vars]
+SANDBOX_TRANSPORT = "rpc"
 ```
 
 ## Related resources

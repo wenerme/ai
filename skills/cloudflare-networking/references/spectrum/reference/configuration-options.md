@@ -55,14 +55,32 @@ Spectrum applications can be configured to proxy traffic on ranges of ports.
 
 For direct origins:
 
-```
-{  "protocol": "tcp/1000-2000",  "dns": {    "type": "CNAME",    "name": "range.example.com"  },  "origin_direct": ["tcp://192.0.2.1:3000-4000"]}
+```json
+{
+  "protocol": "tcp/1000-2000",
+  "dns": {
+    "type": "CNAME",
+    "name": "range.example.com"
+  },
+  "origin_direct": ["tcp://192.0.2.1:3000-4000"]
+}
 ```
 
 For DNS origins:
 
-```
-{  "protocol": "tcp/1000-2000",  "dns": {    "type": "CNAME",    "name": "range.example.com"  },  "origin_dns": {    "name": "origin.example.com",    "ttl": 1200  },  "origin_port": "3000-4000"}
+```json
+{
+  "protocol": "tcp/1000-2000",
+  "dns": {
+    "type": "CNAME",
+    "name": "range.example.com"
+  },
+  "origin_dns": {
+    "name": "origin.example.com",
+    "ttl": 1200
+  },
+  "origin_port": "3000-4000"
+}
 ```
 
 The number of ports in an origin port range must match the number of ports specified in the `protocol` field. Connections to a port within a port range at the edge will be proxied to the equivalent port offset in the origin range. For example, in the configurations above, a connection to `range.example.com:1005` would be proxied to port `3005` on the origin.

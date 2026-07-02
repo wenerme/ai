@@ -30,16 +30,30 @@ A participant entry component used inside `rtk-participants` which shows data li
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipant } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipant />;}
+
+
+function MyComponent() {
+  return <RtkParticipant />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipant } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipant      meeting={meeting}      participant={participant}      view={participantviewmode}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipant
+      meeting={meeting}
+      participant={participant}
+      view={participantviewmode}
+    />
+  );
+}
 ```
 
 ```json

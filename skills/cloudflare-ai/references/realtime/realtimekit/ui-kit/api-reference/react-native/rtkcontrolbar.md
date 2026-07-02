@@ -30,16 +30,31 @@ The main control bar container that renders meeting controls (mic, camera, leave
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkControlbar } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkControlbar meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkControlbar meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkControlbar } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkControlbar      meeting={meeting}      variant="solid"      size="md"      config={customConfig}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkControlbar
+      meeting={meeting}
+      variant="solid"
+      size="md"
+      config={customConfig}
+    />
+  );
+}
 ```
 
 ```json

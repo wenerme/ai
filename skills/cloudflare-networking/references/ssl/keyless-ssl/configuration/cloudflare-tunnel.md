@@ -66,8 +66,11 @@ You will have to upload each certificate used with Keyless SSL.
 
 To upload a Keyless certificate with the API, send a [POST](https://developers.cloudflare.com/api/resources/keyless%5Fcertificates/methods/create/) request that includes a `"tunnel"` object.
 
-```
-"tunnel": {  "vnet_id": "<VIRTUAL_NETWORK_ID>",  "private_ip": "<NETWORK>"}
+```json
+"tunnel": {
+  "vnet_id": "<VIRTUAL_NETWORK_ID>",
+  "private_ip": "<NETWORK>"
+}
 ```
 
 Note
@@ -88,58 +91,76 @@ These steps are also at the [Cloudflare package repository ↗](https://pkg.clou
 
 #### Debian/Ubuntu packages
 
-* [ Debian 13 (Trixie) ](#tab-panel-10746)
-* [ Debian 12 (Bookworm) ](#tab-panel-10747)
-* [ Debian 11 (Bullseye) ](#tab-panel-10748)
-* [ Ubuntu 24.04 (Noble) ](#tab-panel-10749)
-* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10750)
-* [ Ubuntu 20.04 (Focal) ](#tab-panel-10751)
+* [ Debian 13 (Trixie) ](#tab-panel-11041)
+* [ Debian 12 (Bookworm) ](#tab-panel-11042)
+* [ Debian 11 (Bullseye) ](#tab-panel-11043)
+* [ Ubuntu 24.04 (Noble) ](#tab-panel-11044)
+* [ Ubuntu 22.04 (Jammy) ](#tab-panel-11045)
+* [ Ubuntu 20.04 (Focal) ](#tab-panel-11046)
 
-Terminal window
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/gokeyless trixie main' | sudo tee /etc/apt/sources.list.d/cloudflare.list
+
+
 sudo apt-get update && sudo apt-get install gokeyless
 ```
 
-Terminal window
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/gokeyless bookworm main' | sudo tee /etc/apt/sources.list.d/cloudflare.list
+
+
 sudo apt-get update && sudo apt-get install gokeyless
 ```
 
-Terminal window
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/gokeyless bullseye main' | sudo tee /etc/apt/sources.list.d/cloudflare.list
+
+
 sudo apt-get update && sudo apt-get install gokeyless
 ```
 
-Terminal window
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/gokeyless noble main' | sudo tee /etc/apt/sources.list.d/cloudflare.list
+
+
 sudo apt-get update && sudo apt-get install gokeyless
 ```
 
-Terminal window
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/gokeyless jammy main' | sudo tee /etc/apt/sources.list.d/cloudflare.list
+
+
 sudo apt-get update && sudo apt-get install gokeyless
 ```
 
-Terminal window
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/gokeyless focal main' | sudo tee /etc/apt/sources.list.d/cloudflare.list
+
+
 sudo apt-get update && sudo apt-get install gokeyless
 ```
 
@@ -147,33 +168,31 @@ sudo apt-get update && sudo apt-get install gokeyless
 
 Gokeyless uses CGO for PKCS#11/HSM support, which creates glibc dependencies. Use the repository that matches your distribution.
 
-* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10752)
-* [ Amazon Linux 2023 ](#tab-panel-10753)
-* [ RHEL 8 / CentOS 8 ](#tab-panel-10754)
-* [ Amazon Linux 2 ](#tab-panel-10755)
+* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-11047)
+* [ Amazon Linux 2023 ](#tab-panel-11048)
+* [ RHEL 8 / CentOS 8 ](#tab-panel-11049)
+* [ Amazon Linux 2 ](#tab-panel-11050)
 
-Terminal window
-
-```
-sudo dnf config-manager --add-repo https://pkg.cloudflare.com/gokeyless/rpm/gokeyless.reposudo dnf install gokeyless
-```
-
-Terminal window
-
-```
-curl -fsSl https://pkg.cloudflare.com/gokeyless/rpm/gokeyless.repo | sudo tee /etc/yum.repos.d/gokeyless.reposudo yum updatesudo yum install gokeyless
+```sh
+sudo dnf config-manager --add-repo https://pkg.cloudflare.com/gokeyless/rpm/gokeyless.repo
+sudo dnf install gokeyless
 ```
 
-Terminal window
-
+```sh
+curl -fsSl https://pkg.cloudflare.com/gokeyless/rpm/gokeyless.repo | sudo tee /etc/yum.repos.d/gokeyless.repo
+sudo yum update
+sudo yum install gokeyless
 ```
-sudo dnf config-manager --add-repo https://pkg.cloudflare.com/gokeyless/rpm-el8/gokeyless.reposudo dnf install gokeyless
+
+```sh
+sudo dnf config-manager --add-repo https://pkg.cloudflare.com/gokeyless/rpm-el8/gokeyless.repo
+sudo dnf install gokeyless
 ```
 
-Terminal window
-
-```
-curl -fsSl https://pkg.cloudflare.com/gokeyless/rpm-el8/gokeyless.repo | sudo tee /etc/yum.repos.d/gokeyless.reposudo yum updatesudo yum install gokeyless
+```sh
+curl -fsSl https://pkg.cloudflare.com/gokeyless/rpm-el8/gokeyless.repo | sudo tee /etc/yum.repos.d/gokeyless.repo
+sudo yum update
+sudo yum install gokeyless
 ```
 
 ### Configure
@@ -188,13 +207,11 @@ Add your Cloudflare account details to the configuration file located at `/etc/k
 
 Install your private keys in `/etc/keyless/keys/` and set the user and group to keyless with 400 permissions. Keys must be in PEM or DER format and have an extension of `.key`:
 
-Terminal window
-
-```
+```sh
 ls -l /etc/keyless/keys
 ```
 
-```
+```sh
 -r-------- 1 keyless keyless 1675 Nov 18 16:44 example.com.key
 ```
 

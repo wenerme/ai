@@ -36,9 +36,7 @@ The Cloudflare One Client for Windows allows for an automated install via tools 
 
 To install the Cloudflare One Client, run the following command:
 
-Terminal window
-
-```
+```bash
 msiexec /i "Cloudflare_WARP_<VERSION>.msi" /qn ORGANIZATION="your-team-name" SUPPORT_URL="http://support.example.com"
 ```
 
@@ -66,21 +64,23 @@ To uninstall the Cloudflare One Client:
 
 1. First, locate the `.msi` package with the following PowerShell command:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Get-WmiObject Win32_Product | Where-Object { $_.Name -match "WARP" } | Sort-Object -Property Name | Format-Table IdentifyingNumber, Name, LocalPackage -AutoSize
 ```
 
-```
-IdentifyingNumber                      Name            LocalPackage-----------------                      ----            ------------{5RA4DJWK-13D8-2NSX-QRF8-UANLODWD6D90} Cloudflare WARP C:\WINDOWS\Installer\3f476db.msi
+```txt
+IdentifyingNumber                      Name            LocalPackage
+-----------------                      ----            ------------
+{5RA4DJWK-13D8-2NSX-QRF8-UANLODWD6D90} Cloudflare WARP C:\WINDOWS\Installer\3f476db.msi
 ```
 
 1. You can then use the LocalPackage output in the uninstall command. For example,
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 msiexec /x C:\WINDOWS\Installer\<WARP_RELEASE>.msi /quiet
 ```
 
@@ -88,8 +88,13 @@ msiexec /x C:\WINDOWS\Installer\<WARP_RELEASE>.msi /quiet
 
 The on-disk configuration of the Windows client can be changed at any time by modifying or replacing the contents of `C:\ProgramData\Cloudflare\mdm.xml`. The format of this file is as follows:
 
-```
-<dict>  <key>organization</key>  <string>your-team-name</string>  <key>onboarding</key>  <false/></dict>
+```xml
+<dict>
+  <key>organization</key>
+  <string>your-team-name</string>
+  <key>onboarding</key>
+  <false/>
+</dict>
 ```
 
 Changes to this file are processed immediately by the Cloudflare One Client.
@@ -102,7 +107,7 @@ To use an embedded browser:
 
 1. Download and install WebView2 by following the [Microsoft instructions ↗](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
 2. Add a registry key with the following command:
-```
+```txt
 REG ADD HKLM\SOFTWARE\Cloudflare\CloudflareWARP /f /v UseWebView2 /t REG_SZ /d y
 ```
 
@@ -139,16 +144,22 @@ You can configure [Cloudflare One Client deployment parameters](https://develope
 
 The format of `/Library/Application Support/Cloudflare/mdm.xml` is as follows:
 
-```
-<dict>  <key>organization</key>  <string>your-team-name</string></dict>
+```xml
+<dict>
+  <key>organization</key>
+  <string>your-team-name</string>
+</dict>
 ```
 
 ## Linux
 
 The Cloudflare One Client for Linux allows for an automated install via the presence of an `mdm.xml` file in `/var/lib/cloudflare-warp`. The format of `/var/lib/cloudflare-warp/mdm.xml` is as follows:
 
-```
-<dict>  <key>organization</key>  <string>your-team-name</string></dict>
+```xml
+<dict>
+  <key>organization</key>
+  <string>your-team-name</string>
+</dict>
 ```
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a list of accepted arguments.
@@ -165,8 +176,19 @@ The Cloudflare One Client for iOS, known in the App Store as [Cloudflare One Age
 
 To proceed with the installation, here is an example of the XML code you will need:
 
-```
-<dict>    <key>organization</key>    <string>your-team-name</string>    <key>auto_connect</key>    <integer>1</integer>    <key>switch_locked</key>    <false />    <key>service_mode</key>    <string>warp</string>    <key>support_url</key>    <string>https://support.example.com</string></dict>
+```xml
+<dict>
+    <key>organization</key>
+    <string>your-team-name</string>
+    <key>auto_connect</key>
+    <integer>1</integer>
+    <key>switch_locked</key>
+    <false />
+    <key>service_mode</key>
+    <string>warp</string>
+    <key>support_url</key>
+    <string>https://support.example.com</string>
+</dict>
 ```
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument.
@@ -181,14 +203,33 @@ The Cloudflare One Client for Android, known in the Google Play store as [Cloudf
 
 To proceed with the installation, here is an example of the XML code you will need:
 
-```
-<key>organization</key><string>your-team-name</string><key>switch_locked</key><true /><key>auto_connect</key><integer>0</integer><key>gateway_unique_id</key><string>your_gateway_doh_subdomain</string><key>service_mode</key><string>warp</string><key>support_url</key><string>https://support.example.com</string>
+```xml
+<key>organization</key>
+<string>your-team-name</string>
+<key>switch_locked</key>
+<true />
+<key>auto_connect</key>
+<integer>0</integer>
+<key>gateway_unique_id</key>
+<string>your_gateway_doh_subdomain</string>
+<key>service_mode</key>
+<string>warp</string>
+<key>support_url</key>
+<string>https://support.example.com</string>
 ```
 
 If your MDM tool does not support XML, you may need to convert the XML to JSON. Here is an example below:
 
-```
-{  "organization": "your-team-name",  "gateway_unique_id": "your_gateway_doh_subdomain",  "onboarding": true,  "switch_locked": true,  "auto_connect": 0,  "service_mode": "warp",  "support_url": "https://support.example.com"}
+```json
+{
+  "organization": "your-team-name",
+  "gateway_unique_id": "your_gateway_doh_subdomain",
+  "onboarding": true,
+  "switch_locked": true,
+  "auto_connect": 0,
+  "service_mode": "warp",
+  "support_url": "https://support.example.com"
+}
 ```
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each value.

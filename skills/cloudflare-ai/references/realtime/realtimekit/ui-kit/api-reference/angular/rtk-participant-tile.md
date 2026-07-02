@@ -33,14 +33,25 @@ A component which plays a participants video and allows for placement of compone
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participant-tile></rtk-participant-tile>
+```html
+<!-- component.html -->
+<rtk-participant-tile></rtk-participant-tile>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participant-tile [isPreview]="true" [meeting]="meeting" [nameTagPosition]="| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'"></rtk-participant-tile>
+```html
+<!-- component.html -->
+<rtk-participant-tile
+ [isPreview]="true"
+ [meeting]="meeting"
+ [nameTagPosition]="| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'">
+</rtk-participant-tile>
 ```
 
 ```json

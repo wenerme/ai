@@ -39,8 +39,14 @@ The diagram below represents only waiting room-related states. The `roomState` p
 
 ### State Flow
 
-```
-        join()          ↓    [waitlisted]  ←------ (host rejects)          ↓                     ↓   (host accepts)           [rejected]          ↓      [joined]
+```plaintext
+        join()
+          ↓
+    [waitlisted]  ←------ (host rejects)
+          ↓                     ↓
+   (host accepts)           [rejected]
+          ↓
+      [joined]
 ```
 
 ## Listening to State Changes
@@ -51,65 +57,139 @@ Triggered when the local user successfully joins the meeting.
 
 Monitor when the local user joins the meeting:
 
-```
-import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";import { useEffect } from "react";
-function MeetingStatus() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);  const joined = roomState === "joined";
-  useEffect(() => {    if (joined) {      console.log("Successfully joined the meeting");    }  }, [joined]);
-  return joined ? <div>You are in the meeting</div> : null;}
+```jsx
+import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
+import { useEffect } from "react";
+
+
+function MeetingStatus() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+  const joined = roomState === "joined";
+
+
+  useEffect(() => {
+    if (joined) {
+      console.log("Successfully joined the meeting");
+    }
+  }, [joined]);
+
+
+  return joined ? <div>You are in the meeting</div> : null;
+}
 ```
 
 Alternatively, use event listeners:
 
-```
+```jsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
-useEffect(() => {  if (!meeting) return;
-  const handleRoomJoined = () => {    console.log("Successfully joined the meeting");  };
+
+
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleRoomJoined = () => {
+    console.log("Successfully joined the meeting");
+  };
+
+
   meeting.self.on("roomJoined", handleRoomJoined);
-  return () => {    meeting.self.off("roomJoined", handleRoomJoined);  };}, [meeting]);
+
+
+  return () => {
+    meeting.self.off("roomJoined", handleRoomJoined);
+  };
+}, [meeting]);
 ```
 
-JavaScript
+**JavaScript**
 
-```
-meeting.self.on("roomJoined", () => {  // Local user is in the meeting  console.log("Successfully joined the meeting");});
-```
-
-Kotlin
-
-```
-meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {  override fun onMeetingRoomJoinCompleted(meeting: RealtimeKitClient) {    // Local user is in the meeting  }})
+```js
+meeting.self.on("roomJoined", () => {
+  // Local user is in the meeting
+  console.log("Successfully joined the meeting");
+});
 ```
 
-Swift
+**Kotlin**
 
-```
-extension MeetingViewModel: RtkMeetingRoomEventListener {  func onMeetingRoomJoinCompleted(meeting: RealtimeKitClient) {    // Local user is in the meeting  }}
+```kotlin
+meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {
+  override fun onMeetingRoomJoinCompleted(meeting: RealtimeKitClient) {
+    // Local user is in the meeting
+  }
+})
 ```
 
-Dart
+**Swift**
 
+```swift
+extension MeetingViewModel: RtkMeetingRoomEventListener {
+  func onMeetingRoomJoinCompleted(meeting: RealtimeKitClient) {
+    // Local user is in the meeting
+  }
+}
 ```
-class MeetingRoomNotifier extends RtkMeetingRoomEventListener {  @override  void onMeetingRoomJoinCompleted() {    // Local user is in the meeting  }}
+
+**Dart**
+
+```dart
+class MeetingRoomNotifier extends RtkMeetingRoomEventListener {
+  @override
+  void onMeetingRoomJoinCompleted() {
+    // Local user is in the meeting
+  }
+}
+
+
 meeting.addMeetingRoomEventListener(MeetingRoomNotifier());
 ```
 
 Monitor when the local user joins the meeting:
 
-```
-import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";import { useEffect } from "react";
-function MeetingStatus() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);  const joined = roomState === "joined";
-  useEffect(() => {    if (joined) {      console.log("Successfully joined the meeting");    }  }, [joined]);
-  return joined ? <Text>You are in the meeting</Text> : null;}
+```tsx
+import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
+import { useEffect } from "react";
+
+
+function MeetingStatus() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+  const joined = roomState === "joined";
+
+
+  useEffect(() => {
+    if (joined) {
+      console.log("Successfully joined the meeting");
+    }
+  }, [joined]);
+
+
+  return joined ? <Text>You are in the meeting</Text> : null;
+}
 ```
 
 Alternatively, use event listeners:
 
-```
+```tsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react-native";
-useEffect(() => {  if (!meeting) return;
-  const handleRoomJoined = () => {    console.log("Successfully joined the meeting");  };
+
+
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleRoomJoined = () => {
+    console.log("Successfully joined the meeting");
+  };
+
+
   meeting.self.on("roomJoined", handleRoomJoined);
-  return () => {    meeting.self.off("roomJoined", handleRoomJoined);  };}, [meeting]);
+
+
+  return () => {
+    meeting.self.off("roomJoined", handleRoomJoined);
+  };
+}, [meeting]);
 ```
 
 ### Waitlisted Event
@@ -118,61 +198,153 @@ Triggered when the local user is placed in the waiting room.
 
 Monitor when the local user is in the waiting room:
 
-```
-function WaitingRoomStatus() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);  const isWaitlisted = roomState === "waitlisted";
-  useEffect(() => {    if (isWaitlisted) {      console.log("You are in the waiting room");    }  }, [isWaitlisted]);
-  return isWaitlisted ? <div>Waiting for host approval...</div> : null;}
+```jsx
+function WaitingRoomStatus() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+  const isWaitlisted = roomState === "waitlisted";
+
+
+  useEffect(() => {
+    if (isWaitlisted) {
+      console.log("You are in the waiting room");
+    }
+  }, [isWaitlisted]);
+
+
+  return isWaitlisted ? <div>Waiting for host approval...</div> : null;
+}
 ```
 
 Alternatively, use event listeners:
 
-```
-useEffect(() => {  if (!meeting) return;
-  const handleWaitlisted = () => {    console.log("You are in the waiting room");  };
+```jsx
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleWaitlisted = () => {
+    console.log("You are in the waiting room");
+  };
+
+
   meeting.self.on("waitlisted", handleWaitlisted);
-  return () => {    meeting.self.off("waitlisted", handleWaitlisted);  };}, [meeting]);
+
+
+  return () => {
+    meeting.self.off("waitlisted", handleWaitlisted);
+  };
+}, [meeting]);
 ```
 
-JavaScript
+**JavaScript**
 
-```
-meeting.self.on("waitlisted", () => {  // Local user is waitlisted  console.log("You are in the waiting room. Waiting for host approval...");});
-```
-
-Kotlin
-
-```
-meeting.addSelfEventListener(object : RtkSelfEventListener {  override fun onWaitListStatusUpdate(waitListStatus: WaitListStatus) {    when (waitListStatus) {      WAITING -> {        // Local user is in the waiting room      }      REJECTED -> {        // Local user's join room request was rejected by the host      }      NONE, ACCEPTED -> {        // Local user is not in the wait list or was already accepted      }    }  }})
+```js
+meeting.self.on("waitlisted", () => {
+  // Local user is waitlisted
+  console.log("You are in the waiting room. Waiting for host approval...");
+});
 ```
 
-Swift
+**Kotlin**
 
-```
-extension MeetingViewModel: RtkSelfEventListener {  func onWaitListStatusUpdate(waitListStatus: WaitListStatus) {    switch waitListStatus {    case .accepted:      // Local user's join room request was accepted by the host    case .waiting:      // Local user is in the waiting room    case .rejected:      // Local user's join room request was rejected by the host    default:      return .none    }  }}
+```kotlin
+meeting.addSelfEventListener(object : RtkSelfEventListener {
+  override fun onWaitListStatusUpdate(waitListStatus: WaitListStatus) {
+    when (waitListStatus) {
+      WAITING -> {
+        // Local user is in the waiting room
+      }
+      REJECTED -> {
+        // Local user's join room request was rejected by the host
+      }
+      NONE, ACCEPTED -> {
+        // Local user is not in the wait list or was already accepted
+      }
+    }
+  }
+})
 ```
 
-Dart
+**Swift**
 
+```swift
+extension MeetingViewModel: RtkSelfEventListener {
+  func onWaitListStatusUpdate(waitListStatus: WaitListStatus) {
+    switch waitListStatus {
+    case .accepted:
+      // Local user's join room request was accepted by the host
+    case .waiting:
+      // Local user is in the waiting room
+    case .rejected:
+      // Local user's join room request was rejected by the host
+    default:
+      return .none
+    }
+  }
+}
 ```
-class WaitingRoomNotifier extends RtkSelfEventListener {  @override  void onWaitListStatusUpdate(WaitlistStatus waitListStatus) {    switch (waitListStatus) {      case WaitlistStatus.waiting:      // Local user is in the waiting room      case WaitlistStatus.rejected:      // Local user's join room request was rejected by the host      case WaitlistStatus.accepted:      // Local user's join room request was accepted by the host      default:        break;    }  }}
+
+**Dart**
+
+```dart
+class WaitingRoomNotifier extends RtkSelfEventListener {
+  @override
+  void onWaitListStatusUpdate(WaitlistStatus waitListStatus) {
+    switch (waitListStatus) {
+      case WaitlistStatus.waiting:
+      // Local user is in the waiting room
+      case WaitlistStatus.rejected:
+      // Local user's join room request was rejected by the host
+      case WaitlistStatus.accepted:
+      // Local user's join room request was accepted by the host
+      default:
+        break;
+    }
+  }
+}
+
+
 meeting.addSelfEventListener(WaitingRoomNotifier());
 ```
 
 Monitor when the local user is in the waiting room:
 
-```
-function WaitingRoomStatus() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);  const isWaitlisted = roomState === "waitlisted";
-  useEffect(() => {    if (isWaitlisted) {      console.log("You are in the waiting room");    }  }, [isWaitlisted]);
-  return isWaitlisted ? <Text>Waiting for host approval...</Text> : null;}
+```tsx
+function WaitingRoomStatus() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+  const isWaitlisted = roomState === "waitlisted";
+
+
+  useEffect(() => {
+    if (isWaitlisted) {
+      console.log("You are in the waiting room");
+    }
+  }, [isWaitlisted]);
+
+
+  return isWaitlisted ? <Text>Waiting for host approval...</Text> : null;
+}
 ```
 
 Alternatively, use event listeners:
 
-```
-useEffect(() => {  if (!meeting) return;
-  const handleWaitlisted = () => {    console.log("You are in the waiting room");  };
+```tsx
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleWaitlisted = () => {
+    console.log("You are in the waiting room");
+  };
+
+
   meeting.self.on("waitlisted", handleWaitlisted);
-  return () => {    meeting.self.off("waitlisted", handleWaitlisted);  };}, [meeting]);
+
+
+  return () => {
+    meeting.self.off("waitlisted", handleWaitlisted);
+  };
+}, [meeting]);
 ```
 
 ### Rejected Event
@@ -181,67 +353,172 @@ Triggered when the host rejects the entry request.
 
 Monitor when the host rejects the entry request:
 
-```
-function RejectionStatus() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);  const rejected = roomState === "rejected";
-  useEffect(() => {    if (rejected) {      console.log("Your entry request was rejected");    }  }, [rejected]);
-  return rejected ? <div>Your entry was rejected by the host</div> : null;}
+```jsx
+function RejectionStatus() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+  const rejected = roomState === "rejected";
+
+
+  useEffect(() => {
+    if (rejected) {
+      console.log("Your entry request was rejected");
+    }
+  }, [rejected]);
+
+
+  return rejected ? <div>Your entry was rejected by the host</div> : null;
+}
 ```
 
 Alternatively, use event listeners:
 
-```
-useEffect(() => {  if (!meeting) return;
-  const handleRoomLeft = ({ state }) => {    if (state === "rejected") {      console.log("Your entry request was rejected");    }  };
+```jsx
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleRoomLeft = ({ state }) => {
+    if (state === "rejected") {
+      console.log("Your entry request was rejected");
+    }
+  };
+
+
   meeting.self.on("roomLeft", handleRoomLeft);
-  return () => {    meeting.self.off("roomLeft", handleRoomLeft);  };}, [meeting]);
+
+
+  return () => {
+    meeting.self.off("roomLeft", handleRoomLeft);
+  };
+}, [meeting]);
 ```
 
-JavaScript
+**JavaScript**
 
-```
-meeting.self.on("roomLeft", ({ state }) => {  if (state === "rejected") {    // Host rejected the entry    console.log("Your entry request was rejected");  }});
+```js
+meeting.self.on("roomLeft", ({ state }) => {
+  if (state === "rejected") {
+    // Host rejected the entry
+    console.log("Your entry request was rejected");
+  }
+});
 ```
 
 When the host rejects the entry request, the `onWaitListStatusUpdate` callback is triggered with `WaitListStatus.REJECTED`:
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addSelfEventListener(object : RtkSelfEventListener {  override fun onWaitListStatusUpdate(waitListStatus: WaitListStatus) {    when (waitListStatus) {      WaitListStatus.REJECTED -> {        // Local user's join room request was rejected by the host        Log.d("WaitingRoom", "Your entry request was rejected")      }      WaitListStatus.WAITING -> {        // Local user is in the waiting room      }      WaitListStatus.ACCEPTED, WaitListStatus.NONE -> {        // Local user was accepted or not in waitlist      }    }  }})
+```kotlin
+meeting.addSelfEventListener(object : RtkSelfEventListener {
+  override fun onWaitListStatusUpdate(waitListStatus: WaitListStatus) {
+    when (waitListStatus) {
+      WaitListStatus.REJECTED -> {
+        // Local user's join room request was rejected by the host
+        Log.d("WaitingRoom", "Your entry request was rejected")
+      }
+      WaitListStatus.WAITING -> {
+        // Local user is in the waiting room
+      }
+      WaitListStatus.ACCEPTED, WaitListStatus.NONE -> {
+        // Local user was accepted or not in waitlist
+      }
+    }
+  }
+})
 ```
 
 When the host rejects the entry request, the `onWaitListStatusUpdate` callback is triggered with `WaitListStatus.rejected`:
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkSelfEventListener {  func onWaitListStatusUpdate(waitListStatus: WaitListStatus) {    switch waitListStatus {    case .rejected:      // Local user's join room request was rejected by the host      print("Your entry request was rejected")    case .waiting:      // Local user is in the waiting room      break    case .accepted:      // Local user's join room request was accepted by the host      break    default:      break    }  }}
+```swift
+extension MeetingViewModel: RtkSelfEventListener {
+  func onWaitListStatusUpdate(waitListStatus: WaitListStatus) {
+    switch waitListStatus {
+    case .rejected:
+      // Local user's join room request was rejected by the host
+      print("Your entry request was rejected")
+    case .waiting:
+      // Local user is in the waiting room
+      break
+    case .accepted:
+      // Local user's join room request was accepted by the host
+      break
+    default:
+      break
+    }
+  }
+}
 ```
 
 When the host rejects the entry request, the `onWaitListStatusUpdate` callback is triggered with `WaitlistStatus.rejected`:
 
-Dart
+**Dart**
 
-```
-class WaitingRoomNotifier extends RtkSelfEventListener {  @override  void onWaitListStatusUpdate(WaitlistStatus waitListStatus) {    switch (waitListStatus) {      case WaitlistStatus.rejected:        // Local user's join room request was rejected by the host        print("Your entry request was rejected");      case WaitlistStatus.waiting:        // Local user is in the waiting room        break;      case WaitlistStatus.accepted:        // Local user's join room request was accepted by the host        break;      default:        break;    }  }}
+```dart
+class WaitingRoomNotifier extends RtkSelfEventListener {
+  @override
+  void onWaitListStatusUpdate(WaitlistStatus waitListStatus) {
+    switch (waitListStatus) {
+      case WaitlistStatus.rejected:
+        // Local user's join room request was rejected by the host
+        print("Your entry request was rejected");
+      case WaitlistStatus.waiting:
+        // Local user is in the waiting room
+        break;
+      case WaitlistStatus.accepted:
+        // Local user's join room request was accepted by the host
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+
 meeting.addSelfEventListener(WaitingRoomNotifier());
 ```
 
 Monitor when the host rejects the entry request:
 
-```
-function RejectionStatus() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);  const rejected = roomState === "rejected";
-  useEffect(() => {    if (rejected) {      console.log("Your entry request was rejected");    }  }, [rejected]);
-  return rejected ? <Text>Your entry was rejected by the host</Text> : null;}
+```tsx
+function RejectionStatus() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+  const rejected = roomState === "rejected";
+
+
+  useEffect(() => {
+    if (rejected) {
+      console.log("Your entry request was rejected");
+    }
+  }, [rejected]);
+
+
+  return rejected ? <Text>Your entry was rejected by the host</Text> : null;
+}
 ```
 
 Alternatively, use event listeners:
 
-```
-useEffect(() => {  if (!meeting) return;
-  const handleRoomLeft = ({ state }) => {    if (state === "rejected") {      console.log("Your entry request was rejected");    }  };
+```tsx
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleRoomLeft = ({ state }) => {
+    if (state === "rejected") {
+      console.log("Your entry request was rejected");
+    }
+  };
+
+
   meeting.self.on("roomLeft", handleRoomLeft);
-  return () => {    meeting.self.off("roomLeft", handleRoomLeft);  };}, [meeting]);
+
+
+  return () => {
+    meeting.self.off("roomLeft", handleRoomLeft);
+  };
+}, [meeting]);
 ```
 
 ### Monitor State with roomState
@@ -250,16 +527,47 @@ You can also directly check the current room state.
 
 Handle all waiting room states in one component:
 
-```
-function WaitingRoomManager() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
-  switch (roomState) {    case "init":      return <div>Connecting...</div>;    case "waitlisted":      return <div>Waiting for host approval...</div>;    case "joined":      return <div>You are in the meeting</div>;    case "rejected":      return <div>Your entry was rejected</div>;    case "left":      return <div>You left the meeting</div>;    case "kicked":      return <div>You were removed from the meeting</div>;    case "ended":      return <div>The meeting has ended</div>;    case "disconnected":      return <div>Connection lost</div>;    default:      return null;  }}
+```jsx
+function WaitingRoomManager() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+
+
+  switch (roomState) {
+    case "init":
+      return <div>Connecting...</div>;
+    case "waitlisted":
+      return <div>Waiting for host approval...</div>;
+    case "joined":
+      return <div>You are in the meeting</div>;
+    case "rejected":
+      return <div>Your entry was rejected</div>;
+    case "left":
+      return <div>You left the meeting</div>;
+    case "kicked":
+      return <div>You were removed from the meeting</div>;
+    case "ended":
+      return <div>The meeting has ended</div>;
+    case "disconnected":
+      return <div>Connection lost</div>;
+    default:
+      return null;
+  }
+}
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const currentState = meeting.self.roomState;
-if (currentState === "waitlisted") {  console.log("Waiting for approval");} else if (currentState === "joined") {  console.log("In the meeting");} else if (currentState === "rejected") {  console.log("Entry was rejected");}
+
+
+if (currentState === "waitlisted") {
+  console.log("Waiting for approval");
+} else if (currentState === "joined") {
+  console.log("In the meeting");
+} else if (currentState === "rejected") {
+  console.log("Entry was rejected");
+}
 ```
 
 Use the event listeners shown above to monitor state changes.
@@ -270,9 +578,32 @@ Use the event listeners shown above to monitor state changes.
 
 Handle all waiting room states in one component:
 
-```
-function WaitingRoomManager() {  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
-  switch (roomState) {    case "init":      return <Text>Connecting...</Text>;    case "waitlisted":      return <Text>Waiting for host approval...</Text>;    case "joined":      return <Text>You are in the meeting</Text>;    case "rejected":      return <Text>Your entry was rejected</Text>;    case "left":      return <Text>You left the meeting</Text>;    case "kicked":      return <Text>You were removed from the meeting</Text>;    case "ended":      return <Text>The meeting has ended</Text>;    case "disconnected":      return <Text>Connection lost</Text>;    default:      return null;  }}
+```tsx
+function WaitingRoomManager() {
+  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+
+
+  switch (roomState) {
+    case "init":
+      return <Text>Connecting...</Text>;
+    case "waitlisted":
+      return <Text>Waiting for host approval...</Text>;
+    case "joined":
+      return <Text>You are in the meeting</Text>;
+    case "rejected":
+      return <Text>Your entry was rejected</Text>;
+    case "left":
+      return <Text>You left the meeting</Text>;
+    case "kicked":
+      return <Text>You were removed from the meeting</Text>;
+    case "ended":
+      return <Text>The meeting has ended</Text>;
+    case "disconnected":
+      return <Text>Connection lost</Text>;
+    default:
+      return null;
+  }
+}
 ```
 
 ## Host Actions
@@ -284,65 +615,248 @@ Hosts can manage waiting room requests using participant management methods. See
 
 ### Example: Host Accepting Participants
 
-```
-import {  useRealtimeKitClient,  useRealtimeKitSelector,} from "@cloudflare/realtimekit-react";
-function WaitingRoomHost() {  const [meeting] = useRealtimeKitClient();  const waitlistedParticipants = useRealtimeKitSelector((m) =>    m.participants.waitlisted.toArray(),  );
-  const acceptParticipant = async (participantId) => {    await meeting.participants.acceptWaitingRoomRequest(participantId);  };
-  const rejectParticipant = async (participantId) => {    await meeting.participants.rejectWaitingRoomRequest(participantId);  };
-  return (    <div>      <h3>Waiting Room ({waitlistedParticipants.length})</h3>      {waitlistedParticipants.map((participant) => (        <div key={participant.id}>          <span>{participant.name}</span>          <button onClick={() => acceptParticipant(participant.id)}>            Accept          </button>          <button onClick={() => rejectParticipant(participant.id)}>            Reject          </button>        </div>      ))}    </div>  );}
+```jsx
+import {
+  useRealtimeKitClient,
+  useRealtimeKitSelector,
+} from "@cloudflare/realtimekit-react";
+
+
+function WaitingRoomHost() {
+  const [meeting] = useRealtimeKitClient();
+  const waitlistedParticipants = useRealtimeKitSelector((m) =>
+    m.participants.waitlisted.toArray(),
+  );
+
+
+  const acceptParticipant = async (participantId) => {
+    await meeting.participants.acceptWaitingRoomRequest(participantId);
+  };
+
+
+  const rejectParticipant = async (participantId) => {
+    await meeting.participants.rejectWaitingRoomRequest(participantId);
+  };
+
+
+  return (
+    <div>
+      <h3>Waiting Room ({waitlistedParticipants.length})</h3>
+      {waitlistedParticipants.map((participant) => (
+        <div key={participant.id}>
+          <span>{participant.name}</span>
+          <button onClick={() => acceptParticipant(participant.id)}>
+            Accept
+          </button>
+          <button onClick={() => rejectParticipant(participant.id)}>
+            Reject
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
-JavaScript
+**JavaScript**
 
-```
-// Get waitlisted participantsconst waitlistedParticipants = meeting.participants.waitlisted.toArray();
-// Accept the first waitlisted participantif (waitlistedParticipants.length > 0) {  const participantId = waitlistedParticipants[0].id;  await meeting.participants.acceptWaitingRoomRequest(participantId);}
-```
+```js
+// Get waitlisted participants
+const waitlistedParticipants = meeting.participants.waitlisted.toArray();
 
-Kotlin
 
-```
-// Get waitlisted participantsval waitlistedParticipants = meeting.participants.waitlisted
-// Accept a participant from the waiting roomif (waitlistedParticipants.isNotEmpty()) {  val participant = waitlistedParticipants[0]  meeting.participants.acceptWaitingRoomRequest(participant.id)}
-// Reject a participant's entry requestif (waitlistedParticipants.isNotEmpty()) {  val participant = waitlistedParticipants[0]  meeting.participants.rejectWaitingRoomRequest(participant.id)}
-// Listen for waiting room eventsmeeting.addWaitlistEventListener(object : RtkWaitlistEventListener {  override fun onWaitListParticipantJoined(participant: RtkRemoteParticipant) {    // Called when a new participant joins the waiting room  }
-  override fun onWaitListParticipantAccepted(participant: RtkRemoteParticipant) {    // Called when a waitlisted participant is accepted into the meeting  }
-  override fun onWaitListParticipantRejected(participant: RtkRemoteParticipant) {    // Called when a waitlisted participant is denied entry  }
-  override fun onWaitListParticipantClosed(participant: RtkRemoteParticipant) {    // Called when a waitlisted participant leaves the waiting room  }})
+// Accept the first waitlisted participant
+if (waitlistedParticipants.length > 0) {
+  const participantId = waitlistedParticipants[0].id;
+  await meeting.participants.acceptWaitingRoomRequest(participantId);
+}
 ```
 
-Swift
+**Kotlin**
 
-```
-// Get waitlisted participantslet waitlistedParticipants = meeting.participants.waitlisted
-// Accept a participant from the waiting roomif let participant = waitlistedParticipants.first {  meeting.participants.acceptWaitingRoomRequest(id: participant.id)}
-// Reject a participant's entry requestif let participant = waitlistedParticipants.first {  meeting.participants.rejectWaitingRoomRequest(participant.id)}
-// Listen for waiting room eventsextension MeetingViewModel: RtkWaitlistEventListener {  func onWaitListParticipantJoined(participant: RtkRemoteParticipant) {    // Called when a new participant joins the waiting room  }
-  func onWaitListParticipantAccepted(participant: RtkRemoteParticipant) {    // Called when a waitlisted participant is accepted into the meeting  }
-  func onWaitListParticipantRejected(participant: RtkRemoteParticipant) {    // Called when a waitlisted participant is denied entry  }
-  func onWaitListParticipantClosed(participant: RtkRemoteParticipant) {    // Called when a waitlisted participant leaves the waiting room  }}
+```kotlin
+// Get waitlisted participants
+val waitlistedParticipants = meeting.participants.waitlisted
+
+
+// Accept a participant from the waiting room
+if (waitlistedParticipants.isNotEmpty()) {
+  val participant = waitlistedParticipants[0]
+  meeting.participants.acceptWaitingRoomRequest(participant.id)
+}
+
+
+// Reject a participant's entry request
+if (waitlistedParticipants.isNotEmpty()) {
+  val participant = waitlistedParticipants[0]
+  meeting.participants.rejectWaitingRoomRequest(participant.id)
+}
+
+
+// Listen for waiting room events
+meeting.addWaitlistEventListener(object : RtkWaitlistEventListener {
+  override fun onWaitListParticipantJoined(participant: RtkRemoteParticipant) {
+    // Called when a new participant joins the waiting room
+  }
+
+
+  override fun onWaitListParticipantAccepted(participant: RtkRemoteParticipant) {
+    // Called when a waitlisted participant is accepted into the meeting
+  }
+
+
+  override fun onWaitListParticipantRejected(participant: RtkRemoteParticipant) {
+    // Called when a waitlisted participant is denied entry
+  }
+
+
+  override fun onWaitListParticipantClosed(participant: RtkRemoteParticipant) {
+    // Called when a waitlisted participant leaves the waiting room
+  }
+})
 ```
 
-Dart
+**Swift**
 
+```swift
+// Get waitlisted participants
+let waitlistedParticipants = meeting.participants.waitlisted
+
+
+// Accept a participant from the waiting room
+if let participant = waitlistedParticipants.first {
+  meeting.participants.acceptWaitingRoomRequest(id: participant.id)
+}
+
+
+// Reject a participant's entry request
+if let participant = waitlistedParticipants.first {
+  meeting.participants.rejectWaitingRoomRequest(participant.id)
+}
+
+
+// Listen for waiting room events
+extension MeetingViewModel: RtkWaitlistEventListener {
+  func onWaitListParticipantJoined(participant: RtkRemoteParticipant) {
+    // Called when a new participant joins the waiting room
+  }
+
+
+  func onWaitListParticipantAccepted(participant: RtkRemoteParticipant) {
+    // Called when a waitlisted participant is accepted into the meeting
+  }
+
+
+  func onWaitListParticipantRejected(participant: RtkRemoteParticipant) {
+    // Called when a waitlisted participant is denied entry
+  }
+
+
+  func onWaitListParticipantClosed(participant: RtkRemoteParticipant) {
+    // Called when a waitlisted participant leaves the waiting room
+  }
+}
 ```
-// Get waitlisted participantsfinal waitlistedParticipants = meeting.participants.waitlisted;
-// Accept a participant from the waiting roomif (waitlistedParticipants.isNotEmpty) {  final participant = waitlistedParticipants[0];  meeting.participants.acceptWaitlistedParticipant(participant);}
-// Reject a participant's entry requestif (waitlistedParticipants.isNotEmpty) {  final participant = waitlistedParticipants[0];  meeting.participants.rejectWaitlistedParticipant(participant);}
-// Accept all waitlisted participants at oncemeeting.participants.acceptAllWaitingRoomRequests();
-// Listen for waiting room eventsclass WaitlistStatusNotifier extends RtkWaitlistEventListener {  @override  void onWaitListParticipantJoined(RtkRemoteParticipant participant) {    // Called when a new participant joins the waiting room  }
-  @override  void onWaitListParticipantAccepted(RtkRemoteParticipant participant) {    // Called when a waitlisted participant is accepted into the meeting  }
-  @override  void onWaitListParticipantRejected(RtkRemoteParticipant participant) {    // Called when a waitlisted participant is denied entry  }
-  @override  void onWaitListParticipantClosed(RtkRemoteParticipant participant) {    // Called when a waitlisted participant leaves the waiting room  }}
+
+**Dart**
+
+```dart
+// Get waitlisted participants
+final waitlistedParticipants = meeting.participants.waitlisted;
+
+
+// Accept a participant from the waiting room
+if (waitlistedParticipants.isNotEmpty) {
+  final participant = waitlistedParticipants[0];
+  meeting.participants.acceptWaitlistedParticipant(participant);
+}
+
+
+// Reject a participant's entry request
+if (waitlistedParticipants.isNotEmpty) {
+  final participant = waitlistedParticipants[0];
+  meeting.participants.rejectWaitlistedParticipant(participant);
+}
+
+
+// Accept all waitlisted participants at once
+meeting.participants.acceptAllWaitingRoomRequests();
+
+
+// Listen for waiting room events
+class WaitlistStatusNotifier extends RtkWaitlistEventListener {
+  @override
+  void onWaitListParticipantJoined(RtkRemoteParticipant participant) {
+    // Called when a new participant joins the waiting room
+  }
+
+
+  @override
+  void onWaitListParticipantAccepted(RtkRemoteParticipant participant) {
+    // Called when a waitlisted participant is accepted into the meeting
+  }
+
+
+  @override
+  void onWaitListParticipantRejected(RtkRemoteParticipant participant) {
+    // Called when a waitlisted participant is denied entry
+  }
+
+
+  @override
+  void onWaitListParticipantClosed(RtkRemoteParticipant participant) {
+    // Called when a waitlisted participant leaves the waiting room
+  }
+}
+
+
 meeting.addWaitlistEventListener(WaitlistStatusNotifier());
 ```
 
-```
-import {  useRealtimeKitClient,  useRealtimeKitSelector,} from "@cloudflare/realtimekit-react-native";import { View, Text, Button } from "react-native";
-function WaitingRoomHost() {  const [meeting] = useRealtimeKitClient();  const waitlistedParticipants = useRealtimeKitSelector((m) =>    m.participants.waitlisted.toArray(),  );
-  const acceptParticipant = async (participantId) => {    await meeting.participants.acceptWaitingRoomRequest(participantId);  };
-  const rejectParticipant = async (participantId) => {    await meeting.participants.rejectWaitingRoomRequest(participantId);  };
-  return (    <View>      <Text>Waiting Room ({waitlistedParticipants.length})</Text>      {waitlistedParticipants.map((participant) => (        <View key={participant.id}>          <Text>{participant.name}</Text>          <Button            title="Accept"            onPress={() => acceptParticipant(participant.id)}          />          <Button            title="Reject"            onPress={() => rejectParticipant(participant.id)}          />        </View>      ))}    </View>  );}
+```tsx
+import {
+  useRealtimeKitClient,
+  useRealtimeKitSelector,
+} from "@cloudflare/realtimekit-react-native";
+import { View, Text, Button } from "react-native";
+
+
+function WaitingRoomHost() {
+  const [meeting] = useRealtimeKitClient();
+  const waitlistedParticipants = useRealtimeKitSelector((m) =>
+    m.participants.waitlisted.toArray(),
+  );
+
+
+  const acceptParticipant = async (participantId) => {
+    await meeting.participants.acceptWaitingRoomRequest(participantId);
+  };
+
+
+  const rejectParticipant = async (participantId) => {
+    await meeting.participants.rejectWaitingRoomRequest(participantId);
+  };
+
+
+  return (
+    <View>
+      <Text>Waiting Room ({waitlistedParticipants.length})</Text>
+      {waitlistedParticipants.map((participant) => (
+        <View key={participant.id}>
+          <Text>{participant.name}</Text>
+          <Button
+            title="Accept"
+            onPress={() => acceptParticipant(participant.id)}
+          />
+          <Button
+            title="Reject"
+            onPress={() => rejectParticipant(participant.id)}
+          />
+        </View>
+      ))}
+    </View>
+  );
+}
 ```
 
 ## Best Practices

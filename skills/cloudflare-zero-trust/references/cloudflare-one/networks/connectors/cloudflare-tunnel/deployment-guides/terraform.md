@@ -40,8 +40,7 @@ Refer to the [Terraform installation guide ↗](https://developer.hashicorp.com/
 
 1. [Install the gcloud CLI ↗](https://cloud.google.com/sdk/docs/install) so that Terraform can interact with your GCP account.
 2. Authenticate with the CLI by running:
-Terminal window
-```
+```sh
 gcloud auth application-default login
 ```
 
@@ -60,13 +59,11 @@ gcloud auth application-default login
 Terraform functions through a working directory that contains configuration files. You can store your configuration in multiple files or just one — Terraform will evaluate all of the configuration files in the directory as if they were in a single document.
 
 1. Create a folder for your Terraform configuration:
-Terminal window
-```
+```sh
 mkdir cloudflare-tf
 ```
 2. Change into the directory:
-Terminal window
-```
+```sh
 cd cloudflare-tf
 ```
 
@@ -77,33 +74,67 @@ cd cloudflare-tf
 The following variables will be passed into your GCP and Cloudflare configuration.
 
 1. In your configuration directory, create a `.tf` file:
-Terminal window
-```
+```sh
 touch variables.tf
 ```
 2. Open the file in a text editor and copy and paste the following:
-```
-# GCP variablesvariable "gcp_project_id" {  description = "Google Cloud Platform (GCP) project ID"  type        = string}
-variable "zone" {  description = "Geographical zone for the GCP VM instance"  type        = string}
-variable "machine_type" {  description = "Machine type for the GCP VM instance"  type        = string}
-# Cloudflare variablesvariable "cloudflare_zone" {  description = "Domain used to expose the GCP VM instance to the Internet"  type        = string}
-variable "cloudflare_zone_id" {  description = "Zone ID for your domain"  type        = string}
-variable "cloudflare_account_id" {  description = "Account ID for your Cloudflare account"  type        = string  sensitive   = true}
-variable "cloudflare_email" {  description = "Email address for your Cloudflare account"  type        = string  sensitive   = true}
-variable "cloudflare_token" {  description = "Cloudflare API token"  type        = string  sensitive   = true}
+```tf
+# GCP variables
+variable "gcp_project_id" {
+  description = "Google Cloud Platform (GCP) project ID"
+  type        = string
+}
+variable "zone" {
+  description = "Geographical zone for the GCP VM instance"
+  type        = string
+}
+variable "machine_type" {
+  description = "Machine type for the GCP VM instance"
+  type        = string
+}
+# Cloudflare variables
+variable "cloudflare_zone" {
+  description = "Domain used to expose the GCP VM instance to the Internet"
+  type        = string
+}
+variable "cloudflare_zone_id" {
+  description = "Zone ID for your domain"
+  type        = string
+}
+variable "cloudflare_account_id" {
+  description = "Account ID for your Cloudflare account"
+  type        = string
+  sensitive   = true
+}
+variable "cloudflare_email" {
+  description = "Email address for your Cloudflare account"
+  type        = string
+  sensitive   = true
+}
+variable "cloudflare_token" {
+  description = "Cloudflare API token"
+  type        = string
+  sensitive   = true
+}
 ```
 
 ### Assign values to the variables
 
 1. In your configuration directory, create a `.tfvars` file:
-Terminal window
-```
+```sh
 touch terraform.tfvars
 ```
 Terraform will automatically use these variables if the file is named `terraform.tfvars`, otherwise the variable file will need to be manually passed in.
 2. Add the following variables to `terraform.tfvars`. Be sure to modify the example with your own values.
-```
-cloudflare_zone           = "example.com"cloudflare_zone_id        = "023e105f4ecef8ad9ca31a8372d0c353"cloudflare_account_id     = "372e67954025e0ba6aaa6d586b9e0b59"cloudflare_email          = "user@example.com"cloudflare_token          = "y3AalHS_E7Vabk3c3lX950F90_Xl7YtjSlzyFn_X"gcp_project_id            = "testvm-123"zone                      = "us-central1-a"machine_type              = "e2-medium"
+```tfvars
+cloudflare_zone           = "example.com"
+cloudflare_zone_id        = "023e105f4ecef8ad9ca31a8372d0c353"
+cloudflare_account_id     = "372e67954025e0ba6aaa6d586b9e0b59"
+cloudflare_email          = "user@example.com"
+cloudflare_token          = "y3AalHS_E7Vabk3c3lX950F90_Xl7YtjSlzyFn_X"
+gcp_project_id            = "testvm-123"
+zone                      = "us-central1-a"
+machine_type              = "e2-medium"
 ```
 
 Warning
@@ -115,21 +146,61 @@ To prevent accidentally exposing sensitive credentials, do not save `terraform.t
 You will need to declare the [providers ↗](https://registry.terraform.io/browse/providers) used to provision the infrastructure.
 
 1. In your configuration directory, create a `.tf` file:
-Terminal window
-```
+```sh
 touch providers.tf
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.
 
-  * [ Terraform (v5) ](#tab-panel-7344)
-  * [ Terraform (v4) ](#tab-panel-7345)
+  * [ Terraform (v5) ](#tab-panel-7594)
+  * [ Terraform (v4) ](#tab-panel-7595)
+```tf
+terraform {
+  required_providers {
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = ">= 5.8.2"
+    }
+    google = {
+      source = "hashicorp/google"
+    }
+  }
+  required_version = ">= 1.2"
+}
+# Providers
+provider "cloudflare" {
+  api_token    = var.cloudflare_token
+}
+provider "google" {
+  project    = var.gcp_project_id
+}
+provider "random" {
+}
 ```
-terraform {  required_providers {    cloudflare = {      source = "cloudflare/cloudflare"      version = ">= 5.8.2"    }    google = {      source = "hashicorp/google"    }  }  required_version = ">= 1.2"}
-# Providersprovider "cloudflare" {  api_token    = var.cloudflare_token}provider "google" {  project    = var.gcp_project_id}provider "random" {}
-```
-```
-terraform {  required_providers {    cloudflare = {      source = "cloudflare/cloudflare"      version = ">= 4.40.0, < 5.0.0"    }    google = {      source = "hashicorp/google"    }    random = {      source = "hashicorp/random"    }  }  required_version = ">= 1.2"}
-# Providersprovider "cloudflare" {  api_token    = var.cloudflare_token}provider "google" {  project    = var.gcp_project_id}provider "random" {}
+```tf
+terraform {
+  required_providers {
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = ">= 4.40.0, < 5.0.0"
+    }
+    google = {
+      source = "hashicorp/google"
+    }
+    random = {
+      source = "hashicorp/random"
+    }
+  }
+  required_version = ">= 1.2"
+}
+# Providers
+provider "cloudflare" {
+  api_token    = var.cloudflare_token
+}
+provider "google" {
+  project    = var.gcp_project_id
+}
+provider "random" {
+}
 ```
 
 ### Configure Cloudflare resources
@@ -137,31 +208,146 @@ terraform {  required_providers {    cloudflare = {      source = "cloudflare/cl
 The following configuration will modify settings in your Cloudflare account.
 
 1. In your configuration directory, create a `.tf` file:
-Terminal window
-```
+```sh
 touch Cloudflare-config.tf
 ```
 2. Add the following resources to `Cloudflare-config.tf`:
 
-  * [ Terraform (v5) ](#tab-panel-7340)
-  * [ Terraform (v4) ](#tab-panel-7341)
+  * [ Terraform (v5) ](#tab-panel-7590)
+  * [ Terraform (v4) ](#tab-panel-7591)
+```tf
+# Creates a new remotely-managed tunnel for the GCP VM.
+resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {
+  account_id    = var.cloudflare_account_id
+  name          = "Terraform GCP tunnel"
+  config_src    = "cloudflare"
+}
+# Reads the token used to run the tunnel on the server.
+data "cloudflare_zero_trust_tunnel_cloudflared_token" "gcp_tunnel_token" {
+  account_id   = var.cloudflare_account_id
+  tunnel_id   = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id
+}
+# Creates the CNAME record that routes http_app.${var.cloudflare_zone} to the tunnel.
+resource "cloudflare_dns_record" "http_app" {
+  zone_id = var.cloudflare_zone_id
+  name    = "http_app"
+  content = "${cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id}.cfargotunnel.com"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}
+# Configures tunnel with a published application for clientless access.
+resource "cloudflare_zero_trust_tunnel_cloudflared_config" "gcp_tunnel_config" {
+  tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id
+  account_id = var.cloudflare_account_id
+  config     = {
+    ingress   = [
+      {
+        hostname = "http_app.${var.cloudflare_zone}"
+        service  = "http://httpbin:80"
+      },
+      {
+        service  = "http_status:404"
+      }
+    ]
+  }
+}
+# (Optional) Routes internal IP of GCP instance through the tunnel for private network access using WARP.
+resource "cloudflare_zero_trust_tunnel_cloudflared_route" "example_tunnel_route" {
+account_id         = var.cloudflare_account_id
+tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id
+network            = google_compute_instance.http_server.network_interface.0.network_ip
+comment            = "Example tunnel route"
+}
+# Creates a reusable Access policy.
+resource "cloudflare_zero_trust_access_policy" "allow_emails" {
+  account_id   = var.cloudflare_account_id
+  name         = "Allow email addresses"
+  decision     = "allow"
+  include      = [
+    {
+      email = {
+        email = var.cloudflare_email
+      }
+    },
+    {
+      email_domain = {
+        domain = "@example.com"
+      }
+    }
+  ]
+}
+# Creates an Access application to control who can connect to the public hostname.
+resource "cloudflare_zero_trust_access_application" "http_app" {
+  account_id       = var.cloudflare_account_id
+  type             = "self_hosted"
+  name             = "Access application for http_app.${var.cloudflare_zone}"
+  domain           = "http_app.${var.cloudflare_zone}"
+  policies = [
+    {
+      id = cloudflare_zero_trust_access_policy.allow_emails.id
+      precedence = 1
+    }
+  ]
+}
 ```
-# Creates a new remotely-managed tunnel for the GCP VM.resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  account_id    = var.cloudflare_account_id  name          = "Terraform GCP tunnel"  config_src    = "cloudflare"}
-# Reads the token used to run the tunnel on the server.data "cloudflare_zero_trust_tunnel_cloudflared_token" "gcp_tunnel_token" {  account_id   = var.cloudflare_account_id  tunnel_id   = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id}
-# Creates the CNAME record that routes http_app.${var.cloudflare_zone} to the tunnel.resource "cloudflare_dns_record" "http_app" {  zone_id = var.cloudflare_zone_id  name    = "http_app"  content = "${cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id}.cfargotunnel.com"  type    = "CNAME"  ttl     = 1  proxied = true}
-# Configures tunnel with a published application for clientless access.resource "cloudflare_zero_trust_tunnel_cloudflared_config" "gcp_tunnel_config" {  tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id  account_id = var.cloudflare_account_id  config     = {    ingress   = [      {        hostname = "http_app.${var.cloudflare_zone}"        service  = "http://httpbin:80"      },      {        service  = "http_status:404"      }    ]  }}
-# (Optional) Routes internal IP of GCP instance through the tunnel for private network access using WARP.resource "cloudflare_zero_trust_tunnel_cloudflared_route" "example_tunnel_route" {account_id         = var.cloudflare_account_idtunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.idnetwork            = google_compute_instance.http_server.network_interface.0.network_ipcomment            = "Example tunnel route"}
-# Creates a reusable Access policy.resource "cloudflare_zero_trust_access_policy" "allow_emails" {  account_id   = var.cloudflare_account_id  name         = "Allow email addresses"  decision     = "allow"  include      = [    {      email = {        email = var.cloudflare_email      }    },    {      email_domain = {        domain = "@example.com"      }    }  ]}
-# Creates an Access application to control who can connect to the public hostname.resource "cloudflare_zero_trust_access_application" "http_app" {  account_id       = var.cloudflare_account_id  type             = "self_hosted"  name             = "Access application for http_app.${var.cloudflare_zone}"  domain           = "http_app.${var.cloudflare_zone}"  policies = [    {      id = cloudflare_zero_trust_access_policy.allow_emails.id      precedence = 1    }  ]}
-```
-```
-# Generates a 32-byte secret for the tunnel.resource "random_bytes" "tunnel_secret" {  byte_length = 32}
-# Creates a new remotely-managed tunnel for the GCP VM.resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  account_id = var.cloudflare_account_id  name       = "Terraform GCP tunnel"  secret     = random_bytes.tunnel_secret.base64}
-# Creates the CNAME record that routes http_app.${var.cloudflare_zone} to the tunnel.resource "cloudflare_record" "http_app" {  zone_id = var.cloudflare_zone_id  name    = "http_app"  content   = "${cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.cname}"  type    = "CNAME"  proxied = true}
-# Configures tunnel with a published application for clientless access.resource "cloudflare_zero_trust_tunnel_cloudflared_config" "gcp_tunnel_config" {  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id  account_id = var.cloudflare_account_id  config {    ingress_rule {      hostname = "${cloudflare_record.http_app.hostname}"      service  = "http://httpbin:80"    }    ingress_rule {      service  = "http_status:404"    }  }}
-# (Optional) Route internal IP of GCP instance through the tunnel for private network access using WARP.resource "cloudflare_zero_trust_tunnel_route" "example_tunnel_route" {account_id         = var.cloudflare_account_idtunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.idnetwork            = google_compute_instance.http_server.network_interface.0.network_ipcomment            = "Example tunnel route"}
-# Creates an Access application to control who can connect to the public hostname.resource "cloudflare_zero_trust_access_application" "http_app" {  account_id          = var.cloudflare_account_id  name             = "Access application for http_app.${var.cloudflare_zone}"  domain           = "http_app.${var.cloudflare_zone}"}
-# Creates a (legacy) Access policy for the Access application.resource "cloudflare_zero_trust_access_policy" "allow_emails" {  application_id = cloudflare_zero_trust_access_application.http_app.id  account_id        = var.cloudflare_account_id  name           = "Example policy for http_app.${var.cloudflare_zone}"  precedence     = "1"  decision       = "allow"  include {    email = [var.cloudflare_email]  }}
+```tf
+# Generates a 32-byte secret for the tunnel.
+resource "random_bytes" "tunnel_secret" {
+  byte_length = 32
+}
+# Creates a new remotely-managed tunnel for the GCP VM.
+resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {
+  account_id = var.cloudflare_account_id
+  name       = "Terraform GCP tunnel"
+  secret     = random_bytes.tunnel_secret.base64
+}
+# Creates the CNAME record that routes http_app.${var.cloudflare_zone} to the tunnel.
+resource "cloudflare_record" "http_app" {
+  zone_id = var.cloudflare_zone_id
+  name    = "http_app"
+  content   = "${cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.cname}"
+  type    = "CNAME"
+  proxied = true
+}
+# Configures tunnel with a published application for clientless access.
+resource "cloudflare_zero_trust_tunnel_cloudflared_config" "gcp_tunnel_config" {
+  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id
+  account_id = var.cloudflare_account_id
+  config {
+    ingress_rule {
+      hostname = "${cloudflare_record.http_app.hostname}"
+      service  = "http://httpbin:80"
+    }
+    ingress_rule {
+      service  = "http_status:404"
+    }
+  }
+}
+# (Optional) Route internal IP of GCP instance through the tunnel for private network access using WARP.
+resource "cloudflare_zero_trust_tunnel_route" "example_tunnel_route" {
+account_id         = var.cloudflare_account_id
+tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id
+network            = google_compute_instance.http_server.network_interface.0.network_ip
+comment            = "Example tunnel route"
+}
+# Creates an Access application to control who can connect to the public hostname.
+resource "cloudflare_zero_trust_access_application" "http_app" {
+  account_id          = var.cloudflare_account_id
+  name             = "Access application for http_app.${var.cloudflare_zone}"
+  domain           = "http_app.${var.cloudflare_zone}"
+}
+# Creates a (legacy) Access policy for the Access application.
+resource "cloudflare_zero_trust_access_policy" "allow_emails" {
+  application_id = cloudflare_zero_trust_access_application.http_app.id
+  account_id        = var.cloudflare_account_id
+  name           = "Example policy for http_app.${var.cloudflare_zone}"
+  precedence     = "1"
+  decision       = "allow"
+  include {
+    email = [var.cloudflare_email]
+  }
+}
 ```
 
 To learn more about these resources, refer to the [Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
@@ -171,25 +357,82 @@ To learn more about these resources, refer to the [Cloudflare provider documenta
 The following configuration defines the specifications for the GCP virtual machine and configures a startup script to run upon boot.
 
 1. In your configuration directory, create a `.tf` file:
-Terminal window
-```
+```sh
 touch GCP-config.tf
 ```
 2. Add the following content to `GCP-config.tf`:
 
-  * [ Terraform (v5) ](#tab-panel-7342)
-  * [ Terraform (v4) ](#tab-panel-7343)
+  * [ Terraform (v5) ](#tab-panel-7592)
+  * [ Terraform (v4) ](#tab-panel-7593)
+```tf
+# OS the server will use
+data "google_compute_image" "image" {
+  family  = "ubuntu-2204-lts"
+  project = "ubuntu-os-cloud"
+}
+# GCP Instance resource
+resource "google_compute_instance" "http_server" {
+  name         = "test"
+  machine_type = var.machine_type
+  zone         = var.zone
+  tags         = []
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.image.self_link
+    }
+  }
+  network_interface {
+    network = "default"
+    access_config {
+      //Ephemeral IP
+    }
+  }
+  // Optional config to make instance ephemeral
+/*  scheduling {
+    preemptible       = true
+    automatic_restart = false
+  } */
+  // Pass the tunnel token to the GCP server so that the server can install and run the tunnel upon startup.
+  metadata_startup_script = templatefile("./install-tunnel.tftpl",
+    {
+      tunnel_token = data.cloudflare_zero_trust_tunnel_cloudflared_token.gcp_tunnel_token.token
+    })
+}
 ```
-# OS the server will usedata "google_compute_image" "image" {  family  = "ubuntu-2204-lts"  project = "ubuntu-os-cloud"}
-# GCP Instance resourceresource "google_compute_instance" "http_server" {  name         = "test"  machine_type = var.machine_type  zone         = var.zone  tags         = []  boot_disk {    initialize_params {      image = data.google_compute_image.image.self_link    }  }
-  network_interface {    network = "default"    access_config {      //Ephemeral IP    }  }  // Optional config to make instance ephemeral/*  scheduling {    preemptible       = true    automatic_restart = false  } */
-  // Pass the tunnel token to the GCP server so that the server can install and run the tunnel upon startup.  metadata_startup_script = templatefile("./install-tunnel.tftpl",    {      tunnel_token = data.cloudflare_zero_trust_tunnel_cloudflared_token.gcp_tunnel_token.token    })}
-```
-```
-# OS the server will usedata "google_compute_image" "image" {  family  = "ubuntu-2204-lts"  project = "ubuntu-os-cloud"}
-# GCP Instance resourceresource "google_compute_instance" "http_server" {  name         = "test"  machine_type = var.machine_type  zone         = var.zone  tags         = []  boot_disk {    initialize_params {      image = data.google_compute_image.image.self_link    }  }
-  network_interface {    network = "default"    access_config {      //Ephemeral IP    }  }  // Optional config to make instance ephemeral/*  scheduling {    preemptible       = true    automatic_restart = false  } */
-  // Pass the tunnel token to the GCP server so that the server can install and run the tunnel upon startup.  metadata_startup_script = templatefile("./install-tunnel.tftpl",    {      tunnel_token = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.tunnel_token    })}
+```tf
+# OS the server will use
+data "google_compute_image" "image" {
+  family  = "ubuntu-2204-lts"
+  project = "ubuntu-os-cloud"
+}
+# GCP Instance resource
+resource "google_compute_instance" "http_server" {
+  name         = "test"
+  machine_type = var.machine_type
+  zone         = var.zone
+  tags         = []
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.image.self_link
+    }
+  }
+  network_interface {
+    network = "default"
+    access_config {
+      //Ephemeral IP
+    }
+  }
+  // Optional config to make instance ephemeral
+/*  scheduling {
+    preemptible       = true
+    automatic_restart = false
+  } */
+  // Pass the tunnel token to the GCP server so that the server can install and run the tunnel upon startup.
+  metadata_startup_script = templatefile("./install-tunnel.tftpl",
+    {
+      tunnel_token = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.tunnel_token
+    })
+}
 ```
 
 ### Create a startup script
@@ -197,16 +440,39 @@ touch GCP-config.tf
 The following script will install `cloudflared` and run the tunnel as a service. This example also installs a lightweight HTTP application that you can use to test connectivity.
 
 1. In your configuration directory, create a Terraform template file:
-Terminal window
-```
+```sh
 touch install-tunnel.tftpl
 ```
 2. Open the file in a text editor and copy and paste the following bash script:
-Terminal window
-```
+```bash
 # Script to install Cloudflare Tunnel and Docker resources
-# Docker configurationcd /tmpsudo apt-get install software-properties-common# Retrieving the docker repository for this OScurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"# The OS is updated and docker is installedsudo apt update -y && sudo apt upgrade -ysudo apt install docker docker-compose -y# Add the HTTPBin application and run it on localhost:8080.cat > /tmp/docker-compose.yml << "EOF"version: '3'services:  httpbin:    image: kennethreitz/httpbin    restart: always    container_name: httpbin    ports:      - 8080:80
-  cloudflared:    image: cloudflare/cloudflared:latest    restart: always    container_name: cloudflared    command: tunnel run --token ${tunnel_token}EOFcd /tmpsudo docker-compose up -d
+# Docker configuration
+cd /tmp
+sudo apt-get install software-properties-common
+# Retrieving the docker repository for this OS
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+# The OS is updated and docker is installed
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install docker docker-compose -y
+# Add the HTTPBin application and run it on localhost:8080.
+cat > /tmp/docker-compose.yml << "EOF"
+version: '3'
+services:
+  httpbin:
+    image: kennethreitz/httpbin
+    restart: always
+    container_name: httpbin
+    ports:
+      - 8080:80
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: always
+    container_name: cloudflared
+    command: tunnel run --token ${tunnel_token}
+EOF
+cd /tmp
+sudo docker-compose up -d
 ```
 
 ## 6\. Deploy Terraform
@@ -214,18 +480,15 @@ Terminal window
 To deploy the configuration files:
 
 1. Initialize your configuration directory:
-Terminal window
-```
+```sh
 terraform init
 ```
 2. Preview everything that will be created:
-Terminal window
-```
+```sh
 terraform plan
 ```
 3. Apply the configuration:
-Terminal window
-```
+```sh
 terraform apply
 ```
 

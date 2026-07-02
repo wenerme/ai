@@ -26,16 +26,24 @@ Displays the total participant count and opens the participants sidebar when tap
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantCount } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkParticipantCount meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkParticipantCount meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantCount } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkParticipantCount meeting={meeting} iconPack={customIconPack} />;}
+
+
+function MyComponent() {
+  return <RtkParticipantCount meeting={meeting} iconPack={customIconPack} />;
+}
 ```
 
 ```json

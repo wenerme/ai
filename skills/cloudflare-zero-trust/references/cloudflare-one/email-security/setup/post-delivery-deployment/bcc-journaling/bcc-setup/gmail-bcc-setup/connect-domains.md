@@ -39,7 +39,7 @@ To add additional domains:
 4. (Optional) Select **Add manual domains**: Enter additional domains manually, then select **Next**.
 5. (Optional) Select **Adjust hop count**: Enter the number of hops.
 6. **Review details**: Review your selected domains, then use the following email to configure the service address with your third-party email provider:
-```
+```txt
 <account tag>@CF-emailsecurity.com
 ```
 7. Select **Save**.

@@ -25,16 +25,20 @@ A button which toggles the local user's microphone. It automatically listens to 
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMicToggleButton    android:id="@+id/btn_mic_toggle"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMicToggleButton
+    android:id="@+id/btn_mic_toggle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val micToggleButton = findViewById<RtkMicToggleButton>(R.id.btn_mic_toggle)micToggleButton.activate(meeting)
+```kotlin
+val micToggleButton = findViewById<RtkMicToggleButton>(R.id.btn_mic_toggle)
+micToggleButton.activate(meeting)
 ```
 
 ```json

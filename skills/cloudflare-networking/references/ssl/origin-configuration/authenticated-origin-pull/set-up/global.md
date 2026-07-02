@@ -36,7 +36,7 @@ Check the examples below for Apache and NGINX or refer to your origin web server
 
 Apache example
 
-```
+```txt
 SSLCACertificateFile /path/to/origin-pull-ca.pem
 ```
 
@@ -46,8 +46,9 @@ Rename the downloaded .PEM file and upload it to `/path/to/origin-pull-ca.pem` b
 
 NGINX example
 
-```
-ssl_verify_client optional;ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
+```txt
+ssl_verify_client optional;
+ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
 ```
 
 For this example, you would have saved your certificate to `/etc/nginx/certs/cloudflare.crt`.
@@ -58,8 +59,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable global Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-10768)
-* [ API ](#tab-panel-10769)
+* [ Dashboard ](#tab-panel-11063)
+* [ API ](#tab-panel-11064)
 
 1. Go to the **Origin Server** page.
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -74,13 +75,13 @@ Once you can confirm everything is working as expected for your specific origin 
 
 Apache example
 
-```
+```txt
 SSLVerifyClient require
 ```
 
 NGINX example
 
-```
+```txt
 ssl_verify_client on;
 ```
 

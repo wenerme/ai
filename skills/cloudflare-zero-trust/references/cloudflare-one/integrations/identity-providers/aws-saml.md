@@ -33,7 +33,7 @@ To set up SAML with AWS IAM as your identity provider:
 9. Under **Application metadata**, select **Manually type your metadata values**.
 10. In **Application ACS URL** and **Application SAML audience**, enter the following URL:
 
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 
@@ -66,8 +66,21 @@ To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity
 
 ## Example API configuration
 
-```
-{  "config": {    "issuer_url": "https://portal.sso.eu-central-1.amazonaws.com/saml/assertion/b2yJrC4kjy3ZAS0a2SeDJj74ebEAxozPfiURId0aQsal3",    "sso_target_url": "https://portal.sso.eu-central-1.amazonaws.com/saml/assertion/b2yJrC4kjy3ZAS0a2SeDJj74ebEAxozPfiURId0aQsal3",    "attributes": ["email"],    "email_attribute_name": "email",    "sign_request": true,    "idp_public_certs": [      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"    ]  },  "type": "saml",  "name": "AWS IAM SAML example"}
+```json
+{
+  "config": {
+    "issuer_url": "https://portal.sso.eu-central-1.amazonaws.com/saml/assertion/b2yJrC4kjy3ZAS0a2SeDJj74ebEAxozPfiURId0aQsal3",
+    "sso_target_url": "https://portal.sso.eu-central-1.amazonaws.com/saml/assertion/b2yJrC4kjy3ZAS0a2SeDJj74ebEAxozPfiURId0aQsal3",
+    "attributes": ["email"],
+    "email_attribute_name": "email",
+    "sign_request": true,
+    "idp_public_certs": [
+      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+    ]
+  },
+  "type": "saml",
+  "name": "AWS IAM SAML example"
+}
 ```
 
 ```json

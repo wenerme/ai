@@ -24,9 +24,9 @@ Hyperdrive does have a limit of _origin_ connections that can be made from Hyper
 
 You can configure the connection pool size using the Cloudflare dashboard, the Wrangler CLI, or the Cloudflare API.
 
-* [ Dashboard ](#tab-panel-8746)
-* [ Wrangler ](#tab-panel-8747)
-* [ API ](#tab-panel-8748)
+* [ Dashboard ](#tab-panel-9037)
+* [ Wrangler ](#tab-panel-9038)
+* [ API ](#tab-panel-9039)
 
 To configure connection pool size via the dashboard:
 
@@ -40,18 +40,20 @@ To configure connection pool size via the dashboard:
 
 Use the [wrangler hyperdrive update](https://developers.cloudflare.com/hyperdrive/reference/wrangler-commands/#hyperdrive-update) command with the `--origin-connection-limit` flag:
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive update <HYPERDRIVE_ID> --origin-connection-limit=<MAX_CONNECTIONS>
 ```
 
 Use the [Hyperdrive REST API](https://developers.cloudflare.com/api/resources/hyperdrive/subresources/configs/methods/update/) to update your configuration:
 
-Terminal window
-
-```
-curl --request PATCH \  --url https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/hyperdrive/configs/<HYPERDRIVE_ID> \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <API_TOKEN>' \  --data '{    "origin_connection_limit": <MAX_CONNECTIONS>  }'
+```sh
+curl --request PATCH \
+  --url https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/hyperdrive/configs/<HYPERDRIVE_ID> \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer <API_TOKEN>' \
+  --data '{
+    "origin_connection_limit": <MAX_CONNECTIONS>
+  }'
 ```
 
 All Hyperdrive configurations have a minimum of 5 connections. The maximum connection count depends on your [Workers plan](https://developers.cloudflare.com/hyperdrive/platform/limits/).

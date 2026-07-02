@@ -29,118 +29,230 @@ Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1700)
-* [ cURL ](#tab-panel-1701)
+* [ TypeScript ](#tab-panel-1748)
+* [ cURL ](#tab-panel-1749)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility-pro',
+  {
+    prompt:
+      'A detailed illustrated map of an imaginary fantasy island with labeled landmarks, mountains, and forests',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility-pro',  {    prompt:      'A detailed illustrated map of an imaginary fantasy island with labeled landmarks, mountains, and forests',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility-pro",
+  "input": {
+    "prompt": "A detailed illustrated map of an imaginary fantasy island with labeled landmarks, mountains, and forests"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-pro",  "input": {    "prompt": "A detailed illustrated map of an imaginary fantasy island with labeled landmarks, mountains, and forests"  }}'
-```
-
-* [ Output ](#tab-panel-1698)
-* [ Raw response ](#tab-panel-1699)
+* [ Output ](#tab-panel-1746)
+* [ Raw response ](#tab-panel-1747)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/print-ready-illustration.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/print-ready-illustration.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/print-ready-illustration.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Large Format Art**  — Large canvas general-purpose image
 
-* [ TypeScript ](#tab-panel-1704)
-* [ cURL ](#tab-panel-1705)
+* [ TypeScript ](#tab-panel-1752)
+* [ cURL ](#tab-panel-1753)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility-pro',
+  {
+    prompt:
+      'A wide panoramic landscape of rolling green hills with a river winding through the valley under a bright blue sky',
+    size: '2048x2048',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility-pro',  {    prompt:      'A wide panoramic landscape of rolling green hills with a river winding through the valley under a bright blue sky',    size: '2048x2048',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility-pro",
+  "input": {
+    "prompt": "A wide panoramic landscape of rolling green hills with a river winding through the valley under a bright blue sky",
+    "size": "2048x2048"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-pro",  "input": {    "prompt": "A wide panoramic landscape of rolling green hills with a river winding through the valley under a bright blue sky",    "size": "2048x2048"  }}'
-```
-
-* [ Output ](#tab-panel-1702)
-* [ Raw response ](#tab-panel-1703)
+* [ Output ](#tab-panel-1750)
+* [ Raw response ](#tab-panel-1751)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/large-format-art.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/large-format-art.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/large-format-art.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Marketing Asset**  — High-resolution marketing visual with controlled colors
 
-* [ TypeScript ](#tab-panel-1712)
-* [ cURL ](#tab-panel-1713)
+* [ TypeScript ](#tab-panel-1760)
+* [ cURL ](#tab-panel-1761)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility-pro',
+  {
+    prompt: 'A clean, modern banner illustration of a smartphone displaying a productivity app',
+    controls: {
+      background_color: { rgb: [250, 250, 255] },
+      colors: [{ rgb: [100, 200, 150] }, { rgb: [20, 20, 60] }],
+    },
+    size: '2048x2048',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility-pro',  {    prompt: 'A clean, modern banner illustration of a smartphone displaying a productivity app',    controls: {      background_color: { rgb: [250, 250, 255] },      colors: [{ rgb: [100, 200, 150] }, { rgb: [20, 20, 60] }],    },    size: '2048x2048',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility-pro",
+  "input": {
+    "prompt": "A clean, modern banner illustration of a smartphone displaying a productivity app",
+    "controls": {
+      "background_color": {
+        "rgb": [
+          250,
+          250,
+          255
+        ]
+      },
+      "colors": [
+        {
+          "rgb": [
+            100,
+            200,
+            150
+          ]
+        },
+        {
+          "rgb": [
+            20,
+            20,
+            60
+          ]
+        }
+      ]
+    },
+    "size": "2048x2048"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-pro",  "input": {    "prompt": "A clean, modern banner illustration of a smartphone displaying a productivity app",    "controls": {      "background_color": {        "rgb": [          250,          250,          255        ]      },      "colors": [        {          "rgb": [            100,            200,            150          ]        },        {          "rgb": [            20,            20,            60          ]        }      ]    },    "size": "2048x2048"  }}'
-```
-
-* [ Output ](#tab-panel-1706)
-* [ Raw response ](#tab-panel-1707)
+* [ Output ](#tab-panel-1754)
+* [ Raw response ](#tab-panel-1755)
 
 ![Marketing Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/marketing-asset.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/marketing-asset.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/marketing-asset.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Technical Diagram**  — High-resolution technical or infographic illustration
 
-* [ TypeScript ](#tab-panel-1710)
-* [ cURL ](#tab-panel-1711)
+* [ TypeScript ](#tab-panel-1758)
+* [ cURL ](#tab-panel-1759)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility-pro',
+  {
+    prompt:
+      'A clean technical diagram showing the layers of a cloud computing architecture with labeled tiers',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility-pro',  {    prompt:      'A clean technical diagram showing the layers of a cloud computing architecture with labeled tiers',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility-pro",
+  "input": {
+    "prompt": "A clean technical diagram showing the layers of a cloud computing architecture with labeled tiers"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-pro",  "input": {    "prompt": "A clean technical diagram showing the layers of a cloud computing architecture with labeled tiers"  }}'
-```
-
-* [ Output ](#tab-panel-1708)
-* [ Raw response ](#tab-panel-1709)
+* [ Output ](#tab-panel-1756)
+* [ Raw response ](#tab-panel-1757)
 
 ![Technical Diagram](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/technical-diagram.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/technical-diagram.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/technical-diagram.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1714)
-* [ Output ](#tab-panel-1715)
-
-▶controls{}
-
-`object`
+* [ Input ](#tab-panel-1762)
+* [ Output ](#tab-panel-1763)
 
 prompt
 
@@ -157,6 +269,10 @@ style
 substyle
 
 `string`
+
+▶controls{}
+
+`object`
 
 image
 

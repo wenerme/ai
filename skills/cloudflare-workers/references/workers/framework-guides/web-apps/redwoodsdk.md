@@ -31,8 +31,7 @@ yarn dlx create-rwsdk my-project-name
 pnpx create-rwsdk my-project-name
 ```
 2. **Change the directory.**
-Terminal window
-```
+```sh
 cd my-project-name
 ```
 3. **Install dependencies.**
@@ -65,15 +64,27 @@ Access the development server in your browser at `http://localhost:5173`, where 
 5. **Add your first route.**
 The entry point of your application is `src/worker.tsx`. Open that file in your editor.
 You will see the `defineApp` function, which handles requests by returning responses to the client:
-```
-import { defineApp } from "rwsdk/worker";import { route, render } from "rwsdk/router";
-import { Document } from "@/app/Document";import { Home } from "@/app/pages/Home";
-export default defineApp([  render(Document, [route("/", () => new Response("Hello, World!"))]),]);
+```tsx
+import { defineApp } from "rwsdk/worker";
+import { route, render } from "rwsdk/router";
+import { Document } from "@/app/Document";
+import { Home } from "@/app/pages/Home";
+export default defineApp([
+  render(Document, [route("/", () => new Response("Hello, World!"))]),
+]);
 ```
 Add a `/ping` route handler:
-```
-import { defineApp } from "rwsdk/worker";import { route, render } from "rwsdk/router";
-export default defineApp([  render(Document, [    route("/", () => new Response("Hello, World!")),    route("/ping", function () {      return <h1>Pong!</h1>;    }),  ]),]);
+```tsx
+import { defineApp } from "rwsdk/worker";
+import { route, render } from "rwsdk/router";
+export default defineApp([
+  render(Document, [
+    route("/", () => new Response("Hello, World!")),
+    route("/ping", function () {
+      return <h1>Pong!</h1>;
+    }),
+  ]),
+]);
 ```
 Navigate to `http://localhost:5173/ping` to see "Pong!" displayed on the page.
 Routes can return JSX directly. RedwoodSDK has support for React Server Components, which renders JSX on the server and sends HTML to the client.

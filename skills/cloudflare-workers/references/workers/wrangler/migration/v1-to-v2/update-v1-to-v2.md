@@ -28,17 +28,13 @@ To learn more about the improvements to Wrangler, refer to [Wrangler v1 and v2 c
 
 If you had previously installed Wrangler v1 globally using npm, you can uninstall it with:
 
-Terminal window
-
-```
+```sh
 npm uninstall -g @cloudflare/wrangler
 ```
 
 If you used Cargo to install Wrangler v1, you can uninstall it with:
 
-Terminal window
-
-```
+```sh
 cargo uninstall wrangler
 ```
 
@@ -46,9 +42,7 @@ cargo uninstall wrangler
 
 Now, install the latest version of Wrangler.
 
-Terminal window
-
-```
+```sh
 npm install -g wrangler
 ```
 
@@ -56,9 +50,7 @@ npm install -g wrangler
 
 To check that you have installed the correct Wrangler version, run:
 
-Terminal window
-
-```
+```sh
 npx wrangler --version
 ```
 
@@ -70,9 +62,7 @@ If you would like to read more on the deprecated [Wrangler configuration file](h
 
 Run the `wrangler dev` command. This will show any warnings or errors that should be addressed. Note that in most cases, the messages will include actionable instructions on how to resolve the issue.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
@@ -81,12 +71,21 @@ npx wrangler dev
 
 Here is an example of some warnings and errors:
 
-Terminal window
+```bash
+ ⛅️ wrangler 2.x
+-------------------------------------------------------
+▲ [WARNING] Processing wrangler.toml configuration:
+  - 😶 Ignored: "type":
+    Most common features now work out of the box with wrangler, including modules, jsx,
+  typescript, etc. If you need anything more, use a custom build.
+  - Deprecation: "zone_id":
+    This is unnecessary since we can deduce this from routes directly.
+  - Deprecation: "build.upload.format":
+    The format is inferred automatically from the code.
 
-```
- ⛅️ wrangler 2.x-------------------------------------------------------▲ [WARNING] Processing wrangler.toml configuration:  - 😶 Ignored: "type":    Most common features now work out of the box with wrangler, including modules, jsx,  typescript, etc. If you need anything more, use a custom build.  - Deprecation: "zone_id":    This is unnecessary since we can deduce this from routes directly.  - Deprecation: "build.upload.format":    The format is inferred automatically from the code.
 
-✘ [ERROR] Processing wrangler.toml configuration:  - Expected "route" to be either a string, or an object with shape { pattern, zone_id | zone_name }, but got "".
+✘ [ERROR] Processing wrangler.toml configuration:
+  - Expected "route" to be either a string, or an object with shape { pattern, zone_id | zone_name }, but got "".
 ```
 
 ## Deprecations

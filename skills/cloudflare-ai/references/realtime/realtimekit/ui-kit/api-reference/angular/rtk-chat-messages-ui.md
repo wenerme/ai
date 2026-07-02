@@ -30,14 +30,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-messages-ui></rtk-chat-messages-ui>
+```html
+<!-- component.html -->
+<rtk-chat-messages-ui></rtk-chat-messages-ui>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-messages-ui [canPinMessages]="true" [messages]="[]" selectedGroup="example"></rtk-chat-messages-ui>
+```html
+<!-- component.html -->
+<rtk-chat-messages-ui
+ [canPinMessages]="true"
+ [messages]="[]"
+ selectedGroup="example">
+</rtk-chat-messages-ui>
 ```
 
 ```json

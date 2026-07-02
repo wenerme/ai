@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
+```sql
 formatDateTime(<datetime expression>, <format string>[, <timezone string>])
 ```
 
@@ -24,17 +24,26 @@ formatDateTime(<datetime expression>, <format string>[, <timezone string>])
 
 Examples:
 
-```
--- prints the current YYYY-MM-DD in UTCformatDateTime(now(), '%Y-%m-%d')
--- prints YYYY-MM-DD in the datetime's timezoneformatDateTime(<a datetime with a timezone>, '%Y-%m-%d')formatDateTime(toDateTime('2022-12-01 16:17:00', 'America/New_York'), '%Y-%m-%d')
--- prints YYYY-MM-DD in UTCformatDateTime(<a datetime with a timezone>, '%Y-%m-%d', 'Etc/UTC')formatDateTime(toDateTime('2022-12-01 16:17:00', 'America/New_York'), '%Y-%m-%d', 'Etc/UTC')
+```sql
+-- prints the current YYYY-MM-DD in UTC
+formatDateTime(now(), '%Y-%m-%d')
+
+
+-- prints YYYY-MM-DD in the datetime's timezone
+formatDateTime(<a datetime with a timezone>, '%Y-%m-%d')
+formatDateTime(toDateTime('2022-12-01 16:17:00', 'America/New_York'), '%Y-%m-%d')
+
+
+-- prints YYYY-MM-DD in UTC
+formatDateTime(<a datetime with a timezone>, '%Y-%m-%d', 'Etc/UTC')
+formatDateTime(toDateTime('2022-12-01 16:17:00', 'America/New_York'), '%Y-%m-%d', 'Etc/UTC')
 ```
 
 ## now
 
 Usage:
 
-```
+```sql
 now()
 ```
 
@@ -44,7 +53,7 @@ Returns the current time as a DateTime.
 
 Usage:
 
-```
+```sql
 today()
 ```
 
@@ -54,7 +63,7 @@ Returns the current date as a `Date`.
 
 Usage:
 
-```
+```sql
 toDateTime(<expression>[, 'timezone string'])
 ```
 
@@ -62,18 +71,30 @@ toDateTime(<expression>[, 'timezone string'])
 
 Examples:
 
-```
--- double1 contains a unix timestamp in secondstoDateTime(double1)
--- blob1 contains an datetime in the format 'YYYY-MM-DD hh:mm:ss'toDateTime(blob1)
--- literal values:toDateTime(355924804) -- unix timestamptoDateTime('355924804') -- string containing unix timestamptoDateTime('1981-04-12 12:00:04') -- string with datetime in 'YYYY-MM-DD hh:mm:ss' format
--- interpret a date relative to New York timetoDateTime('2022-12-01 16:17:00', 'America/New_York')
+```sql
+-- double1 contains a unix timestamp in seconds
+toDateTime(double1)
+
+
+-- blob1 contains an datetime in the format 'YYYY-MM-DD hh:mm:ss'
+toDateTime(blob1)
+
+
+-- literal values:
+toDateTime(355924804) -- unix timestamp
+toDateTime('355924804') -- string containing unix timestamp
+toDateTime('1981-04-12 12:00:04') -- string with datetime in 'YYYY-MM-DD hh:mm:ss' format
+
+
+-- interpret a date relative to New York time
+toDateTime('2022-12-01 16:17:00', 'America/New_York')
 ```
 
 ## toYear New
 
 Usage:
 
-```
+```sql
 toYear(<datetime>)
 ```
 
@@ -81,15 +102,16 @@ toYear(<datetime>)
 
 Examples:
 
-```
--- returns the number 2025toYear(toDateTime('2025-10-27 00:00:00'))
+```sql
+-- returns the number 2025
+toYear(toDateTime('2025-10-27 00:00:00'))
 ```
 
 ## toMonth New
 
 Usage:
 
-```
+```sql
 toMonth(<datetime>)
 ```
 
@@ -97,15 +119,16 @@ toMonth(<datetime>)
 
 Examples:
 
-```
--- returns the number 10toMonth(toDateTime('2025-10-27 00:00:00'))
+```sql
+-- returns the number 10
+toMonth(toDateTime('2025-10-27 00:00:00'))
 ```
 
 ## toDayOfWeek New
 
 Usage:
 
-```
+```sql
 toDayOfWeek(<datetime>)
 ```
 
@@ -115,17 +138,24 @@ Returns `1` to indicate Monday, `2` to indicate Tuesday, and so on.
 
 Examples:
 
-```
--- returns the number 1 for Monday 27th October 2025toDayOfWeek(toDateTime('2025-10-27 00:00:00'))
--- returns the number 2 for Tuesday 28th October 2025toDayOfWeek(toDateTime('2025-10-28 00:00:00'))
--- returns the number 7 for Sunday 2nd November 2025toDayOfWeek(toDateTime('2025-11-02 00:00:00'))
+```sql
+-- returns the number 1 for Monday 27th October 2025
+toDayOfWeek(toDateTime('2025-10-27 00:00:00'))
+
+
+-- returns the number 2 for Tuesday 28th October 2025
+toDayOfWeek(toDateTime('2025-10-28 00:00:00'))
+
+
+-- returns the number 7 for Sunday 2nd November 2025
+toDayOfWeek(toDateTime('2025-11-02 00:00:00'))
 ```
 
 ## toDayOfMonth New
 
 Usage:
 
-```
+```sql
 toDayOfMonth(<datetime>)
 ```
 
@@ -133,15 +163,16 @@ toDayOfMonth(<datetime>)
 
 Examples:
 
-```
--- returns the number 27toDayOfMonth(toDateTime('2025-10-27 00:00:00'))
+```sql
+-- returns the number 27
+toDayOfMonth(toDateTime('2025-10-27 00:00:00'))
 ```
 
 ## toHour New
 
 Usage:
 
-```
+```sql
 toHour(<datetime>)
 ```
 
@@ -149,15 +180,16 @@ toHour(<datetime>)
 
 Examples:
 
-```
--- returns the number 9toHour(toDateTime('2025-10-27 09:11:13'))
+```sql
+-- returns the number 9
+toHour(toDateTime('2025-10-27 09:11:13'))
 ```
 
 ## toMinute New
 
 Usage:
 
-```
+```sql
 toMinute(<datetime>)
 ```
 
@@ -165,15 +197,16 @@ toMinute(<datetime>)
 
 Examples:
 
-```
--- returns the number 11toMinute(toDateTime('2025-10-27 09:11:13'))
+```sql
+-- returns the number 11
+toMinute(toDateTime('2025-10-27 09:11:13'))
 ```
 
 ## toSecond New
 
 Usage:
 
-```
+```sql
 toSecond(<datetime>)
 ```
 
@@ -181,15 +214,16 @@ toSecond(<datetime>)
 
 Examples:
 
-```
--- returns the number 13toSecond(toDateTime('2025-10-27 09:11:13'))
+```sql
+-- returns the number 13
+toSecond(toDateTime('2025-10-27 09:11:13'))
 ```
 
 ## toUnixTimestamp
 
 Usage:
 
-```
+```sql
 toUnixTimestamp(<datetime>)
 ```
 
@@ -197,15 +231,16 @@ toUnixTimestamp(<datetime>)
 
 Examples:
 
-```
--- get the current unix timestamptoUnixTimestamp(now())
+```sql
+-- get the current unix timestamp
+toUnixTimestamp(now())
 ```
 
 ## toStartOfInterval
 
 Usage:
 
-```
+```sql
 toStartOfInterval(<datetime>, INTERVAL '<n>' <unit>[, <timezone string>])
 ```
 
@@ -213,17 +248,29 @@ toStartOfInterval(<datetime>, INTERVAL '<n>' <unit>[, <timezone string>])
 
 Examples:
 
-```
--- round the current time down to the nearest 15 minutestoStartOfInterval(now(), INTERVAL '15' MINUTE)
--- round a timestamp down to the daytoStartOfInterval(timestamp, INTERVAL '1' DAY)
--- count the number of datapoints filed in each hourly windowSELECT  toStartOfInterval(timestamp, INTERVAL '1' HOUR) AS hour,  sum(_sample_interval) AS countFROM your_datasetGROUP BY hourORDER BY hour ASC
+```sql
+-- round the current time down to the nearest 15 minutes
+toStartOfInterval(now(), INTERVAL '15' MINUTE)
+
+
+-- round a timestamp down to the day
+toStartOfInterval(timestamp, INTERVAL '1' DAY)
+
+
+-- count the number of datapoints filed in each hourly window
+SELECT
+  toStartOfInterval(timestamp, INTERVAL '1' HOUR) AS hour,
+  sum(_sample_interval) AS count
+FROM your_dataset
+GROUP BY hour
+ORDER BY hour ASC
 ```
 
 ## toStartOfYear New
 
 Usage:
 
-```
+```sql
 toStartOfYear(<datetime>)
 ```
 
@@ -231,15 +278,16 @@ toStartOfYear(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-01-01 00:00:00toStartOfYear(toDateTime('2025-10-27 00:00:00'))
+```sql
+-- round a timestamp down to 2025-01-01 00:00:00
+toStartOfYear(toDateTime('2025-10-27 00:00:00'))
 ```
 
 ## toStartOfMonth New
 
 Usage:
 
-```
+```sql
 toStartOfMonth(<datetime>)
 ```
 
@@ -247,15 +295,16 @@ toStartOfMonth(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-01 00:00:00toStartOfMonth(toDateTime('2025-10-27 00:00:00'))
+```sql
+-- round a timestamp down to 2025-10-01 00:00:00
+toStartOfMonth(toDateTime('2025-10-27 00:00:00'))
 ```
 
 ## toStartOfWeek New
 
 Usage:
 
-```
+```sql
 toStartOfWeek(<datetime>)
 ```
 
@@ -265,16 +314,20 @@ Treats Monday as the first day of the week.
 
 Examples:
 
-```
--- round a time on a Monday down to Monday 2025-10-27 00:00:00toStartOfWeek(toDateTime('2025-10-27 00:00:00'))
--- round a time on a Wednesday down to Monday 2025-10-27 00:00:00toStartOfWeek(toDateTime('2025-10-29 00:00:00'))
+```sql
+-- round a time on a Monday down to Monday 2025-10-27 00:00:00
+toStartOfWeek(toDateTime('2025-10-27 00:00:00'))
+
+
+-- round a time on a Wednesday down to Monday 2025-10-27 00:00:00
+toStartOfWeek(toDateTime('2025-10-29 00:00:00'))
 ```
 
 ## toStartOfDay New
 
 Usage:
 
-```
+```sql
 toStartOfDay(<datetime>)
 ```
 
@@ -282,15 +335,16 @@ toStartOfDay(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-27 00:00:00toStartOfDay(toDateTime('2025-10-27 00:00:00'))
+```sql
+-- round a timestamp down to 2025-10-27 00:00:00
+toStartOfDay(toDateTime('2025-10-27 00:00:00'))
 ```
 
 ## toStartOfHour New
 
 Usage:
 
-```
+```sql
 toStartOfHour(<datetime>)
 ```
 
@@ -298,15 +352,16 @@ toStartOfHour(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-27 16:00:00toStartOfHour(toDateTime('2025-10-27 16:55:25'))
+```sql
+-- round a timestamp down to 2025-10-27 16:00:00
+toStartOfHour(toDateTime('2025-10-27 16:55:25'))
 ```
 
 ## toStartOfFifteenMinutes New
 
 Usage:
 
-```
+```sql
 toStartOfFifteenMinutes(<datetime>)
 ```
 
@@ -314,15 +369,16 @@ toStartOfFifteenMinutes(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-27 16:45:00toStartOfFifteenMinutes(toDateTime('2025-10-27 16:55:25'))
+```sql
+-- round a timestamp down to 2025-10-27 16:45:00
+toStartOfFifteenMinutes(toDateTime('2025-10-27 16:55:25'))
 ```
 
 ## toStartOfTenMinutes New
 
 Usage:
 
-```
+```sql
 toStartOfTenMinutes(<datetime>)
 ```
 
@@ -330,15 +386,16 @@ toStartOfTenMinutes(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-27 16:50:00toStartOfTenMinutes(toDateTime('2025-10-27 16:55:25'))
+```sql
+-- round a timestamp down to 2025-10-27 16:50:00
+toStartOfTenMinutes(toDateTime('2025-10-27 16:55:25'))
 ```
 
 ## toStartOfFiveMinutes New
 
 Usage:
 
-```
+```sql
 toStartOfFiveMinutes(<datetime>)
 ```
 
@@ -346,15 +403,16 @@ toStartOfFiveMinutes(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-27 16:55:00toStartOfFiveMinutes(toDateTime('2025-10-27 16:55:25'))
+```sql
+-- round a timestamp down to 2025-10-27 16:55:00
+toStartOfFiveMinutes(toDateTime('2025-10-27 16:55:25'))
 ```
 
 ## toStartOfMinute New
 
 Usage:
 
-```
+```sql
 toStartOfMinute(<datetime>)
 ```
 
@@ -362,15 +420,16 @@ toStartOfMinute(<datetime>)
 
 Examples:
 
-```
--- round a timestamp down to 2025-10-27 16:55:00toStartOfMinute(toDateTime('2025-10-27 16:55:25'))
+```sql
+-- round a timestamp down to 2025-10-27 16:55:00
+toStartOfMinute(toDateTime('2025-10-27 16:55:25'))
 ```
 
 ## toYYYYMM New
 
 Usage:
 
-```
+```sql
 toYYYYMM(<datetime>)
 ```
 
@@ -378,8 +437,9 @@ toYYYYMM(<datetime>)
 
 Examples:
 
-```
--- returns the number 202510toYYYYMM(toDateTime('2025-10-27 16:55:25'))
+```sql
+-- returns the number 202510
+toYYYYMM(toDateTime('2025-10-27 16:55:25'))
 ```
 
 ```json

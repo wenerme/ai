@@ -20,8 +20,19 @@ Terraform code snippets below refer to the v4 SDK only.
 
 The following example defines a single Cloud Connector rule for a zone using Terraform. The rule routes requests to `/images` on your domain to an AWS S3 bucket.
 
-```
-resource "cloudflare_cloud_connector_rules" "serve_images_in_aws" {  zone_id = "<ZONE_ID>"  rules {    description = "Route images to AWS S3 bucket"    enabled     = true    expression  = "http.request.full_uri wildcard \"https://<YOUR_HOSTNAME>/images/*\""    provider    = "aws_s3"    parameters {      host = "<BUCKET_NAME>.s3.amazonaws.com"    }  }}
+```tf
+resource "cloudflare_cloud_connector_rules" "serve_images_in_aws" {
+  zone_id = "<ZONE_ID>"
+  rules {
+    description = "Route images to AWS S3 bucket"
+    enabled     = true
+    expression  = "http.request.full_uri wildcard \"https://<YOUR_HOSTNAME>/images/*\""
+    provider    = "aws_s3"
+    parameters {
+      host = "<BUCKET_NAME>.s3.amazonaws.com"
+    }
+  }
+}
 ```
 
 ## Additional resources

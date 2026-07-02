@@ -30,16 +30,31 @@ Toggle button for the "more options" overflow menu in the control bar. Shows a n
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMoreToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkMoreToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkMoreToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMoreToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMoreToggle      meeting={meeting}      size="md"      variant="button"      states={states}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMoreToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+      states={states}
+    />
+  );
+}
 ```
 
 ```json

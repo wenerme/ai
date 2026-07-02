@@ -17,24 +17,43 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 Configure [boto3 ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to use your R2 endpoint:
 
-Python
+**Python**
 
-```
+```python
 import boto3
-s3 = boto3.client(    service_name="s3",    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",    aws_access_key_id="<ACCESS_KEY_ID>",    aws_secret_access_key="<SECRET_ACCESS_KEY>",    region_name="auto",)
+
+
+s3 = boto3.client(
+    service_name="s3",
+    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
+    aws_access_key_id="<ACCESS_KEY_ID>",
+    aws_secret_access_key="<SECRET_ACCESS_KEY>",
+    region_name="auto",
+)
 ```
 
 You can omit `aws_access_key_id` and `aws_secret_access_key` if you set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` [environment variables ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables).
 
 Common operations using the client:
 
-Python
+**Python**
 
-```
-# Get object metadatas3.head_object(Bucket="my-bucket", Key="dog.png")
-# Get objectresponse = s3.get_object(Bucket="my-bucket", Key="dog.png")
-# Upload single filewith open("./dog.png", "rb") as f:    s3.upload_fileobj(f, "my-bucket", "dog.png")
-# Delete objects3.delete_object(Bucket="my-bucket", Key="dog.png")
+```python
+# Get object metadata
+s3.head_object(Bucket="my-bucket", Key="dog.png")
+
+
+# Get object
+response = s3.get_object(Bucket="my-bucket", Key="dog.png")
+
+
+# Upload single file
+with open("./dog.png", "rb") as f:
+    s3.upload_fileobj(f, "my-bucket", "dog.png")
+
+
+# Delete object
+s3.delete_object(Bucket="my-bucket", Key="dog.png")
 ```
 
 ## Optimizing upload performance
@@ -43,18 +62,80 @@ For large objects (multi-GB files such as training data or video), `upload_fileo
 
 Use the low-level multipart API with `ThreadPoolExecutor` instead:
 
-Python
+**Python**
 
-```
-import boto3import mathimport osfrom concurrent.futures import ThreadPoolExecutor
-s3 = boto3.client(    service_name="s3",    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",    aws_access_key_id="<ACCESS_KEY_ID>",    aws_secret_access_key="<SECRET_ACCESS_KEY>",    region_name="auto",)
-bucket = "my-bucket"key = "large-file.bin"file_path = "./large-file.bin"part_size = 16 * 1024 * 1024  # 16 MiB per partmax_workers = 10
-# Step 1: Create the multipart uploadupload_id = Nonempu = s3.create_multipart_upload(Bucket=bucket, Key=key)upload_id = mpu["UploadId"]
-def upload_part(part_number, data):    response = s3.upload_part(        Bucket=bucket,        Key=key,        UploadId=upload_id,        PartNumber=part_number,        Body=data,    )    return {"PartNumber": part_number, "ETag": response["ETag"]}
-try:    file_size = os.path.getsize(file_path)    part_count = math.ceil(file_size / part_size)
-    # Step 2: Upload parts in parallel    with ThreadPoolExecutor(max_workers=max_workers) as pool:        futures = []        with open(file_path, "rb") as f:            for i in range(part_count):                data = f.read(part_size)                futures.append(pool.submit(upload_part, i + 1, data))
+```python
+import boto3
+import math
+import os
+from concurrent.futures import ThreadPoolExecutor
+
+
+s3 = boto3.client(
+    service_name="s3",
+    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
+    aws_access_key_id="<ACCESS_KEY_ID>",
+    aws_secret_access_key="<SECRET_ACCESS_KEY>",
+    region_name="auto",
+)
+
+
+bucket = "my-bucket"
+key = "large-file.bin"
+file_path = "./large-file.bin"
+part_size = 16 * 1024 * 1024  # 16 MiB per part
+max_workers = 10
+
+
+# Step 1: Create the multipart upload
+upload_id = None
+mpu = s3.create_multipart_upload(Bucket=bucket, Key=key)
+upload_id = mpu["UploadId"]
+
+
+def upload_part(part_number, data):
+    response = s3.upload_part(
+        Bucket=bucket,
+        Key=key,
+        UploadId=upload_id,
+        PartNumber=part_number,
+        Body=data,
+    )
+    return {"PartNumber": part_number, "ETag": response["ETag"]}
+
+
+try:
+    file_size = os.path.getsize(file_path)
+    part_count = math.ceil(file_size / part_size)
+
+
+    # Step 2: Upload parts in parallel
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = []
+        with open(file_path, "rb") as f:
+            for i in range(part_count):
+                data = f.read(part_size)
+                futures.append(pool.submit(upload_part, i + 1, data))
+
+
         parts = [future.result() for future in futures]
-    # Step 3: Complete the upload    s3.complete_multipart_upload(        Bucket=bucket,        Key=key,        UploadId=upload_id,        MultipartUpload={"Parts": parts},    )    print("Multipart upload complete.")except Exception:    if upload_id:        try:            s3.abort_multipart_upload(Bucket=bucket, Key=key, UploadId=upload_id)        except Exception:            pass    raise
+
+
+    # Step 3: Complete the upload
+    s3.complete_multipart_upload(
+        Bucket=bucket,
+        Key=key,
+        UploadId=upload_id,
+        MultipartUpload={"Parts": parts},
+    )
+    print("Multipart upload complete.")
+except Exception:
+    if upload_id:
+        try:
+            s3.abort_multipart_upload(Bucket=bucket, Key=key, UploadId=upload_id)
+        except Exception:
+            pass
+    raise
 ```
 
 For more on multipart uploads including part size limits and lifecycle management, refer to [Upload objects](https://developers.cloudflare.com/r2/objects/upload-objects/).
@@ -63,23 +144,40 @@ For more on multipart uploads including part size limits and lifecycle managemen
 
 Generate presigned links to share temporary public read or write access to a bucket.
 
-Python
+**Python**
 
-```
-# Generate presigned URL for reading (GET)get_url = s3.generate_presigned_url(    "get_object",    Params={"Bucket": "my-bucket", "Key": "dog.png"},    ExpiresIn=3600,  # Valid for 1 hour)
-# Generate presigned URL for writing (PUT)put_url = s3.generate_presigned_url(    "put_object",    Params={        "Bucket": "my-bucket",        "Key": "dog.png",        "ContentType": "image/png",    },    ExpiresIn=3600,)
+```python
+# Generate presigned URL for reading (GET)
+get_url = s3.generate_presigned_url(
+    "get_object",
+    Params={"Bucket": "my-bucket", "Key": "dog.png"},
+    ExpiresIn=3600,  # Valid for 1 hour
+)
+
+
+# Generate presigned URL for writing (PUT)
+put_url = s3.generate_presigned_url(
+    "put_object",
+    Params={
+        "Bucket": "my-bucket",
+        "Key": "dog.png",
+        "ContentType": "image/png",
+    },
+    ExpiresIn=3600,
+)
 ```
 
-```
-https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Signature=<signature>
+```txt
+https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
+https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Signature=<signature>
 ```
 
 Upload using the presigned PUT URL. When using a presigned URL with `ContentType`, the client must include a matching `Content-Type` header:
 
-Terminal window
-
-```
-curl -X PUT "https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=..." \  -H "Content-Type: image/png" \  --data-binary @dog.png
+```sh
+curl -X PUT "https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=..." \
+  -H "Content-Type: image/png" \
+  --data-binary @dog.png
 ```
 
 ## Restrict uploads with CORS and Content-Type
@@ -89,16 +187,32 @@ When generating presigned URLs for uploads, you can limit abuse and misuse by:
 1. **Restricting Content-Type**: Specify the allowed content type in the presigned URL parameters. The upload will fail if the client sends a different `Content-Type` header.
 2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
 
-```
-[  {    "AllowedOrigins": ["https://example.com"],    "AllowedMethods": ["PUT"],    "AllowedHeaders": ["Content-Type"],    "ExposeHeaders": ["ETag"],    "MaxAgeSeconds": 3600  }]
+```json
+[
+  {
+    "AllowedOrigins": ["https://example.com"],
+    "AllowedMethods": ["PUT"],
+    "AllowedHeaders": ["Content-Type"],
+    "ExposeHeaders": ["ETag"],
+    "MaxAgeSeconds": 3600
+  }
+]
 ```
 
 Then generate a presigned URL with a Content-Type restriction:
 
-Python
+**Python**
 
-```
-put_url = s3.generate_presigned_url(    "put_object",    Params={        "Bucket": "my-bucket",        "Key": "dog.png",        "ContentType": "image/png",    },    ExpiresIn=3600,)
+```python
+put_url = s3.generate_presigned_url(
+    "put_object",
+    Params={
+        "Bucket": "my-bucket",
+        "Key": "dog.png",
+        "ContentType": "image/png",
+    },
+    ExpiresIn=3600,
+)
 ```
 
 When a client uses this presigned URL, they must:

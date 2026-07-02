@@ -27,16 +27,20 @@ Displays a participant's name and an audio indicator.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.nametagview.RtkNameTagView    android:id="@+id/rtk_name_tag"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.nametagview.RtkNameTagView
+    android:id="@+id/rtk_name_tag"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val nameTag = findViewById<RtkNameTagView>(R.id.rtk_name_tag)nameTag.activate(participant)
+```kotlin
+val nameTag = findViewById<RtkNameTagView>(R.id.rtk_name_tag)
+nameTag.activate(participant)
 ```
 
 ```json

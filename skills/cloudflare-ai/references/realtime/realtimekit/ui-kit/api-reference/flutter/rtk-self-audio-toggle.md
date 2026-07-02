@@ -33,20 +33,34 @@ Note
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkSelfAudioToggleButton(  meeting: yourMeetingInstance,)
+
+
+RtkSelfAudioToggleButton(
+  meeting: yourMeetingInstance,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkSelfAudioToggleButton(  meeting: yourMeetingInstance,  onAudioToggle: () {    // Handle audio toggle  },  iconSize: 24.0,  iconColor: Colors.blue,  showLabel: true,)
+
+
+RtkSelfAudioToggleButton(
+  meeting: yourMeetingInstance,
+  onAudioToggle: () {
+    // Handle audio toggle
+  },
+  iconSize: 24.0,
+  iconColor: Colors.blue,
+  showLabel: true,
+)
 ```
 
 ```json

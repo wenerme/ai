@@ -33,20 +33,36 @@ A control bar button that ends or leaves the meeting. Optionally displays a conf
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let endButton = RtkEndMeetingControlBarButton(    meeting: rtkClient,    alertViewController: self)view.addSubview(endButton)
+
+
+let endButton = RtkEndMeetingControlBarButton(
+    meeting: rtkClient,
+    alertViewController: self
+)
+view.addSubview(endButton)
 ```
 
 ### Without confirmation dialog
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let endButton = RtkEndMeetingControlBarButton(    meeting: rtkClient,    alertViewController: self,    onClick: { button, actionType in        print("Action: \(actionType)")    })endButton.shouldShowAlertOnClick = falseview.addSubview(endButton)
+
+
+let endButton = RtkEndMeetingControlBarButton(
+    meeting: rtkClient,
+    alertViewController: self,
+    onClick: { button, actionType in
+        print("Action: \(actionType)")
+    }
+)
+endButton.shouldShowAlertOnClick = false
+view.addSubview(endButton)
 ```
 
 ```json

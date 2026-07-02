@@ -22,9 +22,9 @@ The `TextEncoder` takes a stream of code points as input and emits a stream of b
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let encoder = new TextEncoder();
 ```
 
@@ -51,9 +51,9 @@ The `TextDecoder` interface represents a UTF-8 decoder. Decoders take a stream o
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let decoder = new TextDecoder();
 ```
 

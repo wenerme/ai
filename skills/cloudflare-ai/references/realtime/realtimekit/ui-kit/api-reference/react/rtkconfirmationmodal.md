@@ -27,16 +27,28 @@ A confirmation modal.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkConfirmationModal } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkConfirmationModal />;}
+
+
+function MyComponent() {
+  return <RtkConfirmationModal />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkConfirmationModal } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkConfirmationModal      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkConfirmationModal
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

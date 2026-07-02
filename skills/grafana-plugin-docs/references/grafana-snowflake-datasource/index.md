@@ -48,11 +48,24 @@ To get started with the Snowflake data source plugin, refer to the following top
 
 After configuring the data source, you can:
 
+- Use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to query your Snowflake data with natural language.
 - Add [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) to overlay event data on your graphs.
 - Use [Templates and variables](/docs/grafana/latest/dashboards/variables/) to create dynamic, reusable dashboards.
 - Apply [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to process and combine data.
 - Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
 - Set up [Alerting](/docs/grafana/latest/alerting/) to get notified when metrics exceed thresholds.
+
+## Grafana Assistant
+
+You can use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to explore and query your Snowflake data using natural language. The Assistant discovers the databases, schemas, and tables available in your Snowflake data source, builds and runs SQL queries, and visualizes the results on a dashboard.
+
+To query Snowflake, mention your Snowflake data source with the `@` symbol in your prompt. For example:
+
+- `What tables are available in @snowflake-ds?`
+- `Show the top 10 longest-running queries from @snowflake-ds over the last 7 days.`
+- `Query @snowflake-ds for daily credit usage by warehouse this month.`
+
+For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
 
 ## Pre-built dashboards
 

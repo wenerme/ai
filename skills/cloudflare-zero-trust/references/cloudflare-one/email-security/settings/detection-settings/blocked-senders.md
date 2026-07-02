@@ -45,8 +45,10 @@ You can upload a file no larger than 150 KB. The file cannot can only contain `B
 
 An example file would look like this:
 
-```
-Blocked Sender, Blocked Sender Type, Is Regex, Notesjohn.smith@gmail.com, EMAIL, false, John Smithexample.com, DOMAIN, false, Melanie Turner
+```txt
+Blocked Sender, Blocked Sender Type, Is Regex, Notes
+john.smith@gmail.com, EMAIL, false, John Smith
+example.com, DOMAIN, false, Melanie Turner
 ```
 
 ## Export blocked senders

@@ -24,7 +24,7 @@ _GeoIP is the registered trademark of MaxMind, Inc._
 
 Example value:
 
-```
+```txt
 "GB"
 ```
 

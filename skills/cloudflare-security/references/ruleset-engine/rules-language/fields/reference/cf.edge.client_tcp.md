@@ -18,7 +18,7 @@ Indicates if the request was made over TCP.
 
 Example value:
 
-```
+```txt
 true
 ```
 

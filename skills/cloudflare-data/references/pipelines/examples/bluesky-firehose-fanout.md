@@ -67,9 +67,7 @@ For setup, select the following options:
 
 Change into your new project directory:
 
-Terminal window
-
-```
+```sh
 cd bluesky-pipeline
 ```
 
@@ -99,8 +97,21 @@ A stream has a single schema. Because every event type flows through the same st
 
 Create a `schema.json` file in the root of your project:
 
-```
-{  "fields": [    { "name": "event_id", "type": "string", "required": true },    { "name": "event_type", "type": "string", "required": true },    { "name": "did", "type": "string", "required": false },    { "name": "operation", "type": "string", "required": false },    { "name": "event_time", "type": "timestamp", "required": false },    { "name": "created_at", "type": "string", "required": false },    { "name": "text", "type": "string", "required": false },    { "name": "langs", "type": "string", "required": false },    { "name": "subject_uri", "type": "string", "required": false },    { "name": "subject_did", "type": "string", "required": false }  ]}
+```json
+{
+  "fields": [
+    { "name": "event_id", "type": "string", "required": true },
+    { "name": "event_type", "type": "string", "required": true },
+    { "name": "did", "type": "string", "required": false },
+    { "name": "operation", "type": "string", "required": false },
+    { "name": "event_time", "type": "timestamp", "required": false },
+    { "name": "created_at", "type": "string", "required": false },
+    { "name": "text", "type": "string", "required": false },
+    { "name": "langs", "type": "string", "required": false },
+    { "name": "subject_uri", "type": "string", "required": false },
+    { "name": "subject_did", "type": "string", "required": false }
+  ]
+}
 ```
 
 ## 3\. Create an R2 bucket and enable R2 Data Catalog
@@ -163,22 +174,46 @@ Note the **stream ID** in the output. You will use it to configure the Worker bi
 
 Next, create one [sink](https://developers.cloudflare.com/pipelines/sinks/) per destination table. Each sink writes to its own Iceberg table in R2 Data Catalog. Replace `YOUR_CATALOG_TOKEN` with your R2 API token.
 
-Terminal window
-
-```
-for t in post like repost follow block; do  npx wrangler pipelines sinks create bsky_${t}_sink \    --type r2-data-catalog \    --bucket bluesky-pipeline \    --namespace bluesky \    --table bsky_${t} \    --catalog-token YOUR_CATALOG_TOKEN \    --roll-interval 60done
+```sh
+for t in post like repost follow block; do
+  npx wrangler pipelines sinks create bsky_${t}_sink \
+    --type r2-data-catalog \
+    --bucket bluesky-pipeline \
+    --namespace bluesky \
+    --table bsky_${t} \
+    --catalog-token YOUR_CATALOG_TOKEN \
+    --roll-interval 60
+done
 ```
 
 Now create one pipeline whose SQL contains multiple `INSERT` statements, one per route. Each statement filters the stream by `event_type` and projects only the columns that matter for its table.
 
 Create a `fanout.sql` file:
 
-```
-INSERT INTO bsky_post_sink  SELECT event_id, did, operation, event_time, created_at, text, langs  FROM bsky_events_stream WHERE event_type = 'post';
-INSERT INTO bsky_like_sink  SELECT event_id, did, operation, event_time, created_at, subject_uri  FROM bsky_events_stream WHERE event_type = 'like';
-INSERT INTO bsky_repost_sink  SELECT event_id, did, operation, event_time, created_at, subject_uri  FROM bsky_events_stream WHERE event_type = 'repost';
-INSERT INTO bsky_follow_sink  SELECT event_id, did, operation, event_time, created_at, subject_did  FROM bsky_events_stream WHERE event_type = 'follow';
-INSERT INTO bsky_block_sink  SELECT event_id, did, operation, event_time, created_at, subject_did  FROM bsky_events_stream WHERE event_type = 'block';
+```sql
+INSERT INTO bsky_post_sink
+  SELECT event_id, did, operation, event_time, created_at, text, langs
+  FROM bsky_events_stream WHERE event_type = 'post';
+
+
+INSERT INTO bsky_like_sink
+  SELECT event_id, did, operation, event_time, created_at, subject_uri
+  FROM bsky_events_stream WHERE event_type = 'like';
+
+
+INSERT INTO bsky_repost_sink
+  SELECT event_id, did, operation, event_time, created_at, subject_uri
+  FROM bsky_events_stream WHERE event_type = 'repost';
+
+
+INSERT INTO bsky_follow_sink
+  SELECT event_id, did, operation, event_time, created_at, subject_did
+  FROM bsky_events_stream WHERE event_type = 'follow';
+
+
+INSERT INTO bsky_block_sink
+  SELECT event_id, did, operation, event_time, created_at, subject_did
+  FROM bsky_events_stream WHERE event_type = 'block';
 ```
 
 Create the pipeline from the file:
@@ -203,23 +238,74 @@ One pipeline writes to five tables. To add a new event type later, add one sink 
 
 Add the stream binding, a Durable Object to hold the WebSocket connection, and a [cron trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) to keep the consumer alive. Replace `<STREAM_ID>` with the stream ID from step 4.
 
-* [  wrangler.jsonc ](#tab-panel-9783)
-* [  wrangler.toml ](#tab-panel-9784)
+* [  wrangler.jsonc ](#tab-panel-9862)
+* [  wrangler.toml ](#tab-panel-9863)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "bluesky-pipeline",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "pipelines": [
+    {
+      "binding": "BSKY_STREAM",
+      "stream": "<STREAM_ID>"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "JETSTREAM",
+        "class_name": "JetstreamConsumer"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "JetstreamConsumer"
+      ]
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/2 * * * *"
+    ]
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "bluesky-pipeline",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-26",  "pipelines": [    {      "binding": "BSKY_STREAM",      "stream": "<STREAM_ID>"    }  ],  "durable_objects": {    "bindings": [      {        "name": "JETSTREAM",        "class_name": "JetstreamConsumer"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "JetstreamConsumer"      ]    }  ],  "triggers": {    "crons": [      "*/2 * * * *"    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "bluesky-pipeline"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-26"
-[[pipelines]]binding = "BSKY_STREAM"stream = "<STREAM_ID>"
-[[durable_objects.bindings]]name = "JETSTREAM"class_name = "JetstreamConsumer"
-[[migrations]]tag = "v1"new_sqlite_classes = ["JetstreamConsumer"]
-[triggers]crons = ["*/2 * * * *"]
+```toml
+name = "bluesky-pipeline"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[pipelines]]
+binding = "BSKY_STREAM"
+stream = "<STREAM_ID>"
+
+
+[[durable_objects.bindings]]
+name = "JETSTREAM"
+class_name = "JetstreamConsumer"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["JetstreamConsumer"]
+
+
+[triggers]
+crons = ["*/2 * * * *"]
 ```
 
 ## 6\. Consume the firehose in a Durable Object
@@ -228,44 +314,334 @@ A [Durable Object](https://developers.cloudflare.com/durable-objects/) is the ri
 
 Replace the contents of `src/index.ts` with the following:
 
-* [  JavaScript ](#tab-panel-9785)
-* [  TypeScript ](#tab-panel-9786)
+* [  JavaScript ](#tab-panel-9864)
+* [  TypeScript ](#tab-panel-9865)
 
-src/index.js
+**src/index.js**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// Jetstream collection -> our short event_type. Only these are kept.const COLLECTION_TO_TYPE = {  "app.bsky.feed.post": "post",  "app.bsky.feed.like": "like",  "app.bsky.feed.repost": "repost",  "app.bsky.graph.follow": "follow",  "app.bsky.graph.block": "block",};const WANTED = Object.keys(COLLECTION_TO_TYPE);const JETSTREAM_URL = "https://jetstream2.us-east.bsky.network/subscribe";const FLUSH_MAX = 500; // rows per send()const FLUSH_MS = 1000; // flush at least once per secondconst RECONNECT_MS = 15000;
-// Flatten one Jetstream message into a unified stream row, or null to skip.function toRow(ev) {  if (ev?.kind !== "commit" || !ev.commit) return null;  const c = ev.commit;  const event_type = COLLECTION_TO_TYPE[c.collection];  if (!event_type) return null;  const r = c.record ?? {};  const subject = r.subject;  return {    event_id: `${ev.did}/${c.collection}/${c.rkey}`,    event_type,    did: ev.did ?? null,    operation: c.operation ?? null,    event_time:      typeof ev.time_us === "number"        ? new Date(ev.time_us / 1000).toISOString()        : null,    created_at: typeof r.createdAt === "string" ? r.createdAt : null,    text: event_type === "post" && typeof r.text === "string" ? r.text : null,    langs:      event_type === "post" && Array.isArray(r.langs)        ? r.langs.join(",")        : null,    subject_uri: typeof subject === "object" ? (subject?.uri ?? null) : null,    subject_did: typeof subject === "string" ? subject : null,  };}
-export class JetstreamConsumer extends DurableObject {  ws = null;  buf = [];  lastFlush = 0;  cursor = null;  flushing = false;
-  // Arm the reconnect watchdog first, then connect (idempotent).  async start() {    await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);    await this.ensureConnected();    return { connected: this.ws !== null };  }
-  async ensureConnected() {    if (this.ws) return;    this.cursor ??= (await this.ctx.storage.get("cursor")) ?? null;
-    const params = new URLSearchParams();    for (const c of WANTED) params.append("wantedCollections", c);    if (this.cursor) params.set("cursor", String(this.cursor));
-    const resp = await fetch(`${JETSTREAM_URL}?${params}`, {      headers: { Upgrade: "websocket" },    });    const ws = resp.webSocket;    if (!ws) throw new Error(`Jetstream handshake failed: ${resp.status}`);    ws.accept();    this.ws = ws;
-    ws.addEventListener("message", (e) => this.onMessage(e));    ws.addEventListener("close", () => (this.ws = null));    ws.addEventListener("error", () => (this.ws = null));  }
-  onMessage(e) {    let ev;    try {      ev = JSON.parse(e.data);    } catch {      return;    }    if (typeof ev.time_us === "number") this.cursor = ev.time_us;    const row = toRow(ev);    if (row) this.buf.push(row);    if (      this.buf.length >= FLUSH_MAX ||      Date.now() - this.lastFlush >= FLUSH_MS    ) {      void this.flush();    }  }
-  // Serialize sends: flush one batch at a time, advancing the cursor on success.  async flush() {    if (this.flushing) return;    this.flushing = true;    try {      while (this.buf.length > 0) {        this.lastFlush = Date.now();        const batch = this.buf.splice(0, this.buf.length);        const batchCursor = this.cursor;        try {          await this.env.BSKY_STREAM.send(batch);          await this.ctx.storage.put("cursor", batchCursor);        } catch (err) {          this.buf.unshift(...batch);          console.error("send failed, will retry", err);          return;        }      }    } finally {      this.flushing = false;    }  }
-  // Watchdog: reconnect if dropped, flush stragglers, always reschedule.  async alarm() {    try {      await this.ensureConnected();      await this.flush();    } catch (err) {      console.error("alarm error", err);    } finally {      await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);    }  }}
-export default {  async fetch(_req, env) {    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));    return Response.json(await stub.start());  },  async scheduled(_event, env) {    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));    await stub.start();  },};
+
+
+// Jetstream collection -> our short event_type. Only these are kept.
+const COLLECTION_TO_TYPE = {
+  "app.bsky.feed.post": "post",
+  "app.bsky.feed.like": "like",
+  "app.bsky.feed.repost": "repost",
+  "app.bsky.graph.follow": "follow",
+  "app.bsky.graph.block": "block",
+};
+const WANTED = Object.keys(COLLECTION_TO_TYPE);
+const JETSTREAM_URL = "https://jetstream2.us-east.bsky.network/subscribe";
+const FLUSH_MAX = 500; // rows per send()
+const FLUSH_MS = 1000; // flush at least once per second
+const RECONNECT_MS = 15000;
+
+
+// Flatten one Jetstream message into a unified stream row, or null to skip.
+function toRow(ev) {
+  if (ev?.kind !== "commit" || !ev.commit) return null;
+  const c = ev.commit;
+  const event_type = COLLECTION_TO_TYPE[c.collection];
+  if (!event_type) return null;
+  const r = c.record ?? {};
+  const subject = r.subject;
+  return {
+    event_id: `${ev.did}/${c.collection}/${c.rkey}`,
+    event_type,
+    did: ev.did ?? null,
+    operation: c.operation ?? null,
+    event_time:
+      typeof ev.time_us === "number"
+        ? new Date(ev.time_us / 1000).toISOString()
+        : null,
+    created_at: typeof r.createdAt === "string" ? r.createdAt : null,
+    text: event_type === "post" && typeof r.text === "string" ? r.text : null,
+    langs:
+      event_type === "post" && Array.isArray(r.langs)
+        ? r.langs.join(",")
+        : null,
+    subject_uri: typeof subject === "object" ? (subject?.uri ?? null) : null,
+    subject_did: typeof subject === "string" ? subject : null,
+  };
+}
+
+
+export class JetstreamConsumer extends DurableObject {
+  ws = null;
+  buf = [];
+  lastFlush = 0;
+  cursor = null;
+  flushing = false;
+
+
+  // Arm the reconnect watchdog first, then connect (idempotent).
+  async start() {
+    await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);
+    await this.ensureConnected();
+    return { connected: this.ws !== null };
+  }
+
+
+  async ensureConnected() {
+    if (this.ws) return;
+    this.cursor ??= (await this.ctx.storage.get("cursor")) ?? null;
+
+
+    const params = new URLSearchParams();
+    for (const c of WANTED) params.append("wantedCollections", c);
+    if (this.cursor) params.set("cursor", String(this.cursor));
+
+
+    const resp = await fetch(`${JETSTREAM_URL}?${params}`, {
+      headers: { Upgrade: "websocket" },
+    });
+    const ws = resp.webSocket;
+    if (!ws) throw new Error(`Jetstream handshake failed: ${resp.status}`);
+    ws.accept();
+    this.ws = ws;
+
+
+    ws.addEventListener("message", (e) => this.onMessage(e));
+    ws.addEventListener("close", () => (this.ws = null));
+    ws.addEventListener("error", () => (this.ws = null));
+  }
+
+
+  onMessage(e) {
+    let ev;
+    try {
+      ev = JSON.parse(e.data);
+    } catch {
+      return;
+    }
+    if (typeof ev.time_us === "number") this.cursor = ev.time_us;
+    const row = toRow(ev);
+    if (row) this.buf.push(row);
+    if (
+      this.buf.length >= FLUSH_MAX ||
+      Date.now() - this.lastFlush >= FLUSH_MS
+    ) {
+      void this.flush();
+    }
+  }
+
+
+  // Serialize sends: flush one batch at a time, advancing the cursor on success.
+  async flush() {
+    if (this.flushing) return;
+    this.flushing = true;
+    try {
+      while (this.buf.length > 0) {
+        this.lastFlush = Date.now();
+        const batch = this.buf.splice(0, this.buf.length);
+        const batchCursor = this.cursor;
+        try {
+          await this.env.BSKY_STREAM.send(batch);
+          await this.ctx.storage.put("cursor", batchCursor);
+        } catch (err) {
+          this.buf.unshift(...batch);
+          console.error("send failed, will retry", err);
+          return;
+        }
+      }
+    } finally {
+      this.flushing = false;
+    }
+  }
+
+
+  // Watchdog: reconnect if dropped, flush stragglers, always reschedule.
+  async alarm() {
+    try {
+      await this.ensureConnected();
+      await this.flush();
+    } catch (err) {
+      console.error("alarm error", err);
+    } finally {
+      await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);
+    }
+  }
+}
+
+
+export default {
+  async fetch(_req, env) {
+    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));
+    return Response.json(await stub.start());
+  },
+  async scheduled(_event, env) {
+    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));
+    await stub.start();
+  },
+};
 ```
 
-src/index.ts
+**src/index.ts**
 
-```
-import { DurableObject } from "cloudflare:workers";import type { Pipeline } from "cloudflare:pipelines";
-interface Env {  BSKY_STREAM: Pipeline;  JETSTREAM: DurableObjectNamespace<JetstreamConsumer>;}
-// Jetstream collection -> our short event_type. Only these are kept.const COLLECTION_TO_TYPE: Record<string, string> = {  "app.bsky.feed.post": "post",  "app.bsky.feed.like": "like",  "app.bsky.feed.repost": "repost",  "app.bsky.graph.follow": "follow",  "app.bsky.graph.block": "block",};const WANTED = Object.keys(COLLECTION_TO_TYPE);const JETSTREAM_URL = "https://jetstream2.us-east.bsky.network/subscribe";const FLUSH_MAX = 500; // rows per send()const FLUSH_MS = 1000; // flush at least once per secondconst RECONNECT_MS = 15000;
-// Flatten one Jetstream message into a unified stream row, or null to skip.function toRow(ev: any) {  if (ev?.kind !== "commit" || !ev.commit) return null;  const c = ev.commit;  const event_type = COLLECTION_TO_TYPE[c.collection];  if (!event_type) return null;  const r = c.record ?? {};  const subject = r.subject;  return {    event_id: `${ev.did}/${c.collection}/${c.rkey}`,    event_type,    did: ev.did ?? null,    operation: c.operation ?? null,    event_time:      typeof ev.time_us === "number"        ? new Date(ev.time_us / 1000).toISOString()        : null,    created_at: typeof r.createdAt === "string" ? r.createdAt : null,    text: event_type === "post" && typeof r.text === "string" ? r.text : null,    langs:      event_type === "post" && Array.isArray(r.langs)        ? r.langs.join(",")        : null,    subject_uri: typeof subject === "object" ? (subject?.uri ?? null) : null,    subject_did: typeof subject === "string" ? subject : null,  };}
-export class JetstreamConsumer extends DurableObject<Env> {  private ws: WebSocket | null = null;  private buf: Record<string, unknown>[] = [];  private lastFlush = 0;  private cursor: number | null = null;  private flushing = false;
-  // Arm the reconnect watchdog first, then connect (idempotent).  async start() {    await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);    await this.ensureConnected();    return { connected: this.ws !== null };  }
-  private async ensureConnected() {    if (this.ws) return;    this.cursor ??= (await this.ctx.storage.get<number>("cursor")) ?? null;
-    const params = new URLSearchParams();    for (const c of WANTED) params.append("wantedCollections", c);    if (this.cursor) params.set("cursor", String(this.cursor));
-    const resp = await fetch(`${JETSTREAM_URL}?${params}`, {      headers: { Upgrade: "websocket" },    });    const ws = resp.webSocket;    if (!ws) throw new Error(`Jetstream handshake failed: ${resp.status}`);    ws.accept();    this.ws = ws;
-    ws.addEventListener("message", (e) => this.onMessage(e));    ws.addEventListener("close", () => (this.ws = null));    ws.addEventListener("error", () => (this.ws = null));  }
-  private onMessage(e: MessageEvent) {    let ev: any;    try {      ev = JSON.parse(e.data as string);    } catch {      return;    }    if (typeof ev.time_us === "number") this.cursor = ev.time_us;    const row = toRow(ev);    if (row) this.buf.push(row);    if (      this.buf.length >= FLUSH_MAX ||      Date.now() - this.lastFlush >= FLUSH_MS    ) {      void this.flush();    }  }
-  // Serialize sends: flush one batch at a time, advancing the cursor on success.  private async flush() {    if (this.flushing) return;    this.flushing = true;    try {      while (this.buf.length > 0) {        this.lastFlush = Date.now();        const batch = this.buf.splice(0, this.buf.length);        const batchCursor = this.cursor;        try {          await this.env.BSKY_STREAM.send(batch);          await this.ctx.storage.put("cursor", batchCursor);        } catch (err) {          this.buf.unshift(...batch);          console.error("send failed, will retry", err);          return;        }      }    } finally {      this.flushing = false;    }  }
-  // Watchdog: reconnect if dropped, flush stragglers, always reschedule.  async alarm() {    try {      await this.ensureConnected();      await this.flush();    } catch (err) {      console.error("alarm error", err);    } finally {      await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);    }  }}
-export default {  async fetch(_req, env): Promise<Response> {    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));    return Response.json(await stub.start());  },  async scheduled(_event, env): Promise<void> {    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));    await stub.start();  },} satisfies ExportedHandler<Env>;
+```ts
+import { DurableObject } from "cloudflare:workers";
+import type { Pipeline } from "cloudflare:pipelines";
+
+
+interface Env {
+  BSKY_STREAM: Pipeline;
+  JETSTREAM: DurableObjectNamespace<JetstreamConsumer>;
+}
+
+
+// Jetstream collection -> our short event_type. Only these are kept.
+const COLLECTION_TO_TYPE: Record<string, string> = {
+  "app.bsky.feed.post": "post",
+  "app.bsky.feed.like": "like",
+  "app.bsky.feed.repost": "repost",
+  "app.bsky.graph.follow": "follow",
+  "app.bsky.graph.block": "block",
+};
+const WANTED = Object.keys(COLLECTION_TO_TYPE);
+const JETSTREAM_URL = "https://jetstream2.us-east.bsky.network/subscribe";
+const FLUSH_MAX = 500; // rows per send()
+const FLUSH_MS = 1000; // flush at least once per second
+const RECONNECT_MS = 15000;
+
+
+// Flatten one Jetstream message into a unified stream row, or null to skip.
+function toRow(ev: any) {
+  if (ev?.kind !== "commit" || !ev.commit) return null;
+  const c = ev.commit;
+  const event_type = COLLECTION_TO_TYPE[c.collection];
+  if (!event_type) return null;
+  const r = c.record ?? {};
+  const subject = r.subject;
+  return {
+    event_id: `${ev.did}/${c.collection}/${c.rkey}`,
+    event_type,
+    did: ev.did ?? null,
+    operation: c.operation ?? null,
+    event_time:
+      typeof ev.time_us === "number"
+        ? new Date(ev.time_us / 1000).toISOString()
+        : null,
+    created_at: typeof r.createdAt === "string" ? r.createdAt : null,
+    text: event_type === "post" && typeof r.text === "string" ? r.text : null,
+    langs:
+      event_type === "post" && Array.isArray(r.langs)
+        ? r.langs.join(",")
+        : null,
+    subject_uri: typeof subject === "object" ? (subject?.uri ?? null) : null,
+    subject_did: typeof subject === "string" ? subject : null,
+  };
+}
+
+
+export class JetstreamConsumer extends DurableObject<Env> {
+  private ws: WebSocket | null = null;
+  private buf: Record<string, unknown>[] = [];
+  private lastFlush = 0;
+  private cursor: number | null = null;
+  private flushing = false;
+
+
+  // Arm the reconnect watchdog first, then connect (idempotent).
+  async start() {
+    await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);
+    await this.ensureConnected();
+    return { connected: this.ws !== null };
+  }
+
+
+  private async ensureConnected() {
+    if (this.ws) return;
+    this.cursor ??= (await this.ctx.storage.get<number>("cursor")) ?? null;
+
+
+    const params = new URLSearchParams();
+    for (const c of WANTED) params.append("wantedCollections", c);
+    if (this.cursor) params.set("cursor", String(this.cursor));
+
+
+    const resp = await fetch(`${JETSTREAM_URL}?${params}`, {
+      headers: { Upgrade: "websocket" },
+    });
+    const ws = resp.webSocket;
+    if (!ws) throw new Error(`Jetstream handshake failed: ${resp.status}`);
+    ws.accept();
+    this.ws = ws;
+
+
+    ws.addEventListener("message", (e) => this.onMessage(e));
+    ws.addEventListener("close", () => (this.ws = null));
+    ws.addEventListener("error", () => (this.ws = null));
+  }
+
+
+  private onMessage(e: MessageEvent) {
+    let ev: any;
+    try {
+      ev = JSON.parse(e.data as string);
+    } catch {
+      return;
+    }
+    if (typeof ev.time_us === "number") this.cursor = ev.time_us;
+    const row = toRow(ev);
+    if (row) this.buf.push(row);
+    if (
+      this.buf.length >= FLUSH_MAX ||
+      Date.now() - this.lastFlush >= FLUSH_MS
+    ) {
+      void this.flush();
+    }
+  }
+
+
+  // Serialize sends: flush one batch at a time, advancing the cursor on success.
+  private async flush() {
+    if (this.flushing) return;
+    this.flushing = true;
+    try {
+      while (this.buf.length > 0) {
+        this.lastFlush = Date.now();
+        const batch = this.buf.splice(0, this.buf.length);
+        const batchCursor = this.cursor;
+        try {
+          await this.env.BSKY_STREAM.send(batch);
+          await this.ctx.storage.put("cursor", batchCursor);
+        } catch (err) {
+          this.buf.unshift(...batch);
+          console.error("send failed, will retry", err);
+          return;
+        }
+      }
+    } finally {
+      this.flushing = false;
+    }
+  }
+
+
+  // Watchdog: reconnect if dropped, flush stragglers, always reschedule.
+  async alarm() {
+    try {
+      await this.ensureConnected();
+      await this.flush();
+    } catch (err) {
+      console.error("alarm error", err);
+    } finally {
+      await this.ctx.storage.setAlarm(Date.now() + RECONNECT_MS);
+    }
+  }
+}
+
+
+export default {
+  async fetch(_req, env): Promise<Response> {
+    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));
+    return Response.json(await stub.start());
+  },
+  async scheduled(_event, env): Promise<void> {
+    const stub = env.JETSTREAM.get(env.JETSTREAM.idFromName("singleton"));
+    await stub.start();
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Generate types for your bindings:
@@ -304,15 +680,13 @@ pnpm wrangler deploy
 
 Open the Worker URL once to start the firehose. The cron trigger keeps it running:
 
-Terminal window
-
-```
+```sh
 curl https://bluesky-pipeline.YOUR_SUBDOMAIN.workers.dev
 ```
 
 The command returns:
 
-```
+```txt
 { "connected": true }
 ```
 
@@ -338,12 +712,16 @@ The first data lands a few minutes after the first events arrive, while the pipe
 
 Set your R2 SQL token, then query each table. Replace `YOUR_WAREHOUSE_NAME` with the warehouse name you noted in step 3.
 
-Terminal window
-
-```
+```sh
 export WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_CATALOG_TOKEN
-npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" \  "SELECT COUNT(*) FROM bluesky.bsky_like"
-npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" \  "SELECT text, langs FROM bluesky.bsky_post WHERE langs LIKE '%en%' LIMIT 10"
+
+
+npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" \
+  "SELECT COUNT(*) FROM bluesky.bsky_like"
+
+
+npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" \
+  "SELECT text, langs FROM bluesky.bsky_post WHERE langs LIKE '%en%' LIMIT 10"
 ```
 
 Each table contains only its event type, projected to the relevant columns. The single pipeline did all the routing.

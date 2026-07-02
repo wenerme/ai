@@ -30,9 +30,9 @@ Live instant clips are generated dynamically from the recording of a live stream
 
 To help users replay and seek recent content, request a preview manifest by adding a `duration` parameter to the HLS manifest URL:
 
-Preview Manifest
+**Preview Manifest**
 
-```
+```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID||INPUT_ID>/manifest/video.m3u8?duration=5m
 ```
 
@@ -49,25 +49,62 @@ This manifest can be played and seeked using any HLS-compatible player.
 
 Reading headers when loading a manifest requires adjusting how players handle the response. For example, if using [HLS.js ↗](https://github.com/video-dev/hls.js)and the default loader, override the `pLoader` (playlist loader) class:
 
-JavaScript
+**JavaScript**
 
-```
-let currentPreviewStart;let currentPreviewVideoID;
-// Override the pLoader (playlist loader) to read the manifest headers:class pLoader extends Hls.DefaultConfig.loader {  constructor(config) {    super(config);    var load = this.load.bind(this);    this.load = function (context, config, callbacks) {      if (context.type == 'manifest') {        var onSuccess = callbacks.onSuccess;        // copy the existing onSuccess handler to fire it later.
-        callbacks.onSuccess = function (response, stats, context, networkDetails) {          // The fourth argument here is undocumented in HLS.js but contains          // the response object for the manifest fetch, which gives us headers:
-          currentPreviewStart =            parseFloat(networkDetails.getResponseHeader('preview-start-seconds'));          // Save the start time of the preview manifest
-          currentPreviewVideoID =            networkDetails.getResponseHeader('stream-media-id');          // Save the video ID in case the preview was loaded with an input ID
-          onSuccess(response, stats, context);          // And fire the existing success handler.        };      }      load(context, config, callbacks);    };  }}
-// Specify the new loader class when setting up HLSconst hls = new Hls({  pLoader: pLoader,});
+```js
+let currentPreviewStart;
+let currentPreviewVideoID;
+
+
+// Override the pLoader (playlist loader) to read the manifest headers:
+class pLoader extends Hls.DefaultConfig.loader {
+  constructor(config) {
+    super(config);
+    var load = this.load.bind(this);
+    this.load = function (context, config, callbacks) {
+      if (context.type == 'manifest') {
+        var onSuccess = callbacks.onSuccess;
+        // copy the existing onSuccess handler to fire it later.
+
+
+        callbacks.onSuccess = function (response, stats, context, networkDetails) {
+          // The fourth argument here is undocumented in HLS.js but contains
+          // the response object for the manifest fetch, which gives us headers:
+
+
+          currentPreviewStart =
+            parseFloat(networkDetails.getResponseHeader('preview-start-seconds'));
+          // Save the start time of the preview manifest
+
+
+          currentPreviewVideoID =
+            networkDetails.getResponseHeader('stream-media-id');
+          // Save the video ID in case the preview was loaded with an input ID
+
+
+          onSuccess(response, stats, context);
+          // And fire the existing success handler.
+        };
+      }
+      load(context, config, callbacks);
+    };
+  }
+}
+
+
+// Specify the new loader class when setting up HLS
+const hls = new Hls({
+  pLoader: pLoader,
+});
 ```
 
 ## Clip manifest
 
 To play a clip of a live stream or recording, request a clip manifest with a duration and a start time, relative to the start of the live stream.
 
-Clip Manifest
+**Clip Manifest**
 
-```
+```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/manifest/clip.m3u8?time=600s&duration=30s
 ```
 
@@ -80,9 +117,9 @@ This manifest can be played and seeked using any HLS-compatible player.
 
 An MP4 of the clip can also be generated dynamically to be saved and shared on other platforms.
 
-Clip MP4 Download
+**Clip MP4 Download**
 
-```
+```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/clip.mp4?time=600s&duration=30s&filename=clip.mp4
 ```
 

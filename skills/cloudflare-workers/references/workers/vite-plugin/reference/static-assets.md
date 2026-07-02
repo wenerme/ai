@@ -27,19 +27,24 @@ On running `vite build`, an output `wrangler.json` configuration file is generat
 
 The `assets` configuration should be used, however, if you wish to set [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) or enable the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding). The following example configures the `not_found_handling` for a single-page application so that the fallback will always be the root `index.html` file.
 
-* [  wrangler.jsonc ](#tab-panel-12285)
-* [  wrangler.toml ](#tab-panel-12286)
+* [  wrangler.jsonc ](#tab-panel-12580)
+* [  wrangler.toml ](#tab-panel-12581)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "assets": {
+    "not_found_handling": "single-page-application"
+  }
+}
 ```
-{  "assets": {    "not_found_handling": "single-page-application"  }}
-```
 
-TOML
+**TOML**
 
-```
-[assets]not_found_handling = "single-page-application"
+```toml
+[assets]
+not_found_handling = "single-page-application"
 ```
 
 ## Features
@@ -48,11 +53,17 @@ The Vite plugin ensures that all of Vite's [static asset handling ↗](https://v
 
 Assets [imported as URLs ↗](https://vite.dev/guide/assets#importing-asset-as-url) can be fetched via the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding). As the binding's `fetch` method requires a full URL, we recommend using the request URL as the `base`. This is demonstrated in the following example:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import myImage from "./my-image.png";
-export default {  fetch(request, env) {    return env.ASSETS.fetch(new URL(myImage, request.url));  },};
+
+
+export default {
+  fetch(request, env) {
+    return env.ASSETS.fetch(new URL(myImage, request.url));
+  },
+};
 ```
 
 Assets imported as URLs in your Worker will automatically be moved to the client build output. When running `vite build` the paths of any moved assets will be displayed in the console.

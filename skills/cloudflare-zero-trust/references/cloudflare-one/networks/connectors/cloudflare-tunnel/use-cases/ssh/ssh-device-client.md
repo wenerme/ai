@@ -33,15 +33,13 @@ This example walks through how to set up an SSH server on a Google Cloud Platfor
 Before creating your VM instance you will need to create an SSH key pair.
 
 1. Open a terminal and type the following command:
-Terminal window
-```
+```sh
 ssh-keygen -t rsa -f ~/.ssh/gcp_ssh -C <username in GCP>
 ```
 2. Enter your passphrase when prompted. It will need to be entered twice.
 Two files will be generated: `gcp_ssh` which contains the private key, and `gcp_ssh.pub` which contains the public key.
 3. In the command line, enter:
-Terminal window
-```
+```sh
 cat ~/.ssh/gcp_ssh.pub
 ```
 4. Copy the output. This will be used when creating the VM instance in GCP.
@@ -122,15 +120,18 @@ Verify local DNS resolution
 
 To check if `cloudflared` can successfully resolve `ssh.internal.local`, run the following command from the `cloudflared` host:
 
-Terminal window
-
-```
+```sh
 nslookup ssh.internal.local
 ```
 
-```
-Server:    127.0.2.2Address:  127.0.2.2#53
-Non-authoritative answer:Name:  ssh.internal.localAddress: 10.2.0.3
+```sh
+Server:    127.0.2.2
+Address:  127.0.2.2#53
+
+
+Non-authoritative answer:
+Name:  ssh.internal.local
+Address: 10.2.0.3
 ```
 
 The output should contain the server's private IP address (the **Internal IP** of the GCP VM). If the hostname fails to resolve:
@@ -198,8 +199,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
 
-  * [ Exclude IPs and domains ](#tab-panel-7394)
-  * [ Include IPs and domains ](#tab-panel-7395)
+  * [ Exclude IPs and domains ](#tab-panel-7644)
+  * [ Include IPs and domains ](#tab-panel-7645)
 If you are using **Exclude** mode:
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.
@@ -222,8 +223,8 @@ If you are using **Include** mode:
 
 By default, all devices enrolled in your organization can SSH to the server unless you build Gateway network policies to allow or block specific users. You can create policies based on user identity, device posture, location, and other criteria.
 
-* [ Dashboard ](#tab-panel-7392)
-* [ Terraform (v5) ](#tab-panel-7393)
+* [ Dashboard ](#tab-panel-7642)
+* [ Terraform (v5) ](#tab-panel-7643)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -235,8 +236,12 @@ By default, all devices enrolled in your organization can SSH to the server unle
 
   * `Zero Trust Write`
 2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-```
-resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  account_id            = var.cloudflare_account_id  gateway_proxy_enabled = true  gateway_udp_proxy_enabled = true}
+```tf
+resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
+  account_id            = var.cloudflare_account_id
+  gateway_proxy_enabled = true
+  gateway_udp_proxy_enabled = true
+}
 ```
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
@@ -289,9 +294,7 @@ Additionally, SNI selectors will only apply to Cloudflare One Client traffic.
 
 Once you have set up the tunnel route and the user device, the user can now SSH into the machine. If your SSH server requires an SSH key, the key should be included in the SSH command.
 
-Terminal window
-
-```
+```sh
 ssh -i ~/.ssh/gcp_ssh <username>@ssh.internal.local
 ```
 
@@ -302,24 +305,27 @@ The Cloudflare One Client must be connected to your Zero Trust organization. Use
 If you cannot connect, verify the following:
 
 1. **Confirm DNS resolution** \- From the device, confirm that you can successfully resolve the private hostname:
-Terminal window
-```
+```sh
 nslookup ssh.internal.local
 ```
-```
-Server:    127.0.2.2Address:  127.0.2.2#53
-Non-authoritative answer:Name:  ssh.internal.localAddress: 100.80.200.48
+```sh
+Server:    127.0.2.2
+Address:  127.0.2.2#53
+Non-authoritative answer:
+Name:  ssh.internal.local
+Address: 100.80.200.48
 ```
 The query should resolve using [WARP's DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) and return a Gateway initial resolved IP. If the query fails to resolve or returns a different IP, check your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) configuration and [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/).
 2. **Check Gateway logs** \- Review your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to see if the connection is being blocked by a policy.
 3. **Verify tunnel status** \- Confirm that your tunnel is healthy and connected by checking [tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/).
 4. **Test connectivity to initial resolved IP** \- When you connect to the SSH server using its private hostname, the device should make a connection to the initial resolved IP:
-Terminal window
-```
+```sh
 ssh -v <username>@ssh.internal.local
 ```
-```
-...Authenticated to ssh.internal.local ([100.80.200.48]:22) using "publickey"....
+```sh
+...
+Authenticated to ssh.internal.local ([100.80.200.48]:22) using "publickey".
+...
 ```
 Look for a line showing connection to an IP in the `100.64.0.0/10` range. If the request fails, confirm that the initial resolved IP [routes through the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). You can also check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing to the server's private IP.
 

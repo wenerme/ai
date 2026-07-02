@@ -32,21 +32,48 @@ The supervisor's database and the facet's database are stored together as part o
 
 Your Worker needs two things: a Durable Object class with a SQLite storage backend, and a Worker Loader binding.
 
-* [  wrangler.jsonc ](#tab-panel-8517)
-* [  wrangler.toml ](#tab-panel-8518)
+* [  wrangler.jsonc ](#tab-panel-8808)
+* [  wrangler.toml ](#tab-panel-8809)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "src/index.ts",
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "AppRunner"
+      ]
+    }
+  ],
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "src/index.ts",  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "AppRunner"      ]    }  ],  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-# Set this to today's datecompatibility_date = "2026-06-24"main = "src/index.ts"
-[[migrations]]tag = "v1"new_sqlite_classes = ["AppRunner"]
-[[worker_loaders]]binding = "LOADER"
+```toml
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "src/index.ts"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["AppRunner"]
+
+
+[[worker_loaders]]
+binding = "LOADER"
 ```
 
 ## Load and run a dynamic class
@@ -55,43 +82,183 @@ The following example shows a supervisor Durable Object (`AppRunner`) that loads
 
 The dynamic code is a simple counter app that tracks how many requests it has received, using its own SQLite-backed storage. In a real application, this code would come from an AI agent or user upload rather than a static string.
 
-* [  JavaScript ](#tab-panel-8519)
-* [  TypeScript ](#tab-panel-8520)
+* [  JavaScript ](#tab-panel-8810)
+* [  TypeScript ](#tab-panel-8811)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// In production, this code would come from an AI agent, a database,// or user input — not a static string.const AGENT_CODE = `  import { DurableObject } from "cloudflare:workers";
-  export class App extends DurableObject {    fetch(request) {      // Note: storage.kv provides simple KV storage backed by SQLite,      // but you can also use SQL directly via storage.sql. See:      // https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/
-      let counter = this.ctx.storage.kv.get("counter") || 0;      ++counter;      this.ctx.storage.kv.put("counter", counter);
-      return new Response("You have made " + counter + " requests.\\n");    }  }`;
-// AppRunner is your supervisor. Each instance manages one// dynamically-loaded application.export class AppRunner extends DurableObject {  async fetch(request) {    // Get a stub pointing to the "app" facet. If the facet has not    // started yet (or has hibernated), the callback runs to tell the    // runtime what code to load.    const facet = this.ctx.facets.get("app", async () => {      const worker = this.#loadDynamicWorker();
-      // Extract the Durable Object class named "App" from the      // dynamic Worker's exports.      const appClass = worker.getDurableObjectClass("App");
-      return { class: appClass };    });
-    // Forward the request to the facet.    // You can also call RPC methods on the stub.    return await facet.fetch(request);  }
-  #loadDynamicWorker() {    // Use get() so the Worker stays warm across requests.    // Each unique code version needs a unique ID.    const codeId = "agent-code-v1";
-    return this.env.LOADER.get(codeId, async () => {      return {        compatibilityDate: "2026-04-01",        mainModule: "worker.js",        modules: { "worker.js": AGENT_CODE },        globalOutbound: null, // block network access      };    });  }}
-export default {  async fetch(request, env, ctx) {    // Look up the AppRunner instance named "my-app".    const obj = ctx.exports.AppRunner.getByName("my-app");
-    // Forward the request to it.    return await obj.fetch(request);  },};
+
+
+// In production, this code would come from an AI agent, a database,
+// or user input — not a static string.
+const AGENT_CODE = `
+  import { DurableObject } from "cloudflare:workers";
+
+
+  export class App extends DurableObject {
+    fetch(request) {
+      // Note: storage.kv provides simple KV storage backed by SQLite,
+      // but you can also use SQL directly via storage.sql. See:
+      // https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/
+
+
+      let counter = this.ctx.storage.kv.get("counter") || 0;
+      ++counter;
+      this.ctx.storage.kv.put("counter", counter);
+
+
+      return new Response("You have made " + counter + " requests.\\n");
+    }
+  }
+`;
+
+
+// AppRunner is your supervisor. Each instance manages one
+// dynamically-loaded application.
+export class AppRunner extends DurableObject {
+  async fetch(request) {
+    // Get a stub pointing to the "app" facet. If the facet has not
+    // started yet (or has hibernated), the callback runs to tell the
+    // runtime what code to load.
+    const facet = this.ctx.facets.get("app", async () => {
+      const worker = this.#loadDynamicWorker();
+
+
+      // Extract the Durable Object class named "App" from the
+      // dynamic Worker's exports.
+      const appClass = worker.getDurableObjectClass("App");
+
+
+      return { class: appClass };
+    });
+
+
+    // Forward the request to the facet.
+    // You can also call RPC methods on the stub.
+    return await facet.fetch(request);
+  }
+
+
+  #loadDynamicWorker() {
+    // Use get() so the Worker stays warm across requests.
+    // Each unique code version needs a unique ID.
+    const codeId = "agent-code-v1";
+
+
+    return this.env.LOADER.get(codeId, async () => {
+      return {
+        compatibilityDate: "2026-04-01",
+        mainModule: "worker.js",
+        modules: { "worker.js": AGENT_CODE },
+        globalOutbound: null, // block network access
+      };
+    });
+  }
+}
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // Look up the AppRunner instance named "my-app".
+    const obj = ctx.exports.AppRunner.getByName("my-app");
+
+
+    // Forward the request to it.
+    return await obj.fetch(request);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-// In production, this code would come from an AI agent, a database,// or user input — not a static string.const AGENT_CODE = `  import { DurableObject } from "cloudflare:workers";
-  export class App extends DurableObject {    fetch(request) {      // Note: storage.kv provides simple KV storage backed by SQLite,      // but you can also use SQL directly via storage.sql. See:      // https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/
-      let counter = this.ctx.storage.kv.get("counter") || 0;      ++counter;      this.ctx.storage.kv.put("counter", counter);
-      return new Response("You have made " + counter + " requests.\\n");    }  }`;
-// AppRunner is your supervisor. Each instance manages one// dynamically-loaded application.export class AppRunner extends DurableObject<Env> {  async fetch(request: Request): Promise<Response> {    // Get a stub pointing to the "app" facet. If the facet has not    // started yet (or has hibernated), the callback runs to tell the    // runtime what code to load.    const facet = this.ctx.facets.get("app", async () => {      const worker = this.#loadDynamicWorker();
-      // Extract the Durable Object class named "App" from the      // dynamic Worker's exports.      const appClass = worker.getDurableObjectClass("App");
-      return { class: appClass };    });
-    // Forward the request to the facet.    // You can also call RPC methods on the stub.    return await facet.fetch(request);  }
-  #loadDynamicWorker() {    // Use get() so the Worker stays warm across requests.    // Each unique code version needs a unique ID.    const codeId = "agent-code-v1";
-    return this.env.LOADER.get(codeId, async () => {      return {        compatibilityDate: "2026-04-01",        mainModule: "worker.js",        modules: { "worker.js": AGENT_CODE },        globalOutbound: null, // block network access      };    });  }}
-export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Look up the AppRunner instance named "my-app".    const obj = ctx.exports.AppRunner.getByName("my-app");
-    // Forward the request to it.    return await obj.fetch(request);  },};
+
+
+// In production, this code would come from an AI agent, a database,
+// or user input — not a static string.
+const AGENT_CODE = `
+  import { DurableObject } from "cloudflare:workers";
+
+
+  export class App extends DurableObject {
+    fetch(request) {
+      // Note: storage.kv provides simple KV storage backed by SQLite,
+      // but you can also use SQL directly via storage.sql. See:
+      // https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/
+
+
+      let counter = this.ctx.storage.kv.get("counter") || 0;
+      ++counter;
+      this.ctx.storage.kv.put("counter", counter);
+
+
+      return new Response("You have made " + counter + " requests.\\n");
+    }
+  }
+`;
+
+
+// AppRunner is your supervisor. Each instance manages one
+// dynamically-loaded application.
+export class AppRunner extends DurableObject<Env> {
+  async fetch(request: Request): Promise<Response> {
+    // Get a stub pointing to the "app" facet. If the facet has not
+    // started yet (or has hibernated), the callback runs to tell the
+    // runtime what code to load.
+    const facet = this.ctx.facets.get("app", async () => {
+      const worker = this.#loadDynamicWorker();
+
+
+      // Extract the Durable Object class named "App" from the
+      // dynamic Worker's exports.
+      const appClass = worker.getDurableObjectClass("App");
+
+
+      return { class: appClass };
+    });
+
+
+    // Forward the request to the facet.
+    // You can also call RPC methods on the stub.
+    return await facet.fetch(request);
+  }
+
+
+  #loadDynamicWorker() {
+    // Use get() so the Worker stays warm across requests.
+    // Each unique code version needs a unique ID.
+    const codeId = "agent-code-v1";
+
+
+    return this.env.LOADER.get(codeId, async () => {
+      return {
+        compatibilityDate: "2026-04-01",
+        mainModule: "worker.js",
+        modules: { "worker.js": AGENT_CODE },
+        globalOutbound: null, // block network access
+      };
+    });
+  }
+}
+
+
+export default {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
+    // Look up the AppRunner instance named "my-app".
+    const obj = ctx.exports.AppRunner.getByName("my-app");
+
+
+    // Forward the request to it.
+    return await obj.fetch(request);
+  },
+};
 ```
 
 In this example:

@@ -32,19 +32,26 @@ A skeleton component used for composing custom controlbar buttons.
 
 ### Basic Usage
 
-```
+```html
 <rtk-controlbar-button></rtk-controlbar-button>
 ```
 
 ### With Properties
 
-```
-<rtk-controlbar-button icon="example"></rtk-controlbar-button>
+```html
+<rtk-controlbar-button
+ icon="example">
+</rtk-controlbar-button>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-controlbar-button");
-  el.brandIcon= true;  el.disabled= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-controlbar-button");
+
+
+  el.brandIcon= true;
+  el.disabled= true;
+</script>
 ```
 
 ```json

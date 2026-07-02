@@ -32,8 +32,8 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 ## Set up Secondary DNS override
 
-* [ Dashboard ](#tab-panel-8235)
-* [ API ](#tab-panel-8236)
+* [ Dashboard ](#tab-panel-8516)
+* [ API ](#tab-panel-8517)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -48,10 +48,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone DNS Settings Write`
 * `DNS Write`
 
-Update DNS Settings
+**Update DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "secondary_overrides": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "secondary_overrides": true
+  }'
 ```
 
 1. For specific A, AAAA, or CNAME records, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) request with the `proxied` status as `true`.

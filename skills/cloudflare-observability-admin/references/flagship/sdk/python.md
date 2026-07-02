@@ -18,15 +18,11 @@ The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for s
 
 Install with `uv` or `pip`:
 
-Terminal window
-
-```
+```sh
 uv add cloudflare-flagship
 ```
 
-Terminal window
-
-```
+```sh
 pip install cloudflare-flagship
 ```
 
@@ -34,22 +30,43 @@ pip install cloudflare-flagship
 
 Configure the provider with your Flagship app ID, Cloudflare account ID, and an API token with Flagship Evaluate permission.
 
-Python
+**Python**
 
-```
-from openfeature import apifrom openfeature.evaluation_context import EvaluationContextfrom flagship import FlagshipServerProvider
-api.set_provider(    FlagshipServerProvider(        app_id="<APP_ID>",        account_id="<ACCOUNT_ID>",        auth_token="<API_TOKEN>",    ))
-client = api.get_client()enabled = client.get_boolean_value(    "new-checkout",    False,    EvaluationContext(targeting_key="user-42", attributes={"plan": "enterprise"}),)
+```python
+from openfeature import api
+from openfeature.evaluation_context import EvaluationContext
+from flagship import FlagshipServerProvider
+
+
+api.set_provider(
+    FlagshipServerProvider(
+        app_id="<APP_ID>",
+        account_id="<ACCOUNT_ID>",
+        auth_token="<API_TOKEN>",
+    )
+)
+
+
+client = api.get_client()
+enabled = client.get_boolean_value(
+    "new-checkout",
+    False,
+    EvaluationContext(targeting_key="user-42", attributes={"plan": "enterprise"}),
+)
 ```
 
 ## Flag types
 
 The Python SDK supports all OpenFeature flag types. Python's OpenFeature SDK separates numeric values into integer and float methods.
 
-Python
+**Python**
 
-```
-enabled = client.get_boolean_value("new-checkout", False, context)variant = client.get_string_value("homepage-hero", "control", context)limit = client.get_integer_value("upload-limit", 10, context)rate = client.get_float_value("sample-rate", 0.1, context)config = client.get_object_value("ui-config", {"theme": "light"}, context)
+```python
+enabled = client.get_boolean_value("new-checkout", False, context)
+variant = client.get_string_value("homepage-hero", "control", context)
+limit = client.get_integer_value("upload-limit", 10, context)
+rate = client.get_float_value("sample-rate", 0.1, context)
+config = client.get_object_value("ui-config", {"theme": "light"}, context)
 ```
 
 Use the `*_details` methods when you need the resolved value, reason, variant, or error code.
@@ -73,10 +90,16 @@ Use the `*_details` methods when you need the resolved value, reason, variant, o
 
 Server-side response caching is off by default. Enable it with `cache_ttl` when you want repeated evaluations for the same flag, type, and evaluation context to reuse a recent result.
 
-Python
+**Python**
 
-```
-FlagshipServerProvider(    app_id="<APP_ID>",    account_id="<ACCOUNT_ID>",    auth_token="<API_TOKEN>",    cache_ttl=30.0,    cache_max_size=1000,)
+```python
+FlagshipServerProvider(
+    app_id="<APP_ID>",
+    account_id="<ACCOUNT_ID>",
+    auth_token="<API_TOKEN>",
+    cache_ttl=30.0,
+    cache_max_size=1000,
+)
 ```
 
 Cached values may be stale until the TTL expires. Keep the TTL short for flags that you expect to change during active rollouts. The provider does not cache disabled flags or errors.
@@ -89,17 +112,18 @@ Context attributes are sent as URL query parameters. Supported values are string
 
 The async API mirrors the sync API:
 
-Python
+**Python**
 
-```
-enabled = await client.get_boolean_value_async("new-checkout", False, context)details = await client.get_boolean_details_async("new-checkout", False, context)
+```python
+enabled = await client.get_boolean_value_async("new-checkout", False, context)
+details = await client.get_boolean_details_async("new-checkout", False, context)
 ```
 
 When shutting down in an async context, use `shutdown_async()`:
 
-Python
+**Python**
 
-```
+```python
 await api.shutdown_async()
 ```
 

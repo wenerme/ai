@@ -29,114 +29,210 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1468)
-* [ cURL ](#tab-panel-1469)
+* [ TypeScript ](#tab-panel-1516)
+* [ cURL ](#tab-panel-1517)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/tts-1-hd',
+  {
+    response_format: 'mp3',
+    speed: 1,
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+    voice: 'alloy',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    voice: 'alloy',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/tts-1-hd",
+  "input": {
+    "response_format": "mp3",
+    "speed": 1,
+    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
+    "voice": "alloy"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1512)
+* [ Raw response ](#tab-panel-1513)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "voice": "alloy"  }}'
-```
-
-* [ Output ](#tab-panel-1464)
-* [ Raw response ](#tab-panel-1465)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/simple-speech.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/simple-speech.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Storytelling**  — HD narration with the Fable voice
 
-* [ TypeScript ](#tab-panel-1472)
-* [ cURL ](#tab-panel-1473)
+* [ TypeScript ](#tab-panel-1520)
+* [ cURL ](#tab-panel-1521)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/tts-1-hd',
+  {
+    response_format: 'mp3',
+    speed: 0.9,
+    text: 'Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.',
+    voice: 'fable',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 0.9,    text: 'Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.',    voice: 'fable',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/tts-1-hd",
+  "input": {
+    "response_format": "mp3",
+    "speed": 0.9,
+    "text": "Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.",
+    "voice": "fable"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1514)
+* [ Raw response ](#tab-panel-1515)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 0.9,    "text": "Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.",    "voice": "fable"  }}'
-```
-
-* [ Output ](#tab-panel-1466)
-* [ Raw response ](#tab-panel-1467)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/storytelling.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/storytelling.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **Podcast Style**  — Conversational podcast narration
 
-* [ TypeScript ](#tab-panel-1476)
-* [ cURL ](#tab-panel-1477)
+* [ TypeScript ](#tab-panel-1524)
+* [ cURL ](#tab-panel-1525)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/tts-1-hd',
+  {
+    response_format: 'mp3',
+    speed: 1,
+    text: "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
+    voice: 'echo',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 1,    text: "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",    voice: 'echo',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/tts-1-hd",
+  "input": {
+    "response_format": "mp3",
+    "speed": 1,
+    "text": "So here'\''s the thing about large language models — they'\''re not actually thinking. They'\''re predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
+    "voice": "echo"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1518)
+* [ Raw response ](#tab-panel-1519)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "So here'\''s the thing about large language models — they'\''re not actually thinking. They'\''re predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",    "voice": "echo"  }}'
-```
-
-* [ Output ](#tab-panel-1470)
-* [ Raw response ](#tab-panel-1471)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/podcast-style.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/podcast-style.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **Shimmer Voice**  — Bright and expressive voice
 
-* [ TypeScript ](#tab-panel-1478)
-* [ cURL ](#tab-panel-1479)
+* [ TypeScript ](#tab-panel-1526)
+* [ cURL ](#tab-panel-1527)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/tts-1-hd',
+  {
+    response_format: 'mp3',
+    speed: 1,
+    text: 'Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.',
+    voice: 'shimmer',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 1,    text: 'Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.',    voice: 'shimmer',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/tts-1-hd",
+  "input": {
+    "response_format": "mp3",
+    "speed": 1,
+    "text": "Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.",
+    "voice": "shimmer"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1522)
+* [ Raw response ](#tab-panel-1523)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.",    "voice": "shimmer"  }}'
-```
-
-* [ Output ](#tab-panel-1474)
-* [ Raw response ](#tab-panel-1475)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/shimmer-voice.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/shimmer-voice.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1480)
-* [ Output ](#tab-panel-1481)
-
-response\_format
-
-`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
-
-speed
-
-`number`requireddefault: 1maximum: 4minimum: 0.25The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
+* [ Input ](#tab-panel-1528)
+* [ Output ](#tab-panel-1529)
 
 text
 
@@ -145,6 +241,14 @@ text
 voice
 
 `string`requireddefault: alloyenum: alloy, echo, fable, onyx, nova, shimmerThe voice to use when generating the audio. Defaults to alloy.
+
+response\_format
+
+`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
+
+speed
+
+`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
 
 audio
 

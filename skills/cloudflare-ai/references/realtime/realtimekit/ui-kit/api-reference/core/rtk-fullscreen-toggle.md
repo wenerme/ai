@@ -29,18 +29,24 @@ A button which toggles full screen mode for any existing `rtk-meeting` component
 
 ### Basic Usage
 
-```
+```html
 <rtk-fullscreen-toggle></rtk-fullscreen-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-fullscreen-toggle size="md" variant"button"></rtk-fullscreen-toggle>
+```html
+<rtk-fullscreen-toggle
+ size="md"
+ variant"button">
+</rtk-fullscreen-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-fullscreen-toggle");
+```html
+<script>
+  const el = document.querySelector("rtk-fullscreen-toggle");
+
+
 </script>
 ```
 

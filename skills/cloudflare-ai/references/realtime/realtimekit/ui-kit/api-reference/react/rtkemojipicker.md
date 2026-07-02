@@ -26,16 +26,28 @@ A very simple emoji picker component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkEmojiPicker } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkEmojiPicker />;}
+
+
+function MyComponent() {
+  return <RtkEmojiPicker />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkEmojiPicker } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkEmojiPicker      focusWhenOpened={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkEmojiPicker
+      focusWhenOpened={true}
+    />
+  );
+}
 ```
 
 ```json

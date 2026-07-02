@@ -29,14 +29,20 @@ A button which toggles recording state of a meeting. Only a privileged user can 
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-recording-toggle></rtk-recording-toggle>
+```html
+<!-- component.html -->
+<rtk-recording-toggle></rtk-recording-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-recording-toggle [disabled]="true" [meeting]="meeting" size="md"></rtk-recording-toggle>
+```html
+<!-- component.html -->
+<rtk-recording-toggle
+ [disabled]="true"
+ [meeting]="meeting"
+ size="md">
+</rtk-recording-toggle>
 ```
 
 ```json

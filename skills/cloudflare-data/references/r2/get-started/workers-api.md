@@ -18,23 +18,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-10119)
-* [ Dashboard ](#tab-panel-10120)
+* [ Wrangler CLI ](#tab-panel-10198)
+* [ Dashboard ](#tab-panel-10199)
 
 1. Log in to your Cloudflare account:
-Terminal window
-```
+```sh
 npx wrangler login
 ```
 2. Create a bucket named `my-bucket`:
-Terminal window
-```
+```sh
 npx wrangler r2 bucket create my-bucket
 ```
 If prompted, select the account you want to create the bucket in.
 3. Verify the bucket was created:
-Terminal window
-```
+```sh
 npx wrangler r2 bucket list
 ```
 
@@ -60,25 +57,34 @@ pnpm create cloudflare@latest r2-worker
 ```
 When prompted, select **Hello World example** and **JavaScript** (or TypeScript) as your template.
 2. Move into the project directory:
-Terminal window
-```
+```sh
 cd r2-worker
 ```
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:
 
-  * [  wrangler.jsonc ](#tab-panel-10121)
-  * [  wrangler.toml ](#tab-panel-10122)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-10200)
+  * [  wrangler.toml ](#tab-panel-10201)
+
+**JSONC**
+```jsonc
+{
+  "r2_buckets": [
+    {
+      "binding": "MY_BUCKET",
+      "bucket_name": "my-bucket"
+    }
+  ]
+}
 ```
-{  "r2_buckets": [    {      "binding": "MY_BUCKET",      "bucket_name": "my-bucket"    }  ]}
-```
-TOML
-```
-[[r2_buckets]]binding = "MY_BUCKET"bucket_name = "my-bucket"
+
+**TOML**
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "my-bucket"
 ```
 4. (Optional) If you are using TypeScript, regenerate types:
-Terminal window
-```
+```sh
 npx wrangler types
 ```
 
@@ -86,51 +92,91 @@ npx wrangler types
 
 Use the binding to interact with your bucket. This example stores and retrieves objects based on the URL path:
 
-* [ JavaScript ](#tab-panel-10117)
-* [ TypeScript ](#tab-panel-10118)
+* [ JavaScript ](#tab-panel-10196)
+* [ TypeScript ](#tab-panel-10197)
 
-src/index.js
+**src/index.js**
 
+```js
+export default {
+  async fetch(request, env) {
+    // Get the object key from the URL path
+    // For example: /images/cat.png → images/cat.png
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+
+
+    // PUT: Store the request body in R2
+    if (request.method === "PUT") {
+      await env.MY_BUCKET.put(key, request.body);
+      return new Response(`Put ${key} successfully!`);
+    }
+
+
+    // GET: Retrieve the object from R2
+    const object = await env.MY_BUCKET.get(key);
+    if (object === null) {
+      return new Response("Object not found", { status: 404 });
+    }
+    return new Response(object.body);
+  },
+};
 ```
-export default {  async fetch(request, env) {    // Get the object key from the URL path    // For example: /images/cat.png → images/cat.png    const url = new URL(request.url);    const key = url.pathname.slice(1);
-    // PUT: Store the request body in R2    if (request.method === "PUT") {      await env.MY_BUCKET.put(key, request.body);      return new Response(`Put ${key} successfully!`);    }
-    // GET: Retrieve the object from R2    const object = await env.MY_BUCKET.get(key);    if (object === null) {      return new Response("Object not found", { status: 404 });    }    return new Response(object.body);  },};
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-export default {  async fetch(request, env): Promise<Response> {    // Get the object key from the URL path    // For example: /images/cat.png → images/cat.png    const url = new URL(request.url);    const key = url.pathname.slice(1);
-    // PUT: Store the request body in R2    if (request.method === "PUT") {      await env.MY_BUCKET.put(key, request.body);      return new Response(`Put ${key} successfully!`);    }
-    // GET: Retrieve the object from R2    const object = await env.MY_BUCKET.get(key);    if (object === null) {      return new Response("Object not found", { status: 404 });    }    return new Response(object.body);  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env): Promise<Response> {
+    // Get the object key from the URL path
+    // For example: /images/cat.png → images/cat.png
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+
+
+    // PUT: Store the request body in R2
+    if (request.method === "PUT") {
+      await env.MY_BUCKET.put(key, request.body);
+      return new Response(`Put ${key} successfully!`);
+    }
+
+
+    // GET: Retrieve the object from R2
+    const object = await env.MY_BUCKET.get(key);
+    if (object === null) {
+      return new Response("Object not found", { status: 404 });
+    }
+    return new Response(object.body);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## 4\. Test and deploy
 
 1. Test your Worker locally:
-Terminal window
-```
+```sh
 npx wrangler dev
 ```
 Local development
 By default, `wrangler dev` uses a local R2 simulation. Objects you store during development exist only on your machine in the `.wrangler/state` folder and do not affect your production bucket.
 To connect to your real R2 bucket during development, add `"remote": true` to your R2 binding in your Wrangler configuration file. Refer to [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information.
 2. Once the dev server is running, test storing and retrieving objects:
-Terminal window
-```
-# Store an objectcurl -X PUT http://localhost:8787/my-file.txt -d 'Hello, R2!'
-# Retrieve the objectcurl http://localhost:8787/my-file.txt
+```sh
+# Store an object
+curl -X PUT http://localhost:8787/my-file.txt -d 'Hello, R2!'
+# Retrieve the object
+curl http://localhost:8787/my-file.txt
 ```
 3. Deploy to production:
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 4. After deploying, Wrangler outputs your Worker's URL (for example, `https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev`). Test storing and retrieving objects:
-Terminal window
-```
-# Store an objectcurl -X PUT https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev/my-file.txt -d 'Hello, R2!'
-# Retrieve the objectcurl https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev/my-file.txt
+```sh
+# Store an object
+curl -X PUT https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev/my-file.txt -d 'Hello, R2!'
+# Retrieve the object
+curl https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev/my-file.txt
 ```
 
 Refer to the [Workers R2 API documentation](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/) for the complete API reference.

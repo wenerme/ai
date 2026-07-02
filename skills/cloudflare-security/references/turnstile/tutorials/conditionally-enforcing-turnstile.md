@@ -32,13 +32,49 @@ It is not sufficient to only remove the client-side widget from the page, as an 
 
 This tutorial will modify the existing [Turnstile demo ↗](https://github.com/cloudflare/turnstile-demo-workers/blob/main/src/) to conditionally remove the existing `script` and widget container elements.
 
-src/index.mjs
+**src/index.mjs**
 
-```
-export default {  async fetch(request) {    // ...
-    if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {      class RemoveHandler {        element(element) {          element.remove();        }      }
-      return new HTMLRewriter()        // Remove the script tag        .on(          'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]',          new RemoveHandler(),        )       // Remove the container used in implicit rendering        .on(          '.cf-turnstile',          new RemoveHandler(),        )       // Remove the container used in explicit rendering        .on(          '#myWidget',          new RemoveHandler(),        )        .transform(body);    }
-    return new Response(body, {      headers: {        "Content-Type": "text/html",      },    });  },};
+```js
+export default {
+  async fetch(request) {
+    // ...
+
+
+    if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {
+      class RemoveHandler {
+        element(element) {
+          element.remove();
+        }
+      }
+
+
+      return new HTMLRewriter()
+        // Remove the script tag
+        .on(
+          'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]',
+          new RemoveHandler(),
+        )
+       // Remove the container used in implicit rendering
+        .on(
+          '.cf-turnstile',
+          new RemoveHandler(),
+        )
+       // Remove the container used in explicit rendering
+        .on(
+          '#myWidget',
+          new RemoveHandler(),
+        )
+        .transform(body);
+    }
+
+
+    return new Response(body, {
+      headers: {
+        "Content-Type": "text/html",
+      },
+    });
+  },
+};
 ```
 
 ## Server-side integration
@@ -49,10 +85,20 @@ Warning
 
 The same logic must be used in both the client-side and the server-side implementations.
 
-src/index.mjs
+**src/index.mjs**
 
-```
-async function handlePost(request) {  if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {    return new Response('Turnstile not enforced on this request')  }  // Proceed with validation as normal!  const body = await request.formData();  // Turnstile injects a token in "cf-turnstile-response".  const token = body.get('cf-turnstile-response');  const ip = request.headers.get('CF-Connecting-IP');  // ...}
+```js
+async function handlePost(request) {
+  if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {
+    return new Response('Turnstile not enforced on this request')
+  }
+  // Proceed with validation as normal!
+  const body = await request.formData();
+  // Turnstile injects a token in "cf-turnstile-response".
+  const token = body.get('cf-turnstile-response');
+  const ip = request.headers.get('CF-Connecting-IP');
+  // ...
+}
 ```
 
 With these changes, Turnstile will not be enforced on requests with the header `x-bypass-turnstile: VerySecretValue` present.
@@ -61,13 +107,11 @@ With these changes, Turnstile will not be enforced on requests with the header `
 
 After running `npm run dev` in the project folder, you can test the changes by running the following command:
 
-Terminal window
-
-```
+```sh
 curl -X POST http://localhost:8787/handler -H "x-bypass-turnstile: VerySecretValue"
 ```
 
-```
+```txt
 Turnstile not enforced on this request
 ```
 

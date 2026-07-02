@@ -76,21 +76,50 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
 * A **Worker Loader** binding (`LOADER`) to load Dynamic Workers at runtime.
 * A **Workflow binding** (`WORKFLOWS`) that points to the `DynamicWorkflow` class. This is the entrypoint the Workflows engine uses to route each instance to the correct Dynamic Worker.
 
-* [  wrangler.jsonc ](#tab-panel-8521)
-* [  wrangler.toml ](#tab-panel-8522)
+* [  wrangler.jsonc ](#tab-panel-8812)
+* [  wrangler.toml ](#tab-panel-8813)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker-loader",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "dynamic-workflow",
+      "binding": "WORKFLOWS",
+      "class_name": "DynamicWorkflow"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-loader",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "worker_loaders": [    {      "binding": "LOADER"    }  ],  "workflows": [    {      "name": "dynamic-workflow",      "binding": "WORKFLOWS",      "class_name": "DynamicWorkflow"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker-loader"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[[worker_loaders]]binding = "LOADER"
-[[workflows]]name = "dynamic-workflow"binding = "WORKFLOWS"class_name = "DynamicWorkflow"
+```toml
+name = "my-worker-loader"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[worker_loaders]]
+binding = "LOADER"
+
+
+[[workflows]]
+name = "dynamic-workflow"
+binding = "WORKFLOWS"
+class_name = "DynamicWorkflow"
 ```
 
 ## Create the Worker Loader
@@ -104,28 +133,102 @@ Note
 
 You must re-export `DynamicWorkflowBinding` from your Worker Loader. The Cloudflare runtime needs this export to build the wrapped binding that Dynamic Workers use. If you forget this line, you will get a runtime error when a Dynamic Worker tries to create a Workflow instance.
 
-* [  JavaScript ](#tab-panel-8525)
-* [  TypeScript ](#tab-panel-8526)
+* [  JavaScript ](#tab-panel-8816)
+* [  TypeScript ](#tab-panel-8817)
 
-JavaScript
+**JavaScript**
 
+```js
+import {
+  createDynamicWorkflowEntrypoint,
+  DynamicWorkflowBinding,
+  wrapWorkflowBinding,
+} from "@cloudflare/dynamic-workflows";
+
+
+// Required: re-exporting puts the class on cloudflare:workers exports,
+// which is how wrapWorkflowBinding builds per-tenant RPC stubs.
+export { DynamicWorkflowBinding };
+
+
+function loadTenant(env, tenantId) {
+  return env.LOADER.get(tenantId, async () => ({
+    compatibilityDate: "2026-01-01",
+    mainModule: "index.js",
+    modules: { "index.js": await fetchTenantCode(tenantId) },
+    // The Dynamic Worker uses this exactly like a real Workflow binding;
+    // every create() is tagged with { tenantId } automatically.
+    env: { WORKFLOWS: wrapWorkflowBinding({ tenantId }) },
+  }));
+}
+
+
+// The entrypoint name must match `class_name` in the workflows binding of your Wrangler config file.
+export const DynamicWorkflow = createDynamicWorkflowEntrypoint(
+  async ({ env, metadata }) => {
+    const stub = loadTenant(env, metadata.tenantId);
+    return stub.getEntrypoint("TenantWorkflow");
+  },
+);
+
+
+export default {
+  fetch(request, env) {
+    const tenantId = request.headers.get("x-tenant-id");
+    return loadTenant(env, tenantId).getEntrypoint().fetch(request);
+  },
+};
 ```
-import {  createDynamicWorkflowEntrypoint,  DynamicWorkflowBinding,  wrapWorkflowBinding,} from "@cloudflare/dynamic-workflows";
-// Required: re-exporting puts the class on cloudflare:workers exports,// which is how wrapWorkflowBinding builds per-tenant RPC stubs.export { DynamicWorkflowBinding };
-function loadTenant(env, tenantId) {  return env.LOADER.get(tenantId, async () => ({    compatibilityDate: "2026-01-01",    mainModule: "index.js",    modules: { "index.js": await fetchTenantCode(tenantId) },    // The Dynamic Worker uses this exactly like a real Workflow binding;    // every create() is tagged with { tenantId } automatically.    env: { WORKFLOWS: wrapWorkflowBinding({ tenantId }) },  }));}
-// The entrypoint name must match `class_name` in the workflows binding of your Wrangler config file.export const DynamicWorkflow = createDynamicWorkflowEntrypoint(  async ({ env, metadata }) => {    const stub = loadTenant(env, metadata.tenantId);    return stub.getEntrypoint("TenantWorkflow");  },);
-export default {  fetch(request, env) {    const tenantId = request.headers.get("x-tenant-id");    return loadTenant(env, tenantId).getEntrypoint().fetch(request);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-import {  createDynamicWorkflowEntrypoint,  DynamicWorkflowBinding,  wrapWorkflowBinding,  type WorkflowRunner,} from "@cloudflare/dynamic-workflows";
-// Required: re-exporting puts the class on cloudflare:workers exports,// which is how wrapWorkflowBinding builds per-tenant RPC stubs.export { DynamicWorkflowBinding };
-interface Env {  WORKFLOWS: Workflow;  LOADER: WorkerLoader;}
-function loadTenant(env: Env, tenantId: string) {  return env.LOADER.get(tenantId, async () => ({    compatibilityDate: "2026-01-01",    mainModule: "index.js",    modules: { "index.js": await fetchTenantCode(tenantId) },    // The Dynamic Worker uses this exactly like a real Workflow binding;    // every create() is tagged with { tenantId } automatically.    env: { WORKFLOWS: wrapWorkflowBinding({ tenantId }) },  }));}
-// The entrypoint name must match `class_name` in the workflows binding of your Wrangler config file.export const DynamicWorkflow = createDynamicWorkflowEntrypoint<Env>(  async ({ env, metadata }) => {    const stub = loadTenant(env, metadata.tenantId as string);    return stub.getEntrypoint("TenantWorkflow") as unknown as WorkflowRunner;  },);
-export default {  fetch(request: Request, env: Env) {    const tenantId = request.headers.get("x-tenant-id")!;    return loadTenant(env, tenantId).getEntrypoint().fetch(request);  },};
+```ts
+import {
+  createDynamicWorkflowEntrypoint,
+  DynamicWorkflowBinding,
+  wrapWorkflowBinding,
+  type WorkflowRunner,
+} from "@cloudflare/dynamic-workflows";
+
+
+// Required: re-exporting puts the class on cloudflare:workers exports,
+// which is how wrapWorkflowBinding builds per-tenant RPC stubs.
+export { DynamicWorkflowBinding };
+
+
+interface Env {
+  WORKFLOWS: Workflow;
+  LOADER: WorkerLoader;
+}
+
+
+function loadTenant(env: Env, tenantId: string) {
+  return env.LOADER.get(tenantId, async () => ({
+    compatibilityDate: "2026-01-01",
+    mainModule: "index.js",
+    modules: { "index.js": await fetchTenantCode(tenantId) },
+    // The Dynamic Worker uses this exactly like a real Workflow binding;
+    // every create() is tagged with { tenantId } automatically.
+    env: { WORKFLOWS: wrapWorkflowBinding({ tenantId }) },
+  }));
+}
+
+
+// The entrypoint name must match `class_name` in the workflows binding of your Wrangler config file.
+export const DynamicWorkflow = createDynamicWorkflowEntrypoint<Env>(
+  async ({ env, metadata }) => {
+    const stub = loadTenant(env, metadata.tenantId as string);
+    return stub.getEntrypoint("TenantWorkflow") as unknown as WorkflowRunner;
+  },
+);
+
+
+export default {
+  fetch(request: Request, env: Env) {
+    const tenantId = request.headers.get("x-tenant-id")!;
+    return loadTenant(env, tenantId).getEntrypoint().fetch(request);
+  },
+};
 ```
 
 Here is what happens when a request arrives:
@@ -144,23 +247,55 @@ Warning
 
 Do not put secrets in the metadata you pass to `wrapWorkflowBinding` (for example, API keys or tokens). The Workflows engine persists the metadata in the event payload, and Dynamic Worker code can read it back via `instance.status()`. Use metadata for routing information like tenant IDs, not for sensitive data.
 
-* [  JavaScript ](#tab-panel-8523)
-* [  TypeScript ](#tab-panel-8524)
+* [  JavaScript ](#tab-panel-8814)
+* [  TypeScript ](#tab-panel-8815)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { WorkflowEntrypoint } from "cloudflare:workers";
-export class TenantWorkflow extends WorkflowEntrypoint {  async run(event, step) {    return step.do("greet", async () => `Hello, ${event.payload.name}!`);  }}
-export default {  async fetch(request, env) {    const instance = await env.WORKFLOWS.create({      params: await request.json(),    });    // instance is an RPC stub — .id is an RpcPromise, so await it.    return Response.json({ id: await instance.id });  },};
+
+
+export class TenantWorkflow extends WorkflowEntrypoint {
+  async run(event, step) {
+    return step.do("greet", async () => `Hello, ${event.payload.name}!`);
+  }
+}
+
+
+export default {
+  async fetch(request, env) {
+    const instance = await env.WORKFLOWS.create({
+      params: await request.json(),
+    });
+    // instance is an RPC stub — .id is an RpcPromise, so await it.
+    return Response.json({ id: await instance.id });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { WorkflowEntrypoint } from "cloudflare:workers";
-export class TenantWorkflow extends WorkflowEntrypoint {  async run(event, step) {    return step.do("greet", async () => `Hello, ${event.payload.name}!`);  }}
-export default {  async fetch(request, env) {    const instance = await env.WORKFLOWS.create({      params: await request.json(),    });    // instance is an RPC stub — .id is an RpcPromise, so await it.    return Response.json({ id: await instance.id });  },};
+
+
+export class TenantWorkflow extends WorkflowEntrypoint {
+  async run(event, step) {
+    return step.do("greet", async () => `Hello, ${event.payload.name}!`);
+  }
+}
+
+
+export default {
+  async fetch(request, env) {
+    const instance = await env.WORKFLOWS.create({
+      params: await request.json(),
+    });
+    // instance is an RPC stub — .id is an RpcPromise, so await it.
+    return Response.json({ id: await instance.id });
+  },
+};
 ```
 
 Normal Workflows behavior still applies. Workflow IDs, `.status()`, `.pause()`, retries, hibernation, and durable steps are unaffected by this architecture. The library only adds the routing between the Worker Loader and the Dynamic Worker.
@@ -169,19 +304,18 @@ Normal Workflows behavior still applies. Workflow IDs, `.status()`, `.pause()`, 
 
 Send a `POST` request to the Worker Loader with a tenant ID header and a JSON payload. The Worker Loader loads the matching Dynamic Worker, which calls `env.WORKFLOWS.create()` and returns the new instance ID.
 
-Terminal window
-
-```
-curl -X POST http://localhost:8787/ \  -H "x-tenant-id: tenant-42" \  -H "Content-Type: application/json" \  -d '{"name": "Alice"}'
+```bash
+curl -X POST http://localhost:8787/ \
+  -H "x-tenant-id: tenant-42" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Alice"}'
 ```
 
 ## Check workflow status
 
 Use the instance ID returned from the previous request to check the Workflow status. For more information on the status API, refer to the [Workers API reference](https://developers.cloudflare.com/workflows/build/workers-api/).
 
-Terminal window
-
-```
+```bash
 curl "http://localhost:8787/api/status?instanceId=YOUR_INSTANCE_ID"
 ```
 

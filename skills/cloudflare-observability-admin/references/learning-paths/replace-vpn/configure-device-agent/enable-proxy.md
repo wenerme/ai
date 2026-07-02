@@ -16,8 +16,8 @@ With Cloudflare Gateway, you can log and filter DNS, network, and HTTP traffic f
 
 ## Enable the proxy
 
-* [ Dashboard ](#tab-panel-9238)
-* [ Terraform (v5) ](#tab-panel-9239)
+* [ Dashboard ](#tab-panel-9529)
+* [ Terraform (v5) ](#tab-panel-9530)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -29,8 +29,12 @@ With Cloudflare Gateway, you can log and filter DNS, network, and HTTP traffic f
 
   * `Zero Trust Write`
 2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-```
-resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  account_id            = var.cloudflare_account_id  gateway_proxy_enabled = true  gateway_udp_proxy_enabled = true}
+```tf
+resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
+  account_id            = var.cloudflare_account_id
+  gateway_proxy_enabled = true
+  gateway_udp_proxy_enabled = true
+}
 ```
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).

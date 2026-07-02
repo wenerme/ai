@@ -22,55 +22,104 @@ If you are using Wrangler environments, you must specify any [Durable Object bin
 
 Durable Object bindings are not inherited. For example, you can define an environment named `staging` as below:
 
-* [  wrangler.jsonc ](#tab-panel-8521)
-* [  wrangler.toml ](#tab-panel-8522)
+* [  wrangler.jsonc ](#tab-panel-8772)
+* [  wrangler.toml ](#tab-panel-8773)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "staging": {
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "EXAMPLE_CLASS",
+            "class_name": "DurableObjectExample"
+          }
+        ]
+      }
+    }
+  }
+}
 ```
-{  "env": {    "staging": {      "durable_objects": {        "bindings": [          {            "name": "EXAMPLE_CLASS",            "class_name": "DurableObjectExample"          }        ]      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[[env.staging.durable_objects.bindings]]name = "EXAMPLE_CLASS"class_name = "DurableObjectExample"
+```toml
+[[env.staging.durable_objects.bindings]]
+name = "EXAMPLE_CLASS"
+class_name = "DurableObjectExample"
 ```
 
 Because Wrangler appends the [environment name](https://developers.cloudflare.com/workers/wrangler/environments/) to the top-level name when publishing, for a Worker named `worker-name` the above example is equivalent to:
 
-* [  wrangler.jsonc ](#tab-panel-8523)
-* [  wrangler.toml ](#tab-panel-8524)
+* [  wrangler.jsonc ](#tab-panel-8774)
+* [  wrangler.toml ](#tab-panel-8775)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "staging": {
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "EXAMPLE_CLASS",
+            "class_name": "DurableObjectExample",
+            "script_name": "worker-name-staging"
+          }
+        ]
+      }
+    }
+  }
+}
 ```
-{  "env": {    "staging": {      "durable_objects": {        "bindings": [          {            "name": "EXAMPLE_CLASS",            "class_name": "DurableObjectExample",            "script_name": "worker-name-staging"          }        ]      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[[env.staging.durable_objects.bindings]]name = "EXAMPLE_CLASS"class_name = "DurableObjectExample"script_name = "worker-name-staging"
+```toml
+[[env.staging.durable_objects.bindings]]
+name = "EXAMPLE_CLASS"
+class_name = "DurableObjectExample"
+script_name = "worker-name-staging"
 ```
 
 `"EXAMPLE_CLASS"` in the staging environment is bound to a different Worker code name compared to the top-level `"EXAMPLE_CLASS"` binding, and will therefore access different Durable Objects with different persistent storage.
 
 If you want an environment-specific binding that accesses the same Objects as the top-level binding, specify the top-level Worker code name explicitly using `script_name`:
 
-* [  wrangler.jsonc ](#tab-panel-8525)
-* [  wrangler.toml ](#tab-panel-8526)
+* [  wrangler.jsonc ](#tab-panel-8776)
+* [  wrangler.toml ](#tab-panel-8777)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "another": {
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "EXAMPLE_CLASS",
+            "class_name": "DurableObjectExample",
+            "script_name": "worker-name"
+          }
+        ]
+      }
+    }
+  }
+}
 ```
-{  "env": {    "another": {      "durable_objects": {        "bindings": [          {            "name": "EXAMPLE_CLASS",            "class_name": "DurableObjectExample",            "script_name": "worker-name"          }        ]      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[[env.another.durable_objects.bindings]]name = "EXAMPLE_CLASS"class_name = "DurableObjectExample"script_name = "worker-name"
+```toml
+[[env.another.durable_objects.bindings]]
+name = "EXAMPLE_CLASS"
+class_name = "DurableObjectExample"
+script_name = "worker-name"
 ```
 
 ### Migration environments

@@ -18,11 +18,19 @@ This tutorial shows how to configure IPsec (Internet Protocol Security) between 
 
 You need a pre-shared key to establish the IPsec tunnel. You can use the following code to create a random key:
 
-JavaScript
+**JavaScript**
 
-```
-    const a = new Uint8Array(48);    crypto.getRandomValues(a);    let base64String = btoa(String.fromCharCode.apply(null, a));
-    base64String = base64String.replace(/\+/g, '')                   .replace(/\//g, '')                   .replace(/=/g, '');
+```js
+    const a = new Uint8Array(48);
+    crypto.getRandomValues(a);
+    let base64String = btoa(String.fromCharCode.apply(null, a));
+
+
+    base64String = base64String.replace(/\+/g, '')
+                   .replace(/\//g, '')
+                   .replace(/=/g, '');
+
+
     console.log(base64String.substring(0, 32));
 ```
 

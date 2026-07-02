@@ -20,10 +20,14 @@ Least Outstanding Requests steering is best to use if your endpoints are easily 
 
 ## Configure via the API
 
-Pools
+**Pools**
 
-```
-{  "origin_steering": {    "policy": "least_outstanding_requests"  }}
+```json
+{
+  "origin_steering": {
+    "policy": "least_outstanding_requests"
+  }
+}
 ```
 
 Refer to the [API documentation](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/update/) for more information on the pool configuration.

@@ -31,8 +31,32 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 
 1. Create a [custom IAM policy ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/access%5Fpolicies%5Fcreate-console.html) in your AWS account, and take note of the name you entered. Then, paste the following [JSON code ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference%5Fpolicies%5Felements%5Fversion.html) in the JSON tab:
 
-```
-{    "Version": "2012-10-17",    "Statement": [        {            "Effect": "Allow",            "Action": [                "ec2:AcceptTransitGatewayPeeringAttachment",                "ec2:CreateTransitGatewayPeeringAttachment",                "ec2:DeleteTransitGatewayPeeringAttachment",                "ec2:DescribeRegions",                "ec2:DescribeTransitGatewayPeeringAttachments",                "ec2:RejectTransitGatewayPeeringAttachment",                "ec2:GetManagedPrefixListEntries",                "ec2:CreateManagedPrefixList",                "ec2:ModifyManagedPrefixList",                "ec2:DeleteManagedPrefixList",                "ec2:CreateTransitGatewayPrefixListReference",                "ec2:DeleteTransitGatewayPrefixListReference",                "ec2:GetTransitGatewayPrefixListReferences",                "ec2:ModifyTransitGatewayPrefixListReference"            ],            "Resource": "*"        }    ]}
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AcceptTransitGatewayPeeringAttachment",
+                "ec2:CreateTransitGatewayPeeringAttachment",
+                "ec2:DeleteTransitGatewayPeeringAttachment",
+                "ec2:DescribeRegions",
+                "ec2:DescribeTransitGatewayPeeringAttachments",
+                "ec2:RejectTransitGatewayPeeringAttachment",
+                "ec2:GetManagedPrefixListEntries",
+                "ec2:CreateManagedPrefixList",
+                "ec2:ModifyManagedPrefixList",
+                "ec2:DeleteManagedPrefixList",
+                "ec2:CreateTransitGatewayPrefixListReference",
+                "ec2:DeleteTransitGatewayPrefixListReference",
+                "ec2:GetTransitGatewayPrefixListReferences",
+                "ec2:ModifyTransitGatewayPrefixListReference"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
 ```
 
 ### 3\. Authorize access to your AWS account

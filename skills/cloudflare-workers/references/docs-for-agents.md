@@ -82,7 +82,7 @@ On any documentation page, select **Copy as Markdown** to copy the current page 
 
 Add `/index.md` to the end of any page URL. For example:
 
-```
+```txt
 https://developers.cloudflare.com/workers/get-started/index.md
 ```
 
@@ -90,10 +90,9 @@ https://developers.cloudflare.com/workers/get-started/index.md
 
 Request any page with the `Accept: text/markdown` header, which tells the server you prefer Markdown instead of HTML:
 
-Terminal window
-
-```
-curl "https://developers.cloudflare.com/workers/get-started/" \  --header "Accept: text/markdown"
+```sh
+curl "https://developers.cloudflare.com/workers/get-started/" \
+  --header "Accept: text/markdown"
 ```
 
 The response includes `x-markdown-tokens` and `x-original-tokens` headers with estimated token counts for the Markdown document and original HTML document, useful for context window planning (a context window is the maximum number of tokens an AI model can consider at once).

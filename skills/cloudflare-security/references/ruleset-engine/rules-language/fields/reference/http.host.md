@@ -22,7 +22,7 @@ If you have configured [Origin Rules](https://developers.cloudflare.com/rules/or
 
 Example value:
 
-```
+```txt
 "www.example.org"
 ```
 

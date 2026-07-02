@@ -29,8 +29,8 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## How it works
 
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-10085)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-10086)
+* [ Ingest (WebSocket → WebRTC) ](#tab-panel-10380)
+* [ Stream (WebRTC → WebSocket) ](#tab-panel-10381)
 
 ### Create WebRTC tracks from external audio
 
@@ -82,17 +82,27 @@ graph LR
 
 ### Create adapter
 
-```
+```plaintext
 POST /v1/apps/{appId}/adapters/websocket/new
 ```
 
-* [ Ingest ](#tab-panel-10087)
-* [ Stream ](#tab-panel-10088)
+* [ Ingest ](#tab-panel-10382)
+* [ Stream ](#tab-panel-10383)
 
 #### Request body
 
-```
-{  "tracks": [    {      "location": "local",      "trackName": "string",      "endpoint": "wss://...",      "inputCodec": "pcm",      "mode": "buffer"    }  ]}
+```json
+{
+  "tracks": [
+    {
+      "location": "local",
+      "trackName": "string",
+      "endpoint": "wss://...",
+      "inputCodec": "pcm",
+      "mode": "buffer"
+    }
+  ]
+}
 ```
 
 #### Parameters
@@ -107,8 +117,17 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 #### Response
 
-```
-{  "tracks": [    {      "trackName": "string",      "adapterId": "string",      "sessionId": "string",    // New session ID generated      "endpoint": "string"      // Echo of the requested endpoint    }  ]}
+```json
+{
+  "tracks": [
+    {
+      "trackName": "string",
+      "adapterId": "string",
+      "sessionId": "string",    // New session ID generated
+      "endpoint": "string"      // Echo of the requested endpoint
+    }
+  ]
+}
 ```
 
 Important
@@ -119,8 +138,18 @@ Important
 
 #### Request body
 
-```
-{  "tracks": [    {      "location": "remote",      "sessionId": "string",      "trackName": "string",      "endpoint": "wss://...",      "outputCodec": "pcm"    }  ]}
+```json
+{
+  "tracks": [
+    {
+      "location": "remote",
+      "sessionId": "string",
+      "trackName": "string",
+      "endpoint": "wss://...",
+      "outputCodec": "pcm"
+    }
+  ]
+}
 ```
 
 #### Parameters
@@ -135,8 +164,17 @@ Important
 
 #### Response
 
-```
-{  "tracks": [    {      "trackName": "string",      "adapterId": "string",      "sessionId": "string",    // Same as request sessionId      "endpoint": "string"      // Echo of the requested endpoint    }  ]}
+```json
+{
+  "tracks": [
+    {
+      "trackName": "string",
+      "adapterId": "string",
+      "sessionId": "string",    // Same as request sessionId
+      "endpoint": "string"      // Echo of the requested endpoint
+    }
+  ]
+}
 ```
 
 Important
@@ -150,14 +188,20 @@ Important
 
 ### Close adapter
 
-```
+```plaintext
 POST /v1/apps/{appId}/adapters/websocket/close
 ```
 
 #### Request body
 
-```
-{  "tracks": [    {      "adapterId": "string"    }  ]}
+```json
+{
+  "tracks": [
+    {
+      "adapterId": "string"
+    }
+  ]
+}
 ```
 
 ## Media formats
@@ -177,8 +221,12 @@ Media uses Protocol Buffers. Audio uses PCM payloads; video uses JPEG payloads:
 * Stereo (left/right interleaved)
 * Video: JPEG image payload (one frame per message)
 
-```
-message Packet {    uint32 sequenceNumber = 1;  // Used in Stream mode only    uint32 timestamp = 2;       // Used in Stream mode only    bytes payload = 5;          // Media data}
+```proto
+message Packet {
+    uint32 sequenceNumber = 1;  // Used in Stream mode only
+    uint32 timestamp = 2;       // Used in Stream mode only
+    bytes payload = 5;          // Media data
+}
 ```
 
 **Ingest mode (buffer)**: Only the `payload` field is used, containing chunks of audio data.

@@ -140,7 +140,7 @@ You can add `CF-Worker` header on server logs similar to the way you add the [CF
 
 `CF-Worker` is added to all Worker subrequests sent via `fetch()`. It is set to the name of the zone which owns the Worker making the subrequest. For example, a Worker script on route for `foo.example.com/*` from `example.com` will have all subrequests with the header:
 
-```
+```txt
 CF-Worker: example.com
 ```
 

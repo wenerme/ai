@@ -29,8 +29,7 @@ To deploy a pre-existing static site project, start with a pre-generated site. W
 ## Getting started
 
 1. Run the `wrangler init` command in the root of your project's directory to generate a basic Worker:
-Terminal window
-```
+```sh
 wrangler init -y
 ```
 This command adds/update the following files:
@@ -41,15 +40,22 @@ This command adds/update the following files:
   * `src/index.ts`: A basic Cloudflare Worker, written in TypeScript.
 2. Add your site's build/output directory to the Wrangler file:
 
-  * [  wrangler.jsonc ](#tab-panel-11569)
-  * [  wrangler.toml ](#tab-panel-11570)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11864)
+  * [  wrangler.toml ](#tab-panel-11865)
+
+**JSONC**
+```jsonc
+{
+  "site": {
+    "bucket": "./public" // <-- Add your build directory name here.
+  }
+}
 ```
-{  "site": {    "bucket": "./public" // <-- Add your build directory name here.  }}
-```
-TOML
-```
-[site]bucket = "./public"
+
+**TOML**
+```toml
+[site]
+bucket = "./public"
 ```
 The default directories for the most popular static site generators are listed below:
 
@@ -58,49 +64,94 @@ The default directories for the most popular static site generators are listed b
   * Jekyll: `_site`
   * Eleventy: `_site`
 3. Install the `@cloudflare/kv-asset-handler` package in your project:
-Terminal window
-```
+```sh
 npm i -D @cloudflare/kv-asset-handler
 ```
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
-* [  Module Worker ](#tab-panel-11567)
-* [  Service Worker ](#tab-panel-11568)
+* [  Module Worker ](#tab-panel-11862)
+* [  Service Worker ](#tab-panel-11863)
 
-JavaScript
+**JavaScript**
 
-```
-import { getAssetFromKV } from "@cloudflare/kv-asset-handler";import manifestJSON from "__STATIC_CONTENT_MANIFEST";const assetManifest = JSON.parse(manifestJSON);
-export default {  async fetch(request, env, ctx) {    try {      // Add logic to decide whether to serve an asset or run your original Worker code      return await getAssetFromKV(        {          request,          waitUntil: ctx.waitUntil.bind(ctx),        },        {          ASSET_NAMESPACE: env.__STATIC_CONTENT,          ASSET_MANIFEST: assetManifest,        },      );    } catch (e) {      let pathname = new URL(request.url).pathname;      return new Response(`"${pathname}" not found`, {        status: 404,        statusText: "not found",      });    }  },};
+```js
+import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
+import manifestJSON from "__STATIC_CONTENT_MANIFEST";
+const assetManifest = JSON.parse(manifestJSON);
+
+
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      // Add logic to decide whether to serve an asset or run your original Worker code
+      return await getAssetFromKV(
+        {
+          request,
+          waitUntil: ctx.waitUntil.bind(ctx),
+        },
+        {
+          ASSET_NAMESPACE: env.__STATIC_CONTENT,
+          ASSET_MANIFEST: assetManifest,
+        },
+      );
+    } catch (e) {
+      let pathname = new URL(request.url).pathname;
+      return new Response(`"${pathname}" not found`, {
+        status: 404,
+        statusText: "not found",
+      });
+    }
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
-addEventListener("fetch", (event) => {  event.respondWith(handleEvent(event));});
-async function handleEvent(event) {  try {    // Add logic to decide whether to serve an asset or run your original Worker code    return await getAssetFromKV(event);  } catch (e) {    let pathname = new URL(event.request.url).pathname;    return new Response(`"${pathname}" not found`, {      status: 404,      statusText: "not found",    });  }}
+
+
+addEventListener("fetch", (event) => {
+  event.respondWith(handleEvent(event));
+});
+
+
+async function handleEvent(event) {
+  try {
+    // Add logic to decide whether to serve an asset or run your original Worker code
+    return await getAssetFromKV(event);
+  } catch (e) {
+    let pathname = new URL(event.request.url).pathname;
+    return new Response(`"${pathname}" not found`, {
+      status: 404,
+      statusText: "not found",
+    });
+  }
+}
 ```
 
 1. Run `wrangler dev` or `npx wrangler deploy` to preview or deploy your site on Cloudflare. Wrangler will automatically upload the assets found in the configured directory.
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.
 
-  * [  wrangler.jsonc ](#tab-panel-11571)
-  * [  wrangler.toml ](#tab-panel-11572)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11866)
+  * [  wrangler.toml ](#tab-panel-11867)
+
+**JSONC**
+```jsonc
+{
+  "route": "https://example.com/*"
+}
 ```
-{  "route": "https://example.com/*"}
-```
-TOML
-```
+
+**TOML**
+```toml
 route = "https://example.com/*"
 ```
 Note

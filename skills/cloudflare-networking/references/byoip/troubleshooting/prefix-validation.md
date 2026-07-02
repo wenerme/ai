@@ -21,13 +21,37 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `IP Prefixes: Read`
   * `IP Prefixes: BGP On Demand Write`
   * `IP Prefixes: BGP On Demand Read`
-Prefix Details
+
+**Prefix Details**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
-```
-Response
-```
- "result": {    "id": "72823e95d6c64d48a8111fec81179816",    "created_at": "2025-02-25T00:34:11.423722Z",    "modified_at": "2025-02-25T00:34:11.423722Z",    "cidr": "203.0.113.0/24",    "account_id": "654c5f71c324478cc9f68d60065d4620",    "description": "",    "approved": "P",    "on_demand_enabled": false,    "on_demand_locked": false,    "advertised": null,    "advertised_modified_at": null,    "loa_document_id": "b9ff4afe312246a8b2e7324d98f40b23",    "asn": 13335,    "ownership_validation_token": "<OWNERSHIP_VALIDATION_TOKEN>",    "delegate_loa_creation" : true,    "irr_validation_state": "valid",    "rpki_validation_state": "valid",    "ownership_validation_state": "missing",  }
+
+**Response**
+```json
+ "result": {
+    "id": "72823e95d6c64d48a8111fec81179816",
+    "created_at": "2025-02-25T00:34:11.423722Z",
+    "modified_at": "2025-02-25T00:34:11.423722Z",
+    "cidr": "203.0.113.0/24",
+    "account_id": "654c5f71c324478cc9f68d60065d4620",
+    "description": "",
+    "approved": "P",
+    "on_demand_enabled": false,
+    "on_demand_locked": false,
+    "advertised": null,
+    "advertised_modified_at": null,
+    "loa_document_id": "b9ff4afe312246a8b2e7324d98f40b23",
+    "asn": 13335,
+    "ownership_validation_token": "<OWNERSHIP_VALIDATION_TOKEN>",
+    "delegate_loa_creation" : true,
+    "irr_validation_state": "valid",
+    "rpki_validation_state": "valid",
+    "ownership_validation_state": "missing",
+  }
 ```
 2. Consider the states returned in the API response (for example, `missing`, `invalid`, `mismatch_asn`) and review your IRR record, ROA, and ownership validation method accordingly.
 
@@ -38,9 +62,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic Transit Write`
   * `IP Prefixes: Write`
-Validate Prefix
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+
+**Validate Prefix**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ```json

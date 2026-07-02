@@ -41,9 +41,7 @@ Alternatively, download the latest release directly:
 
 Download and install `cloudflared` via Homebrew:
 
-Terminal window
-
-```
+```sh
 brew install cloudflared
 ```
 

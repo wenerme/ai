@@ -22,10 +22,23 @@ In addition to [introspection](https://developers.cloudflare.com/analytics/graph
 
 `Settings` node has all datasets from `zones` and `accounts` as fields.
 
-Using a settings node on accounts nodes
+**Using a settings node on accounts nodes**
 
-```
-{  viewer {    accounts(filter: { accountTag : $accountTag }) {      settings {        # any dataset(s) from accounts      }    }    zones(filter: { zoneTag : $zoneTag }) {      settings {        # any dataset(s) from zones      }    }  }}
+```graphql
+{
+  viewer {
+    accounts(filter: { accountTag : $accountTag }) {
+      settings {
+        # any dataset(s) from accounts
+      }
+    }
+    zones(filter: { zoneTag : $zoneTag }) {
+      settings {
+        # any dataset(s) from zones
+      }
+    }
+  }
+}
 ```
 
 Every subnode of `settings` node could consist of these fields:
@@ -39,18 +52,51 @@ Every subnode of `settings` node could consist of these fields:
 
 ## A sample query
 
-Get boundaries of firewallEventsAdaptive node
+**Get boundaries of firewallEventsAdaptive node**
 
-```
-query SampleQuery($zoneTag: string) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      settings {        firewallEventsAdaptive {          enabled          maxDuration          maxNumberOfFields          maxPageSize          notOlderThan        }      }    }  }}
+```graphql
+query SampleQuery($zoneTag: string) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      settings {
+        firewallEventsAdaptive {
+          enabled
+          maxDuration
+          maxNumberOfFields
+          maxPageSize
+          notOlderThan
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygQwLYAcA2YCK5oAoAkAXgPYB2YAKggOYBcMAzgC4QCWp1AlDAN4BQMGADdWYAO6ReAwTBLkGuAGas0TSPR6yylGvSLaq1GAF9u-GTIZgmTdtQZSLF5RHEI0aAKJCwpJgwBBABMEFFsfRycLXwQAIwwg6SjBJAQADwAREAgEWzIk5NS0gDkQJFjIAHlFADFRNCCGAqiigAUaMDhWQjBmp1JiJkqGyAoACwRSPsFjPtmLeZM+YyA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAXyA)
 
-firewallEventsAdaptive limits for a given user
+**firewallEventsAdaptive limits for a given user**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "settings": {            "firewallEventsAdaptive": {              "enabled": true,              "maxDuration": 259200,              "maxNumberOfFields": 30,              "maxPageSize": 10000,              "notOlderThan": 2678400            }          }        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "settings": {
+            "firewallEventsAdaptive": {
+              "enabled": true,
+              "maxDuration": 259200,
+              "maxNumberOfFields": 30,
+              "maxPageSize": 10000,
+              "notOlderThan": 2678400
+            }
+          }
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 To get more details on how to execute queries, please refer to our how to get started [guides](https://developers.cloudflare.com/analytics/graphql-api/getting-started/).

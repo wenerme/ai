@@ -26,19 +26,25 @@ Shows the time elapsed in a meeting.
 
 ### Basic Usage
 
-```
+```html
 <rtk-clock></rtk-clock>
 ```
 
 ### With Properties
 
-```
-<rtk-clock size="md"></rtk-clock>
+```html
+<rtk-clock
+ size="md">
+</rtk-clock>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-clock");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-clock");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

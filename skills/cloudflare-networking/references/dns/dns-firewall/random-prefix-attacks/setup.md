@@ -19,9 +19,18 @@ In order to enable automatic mitigation of [random prefix attacks](https://devel
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Firewall Write`
-Update DNS Firewall Cluster
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_firewall/$DNS_FIREWALL_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "attack_mitigation": {        "enabled": true,        "only_when_upstream_unhealthy": true    }  }'
+
+**Update DNS Firewall Cluster**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_firewall/$DNS_FIREWALL_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "attack_mitigation": {
+        "enabled": true,
+        "only_when_upstream_unhealthy": true
+    }
+  }'
 ```
 
 Once you receive a `200` success response from the API, queries identified as being part of a random prefix attack will receive a `REFUSED` response.

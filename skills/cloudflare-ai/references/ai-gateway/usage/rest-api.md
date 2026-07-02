@@ -56,82 +56,181 @@ Browse available models in the [model catalog](https://developers.cloudflare.com
 
 Accepts any model with its per-model schema. Model-specific parameters go inside `input`.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-4.1",    "input": {      "messages": [        {          "role": "user",          "content": "What is Cloudflare?"        }      ],      "max_tokens": 512    }  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "openai/gpt-4.1",
+    "input": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ],
+      "max_tokens": 512
+    }
+  }'
 ```
 
 ### Call a Workers AI model
 
 To call a Workers AI model, use the `@cf/` prefix in the model name and include the `cf-aig-gateway-id` header to specify which gateway to route through.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "cf-aig-gateway-id: default" \  --header "Content-Type: application/json" \  --data '{    "model": "@cf/moonshotai/kimi-k2.6",    "input": {      "messages": [        {          "role": "user",          "content": "What is Cloudflare?"        }      ]    }  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "cf-aig-gateway-id: default" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "@cf/moonshotai/kimi-k2.6",
+    "input": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ]
+    }
+  }'
 ```
 
 The existing Workers AI endpoint with the model ID in the URL path also continues to work:
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.6" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.6" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
 ```
 
 ## `/ai/v1/chat/completions` — OpenAI compatible
 
 Uses the standard OpenAI chat completions format. The `model` field uses the same `author/model` naming. This endpoint is compatible with the OpenAI SDK and other OpenAI-compatible clients.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-4.1",    "messages": [      {        "role": "system",        "content": "You are a helpful assistant."      },      {        "role": "user",        "content": "What is Cloudflare?"      }    ],    "max_tokens": 512,    "temperature": 0.7,    "stream": true  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "openai/gpt-4.1",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ],
+    "max_tokens": 512,
+    "temperature": 0.7,
+    "stream": true
+  }'
 ```
 
 ### OpenAI SDK
 
 Point the OpenAI SDK `baseURL` at the Cloudflare API:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import OpenAI from "openai";
-const openai = new OpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
-const response = await openai.chat.completions.create({  model: "openai/gpt-4.1",  messages: [{ role: "user", content: "What is Cloudflare?" }],});
+
+
+const openai = new OpenAI({
+  apiKey: CLOUDFLARE_API_TOKEN,
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+});
+
+
+const response = await openai.chat.completions.create({
+  model: "openai/gpt-4.1",
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
 ```
 
 ## `/ai/v1/responses` — OpenAI Responses API
 
 Uses the OpenAI Responses API format for agentic workflows. Compatible with the OpenAI SDK.
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import OpenAI from "openai";
-const openai = new OpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
-const response = await openai.responses.create({  model: "openai/gpt-4.1",  input: "What is Cloudflare?",});
+
+
+const openai = new OpenAI({
+  apiKey: CLOUDFLARE_API_TOKEN,
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+});
+
+
+const response = await openai.responses.create({
+  model: "openai/gpt-4.1",
+  input: "What is Cloudflare?",
+});
 ```
 
 ## `/ai/v1/messages` — Anthropic compatible
 
 Uses the Anthropic Messages API format. Compatible with the Anthropic SDK.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "anthropic/claude-sonnet-4-5",    "max_tokens": 512,    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "anthropic/claude-sonnet-4-5",
+    "max_tokens": 512,
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
 ```
 
 Point the Anthropic SDK `baseURL` at the Cloudflare API:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import Anthropic from "@anthropic-ai/sdk";
-const anthropic = new Anthropic({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
-const message = await anthropic.messages.create({  model: "anthropic/claude-sonnet-4-5",  max_tokens: 512,  messages: [{ role: "user", content: "What is Cloudflare?" }],});
+
+
+const anthropic = new Anthropic({
+  apiKey: CLOUDFLARE_API_TOKEN,
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+});
+
+
+const message = await anthropic.messages.create({
+  model: "anthropic/claude-sonnet-4-5",
+  max_tokens: 512,
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
 ```
 
 ## Provider tools and web search
@@ -142,18 +241,36 @@ Some providers expose native tools — including server-side web search — thro
 
 By default, third-party model requests route through your account's default AI Gateway. To use a specific gateway, include the `cf-aig-gateway-id` header. Workers AI requests always require this header.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "cf-aig-gateway-id: default" \  --header "Content-Type: application/json" \  --data '{    "model": "anthropic/claude-sonnet-4",    "messages": [      {        "role": "user",        "content": "Hello"      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "cf-aig-gateway-id: default" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "anthropic/claude-sonnet-4",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello"
+      }
+    ]
+  }'
 ```
 
 With the OpenAI SDK, set the header via `defaultHeaders`:
 
-JavaScript
+**JavaScript**
 
-```
-const openai = new OpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,  defaultHeaders: {    "cf-aig-gateway-id": "default",  },});
+```javascript
+const openai = new OpenAI({
+  apiKey: CLOUDFLARE_API_TOKEN,
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
+  defaultHeaders: {
+    "cf-aig-gateway-id": "default",
+  },
+});
 ```
 
 All AI Gateway features configured on that gateway — caching, rate limiting, guardrails, and logging — apply to the request.

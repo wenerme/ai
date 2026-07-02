@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openrouter
 ```
 
@@ -37,24 +37,54 @@ When making requests to OpenRouter, ensure you have the following:
 
 ### cURL
 
-Request
+**Request**
 
-```
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openrouter/v1/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer OPENROUTER_TOKEN' \ --data '{    "model": "openai/gpt-5-mini",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
+```bash
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openrouter/v1/chat/completions \
+ --header 'content-type: application/json' \
+ --header 'Authorization: Bearer OPENROUTER_TOKEN' \
+ --data '{
+    "model": "openai/gpt-5-mini",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is Cloudflare?"
+        }
+    ]
+}'
 ```
 
 ### Use OpenAI SDK with JavaScript
 
 If you are using the OpenAI SDK with JavaScript, you can set your endpoint like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import OpenAI from "openai";
-const openai = new OpenAI({  apiKey: env.OPENROUTER_TOKEN,  baseURL:    "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openrouter",});
-try {  const chatCompletion = await openai.chat.completions.create({    model: "openai/gpt-5-mini",    messages: [{ role: "user", content: "What is Cloudflare?" }],  });
+
+
+const openai = new OpenAI({
+  apiKey: env.OPENROUTER_TOKEN,
+  baseURL:
+    "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openrouter",
+});
+
+
+try {
+  const chatCompletion = await openai.chat.completions.create({
+    model: "openai/gpt-5-mini",
+    messages: [{ role: "user", content: "What is Cloudflare?" }],
+  });
+
+
   const response = chatCompletion.choices[0].message;
-  return new Response(JSON.stringify(response));} catch (e) {  return new Response(e);}
+
+
+  return new Response(JSON.stringify(response));
+} catch (e) {
+  return new Response(e);
+}
 ```
 
 ```json

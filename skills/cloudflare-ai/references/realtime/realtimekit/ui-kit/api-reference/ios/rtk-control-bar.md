@@ -36,20 +36,37 @@ Base control bar view with a More menu button and an End Call button. Serves as 
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let controlBar = RtkControlBar(    meeting: rtkClient,    delegate: self,    presentingViewController: self)view.addSubview(controlBar)
+
+
+let controlBar = RtkControlBar(
+    meeting: rtkClient,
+    delegate: self,
+    presentingViewController: self
+)
+view.addSubview(controlBar)
 ```
 
 ### With completion handlers
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let controlBar = RtkControlBar(    meeting: rtkClient,    delegate: self,    presentingViewController: self,    onLeaveMeetingCompletion: {        self.dismiss(animated: true)    })view.addSubview(controlBar)
+
+
+let controlBar = RtkControlBar(
+    meeting: rtkClient,
+    delegate: self,
+    presentingViewController: self,
+    onLeaveMeetingCompletion: {
+        self.dismiss(animated: true)
+    }
+)
+view.addSubview(controlBar)
 ```
 
 ```json

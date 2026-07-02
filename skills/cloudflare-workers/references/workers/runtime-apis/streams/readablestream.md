@@ -30,9 +30,9 @@ A `ReadableStream` is returned by the `readable` property inside [TransformStrea
 
   * Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating options. The only supported option is `mode`, which can be set to `byob` to create a [ReadableStreamBYOBReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/), as shown here:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let reader = readable.getReader({ mode: 'byob' });
 ```
 

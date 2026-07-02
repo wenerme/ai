@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/azure-openai/{resource_name}/{deployment_name}
 ```
 
@@ -38,20 +38,42 @@ Your new base URL will use the data above in this structure: `https://gateway.ai
 
 ### cURL
 
-Example fetch request
+**Example fetch request**
 
-```
-curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/{deployment_name}/chat/completions?api-version=2023-05-15' \  --header 'Content-Type: application/json' \  --header 'api-key: {azure_api_key}' \  --data '{  "messages": [    {      "role": "user",      "content": "What is Cloudflare?"    }  ]}'
+```bash
+curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/{deployment_name}/chat/completions?api-version=2023-05-15' \
+  --header 'Content-Type: application/json' \
+  --header 'api-key: {azure_api_key}' \
+  --data '{
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is Cloudflare?"
+    }
+  ]
+}'
 ```
 
 ### Use `openai` JavaScript SDK
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AzureOpenAI } from "openai";
-const azure_openai = new AzureOpenAI({  apiKey: "{azure_api_key}",  baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/`,  apiVersion: "2023-05-15",  defaultHeaders: { "cf-aig-authorization": "{cf-api-token}" }, // if authenticated});
-const result = await azure_openai.chat.completions.create({  model: '{deployment_name}',  messages: [{ role: "user", content: "Hello" }],});
+
+
+const azure_openai = new AzureOpenAI({
+  apiKey: "{azure_api_key}",
+  baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/`,
+  apiVersion: "2023-05-15",
+  defaultHeaders: { "cf-aig-authorization": "{cf-api-token}" }, // if authenticated
+});
+
+
+const result = await azure_openai.chat.completions.create({
+  model: '{deployment_name}',
+  messages: [{ role: "user", content: "Hello" }],
+});
 ```
 
 ```json

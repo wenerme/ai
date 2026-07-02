@@ -34,10 +34,23 @@ The following documents will help you get started with the Dynatrace data source
 
 Once you have configured the Dynatrace data source, you can:
 
+- Use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to query your Dynatrace data with natural language.
 - Add [Annotations](/docs/plugins/grafana-dynatrace-datasource/latest/annotations/) to overlay Dynatrace events on your graphs.
 - Configure and use [Templates and variables](/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/) for dynamic dashboards.
 - Add [Transformations](/docs/grafana/latest/panels/transformations/).
 - Set up [Alerting](/docs/plugins/grafana-dynatrace-datasource/latest/alerting/) to monitor your Dynatrace data.
+
+## Grafana Assistant
+
+You can use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to explore and query your Dynatrace data using natural language. The Assistant discovers the metrics available in your Dynatrace environment, builds and runs queries—including Metrics, DQL (Grail), USQL, Logs, and Problems queries—and visualizes the results on a dashboard.
+
+To query Dynatrace, mention your Dynatrace data source with the `@` symbol in your prompt. For example:
+
+- `Show built in metrics for cpu and memory in @dynatrace-ds.`
+- `Query @dynatrace-ds for cpu and memory utilization over the last 12 hours.`
+- `Show average CPU usage for all hosts in @dynatrace-ds over the last hour.`
+
+For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
 
 ## Dynatrace pre-built dashboard
 

@@ -28,10 +28,13 @@ After the video finishes uploading, the video appears in the list.
 
 Make a `POST` request with the `content-type` header set to `multipart/form-data` and include the media as an input with the name set to `file`.
 
-Upload video POST request
+**Upload video POST request**
 
-```
-curl --request POST \--header "Authorization: Bearer <API_TOKEN>" \--form file=@/Users/user_name/Desktop/my-video.mp4 \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream
+```bash
+curl --request POST \
+--header "Authorization: Bearer <API_TOKEN>" \
+--form file=@/Users/user_name/Desktop/my-video.mp4 \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream
 ```
 
 Note

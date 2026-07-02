@@ -26,14 +26,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-virtualized-participant-list></rtk-virtualized-participant-list>
+```html
+<!-- component.html -->
+<rtk-virtualized-participant-list></rtk-virtualized-participant-list>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-virtualized-participant-list bufferedItemsCount="42" [emptyListElement]="htmlelement" itemHeight="42"></rtk-virtualized-participant-list>
+```html
+<!-- component.html -->
+<rtk-virtualized-participant-list
+ bufferedItemsCount="42"
+ [emptyListElement]="htmlelement"
+ itemHeight="42">
+</rtk-virtualized-participant-list>
 ```
 
 ```json

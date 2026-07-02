@@ -28,19 +28,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-audio-grid></rtk-audio-grid>
 ```
 
 ### With Properties
 
-```
-<rtk-audio-grid></rtk-audio-grid>
+```html
+<rtk-audio-grid>
+</rtk-audio-grid>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-audio-grid");
-  el.config= defaultUiConfig  el.hideSelf= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-audio-grid");
+
+
+  el.config= defaultUiConfig
+  el.hideSelf= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

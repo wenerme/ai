@@ -33,8 +33,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-9165)
-* [ Terraform (v5) ](#tab-panel-9166)
+* [ Dashboard ](#tab-panel-9456)
+* [ Terraform (v5) ](#tab-panel-9457)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -51,8 +51,24 @@ To customize your block page:
 
   * `Zero Trust Write`
 2. In [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings), configure the `block_page` argument with your customizations:
-```
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    block_page = {      enabled = true //do not use the default Gateway block page      mode = "customized_block_page" //use a custom block page      name = "Cloudflare"      logo_path = "https://logos.com/a.png"      header_text = "--header--"      footer_text = "--footer--"      mailto_address = "admin@example.com"      mailto_subject = "Blocked Request"      background_color = "#ffffff"      suppress_footer = false    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+  account_id = var.cloudflare_account_id
+  settings = {
+    block_page = {
+      enabled = true //do not use the default Gateway block page
+      mode = "customized_block_page" //use a custom block page
+      name = "Cloudflare"
+      logo_path = "https://logos.com/a.png"
+      header_text = "--header--"
+      footer_text = "--footer--"
+      mailto_address = "admin@example.com"
+      mailto_subject = "Blocked Request"
+      background_color = "#ffffff"
+      suppress_footer = false
+    }
+  }
+}
 ```
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.

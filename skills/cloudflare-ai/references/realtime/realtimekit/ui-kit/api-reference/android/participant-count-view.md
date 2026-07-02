@@ -25,16 +25,20 @@ A text view that displays the current number of participants in a meeting. It au
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkParticipantCountView    android:id="@+id/rtk_participant_count"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkParticipantCountView
+    android:id="@+id/rtk_participant_count"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val countView = findViewById<RtkParticipantCountView>(R.id.rtk_participant_count)countView.activate(meeting)
+```kotlin
+val countView = findViewById<RtkParticipantCountView>(R.id.rtk_participant_count)
+countView.activate(meeting)
 ```
 
 ```json

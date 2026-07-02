@@ -31,12 +31,25 @@ Agents require [Cloudflare Durable Objects](https://developers.cloudflare.com/du
 
 An Agent is a class that extends the base `Agent` class:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, routeAgentRequest } from "agents";
-export class MyAgent extends Agent<Env, State> {  // Your agent logic}
-export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env)) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+
+
+export class MyAgent extends Agent<Env, State> {
+  // Your agent logic
+}
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Each Agent can have millions of instances. Each instance is a separate micro-server that runs independently, allowing horizontal scaling. Instances are addressed by a unique identifier (user ID, email, ticket number, etc.).
@@ -107,12 +120,19 @@ flowchart TD
 
 Each Agent instance has an embedded SQLite database accessed via `this.sql`:
 
-TypeScript
+**TypeScript**
 
-```
-// Create tablesthis.sql`CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT)`;
-// Insert datathis.sql`INSERT INTO users (id, name) VALUES (${id}, ${name})`;
-// Query dataconst users = this.sql<User>`SELECT * FROM users WHERE id = ${id}`;
+```ts
+// Create tables
+this.sql`CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT)`;
+
+
+// Insert data
+this.sql`INSERT INTO users (id, name) VALUES (${id}, ${name})`;
+
+
+// Query data
+const users = this.sql<User>`SELECT * FROM users WHERE id = ${id}`;
 ```
 
 For state that needs to sync with clients, use the [State API](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) instead.
@@ -131,24 +151,45 @@ Module-level helper exports include `agentTool()` from `agents/agent-tools`, whi
 
 ### Quick example
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import type { MyAgent } from "./server";
-function App() {  const agent = useAgent<MyAgent, State>({    agent: "my-agent",    name: "user-123",  });
-  // Call methods on the agent  agent.stub.someMethod();
-  // Update state (syncs to server and all clients)  agent.setState({ count: 1 });}
+```ts
+import { useAgent } from "agents/react";
+import type { MyAgent } from "./server";
+
+
+function App() {
+  const agent = useAgent<MyAgent, State>({
+    agent: "my-agent",
+    name: "user-123",
+  });
+
+
+  // Call methods on the agent
+  agent.stub.someMethod();
+
+
+  // Update state (syncs to server and all clients)
+  agent.setState({ count: 1 });
+}
 ```
 
 ## Chat agents
 
 For AI chat applications, extend `AIChatAgent` instead of `Agent`:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
-class ChatAgent extends AIChatAgent {  async onChatMessage(onFinish) {    // this.messages contains the conversation history    // Return a streaming response  }}
+
+
+class ChatAgent extends AIChatAgent {
+  async onChatMessage(onFinish) {
+    // this.messages contains the conversation history
+    // Return a streaming response
+  }
+}
 ```
 
 Features include:
@@ -163,17 +204,26 @@ Refer to [Build a chat agent](https://developers.cloudflare.com/agents/examples/
 
 Agents are accessed via URL patterns:
 
-```
+```txt
 https://your-worker.workers.dev/agents/:agent-name/:instance-name
 ```
 
 Use `routeAgentRequest()` in your Worker to route requests:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { routeAgentRequest } from "agents";
-export default {  async fetch(request: Request, env: Env) {    return (      routeAgentRequest(request, env) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      routeAgentRequest(request, env) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/) for custom paths, CORS, and instance naming patterns.

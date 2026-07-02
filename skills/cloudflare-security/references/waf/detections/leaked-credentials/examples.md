@@ -46,7 +46,7 @@ Access to the _User and Password Leaked_ (`cf.waf.credential_check.username_and_
 | ------------------------ | -------- | ----- |
 | User and Password Leaked | equals   | True  |
 If you use the Expression Editor, enter the following expression:
-```
+```txt
 (cf.waf.credential_check.username_and_password_leaked)
 ```
 * **Action**: _Managed Challenge_

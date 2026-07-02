@@ -30,10 +30,20 @@ To allow a specific Health Check, verify if the user agent contains the first 16
 
 This example adds a new WAF custom rule to the ruleset with ID `{ruleset_id}` that skips zone lockdown for incoming requests with a user agent containing `1234567890abcdef`:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/{zone_id}/rulesets/{ruleset_id}/rules" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "action": "skip",  "action_parameters": {    "products": [      "zoneLockdown"    ]  },  "expression": "http.user_agent contains \"1234567890abcdef\"",  "description": "bypass zone lockdown - specific healthcheck"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/{zone_id}/rulesets/{ruleset_id}/rules" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "action": "skip",
+  "action_parameters": {
+    "products": [
+      "zoneLockdown"
+    ]
+  },
+  "expression": "http.user_agent contains \"1234567890abcdef\"",
+  "description": "bypass zone lockdown - specific healthcheck"
+}'
 ```
 
 ```json

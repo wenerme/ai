@@ -16,25 +16,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-6709)
-* [  pnpm ](#tab-panel-6710)
-* [  yarn ](#tab-panel-6711)
+* [  npm ](#tab-panel-6957)
+* [  pnpm ](#tab-panel-6958)
+* [  yarn ](#tab-panel-6959)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search list
 ```
 
@@ -70,25 +64,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-6712)
-* [  pnpm ](#tab-panel-6713)
-* [  yarn ](#tab-panel-6714)
+* [  npm ](#tab-panel-6960)
+* [  pnpm ](#tab-panel-6961)
+* [  yarn ](#tab-panel-6962)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search create [NAME]
 ```
 
@@ -156,25 +144,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-6715)
-* [  pnpm ](#tab-panel-6716)
-* [  yarn ](#tab-panel-6717)
+* [  npm ](#tab-panel-6963)
+* [  pnpm ](#tab-panel-6964)
+* [  yarn ](#tab-panel-6965)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search get [NAME]
 ```
 
@@ -208,25 +190,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-6718)
-* [  pnpm ](#tab-panel-6719)
-* [  yarn ](#tab-panel-6720)
+* [  npm ](#tab-panel-6966)
+* [  pnpm ](#tab-panel-6967)
+* [  yarn ](#tab-panel-6968)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search update [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search update [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search update [NAME]
 ```
 
@@ -282,25 +258,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-6721)
-* [  pnpm ](#tab-panel-6722)
-* [  yarn ](#tab-panel-6723)
+* [  npm ](#tab-panel-6969)
+* [  pnpm ](#tab-panel-6970)
+* [  yarn ](#tab-panel-6971)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search delete [NAME]
 ```
 
@@ -334,25 +304,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-6724)
-* [  pnpm ](#tab-panel-6725)
-* [  yarn ](#tab-panel-6726)
+* [  npm ](#tab-panel-6972)
+* [  pnpm ](#tab-panel-6973)
+* [  yarn ](#tab-panel-6974)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search stats [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search stats [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search stats [NAME]
 ```
 
@@ -386,25 +350,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-6727)
-* [  pnpm ](#tab-panel-6728)
-* [  yarn ](#tab-panel-6729)
+* [  npm ](#tab-panel-6975)
+* [  pnpm ](#tab-panel-6976)
+* [  yarn ](#tab-panel-6977)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search search [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search search [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search search [NAME]
 ```
 
@@ -448,25 +406,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all AI Search namespaces
 
-* [  npm ](#tab-panel-6730)
-* [  pnpm ](#tab-panel-6731)
-* [  yarn ](#tab-panel-6732)
+* [  npm ](#tab-panel-6978)
+* [  pnpm ](#tab-panel-6979)
+* [  yarn ](#tab-panel-6980)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search namespace list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search namespace list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search namespace list
 ```
 
@@ -502,25 +454,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new AI Search namespace
 
-* [  npm ](#tab-panel-6733)
-* [  pnpm ](#tab-panel-6734)
-* [  yarn ](#tab-panel-6735)
+* [  npm ](#tab-panel-6981)
+* [  pnpm ](#tab-panel-6982)
+* [  yarn ](#tab-panel-6983)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search namespace create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search namespace create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search namespace create [NAME]
 ```
 
@@ -554,25 +500,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details of an AI Search namespace
 
-* [  npm ](#tab-panel-6736)
-* [  pnpm ](#tab-panel-6737)
-* [  yarn ](#tab-panel-6738)
+* [  npm ](#tab-panel-6984)
+* [  pnpm ](#tab-panel-6985)
+* [  yarn ](#tab-panel-6986)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search namespace get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search namespace get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search namespace get [NAME]
 ```
 
@@ -604,25 +544,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update an AI Search namespace
 
-* [  npm ](#tab-panel-6739)
-* [  pnpm ](#tab-panel-6740)
-* [  yarn ](#tab-panel-6741)
+* [  npm ](#tab-panel-6987)
+* [  pnpm ](#tab-panel-6988)
+* [  yarn ](#tab-panel-6989)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search namespace update [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search namespace update [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search namespace update [NAME]
 ```
 
@@ -656,25 +590,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an AI Search namespace
 
-* [  npm ](#tab-panel-6742)
-* [  pnpm ](#tab-panel-6743)
-* [  yarn ](#tab-panel-6744)
+* [  npm ](#tab-panel-6990)
+* [  pnpm ](#tab-panel-6991)
+* [  yarn ](#tab-panel-6992)
 
-Terminal window
-
-```
+```sh
 npx wrangler ai-search namespace delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler ai-search namespace delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler ai-search namespace delete [NAME]
 ```
 

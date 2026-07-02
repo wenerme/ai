@@ -22,9 +22,9 @@ Set your default device profile to be applicable to a majority of your userbase,
 
 To customize the default settings:
 
-* [ Dashboard ](#tab-panel-9392)
-* [ API ](#tab-panel-9393)
-* [ Terraform (v5) ](#tab-panel-9394)
+* [ Dashboard ](#tab-panel-9683)
+* [ API ](#tab-panel-9684)
+* [ Terraform (v5) ](#tab-panel-9685)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select the **Default** profile and select \*_Edit_.
@@ -51,30 +51,68 @@ To customize the default settings:
 
 1. Update the default device settings profile:
 
-Terminal window
-
-```
-curl --request PATCH \https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "allow_mode_switch": false,  "allow_updates": false,  "allowed_to_leave": false,  "auto_connect": 900,  "captive_portal": 180,  "disable_auto_fallback": true,  "exclude_office_ips": false,  "service_mode_v2": {    "mode": "warp"  },  "support_url": "https://it.company.com/help",  "switch_locked": true}'
+```bash
+curl --request PATCH \
+https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{
+  "allow_mode_switch": false,
+  "allow_updates": false,
+  "allowed_to_leave": false,
+  "auto_connect": 900,
+  "captive_portal": 180,
+  "disable_auto_fallback": true,
+  "exclude_office_ips": false,
+  "service_mode_v2": {
+    "mode": "warp"
+  },
+  "support_url": "https://it.company.com/help",
+  "switch_locked": true
+}'
 ```
 
 1. Update global settings:
 
-Terminal window
-
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "disable_for_time": 3600,  "root_certificate_installation_enabled": true}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{
+  "disable_for_time": 3600,
+  "root_certificate_installation_enabled": true
+}'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
 
   * `Zero Trust Write`
 2. Configure default profile settings using the [cloudflare\_zero\_trust\_device\_default\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile) resource:
-```
-resource "cloudflare_zero_trust_device_default_profile" "default_profile" {  account_id            = var.cloudflare_account_id  allow_mode_switch     = false  allow_updates         = false  allowed_to_leave      = false  auto_connect          = 600  captive_portal        = 180  disable_auto_fallback = true  exclude_office_ips    = false  service_mode_v2       = {mode = "warp"}  support_url           = "https://support.example.com"  switch_locked         = true  tunnel_protocol       = "wireguard"}
+```tf
+resource "cloudflare_zero_trust_device_default_profile" "default_profile" {
+  account_id            = var.cloudflare_account_id
+  allow_mode_switch     = false
+  allow_updates         = false
+  allowed_to_leave      = false
+  auto_connect          = 600
+  captive_portal        = 180
+  disable_auto_fallback = true
+  exclude_office_ips    = false
+  service_mode_v2       = {mode = "warp"}
+  support_url           = "https://support.example.com"
+  switch_locked         = true
+  tunnel_protocol       = "wireguard"
+}
 ```
 3. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-```
-resource "cloudflare_zero_trust_device_settings" "global_warp_settings" {  account_id            = var.cloudflare_account_id  disable_for_time      = 3600  root_certificate_installation_enabled = true  use_zt_virtual_ip     = false}
+```tf
+resource "cloudflare_zero_trust_device_settings" "global_warp_settings" {
+  account_id            = var.cloudflare_account_id
+  disable_for_time      = 3600
+  root_certificate_installation_enabled = true
+  use_zt_virtual_ip     = false
+}
 ```
 
 ## (Optional) Create an office profile

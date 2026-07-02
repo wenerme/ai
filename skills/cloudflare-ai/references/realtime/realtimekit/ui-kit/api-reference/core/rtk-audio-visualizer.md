@@ -30,19 +30,26 @@ An audio visualizer component which visualizes a participants audio. Commonly us
 
 ### Basic Usage
 
-```
+```html
 <rtk-audio-visualizer></rtk-audio-visualizer>
 ```
 
 ### With Properties
 
-```
-<rtk-audio-visualizer></rtk-audio-visualizer>
+```html
+<rtk-audio-visualizer>
+</rtk-audio-visualizer>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-audio-visualizer");
-  el.hideMuted= true;  el.isScreenShare= true;  el.participant= participant</script>
+```html
+<script>
+  const el = document.querySelector("rtk-audio-visualizer");
+
+
+  el.hideMuted= true;
+  el.isScreenShare= true;
+  el.participant= participant
+</script>
 ```
 
 ```json

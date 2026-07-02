@@ -26,30 +26,61 @@ Log Explorer includes a SQL API for submitting queries.
 
 For example, to find an HTTP request with a specific [Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/), use the following SQL query:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/query/sql \--header "Authorization: Bearer <API_TOKEN>" \--url-query query="SELECT clientRequestScheme, clientRequestHost, clientRequestMethod, edgeResponseStatus, clientRequestUserAgent FROM http_requests WHERE RayID = '806c30a3cec56817' LIMIT 1"
+```bash
+curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/query/sql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--url-query query="SELECT clientRequestScheme, clientRequestHost, clientRequestMethod, edgeResponseStatus, clientRequestUserAgent FROM http_requests WHERE RayID = '806c30a3cec56817' LIMIT 1"
 ```
 
 This command returns the following HTTP request details:
 
-```
-{  "result": [    {      "clientrequestscheme": "https",      "clientrequesthost": "example.com",      "clientrequestmethod": "GET",      "clientrequestuseragent": "curl/7.88.1",      "edgeresponsestatus": 200    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "clientrequestscheme": "https",
+      "clientrequesthost": "example.com",
+      "clientrequestmethod": "GET",
+      "clientrequestuseragent": "curl/7.88.1",
+      "edgeresponsestatus": 200
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 As another example, you could find Cloudflare Access requests with selected columns from a specific timeframe by performing the following SQL query:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/query/sql \--header "Authorization: Bearer <API_TOKEN>" \--url-query query="SELECT CreatedAt, AppDomain, AppUUID, Action, Allowed, Country, RayID, Email, IPAddress, UserUID FROM access_requests WHERE Date >= '2025-02-06' AND Date <= '2025-02-06' AND CreatedAt >= '2025-02-06T12:28:39Z' AND CreatedAt <= '2025-02-06T12:58:39Z'"
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/query/sql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--url-query query="SELECT CreatedAt, AppDomain, AppUUID, Action, Allowed, Country, RayID, Email, IPAddress, UserUID FROM access_requests WHERE Date >= '2025-02-06' AND Date <= '2025-02-06' AND CreatedAt >= '2025-02-06T12:28:39Z' AND CreatedAt <= '2025-02-06T12:58:39Z'"
 ```
 
 This command returns the following request details:
 
-```
-{  "result": [    {      "createdat": "2025-01-14T18:17:55Z",      "appdomain": "example.com",      "appuuid": "a66b4ab0-ccdf-4d60-a6d0-54a59a827d92",      "action": "login",      "allowed": true,      "country": "us",      "rayid": "90fbb07c0b316957",      "email": "user@example.com",      "ipaddress": "1.2.3.4",      "useruid": "52859e81-711e-4de0-8b31-283336060e79"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "createdat": "2025-01-14T18:17:55Z",
+      "appdomain": "example.com",
+      "appuuid": "a66b4ab0-ccdf-4d60-a6d0-54a59a827d92",
+      "action": "login",
+      "allowed": true,
+      "country": "us",
+      "rayid": "90fbb07c0b316957",
+      "email": "user@example.com",
+      "ipaddress": "1.2.3.4",
+      "useruid": "52859e81-711e-4de0-8b31-283336060e79"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

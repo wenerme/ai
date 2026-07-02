@@ -26,16 +26,32 @@ A menu container component with placement options.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMenu } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMenu size="md" placement="bottom">      <Text>Menu content</Text>    </RtkMenu>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenu size="md" placement="bottom">
+      <Text>Menu content</Text>
+    </RtkMenu>
+  );
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMenu } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMenu size="lg" placement="bottom-start">      <Text>Menu content</Text>    </RtkMenu>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenu size="lg" placement="bottom-start">
+      <Text>Menu content</Text>
+    </RtkMenu>
+  );
+}
 ```
 
 ```json

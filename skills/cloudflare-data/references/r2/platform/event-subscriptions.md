@@ -24,8 +24,25 @@ Triggered when a bucket is created.
 
 **Example:**
 
-```
-{  "type": "cf.r2.bucket.created",  "source": {    "type": "r2"  },  "payload": {    "name": "my-bucket",    "jurisdiction": "default",    "location": "WNAM",    "storageClass": "Standard"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.r2.bucket.created",
+  "source": {
+    "type": "r2"
+  },
+  "payload": {
+    "name": "my-bucket",
+    "jurisdiction": "default",
+    "location": "WNAM",
+    "storageClass": "Standard"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `bucket.deleted`
@@ -34,8 +51,23 @@ Triggered when a bucket is deleted.
 
 **Example:**
 
-```
-{  "type": "cf.r2.bucket.deleted",  "source": {    "type": "r2"  },  "payload": {    "name": "my-bucket",    "jurisdiction": "default"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.r2.bucket.deleted",
+  "source": {
+    "type": "r2"
+  },
+  "payload": {
+    "name": "my-bucket",
+    "jurisdiction": "default"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 ## Available Super Slurper events
@@ -46,8 +78,36 @@ Triggered when a migration job starts.
 
 **Example:**
 
-```
-{  "type": "cf.superSlurper.job.started",  "source": {    "type": "superSlurper"  },  "payload": {    "id": "job-12345678-90ab-cdef-1234-567890abcdef",    "createdAt": "2025-05-01T02:48:57.132Z",    "overwrite": true,    "pathPrefix": "migrations/",    "source": {      "provider": "s3",      "bucket": "source-bucket",      "region": "us-east-1",      "endpoint": "s3.amazonaws.com"    },    "destination": {      "provider": "r2",      "bucket": "destination-bucket",      "jurisdiction": "default"    }  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.superSlurper.job.started",
+  "source": {
+    "type": "superSlurper"
+  },
+  "payload": {
+    "id": "job-12345678-90ab-cdef-1234-567890abcdef",
+    "createdAt": "2025-05-01T02:48:57.132Z",
+    "overwrite": true,
+    "pathPrefix": "migrations/",
+    "source": {
+      "provider": "s3",
+      "bucket": "source-bucket",
+      "region": "us-east-1",
+      "endpoint": "s3.amazonaws.com"
+    },
+    "destination": {
+      "provider": "r2",
+      "bucket": "destination-bucket",
+      "jurisdiction": "default"
+    }
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `job.paused`
@@ -56,8 +116,22 @@ Triggered when a migration job pauses.
 
 **Example:**
 
-```
-{  "type": "cf.superSlurper.job.paused",  "source": {    "type": "superSlurper"  },  "payload": {    "id": "job-12345678-90ab-cdef-1234-567890abcdef"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.superSlurper.job.paused",
+  "source": {
+    "type": "superSlurper"
+  },
+  "payload": {
+    "id": "job-12345678-90ab-cdef-1234-567890abcdef"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `job.resumed`
@@ -66,8 +140,22 @@ Triggered when a migration job resumes.
 
 **Example:**
 
-```
-{  "type": "cf.superSlurper.job.resumed",  "source": {    "type": "superSlurper"  },  "payload": {    "id": "job-12345678-90ab-cdef-1234-567890abcdef"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.superSlurper.job.resumed",
+  "source": {
+    "type": "superSlurper"
+  },
+  "payload": {
+    "id": "job-12345678-90ab-cdef-1234-567890abcdef"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `job.completed`
@@ -76,8 +164,26 @@ Triggered when a migration job finishes.
 
 **Example:**
 
-```
-{  "type": "cf.superSlurper.job.completed",  "source": {    "type": "superSlurper"  },  "payload": {    "id": "job-12345678-90ab-cdef-1234-567890abcdef",    "totalObjectsCount": 1000,    "skippedObjectsCount": 10,    "migratedObjectsCount": 980,    "failedObjectsCount": 10  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.superSlurper.job.completed",
+  "source": {
+    "type": "superSlurper"
+  },
+  "payload": {
+    "id": "job-12345678-90ab-cdef-1234-567890abcdef",
+    "totalObjectsCount": 1000,
+    "skippedObjectsCount": 10,
+    "migratedObjectsCount": 980,
+    "failedObjectsCount": 10
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `job.aborted`
@@ -86,8 +192,26 @@ Triggered when a migration job is manually aborted.
 
 **Example:**
 
-```
-{  "type": "cf.superSlurper.job.aborted",  "source": {    "type": "superSlurper"  },  "payload": {    "id": "job-12345678-90ab-cdef-1234-567890abcdef",    "totalObjectsCount": 1000,    "skippedObjectsCount": 100,    "migratedObjectsCount": 500,    "failedObjectsCount": 50  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.superSlurper.job.aborted",
+  "source": {
+    "type": "superSlurper"
+  },
+  "payload": {
+    "id": "job-12345678-90ab-cdef-1234-567890abcdef",
+    "totalObjectsCount": 1000,
+    "skippedObjectsCount": 100,
+    "migratedObjectsCount": 500,
+    "failedObjectsCount": 50
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 #### `job.object.migrated`
@@ -96,8 +220,23 @@ Triggered when an object is migrated.
 
 **Example:**
 
-```
-{  "type": "cf.superSlurper.job.object.migrated",  "source": {    "type": "superSlurper.job",    "jobId": "job-12345678-90ab-cdef-1234-567890abcdef"  },  "payload": {    "key": "migrations/file.txt"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
+```json
+{
+  "type": "cf.superSlurper.job.object.migrated",
+  "source": {
+    "type": "superSlurper.job",
+    "jobId": "job-12345678-90ab-cdef-1234-567890abcdef"
+  },
+  "payload": {
+    "key": "migrations/file.txt"
+  },
+  "metadata": {
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
+    "eventSchemaVersion": 1,
+    "eventTimestamp": "2025-05-01T02:48:57.132Z"
+  }
+}
 ```
 
 ```json

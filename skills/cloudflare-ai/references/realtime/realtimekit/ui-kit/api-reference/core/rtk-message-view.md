@@ -35,19 +35,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-message-view></rtk-message-view>
 ```
 
 ### With Properties
 
-```
-<rtk-message-view authorName="example" avatarUrl="example"></rtk-message-view>
+```html
+<rtk-message-view
+ authorName="example"
+ avatarUrl="example">
+</rtk-message-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-message-view");
-  el.actions= [];</script>
+```html
+<script>
+  const el = document.querySelector("rtk-message-view");
+
+
+  el.actions= [];
+</script>
 ```
 
 ```json

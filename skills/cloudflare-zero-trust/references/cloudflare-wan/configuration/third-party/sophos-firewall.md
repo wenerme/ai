@@ -102,8 +102,7 @@ Below are instructions on how to achieve this on SFOS version 19 and SFOS versio
 
 1. Sign in to the CLI.
 2. Enter **4** to choose **Device console**, and enter the following command:
-Terminal window
-```
+```bash
 set vpn ipsec-performance anti-replay window-size 0
 ```
 ![Access the CLI to disable anti-replay](https://developers.cloudflare.com/_astro/5-sfos-19.CmXNwDG8_1ihKU5.webp)
@@ -120,8 +119,7 @@ Start by configuring a GRE tunnel between SFOS and the Cloudflare anycast IP add
 
 1. Sign in to the CLI.
 2. Enter **4** to choose **Device console**, and enter the following command:
-Terminal window
-```
+```bash
 system gre tunnel add name <NAME_OF_YOUR_GRE_TUNNEL> local-gw <WAN_PORT> remote-gw <REMOTE_GATEWAY_IP_ADDRESS> local-ip <LOCAL_IP_ADDRESS> remote-ip <REMOTE_IP_ADDRESS>
 ```
 ![Access the CLI to configure a GRE tunnel](https://developers.cloudflare.com/_astro/1-gre-connection.BwxtP6sM_1eJzNN.webp)
@@ -174,9 +172,7 @@ Add the route on the CLI.
 1. Sign in to the CLI.
 2. Enter **4** to choose **Device console**, and enter the following command to create the tunnel:
 
-Terminal window
-
-```
+```bash
 system gre route add net <IP_ADDRESS> tunnelname <TUNNEL_NAME>
 ```
 
@@ -197,10 +193,20 @@ The Cloudflare dashboard monitors the health of all anycast tunnels on your acco
 
 1. The ICMP probe packet from Cloudflare must be the type ICMP request, with anycast source IP. In the following example, we have used `172.64.240.252` as a target example:
 
-Terminal window
-
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "health_check": {    "enabled": true,    "target": "172.64.240.252",    "type": "request",    "rate": "mid"  }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "health_check": {
+    "enabled": true,
+    "target": "172.64.240.252",
+    "type": "request",
+    "rate": "mid"
+  }
+}'
 ```
 
 1. Go to **Configure** \> **Network** \> **Interfaces** \> **Add alias**. Add the IP address provided by Cloudflare for the ICMP probe traffic. This is needed to prevent Sophos firewall from dropping them as spoof packets. This is not the same IP used to create VPN. This is the special IP address for probe traffic only.
@@ -210,16 +216,21 @@ curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/m
 
 Packet flow will look like the following:
 
-Terminal window
-
-```
+```sh
 tcpdump -nn proto 1
 ```
 
-```
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decodelistening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
-13:09:55.500453 xfrm1, IN: IP 172.70.51.31 > 172.64.240.252: ICMP echo request, id 33504, seq 0, length 6413:09:55.500480 xfrm1, OUT: IP 172.64.240.252 > 172.70.51.31: ICMP echo reply, id 33504, seq 0, length 64
-13:09:55.504669 xfrm1, IN: IP 172.71.29.66 > 172.64.240.252: ICMP echo request, id 60828, seq 0, length 6413:09:55.504695 xfrm1, OUT: IP 172.64.240.252 > 172.71.29.66: ICMP echo reply, id 60828, seq 0, length 64
+```sh
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+
+
+13:09:55.500453 xfrm1, IN: IP 172.70.51.31 > 172.64.240.252: ICMP echo request, id 33504, seq 0, length 64
+13:09:55.500480 xfrm1, OUT: IP 172.64.240.252 > 172.70.51.31: ICMP echo reply, id 33504, seq 0, length 64
+
+
+13:09:55.504669 xfrm1, IN: IP 172.71.29.66 > 172.64.240.252: ICMP echo request, id 60828, seq 0, length 64
+13:09:55.504695 xfrm1, OUT: IP 172.64.240.252 > 172.71.29.66: ICMP echo reply, id 60828, seq 0, length 64
 ```
 
 ## Verify tunnel status on Sophos Firewall dashboard

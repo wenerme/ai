@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To invoke a Cloudflare Filters API operation, append the endpoint to the Cloudflare API base URL:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/
 ```
 

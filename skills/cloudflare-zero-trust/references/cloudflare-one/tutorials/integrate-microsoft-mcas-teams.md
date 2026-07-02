@@ -28,9 +28,7 @@ In your Microsoft account, you first need to create an API token and URL endpoin
 
 Once you have the API token and API URL, use curl to get the list of banned applications from Microsoft MCAS:
 
-Terminal window
-
-```
+```sh
 curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=banned" -H "Authorization: Token <API token>"
 ```
 
@@ -43,13 +41,11 @@ This will return a list of banned hostnames. In this case, Angie's List is the b
 As you can see, the banned hostnames are preceded by a `.`. To use this output for a Zero Trust List, we need to do some text processing.
 
 1. Run the curl API call and direct the output to a file, in this case `mcas.txt`:
-Terminal window
-```
+```sh
 curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=banned" -H "Authorization: Token <API token>" > mcas.txt
 ```
 2. Remove the leading `.`, for example by running `sed` from the CLI:
-Terminal window
-```
+```sh
 sed -i 's/^.//' mcas.txt
 ```
 3. This will give you the list of hostnames without leading `.`.
@@ -59,9 +55,7 @@ sed -i 's/^.//' mcas.txt
 
 If you would like to get a list of all of the MCAS allowed applications, you can use the same API query, but instead of using `type=banned`, use `type=allowed`. This will return a much larger list.
 
-Terminal window
-
-```
+```sh
 curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=allowed" -H "Authorization: Token <API token>"
 ```
 

@@ -24,11 +24,19 @@ This example shows how to use Workers VPC to create a centralized gateway that r
 
 First, create services for your internal APIs using hostnames:
 
-Terminal window
+```bash
+# Create user service
+npx wrangler vpc service create user-service \
+  --type http \
+  --tunnel-id <YOUR_TUNNEL_ID> \
+  --hostname user-api.internal.example.com
 
-```
-# Create user servicenpx wrangler vpc service create user-service \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --hostname user-api.internal.example.com
-# Create orders servicenpx wrangler vpc service create order-service \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --hostname orders-api.internal.example.com
+
+# Create orders service
+npx wrangler vpc service create order-service \
+  --type http \
+  --tunnel-id <YOUR_TUNNEL_ID> \
+  --hostname orders-api.internal.example.com
 ```
 
 Note the service IDs returned for the next step.
@@ -37,50 +45,93 @@ Note the service IDs returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11462)
-* [  wrangler.toml ](#tab-panel-11463)
+* [  wrangler.jsonc ](#tab-panel-11717)
+* [  wrangler.toml ](#tab-panel-11718)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "api-gateway",
+  "main": "src/index.js",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "vpc_services": [
+    {
+      "binding": "USER_SERVICE",
+      "service_id": "<YOUR_USER_SERVICE_ID>"
+    },
+    {
+      "binding": "ORDER_SERVICE",
+      "service_id": "<YOUR_ORDER_SERVICE_ID>"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "api-gateway",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "vpc_services": [    {      "binding": "USER_SERVICE",      "service_id": "<YOUR_USER_SERVICE_ID>"    },    {      "binding": "ORDER_SERVICE",      "service_id": "<YOUR_ORDER_SERVICE_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "api-gateway"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-24"
-[[vpc_services]]binding = "USER_SERVICE"service_id = "<YOUR_USER_SERVICE_ID>"
-[[vpc_services]]binding = "ORDER_SERVICE"service_id = "<YOUR_ORDER_SERVICE_ID>"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "api-gateway"
+main = "src/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[vpc_services]]
+binding = "USER_SERVICE"
+service_id = "<YOUR_USER_SERVICE_ID>"
+
+
+[[vpc_services]]
+binding = "ORDER_SERVICE"
+service_id = "<YOUR_ORDER_SERVICE_ID>"
 ```
 
 ## 3\. Implement the Worker
 
 In your Workers code, use the VPC Service bindings to route requests to the appropriate services:
 
-index.js
+**index.js**
 
-```
-export default {  async fetch(request, env, ctx) {    const url = new URL(request.url);
-    // Route to internal services    if (url.pathname.startsWith('/api/users')) {      const response = await env.USER_SERVICE.fetch("https://user-api.internal.example.com" + url.pathname);      return response;    } else if (url.pathname.startsWith('/api/orders')) {      const response = await env.ORDER_SERVICE.fetch("https://orders-api.internal.example.com" + url.pathname);      return response;    }
-    return new Response('Not Found', { status: 404 });  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+
+    // Route to internal services
+    if (url.pathname.startsWith('/api/users')) {
+      const response = await env.USER_SERVICE.fetch("https://user-api.internal.example.com" + url.pathname);
+      return response;
+    } else if (url.pathname.startsWith('/api/orders')) {
+      const response = await env.ORDER_SERVICE.fetch("https://orders-api.internal.example.com" + url.pathname);
+      return response;
+    }
+
+
+    return new Response('Not Found', { status: 404 });
+  },
+};
 ```
 
 ## 4\. Deploy and test
 
 Now, you can deploy and test your Worker:
 
-Terminal window
-
-```
+```bash
 npx wrangler deploy
 ```
 
-Terminal window
+```bash
+# Test user service requests
+curl https://api-gateway.workers.dev/api/users
 
-```
-# Test user service requestscurl https://api-gateway.workers.dev/api/users
-# Test orders service requestscurl https://api-gateway.workers.dev/api/orders
+
+# Test orders service requests
+curl https://api-gateway.workers.dev/api/orders
 ```
 
 ## Next steps

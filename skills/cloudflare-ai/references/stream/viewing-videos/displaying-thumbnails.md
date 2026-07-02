@@ -26,8 +26,13 @@ A thumbnail from your video can be generated using a special link where you spec
 
 Using the `poster` query parameter in the embed URL, you can set a thumbnail to any time in your video. If [signed URLs](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/) are required, you must use a signed URL instead of video UIDs.
 
-```
-<iframe  src="https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/iframe?poster=https%3A%2F%2Fcustomer-f33zs165nr7gyfy4.cloudflarestream.com%2F6b9e68b07dfee8cc2d116e4c51d6a957%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"  style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"  allowfullscreen="true"></iframe>
+```html
+<iframe
+  src="https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/iframe?poster=https%3A%2F%2Fcustomer-f33zs165nr7gyfy4.cloudflarestream.com%2F6b9e68b07dfee8cc2d116e4c51d6a957%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+  style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+  allowfullscreen="true"
+></iframe>
 ```
 
 Supported URL attributes are:
@@ -45,10 +50,11 @@ Supported URL attributes are:
 
 By default, the Stream Player sets the thumbnail to the first frame of the video. You can change this on a per-video basis by setting the "thumbnailTimestampPct" value using the API:
 
-Terminal window
-
-```
-curl -X POST \-H "Authorization: Bearer <API_TOKEN>" \-d '{"thumbnailTimestampPct": 0.5}' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>
+```bash
+curl -X POST \
+-H "Authorization: Bearer <API_TOKEN>" \
+-d '{"thumbnailTimestampPct": 0.5}' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>
 ```
 
 `thumbnailTimestampPct` is a value between 0.0 (the first frame of the video) and 1.0 (the last frame of the video). For example, you wanted the thumbnail to be the frame at the half way point of your videos, you can set the `thumbnailTimestampPct` value to 0.5\. Using relative values in this way allows you to set the default thumbnail even if you or your users' videos vary in duration.

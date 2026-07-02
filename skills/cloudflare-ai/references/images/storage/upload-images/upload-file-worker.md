@@ -16,50 +16,118 @@ You can use a Worker to upload your image to Cloudflare Images.
 
 Refer to the example below or refer to the [Workers documentation](https://developers.cloudflare.com/workers/) for more information.
 
-* [  JavaScript ](#tab-panel-8999)
-* [  TypeScript ](#tab-panel-9000)
+* [  JavaScript ](#tab-panel-9290)
+* [  TypeScript ](#tab-panel-9291)
 
-JavaScript
+**JavaScript**
 
+```js
+const API_URL =
+  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";
+const TOKEN = "<YOUR_TOKEN_HERE>";
+
+
+const image = await fetch("https://example.com/image.png");
+const bytes = await image.bytes();
+
+
+const formData = new FormData();
+formData.append("file", new File([bytes], "image.png"));
+
+
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+  },
+  body: formData,
+});
 ```
-const API_URL =  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";const TOKEN = "<YOUR_TOKEN_HERE>";
-const image = await fetch("https://example.com/image.png");const bytes = await image.bytes();
-const formData = new FormData();formData.append("file", new File([bytes], "image.png"));
-const response = await fetch(API_URL, {  method: "POST",  headers: {    Authorization: `Bearer ${TOKEN}`,  },  body: formData,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const API_URL =  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";const TOKEN = "<YOUR_TOKEN_HERE>";
-const image = await fetch("https://example.com/image.png");const bytes = await image.bytes();
-const formData = new FormData();formData.append("file", new File([bytes], "image.png"));
-const response = await fetch(API_URL, {  method: "POST",  headers: {    Authorization: `Bearer ${TOKEN}`,  },  body: formData,});
+```ts
+const API_URL =
+  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";
+const TOKEN = "<YOUR_TOKEN_HERE>";
+
+
+const image = await fetch("https://example.com/image.png");
+const bytes = await image.bytes();
+
+
+const formData = new FormData();
+formData.append("file", new File([bytes], "image.png"));
+
+
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+  },
+  body: formData,
+});
 ```
 
 ## Upload from AI generated images
 
 You can use an AI Worker to generate an image and then upload that image to store it in Cloudflare Images. For more information about using Workers AI to generate an image, refer to the [SDXL-Lightning Model](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning).
 
-* [  JavaScript ](#tab-panel-9001)
-* [  TypeScript ](#tab-panel-9002)
+* [  JavaScript ](#tab-panel-9292)
+* [  TypeScript ](#tab-panel-9293)
 
-JavaScript
+**JavaScript**
 
+```js
+const API_URL =
+  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";
+const TOKEN = "YOUR_TOKEN_HERE";
+
+
+const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {
+  prompt: YOUR_PROMPT_HERE,
+});
+const bytes = await new Response(stream).bytes();
+
+
+const formData = new FormData();
+formData.append("file", new File([bytes], "image.jpg"));
+
+
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+  },
+  body: formData,
+});
 ```
-const API_URL =  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";const TOKEN = "YOUR_TOKEN_HERE";
-const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {  prompt: YOUR_PROMPT_HERE,});const bytes = await new Response(stream).bytes();
-const formData = new FormData();formData.append("file", new File([bytes], "image.jpg"));
-const response = await fetch(API_URL, {  method: "POST",  headers: {    Authorization: `Bearer ${TOKEN}`,  },  body: formData,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const API_URL =  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";const TOKEN = "YOUR_TOKEN_HERE";
-const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {  prompt: YOUR_PROMPT_HERE,});const bytes = await new Response(stream).bytes();
-const formData = new FormData();formData.append("file", new File([bytes], "image.jpg"));
-const response = await fetch(API_URL, {  method: "POST",  headers: {    Authorization: `Bearer ${TOKEN}`,  },  body: formData,});
+```ts
+const API_URL =
+  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1";
+const TOKEN = "YOUR_TOKEN_HERE";
+
+
+const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {
+  prompt: YOUR_PROMPT_HERE,
+});
+const bytes = await new Response(stream).bytes();
+
+
+const formData = new FormData();
+formData.append("file", new File([bytes], "image.jpg"));
+
+
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+  },
+  body: formData,
+});
 ```
 
 ```json

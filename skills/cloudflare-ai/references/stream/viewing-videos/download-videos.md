@@ -30,44 +30,80 @@ You can enable downloads for an uploaded video once it is ready to view by makin
 
 To get notified when a video is ready to view, refer to [Using webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#notifications).
 
-* [ REST API ](#tab-panel-10969)
-* [ Workers Binding API ](#tab-panel-10970)
+* [ REST API ](#tab-panel-11264)
+* [ Workers Binding API ](#tab-panel-11265)
 
-* [ cURL ](#tab-panel-10953)
-* [ TypeScript ](#tab-panel-10954)
+* [ cURL ](#tab-panel-11248)
+* [ TypeScript ](#tab-panel-11249)
 
-Terminal window
-
+```bash
+curl -X POST \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads
 ```
-curl -X POST \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads
-```
 
-TypeScript
+**TypeScript**
 
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
-const download = await client.stream.downloads.create({  account_id: '<ACCOUNT_ID>',  identifier: '<VIDEO_UID>',});
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+});
+
+
+const download = await client.stream.downloads.create({
+  account_id: '<ACCOUNT_ID>',
+  identifier: '<VIDEO_UID>',
+});
 ```
 
 The response includes the download type, URL, and processing status:
 
-```
-{  "result": {    "default": {      "status": "inprogress",      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/default.mp4",      "percentComplete": 75.0    }  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "default": {
+      "status": "inprogress",
+      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/default.mp4",
+      "percentComplete": 75.0
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10955)
-* [ wrangler.jsonc ](#tab-panel-10956)
+* [ index.ts ](#tab-panel-11250)
+* [ wrangler.jsonc ](#tab-panel-11251)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videoHandle = env.STREAM.video("VIDEO_ID");    const downloads = await videoHandle.downloads.generate();    return Response.json(downloads);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+    const downloads = await videoHandle.downloads.generate();
+    return Response.json(downloads);
+  },
+};
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "$today",
+  "observability": {
+    "enabled": true
+  },
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -76,44 +112,80 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To enable M4A support on a per video basis, follow steps similar to that of generating an MP4 download, but instead send a POST request to the `/downloads/audio` endpoint.
 
-* [ REST API ](#tab-panel-10971)
-* [ Workers Binding API ](#tab-panel-10972)
+* [ REST API ](#tab-panel-11266)
+* [ Workers Binding API ](#tab-panel-11267)
 
-* [ cURL ](#tab-panel-10957)
-* [ TypeScript ](#tab-panel-10958)
+* [ cURL ](#tab-panel-11252)
+* [ TypeScript ](#tab-panel-11253)
 
-Terminal window
-
+```bash
+curl -X POST \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads/audio
 ```
-curl -X POST \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads/audio
-```
 
-TypeScript
+**TypeScript**
 
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
-const download = await client.stream.downloads.audio.create({  account_id: '<ACCOUNT_ID>',  identifier: '<VIDEO_UID>',});
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+});
+
+
+const download = await client.stream.downloads.audio.create({
+  account_id: '<ACCOUNT_ID>',
+  identifier: '<VIDEO_UID>',
+});
 ```
 
 The response includes the download type, URL, and processing status:
 
-```
-{  "result": {    "audio": {      "status": "inprogress",      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/audio.m4a",      "percentComplete": 75.0    }  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "audio": {
+      "status": "inprogress",
+      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/audio.m4a",
+      "percentComplete": 75.0
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10959)
-* [ wrangler.jsonc ](#tab-panel-10960)
+* [ index.ts ](#tab-panel-11254)
+* [ wrangler.jsonc ](#tab-panel-11255)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videoHandle = env.STREAM.video("VIDEO_ID");    const downloads = await videoHandle.downloads.generate("audio");    return Response.json(downloads);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+    const downloads = await videoHandle.downloads.generate("audio");
+    return Response.json(downloads);
+  },
+};
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "$today",
+  "observability": {
+    "enabled": true
+  },
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -122,44 +194,85 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 You can view all available downloads for a video by making a `GET` HTTP request to the downloads API.
 
-* [ REST API ](#tab-panel-10973)
-* [ Workers Binding API ](#tab-panel-10974)
+* [ REST API ](#tab-panel-11268)
+* [ Workers Binding API ](#tab-panel-11269)
 
-* [ cURL ](#tab-panel-10961)
-* [ TypeScript ](#tab-panel-10962)
+* [ cURL ](#tab-panel-11256)
+* [ TypeScript ](#tab-panel-11257)
 
-Terminal window
-
-```
-curl -X GET \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads
-```
-
-TypeScript
-
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
-const downloads = await client.stream.downloads.get({  account_id: '<ACCOUNT_ID>',  identifier: '<VIDEO_UID>',});
+```bash
+curl -X GET \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads
 ```
 
-Response
+**TypeScript**
 
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+});
+
+
+const downloads = await client.stream.downloads.get({
+  account_id: '<ACCOUNT_ID>',
+  identifier: '<VIDEO_UID>',
+});
 ```
-{  "result": {    "audio": {      "status": "ready",      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/audio.m4a",      "percentComplete": 100.0    }    "default": {      "status": "ready",      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/default.mp4",      "percentComplete": 100.0    }  },  "success": true,  "errors": [],  "messages": []}
+
+**Response**
+
+```json
+{
+  "result": {
+    "audio": {
+      "status": "ready",
+      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/audio.m4a",
+      "percentComplete": 100.0
+    }
+    "default": {
+      "status": "ready",
+      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/default.mp4",
+      "percentComplete": 100.0
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10963)
-* [ wrangler.jsonc ](#tab-panel-10964)
+* [ index.ts ](#tab-panel-11258)
+* [ wrangler.jsonc ](#tab-panel-11259)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videoHandle = env.STREAM.video("VIDEO_ID");    const downloads = await videoHandle.downloads.get();    return Response.json(downloads);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+    const downloads = await videoHandle.downloads.get();
+    return Response.json(downloads);
+  },
+};
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "$today",
+  "observability": {
+    "enabled": true
+  },
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -178,9 +291,7 @@ The `filename` can be a maximum of 120 characters long and composed of `abcdefgh
 
 The generated MP4 download files can be retrieved via the link in the download API response.
 
-Terminal window
-
-```
+```sh
 curl -L https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/default.mp4 > download.mp4
 ```
 
@@ -188,38 +299,63 @@ curl -L https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/defau
 
 You can delete a download for a video. Available types are `default` and `audio`. Defaults to `default` when omitted.
 
-* [ REST API ](#tab-panel-10975)
-* [ Workers Binding API ](#tab-panel-10976)
+* [ REST API ](#tab-panel-11270)
+* [ Workers Binding API ](#tab-panel-11271)
 
-* [ cURL ](#tab-panel-10965)
-* [ TypeScript ](#tab-panel-10966)
+* [ cURL ](#tab-panel-11260)
+* [ TypeScript ](#tab-panel-11261)
 
-Terminal window
-
+```bash
+curl -X DELETE \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads/default
 ```
-curl -X DELETE \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads/default
-```
 
-TypeScript
+**TypeScript**
 
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
-await client.stream.downloads.default.delete({  account_id: '<ACCOUNT_ID>',  identifier: '<VIDEO_UID>',});
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+});
+
+
+await client.stream.downloads.default.delete({
+  account_id: '<ACCOUNT_ID>',
+  identifier: '<VIDEO_UID>',
+});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10967)
-* [ wrangler.jsonc ](#tab-panel-10968)
+* [ index.ts ](#tab-panel-11262)
+* [ wrangler.jsonc ](#tab-panel-11263)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const videoHandle = env.STREAM.video("VIDEO_ID");    await videoHandle.downloads.delete();    return new Response("Download deleted", { status: 200 });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+    await videoHandle.downloads.delete();
+    return new Response("Download deleted", { status: 200 });
+  },
+};
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "$today",
+  "observability": {
+    "enabled": true
+  },
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -230,10 +366,15 @@ If your video is public, the MP4 will also be publicly accessible. If your video
 
 You can generate a signed token using the Stream binding:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const token = await env.STREAM.video("VIDEO_ID").generateToken();
+    return Response.json({ token });
+  },
+};
 ```
 
 Download links will not work for videos which already require signed URLs if the `downloadable` flag is not present in the token.
@@ -242,8 +383,27 @@ For more details about using signed URLs with videos, refer to [Securing your St
 
 **Example token payload**
 
-```
-{    "sub": <VIDEO_UID>,    "kid": <KEY_ID>,    "exp": 1537460365,    "nbf": 1537453165,    "downloadable": true,    "accessRules": [      {        "type": "ip.geoip.country",        "action": "allow",        "country": [          "GB"        ]      },      {        "type": "any",        "action": "block"      }    ]  }
+```json
+{
+    "sub": <VIDEO_UID>,
+    "kid": <KEY_ID>,
+    "exp": 1537460365,
+    "nbf": 1537453165,
+    "downloadable": true,
+    "accessRules": [
+      {
+        "type": "ip.geoip.country",
+        "action": "allow",
+        "country": [
+          "GB"
+        ]
+      },
+      {
+        "type": "any",
+        "action": "block"
+      }
+    ]
+  }
 ```
 
 ## Billing for MP4 downloads

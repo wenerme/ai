@@ -31,14 +31,20 @@ Tooltip component which follows RTK Design System.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-tooltip></rtk-tooltip>
+```html
+<!-- component.html -->
+<rtk-tooltip></rtk-tooltip>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-tooltip delay="42" [disabled]="true" [kind]="tooltipkind"></rtk-tooltip>
+```html
+<!-- component.html -->
+<rtk-tooltip
+ delay="42"
+ [disabled]="true"
+ [kind]="tooltipkind">
+</rtk-tooltip>
 ```
 
 ```json

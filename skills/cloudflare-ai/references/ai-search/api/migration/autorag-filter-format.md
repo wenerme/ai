@@ -18,10 +18,14 @@ This page documents the filter format used by the legacy AutoRAG REST API. For t
 
 Compare a metadata attribute (for example, `folder` or `timestamp`) with a target value:
 
-JavaScript
+**JavaScript**
 
-```
-filters: {  type: "eq",  key: "folder",  value: "customer-a/"}
+```js
+filters: {
+  type: "eq",
+  key: "folder",
+  value: "customer-a/"
+}
 ```
 
 ### Operators
@@ -39,10 +43,16 @@ filters: {  type: "eq",  key: "folder",  value: "customer-a/"}
 
 Combine multiple comparison filters with a logical operator:
 
-JavaScript
+**JavaScript**
 
-```
-filters: {  type: "and",  filters: [    { type: "eq", key: "folder", value: "customer-a/" },    { type: "gte", key: "timestamp", value: "1735689600000" }  ]}
+```js
+filters: {
+  type: "and",
+  filters: [
+    { type: "eq", key: "folder", value: "customer-a/" },
+    { type: "gte", key: "timestamp", value: "1735689600000" }
+  ]
+}
 ```
 
 The available compound operators are `and` and `or`.
@@ -64,10 +74,16 @@ Using `{ type: "eq", key: "folder", value: "customer-a/" }` only matches files d
 
 To match all files starting with `customer-a/`, use a compound filter:
 
-JavaScript
+**JavaScript**
 
-```
-filters: {  type: "and",  filters: [    { type: "gt", key: "folder", value: "customer-a//" },    { type: "lte", key: "folder", value: "customer-a/z" }  ]}
+```js
+filters: {
+  type: "and",
+  filters: [
+    { type: "gt", key: "folder", value: "customer-a//" },
+    { type: "lte", key: "folder", value: "customer-a/z" }
+  ]
+}
 ```
 
 This filter matches all paths starting with `customer-a/` by using:

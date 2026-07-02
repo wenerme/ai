@@ -33,8 +33,8 @@ When a user in a recipient account authenticates, the request is routed through 
 
 ## Share an IdP
 
-* [ Dashboard ](#tab-panel-7298)
-* [ API ](#tab-panel-7299)
+* [ Dashboard ](#tab-panel-7548)
+* [ API ](#tab-panel-7549)
 
 The dashboard combines grant creation and sharing into a single flow. If a federation grant already exists for the IdP, it will be reused; otherwise, one is created automatically.
 
@@ -50,18 +50,21 @@ Sharing an IdP via the API is a two-step process: create a federation grant, the
 
 #### 1\. Create a federation grant
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "idp_id": "<IDP_UUID>"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "idp_id": "<IDP_UUID>"
+  }'
 ```
 
 The response includes the grant `id`, which you will use in the next step. To list all federation grants in your account:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### 2\. Share the grant
@@ -75,18 +78,50 @@ Specify only one of these fields per recipient. If you provide neither, the gran
 
 To share the grant with one or more specific accounts:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Identity provider: OpenID Connect",    "recipients": [        {            "recipient_account_id": "<RECIPIENT_ACCOUNT_ID>"        }    ],    "resources": [        {            "resource_account_id": "<SOURCE_ACCOUNT_ID>",            "resource_id": "<GRANT_ID>",            "resource_type": "idp-federation-grant",            "meta": {}        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Identity provider: OpenID Connect",
+    "recipients": [
+        {
+            "recipient_account_id": "<RECIPIENT_ACCOUNT_ID>"
+        }
+    ],
+    "resources": [
+        {
+            "resource_account_id": "<SOURCE_ACCOUNT_ID>",
+            "resource_id": "<GRANT_ID>",
+            "resource_type": "idp-federation-grant",
+            "meta": {}
+        }
+    ]
+  }'
 ```
 
 To share the grant with every account in your organization, replace the `recipients` array with your organization ID:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Identity provider: OpenID Connect",    "recipients": [        {            "organization_id": "<ORGANIZATION_ID>"        }    ],    "resources": [        {            "resource_account_id": "<SOURCE_ACCOUNT_ID>",            "resource_id": "<GRANT_ID>",            "resource_type": "idp-federation-grant",            "meta": {}        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Identity provider: OpenID Connect",
+    "recipients": [
+        {
+            "organization_id": "<ORGANIZATION_ID>"
+        }
+    ],
+    "resources": [
+        {
+            "resource_account_id": "<SOURCE_ACCOUNT_ID>",
+            "resource_id": "<GRANT_ID>",
+            "resource_type": "idp-federation-grant",
+            "meta": {}
+        }
+    ]
+  }'
 ```
 
 Each recipient account is automatically provisioned with a read-only IdP connection that points to the bridge. When you share with an organization, every account in the organization receives the connection.
@@ -99,8 +134,8 @@ Warning
 
 Deleting the federation grant immediately removes the IdP connection from all recipient accounts. Any Access policies in those accounts that reference the federated IdP will no longer match, which may lock users out. Verify that recipient accounts have alternative authentication methods before you stop sharing.
 
-* [ Dashboard ](#tab-panel-7296)
-* [ API ](#tab-panel-7297)
+* [ Dashboard ](#tab-panel-7546)
+* [ API ](#tab-panel-7547)
 
 The dashboard handles both grant and share deletion in a single flow.
 
@@ -113,18 +148,18 @@ Unfederating an IdP via the API is a two-step process. Deleting the grant stops 
 
 #### 1\. Delete the federation grant
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants/$GRANT_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants/$GRANT_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### 2\. (Optional) Delete the share
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Limitations

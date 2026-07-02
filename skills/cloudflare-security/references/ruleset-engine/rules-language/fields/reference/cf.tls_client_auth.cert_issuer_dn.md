@@ -20,7 +20,7 @@ This field defaults to `""` if the connection does not use [mTLS authentication]
 
 Example value:
 
-```
+```txt
 "CN=Access Testing CA,OU=TX,O=Access Testing,L=Austin,ST=Texas,C=US"
 ```
 

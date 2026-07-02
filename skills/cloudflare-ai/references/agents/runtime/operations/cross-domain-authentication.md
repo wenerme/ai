@@ -44,85 +44,251 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-6521)
-* [  TypeScript ](#tab-panel-6522)
+* [  JavaScript ](#tab-panel-6705)
+* [  TypeScript ](#tab-panel-6706)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { useAgent } from "agents/react";
-function ChatComponent() {  const agent = useAgent({    agent: "my-agent",    query: {      token: "demo-token-123",      userId: "demo-user",    },  });
-  // Use agent to make calls, access state, etc.}
+
+
+function ChatComponent() {
+  const agent = useAgent({
+    agent: "my-agent",
+    query: {
+      token: "demo-token-123",
+      userId: "demo-user",
+    },
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { useAgent } from "agents/react";
-function ChatComponent() {  const agent = useAgent({    agent: "my-agent",    query: {      token: "demo-token-123",      userId: "demo-user",    },  });
-  // Use agent to make calls, access state, etc.}
+
+
+function ChatComponent() {
+  const agent = useAgent({
+    agent: "my-agent",
+    query: {
+      token: "demo-token-123",
+      userId: "demo-user",
+    },
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
 ```
 
 ### Async authentication
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-6527)
-* [  TypeScript ](#tab-panel-6528)
+* [  JavaScript ](#tab-panel-6711)
+* [  TypeScript ](#tab-panel-6712)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { Suspense, useCallback } from "react";
+
+
+function ChatComponent() {
+  const asyncQuery = useCallback(async () => {
+    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+    return {
+      token,
+      userId: user.id,
+      timestamp: Date.now().toString(),
+    };
+  }, []);
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    query: asyncQuery,
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
+
+
+function App() {
+  return (
+    <Suspense fallback={<div>Authenticating...</div>}>
+      <ChatComponent />
+    </Suspense>
+  );
+}
 ```
-import { useAgent } from "agents/react";import { Suspense, useCallback } from "react";
-function ChatComponent() {  const asyncQuery = useCallback(async () => {    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);    return {      token,      userId: user.id,      timestamp: Date.now().toString(),    };  }, []);
-  const agent = useAgent({    agent: "my-agent",    query: asyncQuery,  });
-  // Use agent to make calls, access state, etc.}
-function App() {  return (    <Suspense fallback={<div>Authenticating...</div>}>      <ChatComponent />    </Suspense>  );}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { Suspense, useCallback } from "react";
-function ChatComponent() {  const asyncQuery = useCallback(async () => {    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);    return {      token,      userId: user.id,      timestamp: Date.now().toString(),    };  }, []);
-  const agent = useAgent({    agent: "my-agent",    query: asyncQuery,  });
-  // Use agent to make calls, access state, etc.}
-function App() {  return (    <Suspense fallback={<div>Authenticating...</div>}>      <ChatComponent />    </Suspense>  );}
+```ts
+import { useAgent } from "agents/react";
+import { Suspense, useCallback } from "react";
+
+
+function ChatComponent() {
+  const asyncQuery = useCallback(async () => {
+    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+    return {
+      token,
+      userId: user.id,
+      timestamp: Date.now().toString(),
+    };
+  }, []);
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    query: asyncQuery,
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
+
+
+function App() {
+  return (
+    <Suspense fallback={<div>Authenticating...</div>}>
+      <ChatComponent />
+    </Suspense>
+  );
+}
 ```
 
 ### JWT refresh pattern
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-6529)
-* [  TypeScript ](#tab-panel-6530)
+* [  JavaScript ](#tab-panel-6713)
+* [  TypeScript ](#tab-panel-6714)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { useCallback } from "react";
+
+
+const validateToken = async (token) => {
+  // An example of how you might implement this
+  const res = await fetch(`${API_HOST}/api/users/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+
+  return res.ok;
+};
+
+
+const refreshToken = async () => {
+  // Depends on implementation:
+  // - You could use a longer-lived token to refresh the expired token
+  // - De-auth the app and prompt the user to log in manually
+  // - ...
+};
+
+
+function useJWTAgent(agentName) {
+  const asyncQuery = useCallback(async () => {
+    let token = localStorage.getItem("jwt");
+
+
+    // If no token OR the token is no longer valid
+    // request a fresh token
+    if (!token || !(await validateToken(token))) {
+      token = await refreshToken();
+      localStorage.setItem("jwt", token);
+    }
+
+
+    return {
+      token,
+    };
+  }, []);
+
+
+  const agent = useAgent({
+    agent: agentName,
+    query: asyncQuery,
+    queryDeps: [], // Run on mount
+  });
+
+
+  return agent;
+}
 ```
-import { useAgent } from "agents/react";import { useCallback } from "react";
-const validateToken = async (token) => {  // An example of how you might implement this  const res = await fetch(`${API_HOST}/api/users/me`, {    headers: {      Authorization: `Bearer ${token}`,    },  });
-  return res.ok;};
-const refreshToken = async () => {  // Depends on implementation:  // - You could use a longer-lived token to refresh the expired token  // - De-auth the app and prompt the user to log in manually  // - ...};
-function useJWTAgent(agentName) {  const asyncQuery = useCallback(async () => {    let token = localStorage.getItem("jwt");
-    // If no token OR the token is no longer valid    // request a fresh token    if (!token || !(await validateToken(token))) {      token = await refreshToken();      localStorage.setItem("jwt", token);    }
-    return {      token,    };  }, []);
-  const agent = useAgent({    agent: agentName,    query: asyncQuery,    queryDeps: [], // Run on mount  });
-  return agent;}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { useCallback } from "react";
-const validateToken = async (token: string) => {  // An example of how you might implement this  const res = await fetch(`${API_HOST}/api/users/me`, {    headers: {      Authorization: `Bearer ${token}`,    },  });
-  return res.ok;};
-const refreshToken = async () => {  // Depends on implementation:  // - You could use a longer-lived token to refresh the expired token  // - De-auth the app and prompt the user to log in manually  // - ...};
-function useJWTAgent(agentName: string) {  const asyncQuery = useCallback(async () => {    let token = localStorage.getItem("jwt");
-    // If no token OR the token is no longer valid    // request a fresh token    if (!token || !(await validateToken(token))) {      token = await refreshToken();      localStorage.setItem("jwt", token);    }
-    return {      token,    };  }, []);
-  const agent = useAgent({    agent: agentName,    query: asyncQuery,    queryDeps: [], // Run on mount  });
-  return agent;}
+```ts
+import { useAgent } from "agents/react";
+import { useCallback } from "react";
+
+
+const validateToken = async (token: string) => {
+  // An example of how you might implement this
+  const res = await fetch(`${API_HOST}/api/users/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+
+  return res.ok;
+};
+
+
+const refreshToken = async () => {
+  // Depends on implementation:
+  // - You could use a longer-lived token to refresh the expired token
+  // - De-auth the app and prompt the user to log in manually
+  // - ...
+};
+
+
+function useJWTAgent(agentName: string) {
+  const asyncQuery = useCallback(async () => {
+    let token = localStorage.getItem("jwt");
+
+
+    // If no token OR the token is no longer valid
+    // request a fresh token
+    if (!token || !(await validateToken(token))) {
+      token = await refreshToken();
+      localStorage.setItem("jwt", token);
+    }
+
+
+    return {
+      token,
+    };
+  }, []);
+
+
+  const agent = useAgent({
+    agent: agentName,
+    query: asyncQuery,
+    queryDeps: [], // Run on mount
+  });
+
+
+  return agent;
+}
 ```
 
 ## Cross-domain authentication
@@ -131,77 +297,223 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-6523)
-* [  TypeScript ](#tab-panel-6524)
+* [  JavaScript ](#tab-panel-6707)
+* [  TypeScript ](#tab-panel-6708)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { useAgent } from "agents/react";
-function StaticCrossDomainAuth() {  const agent = useAgent({    agent: "my-agent",    host: "https://my-agent.example.workers.dev",    query: {      token: "demo-token-123",      userId: "demo-user",    },  });
-  // Use agent to make calls, access state, etc.}
+
+
+function StaticCrossDomainAuth() {
+  const agent = useAgent({
+    agent: "my-agent",
+    host: "https://my-agent.example.workers.dev",
+    query: {
+      token: "demo-token-123",
+      userId: "demo-user",
+    },
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { useAgent } from "agents/react";
-function StaticCrossDomainAuth() {  const agent = useAgent({    agent: "my-agent",    host: "https://my-agent.example.workers.dev",    query: {      token: "demo-token-123",      userId: "demo-user",    },  });
-  // Use agent to make calls, access state, etc.}
+
+
+function StaticCrossDomainAuth() {
+  const agent = useAgent({
+    agent: "my-agent",
+    host: "https://my-agent.example.workers.dev",
+    query: {
+      token: "demo-token-123",
+      userId: "demo-user",
+    },
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
 ```
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-6525)
-* [  TypeScript ](#tab-panel-6526)
+* [  JavaScript ](#tab-panel-6709)
+* [  TypeScript ](#tab-panel-6710)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { useCallback } from "react";
+
+
+function AsyncCrossDomainAuth() {
+  const asyncQuery = useCallback(async () => {
+    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+    return {
+      token,
+      userId: user.id,
+      timestamp: Date.now().toString(),
+    };
+  }, []);
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    host: "https://my-agent.example.workers.dev",
+    query: asyncQuery,
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
 ```
-import { useAgent } from "agents/react";import { useCallback } from "react";
-function AsyncCrossDomainAuth() {  const asyncQuery = useCallback(async () => {    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);    return {      token,      userId: user.id,      timestamp: Date.now().toString(),    };  }, []);
-  const agent = useAgent({    agent: "my-agent",    host: "https://my-agent.example.workers.dev",    query: asyncQuery,  });
-  // Use agent to make calls, access state, etc.}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { useCallback } from "react";
-function AsyncCrossDomainAuth() {  const asyncQuery = useCallback(async () => {    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);    return {      token,      userId: user.id,      timestamp: Date.now().toString(),    };  }, []);
-  const agent = useAgent({    agent: "my-agent",    host: "https://my-agent.example.workers.dev",    query: asyncQuery,  });
-  // Use agent to make calls, access state, etc.}
+```ts
+import { useAgent } from "agents/react";
+import { useCallback } from "react";
+
+
+function AsyncCrossDomainAuth() {
+  const asyncQuery = useCallback(async () => {
+    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+    return {
+      token,
+      userId: user.id,
+      timestamp: Date.now().toString(),
+    };
+  }, []);
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    host: "https://my-agent.example.workers.dev",
+    query: asyncQuery,
+  });
+
+
+  // Use agent to make calls, access state, etc.
+}
 ```
 
 ## Server-side verification
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-6531)
-* [  TypeScript ](#tab-panel-6532)
+* [  JavaScript ](#tab-panel-6715)
+* [  TypeScript ](#tab-panel-6716)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, Connection, ConnectionContext } from "agents";
-export class SecureAgent extends Agent {  async onConnect(connection, ctx) {    const url = new URL(ctx.request.url);    const token = url.searchParams.get("token");    const userId = url.searchParams.get("userId");
-    // Verify the token    if (!token || !(await this.verifyToken(token, userId))) {      connection.close(4001, "Unauthorized");      return;    }
-    // Store user info on the connection state    connection.setState({ userId, authenticated: true });  }
-  async verifyToken(token, userId) {    // Implement your token verification logic    // For example, verify a JWT signature, check expiration, etc.    try {      const payload = await verifyJWT(token, this.env.JWT_SECRET);      return payload.sub === userId && payload.exp > Date.now() / 1000;    } catch {      return false;    }  }
-  async onMessage(connection, message) {    // Check if connection is authenticated    if (!connection.state?.authenticated) {      connection.send(JSON.stringify({ error: "Not authenticated" }));      return;    }
-    // Process message for authenticated user    const userId = connection.state.userId;    // ...  }}
+
+
+export class SecureAgent extends Agent {
+  async onConnect(connection, ctx) {
+    const url = new URL(ctx.request.url);
+    const token = url.searchParams.get("token");
+    const userId = url.searchParams.get("userId");
+
+
+    // Verify the token
+    if (!token || !(await this.verifyToken(token, userId))) {
+      connection.close(4001, "Unauthorized");
+      return;
+    }
+
+
+    // Store user info on the connection state
+    connection.setState({ userId, authenticated: true });
+  }
+
+
+  async verifyToken(token, userId) {
+    // Implement your token verification logic
+    // For example, verify a JWT signature, check expiration, etc.
+    try {
+      const payload = await verifyJWT(token, this.env.JWT_SECRET);
+      return payload.sub === userId && payload.exp > Date.now() / 1000;
+    } catch {
+      return false;
+    }
+  }
+
+
+  async onMessage(connection, message) {
+    // Check if connection is authenticated
+    if (!connection.state?.authenticated) {
+      connection.send(JSON.stringify({ error: "Not authenticated" }));
+      return;
+    }
+
+
+    // Process message for authenticated user
+    const userId = connection.state.userId;
+    // ...
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, Connection, ConnectionContext } from "agents";
-export class SecureAgent extends Agent {  async onConnect(connection: Connection, ctx: ConnectionContext) {    const url = new URL(ctx.request.url);    const token = url.searchParams.get("token");    const userId = url.searchParams.get("userId");
-    // Verify the token    if (!token || !(await this.verifyToken(token, userId))) {      connection.close(4001, "Unauthorized");      return;    }
-    // Store user info on the connection state    connection.setState({ userId, authenticated: true });  }
-  private async verifyToken(token: string, userId: string): Promise<boolean> {    // Implement your token verification logic    // For example, verify a JWT signature, check expiration, etc.    try {      const payload = await verifyJWT(token, this.env.JWT_SECRET);      return payload.sub === userId && payload.exp > Date.now() / 1000;    } catch {      return false;    }  }
-  async onMessage(connection: Connection, message: string) {    // Check if connection is authenticated    if (!connection.state?.authenticated) {      connection.send(JSON.stringify({ error: "Not authenticated" }));      return;    }
-    // Process message for authenticated user    const userId = connection.state.userId;    // ...  }}
+
+
+export class SecureAgent extends Agent {
+  async onConnect(connection: Connection, ctx: ConnectionContext) {
+    const url = new URL(ctx.request.url);
+    const token = url.searchParams.get("token");
+    const userId = url.searchParams.get("userId");
+
+
+    // Verify the token
+    if (!token || !(await this.verifyToken(token, userId))) {
+      connection.close(4001, "Unauthorized");
+      return;
+    }
+
+
+    // Store user info on the connection state
+    connection.setState({ userId, authenticated: true });
+  }
+
+
+  private async verifyToken(token: string, userId: string): Promise<boolean> {
+    // Implement your token verification logic
+    // For example, verify a JWT signature, check expiration, etc.
+    try {
+      const payload = await verifyJWT(token, this.env.JWT_SECRET);
+      return payload.sub === userId && payload.exp > Date.now() / 1000;
+    } catch {
+      return false;
+    }
+  }
+
+
+  async onMessage(connection: Connection, message: string) {
+    // Check if connection is authenticated
+    if (!connection.state?.authenticated) {
+      connection.send(JSON.stringify({ error: "Not authenticated" }));
+      return;
+    }
+
+
+    // Process message for authenticated user
+    const userId = connection.state.userId;
+    // ...
+  }
+}
 ```
 
 ## Best practices

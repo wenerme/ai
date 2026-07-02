@@ -31,7 +31,7 @@ To deploy the Cloudflare One Client on Windows using Intune:
 9. In the **Name** field, we recommend entering the version number of the package being uploaded.
 10. In the **Publisher** field, we recommend entering `Cloudflare, Inc`.
 11. In the **Command-line arguments** field, enter a valid installation command. For example:
-```
+```txt
 /qn ORGANIZATION="your-team-name" SUPPORT_URL="http://support.example.com"
 ```
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument. You can change these parameters at any time by pushing a new [MDM file](#update-mdm-parameters).
@@ -53,12 +53,55 @@ To push a new `mdm.xml` file using Intune:
 4. Select **Windows 10 and later**.
 5. Enter a name for the script (for example, `Deploy Cloudflare mdm.xml`).
 6. In **PowerShell script**, upload the following `.ps1` file. Be sure to modify the XML content with your desired [parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
-mdm-template.ps1
-```
-# Define the path to the file$filePath = "C:\ProgramData\Cloudflare\mdm.xml"
-# Create the XML content as a string$xmlContent = @"<dict>  <key>multi_user</key>  <true/>  <key>pre_login</key>  <dict>    <key>organization</key>    <string>mycompany</string>    <key>auth_client_id</key>    <string>88bf3b6d86161464f6509f7219099e57.access</string>    <key>auth_client_secret</key>    <string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>  </dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>mycompany</string>      <key>display_name</key>      <string>Production environment</string>    </dict>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Test environment</string>    </dict>  </array></dict>"@
-# Ensure the directory exists$directory = Split-Path $filePath -parentif (-not (Test-Path $directory)) {  New-Item -ItemType Directory -Path $directory | Out-Null}
-# Write the XML content to the filetry {  $xmlContent | Out-File -Encoding UTF8 -FilePath $filePath  Write-Host "mdm.xml file created successfully at: $filePath"}catch {  Write-Error "Failed to create mdm.xml file: $_"}
+
+**mdm-template.ps1**
+```powershell
+# Define the path to the file
+$filePath = "C:\ProgramData\Cloudflare\mdm.xml"
+# Create the XML content as a string
+$xmlContent = @"
+<dict>
+  <key>multi_user</key>
+  <true/>
+  <key>pre_login</key>
+  <dict>
+    <key>organization</key>
+    <string>mycompany</string>
+    <key>auth_client_id</key>
+    <string>88bf3b6d86161464f6509f7219099e57.access</string>
+    <key>auth_client_secret</key>
+    <string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
+  </dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>mycompany</string>
+      <key>display_name</key>
+      <string>Production environment</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Test environment</string>
+    </dict>
+  </array>
+</dict>
+"@
+# Ensure the directory exists
+$directory = Split-Path $filePath -parent
+if (-not (Test-Path $directory)) {
+  New-Item -ItemType Directory -Path $directory | Out-Null
+}
+# Write the XML content to the file
+try {
+  $xmlContent | Out-File -Encoding UTF8 -FilePath $filePath
+  Write-Host "mdm.xml file created successfully at: $filePath"
+}
+catch {
+  Write-Error "Failed to create mdm.xml file: $_"
+}
 ```
 7. In **Assignments**, select the Windows devices that should receive the new `mdm.xml` file.
 8. To deploy the script, select **Add**.
@@ -137,13 +180,13 @@ Before deploying the Cloudflare One Client, you need to allow its system extensi
   * Team Identifier: `68WVV388M8`
 ![Intune admin console where you enter team identifier and bundle identifier](https://developers.cloudflare.com/_astro/intune-bundle-team-identifier.D4Pncyz9_Z1bD6s7.webp)
 Running the following command in the terminal will return the verified identifiers. This validation ensures that the values you enter into Intune match the official application signatures guaranteed by Apple.
-Terminal window
-```
+```bash
 codesign -dv --verbose=4 /Applications/Cloudflare\ WARP.app 2>&1 | grep Identifier
 ```
 Expected output:
-```
-Identifier=com.cloudflare.1dot1dot1dot1.macosTeamIdentifier=68WVV388M8
+```txt
+Identifier=com.cloudflare.1dot1dot1dot1.macos
+TeamIdentifier=68WVV388M8
 ```
 10. Select **Save**.
 11. In **Scope tags**, select **Next**.
@@ -155,14 +198,62 @@ This step allows the Cloudflare One Client to install without user interaction. 
 ### 3\. Upload `MobileConfig` configuration
 
 1. Open a text editor and paste in the following `.mobileconfig` template:
-```
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0">    <dict>        <key>PayloadDisplayName</key>        <string>Cloudflare WARP</string>        <key>PayloadIdentifier</key>        <string>cloudflare_warp</string>        <key>PayloadOrganization</key>        <string>Cloudflare, Ltd.</string>        <key>PayloadRemovalDisallowed</key>        <false/>        <key>PayloadType</key>        <string>Configuration</string>        <key>PayloadScope</key>        <string>System</string>        <key>PayloadUUID</key>        <string>YOUR_PAYLOAD_UUID_HERE</string>        <key>PayloadVersion</key>        <integer>1</integer>        <key>PayloadContent</key>        <array>            <dict>                <key>organization</key>                <string>YOUR_TEAM_NAME_HERE</string>                <key>auto_connect</key>                <integer>120</integer>                <key>onboarding</key>                <false/>                <key>PayloadDisplayName</key>                <string>Warp Configuration</string>                <key>PayloadIdentifier</key>                <string>com.cloudflare.warp.YOUR_PAYLOAD_UUID_HERE</string>                <key>PayloadOrganization</key>                <string>Cloudflare Ltd.</string>                <key>PayloadType</key>                <string>com.cloudflare.warp</string>                <key>PayloadUUID</key>                <string>YOUR_PAYLOAD_UUID_HERE</string>                <key>PayloadVersion</key>                <integer>1</integer>            </dict>        </array>    </dict></plist>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>PayloadDisplayName</key>
+        <string>Cloudflare WARP</string>
+        <key>PayloadIdentifier</key>
+        <string>cloudflare_warp</string>
+        <key>PayloadOrganization</key>
+        <string>Cloudflare, Ltd.</string>
+        <key>PayloadRemovalDisallowed</key>
+        <false/>
+        <key>PayloadType</key>
+        <string>Configuration</string>
+        <key>PayloadScope</key>
+        <string>System</string>
+        <key>PayloadUUID</key>
+        <string>YOUR_PAYLOAD_UUID_HERE</string>
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadContent</key>
+        <array>
+            <dict>
+                <key>organization</key>
+                <string>YOUR_TEAM_NAME_HERE</string>
+                <key>auto_connect</key>
+                <integer>120</integer>
+                <key>onboarding</key>
+                <false/>
+                <key>PayloadDisplayName</key>
+                <string>Warp Configuration</string>
+                <key>PayloadIdentifier</key>
+                <string>com.cloudflare.warp.YOUR_PAYLOAD_UUID_HERE</string>
+                <key>PayloadOrganization</key>
+                <string>Cloudflare Ltd.</string>
+                <key>PayloadType</key>
+                <string>com.cloudflare.warp</string>
+                <key>PayloadUUID</key>
+                <string>YOUR_PAYLOAD_UUID_HERE</string>
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+            </dict>
+        </array>
+    </dict>
+</plist>
 ```
 2. Open your macOS Terminal and run `uuidgen`. This will generate a value for `PayloadUUID`. Use this value to replace the default value (`YOUR_PAYLOAD_UUID_HERE`) used in the template (three locations total).
 3. Update your organization's string (`YOUR_TEAM_NAME_HERE`) with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name).
 4. Modify the file with your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
-```
-<array>  <dict>      <key>organization</key>      <string>YOUR_TEAM_NAME_HERE</string>      // add desired deployment parameters here
+```xml
+<array>
+  <dict>
+      <key>organization</key>
+      <string>YOUR_TEAM_NAME_HERE</string>
+      // add desired deployment parameters here
 ```
 Best practice
 Start by deploying the template in its default, minimal form. This helps you verify a successful deployment before adding custom parameters.
@@ -255,8 +346,13 @@ By completing this step, you deliver the Cloudflare One Client to targeted iOS d
 2. Select **Create** \> _Managed devices_.
 3. In **Basics**, input the necessary field(s) and give your policy an easily identifiable name like `Cloudflare One Agent`. Select _iOS/iPadOS_ for Platform and target the Cloudflare One Agent app. Select **Next**.
 4. In **Settings**, select _Enter XML data_ and copy and paste the following:
-```
-<dict>  <key>organization</key>  <string>YOUR_TEAM_NAME_HERE</string>  <key>auto_connect</key>  <integer>1</integer></dict>
+```xml
+<dict>
+  <key>organization</key>
+  <string>YOUR_TEAM_NAME_HERE</string>
+  <key>auto_connect</key>
+  <integer>1</integer>
+</dict>
 ```
 Replace `YOUR_TEAM_NAME_HERE` with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name). Review the definitions of the above parameters in the [Parameters documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
 Successfully complete your registration
@@ -342,8 +438,54 @@ To deploy the Cloudflare One Client on Android devices:
 9. Choose your desired **Profile Type**.
 10. For **Targeted app**, select **Cloudflare One Agent**. Select **Next**.
 11. For **Configuration settings format**, select _Enter JSON data_. Enter your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) in the `managedProperty` field. For example:
-```
-{  "kind": "androidenterprise#managedConfiguration",  "productId": "app:com.cloudflare.cloudflareoneagent",  "managedProperty": [    {      "key": "app_config_bundle_list",      "valueBundleArray": [        {          "managedProperty": [            {              "key": "organization",              "valueString": "your-team-name"            },            {              "key": "display_name",              "valueString": "Production environment"            },            {              "key": "service_mode",              "valueString": "warp"            },            {              "key": "onboarding",              "valueBool": false            },            {              "key": "support_url",              "valueString": "https://support.example.com/"            }          ]        },        {          "managedProperty": [            {              "key": "organization",              "valueString": "test-org"            },            {              "key": "display_name",              "valueString": "Test environment"            }          ]        }      ]    }  ]}
+```json
+{
+  "kind": "androidenterprise#managedConfiguration",
+  "productId": "app:com.cloudflare.cloudflareoneagent",
+  "managedProperty": [
+    {
+      "key": "app_config_bundle_list",
+      "valueBundleArray": [
+        {
+          "managedProperty": [
+            {
+              "key": "organization",
+              "valueString": "your-team-name"
+            },
+            {
+              "key": "display_name",
+              "valueString": "Production environment"
+            },
+            {
+              "key": "service_mode",
+              "valueString": "warp"
+            },
+            {
+              "key": "onboarding",
+              "valueBool": false
+            },
+            {
+              "key": "support_url",
+              "valueString": "https://support.example.com/"
+            }
+          ]
+        },
+        {
+          "managedProperty": [
+            {
+              "key": "organization",
+              "valueString": "test-org"
+            },
+            {
+              "key": "display_name",
+              "valueString": "Test environment"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 Alternatively, if you do not want to copy and paste the JSON data, you can change **Configuration settings format** to _Use configuration designer_ and manually configure each deployment parameter.
 Once you have configured the deployment parameters, select **Next**.
@@ -393,9 +535,91 @@ To configure your Cloudflare One Agent app policy:
 
   1. Select **Configuration setting format** as **Enter JSON data**.
   2. Enter your desired deployment parameters in the `managedProperty` field. For example:
-  Terminal window
-  ```
-    {  "kind": "androidenterprise#managedConfiguration",  "productId": "app:com.cloudflare.cloudflareoneagent",  "managedProperty": [    {      "key": "app_config_bundle_list",      "valueBundleArray": [        {          "managedProperty": [            {              "key": "organization",              "valueString": "${ORGANIZATION_NAME-1}"            },            {              "key": "service_mode",              "valueString": "warp"            },            {              "key": "onboarding",              "valueBool": true            },            {              "key": "display_name",              "valueString": "${UNIQUE_DISPLAY_NAME-1}"            },            {              "key": "warp_tunnel_protocol",              "valueString": "MASQUE"            },            {              "key": "tunneled_apps",              "valueBundleArray" :[                {                  "managedProperty": [                    {                      "key": "app_identifier",                      "valueString": "com.android.chrome" # Application package name/unique bundle identifier for the Chrome app browser                    },                    {                      "key": "is_browser",                      "valueBool": true                    }                  ]                },                {                  "managedProperty": [                    {                      "key": "app_identifier",                      "valueString": "com.google.android.gm" # Application package name/unique bundle identifier for the Gmail app                    },                    {                      "key": "is_browser",                      "valueBool": false # Default value is false, if a user does not define `is_browser` property our app would not treat `app_identifier` package name as a browser.                    }                  ]                }              ]            }          ]        },        {          "managedProperty": [            {              "key": "organization",              "valueString": "${ORGANIZATION_NAME-1}"            },            {              "key": "service_mode",              "valueString": "warp"            },            {              "key": "display_name",              "valueString": "${UNIQUE_DISPLAY_NAME-2}"            },            {              "key": "warp_tunnel_protocol",              "valueString": "wireguard"            }          ]        }      ]    }  ]}
+  ```sh
+    {
+    "kind": "androidenterprise#managedConfiguration",
+    "productId": "app:com.cloudflare.cloudflareoneagent",
+    "managedProperty": [
+      {
+        "key": "app_config_bundle_list",
+        "valueBundleArray": [
+          {
+            "managedProperty": [
+              {
+                "key": "organization",
+                "valueString": "${ORGANIZATION_NAME-1}"
+              },
+              {
+                "key": "service_mode",
+                "valueString": "warp"
+              },
+              {
+                "key": "onboarding",
+                "valueBool": true
+              },
+              {
+                "key": "display_name",
+                "valueString": "${UNIQUE_DISPLAY_NAME-1}"
+              },
+              {
+                "key": "warp_tunnel_protocol",
+                "valueString": "MASQUE"
+              },
+              {
+                "key": "tunneled_apps",
+                "valueBundleArray" :[
+                  {
+                    "managedProperty": [
+                      {
+                        "key": "app_identifier",
+                        "valueString": "com.android.chrome" # Application package name/unique bundle identifier for the Chrome app browser
+                      },
+                      {
+                        "key": "is_browser",
+                        "valueBool": true
+                      }
+                    ]
+                  },
+                  {
+                    "managedProperty": [
+                      {
+                        "key": "app_identifier",
+                        "valueString": "com.google.android.gm" # Application package name/unique bundle identifier for the Gmail app
+                      },
+                      {
+                        "key": "is_browser",
+                        "valueBool": false # Default value is false, if a user does not define `is_browser` property our app would not treat `app_identifier` package name as a browser.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "managedProperty": [
+              {
+                "key": "organization",
+                "valueString": "${ORGANIZATION_NAME-1}"
+              },
+              {
+                "key": "service_mode",
+                "valueString": "warp"
+              },
+              {
+                "key": "display_name",
+                "valueString": "${UNIQUE_DISPLAY_NAME-2}"
+              },
+              {
+                "key": "warp_tunnel_protocol",
+                "valueString": "wireguard"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
   ```
   Refer to [Per-app VPN parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#per-app-vpn-parameters-android) to learn more about the MDM parameters introduced to support the per-app VPN for Android devices.
   3. After you have configured the deployment parameters, click **Next**.

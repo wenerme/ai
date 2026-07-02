@@ -20,10 +20,12 @@ To move your application to Cloudflare Pages, you will need to find your build c
 
 You will use these to tell Cloudflare Pages how to deploy your project. If you have been deploying manually from your local machine using the `firebase` command-line tool, the `firebase.json` configuration file should include a `public` key that will be your build directory:
 
-firebase.json
+**firebase.json**
 
-```
-{  "public": "public"}
+```json
+{
+  "public": "public"
+}
 ```
 
 Firebase Hosting does not ask for your build command, so if you are running a standard JavaScript set up, you will probably be using `npm build` or a command specific to the framework or tool you are using (for example, `ng build`).

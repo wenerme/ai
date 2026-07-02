@@ -66,8 +66,7 @@ GCS performs [decompressive transcoding ↗](https://cloud.google.com/storage/do
 To download log files in their original compressed format, use one of the following approaches:
 
 * **Include `Accept-Encoding: gzip` in your download request headers.** For example, when using gsutil:
-Terminal window
-```
+```sh
 gsutil -h "Accept-Encoding: gzip" cp gs://your-bucket/path/file.log.gz .
 ```
 

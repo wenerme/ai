@@ -17,13 +17,13 @@ To rewrite paths like `/images/<FOLDER1>/<FOLDER2>/<FILENAME>` — where `<FOLDE
 
 Text in **Expression Editor**:
 
-```
+```txt
 http.request.uri.path ~ "^/images/[^/]+/[^/]+/[^/]+$"
 ```
 
 Text after **Path** \> **Rewrite to** \> _Dynamic_:
 
-```
+```txt
 regex_replace(http.request.uri.path, "^/images/[^/]+/[^/]+/(.+)$", "/img/${1}")
 ```
 

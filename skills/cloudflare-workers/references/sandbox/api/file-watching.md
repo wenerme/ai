@@ -20,9 +20,9 @@ Monitor filesystem changes in real-time using Linux's native inotify system. The
 
 Watch a directory for filesystem changes. Returns an SSE stream of events.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const stream = await sandbox.watch(path: string, options?: WatchOptions): Promise<ReadableStream<Uint8Array>>
 ```
 
@@ -37,37 +37,98 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-10243)
-* [  TypeScript ](#tab-panel-10244)
+* [  JavaScript ](#tab-panel-10538)
+* [  TypeScript ](#tab-panel-10539)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { parseSSEStream } from "@cloudflare/sandbox";
-const stream = await sandbox.watch("/workspace/src", {  recursive: true,  include: ["*.ts", "*.js"],});
+
+
+const stream = await sandbox.watch("/workspace/src", {
+  recursive: true,
+  include: ["*.ts", "*.js"],
+});
+
+
 const controller = new AbortController();
-for await (const event of parseSSEStream(stream, controller.signal)) {  switch (event.type) {    case "watching":      console.log(`Watch established on ${event.path} (id: ${event.watchId})`);      break;    case "event":      console.log(`${event.eventType}: ${event.path}`);      break;    case "error":      console.error(`Watch error: ${event.error}`);      break;    case "stopped":      console.log(`Watch stopped: ${event.reason}`);      break;  }}
-// Cancel the watch by aborting — cleans up the watcher server-sidecontroller.abort();
+
+
+for await (const event of parseSSEStream(stream, controller.signal)) {
+  switch (event.type) {
+    case "watching":
+      console.log(`Watch established on ${event.path} (id: ${event.watchId})`);
+      break;
+    case "event":
+      console.log(`${event.eventType}: ${event.path}`);
+      break;
+    case "error":
+      console.error(`Watch error: ${event.error}`);
+      break;
+    case "stopped":
+      console.log(`Watch stopped: ${event.reason}`);
+      break;
+  }
+}
+
+
+// Cancel the watch by aborting — cleans up the watcher server-side
+controller.abort();
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-const stream = await sandbox.watch("/workspace/src", {  recursive: true,  include: ["*.ts", "*.js"],});
+```ts
+import { parseSSEStream } from "@cloudflare/sandbox";
+import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+
+
+const stream = await sandbox.watch("/workspace/src", {
+  recursive: true,
+  include: ["*.ts", "*.js"],
+});
+
+
 const controller = new AbortController();
-for await (const event of parseSSEStream<FileWatchSSEEvent>(  stream,  controller.signal,)) {  switch (event.type) {    case "watching":      console.log(`Watch established on ${event.path} (id: ${event.watchId})`);      break;    case "event":      console.log(`${event.eventType}: ${event.path}`);      break;    case "error":      console.error(`Watch error: ${event.error}`);      break;    case "stopped":      console.log(`Watch stopped: ${event.reason}`);      break;  }}
-// Cancel the watch by aborting — cleans up the watcher server-sidecontroller.abort();
+
+
+for await (const event of parseSSEStream<FileWatchSSEEvent>(
+  stream,
+  controller.signal,
+)) {
+  switch (event.type) {
+    case "watching":
+      console.log(`Watch established on ${event.path} (id: ${event.watchId})`);
+      break;
+    case "event":
+      console.log(`${event.eventType}: ${event.path}`);
+      break;
+    case "error":
+      console.error(`Watch error: ${event.error}`);
+      break;
+    case "stopped":
+      console.log(`Watch stopped: ${event.reason}`);
+      break;
+  }
+}
+
+
+// Cancel the watch by aborting — cleans up the watcher server-side
+controller.abort();
 ```
 
 Note
 
 The `watch()` method is also available on sessions. When called on a session, the `sessionId` is set automatically:
 
-TypeScript
+**TypeScript**
 
-```
-const session = await sandbox.createSession();const stream = await session.watch("/workspace/src", {  include: ["*.ts"],});
+```ts
+const session = await sandbox.createSession();
+const stream = await session.watch("/workspace/src", {
+  include: ["*.ts"],
+});
 ```
 
 ## Types
@@ -76,10 +137,20 @@ const session = await sandbox.createSession();const stream = await session.watch
 
 Union type of all SSE events emitted by the watch stream.
 
-TypeScript
+**TypeScript**
 
-```
-type FileWatchSSEEvent =  | { type: "watching"; path: string; watchId: string }  | {      type: "event";      eventType: FileWatchEventType;      path: string;      isDirectory: boolean;      timestamp: string;    }  | { type: "error"; error: string }  | { type: "stopped"; reason: string };
+```ts
+type FileWatchSSEEvent =
+  | { type: "watching"; path: string; watchId: string }
+  | {
+      type: "event";
+      eventType: FileWatchEventType;
+      path: string;
+      isDirectory: boolean;
+      timestamp: string;
+    }
+  | { type: "error"; error: string }
+  | { type: "stopped"; reason: string };
 ```
 
 * **`watching`** — Emitted once when the watch is established. Contains the `watchId` and the `path` being watched.
@@ -91,10 +162,16 @@ type FileWatchSSEEvent =  | { type: "watching"; path: string; watchId: string } 
 
 Types of filesystem changes that can be detected.
 
-TypeScript
+**TypeScript**
 
-```
-type FileWatchEventType =  | "create"  | "modify"  | "delete"  | "move_from"  | "move_to"  | "attrib";
+```ts
+type FileWatchEventType =
+  | "create"
+  | "modify"
+  | "delete"
+  | "move_from"
+  | "move_to"
+  | "attrib";
 ```
 
 * **`create`** — File or directory was created
@@ -108,10 +185,19 @@ type FileWatchEventType =  | "create"  | "modify"  | "delete"  | "move_from"  | 
 
 Configuration options for watching directories.
 
-TypeScript
+**TypeScript**
 
-```
-interface WatchOptions {  /** Watch subdirectories recursively (default: true) */  recursive?: boolean;  /** Glob patterns to include. Cannot be used together with `exclude`. */  include?: string[];  /** Glob patterns to exclude. Cannot be used together with `include`. Default: ['.git', 'node_modules', '.DS_Store'] */  exclude?: string[];  /** Session to run the watch in. If omitted, the sandbox's implicit execution mode is used. */  sessionId?: string;}
+```ts
+interface WatchOptions {
+  /** Watch subdirectories recursively (default: true) */
+  recursive?: boolean;
+  /** Glob patterns to include. Cannot be used together with `exclude`. */
+  include?: string[];
+  /** Glob patterns to exclude. Cannot be used together with `include`. Default: ['.git', 'node_modules', '.DS_Store'] */
+  exclude?: string[];
+  /** Session to run the watch in. If omitted, the sandbox's implicit execution mode is used. */
+  sessionId?: string;
+}
 ```
 
 Mutual exclusivity
@@ -122,10 +208,13 @@ Mutual exclusivity
 
 Converts a `ReadableStream<Uint8Array>` into a typed `AsyncGenerator` of events. Accepts an optional `AbortSignal` to cancel the stream.
 
-TypeScript
+**TypeScript**
 
-```
-function parseSSEStream<T>(  stream: ReadableStream<Uint8Array>,  signal?: AbortSignal,): AsyncGenerator<T>;
+```ts
+function parseSSEStream<T>(
+  stream: ReadableStream<Uint8Array>,
+  signal?: AbortSignal,
+): AsyncGenerator<T>;
 ```
 
 **Parameters**:
@@ -135,12 +224,22 @@ function parseSSEStream<T>(  stream: ReadableStream<Uint8Array>,  signal?: Abort
 
 Aborting the signal is the recommended way to stop a watch from outside the consuming loop:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const controller = new AbortController();
-// Cancel after 60 secondssetTimeout(() => controller.abort(), 60_000);
-for await (const event of parseSSEStream<FileWatchSSEEvent>(  stream,  controller.signal,)) {  // process events}
+
+
+// Cancel after 60 seconds
+setTimeout(() => controller.abort(), 60_000);
+
+
+for await (const event of parseSSEStream<FileWatchSSEEvent>(
+  stream,
+  controller.signal,
+)) {
+  // process events
+}
 ```
 
 ## Glob pattern support

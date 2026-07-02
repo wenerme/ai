@@ -31,8 +31,7 @@ These instructions are not meant for configuring a service to run against an API
 Once you have [installed cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/), you can use it to retrieve a Cloudflare Access [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/). This walkthrough uses the domain `example.com` as a stand-in for a protected API.
 
 1. To generate a token, run the following command:
-Terminal window
-```
+```sh
 cloudflared access login https://example.com
 ```
 With this command, `cloudflared` launches a browser window containing the same Access login page found when attempting to access a web application.
@@ -48,9 +47,7 @@ The token is valid for the [session duration](https://developers.cloudflare.com/
 
 Once you have retrieved a token, you can access the protected API. The `cloudflared` command-line tool includes a wrapper for transferring data via `curl`, which uses URL syntax (for more, see the [curl ↗](https://github.com/curl/curl) GitHub project). The wrapper injects the token into the `curl` request as a query argument named _token_. You can invoke the wrapper as follows:
 
-Terminal window
-
-```
+```sh
 cloudflared access curl http://example.com
 ```
 
@@ -64,9 +61,7 @@ Read on for other available commands.
 
 The `login` command initiates the login flow for an application behind Access.
 
-Terminal window
-
-```
+```sh
 cloudflared access login http://example.com
 ```
 
@@ -74,9 +69,7 @@ cloudflared access login http://example.com
 
 The `curl` command invokes the client wrapper and includes the token in the request automatically.
 
-Terminal window
-
-```
+```sh
 cloudflared access curl http://example.com
 ```
 
@@ -84,9 +77,7 @@ cloudflared access curl http://example.com
 
 The `token` command retrieves the token scoped to that specific application for use in other command-line tools.
 
-Terminal window
-
-```
+```sh
 cloudflared access token -app=http://example.com
 ```
 
@@ -97,21 +88,17 @@ It is possible to save the token as an environment variable for convenience and 
 Set up a token as an environment variable as follows:
 
 1. Run the following command to export the token to the shell environment:
-Terminal window
-```
+```sh
 export TOKEN=$(cloudflared access token -app=http://example.com)
 ```
 2. Confirm the token was saved with the following:
-Terminal window
-```
+```sh
 echo $TOKEN
 ```
 
 Once you have exported the token to your environment, use the variable with the Cloudflare Access request header in the script to access a protected endpoint, as in the following example:
 
-Terminal window
-
-```
+```sh
 curl -H "cf-access-token: $TOKEN" https://example.com/rest/api/2/item/foo-123
 ```
 

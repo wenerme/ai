@@ -80,10 +80,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Domain API Gateway`
 * `Domain API Gateway Read`
 
-Retrieve information about an operation
+**Retrieve information about an operation**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations/$OPERATION_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations/$OPERATION_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Special cases
@@ -108,10 +110,13 @@ If you offer multiple tiers on your website or application and you want to enfor
 
 You can follow the rate limiting rule example below:
 
-Example rule expression
+**Example rule expression**
 
-```
-(http.request.method eq "GET" andhttp.host eq "<YOUR_DOMAIN>" andhttp.request.uri.path matches "</EXAMPLE_PATH>" andlookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
+```txt
+(http.request.method eq "GET" and
+http.host eq "<YOUR_DOMAIN>" and
+http.request.uri.path matches "</EXAMPLE_PATH>" and
+lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
 ```
 
 ## Limitations

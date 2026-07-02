@@ -52,30 +52,62 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-8277)
-* [  TypeScript ](#tab-panel-8278)
-* [  Python ](#tab-panel-8279)
+* [  JavaScript ](#tab-panel-8560)
+* [  TypeScript ](#tab-panel-8561)
+* [  Python ](#tab-panel-8562)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Counter extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+  }
+
+
+  async increment() {
+    let value = (await this.ctx.storage.get("value")) || 0;
+    value += 1;
+    await this.ctx.storage.put("value", value);
+    return value;
+  }
+}
 ```
-export class Counter extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
-  async increment() {    let value = (await this.ctx.storage.get("value")) || 0;    value += 1;    await this.ctx.storage.put("value", value);    return value;  }}
+
+**TypeScript**
+
+```ts
+export class Counter extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  async increment(): Promise<number> {
+    let value: number = (await this.ctx.storage.get("value")) || 0;
+    value += 1;
+    await this.ctx.storage.put("value", value);
+    return value;
+  }
+}
 ```
 
-TypeScript
+**Python**
 
-```
-export class Counter extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  async increment(): Promise<number> {    let value: number = (await this.ctx.storage.get("value")) || 0;    value += 1;    await this.ctx.storage.put("value", value);    return value;  }}
-```
-
-Python
-
-```
+```python
 from workers import DurableObject
-class Counter(DurableObject):  def __init__(self, ctx, env):    super().__init__(ctx, env)
-  async def increment(self):    value = (await self.ctx.storage.get("value")) or 0    value += 1    await self.ctx.storage.put("value", value)    return value
+
+
+class Counter(DurableObject):
+  def __init__(self, ctx, env):
+    super().__init__(ctx, env)
+
+
+  async def increment(self):
+    value = (await self.ctx.storage.get("value")) or 0
+    value += 1
+    await self.ctx.storage.put("value", value)
+    return value
 ```
 
 JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).

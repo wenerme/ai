@@ -114,14 +114,43 @@ When a request matches DLP policies (whether flagged or blocked), an additional 
 
 #### Header schema
 
-```
-{  "findings": [    {      "profile": {        "context": {},        "entry_ids": ["string"],        "profile_id": "string"      },      "policy_ids": ["string"],      "check": "REQUEST" | "RESPONSE"    }  ],  "action": "BLOCK" | "FLAG"}
+```json
+{
+  "findings": [
+    {
+      "profile": {
+        "context": {},
+        "entry_ids": ["string"],
+        "profile_id": "string"
+      },
+      "policy_ids": ["string"],
+      "check": "REQUEST" | "RESPONSE"
+    }
+  ],
+  "action": "BLOCK" | "FLAG"
+}
 ```
 
 #### Example header value
 
-```
-{  "findings": [    {      "profile": {        "context": {},        "entry_ids": [          "a1b2c3d4-e5f6-7890-abcd-ef1234567890",          "f7e8d9c0-b1a2-3456-789a-bcdef0123456"        ],        "profile_id": "12345678-90ab-cdef-1234-567890abcdef"      },      "policy_ids": ["block_financial_data"],      "check": "REQUEST"    }  ],  "action": "BLOCK"}
+```json
+{
+  "findings": [
+    {
+      "profile": {
+        "context": {},
+        "entry_ids": [
+          "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "f7e8d9c0-b1a2-3456-789a-bcdef0123456"
+        ],
+        "profile_id": "12345678-90ab-cdef-1234-567890abcdef"
+      },
+      "policy_ids": ["block_financial_data"],
+      "check": "REQUEST"
+    }
+  ],
+  "action": "BLOCK"
+}
 ```
 
 Use this header to programmatically detect which DLP profiles and entries were matched, which policies triggered, and whether the match occurred in the request or response.
@@ -141,10 +170,25 @@ When DLP blocks a request, your application will receive structured error respon
 
 Handle these errors in your application:
 
-JavaScript
+**JavaScript**
 
-```
-try {  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: userInput  }, {    gateway: {id: 'your-gateway-id'}  })  return Response.json(res)} catch (e) {  if ((e as Error).message.includes('2029')) {    return new Response('Request contains sensitive data and cannot be processed.')  }  if ((e as Error).message.includes('2030')) {    return new Response('AI response was blocked due to sensitive content.')  }  return new Response('AI request failed')}
+```js
+try {
+  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+    prompt: userInput
+  }, {
+    gateway: {id: 'your-gateway-id'}
+  })
+  return Response.json(res)
+} catch (e) {
+  if ((e as Error).message.includes('2029')) {
+    return new Response('Request contains sensitive data and cannot be processed.')
+  }
+  if ((e as Error).message.includes('2030')) {
+    return new Response('AI response was blocked due to sensitive content.')
+  }
+  return new Response('AI request failed')
+}
 ```
 
 ## Best practices

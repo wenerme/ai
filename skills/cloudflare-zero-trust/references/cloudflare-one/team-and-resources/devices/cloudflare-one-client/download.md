@@ -57,6 +57,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional Changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in Windows Accessibility settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -455,6 +456,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional Changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -706,6 +708,27 @@ This release contains minor fixes and improvements.
 
 Latest release
 
+**Version:**  Linux 2026.6.836.0 **Date:**  2026-07-01 **Size:** 74.4 MB
+
+ Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (arm64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.836.0)
+
+#### Release notes
+
+This package is the same release as 2026.6.822.0, with a fix for our RPM package. Previously the repository served a single build to every OS version, so an install could pull a dependency that isn't available on that release. The repository now serves the correct build for each operating system version, so installs automatically pull the dependencies that version requires. Debian and Ubuntu were not affected.
+
+If you installed version 2026.6.822.0 on an RPM-based distribution, we recommend refreshing your repository configuration:
+
+```bash
+sudo curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+sudo dnf clean all
+sudo dnf install cloudflare-warp
+
+```
+
+Previous version history (11)
+
+Linux 2026.6.822.0
+
 **Version:**  Linux 2026.6.822.0 **Date:**  2026-06-29 **Size:** 76 MB
 
  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 43 (arm64)  Fedora 43 (x86-64)  Fedora 44 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64)  Ubuntu 26.04 (arm64)  Ubuntu 26.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.822.0)
@@ -723,8 +746,9 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Cloudflare Mesh functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-* Cloudflare Mesh now supports hostname-based routing for Cloudflare Tunnel.
+* Cloudflare Mesh now supports hostname-based routing.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -747,8 +771,6 @@ For RHEL deployments, this release introduces a dependency on the [Extra Package
 **Known issues**
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-
-Previous version history (10)
 
 Linux 2026.4.1390.0
 

@@ -36,7 +36,7 @@ Refer to [Create a list in the dashboard](https://developers.cloudflare.com/waf/
 
 Use custom lists in rule [expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) with the `in` operator and with a field supported by the custom list:
 
-```
+```txt
 <FIELD> in $<LIST_NAME>
 ```
 
@@ -71,8 +71,9 @@ CSV file format
 
 When uploading items to a custom list with IP addresses via CSV file, use the following file format (enter one item per line):
 
-```
-<IP_ADDRESS_1>,<DESCRIPTION><IP_ADDRESS_2>
+```txt
+<IP_ADDRESS_1>,<DESCRIPTION>
+<IP_ADDRESS_2>
 ```
 
 The `<DESCRIPTION>` field is optional.
@@ -99,8 +100,9 @@ CSV file format
 
 When uploading items to a custom list with hostnames via CSV file, use the following file format:
 
-```
-<HOSTNAME_1>,<DESCRIPTION><HOSTNAME_2>
+```txt
+<HOSTNAME_1>,<DESCRIPTION>
+<HOSTNAME_2>
 ```
 
 The `<DESCRIPTION>` field is optional.
@@ -123,8 +125,9 @@ CSV file format
 
 When uploading items to a custom list with ASNs via CSV file, use the following file format:
 
-```
-<ASN_1>,<DESCRIPTION><ASN_2>
+```txt
+<ASN_1>,<DESCRIPTION>
+<ASN_2>
 ```
 
 The `<DESCRIPTION>` field is optional.

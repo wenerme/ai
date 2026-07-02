@@ -48,25 +48,25 @@ If you receive these error messages, make sure that:
 
 Before a domain can be added to Cloudflare, the domain must return `NS` records for valid, working nameservers. `NS` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗](https://www.whatsmydns.net/) or via a command-line terminal using a dig command:
 
-Terminal window
-
-```
+```sh
 dig +short ns cloudflare.com
 ```
 
-```
-ns3.cloudflare.com.ns4.cloudflare.com.ns5.cloudflare.com.ns6.cloudflare.com.ns7.cloudflare.com.
+```sh
+ns3.cloudflare.com.
+ns4.cloudflare.com.
+ns5.cloudflare.com.
+ns6.cloudflare.com.
+ns7.cloudflare.com.
 ```
 
 Additionally, the domain must return a valid `SOA` record when queried. `SOA` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗](https://www.whatsmydns.net/) or via a command-line terminal:
 
-Terminal window
-
-```
+```sh
 dig +short soa cloudflare.com
 ```
 
-```
+```sh
 ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300
 ```
 
@@ -97,8 +97,9 @@ If Cloudflare has temporary or permanent restrictions on a domain, you will rece
 
 Enterprise customers can use the [zone hold](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/) feature to prevent domains to be added in any other account. If you get the following error when adding your domain, it means that a zone hold is active:
 
-```
-The zone name provided is subject to a hold which disallows the creation of this zone.Please contact the owner of the Cloudflare account that manages this domain to have this hold removed.
+```plaintext
+The zone name provided is subject to a hold which disallows the creation of this zone.
+Please contact the owner of the Cloudflare account that manages this domain to have this hold removed.
 ```
 
 In this case, you need to remove the zone hold if you own the Cloudflare account in which the zone is active, or contact the owner of the Cloudflare account that has the zone active.

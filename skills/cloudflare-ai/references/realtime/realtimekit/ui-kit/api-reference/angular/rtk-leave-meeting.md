@@ -27,14 +27,18 @@ A component which allows you to leave a meeting or end meeting for all, if you h
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-leave-meeting></rtk-leave-meeting>
+```html
+<!-- component.html -->
+<rtk-leave-meeting></rtk-leave-meeting>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-leave-meeting [meeting]="meeting"></rtk-leave-meeting>
+```html
+<!-- component.html -->
+<rtk-leave-meeting
+ [meeting]="meeting">
+</rtk-leave-meeting>
 ```
 
 ```json

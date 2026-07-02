@@ -27,16 +27,24 @@ Displays a "Live" indicator when a livestream is active. Only visible in livestr
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLiveStreamIndicator } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLiveStreamIndicator meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkLiveStreamIndicator meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLiveStreamIndicator } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLiveStreamIndicator meeting={meeting} size="md" />;}
+
+
+function MyComponent() {
+  return <RtkLiveStreamIndicator meeting={meeting} size="md" />;
+}
 ```
 
 ```json

@@ -22,22 +22,44 @@ If you want to run a middleware on your entire application, including in front o
 
 In `_middleware.js` files, you may export an `onRequest` handler or any of its method-specific variants. The following is an example middleware which handles any errors thrown in your project's Pages Functions. This example uses the `next()` method available in the request handler's context object:
 
-JavaScript
+**JavaScript**
 
-```
-export async function onRequest(context) {  try {    return await context.next();  } catch (err) {    return new Response(`${err.message}\n${err.stack}`, { status: 500 });  }}
+```js
+export async function onRequest(context) {
+  try {
+    return await context.next();
+  } catch (err) {
+    return new Response(`${err.message}\n${err.stack}`, { status: 500 });
+  }
+}
 ```
 
 ## Chain middleware
 
 You can export an array of Pages Functions as your middleware handler. This allows you to chain together multiple middlewares that you want to run. In the following example, you can handle any errors generated from your project's Functions, and check if the user is authenticated:
 
-JavaScript
+**JavaScript**
 
-```
-async function errorHandling(context) {  try {    return await context.next();  } catch (err) {    return new Response(`${err.message}\n${err.stack}`, { status: 500 });  }}
-function authentication(context) {  if (context.request.headers.get("x-email") != "admin@example.com") {    return new Response("Unauthorized", { status: 403 });  }
-  return context.next();}
+```js
+async function errorHandling(context) {
+  try {
+    return await context.next();
+  } catch (err) {
+    return new Response(`${err.message}\n${err.stack}`, { status: 500 });
+  }
+}
+
+
+function authentication(context) {
+  if (context.request.headers.get("x-email") != "admin@example.com") {
+    return new Response("Unauthorized", { status: 403 });
+  }
+
+
+  return context.next();
+}
+
+
 export const onRequest = [errorHandling, authentication];
 ```
 

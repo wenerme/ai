@@ -26,7 +26,7 @@ Below is a quick guide on how to set your Google Cloud Account:
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai
 ```
 
@@ -81,10 +81,22 @@ The recommended approach is to store your Google service account credentials usi
 
 With BYOK configured, you only need to include the `cf-aig-authorization` header in your requests. AI Gateway handles the Vertex AI authentication automatically.
 
-Terminal window
-
-```
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \    -H 'Content-Type: application/json' \    -d '{        "contents": [          {            "role": "user",            "parts": [              {                "text": "Tell me more about Cloudflare"              }            ]          }        ]      }'
+```bash
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \
+    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Tell me more about Cloudflare"
+              }
+            ]
+          }
+        ]
+      }'
 ```
 
 ### Option 2: Service Account JSON in Header
@@ -101,8 +113,20 @@ When passing the service account JSON directly in the header (not using BYOK), y
 
 #### Example service account JSON structure
 
-```
-{  "type": "service_account",  "project_id": "your-project-id",  "private_key_id": "your-private-key-id",  "private_key": "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY\n-----END PRIVATE KEY-----\n",  "client_email": "your-service-account@your-project.iam.gserviceaccount.com",  "client_id": "your-client-id",  "auth_uri": "https://accounts.google.com/o/oauth2/auth",  "token_uri": "https://oauth2.googleapis.com/token",  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account%40your-project.iam.gserviceaccount.com",  "region": "us-central1"}
+```json
+{
+  "type": "service_account",
+  "project_id": "your-project-id",
+  "private_key_id": "your-private-key-id",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY\n-----END PRIVATE KEY-----\n",
+  "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
+  "client_id": "your-client-id",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account%40your-project.iam.gserviceaccount.com",
+  "region": "us-central1"
+}
 ```
 
 ### Option 3: Direct Access Token
@@ -113,10 +137,23 @@ Note
 
 This option is only supported for the provider-specific endpoint, not for the unified chat completions endpoint.
 
-Terminal window
-
-```
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \    -H "Authorization: Bearer ya29.c.b0Aaekm1K..." \    -H 'Content-Type: application/json' \    -d '{        "contents": [          {            "role": "user",            "parts": [              {                "text": "Tell me more about Cloudflare"              }            ]          }        ]      }'
+```bash
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \
+    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+    -H "Authorization: Bearer ya29.c.b0Aaekm1K..." \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Tell me more about Cloudflare"
+              }
+            ]
+          }
+        ]
+      }'
 ```
 
 ## Using Unified Chat Completions API
@@ -125,7 +162,7 @@ AI Gateway provides a [Unified API](https://developers.cloudflare.com/ai-gateway
 
 ### Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions
 ```
 
@@ -133,33 +170,84 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/compl
 
 With BYOK configured, you only need to include the `cf-aig-authorization` header:
 
-Terminal window
-
-```
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \    -H 'Content-Type: application/json' \    -d '{        "model": "google-vertex-ai/google/gemini-2.5-pro",        "messages": [          {            "role": "user",            "content": "What is Cloudflare?"          }        ]      }'
+```bash
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \
+    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "model": "google-vertex-ai/google/gemini-2.5-pro",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is Cloudflare?"
+          }
+        ]
+      }'
 ```
 
 ### Example with OpenAI SDK
 
 If not using BYOK, pass the base64-encoded service account JSON (with `region` key included) as the API key:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import OpenAI from "openai";
-// Service account JSON must include "region" key when not using BYOKconst serviceAccountJson = JSON.stringify({  type: "service_account",  project_id: "your-project-id",  // ... other fields from your downloaded JSON  region: "us-central1", // Required: add this to your service account JSON});
-const client = new OpenAI({  apiKey: Buffer.from(serviceAccountJson).toString("base64"),  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",  defaultHeaders: {    "cf-aig-authorization": `Bearer {cf_aig_token}`,  },});
-const response = await client.chat.completions.create({  model: "google-vertex-ai/google/gemini-2.5-pro",  messages: [    {      role: "user",      content: "What is Cloudflare?",    },  ],});
+
+
+// Service account JSON must include "region" key when not using BYOK
+const serviceAccountJson = JSON.stringify({
+  type: "service_account",
+  project_id: "your-project-id",
+  // ... other fields from your downloaded JSON
+  region: "us-central1", // Required: add this to your service account JSON
+});
+
+
+const client = new OpenAI({
+  apiKey: Buffer.from(serviceAccountJson).toString("base64"),
+  baseURL:
+    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+  defaultHeaders: {
+    "cf-aig-authorization": `Bearer {cf_aig_token}`,
+  },
+});
+
+
+const response = await client.chat.completions.create({
+  model: "google-vertex-ai/google/gemini-2.5-pro",
+  messages: [
+    {
+      role: "user",
+      content: "What is Cloudflare?",
+    },
+  ],
+});
+
+
 console.log(response.choices[0].message.content);
 ```
 
 ### Example with cURL
 
-Terminal window
+```bash
+# First, base64-encode your service account JSON (must include "region" key)
+SERVICE_ACCOUNT_BASE64=$(base64 < service-account.json | tr -d '\n')
 
-```
-# First, base64-encode your service account JSON (must include "region" key)SERVICE_ACCOUNT_BASE64=$(base64 < service-account.json | tr -d '\n')
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \    -H "Authorization: Bearer $SERVICE_ACCOUNT_BASE64" \    -H 'Content-Type: application/json' \    -d '{        "model": "google-vertex-ai/google/gemini-2.5-pro",        "messages": [          {            "role": "user",            "content": "What is Cloudflare?"          }        ]      }'
+
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \
+    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+    -H "Authorization: Bearer $SERVICE_ACCOUNT_BASE64" \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "model": "google-vertex-ai/google/gemini-2.5-pro",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is Cloudflare?"
+          }
+        ]
+      }'
 ```
 
 Note
@@ -174,21 +262,49 @@ You can also use the provider-specific endpoint to access the full Vertex AI API
 
 With BYOK configured, you only need the `cf-aig-authorization` header:
 
-Terminal window
-
-```
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \    -H 'Content-Type: application/json' \    -d '{        "contents": [          {            "role": "user",            "parts": [              {                "text": "Tell me more about Cloudflare"              }            ]          }        ]      }'
+```bash
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \
+    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Tell me more about Cloudflare"
+              }
+            ]
+          }
+        ]
+      }'
 ```
 
 ### cURL with Service Account JSON
 
 If not using BYOK, pass the base64-encoded service account JSON (with `region` key included) in the Authorization header:
 
-Terminal window
+```bash
+# First, base64-encode your service account JSON (must include "region" key) as a single line
+SERVICE_ACCOUNT_BASE64=$(base64 < service-account.json | tr -d '\n')
 
-```
-# First, base64-encode your service account JSON (must include "region" key) as a single lineSERVICE_ACCOUNT_BASE64=$(base64 < service-account.json | tr -d '\n')
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \    -H "Authorization: Bearer $SERVICE_ACCOUNT_BASE64" \    -H 'Content-Type: application/json' \    -d '{        "contents": [          {            "role": "user",            "parts": [              {                "text": "Tell me more about Cloudflare"              }            ]          }        ]      }'
+
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai/v1/projects/{project_name}/locations/{region}/publishers/google/models/gemini-2.5-flash:generateContent" \
+    -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+    -H "Authorization: Bearer $SERVICE_ACCOUNT_BASE64" \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Tell me more about Cloudflare"
+              }
+            ]
+          }
+        ]
+      }'
 ```
 
 ## Troubleshooting

@@ -22,16 +22,24 @@ The [performance.now() method ↗](https://developer.mozilla.org/en-US/docs/Web/
 
 When Workers are deployed to Cloudflare, as a security measure to [mitigate against Spectre attacks](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading), APIs that return timers, including [performance.now() ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) and [Date.now() ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date/now), only advance or increment after I/O occurs. Consider the following examples:
 
-Time is frozen — start will have the exact same value as end.
+**Time is frozen — start will have the exact same value as end.**
 
-```
-const start = performance.now();for (let i = 0; i < 1e6; i++) {  // do expensive work}const end = performance.now();const timing = end - start; // 0
+```typescript
+const start = performance.now();
+for (let i = 0; i < 1e6; i++) {
+  // do expensive work
+}
+const end = performance.now();
+const timing = end - start; // 0
 ```
 
-Time advances, because a subrequest has occurred between start and end.
+**Time advances, because a subrequest has occurred between start and end.**
 
-```
-const start = performance.now();const response = await fetch("https://developers.cloudflare.com/");const end = performance.now();const timing = end - start; // duration of the subrequest to developers.cloudflare.com
+```typescript
+const start = performance.now();
+const response = await fetch("https://developers.cloudflare.com/");
+const end = performance.now();
+const timing = end - start; // duration of the subrequest to developers.cloudflare.com
 ```
 
 By wrapping a subrequest in calls to `performance.now()` or `Date.now()` APIs, you can measure the timing of a subrequest, fetching a key from KV, an object from R2, or any other form of I/O in your Worker.

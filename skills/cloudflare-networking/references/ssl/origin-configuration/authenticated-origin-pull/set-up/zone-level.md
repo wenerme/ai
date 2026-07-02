@@ -30,46 +30,38 @@ OpenSSL example
 
 1. Run the following command to generate a 4096-bit RSA private key, using AES-256 encryption. Enter a passphrase when prompted.
 
-Terminal window
-
-```
+```bash
 openssl genrsa -aes256 -out rootca.key 4096
 ```
 
 1. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the `Common Name` field, use the domain name as value, not the hostname.
 
-Terminal window
-
-```
+```bash
 openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
 ```
 
 1. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the `Common Name` field, use the hostname as value.
 
-Terminal window
-
-```
+```bash
 openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
 ```
 
 1. Sign the certificate using the `rootca.key` and `rootca.crt` created in previous steps.
 
-Terminal window
-
-```
+```bash
 openssl x509 -req -in cert.csr -CA rootca.crt -CAkey rootca.key -CAcreateserial -out cert.crt -days 730 -sha256 -extfile ./cert.v3.ext
 ```
 
 1. Make sure the certificate extensions file `cert.v3.ext` specifies the following:
 
-```
+```plaintext
 basicConstraints=CA:FALSE
 ```
 
 ## 1\. Upload your certificate to Cloudflare
 
-* [ Dashboard ](#tab-panel-10774)
-* [ API ](#tab-panel-10775)
+* [ Dashboard ](#tab-panel-11069)
+* [ API ](#tab-panel-11070)
 
 1. Go to the **Origin Server** page.
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -98,7 +90,7 @@ Check the examples below for Apache and NGINX or refer to your origin web server
 
 Apache example
 
-```
+```txt
 SSLCACertificateFile /path/to/origin-pull-ca.pem
 ```
 
@@ -106,8 +98,9 @@ For this example, you would have saved your certificate to `/path/to/origin-pull
 
 NGINX example
 
-```
-ssl_verify_client optional;ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
+```txt
+ssl_verify_client optional;
+ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
 ```
 
 For this example, you would have saved your certificate to `/etc/nginx/certs/cloudflare.crt`.
@@ -116,8 +109,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 4\. Enable zone-level Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-10776)
-* [ API ](#tab-panel-10777)
+* [ Dashboard ](#tab-panel-11071)
+* [ API ](#tab-panel-11072)
 
 1. Go to the **Origin Server** page.
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -136,13 +129,13 @@ Once you can confirm everything is working as expected for your specific origin 
 
 Apache example
 
-```
+```txt
 SSLVerifyClient require
 ```
 
 NGINX example
 
-```
+```txt
 ssl_verify_client on;
 ```
 

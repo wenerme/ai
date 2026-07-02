@@ -30,11 +30,21 @@ Reranking helps improve accuracy, especially for large or noisy datasets where v
 
 When you make a `/search` or `/chat/completions` request using the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) or [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/), you can enable or disable reranking per request and specify the reranking model.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    reranking: {      enabled: true,      model: "@cf/baai/bge-reranker-base",    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    reranking: {
+      enabled: true,
+      model: "@cf/baai/bge-reranker-base",
+    },
+  },
+});
 ```
 
 ### Considerations

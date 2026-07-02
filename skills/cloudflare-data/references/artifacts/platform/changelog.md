@@ -77,26 +77,26 @@ Artifacts has three API surfaces:
 
 As an example: you can use the Workers binding to create a repo and read back its remote URL:
 
-TypeScript
+**TypeScript**
 
-```
-# Create a thousand, a million or ten million repos: one for every agent, for every upstream branch, or every user.const created = await env.PROD_ARTIFACTS.create("agent-007");const remote = (await created.repo.info())?.remote;
+```ts
+# Create a thousand, a million or ten million repos: one for every agent, for every upstream branch, or every user.
+const created = await env.PROD_ARTIFACTS.create("agent-007");
+const remote = (await created.repo.info())?.remote;
 ```
 
 Or, use the REST API to create a repo inside a namespace from your agent(s) running on any platform:
 
-Terminal window
-
-```
+```bash
 curl --request POST "https://artifacts.cloudflare.net/v1/api/namespaces/some-namespace/repos" --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" --header "Content-Type: application/json" --data '{"name":"agent-007"}'
 ```
 
 Any Git client that speaks smart HTTP can use the returned remote URL:
 
-Terminal window
-
-```
-# Agents know git.# Every repository can act as a git repo, allowing agents to interact with Artifacts the way they know best: using the git CLI.git clone https://x:${REPO_TOKEN}@artifacts.cloudflare.net/some-namespace/agent-007.git
+```bash
+# Agents know git.
+# Every repository can act as a git repo, allowing agents to interact with Artifacts the way they know best: using the git CLI.
+git clone https://x:${REPO_TOKEN}@artifacts.cloudflare.net/some-namespace/agent-007.git
 ```
 
 To learn more, refer to [Get started](https://developers.cloudflare.com/artifacts/get-started/), [Workers binding](https://developers.cloudflare.com/artifacts/api/workers-binding/), and [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/).

@@ -51,36 +51,57 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
 
 1. Add a define directive to specify the versioned helper functions in use.
 As Cloudflare adds more features to the Programmable Flow Protection API, we will publish new versions of its API. Versions are guaranteed to be backwards compatible.
-```
+```c
 #define CF_EBPF_HELPER_V0
 ```
 2. Include the Cloudflare eBPF header files.
 These files have [helper functions](#helper-functions) to parse the input packet data to the BPF program.
-```
-#include <cf_ebpf_defs.h>#include <cf_ebpf_helper.h>
+```c
+#include <cf_ebpf_defs.h>
+#include <cf_ebpf_helper.h>
 ```
 3. Define the entry function for packet processing.
 Your program must have the exact function signature below to properly pass Cloudflare's program verification.
 The return type `uint64_t` dictates whether Cloudflare will pass or drop a packet. The function name `cf_ebpf_main` is used as the entrypoint to the program. The argument `void *state` refers to the data Cloudflare provides as input to your BPF program.
-```
+```c
 uint64_t cf_ebpf_main(void *state)
 ```
 4. Cast the input argument into usable structs.
 Convert the input data into `cf_ebpf_generic_ctx`, which tells Cloudflare the data boundaries in the memory that we are reading.
 Then, declare variables for data parsing. `cf_ebpf_parsed_headers` will contain the IPv4, IPv6, and UDP headers. `cf_ebpf_packet_data` will hold a copy of the original IP packet that Cloudflare received (maximum 1,500 bytes), as well as the packet length and IP header length.
-```
-struct cf_ebpf_generic_ctx *ctx = state;struct cf_ebpf_parsed_headers headers;struct cf_ebpf_packet_data *p;
+```c
+struct cf_ebpf_generic_ctx *ctx = state;
+struct cf_ebpf_parsed_headers headers;
+struct cf_ebpf_packet_data *p;
 ```
 5. Fill variables by calling the helper function.
 You must fill in the variables by calling the helper function `parse_packet_data`, which Cloudflare has provided in a header file included in step 2.
 The `parse_packet_data` function performs the memory checks required to pass the program verifier. The `parse_packet_data` function returns `0` on success. If it is successful, the input parameters are correctly populated. The `parse_packet_data` function returns `1` on failure. If `parse_packet_data` fails, The program must return `CF_EBPF_DROP` to drop the packet in order to pass the verifier.
-```
-if (parse_packet_data(ctx, &p, &headers) != 0) {    return CF_EBPF_DROP;}
+```c
+if (parse_packet_data(ctx, &p, &headers) != 0) {
+    return CF_EBPF_DROP;
+}
 ```
 Available values after successful parsing:
-```
-struct cf_ebpf_packet_data {     /* Total length of the packet. */     size_t   total_packet_length;     /* Size of the IP header. Supports IPv4 (including options) and IPv6. */     size_t   ip_header_length;     /* Bytes of the packet, starting with the IP header. */     uint8_t  packet_buffer[1500];};
-struct cf_ebpf_parsed_headers {     /* Pointer to the parsed IPv4 header, if present (otherwise null). */     struct iphdr   *ipv4;     /* Pointer to the parsed IPv6 header, if present (otherwise null). */     struct ipv6hdr *ipv6;     /* Pointer to the parsed UDP header. */     struct udphdr  *udp;     /* Raw pointer to the last valid byte of the packet context data. */     uint8_t        *data_end;};
+```c
+struct cf_ebpf_packet_data {
+     /* Total length of the packet. */
+     size_t   total_packet_length;
+     /* Size of the IP header. Supports IPv4 (including options) and IPv6. */
+     size_t   ip_header_length;
+     /* Bytes of the packet, starting with the IP header. */
+     uint8_t  packet_buffer[1500];
+};
+struct cf_ebpf_parsed_headers {
+     /* Pointer to the parsed IPv4 header, if present (otherwise null). */
+     struct iphdr   *ipv4;
+     /* Pointer to the parsed IPv6 header, if present (otherwise null). */
+     struct ipv6hdr *ipv6;
+     /* Pointer to the parsed UDP header. */
+     struct udphdr  *udp;
+     /* Raw pointer to the last valid byte of the packet context data. */
+     uint8_t        *data_end;
+};
 ```
 For a full definition of helper functions and structures, refer to [BPF helper functions and structures](#bpf-helper-functions-and-structures).
 Note
@@ -92,12 +113,35 @@ Note
 Programmable Flow Protection will only give UDP packets to a BPF program.
 In the example snippet below, the program will drop any packet where the IPv6 header exists or where the UDP destination port is 66.
 It will then check the application header value in the UDP payload and verify its last byte is a fixed value `0xCF`.
-```
- struct ipv6hdr *ipv6_hdr; struct udphdr *udp_hdr; ipv6_hdr = (struct ipv6hdr *)headers.ipv6; if (ipv6_hdr != NULL) {   return CF_EBPF_DROP; } udp_hdr = (struct udphdr *)headers.udp; if (ntohs(udp_hdr->dest) == 66) {     return CF_EBPF_DROP; }
- struct apphdr *app = (struct apphdr *)(udp_hdr + 1); if ((uint8_t *)(app + 1) > headers.data_end) {     return CF_EBPF_DROP; }
- // The verifier has a special limit that it will not allow offsets // beyond 65535. We need this check (token_len > 64000) in order // to satisfy that, even though it is not possible. uint16_t token_len = app->length; if (token_len > 64000) {     return CF_EBPF_DROP; }
- if ((uint8_t *)(app->token + token_len) > headers.data_end) {     return CF_EBPF_DROP; }
- uint8_t *last_byte = app->token + token_len - 1; if (*last_byte != 0xCF) {     return CF_EBPF_DROP; }
+```c
+ struct ipv6hdr *ipv6_hdr;
+ struct udphdr *udp_hdr;
+ ipv6_hdr = (struct ipv6hdr *)headers.ipv6;
+ if (ipv6_hdr != NULL) {
+   return CF_EBPF_DROP;
+ }
+ udp_hdr = (struct udphdr *)headers.udp;
+ if (ntohs(udp_hdr->dest) == 66) {
+     return CF_EBPF_DROP;
+ }
+ struct apphdr *app = (struct apphdr *)(udp_hdr + 1);
+ if ((uint8_t *)(app + 1) > headers.data_end) {
+     return CF_EBPF_DROP;
+ }
+ // The verifier has a special limit that it will not allow offsets
+ // beyond 65535. We need this check (token_len > 64000) in order
+ // to satisfy that, even though it is not possible.
+ uint16_t token_len = app->length;
+ if (token_len > 64000) {
+     return CF_EBPF_DROP;
+ }
+ if ((uint8_t *)(app->token + token_len) > headers.data_end) {
+     return CF_EBPF_DROP;
+ }
+ uint8_t *last_byte = app->token + token_len - 1;
+ if (*last_byte != 0xCF) {
+     return CF_EBPF_DROP;
+ }
 ```
 7. Pass any packets that did not get dropped by program logic by returning `CF_EBPF_PASS`.
 The currently supported return values are:
@@ -105,23 +149,78 @@ The currently supported return values are:
   * `CF_EBPF_PASS = return value 0`
   * `CF_EBPF_DROP = return value 1`
 The verifier, which runs when you upload a program to the API, will enforce that the program returns only known value types.
-```
+```c
 return CF_EBPF_PASS;
 ```
 
 For reference, the example below is the basic program in its entirety:
 
-```
+```c
 #define CF_EBPF_HELPER_V0
-#include <cf_ebpf_defs.h>#include <cf_ebpf_helper.h>
-struct apphdr {    uint8_t       version;    uint16_t      length;   // Length of the variable-length token    unsigned char token[0]; // Variable-length token} __attribute__((packed));
-uint64_tcf_ebpf_main(void *state){    struct cf_ebpf_generic_ctx *ctx = state;    struct cf_ebpf_parsed_headers headers;    struct cf_ebpf_packet_data *p;
-    if (parse_packet_data(ctx, &p, &headers) != 0) {        return CF_EBPF_DROP;    }    struct ipv6hdr *ipv6_hdr;    struct udphdr *udp_hdr;    ipv6_hdr = (struct ipv6hdr *)headers.ipv6;    if (ipv6_hdr != NULL) {        return CF_EBPF_DROP;    }
-    udp_hdr = (struct udphdr *)headers.udp;    if (ntohs(udp_hdr->dest) == 66) {        return CF_EBPF_DROP;    }
-    struct apphdr *app = (struct apphdr *)(udp_hdr + 1);    if ((uint8_t *)(app + 1) > headers.data_end) {        return CF_EBPF_DROP;    }
-    // The verifier has a special limit that it will not allow offsets    // beyond 65535. We need this check (token_len > 64000) in order    // to satisfy that, even though it is not possible.    uint16_t token_len = app->length;    if (token_len > 64000) {        return CF_EBPF_DROP;    }
-    if ((uint8_t *)(app->token + token_len) > headers.data_end) {        return CF_EBPF_DROP;    }
-    uint8_t *last_byte = app->token + token_len - 1;    if (*last_byte != 0xCF) {        return CF_EBPF_DROP;    }    return CF_EBPF_PASS;}
+
+
+#include <cf_ebpf_defs.h>
+#include <cf_ebpf_helper.h>
+
+
+struct apphdr {
+    uint8_t       version;
+    uint16_t      length;   // Length of the variable-length token
+    unsigned char token[0]; // Variable-length token
+} __attribute__((packed));
+
+
+uint64_t
+cf_ebpf_main(void *state)
+{
+    struct cf_ebpf_generic_ctx *ctx = state;
+    struct cf_ebpf_parsed_headers headers;
+    struct cf_ebpf_packet_data *p;
+
+
+    if (parse_packet_data(ctx, &p, &headers) != 0) {
+        return CF_EBPF_DROP;
+    }
+    struct ipv6hdr *ipv6_hdr;
+    struct udphdr *udp_hdr;
+    ipv6_hdr = (struct ipv6hdr *)headers.ipv6;
+    if (ipv6_hdr != NULL) {
+        return CF_EBPF_DROP;
+    }
+
+
+    udp_hdr = (struct udphdr *)headers.udp;
+    if (ntohs(udp_hdr->dest) == 66) {
+        return CF_EBPF_DROP;
+    }
+
+
+    struct apphdr *app = (struct apphdr *)(udp_hdr + 1);
+    if ((uint8_t *)(app + 1) > headers.data_end) {
+        return CF_EBPF_DROP;
+    }
+
+
+    // The verifier has a special limit that it will not allow offsets
+    // beyond 65535. We need this check (token_len > 64000) in order
+    // to satisfy that, even though it is not possible.
+    uint16_t token_len = app->length;
+    if (token_len > 64000) {
+        return CF_EBPF_DROP;
+    }
+
+
+    if ((uint8_t *)(app->token + token_len) > headers.data_end) {
+        return CF_EBPF_DROP;
+    }
+
+
+    uint8_t *last_byte = app->token + token_len - 1;
+    if (*last_byte != 0xCF) {
+        return CF_EBPF_DROP;
+    }
+    return CF_EBPF_PASS;
+}
 ```
 
 ### Write a complex program: challenge-based response
@@ -137,76 +236,207 @@ If a packet arrives from a source IP that has already been challenged, the progr
 Packets from verified source IPs are passed through without further checks.
 
 1. Include the Cloudflare eBPF header files and define the helper version.
-```
+```c
 #define CF_EBPF_HELPER_V0
-#include <cf_ebpf_defs.h>#include <cf_ebpf_helper.h>
+#include <cf_ebpf_defs.h>
+#include <cf_ebpf_helper.h>
 ```
 2. Define constants for the challenge-response protocol.
 The challenge response is computed by XORing the nonce with a secret value. The expiry time determines how long a challenged or verified status remains valid.
-```
-#define CHALLENGE_SECRET 0xDEADBEEFCAFEBABEULL#define CHALLENGE_EXPIRY_SECS 60#define VERIFIED_EXPIRY_SECS 3600
+```c
+#define CHALLENGE_SECRET 0xDEADBEEFCAFEBABEULL
+#define CHALLENGE_EXPIRY_SECS 60
+#define VERIFIED_EXPIRY_SECS 3600
 ```
 3. Define a structure for challenge packets.
 The challenge packet contains the nonce that the client must respond to, and space for the client's response.
-```
-struct challenge_packet {    uint64_t nonce;        // Random nonce for this challenge    uint64_t response;     // Expected: nonce XOR CHALLENGE_SECRET};
+```c
+struct challenge_packet {
+    uint64_t nonce;        // Random nonce for this challenge
+    uint64_t response;     // Expected: nonce XOR CHALLENGE_SECRET
+};
 ```
 4. Define the entry function and parse the packet.
-```
-uint64_t cf_ebpf_main(void *state){    struct cf_ebpf_generic_ctx *ctx = state;    struct cf_ebpf_parsed_headers headers;    struct cf_ebpf_packet_data *p;
-    if (parse_packet_data(ctx, &p, &headers) != 0) {        return CF_EBPF_DROP;    }
+```c
+uint64_t cf_ebpf_main(void *state)
+{
+    struct cf_ebpf_generic_ctx *ctx = state;
+    struct cf_ebpf_parsed_headers headers;
+    struct cf_ebpf_packet_data *p;
+    if (parse_packet_data(ctx, &p, &headers) != 0) {
+        return CF_EBPF_DROP;
+    }
     struct udphdr *udp_hdr = headers.udp;
 ```
 5. Check the source IP status using `get_src_ip_status`.
 The status indicates whether this source IP is new, challenged, verified, or blocklisted. The expiry timestamp indicates when the status expires.
-```
-    uint8_t status;    uint64_t expiry;    int ret = get_src_ip_status(&status, &expiry);
-    // Check if status has expired    int64_t now = timestamp();    if (ret == 0 && expiry > 0 && (uint64_t)now > expiry) {        // Status expired, treat as new connection        ret = -1;    }
+```c
+    uint8_t status;
+    uint64_t expiry;
+    int ret = get_src_ip_status(&status, &expiry);
+    // Check if status has expired
+    int64_t now = timestamp();
+    if (ret == 0 && expiry > 0 && (uint64_t)now > expiry) {
+        // Status expired, treat as new connection
+        ret = -1;
+    }
 ```
 6. Handle verified source IPs.
 The Programmable Flow Protection platform will drop packets from blocklisted IPs before the program is invoked. There is no need to explicitly handle the blocklisted case.
 If the source IP has been verified (passed a previous challenge), allow the packet through.
-```
-    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_VERIFIED) {        return CF_EBPF_PASS;    }
+```c
+    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_VERIFIED) {
+        return CF_EBPF_PASS;
+    }
 ```
 7. Check if this is a challenge response from a challenged source IP.
 If the source IP was previously challenged, check if the current packet contains a valid challenge response. If the response is correct, mark the source IP as verified. If the response is incorrect, blocklist the source IP immediately.
-```
-    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_CHALLENGED) {        // Get the stored nonce from user data        uint64_t stored_nonce;        if (get_src_ip_data(&stored_nonce) != 0) {            return CF_EBPF_DROP;        }
-        // Parse the challenge response from the packet payload        struct challenge_packet *resp = (struct challenge_packet *)(udp_hdr + 1);        if ((uint8_t *)(resp + 1) > headers.data_end) {            return CF_EBPF_DROP;        }
-        // Verify the response: should be nonce XOR secret        uint64_t expected_response = stored_nonce ^ CHALLENGE_SECRET;        if (resp->response == expected_response) {            // Correct response - mark as verified            set_src_ip_status(CF_EBPF_SRC_IP_STATUS_VERIFIED, VERIFIED_EXPIRY_SECS);            set_src_ip_data(0);  // Clear the nonce            return CF_EBPF_PASS;        }
-        // Wrong response - blocklist immediately        set_src_ip_status(CF_EBPF_SRC_IP_STATUS_BLOCKLISTED, 0);        return CF_EBPF_DROP;    }
+```c
+    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_CHALLENGED) {
+        // Get the stored nonce from user data
+        uint64_t stored_nonce;
+        if (get_src_ip_data(&stored_nonce) != 0) {
+            return CF_EBPF_DROP;
+        }
+        // Parse the challenge response from the packet payload
+        struct challenge_packet *resp = (struct challenge_packet *)(udp_hdr + 1);
+        if ((uint8_t *)(resp + 1) > headers.data_end) {
+            return CF_EBPF_DROP;
+        }
+        // Verify the response: should be nonce XOR secret
+        uint64_t expected_response = stored_nonce ^ CHALLENGE_SECRET;
+        if (resp->response == expected_response) {
+            // Correct response - mark as verified
+            set_src_ip_status(CF_EBPF_SRC_IP_STATUS_VERIFIED, VERIFIED_EXPIRY_SECS);
+            set_src_ip_data(0);  // Clear the nonce
+            return CF_EBPF_PASS;
+        }
+        // Wrong response - blocklist immediately
+        set_src_ip_status(CF_EBPF_SRC_IP_STATUS_BLOCKLISTED, 0);
+        return CF_EBPF_DROP;
+    }
 ```
 8. Issue a new challenge for new source IPs.
 Generate a random nonce, store it in the state table, create a challenge packet, and send it using `set_challenge`.
-```
-    // Generate a new challenge for this source IP    uint64_t nonce = rand();
-    // Store the nonce and mark as challenged    set_src_ip_status(CF_EBPF_SRC_IP_STATUS_CHALLENGED, CHALLENGE_EXPIRY_SECS);    set_src_ip_data(nonce);
-    // Build the challenge packet to send back    struct challenge_packet challenge;    challenge.nonce = nonce;    challenge.response = 0;  // Client will fill this in
-    // Set the challenge packet buffer    set_challenge((uint8_t *)&challenge, sizeof(challenge));
-    // Drop the original packet until client responds to challenge    return CF_EBPF_DROP;}
+```c
+    // Generate a new challenge for this source IP
+    uint64_t nonce = rand();
+    // Store the nonce and mark as challenged
+    set_src_ip_status(CF_EBPF_SRC_IP_STATUS_CHALLENGED, CHALLENGE_EXPIRY_SECS);
+    set_src_ip_data(nonce);
+    // Build the challenge packet to send back
+    struct challenge_packet challenge;
+    challenge.nonce = nonce;
+    challenge.response = 0;  // Client will fill this in
+    // Set the challenge packet buffer
+    set_challenge((uint8_t *)&challenge, sizeof(challenge));
+    // Drop the original packet until client responds to challenge
+    return CF_EBPF_DROP;
+}
 ```
 
 For reference, the example below is the complex program in its entirety:
 
-```
+```c
 #define CF_EBPF_HELPER_V0
-#include <cf_ebpf_defs.h>#include <cf_ebpf_helper.h>
-// Challenge-response protocol constants#define CHALLENGE_SECRET 0xDEADBEEFCAFEBABEULL#define CHALLENGE_EXPIRY_SECS 60#define VERIFIED_EXPIRY_SECS 3600
-// Challenge packet structurestruct challenge_packet {    uint64_t nonce;    uint64_t response;};
-uint64_t cf_ebpf_main(void *state){    struct cf_ebpf_generic_ctx *ctx = state;    struct cf_ebpf_parsed_headers headers;    struct cf_ebpf_packet_data *p;
-    if (parse_packet_data(ctx, &p, &headers) != 0) {        return CF_EBPF_DROP;    }
+
+
+#include <cf_ebpf_defs.h>
+#include <cf_ebpf_helper.h>
+
+
+// Challenge-response protocol constants
+#define CHALLENGE_SECRET 0xDEADBEEFCAFEBABEULL
+#define CHALLENGE_EXPIRY_SECS 60
+#define VERIFIED_EXPIRY_SECS 3600
+
+
+// Challenge packet structure
+struct challenge_packet {
+    uint64_t nonce;
+    uint64_t response;
+};
+
+
+uint64_t cf_ebpf_main(void *state)
+{
+    struct cf_ebpf_generic_ctx *ctx = state;
+    struct cf_ebpf_parsed_headers headers;
+    struct cf_ebpf_packet_data *p;
+
+
+    if (parse_packet_data(ctx, &p, &headers) != 0) {
+        return CF_EBPF_DROP;
+    }
+
+
     struct udphdr *udp_hdr = headers.udp;
-    // Check source IP status    uint8_t status;    uint64_t expiry;    int ret = get_src_ip_status(&status, &expiry);
-    // Check if status has expired    int64_t now = timestamp();    if (ret == 0 && expiry > 0 && (uint64_t)now > expiry) {        ret = -1;  // Treat as new connection    }
-    // Handle verified source IPs - allow through    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_VERIFIED) {        return CF_EBPF_PASS;    }
-    // Handle challenged source IPs - check for valid response    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_CHALLENGED) {        uint64_t stored_nonce;        if (get_src_ip_data(&stored_nonce) != 0) {            return CF_EBPF_DROP;        }
-        // Parse challenge response from packet payload        struct challenge_packet *resp = (struct challenge_packet *)(udp_hdr + 1);        if ((uint8_t *)(resp + 1) > headers.data_end) {            return CF_EBPF_DROP;        }
-        // Check response using XOR        uint64_t expected_response = stored_nonce ^ CHALLENGE_SECRET;        if (resp->response == expected_response) {            // Correct response - mark as verified            set_src_ip_status(CF_EBPF_SRC_IP_STATUS_VERIFIED, VERIFIED_EXPIRY_SECS);            set_src_ip_data(0);            return CF_EBPF_PASS;        }
-        // Wrong response - blocklist immediately        set_src_ip_status(CF_EBPF_SRC_IP_STATUS_BLOCKLISTED, 0);        return CF_EBPF_DROP;    }
-    // New source IP - issue initial challenge    uint64_t nonce = rand();    set_src_ip_status(CF_EBPF_SRC_IP_STATUS_CHALLENGED, CHALLENGE_EXPIRY_SECS);    set_src_ip_data(nonce);
-    struct challenge_packet challenge;    challenge.nonce = nonce;    challenge.response = 0;    set_challenge((uint8_t *)&challenge, sizeof(challenge));
-    return CF_EBPF_DROP;}
+
+
+    // Check source IP status
+    uint8_t status;
+    uint64_t expiry;
+    int ret = get_src_ip_status(&status, &expiry);
+
+
+    // Check if status has expired
+    int64_t now = timestamp();
+    if (ret == 0 && expiry > 0 && (uint64_t)now > expiry) {
+        ret = -1;  // Treat as new connection
+    }
+
+
+    // Handle verified source IPs - allow through
+    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_VERIFIED) {
+        return CF_EBPF_PASS;
+    }
+
+
+    // Handle challenged source IPs - check for valid response
+    if (ret == 0 && status == CF_EBPF_SRC_IP_STATUS_CHALLENGED) {
+        uint64_t stored_nonce;
+        if (get_src_ip_data(&stored_nonce) != 0) {
+            return CF_EBPF_DROP;
+        }
+
+
+        // Parse challenge response from packet payload
+        struct challenge_packet *resp = (struct challenge_packet *)(udp_hdr + 1);
+        if ((uint8_t *)(resp + 1) > headers.data_end) {
+            return CF_EBPF_DROP;
+        }
+
+
+        // Check response using XOR
+        uint64_t expected_response = stored_nonce ^ CHALLENGE_SECRET;
+        if (resp->response == expected_response) {
+            // Correct response - mark as verified
+            set_src_ip_status(CF_EBPF_SRC_IP_STATUS_VERIFIED, VERIFIED_EXPIRY_SECS);
+            set_src_ip_data(0);
+            return CF_EBPF_PASS;
+        }
+
+
+        // Wrong response - blocklist immediately
+        set_src_ip_status(CF_EBPF_SRC_IP_STATUS_BLOCKLISTED, 0);
+        return CF_EBPF_DROP;
+    }
+
+
+    // New source IP - issue initial challenge
+    uint64_t nonce = rand();
+    set_src_ip_status(CF_EBPF_SRC_IP_STATUS_CHALLENGED, CHALLENGE_EXPIRY_SECS);
+    set_src_ip_data(nonce);
+
+
+    struct challenge_packet challenge;
+    challenge.nonce = nonce;
+    challenge.response = 0;
+    set_challenge((uint8_t *)&challenge, sizeof(challenge));
+
+
+    return CF_EBPF_DROP;
+}
 ```
 
 This program demonstrates several key concepts:
@@ -225,54 +455,168 @@ The rate limiting mechanism works as follows:
 When a packet arrives, the program retrieves the stored state for that source IP. The state contains a window start timestamp and a packet counter, packed into a single 64-bit value. If the current time is still within the window, the counter increments. If the counter exceeds the configured limit, the packet is dropped. When the window expires, the counter resets.
 
 1. Include the Cloudflare eBPF header files and define the helper version.
-```
-#include <cf_ebpf_defs.h>#define CF_EBPF_HELPER_V0#include <cf_ebpf_helper.h>
+```c
+#include <cf_ebpf_defs.h>
+#define CF_EBPF_HELPER_V0
+#include <cf_ebpf_helper.h>
 ```
 2. Define constants for the rate limit configuration.
 `RATE_LIMIT` sets the maximum number of packets allowed per window. `WINDOW_SECONDS` defines the duration of each time window in seconds.
-```
-#define RATE_LIMIT 100         // Maximum packets allowed per window#define WINDOW_SECONDS 60      // Time window in seconds
+```c
+#define RATE_LIMIT 100         // Maximum packets allowed per window
+#define WINDOW_SECONDS 60      // Time window in seconds
 ```
 3. Define macros to pack and unpack state data.
 The source IP state table stores a single `u64` value per source IP. To track both a timestamp and a counter, pack them into this value: the timestamp in the upper 32 bits and the counter in the lower 32 bits.
-```
-#define PACK_STATE(ts, count) (((uint64_t)(ts) << 32) | ((uint64_t)(count) & 0xFFFFFFFF))#define UNPACK_TIMESTAMP(data) ((uint32_t)((data) >> 32))#define UNPACK_COUNTER(data) ((uint32_t)((data) & 0xFFFFFFFF))
+```c
+#define PACK_STATE(ts, count) (((uint64_t)(ts) << 32) | ((uint64_t)(count) & 0xFFFFFFFF))
+#define UNPACK_TIMESTAMP(data) ((uint32_t)((data) >> 32))
+#define UNPACK_COUNTER(data) ((uint32_t)((data) & 0xFFFFFFFF))
 ```
 4. Define the entry function and get the current timestamp.
 If the timestamp helper fails, allow the packet to avoid false positives.
-```
-uint64_t cf_ebpf_main(void *state){    // Get current timestamp    int64_t now = timestamp();    if (now < 0) {        return CF_EBPF_PASS; // If timestamp fails, allow the packet    }    uint32_t now_secs = (uint32_t)now;
+```c
+uint64_t cf_ebpf_main(void *state)
+{
+    // Get current timestamp
+    int64_t now = timestamp();
+    if (now < 0) {
+        return CF_EBPF_PASS; // If timestamp fails, allow the packet
+    }
+    uint32_t now_secs = (uint32_t)now;
 ```
 5. Retrieve the existing state for this source IP.
 Use `get_src_ip_data` to look up whether this source IP has been seen before.
-```
-    // Try to get existing state for this source IP    uint64_t data;    int ret = get_src_ip_data(&data);    uint32_t window_start;    uint32_t counter;
+```c
+    // Try to get existing state for this source IP
+    uint64_t data;
+    int ret = get_src_ip_data(&data);
+    uint32_t window_start;
+    uint32_t counter;
 ```
 6. Handle the case where this is a new source IP.
 If no entry exists (return value is `-1`), this is the first packet from this source IP. Initialize the window to start now with a counter of 1.
-```
-    if (ret == -1) {        // No existing entry - first packet from this IP        // Initialize: window starts now, counter = 1        window_start = now_secs;        counter = 1;    }
+```c
+    if (ret == -1) {
+        // No existing entry - first packet from this IP
+        // Initialize: window starts now, counter = 1
+        window_start = now_secs;
+        counter = 1;
+    }
 ```
 7. Handle existing source IPs and check the time window.
 If an entry exists, unpack the stored timestamp and counter. If the window has expired, reset both values. Otherwise, increment the counter and check if it exceeds the rate limit.
-```
-    } else if (ret != 0) {        // If there's other unknown error with getting src_ip_data, pass packet        return CF_EBPF_PASS;    } else {        // Entry exists - unpack the state        window_start = UNPACK_TIMESTAMP(data);        counter = UNPACK_COUNTER(data);        // Check if we're still in the same time window        if (now_secs - window_start >= WINDOW_SECONDS) {            // Window expired - reset counter and start new window            window_start = now_secs;            counter = 1;        } else {            // Still in same window - increment counter            counter++;            // Check if rate limit exceeded            if (counter > RATE_LIMIT) {                // Drop packet without updating state                return CF_EBPF_DROP;            }        }    }
+```c
+    } else if (ret != 0) {
+        // If there's other unknown error with getting src_ip_data, pass packet
+        return CF_EBPF_PASS;
+    } else {
+        // Entry exists - unpack the state
+        window_start = UNPACK_TIMESTAMP(data);
+        counter = UNPACK_COUNTER(data);
+        // Check if we're still in the same time window
+        if (now_secs - window_start >= WINDOW_SECONDS) {
+            // Window expired - reset counter and start new window
+            window_start = now_secs;
+            counter = 1;
+        } else {
+            // Still in same window - increment counter
+            counter++;
+            // Check if rate limit exceeded
+            if (counter > RATE_LIMIT) {
+                // Drop packet without updating state
+                return CF_EBPF_DROP;
+            }
+        }
+    }
 ```
 8. Store the updated state and allow the packet.
 Pack the window start timestamp and counter back into a single value and store it in the source IP state table.
-```
-    // Store updated state    uint64_t new_data = PACK_STATE(window_start, counter);    set_src_ip_data(new_data);    return CF_EBPF_PASS;}
+```c
+    // Store updated state
+    uint64_t new_data = PACK_STATE(window_start, counter);
+    set_src_ip_data(new_data);
+    return CF_EBPF_PASS;
+}
 ```
 
 For reference, the example below is the rate limiting program in its entirety:
 
-```
-#include <cf_ebpf_defs.h>#define CF_EBPF_HELPER_V0#include <cf_ebpf_helper.h>
-// Rate limit configuration// This program implements a fixed (not sliding) window ratelimit.#define RATE_LIMIT 100         // Maximum packets allowed per window#define WINDOW_SECONDS 60      // Time window in seconds
-// The source IP table holds a mapping from source IP -> custom u64. We will make the custom u64 value in the// table hold a timestamp and a counter to accomplish a ratelimit.//// NOTE: the source IP table is effectively a LRU cache. If it is full, old values will be evicted.// Values are also garbage collected from the table every 1hr.//// The macros below pack the timestamp (upper 32 bits) and counter (lower 32 bits) into 64-bit data// into a value that we can store into the source IP table.#define PACK_STATE(ts, count) (((uint64_t)(ts) << 32) | ((uint64_t)(count) & 0xFFFFFFFF))#define UNPACK_TIMESTAMP(data) ((uint32_t)((data) >> 32))#define UNPACK_COUNTER(data) ((uint32_t)((data) & 0xFFFFFFFF))
-uint64_t cf_ebpf_main(void *state){    // Get current timestamp    int64_t now = timestamp();    if (now < 0) {        return CF_EBPF_PASS; // If timestamp fails, allow the packet    }    uint32_t now_secs = (uint32_t)now;
-    // Try to get existing state for this source IP    uint64_t data;    int ret = get_src_ip_data(&data);    uint32_t window_start;    uint32_t counter;
-    if (ret == -1) {        // No existing entry - first packet from this IP        // Initialize: window starts now, counter = 1        window_start = now_secs;        counter = 1;    } else if (ret != 0) {        // If there's other unknown error with getting src_ip_data, pass packet        return CF_EBPF_PASS;    } else {        // Entry exists - unpack the state        window_start = UNPACK_TIMESTAMP(data);        counter = UNPACK_COUNTER(data);        // Check if we're still in the same time window        if (now_secs - window_start >= WINDOW_SECONDS) {            // Window expired - reset counter and start new window            window_start = now_secs;            counter = 1;        } else {            // Still in same window - increment counter            counter++;            // Check if rate limit exceeded            if (counter > RATE_LIMIT) {                // Drop packet without updating state                // Here is where the actual ratelimit occurs.                return CF_EBPF_DROP;            }        }    }    // Store updated state    uint64_t new_data = PACK_STATE(window_start, counter);    set_src_ip_data(new_data);    return CF_EBPF_PASS;}
+```c
+#include <cf_ebpf_defs.h>
+#define CF_EBPF_HELPER_V0
+#include <cf_ebpf_helper.h>
+
+
+// Rate limit configuration
+// This program implements a fixed (not sliding) window ratelimit.
+#define RATE_LIMIT 100         // Maximum packets allowed per window
+#define WINDOW_SECONDS 60      // Time window in seconds
+
+
+// The source IP table holds a mapping from source IP -> custom u64. We will make the custom u64 value in the
+// table hold a timestamp and a counter to accomplish a ratelimit.
+//
+// NOTE: the source IP table is effectively a LRU cache. If it is full, old values will be evicted.
+// Values are also garbage collected from the table every 1hr.
+//
+// The macros below pack the timestamp (upper 32 bits) and counter (lower 32 bits) into 64-bit data
+// into a value that we can store into the source IP table.
+#define PACK_STATE(ts, count) (((uint64_t)(ts) << 32) | ((uint64_t)(count) & 0xFFFFFFFF))
+#define UNPACK_TIMESTAMP(data) ((uint32_t)((data) >> 32))
+#define UNPACK_COUNTER(data) ((uint32_t)((data) & 0xFFFFFFFF))
+
+
+uint64_t cf_ebpf_main(void *state)
+{
+    // Get current timestamp
+    int64_t now = timestamp();
+    if (now < 0) {
+        return CF_EBPF_PASS; // If timestamp fails, allow the packet
+    }
+    uint32_t now_secs = (uint32_t)now;
+
+
+    // Try to get existing state for this source IP
+    uint64_t data;
+    int ret = get_src_ip_data(&data);
+    uint32_t window_start;
+    uint32_t counter;
+
+
+    if (ret == -1) {
+        // No existing entry - first packet from this IP
+        // Initialize: window starts now, counter = 1
+        window_start = now_secs;
+        counter = 1;
+    } else if (ret != 0) {
+        // If there's other unknown error with getting src_ip_data, pass packet
+        return CF_EBPF_PASS;
+    } else {
+        // Entry exists - unpack the state
+        window_start = UNPACK_TIMESTAMP(data);
+        counter = UNPACK_COUNTER(data);
+        // Check if we're still in the same time window
+        if (now_secs - window_start >= WINDOW_SECONDS) {
+            // Window expired - reset counter and start new window
+            window_start = now_secs;
+            counter = 1;
+        } else {
+            // Still in same window - increment counter
+            counter++;
+            // Check if rate limit exceeded
+            if (counter > RATE_LIMIT) {
+                // Drop packet without updating state
+                // Here is where the actual ratelimit occurs.
+                return CF_EBPF_DROP;
+            }
+        }
+    }
+    // Store updated state
+    uint64_t new_data = PACK_STATE(window_start, counter);
+    set_src_ip_data(new_data);
+    return CF_EBPF_PASS;
+}
 ```
 
 This program demonstrates several key concepts:
@@ -359,8 +703,12 @@ Helper functions may be removed or changed. New helper functions may be introduc
 
 Constructs `cf_ebpf_parsed_headers` from `cf_ebpf_generic_ctx` and `cf_ebpf_packet_data`. Performs required memory checks to pass the verifier.
 
-```
-static inline int parse_packet_data(   struct cf_ebpf_generic_ctx *ctx,   struct cf_ebpf_packet_data **out_p,   struct cf_ebpf_parsed_headers *out_headers);
+```c
+static inline int parse_packet_data(
+   struct cf_ebpf_generic_ctx *ctx,
+   struct cf_ebpf_packet_data **out_p,
+   struct cf_ebpf_parsed_headers *out_headers
+);
 ```
 
 **Arguments:**
@@ -375,7 +723,7 @@ static inline int parse_packet_data(   struct cf_ebpf_generic_ctx *ctx,   struct
 
 Generates a random unsigned integer.
 
-```
+```c
 uint64_t rand(void);
 ```
 
@@ -385,7 +733,7 @@ uint64_t rand(void);
 
 Returns the current UNIX timestamp (number of non-leap seconds since January 1, 1970 0:00:00 UTC).
 
-```
+```c
 int64_t timestamp(void);
 ```
 
@@ -395,7 +743,7 @@ int64_t timestamp(void);
 
 Computes MD5 hash of the source buffer and stores the result in the destination buffer.
 
-```
+```c
 int hash_md5(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -416,7 +764,7 @@ int hash_md5(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 
 Computes SHA-256 hash of the source buffer and stores the result in the destination buffer.
 
-```
+```c
 int hash_sha256(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -437,7 +785,7 @@ int hash_sha256(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 
 Computes SHA-512 hash of the source buffer and stores the result in the destination buffer.
 
-```
+```c
 int hash_sha512(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -458,7 +806,7 @@ int hash_sha512(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 
 Computes CRC32 hash of the source buffer and stores the result as a 64-bit integer. This is a convenience wrapper that handles the byte-to-integer conversion internally.
 
-```
+```c
 int hash_crc32(uint8_t *src, size_t src_len, uint64_t *dest);
 ```
 
@@ -478,7 +826,7 @@ int hash_crc32(uint8_t *src, size_t src_len, uint64_t *dest);
 
 Computes BLAKE2B-512 hash of the source buffer and stores the result in the destination buffer.
 
-```
+```c
 int hash_blake2b512(const uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -499,7 +847,7 @@ int hash_blake2b512(const uint8_t *src, size_t src_len, uint8_t *dest, size_t de
 
 Computes HMAC-SHA256 of the source buffer and stores the result in the destination buffer. The private key is configured at the platform level and is not exposed directly to the BPF program. The key is unique per server and per customer.
 
-```
+```c
 int hmac_sha256(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -520,7 +868,7 @@ int hmac_sha256(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 
 Computes HMAC-SHA512 of the source buffer and stores the result in the destination buffer. The private key is configured at the platform level and is not exposed directly to the BPF program. The key is unique per server and per customer.
 
-```
+```c
 int hmac_sha512(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -541,7 +889,7 @@ int hmac_sha512(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 
 Computes BLAKE2B-512 HMAC of the source buffer and stores the result in the destination buffer. The private key is configured at the platform level and is not exposed directly to the BPF program. The key is unique per server and per customer.
 
-```
+```c
 int hmac_blake2b512(const uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
 ```
 
@@ -562,7 +910,7 @@ int hmac_blake2b512(const uint8_t *src, size_t src_len, uint8_t *dest, size_t de
 
 Sets challenge data for the current packet. Use this to send a challenge packet back to the client.
 
-```
+```c
 int set_challenge(uint8_t *src, size_t src_len);
 ```
 
@@ -582,7 +930,7 @@ int set_challenge(uint8_t *src, size_t src_len);
 
 Retrieves the status value associated with the source IP address from the state table.
 
-```
+```c
 int get_src_ip_status(uint8_t *status, uint64_t *expiry);
 ```
 
@@ -604,7 +952,7 @@ int get_src_ip_status(uint8_t *status, uint64_t *expiry);
 
 Sets the status value associated with the source IP address in the state table.
 
-```
+```c
 int set_src_ip_status(uint8_t status, uint64_t expiry_secs);
 ```
 
@@ -623,7 +971,7 @@ int set_src_ip_status(uint8_t status, uint64_t expiry_secs);
 
 Retrieves custom data associated with the source IP address from the state table.
 
-```
+```c
 int get_src_ip_data(uint64_t *data);
 ```
 
@@ -644,7 +992,7 @@ int get_src_ip_data(uint64_t *data);
 
 Stores custom data associated with the source IP address in the state table.
 
-```
+```c
 int set_src_ip_data(uint64_t data);
 ```
 
@@ -662,7 +1010,7 @@ int set_src_ip_data(uint64_t data);
 
 Retrieves custom data associated with the current flow from the state table.
 
-```
+```c
 int get_flow_data(uint64_t *data);
 ```
 
@@ -683,7 +1031,7 @@ int get_flow_data(uint64_t *data);
 
 Stores custom data associated with the current flow in the state table.
 
-```
+```c
 int set_flow_data(uint64_t data);
 ```
 
@@ -701,7 +1049,7 @@ int set_flow_data(uint64_t data);
 
 Calculates the Shannon entropy of the source buffer. The result is returned in millibits, ranging from `0` (all identical bytes) to `8000` (all 256 byte values equally distributed).
 
-```
+```c
 int64_t entropy(uint8_t *src, size_t src_len);
 ```
 
@@ -719,7 +1067,7 @@ int64_t entropy(uint8_t *src, size_t src_len);
 
 Sets a custom tag for network analytics reporting. The tag appears along with the packet sample in the Network Analytics dashboard. By default, packets are sampled at 1/10,000 rate. Only one tag is set per program execution. If program execution calls `set_network_analytics_tag` multiple times, the last tag value applies to the packet sample.
 
-```
+```c
 int set_network_analytics_tag(uint64_t tag);
 ```
 
@@ -733,7 +1081,7 @@ int set_network_analytics_tag(uint64_t tag);
 
 Converts a 16-bit integer from network byte order to host byte order.
 
-```
+```c
 uint16_t ntohs(uint16_t netshort);
 ```
 
@@ -747,7 +1095,7 @@ uint16_t ntohs(uint16_t netshort);
 
 Converts a 16-bit integer from host byte order to network byte order.
 
-```
+```c
 uint16_t htons(uint16_t hostshort);
 ```
 
@@ -761,7 +1109,7 @@ uint16_t htons(uint16_t hostshort);
 
 Converts a 32-bit integer from network byte order to host byte order.
 
-```
+```c
 uint32_t ntohl(uint32_t netlong);
 ```
 
@@ -775,7 +1123,7 @@ uint32_t ntohl(uint32_t netlong);
 
 Converts a 32-bit integer from host byte order to network byte order.
 
-```
+```c
 uint32_t htonl(uint32_t hostlong);
 ```
 
@@ -789,7 +1137,7 @@ uint32_t htonl(uint32_t hostlong);
 
 Converts a 64-bit integer from network byte order to host byte order.
 
-```
+```c
 uint64_t ntohll(uint64_t netlonglong);
 ```
 
@@ -803,7 +1151,7 @@ uint64_t ntohll(uint64_t netlonglong);
 
 Converts a 64-bit integer from host byte order to network byte order.
 
-```
+```c
 uint64_t htonll(uint64_t hostlonglong);
 ```
 
@@ -819,48 +1167,107 @@ uint64_t htonll(uint64_t hostlonglong);
 
 The generic context structure passed into the BPF program.
 
-```
-struct cf_ebpf_generic_ctx {   /* Pointer to the beginning of the context data. */   uint64_t data;   /* Pointer to the end of the context data. */   uint64_t data_end;   /* Space for the program to store metadata. */   uint64_t meta_data;};
+```c
+struct cf_ebpf_generic_ctx {
+   /* Pointer to the beginning of the context data. */
+   uint64_t data;
+   /* Pointer to the end of the context data. */
+   uint64_t data_end;
+   /* Space for the program to store metadata. */
+   uint64_t meta_data;
+};
 ```
 
 #### `cf_ebpf_packet_data`
 
 Contains the raw packet data passed into the BPF program.
 
-```
-struct cf_ebpf_packet_data {   /* Total length of the packet. */   size_t   total_packet_length;   /* Size of the IP header. Supports IPv4 (including options) and IPv6. */   size_t   ip_header_length;   /* Bytes of the packet, starting with the IP header. */   uint8_t  packet_buffer[1500];};
+```c
+struct cf_ebpf_packet_data {
+   /* Total length of the packet. */
+   size_t   total_packet_length;
+   /* Size of the IP header. Supports IPv4 (including options) and IPv6. */
+   size_t   ip_header_length;
+   /* Bytes of the packet, starting with the IP header. */
+   uint8_t  packet_buffer[1500];
+};
 ```
 
 #### `cf_ebpf_parsed_headers`
 
 Contains pointers to parsed IP and UDP headers. Populated by calling `parse_packet_data`.
 
-```
-struct cf_ebpf_parsed_headers {   /* Pointer to the parsed IPv4 header, if present (otherwise null). */   struct iphdr   *ipv4;   /* Pointer to the parsed IPv6 header, if present (otherwise null). */   struct ipv6hdr *ipv6;   /* Pointer to the parsed UDP header. */   struct udphdr  *udp;   /* Raw pointer to the last valid byte of the packet context data. */   uint8_t        *data_end;};
+```c
+struct cf_ebpf_parsed_headers {
+   /* Pointer to the parsed IPv4 header, if present (otherwise null). */
+   struct iphdr   *ipv4;
+   /* Pointer to the parsed IPv6 header, if present (otherwise null). */
+   struct ipv6hdr *ipv6;
+   /* Pointer to the parsed UDP header. */
+   struct udphdr  *udp;
+   /* Raw pointer to the last valid byte of the packet context data. */
+   uint8_t        *data_end;
+};
 ```
 
 #### `iphdr`
 
 IPv4 header structure. Source: [Linux kernel ↗](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/ip.h#L87).
 
-```
-struct iphdr {#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__    uint8_t  version:4,             ihl:4;#else    uint8_t  ihl:4,             version:4;#endif    uint8_t  tos;    uint16_t tot_len;    uint16_t id;    uint16_t frag_off;    uint8_t  ttl;    uint8_t  protocol;    uint16_t check;    uint32_t saddr;    uint32_t daddr;};
+```c
+struct iphdr {
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+    uint8_t  version:4,
+             ihl:4;
+#else
+    uint8_t  ihl:4,
+             version:4;
+#endif
+    uint8_t  tos;
+    uint16_t tot_len;
+    uint16_t id;
+    uint16_t frag_off;
+    uint8_t  ttl;
+    uint8_t  protocol;
+    uint16_t check;
+    uint32_t saddr;
+    uint32_t daddr;
+};
 ```
 
 #### `ipv6hdr`
 
 IPv6 header structure. Source: [Linux kernel ↗](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/ipv6.h#L118).
 
-```
-struct ipv6hdr {#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__    uint8_t  version:4,             priority:4;#else    uint8_t  priority:4,             version:4;#endif    uint8_t  flow_lbl[3];    uint16_t payload_len;    uint8_t  nexthdr;    uint8_t  hop_limit;    uint8_t  saddr[16];    uint8_t  daddr[16];};
+```c
+struct ipv6hdr {
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+    uint8_t  version:4,
+             priority:4;
+#else
+    uint8_t  priority:4,
+             version:4;
+#endif
+    uint8_t  flow_lbl[3];
+    uint16_t payload_len;
+    uint8_t  nexthdr;
+    uint8_t  hop_limit;
+    uint8_t  saddr[16];
+    uint8_t  daddr[16];
+};
 ```
 
 #### `udphdr`
 
 UDP header structure. Source: [Linux kernel ↗](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/udp.h#L23).
 
-```
-struct udphdr {    uint16_t source;    uint16_t dest;    uint16_t len;    uint16_t check;};
+```c
+struct udphdr {
+    uint16_t source;
+    uint16_t dest;
+    uint16_t len;
+    uint16_t check;
+};
 ```
 
 ## Program endpoints
@@ -939,10 +1346,14 @@ This API endpoint debugs a program by intaking:
 
 This endpoint runs the referenced BPF program against the input PCAP and outputs a new annotated PCAP file. The output PCAP file will contain the exact same packets as the input PCAP file, and will also include the program verdict annotated in the **Packet Comment** section of each packet.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/programmable_flow_protection/configs/programs/$PROGRAM_ID/pcap" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/vnd.tcpdump.pcap" \--data-binary "@<PATH_TO_INPUT_PCAP_FILE>" \--output output.pcap
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/programmable_flow_protection/configs/programs/$PROGRAM_ID/pcap" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/vnd.tcpdump.pcap" \
+--data-binary "@<PATH_TO_INPUT_PCAP_FILE>" \
+--output output.pcap
 ```
 
 The Packet Comment annotation may contain:

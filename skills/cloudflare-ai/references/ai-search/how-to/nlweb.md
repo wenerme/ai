@@ -63,11 +63,28 @@ These endpoints give both people and agents structured access to your content.
 
 You can use the embeddable snippet to add a search UI directly into your website. For example:
 
-```
-<!-- Add css on head -->    <link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css">    <link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css">
-    <!-- Add container on body -->    <div id="docs-search-container"></div>
-    <!-- Include JavaScript -->    <script type="module">      import { NLWebDropdownChat } from 'https://ask.example.com/nlweb-dropdown-chat.js';
-      const chat = new NLWebDropdownChat({        containerId: 'docs-search-container',        site: 'https://ask.example.com',        placeholder: 'Search for docs...',        endpoint: 'https://ask.example.com'      });    </script>
+```html
+<!-- Add css on head -->
+    <link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css">
+    <link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css">
+
+
+    <!-- Add container on body -->
+    <div id="docs-search-container"></div>
+
+
+    <!-- Include JavaScript -->
+    <script type="module">
+      import { NLWebDropdownChat } from 'https://ask.example.com/nlweb-dropdown-chat.js';
+
+
+      const chat = new NLWebDropdownChat({
+        containerId: 'docs-search-container',
+        site: 'https://ask.example.com',
+        placeholder: 'Search for docs...',
+        endpoint: 'https://ask.example.com'
+      });
+    </script>
 ```
 
 This lets you serve conversational AI search directly from your own domain, with control over how people and agents access your content.

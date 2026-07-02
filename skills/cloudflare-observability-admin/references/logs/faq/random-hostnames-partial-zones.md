@@ -49,16 +49,27 @@ With partial (CNAME) zones:
 
 ### Example data pattern
 
-```
-"ClientRequestHost","_count""legitimate-proxied.example.com","12498"    # Real traffic"another-proxied.example.com","6082"        # Real traffic"0-0.example.com","2"                       # Scanner"admin.example.com","2"                     # Scanner"api-staging.example.com","2"               # Scanner"1234567890.example.com","2"                # Scanner
+```txt
+"ClientRequestHost","_count"
+"legitimate-proxied.example.com","12498"    # Real traffic
+"another-proxied.example.com","6082"        # Real traffic
+"0-0.example.com","2"                       # Scanner
+"admin.example.com","2"                     # Scanner
+"api-staging.example.com","2"               # Scanner
+"1234567890.example.com","2"                # Scanner
 ```
 
 ### How do I block these requests?
 
 Create a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/) that only allows requests with valid `Host` headers:
 
-```
-Expression:(http.host ne "proxied-hostname-1.example.com" and http.host ne "proxied-hostname-2.example.com" and http.host ne "proxied-hostname-3.example.com")
+```txt
+Expression:
+(http.host ne "proxied-hostname-1.example.com" and
+ http.host ne "proxied-hostname-2.example.com" and
+ http.host ne "proxied-hostname-3.example.com")
+
+
 Action: Block
 ```
 

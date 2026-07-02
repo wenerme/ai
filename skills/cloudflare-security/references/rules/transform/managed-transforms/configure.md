@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-10188)
-* [ API ](#tab-panel-10189)
-* [ Terraform ](#tab-panel-10190)
+* [ Dashboard ](#tab-panel-10483)
+* [ API ](#tab-panel-10484)
+* [ Terraform ](#tab-panel-10485)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)
@@ -76,14 +76,75 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-List Managed Transforms
+**List Managed Transforms**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": {    "managed_request_headers": [      {        "enabled": false,        "has_conflict": false,        "id": "add_bot_protection_headers"      },32 collapsed lines      {        "enabled": false,        "has_conflict": false,        "id": "add_client_certificate_headers"      },      {        "enabled": false,        "has_conflict": false,        "id": "add_visitor_location_headers"      },      {        "conflicts_with": ["remove_visitor_ip_headers"],        "enabled": false,        "has_conflict": false,        "id": "add_true_client_ip_headers"      },      {        "conflicts_with": ["add_true_client_ip_headers"],        "enabled": false,        "has_conflict": false,        "id": "remove_visitor_ip_headers"      },      {        "enabled": false,        "has_conflict": false,        "id": "add_waf_credential_check_status_header"      },      {        "enabled": false,        "has_conflict": false,        "id": "add_waf_content_scan_status_header"      }    ],    "managed_response_headers": [      {        "enabled": false,        "has_conflict": false,        "id": "remove_x-powered-by_header"      },5 collapsed lines      {        "enabled": false,        "has_conflict": false,        "id": "add_security_headers"      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "managed_request_headers": [
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_bot_protection_headers"
+      },
+32 collapsed lines
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_client_certificate_headers"
+      },
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_visitor_location_headers"
+      },
+      {
+        "conflicts_with": ["remove_visitor_ip_headers"],
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_true_client_ip_headers"
+      },
+      {
+        "conflicts_with": ["add_true_client_ip_headers"],
+        "enabled": false,
+        "has_conflict": false,
+        "id": "remove_visitor_ip_headers"
+      },
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_waf_credential_check_status_header"
+      },
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_waf_content_scan_status_header"
+      }
+    ],
+    "managed_response_headers": [
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "remove_x-powered-by_header"
+      },
+5 collapsed lines
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_security_headers"
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 **2\. Change the status of Managed Transforms**
@@ -121,18 +182,94 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update Managed Transforms
+**Update Managed Transforms**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "managed_request_headers": [        {            "id": "add_visitor_location_headers",            "enabled": true        }    ],    "managed_response_headers": [        {            "id": "remove_x-powered-by_header",            "enabled": true        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "managed_request_headers": [
+        {
+            "id": "add_visitor_location_headers",
+            "enabled": true
+        }
+    ],
+    "managed_response_headers": [
+        {
+            "id": "remove_x-powered-by_header",
+            "enabled": true
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "managed_request_headers": [10 collapsed lines      {        "enabled": false,        "has_conflict": false,        "id": "add_bot_protection_headers"      },      {        "enabled": false,        "has_conflict": false,        "id": "add_client_certificate_headers"      },      {        "enabled": true,        "has_conflict": false,        "id": "add_visitor_location_headers"      },22 collapsed lines      {        "conflicts_with": ["remove_visitor_ip_headers"],        "enabled": false,        "has_conflict": false,        "id": "add_true_client_ip_headers"      },      {        "conflicts_with": ["add_true_client_ip_headers"],        "enabled": false,        "has_conflict": false,        "id": "remove_visitor_ip_headers"      },      {        "enabled": false,        "has_conflict": false,        "id": "add_waf_credential_check_status_header"      },      {        "enabled": false,        "has_conflict": false,        "id": "add_waf_content_scan_status_header"      }    ],    "managed_response_headers": [      {        "enabled": true,        "has_conflict": false,        "id": "remove_x-powered-by_header"      },5 collapsed lines      {        "enabled": false,        "has_conflict": false,        "id": "add_security_headers"      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "managed_request_headers": [
+10 collapsed lines
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_bot_protection_headers"
+      },
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_client_certificate_headers"
+      },
+      {
+        "enabled": true,
+        "has_conflict": false,
+        "id": "add_visitor_location_headers"
+      },
+22 collapsed lines
+      {
+        "conflicts_with": ["remove_visitor_ip_headers"],
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_true_client_ip_headers"
+      },
+      {
+        "conflicts_with": ["add_true_client_ip_headers"],
+        "enabled": false,
+        "has_conflict": false,
+        "id": "remove_visitor_ip_headers"
+      },
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_waf_credential_check_status_header"
+      },
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_waf_content_scan_status_header"
+      }
+    ],
+    "managed_response_headers": [
+      {
+        "enabled": true,
+        "has_conflict": false,
+        "id": "remove_x-powered-by_header"
+      },
+5 collapsed lines
+      {
+        "enabled": false,
+        "has_conflict": false,
+        "id": "add_security_headers"
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
-* [ Terraform (v5) ](#tab-panel-10186)
-* [ Terraform (v4) ](#tab-panel-10187)
+* [ Terraform (v5) ](#tab-panel-10481)
+* [ Terraform (v4) ](#tab-panel-10482)
 
 Required API token permissions
 
@@ -143,16 +280,40 @@ All of the following [token permissions](https://developers.cloudflare.com/funda
 
 Configure the [cloudflare\_managed\_transforms ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed%5Ftransforms) resource:
 
-```
-resource "cloudflare_managed_transforms" "tf_example" {  zone_id = var.cloudflare_zone_id
-  managed_request_headers = [{    id      = "add_visitor_location_headers"    enabled = true  }]
-  managed_response_headers = [{    id      = "remove_x-powered-by_header"    enabled = true  }]}
+```tf
+resource "cloudflare_managed_transforms" "tf_example" {
+  zone_id = var.cloudflare_zone_id
+
+
+  managed_request_headers = [{
+    id      = "add_visitor_location_headers"
+    enabled = true
+  }]
+
+
+  managed_response_headers = [{
+    id      = "remove_x-powered-by_header"
+    enabled = true
+  }]
+}
 ```
 
-```
-resource "cloudflare_managed_headers" "tf_example" {  zone_id = "<ZONE_ID>"
-  managed_request_headers {    id      = "add_visitor_location_headers"    enabled = true  }
-  managed_response_headers {    id      = "remove_x-powered-by_header"    enabled = true  }}
+```tf
+resource "cloudflare_managed_headers" "tf_example" {
+  zone_id = "<ZONE_ID>"
+
+
+  managed_request_headers {
+    id      = "add_visitor_location_headers"
+    enabled = true
+  }
+
+
+  managed_response_headers {
+    id      = "remove_x-powered-by_header"
+    enabled = true
+  }
+}
 ```
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).

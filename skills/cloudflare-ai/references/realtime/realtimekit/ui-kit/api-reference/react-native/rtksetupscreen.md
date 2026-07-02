@@ -29,16 +29,31 @@ Pre-join setup screen with video preview, mic/camera toggles, display name input
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSetupScreen } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSetupScreen meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkSetupScreen meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSetupScreen } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkSetupScreen      meeting={meeting}      config={customConfig}      size="md"      iconPack={customIconPack}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSetupScreen
+      meeting={meeting}
+      config={customConfig}
+      size="md"
+      iconPack={customIconPack}
+    />
+  );
+}
 ```
 
 ```json

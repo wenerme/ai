@@ -45,10 +45,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "aegis",    "value": {        "enabled": true,        "pool_id": "<YOUR_EGRESS_POOL_ID>"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "id": "aegis",
+    "value": {
+        "enabled": true,
+        "pool_id": "<YOUR_EGRESS_POOL_ID>"
+    }
+  }'
 ```
 
 ## 3\. Proxy zone setup
@@ -78,7 +87,7 @@ Add a secret token as an HTTP header in your Logpush job, then create a WAF rule
 
 Any URL parameter starting with `header_` becomes an HTTP header in the request. When creating or updating your Logpush job, add the secret header to your destination URL:
 
-```
+```txt
 https://logpush.yourdestinationendpoint.com?header_X-Logpush-Secret=YOUR_RANDOM_SECRET_TOKEN
 ```
 
@@ -89,7 +98,7 @@ Generate a strong random token using `openssl rand -hex 32`.
 In the proxy zone, go to **Security** \> **WAF** \> **Custom rules** and create a rule to block requests without the correct secret header.
 
 * **Expression:**
-```
+```txt
 (http.host eq "logpush.yourdestinationendpoint.com" and all(http.request.headers["x-logpush-secret"][*] ne "YOUR_RANDOM_SECRET_TOKEN"))
 ```
 * **Action:** Block
@@ -99,7 +108,7 @@ In the proxy zone, go to **Security** \> **WAF** \> **Custom rules** and create 
 For defense in depth, add a rule to only allow traffic from Cloudflare's ASNs. Logpush traffic originates from Cloudflare's network (ASN 13335, 132892, or 202623).
 
 * **Expression:**
-```
+```txt
 (http.host eq "logpush.yourdestinationendpoint.com" and not ip.geoip.asnum in {13335 132892 202623})
 ```
 * **Action:** Block
@@ -112,7 +121,7 @@ ASN filtering alone is insufficient because other Cloudflare customers' traffic 
 
 For stronger authentication, use [Cloudflare Access Service Tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for machine-to-machine authentication. Create a Service Token in the Zero Trust dashboard, then configure Logpush with the Access headers:
 
-```
+```txt
 https://logpush.yourdestinationendpoint.com?header_CF-Access-Client-Id=YOUR_CLIENT_ID&header_CF-Access-Client-Secret=YOUR_CLIENT_SECRET
 ```
 
@@ -120,11 +129,13 @@ https://logpush.yourdestinationendpoint.com?header_CF-Access-Client-Id=YOUR_CLIE
 
 Test that your WAF rules are blocking unauthorized requests:
 
-Terminal window
+```bash
+$ curl https://logpush.yourdestinationendpoint.com
+# Expected: error code: 1020
 
-```
-$ curl https://logpush.yourdestinationendpoint.com# Expected: error code: 1020
-$ curl -H "X-Logpush-Secret: wrong-token" https://logpush.yourdestinationendpoint.com# Expected: error code: 1020
+
+$ curl -H "X-Logpush-Secret: wrong-token" https://logpush.yourdestinationendpoint.com
+# Expected: error code: 1020
 ```
 
 Check Cloudflare Analytics for the proxy zone to confirm Logpush traffic is flowing, and monitor WAF events to ensure unauthorized requests are blocked.

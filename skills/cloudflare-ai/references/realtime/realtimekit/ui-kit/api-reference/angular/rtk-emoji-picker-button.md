@@ -24,14 +24,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-emoji-picker-button></rtk-emoji-picker-button>
+```html
+<!-- component.html -->
+<rtk-emoji-picker-button></rtk-emoji-picker-button>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-emoji-picker-button [isActive]="true"></rtk-emoji-picker-button>
+```html
+<!-- component.html -->
+<rtk-emoji-picker-button
+ [isActive]="true">
+</rtk-emoji-picker-button>
 ```
 
 ```json

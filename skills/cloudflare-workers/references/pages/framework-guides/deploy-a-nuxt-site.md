@@ -42,9 +42,7 @@ After creating your project, C3 will generate a new `my-nuxt-app` directory usin
 
 When creating your new project, C3 will give you the option of deploying an initial version of your application via [Direct Upload](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/). You can redeploy your application at any time by running following command inside your project directory:
 
-Terminal window
-
-```
+```sh
 npm run deploy
 ```
 
@@ -70,11 +68,17 @@ Setup requires a basic understanding of [Git ↗](https://git-scm.com/). If you 
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
+```sh
+# Skip the following three commands if you have built your application
+# using C3 or already committed your changes
+git init
+git add .
+git commit -m "Initial commit"
 
-```
-# Skip the following three commands if you have built your application# using C3 or already committed your changesgit initgit add .git commit -m "Initial commit"
-git branch -M maingit remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>git push -u origin main
+
+git branch -M main
+git remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>
+git push -u origin main
 ```
 
 ### Create a Pages project
@@ -112,10 +116,12 @@ If you intend to use bindings in your project, you must first set up your bindin
 
 Projects created via C3 come with `nitro-cloudflare-dev`, a `nitro` module that simplifies the process of working with bindings during development:
 
-TypeScript
+**TypeScript**
 
-```
-export default defineNuxtConfig({  modules: ["nitro-cloudflare-dev"],});
+```typescript
+export default defineNuxtConfig({
+  modules: ["nitro-cloudflare-dev"],
+});
 ```
 
 This module is powered by the [getPlatformProxy helper function](https://developers.cloudflare.com/workers/wrangler/api#getplatformproxy). `getPlatformProxy` will automatically detect any bindings defined in your project's Wrangler configuration file and emulate those bindings in local development. Review [Wrangler configuration information on bindings](https://developers.cloudflare.com/workers/wrangler/configuration/#bindings) for more information on how to configure bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
@@ -134,10 +140,21 @@ To get proper type support, you need to create a new `env.d.ts` file in the root
 
 The following is an example of adding a `KVNamespace` binding:
 
-TypeScript
+**TypeScript**
 
-```
-declare module "h3" {  interface H3EventContext {    cf: CfProperties;    cloudflare: {      request: Request;      env: {        MY_KV: KVNamespace;      };      context: ExecutionContext;    };  }}
+```ts
+declare module "h3" {
+  interface H3EventContext {
+    cf: CfProperties;
+    cloudflare: {
+      request: Request;
+      env: {
+        MY_KV: KVNamespace;
+      };
+      context: ExecutionContext;
+    };
+  }
+}
 ```
 
 ### Access bindings in your Nuxt application
@@ -146,21 +163,33 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-9558)
-* [  TypeScript ](#tab-panel-9559)
+* [  JavaScript ](#tab-panel-9809)
+* [  TypeScript ](#tab-panel-9810)
 
-JavaScript
+**JavaScript**
 
+```javascript
+export default defineEventHandler(({ context }) => {
+  const MY_KV = context.cloudflare.env.MY_KV;
+
+
+  return {
+    // ...
+  };
+});
 ```
-export default defineEventHandler(({ context }) => {  const MY_KV = context.cloudflare.env.MY_KV;
-  return {    // ...  };});
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default defineEventHandler(({ context }) => {  const MY_KV = context.cloudflare.env.MY_KV;
-  return {    // ...  };});
+```typescript
+export default defineEventHandler(({ context }) => {
+  const MY_KV = context.cloudflare.env.MY_KV;
+
+
+  return {
+    // ...
+  };
+});
 ```
 
 ## Learn more

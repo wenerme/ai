@@ -28,16 +28,24 @@ Toggle button to open the settings dialog. Hides if no audio or video permission
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettingsToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettingsToggle />;}
+
+
+function MyComponent() {
+  return <RtkSettingsToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettingsToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettingsToggle size="md" variant="button" states={states} />;}
+
+
+function MyComponent() {
+  return <RtkSettingsToggle size="md" variant="button" states={states} />;
+}
 ```
 
 ```json

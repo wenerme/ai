@@ -1183,24 +1183,24 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26746 files, 285 MiB total
+> 106 skills, 26768 files, 287 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
 | `agent-browser` | 1 | 3.2 KiB |
-| `ai-sdk` | 5 | 24 KiB |
+| `ai-sdk` | 1 | 5.4 KiB |
 | `aliyun-cli-docs` | 27 | 183 KiB |
 | `alpine-aports-docs` | 7 | 41 KiB |
 | `ant-design-docs` | 102 | 552 KiB |
 | `anthropic-agent-sdk` | 30 | 614 KiB |
-| `anthropic-api` | 349 | 15 MiB |
+| `anthropic-api` | 353 | 16 MiB |
 | `anthropic-docs` | 187 | 5.6 MiB |
-| `anthropic-sdk-csharp` | 159 | 8.6 MiB |
+| `anthropic-sdk-csharp` | 159 | 8.8 MiB |
 | `anthropic-sdk-go` | 159 | 11 MiB |
-| `anthropic-sdk-java` | 159 | 8.9 MiB |
-| `anthropic-sdk-python` | 159 | 8.7 MiB |
-| `anthropic-sdk-ruby` | 159 | 8.3 MiB |
-| `anthropic-sdk-typescript` | 159 | 8.5 MiB |
+| `anthropic-sdk-java` | 159 | 9.0 MiB |
+| `anthropic-sdk-python` | 159 | 8.9 MiB |
+| `anthropic-sdk-ruby` | 159 | 8.5 MiB |
+| `anthropic-sdk-typescript` | 159 | 8.6 MiB |
 | `argocd-cli-guide` | 2 | 7.5 KiB |
 | `biome-docs` | 604 | 7.5 MiB |
 | `biome-lint` | 4 | 13 KiB |
@@ -1210,15 +1210,15 @@ Use when implementing React state management with Zustand, including context-sco
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 121 | 4.2 MiB |
-| `clickhouse-docs` | 1088 | 10.0 MiB |
+| `clickhouse-docs` | 1090 | 10.0 MiB |
 | `cloudflare-ai` | 1506 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 826 | 5.0 MiB |
-| `cloudflare-observability-admin` | 1228 | 8.1 MiB |
-| `cloudflare-security` | 1006 | 5.5 MiB |
-| `cloudflare-workers` | 770 | 7.0 MiB |
-| `cloudflare-zero-trust` | 929 | 9.5 MiB |
+| `cloudflare-observability-admin` | 1230 | 8.2 MiB |
+| `cloudflare-security` | 1005 | 5.6 MiB |
+| `cloudflare-workers` | 770 | 7.1 MiB |
+| `cloudflare-zero-trust` | 929 | 9.6 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4652 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
@@ -1228,15 +1228,15 @@ Use when implementing React state management with Zustand, including context-sco
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
-| `gitea-docs` | 102 | 692 KiB |
+| `gitea-docs` | 102 | 693 KiB |
 | `glab-cli` | 5 | 21 KiB |
 | `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 89 | 2.0 MiB |
 | `grafana-docs` | 623 | 6.0 MiB |
-| `grafana-plugin-docs` | 593 | 3.6 MiB |
+| `grafana-plugin-docs` | 606 | 3.7 MiB |
 | `hono-docs` | 86 | 354 KiB |
-| `huggingface-docs` | 357 | 2.0 MiB |
+| `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 77 | 482 KiB |
@@ -1248,7 +1248,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 772 | 6.0 MiB |
+| `mastra-docs` | 775 | 6.1 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1259,8 +1259,8 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 455 KiB |
-| `openobserve-docs` | 443 | 2.3 MiB |
-| `openrouter-docs` | 499 | 6.4 MiB |
+| `openobserve-docs` | 444 | 2.3 MiB |
+| `openrouter-docs` | 500 | 6.4 MiB |
 | `orpc-docs` | 75 | 299 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |

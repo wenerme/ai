@@ -25,7 +25,7 @@ OneLogin provides SSO identity management. Cloudflare Access supports OneLogin a
 5. Select **Save**. You can change this information at any time.
 6. Select the **Configuration** tab.
 7. In the **Cloudflare Access Authorization Domain** field, paste your team domain:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -58,7 +58,7 @@ OneLogin SAML allows administrators to upload metadata files from the service pr
 To add a metadata file to your OneLogin SAML configuration:
 
 1. Download your unique SAML metadata file at the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 ```
 2. Save the file as an XML document.
@@ -66,8 +66,19 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 
 ## Example API configuration
 
-```
-{  "config": {    "issuer_url": "https://app.onelogin.com/saml/metadata/1b84ee45-d4fa-4373-8853-abz438942123",    "sso_target_url": "https://sandbox.onelogin.com/trust/saml2/http-post/sso/123456",    "attributes": ["email"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"  },  "type": "saml",  "name": "onelogin saml example"}
+```json
+{
+  "config": {
+    "issuer_url": "https://app.onelogin.com/saml/metadata/1b84ee45-d4fa-4373-8853-abz438942123",
+    "sso_target_url": "https://sandbox.onelogin.com/trust/saml2/http-post/sso/123456",
+    "attributes": ["email"],
+    "email_attribute_name": "",
+    "sign_request": false,
+    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+  },
+  "type": "saml",
+  "name": "onelogin saml example"
+}
 ```
 
 ```json

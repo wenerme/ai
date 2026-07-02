@@ -29,20 +29,34 @@ A button widget for joining a RealtimeKit meeting room. Provides visual feedback
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkJoinButton(  meeting: yourMeetingInstance,)
+
+
+RtkJoinButton(
+  meeting: yourMeetingInstance,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkJoinButton(  meeting: yourMeetingInstance,  onMeetingJoined: () {    // Handle successful join  },  height: 50.0,  width: 200.0,  isDisabled: false,)
+
+
+RtkJoinButton(
+  meeting: yourMeetingInstance,
+  onMeetingJoined: () {
+    // Handle successful join
+  },
+  height: 50.0,
+  width: 200.0,
+  isDisabled: false,
+)
 ```
 
 ```json

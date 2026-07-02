@@ -39,8 +39,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-7323)
-* [ API ](#tab-panel-7324)
+* [ Dashboard ](#tab-panel-7573)
+* [ API ](#tab-panel-7574)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -57,16 +57,23 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-Create a tunnel route
+**Create a tunnel route**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "network": "10.0.0.0/24",    "tunnel_id": "{mesh_node_id}",    "comment": "Staging subnet"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "network": "10.0.0.0/24",
+    "tunnel_id": "{mesh_node_id}",
+    "comment": "Staging subnet"
+  }'
 ```
 
 ### Edit a route
 
-* [ Dashboard ](#tab-panel-7325)
-* [ API ](#tab-panel-7326)
+* [ Dashboard ](#tab-panel-7575)
+* [ API ](#tab-panel-7576)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -79,16 +86,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-Update a tunnel route
+**Update a tunnel route**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "network": "10.0.0.0/24",    "comment": "Updated description"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "network": "10.0.0.0/24",
+    "comment": "Updated description"
+  }'
 ```
 
 ### Delete a route
 
-* [ Dashboard ](#tab-panel-7321)
-* [ API ](#tab-panel-7322)
+* [ Dashboard ](#tab-panel-7571)
+* [ API ](#tab-panel-7572)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.
@@ -100,10 +113,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-Delete a tunnel route
+**Delete a tunnel route**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Configure Split Tunnels

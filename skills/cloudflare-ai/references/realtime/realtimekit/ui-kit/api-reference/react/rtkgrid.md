@@ -34,16 +34,30 @@ The main grid component which abstracts all the grid handling logic and renders 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkGrid />;}
+
+
+function MyComponent() {
+  return <RtkGrid />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkGrid      aspectRatio="example"      gap={42}      gridSize="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkGrid
+      aspectRatio="example"
+      gap={42}
+      gridSize="md"
+    />
+  );
+}
 ```
 
 ```json

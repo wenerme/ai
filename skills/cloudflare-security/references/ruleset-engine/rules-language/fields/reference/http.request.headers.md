@@ -30,13 +30,13 @@ When the HTTP request contains too many headers, this field may not contain all 
 
 Example value:
 
-```
+```txt
 {"content-type": ["application/json"]}
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.headers["content-type"][*] == "application/json")
 ```
 

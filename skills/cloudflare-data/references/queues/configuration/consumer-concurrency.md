@@ -85,19 +85,30 @@ Ensure you are using the latest version of [wrangler](https://developers.cloudfl
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9716)
-* [  wrangler.toml ](#tab-panel-9717)
+* [  wrangler.jsonc ](#tab-panel-10011)
+* [  wrangler.toml ](#tab-panel-10012)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "queues": {
+    "consumers": [
+      {
+        "queue": "my-queue",
+        "max_concurrency": 1
+      }
+    ]
+  }
+}
 ```
-{  "queues": {    "consumers": [      {        "queue": "my-queue",        "max_concurrency": 1      }    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-[[queues.consumers]]queue = "my-queue"max_concurrency = 1
+```toml
+[[queues.consumers]]
+queue = "my-queue"
+max_concurrency = 1
 ```
 
 To remove the limit, remove the `max_concurrency` setting from the `[[queues.consumers]]` configuration for a given queue and call `npx wrangler deploy` to push your configuration update.

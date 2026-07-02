@@ -29,32 +29,153 @@ AI Crawl Control analytics are available through Cloudflare's [GraphQL Analytics
 
 Get AI crawler requests over time using detection IDs
 
-```
-{  viewer {    zones(filter: { zoneTag: "<ZONE_ID>" }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: "2027-01-01T00:00:00Z"          datetime_leq: "2027-01-02T00:00:00Z"          requestSource: "eyeball"          # 123815556 = GPTBot, 132995013 = ChatGPT-User, 126255384 = OAI-SearchBot          botDetectionIds_hasany: [123815556, 132995013, 126255384]        }        limit: 5000      ) {        count        dimensions {          datetimeHour          botDetectionIds          clientRequestHTTPHost        }        sum {          edgeResponseBytes        }      }    }  }}
+```graphql
+{
+  viewer {
+    zones(filter: { zoneTag: "<ZONE_ID>" }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: "2027-01-01T00:00:00Z"
+          datetime_leq: "2027-01-02T00:00:00Z"
+          requestSource: "eyeball"
+          # 123815556 = GPTBot, 132995013 = ChatGPT-User, 126255384 = OAI-SearchBot
+          botDetectionIds_hasany: [123815556, 132995013, 126255384]
+        }
+        limit: 5000
+      ) {
+        count
+        dimensions {
+          datetimeHour
+          botDetectionIds
+          clientRequestHTTPHost
+        }
+        sum {
+          edgeResponseBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Get AI crawler requests over time using user agent
 
-```
-{  viewer {    zones(filter: { zoneTag: "<ZONE_ID>" }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: "2027-01-01T00:00:00Z"          datetime_leq: "2027-01-02T00:00:00Z"          requestSource: "eyeball"          userAgent_like: "%GPTBot%"        }        limit: 5000      ) {        count        dimensions {          datetimeHour          userAgent          clientRequestHTTPHost        }        sum {          edgeResponseBytes        }      }    }  }}
+```graphql
+{
+  viewer {
+    zones(filter: { zoneTag: "<ZONE_ID>" }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: "2027-01-01T00:00:00Z"
+          datetime_leq: "2027-01-02T00:00:00Z"
+          requestSource: "eyeball"
+          userAgent_like: "%GPTBot%"
+        }
+        limit: 5000
+      ) {
+        count
+        dimensions {
+          datetimeHour
+          userAgent
+          clientRequestHTTPHost
+        }
+        sum {
+          edgeResponseBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 Get top crawled paths
 
-```
-{  viewer {    zones(filter: { zoneTag: "<ZONE_ID>" }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: "2027-01-01T00:00:00Z"          datetime_leq: "2027-01-02T00:00:00Z"          requestSource: "eyeball"          edgeResponseStatus_geq: 200          edgeResponseStatus_lt: 400          userAgent_like: "%GPTBot%"        }        limit: 5000        orderBy: [count_DESC]      ) {        count        dimensions {          clientRequestPath          clientRequestHTTPHost        }      }    }  }}
+```graphql
+{
+  viewer {
+    zones(filter: { zoneTag: "<ZONE_ID>" }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: "2027-01-01T00:00:00Z"
+          datetime_leq: "2027-01-02T00:00:00Z"
+          requestSource: "eyeball"
+          edgeResponseStatus_geq: 200
+          edgeResponseStatus_lt: 400
+          userAgent_like: "%GPTBot%"
+        }
+        limit: 5000
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          clientRequestPath
+          clientRequestHTTPHost
+        }
+      }
+    }
+  }
+}
 ```
 
 Get AI referral traffic
 
-```
-{  viewer {    zones(filter: { zoneTag: "<ZONE_ID>" }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: "2027-01-01T00:00:00Z"          datetime_leq: "2027-01-02T00:00:00Z"          requestSource: "eyeball"          OR: [            { clientRefererHost_like: "%.chatgpt.com%" }            { clientRefererHost: "chatgpt.com" }            { clientRefererHost_like: "%.perplexity.ai%" }            { clientRefererHost: "perplexity.ai" }          ]        }        limit: 5000        orderBy: [count_DESC]      ) {        count        dimensions {          datetimeHour          clientRefererHost        }      }    }  }}
+```graphql
+{
+  viewer {
+    zones(filter: { zoneTag: "<ZONE_ID>" }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: "2027-01-01T00:00:00Z"
+          datetime_leq: "2027-01-02T00:00:00Z"
+          requestSource: "eyeball"
+          OR: [
+            { clientRefererHost_like: "%.chatgpt.com%" }
+            { clientRefererHost: "chatgpt.com" }
+            { clientRefererHost_like: "%.perplexity.ai%" }
+            { clientRefererHost: "perplexity.ai" }
+          ]
+        }
+        limit: 5000
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          datetimeHour
+          clientRefererHost
+        }
+      }
+    }
+  }
+}
 ```
 
 Get data transfer by crawler
 
-```
-{  viewer {    zones(filter: { zoneTag: "<ZONE_ID>" }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: "2027-01-01T00:00:00Z"          datetime_leq: "2027-01-02T00:00:00Z"          requestSource: "eyeball"          userAgent_like: "%GPTBot%"        }        limit: 5000        orderBy: [sum_edgeResponseBytes_DESC]      ) {        count        dimensions {          userAgent        }        sum {          edgeResponseBytes        }      }    }  }}
+```graphql
+{
+  viewer {
+    zones(filter: { zoneTag: "<ZONE_ID>" }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: "2027-01-01T00:00:00Z"
+          datetime_leq: "2027-01-02T00:00:00Z"
+          requestSource: "eyeball"
+          userAgent_like: "%GPTBot%"
+        }
+        limit: 5000
+        orderBy: [sum_edgeResponseBytes_DESC]
+      ) {
+        count
+        dimensions {
+          userAgent
+        }
+        sum {
+          edgeResponseBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 ## Related

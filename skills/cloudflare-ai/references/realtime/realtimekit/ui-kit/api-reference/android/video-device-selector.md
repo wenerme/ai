@@ -32,16 +32,21 @@ A video device selector component which can be used to select video devices.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkVideoDeviceSelector    android:id="@+id/videoSelector"    app:rtk_ds_label="Camera"    android:layout_width="0dp"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkVideoDeviceSelector
+    android:id="@+id/videoSelector"
+    app:rtk_ds_label="Camera"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val videoSelector = findViewById<RtkVideoDeviceSelector>(R.id.videoSelector)videoSelector.activate(meeting)
+```kotlin
+val videoSelector = findViewById<RtkVideoDeviceSelector>(R.id.videoSelector)
+videoSelector.activate(meeting)
 ```
 
 ```json

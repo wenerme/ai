@@ -25,14 +25,19 @@ A component which renders a text message from chat.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-text-message-view></rtk-text-message-view>
+```html
+<!-- component.html -->
+<rtk-text-message-view></rtk-text-message-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-text-message-view [isMarkdown]="true" text="example"></rtk-text-message-view>
+```html
+<!-- component.html -->
+<rtk-text-message-view
+ [isMarkdown]="true"
+ text="example">
+</rtk-text-message-view>
 ```
 
 ```json

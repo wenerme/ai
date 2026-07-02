@@ -30,7 +30,7 @@ The typical setup requirements are:
 
 1. Create a new integration in the identity provider with the type set as **SAML**.
 2. Set both the **Entity/Issuer ID** and the **Single sign-on URL** to:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -48,8 +48,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-7294)
-* [ Terraform (v5) ](#tab-panel-7295)
+* [ Dashboard ](#tab-panel-7544)
+* [ Terraform (v5) ](#tab-panel-7545)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
@@ -63,8 +63,20 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
   * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
-```
-resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {  account_id = var.cloudflare_account_id  name       = "Generic SAML example"  type       = "saml"  config      = {    sso_target_url = "https://example.com/1234/sso/saml"    issuer_url = "https://example.com/1234"    idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]    sign_request = false    email_attribute_name = "email"    attributes = ["employeeID", "groups"]  }}
+```tf
+resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {
+  account_id = var.cloudflare_account_id
+  name       = "Generic SAML example"
+  type       = "saml"
+  config      = {
+    sso_target_url = "https://example.com/1234/sso/saml"
+    issuer_url = "https://example.com/1234"
+    idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]
+    sign_request = false
+    email_attribute_name = "email"
+    attributes = ["employeeID", "groups"]
+  }
+}
 ```
 
 Warning

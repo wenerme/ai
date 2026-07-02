@@ -14,13 +14,29 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Modify the fetch request to follow redirects from the origin, ensuring the client receives the final response.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request) {    // Define fetch options to follow redirects    const fetchOptions = {      redirect: "follow", // Ensure fetch follows redirects automatically. Each subrequest in a redirect chain counts against the subrequest limit.    };
-    // Make the fetch request to the origin    const response = await fetch(request, fetchOptions);
-    // Log the final URL after redirects (optional, for debugging)    console.log(`Final URL after redirects: ${response.url}`);
-    // Return the final response to the client    return response;  },};
+```js
+export default {
+  async fetch(request) {
+    // Define fetch options to follow redirects
+    const fetchOptions = {
+      redirect: "follow", // Ensure fetch follows redirects automatically. Each subrequest in a redirect chain counts against the subrequest limit.
+    };
+
+
+    // Make the fetch request to the origin
+    const response = await fetch(request, fetchOptions);
+
+
+    // Log the final URL after redirects (optional, for debugging)
+    console.log(`Final URL after redirects: ${response.url}`);
+
+
+    // Return the final response to the client
+    return response;
+  },
+};
 ```
 
 This template is ready for use and should fit most redirect-following scenarios.

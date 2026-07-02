@@ -32,30 +32,74 @@ Note
 
 Terraform code snippets below refer to the v4 SDK only.
 
-```
-terraform {  required_providers {    cloudflare = {      source  = "cloudflare/cloudflare"      version = "~> 4.0"    }  }}
-provider "cloudflare" {  api_token = var.cloudflare_api_token}
-variable "cloudflare_api_token" {  description = "Cloudflare API Token"  type        = string  sensitive   = true}
-variable "account_id" {  description = "Cloudflare Account ID"  type        = string}
+```tf
+terraform {
+  required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.0"
+    }
+  }
+}
+
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}
+
+
+variable "cloudflare_api_token" {
+  description = "Cloudflare API Token"
+  type        = string
+  sensitive   = true
+}
+
+
+variable "account_id" {
+  description = "Cloudflare Account ID"
+  type        = string
+}
 ```
 
 ### 2\. Define widgets
 
-```
-resource "cloudflare_turnstile_widget" "login_form" {  account_id = var.account_id  name       = "Login Form Widget"  domains    = ["example.com", "www.example.com"]  mode       = "managed"  region     = "world"}
-resource "cloudflare_turnstile_widget" "api_protection" {  account_id = var.account_id  name       = "API Protection"  domains    = ["api.example.com"]  mode       = "invisible"  region     = "world"}
-# Output the sitekeys for use in your applicationoutput "login_sitekey" {  value = cloudflare_turnstile_widget.login_form.sitekey}
-output "api_sitekey" {  value = cloudflare_turnstile_widget.api_protection.sitekey}
+```tf
+resource "cloudflare_turnstile_widget" "login_form" {
+  account_id = var.account_id
+  name       = "Login Form Widget"
+  domains    = ["example.com", "www.example.com"]
+  mode       = "managed"
+  region     = "world"
+}
+
+
+resource "cloudflare_turnstile_widget" "api_protection" {
+  account_id = var.account_id
+  name       = "API Protection"
+  domains    = ["api.example.com"]
+  mode       = "invisible"
+  region     = "world"
+}
+
+
+# Output the sitekeys for use in your application
+output "login_sitekey" {
+  value = cloudflare_turnstile_widget.login_form.sitekey
+}
+
+
+output "api_sitekey" {
+  value = cloudflare_turnstile_widget.api_protection.sitekey
+}
 ```
 
 ### 3\. Environment variables
 
 Create a `.env` file or set environment variables.
 
-Terminal window
-
-```
-export TF_VAR_cloudflare_api_token="your-api-token"export TF_VAR_account_id="your-account-id"
+```shell
+export TF_VAR_cloudflare_api_token="your-api-token"
+export TF_VAR_account_id="your-account-id"
 ```
 
 ---
@@ -64,41 +108,41 @@ export TF_VAR_cloudflare_api_token="your-api-token"export TF_VAR_account_id="you
 
 ### Initialize and plan
 
-Initialize Terraform
+**Initialize Terraform**
 
-```
+```shell
 terraform init
 ```
 
-Plan changes
+**Plan changes**
 
-```
+```shell
 terraform plan
 ```
 
-Apply configuration
+**Apply configuration**
 
-```
+```shell
 terraform apply
 ```
 
 ### Manage changes
 
-Update widget configuration
+**Update widget configuration**
 
-```
+```shell
 terraform plan
 ```
 
-Apply changes
+**Apply changes**
 
-```
+```shell
 terraform apply
 ```
 
-Destroy widgets
+**Destroy widgets**
 
-```
+```shell
 terraform destroy
 ```
 
@@ -108,16 +152,49 @@ terraform destroy
 
 ### Multiple environments
 
-```
-locals {  environments = {    dev = {      domains = ["dev.example.com"]      mode    = "managed"    }    staging = {      domains = ["staging.example.com"]      mode    = "non_interactive"    }    prod = {      domains = ["example.com", "www.example.com"]      mode    = "invisible"    }  }}
-resource "cloudflare_turnstile_widget" "app_widget" {  for_each = local.environments
-  account_id = var.account_id  name       = "App Widget - ${each.key}"  domains    = each.value.domains  mode       = each.value.mode  region     = "world"}
+```tf
+locals {
+  environments = {
+    dev = {
+      domains = ["dev.example.com"]
+      mode    = "managed"
+    }
+    staging = {
+      domains = ["staging.example.com"]
+      mode    = "non_interactive"
+    }
+    prod = {
+      domains = ["example.com", "www.example.com"]
+      mode    = "invisible"
+    }
+  }
+}
+
+
+resource "cloudflare_turnstile_widget" "app_widget" {
+  for_each = local.environments
+
+
+  account_id = var.account_id
+  name       = "App Widget - ${each.key}"
+  domains    = each.value.domains
+  mode       = each.value.mode
+  region     = "world"
+}
 ```
 
 ### Widget with Enterprise features
 
-```
-resource "cloudflare_turnstile_widget" "enterprise_widget" {  account_id     = var.account_id  name          = "Enterprise Form"  domains       = ["enterprise.example.com"]  mode          = "managed"  region        = "world"  offlabel      = true  # Remove Cloudflare branding  bot_fight_mode = true # Enable bot fight mode}
+```tf
+resource "cloudflare_turnstile_widget" "enterprise_widget" {
+  account_id     = var.account_id
+  name          = "Enterprise Form"
+  domains       = ["enterprise.example.com"]
+  mode          = "managed"
+  region        = "world"
+  offlabel      = true  # Remove Cloudflare branding
+  bot_fight_mode = true # Enable bot fight mode
+}
 ```
 
 ---
@@ -126,22 +203,25 @@ resource "cloudflare_turnstile_widget" "enterprise_widget" {  account_id     = v
 
 Use [cf-terraforming](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/#cf-terraforming) to import existing widgets.
 
-Install cf-terraforming
+**Install cf-terraforming**
 
-```
+```shell
 go install github.com/cloudflare/cf-terraforming/cmd/cf-terraforming@latest
 ```
 
-Generate Terraform configuration from existing widgets
+**Generate Terraform configuration from existing widgets**
 
-```
-cf-terraforming generate \  --resource-type cloudflare_turnstile_widget \  --account $ACCOUNT_ID
+```shell
+cf-terraforming generate \
+  --resource-type cloudflare_turnstile_widget \
+  --account $ACCOUNT_ID
 ```
 
-Import existing widget
+**Import existing widget**
 
-```
-terraform import cloudflare_turnstile_widget.existing_widget \  $ACCOUNT_ID/$WIDGET_SITEKEY
+```shell
+terraform import cloudflare_turnstile_widget.existing_widget \
+  $ACCOUNT_ID/$WIDGET_SITEKEY
 ```
 
 ```json

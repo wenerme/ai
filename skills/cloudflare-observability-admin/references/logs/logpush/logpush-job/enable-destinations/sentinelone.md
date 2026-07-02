@@ -66,9 +66,7 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
   * **<SENTINELONE\_AUTH\_TOKEN>**: The SentinelOne authorization token that is URL-encoded. For example: `Bearer 0e6d94e8c-5792-4ad1-be3c-29bcaee0197d`.
   * **<SOURCE\_TYPE>**: The SentinelOne source type. For example: `marketplace-cloudflare-latest`.
 
-Terminal window
-
-```
+```bash
 "https://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>"
 ```
 
@@ -82,16 +80,57 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Response:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/) to update a job (including enabling and disabling).

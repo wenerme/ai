@@ -69,8 +69,8 @@ Note
 
 You need Unified Routing (beta) to configure source IPs. If your account is not yet migrated, contact your account team to discuss migration and availability.
 
-* [ Dashboard ](#tab-panel-7446)
-* [ API ](#tab-panel-7447)
+* [ Dashboard ](#tab-panel-7696)
+* [ API ](#tab-panel-7697)
 
 1. Go to the **Address space** page.
 [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
@@ -89,10 +89,17 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cloudflare One Networks Write`
 
-Update Cloudflare Source Subnet
+**Update Cloudflare Source Subnet**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/cloudflare_source/$ADDRESS_FAMILY" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "comment": "example_comment",    "name": "IPv4 Cloudflare Source IPs",    "network": "100.64.0.0/12"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/cloudflare_source/$ADDRESS_FAMILY" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "comment": "example_comment",
+    "name": "IPv4 Cloudflare Source IPs",
+    "network": "100.64.0.0/12"
+  }'
 ```
 
 ```json

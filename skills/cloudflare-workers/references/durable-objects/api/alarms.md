@@ -34,15 +34,54 @@ Alarms can be used to build distributed primitives, like queues or batching of w
 
 Although each Durable Object can only have one alarm set at a time, you can manage many scheduled and recurring events by storing your event schedule in storage and having the `alarm()` handler process due events, then reschedule itself for the next one.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-export class AgentServer extends DurableObject {  // Schedule a one-time or recurring event  async scheduleEvent(id, runAt, repeatMs = null) {    await this.ctx.storage.put(`event:${id}`, { id, runAt, repeatMs });    const currentAlarm = await this.ctx.storage.getAlarm();    if (!currentAlarm || runAt < currentAlarm) {      await this.ctx.storage.setAlarm(runAt);    }  }
-  async alarm() {    const now = Date.now();    const events = await this.ctx.storage.list({ prefix: "event:" });    let nextAlarm = null;
-    for (const [key, event] of events) {      if (event.runAt <= now) {        await this.processEvent(event);        if (event.repeatMs) {          event.runAt = now + event.repeatMs;          await this.ctx.storage.put(key, event);        } else {          await this.ctx.storage.delete(key);        }      }      // Track the next event time      if (event.runAt > now && (!nextAlarm || event.runAt < nextAlarm)) {        nextAlarm = event.runAt;      }    }
-    if (nextAlarm) await this.ctx.storage.setAlarm(nextAlarm);  }
-  async processEvent(event) {    // Your event handling logic here  }}
+
+
+export class AgentServer extends DurableObject {
+  // Schedule a one-time or recurring event
+  async scheduleEvent(id, runAt, repeatMs = null) {
+    await this.ctx.storage.put(`event:${id}`, { id, runAt, repeatMs });
+    const currentAlarm = await this.ctx.storage.getAlarm();
+    if (!currentAlarm || runAt < currentAlarm) {
+      await this.ctx.storage.setAlarm(runAt);
+    }
+  }
+
+
+  async alarm() {
+    const now = Date.now();
+    const events = await this.ctx.storage.list({ prefix: "event:" });
+    let nextAlarm = null;
+
+
+    for (const [key, event] of events) {
+      if (event.runAt <= now) {
+        await this.processEvent(event);
+        if (event.repeatMs) {
+          event.runAt = now + event.repeatMs;
+          await this.ctx.storage.put(key, event);
+        } else {
+          await this.ctx.storage.delete(key);
+        }
+      }
+      // Track the next event time
+      if (event.runAt > now && (!nextAlarm || event.runAt < nextAlarm)) {
+        nextAlarm = event.runAt;
+      }
+    }
+
+
+    if (nextAlarm) await this.ctx.storage.setAlarm(nextAlarm);
+  }
+
+
+  async processEvent(event) {
+    // Your event handling logic here
+  }
+}
 ```
 
 ## Storage methods
@@ -101,45 +140,108 @@ This example shows how to both set alarms with the `setAlarm(timestamp)` method 
 * If an unexpected error terminates the Durable Object, the `alarm()` handler may be re-instantiated on another machine.
 * Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
-* [  JavaScript ](#tab-panel-8243)
-* [  Python ](#tab-panel-8244)
+* [  JavaScript ](#tab-panel-8524)
+* [  Python ](#tab-panel-8525)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-export default {  async fetch(request, env) {    return await env.ALARM_EXAMPLE.getByName("foo").fetch(request);  },};
+
+
+export default {
+  async fetch(request, env) {
+    return await env.ALARM_EXAMPLE.getByName("foo").fetch(request);
+  },
+};
+
+
 const SECONDS = 1000;
-export class AlarmExample extends DurableObject {  constructor(ctx, env) {    super(ctx, env);    this.storage = ctx.storage;  }  async fetch(request) {    // If there is no alarm currently set, set one for 10 seconds from now    let currentAlarm = await this.storage.getAlarm();    if (currentAlarm == null) {      this.storage.setAlarm(Date.now() + 10 * SECONDS);    }  }  async alarm() {    // The alarm handler will be invoked whenever an alarm fires.    // You can use this to do work, read from the Storage API, make HTTP calls    // and set future alarms to run using this.storage.setAlarm() from within this handler.  }}
+
+
+export class AlarmExample extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+    this.storage = ctx.storage;
+  }
+  async fetch(request) {
+    // If there is no alarm currently set, set one for 10 seconds from now
+    let currentAlarm = await this.storage.getAlarm();
+    if (currentAlarm == null) {
+      this.storage.setAlarm(Date.now() + 10 * SECONDS);
+    }
+  }
+  async alarm() {
+    // The alarm handler will be invoked whenever an alarm fires.
+    // You can use this to do work, read from the Storage API, make HTTP calls
+    // and set future alarms to run using this.storage.setAlarm() from within this handler.
+  }
+}
 ```
 
-Python
+**Python**
 
-```
+```python
 import time
+
+
 from workers import DurableObject, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return await self.env.ALARM_EXAMPLE.getByName("foo").fetch(request)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return await self.env.ALARM_EXAMPLE.getByName("foo").fetch(request)
+
+
 SECONDS = 1000
-class AlarmExample(DurableObject):    def __init__(self, ctx, env):        super().__init__(ctx, env)        self.storage = ctx.storage
-    async def fetch(self, request):        # If there is no alarm currently set, set one for 10 seconds from now        current_alarm = await self.storage.getAlarm()        if current_alarm is None:            self.storage.setAlarm(int(time.time() * 1000) + 10 * SECONDS)
-    async def alarm(self):        # The alarm handler will be invoked whenever an alarm fires.        # You can use this to do work, read from the Storage API, make HTTP calls        # and set future alarms to run using self.storage.setAlarm() from within this handler.        pass
+
+
+class AlarmExample(DurableObject):
+    def __init__(self, ctx, env):
+        super().__init__(ctx, env)
+        self.storage = ctx.storage
+
+
+    async def fetch(self, request):
+        # If there is no alarm currently set, set one for 10 seconds from now
+        current_alarm = await self.storage.getAlarm()
+        if current_alarm is None:
+            self.storage.setAlarm(int(time.time() * 1000) + 10 * SECONDS)
+
+
+    async def alarm(self):
+        # The alarm handler will be invoked whenever an alarm fires.
+        # You can use this to do work, read from the Storage API, make HTTP calls
+        # and set future alarms to run using self.storage.setAlarm() from within this handler.
+        pass
 ```
 
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 
-* [  JavaScript ](#tab-panel-8245)
-* [  Python ](#tab-panel-8246)
+* [  JavaScript ](#tab-panel-8526)
+* [  Python ](#tab-panel-8527)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyDurableObject extends DurableObject {
+  async alarm(alarmInfo) {
+    if (alarmInfo?.retryCount != 0) {
+      console.log(
+        "This alarm event has been attempted ${alarmInfo?.retryCount} times before.",
+      );
+    }
+  }
+}
 ```
-class MyDurableObject extends DurableObject {  async alarm(alarmInfo) {    if (alarmInfo?.retryCount != 0) {      console.log(        "This alarm event has been attempted ${alarmInfo?.retryCount} times before.",      );    }  }}
-```
 
-Python
+**Python**
 
-```
-class MyDurableObject(DurableObject):    async def alarm(self, alarm_info):        if alarm_info and alarm_info.get('retryCount', 0) != 0:            print(f"This alarm event has been attempted {alarm_info.get('retryCount')} times before.")
+```python
+class MyDurableObject(DurableObject):
+    async def alarm(self, alarm_info):
+        if alarm_info and alarm_info.get('retryCount', 0) != 0:
+            print(f"This alarm event has been attempted {alarm_info.get('retryCount')} times before.")
 ```
 
 ## Related resources

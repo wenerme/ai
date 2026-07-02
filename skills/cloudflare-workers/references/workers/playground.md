@@ -26,13 +26,35 @@ The Playground uses the same editor as the authenticated experience. The Playgro
 
 When you arrive in the Playground, you will see this default code:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import welcome from "welcome.html";
-/** * @typedef {Object} Env */
-export default {  /**   * @param {Request} request   * @param {Env} env   * @param {ExecutionContext} ctx   * @returns {Response}   */  fetch(request, env, ctx) {    console.log("Hello Cloudflare Workers!");
-    return new Response(welcome, {      headers: {        "content-type": "text/html",      },    });  },};
+
+
+/**
+ * @typedef {Object} Env
+ */
+
+
+export default {
+  /**
+   * @param {Request} request
+   * @param {Env} env
+   * @param {ExecutionContext} ctx
+   * @returns {Response}
+   */
+  fetch(request, env, ctx) {
+    console.log("Hello Cloudflare Workers!");
+
+
+    return new Response(welcome, {
+      headers: {
+        "content-type": "text/html",
+      },
+    });
+  },
+};
 ```
 
 This is an example of a multi-module Worker that is receiving a [request](https://developers.cloudflare.com/workers/runtime-apis/request/), logging a message to the console, and then returning a [response](https://developers.cloudflare.com/workers/runtime-apis/response/) body containing the content from `welcome.html`.

@@ -20,8 +20,9 @@ When you [create a new DNS record](https://developers.cloudflare.com/dns/manage-
 
 For example, Cloudflare would show a warning if you had the following records in your partial zone:
 
-```
-sub1.partialzone.com   CNAME   sub2.partialzone.comsub2.partialzone.com   A       192.0.2.1
+```txt
+sub1.partialzone.com   CNAME   sub2.partialzone.com
+sub2.partialzone.com   A       192.0.2.1
 ```
 
 Since Cloudflare contains both the CNAME and its target, our DNS resolution will send incoming HTTP requests to `sub1.partialzone.com` to the origin `192.0.2.1`.

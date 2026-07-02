@@ -28,9 +28,9 @@ Let's briefly consider which primitives are exposed by Durable Objects so we und
 
 ### `constructor`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 constructor(ctx: DurableObjectState, env: Env) {}
 ```
 
@@ -43,11 +43,17 @@ The Workers runtime always calls the constructor to handle things internally. Th
 
 By writing a Durable Object class which inherits from the built-in type `DurableObject`, public methods are exposed as RPC methods, which developers can call using a [DurableObjectStub from a Worker](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/#invoking-methods-on-a-durable-object).
 
-TypeScript
+**TypeScript**
 
-```
-// This instance could've been active, hibernated,// not initialized or maybe had never even been created!const stub = env.MY_DO.getByName("foo");
-// We can call any public method on the class. The runtime// ensures the constructor is called if the instance was not active.await stub.bar();
+```ts
+// This instance could've been active, hibernated,
+// not initialized or maybe had never even been created!
+const stub = env.MY_DO.getByName("foo");
+
+
+// We can call any public method on the class. The runtime
+// ensures the constructor is called if the instance was not active.
+await stub.bar();
 ```
 
 ### `fetch()`
@@ -60,13 +66,31 @@ Durable Objects include first-class support for [WebSockets](https://developers.
 
 The base class provides `webSocketMessage(ws, message)`, `webSocketClose(ws, code, reason, wasClean)` and `webSocketError(ws , error)` ([API](https://developers.cloudflare.com/workers/runtime-apis/websockets)).
 
-TypeScript
+**TypeScript**
 
-```
-export class MyDurableObject extends DurableObject {  async fetch(request) {    // Creates two ends of a WebSocket connection.    const webSocketPair = new WebSocketPair();    const [client, server] = Object.values(webSocketPair);
-    // Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.    this.ctx.acceptWebSocket(server);
-    return new Response(null, {      status: 101,      webSocket: client,    });  }
-  async webSocketMessage(ws, message) {    ws.send(message);  }}
+```ts
+export class MyDurableObject extends DurableObject {
+  async fetch(request) {
+    // Creates two ends of a WebSocket connection.
+    const webSocketPair = new WebSocketPair();
+    const [client, server] = Object.values(webSocketPair);
+
+
+    // Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.
+    this.ctx.acceptWebSocket(server);
+
+
+    return new Response(null, {
+      status: 101,
+      webSocket: client,
+    });
+  }
+
+
+  async webSocketMessage(ws, message) {
+    ws.send(message);
+  }
+}
 ```
 
 ### `alarm()`
@@ -83,12 +107,18 @@ The base `DurableObject` class sets the [DurableObjectState](https://developers.
 
 [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) is the main interface with the Durable Object's persistence mechanisms, which include both a KV and SQLITE **synchronous** APIs.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const sql = this.ctx.storage.sql;
-// Synchronous SQL queryconst rows = sql.exec("SELECT * FROM contacts WHERE country = ?", "US");
-// Key-value storageconst token = this.ctx.storage.get("someToken");
+
+
+// Synchronous SQL query
+const rows = sql.exec("SELECT * FROM contacts WHERE country = ?", "US");
+
+
+// Key-value storage
+const token = this.ctx.storage.get("someToken");
 ```
 
 ### `this.ctx.env`
@@ -105,44 +135,75 @@ Now that you have seen what Durable Objects provide out of the box, the `Server`
 
 `partyserver` exposes helpers to address Durable Objects by name instead of going through bindings manually. This includes a URL routing scheme (`<your-worker>/servers/:durableClass/:durableName`) that the Agent layer builds on.
 
-TypeScript
+**TypeScript**
 
-```
-// Note the await here!const stub = await getServerByName(env.MY_DO, "foo");
-// We can still call RPC methods.await stub.bar();
+```ts
+// Note the await here!
+const stub = await getServerByName(env.MY_DO, "foo");
+
+
+// We can still call RPC methods.
+await stub.bar();
 ```
 
 The URL scheme also enables a request router. In the Agent layer, this is re-exported as `routeAgentRequest`:
 
-TypeScript
+**TypeScript**
 
-```
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    const res = await routeAgentRequest(request, env);
+```ts
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    const res = await routeAgentRequest(request, env);
+
+
     if (res) return res;
-    return new Response("Not found", { status: 404 });  }
+
+
+    return new Response("Not found", { status: 404 });
+  }
 ```
 
 ### `onStart`
 
 The addressing layer allows `Server` to expose an `onStart` callback that runs every time the Durable Object starts up (after eviction, hibernation, or first creation) and before any `fetch` or RPC call.
 
-TypeScript
+**TypeScript**
 
-```
-class MyServer extends Server {  onStart() {    // Some initialization logic that you wish    // to run every time the DO is started up.    const sql = this.ctx.storage.sql;    sql.exec(`...`);  }}
+```ts
+class MyServer extends Server {
+  onStart() {
+    // Some initialization logic that you wish
+    // to run every time the DO is started up.
+    const sql = this.ctx.storage.sql;
+    sql.exec(`...`);
+  }
+}
 ```
 
 ### `onRequest` and `onConnect`
 
 `Server` already implements `fetch` for the underlying Durable Object and exposes two different callbacks that developers can make use of, `onRequest` and `onConnect` for HTTP requests and incoming WS connections, respectively (WebSocket connections are accepted by default).
 
-TypeScript
+**TypeScript**
 
-```
-class MyServer extends Server {  async onRequest(request: Request) {    const url = new URL(request.url);
-    return new Response(`Hello from ${url.origin}!`);  }
-  async onConnect(conn, ctx) {    const { request } = ctx;    const url = new URL(request.url);
-    // Connections are a WebSocket wrapper    conn.send(`Hello from ${url.origin}!`);  }}
+```ts
+class MyServer extends Server {
+  async onRequest(request: Request) {
+    const url = new URL(request.url);
+
+
+    return new Response(`Hello from ${url.origin}!`);
+  }
+
+
+  async onConnect(conn, ctx) {
+    const { request } = ctx;
+    const url = new URL(request.url);
+
+
+    // Connections are a WebSocket wrapper
+    conn.send(`Hello from ${url.origin}!`);
+  }
+}
 ```
 
 ### WebSockets
@@ -167,12 +228,22 @@ One of the core features of `Agent` is **automatic state persistence**. Develope
 
 There's also `this.onStateChanged` that you can override to react to state changes.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent<Env, { count: number }> {  initialState = { count: 0 };
-  increment() {    this.setState({ count: this.state.count + 1 });  }
-  onStateChanged(state, source) {    console.log("State updated:", state);  }}
+```ts
+class MyAgent extends Agent<Env, { count: number }> {
+  initialState = { count: 0 };
+
+
+  increment() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+
+  onStateChanged(state, source) {
+    console.log("State updated:", state);
+  }
+}
 ```
 
 State is stored in the `cf_agents_state` SQL table. State messages are sent with `type: "cf_agent_state"` (both from the client and the server). Since `agents` provides [JS and React clients](https://developers.cloudflare.com/agents/runtime/lifecycle/state/#synchronizing-state), real-time state updates are available out of the box.
@@ -181,47 +252,86 @@ State is stored in the `cf_agents_state` SQL table. State messages are sent with
 
 The Agent provides a convenient `sql` template tag for executing queries against the Durable Object's SQL storage. It constructs parameterized queries and executes them. This uses the **synchronous** SQL API from `this.ctx.storage.sql`.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  onStart() {    this.sql`      CREATE TABLE IF NOT EXISTS users (        id TEXT PRIMARY KEY,        name TEXT      )    `;
-    const userId = "1";    const userName = "Alice";    this.sql`INSERT INTO users (id, name) VALUES (${userId}, ${userName})`;
-    const users = this.sql<{ id: string; name: string }>`      SELECT * FROM users WHERE id = ${userId}    `;    console.log(users); // [{ id: "1", name: "Alice" }]  }}
+```ts
+class MyAgent extends Agent {
+  onStart() {
+    this.sql`
+      CREATE TABLE IF NOT EXISTS users (
+        id TEXT PRIMARY KEY,
+        name TEXT
+      )
+    `;
+
+
+    const userId = "1";
+    const userName = "Alice";
+    this.sql`INSERT INTO users (id, name) VALUES (${userId}, ${userName})`;
+
+
+    const users = this.sql<{ id: string; name: string }>`
+      SELECT * FROM users WHERE id = ${userId}
+    `;
+    console.log(users); // [{ id: "1", name: "Alice" }]
+  }
+}
 ```
 
 ### RPC and Callable Methods
 
 `agents` takes Durable Objects RPC one step further by implementing RPC through WebSockets, so clients can call methods on the Agent directly. To make a method callable through WebSocket, use the `@callable()` decorator. Methods can return a serializable value or a stream (when using `@callable({ stream: true })`).
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  @callable({ description: "Add two numbers" })  async add(a: number, b: number) {    return a + b;  }}
+```ts
+class MyAgent extends Agent {
+  @callable({ description: "Add two numbers" })
+  async add(a: number, b: number) {
+    return a + b;
+  }
+}
 ```
 
 Clients can invoke this method by sending a WebSocket message:
 
-```
-{  "type": "rpc",  "id": "unique-request-id",  "method": "add",  "args": [2, 3]}
+```json
+{
+  "type": "rpc",
+  "id": "unique-request-id",
+  "method": "add",
+  "args": [2, 3]
+}
 ```
 
 For example, with the provided `React` client, it is as easy as:
 
-TypeScript
+**TypeScript**
 
-```
-const { stub } = useAgent({ name: "my-agent" });const result = await stub.add(2, 3);console.log(result); // 5
+```ts
+const { stub } = useAgent({ name: "my-agent" });
+const result = await stub.add(2, 3);
+console.log(result); // 5
 ```
 
 ### `this.queue` and friends
 
 Agents include a built-in task queue for deferred execution. This is useful for offloading work or retrying operations. The available methods are `this.queue`, `this.dequeue`, `this.dequeueAll`, `this.dequeueAllByCallback`, `this.getQueue`, and `this.getQueues`.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onConnect() {    // Queue a task to be executed later    await this.queue("processTask", { userId: "123" });  }
-  async processTask(payload: { userId: string }, queueItem: QueueItem) {    console.log("Processing task for user:", payload.userId);  }}
+```ts
+class MyAgent extends Agent {
+  async onConnect() {
+    // Queue a task to be executed later
+    await this.queue("processTask", { userId: "123" });
+  }
+
+
+  async processTask(payload: { userId: string }, queueItem: QueueItem) {
+    console.log("Processing task for user:", payload.userId);
+  }
+}
 ```
 
 Tasks are stored in the `cf_agents_queues` SQL table and are automatically flushed in sequence. If a task succeeds, it is automatically dequeued.
@@ -232,15 +342,40 @@ Agents support scheduled execution of methods by wrapping the Durable Object's `
 
 Since Durable Objects only allow one alarm at a time, the `Agent` class works around this by managing multiple schedules in SQL and using a single alarm.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async foo() {    // Schedule at a specific time    await this.schedule(new Date("2025-12-25T00:00:00Z"), "sendGreeting", {      message: "Merry Christmas!",    });
-    // Schedule with a delay (in seconds)    await this.schedule(60, "checkStatus", { check: "health" });
-    // Schedule with a cron expression    await this.schedule("0 0 * * *", "dailyTask", { type: "cleanup" });  }
-  async sendGreeting(payload: { message: string }) {    console.log(payload.message);  }
-  async checkStatus(payload: { check: string }) {    console.log("Running check:", payload.check);  }
-  async dailyTask(payload: { type: string }) {    console.log("Daily task:", payload.type);  }}
+```ts
+class MyAgent extends Agent {
+  async foo() {
+    // Schedule at a specific time
+    await this.schedule(new Date("2025-12-25T00:00:00Z"), "sendGreeting", {
+      message: "Merry Christmas!",
+    });
+
+
+    // Schedule with a delay (in seconds)
+    await this.schedule(60, "checkStatus", { check: "health" });
+
+
+    // Schedule with a cron expression
+    await this.schedule("0 0 * * *", "dailyTask", { type: "cleanup" });
+  }
+
+
+  async sendGreeting(payload: { message: string }) {
+    console.log(payload.message);
+  }
+
+
+  async checkStatus(payload: { check: string }) {
+    console.log("Running check:", payload.check);
+  }
+
+
+  async dailyTask(payload: { type: string }) {
+    console.log("Daily task:", payload.type);
+  }
+}
 ```
 
 Schedules are stored in the `cf_agents_schedules` SQL table. Cron schedules automatically reschedule themselves after execution, while one-time schedules are deleted.
@@ -249,55 +384,112 @@ Schedules are stored in the `cf_agents_schedules` SQL table. Cron schedules auto
 
 `Agent` includes a multi-server MCP client. This enables your Agent to interact with external services that expose MCP interfaces. The MCP client is properly documented in [MCP client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onStart() {    // Add an HTTP MCP server (callbackHost only needed for OAuth servers)    await this.addMcpServer("GitHub", "https://mcp.github.com/mcp", {      callbackHost: "https://my-worker.example.workers.dev",    });
-    // Add an MCP server via RPC (Durable Object binding, no HTTP overhead)    await this.addMcpServer("internal-tools", this.env.MyMCP);  }}
+```ts
+class MyAgent extends Agent {
+  async onStart() {
+    // Add an HTTP MCP server (callbackHost only needed for OAuth servers)
+    await this.addMcpServer("GitHub", "https://mcp.github.com/mcp", {
+      callbackHost: "https://my-worker.example.workers.dev",
+    });
+
+
+    // Add an MCP server via RPC (Durable Object binding, no HTTP overhead)
+    await this.addMcpServer("internal-tools", this.env.MyMCP);
+  }
+}
 ```
 
 ### Email Handling
 
 Agents can receive and reply to emails using Cloudflare's [Email Routing](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/).
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onEmail(email: AgentEmail) {    console.log("Received email from:", email.from);    console.log("Subject:", email.headers.get("subject"));
-    const raw = await email.getRaw();    console.log("Raw email size:", raw.length);
-    // Reply to the email    await this.replyToEmail(email, {      fromName: "My Agent",      subject: "Re: " + email.headers.get("subject"),      body: "Thanks for your email!",      contentType: "text/plain",    });  }}
+```ts
+class MyAgent extends Agent {
+  async onEmail(email: AgentEmail) {
+    console.log("Received email from:", email.from);
+    console.log("Subject:", email.headers.get("subject"));
+
+
+    const raw = await email.getRaw();
+    console.log("Raw email size:", raw.length);
+
+
+    // Reply to the email
+    await this.replyToEmail(email, {
+      fromName: "My Agent",
+      subject: "Re: " + email.headers.get("subject"),
+      body: "Thanks for your email!",
+      contentType: "text/plain",
+    });
+  }
+}
 ```
 
 To route emails to your Agent, use `routeAgentEmail` in your Worker's email handler:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async email(message, env, ctx) {    await routeAgentEmail(message, env, {      resolver: createAddressBasedEmailResolver("my-agent"),    });  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async email(message, env, ctx) {
+    await routeAgentEmail(message, env, {
+      resolver: createAddressBasedEmailResolver("my-agent"),
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Context Management
 
 `agents` wraps all your methods with an `AsyncLocalStorage` to maintain context throughout the request lifecycle. This allows you to access the current agent, connection, request, or email (depending on what event is being handled) from anywhere in your code:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getCurrentAgent } from "agents";
-function someUtilityFunction() {  const { agent, connection, request, email } = getCurrentAgent();
-  if (agent) {    console.log("Current agent:", agent.name);  }
-  if (connection) {    console.log("WebSocket connection ID:", connection.id);  }}
+
+
+function someUtilityFunction() {
+  const { agent, connection, request, email } = getCurrentAgent();
+
+
+  if (agent) {
+    console.log("Current agent:", agent.name);
+  }
+
+
+  if (connection) {
+    console.log("WebSocket connection ID:", connection.id);
+  }
+}
 ```
 
 ### `this.onError`
 
 `Agent` extends `Server`'s `onError` so it can be used to handle errors that are not necessarily WebSocket errors. It is called with a `Connection` or `unknown` error.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  onError(connectionOrError: Connection | unknown, error?: unknown) {    if (error) {      // WebSocket connection error      console.error("Connection error:", error);    } else {      // Server error      console.error("Server error:", connectionOrError);    }
-    // Optionally throw to propagate the error    throw connectionOrError;  }}
+```ts
+class MyAgent extends Agent {
+  onError(connectionOrError: Connection | unknown, error?: unknown) {
+    if (error) {
+      // WebSocket connection error
+      console.error("Connection error:", error);
+    } else {
+      // Server error
+      console.error("Server error:", connectionOrError);
+    }
+
+
+    // Optionally throw to propagate the error
+    throw connectionOrError;
+  }
+}
 ```
 
 ### `this.destroy`
@@ -308,13 +500,34 @@ This means `this.ctx.abort()` throws an uncatchable error that will show up in y
 
 The `destroy()` method can be safely called within scheduled tasks. When called from within a schedule callback, the Agent sets an internal flag to skip any remaining database updates, and yields `ctx.abort()` to the event loop to ensure the alarm handler completes cleanly before the Agent is evicted.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onStart() {    console.log("Agent is starting up...");    // Initialize your agent  }
-  async cleanup() {    // This wipes everything!    await this.destroy();  }
-  async selfDestruct() {    // Safe to call from within a scheduled task    await this.schedule(60, "destroyAfterDelay", {});  }
-  async destroyAfterDelay() {    // This will safely destroy the Agent even when    // called from within the alarm handler    await this.destroy();  }}
+```ts
+class MyAgent extends Agent {
+  async onStart() {
+    console.log("Agent is starting up...");
+    // Initialize your agent
+  }
+
+
+  async cleanup() {
+    // This wipes everything!
+    await this.destroy();
+  }
+
+
+  async selfDestruct() {
+    // Safe to call from within a scheduled task
+    await this.schedule(60, "destroyAfterDelay", {});
+  }
+
+
+  async destroyAfterDelay() {
+    // This will safely destroy the Agent even when
+    // called from within the alarm handler
+    await this.destroy();
+  }
+}
 ```
 
 Using destroy() in scheduled tasks
@@ -325,10 +538,16 @@ You can safely call `this.destroy()` from within a scheduled task callback. The 
 
 Configure agent behavior by overriding `static options` on your class. All fields are optional — defaults are applied at runtime.
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent {  static options = {    hibernate: true,    sendIdentityOnConnect: false,    retry: { maxAttempts: 5, baseDelayMs: 200, maxDelayMs: 5000 },  };}
+```ts
+export class MyAgent extends Agent {
+  static options = {
+    hibernate: true,
+    sendIdentityOnConnect: false,
+    retry: { maxAttempts: 5, baseDelayMs: 200, maxDelayMs: 5000 },
+  };
+}
 ```
 
 | Option                     | Type         | Default                                                | Description                                                                                                              |
@@ -345,11 +564,26 @@ Durable Objects are evicted after a period of inactivity (typically 70–140 sec
 
 `keepAlive()` creates an alarm heartbeat that prevents eviction. `keepAliveWhile()` wraps an async function and guarantees cleanup.
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async handleLongTask() {    // Option 1: manual dispose    const dispose = await this.keepAlive();    try {      await longRunningComputation();    } finally {      dispose();    }
-    // Option 2: automatic cleanup (recommended)    const result = await this.keepAliveWhile(async () => {      return await longRunningComputation();    });  }}
+```ts
+class MyAgent extends Agent {
+  async handleLongTask() {
+    // Option 1: manual dispose
+    const dispose = await this.keepAlive();
+    try {
+      await longRunningComputation();
+    } finally {
+      dispose();
+    }
+
+
+    // Option 2: automatic cleanup (recommended)
+    const result = await this.keepAliveWhile(async () => {
+      return await longRunningComputation();
+    });
+  }
+}
 ```
 
 `AIChatAgent` uses `keepAliveWhile` internally to keep the agent alive during streaming LLM responses. For more details, refer to [Schedule tasks — Keeping the agent alive](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/#keeping-the-agent-alive).
@@ -358,11 +592,17 @@ class MyAgent extends Agent {  async handleLongTask() {    // Option 1: manual d
 
 The `Agent` class re-exports the [addressing helpers](#addressing) as `getAgentByName` and `routeAgentRequest`.
 
-TypeScript
+**TypeScript**
 
-```
-const stub = await getAgentByName(env.MY_DO, "foo");await stub.someMethod();
-const res = await routeAgentRequest(request, env);if (res) return res;
+```ts
+const stub = await getAgentByName(env.MY_DO, "foo");
+await stub.someMethod();
+
+
+const res = await routeAgentRequest(request, env);
+if (res) return res;
+
+
 return new Response("Not found", { status: 404 });
 ```
 

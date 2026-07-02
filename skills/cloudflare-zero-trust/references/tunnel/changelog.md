@@ -262,11 +262,15 @@ If you need to retrieve deleted (or all) resources, please update your API calls
 
 To get a list of only deleted resources, you must now explicitly add the `is_deleted=true` query parameter to your request:
 
-Terminal window
+```bash
+# Example: Get ONLY deleted Tunnels
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tunnels?is_deleted=true" \
+     -H "Authorization: Bearer $API_TOKEN"
 
-```
-# Example: Get ONLY deleted Tunnelscurl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tunnels?is_deleted=true" \     -H "Authorization: Bearer $API_TOKEN"
-# Example: Get ONLY deleted Virtual Networkscurl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/virtual_networks?is_deleted=true" \     -H "Authorization: Bearer $API_TOKEN"
+
+# Example: Get ONLY deleted Virtual Networks
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/virtual_networks?is_deleted=true" \
+     -H "Authorization: Bearer $API_TOKEN"
 ```
 
 Following this change, retrieving a complete list of both active and deleted resources will require two separate API calls: one to get active items (by omitting the parameter or using `is_deleted=false`) and one to get deleted items (`is_deleted=true`).

@@ -29,20 +29,29 @@ The token you give Pi is your gateway token, not a model provider key. To pay fo
 1. Set your gateway token, account ID, and gateway slug as environment variables. The following commands set them for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
 Replace `<CLOUDFLARE_API_KEY>` and `<CLOUDFLARE_ACCOUNT_ID>` with your values. You can leave `CLOUDFLARE_GATEWAY_ID` as `default` to route through your account's default gateway, or change it to another gateway slug.
 
-  * [ macOS / Linux ](#tab-panel-6632)
-  * [ Windows (PowerShell) ](#tab-panel-6633)
-Terminal window
+  * [ macOS / Linux ](#tab-panel-6872)
+  * [ Windows (PowerShell) ](#tab-panel-6873)
+```bash
+# Run `wrangler auth token` to get an auth token.
+export CLOUDFLARE_API_KEY="<CLOUDFLARE_API_KEY>"
+# Run `wrangler whoami` to get your account ID.
+export CLOUDFLARE_ACCOUNT_ID="<CLOUDFLARE_ACCOUNT_ID>"
+# Use `default` to route through your account's default gateway.
+export CLOUDFLARE_GATEWAY_ID="default"
 ```
-# Run `wrangler auth token` to get an auth token.export CLOUDFLARE_API_KEY="<CLOUDFLARE_API_KEY>"# Run `wrangler whoami` to get your account ID.export CLOUDFLARE_ACCOUNT_ID="<CLOUDFLARE_ACCOUNT_ID>"# Use `default` to route through your account's default gateway.export CLOUDFLARE_GATEWAY_ID="default"
-```
-PowerShell
-```
-# Run `wrangler auth token` to get an auth token.$env:CLOUDFLARE_API_KEY = "<CLOUDFLARE_API_KEY>"# Run `wrangler whoami` to get your account ID.$env:CLOUDFLARE_ACCOUNT_ID = "<CLOUDFLARE_ACCOUNT_ID>"# Use `default` to route through your account's default gateway.$env:CLOUDFLARE_GATEWAY_ID = "default"
+
+**PowerShell**
+```powershell
+# Run `wrangler auth token` to get an auth token.
+$env:CLOUDFLARE_API_KEY = "<CLOUDFLARE_API_KEY>"
+# Run `wrangler whoami` to get your account ID.
+$env:CLOUDFLARE_ACCOUNT_ID = "<CLOUDFLARE_ACCOUNT_ID>"
+# Use `default` to route through your account's default gateway.
+$env:CLOUDFLARE_GATEWAY_ID = "default"
 ```
 Alternatively, leave out `CLOUDFLARE_API_KEY` and run `/login` inside Pi to store the token instead.
 2. Start a session against a model. Requests now route through AI Gateway.
-Terminal window
-```
+```bash
 pi --provider cloudflare-ai-gateway --model "claude-sonnet-4-6"
 ```
 

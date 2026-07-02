@@ -23,11 +23,11 @@ SPF ensures that no one else can send emails with your domain by authorizing whi
 Email Service configures separate SPF records for sending and routing:
 
 * **Email Sending** SPF record on `cf-bounce.yourdomain.com`:
-```
+```txt
 TXT cf-bounce.yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
 ```
 * **Email Routing** SPF record on the root domain:
-```
+```txt
 TXT yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
 ```
 
@@ -62,7 +62,7 @@ DMARC ensures that emails claiming to be from your domain actually pass SPF and 
 
 **DMARC record example:**
 
-```
+```txt
 TXT _dmarc.yourdomain.com "v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com"
 ```
 

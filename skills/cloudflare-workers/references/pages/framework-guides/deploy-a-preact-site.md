@@ -20,10 +20,9 @@ In this guide, you will create a new Preact application and deploy it using Clou
 
 Create a new project by running the [npm init ↗](https://docs.npmjs.com/cli/v6/commands/npm-init) command in your terminal, giving it a title:
 
-Terminal window
-
-```
-npm init preactcd your-project-name
+```sh
+npm init preact
+cd your-project-name
 ```
 
 Note
@@ -42,10 +41,13 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
+```sh
+git init
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

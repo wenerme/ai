@@ -33,21 +33,37 @@ A name tag view that displays the participant name and a microphone status icon.
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let nameTag = RtkMeetingNameTag(    meeting: rtkClient,    participant: participant)view.addSubview(nameTag)
+
+
+let nameTag = RtkMeetingNameTag(
+    meeting: rtkClient,
+    participant: participant
+)
+view.addSubview(nameTag)
 ```
 
 ### Update participant
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let nameTag = RtkMeetingNameTag(    meeting: rtkClient,    participant: participant)view.addSubview(nameTag)
-// Switch to a different participantnameTag.set(participant: newParticipant)nameTag.refresh()
+
+
+let nameTag = RtkMeetingNameTag(
+    meeting: rtkClient,
+    participant: participant
+)
+view.addSubview(nameTag)
+
+
+// Switch to a different participant
+nameTag.set(participant: newParticipant)
+nameTag.refresh()
 ```
 
 ```json

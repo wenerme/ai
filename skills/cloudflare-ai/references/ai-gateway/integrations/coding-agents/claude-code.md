@@ -32,19 +32,22 @@ The `cf-aig-authorization` header is what authenticates your request to AI Gatew
 1. Set the base URL to your gateway's Anthropic endpoint and send your gateway token in the `cf-aig-authorization` header. Set `ANTHROPIC_API_KEY` to the same token, since Claude Code requires the variable to be set. The following commands set these as shell environment variables for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`) or to Claude Code's [settings.json ↗](https://docs.anthropic.com/en/docs/claude-code/settings#settings-files) under the `env` key.
 Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, and `<CF_AIG_TOKEN>` with your values.
 
-  * [ macOS / Linux ](#tab-panel-6846)
-  * [ Windows (PowerShell) ](#tab-panel-6847)
-Terminal window
+  * [ macOS / Linux ](#tab-panel-6862)
+  * [ Windows (PowerShell) ](#tab-panel-6863)
+```bash
+export ANTHROPIC_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"
+export ANTHROPIC_API_KEY="<CF_AIG_TOKEN>"
+export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 ```
-export ANTHROPIC_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"export ANTHROPIC_API_KEY="<CF_AIG_TOKEN>"export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
-```
-PowerShell
-```
-$env:ANTHROPIC_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"$env:ANTHROPIC_API_KEY = "<CF_AIG_TOKEN>"$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
+
+**PowerShell**
+```powershell
+$env:ANTHROPIC_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"
+$env:ANTHROPIC_API_KEY = "<CF_AIG_TOKEN>"
+$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 ```
 2. Start Claude Code and send a prompt. Requests now route through AI Gateway.
-Terminal window
-```
+```bash
 claude
 ```
 
@@ -54,19 +57,24 @@ To run Claude models through [Amazon Bedrock](https://developers.cloudflare.com/
 
 1. Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, `<AWS_REGION>` (for example, `us-east-1`), and `<CF_AIG_TOKEN>` with your values.
 
-  * [ macOS / Linux ](#tab-panel-6848)
-  * [ Windows (PowerShell) ](#tab-panel-6849)
-Terminal window
+  * [ macOS / Linux ](#tab-panel-6864)
+  * [ Windows (PowerShell) ](#tab-panel-6865)
+```bash
+export CLAUDE_CODE_USE_BEDROCK="1"
+export ANTHROPIC_BEDROCK_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/aws-bedrock/bedrock-runtime/<AWS_REGION>/"
+export CLAUDE_CODE_SKIP_BEDROCK_AUTH="1"
+export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 ```
-export CLAUDE_CODE_USE_BEDROCK="1"export ANTHROPIC_BEDROCK_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/aws-bedrock/bedrock-runtime/<AWS_REGION>/"export CLAUDE_CODE_SKIP_BEDROCK_AUTH="1"export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
-```
-PowerShell
-```
-$env:CLAUDE_CODE_USE_BEDROCK = "1"$env:ANTHROPIC_BEDROCK_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/aws-bedrock/bedrock-runtime/<AWS_REGION>/"$env:CLAUDE_CODE_SKIP_BEDROCK_AUTH = "1"$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
+
+**PowerShell**
+```powershell
+$env:CLAUDE_CODE_USE_BEDROCK = "1"
+$env:ANTHROPIC_BEDROCK_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/aws-bedrock/bedrock-runtime/<AWS_REGION>/"
+$env:CLAUDE_CODE_SKIP_BEDROCK_AUTH = "1"
+$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 ```
 2. Start Claude Code and send a prompt. Requests now route through AI Gateway to Amazon Bedrock.
-Terminal window
-```
+```bash
 claude
 ```
 
@@ -76,19 +84,28 @@ To run Claude models through [Google Vertex AI](https://developers.cloudflare.co
 
 1. Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, `<GCP_PROJECT_ID>`, `<GCP_REGION>` (for example, `us-east5`), and `<CF_AIG_TOKEN>` with your values.
 
-  * [ macOS / Linux ](#tab-panel-6850)
-  * [ Windows (PowerShell) ](#tab-panel-6851)
-Terminal window
+  * [ macOS / Linux ](#tab-panel-6866)
+  * [ Windows (PowerShell) ](#tab-panel-6867)
+```bash
+export CLAUDE_CODE_USE_VERTEX="1"
+export ANTHROPIC_VERTEX_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/google-vertex-ai/v1"
+export ANTHROPIC_VERTEX_PROJECT_ID="<GCP_PROJECT_ID>"
+export CLOUD_ML_REGION="<GCP_REGION>"
+export CLAUDE_CODE_SKIP_VERTEX_AUTH="1"
+export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 ```
-export CLAUDE_CODE_USE_VERTEX="1"export ANTHROPIC_VERTEX_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/google-vertex-ai/v1"export ANTHROPIC_VERTEX_PROJECT_ID="<GCP_PROJECT_ID>"export CLOUD_ML_REGION="<GCP_REGION>"export CLAUDE_CODE_SKIP_VERTEX_AUTH="1"export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
-```
-PowerShell
-```
-$env:CLAUDE_CODE_USE_VERTEX = "1"$env:ANTHROPIC_VERTEX_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/google-vertex-ai/v1"$env:ANTHROPIC_VERTEX_PROJECT_ID = "<GCP_PROJECT_ID>"$env:CLOUD_ML_REGION = "<GCP_REGION>"$env:CLAUDE_CODE_SKIP_VERTEX_AUTH = "1"$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
+
+**PowerShell**
+```powershell
+$env:CLAUDE_CODE_USE_VERTEX = "1"
+$env:ANTHROPIC_VERTEX_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/google-vertex-ai/v1"
+$env:ANTHROPIC_VERTEX_PROJECT_ID = "<GCP_PROJECT_ID>"
+$env:CLOUD_ML_REGION = "<GCP_REGION>"
+$env:CLAUDE_CODE_SKIP_VERTEX_AUTH = "1"
+$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 ```
 2. Start Claude Code and send a prompt. Requests now route through AI Gateway to Google Vertex AI.
-Terminal window
-```
+```bash
 claude
 ```
 

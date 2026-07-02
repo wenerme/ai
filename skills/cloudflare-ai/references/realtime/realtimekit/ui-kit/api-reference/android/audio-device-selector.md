@@ -32,16 +32,21 @@ An audio device selector component which can be used to select audio devices.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkAudioDeviceSelector    android:id="@+id/audioSelector"    app:rtk_ds_label="Audio"    android:layout_width="0dp"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkAudioDeviceSelector
+    android:id="@+id/audioSelector"
+    app:rtk_ds_label="Audio"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val audioSelector = findViewById<RtkAudioDeviceSelector>(R.id.audioSelector)audioSelector.activate(meeting)
+```kotlin
+val audioSelector = findViewById<RtkAudioDeviceSelector>(R.id.audioSelector)
+audioSelector.activate(meeting)
 ```
 
 ```json

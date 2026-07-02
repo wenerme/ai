@@ -17,21 +17,18 @@ Use the `matched-data-cli` tool to decrypt a payload in the command line.
 1. [Download ↗](https://github.com/cloudflare/matched-data-cli/releases) the `matched-data-cli` tool for your platform from the **Releases** page on GitHub, under **Assets**.
 2. Extract the content of the downloaded `.tar.gz` file to a local folder.
 3. Open a command line window and change to the local folder containing the `matched-data-cli` binary.
-Terminal window
-```
+```sh
 cd matched-data-cli
 ```
 4. Create two files: one with your private key and another one with the encrypted payload:
-Terminal window
-```
+```sh
 printf "<PRIVATE_KEY>" > private_key.txt && chmod 400 private_key.txt
 printf "<ENCRYPTED_PAYLOAD>" > encrypted_payload.txt
 ```
 Replace `<PRIVATE_KEY>` with your private key and `<ENCRYPTED_PAYLOAD>` with the encrypted payload.
 Note: The first `printf` command will make your private key visible in your command history.
 5. Run the following command to decrypt the payload:
-Terminal window
-```
+```sh
 decrypt -k private_key.txt encrypted_payload.txt
 ```
 
@@ -43,16 +40,20 @@ If you are using macOS and you get an error when running the `matched-data-cli` 
 
 The following example creates two files — one with the private key and another one with the encrypted payload — and runs the `matched-data-cli` tool to decrypt the payload in the `encrypted_payload.txt` file:
 
-Terminal window
-
-```
+```sh
 ~ cd matched-data-cli
+
+
 printf "uBS5eBttHrqkdY41kbZPdvYnNz8Vj0TvKIUpjB1y/GA=" > private_key.txt && chmod 400 private_key.txt
+
+
 printf "AzTY6FHajXYXuDMUte82wrd+1n5CEHPoydYiyd3FMg5IEQAAAAAAAAA0lOhGXBclw8pWU5jbbYuepSIJN5JohTtZekLliJBlVWk=" > encrypted_payload.txt
+
+
 decrypt -k private_key.txt encrypted_payload.txt
 ```
 
-```
+```txt
 test matched data
 ```
 

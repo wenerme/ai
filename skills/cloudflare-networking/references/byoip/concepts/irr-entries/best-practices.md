@@ -66,9 +66,7 @@ Use WHOIS lookup to verify your origin ASN and routing data.
 
 **Method:** In a terminal, use the following `whois` command, replacing `<NETWORK_PREFIX>` with your network prefix. The host `rr.ntt.net` is the primary server for the Global IP network.
 
-Terminal window
-
-```
+```sh
 whois -h rr.ntt.net <NETWORK_PREFIX>
 ```
 
@@ -78,11 +76,31 @@ WHOIS output example
 
 The `<IRR entry section>` in the WHOIS output shows the correct IRR entry information for the specified network. In this example, the network prefix is `1.1.1.0/24`, and the output includes the route, origin ASN, and route registry, which in this example is APNIC:
 
-Example
+**Example**
 
-```
-user@xxt32z conduit-qs-config % whois -h rr.ntt.net 1.1.1.0/24route:          1.1.1.0/24<RPKI section>descr:          RPKI ROA for 1.1.1.0/24remarks:        This route object represents routing data retrieved from the RPKIremarks:        The original data can be found here: https://rpki.gin.ntt.net/r/AS13335/1.1.1.0/24remarks:        This route object is the result of an automated RPKI-to-IRR conversion process.remarks:        maxLength 24origin:         AS13335mnt-by:         MAINT-NTTCOM-RPKIchanged:        job@ntt.net 20200913source:         RPKI  # Trust Anchor: apnic
-<IRR entry section>route:          1.1.1.0/24origin:         AS13335descr:          APNIC Research and Development                6 Cordelia Stmnt-by:         MAINT-AU-APNIC-GM85-APlast-modified:  2018-03-16T16:58:06Zsource:         APNIC
+```txt
+user@xxt32z conduit-qs-config % whois -h rr.ntt.net 1.1.1.0/24
+route:          1.1.1.0/24
+<RPKI section>
+descr:          RPKI ROA for 1.1.1.0/24
+remarks:        This route object represents routing data retrieved from the RPKI
+remarks:        The original data can be found here: https://rpki.gin.ntt.net/r/AS13335/1.1.1.0/24
+remarks:        This route object is the result of an automated RPKI-to-IRR conversion process.
+remarks:        maxLength 24
+origin:         AS13335
+mnt-by:         MAINT-NTTCOM-RPKI
+changed:        job@ntt.net 20200913
+source:         RPKI  # Trust Anchor: apnic
+
+
+<IRR entry section>
+route:          1.1.1.0/24
+origin:         AS13335
+descr:          APNIC Research and Development
+                6 Cordelia St
+mnt-by:         MAINT-AU-APNIC-GM85-AP
+last-modified:  2018-03-16T16:58:06Z
+source:         APNIC
 ```
 
 Note

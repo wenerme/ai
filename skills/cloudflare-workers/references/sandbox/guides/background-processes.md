@@ -30,26 +30,50 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-10375)
-* [  TypeScript ](#tab-panel-10376)
+* [  JavaScript ](#tab-panel-10670)
+* [  TypeScript ](#tab-panel-10671)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Start a web serverconst server = await sandbox.startProcess("python -m http.server 8000");
-console.log("Server started");console.log("Process ID:", server.id);console.log("PID:", server.pid);console.log("Status:", server.status); // 'running'
+
+
+// Start a web server
+const server = await sandbox.startProcess("python -m http.server 8000");
+
+
+console.log("Server started");
+console.log("Process ID:", server.id);
+console.log("PID:", server.pid);
+console.log("Status:", server.status); // 'running'
+
+
 // Process runs in background - your code continues
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-// Start a web serverconst server = await sandbox.startProcess('python -m http.server 8000');
-console.log('Server started');console.log('Process ID:', server.id);console.log('PID:', server.pid);console.log('Status:', server.status); // 'running'
+
+
+// Start a web server
+const server = await sandbox.startProcess('python -m http.server 8000');
+
+
+console.log('Server started');
+console.log('Process ID:', server.id);
+console.log('PID:', server.pid);
+console.log('Status:', server.status); // 'running'
+
+
 // Process runs in background - your code continues
 ```
 
@@ -57,20 +81,40 @@ console.log('Server started');console.log('Process ID:', server.id);console.log(
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-10377)
-* [  TypeScript ](#tab-panel-10378)
+* [  JavaScript ](#tab-panel-10672)
+* [  TypeScript ](#tab-panel-10673)
 
-JavaScript
+**JavaScript**
 
-```
-const process = await sandbox.startProcess("node server.js", {  cwd: "/workspace/api",  env: {    NODE_ENV: "production",    PORT: "8080",    API_KEY: env.API_KEY,    DATABASE_URL: env.DATABASE_URL,  },});
+```js
+const process = await sandbox.startProcess("node server.js", {
+  cwd: "/workspace/api",
+  env: {
+    NODE_ENV: "production",
+    PORT: "8080",
+    API_KEY: env.API_KEY,
+    DATABASE_URL: env.DATABASE_URL,
+  },
+});
+
+
 console.log("API server started");
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const process = await sandbox.startProcess('node server.js', {  cwd: '/workspace/api',  env: {    NODE_ENV: 'production',    PORT: '8080',    API_KEY: env.API_KEY,    DATABASE_URL: env.DATABASE_URL  }});
+```ts
+const process = await sandbox.startProcess('node server.js', {
+  cwd: '/workspace/api',
+  env: {
+    NODE_ENV: 'production',
+    PORT: '8080',
+    API_KEY: env.API_KEY,
+    DATABASE_URL: env.DATABASE_URL
+  }
+});
+
+
 console.log('API server started');
 ```
 
@@ -78,179 +122,291 @@ console.log('API server started');
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-10383)
-* [  TypeScript ](#tab-panel-10384)
+* [  JavaScript ](#tab-panel-10678)
+* [  TypeScript ](#tab-panel-10679)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const processes = await sandbox.listProcesses();
+
+
 console.log(`Running ${processes.length} processes:`);
-for (const proc of processes) {  console.log(`${proc.id}: ${proc.command} (${proc.status})`);}
-// Check if specific process is runningconst isRunning = processes.some(  (p) => p.id === processId && p.status === "running",);
+
+
+for (const proc of processes) {
+  console.log(`${proc.id}: ${proc.command} (${proc.status})`);
+}
+
+
+// Check if specific process is running
+const isRunning = processes.some(
+  (p) => p.id === processId && p.status === "running",
+);
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const processes = await sandbox.listProcesses();
+
+
 console.log(`Running ${processes.length} processes:`);
-for (const proc of processes) {  console.log(`${proc.id}: ${proc.command} (${proc.status})`);}
-// Check if specific process is runningconst isRunning = processes.some(p => p.id === processId && p.status === 'running');
+
+
+for (const proc of processes) {
+  console.log(`${proc.id}: ${proc.command} (${proc.status})`);
+}
+
+
+// Check if specific process is running
+const isRunning = processes.some(p => p.id === processId && p.status === 'running');
 ```
 
 ## Wait for process readiness
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-10373)
-* [  TypeScript ](#tab-panel-10374)
+* [  JavaScript ](#tab-panel-10668)
+* [  TypeScript ](#tab-panel-10669)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const server = await sandbox.startProcess("node server.js");
-// Wait for server to respond on port 3000await server.waitForPort(3000);
+
+
+// Wait for server to respond on port 3000
+await server.waitForPort(3000);
+
+
 console.log("Server is ready");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const server = await sandbox.startProcess('node server.js');
-// Wait for server to respond on port 3000await server.waitForPort(3000);
+
+
+// Wait for server to respond on port 3000
+await server.waitForPort(3000);
+
+
 console.log('Server is ready');
 ```
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-10379)
-* [  TypeScript ](#tab-panel-10380)
+* [  JavaScript ](#tab-panel-10674)
+* [  TypeScript ](#tab-panel-10675)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const server = await sandbox.startProcess("node server.js");
-// Wait for log messageconst result = await server.waitForLog("Server listening");console.log("Server is ready:", result.line);
+
+
+// Wait for log message
+const result = await server.waitForLog("Server listening");
+console.log("Server is ready:", result.line);
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const server = await sandbox.startProcess('node server.js');
-// Wait for log messageconst result = await server.waitForLog('Server listening');console.log('Server is ready:', result.line);
+
+
+// Wait for log message
+const result = await server.waitForLog('Server listening');
+console.log('Server is ready:', result.line);
 ```
 
 ## Monitor process logs
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-10385)
-* [  TypeScript ](#tab-panel-10386)
+* [  JavaScript ](#tab-panel-10680)
+* [  TypeScript ](#tab-panel-10681)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { parseSSEStream } from "@cloudflare/sandbox";
+
+
 const server = await sandbox.startProcess("node server.js");
-// Stream logsconst logStream = await sandbox.streamProcessLogs(server.id);
-for await (const log of parseSSEStream(logStream)) {  console.log(log.data);}
+
+
+// Stream logs
+const logStream = await sandbox.streamProcessLogs(server.id);
+
+
+for await (const log of parseSSEStream(logStream)) {
+  console.log(log.data);
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
+
+
 const server = await sandbox.startProcess('node server.js');
-// Stream logsconst logStream = await sandbox.streamProcessLogs(server.id);
-for await (const log of parseSSEStream<LogEvent>(logStream)) {  console.log(log.data);}
+
+
+// Stream logs
+const logStream = await sandbox.streamProcessLogs(server.id);
+
+
+for await (const log of parseSSEStream<LogEvent>(logStream)) {
+  console.log(log.data);
+}
 ```
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-10381)
-* [  TypeScript ](#tab-panel-10382)
+* [  JavaScript ](#tab-panel-10676)
+* [  TypeScript ](#tab-panel-10677)
 
-JavaScript
+**JavaScript**
 
+```js
+const logs = await sandbox.getProcessLogs(server.id);
+console.log("Logs:", logs);
 ```
-const logs = await sandbox.getProcessLogs(server.id);console.log("Logs:", logs);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const logs = await sandbox.getProcessLogs(server.id);console.log('Logs:', logs);
+```ts
+const logs = await sandbox.getProcessLogs(server.id);
+console.log('Logs:', logs);
 ```
 
 ## Stop processes
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-10387)
-* [  TypeScript ](#tab-panel-10388)
+* [  JavaScript ](#tab-panel-10682)
+* [  TypeScript ](#tab-panel-10683)
 
-JavaScript
+**JavaScript**
 
+```js
+// Stop specific process (terminates entire process tree)
+await sandbox.killProcess(server.id);
+
+
+// Force kill if needed
+await sandbox.killProcess(server.id, "SIGKILL");
+
+
+// Stop all processes
+await sandbox.killAllProcesses();
 ```
-// Stop specific process (terminates entire process tree)await sandbox.killProcess(server.id);
-// Force kill if neededawait sandbox.killProcess(server.id, "SIGKILL");
-// Stop all processesawait sandbox.killAllProcesses();
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Stop specific process (terminates entire process tree)await sandbox.killProcess(server.id);
-// Force kill if neededawait sandbox.killProcess(server.id, 'SIGKILL');
-// Stop all processesawait sandbox.killAllProcesses();
+```ts
+// Stop specific process (terminates entire process tree)
+await sandbox.killProcess(server.id);
+
+
+// Force kill if needed
+await sandbox.killProcess(server.id, 'SIGKILL');
+
+
+// Stop all processes
+await sandbox.killAllProcesses();
 ```
 
 `killProcess()` terminates the specified process and all child processes it spawned. This ensures that processes running in the background do not leave orphaned child processes when terminated.
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-10389)
-* [  TypeScript ](#tab-panel-10390)
+* [  JavaScript ](#tab-panel-10684)
+* [  TypeScript ](#tab-panel-10685)
 
-JavaScript
+**JavaScript**
 
+```js
+// This script spawns multiple child processes
+const batch = await sandbox.startProcess(
+  'bash -c "process1 & process2 & process3 & wait"',
+);
+
+
+// killProcess() terminates the bash process AND all three child processes
+await sandbox.killProcess(batch.id);
 ```
-// This script spawns multiple child processesconst batch = await sandbox.startProcess(  'bash -c "process1 & process2 & process3 & wait"',);
-// killProcess() terminates the bash process AND all three child processesawait sandbox.killProcess(batch.id);
-```
 
-TypeScript
+**TypeScript**
 
-```
-// This script spawns multiple child processesconst batch = await sandbox.startProcess(  'bash -c "process1 & process2 & process3 & wait"');
-// killProcess() terminates the bash process AND all three child processesawait sandbox.killProcess(batch.id);
+```ts
+// This script spawns multiple child processes
+const batch = await sandbox.startProcess(
+  'bash -c "process1 & process2 & process3 & wait"'
+);
+
+
+// killProcess() terminates the bash process AND all three child processes
+await sandbox.killProcess(batch.id);
 ```
 
 ## Run multiple processes
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-10395)
-* [  TypeScript ](#tab-panel-10396)
+* [  JavaScript ](#tab-panel-10690)
+* [  TypeScript ](#tab-panel-10691)
 
-JavaScript
+**JavaScript**
 
-```
-// Start database firstconst db = await sandbox.startProcess("redis-server");
-// Wait for database to be readyawait db.waitForPort(6379, { mode: "tcp" });
-// Now start API server (depends on database)const api = await sandbox.startProcess("node api-server.js", {  env: { DATABASE_URL: "redis://localhost:6379" },});
-// Wait for API to be readyawait api.waitForPort(8080, { path: "/health" });
+```js
+// Start database first
+const db = await sandbox.startProcess("redis-server");
+
+
+// Wait for database to be ready
+await db.waitForPort(6379, { mode: "tcp" });
+
+
+// Now start API server (depends on database)
+const api = await sandbox.startProcess("node api-server.js", {
+  env: { DATABASE_URL: "redis://localhost:6379" },
+});
+
+
+// Wait for API to be ready
+await api.waitForPort(8080, { path: "/health" });
+
+
 console.log("All services running");
 ```
 
-TypeScript
+**TypeScript**
 
-```
-// Start database firstconst db = await sandbox.startProcess('redis-server');
-// Wait for database to be readyawait db.waitForPort(6379, { mode: 'tcp' });
-// Now start API server (depends on database)const api = await sandbox.startProcess('node api-server.js', {  env: { DATABASE_URL: 'redis://localhost:6379' }});
-// Wait for API to be readyawait api.waitForPort(8080, { path: '/health' });
+```ts
+// Start database first
+const db = await sandbox.startProcess('redis-server');
+
+
+// Wait for database to be ready
+await db.waitForPort(6379, { mode: 'tcp' });
+
+
+// Now start API server (depends on database)
+const api = await sandbox.startProcess('node api-server.js', {
+  env: { DATABASE_URL: 'redis://localhost:6379' }
+});
+
+
+// Wait for API to be ready
+await api.waitForPort(8080, { path: '/health' });
+
+
 console.log('All services running');
 ```
 
@@ -258,31 +414,95 @@ console.log('All services running');
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-10397)
-* [  TypeScript ](#tab-panel-10398)
+* [  JavaScript ](#tab-panel-10692)
+* [  TypeScript ](#tab-panel-10693)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox, parseSSEStream } from "@cloudflare/sandbox";
+
+
 export { Sandbox } from "@cloudflare/sandbox";
-export default {  async fetch(request, env) {    // Enable keepAlive for long-running processes    const sandbox = getSandbox(env.Sandbox, "build-job-123", {      keepAlive: true,    });
-    try {      // Start a long-running build process      const build = await sandbox.startProcess("npm run build:production");
-      // Monitor progress      const logs = await sandbox.streamProcessLogs(build.id);
-      // Process can run indefinitely without container shutdown      for await (const log of parseSSEStream(logs)) {        console.log(log.data);        if (log.data.includes("Build complete")) {          break;        }      }
-      return new Response("Build completed");    } finally {      // Important: Must explicitly destroy when done      await sandbox.destroy();    }  },};
+
+
+export default {
+  async fetch(request, env) {
+    // Enable keepAlive for long-running processes
+    const sandbox = getSandbox(env.Sandbox, "build-job-123", {
+      keepAlive: true,
+    });
+
+
+    try {
+      // Start a long-running build process
+      const build = await sandbox.startProcess("npm run build:production");
+
+
+      // Monitor progress
+      const logs = await sandbox.streamProcessLogs(build.id);
+
+
+      // Process can run indefinitely without container shutdown
+      for await (const log of parseSSEStream(logs)) {
+        console.log(log.data);
+        if (log.data.includes("Build complete")) {
+          break;
+        }
+      }
+
+
+      return new Response("Build completed");
+    } finally {
+      // Important: Must explicitly destroy when done
+      await sandbox.destroy();
+    }
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox, parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    // Enable keepAlive for long-running processes    const sandbox = getSandbox(env.Sandbox, 'build-job-123', {      keepAlive: true    });
-    try {      // Start a long-running build process      const build = await sandbox.startProcess('npm run build:production');
-      // Monitor progress      const logs = await sandbox.streamProcessLogs(build.id);
-      // Process can run indefinitely without container shutdown      for await (const log of parseSSEStream<LogEvent>(logs)) {        console.log(log.data);        if (log.data.includes('Build complete')) {          break;        }      }
-      return new Response('Build completed');    } finally {      // Important: Must explicitly destroy when done      await sandbox.destroy();    }  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    // Enable keepAlive for long-running processes
+    const sandbox = getSandbox(env.Sandbox, 'build-job-123', {
+      keepAlive: true
+    });
+
+
+    try {
+      // Start a long-running build process
+      const build = await sandbox.startProcess('npm run build:production');
+
+
+      // Monitor progress
+      const logs = await sandbox.streamProcessLogs(build.id);
+
+
+      // Process can run indefinitely without container shutdown
+      for await (const log of parseSSEStream<LogEvent>(logs)) {
+        console.log(log.data);
+        if (log.data.includes('Build complete')) {
+          break;
+        }
+      }
+
+
+      return new Response('Build completed');
+    } finally {
+      // Important: Must explicitly destroy when done
+      await sandbox.destroy();
+    }
+  }
+};
 ```
 
 Always destroy with keepAlive
@@ -303,40 +523,56 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-10393)
-* [  TypeScript ](#tab-panel-10394)
+* [  JavaScript ](#tab-panel-10688)
+* [  TypeScript ](#tab-panel-10689)
 
-JavaScript
+**JavaScript**
 
+```js
+const process = await sandbox.startProcess("node server.js");
+await new Promise((resolve) => setTimeout(resolve, 1000));
+
+
+const processes = await sandbox.listProcesses();
+if (!processes.find((p) => p.id === process.id)) {
+  const logs = await sandbox.getProcessLogs(process.id);
+  console.error("Process exited:", logs);
+}
 ```
-const process = await sandbox.startProcess("node server.js");await new Promise((resolve) => setTimeout(resolve, 1000));
-const processes = await sandbox.listProcesses();if (!processes.find((p) => p.id === process.id)) {  const logs = await sandbox.getProcessLogs(process.id);  console.error("Process exited:", logs);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const process = await sandbox.startProcess('node server.js');await new Promise(resolve => setTimeout(resolve, 1000));
-const processes = await sandbox.listProcesses();if (!processes.find(p => p.id === process.id)) {  const logs = await sandbox.getProcessLogs(process.id);  console.error('Process exited:', logs);}
+```ts
+const process = await sandbox.startProcess('node server.js');
+await new Promise(resolve => setTimeout(resolve, 1000));
+
+
+const processes = await sandbox.listProcesses();
+if (!processes.find(p => p.id === process.id)) {
+  const logs = await sandbox.getProcessLogs(process.id);
+  console.error('Process exited:', logs);
+}
 ```
 
 ### Port already in use
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-10391)
-* [  TypeScript ](#tab-panel-10392)
+* [  JavaScript ](#tab-panel-10686)
+* [  TypeScript ](#tab-panel-10687)
 
-JavaScript
+**JavaScript**
 
+```js
+await sandbox.killAllProcesses();
+const server = await sandbox.startProcess("node server.js");
 ```
-await sandbox.killAllProcesses();const server = await sandbox.startProcess("node server.js");
-```
 
-TypeScript
+**TypeScript**
 
-```
-await sandbox.killAllProcesses();const server = await sandbox.startProcess('node server.js');
+```ts
+await sandbox.killAllProcesses();
+const server = await sandbox.startProcess('node server.js');
 ```
 
 ## Related resources

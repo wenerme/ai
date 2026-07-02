@@ -54,14 +54,16 @@ Determine which Cloudflare data center your traffic is entering. This is the onl
 
 Run a `traceroute` from the source network to your Cloudflare WAN prefix. Look for the Cloudflare data center hostname in the trace output, which contains a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) that identifies the data center.
 
-Terminal window
-
-```
+```sh
 traceroute 203.0.113.1
 ```
 
-```
- 1  192.168.1.1 (192.168.1.1)  1.234 ms 2  10.0.0.1 (10.0.0.1)  5.678 ms 3  198.51.100.1 (198.51.100.1)  10.123 ms 4  198.51.100.10 (198.51.100.10)  12.345 ms 5  lhr01.cf (198.51.100.11)  15.678 ms
+```txt
+ 1  192.168.1.1 (192.168.1.1)  1.234 ms
+ 2  10.0.0.1 (10.0.0.1)  5.678 ms
+ 3  198.51.100.1 (198.51.100.1)  10.123 ms
+ 4  198.51.100.10 (198.51.100.10)  12.345 ms
+ 5  lhr01.cf (198.51.100.11)  15.678 ms
 ```
 
 In this example, `lhr` indicates that traffic enters Cloudflare at the London (Heathrow) data center.

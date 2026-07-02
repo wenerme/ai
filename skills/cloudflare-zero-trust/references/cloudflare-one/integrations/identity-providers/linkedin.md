@@ -39,7 +39,7 @@ To configure LinkedIn as an IdP:
 14. Select **Save**.
 15. In the **Auth** tab of your LinkedIn application, go to **OAuth 2.0 settings** and select the pencil icon next to **Authorized redirect URLs for your app**.
 16. Enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -48,8 +48,15 @@ To test that your connection is working, go to the [Cloudflare dashboard ↗](ht
 
 ## Example API configuration
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>"  },  "type": "linkedin",  "name": "my example idp"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>"
+  },
+  "type": "linkedin",
+  "name": "my example idp"
+}
 ```
 
 ```json

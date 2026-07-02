@@ -36,9 +36,7 @@ pnpm create cloudflare@latest my-gatsby-app --framework=gatsby
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-gatsby-app
 ```
 

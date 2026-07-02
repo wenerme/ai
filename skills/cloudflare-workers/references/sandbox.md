@@ -22,76 +22,197 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-10195)
-* [ Code interpreter ](#tab-panel-10196)
-* [ File Operations ](#tab-panel-10197)
-* [ File watching ](#tab-panel-10198)
-* [ Terminal Access ](#tab-panel-10199)
-* [ WebSocket connections ](#tab-panel-10200)
+* [ Execute Commands ](#tab-panel-10490)
+* [ Code interpreter ](#tab-panel-10491)
+* [ File Operations ](#tab-panel-10492)
+* [ File watching ](#tab-panel-10493)
+* [ Terminal Access ](#tab-panel-10494)
+* [ WebSocket connections ](#tab-panel-10495)
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'user-123');
-    // Execute a command and get the result    const result = await sandbox.exec('python --version');
-    return Response.json({      output: result.stdout,      exitCode: result.exitCode,      success: result.success    });  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+
+
+    // Execute a command and get the result
+    const result = await sandbox.exec('python --version');
+
+
+    return Response.json({
+      output: result.stdout,
+      exitCode: result.exitCode,
+      success: result.success
+    });
+  }
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'user-123');
-    // Create a Python execution context    const ctx = await sandbox.createCodeContext({ language: 'python' });
-    // Execute Python code with automatic result capture    const result = await sandbox.runCode(`import pandas as pddata = {'product': ['A', 'B', 'C'], 'sales': [100, 200, 150]}df = pd.DataFrame(data)df['sales'].sum()  # Last expression is automatically returned  `, { context: ctx });
-      return Response.json({        result: result.results?.[0]?.text,        logs: result.logs      });    }  };
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+
+
+    // Create a Python execution context
+    const ctx = await sandbox.createCodeContext({ language: 'python' });
+
+
+    // Execute Python code with automatic result capture
+    const result = await sandbox.runCode(`
+import pandas as pd
+data = {'product': ['A', 'B', 'C'], 'sales': [100, 200, 150]}
+df = pd.DataFrame(data)
+df['sales'].sum()  # Last expression is automatically returned
+  `, { context: ctx });
+
+
+      return Response.json({
+        result: result.results?.[0]?.text,
+        logs: result.logs
+      });
+    }
+  };
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'user-123');
-    // Create a project structure    await sandbox.mkdir('/workspace/project/src', { recursive: true });
-    // Write files    await sandbox.writeFile(      '/workspace/project/package.json',      JSON.stringify({ name: 'my-app', version: '1.0.0' })    );
-    // Read a file back    const content = await sandbox.readFile('/workspace/project/package.json');
-    return Response.json({ content });  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+
+
+    // Create a project structure
+    await sandbox.mkdir('/workspace/project/src', { recursive: true });
+
+
+    // Write files
+    await sandbox.writeFile(
+      '/workspace/project/package.json',
+      JSON.stringify({ name: 'my-app', version: '1.0.0' })
+    );
+
+
+    // Read a file back
+    const content = await sandbox.readFile('/workspace/project/package.json');
+
+
+    return Response.json({ content });
+  }
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'user-123');
-    // Watch for file changes in real-time    const watcher = await sandbox.watch('/workspace/src', {      include: ['*.js', '*.ts'],      onEvent: (event) => {        console.log(`${event.type}: ${event.path}`);        if (event.type === 'modify') {          // Trigger rebuild or hot reload          console.log('Code changed, recompiling...');        }      },      onError: (error) => {        console.error('Watch error:', error);      }    });
-    // Stop watching when done    setTimeout(() => watcher.stop(), 60000);
-    return Response.json({ message: 'File watcher started' });  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+
+
+    // Watch for file changes in real-time
+    const watcher = await sandbox.watch('/workspace/src', {
+      include: ['*.js', '*.ts'],
+      onEvent: (event) => {
+        console.log(`${event.type}: ${event.path}`);
+        if (event.type === 'modify') {
+          // Trigger rebuild or hot reload
+          console.log('Code changed, recompiling...');
+        }
+      },
+      onError: (error) => {
+        console.error('Watch error:', error);
+      }
+    });
+
+
+    // Stop watching when done
+    setTimeout(() => watcher.stop(), 60000);
+
+
+    return Response.json({ message: 'File watcher started' });
+  }
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
-    // Terminal WebSocket connection    if (url.pathname === '/ws/terminal') {      const sandbox = getSandbox(env.Sandbox, 'user-123');      return sandbox.terminal(request, { cols: 80, rows: 24 });    }
-    return Response.json({ message: 'Terminal endpoint' });  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    // Terminal WebSocket connection
+    if (url.pathname === '/ws/terminal') {
+      const sandbox = getSandbox(env.Sandbox, 'user-123');
+      return sandbox.terminal(request, { cols: 80, rows: 24 });
+    }
+
+
+    return Response.json({ message: 'Terminal endpoint' });
+  }
+};
 ```
 
 Connect browser terminals directly to sandbox shells via WebSocket. Learn more: [Browser terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/).
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    // Connect to WebSocket services in sandbox    if (request.headers.get('Upgrade')?.toLowerCase() === 'websocket') {      const sandbox = getSandbox(env.Sandbox, 'user-123');      return await sandbox.wsConnect(request, 8080);    }
-    return Response.json({ message: 'WebSocket endpoint' });  }};
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    // Connect to WebSocket services in sandbox
+    if (request.headers.get('Upgrade')?.toLowerCase() === 'websocket') {
+      const sandbox = getSandbox(env.Sandbox, 'user-123');
+      return await sandbox.wsConnect(request, 8080);
+    }
+
+
+    return Response.json({ message: 'WebSocket endpoint' });
+  }
+};
 ```
 
 Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connections](https://developers.cloudflare.com/sandbox/guides/websocket-connections/).

@@ -24,7 +24,7 @@ For a list of 1XXX errors, refer to [Troubleshooting Cloudflare 1XXX errors](htt
 
 Example value:
 
-```
+```txt
 1020
 ```
 

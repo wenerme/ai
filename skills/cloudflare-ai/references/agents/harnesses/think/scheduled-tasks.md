@@ -14,23 +14,97 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Use `getScheduledTasks()` when code should create recurring Think turns or deterministic scheduled handlers. Think reconciles the declarations on startup, stores a durable one-shot schedule for the next occurrence, and re-arms the next occurrence after each run.
 
-* [  JavaScript ](#tab-panel-5709)
-* [  TypeScript ](#tab-panel-5710)
+* [  JavaScript ](#tab-panel-5885)
+* [  TypeScript ](#tab-panel-5886)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Think, defineScheduledTasks } from "@cloudflare/think";
-export class DigestAgent extends Think {  getDefaultTimezone() {    return "Europe/London";  }
-  getScheduledTasks() {    return defineScheduledTasks({      weeklyCommitReport: {        schedule: "every week on monday at 09:00",        prompt:          "Compile all my GitHub commits for the last week and send a concise summary.",      },      workout: {        schedule: "every day at 08:00 in Europe/London",        prompt: "Start my workout.",      },      customerDigest: {        schedule: "every day at 09:00",        timezone: "America/New_York",        metadata: { workflowName: "customer-digest" },        retry: { maxAttempts: 3 },        handler: async ({          idempotencyKey,          scheduledFor,          scheduleKind,          timezone,        }) => {          await this.env.DIGEST_WORKFLOW.create({            id: idempotencyKey,            params: { scheduledFor, scheduleKind, timezone },          });        },      },    });  }}
+
+
+export class DigestAgent extends Think {
+  getDefaultTimezone() {
+    return "Europe/London";
+  }
+
+
+  getScheduledTasks() {
+    return defineScheduledTasks({
+      weeklyCommitReport: {
+        schedule: "every week on monday at 09:00",
+        prompt:
+          "Compile all my GitHub commits for the last week and send a concise summary.",
+      },
+      workout: {
+        schedule: "every day at 08:00 in Europe/London",
+        prompt: "Start my workout.",
+      },
+      customerDigest: {
+        schedule: "every day at 09:00",
+        timezone: "America/New_York",
+        metadata: { workflowName: "customer-digest" },
+        retry: { maxAttempts: 3 },
+        handler: async ({
+          idempotencyKey,
+          scheduledFor,
+          scheduleKind,
+          timezone,
+        }) => {
+          await this.env.DIGEST_WORKFLOW.create({
+            id: idempotencyKey,
+            params: { scheduledFor, scheduleKind, timezone },
+          });
+        },
+      },
+    });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Think, defineScheduledTasks } from "@cloudflare/think";
-export class DigestAgent extends Think<Env> {  getDefaultTimezone() {    return "Europe/London";  }
-  getScheduledTasks() {    return defineScheduledTasks({      weeklyCommitReport: {        schedule: "every week on monday at 09:00",        prompt:          "Compile all my GitHub commits for the last week and send a concise summary.",      },      workout: {        schedule: "every day at 08:00 in Europe/London",        prompt: "Start my workout.",      },      customerDigest: {        schedule: "every day at 09:00",        timezone: "America/New_York",        metadata: { workflowName: "customer-digest" },        retry: { maxAttempts: 3 },        handler: async ({          idempotencyKey,          scheduledFor,          scheduleKind,          timezone,        }) => {          await this.env.DIGEST_WORKFLOW.create({            id: idempotencyKey,            params: { scheduledFor, scheduleKind, timezone },          });        },      },    });  }}
+
+
+export class DigestAgent extends Think<Env> {
+  getDefaultTimezone() {
+    return "Europe/London";
+  }
+
+
+  getScheduledTasks() {
+    return defineScheduledTasks({
+      weeklyCommitReport: {
+        schedule: "every week on monday at 09:00",
+        prompt:
+          "Compile all my GitHub commits for the last week and send a concise summary.",
+      },
+      workout: {
+        schedule: "every day at 08:00 in Europe/London",
+        prompt: "Start my workout.",
+      },
+      customerDigest: {
+        schedule: "every day at 09:00",
+        timezone: "America/New_York",
+        metadata: { workflowName: "customer-digest" },
+        retry: { maxAttempts: 3 },
+        handler: async ({
+          idempotencyKey,
+          scheduledFor,
+          scheduleKind,
+          timezone,
+        }) => {
+          await this.env.DIGEST_WORKFLOW.create({
+            id: idempotencyKey,
+            params: { scheduledFor, scheduleKind, timezone },
+          });
+        },
+      },
+    });
+  }
+}
 ```
 
 The DSL supports `every <n> minutes`, `every <n> hours`, `every day at HH:mm`, `every weekday at HH:mm`, and `every week on monday,wednesday at HH:mm`. Wall-clock schedules require either an inline timezone, a task `timezone`, or `getDefaultTimezone()`. If an alarm is late, Think runs the intended occurrence once and schedules the next future occurrence; it does not backfill missed runs.

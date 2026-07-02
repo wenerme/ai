@@ -18,11 +18,17 @@ The [MessageChannel API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Me
 
 The Workers runtime provides a minimal implementation of the `MessageChannel` API that is currently limited to uses with a single Worker instance. This means that you can use `MessageChannel` to send messages between different parts of your Worker, but not across different Workers.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const { port1, port2 } = new MessageChannel();
-port2.onmessage = (event) => {  console.log('Received message:', event.data);};
+
+
+port2.onmessage = (event) => {
+  console.log('Received message:', event.data);
+};
+
+
 port2.postMessage('Hello from port2!');
 ```
 

@@ -25,14 +25,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-livestream-indicator></rtk-livestream-indicator>
+```html
+<!-- component.html -->
+<rtk-livestream-indicator></rtk-livestream-indicator>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-livestream-indicator [meeting]="meeting" size="md"></rtk-livestream-indicator>
+```html
+<!-- component.html -->
+<rtk-livestream-indicator
+ [meeting]="meeting"
+ size="md">
+</rtk-livestream-indicator>
 ```
 
 ```json

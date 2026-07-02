@@ -30,16 +30,37 @@ To create a zone subscription, typically used to upgrade a zone's plan from `PAR
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-Request (without \`component\_values\`)
+**Request (without \`component\_values\`)**
 
-```
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "<RATE_PLAN>"  },  "frequency": "annual"}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "rate_plan": {
+    "id": "<RATE_PLAN>"
+  },
+  "frequency": "annual"
+}'
 ```
 
-Request (with \`component\_values\`)
+**Request (with \`component\_values\`)**
 
-```
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "PARTNERS_BIZ"  },  "component_values": [    {      "name": "page_rules",      "value": 50    }  ]}
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "rate_plan": {
+    "id": "PARTNERS_BIZ"
+  },
+  "component_values": [
+    {
+      "name": "page_rules",
+      "value": 50
+    }
+  ]
+}
 ```
 
 ### Get zone subscription details
@@ -70,10 +91,17 @@ To create an account subscription, send a [POST](https://developers.cloudflare.c
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-Request
+**Request**
 
-```
-curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "<RATE_PLAN_NAME>"  }}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "rate_plan": {
+    "id": "<RATE_PLAN_NAME>"
+  }
+}'
 ```
 
 ### Get account subscription details

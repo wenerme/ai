@@ -19,9 +19,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-7330)
-* [ API ](#tab-panel-7331)
-* [ Terraform (v5) ](#tab-panel-7332)
+* [ Dashboard ](#tab-panel-7580)
+* [ API ](#tab-panel-7581)
+* [ Terraform (v5) ](#tab-panel-7582)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -37,20 +37,30 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
 
-Get a Cloudflare Tunnel token
+**Get a Cloudflare Tunnel token**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": "eyJhIjoiNWFiNGU5Z..."}
+```sh
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": "eyJhIjoiNWFiNGU5Z..."
+}
 ```
 
 The token value can be found in the `result`.
 
-```
-data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {  account_id = var.cloudflare_account_id  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id}
+```tf
+data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {
+  account_id = var.cloudflare_account_id
+  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
+}
 ```
 
 If your host machine is not managed in Terraform or you want to install the tunnel manually, you can output the token value to the CLI.
@@ -58,20 +68,21 @@ If your host machine is not managed in Terraform or you want to install the tunn
 Example: Output to CLI
 
 1. Output the tunnel token to the Terraform state file:
-```
-output "tunnel_token" {  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  sensitive   = true}
+```tf
+output "tunnel_token" {
+  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+  sensitive   = true
+}
 ```
 2. Apply the configuration:
-Terminal window
-```
+```sh
 terraform apply
 ```
 3. Read the tunnel token:
-Terminal window
-```
+```sh
 terraform output -raw tunnel_token
 ```
-```
+```sh
 eyJhIj...
 ```
 
@@ -79,9 +90,15 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
 
 Example: Store in HashiCorp Vault
 
-```
-resource "vault_generic_secret" "tunnel_token" {  path         = "kv/cloudflare/tunnel_token"
-  data_json = jsonencode({    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  })}
+```tf
+resource "vault_generic_secret" "tunnel_token" {
+  path         = "kv/cloudflare/tunnel_token"
+
+
+  data_json = jsonencode({
+    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+  })
+}
 ```
 
 ## Rotate a token without service disruption
@@ -92,8 +109,8 @@ To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:
 
-  * [ Dashboard ](#tab-panel-7333)
-  * [ API ](#tab-panel-7334)
+  * [ Dashboard ](#tab-panel-7583)
+  * [ API ](#tab-panel-7584)
 
   1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
   [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -102,11 +119,10 @@ To rotate a tunnel token:
   4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.
 
   1. Generate a random base64 string (minimum size 32 bytes) to use as a tunnel secret:
-  Terminal window
-  ```
+  ```sh
   openssl rand -base64 32
   ```
-  ```
+  ```sh
   AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=
   ```
   2. Make a `PATCH` request to the [Cloudflare Tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/methods/edit/) endpoint:
@@ -115,23 +131,48 @@ To rotate a tunnel token:
     * `Cloudflare One Connectors Write`
     * `Cloudflare One Connector: cloudflared Write`
     * `Cloudflare Tunnel Write`
-  Update a Cloudflare Tunnel
+
+**Update a Cloudflare Tunnel**
+  ```bash
+  curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+      "name": "Example tunnel",
+      "tunnel_secret": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="
+    }'
   ```
-  curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Example tunnel",    "tunnel_secret": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="  }'
-  ```
-  ```
-  {  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",    "account_tag": "699d98642c564d2e855e9661899b7252",    "created_at": "2024-12-04T22:03:26.291225Z",    "deleted_at": null,    "name": "Example tunnel",    "connections": [],    "conns_active_at": null,    "conns_inactive_at": "2024-12-04T22:03:26.291225Z",    "tun_type": "cfd_tunnel",    "metadata": {},    "status": "inactive",    "remote_config": true,    "token": "eyJhIjoiNWFiNGU5Z..."  }}
+  ```sh
+  {
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "result": {
+      "id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+      "account_tag": "699d98642c564d2e855e9661899b7252",
+      "created_at": "2024-12-04T22:03:26.291225Z",
+      "deleted_at": null,
+      "name": "Example tunnel",
+      "connections": [],
+      "conns_active_at": null,
+      "conns_inactive_at": "2024-12-04T22:03:26.291225Z",
+      "tun_type": "cfd_tunnel",
+      "metadata": {},
+      "status": "inactive",
+      "remote_config": true,
+      "token": "eyJhIjoiNWFiNGU5Z..."
+    }
+  }
   ```
   3. Copy the `token` value shown in the output.
 After refreshing the token, `cloudflared` can no longer establish new connections to Cloudflare using the old token. However, existing connectors will remain active and the tunnel will continue serving traffic.
 2. On half of your `cloudflared` replicas, reinstall the `cloudflared` service with the new token. For example, on a Linux host:
-Terminal window
-```
-  sudo cloudflared service uninstallsudo cloudflared service install <NEW_TOKEN>
+```sh
+  sudo cloudflared service uninstall
+sudo cloudflared service install <NEW_TOKEN>
 ```
 3. Confirm that the service started correctly:
-Terminal window
-```
+```sh
 sudo systemctl status cloudflared
 ```
 While these replicas are connecting to Cloudflare with the new token, traffic will automatically route through the other replicas.
@@ -151,19 +192,21 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Cloudflare One Connectors Write`
   * `Cloudflare One Connector: cloudflared Write`
   * `Cloudflare Tunnel Write`
-Clean up Cloudflare Tunnel connections
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+**Clean up Cloudflare Tunnel connections**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 This will clean up any unauthorized connections and prevent users from connecting to your network.
 3. On each `cloudflared` replica, update `cloudflared` to use the new token. For example, on a Linux host:
-Terminal window
-```
-  sudo cloudflared service uninstallsudo cloudflared service install <NEW_TOKEN>
+```sh
+  sudo cloudflared service uninstall
+sudo cloudflared service install <NEW_TOKEN>
 ```
 4. Confirm that the service started correctly:
-Terminal window
-```
+```sh
 sudo systemctl status cloudflared
 ```
 

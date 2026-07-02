@@ -25,16 +25,29 @@ A component which shows a transcript. You need to remove the element after you r
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTranscript } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkTranscript />;}
+
+
+function MyComponent() {
+  return <RtkTranscript />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTranscript } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkTranscript      t={rtki18n}      transcript="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTranscript
+      t={rtki18n}
+      transcript="example"
+    />
+  );
+}
 ```
 
 ```json

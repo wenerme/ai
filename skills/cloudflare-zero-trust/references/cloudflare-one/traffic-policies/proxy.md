@@ -73,47 +73,41 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-7766)
-* [  Docker ](#tab-panel-7767)
+* [  Linux ](#tab-panel-8019)
+* [  Docker ](#tab-panel-8020)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:
 a. Find the user that owns the `cloudflared` process:
-Terminal window
-```
+```sh
 ps -aux | grep cloudflared
 ```
-```
+```sh
 johndoe         407  0.8  1.7 1259904 35296 ?       Ssl  21:02   0:00 /usr/bin/cloudflared --no-autoupdate tunnel run --token eyJhI...
 ```
 b. Get the Group ID of the `cloudflared` user:
-Terminal window
-```
+```sh
 id -g johndoe
 ```
-```
+```sh
 10001
 ```
 c. Determine the Group IDs that are allowed to use ICMP:
-Terminal window
-```
+```sh
 sudo sysctl net.ipv4.ping_group_range
 ```
-```
+```sh
 net.ipv4.ping_group_range= 0 10000
 ```
 d. Either add the user to a group within that range, or update the range to encompass a group the user is already in. To update `ping_group_range`:
-Terminal window
-```
+```sh
 echo 0 10001 | sudo tee /proc/sys/net/ipv4/ping_group_range
 ```
 e. If you need to make the change apply to an already running process, you need to restart `cloudflared`. To make the change persist on reboot, update your `systcl` parameters:
-Terminal window
-```
+```sh
 echo "net.ipv4.ping_group_range = 0 10001" | sudo tee -a /etc/sysctl.d/99-cloudflared.conf
 ```
 2. If you are running multiple network interfaces (for example, `eth0` and `eth1`), configure `cloudflared` to use the external Internet-facing interface:
-Terminal window
-```
+```sh
 cloudflared tunnel run --icmpv4-src <IP of primary interface>
 ```
 

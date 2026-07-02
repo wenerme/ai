@@ -60,22 +60,36 @@ We will insert assets into the cache on a per-data center basis. Assets have a t
 
 By default, Pages automatically adds several [HTTP response headers ↗](https://developer.mozilla.org/en-US/docs/Glossary/Response%5Fheader) when serving assets, including:
 
-Headers always added
+**Headers always added**
 
-```
-Access-Control-Allow-Origin: *Cf-Ray: $CLOUDFLARE_RAY_IDReferrer-Policy: strict-origin-when-cross-originEtag: $ETAGContent-Type: $CONTENT_TYPEX-Content-Type-Options: nosniffServer: cloudflare
+```txt
+Access-Control-Allow-Origin: *
+Cf-Ray: $CLOUDFLARE_RAY_ID
+Referrer-Policy: strict-origin-when-cross-origin
+Etag: $ETAG
+Content-Type: $CONTENT_TYPE
+X-Content-Type-Options: nosniff
+Server: cloudflare
 ```
 
 Note
 
 The [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) header is unique to Cloudflare.
 
-Headers sometimes added
+**Headers sometimes added**
 
-```
-// if the asset has been encodedCache-Control: no-transformContent-Encoding: $CONTENT_ENCODING
-// if the asset is cacheable (the request does not have an `Authorization` or `Range` header)Cache-Control: public, max-age=0, must-revalidate
-// if requesting the asset over a preview URLX-Robots-Tag: noindex
+```txt
+// if the asset has been encoded
+Cache-Control: no-transform
+Content-Encoding: $CONTENT_ENCODING
+
+
+// if the asset is cacheable (the request does not have an `Authorization` or `Range` header)
+Cache-Control: public, max-age=0, must-revalidate
+
+
+// if requesting the asset over a preview URL
+X-Robots-Tag: noindex
 ```
 
 To modify the headers added by Cloudflare Pages - perhaps to add [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/) \- update the [\_headers file](https://developers.cloudflare.com/pages/configuration/headers/) in your project.

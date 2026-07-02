@@ -34,12 +34,22 @@ You have now created a basic Worker that responds with "Hello world." If you use
 
 Zaraz forwards the Zaraz Context object to your Worker as a JSON payload with a POST request. You can access any property like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const { system, client } = await request.json()
-/* System parameters */system.page.url.href // URL of the current pagesystem.page.query.gclid // Value of the gclid query parametersystem.device.resolution // Device screen resolutionsystem.device.language // Browser preferred language
-/* Zaraz Track values */client.value // value from `zaraz.track("foo", {value: "bar"})`client.products[0].name // name of the first product in an ecommerce call
+
+
+/* System parameters */
+system.page.url.href // URL of the current page
+system.page.query.gclid // Value of the gclid query parameter
+system.device.resolution // Device screen resolution
+system.device.language // Browser preferred language
+
+
+/* Zaraz Track values */
+client.value // value from `zaraz.track("foo", {value: "bar"})`
+client.products[0].name // name of the first product in an ecommerce call
 ```
 
 Keep reading for more complete examples of different use cases or refer to [Zaraz Context](https://developers.cloudflare.com/zaraz/reference/context/).
@@ -76,55 +86,108 @@ To use your Worker Variable:
 
 Assuming we are sending a list of products in a cart, like this:
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.ecommerce("Cart Viewed", {  products: [    { name: "shirt", price: "50" },    { name: "jacket", price: "20" },    { name: "hat", price: "30" },  ],});
+```js
+zaraz.ecommerce("Cart Viewed", {
+  products: [
+    { name: "shirt", price: "50" },
+    { name: "jacket", price: "20" },
+    { name: "hat", price: "30" },
+  ],
+});
 ```
 
 Calculating the sum can be done like this:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // Parse the Zaraz Context object    const { system, client } = await request.json();
-    // Get an array of all prices    const productsPrices = client.products.map((p) => p.price);
-    // Calculate the sum    const sum = productsPrices.reduce((partialSum, a) => partialSum + a, 0);
-    return new Response(sum);  },};
+```js
+export default {
+  async fetch(request, env) {
+    // Parse the Zaraz Context object
+    const { system, client } = await request.json();
+
+
+    // Get an array of all prices
+    const productsPrices = client.products.map((p) => p.price);
+
+
+    // Calculate the sum
+    const sum = productsPrices.reduce((partialSum, a) => partialSum + a, 0);
+
+
+    return new Response(sum);
+  },
+};
 ```
 
 ### Match a cookie with a user in your backend
 
 Zaraz exposes all cookies automatically under the `system.cookies` object, so they are always available. Accessing the cookie and using it to query your backend might look like this:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // Parse the Zaraz Context object    const { system, client } = await request.json();
-    // Get the value of the cookie "login-cookie"    const cookieValue = system.cookies["login-cookie"];
-    const userId = await fetch("https://example.com/api/getUserIdFromCookie", {      method: POST,      body: cookieValue,    });
-    return new Response(userId);  },};
+```js
+export default {
+  async fetch(request, env) {
+    // Parse the Zaraz Context object
+    const { system, client } = await request.json();
+
+
+    // Get the value of the cookie "login-cookie"
+    const cookieValue = system.cookies["login-cookie"];
+
+
+    const userId = await fetch("https://example.com/api/getUserIdFromCookie", {
+      method: POST,
+      body: cookieValue,
+    });
+
+
+    return new Response(userId);
+  },
+};
 ```
 
 ### Hash a value before sending it to a third-party vendor
 
 Assuming you're sending a value that you want to hash, for example, an email address:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.track("user_logged_in", { email: "user@example.com" });
 ```
 
 You can access this property and hash it like this:
 
-JavaScript
+**JavaScript**
 
-```
-async function digestMessage(message) {  const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array  const hashHex = hashArray    .map((b) => b.toString(16).padStart(2, "0"))    .join(""); // convert bytes to hex string  return hashHex;}
-export default {  async fetch(request, env) {    // Parse the Zaraz Context object    const { system, client } = await request.json();
+```js
+async function digestMessage(message) {
+  const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+  const hashHex = hashArray
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join(""); // convert bytes to hex string
+  return hashHex;
+}
+
+
+export default {
+  async fetch(request, env) {
+    // Parse the Zaraz Context object
+    const { system, client } = await request.json();
+
+
     const { email } = client;
-    return new Response(await digestMessage(email));  },};
+
+
+    return new Response(await digestMessage(email));
+  },
+};
 ```
 
 ```json

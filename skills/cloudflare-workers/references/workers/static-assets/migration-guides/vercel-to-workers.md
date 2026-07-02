@@ -36,38 +36,64 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12235)
-* [  wrangler.toml ](#tab-panel-12236)
+* [  wrangler.jsonc ](#tab-panel-12490)
+* [  wrangler.toml ](#tab-panel-12491)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "<your-project-name>",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "<your-build-directory>",
+  },
+}
 ```
-{  "name": "<your-project-name>",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "<your-build-directory>",  },}
-```
 
-TOML
+**TOML**
 
-```
-name = "<your-project-name>"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "<your-build-directory>"
+```toml
+name = "<your-project-name>"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "<your-build-directory>"
 ```
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-12237)
-* [  wrangler.toml ](#tab-panel-12238)
+* [  wrangler.jsonc ](#tab-panel-12492)
+* [  wrangler.toml ](#tab-panel-12493)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "<your-project-name>",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "<your-build-directory>",
+    "not_found_handling": "single-page-application",
+  },
+}
 ```
-{  "name": "<your-project-name>",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "<your-build-directory>",    "not_found_handling": "single-page-application",  },}
-```
 
-TOML
+**TOML**
 
-```
-name = "<your-project-name>"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "<your-build-directory>"not_found_handling = "single-page-application"
+```toml
+name = "<your-project-name>"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "<your-build-directory>"
+not_found_handling = "single-page-application"
 ```
 
 Some frameworks provide specific guides for migrating to Cloudflare Workers. Please refer to our [framework guides](https://developers.cloudflare.com/workers/framework-guides/) for more information. If your framework includes a “Deploy an existing project on Workers” guide, follow it for detailed instructions.

@@ -28,16 +28,30 @@ A button which toggles your microphone.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMicToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMicToggle />;}
+
+
+function MyComponent() {
+  return <RtkMicToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMicToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMicToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMicToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

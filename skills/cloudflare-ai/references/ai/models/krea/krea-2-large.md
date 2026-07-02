@@ -28,66 +28,66 @@ More than 2x the size of Medium, with softer post-training. Outputs are rawer, m
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-794)
-* [ cURL ](#tab-panel-795)
+* [ TypeScript ](#tab-panel-842)
+* [ cURL ](#tab-panel-843)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'krea/krea-2-large',
+  {
+    prompt: 'a cinematic glass cabin beside a frozen lake at sunrise',
+    aspect_ratio: '16:9',
+    resolution: '1K',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'krea/krea-2-large',  {    prompt: 'a cinematic glass cabin beside a frozen lake at sunrise',    aspect_ratio: '16:9',    resolution: '1K',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "krea/krea-2-large",
+  "input": {
+    "prompt": "a cinematic glass cabin beside a frozen lake at sunrise",
+    "aspect_ratio": "16:9",
+    "resolution": "1K"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "krea/krea-2-large",  "input": {    "prompt": "a cinematic glass cabin beside a frozen lake at sunrise",    "aspect_ratio": "16:9",    "resolution": "1K"  }}'
-```
-
-* [ Output ](#tab-panel-792)
-* [ Raw response ](#tab-panel-793)
+* [ Output ](#tab-panel-840)
+* [ Raw response ](#tab-panel-841)
 
 ![Default](https://examples.aig.cloudflare.com/krea/krea-2-large/default.png)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/krea/krea-2-large/default.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/krea/krea-2-large/default.png"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-796)
-* [ Output ](#tab-panel-797)
-
-aspect\_ratio
-
-`string`requiredenum: 1:1, 4:3, 3:2, 16:9, 2.35:1, 4:5, 2:3, 9:16Aspect ratio of the generated image.
-
-complexity
-
-`integer`default: 0maximum: 100minimum: \-100K2 Complexity slider (-100 to 100). 0 disables the slider LoRA.
-
-creativity
-
-`string`default: lowenum: raw, low, medium, highPrompt expansion mode. \`raw\` disables expansion; \`low\`, \`medium\`, \`high\` control strength. Does not affect the K2 Intensity, Complexity, or Movement slider LoRAs.
-
-▶image\_style\_references\[\]
-
-`array`maxItems: 10Reference images to drive the visual style (up to 10).
-
-intensity
-
-`integer`default: 0maximum: 100minimum: \-100K2 Intensity slider (-100 to 100). 0 disables the slider LoRA.
-
-▶moodboards\[\]
-
-`array`maxItems: 1Moodboard references (currently limited to one).
-
-movement
-
-`integer`default: 0maximum: 100minimum: \-100K2 Movement slider (-100 to 100). 0 disables the slider LoRA.
+* [ Input ](#tab-panel-844)
+* [ Output ](#tab-panel-845)
 
 prompt
 
 `string`requiredText prompt describing the image to generate.
+
+aspect\_ratio
+
+`string`requiredenum: 1:1, 4:3, 3:2, 16:9, 2.35:1, 4:5, 2:3, 9:16Aspect ratio of the generated image.
 
 resolution
 
@@ -100,6 +100,30 @@ seed
 ▶styles\[\]
 
 `array`Styles (typically LoRAs) to apply to the generation.
+
+▶image\_style\_references\[\]
+
+`array`maxItems: 10Reference images to drive the visual style (up to 10).
+
+creativity
+
+`string`default: lowenum: raw, low, medium, highPrompt expansion mode. \`raw\` disables expansion; \`low\`, \`medium\`, \`high\` control strength. Does not affect the K2 Intensity, Complexity, or Movement slider LoRAs.
+
+intensity
+
+`integer`default: 0minimum: \-100maximum: 100K2 Intensity slider (-100 to 100). 0 disables the slider LoRA.
+
+complexity
+
+`integer`default: 0minimum: \-100maximum: 100K2 Complexity slider (-100 to 100). 0 disables the slider LoRA.
+
+movement
+
+`integer`default: 0minimum: \-100maximum: 100K2 Movement slider (-100 to 100). 0 disables the slider LoRA.
+
+▶moodboards\[\]
+
+`array`maxItems: 1Moodboard references (currently limited to one).
 
 image
 

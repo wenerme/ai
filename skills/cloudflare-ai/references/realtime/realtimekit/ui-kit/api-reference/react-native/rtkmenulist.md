@@ -24,9 +24,25 @@ A horizontal list container for menu items.
 
 ### Basic Usage
 
-```
-import {  RtkMenuList,  RtkMenuItem,} from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMenuList>      <RtkMenuItem onClick={() => {}}>        <Text>Item 1</Text>      </RtkMenuItem>      <RtkMenuItem onClick={() => {}}>        <Text>Item 2</Text>      </RtkMenuItem>    </RtkMenuList>  );}
+```tsx
+import {
+  RtkMenuList,
+  RtkMenuItem,
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function MyComponent() {
+  return (
+    <RtkMenuList>
+      <RtkMenuItem onClick={() => {}}>
+        <Text>Item 1</Text>
+      </RtkMenuItem>
+      <RtkMenuItem onClick={() => {}}>
+        <Text>Item 2</Text>
+      </RtkMenuItem>
+    </RtkMenuList>
+  );
+}
 ```
 
 ```json

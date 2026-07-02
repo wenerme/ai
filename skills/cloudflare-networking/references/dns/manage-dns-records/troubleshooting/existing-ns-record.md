@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 As you try to create a new DNS record, Cloudflare displays the following error:
 
-```
+```txt
 NS records with that host already exist. (Code:81056)
 ```
 

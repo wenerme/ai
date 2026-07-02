@@ -124,21 +124,54 @@ Now that you've deployed your first container, let's explain what is happening i
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-7918)
-* [  wrangler.toml ](#tab-panel-7919)
+* [  wrangler.jsonc ](#tab-panel-8197)
+* [  wrangler.toml ](#tab-panel-8198)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "max_instances": 10,
+      "class_name": "MyContainer",
+      "image": "./Dockerfile",
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_CONTAINER",
+        "class_name": "MyContainer",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["MyContainer"],
+    },
+  ],
+}
 ```
-{  "containers": [    {      "max_instances": 10,      "class_name": "MyContainer",      "image": "./Dockerfile",    },  ],  "durable_objects": {    "bindings": [      {        "name": "MY_CONTAINER",        "class_name": "MyContainer",      },    ],  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["MyContainer"],    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]max_instances = 10class_name = "MyContainer"image = "./Dockerfile"
-[[durable_objects.bindings]]name = "MY_CONTAINER"class_name = "MyContainer"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "MyContainer" ]
+```toml
+[[containers]]
+max_instances = 10
+class_name = "MyContainer"
+image = "./Dockerfile"
+
+
+[[durable_objects.bindings]]
+name = "MY_CONTAINER"
+class_name = "MyContainer"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "MyContainer" ]
 ```
 
 Important points about this config:
@@ -154,9 +187,14 @@ Your container image must be able to run on the `linux/amd64` architecture, but 
 
 In the example you just deployed, it is a simple Golang server that responds to requests on port 8080 using the `MESSAGE` environment variable that will be set in the Worker and an [auto-generated environment variable](https://developers.cloudflare.com/containers/platform-details/#environment-variables) `CLOUDFLARE_DEPLOYMENT_ID.`
 
-```
-func handler(w http.ResponseWriter, r *http.Request) {  message := os.Getenv("MESSAGE")  instanceId := os.Getenv("CLOUDFLARE_DEPLOYMENT_ID")
-  fmt.Fprintf(w, "Hi, I'm a container and this is my message: %s, and my instance ID is: %s", message, instanceId)}
+```go
+func handler(w http.ResponseWriter, r *http.Request) {
+  message := os.Getenv("MESSAGE")
+  instanceId := os.Getenv("CLOUDFLARE_DEPLOYMENT_ID")
+
+
+  fmt.Fprintf(w, "Hi, I'm a container and this is my message: %s, and my instance ID is: %s", message, instanceId)
+}
 ```
 
 Note
@@ -169,13 +207,31 @@ After deploying the example code, to deploy a different image, you can replace t
 
 First note `MyContainer` which extends the [Container ↗](https://github.com/cloudflare/containers) class:
 
-JavaScript
+**JavaScript**
 
-```
-export class MyContainer extends Container {  defaultPort = 8080;  sleepAfter = '10s';  envVars = {    MESSAGE: 'I was passed in via the container class!',  };
-  override onStart() {    console.log('Container successfully started');  }
-  override onStop() {    console.log('Container successfully shut down');  }
-  override onError(error: unknown) {    console.log('Container error:', error);  }}
+```js
+export class MyContainer extends Container {
+  defaultPort = 8080;
+  sleepAfter = '10s';
+  envVars = {
+    MESSAGE: 'I was passed in via the container class!',
+  };
+
+
+  override onStart() {
+    console.log('Container successfully started');
+  }
+
+
+  override onStop() {
+    console.log('Container successfully shut down');
+  }
+
+
+  override onError(error: unknown) {
+    console.log('Container error:', error);
+  }
+}
 ```
 
 This defines basic configuration for the container:
@@ -194,14 +250,22 @@ Refer to the [Container class reference](https://developers.cloudflare.com/conta
 When a request enters Cloudflare, your Worker's [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is invoked. This is the code that handles the incoming request. The fetch handler in the example code, launches containers in two ways, on different routes:
 
 * Making requests to `/container/` passes requests to a new container for each path. This is done by spinning up a new Container instance. You may note that the first request to a new path takes longer than subsequent requests, this is because a new container is booting.
-JavaScript
-```
-if (pathname.startsWith("/container")) {  const container = env.MY_CONTAINER.getByName(pathname);  return await container.fetch(request);}
+
+**JavaScript**
+```js
+if (pathname.startsWith("/container")) {
+  const container = env.MY_CONTAINER.getByName(pathname);
+  return await container.fetch(request);
+}
 ```
 * Making requests to `/lb` will load balance requests across several containers. This uses a simple `getRandom` helper method, which picks an ID at random from a set number (in this case 3), then routes to that Container instance. You can replace this with any routing or load balancing logic you choose to implement:
-JavaScript
-```
-if (pathname.startsWith("/lb")) {  const container = await getRandom(env.MY_CONTAINER, 3);  return await container.fetch(request);}
+
+**JavaScript**
+```js
+if (pathname.startsWith("/lb")) {
+  const container = await getRandom(env.MY_CONTAINER, 3);
+  return await container.fetch(request);
+}
 ```
 
 This allows for multiple ways of using Containers:

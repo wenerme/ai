@@ -29,29 +29,75 @@ Actions compile into Think tools, so the model calls them exactly like any other
 
 Use the `action()` descriptor factory and return a map of actions from `getActions()`. The map key is the tool name the model sees (unless you set `name`). The `execute` input type is inferred from `inputSchema`:
 
-* [  JavaScript ](#tab-panel-5773)
-* [  TypeScript ](#tab-panel-5774)
+* [  JavaScript ](#tab-panel-5805)
+* [  TypeScript ](#tab-panel-5806)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Think, action } from "@cloudflare/think";
+import { z } from "zod";
+
+
+export class Support extends Think {
+  getActions() {
+    return {
+      refundOrder: action({
+        description: "Refund a customer order.",
+        inputSchema: z.object({
+          orderId: z.string(),
+          amountCents: z.number().int().positive(),
+        }),
+        execute: async ({ orderId, amountCents }, ctx) => {
+          const result = await refund(orderId, amountCents);
+          return { refundId: result.id, status: result.status };
+        },
+      }),
+    };
+  }
+}
 ```
-import { Think, action } from "@cloudflare/think";import { z } from "zod";
-export class Support extends Think {  getActions() {    return {      refundOrder: action({        description: "Refund a customer order.",        inputSchema: z.object({          orderId: z.string(),          amountCents: z.number().int().positive(),        }),        execute: async ({ orderId, amountCents }, ctx) => {          const result = await refund(orderId, amountCents);          return { refundId: result.id, status: result.status };        },      }),    };  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Think, action } from "@cloudflare/think";import { z } from "zod";
-export class Support extends Think<Env> {  getActions() {    return {      refundOrder: action({        description: "Refund a customer order.",        inputSchema: z.object({          orderId: z.string(),          amountCents: z.number().int().positive(),        }),        execute: async ({ orderId, amountCents }, ctx) => {          const result = await refund(orderId, amountCents);          return { refundId: result.id, status: result.status };        },      }),    };  }}
+```ts
+import { Think, action } from "@cloudflare/think";
+import { z } from "zod";
+
+
+export class Support extends Think<Env> {
+  getActions() {
+    return {
+      refundOrder: action({
+        description: "Refund a customer order.",
+        inputSchema: z.object({
+          orderId: z.string(),
+          amountCents: z.number().int().positive(),
+        }),
+        execute: async ({ orderId, amountCents }, ctx) => {
+          const result = await refund(orderId, amountCents);
+          return { refundId: result.id, status: result.status };
+        },
+      }),
+    };
+  }
+}
 ```
 
 The `execute` callback receives the validated input and an `ActionContext`:
 
-TypeScript
+**TypeScript**
 
-```
-type ActionContext = {  agent: Think;  env: Cloudflare.Env;  requestId: string;  toolCallId: string;  messages: ReadonlyArray<ModelMessage>;  signal: AbortSignal; // aborts on turn cancel or after `timeoutMs`  attachReply(attachment: ReplyAttachment): void;};
+```ts
+type ActionContext = {
+  agent: Think;
+  env: Cloudflare.Env;
+  requestId: string;
+  toolCallId: string;
+  messages: ReadonlyArray<ModelMessage>;
+  signal: AbortSignal; // aborts on turn cancel or after `timeoutMs`
+  attachReply(attachment: ReplyAttachment): void;
+};
 ```
 
 The action output is normalized to JSON and truncated before it is shown to the model (long outputs are capped). Anything thrown from `execute` becomes a structured `{ error: { name, message } }` tool result rather than crashing the turn. Each action has a default timeout of 30 seconds; override it per action with `timeoutMs`.
@@ -64,19 +110,31 @@ A plain `tool()` from `getTools()` still works and is the right choice for a rea
 
 When an action declares an `idempotencyKey`, Think records the settled result in a durable ledger keyed by `action:<name>:<key>`. If the same key is seen again — on a recovery retry, a reconnect, or a duplicate inbound event — Think returns the stored result **without** re-running `execute`, so the side effect happens at most once on the happy path.
 
-* [  JavaScript ](#tab-panel-5761)
-* [  TypeScript ](#tab-panel-5762)
+* [  JavaScript ](#tab-panel-5793)
+* [  TypeScript ](#tab-panel-5794)
 
-JavaScript
+**JavaScript**
 
+```js
+const chargeInvoice = action({
+  description: "Charge an invoice.",
+  inputSchema: z.object({ invoiceId: z.string() }),
+  // Use a stable domain identifier — never a timestamp, request id, or random value.
+  idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,
+  execute: async ({ invoiceId }) => charge(invoiceId),
+});
 ```
-const chargeInvoice = action({  description: "Charge an invoice.",  inputSchema: z.object({ invoiceId: z.string() }),  // Use a stable domain identifier — never a timestamp, request id, or random value.  idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,  execute: async ({ invoiceId }) => charge(invoiceId),});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const chargeInvoice = action({  description: "Charge an invoice.",  inputSchema: z.object({ invoiceId: z.string() }),  // Use a stable domain identifier — never a timestamp, request id, or random value.  idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,  execute: async ({ invoiceId }) => charge(invoiceId),});
+```ts
+const chargeInvoice = action({
+  description: "Charge an invoice.",
+  inputSchema: z.object({ invoiceId: z.string() }),
+  // Use a stable domain identifier — never a timestamp, request id, or random value.
+  idempotencyKey: ({ input }) => `invoice:${input.invoiceId}`,
+  execute: async ({ invoiceId }) => charge(invoiceId),
+});
 ```
 
 `idempotencyKey` is a string, or a function `({ input, ctx }) => string`. Choose a key that survives recovery retries — an order id, an inbound event id — and not a value that changes per attempt. An action with no `idempotencyKey` falls back to a per-`toolCallId` key, which only deduplicates within the same tool call, not across retries.
@@ -93,19 +151,33 @@ Gate an action behind a human with `approval`. There are two mechanisms, selecte
 
 The default when you set `approval` without a `kind`. The action compiles to a tool with the AI SDK `needsApproval` flag: the stream pauses with an `approval-requested` part, the client approves or rejects, and the turn continues inline. `execute` runs only after approval.
 
-* [  JavaScript ](#tab-panel-5763)
-* [  TypeScript ](#tab-panel-5764)
+* [  JavaScript ](#tab-panel-5795)
+* [  TypeScript ](#tab-panel-5796)
 
-JavaScript
+**JavaScript**
 
+```js
+const deleteAccount = action({
+  description: "Permanently delete a user account.",
+  inputSchema: z.object({ userId: z.string() }),
+  approval: true, // or ({ input }) => input.userId !== currentUser
+  approvalSummary: "Delete an account",
+  approvalRisk: "high",
+  execute: async ({ userId }) => deleteAccount(userId),
+});
 ```
-const deleteAccount = action({  description: "Permanently delete a user account.",  inputSchema: z.object({ userId: z.string() }),  approval: true, // or ({ input }) => input.userId !== currentUser  approvalSummary: "Delete an account",  approvalRisk: "high",  execute: async ({ userId }) => deleteAccount(userId),});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const deleteAccount = action({  description: "Permanently delete a user account.",  inputSchema: z.object({ userId: z.string() }),  approval: true, // or ({ input }) => input.userId !== currentUser  approvalSummary: "Delete an account",  approvalRisk: "high",  execute: async ({ userId }) => deleteAccount(userId),});
+```ts
+const deleteAccount = action({
+  description: "Permanently delete a user account.",
+  inputSchema: z.object({ userId: z.string() }),
+  approval: true, // or ({ input }) => input.userId !== currentUser
+  approvalSummary: "Delete an account",
+  approvalRisk: "high",
+  execute: async ({ userId }) => deleteAccount(userId),
+});
 ```
 
 `approval` is a boolean or a predicate `({ input, ctx }) => boolean`, so you can require approval only for risky inputs. `approvalSummary` and `approvalRisk` (`"low" | "medium" | "high"`) populate the approval descriptor your UI renders.
@@ -114,36 +186,64 @@ const deleteAccount = action({  description: "Permanently delete a user account.
 
 Set `kind: "durable-pause"` when approval may take minutes or days and you do not want to hold a connection open. The action parks into a durable store and the turn ends; `execute` does not run yet. Resume later — from anywhere, including a dashboard with no live WebSocket — with `approveExecution()` or `rejectExecution()`:
 
-* [  JavaScript ](#tab-panel-5765)
-* [  TypeScript ](#tab-panel-5766)
+* [  JavaScript ](#tab-panel-5797)
+* [  TypeScript ](#tab-panel-5798)
 
-JavaScript
+**JavaScript**
 
-```
-const deploy = action({  description: "Deploy to production.",  inputSchema: z.object({ ref: z.string() }),  kind: "durable-pause",  approvalSummary: "Deploy to production",  approvalRisk: "high",  permissions: ["deploy:run"],  execute: async ({ ref }) => deploy(ref),});
-```
-
-TypeScript
-
-```
-const deploy = action({  description: "Deploy to production.",  inputSchema: z.object({ ref: z.string() }),  kind: "durable-pause",  approvalSummary: "Deploy to production",  approvalRisk: "high",  permissions: ["deploy:run"],  execute: async ({ ref }) => deploy(ref),});
-```
-
-* [  JavaScript ](#tab-panel-5767)
-* [  TypeScript ](#tab-panel-5768)
-
-JavaScript
-
-```
-// List everything waiting on a human (cold-load reconciliation):const pending = await agent.pendingApprovals();// [{ executionId, source: "action" | "codemode", descriptor }]
-// Approve or reject by execution id (idempotent — a second call is a no-op):await agent.approveExecution(executionId);await agent.rejectExecution(executionId, "Not this release");
+```js
+const deploy = action({
+  description: "Deploy to production.",
+  inputSchema: z.object({ ref: z.string() }),
+  kind: "durable-pause",
+  approvalSummary: "Deploy to production",
+  approvalRisk: "high",
+  permissions: ["deploy:run"],
+  execute: async ({ ref }) => deploy(ref),
+});
 ```
 
-TypeScript
+**TypeScript**
 
+```ts
+const deploy = action({
+  description: "Deploy to production.",
+  inputSchema: z.object({ ref: z.string() }),
+  kind: "durable-pause",
+  approvalSummary: "Deploy to production",
+  approvalRisk: "high",
+  permissions: ["deploy:run"],
+  execute: async ({ ref }) => deploy(ref),
+});
 ```
-// List everything waiting on a human (cold-load reconciliation):const pending = await agent.pendingApprovals();// [{ executionId, source: "action" | "codemode", descriptor }]
-// Approve or reject by execution id (idempotent — a second call is a no-op):await agent.approveExecution(executionId);await agent.rejectExecution(executionId, "Not this release");
+
+* [  JavaScript ](#tab-panel-5799)
+* [  TypeScript ](#tab-panel-5800)
+
+**JavaScript**
+
+```js
+// List everything waiting on a human (cold-load reconciliation):
+const pending = await agent.pendingApprovals();
+// [{ executionId, source: "action" | "codemode", descriptor }]
+
+
+// Approve or reject by execution id (idempotent — a second call is a no-op):
+await agent.approveExecution(executionId);
+await agent.rejectExecution(executionId, "Not this release");
+```
+
+**TypeScript**
+
+```ts
+// List everything waiting on a human (cold-load reconciliation):
+const pending = await agent.pendingApprovals();
+// [{ executionId, source: "action" | "codemode", descriptor }]
+
+
+// Approve or reject by execution id (idempotent — a second call is a no-op):
+await agent.approveExecution(executionId);
+await agent.rejectExecution(executionId, "Not this release");
 ```
 
 `approveExecution()` runs `execute` once and auto-continues the turn even if no client is connected; `rejectExecution()` resolves the action without running it. `pendingApprovals()` merges parked actions and paused [Codemode](https://developers.cloudflare.com/agents/tools/codemode/) executions, so a single approval UI can drive both. (`durable-pause` requires an `approval` policy — an action that would never park is rejected at definition time.)
@@ -154,36 +254,58 @@ Both approval-gated and durable-pause parts carry a stable `ActionApprovalDescri
 
 Declare the permissions an action requires with `permissions`, then grant them per turn. By default every turn is fully authorized, so authorization is opt-in.
 
-* [  JavaScript ](#tab-panel-5769)
-* [  TypeScript ](#tab-panel-5770)
+* [  JavaScript ](#tab-panel-5801)
+* [  TypeScript ](#tab-panel-5802)
 
-JavaScript
+**JavaScript**
 
+```js
+const refundOrder = action({
+  description: "Refund a customer order.",
+  inputSchema: z.object({ orderId: z.string() }),
+  permissions: ["billing:refund"], // or ({ input }) => [...]
+  execute: async ({ orderId }) => refund(orderId),
+});
 ```
-const refundOrder = action({  description: "Refund a customer order.",  inputSchema: z.object({ orderId: z.string() }),  permissions: ["billing:refund"], // or ({ input }) => [...]  execute: async ({ orderId }) => refund(orderId),});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const refundOrder = action({  description: "Refund a customer order.",  inputSchema: z.object({ orderId: z.string() }),  permissions: ["billing:refund"], // or ({ input }) => [...]  execute: async ({ orderId }) => refund(orderId),});
+```ts
+const refundOrder = action({
+  description: "Refund a customer order.",
+  inputSchema: z.object({ orderId: z.string() }),
+  permissions: ["billing:refund"], // or ({ input }) => [...]
+  execute: async ({ orderId }) => refund(orderId),
+});
 ```
 
 Override `authorizeTurn()` to decide, once per turn, which permissions are granted. Returning a list narrows the grant; any action requiring a permission outside the set is denied with a structured `ActionAuthorizationError` (the model never calls `execute`):
 
-* [  JavaScript ](#tab-panel-5771)
-* [  TypeScript ](#tab-panel-5772)
+* [  JavaScript ](#tab-panel-5803)
+* [  TypeScript ](#tab-panel-5804)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Support extends Think {
+  authorizeTurn(ctx) {
+    const role = ctx.body?.role;
+    if (role === "admin") return true; // full grant (the default)
+    return { allowed: true, grantedPermissions: ["billing:read"] };
+  }
+}
 ```
-export class Support extends Think {  authorizeTurn(ctx) {    const role = ctx.body?.role;    if (role === "admin") return true; // full grant (the default)    return { allowed: true, grantedPermissions: ["billing:read"] };  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class Support extends Think<Env> {  override authorizeTurn(ctx: TurnContext): ActionAuthorizationDecision {    const role = (ctx.body as { role?: string })?.role;    if (role === "admin") return true; // full grant (the default)    return { allowed: true, grantedPermissions: ["billing:read"] };  }}
+```ts
+export class Support extends Think<Env> {
+  override authorizeTurn(ctx: TurnContext): ActionAuthorizationDecision {
+    const role = (ctx.body as { role?: string })?.role;
+    if (role === "admin") return true; // full grant (the default)
+    return { allowed: true, grantedPermissions: ["billing:read"] };
+  }
+}
 ```
 
 `authorizeTurn()` returns `true` (full grant), `false` (deny all), or `{ allowed, reason?, grantedPermissions? }`. For per-call logic, override `authorizeAction(ctx)` instead — it receives the action name, kind, input, and required and granted permissions.
@@ -192,36 +314,62 @@ export class Support extends Think<Env> {  override authorizeTurn(ctx: TurnConte
 
 An action can record advisory delivery metadata for the turn — a drafted email, a card, a voice note — with `ctx.attachReply()`. Attachments never change the tool output the model sees; they ride alongside the response for your delivery layer to render.
 
-* [  JavaScript ](#tab-panel-5775)
-* [  TypeScript ](#tab-panel-5776)
+* [  JavaScript ](#tab-panel-5807)
+* [  TypeScript ](#tab-panel-5808)
 
-JavaScript
+**JavaScript**
 
+```js
+const draftReply = action({
+  description: "Draft an email reply.",
+  inputSchema: z.object({ to: z.string(), subject: z.string() }),
+  execute: async ({ to, subject }, ctx) => {
+    ctx.attachReply({ type: "email_draft", to: [to], subject });
+    return { drafted: true };
+  },
+});
 ```
-const draftReply = action({  description: "Draft an email reply.",  inputSchema: z.object({ to: z.string(), subject: z.string() }),  execute: async ({ to, subject }, ctx) => {    ctx.attachReply({ type: "email_draft", to: [to], subject });    return { drafted: true };  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const draftReply = action({  description: "Draft an email reply.",  inputSchema: z.object({ to: z.string(), subject: z.string() }),  execute: async ({ to, subject }, ctx) => {    ctx.attachReply({ type: "email_draft", to: [to], subject });    return { drafted: true };  },});
+```ts
+const draftReply = action({
+  description: "Draft an email reply.",
+  inputSchema: z.object({ to: z.string(), subject: z.string() }),
+  execute: async ({ to, subject }, ctx) => {
+    ctx.attachReply({ type: "email_draft", to: [to], subject });
+    return { drafted: true };
+  },
+});
 ```
 
 Read the attachments after the turn from the `onChatResponse()` hook, or from the `replyAttachments(requestId?)` getter:
 
-* [  JavaScript ](#tab-panel-5777)
-* [  TypeScript ](#tab-panel-5778)
+* [  JavaScript ](#tab-panel-5809)
+* [  TypeScript ](#tab-panel-5810)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Support extends Think {
+  async onChatResponse(result) {
+    for (const attachment of result.attachments ?? []) {
+      // attachment.type === "email_draft" | "card" | "voice_note" | custom
+    }
+  }
+}
 ```
-export class Support extends Think {  async onChatResponse(result) {    for (const attachment of result.attachments ?? []) {      // attachment.type === "email_draft" | "card" | "voice_note" | custom    }  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class Support extends Think<Env> {  override async onChatResponse(result: ChatResponseResult) {    for (const attachment of result.attachments ?? []) {      // attachment.type === "email_draft" | "card" | "voice_note" | custom    }  }}
+```ts
+export class Support extends Think<Env> {
+  override async onChatResponse(result: ChatResponseResult) {
+    for (const attachment of result.attachments ?? []) {
+      // attachment.type === "email_draft" | "card" | "voice_note" | custom
+    }
+  }
+}
 ```
 
 Attachments are JSON-normalized and deep-copied on read, capped per turn, and discarded if the `execute` that recorded them fails. A ledger replay does not re-fire attachments (the side effect already happened), and `attachReply()` is a no-op when called from a `permissions`, `approval`, or `idempotencyKey` callback — record attachments from `execute`.

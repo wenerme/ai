@@ -29,19 +29,26 @@ A button which toggles visibility of breakout rooms. You need to pass the `meeti
 
 ### Basic Usage
 
-```
+```html
 <rtk-breakout-rooms-toggle></rtk-breakout-rooms-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-breakout-rooms-toggle size="md"></rtk-breakout-rooms-toggle>
+```html
+<rtk-breakout-rooms-toggle
+ size="md">
+</rtk-breakout-rooms-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-breakout-rooms-toggle");
-  el.iconPack= defaultIconPack  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-breakout-rooms-toggle");
+
+
+  el.iconPack= defaultIconPack
+  el.meeting= meeting
+</script>
 ```
 
 ```json

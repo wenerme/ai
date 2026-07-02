@@ -26,7 +26,7 @@ If only a domain is given for the command, the bot defaults to looking for `A` r
 
 Example:
 
-```
+```txt
 /dig domain: cloudflare.com
 ```
 
@@ -72,7 +72,7 @@ When you request a response in the short form, the name and TTL (time-to-live, h
 
 Example:
 
-```
+```txt
 /dig domain: cloudflare.com type: AAAA records short: True
 ```
 
@@ -82,7 +82,7 @@ DNSSEC (Domain Name System Security Extensions) validates that DNS responses hav
 
 Example:
 
-```
+```txt
 /dig domain: cloudflare.com type: AAAA records cdflag: True
 ```
 
@@ -102,7 +102,7 @@ If you want to look up multiple DNS record types at once, use the `/multi-dig` c
 
 Example:
 
-```
+```txt
 /multi-dig domain: cloudflare.com types: A AAAA
 ```
 
@@ -168,7 +168,7 @@ Like the main `/dig` command, the `/multi-dig` command also supports the optiona
 
 Example:
 
-```
+```txt
 /multi-dig domain: cloudflare.com types: CDS CDNSKEY short: True
 ```
 
@@ -178,7 +178,7 @@ As with the `dig` command, you can disable DNSSEC checking by passing `cdflag` a
 
 Example:
 
-```
+```txt
 /multi-dig domain: cloudflare.com type: AAAA records cdflag: True
 ```
 
@@ -200,8 +200,11 @@ The `/whois` command performs a RDAP/WHOIS lookup in Discord for a given domain,
 
 Examples:
 
-```
-/whois query: cloudflare.com/whois query: 104.16.132.229/whois query: 2606:4700::6810:84e5/whois query: 13335
+```txt
+/whois query: cloudflare.com
+/whois query: 104.16.132.229
+/whois query: 2606:4700::6810:84e5
+/whois query: 13335
 ```
 
 ## Other commands
@@ -214,7 +217,7 @@ The `/help` command provides in-Discord documentation about all the commands ava
 
 Example:
 
-```
+```txt
 /help
 ```
 
@@ -224,7 +227,7 @@ The `/privacy` command displays the Privacy Policy notice for using the 1.1.1.1 
 
 Example:
 
-```
+```txt
 /privacy
 ```
 
@@ -234,7 +237,7 @@ The `/terms` command displays the Terms of Service notice for using the 1.1.1.1 
 
 Example:
 
-```
+```txt
 /terms
 ```
 
@@ -244,7 +247,7 @@ The DNS over Discord bot is open-source, and the `/github` command provides a qu
 
 Example:
 
-```
+```txt
 /github
 ```
 
@@ -252,7 +255,7 @@ Example:
 
 The `/invite` command provides the user with a quick link to invite the 1.1.1.1 DNS over Discord bot to another Discord server, or to add it to a Discord account. The bot can be invited at any time with [https://cfl.re/3nM6VfQ ↗](https://cfl.re/3nM6VfQ). The bot can also be added to accounts with [https://dns-over-discord.v4.wtf/invite/user ↗](https://dns-over-discord.v4.wtf/invite/user).
 
-```
+```txt
 /invite
 ```
 

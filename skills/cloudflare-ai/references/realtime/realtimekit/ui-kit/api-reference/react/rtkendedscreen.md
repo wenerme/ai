@@ -29,16 +29,29 @@ A screen which shows a meeting has ended.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkEndedScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkEndedScreen />;}
+
+
+function MyComponent() {
+  return <RtkEndedScreen />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkEndedScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkEndedScreen      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkEndedScreen
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

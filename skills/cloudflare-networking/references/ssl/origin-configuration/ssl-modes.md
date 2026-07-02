@@ -65,10 +65,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic_mode" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "custom"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic_mode" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "custom"
+  }'
 ```
 
 #### Opt out multiple zones
@@ -81,21 +86,28 @@ If you wanted to opt out multiple zones:
   * `Zone - Zone Settings - Read`
   * `Zone - Zone Settings - Edit`
 2. Make a [GET request](https://developers.cloudflare.com/api/resources/zones/methods/list/) to get a list of zones (you can filter this list by `account.id`).
-Terminal window
-```
-curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \--header 'Authorization: Bearer <CF_API_TOKEN>' \--header 'Content-Type: application/json'
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \
+--header 'Authorization: Bearer <CF_API_TOKEN>' \
+--header 'Content-Type: application/json'
 ```
 3. Create a list of zone IDs you want to opt-out with each zone ID on a separate line (newline separate), stored in a file such as `zones.txt`.
 4. Create a bash script for `opt-out-multiple-zones.sh` and add the following. Add `zones.txt` to the same directory or update the path accordingly.
-opt-out-multiple-zones.sh
-```
-for zoneID in $(cat zone.txt); do  printf "Opting out ${zoneID}:\n"
-  curl --request PATCH \    --url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \    --header 'Authorization: Bearer <CF_API_TOKEN>' \    --header 'Content-Type: application/json' \    --data '{"value":"custom"}'
-  printf "\n\n"done
+
+**opt-out-multiple-zones.sh**
+```bash
+for zoneID in $(cat zone.txt); do
+  printf "Opting out ${zoneID}:\n"
+  curl --request PATCH \
+    --url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \
+    --header 'Authorization: Bearer <CF_API_TOKEN>' \
+    --header 'Content-Type: application/json' \
+    --data '{"value":"custom"}'
+  printf "\n\n"
+done
 ```
 5. Open your command line and run:
-Terminal window
-```
+```bash
 bash opt-out-multiple-zones.sh
 ```
 
@@ -111,8 +123,8 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-10778)
-* [ API ](#tab-panel-10779)
+* [ Dashboard ](#tab-panel-11073)
+* [ API ](#tab-panel-11074)
 
 To change your encryption mode in the dashboard:
 

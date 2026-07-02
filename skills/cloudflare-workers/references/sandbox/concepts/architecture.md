@@ -47,11 +47,14 @@ flowchart TB
 
 The developer-facing API you use in your Workers:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { getSandbox } from "@cloudflare/sandbox";
-const sandbox = getSandbox(env.Sandbox, "my-sandbox");const result = await sandbox.exec("python script.py");
+
+
+const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+const result = await sandbox.exec("python script.py");
 ```
 
 **Purpose**: Provide a clean, type-safe TypeScript interface for all sandbox operations.
@@ -60,10 +63,14 @@ const sandbox = getSandbox(env.Sandbox, "my-sandbox");const result = await sandb
 
 Manages sandbox lifecycle and routing:
 
-TypeScript
+**TypeScript**
 
-```
-export class Sandbox extends DurableObject<Env> {  // Extends Cloudflare Container for isolation  // Routes requests between client and container  // Manages preview URLs and state}
+```typescript
+export class Sandbox extends DurableObject<Env> {
+  // Extends Cloudflare Container for isolation
+  // Routes requests between client and container
+  // Manages preview URLs and state
+}
 ```
 
 **Purpose**: Provide persistent, stateful sandbox instances with unique identities.
@@ -94,10 +101,12 @@ The SDK supports two transport protocols for communication between the Durable O
 
 Each SDK method makes a separate HTTP request to the container API. Simple, reliable, and works for most use cases.
 
-TypeScript
+**TypeScript**
 
-```
-// Default behavior - uses HTTPconst sandbox = getSandbox(env.Sandbox, "my-sandbox");await sandbox.exec("python script.py");
+```typescript
+// Default behavior - uses HTTP
+const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+await sandbox.exec("python script.py");
 ```
 
 ### WebSocket transport
@@ -106,19 +115,24 @@ Multiplexes all SDK calls over a single persistent WebSocket connection. Avoids 
 
 Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10335)
-* [  wrangler.toml ](#tab-panel-10336)
+* [  wrangler.jsonc ](#tab-panel-10630)
+* [  wrangler.toml ](#tab-panel-10631)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "SANDBOX_TRANSPORT": "websocket"
+  },
+}
 ```
-{  "vars": {    "SANDBOX_TRANSPORT": "websocket"  },}
-```
 
-TOML
+**TOML**
 
-```
-[vars]SANDBOX_TRANSPORT = "websocket"
+```toml
+[vars]
+SANDBOX_TRANSPORT = "websocket"
 ```
 
 The transport layer is transparent to your application code - all SDK methods work identically regardless of transport. See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) for details on when to use each transport and configuration examples.
@@ -127,9 +141,9 @@ The transport layer is transparent to your application code - all SDK methods wo
 
 When you execute a command:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 await sandbox.exec("python script.py");
 ```
 

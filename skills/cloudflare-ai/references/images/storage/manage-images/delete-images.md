@@ -27,10 +27,9 @@ Your image will be deleted from your account.
 
 Make a `DELETE` request to the [delete image endpoint](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/delete/). `{image_id}` must be fully URL encoded in the API call URL.
 
-Terminal window
-
-```
-curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/{image_id} \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/{image_id} \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 After the image has been deleted, the response returns `"success": true`.

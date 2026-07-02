@@ -26,19 +26,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-network-indicator></rtk-network-indicator>
 ```
 
 ### With Properties
 
-```
-<rtk-network-indicator></rtk-network-indicator>
+```html
+<rtk-network-indicator>
+</rtk-network-indicator>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-network-indicator");
-  el.isScreenShare= true;  el.meeting= meeting  el.participant= participant</script>
+```html
+<script>
+  const el = document.querySelector("rtk-network-indicator");
+
+
+  el.isScreenShare= true;
+  el.meeting= meeting
+  el.participant= participant
+</script>
 ```
 
 ```json

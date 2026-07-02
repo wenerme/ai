@@ -18,18 +18,22 @@ A `WritableStream` is the `writable` property of a [TransformStream](https://dev
 
 A typical way to write to a `WritableStream` is to pipe a [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) to it.
 
-JavaScript
+**JavaScript**
 
-```
-readableStream  .pipeTo(writableStream)  .then(() => console.log('All data successfully written!'))  .catch(e => console.error('Something went wrong!', e));
+```js
+readableStream
+  .pipeTo(writableStream)
+  .then(() => console.log('All data successfully written!'))
+  .catch(e => console.error('Something went wrong!', e));
 ```
 
 To write to a `WritableStream` directly, you must use its writer.
 
-JavaScript
+**JavaScript**
 
-```
-const writer = writableStream.getWriter();writer.write(data);
+```js
+const writer = writableStream.getWriter();
+writer.write(data);
 ```
 
 Refer to the [WritableStreamDefaultWriter](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestreamdefaultwriter/) documentation for further detail.

@@ -24,10 +24,11 @@ A component that lets you create a poll.
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkCreatePollBottomSheet = RtkCreatePollBottomSheet()rtkCreatePollBottomSheet.show(fragmentManager, "CREATE_POLL_TAG")
+```kotlin
+val rtkCreatePollBottomSheet = RtkCreatePollBottomSheet()
+rtkCreatePollBottomSheet.show(fragmentManager, "CREATE_POLL_TAG")
 ```
 
 ```json

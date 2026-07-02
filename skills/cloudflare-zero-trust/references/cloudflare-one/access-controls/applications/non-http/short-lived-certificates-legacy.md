@@ -39,9 +39,7 @@ The simplest setup is one where a user's Unix username matches their email addre
 
 For testing purposes, you can run the following command to generate a Unix user on the machine:
 
-Terminal window
-
-```
+```sh
 sudo adduser jdoe
 ```
 
@@ -59,15 +57,15 @@ If you would like to use short-lived certificates with the browser-based termina
 
 To allow `jdoe@example.com` to log in as the user `johndoe`, add the following to the server's `/etc/ssh/sshd_config`:
 
-```
-Match user johndoe  AuthorizedPrincipalsCommand /bin/echo 'jdoe'  AuthorizedPrincipalsCommandUser nobody
+```txt
+Match user johndoe
+  AuthorizedPrincipalsCommand /bin/echo 'jdoe'
+  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This tells the SSH server that, when someone tries to authenticate as the user `johndoe`, check their certificate for the principal `jdoe`. This would allow the user `jdoe@example.com` to sign into the server with a command such as:
 
-Terminal window
-
-```
+```sh
 ssh johndoe@server
 ```
 
@@ -75,22 +73,27 @@ ssh johndoe@server
 
 To allow multiple email addresses to log in as `vmuser`, add the following to the server's `/etc/ssh/sshd_config`:
 
-```
-Match user vmuser  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
+```txt
+Match user vmuser
+  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
 ```
 
 This tells the SSH server to load a list of principles from a file. Then, in `/etc/ssh/vmusers-list.txt`, list the email prefixes that can log in as `vmuser`, one per line:
 
-```
-jdoebwaynerobin
+```txt
+jdoe
+bwayne
+robin
 ```
 
 **Username matches all users**
 
 To allow any Access user to log in as `vmuser`, add the following command to the server's `/etc/ssh/sshd_config`:
 
-```
-Match user vmuser  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"  AuthorizedPrincipalsCommandUser nobody
+```txt
+Match user vmuser
+  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
+  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This command takes the certificate presented by the user and authorizes whatever principal is listed on it.
@@ -99,8 +102,9 @@ This command takes the certificate presented by the user and authorizes whatever
 
 To allow any Access user to log in with any username, add the following to the server's `/etc/ssh/sshd_config`:
 
-```
-AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"AuthorizedPrincipalsCommandUser nobody
+```txt
+AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
+AuthorizedPrincipalsCommandUser nobody
 ```
 
 Since this will put the security of your server entirely dependent on your Access configuration, make sure your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) are correctly configured.
@@ -118,25 +122,24 @@ Since this will put the security of your server entirely dependent on your Acces
 
 1. Copy the public key generated from the dashboard in Step 3.
 1. Use the following command to change directories to the SSH configuration directory on the remote target machine:
-Terminal window
-```
+```sh
 cd /etc/ssh
 ```
 2. Once there, you can use the following command to both generate the file and open a text editor to input/paste the public key.
-Terminal window
-```
+```sh
 vim ca.pub
 ```
 3. In the `ca.pub` file, paste the public key without any modifications.
-ca.pub
-```
+
+**ca.pub**
+```txt
 ecdsa-sha2-nistp256 <redacted> open-ssh-ca@cloudflareaccess.org
 ```
 The `ca.pub` file can hold multiple keys, listed one per line. Empty lines and comments starting with `#` are also allowed.
 4. Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:
-Terminal window
-```
-:w !sudo tee %:q!
+```bash
+:w !sudo tee %
+:q!
 ```
 
 ## 5\. Modify your `sshd_config` file
@@ -144,13 +147,13 @@ Terminal window
 Configure your SSH server to trust the Cloudflare SSH CA by updating the `sshd_config` file on the remote target machine.
 
 1. While in the `/etc/ssh` directory on the remote machine, open the `sshd_config` file.
-Terminal window
-```
+```sh
  sudo vim /etc/ssh/sshd_config
 ```
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:
-```
-PubkeyAuthentication yesTrustedUserCAKeys /etc/ssh/ca.pub
+```txt
+PubkeyAuthentication yes
+TrustedUserCAKeys /etc/ssh/ca.pub
 ```
 Be aware of your include statements
 If there are any include statements below these lines, the configurations in those files will not take precedence.
@@ -160,22 +163,18 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-7199)
-* [ CentOS/RHEL ](#tab-panel-7200)
+* [ Debian/Ubuntu ](#tab-panel-7449)
+* [ CentOS/RHEL ](#tab-panel-7450)
 
 For Debian/Ubuntu:
 
-Terminal window
-
-```
+```sh
 sudo systemctl reload ssh
 ```
 
 For CentOS/RHEL 7 and newer:
 
-Terminal window
-
-```
+```sh
 sudo systemctl reload sshd
 ```
 
@@ -187,16 +186,18 @@ On the client side, [configure your device](https://developers.cloudflare.com/cl
 
 To save time, you can use the following cloudflared command to print the required configuration command:
 
-Terminal window
-
-```
+```sh
 cloudflared access ssh-config --hostname vm.example.com --short-lived-cert
 ```
 
 If you prefer to configure manually, this is an example of the generated SSH config:
 
-```
-Match host vm.example.com exec "/usr/local/bin/cloudflared access ssh-gen --hostname %h"    HostName vm.example.com    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h    IdentityFile ~/.cloudflared/vm.example.com-cf_key    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pub
+```txt
+Match host vm.example.com exec "/usr/local/bin/cloudflared access ssh-gen --hostname %h"
+    HostName vm.example.com
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+    IdentityFile ~/.cloudflared/vm.example.com-cf_key
+    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pub
 ```
 
 ### Connect through a browser-based terminal

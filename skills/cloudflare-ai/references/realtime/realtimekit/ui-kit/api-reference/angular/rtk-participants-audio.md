@@ -27,14 +27,19 @@ A component which plays all the audio from participants and screenshares.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participants-audio></rtk-participants-audio>
+```html
+<!-- component.html -->
+<rtk-participants-audio></rtk-participants-audio>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participants-audio [meeting]="meeting" [preloadedAudioElem]="htmlaudioelement"></rtk-participants-audio>
+```html
+<!-- component.html -->
+<rtk-participants-audio
+ [meeting]="meeting"
+ [preloadedAudioElem]="htmlaudioelement">
+</rtk-participants-audio>
 ```
 
 ```json

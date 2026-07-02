@@ -32,20 +32,31 @@ Meeting header view that displays the meeting title, participant count, elapsed 
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let headerView = RtkMeetingHeaderView(meeting: rtkClient)view.addSubview(headerView)
+
+
+let headerView = RtkMeetingHeaderView(meeting: rtkClient)
+view.addSubview(headerView)
 ```
 
 ### With page navigation
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let headerView = RtkMeetingHeaderView(meeting: rtkClient)headerView.setClicks(    nextButton: { print("Next page") },    previousButton: { print("Previous page") })headerView.refreshNextPreviousButtonState()view.addSubview(headerView)
+
+
+let headerView = RtkMeetingHeaderView(meeting: rtkClient)
+headerView.setClicks(
+    nextButton: { print("Next page") },
+    previousButton: { print("Previous page") }
+)
+headerView.refreshNextPreviousButtonState()
+view.addSubview(headerView)
 ```
 
 ```json

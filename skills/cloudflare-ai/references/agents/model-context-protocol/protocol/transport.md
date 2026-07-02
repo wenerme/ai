@@ -37,46 +37,130 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 
 Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
-* [  JavaScript ](#tab-panel-5933)
-* [  TypeScript ](#tab-panel-5934)
+* [  JavaScript ](#tab-panel-6097)
+* [  TypeScript ](#tab-panel-6098)
 
-JavaScript
+**JavaScript**
 
+```js
+import { createMcpHandler } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+
+function createServer() {
+  const server = new McpServer({
+    name: "My MCP Server",
+    version: "1.0.0",
+  });
+
+
+  server.registerTool(
+    "hello",
+    {
+      description: "Returns a greeting message",
+      inputSchema: { name: z.string().optional() },
+    },
+    async ({ name }) => {
+      return {
+        content: [{ text: `Hello, ${name ?? "World"}!`, type: "text" }],
+      };
+    },
+  );
+
+
+  return server;
+}
+
+
+export default {
+  fetch: (request, env, ctx) => {
+    // Create a new server instance per request
+    const server = createServer();
+    return createMcpHandler(server)(request, env, ctx);
+  },
+};
 ```
-import { createMcpHandler } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
-function createServer() {  const server = new McpServer({    name: "My MCP Server",    version: "1.0.0",  });
-  server.registerTool(    "hello",    {      description: "Returns a greeting message",      inputSchema: { name: z.string().optional() },    },    async ({ name }) => {      return {        content: [{ text: `Hello, ${name ?? "World"}!`, type: "text" }],      };    },  );
-  return server;}
-export default {  fetch: (request, env, ctx) => {    // Create a new server instance per request    const server = createServer();    return createMcpHandler(server)(request, env, ctx);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { createMcpHandler } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
-function createServer() {  const server = new McpServer({    name: "My MCP Server",    version: "1.0.0",  });
-  server.registerTool(    "hello",    {      description: "Returns a greeting message",      inputSchema: { name: z.string().optional() },    },    async ({ name }) => {      return {        content: [{ text: `Hello, ${name ?? "World"}!`, type: "text" }],      };    },  );
-  return server;}
-export default {  fetch: (request: Request, env: Env, ctx: ExecutionContext) => {    // Create a new server instance per request    const server = createServer();    return createMcpHandler(server)(request, env, ctx);  },} satisfies ExportedHandler<Env>;
+```ts
+import { createMcpHandler } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+
+function createServer() {
+  const server = new McpServer({
+    name: "My MCP Server",
+    version: "1.0.0",
+  });
+
+
+  server.registerTool(
+    "hello",
+    {
+      description: "Returns a greeting message",
+      inputSchema: { name: z.string().optional() },
+    },
+    async ({ name }) => {
+      return {
+        content: [{ text: `Hello, ${name ?? "World"}!`, type: "text" }],
+      };
+    },
+  );
+
+
+  return server;
+}
+
+
+export default {
+  fetch: (request: Request, env: Env, ctx: ExecutionContext) => {
+    // Create a new server instance per request
+    const server = createServer();
+    return createMcpHandler(server)(request, env, ctx);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 #### MCP server with authentication
 
 If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
 
-* [  JavaScript ](#tab-panel-5923)
-* [  TypeScript ](#tab-panel-5924)
+* [  JavaScript ](#tab-panel-6087)
+* [  TypeScript ](#tab-panel-6088)
 
-JavaScript
+**JavaScript**
 
+```js
+export default new OAuthProvider({
+  apiRoute: "/mcp",
+  apiHandler: {
+    fetch: (request, env, ctx) => {
+      // Create a new server instance per request
+      const server = createServer();
+      return createMcpHandler(server)(request, env, ctx);
+    },
+  },
+  // ... other OAuth configuration
+});
 ```
-export default new OAuthProvider({  apiRoute: "/mcp",  apiHandler: {    fetch: (request, env, ctx) => {      // Create a new server instance per request      const server = createServer();      return createMcpHandler(server)(request, env, ctx);    },  },  // ... other OAuth configuration});
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default new OAuthProvider({  apiRoute: "/mcp",  apiHandler: {    fetch: (request: Request, env: Env, ctx: ExecutionContext) => {      // Create a new server instance per request      const server = createServer();      return createMcpHandler(server)(request, env, ctx);    },  },  // ... other OAuth configuration});
+```ts
+export default new OAuthProvider({
+  apiRoute: "/mcp",
+  apiHandler: {
+    fetch: (request: Request, env: Env, ctx: ExecutionContext) => {
+      // Create a new server instance per request
+      const server = createServer();
+      return createMcpHandler(server)(request, env, ctx);
+    },
+  },
+  // ... other OAuth configuration
+});
 ```
 
 ### Stateful MCP servers
@@ -103,51 +187,143 @@ RPC transport does not support authentication. Use Streamable HTTP for external 
 
 Create your `McpAgent` with the tools you want to expose:
 
-* [  JavaScript ](#tab-panel-5935)
-* [  TypeScript ](#tab-panel-5936)
+* [  JavaScript ](#tab-panel-6099)
+* [  TypeScript ](#tab-panel-6100)
 
-JavaScript
+**JavaScript**
 
+```js
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+
+export class MyMCP extends McpAgent {
+  server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+  initialState = { counter: 0 };
+
+
+  async init() {
+    this.server.tool(
+      "add",
+      "Add to the counter",
+      { amount: z.number() },
+      async ({ amount }) => {
+        this.setState({ counter: this.state.counter + amount });
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Added ${amount}, total is now ${this.state.counter}`,
+            },
+          ],
+        };
+      },
+    );
+  }
+}
 ```
-import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
-export class MyMCP extends McpAgent {  server = new McpServer({ name: "MyMCP", version: "1.0.0" });  initialState = { counter: 0 };
-  async init() {    this.server.tool(      "add",      "Add to the counter",      { amount: z.number() },      async ({ amount }) => {        this.setState({ counter: this.state.counter + amount });        return {          content: [            {              type: "text",              text: `Added ${amount}, total is now ${this.state.counter}`,            },          ],        };      },    );  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+```ts
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+
 type State = { counter: number };
-export class MyMCP extends McpAgent<Env, State> {  server = new McpServer({ name: "MyMCP", version: "1.0.0" });  initialState: State = { counter: 0 };
-  async init() {    this.server.tool(      "add",      "Add to the counter",      { amount: z.number() },      async ({ amount }) => {        this.setState({ counter: this.state.counter + amount });        return {          content: [            {              type: "text",              text: `Added ${amount}, total is now ${this.state.counter}`,            },          ],        };      },    );  }}
+
+
+export class MyMCP extends McpAgent<Env, State> {
+  server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+  initialState: State = { counter: 0 };
+
+
+  async init() {
+    this.server.tool(
+      "add",
+      "Add to the counter",
+      { amount: z.number() },
+      async ({ amount }) => {
+        this.setState({ counter: this.state.counter + amount });
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Added ${amount}, total is now ${this.state.counter}`,
+            },
+          ],
+        };
+      },
+    );
+  }
+}
 ```
 
 #### 2\. Connect your Agent to the MCP server
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
 
-* [  JavaScript ](#tab-panel-5929)
-* [  TypeScript ](#tab-panel-5930)
+* [  JavaScript ](#tab-panel-6093)
+* [  TypeScript ](#tab-panel-6094)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
-export class Chat extends AIChatAgent {  async onStart() {    // Pass the DO namespace binding directly    await this.addMcpServer("my-mcp", this.env.MyMCP);  }
-  async onChatMessage(onFinish) {    const allTools = this.mcp.getAITools();
-    const result = streamText({      model,      tools: allTools,      // ...    });
-    return createUIMessageStreamResponse({ stream: result });  }}
+
+
+export class Chat extends AIChatAgent {
+  async onStart() {
+    // Pass the DO namespace binding directly
+    await this.addMcpServer("my-mcp", this.env.MyMCP);
+  }
+
+
+  async onChatMessage(onFinish) {
+    const allTools = this.mcp.getAITools();
+
+
+    const result = streamText({
+      model,
+      tools: allTools,
+      // ...
+    });
+
+
+    return createUIMessageStreamResponse({ stream: result });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
-export class Chat extends AIChatAgent<Env> {  async onStart(): Promise<void> {    // Pass the DO namespace binding directly    await this.addMcpServer("my-mcp", this.env.MyMCP);  }
-  async onChatMessage(onFinish) {    const allTools = this.mcp.getAITools();
-    const result = streamText({      model,      tools: allTools,      // ...    });
-    return createUIMessageStreamResponse({ stream: result });  }}
+
+
+export class Chat extends AIChatAgent<Env> {
+  async onStart(): Promise<void> {
+    // Pass the DO namespace binding directly
+    await this.addMcpServer("my-mcp", this.env.MyMCP);
+  }
+
+
+  async onChatMessage(onFinish) {
+    const allTools = this.mcp.getAITools();
+
+
+    const result = streamText({
+      model,
+      tools: allTools,
+      // ...
+    });
+
+
+    return createUIMessageStreamResponse({ stream: result });
+  }
+}
 ```
 
 RPC connections are automatically restored after Durable Object hibernation, just like HTTP connections. The binding name and props are persisted to storage so the connection can be re-established without any extra code.
@@ -158,75 +334,152 @@ For RPC transport, if `addMcpServer` is called with a name that already has an a
 
 In your `wrangler.jsonc`, define bindings for both Durable Objects:
 
-JSONC
+**JSONC**
 
-```
-{  "durable_objects": {    "bindings": [      { "name": "Chat", "class_name": "Chat" },      { "name": "MyMCP", "class_name": "MyMCP" }    ]  },  "migrations": [    {      "new_sqlite_classes": ["MyMCP", "Chat"],      "tag": "v1"    }  ]}
+```jsonc
+{
+  "durable_objects": {
+    "bindings": [
+      { "name": "Chat", "class_name": "Chat" },
+      { "name": "MyMCP", "class_name": "MyMCP" }
+    ]
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": ["MyMCP", "Chat"],
+      "tag": "v1"
+    }
+  ]
+}
 ```
 
 #### 4\. Set up your Worker fetch handler
 
 Route requests to your Chat agent:
 
-* [  JavaScript ](#tab-panel-5927)
-* [  TypeScript ](#tab-panel-5928)
+* [  JavaScript ](#tab-panel-6091)
+* [  TypeScript ](#tab-panel-6092)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { routeAgentRequest } from "agents";
-export default {  async fetch(request, env, ctx) {    const url = new URL(request.url);
-    // Optionally expose the MCP server via HTTP as well    if (url.pathname.startsWith("/mcp")) {      return MyMCP.serve("/mcp").fetch(request, env, ctx);    }
-    const response = await routeAgentRequest(request, env);    if (response) return response;
-    return new Response("Not found", { status: 404 });  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+
+    // Optionally expose the MCP server via HTTP as well
+    if (url.pathname.startsWith("/mcp")) {
+      return MyMCP.serve("/mcp").fetch(request, env, ctx);
+    }
+
+
+    const response = await routeAgentRequest(request, env);
+    if (response) return response;
+
+
+    return new Response("Not found", { status: 404 });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { routeAgentRequest } from "agents";
-export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    const url = new URL(request.url);
-    // Optionally expose the MCP server via HTTP as well    if (url.pathname.startsWith("/mcp")) {      return MyMCP.serve("/mcp").fetch(request, env, ctx);    }
-    const response = await routeAgentRequest(request, env);    if (response) return response;
-    return new Response("Not found", { status: 404 });  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    const url = new URL(request.url);
+
+
+    // Optionally expose the MCP server via HTTP as well
+    if (url.pathname.startsWith("/mcp")) {
+      return MyMCP.serve("/mcp").fetch(request, env, ctx);
+    }
+
+
+    const response = await routeAgentRequest(request, env);
+    if (response) return response;
+
+
+    return new Response("Not found", { status: 404 });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Passing props to the MCP server
 
 Since RPC transport does not have an OAuth flow, you can pass user context directly as props:
 
-* [  JavaScript ](#tab-panel-5925)
-* [  TypeScript ](#tab-panel-5926)
+* [  JavaScript ](#tab-panel-6089)
+* [  TypeScript ](#tab-panel-6090)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.addMcpServer("my-mcp", this.env.MyMCP, {
+  props: { userId: "user-123", role: "admin" },
+});
 ```
-await this.addMcpServer("my-mcp", this.env.MyMCP, {  props: { userId: "user-123", role: "admin" },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.addMcpServer("my-mcp", this.env.MyMCP, {  props: { userId: "user-123", role: "admin" },});
+```ts
+await this.addMcpServer("my-mcp", this.env.MyMCP, {
+  props: { userId: "user-123", role: "admin" },
+});
 ```
 
 Your `McpAgent` can then access these props:
 
-* [  JavaScript ](#tab-panel-5931)
-* [  TypeScript ](#tab-panel-5932)
+* [  JavaScript ](#tab-panel-6095)
+* [  TypeScript ](#tab-panel-6096)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyMCP extends McpAgent {
+  async init() {
+    this.server.tool("whoami", "Get current user info", {}, async () => {
+      const userId = this.props?.userId || "anonymous";
+      const role = this.props?.role || "guest";
+
+
+      return {
+        content: [{ type: "text", text: `User ID: ${userId}, Role: ${role}` }],
+      };
+    });
+  }
+}
 ```
-export class MyMCP extends McpAgent {  async init() {    this.server.tool("whoami", "Get current user info", {}, async () => {      const userId = this.props?.userId || "anonymous";      const role = this.props?.role || "guest";
-      return {        content: [{ type: "text", text: `User ID: ${userId}, Role: ${role}` }],      };    });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyMCP extends McpAgent<  Env,  State,  { userId?: string; role?: string }> {  async init() {    this.server.tool("whoami", "Get current user info", {}, async () => {      const userId = this.props?.userId || "anonymous";      const role = this.props?.role || "guest";
-      return {        content: [          { type: "text", text: `User ID: ${userId}, Role: ${role}` },        ],      };    });  }}
+```ts
+export class MyMCP extends McpAgent<
+  Env,
+  State,
+  { userId?: string; role?: string }
+> {
+  async init() {
+    this.server.tool("whoami", "Get current user info", {}, async () => {
+      const userId = this.props?.userId || "anonymous";
+      const role = this.props?.role || "guest";
+
+
+      return {
+        content: [
+          { type: "text", text: `User ID: ${userId}, Role: ${role}` },
+        ],
+      };
+    });
+  }
+}
 ```
 
 Props are type-safe (TypeScript extracts the Props type from your `McpAgent` generic), persistent (stored in Durable Object storage), and available immediately before any tool calls are made.
@@ -235,23 +488,63 @@ Props are type-safe (TypeScript extracts the Props type from your `McpAgent` gen
 
 The RPC transport has a configurable timeout for waiting for tool responses. By default, the server waits **60 seconds** for a tool handler to respond. You can customize this by overriding `getRpcTransportOptions()` in your `McpAgent`:
 
-* [  JavaScript ](#tab-panel-5937)
-* [  TypeScript ](#tab-panel-5938)
+* [  JavaScript ](#tab-panel-6101)
+* [  TypeScript ](#tab-panel-6102)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyMCP extends McpAgent {
+  server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+
+
+  getRpcTransportOptions() {
+    return { timeout: 120000 }; // 2 minutes
+  }
+
+
+  async init() {
+    this.server.tool(
+      "long-running-task",
+      "A tool that takes a while",
+      { input: z.string() },
+      async ({ input }) => {
+        await longRunningOperation(input);
+        return {
+          content: [{ type: "text", text: "Task completed" }],
+        };
+      },
+    );
+  }
+}
 ```
-export class MyMCP extends McpAgent {  server = new McpServer({ name: "MyMCP", version: "1.0.0" });
-  getRpcTransportOptions() {    return { timeout: 120000 }; // 2 minutes  }
-  async init() {    this.server.tool(      "long-running-task",      "A tool that takes a while",      { input: z.string() },      async ({ input }) => {        await longRunningOperation(input);        return {          content: [{ type: "text", text: "Task completed" }],        };      },    );  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyMCP extends McpAgent<Env, State> {  server = new McpServer({ name: "MyMCP", version: "1.0.0" });
-  protected getRpcTransportOptions() {    return { timeout: 120000 }; // 2 minutes  }
-  async init() {    this.server.tool(      "long-running-task",      "A tool that takes a while",      { input: z.string() },      async ({ input }) => {        await longRunningOperation(input);        return {          content: [{ type: "text", text: "Task completed" }],        };      },    );  }}
+```ts
+export class MyMCP extends McpAgent<Env, State> {
+  server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+
+
+  protected getRpcTransportOptions() {
+    return { timeout: 120000 }; // 2 minutes
+  }
+
+
+  async init() {
+    this.server.tool(
+      "long-running-task",
+      "A tool that takes a while",
+      { input: z.string() },
+      async ({ input }) => {
+        await longRunningOperation(input);
+        return {
+          content: [{ type: "text", text: "Task completed" }],
+        };
+      },
+    );
+  }
+}
 ```
 
 ## Choosing a transport

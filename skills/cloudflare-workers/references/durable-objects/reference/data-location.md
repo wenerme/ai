@@ -24,23 +24,30 @@ A [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) wi
 
 Durable Objects can be restricted to a specific jurisdiction by creating a [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace/) restricted to a jurisdiction. All [Durable Object ID methods](https://developers.cloudflare.com/durable-objects/api/id/) are valid on IDs within a namespace restricted to a jurisdiction.
 
-JavaScript
+**JavaScript**
 
-```
-const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");const euId = euSubnamespace.newUniqueId();
+```js
+const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
+const euId = euSubnamespace.newUniqueId();
 ```
 
 * It is possible to have the same name represent different IDs in different jurisdictions.
-JavaScript
-```
-const euId1 = env.MY_DURABLE_OBJECT.idFromName("my-name");const euId2 = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("my-name");console.assert(!euId1.equal(euId2), "This should always be true");
+
+**JavaScript**
+```js
+const euId1 = env.MY_DURABLE_OBJECT.idFromName("my-name");
+const euId2 = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("my-name");
+console.assert(!euId1.equal(euId2), "This should always be true");
 ```
 * You will run into an error if the jurisdiction on your [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace/) and the jurisdiction on [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) are different.
 * You will not run into an error if the [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace/) is not associated with a jurisdiction.
 * All [Durable Object ID methods](https://developers.cloudflare.com/durable-objects/api/id/) are valid on IDs within a namespace restricted to a jurisdiction.
-JavaScript
-```
-const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");const euId = euSubnamespace.idFromName(name);const stub = env.MY_DURABLE_OBJECT.get(euId);
+
+**JavaScript**
+```js
+const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
+const euId = euSubnamespace.idFromName(name);
+const stub = env.MY_DURABLE_OBJECT.get(euId);
 ```
 
 Use `DurableObjectNamespace.jurisdiction`
@@ -77,9 +84,9 @@ Location hints are the mechanism provided to specify the location that a Durable
 
 To manually create Durable Objects in another location, provide an optional `locationHint` parameter to `get()`. Only the first call to `get()` for a particular Object will respect the hint.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let durableObjectStub = OBJECT_NAMESPACE.get(id, { locationHint: "enam" });
 ```
 

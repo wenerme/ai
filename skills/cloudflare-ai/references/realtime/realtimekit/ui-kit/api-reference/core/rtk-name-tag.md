@@ -30,19 +30,26 @@ A component which shows a participant's name.
 
 ### Basic Usage
 
-```
+```html
 <rtk-name-tag></rtk-name-tag>
 ```
 
 ### With Properties
 
-```
-<rtk-name-tag></rtk-name-tag>
+```html
+<rtk-name-tag>
+</rtk-name-tag>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-name-tag");
-  el.isScreenShare= true;  el.meeting= meeting  el.participant= participant</script>
+```html
+<script>
+  const el = document.querySelector("rtk-name-tag");
+
+
+  el.isScreenShare= true;
+  el.meeting= meeting
+  el.participant= participant
+</script>
 ```
 
 ```json

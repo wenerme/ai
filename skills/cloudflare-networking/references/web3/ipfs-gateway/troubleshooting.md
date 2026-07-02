@@ -44,13 +44,13 @@ It's common for people who run an IPFS node on their home Wi-Fi to have very lon
 
 If several minutes have passed since files were uploaded to an IPFS node and they're still not discoverable by other gateways, it's possible the node is having trouble announcing the files to the rest of the network. You can make sure the node with the content has pinned it by running:
 
-```
+```txt
 ipfs pin -r <content id>
 ```
 
 And you can force the actual announcement by running:
 
-```
+```txt
 ipfs dht provide -rv <content id>
 ```
 

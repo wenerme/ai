@@ -28,46 +28,38 @@ OpenSSL example
 
 1. Run the following command to generate a 4096-bit RSA private key, using AES-256 encryption. Enter a passphrase when prompted.
 
-Terminal window
-
-```
+```bash
 openssl genrsa -aes256 -out rootca.key 4096
 ```
 
 1. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the `Common Name` field, use the domain name as value, not the hostname.
 
-Terminal window
-
-```
+```bash
 openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
 ```
 
 1. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the `Common Name` field, use the hostname as value.
 
-Terminal window
-
-```
+```bash
 openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
 ```
 
 1. Sign the certificate using the `rootca.key` and `rootca.crt` created in previous steps.
 
-Terminal window
-
-```
+```bash
 openssl x509 -req -in cert.csr -CA rootca.crt -CAkey rootca.key -CAcreateserial -out cert.crt -days 730 -sha256 -extfile ./cert.v3.ext
 ```
 
 1. Make sure the certificate extensions file `cert.v3.ext` specifies the following:
 
-```
+```plaintext
 basicConstraints=CA:FALSE
 ```
 
 ## 1\. Upload custom certificate
 
-* [ Dashboard ](#tab-panel-10772)
-* [ API ](#tab-panel-10773)
+* [ Dashboard ](#tab-panel-11067)
+* [ API ](#tab-panel-11068)
 
 1. Go to the **Origin Server** page.
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -86,13 +78,30 @@ Note
 
 You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the API will return a `missing leaf certificate` error.
 
-Terminal window
+```bash
+MYCERT="$(cat cert.crt|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"
+MYKEY="$(cat cert.key|perl -pe 's/\r?\n/\\n/'|sed -e's/..$//')"
 
-```
-MYCERT="$(cat cert.crt|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"MYKEY="$(cat cert.key|perl -pe 's/\r?\n/\\n/'|sed -e's/..$//')"
-request_body=$(< <(cat <<EOF{"certificate": "$MYCERT","private_key": "$MYKEY","bundle_method":"ubiquitous"}EOF))
+
+request_body=$(< <(cat <<EOF
+{
+"certificate": "$MYCERT",
+"private_key": "$MYKEY",
+"bundle_method":"ubiquitous"
+}
+EOF
+))
+
+
 # Push the certificate
-curl --silent \"https://api.cloudflare.com/client/v4/zones/$ZONEID/origin_tls_client_auth/hostnames/certificates" \--header "Content-Type: application/json" \--header "X-Auth-Email: $MYAUTHEMAIL" \--header "X-Auth-Key: $MYAUTHKEY" \--data "$request_body"
+
+
+curl --silent \
+"https://api.cloudflare.com/client/v4/zones/$ZONEID/origin_tls_client_auth/hostnames/certificates" \
+--header "Content-Type: application/json" \
+--header "X-Auth-Email: $MYAUTHEMAIL" \
+--header "X-Auth-Key: $MYAUTHKEY" \
+--data "$request_body"
 ```
 
 In the API response, save the certificate `id` since it will be required in step 3.
@@ -105,7 +114,7 @@ Check the examples below for Apache and NGINX or refer to your origin web server
 
 Apache example
 
-```
+```txt
 SSLCACertificateFile /path/to/origin-pull-ca.pem
 ```
 
@@ -113,8 +122,9 @@ For this example, you would have saved your certificate to `/path/to/origin-pull
 
 NGINX example
 
-```
-ssl_verify_client optional;ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
+```txt
+ssl_verify_client optional;
+ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
 ```
 
 For this example, you would have saved your certificate to `/etc/nginx/certs/cloudflare.crt`.
@@ -123,8 +133,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-* [ Dashboard ](#tab-panel-10770)
-* [ API ](#tab-panel-10771)
+* [ Dashboard ](#tab-panel-11065)
+* [ API ](#tab-panel-11066)
 
 Note
 
@@ -147,13 +157,13 @@ Once you can confirm everything is working as expected for your specific origin 
 
 Apache example
 
-```
+```txt
 SSLVerifyClient require
 ```
 
 NGINX example
 
-```
+```txt
 ssl_verify_client on;
 ```
 

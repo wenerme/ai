@@ -27,16 +27,29 @@ A component which loads the logo from your config, or via the `logo-url` attribu
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLogo } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkLogo />;}
+
+
+function MyComponent() {
+  return <RtkLogo />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLogo } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkLogo      logoUrl="example"      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLogo
+      logoUrl="example"
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

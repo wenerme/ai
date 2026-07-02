@@ -33,27 +33,82 @@ Anthropic models expose web search through their native [web\_search\_20250305 t
 
 Supported models — `anthropic/claude-haiku-4.5`, `anthropic/claude-opus-4.5`, `anthropic/claude-opus-4.6`, `anthropic/claude-opus-4.7`, `anthropic/claude-opus-4.8`, `anthropic/claude-sonnet-4.5`, `anthropic/claude-sonnet-4.6`.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "anthropic/claude-haiku-4.5",    "max_tokens": 4096,    "messages": [      {        "role": "user",        "content": "What were the top news stories about Cloudflare this week? Summarize in three bullets."      }    ],    "tools": [      {        "type": "web_search_20250305",        "name": "web_search",        "max_uses": 3      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "anthropic/claude-haiku-4.5",
+    "max_tokens": 4096,
+    "messages": [
+      {
+        "role": "user",
+        "content": "What were the top news stories about Cloudflare this week? Summarize in three bullets."
+      }
+    ],
+    "tools": [
+      {
+        "type": "web_search_20250305",
+        "name": "web_search",
+        "max_uses": 3
+      }
+    ]
+  }'
 ```
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6874)
-* [  TypeScript ](#tab-panel-6875)
+* [  JavaScript ](#tab-panel-6910)
+* [  TypeScript ](#tab-panel-6911)
 
-JavaScript
+**JavaScript**
 
+```js
+const resp = await env.AI.run(
+  "anthropic/claude-haiku-4.5",
+  {
+    max_tokens: 4096,
+    messages: [
+      {
+        role: "user",
+        content:
+          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+      },
+    ],
+    tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
-const resp = await env.AI.run(  "anthropic/claude-haiku-4.5",  {    max_tokens: 4096,    messages: [      {        role: "user",        content:          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",      },    ],    tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const resp = await env.AI.run(  "anthropic/claude-haiku-4.5",  {    max_tokens: 4096,    messages: [      {        role: "user",        content:          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",      },    ],    tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
+```ts
+const resp = await env.AI.run(
+  "anthropic/claude-haiku-4.5",
+  {
+    max_tokens: 4096,
+    messages: [
+      {
+        role: "user",
+        content:
+          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+      },
+    ],
+    tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
 
 Search invocations and results appear in the response as `server_tool_use` and `web_search_tool_result` content blocks. Configurable parameters include `max_uses`, `allowed_domains`, `blocked_domains`, and `user_location` — refer to Anthropic's [web search tool documentation ↗](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool) for the full list.
@@ -64,27 +119,63 @@ OpenAI models expose web search through the [web\_search\_preview tool ↗](http
 
 Supported models — `openai/gpt-4.1`, `openai/gpt-4.1-mini`, `openai/gpt-4o`, `openai/gpt-4o-mini`, `openai/gpt-5`, `openai/gpt-5-mini`, `openai/gpt-5-nano`, `openai/gpt-5.1`, `openai/gpt-5.4`, `openai/gpt-5.4-mini`, `openai/gpt-5.4-nano`, `openai/gpt-5.4-pro`, `openai/gpt-5.5`, `openai/gpt-5.5-pro`, `openai/o3`, `openai/o4-mini`.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-4o-mini",    "input": "What were the top news stories about Cloudflare this week? Summarize in three bullets.",    "max_output_tokens": 4096,    "tools": [      { "type": "web_search_preview" }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "openai/gpt-4o-mini",
+    "input": "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+    "max_output_tokens": 4096,
+    "tools": [
+      { "type": "web_search_preview" }
+    ]
+  }'
 ```
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6870)
-* [  TypeScript ](#tab-panel-6871)
+* [  JavaScript ](#tab-panel-6906)
+* [  TypeScript ](#tab-panel-6907)
 
-JavaScript
+**JavaScript**
 
+```js
+const resp = await env.AI.run(
+  "openai/gpt-4o-mini",
+  {
+    input:
+      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+    max_output_tokens: 4096,
+    tools: [{ type: "web_search_preview" }],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
-const resp = await env.AI.run(  "openai/gpt-4o-mini",  {    input:      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",    max_output_tokens: 4096,    tools: [{ type: "web_search_preview" }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const resp = await env.AI.run(  "openai/gpt-4o-mini",  {    input:      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",    max_output_tokens: 4096,    tools: [{ type: "web_search_preview" }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
+```ts
+const resp = await env.AI.run(
+  "openai/gpt-4o-mini",
+  {
+    input:
+      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+    max_output_tokens: 4096,
+    tools: [{ type: "web_search_preview" }],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
 
 OpenAI web search is available only on the Responses API endpoint (`POST /ai/v1/responses`). The `/ai/v1/chat/completions` endpoint does not accept the `web_search_preview` tool.
@@ -97,27 +188,63 @@ xAI's multi-agent Grok model exposes web search through the [web\_search tool �
 
 Supported models — `xai/grok-4.20-multi-agent-0309`.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "xai/grok-4.20-multi-agent-0309",    "input": "What were the top news stories about Cloudflare this week? Summarize in three bullets.",    "max_turns": 4,    "tools": [      { "type": "web_search" }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "xai/grok-4.20-multi-agent-0309",
+    "input": "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+    "max_turns": 4,
+    "tools": [
+      { "type": "web_search" }
+    ]
+  }'
 ```
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6872)
-* [  TypeScript ](#tab-panel-6873)
+* [  JavaScript ](#tab-panel-6908)
+* [  TypeScript ](#tab-panel-6909)
 
-JavaScript
+**JavaScript**
 
+```js
+const resp = await env.AI.run(
+  "xai/grok-4.20-multi-agent-0309",
+  {
+    input:
+      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+    max_turns: 4,
+    tools: [{ type: "web_search" }],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
-const resp = await env.AI.run(  "xai/grok-4.20-multi-agent-0309",  {    input:      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",    max_turns: 4,    tools: [{ type: "web_search" }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const resp = await env.AI.run(  "xai/grok-4.20-multi-agent-0309",  {    input:      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",    max_turns: 4,    tools: [{ type: "web_search" }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
+```ts
+const resp = await env.AI.run(
+  "xai/grok-4.20-multi-agent-0309",
+  {
+    input:
+      "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+    max_turns: 4,
+    tools: [{ type: "web_search" }],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
 
 `xai/grok-4.20-multi-agent-0309` is the only xAI model that accepts web search through AI Gateway. For other Grok models, refer to [Models without web search support](#models-without-web-search-support).
@@ -128,27 +255,76 @@ Alibaba DashScope Qwen models enable web search through a top-level [enable\_sea
 
 Supported models — `alibaba/qwen3-max`, `alibaba/qwen3.5-397b-a17b`.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "alibaba/qwen3-max",    "enable_search": true,    "max_tokens": 4096,    "messages": [      {        "role": "user",        "content": "What were the top news stories about Cloudflare this week? Summarize in three bullets."      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "alibaba/qwen3-max",
+    "enable_search": true,
+    "max_tokens": 4096,
+    "messages": [
+      {
+        "role": "user",
+        "content": "What were the top news stories about Cloudflare this week? Summarize in three bullets."
+      }
+    ]
+  }'
 ```
 
 Equivalent call from a Worker using the AI binding:
 
-* [  JavaScript ](#tab-panel-6876)
-* [  TypeScript ](#tab-panel-6877)
+* [  JavaScript ](#tab-panel-6912)
+* [  TypeScript ](#tab-panel-6913)
 
-JavaScript
+**JavaScript**
 
+```js
+const resp = await env.AI.run(
+  "alibaba/qwen3-max",
+  {
+    enable_search: true,
+    max_tokens: 4096,
+    messages: [
+      {
+        role: "user",
+        content:
+          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+      },
+    ],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
-const resp = await env.AI.run(  "alibaba/qwen3-max",  {    enable_search: true,    max_tokens: 4096,    messages: [      {        role: "user",        content:          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",      },    ],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const resp = await env.AI.run(  "alibaba/qwen3-max",  {    enable_search: true,    max_tokens: 4096,    messages: [      {        role: "user",        content:          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",      },    ],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
+```ts
+const resp = await env.AI.run(
+  "alibaba/qwen3-max",
+  {
+    enable_search: true,
+    max_tokens: 4096,
+    messages: [
+      {
+        role: "user",
+        content:
+          "What were the top news stories about Cloudflare this week? Summarize in three bullets.",
+      },
+    ],
+  },
+  {
+    gateway: {
+      id: "default", // or use a specific gateway name
+    },
+  },
+);
 ```
 
 DashScope does not return search-grounded context as separate tool-call response blocks. It folds the fetched context into the prompt as additional input tokens — expect `prompt_tokens` to increase substantially on a successful search-grounded response.
@@ -163,20 +339,31 @@ AI Gateway does not provide a provider-agnostic web search abstraction. Call the
 
 Call any [Perplexity Sonar model ↗](https://docs.perplexity.ai/docs/sonar/models) through the [Perplexity provider proxy](https://developers.cloudflare.com/ai-gateway/usage/providers/perplexity/).
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-ai/chat/completions \  --header "Authorization: Bearer $PERPLEXITY_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "sonar",    "messages": [      { "role": "user", "content": "What were the top news stories about Cloudflare this week?" }    ]  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-ai/chat/completions \
+  --header "Authorization: Bearer $PERPLEXITY_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "sonar",
+    "messages": [
+      { "role": "user", "content": "What were the top news stories about Cloudflare this week?" }
+    ]
+  }'
 ```
 
 ### Parallel
 
 Call Parallel's Search API through the [Parallel provider proxy](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/). Refer to Parallel's [Search API documentation ↗](https://docs.parallel.ai/search/search-quickstart) for the full request schema.
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/search \  --header "x-api-key: $PARALLEL_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "objective": "Top news stories about Cloudflare this week.",    "processor": "base",    "max_results": 10  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/search \
+  --header "x-api-key: $PARALLEL_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "objective": "Top news stories about Cloudflare this week.",
+    "processor": "base",
+    "max_results": 10
+  }'
 ```
 
 ## Models without web search support

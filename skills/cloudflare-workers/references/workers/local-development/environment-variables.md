@@ -26,10 +26,11 @@ Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.v
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
-.dev.vars / .env
+**.dev.vars / .env**
 
-```
-SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+```bash
+SECRET_KEY="value"
+API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git
@@ -60,9 +61,12 @@ Here are steps to set up environment variables for local development using eithe
 
 1. Create a `.dev.vars` / `.env` file in your project root.
 2. Add key-value pairs:
-.dev.vars/.env
-```
-API_HOST="localhost:3000"DEBUG="true"SECRET_TOKEN="my-local-secret-token"
+
+**.dev.vars/.env**
+```ini
+API_HOST="localhost:3000"
+DEBUG="true"
+SECRET_TOKEN="my-local-secret-token"
 ```
 3. Run your `dev` command
 
@@ -96,9 +100,12 @@ To simulate different local environments, you can provide environment-specific f
 
 1. Create a file named `.dev.vars.<environment-name>`/`.env.<environment-name>`. For example, we can use `.dev.vars.staging`/`.env.staging`.
 2. Add key-value pairs:
-.dev.vars.staging/.env.staging
-```
-API_HOST="staging.localhost:3000"DEBUG="false"SECRET_TOKEN="staging-token"
+
+**.dev.vars.staging/.env.staging**
+```ini
+API_HOST="staging.localhost:3000"
+DEBUG="false"
+SECRET_TOKEN="staging-token"
 ```
 3. Specify the environment when running the `dev` command:
 

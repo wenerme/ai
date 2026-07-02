@@ -25,19 +25,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-livestream-player></rtk-livestream-player>
 ```
 
 ### With Properties
 
-```
-<rtk-livestream-player size="md"></rtk-livestream-player>
+```html
+<rtk-livestream-player
+ size="md">
+</rtk-livestream-player>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-livestream-player");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-livestream-player");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

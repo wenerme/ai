@@ -28,19 +28,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-caption-toggle></rtk-caption-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-caption-toggle size="md" variant"button"></rtk-caption-toggle>
+```html
+<rtk-caption-toggle
+ size="md"
+ variant"button">
+</rtk-caption-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-caption-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-caption-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

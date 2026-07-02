@@ -28,16 +28,24 @@ Video settings panel with camera selection dropdown and live video preview.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettingsVideo } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettingsVideo meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkSettingsVideo meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettingsVideo } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSettingsVideo meeting={meeting} size="md" states={states} />;}
+
+
+function MyComponent() {
+  return <RtkSettingsVideo meeting={meeting} size="md" states={states} />;
+}
 ```
 
 ```json

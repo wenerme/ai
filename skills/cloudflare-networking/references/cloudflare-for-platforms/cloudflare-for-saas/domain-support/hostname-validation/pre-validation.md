@@ -41,8 +41,24 @@ If your customer cannot update their authoritative DNS, you could also use [HTTP
 To set up `TXT` validation:
 
 1. When you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/), save the `ownership_verification` information.
-```
-{"result": [    {    "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",    "hostname": "app.example.com",    // ...    "status": "pending",    "verification_errors": ["custom hostname does not CNAME to this zone."],    "ownership_verification": {        "type": "txt",        "name": "_cf-custom-hostname.app.example.com",        "value": "0e2d5a7f-1548-4f27-8c05-b577cb14f4ec"    },    "created_at": "2020-03-04T19:04:02.705068Z"    }]}
+```json
+{
+"result": [
+    {
+    "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
+    "hostname": "app.example.com",
+    // ...
+    "status": "pending",
+    "verification_errors": ["custom hostname does not CNAME to this zone."],
+    "ownership_verification": {
+        "type": "txt",
+        "name": "_cf-custom-hostname.app.example.com",
+        "value": "0e2d5a7f-1548-4f27-8c05-b577cb14f4ec"
+    },
+    "created_at": "2020-03-04T19:04:02.705068Z"
+    }
+]
+}
 ```
 2. Have your customer add a `TXT` record with that `name` and `value` at their authoritative DNS provider.
 3. After a few minutes, you will see the hostname status become **Active** in the UI.
@@ -60,14 +76,31 @@ To get and use the `ownership_verification` record:
 
 1. Make an API call to [create a Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/).
 2. In the response, copy the `http_url` and `http_body` from the `ownership_verification_http` object:
-Example response (truncated)
-```
-{  "result": [    {      "id": "24c8c68e-bec2-49b6-868e-f06373780630",      "hostname": "app.example.com",      // ...      "ownership_verification_http": {          "http_url": "http://app.example.com/.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630",          "http_body": "48b409f6-c886-406b-8cbc-0fbf59983555"      },      "created_at": "2020-03-04T20:06:04.117122Z"    }  ]}
+
+**Example response (truncated)**
+```json
+{
+  "result": [
+    {
+      "id": "24c8c68e-bec2-49b6-868e-f06373780630",
+      "hostname": "app.example.com",
+      // ...
+      "ownership_verification_http": {
+          "http_url": "http://app.example.com/.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630",
+          "http_body": "48b409f6-c886-406b-8cbc-0fbf59983555"
+      },
+      "created_at": "2020-03-04T20:06:04.117122Z"
+    }
+  ]
+}
 ```
 3. Have your customer place the `http_url` and `http_body` on their origin web server.
-Example response (truncated)
-```
-location "/.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630" {    return 200 "48b409f6-c886-406b-8cbc-0fbf59983555\n";}
+
+**Example response (truncated)**
+```txt
+location "/.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630" {
+    return 200 "48b409f6-c886-406b-8cbc-0fbf59983555\n";
+}
 ```
 Cloudflare will access this token by sending `GET` requests to the `http_url` using `User-Agent: Cloudflare Custom Hostname Verification`.
 Note

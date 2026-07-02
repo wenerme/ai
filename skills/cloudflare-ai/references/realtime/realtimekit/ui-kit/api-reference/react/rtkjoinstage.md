@@ -28,16 +28,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkJoinStage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkJoinStage />;}
+
+
+function MyComponent() {
+  return <RtkJoinStage />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkJoinStage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkJoinStage      dataConfig={modaldataconfig}      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkJoinStage
+      dataConfig={modaldataconfig}
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

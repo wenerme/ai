@@ -22,9 +22,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-9506)
-* [ v2 ](#tab-panel-9507)
-* [ v1 ](#tab-panel-9508)
+* [ v3 ](#tab-panel-9797)
+* [ v2 ](#tab-panel-9798)
+* [ v1 ](#tab-panel-9799)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -62,9 +62,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-9509)
-* [ v2 ](#tab-panel-9510)
-* [ v1 ](#tab-panel-9511)
+* [ v3 ](#tab-panel-9800)
+* [ v2 ](#tab-panel-9801)
+* [ v1 ](#tab-panel-9802)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -124,8 +124,10 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 To use a specific version of a framework, specify it in the project's package manager configuration file. For example, if you use Gatsby, your `package.json` should include the following:
 
-```
-"dependencies": {  "gatsby": "^5.13.7",}
+```plaintext
+"dependencies": {
+  "gatsby": "^5.13.7",
+}
 ```
 
 When your build starts, if not already [cached](https://developers.cloudflare.com/pages/configuration/build-caching/), version 5.13.7 of Gatsby will be installed using `npm install`.
@@ -185,9 +187,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-9512)
-* [ v2 ](#tab-panel-9513)
-* [ v1 ](#tab-panel-9514)
+* [ v3 ](#tab-panel-9803)
+* [ v2 ](#tab-panel-9804)
+* [ v1 ](#tab-panel-9805)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

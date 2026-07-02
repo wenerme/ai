@@ -16,49 +16,95 @@ This guide shows you how to clone repositories, manage branches, and automate Gi
 
 ## Clone repositories
 
-* [  JavaScript ](#tab-panel-10533)
-* [  TypeScript ](#tab-panel-10534)
+* [  JavaScript ](#tab-panel-10828)
+* [  TypeScript ](#tab-panel-10829)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Basic cloneawait sandbox.gitCheckout("https://github.com/user/repo");
-// Clone specific branchawait sandbox.gitCheckout("https://github.com/user/repo", {  branch: "develop",});
-// Shallow clone (faster for large repos)await sandbox.gitCheckout("https://github.com/user/large-repo", {  depth: 1,});
-// Clone to specific directoryawait sandbox.gitCheckout("https://github.com/user/my-app", {  targetDir: "/workspace/project",});
+
+
+// Basic clone
+await sandbox.gitCheckout("https://github.com/user/repo");
+
+
+// Clone specific branch
+await sandbox.gitCheckout("https://github.com/user/repo", {
+  branch: "develop",
+});
+
+
+// Shallow clone (faster for large repos)
+await sandbox.gitCheckout("https://github.com/user/large-repo", {
+  depth: 1,
+});
+
+
+// Clone to specific directory
+await sandbox.gitCheckout("https://github.com/user/my-app", {
+  targetDir: "/workspace/project",
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-// Basic cloneawait sandbox.gitCheckout('https://github.com/user/repo');
-// Clone specific branchawait sandbox.gitCheckout('https://github.com/user/repo', {  branch: 'develop'});
-// Shallow clone (faster for large repos)await sandbox.gitCheckout('https://github.com/user/large-repo', {  depth: 1});
-// Clone to specific directoryawait sandbox.gitCheckout('https://github.com/user/my-app', {  targetDir: '/workspace/project'});
+
+
+// Basic clone
+await sandbox.gitCheckout('https://github.com/user/repo');
+
+
+// Clone specific branch
+await sandbox.gitCheckout('https://github.com/user/repo', {
+  branch: 'develop'
+});
+
+
+// Shallow clone (faster for large repos)
+await sandbox.gitCheckout('https://github.com/user/large-repo', {
+  depth: 1
+});
+
+
+// Clone to specific directory
+await sandbox.gitCheckout('https://github.com/user/my-app', {
+  targetDir: '/workspace/project'
+});
 ```
 
 ## Clone private repositories
 
 Use a personal access token in the URL:
 
-* [  JavaScript ](#tab-panel-10523)
-* [  TypeScript ](#tab-panel-10524)
+* [  JavaScript ](#tab-panel-10818)
+* [  TypeScript ](#tab-panel-10819)
 
-JavaScript
+**JavaScript**
 
-```
-const token = env.GITHUB_TOKEN;const repoUrl = `https://${token}@github.com/user/private-repo.git`;
+```js
+const token = env.GITHUB_TOKEN;
+const repoUrl = `https://${token}@github.com/user/private-repo.git`;
+
+
 await sandbox.gitCheckout(repoUrl);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const token = env.GITHUB_TOKEN;const repoUrl = `https://${token}@github.com/user/private-repo.git`;
+```ts
+const token = env.GITHUB_TOKEN;
+const repoUrl = `https://${token}@github.com/user/private-repo.git`;
+
+
 await sandbox.gitCheckout(repoUrl);
 ```
 
@@ -70,67 +116,118 @@ Embedding a token in the URL passes the credential directly into the sandbox. Fo
 
 Clone a repository and run build steps:
 
-* [  JavaScript ](#tab-panel-10525)
-* [  TypeScript ](#tab-panel-10526)
+* [  JavaScript ](#tab-panel-10820)
+* [  TypeScript ](#tab-panel-10821)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.gitCheckout("https://github.com/user/my-app");
+
+
 const repoName = "my-app";
-// Install and buildawait sandbox.exec(`cd ${repoName} && npm install`);await sandbox.exec(`cd ${repoName} && npm run build`);
+
+
+// Install and build
+await sandbox.exec(`cd ${repoName} && npm install`);
+await sandbox.exec(`cd ${repoName} && npm run build`);
+
+
 console.log("Build complete");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.gitCheckout('https://github.com/user/my-app');
+
+
 const repoName = 'my-app';
-// Install and buildawait sandbox.exec(`cd ${repoName} && npm install`);await sandbox.exec(`cd ${repoName} && npm run build`);
+
+
+// Install and build
+await sandbox.exec(`cd ${repoName} && npm install`);
+await sandbox.exec(`cd ${repoName} && npm run build`);
+
+
 console.log('Build complete');
 ```
 
 ## Work with branches
 
-* [  JavaScript ](#tab-panel-10527)
-* [  TypeScript ](#tab-panel-10528)
+* [  JavaScript ](#tab-panel-10822)
+* [  TypeScript ](#tab-panel-10823)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.gitCheckout("https://github.com/user/repo");
-// Switch branchesawait sandbox.exec("cd repo && git checkout feature-branch");
-// Create new branchawait sandbox.exec("cd repo && git checkout -b new-feature");
+
+
+// Switch branches
+await sandbox.exec("cd repo && git checkout feature-branch");
+
+
+// Create new branch
+await sandbox.exec("cd repo && git checkout -b new-feature");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.gitCheckout('https://github.com/user/repo');
-// Switch branchesawait sandbox.exec('cd repo && git checkout feature-branch');
-// Create new branchawait sandbox.exec('cd repo && git checkout -b new-feature');
+
+
+// Switch branches
+await sandbox.exec('cd repo && git checkout feature-branch');
+
+
+// Create new branch
+await sandbox.exec('cd repo && git checkout -b new-feature');
 ```
 
 ## Make changes and commit
 
-* [  JavaScript ](#tab-panel-10535)
-* [  TypeScript ](#tab-panel-10536)
+* [  JavaScript ](#tab-panel-10830)
+* [  TypeScript ](#tab-panel-10831)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.gitCheckout("https://github.com/user/repo");
-// Modify a fileconst readme = await sandbox.readFile("/workspace/repo/README.md");await sandbox.writeFile(  "/workspace/repo/README.md",  readme.content + "\n\n## New Section",);
-// Commit changesawait sandbox.exec('cd repo && git config user.name "Sandbox Bot"');await sandbox.exec('cd repo && git config user.email "bot@example.com"');await sandbox.exec("cd repo && git add README.md");await sandbox.exec('cd repo && git commit -m "Update README"');
+
+
+// Modify a file
+const readme = await sandbox.readFile("/workspace/repo/README.md");
+await sandbox.writeFile(
+  "/workspace/repo/README.md",
+  readme.content + "\n\n## New Section",
+);
+
+
+// Commit changes
+await sandbox.exec('cd repo && git config user.name "Sandbox Bot"');
+await sandbox.exec('cd repo && git config user.email "bot@example.com"');
+await sandbox.exec("cd repo && git add README.md");
+await sandbox.exec('cd repo && git commit -m "Update README"');
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.gitCheckout('https://github.com/user/repo');
-// Modify a fileconst readme = await sandbox.readFile('/workspace/repo/README.md');await sandbox.writeFile('/workspace/repo/README.md', readme.content + '\n\n## New Section');
-// Commit changesawait sandbox.exec('cd repo && git config user.name "Sandbox Bot"');await sandbox.exec('cd repo && git config user.email "bot@example.com"');await sandbox.exec('cd repo && git add README.md');await sandbox.exec('cd repo && git commit -m "Update README"');
+
+
+// Modify a file
+const readme = await sandbox.readFile('/workspace/repo/README.md');
+await sandbox.writeFile('/workspace/repo/README.md', readme.content + '\n\n## New Section');
+
+
+// Commit changes
+await sandbox.exec('cd repo && git config user.name "Sandbox Bot"');
+await sandbox.exec('cd repo && git config user.email "bot@example.com"');
+await sandbox.exec('cd repo && git add README.md');
+await sandbox.exec('cd repo && git commit -m "Update README"');
 ```
 
 ## Best practices
@@ -145,40 +242,54 @@ await sandbox.gitCheckout('https://github.com/user/repo');
 
 Verify your token is set:
 
-* [  JavaScript ](#tab-panel-10531)
-* [  TypeScript ](#tab-panel-10532)
+* [  JavaScript ](#tab-panel-10826)
+* [  TypeScript ](#tab-panel-10827)
 
-JavaScript
+**JavaScript**
 
+```js
+if (!env.GITHUB_TOKEN) {
+  throw new Error("GITHUB_TOKEN not configured");
+}
+
+
+const repoUrl = `https://${env.GITHUB_TOKEN}@github.com/user/private-repo.git`;
+await sandbox.gitCheckout(repoUrl);
 ```
-if (!env.GITHUB_TOKEN) {  throw new Error("GITHUB_TOKEN not configured");}
-const repoUrl = `https://${env.GITHUB_TOKEN}@github.com/user/private-repo.git`;await sandbox.gitCheckout(repoUrl);
-```
 
-TypeScript
+**TypeScript**
 
-```
-if (!env.GITHUB_TOKEN) {  throw new Error('GITHUB_TOKEN not configured');}
-const repoUrl = `https://${env.GITHUB_TOKEN}@github.com/user/private-repo.git`;await sandbox.gitCheckout(repoUrl);
+```ts
+if (!env.GITHUB_TOKEN) {
+  throw new Error('GITHUB_TOKEN not configured');
+}
+
+
+const repoUrl = `https://${env.GITHUB_TOKEN}@github.com/user/private-repo.git`;
+await sandbox.gitCheckout(repoUrl);
 ```
 
 ### Large repository timeout
 
 Use shallow clone:
 
-* [  JavaScript ](#tab-panel-10529)
-* [  TypeScript ](#tab-panel-10530)
+* [  JavaScript ](#tab-panel-10824)
+* [  TypeScript ](#tab-panel-10825)
 
-JavaScript
+**JavaScript**
 
+```js
+await sandbox.gitCheckout("https://github.com/user/large-repo", {
+  depth: 1,
+});
 ```
-await sandbox.gitCheckout("https://github.com/user/large-repo", {  depth: 1,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await sandbox.gitCheckout('https://github.com/user/large-repo', {  depth: 1});
+```ts
+await sandbox.gitCheckout('https://github.com/user/large-repo', {
+  depth: 1
+});
 ```
 
 ## Related resources

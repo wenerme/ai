@@ -36,16 +36,43 @@ A grid layout that handles mixed content: participants, screenshares, plugins, a
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMixedGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMixedGrid      meeting={meeting}      participants={participants}      pinnedParticipants={[]}      screenShareParticipants={[]}      plugins={[]}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMixedGrid
+      meeting={meeting}
+      participants={participants}
+      pinnedParticipants={[]}
+      screenShareParticipants={[]}
+      plugins={[]}
+    />
+  );
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMixedGrid } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMixedGrid      meeting={meeting}      participants={participants}      pinnedParticipants={pinned}      screenShareParticipants={screenshares}      plugins={activePlugins}      aspectRatio="16:9"      gap={12}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMixedGrid
+      meeting={meeting}
+      participants={participants}
+      pinnedParticipants={pinned}
+      screenShareParticipants={screenshares}
+      plugins={activePlugins}
+      aspectRatio="16:9"
+      gap={12}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

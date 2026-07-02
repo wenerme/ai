@@ -34,7 +34,7 @@ The Expression Builder allows you to visually create rule expressions by using d
 
 The **Expression Preview** displays the expression in text:
 
-```
+```sql
 (ip.src.country ne "GB")
 ```
 
@@ -56,14 +56,16 @@ To switch back from the Expression Editor to the Expression Builder, select **Us
 
 In expressions using the [quoted string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#quoted-string-syntax), all backslash (`\`) and double quote (`"`) characters in string literals must be escaped. The visual Expression Builder will automatically escape these special characters by prepending a backslash such that `\` and `"` become `\\` and `\"`, respectively.
 
-```
-# Example of an expression with a " character written using quoted string syntaxhttp.request.uri.path eq "/foo\"bar"
+```txt
+# Example of an expression with a " character written using quoted string syntax
+http.request.uri.path eq "/foo\"bar"
 ```
 
 The Expression Builder supports both the [quoted string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#quoted-string-syntax) and the [raw string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#raw-string-syntax). In the raw string syntax, there are no special characters or escape sequences, so all characters up to the ending delimiter are interpreted as is.
 
-```
-# Example of an expression with a " character written using the raw string syntaxhttp.request.uri.path eq r#"/foo"bar"#
+```txt
+# Example of an expression with a " character written using the raw string syntax
+http.request.uri.path eq r#"/foo"bar"#
 ```
 
 When you select _Matches regex_ in the **Operator** dropdown in the dashboard, the expression preview will automatically use the raw string syntax. In other situations, you may need to switch to the Expression Editor to manually enter a string using the raw string syntax. In this case, switching back to the Expression Builder will keep the syntax you used in the editor.
@@ -78,8 +80,12 @@ The Expression Editor supports parentheses as [grouping symbols](https://develop
 
 The following rule expression will match requests from any visitor who is not from Malaysia and tries to access WordPress URI paths.
 
-```
-((http.request.uri.path contains "/xmlrpc.php") or (http.request.uri.pathcontains "/wp-login.php") or (http.request.uri.path contains "/wp-admin/"and not http.request.uri.path contains "/wp-admin/admin-ajax.php" and nothttp.request.uri.path contains "/wp-admin/theme-editor.php")) andip.src.country ne "MY"
+```txt
+((http.request.uri.path contains "/xmlrpc.php") or (http.request.uri.path
+contains "/wp-login.php") or (http.request.uri.path contains "/wp-admin/"
+and not http.request.uri.path contains "/wp-admin/admin-ajax.php" and not
+http.request.uri.path contains "/wp-admin/theme-editor.php")) and
+ip.src.country ne "MY"
 ```
 
 Only the Expression Editor supports nested expressions such as the one above. If you create a rule with nested expressions in the Expression Editor and try to switch to the Expression Builder, a dialog will warn you that the expression is not supported in the builder. You will be prompted to **Discard changes** and switch to the Expression Builder or **Cancel** and continue working in the editor.
@@ -88,7 +94,7 @@ Note
 
 String comparison in rule expressions is case-sensitive. To account for possible variations of string capitalization in an expression, you can use the [lower()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function and compare the result with a lowercased string, like in the following example:
 
-```
+```txt
 lower(http.request.uri.path) contains "/wp-login.php"
 ```
 
@@ -96,8 +102,13 @@ lower(http.request.uri.path) contains "/wp-login.php"
 
 Cloudflare validates all expressions before saving them, so if your expression has errors, you will receive an error message in the Cloudflare dashboard, similar to the following:
 
-```
-Filter parsing error (1:313): ((http.request.uri.path contains"/xmlrpc.php") or (http.request.uri.path contains "/wp-login.php") or(http.request.uri.path contains "/wp-admin/" and nothttp.request.uri.path contains "/wp-admin/admin-ajax.php" and nothttp.request.uri.path contains "/wp-admin/theme-editor.php")) andip.src.country ne "MY") ^ unrecognised input
+```txt
+Filter parsing error (1:313): ((http.request.uri.path contains
+"/xmlrpc.php") or (http.request.uri.path contains "/wp-login.php") or
+(http.request.uri.path contains "/wp-admin/" and not
+http.request.uri.path contains "/wp-admin/admin-ajax.php" and not
+http.request.uri.path contains "/wp-admin/theme-editor.php")) and
+ip.src.country ne "MY") ^ unrecognised input
 ```
 
 ```json

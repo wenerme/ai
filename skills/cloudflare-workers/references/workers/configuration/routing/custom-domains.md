@@ -56,37 +56,63 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-11547)
-* [  wrangler.toml ](#tab-panel-11548)
+* [  wrangler.jsonc ](#tab-panel-11842)
+* [  wrangler.toml ](#tab-panel-11843)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "routes": [
+    {
+      "pattern": "shop.example.com",
+      "custom_domain": true
+    }
+  ]
+}
 ```
-{  "routes": [    {      "pattern": "shop.example.com",      "custom_domain": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[routes]]pattern = "shop.example.com"custom_domain = true
+```toml
+[[routes]]
+pattern = "shop.example.com"
+custom_domain = true
 ```
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-11551)
-* [  wrangler.toml ](#tab-panel-11552)
+* [  wrangler.jsonc ](#tab-panel-11846)
+* [  wrangler.toml ](#tab-panel-11847)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "routes": [
+    {
+      "pattern": "shop.example.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "shop-two.example.com",
+      "custom_domain": true
+    }
+  ]
+}
 ```
-{  "routes": [    {      "pattern": "shop.example.com",      "custom_domain": true    },    {      "pattern": "shop-two.example.com",      "custom_domain": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[routes]]pattern = "shop.example.com"custom_domain = true
-[[routes]]pattern = "shop-two.example.com"custom_domain = true
+```toml
+[[routes]]
+pattern = "shop.example.com"
+custom_domain = true
+
+
+[[routes]]
+pattern = "shop-two.example.com"
+custom_domain = true
 ```
 
 ## Worker to Worker communication
@@ -102,10 +128,15 @@ For example, consider the following scenario, where both Workers are running on 
 
 If `worker-a` sends a fetch request to `worker-b`, the request will fail, because of the limitation on same-zone fetch requests. `worker-a` must have a service binding to `worker-b` for this request to resolve.
 
-worker-a
+**worker-a**
 
-```
-export default {  fetch(request) {    // This will fail    return fetch("https://shop.example.com")  }}
+```js
+export default {
+  fetch(request) {
+    // This will fail
+    return fetch("https://shop.example.com")
+  }
+}
 ```
 
 However, if `worker-b` was instead set up to run on the Custom Domain `shop.example.com`, the fetch request would succeed.
@@ -127,10 +158,20 @@ For example, consider the following workflow:
 3. A request to `api.example.com/auth` will trigger your `auth-worker` Worker.
 4. Using `fetch(request)` within the `auth-worker` Worker will invoke the `api-worker` Worker, as if it was a normal application server.
 
-auth-worker
+**auth-worker**
 
-```
-export default {  fetch(request) {    const url = new URL(request.url)    if(url.searchParams.get("auth") !== "SECRET_TOKEN") {      return new Response(null, { status: 401 })    } else {      // This will invoke `api-worker`      return fetch(request)    }  }}
+```js
+export default {
+  fetch(request) {
+    const url = new URL(request.url)
+    if(url.searchParams.get("auth") !== "SECRET_TOKEN") {
+      return new Response(null, { status: 401 })
+    } else {
+      // This will invoke `api-worker`
+      return fetch(request)
+    }
+  }
+}
 ```
 
 ## Certificates
@@ -184,15 +225,26 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:
 
-  * [  wrangler.jsonc ](#tab-panel-11549)
-  * [  wrangler.toml ](#tab-panel-11550)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11844)
+  * [  wrangler.toml ](#tab-panel-11845)
+
+**JSONC**
+```jsonc
+{
+  "routes": [
+    {
+      "pattern": "example.com",
+      "custom_domain": true
+    }
+  ]
+}
 ```
-{  "routes": [    {      "pattern": "example.com",      "custom_domain": true    }  ]}
-```
-TOML
-```
-[[routes]]pattern = "example.com"custom_domain = true
+
+**TOML**
+```toml
+[[routes]]
+pattern = "example.com"
+custom_domain = true
 ```
 4. Run `npx wrangler deploy` to create the Custom Domain your Worker will run on.
 

@@ -49,10 +49,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "categories": [                        {                            "category": "wordpress",                            "action": "block"                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "true",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "categories": [
+                        {
+                            "category": "wordpress",
+                            "action": "block"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 ## Account-level example
@@ -78,10 +99,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account entry point ruleset
+**Update an account entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "categories": [                        {                            "category": "wordpress",                            "action": "block"                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "categories": [
+                        {
+                            "category": "wordpress",
+                            "action": "block"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 ```json

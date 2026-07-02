@@ -143,16 +143,28 @@ If your Astro project is entirely pre-rendered, follow these steps:
 1. **Add a Wrangler configuration file**
 In your project root, create a Wrangler configuration file with the following content:
 
-  * [  wrangler.jsonc ](#tab-panel-11854)
-  * [  wrangler.toml ](#tab-panel-11855)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12127)
+  * [  wrangler.toml ](#tab-panel-12128)
+
+**JSONC**
+```jsonc
+{
+  "name": "my-astro-app",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
 ```
-{  "name": "my-astro-app",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "./dist"  }}
-```
-TOML
-```
-name = "my-astro-app"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./dist"
+
+**TOML**
+```toml
+name = "my-astro-app"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+[assets]
+directory = "./dist"
 ```
 What's this configuration doing?
 The key part of this config is the `assets` field, which tells Wrangler where to find your static assets. In this case, we're telling Wrangler to look in the `./dist` directory. If your assets are in a different directory, update the `directory` value accordingly. Read about other [asset configuration options](https://developers.cloudflare.com/workers/wrangler/configuration/#assets).
@@ -198,24 +210,49 @@ pnpm astro add cloudflare
 What's happening behind the scenes?
 This command installs the Cloudflare adapter and makes the appropriate changes to your `astro.config.mjs` file in one step. By default, this sets the build output configuration to `output: 'server'`, which server renders all your pages by default. If there are certain pages that _don't_ need on demand rendering/SSR, for example static pages like a privacy policy, you should set `export const prerender = true` for that page or route to pre-render it. You can read more about the adapter configuration options [in the Astro docs ↗](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#options).
 2. **Add a `.assetsignore` file**Create a `.assetsignore` file in your `public/` folder, and add the following lines to it:
-.assetsignore
-```
-_worker.js_routes.json
+
+**.assetsignore**
+```txt
+_worker.js
+_routes.json
 ```
 3. **Add a Wrangler configuration file**
 In your project root, create a Wrangler configuration file with the following content:
 
-  * [  wrangler.jsonc ](#tab-panel-11858)
-  * [  wrangler.toml ](#tab-panel-11859)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12131)
+  * [  wrangler.toml ](#tab-panel-12132)
+
+**JSONC**
+```jsonc
+{
+  "name": "my-astro-app",
+  "main": "./dist/_worker.js/index.js",
+  // Update to today's date
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
 ```
-{  "name": "my-astro-app",  "main": "./dist/_worker.js/index.js",  // Update to today's date  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "assets": {    "binding": "ASSETS",    "directory": "./dist"  },  "observability": {    "enabled": true  }}
-```
-TOML
-```
-name = "my-astro-app"main = "./dist/_worker.js/index.js"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[assets]binding = "ASSETS"directory = "./dist"
-[observability]enabled = true
+
+**TOML**
+```toml
+name = "my-astro-app"
+main = "./dist/_worker.js/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+[assets]
+binding = "ASSETS"
+directory = "./dist"
+[observability]
+enabled = true
 ```
 What's this configuration doing?
 The key parts of this config are:
@@ -262,8 +299,13 @@ Astro's [Sessions API ↗](https://docs.astro.build/en/guides/sessions/) allows 
 
 Wrangler automatically provisions a KV namespace named `SESSION` when you deploy, so no manual setup is required.
 
-```
----export const prerender = false;const cart = await Astro.session?.get("cart");---
+```astro
+---
+export const prerender = false;
+const cart = await Astro.session?.get("cart");
+---
+
+
 <a href="/checkout">{cart?.length ?? 0} items</a>
 ```
 
@@ -273,19 +315,26 @@ You can customize the KV binding name with the [sessionKVBindingName ↗](https:
 
 To serve a custom 404 page for your Astro site, add `not_found_handling` to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11856)
-* [  wrangler.toml ](#tab-panel-11857)
+* [  wrangler.jsonc ](#tab-panel-12129)
+* [  wrangler.toml ](#tab-panel-12130)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
 ```
-{  "assets": {    "directory": "./dist",    "not_found_handling": "404-page"  }}
-```
 
-TOML
+**TOML**
 
-```
-[assets]directory = "./dist"not_found_handling = "404-page"
+```toml
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
 ```
 
 This tells Cloudflare to serve your custom 404 page (for example, `src/pages/404.astro`) when a route is not found. Read more about [static asset routing behavior](https://developers.cloudflare.com/workers/static-assets/routing/).

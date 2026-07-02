@@ -20,7 +20,7 @@ This field defaults to `""` if the connection does not use [mTLS authentication]
 
 Example value:
 
-```
+```txt
 "2688201DBA77402EA87118876F2E1B24CF8B0395"
 ```
 

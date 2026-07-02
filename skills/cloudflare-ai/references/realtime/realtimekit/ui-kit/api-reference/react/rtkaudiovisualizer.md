@@ -30,16 +30,30 @@ An audio visualizer component which visualizes a participants audio. Commonly us
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAudioVisualizer } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAudioVisualizer />;}
+
+
+function MyComponent() {
+  return <RtkAudioVisualizer />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAudioVisualizer } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAudioVisualizer      hideMuted={true}      isScreenShare={true}      participant={participant}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAudioVisualizer
+      hideMuted={true}
+      isScreenShare={true}
+      participant={participant}
+    />
+  );
+}
 ```
 
 ```json

@@ -35,13 +35,14 @@ Use the following flow to let an AI agent discover and use temporary deploys. Th
 For installation instructions, refer to [Install and update](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 2. Give your AI agent a deploy prompt.
 For example:
-```
+```txt
 Make a very simple Hello World Cloudflare Worker in TypeScript and deploy it using the Wrangler CLI. Do not ask me questions.
 ```
 3. The agent will run the deploy.
 If the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) has no credentials, it prints output similar to the following:
-```
-To continue without logging in, rerun this command with `--temporary`.Wrangler will use a temporary account and print a claim URL.
+```txt
+To continue without logging in, rerun this command with `--temporary`.
+Wrangler will use a temporary account and print a claim URL.
 ```
 This output lets the agent discover the `--temporary` flag without you explicitly telling it to use the flag.
 4. The agent will rerun the deploy with `--temporary`:
@@ -56,10 +57,15 @@ yarn wrangler deploy --temporary
 pnpm wrangler deploy --temporary
 ```
 The CLI prints output similar to the following:
-```
+```txt
 Continuing means you accept Cloudflare's Terms of Service (https://www.cloudflare.com/terms/) and Privacy Policy (https://www.cloudflare.com/privacypolicy/).
-Temporary account ready:  Account:        example-name (created)  Claim within:   60 minutes  Claim URL:      https://dash.cloudflare.com/claim-preview?claimToken=<TOKEN>
-Uploaded example-workerDeployed example-worker triggers  https://example-worker.example-name.workers.dev
+Temporary account ready:
+  Account:        example-name (created)
+  Claim within:   60 minutes
+  Claim URL:      https://dash.cloudflare.com/claim-preview?claimToken=<TOKEN>
+Uploaded example-worker
+Deployed example-worker triggers
+  https://example-worker.example-name.workers.dev
 ```
 5. The agent can redeploy before you claim the temporary preview account.
 The [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) caches the temporary preview account and reuses it while both the account and claim URL are valid. The output shows whether the account was created or reused. The CLI clears the cached temporary preview account when you run `wrangler login` or `wrangler logout`.

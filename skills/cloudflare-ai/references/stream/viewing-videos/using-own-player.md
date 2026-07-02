@@ -30,15 +30,15 @@ Manifests are dynamic assets that may be updated at any time. Do not cache, prox
 
 Each video and live stream has its own unique HLS and DASH manifest. You can access the manifest by replacing `<UID>` with the UID of your video or live input, and replacing `<CODE>` with your unique customer code, in the URLs below:
 
-HLS
+**HLS**
 
-```
+```txt
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8
 ```
 
-DASH
+**DASH**
 
-```
+```txt
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.mpd
 ```
 
@@ -46,9 +46,9 @@ https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.mpd
 
 If a Live Input is enabled for the Low-Latency HLS beta, add the query string `?protocol=llhls` to the HLS manifest URL to test the low latency manifest in a custom player. Refer to [Start a Live Stream](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api) to enable this option.
 
-HLS
+**HLS**
 
-```
+```txt
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8?protocol=llhls
 ```
 
@@ -75,9 +75,9 @@ If your player lacks such configuration options or you need to override them, yo
 
 Refer to the example below to display only the video representation with a bitrate closest to 1.8 Mbps.
 
-Example
+**Example**
 
-```
+```txt
 https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8?clientBandwidthHint=1.8
 ```
 

@@ -24,16 +24,20 @@ A button for joining or leaving the livestream stage.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkJoinLivestreamButton    android:id="@+id/rtk_join_livestream"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkJoinLivestreamButton
+    android:id="@+id/rtk_join_livestream"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val joinLivestreamButton = findViewById<RtkJoinLivestreamButton>(R.id.rtk_join_livestream)joinLivestreamButton.activate(meeting)
+```kotlin
+val joinLivestreamButton = findViewById<RtkJoinLivestreamButton>(R.id.rtk_join_livestream)
+joinLivestreamButton.activate(meeting)
 ```
 
 ```json

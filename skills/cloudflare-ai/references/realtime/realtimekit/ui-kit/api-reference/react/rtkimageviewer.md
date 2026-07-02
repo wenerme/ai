@@ -27,16 +27,29 @@ A component which shows an image sent via chat.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkImageViewer } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkImageViewer />;}
+
+
+function MyComponent() {
+  return <RtkImageViewer />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkImageViewer } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkImageViewer      image={imagemessage}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkImageViewer
+      image={imagemessage}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

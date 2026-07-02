@@ -83,21 +83,38 @@ pnpm add wrangler vike-photon @photonjs/cloudflare
 ```
 bun add wrangler vike-photon @photonjs/cloudflare
 ```
-2. pages/+config.ts
+2. **pages/+config.ts**
+```ts
+import type { Config } from 'vike/types'
+import vikePhoton from 'vike-photon/config'
+export default {
+  extends: [vikePhoton]
+} satisfies Config
 ```
-import type { Config } from 'vike/types'import vikePhoton from 'vike-photon/config'
-export default {  extends: [vikePhoton]} satisfies Config
+3. **package.json**
+```json
+{
+  "scripts": {
+    "dev": "vike dev",
+    "preview": "vike build && vike preview",
+    "deploy": "vike build && wrangler deploy"
+  }
+}
 ```
-3. package.json
+
+**wrangler.jsonc**
+```jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2025-08-06",
+  "name": "my-vike-cloudflare-app",
+  "main": "virtual:photon:cloudflare:server-entry",
+  // Only required if your app depends a Node.js API
+  "compatibility_flags": ["nodejs_compat"]
+}
 ```
-{  "scripts": {    "dev": "vike dev",    "preview": "vike build && vike preview",    "deploy": "vike build && wrangler deploy"  }}
-```
-wrangler.jsonc
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "compatibility_date": "2025-08-06",  "name": "my-vike-cloudflare-app",  "main": "virtual:photon:cloudflare:server-entry",  // Only required if your app depends a Node.js API  "compatibility_flags": ["nodejs_compat"]}
-```
-4. .gitignore
-```
+4. **.gitignore**
+```bash
 .wrangler/
 ```
 5. **(Optional)** By default, Photon uses a built-in server that supports basic features like SSR. If you need additional server functionalities (e.g. [file uploads ↗](https://hono.dev/examples/file-upload) or [API routes ↗](https://vike.dev/api-routes)), then [create your own server ↗](https://vike.dev/vike-photon#server).
@@ -106,10 +123,15 @@ wrangler.jsonc
 
 To access Cloudflare APIs (such as [D1](https://developers.cloudflare.com/d1/) and [KV](https://developers.cloudflare.com/kv/)), use [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) which are available via the `env` object [imported from cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
 
-TypeScript
+**TypeScript**
 
-```
-import { env } from 'cloudflare:workers'// Key-value storeenv.KV.get('my-key')// Environment variableenv.LOG_LEVEL// ...
+```ts
+import { env } from 'cloudflare:workers'
+// Key-value store
+env.KV.get('my-key')
+// Environment variable
+env.LOG_LEVEL
+// ...
 ```
 
 > Example of using Cloudflare D1:
@@ -150,18 +172,20 @@ pnpm wrangler types
 
 Then commit:
 
-Terminal window
-
-```
+```bash
 git commit -am "update cloudflare types"
 ```
 
 Make sure TypeScript loads it:
 
-tsconfig.json
+**tsconfig.json**
 
-```
-{  "compilerOptions": {    "types": ["./worker-configuration.d.ts"] }}
+```json
+{
+  "compilerOptions": {
+    "types": ["./worker-configuration.d.ts"]
+ }
+}
 ```
 
 See also: [Cloudflare Workers > TypeScript](https://developers.cloudflare.com/workers/languages/typescript/).

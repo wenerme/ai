@@ -30,8 +30,8 @@ Bot Analytics requires a Business plan or above
 
 Bot score distribution data and detailed bot analytics are available on Business and Enterprise plans. Free and Pro plan users can review basic security metrics through [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). For full bot analytics capabilities, refer to [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/).
 
-* [  New dashboard ](#tab-panel-11146)
-* [ Old dashboard ](#tab-panel-11147)
+* [  New dashboard ](#tab-panel-11441)
+* [ Old dashboard ](#tab-panel-11442)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -50,7 +50,7 @@ Review the following:
 
 Cloudflare classifies bot traffic into categories based on bot scores and verification status:
 
-* **Verified bots**: Crawlers and services that Cloudflare has confirmed as legitimate, such as Googlebot, Bingbot, and uptime monitors. Cloudflare maintains a [verified bot list](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/policy/) with strict requirements.
+* **Verified bots**: Crawlers and services that Cloudflare has confirmed as legitimate, such as Googlebot, Bingbot, and uptime monitors. Cloudflare maintains a [verified bot list](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) with strict requirements.
 * **Automated** (score 1): Cloudflare is quite certain the request is automated.
 * **Likely automated** (scores 2-29): Probably a bot. This category and Automated are the primary targets for security rules, including scrapers, credential stuffing tools, and spam submitters.
 * **Likely human** (scores 30-99): These requests appear to come from real users. Do not challenge or block this traffic.
@@ -73,8 +73,8 @@ For more details, refer to [Bot Fight Mode considerations](https://developers.cl
 
 ### Turn on Bot Fight Mode (Free plan)
 
-* [  New dashboard ](#tab-panel-11160)
-* [ Old dashboard ](#tab-panel-11161)
+* [  New dashboard ](#tab-panel-11455)
+* [ Old dashboard ](#tab-panel-11456)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -97,8 +97,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-11162)
-* [ Old dashboard ](#tab-panel-11163)
+* [  New dashboard ](#tab-panel-11457)
+* [ Old dashboard ](#tab-panel-11458)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -168,9 +168,19 @@ You need both the sitekey and secret key in the following steps.
 
 Add the Turnstile script and widget container to your form HTML:
 
-```
-<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js"  async  defer></script>
-<form action="/submit" method="POST">  <!-- Your existing form fields -->  <div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div>  <button type="submit">Submit</button></form>
+```html
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
+
+
+<form action="/submit" method="POST">
+  <!-- Your existing form fields -->
+  <div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div>
+  <button type="submit">Submit</button>
+</form>
 ```
 
 Replace `<YOUR_SITE_KEY>` with the sitekey from the previous step. The widget renders inside the `div` and produces a token when the visitor passes the challenge.
@@ -179,10 +189,13 @@ Replace `<YOUR_SITE_KEY>` with the sitekey from the previous step. The widget re
 
 Before processing the form submission, send the token to the Turnstile siteverify endpoint to confirm the visitor passed the challenge:
 
-Terminal window
-
-```
-curl https://challenges.cloudflare.com/turnstile/v0/siteverify \  --header "Content-Type: application/json" \  --data '{  "secret": "<YOUR_SECRET_KEY>",  "response": "<TURNSTILE_RESPONSE_TOKEN>"}'
+```bash
+curl https://challenges.cloudflare.com/turnstile/v0/siteverify \
+  --header "Content-Type: application/json" \
+  --data '{
+  "secret": "<YOUR_SECRET_KEY>",
+  "response": "<TURNSTILE_RESPONSE_TOKEN>"
+}'
 ```
 
 Replace `<YOUR_SECRET_KEY>` with your secret key and `<TURNSTILE_RESPONSE_TOKEN>` with the `cf-turnstile-response` value from the form submission. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
@@ -199,8 +212,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Short-window rule:** Challenge an IP that sends too many failed login requests in a short window.
 
-* [  New dashboard ](#tab-panel-11150)
-* [ Old dashboard ](#tab-panel-11151)
+* [  New dashboard ](#tab-panel-11445)
+* [ Old dashboard ](#tab-panel-11446)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -226,8 +239,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Long-window rule:** Block an IP that accumulates failed login attempts over a longer period.
 
-* [  New dashboard ](#tab-panel-11152)
-* [ Old dashboard ](#tab-panel-11153)
+* [  New dashboard ](#tab-panel-11447)
+* [ Old dashboard ](#tab-panel-11448)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -273,8 +286,8 @@ If the built-in settings do not cover your needs, create custom rules. Start by 
 
 Navigate to custom rules, then create both rules:
 
-* [  New dashboard ](#tab-panel-11154)
-* [ Old dashboard ](#tab-panel-11155)
+* [  New dashboard ](#tab-panel-11449)
+* [ Old dashboard ](#tab-panel-11450)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -318,8 +331,8 @@ Rate limiting options vary by plan
 
 Available periods, actions, and counting options vary by plan. The example below uses a 1-minute period with Managed Challenge. Refer to [Rate limiting rules availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for your plan's options.
 
-* [  New dashboard ](#tab-panel-11156)
-* [ Old dashboard ](#tab-panel-11157)
+* [  New dashboard ](#tab-panel-11451)
+* [ Old dashboard ](#tab-panel-11452)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -361,8 +374,8 @@ After you deploy bot protection rules, use [Security Events](https://developers.
 
 Security Events displays requests that Cloudflare security products acted on or flagged, including blocks, challenges, and flags.
 
-* [  New dashboard ](#tab-panel-11148)
-* [ Old dashboard ](#tab-panel-11149)
+* [  New dashboard ](#tab-panel-11443)
+* [ Old dashboard ](#tab-panel-11444)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -412,15 +425,15 @@ For details on Skip action configuration, refer to [Configure a rule with the Sk
 
 Bot activity appears in Security Events that your current rules do not catch. Bots that stay under rate limits or evade single-signal rules require combining multiple signals. For example, to challenge `POST` requests to `/login` that are not from verified bots:
 
-* [  New dashboard ](#tab-panel-11158)
-* [ Old dashboard ](#tab-panel-11159)
+* [  New dashboard ](#tab-panel-11453)
+* [ Old dashboard ](#tab-panel-11454)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name.
 4. Under **When incoming requests match**, select **Edit expression** and enter:
-```
+```txt
 (http.request.uri.path eq "/login" and http.request.method eq "POST" and not cf.client.bot)
 ```
 5. Under **Then take action**, select _Managed Challenge_.
@@ -432,7 +445,7 @@ Bot activity appears in Security Events that your current rules do not catch. Bo
 3. Select **Create rule**.
 4. Enter a descriptive name.
 5. Under **When incoming requests match**, select **Edit expression** and enter:
-```
+```txt
 (http.request.uri.path eq "/login" and http.request.method eq "POST" and not cf.client.bot)
 ```
 6. Under **Then take action**, select _Managed Challenge_.

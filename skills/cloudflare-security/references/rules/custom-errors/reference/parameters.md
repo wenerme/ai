@@ -65,7 +65,7 @@ Warning
 
 If you create an HTML error response, make sure the `referrer` meta tag is not present in the HTML code since it will disrupt [Cloudflare challenges](https://developers.cloudflare.com/cloudflare-challenges/):
 
-```
+```html
 <meta name="referrer" (...) />
 ```
 

@@ -25,16 +25,20 @@ A pre-built meeting header that contains meeting title, clock, recording indicat
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.headers.RtkMeetingHeaderView    android:id="@+id/rtk_meeting_header"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.headers.RtkMeetingHeaderView
+    android:id="@+id/rtk_meeting_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val header = findViewById<RtkMeetingHeaderView>(R.id.rtk_meeting_header)header.activate(meeting)
+```kotlin
+val header = findViewById<RtkMeetingHeaderView>(R.id.rtk_meeting_header)
+header.activate(meeting)
 ```
 
 ```json

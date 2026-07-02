@@ -28,27 +28,50 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5170)
-* [  curl ](#tab-panel-5171)
+* [  TypeScript ](#tab-panel-5316)
+* [  curl ](#tab-panel-5317)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const inputs = {      prompt: "cyberpunk cat",    };
-    const response = await env.AI.run(      "@cf/bytedance/stable-diffusion-xl-lightning",      inputs    );
-    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const inputs = {
+      prompt: "cyberpunk cat",
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/bytedance/stable-diffusion-xl-lightning",
+      inputs
+    );
+
+
+    return new Response(response, {
+      headers: {
+        "content-type": "image/jpg",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/bytedance/stable-diffusion-xl-lightning  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/bytedance/stable-diffusion-xl-lightning  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5172)
-* [ Output ](#tab-panel-5173)
+* [ Input ](#tab-panel-5318)
+* [ Output ](#tab-panel-5319)
 
 prompt
 

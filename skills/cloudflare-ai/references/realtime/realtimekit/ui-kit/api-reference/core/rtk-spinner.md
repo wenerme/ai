@@ -25,18 +25,23 @@ A component which shows an animating spinner.
 
 ### Basic Usage
 
-```
+```html
 <rtk-spinner></rtk-spinner>
 ```
 
 ### With Properties
 
-```
-<rtk-spinner size="md"></rtk-spinner>
+```html
+<rtk-spinner
+ size="md">
+</rtk-spinner>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-spinner");
+```html
+<script>
+  const el = document.querySelector("rtk-spinner");
+
+
 </script>
 ```
 

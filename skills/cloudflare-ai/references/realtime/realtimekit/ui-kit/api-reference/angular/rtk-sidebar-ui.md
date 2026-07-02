@@ -29,14 +29,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-sidebar-ui></rtk-sidebar-ui>
+```html
+<!-- component.html -->
+<rtk-sidebar-ui></rtk-sidebar-ui>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-sidebar-ui currentTab="example" [focusCloseButton]="true" [hideCloseAction]="true"></rtk-sidebar-ui>
+```html
+<!-- component.html -->
+<rtk-sidebar-ui
+ currentTab="example"
+ [focusCloseButton]="true"
+ [hideCloseAction]="true">
+</rtk-sidebar-ui>
 ```
 
 ```json

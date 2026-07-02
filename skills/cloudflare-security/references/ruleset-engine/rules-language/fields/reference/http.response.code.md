@@ -20,7 +20,7 @@ The HTTP status code returned to the client, either set by a Cloudflare product 
 
 Example value:
 
-```
+```txt
 403
 ```
 

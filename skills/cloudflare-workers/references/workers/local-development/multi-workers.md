@@ -44,11 +44,25 @@ The first config (`./app/wrangler.jsonc`) is treated as the primary Worker, expo
 
 Configure `auxiliaryWorkers` in your Vite configuration:
 
-vite.config.js
+**vite.config.js**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [    cloudflare({      configPath: "./app/wrangler.jsonc",      auxiliaryWorkers: [        {          configPath: "./api/wrangler.jsonc",        },      ],    }),  ],});
+```js
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflare({
+      configPath: "./app/wrangler.jsonc",
+      auxiliaryWorkers: [
+        {
+          configPath: "./api/wrangler.jsonc",
+        },
+      ],
+    }),
+  ],
+});
 ```
 
 Then run:

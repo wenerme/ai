@@ -18,7 +18,7 @@ The following response header transform rule sets a header named `X-Bot-Score` t
 
 Text in **Expression Editor**:
 
-```
+```txt
 starts_with(http.request.uri.path, "/en/")
 ```
 

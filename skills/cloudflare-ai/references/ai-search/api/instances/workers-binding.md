@@ -25,20 +25,33 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6712)
-* [  wrangler.toml ](#tab-panel-6713)
+* [  wrangler.jsonc ](#tab-panel-6920)
+* [  wrangler.toml ](#tab-panel-6921)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search_namespaces": [
+    {
+      "binding": "AI_SEARCH",
+      "namespace": "my-namespace"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "my-namespace"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "my-namespace"
+
+
+[[ai_search_namespaces]]
+binding = "AI_SEARCH"
+namespace = "my-namespace"
 ```
 
 | Field     | Type    | Required | Description                                                                                                                                                                                                                   |
@@ -51,20 +64,33 @@ compatibility_date = "2026-03-27"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6714)
-* [  wrangler.toml ](#tab-panel-6715)
+* [  wrangler.jsonc ](#tab-panel-6922)
+* [  wrangler.toml ](#tab-panel-6923)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-27",
+  "ai_search": [
+    {
+      "binding": "MY_SEARCH",
+      "instance_name": "my-instance"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2026-03-27"
-[[ai_search]]binding = "MY_SEARCH"instance_name = "my-instance"
+
+
+[[ai_search]]
+binding = "MY_SEARCH"
+instance_name = "my-instance"
 ```
 
 | Field          | Type    | Required | Description                                                                                          |
@@ -81,10 +107,13 @@ The following methods are only available when using the `ai_search_namespaces` b
 
 Returns a handle to a specific instance. This is **synchronous** and does not make a network call. The instance is resolved lazily when you call methods like `search()` or `info()`.
 
-TypeScript
+**TypeScript**
 
-```
-const instance = env.AI_SEARCH.get("my-instance");const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],});
+```ts
+const instance = env.AI_SEARCH.get("my-instance");
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
 ```
 
 #### Parameters
@@ -97,11 +126,16 @@ const instance = env.AI_SEARCH.get("my-instance");const results = await instance
 
 Returns all instances within the namespace.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const { result, result_info } = await env.AI_SEARCH.list();
-for (const instance of result) {  console.log(`${instance.id} (${instance.type}) - ${instance.status}`);}// result_info.total_count contains the total number of instances
+
+
+for (const instance of result) {
+  console.log(`${instance.id} (${instance.type}) - ${instance.status}`);
+}
+// result_info.total_count contains the total number of instances
 ```
 
 #### Parameters
@@ -138,31 +172,44 @@ Creates a new instance and returns a handle to it. You can create instances back
 
 AI Search instances come with [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) where you can upload documents directly.
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "knowledge-base",});
-// Upload documents using the Items APIawait instance.items.upload("guide.pdf", pdfArrayBuffer);
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "knowledge-base",
+});
+
+
+// Upload documents using the Items API
+await instance.items.upload("guide.pdf", pdfArrayBuffer);
 ```
 
 **Create a web-crawler instance:**
 
 Automatically crawl and index a website that you own. For more configuration options, refer to [Website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/).
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "my-docs",  type: "web-crawler",  source: "developers.cloudflare.com",});
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "my-docs",
+  type: "web-crawler",
+  source: "developers.cloudflare.com",
+});
 ```
 
 **Create an R2-backed instance:**
 
 Index documents stored in an [R2](https://developers.cloudflare.com/r2/) bucket. For more configuration options, refer to [R2 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/).
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "internal-docs",  type: "r2",  source: "my-docs-bucket",});
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "internal-docs",
+  type: "r2",
+  source: "my-docs-bucket",
+});
 ```
 
 #### Parameters
@@ -401,9 +448,9 @@ Returns an `AiSearchInstance` handle that is immediately usable for calling meth
 
 Permanently deletes an instance and all its indexed content. This action cannot be undone.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await env.AI_SEARCH.delete("old-docs");
 ```
 
@@ -431,10 +478,13 @@ The examples below use the namespace binding.
 
 Partially updates the instance configuration. Only the fields you pass are modified.
 
-TypeScript
+**TypeScript**
 
-```
-const updated = await env.AI_SEARCH.get("my-instance").update({  ai_search_model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",  reranking: true,});
+```ts
+const updated = await env.AI_SEARCH.get("my-instance").update({
+  ai_search_model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  reranking: true,
+});
 ```
 
 #### Parameters
@@ -470,9 +520,9 @@ Returns the updated instance configuration. Same shape as [info()](#response-2).
 
 Returns the current configuration and metadata for the instance.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const info = await env.AI_SEARCH.get("my-instance").info();
 ```
 
@@ -512,9 +562,9 @@ const info = await env.AI_SEARCH.get("my-instance").info();
 
 Returns the current indexing progress for the instance. Use this to poll for completion after creating an instance or uploading files.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const stats = await env.AI_SEARCH.get("my-instance").stats();
 ```
 
@@ -540,10 +590,19 @@ const stats = await env.AI_SEARCH.get("my-instance").stats();
 
 Local development is supported by proxying requests to your deployed AI Search instance. Add `remote: true` to your binding configuration to enable local development with `wrangler dev`.
 
-JSONC
+**JSONC**
 
-```
-// wrangler.jsonc{  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance",      "remote": true,    },  ],}
+```jsonc
+// wrangler.jsonc
+{
+  "ai_search": [
+    {
+      "binding": "MY_SEARCH",
+      "instance_name": "my-instance",
+      "remote": true,
+    },
+  ],
+}
 ```
 
 ```json

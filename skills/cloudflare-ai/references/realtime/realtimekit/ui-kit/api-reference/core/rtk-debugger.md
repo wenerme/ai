@@ -28,19 +28,25 @@ A troubleshooting component to identify and fix any issues in the meeting.
 
 ### Basic Usage
 
-```
+```html
 <rtk-debugger></rtk-debugger>
 ```
 
 ### With Properties
 
-```
-<rtk-debugger size="md"></rtk-debugger>
+```html
+<rtk-debugger
+ size="md">
+</rtk-debugger>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-debugger");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-debugger");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -33,19 +33,17 @@ Sinks are made available to pipelines as SQL tables using the sink name (e.g., `
 
 To create a sink, run the [pipelines sinks create](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command:
 
-Terminal window
-
-```
-npx wrangler pipelines sinks create <SINK_NAME> \  --type r2 \  --bucket my-bucket \
+```bash
+npx wrangler pipelines sinks create <SINK_NAME> \
+  --type r2 \
+  --bucket my-bucket \
 ```
 
 For sink-specific configuration options, refer to [Available sinks](https://developers.cloudflare.com/pipelines/sinks/available-sinks/).
 
 Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [pipelines setup](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines setup
 ```
 
@@ -60,17 +58,13 @@ npx wrangler pipelines setup
 
 To view a specific sink, run the [pipelines sinks get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-get) command with either the sink ID or sink name:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines sinks get <SINK_NAME_OR_ID>
 ```
 
 To list all sinks in your account, run the [pipelines sinks list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-list) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines sinks list
 ```
 
@@ -86,9 +80,7 @@ npx wrangler pipelines sinks list
 
 To delete a sink, run the [pipelines sinks delete](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-delete) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines sinks delete <SINK_ID>
 ```
 

@@ -46,8 +46,31 @@ To apply an override for a managed ruleset:
 1. Use one of the [update ruleset operations](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/) to update your phase entry point ruleset.
 2. Specify the `overrides` in the `action_parameters` of the rule that executes your managed ruleset.
 
-```
-"action_parameters": {  "id": "<RULESET_ID>",  "overrides": {    // ruleset overrides    "property-to-modify": "value",    "property-to-modify": "value",    // tag overrides    "categories": [      {        "category": "<TAG_NAME>",        "property-to-modify": "value",        "property-to-modify": "value"      }    ],    // rule overrides    "rules": [      {        "id": "<RULE_ID>",        "property-to-modify": "value",        "property-to-modify": "value"      }    ]  }}
+```json
+"action_parameters": {
+  "id": "<RULESET_ID>",
+  "overrides": {
+    // ruleset overrides
+    "property-to-modify": "value",
+    "property-to-modify": "value",
+    // tag overrides
+    "categories": [
+      {
+        "category": "<TAG_NAME>",
+        "property-to-modify": "value",
+        "property-to-modify": "value"
+      }
+    ],
+    // rule overrides
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "property-to-modify": "value",
+        "property-to-modify": "value"
+      }
+    ]
+  }
+}
 ```
 
 You can override the following rule properties:
@@ -92,10 +115,33 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Deploy managed ruleset, enabling a specific rule with log action",    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "rules": [                        {                            "id": "<RULE_ID>",                            "enabled": true,                            "action": "log"                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Deploy managed ruleset, enabling a specific rule with log action",
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "true",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "rules": [
+                        {
+                            "id": "<RULE_ID>",
+                            "enabled": true,
+                            "action": "log"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 ### Ruleset override example
@@ -114,10 +160,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account entry point ruleset
+**Update an account entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Deploy managed ruleset for example.com, overriding the rules action to log",    "rules": [        {            "action": "execute",            "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "action": "log"                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Deploy managed ruleset for example.com, overriding the rules action to log",
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "action": "log"
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 ## More resources

@@ -18,10 +18,13 @@ A screen shown before joining the meeting, where you can edit your display name 
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkSetupFragment = RtkSetupFragment()supportFragmentManager.beginTransaction()    .add(R.id.fragmentContainer, rtkSetupFragment)    .commit()
+```kotlin
+val rtkSetupFragment = RtkSetupFragment()
+supportFragmentManager.beginTransaction()
+    .add(R.id.fragmentContainer, rtkSetupFragment)
+    .commit()
 ```
 
 ```json

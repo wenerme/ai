@@ -31,18 +31,21 @@ However, even though you do not need to update the `compatibility_date` field, i
 
 The compatibility date can be set in a Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-* [  wrangler.jsonc ](#tab-panel-11499)
-* [  wrangler.toml ](#tab-panel-11500)
+* [  wrangler.jsonc ](#tab-panel-11794)
+* [  wrangler.toml ](#tab-panel-11795)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // Opt into backwards-incompatible changes through April 5, 2022.
+  "compatibility_date": "2022-04-05"
+}
 ```
-{  // Opt into backwards-incompatible changes through April 5, 2022.  "compatibility_date": "2022-04-05"}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 compatibility_date = "2022-04-05"
 ```
 

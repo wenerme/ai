@@ -20,17 +20,17 @@ Example of user events you might be interested in tracking are successful sign-u
 
 To start tracking events, use the `zaraz.track()` function like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.track(eventName, [eventProperties]);
 ```
 
 The `eventName` parameter is a string, and the `eventProperties` parameter is an optional flat object of additional context you can attach to the event using your own keys of choice. For example, tracking a purchase with the value of 200 USD could look like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.track("purchase", { value: 200, currency: "USD" });
 ```
 

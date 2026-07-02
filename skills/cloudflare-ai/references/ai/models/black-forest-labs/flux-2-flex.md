@@ -28,128 +28,193 @@ FLUX.2 \[flex\] is Black Forest Labs' fine-grained control variant of FLUX.2 —
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-308)
-* [ cURL ](#tab-panel-309)
+* [ TypeScript ](#tab-panel-330)
+* [ cURL ](#tab-panel-331)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-flex',
+  {
+    prompt:
+      "Samsung Galaxy S25 Ultra product advertisement, 'Ultra-strong titanium' headline, close-up of phone edge showing titanium frame, dark gradient background, clean minimalist tech aesthetic",
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-flex',  {    prompt:      "Samsung Galaxy S25 Ultra product advertisement, 'Ultra-strong titanium' headline, close-up of phone edge showing titanium frame, dark gradient background, clean minimalist tech aesthetic",  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-flex",
+  "input": {
+    "prompt": "Samsung Galaxy S25 Ultra product advertisement, '\''Ultra-strong titanium'\'' headline, close-up of phone edge showing titanium frame, dark gradient background, clean minimalist tech aesthetic"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-flex",  "input": {    "prompt": "Samsung Galaxy S25 Ultra product advertisement, '\''Ultra-strong titanium'\'' headline, close-up of phone edge showing titanium frame, dark gradient background, clean minimalist tech aesthetic"  }}'
-```
-
-* [ Output ](#tab-panel-306)
-* [ Raw response ](#tab-panel-307)
+* [ Output ](#tab-panel-328)
+* [ Raw response ](#tab-panel-329)
 
 ![Typography & Design](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/typography-design.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/typography-design.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/typography-design.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **High Detail Generation**  — Crank steps and guidance for maximum detail when latency is not the priority
 
-* [ TypeScript ](#tab-panel-312)
-* [ cURL ](#tab-panel-313)
+* [ TypeScript ](#tab-panel-334)
+* [ cURL ](#tab-panel-335)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-flex',
+  {
+    prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',
+    guidance: 7.5,
+    steps: 50,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-flex',  {    prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',    guidance: 7.5,    steps: 50,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-flex",
+  "input": {
+    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar",
+    "guidance": 7.5,
+    "steps": 50
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-flex",  "input": {    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar",    "guidance": 7.5,    "steps": 50  }}'
-```
-
-* [ Output ](#tab-panel-310)
-* [ Raw response ](#tab-panel-311)
+* [ Output ](#tab-panel-332)
+* [ Raw response ](#tab-panel-333)
 
 ![High Detail Generation](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/high-detail-generation.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/high-detail-generation.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/high-detail-generation.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Fast Draft**  — Fast draft with prompt upsampling disabled — preserves the literal prompt
 
-* [ TypeScript ](#tab-panel-316)
-* [ cURL ](#tab-panel-317)
+* [ TypeScript ](#tab-panel-338)
+* [ cURL ](#tab-panel-339)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'black-forest-labs/flux-2-flex',  { prompt: 'A simple line sketch of a mountain landscape', prompt_upsampling: false, steps: 10 },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-flex",  "input": {    "prompt": "A simple line sketch of a mountain landscape",    "prompt_upsampling": false,    "steps": 10  }}'
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-flex',
+  { prompt: 'A simple line sketch of a mountain landscape', prompt_upsampling: false, steps: 10 },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-314)
-* [ Raw response ](#tab-panel-315)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-flex",
+  "input": {
+    "prompt": "A simple line sketch of a mountain landscape",
+    "prompt_upsampling": false,
+    "steps": 10
+  }
+}'
+```
+
+* [ Output ](#tab-panel-336)
+* [ Raw response ](#tab-panel-337)
 
 ![Fast Draft](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/fast-draft.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/fast-draft.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/fast-draft.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-318)
-* [ Output ](#tab-panel-319)
-
-guidance
-
-`number`maximum: 10minimum: 1.5Classifier-free guidance scale (1.5–10). Higher values follow the prompt more strictly at the cost of realism.
-
-height
-
-`integer`maximum: 9007199254740991minimum: 64Height of the generated image in pixels (minimum 64). Omit to let BFL pick.
-
-▶input\_images\[\]
-
-`array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
-
-output\_format
-
-`string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
+* [ Input ](#tab-panel-340)
+* [ Output ](#tab-panel-341)
 
 prompt
 
 `string`requiredText prompt for image generation or editing.
 
+seed
+
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
+
+width
+
+`integer`minimum: 64maximum: 9007199254740991Width of the generated image in pixels (minimum 64). Omit to let BFL pick.
+
+height
+
+`integer`minimum: 64maximum: 9007199254740991Height of the generated image in pixels (minimum 64). Omit to let BFL pick.
+
+safety\_tolerance
+
+`integer`minimum: 0maximum: 5Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.
+
+output\_format
+
+`string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
+
+▶input\_images\[\]
+
+`array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
+
 prompt\_upsampling
 
 `boolean`Whether BFL should expand short prompts before generation. Defaults to true on flex.
 
-safety\_tolerance
+guidance
 
-`integer`maximum: 5minimum: 0Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.
-
-seed
-
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Optional seed for reproducible generation.
+`number`minimum: 1.5maximum: 10Classifier-free guidance scale (1.5–10). Higher values follow the prompt more strictly at the cost of realism.
 
 steps
 
-`integer`maximum: 50minimum: 1Number of denoising steps (1–50). Higher steps yield more detail at the cost of latency.
-
-width
-
-`integer`maximum: 9007199254740991minimum: 64Width of the generated image in pixels (minimum 64). Omit to let BFL pick.
+`integer`minimum: 1maximum: 50Number of denoising steps (1–50). Higher steps yield more detail at the cost of latency.
 
 image
 

@@ -29,10 +29,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cache Purge`
 
-Purge Cached Content
+**Purge Cached Content**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "files": [        {            "url": "http://my.website.com/",            "headers": {                "CF-Device-Type": "mobile"            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "files": [
+        {
+            "url": "http://my.website.com/",
+            "headers": {
+                "CF-Device-Type": "mobile"
+            }
+        }
+    ]
+  }'
 ```
 
 ## Purge by geo
@@ -44,10 +56,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cache Purge`
 
-Purge Cached Content
+**Purge Cached Content**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "files": [        {            "url": "http://my.website.com/",            "headers": {                "CF-IPCountry": "ES"            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "files": [
+        {
+            "url": "http://my.website.com/",
+            "headers": {
+                "CF-IPCountry": "ES"
+            }
+        }
+    ]
+  }'
 ```
 
 ## Purge by language
@@ -59,10 +83,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cache Purge`
 
-Purge Cached Content
+**Purge Cached Content**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "files": [        {            "url": "http://my.website.com/",            "headers": {                "accept-language": "zh-CN"            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "files": [
+        {
+            "url": "http://my.website.com/",
+            "headers": {
+                "accept-language": "zh-CN"
+            }
+        }
+    ]
+  }'
 ```
 
 ```json

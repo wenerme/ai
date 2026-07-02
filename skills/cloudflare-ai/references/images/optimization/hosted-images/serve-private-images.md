@@ -33,37 +33,150 @@ Note
 
 Never hardcode your signing key in source code. Store it as a secret using [npx wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
-* [  JavaScript ](#tab-panel-8979)
-* [  TypeScript ](#tab-panel-8980)
+* [  JavaScript ](#tab-panel-9270)
+* [  TypeScript ](#tab-panel-9271)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const EXPIRATION = 60 * 60 * 24; // 1 day
-const bufferToHex = (buffer) =>  [...new Uint8Array(buffer)]    .map((x) => x.toString(16).padStart(2, "0"))    .join("");
-async function generateSignedUrl(url, signingKey) {  // `url` is a full imagedelivery.net URL  // e.g. https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile
-  const encoder = new TextEncoder();  const secretKeyData = encoder.encode(signingKey);  const key = await crypto.subtle.importKey(    "raw",    secretKeyData,    { name: "HMAC", hash: "SHA-256" },    false,    ["sign"],  );
-  // Attach the expiration value to the URL  const expiry = Math.floor(Date.now() / 1000) + EXPIRATION;  url.searchParams.set("exp", expiry);  // `url` now looks like  // https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
-  const stringToSign = url.pathname + "?" + url.searchParams.toString();  // e.g. /cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
-  // Generate the HMAC signature  const mac = await crypto.subtle.sign(    "HMAC",    key,    encoder.encode(stringToSign),  );  const sig = bufferToHex(new Uint8Array(mac).buffer);
-  // Attach the signature to the URL  url.searchParams.set("sig", sig);
-  return new Response(url);}
-export default {  async fetch(request, env, ctx) {    const url = new URL(request.url);    const imageDeliveryURL = new URL(      url.pathname        .slice(1)        .replace("https:/imagedelivery.net", "https://imagedelivery.net"),    );    // IMAGES_SIGNING_KEY is set via `npx wrangler secret put IMAGES_SIGNING_KEY`    return generateSignedUrl(imageDeliveryURL, env.IMAGES_SIGNING_KEY);  },};
+
+
+const bufferToHex = (buffer) =>
+  [...new Uint8Array(buffer)]
+    .map((x) => x.toString(16).padStart(2, "0"))
+    .join("");
+
+
+async function generateSignedUrl(url, signingKey) {
+  // `url` is a full imagedelivery.net URL
+  // e.g. https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile
+
+
+  const encoder = new TextEncoder();
+  const secretKeyData = encoder.encode(signingKey);
+  const key = await crypto.subtle.importKey(
+    "raw",
+    secretKeyData,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+
+
+  // Attach the expiration value to the URL
+  const expiry = Math.floor(Date.now() / 1000) + EXPIRATION;
+  url.searchParams.set("exp", expiry);
+  // `url` now looks like
+  // https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
+
+
+  const stringToSign = url.pathname + "?" + url.searchParams.toString();
+  // e.g. /cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
+
+
+  // Generate the HMAC signature
+  const mac = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(stringToSign),
+  );
+  const sig = bufferToHex(new Uint8Array(mac).buffer);
+
+
+  // Attach the signature to the URL
+  url.searchParams.set("sig", sig);
+
+
+  return new Response(url);
+}
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    const imageDeliveryURL = new URL(
+      url.pathname
+        .slice(1)
+        .replace("https:/imagedelivery.net", "https://imagedelivery.net"),
+    );
+    // IMAGES_SIGNING_KEY is set via `npx wrangler secret put IMAGES_SIGNING_KEY`
+    return generateSignedUrl(imageDeliveryURL, env.IMAGES_SIGNING_KEY);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const EXPIRATION = 60 * 60 * 24; // 1 day
-const bufferToHex = (buffer: ArrayBuffer) =>  [...new Uint8Array(buffer)]    .map((x) => x.toString(16).padStart(2, "0"))    .join("");
-async function generateSignedUrl(  url: URL,  signingKey: string,): Promise<Response> {  // `url` is a full imagedelivery.net URL  // e.g. https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile
-  const encoder = new TextEncoder();  const secretKeyData = encoder.encode(signingKey);  const key = await crypto.subtle.importKey(    "raw",    secretKeyData,    { name: "HMAC", hash: "SHA-256" },    false,    ["sign"],  );
-  // Attach the expiration value to the URL  const expiry = Math.floor(Date.now() / 1000) + EXPIRATION;  url.searchParams.set("exp", expiry);  // `url` now looks like  // https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
-  const stringToSign = url.pathname + "?" + url.searchParams.toString();  // e.g. /cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
-  // Generate the HMAC signature  const mac = await crypto.subtle.sign(    "HMAC",    key,    encoder.encode(stringToSign),  );  const sig = bufferToHex(new Uint8Array(mac).buffer);
-  // Attach the signature to the URL  url.searchParams.set("sig", sig);
-  return new Response(url);}
-export default {  async fetch(request, env, ctx): Promise<Response> {    const url = new URL(request.url);    const imageDeliveryURL = new URL(      url.pathname        .slice(1)        .replace("https:/imagedelivery.net", "https://imagedelivery.net"),    );    // IMAGES_SIGNING_KEY is set via `npx wrangler secret put IMAGES_SIGNING_KEY`    return generateSignedUrl(imageDeliveryURL, env.IMAGES_SIGNING_KEY);  },} satisfies ExportedHandler<Env>;
+
+
+const bufferToHex = (buffer: ArrayBuffer) =>
+  [...new Uint8Array(buffer)]
+    .map((x) => x.toString(16).padStart(2, "0"))
+    .join("");
+
+
+async function generateSignedUrl(
+  url: URL,
+  signingKey: string,
+): Promise<Response> {
+  // `url` is a full imagedelivery.net URL
+  // e.g. https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile
+
+
+  const encoder = new TextEncoder();
+  const secretKeyData = encoder.encode(signingKey);
+  const key = await crypto.subtle.importKey(
+    "raw",
+    secretKeyData,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+
+
+  // Attach the expiration value to the URL
+  const expiry = Math.floor(Date.now() / 1000) + EXPIRATION;
+  url.searchParams.set("exp", expiry);
+  // `url` now looks like
+  // https://imagedelivery.net/cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
+
+
+  const stringToSign = url.pathname + "?" + url.searchParams.toString();
+  // e.g. /cheeW4oKsx5ljh8e8BoL2A/bc27a117-9509-446b-8c69-c81bfeac0a01/mobile?exp=1631289275
+
+
+  // Generate the HMAC signature
+  const mac = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(stringToSign),
+  );
+  const sig = bufferToHex(new Uint8Array(mac).buffer);
+
+
+  // Attach the signature to the URL
+  url.searchParams.set("sig", sig);
+
+
+  return new Response(url);
+}
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const url = new URL(request.url);
+    const imageDeliveryURL = new URL(
+      url.pathname
+        .slice(1)
+        .replace("https:/imagedelivery.net", "https://imagedelivery.net"),
+    );
+    // IMAGES_SIGNING_KEY is set via `npx wrangler secret put IMAGES_SIGNING_KEY`
+    return generateSignedUrl(imageDeliveryURL, env.IMAGES_SIGNING_KEY);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

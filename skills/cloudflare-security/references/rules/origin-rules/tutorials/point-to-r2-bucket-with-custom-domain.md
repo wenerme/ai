@@ -53,7 +53,7 @@ In your `mycustomerexample.com` zone, create an origin rule with the following c
 
 If using the Expression Editor, enter the following expression:
 
-```
+```txt
 (http.request.uri.path wildcard "/images/*")
 ```
 
@@ -74,7 +74,7 @@ Use a URL rewrite to remove the `/images` segment from the URL path. Cloudflare 
 3. Enter a descriptive name for the rule in **Rule name**.
 4. In **If incoming requests match**, select **Wildcard pattern**.
 5. Enter the following value in **Request URL**:
-```
+```txt
 https://<YOUR_HOSTNAME>/images/*
 ```
 In the current example, the value would be `https://mycustomerexample.com/images/*`.

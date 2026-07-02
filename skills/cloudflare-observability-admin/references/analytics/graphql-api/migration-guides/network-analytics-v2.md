@@ -68,8 +68,32 @@ Refer to [NAv1 to NAv2 schema map](https://developers.cloudflare.com/analytics/g
 
 The following example queries the top 20 logs of traffic dropped by mitigation systems different from Cloudflare Network Firewall within a given time range, ordered by destination IP address.
 
-```
-{  viewer {    accounts(filter: { accountTag: "<REDACTED>" }) {      magicTransitNetworkAnalyticsAdaptiveGroups(        filter: {          datetime_gt: "2021-10-01T00:00:00Z"          datetime_lt: "2021-10-05T00:00:00Z"          outcome_like: "drop"          mitigationSystem_neq: "magic-firewall"        }        limit: 20        orderBy: [ipDestinationAddress_ASC]      ) {        dimensions {          outcome          mitigationSystem          ipSourceAddress          ipDestinationAddress          ipProtocol          destinationPort        }      }    }  }}
+```graphql
+{
+  viewer {
+    accounts(filter: { accountTag: "<REDACTED>" }) {
+      magicTransitNetworkAnalyticsAdaptiveGroups(
+        filter: {
+          datetime_gt: "2021-10-01T00:00:00Z"
+          datetime_lt: "2021-10-05T00:00:00Z"
+          outcome_like: "drop"
+          mitigationSystem_neq: "magic-firewall"
+        }
+        limit: 20
+        orderBy: [ipDestinationAddress_ASC]
+      ) {
+        dimensions {
+          outcome
+          mitigationSystem
+          ipSourceAddress
+          ipDestinationAddress
+          ipProtocol
+          destinationPort
+        }
+      }
+    }
+  }
+}
 ```
 
 ## Final remarks

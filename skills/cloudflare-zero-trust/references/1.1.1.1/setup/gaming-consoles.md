@@ -23,12 +23,14 @@ The steps below configure your gaming console to use 1.1.1.1 instead of the defa
 5. Change **DHCP Host Name** to **Do Not Specify**.
 6. Set **DNS Settings** to **Manual**.
 7. Change **Primary DNS** and **Secondary DNS** to:
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 8. If you are able to add more DNS servers, you can add the IPv6 addresses as well:
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 9. Set **MTU Settings** to **Automatic**.
 10. Set **Proxy Server** to **Do Not Use**.
@@ -40,12 +42,14 @@ The steps below configure your gaming console to use 1.1.1.1 instead of the defa
 3. Go to **Advanced Settings** \> **DNS Settings**.
 4. Select **Manual**.
 5. Set **Primary DNS** and **Secondary DNS** to:
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 6. If you have the option to add more DNS servers, you can add the IPv6 addresses as well:
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 7. When you are done, you will be shown a confirmation screen. Press **B** to save.
 
@@ -60,12 +64,14 @@ The following instructions work on New Nintendo 3DS, New Nintendo 3DS XL, New Ni
 5. Set **Auto-Obtain DNS** to **No**.
 6. Select **Detailed Setup**.
 7. Set **Primary DNS** and **Secondary DNS** to:
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 8. If you are able to add more DNS servers, you can add the IPv6 addresses as well:
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 9. Select **Save** \> **OK**.
 
@@ -76,8 +82,9 @@ The following instructions work on New Nintendo 3DS, New Nintendo 3DS XL, New Ni
 3. Select your Internet connection and then select **Change Settings**.
 4. Select **DNS Settings** \> **Manual**.
 5. Set **Primary DNS** and **Secondary DNS** to:
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 6. Select **Save** \> **OK**.
 

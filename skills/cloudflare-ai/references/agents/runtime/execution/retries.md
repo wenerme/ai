@@ -27,23 +27,47 @@ Transient failures are common when calling external APIs, interacting with other
 
 Use `this.retry()` to retry any async operation:
 
-* [  JavaScript ](#tab-panel-6133)
-* [  TypeScript ](#tab-panel-6134)
+* [  JavaScript ](#tab-panel-6313)
+* [  TypeScript ](#tab-panel-6314)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-export class MyAgent extends Agent {  async fetchWithRetry(url) {    const response = await this.retry(async () => {      const res = await fetch(url);      if (!res.ok) throw new Error(`HTTP ${res.status}`);      return res.json();    });
-    return response;  }}
+
+
+export class MyAgent extends Agent {
+  async fetchWithRetry(url) {
+    const response = await this.retry(async () => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    });
+
+
+    return response;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent } from "agents";
-export class MyAgent extends Agent {  async fetchWithRetry(url: string) {    const response = await this.retry(async () => {      const res = await fetch(url);      if (!res.ok) throw new Error(`HTTP ${res.status}`);      return res.json();    });
-    return response;  }}
+
+
+export class MyAgent extends Agent {
+  async fetchWithRetry(url: string) {
+    const response = await this.retry(async () => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    });
+
+
+    return response;
+  }
+}
 ```
 
 By default, `this.retry()` retries up to three times with jittered exponential backoff.
@@ -52,10 +76,15 @@ By default, `this.retry()` retries up to three times with jittered exponential b
 
 The `retry()` method is available on every `Agent` instance. It retries the provided function on any thrown error by default.
 
-TypeScript
+**TypeScript**
 
-```
-async retry<T>(  fn: (attempt: number) => Promise<T>,  options?: RetryOptions & {    shouldRetry?: (err: unknown, nextAttempt: number) => boolean;  }): Promise<T>
+```ts
+async retry<T>(
+  fn: (attempt: number) => Promise<T>,
+  options?: RetryOptions & {
+    shouldRetry?: (err: unknown, nextAttempt: number) => boolean;
+  }
+): Promise<T>
 ```
 
 **Parameters:**
@@ -72,97 +101,241 @@ async retry<T>(  fn: (attempt: number) => Promise<T>,  options?: RetryOptions & 
 
 **Basic retry:**
 
-* [  JavaScript ](#tab-panel-6129)
-* [  TypeScript ](#tab-panel-6130)
+* [  JavaScript ](#tab-panel-6309)
+* [  TypeScript ](#tab-panel-6310)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const data = await this.retry(() => fetch("https://api.example.com/data"));
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const data = await this.retry(() => fetch("https://api.example.com/data"));
 ```
 
 **Custom retry options:**
 
-* [  JavaScript ](#tab-panel-6135)
-* [  TypeScript ](#tab-panel-6136)
+* [  JavaScript ](#tab-panel-6315)
+* [  TypeScript ](#tab-panel-6316)
 
-JavaScript
+**JavaScript**
 
+```js
+const data = await this.retry(
+  async () => {
+    const res = await fetch("https://slow-api.example.com/data");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  },
+  {
+    maxAttempts: 5,
+    baseDelayMs: 500,
+    maxDelayMs: 10000,
+  },
+);
 ```
-const data = await this.retry(  async () => {    const res = await fetch("https://slow-api.example.com/data");    if (!res.ok) throw new Error(`HTTP ${res.status}`);    return res.json();  },  {    maxAttempts: 5,    baseDelayMs: 500,    maxDelayMs: 10000,  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const data = await this.retry(  async () => {    const res = await fetch("https://slow-api.example.com/data");    if (!res.ok) throw new Error(`HTTP ${res.status}`);    return res.json();  },  {    maxAttempts: 5,    baseDelayMs: 500,    maxDelayMs: 10000,  },);
+```ts
+const data = await this.retry(
+  async () => {
+    const res = await fetch("https://slow-api.example.com/data");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  },
+  {
+    maxAttempts: 5,
+    baseDelayMs: 500,
+    maxDelayMs: 10000,
+  },
+);
 ```
 
 **Using the attempt number:**
 
-* [  JavaScript ](#tab-panel-6131)
-* [  TypeScript ](#tab-panel-6132)
+* [  JavaScript ](#tab-panel-6311)
+* [  TypeScript ](#tab-panel-6312)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await this.retry(async (attempt) => {
+  console.log(`Attempt ${attempt}...`);
+  return await this.callExternalService();
+});
 ```
-const result = await this.retry(async (attempt) => {  console.log(`Attempt ${attempt}...`);  return await this.callExternalService();});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await this.retry(async (attempt) => {  console.log(`Attempt ${attempt}...`);  return await this.callExternalService();});
+```ts
+const result = await this.retry(async (attempt) => {
+  console.log(`Attempt ${attempt}...`);
+  return await this.callExternalService();
+});
 ```
 
 **Selective retry with `shouldRetry`:**
 
 Use `shouldRetry` to stop retrying on specific errors. The predicate receives both the error and the next attempt number:
 
-* [  JavaScript ](#tab-panel-6141)
-* [  TypeScript ](#tab-panel-6142)
+* [  JavaScript ](#tab-panel-6321)
+* [  TypeScript ](#tab-panel-6322)
 
-JavaScript
+**JavaScript**
 
+```js
+const data = await this.retry(
+  async () => {
+    const res = await fetch("https://api.example.com/data");
+    if (!res.ok) throw new HttpError(res.status, await res.text());
+    return res.json();
+  },
+  {
+    maxAttempts: 5,
+    shouldRetry: (err, nextAttempt) => {
+      // Do not retry 4xx client errors — our request is wrong
+      if (err instanceof HttpError && err.status >= 400 && err.status < 500) {
+        return false;
+      }
+      return true; // retry everything else (5xx, network errors, etc.)
+    },
+  },
+);
 ```
-const data = await this.retry(  async () => {    const res = await fetch("https://api.example.com/data");    if (!res.ok) throw new HttpError(res.status, await res.text());    return res.json();  },  {    maxAttempts: 5,    shouldRetry: (err, nextAttempt) => {      // Do not retry 4xx client errors — our request is wrong      if (err instanceof HttpError && err.status >= 400 && err.status < 500) {        return false;      }      return true; // retry everything else (5xx, network errors, etc.)    },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const data = await this.retry(  async () => {    const res = await fetch("https://api.example.com/data");    if (!res.ok) throw new HttpError(res.status, await res.text());    return res.json();  },  {    maxAttempts: 5,    shouldRetry: (err, nextAttempt) => {      // Do not retry 4xx client errors — our request is wrong      if (err instanceof HttpError && err.status >= 400 && err.status < 500) {        return false;      }      return true; // retry everything else (5xx, network errors, etc.)    },  },);
+```ts
+const data = await this.retry(
+  async () => {
+    const res = await fetch("https://api.example.com/data");
+    if (!res.ok) throw new HttpError(res.status, await res.text());
+    return res.json();
+  },
+  {
+    maxAttempts: 5,
+    shouldRetry: (err, nextAttempt) => {
+      // Do not retry 4xx client errors — our request is wrong
+      if (err instanceof HttpError && err.status >= 400 && err.status < 500) {
+        return false;
+      }
+      return true; // retry everything else (5xx, network errors, etc.)
+    },
+  },
+);
 ```
 
 ## Retries in schedules
 
 Pass retry options when creating a schedule:
 
-* [  JavaScript ](#tab-panel-6157)
-* [  TypeScript ](#tab-panel-6158)
+* [  JavaScript ](#tab-panel-6337)
+* [  TypeScript ](#tab-panel-6338)
 
-JavaScript
+**JavaScript**
 
+```js
+// Retry up to 5 times if the callback fails
+await this.schedule(
+  "processTask",
+  60,
+  { taskId: "123" },
+  {
+    retry: { maxAttempts: 5 },
+  },
+);
+
+
+// Retry with custom backoff
+await this.schedule(
+  new Date("2026-03-01T09:00:00Z"),
+  "sendReport",
+  {},
+  {
+    retry: {
+      maxAttempts: 3,
+      baseDelayMs: 1000,
+      maxDelayMs: 30000,
+    },
+  },
+);
+
+
+// Cron with retries
+await this.schedule(
+  "0 8 * * *",
+  "dailyDigest",
+  {},
+  {
+    retry: { maxAttempts: 3 },
+  },
+);
+
+
+// Interval with retries
+await this.scheduleEvery(
+  30,
+  "poll",
+  { source: "api" },
+  {
+    retry: { maxAttempts: 5, baseDelayMs: 200 },
+  },
+);
 ```
-// Retry up to 5 times if the callback failsawait this.schedule(  "processTask",  60,  { taskId: "123" },  {    retry: { maxAttempts: 5 },  },);
-// Retry with custom backoffawait this.schedule(  new Date("2026-03-01T09:00:00Z"),  "sendReport",  {},  {    retry: {      maxAttempts: 3,      baseDelayMs: 1000,      maxDelayMs: 30000,    },  },);
-// Cron with retriesawait this.schedule(  "0 8 * * *",  "dailyDigest",  {},  {    retry: { maxAttempts: 3 },  },);
-// Interval with retriesawait this.scheduleEvery(  30,  "poll",  { source: "api" },  {    retry: { maxAttempts: 5, baseDelayMs: 200 },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Retry up to 5 times if the callback failsawait this.schedule(  "processTask",  60,  { taskId: "123" },  {    retry: { maxAttempts: 5 },  },);
-// Retry with custom backoffawait this.schedule(  new Date("2026-03-01T09:00:00Z"),  "sendReport",  {},  {    retry: {      maxAttempts: 3,      baseDelayMs: 1000,      maxDelayMs: 30000,    },  },);
-// Cron with retriesawait this.schedule(  "0 8 * * *",  "dailyDigest",  {},  {    retry: { maxAttempts: 3 },  },);
-// Interval with retriesawait this.scheduleEvery(  30,  "poll",  { source: "api" },  {    retry: { maxAttempts: 5, baseDelayMs: 200 },  },);
+```ts
+// Retry up to 5 times if the callback fails
+await this.schedule(
+  "processTask",
+  60,
+  { taskId: "123" },
+  {
+    retry: { maxAttempts: 5 },
+  },
+);
+
+
+// Retry with custom backoff
+await this.schedule(
+  new Date("2026-03-01T09:00:00Z"),
+  "sendReport",
+  {},
+  {
+    retry: {
+      maxAttempts: 3,
+      baseDelayMs: 1000,
+      maxDelayMs: 30000,
+    },
+  },
+);
+
+
+// Cron with retries
+await this.schedule(
+  "0 8 * * *",
+  "dailyDigest",
+  {},
+  {
+    retry: { maxAttempts: 3 },
+  },
+);
+
+
+// Interval with retries
+await this.scheduleEvery(
+  30,
+  "poll",
+  { source: "api" },
+  {
+    retry: { maxAttempts: 5, baseDelayMs: 200 },
+  },
+);
 ```
 
 If the callback throws, it is retried according to the retry options. If all attempts fail, the error is logged and routed through `onError()`. The schedule is still removed (for one-time schedules) or rescheduled (for cron/interval) regardless of success or failure.
@@ -171,21 +344,49 @@ If the callback throws, it is retried according to the retry options. If all att
 
 Pass retry options when adding a task to the queue:
 
-* [  JavaScript ](#tab-panel-6145)
-* [  TypeScript ](#tab-panel-6146)
+* [  JavaScript ](#tab-panel-6325)
+* [  TypeScript ](#tab-panel-6326)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.queue(
+  "sendEmail",
+  { to: "user@example.com" },
+  {
+    retry: { maxAttempts: 5 },
+  },
+);
+
+
+await this.queue("processWebhook", webhookData, {
+  retry: {
+    maxAttempts: 3,
+    baseDelayMs: 500,
+    maxDelayMs: 5000,
+  },
+});
 ```
-await this.queue(  "sendEmail",  { to: "user@example.com" },  {    retry: { maxAttempts: 5 },  },);
-await this.queue("processWebhook", webhookData, {  retry: {    maxAttempts: 3,    baseDelayMs: 500,    maxDelayMs: 5000,  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.queue(  "sendEmail",  { to: "user@example.com" },  {    retry: { maxAttempts: 5 },  },);
-await this.queue("processWebhook", webhookData, {  retry: {    maxAttempts: 3,    baseDelayMs: 500,    maxDelayMs: 5000,  },});
+```ts
+await this.queue(
+  "sendEmail",
+  { to: "user@example.com" },
+  {
+    retry: { maxAttempts: 5 },
+  },
+);
+
+
+await this.queue("processWebhook", webhookData, {
+  retry: {
+    maxAttempts: 3,
+    baseDelayMs: 500,
+    maxDelayMs: 5000,
+  },
+});
 ```
 
 If the callback throws, it is retried before the task is dequeued. After all attempts are exhausted, the task is dequeued and the error is logged.
@@ -194,25 +395,69 @@ If the callback throws, it is retried before the task is dequeued. After all att
 
 Retry options are validated eagerly when you call `this.retry()`, `queue()`, `schedule()`, or `scheduleEvery()`. Invalid options throw immediately instead of failing later at execution time:
 
-* [  JavaScript ](#tab-panel-6151)
-* [  TypeScript ](#tab-panel-6152)
+* [  JavaScript ](#tab-panel-6331)
+* [  TypeScript ](#tab-panel-6332)
 
-JavaScript
+**JavaScript**
 
+```js
+// Throws immediately: "retry.maxAttempts must be >= 1"
+await this.queue("sendEmail", data, {
+  retry: { maxAttempts: 0 },
+});
+
+
+// Throws immediately: "retry.baseDelayMs must be > 0"
+await this.schedule(
+  60,
+  "process",
+  {},
+  {
+    retry: { baseDelayMs: -100 },
+  },
+);
+
+
+// Throws immediately: "retry.maxAttempts must be an integer"
+await this.retry(() => fetch(url), { maxAttempts: 2.5 });
+
+
+// Throws immediately: "retry.baseDelayMs must be <= retry.maxDelayMs"
+// because baseDelayMs: 5000 exceeds the default maxDelayMs: 3000
+await this.queue("sendEmail", data, {
+  retry: { baseDelayMs: 5000 },
+});
 ```
-// Throws immediately: "retry.maxAttempts must be >= 1"await this.queue("sendEmail", data, {  retry: { maxAttempts: 0 },});
-// Throws immediately: "retry.baseDelayMs must be > 0"await this.schedule(  60,  "process",  {},  {    retry: { baseDelayMs: -100 },  },);
-// Throws immediately: "retry.maxAttempts must be an integer"await this.retry(() => fetch(url), { maxAttempts: 2.5 });
-// Throws immediately: "retry.baseDelayMs must be <= retry.maxDelayMs"// because baseDelayMs: 5000 exceeds the default maxDelayMs: 3000await this.queue("sendEmail", data, {  retry: { baseDelayMs: 5000 },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Throws immediately: "retry.maxAttempts must be >= 1"await this.queue("sendEmail", data, {  retry: { maxAttempts: 0 },});
-// Throws immediately: "retry.baseDelayMs must be > 0"await this.schedule(  60,  "process",  {},  {    retry: { baseDelayMs: -100 },  },);
-// Throws immediately: "retry.maxAttempts must be an integer"await this.retry(() => fetch(url), { maxAttempts: 2.5 });
-// Throws immediately: "retry.baseDelayMs must be <= retry.maxDelayMs"// because baseDelayMs: 5000 exceeds the default maxDelayMs: 3000await this.queue("sendEmail", data, {  retry: { baseDelayMs: 5000 },});
+```ts
+// Throws immediately: "retry.maxAttempts must be >= 1"
+await this.queue("sendEmail", data, {
+  retry: { maxAttempts: 0 },
+});
+
+
+// Throws immediately: "retry.baseDelayMs must be > 0"
+await this.schedule(
+  60,
+  "process",
+  {},
+  {
+    retry: { baseDelayMs: -100 },
+  },
+);
+
+
+// Throws immediately: "retry.maxAttempts must be an integer"
+await this.retry(() => fetch(url), { maxAttempts: 2.5 });
+
+
+// Throws immediately: "retry.baseDelayMs must be <= retry.maxDelayMs"
+// because baseDelayMs: 5000 exceeds the default maxDelayMs: 3000
+await this.queue("sendEmail", data, {
+  retry: { baseDelayMs: 5000 },
+});
 ```
 
 Validation resolves partial options against class-level or built-in defaults before checking cross-field constraints. This means `{ baseDelayMs: 5000 }` is caught immediately when the resolved `maxDelayMs` is 3000, rather than failing later at execution time.
@@ -233,85 +478,132 @@ These defaults apply to `this.retry()`, `queue()`, `schedule()`, and `scheduleEv
 
 Override the defaults for your entire agent via `static options`:
 
-* [  JavaScript ](#tab-panel-6137)
-* [  TypeScript ](#tab-panel-6138)
+* [  JavaScript ](#tab-panel-6317)
+* [  TypeScript ](#tab-panel-6318)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  static options = {
+    retry: { maxAttempts: 5, baseDelayMs: 200, maxDelayMs: 5000 },
+  };
+}
 ```
-class MyAgent extends Agent {  static options = {    retry: { maxAttempts: 5, baseDelayMs: 200, maxDelayMs: 5000 },  };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  static options = {    retry: { maxAttempts: 5, baseDelayMs: 200, maxDelayMs: 5000 },  };}
+```ts
+class MyAgent extends Agent {
+  static options = {
+    retry: { maxAttempts: 5, baseDelayMs: 200, maxDelayMs: 5000 },
+  };
+}
 ```
 
 You only need to specify the fields you want to change — unset fields fall back to the built-in defaults:
 
-* [  JavaScript ](#tab-panel-6139)
-* [  TypeScript ](#tab-panel-6140)
+* [  JavaScript ](#tab-panel-6319)
+* [  TypeScript ](#tab-panel-6320)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  // Only override maxAttempts; baseDelayMs (100) and maxDelayMs (3000) stay default
+  static options = {
+    retry: { maxAttempts: 10 },
+  };
+}
 ```
-class MyAgent extends Agent {  // Only override maxAttempts; baseDelayMs (100) and maxDelayMs (3000) stay default  static options = {    retry: { maxAttempts: 10 },  };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  // Only override maxAttempts; baseDelayMs (100) and maxDelayMs (3000) stay default  static options = {    retry: { maxAttempts: 10 },  };}
+```ts
+class MyAgent extends Agent {
+  // Only override maxAttempts; baseDelayMs (100) and maxDelayMs (3000) stay default
+  static options = {
+    retry: { maxAttempts: 10 },
+  };
+}
 ```
 
 Class-level defaults are used as fallbacks when a call site does not specify retry options. Per-call-site options always take priority:
 
-* [  JavaScript ](#tab-panel-6143)
-* [  TypeScript ](#tab-panel-6144)
+* [  JavaScript ](#tab-panel-6323)
+* [  TypeScript ](#tab-panel-6324)
 
-JavaScript
+**JavaScript**
 
+```js
+// Uses class-level defaults (10 attempts)
+await this.retry(() => fetch(url));
+
+
+// Overrides to 2 attempts for this specific call
+await this.retry(() => fetch(url), { maxAttempts: 2 });
 ```
-// Uses class-level defaults (10 attempts)await this.retry(() => fetch(url));
-// Overrides to 2 attempts for this specific callawait this.retry(() => fetch(url), { maxAttempts: 2 });
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Uses class-level defaults (10 attempts)await this.retry(() => fetch(url));
-// Overrides to 2 attempts for this specific callawait this.retry(() => fetch(url), { maxAttempts: 2 });
+```ts
+// Uses class-level defaults (10 attempts)
+await this.retry(() => fetch(url));
+
+
+// Overrides to 2 attempts for this specific call
+await this.retry(() => fetch(url), { maxAttempts: 2 });
 ```
 
 To disable retries for a specific task, set `maxAttempts: 1`:
 
-* [  JavaScript ](#tab-panel-6149)
-* [  TypeScript ](#tab-panel-6150)
+* [  JavaScript ](#tab-panel-6329)
+* [  TypeScript ](#tab-panel-6330)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.schedule(
+  60,
+  "oneShot",
+  {},
+  {
+    retry: { maxAttempts: 1 },
+  },
+);
 ```
-await this.schedule(  60,  "oneShot",  {},  {    retry: { maxAttempts: 1 },  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.schedule(  60,  "oneShot",  {},  {    retry: { maxAttempts: 1 },  },);
+```ts
+await this.schedule(
+  60,
+  "oneShot",
+  {},
+  {
+    retry: { maxAttempts: 1 },
+  },
+);
 ```
 
 ## RetryOptions
 
-TypeScript
+**TypeScript**
 
-```
-interface RetryOptions {  /** Maximum number of attempts (including the first). Must be an integer >= 1. Default: 3 */  maxAttempts?: number;  /** Base delay in milliseconds for exponential backoff. Must be > 0 and <= maxDelayMs. Default: 100 */  baseDelayMs?: number;  /** Maximum delay cap in milliseconds. Must be > 0. Default: 3000 */  maxDelayMs?: number;}
+```ts
+interface RetryOptions {
+  /** Maximum number of attempts (including the first). Must be an integer >= 1. Default: 3 */
+  maxAttempts?: number;
+  /** Base delay in milliseconds for exponential backoff. Must be > 0 and <= maxDelayMs. Default: 100 */
+  baseDelayMs?: number;
+  /** Maximum delay cap in milliseconds. Must be > 0. Default: 3000 */
+  maxDelayMs?: number;
+}
 ```
 
 The delay between retries uses **full jitter exponential backoff**:
 
-```
+```plaintext
 delay = random(0, min(2^attempt * baseDelayMs, maxDelayMs))
 ```
 
@@ -343,19 +635,23 @@ With `maxAttempts: 5` and `baseDelayMs: 500`:
 
 When adding an MCP server, you can configure retry options for connection and reconnection attempts:
 
-* [  JavaScript ](#tab-panel-6147)
-* [  TypeScript ](#tab-panel-6148)
+* [  JavaScript ](#tab-panel-6327)
+* [  TypeScript ](#tab-panel-6328)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.addMcpServer("github", "https://mcp.github.com", {
+  retry: { maxAttempts: 5, baseDelayMs: 1000, maxDelayMs: 10000 },
+});
 ```
-await this.addMcpServer("github", "https://mcp.github.com", {  retry: { maxAttempts: 5, baseDelayMs: 1000, maxDelayMs: 10000 },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.addMcpServer("github", "https://mcp.github.com", {  retry: { maxAttempts: 5, baseDelayMs: 1000, maxDelayMs: 10000 },});
+```ts
+await this.addMcpServer("github", "https://mcp.github.com", {
+  retry: { maxAttempts: 5, baseDelayMs: 1000, maxDelayMs: 10000 },
+});
 ```
 
 These options are persisted and used when:
@@ -369,59 +665,177 @@ Default: 3 attempts, 500ms base delay, 5s max delay.
 
 ### Retry with logging
 
-* [  JavaScript ](#tab-panel-6155)
-* [  TypeScript ](#tab-panel-6156)
+* [  JavaScript ](#tab-panel-6335)
+* [  TypeScript ](#tab-panel-6336)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async resilientTask(payload) {
+    try {
+      const result = await this.retry(
+        async (attempt) => {
+          if (attempt > 1) {
+            console.log(`Retrying ${payload.url} (attempt ${attempt})...`);
+          }
+          const res = await fetch(payload.url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        },
+        { maxAttempts: 5 },
+      );
+      console.log("Success:", result);
+    } catch (e) {
+      console.error("All retries failed:", e);
+    }
+  }
+}
 ```
-class MyAgent extends Agent {  async resilientTask(payload) {    try {      const result = await this.retry(        async (attempt) => {          if (attempt > 1) {            console.log(`Retrying ${payload.url} (attempt ${attempt})...`);          }          const res = await fetch(payload.url);          if (!res.ok) throw new Error(`HTTP ${res.status}`);          return res.json();        },        { maxAttempts: 5 },      );      console.log("Success:", result);    } catch (e) {      console.error("All retries failed:", e);    }  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async resilientTask(payload: { url: string }) {    try {      const result = await this.retry(        async (attempt) => {          if (attempt > 1) {            console.log(`Retrying ${payload.url} (attempt ${attempt})...`);          }          const res = await fetch(payload.url);          if (!res.ok) throw new Error(`HTTP ${res.status}`);          return res.json();        },        { maxAttempts: 5 },      );      console.log("Success:", result);    } catch (e) {      console.error("All retries failed:", e);    }  }}
+```ts
+class MyAgent extends Agent {
+  async resilientTask(payload: { url: string }) {
+    try {
+      const result = await this.retry(
+        async (attempt) => {
+          if (attempt > 1) {
+            console.log(`Retrying ${payload.url} (attempt ${attempt})...`);
+          }
+          const res = await fetch(payload.url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        },
+        { maxAttempts: 5 },
+      );
+      console.log("Success:", result);
+    } catch (e) {
+      console.error("All retries failed:", e);
+    }
+  }
+}
 ```
 
 ### Retry with fallback
 
-* [  JavaScript ](#tab-panel-6153)
-* [  TypeScript ](#tab-panel-6154)
+* [  JavaScript ](#tab-panel-6333)
+* [  TypeScript ](#tab-panel-6334)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async fetchData() {
+    try {
+      return await this.retry(
+        () => fetch("https://primary-api.example.com/data"),
+        { maxAttempts: 3, baseDelayMs: 200 },
+      );
+    } catch {
+      // Primary failed, try fallback
+      return await this.retry(
+        () => fetch("https://fallback-api.example.com/data"),
+        { maxAttempts: 2 },
+      );
+    }
+  }
+}
 ```
-class MyAgent extends Agent {  async fetchData() {    try {      return await this.retry(        () => fetch("https://primary-api.example.com/data"),        { maxAttempts: 3, baseDelayMs: 200 },      );    } catch {      // Primary failed, try fallback      return await this.retry(        () => fetch("https://fallback-api.example.com/data"),        { maxAttempts: 2 },      );    }  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async fetchData() {    try {      return await this.retry(        () => fetch("https://primary-api.example.com/data"),        { maxAttempts: 3, baseDelayMs: 200 },      );    } catch {      // Primary failed, try fallback      return await this.retry(        () => fetch("https://fallback-api.example.com/data"),        { maxAttempts: 2 },      );    }  }}
+```ts
+class MyAgent extends Agent {
+  async fetchData() {
+    try {
+      return await this.retry(
+        () => fetch("https://primary-api.example.com/data"),
+        { maxAttempts: 3, baseDelayMs: 200 },
+      );
+    } catch {
+      // Primary failed, try fallback
+      return await this.retry(
+        () => fetch("https://fallback-api.example.com/data"),
+        { maxAttempts: 2 },
+      );
+    }
+  }
+}
 ```
 
 ### Combining retries with scheduling
 
 For operations that might take a long time to recover (minutes or hours), combine `this.retry()` for immediate retries with `this.schedule()` for delayed retries:
 
-* [  JavaScript ](#tab-panel-6159)
-* [  TypeScript ](#tab-panel-6160)
+* [  JavaScript ](#tab-panel-6339)
+* [  TypeScript ](#tab-panel-6340)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async syncData(payload) {
+    const attempt = payload.attempt ?? 1;
+
+
+    try {
+      // Immediate retries for transient failures (seconds)
+      await this.retry(() => this.fetchAndProcess(payload.source), {
+        maxAttempts: 3,
+        baseDelayMs: 1000,
+      });
+    } catch (e) {
+      if (attempt >= 5) {
+        console.error("Giving up after 5 scheduled attempts");
+        return;
+      }
+
+
+      // Schedule a retry in 5 minutes for longer outages
+      const delaySeconds = 300 * attempt;
+      await this.schedule(delaySeconds, "syncData", {
+        source: payload.source,
+        attempt: attempt + 1,
+      });
+      console.log(`Scheduled retry ${attempt + 1} in ${delaySeconds}s`);
+    }
+  }
+}
 ```
-class MyAgent extends Agent {  async syncData(payload) {    const attempt = payload.attempt ?? 1;
-    try {      // Immediate retries for transient failures (seconds)      await this.retry(() => this.fetchAndProcess(payload.source), {        maxAttempts: 3,        baseDelayMs: 1000,      });    } catch (e) {      if (attempt >= 5) {        console.error("Giving up after 5 scheduled attempts");        return;      }
-      // Schedule a retry in 5 minutes for longer outages      const delaySeconds = 300 * attempt;      await this.schedule(delaySeconds, "syncData", {        source: payload.source,        attempt: attempt + 1,      });      console.log(`Scheduled retry ${attempt + 1} in ${delaySeconds}s`);    }  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async syncData(payload: { source: string; attempt?: number }) {    const attempt = payload.attempt ?? 1;
-    try {      // Immediate retries for transient failures (seconds)      await this.retry(() => this.fetchAndProcess(payload.source), {        maxAttempts: 3,        baseDelayMs: 1000,      });    } catch (e) {      if (attempt >= 5) {        console.error("Giving up after 5 scheduled attempts");        return;      }
-      // Schedule a retry in 5 minutes for longer outages      const delaySeconds = 300 * attempt;      await this.schedule(delaySeconds, "syncData", {        source: payload.source,        attempt: attempt + 1,      });      console.log(`Scheduled retry ${attempt + 1} in ${delaySeconds}s`);    }  }}
+```ts
+class MyAgent extends Agent {
+  async syncData(payload: { source: string; attempt?: number }) {
+    const attempt = payload.attempt ?? 1;
+
+
+    try {
+      // Immediate retries for transient failures (seconds)
+      await this.retry(() => this.fetchAndProcess(payload.source), {
+        maxAttempts: 3,
+        baseDelayMs: 1000,
+      });
+    } catch (e) {
+      if (attempt >= 5) {
+        console.error("Giving up after 5 scheduled attempts");
+        return;
+      }
+
+
+      // Schedule a retry in 5 minutes for longer outages
+      const delaySeconds = 300 * attempt;
+      await this.schedule(delaySeconds, "syncData", {
+        source: payload.source,
+        attempt: attempt + 1,
+      });
+      console.log(`Scheduled retry ${attempt + 1} in ${delaySeconds}s`);
+    }
+  }
+}
 ```
 
 ## Limitations

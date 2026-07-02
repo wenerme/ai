@@ -44,8 +44,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule
 
-* [  New dashboard ](#tab-panel-6807)
-* [ Old dashboard ](#tab-panel-6808)
+* [  New dashboard ](#tab-panel-7055)
+* [ Old dashboard ](#tab-panel-7056)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -94,26 +94,33 @@ Each saved endpoint will have an endpoint ID visible in its details page in Endp
 
 The visitor must wait more than 2 seconds after requesting endpoint `aaaaaaaa` before requesting endpoint `bbbbbbbb`:
 
-```
-cf.sequence.current_op eq "bbbbbbbb" andcf.sequence.msec_since_op["aaaaaaaa"] ge 2000
+```txt
+cf.sequence.current_op eq "bbbbbbbb" and
+cf.sequence.msec_since_op["aaaaaaaa"] ge 2000
 ```
 
 The visitor must request endpoints `aaaaaaaa`, then `bbbbbbbb`, then `cccccccc` in that exact order:
 
-```
-cf.sequence.current_op eq "cccccccc" andcf.sequence.previous_ops[0] == "bbbbbbbb" andcf.sequence.previous_ops[1] == "aaaaaaaa"
+```txt
+cf.sequence.current_op eq "cccccccc" and
+cf.sequence.previous_ops[0] == "bbbbbbbb" and
+cf.sequence.previous_ops[1] == "aaaaaaaa"
 ```
 
 The visitor must request endpoint `aaaaaaaa` before endpoint `bbbbbbbb`, but endpoint `aaaaaaaa` can be anywhere in the previous 10 requests:
 
-```
-cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "aaaaaaaa")
+```txt
+cf.sequence.current_op eq "bbbbbbbb" and
+any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
 
 The visitor must request either endpoint `aaaaaaaa` before endpoint `bbbbbbbb`, or endpoint `cccccccc` before endpoint `bbbbbbbb`:
 
-```
-(cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "aaaaaaaa")) or(cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "cccccccc"))
+```txt
+(cf.sequence.current_op eq "bbbbbbbb" and
+any(cf.sequence.previous_ops[*] == "aaaaaaaa")) or
+(cf.sequence.current_op eq "bbbbbbbb" and
+any(cf.sequence.previous_ops[*] == "cccccccc"))
 ```
 
 ```json

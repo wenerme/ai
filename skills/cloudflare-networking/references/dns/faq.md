@@ -57,13 +57,11 @@ On the **DNS Records** page, locate the **Cloudflare Nameservers** card.
 
 Also, the IP address associated with a specific Cloudflare nameserver can be retrieved via a dig command or a third-party DNS lookup tool hosted online such as [whatsmydns.net ↗](https://www.whatsmydns.net/):
 
-Terminal window
-
-```
+```sh
 dig kate.ns.cloudflare.com
 ```
 
-```
+```sh
 kate.ns.cloudflare.com.    68675    IN    A    173.245.58.124.
 ```
 

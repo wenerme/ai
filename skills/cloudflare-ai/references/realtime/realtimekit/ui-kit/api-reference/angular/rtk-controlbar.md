@@ -31,14 +31,20 @@ Controlbar component provides you with various designs as variants.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-controlbar></rtk-controlbar>
+```html
+<!-- component.html -->
+<rtk-controlbar></rtk-controlbar>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-controlbar [disableRender]="true" [meeting]="meeting" size="md"></rtk-controlbar>
+```html
+<!-- component.html -->
+<rtk-controlbar
+ [disableRender]="true"
+ [meeting]="meeting"
+ size="md">
+</rtk-controlbar>
 ```
 
 ```json

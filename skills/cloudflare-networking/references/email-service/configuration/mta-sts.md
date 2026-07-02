@@ -23,12 +23,12 @@ Suppose that `example.com` is your domain and uses Email Service. Here is how yo
 2. Create a new CNAME record with the name `_mta-sts` that points to Cloudflare's record `_mta-sts.mx.cloudflare.net`. Make sure to disable the proxy mode.
 ![MTA-STS CNAME record](https://developers.cloudflare.com/_astro/mta-sts-record.DbwO-t_X_1Mbxza.webp)
 3. Confirm that the record was created:
-Terminal window
-```
+```sh
 dig txt _mta-sts.example.com
 ```
-```
-_mta-sts.example.com. 300 IN  CNAME _mta-sts.mx.cloudflare.net._mta-sts.mx.cloudflare.net. 300 IN  TXT "v=STSv1; id=20230615T153000;"
+```sh
+_mta-sts.example.com. 300 IN  CNAME _mta-sts.mx.cloudflare.net.
+_mta-sts.mx.cloudflare.net. 300 IN  TXT "v=STSv1; id=20230615T153000;"
 ```
 This tells the other end client that is trying to connect to us that we support MTA-STS.
 
@@ -44,12 +44,14 @@ This Worker proxies `https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt` 
 2. After deploying it, go to the Worker configuration, then **Settings** \> **Domains & Routes** \> **+Add**. Type the subdomain `mta-sts.example.com`.
 ![MTA-STS Worker Custom Domain](https://developers.cloudflare.com/_astro/mta-sts-domain.UfZmAoBe_lkXVJ.webp)
 You can then confirm that your policy file is working with the following:
-Terminal window
-```
+```sh
 curl https://mta-sts.example.com/.well-known/mta-sts.txt
 ```
-```
-version: STSv1mode: enforcemx: *.mx.cloudflare.netmax_age: 86400
+```sh
+version: STSv1
+mode: enforce
+mx: *.mx.cloudflare.net
+max_age: 86400
 ```
 This says that you domain `example.com` enforces MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered.
 Test before enforcing

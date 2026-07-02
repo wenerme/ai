@@ -60,14 +60,20 @@ Add a CNAME record for your root and point it to DNS target you obtained in Step
 
 The easiest way to confirm that Cloudflare is working for your domain is to issue a cURL command.
 
-Terminal window
-
-```
+```sh
 curl -I www.example.com
 ```
 
-```
-HTTP/1.1 200 OKDate: Tue, 23 Jan 2018 18:51:30 GMTContent-Type: text/html; charset=UTF-8Connection: keep-aliveCache-Control: public, max-age=0Last-Modified: Mon, 31 Dec 1979 04:08:00 GMTX-Powered-By: ExpressServer: cloudflareCF-RAY: 3e1cf1d936f28c52-SFO-DOG
+```sh
+HTTP/1.1 200 OK
+Date: Tue, 23 Jan 2018 18:51:30 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Cache-Control: public, max-age=0
+Last-Modified: Mon, 31 Dec 1979 04:08:00 GMT
+X-Powered-By: Express
+Server: cloudflare
+CF-RAY: 3e1cf1d936f28c52-SFO-DOG
 ```
 
 You can identify Cloudflare-proxied requests by the _CF-Ray_ response header. If either of these two are present, your requests are being proxied by Cloudflare accordingly.
@@ -92,14 +98,19 @@ To ensure all traffic to your site is encrypted, Cloudflare lets you force an au
 
 You can then use a cURL command to verify that all requests are being forced over HTTPS.
 
-Terminal window
-
-```
+```sh
 curl -I -L example.com
 ```
 
-```
-HTTP/1.1 301 Moved PermanentlyDate: Tue, 23 Jan 2018 23:17:44 GMTConnection: keep-aliveCache-Control: max-age=3600Expires: Wed, 24 Jan 2018 00:17:44 GMTLocation: https://example.com/Server: cloudflareCF-RAY: 3e1e77d5c42b8c52-SFO-DOG
+```sh
+HTTP/1.1 301 Moved Permanently
+Date: Tue, 23 Jan 2018 23:17:44 GMT
+Connection: keep-alive
+Cache-Control: max-age=3600
+Expires: Wed, 24 Jan 2018 00:17:44 GMT
+Location: https://example.com/
+Server: cloudflare
+CF-RAY: 3e1e77d5c42b8c52-SFO-DOG
 ```
 
 If SSL was not working for your domain (for example, your SSL certificate has not yet been issued), you would see a [525](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/) or [526](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/) HTTP response after the redirect.

@@ -52,14 +52,39 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account API Gateway`
 * `Domain API Gateway`
 
-Upload a schema
+**Upload a schema**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "kind": "openapi_v3",    "name": "example_schema",    "source": "<SOURCE>",    "validation_enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "kind": "openapi_v3",
+    "name": "example_schema",
+    "source": "<SOURCE>",
+    "validation_enabled": true
+  }'
 ```
 
-```
-{    "result":    {        "schema":        {            "schema_id": "af632e95-c986-4738-a67d-2ac09995017a",            "name": "example_schema",            "kind": "openapi_v3",            "source": "<SOURCE>",            "created_at": "2023-04-03T15:10:08.902309Z"        }    },    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":
+    {
+        "schema":
+        {
+            "schema_id": "af632e95-c986-4738-a67d-2ac09995017a",
+            "name": "example_schema",
+            "kind": "openapi_v3",
+            "source": "<SOURCE>",
+            "created_at": "2023-04-03T15:10:08.902309Z"
+        }
+    },
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 By default, Schema validation is disabled for an uploaded schema so that you can inspect it first. You can upload a schema and enable it immediately by setting the form parameter `validation_enabled=true`.
@@ -72,14 +97,33 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account API Gateway`
 * `Domain API Gateway`
 
-Enable validation for a schema
+**Enable validation for a schema**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/user_schemas/$SCHEMA_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "validation_enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/user_schemas/$SCHEMA_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "validation_enabled": true
+  }'
 ```
 
-```
-{    "result":    {        "schema_id": "0bf58160-5da3-48ac-80a9-069f9642c1a0",        "name": "api_schema.json",        "kind": "openapi_v3",        "validation_enabled": true,        "created_at": "0001-01-01T00:00:00Z"    },    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":
+    {
+        "schema_id": "0bf58160-5da3-48ac-80a9-069f9642c1a0",
+        "name": "api_schema.json",
+        "kind": "openapi_v3",
+        "validation_enabled": true,
+        "created_at": "0001-01-01T00:00:00Z"
+    },
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 When a schema is active, it executes the mitigation action specified for each operation. Refer to [change the default and operation-specific mitigation action](#change-the-default-and-operation-specific-mitigation-action).
@@ -88,36 +132,83 @@ When a schema is active, it executes the mitigation action specified for each op
 
 Schemas contain a set of servers, paths, and methods, which together define an operation. Schema validation only acts on the requests to operations which have been added to the API Shield Endpoint Management. If a schema contains operations which have not been added to Endpoint Management, they can be retrieved together with the configuration information about added operations.
 
-cURL command
+**cURL command**
 
-```
-curl --request GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations?feature=schema_info&operation_status=new&page=1&per_page=5000" \--header "Authorization: Bearer <API_TOKEN>" \--header 'Content-Type: application/json'
+```bash
+curl --request GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations?feature=schema_info&operation_status=new&page=1&per_page=5000" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header 'Content-Type: application/json'
 ```
 
-```
-{    "result":        [          {              "method": "GET",              "host": "example.com",              "endpoint": "/pets"          }     ],    "success": true,    "errors": [],    "messages": [],    "result_info": {        "page": 1,        "per_page": 30,        "count": 1,        "total_count": 1    }}
+```json
+{
+    "result":
+        [
+          {
+              "method": "GET",
+              "host": "example.com",
+              "endpoint": "/pets"
+          }
+     ],
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "result_info": {
+        "page": 1,
+        "per_page": 30,
+        "count": 1,
+        "total_count": 1
+    }
+}
 ```
 
 To receive information about the configuration of existing operations, Cloudflare recommends passing the `?feature=schema_info` parameter.
 
 You can add new operations in a schema to Endpoint Management using `POST`.
 
-cURL command
+**cURL command**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations" \--header "Authorization: Bearer <API_TOKEN>" \--header 'Content-Type: application/json' \--data '[  {   "method": "GET",   "host": "example.com",   "endpoint": "/pets",  }]'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header 'Content-Type: application/json' \
+--data '[
+  {
+   "method": "GET",
+   "host": "example.com",
+   "endpoint": "/pets",
+  }
+]'
 ```
 
-```
-{    "result":  [            {                "operation_id": "6c734fcd-455d-4040-9eaa-dbb3830526ae",                "method": "GET",                "host": "example.com",                "endpoint": "/pets",                "last_updated": "2023-04-04T16:07:37.575971Z"         }     ],    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  [
+            {
+                "operation_id": "6c734fcd-455d-4040-9eaa-dbb3830526ae",
+                "method": "GET",
+                "host": "example.com",
+                "endpoint": "/pets",
+                "last_updated": "2023-04-04T16:07:37.575971Z"
+         }
+     ],
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 You can add all operations in a schema that do not already exist in Endpoint Management by combining two commands as one. There is a maximum of 20 operations for this API call. The example requires the `jq` tool.
 
-cURL command
+**cURL command**
 
-```
-curl --silent "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data "$(curl --silent "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations?feature=schema_info&page=1&per_page=5000" --header "Authorization: Bearer <API_TOKEN>" | jq ".result")"
+```bash
+curl --silent "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data "$(curl --silent "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations?feature=schema_info&page=1&per_page=5000" --header "Authorization: Bearer <API_TOKEN>" | jq ".result")"
 ```
 
 Note
@@ -130,52 +221,102 @@ If a schema is uploaded and active for a set of operations, it validates incomin
 
 New operations will not have a mitigation action set and will use the zone-wide default mitigation action. The current default mitigation action can be retrieved using `GET`.
 
-cURL command
+**cURL command**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/schema_validation" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/schema_validation" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-```
-{    "result":  {        "validation_default_mitigation_action": "none",        "validation_override_mitigation_action": null    }    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  {
+        "validation_default_mitigation_action": "none",
+        "validation_override_mitigation_action": null
+    }
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 A new value out of `none`, `log`, and `block` can be set using `PUT`.
 
-cURL command
+**cURL command**
 
-```
-curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/schema_validation" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "validation_default_mitigation_action": "block"}'
+```bash
+curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/schema_validation" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "validation_default_mitigation_action": "block"
+}'
 ```
 
-```
-{    "result":  {        "validation_default_mitigation_action": "block",        "validation_override_mitigation_action": null    }    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  {
+        "validation_default_mitigation_action": "block",
+        "validation_override_mitigation_action": null
+    }
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 If the mitigation action for an individual operation is of interest, the current value can be retrieved with `GET` using the operation ID.
 
-cURL command
+**cURL command**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-```
-{    "result":  {        "mitigation_action": "null"    }    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  {
+        "mitigation_action": "null"
+    }
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 If the value is `null`, it means that no mitigation action has been specified for this operation and the default mitigation action is being used.
 
 You can set the mitigation action to a value out of `none`, `block`, `log`, and `null` by using `PUT`.
 
-cURL command
+**cURL command**
 
-```
-curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{    "mitigation_action": "block"}'
+```bash
+curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+    "mitigation_action": "block"
+}'
 ```
 
-```
-{    "result":  {        "mitigation_action": "block"    }    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  {
+        "mitigation_action": "block"
+    }
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 ### List all schemas
@@ -192,14 +333,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Domain API Gateway`
 * `Domain API Gateway Read`
 
-List all uploaded schemas
+**List all uploaded schemas**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{    "result":  [        {          "schema_id": "af632e95-c986-4738-a67d-2ac09995017a",          "name": "example_schema",          "kind": "openapi_v3",          "source": "<SOURCE>",          "created_at": "2023-04-03T15:10:08.902309Z"      }    ]    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  [
+        {
+          "schema_id": "af632e95-c986-4738-a67d-2ac09995017a",
+          "name": "example_schema",
+          "kind": "openapi_v3",
+          "source": "<SOURCE>",
+          "created_at": "2023-04-03T15:10:08.902309Z"
+      }
+    ]
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 Note
@@ -216,40 +374,97 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account API Gateway`
 * `Domain API Gateway`
 
-Delete a schema
+**Delete a schema**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas/$SCHEMA_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas/$SCHEMA_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{    "result":  null,    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  null,
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 ### Activate a learned schema for an operation
 
 Cloudflare provides automatically learned parameter schemas for all operations in Endpoint Management with a sufficient amount of requests. A learned schema can be inspected using `GET`.
 
-cURL command
+**cURL command**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}?feature=parameter_schemas" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}?feature=parameter_schemas" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-```
-{    "result":    {        "operation_id": "5c734fcd-455d-4040-9eaa-dbb3830526ae",        "method": "PATCH",        "host": "example.com",        "endpoint": "/pets",        "last_updated": "2023-04-04T16:07:37.575971Z",        "features":        {            "parameter_schemas":            {                "last_updated": "2023-04-03T20:11:55.879006Z",                "parameter_schemas":                {                    "responses": null,                    "parameters":                    [                        {                            "in": "query",                            "name": "var1",                            "schema":                            {                                "type": "string"                            },                            "required": true,                            "description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema."                        }                    ],                    "x-cf-parameter-schemas": "operation schema with automatically learned path and query parameters"                }            }        }    },    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":
+    {
+        "operation_id": "5c734fcd-455d-4040-9eaa-dbb3830526ae",
+        "method": "PATCH",
+        "host": "example.com",
+        "endpoint": "/pets",
+        "last_updated": "2023-04-04T16:07:37.575971Z",
+        "features":
+        {
+            "parameter_schemas":
+            {
+                "last_updated": "2023-04-03T20:11:55.879006Z",
+                "parameter_schemas":
+                {
+                    "responses": null,
+                    "parameters":
+                    [
+                        {
+                            "in": "query",
+                            "name": "var1",
+                            "schema":
+                            {
+                                "type": "string"
+                            },
+                            "required": true,
+                            "description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema."
+                        }
+                    ],
+                    "x-cf-parameter-schemas": "operation schema with automatically learned path and query parameters"
+                }
+            }
+        }
+    },
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 If you are satisfied with the inspected parameter schema, you can add and activate it using `PUT`.
 
-cURL command
+**cURL command**
 
-```
-curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}/cloudflare_learned_schema?timestamp=2023-04-03T20:11:55.879006Z" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations/{operation_id}/cloudflare_learned_schema?timestamp=2023-04-03T20:11:55.879006Z" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-```
-{    "result": null,    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result": null,
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 Note
@@ -260,14 +475,29 @@ Parameter schemas are updated between every 24 hours up to one week. To ensure t
 
 To quickly disable Schema validation for a whole zone, use `PATCH`. This operation will override all operation-mitigation actions.
 
-cURL command
+**cURL command**
 
-```
-curl --request PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/schema_validation" \--header "Authorization: Bearer <API_TOKEN>" \--header 'Content-Type: application/json' \--data '{  "validation_override_mitigation_action": "none"}'
+```bash
+curl --request PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/schema_validation" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header 'Content-Type: application/json' \
+--data '{
+  "validation_override_mitigation_action": "none"
+}'
 ```
 
-```
-{    "result":  {        "validation_default_mitigation_action": "block",        "validation_override_mitigation_action": "none"    }    "success": true,    "errors":    [],    "messages":    []}
+```json
+{
+    "result":  {
+        "validation_default_mitigation_action": "block",
+        "validation_override_mitigation_action": "none"
+    }
+    "success": true,
+    "errors":
+    [],
+    "messages":
+    []
+}
 ```
 
 ```json

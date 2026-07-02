@@ -24,7 +24,7 @@ To set up PhishNet Microsoft 365:
 2. Select **Upload custom apps**.
 3. Choose **Provide link to manifest file** and paste the following URL:
 
-```
+```txt
 https://phishnet-o365.area1cloudflare-webapps.workers.dev?clientId=ODcxNDA0MjMyNDM3NTA4NjQwNDk1Mzc3MDIxNzE0OTcxNTg0Njk5NDEyOTE2NDU5ODQyNjU5NzYzNjYyNDQ3NjEwMzIxODEyMDk1NQ
 ```
 

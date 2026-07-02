@@ -22,30 +22,68 @@ Access aggregated and anonymized DNS queries to Cloudflare's [1.1.1.1](https://d
 
 In the next example, we will request the top originating locations for `google.com` DNS queries:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/dns/top/locations?domain=google.com&dateRange=1d&format=json&limit=2" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/dns/top/locations?domain=google.com&dateRange=1d&format=json&limit=2" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The response shows that most queries come from the United States and Brazil:
 
-```
-{  "success": true,  "errors": [],  "result": {    "top_0": [      {        "clientCountryAlpha2": "US",        "clientCountryName": "United States",        "value": "43.474518"      },      {        "clientCountryAlpha2": "BR",        "clientCountryName": "Brazil",        "value": "10.772799"      }    ],    "meta": {      // ...    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "result": {
+    "top_0": [
+      {
+        "clientCountryAlpha2": "US",
+        "clientCountryName": "United States",
+        "value": "43.474518"
+      },
+      {
+        "clientCountryAlpha2": "BR",
+        "clientCountryName": "Brazil",
+        "value": "10.772799"
+      }
+    ],
+    "meta": {
+      // ...
+    }
+  }
+}
 ```
 
 Making the same search request for `yandex.ru`, a Russian search engine:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/dns/top/locations?domain=yandex.ru&dateRange=1d&format=json&limit=2" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/dns/top/locations?domain=yandex.ru&dateRange=1d&format=json&limit=2" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Returns the following response:
 
-```
-{  "success": true,  "errors": [],  "result": {    "top_0": [      {        "clientCountryAlpha2": "RU",        "clientCountryName": "Russian Federation",        "value": "73.710495"      },      {        "clientCountryAlpha2": "DE",        "clientCountryName": "Germany",        "value": "5.518052"      }    ],    "meta": {      // ...    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "result": {
+    "top_0": [
+      {
+        "clientCountryAlpha2": "RU",
+        "clientCountryName": "Russian Federation",
+        "value": "73.710495"
+      },
+      {
+        "clientCountryAlpha2": "DE",
+        "clientCountryName": "Germany",
+        "value": "5.518052"
+      }
+    ],
+    "meta": {
+      // ...
+    }
+  }
+}
 ```
 
 As expected, most queries come from Russia.

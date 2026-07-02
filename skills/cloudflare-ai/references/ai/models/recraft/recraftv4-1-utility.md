@@ -29,144 +29,269 @@ Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1678)
-* [ cURL ](#tab-panel-1679)
+* [ TypeScript ](#tab-panel-1726)
+* [ cURL ](#tab-panel-1727)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility',  { prompt: 'A friendly cartoon robot waving hello against a white background' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility",  "input": {    "prompt": "A friendly cartoon robot waving hello against a white background"  }}'
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility',
+  { prompt: 'A friendly cartoon robot waving hello against a white background' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1676)
-* [ Raw response ](#tab-panel-1677)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility",
+  "input": {
+    "prompt": "A friendly cartoon robot waving hello against a white background"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1724)
+* [ Raw response ](#tab-panel-1725)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/simple-generation.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/simple-generation.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/simple-generation.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Product Mockup**  — Generate a product concept image
 
-* [ TypeScript ](#tab-panel-1682)
-* [ cURL ](#tab-panel-1683)
+* [ TypeScript ](#tab-panel-1730)
+* [ cURL ](#tab-panel-1731)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility',  { prompt: 'A clean product photo of a white ceramic coffee mug on a wooden table' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility",  "input": {    "prompt": "A clean product photo of a white ceramic coffee mug on a wooden table"  }}'
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility',
+  { prompt: 'A clean product photo of a white ceramic coffee mug on a wooden table' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1680)
-* [ Raw response ](#tab-panel-1681)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility",
+  "input": {
+    "prompt": "A clean product photo of a white ceramic coffee mug on a wooden table"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1728)
+* [ Raw response ](#tab-panel-1729)
 
 ![Product Mockup](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/product-mockup.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/product-mockup.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/product-mockup.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Custom Size**  — Specify output dimensions
 
-* [ TypeScript ](#tab-panel-1686)
-* [ cURL ](#tab-panel-1687)
+* [ TypeScript ](#tab-panel-1734)
+* [ cURL ](#tab-panel-1735)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility',
+  {
+    prompt: 'A simple banner illustration with abstract shapes and warm colors',
+    size: '1024x1024',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility',  {    prompt: 'A simple banner illustration with abstract shapes and warm colors',    size: '1024x1024',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility",
+  "input": {
+    "prompt": "A simple banner illustration with abstract shapes and warm colors",
+    "size": "1024x1024"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility",  "input": {    "prompt": "A simple banner illustration with abstract shapes and warm colors",    "size": "1024x1024"  }}'
-```
-
-* [ Output ](#tab-panel-1684)
-* [ Raw response ](#tab-panel-1685)
+* [ Output ](#tab-panel-1732)
+* [ Raw response ](#tab-panel-1733)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/custom-size.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/custom-size.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/custom-size.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **With Color Controls**  — Guide generation with specific colors
 
-* [ TypeScript ](#tab-panel-1694)
-* [ cURL ](#tab-panel-1695)
+* [ TypeScript ](#tab-panel-1742)
+* [ cURL ](#tab-panel-1743)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility',
+  {
+    prompt: 'A flat illustration of a globe with network connections',
+    controls: { colors: [{ rgb: [30, 90, 200] }, { rgb: [255, 255, 255] }] },
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility',  {    prompt: 'A flat illustration of a globe with network connections',    controls: { colors: [{ rgb: [30, 90, 200] }, { rgb: [255, 255, 255] }] },  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility",
+  "input": {
+    "prompt": "A flat illustration of a globe with network connections",
+    "controls": {
+      "colors": [
+        {
+          "rgb": [
+            30,
+            90,
+            200
+          ]
+        },
+        {
+          "rgb": [
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    }
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility",  "input": {    "prompt": "A flat illustration of a globe with network connections",    "controls": {      "colors": [        {          "rgb": [            30,            90,            200          ]        },        {          "rgb": [            255,            255,            255          ]        }      ]    }  }}'
-```
-
-* [ Output ](#tab-panel-1688)
-* [ Raw response ](#tab-panel-1689)
+* [ Output ](#tab-panel-1736)
+* [ Raw response ](#tab-panel-1737)
 
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/with-color-controls.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/with-color-controls.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/with-color-controls.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Background Color**  — Set a specific background color
 
-* [ TypeScript ](#tab-panel-1692)
-* [ cURL ](#tab-panel-1693)
+* [ TypeScript ](#tab-panel-1740)
+* [ cURL ](#tab-panel-1741)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-utility',
+  {
+    prompt: 'A simple icon of a checkmark inside a circle',
+    controls: { background_color: { rgb: [240, 248, 255] } },
+    size: '1024x1024',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-utility',  {    prompt: 'A simple icon of a checkmark inside a circle',    controls: { background_color: { rgb: [240, 248, 255] } },    size: '1024x1024',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-utility",
+  "input": {
+    "prompt": "A simple icon of a checkmark inside a circle",
+    "controls": {
+      "background_color": {
+        "rgb": [
+          240,
+          248,
+          255
+        ]
+      }
+    },
+    "size": "1024x1024"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility",  "input": {    "prompt": "A simple icon of a checkmark inside a circle",    "controls": {      "background_color": {        "rgb": [          240,          248,          255        ]      }    },    "size": "1024x1024"  }}'
-```
-
-* [ Output ](#tab-panel-1690)
-* [ Raw response ](#tab-panel-1691)
+* [ Output ](#tab-panel-1738)
+* [ Raw response ](#tab-panel-1739)
 
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/background-color.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/background-color.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/background-color.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1696)
-* [ Output ](#tab-panel-1697)
-
-▶controls{}
-
-`object`
+* [ Input ](#tab-panel-1744)
+* [ Output ](#tab-panel-1745)
 
 prompt
 
@@ -183,6 +308,10 @@ style
 substyle
 
 `string`
+
+▶controls{}
+
+`object`
 
 image
 

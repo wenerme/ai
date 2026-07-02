@@ -14,18 +14,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9027)
-* [  Python ](#tab-panel-9028)
+* [  JavaScript ](#tab-panel-9318)
+* [  Python ](#tab-panel-9319)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 env.NAMESPACE.list();
 ```
 
-Python
+**Python**
 
-```
+```py
 await self.env.NAMESPACE.list()
 ```
 
@@ -35,22 +35,45 @@ The `list()` method returns a promise you can `await` on to get the value.
 
 An example of listing keys from within a Worker:
 
-* [  JavaScript ](#tab-panel-9029)
-* [  Python ](#tab-panel-9030)
+* [  JavaScript ](#tab-panel-9320)
+* [  Python ](#tab-panel-9321)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      const value = await env.NAMESPACE.list();
+
+
+      return new Response(JSON.stringify(value.keys), {
+        status: 200
+      });
+    }
+    catch (e)
+    {
+      return new Response(e.message, {status: 500});
+    }
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    try {      const value = await env.NAMESPACE.list();
-      return new Response(JSON.stringify(value.keys), {        status: 200      });    }    catch (e)    {      return new Response(e.message, {status: 500});    }  },};
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        try:            value = await self.env.NAMESPACE.list()
-            return Response.json(value["keys"])        except Exception as e:            return Response(str(e), status=500)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        try:
+            value = await self.env.NAMESPACE.list()
+
+
+            return Response.json(value["keys"])
+        except Exception as e:
+            return Response(str(e), status=500)
 ```
 
 ## Reference
@@ -63,18 +86,18 @@ The following method is provided to list the keys of KV:
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9031)
-* [  Python ](#tab-panel-9032)
+* [  JavaScript ](#tab-panel-9322)
+* [  Python ](#tab-panel-9323)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 env.NAMESPACE.list(options?)
 ```
 
-Python
+**Python**
 
-```
+```py
 self.env.NAMESPACE.list(options)
 ```
 
@@ -96,8 +119,18 @@ self.env.NAMESPACE.list(options)
 
 The `list()` method returns a promise which resolves with an object that looks like the following:
 
-```
-{  "keys": [    {      "name": "foo",      "expiration": 1234,      "metadata": { "someMetadataKey": "someMetadataValue" }    }  ],  "list_complete": false,  "cursor": "6Ck1la0VxJ0djhidm1MdX2FyD"}
+```json
+{
+  "keys": [
+    {
+      "name": "foo",
+      "expiration": 1234,
+      "metadata": { "someMetadataKey": "someMetadataValue" }
+    }
+  ],
+  "list_complete": false,
+  "cursor": "6Ck1la0VxJ0djhidm1MdX2FyD"
+}
 ```
 
 The `keys` property will contain an array of objects describing each key. That object will have one to three keys of its own: the `name` of the key, and optionally the key's `expiration` and `metadata` values.
@@ -108,18 +141,20 @@ If `list_complete` is `false`, there are more keys to fetch, even if the `keys` 
 
 Consider storing your values in metadata if your values fit in the [metadata-size limit](https://developers.cloudflare.com/kv/platform/limits/). Storing values in metadata is more efficient than a `list()` followed by a `get()` per key. When using `put()`, leave the `value` parameter empty and instead include a property in the metadata object:
 
-* [  JavaScript ](#tab-panel-9033)
-* [  Python ](#tab-panel-9034)
+* [  JavaScript ](#tab-panel-9324)
+* [  Python ](#tab-panel-9325)
 
-JavaScript
+**JavaScript**
 
+```js
+await NAMESPACE.put(key, "", {
+  metadata: { value: value },
+});
 ```
-await NAMESPACE.put(key, "", {  metadata: { value: value },});
-```
 
-Python
+**Python**
 
-```
+```py
 await self.env.NAMESPACE.put(key, "", metadata={"value": value})
 ```
 
@@ -133,20 +168,30 @@ List all the keys starting with a particular prefix.
 
 For example, you may have structured your keys with a user, a user ID, and key names, separated by colons (such as `user:1:<key>`). You could get the keys for user number one by using the following code:
 
-* [  JavaScript ](#tab-panel-9035)
-* [  Python ](#tab-panel-9036)
+* [  JavaScript ](#tab-panel-9326)
+* [  Python ](#tab-panel-9327)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const value = await env.NAMESPACE.list({ prefix: "user:1:" });
+    return new Response(value.keys);
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    const value = await env.NAMESPACE.list({ prefix: "user:1:" });    return new Response(value.keys);  },};
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        value = await self.env.NAMESPACE.list(prefix="user:1:")        return Response(str(value["keys"]))
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        value = await self.env.NAMESPACE.list(prefix="user:1:")
+        return Response(str(value["keys"]))
 ```
 
 This will return all keys starting with the `"user:1:"` prefix.
@@ -159,22 +204,30 @@ Keys are always returned in lexicographically sorted order according to their UT
 
 If there are more keys to fetch, the `list_complete` key will be set to `false` and a `cursor` will also be returned. In this case, you can call `list()` again with the `cursor` value to get the next batch of keys:
 
-* [  JavaScript ](#tab-panel-9037)
-* [  Python ](#tab-panel-9038)
+* [  JavaScript ](#tab-panel-9328)
+* [  Python ](#tab-panel-9329)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const value = await NAMESPACE.list();
+
+
 const cursor = value.cursor;
+
+
 const next_value = await NAMESPACE.list({ cursor: cursor });
 ```
 
-Python
+**Python**
 
-```
+```py
 value = await self.env.NAMESPACE.list()
+
+
 cursor = value.get("cursor")
+
+
 next_value = await self.env.NAMESPACE.list(cursor=cursor)
 ```
 
@@ -188,18 +241,20 @@ When de-paginating a large result set while also providing a `prefix` argument, 
 
 Consider storing your values in metadata if your values fit in the [metadata-size limit](https://developers.cloudflare.com/kv/platform/limits/). Storing values in metadata is more efficient than a `list()` followed by a `get()` per key. When using `put()`, leave the `value` parameter empty and instead include a property in the metadata object:
 
-* [  JavaScript ](#tab-panel-9039)
-* [  Python ](#tab-panel-9040)
+* [  JavaScript ](#tab-panel-9330)
+* [  Python ](#tab-panel-9331)
 
-JavaScript
+**JavaScript**
 
+```js
+await NAMESPACE.put(key, "", {
+  metadata: { value: value },
+});
 ```
-await NAMESPACE.put(key, "", {  metadata: { value: value },});
-```
 
-Python
+**Python**
 
-```
+```py
 await self.env.NAMESPACE.put(key, "", metadata={"value": value})
 ```
 

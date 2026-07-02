@@ -22,10 +22,12 @@ The `HTMLRewriter` class should be instantiated once in your Workers script, wit
 
 ## Constructor
 
-JavaScript
+**JavaScript**
 
-```
-new HTMLRewriter()  .on("*", new ElementHandler())  .onDocument(new DocumentHandler());
+```js
+new HTMLRewriter()
+  .on("*", new ElementHandler())
+  .onDocument(new DocumentHandler());
 ```
 
 ---
@@ -51,40 +53,90 @@ There are two handler types that can be used with `HTMLRewriter`: element handle
 
 An element handler responds to any incoming element, when attached using the `.on` function of an `HTMLRewriter` instance. The element handler should respond to `element`, `comments`, and `text`. The example processes `div` elements with an `ElementHandler` class.
 
-JavaScript
+**JavaScript**
 
-```
-class ElementHandler {  element(element) {    // An incoming element, such as `div`    console.log(`Incoming element: ${element.tagName}`);  }
-  comments(comment) {    // An incoming comment  }
-  text(text) {    // An incoming piece of text  }}
-async function handleRequest(req) {  const res = await fetch(req);
-  return new HTMLRewriter().on("div", new ElementHandler()).transform(res);}
+```js
+class ElementHandler {
+  element(element) {
+    // An incoming element, such as `div`
+    console.log(`Incoming element: ${element.tagName}`);
+  }
+
+
+  comments(comment) {
+    // An incoming comment
+  }
+
+
+  text(text) {
+    // An incoming piece of text
+  }
+}
+
+
+async function handleRequest(req) {
+  const res = await fetch(req);
+
+
+  return new HTMLRewriter().on("div", new ElementHandler()).transform(res);
+}
 ```
 
 ### Document Handlers
 
 A document handler represents the incoming HTML document. A number of functions can be defined on a document handler to query and manipulate a document’s `doctype`, `comments`, `text`, and `end`. Unlike an element handler, a document handler’s `doctype`, `comments`, `text`, and `end` functions are not scoped by a particular selector. A document handler's functions are called for all the content on the page including the content outside of the top-level HTML tag:
 
-JavaScript
+**JavaScript**
 
-```
-class DocumentHandler {  doctype(doctype) {    // An incoming doctype, such as <!DOCTYPE html>  }
-  comments(comment) {    // An incoming comment  }
-  text(text) {    // An incoming piece of text  }
-  end(end) {    // The end of the document  }}
+```js
+class DocumentHandler {
+  doctype(doctype) {
+    // An incoming doctype, such as <!DOCTYPE html>
+  }
+
+
+  comments(comment) {
+    // An incoming comment
+  }
+
+
+  text(text) {
+    // An incoming piece of text
+  }
+
+
+  end(end) {
+    // The end of the document
+  }
+}
 ```
 
 #### Async Handlers
 
 All functions defined on both element and document handlers can return either `void` or a `Promise<void>`. Making your handler function `async` allows you to access external resources such as an API via fetch, Workers KV, Durable Objects, or the cache.
 
-JavaScript
+**JavaScript**
 
-```
-class UserElementHandler {  async element(element) {    let response = await fetch(new Request("/user"));
-    // fill in user info using response  }}
-async function handleRequest(req) {  const res = await fetch(req);
-  // run the user element handler via HTMLRewriter on a div with ID `user_info`  return new HTMLRewriter()    .on("div#user_info", new UserElementHandler())    .transform(res);}
+```js
+class UserElementHandler {
+  async element(element) {
+    let response = await fetch(new Request("/user"));
+
+
+    // fill in user info using response
+  }
+}
+
+
+async function handleRequest(req) {
+  const res = await fetch(req);
+
+
+  // run the user element handler via HTMLRewriter on a div with ID `user_info`
+  return new HTMLRewriter()
+    .on("div#user_info", new UserElementHandler())
+    .transform(res);
+}
 ```
 
 ### Element
@@ -212,10 +264,14 @@ Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/h
 
 The `comments` function on an element handler allows developers to query and manipulate HTML comment tags.
 
-JavaScript
+**JavaScript**
 
-```
-class ElementHandler {  comments(comment) {    // An incoming comment element, such as <!-- My comment -->  }}
+```js
+class ElementHandler {
+  comments(comment) {
+    // An incoming comment element, such as <!-- My comment -->
+  }
+}
 ```
 
 #### Properties
@@ -248,10 +304,15 @@ Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/h
 
 The `doctype` function on a document handler allows developers to query a document's [doctype ↗](https://developer.mozilla.org/en-US/docs/Glossary/Doctype).
 
-JavaScript
+**JavaScript**
 
-```
-class DocumentHandler {  doctype(doctype) {    // An incoming doctype element, such as    // <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  }}
+```js
+class DocumentHandler {
+  doctype(doctype) {
+    // An incoming doctype element, such as
+    // <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+  }
+}
 ```
 
 #### Properties
@@ -270,10 +331,14 @@ class DocumentHandler {  doctype(doctype) {    // An incoming doctype element, s
 
 The `end` function on a document handler allows developers to append content to the end of a document.
 
-JavaScript
+**JavaScript**
 
-```
-class DocumentHandler {  end(end) {    // The end of the document  }}
+```js
+class DocumentHandler {
+  end(end) {
+    // The end of the document
+  }
+}
 ```
 
 #### Methods
@@ -357,12 +422,29 @@ This is what selectors are and what they are used for.
 
 If a handler throws an exception, parsing is immediately halted, the transformed response body is errored with the thrown exception, and the untransformed response body is canceled (closed). If the transformed response body was already partially streamed back to the client, the client will see a truncated response.
 
-JavaScript
+**JavaScript**
 
-```
-async function handle(request) {  let oldResponse = await fetch(request);  let newResponse = new HTMLRewriter()    .on("*", {      element(element) {        throw new Error("A really bad error.");      },    })    .transform(oldResponse);
-  // At this point, an expression like `await newResponse.text()`  // will throw `new Error("A really bad error.")`.  // Thereafter, any use of `newResponse.body` will throw the same error,  // and `oldResponse.body` will be closed.
-  // Alternatively, this will produce a truncated response to the client:  return newResponse;}
+```js
+async function handle(request) {
+  let oldResponse = await fetch(request);
+  let newResponse = new HTMLRewriter()
+    .on("*", {
+      element(element) {
+        throw new Error("A really bad error.");
+      },
+    })
+    .transform(oldResponse);
+
+
+  // At this point, an expression like `await newResponse.text()`
+  // will throw `new Error("A really bad error.")`.
+  // Thereafter, any use of `newResponse.body` will throw the same error,
+  // and `oldResponse.body` will be closed.
+
+
+  // Alternatively, this will produce a truncated response to the client:
+  return newResponse;
+}
 ```
 
 ---

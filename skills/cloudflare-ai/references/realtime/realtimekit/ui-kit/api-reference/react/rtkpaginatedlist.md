@@ -31,16 +31,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPaginatedList } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPaginatedList />;}
+
+
+function MyComponent() {
+  return <RtkPaginatedList />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPaginatedList } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPaginatedList      autoScroll={true}      createNodes={[]}      emptyListLabel="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPaginatedList
+      autoScroll={true}
+      createNodes={[]}
+      emptyListLabel="example"
+    />
+  );
+}
 ```
 
 ```json

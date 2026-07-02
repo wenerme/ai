@@ -62,10 +62,15 @@ AI Gateway exports spans with the following attributes following the [Semantic C
 
 Any custom metadata added to your requests via the `cf-aig-metadata` header will also be included as span attributes. This allows you to correlate traces with user IDs, team names, or other business context.
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'Authorization: Bearer {api_token}' \  --header 'Content-Type: application/json' \  --header 'cf-aig-metadata: {"user_id": "user123", "team": "engineering"}' \  --data '{    "model": "gpt-4o",    "messages": [{"role": "user", "content": "Hello!"}]  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  --header 'Authorization: Bearer {api_token}' \
+  --header 'Content-Type: application/json' \
+  --header 'cf-aig-metadata: {"user_id": "user123", "team": "engineering"}' \
+  --data '{
+    "model": "gpt-4o",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
 ```
 
 The above request will include `user_id` and `team` as additional span attributes in the exported trace.
@@ -81,10 +86,16 @@ AI Gateway supports trace context propagation, allowing you to link AI Gateway s
 * `cf-aig-otel-trace-id` (optional): A 32-character hex string to use as the trace ID
 * `cf-aig-otel-parent-span-id` (optional): A 16-character hex string to use as the parent span ID
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'cf-aig-otel-trace-id: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6' \  --header 'cf-aig-otel-parent-span-id: a1b2c3d4e5f6g7h8' \  --header 'Authorization: Bearer {api_token}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-4o",    "messages": [{"role": "user", "content": "Hello!"}]  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+  --header 'cf-aig-otel-trace-id: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6' \
+  --header 'cf-aig-otel-parent-span-id: a1b2c3d4e5f6g7h8' \
+  --header 'Authorization: Bearer {api_token}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "model": "gpt-4o",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
 ```
 
 When these headers are provided, the AI Gateway span will use them to link with your existing trace. If not provided, AI Gateway will generate a new trace ID automatically.

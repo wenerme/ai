@@ -25,16 +25,28 @@ A component which shows an animating spinner.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSpinner } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSpinner />;}
+
+
+function MyComponent() {
+  return <RtkSpinner />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSpinner } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSpinner      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSpinner
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

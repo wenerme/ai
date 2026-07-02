@@ -37,17 +37,44 @@ Once you [create a new certificate](https://developers.cloudflare.com/ssl/edge-c
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-10732)
-* [ Dashboard ](#tab-panel-10733)
+* [ API ](#tab-panel-11027)
+* [ Dashboard ](#tab-panel-11028)
 
 You can access these tokens using the API with the [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) and including `status=pending_validation` as a request parameter.
 
 For example, here are two tokens highlighted in the API response for a wildcard certificate.
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<CERTIFICATE_ID>",      "type": "advanced",      "hosts": ["*.<DOMAIN>.com", "<DOMAIN>.com"],      "primary_certificate": "0",      "status": "pending_validation",      "certificates": [],      "created_on": "2022-10-12T21:46:21.979150Z",      "validity_days": 90,      "validation_method": "txt",      "validation_records": [        {          "status": "pending",          "txt_name": "_acme-challenge.<DOMAIN>.com",          "txt_value": "lXLOcN6cPv0nproViNcUHcahD9TrIPlNgdwesj0pYpk"        },        {          "status": "pending",          "txt_name": "_acme-challenge.<DOMAIN>.com",          "txt_value": "O0o8VgJu_OGu-T30_cvT-4xO5ZX1_2WsVNUrpUKE6ns"        }      ],      "certificate_authority": "google"    }  ]}
+```json
+{
+  "result": [
+    {
+      "id": "<CERTIFICATE_ID>",
+      "type": "advanced",
+      "hosts": ["*.<DOMAIN>.com", "<DOMAIN>.com"],
+      "primary_certificate": "0",
+      "status": "pending_validation",
+      "certificates": [],
+      "created_on": "2022-10-12T21:46:21.979150Z",
+      "validity_days": 90,
+      "validation_method": "txt",
+      "validation_records": [
+        {
+          "status": "pending",
+          "txt_name": "_acme-challenge.<DOMAIN>.com",
+          "txt_value": "lXLOcN6cPv0nproViNcUHcahD9TrIPlNgdwesj0pYpk"
+        },
+        {
+          "status": "pending",
+          "txt_name": "_acme-challenge.<DOMAIN>.com",
+          "txt_value": "O0o8VgJu_OGu-T30_cvT-4xO5ZX1_2WsVNUrpUKE6ns"
+        }
+      ],
+      "certificate_authority": "google"
+    }
+  ]
+}
 ```
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.

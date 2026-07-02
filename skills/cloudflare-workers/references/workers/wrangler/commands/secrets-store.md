@@ -26,25 +26,19 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-12765)
-* [  pnpm ](#tab-panel-12766)
-* [  yarn ](#tab-panel-12767)
+* [  npm ](#tab-panel-13020)
+* [  pnpm ](#tab-panel-13021)
+* [  yarn ](#tab-panel-13022)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret create [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store secret create [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store secret create [STORE-ID]
 ```
 
@@ -84,40 +78,36 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `create` command to create an account-level secret.
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name ServiceA_key-1 --scopes workers --remote
 ```
 
-```
+```sh
 ✓ Enter a secret value: › ***
-🔐 Creating secret... (Name: ServiceA_key-1, Value: REDACTED, Scopes: workers, Comment: undefined)✓ Select an account: › My account✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
+
+
+🔐 Creating secret... (Name: ServiceA_key-1, Value: REDACTED, Scopes: workers, Comment: undefined)
+✓ Select an account: › My account
+✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
 ```
 
 ### `secrets-store secret update`
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-12768)
-* [  pnpm ](#tab-panel-12769)
-* [  yarn ](#tab-panel-12770)
+* [  npm ](#tab-panel-13023)
+* [  pnpm ](#tab-panel-13024)
+* [  yarn ](#tab-panel-13025)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret update [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store secret update [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store secret update [STORE-ID]
 ```
 
@@ -159,25 +149,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-12771)
-* [  pnpm ](#tab-panel-12772)
-* [  yarn ](#tab-panel-12773)
+* [  npm ](#tab-panel-13026)
+* [  pnpm ](#tab-panel-13027)
+* [  yarn ](#tab-panel-13028)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store secret duplicate [STORE-ID]
 ```
 
@@ -219,25 +203,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-12774)
-* [  pnpm ](#tab-panel-12775)
-* [  yarn ](#tab-panel-12776)
+* [  npm ](#tab-panel-13029)
+* [  pnpm ](#tab-panel-13030)
+* [  yarn ](#tab-panel-13031)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret get [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store secret get [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store secret get [STORE-ID]
 ```
 
@@ -271,39 +249,35 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example with the expected output:
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-id 13bc7498c6374a4e9d13be091c3c65f1 --remote
 ```
 
-```
-🔐 Getting secret... (ID: 13bc7498c6374a4e9d13be091c3c65f1)✓ Select an account: › My account| Name                        | ID                                  | StoreID                             | Comment | Scopes  | Status  | Created                | Modified               ||-----------------------------|-------------------------------------|-------------------------------------|---------|---------|---------|------------------------|------------------------|| ServiceA_key-1          | 13bc7498c6374a4e9d13be091c3c65f1    | 8f7a1cdced6342c18d223ece462fd88d    |         | workers | active  | 4/9/2025, 10:06:01 PM  | 4/15/2025, 09:13:05 AM |
+```sh
+🔐 Getting secret... (ID: 13bc7498c6374a4e9d13be091c3c65f1)
+✓ Select an account: › My account
+| Name                        | ID                                  | StoreID                             | Comment | Scopes  | Status  | Created                | Modified               |
+|-----------------------------|-------------------------------------|-------------------------------------|---------|---------|---------|------------------------|------------------------|
+| ServiceA_key-1          | 13bc7498c6374a4e9d13be091c3c65f1    | 8f7a1cdced6342c18d223ece462fd88d    |         | workers | active  | 4/9/2025, 10:06:01 PM  | 4/15/2025, 09:13:05 AM |
 ```
 
 ### `secrets-store secret delete`
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-12777)
-* [  pnpm ](#tab-panel-12778)
-* [  yarn ](#tab-panel-12779)
+* [  npm ](#tab-panel-13032)
+* [  pnpm ](#tab-panel-13033)
+* [  yarn ](#tab-panel-13034)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret delete [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store secret delete [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store secret delete [STORE-ID]
 ```
 
@@ -339,25 +313,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List secrets within a store
 
-* [  npm ](#tab-panel-12780)
-* [  pnpm ](#tab-panel-12781)
-* [  yarn ](#tab-panel-12782)
+* [  npm ](#tab-panel-13035)
+* [  pnpm ](#tab-panel-13036)
+* [  yarn ](#tab-panel-13037)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret list [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store secret list [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store secret list [STORE-ID]
 ```
 
@@ -403,25 +371,19 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-12783)
-* [  pnpm ](#tab-panel-12784)
-* [  yarn ](#tab-panel-12785)
+* [  npm ](#tab-panel-13038)
+* [  pnpm ](#tab-panel-13039)
+* [  yarn ](#tab-panel-13040)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store store create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store store create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store store create [NAME]
 ```
 
@@ -451,39 +413,32 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `create` command to create a store.
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store store create default --remote
 ```
 
-```
-🔐 Creating store... (Name: default)✅ Created store! (Name: default, ID: 2e2a82d317134506b58defbe16982d54)
+```sh
+🔐 Creating store... (Name: default)
+✅ Created store! (Name: default, ID: 2e2a82d317134506b58defbe16982d54)
 ```
 
 ### `secrets-store store delete`
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-12786)
-* [  pnpm ](#tab-panel-12787)
-* [  yarn ](#tab-panel-12788)
+* [  npm ](#tab-panel-13041)
+* [  pnpm ](#tab-panel-13042)
+* [  yarn ](#tab-panel-13043)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store store delete [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store store delete [STORE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store store delete [STORE-ID]
 ```
 
@@ -513,39 +468,32 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `delete` command to delete a store.
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remote
 ```
 
-```
-🔐 Deleting store... (Name: d2dafaeac9434de2b6d08b292ce08211)✅ Deleted store! (ID: d2dafaeac9434de2b6d08b292ce08211)
+```sh
+🔐 Deleting store... (Name: d2dafaeac9434de2b6d08b292ce08211)
+✅ Deleted store! (ID: d2dafaeac9434de2b6d08b292ce08211)
 ```
 
 ### `secrets-store store list`
 
 List stores within an account
 
-* [  npm ](#tab-panel-12789)
-* [  pnpm ](#tab-panel-12790)
-* [  yarn ](#tab-panel-12791)
+* [  npm ](#tab-panel-13044)
+* [  pnpm ](#tab-panel-13045)
+* [  yarn ](#tab-panel-13046)
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store store list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler secrets-store store list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler secrets-store store list
 ```
 
@@ -577,14 +525,17 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `list` command to list stores.
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store store list --remote
 ```
 
-```
-🔐 Listing stores...┌─────────┬──────────────────────────────────┬──────────────────────────────────┬──────────────────────┬──────────────────────┐│ Name    │ ID                               │ AccountID                        │ Created              │ Modified             │├─────────┼──────────────────────────────────┼──────────────────────────────────┼──────────────────────┼──────────────────────┤│ default │ 8876bad33f164462bf0743fe8adf98f4 │ REDACTED │ 4/9/2025, 1:11:48 PM  │ 4/9/2025, 1:11:48 PM │└─────────┴──────────────────────────────────┴──────────────────────────────────┴──────────────────────┴──────────────────────┘
+```sh
+🔐 Listing stores...
+┌─────────┬──────────────────────────────────┬──────────────────────────────────┬──────────────────────┬──────────────────────┐
+│ Name    │ ID                               │ AccountID                        │ Created              │ Modified             │
+├─────────┼──────────────────────────────────┼──────────────────────────────────┼──────────────────────┼──────────────────────┤
+│ default │ 8876bad33f164462bf0743fe8adf98f4 │ REDACTED │ 4/9/2025, 1:11:48 PM  │ 4/9/2025, 1:11:48 PM │
+└─────────┴──────────────────────────────────┴──────────────────────────────────┴──────────────────────┴──────────────────────┘
 ```
 
 ```json

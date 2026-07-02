@@ -31,16 +31,30 @@ Controlbar component provides you with various designs as variants.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkControlbar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkControlbar />;}
+
+
+function MyComponent() {
+  return <RtkControlbar />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkControlbar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkControlbar      disableRender={true}      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkControlbar
+      disableRender={true}
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

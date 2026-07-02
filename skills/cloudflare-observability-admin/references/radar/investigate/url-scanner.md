@@ -24,18 +24,27 @@ Once you have the token, and you know your `account_id`, you are ready to make y
 
 To submit a URL to scan, the only required information is the URL to be scanned in the `POST` request body:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/scan" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "url": "https://www.example.com"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/scan" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "url": "https://www.example.com"
+}'
 ```
 
 By default, the report will have a `Public` visibility level, which means it will appear in the [recent scans ↗](https://radar.cloudflare.com/scan#recent-scans) list and in search results. It will also include a single screenshot with desktop resolution.
 
 A successful response will have a status code of `200` and be similar to the following:
 
-```
-{  "uuid": "095be615-a8ad-4c33-8e9c-c7612fbf6c9f",  "api": "https://api.cloudflare.com/client/v4/accounts/<accountId>/urlscanner/v2/result/095be615-a8ad-4c33-8e9c-c7612fbf6c9f",  "visibility": "public",  "url": "https://www.example.com",  "message": "Submission successful"}
+```json
+{
+  "uuid": "095be615-a8ad-4c33-8e9c-c7612fbf6c9f",
+  "api": "https://api.cloudflare.com/client/v4/accounts/<accountId>/urlscanner/v2/result/095be615-a8ad-4c33-8e9c-c7612fbf6c9f",
+  "visibility": "public",
+  "url": "https://www.example.com",
+  "message": "Submission successful"
+}
 ```
 
 You can submit up to 100 URLs at the same time via the [API ↗](https://developers.cloudflare.com/api/resources/url%5Fscanner/subresources/scans/methods/bulk%5Fcreate/).
@@ -46,8 +55,19 @@ The `uuid` property in the response above identifies the scan and will be requir
 
 Here's an example request body with some custom configuration options:
 
-```
-{  "url": "https://example.com",  "screenshotsResolutions": [    "desktop", "mobile", "tablet"  ],  "customagent": "XXX-my-user-agent",  "referer": "example",  "customHeaders": {    "Authorization": "xxx-token"  },  "visibility": "Unlisted"}
+```json
+{
+  "url": "https://example.com",
+  "screenshotsResolutions": [
+    "desktop", "mobile", "tablet"
+  ],
+  "customagent": "XXX-my-user-agent",
+  "referer": "example",
+  "customHeaders": {
+    "Authorization": "xxx-token"
+  },
+  "visibility": "Unlisted"
+}
 ```
 
 Above, the visibility level is set as `Unlisted`, which means that the scan report won't be included in the [recent scans ↗](https://radar.cloudflare.com/scan#recent-scans) list nor in search results. In effect, only users with knowledge of the scan ID will be able to access it.
@@ -109,18 +129,16 @@ Use a subset of ElasticSearch Query syntax to filter scans. Search results will 
 
 To search for scans to the hostname `google.com`, use the query parameter `q=page.domain:"google.com"`:
 
-Terminal window
-
-```
-curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/search?q=page.domain:google.com' \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/search?q=page.domain:google.com' \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 If, instead, you wanted to search for scans that made at least one request to the hostname `cdnjs.cloudflare.com`, for example sites that use a JavaScript library hosted at `cdnjs.cloudflare.com`, use the query parameter `hostname=cdnjs.cloudflare.com`:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/search?q=domain:cdnjs.cloudflare.com" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/search?q=domain:cdnjs.cloudflare.com" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Some other example queries:

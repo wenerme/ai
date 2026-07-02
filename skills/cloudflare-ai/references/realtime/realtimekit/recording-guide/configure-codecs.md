@@ -23,8 +23,12 @@ You can modify the codec which is used for recording the videos. We currently su
 
 You can change the codec by specifying the codec in the `video_config` field in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/), for example:
 
-```
-{  "video_config": {    "codec": "H264"  }}
+```json
+{
+  "video_config": {
+    "codec": "H264"
+  }
+}
 ```
 
 ## Download Video Files

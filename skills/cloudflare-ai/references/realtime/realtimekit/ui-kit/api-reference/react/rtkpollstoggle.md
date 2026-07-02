@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of polls. You need to pass the `meeting` object to it to see the unread polls count badge. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSidebar: boolean; sidebar: 'polls' }
 ```
 
@@ -35,16 +35,30 @@ TypeScript
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPollsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPollsToggle />;}
+
+
+function MyComponent() {
+  return <RtkPollsToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPollsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPollsToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPollsToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

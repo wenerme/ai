@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of settings module. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSettings: boolean; }
 ```
 
@@ -34,16 +34,29 @@ TypeScript
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettingsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSettingsToggle />;}
+
+
+function MyComponent() {
+  return <RtkSettingsToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettingsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSettingsToggle      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSettingsToggle
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

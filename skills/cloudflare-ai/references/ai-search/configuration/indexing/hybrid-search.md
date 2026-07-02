@@ -18,10 +18,17 @@ Hybrid search runs vector and keyword search in parallel and merges the results.
 
 Set both `index_method.vector` and `index_method.keyword` to `true`:
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "my-instance",  index_method: {    vector: true,    keyword: true,  },  fusion_method: "rrf",});
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "my-instance",
+  index_method: {
+    vector: true,
+    keyword: true,
+  },
+  fusion_method: "rrf",
+});
 ```
 
 To disable hybrid search, set `index_method.keyword` to `false`. The keyword index is deleted.
@@ -55,11 +62,21 @@ Override search settings on individual requests using `ai_search_options.retriev
 | retrieval\_type | "vector", "keyword", or "hybrid" | Force a specific search mode. Must be compatible with index\_method. |
 | fusion\_method  | "rrf" or "max"                   | Override the fusion method.                                          |
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      retrieval_type: "hybrid",      fusion_method: "rrf",    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      retrieval_type: "hybrid",
+      fusion_method: "rrf",
+    },
+  },
+});
 ```
 
 Note

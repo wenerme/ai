@@ -76,7 +76,7 @@ Policy context fields
 
 Paths and queries in the redirect URL take precedence over the original URL. When you turn on **Send policy context**, Gateway will append context to the end of the redirected URL. For example, if the original URL is `example.com/path/to/page?querystring=X&k=1` and the redirect URL is `cloudflare.com/redirect-path?querystring=Y`, Gateway will redirect requests to:
 
-```
+```txt
 cloudflare.com/redirect-path?querystring=Y&cf_user_email=user@example.com
 ```
 
@@ -86,8 +86,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-7480)
-* [ Terraform (v5) ](#tab-panel-7481)
+* [ Dashboard ](#tab-panel-7730)
+* [ Terraform (v5) ](#tab-panel-7731)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -104,8 +104,24 @@ To customize your block page:
 
   * `Zero Trust Write`
 2. In [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings), configure the `block_page` argument with your customizations:
-```
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    block_page = {      enabled = true //do not use the default Gateway block page      mode = "customized_block_page" //use a custom block page      name = "Cloudflare"      logo_path = "https://logos.com/a.png"      header_text = "--header--"      footer_text = "--footer--"      mailto_address = "admin@example.com"      mailto_subject = "Blocked Request"      background_color = "#ffffff"      suppress_footer = false    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+  account_id = var.cloudflare_account_id
+  settings = {
+    block_page = {
+      enabled = true //do not use the default Gateway block page
+      mode = "customized_block_page" //use a custom block page
+      name = "Cloudflare"
+      logo_path = "https://logos.com/a.png"
+      header_text = "--header--"
+      footer_text = "--footer--"
+      mailto_address = "admin@example.com"
+      mailto_subject = "Blocked Request"
+      background_color = "#ffffff"
+      suppress_footer = false
+    }
+  }
+}
 ```
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.
@@ -134,8 +150,8 @@ For DNS Block policies, you will need to turn on the block page for each policy 
 
 To turn on the block page or override your global block page setting for an individual policy:
 
-* [ DNS policy ](#tab-panel-7482)
-* [ HTTP policy ](#tab-panel-7483)
+* [ DNS policy ](#tab-panel-7732)
+* [ HTTP policy ](#tab-panel-7733)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.

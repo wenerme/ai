@@ -75,10 +75,9 @@ Set `cache_ttl` when creating or updating an instance to control how long the in
 
 To clear all cached responses for an instance immediately, use the purge cache operation:
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instances/$INSTANCE_NAME/purge_cache" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```sh
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instances/$INSTANCE_NAME/purge_cache" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Purging the cache rotates the instance's internal cache key, so new queries do not reuse previous cached responses.
@@ -89,11 +88,21 @@ You can also purge cached responses from the instance settings page in the Cloud
 
 You can override the instance-level cache setting on a per-request basis using the `cache` parameter in `ai_search_options`:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    cache: {      enabled: true,      cache_threshold: "flexible_friend",    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    cache: {
+      enabled: true,
+      cache_threshold: "flexible_friend",
+    },
+  },
+});
 ```
 
 ```json

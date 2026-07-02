@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
+```sql
 intDiv(a, b)
 ```
 
@@ -26,7 +26,7 @@ Divide `a` by `b`, rounding the answer down to the nearest whole number.
 
 Usage:
 
-```
+```sql
 log(<expression>)
 ```
 
@@ -34,15 +34,16 @@ log(<expression>)
 
 Examples:
 
-```
--- get the natural logarithm of the double1 columnlog(double1)
+```sql
+-- get the natural logarithm of the double1 column
+log(double1)
 ```
 
 ## pow New
 
 Usage:
 
-```
+```sql
 pow(<expression>, <expression>)
 ```
 
@@ -50,15 +51,16 @@ pow(<expression>, <expression>)
 
 Examples:
 
-```
--- get the square of the double1 columnpow(double1, 2)
+```sql
+-- get the square of the double1 column
+pow(double1, 2)
 ```
 
 ## round New
 
 Usage:
 
-```
+```sql
 round(<expression>[, n])
 ```
 
@@ -66,15 +68,18 @@ round(<expression>[, n])
 
 Examples:
 
-```
--- round 5.5 to 6round(5.5)-- round 3.14 to 3.1round(3.14, 1)
+```sql
+-- round 5.5 to 6
+round(5.5)
+-- round 3.14 to 3.1
+round(3.14, 1)
 ```
 
 ## floor New
 
 Usage:
 
-```
+```sql
 floor(<expression>[, n])
 ```
 
@@ -82,15 +87,18 @@ floor(<expression>[, n])
 
 Examples:
 
-```
--- round down 5.5 to 5floor(5.5)-- round down 3.14 to 3.1floor(3.14, 1)
+```sql
+-- round down 5.5 to 5
+floor(5.5)
+-- round down 3.14 to 3.1
+floor(3.14, 1)
 ```
 
 ## ceil New
 
 Usage:
 
-```
+```sql
 ceil(<expression>[, n])
 ```
 
@@ -98,8 +106,11 @@ ceil(<expression>[, n])
 
 Examples:
 
-```
--- round up 5.5 to 6ceil(5.5)-- round up 3.14 to 3.2ceil(3.14, 1)
+```sql
+-- round up 5.5 to 6
+ceil(5.5)
+-- round up 3.14 to 3.2
+ceil(3.14, 1)
 ```
 
 ```json

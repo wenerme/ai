@@ -25,19 +25,24 @@ A component that lets you create a poll.
 
 ### Basic Usage
 
-```
+```html
 <rtk-poll-form></rtk-poll-form>
 ```
 
 ### With Properties
 
-```
-<rtk-poll-form></rtk-poll-form>
+```html
+<rtk-poll-form>
+</rtk-poll-form>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-poll-form");
-  el.iconPack= defaultIconPack</script>
+```html
+<script>
+  const el = document.querySelector("rtk-poll-form");
+
+
+  el.iconPack= defaultIconPack
+</script>
 ```
 
 ```json

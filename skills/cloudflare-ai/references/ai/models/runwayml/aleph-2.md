@@ -28,106 +28,244 @@ RunwayML's video editing model. Edit one frame to update your whole video, make 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1826)
-* [ cURL ](#tab-panel-1827)
+* [ TypeScript ](#tab-panel-1874)
+* [ cURL ](#tab-panel-1875)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/aleph-2',
+  {
+    prompt: 'Transform the scene into a golden-hour sunset with warm lighting',
+    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/aleph-2',  {    prompt: 'Transform the scene into a golden-hour sunset with warm lighting',    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/aleph-2",
+  "input": {
+    "prompt": "Transform the scene into a golden-hour sunset with warm lighting",
+    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1872)
+* [ Raw response ](#tab-panel-1873)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/aleph-2",  "input": {    "prompt": "Transform the scene into a golden-hour sunset with warm lighting",    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4"  }}'
-```
-
-* [ Output ](#tab-panel-1824)
-* [ Raw response ](#tab-panel-1825)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/7449093b-e574-41a5-8308-05e4692fa652.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/7449093b-e574-41a5-8308-05e4692fa652.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **Keyframe-Guided Edit**  — Edit a video using a reference image anchored to the first frame of the output
 
-* [ TypeScript ](#tab-panel-1834)
-* [ cURL ](#tab-panel-1835)
+* [ TypeScript ](#tab-panel-1882)
+* [ cURL ](#tab-panel-1883)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/aleph-2',
+  {
+    prompt: 'Edit the video to match the provided reference frame',
+    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/nature-close-up.mp4',
+    prompt_images: [
+      {
+        uri: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
+        position: 'first',
+      },
+    ],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/aleph-2',  {    prompt: 'Edit the video to match the provided reference frame',    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/nature-close-up.mp4',    prompt_images: [      {        uri: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',        position: 'first',      },    ],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/aleph-2",
+  "input": {
+    "prompt": "Edit the video to match the provided reference frame",
+    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/nature-close-up.mp4",
+    "prompt_images": [
+      {
+        "uri": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
+        "position": "first"
+      }
+    ]
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1876)
+* [ Raw response ](#tab-panel-1877)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/aleph-2",  "input": {    "prompt": "Edit the video to match the provided reference frame",    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/nature-close-up.mp4",    "prompt_images": [      {        "uri": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",        "position": "first"      }    ]  }}'
-```
-
-* [ Output ](#tab-panel-1828)
-* [ Raw response ](#tab-panel-1829)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/cd7388fe-09d6-4b16-afc5-24bb315eaf14.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/cd7388fe-09d6-4b16-afc5-24bb315eaf14.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Timed Keyframe Edit**  — Place a guidance image at a specific timestamp within the input video using keyframes\[\].seconds
 
-* [ TypeScript ](#tab-panel-1836)
-* [ cURL ](#tab-panel-1837)
+* [ TypeScript ](#tab-panel-1884)
+* [ cURL ](#tab-panel-1885)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/aleph-2',
+  {
+    prompt: 'Change the background to a futuristic cityscape at night',
+    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/simple-text-to-video.mp4',
+    keyframes: [
+      {
+        uri: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
+        seconds: 2.0,
+      },
+    ],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/aleph-2',  {    prompt: 'Change the background to a futuristic cityscape at night',    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/simple-text-to-video.mp4',    keyframes: [      {        uri: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',        seconds: 2.0,      },    ],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/aleph-2",
+  "input": {
+    "prompt": "Change the background to a futuristic cityscape at night",
+    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/simple-text-to-video.mp4",
+    "keyframes": [
+      {
+        "uri": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
+        "seconds": 2.0
+      }
+    ]
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1878)
+* [ Raw response ](#tab-panel-1879)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/aleph-2",  "input": {    "prompt": "Change the background to a futuristic cityscape at night",    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/simple-text-to-video.mp4",    "keyframes": [      {        "uri": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",        "seconds": 2.0      }    ]  }}'
-```
-
-* [ Output ](#tab-panel-1830)
-* [ Raw response ](#tab-panel-1831)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/a7e054fa-1cf2-4265-a35c-518b8c4d6a1a.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/a7e054fa-1cf2-4265-a35c-518b8c4d6a1a.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Content Moderation Override**  — Edit a video featuring public figures with relaxed content moderation
 
-* [ TypeScript ](#tab-panel-1838)
-* [ cURL ](#tab-panel-1839)
+* [ TypeScript ](#tab-panel-1886)
+* [ cURL ](#tab-panel-1887)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'runwayml/aleph-2',
+  {
+    prompt: 'Make the background a dramatic stormy sky',
+    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4',
+    content_moderation: {
+      public_figure_threshold: 'low',
+    },
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'runwayml/aleph-2',  {    prompt: 'Make the background a dramatic stormy sky',    video_uri: 'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4',    content_moderation: {      public_figure_threshold: 'low',    },  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "runwayml/aleph-2",
+  "input": {
+    "prompt": "Make the background a dramatic stormy sky",
+    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4",
+    "content_moderation": {
+      "public_figure_threshold": "low"
+    }
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1880)
+* [ Raw response ](#tab-panel-1881)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "runwayml/aleph-2",  "input": {    "prompt": "Make the background a dramatic stormy sky",    "video_uri": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/runwayml__gen-4.5/cinematic-scene.mp4",    "content_moderation": {      "public_figure_threshold": "low"    }  }}'
-```
-
-* [ Output ](#tab-panel-1832)
-* [ Raw response ](#tab-panel-1833)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://dnznrvs05pmza.cloudfront.net/ea5b1ccd-3dd6-43c3-86e3-5ed720849e92.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://dnznrvs05pmza.cloudfront.net/ea5b1ccd-3dd6-43c3-86e3-5ed720849e92.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1840)
-* [ Output ](#tab-panel-1841)
+* [ Input ](#tab-panel-1888)
+* [ Output ](#tab-panel-1889)
+
+prompt
+
+`string`requiredminLength: 1maxLength: 1000Text prompt describing the edit to apply to the input video
+
+video\_uri
+
+`string`requiredHTTPS URL, Runway URI, or data URI of the source video to edit (≤30 seconds)
+
+▶keyframes\[\]
+
+`array`minItems: 1maxItems: 5Timed guidance images placed at specific points in the input video. Each entry has a uri and either seconds (absolute timestamp) or at (fractional position). Up to 5.
+
+▶prompt\_images\[\]
+
+`array`minItems: 1maxItems: 5Image keyframes for guiding the edit at specific points in the output video. Up to 5.
+
+seed
+
+`integer`minimum: 0maximum: 4294967295Random seed for reproducible results
 
 ▶content\_moderation{}
 
@@ -136,26 +274,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 duration
 
 `number`exclusiveMinimum: 0Duration of the source video in seconds. Used for billing only — not sent to RunwayML. Provide this so the gateway can compute per-second video cost accurately.
-
-▶keyframes\[\]
-
-`array`maxItems: 5minItems: 1Timed guidance images placed at specific points in the input video. Each entry has a uri and either seconds (absolute timestamp) or at (fractional position). Up to 5.
-
-prompt
-
-`string`requiredmaxLength: 1000minLength: 1Text prompt describing the edit to apply to the input video
-
-▶prompt\_images\[\]
-
-`array`maxItems: 5minItems: 1Image keyframes for guiding the edit at specific points in the output video. Up to 5.
-
-seed
-
-`integer`maximum: 4294967295minimum: 0Random seed for reproducible results
-
-video\_uri
-
-`string`requiredHTTPS URL, Runway URI, or data URI of the source video to edit (≤30 seconds)
 
 video
 

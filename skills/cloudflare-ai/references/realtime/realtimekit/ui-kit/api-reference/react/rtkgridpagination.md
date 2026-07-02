@@ -29,16 +29,30 @@ A component which allows you to change current page and view mode of active part
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkGridPagination } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkGridPagination />;}
+
+
+function MyComponent() {
+  return <RtkGridPagination />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkGridPagination } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkGridPagination      meeting={meeting}      size="md"      variant={gridpaginationvariants}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkGridPagination
+      meeting={meeting}
+      size="md"
+      variant={gridpaginationvariants}
+    />
+  );
+}
 ```
 
 ```json

@@ -32,13 +32,18 @@ Gatsby is a JavaScript framework based on React. There is a [plugin ↗](https:/
 
 Add a file `_includes/base.html` with the contents:
 
-```
-{% assign base = '' %}{% assign depth = page.url | split: '/' | size | minus: 1 %}{% if    depth <= 1 %}{% assign base = '.' %}{% elsif depth == 2 %}{% assign base = '..' %}{% elsif depth == 3 %}{% assign base = '../..' %}{% elsif depth == 4 %}{% assign base = '../../..' %}{% endif %}
+```plaintext
+{% assign base = '' %}
+{% assign depth = page.url | split: '/' | size | minus: 1 %}
+{% if    depth <= 1 %}{% assign base = '.' %}
+{% elsif depth == 2 %}{% assign base = '..' %}
+{% elsif depth == 3 %}{% assign base = '../..' %}
+{% elsif depth == 4 %}{% assign base = '../../..' %}{% endif %}
 ```
 
 This snippet computes the relative path back to the root of the website from the current page. Update any pages that need to link to the root by adding this at the top:
 
-```
+```plaintext
 {%- include base.html -%}
 ```
 

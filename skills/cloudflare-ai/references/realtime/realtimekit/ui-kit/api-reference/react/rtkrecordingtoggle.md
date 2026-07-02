@@ -29,16 +29,30 @@ A button which toggles recording state of a meeting. Only a privileged user can 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkRecordingToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkRecordingToggle />;}
+
+
+function MyComponent() {
+  return <RtkRecordingToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkRecordingToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkRecordingToggle      disabled={true}      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkRecordingToggle
+      disabled={true}
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

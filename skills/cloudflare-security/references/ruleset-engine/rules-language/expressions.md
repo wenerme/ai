@@ -18,13 +18,13 @@ The Rules language supports two kinds of expressions: simple and compound.
 
 **Simple expressions** compare a value from an HTTP request to a value defined in the expression. For example, this simple expression matches Microsoft Exchange Autodiscover requests:
 
-```
+```txt
 http.request.uri.path matches "/autodiscover\.(xml|src)$"
 ```
 
 Simple expressions have the following syntax:
 
-```
+```txt
 <field> <comparison_operator> <value>
 ```
 
@@ -40,13 +40,13 @@ Where:
 
 For example, this expression uses the `and` operator to target requests to `www.example.com` that are not on ports 80 or 443:
 
-```
+```txt
 http.host eq "www.example.com" and not cf.edge.server_port in {80 443}
 ```
 
 Compound expressions have the following general syntax:
 
-```
+```txt
 <expression> <logical_operator> <expression>
 ```
 

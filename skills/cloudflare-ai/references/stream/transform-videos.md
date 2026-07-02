@@ -37,7 +37,7 @@ To enable transformations on your zone:
 
 You can convert and resize videos by requesting them via a specially-formatted URL, without writing any code. The URL format is:
 
-```
+```plaintext
 https://example.com/cdn-cgi/media/<OPTIONS>/<SOURCE-VIDEO>
 ```
 
@@ -48,7 +48,7 @@ https://example.com/cdn-cgi/media/<OPTIONS>/<SOURCE-VIDEO>
 
 For example, this URL will source an HD video from an R2 bucket, shorten it, crop and resize it as a square, and remove the audio.
 
-```
+```plaintext
 https://example.com/cdn-cgi/media/mode=video,time=5s,duration=5s,width=500,height=500,fit=crop,audio=false/https://pub-8613b7f94d6146408add8fefb52c52e8.r2.dev/aus-mobile-demo.mp4
 ```
 

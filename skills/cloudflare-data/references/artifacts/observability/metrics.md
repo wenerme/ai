@@ -79,24 +79,100 @@ You can query Artifacts analytics with the [GraphQL Analytics API](https://devel
 
 Use this query to find the busiest repos in one namespace over a time range. It also returns average operation duration so you can compare activity and latency together.
 
-```
-query ArtifactsOperationsByRepo(  $accountTag: String!  $datetimeStart: Time  $datetimeEnd: Time  $repositoryNamespace: String!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      artifactsEventsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          repositoryNamespace: $repositoryNamespace          eventKind: "action"        }        orderBy: [count_DESC]      ) {        count        avg {          durationMs        }        dimensions {          repositoryName        }      }    }  }}
+```graphql
+query ArtifactsOperationsByRepo(
+  $accountTag: String!
+  $datetimeStart: Time
+  $datetimeEnd: Time
+  $repositoryNamespace: String!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      artifactsEventsAdaptiveGroups(
+        limit: 100
+        filter: {
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+          repositoryNamespace: $repositoryNamespace
+          eventKind: "action"
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        avg {
+          durationMs
+        }
+        dimensions {
+          repositoryName
+        }
+      }
+    }
+  }
+}
 ```
 
 ### Errors by repo, descending
 
 Use this query to rank repos by error volume. It helps you spot which repos fail most often and which error types are driving those failures.
 
-```
-query ArtifactsErrorsByRepo(  $accountTag: String!  $datetimeStart: Time  $datetimeEnd: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      artifactsEventsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          eventKind: "error"        }        orderBy: [count_DESC]      ) {        count        dimensions {          repository          eventType        }      }    }  }}
+```graphql
+query ArtifactsErrorsByRepo(
+  $accountTag: String!
+  $datetimeStart: Time
+  $datetimeEnd: Time
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      artifactsEventsAdaptiveGroups(
+        limit: 100
+        filter: {
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+          eventKind: "error"
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          repository
+          eventType
+        }
+      }
+    }
+  }
+}
 ```
 
 ### Repos by pushes, descending
 
 Use this query to see which repos receive the most pushes in a time window. It is useful for identifying active write-heavy repos across an account.
 
-```
-query ArtifactsPushesByRepo(  $accountTag: String!  $datetimeStart: Time  $datetimeEnd: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      artifactsEventsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          eventKind: "action"          eventType: "push"        }        orderBy: [count_DESC]      ) {        count        dimensions {          repository        }      }    }  }}
+```graphql
+query ArtifactsPushesByRepo(
+  $accountTag: String!
+  $datetimeStart: Time
+  $datetimeEnd: Time
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      artifactsEventsAdaptiveGroups(
+        limit: 100
+        filter: {
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+          eventKind: "action"
+          eventType: "push"
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          repository
+        }
+      }
+    }
+  }
+}
 ```
 
 ```json

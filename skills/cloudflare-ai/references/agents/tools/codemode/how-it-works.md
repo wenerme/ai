@@ -24,12 +24,27 @@ Code Mode is experimental and may have breaking changes.
 
 In the standard setup, the model receives one outer tool named `codemode`. That tool accepts one field and returns a durable execution outcome:
 
-TypeScript
+**TypeScript**
 
-```
-type CodeModeInput = {  code: string;};
-type PendingAction = {  executionId: string;  seq: number;  connector: string;  method: string;  args: unknown;};
-type CodeModeOutput =  | { status: "completed"; executionId: string; result: unknown; logs?: string[] }  | { status: "paused"; executionId: string; pending: PendingAction[] }  | { status: "error"; executionId: string; error: string; logs?: string[] };
+```ts
+type CodeModeInput = {
+  code: string;
+};
+
+
+type PendingAction = {
+  executionId: string;
+  seq: number;
+  connector: string;
+  method: string;
+  args: unknown;
+};
+
+
+type CodeModeOutput =
+  | { status: "completed"; executionId: string; result: unknown; logs?: string[] }
+  | { status: "paused"; executionId: string; pending: PendingAction[] }
+  | { status: "error"; executionId: string; error: string; logs?: string[] };
 ```
 
 Its description tells the model to write a JavaScript async arrow function. The description lists the configured connector namespace names, such as `github` or `stripe`, but it does not include every connector method and schema.
@@ -40,12 +55,37 @@ The model can use one Code Mode execution to discover relevant methods, then use
 
 Inside the sandbox, the `codemode` global provides the platform-level SDK:
 
-TypeScript
+**TypeScript**
 
-```
-declare const codemode: {  search(query: string): Promise<SearchOutput>;  describe(target: string): Promise<DescribeOutput>;  step<T>(name: string, fn: () => T | Promise<T>): Promise<T>;  run(name: string, input?: unknown): Promise<unknown>;};
-type SearchOutput = {  results: Array<{    path: string;    connector: string;    method: string;    description?: string;    kind: "method" | "snippet";    score: number;  }>;  total: number;  truncated: boolean;};
-type DescribeOutput = {  path: string;  description?: string;  types: string;  kind: "connector" | "method" | "snippet";};
+```ts
+declare const codemode: {
+  search(query: string): Promise<SearchOutput>;
+  describe(target: string): Promise<DescribeOutput>;
+  step<T>(name: string, fn: () => T | Promise<T>): Promise<T>;
+  run(name: string, input?: unknown): Promise<unknown>;
+};
+
+
+type SearchOutput = {
+  results: Array<{
+    path: string;
+    connector: string;
+    method: string;
+    description?: string;
+    kind: "method" | "snippet";
+    score: number;
+  }>;
+  total: number;
+  truncated: boolean;
+};
+
+
+type DescribeOutput = {
+  path: string;
+  description?: string;
+  types: string;
+  kind: "connector" | "method" | "snippet";
+};
 ```
 
 `codemode.search()` searches connector methods and saved snippets. It returns ranked paths, not complete schemas. The model can then pass one path to `codemode.describe()` to request focused TypeScript documentation.
@@ -58,12 +98,24 @@ Each configured connector becomes another sandbox global. A connector named `git
 
 A connector-level description returns declarations similar to:
 
-TypeScript
+**TypeScript**
 
-```
-type ListPullRequestsInput = {  owner: string;  repo: string;  state?: "open" | "closed";};
+```ts
+type ListPullRequestsInput = {
+  owner: string;
+  repo: string;
+  state?: "open" | "closed";
+};
+
+
 type ListPullRequestsOutput = unknown;
-declare const github: {  list_pull_requests(    input: ListPullRequestsInput,  ): Promise<ListPullRequestsOutput>;};
+
+
+declare const github: {
+  list_pull_requests(
+    input: ListPullRequestsInput,
+  ): Promise<ListPullRequestsOutput>;
+};
 ```
 
 These declarations are generated from connector schemas. They are illustrative; the actual method names, input fields, and output types depend on the connector.
@@ -98,22 +150,44 @@ The executor and connector instances remain transient. Your application provides
 
 A typical Agent creates all three parts together:
 
-* [  JavaScript ](#tab-panel-6601)
-* [  TypeScript ](#tab-panel-6602)
+* [  JavaScript ](#tab-panel-6797)
+* [  TypeScript ](#tab-panel-6798)
 
-src/server.js
+**src/server.js**
 
-```
-import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";
-const runtime = createCodemodeRuntime({  ctx: this.ctx,  executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),  connectors: [github, repoApi],});
+```js
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+
+
+const runtime = createCodemodeRuntime({
+  ctx: this.ctx,
+  executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+  connectors: [github, repoApi],
+});
+
+
 const tools = { codemode: runtime.tool() };
 ```
 
-src/server.ts
+**src/server.ts**
 
-```
-import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";
-const runtime = createCodemodeRuntime({  ctx: this.ctx,  executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),  connectors: [github, repoApi],});
+```ts
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+
+
+const runtime = createCodemodeRuntime({
+  ctx: this.ctx,
+  executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+  connectors: [github, repoApi],
+});
+
+
 const tools = { codemode: runtime.tool() };
 ```
 
@@ -125,21 +199,45 @@ Most Agents need only one Code Mode runtime. If you omit `name`, the runtime use
 
 Set `name` when one Agent needs separate Code Mode histories. For example, a runtime named `research` and another named `operations` keep separate execution records and snippet collections:
 
-* [  JavaScript ](#tab-panel-6603)
-* [  TypeScript ](#tab-panel-6604)
+* [  JavaScript ](#tab-panel-6799)
+* [  TypeScript ](#tab-panel-6800)
 
-src/server.js
+**src/server.js**
 
+```js
+const researchRuntime = createCodemodeRuntime({
+  ctx: this.ctx,
+  executor,
+  connectors: researchConnectors,
+  name: "research",
+});
+
+
+const operationsRuntime = createCodemodeRuntime({
+  ctx: this.ctx,
+  executor,
+  connectors: operationsConnectors,
+  name: "operations",
+});
 ```
-const researchRuntime = createCodemodeRuntime({  ctx: this.ctx,  executor,  connectors: researchConnectors,  name: "research",});
-const operationsRuntime = createCodemodeRuntime({  ctx: this.ctx,  executor,  connectors: operationsConnectors,  name: "operations",});
-```
 
-src/server.ts
+**src/server.ts**
 
-```
-const researchRuntime = createCodemodeRuntime({  ctx: this.ctx,  executor,  connectors: researchConnectors,  name: "research",});
-const operationsRuntime = createCodemodeRuntime({  ctx: this.ctx,  executor,  connectors: operationsConnectors,  name: "operations",});
+```ts
+const researchRuntime = createCodemodeRuntime({
+  ctx: this.ctx,
+  executor,
+  connectors: researchConnectors,
+  name: "research",
+});
+
+
+const operationsRuntime = createCodemodeRuntime({
+  ctx: this.ctx,
+  executor,
+  connectors: operationsConnectors,
+  name: "operations",
+});
 ```
 
 A runtime name identifies its durable storage. It does not name the model, connector, tool, or individual execution.
@@ -160,10 +258,17 @@ A connector method can require user approval. When generated code reaches that m
 
 The application can show the pending method and arguments to a user. Approval starts another pass with the same source code and execution ID. Calls already marked as applied return their recorded results instead of executing again. The approved action then executes, and the code continues until completion or another approval.
 
-```
-first pass:   read ── execute ──> result              write ── pause
+```txt
+first pass:   read ── execute ──> result
+              write ── pause
+
+
 approval
-second pass:  read ── replay ───> recorded result              write ── execute ─> result              next call ────────> continue
+
+
+second pass:  read ── replay ───> recorded result
+              write ── execute ─> result
+              next call ────────> continue
 ```
 
 This design lets an approval wait beyond a request or hibernation. Generated code remains linear and does not implement pause or resume logic.
@@ -180,11 +285,19 @@ Recorded connector results make normal data-dependent branches stable. However, 
 
 Use `codemode.step()` to capture such work once. The runtime records the closure result and returns that value during approval replay:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const createdAt = await codemode.step("created-at", () => Date.now());
-  return github.create_issue({    owner: "cloudflare",    repo: "agents",    title: `Review created at ${createdAt}`,  });};
+```js
+async () => {
+  const createdAt = await codemode.step("created-at", () => Date.now());
+
+
+  return github.create_issue({
+    owner: "cloudflare",
+    repo: "agents",
+    title: `Review created at ${createdAt}`,
+  });
+};
 ```
 
 Connector calls already pass through the runtime and do not need a step wrapper. Use steps for nondeterministic or side-effectful work outside connector calls. If you explicitly allow direct network access, this includes direct network operations that must not repeat during approval replay.
@@ -244,21 +357,31 @@ A snippet is saved source from an execution. Snippets turn model-written program
 
 The model does not promote its own code. Your application reviews an execution and calls `runtime.saveSnippet()` with its execution ID. The API accepts any execution status, so verify that the execution completed successfully before saving it. The model can then find the snippet with `codemode.search()`, inspect it with `codemode.describe()`, and invoke it with `codemode.run()`.
 
-* [  JavaScript ](#tab-panel-6599)
-* [  TypeScript ](#tab-panel-6600)
+* [  JavaScript ](#tab-panel-6795)
+* [  TypeScript ](#tab-panel-6796)
 
-src/server.js
+**src/server.js**
 
-```
+```js
 const runs = await runtime.executions(20);
-await runtime.saveSnippet("list-open-prs", {  executionId: runs[0].id,  description: "List open pull requests for a repository.",});
+
+
+await runtime.saveSnippet("list-open-prs", {
+  executionId: runs[0].id,
+  description: "List open pull requests for a repository.",
+});
 ```
 
-src/server.ts
+**src/server.ts**
 
-```
+```ts
 const runs = await runtime.executions(20);
-await runtime.saveSnippet("list-open-prs", {  executionId: runs[0].id,  description: "List open pull requests for a repository.",});
+
+
+await runtime.saveSnippet("list-open-prs", {
+  executionId: runs[0].id,
+  description: "List open pull requests for a repository.",
+});
 ```
 
 A snippet can accept an input value. Its connector calls join the current execution log when the model runs it. The snippet also retains the connector list from its source execution. If a recorded connector is unavailable, `codemode.run()` resolves to an object with an `error` property. It does not throw automatically.

@@ -18,12 +18,17 @@ Each sandbox runs in an isolated Linux container with Python, Node.js, and commo
 
 Install additional software at runtime using standard package managers:
 
-Terminal window
+```bash
+# Python packages
+pip install scikit-learn tensorflow
 
-```
-# Python packagespip install scikit-learn tensorflow
-# Node.js packagesnpm install express
-# System packages (requires apt-get update first)apt-get update && apt-get install -y redis-server
+
+# Node.js packages
+npm install express
+
+
+# System packages (requires apt-get update first)
+apt-get update && apt-get install -y redis-server
 ```
 
 ## Filesystem
@@ -39,10 +44,12 @@ The container provides a standard Linux filesystem. You can read and write anywh
 
 **Example**:
 
-TypeScript
+**TypeScript**
 
-```
-await sandbox.writeFile('/workspace/app.py', 'print("Hello")');await sandbox.writeFile('/tmp/cache.json', '{}');await sandbox.exec('ls -la /workspace');
+```typescript
+await sandbox.writeFile('/workspace/app.py', 'print("Hello")');
+await sandbox.writeFile('/tmp/cache.json', '{}');
+await sandbox.exec('ls -la /workspace');
 ```
 
 ## Process management
@@ -51,36 +58,41 @@ Processes run as you'd expect in a regular Linux environment.
 
 **Foreground processes** (`exec()`):
 
-TypeScript
+**TypeScript**
 
-```
-const result = await sandbox.exec('npm test');// Waits for completion, returns output
+```typescript
+const result = await sandbox.exec('npm test');
+// Waits for completion, returns output
 ```
 
 **Background processes** (`startProcess()`):
 
-TypeScript
+**TypeScript**
 
-```
-const process = await sandbox.startProcess('node server.js');// Returns immediately, process runs in background
+```typescript
+const process = await sandbox.startProcess('node server.js');
+// Returns immediately, process runs in background
 ```
 
 ## Network capabilities
 
 **Outbound connections** work:
 
-Terminal window
-
-```
-curl https://api.example.com/datapip install requestsnpm install express
+```bash
+curl https://api.example.com/data
+pip install requests
+npm install express
 ```
 
 **Inbound connections** require port exposure:
 
-TypeScript
+**TypeScript**
 
-```
-const { hostname } = new URL(request.url);await sandbox.startProcess('python -m http.server 8000');const exposed = await sandbox.exposePort(8000, { hostname });console.log(exposed.url); // Public URL
+```typescript
+const { hostname } = new URL(request.url);
+await sandbox.startProcess('python -m http.server 8000');
+const exposed = await sandbox.exposePort(8000, { hostname });
+console.log(exposed.url); // Public URL
 ```
 
 Local development
@@ -89,10 +101,9 @@ When using `wrangler dev`, you must add `EXPOSE` directives to your Dockerfile f
 
 **Localhost** works within sandbox:
 
-Terminal window
-
-```
-redis-server &      # Start serverredis-cli ping      # Connect locally
+```bash
+redis-server &      # Start server
+redis-cli ping      # Connect locally
 ```
 
 ## Security
@@ -110,9 +121,9 @@ redis-server &      # Start serverredis-cli ping      # Connect locally
 
 To run untrusted code, use separate sandboxes per user:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 ```
 

@@ -25,8 +25,13 @@ Refer to our [managed deployment instructions](https://developers.cloudflare.com
 
  Therefore, we recommend that your policy file only contain the organization name and potentially the onboarding flag, [relying on the dashboard](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/device-profiles/) to configure the remaining device settings.
 
-```
-<dict>  <key>organization</key>  <string>your-team-name</string>  <key>onboarding</key>  <false/></dict>
+```xml
+<dict>
+  <key>organization</key>
+  <string>your-team-name</string>
+  <key>onboarding</key>
+  <false/>
+</dict>
 ```
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust**.

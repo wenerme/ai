@@ -28,16 +28,26 @@ Toggle button for joining or leaving the livestream stage. Only visible in lives
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLiveStreamStageToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLiveStreamStageToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkLiveStreamStageToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLiveStreamStageToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkLiveStreamStageToggle meeting={meeting} size="md" variant="button" />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLiveStreamStageToggle meeting={meeting} size="md" variant="button" />
+  );
+}
 ```
 
 ```json

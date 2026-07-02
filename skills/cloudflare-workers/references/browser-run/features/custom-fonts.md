@@ -29,67 +29,169 @@ The examples below use [Puppeteer](https://developers.cloudflare.com/browser-run
 
 ### From a CDN URL
 
-* [  JavaScript ](#tab-panel-6932)
-* [  TypeScript ](#tab-panel-6933)
+* [  JavaScript ](#tab-panel-7180)
+* [  TypeScript ](#tab-panel-7181)
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
 
-JavaScript
+**JavaScript**
 
-```
-const browser = await puppeteer.launch(env.MYBROWSER);const page = await browser.newPage();await page.addStyleTag({  content: `    @font-face {      font-family: 'CustomFont';      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');      font-weight: normal;      font-style: normal;    }
-    body {      font-family: 'CustomFont', sans-serif;    }  `,});
+```js
+const browser = await puppeteer.launch(env.MYBROWSER);
+const page = await browser.newPage();
+await page.addStyleTag({
+  content: `
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
+    body {
+      font-family: 'CustomFont', sans-serif;
+    }
+  `,
+});
 ```
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
 
-TypeScript
+**TypeScript**
 
-```
-const browser = await puppeteer.launch(env.MYBROWSER);const page = await browser.newPage();await page.addStyleTag({  content: `    @font-face {      font-family: 'CustomFont';      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');      font-weight: normal;      font-style: normal;    }
-    body {      font-family: 'CustomFont', sans-serif;    }  `,});
+```ts
+const browser = await puppeteer.launch(env.MYBROWSER);
+const page = await browser.newPage();
+await page.addStyleTag({
+  content: `
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
+    body {
+      font-family: 'CustomFont', sans-serif;
+    }
+  `,
+});
 ```
 
 ### Base64-encoded
 
 The following examples use [Playwright](https://developers.cloudflare.com/browser-run/playwright/), but this method works the same way with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
-* [  JavaScript ](#tab-panel-6934)
-* [  TypeScript ](#tab-panel-6935)
+* [  JavaScript ](#tab-panel-7182)
+* [  TypeScript ](#tab-panel-7183)
 
 Example with a Base64-encoded data source:
 
-JavaScript
+**JavaScript**
 
-```
-const browser = await playwright.launch(env.MYBROWSER);const page = await browser.newPage();await page.addStyleTag({  content: `    @font-face {      font-family: 'CustomFont';      src: url('data:font/woff2;base64,<BASE64_STRING>') format('woff2');      font-weight: normal;      font-style: normal;    }
-    body {      font-family: 'CustomFont', sans-serif;    }  `,});
+```js
+const browser = await playwright.launch(env.MYBROWSER);
+const page = await browser.newPage();
+await page.addStyleTag({
+  content: `
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('data:font/woff2;base64,<BASE64_STRING>') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
+    body {
+      font-family: 'CustomFont', sans-serif;
+    }
+  `,
+});
 ```
 
 Example with a Base64-encoded data source:
 
-TypeScript
+**TypeScript**
 
-```
-const browser = await playwright.launch(env.MYBROWSER);const page = await browser.newPage();await page.addStyleTag({  content: `    @font-face {      font-family: 'CustomFont';      src: url('data:font/woff2;base64,<BASE64_STRING>') format('woff2');      font-weight: normal;      font-style: normal;    }
-    body {      font-family: 'CustomFont', sans-serif;    }  `,});
+```ts
+const browser = await playwright.launch(env.MYBROWSER);
+const page = await browser.newPage();
+await page.addStyleTag({
+  content: `
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('data:font/woff2;base64,<BASE64_STRING>') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
+    body {
+      font-family: 'CustomFont', sans-serif;
+    }
+  `,
+});
 ```
 
 ### CDP connection example
 
 When connecting via [CDP](https://developers.cloudflare.com/browser-run/cdp/), you connect to the browser using a WebSocket endpoint instead of a Workers Binding. Once connected, you use `page.addStyleTag()` the same way as the examples above.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import puppeteer from "puppeteer-core";
-const ACCOUNT_ID = "your-account-id";const API_TOKEN = "your-api-token";
-// Create a browser session via CDPconst response = await fetch(  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser`,  {    method: "POST",    headers: { Authorization: `Bearer ${API_TOKEN}` },  },);const { webSocketDebuggerUrl } = await response.json();
-// Connect Puppeteer to the sessionconst browser = await puppeteer.connect({  browserWSEndpoint: webSocketDebuggerUrl,  headers: { Authorization: `Bearer ${API_TOKEN}` },});
+
+
+const ACCOUNT_ID = "your-account-id";
+const API_TOKEN = "your-api-token";
+
+
+// Create a browser session via CDP
+const response = await fetch(
+  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser`,
+  {
+    method: "POST",
+    headers: { Authorization: `Bearer ${API_TOKEN}` },
+  },
+);
+const { webSocketDebuggerUrl } = await response.json();
+
+
+// Connect Puppeteer to the session
+const browser = await puppeteer.connect({
+  browserWSEndpoint: webSocketDebuggerUrl,
+  headers: { Authorization: `Bearer ${API_TOKEN}` },
+});
+
+
 const page = await browser.newPage();
-// Add a custom font — same as with Workers Bindingsawait page.addStyleTag({  content: `    @font-face {      font-family: 'CustomFont';      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');      font-weight: normal;      font-style: normal;    }
-    body {      font-family: 'CustomFont', sans-serif;    }  `,});
-// Take a screenshot, generate a PDF, etc.await page.goto("https://example.com");
+
+
+// Add a custom font — same as with Workers Bindings
+await page.addStyleTag({
+  content: `
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
+    body {
+      font-family: 'CustomFont', sans-serif;
+    }
+  `,
+});
+
+
+// Take a screenshot, generate a PDF, etc.
+await page.goto("https://example.com");
+
+
 browser.disconnect();
 ```
 
@@ -99,18 +201,36 @@ When using [Quick Actions](https://developers.cloudflare.com/browser-run/quick-a
 
 ### From a CDN URL
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/",    "addStyleTag": [      {        "content": "@font-face { font-family: '\''CustomFont'\''; src: url('\''https://your-cdn.com/fonts/MyFont.woff2'\'') format('\''woff2'\''); font-weight: normal; font-style: normal; } body { font-family: '\''CustomFont'\'', sans-serif; }"      }    ]  }' \  --output "screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/",
+    "addStyleTag": [
+      {
+        "content": "@font-face { font-family: '\''CustomFont'\''; src: url('\''https://your-cdn.com/fonts/MyFont.woff2'\'') format('\''woff2'\''); font-weight: normal; font-style: normal; } body { font-family: '\''CustomFont'\'', sans-serif; }"
+      }
+    ]
+  }' \
+  --output "screenshot.png"
 ```
 
 ### Base64-encoded
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/",    "addStyleTag": [      {        "content": "@font-face { font-family: '\''CustomFont'\''; src: url('\''data:font/woff2;base64,<BASE64_STRING>'\'') format('\''woff2'\''); font-weight: normal; font-style: normal; } body { font-family: '\''CustomFont'\'', sans-serif; }"      }    ]  }' \  --output "screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/",
+    "addStyleTag": [
+      {
+        "content": "@font-face { font-family: '\''CustomFont'\''; src: url('\''data:font/woff2;base64,<BASE64_STRING>'\'') format('\''woff2'\''); font-weight: normal; font-style: normal; } body { font-family: '\''CustomFont'\'', sans-serif; }"
+      }
+    ]
+  }' \
+  --output "screenshot.png"
 ```
 
 For more details on using `addStyleTag` with Quick Actions, refer to [Customize CSS and embed custom JavaScript](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#customize-css-and-embed-custom-javascript).

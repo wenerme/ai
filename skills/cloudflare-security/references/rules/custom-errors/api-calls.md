@@ -20,19 +20,32 @@ To perform the same operations at the account level, use the corresponding accou
 
 The following `POST` request creates a new custom error asset in a zone based on the provided URL:
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--json '{
+  "name": "500_error_template",
+  "description": "Standard 5xx error template page",
+  "url": "https://example.com/errors/500_template.html"
+}'
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--json '{  "name": "500_error_template",  "description": "Standard 5xx error template page",  "url": "https://example.com/errors/500_template.html"}'
-```
-
-```
-{  "result": {    "name": "500_error_template",    "description": "Standard 5xx error template page",    "url": "https://example.com/errors/500_template.html",    "last_updated": "2025-02-10T11:36:07.810215Z",    "size_bytes": 2048  },  "success": true}
+```json
+{
+  "result": {
+    "name": "500_error_template",
+    "description": "Standard 5xx error template page",
+    "url": "https://example.com/errors/500_template.html",
+    "last_updated": "2025-02-10T11:36:07.810215Z",
+    "size_bytes": 2048
+  },
+  "success": true
+}
 ```
 
 To create an asset at the account level, use the account-level endpoint:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_pages/assets
 ```
 
@@ -40,19 +53,39 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_pages/assets
 
 The following `GET` request retrieves a list of custom error assets configured in the zone:
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-
-```
-{  "result": [    {      "name": "500_error_template",      "description": "Standard 5xx error template page",      "url": "https://example.com/errors/500_template.html",      "last_updated": "2025-02-10T11:36:07.810215Z",      "size_bytes": 2048    }    // ...  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "count": 2,    "page": 1,    "per_page": 20,    "total_count": 2,    "total_pages": 1  }}
+```json
+{
+  "result": [
+    {
+      "name": "500_error_template",
+      "description": "Standard 5xx error template page",
+      "url": "https://example.com/errors/500_template.html",
+      "last_updated": "2025-02-10T11:36:07.810215Z",
+      "size_bytes": 2048
+    }
+    // ...
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "count": 2,
+    "page": 1,
+    "per_page": 20,
+    "total_count": 2,
+    "total_pages": 1
+  }
+}
 ```
 
 To retrieve a list of assets at the account level, use the account-level endpoint:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/$ZONE_ID/custom_pages/assets
 ```
 
@@ -60,14 +93,27 @@ https://api.cloudflare.com/client/v4/accounts/$ZONE_ID/custom_pages/assets
 
 The following `PUT` request updates the URL of an existing custom error asset at the zone level named `500_error_template`:
 
-Terminal window
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/500_error_template" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--json '{
+  "description": "Standard 5xx error template page",
+  "url": "https://example.com/errors/500_new_template.html"
+}'
+```
 
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/500_error_template" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--json '{  "description": "Standard 5xx error template page",  "url": "https://example.com/errors/500_new_template.html"}'
-```
-
-```
-{  "result": {    "name": "500_error_template",    "description": "Standard 5xx error template page",    "url": "https://example.com/errors/500_new_template.html",    "last_updated": "2025-02-10T13:13:07.810215Z",    "size_bytes": 3145  },  "success": true}
+```json
+{
+  "result": {
+    "name": "500_error_template",
+    "description": "Standard 5xx error template page",
+    "url": "https://example.com/errors/500_new_template.html",
+    "last_updated": "2025-02-10T13:13:07.810215Z",
+    "size_bytes": 3145
+  },
+  "success": true
+}
 ```
 
 You can update the asset description and URL. You cannot update the asset name after creation.
@@ -76,7 +122,7 @@ If you provide the same URL when updating an asset, Cloudflare will fetch the UR
 
 To update an asset at the account level, use the account-level endpoint:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/{account_id}/custom_pages/assets/{asset_name}
 ```
 
@@ -84,19 +130,27 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/custom_pages/assets/{
 
 The following `GET` request retrieves the details of an existing custom error asset at the zone level named `500_error_template`:
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/500_error_template" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/500_error_template" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-
-```
-{  "result": {    "name": "500_error_template",    "description": "Standard 5xx error template page",    "url": "https://example.com/errors/500_new_template.html",    "last_updated": "2025-02-10T13:13:07.810215Z",    "size_bytes": 3145  },  "success": true}
+```json
+{
+  "result": {
+    "name": "500_error_template",
+    "description": "Standard 5xx error template page",
+    "url": "https://example.com/errors/500_new_template.html",
+    "last_updated": "2025-02-10T13:13:07.810215Z",
+    "size_bytes": 3145
+  },
+  "success": true
+}
 ```
 
 To retrieve an asset at the account level, use the account-level endpoint:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_pages/assets/$ASSET_NAME
 ```
 
@@ -104,17 +158,17 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_pages/assets/$A
 
 The following `DELETE` request deletes an existing custom error asset at the zone level named `500_error_template`:
 
-Terminal window
-
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/500_error_template" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/500_error_template" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 If the request is successful, the response will have a `204` HTTP status code.
 
 To delete an asset at the account level, use the account-level endpoint:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_pages/assets/$ASSET_NAME
 ```
 
@@ -130,14 +184,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-Get a custom page
+**Get a custom page**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": {    "id": "ratelimit_block",    "description": "Rate limit Block",    "required_tokens": [],    "preview_target": "block:rate-limit",    "created_on": "2025-06-03T08:33:17.091587Z",    "modified_on": "2025-06-03T08:33:17.091587Z",    "url": null,    "state": "default"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "ratelimit_block",
+    "description": "Rate limit Block",
+    "required_tokens": [],
+    "preview_target": "block:rate-limit",
+    "created_on": "2025-06-03T08:33:17.091587Z",
+    "modified_on": "2025-06-03T08:33:17.091587Z",
+    "url": null,
+    "state": "default"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 The response indicates that the page is currently set to the Cloudflare default page (`"state": "default"`).
@@ -154,14 +225,35 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Custom Pages Write`
 * `Zone Settings Write`
 
-Update a custom page
+**Update a custom page**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "state": "customized",    "url": "https://example.com/rate_limiting_block_error_page.html"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \
+  --request PUT \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "state": "customized",
+    "url": "https://example.com/rate_limiting_block_error_page.html"
+  }'
 ```
 
-```
-{  "result": {    "id": "ratelimit_block",    "description": "Rate limit Block",    "required_tokens": [],    "preview_target": "block:rate-limit",    "created_on": "2025-06-03T08:33:17.091587Z",    "modified_on": "2025-06-03T08:35:32.639114Z",    "url": "https://example.com/rate_limiting_block_error_page.html",    "state": "customized"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "ratelimit_block",
+    "description": "Rate limit Block",
+    "required_tokens": [],
+    "preview_target": "block:rate-limit",
+    "created_on": "2025-06-03T08:33:17.091587Z",
+    "modified_on": "2025-06-03T08:35:32.639114Z",
+    "url": "https://example.com/rate_limiting_block_error_page.html",
+    "state": "customized"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 To set the error page back to the default page, use `"state": "default"` in the request body.

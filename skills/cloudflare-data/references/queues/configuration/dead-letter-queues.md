@@ -18,26 +18,35 @@ With Cloudflare Queues, a Dead Letter Queue is defined within your [consumer con
 
 For example, the following consumer configuration would send messages to our DLQ named `"my-other-queue"` after retrying delivery (by default, 3 times):
 
-* [  wrangler.jsonc ](#tab-panel-9718)
-* [  wrangler.toml ](#tab-panel-9719)
+* [  wrangler.jsonc ](#tab-panel-10013)
+* [  wrangler.toml ](#tab-panel-10014)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "queues": {
+    "consumers": [
+      {
+        "queue": "my-queue",
+        "dead_letter_queue": "my-other-queue"
+      }
+    ]
+  }
+}
 ```
-{  "queues": {    "consumers": [      {        "queue": "my-queue",        "dead_letter_queue": "my-other-queue"      }    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-[[queues.consumers]]queue = "my-queue"dead_letter_queue = "my-other-queue"
+```toml
+[[queues.consumers]]
+queue = "my-queue"
+dead_letter_queue = "my-other-queue"
 ```
 
 You can also configure a DLQ when creating a consumer from the command-line using `wrangler`:
 
-Terminal window
-
-```
+```sh
 wrangler queues consumer add $QUEUE_NAME $SCRIPT_NAME --dead-letter-queue=$NAME_OF_OTHER_QUEUE
 ```
 

@@ -18,9 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Install the `gatsby` CLI by running the following command in your terminal:
 
-Terminal window
-
-```
+```sh
 npm install -g gatsby-cli
 ```
 
@@ -28,9 +26,7 @@ npm install -g gatsby-cli
 
 With Gatsby installed, you can create a new project using `gatsby new`. The `new` command accepts a GitHub URL for using an existing template. As an example, use the `gatsby-starter-lumen` template by running the following command in your terminal. You can find more in [Gatsby's Starters section ↗](https://www.gatsbyjs.com/starters/?v=2):
 
-Terminal window
-
-```
+```sh
 npx gatsby new my-gatsby-site https://github.com/alxshelepenok/gatsby-starter-lumen
 ```
 
@@ -46,10 +42,10 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
+```sh
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages
@@ -83,7 +79,7 @@ If you are using [dynamic routes ↗](https://www.gatsbyjs.com/docs/reference/fu
 
 If you have a dynamic route, such as `/users/[id]`, create your proxy redirect by referring to the following example:
 
-```
+```plaintext
 /users/* /users/:id 200
 ```
 

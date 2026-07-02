@@ -29,126 +29,230 @@ MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion cont
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-904)
-* [ cURL ](#tab-panel-905)
+* [ TypeScript ](#tab-panel-952)
+* [ cURL ](#tab-panel-953)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-hd',
+  {
+    format: 'mp3',
+    pitch: 0,
+    speed: 1,
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-hd',  {    format: 'mp3',    pitch: 0,    speed: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-hd",
+  "input": {
+    "format": "mp3",
+    "pitch": 0,
+    "speed": 1,
+    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-948)
+* [ Raw response ](#tab-panel-949)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-hd",  "input": {    "format": "mp3",    "pitch": 0,    "speed": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-900)
-* [ Raw response ](#tab-panel-901)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/simple-speech.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/simple-speech.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Custom Voice**  — Use a specific voice and adjust speed
 
-* [ TypeScript ](#tab-panel-908)
-* [ cURL ](#tab-panel-909)
+* [ TypeScript ](#tab-panel-956)
+* [ cURL ](#tab-panel-957)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-hd',
+  {
+    format: 'mp3',
+    pitch: 0,
+    speed: 0.9,
+    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-hd',  {    format: 'mp3',    pitch: 0,    speed: 0.9,    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-hd",
+  "input": {
+    "format": "mp3",
+    "pitch": 0,
+    "speed": 0.9,
+    "text": "The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-950)
+* [ Raw response ](#tab-panel-951)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-hd",  "input": {    "format": "mp3",    "pitch": 0,    "speed": 0.9,    "text": "The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-902)
-* [ Raw response ](#tab-panel-903)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/custom-voice.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/custom-voice.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **With Emotion**  — Apply emotional tone to speech
 
-* [ TypeScript ](#tab-panel-912)
-* [ cURL ](#tab-panel-913)
+* [ TypeScript ](#tab-panel-960)
+* [ cURL ](#tab-panel-961)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-hd',
+  {
+    emotion: 'happy',
+    format: 'mp3',
+    pitch: 0,
+    speed: 1,
+    text: "Congratulations! You've just won the grand prize! This is absolutely incredible news!",
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-hd',  {    emotion: 'happy',    format: 'mp3',    pitch: 0,    speed: 1,    text: "Congratulations! You've just won the grand prize! This is absolutely incredible news!",    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-hd",
+  "input": {
+    "emotion": "happy",
+    "format": "mp3",
+    "pitch": 0,
+    "speed": 1,
+    "text": "Congratulations! You'\''ve just won the grand prize! This is absolutely incredible news!",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-954)
+* [ Raw response ](#tab-panel-955)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-hd",  "input": {    "emotion": "happy",    "format": "mp3",    "pitch": 0,    "speed": 1,    "text": "Congratulations! You'\''ve just won the grand prize! This is absolutely incredible news!",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-906)
-* [ Raw response ](#tab-panel-907)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/with-emotion.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/with-emotion.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate
 
-* [ TypeScript ](#tab-panel-914)
-* [ cURL ](#tab-panel-915)
+* [ TypeScript ](#tab-panel-962)
+* [ cURL ](#tab-panel-963)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-hd',
+  {
+    format: 'mp3',
+    pitch: 0,
+    sample_rate: 44100,
+    speed: 1,
+    text: 'This recording is generated at studio quality sample rate for the highest possible audio fidelity.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-hd',  {    format: 'mp3',    pitch: 0,    sample_rate: 44100,    speed: 1,    text: 'This recording is generated at studio quality sample rate for the highest possible audio fidelity.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-hd",
+  "input": {
+    "format": "mp3",
+    "pitch": 0,
+    "sample_rate": 44100,
+    "speed": 1,
+    "text": "This recording is generated at studio quality sample rate for the highest possible audio fidelity.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-958)
+* [ Raw response ](#tab-panel-959)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-hd",  "input": {    "format": "mp3",    "pitch": 0,    "sample_rate": 44100,    "speed": 1,    "text": "This recording is generated at studio quality sample rate for the highest possible audio fidelity.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-910)
-* [ Raw response ](#tab-panel-911)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/high-sample-rate.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/high-sample-rate.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-916)
-* [ Output ](#tab-panel-917)
-
-emotion
-
-`string`enum: happy, sad, angry, fearful, disgusted, surprised, calm, fluentEmotion control for synthesized speech
-
-format
-
-`string`requireddefault: mp3enum: mp3, flac, wavOutput audio format
-
-pitch
-
-`integer`requireddefault: 0maximum: 12minimum: \-12Pitch adjustment (-12 to 12)
-
-▶sample\_rate
-
-`one of`
-
-speed
-
-`number`requireddefault: 1maximum: 2minimum: 0.5Speech speed (0.5 to 2)
+* [ Input ](#tab-panel-964)
+* [ Output ](#tab-panel-965)
 
 text
 
@@ -158,9 +262,29 @@ voice\_id
 
 `string`requireddefault: English\_expressive\_narratorThe voice ID to use for synthesis
 
+speed
+
+`number`requireddefault: 1minimum: 0.5maximum: 2Speech speed (0.5 to 2)
+
 volume
 
-`number`requireddefault: 1maximum: 10minimum: 0Speech volume (0 to 10)
+`number`requireddefault: 1minimum: 0maximum: 10Speech volume (0 to 10)
+
+pitch
+
+`integer`requireddefault: 0minimum: \-12maximum: 12Pitch adjustment (-12 to 12)
+
+emotion
+
+`string`enum: happy, sad, angry, fearful, disgusted, surprised, calm, fluentEmotion control for synthesized speech
+
+format
+
+`string`requireddefault: mp3enum: mp3, flac, wavOutput audio format
+
+▶sample\_rate
+
+`one of`
 
 audio
 

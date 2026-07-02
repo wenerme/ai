@@ -31,16 +31,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkBreakoutRoomManager } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkBreakoutRoomManager />;}
+
+
+function MyComponent() {
+  return <RtkBreakoutRoomManager />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkBreakoutRoomManager } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkBreakoutRoomManager      allowDelete={true}      assigningParticipants={true}      defaultExpanded={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkBreakoutRoomManager
+      allowDelete={true}
+      assigningParticipants={true}
+      defaultExpanded={true}
+    />
+  );
+}
 ```
 
 ```json

@@ -26,18 +26,22 @@ A menu list component.
 
 ### Basic Usage
 
-```
+```html
 <rtk-menu-list></rtk-menu-list>
 ```
 
 ### With Properties
 
-```
-<rtk-menu-list></rtk-menu-list>
+```html
+<rtk-menu-list>
+</rtk-menu-list>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-menu-list");
+```html
+<script>
+  const el = document.querySelector("rtk-menu-list");
+
+
 </script>
 ```
 

@@ -47,13 +47,30 @@ If you plan to route requests based on custom metadata, you'll need to create su
 
 #### Example dispatch Worker
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const hostname = new URL(request.url).hostname;
-    // Get custom hostname metadata for routing decisions    const hostnameData = await env.KV.get(`hostname:${hostname}`, {      type: "json",    });
-    if (!hostnameData?.workerName) {      return new Response("Hostname not configured", { status: 404 });    }
-    // Route to the appropriate user Worker    const userWorker = env.DISPATCHER.get(hostnameData.workerName);    return await userWorker.fetch(request);  },};
+```js
+export default {
+  async fetch(request, env) {
+    const hostname = new URL(request.url).hostname;
+
+
+    // Get custom hostname metadata for routing decisions
+    const hostnameData = await env.KV.get(`hostname:${hostname}`, {
+      type: "json",
+    });
+
+
+    if (!hostnameData?.workerName) {
+      return new Response("Hostname not configured", { status: 404 });
+    }
+
+
+    // Route to the appropriate user Worker
+    const userWorker = env.DISPATCHER.get(hostnameData.workerName);
+    return await userWorker.fetch(request);
+  },
+};
 ```
 
 ## Subdomain routing
@@ -70,12 +87,25 @@ To set up subdomain routing:
 
 #### Example subdomain dispatch Worker
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const url = new URL(request.url);    const subdomain = url.hostname.split(".")[0];
-    // Route based on subdomain    if (subdomain && subdomain !== "saas") {      const userWorker = env.DISPATCHER.get(subdomain);      return await userWorker.fetch(request);    }
-    return new Response("Invalid subdomain", { status: 400 });  },};
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const subdomain = url.hostname.split(".")[0];
+
+
+    // Route based on subdomain
+    if (subdomain && subdomain !== "saas") {
+      const userWorker = env.DISPATCHER.get(subdomain);
+      return await userWorker.fetch(request);
+    }
+
+
+    return new Response("Invalid subdomain", { status: 400 });
+  },
+};
 ```
 
 ### O2O Behavior

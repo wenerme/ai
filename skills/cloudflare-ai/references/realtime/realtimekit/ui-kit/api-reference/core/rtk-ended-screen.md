@@ -29,19 +29,25 @@ A screen which shows a meeting has ended.
 
 ### Basic Usage
 
-```
+```html
 <rtk-ended-screen></rtk-ended-screen>
 ```
 
 ### With Properties
 
-```
-<rtk-ended-screen size="md"></rtk-ended-screen>
+```html
+<rtk-ended-screen
+ size="md">
+</rtk-ended-screen>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-ended-screen");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-ended-screen");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

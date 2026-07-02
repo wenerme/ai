@@ -66,9 +66,7 @@ Local Explorer exposes an API at `/cdn-cgi/explorer/api` that provides programma
 
 To retrieve the OpenAPI spec:
 
-Terminal window
-
-```
+```sh
 curl http://localhost:8787/cdn-cgi/explorer/api
 ```
 

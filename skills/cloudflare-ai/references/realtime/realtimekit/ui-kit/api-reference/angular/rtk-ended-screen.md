@@ -29,14 +29,19 @@ A screen which shows a meeting has ended.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-ended-screen></rtk-ended-screen>
+```html
+<!-- component.html -->
+<rtk-ended-screen></rtk-ended-screen>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-ended-screen [meeting]="meeting" size="md"></rtk-ended-screen>
+```html
+<!-- component.html -->
+<rtk-ended-screen
+ [meeting]="meeting"
+ size="md">
+</rtk-ended-screen>
 ```
 
 ```json

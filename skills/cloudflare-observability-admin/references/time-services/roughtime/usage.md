@@ -21,8 +21,9 @@ You just need the server's address and public key to run the protocol:
 
 To get started, download and run Cloudflare's [Go client ↗](https://github.com/cloudflare/roughtime):
 
-```
-go install github.com/cloudflare/roughtime/cmd/getroughtime@latestgetroughtime -ping roughtime.cloudflare.com:2003 -pubkey 0GD7c3yP8xEc4Zl2zeuN2SlLvDVVocjsPSL8/Rl/7zg=
+```go
+go install github.com/cloudflare/roughtime/cmd/getroughtime@latest
+getroughtime -ping roughtime.cloudflare.com:2003 -pubkey 0GD7c3yP8xEc4Zl2zeuN2SlLvDVVocjsPSL8/Rl/7zg=
 ```
 
 ## Beta notice
@@ -31,9 +32,7 @@ Cloudflare Roughtime is currently in beta. As such, our root public key may chan
 
 You can also obtain it programmatically using DNS. For example:
 
-Terminal window
-
-```
+```sh
 dig TXT roughtime.cloudflare.com | grep -oP 'TXT\s"\K.*?(?=")'
 ```
 

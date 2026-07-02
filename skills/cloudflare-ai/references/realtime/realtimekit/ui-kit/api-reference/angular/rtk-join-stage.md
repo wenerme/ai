@@ -28,14 +28,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-join-stage></rtk-join-stage>
+```html
+<!-- component.html -->
+<rtk-join-stage></rtk-join-stage>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-join-stage [dataConfig]="modaldataconfig" [meeting]="meeting" size="md"></rtk-join-stage>
+```html
+<!-- component.html -->
+<rtk-join-stage
+ [dataConfig]="modaldataconfig"
+ [meeting]="meeting"
+ size="md">
+</rtk-join-stage>
 ```
 
 ```json

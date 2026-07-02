@@ -24,16 +24,22 @@ A full-screen error view that displays an error message and a retry button.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkErrorView    android:id="@+id/rtk_error_view"    android:layout_width="match_parent"    android:layout_height="match_parent" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkErrorView
+    android:id="@+id/rtk_error_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val errorView = findViewById<RtkErrorView>(R.id.rtk_error_view)errorView.refresh("Failed to connect") {    // Retry connection}
+```kotlin
+val errorView = findViewById<RtkErrorView>(R.id.rtk_error_view)
+errorView.refresh("Failed to connect") {
+    // Retry connection
+}
 ```
 
 ```json

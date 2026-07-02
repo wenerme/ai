@@ -22,18 +22,16 @@ Before troubleshooting performance, confirm that your traffic is actually going 
 
 Every response served through Cloudflare includes a `cf-ray` header. Check for this header:
 
-* [ bash ](#tab-panel-10686)
-* [ PowerShell ](#tab-panel-10687)
+* [ bash ](#tab-panel-10981)
+* [ PowerShell ](#tab-panel-10982)
 
-Terminal window
-
-```
+```bash
 curl -s -D- -o /dev/null https://www.example.com | grep -i cf-ray
 ```
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 (Invoke-WebRequest -Uri "https://www.example.com" -Method Head).Headers["cf-ray"]
 ```
 
@@ -43,18 +41,16 @@ If you see a `cf-ray` header (for example, `cf-ray: 8a1b2c3d4e5f6g7h-SJC`), your
 
 Your domain must resolve to Cloudflare IP addresses for traffic to be proxied:
 
-* [ bash ](#tab-panel-10688)
-* [ PowerShell ](#tab-panel-10689)
+* [ bash ](#tab-panel-10983)
+* [ PowerShell ](#tab-panel-10984)
 
-Terminal window
-
-```
+```bash
 dig +short www.example.com
 ```
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Resolve-DnsName -Name www.example.com | Select-Object -ExpandProperty IPAddress
 ```
 
@@ -190,25 +186,40 @@ For detailed timing metrics on specific requests, use command-line tools to meas
 
 ### Basic performance test
 
-* [ bash ](#tab-panel-10690)
-* [ PowerShell ](#tab-panel-10691)
+* [ bash ](#tab-panel-10985)
+* [ PowerShell ](#tab-panel-10986)
 
-Terminal window
-
-```
+```bash
 curl -w "\n\nDNS Lookup: %{time_namelookup}s\nTCP Connect: %{time_connect}s\nTLS Handshake: %{time_appconnect}s\nTime to First Byte: %{time_starttransfer}s\nTotal Time: %{time_total}s\n" -o /dev/null -s https://www.example.com/slow-asset.jpg
 ```
 
-PowerShell
+**PowerShell**
 
-```
-$url = "https://www.example.com/slow-asset.jpg"try {    $timing = Measure-Command {        $response = Invoke-WebRequest -Uri $url -ErrorAction Stop    }    Write-Host "Total Time: $($timing.TotalSeconds)s"    Write-Host "Status: $($response.StatusCode)"} catch {    if ($_.Exception.Response) {        $statusCode = $_.Exception.Response.StatusCode.value__        Write-Host "Error Status: $statusCode"    }    Write-Host "Error: $($_.Exception.Message)"}
+```powershell
+$url = "https://www.example.com/slow-asset.jpg"
+try {
+    $timing = Measure-Command {
+        $response = Invoke-WebRequest -Uri $url -ErrorAction Stop
+    }
+    Write-Host "Total Time: $($timing.TotalSeconds)s"
+    Write-Host "Status: $($response.StatusCode)"
+} catch {
+    if ($_.Exception.Response) {
+        $statusCode = $_.Exception.Response.StatusCode.value__
+        Write-Host "Error Status: $statusCode"
+    }
+    Write-Host "Error: $($_.Exception.Message)"
+}
 ```
 
 Example output (bash):
 
-```
-DNS Lookup: 0.025sTCP Connect: 0.045sTLS Handshake: 0.120sTime to First Byte: 0.350sTotal Time: 1.250s
+```txt
+DNS Lookup: 0.025s
+TCP Connect: 0.045s
+TLS Handshake: 0.120s
+Time to First Byte: 0.350s
+Total Time: 1.250s
 ```
 
 ### Understand the metrics
@@ -243,18 +254,16 @@ Uncached content must travel from the visitor to Cloudflare, then to your origin
 
 Check the cache status of a specific asset:
 
-* [ bash ](#tab-panel-10692)
-* [ PowerShell ](#tab-panel-10693)
+* [ bash ](#tab-panel-10987)
+* [ PowerShell ](#tab-panel-10988)
 
-Terminal window
-
-```
+```bash
 curl -s -D- -o /dev/null https://www.example.com/asset.jpg | grep -i "cf-cache-status"
 ```
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 (Invoke-WebRequest -Uri "https://www.example.com/asset.jpg" -Method Head).Headers["cf-cache-status"]
 ```
 
@@ -333,12 +342,10 @@ Poor results indicate issues with your local network or ISP.
 
 MTR combines traceroute and ping to show latency and packet loss at each network hop.
 
-* [ macOS/Linux ](#tab-panel-10694)
-* [ Windows ](#tab-panel-10695)
+* [ macOS/Linux ](#tab-panel-10989)
+* [ Windows ](#tab-panel-10990)
 
-Terminal window
-
-```
+```bash
 mtr -rw www.example.com
 ```
 
@@ -356,9 +363,7 @@ For more details, refer to [How to read MTR ↗](https://www.cloudflare.com/lear
 
 If you have access to your origin server, run MTR from the origin to a [Cloudflare IP address ↗](https://www.cloudflare.com/ips/) to test the network path between your origin and Cloudflare.
 
-Terminal window
-
-```
+```bash
 mtr -rw 104.16.132.229
 ```
 
@@ -374,18 +379,16 @@ How requests are routed to Cloudflare data centers can significantly impact perf
 
 Add `/cdn-cgi/trace` to your domain to see which Cloudflare data center is serving your requests:
 
-* [ bash ](#tab-panel-10696)
-* [ PowerShell ](#tab-panel-10697)
+* [ bash ](#tab-panel-10991)
+* [ PowerShell ](#tab-panel-10992)
 
-Terminal window
-
-```
+```bash
 curl https://www.example.com/cdn-cgi/trace
 ```
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Invoke-RestMethod -Uri "https://www.example.com/cdn-cgi/trace"
 ```
 

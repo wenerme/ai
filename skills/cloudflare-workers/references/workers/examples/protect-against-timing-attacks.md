@@ -32,50 +32,154 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-11823)
-* [  Python ](#tab-panel-11824)
-* [  Hono ](#tab-panel-11825)
+* [  TypeScript ](#tab-panel-12056)
+* [  Python ](#tab-panel-12057)
+* [  Hono ](#tab-panel-12058)
 
-TypeScript
+**TypeScript**
 
-```
-interface Environment {  MY_SECRET_VALUE?: string;}
-export default {  async fetch(req: Request, env: Environment) {    if (!env.MY_SECRET_VALUE) {      return new Response("Missing secret binding", { status: 500 });    }
+```ts
+interface Environment {
+  MY_SECRET_VALUE?: string;
+}
+
+
+export default {
+  async fetch(req: Request, env: Environment) {
+    if (!env.MY_SECRET_VALUE) {
+      return new Response("Missing secret binding", { status: 500 });
+    }
+
+
     const authToken = req.headers.get("Authorization") || "";
+
+
     const encoder = new TextEncoder();
-    const userValue = encoder.encode(authToken);    const secretValue = encoder.encode(env.MY_SECRET_VALUE);
-    // Do not return early when lengths differ — that leaks the secret's    // length through timing.  Instead, always perform a constant-time    // comparison: when the lengths match compare directly; otherwise    // compare the user input against itself (always true) and negate.    const lengthsMatch = userValue.byteLength === secretValue.byteLength;    const isEqual = lengthsMatch      ? crypto.subtle.timingSafeEqual(userValue, secretValue)      : !crypto.subtle.timingSafeEqual(userValue, userValue);
-    if (!isEqual) {      return new Response("Unauthorized", { status: 401 });    }
-    return new Response("Welcome!");  },};
+
+
+    const userValue = encoder.encode(authToken);
+    const secretValue = encoder.encode(env.MY_SECRET_VALUE);
+
+
+    // Do not return early when lengths differ — that leaks the secret's
+    // length through timing.  Instead, always perform a constant-time
+    // comparison: when the lengths match compare directly; otherwise
+    // compare the user input against itself (always true) and negate.
+    const lengthsMatch = userValue.byteLength === secretValue.byteLength;
+    const isEqual = lengthsMatch
+      ? crypto.subtle.timingSafeEqual(userValue, secretValue)
+      : !crypto.subtle.timingSafeEqual(userValue, userValue);
+
+
+    if (!isEqual) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+
+    return new Response("Welcome!");
+  },
+};
 ```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responsefrom js import TextEncoder, crypto
-class Default(WorkerEntrypoint):    async def fetch(self, request):        auth_token = request.headers["Authorization"] or ""        secret = self.env.MY_SECRET_VALUE
-        if secret is None:            return Response("Missing secret binding", status=500)
-        encoder = TextEncoder.new()        user_value = encoder.encode(auth_token)        secret_value = encoder.encode(secret)
-        # Do not return early when lengths differ — that leaks the secret's        # length through timing.  Always perform a constant-time comparison.        if user_value.byteLength == secret_value.byteLength:            is_equal = crypto.subtle.timingSafeEqual(user_value, secret_value)        else:            is_equal = not crypto.subtle.timingSafeEqual(user_value, user_value)
-        if not is_equal:            return Response("Unauthorized", status=401)
+```py
+from workers import WorkerEntrypoint, Response
+from js import TextEncoder, crypto
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        auth_token = request.headers["Authorization"] or ""
+        secret = self.env.MY_SECRET_VALUE
+
+
+        if secret is None:
+            return Response("Missing secret binding", status=500)
+
+
+        encoder = TextEncoder.new()
+        user_value = encoder.encode(auth_token)
+        secret_value = encoder.encode(secret)
+
+
+        # Do not return early when lengths differ — that leaks the secret's
+        # length through timing.  Always perform a constant-time comparison.
+        if user_value.byteLength == secret_value.byteLength:
+            is_equal = crypto.subtle.timingSafeEqual(user_value, secret_value)
+        else:
+            is_equal = not crypto.subtle.timingSafeEqual(user_value, user_value)
+
+
+        if not is_equal:
+            return Response("Unauthorized", status=401)
+
+
         return Response("Welcome!")
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Hono } from 'hono';
-interface Environment {  Bindings: {    MY_SECRET_VALUE?: string;  }}
+
+
+interface Environment {
+  Bindings: {
+    MY_SECRET_VALUE?: string;
+  }
+}
+
+
 const app = new Hono<Environment>();
-// Middleware to handle authentication with timing-safe comparisonapp.use('*', async (c, next) => {  const secret = c.env.MY_SECRET_VALUE;
-  if (!secret) {    return c.text("Missing secret binding", 500);  }
+
+
+// Middleware to handle authentication with timing-safe comparison
+app.use('*', async (c, next) => {
+  const secret = c.env.MY_SECRET_VALUE;
+
+
+  if (!secret) {
+    return c.text("Missing secret binding", 500);
+  }
+
+
   const authToken = c.req.header("Authorization") || "";
+
+
   const encoder = new TextEncoder();
-  const userValue = encoder.encode(authToken);  const secretValue = encoder.encode(secret);
-  // Do not return early when lengths differ — that leaks the secret's  // length through timing.  Instead, always perform a constant-time  // comparison: when the lengths match compare directly; otherwise  // compare the user input against itself (always true) and negate.  const lengthsMatch = userValue.byteLength === secretValue.byteLength;  const isEqual = lengthsMatch    ? crypto.subtle.timingSafeEqual(userValue, secretValue)    : !crypto.subtle.timingSafeEqual(userValue, userValue);
-  if (!isEqual) {    return c.text("Unauthorized", 401);  }
-  // If we got here, the auth token is valid  await next();});
-// Protected routeapp.get('*', (c) => {  return c.text("Welcome!");});
+
+
+  const userValue = encoder.encode(authToken);
+  const secretValue = encoder.encode(secret);
+
+
+  // Do not return early when lengths differ — that leaks the secret's
+  // length through timing.  Instead, always perform a constant-time
+  // comparison: when the lengths match compare directly; otherwise
+  // compare the user input against itself (always true) and negate.
+  const lengthsMatch = userValue.byteLength === secretValue.byteLength;
+  const isEqual = lengthsMatch
+    ? crypto.subtle.timingSafeEqual(userValue, secretValue)
+    : !crypto.subtle.timingSafeEqual(userValue, userValue);
+
+
+  if (!isEqual) {
+    return c.text("Unauthorized", 401);
+  }
+
+
+  // If we got here, the auth token is valid
+  await next();
+});
+
+
+// Protected route
+app.get('*', (c) => {
+  return c.text("Welcome!");
+});
+
+
 export default app;
 ```
 

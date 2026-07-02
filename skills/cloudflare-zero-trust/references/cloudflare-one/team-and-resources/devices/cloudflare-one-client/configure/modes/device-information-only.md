@@ -34,10 +34,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-Update device certificate provisioning status
+**Update device certificate provisioning status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certificates" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certificates" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enabled": true
+  }'
 ```
 
 ## 2\. Configure the Cloudflare One Client
@@ -53,12 +58,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 
 1. To view the client certificates installed on the device:
 
-  * [ Windows ](#tab-panel-7510)
-  * [ macOS ](#tab-panel-7511)
-  * [ Linux ](#tab-panel-7512)
-  * [ iOS ](#tab-panel-7513)
-  * [ Android ](#tab-panel-7514)
-  * [ ChromeOS ](#tab-panel-7515)
+  * [ Windows ](#tab-panel-7760)
+  * [ macOS ](#tab-panel-7761)
+  * [ Linux ](#tab-panel-7762)
+  * [ iOS ](#tab-panel-7763)
+  * [ Android ](#tab-panel-7764)
+  * [ ChromeOS ](#tab-panel-7765)
 
   1. Open the **Start** menu and select **Run**.
   2. Enter `certlm.msc`.
@@ -67,8 +72,7 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
   1. Open **Keychain Access**.
   2. Go to **System** \> **My Certificates**.
 Open a terminal window and run the following command:
-Terminal window
-```
+```sh
 $ certutil -L -d sql:/etc/pki/nssdb
 ```
 Go to **Settings** \> **General** \> **About** \> **Certificate Trust Settings**.

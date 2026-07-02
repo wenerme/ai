@@ -63,8 +63,8 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-9459)
-* [ API ](#tab-panel-9460)
+* [ Dashboard ](#tab-panel-9750)
+* [ API ](#tab-panel-9751)
 
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 
@@ -84,10 +84,23 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Patch Pool
+**Patch Pool**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools/$POOL_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "origins": [        {            "name": "server-1",            "address": "10.0.0.1",            "enabled": true,            "weight": 1,            "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools/$POOL_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "origins": [
+        {
+            "name": "server-1",
+            "address": "10.0.0.1",
+            "enabled": true,
+            "weight": 1,
+            "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
+        }
+    ]
+  }'
 ```
 
 ## 2\. Create a private load balancer

@@ -39,10 +39,17 @@ You can choose to automatically create your bucket in the closest available regi
 
 You can set the Location Hint via the `LocationConstraint` parameter using the S3 API:
 
-JavaScript
+**JavaScript**
 
-```
-await S3.send(  new CreateBucketCommand({    Bucket: "YOUR_BUCKET_NAME",    CreateBucketConfiguration: {      LocationConstraint: "WNAM",    },  }),);
+```js
+await S3.send(
+  new CreateBucketCommand({
+    Bucket: "YOUR_BUCKET_NAME",
+    CreateBucketConfiguration: {
+      LocationConstraint: "WNAM",
+    },
+  }),
+);
 ```
 
 Refer to [Examples](https://developers.cloudflare.com/r2/examples/) for additional examples from other S3 SDKs.
@@ -83,19 +90,35 @@ Use Jurisdictional Restrictions when you need to ensure data is stored and proce
 
 To access R2 buckets that belong to a jurisdiction from [Workers](https://developers.cloudflare.com/workers/), you will need to specify the jurisdiction as well as the bucket name as part of your [bindings](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#3-bind-your-bucket-to-a-worker) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10027)
-* [  wrangler.toml ](#tab-panel-10028)
+* [  wrangler.jsonc ](#tab-panel-10226)
+* [  wrangler.toml ](#tab-panel-10227)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "r2_buckets": [
+    {
+      "bindings": [
+        {
+          "binding": "MY_BUCKET",
+          "bucket_name": "<YOUR_BUCKET_NAME>",
+          "jurisdiction": "<JURISDICTION>"
+        }
+      ]
+    }
+  ]
+}
 ```
-{  "r2_buckets": [    {      "bindings": [        {          "binding": "MY_BUCKET",          "bucket_name": "<YOUR_BUCKET_NAME>",          "jurisdiction": "<JURISDICTION>"        }      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[r2_buckets]][[r2_buckets.bindings]]binding = "MY_BUCKET"bucket_name = "<YOUR_BUCKET_NAME>"jurisdiction = "<JURISDICTION>"
+```toml
+[[r2_buckets]]
+[[r2_buckets.bindings]]
+binding = "MY_BUCKET"
+bucket_name = "<YOUR_BUCKET_NAME>"
+jurisdiction = "<JURISDICTION>"
 ```
 
 For more information on getting started, refer to [Use R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/).
@@ -110,10 +133,23 @@ You can use your jurisdiction-specific endpoint for any [supported S3 API operat
 
 The example below shows how to create an R2 bucket in the `eu` jurisdiction using the [@aws-sdk/client-s3 ↗](https://www.npmjs.com/package/@aws-sdk/client-s3) package for JavaScript.
 
-JavaScript
+**JavaScript**
 
-```
-import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";const S3 = new S3Client({  endpoint: "https://<account_id>.eu.r2.cloudflarestorage.com",  credentials: {    accessKeyId: "<access_key_id",    secretAccessKey: "<access_key_secret>",  },  region: "auto",});await S3.send(  new CreateBucketCommand({    Bucket: "YOUR_BUCKET_NAME",  }),);
+```js
+import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";
+const S3 = new S3Client({
+  endpoint: "https://<account_id>.eu.r2.cloudflarestorage.com",
+  credentials: {
+    accessKeyId: "<access_key_id",
+    secretAccessKey: "<access_key_secret>",
+  },
+  region: "auto",
+});
+await S3.send(
+  new CreateBucketCommand({
+    Bucket: "YOUR_BUCKET_NAME",
+  }),
+);
 ```
 
 Refer to [Examples](https://developers.cloudflare.com/r2/examples/) for additional examples from other S3 SDKs.

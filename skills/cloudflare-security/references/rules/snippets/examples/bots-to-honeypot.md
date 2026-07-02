@@ -14,12 +14,26 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Use the [bot score field](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) to send bots to a honeypot.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request) {    const response = await fetch(request);
-    // Clone the response so that it is no longer immutable    const newResponse = new Response(response.body, response);
-    if (request.cf.botManagement.score < 30) {      const honeypot = "https://example.com/";      return await fetch(honeypot, request);    } else {      return newResponse;    }  },};
+```js
+export default {
+  async fetch(request) {
+    const response = await fetch(request);
+
+
+    // Clone the response so that it is no longer immutable
+    const newResponse = new Response(response.body, response);
+
+
+    if (request.cf.botManagement.score < 30) {
+      const honeypot = "https://example.com/";
+      return await fetch(honeypot, request);
+    } else {
+      return newResponse;
+    }
+  },
+};
 ```
 
 ```json

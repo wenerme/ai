@@ -30,14 +30,20 @@ A component which lists all participants, with ability to run privileged actions
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participants></rtk-participants>
+```html
+<!-- component.html -->
+<rtk-participants></rtk-participants>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participants [defaultParticipantsTabId]="participantstabid" [meeting]="meeting" size="md"></rtk-participants>
+```html
+<!-- component.html -->
+<rtk-participants
+ [defaultParticipantsTabId]="participantstabid"
+ [meeting]="meeting"
+ size="md">
+</rtk-participants>
 ```
 
 ```json

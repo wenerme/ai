@@ -37,10 +37,26 @@ Converting a string to lowercase is useful if you want to compare it to somethin
 
 Assuming you are using `zaraz.ecommerce()` to send the cart content like this:
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.track('Product List Viewed',  {  products:    [    {      sku: '2671033',      name: 'V-neck T-shirt',      price: 14.99,      quantity: 3    },{      sku: '2671034',      name: 'T-shirt',      price: 10.99,      quantity: 2    },    ],  });
+```js
+zaraz.track('Product List Viewed',
+  {  products:
+    [
+    {
+      sku: '2671033',
+      name: 'V-neck T-shirt',
+      price: 14.99,
+      quantity: 3
+    },{
+      sku: '2671034',
+      name: 'T-shirt',
+      price: 10.99,
+      quantity: 2
+    },
+    ],
+  }
+);
 ```
 
 If the field in which you want to show the sum, you will enter `{{ $sum(client.products.(price * quantity)) }}`. This will multiply the price of each product by its quantity, and then sum up the total.

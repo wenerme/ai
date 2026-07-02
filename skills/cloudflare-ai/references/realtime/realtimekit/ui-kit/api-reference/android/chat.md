@@ -24,10 +24,11 @@ Fully featured chat screen with image and file upload and auto-scroll.
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkChatBottomSheet = RtkChatBottomSheet()rtkChatBottomSheet.show(fragmentManager, "CHAT_TAG")
+```kotlin
+val rtkChatBottomSheet = RtkChatBottomSheet()
+rtkChatBottomSheet.show(fragmentManager, "CHAT_TAG")
 ```
 
 ```json

@@ -20,25 +20,19 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8081)
-* [  pnpm ](#tab-panel-8082)
-* [  yarn ](#tab-panel-8083)
+* [  npm ](#tab-panel-8362)
+* [  pnpm ](#tab-panel-8363)
+* [  yarn ](#tab-panel-8364)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 create [NAME]
 ```
 
@@ -80,25 +74,19 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8084)
-* [  pnpm ](#tab-panel-8085)
-* [  yarn ](#tab-panel-8086)
+* [  npm ](#tab-panel-8365)
+* [  pnpm ](#tab-panel-8366)
+* [  yarn ](#tab-panel-8367)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 info [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 info [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 info [NAME]
 ```
 
@@ -132,25 +120,19 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8087)
-* [  pnpm ](#tab-panel-8088)
-* [  yarn ](#tab-panel-8089)
+* [  npm ](#tab-panel-8368)
+* [  pnpm ](#tab-panel-8369)
+* [  yarn ](#tab-panel-8370)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 list
 ```
 
@@ -182,25 +164,19 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8090)
-* [  pnpm ](#tab-panel-8091)
-* [  yarn ](#tab-panel-8092)
+* [  npm ](#tab-panel-8371)
+* [  pnpm ](#tab-panel-8372)
+* [  yarn ](#tab-panel-8373)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 delete [NAME]
 ```
 
@@ -234,25 +210,19 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-8093)
-* [  pnpm ](#tab-panel-8094)
-* [  yarn ](#tab-panel-8095)
+* [  npm ](#tab-panel-8374)
+* [  pnpm ](#tab-panel-8375)
+* [  yarn ](#tab-panel-8376)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 execute [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 execute [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 execute [DATABASE]
 ```
 
@@ -298,25 +268,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-8096)
-* [  pnpm ](#tab-panel-8097)
-* [  yarn ](#tab-panel-8098)
+* [  npm ](#tab-panel-8377)
+* [  pnpm ](#tab-panel-8378)
+* [  yarn ](#tab-panel-8379)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 export [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 export [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 export [NAME]
 ```
 
@@ -364,25 +328,19 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-8099)
-* [  pnpm ](#tab-panel-8100)
-* [  yarn ](#tab-panel-8101)
+* [  npm ](#tab-panel-8380)
+* [  pnpm ](#tab-panel-8381)
+* [  yarn ](#tab-panel-8382)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 time-travel info [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 time-travel info [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 time-travel info [DATABASE]
 ```
 
@@ -420,25 +378,19 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-8102)
-* [  pnpm ](#tab-panel-8103)
-* [  yarn ](#tab-panel-8104)
+* [  npm ](#tab-panel-8383)
+* [  pnpm ](#tab-panel-8384)
+* [  yarn ](#tab-panel-8385)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 time-travel restore [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 time-travel restore [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 time-travel restore [DATABASE]
 ```
 
@@ -483,25 +435,19 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-8105)
-* [  pnpm ](#tab-panel-8106)
-* [  yarn ](#tab-panel-8107)
+* [  npm ](#tab-panel-8386)
+* [  pnpm ](#tab-panel-8387)
+* [  yarn ](#tab-panel-8388)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 migrations create [DATABASE] [MESSAGE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 migrations create [DATABASE] [MESSAGE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 migrations create [DATABASE] [MESSAGE]
 ```
 
@@ -533,25 +479,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-8108)
-* [  pnpm ](#tab-panel-8109)
-* [  yarn ](#tab-panel-8110)
+* [  npm ](#tab-panel-8389)
+* [  pnpm ](#tab-panel-8390)
+* [  yarn ](#tab-panel-8391)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 migrations list [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 migrations list [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 migrations list [DATABASE]
 ```
 
@@ -597,25 +537,19 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-8111)
-* [  pnpm ](#tab-panel-8112)
-* [  yarn ](#tab-panel-8113)
+* [  npm ](#tab-panel-8392)
+* [  pnpm ](#tab-panel-8393)
+* [  yarn ](#tab-panel-8394)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 migrations apply [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 migrations apply [DATABASE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 migrations apply [DATABASE]
 ```
 
@@ -658,25 +592,19 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8114)
-* [  pnpm ](#tab-panel-8115)
-* [  yarn ](#tab-panel-8116)
+* [  npm ](#tab-panel-8395)
+* [  pnpm ](#tab-panel-8396)
+* [  yarn ](#tab-panel-8397)
 
-Terminal window
-
-```
+```sh
 npx wrangler d1 insights [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler d1 insights [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler d1 insights [NAME]
 ```
 

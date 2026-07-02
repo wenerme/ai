@@ -32,16 +32,30 @@ A dialog component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDialog } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkDialog />;}
+
+
+function MyComponent() {
+  return <RtkDialog />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDialog } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkDialog      disableEscapeKey={true}      hideCloseButton={true}      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDialog
+      disableEscapeKey={true}
+      hideCloseButton={true}
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

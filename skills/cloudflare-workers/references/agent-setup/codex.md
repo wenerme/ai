@@ -26,30 +26,28 @@ TerminalStandaloneCloudExtensionOpen Source
 
 ## Quick start
 
-* [ Terminal ](#tab-panel-5333)
-* [ Standalone ](#tab-panel-5334)
+* [ Terminal ](#tab-panel-5349)
+* [ Standalone ](#tab-panel-5350)
 
 1. **Install Codex**
 Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).
-Terminal window
-```
+```bash
 npm install -g @openai/codex
 ```
 2. **Launch Codex in your project**
 Start Codex from the root of your project, where `wrangler.jsonc` lives (if it already exists).
-Terminal window
-```
+```bash
 codex
 ```
 3. **Install the Cloudflare plugin**
 Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This installs Cloudflare Skills and registers the Cloudflare MCP servers.
-```
+```txt
 /plugins
 ```
 4. **Try a prompt**
 For example:
-```
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 1. **Download Codex**

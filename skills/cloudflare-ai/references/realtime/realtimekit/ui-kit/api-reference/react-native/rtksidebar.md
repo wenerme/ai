@@ -31,16 +31,31 @@ Full-screen sidebar modal with tabbed navigation for chat, participants, polls, 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSidebar } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkSidebar meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkSidebar meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSidebar } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkSidebar      meeting={meeting}      defaultSection="chat"      enabledSections={["chat", "participants", "polls"]}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSidebar
+      meeting={meeting}
+      defaultSection="chat"
+      enabledSections={["chat", "participants", "polls"]}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

@@ -29,114 +29,194 @@ A speech-to-text model that uses GPT-4o to transcribe audio with improved word e
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1048)
-* [ cURL ](#tab-panel-1049)
+* [ TypeScript ](#tab-panel-1096)
+* [ cURL ](#tab-panel-1097)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'openai/gpt-4o-transcribe',  { file: 'data:audio/wav;base64,<...>' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-4o-transcribe",  "input": {    "file": "data:audio/wav;base64,<...>"  }}'
+```ts
+const response = await env.AI.run(
+  'openai/gpt-4o-transcribe',
+  { file: 'data:audio/wav;base64,<...>' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1046)
-* [ Raw response ](#tab-panel-1047)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-4o-transcribe",
+  "input": {
+    "file": "data:audio/wav;base64,<...>"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1094)
+* [ Raw response ](#tab-panel-1095)
 
 Hello
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "text": "Hello"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "text": "Hello"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **With Language Hint**  — Transcribe with a language hint for better accuracy
 
-* [ TypeScript ](#tab-panel-1052)
-* [ cURL ](#tab-panel-1053)
+* [ TypeScript ](#tab-panel-1100)
+* [ cURL ](#tab-panel-1101)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'openai/gpt-4o-transcribe',  { file: 'data:audio/wav;base64,<...>', language: 'en' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-4o-transcribe",  "input": {    "file": "data:audio/wav;base64,<...>",    "language": "en"  }}'
+```ts
+const response = await env.AI.run(
+  'openai/gpt-4o-transcribe',
+  { file: 'data:audio/wav;base64,<...>', language: 'en' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1050)
-* [ Raw response ](#tab-panel-1051)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-4o-transcribe",
+  "input": {
+    "file": "data:audio/wav;base64,<...>",
+    "language": "en"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1098)
+* [ Raw response ](#tab-panel-1099)
 
 Hello
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "text": "Hello"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "text": "Hello"
+  },
+  "state": "Completed"
+}
 ```
 
 **Guided Transcription**  — Use a prompt to guide transcription style and context
 
-* [ TypeScript ](#tab-panel-1056)
-* [ cURL ](#tab-panel-1057)
+* [ TypeScript ](#tab-panel-1104)
+* [ cURL ](#tab-panel-1105)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'openai/gpt-4o-transcribe',
+  {
+    file: 'data:audio/wav;base64,<...>',
+    prompt: 'This is a technical discussion about Kubernetes and cloud-native architecture.',
+    language: 'en',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'openai/gpt-4o-transcribe',  {    file: 'data:audio/wav;base64,<...>',    prompt: 'This is a technical discussion about Kubernetes and cloud-native architecture.',    language: 'en',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-4o-transcribe",
+  "input": {
+    "file": "data:audio/wav;base64,<...>",
+    "prompt": "This is a technical discussion about Kubernetes and cloud-native architecture.",
+    "language": "en"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-4o-transcribe",  "input": {    "file": "data:audio/wav;base64,<...>",    "prompt": "This is a technical discussion about Kubernetes and cloud-native architecture.",    "language": "en"  }}'
-```
-
-* [ Output ](#tab-panel-1054)
-* [ Raw response ](#tab-panel-1055)
+* [ Output ](#tab-panel-1102)
+* [ Raw response ](#tab-panel-1103)
 
 This is a technical discussion about Kubernetes and cloud-native architecture.
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "text": "This is a technical discussion about Kubernetes and cloud-native architecture."  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "text": "This is a technical discussion about Kubernetes and cloud-native architecture."
+  },
+  "state": "Completed"
+}
 ```
 
 **High Temperature**  — Higher temperature for more varied transcription
 
-* [ TypeScript ](#tab-panel-1060)
-* [ cURL ](#tab-panel-1061)
+* [ TypeScript ](#tab-panel-1108)
+* [ cURL ](#tab-panel-1109)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'openai/gpt-4o-transcribe',  { file: 'data:audio/wav;base64,<...>', temperature: 0.5 },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/gpt-4o-transcribe",  "input": {    "file": "data:audio/wav;base64,<...>",    "temperature": 0.5  }}'
+```ts
+const response = await env.AI.run(
+  'openai/gpt-4o-transcribe',
+  { file: 'data:audio/wav;base64,<...>', temperature: 0.5 },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1058)
-* [ Raw response ](#tab-panel-1059)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "openai/gpt-4o-transcribe",
+  "input": {
+    "file": "data:audio/wav;base64,<...>",
+    "temperature": 0.5
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1106)
+* [ Raw response ](#tab-panel-1107)
 
 Hello, world!
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "text": "Hello, world!"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "text": "Hello, world!"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1062)
-* [ Output ](#tab-panel-1063)
+* [ Input ](#tab-panel-1110)
+* [ Output ](#tab-panel-1111)
 
 file
 
@@ -152,7 +232,7 @@ prompt
 
 temperature
 
-`number`maximum: 1minimum: 0The sampling temperature, between 0 and 1\. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Defaults to 0 if omitted.
+`number`minimum: 0maximum: 1The sampling temperature, between 0 and 1\. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Defaults to 0 if omitted.
 
 text
 

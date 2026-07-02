@@ -19,14 +19,23 @@ To complete the migration, you must obtain the [sitekey and secret key](https://
 ## Client-side integration
 
 1. Update the client-side integration by inserting the Turnstile script snippet in your HTML's `<head>` element:
-Turnstile script snippet
-```
+
+**Turnstile script snippet**
+```html
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 ```
 2. Locate the `hcaptcha.render()` calls and replace the sitekey with your Turnstile sitekey and the API.
-Render
-```
-  // before  hcaptcha.render(element, {      sitekey: "00000000-0000-0000-0000-000000000000"  })  // after  turnstile.render(element, {      sitekey: "1x00000000000000000000AA"  })
+
+**Render**
+```js
+  // before
+  hcaptcha.render(element, {
+      sitekey: "00000000-0000-0000-0000-000000000000"
+  })
+  // after
+  turnstile.render(element, {
+      sitekey: "1x00000000000000000000AA"
+  })
 ```
 
 Note
@@ -40,11 +49,11 @@ Turnstile supports:
 
 1. Update the server-side integration by replacing the Siteverify URL.
 Replace: `https://hcaptcha.com/siteverify` with the following:
-```
+```txt
 https://challenges.cloudflare.com/turnstile/v0/siteverify
 ```
 2. Replace the `h-captcha-response` input name with the following:
-```
+```txt
 cf-turnstile-response
 ```
 

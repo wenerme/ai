@@ -56,8 +56,7 @@ For setup, select the following options:
   * For _Do you want to use git for version control?_, choose `Yes`.
   * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
 2. Move into the project directory:
-Terminal window
-```
+```sh
 cd artifacts-worker
 ```
 
@@ -65,20 +64,40 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-6884)
-* [  wrangler.toml ](#tab-panel-6885)
+* [  wrangler.jsonc ](#tab-panel-7132)
+* [  wrangler.toml ](#tab-panel-7133)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "artifacts-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "artifacts": [
+    {
+      "binding": "ARTIFACTS",
+      "namespace": "default"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "artifacts-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "artifacts": [    {      "binding": "ARTIFACTS",      "namespace": "default"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-name = "artifacts-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[[artifacts]]binding = "ARTIFACTS"namespace = "default"# Set remote = true if you want Wrangler to use the remote Artifacts service in local dev.
+```toml
+name = "artifacts-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[artifacts]]
+binding = "ARTIFACTS"
+namespace = "default"
+# Set remote = true if you want Wrangler to use the remote Artifacts service in local dev.
 ```
 
 This exposes Artifacts as `env.ARTIFACTS` inside your Worker.
@@ -105,29 +124,79 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-6886)
-* [  TypeScript ](#tab-panel-6887)
+* [  JavaScript ](#tab-panel-7134)
+* [  TypeScript ](#tab-panel-7135)
 
-src/index.js
+**src/index.js**
 
-```
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    if (request.method === "POST" && url.pathname === "/repos") {      // Read the repo name from the request body so the route is reusable.      const body = await request.json().catch(() => ({}));
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    if (request.method === "POST" && url.pathname === "/repos") {
+      // Read the repo name from the request body so the route is reusable.
+      const body = await request.json().catch(() => ({}));
+
+
       const repoName = body.name ?? "starter-repo";
-      // Create the repo and return the remote URL plus initial write token.      const created = await env.ARTIFACTS.create(repoName);
-      return Response.json({        name: created.name,        remote: created.remote,        token: created.token,      });    }
-    return new Response("Use POST /repos to create an Artifacts repo.", {      status: 405,      headers: { Allow: "POST" },    });  },};
+
+
+      // Create the repo and return the remote URL plus initial write token.
+      const created = await env.ARTIFACTS.create(repoName);
+
+
+      return Response.json({
+        name: created.name,
+        remote: created.remote,
+        token: created.token,
+      });
+    }
+
+
+    return new Response("Use POST /repos to create an Artifacts repo.", {
+      status: 405,
+      headers: { Allow: "POST" },
+    });
+  },
+};
 ```
 
-src/index.ts
+**src/index.ts**
 
-```
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    if (request.method === "POST" && url.pathname === "/repos") {      // Read the repo name from the request body so the route is reusable.      const body = await request.json().catch(() => ({}));
+```ts
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    if (request.method === "POST" && url.pathname === "/repos") {
+      // Read the repo name from the request body so the route is reusable.
+      const body = await request.json().catch(() => ({}));
+
+
       const repoName = body.name ?? "starter-repo";
-      // Create the repo and return the remote URL plus initial write token.      const created = await env.ARTIFACTS.create(repoName);
-      return Response.json({        name: created.name,        remote: created.remote,        token: created.token,      });    }
-    return new Response("Use POST /repos to create an Artifacts repo.", {      status: 405,      headers: { Allow: "POST" },    });  },};
+
+
+      // Create the repo and return the remote URL plus initial write token.
+      const created = await env.ARTIFACTS.create(repoName);
+
+
+      return Response.json({
+        name: created.name,
+        remote: created.remote,
+        token: created.token,
+      });
+    }
+
+
+    return new Response("Use POST /repos to create an Artifacts repo.", {
+      status: 405,
+      headers: { Allow: "POST" },
+    });
+  },
+};
 ```
 
 This Worker creates an Artifacts repo and returns the remote URL and token your Git client needs to push and pull.
@@ -158,19 +227,25 @@ pnpm wrangler dev
 
 Then, open a second terminal and send a request to your Worker to create a new Artifacts repo:
 
-* [ Manual ](#tab-panel-6882)
-* [ jq ](#tab-panel-6883)
+* [ Manual ](#tab-panel-7130)
+* [ jq ](#tab-panel-7131)
 
-Terminal window
-
-```
-curl http://localhost:8787/repos \  --header "Content-Type: application/json" \  --data '{    "name": "starter-repo"  }'
+```bash
+curl http://localhost:8787/repos \
+  --header "Content-Type: application/json" \
+  --data '{
+    "name": "starter-repo"
+  }'
 ```
 
 Your Worker will call `env.ARTIFACTS.create()` and return three values you will need for Git operations:
 
-```
-{  "name": "starter-repo",  "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",  "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"}
+```json
+{
+  "name": "starter-repo",
+  "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
+  "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
+}
 ```
 
 * `name`: the repo name. Must be unique within the namespace.
@@ -179,56 +254,61 @@ Your Worker will call `env.ARTIFACTS.create()` and return three values you will 
 
 Copy the `remote` and `token` values into local shell variables:
 
-Terminal window
-
+```sh
+export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_RESPONSE>"
+export ARTIFACTS_TOKEN="<PASTE_TOKEN_FROM_RESPONSE>"
 ```
-export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_RESPONSE>"export ARTIFACTS_TOKEN="<PASTE_TOKEN_FROM_RESPONSE>"
-```
 
-Terminal window
+```bash
+RESPONSE=$(curl --silent http://localhost:8787/repos \
+  --header "Content-Type: application/json" \
+  --data '{"name":"starter-repo"}')
 
-```
-RESPONSE=$(curl --silent http://localhost:8787/repos \  --header "Content-Type: application/json" \  --data '{"name":"starter-repo"}')
-export ARTIFACTS_REMOTE=$(printf '%s' "$RESPONSE" | jq -r '.remote')export ARTIFACTS_TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.token')
+
+export ARTIFACTS_REMOTE=$(printf '%s' "$RESPONSE" | jq -r '.remote')
+export ARTIFACTS_TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.token')
 ```
 
 ## 5\. Push your first commit with git
 
 In the previous step, your Worker created an empty Artifacts repo. Now you will create a local Git repo, add a file, and push it to Artifacts — the same way you would push to any Git remote.
 
-Terminal window
-
-```
-mkdir artifacts-democd artifacts-demogit init -b mainprintf '# Artifacts demo\n' > README.mdgit add README.mdgit commit -m "Initial commit"git remote add origin "$ARTIFACTS_REMOTE"git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" push -u origin main
+```sh
+mkdir artifacts-demo
+cd artifacts-demo
+git init -b main
+printf '# Artifacts demo\n' > README.md
+git add README.md
+git commit -m "Initial commit"
+git remote add origin "$ARTIFACTS_REMOTE"
+git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" push -u origin main
 ```
 
 The `-c http.extraHeader` flag passes the token as a request header, which keeps it out of your Git config and shell history.
 
 If you need a self-contained remote URL for a short-lived command, build one from the token secret instead:
 
-Terminal window
-
-```
-export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
+```sh
+export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
+export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
+git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
 ```
 
 ## 6\. Pull the repo with a regular Git client
 
 Clone the same repo into a second directory:
 
-Terminal window
-
-```
-cd ..git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clonegit -C artifacts-clone log --oneline -1
+```sh
+cd ..
+git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
+git -C artifacts-clone log --oneline -1
 ```
 
 You should see the commit you pushed in the previous step.
 
 You can also clone with a self-contained remote URL for a short-lived command:
 
-Terminal window
-
-```
+```sh
 git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 ```
 
@@ -236,9 +316,7 @@ git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 
 Switch back to your Worker project directory:
 
-Terminal window
-
-```
+```sh
 cd artifacts-worker
 ```
 

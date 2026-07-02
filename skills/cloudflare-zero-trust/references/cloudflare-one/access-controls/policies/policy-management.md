@@ -113,10 +113,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Apps and Policies Write`
 
-Convert an Access application policy to a reusable policy
+**Convert an Access application policy to a reusable policy**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID/policies/$POLICY_ID/make_reusable" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID/policies/$POLICY_ID/make_reusable" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The policy is now removed from the applications endpoint (`/access/apps/$APP_ID/policies`) and managed using the [reusable policies endpoints](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/)(`/access/policies/$POLICY_ID`).

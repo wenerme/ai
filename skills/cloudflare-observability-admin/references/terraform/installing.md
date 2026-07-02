@@ -26,43 +26,41 @@ To avoid this state, make sure you manage Terraform resources only in Terraform.
 
 The easiest way to install Terraform on macOS is with Homebrew.
 
-Terminal window
-
-```
-brew tap hashicorp/tapbrew install hashicorp/tap/terraform
+```sh
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 ```
 
 ## Linux
 
 You can install the `terraform` binary via your distribution's package manager. For example:
 
-Terminal window
-
-```
+```sh
 sudo apt install terraform
 ```
 
 Alternatively, you can fetch a specific version directly and place the binary in your `PATH`:
 
-Terminal window
-
-```
+```sh
 wget -q https://releases.hashicorp.com/terraform/1.4.5/terraform_1.4.5_linux_amd64.zip
+
+
 unzip terraform_1.4.5_linux_amd64.zip
 ```
 
-```
-Archive:  terraform_1.4.5_linux_amd64.zip  inflating: terraform
+```sh
+Archive:  terraform_1.4.5_linux_amd64.zip
+  inflating: terraform
 ```
 
-Terminal window
-
-```
+```sh
 sudo mv terraform /usr/local/bin/terraform
+
+
 terraform version
 ```
 
-```
+```sh
 Terraform v1.4.5
 ```
 

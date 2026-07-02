@@ -27,14 +27,19 @@ A component which indicates the recording status of a meeting. It will not rende
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-recording-indicator></rtk-recording-indicator>
+```html
+<!-- component.html -->
+<rtk-recording-indicator></rtk-recording-indicator>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-recording-indicator [meeting]="meeting" size="md"></rtk-recording-indicator>
+```html
+<!-- component.html -->
+<rtk-recording-indicator
+ [meeting]="meeting"
+ size="md">
+</rtk-recording-indicator>
 ```
 
 ```json

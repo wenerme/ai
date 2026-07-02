@@ -24,10 +24,11 @@ A component which lists all available plugins from their preset, with the abilit
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkPluginsBottomSheet = RtkPluginsBottomSheet()rtkPluginsBottomSheet.show(fragmentManager, "PLUGINS_TAG")
+```kotlin
+val rtkPluginsBottomSheet = RtkPluginsBottomSheet()
+rtkPluginsBottomSheet.show(fragmentManager, "PLUGINS_TAG")
 ```
 
 ```json

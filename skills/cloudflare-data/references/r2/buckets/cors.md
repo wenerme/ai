@@ -52,8 +52,16 @@ To enable browser-based access with presigned URLs:
 
 The following example allows browser-based uploads from `https://example.com` with a `Content-Type` header:
 
-```
-[  {    "AllowedOrigins": ["https://example.com"],    "AllowedMethods": ["PUT"],    "AllowedHeaders": ["Content-Type"],    "ExposeHeaders": ["ETag"],    "MaxAgeSeconds": 3600  }]
+```json
+[
+  {
+    "AllowedOrigins": ["https://example.com"],
+    "AllowedMethods": ["PUT"],
+    "AllowedHeaders": ["Content-Type"],
+    "ExposeHeaders": ["ETag"],
+    "MaxAgeSeconds": 3600
+  }
+]
 ```
 
 ## Use CORS with a custom domain
@@ -84,25 +92,30 @@ You can configure CORS rules using the [Wrangler CLI](https://developers.cloudfl
 
 1. Create a JSON file with your CORS configuration:
 
-cors.json
+**cors.json**
 
-```
-{  "rules": [    {      "allowed": {        "origins": ["https://example.com"],        "methods": ["GET"]      }    }  ]}
+```json
+{
+  "rules": [
+    {
+      "allowed": {
+        "origins": ["https://example.com"],
+        "methods": ["GET"]
+      }
+    }
+  ]
+}
 ```
 
 1. Apply the CORS policy to your bucket:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket cors set <BUCKET_NAME> --file cors.json
 ```
 
 1. Verify the CORS policy was applied:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket cors list <BUCKET_NAME>
 ```
 
@@ -124,8 +137,13 @@ This example shows a CORS policy added for a bucket that contains the `Roboto-Li
 
 The `AllowedOrigins` specify the web server being used, and `localhost:3000` is the hostname where the web server is running. The `AllowedMethods` specify that only `GET` requests are allowed and can read objects in your bucket.
 
-```
-[  {    "AllowedOrigins": ["http://localhost:3000"],    "AllowedMethods": ["GET"]  }]
+```json
+[
+  {
+    "AllowedOrigins": ["http://localhost:3000"],
+    "AllowedMethods": ["GET"]
+  }
+]
 ```
 
 In general, a good strategy for making sure you have set the correct CORS rules is to look at the network request that is being blocked by your browser.

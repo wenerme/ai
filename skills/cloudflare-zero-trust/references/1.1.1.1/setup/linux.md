@@ -26,9 +26,7 @@ On most Linux distributions, `/etc/resolv.conf` controls which DNS resolver the 
 
 To set `1.1.1.1` as your DNS resolver with `1.0.0.1` as a backup:
 
-Terminal window
-
-```
+```sh
 echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" | sudo tee /etc/resolv.conf
 ```
 
@@ -44,22 +42,23 @@ If your system uses `systemd-resolved` to manage DNS, edit the configuration fil
 
 1. Run the following command, replacing `<EDITOR>` with your preferred editor.
 
-Terminal window
-
-```
+```sh
 sudo <EDITOR> /etc/systemd/resolved.conf
 ```
 
 1. In the editor, add or edit the following lines:
 
-```
-[Resolve]DNS=1.1.1.1
+```txt
+[Resolve]
+DNS=1.1.1.1
 ```
 
 To use DNS over TLS, append `#one.one.one.one` after the IP address (this tells `systemd-resolved` which hostname to use for TLS verification) and set `DNSOverTLS` to `yes`:
 
-```
-[Resolve]DNS=1.1.1.1#one.one.one.oneDNSOverTLS=yes
+```txt
+[Resolve]
+DNS=1.1.1.1#one.one.one.one
+DNSOverTLS=yes
 ```
 
 ## Use graphical user interface (GUI)
@@ -71,30 +70,36 @@ To use DNS over TLS, append `#one.one.one.one` after the IP address (this tells 
 3. On the **IPv4** tab > **DNS** section, disable the **Automatic** toggle.
 4. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
 Use 1.1.1.1 resolver
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 Block malware with 1.1.1.1 for Families
-```
-1.1.1.21.0.0.2
+```txt
+1.1.1.2
+1.0.0.2
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-1.1.1.31.0.0.3
+```txt
+1.1.1.3
+1.0.0.3
 ```
 5. Go to **IPv6**.
 6. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
 Use 1.1.1.1 resolver
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 Block malware with 1.1.1.1 for Families
-```
-2606:4700:4700::11122606:4700:4700::1002
+```txt
+2606:4700:4700::1112
+2606:4700:4700::1002
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-2606:4700:4700::11132606:4700:4700::1003
+```txt
+2606:4700:4700::1113
+2606:4700:4700::1003
 ```
 7. Select **Apply**.
 
@@ -106,31 +111,37 @@ Block malware and adult content with 1.1.1.1 for Families
 4. Select the text box next to **DNS servers**.
 5. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
 Use 1.1.1.1 resolver
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 Block malware with 1.1.1.1 for Families
-```
-1.1.1.21.0.0.2
+```txt
+1.1.1.2
+1.0.0.2
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-1.1.1.31.0.0.3
+```txt
+1.1.1.3
+1.0.0.3
 ```
 6. On the **IPv6** tab, select the **Method** drop-down menu > _Automatic (Only addresses)_.
 7. Select the text box next to **DNS servers**.
 8. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
 Use 1.1.1.1 resolver
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 Block malware with 1.1.1.1 for Families
-```
-2606:4700:4700::11122606:4700:4700::1002
+```txt
+2606:4700:4700::1112
+2606:4700:4700::1002
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-2606:4700:4700::11132606:4700:4700::1003
+```txt
+2606:4700:4700::1113
+2606:4700:4700::1003
 ```
 9. Select **Apply**.
 

@@ -26,16 +26,32 @@ A pressable menu item within a menu.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMenuItem } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMenuItem onClick={() => ({})}>      <Text>Option 1</Text>    </RtkMenuItem>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenuItem onClick={() => ({})}>
+      <Text>Option 1</Text>
+    </RtkMenuItem>
+  );
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMenuItem } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMenuItem onClick={(ev) => ({})} size="md">      <Text>Option 1</Text>    </RtkMenuItem>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenuItem onClick={(ev) => ({})} size="md">
+      <Text>Option 1</Text>
+    </RtkMenuItem>
+  );
+}
 ```
 
 ```json

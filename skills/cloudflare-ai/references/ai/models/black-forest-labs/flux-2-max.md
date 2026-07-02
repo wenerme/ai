@@ -28,116 +28,188 @@ FLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-322)
-* [ cURL ](#tab-panel-323)
+* [ TypeScript ](#tab-panel-344)
+* [ cURL ](#tab-panel-345)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-max',
+  {
+    prompt:
+      'A cat on its back legs running like a human is holding a big silver fish with its arms. The cat is running away from the shop owner and has a panicked look on his face. The scene is situated in a crowded market.',
+    height: 2048,
+    width: 1440,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-max',  {    prompt:      'A cat on its back legs running like a human is holding a big silver fish with its arms. The cat is running away from the shop owner and has a panicked look on his face. The scene is situated in a crowded market.',    height: 2048,    width: 1440,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-max",
+  "input": {
+    "prompt": "A cat on its back legs running like a human is holding a big silver fish with its arms. The cat is running away from the shop owner and has a panicked look on his face. The scene is situated in a crowded market.",
+    "height": 2048,
+    "width": 1440
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-max",  "input": {    "prompt": "A cat on its back legs running like a human is holding a big silver fish with its arms. The cat is running away from the shop owner and has a panicked look on his face. The scene is situated in a crowded market.",    "height": 2048,    "width": 1440  }}'
-```
-
-* [ Output ](#tab-panel-320)
-* [ Raw response ](#tab-panel-321)
+* [ Output ](#tab-panel-342)
+* [ Raw response ](#tab-panel-343)
 
 ![High Resolution Scene](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/high-resolution-scene.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/high-resolution-scene.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/high-resolution-scene.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **Hex Color Control**  — Exact color control via hex codes — useful for brand-consistent imagery
 
-* [ TypeScript ](#tab-panel-326)
-* [ cURL ](#tab-panel-327)
+* [ TypeScript ](#tab-panel-348)
+* [ cURL ](#tab-panel-349)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-max',
+  {
+    prompt:
+      'A vase on a table in living room, the color of the vase is a gradient of color, starting with color #02eb3c and finishing with color #edfa3c. The flowers inside the vase have the color #ff0088',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-max',  {    prompt:      'A vase on a table in living room, the color of the vase is a gradient of color, starting with color #02eb3c and finishing with color #edfa3c. The flowers inside the vase have the color #ff0088',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-max",
+  "input": {
+    "prompt": "A vase on a table in living room, the color of the vase is a gradient of color, starting with color #02eb3c and finishing with color #edfa3c. The flowers inside the vase have the color #ff0088"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-max",  "input": {    "prompt": "A vase on a table in living room, the color of the vase is a gradient of color, starting with color #02eb3c and finishing with color #edfa3c. The flowers inside the vase have the color #ff0088"  }}'
-```
-
-* [ Output ](#tab-panel-324)
-* [ Raw response ](#tab-panel-325)
+* [ Output ](#tab-panel-346)
+* [ Raw response ](#tab-panel-347)
 
 ![Hex Color Control](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/hex-color-control.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/hex-color-control.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/hex-color-control.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Image Editing**  — Single-reference image editing — relight or restage a product photo
 
-* [ TypeScript ](#tab-panel-330)
-* [ cURL ](#tab-panel-331)
+* [ TypeScript ](#tab-panel-352)
+* [ cURL ](#tab-panel-353)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'black-forest-labs/flux-2-max',
+  {
+    prompt: 'Place this product onto a minimalist marble countertop with soft window light',
+    input_images: [
+      'https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg',
+    ],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'black-forest-labs/flux-2-max',  {    prompt: 'Place this product onto a minimalist marble countertop with soft window light',    input_images: [      'https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg',    ],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "black-forest-labs/flux-2-max",
+  "input": {
+    "prompt": "Place this product onto a minimalist marble countertop with soft window light",
+    "input_images": [
+      "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg"
+    ]
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "black-forest-labs/flux-2-max",  "input": {    "prompt": "Place this product onto a minimalist marble countertop with soft window light",    "input_images": [      "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg"    ]  }}'
-```
-
-* [ Output ](#tab-panel-328)
-* [ Raw response ](#tab-panel-329)
+* [ Output ](#tab-panel-350)
+* [ Raw response ](#tab-panel-351)
 
 ![Image Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/image-editing.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/image-editing.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/image-editing.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-332)
-* [ Output ](#tab-panel-333)
-
-height
-
-`integer`maximum: 9007199254740991minimum: 64Height of the generated image in pixels (minimum 64). Omit to let BFL pick.
-
-▶input\_images\[\]
-
-`array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
-
-output\_format
-
-`string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
+* [ Input ](#tab-panel-354)
+* [ Output ](#tab-panel-355)
 
 prompt
 
 `string`requiredText prompt for image generation or editing.
 
-safety\_tolerance
-
-`integer`maximum: 5minimum: 0Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.
-
 seed
 
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Optional seed for reproducible generation.
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
 
 width
 
-`integer`maximum: 9007199254740991minimum: 64Width of the generated image in pixels (minimum 64). Omit to let BFL pick.
+`integer`minimum: 64maximum: 9007199254740991Width of the generated image in pixels (minimum 64). Omit to let BFL pick.
+
+height
+
+`integer`minimum: 64maximum: 9007199254740991Height of the generated image in pixels (minimum 64). Omit to let BFL pick.
+
+safety\_tolerance
+
+`integer`minimum: 0maximum: 5Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.
+
+output\_format
+
+`string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
+
+▶input\_images\[\]
+
+`array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
 
 image
 

@@ -61,15 +61,22 @@ To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:
 
-  * [  wrangler.jsonc ](#tab-panel-8730)
-  * [  wrangler.toml ](#tab-panel-8731)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8750)
+  * [  wrangler.toml ](#tab-panel-8751)
+
+**JSONC**
+```jsonc
+{
+    "observability": {
+        "enabled": true
+    }
+}
 ```
-{    "observability": {        "enabled": true    }}
-```
-TOML
-```
-[observability]enabled = true
+
+**TOML**
+```toml
+[observability]
+enabled = true
 ```
 2. Deploy the latest version of the Worker with the updated binding.
 3. Go to the **Durable Objects** page.
@@ -103,10 +110,35 @@ Durable Objects using [WebSockets](https://developers.cloudflare.com/durable-obj
 
 ## Example GraphQL query for Durable Objects
 
-JavaScript
+**JavaScript**
 
-```
-  viewer {    /*    Replace with your account tag, the 32 hex character id visible at the beginning of any url    when logged in to dash.cloudflare.com or under "Account ID" on the sidebar of the Workers & Pages Overview    */    accounts(filter: {accountTag: "your account tag here"}) {      // Replace dates with a recent date      durableObjectsInvocationsAdaptiveGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {        sum {          // Any other fields found through introspection can be added here          requests          responseBodySize        }      }      durableObjectsPeriodicGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {        sum {          cpuTime        }      }      durableObjectsStorageGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {        max {          storedBytes        }      }    }  }
+```js
+  viewer {
+    /*
+    Replace with your account tag, the 32 hex character id visible at the beginning of any url
+    when logged in to dash.cloudflare.com or under "Account ID" on the sidebar of the Workers & Pages Overview
+    */
+    accounts(filter: {accountTag: "your account tag here"}) {
+      // Replace dates with a recent date
+      durableObjectsInvocationsAdaptiveGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {
+        sum {
+          // Any other fields found through introspection can be added here
+          requests
+          responseBodySize
+        }
+      }
+      durableObjectsPeriodicGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {
+        sum {
+          cpuTime
+        }
+      }
+      durableObjectsStorageGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {
+        max {
+          storedBytes
+        }
+      }
+    }
+  }
 ```
 
 Refer to the [Querying Workers Metrics with GraphQL](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-workers-metrics/) tutorial for authentication and to learn more about querying Workers datasets.

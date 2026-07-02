@@ -29,19 +29,19 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-11953)
-* [ HTML ](#tab-panel-11954)
-* [ URL ](#tab-panel-11955)
+* [ Markdown ](#tab-panel-12248)
+* [ HTML ](#tab-panel-12249)
+* [ URL ](#tab-panel-12250)
 
-```
+```md
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<your git repo URL>)
 ```
 
-```
+```html
 <a href="https://deploy.workers.cloudflare.com/?url=<YOUR_REPO_URL>"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"/></a>
 ```
 
-```
+```plaintext
 https://deploy.workers.cloudflare.com/?url=<YOUR_REPO_URL>
 ```
 
@@ -64,46 +64,80 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-11956)
-* [  wrangler.toml ](#tab-panel-11957)
+* [  wrangler.jsonc ](#tab-panel-12251)
+* [  wrangler.toml ](#tab-panel-12252)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  "main": "./src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "vars": {
+    "API_HOST": "https://example.com",
+  },
+}
 ```
-{  "name": "my-worker",  "main": "./src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "vars": {    "API_HOST": "https://example.com",  },}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"main = "./src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[vars]API_HOST = "https://example.com"
+```toml
+name = "my-worker"
+main = "./src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[vars]
+API_HOST = "https://example.com"
 ```
 
 [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/) can be defined in a `.dev.vars.example` or `.env.example` file with a [dotenv ↗](https://www.npmjs.com/package/dotenv) format:
 
-.dev.vars.example
+**.dev.vars.example**
 
-```
+```ini
 COOKIE_SIGNING_KEY=my-secret # comment
 ```
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-11958)
-* [  wrangler.toml ](#tab-panel-11959)
+* [  wrangler.jsonc ](#tab-panel-12253)
+* [  wrangler.toml ](#tab-panel-12254)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  "main": "./src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "secrets_store_secrets": [
+    {
+      "binding": "API_KEY",
+      "store_id": "demo",
+      "secret_name": "api-key"
+    }
+  ]
+}
 ```
-{  "name": "my-worker",  "main": "./src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "secrets_store_secrets": [    {      "binding": "API_KEY",      "store_id": "demo",      "secret_name": "api-key"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"main = "./src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[[secrets_store_secrets]]binding = "API_KEY"store_id = "demo"secret_name = "api-key"
+```toml
+name = "my-worker"
+main = "./src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[secrets_store_secrets]]
+binding = "API_KEY"
+store_id = "demo"
+secret_name = "api-key"
 ```
 
 ## Best practices
@@ -114,18 +148,37 @@ If no `deploy` script is specified, Cloudflare will preconfigure `npx wrangler d
 
 **Running D1 Migrations**: If you would like to run migrations as part of your setup, you can specify this in your `package.json` by running your migrations as part of your `deploy` script. The migration command should reference the binding name rather than the database name to ensure migrations are successful when users specify a database name that is different from that of your source repository. The following is an example of how you can set up the scripts section of your `package.json`:
 
-```
-{  "scripts": {    "build": "astro build",    "deploy": "npm run db:migrations:apply && wrangler deploy",    "db:migrations:apply": "wrangler d1 migrations apply DB_BINDING --remote"  }}
+```json
+{
+  "scripts": {
+    "build": "astro build",
+    "deploy": "npm run db:migrations:apply && wrangler deploy",
+    "db:migrations:apply": "wrangler d1 migrations apply DB_BINDING --remote"
+  }
+}
 ```
 
 **Provide a description for bindings**: If you wish to provide additional information about bindings, such as why they are required in this template, or suggestions for how to configure a value, you can provide a description in your `package.json`. This can be particularly useful for environment variables and secrets where users might need to find a value outside of Cloudflare.
 
 Inline markdown `` `code` ``, `**bold**`, `__italics__` and `[links](https://example.com)` are supported.
 
-package.json
+**package.json**
 
-```
-{  "name": "my-worker",  "private": true,  "cloudflare": {    "bindings": {      "API_KEY": {        "description": "Select your company's [API key](https://example.com/) for connecting to the example service."      },      "COOKIE_SIGNING_KEY": {        "description": "Generate a random string using `openssl rand -hex 32`."      }    }  }}
+```json
+{
+  "name": "my-worker",
+  "private": true,
+  "cloudflare": {
+    "bindings": {
+      "API_KEY": {
+        "description": "Select your company's [API key](https://example.com/) for connecting to the example service."
+      },
+      "COOKIE_SIGNING_KEY": {
+        "description": "Generate a random string using `openssl rand -hex 32`."
+      }
+    }
+  }
+}
 ```
 
 ## Limitations

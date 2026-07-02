@@ -25,19 +25,25 @@ A component which shows a transcript. You need to remove the element after you r
 
 ### Basic Usage
 
-```
+```html
 <rtk-transcript></rtk-transcript>
 ```
 
 ### With Properties
 
-```
-<rtk-transcript transcript="example"></rtk-transcript>
+```html
+<rtk-transcript
+ transcript="example">
+</rtk-transcript>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-transcript");
-  el.transcript= {};</script>
+```html
+<script>
+  const el = document.querySelector("rtk-transcript");
+
+
+  el.transcript= {};
+</script>
 ```
 
 ```json

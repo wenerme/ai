@@ -34,8 +34,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve plan is required.
 
-* [ Dashboard ](#tab-panel-7267)
-* [ API ](#tab-panel-7268)
+* [ Dashboard ](#tab-panel-7283)
+* [ API ](#tab-panel-7284)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -199,8 +199,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-7269)
-* [ API ](#tab-panel-7270)
+* [ Dashboard ](#tab-panel-7285)
+* [ API ](#tab-panel-7286)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -218,16 +218,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Read`
 * `Zone Write`
 
-Get Cache Reserve setting
+**Get Cache Reserve setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "editable": true,    "id": "cache_reserve",    "value": "off"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "editable": true,
+    "id": "cache_reserve",
+    "value": "off"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 If Cache Reserve is turned off, you can proceed to the Cache Reserve Clear operation.
@@ -240,16 +251,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Start Cache Reserve Clear
+**Start Cache Reserve Clear**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve_clear" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve_clear" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "cache_reserve_clear",    "start_ts": "2024-06-02T10:00:00.12345Z",    "state": "In-progress"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "cache_reserve_clear",
+    "start_ts": "2024-06-02T10:00:00.12345Z",
+    "state": "In-progress"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

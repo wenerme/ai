@@ -28,19 +28,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-audio-tile></rtk-audio-tile>
 ```
 
 ### With Properties
 
-```
-<rtk-audio-tile></rtk-audio-tile>
+```html
+<rtk-audio-tile>
+</rtk-audio-tile>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-audio-tile");
-  el.config= defaultUiConfig  el.meeting= meeting  el.participant= participant</script>
+```html
+<script>
+  const el = document.querySelector("rtk-audio-tile");
+
+
+  el.config= defaultUiConfig
+  el.meeting= meeting
+  el.participant= participant
+</script>
 ```
 
 ```json

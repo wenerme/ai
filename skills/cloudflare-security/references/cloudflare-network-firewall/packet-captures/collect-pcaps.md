@@ -41,8 +41,8 @@ For help determining which data center to select for a packet capture, visit [ht
 * `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-7137)
-* [ API ](#tab-panel-7138)
+* [ Dashboard ](#tab-panel-7385)
+* [ API ](#tab-panel-7386)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
@@ -63,18 +63,48 @@ The full PCAP request endpoint also contains optional fields you can use to limi
 
 Leave `filter_v1` empty to collect all packets without any filtering.
 
-Full PCAP example request
+**Full PCAP example request**
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "filter_v1": {},  "time_limit": 300,  "packet_limit": 10000,  "byte_limit": 100000000,  "type": "full",  "colo": "ORD",  "system": "magic-transit",  "destination_conf": "${BUCKET}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "filter_v1": {},
+  "time_limit": 300,
+  "packet_limit": 10000,
+  "byte_limit": 100000000,
+  "type": "full",
+  "colo": "ORD",
+  "system": "magic-transit",
+  "destination_conf": "${BUCKET}"
+}'
 ```
 
 While the collection is in progress, the response returns the `status` field as `pending`. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to `success`.
 
-Full PCAP example response
+**Full PCAP example response**
 
-```
-{  "result": {    "id": "7d7c88382f0b4d5daa9587aa45a1a877",    "submitted": "2022-06-02T18:38:22.269047Z",    "filter_v1": {},    "time_limit": 300,    "status": "pending",    "type": "full",    "system": "magic-transit",    "packet_limit": 10000,    "byte_limit": 100000000,    "colo": "ORD",    "destination_conf": "gs://<bucket-name>" // Ensure you use a bucket that you created and registered in the Cloudflare dashboard  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "7d7c88382f0b4d5daa9587aa45a1a877",
+    "submitted": "2022-06-02T18:38:22.269047Z",
+    "filter_v1": {},
+    "time_limit": 300,
+    "status": "pending",
+    "type": "full",
+    "system": "magic-transit",
+    "packet_limit": 10000,
+    "byte_limit": 100000000,
+    "colo": "ORD",
+    "destination_conf": "gs://<bucket-name>" // Ensure you use a bucket that you created and registered in the Cloudflare dashboard
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Sample PCAP
@@ -83,24 +113,60 @@ To create a sample PCAP request, send a JSON body with the required parameter li
 
 Leave `filter_v1` to collect all packets without any filtering.
 
-Sample PCAP example request
+**Sample PCAP example request**
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "filter_v1": {    "source_address": "1.2.3.4",    "source_port": 123,    "destination_address": "5.6.7.8",    "destination_port": 80,    "protocol": 6  },  "time_limit": 300,  "packet_limit": 10000,  "type": "simple",  "system": "magic-transit"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "filter_v1": {
+    "source_address": "1.2.3.4",
+    "source_port": 123,
+    "destination_address": "5.6.7.8",
+    "destination_port": 80,
+    "protocol": 6
+  },
+  "time_limit": 300,
+  "packet_limit": 10000,
+  "type": "simple",
+  "system": "magic-transit"
+}'
 ```
 
 The response is a JSON body that contains the details of the job running to build the packet capture. The response contains a unique identifier for the packet capture request along with the details sent in the request.
 
-Sample PCAP example response
+**Sample PCAP example response**
 
-```
-{  "result": {    "id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",    "submitted": "2021-12-20T17:29:20.641845Z",    "filter_v1": {      "source_address": "1.2.3.4",      "source_port": 123,      "destination_address": "5.6.7.8",      "destination_port": 80,      "protocol": 6    },    "time_limit": 60,    "status": "pending",    "packets_remaining": 0,    "type": "simple",    "system": "magic-transit"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",
+    "submitted": "2021-12-20T17:29:20.641845Z",
+    "filter_v1": {
+      "source_address": "1.2.3.4",
+      "source_port": 123,
+      "destination_address": "5.6.7.8",
+      "destination_port": 80,
+      "protocol": 6
+    },
+    "time_limit": 60,
+    "status": "pending",
+    "packets_remaining": 0,
+    "type": "simple",
+    "system": "magic-transit"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-7131)
-* [ API ](#tab-panel-7132)
+* [ Dashboard ](#tab-panel-7379)
+* [ API ](#tab-panel-7380)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -108,18 +174,38 @@ Sample PCAP example response
 
 To check the status of a running job, send a request to the endpoint and specify the PCAP identifier. The PCAP identifier is received in the response of a collect request as shown in the previous step.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id} \--header 'X-Auth-Email: <EMAIL>' \--header 'X-Auth-Key: <API_KEY>'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id} \
+--header 'X-Auth-Email: <EMAIL>' \
+--header 'X-Auth-Key: <API_KEY>'
 ```
 
 The response will be similar to the one received when requesting a PCAP collection.
 
-Sample PCAP example result
+**Sample PCAP example result**
 
-```
-{  "result": {    "id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",    "submitted": "2021-12-20T17:29:20.641845Z",    "filter_v1": {      "source_address": "1.2.3.4",      "source_port": 123,      "destination_address": "5.6.7.8",      "destination_port": 80,      "protocol": 6    },    "time_limit": 120,    "status": "success",    "packets_remaining": 0,    "type": "simple",    "system": "magic-transit"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",
+    "submitted": "2021-12-20T17:29:20.641845Z",
+    "filter_v1": {
+      "source_address": "1.2.3.4",
+      "source_port": 123,
+      "destination_address": "5.6.7.8",
+      "destination_port": 80,
+      "protocol": 6
+    },
+    "time_limit": 120,
+    "status": "success",
+    "packets_remaining": 0,
+    "type": "simple",
+    "system": "magic-transit"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 The capture status displays one of the following options:
@@ -132,8 +218,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-7133)
-* [ API ](#tab-panel-7134)
+* [ Dashboard ](#tab-panel-7381)
+* [ API ](#tab-panel-7382)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -151,16 +237,17 @@ To obtain full PCAPs, download the files from the bucket specified in `destinati
 
 Once the sample PCAP collection is complete, you can download the PCAP by specifying the PCAP identifier used earlier.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/download \--header 'X-Auth-Email: <EMAIL>' \--header 'X-Auth-Key: <API_KEY>' \--output download.pcap
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/download \
+--header 'X-Auth-Email: <EMAIL>' \
+--header 'X-Auth-Key: <API_KEY>' \
+--output download.pcap
 ```
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-7135)
-* [ API ](#tab-panel-7136)
+* [ Dashboard ](#tab-panel-7383)
+* [ API ](#tab-panel-7384)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics** \> **Network packet captures**.
@@ -169,18 +256,36 @@ The list of packet captures associated with your account displays.
 
 To view a list of sent requests, use the following command:
 
-List request example
+**List request example**
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 The response returns an array that includes up to 50 sent requests, which includes completed and ongoing requests.
 
-List response example
+**List response example**
 
-```
-{  "result": [    {      "id": "43adab5adeca4dab9c51f4b7f70f2ec3",      "submitted": "2021-12-15T03:04:09.277394Z",      "filter_v1": {},      "time_limit": 120,      "status": "success",      "packets_remaining": 0,      "type": "simple",      "system": "magic-transit"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "43adab5adeca4dab9c51f4b7f70f2ec3",
+      "submitted": "2021-12-15T03:04:09.277394Z",
+      "filter_v1": {},
+      "time_limit": 120,
+      "status": "success",
+      "packets_remaining": 0,
+      "type": "simple",
+      "system": "magic-transit"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Best practices

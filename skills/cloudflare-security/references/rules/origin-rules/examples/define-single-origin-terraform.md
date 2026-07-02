@@ -20,9 +20,30 @@ Terraform code snippets below refer to the v4 SDK only.
 
 The following example defines a single origin rule for a zone using Terraform. The rule overrides the `Host` header, the resolved hostname, and the destination port of API requests.
 
-```
-# Change origin for API requestsresource "cloudflare_ruleset" "http_origin_example" {  zone_id     = "<ZONE_ID>"  name        = "Change origin"  description = ""  kind        = "zone"  phase       = "http_request_origin"
-  rules {    ref         = "change_api_origin"    description = "Change origin of API requests"    expression  = "(http.request.uri.path matches \"^/api/\")"    action      = "route"    action_parameters {      host_header = "example.net"      origin {        host = "example.net"        port = 8000      }    }  }}
+```tf
+# Change origin for API requests
+resource "cloudflare_ruleset" "http_origin_example" {
+  zone_id     = "<ZONE_ID>"
+  name        = "Change origin"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_origin"
+
+
+  rules {
+    ref         = "change_api_origin"
+    description = "Change origin of API requests"
+    expression  = "(http.request.uri.path matches \"^/api/\")"
+    action      = "route"
+    action_parameters {
+      host_header = "example.net"
+      origin {
+        host = "example.net"
+        port = 8000
+      }
+    }
+  }
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

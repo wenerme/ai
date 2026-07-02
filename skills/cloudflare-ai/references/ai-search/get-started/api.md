@@ -34,10 +34,13 @@ You need an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
 Use the [Create instance API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/create/) to create an instance. Replace `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-instance"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "id": "my-instance"
+  }'
 ```
 
 ### Connect a data source (optional)
@@ -48,30 +51,41 @@ You can create an instance that is connected to a website or R2 bucket as a data
 
 Automatically crawl and index a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) that you own.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-instance",    "type": "web-crawler",    "source": "example.com"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "id": "my-instance",
+    "type": "web-crawler",
+    "source": "example.com"
+  }'
 ```
 
 **R2 bucket:**
 
 Index documents stored in an [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/). Connecting an R2 bucket requires a [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/). If you have never created an R2-backed instance before, you need to pass the `token_id` field in the create request. Refer to the [service API token configuration](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) for setup instructions.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-instance",    "type": "r2",    "source": "<R2_BUCKET_NAME>",    "token_id": "<SERVICE_TOKEN_ID>"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "id": "my-instance",
+    "type": "r2",
+    "source": "<R2_BUCKET_NAME>",
+    "token_id": "<SERVICE_TOKEN_ID>"
+  }'
 ```
 
 ## 3\. Add content
 
 If you did not create an instance that is connected to a data source, upload files using the [Items API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/upload/). You can skip this step if you connected a website or R2 bucket.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/items" \  -H "Authorization: Bearer <API_TOKEN>" \  -F "file=@/path/to/your/file.pdf"
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/items" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -F "file=@/path/to/your/file.pdf"
 ```
 
 AI Search indexes uploaded files automatically.
@@ -80,20 +94,27 @@ AI Search indexes uploaded files automatically.
 
 Check if your content has finished indexing.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/stats" \  -H "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/stats" \
+  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Try it out
 
 Once indexing is complete, run your first query.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/search" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "How do I get started?",        "role": "user"      }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/search" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "content": "How do I get started?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 You can also test queries in the dashboard by going to your instance and selecting the **Playground** tab.

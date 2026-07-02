@@ -27,84 +27,110 @@ Pruna's P-Video-Avatar generates talking-head videos from a single portrait imag
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1564)
-* [ cURL ](#tab-panel-1565)
+* [ TypeScript ](#tab-panel-1612)
+* [ cURL ](#tab-panel-1613)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'pruna/p-video-avatar',
+  {
+    image: 'https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg',
+    voice_script: 'Hello, welcome to our product demo!',
+    voice: 'Zephyr (Female)',
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'pruna/p-video-avatar',  {    image: 'https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg',    voice_script: 'Hello, welcome to our product demo!',    voice: 'Zephyr (Female)',    resolution: '720p',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pruna/p-video-avatar",
+  "input": {
+    "image": "https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg",
+    "voice_script": "Hello, welcome to our product demo!",
+    "voice": "Zephyr (Female)",
+    "resolution": "720p"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1610)
+* [ Raw response ](#tab-panel-1611)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "pruna/p-video-avatar",  "input": {    "image": "https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg",    "voice_script": "Hello, welcome to our product demo!",    "voice": "Zephyr (Female)",    "resolution": "720p"  }}'
-```
-
-* [ Output ](#tab-panel-1562)
-* [ Raw response ](#tab-panel-1563)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/pruna/p-video-avatar/product-demo-greeting.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/pruna/p-video-avatar/product-demo-greeting.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1566)
-* [ Output ](#tab-panel-1567)
-
-audio
-
-`string`URL of uploaded audio to drive speech. HTTP(S) URL or data URI. If both audio and voice\_script are provided, audio takes priority.
-
-disable\_prompt\_upsampling
-
-`boolean`requireddefault: falseWhen true, skip the prompt upsampler and pass the raw user prompt.
-
-disable\_safety\_filter
-
-`boolean`requireddefault: trueDisable safety filter for prompts and input image.
+* [ Input ](#tab-panel-1614)
+* [ Output ](#tab-panel-1615)
 
 image
 
 `string`requiredInput portrait image (first frame). HTTP(S) URL or data URI. Supports jpg, jpeg, png, webp.
 
-negative\_prompt
+audio
 
-`string`requireddefault: Mention what you do NOT want in the video. Disabled if empty.
-
-resolution
-
-`string`requireddefault: 720penum: 720p, 1080pResolution of the video.
-
-seed
-
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Random seed for reproducible generation.
-
-strength\_negative\_prompt
-
-`number`requireddefault: 0.5maximum: 4minimum: 0Strength of the negative prompt (0-4).
-
-video\_prompt
-
-`string`requireddefault: The person is talking.Optional prompt for the video.
+`string`URL of uploaded audio to drive speech. HTTP(S) URL or data URI. If both audio and voice\_script are provided, audio takes priority.
 
 voice
 
 `string`requireddefault: Zephyr (Female)enum: Zephyr (Female), Puck (Male), Charon (Male), Kore (Female), Fenrir (Male), Leda (Female), Orus (Male), Aoede (Female), Callirrhoe (Female), Autonoe (Female), Enceladus (Male), Iapetus (Male), Umbriel (Male), Algenib (Male), Despina (Female), Erinome (Female), Laomedeia (Female), Achernar (Female), Algieba (Male), Schedar (Male), Gacrux (Female), Pulcherrima (Female), Achird (Male), Zubenelgenubi (Male), Vindemiatrix (Female), Sadachbia (Male), Sadaltager (Male), Sulafat (Female), Alnilam (Male), Rasalgethi (Male)Voice for generated speech.
 
+voice\_script
+
+`string`requireddefault: Script for the person to say when no audio is uploaded.
+
 voice\_language
 
 `string`requireddefault: English (US)enum: English (US), English (UK), Spanish, French, German, Italian, Portuguese (Brazil), Japanese, Korean, HindiOutput language.
+
+resolution
+
+`string`requireddefault: 720penum: 720p, 1080pResolution of the video.
+
+video\_prompt
+
+`string`requireddefault: The person is talking.Optional prompt for the video.
 
 voice\_prompt
 
 `string`requireddefault: Say the following.Optional speaking style, tone, pacing or emotion instructions.
 
-voice\_script
+negative\_prompt
 
-`string`requireddefault: Script for the person to say when no audio is uploaded.
+`string`requireddefault: Mention what you do NOT want in the video. Disabled if empty.
+
+strength\_negative\_prompt
+
+`number`requireddefault: 0.5minimum: 0maximum: 4Strength of the negative prompt (0-4).
+
+seed
+
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
+
+disable\_safety\_filter
+
+`boolean`requireddefault: trueDisable safety filter for prompts and input image.
+
+disable\_prompt\_upsampling
+
+`boolean`requireddefault: falseWhen true, skip the prompt upsampler and pass the raw user prompt.
 
 video
 

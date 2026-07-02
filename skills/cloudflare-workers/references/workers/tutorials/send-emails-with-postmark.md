@@ -32,26 +32,26 @@ To continue with this tutorial, you’ll need:
 
 Start by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line, then, answer the prompts:
 
-Terminal window
-
-```
+```sh
 npm create cloudflare@latest
 ```
 
 Alternatively, you can use CLI arguments to speed things up:
 
-Terminal window
-
-```
+```sh
 npm create cloudflare@latest email-with-postmark -- --type=hello-world --ts=false --git=true --deploy=false
 ```
 
 This creates a simple hello-world Worker having the following content:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  },
+};
 ```
 
 ## Add your domain to Postmark
@@ -82,15 +82,29 @@ Note
 
 [Postmark’s JavaScript library ↗](https://www.npmjs.com/package/postmark) is currently not supported on Workers. Use the [email API ↗](https://postmarkapp.com/developer/user-guide/send-email-with-api) instead.
 
-```
-export default {  async fetch(request, env, ctx) {    return await fetch("https://api.postmarkapp.com/email", {      method: "POST",      headers: {        "Content-Type": "application/json",        "X-Postmark-Server-Token": "your_postmark_api_token_here",      },      body: JSON.stringify({        From: "hello@example.com",        To: "someone@example.com",        Subject: "Hello World",        HtmlBody: "<p>Hello from Workers</p>",      }),    });  },};
+```jsx
+export default {
+  async fetch(request, env, ctx) {
+    return await fetch("https://api.postmarkapp.com/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Postmark-Server-Token": "your_postmark_api_token_here",
+      },
+      body: JSON.stringify({
+        From: "hello@example.com",
+        To: "someone@example.com",
+        Subject: "Hello World",
+        HtmlBody: "<p>Hello from Workers</p>",
+      }),
+    });
+  },
+};
 ```
 
 To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
 
-Terminal window
-
-```
+```sh
 npm start
 ```
 
@@ -102,22 +116,38 @@ Sensitive information such as API keys and token should always be stored in secr
 
 To add secrets for local development, create a `.dev.vars` file which works exactly like a `.env` file:
 
-```
+```txt
 POSTMARK_API_TOKEN=your_postmark_api_token_here
 ```
 
 Also ensure the secret is added to your deployed worker by running:
 
-Add secret to deployed Worker
+**Add secret to deployed Worker**
 
-```
+```sh
 npx wrangler secret put POSTMARK_API_TOKEN
 ```
 
 The added secret can be accessed on via the `env` parameter passed to your Worker’s fetch event handler:
 
-```
-export default {  async fetch(request, env, ctx) {    return await fetch("https://api.postmarkapp.com/email", {      method: "POST",      headers: {        "Content-Type": "application/json",        "X-Postmark-Server-Token": env.POSTMARK_API_TOKEN,      },      body: JSON.stringify({        From: "hello@example.com",        To: "someone@example.com",        Subject: "Hello World",        HtmlBody: "<p>Hello from Workers</p>",      }),    });  },};
+```jsx
+export default {
+  async fetch(request, env, ctx) {
+    return await fetch("https://api.postmarkapp.com/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Postmark-Server-Token": env.POSTMARK_API_TOKEN,
+      },
+      body: JSON.stringify({
+        From: "hello@example.com",
+        To: "someone@example.com",
+        Subject: "Hello World",
+        HtmlBody: "<p>Hello from Workers</p>",
+      }),
+    });
+  },
+};
 ```
 
 And finally, deploy this update with `npm run deploy`.

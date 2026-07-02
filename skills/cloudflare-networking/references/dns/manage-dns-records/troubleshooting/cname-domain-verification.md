@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 When configuring services from external providers - such as email services, for example - it is possible that they require you to verify your domain by placing a CNAME record at your zone, similar to the following:
 
-```
+```txt
 <value>._domainkey.example.com CNAME <hostname>.<service provider domain>
 ```
 

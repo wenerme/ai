@@ -54,28 +54,28 @@ When setting up new device posture checks, we recommend first testing them witho
 ### macOS
 
 1. Create a directory.
-Terminal window
-```
+```bash
 ~/Desktop $ mkdir tmp
 ~/Desktop $ cd tmp
 ```
 2. Run the following command to extract certificates for the Cloudflare One Client application:
-Terminal window
-```
-~/Desktop/tmp $ codesign -d --extract-certificates "/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP"Executable=/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP
+```sh
+~/Desktop/tmp $ codesign -d --extract-certificates "/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP"
+Executable=/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP
 ```
 3. Next, run the following command to extract the SHA1 thumbprint:
-Terminal window
-```
-~/Desktop/tmp $ openssl x509 -inform DER -in codesign0 -fingerprint -sha1 -noout | tr -d :SHA1 Fingerprint=FE2C359D79D4CEAE6BDF7EFB507326C6B4E2436E
+```sh
+~/Desktop/tmp $ openssl x509 -inform DER -in codesign0 -fingerprint -sha1 -noout | tr -d :
+SHA1 Fingerprint=FE2C359D79D4CEAE6BDF7EFB507326C6B4E2436E
 ```
 
 ### Windows
 
 1. Open a PowerShell window.
 2. Use the `Get-AuthenticodeSignature` command to find the thumbprint. For example:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Get-AuthenticodeSignature -FilePath c:\myfile.exe
 ```
 
@@ -87,8 +87,7 @@ The SHA-256 value almost always changes between versions of a file/application.
 
 1. Open a Terminal window.
 2. Use the `shasum` command to find the SHA256 value of the file. For example:
-Terminal window
-```
+```sh
 shasum -a 256 myfile
 ```
 
@@ -96,8 +95,9 @@ shasum -a 256 myfile
 
 1. Open a PowerShell window.
 2. Use the `get-filehash` command to find the SHA256 value of the file. For example:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 get-filehash -path "C:\myfile.exe" -Algorithm SHA256 | format-list
 ```
 
@@ -109,9 +109,7 @@ Learn how the Cloudflare One Client determines if an application is running on v
 
 To get the list of active processes, run the following command:
 
-Terminal window
-
-```
+```sh
 ps -eo comm | xargs -I {} which "{}" | sort | uniq | xargs -I {} realpath "{}"
 ```
 
@@ -121,9 +119,7 @@ The application path must appear in the output for the check to pass.
 
 The Cloudflare One Client gets the list of running binaries by following the soft links in `/proc/<pid>/exe`. To view all active processes and their soft links:
 
-Terminal window
-
-```
+```sh
 ps -eo pid | awk '{print "/proc/"$1"/exe"}' | xargs readlink -f | awk '{print $1}' | sort | uniq
 ```
 
@@ -133,9 +129,9 @@ The application path must appear in the `/proc/<pid>/exe` output for the check t
 
 To get the list of active processes, run the following command:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Get-Process | Select-Object ProcessName, Path | Format-Table -AutoSize
 ```
 

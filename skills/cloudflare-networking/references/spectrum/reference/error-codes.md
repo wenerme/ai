@@ -18,8 +18,18 @@ This page documents error codes returned by the [Spectrum API](https://developer
 
 Spectrum API errors follow the standard Cloudflare v4 error envelope. The response body includes an `errors` array with `code` and `message` fields:
 
-```
-{  "errors": [    {      "code": 11044,      "message": "No matching routes in the specified virtual network."    }  ],  "messages": [],  "success": false,  "result": null}
+```json
+{
+  "errors": [
+    {
+      "code": 11044,
+      "message": "No matching routes in the specified virtual network."
+    }
+  ],
+  "messages": [],
+  "success": false,
+  "result": null
+}
 ```
 
 ## General errors (10xxx)

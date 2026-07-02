@@ -46,15 +46,15 @@ For more examples, refer to [Example rules](https://developers.cloudflare.com/wa
 
 If you prefer to write expressions directly, you can create a rule from the dashboard or the API.
 
-* [ Dashboard ](#tab-panel-11263)
-* [ API ](#tab-panel-11264)
+* [ Dashboard ](#tab-panel-11558)
+* [ API ](#tab-panel-11559)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account and domain.
 2. Go to **Security** \> **Security rules**.
 3. Select **Create rule** \> **Custom rules**.
 4. Enter a rule name.
 5. Select **Edit expression** and enter an expression using threat intelligence fields. For example:
-```
+```txt
 any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
 ```
 6. Set the action to _Log_ to validate matches before enforcing.
@@ -64,7 +64,7 @@ Threat intelligence fields work with the [Cloudflare API](https://developers.clo
 
 Use the following expression to match IP addresses associated with DDoS activity targeting France:
 
-```
+```txt
 any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
 ```
 

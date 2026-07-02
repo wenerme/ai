@@ -30,22 +30,19 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket and enable the data catalog
 
-* [ Wrangler CLI ](#tab-panel-10085)
-* [ Dashboard ](#tab-panel-10086)
+* [ Wrangler CLI ](#tab-panel-10164)
+* [ Dashboard ](#tab-panel-10165)
 
 1. If not already logged in, run:
-Terminal window
-```
+```bash
 npx wrangler login
 ```
 2. Create an R2 bucket:
-Terminal window
-```
+```bash
 npx wrangler r2 bucket create r2-data-catalog-tutorial
 ```
 3. Enable the catalog on your bucket:
-Terminal window
-```
+```bash
 npx wrangler r2 bucket catalog enable r2-data-catalog-tutorial
 ```
 When you run this command, take note of the **Warehouse** and **Catalog URI**. You will need these later.
@@ -80,22 +77,21 @@ You need to install a Python package manager. In this guide, use [uv ↗](https:
 We will use [marimo ↗](https://github.com/marimo-team/marimo) as a Python notebook.
 
 1. Create a directory where our notebook will be stored:
-Terminal window
-```
+```bash
 mkdir r2-data-catalog-notebook
 ```
 2. Change into our new directory:
-Terminal window
-```
+```bash
 cd r2-data-catalog-notebook
 ```
 3. Initialize a new uv project (this creates a `.venv` and a `pyproject.toml`):
-```
+```plaintext
 uv init
 ```
 4. Add marimo and required dependencies:
-Python
-```
+
+**Python**
+```py
 uv add marimo pyiceberg pyarrow pandas
 ```
 
@@ -103,26 +99,96 @@ uv add marimo pyiceberg pyarrow pandas
 
 1. Create a file called `r2-data-catalog-tutorial.py`.
 2. Paste the following code snippet into your `r2-data-catalog-tutorial.py` file:
-Python
-```
+
+**Python**
+```py
 import marimo
-__generated_with = "0.11.31"app = marimo.App(width="medium")
-@app.celldef _():    import marimo as mo    return (mo,)
-@app.celldef _():    import pandas    import pyarrow as pa    import pyarrow.compute as pc    import pyarrow.parquet as pq
+__generated_with = "0.11.31"
+app = marimo.App(width="medium")
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
+@app.cell
+def _():
+    import pandas
+    import pyarrow as pa
+    import pyarrow.compute as pc
+    import pyarrow.parquet as pq
     from pyiceberg.catalog.rest import RestCatalog
-    # Define catalog connection details (replace variables)    WAREHOUSE = "<WAREHOUSE>"    TOKEN = "<TOKEN>"    CATALOG_URI = "<CATALOG_URI>"
-    # Connect to R2 Data Catalog    catalog = RestCatalog(        name="my_catalog",        warehouse=WAREHOUSE,        uri=CATALOG_URI,        token=TOKEN,    )    return (        CATALOG_URI,        RestCatalog,        TOKEN,        WAREHOUSE,        catalog,        pa,        pandas,        pc,        pq,    )
-@app.celldef _(catalog):    # Create default namespace if needed    catalog.create_namespace_if_not_exists("default")    return
-@app.celldef _(pa):    # Create simple PyArrow table    df = pa.table({        "id": [1, 2, 3],        "name": ["Alice", "Bob", "Charlie"],        "score": [80.0, 92.5, 88.0],    })    return (df,)
-@app.celldef _(catalog, df):    # Create or load Iceberg table    test_table = ("default", "people")    if not catalog.table_exists(test_table):        print(f"Creating table: {test_table}")        table = catalog.create_table(            test_table,            schema=df.schema,        )    else:        table = catalog.load_table(test_table)    return table, test_table
-@app.celldef _(df, table):    # Append data    table.append(df)    return
-@app.celldef _(table):    print("Table contents:")    scanned = table.scan().to_arrow()    print(scanned.to_pandas())    return (scanned,)
-@app.celldef _():    # Optional cleanup. To run uncomment and run cell    # print(f"Deleting table: {test_table}")    # catalog.drop_table(test_table)    # print("Table dropped.")    return
-if __name__ == "__main__":    app.run()
+    # Define catalog connection details (replace variables)
+    WAREHOUSE = "<WAREHOUSE>"
+    TOKEN = "<TOKEN>"
+    CATALOG_URI = "<CATALOG_URI>"
+    # Connect to R2 Data Catalog
+    catalog = RestCatalog(
+        name="my_catalog",
+        warehouse=WAREHOUSE,
+        uri=CATALOG_URI,
+        token=TOKEN,
+    )
+    return (
+        CATALOG_URI,
+        RestCatalog,
+        TOKEN,
+        WAREHOUSE,
+        catalog,
+        pa,
+        pandas,
+        pc,
+        pq,
+    )
+@app.cell
+def _(catalog):
+    # Create default namespace if needed
+    catalog.create_namespace_if_not_exists("default")
+    return
+@app.cell
+def _(pa):
+    # Create simple PyArrow table
+    df = pa.table({
+        "id": [1, 2, 3],
+        "name": ["Alice", "Bob", "Charlie"],
+        "score": [80.0, 92.5, 88.0],
+    })
+    return (df,)
+@app.cell
+def _(catalog, df):
+    # Create or load Iceberg table
+    test_table = ("default", "people")
+    if not catalog.table_exists(test_table):
+        print(f"Creating table: {test_table}")
+        table = catalog.create_table(
+            test_table,
+            schema=df.schema,
+        )
+    else:
+        table = catalog.load_table(test_table)
+    return table, test_table
+@app.cell
+def _(df, table):
+    # Append data
+    table.append(df)
+    return
+@app.cell
+def _(table):
+    print("Table contents:")
+    scanned = table.scan().to_arrow()
+    print(scanned.to_pandas())
+    return (scanned,)
+@app.cell
+def _():
+    # Optional cleanup. To run uncomment and run cell
+    # print(f"Deleting table: {test_table}")
+    # catalog.drop_table(test_table)
+    # print("Table dropped.")
+    return
+if __name__ == "__main__":
+    app.run()
 ```
 3. Replace the `CATALOG_URI`, `WAREHOUSE`, and `TOKEN` variables with your values from sections **1** and **2** respectively.
 4. Launch the notebook editor in your browser:
-```
+```plaintext
 uv run marimo edit r2-data-catalog-tutorial.py
 ```
 Once your notebook connects to the catalog, the catalog along with its namespaces and tables will appear in the Datasources panel in marimo.

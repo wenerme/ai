@@ -58,8 +58,8 @@ To confirm that your device's DNS queries are flowing through Gateway:
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-7682)
-* [ API ](#tab-panel-7683)
+* [ Dashboard ](#tab-panel-7935)
+* [ API ](#tab-panel-7936)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
@@ -79,12 +79,31 @@ A DNS policy has two parts: a **traffic condition** that defines which queries t
 | Account | Zero Trust | Edit       |
 2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
 3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, the following request creates a policy that blocks all default [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories). The numeric IDs in the `traffic` field (such as `68`, `178`, `80`) correspond to Cloudflare's predefined security threat categories — refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) for the full mapping. The `precedence` field controls evaluation order when multiple policies match (`0` means this policy is evaluated first).
-Create a Zero Trust Gateway rule
+
+**Create a Zero Trust Gateway rule**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Block security threats",
+    "description": "Block all default Cloudflare DNS security categories",
+    "precedence": 0,
+    "enabled": true,
+    "action": "block",
+    "filters": [
+        "dns"
+    ],
+    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+    "identity": ""
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block security threats",    "description": "Block all default Cloudflare DNS security categories",    "precedence": 0,    "enabled": true,    "action": "block",    "filters": [        "dns"    ],    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "identity": ""  }'
-```
-```
-{   "success": true,   "errors": [],   "messages": []}
+```sh
+{
+   "success": true,
+   "errors": [],
+   "messages": []
+}
 ```
 The API will respond with a summary of the policy and the result of your request.
 

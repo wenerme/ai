@@ -24,13 +24,11 @@ No. APO ignores Origin Cache Control for caching on the Edge, but APO serves ori
 
 The browser cache control headers may be missing with APO if you set your **Browser Cache TTL** to **Respect Existing Headers**. For example:
 
-Terminal window
-
-```
+```sh
 curl --silent --verbose --output /dev/null https://example.com/ --header 'Accept: text/html' 2>&1 | grep cache-control
 ```
 
-```
+```sh
 < cache-control: max-age=86400, stale-while-revalidate=86400, stale-if-error=86400
 ```
 

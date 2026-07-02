@@ -83,29 +83,35 @@ Before making changes, take note of any DNS addresses you might have and save th
 5. Change the IP Settings to **Static**.
 6. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
 Use 1.1.1.1 resolver
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 Block malware with 1.1.1.1 for Families
-```
-1.1.1.21.0.0.2
+```txt
+1.1.1.2
+1.0.0.2
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-1.1.1.31.0.0.3
+```txt
+1.1.1.3
+1.0.0.3
 ```
 7. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
 Use 1.1.1.1 resolver
-```
-2606:4700:4700::11112606:4700:4700::1001
+```txt
+2606:4700:4700::1111
+2606:4700:4700::1001
 ```
 Block malware with 1.1.1.1 for Families
-```
-2606:4700:4700::11122606:4700:4700::1002
+```txt
+2606:4700:4700::1112
+2606:4700:4700::1002
 ```
 Block malware and adult content with 1.1.1.1 for Families
-```
-2606:4700:4700::11132606:4700:4700::1003
+```txt
+2606:4700:4700::1113
+2606:4700:4700::1003
 ```
 8. Select **Save**. You may need to disconnect from the Wi-Fi and reconnect for the changes to take effect.
 

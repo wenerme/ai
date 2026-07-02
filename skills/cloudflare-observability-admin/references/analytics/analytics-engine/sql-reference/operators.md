@@ -55,12 +55,25 @@ Pattern matching supports two wildcard characters:
 
 Examples:
 
-```
--- Match strings starting with "error"WHERE blob1 LIKE 'error%'
--- Match strings ending with ".jpg" (case-insensitive)WHERE blob2 ILIKE '%.jpg'
--- Match strings containing "test" anywhereWHERE blob3 LIKE '%test%'
--- Match exactly 5 characters starting with "log"WHERE blob4 LIKE 'log__'
--- Exclude strings containing "debug" (case-insensitive)WHERE blob5 NOT ILIKE '%debug%'
+```sql
+-- Match strings starting with "error"
+WHERE blob1 LIKE 'error%'
+
+
+-- Match strings ending with ".jpg" (case-insensitive)
+WHERE blob2 ILIKE '%.jpg'
+
+
+-- Match strings containing "test" anywhere
+WHERE blob3 LIKE '%test%'
+
+
+-- Match exactly 5 characters starting with "log"
+WHERE blob4 LIKE 'log__'
+
+
+-- Exclude strings containing "debug" (case-insensitive)
+WHERE blob5 NOT ILIKE '%debug%'
 ```
 
 ## Boolean operators

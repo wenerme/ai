@@ -31,58 +31,58 @@ Before continuing with this tutorial, you should have:
 
 You will need the Turso CLI to create and populate a database. Run either of the following two commands in your terminal to install the Turso CLI:
 
-Terminal window
+```sh
+# On macOS or Linux with Homebrew
+brew install chiselstrike/tap/turso
 
-```
-# On macOS or Linux with Homebrewbrew install chiselstrike/tap/turso
-# Manual scripted installationcurl -sSfL <https://get.tur.so/install.sh> | bash
+
+# Manual scripted installation
+curl -sSfL <https://get.tur.so/install.sh> | bash
 ```
 
 After you have installed the Turso CLI, verify that the CLI is in your shell path:
 
-Terminal window
-
-```
+```sh
 turso --version
 ```
 
-```
-# This should output your current Turso CLI version (your installed version may be higher):turso version v0.51.0
+```sh
+# This should output your current Turso CLI version (your installed version may be higher):
+turso version v0.51.0
 ```
 
 ## Create and populate a database
 
 Before you create your first Turso database, you need to log in to the CLI using your GitHub account by running:
 
-Terminal window
-
-```
+```sh
 turso auth login
 ```
 
-```
-Waiting for authentication...✔  Success! Logged in as <your GitHub username>
+```sh
+Waiting for authentication...
+✔  Success! Logged in as <your GitHub username>
 ```
 
 `turso auth login` will open a browser window and ask you to sign into your GitHub account, if you are not already logged in. The first time you do this, you will need to give the Turso application permission to use your account. Select **Approve** to grant Turso the permissions needed.
 
 After you have authenticated, you can create a database by running `turso db create <DATABASE_NAME>`. Turso will automatically choose a location closest to you.
 
-Terminal window
-
-```
+```sh
 turso db create my-db
 ```
 
-```
-# Example:[===>                ]Creating database my-db in Los Angeles, California (US) (lax)# Once succeeded:Created database my-db in Los Angeles, California (US) (lax) in 34 seconds.
+```sh
+# Example:
+[===>                ]
+Creating database my-db in Los Angeles, California (US) (lax)
+# Once succeeded:
+Created database my-db in Los Angeles, California (US) (lax) in 34 seconds.
 ```
 
 With your first database created, you can now connect to it directly and execute SQL against it:
 
-Terminal window
-
-```
+```sh
 turso db shell my-db
 ```
 
@@ -90,8 +90,9 @@ To get started with your database, create and define a schema for your first tab
 
 In the shell you just opened, paste in the following SQL:
 
-```
-create table example_users (email text);insert into example_users values ('foo@bar.com');
+```sql
+create table example_users (email text);
+insert into example_users values ('foo@bar.com');
 ```
 
 If the SQL statements succeeded, there will be no output. Note that the trailing semi-colons (`;`) are necessary to terminate each SQL statement.
@@ -128,9 +129,7 @@ For setup, select the following options:
 
 To start developing your Worker, `cd` into your new project directory:
 
-Terminal window
-
-```
+```sh
 cd worker-turso-ts
 ```
 
@@ -152,41 +151,43 @@ The Turso client library requires two pieces of information to make a connection
 
 To get the URL for your database, run the following Turso CLI command, and copy the result:
 
-Terminal window
-
-```
+```sh
 turso db show my-db --url
 ```
 
-```
+```sh
 libsql://my-db-<your-github-username>.turso.io
 ```
 
 Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in your editor and at the bottom of the file, create a new `[vars]` section representing the [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) for your project:
 
-* [  wrangler.jsonc ](#tab-panel-12279)
-* [  wrangler.toml ](#tab-panel-12280)
+* [  wrangler.jsonc ](#tab-panel-12534)
+* [  wrangler.toml ](#tab-panel-12535)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vars": {
+    "LIBSQL_DB_URL": "paste-your-url-here"
+  }
+}
 ```
-{  "vars": {    "LIBSQL_DB_URL": "paste-your-url-here"  }}
-```
 
-TOML
+**TOML**
 
-```
-[vars]LIBSQL_DB_URL = "paste-your-url-here"
+```toml
+[vars]
+LIBSQL_DB_URL = "paste-your-url-here"
 ```
 
 Save the changes to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 Next, create a long-lived authentication token for your Worker to use when connecting to your database. Run the following Turso CLI command, and copy the output to your clipboard:
 
-Terminal window
-
-```
-turso db tokens create my-db -e none# Will output a long text string (an encoded JSON Web Token)
+```sh
+turso db tokens create my-db -e none
+# Will output a long text string (an encoded JSON Web Token)
 ```
 
 To keep this token secret:
@@ -196,19 +197,18 @@ To keep this token secret:
 
 First, create a new file called `.dev.vars` with the following structure. Paste your authentication token in the quotation marks:
 
-```
+```plaintext
 LIBSQL_DB_AUTH_TOKEN="<YOUR_AUTH_TOKEN>"
 ```
 
 Save your changes to `.dev.vars`. Next, store the authentication token as a secret for your production Worker to reference. Run the following `wrangler secret` command to create a Secret with your token:
 
-Terminal window
+```sh
+# Ensure you specify the secret name exactly: your Worker will need to reference it later.
+npx wrangler secret put LIBSQL_DB_AUTH_TOKEN
+```
 
-```
-# Ensure you specify the secret name exactly: your Worker will need to reference it later.npx wrangler secret put LIBSQL_DB_AUTH_TOKEN
-```
-
-```
+```sh
 ? Enter a secret value: › <paste your token here>
 ```
 
@@ -248,24 +248,100 @@ You will now write a Worker that will:
 
 Open `src/index.ts` and delete the existing template. Copy the below code exactly as is and paste it into the file:
 
-TypeScript
+**TypeScript**
 
-```
-import { Client as LibsqlClient, createClient } from "@libsql/client/web";import { Router, RouterType } from "itty-router";
-export interface Env {  // The environment variable containing your the URL for your Turso database.  LIBSQL_DB_URL?: string;  // The Secret that contains the authentication token for your Turso database.  LIBSQL_DB_AUTH_TOKEN?: string;
-  // These objects are created before first use, then stashed here  // for future use  router?: RouterType;}
-export default {  async fetch(request, env): Promise<Response> {    if (env.router === undefined) {      env.router = buildRouter(env);    }
-    return env.router.fetch(request);  },} satisfies ExportedHandler<Env>;
-function buildLibsqlClient(env: Env): LibsqlClient {  const url = env.LIBSQL_DB_URL?.trim();  if (url === undefined) {    throw new Error("LIBSQL_DB_URL env var is not defined");  }
-  const authToken = env.LIBSQL_DB_AUTH_TOKEN?.trim();  if (authToken === undefined) {    throw new Error("LIBSQL_DB_AUTH_TOKEN env var is not defined");  }
-  return createClient({ url, authToken });}
-function buildRouter(env: Env): RouterType {  const router = Router();
-  router.get("/users", async () => {    const client = buildLibsqlClient(env);    const rs = await client.execute("select * from example_users");    return Response.json(rs);  });
-  router.get("/add-user", async (request) => {    const client = buildLibsqlClient(env);    const email = request.query.email;    if (email === undefined) {      return new Response("Missing email", { status: 400 });    }    if (typeof email !== "string") {      return new Response("email must be a single string", { status: 400 });    }    if (email.length === 0) {      return new Response("email length must be > 0", { status: 400 });    }
-    try {      await client.execute({        sql: "insert into example_users values (?)",        args: [email],      });    } catch (e) {      console.error(e);      return new Response("database insert failed");    }
-    return new Response("Added");  });
+```ts
+import { Client as LibsqlClient, createClient } from "@libsql/client/web";
+import { Router, RouterType } from "itty-router";
+
+
+export interface Env {
+  // The environment variable containing your the URL for your Turso database.
+  LIBSQL_DB_URL?: string;
+  // The Secret that contains the authentication token for your Turso database.
+  LIBSQL_DB_AUTH_TOKEN?: string;
+
+
+  // These objects are created before first use, then stashed here
+  // for future use
+  router?: RouterType;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    if (env.router === undefined) {
+      env.router = buildRouter(env);
+    }
+
+
+    return env.router.fetch(request);
+  },
+} satisfies ExportedHandler<Env>;
+
+
+function buildLibsqlClient(env: Env): LibsqlClient {
+  const url = env.LIBSQL_DB_URL?.trim();
+  if (url === undefined) {
+    throw new Error("LIBSQL_DB_URL env var is not defined");
+  }
+
+
+  const authToken = env.LIBSQL_DB_AUTH_TOKEN?.trim();
+  if (authToken === undefined) {
+    throw new Error("LIBSQL_DB_AUTH_TOKEN env var is not defined");
+  }
+
+
+  return createClient({ url, authToken });
+}
+
+
+function buildRouter(env: Env): RouterType {
+  const router = Router();
+
+
+  router.get("/users", async () => {
+    const client = buildLibsqlClient(env);
+    const rs = await client.execute("select * from example_users");
+    return Response.json(rs);
+  });
+
+
+  router.get("/add-user", async (request) => {
+    const client = buildLibsqlClient(env);
+    const email = request.query.email;
+    if (email === undefined) {
+      return new Response("Missing email", { status: 400 });
+    }
+    if (typeof email !== "string") {
+      return new Response("email must be a single string", { status: 400 });
+    }
+    if (email.length === 0) {
+      return new Response("email length must be > 0", { status: 400 });
+    }
+
+
+    try {
+      await client.execute({
+        sql: "insert into example_users values (?)",
+        args: [email],
+      });
+    } catch (e) {
+      console.error(e);
+      return new Response("database insert failed");
+    }
+
+
+    return new Response("Added");
+  });
+
+
   router.all("*", () => new Response("Not Found.", { status: 404 }));
-  return router;}
+
+
+  return router;
+}
 ```
 
 Save your `src/index.ts` file with your changes.
@@ -284,16 +360,28 @@ With your environment configured and your code ready, you will now test your Wor
 
 To run a local instance of our Worker (entirely on your machine), run the following command:
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
 You should be able to review output similar to the following:
 
-```
-Your worker has access to the following bindings:- Vars:  - LIBSQL_DB_URL: "your-url"⎔ Starting a local server...╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮│ [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit                                                                    │╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯Debugger listening on ws://127.0.0.1:61918/1064babd-bc9d-4bed-b171-b35dab3b7680For help, see: https://nodejs.org/en/docs/inspectorDebugger attached.[mf:inf] Worker reloaded! (40.25KiB)[mf:inf] Listening on 0.0.0.0:8787[mf:inf] - http://127.0.0.1:8787[mf:inf] - http://192.168.1.136:8787[mf:inf] Updated `Request.cf` object cache!
+```txt
+Your worker has access to the following bindings:
+- Vars:
+  - LIBSQL_DB_URL: "your-url"
+⎔ Starting a local server...
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit                                                                    │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Debugger listening on ws://127.0.0.1:61918/1064babd-bc9d-4bed-b171-b35dab3b7680
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+[mf:inf] Worker reloaded! (40.25KiB)
+[mf:inf] Listening on 0.0.0.0:8787
+[mf:inf] - http://127.0.0.1:8787
+[mf:inf] - http://192.168.1.136:8787
+[mf:inf] Updated `Request.cf` object cache!
 ```
 
 The localhost address — the one with `127.0.0.1` in it — is a web-server running locally on your machine.
@@ -302,8 +390,12 @@ Connect to it and validate your Worker returns the email address you inserted wh
 
 You should see JSON similar to the following containing the data from the `example_users` table:
 
-```
-{  "columns": ["email"],  "rows": [{ "email": "foo@bar.com" }],  "rowsAffected": 0}
+```json
+{
+  "columns": ["email"],
+  "rows": [{ "email": "foo@bar.com" }],
+  "rowsAffected": 0
+}
 ```
 
 Warning
@@ -325,9 +417,7 @@ Quit Wrangler by typing `q` into the shell where it was started.
 
 After you have validated that your Worker can connect to your Turso database, deploy your Worker. Run the following Wrangler command to deploy your Worker to the Cloudflare global network:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -335,8 +425,14 @@ The first time you run this command, it will launch a browser, ask you to sign i
 
 The `deploy` command will output the following:
 
-```
-Your worker has access to the following bindings:- Vars:  - LIBSQL_DB_URL: "your-url"...Published worker-turso-ts (0.19 sec)  https://worker-turso-ts.<your-Workers-subdomain>.workers.devCurrent Deployment ID: f9e6b48f-5aac-40bd-8f44-8a40be2212ff
+```txt
+Your worker has access to the following bindings:
+- Vars:
+  - LIBSQL_DB_URL: "your-url"
+...
+Published worker-turso-ts (0.19 sec)
+  https://worker-turso-ts.<your-Workers-subdomain>.workers.dev
+Current Deployment ID: f9e6b48f-5aac-40bd-8f44-8a40be2212ff
 ```
 
 You have now deployed a Worker that can connect to your Turso database, query it, and insert new data.

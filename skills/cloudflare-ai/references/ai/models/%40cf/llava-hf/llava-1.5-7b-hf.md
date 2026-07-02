@@ -26,18 +26,36 @@ LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-gener
 
 ## Usage
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
+```ts
+export interface Env {
+  AI: Ai;
+}
 
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const res = await fetch("https://cataas.com/cat");    const blob = await res.arrayBuffer();    const input = {      image: [...new Uint8Array(blob)],      prompt: "Generate a caption for this image",      max_tokens: 512,    };    const response = await env.AI.run(      "@cf/llava-hf/llava-1.5-7b-hf",      input      );    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const res = await fetch("https://cataas.com/cat");
+    const blob = await res.arrayBuffer();
+    const input = {
+      image: [...new Uint8Array(blob)],
+      prompt: "Generate a caption for this image",
+      max_tokens: 512,
+    };
+    const response = await env.AI.run(
+      "@cf/llava-hf/llava-1.5-7b-hf",
+      input
+      );
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2380)
-* [ Output ](#tab-panel-2381)
+* [ Input ](#tab-panel-2428)
+* [ Output ](#tab-panel-2429)
 
 Option 1
 

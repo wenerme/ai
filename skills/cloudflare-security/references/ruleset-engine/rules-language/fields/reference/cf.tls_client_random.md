@@ -20,7 +20,7 @@ For more details, refer to [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8
 
 Example value:
 
-```
+```txt
 "YWJjZA=="
 ```
 

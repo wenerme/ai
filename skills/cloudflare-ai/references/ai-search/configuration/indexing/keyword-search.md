@@ -25,10 +25,16 @@ Set `index_method.keyword` to `true` when creating or updating an instance. You 
 
 At least one of `vector` or `keyword` must be `true`. Changing `index_method` triggers a full reindex of your content.
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "my-instance",  index_method: {    vector: false,    keyword: true,  },});
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "my-instance",
+  index_method: {
+    vector: false,
+    keyword: true,
+  },
+});
 ```
 
 ## Keyword tokenizer
@@ -51,11 +57,20 @@ The `keyword_match_mode` field (inside `retrieval_options`) controls how multipl
 
 You can override `keyword_match_mode` per request:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      keyword_match_mode: "or",    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      keyword_match_mode: "or",
+    },
+  },
+});
 ```
 
 ## Limits

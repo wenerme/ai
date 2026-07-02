@@ -74,9 +74,20 @@ There are two components to implementing Turnstile into your application: the Tu
 
 Add the Turnstile widget to your existing login form:
 
-```
-<form id="login-form">  <input type="text" id="username" placeholder="Username" required />  <input type="password" id="password" placeholder="Password" autocomplete="off" required />  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>  <button type="submit">Log in</button></form>
-<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js"  async  defer></script>
+```html
+<form id="login-form">
+  <input type="text" id="username" placeholder="Username" required />
+  <input type="password" id="password" placeholder="Password" autocomplete="off" required />
+  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
+  <button type="submit">Log in</button>
+</form>
+
+
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
 ```
 
 Replace `<YOUR-SITE-KEY>` with your actual Turnstile site key.
@@ -85,16 +96,75 @@ Replace `<YOUR-SITE-KEY>` with your actual Turnstile site key.
 
 In your existing authentication route, add Turnstile validation:
 
-TypeScript
+**TypeScript**
 
-```
-async function validateTurnstileToken(  ip: string,  token: string,  secret: string,): Promise<boolean> {  const response = await fetch(    "https://challenges.cloudflare.com/turnstile/v0/siteverify",    {      method: "POST",      headers: { "Content-Type": "application/json" },      body: JSON.stringify({ ip, secret, response: token }),    },  );
-  const outcome = await response.json();  return outcome.success;}
-// Assume that this is a TypeScript route handler.// You may replace this with a different implementation,// based on your language or frameworkexport async function onRequestPost(context) {  const { request, env } = context;  const { username, password, token } = await request.json();
-  // Validate Turnstile token  const secretKey = env.TURNSTILE_SECRET_KEY;  const ip = request.headers.get("CF-Connecting-IP");  const turnstileValid = await validateTurnstileToken(ip, token, secretKey);  if (!turnstileValid) {    // Return back to the login page with an error message    return Response.redirect("/login", 302, {      headers: {        Location: "/login?error=invalid-turnstile-token",      },    });  }
-  // Perform your existing authentication logic here  const isValidLogin = await checkCredentials(username, password);
-  if (isValidLogin) {    return new Response(JSON.stringify({ message: "Login successful" }), {      status: 200,      headers: { "Content-Type": "application/json" },    });  } else {    return new Response(JSON.stringify({ error: "Invalid credentials" }), {      status: 401,      headers: { "Content-Type": "application/json" },    });  }}
-async function checkCredentials(  username: string,  password: string,): Promise<boolean> {  // Your existing credential checking logic}
+```typescript
+async function validateTurnstileToken(
+  ip: string,
+  token: string,
+  secret: string,
+): Promise<boolean> {
+  const response = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ip, secret, response: token }),
+    },
+  );
+
+
+  const outcome = await response.json();
+  return outcome.success;
+}
+
+
+// Assume that this is a TypeScript route handler.
+// You may replace this with a different implementation,
+// based on your language or framework
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  const { username, password, token } = await request.json();
+
+
+  // Validate Turnstile token
+  const secretKey = env.TURNSTILE_SECRET_KEY;
+  const ip = request.headers.get("CF-Connecting-IP");
+  const turnstileValid = await validateTurnstileToken(ip, token, secretKey);
+  if (!turnstileValid) {
+    // Return back to the login page with an error message
+    return Response.redirect("/login", 302, {
+      headers: {
+        Location: "/login?error=invalid-turnstile-token",
+      },
+    });
+  }
+
+
+  // Perform your existing authentication logic here
+  const isValidLogin = await checkCredentials(username, password);
+
+
+  if (isValidLogin) {
+    return new Response(JSON.stringify({ message: "Login successful" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } else {
+    return new Response(JSON.stringify({ error: "Invalid credentials" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
+
+
+async function checkCredentials(
+  username: string,
+  password: string,
+): Promise<boolean> {
+  // Your existing credential checking logic
+}
 ```
 
 This setup ensures that the Turnstile token is validated on the server-side before proceeding with the login process, adding an extra layer of security based on client-side signals.

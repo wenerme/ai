@@ -18,34 +18,29 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-7327)
-* [ RedHat / CentOS ](#tab-panel-7328)
+* [ Debian / Ubuntu ](#tab-panel-7577)
+* [ RedHat / CentOS ](#tab-panel-7578)
 
 1. Check the current version:
-Terminal window
-```
+```sh
 warp-cli --version
 ```
 2. Update the package:
-Terminal window
-```
+```sh
 sudo apt-get update && sudo apt-get install --only-upgrade cloudflare-warp
 ```
 
 1. Check the current version:
-Terminal window
-```
+```sh
 warp-cli --version
 ```
 2. Update the package:
-Terminal window
-```
+```sh
 sudo yum update cloudflare-warp
 ```
 
 1. Verify the node has reconnected:
-Terminal window
-```
+```sh
 warp-cli status
 ```
 You should see `Status update: Connected` in the output.
@@ -56,17 +51,13 @@ IP forwarding allows a Mesh node to act as a gateway, forwarding packets between
 
 Older installations may have used `sysctl -w` for IP forwarding, which does not persist across reboots. If your node loses route connectivity after a server restart, run the following to make forwarding permanent:
 
-Terminal window
-
-```
+```sh
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf && sudo sysctl --system
 ```
 
 You can verify the settings are active with:
 
-Terminal window
-
-```
+```sh
 sysctl net.ipv4.ip_forward net.ipv6.conf.all.forwarding net.ipv6.conf.all.accept_ra
 ```
 

@@ -26,19 +26,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-mute-all-button></rtk-mute-all-button>
 ```
 
 ### With Properties
 
-```
-<rtk-mute-all-button size="md" variant"button"></rtk-mute-all-button>
+```html
+<rtk-mute-all-button
+ size="md"
+ variant"button">
+</rtk-mute-all-button>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-mute-all-button");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-mute-all-button");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

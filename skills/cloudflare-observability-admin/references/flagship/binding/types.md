@@ -18,10 +18,12 @@ The Flagship binding uses the following TypeScript types. These are available fr
 
 The binding type. Each Flagship binding in your Wrangler configuration is typed as `Flagship` on the `Env` interface.
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  FLAGS: Flagship;}
+```ts
+interface Env {
+  FLAGS: Flagship;
+}
 ```
 
 Refer to the [methods reference](https://developers.cloudflare.com/flagship/binding/methods/) for the full list of evaluation methods available on the binding.
@@ -30,9 +32,9 @@ Refer to the [methods reference](https://developers.cloudflare.com/flagship/bind
 
 A record of attribute names to values passed for [targeting rules](https://developers.cloudflare.com/flagship/targeting/). Use this to provide user attributes such as user ID, country, or plan type.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 type FlagshipEvaluationContext = Record<string, string | number | boolean>;
 ```
 
@@ -40,10 +42,16 @@ type FlagshipEvaluationContext = Record<string, string | number | boolean>;
 
 Returned by the `*Details` methods. Contains the evaluated value and metadata about how Flagship resolved the flag.
 
-TypeScript
+**TypeScript**
 
-```
-interface FlagshipEvaluationDetails<T> {  flagKey: string;  value: T;  variant?: string;  reason?: string;  errorCode?: string;}
+```ts
+interface FlagshipEvaluationDetails<T> {
+  flagKey: string;
+  value: T;
+  variant?: string;
+  reason?: string;
+  errorCode?: string;
+}
 ```
 
 | Property  | Type   | Description                                                                         |

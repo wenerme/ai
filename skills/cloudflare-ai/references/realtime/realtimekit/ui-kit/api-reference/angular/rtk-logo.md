@@ -27,14 +27,19 @@ A component which loads the logo from your config, or via the `logo-url` attribu
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-logo></rtk-logo>
+```html
+<!-- component.html -->
+<rtk-logo></rtk-logo>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-logo logoUrl="example" [meeting]="meeting"></rtk-logo>
+```html
+<!-- component.html -->
+<rtk-logo
+ logoUrl="example"
+ [meeting]="meeting">
+</rtk-logo>
 ```
 
 ```json

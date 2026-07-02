@@ -25,16 +25,20 @@ An audio visualizer component which visualizes a participant's audio.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkParticipantAudioIndicator    android:id="@+id/audio_indicator"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkParticipantAudioIndicator
+    android:id="@+id/audio_indicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val audioIndicator = findViewById<RtkParticipantAudioIndicator>(R.id.audio_indicator)audioIndicator.activate(participant)
+```kotlin
+val audioIndicator = findViewById<RtkParticipantAudioIndicator>(R.id.audio_indicator)
+audioIndicator.activate(participant)
 ```
 
 ```json

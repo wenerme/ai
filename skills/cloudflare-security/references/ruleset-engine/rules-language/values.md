@@ -43,12 +43,19 @@ The quoted string syntax has the following additional escaping requirements:
 * When used to specify a regular expression on the right-hand side of the [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) (`matches` or `~`), the string is parsed using regex escaping rules.
 * When used on the right hand-side of expressions with other operators, or in [function parameters](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/), the string is parsed using basic escaping rules.
 
-Examples
+**Examples**
 
-```
-# Test if URI path contains 'a"b'http.request.uri.path matches "a\"b"
-# Test if URI path contains 'a"#b'http.request.uri.path matches "a\"#b"
-# Replace 'a' with '\' (backslash)regex_replace(http.host, "a", "\\")
+```txt
+# Test if URI path contains 'a"b'
+http.request.uri.path matches "a\"b"
+
+
+# Test if URI path contains 'a"#b'
+http.request.uri.path matches "a\"#b"
+
+
+# Replace 'a' with '\' (backslash)
+regex_replace(http.host, "a", "\\")
 ```
 
 Warning
@@ -59,7 +66,7 @@ In this case, you must do the basic escaping required by strings as function par
 
 Therefore, to replace a backslash (`\`) with the `a` character using `regex_replace()` you would use the following expression:
 
-```
+```txt
 regex_replace(http.host, "\\\\", "a")
 ```
 
@@ -76,13 +83,25 @@ In a raw string there are no special characters, so all characters up to the end
 
 Unlike the quoted string syntax, the raw string syntax is always the same, regardless of the context where it is being used (for example, as a regular expression with a [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) or as a parameter of a [function call](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/)).
 
-Examples
+**Examples**
 
-```
-# Test if URI path contains 'a"b'http.request.uri.path matches r#"a"b"#
-# Test if URI path contains 'a"#b'http.request.uri.path matches r##"a"#b"##
-# Replace '\' (backslash) with 'a'# You must still escape the '\' character in the following raw string because it has a special meaning in regular expressionsregex_replace(http.host, r"\\", "a")
-# Test if URI path ends with '/api/login.aspx'# You must still escape the '.' character in the following raw string because it has a special meaning in regular expressions ("any character")http.request.uri.path matches r"/api/login\.aspx$"
+```txt
+# Test if URI path contains 'a"b'
+http.request.uri.path matches r#"a"b"#
+
+
+# Test if URI path contains 'a"#b'
+http.request.uri.path matches r##"a"#b"##
+
+
+# Replace '\' (backslash) with 'a'
+# You must still escape the '\' character in the following raw string because it has a special meaning in regular expressions
+regex_replace(http.host, r"\\", "a")
+
+
+# Test if URI path ends with '/api/login.aspx'
+# You must still escape the '.' character in the following raw string because it has a special meaning in regular expressions ("any character")
+http.request.uri.path matches r"/api/login\.aspx$"
 ```
 
 ### Case sensitivity in string comparisons
@@ -108,7 +127,7 @@ You can use the following strategies to reduce the number of regular expressions
 
 Simple expressions using boolean fields do not require operator notations or values. You only need to insert the field on its own, as shown in the `ssl` example below.
 
-```
+```sql
 ssl
 ```
 
@@ -116,7 +135,7 @@ This simple expression matches requests where the value of the `ssl` field is `t
 
 To match requests where `ssl` is `false`, use the boolean `not` operator :
 
-```
+```sql
 not ssl
 ```
 
@@ -167,7 +186,7 @@ The Cloudflare Rules language includes several [fields](https://developers.cloud
 
 To access a value in a map, enter the key between square brackets (`[]`):
 
-```
+```txt
 <MAP_FIELD>[<KEY>]
 ```
 
@@ -179,23 +198,44 @@ The following example is based on the [http.request.headers](https://developers.
 
 If an incoming HTTP request included a single `Accept: application/json` HTTP header, the following expressions would evaluate to the indicated values:
 
-```
-http.request.headers["accept"]     # ==> ["application/json"]http.request.headers["accept"][0]  # ==> "application/json"
-any(http.request.headers["accept"][*] == "application/json") # ==> trueany(http.request.headers["accept"][*] == "text/plain")       # ==> false
+```txt
+http.request.headers["accept"]     # ==> ["application/json"]
+http.request.headers["accept"][0]  # ==> "application/json"
+
+
+any(http.request.headers["accept"][*] == "application/json") # ==> true
+any(http.request.headers["accept"][*] == "text/plain")       # ==> false
 ```
 
 The following example is based on the [http.request.uri.args](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/) field with a data type of `Map<Array<String>>`, where array elements are of `String` data type.
 
 If an HTTP request included three `filter` URI arguments `waf`, `botm`, and `cdn`, the following expressions would evaluate to the indicated values:
 
-```
-# Example request URL:# https://example.com/?filter=waf&filter=botm&filter=cdn
+```txt
+# Example request URL:
+# https://example.com/?filter=waf&filter=botm&filter=cdn
+
+
 http.request.uri.args["filter"]          # ==> ["waf", "botm", "cdn"]
+
+
 len(http.request.uri.args["filter"][1])  # ==> 4
-# Check if the length of all 'filter' values is always 3 or 4all(len(http.request.uri.args["filter"][*])[*] in {3 4})      # ==> true
-# Check if the length of 'filter' values (if any) is never 3 or 4all(not len(http.request.uri.args["filter"][*])[*] in {3 4})  # ==> false
-# Check if the http.request.uri.args map contains a "filter" keylen(http.request.uri.args["filter"]) >= 0     # ==> true
-# Check if the http.request.uri.args map does not contain an "order" keynot len(http.request.uri.args["order"]) >= 0  # ==> true
+
+
+# Check if the length of all 'filter' values is always 3 or 4
+all(len(http.request.uri.args["filter"][*])[*] in {3 4})      # ==> true
+
+
+# Check if the length of 'filter' values (if any) is never 3 or 4
+all(not len(http.request.uri.args["filter"][*])[*] in {3 4})  # ==> false
+
+
+# Check if the http.request.uri.args map contains a "filter" key
+len(http.request.uri.args["filter"]) >= 0     # ==> true
+
+
+# Check if the http.request.uri.args map does not contain an "order" key
+not len(http.request.uri.args["order"]) >= 0  # ==> true
 ```
 
 For more information on `any()`, `all()`, `len()`, and other available functions, refer to [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
@@ -217,7 +257,7 @@ To refer to a list in a rule expression, use `$<list_name>` and specify the `in`
 
 The following example expression filters requests from IP addresses that are in an [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) named `office_network`:
 
-```
+```sql
 (ip.src in $office_network)
 ```
 
@@ -238,11 +278,15 @@ Additionally, for some data types you can use ranges as elements:
   * CIDR ranges (for example, `192.0.2.0/24` or `2001:0db8::/32`).
 An inline list can contain explicit IP ranges, CIDR ranges, and individual IP addresses.
 
-Examples
+**Examples**
 
-```
+```sql
 http.host in {"example.com" "example.net"}
+
+
 ip.src in {198.51.100.1 198.51.100.3..198.51.100.7 192.0.2.0/24 2001:0db8::/32}
+
+
 tcp.dstport in {8000..8009 8080..8089}
 ```
 

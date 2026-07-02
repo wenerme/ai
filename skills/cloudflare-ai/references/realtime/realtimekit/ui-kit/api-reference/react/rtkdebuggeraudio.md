@@ -26,16 +26,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDebuggerAudio } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkDebuggerAudio />;}
+
+
+function MyComponent() {
+  return <RtkDebuggerAudio />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDebuggerAudio } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkDebuggerAudio      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDebuggerAudio
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

@@ -20,8 +20,9 @@ Requires a Cloudflare Enterprise plan with [malicious uploads detection](https:/
 
 Example usage:
 
-```
-# Check if requests to a specific endpoint include any malicious content objectscf.waf.content_scan.has_malicious_obj and http.request.uri.path eq "/upload"
+```txt
+# Check if requests to a specific endpoint include any malicious content objects
+cf.waf.content_scan.has_malicious_obj and http.request.uri.path eq "/upload"
 ```
 
 Categories:

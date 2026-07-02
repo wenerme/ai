@@ -37,20 +37,29 @@ A navigation bar with a title label and a close or back button. Used for modal s
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let navBar = RtkNavigationBar(title: "Participants")view.addSubview(navBar)
+
+
+let navBar = RtkNavigationBar(title: "Participants")
+view.addSubview(navBar)
 ```
 
 ### With back button handler
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let navBar = RtkNavigationBar(title: "Chat")navBar.setBackButtonClick {    self.dismiss(animated: true)}view.addSubview(navBar)
+
+
+let navBar = RtkNavigationBar(title: "Chat")
+navBar.setBackButtonClick {
+    self.dismiss(animated: true)
+}
+view.addSubview(navBar)
 ```
 
 ```json

@@ -72,22 +72,50 @@ Most resource types only require `resource_type` and `resource_id`. Two resource
 
 Include the `worker_id` field:
 
-Terminal window
+```bash
+# GET
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker_version&resource_id=$VERSION_ID&worker_id=$WORKER_ID" \
+  -H "Authorization: Bearer $API_TOKEN"
 
-```
-# GETcurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker_version&resource_id=$VERSION_ID&worker_id=$WORKER_ID" \  -H "Authorization: Bearer $API_TOKEN"
-# PUTcurl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker_version",    "resource_id": "'"$VERSION_ID"'",    "worker_id": "'"$WORKER_ID"'",    "tags": {      "version": "1.2.3",      "environment": "staging"    }  }'
+
+# PUT
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "resource_type": "worker_version",
+    "resource_id": "'"$VERSION_ID"'",
+    "worker_id": "'"$WORKER_ID"'",
+    "tags": {
+      "version": "1.2.3",
+      "environment": "staging"
+    }
+  }'
 ```
 
 ### `access_application_policy`
 
 Include the `access_application_id` field:
 
-Terminal window
+```bash
+# GET
+curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags?resource_type=access_application_policy&resource_id=$POLICY_ID&access_application_id=$APP_ID" \
+  -H "Authorization: Bearer $API_TOKEN"
 
-```
-# GETcurl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags?resource_type=access_application_policy&resource_id=$POLICY_ID&access_application_id=$APP_ID" \  -H "Authorization: Bearer $API_TOKEN"
-# PUTcurl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "access_application_policy",    "resource_id": "'"$POLICY_ID"'",    "access_application_id": "'"$APP_ID"'",    "tags": {      "sensitivity": "high",      "team": "security"    }  }'
+
+# PUT
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "resource_type": "access_application_policy",
+    "resource_id": "'"$POLICY_ID"'",
+    "access_application_id": "'"$APP_ID"'",
+    "tags": {
+      "sensitivity": "high",
+      "team": "security"
+    }
+  }'
 ```
 
 ```json

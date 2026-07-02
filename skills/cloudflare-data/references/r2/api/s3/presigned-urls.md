@@ -43,34 +43,104 @@ R2 supports two patterns for time-limited access. They overlap but have differen
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-10060)
-* [ Python ](#tab-panel-10061)
-* [ CLI ](#tab-panel-10062)
+* [ JavaScript ](#tab-panel-10139)
+* [ Python ](#tab-panel-10140)
+* [ CLI ](#tab-panel-10141)
 
-TypeScript
+**TypeScript**
 
+```ts
+import { S3Client, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+
+const S3 = new S3Client({
+  region: "auto", // Required by SDK but not used by R2
+  // Provide your Cloudflare account ID
+  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+  credentials: {
+    accessKeyId: '<ACCESS_KEY_ID>',
+    secretAccessKey: '<SECRET_ACCESS_KEY>',
+  },
+});
+
+
+// Generate presigned URL for reading (GET)
+const getUrl = await getSignedUrl(
+  S3,
+  new GetObjectCommand({ Bucket: "my-bucket", Key: "image.png" }),
+  { expiresIn: 3600 }, // Valid for 1 hour
+);
+// https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=...
+
+
+// Generate presigned URL for writing (PUT)
+// Specify ContentType to restrict uploads to a specific file type
+const putUrl = await getSignedUrl(
+  S3,
+  new PutObjectCommand({
+    Bucket: "my-bucket",
+    Key: "image.png",
+    ContentType: "image/png",
+  }),
+  { expiresIn: 3600 },
+);
 ```
-import { S3Client, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-const S3 = new S3Client({  region: "auto", // Required by SDK but not used by R2  // Provide your Cloudflare account ID  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  credentials: {    accessKeyId: '<ACCESS_KEY_ID>',    secretAccessKey: '<SECRET_ACCESS_KEY>',  },});
-// Generate presigned URL for reading (GET)const getUrl = await getSignedUrl(  S3,  new GetObjectCommand({ Bucket: "my-bucket", Key: "image.png" }),  { expiresIn: 3600 }, // Valid for 1 hour);// https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=...
-// Generate presigned URL for writing (PUT)// Specify ContentType to restrict uploads to a specific file typeconst putUrl = await getSignedUrl(  S3,  new PutObjectCommand({    Bucket: "my-bucket",    Key: "image.png",    ContentType: "image/png",  }),  { expiresIn: 3600 },);
-```
 
-Python
+**Python**
 
-```
+```python
 import boto3
-s3 = boto3.client(    service_name="s3",    # Provide your Cloudflare account ID    endpoint_url='https://<ACCOUNT_ID>.r2.cloudflarestorage.com',    # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)    aws_access_key_id='<ACCESS_KEY_ID>',    aws_secret_access_key='<SECRET_ACCESS_KEY>',    region_name="auto", # Required by SDK but not used by R2)
-# Generate presigned URL for reading (GET)get_url = s3.generate_presigned_url(  'get_object',  Params={'Bucket': 'my-bucket', 'Key': 'image.png'},  ExpiresIn=3600  # Valid for 1 hour)# https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=...
-# Generate presigned URL for writing (PUT)# Specify ContentType to restrict uploads to a specific file typeput_url = s3.generate_presigned_url(  'put_object',  Params={    'Bucket': 'my-bucket',    'Key': 'image.png',    'ContentType': 'image/png'  },  ExpiresIn=3600)
+
+
+s3 = boto3.client(
+    service_name="s3",
+    # Provide your Cloudflare account ID
+    endpoint_url='https://<ACCOUNT_ID>.r2.cloudflarestorage.com',
+    # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+    aws_access_key_id='<ACCESS_KEY_ID>',
+    aws_secret_access_key='<SECRET_ACCESS_KEY>',
+    region_name="auto", # Required by SDK but not used by R2
+)
+
+
+# Generate presigned URL for reading (GET)
+get_url = s3.generate_presigned_url(
+  'get_object',
+  Params={'Bucket': 'my-bucket', 'Key': 'image.png'},
+  ExpiresIn=3600  # Valid for 1 hour
+)
+# https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=...
+
+
+# Generate presigned URL for writing (PUT)
+# Specify ContentType to restrict uploads to a specific file type
+put_url = s3.generate_presigned_url(
+  'put_object',
+  Params={
+    'Bucket': 'my-bucket',
+    'Key': 'image.png',
+    'ContentType': 'image/png'
+  },
+  ExpiresIn=3600
+)
 ```
 
-Terminal window
+```sh
+# Generate presigned URL for reading (GET)
+# The AWS CLI presign command defaults to GET operations
+aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
+  s3://my-bucket/image.png \
+  --expires-in 3600
 
-```
-# Generate presigned URL for reading (GET)# The AWS CLI presign command defaults to GET operationsaws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \  s3://my-bucket/image.png \  --expires-in 3600
-# Output:# https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...
-# Note: The AWS CLI presign command only supports GET operations.# For PUT operations, use one of the SDK examples above.
+
+# Output:
+# https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...
+
+
+# Note: The AWS CLI presign command only supports GET operations.
+# For PUT operations, use one of the SDK examples above.
 ```
 
 For complete examples and additional operations, refer to the SDK-specific documentation:
@@ -92,11 +162,14 @@ When generating presigned URLs, you can limit abuse and misuse by:
 
 Once generated, use a presigned URL like any HTTP endpoint. The signature is embedded in the URL, so no additional authentication headers are required.
 
-Terminal window
+```sh
+# Download using a GET presigned URL
+curl "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=..."
 
-```
-# Download using a GET presigned URLcurl "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=..."
-# Upload using a PUT presigned URLcurl -X PUT "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=..." \  --data-binary @image.png
+
+# Upload using a PUT presigned URL
+curl -X PUT "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/image.png?X-Amz-Algorithm=..." \
+  --data-binary @image.png
 ```
 
 You can also use presigned URLs directly in web browsers, mobile apps, or any HTTP client. The same presigned URL can be reused multiple times until it expires.
@@ -105,7 +178,7 @@ You can also use presigned URLs directly in web browsers, mobile apps, or any HT
 
 The following is an example of a presigned URL that was created using R2 API credentials and following the AWS Signature Version 4 signing process:
 
-```
+```plaintext
 https://my-bucket.123456789abcdef0123456789abcdef.r2.cloudflarestorage.com/photos/cat.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=CFEXAMPLEKEY12345%2F20251201%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20251201T180512Z&X-Amz-Expires=3600&X-Amz-Signature=8c3ac40fa6c83d64b4516e0c9e5fa94c998bb79131be9ddadf90cefc5ec31033&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject
 ```
 

@@ -18,8 +18,8 @@ The following sections describe how to configure Cloudflare Pages with Regional 
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that processing of a Pages project occurs only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-8123)
-* [ API ](#tab-panel-8124)
+* [ Dashboard ](#tab-panel-8404)
+* [ API ](#tab-panel-8405)
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
@@ -30,7 +30,7 @@ To configure Regional Services for hostnames [proxied](https://developers.cloudf
 6. Select **Save**.
 
 1. Use the [API POST](https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/domains/methods/create/) command to add a Custom Domain to a Pages project.
-2. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/get-started/#configure-regional-services-via-api) command on the Pages Custom Domain to create a `regional_hostnames` with a specific Region.
+2. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the Pages Custom Domain to create a `regional_hostnames` with a specific Region.
 
 Note
 
@@ -51,6 +51,6 @@ Page [Functions](https://developers.cloudflare.com/pages/functions/) are impleme
 Refer to the [Pages documentation](https://developers.cloudflare.com/pages) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/pages/#page","headline":"Pages · Cloudflare Data Localization Suite docs","description":"Configure Pages with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/pages/#page","headline":"Pages · Cloudflare Data Localization Suite docs","description":"Configure Pages with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/how-to/","name":"Configuration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/how-to/pages/","name":"Pages"}}]}
 ```
