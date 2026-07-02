@@ -1,5 +1,3 @@
-# Gemini deprecations
-
 <br />
 
 This page lists the known deprecation schedules for [stable (GA)](https://ai.google.dev/gemini-api/docs/models#stable) and [preview](https://ai.google.dev/gemini-api/docs/models#preview)
@@ -92,9 +90,11 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
+| `gemini-embedding-2` | April 22, 2026 | No shutdown date announced |   |
 | `gemini-embedding-001` | July 14, 2025 | July 14, 2026 | `gemini-embedding-2` |
 | `text-embedding-004` | April 9, 2024 | January 14, 2026 | `gemini-embedding-2` |
 | Preview models ||||
+| `embedding-2-preview` | March 10, 2026 | August 10, 2026 | `gemini-embedding-2` |
 | `embedding-001` | April 9, 2024 | October 30, 2025 | `gemini-embedding-2` |
 | `embedding-gecko-001` |   | October 30, 2025 | `gemini-embedding-2` |
 | `gemini-embedding-exp` |   | October 30, 2025 | `gemini-embedding-2` |

@@ -28,7 +28,7 @@ The Status column displays three statuses:
 
 You can configure notifications for upcoming CNI maintenance events using the Notifications feature in the Cloudflare dashboard. It is recommended to subscribe to two types of notifications to stay fully informed.
 
-**CNI Connection Maintenance Alert (beta):** This alert informs you about maintenance events (scheduled, updated, or canceled) that directly impact your CNI circuits used with the Cloudflare Virtual Network only.
+**CNI Connection Maintenance Alert:** This alert informs you about maintenance events (scheduled, updated, or canceled) that directly impact your CNI circuits used with the Cloudflare Virtual Network only.
 
 * You will receive warnings up to two weeks in advance for maintenance impacting your Magic Transit/WAN CNI connections.
 * You will be notified if the details of a scheduled maintenance change or if it is canceled.
@@ -42,7 +42,7 @@ You can configure notifications for upcoming CNI maintenance events using the No
 
 ## How to configure alerts
 
-### Enable CNI Connection Maintenance Alert (beta)
+### Enable CNI Connection Maintenance Alert
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
@@ -74,6 +74,6 @@ Now, configure the alert:
 8. Select **Create**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/#page","headline":"Monitoring and alerts · Cloudflare Network Interconnect docs","description":"Monitor CNI status and configure maintenance alerts","url":"https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/#page","headline":"Monitoring and alerts · Cloudflare Network Interconnect docs","description":"Monitor CNI status and configure maintenance alerts","url":"https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-interconnect/","name":"Network Interconnect"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-interconnect/monitoring-and-alerts/","name":"Monitoring and alerts"}}]}
 ```

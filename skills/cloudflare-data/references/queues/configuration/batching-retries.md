@@ -59,9 +59,9 @@ You can acknowledge individual messages within a batch by explicitly acknowledgi
 
 To explicitly acknowledge a message as delivered, call the `ack()` method on the message.
 
-* [  JavaScript ](#tab-panel-9986)
-* [  TypeScript ](#tab-panel-9987)
-* [  Python ](#tab-panel-9988)
+* [  JavaScript ](#tab-panel-10002)
+* [  TypeScript ](#tab-panel-10003)
+* [  Python ](#tab-panel-10004)
 
 **index.js**
 
@@ -107,9 +107,9 @@ class Default(WorkerEntrypoint):
 
 You can also call `retry()` to explicitly force a message to be redelivered in a subsequent batch. This is referred to as "negative acknowledgement". This can be particularly useful when you want to process the rest of the messages in that batch without throwing an error that would force the entire batch to be redelivered.
 
-* [  JavaScript ](#tab-panel-9989)
-* [  TypeScript ](#tab-panel-9990)
-* [  Python ](#tab-panel-9991)
+* [  JavaScript ](#tab-panel-10005)
+* [  TypeScript ](#tab-panel-10006)
+* [  Python ](#tab-panel-10007)
 
 **index.js**
 
@@ -190,9 +190,9 @@ Configuring delivery and retry delays via the `wrangler` CLI or when [developing
 
 To delay a message or batch of messages when sending to a queue, you can provide a `delaySeconds` parameter when sending a message.
 
-* [  JavaScript ](#tab-panel-9992)
-* [  TypeScript ](#tab-panel-9993)
-* [  Python ](#tab-panel-9994)
+* [  JavaScript ](#tab-panel-10008)
+* [  TypeScript ](#tab-panel-10009)
+* [  Python ](#tab-panel-10010)
 
 **index.js**
 
@@ -255,9 +255,9 @@ When [consuming messages from a queue](https://developers.cloudflare.com/queues/
 
 To delay an individual message within a batch:
 
-* [  JavaScript ](#tab-panel-9995)
-* [  TypeScript ](#tab-panel-9996)
-* [  Python ](#tab-panel-9997)
+* [  JavaScript ](#tab-panel-10011)
+* [  TypeScript ](#tab-panel-10012)
+* [  Python ](#tab-panel-10013)
 
 **index.js**
 
@@ -303,9 +303,9 @@ class Default(WorkerEntrypoint):
 
 To delay a batch of messages:
 
-* [  JavaScript ](#tab-panel-9998)
-* [  TypeScript ](#tab-panel-9999)
-* [  Python ](#tab-panel-10000)
+* [  JavaScript ](#tab-panel-10014)
+* [  TypeScript ](#tab-panel-10015)
+* [  Python ](#tab-panel-10016)
 
 **index.js**
 
@@ -361,8 +361,8 @@ npx wrangler@latest queues consumer http add $QUEUE-NAME --retry-delay-secs=60
 
 Delays can also be configured in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) with the `delivery_delay` setting for producers (when sending) and/or the `retry_delay` (when retrying) per-consumer:
 
-* [  wrangler.jsonc ](#tab-panel-9984)
-* [  wrangler.toml ](#tab-panel-9985)
+* [  wrangler.jsonc ](#tab-panel-10000)
+* [  wrangler.toml ](#tab-panel-10001)
 
 **JSONC**
 
@@ -420,9 +420,9 @@ Each message delivered to a consumer includes an `attempts` property that tracks
 
 For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential%5Fbackoff) for a message, you can create a helper function that calculates this for you:
 
-* [  JavaScript ](#tab-panel-10001)
-* [  TypeScript ](#tab-panel-10002)
-* [  Python ](#tab-panel-10003)
+* [  JavaScript ](#tab-panel-10017)
+* [  TypeScript ](#tab-panel-10018)
+* [  Python ](#tab-panel-10019)
 
 **index.js**
 
@@ -452,9 +452,9 @@ def calculate_exponential_backoff(attempts, base_delay_seconds):
 
 In your consumer, you then pass the value of `msg.attempts` and your desired delay factor as the argument to `delaySeconds` when calling `retry()` on an individual message:
 
-* [  JavaScript ](#tab-panel-10004)
-* [  TypeScript ](#tab-panel-10005)
-* [  Python ](#tab-panel-10006)
+* [  JavaScript ](#tab-panel-10020)
+* [  TypeScript ](#tab-panel-10021)
+* [  Python ](#tab-panel-10022)
 
 **index.js**
 

@@ -35,8 +35,8 @@ Authentication logs do not capture the user's actions during a self-hosted or Sa
 
 #### View Access authentication logs
 
-* [ Dashboard ](#tab-panel-7516)
-* [ API ](#tab-panel-7517)
+* [ Dashboard ](#tab-panel-7532)
+* [ API ](#tab-panel-7533)
 
 To view logs for identity-based authentication events:
 

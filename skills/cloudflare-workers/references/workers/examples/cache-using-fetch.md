@@ -20,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11964)
-* [  TypeScript ](#tab-panel-11965)
-* [  Hono ](#tab-panel-11966)
-* [  Python ](#tab-panel-11967)
-* [  Rust ](#tab-panel-11968)
+* [  JavaScript ](#tab-panel-11980)
+* [  TypeScript ](#tab-panel-11981)
+* [  Hono ](#tab-panel-11982)
+* [  Python ](#tab-panel-11983)
+* [  Rust ](#tab-panel-11984)
 
 **JavaScript**
 
@@ -251,9 +251,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-11969)
-* [  TypeScript ](#tab-panel-11970)
-* [  Hono ](#tab-panel-11971)
+* [  JavaScript ](#tab-panel-11985)
+* [  TypeScript ](#tab-panel-11986)
+* [  Hono ](#tab-panel-11987)
 
 **JavaScript**
 
@@ -342,6 +342,67 @@ export default app;
 
 Workers operating on behalf of different zones cannot affect each other's cache. You can only override cache keys when making requests within your own zone (in the above example `event.request.url` was the key stored), or requests to hosts that are not on Cloudflare. When making a request to another Cloudflare zone (for example, belonging to a different Cloudflare customer), that zone fully controls how its own content is cached within Cloudflare; you cannot override it.
 
+## Cache expected Vary responses
+
+Use `cf.vary` when an origin returns a `Vary` header and you want a Worker subrequest to cache expected variants. This setting applies only to the `fetch()` request where you set it.
+
+For Vary behavior details, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/). For the full request init object, refer to [cf.vary](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property).
+
+* [  JavaScript ](#tab-panel-11990)
+* [  TypeScript ](#tab-panel-11991)
+
+**src/index.js**
+
+```js
+export default {
+  async fetch(request) {
+    return fetch(request, {
+      cf: {
+        vary: {
+          default: { action: "bypass" },
+          headers: {
+            accept: {
+              action: "normalize",
+              media_types: ["text/html", "application/json"],
+            },
+            "accept-language": {
+              action: "normalize",
+              languages: ["en", "fr", "de"],
+            },
+          },
+        },
+      },
+    });
+  },
+};
+```
+
+**src/index.ts**
+
+```ts
+export default {
+  async fetch(request): Promise<Response> {
+    return fetch(request, {
+      cf: {
+        vary: {
+          default: { action: "bypass" },
+          headers: {
+            accept: {
+              action: "normalize",
+              media_types: ["text/html", "application/json"],
+            },
+            "accept-language": {
+              action: "normalize",
+              languages: ["en", "fr", "de"],
+            },
+          },
+        },
+      },
+    });
+  },
+} satisfies ExportedHandler;
+```
+
 ## Override based on origin response code
 
 **JavaScript**
@@ -362,8 +423,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-11972)
-* [  Service Worker ](#tab-panel-11973)
+* [  Module Worker ](#tab-panel-11988)
+* [  Service Worker ](#tab-panel-11989)
 
 **index.js**
 
@@ -612,6 +673,6 @@ fetch(request, { cache: 'no-cache'});
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/cache-using-fetch/","name":"Cache using fetch"}}]}
 ```

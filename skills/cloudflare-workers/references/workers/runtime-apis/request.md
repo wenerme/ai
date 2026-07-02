@@ -121,6 +121,9 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 * `cacheTtlByStatus` `{ [key: string]: number }` optional
 
   * This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time and override cache instructives sent by the origin. For example: `{ "200-299": 86400, "404": 1, "500-599": 0 }`. The value can be any integer, including zero and negative integers. A value of `0` indicates that the cache asset expires immediately. Any negative value instructs Cloudflare not to cache at all. This option applies to `GET` and `HEAD` request methods only.
+* `vary` ` RequestInitCfPropertiesVary ` optional
+
+  * Controls how Cloudflare caches origin responses with a `Vary` header for a single `fetch()` request. If both `cf.vary` and [Cache Rules Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) apply, `cf.vary` takes precedence for this subrequest.
 * `image` Object | null optional
 
   * Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
@@ -136,6 +139,74 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 * `webp` ` boolean ` optional
 
   * Enables or disables [WebP ↗](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
+
+#### The `cf.vary` property
+
+The `cf.vary` object controls how Cloudflare handles request headers named by the origin `Vary` response header for a single `fetch()` request. It uses the same `default` and `headers` shape as [Cache Rules Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary), and the same actions and normalization behavior as [Vary](https://developers.cloudflare.com/cache/concepts/vary/).
+
+If you omit `cf.vary`, Cloudflare uses other Vary behavior for the zone, including Cache Rules Vary if configured.
+
+The origin response must include a `Vary` header for this setting to affect the cache key. A response containing `Vary: *` always bypasses cache.
+
+The `cf.vary` object supports these keys:
+
+| Key     | Required | Description                                                                                    |
+| ------- | -------- | ---------------------------------------------------------------------------------------------- |
+| default | Yes      | Configuration for any header name in the origin Vary response that is not included in headers. |
+| headers | No       | A map of lowercase request header names to configuration objects.                              |
+
+If the `vary` object is present, `default` is required. An empty `vary` object is invalid. Invalid `cf.vary` configurations are ignored for that request.
+
+Each header configuration object, and the `default` object, must include an `action` key set to one of `normalize`, `passthrough`, or `bypass`. For guidance, refer to [Actions](https://developers.cloudflare.com/cache/concepts/vary/#actions).
+
+Additional parameters can be specified for certain header names:
+
+| Header          | Additional key | Description                                                                                                 |
+| --------------- | -------------- | ----------------------------------------------------------------------------------------------------------- |
+| accept          | media\_types   | MIME types to keep when normalizing the Accept header. Maximum 10 items and 255 characters per item.        |
+| accept-language | languages      | Languages to keep when normalizing the Accept-Language header. Maximum 20 items and 64 characters per item. |
+
+The `default` object and `headers` entries other than `accept` and `accept-language` support only `action`.
+
+For most deployments, set `default.action` to `bypass`, add `headers` entries for expected origin `Vary` headers, and use `normalize` for `accept` and `accept-language` unless your origin requires raw header values.
+
+The following limits and validation rules apply:
+
+* Header names in `headers` must be lowercase.
+* Header names can contain lowercase letters, numbers, underscores, and hyphens.
+* Header names cannot exceed 128 characters.
+* Header names beginning with `cf-` or `cf_` are not allowed.
+* Certain hop-by-hop, cache-control, or proxy-control headers are not allowed. Examples include `connection`, `content-length`, `cache-control`, `host`, `range`, `origin`, and `x-forwarded-for`.
+* `headers` can contain up to 50 entries.
+* `accept.media_types` can contain up to 10 entries.
+* `accept-language.languages` can contain up to 20 entries.
+* Values in `media_types` and `languages` must be non-empty printable ASCII strings.
+
+The following request init fragment normalizes `Accept` and `Accept-Language`, and bypasses cache for any other header in the origin `Vary` response:
+
+**Request init fragment**
+
+```json
+{
+  "cf": {
+    "vary": {
+      "default": {
+        "action": "bypass"
+      },
+      "headers": {
+        "accept": {
+          "action": "normalize",
+          "media_types": ["text/html", "application/json"]
+        },
+        "accept-language": {
+          "action": "normalize",
+          "languages": ["en", "fr", "de"]
+        }
+      }
+    }
+  }
+}
+```
 
 ---
 
@@ -169,8 +240,8 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
 
   * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:
 
-    * [  JavaScript ](#tab-panel-12382)
-    * [  TypeScript ](#tab-panel-12383)
+    * [  JavaScript ](#tab-panel-12400)
+    * [  TypeScript ](#tab-panel-12401)
 
 **index.js**
   ```js
@@ -461,6 +532,6 @@ Incoming `Request` objects passed to the [fetch() handler](https://developers.cl
 * Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request · Cloudflare Workers docs","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request · Cloudflare Workers docs","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/request/","name":"Request"}}]}
 ```
