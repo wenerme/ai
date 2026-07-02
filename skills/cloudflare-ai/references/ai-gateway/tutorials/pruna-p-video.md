@@ -28,8 +28,8 @@ This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/
 
 ## 2\. Create an AI Gateway
 
-* [ Dashboard ](#tab-panel-6646)
-* [ API ](#tab-panel-6647)
+* [ Dashboard ](#tab-panel-6886)
+* [ API ](#tab-panel-6887)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -55,14 +55,18 @@ To add authentication to your gateway, refer to [Authenticated Gateway](https://
 
 Replace the standard Replicate API base URL with the AI Gateway URL:
 
-```
-# Instead of:https://api.replicate.com/v1
-# Use:https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate
+```txt
+# Instead of:
+https://api.replicate.com/v1
+
+
+# Use:
+https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate
 ```
 
 For example, if your account ID is `abc123` and your gateway is `my-gateway`:
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/abc123/my-gateway/replicate
 ```
 
@@ -70,10 +74,22 @@ https://gateway.ai.cloudflare.com/v1/abc123/my-gateway/replicate
 
 P-video predictions generally complete within 30 seconds. Because this is under Replicate's 60-second synchronous limit, you can use the `Prefer: wait` header to send a request and get the result in a single call:
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \  --header "Authorization: Bearer {replicate_api_token}" \  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \  --header "Content-Type: application/json" \  --header "Prefer: wait" \  --data '{    "version": "prunaai/p-video",    "input": {      "prompt": "A cat walking through a field of flowers in slow motion",      "duration": 5,      "aspect_ratio": "16:9",      "resolution": "720p",      "fps": 24    }  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \
+  --header "Authorization: Bearer {replicate_api_token}" \
+  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \
+  --header "Content-Type: application/json" \
+  --header "Prefer: wait" \
+  --data '{
+    "version": "prunaai/p-video",
+    "input": {
+      "prompt": "A cat walking through a field of flowers in slow motion",
+      "duration": 5,
+      "aspect_ratio": "16:9",
+      "resolution": "720p",
+      "fps": 24
+    }
+  }'
 ```
 
 * `Authorization` — your Replicate API token (authenticates with Replicate).
@@ -88,24 +104,42 @@ When the prediction completes, the response includes the `output` field with a U
 
 If your request may exceed 60 seconds (for example, with longer durations or higher resolutions), use async mode instead. Send the request without the `Prefer: wait` header:
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \  --header "Authorization: Bearer {replicate_api_token}" \  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \  --header "Content-Type: application/json" \  --data '{    "version": "prunaai/p-video",    "input": {      "prompt": "A cat walking through a field of flowers in slow motion",      "duration": 5,      "aspect_ratio": "16:9",      "resolution": "720p",      "fps": 24    }  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \
+  --header "Authorization: Bearer {replicate_api_token}" \
+  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "version": "prunaai/p-video",
+    "input": {
+      "prompt": "A cat walking through a field of flowers in slow motion",
+      "duration": 5,
+      "aspect_ratio": "16:9",
+      "resolution": "720p",
+      "fps": 24
+    }
+  }'
 ```
 
 The response includes a prediction `id`:
 
-```
-{  "id": "xyz789...",  "status": "starting",  "urls": {    "get": "https://api.replicate.com/v1/predictions/xyz789...",    "cancel": "https://api.replicate.com/v1/predictions/xyz789.../cancel"  }}
+```json
+{
+  "id": "xyz789...",
+  "status": "starting",
+  "urls": {
+    "get": "https://api.replicate.com/v1/predictions/xyz789...",
+    "cancel": "https://api.replicate.com/v1/predictions/xyz789.../cancel"
+  }
+}
 ```
 
 Poll the prediction status until it completes:
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions/{prediction_id} \  --header "Authorization: Bearer {replicate_api_token}" \  --header "cf-aig-authorization: Bearer {cloudflare_api_token}"
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions/{prediction_id} \
+  --header "Authorization: Bearer {replicate_api_token}" \
+  --header "cf-aig-authorization: Bearer {cloudflare_api_token}"
 ```
 
 Keep polling until `status` is `succeeded` (or `failed`). When complete, the `output` field contains a URL to the generated video file.

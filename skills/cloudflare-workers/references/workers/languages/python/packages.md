@@ -16,24 +16,37 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get started, create a pyproject.toml file with the following contents:
 
-TOML
+**TOML**
 
-```
-[project]name = "YourProjectName"version = "0.1.0"description = "Add your description here"requires-python = ">=3.13"dependencies = [    "fastapi"]
-[dependency-groups]dev = [  "workers-py",  "workers-runtime-sdk"]
+```toml
+[project]
+name = "YourProjectName"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi"
+]
+
+
+[dependency-groups]
+dev = [
+  "workers-py",
+  "workers-runtime-sdk"
+]
 ```
 
 The above will allow your worker to depend on the [FastAPI ↗](https://fastapi.tiangolo.com/) package.
 
 To run the worker locally:
 
-```
+```plaintext
 uv run pywrangler dev
 ```
 
 To deploy your worker:
 
-```
+```plaintext
 uv run pywrangler deploy
 ```
 

@@ -57,7 +57,7 @@ Common SPF record syntax issues:
 
 **Correct format:**
 
-```
+```txt
 v=spf1 include:_spf.mx.cloudflare.net include:other-service.com ~all
 ```
 
@@ -65,15 +65,13 @@ v=spf1 include:_spf.mx.cloudflare.net include:other-service.com ~all
 
 Verify your SPF record is configured correctly:
 
-Terminal window
-
-```
+```sh
 dig TXT example.com +short | grep spf
 ```
 
 Expected result should include:
 
-```
+```txt
 "v=spf1 include:_spf.mx.cloudflare.net ~all"
 ```
 
@@ -103,16 +101,18 @@ If you need to rotate DKIM keys:
 
 Verify your DKIM records are configured correctly:
 
-Terminal window
+```sh
+# Check Email Sending DKIM
+dig TXT cf-bounce._domainkey.example.com +short
 
-```
-# Check Email Sending DKIMdig TXT cf-bounce._domainkey.example.com +short
-# Check Email Routing DKIMdig TXT cf2024-1._domainkey.example.com +short
+
+# Check Email Routing DKIM
+dig TXT cf2024-1._domainkey.example.com +short
 ```
 
 Expected result for either:
 
-```
+```txt
 "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
 ```
 
@@ -162,15 +162,13 @@ Email Service ensures proper alignment automatically.
 
 Verify your DMARC record:
 
-Terminal window
-
-```
+```sh
 dig TXT _dmarc.example.com +short
 ```
 
 Example result:
 
-```
+```txt
 "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com; ruf=mailto:dmarc@example.com; sp=quarantine"
 ```
 

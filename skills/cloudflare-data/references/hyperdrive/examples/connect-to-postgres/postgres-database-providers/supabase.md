@@ -20,9 +20,12 @@ This example shows you how to connect Hyperdrive to a [Supabase ↗](https://sup
 
 You can connect Hyperdrive to any existing Supabase database as the Postgres user which is set up during project creation. Alternatively, to create a new user for Hyperdrive, run these commands in the [SQL Editor ↗](https://supabase.com/dashboard/project/%5F/sql/new).
 
-```
+```sql
 CREATE ROLE hyperdrive_user LOGIN PASSWORD 'sufficientlyRandomPassword';
--- Here, you are granting it the postgres role. In practice, you want to create a role with lesser privileges.GRANT postgres to hyperdrive_user;
+
+
+-- Here, you are granting it the postgres role. In practice, you want to create a role with lesser privileges.
+GRANT postgres to hyperdrive_user;
 ```
 
 The database endpoint can be found in the [database settings page ↗](https://supabase.com/dashboard/project/%5F/settings/database).
@@ -44,14 +47,14 @@ To configure Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-```
+```txt
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 ```
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8903)
-* [ Wrangler CLI ](#tab-panel-8904)
+* [ Dashboard ](#tab-panel-9154)
+* [ Wrangler CLI ](#tab-panel-9155)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -64,22 +67,46 @@ To create a Hyperdrive configuration with the Cloudflare dashboard:
 To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/):
 
 1. Open your terminal and run the following command. Replace `<NAME_OF_HYPERDRIVE_CONFIG>` with a name for your Hyperdrive configuration and paste the connection string provided from your database host, or replace `user`, `password`, `HOSTNAME_OR_IP_ADDRESS`, `port`, and `database_name` placeholders with those specific to your database:
-Terminal window
-```
+```sh
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8901)
-  * [  wrangler.toml ](#tab-panel-8902)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-9152)
+  * [  wrangler.toml ](#tab-panel-9153)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hyperdrive-example",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
-```
-TOML
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+
+**TOML**
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "hyperdrive-example"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
 Note
@@ -134,33 +161,84 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8905)
-* [  wrangler.toml ](#tab-panel-8906)
+* [  wrangler.jsonc ](#tab-panel-9156)
+* [  wrangler.toml ](#tab-panel-9157)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 
-TypeScript
+**TypeScript**
 
-```
-// filepath: src/index.tsimport { Client } from "pg";
-export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a new client instance for each request. Hyperdrive maintains the    // underlying database connection pool, so creating a new client is fast.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
-    try {      // Connect to the database      await client.connect();
-      // Perform a simple query      const result = await client.query("SELECT * FROM pg_tables");
-      return Response.json({        success: true,        result: result.rows,      });    } catch (error: any) {      console.error("Database error:", error.message);
-      return new Response("Internal error occurred", { status: 500 });    }  },};
+```ts
+// filepath: src/index.ts
+import { Client } from "pg";
+
+
+export default {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
+    // Create a new client instance for each request. Hyperdrive maintains the
+    // underlying database connection pool, so creating a new client is fast.
+    const client = new Client({
+      connectionString: env.HYPERDRIVE.connectionString,
+    });
+
+
+    try {
+      // Connect to the database
+      await client.connect();
+
+
+      // Perform a simple query
+      const result = await client.query("SELECT * FROM pg_tables");
+
+
+      return Response.json({
+        success: true,
+        result: result.rows,
+      });
+    } catch (error: any) {
+      console.error("Database error:", error.message);
+
+
+      return new Response("Internal error occurred", { status: 500 });
+    }
+  },
+};
 ```
 
 Note

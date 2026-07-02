@@ -90,21 +90,40 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-11926)
-* [  wrangler.toml ](#tab-panel-11927)
+* [  wrangler.jsonc ](#tab-panel-12181)
+* [  wrangler.toml ](#tab-panel-12182)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+
+
+  "r2_buckets": [
+    {
+      "bucket_name": "screenshots-bucket",
+      "binding": "screenshots_bucket",
+      "remote": true,
+    },
+  ],
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",
-  "r2_buckets": [    {      "bucket_name": "screenshots-bucket",      "binding": "screenshots_bucket",      "remote": true,    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-25"
-[[r2_buckets]]bucket_name = "screenshots-bucket"binding = "screenshots_bucket"remote = true
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[r2_buckets]]
+bucket_name = "screenshots-bucket"
+binding = "screenshots_bucket"
+remote = true
 ```
 
 When remote bindings are configured, your Worker still **executes locally**, only the underlying resources your bindings connect to change. For all bindings marked with `remote: true`, Miniflare will route its operations (such as `env.MY_KV.put()`) to the deployed resource. All other bindings not explicitly configured with `remote: true` continue to use their default local simulations.
@@ -115,22 +134,57 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-11938)
-* [  wrangler.toml ](#tab-panel-11939)
+* [  wrangler.jsonc ](#tab-panel-12193)
+* [  wrangler.toml ](#tab-panel-12194)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+
+
+  "env": {
+    "production": {
+      "r2_buckets": [
+        {
+          "bucket_name": "screenshots-bucket",
+          "binding": "screenshots_bucket",
+        },
+      ],
+    },
+    "staging": {
+      "r2_buckets": [
+        {
+          "bucket_name": "preview-screenshots-bucket",
+          "binding": "screenshots_bucket",
+          "remote": true,
+        },
+      ],
+    },
+  },
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",
-  "env": {    "production": {      "r2_buckets": [        {          "bucket_name": "screenshots-bucket",          "binding": "screenshots_bucket",        },      ],    },    "staging": {      "r2_buckets": [        {          "bucket_name": "preview-screenshots-bucket",          "binding": "screenshots_bucket",          "remote": true,        },      ],    },  },}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-25"
-[[env.production.r2_buckets]]bucket_name = "screenshots-bucket"binding = "screenshots_bucket"
-[[env.staging.r2_buckets]]bucket_name = "preview-screenshots-bucket"binding = "screenshots_bucket"remote = true
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[env.production.r2_buckets]]
+bucket_name = "screenshots-bucket"
+binding = "screenshots_bucket"
+
+
+[[env.staging.r2_buckets]]
+bucket_name = "preview-screenshots-bucket"
+binding = "screenshots_bucket"
+remote = true
 ```
 
 Running `wrangler dev -e staging` (or `CLOUDFLARE_ENV=staging vite dev`) with the above configuration means that:
@@ -148,95 +202,138 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-11924)
-* [  wrangler.toml ](#tab-panel-11925)
+* [  wrangler.jsonc ](#tab-panel-12179)
+* [  wrangler.toml ](#tab-panel-12180)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "browser": {
+    "binding": "MY_BROWSER",
+    "remote": true
+  },
+}
 ```
-{  "browser": {    "binding": "MY_BROWSER",    "remote": true  },}
-```
 
-TOML
+**TOML**
 
-```
-[browser]binding = "MY_BROWSER"remote = true
+```toml
+[browser]
+binding = "MY_BROWSER"
+remote = true
 ```
 
 #### [Workers AI](https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai):
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-11928)
-* [  wrangler.toml ](#tab-panel-11929)
+* [  wrangler.jsonc ](#tab-panel-12183)
+* [  wrangler.toml ](#tab-panel-12184)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "ai": {
+    "binding": "AI",
+    "remote": true
+  },
+}
 ```
-{  "ai": {    "binding": "AI",    "remote": true  },}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI"remote = true
+```toml
+[ai]
+binding = "AI"
+remote = true
 ```
 
 #### [Vectorize](https://developers.cloudflare.com/workers/wrangler/configuration/#vectorize-indexes):
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-11930)
-* [  wrangler.toml ](#tab-panel-11931)
+* [  wrangler.jsonc ](#tab-panel-12185)
+* [  wrangler.toml ](#tab-panel-12186)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vectorize": [
+    {
+      "binding": "MY_VECTORIZE_INDEX",
+      "index_name": "my-prod-index",
+      "remote": true
+    }
+  ],
+}
 ```
-{  "vectorize": [    {      "binding": "MY_VECTORIZE_INDEX",      "index_name": "my-prod-index",      "remote": true    }  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[vectorize]]binding = "MY_VECTORIZE_INDEX"index_name = "my-prod-index"remote = true
+```toml
+[[vectorize]]
+binding = "MY_VECTORIZE_INDEX"
+index_name = "my-prod-index"
+remote = true
 ```
 
 #### [mTLS](https://developers.cloudflare.com/workers/wrangler/configuration/#mtls-certificates):
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-11934)
-* [  wrangler.toml ](#tab-panel-11935)
+* [  wrangler.jsonc ](#tab-panel-12189)
+* [  wrangler.toml ](#tab-panel-12190)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "mtls_certificates": [
+    {
+      "binding": "MY_CLIENT_CERT_FETCHER",
+      "certificate_id": "<YOUR_UPLOADED_CERT_ID>",
+      "remote": true
+      }
+  ]
+}
 ```
-{  "mtls_certificates": [    {      "binding": "MY_CLIENT_CERT_FETCHER",      "certificate_id": "<YOUR_UPLOADED_CERT_ID>",      "remote": true      }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[mtls_certificates]]binding = "MY_CLIENT_CERT_FETCHER"certificate_id = "<YOUR_UPLOADED_CERT_ID>"remote = true
+```toml
+[[mtls_certificates]]
+binding = "MY_CLIENT_CERT_FETCHER"
+certificate_id = "<YOUR_UPLOADED_CERT_ID>"
+remote = true
 ```
 
 #### [Images](https://developers.cloudflare.com/workers/wrangler/configuration/#images):
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/binding/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-11932)
-* [  wrangler.toml ](#tab-panel-11933)
+* [  wrangler.jsonc ](#tab-panel-12187)
+* [  wrangler.toml ](#tab-panel-12188)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "images": {
+    "binding": "IMAGES" ,
+    "remote": true
+  }
+}
 ```
-{  "images": {    "binding": "IMAGES" ,    "remote": true  }}
-```
 
-TOML
+**TOML**
 
-```
-[images]binding = "IMAGES"remote = true
+```toml
+[images]
+binding = "IMAGES"
+remote = true
 ```
 
 Note
@@ -249,19 +346,30 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-11936)
-* [  wrangler.toml ](#tab-panel-11937)
+* [  wrangler.jsonc ](#tab-panel-12191)
+* [  wrangler.toml ](#tab-panel-12192)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "dispatch_namespaces": [
+    {
+      "binding": "DISPATCH_NAMESPACE",
+      "namespace": "testing",
+      "remote":true
+    }
+  ]
+}
 ```
-{  "dispatch_namespaces": [    {      "binding": "DISPATCH_NAMESPACE",      "namespace": "testing",      "remote":true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[dispatch_namespaces]]binding = "DISPATCH_NAMESPACE"namespace = "testing"remote = true
+```toml
+[[dispatch_namespaces]]
+binding = "DISPATCH_NAMESPACE"
+namespace = "testing"
+remote = true
 ```
 
 This allows you to run your [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) locally, while connecting it to your remote dispatch namespace binding. This allows you to test changes to your core dispatching logic against real, deployed [user Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers).
@@ -326,9 +434,9 @@ Warning
 Do not create a _separate_ Access application scoped only to the Worker's hostname. Doing so has been observed to block requests even when the existing wildcard application is left in place — refer to [opennextjs-cloudflare#1171 ↗](https://github.com/opennextjs/opennextjs-cloudflare/issues/1171). Attach the Service Auth policy to the existing application that already protects the hostname.
 3. **Expose the credentials to Wrangler.**
 Set the `CLOUDFLARE_ACCESS_CLIENT_ID` and `CLOUDFLARE_ACCESS_CLIENT_SECRET` [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/) in the environment that runs Wrangler:
-Terminal window
-```
-export CLOUDFLARE_ACCESS_CLIENT_ID=<CLIENT_ID>export CLOUDFLARE_ACCESS_CLIENT_SECRET=<CLIENT_SECRET>
+```sh
+export CLOUDFLARE_ACCESS_CLIENT_ID=<CLIENT_ID>
+export CLOUDFLARE_ACCESS_CLIENT_SECRET=<CLIENT_SECRET>
 ```
 In CI, store the values as secrets and expose them as environment variables to the step that runs Wrangler.
 
@@ -385,33 +493,119 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-11940)
-* [  TypeScript ](#tab-panel-11941)
+* [  JavaScript ](#tab-panel-12195)
+* [  TypeScript ](#tab-panel-12196)
 
-JavaScript
+**JavaScript**
 
-```
-import { Miniflare, MiniflareOptions } from "miniflare";import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
+```js
+import { Miniflare, MiniflareOptions } from "miniflare";
+import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
+
+
 let mf;
+
+
 let remoteProxySessionDetails = null;
-async function startOrUpdateDevSession() {  remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(    {      bindings: {        MY_KV: {          type: "kv_namespace",          id: "kv-id",          remote: true,        },      },    },    remoteProxySessionDetails,  );
-  const miniflareOptions = {    scriptPath: "./worker.js",    kvNamespaces: {      MY_KV: {        id: "kv-id",        remoteProxyConnectionString:          remoteProxySessionDetails?.session.remoteProxyConnectionString,      },    },  };
-  if (!mf) {    mf = new Miniflare(miniflareOptions);  } else {    mf.setOptions(miniflareOptions);  }}
+
+
+async function startOrUpdateDevSession() {
+  remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(
+    {
+      bindings: {
+        MY_KV: {
+          type: "kv_namespace",
+          id: "kv-id",
+          remote: true,
+        },
+      },
+    },
+    remoteProxySessionDetails,
+  );
+
+
+  const miniflareOptions = {
+    scriptPath: "./worker.js",
+    kvNamespaces: {
+      MY_KV: {
+        id: "kv-id",
+        remoteProxyConnectionString:
+          remoteProxySessionDetails?.session.remoteProxyConnectionString,
+      },
+    },
+  };
+
+
+  if (!mf) {
+    mf = new Miniflare(miniflareOptions);
+  } else {
+    mf.setOptions(miniflareOptions);
+  }
+}
+
+
 // ... tool logic that invokes `startOrUpdateDevSession()` ...
-// ... once the dev session is no longer needed run// `remoteProxySessionDetails?.session.dispose()`
+
+
+// ... once the dev session is no longer needed run
+// `remoteProxySessionDetails?.session.dispose()`
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Miniflare, MiniflareOptions } from "miniflare";import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
+```ts
+import { Miniflare, MiniflareOptions } from "miniflare";
+import { maybeStartOrUpdateRemoteProxySession } from "wrangler";
+
+
 let mf: Miniflare | null;
-let remoteProxySessionDetails: Awaited<  ReturnType<typeof maybeStartOrUpdateRemoteProxySession>> | null = null;
-async function startOrUpdateDevSession() {  remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(    {      bindings: {        MY_KV: {          type: "kv_namespace",          id: "kv-id",          remote: true,        },      },    },    remoteProxySessionDetails,  );
-  const miniflareOptions: MiniflareOptions = {    scriptPath: "./worker.js",    kvNamespaces: {      MY_KV: {        id: "kv-id",        remoteProxyConnectionString:          remoteProxySessionDetails?.session.remoteProxyConnectionString,      },    },  };
-  if (!mf) {    mf = new Miniflare(miniflareOptions);  } else {    mf.setOptions(miniflareOptions);  }}
+
+
+let remoteProxySessionDetails: Awaited<
+  ReturnType<typeof maybeStartOrUpdateRemoteProxySession>
+> | null = null;
+
+
+async function startOrUpdateDevSession() {
+  remoteProxySessionDetails = await maybeStartOrUpdateRemoteProxySession(
+    {
+      bindings: {
+        MY_KV: {
+          type: "kv_namespace",
+          id: "kv-id",
+          remote: true,
+        },
+      },
+    },
+    remoteProxySessionDetails,
+  );
+
+
+  const miniflareOptions: MiniflareOptions = {
+    scriptPath: "./worker.js",
+    kvNamespaces: {
+      MY_KV: {
+        id: "kv-id",
+        remoteProxyConnectionString:
+          remoteProxySessionDetails?.session.remoteProxyConnectionString,
+      },
+    },
+  };
+
+
+  if (!mf) {
+    mf = new Miniflare(miniflareOptions);
+  } else {
+    mf.setOptions(miniflareOptions);
+  }
+}
+
+
 // ... tool logic that invokes `startOrUpdateDevSession()` ...
-// ... once the dev session is no longer needed run// `remoteProxySessionDetails?.session.dispose()`
+
+
+// ... once the dev session is no longer needed run
+// `remoteProxySessionDetails?.session.dispose()`
 ```
 
 ## `wrangler dev --remote` (Legacy)

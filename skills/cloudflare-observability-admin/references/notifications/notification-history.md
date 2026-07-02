@@ -18,16 +18,17 @@ Notification History is a log of notifications that have been sent to your accou
 
 Currently, customers can access Notification History [via the Cloudflare API](https://developers.cloudflare.com/api/resources/alerting/subresources/history/methods/list/). Using `GET`, customers can retrieve a list of history records for notifications sent to an account. The records are displayed for the last 30 or 90 days, based on the type of plan.
 
-Syntax
+**Syntax**
 
-```
+```txt
 GET accounts/{account_id}/alerting/v3/history
 ```
 
-Example
+**Example**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/alerting/v3/history?page=1&per_page=25" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/alerting/v3/history?page=1&per_page=25" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Availability

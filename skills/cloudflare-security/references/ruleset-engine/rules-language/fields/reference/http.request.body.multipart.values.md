@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 ["alice_doe", <binary_content_of_file>]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart.values[*] == "alice_doe")
 ```
 

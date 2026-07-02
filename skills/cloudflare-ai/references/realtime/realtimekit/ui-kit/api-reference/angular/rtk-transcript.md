@@ -25,14 +25,19 @@ A component which shows a transcript. You need to remove the element after you r
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-transcript></rtk-transcript>
+```html
+<!-- component.html -->
+<rtk-transcript></rtk-transcript>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-transcript [t]="rtki18n" transcript="example"></rtk-transcript>
+```html
+<!-- component.html -->
+<rtk-transcript
+ [t]="rtki18n"
+ transcript="example">
+</rtk-transcript>
 ```
 
 ```json

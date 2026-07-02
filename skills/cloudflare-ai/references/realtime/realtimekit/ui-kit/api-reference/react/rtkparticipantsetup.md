@@ -30,16 +30,35 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantSetup } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipantSetup />;}
+
+
+function MyComponent() {
+  return <RtkParticipantSetup />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantSetup } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipantSetup      isPreview={true}      nameTagPosition={| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'}      participant={participant}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantSetup
+      isPreview={true}
+      nameTagPosition={| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'}
+      participant={participant}
+    />
+  );
+}
 ```
 
 ```json

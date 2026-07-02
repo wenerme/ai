@@ -42,7 +42,7 @@ To upload custom (modern) certificates to your staging environment:
 
 Test your custom (modern) certificate by sending `curl` requests to the IP addresses listed on the [**Staging Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/staging-certificates) page:
 
-```
+```txt
 curl --resolve <HOSTNAME>:<PORT>:<STAGING_IP> https://<HOSTNAME> -iv
 ```
 

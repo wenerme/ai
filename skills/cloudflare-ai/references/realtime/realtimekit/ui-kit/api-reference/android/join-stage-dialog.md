@@ -27,10 +27,12 @@ A confirmation dialog screen shown when the user's request to join stage is appr
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkJoinStage = RtkJoinStageDialog(requireContext())rtkJoinStage.show()rtkJoinStage.activate(meeting)
+```kotlin
+val rtkJoinStage = RtkJoinStageDialog(requireContext())
+rtkJoinStage.show()
+rtkJoinStage.activate(meeting)
 ```
 
 ```json

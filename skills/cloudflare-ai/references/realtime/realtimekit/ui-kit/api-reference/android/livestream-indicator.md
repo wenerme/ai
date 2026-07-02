@@ -24,16 +24,20 @@ A visual indicator that shows when a livestream is active.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkLivestreamIndicator    android:id="@+id/rtk_livestream_indicator"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkLivestreamIndicator
+    android:id="@+id/rtk_livestream_indicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val indicator = findViewById<RtkLivestreamIndicator>(R.id.rtk_livestream_indicator)indicator.refresh(meeting)
+```kotlin
+val indicator = findViewById<RtkLivestreamIndicator>(R.id.rtk_livestream_indicator)
+indicator.refresh(meeting)
 ```
 
 ```json

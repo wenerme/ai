@@ -28,16 +28,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAudioGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkAudioGrid />;}
+
+
+function MyComponent() {
+  return <RtkAudioGrid />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAudioGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkAudioGrid      config={defaultUiConfig}      hideSelf={true}      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAudioGrid
+      config={defaultUiConfig}
+      hideSelf={true}
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

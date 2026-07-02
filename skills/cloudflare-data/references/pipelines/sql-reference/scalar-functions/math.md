@@ -18,7 +18,7 @@ _Cloudflare Pipelines scalar function implementations are based on [Apache DataF
 
 Returns the absolute value of a number.
 
-```
+```plaintext
 abs(numeric_expression)
 ```
 
@@ -30,7 +30,7 @@ abs(numeric_expression)
 
 Returns the arc cosine or inverse cosine of a number.
 
-```
+```plaintext
 acos(numeric_expression)
 ```
 
@@ -42,7 +42,7 @@ acos(numeric_expression)
 
 Returns the area hyperbolic cosine or inverse hyperbolic cosine of a number.
 
-```
+```plaintext
 acosh(numeric_expression)
 ```
 
@@ -54,7 +54,7 @@ acosh(numeric_expression)
 
 Returns the arc sine or inverse sine of a number.
 
-```
+```plaintext
 asin(numeric_expression)
 ```
 
@@ -66,7 +66,7 @@ asin(numeric_expression)
 
 Returns the area hyperbolic sine or inverse hyperbolic sine of a number.
 
-```
+```plaintext
 asinh(numeric_expression)
 ```
 
@@ -78,7 +78,7 @@ asinh(numeric_expression)
 
 Returns the arc tangent or inverse tangent of a number.
 
-```
+```plaintext
 atan(numeric_expression)
 ```
 
@@ -90,7 +90,7 @@ atan(numeric_expression)
 
 Returns the area hyperbolic tangent or inverse hyperbolic tangent of a number.
 
-```
+```plaintext
 atanh(numeric_expression)
 ```
 
@@ -102,7 +102,7 @@ atanh(numeric_expression)
 
 Returns the arc tangent or inverse tangent of `expression_y / expression_x`.
 
-```
+```plaintext
 atan2(expression_y, expression_x)
 ```
 
@@ -115,7 +115,7 @@ atan2(expression_y, expression_x)
 
 Returns the cube root of a number.
 
-```
+```plaintext
 cbrt(numeric_expression)
 ```
 
@@ -127,7 +127,7 @@ cbrt(numeric_expression)
 
 Returns the nearest integer greater than or equal to a number.
 
-```
+```plaintext
 ceil(numeric_expression)
 ```
 
@@ -139,7 +139,7 @@ ceil(numeric_expression)
 
 Returns the cosine of a number.
 
-```
+```plaintext
 cos(numeric_expression)
 ```
 
@@ -151,7 +151,7 @@ cos(numeric_expression)
 
 Returns the hyperbolic cosine of a number.
 
-```
+```plaintext
 cosh(numeric_expression)
 ```
 
@@ -163,7 +163,7 @@ cosh(numeric_expression)
 
 Converts radians to degrees.
 
-```
+```plaintext
 degrees(numeric_expression)
 ```
 
@@ -175,7 +175,7 @@ degrees(numeric_expression)
 
 Returns the base-e exponential of a number.
 
-```
+```plaintext
 exp(numeric_expression)
 ```
 
@@ -187,7 +187,7 @@ exp(numeric_expression)
 
 Factorial. Returns 1 if value is less than 2.
 
-```
+```plaintext
 factorial(numeric_expression)
 ```
 
@@ -199,7 +199,7 @@ factorial(numeric_expression)
 
 Returns the nearest integer less than or equal to a number.
 
-```
+```plaintext
 floor(numeric_expression)
 ```
 
@@ -211,7 +211,7 @@ floor(numeric_expression)
 
 Returns the greatest common divisor of `expression_x` and `expression_y`. Returns 0 if both inputs are zero.
 
-```
+```plaintext
 gcd(expression_x, expression_y)
 ```
 
@@ -224,7 +224,7 @@ gcd(expression_x, expression_y)
 
 Returns true if a given number is +NaN or -NaN otherwise returns false.
 
-```
+```plaintext
 isnan(numeric_expression)
 ```
 
@@ -236,7 +236,7 @@ isnan(numeric_expression)
 
 Returns true if a given number is +0.0 or -0.0 otherwise returns false.
 
-```
+```plaintext
 iszero(numeric_expression)
 ```
 
@@ -248,7 +248,7 @@ iszero(numeric_expression)
 
 Returns the least common multiple of `expression_x` and `expression_y`. Returns 0 if either input is zero.
 
-```
+```plaintext
 lcm(expression_x, expression_y)
 ```
 
@@ -261,7 +261,7 @@ lcm(expression_x, expression_y)
 
 Returns the natural logarithm of a number.
 
-```
+```plaintext
 ln(numeric_expression)
 ```
 
@@ -273,8 +273,9 @@ ln(numeric_expression)
 
 Returns the base-x logarithm of a number. Can either provide a specified base, or if omitted then takes the base-10 of a number.
 
-```
-log(base, numeric_expression)log(numeric_expression)
+```plaintext
+log(base, numeric_expression)
+log(numeric_expression)
 ```
 
 **Arguments**
@@ -286,7 +287,7 @@ log(base, numeric_expression)log(numeric_expression)
 
 Returns the base-10 logarithm of a number.
 
-```
+```plaintext
 log10(numeric_expression)
 ```
 
@@ -298,7 +299,7 @@ log10(numeric_expression)
 
 Returns the base-2 logarithm of a number.
 
-```
+```plaintext
 log2(numeric_expression)
 ```
 
@@ -310,7 +311,7 @@ log2(numeric_expression)
 
 Returns the first argument if it's not _NaN_. Returns the second argument otherwise.
 
-```
+```plaintext
 nanvl(expression_x, expression_y)
 ```
 
@@ -323,7 +324,7 @@ nanvl(expression_x, expression_y)
 
 Returns an approximate value of π.
 
-```
+```plaintext
 pi()
 ```
 
@@ -331,7 +332,7 @@ pi()
 
 Returns a base expression raised to the power of an exponent.
 
-```
+```plaintext
 power(base, exponent)
 ```
 
@@ -352,7 +353,7 @@ _Alias of [power](#power)._
 
 Converts degrees to radians.
 
-```
+```plaintext
 radians(numeric_expression)
 ```
 
@@ -364,7 +365,7 @@ radians(numeric_expression)
 
 Returns a random float value in the range \[0, 1). The random seed is unique to each row.
 
-```
+```plaintext
 random()
 ```
 
@@ -372,7 +373,7 @@ random()
 
 Rounds a number to the nearest integer.
 
-```
+```plaintext
 round(numeric_expression[, decimal_places])
 ```
 
@@ -385,7 +386,7 @@ round(numeric_expression[, decimal_places])
 
 Returns the sign of a number. Negative numbers return `-1`. Zero and positive numbers return `1`.
 
-```
+```plaintext
 signum(numeric_expression)
 ```
 
@@ -397,7 +398,7 @@ signum(numeric_expression)
 
 Returns the sine of a number.
 
-```
+```plaintext
 sin(numeric_expression)
 ```
 
@@ -409,7 +410,7 @@ sin(numeric_expression)
 
 Returns the hyperbolic sine of a number.
 
-```
+```plaintext
 sinh(numeric_expression)
 ```
 
@@ -421,7 +422,7 @@ sinh(numeric_expression)
 
 Returns the square root of a number.
 
-```
+```plaintext
 sqrt(numeric_expression)
 ```
 
@@ -433,7 +434,7 @@ sqrt(numeric_expression)
 
 Returns the tangent of a number.
 
-```
+```plaintext
 tan(numeric_expression)
 ```
 
@@ -445,7 +446,7 @@ tan(numeric_expression)
 
 Returns the hyperbolic tangent of a number.
 
-```
+```plaintext
 tanh(numeric_expression)
 ```
 
@@ -457,7 +458,7 @@ tanh(numeric_expression)
 
 Truncates a number to a whole number or truncated to the specified decimal places.
 
-```
+```plaintext
 trunc(numeric_expression[, decimal_places])
 ```
 

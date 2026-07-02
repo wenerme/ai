@@ -29,19 +29,25 @@ A button that follows RTK Design System.
 
 ### Basic Usage
 
-```
+```html
 <rtk-button></rtk-button>
 ```
 
 ### With Properties
 
-```
-<rtk-button></rtk-button>
+```html
+<rtk-button>
+</rtk-button>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-button");
-  el.disabled= true;  el.reverse= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-button");
+
+
+  el.disabled= true;
+  el.reverse= true;
+</script>
 ```
 
 ```json

@@ -24,9 +24,7 @@ There are two types of Blazor hosting models: [Blazor Server ↗](https://learn.
 
 Create a new Blazor WebAssembly (WASM) application by running the following command:
 
-Terminal window
-
-```
+```sh
 dotnet new blazorwasm -o my-blazor-project
 ```
 
@@ -34,8 +32,13 @@ dotnet new blazorwasm -o my-blazor-project
 
 To deploy, Cloudflare Pages will need a way to build the Blazor project. In the project's directory root, create a `build.sh` file. Populate the file with this (updating the `.dotnet-install.sh` line appropriately if you're not using the latest .NET SDK):
 
-```
-#!/bin/shcurl -sSL https://dot.net/v1/dotnet-install.sh > dotnet-install.shchmod +x dotnet-install.sh./dotnet-install.sh -c 8.0 -InstallDir ./dotnet./dotnet/dotnet --version./dotnet/dotnet publish -c Release -o output
+```plaintext
+#!/bin/sh
+curl -sSL https://dot.net/v1/dotnet-install.sh > dotnet-install.sh
+chmod +x dotnet-install.sh
+./dotnet-install.sh -c 8.0 -InstallDir ./dotnet
+./dotnet/dotnet --version
+./dotnet/dotnet publish -c Release -o output
 ```
 
 Your `build.sh` file needs to be executable for the build command to work. You can make it so by running `chmod +x build.sh`.
@@ -52,9 +55,7 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Creating a `.gitignore` file ensures that only what is needed gets pushed onto your GitHub repository. Create a `.gitignore` file by running the following command:
 
-Terminal window
-
-```
+```sh
 dotnet new gitignore
 ```
 
@@ -62,10 +63,13 @@ dotnet new gitignore
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
+```sh
+git init
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

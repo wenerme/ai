@@ -30,10 +30,12 @@ Writing your Functions files in the `/functions` directory will automatically ge
 
 Copy and paste the following code into a `helloworld.js` file that you create in your `/functions` folder:
 
-JavaScript
+**JavaScript**
 
-```
-export function onRequest(context) {  return new Response("Hello, world!");}
+```js
+export function onRequest(context) {
+  return new Response("Hello, world!");
+}
 ```
 
 In the above example code, the `onRequest` handler takes a request [context](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object. The handler must return a `Response` or a `Promise` of a `Response`.

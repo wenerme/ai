@@ -14,10 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A component which lets to manage your camera devices and your video preferences. Emits `rtkStateUpdate` event with data for toggling mirroring of self video:
 
-TypeScript
+**TypeScript**
 
-```
-{ prefs: {   mirrorVideo: boolean }}
+```ts
+{
+ prefs: {
+   mirrorVideo: boolean
+ }
+}
 ```
 
 ## Properties
@@ -34,16 +38,29 @@ TypeScript
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettingsVideo } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSettingsVideo />;}
+
+
+function MyComponent() {
+  return <RtkSettingsVideo />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettingsVideo } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSettingsVideo      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSettingsVideo
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

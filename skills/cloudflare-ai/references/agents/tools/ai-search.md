@@ -25,64 +25,125 @@ Use AI Search when you want an agent to:
 
 Bind AI Search to your Worker, then query an instance from an agent method.
 
-* [  JavaScript ](#tab-panel-6563)
-* [  TypeScript ](#tab-panel-6564)
+* [  JavaScript ](#tab-panel-6747)
+* [  TypeScript ](#tab-panel-6748)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, callable } from "agents";
-export class SearchAgent extends Agent {  @callable()  async searchKnowledge(query) {    const instance = this.env.AI_SEARCH.get("my-instance");
-    const results = await instance.search({      messages: [{ role: "user", content: query }],    });
-    return results;  }}
+
+
+export class SearchAgent extends Agent {
+  @callable()
+  async searchKnowledge(query) {
+    const instance = this.env.AI_SEARCH.get("my-instance");
+
+
+    const results = await instance.search({
+      messages: [{ role: "user", content: query }],
+    });
+
+
+    return results;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, callable } from "agents";
-type Env = {  AI_SEARCH: AiSearchNamespace;};
-export class SearchAgent extends Agent<Env> {  @callable()  async searchKnowledge(query: string) {    const instance = this.env.AI_SEARCH.get("my-instance");
-    const results = await instance.search({      messages: [{ role: "user", content: query }],    });
-    return results;  }}
+
+
+type Env = {
+  AI_SEARCH: AiSearchNamespace;
+};
+
+
+export class SearchAgent extends Agent<Env> {
+  @callable()
+  async searchKnowledge(query: string) {
+    const instance = this.env.AI_SEARCH.get("my-instance");
+
+
+    const results = await instance.search({
+      messages: [{ role: "user", content: query }],
+    });
+
+
+    return results;
+  }
+}
 ```
 
 For answer generation, use `chatCompletions()` to retrieve relevant content and generate a response in one call.
 
-* [  JavaScript ](#tab-panel-6561)
-* [  TypeScript ](#tab-panel-6562)
+* [  JavaScript ](#tab-panel-6745)
+* [  TypeScript ](#tab-panel-6746)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const instance = this.env.AI_SEARCH.get("my-instance");
-const response = await instance.chatCompletions({  messages: [{ role: "user", content: "How do I deploy an Agent?" }],  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",  ai_search_options: {    retrieval: {      max_num_results: 5,    },  },});
+
+
+const response = await instance.chatCompletions({
+  messages: [{ role: "user", content: "How do I deploy an Agent?" }],
+  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  ai_search_options: {
+    retrieval: {
+      max_num_results: 5,
+    },
+  },
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = this.env.AI_SEARCH.get("my-instance");
-const response = await instance.chatCompletions({  messages: [{ role: "user", content: "How do I deploy an Agent?" }],  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",  ai_search_options: {    retrieval: {      max_num_results: 5,    },  },});
+
+
+const response = await instance.chatCompletions({
+  messages: [{ role: "user", content: "How do I deploy an Agent?" }],
+  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  ai_search_options: {
+    retrieval: {
+      max_num_results: 5,
+    },
+  },
+});
 ```
 
 ## Configuration
 
 Use an `ai_search_namespaces` binding when the agent needs to access AI Search instances by name.
 
-* [  wrangler.jsonc ](#tab-panel-6559)
-* [  wrangler.toml ](#tab-panel-6560)
+* [  wrangler.jsonc ](#tab-panel-6743)
+* [  wrangler.toml ](#tab-panel-6744)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "ai_search_namespaces": [
+    {
+      "binding": "AI_SEARCH",
+      "namespace": "default",
+      "remote": true
+    }
+  ]
+}
 ```
-{  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "default",      "remote": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "default"remote = true
+```toml
+[[ai_search_namespaces]]
+binding = "AI_SEARCH"
+namespace = "default"
+remote = true
 ```
 
 Use `remote: true` to query deployed AI Search instances during local development with `wrangler dev`.

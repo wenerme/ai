@@ -27,84 +27,112 @@ Pruna's P-Video is a premium video generation model supporting text-to-video, im
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1552)
-* [ cURL ](#tab-panel-1553)
+* [ TypeScript ](#tab-panel-1600)
+* [ cURL ](#tab-panel-1601)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'pruna/p-video',
+  {
+    prompt: 'A sports car drifting through a neon-lit city at night, cinematic aerial shot',
+    duration: 5,
+    resolution: '720p',
+    aspect_ratio: '16:9',
+    draft: true,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'pruna/p-video',  {    prompt: 'A sports car drifting through a neon-lit city at night, cinematic aerial shot',    duration: 5,    resolution: '720p',    aspect_ratio: '16:9',    draft: true,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pruna/p-video",
+  "input": {
+    "prompt": "A sports car drifting through a neon-lit city at night, cinematic aerial shot",
+    "duration": 5,
+    "resolution": "720p",
+    "aspect_ratio": "16:9",
+    "draft": true
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1598)
+* [ Raw response ](#tab-panel-1599)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "pruna/p-video",  "input": {    "prompt": "A sports car drifting through a neon-lit city at night, cinematic aerial shot",    "duration": 5,    "resolution": "720p",    "aspect_ratio": "16:9",    "draft": true  }}'
-```
-
-* [ Output ](#tab-panel-1550)
-* [ Raw response ](#tab-panel-1551)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/pruna/p-video/neon-city-drift.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/pruna/p-video/neon-city-drift.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1554)
-* [ Output ](#tab-panel-1555)
-
-aspect\_ratio
-
-`string`requireddefault: 16:9enum: 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 1:1Aspect ratio of the video. Ignored when an input image is provided.
-
-audio
-
-`string`Input audio to condition video generation. HTTP(S) URL or data URI. Supports flac, mp3, wav. When provided, duration is ignored.
-
-disable\_safety\_filter
-
-`boolean`requireddefault: trueDisable safety filter for prompts and input images.
-
-draft
-
-`boolean`requireddefault: falseDraft mode. Generates a lower-quality preview of the video.
-
-duration
-
-`integer`requireddefault: 5maximum: 20minimum: 1Duration of the video in seconds (1-20). Ignored when audio is provided.
-
-▶fps
-
-`one of`required
-
-image
-
-`string`Input image to generate video from (image-to-video). HTTP(S) URL or data URI. Supports jpg, jpeg, png, webp. When provided, aspect\_ratio is ignored.
-
-last\_frame\_image
-
-`string`Reference image for the last frame of the video. HTTP(S) URL or data URI.
+* [ Input ](#tab-panel-1602)
+* [ Output ](#tab-panel-1603)
 
 prompt
 
 `string`requiredText prompt for video generation.
 
-prompt\_upsampling
+image
 
-`boolean`requireddefault: trueUse prompt upsampling to enhance the prompt.
+`string`Input image to generate video from (image-to-video). HTTP(S) URL or data URI. Supports jpg, jpeg, png, webp. When provided, aspect\_ratio is ignored.
+
+audio
+
+`string`Input audio to condition video generation. HTTP(S) URL or data URI. Supports flac, mp3, wav. When provided, duration is ignored.
+
+duration
+
+`integer`requireddefault: 5minimum: 1maximum: 20Duration of the video in seconds (1-20). Ignored when audio is provided.
 
 resolution
 
 `string`requireddefault: 720penum: 720p, 1080pVideo resolution.
 
+▶fps
+
+`one of`required
+
+aspect\_ratio
+
+`string`requireddefault: 16:9enum: 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 1:1Aspect ratio of the video. Ignored when an input image is provided.
+
+seed
+
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
+
+draft
+
+`boolean`requireddefault: falseDraft mode. Generates a lower-quality preview of the video.
+
 save\_audio
 
 `boolean`requireddefault: trueSave the video with audio.
 
-seed
+last\_frame\_image
 
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Random seed for reproducible generation.
+`string`Reference image for the last frame of the video. HTTP(S) URL or data URI.
+
+prompt\_upsampling
+
+`boolean`requireddefault: trueUse prompt upsampling to enhance the prompt.
+
+disable\_safety\_filter
+
+`boolean`requireddefault: trueDisable safety filter for prompts and input images.
 
 video
 

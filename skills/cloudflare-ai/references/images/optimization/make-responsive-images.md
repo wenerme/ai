@@ -45,14 +45,22 @@ The browser evaluates screen size, pixel density, and network conditions, then s
 
 The snippet below shows how `srcset` can be used within an `<img>` tag to serve one of two possible sizes, depending on the user's device pixel ratio:
 
-```
-<img  src="portrait-800w.jpg"  srcset="    portrait-1600.jpg 2x,  "/>
+```html
+<img
+  src="portrait-800w.jpg"
+  srcset="
+    portrait-1600.jpg 2x,
+  "
+/>
 ```
 
 Instead of pre-generating each size, use Images to point every `srcset` entry at the same source image with a different `width` parameter and pixel density descriptor (for example, `2x`). Once the browser selects the right width for the user's device pixel ratio, Cloudflare dynamically generates the resized version on request:
 
-```
-<img  src="/cdn-cgi/image/fit=contain,width=960/assets/product.jpg"  srcset="/cdn-cgi/image/fit=contain,width=1920/assets/product.jpg 2x"/>
+```html
+<img
+  src="/cdn-cgi/image/fit=contain,width=960/assets/product.jpg"
+  srcset="/cdn-cgi/image/fit=contain,width=1920/assets/product.jpg 2x"
+/>
 ```
 
 In the example above, the `src` attribute contains the image for 1x displays (for example, HD/1080p monitors). The `srcset` attribute adds a larger, high-DPI image for 2x displays (for example, most mobile devices, 4K desktop displays). Use high-resolution source images, as scaling a low-resolution image increases file size without improving quality.
@@ -63,8 +71,18 @@ Pixel density descriptors are used when the image has a fixed CSS size (e.g. a 9
 
 However, if the image scales with the viewport — that is, its CSS size changes based on the screen width (for example, `width: 100%`, `width: 50vw`) — then use the width descriptor (`w`) instead to provide a range of widths:
 
-```
-<img  width="100%"  srcset="    /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,    /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,    /cdn-cgi/image/fit=contain,width=960/assets/hero.jpg   960w,    /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w,    /cdn-cgi/image/fit=contain,width=2560/assets/hero.jpg 2560w  "  src="/cdn-cgi/image/width=960/assets/hero.jpg"/>
+```html
+<img
+  width="100%"
+  srcset="
+    /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,
+    /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,
+    /cdn-cgi/image/fit=contain,width=960/assets/hero.jpg   960w,
+    /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w,
+    /cdn-cgi/image/fit=contain,width=2560/assets/hero.jpg 2560w
+  "
+  src="/cdn-cgi/image/width=960/assets/hero.jpg"
+/>
 ```
 
 The `w` values tell the browser the pixel width of each option. The browser factors in both viewport width and display density to choose the best match.
@@ -73,14 +91,24 @@ The `w` values tell the browser the pixel width of each option. The browser fact
 
 By default, the browser assumes the image fills the full viewport. If the image only occupies part of the screen, then you can use `sizes` to tell the browser how wide it actually is:
 
-```
-<!-- Image fills 50% of the viewport --><img style="width: 50vw" srcset="..." sizes="50vw" />
+```html
+<!-- Image fills 50% of the viewport -->
+<img style="width: 50vw" srcset="..." sizes="50vw" />
 ```
 
 If the image can have a different size depending on media queries or other CSS properties (for example, `max-width`), then specify all the conditions in the `sizes` attribute:
 
-```
-<img  style="max-width: 640px"  srcset="    /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,    /cdn-cgi/image/fit=contain,width=480/assets/hero.jpg   480w,    /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,    /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w  "  sizes="(max-width: 640px) 100vw, 640px"/>
+```html
+<img
+  style="max-width: 640px"
+  srcset="
+    /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,
+    /cdn-cgi/image/fit=contain,width=480/assets/hero.jpg   480w,
+    /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,
+    /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w
+  "
+  sizes="(max-width: 640px) 100vw, 640px"
+/>
 ```
 
 In the example above:
@@ -95,7 +123,7 @@ With `srcset`, you control exactly which sizes are available, which requires upd
 
 On the other hand, `width=auto` takes a different approach, where Cloudflare determines the right width for each request from a single URL:
 
-```
+```html
 /cdn-cgi/image/width=auto/assets/hero.jpg
 ```
 
@@ -132,16 +160,20 @@ You can enable client hints using one of the following methods:
 
 Add the following in the `<head>` of your page before any other elements:
 
-```
-<meta  http-equiv="Delegate-CH"  content="sec-ch-dpr {ZONE}; sec-ch-viewport-width {ZONE}"/>
+```html
+<meta
+  http-equiv="Delegate-CH"
+  content="sec-ch-dpr {ZONE}; sec-ch-viewport-width {ZONE}"
+/>
 ```
 
 **HTTP response headers**
 
 Add these headers to your HTML response:
 
-```
-critical-ch: sec-ch-viewport-width, sec-ch-dprpermissions-policy: ch-dpr=("{ZONE}"), ch-viewport-width=("{ZONE}")
+```txt
+critical-ch: sec-ch-viewport-width, sec-ch-dpr
+permissions-policy: ch-dpr=("{ZONE}"), ch-viewport-width=("{ZONE}")
 ```
 
 ### User-agent detection (fallback)

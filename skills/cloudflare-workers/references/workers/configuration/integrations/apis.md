@@ -18,29 +18,41 @@ For example, if you want to integrate with a weather API, make a fetch request t
 
 To make the `fetch()` request, add the following code to your project's `src/index.js` file:
 
-JavaScript
+**JavaScript**
 
-```
-async function handleRequest(request) {  // Make the fetch request to the third party API endpoint  const response = await fetch("https://weather-api.com/endpoint", {    method: "GET",    headers: {      "Content-Type": "application/json",    },  });
-  // Retrieve the data from the response  const data = await response.json();
-  // Use the data to modify or manipulate your content as needed  return new Response(data);}
+```js
+async function handleRequest(request) {
+  // Make the fetch request to the third party API endpoint
+  const response = await fetch("https://weather-api.com/endpoint", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+
+  // Retrieve the data from the response
+  const data = await response.json();
+
+
+  // Use the data to modify or manipulate your content as needed
+  return new Response(data);
+}
 ```
 
 ## Authentication
 
 If your API requires authentication, use Wrangler secrets to securely store your credentials. To do this, create a secret in your Cloudflare Workers project using the following [wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command:
 
-Terminal window
-
-```
+```sh
 wrangler secret put SECRET_NAME
 ```
 
 Then, retrieve the secret value in your code using the following code snippet:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const secretValue = env.SECRET_NAME;
 ```
 

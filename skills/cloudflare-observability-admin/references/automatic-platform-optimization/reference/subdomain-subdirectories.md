@@ -41,13 +41,25 @@ If you choose to run APO only on a subdirectory, the rest of the domain should b
 
 The `cf-edge-cache: no-cache` instructs the APO service to bypass caching for non-WordPress parts of the site. You can implement this option with Cloudflare Workers using the example below.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    const originalResponse = await fetch(request);
-    // Response properties are immutable. To change them, construct a new Response object.    const response = new Response(originalResponse.body, originalResponse);
-    // Response headers can be modified through the headers `set` method.    response.headers.set("cf-edge-cache", "no-cache");
-    return response;  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const originalResponse = await fetch(request);
+
+
+    // Response properties are immutable. To change them, construct a new Response object.
+    const response = new Response(originalResponse.body, originalResponse);
+
+
+    // Response headers can be modified through the headers `set` method.
+    response.headers.set("cf-edge-cache", "no-cache");
+
+
+    return response;
+  },
+};
 ```
 
 ### Use Cache Rules

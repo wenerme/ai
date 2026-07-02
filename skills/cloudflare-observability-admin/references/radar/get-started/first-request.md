@@ -20,16 +20,33 @@ Once you have the token, you are ready to make your first request to Radar's API
 
 In the following example, we will access the global percentage distribution of device types (like mobile and desktop traffic) for the last seven days. For more information, refer to [Get device types summary](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/summary/methods/device%5Ftype/) endpoint:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&format=json" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 A successful response will look similar to the following:
 
-```
-{  "success": true,  "errors": [],  "result": {    "summary_0": {      "desktop": "58.223483",      "mobile": "41.725833",      "other": "0.050684"    },    "meta": {      "dateRange": {        "startTime": "2022-10-26T14:00:00Z",        "endTime": "2022-11-02T14:00:00Z"      },      "normalization": "PERCENTAGE",      ...    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "result": {
+    "summary_0": {
+      "desktop": "58.223483",
+      "mobile": "41.725833",
+      "other": "0.050684"
+    },
+    "meta": {
+      "dateRange": {
+        "startTime": "2022-10-26T14:00:00Z",
+        "endTime": "2022-11-02T14:00:00Z"
+      },
+      "normalization": "PERCENTAGE",
+      ...
+    }
+  }
+}
 ```
 
 This response means that 41% of the requests are classified as coming from mobile devices, while 58% are desktop traffic.
@@ -40,10 +57,9 @@ Cloudflare Radar attempts to provide trends and insights into general Internet u
 
 The previous example returns all traffic from bots and humans. However, you can access just the traffic classified as coming from humans (the default in [Cloudflare Radar ↗](https://radar.cloudflare.com)) by adding `botClass=LIKELY_HUMAN`. You can also access traffic coming only from bots with `botClass=LIKELY_AUTOMATED` (refer to [bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes) for more information). For example:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&botClass=LIKELY_AUTOMATED&format=json" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&botClass=LIKELY_AUTOMATED&format=json" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Running the above, can you find any differences between both in the distribution of mobile versus desktop traffic?
@@ -60,11 +76,21 @@ When present, `meta.confidenceInfo.level` will also provide an indication of how
 
 [Python ↗](https://www.python.org/) has become one of the standard languages in data analysis. Here is a quick example on how to chart the same data using [Requests ↗](https://pypi.org/project/requests/) and [Pandas ↗](https://pandas.pydata.org/) libraries. Here, we are using `format=csv` in the parameters to make it easier for Pandas to import.
 
-Python
+**Python**
 
-```
-import ioimport requestsimport pandas as pd
-cf_api_url = "https://api.cloudflare.com/client/v4"params = "dateRange=7d&format=csv"my_token = "xxx" # TODO replacer = requests.get(f"{cf_api_url}/radar/http/summary/device_type?{params}",                 headers={"Authorization": f"Bearer {my_token}"})df = pd.read_csv(io.StringIO(r.text))df.plot(kind="bar", stacked=True)
+```python
+import io
+import requests
+import pandas as pd
+
+
+cf_api_url = "https://api.cloudflare.com/client/v4"
+params = "dateRange=7d&format=csv"
+my_token = "xxx" # TODO replace
+r = requests.get(f"{cf_api_url}/radar/http/summary/device_type?{params}",
+                 headers={"Authorization": f"Bearer {my_token}"})
+df = pd.read_csv(io.StringIO(r.text))
+df.plot(kind="bar", stacked=True)
 ```
 
 ### Notebooks

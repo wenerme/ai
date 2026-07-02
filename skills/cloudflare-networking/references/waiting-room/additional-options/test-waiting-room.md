@@ -72,10 +72,20 @@ To analyze the results of your test, you can query Waiting Room Analytics (Beta)
 
 Example Curl Statement
 
-Terminal window
-
-```
-echo '{  "operationName": "UsersQueuedOverTimeQuery",  "variables": {    "filter": {      "datetime_geq": "2022-10-17T15:34:00Z",      "datetime_leq": "2022-10-17T15:40:00Z",      "waitingRoomId": "<YOUR_WAITING_ROOM_ID>"    },    "zoneId": "<YOUR_ZONE_ID>"  },  "query": "query UsersQueuedOverTimeQuery($zoneId: string, $filter: ZoneWaitingRoomAnalyticsAdaptiveGroupsFilter_InputObject) {\n  viewer {\n    zones(filter: {zoneTag: $zoneId}) {\n      timeseries: waitingRoomAnalyticsAdaptiveGroups(limit: 5000, filter: $filter, orderBy: [datetimeMinute_ASC]) {\n        avg {\n          totalActiveUsers\n          totalActiveUsersConfig\n          totalQueuedUsers\n          __typename\n        }\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          totalActiveUsersConfig\n          __typename\n        }\n        min {\n          totalActiveUsersConfig\n          __typename\n        }\n        dimensions {\n          ts: datetimeMinute\n          __typename\n        }\n        __typename\n      }\n      total: waitingRoomAnalyticsAdaptiveGroups(limit: 1, filter: $filter) {\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"}' | tr -d '\n' | curl \  -X POST
+```bash
+echo '{
+  "operationName": "UsersQueuedOverTimeQuery",
+  "variables": {
+    "filter": {
+      "datetime_geq": "2022-10-17T15:34:00Z",
+      "datetime_leq": "2022-10-17T15:40:00Z",
+      "waitingRoomId": "<YOUR_WAITING_ROOM_ID>"
+    },
+    "zoneId": "<YOUR_ZONE_ID>"
+  },
+  "query": "query UsersQueuedOverTimeQuery($zoneId: string, $filter: ZoneWaitingRoomAnalyticsAdaptiveGroupsFilter_InputObject) {\n  viewer {\n    zones(filter: {zoneTag: $zoneId}) {\n      timeseries: waitingRoomAnalyticsAdaptiveGroups(limit: 5000, filter: $filter, orderBy: [datetimeMinute_ASC]) {\n        avg {\n          totalActiveUsers\n          totalActiveUsersConfig\n          totalQueuedUsers\n          __typename\n        }\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          totalActiveUsersConfig\n          __typename\n        }\n        min {\n          totalActiveUsersConfig\n          __typename\n        }\n        dimensions {\n          ts: datetimeMinute\n          __typename\n        }\n        __typename\n      }\n      total: waitingRoomAnalyticsAdaptiveGroups(limit: 1, filter: $filter) {\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"
+}' | tr -d '\n' | curl \
+  -X POST
 ```
 
 From our test, we got the following results (these are extracted from results of the query for readability):

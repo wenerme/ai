@@ -29,19 +29,26 @@ A button which toggles your screenshare.
 
 ### Basic Usage
 
-```
+```html
 <rtk-screen-share-toggle></rtk-screen-share-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-screen-share-toggle size="md" variant"button"></rtk-screen-share-toggle>
+```html
+<rtk-screen-share-toggle
+ size="md"
+ variant"button">
+</rtk-screen-share-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-screen-share-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-screen-share-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -97,34 +97,150 @@ Workflows GraphQL datasets require an `accountTag` filter with your Cloudflare a
 
 To query the count (number of workflow invocations) and sum of `wallTime` for a given `$workflowName` between `$datetimeStart` and `$datetimeEnd`, grouping by `date`:
 
-```
-query WorkflowInvocationsExample(  $accountTag: string!  $datetimeStart: Time  $datetimeEnd: Time  $workflowName: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      wallTime: workflowsAdaptiveGroups(        limit: 10000        filter: {          datetimeHour_geq: $datetimeStart          datetimeHour_leq: $datetimeEnd          workflowName: $workflowName        }        orderBy: [count_DESC]      ) {        count        sum {          wallTime        }        dimensions {          date: datetimeHour        }      }    }  }}
+```graphql
+query WorkflowInvocationsExample(
+  $accountTag: string!
+  $datetimeStart: Time
+  $datetimeEnd: Time
+  $workflowName: string
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      wallTime: workflowsAdaptiveGroups(
+        limit: 10000
+        filter: {
+          datetimeHour_geq: $datetimeStart
+          datetimeHour_leq: $datetimeEnd
+          workflowName: $workflowName
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        sum {
+          wallTime
+        }
+        dimensions {
+          date: datetimeHour
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TAAoAoGGACSlixBCDzkAKqQDmALhi1yESnhkBCPoIAmFMFRZgAyuVIRyCyZUNaBu8vuth6ebZae2sSNJiwA5VjAFJRU1HgBKGABvLQJKMCxIaK1+YVFxclouVEp0BwgFKJg0sQlpeUESjPKYAF9ImP4mmCxSdHQrQwUvFAxsWgBBXTYqAjAAcQgxNiyU5ph0a0oLGABGAAZN9bnmnLzIQp35+0dDAAkxCAB9GTBgBTs9A2NTcyPmk+eLkGvOe50nk4XNp3k0ej5sAEuoJwX1-IFQbVQUhtJAAEJQBQAbXSEiuABF6EYAMIAXSODVBuPIoNoIBYyXm81a7U6YERoO0Tjo1DojKZTROCk+Tm+EA5TKRzSldR4tSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOwKAjMkkBWTOICcmDQGYAWg2asOPNgFF4TMVNkLlktSpXa9hk4wDu0IQDWAGYANtA+pGC8YgBKVgAKADL4VhQA6lTIABIUfMgxVKQA4iAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TAAoAoGGACSlixBCDzkAKqQDmALhi1yESnhkBCPoIAmFMFRZgAyuVIRyCyZUNaBu8vuth6ebZae2sSNJiwA5VjAFJRU1HgBKGABvLQJKMCxIaK1+YVFxclouVEp0BwgFKJg0sQlpeUESjPKYAF9ImP4mmCxSdHQrQwUvFAxsWgBBXTYqAjAAcQgxNiyU5ph0a0oLGABGAAZN9bnmnLzIQp35+0dDAAkxCAB9GTBgBTs9A2NTcyPmk+eLkGvOe50nk4XNp3k0ej5sAEuoJwX1-IFQbVQUhtJAAEJQBQAbXSEiuABF6EYAMIAXSODVBuPIoNoIBYyXm81a7U6YERoO0Tjo1DojKZTROCk+Tm+EA5TKRzSldR4tSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOwKAjMhWLMkgMyYArABYAWg2asOPNgFF4TMVNkLlkteN079x0wHdoQgNYAZgA20N6kYLxiAEpWAAoAMvhWFADqVMgAEhR8yNFUpADiIAC+QA)
 
 Here we are doing the same for `wallTime`, `instanceRuns` and `stepCount` in the same query:
 
-```
-query WorkflowInvocationsExample2(  $accountTag: string!  $datetimeStart: Time  $datetimeEnd: Time  $workflowName: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      instanceRuns: workflowsAdaptiveGroups(        limit: 10000        filter: {          datetimeHour_geq: $datetimeStart          datetimeHour_leq: $datetimeEnd          workflowName: $workflowName          eventType: "WORKFLOW_START"        }        orderBy: [count_DESC]      ) {        count        dimensions {          date: datetimeHour        }      }      stepCount: workflowsAdaptiveGroups(        limit: 10000        filter: {          datetimeHour_geq: $datetimeStart          datetimeHour_leq: $datetimeEnd          workflowName: $workflowName          eventType: "WORKFLOW_START"        }        orderBy: [count_DESC]      ) {        count        dimensions {          date: datetimeHour        }      }      wallTime: workflowsAdaptiveGroups(        limit: 10000        filter: {          datetimeHour_geq: $datetimeStart          datetimeHour_leq: $datetimeEnd          workflowName: $workflowName        }        orderBy: [count_DESC]      ) {        count        sum {          wallTime        }        dimensions {          date: datetimeHour        }      }    }  }}
+```graphql
+query WorkflowInvocationsExample2(
+  $accountTag: string!
+  $datetimeStart: Time
+  $datetimeEnd: Time
+  $workflowName: string
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      instanceRuns: workflowsAdaptiveGroups(
+        limit: 10000
+        filter: {
+          datetimeHour_geq: $datetimeStart
+          datetimeHour_leq: $datetimeEnd
+          workflowName: $workflowName
+          eventType: "WORKFLOW_START"
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          date: datetimeHour
+        }
+      }
+      stepCount: workflowsAdaptiveGroups(
+        limit: 10000
+        filter: {
+          datetimeHour_geq: $datetimeStart
+          datetimeHour_leq: $datetimeEnd
+          workflowName: $workflowName
+          eventType: "WORKFLOW_START"
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          date: datetimeHour
+        }
+      }
+      wallTime: workflowsAdaptiveGroups(
+        limit: 10000
+        filter: {
+          datetimeHour_geq: $datetimeStart
+          datetimeHour_leq: $datetimeEnd
+          workflowName: $workflowName
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        sum {
+          wallTime
+        }
+        dimensions {
+          date: datetimeHour
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TACYAKAKBgwAJKWLEEIPOQAqpAOYAuGLXIRKeOQEIBwgCYUwVFmADK5UhHJLplYzqH7yh22Hp5d1l-axI0mLAByrGBKKmoafACUMADeOgSUYFiQsTqCouKS5LQ8qJToThBKMTAZElKyisJlWZUwAL7RcYItMOoqpHjEYABKkrRKPigY2LQAgvpsVARgAOIQEmw5aa0w6LaUVjAAjAAM+7srrXkFkMVHq47OxgASEhAA+nJgwEoOBkam5pYXrVefdxAj04rz0Hxcbl0vxaQz82CCxjesJGgWC0MEYBmFSgbBCMAARHAAPI9ADSADEADJEuAPEzSMY9aT46H1aFIXSQABCUCUAG1MlIHgARegmADCAF0Lk1oYLyNDdC46NQ6KlVpcDEp-i5ARBWRc2RqVGA2OLyltkf5xpNpnMFiAlvwNYJ1ixNko9gdoSdCucXS0dbd7k8Xm8g18LAqA4II3qHiDw+DjJD0TArfDgkjfCiEWA05iwNjcUpCSSKdTafTGcyDQGOdzeTABRaRWKpTL1S75YrlbRVbQuwGrtrk2A9XXVkbVlhSOh0DZEemc9aJqQppQZvNFssA26PTsDocA76zkOXXGQ89Qe8nJ8zFG05egQmw2C7xD3GmM6il0If3mk4ag2EA8vy8pthK0oarKAY9gGtAgCw54arO86LvmAbThqSrGCqNCDs0MYjjAz76lhhorNObL1EAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOwKAjMkkBWTOICcmDQGYAWg2asOPNgFF4TMVNkLlktSpXa9hk4wDu0IQDWAGYANtA+pGC8YgBKVgAKADL4VhQA6lTIABIUfMgxVKQA4iAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TACYAKAKBgwAJKWLEEIPOQAqpAOYAuGLXIRKeOQEIBwgCYUwVFmADK5UhHJLplYzqH7yh22Hp5d1l-axI0mLAByrGBKKmoafACUMADeOgSUYFiQsTqCouKS5LQ8qJToThBKMTAZElKyisJlWZUwAL7RcYItMOoqpHjEYABKkrRKPigY2LQAgvpsVARgAOIQEmw5aa0w6LaUVjAAjAAM+7srrXkFkMVHq47OxgASEhAA+nJgwEoOBkam5pYXrVefdxAj04rz0Hxcbl0vxaQz82CCxjesJGgWC0MEYBmFSgbBCMAARHAAPI9ADSADEADJEuAPEzSMY9aT46H1aFIXSQABCUCUAG1MlIHgARegmADCAF0Lk1oYLyNDdC46NQ6KlVpcDEp-i5ARBWRc2RqVGA2OLyltkf5xpNpnMFiAlvwNYJ1ixNko9gdoSdCucXS0dbd7k8Xm8g18LAqA4II3qHiDw+DjJD0TArfDgkjfCiEWA05iwNjcUpCSSKdTafTGcyDQGOdzeTABRaRWKpTL1S75YrlbRVbQuwGrtrk2A9XXVkbVlhSOh0DZEemc9aJqQppQZvNFssA26PTsDocA76zkOXXGQ89Qe8nJ8zFG05egQmw2C7xD3GmM6il0If3mk4ag2EA8vy8pthK0oarKAY9gGtAgCw54arO86LvmAbThqSrGCqNCDs0MYjjAz76lhhorNObL1EAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOwKAjMhWLMkgMyYArABYAWg2asOPNgFF4TMVNkLlkteN079x0wHdoQgNYAZgA20N6kYLxiAEpWAAoAMvhWFADqVMgAEhR8yNFUpADiIAC+QA)
 
 Here lets query `workflowsAdaptive` for raw data about `$instanceId` between `$datetimeStart` and `$datetimeEnd`:
 
-```
-query WorkflowsAdaptiveExample(  $accountTag: string!  $datetimeStart: Time  $datetimeEnd: Time  $instanceId: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      workflowsAdaptive(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          instanceId: $instanceId        }        orderBy: [datetime_ASC]      ) {        datetime        eventType        workflowName        instanceId        stepCount        wallTime      }    }  }}
+```graphql
+query WorkflowsAdaptiveExample(
+  $accountTag: string!
+  $datetimeStart: Time
+  $datetimeEnd: Time
+  $instanceId: string
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      workflowsAdaptive(
+        limit: 100
+        filter: {
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+          instanceId: $instanceId
+        }
+        orderBy: [datetime_ASC]
+      ) {
+        datetime
+        eventType
+        workflowName
+        instanceId
+        stepCount
+        wallTime
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcDOBBAEwEMAHAFwEsA3MAUQA8iBbE9MACgCgYYASIgMYCEIAHZkAKkQDmALhg4yECqOkBCbn2JkwlJmADKZIhDLyJFfZt7bdluqILn71lYqKiBYAJJOFSlWlOAEoYAG9NKgowLEhwzR5BYTEyHHZUCnQdCHkwmCSRcSk5PgKU4pgAX1CInjqYLCQ0TFxCUkoaLnr69EsKMxgARgAGYYTujKzIXPHumFs9MAB9aTBgeRsiHUWjEzJZ7oX7JbZ1rS27fVpHA-q3Y08fP157jy9fW6rPpAJIACEoPIANpHfRLPAGADCAF0DjVPqCwJ8wDQilASEi5jxGigMNgAHLMTFY16PD5Y-xgEiQwr7ClYIjodAWKxzSrjdk8dmVIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOwKAjMkkBWTOICcmDQGYAWg2asOPNgFF4TMVNkLlktSpXa9hk407wAzoLwEGxUdtgASlYACgAy+FYUAOpUyAAS1HQAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcDOBBAEwEMAHAFwEsA3MAUQA8iBbE9MACgCgYYASIgMYCEIAHZkAKkQDmALhg4yECqOkBCbn2JkwlJmADKZIhDLyJFfZt7bdluqILn71lYqKiBYAJJOFSlWlOAEoYAG9NKgowLEhwzR5BYTEyHHZUCnQdCHkwmCSRcSk5PgKU4pgAX1CInjqYLCQ0TFxCUkoaLnr69EsKMxgARgAGYYTujKzIXPHumFs9MAB9aTBgeRsiHUWjEzJZ7oX7JbZ1rS27fVpHA-q3Y08fP157jy9fW6rPpAJIACEoPIANpHfRLPAGADCAF0DjVPqCwJ8wDQilASEi5jxGigMNgAHLMTFY16PD5Y-xgEiQwr7ClYIjodAWKxzSrjdk8dmVIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgOwKAjMhWLMkgMyYArABYAWg2asOPNgFF4TMVNkLlkteN079x053gBnQfAQbFR22ABKVgAKADL4VhQA6lTIABLUdAC+QA)
 
 #### GraphQL query variables
 
 Example values for the query variables:
 
-```
-{  "accountTag": "fedfa729a5b0ecfd623bca1f9000f0a22",  "datetimeStart": "2024-10-20T00:00:00Z",  "datetimeEnd": "2024-10-29T00:00:00Z",  "workflowName": "shoppingCart",  "instanceId": "ecc48200-11c4-22a3-b05f-88a3c1c1db81"}
+```json
+{
+  "accountTag": "fedfa729a5b0ecfd623bca1f9000f0a22",
+  "datetimeStart": "2024-10-20T00:00:00Z",
+  "datetimeEnd": "2024-10-29T00:00:00Z",
+  "workflowName": "shoppingCart",
+  "instanceId": "ecc48200-11c4-22a3-b05f-88a3c1c1db81"
+}
 ```
 
 ```json

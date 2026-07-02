@@ -26,19 +26,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-debugger-screenshare></rtk-debugger-screenshare>
 ```
 
 ### With Properties
 
-```
-<rtk-debugger-screenshare size="md"></rtk-debugger-screenshare>
+```html
+<rtk-debugger-screenshare
+ size="md">
+</rtk-debugger-screenshare>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-debugger-screenshare");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-debugger-screenshare");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

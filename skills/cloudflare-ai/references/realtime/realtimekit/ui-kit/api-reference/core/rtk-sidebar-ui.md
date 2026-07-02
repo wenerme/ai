@@ -29,19 +29,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-sidebar-ui></rtk-sidebar-ui>
 ```
 
 ### With Properties
 
-```
-<rtk-sidebar-ui currentTab="example"></rtk-sidebar-ui>
+```html
+<rtk-sidebar-ui
+ currentTab="example">
+</rtk-sidebar-ui>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-sidebar-ui");
-  el.focusCloseButton= true;  el.hideCloseAction= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-sidebar-ui");
+
+
+  el.focusCloseButton= true;
+  el.hideCloseAction= true;
+</script>
 ```
 
 ```json

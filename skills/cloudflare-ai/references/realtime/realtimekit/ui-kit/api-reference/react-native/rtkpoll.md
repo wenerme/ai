@@ -29,16 +29,31 @@ Renders a single poll with question, votable options, vote counts, and voter ava
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPoll } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPoll poll={poll} meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkPoll poll={poll} meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPoll } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkPoll      poll={poll}      meeting={meeting}      onRtkVotePoll={(index) => handleVote(index)}      self={selfUserId}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPoll
+      poll={poll}
+      meeting={meeting}
+      onRtkVotePoll={(index) => handleVote(index)}
+      self={selfUserId}
+    />
+  );
+}
 ```
 
 ```json

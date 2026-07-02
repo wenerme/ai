@@ -30,19 +30,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-messages-ui></rtk-chat-messages-ui>
 ```
 
 ### With Properties
 
-```
-<rtk-chat-messages-ui selectedGroup="example"></rtk-chat-messages-ui>
+```html
+<rtk-chat-messages-ui
+ selectedGroup="example">
+</rtk-chat-messages-ui>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat-messages-ui");
-  el.canPinMessages= true;  el.messages= [];</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat-messages-ui");
+
+
+  el.canPinMessages= true;
+  el.messages= [];
+</script>
 ```
 
 ```json

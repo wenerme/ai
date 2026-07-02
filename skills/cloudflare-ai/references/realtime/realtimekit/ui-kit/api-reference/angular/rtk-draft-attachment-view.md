@@ -26,14 +26,18 @@ A component which renders the draft attachment to send
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-draft-attachment-view></rtk-draft-attachment-view>
+```html
+<!-- component.html -->
+<rtk-draft-attachment-view></rtk-draft-attachment-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-draft-attachment-view [attachment=]"{}"></rtk-draft-attachment-view>
+```html
+<!-- component.html -->
+<rtk-draft-attachment-view
+ [attachment=]"{}">
+</rtk-draft-attachment-view>
 ```
 
 ```json

@@ -18,10 +18,22 @@ This guide explains how to provide human feedback for AI Gateway evaluations usi
 
 Start by sending a prompt to the AI model through your AI Gateway.
 
-JavaScript
+**JavaScript**
 
-```
-const resp = await env.AI.run(  "@cf/meta/llama-3.1-8b-instruct",  {    prompt: "tell me a joke",  },  {    gateway: {      id: "my-gateway",    },  },);
+```javascript
+const resp = await env.AI.run(
+  "@cf/meta/llama-3.1-8b-instruct",
+  {
+    prompt: "tell me a joke",
+  },
+  {
+    gateway: {
+      id: "my-gateway",
+    },
+  },
+);
+
+
 const myLogId = env.AI.aiGatewayLogId;
 ```
 
@@ -31,10 +43,16 @@ Let the user interact with or evaluate the AI response. This interaction will in
 
 Use the [patchLog()](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#patchlog) method to provide feedback for the AI evaluation.
 
-JavaScript
+**JavaScript**
 
-```
-await env.AI.gateway("my-gateway").patchLog(myLogId, {  feedback: 1, // all fields are optional; set values that fit your use case  score: 100,  metadata: {    user: "123", // Optional metadata to provide additional context  },});
+```javascript
+await env.AI.gateway("my-gateway").patchLog(myLogId, {
+  feedback: 1, // all fields are optional; set values that fit your use case
+  score: 100,
+  metadata: {
+    user: "123", // Optional metadata to provide additional context
+  },
+});
 ```
 
 ## Feedback parameters explanation
@@ -47,10 +65,16 @@ await env.AI.gateway("my-gateway").patchLog(myLogId, {  feedback: 1, // all fiel
 
 The `patchLog` method allows you to send feedback, score, and metadata for a specific log ID. All object properties are optional, so you can include any combination of the parameters:
 
-JavaScript
+**JavaScript**
 
-```
-gateway.patchLog("my-log-id", {  feedback: 1,  score: 100,  metadata: {    user: "123",  },});
+```javascript
+gateway.patchLog("my-log-id", {
+  feedback: 1,
+  score: 100,
+  metadata: {
+    user: "123",
+  },
+});
 ```
 
 Returns: `Promise<void>` (Make sure to `await` the request.)

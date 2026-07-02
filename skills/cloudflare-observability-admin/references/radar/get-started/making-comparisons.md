@@ -20,10 +20,9 @@ When comparing time series, across locations/time ranges/etc., in endpoints that
 
 In the following example, we will compare the traffic change across two different locations — United States and Portugal. The example will use [alpha-2 codes ↗](https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2#Officially%5Fassigned%5Fcode%5Felements) for the last seven days:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=us_data&dateRange=7d&location=US&name=pt_data&dateRange=7d&location=PT&format=json" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=us_data&dateRange=7d&location=US&name=pt_data&dateRange=7d&location=PT&format=json" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 In the example above we are asking for two timeseries. The first series has the following parameters:
@@ -38,8 +37,29 @@ All of these parameters are arrays, and it is the position in the array that def
 
 The response (shortened below for brevity) uses the provided `name` property to wrap the timestamps and corresponding values. If we chart this data, it becomes obvious that Cloudflare received much less traffic from Portugal than from the United States.
 
-```
-{  "success": true,  "errors": [],  "result": {    "us_data": {      "timestamps": [ "2022-10-26T17:00:00Z", "2022-11-02T15:00:00Z" ],      "values": [ "0.871752", "1" ]    },    "pt_data": {      "timestamps": [ "2022-10-26T17:00:00Z", "2022-11-02T15:00:00Z" ],      "values": [ "0.020457", "0.012313" ]    },    "meta": {      "dateRange": {        "startTime": "2022-10-26T17:00:00Z",        "endTime": "2022-11-02T17:00:00Z"      },      "aggInterval": "ONE_HOUR",      // ...    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "result": {
+    "us_data": {
+      "timestamps": [ "2022-10-26T17:00:00Z", "2022-11-02T15:00:00Z" ],
+      "values": [ "0.871752", "1" ]
+    },
+    "pt_data": {
+      "timestamps": [ "2022-10-26T17:00:00Z", "2022-11-02T15:00:00Z" ],
+      "values": [ "0.020457", "0.012313" ]
+    },
+    "meta": {
+      "dateRange": {
+        "startTime": "2022-10-26T17:00:00Z",
+        "endTime": "2022-11-02T17:00:00Z"
+      },
+      "aggInterval": "ONE_HOUR",
+      // ...
+    }
+  }
+}
 ```
 
 Comparisons can be made in most endpoints, not just endpoints that use `min-max`.
@@ -48,10 +68,9 @@ Comparisons can be made in most endpoints, not just endpoints that use `min-max`
 
 In the next example, we will compare the United States across different date ranges using the shortcuts `7d` and `7dControl`. These mean the last seven days and the last seven days before those, respectively — or, in other words, this week versus the previous week.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=this_week&dateRange=7d&location=US&name=previous_week&dateRange=7dControl&location=US&format=json" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=this_week&dateRange=7d&location=US&name=previous_week&dateRange=7dControl&location=US&format=json" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The first series has these parameters:
@@ -64,8 +83,17 @@ The second series has the following parameters:
 
 Now, in the `result` property, you should get something like this:
 
-```
-{  "this_week": {    "timestamps": [ "2022-10-27T13:00:00Z", "2022-10-27T14:00:00Z", "...", "2022-11-03T12:00:00Z" ],    "values": [ "0.794321", "1", "...", "0.718433"]  },  "previous_week": {    "timestamps": [ "2022-10-20T13:00:00Z", "2022-10-20T14:00:00Z", "...", "2022-10-27T12:00:00Z" ],    "values": [ "0.774392", "0.835071", "...", "0.720181"]  }}
+```json
+{
+  "this_week": {
+    "timestamps": [ "2022-10-27T13:00:00Z", "2022-10-27T14:00:00Z", "...", "2022-11-03T12:00:00Z" ],
+    "values": [ "0.794321", "1", "...", "0.718433"]
+  },
+  "previous_week": {
+    "timestamps": [ "2022-10-20T13:00:00Z", "2022-10-20T14:00:00Z", "...", "2022-10-27T12:00:00Z" ],
+    "values": [ "0.774392", "0.835071", "...", "0.720181"]
+  }
+}
 ```
 
 Examining this information, we can conclude that the maximum value was reached at `2022-10-27T14:00:00Z` (all Radar timestamps are in Coordinated Universal Time (UTC)). We can also check what the date range shortcuts `7d` and `7dControl` were resolved to at the time this was run.
@@ -74,10 +102,9 @@ Examining this information, we can conclude that the maximum value was reached a
 
 You can also request for specific timestamps. In the following example, we will ask for data relative to [Tonga ↗](https://blog.cloudflare.com/tonga-internet-outage/) in October versus January 2022, when there was an outage.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=tonga&dateStart=2022-10-15T02%3A00%3A00Z&dateEnd=2022-10-15T05%3A00%3A00Z&location=TO&name=tonga_outage&dateStart=2022-01-15T02%3A00%3A00Z&dateEnd=2022-01-15T05%3A00%3A00Z&location=TO&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=tonga&dateStart=2022-10-15T02%3A00%3A00Z&dateEnd=2022-10-15T05%3A00%3A00Z&location=TO&name=tonga_outage&dateStart=2022-01-15T02%3A00%3A00Z&dateEnd=2022-01-15T05%3A00%3A00Z&location=TO&format=json&aggInterval=1h" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The first series has these parameters (URL encoded):
@@ -92,8 +119,17 @@ In the above example, we requested for an [aggregation interval](https://develop
 
 The `result` property should return a response like this:
 
-```
-{  "tonga": {    "timestamps": ["2022-10-15T02:00:00Z", "2022-10-15T03:00:00Z", "2022-10-15T04:00:00Z", "2022-10-15T05:00:00Z"],    "values": ["1.0", "0.832473", "0.820083", "0.79408"]  },  "tonga_outage": {    "timestamps": ["2022-01-15T02:00:00Z", "2022-01-15T03:00:00Z", "2022-01-15T04:00:00Z", "2022-01-15T05:00:00Z"],    "values": ["0.354105", "0.357287", "0.181811", "0.044198"]  }}
+```json
+{
+  "tonga": {
+    "timestamps": ["2022-10-15T02:00:00Z", "2022-10-15T03:00:00Z", "2022-10-15T04:00:00Z", "2022-10-15T05:00:00Z"],
+    "values": ["1.0", "0.832473", "0.820083", "0.79408"]
+  },
+  "tonga_outage": {
+    "timestamps": ["2022-01-15T02:00:00Z", "2022-01-15T03:00:00Z", "2022-01-15T04:00:00Z", "2022-01-15T05:00:00Z"],
+    "values": ["0.354105", "0.357287", "0.181811", "0.044198"]
+  }
+}
 ```
 
 This shows how traffic dropped to almost zero during the outage. If we chart it and set the end date to January 18 to make it clearer, we get the following:

@@ -27,20 +27,31 @@ A tab button used in the plugin and screen share tab selector. Represents a sing
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let tabButton = RtkPluginScreenShareTabButton(    image: RtkImage(image: UIImage(systemName: "square.and.arrow.up")),    title: "Screen Share")
+
+
+let tabButton = RtkPluginScreenShareTabButton(
+    image: RtkImage(image: UIImage(systemName: "square.and.arrow.up")),
+    title: "Screen Share"
+)
 ```
 
 ### With identifier
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let tabButton = RtkPluginScreenShareTabButton(    image: RtkImage(image: UIImage(systemName: "pencil.tip")),    title: "Whiteboard",    id: "whiteboard-plugin")
+
+
+let tabButton = RtkPluginScreenShareTabButton(
+    image: RtkImage(image: UIImage(systemName: "pencil.tip")),
+    title: "Whiteboard",
+    id: "whiteboard-plugin"
+)
 ```
 
 ```json

@@ -44,7 +44,7 @@ You can easily convert and resize images by requesting them through a specifical
 
 The final URL used in the request would look like this:
 
-```
+```plain
 https://www.mywebsite.com/cdn-cgi/image/width=80,quality=75/uploads/image.jpg
 ```
 

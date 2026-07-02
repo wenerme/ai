@@ -28,14 +28,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-ui-provider></rtk-ui-provider>
+```html
+<!-- component.html -->
+<rtk-ui-provider></rtk-ui-provider>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-ui-provider [config]="defaultUiConfig" [mode]="meeting" [showSetupScreen]="true"></rtk-ui-provider>
+```html
+<!-- component.html -->
+<rtk-ui-provider
+ [config]="defaultUiConfig"
+ [mode]="meeting"
+ [showSetupScreen]="true">
+</rtk-ui-provider>
 ```
 
 ```json

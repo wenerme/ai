@@ -13,9 +13,9 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Monitor and batch your website data
 
-* [ Watch this episode ](#tab-panel-9423)
-* [ Step-by-step tutorial ](#tab-panel-9424)
-* [ Series overview ](#tab-panel-9425)
+* [ Watch this episode ](#tab-panel-9714)
+* [ Step-by-step tutorial ](#tab-panel-9715)
+* [ Series overview ](#tab-panel-9716)
 
 Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.
 
@@ -51,17 +51,13 @@ The Cloudflare Wrangler CLI provides commands to monitor and manage Workflows an
 
 To list the available workflows associated with your account:
 
-Terminal window
-
-```
+```bash
 npx wrangler workflows list
 ```
 
 To list the instances of a specific workflow (for example, the `publish` workflow):
 
-Terminal window
-
-```
+```bash
 npx wrangler workflows instances list publish
 ```
 
@@ -69,9 +65,7 @@ This command will show a list of workflow instances, their status (Queued, Runni
 
 To view the details of a specific workflow instance, including its steps and their status, duration, and output:
 
-Terminal window
-
-```
+```bash
 npx wrangler workflows instances describe publish <instance-id>
 ```
 
@@ -81,9 +75,35 @@ Replace `<instance-id>` with the actual ID of a running or completed instance fr
 
 Describing a workflow instance provides a detailed breakdown of its execution:
 
-```
-Workflow Name: publishInstance ID: oPun-batch-aea07d75-95fa-448f-9573-6e435388eff7Version ID: 75665fce-24a1-4c83-a561-088aabc91e5fStatus: CompletedTrigger: APIQueued: 10/24/2024, 1:43:45 AMSuccess: YesStart: 10/24/2024, 1:43:45 AMEnd: 10/24/2024, 1:43:49 AMDuration: 4 secondsLast Successful Step: update-status-to-published-1Steps:
-Name: content-moderation-1Type: StepStart: 10/24/2024, 1:43:45 AMEnd: 10/24/2024, 1:43:45 AMDuration: 0 secondsSuccess: YesOutput: "true"Config: {"retries":{"limit":5,"delay":1000,"backoff":"exponential"},"timeout":"10 minutes"}Attempts:  Status: Completed  Start Time: Oct 23, 2024 6:44:57 PM  End Time: Oct 23, 2024 6:44:57 PM  Wall Time: 180 ms... (additional steps like create-pun-embedding-1, categorize-pun-1, add-embeddings-to-vector-store-1, update-status-to-published-1)
+```plaintext
+Workflow Name: publish
+Instance ID: oPun-batch-aea07d75-95fa-448f-9573-6e435388eff7
+Version ID: 75665fce-24a1-4c83-a561-088aabc91e5f
+Status: Completed
+Trigger: API
+Queued: 10/24/2024, 1:43:45 AM
+Success: Yes
+Start: 10/24/2024, 1:43:45 AM
+End: 10/24/2024, 1:43:49 AM
+Duration: 4 seconds
+Last Successful Step: update-status-to-published-1
+Steps:
+
+
+Name: content-moderation-1
+Type: Step
+Start: 10/24/2024, 1:43:45 AM
+End: 10/24/2024, 1:43:45 AM
+Duration: 0 seconds
+Success: Yes
+Output: "true"
+Config: {"retries":{"limit":5,"delay":1000,"backoff":"exponential"},"timeout":"10 minutes"}
+Attempts:
+  Status: Completed
+  Start Time: Oct 23, 2024 6:44:57 PM
+  End Time: Oct 23, 2024 6:44:57 PM
+  Wall Time: 180 ms
+... (additional steps like create-pun-embedding-1, categorize-pun-1, add-embeddings-to-vector-store-1, update-status-to-published-1)
 ```
 
 This output shows the status, start/end times, duration, success status, and even the output and configuration for each step within the workflow instance.

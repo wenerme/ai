@@ -32,20 +32,32 @@ The DoT hostname contains your unique location name. For example, if the DoT hos
 
 To configure a DoT client such as `dig`, specify the IP address and the DoT hostname for your location in your query. For example:
 
-```
-Hostname: 9y65g5srsm.cloudflare-gateway.comIP address: 162.159.36.5
+```txt
+Hostname: 9y65g5srsm.cloudflare-gateway.com
+IP address: 162.159.36.5
 ```
 
 Alternatively, you can use the generic DoT endpoint (`dns.cloudflare-gateway.com`) and include an `OPT` record with code `65011`. You can select a specific location for the value of the `OPT` record. For example:
 
-```
-Hostname: dns.cloudflare-gateway.comIP address: 162.159.36.5OPT Record:  - Code: 65011  - Value: 9y65g5srsm
+```txt
+Hostname: dns.cloudflare-gateway.com
+IP address: 162.159.36.5
+OPT Record:
+  - Code: 65011
+  - Value: 9y65g5srsm
 ```
 
 Some stub resolvers support DoT natively. For example, you can configure Unbound to send a DoT query:
 
-```
-# Unbound TLS Configtls-cert-bundle: "/etc/ssl/cert.pem"# Forwarding Configforward-zone: name: "." forward-tls-upstream: yes forward-addr: 162.159.36.5@853#9y65g5srsm.cloudflare-gateway.com forward-addr: 2001:db8:abcd::1234#9y65g5srsm.cloudflare-gateway.com
+```txt
+# Unbound TLS Config
+tls-cert-bundle: "/etc/ssl/cert.pem"
+# Forwarding Config
+forward-zone:
+ name: "."
+ forward-tls-upstream: yes
+ forward-addr: 162.159.36.5@853#9y65g5srsm.cloudflare-gateway.com
+ forward-addr: 2001:db8:abcd::1234#9y65g5srsm.cloudflare-gateway.com
 ```
 
 ```json

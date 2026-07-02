@@ -26,14 +26,20 @@ An icon component which accepts an svg string and renders it.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-icon></rtk-icon>
+```html
+<!-- component.html -->
+<rtk-icon></rtk-icon>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-icon icon="example" size="md" variant="primary"></rtk-icon>
+```html
+<!-- component.html -->
+<rtk-icon
+ icon="example"
+ size="md"
+ variant="primary">
+</rtk-icon>
 ```
 
 ```json

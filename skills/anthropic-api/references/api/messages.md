@@ -948,11 +948,15 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+  - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
     The model that will complete your prompt.
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+    - `"claude-sonnet-5"`
+
+      High-performance model for coding and agents
 
     - `"claude-fable-5"`
 
@@ -2901,11 +2905,15 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+    - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
       The model that will complete your prompt.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -2981,7 +2989,7 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
     Structured information about a refusal.
 
-    - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+    - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
       The policy category that triggered a refusal.
 
@@ -2992,8 +3000,6 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `explanation: string`
 
@@ -4176,11 +4182,15 @@ Learn more about token counting in our [user guide](https://platform.claude.com/
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+  - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
     The model that will complete your prompt.
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+    - `"claude-sonnet-5"`
+
+      High-performance model for coding and agents
 
     - `"claude-fable-5"`
 
@@ -9836,11 +9846,15 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+    - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
       The model that will complete your prompt.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -9916,7 +9930,7 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
     Structured information about a refusal.
 
-    - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+    - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
       The policy category that triggered a refusal.
 
@@ -9927,8 +9941,6 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `explanation: string`
 
@@ -12093,17 +12105,21 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
 ### Model
 
-- `Model = "claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more or string`
+- `Model = "claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more or string`
 
   The model that will complete your prompt.
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+  - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
     The model that will complete your prompt.
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+    - `"claude-sonnet-5"`
+
+      High-performance model for coding and agents
 
     - `"claude-fable-5"`
 
@@ -13220,7 +13236,7 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
       Structured information about a refusal.
 
-      - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+      - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
         The policy category that triggered a refusal.
 
@@ -13231,8 +13247,6 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string`
 
@@ -14015,11 +14029,15 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+      - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
         The model that will complete your prompt.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -14095,7 +14113,7 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
       Structured information about a refusal.
 
-      - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+      - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
         The policy category that triggered a refusal.
 
@@ -14106,8 +14124,6 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string`
 
@@ -14951,11 +14967,15 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+        - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
           The model that will complete your prompt.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -15031,7 +15051,7 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
         Structured information about a refusal.
 
-        - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+        - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
           The policy category that triggered a refusal.
 
@@ -15042,8 +15062,6 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `explanation: string`
 
@@ -15385,7 +15403,7 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
 
   Structured information about a refusal.
 
-  - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+  - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
     The policy category that triggered a refusal.
 
@@ -15396,8 +15414,6 @@ curl https://api.anthropic.com/v1/messages/count_tokens \
     - `"frontier_llm"`
 
     - `"reasoning_extraction"`
-
-    - `"military_weapons"`
 
   - `explanation: string`
 
@@ -21806,11 +21822,15 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+      - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
         The model that will complete your prompt.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -24419,11 +24439,15 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+          - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
             The model that will complete your prompt.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -24499,7 +24523,7 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
           Structured information about a refusal.
 
-          - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+          - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
             The policy category that triggered a refusal.
 
@@ -24510,8 +24534,6 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `explanation: string`
 
@@ -25683,11 +25705,15 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+          - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
             The model that will complete your prompt.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -25763,7 +25789,7 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
 
           Structured information about a refusal.
 
-          - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+          - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
             The policy category that triggered a refusal.
 
@@ -25774,8 +25800,6 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `explanation: string`
 
@@ -26747,11 +26771,15 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+        - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
           The model that will complete your prompt.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -26827,7 +26855,7 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
 
         Structured information about a refusal.
 
-        - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+        - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
           The policy category that triggered a refusal.
 
@@ -26838,8 +26866,6 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `explanation: string`
 
@@ -27773,11 +27799,15 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" or "claude-mythos-5" or "claude-opus-4-8" or 12 more`
+      - `"claude-sonnet-5" or "claude-fable-5" or "claude-mythos-5" or 13 more`
 
         The model that will complete your prompt.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -27853,7 +27883,7 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
 
       Structured information about a refusal.
 
-      - `category: "cyber" or "bio" or "frontier_llm" or 2 more`
+      - `category: "cyber" or "bio" or "frontier_llm" or "reasoning_extraction"`
 
         The policy category that triggered a refusal.
 
@@ -27864,8 +27894,6 @@ curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string`
 

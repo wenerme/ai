@@ -57,7 +57,7 @@ This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/
 8. In **Default Scopes**, enter a space-separated list of the scopes you configured in Access (for example, `openid email profile groups`).
 9. Select **Save**.
 10. Copy the **Callback URL**:
-```
+```txt
 https://<your-domain>.my.salesforce.com/services/authcallback/<URL Suffix>
 ```
 11. In Cloudflare One, paste the Callback URL into the **Redirect URL** field.

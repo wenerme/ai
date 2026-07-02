@@ -50,10 +50,20 @@ To create a Logpush job in the Cloudflare dashboard:
 
 The following example sends Workers logs to R2\. For more configuration options, refer to [Enable destinations](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) and [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/) in the Logs documentation.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs" \--header 'X-Auth-Key: <API_KEY>' \--header 'X-Auth-Email: <EMAIL>' \--header 'Content-Type: application/json' \--data '{  "name": "workers-logpush",  "output_options": {    "field_names": ["Event", "EventTimestampMs", "Outcome", "Exceptions", "Logs", "ScriptName"],  },  "destination_conf": "r2://<BUCKET_PATH>/{DATE}?account-id=<ACCOUNT_ID>&access-key-id=<R2_ACCESS_KEY_ID>&secret-access-key=<R2_SECRET_ACCESS_KEY>",  "dataset": "workers_trace_events",  "enabled": true}' | jq .
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs" \
+--header 'X-Auth-Key: <API_KEY>' \
+--header 'X-Auth-Email: <EMAIL>' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "workers-logpush",
+  "output_options": {
+    "field_names": ["Event", "EventTimestampMs", "Outcome", "Exceptions", "Logs", "ScriptName"],
+  },
+  "destination_conf": "r2://<BUCKET_PATH>/{DATE}?account-id=<ACCOUNT_ID>&access-key-id=<R2_ACCESS_KEY_ID>&secret-access-key=<R2_SECRET_ACCESS_KEY>",
+  "dataset": "workers_trace_events",
+  "enabled": true
+}' | jq .
 ```
 
 In Logpush, you can configure [filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) and a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) to have more control of the volume of data that is sent to your configured destination. For example, if you only want to receive logs for requests that did not result in an exception, add the following `filter` JSON property below `output_options`:
@@ -66,28 +76,53 @@ In Logpush, you can configure [filters](https://developers.cloudflare.com/logs/l
 
 Enable logging on your Worker by adding a new property, `logpush = true`, to your Wrangler file. This can be added either in the top-level configuration or under an [environment](https://developers.cloudflare.com/workers/wrangler/environments/). Any new Workers with this property will automatically get picked up by the Logpush job.
 
-* [  wrangler.jsonc ](#tab-panel-12197)
-* [  wrangler.toml ](#tab-panel-12198)
+* [  wrangler.jsonc ](#tab-panel-12217)
+* [  wrangler.toml ](#tab-panel-12218)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Top-level configuration
+  "name": "my-worker",
+  "main": "src/index.js",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "workers_dev": false,
+  "logpush": true,
+  "route": {
+    "pattern": "example.org/*",
+    "zone_name": "example.org"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Top-level configuration  "name": "my-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-07-01",  "workers_dev": false,  "logpush": true,  "route": {    "pattern": "example.org/*",    "zone_name": "example.org"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-07-01"workers_dev = falselogpush = true
-[route]pattern = "example.org/*"zone_name = "example.org"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker"
+main = "src/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+workers_dev = false
+logpush = true
+
+
+[route]
+pattern = "example.org/*"
+zone_name = "example.org"
 ```
 
 Configure via multipart script upload API:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{script_name}" \--header "Authorization: Bearer <API_TOKEN>" \--form 'metadata={"main_module": "my-worker.js", "logpush": true}' \--form '"my-worker.js"=@./my-worker.js;type=application/javascript+module'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scripts/{script_name}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--form 'metadata={"main_module": "my-worker.js", "logpush": true}' \
+--form '"my-worker.js"=@./my-worker.js;type=application/javascript+module'
 ```
 
 ### Dashboard
@@ -120,14 +155,59 @@ To illustrate this, suppose our Logpush event looks like the JSON below and the 
 
 #### Sample Input
 
-```
-{  "Exceptions": [    {      "Name": "SampleError",      "Message": "something went wrong",      "TimestampMs": 0    },    {      "Name": "AuthError",      "Message": "unable to process request authentication from client",      "TimestampMs": 1    },  ],  "Logs": [    {      "Level": "log",      "Message": ["Hello "],      "TimestampMs": 0    },    {      "Level": "log",      "Message": ["World!"],      "TimestampMs": 0    }  ]}
+```json
+{
+  "Exceptions": [
+    {
+      "Name": "SampleError",
+      "Message": "something went wrong",
+      "TimestampMs": 0
+    },
+    {
+      "Name": "AuthError",
+      "Message": "unable to process request authentication from client",
+      "TimestampMs": 1
+    },
+  ],
+  "Logs": [
+    {
+      "Level": "log",
+      "Message": ["Hello "],
+      "TimestampMs": 0
+    },
+    {
+      "Level": "log",
+      "Message": ["World!"],
+      "TimestampMs": 0
+    }
+  ]
+}
 ```
 
 #### Sample Output
 
-```
-{  "Exceptions": [    {      "name": "SampleError",      "message": "something went wrong",      "TimestampMs": 0    },    {      "name": "AuthError",      "message": "unable to <<<Logpush: exception messages truncated>>>",      "TimestampMs": 1    },  ],  "Logs": [    {      "Level": "log",      "Message": ["<<<Logpush: messages truncated>>>"],      "TimestampMs": 0    }  ]}
+```json
+{
+  "Exceptions": [
+    {
+      "name": "SampleError",
+      "message": "something went wrong",
+      "TimestampMs": 0
+    },
+    {
+      "name": "AuthError",
+      "message": "unable to <<<Logpush: exception messages truncated>>>",
+      "TimestampMs": 1
+    },
+  ],
+  "Logs": [
+    {
+      "Level": "log",
+      "Message": ["<<<Logpush: messages truncated>>>"],
+      "TimestampMs": 0
+    }
+  ]
+}
 ```
 
 ```json

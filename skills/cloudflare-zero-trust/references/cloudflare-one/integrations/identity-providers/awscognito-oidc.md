@@ -48,7 +48,7 @@ To retrieve those values:
 10. Configure the following **Hosted UI settings**:
 
   1. In **Allowed callback URLs**, add the following URL:
-  ```
+  ```txt
   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
   ```
   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -73,8 +73,20 @@ To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity
 
 ## Example API Configuration
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "auth_url": "https://<your user pool domain>/oauth2/authorize",    "token_url": "https://<your user pool domain>/oauth2/token",    "certs_url": "https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json",    "scopes": ["openid", "email", "profile"],    "claims": ["sub", "cognito:username", "name", "cognito:groups"]  },  "type": "oidc",  "name": "Amazon Cognito example"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>",
+    "auth_url": "https://<your user pool domain>/oauth2/authorize",
+    "token_url": "https://<your user pool domain>/oauth2/token",
+    "certs_url": "https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json",
+    "scopes": ["openid", "email", "profile"],
+    "claims": ["sub", "cognito:username", "name", "cognito:groups"]
+  },
+  "type": "oidc",
+  "name": "Amazon Cognito example"
+}
 ```
 
 ```json

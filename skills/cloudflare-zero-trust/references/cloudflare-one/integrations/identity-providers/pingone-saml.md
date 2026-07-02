@@ -27,7 +27,7 @@ The PingOne cloud platform from PingIdentity provides SSO identity management. C
 
   1. Select **Import from URL**.
   2. Set the **Import URL** to:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 ```
 where `<your-team-name>` is your Cloudflare One team name. 3\. Select **Import**. 4\. **Save** the configuration.

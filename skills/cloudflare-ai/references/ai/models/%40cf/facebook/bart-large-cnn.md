@@ -28,24 +28,39 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2114)
-* [  curl ](#tab-panel-2115)
+* [  TypeScript ](#tab-panel-2162)
+* [  curl ](#tab-panel-2163)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run("@cf/facebook/bart-large-cnn", {      input_text: "Workers AI allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via the Cloudflare API. With the launch of Workers AI, Cloudflare is slowly rolling out GPUs to its global network. This enables you to build and deploy ambitious AI applications that run near your users, wherever they are.",      max_length: 14    });    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run("@cf/facebook/bart-large-cnn", {
+      input_text: "Workers AI allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via the Cloudflare API. With the launch of Workers AI, Cloudflare is slowly rolling out GPUs to its global network. This enables you to build and deploy ambitious AI applications that run near your users, wherever they are.",
+      max_length: 14
+    });
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/facebook/bart-large-cnn \  -H "Authorization: Bearer {cf_api_token}" \  -d '{    "input_text": "Workers AI allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via the Cloudflare API. With the launch of Workers AI, Cloudflare is slowly rolling out GPUs to its global network. This enables you to build and deploy ambitious AI applications that run near your users, wherever they are.",    "max_length": 14  }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/facebook/bart-large-cnn \
+  -H "Authorization: Bearer {cf_api_token}" \
+  -d '{
+    "input_text": "Workers AI allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via the Cloudflare API. With the launch of Workers AI, Cloudflare is slowly rolling out GPUs to its global network. This enables you to build and deploy ambitious AI applications that run near your users, wherever they are.",
+    "max_length": 14
+  }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2116)
-* [ Output ](#tab-panel-2117)
+* [ Input ](#tab-panel-2164)
+* [ Output ](#tab-panel-2165)
 
 input\_text
 

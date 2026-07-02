@@ -61,14 +61,50 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Create an account ruleset
+**Create an account ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Example custom ruleset",    "kind": "custom",    "description": "Example ruleset description",    "rules": [        {            "action": "log",            "expression": "cf.zone.name eq \"example.com\""        }    ],    "phase": "http_request_firewall_custom"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Example custom ruleset",
+    "kind": "custom",
+    "description": "Example ruleset description",
+    "rules": [
+        {
+            "action": "log",
+            "expression": "cf.zone.name eq \"example.com\""
+        }
+    ],
+    "phase": "http_request_firewall_custom"
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Example custom ruleset",    "description": "Example ruleset description",    "kind": "custom",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "log",        "expression": "cf.zone.name eq \"example.com\"",        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Example custom ruleset",
+    "description": "Example ruleset description",
+    "kind": "custom",
+    "version": "1",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "log",
+        "expression": "cf.zone.name eq \"example.com\"",
+        "last_updated": "2025-03-17T15:42:37.917815Z"
+      }
+    ],
+    "last_updated": "2025-03-17T15:42:37.917815Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Example - Create a zone-level phase entry point ruleset
@@ -104,14 +140,56 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Create a zone ruleset
+**Create a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Zone-level phase entry point",    "kind": "zone",    "description": "This ruleset executes a managed ruleset.",    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>"            }        }    ],    "phase": "http_request_firewall_managed"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Zone-level phase entry point",
+    "kind": "zone",
+    "description": "This ruleset executes a managed ruleset.",
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "true",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>"
+            }
+        }
+    ],
+    "phase": "http_request_firewall_managed"
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point",    "description": "This ruleset executes a managed ruleset.",    "kind": "zone",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>"        },        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level phase entry point",
+    "description": "This ruleset executes a managed ruleset.",
+    "kind": "zone",
+    "version": "1",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "expression": "true",
+        "action_parameters": {
+          "id": "<MANAGED_RULESET_ID>"
+        },
+        "last_updated": "2025-03-17T15:42:37.917815Z"
+      }
+    ],
+    "last_updated": "2025-03-17T15:42:37.917815Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Example - Create an account-level phase entry point ruleset
@@ -134,14 +212,56 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Create an account ruleset
+**Create an account ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Account-level phase entry point",    "kind": "root",    "description": "This ruleset executes a rate limiting ruleset.",    "rules": [        {            "action": "execute",            "expression": "(cf.zone.plan eq \"ENT\")",            "action_parameters": {                "id": "<RATE_LIMITING_RULESET_ID>"            }        }    ],    "phase": "http_ratelimit"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Account-level phase entry point",
+    "kind": "root",
+    "description": "This ruleset executes a rate limiting ruleset.",
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "(cf.zone.plan eq \"ENT\")",
+            "action_parameters": {
+                "id": "<RATE_LIMITING_RULESET_ID>"
+            }
+        }
+    ],
+    "phase": "http_ratelimit"
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Account-level phase entry point",    "description": "This ruleset executes a rate limiting ruleset.",    "kind": "root",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "expression": "(cf.zone.plan eq \"ENT\")",        "action_parameters": {          "id": "<RATE_LIMITING_RULESET_ID>"        },        "last_updated": "2024-09-17T15:42:37.917815Z"      }    ],    "last_updated": "2024-09-17T15:42:37.917815Z",    "phase": "http_ratelimit"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Account-level phase entry point",
+    "description": "This ruleset executes a rate limiting ruleset.",
+    "kind": "root",
+    "version": "1",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "expression": "(cf.zone.plan eq \"ENT\")",
+        "action_parameters": {
+          "id": "<RATE_LIMITING_RULESET_ID>"
+        },
+        "last_updated": "2024-09-17T15:42:37.917815Z"
+      }
+    ],
+    "last_updated": "2024-09-17T15:42:37.917815Z",
+    "phase": "http_ratelimit"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Warning

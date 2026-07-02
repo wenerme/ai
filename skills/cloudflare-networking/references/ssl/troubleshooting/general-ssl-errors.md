@@ -143,9 +143,7 @@ Note
 
 The following [openssl ↗](https://www.openssl.org/) command might help troubleshooting TLS handshake between the client and the Cloudflare network edge:
 
-Terminal window
-
-```
+```sh
 openssl s_client -connect example.com:443 -servername example.com version
 ```
 

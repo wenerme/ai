@@ -27,16 +27,29 @@ A component which shows count of total joined participants in a meeting.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkViewerCount } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkViewerCount />;}
+
+
+function MyComponent() {
+  return <RtkViewerCount />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkViewerCount } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkViewerCount      meeting={meeting}      variant="primary"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkViewerCount
+      meeting={meeting}
+      variant="primary"
+    />
+  );
+}
 ```
 
 ```json

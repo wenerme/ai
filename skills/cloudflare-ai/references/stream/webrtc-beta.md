@@ -32,10 +32,20 @@ Create a live input using one of the two options:
 [ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * Make a POST request to the [/live\_inputs API endpoint](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)
 
-API response from a POST request to /live\_inputs
+**API response from a POST request to /live\_inputs**
 
-```
-{  "uid": "1a553f11a88915d093d45eda660d2f8c", ...  "webRTC": {    "url": "https://customer-<CODE>.cloudflarestream.com/<SECRET>/webRTC/publish"  },  "webRTCPlayback": {    "url": "https://customer-<CODE>.cloudflarestream.com/<INPUT_UID>/webRTC/play"  },...}
+```json
+{
+  "uid": "1a553f11a88915d093d45eda660d2f8c",
+ ...
+  "webRTC": {
+    "url": "https://customer-<CODE>.cloudflarestream.com/<SECRET>/webRTC/publish"
+  },
+  "webRTCPlayback": {
+    "url": "https://customer-<CODE>.cloudflarestream.com/<INPUT_UID>/webRTC/play"
+  },
+...
+}
 ```
 
 ## Step 2: Go live using WHIP
@@ -50,12 +60,19 @@ Copy the URL from either:
 
 Paste this URL into the example code.
 
-Simplified example code
+**Simplified example code**
 
-```
-// Add a <video> element to the HTML page this code runs in:// <video id="input-video" autoplay muted></video>
+```javascript
+// Add a <video> element to the HTML page this code runs in:
+// <video id="input-video" autoplay muted></video>
+
+
 import WHIPClient from "./WHIPClient.js";
-const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTC URL from your live input hereconst videoElement = document.getElementById("input-video");const client = new WHIPClient(url, videoElement);
+
+
+const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTC URL from your live input here
+const videoElement = document.getElementById("input-video");
+const client = new WHIPClient(url, videoElement);
 ```
 
 Once the creator grants permission to their camera and microphone, live video and audio will automatically start being streamed to Cloudflare, using WebRTC.
@@ -74,12 +91,19 @@ There are no limits on the number of concurrent viewers.
 
 Paste this URL into the example code.
 
-Simplified example code
+**Simplified example code**
 
-```
-// Add a <video> element to the HTML page this code runs in:// <video id="output-video" autoplay muted></video>
+```javascript
+// Add a <video> element to the HTML page this code runs in:
+// <video id="output-video" autoplay muted></video>
+
+
 import WHEPClient from "./WHEPClient.js";
-const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTCPlayback URL from your live input hereconst videoElement = document.getElementById("output-video");const client = new WHEPClient(url, videoElement);
+
+
+const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTCPlayback URL from your live input here
+const videoElement = document.getElementById("output-video");
+const client = new WHEPClient(url, videoElement);
 ```
 
 As long as the creator is actively streaming, viewers should see their broadcast in their browser, with less than 1 second of latency.

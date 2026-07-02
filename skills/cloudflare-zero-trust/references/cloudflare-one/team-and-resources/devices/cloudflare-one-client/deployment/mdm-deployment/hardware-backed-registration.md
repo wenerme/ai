@@ -68,8 +68,24 @@ Hardware-backed registration is turned off by default. To turn it on, set the [h
 
 The following example turns on hardware-backed registration for the `example-team` organization:
 
-```
-<dict>  <key>organization_configs</key>  <dict>    <key>example-team</key>    <dict>      <key>hardware_backed_registration</key>      <true/>    </dict>  </dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>example-team</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>organization_configs</key>
+  <dict>
+    <key>example-team</key>
+    <dict>
+      <key>hardware_backed_registration</key>
+      <true/>
+    </dict>
+  </dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>example-team</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 ## Limitations

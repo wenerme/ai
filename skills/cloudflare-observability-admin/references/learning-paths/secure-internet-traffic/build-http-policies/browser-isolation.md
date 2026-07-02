@@ -28,8 +28,8 @@ As you have begun deploying Cloudflare Zero Trust, you may have started to visua
 
 You can control potential risk and shape user behavior without applying heavy-handed block policies by applying policies to isolate user traffic to applications that match your defined categories. You can then set additional parameters in the policy, such as the ability to restrict copy/paste and upload/download. Users can still access information in the tools -- if not use the tools to a lesser extent -- while you minimize the risk of data loss.
 
-* [ Dashboard ](#tab-panel-9316)
-* [ API ](#tab-panel-9317)
+* [ Dashboard ](#tab-panel-9607)
+* [ API ](#tab-panel-9608)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -46,10 +46,38 @@ You can control potential risk and shape user behavior without applying heavy-ha
   * _Disable file uploads_
 6. Select **Create policy**.
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "isolate",    "description": "Block copy, paste, and upload/download for shadow IT",    "enabled": true,    "filters": [        "http"    ],    "name": "Block shadow IT interaction",    "precedence": 0,    "traffic": "http.request.host in <SHADOW_IT_LIST_UUID>",    "rule_settings": {        "block_page_enabled": false,        "block_reason": "",        "override_ips": null,        "override_host": "",        "l4override": null,        "biso_admin_controls": {            "dp": false,            "dcp": true,            "dd": true,            "du": true,            "dk": false,            "dcr": false        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "isolate",
+    "description": "Block copy, paste, and upload/download for shadow IT",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Block shadow IT interaction",
+    "precedence": 0,
+    "traffic": "http.request.host in <SHADOW_IT_LIST_UUID>",
+    "rule_settings": {
+        "block_page_enabled": false,
+        "block_reason": "",
+        "override_ips": null,
+        "override_host": "",
+        "l4override": null,
+        "biso_admin_controls": {
+            "dp": false,
+            "dcp": true,
+            "dd": true,
+            "du": true,
+            "dk": false,
+            "dcr": false
+        }
+    }
+  }'
 ```
 
 ### Isolate all "gray-listed" traffic
@@ -64,8 +92,8 @@ You can accomplish this by creating the following policies:
 
 In this context, if some traffic is unknown to your organization, Cloudflare will isolate it by default. Cloudflare will also prevent any malicious code from being executed client side, with additional controls available.
 
-* [ Dashboard ](#tab-panel-9314)
-* [ API ](#tab-panel-9315)
+* [ Dashboard ](#tab-panel-9605)
+* [ API ](#tab-panel-9606)
 
 * Allow known applications and websites:
 
@@ -83,22 +111,82 @@ In this context, if some traffic is unknown to your organization, Cloudflare wil
 | -------- | ------------- | ----- | ------- |
 | Host     | matches regex | .\*   | Isolate |
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "isolate",    "description": "Allow known applications and websites",    "enabled": true,    "filters": [        "http"    ],    "name": "Allow known apps and sites",    "precedence": 0,    "traffic": "http.request.domains in <TRUSTED_DOMAINS_LIST_UUID>",    "rule_settings": {        "block_page_enabled": false,        "block_reason": "",        "override_ips": null,        "override_host": "",        "l4override": null    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "isolate",
+    "description": "Allow known applications and websites",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Allow known apps and sites",
+    "precedence": 0,
+    "traffic": "http.request.domains in <TRUSTED_DOMAINS_LIST_UUID>",
+    "rule_settings": {
+        "block_page_enabled": false,
+        "block_reason": "",
+        "override_ips": null,
+        "override_host": "",
+        "l4override": null
+    }
+  }'
 ```
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "isolate",    "description": "Block all security risks",    "enabled": true,    "filters": [        "http"    ],    "name": "Block security risks",    "precedence": 0,    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "rule_settings": {        "block_page_enabled": false,        "block_reason": "",        "override_ips": null,        "override_host": "",        "l4override": null    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "isolate",
+    "description": "Block all security risks",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Block security risks",
+    "precedence": 0,
+    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+    "rule_settings": {
+        "block_page_enabled": false,
+        "block_reason": "",
+        "override_ips": null,
+        "override_host": "",
+        "l4override": null
+    }
+  }'
 ```
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "isolate",    "description": "Isolate all other traffic",    "enabled": true,    "filters": [        "http"    ],    "name": "Isolate traffic",    "precedence": 0,    "traffic": "http.request.host matches \".*\"",    "rule_settings": {        "block_page_enabled": false,        "block_reason": "",        "override_ips": null,        "override_host": "",        "l4override": null    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "isolate",
+    "description": "Isolate all other traffic",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Isolate traffic",
+    "precedence": 0,
+    "traffic": "http.request.host matches \".*\"",
+    "rule_settings": {
+        "block_page_enabled": false,
+        "block_reason": "",
+        "override_ips": null,
+        "override_host": "",
+        "l4override": null
+    }
+  }'
 ```
 
 ### Vendor-chain using link-based isolation

@@ -29,10 +29,19 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Turnstile Sites Write`
 * `Account Settings Write`
 
-Create a Turnstile Widget
+**Create a Turnstile Widget**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "domains": [        "example.com"    ],    "mode": "managed",    "name": "My Example Turnstile Widget"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "domains": [
+        "example.com"
+    ],
+    "mode": "managed",
+    "name": "My Example Turnstile Widget"
+  }'
 ```
 
 ### Manage widgets via the API
@@ -45,10 +54,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Settings Write`
 * `Account Settings Read`
 
-List Turnstile Widgets
+**List Turnstile Widgets**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Required API token permissions
@@ -59,22 +70,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Settings Write`
 * `Account Settings Read`
 
-Turnstile Widget Details
+**Turnstile Widget Details**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-
-Required API token permissions
-
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Turnstile Sites Write`
-* `Account Settings Write`
-
-Update a Turnstile Widget
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "domains": [        "203.0.113.1",        "cloudflare.com",        "blog.example.com"    ],    "mode": "invisible",    "name": "blog.cloudflare.com login form",    "clearance_level": "interactive"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Required API token permissions
@@ -83,10 +84,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Turnstile Sites Write`
 * `Account Settings Write`
 
-Rotate Secret for a Turnstile Widget
+**Update a Turnstile Widget**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY/rotate_secret" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "invalidate_immediately": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "domains": [
+        "203.0.113.1",
+        "cloudflare.com",
+        "blog.example.com"
+    ],
+    "mode": "invisible",
+    "name": "blog.cloudflare.com login form",
+    "clearance_level": "interactive"
+  }'
 ```
 
 Required API token permissions
@@ -95,10 +108,29 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Turnstile Sites Write`
 * `Account Settings Write`
 
-Delete a Turnstile Widget
+**Rotate Secret for a Turnstile Widget**
 
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY/rotate_secret" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "invalidate_immediately": false
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+* `Turnstile Sites Write`
+* `Account Settings Write`
+
+**Delete a Turnstile Widget**
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

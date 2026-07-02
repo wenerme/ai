@@ -33,8 +33,8 @@ A monitor issues health monitor requests at regular intervals to evaluate the he
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
-* [ Dashboard ](#tab-panel-9433)
-* [ API ](#tab-panel-9434)
+* [ Dashboard ](#tab-panel-9724)
+* [ API ](#tab-panel-9725)
 
 **Set up the monitor**
 
@@ -97,18 +97,77 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Create Monitor
+**Create Monitor**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "https",    "description": "Login page monitor",    "method": "GET",    "path": "/health",    "header": {        "Host": [            "example.com"        ],        "X-App-ID": [            "abc123"        ]    },    "port": 8080,    "timeout": 3,    "retries": 0,    "interval": 90,    "expected_body": "alive",    "expected_codes": "2xx",    "follow_redirects": true,    "allow_insecure": true,    "consecutive_up": 3,    "consecutive_down": 2,    "probe_zone": "example.com"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "https",
+    "description": "Login page monitor",
+    "method": "GET",
+    "path": "/health",
+    "header": {
+        "Host": [
+            "example.com"
+        ],
+        "X-App-ID": [
+            "abc123"
+        ]
+    },
+    "port": 8080,
+    "timeout": 3,
+    "retries": 0,
+    "interval": 90,
+    "expected_body": "alive",
+    "expected_codes": "2xx",
+    "follow_redirects": true,
+    "allow_insecure": true,
+    "consecutive_up": 3,
+    "consecutive_down": 2,
+    "probe_zone": "example.com"
+  }'
 ```
 
 The response contains the complete definition of the new monitor.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": ":monitor-id",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "type": "https",    "description": "Login page monitor",    "method": "GET",    "path": "/health",    "header": {      "Host": [        "example.com"      ],      "X-App-ID": [        "abc123"      ]    },    "port": 8080,    "timeout": 3,    "retries": 0,    "interval": 90,    "expected_body": "alive",    "expected_codes": "2xx",    "follow_redirects": true,    "allow_insecure": true,    "consecutive_up": 3,    "consecutive_down": 2,    "probe_zone": "example.com"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": ":monitor-id",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "type": "https",
+    "description": "Login page monitor",
+    "method": "GET",
+    "path": "/health",
+    "header": {
+      "Host": [
+        "example.com"
+      ],
+      "X-App-ID": [
+        "abc123"
+      ]
+    },
+    "port": 8080,
+    "timeout": 3,
+    "retries": 0,
+    "interval": 90,
+    "expected_body": "alive",
+    "expected_codes": "2xx",
+    "follow_redirects": true,
+    "allow_insecure": true,
+    "consecutive_up": 3,
+    "consecutive_down": 2,
+    "probe_zone": "example.com"
+  }
+}
 ```
 
 **Prepare your servers**
@@ -140,8 +199,8 @@ Within Cloudflare, pools represent your endpoints and how they are organized. As
 
 If you are familiar with DNS terminology, think of a pool as a “record set,” except Cloudflare only returns addresses that are considered healthy. You can attach health monitors to individual pools for customized monitoring. A pool can have either a single monitor or a monitor group attached — but not both.
 
-* [ Dashboard ](#tab-panel-9437)
-* [ API ](#tab-panel-9438)
+* [ Dashboard ](#tab-panel-9728)
+* [ API ](#tab-panel-9729)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -183,32 +242,132 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Create Pool
+**Create Pool**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Primary data center - Provider XYZ",    "name": "primary-dc-1",    "enabled": false,    "load_shedding": {        "default_percent": 0,        "default_policy": "random",        "session_percent": 0,        "session_policy": "hash"    },    "minimum_origins": 2,    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",    "check_regions": [        "WEU",        "ENAM"    ],    "origins": [        {            "name": "app-server-1",            "address": "0.0.0.0",            "enabled": true,            "weight": 0.56,            "header": {                "Host": [                    "example.com"                ]            }        }    ],    "origin_steering": {        "policy": "random"    },    "notification_filter": {        "origin": {            "disable": false,            "healthy": null        },        "pool": {            "disable": false,            "healthy": null        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Primary data center - Provider XYZ",
+    "name": "primary-dc-1",
+    "enabled": false,
+    "load_shedding": {
+        "default_percent": 0,
+        "default_policy": "random",
+        "session_percent": 0,
+        "session_policy": "hash"
+    },
+    "minimum_origins": 2,
+    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+    "check_regions": [
+        "WEU",
+        "ENAM"
+    ],
+    "origins": [
+        {
+            "name": "app-server-1",
+            "address": "0.0.0.0",
+            "enabled": true,
+            "weight": 0.56,
+            "header": {
+                "Host": [
+                    "example.com"
+                ]
+            }
+        }
+    ],
+    "origin_steering": {
+        "policy": "random"
+    },
+    "notification_filter": {
+        "origin": {
+            "disable": false,
+            "healthy": null
+        },
+        "pool": {
+            "disable": false,
+            "healthy": null
+        }
+    }
+  }'
 ```
 
 The response contains the complete definition of the new pool.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "17b5962d775c646f3f9725cbc7a53df4",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "description": "Primary data center - Provider XYZ",    "name": "primary-dc-1",    "enabled": false,    "load_shedding": {      "default_percent": 0,      "default_policy": "random",      "session_percent": 0,      "session_policy": "hash"    },    "minimum_origins": 2,    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",    "check_regions": [      "WEU",      "ENAM"    ],    "origins": [      {        "name": "app-server-1",        "address": "0.0.0.0",        "enabled": true,        "weight": 0.56,        "header": {          "Host": [            "example.com"          ]        }      }    ],    "origin_steering": {      "policy": "random"    },    "notification_filter": {      "origin": {        "disable": false,        "healthy": null      },      "pool": {        "disable": false,        "healthy": null      }    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "17b5962d775c646f3f9725cbc7a53df4",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "description": "Primary data center - Provider XYZ",
+    "name": "primary-dc-1",
+    "enabled": false,
+    "load_shedding": {
+      "default_percent": 0,
+      "default_policy": "random",
+      "session_percent": 0,
+      "session_policy": "hash"
+    },
+    "minimum_origins": 2,
+    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+    "check_regions": [
+      "WEU",
+      "ENAM"
+    ],
+    "origins": [
+      {
+        "name": "app-server-1",
+        "address": "0.0.0.0",
+        "enabled": true,
+        "weight": 0.56,
+        "header": {
+          "Host": [
+            "example.com"
+          ]
+        }
+      }
+    ],
+    "origin_steering": {
+      "policy": "random"
+    },
+    "notification_filter": {
+      "origin": {
+        "disable": false,
+        "healthy": null
+      },
+      "pool": {
+        "disable": false,
+        "healthy": null
+      }
+    }
+  }
+}
 ```
 
 After creating the pool, you would also want to [create a new notification](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
 
-```
-"alert_type": "load_balancing_health_alert","filters": {  "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,  "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],  "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]}
+```json
+"alert_type": "load_balancing_health_alert",
+"filters": {
+  "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,
+  "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],
+  "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]
+}
 ```
 
 ## Confirm pool health
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-9431)
-* [ API ](#tab-panel-9432)
+* [ Dashboard ](#tab-panel-9722)
+* [ API ](#tab-panel-9723)
 
 To confirm pool health using the dashboard:
 
@@ -235,8 +394,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-9435)
-* [ API ](#tab-panel-9436)
+* [ Dashboard ](#tab-panel-9726)
+* [ API ](#tab-panel-9727)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -309,18 +468,92 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancers Write`
 
-Create Load Balancer
+**Create Load Balancer**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Load Balancer for lb.example.com",    "name": "lb.example.com",    "enabled": true,    "ttl": 30,    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",    "default_pools": [        "17b5962d775c646f3f9725cbc7a53df4",        "9290f38c5d07c2e2f4df57b1f61d4196",        "00920f38ce07c2e2f4df50b1f61d4194"    ],    "proxied": true,    "steering_policy": "random_steering",    "session_affinity": "cookie",    "session_affinity_attributes": {        "samesite": "Auto",        "secure": "Auto",        "drain_duration": 100,        "zero_downtime_failover": "sticky"    },    "session_affinity_ttl": 5000,    "adaptive_routing": {        "failover_across_pools": true    },    "location_strategy": {        "prefer_ecs": "always",        "mode": "resolver_ip"    },    "random_steering": {        "pool_weights": {            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5        },        "default_weight": 0.2    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Load Balancer for lb.example.com",
+    "name": "lb.example.com",
+    "enabled": true,
+    "ttl": 30,
+    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+    "default_pools": [
+        "17b5962d775c646f3f9725cbc7a53df4",
+        "9290f38c5d07c2e2f4df57b1f61d4196",
+        "00920f38ce07c2e2f4df50b1f61d4194"
+    ],
+    "proxied": true,
+    "steering_policy": "random_steering",
+    "session_affinity": "cookie",
+    "session_affinity_attributes": {
+        "samesite": "Auto",
+        "secure": "Auto",
+        "drain_duration": 100,
+        "zero_downtime_failover": "sticky"
+    },
+    "session_affinity_ttl": 5000,
+    "adaptive_routing": {
+        "failover_across_pools": true
+    },
+    "location_strategy": {
+        "prefer_ecs": "always",
+        "mode": "resolver_ip"
+    },
+    "random_steering": {
+        "pool_weights": {
+            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+        },
+        "default_weight": 0.2
+    }
+  }'
 ```
 
 The response contains the complete definition of the new load balancer.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "699d98642c564d2e855e9661899b7252",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "description": "Load Balancer for lb.example.com",    "name": "lb.example.com",    "enabled": true,    "ttl": 30,    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",    "default_pools": [      "17b5962d775c646f3f9725cbc7a53df4",      "9290f38c5d07c2e2f4df57b1f61d4196",      "00920f38ce07c2e2f4df50b1f61d4194"    ],    "proxied": true,    "steering_policy": "random_steering",    "session_affinity": "cookie",    "session_affinity_attributes": {      "samesite": "Auto",      "secure": "Auto",      "drain_duration": 100,      "zero_downtime_failover": "sticky"    },    "session_affinity_ttl": 5000,    "random_steering": {      "pool_weights": {        "de90f38ced07c2e2f4df50b1f61d4194": 0.3,        "9290f38c5d07c2e2f4df57b1f61d4196": 0.5      },      "default_weight": 0.2    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "699d98642c564d2e855e9661899b7252",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "description": "Load Balancer for lb.example.com",
+    "name": "lb.example.com",
+    "enabled": true,
+    "ttl": 30,
+    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+    "default_pools": [
+      "17b5962d775c646f3f9725cbc7a53df4",
+      "9290f38c5d07c2e2f4df57b1f61d4196",
+      "00920f38ce07c2e2f4df50b1f61d4194"
+    ],
+    "proxied": true,
+    "steering_policy": "random_steering",
+    "session_affinity": "cookie",
+    "session_affinity_attributes": {
+      "samesite": "Auto",
+      "secure": "Auto",
+      "drain_duration": 100,
+      "zero_downtime_failover": "sticky"
+    },
+    "session_affinity_ttl": 5000,
+    "random_steering": {
+      "pool_weights": {
+        "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+        "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+      },
+      "default_weight": 0.2
+    }
+  }
+}
 ```
 
 ## Optional - Review load balancing analytics

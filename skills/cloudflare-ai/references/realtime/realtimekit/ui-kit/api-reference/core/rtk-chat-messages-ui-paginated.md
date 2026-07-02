@@ -26,19 +26,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-messages-ui-paginated></rtk-chat-messages-ui-paginated>
 ```
 
 ### With Properties
 
-```
-<rtk-chat-messages-ui-paginated size="md"></rtk-chat-messages-ui-paginated>
+```html
+<rtk-chat-messages-ui-paginated
+ size="md">
+</rtk-chat-messages-ui-paginated>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat-messages-ui-paginated");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat-messages-ui-paginated");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

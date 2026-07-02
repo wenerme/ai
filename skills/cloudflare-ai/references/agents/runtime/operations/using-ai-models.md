@@ -26,30 +26,100 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/).
 
-* [  JavaScript ](#tab-panel-6555)
-* [  TypeScript ](#tab-panel-6556)
+* [  JavaScript ](#tab-panel-6739)
+* [  TypeScript ](#tab-panel-6740)
 
-src/index.js
+**src/index.js**
 
+```js
+import { Agent } from "agents";
+import { streamText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class MyAgent extends Agent {
+  async onConnect(connection, ctx) {
+    //
+  }
+
+
+  async onMessage(connection, message) {
+    let msg = JSON.parse(message);
+    await this.queryReasoningModel(connection, msg.prompt);
+  }
+
+
+  async queryReasoningModel(connection, userPrompt) {
+    try {
+      const workersai = createWorkersAI({ binding: this.env.AI });
+      const result = streamText({
+        model: workersai("@cf/zai-org/glm-4.7-flash"),
+        prompt: userPrompt,
+      });
+
+
+      for await (const chunk of result.textStream) {
+        if (chunk) {
+          connection.send(JSON.stringify({ type: "chunk", content: chunk }));
+        }
+      }
+
+
+      connection.send(JSON.stringify({ type: "done" }));
+    } catch (error) {
+      connection.send(JSON.stringify({ type: "error", error: error }));
+    }
+  }
+}
 ```
-import { Agent } from "agents";import { streamText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class MyAgent extends Agent {  async onConnect(connection, ctx) {    //  }
-  async onMessage(connection, message) {    let msg = JSON.parse(message);    await this.queryReasoningModel(connection, msg.prompt);  }
-  async queryReasoningModel(connection, userPrompt) {    try {      const workersai = createWorkersAI({ binding: this.env.AI });      const result = streamText({        model: workersai("@cf/zai-org/glm-4.7-flash"),        prompt: userPrompt,      });
-      for await (const chunk of result.textStream) {        if (chunk) {          connection.send(JSON.stringify({ type: "chunk", content: chunk }));        }      }
-      connection.send(JSON.stringify({ type: "done" }));    } catch (error) {      connection.send(JSON.stringify({ type: "error", error: error }));    }  }}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-import { Agent } from "agents";import { streamText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-interface Env {  AI: Ai;}
-export class MyAgent extends Agent<Env> {  async onConnect(connection: Connection, ctx: ConnectionContext) {    //  }
-  async onMessage(connection: Connection, message: WSMessage) {    let msg = JSON.parse(message);    await this.queryReasoningModel(connection, msg.prompt);  }
-  async queryReasoningModel(connection: Connection, userPrompt: string) {    try {      const workersai = createWorkersAI({ binding: this.env.AI });      const result = streamText({        model: workersai("@cf/zai-org/glm-4.7-flash"),        prompt: userPrompt,      });
-      for await (const chunk of result.textStream) {        if (chunk) {          connection.send(JSON.stringify({ type: "chunk", content: chunk }));        }      }
-      connection.send(JSON.stringify({ type: "done" }));    } catch (error) {      connection.send(JSON.stringify({ type: "error", error: error }));    }  }}
+```ts
+import { Agent } from "agents";
+import { streamText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+interface Env {
+  AI: Ai;
+}
+
+
+export class MyAgent extends Agent<Env> {
+  async onConnect(connection: Connection, ctx: ConnectionContext) {
+    //
+  }
+
+
+  async onMessage(connection: Connection, message: WSMessage) {
+    let msg = JSON.parse(message);
+    await this.queryReasoningModel(connection, msg.prompt);
+  }
+
+
+  async queryReasoningModel(connection: Connection, userPrompt: string) {
+    try {
+      const workersai = createWorkersAI({ binding: this.env.AI });
+      const result = streamText({
+        model: workersai("@cf/zai-org/glm-4.7-flash"),
+        prompt: userPrompt,
+      });
+
+
+      for await (const chunk of result.textStream) {
+        if (chunk) {
+          connection.send(JSON.stringify({ type: "chunk", content: chunk }));
+        }
+      }
+
+
+      connection.send(JSON.stringify({ type: "done" }));
+    } catch (error) {
+      connection.send(JSON.stringify({ type: "error", error: error }));
+    }
+  }
+}
 ```
 
 You can also persist AI model responses back to [Agent state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) using `this.setState`. If a user disconnects, read the message history back and send it to the user when they reconnect.
@@ -60,82 +130,172 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-6549)
-* [  TypeScript ](#tab-panel-6550)
+* [  JavaScript ](#tab-panel-6733)
+* [  TypeScript ](#tab-panel-6734)
 
-src/index.js
+**src/index.js**
 
-```
+```js
 import { Agent } from "agents";
-export class MyAgent extends Agent {  async onRequest(request) {    const stream = await this.env.AI.run(      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",      {        prompt: "Build me a Cloudflare Worker that returns JSON.",        stream: true,      },    );
-    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  }}
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const stream = await this.env.AI.run(
+      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      {
+        prompt: "Build me a Cloudflare Worker that returns JSON.",
+        stream: true,
+      },
+    );
+
+
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  }
+}
 ```
 
-src/index.ts
+**src/index.ts**
 
-```
+```ts
 import { Agent } from "agents";
-interface Env {  AI: Ai;}
-export class MyAgent extends Agent<Env> {  async onRequest(request: Request) {    const stream = await this.env.AI.run(      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",      {        prompt: "Build me a Cloudflare Worker that returns JSON.",        stream: true,      },    );
-    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  }}
+
+
+interface Env {
+  AI: Ai;
+}
+
+
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request) {
+    const stream = await this.env.AI.run(
+      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      {
+        prompt: "Build me a Cloudflare Worker that returns JSON.",
+        stream: true,
+      },
+    );
+
+
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  }
+}
 ```
 
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-6543)
-* [  wrangler.toml ](#tab-panel-6544)
+* [  wrangler.jsonc ](#tab-panel-6727)
+* [  wrangler.toml ](#tab-panel-6728)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "ai": {
+    "binding": "AI",
+  },
+}
 ```
-{  "ai": {    "binding": "AI",  },}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI"
+```toml
+[ai]
+binding = "AI"
 ```
 
 ### Model routing
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-6553)
-* [  TypeScript ](#tab-panel-6554)
+* [  JavaScript ](#tab-panel-6737)
+* [  TypeScript ](#tab-panel-6738)
 
-src/index.js
+**src/index.js**
 
-```
+```js
 import { Agent } from "agents";
-export class MyAgent extends Agent {  async onRequest(request) {    const response = await this.env.AI.run(      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",      {        prompt: "Build me a Cloudflare Worker that returns JSON.",      },      {        gateway: {          id: "{gateway_id}",          skipCache: false,          cacheTtl: 3360,        },      },    );
-    return Response.json(response);  }}
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const response = await this.env.AI.run(
+      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      {
+        prompt: "Build me a Cloudflare Worker that returns JSON.",
+      },
+      {
+        gateway: {
+          id: "{gateway_id}",
+          skipCache: false,
+          cacheTtl: 3360,
+        },
+      },
+    );
+
+
+    return Response.json(response);
+  }
+}
 ```
 
-src/index.ts
+**src/index.ts**
 
-```
+```ts
 import { Agent } from "agents";
-interface Env {  AI: Ai;}
-export class MyAgent extends Agent<Env> {  async onRequest(request: Request) {    const response = await this.env.AI.run(      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",      {        prompt: "Build me a Cloudflare Worker that returns JSON.",      },      {        gateway: {          id: "{gateway_id}",          skipCache: false,          cacheTtl: 3360,        },      },    );
-    return Response.json(response);  }}
+
+
+interface Env {
+  AI: Ai;
+}
+
+
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request) {
+    const response = await this.env.AI.run(
+      "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      {
+        prompt: "Build me a Cloudflare Worker that returns JSON.",
+      },
+      {
+        gateway: {
+          id: "{gateway_id}",
+          skipCache: false,
+          cacheTtl: 3360,
+        },
+      },
+    );
+
+
+    return Response.json(response);
+  }
+}
 ```
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-6545)
-* [  wrangler.toml ](#tab-panel-6546)
+* [  wrangler.jsonc ](#tab-panel-6729)
+* [  wrangler.toml ](#tab-panel-6730)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "ai": {
+    "binding": "AI",
+  },
+}
 ```
-{  "ai": {    "binding": "AI",  },}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI"
+```toml
+[ai]
+binding = "AI"
 ```
 
 Visit the [AI Gateway documentation](https://developers.cloudflare.com/ai-gateway/) to learn how to configure a gateway and retrieve a gateway ID.
@@ -162,24 +322,56 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-6551)
-* [  TypeScript ](#tab-panel-6552)
+* [  JavaScript ](#tab-panel-6735)
+* [  TypeScript ](#tab-panel-6736)
 
-src/index.js
+**src/index.js**
 
+```js
+import { Agent } from "agents";
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const { text } = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "Build me an AI agent on Cloudflare Workers",
+    });
+
+
+    return Response.json({ modelResponse: text });
+  }
+}
 ```
-import { Agent } from "agents";import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class MyAgent extends Agent {  async onRequest(request) {    const workersai = createWorkersAI({ binding: this.env.AI });    const { text } = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "Build me an AI agent on Cloudflare Workers",    });
-    return Response.json({ modelResponse: text });  }}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-import { Agent } from "agents";import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-interface Env {  AI: Ai;}
-export class MyAgent extends Agent<Env> {  async onRequest(request: Request): Promise<Response> {    const workersai = createWorkersAI({ binding: this.env.AI });    const { text } = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "Build me an AI agent on Cloudflare Workers",    });
-    return Response.json({ modelResponse: text });  }}
+```ts
+import { Agent } from "agents";
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+interface Env {
+  AI: Ai;
+}
+
+
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request): Promise<Response> {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const { text } = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "Build me an AI agent on Cloudflare Workers",
+    });
+
+
+    return Response.json({ modelResponse: text });
+  }
+}
 ```
 
 You can swap the provider to use OpenAI, Anthropic, or any other AI SDK-compatible adapter:
@@ -202,23 +394,49 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-6547)
-* [  TypeScript ](#tab-panel-6548)
+* [  JavaScript ](#tab-panel-6731)
+* [  TypeScript ](#tab-panel-6732)
 
-src/index.js
+**src/index.js**
 
+```js
+import { Agent } from "agents";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const { text } = await generateText({
+      model: openai("gpt-4o"),
+      prompt: "Build me an AI agent on Cloudflare Workers",
+    });
+
+
+    return Response.json({ modelResponse: text });
+  }
+}
 ```
-import { Agent } from "agents";import { generateText } from "ai";import { openai } from "@ai-sdk/openai";
-export class MyAgent extends Agent {  async onRequest(request) {    const { text } = await generateText({      model: openai("gpt-4o"),      prompt: "Build me an AI agent on Cloudflare Workers",    });
-    return Response.json({ modelResponse: text });  }}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-import { Agent } from "agents";import { generateText } from "ai";import { openai } from "@ai-sdk/openai";
-export class MyAgent extends Agent {  async onRequest(request: Request): Promise<Response> {    const { text } = await generateText({      model: openai("gpt-4o"),      prompt: "Build me an AI agent on Cloudflare Workers",    });
-    return Response.json({ modelResponse: text });  }}
+```ts
+import { Agent } from "agents";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request: Request): Promise<Response> {
+    const { text } = await generateText({
+      model: openai("gpt-4o"),
+      prompt: "Build me an AI agent on Cloudflare Workers",
+    });
+
+
+    return Response.json({ modelResponse: text });
+  }
+}
 ```
 
 ## OpenAI-compatible endpoints
@@ -227,29 +445,99 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/runtime/communication/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-6557)
-* [  TypeScript ](#tab-panel-6558)
+* [  JavaScript ](#tab-panel-6741)
+* [  TypeScript ](#tab-panel-6742)
 
-src/index.js
+**src/index.js**
 
+```js
+import { Agent } from "agents";
+import { OpenAI } from "openai";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const client = new OpenAI({
+      apiKey: this.env.GEMINI_API_KEY,
+      baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+    });
+
+
+    let { readable, writable } = new TransformStream();
+    let writer = writable.getWriter();
+    const textEncoder = new TextEncoder();
+
+
+    this.ctx.waitUntil(
+      (async () => {
+        const stream = await client.chat.completions.create({
+          model: "gemini-2.0-flash",
+          messages: [
+            { role: "user", content: "Write me a Cloudflare Worker." },
+          ],
+          stream: true,
+        });
+
+
+        for await (const part of stream) {
+          writer.write(
+            textEncoder.encode(part.choices[0]?.delta?.content || ""),
+          );
+        }
+        writer.close();
+      })(),
+    );
+
+
+    return new Response(readable);
+  }
+}
 ```
-import { Agent } from "agents";import { OpenAI } from "openai";
-export class MyAgent extends Agent {  async onRequest(request) {    const client = new OpenAI({      apiKey: this.env.GEMINI_API_KEY,      baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",    });
-    let { readable, writable } = new TransformStream();    let writer = writable.getWriter();    const textEncoder = new TextEncoder();
-    this.ctx.waitUntil(      (async () => {        const stream = await client.chat.completions.create({          model: "gemini-2.0-flash",          messages: [            { role: "user", content: "Write me a Cloudflare Worker." },          ],          stream: true,        });
-        for await (const part of stream) {          writer.write(            textEncoder.encode(part.choices[0]?.delta?.content || ""),          );        }        writer.close();      })(),    );
-    return new Response(readable);  }}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-import { Agent } from "agents";import { OpenAI } from "openai";
-export class MyAgent extends Agent {  async onRequest(request: Request): Promise<Response> {    const client = new OpenAI({      apiKey: this.env.GEMINI_API_KEY,      baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",    });
-    let { readable, writable } = new TransformStream();    let writer = writable.getWriter();    const textEncoder = new TextEncoder();
-    this.ctx.waitUntil(      (async () => {        const stream = await client.chat.completions.create({          model: "gemini-2.0-flash",          messages: [            { role: "user", content: "Write me a Cloudflare Worker." },          ],          stream: true,        });
-        for await (const part of stream) {          writer.write(            textEncoder.encode(part.choices[0]?.delta?.content || ""),          );        }        writer.close();      })(),    );
-    return new Response(readable);  }}
+```ts
+import { Agent } from "agents";
+import { OpenAI } from "openai";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request: Request): Promise<Response> {
+    const client = new OpenAI({
+      apiKey: this.env.GEMINI_API_KEY,
+      baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+    });
+
+
+    let { readable, writable } = new TransformStream();
+    let writer = writable.getWriter();
+    const textEncoder = new TextEncoder();
+
+
+    this.ctx.waitUntil(
+      (async () => {
+        const stream = await client.chat.completions.create({
+          model: "gemini-2.0-flash",
+          messages: [
+            { role: "user", content: "Write me a Cloudflare Worker." },
+          ],
+          stream: true,
+        });
+
+
+        for await (const part of stream) {
+          writer.write(
+            textEncoder.encode(part.choices[0]?.delta?.content || ""),
+          );
+        }
+        writer.close();
+      })(),
+    );
+
+
+    return new Response(readable);
+  }
+}
 ```
 
 ```json

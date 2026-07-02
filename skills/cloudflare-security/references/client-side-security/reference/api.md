@@ -24,7 +24,7 @@ Refer to [API deprecations](https://developers.cloudflare.com/fundamentals/api/r
 
 You can obtain the complete endpoint by appending the [client-side security API](https://developers.cloudflare.com/api/resources/page%5Fshield/methods/get/) endpoints to the Cloudflare API base URL:
 
-```
+```txt
 https://api.cloudflare.com/client/v4
 ```
 
@@ -72,14 +72,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-Get Page Shield settings
+**Get Page Shield settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": {    "enabled": true,    "updated_at": "2023-05-14T11:47:55.677555Z",    "use_cloudflare_reporting_endpoint": true,    "use_connection_url_path": false  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "enabled": true,
+    "updated_at": "2023-05-14T11:47:55.677555Z",
+    "use_cloudflare_reporting_endpoint": true,
+    "use_connection_url_path": false
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Enable client-side security
@@ -93,14 +106,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Domain Page Shield`
 * `Zone Settings Write`
 
-Update Page Shield settings
+**Update Page Shield settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
+  --request PUT \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "enabled": true
+  }'
 ```
 
-```
-{  "result": {    "enabled": true,    "updated_at": "2023-05-14T11:50:41.756996Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "enabled": true,
+    "updated_at": "2023-05-14T11:50:41.756996Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Fetch list of detected scripts
@@ -119,14 +146,53 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-List Page Shield scripts
+**List Page Shield scripts**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": [    {      "id": "8337233faec2357ff84465a919534e4d",      "url": "https://malicious.example.com/badscript.js",      "added_at": "2023-05-18T10:51:10.09615Z",      "first_seen_at": "2023-05-18T10:51:08Z",      "last_seen_at": "2023-05-22T09:57:54Z",      "host": "example.net",      "domain_reported_malicious": false,      "url_reported_malicious": true,      "malicious_url_categories": ["Malware"],      "first_page_url": "http://malicious.example.com/page_one.html",      "status": "active",      "url_contains_cdn_cgi_path": false,      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",      "js_integrity_score": 10,      "obfuscation_score": 10,      "dataflow_score": 8,      "malware_score": 8,      "cryptomining_score": 9,      "magecart_score": 8,      "fetched_at": "2023-05-21T16:58:07Z"    }    // (...)  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "page": 1,    "per_page": 15,    "count": 15,    "total_count": 24,    "total_pages": 2  }}
+```json
+{
+  "result": [
+    {
+      "id": "8337233faec2357ff84465a919534e4d",
+      "url": "https://malicious.example.com/badscript.js",
+      "added_at": "2023-05-18T10:51:10.09615Z",
+      "first_seen_at": "2023-05-18T10:51:08Z",
+      "last_seen_at": "2023-05-22T09:57:54Z",
+      "host": "example.net",
+      "domain_reported_malicious": false,
+      "url_reported_malicious": true,
+      "malicious_url_categories": ["Malware"],
+      "first_page_url": "http://malicious.example.com/page_one.html",
+      "status": "active",
+      "url_contains_cdn_cgi_path": false,
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "js_integrity_score": 10,
+      "obfuscation_score": 10,
+      "dataflow_score": 8,
+      "malware_score": 8,
+      "cryptomining_score": 9,
+      "magecart_score": 8,
+      "fetched_at": "2023-05-21T16:58:07Z"
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "page": 1,
+    "per_page": 15,
+    "count": 15,
+    "total_count": 24,
+    "total_pages": 2
+  }
+}
 ```
 
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
@@ -147,14 +213,52 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-List Page Shield scripts
+**List Page Shield scripts**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15&status=infrequent" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15&status=infrequent" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": [    {      "id": "83c8da2267394ce8465b74c299658fea",      "url": "https://scripts.example.com/anotherbadscript.js",      "added_at": "2023-05-17T13:16:03.419619Z",      "first_seen_at": "2023-05-17T13:15:23Z",      "last_seen_at": "2023-05-18T09:05:20Z",      "host": "example.net",      "domain_reported_malicious": false,      "url_reported_malicious": false,      "first_page_url": "http://malicious.example.com/page_one.html",      "status": "infrequent",      "url_contains_cdn_cgi_path": false,      "hash": "9245aad577e846dd9b990b1b32425a3fae4aad8b8a28441a8b80084b6bb75a45",      "js_integrity_score": 48,      "obfuscation_score": 49,      "dataflow_score": 45,      "malware_score": 45,      "cryptomining_score": 37,      "magecart_score": 49,      "fetched_at": "2023-05-18T03:58:07Z"    }    // (...)  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "page": 1,    "per_page": 15,    "count": 15,    "total_count": 17,    "total_pages": 2  }}
+```json
+{
+  "result": [
+    {
+      "id": "83c8da2267394ce8465b74c299658fea",
+      "url": "https://scripts.example.com/anotherbadscript.js",
+      "added_at": "2023-05-17T13:16:03.419619Z",
+      "first_seen_at": "2023-05-17T13:15:23Z",
+      "last_seen_at": "2023-05-18T09:05:20Z",
+      "host": "example.net",
+      "domain_reported_malicious": false,
+      "url_reported_malicious": false,
+      "first_page_url": "http://malicious.example.com/page_one.html",
+      "status": "infrequent",
+      "url_contains_cdn_cgi_path": false,
+      "hash": "9245aad577e846dd9b990b1b32425a3fae4aad8b8a28441a8b80084b6bb75a45",
+      "js_integrity_score": 48,
+      "obfuscation_score": 49,
+      "dataflow_score": 45,
+      "malware_score": 45,
+      "cryptomining_score": 37,
+      "magecart_score": 49,
+      "fetched_at": "2023-05-18T03:58:07Z"
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "page": 1,
+    "per_page": 15,
+    "count": 15,
+    "total_count": 17,
+    "total_pages": 2
+  }
+}
 ```
 
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
@@ -175,14 +279,60 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-Get a Page Shield script
+**Get a Page Shield script**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts/8337233faec2357ff84465a919534e4d" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts/8337233faec2357ff84465a919534e4d" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": {    "id": "8337233faec2357ff84465a919534e4d",    "url": "https://malicious.example.com/badscript.js",    "added_at": "2023-05-18T10:51:10.09615Z",    "first_seen_at": "2023-05-18T10:51:08Z",    "last_seen_at": "2023-05-22T09:57:54Z",    "host": "example.net",    "domain_reported_malicious": false,    "url_reported_malicious": true,    "malicious_url_categories": ["Malware"],    "first_page_url": "http://malicious.example.com/page_one.html",    "status": "active",    "url_contains_cdn_cgi_path": false,    "hash": "9245aad577e846dd9b990b1b32425a3fae4aad8b8a28441a8b80084b6bb75a45",    "js_integrity_score": 48,    "obfuscation_score": 49,    "dataflow_score": 45,    "malware_score": 42,    "cryptomining_score": 32,    "magecart_score": 44,    "fetched_at": "2023-05-21T16:58:07Z",    "page_urls": [      "http://malicious.example.com/page_two.html",      "http://malicious.example.com/page_three.html",      "http://malicious.example.com/page_four.html"    ],    "versions": [      {        "hash": "9245aad577e846dd9b990b1b32425a3fae4aad8b8a28441a8b80084b6bb75a45",        "js_integrity_score": 48,        "obfuscation_score": 49,        "dataflow_score": 45,        "malware_score": 42,        "cryptomining_score": 32,        "magecart_score": 44,        "fetched_at": "2023-05-21T16:58:07Z"      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "8337233faec2357ff84465a919534e4d",
+    "url": "https://malicious.example.com/badscript.js",
+    "added_at": "2023-05-18T10:51:10.09615Z",
+    "first_seen_at": "2023-05-18T10:51:08Z",
+    "last_seen_at": "2023-05-22T09:57:54Z",
+    "host": "example.net",
+    "domain_reported_malicious": false,
+    "url_reported_malicious": true,
+    "malicious_url_categories": ["Malware"],
+    "first_page_url": "http://malicious.example.com/page_one.html",
+    "status": "active",
+    "url_contains_cdn_cgi_path": false,
+    "hash": "9245aad577e846dd9b990b1b32425a3fae4aad8b8a28441a8b80084b6bb75a45",
+    "js_integrity_score": 48,
+    "obfuscation_score": 49,
+    "dataflow_score": 45,
+    "malware_score": 42,
+    "cryptomining_score": 32,
+    "magecart_score": 44,
+    "fetched_at": "2023-05-21T16:58:07Z",
+    "page_urls": [
+      "http://malicious.example.com/page_two.html",
+      "http://malicious.example.com/page_three.html",
+      "http://malicious.example.com/page_four.html"
+    ],
+    "versions": [
+      {
+        "hash": "9245aad577e846dd9b990b1b32425a3fae4aad8b8a28441a8b80084b6bb75a45",
+        "js_integrity_score": 48,
+        "obfuscation_score": 49,
+        "dataflow_score": 45,
+        "malware_score": 42,
+        "cryptomining_score": 32,
+        "magecart_score": 44,
+        "fetched_at": "2023-05-21T16:58:07Z"
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
@@ -203,14 +353,46 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-List Page Shield connections
+**List Page Shield connections**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections?page=1&per_page=15" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections?page=1&per_page=15" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": [    {      "id": "0a7bb628776f4e50a50d8594c4a01740",      "url": "https://malicious.example.com",      "added_at": "2022-09-18T10:51:10.09615Z",      "first_seen_at": "2022-09-18T10:51:08Z",      "last_seen_at": "2022-09-02T09:57:54Z",      "host": "example.net",      "domain_reported_malicious": true,      "malicious_domain_categories": ["Malware", "Spyware"],      "url_reported_malicious": false,      "malicious_url_categories": [],      "first_page_url": "https://example.net/one.html",      "status": "active",      "url_contains_cdn_cgi_path": false    }    // (...)  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "page": 1,    "per_page": 15,    "count": 15,    "total_count": 16,    "total_pages": 2  }}
+```json
+{
+  "result": [
+    {
+      "id": "0a7bb628776f4e50a50d8594c4a01740",
+      "url": "https://malicious.example.com",
+      "added_at": "2022-09-18T10:51:10.09615Z",
+      "first_seen_at": "2022-09-18T10:51:08Z",
+      "last_seen_at": "2022-09-02T09:57:54Z",
+      "host": "example.net",
+      "domain_reported_malicious": true,
+      "malicious_domain_categories": ["Malware", "Spyware"],
+      "url_reported_malicious": false,
+      "malicious_url_categories": [],
+      "first_page_url": "https://example.net/one.html",
+      "status": "active",
+      "url_contains_cdn_cgi_path": false
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "page": 1,
+    "per_page": 15,
+    "count": 15,
+    "total_count": 16,
+    "total_pages": 2
+  }
+}
 ```
 
 For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/).
@@ -229,14 +411,36 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-Get a Page Shield connection
+**Get a Page Shield connection**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections/0a7bb628776f4e50a50d8594c4a01740" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections/0a7bb628776f4e50a50d8594c4a01740" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": {    "id": "0a7bb628776f4e50a50d8594c4a01740",    "url": "https://malicious.example.com",    "added_at": "2022-09-18T10:51:10.09615Z",    "first_seen_at": "2022-09-18T10:51:08Z",    "last_seen_at": "2022-09-02T09:57:54Z",    "host": "example.net",    "domain_reported_malicious": true,    "malicious_domain_categories": ["Malware", "Spyware"],    "url_reported_malicious": false,    "malicious_url_categories": [],    "first_page_url": "https://example.net/one.html",    "status": "active",    "url_contains_cdn_cgi_path": false  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "0a7bb628776f4e50a50d8594c4a01740",
+    "url": "https://malicious.example.com",
+    "added_at": "2022-09-18T10:51:10.09615Z",
+    "first_seen_at": "2022-09-18T10:51:08Z",
+    "last_seen_at": "2022-09-02T09:57:54Z",
+    "host": "example.net",
+    "domain_reported_malicious": true,
+    "malicious_domain_categories": ["Malware", "Spyware"],
+    "url_reported_malicious": false,
+    "malicious_url_categories": [],
+    "first_page_url": "https://example.net/one.html",
+    "status": "active",
+    "url_contains_cdn_cgi_path": false
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Fetch list of detected cookies
@@ -255,14 +459,48 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-List Page Shield Cookies
+**List Page Shield Cookies**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies?page=1&per_page=15" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies?page=1&per_page=15" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": [    {      "id": "beee03ada7e047e79f076785d8cd8b8e",      "type": "first_party",      "name": "PHPSESSID",      "host": "example.net",      "domain_attribute": "example.net",      "expires_attribute": "2024-10-21T12:28:20Z",      "http_only_attribute": true,      "max_age_attribute": null,      "path_attribute": "/store",      "same_site_attribute": "strict",      "secure_attribute": true,      "first_seen_at": "2024-05-06T10:51:08Z",      "last_seen_at": "2024-05-07T11:56:01Z",      "first_page_url": "example.net/store/products",      "page_urls": ["example.net/store/products/1"]    }    // (...)  ],  "success": true,  "errors": [],  "messages": [],  "result_info": {    "page": 1,    "per_page": 15,    "count": 15,    "total_count": 16,    "total_pages": 2  }}
+```json
+{
+  "result": [
+    {
+      "id": "beee03ada7e047e79f076785d8cd8b8e",
+      "type": "first_party",
+      "name": "PHPSESSID",
+      "host": "example.net",
+      "domain_attribute": "example.net",
+      "expires_attribute": "2024-10-21T12:28:20Z",
+      "http_only_attribute": true,
+      "max_age_attribute": null,
+      "path_attribute": "/store",
+      "same_site_attribute": "strict",
+      "secure_attribute": true,
+      "first_seen_at": "2024-05-06T10:51:08Z",
+      "last_seen_at": "2024-05-07T11:56:01Z",
+      "first_page_url": "example.net/store/products",
+      "page_urls": ["example.net/store/products/1"]
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "page": 1,
+    "per_page": 15,
+    "count": 15,
+    "total_count": 16,
+    "total_pages": 2
+  }
+}
 ```
 
 For details on the available filtering, paging, and sorting parameters, refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#pagination).
@@ -281,14 +519,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-Get a Page Shield cookie
+**Get a Page Shield cookie**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies/beee03ada7e047e79f076785d8cd8b8e" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies/beee03ada7e047e79f076785d8cd8b8e" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": {    "id": "beee03ada7e047e79f076785d8cd8b8e",    "type": "first_party",    "name": "PHPSESSID",    "host": "example.net",    "domain_attribute": "example.net",    "expires_attribute": "2024-10-21T12:28:20Z",    "http_only_attribute": true,    "max_age_attribute": null,    "path_attribute": "/store",    "same_site_attribute": "strict",    "secure_attribute": true,    "first_seen_at": "2024-05-06T10:51:08Z",    "last_seen_at": "2024-05-07T11:56:01Z",    "first_page_url": "example.net/store/products",    "page_urls": ["example.net/store/products/1"]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "beee03ada7e047e79f076785d8cd8b8e",
+    "type": "first_party",
+    "name": "PHPSESSID",
+    "host": "example.net",
+    "domain_attribute": "example.net",
+    "expires_attribute": "2024-10-21T12:28:20Z",
+    "http_only_attribute": true,
+    "max_age_attribute": null,
+    "path_attribute": "/store",
+    "same_site_attribute": "strict",
+    "secure_attribute": true,
+    "first_seen_at": "2024-05-06T10:51:08Z",
+    "last_seen_at": "2024-05-07T11:56:01Z",
+    "first_page_url": "example.net/store/products",
+    "page_urls": ["example.net/store/products/1"]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Create a content security rule
@@ -315,14 +577,36 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Domain Page Shield`
 * `Zone Settings Write`
 
-Create a Page Shield policy
+**Create a Page Shield policy**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "description": "My first content security rule in log mode",    "action": "log",    "expression": "http.host eq \"myapp.example.com\"",    "enabled": "true",    "value": "script-src myapp.example.com cdnjs.cloudflare.com https://www.google-analytics.com/analytics.js '\''self'\''"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "description": "My first content security rule in log mode",
+    "action": "log",
+    "expression": "http.host eq \"myapp.example.com\"",
+    "enabled": "true",
+    "value": "script-src myapp.example.com cdnjs.cloudflare.com https://www.google-analytics.com/analytics.js '\''self'\''"
+  }'
 ```
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "<RULE_ID>",    "description": "My first content security rule in log mode",    "action": "log",    "expression": "http.host eq \"myapp.example.com\"",    "enabled": "true",    "value": "script-src myapp.example.com cdnjs.cloudflare.com https://www.google-analytics.com/analytics.js 'self'"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "<RULE_ID>",
+    "description": "My first content security rule in log mode",
+    "action": "log",
+    "expression": "http.host eq \"myapp.example.com\"",
+    "enabled": "true",
+    "value": "script-src myapp.example.com cdnjs.cloudflare.com https://www.google-analytics.com/analytics.js 'self'"
+  }
+}
 ```
 
 To create a content security rule with an _Allow_ action instead of _Log_, use `"action": "allow"` in the request body. In the case of such rule, all scripts not allowed by the rule would be blocked.

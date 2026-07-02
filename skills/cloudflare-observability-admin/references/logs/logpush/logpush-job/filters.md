@@ -75,10 +75,28 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "static-assets",    "output_options": {        "field_names": [            "ClientIP",            "EdgeStartTimestamp",            "RayID"        ],        "sample_rate": 0.1,        "timestamp_format": "rfc3339",        "CVE-2021-44228": true    },    "dataset": "http_requests",    "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2/"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "static-assets",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "sample_rate": 0.1,
+        "timestamp_format": "rfc3339",
+        "CVE-2021-44228": true
+    },
+    "dataset": "http_requests",
+    "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2/"
+  }'
 ```
 
 ### Dashboard
@@ -95,6 +113,6 @@ For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.c
 6. Select **Next** to continue the setting up of your Logpush job.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#page","headline":"Filters · Cloudflare Logs docs","description":"Apply filters to Logpush job log output.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#page","headline":"Filters · Cloudflare Logs docs","description":"Apply filters to Logpush job log output.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/filters/","name":"Filters"}}]}
 ```

@@ -20,8 +20,8 @@ Use a standard naming convention when building all policies. Policy names should
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-9318)
-* [ API ](#tab-panel-9319)
+* [ Dashboard ](#tab-panel-9609)
+* [ API ](#tab-panel-9610)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -46,18 +46,54 @@ Cloudflare also recommends adding a policy to block [known threats](https://deve
 | Account | Zero Trust | Edit       |
 2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
 3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, if you have configured TLS decryption, some applications that use [embedded certificates](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#inspection-limitations) may not support HTTP inspection, such as some Google products. You can create a policy to bypass inspection for these applications:
-Create a Zero Trust Gateway rule
+
+**Create a Zero Trust Gateway rule**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Do not inspect applications",
+    "description": "Bypass TLS decryption for unsupported applications",
+    "precedence": 0,
+    "enabled": true,
+    "action": "off",
+    "filters": [
+        "http"
+    ],
+    "traffic": "any(app.type.ids[*] in {16})",
+    "identity": "",
+    "device_posture": ""
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Do not inspect applications",    "description": "Bypass TLS decryption for unsupported applications",    "precedence": 0,    "enabled": true,    "action": "off",    "filters": [        "http"    ],    "traffic": "any(app.type.ids[*] in {16})",    "identity": "",    "device_posture": ""  }'
-```
-```
-{   "success": true,   "errors": [],   "messages": []}
+```sh
+{
+   "success": true,
+   "errors": [],
+   "messages": []
+}
 ```
 The API will respond with a summary of the policy and the result of your request.
 Cloudflare also recommends adding a policy to block [known threats](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) such as Command & Control, Botnet and Malware based on Cloudflare's threat intelligence:
-Create a Zero Trust Gateway rule
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block known risks",    "description": "Block all default Cloudflare HTTP security categories",    "precedence": 0,    "enabled": true,    "action": "block",    "filters": [        "http"    ],    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "identity": "",    "device_posture": ""  }'
+
+**Create a Zero Trust Gateway rule**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Block known risks",
+    "description": "Block all default Cloudflare HTTP security categories",
+    "precedence": 0,
+    "enabled": true,
+    "action": "block",
+    "filters": [
+        "http"
+    ],
+    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+    "identity": "",
+    "device_posture": ""
+  }'
 ```
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).

@@ -27,19 +27,25 @@ A component which shows count of total joined participants in a meeting.
 
 ### Basic Usage
 
-```
+```html
 <rtk-viewer-count></rtk-viewer-count>
 ```
 
 ### With Properties
 
-```
-<rtk-viewer-count variant="primary"></rtk-viewer-count>
+```html
+<rtk-viewer-count
+ variant="primary">
+</rtk-viewer-count>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-viewer-count");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-viewer-count");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

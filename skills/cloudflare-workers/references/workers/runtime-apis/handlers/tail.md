@@ -22,20 +22,32 @@ To configure a Tail Worker, refer to [Tail Workers documentation](https://develo
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-12069)
-* [  Python ](#tab-panel-12070)
+* [  JavaScript ](#tab-panel-12364)
+* [  Python ](#tab-panel-12365)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async tail(events, env, ctx) {
+    fetch("<YOUR_ENDPOINT>", {
+      method: "POST",
+      body: JSON.stringify(events),
+    })
+  }
+}
 ```
-export default {  async tail(events, env, ctx) {    fetch("<YOUR_ENDPOINT>", {      method: "POST",      body: JSON.stringify(events),    })  }}
-```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, fetchimport json
-class Default(WorkerEntrypoint):    async def tail(self, events, env, ctx):        await fetch("<YOUR_ENDPOINT>", method="POST", body=json.dumps(events))
+```python
+from workers import WorkerEntrypoint, fetch
+import json
+
+
+class Default(WorkerEntrypoint):
+    async def tail(self, events, env, ctx):
+        await fetch("<YOUR_ENDPOINT>", method="POST", body=json.dumps(events))
 ```
 
 ### Parameters

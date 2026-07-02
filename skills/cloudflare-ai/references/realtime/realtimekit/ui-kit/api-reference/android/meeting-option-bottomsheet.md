@@ -24,10 +24,11 @@ A bottom sheet shown when tapping the more button. Contains options for particip
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val meetingOptions = RtkMeetingOptionBottomSheet()meetingOptions.show(fragmentManager, "MEETING_OPTIONS_TAG")
+```kotlin
+val meetingOptions = RtkMeetingOptionBottomSheet()
+meetingOptions.show(fragmentManager, "MEETING_OPTIONS_TAG")
 ```
 
 ```json

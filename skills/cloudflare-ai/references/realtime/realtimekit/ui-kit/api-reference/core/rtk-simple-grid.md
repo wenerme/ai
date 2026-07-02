@@ -32,19 +32,26 @@ A grid component which renders only the participants in a simple grid.
 
 ### Basic Usage
 
-```
+```html
 <rtk-simple-grid></rtk-simple-grid>
 ```
 
 ### With Properties
 
-```
-<rtk-simple-grid aspectRatio="example"></rtk-simple-grid>
+```html
+<rtk-simple-grid
+ aspectRatio="example">
+</rtk-simple-grid>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-simple-grid");
-  el.gap= 42;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-simple-grid");
+
+
+  el.gap= 42;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

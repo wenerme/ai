@@ -18,26 +18,185 @@ The following API call will request Firewall Events over a one hour period, and 
 
 ## API Call
 
-Terminal window
-
-```
-echo '{ "query":  "query ListFirewallEvents($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) {    viewer {      zones(filter: { zoneTag: $zoneTag }) {        firewallEventsAdaptive(          filter: $filter          limit: 10          orderBy: [datetime_DESC]        ) {          action          clientAsn          clientCountryName          clientIP          clientRequestPath          clientRequestQuery          datetime          source          userAgent        }      }    }  }",  "variables": {    "zoneTag": "<CLOUDFLARE_ZONE_TAG>",    "filter": {      "datetime_geq": "2022-07-24T11:00:00Z",      "datetime_leq": "2022-07-24T12:00:00Z"    }  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
+```bash
+echo '{ "query":
+  "query ListFirewallEvents($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) {
+    viewer {
+      zones(filter: { zoneTag: $zoneTag }) {
+        firewallEventsAdaptive(
+          filter: $filter
+          limit: 10
+          orderBy: [datetime_DESC]
+        ) {
+          action
+          clientAsn
+          clientCountryName
+          clientIP
+          clientRequestPath
+          clientRequestQuery
+          datetime
+          source
+          userAgent
+        }
+      }
+    }
+  }",
+  "variables": {
+    "zoneTag": "<CLOUDFLARE_ZONE_TAG>",
+    "filter": {
+      "datetime_geq": "2022-07-24T11:00:00Z",
+      "datetime_leq": "2022-07-24T12:00:00Z"
+    }
+  }
+}' | tr -d '\n' | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @-
 ```
 
 The results returned will be in JSON (as requested), so piping the output to `jq` will make them easier to read, for example:
 
-Terminal window
+```bash
+... | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @- | jq .
 
-```
-... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
-#=> {#=>   "data": {#=>     "viewer": {#=>       "zones": [#=>         {#=>           "firewallEventsAdaptive": [#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "block",#=>               "clientAsn": "5089",#=>               "clientCountryName": "GB",#=>               "clientIP": "203.0.113.69",#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:11:24Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "58224",#=>               "clientCountryName": "IR",#=>               "clientIP": "2.183.175.37",#=>               "clientRequestPath": "/api/v2",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:00:54Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"#=>             },#=>             {#=>               "action": "log",#=>               "clientAsn": "58224",#=>               "clientCountryName": "IR",#=>               "clientIP": "2.183.175.37",#=>               "clientRequestPath": "/api/v2",#=>               "clientRequestQuery": "",#=>               "datetime": "2020-04-24T10:00:54Z",#=>               "source": "waf",#=>               "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"#=>             }#=>           ]#=>         }#=>       ]#=>     }#=>   },#=>   "errors": null#=> }
+
+#=> {
+#=>   "data": {
+#=>     "viewer": {
+#=>       "zones": [
+#=>         {
+#=>           "firewallEventsAdaptive": [
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "block",
+#=>               "clientAsn": "5089",
+#=>               "clientCountryName": "GB",
+#=>               "clientIP": "203.0.113.69",
+#=>               "clientRequestPath": "/%3Cscript%3Ealert()%3C/script%3E",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:11:24Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "58224",
+#=>               "clientCountryName": "IR",
+#=>               "clientIP": "2.183.175.37",
+#=>               "clientRequestPath": "/api/v2",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:00:54Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+#=>             },
+#=>             {
+#=>               "action": "log",
+#=>               "clientAsn": "58224",
+#=>               "clientCountryName": "IR",
+#=>               "clientIP": "2.183.175.37",
+#=>               "clientRequestPath": "/api/v2",
+#=>               "clientRequestQuery": "",
+#=>               "datetime": "2020-04-24T10:00:54Z",
+#=>               "source": "waf",
+#=>               "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+#=>             }
+#=>           ]
+#=>         }
+#=>       ]
+#=>     }
+#=>   },
+#=>   "errors": null
+#=> }
 ```
 
 ## Retention and query window
 
 The `firewallEventsAdaptive` dataset, which powers [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/), has different data retention limits from the datasets used in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/#limits). Queries that exceed the data retention window return an error similar to the following:
 
-```
+```txt
 cannot request data older than 2678400s
 ```
 
@@ -45,8 +204,25 @@ For more information on the limits per plan for the `firewallEventsAdaptive` dat
 
 To discover the exact limits for your zone programmatically, query the `settings` node:
 
-```
-{  viewer {    zones(filter: { zoneTag: "<CLOUDFLARE_ZONE_TAG>" }) {      settings {        firewallEventsAdaptive {          maxDuration          maxPageSize          notOlderThan        }        httpRequestsAdaptive {          maxDuration          maxPageSize          notOlderThan        }      }    }  }}
+```graphql
+{
+  viewer {
+    zones(filter: { zoneTag: "<CLOUDFLARE_ZONE_TAG>" }) {
+      settings {
+        firewallEventsAdaptive {
+          maxDuration
+          maxPageSize
+          notOlderThan
+        }
+        httpRequestsAdaptive {
+          maxDuration
+          maxPageSize
+          notOlderThan
+        }
+      }
+    }
+  }
+}
 ```
 
 For more on the `settings` node, refer to [Settings node](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/settings/).

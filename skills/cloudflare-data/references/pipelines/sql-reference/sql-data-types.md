@@ -40,7 +40,7 @@ List values can be indexed using 1-indexed subscript notation (`v[1]` is the fir
 
 Lists can be constructed via `[]` literals:
 
-```
+```sql
 SELECT [1, 2, 3] as numbers
 ```
 
@@ -52,7 +52,7 @@ Structs combine related fields into a single value. In stream schemas, structs a
 
 Example creating a struct in SQL:
 
-```
+```sql
 SELECT struct('user123', 'purchase', 29.99) as event_data FROM events
 ```
 

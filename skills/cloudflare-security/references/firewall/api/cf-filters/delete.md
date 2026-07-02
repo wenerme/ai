@@ -16,32 +16,59 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 This example deletes filters with IDs `{filter_id_1}` and `{filter_id_2}`.
 
-Request
+**Request**
 
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/{zone_id}/filters?id={filter_id_1}&id={filter_id_2}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/filters?id={filter_id_1}&id={filter_id_2}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<FILTER_ID_1>"    },    {      "id": "<FILTER_ID_2>"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<FILTER_ID_1>"
+    },
+    {
+      "id": "<FILTER_ID_2>"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Delete a single filter
 
 This example deletes a single filter with ID `{filter_id}`.
 
-Request
+**Request**
 
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/{zone_id}/filters/{filter_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/filters/{filter_id}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<FILTER_ID>"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<FILTER_ID>"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

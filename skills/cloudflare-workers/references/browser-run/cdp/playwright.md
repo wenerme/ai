@@ -50,33 +50,56 @@ The following script demonstrates how to connect to a Browser Run session, navig
 
 Create a file named `script.js`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const { chromium } = require("playwright-core");
-const ACCOUNT_ID = process.env.CF_ACCOUNT_ID || "<ACCOUNT_ID>";const API_TOKEN = process.env.CF_API_TOKEN || "<API_TOKEN>";
+
+
+const ACCOUNT_ID = process.env.CF_ACCOUNT_ID || "<ACCOUNT_ID>";
+const API_TOKEN = process.env.CF_API_TOKEN || "<API_TOKEN>";
+
+
 const browserWSEndpoint = `wss://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000`;
-async function main() {  const browser = await chromium.connectOverCDP(browserWSEndpoint, {    headers: {      Authorization: `Bearer ${API_TOKEN}`,    },  });
-  const context = browser.contexts()[0];  const page = context.pages()[0] || (await context.newPage());  await page.goto("https://developers.cloudflare.com");
-  const title = await page.title();  console.log(`Page title: ${title}`);
+
+
+async function main() {
+  const browser = await chromium.connectOverCDP(browserWSEndpoint, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  });
+
+
+  const context = browser.contexts()[0];
+  const page = context.pages()[0] || (await context.newPage());
+  await page.goto("https://developers.cloudflare.com");
+
+
+  const title = await page.title();
+  console.log(`Page title: ${title}`);
+
+
   await page.screenshot({ path: "screenshot.png" });
-  await browser.close();}
+
+
+  await browser.close();
+}
+
+
 main().catch(console.error);
 ```
 
 Replace `ACCOUNT_ID` with your Cloudflare account ID and `API_TOKEN` with your Browser Run API token, or set them as environment variables:
 
-Terminal window
-
-```
-export CF_ACCOUNT_ID="<ACCOUNT_ID>"export CF_API_TOKEN="<API_TOKEN>"
+```bash
+export CF_ACCOUNT_ID="<ACCOUNT_ID>"
+export CF_API_TOKEN="<API_TOKEN>"
 ```
 
 ## Run the script
 
-Terminal window
-
-```
+```bash
 node script.js
 ```
 

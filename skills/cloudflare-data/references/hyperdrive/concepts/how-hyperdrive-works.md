@@ -60,10 +60,14 @@ If your Worker makes **multiple sequential queries** per request, use [Placement
 
 If your Worker makes only one query per request, placement does not improve end-to-end latency. The total round-trip time is the same whether it happens near the user or near the database.
 
-wrangler.jsonc
+**wrangler.jsonc**
 
-```
-{  "placement": {    "region": "aws:us-east-1", // Match your database region, for example "gcp:us-east4" or "azure:eastus"  },}
+```jsonc
+{
+  "placement": {
+    "region": "aws:us-east-1", // Match your database region, for example "gcp:us-east4" or "azure:eastus"
+  },
+}
 ```
 
 ### 3\. Query Caching

@@ -28,16 +28,24 @@ Toggle button to start or stop screen sharing. Automatically hides based on perm
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkScreenShareToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkScreenShareToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkScreenShareToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkScreenShareToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkScreenShareToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkScreenShareToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

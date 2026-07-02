@@ -56,20 +56,47 @@ Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-11400)
-* [ wrangler.jsonc ](#tab-panel-11401)
+* [ index.ts ](#tab-panel-11695)
+* [ wrangler.jsonc ](#tab-panel-11696)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // Access your private API through the service binding    const response = await env.PRIVATE_API.fetch(      "http://internal-api.company.local/data",    );
-      // Process the response from your private network      const data = await response.json();
-      return new Response(JSON.stringify(data), {        headers: { "content-type": "application/json" },      });    },
+```ts
+export default {
+  async fetch(request, env, ctx) {
+    // Access your private API through the service binding
+    const response = await env.PRIVATE_API.fetch(
+      "http://internal-api.company.local/data",
+    );
+
+
+      // Process the response from your private network
+      const data = await response.json();
+
+
+      return new Response(JSON.stringify(data), {
+        headers: { "content-type": "application/json" },
+      });
+    },
+
+
 };
 ```
 
-```
-  {    "$schema": "node_modules/wrangler/config-schema.json",    "name": "WORKER-NAME",    "main": "src/index.ts",    "compatibility_date": "2025-02-04",    "vpc_services": [      {        "binding": "PRIVATE_API",        "service_id": "ENTER_SERVICE_ID",        "remote": true      }    ]  }
+```json
+  {
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "WORKER-NAME",
+    "main": "src/index.ts",
+    "compatibility_date": "2025-02-04",
+    "vpc_services": [
+      {
+        "binding": "PRIVATE_API",
+        "service_id": "ENTER_SERVICE_ID",
+        "remote": true
+      }
+    ]
+  }
 ```
 
 ## Use cases

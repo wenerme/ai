@@ -36,15 +36,31 @@ bun add @cloudflare/pages-plugin-static-forms
 
 ## Usage
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import staticFormsPlugin from "@cloudflare/pages-plugin-static-forms";
-export const onRequest: PagesFunction = staticFormsPlugin({  respondWith: ({ formData, name }) => {    const email = formData.get("email");    return new Response(      `Hello, ${email}! Thank you for submitting the ${name} form.`,    );  },});
+
+
+export const onRequest: PagesFunction = staticFormsPlugin({
+  respondWith: ({ formData, name }) => {
+    const email = formData.get("email");
+    return new Response(
+      `Hello, ${email}! Thank you for submitting the ${name} form.`,
+    );
+  },
+});
 ```
 
-```
-<body>  <h1>Sales enquiry</h1>  <form data-static-form-name="sales">    <label>Email address <input type="email" name="email" /></label>    <label>Message <textarea name="message"></textarea></label>    <button type="submit">Submit</button>  </form></body>
+```html
+<body>
+  <h1>Sales enquiry</h1>
+  <form data-static-form-name="sales">
+    <label>Email address <input type="email" name="email" /></label>
+    <label>Message <textarea name="message"></textarea></label>
+    <button type="submit">Submit</button>
+  </form>
+</body>
 ```
 
 The Plugin takes a single argument, an object with a `respondWith` property. This function takes an object with a `formData` property (the [FormData ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) instance) and `name` property (the name value of your `data-static-form-name` attribute). It should return a `Response` or `Promise` of a `Response`. It is in this `respondWith` function that you can take action such as serializing the `formData` and saving it to a KV namespace.

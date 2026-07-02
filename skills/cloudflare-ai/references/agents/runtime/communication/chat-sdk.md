@@ -44,46 +44,127 @@ bun add agents chat
 
 Create a parent Agent that owns your Chat SDK runtime. Pass `createChatSdkState()` as the Chat SDK `state` option.
 
-* [  JavaScript ](#tab-panel-5949)
-* [  TypeScript ](#tab-panel-5950)
+* [  JavaScript ](#tab-panel-6113)
+* [  TypeScript ](#tab-panel-6114)
 
-JavaScript
+**JavaScript**
 
-```
-import { Agent } from "agents";import { createChatSdkState } from "agents/chat-sdk";import { Chat } from "chat";import { createTelegramAdapter } from "@chat-adapter/telegram";
+```js
+import { Agent } from "agents";
+import { createChatSdkState } from "agents/chat-sdk";
+import { Chat } from "chat";
+import { createTelegramAdapter } from "@chat-adapter/telegram";
+
+
 export { ChatSdkStateAgent } from "agents/chat-sdk";
-export class MessengerAgent extends Agent {  chat;
-  onStart() {    const telegram = createTelegramAdapter({      botToken: this.env.TELEGRAM_BOT_TOKEN,      mode: "webhook",      userName: "my_bot",    });
-    this.chat = new Chat({      adapters: { telegram },      userName: "my_bot",      state: createChatSdkState(),      concurrency: { strategy: "burst", debounceMs: 600 },    });  }}
+
+
+export class MessengerAgent extends Agent {
+  chat;
+
+
+  onStart() {
+    const telegram = createTelegramAdapter({
+      botToken: this.env.TELEGRAM_BOT_TOKEN,
+      mode: "webhook",
+      userName: "my_bot",
+    });
+
+
+    this.chat = new Chat({
+      adapters: { telegram },
+      userName: "my_bot",
+      state: createChatSdkState(),
+      concurrency: { strategy: "burst", debounceMs: 600 },
+    });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent } from "agents";import { createChatSdkState } from "agents/chat-sdk";import { Chat } from "chat";import { createTelegramAdapter } from "@chat-adapter/telegram";
+```ts
+import { Agent } from "agents";
+import { createChatSdkState } from "agents/chat-sdk";
+import { Chat } from "chat";
+import { createTelegramAdapter } from "@chat-adapter/telegram";
+
+
 export { ChatSdkStateAgent } from "agents/chat-sdk";
-export class MessengerAgent extends Agent<Env> {  private chat!: Chat;
-  onStart() {    const telegram = createTelegramAdapter({      botToken: this.env.TELEGRAM_BOT_TOKEN,      mode: "webhook",      userName: "my_bot",    });
-    this.chat = new Chat({      adapters: { telegram },      userName: "my_bot",      state: createChatSdkState(),      concurrency: { strategy: "burst", debounceMs: 600 },    });  }}
+
+
+export class MessengerAgent extends Agent<Env> {
+  private chat!: Chat;
+
+
+  onStart() {
+    const telegram = createTelegramAdapter({
+      botToken: this.env.TELEGRAM_BOT_TOKEN,
+      mode: "webhook",
+      userName: "my_bot",
+    });
+
+
+    this.chat = new Chat({
+      adapters: { telegram },
+      userName: "my_bot",
+      state: createChatSdkState(),
+      concurrency: { strategy: "burst", debounceMs: 600 },
+    });
+  }
+}
 ```
 
 Add the parent Agent to your Durable Object migration:
 
-* [  wrangler.jsonc ](#tab-panel-5939)
-* [  wrangler.toml ](#tab-panel-5940)
+* [  wrangler.jsonc ](#tab-panel-6103)
+* [  wrangler.toml ](#tab-panel-6104)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "MessengerAgent",
+        "name": "MessengerAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": [
+        "MessengerAgent"
+      ],
+      "tag": "v1"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "durable_objects": {    "bindings": [      {        "class_name": "MessengerAgent",        "name": "MessengerAgent"      }    ]  },  "migrations": [    {      "new_sqlite_classes": [        "MessengerAgent"      ],      "tag": "v1"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = ["nodejs_compat"]
-[[durable_objects.bindings]]class_name = "MessengerAgent"name = "MessengerAgent"
-[[migrations]]new_sqlite_classes = ["MessengerAgent"]tag = "v1"
+```toml
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+
+
+[[durable_objects.bindings]]
+class_name = "MessengerAgent"
+name = "MessengerAgent"
+
+
+[[migrations]]
+new_sqlite_classes = ["MessengerAgent"]
+tag = "v1"
 ```
 
 Export `ChatSdkStateAgent` from your Worker entry point so sub-agent routing can resolve it. When `createChatSdkState()` is called inside an Agent lifecycle method or request handler, it uses the current Agent as the parent and creates state shards with `this.subAgent()`.
@@ -107,38 +188,64 @@ Unknown keys use the adapter's default shard name, `default`.
 
 Use `shardKey` to control how thread IDs map to state sub-agent names:
 
-* [  JavaScript ](#tab-panel-5941)
-* [  TypeScript ](#tab-panel-5942)
+* [  JavaScript ](#tab-panel-6105)
+* [  TypeScript ](#tab-panel-6106)
 
-JavaScript
+**JavaScript**
 
+```js
+const state = createChatSdkState({
+  shardKey(threadId) {
+    return threadId.split(":").slice(0, 2).join(":");
+  },
+});
 ```
-const state = createChatSdkState({  shardKey(threadId) {    return threadId.split(":").slice(0, 2).join(":");  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const state = createChatSdkState({  shardKey(threadId) {    return threadId.split(":").slice(0, 2).join(":");  },});
+```ts
+const state = createChatSdkState({
+  shardKey(threadId) {
+    return threadId.split(":").slice(0, 2).join(":");
+  },
+});
 ```
 
 Use `keyShard` when an adapter stores non-thread-shaped keys that should still route to a provider-specific shard:
 
-* [  JavaScript ](#tab-panel-5947)
-* [  TypeScript ](#tab-panel-5948)
+* [  JavaScript ](#tab-panel-6111)
+* [  TypeScript ](#tab-panel-6112)
 
-JavaScript
+**JavaScript**
 
+```js
+const state = createChatSdkState({
+  keyShard(key) {
+    if (!key.startsWith("dedupe:telegram:")) {
+      return undefined;
+    }
+
+
+    const chatId = key.slice("dedupe:telegram:".length).split(":")[0];
+    return chatId ? `telegram:${chatId}` : undefined;
+  },
+});
 ```
-const state = createChatSdkState({  keyShard(key) {    if (!key.startsWith("dedupe:telegram:")) {      return undefined;    }
-    const chatId = key.slice("dedupe:telegram:".length).split(":")[0];    return chatId ? `telegram:${chatId}` : undefined;  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const state = createChatSdkState({  keyShard(key) {    if (!key.startsWith("dedupe:telegram:")) {      return undefined;    }
-    const chatId = key.slice("dedupe:telegram:".length).split(":")[0];    return chatId ? `telegram:${chatId}` : undefined;  },});
+```ts
+const state = createChatSdkState({
+  keyShard(key) {
+    if (!key.startsWith("dedupe:telegram:")) {
+      return undefined;
+    }
+
+
+    const chatId = key.slice("dedupe:telegram:".length).split(":")[0];
+    return chatId ? `telegram:${chatId}` : undefined;
+  },
+});
 ```
 
 Returning `undefined` falls back to the built-in key sharder and then to the default shard.
@@ -149,23 +256,35 @@ Returning `undefined` falls back to the built-in key sharder and then to the def
 
 Creates a Chat SDK `StateAdapter` backed by a `ChatSdkStateAgent` sub-agent.
 
-* [  JavaScript ](#tab-panel-5945)
-* [  TypeScript ](#tab-panel-5946)
+* [  JavaScript ](#tab-panel-6109)
+* [  TypeScript ](#tab-panel-6110)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createChatSdkState } from "agents/chat-sdk";
+
+
 export { ChatSdkStateAgent } from "agents/chat-sdk";
-const state = createChatSdkState({  // parent: this // Optional. Defaults to the current Agent from getCurrentAgent().});
+
+
+const state = createChatSdkState({
+  // parent: this // Optional. Defaults to the current Agent from getCurrentAgent().
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createChatSdkState } from "agents/chat-sdk";
+
+
 export { ChatSdkStateAgent } from "agents/chat-sdk";
-const state = createChatSdkState({  // parent: this // Optional. Defaults to the current Agent from getCurrentAgent().});
+
+
+const state = createChatSdkState({
+  // parent: this // Optional. Defaults to the current Agent from getCurrentAgent().
+});
 ```
 
 Options:
@@ -182,18 +301,18 @@ Options:
 
 The sub-agent class that stores state in SQLite. Export it from your Worker entry point so the runtime can create it.
 
-* [  JavaScript ](#tab-panel-5943)
-* [  TypeScript ](#tab-panel-5944)
+* [  JavaScript ](#tab-panel-6107)
+* [  TypeScript ](#tab-panel-6108)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 ```
 

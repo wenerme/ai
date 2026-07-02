@@ -35,11 +35,19 @@ You can now inspect Worker memory.
 
 Let's look at an example to learn how to read a memory snapshot. Imagine you have the following Worker:
 
-index.js
+**index.js**
 
-```
+```js
 let responseText = "Hello world!";
-export default {  async fetch(request, env, ctx) {    let now = new Date().toISOString();    responseText = responseText + ` (Requested at: ${now})`;    return new Response(responseText.slice(0, 53));  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    let now = new Date().toISOString();
+    responseText = responseText + ` (Requested at: ${now})`;
+    return new Response(responseText.slice(0, 53));
+  },
+};
 ```
 
 While this code worked well initially, over time you notice slower responses and Out of Memory errors. Using DevTools, you can find out if this is a memory leak.
@@ -60,9 +68,9 @@ Looking at these statistics, you can see that a lot of memory is dedicated to st
 
 The memory summary lists data types by the amount of memory they take up. When you click into "(string)", you can see a string that is far larger than the rest. The text shows that you are appending "Requested at" and a date repeatedly, inadvertently overwriting the global variable with an increasingly large string:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 responseText = responseText + ` (Requested at: ${now})`;
 ```
 

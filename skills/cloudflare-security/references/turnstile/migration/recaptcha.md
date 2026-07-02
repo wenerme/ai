@@ -23,9 +23,14 @@ Turnstile migration is currently compatible up to reCAPTCHA v2.
 ## Client-side integration
 
 1. Update the client-side integration by inserting the Turnstile script snippet in your HTML's `<head>` element.
-Turnstile script snippet
-```
-<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"  async  defer></script>
+
+**Turnstile script snippet**
+```html
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"
+  async
+  defer
+></script>
 ```
 Note
 Adding `?compat=recaptcha` runs Turnstile in compatibility mode, which enables the following features:
@@ -46,7 +51,7 @@ Update the server-side integration by replacing the Siteverify URL.
 
 Replace `https://www.google.com/recaptcha/api/siteverify` with the following:
 
-```
+```txt
 https://challenges.cloudflare.com/turnstile/v0/siteverify
 ```
 

@@ -32,8 +32,8 @@ One of the most common use cases for egress policies is to ensure a consistent e
 
 We recommend building baseline egress policies that can cover a majority of your use cases without making policy management overly complex. If all of your users need to access a series of applications that all require a specific egress IP, you should build a policy explicit to those users (or to all of your users) to ensure that all of their traffic egresses using those egress IPs. For example, you can define specific egress IPs for users with access to financial data:
 
-* [ Dashboard ](#tab-panel-9312)
-* [ API ](#tab-panel-9313)
+* [ Dashboard ](#tab-panel-9603)
+* [ API ](#tab-panel-9604)
 
 | Selector         | Operator | Value           | Egress method                       |
 | ---------------- | -------- | --------------- | ----------------------------------- |
@@ -43,10 +43,30 @@ We recommend building baseline egress policies that can cover a majority of your
 | -------------------- | ------------- |
 | 203.0.113.0          | 2001:db8::/32 |
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "egress",    "description": "Define static egress for finance team",    "enabled": true,    "filters": [        "egress"    ],    "name": "Finance team static egress",    "precedence": 0,    "identity": "any(identity.groups.name[*] in {\"finance\"})",    "rule_settings": {        "egress": {            "ipv4": "<DEDICATED_IPV4_ADDRESS>",            "ipv4_fallback": "<SECONDARY_DEDICATED_IPV6_ADDRESS>",            "ipv6": "<DEDICATED_IPV6_ADDRESS>"        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "egress",
+    "description": "Define static egress for finance team",
+    "enabled": true,
+    "filters": [
+        "egress"
+    ],
+    "name": "Finance team static egress",
+    "precedence": 0,
+    "identity": "any(identity.groups.name[*] in {\"finance\"})",
+    "rule_settings": {
+        "egress": {
+            "ipv4": "<DEDICATED_IPV4_ADDRESS>",
+            "ipv4_fallback": "<SECONDARY_DEDICATED_IPV6_ADDRESS>",
+            "ipv6": "<DEDICATED_IPV6_ADDRESS>"
+        }
+    }
+  }'
 ```
 
 ## User-selectable egress locations

@@ -50,74 +50,242 @@ The browser creates the Code Mode tool and registers it as a dynamic client tool
 
 1. Define the browser-owned tools with JSON Schema and an `execute` function.
 
-  * [  JavaScript ](#tab-panel-6585)
-  * [  TypeScript ](#tab-panel-6586)
-src/browser-tools.js
+  * [  JavaScript ](#tab-panel-6781)
+  * [  TypeScript ](#tab-panel-6782)
+
+**src/browser-tools.js**
+```js
+export const browserTools = {
+  getPageInfo: {
+    description: "Get information about the current browser page",
+    inputSchema: {
+      type: "object",
+      properties: {},
+      required: [],
+    },
+    execute: async () => ({
+      title: document.title,
+      url: window.location.href,
+    }),
+  },
+  getSelectionText: {
+    description: "Get the user's current text selection",
+    inputSchema: {
+      type: "object",
+      properties: {},
+      required: [],
+    },
+    execute: async () => ({
+      text: window.getSelection()?.toString() ?? "",
+    }),
+  },
+};
 ```
-export const browserTools = {  getPageInfo: {    description: "Get information about the current browser page",    inputSchema: {      type: "object",      properties: {},      required: [],    },    execute: async () => ({      title: document.title,      url: window.location.href,    }),  },  getSelectionText: {    description: "Get the user's current text selection",    inputSchema: {      type: "object",      properties: {},      required: [],    },    execute: async () => ({      text: window.getSelection()?.toString() ?? "",    }),  },};
-```
-src/browser-tools.ts
-```
+
+**src/browser-tools.ts**
+```ts
 import type { JsonSchemaExecutableToolDescriptors } from "@cloudflare/codemode/browser";
-export const browserTools: JsonSchemaExecutableToolDescriptors = {  getPageInfo: {    description: "Get information about the current browser page",    inputSchema: {      type: "object",      properties: {},      required: []    },    execute: async () => ({      title: document.title,      url: window.location.href    })  },  getSelectionText: {    description: "Get the user's current text selection",    inputSchema: {      type: "object",      properties: {},      required: []    },    execute: async () => ({      text: window.getSelection()?.toString() ?? ""    })  }};
+export const browserTools: JsonSchemaExecutableToolDescriptors = {
+  getPageInfo: {
+    description: "Get information about the current browser page",
+    inputSchema: {
+      type: "object",
+      properties: {},
+      required: []
+    },
+    execute: async () => ({
+      title: document.title,
+      url: window.location.href
+    })
+  },
+  getSelectionText: {
+    description: "Get the user's current text selection",
+    inputSchema: {
+      type: "object",
+      properties: {},
+      required: []
+    },
+    execute: async () => ({
+      text: window.getSelection()?.toString() ?? ""
+    })
+  }
+};
 ```
 JSON Schema supplies the types shown to the model. `createBrowserCodeTool()` does not use the schema to validate arguments at runtime. Validate untrusted inputs inside each `execute` function when required.
 2. Create the Code Mode descriptor with an iframe executor.
 
-  * [  JavaScript ](#tab-panel-6583)
-  * [  TypeScript ](#tab-panel-6584)
-src/codemode-tool.js
+  * [  JavaScript ](#tab-panel-6779)
+  * [  TypeScript ](#tab-panel-6780)
+
+**src/codemode-tool.js**
+```js
+import {
+  IframeSandboxExecutor,
+  createBrowserCodeTool,
+} from "@cloudflare/codemode/browser";
+import { browserTools } from "./browser-tools";
+export const codemodeTool = createBrowserCodeTool({
+  tools: browserTools,
+  executor: new IframeSandboxExecutor(),
+});
 ```
-import {  IframeSandboxExecutor,  createBrowserCodeTool,} from "@cloudflare/codemode/browser";import { browserTools } from "./browser-tools";
-export const codemodeTool = createBrowserCodeTool({  tools: browserTools,  executor: new IframeSandboxExecutor(),});
-```
-src/codemode-tool.ts
-```
-import {  IframeSandboxExecutor,  createBrowserCodeTool} from "@cloudflare/codemode/browser";import { browserTools } from "./browser-tools";
-export const codemodeTool = createBrowserCodeTool({  tools: browserTools,  executor: new IframeSandboxExecutor()});
+
+**src/codemode-tool.ts**
+```ts
+import {
+  IframeSandboxExecutor,
+  createBrowserCodeTool
+} from "@cloudflare/codemode/browser";
+import { browserTools } from "./browser-tools";
+export const codemodeTool = createBrowserCodeTool({
+  tools: browserTools,
+  executor: new IframeSandboxExecutor()
+});
 ```
 `createBrowserCodeTool()` returns a plain descriptor named `codemode`. Its description includes generated TypeScript definitions for the browser tools. Its input contains the model-generated JavaScript in a `code` property.
 The `executor` option is optional. When omitted, `createBrowserCodeTool()` creates an `IframeSandboxExecutor` with default settings.
 3. Register the descriptor with `useAgentChat()` and execute client tool calls.
 
-  * [  JavaScript ](#tab-panel-6589)
-  * [  TypeScript ](#tab-panel-6590)
-src/client.jsx
+  * [  JavaScript ](#tab-panel-6785)
+  * [  TypeScript ](#tab-panel-6786)
+
+**src/client.jsx**
+```js
+import { useAgentChat } from "@cloudflare/ai-chat/react";
+import { useAgent } from "agents/react";
+import { useMemo } from "react";
+import { codemodeTool } from "./codemode-tool";
+function BrowserCodeModeChat() {
+  const agent = useAgent({ agent: "browser-codemode" });
+  const tools = useMemo(
+    () => ({
+      codemode: {
+        description: codemodeTool.description,
+        parameters: codemodeTool.inputSchema,
+        execute: (input) => codemodeTool.execute(input),
+      },
+    }),
+    [],
+  );
+  const { messages, sendMessage } = useAgentChat({
+    agent,
+    tools,
+    onToolCall: async ({ toolCall, addToolOutput }) => {
+      const tool = tools[toolCall.toolName];
+      if (!tool?.execute) return;
+      try {
+        const output = await tool.execute(toolCall.input);
+        addToolOutput({
+          toolCallId: toolCall.toolCallId,
+          output,
+        });
+      } catch (error) {
+        addToolOutput({
+          toolCallId: toolCall.toolCallId,
+          state: "output-error",
+          errorText: error instanceof Error ? error.message : String(error),
+        });
+      }
+    },
+  });
+  // Render messages and call sendMessage() from your chat UI.
+}
 ```
-import { useAgentChat } from "@cloudflare/ai-chat/react";import { useAgent } from "agents/react";import { useMemo } from "react";import { codemodeTool } from "./codemode-tool";
-function BrowserCodeModeChat() {  const agent = useAgent({ agent: "browser-codemode" });
-  const tools = useMemo(    () => ({      codemode: {        description: codemodeTool.description,        parameters: codemodeTool.inputSchema,        execute: (input) => codemodeTool.execute(input),      },    }),    [],  );
-  const { messages, sendMessage } = useAgentChat({    agent,    tools,    onToolCall: async ({ toolCall, addToolOutput }) => {      const tool = tools[toolCall.toolName];      if (!tool?.execute) return;
-      try {        const output = await tool.execute(toolCall.input);        addToolOutput({          toolCallId: toolCall.toolCallId,          output,        });      } catch (error) {        addToolOutput({          toolCallId: toolCall.toolCallId,          state: "output-error",          errorText: error instanceof Error ? error.message : String(error),        });      }    },  });
-  // Render messages and call sendMessage() from your chat UI.}
-```
-src/client.tsx
-```
-import { useAgentChat, type AITool } from "@cloudflare/ai-chat/react";import { useAgent } from "agents/react";import { useMemo } from "react";import { codemodeTool } from "./codemode-tool";
-function BrowserCodeModeChat() {  const agent = useAgent({ agent: "browser-codemode" });
-  const tools = useMemo<Record<string, AITool>>(    () => ({      codemode: {        description: codemodeTool.description,        parameters: codemodeTool.inputSchema,        execute: (input) =>          codemodeTool.execute(input as { code: string })      }    }),    []  );
-  const { messages, sendMessage } = useAgentChat({    agent,    tools,    onToolCall: async ({ toolCall, addToolOutput }) => {      const tool = tools[toolCall.toolName];      if (!tool?.execute) return;
-      try {        const output = await tool.execute(toolCall.input);        addToolOutput({          toolCallId: toolCall.toolCallId,          output        });      } catch (error) {        addToolOutput({          toolCallId: toolCall.toolCallId,          state: "output-error",          errorText: error instanceof Error ? error.message : String(error)        });      }    }  });
-  // Render messages and call sendMessage() from your chat UI.}
+
+**src/client.tsx**
+```ts
+import { useAgentChat, type AITool } from "@cloudflare/ai-chat/react";
+import { useAgent } from "agents/react";
+import { useMemo } from "react";
+import { codemodeTool } from "./codemode-tool";
+function BrowserCodeModeChat() {
+  const agent = useAgent({ agent: "browser-codemode" });
+  const tools = useMemo<Record<string, AITool>>(
+    () => ({
+      codemode: {
+        description: codemodeTool.description,
+        parameters: codemodeTool.inputSchema,
+        execute: (input) =>
+          codemodeTool.execute(input as { code: string })
+      }
+    }),
+    []
+  );
+  const { messages, sendMessage } = useAgentChat({
+    agent,
+    tools,
+    onToolCall: async ({ toolCall, addToolOutput }) => {
+      const tool = tools[toolCall.toolName];
+      if (!tool?.execute) return;
+      try {
+        const output = await tool.execute(toolCall.input);
+        addToolOutput({
+          toolCallId: toolCall.toolCallId,
+          output
+        });
+      } catch (error) {
+        addToolOutput({
+          toolCallId: toolCall.toolCallId,
+          state: "output-error",
+          errorText: error instanceof Error ? error.message : String(error)
+        });
+      }
+    }
+  });
+  // Render messages and call sendMessage() from your chat UI.
+}
 ```
 `useAgentChat()` sends the registered client tool schema to the Agent. When the model calls `codemode`, `onToolCall` executes the descriptor in the browser and adds its output to the conversation.
 4. On the Agent, convert the client schemas into model tools.
 
-  * [  JavaScript ](#tab-panel-6587)
-  * [  TypeScript ](#tab-panel-6588)
-src/server.js
+  * [  JavaScript ](#tab-panel-6783)
+  * [  TypeScript ](#tab-panel-6784)
+
+**src/server.js**
+```js
+import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+export class BrowserCodemode extends AIChatAgent {
+  async onChatMessage(_onFinish, options) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({
+      model: workersai("@cf/moonshotai/kimi-k2.7-code"),
+      system:
+        "Use the codemode tool to write JavaScript that calls browser-provided tools.",
+      messages: await convertToModelMessages(this.messages),
+      tools: createToolsFromClientSchemas(options?.clientTools),
+      stopWhen: stepCountIs(10),
+    });
+    return result.toUIMessageStreamResponse();
+  }
+}
 ```
-import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";import { convertToModelMessages, stepCountIs, streamText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class BrowserCodemode extends AIChatAgent {  async onChatMessage(_onFinish, options) {    const workersai = createWorkersAI({ binding: this.env.AI });
-    const result = streamText({      model: workersai("@cf/moonshotai/kimi-k2.7-code"),      system:        "Use the codemode tool to write JavaScript that calls browser-provided tools.",      messages: await convertToModelMessages(this.messages),      tools: createToolsFromClientSchemas(options?.clientTools),      stopWhen: stepCountIs(10),    });
-    return result.toUIMessageStreamResponse();  }}
-```
-src/server.ts
-```
-import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";import { convertToModelMessages, stepCountIs, streamText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class BrowserCodemode extends AIChatAgent<Env> {  async onChatMessage(    _onFinish?: unknown,    options?: {      clientTools?: Parameters<typeof createToolsFromClientSchemas>[0];    }  ) {    const workersai = createWorkersAI({ binding: this.env.AI });
-    const result = streamText({      model: workersai("@cf/moonshotai/kimi-k2.7-code"),      system:        "Use the codemode tool to write JavaScript that calls browser-provided tools.",      messages: await convertToModelMessages(this.messages),      tools: createToolsFromClientSchemas(options?.clientTools),      stopWhen: stepCountIs(10)    });
-    return result.toUIMessageStreamResponse();  }}
+
+**src/server.ts**
+```ts
+import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+export class BrowserCodemode extends AIChatAgent<Env> {
+  async onChatMessage(
+    _onFinish?: unknown,
+    options?: {
+      clientTools?: Parameters<typeof createToolsFromClientSchemas>[0];
+    }
+  ) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({
+      model: workersai("@cf/moonshotai/kimi-k2.7-code"),
+      system:
+        "Use the codemode tool to write JavaScript that calls browser-provided tools.",
+      messages: await convertToModelMessages(this.messages),
+      tools: createToolsFromClientSchemas(options?.clientTools),
+      stopWhen: stepCountIs(10)
+    });
+    return result.toUIMessageStreamResponse();
+  }
+}
 ```
 The Agent advertises the client-provided schema to the model. It does not run the generated code or the browser tool implementations.
 

@@ -80,15 +80,13 @@ The exact behavior differs per resolver, but to estimate how long you need to wa
 
 You can check if a negative cache entry is active by querying for the non-existent (or newly created) hostname:
 
-Terminal window
-
-```
+```sh
 dig +noall +answer +authority mynewrecord.example.com
 ```
 
 If the record is still negatively cached, the response will include the zone's SOA record in the authority section with a TTL indicating how many seconds remain before the entry expires:
 
-```
+```txt
 example.com.    256  IN  SOA  ...
 ```
 
@@ -105,16 +103,14 @@ To verify the record resolves correctly, you can purge the cache for public reso
 
 To verify the record was correctly created, query Cloudflare's authoritative nameservers directly:
 
-Terminal window
-
+```sh
+# Find the authoritative nameservers for your zone
+dig @1.1.1.1 example.com NS +short
 ```
-# Find the authoritative nameservers for your zonedig @1.1.1.1 example.com NS +short
-```
 
-Terminal window
-
-```
-# Query the authoritative nameserver for your new recorddig @hera.ns.cloudflare.com mynewrecord.example.com A
+```sh
+# Query the authoritative nameserver for your new record
+dig @hera.ns.cloudflare.com mynewrecord.example.com A
 ```
 
 Querying the authoritative nameserver directly bypasses resolver caching. If the record is returned, resolvers will eventually start returning it as well. If the record does not appear, verify the record exists in the Cloudflare dashboard and that the hostname matches exactly.

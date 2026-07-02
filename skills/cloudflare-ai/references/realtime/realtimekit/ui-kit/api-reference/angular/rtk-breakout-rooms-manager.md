@@ -25,14 +25,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-breakout-rooms-manager></rtk-breakout-rooms-manager>
+```html
+<!-- component.html -->
+<rtk-breakout-rooms-manager></rtk-breakout-rooms-manager>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-breakout-rooms-manager [meeting]="meeting"></rtk-breakout-rooms-manager>
+```html
+<!-- component.html -->
+<rtk-breakout-rooms-manager
+ [meeting]="meeting">
+</rtk-breakout-rooms-manager>
 ```
 
 ```json

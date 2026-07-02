@@ -22,10 +22,25 @@ Summarization requires a transcript. To generate summaries automatically when a 
 
 Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/). For post-meeting summaries, also set `transcribe_on_end: true` so RealtimeKit generates the summary automatically after the transcript is available:
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "title": "Product Review",    "transcribe_on_end": true,    "summarize_on_end": true,    "ai_config": {      "transcription": {        "language": "en-US"      },      "summarization": {        "word_limit": 500,        "text_format": "markdown",        "summary_type": "team_meeting"      }    }  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Product Review",
+    "transcribe_on_end": true,
+    "summarize_on_end": true,
+    "ai_config": {
+      "transcription": {
+        "language": "en-US"
+      },
+      "summarization": {
+        "word_limit": 500,
+        "text_format": "markdown",
+        "summary_type": "team_meeting"
+      }
+    }
+  }'
 ```
 
 ## Configuration
@@ -58,8 +73,20 @@ Choose a type that matches your meeting for better results:
 
 Configure the `meeting.summary` event in [RealtimeKit webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/#meetingsummary) to receive the summary download URL when it is ready:
 
-```
-{  "event": "meeting.summary",  "meeting": {    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",    "organizedBy": {      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",      "name": "Example organization"    }  },  "summaryDownloadUrl": "https://example.com/summary.txt",  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"}
+```json
+{
+  "event": "meeting.summary",
+  "meeting": {
+    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+    "organizedBy": {
+      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+      "name": "Example organization"
+    }
+  },
+  "summaryDownloadUrl": "https://example.com/summary.txt",
+  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
+}
 ```
 
 ### REST API
@@ -68,34 +95,49 @@ Configure the `meeting.summary` event in [RealtimeKit webhooks](https://develope
 
 Refer to [Fetch summary of transcripts for a session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Fsummary/).
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### Trigger manually
 
 Use the [Generate summary of transcripts for the session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/generate%5Fsummary%5Fof%5Ftranscripts/) API if `summarize_on_end` was not set and you want to generate a summary manually after the transcript is available.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Example output
 
 With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
-```
+```markdown
 ## Meeting Summary
+
+
 ### Key Discussion Points
-- Reviewed Q4 roadmap priorities- Discussed deployment timeline for v2.0- Identified blockers for the auth migration
+
+
+- Reviewed Q4 roadmap priorities
+- Discussed deployment timeline for v2.0
+- Identified blockers for the auth migration
+
+
 ### Action Items
-- @alice: Update design specs by Friday- @bob: Schedule security review- @charlie: Create migration runbook
+
+
+- @alice: Update design specs by Friday
+- @bob: Schedule security review
+- @charlie: Create migration runbook
+
+
 ### Decisions Made
-- Approved moving forward with Kubernetes migration- Delayed analytics dashboard to next sprint
+
+
+- Approved moving forward with Kubernetes migration
+- Delayed analytics dashboard to next sprint
 ```
 
 ## Retention

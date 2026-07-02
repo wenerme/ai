@@ -55,7 +55,7 @@ This rule unconditionally removes any `Client-Cert` header sent by the client.
 
 Text in **Expression Editor**:
 
-```
+```txt
 true
 ```
 
@@ -69,7 +69,7 @@ This rule unconditionally removes any `Client-Cert-Chain` header sent by the cli
 
 Text in **Expression Editor**:
 
-```
+```txt
 true
 ```
 
@@ -83,8 +83,10 @@ This rule sets the `Client-Cert` header only when the client presented a valid, 
 
 Text in **Expression Editor**:
 
-```
-cf.tls_client_auth.cert_verifiedand not cf.tls_client_auth.cert_revokedand not cf.tls_client_auth.cert_rfc9440_too_large
+```txt
+cf.tls_client_auth.cert_verified
+and not cf.tls_client_auth.cert_revoked
+and not cf.tls_client_auth.cert_rfc9440_too_large
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -99,8 +101,11 @@ This rule sets the `Client-Cert-Chain` header only when the client presented a v
 
 Text in **Expression Editor**:
 
-```
-cf.tls_client_auth.cert_verifiedand not cf.tls_client_auth.cert_revokedand cf.tls_client_auth.cert_chain_rfc9440 ne ""and not cf.tls_client_auth.cert_chain_rfc9440_too_large
+```txt
+cf.tls_client_auth.cert_verified
+and not cf.tls_client_auth.cert_revoked
+and cf.tls_client_auth.cert_chain_rfc9440 ne ""
+and not cf.tls_client_auth.cert_chain_rfc9440_too_large
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -134,10 +139,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Mutual TLS Certificates Write`
 
-Update an mTLS certificate's hostname settings
+**Update an mTLS certificate's hostname settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "settings": [        {            "hostname": "<HOSTNAME>",            "china_network": false,            "client_certificate_forwarding": true        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
+  --request PUT \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '{
+    "settings": [
+        {
+            "hostname": "<HOSTNAME>",
+            "china_network": false,
+            "client_certificate_forwarding": true
+        }
+    ]
+  }'
 ```
 
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
@@ -157,10 +174,20 @@ You can also [modify HTTP response headers](https://developers.cloudflare.com/ru
 
 Additionally, Workers can provide details around the [client certificate](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
 
-JavaScript
+**JavaScript**
 
-```
-const tlsHeaders = {  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,};
+```js
+const tlsHeaders = {
+  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
+  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
+  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
+  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
+  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
+  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
+  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
+  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
+  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
+};
 ```
 
 ```json

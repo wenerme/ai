@@ -24,19 +24,26 @@ The `agents-starter` template and new Cloudflare Workers projects already includ
 
 Before you write your first test, install the necessary packages:
 
-Terminal window
-
-```
+```sh
 npm install vitest@^4.1.0 @cloudflare/vitest-pool-workers --save-dev
 ```
 
 Ensure that your `vitest.config.js` has the `cloudflareTest` plugin configured:
 
-JavaScript
+**JavaScript**
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      wrangler: { configPath: "./wrangler.jsonc" },    }),  ],});
+```js
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      wrangler: { configPath: "./wrangler.jsonc" },
+    }),
+  ],
+});
 ```
 
 ### Write a test
@@ -47,27 +54,60 @@ Review the [Vitest documentation ↗](https://vitest.dev/) for more information 
 
 Tests use the `vitest` framework. A basic test suite for your Agent can validate how your Agent responds to requests, but can also unit test your Agent's methods and state.
 
-TypeScript
+**TypeScript**
 
-```
-import { env, exports } from "cloudflare:workers";import {  createExecutionContext,  waitOnExecutionContext,} from "cloudflare:test";import { describe, it, expect } from "vitest";import worker from "../src";import { Env } from "../src";
+```ts
+import { env, exports } from "cloudflare:workers";
+import {
+  createExecutionContext,
+  waitOnExecutionContext,
+} from "cloudflare:test";
+import { describe, it, expect } from "vitest";
+import worker from "../src";
+import { Env } from "../src";
+
+
 interface ProvidedEnv extends Env {}
-describe("make a request to my Agent", () => {  // Unit testing approach  it("responds with state", async () => {    // Provide a valid URL that your Worker can use to route to your Agent    // If you are using routeAgentRequest, this will be /agents/:agent/:name    const request = new Request<unknown, IncomingRequestCfProperties>(      "http://example.com/agents/my-agent/agent-123",    );    const ctx = createExecutionContext();    const response = await worker.fetch(request, env, ctx);    await waitOnExecutionContext(ctx);    expect(await response.json()).toEqual({ hello: "from your agent" });  });
-  it("also responds with state", async () => {    const request = new Request("http://example.com/agents/my-agent/agent-123");    const response = await exports.default.fetch(request);    expect(await response.json()).toEqual({ hello: "from your agent" });  });});
+
+
+describe("make a request to my Agent", () => {
+  // Unit testing approach
+  it("responds with state", async () => {
+    // Provide a valid URL that your Worker can use to route to your Agent
+    // If you are using routeAgentRequest, this will be /agents/:agent/:name
+    const request = new Request<unknown, IncomingRequestCfProperties>(
+      "http://example.com/agents/my-agent/agent-123",
+    );
+    const ctx = createExecutionContext();
+    const response = await worker.fetch(request, env, ctx);
+    await waitOnExecutionContext(ctx);
+    expect(await response.json()).toEqual({ hello: "from your agent" });
+  });
+
+
+  it("also responds with state", async () => {
+    const request = new Request("http://example.com/agents/my-agent/agent-123");
+    const response = await exports.default.fetch(request);
+    expect(await response.json()).toEqual({ hello: "from your agent" });
+  });
+});
 ```
 
 ### Run tests
 
 Running tests is done using the `vitest` CLI:
 
-Terminal window
+```sh
+npm run test
+# or run vitest directly
+npx vitest
+```
 
-```
-npm run test# or run vitest directlynpx vitest
-```
+```txt
+  MyAgent
+    ✓ should return a greeting (1 ms)
 
-```
-  MyAgent    ✓ should return a greeting (1 ms)
+
 Test Files  1 passed (1)
 ```
 
@@ -77,15 +117,19 @@ Review the [documentation on testing](https://developers.cloudflare.com/workers/
 
 You can also run an Agent locally using the `wrangler` CLI:
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
-```
+```txt
 Your Worker and resources are simulated locally via Miniflare. For more information, see: https://developers.cloudflare.com/workers/testing/local-development.
-Your worker has access to the following bindings:- Durable Objects:  - MyAgent: MyAgent  Starting local server...[wrangler:inf] Ready on http://localhost:53645
+
+
+Your worker has access to the following bindings:
+- Durable Objects:
+  - MyAgent: MyAgent
+  Starting local server...
+[wrangler:inf] Ready on http://localhost:53645
 ```
 
 This spins up a local development server that runs the same runtime as Cloudflare Workers, and allows you to iterate on your Agent's code and test it locally without deploying it.

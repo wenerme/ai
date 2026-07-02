@@ -27,27 +27,55 @@ On the other hand, you can choose which fields of the underlying type you want f
 
 For example, given arrays like this:
 
-JavaScript
+**JavaScript**
 
-```
-type SubRequest {    url: String!    status: Int}
-type Request {    date: Date!    datetime: DateTime!    subRequests: [SubRequest!]!}
+```javascript
+type SubRequest {
+    url: String!
+    status: Int
+}
+
+
+type Request {
+    date: Date!
+    datetime: DateTime!
+    subRequests: [SubRequest!]!
+}
 ```
 
 You can run a query to get the status by subrequest:
 
-JavaScript
+**JavaScript**
 
-```
-{    requests {        date        subRequests {            # discard the url, only need the status            status        }    }}
+```javascript
+{
+    requests {
+        date
+        subRequests {
+            # discard the url, only need the status
+            status
+        }
+    }
+}
 ```
 
 The results would be:
 
-JavaScript
+**JavaScript**
 
-```
-{    "requests": [        {            "date": "2018-01-01",            "subRequests": [{"status": 404}, {"status": 200}, {"status": 404}]        },        {            "date": "2018-01-01",            "subRequests": [{"status": 200}]        }    ]}
+```javascript
+{
+    "requests": [
+        {
+            "date": "2018-01-01",
+            "subRequests": [{"status": 404}, {"status": 200}, {"status": 404}]
+        },
+        {
+            "date": "2018-01-01",
+            "subRequests": [{"status": 200}]
+        }
+    ]
+}
 ```
 
 ## Maps
@@ -56,61 +84,211 @@ Maps behave like arrays, but can be grouped using the `sum` function. They are u
 
 Example maps:
 
-JavaScript
+**JavaScript**
 
-```
-type URLStatsMapElem {    url: String!    requests: Int    bytes: Int}
-type Request {    date: Date!    datetime: DateTime!    urlStatsMap: [URLStatsMapElem!]!}
+```javascript
+type URLStatsMapElem {
+    url: String!
+    requests: Int
+    bytes: Int
+}
+
+
+type Request {
+    date: Date!
+    datetime: DateTime!
+    urlStatsMap: [URLStatsMapElem!]!
+}
 ```
 
 Query:
 
-JavaScript
+**JavaScript**
 
-```
-{    requests {        sum {            urlStatsMap {                url                requests                bytes            }        }        dimensions {            date        }    }}
+```javascript
+{
+    requests {
+        sum {
+            urlStatsMap {
+                url
+                requests
+                bytes
+            }
+        }
+        dimensions {
+            date
+        }
+    }
+}
 ```
 
 Response:
 
-JavaScript
+**JavaScript**
 
-```
-{    "requests": [        {            "sum": {                "urlStatsMap": [                    {                        "url": "hello-world.org/1",                        "requests": 123,                        "bytes": 1024                    },                    {                        "url": "hello-world.org/10",                        "requests": 1230,                        "bytes": 10240                    }                ]            }            "dimensions" {                "date": "2018-10-19"            }        },        ...    ]}
+```javascript
+{
+    "requests": [
+        {
+            "sum": {
+                "urlStatsMap": [
+                    {
+                        "url": "hello-world.org/1",
+                        "requests": 123,
+                        "bytes": 1024
+                    },
+                    {
+                        "url": "hello-world.org/10",
+                        "requests": 1230,
+                        "bytes": 10240
+                    }
+                ]
+            }
+            "dimensions" {
+                "date": "2018-10-19"
+            }
+        },
+        ...
+    ]
+}
 ```
 
 ## Examples
 
 Query array fields in raw datasets:
 
-```
-query NestedFields($zoneTag: string, $start: Time, $end: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      events(limit: 2, filter: { datetime_geq: $start, datetime_leq: $end }) {        matches {          ruleId          action          source        }      }    }  }}
+```graphql
+query NestedFields($zoneTag: string, $start: Time, $end: Time) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      events(limit: 2, filter: { datetime_geq: $start, datetime_leq: $end }) {
+        matches {
+          ruleId
+          action
+          source
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlRtOGCiBhQAJs3ZdeAtsMGCJ02fIC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg7jOGCiBhQAJs3ZdeAtsJYBmcS0nSAvkA)
 
 Example response:
 
-JavaScript
+**JavaScript**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "events": [            {              "matches": [                {                  "action": "allow",                  "ruleId": "rule-id-one",                  "source": "asn"                },                {                  "action": "block",                  "ruleId": "rule-id-two",                  "source": "asn"                }              ]            }          ]        }      ]    }  },  "errors": null}
+```javascript
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "events": [
+            {
+              "matches": [
+                {
+                  "action": "allow",
+                  "ruleId": "rule-id-one",
+                  "source": "asn"
+                },
+                {
+                  "action": "block",
+                  "ruleId": "rule-id-two",
+                  "source": "asn"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 Query maps fields in aggregated datasets:
 
-```
-query MapCapacity(  $zoneTag: string  $dateStart: Date  $dateEnd: Date  $start: Time  $end: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      httpRequests1mGroups(        limit: 10        filter: {          date_geq: $dateStart          date_leq: $dateEnd          datetime_geq: $start          datetime_lt: $end        }      ) {        sum {          countryMap {            clientCountryName            requests            bytes            threats          }        }        dimensions {          datetimeHour        }      }    }  }}
+```graphql
+query MapCapacity(
+  $zoneTag: string
+  $dateStart: Date
+  $dateEnd: Date
+  $start: Time
+  $end: Time
+) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      httpRequests1mGroups(
+        limit: 10
+        filter: {
+          date_geq: $dateStart
+          date_leq: $dateEnd
+          datetime_geq: $start
+          datetime_lt: $end
+        }
+      ) {
+        sum {
+          countryMap {
+            clientCountryName
+            requests
+            bytes
+            threats
+          }
+        }
+        dimensions {
+          datetimeHour
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtN0EBmbhWp0YeKFQ49+QgOxCAjBIDOzNvN6DuK7qrjcArKk4AOVMIwSYs3YoNq4q1Reu2QAXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtN0EBmbhWp0YeKFQ49+QgOxCAjBIDOzNvN6DuK7qriqlqXub4YJMWbsUG1cTiPOdL1gL5A)
 
 Example response:
 
-JavaScript
+**JavaScript**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "httpRequests1mGroups": [            {              "dimensions": {                "datetime": "2019-03-08T17:00:00Z"              },              "sum": {                "countryMap": [                  {                    "bytes": 51911317,                    "clientCountryName": "XK",                    "requests": 4492,                    "threats": 0                  },                  {                    "bytes": 1816103586,                    "clientCountryName": "T1",                    "requests": 132423,                    "threats": 0                  },                  ...                ]              }            }          ]        }      ]    }  },  "errors": null}
+```javascript
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "httpRequests1mGroups": [
+            {
+              "dimensions": {
+                "datetime": "2019-03-08T17:00:00Z"
+              },
+              "sum": {
+                "countryMap": [
+                  {
+                    "bytes": 51911317,
+                    "clientCountryName": "XK",
+                    "requests": 4492,
+                    "threats": 0
+                  },
+                  {
+                    "bytes": 1816103586,
+                    "clientCountryName": "T1",
+                    "requests": 132423,
+                    "threats": 0
+                  },
+                  ...
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ```json

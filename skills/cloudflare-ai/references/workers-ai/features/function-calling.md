@@ -24,30 +24,154 @@ For industry-standard function calling, take a look at the documentation on [Tra
 
 To show you the value of embedded function calling, take a look at the example below that compares traditional function calling with embedded function calling. Embedded function calling allowed us to cut down the lines of code from 77 to 31.
 
-* [ Embedded ](#tab-panel-11364)
-* [ Traditional ](#tab-panel-11365)
+* [ Embedded ](#tab-panel-11659)
+* [ Traditional ](#tab-panel-11660)
 
-Terminal window
-
-```
-# The ai-utils package enables embedded function callingnpm i @cloudflare/ai-utils
-```
-
-Embedded function calling example
-
-```
-import {  createToolsFromOpenAPISpec,  runWithTools,  autoTrimTools,} from "@cloudflare/ai-utils";
-export default {  async fetch(request, env, ctx) {    const response = await runWithTools(      env.AI,      "@hf/nousresearch/hermes-2-pro-mistral-7b",      {        messages: [{ role: "user", content: "Who is Cloudflare on github?" }],        tools: [          // You can pass the OpenAPI spec link or contents directly          ...(await createToolsFromOpenAPISpec(            "https://gist.githubusercontent.com/mchenco/fd8f20c8f06d50af40b94b0671273dc1/raw/f9d4b5cd5944cc32d6b34cad0406d96fd3acaca6/partial_api.github.com.json",            {              overrides: [                {                  // for all requests on *.github.com, we'll need to add a User-Agent.                  matcher: ({ url, method }) => {                    return url.hostname === "api.github.com";                  },                  values: {                    headers: {                      "User-Agent":                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",                    },                  },                },              ],            },          )),        ],      },    ).then((response) => {      return response;    });
-    return new Response(JSON.stringify(response));  },};
+```sh
+# The ai-utils package enables embedded function calling
+npm i @cloudflare/ai-utils
 ```
 
-Traditional function calling example
+**Embedded function calling example**
 
+```js
+import {
+  createToolsFromOpenAPISpec,
+  runWithTools,
+  autoTrimTools,
+} from "@cloudflare/ai-utils";
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const response = await runWithTools(
+      env.AI,
+      "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      {
+        messages: [{ role: "user", content: "Who is Cloudflare on github?" }],
+        tools: [
+          // You can pass the OpenAPI spec link or contents directly
+          ...(await createToolsFromOpenAPISpec(
+            "https://gist.githubusercontent.com/mchenco/fd8f20c8f06d50af40b94b0671273dc1/raw/f9d4b5cd5944cc32d6b34cad0406d96fd3acaca6/partial_api.github.com.json",
+            {
+              overrides: [
+                {
+                  // for all requests on *.github.com, we'll need to add a User-Agent.
+                  matcher: ({ url, method }) => {
+                    return url.hostname === "api.github.com";
+                  },
+                  values: {
+                    headers: {
+                      "User-Agent":
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+                    },
+                  },
+                },
+              ],
+            },
+          )),
+        ],
+      },
+    ).then((response) => {
+      return response;
+    });
+
+
+    return new Response(JSON.stringify(response));
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    const response = await env.AI.run(      "@hf/nousresearch/hermes-2-pro-mistral-7b",      {        messages: [{ role: "user", content: "Who is Cloudflare on GitHub?" }],        tools: [          {            name: "getGithubUser",            description:              "Provides publicly available information about someone with a GitHub account.",            parameters: {              type: "object",              properties: {                username: {                  type: "string",                  description: "The handle for the GitHub user account.",                },              },              required: ["username"],            },          },        ],      },    );
-    const selected_tool = response.tool_calls[0];    let res;
-    if (selected_tool.name == "getGithubUser") {      try {        const username = selected_tool.arguments.username;        const url = `https://api.github.com/users/${username}`;        res = await fetch(url, {          headers: {            // Github API requires a User-Agent header            "User-Agent":              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",          },        }).then((res) => res.json());      } catch (error) {        return error;      }    }
-    const finalResponse = await env.AI.run(      "@hf/nousresearch/hermes-2-pro-mistral-7b",      {        messages: [          {            role: "user",            content: "Who is Cloudflare on GitHub?",          },          {            role: "assistant",            content: JSON.stringify(selected_tool),          },          {            role: "tool",            content: JSON.stringify(res),          },        ],        tools: [          {            name: "getGithubUser",            description:              "Provides publicly available information about someone with a GitHub account.",            parameters: {              type: "object",              properties: {                username: {                  type: "string",                  description: "The handle for the GitHub user account.",                },              },              required: ["username"],            },          },        ],      },    );    return new Response(JSON.stringify(finalResponse));  },};
+
+**Traditional function calling example**
+
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const response = await env.AI.run(
+      "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      {
+        messages: [{ role: "user", content: "Who is Cloudflare on GitHub?" }],
+        tools: [
+          {
+            name: "getGithubUser",
+            description:
+              "Provides publicly available information about someone with a GitHub account.",
+            parameters: {
+              type: "object",
+              properties: {
+                username: {
+                  type: "string",
+                  description: "The handle for the GitHub user account.",
+                },
+              },
+              required: ["username"],
+            },
+          },
+        ],
+      },
+    );
+
+
+    const selected_tool = response.tool_calls[0];
+    let res;
+
+
+    if (selected_tool.name == "getGithubUser") {
+      try {
+        const username = selected_tool.arguments.username;
+        const url = `https://api.github.com/users/${username}`;
+        res = await fetch(url, {
+          headers: {
+            // Github API requires a User-Agent header
+            "User-Agent":
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+          },
+        }).then((res) => res.json());
+      } catch (error) {
+        return error;
+      }
+    }
+
+
+    const finalResponse = await env.AI.run(
+      "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      {
+        messages: [
+          {
+            role: "user",
+            content: "Who is Cloudflare on GitHub?",
+          },
+          {
+            role: "assistant",
+            content: JSON.stringify(selected_tool),
+          },
+          {
+            role: "tool",
+            content: JSON.stringify(res),
+          },
+        ],
+        tools: [
+          {
+            name: "getGithubUser",
+            description:
+              "Provides publicly available information about someone with a GitHub account.",
+            parameters: {
+              type: "object",
+              properties: {
+                username: {
+                  type: "string",
+                  description: "The handle for the GitHub user account.",
+                },
+              },
+              required: ["username"],
+            },
+          },
+        ],
+      },
+    );
+    return new Response(JSON.stringify(finalResponse));
+  },
+};
 ```
 
 ## What models support function calling?

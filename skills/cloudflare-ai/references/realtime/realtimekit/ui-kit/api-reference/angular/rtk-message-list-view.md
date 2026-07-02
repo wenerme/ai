@@ -29,14 +29,20 @@ A component which renders list of messages.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-message-list-view></rtk-message-list-view>
+```html
+<!-- component.html -->
+<rtk-message-list-view></rtk-message-list-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-message-list-view estimateItemSize="42" [loadMore]="(lastmessage: message)" [messages]="[]"></rtk-message-list-view>
+```html
+<!-- component.html -->
+<rtk-message-list-view
+ estimateItemSize="42"
+ [loadMore]="(lastmessage: message)"
+ [messages]="[]">
+</rtk-message-list-view>
 ```
 
 ```json

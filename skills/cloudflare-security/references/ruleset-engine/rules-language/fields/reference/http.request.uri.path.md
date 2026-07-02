@@ -18,7 +18,7 @@ The URI path of the request.
 
 Example value:
 
-```
+```txt
 "/articles/index"
 ```
 

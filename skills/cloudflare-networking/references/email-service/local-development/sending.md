@@ -33,20 +33,30 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-8643)
-* [  wrangler.toml ](#tab-panel-8644)
+* [  wrangler.jsonc ](#tab-panel-8894)
+* [  wrangler.toml ](#tab-panel-8895)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "email-sending-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "send_email": [{ "name": "EMAIL" }],
+}
 ```
-{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",  "send_email": [{ "name": "EMAIL" }],}
-```
 
-TOML
+**TOML**
 
-```
-name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-25"
-[[send_email]]name = "EMAIL"
+```toml
+name = "email-sending-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[send_email]]
+name = "EMAIL"
 ```
 
 ## Remote bindings (recommended)
@@ -55,20 +65,36 @@ Using [remote bindings](https://developers.cloudflare.com/workers/local-developm
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8645)
-* [  wrangler.toml ](#tab-panel-8646)
+* [  wrangler.jsonc ](#tab-panel-8896)
+* [  wrangler.toml ](#tab-panel-8897)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "email-sending-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "remote": true,
+    },
+  ],
+}
 ```
-{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-25",  "send_email": [    {      "name": "EMAIL",      "remote": true,    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-25"
-[[send_email]]name = "EMAIL"remote = true
+```toml
+name = "email-sending-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[send_email]]
+name = "EMAIL"
+remote = true
 ```
 
 Then run `wrangler dev` as usual. Calls to `env.EMAIL.send()` will send actual emails through Email Service while your Worker code runs locally.
@@ -83,38 +109,86 @@ When running `wrangler dev` without remote bindings, the email binding is simula
 
 ## Basic sending worker
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    if (request.method !== "POST") {      return new Response("Method not allowed", { status: 405 });    }
-    try {      const emailData = await request.json();
-      console.log("Sending email:", {        to: emailData.to,        from: emailData.from,        subject: emailData.subject,      });
+```javascript
+export default {
+  async fetch(request, env, ctx) {
+    if (request.method !== "POST") {
+      return new Response("Method not allowed", { status: 405 });
+    }
+
+
+    try {
+      const emailData = await request.json();
+
+
+      console.log("Sending email:", {
+        to: emailData.to,
+        from: emailData.from,
+        subject: emailData.subject,
+      });
+
+
       const response = await env.EMAIL.send(emailData);
-      return new Response(        JSON.stringify({          success: true,          id: response.messageId,        }),        {          headers: { "Content-Type": "application/json" },        },      );    } catch (error) {      return new Response(        JSON.stringify({          success: false,          error: error.message,        }),        {          status: 500,          headers: { "Content-Type": "application/json" },        },      );    }  },};
+
+
+      return new Response(
+        JSON.stringify({
+          success: true,
+          id: response.messageId,
+        }),
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    } catch (error) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: error.message,
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
+  },
+};
 ```
 
 ## Testing locally
 
 Start your development server:
 
-Terminal window
-
-```
+```bash
 npx wrangler dev
 ```
 
 Send a test email:
 
-Terminal window
-
-```
-curl -X POST http://localhost:8787/ \  -H "Content-Type: application/json" \  -d '{    "to": "recipient@example.com",    "from": "sender@yourdomain.com",    "subject": "Test Email",    "html": "<h1>Hello from Wrangler!</h1>",    "text": "Hello from Wrangler!"  }'
+```bash
+curl -X POST http://localhost:8787/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": "recipient@example.com",
+    "from": "sender@yourdomain.com",
+    "subject": "Test Email",
+    "html": "<h1>Hello from Wrangler!</h1>",
+    "text": "Hello from Wrangler!"
+  }'
 ```
 
 Wrangler will show output like:
 
-```
-[wrangler:info] send_email binding called with MessageBuilder:From: sender@yourdomain.comTo: recipient@example.comSubject: Test Email
+```txt
+[wrangler:info] send_email binding called with MessageBuilder:
+From: sender@yourdomain.com
+To: recipient@example.com
+Subject: Test Email
+
+
 Text: /tmp/miniflare-.../files/email-text/<message-id>.txt
 ```
 
@@ -126,7 +200,7 @@ The email content (text and HTML) is saved to local files that you can inspect t
 
 Local development simulates the `send_email` binding locally, but `ArrayBuffer` values in attachment `content` cannot be serialized by the local simulator. If you pass an `ArrayBuffer` (for example, for image or PDF attachments), you will see an error like:
 
-```
+```txt
 Cannot serialize value: [object ArrayBuffer]
 ```
 

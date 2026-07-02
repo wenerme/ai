@@ -20,52 +20,142 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11778)
-* [  TypeScript ](#tab-panel-11779)
-* [  Python ](#tab-panel-11780)
-* [  Hono ](#tab-panel-11781)
+* [  JavaScript ](#tab-panel-12011)
+* [  TypeScript ](#tab-panel-12012)
+* [  Python ](#tab-panel-12013)
+* [  Hono ](#tab-panel-12014)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+
+    // gatherResponse returns both content-type & response body as a string
+    async function gatherResponse(response) {
+      const { headers } = response;
+      const contentType = headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        return { contentType, result: JSON.stringify(await response.json()) };
+      }
+      return { contentType, result: await response.text() };
+    }
+
+
+    const response = await fetch(url);
+    const { contentType, result } = await gatherResponse(response);
+
+
+    const options = { headers: { "content-type": contentType } };
+    return new Response(result, options);
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    const url = "https://jsonplaceholder.typicode.com/todos/1";
-    // gatherResponse returns both content-type & response body as a string    async function gatherResponse(response) {      const { headers } = response;      const contentType = headers.get("content-type") || "";      if (contentType.includes("application/json")) {        return { contentType, result: JSON.stringify(await response.json()) };      }      return { contentType, result: await response.text() };    }
-    const response = await fetch(url);    const { contentType, result } = await gatherResponse(response);
-    const options = { headers: { "content-type": contentType } };    return new Response(result, options);  },};
+
+**TypeScript**
+
+```ts
+interface Env {}
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+
+    // gatherResponse returns both content-type & response body as a string
+    async function gatherResponse(response) {
+      const { headers } = response;
+      const contentType = headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        return { contentType, result: JSON.stringify(await response.json()) };
+      }
+      return { contentType, result: await response.text() };
+    }
+
+
+    const response = await fetch(url);
+    const { contentType, result } = await gatherResponse(response);
+
+
+    const options = { headers: { "content-type": contentType } };
+    return new Response(result, options);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-TypeScript
+**Python**
 
-```
-interface Env {}export default {  async fetch(request, env, ctx): Promise<Response> {    const url = "https://jsonplaceholder.typicode.com/todos/1";
-    // gatherResponse returns both content-type & response body as a string    async function gatherResponse(response) {      const { headers } = response;      const contentType = headers.get("content-type") || "";      if (contentType.includes("application/json")) {        return { contentType, result: JSON.stringify(await response.json()) };      }      return { contentType, result: await response.text() };    }
-    const response = await fetch(url);    const { contentType, result } = await gatherResponse(response);
-    const options = { headers: { "content-type": contentType } };    return new Response(result, options);  },} satisfies ExportedHandler<Env>;
+```py
+from workers import WorkerEntrypoint, Response, fetch
+import json
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        url = "https://jsonplaceholder.typicode.com/todos/1"
+
+
+        # gather_response returns both content-type & response body as a string
+        async def gather_response(response):
+            headers = response.headers
+            content_type = headers["content-type"] or ""
+
+
+            if "application/json" in content_type:
+                return (content_type, json.dumps(await response.json()))
+            return (content_type, await response.text())
+
+
+        response = await fetch(url)
+        content_type, result = await gather_response(response)
+
+
+        headers = {"content-type": content_type}
+        return Response(result, headers=headers)
 ```
 
-Python
+**TypeScript**
 
-```
-from workers import WorkerEntrypoint, Response, fetchimport json
-class Default(WorkerEntrypoint):    async def fetch(self, request):        url = "https://jsonplaceholder.typicode.com/todos/1"
-        # gather_response returns both content-type & response body as a string        async def gather_response(response):            headers = response.headers            content_type = headers["content-type"] or ""
-            if "application/json" in content_type:                return (content_type, json.dumps(await response.json()))            return (content_type, await response.text())
-        response = await fetch(url)        content_type, result = await gather_response(response)
-        headers = {"content-type": content_type}        return Response(result, headers=headers)
-```
-
-TypeScript
-
-```
+```ts
 import { Hono } from 'hono';
+
+
 type Env = {};
+
+
 const app = new Hono<{ Bindings: Env }>();
-app.get('*', async (c) => {  const url = "https://jsonplaceholder.typicode.com/todos/1";
-  // gatherResponse returns both content-type & response body as a string  async function gatherResponse(response: Response) {    const { headers } = response;    const contentType = headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {      return { contentType, result: JSON.stringify(await response.json()) };    }
-    return { contentType, result: await response.text() };  }
-  const response = await fetch(url);  const { contentType, result } = await gatherResponse(response);
-  return new Response(result, {    headers: { "content-type": contentType }  });});
+
+
+app.get('*', async (c) => {
+  const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+
+  // gatherResponse returns both content-type & response body as a string
+  async function gatherResponse(response: Response) {
+    const { headers } = response;
+    const contentType = headers.get("content-type") || "";
+
+
+    if (contentType.includes("application/json")) {
+      return { contentType, result: JSON.stringify(await response.json()) };
+    }
+
+
+    return { contentType, result: await response.text() };
+  }
+
+
+  const response = await fetch(url);
+  const { contentType, result } = await gatherResponse(response);
+
+
+  return new Response(result, {
+    headers: { "content-type": contentType }
+  });
+});
+
+
 export default app;
 ```
 

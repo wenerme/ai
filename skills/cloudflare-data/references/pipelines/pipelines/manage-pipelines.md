@@ -33,25 +33,21 @@ Pipelines execute SQL statements that define how data flows from streams to sink
 
 To create a pipeline, run the [pipelines create](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-create) command:
 
-Terminal window
-
-```
-npx wrangler pipelines create my-pipeline \  --sql "INSERT INTO my_sink SELECT * FROM my_stream"
+```bash
+npx wrangler pipelines create my-pipeline \
+  --sql "INSERT INTO my_sink SELECT * FROM my_stream"
 ```
 
 You can also provide SQL from a file:
 
-Terminal window
-
-```
-npx wrangler pipelines create my-pipeline \  --sql-file pipeline.sql
+```bash
+npx wrangler pipelines create my-pipeline \
+  --sql-file pipeline.sql
 ```
 
 Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [pipelines setup](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines setup
 ```
 
@@ -65,7 +61,7 @@ Common patterns include:
 
 Transfer all data from stream to sink:
 
-```
+```sql
 INSERT INTO my_sink SELECT * FROM my_stream
 ```
 
@@ -73,24 +69,34 @@ INSERT INTO my_sink SELECT * FROM my_stream
 
 Filter events based on conditions:
 
-```
-INSERT INTO my_sinkSELECT * FROM my_streamWHERE event_type = 'purchase' AND amount > 100
+```sql
+INSERT INTO my_sink
+SELECT * FROM my_stream
+WHERE event_type = 'purchase' AND amount > 100
 ```
 
 #### Selecting specific fields
 
 Choose only the fields you need:
 
-```
-INSERT INTO my_sinkSELECT user_id, event_type, timestamp, amountFROM my_stream
+```sql
+INSERT INTO my_sink
+SELECT user_id, event_type, timestamp, amount
+FROM my_stream
 ```
 
 #### Transforming data
 
 Apply transformations to fields:
 
-```
-INSERT INTO my_sinkSELECT  user_id,  UPPER(event_type) as event_type,  timestamp,  amount * 1.1 as amount_with_taxFROM my_stream
+```sql
+INSERT INTO my_sink
+SELECT
+  user_id,
+  UPPER(event_type) as event_type,
+  timestamp,
+  amount * 1.1 as amount_with_tax
+FROM my_stream
 ```
 
 #### Route one stream to multiple tables
@@ -99,9 +105,15 @@ A single pipeline can run multiple `INSERT` statements, separated by semicolons.
 
 This avoids running a separate pipeline for each destination. Each statement filters the stream with its own `WHERE` clause and projects only the columns relevant to that table. This can also be a used as a cost optimization as you will be [billed](https://developers.cloudflare.com/pipelines/platform/pricing/) once for the transformations, not per statement.
 
-```
-INSERT INTO purchases_sinkSELECT user_id, product_id, amount FROM my_streamWHERE event_type = 'purchase';
-INSERT INTO page_views_sinkSELECT user_id, product_id FROM my_streamWHERE event_type = 'view_product';
+```sql
+INSERT INTO purchases_sink
+SELECT user_id, product_id, amount FROM my_stream
+WHERE event_type = 'purchase';
+
+
+INSERT INTO page_views_sink
+SELECT user_id, product_id FROM my_stream
+WHERE event_type = 'view_product';
 ```
 
 For a complete example that fans a live event stream out into five tables, refer to [Fan out a stream to multiple Iceberg tables](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/).
@@ -117,17 +129,13 @@ For a complete example that fans a live event stream out into five tables, refer
 
 To view a specific pipeline, run the [pipelines get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-get) command with either the pipeline ID or pipeline name:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines get <PIPELINE_NAME_OR_ID>
 ```
 
 To list all pipelines in your account, run the [pipelines list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-list) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines list
 ```
 
@@ -144,9 +152,7 @@ Deleting a pipeline stops data flow from the connected stream to sink.
 
 To delete a pipeline, run the [pipelines delete](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-delete) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines delete <PIPELINE_ID>
 ```
 

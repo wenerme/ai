@@ -30,10 +30,18 @@ The resizing feature is accessed via the [options](https://developers.cloudflare
 
 In your worker, where you would fetch the image using `fetch(request)`, add options like in the following example:
 
-JavaScript
+**JavaScript**
 
-```
-fetch(imageURL, {  cf: {    image: {      fit: "scale-down",      width: 800,      height: 600,    },  },});
+```js
+fetch(imageURL, {
+  cf: {
+    image: {
+      fit: "scale-down",
+      width: 800,
+      height: 600,
+    },
+  },
+});
 ```
 
 These typings are also available in [our Workers TypeScript definitions library ↗](https://github.com/cloudflare/workers-types).
@@ -54,11 +62,21 @@ To perform resizing and optimizations, the Worker must be able to fetch the orig
 
 You must detect which requests must go directly to the origin server. When the `image-resizing` string is present in the `Via` header, it means that it is a request coming from another Worker and should be directed to the origin server:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request) {    // If this request is coming from image resizing worker,    // avoid causing an infinite loop by resizing it again:    if (/image-resizing/.test(request.headers.get("via"))) {      return fetch(request);    }
-    // Now you can safely use image resizing here  },};
+```js
+export default {
+  async fetch(request) {
+    // If this request is coming from image resizing worker,
+    // avoid causing an infinite loop by resizing it again:
+    if (/image-resizing/.test(request.headers.get("via"))) {
+      return fetch(request);
+    }
+
+
+    // Now you can safely use image resizing here
+  },
+};
 ```
 
 ## Lack of preview in the dashboard
@@ -75,40 +93,119 @@ When an image cannot be resized — for example, because the image does not exis
 
 By default, the error will be forwarded to the browser, but you can decide how to handle errors. For example, you can redirect the browser to the original, unresized image instead:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const response = await fetch(imageURL, options);
-if (response.ok || response.redirected) {  // fetch() may respond with status 304  return response;} else {  return Response.redirect(imageURL, 307);}
+
+
+if (response.ok || response.redirected) {
+  // fetch() may respond with status 304
+  return response;
+} else {
+  return Response.redirect(imageURL, 307);
+}
 ```
 
 Keep in mind that if the original images on your server are very large, it may be better not to display failing images at all, than to fall back to overly large images that could use too much bandwidth, memory, or break page layout.
 
 You can also replace failed images with a placeholder image:
 
-JavaScript
+**JavaScript**
 
-```
-const response = await fetch(imageURL, options);if (response.ok || response.redirected) {  return response;} else {  // Change to a URL on your server  return fetch("https://img.example.com/blank-placeholder.png");}
+```js
+const response = await fetch(imageURL, options);
+if (response.ok || response.redirected) {
+  return response;
+} else {
+  // Change to a URL on your server
+  return fetch("https://img.example.com/blank-placeholder.png");
+}
 ```
 
 ## An example worker
 
 Assuming you [set up a Worker](https://developers.cloudflare.com/workers/get-started/guide/) on `https://example.com/image-resizing` to handle URLs like `https://example.com/image-resizing?width=80&image=https://example.com/uploads/avatar1.jpg`:
 
-JavaScript
+**JavaScript**
 
-```
-/** * Fetch and log a request * @param {Request} request */export default {  async fetch(request) {    // Parse request URL to get access to query string    let url = new URL(request.url);
-    // Cloudflare-specific options are in the cf object.    let options = { cf: { image: {} } };
-    // Copy parameters from query string to request options.    // You can implement various different parameters here.    if (url.searchParams.has("fit"))      options.cf.image.fit = url.searchParams.get("fit");    if (url.searchParams.has("width"))      options.cf.image.width = parseInt(url.searchParams.get("width"), 10);    if (url.searchParams.has("height"))      options.cf.image.height = parseInt(url.searchParams.get("height"), 10);    if (url.searchParams.has("quality"))      options.cf.image.quality = parseInt(url.searchParams.get("quality"), 10);
-    // Your Worker is responsible for automatic format negotiation. Check the Accept header.    const accept = request.headers.get("Accept");    if (/image\/avif/.test(accept)) {      options.cf.image.format = "avif";    } else if (/image\/webp/.test(accept)) {      options.cf.image.format = "webp";    }
-    // Get URL of the original (full size) image to resize.    // You could adjust the URL here, e.g., prefix it with a fixed address of your server,    // so that user-visible URLs are shorter and cleaner.    const imageURL = url.searchParams.get("image");    if (!imageURL)      return new Response('Missing "image" value', { status: 400 });
-    try {      // TODO: Customize validation logic      const { hostname, pathname } = new URL(imageURL);
-      // Optionally, only allow URLs with JPEG, PNG, GIF, or WebP file extensions      // @see https://developers.cloudflare.com/images/url-format#supported-formats-and-limitations      if (!/\.(jpe?g|png|gif|webp)$/i.test(pathname)) {        return new Response("Disallowed file extension", { status: 400 });      }
-      // Demo: Only accept "example.com" images      if (hostname !== "example.com") {        return new Response('Must use "example.com" source images', {          status: 403,        });      }    } catch (err) {      return new Response('Invalid "image" value', { status: 400 });    }
-    // Build a request that passes through request headers    const imageRequest = new Request(imageURL, {      headers: request.headers,    });
-    // Returning fetch() with resizing options will pass through response with the resized image.    return fetch(imageRequest, options);  },};
+```js
+/**
+ * Fetch and log a request
+ * @param {Request} request
+ */
+export default {
+  async fetch(request) {
+    // Parse request URL to get access to query string
+    let url = new URL(request.url);
+
+
+    // Cloudflare-specific options are in the cf object.
+    let options = { cf: { image: {} } };
+
+
+    // Copy parameters from query string to request options.
+    // You can implement various different parameters here.
+    if (url.searchParams.has("fit"))
+      options.cf.image.fit = url.searchParams.get("fit");
+    if (url.searchParams.has("width"))
+      options.cf.image.width = parseInt(url.searchParams.get("width"), 10);
+    if (url.searchParams.has("height"))
+      options.cf.image.height = parseInt(url.searchParams.get("height"), 10);
+    if (url.searchParams.has("quality"))
+      options.cf.image.quality = parseInt(url.searchParams.get("quality"), 10);
+
+
+    // Your Worker is responsible for automatic format negotiation. Check the Accept header.
+    const accept = request.headers.get("Accept");
+    if (/image\/avif/.test(accept)) {
+      options.cf.image.format = "avif";
+    } else if (/image\/webp/.test(accept)) {
+      options.cf.image.format = "webp";
+    }
+
+
+    // Get URL of the original (full size) image to resize.
+    // You could adjust the URL here, e.g., prefix it with a fixed address of your server,
+    // so that user-visible URLs are shorter and cleaner.
+    const imageURL = url.searchParams.get("image");
+    if (!imageURL)
+      return new Response('Missing "image" value', { status: 400 });
+
+
+    try {
+      // TODO: Customize validation logic
+      const { hostname, pathname } = new URL(imageURL);
+
+
+      // Optionally, only allow URLs with JPEG, PNG, GIF, or WebP file extensions
+      // @see https://developers.cloudflare.com/images/url-format#supported-formats-and-limitations
+      if (!/\.(jpe?g|png|gif|webp)$/i.test(pathname)) {
+        return new Response("Disallowed file extension", { status: 400 });
+      }
+
+
+      // Demo: Only accept "example.com" images
+      if (hostname !== "example.com") {
+        return new Response('Must use "example.com" source images', {
+          status: 403,
+        });
+      }
+    } catch (err) {
+      return new Response('Invalid "image" value', { status: 400 });
+    }
+
+
+    // Build a request that passes through request headers
+    const imageRequest = new Request(imageURL, {
+      headers: request.headers,
+    });
+
+
+    // Returning fetch() with resizing options will pass through response with the resized image.
+    return fetch(imageRequest, options);
+  },
+};
 ```
 
 When testing image resizing, please deploy the script first. Resizing will not be active in the online editor in the dashboard.

@@ -20,7 +20,7 @@ For the little-endian version of this field, refer to [cf.tls\_client\_extension
 
 Example value:
 
-```
+```txt
 "OWFiM2I5ZDc0YWI0YWYzZmFkMGU0ZjhlYjhiYmVkMjgxNTU5YTU2Mg=="
 ```
 

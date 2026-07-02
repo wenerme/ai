@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of settings module. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSettings: boolean; }
 ```
 
@@ -34,14 +34,19 @@ TypeScript
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-settings-toggle></rtk-settings-toggle>
+```html
+<!-- component.html -->
+<rtk-settings-toggle></rtk-settings-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-settings-toggle size="md" variant="button"></rtk-settings-toggle>
+```html
+<!-- component.html -->
+<rtk-settings-toggle
+ size="md"
+ variant="button">
+</rtk-settings-toggle>
 ```
 
 ```json

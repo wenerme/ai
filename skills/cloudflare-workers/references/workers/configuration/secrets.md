@@ -26,36 +26,76 @@ You can access secrets in your Worker code through:
 
 Secrets can be accessed from Workers as you would any other [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/). For instance, given a `DB_CONNECTION_STRING` secret, you can access it in your Worker code through the `env` parameter:
 
-index.js
+**index.js**
 
-```
+```js
 import postgres from "postgres";
-export default {  async fetch(request, env, ctx) {    const sql = postgres(env.DB_CONNECTION_STRING);
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const sql = postgres(env.DB_CONNECTION_STRING);
+
+
     const result = await sql`SELECT * FROM products;`;
-    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  },};
+
+
+    return new Response(JSON.stringify(result), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-11559)
-* [  TypeScript ](#tab-panel-11560)
+* [  JavaScript ](#tab-panel-11854)
+* [  TypeScript ](#tab-panel-11855)
 
-JavaScript
+**JavaScript**
 
+```js
+import { env } from "cloudflare:workers";
+import postgres from "postgres";
+
+
+// Initialize the database client at the top level using a secret
+const sql = postgres(env.DB_CONNECTION_STRING);
+
+
+export default {
+  async fetch(request) {
+    const result = await sql`SELECT * FROM products;`;
+
+
+    return new Response(JSON.stringify(result), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
-import { env } from "cloudflare:workers";import postgres from "postgres";
-// Initialize the database client at the top level using a secretconst sql = postgres(env.DB_CONNECTION_STRING);
-export default {  async fetch(request) {    const result = await sql`SELECT * FROM products;`;
-    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { env } from "cloudflare:workers";import postgres from "postgres";
-// Initialize the database client at the top level using a secretconst sql = postgres(env.DB_CONNECTION_STRING);
-export default {  async fetch(request: Request): Promise<Response> {    const result = await sql`SELECT * FROM products;`;
-    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  },};
+```ts
+import { env } from "cloudflare:workers";
+import postgres from "postgres";
+
+
+// Initialize the database client at the top level using a secret
+const sql = postgres(env.DB_CONNECTION_STRING);
+
+
+export default {
+  async fetch(request: Request): Promise<Response> {
+    const result = await sql`SELECT * FROM products;`;
+
+
+    return new Response(JSON.stringify(result), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
 
 For more details on accessing `env` globally, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
@@ -80,10 +120,11 @@ Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.v
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
-.dev.vars / .env
+**.dev.vars / .env**
 
-```
-SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+```bash
+SECRET_KEY="value"
+API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git
@@ -122,9 +163,7 @@ Secrets can be added through [wrangler secret put](https://developers.cloudflare
 
 `wrangler secret put` creates a new version of the Worker and deploys it immediately.
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put <KEY>
 ```
 
@@ -134,9 +173,7 @@ Note
 
 Wrangler versions before 3.73.0 require you to specify a `--x-versions` flag.
 
-Terminal window
-
-```
+```sh
 npx wrangler versions secret put <KEY>
 ```
 
@@ -156,15 +193,11 @@ To add a secret via the dashboard:
 
 You can upload secrets at the same time as your Worker code using the `--secrets-file` flag on [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) or [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload). This accepts a path to a JSON or `.env` file — the same formats accepted by [wrangler secret bulk](https://developers.cloudflare.com/workers/wrangler/commands/workers/#secret-bulk). You can upload up to 100 secrets per bulk request for a single version.
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy --secrets-file .env.production
 ```
 
-Terminal window
-
-```
+```sh
 npx wrangler versions upload --secrets-file secrets.json
 ```
 
@@ -178,17 +211,13 @@ Secrets can be deleted through [wrangler secret delete](https://developers.cloud
 
 `wrangler secret delete` creates a new version of the Worker and deploys it immediately.
 
-Terminal window
-
-```
+```sh
 npx wrangler secret delete <KEY>
 ```
 
 If using [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret delete` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
 
-Terminal window
-
-```
+```sh
 npx wrangler versions secret delete <KEY>
 ```
 

@@ -28,8 +28,8 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-7726)
-* [ API ](#tab-panel-7727)
+* [ Dashboard ](#tab-panel-7979)
+* [ API ](#tab-panel-7980)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
@@ -45,10 +45,24 @@ To create a Gateway HTTP policy with Application Granular Controls:
 
 Use the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint to create a policy. For example, you can create a policy to block file uploads to ChatGPT:
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block ChatGPT uploads",    "description": "Block file uploads to ChatGPT while allowing other usage",    "enabled": true,    "action": "block",    "filters": [        "http"    ],    "traffic": "any(app.ids[*] == 1199) and any(app_control.controls[*] in {1653})",    "identity": "",    "device_posture": ""  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Block ChatGPT uploads",
+    "description": "Block file uploads to ChatGPT while allowing other usage",
+    "enabled": true,
+    "action": "block",
+    "filters": [
+        "http"
+    ],
+    "traffic": "any(app.ids[*] == 1199) and any(app_control.controls[*] in {1653})",
+    "identity": "",
+    "device_posture": ""
+  }'
 ```
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).

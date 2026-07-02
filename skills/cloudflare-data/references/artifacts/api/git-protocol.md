@@ -39,9 +39,7 @@ Git's [http.extraHeader ↗](https://git-scm.com/docs/git-config#Documentation/g
 
 If you want to use the full token string returned by the API, pass it as a Bearer token:
 
-Terminal window
-
-```
+```sh
 git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
 ```
 
@@ -51,21 +49,16 @@ For the URL form, use the token secret in the password slot. Artifacts ignores t
 
 Use this form only when you need a self-contained remote URL for a short-lived command.
 
-Terminal window
-
+```sh
+export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
+export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
 ```
-export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
-```
 
-Terminal window
-
-```
+```sh
 git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 ```
 
-Terminal window
-
-```
+```sh
 git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
 ```
 

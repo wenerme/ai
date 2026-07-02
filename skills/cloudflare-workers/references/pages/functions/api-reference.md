@@ -71,14 +71,20 @@ Passes the request through to the next Function or to the asset server if no oth
 * `params` Params<P>
 Holds the values from [dynamic routing](https://developers.cloudflare.com/pages/functions/routing/#dynamic-routes).
 In the following example, you have a dynamic path that is `/users/[user].js`. When you visit the site on `/users/nevi` the `params` object would look like:
-JavaScript
-```
-{  user: "nevi";}
+
+**JavaScript**
+```js
+{
+  user: "nevi";
+}
 ```
 This allows you fetch the dynamic value from the path:
-JavaScript
-```
-export function onRequest(context) {  return new Response(`Hello ${context.params.user}`);}
+
+**JavaScript**
+```js
+export function onRequest(context) {
+  return new Response(`Hello ${context.params.user}`);
+}
 ```
 Which would return `"Hello nevi"`.
 * `data` Data

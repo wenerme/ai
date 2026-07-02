@@ -51,8 +51,33 @@ JSON example for API users
 
 When [using the API](https://developers.cloudflare.com/rules/origin-rules/create-api/), you configure origin rule parameters in an `action_parameters` object.
 
-```
-{  "rules": [    {      "expression": "http.request.uri.query contains \"/eu/\"",      "description": "Origin rule #1",      "action": "route",      "action_parameters": {        "host_header": "example.com",        "origin": {          "port": 8081        }      }    },    {      "expression": "http.request.uri.query contains \"/eu/\"",      "description": "Origin rule #2",      "action": "route",      "action_parameters": {        "host_header": "example.net",        "origin": {          "host": "example.net"        }      }    }  ]}
+```json
+{
+  "rules": [
+    {
+      "expression": "http.request.uri.query contains \"/eu/\"",
+      "description": "Origin rule #1",
+      "action": "route",
+      "action_parameters": {
+        "host_header": "example.com",
+        "origin": {
+          "port": 8081
+        }
+      }
+    },
+    {
+      "expression": "http.request.uri.query contains \"/eu/\"",
+      "description": "Origin rule #2",
+      "action": "route",
+      "action_parameters": {
+        "host_header": "example.net",
+        "origin": {
+          "host": "example.net"
+        }
+      }
+    }
+  ]
+}
 ```
 
 The merged configuration to apply would be the following:

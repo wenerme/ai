@@ -18,8 +18,8 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-9260)
-* [ Terraform (v5) ](#tab-panel-9261)
+* [ Dashboard ](#tab-panel-9551)
+* [ Terraform (v5) ](#tab-panel-9552)
 
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -35,75 +35,89 @@ To connect your private network:
 
   * `Cloudflare Tunnel Write`
 2. Create a tunnel using the [cloudflare\_zero\_trust\_tunnel\_cloudflare ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fcloudflared) resource.
-```
-resource "cloudflare_zero_trust_tunnel_cloudflared" "example_tunnel" {  account_id = var.cloudflare_account_id  name       = "Example tunnel"  config_src = "cloudflare"}
+```tf
+resource "cloudflare_zero_trust_tunnel_cloudflared" "example_tunnel" {
+  account_id = var.cloudflare_account_id
+  name       = "Example tunnel"
+  config_src = "cloudflare"
+}
 ```
 3. Route the CIDR of your private network through the tunnel using the [cloudflare\_zero\_trust\_tunnel\_cloudflared\_route ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fcloudflared%5Froute) resource:
-```
-resource "cloudflare_zero_trust_tunnel_cloudflared_route" "example_tunnel_route" {  account_id         = var.cloudflare_account_id  tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id  network            = "10.0.0.0/8"  comment            = "Example tunnel route"}
+```tf
+resource "cloudflare_zero_trust_tunnel_cloudflared_route" "example_tunnel_route" {
+  account_id         = var.cloudflare_account_id
+  tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
+  network            = "10.0.0.0/8"
+  comment            = "Example tunnel route"
+}
 ```
 4. Get the [token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/) used to run the tunnel:
-```
-data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {  account_id = var.cloudflare_account_id  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id}
+```tf
+data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {
+  account_id = var.cloudflare_account_id
+  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
+}
 ```
 If your host machine is not managed in Terraform or you want to install the tunnel manually, you can output the token value to the CLI.
 Example: Output to CLI
 
   1. Output the tunnel token to the Terraform state file:
-  ```
-  output "tunnel_token" {  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  sensitive   = true}
+  ```tf
+  output "tunnel_token" {
+    value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+    sensitive   = true
+  }
   ```
   2. Apply the configuration:
-  Terminal window
-  ```
+  ```sh
   terraform apply
   ```
   3. Read the tunnel token:
-  Terminal window
-  ```
+  ```sh
   terraform output -raw tunnel_token
   ```
-  ```
+  ```sh
   eyJhIj...
   ```
 Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token` directly into your host's Terraform configuration or store the token in your secret management tool.
 Example: Store in HashiCorp Vault
-```
-resource "vault_generic_secret" "tunnel_token" {  path         = "kv/cloudflare/tunnel_token"
-  data_json = jsonencode({    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  })}
+```tf
+resource "vault_generic_secret" "tunnel_token" {
+  path         = "kv/cloudflare/tunnel_token"
+  data_json = jsonencode({
+    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+  })
+}
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:
 
-  * [ Linux ](#tab-panel-9256)
-  * [ Windows ](#tab-panel-9257)
-  * [ macOS ](#tab-panel-9258)
-  * [ Docker ](#tab-panel-9259)
+  * [ Linux ](#tab-panel-9547)
+  * [ Windows ](#tab-panel-9548)
+  * [ macOS ](#tab-panel-9549)
+  * [ Docker ](#tab-panel-9550)
 
   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
   2. Run the following command:
-  Terminal window
-  ```
+  ```sh
   sudo cloudflared service install <TUNNEL_TOKEN>
   ```
 
   1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
   2. Open Command Prompt as administrator.
   3. Run the following command:
-  ```
+  ```txt
   cloudflared.exe service install <TUNNEL_TOKEN>
   ```
 
   1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#macos) `cloudflared`.
   2. Open a terminal window and run the following command:
-  Terminal window
-  ```
+  ```sh
   sudo cloudflared service install <TUNNEL_TOKEN>
   ```
 
   1. Open a terminal window.
   2. Run the following command:
-  Terminal window
-  ```
+  ```sh
   docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>
   ```
 

@@ -18,7 +18,7 @@ Use [Response Header Transform Rules](https://developers.cloudflare.com/rules/tr
 
 **Expression:**
 
-```
+```txt
 (cf.bot_management.verified_bot and http.response.code eq 403)
 ```
 

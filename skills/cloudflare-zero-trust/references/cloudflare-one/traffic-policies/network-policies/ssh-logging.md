@@ -33,9 +33,7 @@ The simplest setup is one where a user's Unix username matches their email addre
 
 For testing purposes, you can run the following command to generate a Unix user on the machine:
 
-Terminal window
-
-```
+```sh
 sudo adduser jdoe
 ```
 
@@ -53,15 +51,15 @@ If you would like to use short-lived certificates with the browser-based termina
 
 To allow `jdoe@example.com` to log in as the user `johndoe`, add the following to the server's `/etc/ssh/sshd_config`:
 
-```
-Match user johndoe  AuthorizedPrincipalsCommand /bin/echo 'jdoe'  AuthorizedPrincipalsCommandUser nobody
+```txt
+Match user johndoe
+  AuthorizedPrincipalsCommand /bin/echo 'jdoe'
+  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This tells the SSH server that, when someone tries to authenticate as the user `johndoe`, check their certificate for the principal `jdoe`. This would allow the user `jdoe@example.com` to sign into the server with a command such as:
 
-Terminal window
-
-```
+```sh
 ssh johndoe@server
 ```
 
@@ -69,22 +67,27 @@ ssh johndoe@server
 
 To allow multiple email addresses to log in as `vmuser`, add the following to the server's `/etc/ssh/sshd_config`:
 
-```
-Match user vmuser  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
+```txt
+Match user vmuser
+  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
 ```
 
 This tells the SSH server to load a list of principles from a file. Then, in `/etc/ssh/vmusers-list.txt`, list the email prefixes that can log in as `vmuser`, one per line:
 
-```
-jdoebwaynerobin
+```txt
+jdoe
+bwayne
+robin
 ```
 
 **Username matches all users**
 
 To allow any Access user to log in as `vmuser`, add the following command to the server's `/etc/ssh/sshd_config`:
 
-```
-Match user vmuser  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"  AuthorizedPrincipalsCommandUser nobody
+```txt
+Match user vmuser
+  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
+  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This command takes the certificate presented by the user and authorizes whatever principal is listed on it.
@@ -93,8 +96,9 @@ This command takes the certificate presented by the user and authorizes whatever
 
 To allow any Access user to log in with any username, add the following to the server's `/etc/ssh/sshd_config`:
 
-```
-AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"AuthorizedPrincipalsCommandUser nobody
+```txt
+AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
+AuthorizedPrincipalsCommandUser nobody
 ```
 
 Since this will put the security of your server entirely dependent on your Access configuration, make sure your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) are correctly configured.
@@ -109,8 +113,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-7764)
-* [ API ](#tab-panel-7765)
+* [ Dashboard ](#tab-panel-8017)
+* [ API ](#tab-panel-8018)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -130,10 +134,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: SSH Auditing Write`
 
-Add a new SSH Certificate Authority (CA)
+**Add a new SSH Certificate Authority (CA)**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. If you have already created a Cloudflare SSH CA or receive the error message `access.api.error.gateway_ca_already_exists`, make a `GET` request instead:
@@ -144,10 +150,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: SSH Auditing Write`
 * `Access: SSH Auditing Read`
 
-List SSH Certificate Authorities (CA)
+**List SSH Certificate Authorities (CA)**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Copy the `public_key` value returned in the response.
@@ -155,25 +163,24 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_c
 ## 3\. Save the public key
 
 1. Use the following command to change directories to the SSH configuration directory on the remote target machine:
-Terminal window
-```
+```sh
 cd /etc/ssh
 ```
 2. Once there, you can use the following command to both generate the file and open a text editor to input/paste the public key.
-Terminal window
-```
+```sh
 vim ca.pub
 ```
 3. In the `ca.pub` file, paste the public key without any modifications.
-ca.pub
-```
+
+**ca.pub**
+```txt
 ecdsa-sha2-nistp256 <redacted> open-ssh-ca@cloudflareaccess.org
 ```
 The `ca.pub` file can hold multiple keys, listed one per line. Empty lines and comments starting with `#` are also allowed.
 4. Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:
-Terminal window
-```
-:w !sudo tee %:q!
+```bash
+:w !sudo tee %
+:q!
 ```
 
 ## 4\. Modify your `sshd_config` file
@@ -181,13 +188,13 @@ Terminal window
 Configure your SSH server to trust the Cloudflare SSH CA by updating the `sshd_config` file on the remote target machine.
 
 1. While in the `/etc/ssh` directory on the remote machine, open the `sshd_config` file.
-Terminal window
-```
+```sh
  sudo vim /etc/ssh/sshd_config
 ```
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:
-```
-PubkeyAuthentication yesTrustedUserCAKeys /etc/ssh/ca.pub
+```txt
+PubkeyAuthentication yes
+TrustedUserCAKeys /etc/ssh/ca.pub
 ```
 Be aware of your include statements
 If there are any include statements below these lines, the configurations in those files will not take precedence.
@@ -197,9 +204,7 @@ If there are any include statements below these lines, the configurations in tho
 
 Cloudflare's SSH proxy only works with servers running on the default port 22\. Open the `sshd_config` file and verify that no other `Port` values are specified.
 
-Terminal window
-
-```
+```sh
 cat /etc/ssh/sshd_config
 ```
 
@@ -207,22 +212,18 @@ cat /etc/ssh/sshd_config
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-7762)
-* [ CentOS/RHEL ](#tab-panel-7763)
+* [ Debian/Ubuntu ](#tab-panel-8015)
+* [ CentOS/RHEL ](#tab-panel-8016)
 
 For Debian/Ubuntu:
 
-Terminal window
-
-```
+```sh
 sudo systemctl reload ssh
 ```
 
 For CentOS/RHEL 7 and newer:
 
-Terminal window
-
-```
+```sh
 sudo systemctl reload sshd
 ```
 
@@ -243,9 +244,7 @@ Users can use any SSH client to connect to the target resource, as long as they 
 
 Users must specify their desired username to connect with as part of the SSH command:
 
-Terminal window
-
-```
+```sh
 ssh <username>@<hostname>
 ```
 
@@ -253,9 +252,7 @@ Note
 
 If the target resource is already in a user's `.ssh/known_hosts` file, the user must first remove existing SSH keys before attempting to connect:
 
-Terminal window
-
-```
+```sh
 ssh-keygen -R <targetIP or hostname>
 ```
 
@@ -265,11 +262,11 @@ To log SSH commands, you will need to generate an HPKE key pair and upload the p
 
 1. [Download ↗](https://github.com/cloudflare/ssh-log-cli/releases/latest/) the Cloudflare `ssh-log-cli` utility.
 2. Using the `ssh-log-cli` utility, generate a public and private key pair.
-Terminal window
+```sh
+./ssh-log-cli generate-key-pair -o sshkey
+ls
 ```
-./ssh-log-cli generate-key-pair -o sshkeyls
-```
-```
+```sh
 README.md    ssh-log-cli    sshkey    sshkey.pub
 ```
 This command outputs two files, an `sshkey.pub` public key and a matching `sshkey` private key.
@@ -283,8 +280,7 @@ All proxied SSH commands are immediately encrypted using this public key. The ma
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \>**Logs** \> **SSH command logs**.
 2. If you enabled the **SSH Command Logging** feature, you can **Download** a session's command log.
 3. To decrypt the log, follow the instructions in the [SSH Logging CLI repository ↗](https://github.com/cloudflare/ssh-log-cli/). In the following example, `sshkey` is the private key that matches the public key uploaded to Cloudflare.
-Terminal window
-```
+```sh
 ./ssh-log-cli decrypt -i sshlog -k sshkey
 ```
 This command outputs a `sshlog-decrypted.zip` file with the decrypted logs.

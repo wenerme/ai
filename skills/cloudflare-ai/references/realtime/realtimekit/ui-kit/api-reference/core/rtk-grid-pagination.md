@@ -29,19 +29,25 @@ A component which allows you to change current page and view mode of active part
 
 ### Basic Usage
 
-```
+```html
 <rtk-grid-pagination></rtk-grid-pagination>
 ```
 
 ### With Properties
 
-```
-<rtk-grid-pagination size="md"></rtk-grid-pagination>
+```html
+<rtk-grid-pagination
+ size="md">
+</rtk-grid-pagination>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-grid-pagination");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-grid-pagination");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

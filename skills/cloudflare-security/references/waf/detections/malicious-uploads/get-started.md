@@ -18,10 +18,10 @@ WAF content scanning is available to customers on an Enterprise plan with a paid
 
 ## 1\. Turn on the detection
 
-* [  New dashboard ](#tab-panel-11253)
-* [ Old dashboard ](#tab-panel-11254)
-* [ API ](#tab-panel-11255)
-* [ Terraform ](#tab-panel-11256)
+* [  New dashboard ](#tab-panel-11548)
+* [ Old dashboard ](#tab-panel-11549)
+* [ API ](#tab-panel-11550)
+* [ Terraform ](#tab-panel-11551)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -40,16 +40,21 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Enable Content Scanning
+**Enable Content Scanning**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/enable" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/enable" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Use the `cloudflare_content_scanning` resource to enable content scanning for a zone. For example:
 
-```
-resource "cloudflare_content_scanning" "zone_content_scanning_example" {  zone_id = var.cloudflare_zone_id  enabled = true}
+```terraform
+resource "cloudflare_content_scanning" "zone_content_scanning_example" {
+  zone_id = var.cloudflare_zone_id
+  enabled = true
+}
 ```
 
 Note
@@ -76,7 +81,7 @@ For example, create a custom rule with the _Block_ action and the following expr
 
 If you use the Expression Editor, enter the following expression:
 
-```
+```txt
 (cf.waf.content_scan.has_malicious_obj)
 ```
 
@@ -95,7 +100,7 @@ You can combine the previous expression with other [fields](https://developers.c
 | Has malicious content object | equals   | True       | And   |
 | URI Path                     | contains | upload.php |       |
 Expression when using the editor:
-```
+```txt
 (cf.waf.content_scan.has_malicious_obj and http.request.uri.path contains "upload.php")
 ```
 * The following expression will match requests from bots uploading content objects:
@@ -105,7 +110,7 @@ Expression when using the editor:
 | Has content object | equals    | True  | And   |
 | Bot Score          | less than | 10    |       |
 Expression when using the editor:
-```
+```txt
 (cf.waf.content_scan.has_obj and cf.bot_management.score lt 10)
 ```
 
@@ -115,10 +120,10 @@ For additional examples, refer to [Example rules](https://developers.cloudflare.
 
 To check uploaded content in a way that is not covered by the default configuration, add a [custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
-* [  New dashboard ](#tab-panel-11257)
-* [ Old dashboard ](#tab-panel-11258)
-* [ API ](#tab-panel-11259)
-* [ Terraform ](#tab-panel-11260)
+* [  New dashboard ](#tab-panel-11552)
+* [ Old dashboard ](#tab-panel-11553)
+* [ API ](#tab-panel-11554)
+* [ Terraform ](#tab-panel-11555)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -126,7 +131,7 @@ To check uploaded content in a way that is not covered by the default configurat
 3. Under **Malicious uploads detection** \> **Configurations**, select the edit icon.
 4. Select **Add content location**.
 5. In **Content location**, enter your custom scan expression. For example:
-```
+```txt
 lookup_json_string(http.request.body.raw, "file")
 ```
 6. Select **Save**.
@@ -136,7 +141,7 @@ lookup_json_string(http.request.body.raw, "file")
 3. Under **Incoming traffic detections**, select **Malicious uploads**.
 4. Select **Add content object location**.
 5. In **Content location**, enter your custom scan expression. For example:
-```
+```txt
 lookup_json_string(http.request.body.raw, "file")
 ```
 6. Select **Save**.
@@ -149,22 +154,32 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Add Custom Scan Expressions
+**Add Custom Scan Expressions**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '[    {        "payload": "lookup_json_string(http.request.body.raw, \"file\")"    }  ]'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '[
+    {
+        "payload": "lookup_json_string(http.request.body.raw, \"file\")"
+    }
+  ]'
 ```
 
 The above request will add the following expression to the current list of custom scan expressions:
 
-```
+```txt
 lookup_json_string(http.request.body.raw, "file")
 ```
 
 Use the `cloudflare_content_scanning_expression` resource to add a custom scan expression. For example:
 
-```
-resource "cloudflare_content_scanning_expression" "my_custom_scan_expression" {  zone_id = var.cloudflare_zone_id  payload = "lookup_json_string(http.request.body.raw, \"file\")"}
+```terraform
+resource "cloudflare_content_scanning_expression" "my_custom_scan_expression" {
+  zone_id = var.cloudflare_zone_id
+  payload = "lookup_json_string(http.request.body.raw, \"file\")"
+}
 ```
 
 For more information, refer to [Custom scan expressions](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).

@@ -43,13 +43,29 @@ When your Worker finishes processing a request, the database client is automatic
 
 You do **not** need to call `client.end()`, `sql.end()`, `connection.end()` (or similar) to clean up database clients. Workers-to-Hyperdrive connections are automatically cleaned up when the request or invocation ends, including when a [Workflow](https://developers.cloudflare.com/workflows/) or [Queue consumer](https://developers.cloudflare.com/queues/) completes, or when a [Durable Object](https://developers.cloudflare.com/durable-objects/) hibernates or is evicted when idle.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Client } from "pg";
-export default {  async fetch(request, env, ctx): Promise<Response> {    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });    await client.connect();
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const client = new Client({
+      connectionString: env.HYPERDRIVE.connectionString,
+    });
+    await client.connect();
+
+
     const result = await client.query("SELECT * FROM pg_tables");
-    // No need to call client.end() — Hyperdrive automatically cleans    // up the client connection when the request ends. The underlying    // pooled connection to your origin database remains open for reuse.    return Response.json(result.rows);  },} satisfies ExportedHandler<Env>;
+
+
+    // No need to call client.end() — Hyperdrive automatically cleans
+    // up the client connection when the request ends. The underlying
+    // pooled connection to your origin database remains open for reuse.
+    return Response.json(result.rows);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Create database clients inside your handlers
@@ -58,25 +74,71 @@ You should always create database clients inside your request handlers (`fetch`,
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
-* [  JavaScript ](#tab-panel-8700)
-* [  TypeScript ](#tab-panel-8701)
+* [  JavaScript ](#tab-panel-8991)
+* [  TypeScript ](#tab-panel-8992)
 
-index.js
+**index.js**
 
-```
+```js
 import { Client } from "pg";
-// 🔴 Bad: Client created in the global scope persists across requests.// Workers do not allow I/O across request contexts, so this client// becomes stale and subsequent queries will throw hard errors.const globalClient = new Client({  connectionString: env.HYPERDRIVE.connectionString,});await globalClient.connect();
-export default {  async fetch(request, env, ctx) {    // ✅ Good: Client created inside the handler, scoped to this request.    // Hyperdrive pools the underlying connection to your origin database,    // so creating a new client per request is fast and reliable.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });    await client.connect();
-    const result = await client.query("SELECT * FROM pg_tables");    return Response.json(result.rows);  },};
+
+
+// 🔴 Bad: Client created in the global scope persists across requests.
+// Workers do not allow I/O across request contexts, so this client
+// becomes stale and subsequent queries will throw hard errors.
+const globalClient = new Client({
+  connectionString: env.HYPERDRIVE.connectionString,
+});
+await globalClient.connect();
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // ✅ Good: Client created inside the handler, scoped to this request.
+    // Hyperdrive pools the underlying connection to your origin database,
+    // so creating a new client per request is fast and reliable.
+    const client = new Client({
+      connectionString: env.HYPERDRIVE.connectionString,
+    });
+    await client.connect();
+
+
+    const result = await client.query("SELECT * FROM pg_tables");
+    return Response.json(result.rows);
+  },
+};
 ```
 
-index.ts
+**index.ts**
 
-```
+```ts
 import { Client } from "pg";
-// 🔴 Bad: Client created in the global scope persists across requests.// Workers do not allow I/O across request contexts, so this client// becomes stale and subsequent queries will throw hard errors.const globalClient = new Client({  connectionString: env.HYPERDRIVE.connectionString,});await globalClient.connect();
-export default {  async fetch(request, env, ctx): Promise<Response> {    // ✅ Good: Client created inside the handler, scoped to this request.    // Hyperdrive pools the underlying connection to your origin database,    // so creating a new client per request is fast and reliable.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });    await client.connect();
-    const result = await client.query("SELECT * FROM pg_tables");    return Response.json(result.rows);  },} satisfies ExportedHandler<Env>;
+
+
+// 🔴 Bad: Client created in the global scope persists across requests.
+// Workers do not allow I/O across request contexts, so this client
+// becomes stale and subsequent queries will throw hard errors.
+const globalClient = new Client({
+  connectionString: env.HYPERDRIVE.connectionString,
+});
+await globalClient.connect();
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    // ✅ Good: Client created inside the handler, scoped to this request.
+    // Hyperdrive pools the underlying connection to your origin database,
+    // so creating a new client per request is fast and reliable.
+    const client = new Client({
+      connectionString: env.HYPERDRIVE.connectionString,
+    });
+    await client.connect();
+
+
+    const result = await client.query("SELECT * FROM pg_tables");
+    return Response.json(result.rows);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Connection lifecycle considerations

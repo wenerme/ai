@@ -27,18 +27,31 @@ The player enhancements are automatically applied to videos using the Stream Pla
 
 The example below includes every property you can set via `publicDetails`.
 
-Terminal window
-
-```
-curl --location --request POST "https://api.cloudflare.com/client/v4/accounts/<$ACCOUNT_ID>/stream/<$VIDEO_UID>" \--header "Authorization: Bearer <$SECRET>" \--header 'Content-Type: application/json' \--data-raw '{    "publicDetails": {        "title": "Optional video title",        "share_link": "https://my-cool-share-link.cloudflare.com",        "channel_link": "https://www.cloudflare.com/products/cloudflare-stream/",        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cloudflare_Logo.png/480px-Cloudflare_Logo.png"    }}' | jq ".result.publicDetails"
+```bash
+curl --location --request POST "https://api.cloudflare.com/client/v4/accounts/<$ACCOUNT_ID>/stream/<$VIDEO_UID>" \
+--header "Authorization: Bearer <$SECRET>" \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "publicDetails": {
+        "title": "Optional video title",
+        "share_link": "https://my-cool-share-link.cloudflare.com",
+        "channel_link": "https://www.cloudflare.com/products/cloudflare-stream/",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cloudflare_Logo.png/480px-Cloudflare_Logo.png"
+    }
+}' | jq ".result.publicDetails"
 ```
 
 Because the `publicDetails` properties are optional, you can choose which properties to include. In the example below, only the `logo` is added to the video.
 
-Terminal window
-
-```
-curl --location --request POST "https://api.cloudflare.com/client/v4/accounts/<$ACCOUNT_ID>/stream/<$VIDEO_UID>" \--header "Authorization: Bearer <$SECRET>" \--header 'Content-Type: application/json' \--data-raw '{    "publicDetails": {        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cloudflare_Logo.png/480px-Cloudflare_Logo.png"    }}'
+```bash
+curl --location --request POST "https://api.cloudflare.com/client/v4/accounts/<$ACCOUNT_ID>/stream/<$VIDEO_UID>" \
+--header "Authorization: Bearer <$SECRET>" \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "publicDetails": {
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cloudflare_Logo.png/480px-Cloudflare_Logo.png"
+    }
+}'
 ```
 
 You can also pull the JSON by using the endpoint below.

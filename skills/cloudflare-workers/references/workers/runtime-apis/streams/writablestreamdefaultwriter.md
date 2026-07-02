@@ -16,12 +16,21 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A writer is used when you want to write directly to a [WritableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), rather than piping data to it from a [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/). For example:
 
-JavaScript
+**JavaScript**
 
-```
-function writeArrayToStream(array, writableStream) {  const writer = writableStream.getWriter();  array.forEach(chunk => writer.write(chunk).catch(() => {}));
-  return writer.close();}
-writeArrayToStream([1, 2, 3, 4, 5], writableStream)  .then(() => console.log('All done!'))  .catch(e => console.error('Error with the stream: ' + e));
+```js
+function writeArrayToStream(array, writableStream) {
+  const writer = writableStream.getWriter();
+  array.forEach(chunk => writer.write(chunk).catch(() => {}));
+
+
+  return writer.close();
+}
+
+
+writeArrayToStream([1, 2, 3, 4, 5], writableStream)
+  .then(() => console.log('All done!'))
+  .catch(e => console.error('Error with the stream: ' + e));
 ```
 
 ## Properties
@@ -47,10 +56,15 @@ Any data not yet written is lost upon abort.
 
   * Releases the writer’s lock on the stream. Once released, the writer is no longer active. You can call this method before all pending `write(chunk)` calls are resolved. This allows you to queue a `write` operation, release the lock, and begin piping into the writable stream from another source, as shown in the example below.
 
-JavaScript
+**JavaScript**
 
-```
-let writer = writable.getWriter();// Write a preamble.writer.write(new TextEncoder().encode('foo bar'));// While that’s still writing, pipe the rest of the body from somewhere else.writer.releaseLock();await someResponse.body.pipeTo(writable);
+```js
+let writer = writable.getWriter();
+// Write a preamble.
+writer.write(new TextEncoder().encode('foo bar'));
+// While that’s still writing, pipe the rest of the body from somewhere else.
+writer.releaseLock();
+await someResponse.body.pipeTo(writable);
 ```
 
 * `write(chunkany)` : Promise<void>

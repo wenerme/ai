@@ -28,16 +28,30 @@ Displays a logo from a URL (SVG format) in the meeting header.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLogo } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLogo logoUrl="https://example.com/logo.svg" />;}
+
+
+function MyComponent() {
+  return <RtkLogo logoUrl="https://example.com/logo.svg" />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLogo } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkLogo      logoUrl="https://example.com/logo.svg"      style={{ width: 120, height: 40 }}      config={customConfig}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLogo
+      logoUrl="https://example.com/logo.svg"
+      style={{ width: 120, height: 40 }}
+      config={customConfig}
+    />
+  );
+}
 ```
 
 ```json

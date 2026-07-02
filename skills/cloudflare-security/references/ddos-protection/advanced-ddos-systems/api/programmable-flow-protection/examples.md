@@ -18,16 +18,30 @@ The following sections contain example requests for common API calls. For a list
 
 This example fetches all Programmable Flow Protection programs in the account.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<PROGRAM_ID>",      "name": "rate-limiter",      "status": "success",      "created_on": "<TIMESTAMP>",      "modified_on": "<TIMESTAMP>"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<PROGRAM_ID>",
+      "name": "rate-limiter",
+      "status": "success",
+      "created_on": "<TIMESTAMP>",
+      "modified_on": "<TIMESTAMP>"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Upload a program
@@ -36,88 +50,174 @@ This example uploads a new eBPF program written in C. The program source code is
 
 Include the optional `X-Program-Name` header to specify a human-readable program name. If omitted, the API generates a UUID as the program name.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: text/plain" \--header "X-Program-Name: my-rate-limiter" \--data-binary "@/path/to/program.c"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: text/plain" \
+--header "X-Program-Name: my-rate-limiter" \
+--data-binary "@/path/to/program.c"
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<PROGRAM_ID>",    "name": "my-rate-limiter",    "status": "success",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<PROGRAM_ID>",
+    "name": "my-rate-limiter",
+    "status": "success",
+    "created_on": "<TIMESTAMP>",
+    "modified_on": "<TIMESTAMP>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 If the program fails compilation or verification, the API returns a detailed error message:
 
-Example error response
+**Example error response**
 
-```
-{  "result": null,  "success": false,  "errors": [    {      "code": 1001,      "message": "Program verification failed: invalid memory access at line 42"    }  ],  "messages": []}
+```json
+{
+  "result": null,
+  "success": false,
+  "errors": [
+    {
+      "code": 1001,
+      "message": "Program verification failed: invalid memory access at line 42"
+    }
+  ],
+  "messages": []
+}
 ```
 
 ## Update a program
 
 This example updates an existing program with new source code. You can update a program even if it is currently in use by one or more rules. If the new program fails compilation or verification, the update fails and the existing program remains active.
 
-Request
+**Request**
 
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: text/plain" \--data-binary "@/path/to/updated-program.c"
+```bash
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: text/plain" \
+--data-binary "@/path/to/updated-program.c"
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<PROGRAM_ID>",    "name": "program",    "status": "success",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<PROGRAM_ID>",
+    "name": "program",
+    "status": "success",
+    "created_on": "<TIMESTAMP>",
+    "modified_on": "<TIMESTAMP>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Delete a program
 
 This example deletes a program. You cannot delete a program that is currently referenced by an active rule.
 
-Request
+**Request**
 
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## List all rules
 
 This example fetches all Programmable Flow Protection rules in the account.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": [    {      "id": "<RULE_ID>",      "program_id": "<PROGRAM_ID>",      "scope": "global",      "name": "global",      "mode": "enabled",      "expression": "",      "created_on": "<TIMESTAMP>",      "modified_on": "<TIMESTAMP>"    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<RULE_ID>",
+      "program_id": "<PROGRAM_ID>",
+      "scope": "global",
+      "name": "global",
+      "mode": "enabled",
+      "expression": "",
+      "created_on": "<TIMESTAMP>",
+      "modified_on": "<TIMESTAMP>"
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Create a rule
 
 This example creates a Programmable Flow Protection rule with a global scope in monitoring mode.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "program_id": "<PROGRAM_ID>",  "scope": "global",  "name": "global",  "mode": "monitoring"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "program_id": "<PROGRAM_ID>",
+  "scope": "global",
+  "name": "global",
+  "mode": "monitoring"
+}'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<RULE_ID>",    "program_id": "<PROGRAM_ID>",    "scope": "global",    "name": "global",    "mode": "monitoring",    "expression": "",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULE_ID>",
+    "program_id": "<PROGRAM_ID>",
+    "scope": "global",
+    "name": "global",
+    "mode": "monitoring",
+    "expression": "",
+    "created_on": "<TIMESTAMP>",
+    "modified_on": "<TIMESTAMP>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/) for more information on the fields in the JSON body.
@@ -126,16 +226,39 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example creates a rule scoped to the Western Europe region with an expression filter.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "program_id": "<PROGRAM_ID>",  "scope": "region",  "name": "WEUR",  "mode": "enabled",  "expression": "ip.dst in { 192.0.2.0/24 }"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "program_id": "<PROGRAM_ID>",
+  "scope": "region",
+  "name": "WEUR",
+  "mode": "enabled",
+  "expression": "ip.dst in { 192.0.2.0/24 }"
+}'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<RULE_ID>",    "program_id": "<PROGRAM_ID>",    "scope": "region",    "name": "WEUR",    "mode": "enabled",    "expression": "ip.dst in { 192.0.2.0/24 }",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULE_ID>",
+    "program_id": "<PROGRAM_ID>",
+    "scope": "region",
+    "name": "WEUR",
+    "mode": "enabled",
+    "expression": "ip.dst in { 192.0.2.0/24 }",
+    "created_on": "<TIMESTAMP>",
+    "modified_on": "<TIMESTAMP>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/) for more information on the fields in the JSON body.
@@ -144,16 +267,36 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example updates an existing rule. You can update the mode, scope, and expression, but not the program. To change the program, delete the rule and create a new one.
 
-Request
+**Request**
 
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "mode": "enabled"}'
+```bash
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "mode": "enabled"
+}'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<RULE_ID>",    "program_id": "<PROGRAM_ID>",    "scope": "global",    "name": "global",    "mode": "enabled",    "expression": "",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULE_ID>",
+    "program_id": "<PROGRAM_ID>",
+    "scope": "global",
+    "name": "global",
+    "mode": "enabled",
+    "expression": "",
+    "created_on": "<TIMESTAMP>",
+    "modified_on": "<TIMESTAMP>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/) for more information on the fields in the JSON body.
@@ -162,16 +305,23 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example deletes an existing rule.
 
-Request
+**Request**
 
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
-Response
+**Response**
 
-```
-{  "result": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Debug a program with PCAP
@@ -180,10 +330,14 @@ This example runs a program against a PCAP file for debugging. The API returns a
 
 The request body must contain the PCAP file in binary format. The API automatically detects the IP header offset based on the input PCAP. To override automatic detection, use the optional `ip_offset` query parameter to specify the number of bytes the IP header is offset by in each packet (for example, `14` for Ethernet frames).
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}/pcap" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/vnd.tcpdump.pcap" \--data-binary "@/path/to/input.pcap" \--output output.pcap
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}/pcap" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/vnd.tcpdump.pcap" \
+--data-binary "@/path/to/input.pcap" \
+--output output.pcap
 ```
 
 The output PCAP file contains the same packets as the input file, but with annotations on each packet. The Packet Comment annotation may contain:

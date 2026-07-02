@@ -43,7 +43,7 @@ When a visitor first enters the host and path combination for your waiting room,
 
 Each cookie also contains a value for `acceptedAt`, which corresponds to the minute your visitor entered your application. This value lets us know how many visitors per minute are leaving the waiting room to enter your application.
 
-```
+```txt
 visitorsAhead ÷ activeUsersToWebApplication = estimatedWaitTime
 ```
 

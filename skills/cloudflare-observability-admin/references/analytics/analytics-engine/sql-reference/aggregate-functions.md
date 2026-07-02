@@ -16,8 +16,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
-count()count(DISTINCT column_name)
+```sql
+count()
+count(DISTINCT column_name)
 ```
 
 `count` is an aggregation function that returns the number of rows in each group or results set.
@@ -26,15 +27,18 @@ count()count(DISTINCT column_name)
 
 Example:
 
-```
--- return the total number of rowscount()-- return the number of different values in the columncount(DISTINCT column_name)
+```sql
+-- return the total number of rows
+count()
+-- return the number of different values in the column
+count(DISTINCT column_name)
 ```
 
 ## sum
 
 Usage:
 
-```
+```sql
 sum([DISTINCT] column_name)
 ```
 
@@ -42,15 +46,18 @@ sum([DISTINCT] column_name)
 
 Example:
 
-```
--- return the total cost of all itemssum(item_cost)-- return the total of all unique item costssum(DISTINCT item_cost)
+```sql
+-- return the total cost of all items
+sum(item_cost)
+-- return the total of all unique item costs
+sum(DISTINCT item_cost)
 ```
 
 ## avg
 
 Usage:
 
-```
+```sql
 avg([DISTINCT] column_name)
 ```
 
@@ -58,15 +65,18 @@ avg([DISTINCT] column_name)
 
 Example:
 
-```
--- return the mean item costavg(item_cost)-- return the mean of unique item costsavg(DISTINCT item_cost)
+```sql
+-- return the mean item cost
+avg(item_cost)
+-- return the mean of unique item costs
+avg(DISTINCT item_cost)
 ```
 
 ## min
 
 Usage:
 
-```
+```sql
 min(column_name)
 ```
 
@@ -74,15 +84,16 @@ min(column_name)
 
 Example:
 
-```
--- return the minimum item costmin(item_cost)
+```sql
+-- return the minimum item cost
+min(item_cost)
 ```
 
 ## max
 
 Usage:
 
-```
+```sql
 max(column_name)
 ```
 
@@ -90,15 +101,16 @@ max(column_name)
 
 Example:
 
-```
--- return the maximum item costmax(item_cost)
+```sql
+-- return the maximum item cost
+max(item_cost)
 ```
 
 ## quantileExactWeighted
 
 Usage:
 
-```
+```sql
 quantileExactWeighted(q)(column_name, weight_column_name)
 ```
 
@@ -106,9 +118,13 @@ quantileExactWeighted(q)(column_name, weight_column_name)
 
 Example:
 
-```
--- estimate the median value of <double1>quantileExactWeighted(0.5)(double1, _sample_interval)
--- in a table of query times, estimate the 95th centile query timequantileExactWeighted(0.95)(query_time, _sample_interval)
+```sql
+-- estimate the median value of <double1>
+quantileExactWeighted(0.5)(double1, _sample_interval)
+
+
+-- in a table of query times, estimate the 95th centile query time
+quantileExactWeighted(0.95)(query_time, _sample_interval)
 ```
 
 For backwards compatibility, this is also available as `quantileWeighted(q, column_name, weight_column_name)`.
@@ -117,7 +133,7 @@ For backwards compatibility, this is also available as `quantileWeighted(q, colu
 
 Usage:
 
-```
+```sql
 argMax(arg, val)
 ```
 
@@ -127,16 +143,20 @@ If multiple `arg` values have the maximum value of `val`, any one will be return
 
 Example:
 
-```
--- find the <blob1> value for the row with the highest <double1>argMax(blob1, double1)
--- find the <blob1> value from the most heavily sampled rowargMax(blob1, _sample_interval)
+```sql
+-- find the <blob1> value for the row with the highest <double1>
+argMax(blob1, double1)
+
+
+-- find the <blob1> value from the most heavily sampled row
+argMax(blob1, _sample_interval)
 ```
 
 ## argMin New
 
 Usage:
 
-```
+```sql
 argMin(arg, val)
 ```
 
@@ -146,16 +166,20 @@ If multiple `arg` values have the minimum value of `val`, any one will be return
 
 Example:
 
-```
--- find the <blob1> value for the row with the lowest <double1>argMin(blob1, double1)
--- find the <blob1> value from the least heavily sampled rowargMin(blob1, _sample_interval)
+```sql
+-- find the <blob1> value for the row with the lowest <double1>
+argMin(blob1, double1)
+
+
+-- find the <blob1> value from the least heavily sampled row
+argMin(blob1, _sample_interval)
 ```
 
 ## first\_value New
 
 Usage:
 
-```
+```sql
 first_value(column_name)
 ```
 
@@ -163,15 +187,16 @@ first_value(column_name)
 
 Example:
 
-```
--- find the oldest value of <blob1>SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
+```sql
+-- find the oldest value of <blob1>
+SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
 ```
 
 ## last\_value New
 
 Usage:
 
-```
+```sql
 last_value(column_name)
 ```
 
@@ -179,15 +204,16 @@ last_value(column_name)
 
 Example:
 
-```
--- find the oldest value of <blob1>SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
+```sql
+-- find the oldest value of <blob1>
+SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
 ```
 
 ## topK New
 
 Usage:
 
-```
+```sql
 topK(N)(column)
 ```
 
@@ -197,16 +223,20 @@ topK(N)(column)
 
 Example:
 
-```
--- find the 10 most common values of <double1>SELECT topK(double1) FROM my_dataset
--- find the 15 most common values of <blob1>SELECT topK(15)(blob1) FROM my_dataset
+```sql
+-- find the 10 most common values of <double1>
+SELECT topK(double1) FROM my_dataset
+
+
+-- find the 15 most common values of <blob1>
+SELECT topK(15)(blob1) FROM my_dataset
 ```
 
 ## topKWeighted New
 
 Usage:
 
-```
+```sql
 topKWeighted(N)(column, weight_column)
 ```
 
@@ -216,16 +246,20 @@ topKWeighted(N)(column, weight_column)
 
 Example:
 
-```
--- find the 10 most common values of <double1>, weighted by `_sample_interval`SELECT topKWeighted(double1, _sample_interval) FROM my_dataset
--- find the 15 most common values of <blob1>, weighted by `_sample_interval`SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
+```sql
+-- find the 10 most common values of <double1>, weighted by `_sample_interval`
+SELECT topKWeighted(double1, _sample_interval) FROM my_dataset
+
+
+-- find the 15 most common values of <blob1>, weighted by `_sample_interval`
+SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
 ```
 
 ## countIf New
 
 Usage:
 
-```
+```sql
 countIf(<expr>)
 ```
 
@@ -233,15 +267,16 @@ countIf(<expr>)
 
 Example:
 
-```
--- return the number of rows where `double1` is greater than 5countIf(double1 > 5)
+```sql
+-- return the number of rows where `double1` is greater than 5
+countIf(double1 > 5)
 ```
 
 ## sumIf New
 
 Usage:
 
-```
+```sql
 sumIf(<expr>, <expr>)
 ```
 
@@ -249,15 +284,16 @@ sumIf(<expr>, <expr>)
 
 Example:
 
-```
--- return the sum of column `item_cost` of all items where another column `in_stock` is not zerosumIf(item_cost, in_stock > 0)
+```sql
+-- return the sum of column `item_cost` of all items where another column `in_stock` is not zero
+sumIf(item_cost, in_stock > 0)
 ```
 
 ## avgIf New
 
 Usage:
 
-```
+```sql
 avgIf(<expr>, <expr>)
 ```
 
@@ -265,8 +301,9 @@ avgIf(<expr>, <expr>)
 
 Example:
 
-```
--- return the mean of column `item_cost` where another column `in_stock` is not zeroavgIf(item_cost, in_stock > 0)
+```sql
+-- return the mean of column `item_cost` where another column `in_stock` is not zero
+avgIf(item_cost, in_stock > 0)
 ```
 
 ```json

@@ -26,16 +26,28 @@ Displays the title of the meeting.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMeetingTitle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMeetingTitle />;}
+
+
+function MyComponent() {
+  return <RtkMeetingTitle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMeetingTitle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMeetingTitle      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMeetingTitle
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

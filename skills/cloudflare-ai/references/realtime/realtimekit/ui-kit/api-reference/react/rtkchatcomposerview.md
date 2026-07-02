@@ -34,16 +34,30 @@ A component which renders a chat composer
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatComposerView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatComposerView />;}
+
+
+function MyComponent() {
+  return <RtkChatComposerView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatComposerView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatComposerView      canSendFiles={true}      canSendTextMessage={true}      inputTextPlaceholder="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatComposerView
+      canSendFiles={true}
+      canSendTextMessage={true}
+      inputTextPlaceholder="example"
+    />
+  );
+}
 ```
 
 ```json

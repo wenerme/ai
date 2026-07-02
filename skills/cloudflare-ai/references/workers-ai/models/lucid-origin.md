@@ -29,27 +29,50 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5071)
-* [  curl ](#tab-panel-5072)
+* [  TypeScript ](#tab-panel-5217)
+* [  curl ](#tab-panel-5218)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const inputs = {      prompt: "cyberpunk cat",    };
-    const response = await env.AI.run(      "@cf/leonardo/lucid-origin",      inputs    );
-    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const inputs = {
+      prompt: "cyberpunk cat",
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/leonardo/lucid-origin",
+      inputs
+    );
+
+
+    return new Response(response, {
+      headers: {
+        "content-type": "image/jpg",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/leonardo/lucid-origin  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/leonardo/lucid-origin  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5073)
-* [ Output ](#tab-panel-5074)
+* [ Input ](#tab-panel-5219)
+* [ Output ](#tab-panel-5220)
 
 prompt
 

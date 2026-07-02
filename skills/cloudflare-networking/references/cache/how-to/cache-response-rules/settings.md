@@ -111,10 +111,14 @@ API information
 
 API action: `set_cache_settings`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "strip_etags": true,  "strip_set_cookie": true,  "strip_last_modified": true}
+```json
+"action_parameters": {
+  "strip_etags": true,
+  "strip_set_cookie": true,
+  "strip_last_modified": true
+}
 ```
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.
@@ -135,16 +139,22 @@ API information
 
 API action: `set_cache_tags`.
 
-API configuration example (static values)
+**API configuration example (static values)**
 
-```
-"action_parameters": {  "operation": "set",  "values": ["api-response", "dynamic-content"]}
+```json
+"action_parameters": {
+  "operation": "set",
+  "values": ["api-response", "dynamic-content"]
+}
 ```
 
-API configuration example (expression)
+**API configuration example (expression)**
 
-```
-"action_parameters": {  "operation": "add",  "expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 1)"}
+```json
+"action_parameters": {
+  "operation": "add",
+  "expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 1)"
+}
 ```
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.
@@ -216,10 +226,19 @@ API information
 
 API action: `set_cache_control`.
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "max-age": {    "operation": "set",    "value": 3600,    "cloudflare_only": true  },  "stale-if-error": {    "operation": "remove"  }}
+```json
+"action_parameters": {
+  "max-age": {
+    "operation": "set",
+    "value": 3600,
+    "cloudflare_only": true
+  },
+  "stale-if-error": {
+    "operation": "remove"
+  }
+}
 ```
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.

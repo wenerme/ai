@@ -24,14 +24,15 @@ If the request was served from the Cloudflare CDN cache and the origin server wa
 
 Example value:
 
-```
+```txt
 150
 ```
 
 Example usage:
 
-```
-# Matches requests where the origin response time (TTFB) was greater than 2 seconds:cf.timings.origin_ttfb_msec > 2000
+```txt
+# Matches requests where the origin response time (TTFB) was greater than 2 seconds:
+cf.timings.origin_ttfb_msec > 2000
 ```
 
 Categories:

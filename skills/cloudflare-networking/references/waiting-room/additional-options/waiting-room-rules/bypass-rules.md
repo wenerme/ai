@@ -74,7 +74,7 @@ When creating a Bypass Waiting Room Rule via API, make sure you:
 
 Create a waiting room rule by appending the following endpoint in the Waiting Room API to the Cloudflare API base URL. New waiting room rules will be added after any existing rules.
 
-```
+```txt
 POST zones/{zone_id}/waiting_rooms/{room_id}/rules
 ```
 
@@ -91,18 +91,32 @@ Bypass a path under your waiting room and all of its subpaths
 
 If your waiting room is configured at `example.com/` and you would like all traffic visiting `example.com/bypassme` and all of its subpaths. In this example, we also want to ensure any subrequests of `js`, `css`, or `png` from also bypass the waiting room to ensure all assets are loaded properly on the paths being bypassed. Note that in this example, all requests ending in `js`, `css` or `png` will bypass the waiting room regardless of the subpath. If this is not your intended use case, please alter the expression to suit your specific requirements and site architecture.
 
-Create Waiting Room Rule
+**Create Waiting Room Rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "subpath bypass",    "expression": "starts_with(http.request.uri.path, \"/bypassme\") or ends_with(http.request.uri.path, \".js\") or ends_with(http.request.uri.path, \".css\") or ends_with(http.request.uri.path, \".png\")",    "action": "bypass_waiting_room"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "subpath bypass",
+    "expression": "starts_with(http.request.uri.path, \"/bypassme\") or ends_with(http.request.uri.path, \".js\") or ends_with(http.request.uri.path, \".css\") or ends_with(http.request.uri.path, \".png\")",
+    "action": "bypass_waiting_room"
+  }'
 ```
 
 Allow a defined list of IPs to bypass the waiting room
 
-Create Waiting Room Rule
+**Create Waiting Room Rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "ip list bypass",    "expression": "ip.src in $bypass_ip_list",    "action": "bypass_waiting_room"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "ip list bypass",
+    "expression": "ip.src in $bypass_ip_list",
+    "action": "bypass_waiting_room"
+  }'
 ```
 
 ### Other API options for managing bypass rules

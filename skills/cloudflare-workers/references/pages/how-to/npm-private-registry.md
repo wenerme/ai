@@ -26,11 +26,15 @@ Every package registry should have a means of issuing new access tokens. Ideally
 
 With npm, you can [create and view tokens through its website ↗](https://docs.npmjs.com/creating-and-viewing-access-tokens) or you can use the `npm` CLI. If you have the CLI set up locally and are authenticated, run the following commands in your terminal:
 
-Terminal window
+```sh
+# Verify the current npm user is correct
+npm whoami
 
-```
-# Verify the current npm user is correctnpm whoami
-# Create a readonly tokennpm token create --read-only#-> Enter password, if prompted#-> Enter 2FA code, if configured
+
+# Create a readonly token
+npm token create --read-only
+#-> Enter password, if prompted
+#-> Enter 2FA code, if configured
 ```
 
 This will produce a read-only token that looks like a UUID string. Save this value for a later step.
@@ -51,8 +55,10 @@ By default, `npm` looks for an environment variable named `NPM_TOKEN` and becaus
 
 When multiple registries are in use, a project will need to define its own root-level [.npmrc ↗](https://docs.npmjs.com/cli/v7/configuring-npm/npmrc) configuration file. An example `.npmrc` file may look like this:
 
-```
-@foobar:registry=https://npm.pkg.github.com//registry.npmjs.org/:_authToken=${TOKEN_FOR_NPM}//npm.pkg.github.com/:_authToken=${TOKEN_FOR_GITHUB}
+```ini
+@foobar:registry=https://npm.pkg.github.com
+//registry.npmjs.org/:_authToken=${TOKEN_FOR_NPM}
+//npm.pkg.github.com/:_authToken=${TOKEN_FOR_GITHUB}
 ```
 
 Here, all packages under the `@foobar` scope are directed towards the GitHub Packages registry. Then the registries are assigned their own access tokens via their respective environment variable names.

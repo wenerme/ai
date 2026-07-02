@@ -51,14 +51,27 @@ To configure a custom error rule via API:
 
 The following `POST` request creates new a custom error asset in a zone based on the provided URL:
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--json '{
+  "name": "500_error_template",
+  "description": "Standard 5xx error template page",
+  "url": "https://example.com/errors/500_template.html"
+}'
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \--header "Authorization: Bearer <API_TOKEN>" \--json '{  "name": "500_error_template",  "description": "Standard 5xx error template page",  "url": "https://example.com/errors/500_template.html"}'
-```
-
-```
-{  "result": {    "name": "500_error_template",    "description": "Standard 5xx error template page",    "url": "https://example.com/errors/500_template.html",    "last_updated": "2025-02-10T11:36:07.810215Z",    "size_bytes": 2048  },  "success": true}
+```json
+{
+  "result": {
+    "name": "500_error_template",
+    "description": "Standard 5xx error template page",
+    "url": "https://example.com/errors/500_template.html",
+    "last_updated": "2025-02-10T11:36:07.810215Z",
+    "size_bytes": 2048
+  },
+  "success": true
+}
 ```
 
 ### Create a custom error rule
@@ -110,10 +123,26 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_custom_errors/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "serve_500_template",            "action": "serve_error",            "action_parameters": {                "asset_name": "500_error_template",                "content_type": "text/html"            },            "expression": "http.response.code eq 500",            "enabled": true        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_custom_errors/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "serve_500_template",
+            "action": "serve_error",
+            "action_parameters": {
+                "asset_name": "500_error_template",
+                "content_type": "text/html"
+            },
+            "expression": "http.response.code eq 500",
+            "enabled": true
+        }
+    ]
+  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

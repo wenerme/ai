@@ -49,10 +49,21 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-Enable or Disable a Hostname for Client Authentication
+**Enable or Disable a Hostname for Client Authentication**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "config": [        {            "enabled": true,            "hostname": "<HOSTNAME>",            "cert_id": "<CERT_ID>"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "config": [
+        {
+            "enabled": true,
+            "hostname": "<HOSTNAME>",
+            "cert_id": "<CERT_ID>"
+        }
+    ]
+  }'
 ```
 
 Note

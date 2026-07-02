@@ -22,10 +22,14 @@ VeloCloud has a high availability mechanism that allows customers to specify one
 
 Cloudflare WAN customers can set a custom IKE ID for an IPsec tunnel using the following API call. Customers will need to fill in the appropriate values for `<account_id>`, `<tunnel_id>`, and the FQDN wildcard before running the API call.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ipsec_tunnels/TUNNEL_ID" \  --request PATCH \  --json '{    "custom_remote_identities": {        "fqdn_id": "<your_custom_label>.<account_id>.custom.ipsec.cloudflare.com"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ipsec_tunnels/TUNNEL_ID" \
+  --request PATCH \
+  --json '{
+    "custom_remote_identities": {
+        "fqdn_id": "<your_custom_label>.<account_id>.custom.ipsec.cloudflare.com"
+    }
+  }'
 ```
 
 ```json

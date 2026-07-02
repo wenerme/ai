@@ -87,42 +87,82 @@ The `meeting.meta` object contains the following properties:
 
 To access meeting metadata, use the `meeting.meta` object.
 
-JavaScript
+**JavaScript**
 
-```
-// Destructure the metadata to get meetingTitleconst { meetingTitle } = meeting.meta;
-if (meeting.self.roomJoined) {  console.log(    `The local user has joined a meeting with title ${meetingTitle}.`,  );}
+```javascript
+// Destructure the metadata to get meetingTitle
+const { meetingTitle } = meeting.meta;
+
+
+if (meeting.self.roomJoined) {
+  console.log(
+    `The local user has joined a meeting with title ${meetingTitle}.`,
+  );
+}
 ```
 
-```
-import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";import { useEffect } from "react";
-function MeetingInfo() {  const [meetingTitle, roomJoined] = useRealtimeKitSelector((m) => [    m.meta.meetingTitle,    m.self.roomJoined,  ]);
-  useEffect(() => {    if (roomJoined) {      console.log(        `The local user has joined a meeting with title ${meetingTitle}.`,      );    }  }, [roomJoined, meetingTitle]);
-  return null;}
+```jsx
+import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
+import { useEffect } from "react";
+
+
+function MeetingInfo() {
+  const [meetingTitle, roomJoined] = useRealtimeKitSelector((m) => [
+    m.meta.meetingTitle,
+    m.self.roomJoined,
+  ]);
+
+
+  useEffect(() => {
+    if (roomJoined) {
+      console.log(
+        `The local user has joined a meeting with title ${meetingTitle}.`,
+      );
+    }
+  }, [roomJoined, meetingTitle]);
+
+
+  return null;
+}
 ```
 
-Kotlin
+**Kotlin**
 
-```
+```kotlin
 val meetingTitle = meeting.meta.meetingTitle
 ```
 
-Swift
+**Swift**
 
-```
+```swift
 let meetingTitle = meeting.meta.meetingTitle
 ```
 
-Dart
+**Dart**
 
-```
-final meetingTitle = meeting.meta.meetingTitle;print("The local user has joined ${meetingTitle}.");
+```dart
+final meetingTitle = meeting.meta.meetingTitle;
+print("The local user has joined ${meetingTitle}.");
 ```
 
-```
-import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";import { useEffect } from "react";
-const [meetingTitle, roomJoined] = useRealtimeKitSelector((m) => [  m.meta.meetingTitle,  m.self.roomJoined,]);
-useEffect(() => {  if (roomJoined) {    console.log(      `The local user has joined a meeting with title ${meetingTitle}.`,    );  }}, [roomJoined, meetingTitle]);
+```tsx
+import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
+import { useEffect } from "react";
+
+
+const [meetingTitle, roomJoined] = useRealtimeKitSelector((m) => [
+  m.meta.meetingTitle,
+  m.self.roomJoined,
+]);
+
+
+useEffect(() => {
+  if (roomJoined) {
+    console.log(
+      `The local user has joined a meeting with title ${meetingTitle}.`,
+    );
+  }
+}, [roomJoined, meetingTitle]);
 ```
 
 ## Connection events
@@ -133,11 +173,16 @@ The `meta` object also emits events for indicating changes in the connection sta
 
 Updates to the media connection (WebRTC connection used for the transfer of actual media) are sent via the `mediaConnectionUpdate` event.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.meta.on("mediaConnectionUpdate", ({ transport, state }) => {  // transport - 'consuming' | 'producing'  // state - 'new' | 'connecting' | 'connected' | 'disconnected' | 'reconnecting' | 'failed'
-  console.log(`Media connection ${transport} is now ${state}`);});
+```javascript
+meeting.meta.on("mediaConnectionUpdate", ({ transport, state }) => {
+  // transport - 'consuming' | 'producing'
+  // state - 'new' | 'connecting' | 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+
+
+  console.log(`Media connection ${transport} is now ${state}`);
+});
 ```
 
 The `mediaConnectionUpdate` event provides:
@@ -147,14 +192,38 @@ The `mediaConnectionUpdate` event provides:
 
 Updates to the media connection (WebRTC connection used for the transfer of actual media) are sent via the `mediaConnectionUpdate` event.
 
-```
-import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";import { useEffect } from "react";
-function MediaConnectionMonitor() {  const [meeting] = useRealtimeKitClient();
-  useEffect(() => {    if (meeting) {      const handleMediaConnection = ({ transport, state }) => {        // transport - 'consuming' | 'producing'        // state - 'new' | 'connecting' | 'connected' | 'disconnected' | 'reconnecting' | 'failed'
-        console.log(`Media connection ${transport} is now ${state}`);      };
+```jsx
+import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
+import { useEffect } from "react";
+
+
+function MediaConnectionMonitor() {
+  const [meeting] = useRealtimeKitClient();
+
+
+  useEffect(() => {
+    if (meeting) {
+      const handleMediaConnection = ({ transport, state }) => {
+        // transport - 'consuming' | 'producing'
+        // state - 'new' | 'connecting' | 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+
+
+        console.log(`Media connection ${transport} is now ${state}`);
+      };
+
+
       meeting.meta.on("mediaConnectionUpdate", handleMediaConnection);
-      return () => {        meeting.meta.off("mediaConnectionUpdate", handleMediaConnection);      };    }  }, [meeting]);
-  return null;}
+
+
+      return () => {
+        meeting.meta.off("mediaConnectionUpdate", handleMediaConnection);
+      };
+    }
+  }, [meeting]);
+
+
+  return null;
+}
 ```
 
 The `mediaConnectionUpdate` event provides:
@@ -164,17 +233,17 @@ The `mediaConnectionUpdate` event provides:
 
 You can access the current media connection state directly from the metadata.
 
-Kotlin
+**Kotlin**
 
-```
+```kotlin
 val mediaConnectionState = meeting.meta.mediaConnectionState
 ```
 
 You can access the current media connection state directly from the metadata.
 
-Swift
+**Swift**
 
-```
+```swift
 let mediaConnectionState = meeting.meta.mediaConnectionState
 ```
 
@@ -182,9 +251,14 @@ Media connection events are not available in Flutter. Monitor the connection sta
 
 Updates to the media connection (WebRTC connection used for the transfer of actual media) are sent via the `mediaConnectionUpdate` event.
 
-```
-meeting.meta.on("mediaConnectionUpdate", ({ transport, state }) => {  // transport - 'consuming' | 'producing'  // state - 'new' | 'connecting' | 'connected' | 'disconnected' | 'reconnecting' | 'failed'
-  console.log(`Media connection ${transport} is now ${state}`);});
+```tsx
+meeting.meta.on("mediaConnectionUpdate", ({ transport, state }) => {
+  // transport - 'consuming' | 'producing'
+  // state - 'new' | 'connecting' | 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+
+
+  console.log(`Media connection ${transport} is now ${state}`);
+});
 ```
 
 The `mediaConnectionUpdate` event provides:
@@ -196,13 +270,28 @@ The `mediaConnectionUpdate` event provides:
 
 Updates to the WebSocket connection (used for chat, polls, and other basic signaling) are sent via the `socketConnectionUpdate` event.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.meta.on(  "socketConnectionUpdate",  ({ state, reconnectionAttempt, reconnected }) => {    // state - 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+```javascript
+meeting.meta.on(
+  "socketConnectionUpdate",
+  ({ state, reconnectionAttempt, reconnected }) => {
+    // state - 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+
+
     console.log(`Socket connection is now ${state}`);
-    if (reconnectionAttempt) {      console.log(`Reconnection attempt: ${reconnectionAttempt}`);    }
-    if (reconnected) {      console.log("Successfully reconnected");    }  },);
+
+
+    if (reconnectionAttempt) {
+      console.log(`Reconnection attempt: ${reconnectionAttempt}`);
+    }
+
+
+    if (reconnected) {
+      console.log("Successfully reconnected");
+    }
+  },
+);
 ```
 
 The `socketConnectionUpdate` event provides:
@@ -213,16 +302,51 @@ The `socketConnectionUpdate` event provides:
 
 Updates to the WebSocket connection (used for chat, polls, and other basic signaling) are sent via the `socketConnectionUpdate` event.
 
-```
-import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";import { useEffect } from "react";
-function SocketConnectionMonitor() {  const [meeting] = useRealtimeKitClient();
-  useEffect(() => {    if (meeting) {      const handleSocketConnection = ({        state,        reconnectionAttempt,        reconnected,      }) => {        // state - 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+```jsx
+import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
+import { useEffect } from "react";
+
+
+function SocketConnectionMonitor() {
+  const [meeting] = useRealtimeKitClient();
+
+
+  useEffect(() => {
+    if (meeting) {
+      const handleSocketConnection = ({
+        state,
+        reconnectionAttempt,
+        reconnected,
+      }) => {
+        // state - 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+
+
         console.log(`Socket connection is now ${state}`);
-        if (reconnectionAttempt) {          console.log(`Reconnection attempt: ${reconnectionAttempt}`);        }
-        if (reconnected) {          console.log("Successfully reconnected");        }      };
+
+
+        if (reconnectionAttempt) {
+          console.log(`Reconnection attempt: ${reconnectionAttempt}`);
+        }
+
+
+        if (reconnected) {
+          console.log("Successfully reconnected");
+        }
+      };
+
+
       meeting.meta.on("socketConnectionUpdate", handleSocketConnection);
-      return () => {        meeting.meta.off("socketConnectionUpdate", handleSocketConnection);      };    }  }, [meeting]);
-  return null;}
+
+
+      return () => {
+        meeting.meta.off("socketConnectionUpdate", handleSocketConnection);
+      };
+    }
+  }, [meeting]);
+
+
+  return null;
+}
 ```
 
 The `socketConnectionUpdate` event provides:
@@ -233,17 +357,17 @@ The `socketConnectionUpdate` event provides:
 
 You can access the current socket connection state directly from the metadata.
 
-Kotlin
+**Kotlin**
 
-```
+```kotlin
 val socketConnectionState = meeting.meta.socketConnectionState
 ```
 
 You can access the current socket connection state directly from the metadata.
 
-Swift
+**Swift**
 
-```
+```swift
 let socketConnectionState = meeting.meta.socketConnectionState
 ```
 
@@ -251,11 +375,26 @@ Socket connection events are not available in Flutter. Monitor the connection st
 
 Updates to the WebSocket connection (used for chat, polls, and other basic signaling) are sent via the `socketConnectionUpdate` event.
 
-```
-meeting.meta.on(  "socketConnectionUpdate",  ({ state, reconnectionAttempt, reconnected }) => {    // state - 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+```tsx
+meeting.meta.on(
+  "socketConnectionUpdate",
+  ({ state, reconnectionAttempt, reconnected }) => {
+    // state - 'connected' | 'disconnected' | 'reconnecting' | 'failed'
+
+
     console.log(`Socket connection is now ${state}`);
-    if (reconnectionAttempt) {      console.log(`Reconnection attempt: ${reconnectionAttempt}`);    }
-    if (reconnected) {      console.log("Successfully reconnected");    }  },);
+
+
+    if (reconnectionAttempt) {
+      console.log(`Reconnection attempt: ${reconnectionAttempt}`);
+    }
+
+
+    if (reconnected) {
+      console.log("Successfully reconnected");
+    }
+  },
+);
 ```
 
 The `socketConnectionUpdate` event provides:

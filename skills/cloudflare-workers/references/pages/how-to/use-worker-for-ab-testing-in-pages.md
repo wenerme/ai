@@ -43,20 +43,39 @@ When you create your `_middleware.js` file at the base of your `/functions` fold
 
 Following the Functions naming convention, the `_middleware.js` file exports a single async `onRequest` function that accepts a `request`, `env` and `next` as an argument.
 
-JavaScript
+**JavaScript**
 
-```
-const abTest = async ({ request, next, env }) => {  /*  Todo:  1. Conditional statements to check for the cookie  2. Assign cookies based on percentage, then serve  */};
+```js
+const abTest = async ({ request, next, env }) => {
+  /*
+  Todo:
+  1. Conditional statements to check for the cookie
+  2. Assign cookies based on percentage, then serve
+  */
+};
+
+
 export const onRequest = [abTest];
 ```
 
 To set the cookie, create the `cookieName` variable and assign any value. Then create the `newHomepagePathName` variable and assign it `/test`:
 
-JavaScript
+**JavaScript**
 
-```
-const cookieName = "ab-test-cookie";const newHomepagePathName = "/test";
-const abTest = async ({ request, next, env }) => {  /*  Todo:  1. Conditional statements to check for the cookie  2. Assign cookie based on percentage then serve  */};
+```js
+const cookieName = "ab-test-cookie";
+const newHomepagePathName = "/test";
+
+
+const abTest = async ({ request, next, env }) => {
+  /*
+  Todo:
+  1. Conditional statements to check for the cookie
+  2. Assign cookie based on percentage then serve
+  */
+};
+
+
 export const onRequest = [abTest];
 ```
 
@@ -64,13 +83,37 @@ export const onRequest = [abTest];
 
 Based on the URL pathname, check that the cookie value is equal to `new`. If the value is `new`, then `newHomepagePathName` will be served.
 
-JavaScript
+**JavaScript**
 
-```
-const cookieName = "ab-test-cookie";const newHomepagePathName = "/test";
-const abTest = async ({ request, next, env }) => {  /*  Todo:  1. Assign cookies based on randomly generated percentage, then serve  */
-  const url = new URL(request.url);  if (url.pathname === "/") {    // if cookie ab-test-cookie=new then change the request to go to /test    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
-    let cookie = request.headers.get("cookie");    // is cookie set?    if (cookie && cookie.includes(`${cookieName}=new`)) {      // Change the request to go to /test (as set in the newHomepagePathName variable)      url.pathname = newHomepagePathName;      return env.ASSETS.fetch(url);    }  }};
+```js
+const cookieName = "ab-test-cookie";
+const newHomepagePathName = "/test";
+
+
+const abTest = async ({ request, next, env }) => {
+  /*
+  Todo:
+  1. Assign cookies based on randomly generated percentage, then serve
+  */
+
+
+  const url = new URL(request.url);
+  if (url.pathname === "/") {
+    // if cookie ab-test-cookie=new then change the request to go to /test
+    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+
+
+    let cookie = request.headers.get("cookie");
+    // is cookie set?
+    if (cookie && cookie.includes(`${cookieName}=new`)) {
+      // Change the request to go to /test (as set in the newHomepagePathName variable)
+      url.pathname = newHomepagePathName;
+      return env.ASSETS.fetch(url);
+    }
+  }
+};
+
+
 export const onRequest = [abTest];
 ```
 
@@ -84,12 +127,46 @@ Binding
 
 A Function is a Worker that executes on your Pages project to add dynamic functionality. A binding is how your Function (Worker) interacts with external resources. A binding is a runtime variable that the Workers runtime provides to your code.
 
-JavaScript
+**JavaScript**
 
-```
-const cookieName = "ab-test-cookie";const newHomepagePathName = "/test";
-const abTest = async (context) => {  const url = new URL(context.request.url);  // if homepage  if (url.pathname === "/") {    // if cookie ab-test-cookie=new then change the request to go to /test    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
-    let cookie = request.headers.get("cookie");    // is cookie set?    if (cookie && cookie.includes(`${cookieName}=new`)) {      // pass the request to /test      url.pathname = newHomepagePathName;      return context.env.ASSETS.fetch(url);    } else {      const percentage = Math.floor(Math.random() * 100);      let version = "current"; // default version      // change pathname and version name for 50% of traffic      if (percentage < 50) {        url.pathname = newHomepagePathName;        version = "new";      }      // get the static file from ASSETS, and attach a cookie      const asset = await context.env.ASSETS.fetch(url);      let response = new Response(asset.body, asset);      response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`);      return response;    }  }  return context.next();};
+```js
+const cookieName = "ab-test-cookie";
+const newHomepagePathName = "/test";
+
+
+const abTest = async (context) => {
+  const url = new URL(context.request.url);
+  // if homepage
+  if (url.pathname === "/") {
+    // if cookie ab-test-cookie=new then change the request to go to /test
+    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+
+
+    let cookie = request.headers.get("cookie");
+    // is cookie set?
+    if (cookie && cookie.includes(`${cookieName}=new`)) {
+      // pass the request to /test
+      url.pathname = newHomepagePathName;
+      return context.env.ASSETS.fetch(url);
+    } else {
+      const percentage = Math.floor(Math.random() * 100);
+      let version = "current"; // default version
+      // change pathname and version name for 50% of traffic
+      if (percentage < 50) {
+        url.pathname = newHomepagePathName;
+        version = "new";
+      }
+      // get the static file from ASSETS, and attach a cookie
+      const asset = await context.env.ASSETS.fetch(url);
+      let response = new Response(asset.body, asset);
+      response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`);
+      return response;
+    }
+  }
+  return context.next();
+};
+
+
 export const onRequest = [abTest];
 ```
 

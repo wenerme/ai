@@ -30,31 +30,72 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2125)
-* [  Python ](#tab-panel-2126)
-* [  curl ](#tab-panel-2127)
+* [  TypeScript ](#tab-panel-2173)
+* [  Python ](#tab-panel-2174)
+* [  curl ](#tab-panel-2175)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    // Can be a string or array of strings]    const stories = [      "This is a story about an orange cloud",      "This is a story about a llama",      "This is a story about a hugging emoji",    ];
-    const embeddings = await env.AI.run(      "@cf/baai/bge-large-en-v1.5",      {        text: stories,      }    );
-    return Response.json(embeddings);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    // Can be a string or array of strings]
+    const stories = [
+      "This is a story about an orange cloud",
+      "This is a story about a llama",
+      "This is a story about a hugging emoji",
+    ];
+
+
+    const embeddings = await env.AI.run(
+      "@cf/baai/bge-large-en-v1.5",
+      {
+        text: stories,
+      }
+    );
+
+
+    return Response.json(embeddings);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
+```py
+import os
+import requests
 
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-stories = [  'This is a story about an orange cloud',  'This is a story about a llama',  'This is a story about a hugging emoji']
-response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-large-en-v1.5",  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},  json={"text": stories})
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+stories = [
+  'This is a story about an orange cloud',
+  'This is a story about a llama',
+  'This is a story about a hugging emoji'
+]
+
+
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-large-en-v1.5",
+  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+  json={"text": stories}
+)
+
+
 print(response.json())
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-large-en-v1.5  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-large-en-v1.5  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
 ```
 
 OpenAI compatible endpoints
@@ -65,8 +106,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2128)
-* [ Output ](#tab-panel-2129)
+* [ Input ](#tab-panel-2176)
+* [ Output ](#tab-panel-2177)
 
 ▶text
 
@@ -90,8 +131,8 @@ pooling
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2130)
-* [ Output ](#tab-panel-2131)
+* [ Input ](#tab-panel-2178)
+* [ Output ](#tab-panel-2179)
 
 ▶requests\[\]
 

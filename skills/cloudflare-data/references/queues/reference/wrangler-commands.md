@@ -18,25 +18,19 @@ Queues Wrangler commands use REST APIs to interact with the control plane. This 
 
 List queues
 
-* [  npm ](#tab-panel-10013)
-* [  pnpm ](#tab-panel-10014)
-* [  yarn ](#tab-panel-10015)
+* [  npm ](#tab-panel-10044)
+* [  pnpm ](#tab-panel-10045)
+* [  yarn ](#tab-panel-10046)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues list
 ```
 
@@ -66,25 +60,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a queue
 
-* [  npm ](#tab-panel-10016)
-* [  pnpm ](#tab-panel-10017)
-* [  yarn ](#tab-panel-10018)
+* [  npm ](#tab-panel-10047)
+* [  pnpm ](#tab-panel-10048)
+* [  yarn ](#tab-panel-10049)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues create [NAME]
 ```
 
@@ -118,25 +106,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a queue
 
-* [  npm ](#tab-panel-10019)
-* [  pnpm ](#tab-panel-10020)
-* [  yarn ](#tab-panel-10021)
+* [  npm ](#tab-panel-10050)
+* [  pnpm ](#tab-panel-10051)
+* [  yarn ](#tab-panel-10052)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues update [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues update [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues update [NAME]
 ```
 
@@ -170,25 +152,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a queue
 
-* [  npm ](#tab-panel-10022)
-* [  pnpm ](#tab-panel-10023)
-* [  yarn ](#tab-panel-10024)
+* [  npm ](#tab-panel-10053)
+* [  pnpm ](#tab-panel-10054)
+* [  yarn ](#tab-panel-10055)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues delete [NAME]
 ```
 
@@ -218,25 +194,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get queue information
 
-* [  npm ](#tab-panel-10025)
-* [  pnpm ](#tab-panel-10026)
-* [  yarn ](#tab-panel-10027)
+* [  npm ](#tab-panel-10056)
+* [  pnpm ](#tab-panel-10057)
+* [  yarn ](#tab-panel-10058)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues info [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues info [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues info [NAME]
 ```
 
@@ -266,25 +236,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10028)
-* [  pnpm ](#tab-panel-10029)
-* [  yarn ](#tab-panel-10030)
+* [  npm ](#tab-panel-10059)
+* [  pnpm ](#tab-panel-10060)
+* [  yarn ](#tab-panel-10061)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
@@ -328,25 +292,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10031)
-* [  pnpm ](#tab-panel-10032)
-* [  yarn ](#tab-panel-10033)
+* [  npm ](#tab-panel-10062)
+* [  pnpm ](#tab-panel-10063)
+* [  yarn ](#tab-panel-10064)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
@@ -378,25 +336,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List consumers for a queue
 
-* [  npm ](#tab-panel-10034)
-* [  pnpm ](#tab-panel-10035)
-* [  yarn ](#tab-panel-10036)
+* [  npm ](#tab-panel-10065)
+* [  pnpm ](#tab-panel-10066)
+* [  yarn ](#tab-panel-10067)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer list [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer list [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer list [QUEUE-NAME]
 ```
 
@@ -428,25 +380,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-10037)
-* [  pnpm ](#tab-panel-10038)
-* [  yarn ](#tab-panel-10039)
+* [  npm ](#tab-panel-10068)
+* [  pnpm ](#tab-panel-10069)
+* [  yarn ](#tab-panel-10070)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer http add [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer http add [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer http add [QUEUE-NAME]
 ```
 
@@ -486,25 +432,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-10040)
-* [  pnpm ](#tab-panel-10041)
-* [  yarn ](#tab-panel-10042)
+* [  npm ](#tab-panel-10071)
+* [  pnpm ](#tab-panel-10072)
+* [  yarn ](#tab-panel-10073)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer http remove [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer http remove [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer http remove [QUEUE-NAME]
 ```
 
@@ -534,25 +474,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List HTTP pull consumers for a queue
 
-* [  npm ](#tab-panel-10043)
-* [  pnpm ](#tab-panel-10044)
-* [  yarn ](#tab-panel-10045)
+* [  npm ](#tab-panel-10074)
+* [  pnpm ](#tab-panel-10075)
+* [  yarn ](#tab-panel-10076)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer http list [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer http list [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer http list [QUEUE-NAME]
 ```
 
@@ -584,25 +518,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10046)
-* [  pnpm ](#tab-panel-10047)
-* [  yarn ](#tab-panel-10048)
+* [  npm ](#tab-panel-10077)
+* [  pnpm ](#tab-panel-10078)
+* [  yarn ](#tab-panel-10079)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
@@ -646,25 +574,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10049)
-* [  pnpm ](#tab-panel-10050)
-* [  yarn ](#tab-panel-10051)
+* [  npm ](#tab-panel-10080)
+* [  pnpm ](#tab-panel-10081)
+* [  yarn ](#tab-panel-10082)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
@@ -696,25 +618,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List worker consumers for a queue
 
-* [  npm ](#tab-panel-10052)
-* [  pnpm ](#tab-panel-10053)
-* [  yarn ](#tab-panel-10054)
+* [  npm ](#tab-panel-10083)
+* [  pnpm ](#tab-panel-10084)
+* [  yarn ](#tab-panel-10085)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues consumer worker list [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues consumer worker list [QUEUE-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues consumer worker list [QUEUE-NAME]
 ```
 
@@ -746,25 +662,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-10055)
-* [  pnpm ](#tab-panel-10056)
-* [  yarn ](#tab-panel-10057)
+* [  npm ](#tab-panel-10086)
+* [  pnpm ](#tab-panel-10087)
+* [  yarn ](#tab-panel-10088)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues pause-delivery [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues pause-delivery [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues pause-delivery [NAME]
 ```
 
@@ -794,25 +704,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-10058)
-* [  pnpm ](#tab-panel-10059)
-* [  yarn ](#tab-panel-10060)
+* [  npm ](#tab-panel-10089)
+* [  pnpm ](#tab-panel-10090)
+* [  yarn ](#tab-panel-10091)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues resume-delivery [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues resume-delivery [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues resume-delivery [NAME]
 ```
 
@@ -842,25 +746,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-10061)
-* [  pnpm ](#tab-panel-10062)
-* [  yarn ](#tab-panel-10063)
+* [  npm ](#tab-panel-10092)
+* [  pnpm ](#tab-panel-10093)
+* [  yarn ](#tab-panel-10094)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues purge [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues purge [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues purge [NAME]
 ```
 
@@ -892,25 +790,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-10064)
-* [  pnpm ](#tab-panel-10065)
-* [  yarn ](#tab-panel-10066)
+* [  npm ](#tab-panel-10095)
+* [  pnpm ](#tab-panel-10096)
+* [  yarn ](#tab-panel-10097)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues subscription create [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues subscription create [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues subscription create [QUEUE]
 ```
 
@@ -954,25 +846,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-10067)
-* [  pnpm ](#tab-panel-10068)
-* [  yarn ](#tab-panel-10069)
+* [  npm ](#tab-panel-10098)
+* [  pnpm ](#tab-panel-10099)
+* [  yarn ](#tab-panel-10100)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues subscription list [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues subscription list [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues subscription list [QUEUE]
 ```
 
@@ -1008,25 +894,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-10070)
-* [  pnpm ](#tab-panel-10071)
-* [  yarn ](#tab-panel-10072)
+* [  npm ](#tab-panel-10101)
+* [  pnpm ](#tab-panel-10102)
+* [  yarn ](#tab-panel-10103)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues subscription get [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues subscription get [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues subscription get [QUEUE]
 ```
 
@@ -1060,25 +940,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-10073)
-* [  pnpm ](#tab-panel-10074)
-* [  yarn ](#tab-panel-10075)
+* [  npm ](#tab-panel-10104)
+* [  pnpm ](#tab-panel-10105)
+* [  yarn ](#tab-panel-10106)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues subscription delete [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues subscription delete [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues subscription delete [QUEUE]
 ```
 
@@ -1112,25 +986,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-10076)
-* [  pnpm ](#tab-panel-10077)
-* [  yarn ](#tab-panel-10078)
+* [  npm ](#tab-panel-10107)
+* [  pnpm ](#tab-panel-10108)
+* [  yarn ](#tab-panel-10109)
 
-Terminal window
-
-```
+```sh
 npx wrangler queues subscription update [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler queues subscription update [QUEUE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler queues subscription update [QUEUE]
 ```
 

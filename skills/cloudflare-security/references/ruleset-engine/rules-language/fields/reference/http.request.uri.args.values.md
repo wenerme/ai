@@ -25,13 +25,13 @@ Duplicated values are listed multiple times.
 
 Example value:
 
-```
+```txt
 ["red+apples"]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.uri.args.values[*] == "red+apples")
 ```
 

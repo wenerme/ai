@@ -36,9 +36,13 @@ Cloudflare uses a Content Security Policy (CSP) report-only directive to gather 
 
 Some browsers display scripts being reported as warnings in the console pane of their developer tools. For example:
 
-```
-[Report Only] Refused to execute inline script because it violatesthe following Content Security Policy directive: "script-src 'none'".
-Either the 'unsafe-inline' keyword, a hash ('sha256-RFWPLDbv2BY+rCkDzsE+0fr8ylGr2R2faWMhq4lfEQc='), or a nonce ('nonce-...')is required to enable inline execution.
+```txt
+[Report Only] Refused to execute inline script because it violates
+the following Content Security Policy directive: "script-src 'none'".
+
+
+Either the 'unsafe-inline' keyword, a hash ('sha256-RFWPLDbv2BY+rCkDzsE+0fr8ylGr2R2faWMhq4lfEQc='), or a nonce ('nonce-...')
+is required to enable inline execution.
 ```
 
 You can safely ignore these warnings, since they are related to the reports that Cloudflare requires to detect loaded scripts. For more information, refer to [How client-side security works](https://developers.cloudflare.com/client-side-security/how-it-works/).

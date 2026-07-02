@@ -148,14 +148,30 @@ Add one Virtual Tunnel Interface per IPsec tunnel to facilitate routing to Cloud
 
 #### Tunnel1
 
-```
-interface Tunnel1 ip address 169.254.250.1 255.255.255.254 ip proxy-arp ip mtu 1450 ip tcp adjust-mss 1350 tunnel source 203.0.113.100 tunnel mode ipsec ipv4 tunnel destination 162.159.135.1 tunnel path-mtu-discovery
+```txt
+interface Tunnel1
+ ip address 169.254.250.1 255.255.255.254
+ ip proxy-arp
+ ip mtu 1450
+ ip tcp adjust-mss 1350
+ tunnel source 203.0.113.100
+ tunnel mode ipsec ipv4
+ tunnel destination 162.159.135.1
+ tunnel path-mtu-discovery
 ```
 
 #### Tunnel2
 
-```
-interface Tunnel2 ip address 169.254.250.3 255.255.255.254 ip proxy-arp ip mtu 1450 ip tcp adjust-mss 1350 tunnel source 203.0.113.100 tunnel mode ipsec ipv4 tunnel destination 172.64.135.1 tunnel path-mtu-discovery
+```txt
+interface Tunnel2
+ ip address 169.254.250.3 255.255.255.254
+ ip proxy-arp
+ ip mtu 1450
+ ip tcp adjust-mss 1350
+ tunnel source 203.0.113.100
+ tunnel mode ipsec ipv4
+ tunnel destination 172.64.135.1
+ tunnel path-mtu-discovery
 ```
 
 ### IKE - Phase 1
@@ -171,8 +187,13 @@ Configure the following to facilitate IKEv2 Phase 1 negotiation:
 
 Define an IKEv2 Proposal as follows:
 
-```
-crypto ikev2 proposal CF_WAN_IKEV2_PROP pqc mlkem768 encryption aes-cbc-256 prf sha512 sha384 sha256 group 20 exit
+```txt
+crypto ikev2 proposal CF_WAN_IKEV2_PROP
+ pqc mlkem768
+ encryption aes-cbc-256
+ prf sha512 sha384 sha256
+ group 20
+ exit
 ```
 
 Tip
@@ -183,8 +204,11 @@ Simply add/remove `pqc mlkem768` from the proposal to enable/disable Post-Quantu
 
 Configure one IKEv2 Policy per tunnel:
 
-```
-crypto ikev2 policy CF_WAN_IKEV2_POL match fvrf any proposal CF_WAN_IKEV2_PROP exit
+```txt
+crypto ikev2 policy CF_WAN_IKEV2_POL
+ match fvrf any
+ proposal CF_WAN_IKEV2_PROP
+ exit
 ```
 
 #### IKEv2 Keyrings
@@ -193,14 +217,22 @@ Add one keyring per tunnel:
 
 ##### `CF_WAN_TUN_01_IKEV2_PEER`
 
-```
-crypto ikev2 keyring CF_WAN_TUN_01_IKEV2_KEYRING peer CF_WAN_TUN_01_IKEV2_PEER  address 162.159.135.1  pre-shared-key 0 Cloudflare-WAN-T1-PSK-1234!exit
+```txt
+crypto ikev2 keyring CF_WAN_TUN_01_IKEV2_KEYRING
+ peer CF_WAN_TUN_01_IKEV2_PEER
+  address 162.159.135.1
+  pre-shared-key 0 Cloudflare-WAN-T1-PSK-1234!
+exit
 ```
 
 ##### `CF_WAN_TUN_02_IKEV2_PEER`
 
-```
-crypto ikev2 keyring CF_WAN_TUN_02_IKEV2_KEYRING peer CF_WAN_TUN_02_IKEV2_PEER  address 172.64.135.1  pre-shared-key 0 Cloudflare-WAN-T2-PSK-1234!exit
+```txt
+crypto ikev2 keyring CF_WAN_TUN_02_IKEV2_KEYRING
+ peer CF_WAN_TUN_02_IKEV2_PEER
+  address 172.64.135.1
+  pre-shared-key 0 Cloudflare-WAN-T2-PSK-1234!
+exit
 ```
 
 Note
@@ -213,14 +245,28 @@ Configure one IKEv2 Profile per tunnel:
 
 ##### `CF_WAN_TUN_01_IKEV2_PROF`
 
-```
-crypto ikev2 profile CF_WAN_TUN_01_IKEV2_PROF match identity remote address 162.159.135.1 255.255.255.255 identity local fqdn bf6c493d03REDACTED.ipsec.cloudflare.com authentication remote pre-share authentication local pre-share keyring local CF_WAN_TUN_01_IKEV2_KEYRING no config-exchange request exit
+```txt
+crypto ikev2 profile CF_WAN_TUN_01_IKEV2_PROF
+ match identity remote address 162.159.135.1 255.255.255.255
+ identity local fqdn bf6c493d03REDACTED.ipsec.cloudflare.com
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local CF_WAN_TUN_01_IKEV2_KEYRING
+ no config-exchange request
+ exit
 ```
 
 ##### `CF_WAN_TUN_02_IKEV2_PROF`
 
-```
-crypto ikev2 profile CF_WAN_TUN_02_IKEV2_PROF match identity remote address 172.64.135.1 255.255.255.255 identity local fqdn 0287844e9dREDACTED.ipsec.cloudflare.com authentication remote pre-share authentication local pre-share keyring local CF_WAN_TUN_02_IKEV2_KEYRING no config-exchange request exit
+```txt
+crypto ikev2 profile CF_WAN_TUN_02_IKEV2_PROF
+ match identity remote address 172.64.135.1 255.255.255.255
+ identity local fqdn 0287844e9dREDACTED.ipsec.cloudflare.com
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local CF_WAN_TUN_02_IKEV2_KEYRING
+ no config-exchange request
+ exit
 ```
 
 #### IKEv2 Profiles with NAT-T support (optional)
@@ -231,14 +277,30 @@ This is only needed when you want to force encapsulation instead of using the st
 
 ##### `CF_WAN_TUN_01_IKEV2_PROF` with NAT-T
 
-```
-crypto ikev2 profile CF_WAN_TUN_01_IKEV2_PROF match identity remote address 162.159.135.1 255.255.255.255 identity local fqdn bf6c493d03REDACTED.ipsec.cloudflare.com authentication remote pre-share authentication local pre-share keyring local CF_WAN_TUN_01_IKEV2_KEYRING no config-exchange request nat force-encap exit
+```txt
+crypto ikev2 profile CF_WAN_TUN_01_IKEV2_PROF
+ match identity remote address 162.159.135.1 255.255.255.255
+ identity local fqdn bf6c493d03REDACTED.ipsec.cloudflare.com
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local CF_WAN_TUN_01_IKEV2_KEYRING
+ no config-exchange request
+ nat force-encap
+ exit
 ```
 
 ##### `CF_WAN_TUN_02_IKEV2_PROF` with NAT-T
 
-```
-crypto ikev2 profile CF_WAN_TUN_02_IKEV2_PROF match identity remote address 172.64.135.1 255.255.255.255 identity local fqdn 0287844e9dREDACTED.ipsec.cloudflare.com authentication remote pre-share authentication local pre-share keyring local CF_WAN_TUN_02_IKEV2_KEYRING no config-exchange request nat force-encap exit
+```txt
+crypto ikev2 profile CF_WAN_TUN_02_IKEV2_PROF
+ match identity remote address 172.64.135.1 255.255.255.255
+ identity local fqdn 0287844e9dREDACTED.ipsec.cloudflare.com
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local CF_WAN_TUN_02_IKEV2_KEYRING
+ no config-exchange request
+ nat force-encap
+ exit
 ```
 
 ### IPsec - Phase 2
@@ -249,14 +311,24 @@ Add one IPsec Profile per tunnel:
 
 ##### `CF_WAN_TUN_01_IPSEC_PROF`
 
-```
-crypto ipsec profile CF_WAN_TUN_01_IPSEC_PROF set security-association lifetime kilobytes disable set security-association replay disable set pfs group20 set ikev2-profile CF_WAN_TUN_01_IKEV2_PROF exit
+```txt
+crypto ipsec profile CF_WAN_TUN_01_IPSEC_PROF
+ set security-association lifetime kilobytes disable
+ set security-association replay disable
+ set pfs group20
+ set ikev2-profile CF_WAN_TUN_01_IKEV2_PROF
+ exit
 ```
 
 ##### `CF_WAN_TUN_02_IPSEC_PROF`
 
-```
-crypto ipsec profile CF_WAN_TUN_02_IPSEC_PROF set security-association lifetime kilobytes disable set security-association replay disable set pfs group20 set ikev2-profile CF_WAN_TUN_02_IKEV2_PROF exit
+```txt
+crypto ipsec profile CF_WAN_TUN_02_IPSEC_PROF
+ set security-association lifetime kilobytes disable
+ set security-association replay disable
+ set pfs group20
+ set ikev2-profile CF_WAN_TUN_02_IKEV2_PROF
+ exit
 ```
 
 ### Bind IPsec profiles to tunnel interfaces
@@ -265,14 +337,18 @@ Bind the IPsec profiles to the corresponding Virtual Tunnel Interfaces to instan
 
 #### Tunnel1
 
-```
-interface Tunnel1 tunnel protection ipsec profile CF_WAN_TUN_01_IPSEC_PROF exit
+```txt
+interface Tunnel1
+ tunnel protection ipsec profile CF_WAN_TUN_01_IPSEC_PROF
+ exit
 ```
 
 #### Tunnel2
 
-```
-interface Tunnel2 tunnel protection ipsec profile CF_WAN_TUN_02_IPSEC_PROF exit
+```txt
+interface Tunnel2
+ tunnel protection ipsec profile CF_WAN_TUN_02_IPSEC_PROF
+ exit
 ```
 
 ### Policy-Based Routing
@@ -289,41 +365,50 @@ PBR on Cisco IOS XE does not provide ECMP on its own. If you specify multiple eg
 
 #### Create VRF as local PBR forwarding target
 
-```
-ip vrf CF_WAN_PBR_VRFexit
+```txt
+ip vrf CF_WAN_PBR_VRF
+exit
 ```
 
 #### Define equal-cost static default routes
 
-```
-ip route vrf CF_WAN_PBR_VRF 0.0.0.0 0.0.0.0 169.254.250.0 global track 1ip route vrf CF_WAN_PBR_VRF 0.0.0.0 0.0.0.0 169.254.250.2 global track 2
+```txt
+ip route vrf CF_WAN_PBR_VRF 0.0.0.0 0.0.0.0 169.254.250.0 global track 1
+ip route vrf CF_WAN_PBR_VRF 0.0.0.0 0.0.0.0 169.254.250.2 global track 2
 ```
 
 #### Match traffic to steer to Cloudflare
 
-```
-ip access-list extended CF_WAN_PBR_ALL permit ip 192.168.125.0 0.0.0.255 any
+```txt
+ip access-list extended CF_WAN_PBR_ALL
+ permit ip 192.168.125.0 0.0.0.255 any
 ```
 
 #### Define route map to associate matched traffic to PBR VRF
 
-```
-route-map CF_WAN_PBR_RM permit 10 match ip address CF_WAN_PBR_ALL set vrf CF_WAN_PBR_VRF exit
+```txt
+route-map CF_WAN_PBR_RM permit 10
+ match ip address CF_WAN_PBR_ALL
+ set vrf CF_WAN_PBR_VRF
+ exit
 ```
 
 #### Apply route map to LAN interface
 
 Assuming the IP address assigned to the LAN interface is `192.168.125.1/24`:
 
-```
-interface GigabitEthernet1 description LAN interface ip address 192.168.125.1 255.255.255.0 ip policy route-map CF_WAN_PBR_RM
+```txt
+interface GigabitEthernet1
+ description LAN interface
+ ip address 192.168.125.1 255.255.255.0
+ ip policy route-map CF_WAN_PBR_RM
 ```
 
 #### Configure Cisco Express Forwarding (CEF) for load sharing (universal algorithm)
 
 Set the load-sharing algorithm to universal:
 
-```
+```txt
 ip cef load-sharing algorithm universal
 ```
 
@@ -353,26 +438,34 @@ This tracking is separate from Cloudflare tunnel health checks. Cloudflare uses 
 
 Instantiate an IP SLA probe (type `icmp-echo`) with `Tunnel1` source IP `169.254.250.1` and destination IP `169.254.250.0` \- send a probe every five seconds:
 
-```
-ip sla 1 icmp-echo 169.254.250.0 source-interface Tunnel1 frequency 5ip sla schedule 1 life forever start-time now
+```txt
+ip sla 1
+ icmp-echo 169.254.250.0 source-interface Tunnel1
+ frequency 5
+ip sla schedule 1 life forever start-time now
 ```
 
 Instantiate an IP SLA probe (type `icmp-echo`) with `Tunnel2` source IP `169.254.250.3` and destination IP `169.254.250.2` \- send a probe every five seconds:
 
-```
-ip sla 2 icmp-echo 169.254.250.2 source-interface Tunnel2 frequency 5ip sla schedule 2 life forever start-time now
+```txt
+ip sla 2
+ icmp-echo 169.254.250.2 source-interface Tunnel2
+ frequency 5
+ip sla schedule 2 life forever start-time now
 ```
 
 #### Define track objects
 
 The following `track` objects dampen short-lived packet loss to avoid route flaps on transient events:
 
-```
-track 1 ip sla 1 reachability delay down 3 up 3
+```txt
+track 1 ip sla 1 reachability
+ delay down 3 up 3
 ```
 
-```
-track 2 ip sla 2 reachability delay down 3 up 3
+```txt
+track 2 ip sla 2 reachability
+ delay down 3 up 3
 ```
 
 ## Troubleshooting
@@ -381,30 +474,61 @@ track 2 ip sla 2 reachability delay down 3 up 3
 
 * Display IKE (Phase 1) Security Associations detail:
 
-```
+```txt
 show crypto ikev2 sa detailed
 ```
 
-```
+```txt
  IPv4 Crypto IKEv2  SA
-Tunnel-id Local                 Remote                fvrf/ivrf            Status1     203.0.113.100/500     162.159.135.1/500     none/none            READY      Encr: AES-GCM, keysize: 256, PRF: SHA512, Hash: None, DH Grp:20, Auth sign: PSK, Auth verify: PSK      PQC Key Exchange: ML-KEM-768      Life/Active Time: 86400/501 sec      CE id: 0, Session-id: 3      Local spi: 9BEA9E397377D9BB       Remote spi: 0830302A3CD0A874      Status Description: Negotiation done      Local id: bf6c493d03REDACTED.ipsec.cloudflare.com      Remote id: 162.159.135.1      Local req msg id:  3              Remote req msg id:  0      Local next msg id: 3              Remote next msg id: 0      Local req queued:  3              Remote req queued:  0      Local window:      20             Remote window:      1      DPD configured for 0 seconds, retry 0      IETF Std Fragmentation  enabled.      Quantum-safe Encryption using PQC: ML-KEM-768      Dynamic Route Update: disabled      IETF Std Fragmentation MTU in use: 1372 bytes.      Extended Authentication not configured.      NAT-T is detected inside      Cisco Trust Security SGT is disabled      Initiator of SA : Yes      PEER TYPE: Other
+
+
+Tunnel-id Local                 Remote                fvrf/ivrf            Status
+1     203.0.113.100/500     162.159.135.1/500     none/none            READY
+      Encr: AES-GCM, keysize: 256, PRF: SHA512, Hash: None, DH Grp:20, Auth sign: PSK, Auth verify: PSK
+      PQC Key Exchange: ML-KEM-768
+      Life/Active Time: 86400/501 sec
+      CE id: 0, Session-id: 3
+      Local spi: 9BEA9E397377D9BB       Remote spi: 0830302A3CD0A874
+      Status Description: Negotiation done
+      Local id: bf6c493d03REDACTED.ipsec.cloudflare.com
+      Remote id: 162.159.135.1
+      Local req msg id:  3              Remote req msg id:  0
+      Local next msg id: 3              Remote next msg id: 0
+      Local req queued:  3              Remote req queued:  0
+      Local window:      20             Remote window:      1
+      DPD configured for 0 seconds, retry 0
+      IETF Std Fragmentation  enabled.
+      Quantum-safe Encryption using PQC: ML-KEM-768
+      Dynamic Route Update: disabled
+      IETF Std Fragmentation MTU in use: 1372 bytes.
+      Extended Authentication not configured.
+      NAT-T is detected inside
+      Cisco Trust Security SGT is disabled
+      Initiator of SA : Yes
+      PEER TYPE: Other
 ```
 
 * Clear security associations:
 
-```
+```txt
 clear crypto session remote <peer-ip-address>
 ```
 
 Another option to restart the IPsec tunnels is to administratively disable and re-enable the tunnel interfaces using `shutdown` and `no shutdown`:
 
-```
-int Tunnel1shutdown
+```txt
+int Tunnel1
+shutdown
+
+
 no shutdown
 ```
 
-```
-int Tunnel2shutdown
+```txt
+int Tunnel2
+shutdown
+
+
 no shutdown
 ```
 
@@ -412,55 +536,99 @@ no shutdown
 
 * Display Route Map details. Ensure the counters increment to confirm whether traffic matches the policy (`CF_WAN_PBR_ALL`):
 
-```
+```txt
 show route-map CF_WAN_PBR_RM
 ```
 
-```
-route-map CF_WAN_PBR_RM, permit, sequence 10  Match clauses:    ip address (access-lists): CF_WAN_PBR_ALL  Set clauses:    vrf CF_WAN_PBR_VRF  Policy routing matches: 12077 packets, 4639582 bytes
+```txt
+route-map CF_WAN_PBR_RM, permit, sequence 10
+  Match clauses:
+    ip address (access-lists): CF_WAN_PBR_ALL
+  Set clauses:
+    vrf CF_WAN_PBR_VRF
+  Policy routing matches: 12077 packets, 4639582 bytes
 ```
 
 * List routes in the VRF (`CF_WAN_PBR_VRF`):
 
-```
+```txt
 show ip route vrf CF_WAN_PBR_VRF
-Routing Table: CF_WAN_PBR_VRFCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2       ia - IS-IS inter area, * - candidate default, U - per-user static route       H - NHRP, G - NHRP registered, g - NHRP registration summary       o - ODR, P - periodic downloaded static route, l - LISP       a - application route       + - replicated route, % - next hop override, p - overrides from PfR       & - replicated local route overrides by connected
+
+
+Routing Table: CF_WAN_PBR_VRF
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+
 Gateway of last resort is 169.254.244.6 to network 0.0.0.0
-S*    0.0.0.0/0 [1/0] via 169.254.250.0                [1/0] via 169.254.250.2
+
+
+S*    0.0.0.0/0 [1/0] via 169.254.250.0
+                [1/0] via 169.254.250.2
 ```
 
 * List routes matching `0.0.0.0/0` in the CEF table:
 
-```
+```txt
 show ip cef vrf CF_WAN_PBR_VRF 0.0.0.0/0
 ```
 
-```
-0.0.0.0/0  nexthop 169.254.250.0 Tunnel1  nexthop 169.254.250.2 Tunnel2
+```txt
+0.0.0.0/0
+  nexthop 169.254.250.0 Tunnel1
+  nexthop 169.254.250.2 Tunnel2
 ```
 
 #### Health tracking - IP SLA
 
 * Display `track` object state:
 
-```
+```txt
 show track brief
 ```
 
-```
-Track Type        Instance                   Parameter        State Last Change1     ip sla      1                          reachability     Up    00:15:132     ip sla      2                          reachability     Up    01:16:08
+```txt
+Track Type        Instance                   Parameter        State Last Change
+1     ip sla      1                          reachability     Up    00:15:13
+2     ip sla      2                          reachability     Up    01:16:08
 ```
 
 * Display IP SLA statistics:
 
-```
+```txt
 show ip sla statistics
 ```
 
-```
+```txt
 IPSLAs Latest Operation Statistics
-IPSLA operation id: 1        Latest RTT: 6 millisecondsLatest operation start time: 15:23:03 CDT Mon Jun 1 2026Latest operation return code: OKNumber of successes: 380Number of failures: 1Operation time to live: Forever
-IPSLA operation id: 2        Latest RTT: 6 millisecondsLatest operation start time: 15:23:00 CDT Mon Jun 1 2026Latest operation return code: OKNumber of successes: 376Number of failures: 0Operation time to live: Forever
+
+
+IPSLA operation id: 1
+        Latest RTT: 6 milliseconds
+Latest operation start time: 15:23:03 CDT Mon Jun 1 2026
+Latest operation return code: OK
+Number of successes: 380
+Number of failures: 1
+Operation time to live: Forever
+
+
+IPSLA operation id: 2
+        Latest RTT: 6 milliseconds
+Latest operation start time: 15:23:00 CDT Mon Jun 1 2026
+Latest operation return code: OK
+Number of successes: 376
+Number of failures: 0
+Operation time to live: Forever
 ```
 
 #### Validate tunnel failover

@@ -33,16 +33,35 @@ A component which plays a participants video and allows for placement of compone
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantTile } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipantTile />;}
+
+
+function MyComponent() {
+  return <RtkParticipantTile />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantTile } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipantTile      isPreview={true}      meeting={meeting}      nameTagPosition={| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantTile
+      isPreview={true}
+      meeting={meeting}
+      nameTagPosition={| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'}
+    />
+  );
+}
 ```
 
 ```json

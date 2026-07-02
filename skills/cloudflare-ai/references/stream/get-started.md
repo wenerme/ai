@@ -31,38 +31,68 @@ For a list of accepted file types, refer to [Supported video formats](https://de
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-* [ REST API ](#tab-panel-10883)
-* [ Workers Binding API ](#tab-panel-10884)
+* [ REST API ](#tab-panel-11178)
+* [ Workers Binding API ](#tab-panel-11179)
 
-* [ cURL ](#tab-panel-10876)
-* [ TypeScript ](#tab-panel-10877)
+* [ cURL ](#tab-panel-11171)
+* [ TypeScript ](#tab-panel-11172)
 
-Terminal window
-
+```bash
+curl \
+-X POST \
+-d '{"url":"https://storage.googleapis.com/stream-example-bucket/video.mp4","meta":{"name":"My First Stream Video"}}' \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/copy
 ```
-curl \-X POST \-d '{"url":"https://storage.googleapis.com/stream-example-bucket/video.mp4","meta":{"name":"My First Stream Video"}}' \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/copy
-```
 
-TypeScript
+**TypeScript**
 
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
-const video = await client.stream.copy.create({  account_id: '<ACCOUNT_ID>',  url: 'https://storage.googleapis.com/stream-example-bucket/video.mp4',  meta: { name: 'My First Stream Video' },});
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+});
+
+
+const video = await client.stream.copy.create({
+  account_id: '<ACCOUNT_ID>',
+  url: 'https://storage.googleapis.com/stream-example-bucket/video.mp4',
+  meta: { name: 'My First Stream Video' },
+});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10878)
-* [ wrangler.jsonc ](#tab-panel-10879)
+* [ index.ts ](#tab-panel-11173)
+* [ wrangler.jsonc ](#tab-panel-11174)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    const videoDetails = await env.STREAM.upload(      "https://storage.googleapis.com/stream-example-bucket/video.mp4",      { meta: { name: "My First Stream Video" } }    );    return new Response(JSON.stringify(videoDetails));  },} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const videoDetails = await env.STREAM.upload(
+      "https://storage.googleapis.com/stream-example-bucket/video.mp4",
+      { meta: { name: "My First Stream Video" } }
+    );
+    return new Response(JSON.stringify(videoDetails));
+  },
+} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "$today",
+  "observability": {
+    "enabled": true
+  },
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -73,16 +103,38 @@ Because Stream must download and process the video, the video might not be avail
 
 Use the video UID from the first step to poll the video:
 
-Request
+**Request**
 
-```
-curl \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>
+```bash
+curl \
+-H "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",    "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",    "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",    "readyToStream": true,    "status": {      "state": "ready"    },    "meta": {      "downloaded-from": "https://storage.googleapis.com/stream-example-bucket/video.mp4",      "name": "My First Stream Video"    },    "created": "2020-10-16T20:20:17.872170843Z",    "size": 9032701    //...  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",
+    "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",
+    "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
+    "readyToStream": true,
+    "status": {
+      "state": "ready"
+    },
+    "meta": {
+      "downloaded-from": "https://storage.googleapis.com/stream-example-bucket/video.mp4",
+      "name": "My First Stream Video"
+    },
+    "created": "2020-10-16T20:20:17.872170843Z",
+    "size": 9032701
+    //...
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Step 3: Play the video in your website or app
@@ -91,8 +143,15 @@ Videos uploaded to Stream can be played on any device and platform, from website
 
 To play video on your website with the [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/), copy the `uid` of the video from the request above, along with your unique customer code, and replace `<CODE>` and `<VIDEO_UID>` in the embed code below:
 
-```
-<iframe  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"  title="Example Stream video"  frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+```html
+<iframe
+  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+  title="Example Stream video"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+>
+</iframe>
 ```
 
 The embed code above can also be found on the **Stream** page of the Cloudflare dashboard.
@@ -114,28 +173,55 @@ You can create a live input using the API or the **Live inputs** page of the Clo
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-* [ REST API ](#tab-panel-10882)
+* [ REST API ](#tab-panel-11177)
 
-* [ cURL ](#tab-panel-10880)
-* [ TypeScript ](#tab-panel-10881)
+* [ cURL ](#tab-panel-11175)
+* [ TypeScript ](#tab-panel-11176)
 
-Terminal window
-
-```
-curl -X POST \-H "Authorization: Bearer <API_TOKEN>" \-D '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs
-```
-
-TypeScript
-
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
-const liveInput = await client.stream.liveInputs.create({  account_id: '<ACCOUNT_ID>',  meta: { name: 'test stream' },  recording: { mode: 'automatic' },});
+```bash
+curl -X POST \
+-H "Authorization: Bearer <API_TOKEN>" \
+-D '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs
 ```
 
-Response
+**TypeScript**
 
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+});
+
+
+const liveInput = await client.stream.liveInputs.create({
+  account_id: '<ACCOUNT_ID>',
+  meta: { name: 'test stream' },
+  recording: { mode: 'automatic' },
+});
 ```
-{  "uid": "f256e6ea9341d51eea64c9454659e576",  "rtmps": {    "url": "rtmps://live.cloudflare.com:443/live/",    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"  },  "created": "2021-09-23T05:05:53.451415Z",  "modified": "2021-09-23T05:05:53.451415Z",  "meta": {    "name": "test stream"  },  "status": null,  "recording": {    "mode": "automatic",    "requireSignedURLs": false,    "allowedOrigins": null  }}
+
+**Response**
+
+```json
+{
+  "uid": "f256e6ea9341d51eea64c9454659e576",
+  "rtmps": {
+    "url": "rtmps://live.cloudflare.com:443/live/",
+    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"
+  },
+  "created": "2021-09-23T05:05:53.451415Z",
+  "modified": "2021-09-23T05:05:53.451415Z",
+  "meta": {
+    "name": "test stream"
+  },
+  "status": null,
+  "recording": {
+    "mode": "automatic",
+    "requireSignedURLs": false,
+    "allowedOrigins": null
+  }
+}
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
@@ -150,8 +236,15 @@ Live streams can be played on any device and platform, from websites to native a
 
 To play the live stream you just started on your website with the [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/), copy the `uid` of the live input from the request above, along with your unique customer code, and replace `<CODE>` and `<VIDEO_UID>` in the embed code below:
 
-```
-<iframe  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"  title="Example Stream video"  frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+```html
+<iframe
+  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+  title="Example Stream video"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+>
+</iframe>
 ```
 
 The embed code above can also be found on the **Stream** page of the Cloudflare dashboard.

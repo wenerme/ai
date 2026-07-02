@@ -54,28 +54,34 @@ To disable Zone Versioning:
   3. [Promote](https://developers.cloudflare.com/version-management/how-to/environments/#promote-a-version) **Version Zero** to your **Production** environment.
   4. Confirm that your new **Production** environment functions as expected.
 2. Send a `GET` request to the `/zones/{zone_id}/environments` endpoint.
-Terminal window
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/environments" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/environments" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 In the response, save the following values:
 
   * The environment `ref` of every rule
 3. Using the `ref` of those environments, send a `DELETE` request to the `/zones/{zone_id}/environments/{ref}` endpoint for each environment.
-Terminal window
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/{zone_id}/environments/{ref}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/environments/{ref}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 4. Then, send a `GET` request to find all HTTP applications (or versions of your zone).
-Terminal window
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/http_applications" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/http_applications" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 Save the `id` of each HTTP application.
 5. Using the `id` of those HTTP applications, send `DELETE` requests for every application.
-Terminal window
-```
-curl --request DELETE \"https://api.cloudflare.com/client/v4/zones/{zone_id}/http_applications/{http_application_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl --request DELETE \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/http_applications/{http_application_id}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 Once all these steps are completed, Zone Versioning will go back to its original landing page.

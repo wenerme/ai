@@ -28,25 +28,19 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12338)
-* [  pnpm ](#tab-panel-12339)
-* [  yarn ](#tab-panel-12340)
+* [  npm ](#tab-panel-12633)
+* [  pnpm ](#tab-panel-12634)
+* [  yarn ](#tab-panel-12635)
 
-Terminal window
-
-```
+```sh
 npx wrangler mtls-certificate upload
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler mtls-certificate upload
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler mtls-certificate upload
 ```
 
@@ -78,31 +72,42 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `upload` command to upload an mTLS certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-origin-cert
 ```
 
-```
-Uploading mTLS Certificate my-origin-cert...Success! Uploaded mTLS Certificate my-origin-certID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USExpires: 1/01/2025
+```sh
+Uploading mTLS Certificate my-origin-cert...
+Success! Uploaded mTLS Certificate my-origin-cert
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
+Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Expires: 1/01/2025
 ```
 
 You can then add this certificate as a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12359)
-* [  wrangler.toml ](#tab-panel-12360)
+* [  wrangler.jsonc ](#tab-panel-12654)
+* [  wrangler.toml ](#tab-panel-12655)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "mtls_certificates": [
+    {
+      "binding": "MY_CERT",
+      "certificate_id": "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d",
+    },
+  ],
+}
 ```
-{  "mtls_certificates": [    {      "binding": "MY_CERT",      "certificate_id": "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[mtls_certificates]]binding = "MY_CERT"certificate_id = "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d"
+```toml
+[[mtls_certificates]]
+binding = "MY_CERT"
+certificate_id = "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d"
 ```
 
 Note that the certificate and private keys must be in separate (typically `.pem`) files when uploading.
@@ -111,25 +116,19 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12341)
-* [  pnpm ](#tab-panel-12342)
-* [  yarn ](#tab-panel-12343)
+* [  npm ](#tab-panel-12636)
+* [  pnpm ](#tab-panel-12637)
+* [  yarn ](#tab-panel-12638)
 
-Terminal window
-
-```
+```sh
 npx wrangler mtls-certificate list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler mtls-certificate list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler mtls-certificate list
 ```
 
@@ -154,40 +153,41 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `list` command to upload an mTLS certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler mtls-certificate list
 ```
 
-```
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dName: my-origin-certIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
-ID: c5d004d1-8312-402c-b8ed-6194328d5cbeIssuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
+```sh
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
+Name: my-origin-cert
+Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Created on: 1/01/2023
+Expires: 1/01/2025
+
+
+ID: c5d004d1-8312-402c-b8ed-6194328d5cbe
+Issuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Created on: 1/01/2023
+Expires: 1/01/2025
 ```
 
 ### `mtls-certificate delete`
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12344)
-* [  pnpm ](#tab-panel-12345)
-* [  yarn ](#tab-panel-12346)
+* [  npm ](#tab-panel-12639)
+* [  pnpm ](#tab-panel-12640)
+* [  yarn ](#tab-panel-12641)
 
-Terminal window
-
-```
+```sh
 npx wrangler mtls-certificate delete
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler mtls-certificate delete
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler mtls-certificate delete
 ```
 
@@ -217,14 +217,15 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `delete` command to delete an mTLS certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler mtls-certificate delete --id 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
 ```
 
-```
-Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]yesDeleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
+```sh
+Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]
+yes
+Deleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...
+Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
 ```
 
 ---
@@ -239,25 +240,19 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12347)
-* [  pnpm ](#tab-panel-12348)
-* [  yarn ](#tab-panel-12349)
+* [  npm ](#tab-panel-12642)
+* [  pnpm ](#tab-panel-12643)
+* [  yarn ](#tab-panel-12644)
 
-Terminal window
-
-```
+```sh
 npx wrangler cert upload mtls-certificate
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler cert upload mtls-certificate
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler cert upload mtls-certificate
 ```
 
@@ -289,14 +284,16 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `upload` command to upload an mTLS certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler cert upload --cert cert.pem --key key.pem --name my-origin-cert
 ```
 
-```
-Uploading mTLS Certificate my-origin-cert...Success! Uploaded mTLS Certificate my-origin-certID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USExpires: 1/01/2025
+```sh
+Uploading mTLS Certificate my-origin-cert...
+Success! Uploaded mTLS Certificate my-origin-cert
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
+Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Expires: 1/01/2025
 ```
 
 Note that the certificate and private keys must be in separate (typically `.pem`) files when uploading.
@@ -305,25 +302,19 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
-* [  npm ](#tab-panel-12350)
-* [  pnpm ](#tab-panel-12351)
-* [  yarn ](#tab-panel-12352)
+* [  npm ](#tab-panel-12645)
+* [  pnpm ](#tab-panel-12646)
+* [  yarn ](#tab-panel-12647)
 
-Terminal window
-
-```
+```sh
 npx wrangler cert upload certificate-authority
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler cert upload certificate-authority
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler cert upload certificate-authority
 ```
 
@@ -353,39 +344,35 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `upload` command to upload an CA certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler cert upload certificate-authority --ca-cert server-ca-chain.pem --name SERVER_CA_CHAIN
 ```
 
-```
-Uploading CA Certificate SERVER_CA_CHAIN...Success! Uploaded CA Certificate SERVER_CA_CHAINID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USExpires: 1/01/2025
+```sh
+Uploading CA Certificate SERVER_CA_CHAIN...
+Success! Uploaded CA Certificate SERVER_CA_CHAIN
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
+Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Expires: 1/01/2025
 ```
 
 ### `cert list`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12353)
-* [  pnpm ](#tab-panel-12354)
-* [  yarn ](#tab-panel-12355)
+* [  npm ](#tab-panel-12648)
+* [  pnpm ](#tab-panel-12649)
+* [  yarn ](#tab-panel-12650)
 
-Terminal window
-
-```
+```sh
 npx wrangler cert list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler cert list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler cert list
 ```
 
@@ -410,40 +397,41 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `list` command to upload an mTLS or CA certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler cert list
 ```
 
-```
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dName: my-origin-certIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
-ID: c5d004d1-8312-402c-b8ed-6194328d5cbeIssuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
+```sh
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
+Name: my-origin-cert
+Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Created on: 1/01/2023
+Expires: 1/01/2025
+
+
+ID: c5d004d1-8312-402c-b8ed-6194328d5cbe
+Issuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
+Created on: 1/01/2023
+Expires: 1/01/2025
 ```
 
 ### `cert delete`
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12356)
-* [  pnpm ](#tab-panel-12357)
-* [  yarn ](#tab-panel-12358)
+* [  npm ](#tab-panel-12651)
+* [  pnpm ](#tab-panel-12652)
+* [  yarn ](#tab-panel-12653)
 
-Terminal window
-
-```
+```sh
 npx wrangler cert delete
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler cert delete
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler cert delete
 ```
 
@@ -473,14 +461,15 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 The following is an example of using the `delete` command to delete an mTLS or CA certificate.
 
-Terminal window
-
-```
+```sh
 npx wrangler cert delete --id 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
 ```
 
-```
-Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]yesDeleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
+```sh
+Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]
+yes
+Deleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...
+Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
 ```
 
 ```json

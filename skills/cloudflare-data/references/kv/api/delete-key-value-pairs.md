@@ -14,18 +14,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To delete a key-value pair, call the `delete()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9021)
-* [  Python ](#tab-panel-9022)
+* [  JavaScript ](#tab-panel-9312)
+* [  Python ](#tab-panel-9313)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 env.NAMESPACE.delete(key);
 ```
 
-Python
+**Python**
 
-```
+```py
 self.env.NAMESPACE.delete(key)
 ```
 
@@ -33,22 +33,45 @@ self.env.NAMESPACE.delete(key)
 
 An example of deleting a key-value pair from within a Worker:
 
-* [  JavaScript ](#tab-panel-9023)
-* [  Python ](#tab-panel-9024)
+* [  JavaScript ](#tab-panel-9314)
+* [  Python ](#tab-panel-9315)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      await env.NAMESPACE.delete("first-key");
+
+
+      return new Response("Successful delete", {
+        status: 200
+      });
+    }
+    catch (e)
+    {
+      return new Response(e.message, {status: 500});
+    }
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    try {      await env.NAMESPACE.delete("first-key");
-      return new Response("Successful delete", {        status: 200      });    }    catch (e)    {      return new Response(e.message, {status: 500});    }  },};
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        try:            await self.env.NAMESPACE.delete("first-key")
-            return Response("Successful delete", status=200)        except Exception as e:            return Response(str(e), status=500)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        try:
+            await self.env.NAMESPACE.delete("first-key")
+
+
+            return Response("Successful delete", status=200)
+        except Exception as e:
+            return Response(str(e), status=500)
 ```
 
 ## Reference
@@ -61,18 +84,18 @@ The following method is provided to delete from KV:
 
 To delete a key-value pair, call the `delete()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9025)
-* [  Python ](#tab-panel-9026)
+* [  JavaScript ](#tab-panel-9316)
+* [  Python ](#tab-panel-9317)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 env.NAMESPACE.delete(key);
 ```
 
-Python
+**Python**
 
-```
+```py
 await self.env.NAMESPACE.delete(key)
 ```
 

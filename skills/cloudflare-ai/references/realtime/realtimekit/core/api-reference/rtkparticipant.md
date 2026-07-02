@@ -13,10 +13,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This module represents a single participant in the meeting. The participant object can be accessed from one of the participant lists present in the `meeting.participants` object. For example,
 
-TypeScript
+**TypeScript**
 
-```
-const participant1 = meeting.participants.active.get(participantId);const participant2 = meeting.participants.joined.get(participantId);const participant3 = meeting.participants.active.toArray()[0];const participant4 = meeting.participants.active.toArray().filter((p) => p.name === 'John');
+```ts
+const participant1 = meeting.participants.active.get(participantId);
+const participant2 = meeting.participants.joined.get(participantId);
+const participant3 = meeting.participants.active.toArray()[0];
+const participant4 = meeting.participants.active.toArray().filter((p) => p.name === 'John');
 ```
 
 * [RTKParticipant](#module%5FRTKParticipant)

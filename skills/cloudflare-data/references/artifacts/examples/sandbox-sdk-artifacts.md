@@ -36,9 +36,7 @@ yarn create cloudflare repo-per-sandbox --template=cloudflare/sandbox-sdk/exampl
 pnpm create cloudflare@latest repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox
 ```
 
-Terminal window
-
-```
+```sh
 cd repo-per-sandbox
 ```
 
@@ -46,25 +44,59 @@ cd repo-per-sandbox
 
 The template keeps one Artifacts repo per sandbox ID. Use your own source of truth to decide whether this request should create a new repo or load an existing one.
 
-* [  JavaScript ](#tab-panel-6878)
-* [  TypeScript ](#tab-panel-6879)
+* [  JavaScript ](#tab-panel-7126)
+* [  TypeScript ](#tab-panel-7127)
 
-src/index.js
+**src/index.js**
 
+```js
+let defaultBranch;
+let remote;
+let token;
+const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
+
+
+if (sandboxWasJustCreated) {
+  const created = await env.ARTIFACTS.create(sandboxId);
+
+
+  defaultBranch = created.defaultBranch;
+  remote = created.remote;
+  token = created.token;
+} else {
+  const repo = await env.ARTIFACTS.get(sandboxId);
+
+
+  defaultBranch = repo.defaultBranch;
+  remote = repo.remote;
+  token = (await repo.createToken("write", 3600)).plaintext;
+}
 ```
-let defaultBranch;let remote;let token;const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
-if (sandboxWasJustCreated) {  const created = await env.ARTIFACTS.create(sandboxId);
-  defaultBranch = created.defaultBranch;  remote = created.remote;  token = created.token;} else {  const repo = await env.ARTIFACTS.get(sandboxId);
-  defaultBranch = repo.defaultBranch;  remote = repo.remote;  token = (await repo.createToken("write", 3600)).plaintext;}
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-let defaultBranch: string;let remote: string;let token: string;const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
-if (sandboxWasJustCreated) {  const created = await env.ARTIFACTS.create(sandboxId);
-  defaultBranch = created.defaultBranch;  remote = created.remote;  token = created.token;} else {  const repo = await env.ARTIFACTS.get(sandboxId);
-  defaultBranch = repo.defaultBranch;  remote = repo.remote;  token = (await repo.createToken("write", 3600)).plaintext;}
+```ts
+let defaultBranch: string;
+let remote: string;
+let token: string;
+const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
+
+
+if (sandboxWasJustCreated) {
+  const created = await env.ARTIFACTS.create(sandboxId);
+
+
+  defaultBranch = created.defaultBranch;
+  remote = created.remote;
+  token = created.token;
+} else {
+  const repo = await env.ARTIFACTS.get(sandboxId);
+
+
+  defaultBranch = repo.defaultBranch;
+  remote = repo.remote;
+  token = (await repo.createToken("write", 3600)).plaintext;
+}
 ```
 
 The template already knows the repo name, so start with direct lookup instead of scanning `list()` pages. Avoid broad `catch` blocks here. They can hide missing-repo, auth, and validation failures behind the same retry message.
@@ -75,20 +107,24 @@ If your flow can race with repo creation, handle that retry at the application l
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-6874)
-* [  TypeScript ](#tab-panel-6875)
+* [  JavaScript ](#tab-panel-7122)
+* [  TypeScript ](#tab-panel-7123)
 
-src/index.js
+**src/index.js**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, sandboxId);
 ```
 
-src/index.ts
+**src/index.ts**
 
-```
+```ts
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, sandboxId);
 ```
 
@@ -98,21 +134,35 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-6876)
-* [  TypeScript ](#tab-panel-6877)
+* [  JavaScript ](#tab-panel-7124)
+* [  TypeScript ](#tab-panel-7125)
 
-src/index.js
+**src/index.js**
 
+```js
+function toAuthenticatedRemote(remote, token) {
+  const tokenSecret = token.split("?expires=")[0];
+  return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;
+}
+
+
+await sandbox.setEnvVars({
+  ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
+});
 ```
-function toAuthenticatedRemote(remote, token) {  const tokenSecret = token.split("?expires=")[0];  return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;}
-await sandbox.setEnvVars({  ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),});
-```
 
-src/index.ts
+**src/index.ts**
 
-```
-function toAuthenticatedRemote(remote: string, token: string) {  const tokenSecret = token.split("?expires=")[0];  return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;}
-await sandbox.setEnvVars({  ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),});
+```ts
+function toAuthenticatedRemote(remote: string, token: string) {
+  const tokenSecret = token.split("?expires=")[0];
+  return `https://x:${tokenSecret}@${remote.slice("https://".length)}`;
+}
+
+
+await sandbox.setEnvVars({
+  ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
+});
 ```
 
 Code running inside the sandbox can then use `ARTIFACTS_GIT_REMOTE` with `git clone`, `git fetch`, `git pull`, or `git push`.

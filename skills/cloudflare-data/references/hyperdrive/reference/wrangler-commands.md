@@ -18,25 +18,19 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-8899)
-* [  pnpm ](#tab-panel-8900)
-* [  yarn ](#tab-panel-8901)
+* [  npm ](#tab-panel-9190)
+* [  pnpm ](#tab-panel-9191)
+* [  yarn ](#tab-panel-9192)
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler hyperdrive create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler hyperdrive create [NAME]
 ```
 
@@ -104,25 +98,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-8902)
-* [  pnpm ](#tab-panel-8903)
-* [  yarn ](#tab-panel-8904)
+* [  npm ](#tab-panel-9193)
+* [  pnpm ](#tab-panel-9194)
+* [  yarn ](#tab-panel-9195)
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive delete [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler hyperdrive delete [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler hyperdrive delete [ID]
 ```
 
@@ -152,25 +140,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-8905)
-* [  pnpm ](#tab-panel-8906)
-* [  yarn ](#tab-panel-8907)
+* [  npm ](#tab-panel-9196)
+* [  pnpm ](#tab-panel-9197)
+* [  yarn ](#tab-panel-9198)
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive get [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler hyperdrive get [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler hyperdrive get [ID]
 ```
 
@@ -200,25 +182,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-8908)
-* [  pnpm ](#tab-panel-8909)
-* [  yarn ](#tab-panel-8910)
+* [  npm ](#tab-panel-9199)
+* [  pnpm ](#tab-panel-9200)
+* [  yarn ](#tab-panel-9201)
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler hyperdrive list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler hyperdrive list
 ```
 
@@ -245,25 +221,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-8911)
-* [  pnpm ](#tab-panel-8912)
-* [  yarn ](#tab-panel-8913)
+* [  npm ](#tab-panel-9202)
+* [  pnpm ](#tab-panel-9203)
+* [  yarn ](#tab-panel-9204)
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive update [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler hyperdrive update [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler hyperdrive update [ID]
 ```
 

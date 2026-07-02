@@ -36,7 +36,7 @@ Use a request header transform rule to tag requests from high-latency connection
 
 **Rule expression:**
 
-```
+```txt
 cf.timings.client_tcp_rtt_msec > 200 or cf.timings.client_quic_rtt_msec > 200
 ```
 
@@ -48,7 +48,7 @@ cf.timings.client_tcp_rtt_msec > 200 or cf.timings.client_quic_rtt_msec > 200
 
 #### Example: Match low-bandwidth connections
 
-```
+```txt
 cf.edge.l4.delivery_rate > 0 and cf.edge.l4.delivery_rate < 100000
 ```
 
@@ -80,7 +80,7 @@ Add a request header transform rule to set the `Client-Cert` and `Client-Cert-Ch
 
 **Rule expression:**
 
-```
+```txt
 cf.tls_client_auth.cert_verified and not cf.tls_client_auth.cert_revoked
 ```
 
@@ -119,7 +119,7 @@ You can use this field to identify slow Worker executions, detect performance re
 
 Example filter expression:
 
-```
+```plaintext
 cf.timings.worker_msec > 500
 ```
 
@@ -157,8 +157,14 @@ Setting body buffering to **None** may break security functionality that require
 
 #### API example
 
-```
-{  "action": "set_config",  "action_parameters": {    "request_body_buffering": "standard",    "response_body_buffering": "none"  }}
+```json
+{
+  "action": "set_config",
+  "action_parameters": {
+    "request_body_buffering": "standard",
+    "response_body_buffering": "none"
+  }
+}
 ```
 
 For more information, refer to [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/).
@@ -189,7 +195,7 @@ The `sha256()` function is available as an Enterprise add-on and requires a spec
 
 **Encode a string to Base64 format:**
 
-```
+```txt
 encode_base64("hello world")
 ```
 
@@ -197,7 +203,7 @@ Returns: `aGVsbG8gd29ybGQ`
 
 **Encode a string to Base64 format with padding:**
 
-```
+```txt
 encode_base64("hello world", "p")
 ```
 
@@ -205,7 +211,7 @@ Returns: `aGVsbG8gd29ybGQ=`
 
 **Perform a URL-safe Base64 encoding of a string:**
 
-```
+```txt
 encode_base64("hello world", "u")
 ```
 
@@ -213,7 +219,7 @@ Returns: `aGVsbG8gd29ybGQ`
 
 **Compute the SHA256 hash of a secret token:**
 
-```
+```txt
 sha256("my-token")
 ```
 
@@ -221,7 +227,7 @@ Returns a hash that your origin can validate to authenticate requests.
 
 **Compute the SHA256 hash of a string and encode the result to Base64 format:**
 
-```
+```txt
 encode_base64(sha256("my-token"))
 ```
 
@@ -255,19 +261,19 @@ Cloudflare Rulesets now include new functions that enable advanced expression lo
 
 **Check if a country code exists in a header list:**
 
-```
+```txt
 has_value(split(http.response.headers["x-allow-country"][0], ","), ip.src.country)
 ```
 
 **Check if a specific header key exists:**
 
-```
+```txt
 has_key(http.request.headers, "x-custom-header")
 ```
 
 **Join array values for logging or comparison:**
 
-```
+```txt
 join(http.request.headers.names, ", ")
 ```
 
@@ -290,7 +296,7 @@ You can use this field to build rules that target traffic based on geographic ma
 
 Example filter expression:
 
-```
+```plaintext
 ip.src.metro_code eq "501"
 ```
 
@@ -316,7 +322,7 @@ Cloudflare now provides two new request fields in the Ruleset engine that let yo
 
 Example filter expression:
 
-```
+```plaintext
 cf.edge.client_tcp && cf.timings.client_tcp_rtt_msec < 100
 ```
 
@@ -356,7 +362,7 @@ For example, to add a header when the subrequest comes from another zone:
 
 Text in **Expression Editor** (replace `myappexample.com` with your domain):
 
-```
+```txt
 (cf.worker.upstream_zone != "" and cf.worker.upstream_zone != "myappexample.com")
 ```
 
@@ -491,18 +497,38 @@ This brings the following new capabilities:
 
 You can use Cloudflare API to upload your existing assets for use with Custom Errors:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_pages/assets" \--header "Authorization: Bearer <API_TOKEN>" \--header 'Content-Type: application/json' \--data '{  "name": "maintenance",  "description": "Maintenance template page",  "url": "https://example.com/"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_pages/assets" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "maintenance",
+  "description": "Maintenance template page",
+  "url": "https://example.com/"
+}'
 ```
 
 You can then reference the stored asset in a Custom Error rule:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_custom_errors/entrypoint" \--header "Authorization: Bearer <API_TOKEN>" \--header 'Content-Type: application/json' \--data '{  "rules": [    {      "action": "serve_error",      "action_parameters": {        "asset_name": "maintenance",        "content_type": "text/html",        "status_code": 503      },      "enabled": true,      "expression": "http.request.uri.path contains \"error\""    }  ]}'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_custom_errors/entrypoint" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header 'Content-Type: application/json' \
+--data '{
+  "rules": [
+    {
+      "action": "serve_error",
+      "action_parameters": {
+        "asset_name": "maintenance",
+        "content_type": "text/html",
+        "status_code": 503
+      },
+      "enabled": true,
+      "expression": "http.request.uri.path contains \"error\""
+    }
+  ]
+}'
 ```
 
 ## 2025-01-29
@@ -547,9 +573,28 @@ Now, you can manage [Cloudflare Snippets](https://developers.cloudflare.com/rule
 
 Example Terraform configuration:
 
-```
-resource "cloudflare_snippet" "my_snippet" {  zone_id  = "<ZONE_ID>"  name = "my_test_snippet_1"  main_module = "file1.js"  files {    name = "file1.js"    content = file("file1.js")  }}
-resource "cloudflare_snippet_rules" "cookie_snippet_rule" {  zone_id  = "<ZONE_ID>"  rules {    enabled = true    expression = "http.cookie eq \"a=b\""    description = "Trigger snippet on specific cookie"    snippet_name = "my_test_snippet_1"  }  depends_on = [cloudflare_snippet.my_snippet]}
+```tf
+resource "cloudflare_snippet" "my_snippet" {
+  zone_id  = "<ZONE_ID>"
+  name = "my_test_snippet_1"
+  main_module = "file1.js"
+  files {
+    name = "file1.js"
+    content = file("file1.js")
+  }
+}
+
+
+resource "cloudflare_snippet_rules" "cookie_snippet_rule" {
+  zone_id  = "<ZONE_ID>"
+  rules {
+    enabled = true
+    expression = "http.cookie eq \"a=b\""
+    description = "Trigger snippet on specific cookie"
+    snippet_name = "my_test_snippet_1"
+  }
+  depends_on = [cloudflare_snippet.my_snippet]
+}
 ```
 
 Learn more in the [Configure Snippets using Terraform](https://developers.cloudflare.com/rules/snippets/create-terraform/) documentation.
@@ -563,10 +608,21 @@ Now, you can use [Cloud Connector](https://developers.cloudflare.com/rules/cloud
 
 Example setup:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/cloud_connector/rules" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '[  {    "expression": "http.request.uri.path wildcard \"/images/*\"",    "provider": "cloudflare_r2",    "description": "Connect to R2 bucket containing images",    "parameters": {      "host": "mybucketcustomdomain.example.com"    }  }]'
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/cloud_connector/rules" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '[
+  {
+    "expression": "http.request.uri.path wildcard \"/images/*\"",
+    "provider": "cloudflare_r2",
+    "description": "Connect to R2 bucket containing images",
+    "parameters": {
+      "host": "mybucketcustomdomain.example.com"
+    }
+  }
+]'
 ```
 
 Get started using [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/) documentation.

@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 [["quoted-printable"], ["base64"]]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart.content_transfer_encodings[*][0] == "binary")
 ```
 

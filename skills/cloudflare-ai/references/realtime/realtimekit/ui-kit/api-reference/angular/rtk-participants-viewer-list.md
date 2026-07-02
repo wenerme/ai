@@ -29,14 +29,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participants-viewer-list></rtk-participants-viewer-list>
+```html
+<!-- component.html -->
+<rtk-participants-viewer-list></rtk-participants-viewer-list>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participants-viewer-list [hideHeader]="true" [meeting]="meeting" search="example"></rtk-participants-viewer-list>
+```html
+<!-- component.html -->
+<rtk-participants-viewer-list
+ [hideHeader]="true"
+ [meeting]="meeting"
+ search="example">
+</rtk-participants-viewer-list>
 ```
 
 ```json

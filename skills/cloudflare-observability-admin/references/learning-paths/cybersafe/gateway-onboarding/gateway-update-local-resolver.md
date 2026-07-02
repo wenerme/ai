@@ -28,14 +28,13 @@ Windows
 
 Linux
 
-Terminal window
-
-```
+```sh
 cat /etc/resolv.conf
 ```
 
-```
-nameserver 172.64.X.Xnameserver 172.64.X.X
+```sh
+nameserver 172.64.X.X
+nameserver 172.64.X.X
 ```
 
 iPhone

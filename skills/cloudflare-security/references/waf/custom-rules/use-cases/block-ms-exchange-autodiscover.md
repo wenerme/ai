@@ -23,7 +23,7 @@ Use the expression editor:
 
 Alternatively, customers on a Business or Enterprise plan can use the `matches` [comparison operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) for the same purpose. For this example, the expression would be the following:
 
-```
+```txt
 (http.request.uri.path matches "/autodiscover.(xml|src)$")
 ```
 

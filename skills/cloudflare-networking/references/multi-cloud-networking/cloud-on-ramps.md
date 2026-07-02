@@ -218,8 +218,11 @@ After setting up your on-ramps, you need to update your network security groups 
 
 By default, Cloudflare installs the following summarized routes in your cloud route tables to direct traffic to Cloudflare WAN:
 
-```
-10.0.0.0/8172.16.0.0/12192.168.0.0/16100.64.0.0/10
+```txt
+10.0.0.0/8
+172.16.0.0/12
+192.168.0.0/16
+100.64.0.0/10
 ```
 
 To override the defaults with custom prefixes:

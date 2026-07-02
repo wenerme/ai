@@ -31,17 +31,15 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-10043)
-* [ Dashboard ](#tab-panel-10044)
+* [ Wrangler CLI ](#tab-panel-10122)
+* [ Dashboard ](#tab-panel-10123)
 
 1. If not already logged in, run:
-Terminal window
-```
+```bash
 npx wrangler login
 ```
 2. Create an R2 bucket:
-Terminal window
-```
+```bash
 npx wrangler r2 bucket create pipelines-tutorial
 ```
 
@@ -53,14 +51,12 @@ npx wrangler r2 bucket create pipelines-tutorial
 
 ## 2\. Enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-10045)
-* [ Dashboard ](#tab-panel-10046)
+* [ Wrangler CLI ](#tab-panel-10124)
+* [ Dashboard ](#tab-panel-10125)
 
 Enable the catalog on your R2 bucket:
 
-Terminal window
-
-```
+```bash
 npx wrangler r2 bucket catalog enable pipelines-tutorial
 ```
 
@@ -91,22 +87,43 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 4\. Create a pipeline
 
-* [ Wrangler CLI ](#tab-panel-10047)
-* [ Dashboard ](#tab-panel-10048)
+* [ Wrangler CLI ](#tab-panel-10126)
+* [ Dashboard ](#tab-panel-10127)
 
 First, create a schema file that defines your ecommerce data structure:
 
 **Create `schema.json`:**
 
-```
-{  "fields": [    {      "name": "user_id",      "type": "string",      "required": true    },    {      "name": "event_type",      "type": "string",      "required": true    },    {      "name": "product_id",      "type": "string",      "required": false    },    {      "name": "amount",      "type": "float64",      "required": false    }  ]}
+```json
+{
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "event_type",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "product_id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "amount",
+      "type": "float64",
+      "required": false
+    }
+  ]
+}
 ```
 
 Use the interactive setup to create a pipeline that writes to R2 Data Catalog:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines setup
 ```
 
@@ -131,7 +148,7 @@ Follow the prompts:
   * Roll file when size reaches (MB): `100`
   * Roll file when time reaches (seconds): `10` (for faster data visibility in this tutorial)
 4. **SQL transformation**: Choose `Use simple ingestion query` to use:
-```
+```sql
 INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream
 ```
 
@@ -150,8 +167,31 @@ After setup completes, note the HTTP endpoint URL displayed in the final output.
 
   * Select **JSON editor**
   * Copy in the schema:
-  ```
-  {  "fields": [    {      "name": "user_id",      "type": "string",      "required": true    },    {      "name": "event_type",      "type": "string",      "required": true    },    {      "name": "product_id",      "type": "string",      "required": false    },    {      "name": "amount",      "type": "f64",      "required": false    }  ]}
+  ```json
+  {
+    "fields": [
+      {
+        "name": "user_id",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "event_type",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "product_id",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "amount",
+        "type": "f64",
+        "required": false
+      }
+    ]
+  }
   ```
   * Select **Next**
 5. **Define Sink**:
@@ -170,7 +210,7 @@ After setup completes, note the HTTP endpoint URL displayed in the final output.
 7. **Pipeline Definition**:
 
   * Leave the default SQL query:
-  ```
+  ```sql
   INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream;
   ```
   * Select **Create Pipeline**
@@ -180,10 +220,28 @@ After setup completes, note the HTTP endpoint URL displayed in the final output.
 
 Send ecommerce events to your pipeline's HTTP endpoint:
 
-Terminal window
-
-```
-curl -X POST https://{stream-id}.ingest.cloudflare.com \  -H "Content-Type: application/json" \  -d '[    {      "user_id": "user_12345",      "event_type": "purchase",      "product_id": "widget-001",      "amount": 29.99    },    {      "user_id": "user_67890",      "event_type": "view_product",      "product_id": "widget-002"    },    {      "user_id": "user_12345",      "event_type": "add_to_cart",      "product_id": "widget-003",      "amount": 15.50    }  ]'
+```bash
+curl -X POST https://{stream-id}.ingest.cloudflare.com \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "user_id": "user_12345",
+      "event_type": "purchase",
+      "product_id": "widget-001",
+      "amount": 29.99
+    },
+    {
+      "user_id": "user_67890",
+      "event_type": "view_product",
+      "product_id": "widget-002"
+    },
+    {
+      "user_id": "user_12345",
+      "event_type": "add_to_cart",
+      "product_id": "widget-003",
+      "amount": 15.50
+    }
+  ]'
 ```
 
 Replace `{stream-id}` with your actual stream endpoint from the pipeline setup.
@@ -199,15 +257,13 @@ Replace `{stream-id}` with your actual stream endpoint from the pipeline setup.
 
 Set up your environment to use R2 SQL:
 
-Terminal window
-
-```
+```bash
 export WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
 ```
 
 Or create a `.env` file with:
 
-```
+```plaintext
 WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
 ```
 
@@ -215,10 +271,16 @@ Where `YOUR_API_TOKEN` is the token you created in step 3\. For more information
 
 Query your data:
 
-Terminal window
-
-```
-npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" "SELECT    user_id,    event_type,    product_id,    amountFROM default.ecommerceWHERE event_type = 'purchase'LIMIT 10"
+```bash
+npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" "
+SELECT
+    user_id,
+    event_type,
+    product_id,
+    amount
+FROM default.ecommerce
+WHERE event_type = 'purchase'
+LIMIT 10"
 ```
 
 Replace `YOUR_WAREHOUSE_NAME` with the warehouse name from step 2.

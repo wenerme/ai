@@ -18,7 +18,7 @@ _Cloudflare Pipelines scalar function implementations are based on [Apache DataF
 
 Computes the binary hash of an expression using the specified algorithm.
 
-```
+```plaintext
 digest(expression, algorithm)
 ```
 
@@ -39,7 +39,7 @@ digest(expression, algorithm)
 
 Computes an MD5 128-bit checksum for a string expression.
 
-```
+```plaintext
 md5(expression)
 ```
 
@@ -51,7 +51,7 @@ md5(expression)
 
 Computes the SHA-224 hash of a binary string.
 
-```
+```plaintext
 sha224(expression)
 ```
 
@@ -63,7 +63,7 @@ sha224(expression)
 
 Computes the SHA-256 hash of a binary string.
 
-```
+```plaintext
 sha256(expression)
 ```
 
@@ -75,7 +75,7 @@ sha256(expression)
 
 Computes the SHA-384 hash of a binary string.
 
-```
+```plaintext
 sha384(expression)
 ```
 
@@ -87,7 +87,7 @@ sha384(expression)
 
 Computes the SHA-512 hash of a binary string.
 
-```
+```plaintext
 sha512(expression)
 ```
 

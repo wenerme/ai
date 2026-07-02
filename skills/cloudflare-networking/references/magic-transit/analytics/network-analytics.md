@@ -41,7 +41,7 @@ For instructions, refer to [Access tunnel traffic analytics](#access-tunnel-traf
 2. (Optional) Hover over a traffic type. You can then filter for that traffic or exclude it from the results.
 3. To adjust the scope of information, scroll to **All traffic** \> **Add filter**.
 4. In the **New filter** popover, select the data type from the left drop-down menu, an operator from the middle drop-down menu, and an action from the right drop-down menu. For example:
-```
+```txt
 <DESTINATION_TUNNELS> | _equals_ | <NAME_OF_YOUR_TUNNEL>
 ```
 This lets you examine traffic from specific Source tunnels and/or Destination tunnels.

@@ -32,20 +32,31 @@ Note
 
 Clipped videos will not inherit the `scheduledDeletion` date. To set the deletion date, you must clip the video first and then set the deletion date.
 
-Required parameters
+**Required parameters**
 
-```
-{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 20,  "endTimeSeconds": 40}
+```json
+{
+  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
+  "startTimeSeconds": 20,
+  "endTimeSeconds": 40
+}
 ```
 
 * **`clippedFromVideoUID`**: The unique identifier for the video used to create the new, clipped video.
 * **`startTimeSeconds`**: The timestamp from the existing video that indicates when the new video begins.
 * **`endTimeSeconds`**: The timestamp from the existing video that indicates when the new video ends.
 
-Example: Clip a video
+**Example: Clip a video**
 
-```
-curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUNT_ID_HERE>/stream/clip' \--header 'Authorization: Bearer <YOUR_TOKEN_HERE>' \--header 'Content-Type: application/json' \--data-raw '{    "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",    "startTimeSeconds": 10,    "endTimeSeconds": 15    }'
+```bash
+curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUNT_ID_HERE>/stream/clip' \
+--header 'Authorization: Bearer <YOUR_TOKEN_HERE>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
+    "startTimeSeconds": 10,
+    "endTimeSeconds": 15
+    }'
 ```
 
 You can check whether your video is ready to play on the **Stream** page of the Cloudflare dashboard.
@@ -60,10 +71,17 @@ To receive a notification when your video is done processing and ready to play, 
 
 When you clip a video, you can also specify a new name for the clipped video. In the example below, the `name` field indicates the new name to use for the clipped video.
 
-Example: Specify a custom name
+**Example: Specify a custom name**
 
-```
-{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "meta": {    "name": "overriding-filename-clip.mp4"  }}
+```json
+{
+  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
+  "startTimeSeconds": 10,
+  "endTimeSeconds": 15,
+  "meta": {
+    "name": "overriding-filename-clip.mp4"
+  }
+}
 ```
 
 When the video has been clipped and processed, your newly named video displays in your Cloudflare dashboard in the list videos.
@@ -72,20 +90,38 @@ When the video has been clipped and processed, your newly named video displays i
 
 You can also add a custom watermark to your video. For more information on watermarks and uploading a watermark profile, refer to [Apply watermarks](https://developers.cloudflare.com/stream/edit-videos/applying-watermarks).
 
-Example: Clip a video, set a new video name, and apply a watermark
+**Example: Clip a video, set a new video name, and apply a watermark**
 
-```
-{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "watermark": {    "uid": "4babd675387c3d927f58c41c761978fe"  },  "meta": {    "name": "overriding-filename-clip.mp4"  }}
+```json
+{
+  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
+  "startTimeSeconds": 10,
+  "endTimeSeconds": 15,
+  "watermark": {
+    "uid": "4babd675387c3d927f58c41c761978fe"
+  },
+  "meta": {
+    "name": "overriding-filename-clip.mp4"
+  }
+}
 ```
 
 ## Require signed URLs
 
 When clipping a video, you can make a video private and accessible only to certain users by [requiring a signed URL](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/).
 
-Example: Clip a video and require signed URLs
+**Example: Clip a video and require signed URLs**
 
-```
-{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "requireSignedURLs": true,  "meta": {    "name": "signed-urls-demo.mp4"  }}
+```json
+{
+  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
+  "startTimeSeconds": 10,
+  "endTimeSeconds": 15,
+  "requireSignedURLs": true,
+  "meta": {
+    "name": "signed-urls-demo.mp4"
+  }
+}
 ```
 
 After the video clipping is complete, you can open the Cloudflare dashboard and video list to locate your video. When you select the video, the **Settings** tab displays a checkmark next to **Require Signed URLs**.
@@ -94,10 +130,18 @@ After the video clipping is complete, you can open the Cloudflare dashboard and 
 
 You can also specify a thumbnail image for your video using a percentage value. To convert the thumbnail's timestamp from seconds to a percentage, divide the timestamp you want to use by the total duration of the video. For more information about thumbnails, refer to [Display thumbnails](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails).
 
-Example: Clip a video with a thumbnail generated at the 50% mark
+**Example: Clip a video with a thumbnail generated at the 50% mark**
 
-```
-{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "thumbnailTimestampPct": 0.5,  "meta": {    "name": "thumbnail_percentage.mp4"  }}
+```json
+{
+  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
+  "startTimeSeconds": 10,
+  "endTimeSeconds": 15,
+  "thumbnailTimestampPct": 0.5,
+  "meta": {
+    "name": "thumbnail_percentage.mp4"
+  }
+}
 ```
 
 ```json

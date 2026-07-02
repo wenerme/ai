@@ -78,7 +78,7 @@ Before sending any requests, you need to first set up your account with Cloudfla
 
 Then, make sure you are forwarding requests to a mutually agreed URL with the following conventions.
 
-```
+```txt
 https://privacy-relay.cloudflare.com/<GATEWAY_SERVER_NAME>
 ```
 

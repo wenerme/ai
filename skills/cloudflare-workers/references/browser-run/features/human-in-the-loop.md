@@ -29,18 +29,56 @@ A more structured handoff flow where the agent can signal that it needs help and
 
 This example uses [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) connected to Browser Run via the [CDP](https://developers.cloudflare.com/browser-run/cdp/) endpoints. The script navigates to a login page, shares a Live View URL for a human to enter credentials, then continues the automation after login completes.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import puppeteer from "puppeteer-core";
-const ACCOUNT_ID = "<your-account-id>";const API_TOKEN = "<your-api-token>";
-// Create a browser session via CDPconst response = await fetch(  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000&targets=true`,  {    method: "POST",    headers: { Authorization: `Bearer ${API_TOKEN}` },  },);const { webSocketDebuggerUrl, targets } = await response.json();const liveUrl = targets[0].devtoolsFrontendUrl;
-// Connect Puppeteer to the sessionconst browser = await puppeteer.connect({  browserWSEndpoint: webSocketDebuggerUrl,  headers: { Authorization: `Bearer ${API_TOKEN}` },});
-const page = await browser.newPage();await page.goto("https://example.com/login");
-// Share the Live View URL with the human operator (for example, send it via Slack, email, or display it in a UI)console.log(`Human input needed. Open this URL: ${liveUrl}`);
-// Wait for the human to complete login (5 minute timeout — the script will continue after this period)await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 300000 });
-// Login complete, continue automationconst cookies = await page.cookies();console.log("Login complete. Continuing automation...");
-await page.goto("https://example.com/dashboard");const content = await page.content();
+
+
+const ACCOUNT_ID = "<your-account-id>";
+const API_TOKEN = "<your-api-token>";
+
+
+// Create a browser session via CDP
+const response = await fetch(
+  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000&targets=true`,
+  {
+    method: "POST",
+    headers: { Authorization: `Bearer ${API_TOKEN}` },
+  },
+);
+const { webSocketDebuggerUrl, targets } = await response.json();
+const liveUrl = targets[0].devtoolsFrontendUrl;
+
+
+// Connect Puppeteer to the session
+const browser = await puppeteer.connect({
+  browserWSEndpoint: webSocketDebuggerUrl,
+  headers: { Authorization: `Bearer ${API_TOKEN}` },
+});
+
+
+const page = await browser.newPage();
+await page.goto("https://example.com/login");
+
+
+// Share the Live View URL with the human operator (for example, send it via Slack, email, or display it in a UI)
+console.log(`Human input needed. Open this URL: ${liveUrl}`);
+
+
+// Wait for the human to complete login (5 minute timeout — the script will continue after this period)
+await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 300000 });
+
+
+// Login complete, continue automation
+const cookies = await page.cookies();
+console.log("Login complete. Continuing automation...");
+
+
+await page.goto("https://example.com/dashboard");
+const content = await page.content();
+
+
 browser.disconnect();
 ```
 

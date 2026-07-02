@@ -24,16 +24,27 @@ If you have audio files stored in a cloud storage bucket, you can simply pass a 
 
 `label` is required and must uniquely identify the track amongst other audio track labels for the specified video.
 
-Terminal window
-
+```bash
+curl -X POST \
+ -H 'Authorization: Bearer <API_TOKEN>' \
+ -d '{"url": "https://www.examplestorage.com/audio_file.mp3", "label": "Example Audio Label"}' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/copy
 ```
-curl -X POST \ -H 'Authorization: Bearer <API_TOKEN>' \ -d '{"url": "https://www.examplestorage.com/audio_file.mp3", "label": "Example Audio Label"}' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/copy
-```
 
-Example response to add additional audio tracks
+**Example response to add additional audio tracks**
 
-```
-{ "result": {   "uid": "<AUDIO_UID>",   "label": "Example Audio Label",   "default": false   "status": "queued" }, "success": true, "errors": [], "messages": []}
+```json
+{
+ "result": {
+   "uid": "<AUDIO_UID>",
+   "label": "Example Audio Label",
+   "default": false
+   "status": "queued"
+ },
+ "success": true,
+ "errors": [],
+ "messages": []
+}
 ```
 
 The `uid` uniquely identifies the audio track and can be used for editing or deleting the audio track. Please see instructions below on how to perform these operations.
@@ -52,32 +63,64 @@ The form input `label` is required and must uniquely identify the track amongst 
 
 Note that cURL `-F` flag automatically configures the content-type header and maps `audio_file.mp3` to a form input called `file`.
 
-Terminal window
-
+```bash
+curl -X POST \
+ -H 'Authorization: Bearer <API_TOKEN>' \
+ -F file=@/Desktop/audio_file.mp3 \
+ -F label='Example Audio Label' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
 ```
-curl -X POST \ -H 'Authorization: Bearer <API_TOKEN>' \ -F file=@/Desktop/audio_file.mp3 \ -F label='Example Audio Label' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
-```
 
-Example response to add Additional audio tracks
+**Example response to add Additional audio tracks**
 
-```
-{ "result": {   "uid": "<AUDIO_UID>",   "label": "Example Audio Label",   "default": false   "status": "queued" }, "success": true, "errors": [], "messages": []}
+```json
+{
+ "result": {
+   "uid": "<AUDIO_UID>",
+   "label": "Example Audio Label",
+   "default": false
+   "status": "queued"
+ },
+ "success": true,
+ "errors": [],
+ "messages": []
+}
 ```
 
 ## List the additional audio tracks on a video
 
 To view additional audio tracks added to a video:
 
-Terminal window
-
+```bash
+curl \
+ -H 'Authorization: Bearer <API_TOKEN>' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
 ```
-curl \ -H 'Authorization: Bearer <API_TOKEN>' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
-```
 
-Example response to get the audio tracks associated with a video
+**Example response to get the audio tracks associated with a video**
 
-```
-{  "result": {    "audio": [      {        "uid": "<AUDIO_UID>",        "label": "Example Audio Label",        "default": false,        "status": "ready"      },      {        "uid": "<AUDIO_UID>",        "label": "Another Audio Label",        "default": false,        "status": "ready"      }    ]  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "audio": [
+      {
+        "uid": "<AUDIO_UID>",
+        "label": "Example Audio Label",
+        "default": false,
+        "status": "ready"
+      },
+      {
+        "uid": "<AUDIO_UID>",
+        "label": "Another Audio Label",
+        "default": false,
+        "status": "ready"
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Note this API will not return information for audio attached to the video upload.
@@ -86,38 +129,54 @@ Note this API will not return information for audio attached to the video upload
 
 To edit the `default` status or `label` of an additional audio track:
 
-Terminal window
-
-```
-curl -X PATCH \ -H 'Authorization: Bearer <API_TOKEN>' \ -d '{"label": "Edited Audio Label", "default": true}' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/<AUDIO_UID>
+```bash
+curl -X PATCH \
+ -H 'Authorization: Bearer <API_TOKEN>' \
+ -d '{"label": "Edited Audio Label", "default": true}' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/<AUDIO_UID>
 ```
 
 Editing the `default` status of an audio track to `true` will mark all other audio tracks on the video `default` status to `false`.
 
-Example response to edit the audio tracks associated with a video
+**Example response to edit the audio tracks associated with a video**
 
-```
-{  "result": {    "uid": "<AUDIO_UID>",    "label": "Edited Audio Label",    "default": true    "status": "ready"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "uid": "<AUDIO_UID>",
+    "label": "Edited Audio Label",
+    "default": true
+    "status": "ready"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Delete an additional audio track
 
 To remove an additional audio track associated with your video:
 
-Terminal window
-
-```
-curl -X DELETE \ -H 'Authorization: Bearer <API_TOKEN>' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/<AUDIO_UID>
+```bash
+curl -X DELETE \
+ -H 'Authorization: Bearer <API_TOKEN>' \
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/<AUDIO_UID>
 ```
 
 Deleting a `default` audio track is not allowed. You must assign another audio track as `default` prior to deletion.
 
 If there is an entry in `errors` response field, the audio track has not been deleted.
 
-Example response to delete an audio track
+**Example response to delete an audio track**
 
-```
-{  "result": "ok",  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": "ok",
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

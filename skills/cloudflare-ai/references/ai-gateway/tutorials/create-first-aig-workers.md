@@ -23,8 +23,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-6684)
-* [ API ](#tab-panel-6685)
+* [ Dashboard ](#tab-panel-6884)
+* [ API ](#tab-panel-6885)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -52,16 +52,22 @@ To set up an AI Gateway using the API:
 1. Go to **AI** \> **Workers AI** in the Cloudflare dashboard.
 2. Select **Use REST API** and follow the steps to create and copy the API token and Account ID.
 3. Send a request using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Replace `$CLOUDFLARE_ACCOUNT_ID` and `$CLOUDFLARE_API_TOKEN` with your actual account ID and API token:
-Terminal window
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "cf-aig-gateway-id: default" \  --header "Content-Type: application/json" \  --data '{    "model": "@cf/moonshotai/kimi-k2.6",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "cf-aig-gateway-id: default" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "@cf/moonshotai/kimi-k2.6",
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
+  }'
 ```
 
 The expected output would be similar to :
 
-Terminal window
-
-```
+```bash
 {"result":{"response":"I'd be happy to explain what Cloudflare is.\n\nCloudflare is a cloud-based service that provides a range of features to help protect and improve the performance, security, and reliability of websites, applications, and other online services. Think of it as a shield for your online presence!\n\nHere are some of the key things Cloudflare does:\n\n1. **Content Delivery Network (CDN)**: Cloudflare has a network of servers all over the world. When you visit a website that uses Cloudflare, your request is sent to the nearest server, which caches a copy of the website's content. This reduces the time it takes for the content to load, making your browsing experience faster.\n2. **DDoS Protection**: Cloudflare protects against Distributed Denial-of-Service (DDoS) attacks. This happens when a website is overwhelmed with traffic from multiple sources to make it unavailable. Cloudflare filters out this traffic, ensuring your site remains accessible.\n3. **Firewall**: Cloudflare acts as an additional layer of security, filtering out malicious traffic and hacking attempts, such as SQL injection or cross-site scripting (XSS) attacks.\n4. **SSL Encryption**: Cloudflare offers free SSL encryption, which secure sensitive information (like passwords, credit card numbers, and browsing data) with an HTTPS connection (the \"S\" stands for Secure).\n5. **Bot Protection**: Cloudflare has an AI-driven system that identifies and blocks bots trying to exploit vulnerabilities or scrape your content.\n6. **Analytics**: Cloudflare provides insights into website traffic, helping you understand your audience and make informed decisions.\n7. **Cybersecurity**: Cloudflare offers advanced security features, such as intrusion protection, DNS filtering, and Web Application Firewall (WAF) protection.\n\nOverall, Cloudflare helps protect against cyber threats, improves website performance, and enhances security for online businesses, bloggers, and individuals who need to establish a strong online presence.\n\nWould you like to know more about a specific aspect of Cloudflare?"},"success":true,"errors":[],"messages":[]}%
 ```
 

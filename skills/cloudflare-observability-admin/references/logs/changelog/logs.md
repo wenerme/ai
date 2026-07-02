@@ -14,6 +14,21 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/logs.xml)
 
+## 2026-06-30
+
+
+**Account-scoped firewall events dataset in Logpush**
+
+Cloudflare Logpush now supports [firewall events as an account-scoped dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall%5Fevents/). Configure a single Logpush job at the account level to receive firewall events for every zone in the account, instead of creating and maintaining a separate job per zone.
+
+The dataset includes a new [ZoneName](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall%5Fevents/#zonename) field so you can identify which zone each event came from when consuming logs in your downstream pipeline.
+
+#### What's available
+
+* A new account-scoped `firewall_events` dataset, configurable via the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/) or the Cloudflare dashboard.
+* The same fields and filter expressions supported by the existing [zone-scoped firewall events dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/), plus the new `ZoneName` field.
+* Support for all existing Logpush destinations.
+
 ## 2026-06-24
 
 
@@ -113,8 +128,16 @@ With this release, you can now send your logs directly to [Pipelines](https://de
 
 Pipelines SQL runs on each log record in-flight, so you can reshape your data before it is written. For example, you can drop noisy fields, redact sensitive values, or derive new columns:
 
-```
-INSERT INTO http_logs_sinkSELECT  ClientIP,  EdgeResponseStatus,  to_timestamp_micros(EdgeStartTimestamp) AS event_time,  upper(ClientRequestMethod) AS method,  sha256(ClientIP) AS hashed_ipFROM http_logs_streamWHERE EdgeResponseStatus >= 400;
+```sql
+INSERT INTO http_logs_sink
+SELECT
+  ClientIP,
+  EdgeResponseStatus,
+  to_timestamp_micros(EdgeStartTimestamp) AS event_time,
+  upper(ClientRequestMethod) AS method,
+  sha256(ClientIP) AS hashed_ip
+FROM http_logs_stream
+WHERE EdgeResponseStatus >= 400;
 ```
 
 Pipelines SQL supports string functions, regex, hashing, JSON extraction, timestamp conversion, conditional expressions, and more. For the full list, refer to the [Pipelines SQL reference](https://developers.cloudflare.com/pipelines/sql-reference/).

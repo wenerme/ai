@@ -34,20 +34,17 @@ The new replica will appear on the tunnel overview page. All replicas serve the 
 
 1. To create a locally-managed tunnel, complete Steps 1 through 5 in the [CLI setup guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/).
 2. Run your newly created tunnel.
-Terminal window
-```
+```sh
 cloudflared tunnel run <NAME>
 ```
 This will start a `cloudflared` instance and generate a unique `connector_id`.
 3. In a separate window or on another host, run the same command again:
-Terminal window
-```
+```sh
 cloudflared tunnel run <NAME>
 ```
 This will initialize another `cloudflared` instance and generate another `connector_id`.
 4. Run `tunnel info` to show each `cloudflared` instance running your tunnel:
-Terminal window
-```
+```sh
 cloudflared tunnel info <NAME>
 ```
 

@@ -220,9 +220,7 @@ If you are using Windows, you can find more details on how to use curl on Window
 
 Run the following command to send a standard HTTP GET request to your website (replace `www.example.com` with your hostname):
 
-Terminal window
-
-```
+```bash
 curl -svo /dev/null http://www.example.com/
 ```
 
@@ -238,9 +236,7 @@ View the sections below for tips on troubleshooting HTTP errors, performance, ca
 
 When troubleshooting HTTP errors in responses from Cloudflare, test whether your origin caused the errors by sending requests directly to your origin web server. To troubleshoot HTTP errors, run a curl directly to your origin web server IP address (bypassing Cloudflare’s proxy):
 
-Terminal window
-
-```
+```bash
 curl -svo /dev/null http://example.com --connect-to ::203.0.113.34
 ```
 
@@ -252,10 +248,24 @@ If you have multiple origin web servers, test each one to ensure there are no re
 
 curl measures latency or performance degradation for HTTP/HTTPS requests via the [\-w or \--write-out curl option ↗](https://curl.haxx.se/docs/manpage.html#-w). The example curl below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:
 
-Terminal window
-
-```
-curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \\nHTTP Code: %{http_code} \\nHTTP Connect:%{http_connect} \\nNumber Connects: %{num_connects} \\nNumber Redirects: %{num_redirects} \\nRedirect URL: %{redirect_url} \\nSize Download: %{size_download} \\nSize Upload: %{size_upload} \\nSSL Verify: %{ssl_verify_result} \\nTime Handshake: %{time_appconnect} \\nTime Connect: %{time_connect} \\nName Lookup Time: %{time_namelookup} \\nTime Pretransfer: %{time_pretransfer} \\nTime Redirect: %{time_redirect} \\nTime Start Transfer: %{time_starttransfer} \\nTime Total: %{time_total} \\nEffective URL: %{url_effective}\n" 2>&1
+```bash
+curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
+\nHTTP Code: %{http_code} \
+\nHTTP Connect:%{http_connect} \
+\nNumber Connects: %{num_connects} \
+\nNumber Redirects: %{num_redirects} \
+\nRedirect URL: %{redirect_url} \
+\nSize Download: %{size_download} \
+\nSize Upload: %{size_upload} \
+\nSSL Verify: %{ssl_verify_result} \
+\nTime Handshake: %{time_appconnect} \
+\nTime Connect: %{time_connect} \
+\nName Lookup Time: %{time_namelookup} \
+\nTime Pretransfer: %{time_pretransfer} \
+\nTime Redirect: %{time_redirect} \
+\nTime Start Transfer: %{time_starttransfer} \
+\nTime Total: %{time_total} \
+\nEffective URL: %{url_effective}\n" 2>&1
 ```
 
 [Explanation of this timing output ↗](https://blog.cloudflare.com/a-question-of-timing/) is found on the Cloudflare blog.
@@ -284,9 +294,7 @@ You can refer to the [Cloudflare Cache documentation](https://developers.cloudfl
 
 The following curl command shows the SSL certificate served by Cloudflare during an HTTPS request (replace `www.example.com` with your hostname):
 
-Terminal window
-
-```
+```sh
 curl -svo /dev/null https://www.example.com/ 2>&1 | egrep -v "^{.*$|^}.*$|^* http.*$"
 ```
 
@@ -296,9 +304,7 @@ Note
 
 To display the origin certificate (assuming one is installed), replace `203.0.113.34` below with the actual IP address of your origin web server and replace `www.example.com` with your domain and hostname:
 
-Terminal window
-
-```
+```sh
 curl -svo /dev/null https://www.example.com --connect-to ::203.0.113.34 2>&1 | egrep -v "^{.*$|^}.*$|^* http.*$"
 ```
 
@@ -348,17 +354,13 @@ Review the instructions below for running traceroute on different operating syst
 
 For IPv4 -
 
-Terminal window
-
-```
+```sh
 tracert www.example.com
 ```
 
 For IPv6 -
 
-Terminal window
-
-```
+```sh
 tracert -6 www.example.com
 ```
 
@@ -372,17 +374,13 @@ tracert -6 www.example.com
 
 For IPv4 -
 
-Terminal window
-
-```
+```sh
 traceroute www.example.com
 ```
 
 For IPv6 -
 
-Terminal window
-
-```
+```sh
 traceroute -6 www.example.com
 ```
 
@@ -407,14 +405,17 @@ The **CF-RAY** header traces a website request through Cloudflare's network. Pro
 
 #### For Apache web servers, add `%{CF-Ray}i` to LogFormat
 
-```
+```plaintext
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %{CF-Ray}i" cf_custom
 ```
 
 #### For Nginx web servers, add '$http\_cf\_ray' to log\_format
 
-```
-log_format cf_custom '$remote_addr - $remote_user [$time_local] ''"$request" $status $body_bytes_sent ''"$http_referer" "$http_user_agent" ''$http_cf_ray';
+```plaintext
+log_format cf_custom '$remote_addr - $remote_user [$time_local] '
+'"$request" $status $body_bytes_sent '
+'"$http_referer" "$http_user_agent" '
+'$http_cf_ray';
 ```
 
 ### Perform a MTR
@@ -439,25 +440,19 @@ For MacOS users, MTR can be installed through [homebrew ↗](https://formulae.br
 
 Generally, we'd use MTR as the following:
 
-Terminal window
-
-```
+```sh
 mtr -rw <dest_hostname> e.g.: mtr -rw one.one.one.one
 ```
 
 or with destination IP:
 
-Terminal window
-
-```
+```sh
 mtr -rw <dest_IP> e.g.: mtr -rw 1.1.1.1
 ```
 
 with TCP port
 
-Terminal window
-
-```
+```sh
 mtr -P <tcp port> -T <destination ip>
 ```
 

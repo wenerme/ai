@@ -22,9 +22,9 @@ Workers currently only implements an identity transform stream, a type of transf
 
 ## Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let { readable, writable } = new TransformStream();
 ```
 
@@ -49,9 +49,9 @@ The `IdentityTransformStream` readable side supports [bring your own buffer (BYO
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let { readable, writable } = new IdentityTransformStream();
 ```
 
@@ -74,9 +74,9 @@ The `FixedLengthStream` is a specialization of `IdentityTransformStream` that li
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let { readable, writable } = new FixedLengthStream(1000);
 ```
 

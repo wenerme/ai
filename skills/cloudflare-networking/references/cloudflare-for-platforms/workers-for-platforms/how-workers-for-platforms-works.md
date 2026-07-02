@@ -43,11 +43,20 @@ A dynamic dispatch Worker is the entry point for all requests to your platform. 
 
 The dynamic dispatch Worker uses a [dispatch namespace binding](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) to invoke user Workers:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // Determine which customer Worker to call    const customerName = new URL(request.url).hostname.split(".")[0];
-    // Get and invoke the customer's Worker    const userWorker = env.DISPATCHER.get(customerName);    return userWorker.fetch(request);  },};
+```js
+export default {
+  async fetch(request, env) {
+    // Determine which customer Worker to call
+    const customerName = new URL(request.url).hostname.split(".")[0];
+
+
+    // Get and invoke the customer's Worker
+    const userWorker = env.DISPATCHER.get(customerName);
+    return userWorker.fetch(request);
+  },
+};
 ```
 
 ### User Workers

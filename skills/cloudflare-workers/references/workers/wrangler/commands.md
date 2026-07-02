@@ -42,7 +42,7 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 
 ## How to run Wrangler commands
 
-```
+```txt
 wrangler <COMMAND> <SUBCOMMAND> [PARAMETERS] [OPTIONS]
 ```
 
@@ -64,8 +64,15 @@ pnpm wrangler <COMMAND> <SUBCOMMAND> [PARAMETERS] [OPTIONS]
 
 You can add Wrangler commands that you use often as scripts in your project's `package.json` file:
 
-```
-{  ...  "scripts": {    "deploy": "wrangler deploy",    "dev": "wrangler dev"  }  ...}
+```json
+{
+  ...
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  }
+  ...
+}
 ```
 
 You can then run them using your package manager of choice:

@@ -27,24 +27,23 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-7346)
-* [ macOS ](#tab-panel-7347)
-* [ Linux ](#tab-panel-7348)
-* [ Build from source ](#tab-panel-7349)
+* [ Windows ](#tab-panel-7596)
+* [ macOS ](#tab-panel-7597)
+* [ Linux ](#tab-panel-7598)
+* [ Build from source ](#tab-panel-7599)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`
 3. In PowerShell, change directory to your Downloads folder and run `.\cloudflared.exe --version`. It should output the version of `cloudflared`. Note that `cloudflared.exe` could be `cloudflared-windows-amd64.exe` or `cloudflared-windows-386.exe` if you have not renamed it.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 PS C:\Users\Administrator\Downloads\cloudflared-stable-windows-amd64> .\cloudflared.exe --version
 ```
 
 To download and install `cloudflared`:
 
-Terminal window
-
-```
+```sh
 brew install cloudflared
 ```
 
@@ -56,25 +55,20 @@ Use the apt package manager to install `cloudflared` on compatible machines.
 
 1. Add Cloudflare's package signing key:
 
-Terminal window
-
-```
-sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+```sh
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 ```
 
 1. Add Cloudflare's apt repo to your apt repositories:
 
-Terminal window
-
-```
+```sh
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
 ```
 
 1. Update repositories and install cloudflared:
 
-Terminal window
-
-```
+```sh
 sudo apt-get update && sudo apt-get install cloudflared
 ```
 
@@ -83,13 +77,11 @@ sudo apt-get update && sudo apt-get install cloudflared
 Use the rpm package manager to install `cloudflared` on compatible machines.
 
 1. Add Cloudflare's repository:
-Terminal window
-```
+```sh
 curl -fsSl https://pkg.cloudflare.com/cloudflared.repo | sudo tee /etc/yum.repos.d/cloudflared.repo
 ```
 2. Update repositories and install cloudflared:
-Terminal window
-```
+```sh
 sudo yum update && sudo yum install cloudflared
 ```
 
@@ -97,9 +89,7 @@ sudo yum update && sudo yum install cloudflared
 
 `cloudflared` is in the Arch Linux [community repository ↗](https://wiki.archlinux.org/title/official%5Frepositories#community). Use `pacman` to install `cloudflared` on compatible machines.
 
-Terminal window
-
-```
+```sh
 pacman -Syu cloudflared
 ```
 
@@ -109,25 +99,22 @@ Alternatively you can download the `cloudflared` binary or the linux packages to
 
 To build the latest version of `cloudflared` from source:
 
-Terminal window
-
-```
-git clone https://github.com/cloudflare/cloudflared.gitcd cloudflaredmake cloudflaredgo install github.com/cloudflare/cloudflared/cmd/cloudflared
+```sh
+git clone https://github.com/cloudflare/cloudflared.git
+cd cloudflared
+make cloudflared
+go install github.com/cloudflare/cloudflared/cmd/cloudflared
 ```
 
 Depending on where you installed `cloudflared`, you can move it to a known path as well.
 
-Terminal window
-
-```
+```sh
 mv /root/cloudflared/cloudflared /usr/bin/cloudflared
 ```
 
 ## 2\. Authenticate `cloudflared`
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel login
 ```
 
@@ -138,9 +125,7 @@ Running this command will:
 
 ## 3\. Create a tunnel and give it a name
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel create <NAME>
 ```
 
@@ -154,9 +139,7 @@ From the output of the command, take note of the tunnel's UUID and the path to y
 
 Confirm that the tunnel has been successfully created by running:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel list
 ```
 
@@ -165,16 +148,20 @@ cloudflared tunnel list
 1. In your `.cloudflared` directory, create a [config.yml file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/) using any text editor. This file will configure the tunnel to route traffic from a given origin to the hostname of your choice.
 2. Add the following fields to the file:
 If you are connecting a [published application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/):
-```
-url: http://localhost:8000tunnel: <Tunnel-UUID>credentials-file: /root/.cloudflared/<Tunnel-UUID>.json
+```yml
+url: http://localhost:8000
+tunnel: <Tunnel-UUID>
+credentials-file: /root/.cloudflared/<Tunnel-UUID>.json
 ```
 If you are connecting a [private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/):
-```
-tunnel: <Tunnel-UUID>credentials-file: /root/.cloudflared/<Tunnel-UUID>.jsonwarp-routing:  enabled: true
+```yml
+tunnel: <Tunnel-UUID>
+credentials-file: /root/.cloudflared/<Tunnel-UUID>.json
+warp-routing:
+  enabled: true
 ```
 3. Confirm that the configuration file has been successfully created by running:
-Terminal window
-```
+```sh
 cat config.yml
 ```
 
@@ -182,9 +169,7 @@ cat config.yml
 
 1\. To route a [published application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) through the tunnel:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel route dns <UUID or NAME> <hostname>
 ```
 
@@ -192,17 +177,13 @@ This command will create a `CNAME` record pointing to `<UUID>.cfargotunnel.com`.
 
 2\. If you are connecting a private network, route a private IP address or CIDR through the tunnel:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel route ip add <IP/CIDR> <UUID or NAME>
 ```
 
 3\. Confirm that the route has been successfully established:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel route ip show
 ```
 
@@ -210,17 +191,13 @@ cloudflared tunnel route ip show
 
 Run the tunnel to proxy incoming traffic from the tunnel to any number of services running locally on your origin.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel run <UUID or NAME>
 ```
 
 If your configuration file has a custom name or is not in the `.cloudflared` directory, add the `--config` flag and specify the path.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel --config /path/your-config-file.yml run <UUID or NAME>
 ```
 
@@ -232,9 +209,7 @@ Cloudflare Tunnel can install itself as a system service on Linux and Windows an
 
 To get information on the tunnel you just created, run:
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel info <UUID or NAME>
 ```
 

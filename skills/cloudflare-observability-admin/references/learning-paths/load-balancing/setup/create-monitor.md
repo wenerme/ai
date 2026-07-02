@@ -16,8 +16,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-9193)
-* [ API ](#tab-panel-9194)
+* [ Dashboard ](#tab-panel-9484)
+* [ API ](#tab-panel-9485)
 
 **Set up the monitor**
 
@@ -80,18 +80,77 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Create Monitor
+**Create Monitor**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "https",    "description": "Login page monitor",    "method": "GET",    "path": "/health",    "header": {        "Host": [            "example.com"        ],        "X-App-ID": [            "abc123"        ]    },    "port": 8080,    "timeout": 3,    "retries": 0,    "interval": 90,    "expected_body": "alive",    "expected_codes": "2xx",    "follow_redirects": true,    "allow_insecure": true,    "consecutive_up": 3,    "consecutive_down": 2,    "probe_zone": "example.com"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "https",
+    "description": "Login page monitor",
+    "method": "GET",
+    "path": "/health",
+    "header": {
+        "Host": [
+            "example.com"
+        ],
+        "X-App-ID": [
+            "abc123"
+        ]
+    },
+    "port": 8080,
+    "timeout": 3,
+    "retries": 0,
+    "interval": 90,
+    "expected_body": "alive",
+    "expected_codes": "2xx",
+    "follow_redirects": true,
+    "allow_insecure": true,
+    "consecutive_up": 3,
+    "consecutive_down": 2,
+    "probe_zone": "example.com"
+  }'
 ```
 
 The response contains the complete definition of the new monitor.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": ":monitor-id",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "type": "https",    "description": "Login page monitor",    "method": "GET",    "path": "/health",    "header": {      "Host": [        "example.com"      ],      "X-App-ID": [        "abc123"      ]    },    "port": 8080,    "timeout": 3,    "retries": 0,    "interval": 90,    "expected_body": "alive",    "expected_codes": "2xx",    "follow_redirects": true,    "allow_insecure": true,    "consecutive_up": 3,    "consecutive_down": 2,    "probe_zone": "example.com"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": ":monitor-id",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "type": "https",
+    "description": "Login page monitor",
+    "method": "GET",
+    "path": "/health",
+    "header": {
+      "Host": [
+        "example.com"
+      ],
+      "X-App-ID": [
+        "abc123"
+      ]
+    },
+    "port": 8080,
+    "timeout": 3,
+    "retries": 0,
+    "interval": 90,
+    "expected_body": "alive",
+    "expected_codes": "2xx",
+    "follow_redirects": true,
+    "allow_insecure": true,
+    "consecutive_up": 3,
+    "consecutive_down": 2,
+    "probe_zone": "example.com"
+  }
+}
 ```
 
 **Prepare your servers**

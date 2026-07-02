@@ -18,25 +18,19 @@ Manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, rep
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-12305)
-* [  pnpm ](#tab-panel-12306)
-* [  yarn ](#tab-panel-12307)
+* [  npm ](#tab-panel-12600)
+* [  pnpm ](#tab-panel-12601)
+* [  yarn ](#tab-panel-12602)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts namespaces list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts namespaces list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts namespaces list
 ```
 
@@ -66,25 +60,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-12308)
-* [  pnpm ](#tab-panel-12309)
-* [  yarn ](#tab-panel-12310)
+* [  npm ](#tab-panel-12603)
+* [  pnpm ](#tab-panel-12604)
+* [  yarn ](#tab-panel-12605)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts namespaces get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts namespaces get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts namespaces get [NAME]
 ```
 
@@ -116,25 +104,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-12311)
-* [  pnpm ](#tab-panel-12312)
-* [  yarn ](#tab-panel-12313)
+* [  npm ](#tab-panel-12606)
+* [  pnpm ](#tab-panel-12607)
+* [  yarn ](#tab-panel-12608)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts repos create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts repos create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts repos create [NAME]
 ```
 
@@ -174,25 +156,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-12314)
-* [  pnpm ](#tab-panel-12315)
-* [  yarn ](#tab-panel-12316)
+* [  npm ](#tab-panel-12609)
+* [  pnpm ](#tab-panel-12610)
+* [  yarn ](#tab-panel-12611)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts repos list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts repos list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts repos list
 ```
 
@@ -224,25 +200,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-12317)
-* [  pnpm ](#tab-panel-12318)
-* [  yarn ](#tab-panel-12319)
+* [  npm ](#tab-panel-12612)
+* [  pnpm ](#tab-panel-12613)
+* [  yarn ](#tab-panel-12614)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts repos get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts repos get [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts repos get [NAME]
 ```
 
@@ -276,25 +246,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-12320)
-* [  pnpm ](#tab-panel-12321)
-* [  yarn ](#tab-panel-12322)
+* [  npm ](#tab-panel-12615)
+* [  pnpm ](#tab-panel-12616)
+* [  yarn ](#tab-panel-12617)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts repos delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts repos delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts repos delete [NAME]
 ```
 
@@ -330,25 +294,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-12323)
-* [  pnpm ](#tab-panel-12324)
-* [  yarn ](#tab-panel-12325)
+* [  npm ](#tab-panel-12618)
+* [  pnpm ](#tab-panel-12619)
+* [  yarn ](#tab-panel-12620)
 
-Terminal window
-
-```
+```sh
 npx wrangler artifacts repos issue-token [REPO]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler artifacts repos issue-token [REPO]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler artifacts repos issue-token [REPO]
 ```
 

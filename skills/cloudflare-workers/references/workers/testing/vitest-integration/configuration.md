@@ -16,11 +16,22 @@ The Workers Vitest integration provides additional configuration on top of Vites
 
 An example configuration would be:
 
-TypeScript
+**TypeScript**
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      wrangler: {        configPath: "./wrangler.jsonc",      },    }),  ],});
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      wrangler: {
+        configPath: "./wrangler.jsonc",
+      },
+    }),
+  ],
+});
 ```
 
 Warning
@@ -37,35 +48,85 @@ A Vite plugin that configures Vitest to use the Workers integration with the cor
 
 It also accepts an optionally-`async` function returning `options`.
 
-TypeScript
+**TypeScript**
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      // Refer to CloudflareTestOptions...    }),  ],});
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      // Refer to CloudflareTestOptions...
+    }),
+  ],
+});
 ```
 
 ### `buildPagesASSETSBinding(assetsPath)`
 
 Exported from `@cloudflare/vitest-pool-workers/config`. Creates a Pages ASSETS binding that serves files inside the `assetsPath`. This is required if you use `createPagesEventContext()` to test your **Pages Functions**. Refer to the [Pages recipe](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) for a full example.
 
-TypeScript
+**TypeScript**
 
-```
-import path from "node:path";import { buildPagesASSETSBinding } from "@cloudflare/vitest-pool-workers/config";import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest(async () => {      const assetsPath = path.join(__dirname, "public");
-      return {        miniflare: {          serviceBindings: {            ASSETS: await buildPagesASSETSBinding(assetsPath),          },        },      };    }),  ],});
+```ts
+import path from "node:path";
+import { buildPagesASSETSBinding } from "@cloudflare/vitest-pool-workers/config";
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest(async () => {
+      const assetsPath = path.join(__dirname, "public");
+
+
+      return {
+        miniflare: {
+          serviceBindings: {
+            ASSETS: await buildPagesASSETSBinding(assetsPath),
+          },
+        },
+      };
+    }),
+  ],
+});
 ```
 
 ### `readD1Migrations(migrationsPath)`
 
 Exported from `@cloudflare/vitest-pool-workers/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [applyD1Migrations()](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/d1) for an example project using migrations.
 
-TypeScript
+**TypeScript**
 
-```
-import path from "node:path";import { readD1Migrations } from "@cloudflare/vitest-pool-workers/config";import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest(async () => {      const migrationsPath = path.join(__dirname, "migrations");      const migrations = await readD1Migrations(migrationsPath);
-      return {        miniflare: {          // Add a test-only binding for migrations, so we can apply them in a setup file          bindings: { TEST_MIGRATIONS: migrations },        },      };    }),  ],  test: {    setupFiles: ["./test/apply-migrations.ts"],  },});
+```ts
+import path from "node:path";
+import { readD1Migrations } from "@cloudflare/vitest-pool-workers/config";
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest(async () => {
+      const migrationsPath = path.join(__dirname, "migrations");
+      const migrations = await readD1Migrations(migrationsPath);
+
+
+      return {
+        miniflare: {
+          // Add a test-only binding for migrations, so we can apply them in a setup file
+          bindings: { TEST_MIGRATIONS: migrations },
+        },
+      };
+    }),
+  ],
+  test: {
+    setupFiles: ["./test/apply-migrations.ts"],
+  },
+});
 ```
 
 ## `CloudflareTestOptions`
@@ -99,23 +160,60 @@ You can pass an `async` function to `cloudflareTest()` that receives an `inject`
 
 Illustrative example
 
-TypeScript
+**TypeScript**
 
-```
-// env.d.tsdeclare module "vitest" {  interface ProvidedContext {    port: number;  }}
-// global-setup.tsimport type { GlobalSetupContext } from "vitest/node";export default function ({ provide }: GlobalSetupContext) {  // Runs inside Node.js, could start server here...  provide("port", 1337);  return () => {    /* ...then teardown here */  };}
-// vitest.config.tsimport { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest(({ inject }) => ({      miniflare: {        hyperdrives: {          DATABASE: `postgres://user:pass@example.com:${inject("port")}/db`,        },      },    })),  ],  test: {    globalSetup: ["./global-setup.ts"],  },});
+```ts
+// env.d.ts
+declare module "vitest" {
+  interface ProvidedContext {
+    port: number;
+  }
+}
+
+
+// global-setup.ts
+import type { GlobalSetupContext } from "vitest/node";
+export default function ({ provide }: GlobalSetupContext) {
+  // Runs inside Node.js, could start server here...
+  provide("port", 1337);
+  return () => {
+    /* ...then teardown here */
+  };
+}
+
+
+// vitest.config.ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest(({ inject }) => ({
+      miniflare: {
+        hyperdrives: {
+          DATABASE: `postgres://user:pass@example.com:${inject("port")}/db`,
+        },
+      },
+    })),
+  ],
+  test: {
+    globalSetup: ["./global-setup.ts"],
+  },
+});
 ```
 
 ## `SourcelessWorkerOptions`
 
 Sourceless `WorkerOptions` type without `script`, `scriptPath`, or `modules` properties. Refer to the Miniflare [WorkerOptions ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) type for more details.
 
-TypeScript
+**TypeScript**
 
-```
-type SourcelessWorkerOptions = Omit<  WorkerOptions,  "script" | "scriptPath" | "modules" | "modulesRoot">;
+```ts
+type SourcelessWorkerOptions = Omit<
+  WorkerOptions,
+  "script" | "scriptPath" | "modules" | "modulesRoot"
+>;
 ```
 
 ```json

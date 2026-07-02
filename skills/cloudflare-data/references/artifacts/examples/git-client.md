@@ -29,15 +29,35 @@ Replace the placeholder values with your account ID, API token, and repo name. T
 
 The example below uses `jq` to extract fields from the JSON responses.
 
-Terminal window
+```bash
+# Set your account details
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+export ARTIFACTS_NAMESPACE="default"
+export ARTIFACTS_REPO="starter-repo"
+export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
-```
-# Set your account detailsexport ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export ARTIFACTS_NAMESPACE="default"export ARTIFACTS_REPO="starter-repo"export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
-# Fetch the repo's remote URLREPO_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN")
+
+# Fetch the repo's remote URL
+REPO_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN")
+
+
 ARTIFACTS_REMOTE=$(printf '%s' "$REPO_JSON" | jq -r '.result.remote')
-# Mint a short-lived read tokenTOKEN_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/tokens" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data "{\"repo\":\"$ARTIFACTS_REPO\",\"scope\":\"read\",\"ttl\":3600}")
+
+
+# Mint a short-lived read token
+TOKEN_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/tokens" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data "{\"repo\":\"$ARTIFACTS_REPO\",\"scope\":\"read\",\"ttl\":3600}")
+
+
 ARTIFACTS_TOKEN=$(printf '%s' "$TOKEN_JSON" | jq -r '.result.plaintext')
-# Clone the repogit -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
+
+
+# Clone the repo
+git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
 ```
 
 You now have a standard Git checkout in `./artifacts-clone`.
@@ -50,10 +70,11 @@ Treat `ARTIFACTS_TOKEN` as a secret. Keep it out of logs, and prefer `http.extra
 
 If you need a self-contained remote URL for a short-lived workflow, extract the token secret and build the authenticated remote only for that command:
 
-Terminal window
+```sh
+ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
+ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
 
-```
-ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
+
 git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 ```
 

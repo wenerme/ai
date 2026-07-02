@@ -28,31 +28,72 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5120)
-* [  Python ](#tab-panel-5121)
-* [  curl ](#tab-panel-5122)
+* [  TypeScript ](#tab-panel-5266)
+* [  Python ](#tab-panel-5267)
+* [  curl ](#tab-panel-5268)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    // Can be a string or array of strings]    const stories = [      "This is a story about an orange cloud",      "This is a story about a llama",      "This is a story about a hugging emoji",    ];
-    const embeddings = await env.AI.run(      "@cf/pfnet/plamo-embedding-1b",      {        text: stories,      }    );
-    return Response.json(embeddings);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    // Can be a string or array of strings]
+    const stories = [
+      "This is a story about an orange cloud",
+      "This is a story about a llama",
+      "This is a story about a hugging emoji",
+    ];
+
+
+    const embeddings = await env.AI.run(
+      "@cf/pfnet/plamo-embedding-1b",
+      {
+        text: stories,
+      }
+    );
+
+
+    return Response.json(embeddings);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
+```py
+import os
+import requests
 
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-stories = [  'This is a story about an orange cloud',  'This is a story about a llama',  'This is a story about a hugging emoji']
-response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/pfnet/plamo-embedding-1b",  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},  json={"text": stories})
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+stories = [
+  'This is a story about an orange cloud',
+  'This is a story about a llama',
+  'This is a story about a hugging emoji'
+]
+
+
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/pfnet/plamo-embedding-1b",
+  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+  json={"text": stories}
+)
+
+
 print(response.json())
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/pfnet/plamo-embedding-1b  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/pfnet/plamo-embedding-1b  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
 ```
 
 OpenAI compatible endpoints
@@ -61,8 +102,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-5123)
-* [ Output ](#tab-panel-5124)
+* [ Input ](#tab-panel-5269)
+* [ Output ](#tab-panel-5270)
 
 ▶text
 

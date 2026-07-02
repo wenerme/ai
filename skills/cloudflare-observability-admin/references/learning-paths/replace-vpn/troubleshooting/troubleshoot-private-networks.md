@@ -75,14 +75,12 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-9264)
-* [ Windows ](#tab-panel-9265)
+* [ macOS and Linux ](#tab-panel-9555)
+* [ Windows ](#tab-panel-9556)
 
 Open Terminal and run the following command:
 
-Terminal window
-
-```
+```sh
 telnet test.example.com 443
 ```
 
@@ -90,9 +88,9 @@ If `telnet` fails to open the connection, check your infrastructure for firewall
 
 Open PowerShell and run the following command:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 PS C:\Users\JohnDoe> Test-NetConnection test.example.com -port 443
 ```
 

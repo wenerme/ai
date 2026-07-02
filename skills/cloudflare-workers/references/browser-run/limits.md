@@ -104,26 +104,64 @@ When you make too many requests in a short period of time, Browser Run will resp
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ Quick Actions ](#tab-panel-6966)
-* [ Puppeteer ](#tab-panel-6967)
+* [ Quick Actions ](#tab-panel-7214)
+* [ Puppeteer ](#tab-panel-7215)
 
-JavaScript
+**JavaScript**
 
-```
-const response = await fetch('https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content', {    method: 'POST',    headers: {        'Content-Type': 'application/json',        'Authorization': 'Bearer <your-token>',    },    body: JSON.stringify({ url: 'https://example.com' })});
-if (response.status === 429) {const retryAfter = response.headers.get('Retry-After');console.log(`Rate limited. Waiting ${retryAfter} seconds...`);await new Promise(resolve => setTimeout(resolve, retryAfter \* 1000));
-    // Retry the request    const retryResponse = await fetch(/* same request as above */);
+```js
+const response = await fetch('https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer <your-token>',
+    },
+    body: JSON.stringify({ url: 'https://example.com' })
+});
+
+
+if (response.status === 429) {
+const retryAfter = response.headers.get('Retry-After');
+console.log(`Rate limited. Waiting ${retryAfter} seconds...`);
+await new Promise(resolve => setTimeout(resolve, retryAfter \* 1000));
+
+
+    // Retry the request
+    const retryResponse = await fetch(/* same request as above */);
+
+
 }
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import puppeteer from "@cloudflare/puppeteer";
-try {  const browser = await puppeteer.launch(env.MYBROWSER);
-  const page = await browser.newPage();  await page.goto("https://example.com");  const content = await page.content();
-  await browser.close();} catch (error) {  if (error.status === 429) {    const retryAfter = error.headers.get("Retry-After");    console.log(      `Browser instance limit reached. Waiting ${retryAfter} seconds...`,    );    await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
-    // Retry launching browser    const browser = await puppeteer.launch(env.MYBROWSER);  }}
+
+
+try {
+  const browser = await puppeteer.launch(env.MYBROWSER);
+
+
+  const page = await browser.newPage();
+  await page.goto("https://example.com");
+  const content = await page.content();
+
+
+  await browser.close();
+} catch (error) {
+  if (error.status === 429) {
+    const retryAfter = error.headers.get("Retry-After");
+    console.log(
+      `Browser instance limit reached. Waiting ${retryAfter} seconds...`,
+    );
+    await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
+
+
+    // Retry launching browser
+    const browser = await puppeteer.launch(env.MYBROWSER);
+  }
+}
 ```
 
 ### Error: `429 Browser time limit exceeded for today`

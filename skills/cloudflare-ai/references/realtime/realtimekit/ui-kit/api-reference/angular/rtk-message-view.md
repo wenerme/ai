@@ -35,14 +35,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-message-view></rtk-message-view>
+```html
+<!-- component.html -->
+<rtk-message-view></rtk-message-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-message-view [actions]="[]" authorName="example" avatarUrl="example"></rtk-message-view>
+```html
+<!-- component.html -->
+<rtk-message-view
+ [actions]="[]"
+ authorName="example"
+ avatarUrl="example">
+</rtk-message-view>
 ```
 
 ```json

@@ -24,16 +24,20 @@ A component which allows you to change the current page of the active participan
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkGridPaginatorView    android:id="@+id/rtk_grid_paginator"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkGridPaginatorView
+    android:id="@+id/rtk_grid_paginator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val paginatorView = findViewById<RtkGridPaginatorView>(R.id.rtk_grid_paginator)paginatorView.activate(meeting)
+```kotlin
+val paginatorView = findViewById<RtkGridPaginatorView>(R.id.rtk_grid_paginator)
+paginatorView.activate(meeting)
 ```
 
 ```json

@@ -29,19 +29,26 @@ IDEStandalone
 1. **Download Windsurf**
 Download Windsurf for macOS, Windows, or Linux from the [Windsurf downloads page ↗](https://windsurf.com/download).
 2. **Install Cloudflare Skills**
-Terminal window
-```
+```bash
 npx skills add https://github.com/cloudflare/skills
 ```
 3. **Configure Cloudflare MCP servers**
 Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).
-```
-{  "mcpServers": {    "cloudflare": { "serverUrl": "https://mcp.cloudflare.com/mcp" },    "cloudflare-docs": { "serverUrl": "https://docs.mcp.cloudflare.com/mcp" },    "cloudflare-bindings": { "serverUrl": "https://bindings.mcp.cloudflare.com/mcp" },    "cloudflare-builds": { "serverUrl": "https://builds.mcp.cloudflare.com/mcp" },    "cloudflare-observability": { "serverUrl": "https://observability.mcp.cloudflare.com/mcp" }  }}
+```json
+{
+  "mcpServers": {
+    "cloudflare": { "serverUrl": "https://mcp.cloudflare.com/mcp" },
+    "cloudflare-docs": { "serverUrl": "https://docs.mcp.cloudflare.com/mcp" },
+    "cloudflare-bindings": { "serverUrl": "https://bindings.mcp.cloudflare.com/mcp" },
+    "cloudflare-builds": { "serverUrl": "https://builds.mcp.cloudflare.com/mcp" },
+    "cloudflare-observability": { "serverUrl": "https://observability.mcp.cloudflare.com/mcp" }
+  }
+}
 ```
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
-```
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ## Cloudflare platform access

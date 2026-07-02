@@ -18,7 +18,7 @@ Emails submitted over SMTP enter the same delivery pipeline as the REST API and 
 
 ## Endpoint
 
-```
+```txt
 smtp.mx.cloudflare.net:465
 ```
 
@@ -47,12 +47,23 @@ Treat this token as a credential. Anyone with it can send email from any onboard
 
 Send an email with a single `curl` command. Replace `<API_TOKEN>` with a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) that has the **Email Sending: Edit** permission, and replace the `--mail-from` and `--mail-rcpt` addresses with your own.
 
-Terminal window
+```sh
+cat > mail.txt <<EOF
+From: welcome@yourdomain.com
+To: recipient@example.com
+Subject: Welcome to our service!
 
-```
-cat > mail.txt <<EOFFrom: welcome@yourdomain.comTo: recipient@example.comSubject: Welcome to our service!
-Thanks for signing up.EOF
-curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "welcome@yourdomain.com" \  --mail-rcpt "recipient@example.com" \  --upload-file mail.txt
+
+Thanks for signing up.
+EOF
+
+
+curl --ssl-reqd \
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+  --user "api_token:<API_TOKEN>" \
+  --mail-from "welcome@yourdomain.com" \
+  --mail-rcpt "recipient@example.com" \
+  --upload-file mail.txt
 ```
 
 The sender domain (`welcome@yourdomain.com`) must be onboarded for [Email Sending](https://developers.cloudflare.com/email-service/configuration/domains/) on the account that owns the API token.
@@ -70,9 +81,7 @@ In both cases, the username is the literal string `api_token` and the password i
 
 `AUTH PLAIN` sends `\0api_token\0<API_TOKEN>` encoded as base64:
 
-Terminal window
-
-```
+```sh
 printf '\0api_token\0%s' "<API_TOKEN>" | base64
 ```
 
@@ -80,9 +89,33 @@ printf '\0api_token\0%s' "<API_TOKEN>" | base64
 
 The following transcript shows a complete authenticated submission using `openssl s_client`. Lines beginning with `>` are sent by the client.
 
-```
-$ openssl s_client -quiet -connect smtp.mx.cloudflare.net:465 -crlf220 mx.cloudflare.net Cloudflare Email ESMTP Service ready> EHLO client.example.com250-mx.cloudflare.net greets client.example.com250-AUTH PLAIN LOGIN250-SIZE 5242880250-8BITMIME250 ENHANCEDSTATUSCODES> AUTH PLAIN AGFwaV90b2tlbgBpd0RQLi5oZWw=235 2.7.0 Authentication successful> MAIL FROM:<welcome@yourdomain.com>250 2.1.0 Ok> RCPT TO:<recipient@example.com>250 2.1.5 Ok> DATA354 Start mail input; end with <CR><LF>.<CR><LF>From: welcome@yourdomain.comTo: recipient@example.comSubject: Welcome
-Thanks for signing up..250 2.0.0 Ok <jZTWt0pQO4p2LG7ByfkeSYUvT62k85Q12nCA@yourdomain.com>> QUIT221 mx.cloudflare.net Cloudflare Email ESMTP Service closing transmission channel
+```txt
+$ openssl s_client -quiet -connect smtp.mx.cloudflare.net:465 -crlf
+220 mx.cloudflare.net Cloudflare Email ESMTP Service ready
+> EHLO client.example.com
+250-mx.cloudflare.net greets client.example.com
+250-AUTH PLAIN LOGIN
+250-SIZE 5242880
+250-8BITMIME
+250 ENHANCEDSTATUSCODES
+> AUTH PLAIN AGFwaV90b2tlbgBpd0RQLi5oZWw=
+235 2.7.0 Authentication successful
+> MAIL FROM:<welcome@yourdomain.com>
+250 2.1.0 Ok
+> RCPT TO:<recipient@example.com>
+250 2.1.5 Ok
+> DATA
+354 Start mail input; end with <CR><LF>.<CR><LF>
+From: welcome@yourdomain.com
+To: recipient@example.com
+Subject: Welcome
+
+
+Thanks for signing up.
+.
+250 2.0.0 Ok <jZTWt0pQO4p2LG7ByfkeSYUvT62k85Q12nCA@yourdomain.com>
+> QUIT
+221 mx.cloudflare.net Cloudflare Email ESMTP Service closing transmission channel
 ```
 
 The `250 2.0.0 Ok` response after the message body includes the assigned Message-ID. Use it to correlate the submission with delivery logs in the dashboard.

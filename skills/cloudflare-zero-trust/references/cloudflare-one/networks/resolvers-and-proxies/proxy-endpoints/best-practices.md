@@ -18,12 +18,29 @@ A PAC file is a text file that specifies which traffic should redirect to the pr
 
 The default Cloudflare PAC file follows a standard format:
 
-default-pac.js
+**default-pac.js**
 
-```
-function FindProxyForURL(url, host) {  // No proxy for private (RFC 1918) IP addresses (intranet sites)  if (    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||    isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||    isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")  ) {    return "DIRECT";  }
-  // No proxy for localhost  if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {    return "DIRECT";  }
-  // Proxy all  return "HTTPS 3ele0ss56t.proxy.cloudflare-gateway.com:443";}
+```js
+function FindProxyForURL(url, host) {
+  // No proxy for private (RFC 1918) IP addresses (intranet sites)
+  if (
+    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
+    isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||
+    isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")
+  ) {
+    return "DIRECT";
+  }
+
+
+  // No proxy for localhost
+  if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {
+    return "DIRECT";
+  }
+
+
+  // Proxy all
+  return "HTTPS 3ele0ss56t.proxy.cloudflare-gateway.com:443";
+}
 ```
 
 You can [customize the PAC file ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy%5Fservers%5Fand%5Ftunneling/Proxy%5FAuto-Configuration%5FPAC%5Ffile) and host it somewhere your browser can access.
@@ -43,20 +60,85 @@ When using [authorization endpoints](https://developers.cloudflare.com/cloudflar
 
 The following example PAC file is a comprehensive template that includes common IdP bypass rules. Replace the placeholder values with your configuration:
 
-pac-idp-template.js
+**pac-idp-template.js**
 
-```
-function FindProxyForURL(url, host) {  // *** Identity Provider Bypass ***  // CRITICAL: Bypass your IdP to prevent authentication loops  // Uncomment and configure the section for your IdP:
-  // Okta  // if (host === "your-domain.okta.com" || shExpMatch(host, "*.oktacdn.com")) {  //   return "DIRECT";  // }
-  // Microsoft Entra ID (Azure AD)  // if (  //   host === "login.microsoftonline.com" ||  //   host === "aadcdn.msauth.net" ||  //   host === "aadcdn.msftauth.net"  // ) {  //   return "DIRECT";  // }
-  // Google Workspace  // if (  //   host === "accounts.google.com" ||  //   shExpMatch(host, "*.gstatic.com")  // ) {  //   return "DIRECT";  // }
-  // GitHub  // if (shExpMatch(host, "*.github.com")) {  //   return "DIRECT";  // }
-  // *** Private Networks ***  // Bypass private RFC 1918 IP addresses  if (    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||    isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||    isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")  ) {    return "DIRECT";  }
-  // Bypass localhost  if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {    return "DIRECT";  }
-  // Bypass plain hostnames (no dots)  if (isPlainHostName(host)) {    return "DIRECT";  }
-  // Bypass .local domains  if (shExpMatch(host, "*.local")) {    return "DIRECT";  }
-  // *** Cloudflare Access Logout ***  // Optional: Redirect logout requests to your Access logout page  // if (shExpMatch(url, "*logout*")) {  //   return "HTTPS your-team-name.cloudflareaccess.com/cdn-cgi/access/logout";  // }
-  // *** Proxy all other traffic ***  return "HTTPS your-subdomain.proxy.cloudflare-gateway.com:443";}
+```js
+function FindProxyForURL(url, host) {
+  // *** Identity Provider Bypass ***
+  // CRITICAL: Bypass your IdP to prevent authentication loops
+  // Uncomment and configure the section for your IdP:
+
+
+  // Okta
+  // if (host === "your-domain.okta.com" || shExpMatch(host, "*.oktacdn.com")) {
+  //   return "DIRECT";
+  // }
+
+
+  // Microsoft Entra ID (Azure AD)
+  // if (
+  //   host === "login.microsoftonline.com" ||
+  //   host === "aadcdn.msauth.net" ||
+  //   host === "aadcdn.msftauth.net"
+  // ) {
+  //   return "DIRECT";
+  // }
+
+
+  // Google Workspace
+  // if (
+  //   host === "accounts.google.com" ||
+  //   shExpMatch(host, "*.gstatic.com")
+  // ) {
+  //   return "DIRECT";
+  // }
+
+
+  // GitHub
+  // if (shExpMatch(host, "*.github.com")) {
+  //   return "DIRECT";
+  // }
+
+
+  // *** Private Networks ***
+  // Bypass private RFC 1918 IP addresses
+  if (
+    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
+    isInNet(dnsResolve(host), "172.16.0.0", "255.240.0.0") ||
+    isInNet(dnsResolve(host), "192.168.0.0", "255.255.0.0")
+  ) {
+    return "DIRECT";
+  }
+
+
+  // Bypass localhost
+  if (isInNet(dnsResolve(host), "127.0.0.0", "255.0.0.0")) {
+    return "DIRECT";
+  }
+
+
+  // Bypass plain hostnames (no dots)
+  if (isPlainHostName(host)) {
+    return "DIRECT";
+  }
+
+
+  // Bypass .local domains
+  if (shExpMatch(host, "*.local")) {
+    return "DIRECT";
+  }
+
+
+  // *** Cloudflare Access Logout ***
+  // Optional: Redirect logout requests to your Access logout page
+  // if (shExpMatch(url, "*logout*")) {
+  //   return "HTTPS your-team-name.cloudflareaccess.com/cdn-cgi/access/logout";
+  // }
+
+
+  // *** Proxy all other traffic ***
+  return "HTTPS your-subdomain.proxy.cloudflare-gateway.com:443";
+}
 ```
 
 IdP bypass requirement
@@ -71,22 +153,36 @@ Browsers evaluate PAC files for every request. Optimizing PAC file performance i
 
 When performing DNS resolution with `dnsResolve()`, store the result in a variable to reuse it across multiple checks. This avoids redundant DNS lookups:
 
-JavaScript
+**JavaScript**
 
-```
-function FindProxyForURL(url, host) {  // Resolve once and reuse  var hostIP = dnsResolve(host);
-  if (isInNet(hostIP, "10.0.0.0", "255.0.0.0")) {    return "DIRECT";  }
-  // Reuse hostIP for additional checks  if (isInNet(hostIP, "172.16.0.0", "255.240.0.0")) {    return "DIRECT";  }
-  return "HTTPS proxy.example.com:443";}
+```js
+function FindProxyForURL(url, host) {
+  // Resolve once and reuse
+  var hostIP = dnsResolve(host);
+
+
+  if (isInNet(hostIP, "10.0.0.0", "255.0.0.0")) {
+    return "DIRECT";
+  }
+
+
+  // Reuse hostIP for additional checks
+  if (isInNet(hostIP, "172.16.0.0", "255.240.0.0")) {
+    return "DIRECT";
+  }
+
+
+  return "HTTPS proxy.example.com:443";
+}
 ```
 
 ### Check for plain hostnames first
 
 NetBIOS names (hostnames without periods) are typically internal and should bypass the proxy. Check for these first:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 if (isPlainHostName(host)) return "DIRECT";
 ```
 
@@ -96,12 +192,22 @@ if (isPlainHostName(host)) return "DIRECT";
 
 JavaScript is case-sensitive. Convert hostnames to lowercase for consistent matching:
 
-JavaScript
+**JavaScript**
 
-```
-function FindProxyForURL(url, host) {  // Normalize to lowercase  host = host.toLowerCase();  url = url.toLowerCase();
-  if (shExpMatch(host, "*.example.com")) {    return "DIRECT";  }
-  return "HTTPS proxy.cloudflare-gateway.com:443";}
+```js
+function FindProxyForURL(url, host) {
+  // Normalize to lowercase
+  host = host.toLowerCase();
+  url = url.toLowerCase();
+
+
+  if (shExpMatch(host, "*.example.com")) {
+    return "DIRECT";
+  }
+
+
+  return "HTTPS proxy.cloudflare-gateway.com:443";
+}
 ```
 
 ## Common bypass rules
@@ -116,30 +222,50 @@ These bypass rules are optional and depend on your organization's security requi
 
 Font APIs and static asset providers should typically bypass the proxy to prevent rendering issues:
 
-JavaScript
+**JavaScript**
 
-```
-// Bypass font providersif (  shExpMatch(host, "*.googleapis.com") ||  shExpMatch(host, "*.gstatic.com") ||  shExpMatch(host, "fonts.adobe.com")) {  return "DIRECT";}
+```js
+// Bypass font providers
+if (
+  shExpMatch(host, "*.googleapis.com") ||
+  shExpMatch(host, "*.gstatic.com") ||
+  shExpMatch(host, "fonts.adobe.com")
+) {
+  return "DIRECT";
+}
 ```
 
 ### Streaming and media services
 
 Video streaming and large media downloads may perform better with direct connections:
 
-JavaScript
+**JavaScript**
 
-```
-// Bypass streaming servicesif (  shExpMatch(host, "*.netflix.com") ||  shExpMatch(host, "*.youtube.com") ||  shExpMatch(host, "*.googlevideo.com")) {  return "DIRECT";}
+```js
+// Bypass streaming services
+if (
+  shExpMatch(host, "*.netflix.com") ||
+  shExpMatch(host, "*.youtube.com") ||
+  shExpMatch(host, "*.googlevideo.com")
+) {
+  return "DIRECT";
+}
 ```
 
 ### Apps with certificate pinning
 
 When HTTPS inspection is enabled, applications and services that use certificate pinning reject the Cloudflare-injected certificate and fail to load when routed through the proxy. Bypass these domains in your PAC file:
 
-JavaScript
+**JavaScript**
 
-```
-// Bypass certificate-pinned appsif (  shExpMatch(host, "*.example-bank.com") ||  shExpMatch(host, "*.example-pinned-app.com")) {  return "DIRECT";}
+```js
+// Bypass certificate-pinned apps
+if (
+  shExpMatch(host, "*.example-bank.com") ||
+  shExpMatch(host, "*.example-pinned-app.com")
+) {
+  return "DIRECT";
+}
 ```
 
 [Do Not Inspect (DNI) policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) will not prevent certificate pinning errors on these connections — bypassing certificate-pinned apps in the PAC file is required.

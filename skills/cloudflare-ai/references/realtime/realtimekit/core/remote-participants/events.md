@@ -30,110 +30,165 @@ These events allow you to monitor changes to the grid.
 
 Triggered when the view mode changes between `ACTIVE_GRID` and `PAGINATED`.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.on(  "viewModeChanged",  ({ viewMode, currentPage, pageCount }) => {    console.log("view mode changed", viewMode);  },);
+```js
+meeting.participants.on(
+  "viewModeChanged",
+  ({ viewMode, currentPage, pageCount }) => {
+    console.log("view mode changed", viewMode);
+  },
+);
 ```
 
 Triggered when the view mode changes between `ACTIVE_GRID` and `PAGINATED`.
 
-```
+```jsx
 const viewMode = useRealtimeKitSelector((m) => m.participants.viewMode);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.on(  "viewModeChanged",  ({ viewMode, currentPage, pageCount }) => {    console.log("view mode changed", viewMode);  },);
+```jsx
+meeting.participants.on(
+  "viewModeChanged",
+  ({ viewMode, currentPage, pageCount }) => {
+    console.log("view mode changed", viewMode);
+  },
+);
 ```
 
 This event is not available on this platform.
 
 Triggered when the view mode changes between `ACTIVE_GRID` and `PAGINATED`.
 
-```
+```tsx
 const viewMode = useRealtimeKitSelector((m) => m.participants.viewMode);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.on(  "viewModeChanged",  ({ viewMode, currentPage, pageCount }) => {    console.log("view mode changed", viewMode);  },);
+```tsx
+meeting.participants.on(
+  "viewModeChanged",
+  ({ viewMode, currentPage, pageCount }) => {
+    console.log("view mode changed", viewMode);
+  },
+);
 ```
 
 ### Page change
 
 Triggered when the page changes in paginated mode.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.on(  "pageChanged",  ({ viewMode, currentPage, pageCount }) => {    console.log("page changed", currentPage);  },);
+```js
+meeting.participants.on(
+  "pageChanged",
+  ({ viewMode, currentPage, pageCount }) => {
+    console.log("page changed", currentPage);
+  },
+);
 ```
 
 Triggered when the page changes in paginated mode.
 
-```
-const currentPage = useRealtimeKitSelector((m) => m.participants.currentPage);const pageCount = useRealtimeKitSelector((m) => m.participants.pageCount);
+```jsx
+const currentPage = useRealtimeKitSelector((m) => m.participants.currentPage);
+const pageCount = useRealtimeKitSelector((m) => m.participants.pageCount);
 ```
 
 This event is not available on this platform.
 
 Triggered when the page changes in paginated mode.
 
-```
-const currentPage = useRealtimeKitSelector((m) => m.participants.currentPage);const pageCount = useRealtimeKitSelector((m) => m.participants.pageCount);
+```tsx
+const currentPage = useRealtimeKitSelector((m) => m.participants.currentPage);
+const pageCount = useRealtimeKitSelector((m) => m.participants.pageCount);
 ```
 
 ### Active speaker
 
 Triggered when a participant starts speaking.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.on("activeSpeaker", (participant) => {  console.log(`${participant.id} is currently speaking`);});
+```js
+meeting.participants.on("activeSpeaker", (participant) => {
+  console.log(`${participant.id} is currently speaking`);
+});
 ```
 
-```
-const activeSpeaker = useRealtimeKitSelector(  (m) => m.participants.lastActiveSpeaker,);
+```jsx
+const activeSpeaker = useRealtimeKitSelector(
+  (m) => m.participants.lastActiveSpeaker,
+);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.on("activeSpeaker", (participant) => {  console.log(`${participant.id} is currently speaking`);});
-```
-
-Kotlin
-
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {    participant?.let {      println("${it.id} is currently speaking")    }  }})
+```jsx
+meeting.participants.on("activeSpeaker", (participant) => {
+  console.log(`${participant.id} is currently speaking`);
+});
 ```
 
-Swift
+**Kotlin**
 
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {
+    participant?.let {
+      println("${it.id} is currently speaking")
+    }
+  }
+})
 ```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {    if let participant = participant {      print("\(participant.id) is currently speaking")    }  }}
+
+**Swift**
+
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {
+    if let participant = participant {
+      print("\(participant.id) is currently speaking")
+    }
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onActiveSpeakerChanged(RtkRemoteParticipant? participant) {    if (participant != null) {      print('${participant.id} is currently speaking');    }  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onActiveSpeakerChanged(RtkRemoteParticipant? participant) {
+    if (participant != null) {
+      print('${participant.id} is currently speaking');
+    }
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
-```
-const activeSpeaker = useRealtimeKitSelector(  (m) => m.participants.lastActiveSpeaker,);
+```tsx
+const activeSpeaker = useRealtimeKitSelector(
+  (m) => m.participants.lastActiveSpeaker,
+);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.on("activeSpeaker", (participant) => {  console.log(`${participant.id} is currently speaking`);});
+```tsx
+meeting.participants.on("activeSpeaker", (participant) => {
+  console.log(`${participant.id} is currently speaking`);
+});
 ```
 
 ## Participant map events
@@ -144,130 +199,201 @@ These events allow you to monitor changes to remote participant maps. Use them t
 
 Triggered when any participant joins the meeting.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("participantJoined", (participant) => {  console.log(`A participant with id "${participant.id}" has joined`);});
+```js
+meeting.participants.joined.on("participantJoined", (participant) => {
+  console.log(`A participant with id "${participant.id}" has joined`);
+});
 ```
 
-```
+```jsx
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("participantJoined", (participant) => {  console.log(`A participant with id "${participant.id}" has joined`);});
-```
-
-Kotlin
-
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantJoin(participant: RtkRemoteParticipant) {    println("A participant with id ${participant.id} has joined")  }})
+```jsx
+meeting.participants.joined.on("participantJoined", (participant) => {
+  console.log(`A participant with id "${participant.id}" has joined`);
+});
 ```
 
-Swift
+**Kotlin**
 
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onParticipantJoin(participant: RtkRemoteParticipant) {
+    println("A participant with id ${participant.id} has joined")
+  }
+})
 ```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantJoin(participant: RtkRemoteParticipant) {    print("A participant with id \(participant.id) has joined")  }}
+
+**Swift**
+
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onParticipantJoin(participant: RtkRemoteParticipant) {
+    print("A participant with id \(participant.id) has joined")
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onParticipantJoin(RtkRemoteParticipant participant) {    print('A participant with id ${participant.id} has joined');  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onParticipantJoin(RtkRemoteParticipant participant) {
+    print('A participant with id ${participant.id} has joined');
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
-```
+```tsx
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("participantJoined", (participant) => {  console.log(`A participant with id "${participant.id}" has joined`);});
+```tsx
+meeting.participants.joined.on("participantJoined", (participant) => {
+  console.log(`A participant with id "${participant.id}" has joined`);
+});
 ```
 
 ### Participant left
 
 Triggered when any participant leaves the meeting.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("participantLeft", (participant) => {  console.log(`A participant with id "${participant.id}" has left the meeting`);});
+```js
+meeting.participants.joined.on("participantLeft", (participant) => {
+  console.log(`A participant with id "${participant.id}" has left the meeting`);
+});
 ```
 
-```
+```jsx
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("participantLeft", (participant) => {  console.log(`A participant with id "${participant.id}" has left the meeting`);});
-```
-
-Kotlin
-
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantLeave(participant: RtkRemoteParticipant) {    println("A participant with id ${participant.id} has left the meeting")  }})
+```jsx
+meeting.participants.joined.on("participantLeft", (participant) => {
+  console.log(`A participant with id "${participant.id}" has left the meeting`);
+});
 ```
 
-Swift
+**Kotlin**
 
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onParticipantLeave(participant: RtkRemoteParticipant) {
+    println("A participant with id ${participant.id} has left the meeting")
+  }
+})
 ```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantLeave(participant: RtkRemoteParticipant) {    print("A participant with id \(participant.id) has left the meeting")  }}
+
+**Swift**
+
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onParticipantLeave(participant: RtkRemoteParticipant) {
+    print("A participant with id \(participant.id) has left the meeting")
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onParticipantLeave(RtkRemoteParticipant participant) {    print('A participant with id ${participant.id} has left the meeting');  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onParticipantLeave(RtkRemoteParticipant participant) {
+    print('A participant with id ${participant.id} has left the meeting');
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
-```
+```tsx
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("participantLeft", (participant) => {  console.log(`A participant with id "${participant.id}" has left the meeting`);});
+```tsx
+meeting.participants.joined.on("participantLeft", (participant) => {
+  console.log(`A participant with id "${participant.id}" has left the meeting`);
+});
 ```
 
 ### Active participants changed
 
 Each participant map emits `participantJoined` and `participantLeft` events:
 
-JavaScript
+**JavaScript**
 
-```
-// Listen for when a participant gets pinnedmeeting.participants.pinned.on("participantJoined", (participant) => {  console.log(`Participant ${participant.name} got pinned`);});
-// Listen for when a participant gets unpinnedmeeting.participants.pinned.on("participantLeft", (participant) => {  console.log(`Participant ${participant.name} got unpinned`);});
+```js
+// Listen for when a participant gets pinned
+meeting.participants.pinned.on("participantJoined", (participant) => {
+  console.log(`Participant ${participant.name} got pinned`);
+});
+
+
+// Listen for when a participant gets unpinned
+meeting.participants.pinned.on("participantLeft", (participant) => {
+  console.log(`Participant ${participant.name} got unpinned`);
+});
 ```
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onActiveParticipantsChanged(active: List<RtkRemoteParticipant>) {    // Called when active participants change  }})
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onActiveParticipantsChanged(active: List<RtkRemoteParticipant>) {
+    // Called when active participants change
+  }
+})
 ```
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onActiveParticipantsChanged(active: [RtkRemoteParticipant]) {    // Called when active participants change  }}
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onActiveParticipantsChanged(active: [RtkRemoteParticipant]) {
+    // Called when active participants change
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onActiveParticipantsChanged(List<RtkRemoteParticipant> active) {    // Called when active participants change  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onActiveParticipantsChanged(List<RtkRemoteParticipant> active) {
+    // Called when active participants change
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
@@ -275,100 +401,146 @@ meeting.addParticipantsEventListener(ParticipantsNotifier());
 
 Triggered when a participant is pinned.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("pinned", (participant) => {  console.log(`Participant with id "${participant.id}" was pinned`);});
+```js
+meeting.participants.joined.on("pinned", (participant) => {
+  console.log(`Participant with id "${participant.id}" was pinned`);
+});
 ```
 
-```
+```jsx
 const pinnedParticipants = useRealtimeKitSelector((m) => m.participants.pinned);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("pinned", (participant) => {  console.log(`Participant with id "${participant.id}" was pinned`);});
-```
-
-Kotlin
-
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantPinned(participant: RtkRemoteParticipant) {    println("Participant with id ${participant.id} was pinned")  }})
+```jsx
+meeting.participants.joined.on("pinned", (participant) => {
+  console.log(`Participant with id "${participant.id}" was pinned`);
+});
 ```
 
-Swift
+**Kotlin**
 
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onParticipantPinned(participant: RtkRemoteParticipant) {
+    println("Participant with id ${participant.id} was pinned")
+  }
+})
 ```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantPinned(participant: RtkRemoteParticipant) {    print("Participant with id \(participant.id) was pinned")  }}
+
+**Swift**
+
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onParticipantPinned(participant: RtkRemoteParticipant) {
+    print("Participant with id \(participant.id) was pinned")
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onParticipantPinned(RtkRemoteParticipant participant) {    print('Participant with id ${participant.id} was pinned');  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onParticipantPinned(RtkRemoteParticipant participant) {
+    print('Participant with id ${participant.id} was pinned');
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
-```
+```tsx
 const pinnedParticipants = useRealtimeKitSelector((m) => m.participants.pinned);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("pinned", (participant) => {  console.log(`Participant with id "${participant.id}" was pinned`);});
+```tsx
+meeting.participants.joined.on("pinned", (participant) => {
+  console.log(`Participant with id "${participant.id}" was pinned`);
+});
 ```
 
 ### Participant unpinned
 
 Triggered when a participant is unpinned.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("unpinned", (participant) => {  console.log(`Participant with id "${participant.id}" was unpinned`);});
+```js
+meeting.participants.joined.on("unpinned", (participant) => {
+  console.log(`Participant with id "${participant.id}" was unpinned`);
+});
 ```
 
-```
+```jsx
 const pinnedParticipants = useRealtimeKitSelector((m) => m.participants.pinned);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("unpinned", (participant) => {  console.log(`Participant with id "${participant.id}" was unpinned`);});
-```
-
-Kotlin
-
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantUnpinned(participant: RtkRemoteParticipant) {    println("Participant with id ${participant.id} was unpinned")  }})
+```jsx
+meeting.participants.joined.on("unpinned", (participant) => {
+  console.log(`Participant with id "${participant.id}" was unpinned`);
+});
 ```
 
-Swift
+**Kotlin**
 
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onParticipantUnpinned(participant: RtkRemoteParticipant) {
+    println("Participant with id ${participant.id} was unpinned")
+  }
+})
 ```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantUnpinned(participant: RtkRemoteParticipant) {    print("Participant with id \(participant.id) was unpinned")  }}
+
+**Swift**
+
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onParticipantUnpinned(participant: RtkRemoteParticipant) {
+    print("Participant with id \(participant.id) was unpinned")
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onParticipantUnpinned(RtkRemoteParticipant participant) {    print('Participant with id ${participant.id} was unpinned');  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onParticipantUnpinned(RtkRemoteParticipant participant) {
+    print('Participant with id ${participant.id} was unpinned');
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
-```
+```tsx
 const pinnedParticipants = useRealtimeKitSelector((m) => m.participants.pinned);
 ```
 
 Or use event listener:
 
-```
-meeting.participants.joined.on("unpinned", (participant) => {  console.log(`Participant with id "${participant.id}" was unpinned`);});
+```tsx
+meeting.participants.joined.on("unpinned", (participant) => {
+  console.log(`Participant with id "${participant.id}" was unpinned`);
+});
 ```
 
 ## Participant events
@@ -379,243 +551,589 @@ You can monitor changes to a specific participant using the following events.
 
 Triggered when any participant starts or stops video.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("videoUpdate", (participant) => {  console.log(    `A participant with id "${participant.id}" updated their video track`,  );
-  if (participant.videoEnabled) {    // Use participant.videoTrack  } else {    // Handle stop video  }});
+```js
+meeting.participants.joined.on("videoUpdate", (participant) => {
+  console.log(
+    `A participant with id "${participant.id}" updated their video track`,
+  );
+
+
+  if (participant.videoEnabled) {
+    // Use participant.videoTrack
+  } else {
+    // Handle stop video
+  }
+});
 ```
 
-```
-// Check for one participantconst videoEnabled = useRealtimeKitSelector(  (m) => m.participants.joined.get(participantId)?.videoEnabled,);
-// All video enabled participantsconst videoEnabledParticipants = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().filter((p) => p.videoEnabled),);
+```jsx
+// Check for one participant
+const videoEnabled = useRealtimeKitSelector(
+  (m) => m.participants.joined.get(participantId)?.videoEnabled,
+);
+
+
+// All video enabled participants
+const videoEnabledParticipants = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().filter((p) => p.videoEnabled),
+);
 ```
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantEventListener(object : RtkParticipantEventListener {  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    println("Participant ${participant.id} video is now ${if (isEnabled) "enabled" else "disabled"}")  }})
+```kotlin
+meeting.addParticipantEventListener(object : RtkParticipantEventListener {
+  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
+    println("Participant ${participant.id} video is now ${if (isEnabled) "enabled" else "disabled"}")
+  }
+})
 ```
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantEventListener {  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    print("Participant \(participant.id) video is now \(isEnabled ? "enabled" : "disabled")")  }}
+```swift
+extension MeetingViewModel: RtkParticipantEventListener {
+  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
+    print("Participant \(participant.id) video is now \(isEnabled ? "enabled" : "disabled")")
+  }
+}
+
+
 meeting.addParticipantEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {  @override  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {    print('Participant ${participant.id} video is now ${isEnabled ? "enabled" : "disabled"}');  }}
+```dart
+class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
+  @override
+  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
+    print('Participant ${participant.id} video is now ${isEnabled ? "enabled" : "disabled"}');
+  }
+}
+
+
 participant.addParticipantUpdateListener(ParticipantUpdateHandler());
 ```
 
-```
-// Check for one participantconst videoEnabled = useRealtimeKitSelector(  (m) => m.participants.joined.get(participantId)?.videoEnabled,);
-// All video enabled participantsconst videoEnabledParticipants = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().filter((p) => p.videoEnabled),);
+```tsx
+// Check for one participant
+const videoEnabled = useRealtimeKitSelector(
+  (m) => m.participants.joined.get(participantId)?.videoEnabled,
+);
+
+
+// All video enabled participants
+const videoEnabledParticipants = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().filter((p) => p.videoEnabled),
+);
 ```
 
 ### Audio update
 
 Triggered when any participant starts or stops audio.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("audioUpdate", (participant) => {  console.log(    `A participant with id "${participant.id}" updated their audio track`,  );
-  if (participant.audioEnabled) {    // Use participant.audioTrack  } else {    // Handle stop audio  }});
+```js
+meeting.participants.joined.on("audioUpdate", (participant) => {
+  console.log(
+    `A participant with id "${participant.id}" updated their audio track`,
+  );
+
+
+  if (participant.audioEnabled) {
+    // Use participant.audioTrack
+  } else {
+    // Handle stop audio
+  }
+});
 ```
 
-```
-// Check for one participantconst audioEnabled = useRealtimeKitSelector(  (m) => m.participants.joined.get(participantId)?.audioEnabled,);
-// All audio enabled participantsconst audioEnabledParticipants = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().filter((p) => p.audioEnabled),);
+```jsx
+// Check for one participant
+const audioEnabled = useRealtimeKitSelector(
+  (m) => m.participants.joined.get(participantId)?.audioEnabled,
+);
+
+
+// All audio enabled participants
+const audioEnabledParticipants = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().filter((p) => p.audioEnabled),
+);
 ```
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantEventListener(object : RtkParticipantEventListener {  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    println("Participant ${participant.id} audio is now ${if (isEnabled) "enabled" else "disabled"}")  }})
+```kotlin
+meeting.addParticipantEventListener(object : RtkParticipantEventListener {
+  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
+    println("Participant ${participant.id} audio is now ${if (isEnabled) "enabled" else "disabled"}")
+  }
+})
 ```
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantEventListener {  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    print("Participant \(participant.id) audio is now \(isEnabled ? "enabled" : "disabled")")  }}
+```swift
+extension MeetingViewModel: RtkParticipantEventListener {
+  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
+    print("Participant \(participant.id) audio is now \(isEnabled ? "enabled" : "disabled")")
+  }
+}
+
+
 meeting.addParticipantEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {  @override  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {    print('Participant ${participant.id} audio is now ${isEnabled ? "enabled" : "disabled"}');  }}
+```dart
+class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
+  @override
+  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
+    print('Participant ${participant.id} audio is now ${isEnabled ? "enabled" : "disabled"}');
+  }
+}
+
+
 participant.addParticipantUpdateListener(ParticipantUpdateHandler());
 ```
 
-```
-// Check for one participantconst audioEnabled = useRealtimeKitSelector(  (m) => m.participants.joined.get(participantId)?.audioEnabled,);
-// All audio enabled participantsconst audioEnabledParticipants = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().filter((p) => p.audioEnabled),);
+```tsx
+// Check for one participant
+const audioEnabled = useRealtimeKitSelector(
+  (m) => m.participants.joined.get(participantId)?.audioEnabled,
+);
+
+
+// All audio enabled participants
+const audioEnabledParticipants = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().filter((p) => p.audioEnabled),
+);
 ```
 
 ### Screen share update
 
 Triggered when any participant starts or stops screen share.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on("screenShareUpdate", (participant) => {  console.log(    `A participant with id "${participant.id}" updated their screen share`,  );
-  if (participant.screenShareEnabled) {    // Use participant.screenShareTracks  } else {    // Handle stop screen share  }});
+```js
+meeting.participants.joined.on("screenShareUpdate", (participant) => {
+  console.log(
+    `A participant with id "${participant.id}" updated their screen share`,
+  );
+
+
+  if (participant.screenShareEnabled) {
+    // Use participant.screenShareTracks
+  } else {
+    // Handle stop screen share
+  }
+});
 ```
 
-```
-// Check for one participantconst screensharingParticipant = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().find((p) => p.screenShareEnabled),);
-// All screen sharing participantsconst screenSharingParticipants = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().filter((p) => p.screenShareEnabled),);
+```jsx
+// Check for one participant
+const screensharingParticipant = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().find((p) => p.screenShareEnabled),
+);
+
+
+// All screen sharing participants
+const screenSharingParticipants = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().filter((p) => p.screenShareEnabled),
+);
 ```
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantEventListener(object : RtkParticipantEventListener {  override fun onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    println("Participant ${participant.id} screen share is now ${if (isEnabled) "enabled" else "disabled"}")  }})
+```kotlin
+meeting.addParticipantEventListener(object : RtkParticipantEventListener {
+  override fun onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
+    println("Participant ${participant.id} screen share is now ${if (isEnabled) "enabled" else "disabled"}")
+  }
+})
 ```
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantEventListener {  func onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    print("Participant \(participant.id) screen share is now \(isEnabled ? "enabled" : "disabled")")  }}
+```swift
+extension MeetingViewModel: RtkParticipantEventListener {
+  func onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
+    print("Participant \(participant.id) screen share is now \(isEnabled ? "enabled" : "disabled")")
+  }
+}
+
+
 meeting.addParticipantEventListener(self)
 ```
 
-Dart
+**Dart**
 
-```
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {  @override  void onScreenShareUpdate(RtkRemoteParticipant participant, bool isEnabled) {    print('Participant ${participant.id} screen share is now ${isEnabled ? "enabled" : "disabled"}');  }}
+```dart
+class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
+  @override
+  void onScreenShareUpdate(RtkRemoteParticipant participant, bool isEnabled) {
+    print('Participant ${participant.id} screen share is now ${isEnabled ? "enabled" : "disabled"}');
+  }
+}
+
+
 participant.addParticipantUpdateListener(ParticipantUpdateHandler());
 ```
 
-```
-// Check for one participantconst screensharingParticipant = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().find((p) => p.screenShareEnabled),);
-// All screen sharing participantsconst screenSharingParticipants = useRealtimeKitSelector((m) =>  m.participants.joined.toArray().filter((p) => p.screenShareEnabled),);
+```tsx
+// Check for one participant
+const screensharingParticipant = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().find((p) => p.screenShareEnabled),
+);
+
+
+// All screen sharing participants
+const screenSharingParticipants = useRealtimeKitSelector((m) =>
+  m.participants.joined.toArray().filter((p) => p.screenShareEnabled),
+);
 ```
 
 ### Network quality score
 
 Monitor participant network quality using the `mediaScoreUpdate` event.
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on(  "mediaScoreUpdate",  ({ participantId, kind, isScreenshare, score, scoreStats }) => {    if (kind === "video") {      console.log(        `Participant ${participantId}'s ${isScreenshare ? "screenshare" : "video"} quality score is`,        score,      );    }
-    if (kind === "audio") {      console.log(        `Participant ${participantId}'s audio quality score is`,        score,      );    }
-    if (score < 5) {      console.log(`Participant ${participantId}'s media quality is poor`);    }  },);
+```js
+meeting.participants.joined.on(
+  "mediaScoreUpdate",
+  ({ participantId, kind, isScreenshare, score, scoreStats }) => {
+    if (kind === "video") {
+      console.log(
+        `Participant ${participantId}'s ${isScreenshare ? "screenshare" : "video"} quality score is`,
+        score,
+      );
+    }
+
+
+    if (kind === "audio") {
+      console.log(
+        `Participant ${participantId}'s audio quality score is`,
+        score,
+      );
+    }
+
+
+    if (score < 5) {
+      console.log(`Participant ${participantId}'s media quality is poor`);
+    }
+  },
+);
 ```
 
 Monitor participant network quality using the `mediaScoreUpdate` event.
 
-```
+```jsx
 import { useEffect } from "react";
-// Use event listener for media score updatesuseEffect(() => {  if (!meeting) return;
-  const handleMediaScoreUpdate = ({    participantId,    kind,    isScreenshare,    score,    scoreStats,  }) => {    if (kind === "video") {      console.log(        `Participant ${participantId}'s ${isScreenshare ? "screenshare" : "video"} quality score is`,        score,      );    }
-    if (score < 5) {      console.log(`Participant ${participantId}'s media quality is poor`);    }  };
+
+
+// Use event listener for media score updates
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleMediaScoreUpdate = ({
+    participantId,
+    kind,
+    isScreenshare,
+    score,
+    scoreStats,
+  }) => {
+    if (kind === "video") {
+      console.log(
+        `Participant ${participantId}'s ${isScreenshare ? "screenshare" : "video"} quality score is`,
+        score,
+      );
+    }
+
+
+    if (score < 5) {
+      console.log(`Participant ${participantId}'s media quality is poor`);
+    }
+  };
+
+
   meeting.participants.joined.on("mediaScoreUpdate", handleMediaScoreUpdate);
-  return () => {    meeting.participants.joined.off("mediaScoreUpdate", handleMediaScoreUpdate);  };}, [meeting]);
+
+
+  return () => {
+    meeting.participants.joined.off("mediaScoreUpdate", handleMediaScoreUpdate);
+  };
+}, [meeting]);
 ```
 
 This event is not available on this platform.
 
 Monitor participant network quality using the `mediaScoreUpdate` event.
 
-```
+```tsx
 import { useEffect } from "react";
-// Use event listener for media score updatesuseEffect(() => {  if (!meeting) return;
-  const handleMediaScoreUpdate = ({    participantId,    kind,    isScreenshare,    score,    scoreStats,  }) => {    if (kind === "video") {      console.log(        `Participant ${participantId}'s ${isScreenshare ? "screenshare" : "video"} quality score is`,        score,      );    }
-    if (score < 5) {      console.log(`Participant ${participantId}'s media quality is poor`);    }  };
+
+
+// Use event listener for media score updates
+useEffect(() => {
+  if (!meeting) return;
+
+
+  const handleMediaScoreUpdate = ({
+    participantId,
+    kind,
+    isScreenshare,
+    score,
+    scoreStats,
+  }) => {
+    if (kind === "video") {
+      console.log(
+        `Participant ${participantId}'s ${isScreenshare ? "screenshare" : "video"} quality score is`,
+        score,
+      );
+    }
+
+
+    if (score < 5) {
+      console.log(`Participant ${participantId}'s media quality is poor`);
+    }
+  };
+
+
   meeting.participants.joined.on("mediaScoreUpdate", handleMediaScoreUpdate);
-  return () => {    meeting.participants.joined.off("mediaScoreUpdate", handleMediaScoreUpdate);  };}, [meeting]);
+
+
+  return () => {
+    meeting.participants.joined.off("mediaScoreUpdate", handleMediaScoreUpdate);
+  };
+}, [meeting]);
 ```
 
 ## Listen to participant events
 
 Each participant object is an event emitter:
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined  .get(participantId)  .on("audioUpdate", ({ audioEnabled, audioTrack }) => {    console.log(      "The participant with id",      participantId,      "has toggled their mic to",      audioEnabled,    );  });
+```js
+meeting.participants.joined
+  .get(participantId)
+  .on("audioUpdate", ({ audioEnabled, audioTrack }) => {
+    console.log(
+      "The participant with id",
+      participantId,
+      "has toggled their mic to",
+      audioEnabled,
+    );
+  });
 ```
 
 Alternatively, listen on the participant map for all participants:
 
-JavaScript
+**JavaScript**
 
-```
-meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    console.log(      "The participant with id",      participant.id,      "has toggled their mic to",      audioEnabled,    );  },);
+```js
+meeting.participants.joined.on(
+  "audioUpdate",
+  (participant, { audioEnabled, audioTrack }) => {
+    console.log(
+      "The participant with id",
+      participant.id,
+      "has toggled their mic to",
+      audioEnabled,
+    );
+  },
+);
 ```
 
-```
-import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";import { useEffect } from "react";
-function ParticipantAudioListener({ participantId }) {  const [meeting] = useRealtimeKitClient();
-  useEffect(() => {    if (!meeting) return;
-    const handleAudioUpdate = ({ audioEnabled, audioTrack }) => {      console.log(        "The participant with id",        participantId,        "has toggled their mic to",        audioEnabled,      );    };
-    const participant = meeting.participants.joined.get(participantId);    participant.on("audioUpdate", handleAudioUpdate);
-    return () => {      participant.off("audioUpdate", handleAudioUpdate);    };  }, [meeting, participantId]);}
+```jsx
+import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
+import { useEffect } from "react";
+
+
+function ParticipantAudioListener({ participantId }) {
+  const [meeting] = useRealtimeKitClient();
+
+
+  useEffect(() => {
+    if (!meeting) return;
+
+
+    const handleAudioUpdate = ({ audioEnabled, audioTrack }) => {
+      console.log(
+        "The participant with id",
+        participantId,
+        "has toggled their mic to",
+        audioEnabled,
+      );
+    };
+
+
+    const participant = meeting.participants.joined.get(participantId);
+    participant.on("audioUpdate", handleAudioUpdate);
+
+
+    return () => {
+      participant.off("audioUpdate", handleAudioUpdate);
+    };
+  }, [meeting, participantId]);
+}
 ```
 
 Or use the selector for specific properties:
 
-```
-const audioEnabled = useRealtimeKitSelector(  (m) => m.participants.joined.get(participantId)?.audioEnabled,);
+```jsx
+const audioEnabled = useRealtimeKitSelector(
+  (m) => m.participants.joined.get(participantId)?.audioEnabled,
+);
 ```
 
 Implement the `RtkParticipantEventListener` interface to receive participant event updates:
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantEventListener(object : RtkParticipantEventListener {  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // Called when participant's video state changes  }
-  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // Called when participant's audio state changes  }
-  override fun onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // Called when participant's screen share state changes  }})
+```kotlin
+meeting.addParticipantEventListener(object : RtkParticipantEventListener {
+  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
+    // Called when participant's video state changes
+  }
+
+
+  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
+    // Called when participant's audio state changes
+  }
+
+
+  override fun onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
+    // Called when participant's screen share state changes
+  }
+})
 ```
 
 Implement the `RtkParticipantEventListener` protocol to receive participant event updates:
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantEventListener {  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // Called when participant's video state changes  }
-  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // Called when participant's audio state changes  }
-  func onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // Called when participant's screen share state changes  }}
+```swift
+extension MeetingViewModel: RtkParticipantEventListener {
+  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
+    // Called when participant's video state changes
+  }
+
+
+  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
+    // Called when participant's audio state changes
+  }
+
+
+  func onScreenShareUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
+    // Called when participant's screen share state changes
+  }
+}
+
+
 meeting.addParticipantEventListener(self)
 ```
 
 Implement the `RtkParticipantUpdateListener` interface and add the listener on a participant:
 
-Dart
+**Dart**
 
-```
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {  @override  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {    print("${participant.name}'s video is now ${isEnabled ? 'on' : 'off'}");  }
-  @override  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {    print("${participant.name}'s audio is now ${isEnabled ? 'on' : 'off'}");  }
-  @override  void onPinned(RtkRemoteParticipant participant) {    print("${participant.name} was pinned");  }
-  @override  void onUnpinned(RtkRemoteParticipant participant) {    print("${participant.name} was unpinned");  }
-  @override  void onScreenShareUpdate(RtkRemoteParticipant participant, bool isEnabled) {    print("${participant.name}'s screen-share is now ${isEnabled ? 'on' : 'off'}");  }
-  @override  void onUpdate(RtkRemoteParticipant participant) {    print("${participant.name} was updated");  }}
-// Register the listener with a specific participantfinal listener = ParticipantUpdateHandler();participant.addParticipantUpdateListener(listener);
-// When done listening, remove the listenerparticipant.removeParticipantUpdateListener(listener);
+```dart
+class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
+  @override
+  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
+    print("${participant.name}'s video is now ${isEnabled ? 'on' : 'off'}");
+  }
+
+
+  @override
+  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
+    print("${participant.name}'s audio is now ${isEnabled ? 'on' : 'off'}");
+  }
+
+
+  @override
+  void onPinned(RtkRemoteParticipant participant) {
+    print("${participant.name} was pinned");
+  }
+
+
+  @override
+  void onUnpinned(RtkRemoteParticipant participant) {
+    print("${participant.name} was unpinned");
+  }
+
+
+  @override
+  void onScreenShareUpdate(RtkRemoteParticipant participant, bool isEnabled) {
+    print("${participant.name}'s screen-share is now ${isEnabled ? 'on' : 'off'}");
+  }
+
+
+  @override
+  void onUpdate(RtkRemoteParticipant participant) {
+    print("${participant.name} was updated");
+  }
+}
+
+
+// Register the listener with a specific participant
+final listener = ParticipantUpdateHandler();
+participant.addParticipantUpdateListener(listener);
+
+
+// When done listening, remove the listener
+participant.removeParticipantUpdateListener(listener);
 ```
 
-```
-import { useRealtimeKitClient } from "@cloudflare/realtimekit-react-native";import { useEffect } from "react";
-function ParticipantAudioListener({ participantId }) {  const [meeting] = useRealtimeKitClient();
-  useEffect(() => {    if (!meeting) return;
-    const handleAudioUpdate = ({ audioEnabled, audioTrack }) => {      console.log(        "The participant with id",        participantId,        "has toggled their mic to",        audioEnabled,      );    };
-    const participant = meeting.participants.joined.get(participantId);    participant.on("audioUpdate", handleAudioUpdate);
-    return () => {      participant.off("audioUpdate", handleAudioUpdate);    };  }, [meeting, participantId]);}
+```tsx
+import { useRealtimeKitClient } from "@cloudflare/realtimekit-react-native";
+import { useEffect } from "react";
+
+
+function ParticipantAudioListener({ participantId }) {
+  const [meeting] = useRealtimeKitClient();
+
+
+  useEffect(() => {
+    if (!meeting) return;
+
+
+    const handleAudioUpdate = ({ audioEnabled, audioTrack }) => {
+      console.log(
+        "The participant with id",
+        participantId,
+        "has toggled their mic to",
+        audioEnabled,
+      );
+    };
+
+
+    const participant = meeting.participants.joined.get(participantId);
+    participant.on("audioUpdate", handleAudioUpdate);
+
+
+    return () => {
+      participant.off("audioUpdate", handleAudioUpdate);
+    };
+  }, [meeting, participantId]);
+}
 ```
 
 Or use the selector for specific properties:
 
-```
-const audioEnabled = useRealtimeKitSelector(  (m) => m.participants.joined.get(participantId)?.audioEnabled,);
+```tsx
+const audioEnabled = useRealtimeKitSelector(
+  (m) => m.participants.joined.get(participantId)?.audioEnabled,
+);
 ```
 
 ```json

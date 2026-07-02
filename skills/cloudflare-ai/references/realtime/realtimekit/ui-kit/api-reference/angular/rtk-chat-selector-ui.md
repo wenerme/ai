@@ -27,14 +27,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-selector-ui></rtk-chat-selector-ui>
+```html
+<!-- component.html -->
+<rtk-chat-selector-ui></rtk-chat-selector-ui>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-selector-ui [groups]="[]" selectedGroupId="example" selfUserId="example"></rtk-chat-selector-ui>
+```html
+<!-- component.html -->
+<rtk-chat-selector-ui
+ [groups]="[]"
+ selectedGroupId="example"
+ selfUserId="example">
+</rtk-chat-selector-ui>
 ```
 
 ```json

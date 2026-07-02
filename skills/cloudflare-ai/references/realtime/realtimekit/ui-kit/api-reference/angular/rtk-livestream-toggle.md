@@ -26,14 +26,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-livestream-toggle></rtk-livestream-toggle>
+```html
+<!-- component.html -->
+<rtk-livestream-toggle></rtk-livestream-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-livestream-toggle [meeting]="meeting" size="md" variant="button"></rtk-livestream-toggle>
+```html
+<!-- component.html -->
+<rtk-livestream-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-livestream-toggle>
 ```
 
 ```json

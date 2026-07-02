@@ -37,17 +37,13 @@ The Cloudflare One Client will now send DNS queries to your internal DNS resolve
 
 For testing, run a `dig` command for the internal DNS service:
 
-Terminal window
-
-```
+```sh
 dig AAAA www.myorg.privatecorp
 ```
 
 The `dig` command will work because `myorg.privatecorp` was configured above as a fallback domain. If you skip that step, you can still force `dig` to use your private DNS resolver:
 
-Terminal window
-
-```
+```sh
 dig @10.0.0.25 AAAA www.myorg.privatecorp
 ```
 

@@ -22,8 +22,8 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-7245)
-* [ API ](#tab-panel-7246)
+* [ Dashboard ](#tab-panel-7495)
+* [ API ](#tab-panel-7496)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.
@@ -43,10 +43,31 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-Create an Access group
+**Create an Access group**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Lisbon-team",    "include": [        {            "geo": {                "country_code": "PT"            }        }    ],    "exclude": [],    "require": [        {            "email_domain": {                "domain": "team.com"            }        }    ],    "is_default": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Lisbon-team",
+    "include": [
+        {
+            "geo": {
+                "country_code": "PT"
+            }
+        }
+    ],
+    "exclude": [],
+    "require": [
+        {
+            "email_domain": {
+                "domain": "team.com"
+            }
+        }
+    ],
+    "is_default": false
+  }'
 ```
 
 You can now add this group to an Access policy using the _Rule groups_ selector.

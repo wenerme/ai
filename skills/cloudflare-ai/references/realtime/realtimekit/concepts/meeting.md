@@ -129,10 +129,14 @@ Make sure you have the following values for this API request:
 
 If you do not have them yet, refer to the [Getting Started](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) guide.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings \  --request POST \  --header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "title": "My First Cloudflare RealtimeKit meeting"    }'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings \
+  --request POST \
+  --header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "title": "My First Cloudflare RealtimeKit meeting"
+    }'
 ```
 
 A successful response includes a unique `id` for the created meeting. Save this ID, as it is required for all future operations on this specific meeting, such as adding participants or disabling it.

@@ -26,20 +26,31 @@ A control bar button that toggles the local microphone on and off. Checks microp
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let audioButton = RtkAudioButtonControlBar(meeting: rtkClient)view.addSubview(audioButton)
+
+
+let audioButton = RtkAudioButtonControlBar(meeting: rtkClient)
+view.addSubview(audioButton)
 ```
 
 ### With tap handler
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let audioButton = RtkAudioButtonControlBar(    meeting: rtkClient,    onClick: { button in        print("Audio toggled")    })view.addSubview(audioButton)
+
+
+let audioButton = RtkAudioButtonControlBar(
+    meeting: rtkClient,
+    onClick: { button in
+        print("Audio toggled")
+    }
+)
+view.addSubview(audioButton)
 ```
 
 ```json

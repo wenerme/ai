@@ -18,7 +18,7 @@ The following response header transform rule adds a header named `Access-Control
 
 Text in **Expression Editor**:
 
-```
+```txt
 (http.host eq "<YOUR_HOSTNAME>")
 ```
 
@@ -30,7 +30,7 @@ Selected operation under **Modify response header**: _Set static_
 
 You can also use an expression similar to the following to apply the CORS header to several specific hostnames:
 
-```
+```txt
 (http.host in {"<YOUR_HOSTNAME_1>" "<YOUR_HOSTNAME_2>"})
 ```
 

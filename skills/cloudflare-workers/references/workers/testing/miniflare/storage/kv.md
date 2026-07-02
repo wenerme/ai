@@ -18,18 +18,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Specify KV namespaces to add to your environment as follows:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  kvNamespaces: ["TEST_NAMESPACE1", "TEST_NAMESPACE2"],});
+```js
+const mf = new Miniflare({
+  kvNamespaces: ["TEST_NAMESPACE1", "TEST_NAMESPACE2"],
+});
 ```
 
 You can now access KV namespaces in your workers:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    return new Response(await env.TEST_NAMESPACE1.get("key"));  },};
+```js
+export default {
+  async fetch(request, env) {
+    return new Response(await env.TEST_NAMESPACE1.get("key"));
+  },
+};
 ```
 
 Miniflare supports all KV operations and data types.
@@ -38,13 +44,34 @@ Miniflare supports all KV operations and data types.
 
 For testing, it can be useful to put/get data from KV outside a worker. You can do this with the `getKVNamespace` method:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare } from "miniflare";
-const mf = new Miniflare({  modules: true,  script: `  export default {    async fetch(request, env, ctx) {      const value = parseInt(await env.TEST_NAMESPACE.get("count")) + 1;      await env.TEST_NAMESPACE.put("count", value.toString());      return new Response(value.toString());    },  }  `,  kvNamespaces: ["TEST_NAMESPACE"],});
-const ns = await mf.getKVNamespace("TEST_NAMESPACE");await ns.put("count", "1");
-const res = await mf.dispatchFetch("http://localhost:8787/");console.log(await res.text()); // 2console.log(await ns.get("count")); // 2
+
+
+const mf = new Miniflare({
+  modules: true,
+  script: `
+  export default {
+    async fetch(request, env, ctx) {
+      const value = parseInt(await env.TEST_NAMESPACE.get("count")) + 1;
+      await env.TEST_NAMESPACE.put("count", value.toString());
+      return new Response(value.toString());
+    },
+  }
+  `,
+  kvNamespaces: ["TEST_NAMESPACE"],
+});
+
+
+const ns = await mf.getKVNamespace("TEST_NAMESPACE");
+await ns.put("count", "1");
+
+
+const res = await mf.dispatchFetch("http://localhost:8787/");
+console.log(await res.text()); // 2
+console.log(await ns.get("count")); // 2
 ```
 
 ```json

@@ -24,23 +24,20 @@ Manage R2 buckets and objects directly from your terminal. Use CLI tools to auto
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-10111)
-* [ Dashboard ](#tab-panel-10112)
+* [ Wrangler CLI ](#tab-panel-10190)
+* [ Dashboard ](#tab-panel-10191)
 
 1. Log in to your Cloudflare account:
-Terminal window
-```
+```sh
 npx wrangler login
 ```
 2. Create a bucket named `my-bucket`:
-Terminal window
-```
+```sh
 npx wrangler r2 bucket create my-bucket
 ```
 If prompted, select the account you want to create the bucket in.
 3. Verify the bucket was created:
-Terminal window
-```
+```sh
 npx wrangler r2 bucket list
 ```
 
@@ -64,9 +61,9 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 ## 3\. Set up a CLI tool
 
-* [ Wrangler ](#tab-panel-10108)
-* [ rclone ](#tab-panel-10109)
-* [ AWS CLI ](#tab-panel-10110)
+* [ Wrangler ](#tab-panel-10187)
+* [ rclone ](#tab-panel-10188)
+* [ AWS CLI ](#tab-panel-10189)
 
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
@@ -85,8 +82,7 @@ pnpm add -D wrangler
 bun add -d wrangler
 ```
 2. Log in to your Cloudflare account:
-Terminal window
-```
+```sh
 wrangler login
 ```
 
@@ -94,8 +90,7 @@ wrangler login
 
 1. [Install rclone ↗](https://rclone.org/install/) (version 1.59 or later).
 2. Configure a new remote:
-Terminal window
-```
+```sh
 rclone config
 ```
 3. Create new remote by selecting `n`.
@@ -111,8 +106,7 @@ The [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) works 
 
 1. [Install the AWS CLI ↗](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for your operating system.
 2. Configure your credentials:
-Terminal window
-```
+```sh
 aws configure
 ```
 3. When prompted, enter:
@@ -126,40 +120,47 @@ aws configure
 
 (Optional) Create a test file to upload. Run this command in the directory where you plan to run the CLI commands:
 
-Terminal window
-
-```
+```sh
 echo 'Hello, R2!' > myfile.txt
 ```
 
-* [ Wrangler ](#tab-panel-10105)
-* [ rclone ](#tab-panel-10106)
-* [ AWS CLI ](#tab-panel-10107)
+* [ Wrangler ](#tab-panel-10184)
+* [ rclone ](#tab-panel-10185)
+* [ AWS CLI ](#tab-panel-10186)
 
-Terminal window
+```sh
+# Upload myfile.txt to my-bucket
+wrangler r2 object put my-bucket/myfile.txt --file ./myfile.txt
 
-```
-# Upload myfile.txt to my-bucketwrangler r2 object put my-bucket/myfile.txt --file ./myfile.txt
-# Download myfile.txt and save it as downloaded.txtwrangler r2 object get my-bucket/myfile.txt --file ./downloaded.txt
+
+# Download myfile.txt and save it as downloaded.txt
+wrangler r2 object get my-bucket/myfile.txt --file ./downloaded.txt
 ```
 
 Refer to the [Wrangler R2 commands](https://developers.cloudflare.com/r2/reference/wrangler-commands/) for all available operations.
 
-Terminal window
+```sh
+# Upload myfile.txt to my-bucket
+rclone copy myfile.txt r2:my-bucket/
 
-```
-# Upload myfile.txt to my-bucketrclone copy myfile.txt r2:my-bucket/
-# Download myfile.txt from my-bucket to the current directoryrclone copy r2:my-bucket/myfile.txt .
+
+# Download myfile.txt from my-bucket to the current directory
+rclone copy r2:my-bucket/myfile.txt .
 ```
 
 Refer to the [rclone documentation](https://developers.cloudflare.com/r2/examples/rclone/) for more configuration options.
 
-Terminal window
+```sh
+# Upload myfile.txt to my-bucket
+aws s3 cp myfile.txt s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
 
-```
-# Upload myfile.txt to my-bucketaws s3 cp myfile.txt s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-# Download myfile.txt from my-bucket to current directoryaws s3 cp s3://my-bucket/myfile.txt ./ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-# List all objects in my-bucketaws s3 ls s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+
+# Download myfile.txt from my-bucket to current directory
+aws s3 cp s3://my-bucket/myfile.txt ./ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+
+
+# List all objects in my-bucket
+aws s3 ls s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
 ```
 
 Refer to the [AWS CLI documentation](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) for more examples.

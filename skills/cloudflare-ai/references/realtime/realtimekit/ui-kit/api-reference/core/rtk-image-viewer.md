@@ -27,18 +27,23 @@ A component which shows an image sent via chat.
 
 ### Basic Usage
 
-```
+```html
 <rtk-image-viewer></rtk-image-viewer>
 ```
 
 ### With Properties
 
-```
-<rtk-image-viewer size="md"></rtk-image-viewer>
+```html
+<rtk-image-viewer
+ size="md">
+</rtk-image-viewer>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-image-viewer");
+```html
+<script>
+  const el = document.querySelector("rtk-image-viewer");
+
+
 </script>
 ```
 

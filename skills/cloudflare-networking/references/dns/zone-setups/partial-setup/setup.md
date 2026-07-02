@@ -33,8 +33,8 @@ If your domain is sensitive to downtime, instead of using Universal SSL, conside
 
 ## 1\. Convert your zone and review DNS records
 
-* [ Dashboard ](#tab-panel-8213)
-* [ API ](#tab-panel-8214)
+* [ Dashboard ](#tab-panel-8494)
+* [ API ](#tab-panel-8495)
 
 Make sure you have the correct plan
 
@@ -53,10 +53,19 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
-Create Zone
+**Create Zone**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "example.com",    "account": {        "id": "YOUR_ACCOUNT_ID"    },    "type": "partial"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "example.com",
+    "account": {
+        "id": "YOUR_ACCOUNT_ID"
+    },
+    "type": "partial"
+  }'
 ```
 
 ## 2\. Verify ownership for your domain
@@ -88,7 +97,7 @@ If your organization has multiple Cloudflare accounts, also consider using zone 
   1. Create CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.
 Example CNAME record at authoritative DNS provider
 The CNAME record for `www.example.com` would be:
-```
+```txt
 www.example.com CNAME www.example.com.cdn.cloudflare.net
 ```
 2. Remove any previously existing A, AAAA, or CNAME records referencing the hostnames you want to proxy through Cloudflare. For these hostnames, leave only the records pointing to `{your-hostname}.cdn.cloudflare.net`.

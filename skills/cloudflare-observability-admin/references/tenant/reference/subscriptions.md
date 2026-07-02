@@ -82,8 +82,13 @@ The following table lists sample values for various network services subscriptio
 
 If your reseller plan does not have access to a specific subscription, you will receive the following error when making an API call:
 
-```
-"errors": [        {            "code": 1225,            "message": "Your account does not have access to this product. Contact billing@cloudflare.com for assistance."        }]
+```json
+"errors": [
+        {
+            "code": 1225,
+            "message": "Your account does not have access to this product. Contact billing@cloudflare.com for assistance."
+        }
+]
 ```
 
 To change your program or - in some cases - get a specific subscription added to your reseller plan, contact `partners@cloudflare.com`. Agency Partners should contact [agency@cloudflare.com](mailto:agency@cloudflare.com)

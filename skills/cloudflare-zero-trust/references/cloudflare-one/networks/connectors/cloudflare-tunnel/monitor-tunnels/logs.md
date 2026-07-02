@@ -20,9 +20,7 @@ If you have access to the origin server, you can use the [\--loglevel flag](http
 
 To enable logs, [run the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#add-run-parameters-to-tunnel-service) using the `--loglevel info` and `--logfile <PATH>` flags. For example,
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 ```
 
@@ -57,18 +55,15 @@ The `cloudflared` daemon can stream logs from any tunnel in your account to the 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 
 1. On your local machine, authenticate `cloudflared` to your Cloudflare account:
-Terminal window
-```
+```sh
 cloudflared tunnel login
 ```
 2. Run `cloudflared tail` for a specific tunnel:
-Terminal window
-```
+```sh
 cloudflared tail <UUID>
 ```
 For a more structured view of the JSON message, you can pipe the output to tools like [jq ↗](https://stedolan.github.io/jq/):
-Terminal window
-```
+```sh
 cloudflared tail --output=json <UUID> | jq .
 ```
 
@@ -76,9 +71,7 @@ cloudflared tail --output=json <UUID> | jq .
 
 You can filter logs by event type (`--event`), event level (`--level`), or sampling rate (`-sampling`) to reduce the volume of logs streamed from the origin. This helps mitigate the performance impact on the origin, especially when the origin is normally under high load. For example:
 
-Terminal window
-
-```
+```sh
 cloudflared tail --level debug <UUID>
 ```
 
@@ -96,8 +89,7 @@ If you are running multiple `cloudflared` instances for the same tunnel (also kn
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Find the **Connector ID** for the `cloudflared` instance you want to view.
 3. Specify the Connector ID in `cloudflared tail`:
-Terminal window
-```
+```sh
 cloudflared tail --connector-id <CONNECTOR ID> <UUID>
 ```
 

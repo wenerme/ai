@@ -28,10 +28,53 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<NAME>",    "output_options": {        "field_names": [            "Action",            "ClientIP",            "ClientASN",            "ClientASNDescription",            "ClientCountry",            "ClientIPClass",            "ClientRefererHost",            "ClientRefererPath",            "ClientRefererQuery",            "ClientRefererScheme",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestPath",            "ClientRequestProtocol",            "ClientRequestQuery",            "ClientRequestScheme",            "ClientRequestUserAgent",            "EdgeColoCode",            "EdgeResponseStatus",            "Kind",            "MatchIndex",            "Metadata",            "OriginResponseStatus",            "OriginatorRayID",            "RayID",            "RuleID",            "Source",            "Datetime"        ],        "timestamp_format": "rfc3339"    },    "destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",    "max_upload_bytes": 5000000,    "max_upload_records": 1000,    "dataset": "firewall_events",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<NAME>",
+    "output_options": {
+        "field_names": [
+            "Action",
+            "ClientIP",
+            "ClientASN",
+            "ClientASNDescription",
+            "ClientCountry",
+            "ClientIPClass",
+            "ClientRefererHost",
+            "ClientRefererPath",
+            "ClientRefererQuery",
+            "ClientRefererScheme",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestPath",
+            "ClientRequestProtocol",
+            "ClientRequestQuery",
+            "ClientRequestScheme",
+            "ClientRequestUserAgent",
+            "EdgeColoCode",
+            "EdgeResponseStatus",
+            "Kind",
+            "MatchIndex",
+            "Metadata",
+            "OriginResponseStatus",
+            "OriginatorRayID",
+            "RayID",
+            "RuleID",
+            "Source",
+            "Datetime"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",
+    "max_upload_bytes": 5000000,
+    "max_upload_records": 1000,
+    "dataset": "firewall_events",
+    "enabled": true
+  }'
 ```
 
 ### Cloudflare HTTP events
@@ -41,10 +84,69 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<NAME>",    "output_options": {        "field_names": [            "ClientRequestMethod",            "EdgeResponseStatus",            "ClientIP",            "ClientSrcPort",            "CacheCacheStatus",            "ClientCountry",            "ClientDeviceType",            "ClientIPClass",            "ClientMTLSAuthCertFingerprint",            "ClientMTLSAuthStatus",            "ClientRegionCode",            "ClientRequestBytes",            "ClientRequestHost",            "ClientRequestPath",            "ClientRequestProtocol",            "ClientRequestReferer",            "ClientRequestScheme",            "ClientRequestSource",            "ClientRequestURI",            "ClientRequestUserAgent",            "ClientSSLCipher",            "ClientSSLProtocol",            "ClientXRequestedWith",            "EdgeEndTimestamp",            "EdgeRequestHost",            "EdgeResponseBodyBytes",            "EdgeResponseBytes",            "EdgeServerIP",            "EdgeStartTimestamp",            "SecurityActions",            "SecurityRuleIDs",            "SecuritySources",            "OriginIP",            "OriginResponseStatus",            "OriginSSLProtocol",            "ParentRayID",            "RayID",            "SecurityAction",            "WAFAttackScore",            "SecurityRuleID",            "SecurityRuleDescription",            "WAFSQLiAttackScore",            "WAFXSSAttackScore",            "EdgeStartTimestamp"        ],        "timestamp_format": "rfc3339"    },    "destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",    "max_upload_bytes": 5000000,    "max_upload_records": 1000,    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<NAME>",
+    "output_options": {
+        "field_names": [
+            "ClientRequestMethod",
+            "EdgeResponseStatus",
+            "ClientIP",
+            "ClientSrcPort",
+            "CacheCacheStatus",
+            "ClientCountry",
+            "ClientDeviceType",
+            "ClientIPClass",
+            "ClientMTLSAuthCertFingerprint",
+            "ClientMTLSAuthStatus",
+            "ClientRegionCode",
+            "ClientRequestBytes",
+            "ClientRequestHost",
+            "ClientRequestPath",
+            "ClientRequestProtocol",
+            "ClientRequestReferer",
+            "ClientRequestScheme",
+            "ClientRequestSource",
+            "ClientRequestURI",
+            "ClientRequestUserAgent",
+            "ClientSSLCipher",
+            "ClientSSLProtocol",
+            "ClientXRequestedWith",
+            "EdgeEndTimestamp",
+            "EdgeRequestHost",
+            "EdgeResponseBodyBytes",
+            "EdgeResponseBytes",
+            "EdgeServerIP",
+            "EdgeStartTimestamp",
+            "SecurityActions",
+            "SecurityRuleIDs",
+            "SecuritySources",
+            "OriginIP",
+            "OriginResponseStatus",
+            "OriginSSLProtocol",
+            "ParentRayID",
+            "RayID",
+            "SecurityAction",
+            "WAFAttackScore",
+            "SecurityRuleID",
+            "SecurityRuleDescription",
+            "WAFSQLiAttackScore",
+            "WAFXSSAttackScore",
+            "EdgeStartTimestamp"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "<QRADAR_URL>:<LOG_SOURCE_PORT>",
+    "max_upload_bytes": 5000000,
+    "max_upload_records": 1000,
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Cloudflare checks the accessibility of the IP address, port, and validates the certificate of the HTTP Receive log source. If all parameters are valid, a Logpush is created, and starts to send events to HTTP Receiver log source.

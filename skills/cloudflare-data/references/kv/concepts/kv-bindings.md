@@ -30,29 +30,53 @@ To execute your Worker, define the binding.
 
 In the following example, the binding is called `TODO`. In the `kv_namespaces` portion of your Wrangler configuration file, add:
 
-* [  wrangler.jsonc ](#tab-panel-9107)
-* [  wrangler.toml ](#tab-panel-9108)
+* [  wrangler.jsonc ](#tab-panel-9358)
+* [  wrangler.toml ](#tab-panel-9359)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker",
+  // ...
+  "kv_namespaces": [
+    {
+      "binding": "TODO",
+      "id": "06779da6940b431db6e566b4846d64db"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker",  // ...  "kv_namespaces": [    {      "binding": "TODO",      "id": "06779da6940b431db6e566b4846d64db"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker"
-[[kv_namespaces]]binding = "TODO"id = "06779da6940b431db6e566b4846d64db"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker"
+
+
+[[kv_namespaces]]
+binding = "TODO"
+id = "06779da6940b431db6e566b4846d64db"
 ```
 
 With this, the deployed Worker will have a `TODO` field in their environment object (the second parameter of the `fetch()` request handler). Any methods on the `TODO` binding will map to the KV namespace with an ID of `06779da6940b431db6e566b4846d64db` – which you called `My Tasks` earlier.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    // Get the value for the "to-do:123" key    // NOTE: Relies on the `TODO` KV binding that maps to the "My Tasks" namespace.    let value = await env.TODO.get("to-do:123");
-    // Return the value, as is, for the Response    return new Response(value);  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    // Get the value for the "to-do:123" key
+    // NOTE: Relies on the `TODO` KV binding that maps to the "My Tasks" namespace.
+    let value = await env.TODO.get("to-do:123");
+
+
+    // Return the value, as is, for the Response
+    return new Response(value);
+  },
+};
 ```
 
 ## Use KV bindings when developing locally
@@ -61,20 +85,35 @@ When you use Wrangler to develop locally with the `wrangler dev` command, Wrangl
 
 To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information.
 
-* [  wrangler.jsonc ](#tab-panel-9109)
-* [  wrangler.toml ](#tab-panel-9110)
+* [  wrangler.jsonc ](#tab-panel-9360)
+* [  wrangler.toml ](#tab-panel-9361)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker",
+  // ...
+  "kv_namespaces": [
+    {
+      "binding": "TODO",
+      "id": "06779da6940b431db6e566b4846d64db"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker",  // ...  "kv_namespaces": [    {      "binding": "TODO",      "id": "06779da6940b431db6e566b4846d64db"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker"
-[[kv_namespaces]]binding = "TODO"id = "06779da6940b431db6e566b4846d64db"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker"
+
+
+[[kv_namespaces]]
+binding = "TODO"
+id = "06779da6940b431db6e566b4846d64db"
 ```
 
 ## Access KV from Durable Objects and Workers using ES modules format
@@ -83,12 +122,23 @@ TOML
 
 An example might look like:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
-  async fetch(request) {    const valueFromKV = await this.env.NAMESPACE.get("someKey");    return new Response(valueFromKV);  }}
+
+
+export class MyDurableObject extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+  }
+
+
+  async fetch(request) {
+    const valueFromKV = await this.env.NAMESPACE.get("someKey");
+    return new Response(valueFromKV);
+  }
+}
 ```
 
 ```json

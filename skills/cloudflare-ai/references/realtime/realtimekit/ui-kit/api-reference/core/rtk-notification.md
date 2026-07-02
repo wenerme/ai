@@ -28,19 +28,25 @@ A component which shows a notification. You need to remove the element after you
 
 ### Basic Usage
 
-```
+```html
 <rtk-notification></rtk-notification>
 ```
 
 ### With Properties
 
-```
-<rtk-notification size="md"></rtk-notification>
+```html
+<rtk-notification
+ size="md">
+</rtk-notification>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-notification");
-  el.paused= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-notification");
+
+
+  el.paused= true;
+</script>
 ```
 
 ```json

@@ -24,30 +24,74 @@ To migrate, you should update the endpoints you use when [reading from or writin
 
 For example, you might have been using the previous endpoints to interact with your Ethereum Gateway.
 
-Previous curl
+**Previous curl**
 
-```
-curl https://web3-trial.cloudflare-eth.com/v1/rinkeby \--header 'Content-Type: application/json' \--data '{  "jsonrpc": "2.0",  "method": "eth_getBlockByNumber",  "params": ["0x2244", true],  "id": 1}'
+```bash
+curl https://web3-trial.cloudflare-eth.com/v1/rinkeby \
+--header 'Content-Type: application/json' \
+--data '{
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockByNumber",
+  "params": ["0x2244", true],
+  "id": 1
+}'
 ```
 
-Previous JS Fetch API
+**Previous JS Fetch API**
 
-```
-await fetch(  new Request('https://web3-trial.cloudflare-eth.com/v1/rinkeby', {    method: 'POST',    body: JSON.stringify({      jsonrpc: '2.0',      method: 'eth_getBlockByNumber',      params: ['0x2244', true],      id: 1,    }),    headers: {      'Content-Type': 'application/json',    },  })).then(resp => {  return resp.json();});
+```js
+await fetch(
+  new Request('https://web3-trial.cloudflare-eth.com/v1/rinkeby', {
+    method: 'POST',
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      method: 'eth_getBlockByNumber',
+      params: ['0x2244', true],
+      id: 1,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+).then(resp => {
+  return resp.json();
+});
 ```
 
 To migrate away from Rinkeby, change the end of your endpoint to use another testnet.
 
-New curl
+**New curl**
 
-```
-curl https://web3-trial.cloudflare-eth.com/v1/sepolia \--header 'Content-Type: application/json' \--data '{  "jsonrpc": "2.0",  "method": "eth_getBlockByNumber",  "params": ["0x2244", true],  "id": 1}'
+```bash
+curl https://web3-trial.cloudflare-eth.com/v1/sepolia \
+--header 'Content-Type: application/json' \
+--data '{
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockByNumber",
+  "params": ["0x2244", true],
+  "id": 1
+}'
 ```
 
-New JS Fetch API
+**New JS Fetch API**
 
-```
-await fetch(  new Request('https://web3-trial.cloudflare-eth.com/v1/sepolia', {    method: 'POST',    body: JSON.stringify({      jsonrpc: '2.0',      method: 'eth_getBlockByNumber',      params: ['0x2244', true],      id: 1,    }),    headers: {      'Content-Type': 'application/json',    },  })).then(resp => {  return resp.json();});
+```js
+await fetch(
+  new Request('https://web3-trial.cloudflare-eth.com/v1/sepolia', {
+    method: 'POST',
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      method: 'eth_getBlockByNumber',
+      params: ['0x2244', true],
+      id: 1,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+).then(resp => {
+  return resp.json();
+});
 ```
 
 ```json

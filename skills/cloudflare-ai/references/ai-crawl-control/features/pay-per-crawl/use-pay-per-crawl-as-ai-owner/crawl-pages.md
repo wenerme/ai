@@ -25,8 +25,10 @@ Once your AI crawler complies with Web Bot Auth, you can begin to crawl webpages
 
 When an AI crawler makes a request to a page protected by pay per crawl, the server will respond with `HTTP/2 402 Payment Required`. This response will also include the `crawler-price` header which specifies the cost to access the content. For example, a response may look like the following:
 
-```
-HTTP/2 402date: Fri, 06 Jun 2025 08:42:38 GMTcrawler-price: USD 0.01
+```txt
+HTTP/2 402
+date: Fri, 06 Jun 2025 08:42:38 GMT
+crawler-price: USD 0.01
 ```
 
 To access this content, the AI crawler must provide headers for paid access.
@@ -56,16 +58,22 @@ When you specify a header to indicate payment, you may receive one of two respon
 
 The value of the `crawler-charged` header indicates the exact amount that will be billed to your Cloudflare account for the request.
 
-```
-HTTP 200date: Fri, 06 Jun 2025 08:42:38 GMTcrawler-charged: USD 0.01
+```txt
+HTTP 200
+date: Fri, 06 Jun 2025 08:42:38 GMT
+crawler-charged: USD 0.01
 ```
 
 #### Unsuccessful response
 
 If the request is unsuccessful, you will receive an error response with a `crawler-error` header indicating the specific issue.
 
-```
-HTTP/2 402date: Fri, 06 Jun 2025 08:42:38 GMTcontent-type: text/plain; charset=utf-8crawler-price: USD 0.01crawler-error: InvalidCrawlerExactPrice
+```txt
+HTTP/2 402
+date: Fri, 06 Jun 2025 08:42:38 GMT
+content-type: text/plain; charset=utf-8
+crawler-price: USD 0.01
+crawler-error: InvalidCrawlerExactPrice
 ```
 
 Refer to [Pay Per Crawl error codes](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/error-codes/) for a complete list of error codes and troubleshooting guidance.
@@ -74,7 +82,7 @@ Refer to [Pay Per Crawl error codes](https://developers.cloudflare.com/ai-crawl-
 
 When you successfully access pay per crawl content (response with HTTP status code 200), the response will include `crawler-charged`. For example:
 
-```
+```plaintext
 crawler-charged: USD 0.01
 ```
 

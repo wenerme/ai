@@ -45,16 +45,61 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Create Spectrum application using a name for the origin
+**Create Spectrum application using a name for the origin**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "protocol": "tcp/22",    "dns": {        "type": "CNAME",        "name": "ssh.example.com"    },    "origin_direct": [        "tcp://192.0.2.1:22"    ],    "proxy_protocol": "off",    "ip_firewall": true,    "tls": "full",    "edge_ips": {        "type": "dynamic",        "connectivity": "all"    },    "traffic_type": "direct",    "argo_smart_routing": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "protocol": "tcp/22",
+    "dns": {
+        "type": "CNAME",
+        "name": "ssh.example.com"
+    },
+    "origin_direct": [
+        "tcp://192.0.2.1:22"
+    ],
+    "proxy_protocol": "off",
+    "ip_firewall": true,
+    "tls": "full",
+    "edge_ips": {
+        "type": "dynamic",
+        "connectivity": "all"
+    },
+    "traffic_type": "direct",
+    "argo_smart_routing": true
+  }'
 ```
 
 **Example data:**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "ea95132c15732412d22c1476fa83f27a",    "protocol": "tcp/22",    "dns": {      "type": "CNAME",      "name": "ssh.example.com"    },    "origin_direct": ["tcp://192.0.2.1:22"],    "proxy_protocol": "off",    "ip_firewall": true,    "tls": "full",    "edge_ips": {      "type": "dynamic",      "connectivity": "all"    },    "traffic_type": "direct",    "argo_smart_routing": true,    "created_on": "2014-01-02T02:20:00Z",    "modified_on": "2014-01-02T02:20:00Z"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "ea95132c15732412d22c1476fa83f27a",
+    "protocol": "tcp/22",
+    "dns": {
+      "type": "CNAME",
+      "name": "ssh.example.com"
+    },
+    "origin_direct": ["tcp://192.0.2.1:22"],
+    "proxy_protocol": "off",
+    "ip_firewall": true,
+    "tls": "full",
+    "edge_ips": {
+      "type": "dynamic",
+      "connectivity": "all"
+    },
+    "traffic_type": "direct",
+    "argo_smart_routing": true,
+    "created_on": "2014-01-02T02:20:00Z",
+    "modified_on": "2014-01-02T02:20:00Z"
+  }
+}
 ```
 
 ## Create a Spectrum application using a CNAME record
@@ -83,16 +128,47 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Create Spectrum application using a name for the origin
+**Create Spectrum application using a name for the origin**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dns": {        "type": "CNAME",        "name": "spectrum-cname.example.com"    },    "ip_firewall": false,    "protocol": "tcp/22",    "proxy_protocol": "off",    "tls": "off",    "origin_dns": {        "name": "cname-to-origin.example.com",        "ttl": 1200    },    "origin_port": 22  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "dns": {
+        "type": "CNAME",
+        "name": "spectrum-cname.example.com"
+    },
+    "ip_firewall": false,
+    "protocol": "tcp/22",
+    "proxy_protocol": "off",
+    "tls": "off",
+    "origin_dns": {
+        "name": "cname-to-origin.example.com",
+        "ttl": 1200
+    },
+    "origin_port": 22
+  }'
 ```
 
 **Example data:**
 
-```
-{  "dns": {    "type": "CNAME",    "name": "spectrum-cname.example.com"  },  "ip_firewall": false,  "protocol": "tcp/22",  "proxy_protocol": "off",  "tls": "off",  "origin_dns": {    "name": "cname-to-origin.example.com",    "ttl": 1200  },  "origin_port": 22}
+```json
+{
+  "dns": {
+    "type": "CNAME",
+    "name": "spectrum-cname.example.com"
+  },
+  "ip_firewall": false,
+  "protocol": "tcp/22",
+  "proxy_protocol": "off",
+  "tls": "off",
+  "origin_dns": {
+    "name": "cname-to-origin.example.com",
+    "ttl": 1200
+  },
+  "origin_port": 22
+}
 ```
 
 ## Create a Spectrum application using a load balancer
@@ -126,16 +202,47 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Create Spectrum application using a name for the origin
+**Create Spectrum application using a name for the origin**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dns": {        "type": "CNAME",        "name": "spectrum-cname.example.com"    },    "ip_firewall": false,    "protocol": "tcp/22",    "proxy_protocol": "off",    "tls": "off",    "origin_dns": {        "name": "cname-to-origin.example.com",        "ttl": 1200    },    "origin_port": 22  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "dns": {
+        "type": "CNAME",
+        "name": "spectrum-cname.example.com"
+    },
+    "ip_firewall": false,
+    "protocol": "tcp/22",
+    "proxy_protocol": "off",
+    "tls": "off",
+    "origin_dns": {
+        "name": "cname-to-origin.example.com",
+        "ttl": 1200
+    },
+    "origin_port": 22
+  }'
 ```
 
 **Example data:**
 
-```
-{  "dns": {    "type": "CNAME",    "name": "spectrum-cname.example.com"  },  "ip_firewall": false,  "protocol": "tcp/22",  "proxy_protocol": "off",  "tls": "off",  "origin_dns": {    "name": "cname-to-origin.example.com",    "ttl": 1200  },  "origin_port": 22}
+```json
+{
+  "dns": {
+    "type": "CNAME",
+    "name": "spectrum-cname.example.com"
+  },
+  "ip_firewall": false,
+  "protocol": "tcp/22",
+  "proxy_protocol": "off",
+  "tls": "off",
+  "origin_dns": {
+    "name": "cname-to-origin.example.com",
+    "ttl": 1200
+  },
+  "origin_port": 22
+}
 ```
 
 ## Create a Spectrum application using a virtual network origin
@@ -180,18 +287,63 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Create Spectrum application using a name for the origin
+**Create Spectrum application using a name for the origin**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "protocol": "tcp/22",    "dns": {        "type": "CNAME",        "name": "ssh.example.com"    },    "origin_direct": [        "tcp://10.0.0.5:22"    ],    "virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",    "proxy_protocol": "off",    "ip_firewall": true,    "tls": "off",    "edge_ips": {        "type": "dynamic",        "connectivity": "all"    },    "traffic_type": "direct"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "protocol": "tcp/22",
+    "dns": {
+        "type": "CNAME",
+        "name": "ssh.example.com"
+    },
+    "origin_direct": [
+        "tcp://10.0.0.5:22"
+    ],
+    "virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    "proxy_protocol": "off",
+    "ip_firewall": true,
+    "tls": "off",
+    "edge_ips": {
+        "type": "dynamic",
+        "connectivity": "all"
+    },
+    "traffic_type": "direct"
+  }'
 ```
 
 Set `origin_direct` to the private IP of your origin and `virtual_network_id` to the ID of the virtual network that the IP is routable within. You can list virtual networks for your account with the [List virtual networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/) endpoint.
 
 **Example data:**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "ea95132c15732412d22c1476fa83f27a",    "protocol": "tcp/22",    "dns": {      "type": "CNAME",      "name": "ssh.example.com"    },    "origin_direct": ["tcp://10.0.0.5:22"],    "virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",    "proxy_protocol": "off",    "ip_firewall": true,    "tls": "off",    "edge_ips": {      "type": "dynamic",      "connectivity": "all"    },    "traffic_type": "direct",    "created_on": "2014-01-02T02:20:00Z",    "modified_on": "2014-01-02T02:20:00Z"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "ea95132c15732412d22c1476fa83f27a",
+    "protocol": "tcp/22",
+    "dns": {
+      "type": "CNAME",
+      "name": "ssh.example.com"
+    },
+    "origin_direct": ["tcp://10.0.0.5:22"],
+    "virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    "proxy_protocol": "off",
+    "ip_firewall": true,
+    "tls": "off",
+    "edge_ips": {
+      "type": "dynamic",
+      "connectivity": "all"
+    },
+    "traffic_type": "direct",
+    "created_on": "2014-01-02T02:20:00Z",
+    "modified_on": "2014-01-02T02:20:00Z"
+  }
+}
 ```
 
 ## View traffic

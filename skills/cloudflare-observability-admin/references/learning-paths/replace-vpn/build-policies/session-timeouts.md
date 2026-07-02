@@ -32,8 +32,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-9229)
-* [ Terraform (v5) ](#tab-panel-9230)
+* [ Dashboard ](#tab-panel-9520)
+* [ Terraform (v5) ](#tab-panel-9521)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
@@ -46,9 +46,24 @@ To configure a session timeout for a Gateway policy:
   * `Zero Trust Write`
 2. Choose a Network (`l4`) or HTTP (`http`) policy with an Allow action.
 3. In the policy's [rule\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy), use the `check_session` argument to enable and configure a session timeout:
-```
-resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {  name        = "Company Wiki Network policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "Managed by Terraform - Allow employees to access company wiki IPs."  precedence  = 103  action      = "allow"  filters     = ["l4"]  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"  identity    = "identity.email matches \".*@example.com\""
-  rule_settings = {    check_session = {      enforce = true      duration = "1h30m0s"    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
+  name        = "Company Wiki Network policy"
+  enabled     = true
+  account_id  = var.cloudflare_account_id
+  description = "Managed by Terraform - Allow employees to access company wiki IPs."
+  precedence  = 103
+  action      = "allow"
+  filters     = ["l4"]
+  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
+  identity    = "identity.email matches \".*@example.com\""
+  rule_settings = {
+    check_session = {
+      enforce = true
+      duration = "1h30m0s"
+    }
+  }
+}
 ```
 
 Session checks are now enabled for the application protected by this policy. Users can continue to reach applications outside of the policy definition.

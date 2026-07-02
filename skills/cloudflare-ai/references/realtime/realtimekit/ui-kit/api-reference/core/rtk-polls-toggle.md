@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of polls. You need to pass the `meeting` object to it to see the unread polls count badge. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSidebar: boolean; sidebar: 'polls' }
 ```
 
@@ -35,19 +35,26 @@ TypeScript
 
 ### Basic Usage
 
-```
+```html
 <rtk-polls-toggle></rtk-polls-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-polls-toggle size="md" variant"button"></rtk-polls-toggle>
+```html
+<rtk-polls-toggle
+ size="md"
+ variant"button">
+</rtk-polls-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-polls-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-polls-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

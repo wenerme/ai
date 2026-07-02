@@ -27,16 +27,29 @@ A component which plays all the audio from participants and screenshares.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantsAudio } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipantsAudio />;}
+
+
+function MyComponent() {
+  return <RtkParticipantsAudio />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantsAudio } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipantsAudio      meeting={meeting}      preloadedAudioElem={htmlaudioelement}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantsAudio
+      meeting={meeting}
+      preloadedAudioElem={htmlaudioelement}
+    />
+  );
+}
 ```
 
 ```json

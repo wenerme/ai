@@ -16,7 +16,7 @@ The source and target URLs of a URL redirect support different URL components.
 
 The provided URL component examples in the reference table are based on the following URL:
 
-```
+```txt
 https://user:password@www.example.com:443/search?q=term#results
 ```
 
@@ -32,7 +32,7 @@ https://user:password@www.example.com:443/search?q=term#results
 
 Bulk Redirects also support target URLs without an authority component [2](#user-content-fn-2), like the following URL:
 
-```
+```txt
 magnet:?xt=urn:btih:2bd9d334e8d1e5bd7768755173222db5c6dea13b&dn=archlinux-2021.07.01-x86_64.iso
 ```
 

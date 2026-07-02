@@ -65,19 +65,27 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-5493)
-* [  TypeScript ](#tab-panel-5494)
+* [  JavaScript ](#tab-panel-5639)
+* [  TypeScript ](#tab-panel-5640)
 
-JavaScript
+**JavaScript**
 
+```js
+// Inside a workflow's run() method
+await this.agent.updateTaskStatus(taskId, "processing"); // RPC call
+await this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)
+this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)
+await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
 ```
-// Inside a workflow's run() methodawait this.agent.updateTaskStatus(taskId, "processing"); // RPC callawait this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Inside a workflow's run() methodawait this.agent.updateTaskStatus(taskId, "processing"); // RPC callawait this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
+```ts
+// Inside a workflow's run() method
+await this.agent.updateTaskStatus(taskId, "processing"); // RPC call
+await this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)
+this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)
+await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
 ```
 
 ### Agent to Workflow
@@ -138,19 +146,35 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-5495)
-* [  TypeScript ](#tab-panel-5496)
+* [  JavaScript ](#tab-panel-5641)
+* [  TypeScript ](#tab-panel-5642)
 
-JavaScript
+**JavaScript**
 
+```js
+// Workflow reports progress after each item
+for (let i = 0; i < items.length; i++) {
+  await step.do(`process-${i}`, async () => processItem(items[i]));
+  await this.reportProgress({
+    step: `process-${i}`,
+    percent: (i + 1) / items.length,
+    message: `Processed ${i + 1}/${items.length}`,
+  });
+}
 ```
-// Workflow reports progress after each itemfor (let i = 0; i < items.length; i++) {  await step.do(`process-${i}`, async () => processItem(items[i]));  await this.reportProgress({    step: `process-${i}`,    percent: (i + 1) / items.length,    message: `Processed ${i + 1}/${items.length}`,  });}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Workflow reports progress after each itemfor (let i = 0; i < items.length; i++) {  await step.do(`process-${i}`, async () => processItem(items[i]));  await this.reportProgress({    step: `process-${i}`,    percent: (i + 1) / items.length,    message: `Processed ${i + 1}/${items.length}`,  });}
+```ts
+// Workflow reports progress after each item
+for (let i = 0; i < items.length; i++) {
+  await step.do(`process-${i}`, async () => processItem(items[i]));
+  await this.reportProgress({
+    step: `process-${i}`,
+    percent: (i + 1) / items.length,
+    message: `Processed ${i + 1}/${items.length}`,
+  });
+}
 ```
 
 ### Human-in-the-loop approval
@@ -161,19 +185,41 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-5497)
-* [  TypeScript ](#tab-panel-5498)
+* [  JavaScript ](#tab-panel-5643)
+* [  TypeScript ](#tab-panel-5644)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await step.do(
+  "call-api",
+  {
+    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
+    timeout: "5 minutes",
+  },
+  async () => {
+    const response = await fetch("https://api.example.com/process");
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
+    return response.json();
+  },
+);
 ```
-const result = await step.do(  "call-api",  {    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },    timeout: "5 minutes",  },  async () => {    const response = await fetch("https://api.example.com/process");    if (!response.ok) throw new Error(`API error: ${response.status}`);    return response.json();  },);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await step.do(  "call-api",  {    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },    timeout: "5 minutes",  },  async () => {    const response = await fetch("https://api.example.com/process");    if (!response.ok) throw new Error(`API error: ${response.status}`);    return response.json();  },);
+```ts
+const result = await step.do(
+  "call-api",
+  {
+    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
+    timeout: "5 minutes",
+  },
+  async () => {
+    const response = await fetch("https://api.example.com/process");
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
+    return response.json();
+  },
+);
 ```
 
 ### State synchronization

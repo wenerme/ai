@@ -19,24 +19,54 @@ To replicate this example:
 * Disable query rewriting so that the original user query is matched directly
 * Configure your AI Search instance to have small chunk sizes (256 tokens is usually enough)
 
-* [  JavaScript ](#tab-panel-6707)
-* [  TypeScript ](#tab-panel-6708)
+* [  JavaScript ](#tab-panel-6955)
+* [  TypeScript ](#tab-panel-6956)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
+
+
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({
+      messages: [{ role: "user", content: userQuery }],
+    });
+
+
+    return Response.json({
+      files: searchResult.chunks.map((chunk) => chunk.item.key),
+    });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({      messages: [{ role: "user", content: userQuery }],    });
-    return Response.json({      files: searchResult.chunks.map((chunk) => chunk.item.key),    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI_SEARCH: AiSearchNamespace;}
-export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({      messages: [{ role: "user", content: userQuery }],    });
-    return Response.json({      files: searchResult.chunks.map((chunk) => chunk.item.key),    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI_SEARCH: AiSearchNamespace;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const url = new URL(request.url);
+    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
+
+
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({
+      messages: [{ role: "user", content: userQuery }],
+    });
+
+
+    return Response.json({
+      files: searchResult.chunks.map((chunk) => chunk.item.key),
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

@@ -26,14 +26,18 @@ A menu list component.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-menu-list></rtk-menu-list>
+```html
+<!-- component.html -->
+<rtk-menu-list></rtk-menu-list>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-menu-list [menuVariant]="'primary' | 'secondary'"></rtk-menu-list>
+```html
+<!-- component.html -->
+<rtk-menu-list
+ [menuVariant]="'primary' | 'secondary'">
+</rtk-menu-list>
 ```
 
 ```json

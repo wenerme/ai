@@ -18,29 +18,66 @@ Declarative [scheduled prompt tasks](https://developers.cloudflare.com/agents/ha
 
 ## submitMessages
 
-TypeScript
+**TypeScript**
 
-```
-async submitMessages(  messages: UIMessage[],  options?: {    submissionId?: string;    idempotencyKey?: string;    metadata?: Record<string, unknown>;  },): Promise<SubmitMessagesResult>
+```ts
+async submitMessages(
+  messages: UIMessage[],
+  options?: {
+    submissionId?: string;
+    idempotencyKey?: string;
+    metadata?: Record<string, unknown>;
+  },
+): Promise<SubmitMessagesResult>
 ```
 
 `submitMessages()` accepts serializable `UIMessage[]` values. It does not accept the function form supported by `saveMessages((messages) => ...)`, because durable submissions persist work before execution and cannot store closures. The array must contain at least one message.
 
-* [  JavaScript ](#tab-panel-5691)
-* [  TypeScript ](#tab-panel-5692)
+* [  JavaScript ](#tab-panel-5867)
+* [  TypeScript ](#tab-panel-5868)
 
-JavaScript
+**JavaScript**
 
+```js
+const submission = await this.submitMessages(
+  [
+    {
+      id: crypto.randomUUID(),
+      role: "user",
+      parts: [{ type: "text", text: "Process webhook event 123" }],
+    },
+  ],
+  { idempotencyKey: "webhook-event-123" },
+);
+
+
+return Response.json({
+  submissionId: submission.submissionId,
+  status: submission.status,
+  accepted: submission.accepted,
+});
 ```
-const submission = await this.submitMessages(  [    {      id: crypto.randomUUID(),      role: "user",      parts: [{ type: "text", text: "Process webhook event 123" }],    },  ],  { idempotencyKey: "webhook-event-123" },);
-return Response.json({  submissionId: submission.submissionId,  status: submission.status,  accepted: submission.accepted,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const submission = await this.submitMessages(  [    {      id: crypto.randomUUID(),      role: "user",      parts: [{ type: "text", text: "Process webhook event 123" }],    },  ],  { idempotencyKey: "webhook-event-123" },);
-return Response.json({  submissionId: submission.submissionId,  status: submission.status,  accepted: submission.accepted,});
+```ts
+const submission = await this.submitMessages(
+  [
+    {
+      id: crypto.randomUUID(),
+      role: "user",
+      parts: [{ type: "text", text: "Process webhook event 123" }],
+    },
+  ],
+  { idempotencyKey: "webhook-event-123" },
+);
+
+
+return Response.json({
+  submissionId: submission.submissionId,
+  status: submission.status,
+  accepted: submission.accepted,
+});
 ```
 
 ## Submission statuses
@@ -58,23 +95,41 @@ return Response.json({  submissionId: submission.submissionId,  status: submissi
 
 Pass an `idempotencyKey` from your external system. Retrying with the same key returns the existing submission with `accepted: false` instead of inserting duplicate messages:
 
-* [  JavaScript ](#tab-panel-5689)
-* [  TypeScript ](#tab-panel-5690)
+* [  JavaScript ](#tab-panel-5865)
+* [  TypeScript ](#tab-panel-5866)
 
-JavaScript
+**JavaScript**
 
+```js
+const first = await this.submitMessages(messages, {
+  idempotencyKey: payload.id,
+});
+
+
+const retry = await this.submitMessages(messages, {
+  idempotencyKey: payload.id,
+});
+
+
+console.log(first.submissionId === retry.submissionId); // true
+console.log(retry.accepted); // false
 ```
-const first = await this.submitMessages(messages, {  idempotencyKey: payload.id,});
-const retry = await this.submitMessages(messages, {  idempotencyKey: payload.id,});
-console.log(first.submissionId === retry.submissionId); // trueconsole.log(retry.accepted); // false
-```
 
-TypeScript
+**TypeScript**
 
-```
-const first = await this.submitMessages(messages, {  idempotencyKey: payload.id,});
-const retry = await this.submitMessages(messages, {  idempotencyKey: payload.id,});
-console.log(first.submissionId === retry.submissionId); // trueconsole.log(retry.accepted); // false
+```ts
+const first = await this.submitMessages(messages, {
+  idempotencyKey: payload.id,
+});
+
+
+const retry = await this.submitMessages(messages, {
+  idempotencyKey: payload.id,
+});
+
+
+console.log(first.submissionId === retry.submissionId); // true
+console.log(retry.accepted); // false
 ```
 
 If you pass both `submissionId` and `idempotencyKey`, they must identify the same submission. If they point at different existing submissions, `submitMessages()` throws.
@@ -83,25 +138,47 @@ If you pass both `submissionId` and `idempotencyKey`, they must identify the sam
 
 Use the submission APIs to inspect active work, cancel a durable submission, and clean up terminal records:
 
-* [  JavaScript ](#tab-panel-5693)
-* [  TypeScript ](#tab-panel-5694)
+* [  JavaScript ](#tab-panel-5869)
+* [  TypeScript ](#tab-panel-5870)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const current = await this.inspectSubmission(submission.submissionId);
-const active = await this.listSubmissions({  status: ["pending", "running"],});
+
+
+const active = await this.listSubmissions({
+  status: ["pending", "running"],
+});
+
+
 await this.cancelSubmission(submission.submissionId, "No longer needed");
-await this.deleteSubmissions({  status: ["completed", "error", "aborted"],  completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),});
+
+
+await this.deleteSubmissions({
+  status: ["completed", "error", "aborted"],
+  completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const current = await this.inspectSubmission(submission.submissionId);
-const active = await this.listSubmissions({  status: ["pending", "running"],});
+
+
+const active = await this.listSubmissions({
+  status: ["pending", "running"],
+});
+
+
 await this.cancelSubmission(submission.submissionId, "No longer needed");
-await this.deleteSubmissions({  status: ["completed", "error", "aborted"],  completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),});
+
+
+await this.deleteSubmissions({
+  status: ["completed", "error", "aborted"],
+  completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+});
 ```
 
 Use `cancelSubmission(submissionId)` for durable cancellation across Worker and Durable Object RPC boundaries. Use `AbortSignal` with `saveMessages()` or `continueLastTurn()` only when the caller creates the signal inside the Durable Object that runs the turn.

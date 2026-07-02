@@ -28,10 +28,13 @@ You must set `type = "webpack"` in your Wrangler file to use Wrangler's webpack 
 
 This is the default webpack configuration that Wrangler uses to build your Worker:
 
-JavaScript
+**JavaScript**
 
-```
-module.exports = {  target: "webworker",  entry: "./index.js", // inferred from "main" in package.json};
+```js
+module.exports = {
+  target: "webworker",
+  entry: "./index.js", // inferred from "main" in package.json
+};
 ```
 
 The `"main"` field in the `package.json` file determines the `entry` configuration value. When undefined or missing, `"main"` defaults to `index.js`, meaning that `entry` also defaults to `index.js`.
@@ -44,74 +47,143 @@ You can tell Wrangler to use a custom webpack configuration file by setting `web
 
 ### Example
 
-JavaScript
+**JavaScript**
 
-```
-module.exports = {  target: "webworker",  entry: "./index.js",  mode: "production",};
-```
-
-* [  wrangler.jsonc ](#tab-panel-13051)
-* [  wrangler.toml ](#tab-panel-13052)
-
-JSONC
-
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "type": "webpack",  "name": "my-worker",  "account_id": "12345678901234567890",  "workers_dev": true,  "webpack_config": "webpack.config.js"}
+```js
+module.exports = {
+  target: "webworker",
+  entry: "./index.js",
+  mode: "production",
+};
 ```
 
-TOML
+* [  wrangler.jsonc ](#tab-panel-13346)
+* [  wrangler.toml ](#tab-panel-13347)
 
+**JSONC**
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "type": "webpack",
+  "name": "my-worker",
+  "account_id": "12345678901234567890",
+  "workers_dev": true,
+  "webpack_config": "webpack.config.js"
+}
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"type = "webpack"name = "my-worker"account_id = "12345678901234567890"workers_dev = truewebpack_config = "webpack.config.js"
+
+**TOML**
+
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+type = "webpack"
+name = "my-worker"
+account_id = "12345678901234567890"
+workers_dev = true
+webpack_config = "webpack.config.js"
 ```
 
 ### Example with multiple environments
 
 It is possible to use different webpack configuration files within different [Wrangler environments](https://developers.cloudflare.com/workers/wrangler/environments/). For example, the `"webpack.development.js"` configuration file is used during `wrangler dev` for development, but other, more production-ready configurations are used when building for the staging or production environments:
 
-* [  wrangler.jsonc ](#tab-panel-13053)
-* [  wrangler.toml ](#tab-panel-13054)
+* [  wrangler.jsonc ](#tab-panel-13348)
+* [  wrangler.toml ](#tab-panel-13349)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "type": "webpack",
+  "name": "my-worker-dev",
+  "account_id": "12345678901234567890",
+  "workers_dev": true,
+  "webpack_config": "webpack.development.js",
+  "env": {
+    "staging": {
+      "name": "my-worker-staging",
+      "webpack_config": "webpack.staging.js"
+    },
+    "production": {
+      "name": "my-worker-production",
+      "webpack_config": "webpack.production.js"
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "type": "webpack",  "name": "my-worker-dev",  "account_id": "12345678901234567890",  "workers_dev": true,  "webpack_config": "webpack.development.js",  "env": {    "staging": {      "name": "my-worker-staging",      "webpack_config": "webpack.staging.js"    },    "production": {      "name": "my-worker-production",      "webpack_config": "webpack.production.js"    }  }}
+
+**TOML**
+
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+type = "webpack"
+name = "my-worker-dev"
+account_id = "12345678901234567890"
+workers_dev = true
+webpack_config = "webpack.development.js"
+
+
+[env.staging]
+name = "my-worker-staging"
+webpack_config = "webpack.staging.js"
+
+
+[env.production]
+name = "my-worker-production"
+webpack_config = "webpack.production.js"
 ```
 
-TOML
+**JavaScript**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"type = "webpack"name = "my-worker-dev"account_id = "12345678901234567890"workers_dev = truewebpack_config = "webpack.development.js"
-[env.staging]name = "my-worker-staging"webpack_config = "webpack.staging.js"
-[env.production]name = "my-worker-production"webpack_config = "webpack.production.js"
-```
-
-JavaScript
-
-```
-module.exports = {  target: "webworker",  devtool: "cheap-module-source-map", // avoid "eval": Workers environment doesn’t allow it  entry: "./index.js",  mode: "development",};
+```js
+module.exports = {
+  target: "webworker",
+  devtool: "cheap-module-source-map", // avoid "eval": Workers environment doesn’t allow it
+  entry: "./index.js",
+  mode: "development",
+};
 ```
 
-JavaScript
+**JavaScript**
 
-```
-module.exports = {  target: "webworker",  entry: "./index.js",  mode: "production",};
+```js
+module.exports = {
+  target: "webworker",
+  entry: "./index.js",
+  mode: "production",
+};
 ```
 
 ### Using with Workers Sites
 
 Wrangler commands are run from the project root. Ensure your `entry` and `context` are set appropriately. For a project with structure:
 
-```
-.├── public│   ├── 404.html│   └── index.html├── workers-site│   ├── index.js│   ├── package-lock.json│   ├── package.json│   └── webpack.config.js└── wrangler.toml
+```txt
+.
+├── public
+│   ├── 404.html
+│   └── index.html
+├── workers-site
+│   ├── index.js
+│   ├── package-lock.json
+│   ├── package.json
+│   └── webpack.config.js
+└── wrangler.toml
 ```
 
 The corresponding `webpack.config.js` file should look like this:
 
-JavaScript
+**JavaScript**
 
-```
-module.exports = {  context: __dirname,  target: "webworker",  entry: "./index.js",  mode: "production",};
+```js
+module.exports = {
+  context: __dirname,
+  target: "webworker",
+  entry: "./index.js",
+  mode: "production",
+};
 ```
 
 ## Shimming globals
@@ -122,11 +194,22 @@ For example, you may want to replace the `URL` global class with the `url-polyfi
 
 ### Example with webpack plugin
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const webpack = require("webpack");
-module.exports = {  target: "webworker",  entry: "./index.js",  mode: "production",  plugins: [    new webpack.ProvidePlugin({      URL: "url-polyfill",    }),  ],};
+
+
+module.exports = {
+  target: "webworker",
+  entry: "./index.js",
+  mode: "production",
+  plugins: [
+    new webpack.ProvidePlugin({
+      URL: "url-polyfill",
+    }),
+  ],
+};
 ```
 
 ## Backwards compatibility

@@ -23,10 +23,27 @@ When using the Cloudflare Terraform provider, you can only manage buckets. To co
 
 With [terraform ↗](https://developer.hashicorp.com/terraform/downloads) installed, create `main.tf` and copy the content below replacing with your API Token.
 
-```
-terraform {  required_providers {    cloudflare = {      source = "cloudflare/cloudflare"      version = "~> 4"    }  }}
-provider "cloudflare" {  api_token = "<YOUR_API_TOKEN>"}
-resource "cloudflare_r2_bucket" "cloudflare-bucket" {  account_id = "<YOUR_ACCOUNT_ID>"  name       = "my-tf-test-bucket"  location   = "WEUR"}
+```hcl
+terraform {
+  required_providers {
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = "~> 4"
+    }
+  }
+}
+
+
+provider "cloudflare" {
+  api_token = "<YOUR_API_TOKEN>"
+}
+
+
+resource "cloudflare_r2_bucket" "cloudflare-bucket" {
+  account_id = "<YOUR_ACCOUNT_ID>"
+  name       = "my-tf-test-bucket"
+  location   = "WEUR"
+}
 ```
 
 You can then use `terraform plan` to view the changes and `terraform apply` to apply changes.

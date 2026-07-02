@@ -20,23 +20,97 @@ The example queries for ingress traffic. To query for egress traffic, change the
 
 ## API Call
 
-Terminal window
+```bash
+PAYLOAD='{ "query":
+  "query GetTunnelHealthCheckResults($accountTag: string, $datetimeStart: string, $datetimeEnd: string) {
+      viewer {
+        accounts(filter: {accountTag: $accountTag}) {
+          magicTransitTunnelTrafficAdaptiveGroups(
+            limit: 100,
+            filter: {
+              datetime_geq: $datetimeStart,
+              datetime_lt:  $datetimeEnd,
+              direction: $direction
+            }
+          ) {
+            avg {
+              bitRateFiveMinutes
+            }
+            dimensions {
+              tunnelName
+              datetimeFiveMinutes
+            }
+          }
+        }
+      }
+  }",
+    "variables": {
+      "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
+      "direction": "ingress",
+      "datetimeStart": "2022-05-04T11:00:00.000Z",
+      "datetimeEnd": "2022-05-04T12:00:00.000Z"
+    }
+  }
+}'
 
-```
-PAYLOAD='{ "query":  "query GetTunnelHealthCheckResults($accountTag: string, $datetimeStart: string, $datetimeEnd: string) {      viewer {        accounts(filter: {accountTag: $accountTag}) {          magicTransitTunnelTrafficAdaptiveGroups(            limit: 100,            filter: {              datetime_geq: $datetimeStart,              datetime_lt:  $datetimeEnd,              direction: $direction            }          ) {            avg {              bitRateFiveMinutes            }            dimensions {              tunnelName              datetimeFiveMinutes            }          }        }      }  }",    "variables": {      "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",      "direction": "ingress",      "datetimeStart": "2022-05-04T11:00:00.000Z",      "datetimeEnd": "2022-05-04T12:00:00.000Z"    }  }}'
-# curl with Legacy API Keycurl https://api.cloudflare.com/client/v4/graphql \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data "$(echo $PAYLOAD)"
-# curl with API Tokencurl https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data "$(echo $PAYLOAD)"
+
+# curl with Legacy API Key
+curl https://api.cloudflare.com/client/v4/graphql \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data "$(echo $PAYLOAD)"
+
+
+# curl with API Token
+curl https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data "$(echo $PAYLOAD)"
 ```
 
 The returned values represent the total bandwidth in bits per second during the five-minute interval for a particular tunnel. To use aggregations other than five minutes, use the same time window for both your metric and datetime. For example, to analyze hourly groups, use `bitRateHour` and `datetimeHour`.
 
 The result is in JSON (as requested), so piping the output to `jq` formats it for easier parsing, as in the following example:
 
-Terminal window
+```bash
+curl https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data "$(echo $PAYLOAD)" | jq .
 
-```
-curl https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data "$(echo $PAYLOAD)" | jq .
-## Example response:#=> {#=>   "data": {#=>     "viewer": {#=>       "accounts": [#=>         {#=>           "magicTransitTunnelTrafficAdaptiveGroups": [#=>             {#=>               avg: { bitRateFiveMinutes:  327680 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:00-00:00',#=>                 tunnelName: 'tunnel_name'#=>               }#=>             },#=>             {#=>               avg: { bitRateFiveMinutes:  627213680 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:05-00:00',#=>                 tunnelName: 'another_tunnel'#=>              }#=>             }#=>           ]#=>         }#=>       ]#=>     }#=>   },#=>   "errors": null#=> }
+
+## Example response:
+#=> {
+#=>   "data": {
+#=>     "viewer": {
+#=>       "accounts": [
+#=>         {
+#=>           "magicTransitTunnelTrafficAdaptiveGroups": [
+#=>             {
+#=>               avg: { bitRateFiveMinutes:  327680 },
+#=>               dimensions: {
+#=>                 datetimeFiveMinute: '2021-05-12T22:00-00:00',
+#=>                 tunnelName: 'tunnel_name'
+#=>               }
+#=>             },
+#=>             {
+#=>               avg: { bitRateFiveMinutes:  627213680 },
+#=>               dimensions: {
+#=>                 datetimeFiveMinute: '2021-05-12T22:05-00:00',
+#=>                 tunnelName: 'another_tunnel'
+#=>              }
+#=>             }
+#=>           ]
+#=>         }
+#=>       ]
+#=>     }
+#=>   },
+#=>   "errors": null
+#=> }
 ```
 
 ## Footnotes

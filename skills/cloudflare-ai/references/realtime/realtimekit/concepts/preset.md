@@ -34,10 +34,14 @@ A set of default presets are created for you, when you create an app via the [Cl
 
 You can also create a preset using the [dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit) or the [Create Preset API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/).
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/presets \    -H 'Content-Type: application/json' \    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \    -d '{          "config": {            ...<preset-configuration-json>        }'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/presets \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+    -d '{
+          "config": {
+            ...<preset-configuration-json>
+        }'
 ```
 
 ### Preset Editor

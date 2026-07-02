@@ -20,9 +20,9 @@ Create point-in-time snapshots of sandbox directories and restore them with copy
 
 Create a point-in-time snapshot of a directory and upload it to R2 storage.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 ```
 
@@ -40,25 +40,41 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-10201)
-* [  TypeScript ](#tab-panel-10202)
+* [  JavaScript ](#tab-panel-10496)
+* [  TypeScript ](#tab-panel-10497)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Create a backup of /workspaceconst backup = await sandbox.createBackup({ dir: "/workspace" });
-// Later, restore the backupawait sandbox.restoreBackup(backup);
+
+
+// Create a backup of /workspace
+const backup = await sandbox.createBackup({ dir: "/workspace" });
+
+
+// Later, restore the backup
+await sandbox.restoreBackup(backup);
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Create a backup of /workspaceconst backup = await sandbox.createBackup({ dir: "/workspace" });
-// Later, restore the backupawait sandbox.restoreBackup(backup);
+
+
+// Create a backup of /workspace
+const backup = await sandbox.createBackup({ dir: "/workspace" });
+
+
+// Later, restore the backup
+await sandbox.restoreBackup(backup);
 ```
 
 **How it works**:
@@ -100,9 +116,9 @@ Partially-written files may not be captured consistently. Only completed writes 
 
 Restore a previously created backup into a directory.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResult>
 ```
 
@@ -116,21 +132,37 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-10203)
-* [  TypeScript ](#tab-panel-10204)
+* [  JavaScript ](#tab-panel-10498)
+* [  TypeScript ](#tab-panel-10499)
 
-JavaScript
+**JavaScript**
 
+```js
+// Create a named backup with 24-hour TTL
+const backup = await sandbox.createBackup({
+  dir: "/workspace",
+  name: "before-refactor",
+  ttl: 86400,
+});
+
+
+// Store the handle for later use
+await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
 ```
-// Create a named backup with 24-hour TTLconst backup = await sandbox.createBackup({  dir: "/workspace",  name: "before-refactor",  ttl: 86400,});
-// Store the handle for later useawait env.KV.put(`backup:${userId}`, JSON.stringify(backup));
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Create a named backup with 24-hour TTLconst backup = await sandbox.createBackup({  dir: "/workspace",  name: "before-refactor",  ttl: 86400,});
-// Store the handle for later useawait env.KV.put(`backup:${userId}`, JSON.stringify(backup));
+```ts
+// Create a named backup with 24-hour TTL
+const backup = await sandbox.createBackup({
+  dir: "/workspace",
+  name: "before-refactor",
+  ttl: 86400,
+});
+
+
+// Store the handle for later use
+await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
 ```
 
 **How it works**:
@@ -168,23 +200,45 @@ In production, the FUSE mount is lost when the sandbox sleeps or restarts. Re-re
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-10205)
-* [  TypeScript ](#tab-panel-10206)
+* [  JavaScript ](#tab-panel-10500)
+* [  TypeScript ](#tab-panel-10501)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Exclude gitignored files from the backupconst backup = await sandbox.createBackup({  dir: "/workspace",  useGitignore: true,});
-// Without useGitignore (default), all files are includedconst fullBackup = await sandbox.createBackup({  dir: "/workspace",});
+
+
+// Exclude gitignored files from the backup
+const backup = await sandbox.createBackup({
+  dir: "/workspace",
+  useGitignore: true,
+});
+
+
+// Without useGitignore (default), all files are included
+const fullBackup = await sandbox.createBackup({
+  dir: "/workspace",
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-// Exclude gitignored files from the backupconst backup = await sandbox.createBackup({  dir: "/workspace",  useGitignore: true,});
-// Without useGitignore (default), all files are includedconst fullBackup = await sandbox.createBackup({  dir: "/workspace",});
+
+
+// Exclude gitignored files from the backup
+const backup = await sandbox.createBackup({
+  dir: "/workspace",
+  useGitignore: true,
+});
+
+
+// Without useGitignore (default), all files are included
+const fullBackup = await sandbox.createBackup({
+  dir: "/workspace",
+});
 ```
 
 If the directory is not inside a git repository, `useGitignore` has no effect and all files are included. If `useGitignore` is `true` but `git` is not installed in the container, a `BackupCreateError` is thrown.
@@ -193,42 +247,86 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-10207)
-* [  TypeScript ](#tab-panel-10208)
+* [  JavaScript ](#tab-panel-10502)
+* [  TypeScript ](#tab-panel-10503)
 
-JavaScript
+**JavaScript**
 
+```js
+// Save checkpoint before risky operation
+const checkpoint = await sandbox.createBackup({ dir: "/workspace" });
+
+
+try {
+  await sandbox.exec("npm install some-experimental-package");
+  await sandbox.exec("npm run build");
+} catch (error) {
+  // Restore to the checkpoint if something goes wrong
+  await sandbox.restoreBackup(checkpoint);
+}
 ```
-// Save checkpoint before risky operationconst checkpoint = await sandbox.createBackup({ dir: "/workspace" });
-try {  await sandbox.exec("npm install some-experimental-package");  await sandbox.exec("npm run build");} catch (error) {  // Restore to the checkpoint if something goes wrong  await sandbox.restoreBackup(checkpoint);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Save checkpoint before risky operationconst checkpoint = await sandbox.createBackup({ dir: "/workspace" });
-try {  await sandbox.exec("npm install some-experimental-package");  await sandbox.exec("npm run build");} catch (error) {  // Restore to the checkpoint if something goes wrong  await sandbox.restoreBackup(checkpoint);}
+```ts
+// Save checkpoint before risky operation
+const checkpoint = await sandbox.createBackup({ dir: "/workspace" });
+
+
+try {
+  await sandbox.exec("npm install some-experimental-package");
+  await sandbox.exec("npm run build");
+} catch (error) {
+  // Restore to the checkpoint if something goes wrong
+  await sandbox.restoreBackup(checkpoint);
+}
 ```
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-10209)
-* [  TypeScript ](#tab-panel-10210)
+* [  JavaScript ](#tab-panel-10504)
+* [  TypeScript ](#tab-panel-10505)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-try {  const backup = await sandbox.createBackup({ dir: "/workspace" });  console.log(`Backup created: ${backup.id}`);} catch (error) {  if (error.code === "INVALID_BACKUP_CONFIG") {    console.error("Configuration error:", error.message);  } else if (error.code === "BACKUP_CREATE_FAILED") {    console.error("Backup failed:", error.message);  }}
+
+
+try {
+  const backup = await sandbox.createBackup({ dir: "/workspace" });
+  console.log(`Backup created: ${backup.id}`);
+} catch (error) {
+  if (error.code === "INVALID_BACKUP_CONFIG") {
+    console.error("Configuration error:", error.message);
+  } else if (error.code === "BACKUP_CREATE_FAILED") {
+    console.error("Backup failed:", error.message);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-try {  const backup = await sandbox.createBackup({ dir: "/workspace" });  console.log(`Backup created: ${backup.id}`);} catch (error) {  if (error.code === "INVALID_BACKUP_CONFIG") {    console.error("Configuration error:", error.message);  } else if (error.code === "BACKUP_CREATE_FAILED") {    console.error("Backup failed:", error.message);  }}
+
+
+try {
+  const backup = await sandbox.createBackup({ dir: "/workspace" });
+  console.log(`Backup created: ${backup.id}`);
+} catch (error) {
+  if (error.code === "INVALID_BACKUP_CONFIG") {
+    console.error("Configuration error:", error.message);
+  } else if (error.code === "BACKUP_CREATE_FAILED") {
+    console.error("Backup failed:", error.message);
+  }
+}
 ```
 
 ## Behavior
@@ -247,10 +345,16 @@ The TTL does **not** automatically delete objects from R2\. Expired backup archi
 
 ### `BackupOptions`
 
-TypeScript
+**TypeScript**
 
-```
-interface BackupOptions {  dir: string;  name?: string;  ttl?: number;  useGitignore?: boolean;  localBucket?: boolean;}
+```ts
+interface BackupOptions {
+  dir: string;
+  name?: string;
+  ttl?: number;
+  useGitignore?: boolean;
+  localBucket?: boolean;
+}
 ```
 
 **Fields**:
@@ -263,10 +367,13 @@ interface BackupOptions {  dir: string;  name?: string;  ttl?: number;  useGitig
 
 ### `DirectoryBackup`
 
-TypeScript
+**TypeScript**
 
-```
-interface DirectoryBackup {  readonly id: string;  readonly dir: string;}
+```ts
+interface DirectoryBackup {
+  readonly id: string;
+  readonly dir: string;
+}
 ```
 
 **Fields**:
@@ -276,10 +383,14 @@ interface DirectoryBackup {  readonly id: string;  readonly dir: string;}
 
 ### `RestoreBackupResult`
 
-TypeScript
+**TypeScript**
 
-```
-interface RestoreBackupResult {  success: boolean;  dir: string;  id: string;}
+```ts
+interface RestoreBackupResult {
+  success: boolean;
+  dir: string;
+  id: string;
+}
 ```
 
 **Fields**:

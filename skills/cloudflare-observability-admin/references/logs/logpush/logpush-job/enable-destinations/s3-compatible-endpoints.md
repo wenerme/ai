@@ -78,9 +78,7 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
 * **name** (optional) - Use your domain name as the job name.
 * **destination\_conf** \- A log destination consisting of an endpoint name, bucket name, bucket path, region, access-key-id, and secret-access-key in the following string format:
 
-Terminal window
-
-```
+```bash
 "s3://<BUCKET_NAME>/<BUCKET_PATH>?region=<REGION>&access-key-id=<ACCESS_KEY_ID>&secret-access-key=<SECRET_ACCESS_KEY>&endpoint=<ENDPOINT_URL>"
 ```
 
@@ -98,16 +96,57 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "s3://<BUCKET_NAME>/<BUCKET_PATH>?region=<REGION>&access-key-id=<ACCESS_KEY_ID>&secret-access-key=<SECRET_ACCESS_KEY>&endpoint=<ENDPOINT_URL>",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "s3://<BUCKET_NAME>/<BUCKET_PATH>?region=<REGION>&access-key-id=<ACCESS_KEY_ID>&secret-access-key=<SECRET_ACCESS_KEY>&endpoint=<ENDPOINT_URL>",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Response:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_NAME>/<BUCKET_PATH>?region=<REGION>&access-key-id=<ACCESS_KEY_ID>&secret-access-key=<SECRET_ACCESS_KEY>&endpoint=<ENDPOINT_URL>",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_NAME>/<BUCKET_PATH>?region=<REGION>&access-key-id=<ACCESS_KEY_ID>&secret-access-key=<SECRET_ACCESS_KEY>&endpoint=<ENDPOINT_URL>",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/) to update a job (including enabling and disabling).

@@ -40,19 +40,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-message></rtk-chat-message>
 ```
 
 ### With Properties
 
-```
-<rtk-chat-message></rtk-chat-message>
+```html
+<rtk-chat-message>
+</rtk-chat-message>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat-message");
-  el.alignRight= true;  el.canDelete= true;  el.canEdit= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat-message");
+
+
+  el.alignRight= true;
+  el.canDelete= true;
+  el.canEdit= true;
+</script>
 ```
 
 ```json

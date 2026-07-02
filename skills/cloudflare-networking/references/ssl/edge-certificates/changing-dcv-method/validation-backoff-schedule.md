@@ -42,7 +42,7 @@ Tokens may also become invalid upon validation failure. For more details, refer 
 
 Cloudflare caps the check backoff to a maximum of four hours to avoid the function growing exponentially, which would result in large gaps between checks towards the end of the month.
 
-```
+```txt
 now() + min((floor(60 * pow(1.05, retry_attempt)) * INTERVAL '1 second'), INTERVAL '4 hours')
 ```
 

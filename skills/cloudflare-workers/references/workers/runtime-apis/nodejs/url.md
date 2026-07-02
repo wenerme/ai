@@ -20,11 +20,18 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 Returns the Punycode ASCII serialization of the domain. If domain is an invalid domain, the empty string is returned.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { domainToASCII } from "node:url";
-console.log(domainToASCII("español.com"));// Prints xn--espaol-zwa.comconsole.log(domainToASCII("中文.com"));// Prints xn--fiq228c.comconsole.log(domainToASCII("xn--iñvalid.com"));// Prints an empty string
+
+
+console.log(domainToASCII("español.com"));
+// Prints xn--espaol-zwa.com
+console.log(domainToASCII("中文.com"));
+// Prints xn--fiq228c.com
+console.log(domainToASCII("xn--iñvalid.com"));
+// Prints an empty string
 ```
 
 ## domainToUnicode
@@ -33,11 +40,18 @@ Returns the Unicode serialization of the domain. If domain is an invalid domain,
 
 It performs the inverse operation to `domainToASCII()`.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { domainToUnicode } from "node:url";
-console.log(domainToUnicode("xn--espaol-zwa.com"));// Prints español.comconsole.log(domainToUnicode("xn--fiq228c.com"));// Prints 中文.comconsole.log(domainToUnicode("xn--iñvalid.com"));// Prints an empty string
+
+
+console.log(domainToUnicode("xn--espaol-zwa.com"));
+// Prints español.com
+console.log(domainToUnicode("xn--fiq228c.com"));
+// Prints 中文.com
+console.log(domainToUnicode("xn--iñvalid.com"));
+// Prints an empty string
 ```
 
 ```json

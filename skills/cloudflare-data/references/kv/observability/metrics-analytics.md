@@ -53,32 +53,110 @@ To use the GraphQL API to retrieve KV's datasets, you must provide the `accountT
 
 The following are common GraphQL queries that you can use to retrieve information about KV analytics. These queries make use of variables `$accountTag`, `$date_geq`, `$date_leq`, and `$namespaceId`, which should be set as GraphQL variables or replaced in line. These variables should look similar to these:
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_ID>",  "namespaceId": "<YOUR_KV_NAMESPACE_ID>",  "date_geq": "2024-07-15",  "date_leq": "2024-07-30"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_ID>",
+  "namespaceId": "<YOUR_KV_NAMESPACE_ID>",
+  "date_geq": "2024-07-15",
+  "date_leq": "2024-07-30"
+}
 ```
 
 #### Operations
 
 To query the sum of read, write, delete, and list operations for a given `namespaceId` and for a given date range (`start` and `end`), grouped by `date` and `actionType`:
 
-```
-query KvOperationsSample(  $accountTag: string!  $namespaceId: string  $start: Date  $end: Date) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      kvOperationsAdaptiveGroups(        filter: { namespaceId: $namespaceId, date_geq: $start, date_leq: $end }        limit: 10000        orderBy: [date_DESC]      ) {        sum {          requests        }        dimensions {          date          actionType        }      }    }  }}
+```graphql
+query KvOperationsSample(
+  $accountTag: string!
+  $namespaceId: string
+  $start: Date
+  $end: Date
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      kvOperationsAdaptiveGroups(
+        filter: { namespaceId: $namespaceId, date_geq: $start, date_leq: $end }
+        limit: 10000
+        orderBy: [date_DESC]
+      ) {
+        sum {
+          requests
+        }
+        dimensions {
+          date
+          actionType
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA0gNwPIAdIEMAuBLA9gOwGcBldAWxQBswAKAKBhgBJ0BjV3EfTAFXQHMAXDEKYI2fPwCEDZvnJhCKNmACSAE2Gjxk2U1HoImYQBEsYPWHyaYZzBYCUMAN6yE2MAHdIL2YzYcXJiENABm2JT2EMLOMAGc3HxCzPFBSTAAvk6ujLkwANbIaBBYeEQAguroKDgIYADiEJwoIX55MOGRkDEw8mSKyqxqNkx9AyoaADQwVfYA+vxgwML6mIaY07Ngc9TLzFbqmW15lNhk2MYwAIwADHc3x7m4EOqQAEJQwgDaW3MmAKLEADCAF1HtlHoxCCAyL52u0IEtwKJCJCjvDGOozlZCGVCHCMZjzGj-KwcAQeFA0GiMo9aXl6UcMkA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGzAZgMMQbeIOyGT5gOzmAjCAC+QA)
 
 To query the distribution of the latency for read operations for a given `namespaceId` within a given date range (`start`, `end`):
 
-```
-query KvOperationsSample2(  $accountTag: string!  $namespaceId: string  $start: Date  $end: Date) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      kvOperationsAdaptiveGroups(        filter: {          namespaceId: $namespaceId          date_geq: $start          date_leq: $end          actionType: "read"        }        limit: 10000      ) {        sum {          requests        }        dimensions {          actionType        }        quantiles {          latencyMsP25          latencyMsP50          latencyMsP75          latencyMsP90          latencyMsP99          latencyMsP999        }      }    }  }}
+```graphql
+query KvOperationsSample2(
+  $accountTag: string!
+  $namespaceId: string
+  $start: Date
+  $end: Date
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      kvOperationsAdaptiveGroups(
+        filter: {
+          namespaceId: $namespaceId
+          date_geq: $start
+          date_leq: $end
+          actionType: "read"
+        }
+        limit: 10000
+      ) {
+        sum {
+          requests
+        }
+        dimensions {
+          actionType
+        }
+        quantiles {
+          latencyMsP25
+          latencyMsP50
+          latencyMsP75
+          latencyMsP90
+          latencyMsP99
+          latencyMsP999
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA0gNwPIAdIEMAuBLA9gOwGcBldAWxQBswAmACgCgYYASdAY3dxH0wBV0AcwBcMQpgjZ8ggIRNW+cmEIoOYAJIATUeMnT5LcegiZRAESxgDYfNpgXMVgJQwA3vITYwAd0hv5zBxcPJiEdABm2JSOEKKuMEHcvAIirIkhKTAAvi7uzPkwANbIaBBYeEQAgproKDgIYADiENwoYQEFMJHRkHEdnTCKZMqq7Bp2LEMjalr9nTWOAPqCYMCihpjGmHMFC2CL1GusNpo7+Rw4BHxQaKIARBBg6Jp3Z1lnlNhk2KYwAIwABiBALmuTOhBAZH8AwKj1AylCbzOmi+NkIFUI0JhgXYl3w1zQSOxoHQvCiyix2Molnw7CgAFlCAAFGgAVjOzGpjlpDOZrJB2M5NLpjKZAHZ2YKYFybCLmQBOAWCmU80Xy+Uc6XC3lM9Ua7HvAaG-LG95ZIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGzAZgMMQbeIOyGT5gOzmAjCAC+QA)
 
 To query your account-wide read, write, delete, and list operations across all KV namespaces:
 
-```
-query KvOperationsAllSample($accountTag: string!, $start: Date, $end: Date) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      kvOperationsAdaptiveGroups(        filter: { date_geq: $start, date_leq: $end }        limit: 10000      ) {        sum {          requests        }        dimensions {          actionType        }      }    }  }}
+```graphql
+query KvOperationsAllSample($accountTag: string!, $start: Date, $end: Date) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      kvOperationsAdaptiveGroups(
+        filter: { date_geq: $start, date_leq: $end }
+        limit: 10000
+      ) {
+        sum {
+          requests
+        }
+        dimensions {
+          actionType
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA0gNwPIAdIEMAuBLA9gOwGcBBAG1IGV0BbFUsACgBJ0BjV3EfTAFXQHMAXDEKYI2fPwCEAGhhNR6CJmEARLGDlMw+ACZqNAShgBvAFAwYCbGADukUxcsw2HLpkIMAZtlKZIwiYu7JzcfELyrqG8AjAAvsbmzs4A1shoEFh4RMS66Cg4CGAA4hCcKJ5OyZY+fgGmMHn+APr8YMDCCphKmHJNYM30HfI6uvFV1aTY1NgqMACMAAzLixOWiWvOhCDUjtXVEO3gooSblnFnjdM6hNmEe-vObDgEPFBolxf7X84-F3FAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsIDMvBiACm8ACZc+gkQHYRARhABfIA)
@@ -87,8 +165,31 @@ query KvOperationsAllSample($accountTag: string!, $start: Date, $end: Date) {  v
 
 To query the storage details (`keyCount` and `byteCount`) of a KV namespace for every day of a given date range:
 
-```
-query Viewer(  $accountTag: string!  $namespaceId: string  $start: Date  $end: Date) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      kvStorageAdaptiveGroups(        filter: { date_geq: $start, date_leq: $end, namespaceId: $namespaceId }        limit: 10000        orderBy: [date_DESC]      ) {        max {          keyCount          byteCount        }        dimensions {          date        }      }    }  }}
+```graphql
+query Viewer(
+  $accountTag: string!
+  $namespaceId: string
+  $start: Date
+  $end: Date
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      kvStorageAdaptiveGroups(
+        filter: { date_geq: $start, date_leq: $end, namespaceId: $namespaceId }
+        limit: 10000
+        orderBy: [date_DESC]
+      ) {
+        max {
+          keyCount
+          byteCount
+        }
+        dimensions {
+          date
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAagSzAd0gCgFAxgEgIYDGBA9iAHYAuAKngOYBcMAzhRAmbQIRa5l4C2YJgAdCYAJIATRizYceOFnggVGAETwUwCsGWkwNWjAEoYAbx4A3JKgjme2QiXIUmaAGYIANloiMzME6klDQMuEEuoTAAvqYW2AkwANaWAMoUxBB0YACCknjCFAiWYADiEKTCbg6JMJ4+kP4w+VoA+rRgwIyKFMoUADTNmmCtXp3dupKDfIIiYlLdM0KiBBKSMTWJXgj8CKowAIwADCdHmwmZkpAAQlCMANotI2oAoqkAwgC653Hn2Px4AAe9lqtSSYCg72CFD+CQARlAtFCXLDorDJDtdEwEMQyEwQaCEk9Uec0YkyRtokA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoR4wBbAUwGcAHSNqgEywgASgFEACgBl8oigHUqyABLU6jDojAAnREIBMABj0A2ALQGzAZgMMQbeIOyGT5gOzmAjCAC+QA)

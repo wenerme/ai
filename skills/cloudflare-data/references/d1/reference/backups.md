@@ -32,14 +32,20 @@ To view and manage these backups, including any manual backups you have made, yo
 
 For example, to list all of the backups of a D1 database named `existing-db`:
 
-Terminal window
-
-```
+```sh
 wrangler d1 backup list existing-db
 ```
 
-```
-┌──────────────┬──────────────────────────────────────┬────────────┬─────────┐│ created_at   │ id                                   │ num_tables │ size    │├──────────────┼──────────────────────────────────────┼────────────┼─────────┤│ 1 hour ago   │ 54a23309-db00-4c5c-92b1-c977633b937c │ 1          │ 95.3 kB │├──────────────┼──────────────────────────────────────┼────────────┼─────────┤│ <...>        │ <...>                                │ <...>      │ <...>   │├──────────────┼──────────────────────────────────────┼────────────┼─────────┤│ 2 months ago │ 8433a91e-86d0-41a3-b1a3-333b080bca16 │ 1          │ 65.5 kB │└──────────────┴──────────────────────────────────────┴────────────┴─────────┘%
+```sh
+┌──────────────┬──────────────────────────────────────┬────────────┬─────────┐
+│ created_at   │ id                                   │ num_tables │ size    │
+├──────────────┼──────────────────────────────────────┼────────────┼─────────┤
+│ 1 hour ago   │ 54a23309-db00-4c5c-92b1-c977633b937c │ 1          │ 95.3 kB │
+├──────────────┼──────────────────────────────────────┼────────────┼─────────┤
+│ <...>        │ <...>                                │ <...>      │ <...>   │
+├──────────────┼──────────────────────────────────────┼────────────┼─────────┤
+│ 2 months ago │ 8433a91e-86d0-41a3-b1a3-333b080bca16 │ 1          │ 65.5 kB │
+└──────────────┴──────────────────────────────────────┴────────────┴─────────┘%
 ```
 
 The `id` of each backup allows you to download or restore a specific backup.
@@ -55,14 +61,16 @@ To back up a D1 database, you must have:
 
 For example, to create a manual backup of a D1 database named `example-db`, call `d1 backup create`.
 
-Terminal window
-
-```
+```sh
 wrangler d1 backup create example-db
 ```
 
-```
-┌─────────────────────────────┬──────────────────────────────────────┬────────────┬─────────┬───────┐│ created_at                  │ id                                   │ num_tables │ size    │ state │├─────────────────────────────┼──────────────────────────────────────┼────────────┼─────────┼───────┤│ 2023-02-04T15:49:36.113753Z │ 123a81a2-ab91-4c2e-8ebc-64d69633faf1 │ 1          │ 65.5 kB │ done  │└─────────────────────────────┴──────────────────────────────────────┴────────────┴─────────┴───────┘
+```sh
+┌─────────────────────────────┬──────────────────────────────────────┬────────────┬─────────┬───────┐
+│ created_at                  │ id                                   │ num_tables │ size    │ state │
+├─────────────────────────────┼──────────────────────────────────────┼────────────┼─────────┼───────┤
+│ 2023-02-04T15:49:36.113753Z │ 123a81a2-ab91-4c2e-8ebc-64d69633faf1 │ 1          │ 65.5 kB │ done  │
+└─────────────────────────────┴──────────────────────────────────────┴────────────┴─────────┴───────┘
 ```
 
 Larger databases, especially those that are several megabytes (MB) in size with many tables, may take a few seconds to backup. The `state` column in the output will let you know when the backup is done.
@@ -73,14 +81,14 @@ To download a backup locally, call `wrangler d1 backup download <DATABASE_NAME> 
 
 For example, to download a specific backup for a database named `example-db`:
 
-Terminal window
-
-```
+```sh
 wrangler d1 backup download example-db 123a81a2-ab91-4c2e-8ebc-64d69633faf1
 ```
 
-```
-🌀 Downloading backup 123a81a2-ab91-4c2e-8ebc-64d69633faf1 from 'example-db'🌀 Saving to /Users/you/projects/example-db.123a81a2.sqlite3🌀 Done!
+```sh
+🌀 Downloading backup 123a81a2-ab91-4c2e-8ebc-64d69633faf1 from 'example-db'
+🌀 Saving to /Users/you/projects/example-db.123a81a2.sqlite3
+🌀 Done!
 ```
 
 The database backup will be download to the current working directory in native SQLite3 format. To import a local database, read [the documentation on importing data](https://developers.cloudflare.com/d1/best-practices/import-export-data/) to D1.
@@ -95,14 +103,13 @@ Restoring a backup will overwrite the current running version of a database with
 
 To restore a previous backup of a D1 database named `existing-db`, pass the ID of that backup to `d1 backup restore`:
 
-Terminal window
-
-```
+```sh
 wrangler d1 backup restore existing-db  6cceaf8c-ceab-4351-ac85-7f9e606973e3
 ```
 
-```
-Restoring existing-db from backup 6cceaf8c-ceab-4351-ac85-7f9e606973e3....Done!
+```sh
+Restoring existing-db from backup 6cceaf8c-ceab-4351-ac85-7f9e606973e3....
+Done!
 ```
 
 Any queries against the database will immediately query the current (restored) version once the restore has completed.

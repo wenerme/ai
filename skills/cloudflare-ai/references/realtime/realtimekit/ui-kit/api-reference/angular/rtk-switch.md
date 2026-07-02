@@ -28,14 +28,20 @@ A switch component which follows RTK Design System.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-switch></rtk-switch>
+```html
+<!-- component.html -->
+<rtk-switch></rtk-switch>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-switch [checked]="true" [disabled]="true" [readonly]="true"></rtk-switch>
+```html
+<!-- component.html -->
+<rtk-switch
+ [checked]="true"
+ [disabled]="true"
+ [readonly]="true">
+</rtk-switch>
 ```
 
 ```json

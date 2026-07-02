@@ -36,9 +36,7 @@ Give each Deploy Hook a descriptive name so you can tell them apart. If you have
 
 Send an HTTP POST request to your Deploy Hook URL to start a build:
 
-Terminal window
-
-```
+```bash
 curl -X POST "https://api.cloudflare.com/client/v4/workers/builds/deploy_hooks/<DEPLOY_HOOK_ID>"
 ```
 
@@ -46,8 +44,17 @@ No `Authorization` header is needed. The unique identifier embedded in the URL a
 
 Example response:
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "build_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",    "branch": "main",    "worker": "my-worker"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "build_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "branch": "main",
+    "worker": "my-worker"
+  }
+}
 ```
 
 The `build_uuid` in the response can be used to [monitor build status and retrieve logs](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#get-build-logs).
@@ -83,8 +90,18 @@ If an external system sends the same Deploy Hook twice in quick succession:
 
 Example response when an existing pending build is returned:
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "build_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",    "status": "queued",    "created_on": "2026-01-21T18:50:00Z",    "already_exists": true  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "build_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "status": "queued",
+    "created_on": "2026-01-21T18:50:00Z",
+    "already_exists": true
+  }
+}
 ```
 
 Once the earlier build moves past `initializing`, a later POST creates a new build as normal. This makes Deploy Hooks safe to use with systems that retry webhooks or emit bursts of content-update events.
@@ -95,44 +112,88 @@ Once the earlier build moves past `initializing`, a later POST creates a new bui
 
 A Worker that receives a `/deploy` command from Slack and triggers a build:
 
-* [  JavaScript ](#tab-panel-11497)
-* [  TypeScript ](#tab-panel-11498)
+* [  JavaScript ](#tab-panel-11792)
+* [  TypeScript ](#tab-panel-11793)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const body = await request.formData();
+    const command = body.get("command");
+    const token = body.get("token");
+
+
+    if (token !== env.SLACK_VERIFICATION_TOKEN) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+
+    if (command === "/deploy") {
+      const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
+      const { result } = await res.json();
+      return new Response(`Build started: ${result.build_uuid}`);
+    }
+
+
+    return new Response("Unknown command", { status: 400 });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const body = await request.formData();    const command = body.get("command");    const token = body.get("token");
-    if (token !== env.SLACK_VERIFICATION_TOKEN) {      return new Response("Unauthorized", { status: 401 });    }
-    if (command === "/deploy") {      const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });      const { result } = await res.json();      return new Response(`Build started: ${result.build_uuid}`);    }
-    return new Response("Unknown command", { status: 400 });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const body = await request.formData();    const command = body.get("command");    const token = body.get("token");
-    if (token !== env.SLACK_VERIFICATION_TOKEN) {      return new Response("Unauthorized", { status: 401 });    }
-    if (command === "/deploy") {      const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });      const { result } = await res.json<{ result: { build_uuid: string } }>();      return new Response(`Build started: ${result.build_uuid}`);    }
-    return new Response("Unknown command", { status: 400 });  },};
+```ts
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const body = await request.formData();
+    const command = body.get("command");
+    const token = body.get("token");
+
+
+    if (token !== env.SLACK_VERIFICATION_TOKEN) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+
+    if (command === "/deploy") {
+      const res = await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
+      const { result } = await res.json<{ result: { build_uuid: string } }>();
+      return new Response(`Build started: ${result.build_uuid}`);
+    }
+
+
+    return new Response("Unknown command", { status: 400 });
+  },
+};
 ```
 
 ### Rebuild on a schedule
 
 A Worker with a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that rebuilds every hour:
 
-* [  JavaScript ](#tab-panel-11495)
-* [  TypeScript ](#tab-panel-11496)
+* [  JavaScript ](#tab-panel-11790)
+* [  TypeScript ](#tab-panel-11791)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async scheduled(event, env) {
+    await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
+  },
+};
 ```
-export default {  async scheduled(event, env) {    await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async scheduled(event: ScheduledEvent, env: Env): Promise<void> {    await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });  },};
+```ts
+export default {
+  async scheduled(event: ScheduledEvent, env: Env): Promise<void> {
+    await fetch(env.DEPLOY_HOOK_URL, { method: "POST" });
+  },
+};
 ```
 
 ## Security considerations

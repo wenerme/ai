@@ -130,8 +130,8 @@ It is recommended to consistently use the same API token across all uploads and 
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-11493)
-* [ Wrangler ](#tab-panel-11494)
+* [ Dashboard ](#tab-panel-11788)
+* [ Wrangler ](#tab-panel-11789)
 
 To add environment variables via the dashboard:
 
@@ -142,21 +142,41 @@ To add environment variables via the dashboard:
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-11491)
-* [  wrangler.toml ](#tab-panel-11492)
+* [  wrangler.jsonc ](#tab-panel-11786)
+* [  wrangler.toml ](#tab-panel-11787)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker-dev",
+  "vars": {
+    "API_HOST": "example.com",
+    "API_ACCOUNT_ID": "example_user",
+    "SERVICE_X_DATA": {
+      "URL": "service-x-api.dev.example",
+      "MY_ID": 123
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-dev",  "vars": {    "API_HOST": "example.com",    "API_ACCOUNT_ID": "example_user",    "SERVICE_X_DATA": {      "URL": "service-x-api.dev.example",      "MY_ID": 123    }  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker-dev"
-[vars]API_HOST = "example.com"API_ACCOUNT_ID = "example_user"
-  [vars.SERVICE_X_DATA]  URL = "service-x-api.dev.example"  MY_ID = 123
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker-dev"
+
+
+[vars]
+API_HOST = "example.com"
+API_ACCOUNT_ID = "example_user"
+
+
+  [vars.SERVICE_X_DATA]
+  URL = "service-x-api.dev.example"
+  MY_ID = 123
 ```
 
 ### Default variables

@@ -27,16 +27,24 @@ Displays a participant's avatar image or initials-based fallback avatar.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAvatar } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkAvatar participant={participant} />;}
+
+
+function MyComponent() {
+  return <RtkAvatar participant={participant} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAvatar } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkAvatar participant={participant} size="lg" variant="circular" />;}
+
+
+function MyComponent() {
+  return <RtkAvatar participant={participant} size="lg" variant="circular" />;
+}
 ```
 
 ```json

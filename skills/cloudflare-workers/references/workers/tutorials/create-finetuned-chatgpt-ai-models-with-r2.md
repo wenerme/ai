@@ -63,9 +63,7 @@ The above options will create the "Hello World" TypeScript project.
 
 Move into your newly created directory:
 
-Terminal window
-
-```
+```sh
 cd finetune-chatgpt-model
 ```
 
@@ -75,9 +73,7 @@ Next, upload the fine-tune document to R2\. R2 is a key-value store that allows 
 
 To create a new R2 bucket use the [wrangler r2 bucket create](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-create) command. Note that you are logged in with your Cloudflare account. If not logged in via Wrangler, use the [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) command.
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket create <BUCKET_NAME>
 ```
 
@@ -85,9 +81,7 @@ Replace `<BUCKET_NAME>` with your desired bucket name. Note that bucket names mu
 
 Next, upload a file using the [wrangler r2 object put](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-put) command.
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 object put <PATH> -f <FILE_NAME>
 ```
 
@@ -99,19 +93,28 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-12281)
-* [  wrangler.toml ](#tab-panel-12282)
+* [  wrangler.jsonc ](#tab-panel-12536)
+* [  wrangler.toml ](#tab-panel-12537)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "r2_buckets": [
+    {
+      "binding": "MY_BUCKET", // <~ valid JavaScript variable name
+      "bucket_name": "<YOUR_BUCKET_NAME>"
+    }
+  ]
+}
 ```
-{  "r2_buckets": [    {      "binding": "MY_BUCKET", // <~ valid JavaScript variable name      "bucket_name": "<YOUR_BUCKET_NAME>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[r2_buckets]]binding = "MY_BUCKET"bucket_name = "<YOUR_BUCKET_NAME>"
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "<YOUR_BUCKET_NAME>"
 ```
 
 ## 4\. Initialize your Worker application
@@ -158,15 +161,41 @@ bun add openai
 
 Next, open the `src/index.ts` file and replace the default code with the below code. Replace `<MY_BUCKET>` with the binding name you set in Wrangler file.
 
-TypeScript
+**TypeScript**
 
-```
-import { Context, Hono } from "hono";import OpenAI from "openai";
-type Bindings = {  <MY_BUCKET>: R2Bucket  OPENAI_API_KEY: string}
-type Variables = {  openai: OpenAI}
+```typescript
+import { Context, Hono } from "hono";
+import OpenAI from "openai";
+
+
+type Bindings = {
+  <MY_BUCKET>: R2Bucket
+  OPENAI_API_KEY: string
+}
+
+
+type Variables = {
+  openai: OpenAI
+}
+
+
 const app = new Hono<{ Bindings: Bindings, Variables: Variables }>()
-app.use('*', async (c, next) => {  const openai = new OpenAI({    apiKey: c.env.OPENAI_API_KEY,  })  c.set("openai", openai)  await next()})
-app.onError((err, c) => {  return c.text(err.message, 500)})
+
+
+app.use('*', async (c, next) => {
+  const openai = new OpenAI({
+    apiKey: c.env.OPENAI_API_KEY,
+  })
+  c.set("openai", openai)
+  await next()
+})
+
+
+app.onError((err, c) => {
+  return c.text(err.message, 500)
+})
+
+
 export default app;
 ```
 
@@ -182,42 +211,94 @@ The `GET /files` route listens for `GET` requests with a query parameter `file`,
 
 Replace `<MY_BUCKET>` with the binding name you set in Wrangler file.
 
-TypeScript
+**TypeScript**
 
-```
-// New import added at beginning of fileimport { toFile } from 'openai/uploads'
-const createFile = async (c: Context, r2Object: R2ObjectBody) => {  const openai: OpenAI = c.get("openai")
-  const blob = await r2Object.blob()  const file = await toFile(blob, r2Object.key)
-  const uploadedFile = await openai.files.create({    file,    purpose: "fine-tune",  })
-  return uploadedFile}
-app.get('/files', async c => {  const fileQueryParam = c.req.query("file")  if (!fileQueryParam) return c.text("Missing file query param", 400)
-  const file = await c.env.<MY_BUCKET>.get(fileQueryParam)  if (!file) return c.text("Couldn't find file", 400)
-  const uploadedFile = await createFile(c, file)  return c.json(uploadedFile)})
+```typescript
+// New import added at beginning of file
+import { toFile } from 'openai/uploads'
+
+
+const createFile = async (c: Context, r2Object: R2ObjectBody) => {
+  const openai: OpenAI = c.get("openai")
+
+
+  const blob = await r2Object.blob()
+  const file = await toFile(blob, r2Object.key)
+
+
+  const uploadedFile = await openai.files.create({
+    file,
+    purpose: "fine-tune",
+  })
+
+
+  return uploadedFile
+}
+
+
+app.get('/files', async c => {
+  const fileQueryParam = c.req.query("file")
+  if (!fileQueryParam) return c.text("Missing file query param", 400)
+
+
+  const file = await c.env.<MY_BUCKET>.get(fileQueryParam)
+  if (!file) return c.text("Couldn't find file", 400)
+
+
+  const uploadedFile = await createFile(c, file)
+  return c.json(uploadedFile)
+})
 ```
 
 ## 6\. Create fine-tuned models
 
 This section includes the `GET /models` route and the `createModel` function. The function `createModel` takes care of specifying the details and initiating the fine-tuning process with OpenAI. The route handles incoming requests for creating a new fine-tuned model.
 
-TypeScript
+**TypeScript**
 
-```
-const createModel = async (c: Context, fileId: string) => {  const openai: OpenAI = c.get("openai");
-  const body = {    training_file: fileId,    model: "gpt-4o-mini",  };
-  return openai.fineTuning.jobs.create(body);};
-app.get("/models", async (c) => {  const fileId = c.req.query("file_id");  if (!fileId) return c.text("Missing file ID query param", 400);
-  const model = await createModel(c, fileId);  return c.json(model);});
+```typescript
+const createModel = async (c: Context, fileId: string) => {
+  const openai: OpenAI = c.get("openai");
+
+
+  const body = {
+    training_file: fileId,
+    model: "gpt-4o-mini",
+  };
+
+
+  return openai.fineTuning.jobs.create(body);
+};
+
+
+app.get("/models", async (c) => {
+  const fileId = c.req.query("file_id");
+  if (!fileId) return c.text("Missing file ID query param", 400);
+
+
+  const model = await createModel(c, fileId);
+  return c.json(model);
+});
 ```
 
 ## 7\. List all fine-tune jobs
 
 This section describes the `GET /jobs` route and the corresponding `getJobs` function. The function interacts with OpenAI's API to fetch a list of all fine-tuning jobs. The route provides an interface for retrieving this information.
 
-TypeScript
+**TypeScript**
 
-```
-const getJobs = async (c: Context) => {  const openai: OpenAI = c.get("openai");  const resp = await openai.fineTuning.jobs.list();  return resp.data;};
-app.get("/jobs", async (c) => {  const jobs = await getJobs(c);  return c.json(jobs);});
+```typescript
+const getJobs = async (c: Context) => {
+  const openai: OpenAI = c.get("openai");
+  const resp = await openai.fineTuning.jobs.list();
+  return resp.data;
+};
+
+
+app.get("/jobs", async (c) => {
+  const jobs = await getJobs(c);
+  return c.json(jobs);
+});
 ```
 
 ## 8\. Deploy your application
@@ -226,9 +307,7 @@ After you have created your Worker application and added the required functions,
 
 Before you deploy, you must set the `OPENAI_API_KEY` [secret](https://developers.cloudflare.com/workers/configuration/secrets/) for your application. Do this by running the [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) command:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put OPENAI_API_KEY
 ```
 
@@ -236,9 +315,7 @@ To deploy your Worker application to the Cloudflare global network:
 
 1. Make sure you are in your Worker project's directory, then run the [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -249,17 +326,13 @@ npx wrangler deploy
 
 To use your application, create a new fine-tune job by making a request to the `/files` with a `file` query param matching the filename you uploaded earlier:
 
-Terminal window
-
-```
+```sh
 curl https://your-worker-url.com/files?file=finetune.jsonl
 ```
 
 When the file is uploaded, issue another request to `/models`, passing the `file_id` query parameter. This should match the `id` returned as JSON from the `/files` route:
 
-Terminal window
-
-```
+```sh
 curl https://your-worker-url.com/models?file_id=file-abc123
 ```
 
@@ -273,10 +346,13 @@ Visit the [OpenAI Playground ↗](https://platform.openai.com/playground) in ord
 
 Use it in any API requests you make to OpenAI's chat completions endpoints. For instance, in the below code example:
 
-JavaScript
+**JavaScript**
 
-```
-openai.chat.completions.create({  messages: [{ role: "system", content: "You are a helpful assistant." }],  model: "ft:gpt-4o-mini:my-org:custom_suffix:id",});
+```javascript
+openai.chat.completions.create({
+  messages: [{ role: "system", content: "You are a helpful assistant." }],
+  model: "ft:gpt-4o-mini:my-org:custom_suffix:id",
+});
 ```
 
 ## Next steps

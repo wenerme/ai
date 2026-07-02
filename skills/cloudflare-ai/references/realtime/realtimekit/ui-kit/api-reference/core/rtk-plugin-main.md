@@ -29,19 +29,24 @@ The plugin's `component` (an HTMLElement) is placed into this element's light DO
 
 ### Basic Usage
 
-```
+```html
 <rtk-plugin-main></rtk-plugin-main>
 ```
 
 ### With Properties
 
-```
-<rtk-plugin-main></rtk-plugin-main>
+```html
+<rtk-plugin-main>
+</rtk-plugin-main>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-plugin-main");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-plugin-main");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

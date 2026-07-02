@@ -72,7 +72,7 @@ Privacy Proxy exports metrics that help you understand usage patterns and perfor
 
 Privacy Proxy includes a `Server-Timing` header in responses to help measure processing latency from the client side. For full header format details, refer to [HTTP headers](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/#server-timing).
 
-```
+```http
 Server-Timing: proxy;dur=12.5
 ```
 
@@ -86,12 +86,19 @@ To visualize Privacy Proxy metrics in Grafana:
 2. Export metrics from the collector to Prometheus.
 3. Create Grafana dashboards using Prometheus as a data source.
 
-Example Prometheus queries
+**Example Prometheus queries**
 
-```
-# Request rate over timerate(privacy_proxy_requests_total[5m])
-# 95th percentile connection latencyhistogram_quantile(0.95, rate(privacy_proxy_connect_latency_seconds_bucket[5m]))
-# Error ratesum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privacy_proxy_requests_total[5m]))
+```txt
+# Request rate over time
+rate(privacy_proxy_requests_total[5m])
+
+
+# 95th percentile connection latency
+histogram_quantile(0.95, rate(privacy_proxy_connect_latency_seconds_bucket[5m]))
+
+
+# Error rate
+sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privacy_proxy_requests_total[5m]))
 ```
 
 ---

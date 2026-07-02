@@ -18,8 +18,8 @@ You can configure the health check frequency through the dashboard or [the API](
 
 Available options are `low`, `mid`, and `high`.
 
-* [ Dashboard ](#tab-panel-9494)
-* [ API ](#tab-panel-9495)
+* [ Dashboard ](#tab-panel-9785)
+* [ API ](#tab-panel-9786)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.
@@ -29,10 +29,14 @@ You can adjust the health check frequency by updating your [GRE](https://develop
 
 The following example adjusts tunnel health check frequency to `low`. Note that this command applies to GRE, IPsec and CNI tunnels:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \  --request PUT \  --json '{    "health_check": {        "rate": "low"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
+  --request PUT \
+  --json '{
+    "health_check": {
+        "rate": "low"
+    }
+  }'
 ```
 
 Note

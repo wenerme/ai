@@ -88,16 +88,29 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
 1. **Add a Wrangler configuration file.**
 In your project root, create a Wrangler configuration file with the following content:
 
-  * [  wrangler.jsonc ](#tab-panel-11864)
-  * [  wrangler.toml ](#tab-panel-11865)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12137)
+  * [  wrangler.toml ](#tab-panel-12138)
+
+**JSONC**
+```jsonc
+  {
+    "name": "my-docusaurus-app",
+    // Update to today's date
+    // Set this to today's date
+    "compatibility_date": "2026-07-01",
+    "assets": {
+      "directory": "./build"
+    }
+  }
 ```
-  {    "name": "my-docusaurus-app",    // Update to today's date    // Set this to today's date    "compatibility_date": "2026-06-24",    "assets": {      "directory": "./build"    }  }
-```
-TOML
-```
-name = "my-docusaurus-app"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./build"
+
+**TOML**
+```toml
+name = "my-docusaurus-app"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+[assets]
+directory = "./build"
 ```
 What's this configuration doing?
 The key part of this config is the `assets` field, which tells Wrangler where to find your static assets. In this case, we're telling Wrangler to look in the `./build` directory. If your assets are in a different directory, update the `directory` value accordingly. Refer to other [asset configuration options](https://developers.cloudflare.com/workers/static-assets/routing/).

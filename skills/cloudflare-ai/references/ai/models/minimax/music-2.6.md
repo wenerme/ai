@@ -29,130 +29,269 @@ MiniMax's music generation model that creates full-length songs with vocals from
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-880)
-* [ cURL ](#tab-panel-881)
+* [ TypeScript ](#tab-panel-928)
+* [ cURL ](#tab-panel-929)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/music-2.6',
+  {
+    prompt: 'An upbeat electronic dance track with a catchy synth melody and driving beat',
+    is_instrumental: false,
+    lyrics_optimizer: true,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/music-2.6',  {    prompt: 'An upbeat electronic dance track with a catchy synth melody and driving beat',    is_instrumental: false,    lyrics_optimizer: true,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/music-2.6",
+  "input": {
+    "prompt": "An upbeat electronic dance track with a catchy synth melody and driving beat",
+    "is_instrumental": false,
+    "lyrics_optimizer": true
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-926)
+* [ Raw response ](#tab-panel-927)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/music-2.6",  "input": {    "prompt": "An upbeat electronic dance track with a catchy synth melody and driving beat",    "is_instrumental": false,    "lyrics_optimizer": true  }}'
-```
-
-* [ Output ](#tab-panel-878)
-* [ Raw response ](#tab-panel-879)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092034-QxSPMzdbiRxBSbDb.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092034-QxSPMzdbiRxBSbDb.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **With Lyrics**  — Generate a song with custom lyrics
 
-* [ TypeScript ](#tab-panel-886)
-* [ cURL ](#tab-panel-887)
+* [ TypeScript ](#tab-panel-934)
+* [ cURL ](#tab-panel-935)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/music-2.6',
+  {
+    prompt: 'A warm acoustic folk ballad with fingerpicked guitar and gentle vocals',
+    is_instrumental: false,
+    lyrics:
+      'Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home',
+    lyrics_optimizer: false,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/music-2.6',  {    prompt: 'A warm acoustic folk ballad with fingerpicked guitar and gentle vocals',    is_instrumental: false,    lyrics:      'Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home',    lyrics_optimizer: false,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/music-2.6",
+  "input": {
+    "prompt": "A warm acoustic folk ballad with fingerpicked guitar and gentle vocals",
+    "is_instrumental": false,
+    "lyrics": "Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home",
+    "lyrics_optimizer": false
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-930)
+* [ Raw response ](#tab-panel-931)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/music-2.6",  "input": {    "prompt": "A warm acoustic folk ballad with fingerpicked guitar and gentle vocals",    "is_instrumental": false,    "lyrics": "Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home",    "lyrics_optimizer": false  }}'
-```
-
-* [ Output ](#tab-panel-882)
-* [ Raw response ](#tab-panel-883)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417091919-YiIxwmvIqXtREDcu.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417091919-YiIxwmvIqXtREDcu.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **Instrumental**  — Generate instrumental music without vocals
 
-* [ TypeScript ](#tab-panel-888)
-* [ cURL ](#tab-panel-889)
+* [ TypeScript ](#tab-panel-936)
+* [ cURL ](#tab-panel-937)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/music-2.6',
+  {
+    prompt: 'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',
+    is_instrumental: true,
+    lyrics_optimizer: false,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/music-2.6',  {    prompt: 'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',    is_instrumental: true,    lyrics_optimizer: false,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/music-2.6",
+  "input": {
+    "prompt": "A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords",
+    "is_instrumental": true,
+    "lyrics_optimizer": false
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-932)
+* [ Raw response ](#tab-panel-933)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/music-2.6",  "input": {    "prompt": "A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords",    "is_instrumental": true,    "lyrics_optimizer": false  }}'
-```
-
-* [ Output ](#tab-panel-884)
-* [ Raw response ](#tab-panel-885)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092057-LOwvBOOdyGvAyHkQ.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092057-LOwvBOOdyGvAyHkQ.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **High Quality Audio**  — Specify audio format and sample rate
 
-* [ TypeScript ](#tab-panel-894)
-* [ cURL ](#tab-panel-895)
+* [ TypeScript ](#tab-panel-942)
+* [ cURL ](#tab-panel-943)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/music-2.6',
+  {
+    prompt: 'An orchestral cinematic score building to an epic crescendo with full symphony',
+    format: 'wav',
+    is_instrumental: false,
+    lyrics_optimizer: true,
+    sample_rate: 44100,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/music-2.6',  {    prompt: 'An orchestral cinematic score building to an epic crescendo with full symphony',    format: 'wav',    is_instrumental: false,    lyrics_optimizer: true,    sample_rate: 44100,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/music-2.6",
+  "input": {
+    "prompt": "An orchestral cinematic score building to an epic crescendo with full symphony",
+    "format": "wav",
+    "is_instrumental": false,
+    "lyrics_optimizer": true,
+    "sample_rate": 44100
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-938)
+* [ Raw response ](#tab-panel-939)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/music-2.6",  "input": {    "prompt": "An orchestral cinematic score building to an epic crescendo with full symphony",    "format": "wav",    "is_instrumental": false,    "lyrics_optimizer": true,    "sample_rate": 44100  }}'
-```
-
-* [ Output ](#tab-panel-890)
-* [ Raw response ](#tab-panel-891)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092208-UGTfqDggHaemCDAW.wav"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092208-UGTfqDggHaemCDAW.wav"
+  },
+  "state": "Completed"
+}
 ```
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt
 
-* [ TypeScript ](#tab-panel-896)
-* [ cURL ](#tab-panel-897)
+* [ TypeScript ](#tab-panel-944)
+* [ cURL ](#tab-panel-945)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/music-2.6',
+  {
+    prompt: 'A cheerful pop song about a summer road trip with friends',
+    is_instrumental: false,
+    lyrics_optimizer: true,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/music-2.6',  {    prompt: 'A cheerful pop song about a summer road trip with friends',    is_instrumental: false,    lyrics_optimizer: true,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/music-2.6",
+  "input": {
+    "prompt": "A cheerful pop song about a summer road trip with friends",
+    "is_instrumental": false,
+    "lyrics_optimizer": true
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-940)
+* [ Raw response ](#tab-panel-941)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/music-2.6",  "input": {    "prompt": "A cheerful pop song about a summer road trip with friends",    "is_instrumental": false,    "lyrics_optimizer": true  }}'
-```
-
-* [ Output ](#tab-panel-892)
-* [ Raw response ](#tab-panel-893)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092245-UlqOBbhqSXtRPopt.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092245-UlqOBbhqSXtRPopt.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-898)
-* [ Output ](#tab-panel-899)
+* [ Input ](#tab-panel-946)
+* [ Output ](#tab-panel-947)
+
+prompt
+
+`string`requiredmaxLength: 2000Description of the music style, mood, and scenario
+
+lyrics
+
+`string`minLength: 1maxLength: 3500Song lyrics, using \\n to separate lines
+
+▶sample\_rate
+
+`one of`
 
 ▶bitrate
 
@@ -162,25 +301,13 @@ format
 
 `string`enum: mp3, wavAudio format
 
-is\_instrumental
-
-`boolean`requireddefault: falseGenerate instrumental music (no vocals)
-
-lyrics
-
-`string`maxLength: 3500minLength: 1Song lyrics, using \\n to separate lines
-
 lyrics\_optimizer
 
 `boolean`requireddefault: falseAutomatically generate lyrics based on the prompt description
 
-prompt
+is\_instrumental
 
-`string`requiredmaxLength: 2000Description of the music style, mood, and scenario
-
-▶sample\_rate
-
-`one of`
+`boolean`requireddefault: falseGenerate instrumental music (no vocals)
 
 audio
 

@@ -24,14 +24,30 @@ The last mile is the path from a user to the first point of ingress to the resou
 
 The Report-To header is present in all requests to Cloudflare zones that have NEL enabled:
 
-```
+```txt
 report-to: {"group":"cf-nel","max_age":31536000,"endpoints":[{"url":"`[`https://a.nel.cloudflare.com/report?lkg-colo=lhr&lkg-time=1600338181`](https://gcp.nel.cloudflare.com/report?lkg-colo=lhr&lkg-time=1600338181&lkg-ip=1.1.1.1)`"}]}
 ```
 
 A sample Network Error Report payload appears as follows:
 
-```
-{  "age": 20,  "type": "network-error",  "url": "https://example.com/previous-page",  "body": {    "elapsed_time": 18,    "method": "POST",    "phase": "dns",    "protocol": "http/1.1",    "referrer": "https://example.com/previous-page",    "sampling_fraction": 1,    "server_ip": "",    "status_code": 0,    "type": "dns.name_not_resolved",    "url": "https://example-host.com/"  }}
+```json
+{
+  "age": 20,
+  "type": "network-error",
+  "url": "https://example.com/previous-page",
+  "body": {
+    "elapsed_time": 18,
+    "method": "POST",
+    "phase": "dns",
+    "protocol": "http/1.1",
+    "referrer": "https://example.com/previous-page",
+    "sampling_fraction": 1,
+    "server_ip": "",
+    "status_code": 0,
+    "type": "dns.name_not_resolved",
+    "url": "https://example-host.com/"
+  }
+}
 ```
 
 ## Privacy

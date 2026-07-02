@@ -37,10 +37,11 @@ There is no limit to how many end-user credentials you can create with a particu
 
 Cloudflare Realtime TURN service lets you tag each credential with a custom identifier as you generate a credential like below:
 
-Terminal window
-
-```
-curl https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/generate \--header "Authorization: Bearer $TURN_KEY_API_TOKEN" \--header "Content-Type: application/json" \--data '{"ttl": 864000, "customIdentifier": "user4523958"}'
+```bash
+curl https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/generate \
+--header "Authorization: Bearer $TURN_KEY_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{"ttl": 864000, "customIdentifier": "user4523958"}'
 ```
 
 Use this field to aggregate usage for a specific user or group of users and collect analytics.
@@ -76,14 +77,55 @@ Incorrect approach example
 
 Querying TURN usage for multiple customers in a single query can lead to inaccurate results. This is because the usage pattern of one customer could affect the sampling rate applied to another customer's data, potentially skewing the results.
 
-```
-query{  viewer {    usage: accounts(filter: { accountTag: "8846293bd06d1af8c106d89ec1454fe6" }) {        callsTurnUsageAdaptiveGroups(          filter: {          datetimeMinute_gt: "2024-07-15T02:07:07Z"          datetimeMinute_lt: "2024-08-10T02:07:05Z"        }          limit: 100          orderBy: [customIdentifier_ASC]        ) {          dimensions {            customIdentifier          }          sum {            egressBytes          }        }      }    }  }
+```plaintext
+query{
+  viewer {
+    usage: accounts(filter: { accountTag: "8846293bd06d1af8c106d89ec1454fe6" }) {
+        callsTurnUsageAdaptiveGroups(
+          filter: {
+          datetimeMinute_gt: "2024-07-15T02:07:07Z"
+          datetimeMinute_lt: "2024-08-10T02:07:05Z"
+        }
+          limit: 100
+          orderBy: [customIdentifier_ASC]
+        ) {
+          dimensions {
+            customIdentifier
+          }
+          sum {
+            egressBytes
+          }
+        }
+      }
+    }
+  }
 ```
 
 Below is a query that queries usage only for a single customer.
 
-```
-query{  viewer {    usage: accounts(filter: { accountTag: "8846293bd06d1af8c106d89ec1454fe6" }) {        callsTurnUsageAdaptiveGroups(          filter: {          datetimeMinute_gt: "2024-07-15T02:07:07Z"          datetimeMinute_lt: "2024-08-10T02:07:05Z"          customIdentifier: "myCustomer1111"        }          limit: 1          orderBy: [customIdentifier_ASC]        ) {          dimensions {            customIdentifier          }          sum {            egressBytes          }        }      }    }  }
+```plaintext
+query{
+  viewer {
+    usage: accounts(filter: { accountTag: "8846293bd06d1af8c106d89ec1454fe6" }) {
+        callsTurnUsageAdaptiveGroups(
+          filter: {
+          datetimeMinute_gt: "2024-07-15T02:07:07Z"
+          datetimeMinute_lt: "2024-08-10T02:07:05Z"
+          customIdentifier: "myCustomer1111"
+        }
+          limit: 1
+          orderBy: [customIdentifier_ASC]
+        ) {
+          dimensions {
+            customIdentifier
+          }
+          sum {
+            egressBytes
+          }
+        }
+      }
+    }
+  }
 ```
 
 ```json

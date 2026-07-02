@@ -25,16 +25,20 @@ A button which toggles the local user's camera. It automatically listens to self
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkCameraToggleButton    android:id="@+id/btn_camera_toggle"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkCameraToggleButton
+    android:id="@+id/btn_camera_toggle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val cameraToggleButton = findViewById<RtkCameraToggleButton>(R.id.btn_camera_toggle)cameraToggleButton.activate(meeting)
+```kotlin
+val cameraToggleButton = findViewById<RtkCameraToggleButton>(R.id.btn_camera_toggle)
+cameraToggleButton.activate(meeting)
 ```
 
 ```json

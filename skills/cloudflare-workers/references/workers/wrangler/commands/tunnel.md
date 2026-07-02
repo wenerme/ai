@@ -24,7 +24,7 @@ Wrangler manages the [cloudflared](https://developers.cloudflare.com/tunnel/down
 
 Create a new remotely managed [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).
 
-```
+```txt
 wrangler tunnel create <NAME>
 ```
 
@@ -35,15 +35,19 @@ Tunnels created via Wrangler are always **remotely managed** — configure them 
 
 After creation, use `wrangler tunnel run` with the tunnel ID to start the tunnel.
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel create my-app
 ```
 
-```
-Creating tunnel "my-app"Created tunnel.ID: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415Name: my-app
-To run this tunnel, configure its ingress rules in the Cloudflare dashboard, then run:   wrangler tunnel run f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
+```sh
+Creating tunnel "my-app"
+Created tunnel.
+ID: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
+Name: my-app
+
+
+To run this tunnel, configure its ingress rules in the Cloudflare dashboard, then run:
+   wrangler tunnel run f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
 ```
 
 The following global flags work on every command:
@@ -61,7 +65,7 @@ The following global flags work on every command:
 
 Delete a Cloudflare Tunnel from your account.
 
-```
+```txt
 wrangler tunnel delete <TUNNEL> [OPTIONS]
 ```
 
@@ -74,14 +78,14 @@ Warning
 
 Deleting a tunnel is permanent and cannot be undone. Any active connections through the tunnel will be terminated.
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel delete f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
 ```
 
-```
-Are you sure you want to delete tunnel "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"? This action cannot be undone. (y/n)Deleting tunnel f70ff985-a4ef-4643-bbbc-4a0ed4fc8415Tunnel deleted.
+```sh
+Are you sure you want to delete tunnel "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"? This action cannot be undone. (y/n)
+Deleting tunnel f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
+Tunnel deleted.
 ```
 
 The following global flags work on every command:
@@ -99,21 +103,24 @@ The following global flags work on every command:
 
 Display details about a Cloudflare Tunnel, including its ID, name, status, and creation time.
 
-```
+```txt
 wrangler tunnel info <TUNNEL>
 ```
 
 * `TUNNEL` ` string ` required
   * The name or UUID of the tunnel to inspect.
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel info f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
 ```
 
-```
-Getting tunnel detailsID: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415Name: my-appStatus: healthyCreated: 2025-01-15T10:30:00ZType: cfd_tunnel
+```sh
+Getting tunnel details
+ID: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
+Name: my-app
+Status: healthy
+Created: 2025-01-15T10:30:00Z
+Type: cfd_tunnel
 ```
 
 The following global flags work on every command:
@@ -131,21 +138,23 @@ The following global flags work on every command:
 
 List all Cloudflare Tunnels in your account.
 
-```
+```txt
 wrangler tunnel list
 ```
 
 The output includes the tunnel ID, name, status, and creation date for each tunnel. Only non-deleted tunnels are shown.
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel list
 ```
 
-```
+```sh
 Listing Cloudflare Tunnels
-ID                                   Name       Status    Createdf70ff985-a4ef-4643-bbbc-4a0ed4fc8415 my-app     healthy   2025-01-15T10:30:00Z550e8400-e29b-41d4-a716-446655440000 api-tunnel inactive  2025-01-10T15:45:00Z
+
+
+ID                                   Name       Status    Created
+f70ff985-a4ef-4643-bbbc-4a0ed4fc8415 my-app     healthy   2025-01-15T10:30:00Z
+550e8400-e29b-41d4-a716-446655440000 api-tunnel inactive  2025-01-10T15:45:00Z
 ```
 
 The following global flags work on every command:
@@ -163,7 +172,7 @@ The following global flags work on every command:
 
 Run a Cloudflare Tunnel using the [cloudflared](https://developers.cloudflare.com/tunnel/downloads/) daemon. This starts a persistent connection between your local machine and Cloudflare's network.
 
-```
+```txt
 wrangler tunnel run [TUNNEL] [OPTIONS]
 ```
 
@@ -180,17 +189,13 @@ There are two ways to run a tunnel:
 
 **By tunnel name or ID** (fetches the token via the API):
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel run my-app
 ```
 
 **By token** (no API authentication needed — useful for CI/CD or remote servers):
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel run --token eyJhIjoiNGE2MjY...
 ```
 
@@ -215,7 +220,7 @@ The following global flags work on every command:
 
 Start a free, temporary tunnel without a Cloudflare account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/setup/#quick-tunnels-development). This is useful for quick demos, testing webhooks, or sharing local development servers.
 
-```
+```txt
 wrangler tunnel quick-start <URL>
 ```
 
@@ -224,14 +229,13 @@ wrangler tunnel quick-start <URL>
 
 The tunnel is assigned a random `*.trycloudflare.com` subdomain and lasts for the duration of the process.
 
-Terminal window
-
-```
+```sh
 npx wrangler tunnel quick-start http://localhost:8080
 ```
 
-```
-Starting quick tunnel to http://localhost:8080...Your tunnel URL: https://random-words-here.trycloudflare.com
+```sh
+Starting quick tunnel to http://localhost:8080...
+Your tunnel URL: https://random-words-here.trycloudflare.com
 ```
 
 Note

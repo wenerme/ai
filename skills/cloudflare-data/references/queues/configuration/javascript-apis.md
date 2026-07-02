@@ -24,63 +24,116 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-9998)
-* [  TypeScript ](#tab-panel-9999)
-* [  Python ](#tab-panel-10000)
+* [  JavaScript ](#tab-panel-10018)
+* [  TypeScript ](#tab-panel-10019)
+* [  Python ](#tab-panel-10020)
 
-index.js
+**index.js**
 
+```js
+export default {
+  async fetch(req, env, ctx) {
+    await env.MY_QUEUE.send({
+      url: req.url,
+      method: req.method,
+      headers: Object.fromEntries(req.headers),
+    });
+    return new Response("Sent!");
+  },
+};
 ```
-export default {  async fetch(req, env, ctx) {    await env.MY_QUEUE.send({      url: req.url,      method: req.method,      headers: Object.fromEntries(req.headers),    });    return new Response("Sent!");  },};
+
+**index.ts**
+
+```ts
+interface Env {
+  readonly MY_QUEUE: Queue;
+}
+
+
+export default {
+  async fetch(req, env, ctx): Promise<Response> {
+    await env.MY_QUEUE.send({
+      url: req.url,
+      method: req.method,
+      headers: Object.fromEntries(req.headers),
+    });
+    return new Response("Sent!");
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-index.ts
+**Python**
 
-```
-interface Env {  readonly MY_QUEUE: Queue;}
-export default {  async fetch(req, env, ctx): Promise<Response> {    await env.MY_QUEUE.send({      url: req.url,      method: req.method,      headers: Object.fromEntries(req.headers),    });    return new Response("Sent!");  },} satisfies ExportedHandler<Env>;
-```
+```python
+from pyodide.ffi import to_js
+from workers import Response, WorkerEntrypoint
 
-Python
 
-```
-from pyodide.ffi import to_jsfrom workers import Response, WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        await self.env.MY_QUEUE.send(to_js({            "url": request.url,            "method": request.method,            "headers": dict(request.headers),        }))        return Response("Sent!")
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        await self.env.MY_QUEUE.send(to_js({
+            "url": request.url,
+            "method": request.method,
+            "headers": dict(request.headers),
+        }))
+        return Response("Sent!")
 ```
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-9995)
-* [  TypeScript ](#tab-panel-9996)
-* [  Python ](#tab-panel-9997)
+* [  JavaScript ](#tab-panel-10015)
+* [  TypeScript ](#tab-panel-10016)
+* [  Python ](#tab-panel-10017)
 
-index.js
+**index.js**
 
+```js
+const sendResultsToQueue = async (results, env) => {
+  const batch = results.map((value) => ({
+    body: value,
+  }));
+  await env.MY_QUEUE.sendBatch(batch);
+};
 ```
-const sendResultsToQueue = async (results, env) => {  const batch = results.map((value) => ({    body: value,  }));  await env.MY_QUEUE.sendBatch(batch);};
+
+**index.ts**
+
+```ts
+const sendResultsToQueue = async (results: Array<unknown>, env: Env) => {
+  const batch: MessageSendRequest[] = results.map((value) => ({
+    body: value,
+  }));
+  await env.MY_QUEUE.sendBatch(batch);
+};
 ```
 
-index.ts
+**Python**
 
-```
-const sendResultsToQueue = async (results: Array<unknown>, env: Env) => {  const batch: MessageSendRequest[] = results.map((value) => ({    body: value,  }));  await env.MY_QUEUE.sendBatch(batch);};
-```
-
-Python
-
-```
+```python
 from pyodide.ffi import to_js
-async def send_results_to_queue(results, env):    batch = [        {"body": value}        for value in results    ]    await env.MY_QUEUE.sendBatch(to_js(batch))
+
+
+async def send_results_to_queue(results, env):
+    batch = [
+        {"body": value}
+        for value in results
+    ]
+    await env.MY_QUEUE.sendBatch(to_js(batch))
 ```
 
 ### `Queue`
 
 A binding that allows a producer to send messages to a Queue.
 
-TypeScript
+**TypeScript**
 
-```
-interface Queue<Body = unknown> {  send(body: Body, options?: QueueSendOptions): Promise<QueueSendResult>;  sendBatch(messages: Iterable<MessageSendRequest<Body>>, options?: QueueSendBatchOptions): Promise<QueueSendResult>;  metrics(): Promise<QueueMetrics>;}
+```ts
+interface Queue<Body = unknown> {
+  send(body: Body, options?: QueueSendOptions): Promise<QueueSendResult>;
+  sendBatch(messages: Iterable<MessageSendRequest<Body>>, options?: QueueSendBatchOptions): Promise<QueueSendResult>;
+  metrics(): Promise<QueueMetrics>;
+}
 ```
 
 * `send(body: unknown, options?: {contentType?: QueuesContentType })` ` Promise<QueueSendResult> `
@@ -101,10 +154,14 @@ interface Queue<Body = unknown> {  send(body: Body, options?: QueueSendOptions):
 
 A wrapper type used for sending message batches.
 
-TypeScript
+**TypeScript**
 
-```
-interface MessageSendRequest<Body = unknown> {  body: Body;  contentType?: QueueContentType;  delaySeconds?: number;}
+```ts
+interface MessageSendRequest<Body = unknown> {
+  body: Body;
+  contentType?: QueueContentType;
+  delaySeconds?: number;
+}
 ```
 
 * `body` ` unknown `
@@ -141,10 +198,11 @@ Optional configuration that applies when sending a batch of messages to a queue.
 
 A union type containing valid message content types.
 
-TypeScript
+**TypeScript**
 
-```
-// Default: jsontype QueuesContentType = "text" | "bytes" | "json" | "v8";
+```ts
+// Default: json
+type QueuesContentType = "text" | "bytes" | "json" | "v8";
 ```
 
 * Use `"json"` to send a JavaScript object that can be JSON-serialized. This content type can be previewed from the [Cloudflare dashboard ↗](https://dash.cloudflare.com). The `json` content type is the default.
@@ -162,10 +220,14 @@ If you specify an invalid content type, or if your specified content type does n
 
 The result of a successful send operation.
 
-TypeScript
+**TypeScript**
 
-```
-interface QueueSendResult {  metadata: {    metrics: QueueMetrics;  };}
+```ts
+interface QueueSendResult {
+  metadata: {
+    metrics: QueueMetrics;
+  };
+}
 ```
 
 * `metadata` ` object `
@@ -177,10 +239,14 @@ interface QueueSendResult {  metadata: {    metrics: QueueMetrics;  };}
 
 Realtime metrics for a queue.
 
-TypeScript
+**TypeScript**
 
-```
-interface QueueMetrics {  backlogCount: number;  backlogBytes: number;  oldestMessageTimestamp: number;}
+```ts
+interface QueueMetrics {
+  backlogCount: number;
+  backlogBytes: number;
+  oldestMessageTimestamp: number;
+}
 ```
 
 * `backlogCount` ` number `
@@ -208,28 +274,49 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-10001)
-* [  TypeScript ](#tab-panel-10002)
-* [  Python ](#tab-panel-10003)
+* [  JavaScript ](#tab-panel-10021)
+* [  TypeScript ](#tab-panel-10022)
+* [  Python ](#tab-panel-10023)
 
-index.js
+**index.js**
 
+```js
+export default {
+  async queue(batch, env, ctx) {
+    for (const message of batch.messages) {
+      console.log("Received", message.body);
+    }
+  },
+};
 ```
-export default {  async queue(batch, env, ctx) {    for (const message of batch.messages) {      console.log("Received", message.body);    }  },};
+
+**index.ts**
+
+```ts
+interface Env {
+  // Add your bindings here
+}
+
+
+export default {
+  async queue(batch, env, ctx): Promise<void> {
+    for (const message of batch.messages) {
+      console.log("Received", message.body);
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-index.ts
+**Python**
 
-```
-interface Env {  // Add your bindings here}
-export default {  async queue(batch, env, ctx): Promise<void> {    for (const message of batch.messages) {      console.log("Received", message.body);    }  },} satisfies ExportedHandler<Env>;
-```
-
-Python
-
-```
+```python
 from workers import WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def queue(self, batch):        for message in batch.messages:            print("Received", message)
+
+
+class Default(WorkerEntrypoint):
+    async def queue(self, batch):
+        for message in batch.messages:
+            print("Received", message)
 ```
 
 The `env` and `ctx` fields are as [documented in the Workers documentation](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/).
@@ -238,22 +325,38 @@ The `env` and `ctx` fields are as [documented in the Workers documentation](http
 
 You can type queue messages with `Queue<T>` on the producer and `ExportedHandler<Env, T>` on the consumer.
 
-TypeScript
+**TypeScript**
 
-```
-type MyMessage = {  id: string;};
-interface Env {  MY_QUEUE: Queue<MyMessage>;}
-export default {  async queue(batch) {    for (const message of batch.messages) {      console.log(message.body.id);    }  },} satisfies ExportedHandler<Env, MyMessage>;
+```ts
+type MyMessage = {
+  id: string;
+};
+
+
+interface Env {
+  MY_QUEUE: Queue<MyMessage>;
+}
+
+
+export default {
+  async queue(batch) {
+    for (const message of batch.messages) {
+      console.log(message.body.id);
+    }
+  },
+} satisfies ExportedHandler<Env, MyMessage>;
 ```
 
 For primitive messages, use `Queue<number>` or `satisfies ExportedHandler<Env, number>`. If you do not specify a type, `message.body` is `unknown`.
 
 Or alternatively, a queue consumer can be written using the (deprecated) service worker syntax:
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener('queue', (event) => {  event.waitUntil(handleMessages(event));});
+```js
+addEventListener('queue', (event) => {
+  event.waitUntil(handleMessages(event));
+});
 ```
 
 In service worker syntax, `event` provides the same fields and methods as `MessageBatch`, as defined below, in addition to [waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil).
@@ -266,10 +369,15 @@ When performing asynchronous tasks in your queue handler that iterates through m
 
 A batch of messages that are sent to a consumer Worker.
 
-TypeScript
+**TypeScript**
 
-```
-interface MessageBatch<Body = unknown> {  readonly queue: string;  readonly messages: readonly Message<Body>[];  ackAll(): void;  retryAll(options?: QueueRetryOptions): void;}
+```ts
+interface MessageBatch<Body = unknown> {
+  readonly queue: string;
+  readonly messages: readonly Message<Body>[];
+  ackAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
+}
 ```
 
 * `queue` ` string `
@@ -286,10 +394,17 @@ interface MessageBatch<Body = unknown> {  readonly queue: string;  readonly mess
 
 A message that is sent to a consumer Worker.
 
-TypeScript
+**TypeScript**
 
-```
-interface Message<Body = unknown> {  readonly id: string;  readonly timestamp: Date;  readonly body: Body;  readonly attempts: number;  ack(): void;  retry(options?: QueueRetryOptions): void;}
+```ts
+interface Message<Body = unknown> {
+  readonly id: string;
+  readonly timestamp: Date;
+  readonly body: Body;
+  readonly attempts: number;
+  ack(): void;
+  retry(options?: QueueRetryOptions): void;
+}
 ```
 
 * `id` ` string `
@@ -311,10 +426,12 @@ interface Message<Body = unknown> {  readonly id: string;  readonly timestamp: D
 
 Optional configuration when marking a message or a batch of messages for retry.
 
-TypeScript
+**TypeScript**
 
-```
-interface QueueRetryOptions {  delaySeconds?: number;}
+```ts
+interface QueueRetryOptions {
+  delaySeconds?: number;
+}
 ```
 
 * `delaySeconds` ` number `

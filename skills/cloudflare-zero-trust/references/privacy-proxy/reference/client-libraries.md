@@ -31,10 +31,11 @@ tokio-quiche powers Privacy Proxy infrastructure, including Proxy B for iCloud P
 
 Add tokio-quiche to your `Cargo.toml`:
 
-TOML
+**TOML**
 
-```
-[dependencies]tokio-quiche = "0.1"
+```toml
+[dependencies]
+tokio-quiche = "0.1"
 ```
 
 ### Resources
@@ -74,10 +75,11 @@ Chaussette is useful for integrating applications that support SOCKS5 but not HT
 
 ### Usage
 
-Terminal window
-
-```
-MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \  --listen 127.0.0.1:1987 \  --proxy https://your-proxy.example.com:443 \  --geohash xn76c-JP
+```sh
+MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \
+  --listen 127.0.0.1:1987 \
+  --proxy https://your-proxy.example.com:443 \
+  --geohash xn76c-JP
 ```
 
 Then configure your application to use `socks5://127.0.0.1:1987` as its proxy.
@@ -92,10 +94,11 @@ Then configure your application to use `socks5://127.0.0.1:1987` as its proxy.
 
 For basic testing over HTTP/2, standard curl supports CONNECT proxying:
 
-Terminal window
-
-```
-curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  https://example.com
+```sh
+curl -v \
+  --proxy https://your-proxy.example.com \
+  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
+  https://example.com
 ```
 
 curl can also be [built with quiche ↗](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) for HTTP/3 support.
@@ -114,9 +117,7 @@ curl can also be [built with quiche ↗](https://github.com/curl/curl/blob/maste
 
 ### Installation
 
-Terminal window
-
-```
+```sh
 npm install @cloudflare/privacypass-ts
 ```
 

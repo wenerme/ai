@@ -30,10 +30,15 @@ Often websites will want to set a default consent status that denies all categor
 
 If that is not what your website needs, and instead you want to set the default consent status in a more granular way, use the reserved `google_consent_default` property:
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.set("google_consent_default",  {  'ad_storage': 'denied',  'ad_user_data': 'denied',  'ad_personalization': 'denied',  'analytics_storage': 'denied'})
+```js
+zaraz.set("google_consent_default",  {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied'
+})
 ```
 
 After the above code is executed, the consent status will be saved to `localStorage` and will be included with every subsequent Zaraz event.
@@ -44,10 +49,15 @@ Note that the code should be included as part of your website HTML code, usually
 
 After the user has provided their consent preferences you can set the new status using the reserved `google_consent_update` property. If you are using the Zaraz Consent Management Platform, you can use the [Consent Choices Updated event](https://developers.cloudflare.com/zaraz/consent-management/api/#consent-choices-updated) to know when to update the Google Consent status.
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.set("google_consent_update",  {  'ad_storage': 'granted',  'ad_user_data': 'denied',  'ad_personalization': 'granted',  'analytics_storage': 'denied'})
+```js
+zaraz.set("google_consent_update",  {
+  'ad_storage': 'granted',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'granted',
+  'analytics_storage': 'denied'
+})
 ```
 
 All subsequent events will include the information about both the default and the updated consent status.

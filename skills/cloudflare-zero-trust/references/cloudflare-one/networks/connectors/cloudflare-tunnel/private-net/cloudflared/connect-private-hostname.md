@@ -74,8 +74,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-7364)
-* [ Terraform (v5) ](#tab-panel-7365)
+* [ Dashboard ](#tab-panel-7614)
+* [ Terraform (v5) ](#tab-panel-7615)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -87,8 +87,12 @@ Before you can connect to private hostnames, you must enable the Gateway proxy.
 
   * `Zero Trust Write`
 2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-```
-resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  account_id            = var.cloudflare_account_id  gateway_proxy_enabled = true  gateway_udp_proxy_enabled = true}
+```tf
+resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
+  account_id            = var.cloudflare_account_id
+  gateway_proxy_enabled = true
+  gateway_udp_proxy_enabled = true
+}
 ```
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
@@ -233,24 +237,27 @@ End users can now reach the application by going to its private hostname. For ex
 If you cannot connect, verify the following:
 
 1. **Confirm DNS resolution** \- From the device, confirm that you can successfully resolve the private hostname:
-Terminal window
-```
+```sh
 nslookup wiki.internal.local
 ```
-```
-Server:    127.0.2.2Address:  127.0.2.2#53
-Non-authoritative answer:Name:  wiki.internal.localAddress: 100.80.200.48
+```sh
+Server:    127.0.2.2
+Address:  127.0.2.2#53
+Non-authoritative answer:
+Name:  wiki.internal.local
+Address: 100.80.200.48
 ```
 The query should resolve using [WARP's DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) and return a Gateway initial resolved IP. If the query fails to resolve or returns a different IP, check your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) configuration and [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/).
 2. **Check Gateway logs** \- Review your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to see if the connection is being blocked by a policy.
 3. **Verify tunnel status** \- Confirm that your tunnel is healthy and connected by checking [tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/).
 4. **Test connectivity to initial resolved IP** \- When you connect to the application using its private hostname, the device should make a connection to the initial resolved IP:
-Terminal window
-```
+```sh
 curl -v4 http://wiki.internal.local
 ```
-```
-* Trying 100.80.200.48:80...* Connected to wiki.internal.local (100.80.200.48) port 80...
+```sh
+* Trying 100.80.200.48:80...
+* Connected to wiki.internal.local (100.80.200.48) port 80
+...
 ```
 If the request fails, confirm that the initial resolved IP [routes through the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). You can also check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing to the application's private IP.
 

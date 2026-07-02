@@ -25,16 +25,20 @@ A base header view component. Provides background styling and design token suppo
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.headers.RtkHeaderView    android:id="@+id/rtk_header"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.headers.RtkHeaderView
+    android:id="@+id/rtk_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val header = findViewById<RtkHeaderView>(R.id.rtk_header)header.activate(meeting)
+```kotlin
+val header = findViewById<RtkHeaderView>(R.id.rtk_header)
+header.activate(meeting)
 ```
 
 ```json

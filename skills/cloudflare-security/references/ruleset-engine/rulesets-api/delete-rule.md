@@ -41,14 +41,41 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Delete an account ruleset rule
+**Delete an account ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Custom Ruleset 1",    "description": "My first custom ruleset",    "kind": "custom",    "version": "12",    "rules": [      {        "id": "<RULE_ID_2>",        "version": "2",        "action": "js_challenge",        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",        "description": "challenge GB and FR based on bot score",        "last_updated": "2021-07-22T12:54:58.144683Z",        "ref": "<RULE_REF_2>",        "enabled": true      }    ],    "last_updated": "2021-07-22T12:54:58.144683Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Custom Ruleset 1",
+    "description": "My first custom ruleset",
+    "kind": "custom",
+    "version": "12",
+    "rules": [
+      {
+        "id": "<RULE_ID_2>",
+        "version": "2",
+        "action": "js_challenge",
+        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+        "description": "challenge GB and FR based on bot score",
+        "last_updated": "2021-07-22T12:54:58.144683Z",
+        "ref": "<RULE_REF_2>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2021-07-22T12:54:58.144683Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

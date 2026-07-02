@@ -34,19 +34,28 @@ Custom builds are configured by adding a `[build]` section in your [Wrangler con
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-12997)
-* [  wrangler.toml ](#tab-panel-12998)
+* [  wrangler.jsonc ](#tab-panel-13292)
+* [  wrangler.toml ](#tab-panel-13293)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "build": {
+    "command": "npm run build",
+    "cwd": "build_cwd",
+    "watch_dir": "build_watch_dir"
+  }
+}
 ```
-{  "build": {    "command": "npm run build",    "cwd": "build_cwd",    "watch_dir": "build_watch_dir"  }}
-```
 
-TOML
+**TOML**
 
-```
-[build]command = "npm run build"cwd = "build_cwd"watch_dir = "build_watch_dir"
+```toml
+[build]
+command = "npm run build"
+cwd = "build_cwd"
+watch_dir = "build_watch_dir"
 ```
 
 ## `WRANGLER_COMMAND` environment variable
@@ -64,8 +73,15 @@ The possible values are:
 
 For example, you can use this to apply different build settings for development and production:
 
-```
-#!/bin/bashif [ "$WRANGLER_COMMAND" = "dev" ]; then  echo "Building for development..."  # run a development buildelse  echo "Building for production..."  # run a production buildfi
+```bash
+#!/bin/bash
+if [ "$WRANGLER_COMMAND" = "dev" ]; then
+  echo "Building for development..."
+  # run a development build
+else
+  echo "Building for production..."
+  # run a production build
+fi
 ```
 
 ```json

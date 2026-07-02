@@ -24,14 +24,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-file-dropzone></rtk-file-dropzone>
+```html
+<!-- component.html -->
+<rtk-file-dropzone></rtk-file-dropzone>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-file-dropzone [hostEl]="htmlelement"></rtk-file-dropzone>
+```html
+<!-- component.html -->
+<rtk-file-dropzone
+ [hostEl]="htmlelement">
+</rtk-file-dropzone>
 ```
 
 ```json

@@ -28,21 +28,19 @@ Before you start, head to the [Tor Project website â†—](https://www.torproject.o
 
 If you use Tor from the command line, create the following configuration file:
 
-```
+```txt
 SOCKSPort 9150
 ```
 
 Then you can run tor with:
 
-Terminal window
-
-```
+```sh
 tor -f tor.conf
 ```
 
 Also, if you use the Tor Browser, you can head to the resolver's address to see the usual 1.1.1.1 page:
 
-```
+```txt
 https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/
 ```
 
@@ -52,13 +50,11 @@ The HTTPS certificate indicator should say "Cloudflare, Inc. (US)." This confirm
 
 If you ever forget 1.1.1.1's address, use cURL to retrieve it:
 
-Terminal window
-
-```
+```sh
 curl -sI https://tor.cloudflare-dns.com | grep -i alt-svc
 ```
 
-```
+```sh
 alt-svc: h2="dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443"; ma=315360000; persist=1
 ```
 
@@ -70,9 +66,7 @@ Not all DNS clients support connecting to the Tor network directly. The [socat â
 
 The hidden resolver listens on TCP port 53 (DNS over TCP) and port 853 (DNS over TLS). After setting up a Tor proxy, run the following `socat` command as a privileged user, setting `PORT` to 53 or 853 depending on your protocol:
 
-Terminal window
-
-```
+```sh
 PORT=853; socat TCP4-LISTEN:${PORT},reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:${PORT},socksport=9150
 ```
 
@@ -85,32 +79,30 @@ From here, you can follow the regular guide for [setting up 1.1.1.1](https://dev
 1. Download `cloudflared` by following the guide for [connecting to 1.1.1.1 using DNS over HTTPS clients](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/).
 2. Start a Tor SOCKS proxy and use `socat` to forward port TCP:443 to localhost:
 
-Terminal window
-
-```
+```sh
 socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport=9150
 ```
 
 1. Instruct your machine to treat the `.onion` address as localhost:
 
-Terminal window
-
-```
-cat << EOF >> /etc/hosts127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onionEOF
+```bash
+cat << EOF >> /etc/hosts
+127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion
+EOF
 ```
 
 If you run this command more than once, remove duplicate entries from `/etc/hosts` to avoid conflicts.
 
 1. Finally, start a local DNS over UDP daemon:
 
-Terminal window
-
-```
+```sh
 cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
 ```
 
-```
-INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"INFO[0000] Starting metrics server                       addr="127.0.0.1:35659"
+```sh
+INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
+INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"
+INFO[0000] Starting metrics server                       addr="127.0.0.1:35659"
 ```
 
 ```json

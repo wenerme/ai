@@ -57,8 +57,8 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-7676)
-* [ API ](#tab-panel-7677)
+* [ Dashboard ](#tab-panel-7929)
+* [ API ](#tab-panel-7930)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
@@ -69,10 +69,22 @@ You can use Gateway to create a new DNS policy with a schedule or add a schedule
 
 To schedule a policy with the API, use the [Create a Zero Trust Gateway rule endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) with the `schedule` parameter set to your desired days of the week, times of day, and an optional time zone. For example:
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "block",    "name": "Block gambling sites on weekends",    "traffic": "any(dns.content_category[*] in {\"Gambling\"})",    "schedule": {        "sat": "08:00-17:00",        "sun": "08:00-17:00",        "timezone": "Europe/Paris"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "block",
+    "name": "Block gambling sites on weekends",
+    "traffic": "any(dns.content_category[*] in {\"Gambling\"})",
+    "schedule": {
+        "sat": "08:00-17:00",
+        "sun": "08:00-17:00",
+        "timezone": "Europe/Paris"
+    }
+  }'
 ```
 
 The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
@@ -91,10 +103,26 @@ Users on VPNs or corporate proxies may have their time zone inferred incorrectly
 
 The following command creates a DNS policy to block `facebook.com` only on weekdays from 8:00 AM - 12:30 PM and 1:30 PM - 5:00 PM in the Chicago, USA time zone.
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "office-no-facebook-policy",    "action": "block",    "traffic": "dns.fqdn == \"facebook.com\"",    "enabled": true,    "schedule": {        "time_zone": "America/Chicago",        "mon": "08:00-12:30,13:30-17:00",        "tue": "08:00-12:30,13:30-17:00",        "wed": "08:00-12:30,13:30-17:00",        "thu": "08:00-12:30,13:30-17:00",        "fri": "08:00-12:30,13:30-17:00"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "office-no-facebook-policy",
+    "action": "block",
+    "traffic": "dns.fqdn == \"facebook.com\"",
+    "enabled": true,
+    "schedule": {
+        "time_zone": "America/Chicago",
+        "mon": "08:00-12:30,13:30-17:00",
+        "tue": "08:00-12:30,13:30-17:00",
+        "wed": "08:00-12:30,13:30-17:00",
+        "thu": "08:00-12:30,13:30-17:00",
+        "fri": "08:00-12:30,13:30-17:00"
+    }
+  }'
 ```
 
 Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabase%5Ftime%5Fzones#List) for a list of all time zone identifiers.
@@ -103,10 +131,22 @@ Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabas
 
 The following command creates a DNS policy to block `clockin.com` only on weekends in the time zone where the user is currently located.
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "clock-in-policy",    "action": "block",    "traffic": "dns.fqdn == \"clockin.com\"",    "enabled": true,    "schedule": {        "sat": "00:00-24:00",        "sun": "00:00-24:00"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "clock-in-policy",
+    "action": "block",
+    "traffic": "dns.fqdn == \"clockin.com\"",
+    "enabled": true,
+    "schedule": {
+        "sat": "00:00-24:00",
+        "sun": "00:00-24:00"
+    }
+  }'
 ```
 
 Note

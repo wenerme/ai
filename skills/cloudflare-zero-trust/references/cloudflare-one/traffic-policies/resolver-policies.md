@@ -93,8 +93,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-7768)
-* [ Terraform (v5) ](#tab-panel-7769)
+* [ Dashboard ](#tab-panel-8021)
+* [ Terraform (v5) ](#tab-panel-8022)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
@@ -116,8 +116,34 @@ Custom resolvers are saved to your account for future use. You can add up to 10 
 
   * `Zero Trust Write`
 2. Create a resolver policy using the [cloudflare\_zero\_trust\_gateway\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy) resource:
-```
-resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {  name        = "Example resolver policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "TERRAFORM MANAGED resolver policy"  action      = "resolve"  traffic     = "dns.fqdn in {\"internal.example.com\"}"  identity    = "identity.email in {\"jdoe@example.com\"}"  precedence  = 1  rule_settings = {      dns_resolvers = {      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.        ipv4 = [{          ip = "192.0.2.24"          port = 53          route_through_private_network = true          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id        }]        ipv6 = [{          ip = "2001:DB8::"          port = 53          route_through_private_network = true          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id        }]      }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
+  name        = "Example resolver policy"
+  enabled     = true
+  account_id  = var.cloudflare_account_id
+  description = "TERRAFORM MANAGED resolver policy"
+  action      = "resolve"
+  traffic     = "dns.fqdn in {\"internal.example.com\"}"
+  identity    = "identity.email in {\"jdoe@example.com\"}"
+  precedence  = 1
+  rule_settings = {
+      dns_resolvers = {
+      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
+        ipv4 = [{
+          ip = "192.0.2.24"
+          port = 53
+          route_through_private_network = true
+          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+        }]
+        ipv6 = [{
+          ip = "2001:DB8::"
+          port = 53
+          route_through_private_network = true
+          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+        }]
+      }
+  }
+}
 ```
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:

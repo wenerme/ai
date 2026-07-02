@@ -26,20 +26,35 @@ A pre-configured button that joins the meeting. Validates the participant name b
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let joinButton = RtkJoinButton(meeting: rtkClient)view.addSubview(joinButton)
+
+
+let joinButton = RtkJoinButton(meeting: rtkClient)
+view.addSubview(joinButton)
 ```
 
 ### With tap handler
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let joinButton = RtkJoinButton(    meeting: rtkClient,    onClick: { button, success in        if success {            print("Joined meeting")        } else {            print("Join failed")        }    })view.addSubview(joinButton)
+
+
+let joinButton = RtkJoinButton(
+    meeting: rtkClient,
+    onClick: { button, success in
+        if success {
+            print("Joined meeting")
+        } else {
+            print("Join failed")
+        }
+    }
+)
+view.addSubview(joinButton)
 ```
 
 ```json

@@ -32,7 +32,7 @@ All requests require an API token with **AI Search:Edit** and **AI Search:Run** 
 
 Include the token in the `Authorization` header for all requests:
 
-```
+```txt
 Authorization: Bearer <API_TOKEN>
 ```
 
@@ -64,10 +64,13 @@ Create, list, get, update, and delete AI Search instances. For the full specific
 
 Create an instance in the default namespace:
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "id": "my-instance"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "my-instance"
+  }'
 ```
 
 ## Jobs
@@ -85,10 +88,9 @@ Trigger and monitor [sync jobs](https://developers.cloudflare.com/ai-search/conf
 
 Start a new sync job for an instance:
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/jobs" \  -H "Authorization: Bearer <API_TOKEN>"
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/jobs" \
+  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```json

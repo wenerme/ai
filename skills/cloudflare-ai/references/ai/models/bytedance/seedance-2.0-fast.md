@@ -27,110 +27,162 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-370)
-* [ cURL ](#tab-panel-371)
+* [ TypeScript ](#tab-panel-396)
+* [ cURL ](#tab-panel-397)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0-fast',
+  {
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+    aspect_ratio: '16:9',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'bytedance/seedance-2.0-fast',  {    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',    aspect_ratio: '16:9',    duration: 5,    resolution: '720p',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0-fast",
+  "input": {
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-392)
+* [ Raw response ](#tab-panel-393)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0-fast",  "input": {    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",    "aspect_ratio": "16:9",    "duration": 5,    "resolution": "720p"  }}'
-```
-
-* [ Output ](#tab-panel-366)
-* [ Raw response ](#tab-panel-367)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/quick-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/quick-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **Portrait Video**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-372)
-* [ cURL ](#tab-panel-373)
+* [ TypeScript ](#tab-panel-398)
+* [ cURL ](#tab-panel-399)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0-fast',
+  {
+    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',
+    aspect_ratio: '9:16',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'bytedance/seedance-2.0-fast',  {    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',    aspect_ratio: '9:16',    duration: 5,    resolution: '720p',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0-fast",
+  "input": {
+    "prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",
+    "aspect_ratio": "9:16",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-394)
+* [ Raw response ](#tab-panel-395)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0-fast",  "input": {    "prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",    "aspect_ratio": "9:16",    "duration": 5,    "resolution": "720p"  }}'
-```
-
-* [ Output ](#tab-panel-368)
-* [ Raw response ](#tab-panel-369)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/portrait-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/portrait-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-374)
-* [ Output ](#tab-panel-375)
-
-aspect\_ratio
-
-`string`requireddefault: 16:9enum: 16:9, 4:3, 1:1, 3:4, 9:16, 21:9, 9:21Video aspect ratio. Ignored if an image is used.
-
-camera\_fixed
-
-`boolean`requireddefault: falseWhether to fix camera position
-
-duration
-
-`integer`requireddefault: 5maximum: 12minimum: 4Video duration in seconds
-
-fps
-
-`number`requireddefault: 24const: 24Frame rate (frames per second)
-
-generate\_audio
-
-`boolean`Whether to generate audio with the video
-
-image
-
-`string`Reference image (HTTP(S) URL or base64 data URI) for image-to-video
-
-last\_frame\_image
-
-`string`Reference image (HTTP(S) URL or base64 data URI) for last-frame guidance. Only works if an image start frame is also given.
+* [ Input ](#tab-panel-400)
+* [ Output ](#tab-panel-401)
 
 prompt
 
 `string`requiredmaxLength: 2000Text prompt describing the video to generate
 
-▶reference\_images\[\]
+image
 
-`array`maxItems: 4Reference images (1-4, HTTP(S) URLs or base64 data URIs) to guide video generation for characters, avatars, clothing, or environments. Cannot be used with 1080p resolution or first/last frame images.
+`string`Reference image (HTTP(S) URL or base64 data URI) for image-to-video
 
 reference\_video
 
 `string`Reference video (HTTP(S) URL or base64 data URI) for style/motion guidance
 
+last\_frame\_image
+
+`string`Reference image (HTTP(S) URL or base64 data URI) for last-frame guidance. Only works if an image start frame is also given.
+
+▶reference\_images\[\]
+
+`array`maxItems: 4Reference images (1-4, HTTP(S) URLs or base64 data URIs) to guide video generation for characters, avatars, clothing, or environments. Cannot be used with 1080p resolution or first/last frame images.
+
+duration
+
+`integer`requireddefault: 5minimum: 4maximum: 12Video duration in seconds
+
 resolution
 
 `string`requireddefault: 720penum: 480p, 720pVideo resolution
 
-seed
+aspect\_ratio
 
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Random seed for reproducible generation
+`string`requireddefault: 16:9enum: 16:9, 4:3, 1:1, 3:4, 9:16, 21:9, 9:21Video aspect ratio. Ignored if an image is used.
+
+fps
+
+`number`requireddefault: 24const: 24Frame rate (frames per second)
+
+camera\_fixed
+
+`boolean`requireddefault: falseWhether to fix camera position
+
+generate\_audio
+
+`boolean`Whether to generate audio with the video
 
 watermark
 
 `boolean`requireddefault: falseWhether to add a watermark to the output video
+
+seed
+
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation
 
 video
 

@@ -28,16 +28,30 @@ A themed text input field component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTextField } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkTextField placeholder="Enter your name" />;}
+
+
+function MyComponent() {
+  return <RtkTextField placeholder="Enter your name" />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTextField } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkTextField      placeholder="Enter display name"      onChangeText={(text) => setName(text)}      disabled={false}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTextField
+      placeholder="Enter display name"
+      onChangeText={(text) => setName(text)}
+      disabled={false}
+    />
+  );
+}
 ```
 
 ```json

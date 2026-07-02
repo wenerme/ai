@@ -38,7 +38,7 @@ Upload, manage, and delete hosted images from the Images API.
 
 The Images API endpoint uses the following format:
 
-```
+```txt
   https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1
 ```
 

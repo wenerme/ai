@@ -16,9 +16,9 @@ The central design token library providing color, spacing, border width, and bor
 
 ## Access
 
-Swift
+**Swift**
 
-```
+```swift
 let designLibrary = DesignLibrary.shared
 ```
 
@@ -35,14 +35,27 @@ let designLibrary = DesignLibrary.shared
 
 ### Access design tokens
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
+
+
 let designLibrary = DesignLibrary.shared
-// Access color tokenslet backgroundColor = designLibrary.color.backgroundlet textColor = designLibrary.color.text
-// Access spacing tokenslet padding = designLibrary.space.space4
-// Access border tokenslet borderWidth = designLibrary.borderSize.thinlet cornerRadius = designLibrary.borderRadius.rounded
+
+
+// Access color tokens
+let backgroundColor = designLibrary.color.background
+let textColor = designLibrary.color.text
+
+
+// Access spacing tokens
+let padding = designLibrary.space.space4
+
+
+// Access border tokens
+let borderWidth = designLibrary.borderSize.thin
+let cornerRadius = designLibrary.borderRadius.rounded
 ```
 
 ```json

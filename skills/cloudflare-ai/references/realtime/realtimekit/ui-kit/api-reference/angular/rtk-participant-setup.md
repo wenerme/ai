@@ -30,14 +30,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participant-setup></rtk-participant-setup>
+```html
+<!-- component.html -->
+<rtk-participant-setup></rtk-participant-setup>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participant-setup [isPreview]="true" [nameTagPosition]="| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'" [participant]="participant"></rtk-participant-setup>
+```html
+<!-- component.html -->
+<rtk-participant-setup
+ [isPreview]="true"
+ [nameTagPosition]="| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'"
+ [participant]="participant">
+</rtk-participant-setup>
 ```
 
 ```json

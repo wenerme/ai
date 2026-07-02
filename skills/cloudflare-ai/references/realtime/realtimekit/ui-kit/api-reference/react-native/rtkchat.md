@@ -28,16 +28,24 @@ Full chat interface with message list, text input, image/file upload support, an
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChat } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkChat meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkChat meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChat } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkChat meeting={meeting} size="md" config={customConfig} />;}
+
+
+function MyComponent() {
+  return <RtkChat meeting={meeting} size="md" config={customConfig} />;
+}
 ```
 
 ```json

@@ -50,8 +50,23 @@ Devices are identified by their serial numbers. You must ensure that each of you
 
 Example request body:
 
-```
-{  "devices": {    [      {        "device_id": "9ece5fab-7398-488a-a575-e25a9a3dec07",        "email": "jdoe@mycompany.com",        "serial_number": "jdR44P3d",        "mac_address": "74:1d:3e:23:e0:fe",        "virtual_ipv4": "100.96.0.10",        "hostname": "string",      },      {...},      {...}    ]  }}
+```json
+{
+  "devices": {
+    [
+      {
+        "device_id": "9ece5fab-7398-488a-a575-e25a9a3dec07",
+        "email": "jdoe@mycompany.com",
+        "serial_number": "jdR44P3d",
+        "mac_address": "74:1d:3e:23:e0:fe",
+        "virtual_ipv4": "100.96.0.10",
+        "hostname": "string",
+      },
+      {...},
+      {...}
+    ]
+  }
+}
 ```
 
 ### Expected response from external API
@@ -65,8 +80,17 @@ For each Cloudflare `device_id`, the API service is expected to return a posture
 
 Example response body:
 
-```
-{  "result": {    "9ece5fab-7398-488a-a575-e25a9a3dec07": {      "s2s_id": "",      "score": 10    },    "device_id2": {...},    "device_id3": {...}  }}
+```json
+{
+  "result": {
+    "9ece5fab-7398-488a-a575-e25a9a3dec07": {
+      "s2s_id": "",
+      "score": 10
+    },
+    "device_id2": {...},
+    "device_id3": {...}
+  }
+}
 ```
 
 ## Set up custom device posture checks

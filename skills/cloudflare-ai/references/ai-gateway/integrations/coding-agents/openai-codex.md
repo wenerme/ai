@@ -29,29 +29,39 @@ Before you start, you need:
 * [Codex ↗](https://developers.openai.com/codex/cli/) installed and updated to the latest version.
 1. Create a Codex [profile ↗](https://developers.openai.com/codex/config-advanced#profiles) file at `~/.codex/cloudflare-aig.config.toml`. The profile defines a custom model provider that points at your gateway's OpenAI endpoint and reads your Cloudflare API token from an environment variable.
 Replace `<ACCOUNT_ID>` and `<GATEWAY_ID>` with your values. You can use `default` for the gateway to route through your account's default gateway, or change it to another gateway slug.
-\~/.codex/cloudflare-aig.config.toml
-```
-model_provider = "cloudflare-ai-gateway"model = "gpt-5.5"model_reasoning_effort = "medium"
-[model_providers.cloudflare-ai-gateway]name = "Cloudflare AI Gateway"# Run `wrangler whoami` to get your account ID, then replace <ACCOUNT_ID>.# Use `default` for <GATEWAY_ID> to route through your account's default gateway.base_url = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/openai"env_key = "CLOUDFLARE_API_KEY"wire_api = "responses"
+
+**\~/.codex/cloudflare-aig.config.toml**
+```toml
+model_provider = "cloudflare-ai-gateway"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+[model_providers.cloudflare-ai-gateway]
+name = "Cloudflare AI Gateway"
+# Run `wrangler whoami` to get your account ID, then replace <ACCOUNT_ID>.
+# Use `default` for <GATEWAY_ID> to route through your account's default gateway.
+base_url = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/openai"
+env_key = "CLOUDFLARE_API_KEY"
+wire_api = "responses"
 ```
 Note
 Codex does not expand environment variables inside `base_url`, so the account ID and gateway slug must be literal values. Only `CLOUDFLARE_API_KEY` is read from the environment.
 2. Set your Cloudflare API token as the `CLOUDFLARE_API_KEY` environment variable. The following commands set it for the current session. To persist it, add it to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
 Replace `<CLOUDFLARE_API_KEY>` with your value.
 
-  * [ macOS / Linux ](#tab-panel-6630)
-  * [ Windows (PowerShell) ](#tab-panel-6631)
-Terminal window
+  * [ macOS / Linux ](#tab-panel-6870)
+  * [ Windows (PowerShell) ](#tab-panel-6871)
+```bash
+# Run `wrangler auth token` to get an auth token.
+export CLOUDFLARE_API_KEY="<CLOUDFLARE_API_KEY>"
 ```
-# Run `wrangler auth token` to get an auth token.export CLOUDFLARE_API_KEY="<CLOUDFLARE_API_KEY>"
-```
-PowerShell
-```
-# Run `wrangler auth token` to get an auth token.$env:CLOUDFLARE_API_KEY = "<CLOUDFLARE_API_KEY>"
+
+**PowerShell**
+```powershell
+# Run `wrangler auth token` to get an auth token.
+$env:CLOUDFLARE_API_KEY = "<CLOUDFLARE_API_KEY>"
 ```
 3. Start Codex with the profile and send a prompt. Requests now route through AI Gateway.
-Terminal window
-```
+```bash
 codex --profile cloudflare-aig
 ```
 

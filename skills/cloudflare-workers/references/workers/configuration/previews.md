@@ -76,9 +76,7 @@ Minimum required Wrangler version: `4.21.0`. Check your version by running `wran
 
 Aliases may be created during `versions upload`, by providing the `--preview-alias` flag with a valid alias name:
 
-Terminal window
-
-```
+```bash
 wrangler versions upload --preview-alias staging
 ```
 
@@ -137,33 +135,37 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11543)
-* [  wrangler.toml ](#tab-panel-11544)
+* [  wrangler.jsonc ](#tab-panel-11838)
+* [  wrangler.toml ](#tab-panel-11839)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "preview_urls": true
+}
 ```
-{  "preview_urls": true}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 preview_urls = true
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11545)
-* [  wrangler.toml ](#tab-panel-11546)
+* [  wrangler.jsonc ](#tab-panel-11840)
+* [  wrangler.toml ](#tab-panel-11841)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "preview_urls": false
+}
 ```
-{  "preview_urls": false}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 preview_urls = false
 ```
 

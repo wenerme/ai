@@ -25,16 +25,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkBreakoutRoomsManager } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkBreakoutRoomsManager />;}
+
+
+function MyComponent() {
+  return <RtkBreakoutRoomsManager />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkBreakoutRoomsManager } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkBreakoutRoomsManager      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkBreakoutRoomsManager
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

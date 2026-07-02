@@ -27,27 +27,48 @@ Image Classification • Microsoft
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5148)
-* [  curl ](#tab-panel-5149)
+* [  TypeScript ](#tab-panel-5294)
+* [  curl ](#tab-panel-5295)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const res = await fetch("https://cataas.com/cat");    const blob = await res.arrayBuffer();
-    const inputs = {      image: [...new Uint8Array(blob)],    };
-    const response = await env.AI.run(      "@cf/microsoft/resnet-50",      inputs    );
-    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const res = await fetch("https://cataas.com/cat");
+    const blob = await res.arrayBuffer();
+
+
+    const inputs = {
+      image: [...new Uint8Array(blob)],
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/microsoft/resnet-50",
+      inputs
+    );
+
+
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/microsoft/resnet-50  \    -X POST  \    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \    --data-binary "@orange-llama.png"
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/microsoft/resnet-50  \
+    -X POST  \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+    --data-binary "@orange-llama.png"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5150)
-* [ Output ](#tab-panel-5151)
+* [ Input ](#tab-panel-5296)
+* [ Output ](#tab-panel-5297)
 
 Option 1
 

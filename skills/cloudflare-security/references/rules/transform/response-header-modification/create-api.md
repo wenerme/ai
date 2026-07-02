@@ -68,14 +68,67 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "set_resp_header_source",            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",            "description": "My first response header transform rule",            "action": "rewrite",            "action_parameters": {                "headers": {                    "X-Source": {                        "operation": "set",                        "value": "Cloudflare"                    }                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "set_resp_header_source",
+            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+            "description": "My first response header transform rule",
+            "action": "rewrite",
+            "action_parameters": {
+                "headers": {
+                    "X-Source": {
+                        "operation": "set",
+                        "value": "Cloudflare"
+                    }
+                }
+            }
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level Response Headers Transform Ruleset",    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "set_resp_header_source",        "id": "<RULE_ID>",        "version": "1",        "action": "rewrite",        "action_parameters": {          "headers": {            "X-Source": {              "operation": "set",              "value": "Cloudflare"            }          }        },        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",        "description": "My first response header transform rule",        "last_updated": "2021-04-14T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2021-04-14T14:42:04.219025Z",    "phase": "http_response_headers_transform"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level Response Headers Transform Ruleset",
+    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "ref": "set_resp_header_source",
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "rewrite",
+        "action_parameters": {
+          "headers": {
+            "X-Source": {
+              "operation": "set",
+              "value": "Cloudflare"
+            }
+          }
+        },
+        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+        "description": "My first response header transform rule",
+        "last_updated": "2021-04-14T14:42:04.219025Z",
+        "ref": "<RULE_REF>"
+      }
+    ],
+    "last_updated": "2021-04-14T14:42:04.219025Z",
+    "phase": "http_response_headers_transform"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -109,14 +162,67 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "set_resp_header_bot_score",            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",            "description": "My first response header transform rule",            "action": "rewrite",            "action_parameters": {                "headers": {                    "X-Bot-Score": {                        "operation": "set",                        "expression": "to_string(cf.bot_management.score)"                    }                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "set_resp_header_bot_score",
+            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+            "description": "My first response header transform rule",
+            "action": "rewrite",
+            "action_parameters": {
+                "headers": {
+                    "X-Bot-Score": {
+                        "operation": "set",
+                        "expression": "to_string(cf.bot_management.score)"
+                    }
+                }
+            }
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level Response Headers Transform Ruleset",    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "set_resp_header_bot_score",        "id": "<RULE_ID>",        "version": "1",        "action": "rewrite",        "action_parameters": {          "headers": {            "X-Bot-Score": {              "operation": "set",              "expression": "to_string(cf.bot_management.score)"            }          }        },        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",        "description": "My first response header transform rule",        "last_updated": "2021-04-14T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2021-04-14T14:42:04.219025Z",    "phase": "http_response_headers_transform"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level Response Headers Transform Ruleset",
+    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "ref": "set_resp_header_bot_score",
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "rewrite",
+        "action_parameters": {
+          "headers": {
+            "X-Bot-Score": {
+              "operation": "set",
+              "expression": "to_string(cf.bot_management.score)"
+            }
+          }
+        },
+        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+        "description": "My first response header transform rule",
+        "last_updated": "2021-04-14T14:42:04.219025Z",
+        "ref": "<RULE_REF>"
+      }
+    ],
+    "last_updated": "2021-04-14T14:42:04.219025Z",
+    "phase": "http_response_headers_transform"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -150,14 +256,67 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "add_resp_header_set_mycookie",            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",            "description": "My first response header transform rule",            "action": "rewrite",            "action_parameters": {                "headers": {                    "set-cookie": {                        "operation": "add",                        "value": "mycookie=custom_value"                    }                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "add_resp_header_set_mycookie",
+            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+            "description": "My first response header transform rule",
+            "action": "rewrite",
+            "action_parameters": {
+                "headers": {
+                    "set-cookie": {
+                        "operation": "add",
+                        "value": "mycookie=custom_value"
+                    }
+                }
+            }
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level Response Headers Transform Ruleset",    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "add_resp_header_set_mycookie",        "id": "<RULE_ID>",        "version": "1",        "action": "rewrite",        "action_parameters": {          "headers": {            "set-cookie": {              "operation": "add",              "value": "mycookie=custom_value"            }          }        },        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",        "description": "My first response header transform rule",        "last_updated": "2021-04-14T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2021-04-14T14:42:04.219025Z",    "phase": "http_response_headers_transform"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level Response Headers Transform Ruleset",
+    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "ref": "add_resp_header_set_mycookie",
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "rewrite",
+        "action_parameters": {
+          "headers": {
+            "set-cookie": {
+              "operation": "add",
+              "value": "mycookie=custom_value"
+            }
+          }
+        },
+        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+        "description": "My first response header transform rule",
+        "last_updated": "2021-04-14T14:42:04.219025Z",
+        "ref": "<RULE_REF>"
+      }
+    ],
+    "last_updated": "2021-04-14T14:42:04.219025Z",
+    "phase": "http_response_headers_transform"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -191,14 +350,65 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "remove_resp_header_cf_connecting_ip",            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",            "description": "My first response header transform rule",            "action": "rewrite",            "action_parameters": {                "headers": {                    "cf-connecting-ip": {                        "operation": "remove"                    }                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "remove_resp_header_cf_connecting_ip",
+            "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+            "description": "My first response header transform rule",
+            "action": "rewrite",
+            "action_parameters": {
+                "headers": {
+                    "cf-connecting-ip": {
+                        "operation": "remove"
+                    }
+                }
+            }
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level Response Headers Transform Ruleset",    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "remove_resp_header_cf_connecting_ip",        "id": "<RULE_ID>",        "version": "1",        "action": "rewrite",        "action_parameters": {          "headers": {            "cf-connecting-ip": {              "operation": "remove"            }          }        },        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",        "description": "My first response header transform rule",        "last_updated": "2021-04-14T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2021-04-14T14:42:04.219025Z",    "phase": "http_response_headers_transform"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level Response Headers Transform Ruleset",
+    "description": "Zone-level ruleset that will execute Response Header Transform Rules.",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "ref": "remove_resp_header_cf_connecting_ip",
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "rewrite",
+        "action_parameters": {
+          "headers": {
+            "cf-connecting-ip": {
+              "operation": "remove"
+            }
+          }
+        },
+        "expression": "(starts_with(http.request.uri.path, \"/en/\"))",
+        "description": "My first response header transform rule",
+        "last_updated": "2021-04-14T14:42:04.219025Z",
+        "ref": "<RULE_REF>"
+      }
+    ],
+    "last_updated": "2021-04-14T14:42:04.219025Z",
+    "phase": "http_response_headers_transform"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

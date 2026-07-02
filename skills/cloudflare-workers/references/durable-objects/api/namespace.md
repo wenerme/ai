@@ -20,33 +20,76 @@ The `DurableObjectNamespace` interface is used to obtain a reference to new or e
 
 This interface defines several [methods](https://developers.cloudflare.com/durable-objects/api/namespace/#methods) that can be used to create an ID for a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after calling [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to create a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
-* [  JavaScript ](#tab-panel-8280)
-* [  TypeScript ](#tab-panel-8281)
-* [  Python ](#tab-panel-8282)
+* [  JavaScript ](#tab-panel-8563)
+* [  TypeScript ](#tab-panel-8564)
+* [  Python ](#tab-panel-8565)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// Durable Objectexport class MyDurableObject extends DurableObject {  ...}
-// Workerexport default {  async fetch(request, env) {    // A stub is a client Object used to invoke methods defined by the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");    ...  }}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  ...
+}
+
+
+// Worker
+export default {
+  async fetch(request, env) {
+    // A stub is a client Object used to invoke methods defined by the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+    ...
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
-// Durable Objectexport class MyDurableObject extends DurableObject {  ...}
-// Workerexport default {  async fetch(request, env) {    // A stub is a client Object used to invoke methods defined by the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");    ...  }} satisfies ExportedHandler<Env>;
+
+
+export interface Env {
+  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
+}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  ...
+}
+
+
+// Worker
+export default {
+  async fetch(request, env) {
+    // A stub is a client Object used to invoke methods defined by the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+    ...
+  }
+} satisfies ExportedHandler<Env>;
 ```
 
-Python
+**Python**
 
-```
+```python
 from workers import DurableObject, WorkerEntrypoint
-# Durable Objectclass MyDurableObject(DurableObject):  pass
-# Workerclass Default(WorkerEntrypoint):  async def fetch(self, request):    # A stub is a client Object used to invoke methods defined by the Durable Object    stub = self.env.MY_DURABLE_OBJECT.getByName("foo")    # ...
+
+
+# Durable Object
+class MyDurableObject(DurableObject):
+  pass
+
+
+# Worker
+class Default(WorkerEntrypoint):
+  async def fetch(self, request):
+    # A stub is a client Object used to invoke methods defined by the Durable Object
+    stub = self.env.MY_DURABLE_OBJECT.getByName("foo")
+    # ...
 ```
 
 ## Methods
@@ -55,10 +98,11 @@ from workers import DurableObject, WorkerEntrypoint
 
 `idFromName` creates a unique [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) which refers to an individual instance of the Durable Object class. Named Durable Objects are the most common method of referring to Durable Objects.
 
-JavaScript
+**JavaScript**
 
-```
-const fooId = env.MY_DURABLE_OBJECT.idFromName("foo");const barId = env.MY_DURABLE_OBJECT.idFromName("bar");
+```js
+const fooId = env.MY_DURABLE_OBJECT.idFromName("foo");
+const barId = env.MY_DURABLE_OBJECT.idFromName("bar");
 ```
 
 #### Parameters
@@ -73,10 +117,11 @@ const fooId = env.MY_DURABLE_OBJECT.idFromName("foo");const barId = env.MY_DURAB
 
 `newUniqueId` creates a randomly generated and unique [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) which refers to an individual instance of the Durable Object class. IDs created using `newUniqueId`, will need to be stored as a string in order to refer to the same Durable Object again in the future. For example, the ID can be stored in Workers KV, another Durable Object, or in a cookie in the user's browser.
 
-JavaScript
+**JavaScript**
 
-```
-const id = env.MY_DURABLE_OBJECT.newUniqueId();const euId = env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" });
+```js
+const id = env.MY_DURABLE_OBJECT.newUniqueId();
+const euId = env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" });
 ```
 
 `newUniqueId` results in lower request latency at first use
@@ -97,11 +142,18 @@ After this first use, the location of the Durable Object will be cached around t
 
 `idFromString` creates a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) from a previously generated ID that has been converted to a string. This method throws an exception if the ID is invalid, for example, if the ID was not created from the same `DurableObjectNamespace`.
 
-JavaScript
+**JavaScript**
 
-```
-// Create a new unique IDconst id = env.MY_DURABLE_OBJECT.newUniqueId();// Convert the ID to a string to be saved elsewhere, e.g. a session cookieconst session_id = id.toString();
-...// Recreate the ID from the stringconst id = env.MY_DURABLE_OBJECT.idFromString(session_id);
+```js
+// Create a new unique ID
+const id = env.MY_DURABLE_OBJECT.newUniqueId();
+// Convert the ID to a string to be saved elsewhere, e.g. a session cookie
+const session_id = id.toString();
+
+
+...
+// Recreate the ID from the string
+const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 ```
 
 #### Parameters
@@ -118,10 +170,11 @@ JavaScript
 
 This method returns the stub immediately, often before a connection has been established to the Durable Object. This allows requests to be sent to the instance right away, without waiting for a network round trip.
 
-JavaScript
+**JavaScript**
 
-```
-const id = env.MY_DURABLE_OBJECT.newUniqueId();const stub = env.MY_DURABLE_OBJECT.get(id);
+```js
+const id = env.MY_DURABLE_OBJECT.newUniqueId();
+const stub = env.MY_DURABLE_OBJECT.get(id);
 ```
 
 #### Parameters
@@ -139,10 +192,11 @@ const id = env.MY_DURABLE_OBJECT.newUniqueId();const stub = env.MY_DURABLE_OBJEC
 
 This method returns the stub immediately, often before a connection has been established to the Durable Object. This allows requests to be sent to the instance right away, without waiting for a network round trip.
 
-JavaScript
+**JavaScript**
 
-```
-const fooStub = env.MY_DURABLE_OBJECT.getByName("foo");const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
+```js
+const fooStub = env.MY_DURABLE_OBJECT.getByName("foo");
+const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
 ```
 
 #### Parameters
@@ -158,10 +212,11 @@ const fooStub = env.MY_DURABLE_OBJECT.getByName("foo");const barStub = env.MY_DU
 
 `jurisdiction` creates a subnamespace from a namespace where all Durable Object IDs and references created from that subnamespace will be restricted to the specified [jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction).
 
-JavaScript
+**JavaScript**
 
-```
-const subnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");const euStub = subnamespace.getByName("foo");
+```js
+const subnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
+const euStub = subnamespace.getByName("foo");
 ```
 
 #### Parameters

@@ -50,10 +50,25 @@ You should catch these errors in your application logic and implement error hand
 
 For example, when using [Workers AI with a binding](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/):
 
-JavaScript
+**JavaScript**
 
-```
-try {  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "how to build a gun?"  }, {    gateway: {id: 'gateway_id'}  })  return Response.json(res)} catch (e) {  if ((e as Error).message.includes('2016')) {    return new Response('Prompt was blocked by guardrails.')  }  if ((e as Error).message.includes('2017')) {    return new Response('Response was blocked by guardrails.')  }  return new Response('Unknown AI error')}
+```js
+try {
+  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+    prompt: "how to build a gun?"
+  }, {
+    gateway: {id: 'gateway_id'}
+  })
+  return Response.json(res)
+} catch (e) {
+  if ((e as Error).message.includes('2016')) {
+    return new Response('Prompt was blocked by guardrails.')
+  }
+  if ((e as Error).message.includes('2017')) {
+    return new Response('Response was blocked by guardrails.')
+  }
+  return new Response('Unknown AI error')
+}
 ```
 
 ```json

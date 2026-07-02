@@ -24,17 +24,13 @@ Before starting this guide, make sure you have:
 * [npm ↗](https://docs.npmjs.com/getting-started)
 * The Rust `wasm32-unknown-unknown` toolchain:
 
-Terminal window
-
-```
+```sh
 rustup target add wasm32-unknown-unknown
 ```
 
 * And `cargo-generate` sub-command by running:
 
-Terminal window
-
-```
+```sh
 cargo install cargo-generate
 ```
 
@@ -42,9 +38,7 @@ cargo install cargo-generate
 
 Open a terminal window, and run the following command to generate a Worker project template in Rust:
 
-Terminal window
-
-```
+```sh
 cargo generate cloudflare/workers-rs
 ```
 
@@ -58,9 +52,7 @@ Your project will be created in a new directory that you named, in which you wil
 
 After you have created your first Worker, run the [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command to start a local server for developing your Worker. This will allow you to test your Worker in development.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
@@ -76,9 +68,14 @@ Go to [http://localhost:8787 ↗](http://localhost:8787) to review your Worker r
 
 With your new project generated, write your Worker code. Find the entrypoint to your Worker in `src/lib.rs`:
 
-```
+```rust
 use worker::*;
-#[event(fetch)]async fn main(req: Request, env: Env, ctx: Context) -> Result<Response> {    Response::ok("Hello, World!")}
+
+
+#[event(fetch)]
+async fn main(req: Request, env: Env, ctx: Context) -> Result<Response> {
+    Response::ok("Hello, World!")
+}
 ```
 
 Note
@@ -143,9 +140,7 @@ Implements convenient [routing API ↗](https://docs.rs/worker/latest/worker/str
 
 With your project configured, you can now deploy your Worker, to a `*.workers.dev` subdomain, or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), if you have one configured. If you have not configured any subdomain or domain, Wrangler will prompt you during the deployment process to set one up.
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -176,19 +171,33 @@ To patch the JavaScript that `wasm-bindgen` emits:
 1. Run `wasm-pack build --target bundler` as you normally would.
 2. Patch the JavaScript file that it produces (the following code block assumes the file is called `mywasmlib.js`):
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import * as imports from "./mywasmlib_bg.js";
-// switch between both syntax for node and for workerdimport wkmod from "./mywasmlib_bg.wasm";import * as nodemod from "./mywasmlib_bg.wasm";if (typeof process !== "undefined" && process.release.name === "node") {  imports.__wbg_set_wasm(nodemod);} else {  const instance = new WebAssembly.Instance(wkmod, {    "./mywasmlib_bg.js": imports,  });  imports.__wbg_set_wasm(instance.exports);}
+
+
+// switch between both syntax for node and for workerd
+import wkmod from "./mywasmlib_bg.wasm";
+import * as nodemod from "./mywasmlib_bg.wasm";
+if (typeof process !== "undefined" && process.release.name === "node") {
+  imports.__wbg_set_wasm(nodemod);
+} else {
+  const instance = new WebAssembly.Instance(wkmod, {
+    "./mywasmlib_bg.js": imports,
+  });
+  imports.__wbg_set_wasm(instance.exports);
+}
+
+
 export * from "./mywasmlib_bg.js";
 ```
 
 1. In your Worker entrypoint, import the function and use it directly:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { myFunction } from "path/to/mylib.js";
 ```
 
@@ -210,10 +219,13 @@ To run the resulting Wasm binary on Workers, `workers-rs` includes a build tool 
 
 Unoptimized Rust Wasm binaries can be large and may exceed Worker bundle size limits or experience long startup times. The template project pre-configures several useful size optimizations in your `Cargo.toml` file:
 
-TOML
+**TOML**
 
-```
-[profile.release]lto = truestrip = truecodegen-units = 1
+```toml
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
 ```
 
 Finally, `worker-bundle` automatically invokes [wasm-opt ↗](https://github.com/brson/wasm-opt-rs) to further optimize binary size before upload.

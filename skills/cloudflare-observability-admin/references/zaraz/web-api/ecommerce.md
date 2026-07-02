@@ -44,9 +44,9 @@ E-commerce tracking is now enabled. If you add additional tools to your website 
 
 After enabling e-commerce tracking on your Zaraz dashboard, you need to add `zaraz.ecommerce()` to the `<body>` element of your website:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.ecommerce("Event Name", { parameters });
 ```
 
@@ -119,42 +119,122 @@ To create a complete tracking event, you need to add an event and one or more pa
 
 ### Product viewed
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.ecommerce("Product Viewed", {  product_id: "999555321",  sku: "2671033",  category: "T-shirts",  name: "V-neck T-shirt",  brand: "Cool Brand",  variant: "White",  price: 14.99,  currency: "usd",  value: 18.99,});
+```js
+zaraz.ecommerce("Product Viewed", {
+  product_id: "999555321",
+  sku: "2671033",
+  category: "T-shirts",
+  name: "V-neck T-shirt",
+  brand: "Cool Brand",
+  variant: "White",
+  price: 14.99,
+  currency: "usd",
+  value: 18.99,
+});
 ```
 
 ### Product List Viewed
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.ecommerce("Product List Viewed", {  products: [    {      product_id: "999555321",      sku: "2671033",      category: "T-shirts",      name: "V-neck T-shirt",      brand: "Cool Brand",      variant: "White",      price: 14.99,      currency: "usd",      value: 18.99,      position: 1,    },    {      product_id: "999555322",      sku: "2671034",      category: "T-shirts",      name: "T-shirt",      brand: "Cool Brand",      variant: "Pink",      price: 10.99,      currency: "usd",      value: 16.99,      position: 2,    },  ],});
+```js
+zaraz.ecommerce("Product List Viewed", {
+  products: [
+    {
+      product_id: "999555321",
+      sku: "2671033",
+      category: "T-shirts",
+      name: "V-neck T-shirt",
+      brand: "Cool Brand",
+      variant: "White",
+      price: 14.99,
+      currency: "usd",
+      value: 18.99,
+      position: 1,
+    },
+    {
+      product_id: "999555322",
+      sku: "2671034",
+      category: "T-shirts",
+      name: "T-shirt",
+      brand: "Cool Brand",
+      variant: "Pink",
+      price: 10.99,
+      currency: "usd",
+      value: 16.99,
+      position: 2,
+    },
+  ],
+});
 ```
 
 ### Product added
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.ecommerce("Product Added", {  product_id: "999555321",  sku: "2671033",  category: "T-shirts",  name: "V-neck T-shirt",  brand: "Cool Brand",  variant: "White",  price: 14.99,  currency: "usd",  quantity: 1,  coupon: "SUMMER-SALE",  position: 2,});
+```js
+zaraz.ecommerce("Product Added", {
+  product_id: "999555321",
+  sku: "2671033",
+  category: "T-shirts",
+  name: "V-neck T-shirt",
+  brand: "Cool Brand",
+  variant: "White",
+  price: 14.99,
+  currency: "usd",
+  quantity: 1,
+  coupon: "SUMMER-SALE",
+  position: 2,
+});
 ```
 
 ### Checkout Step Viewed
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.ecommerce("Checkout Step Viewed", {  step: 1,});
+```js
+zaraz.ecommerce("Checkout Step Viewed", {
+  step: 1,
+});
 ```
 
 ### Order completed
 
-JavaScript
+**JavaScript**
 
-```
-zaraz.ecommerce("Order Completed", {  checkout_id: "616727740",  order_id: "817286897056801",  affiliation: "affiliate.com",  total: 30.0,  revenue: 20.0,  shipping: 3,  tax: 2,  discount: 5,  coupon: "winter-sale",  currency: "USD",  products: [    {      product_id: "999666321",      sku: "8251511",      name: "Boy’s shorts",      price: 10,      quantity: 2,      category: "shorts",    },    {      product_id: "742566131",      sku: "7251567",      name: "Blank T-shirt",      price: 5,      quantity: 2,      category: "T-shirts",    },  ],});
+```js
+zaraz.ecommerce("Order Completed", {
+  checkout_id: "616727740",
+  order_id: "817286897056801",
+  affiliation: "affiliate.com",
+  total: 30.0,
+  revenue: 20.0,
+  shipping: 3,
+  tax: 2,
+  discount: 5,
+  coupon: "winter-sale",
+  currency: "USD",
+  products: [
+    {
+      product_id: "999666321",
+      sku: "8251511",
+      name: "Boy’s shorts",
+      price: 10,
+      quantity: 2,
+      category: "shorts",
+    },
+    {
+      product_id: "742566131",
+      sku: "7251567",
+      name: "Blank T-shirt",
+      price: 5,
+      quantity: 2,
+      category: "T-shirts",
+    },
+  ],
+});
 ```
 
 ```json

@@ -39,7 +39,7 @@ At this point, your zone will be read-only.
 2. At your authoritative DNS provider, create `CNAME` records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.
 Example CNAME record at authoritative DNS provider
 The `CNAME` record for `www.example.com` would be:
-```
+```txt
 www.example.com CNAME www.example.com.cdn.cloudflare.net
 ```
 3. At your authoritative DNS provider, remove any previously existing `A`, `AAAA`, or `CNAME` records referencing the hostnames you want to proxy through Cloudflare. For these hostnames, leave only the records pointing to `{your-hostname}.cdn.cloudflare.net`.

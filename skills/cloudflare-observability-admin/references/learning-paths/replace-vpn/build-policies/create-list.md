@@ -22,10 +22,13 @@ The best way to migrate to Cloudflare in a way that will simplify ongoing mainte
 
 To test uploading CSV lists, you can download a [sample CSV file](https://developers.cloudflare.com/cloudflare-one/static/list-test.csv) of IP address ranges or copy the following into a file:
 
-list-test.csv
+**list-test.csv**
 
-```
-value,description192.0.2.0/24,This is an IP address range in CIDR format198.51.100.0/24,This is also an IP address range203.0.113.0/24,This is the third IP address range
+```csv
+value,description
+192.0.2.0/24,This is an IP address range in CIDR format
+198.51.100.0/24,This is also an IP address range
+203.0.113.0/24,This is the third IP address range
 ```
 
 When you format a CSV file for upload:
@@ -37,8 +40,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-9215)
-* [ Terraform (v5) ](#tab-panel-9216)
+* [ Dashboard ](#tab-panel-9506)
+* [ Terraform (v5) ](#tab-panel-9507)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -50,21 +53,29 @@ To upload the list to the Cloudflare dashboard:
 
   * `Zero Trust Write`
 2. Decode the contents of the CSV file and store it as a local value:
-```
-locals {  ip_list = csvdecode(file("${path.module}/list-test.csv"))}
+```tf
+locals {
+  ip_list = csvdecode(file("${path.module}/list-test.csv"))
+}
 ```
 3. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource:
-```
-resource "cloudflare_zero_trust_list" "ips_from_csv" {  account_id  = var.cloudflare_account_id  name        = "IPs imported from CSV"  description = "Managed by Terraform"  type        = "IP"  items       = local.ip_list}
+```tf
+resource "cloudflare_zero_trust_list" "ips_from_csv" {
+  account_id  = var.cloudflare_account_id
+  name        = "IPs imported from CSV"
+  description = "Managed by Terraform"
+  type        = "IP"
+  items       = local.ip_list
+}
 ```
 
 You can now use this list in the policy builder by choosing the _in list_ operator.
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-9217)
-* [ API ](#tab-panel-9218)
-* [ Terraform (v5) ](#tab-panel-9219)
+* [ Dashboard ](#tab-panel-9508)
+* [ API ](#tab-panel-9509)
+* [ Terraform (v5) ](#tab-panel-9510)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.
@@ -72,10 +83,25 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 4. Enter your list element manually into the **Add entry** field and select **Add**.
 5. Select **Save**.
 
-Create Zero Trust list
+**Create Zero Trust list**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Private application IPs",    "items": [        {            "value": "10.226.0.177/32"        },        {            "value": "10.226.1.177/32"        }    ],    "name": "Corporate IP list",    "type": "IP"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Private application IPs",
+    "items": [
+        {
+            "value": "10.226.0.177/32"
+        },
+        {
+            "value": "10.226.1.177/32"
+        }
+    ],
+    "name": "Corporate IP list",
+    "type": "IP"
+  }'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
@@ -83,12 +109,38 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
   * `Zero Trust Write`
 2. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource.
 Example list of IPs:
-```
-resource "cloudflare_zero_trust_list" "wiki_IPs" {  account_id  = var.cloudflare_account_id  name        = "Company Wiki IP addresses"  description = "Managed by Terraform"  type        = "IP"  items = [    {      description = "Example IP address range"      value = "192.0.2.0/24",    },    {      value = "198.51.100.0/24"    }  ]}
+```tf
+resource "cloudflare_zero_trust_list" "wiki_IPs" {
+  account_id  = var.cloudflare_account_id
+  name        = "Company Wiki IP addresses"
+  description = "Managed by Terraform"
+  type        = "IP"
+  items = [
+    {
+      description = "Example IP address range"
+      value = "192.0.2.0/24",
+    },
+    {
+      value = "198.51.100.0/24"
+    }
+  ]
+}
 ```
 Example list of domains:
-```
-resource "cloudflare_zero_trust_list" "wiki_domains" {  account_id  = var.cloudflare_account_id  name        = "Company Wiki Domains"  description = "Managed by Terraform"  type        = "DOMAIN"  items = [    {      value = "wiki.example.com"    },    {      value = "wiki2.example.com"    }]}
+```tf
+resource "cloudflare_zero_trust_list" "wiki_domains" {
+  account_id  = var.cloudflare_account_id
+  name        = "Company Wiki Domains"
+  description = "Managed by Terraform"
+  type        = "DOMAIN"
+  items = [
+    {
+      value = "wiki.example.com"
+    },
+    {
+      value = "wiki2.example.com"
+    }]
+}
 ```
 
 You can now use this list in the policy builder by choosing the _in list_ operator.

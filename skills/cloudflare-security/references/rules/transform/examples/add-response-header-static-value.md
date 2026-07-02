@@ -18,7 +18,7 @@ The following response header transform rule adds a header named `set-cookie` wi
 
 Text in **Expression Editor**:
 
-```
+```txt
 starts_with(http.request.uri.path, "/en/")
 ```
 

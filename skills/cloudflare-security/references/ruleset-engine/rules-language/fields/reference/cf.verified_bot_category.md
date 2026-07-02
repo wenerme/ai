@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Provides the type and purpose of a verified bot.
 
-For more details, refer to [Verified bot categories](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#categories).
+For more details, refer to [Verified bot categories](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#legacy-categories).
 
 Categories:
 * Request

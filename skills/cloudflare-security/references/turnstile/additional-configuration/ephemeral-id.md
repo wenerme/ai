@@ -32,24 +32,42 @@ Refer to the [blog post ↗](https://blog.cloudflare.com/turnstile-ephemeral-ids
 
 1. Contact your Cloudflare account team to enable Ephemeral ID entitlement for your account. This feature requires Enterprise-level access and cannot be self-activated.
 2. After entitlement is enabled, activate Ephemeral IDs for specific widgets using the Cloudflare API.
-cURL command
-```
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "ephemeral_id": true  }'
+
+**cURL command**
+```bash
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ephemeral_id": true
+  }'
 ```
 3. Confirm Ephemeral IDs are active by checking your widget configuration.
-cURL command
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \  -H "Authorization: Bearer $API_TOKEN"
+
+**cURL command**
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ### Access Ephemeral IDs
 
 Once enabled, Ephemeral IDs are included in Siteverify API responses.
 
-Siteverify API response
+**Siteverify API response**
 
-```
-{  "success": true,  "challenge_ts": "2022-02-28T15:14:30.096Z",  "hostname": "example.com",  "error-codes": [],  "action": "login",  "cdata": "sessionid-123456789",  "metadata": {    "ephemeral_id": "x:9f78e0ed210960d7693b167e"  }}
+```json
+{
+  "success": true,
+  "challenge_ts": "2022-02-28T15:14:30.096Z",
+  "hostname": "example.com",
+  "error-codes": [],
+  "action": "login",
+  "cdata": "sessionid-123456789",
+  "metadata": {
+    "ephemeral_id": "x:9f78e0ed210960d7693b167e"
+  }
+}
 ```
 
 ---

@@ -24,14 +24,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-pinned-message-selector></rtk-pinned-message-selector>
+```html
+<!-- component.html -->
+<rtk-pinned-message-selector></rtk-pinned-message-selector>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-pinned-message-selector [meeting]="meeting"></rtk-pinned-message-selector>
+```html
+<!-- component.html -->
+<rtk-pinned-message-selector
+ [meeting]="meeting">
+</rtk-pinned-message-selector>
 ```
 
 ```json

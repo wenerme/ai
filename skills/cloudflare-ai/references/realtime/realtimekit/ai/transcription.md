@@ -33,10 +33,15 @@ You can turn on real-time transcription for participants by setting `permissions
 
 To update an existing preset, use the [Update a preset API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/update/):
 
-Terminal window
-
-```
-curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/presets/$PRESET_ID" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "permissions": {      "transcription_enabled": true    }  }'
+```bash
+curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/presets/$PRESET_ID" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissions": {
+      "transcription_enabled": true
+    }
+  }'
 ```
 
 To create a preset, refer to the [Create a preset API reference](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/).
@@ -49,10 +54,20 @@ During the meeting, RealtimeKit streams transcript updates to the client SDK. To
 
 The preset controls whose audio is transcribed. The meeting configuration controls how RealtimeKit transcribes that audio. Use `ai_config.transcription` to set the [spoken language](#real-time-supported-languages), boost recognition for custom terms, and control profanity filtering for a specific meeting.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "title": "Weekly product review",    "ai_config": {      "transcription": {        "language": "en-US",        "keywords": ["RealtimeKit", "Cloudflare"],        "profanity_filter": false      }    }  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Weekly product review",
+    "ai_config": {
+      "transcription": {
+        "language": "en-US",
+        "keywords": ["RealtimeKit", "Cloudflare"],
+        "profanity_filter": false
+      }
+    }
+  }'
 ```
 
 | Option            | Type       | Default | Description                                |
@@ -90,18 +105,38 @@ Real-time transcription sends interim and final transcript updates to the client
 
 #### Client SDK
 
-JavaScript
+**JavaScript**
 
-```
-// Get transcript entries already received by the client.const transcripts = meeting.ai.transcripts;
-// Listen for transcript updates during the meeting.meeting.ai.on("transcript", (transcript) => {  if (transcript.isPartialTranscript) {    updateLiveCaption(transcript.peerId, transcript.transcript);    return;  }
-  appendFinalTranscript(transcript);});
+```js
+// Get transcript entries already received by the client.
+const transcripts = meeting.ai.transcripts;
+
+
+// Listen for transcript updates during the meeting.
+meeting.ai.on("transcript", (transcript) => {
+  if (transcript.isPartialTranscript) {
+    updateLiveCaption(transcript.peerId, transcript.transcript);
+    return;
+  }
+
+
+  appendFinalTranscript(transcript);
+});
 ```
 
 #### Transcript payload
 
-```
-{  "id": "1a2b3c4d-5678-90ab-cdef-1234567890ab",  "name": "Alice",  "peerId": "4f5g6h7i-8j9k-0lmn-opqr-1234567890st",  "userId": "uvwxyz-1234-5678-90ab-cdefghijklmn",  "customParticipantId": "abc123xyz",  "transcript": "Hello everyone",  "isPartialTranscript": false,  "timestamp": 1716700000000}
+```json
+{
+  "id": "1a2b3c4d-5678-90ab-cdef-1234567890ab",
+  "name": "Alice",
+  "peerId": "4f5g6h7i-8j9k-0lmn-opqr-1234567890st",
+  "userId": "uvwxyz-1234-5678-90ab-cdefghijklmn",
+  "customParticipantId": "abc123xyz",
+  "transcript": "Hello everyone",
+  "isPartialTranscript": false,
+  "timestamp": 1716700000000
+}
 ```
 
 | Field               | Description                                                   |
@@ -125,10 +160,20 @@ Post-meeting transcription generates a transcript after the meeting ends using [
 
 You can turn on post-meeting transcription when you create a meeting. Set `transcribe_on_end: true` to generate a transcript after the meeting ends. To also generate a [summary](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/) automatically after the transcript is available, set `summarize_on_end: true`.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "title": "Weekly product review",    "transcribe_on_end": true,    "summarize_on_end": true,    "ai_config": {      "transcription": {        "language": "en"      }    }  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Weekly product review",
+    "transcribe_on_end": true,
+    "summarize_on_end": true,
+    "ai_config": {
+      "transcription": {
+        "language": "en"
+      }
+    }
+  }'
 ```
 
 Use `ai_config.transcription.language` to set the transcript language. For supported values, refer to [Post-meeting supported languages](#post-meeting-supported-languages). If `transcribe_on_end` is not set, RealtimeKit does not generate a post-meeting transcript.
@@ -251,23 +296,44 @@ Post-meeting transcripts are available in multiple formats. Use CSV or JSON for 
 
 #### Examples
 
-* [ CSV ](#tab-panel-10066)
-* [ JSON ](#tab-panel-10067)
-* [ SRT ](#tab-panel-10068)
+* [ CSV ](#tab-panel-10361)
+* [ JSON ](#tab-panel-10362)
+* [ SRT ](#tab-panel-10363)
 
-```
-"1000","peer-123","user-456","cust-789","Alice","Hello everyone""3000","peer-234","user-567","cust-890","Bob","Hi Alice"
+```csv
+"1000","peer-123","user-456","cust-789","Alice","Hello everyone"
+"3000","peer-234","user-567","cust-890","Bob","Hi Alice"
 ```
 
 CSV rows use the following field order: start time in milliseconds, peer ID, user ID, custom participant ID, participant name, and transcript text.
 
-```
-[  {    "startTime": 1000,    "endTime": 2500,    "sentence": "Hello everyone",    "peerData": {      "id": "peer-123",      "userId": "user-456",      "displayName": "Alice",      "cpi": "cust-789",      "joinedAt": "2024-08-07T10:15:29.000Z",      "leftAt": ""    }  }]
+```json
+[
+  {
+    "startTime": 1000,
+    "endTime": 2500,
+    "sentence": "Hello everyone",
+    "peerData": {
+      "id": "peer-123",
+      "userId": "user-456",
+      "displayName": "Alice",
+      "cpi": "cust-789",
+      "joinedAt": "2024-08-07T10:15:29.000Z",
+      "leftAt": ""
+    }
+  }
+]
 ```
 
-```
-100:00:01,000 --> 00:00:02,500Alice: Hello everyone
-200:00:03,000 --> 00:00:04,500Bob: Hi Alice
+```txt
+1
+00:00:01,000 --> 00:00:02,500
+Alice: Hello everyone
+
+
+2
+00:00:03,000 --> 00:00:04,500
+Bob: Hi Alice
 ```
 
 ### Consume post-meeting transcripts
@@ -278,18 +344,34 @@ After RealtimeKit finishes processing a post-meeting transcript, you can receive
 
 Configure the `meeting.transcript` event in [RealtimeKit webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/#meetingtranscript):
 
-```
-{  "event": "meeting.transcript",  "meeting": {    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",    "title": "Weekly sync",    "endedAt": "2026-06-03T10:30:00.000Z",    "createdAt": "2026-06-03T10:00:00.000Z",    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",    "startedAt": "2026-06-03T10:00:00.000Z",    "status": "LIVE",    "organizedBy": {      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",      "name": "Example organization"    }  },  "transcriptDownloadUrl": "https://example.com/transcript.csv",  "transcriptDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"}
+```json
+{
+  "event": "meeting.transcript",
+  "meeting": {
+    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+    "title": "Weekly sync",
+    "endedAt": "2026-06-03T10:30:00.000Z",
+    "createdAt": "2026-06-03T10:00:00.000Z",
+    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+    "startedAt": "2026-06-03T10:00:00.000Z",
+    "status": "LIVE",
+    "organizedBy": {
+      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+      "name": "Example organization"
+    }
+  },
+  "transcriptDownloadUrl": "https://example.com/transcript.csv",
+  "transcriptDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
+}
 ```
 
 #### REST API
 
 Refer to [Fetch the complete transcript for a session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Ftranscripts/).
 
-Terminal window
-
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/transcript" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/transcript" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### Transcript availability

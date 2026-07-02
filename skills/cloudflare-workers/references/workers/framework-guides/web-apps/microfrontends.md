@@ -56,8 +56,15 @@ The router worker uses a `ROUTES` [environment variable](https://developers.clou
 
 Example `ROUTES` configuration:
 
-```
-{  "routes": [    { "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },    { "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },    { "path": "/", "binding": "MICROFRONTEND_HOME" }  ],  "smoothTransitions": true}
+```json
+{
+  "routes": [
+    { "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
+    { "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
+    { "path": "/", "binding": "MICROFRONTEND_HOME" }
+  ],
+  "smoothTransitions": true
+}
 ```
 
 Each route requires:
@@ -74,13 +81,23 @@ When a request comes in for `/app-a/dashboard`, the router:
 
 The router includes path matching logic that supports:
 
-TypeScript
+**TypeScript**
 
-```
-// Static paths{ "path": "/dashboard" }
-// Dynamic parameters{ "path": "/users/:id" }
-// Wildcard matching (zero or more segments){ "path": "/docs/:path*" }
-// Required segments (one or more segments){ "path": "/api/:path+" }
+```typescript
+// Static paths
+{ "path": "/dashboard" }
+
+
+// Dynamic parameters
+{ "path": "/users/:id" }
+
+
+// Wildcard matching (zero or more segments)
+{ "path": "/docs/:path*" }
+
+
+// Required segments (one or more segments)
+{ "path": "/api/:path+" }
 ```
 
 ## Path rewriting
@@ -89,14 +106,18 @@ The router worker uses [HTMLRewriter](https://developers.cloudflare.com/workers/
 
 When a microfrontend mounted at `/app-a` returns HTML:
 
-```
-<link rel="stylesheet" href="/assets/styles.css" /><script src="/assets/app.js"></script><img src="/static/logo.png" />
+```html
+<link rel="stylesheet" href="/assets/styles.css" />
+<script src="/assets/app.js"></script>
+<img src="/static/logo.png" />
 ```
 
 The router rewrites it to:
 
-```
-<link rel="stylesheet" href="/app-a/assets/styles.css" /><script src="/app-a/assets/app.js"></script><img src="/app-a/static/logo.png" />
+```html
+<link rel="stylesheet" href="/app-a/assets/styles.css" />
+<script src="/app-a/assets/app.js"></script>
+<img src="/app-a/static/logo.png" />
 ```
 
 The rewriter handles these attributes across all HTML elements:
@@ -107,15 +128,22 @@ The rewriter handles these attributes across all HTML elements:
 
 The router only rewrites paths that start with configured asset prefixes to avoid breaking external URLs:
 
-JavaScript
+**JavaScript**
 
-```
-// Default asset prefixesconst DEFAULT_ASSET_PREFIXES = [  "/assets/",  "/static/",  "/build/",  "/_astro/",  "/fonts/",];
+```javascript
+// Default asset prefixes
+const DEFAULT_ASSET_PREFIXES = [
+  "/assets/",
+  "/static/",
+  "/build/",
+  "/_astro/",
+  "/fonts/",
+];
 ```
 
 Most frameworks work with the default prefixes. For frameworks with different build outputs (like Next.js which uses `/_next/`), you can configure custom prefixes using the `ASSET_PREFIXES` [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/):
 
-```
+```json
 ["/_next/", "/public/"]
 ```
 
@@ -123,16 +151,28 @@ Most frameworks work with the default prefixes. For frameworks with different bu
 
 The router also rewrites CSS files to ensure `url()` references work correctly. When a microfrontend mounted at `/app-a` returns CSS:
 
-```
-.hero {  background: url(/assets/hero.jpg);}
-.icon {  background: url("/static/icon.svg");}
+```css
+.hero {
+  background: url(/assets/hero.jpg);
+}
+
+
+.icon {
+  background: url("/static/icon.svg");
+}
 ```
 
 The router rewrites it to:
 
-```
-.hero {  background: url(/app-a/assets/hero.jpg);}
-.icon {  background: url("/app-a/static/icon.svg");}
+```css
+.hero {
+  background: url(/app-a/assets/hero.jpg);
+}
+
+
+.icon {
+  background: url("/app-a/static/icon.svg");
+}
 ```
 
 The router also handles:
@@ -157,8 +197,14 @@ For Chromium-based browsers, the router uses the **Speculation Rules API** \- a 
 
 **Example injected speculation rules:**
 
-```
-{  "prefetch": [    {      "urls": ["/app1", "/app2", "/dashboard"]    }  ]}
+```json
+{
+  "prefetch": [
+    {
+      "urls": ["/app1", "/app2", "/dashboard"]
+    }
+  ]
+}
 ```
 
 ## Smooth transitions
@@ -167,14 +213,32 @@ You can enable smooth page transitions between microfrontends using the [View Tr
 
 To enable smooth transitions, set `"smoothTransitions": true` in your `ROUTES` configuration:
 
-```
-{  "routes": [    { "path": "/app-a", "binding": "MICROFRONTEND_A" },    { "path": "/app-b", "binding": "MICROFRONTEND_B" }  ],  "smoothTransitions": true}
+```json
+{
+  "routes": [
+    { "path": "/app-a", "binding": "MICROFRONTEND_A" },
+    { "path": "/app-b", "binding": "MICROFRONTEND_B" }
+  ],
+  "smoothTransitions": true
+}
 ```
 
 The router automatically injects CSS into HTML responses:
 
-```
-@supports (view-transition-name: none) {  ::view-transition-old(root),  ::view-transition-new(root) {    animation-duration: 0.3s;    animation-timing-function: ease-in-out;  }  main {    view-transition-name: main-content;  }  nav {    view-transition-name: navigation;  }}
+```css
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+  main {
+    view-transition-name: main-content;
+  }
+  nav {
+    view-transition-name: navigation;
+  }
+}
 ```
 
 This feature only works in browsers that support the View Transitions API. Browsers without support will navigate normally without animations.
@@ -187,24 +251,42 @@ To add a new microfrontend to your application after initial setup:
 Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**
 
-  * [  wrangler.jsonc ](#tab-panel-11878)
-  * [  wrangler.toml ](#tab-panel-11879)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12133)
+  * [  wrangler.toml ](#tab-panel-12134)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "services": [
+    {
+      "binding": "MICROFRONTEND_C",
+      "service": "my-new-microfrontend"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "services": [    {      "binding": "MICROFRONTEND_C",      "service": "my-new-microfrontend"    }  ]}
-```
-TOML
-```
-[[services]]binding = "MICROFRONTEND_C"service = "my-new-microfrontend"
+
+**TOML**
+```toml
+[[services]]
+binding = "MICROFRONTEND_C"
+service = "my-new-microfrontend"
 ```
 3. **Update the `ROUTES` environment variable**
 Add your new route to the `ROUTES` configuration:
-```
-{  "routes": [    { "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },    { "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },    { "path": "/app-c", "binding": "MICROFRONTEND_C", "preload": true },    { "path": "/", "binding": "MICROFRONTEND_HOME" }  ]}
+```json
+{
+  "routes": [
+    { "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
+    { "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
+    { "path": "/app-c", "binding": "MICROFRONTEND_C", "preload": true },
+    { "path": "/", "binding": "MICROFRONTEND_HOME" }
+  ]
+}
 ```
 4. **Redeploy the router worker**
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -218,19 +300,30 @@ If you only need to work on one of the microfrontends, you can run the others re
 
 For each microfrontend you want to run remotely while in local dev, configure its service binding with the remote flag:
 
-* [  wrangler.jsonc ](#tab-panel-11880)
-* [  wrangler.toml ](#tab-panel-11881)
+* [  wrangler.jsonc ](#tab-panel-12135)
+* [  wrangler.toml ](#tab-panel-12136)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+"services": [
+  {
+  "binding": "<BINDING_NAME>",
+  "service": "<WORKER_NAME>",
+  "remote": true
+  }
+]
+}
 ```
-{"services": [  {  "binding": "<BINDING_NAME>",  "service": "<WORKER_NAME>",  "remote": true  }]}
-```
 
-TOML
+**TOML**
 
-```
-[[services]]binding = "<BINDING_NAME>"service = "<WORKER_NAME>"remote = true
+```toml
+[[services]]
+binding = "<BINDING_NAME>"
+service = "<WORKER_NAME>"
+remote = true
 ```
 
 ## Deployment

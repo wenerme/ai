@@ -57,31 +57,77 @@ It is important to register your web app first to connect it with Turnstile late
 
 1. Create an `index.ts` file.
 2. Add your Firebase configuration.
-JavaScript
-```
-import { initializeApp } from "firebase/app";import { getAppCheck, initializeAppCheck } from "firebase/app-check";import {    CloudflareProviderOptions,} from '@cloudflare/turnstile-firebase-app-check';
-const firebaseConfig = {apiKey: "YOUR_API_KEY",authDomain: "YOUR_PROJECT_ID.firebaseapp.com",projectId: "YOUR_PROJECT_ID",storageBucket: "YOUR_PROJECT_ID.appspot.com",messagingSenderId: "YOUR_MESSAGING_SENDER_ID",appId: "YOUR_APP_ID",};
+
+**JavaScript**
+```js
+import { initializeApp } from "firebase/app";
+import { getAppCheck, initializeAppCheck } from "firebase/app-check";
+import {
+    CloudflareProviderOptions,
+} from '@cloudflare/turnstile-firebase-app-check';
+const firebaseConfig = {
+apiKey: "YOUR_API_KEY",
+authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+projectId: "YOUR_PROJECT_ID",
+storageBucket: "YOUR_PROJECT_ID.appspot.com",
+messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+appId: "YOUR_APP_ID",
+};
 const app = initializeApp(firebaseConfig);
-// Initialize App Checkconst siteKey = 'YOUR-SITEKEY';const HTTP_ENDPOINT = '${function:ext-cloudflare-turnstile-app-check-provider-tokenExchange.url}';
-const cpo = new CloudflareProviderOptions(HTTP_ENDPOINT, siteKey);const provider = new CustomProvider(cpo);
+// Initialize App Check
+const siteKey = 'YOUR-SITEKEY';
+const HTTP_ENDPOINT = '${function:ext-cloudflare-turnstile-app-check-provider-tokenExchange.url}';
+const cpo = new CloudflareProviderOptions(HTTP_ENDPOINT, siteKey);
+const provider = new CustomProvider(cpo);
 initializeAppCheck(app, { provider });
-// retrieve App Check token from Cloudflare Turnstilecpo.getToken().then(({ token }) => {    document.getElementById('app-check-token').innerHTML = token;});
+// retrieve App Check token from Cloudflare Turnstile
+cpo.getToken().then(({ token }) => {
+    document.getElementById('app-check-token').innerHTML = token;
+});
 ```
 
 ### 3d. Verify the App Check token in your web application
 
 To verify the App Check token in your web application, refer to Firebase's [Token Verification guide ↗](https://firebase.google.com/docs/app-check/custom-resource-backend?hl=en#verification).
 
-JavaScript
+**JavaScript**
 
-```
-import express from "express";import { initializeApp } from "firebase-admin/app";import { getAppCheck } from "firebase-admin/app-check";
-const expressApp = express();const firebaseApp = initializeApp();
-const appCheckVerification = async (req, res, next) => {    const appCheckToken = req.header("X-Firebase-AppCheck");
-    if (!appCheckToken) {        res.status(401);        return next("Unauthorized");    }
-    try {        const appCheckClaims = await getAppCheck().verifyToken(appCheckToken);
-        // If verifyToken() succeeds, continue with the next middleware function in the stack.        return next();    } catch (err) {        res.status(401);        return next("Unauthorized");    }}
-expressApp.get("/yourApiEndpoint", [appCheckVerification], (req, res) => {    // Handle request.});
+```js
+import express from "express";
+import { initializeApp } from "firebase-admin/app";
+import { getAppCheck } from "firebase-admin/app-check";
+
+
+const expressApp = express();
+const firebaseApp = initializeApp();
+
+
+const appCheckVerification = async (req, res, next) => {
+    const appCheckToken = req.header("X-Firebase-AppCheck");
+
+
+    if (!appCheckToken) {
+        res.status(401);
+        return next("Unauthorized");
+    }
+
+
+    try {
+        const appCheckClaims = await getAppCheck().verifyToken(appCheckToken);
+
+
+        // If verifyToken() succeeds, continue with the next middleware function in the stack.
+        return next();
+    } catch (err) {
+        res.status(401);
+        return next("Unauthorized");
+    }
+}
+
+
+expressApp.get("/yourApiEndpoint", [appCheckVerification], (req, res) => {
+    // Handle request.
+});
 ```
 
 ```json

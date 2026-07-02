@@ -26,26 +26,29 @@ To develop locally with Workflows, you will need:
 
 Open your terminal and run the following commands to start a local development session:
 
-Terminal window
+```sh
+# Confirm we are using wrangler v3.89.0+
+npx wrangler --version
+```
 
-```
-# Confirm we are using wrangler v3.89.0+npx wrangler --version
-```
-
-```
+```sh
 ⛅️ wrangler 3.89.0
 ```
 
 Start a local dev session
 
-Terminal window
+```sh
+# Start a local dev session:
+npx wrangler dev
+```
 
-```
-# Start a local dev session:npx wrangler dev
-```
-
-```
-------------------Your worker has access to the following bindings:- Workflows:  - MY_WORKFLOW: MyWorkflow⎔ Starting local server...[wrangler:inf] Ready on http://127.0.0.1:8787/
+```sh
+------------------
+Your worker has access to the following bindings:
+- Workflows:
+  - MY_WORKFLOW: MyWorkflow
+⎔ Starting local server...
+[wrangler:inf] Ready on http://127.0.0.1:8787/
 ```
 
 Local development sessions create a standalone, local-only environment that mirrors the production environment Workflows runs in so you can test your Workflows _before_ you deploy to production.
@@ -62,25 +65,19 @@ While a `wrangler dev` session is running, you can use all [wrangler workflows c
 
 For example, to list your local Workflows:
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows list --local
 ```
 
 To trigger a Workflow locally:
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows trigger my-workflow --local
 ```
 
 To inspect a specific instance:
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances describe my-workflow <INSTANCE_ID> --local
 ```
 

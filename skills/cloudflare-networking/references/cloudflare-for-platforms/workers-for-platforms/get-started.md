@@ -46,12 +46,24 @@ When you deployed the template, it created a dispatch namespace automatically. Y
 
 The dispatch Worker receives incoming requests and routes them to the correct user Worker. It uses a [binding](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) to access the dispatch namespace.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // Get the user Worker name from the URL path    const url = new URL(request.url);    const workerName = url.pathname.split("/")[1];
-    // Fetch the user Worker from the dispatch namespace    const userWorker = env.DISPATCHER.get(workerName);
-    // Forward the request to the user Worker    return userWorker.fetch(request);  },};
+```js
+export default {
+  async fetch(request, env) {
+    // Get the user Worker name from the URL path
+    const url = new URL(request.url);
+    const workerName = url.pathname.split("/")[1];
+
+
+    // Fetch the user Worker from the dispatch namespace
+    const userWorker = env.DISPATCHER.get(workerName);
+
+
+    // Forward the request to the user Worker
+    return userWorker.fetch(request);
+  },
+};
 ```
 
 The `env.DISPATCHER.get()` method retrieves a user Worker by name from the dispatch namespace.

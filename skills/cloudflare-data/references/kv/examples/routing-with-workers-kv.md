@@ -30,32 +30,125 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where `https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-* [ index.ts ](#tab-panel-9120)
-* [ wrangler.jsonc ](#tab-panel-9121)
+* [ index.ts ](#tab-panel-9371)
+* [ wrangler.jsonc ](#tab-panel-9372)
 
-index.ts
+**index.ts**
 
-```
-// Example routing data stored in Workers KV:// Key: "storefrontA" | Value: {"origin": "https://storefrontA-server.example.com"}// Key: "storefrontB" | Value: {"origin": "https://storefrontB-server.example.com"}
-interface Env {ROUTING_CONFIG: KVNamespace;}
-export default {  async fetch(request, env, ctx) {
-    // Parse the URL to extract the storefront ID from the path    const url = new URL(request.url);    const pathParts = url.pathname.split('/').filter(part => part !== '');
-    // Check if a storefront ID is provided in the path, otherwise return 4006 collapsed lines    if (pathParts.length === 0) {      return new Response('Welcome to our multi-tenant platform. Please specify a storefront ID in the URL path.', {        status: 400,        headers: { 'Content-Type': 'text/plain' }      });    }
-    // Extract the storefront ID from the first path segment    const storefrontId = pathParts[0];
-    try {      // Look up the storefront configuration in KV using env.ROUTING_CONFIG      const storefrontConfig = await env.ROUTING_CONFIG.get<{          origin: string;        }>(storefrontId, {type: "json"});
-      // If no configuration is found, return a 4046 collapsed lines      if (!storefrontConfig) {        return new Response(`Storefront "${storefrontId}" not found.`, {          status: 404,          headers: { 'Content-Type': 'text/plain' }        });      }
-      // Construct the new URL for the origin server      // Remove the storefront ID from the path when forwarding      const newPathname = '/' + pathParts.slice(1).join('/');      const originUrl = new URL(newPathname, storefrontConfig.origin);      originUrl.search = url.search;
-      // Create a new request to the origin server      const originRequest = new Request(originUrl, {        method: request.method,        headers: request.headers,        body: request.body,        redirect: 'follow'      });
-      // Send the request to the origin server      const response = await fetch(originRequest);
+```js
+// Example routing data stored in Workers KV:
+// Key: "storefrontA" | Value: {"origin": "https://storefrontA-server.example.com"}
+// Key: "storefrontB" | Value: {"origin": "https://storefrontB-server.example.com"}
+
+
+interface Env {
+ROUTING_CONFIG: KVNamespace;
+}
+
+
+export default {
+  async fetch(request, env, ctx) {
+
+
+    // Parse the URL to extract the storefront ID from the path
+    const url = new URL(request.url);
+    const pathParts = url.pathname.split('/').filter(part => part !== '');
+
+
+    // Check if a storefront ID is provided in the path, otherwise return 400
+6 collapsed lines
+    if (pathParts.length === 0) {
+      return new Response('Welcome to our multi-tenant platform. Please specify a storefront ID in the URL path.', {
+        status: 400,
+        headers: { 'Content-Type': 'text/plain' }
+      });
+    }
+
+
+    // Extract the storefront ID from the first path segment
+    const storefrontId = pathParts[0];
+
+
+    try {
+      // Look up the storefront configuration in KV using env.ROUTING_CONFIG
+      const storefrontConfig = await env.ROUTING_CONFIG.get<{
+          origin: string;
+        }>(storefrontId, {type: "json"});
+
+
+      // If no configuration is found, return a 404
+6 collapsed lines
+      if (!storefrontConfig) {
+        return new Response(`Storefront "${storefrontId}" not found.`, {
+          status: 404,
+          headers: { 'Content-Type': 'text/plain' }
+        });
+      }
+
+
+      // Construct the new URL for the origin server
+      // Remove the storefront ID from the path when forwarding
+      const newPathname = '/' + pathParts.slice(1).join('/');
+      const originUrl = new URL(newPathname, storefrontConfig.origin);
+      originUrl.search = url.search;
+
+
+      // Create a new request to the origin server
+      const originRequest = new Request(originUrl, {
+        method: request.method,
+        headers: request.headers,
+        body: request.body,
+        redirect: 'follow'
+      });
+
+
+      // Send the request to the origin server
+      const response = await fetch(originRequest);
+
+
         console.log(response.status)
-      // Clone the response and add a custom header      const modifiedResponse = new Response(response.body, response);      modifiedResponse.headers.set('X-Served-By', 'Cloudflare Worker');      modifiedResponse.headers.set('X-Storefront-ID', storefrontId);
+
+
+      // Clone the response and add a custom header
+      const modifiedResponse = new Response(response.body, response);
+      modifiedResponse.headers.set('X-Served-By', 'Cloudflare Worker');
+      modifiedResponse.headers.set('X-Storefront-ID', storefrontId);
+
+
       return modifiedResponse;
-    } catch (error) {      // Handle any errors5 collapsed lines      console.error(`Error processing request for storefront ${storefrontId}:`, error);      return new Response('An error occurred while processing your request.', {        status: 500,        headers: { 'Content-Type': 'text/plain' }      });    }
-}} satisfies ExportedHandler<Env>;
+
+
+    } catch (error) {
+      // Handle any errors
+5 collapsed lines
+      console.error(`Error processing request for storefront ${storefrontId}:`, error);
+      return new Response('An error occurred while processing your request.', {
+        status: 500,
+        headers: { 'Content-Type': 'text/plain' }
+      });
+    }
+
+
+}
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "2025-03-03",  "observability": {    "enabled": true  },  "kv_namespaces": [    {      "binding": "ROUTING_CONFIG",      "id": "<YOUR_BINDING_ID>"    }  ]}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-03-03",
+  "observability": {
+    "enabled": true
+  },
+  "kv_namespaces": [
+    {
+      "binding": "ROUTING_CONFIG",
+      "id": "<YOUR_BINDING_ID>"
+    }
+  ]
+}
 ```
 
 In this example, the Cloudflare Worker receives a request and extracts the storefront ID from the URL path. The storefront ID is used to look up the origin server URL from Workers KV using the `get()` method. The request is then forwarded to the origin server, and the response is modified to include custom headers before being returned to the client.

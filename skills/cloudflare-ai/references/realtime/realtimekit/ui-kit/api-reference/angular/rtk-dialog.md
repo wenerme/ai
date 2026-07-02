@@ -32,14 +32,20 @@ A dialog component.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-dialog></rtk-dialog>
+```html
+<!-- component.html -->
+<rtk-dialog></rtk-dialog>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-dialog [disableEscapeKey]="true" [hideCloseButton]="true" [meeting]="meeting"></rtk-dialog>
+```html
+<!-- component.html -->
+<rtk-dialog
+ [disableEscapeKey]="true"
+ [hideCloseButton]="true"
+ [meeting]="meeting">
+</rtk-dialog>
 ```
 
 ```json

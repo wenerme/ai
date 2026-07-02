@@ -38,11 +38,13 @@ You can explicitly allow these IP addresses with a [.htaccess file ↗](https://
 
 The following example demonstrates how you could use an iptables rule to allow a Cloudflare IP address range. Replace `$ip` below with one of the [Cloudflare IP address ranges ↗](https://www.cloudflare.com/ips). You will need to run this command once for each IP range listed on that page.
 
-Terminal window
+```bash
+# For IPv4 addresses
+iptables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
 
-```
-# For IPv4 addressesiptables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
-# For IPv6 addressesip6tables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
+
+# For IPv6 addresses
+ip6tables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
 ```
 
 For more specific guidance, contact your hosting provider or website administrator.
@@ -53,10 +55,11 @@ If someone discovers your origin server's IP address — for example, through hi
 
 For example, you might [update your iptables ↗](https://www.linode.com/docs/guides/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall) with the following commands:
 
-Terminal window
-
-```
-# For IPv4 addressesiptables -A INPUT -p tcp -m multiport --dports http,https -j DROP# For IPv6 addressesip6tables -A INPUT -p tcp -m multiport --dports http,https -j DROP
+```sh
+# For IPv4 addresses
+iptables -A INPUT -p tcp -m multiport --dports http,https -j DROP
+# For IPv6 addresses
+ip6tables -A INPUT -p tcp -m multiport --dports http,https -j DROP
 ```
 
 For more specific guidance, contact your hosting provider or website administrator.

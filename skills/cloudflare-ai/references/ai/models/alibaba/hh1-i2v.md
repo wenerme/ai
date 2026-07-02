@@ -32,23 +32,46 @@ Alibaba's HappyHorse 1.0 image-to-video model. Animates a reference image with a
 * [ TypeScript ](#tab-panel-4)
 * [ cURL ](#tab-panel-5)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1-i2v',  {    image:      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',    prompt: 'A gentle camera push-in on the scene with soft ambient lighting',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'A gentle camera push-in on the scene with soft ambient lighting',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1-i2v",  "input": {    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",    "prompt": "A gentle camera push-in on the scene with soft ambient lighting"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "A gentle camera push-in on the scene with soft ambient lighting"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-2)
 * [ Raw response ](#tab-panel-3)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/simple-image-to-video.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/simple-image-to-video.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
@@ -58,23 +81,50 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-10)
 * [ cURL ](#tab-panel-11)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1-i2v',  {    image:      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',    prompt: 'Subject begins rapping confidently to the beat, head bobbing',    duration: 10,    resolution: '1080P',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'Subject begins rapping confidently to the beat, head bobbing',
+    duration: 10,
+    resolution: '1080P',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1-i2v",  "input": {    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",    "prompt": "Subject begins rapping confidently to the beat, head bobbing",    "duration": 10,    "resolution": "1080P"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "Subject begins rapping confidently to the beat, head bobbing",
+    "duration": 10,
+    "resolution": "1080P"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-6)
 * [ Raw response ](#tab-panel-7)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/high-resolution.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/high-resolution.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 **Reproducible Output**  — Use a fixed seed for reproducibility
@@ -82,23 +132,52 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ TypeScript ](#tab-panel-12)
 * [ cURL ](#tab-panel-13)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1-i2v',  {    image:      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',    prompt: 'Camera orbits slowly around the subject under streetlamp light',    duration: 8,    resolution: '720P',    seed: 42,  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'Camera orbits slowly around the subject under streetlamp light',
+    duration: 8,
+    resolution: '720P',
+    seed: 42,
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1-i2v",  "input": {    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",    "prompt": "Camera orbits slowly around the subject under streetlamp light",    "duration": 8,    "resolution": "720P",    "seed": 42  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "Camera orbits slowly around the subject under streetlamp light",
+    "duration": 8,
+    "resolution": "720P",
+    "seed": 42
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-8)
 * [ Raw response ](#tab-panel-9)
 
-```
-{  "gatewayMetadata": {    "keySource": "BYOK"  },  "result": {    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/reproducible-output.mp4"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "BYOK"
+  },
+  "result": {
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/reproducible-output.mp4"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
@@ -106,19 +185,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 * [ Input ](#tab-panel-0)
 * [ Output ](#tab-panel-1)
 
-duration
-
-`integer`maximum: 15minimum: 3
-
 image
 
 `string`requiredformat: uri
 
-negative\_prompt
+prompt
 
 `string`
 
-prompt
+negative\_prompt
 
 `string`
 
@@ -126,9 +201,13 @@ resolution
 
 `string`enum: 720P, 1080P
 
+duration
+
+`integer`minimum: 3maximum: 15
+
 seed
 
-`integer`maximum: 2147483647minimum: 0
+`integer`minimum: 0maximum: 2147483647
 
 watermark
 

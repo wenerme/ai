@@ -30,25 +30,19 @@ For more information, refer to [Workflows local development](https://developers.
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-12872)
-* [  pnpm ](#tab-panel-12873)
-* [  yarn ](#tab-panel-12874)
+* [  npm ](#tab-panel-13167)
+* [  pnpm ](#tab-panel-13168)
+* [  yarn ](#tab-panel-13169)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows list
 ```
 
@@ -84,25 +78,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-12875)
-* [  pnpm ](#tab-panel-12876)
-* [  yarn ](#tab-panel-12877)
+* [  npm ](#tab-panel-13170)
+* [  pnpm ](#tab-panel-13171)
+* [  yarn ](#tab-panel-13172)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows describe [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows describe [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows describe [NAME]
 ```
 
@@ -136,25 +124,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-12878)
-* [  pnpm ](#tab-panel-12879)
-* [  yarn ](#tab-panel-12880)
+* [  npm ](#tab-panel-13173)
+* [  pnpm ](#tab-panel-13174)
+* [  yarn ](#tab-panel-13175)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows delete [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows delete [NAME]
 ```
 
@@ -188,25 +170,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-12881)
-* [  pnpm ](#tab-panel-12882)
-* [  yarn ](#tab-panel-12883)
+* [  npm ](#tab-panel-13176)
+* [  pnpm ](#tab-panel-13177)
+* [  yarn ](#tab-panel-13178)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows trigger [NAME] [PARAMS]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows trigger [NAME] [PARAMS]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows trigger [NAME] [PARAMS]
 ```
 
@@ -244,25 +220,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-12884)
-* [  pnpm ](#tab-panel-12885)
-* [  yarn ](#tab-panel-12886)
+* [  npm ](#tab-panel-13179)
+* [  pnpm ](#tab-panel-13180)
+* [  yarn ](#tab-panel-13181)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances list [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances list [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances list [NAME]
 ```
 
@@ -304,25 +274,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-12887)
-* [  pnpm ](#tab-panel-12888)
-* [  yarn ](#tab-panel-12889)
+* [  npm ](#tab-panel-13182)
+* [  pnpm ](#tab-panel-13183)
+* [  yarn ](#tab-panel-13184)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances describe [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances describe [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances describe [NAME] [ID]
 ```
 
@@ -362,25 +326,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-12890)
-* [  pnpm ](#tab-panel-12891)
-* [  yarn ](#tab-panel-12892)
+* [  npm ](#tab-panel-13185)
+* [  pnpm ](#tab-panel-13186)
+* [  yarn ](#tab-panel-13187)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances send-event [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances send-event [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances send-event [NAME] [ID]
 ```
 
@@ -420,25 +378,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-12893)
-* [  pnpm ](#tab-panel-12894)
-* [  yarn ](#tab-panel-12895)
+* [  npm ](#tab-panel-13188)
+* [  pnpm ](#tab-panel-13189)
+* [  yarn ](#tab-panel-13190)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances terminate [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances terminate [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances terminate [NAME] [ID]
 ```
 
@@ -474,25 +426,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-12896)
-* [  pnpm ](#tab-panel-12897)
-* [  yarn ](#tab-panel-12898)
+* [  npm ](#tab-panel-13191)
+* [  pnpm ](#tab-panel-13192)
+* [  yarn ](#tab-panel-13193)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances restart [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances restart [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances restart [NAME] [ID]
 ```
 
@@ -534,25 +480,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-12899)
-* [  pnpm ](#tab-panel-12900)
-* [  yarn ](#tab-panel-12901)
+* [  npm ](#tab-panel-13194)
+* [  pnpm ](#tab-panel-13195)
+* [  yarn ](#tab-panel-13196)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances pause [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances pause [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances pause [NAME] [ID]
 ```
 
@@ -588,25 +528,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-12902)
-* [  pnpm ](#tab-panel-12903)
-* [  yarn ](#tab-panel-12904)
+* [  npm ](#tab-panel-13197)
+* [  pnpm ](#tab-panel-13198)
+* [  yarn ](#tab-panel-13199)
 
-Terminal window
-
-```
+```sh
 npx wrangler workflows instances resume [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler workflows instances resume [NAME] [ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler workflows instances resume [NAME] [ID]
 ```
 

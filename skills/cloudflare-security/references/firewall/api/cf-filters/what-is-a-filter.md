@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 A filter is a way of saying:
 
-```
+```txt
 if (traffic matches certain criteria) then...
 ```
 
@@ -24,13 +24,17 @@ Filter expressions are human and machine readable, and you can compose complex l
 
 A filter object typically looks like the following:
 
-```
-{  "id": "<FILTER_ID>",  "expression": "(http.request.uri.path ~ \"^.*wp-login.php$\" or http.request.uri.path ~ \"^.*xmlrpc.php$\") and ip.src ne 93.184.216.34",  "description": "WordPress login paths via the login page or mobile RPC endpoint"}
+```json
+{
+  "id": "<FILTER_ID>",
+  "expression": "(http.request.uri.path ~ \"^.*wp-login.php$\" or http.request.uri.path ~ \"^.*xmlrpc.php$\") and ip.src ne 93.184.216.34",
+  "description": "WordPress login paths via the login page or mobile RPC endpoint"
+}
 ```
 
 The expression specified in this example filter is:
 
-```
+```txt
 (http.request.uri.path ~ "^.*wp-login.php$" or http.request.uri.path ~ "^.*xmlrpc.php$") and ip.src ne 93.184.216.34
 ```
 

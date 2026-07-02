@@ -53,10 +53,33 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "enabled": false,                    "categories": [                        {                            "category": "joomla",                            "action": "block",                            "enabled": true                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "true",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "enabled": false,
+                    "categories": [
+                        {
+                            "category": "joomla",
+                            "action": "block",
+                            "enabled": true
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 * `"id": "<MANAGED_RULESET_ID>"` adds a rule to the ruleset of a phase that will apply the Cloudflare Managed Ruleset to requests for the specified zone (`$ZONE_ID`).
@@ -77,10 +100,33 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account entry point ruleset
+**Update an account entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "enabled": false,                    "categories": [                        {                            "category": "joomla",                            "action": "block",                            "enabled": true                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "enabled": false,
+                    "categories": [
+                        {
+                            "category": "joomla",
+                            "action": "block",
+                            "enabled": true
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 * `"id": "<MANAGED_RULESET_ID>"` adds a rule to the ruleset of a phase that will apply the Cloudflare Managed Ruleset to requests for `example.com`.
@@ -120,10 +166,37 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "enabled": false,                    "categories": [                        {                            "category": "joomla",                            "action": "log",                            "enabled": true                        },                        {                            "category": "wordpress",                            "enabled": false                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "true",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "enabled": false,
+                    "categories": [
+                        {
+                            "category": "joomla",
+                            "action": "log",
+                            "enabled": true
+                        },
+                        {
+                            "category": "wordpress",
+                            "enabled": false
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Add more than one category override at the account level
@@ -140,10 +213,37 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account entry point ruleset
+**Update an account entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "enabled": false,                    "categories": [                        {                            "category": "joomla",                            "action": "log",                            "enabled": true                        },                        {                            "category": "wordpress",                            "enabled": false                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID>",
+                "overrides": {
+                    "enabled": false,
+                    "categories": [
+                        {
+                            "category": "joomla",
+                            "action": "log",
+                            "enabled": true
+                        },
+                        {
+                            "category": "wordpress",
+                            "enabled": false
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 The order of the overrides in the ruleset determines if rules in the deployed managed ruleset are enabled or disabled. Overrides placed later in the list take precedence over earlier overrides.

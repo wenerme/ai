@@ -103,8 +103,13 @@ You can view these in the Jobs tab of your AI Search instance to verify your fil
 
 When using the API, specify patterns in `source_params`:
 
-```
-{  "source_params": {    "include_items": ["<PATTERN_1>", "<PATTERN_2>"],    "exclude_items": ["<PATTERN_1>", "<PATTERN_2>"]  }}
+```json
+{
+  "source_params": {
+    "include_items": ["<PATTERN_1>", "<PATTERN_2>"],
+    "exclude_items": ["<PATTERN_1>", "<PATTERN_2>"]
+  }
+}
 ```
 
 ```json

@@ -40,33 +40,60 @@ Setting any value on `process.env` will coerce that value into a string.
 
 Instead of using `process.env`, you can [import env from cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables and all other bindings from anywhere in your code.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import * as process from "node:process";
-export default {  fetch(req, env) {    // Set process.env.FOO to the value of env.FOO if process.env.FOO is not already set    // and env.FOO is a string.    process.env.FOO ??= (() => {      if (typeof env.FOO === "string") {        return env.FOO;      }    })();  },};
+
+
+export default {
+  fetch(req, env) {
+    // Set process.env.FOO to the value of env.FOO if process.env.FOO is not already set
+    // and env.FOO is a string.
+    process.env.FOO ??= (() => {
+      if (typeof env.FOO === "string") {
+        return env.FOO;
+      }
+    })();
+  },
+};
 ```
 
 It is strongly recommended that you _do not_ replace the entire `process.env` object with the cloudflare `env` object. Doing so will cause you to lose any environment variables that were set previously and will cause unexpected behavior for other Workers running in the same isolate. Specifically, it would cause inconsistency with the `process.env` object when accessed via named imports.
 
-JavaScript
+**JavaScript**
 
-```
-import * as process from "node:process";import { env } from "node:process";
-process.env === env; // true! they are the same objectprocess.env = {}; // replace the object! Do not do this!process.env === env; // false! they are no longer the same object
-// From this point forward, any changes to process.env will not be reflected in env,// and vice versa!
+```js
+import * as process from "node:process";
+import { env } from "node:process";
+
+
+process.env === env; // true! they are the same object
+process.env = {}; // replace the object! Do not do this!
+process.env === env; // false! they are no longer the same object
+
+
+// From this point forward, any changes to process.env will not be reflected in env,
+// and vice versa!
 ```
 
 ## `process.nextTick()`
 
 The Workers implementation of `process.nextTick()` is a wrapper for the standard Web Platform API [queueMicrotask() ↗](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask).
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { env, nextTick } from "node:process";
-env["FOO"] = "bar";console.log(env["FOO"]); // Prints: bar
-nextTick(() => {  console.log("next tick");});
+
+
+env["FOO"] = "bar";
+console.log(env["FOO"]); // Prints: bar
+
+
+nextTick(() => {
+  console.log("next tick");
+});
 ```
 
 ## Stdio

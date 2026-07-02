@@ -56,9 +56,7 @@ For setup, select the following options:
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-static-site
 ```
 
@@ -66,9 +64,7 @@ cd my-static-site
 
 After you have created your Worker, run the [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) in the project directory to start a local server. This will allow you to preview your project locally during development.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
@@ -78,9 +74,7 @@ Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain]
 
 The [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) will build and deploy your project. If you're using CI, ensure you update your ["deploy command"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration appropriately.
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -124,9 +118,7 @@ For setup, select the following options:
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-dynamic-site
 ```
 
@@ -134,9 +126,7 @@ cd my-dynamic-site
 
 After you have created your Worker, run the [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) in the project directory to start a local server. This will allow you to preview your project locally during development.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
@@ -155,9 +145,7 @@ Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain]
 
 The [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) will build and deploy your project. If you're using CI, ensure you update your ["deploy command"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration appropriately.
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 

@@ -76,7 +76,7 @@ Notes
 
 Sometimes, you may want to specify where to find the content objects, such as when the content is a Base64-encoded string within a JSON payload. For example:
 
-```
+```json
 { "file": "<BASE64_ENCODED_STRING>" }
 ```
 

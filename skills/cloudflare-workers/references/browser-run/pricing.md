@@ -82,10 +82,17 @@ You can monitor Browser Run usage in two ways:
 * To monitor your Browser Run usage in the Cloudflare dashboard, go to the **Browser Run** page.
 [ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 * The `X-Browser-Ms-Used` header, which is returned in every Quick Actions response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:
-TypeScript
-```
-const contentRes = await client.browserRendering.content  .create({    account_id: "account_id",  })  .asResponse();
-const browserMsUsed = parseInt(  contentRes.headers.get("X-Browser-Ms-Used") || "",);
+
+**TypeScript**
+```ts
+const contentRes = await client.browserRendering.content
+  .create({
+    account_id: "account_id",
+  })
+  .asResponse();
+const browserMsUsed = parseInt(
+  contentRes.headers.get("X-Browser-Ms-Used") || "",
+);
 ```
 
 You can then use the tables above to estimate your costs based on your usage.

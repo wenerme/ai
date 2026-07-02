@@ -31,23 +31,43 @@ Some applications and networking implementations require specific custom headers
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-7827)
-* [  TypeScript ](#tab-panel-7828)
+* [  JavaScript ](#tab-panel-8040)
+* [  TypeScript ](#tab-panel-8041)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const { headers } = request;
+    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
+
+
+    const requestWithID = new Request(request);
+    requestWithID.headers.set("company-user-id", cfaccessemail);
+
+
+    return fetch(requestWithID);
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    const { headers } = request;    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
-    const requestWithID = new Request(request);    requestWithID.headers.set("company-user-id", cfaccessemail);
-    return fetch(requestWithID);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    const { headers } = request;    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
-    const requestWithID = new Request(request);    requestWithID.headers.set("company-user-id", cfaccessemail);
-    return fetch(requestWithID);  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const { headers } = request;
+    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
+
+
+    const requestWithID = new Request(request);
+    requestWithID.headers.set("company-user-id", cfaccessemail);
+
+
+    return fetch(requestWithID);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 1. Select **Save and deploy**.
@@ -62,10 +82,15 @@ Your Worker is now ready to send custom headers to your Access-protected origin 
 
 The Worker will now insert a custom header into requests that match the defined route. For example:
 
-Example custom header
+**Example custom header**
 
-```
-"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",    "Accept-Encoding": "gzip",    "Accept-Language": "en-US,en;q=0.9",    "Cf-Access-Authenticated-User-Email": "user@example.com",    "Company-User-Id": "user@example.com",    "Connection": "keep-alive"
+```http
+"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Encoding": "gzip",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cf-Access-Authenticated-User-Email": "user@example.com",
+    "Company-User-Id": "user@example.com",
+    "Connection": "keep-alive"
 ```
 
 ```json

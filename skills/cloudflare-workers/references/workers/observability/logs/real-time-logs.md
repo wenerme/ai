@@ -41,20 +41,34 @@ This will log any incoming requests to your application available in your local 
 
 The output of each `wrangler tail` log is a structured JSON object:
 
-```
-{  "outcome": "ok",  "scriptName": null,  "exceptions": [],  "logs": [],  "eventTimestamp": 1590680082349,  "event": {    "request": {      "url": "https://www.bytesized.xyz/",      "method": "GET",      "headers": {},      "cf": {}    }  }}
+```json
+{
+  "outcome": "ok",
+  "scriptName": null,
+  "exceptions": [],
+  "logs": [],
+  "eventTimestamp": 1590680082349,
+  "event": {
+    "request": {
+      "url": "https://www.bytesized.xyz/",
+      "method": "GET",
+      "headers": {},
+      "cf": {}
+    }
+  }
+}
 ```
 
 By piping the output to tools like [jq ↗](https://stedolan.github.io/jq/), you can query and manipulate the requests to look for specific information:
 
-Terminal window
-
-```
+```sh
 npx wrangler tail | jq .event.request.url
 ```
 
-```
-"https://www.bytesized.xyz/""https://www.bytesized.xyz/component---src-pages-index-js-a77e385e3bde5b78dbf6.js""https://www.bytesized.xyz/page-data/app-data.json"
+```sh
+"https://www.bytesized.xyz/"
+"https://www.bytesized.xyz/component---src-pages-index-js-a77e385e3bde5b78dbf6.js"
+"https://www.bytesized.xyz/page-data/app-data.json"
 ```
 
 You can customize how `wrangler tail` works to fit your needs. Refer to [the wrangler tail documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail) for available configuration options.

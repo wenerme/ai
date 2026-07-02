@@ -28,16 +28,26 @@ Displays an audio visualizer with animated bars representing a participant's aud
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkAudioVisualizer } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkAudioVisualizer participant={participant} />;}
+
+
+function MyComponent() {
+  return <RtkAudioVisualizer participant={participant} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkAudioVisualizer } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkAudioVisualizer participant={participant} size="md" variant="bar" />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkAudioVisualizer participant={participant} size="md" variant="bar" />
+  );
+}
 ```
 
 ```json

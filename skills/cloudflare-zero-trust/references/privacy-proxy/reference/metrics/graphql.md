@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Privacy Proxy exposes metrics through Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). All metrics are queryable through a single endpoint:
 
-```
+```txt
 POST https://api.cloudflare.com/client/v4/graphql
 ```
 
@@ -29,10 +29,18 @@ Before you begin, you will need:
 
 The following example shows how to query your Privacy Proxy metrics daily request volume using curl. Replace the placeholder values with your own.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/graphql \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "query": "query DailyRequestVolume($accountTag: String!, $startDate: Date!, $endDate: Date!) { viewer { accounts(filter: { accountTag: $accountTag }) { privacyProxyRequestMetricsAdaptiveGroups(filter: { date_geq: $startDate, date_leq: $endDate }, limit: 10000, orderBy: [date_ASC]) { count dimensions { date } } } } }",    "variables": {      "accountTag": "<YOUR_ACCOUNT_TAG>",      "startDate": "2026-04-04",      "endDate": "2026-04-06"    }  }'
+```bash
+curl https://api.cloudflare.com/client/v4/graphql \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "query": "query DailyRequestVolume($accountTag: String!, $startDate: Date!, $endDate: Date!) { viewer { accounts(filter: { accountTag: $accountTag }) { privacyProxyRequestMetricsAdaptiveGroups(filter: { date_geq: $startDate, date_leq: $endDate }, limit: 10000, orderBy: [date_ASC]) { count dimensions { date } } } } }",
+    "variables": {
+      "accountTag": "<YOUR_ACCOUNT_TAG>",
+      "startDate": "2026-04-04",
+      "endDate": "2026-04-06"
+    }
+  }'
 ```
 
 ---
@@ -152,48 +160,158 @@ Request volume overview
 
 Get a high-level view of daily request volume over a date range.
 
-```
-query DailyRequestVolume(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyRequestMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [date_ASC]      ) {        count        dimensions {          date        }      }    }  }}
+```graphql
+query DailyRequestVolume(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyRequestMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [date_ASC]
+      ) {
+        count
+        dimensions {
+          date
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 Error breakdown by status code and proxy status
 
 Identify which HTTP status codes and proxy-level errors are occurring to pinpoint the source of failures.
 
-```
-query ErrorBreakdown(  $accountTag: String!  $start: Time!  $end: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyRequestMetricsAdaptiveGroups(        filter: {          datetimeFifteenMinutes_geq: $start          datetimeFifteenMinutes_leq: $end          statusCode_geq: 400        }        limit: 10000        orderBy: [datetimeFifteenMinutes_ASC]      ) {        count        dimensions {          datetimeFifteenMinutes          statusCode          proxyStatus        }      }    }  }}
+```graphql
+query ErrorBreakdown(
+  $accountTag: String!
+  $start: Time!
+  $end: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyRequestMetricsAdaptiveGroups(
+        filter: {
+          datetimeFifteenMinutes_geq: $start
+          datetimeFifteenMinutes_leq: $end
+          statusCode_geq: 400
+        }
+        limit: 10000
+        orderBy: [datetimeFifteenMinutes_ASC]
+      ) {
+        count
+        dimensions {
+          datetimeFifteenMinutes
+          statusCode
+          proxyStatus
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "start": "2026-04-04T00:00:00Z",  "end": "2026-04-06T23:59:59Z"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "start": "2026-04-04T00:00:00Z",
+  "end": "2026-04-06T23:59:59Z"
+}
 ```
 
 Top proxy errors by frequency
 
 Rank the most frequent proxy error types to prioritize investigation.
 
-```
-query TopProxyErrors(  $accountTag: String!  $start: Date!  $end: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyRequestMetricsAdaptiveGroups(        filter: {          date_geq: $start          date_leq: $end          proxyStatus_neq: ""        }        limit: 10000        orderBy: [count_DESC]      ) {        count        dimensions {          proxyStatus          statusCode        }      }    }  }}
+```graphql
+query TopProxyErrors(
+  $accountTag: String!
+  $start: Date!
+  $end: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyRequestMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $start
+          date_leq: $end
+          proxyStatus_neq: ""
+        }
+        limit: 10000
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          proxyStatus
+          statusCode
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "start": "2026-04-04",  "end": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "start": "2026-04-04",
+  "end": "2026-04-06"
+}
 ```
 
 Tunnel type distribution
 
 Monitor the mix of `connect-tcp`, `connect-udp`, and `connect-ip` over time to understand how clients are connecting.
 
-```
-query TunnelTypeDistribution(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyRequestMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [date_ASC]      ) {        count        dimensions {          date          tunnelType        }      }    }  }}
+```graphql
+query TunnelTypeDistribution(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyRequestMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [date_ASC]
+      ) {
+        count
+        dimensions {
+          date
+          tunnelType
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 privacyProxyIngressConnMetricsAdaptiveGroups node
@@ -202,36 +320,124 @@ Connection volume and ingress bytes overview
 
 Get a high-level view of daily ingress connection count and bytes transferred.
 
-```
-query IngressTrafficOverview(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyIngressConnMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [date_ASC]      ) {        count        sum {          bytesSentToClient          bytesRecvdFromClient        }        dimensions {          date        }      }    }  }}
+```graphql
+query IngressTrafficOverview(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyIngressConnMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [date_ASC]
+      ) {
+        count
+        sum {
+          bytesSentToClient
+          bytesRecvdFromClient
+        }
+        dimensions {
+          date
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 Connection duration by data center
 
 Compare client-to-proxy connection duration across data centers to identify regions with long-lived or stalled connections.
 
-```
-query IngressDurationByColo(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyIngressConnMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [quantiles_durationMsP50_DESC]      ) {        quantiles {          durationMsP50          durationMsP95          durationMsP99        }        dimensions {          coloCode        }      }    }  }}
+```graphql
+query IngressDurationByColo(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyIngressConnMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [quantiles_durationMsP50_DESC]
+      ) {
+        quantiles {
+          durationMsP50
+          durationMsP95
+          durationMsP99
+        }
+        dimensions {
+          coloCode
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 Protocol and TLS version distribution
 
 Understanding which transport protocols (QUIC versus TCP) and TLS versions your clients use helps you plan deprecations, detect misconfigured clients, and verify that traffic meets your security requirements.
 
-```
-query IngressProtocolDistribution(  $accountTag: String!  $start: Time!  $end: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyIngressConnMetricsAdaptiveGroups(        filter: {          datetimeFifteenMinutes_geq: $start          datetimeFifteenMinutes_leq: $end        }        limit: 10000        orderBy: [datetimeFifteenMinutes_ASC]      ) {        count        dimensions {          datetimeFifteenMinutes          transport          tlsVersion        }      }    }  }}
+```graphql
+query IngressProtocolDistribution(
+  $accountTag: String!
+  $start: Time!
+  $end: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyIngressConnMetricsAdaptiveGroups(
+        filter: {
+          datetimeFifteenMinutes_geq: $start
+          datetimeFifteenMinutes_leq: $end
+        }
+        limit: 10000
+        orderBy: [datetimeFifteenMinutes_ASC]
+      ) {
+        count
+        dimensions {
+          datetimeFifteenMinutes
+          transport
+          tlsVersion
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "start": "2026-04-04T00:00:00Z",  "end": "2026-04-06T23:59:59Z"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "start": "2026-04-04T00:00:00Z",
+  "end": "2026-04-06T23:59:59Z"
+}
 ```
 
 privacyProxyEgressConnMetricsAdaptiveGroups node
@@ -240,36 +446,127 @@ Egress bytes overview
 
 Get a high-level view of daily bytes flowing between the proxy and the upstream origin.
 
-```
-query EgressBytesOverview(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyEgressConnMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [date_ASC]      ) {        count        sum {          bytesSentToOrigin          bytesRecvdFromOrigin        }        dimensions {          date        }      }    }  }}
+```graphql
+query EgressBytesOverview(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyEgressConnMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [date_ASC]
+      ) {
+        count
+        sum {
+          bytesSentToOrigin
+          bytesRecvdFromOrigin
+        }
+        dimensions {
+          date
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 Proxy-to-origin latency by data center
 
 Compare proxy-to-origin handshake times across data centers to identify regions with degraded origin reachability.
 
-```
-query EgressLatencyByColo(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyEgressConnMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [quantiles_handshakeDurationUsP50_DESC]      ) {        quantiles {          handshakeDurationUsP50          handshakeDurationUsP95          handshakeDurationUsP99        }        dimensions {          coloCode        }      }    }  }}
+```graphql
+query EgressLatencyByColo(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyEgressConnMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [quantiles_handshakeDurationUsP50_DESC]
+      ) {
+        quantiles {
+          handshakeDurationUsP50
+          handshakeDurationUsP95
+          handshakeDurationUsP99
+        }
+        dimensions {
+          coloCode
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 Egress performance trend
 
 Track proxy-to-origin handshake latency at fine granularity over a specific time window.
 
-```
-query EgressPerformanceTrend(  $accountTag: String!  $start: Time!  $end: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyEgressConnMetricsAdaptiveGroups(        filter: {          datetimeFiveMinutes_geq: $start          datetimeFiveMinutes_leq: $end        }        limit: 10000        orderBy: [datetimeFiveMinutes_ASC]      ) {        quantiles {          handshakeDurationUsP50          handshakeDurationUsP95          handshakeDurationUsP99        }        count        dimensions {          datetimeFiveMinutes        }      }    }  }}
+```graphql
+query EgressPerformanceTrend(
+  $accountTag: String!
+  $start: Time!
+  $end: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyEgressConnMetricsAdaptiveGroups(
+        filter: {
+          datetimeFiveMinutes_geq: $start
+          datetimeFiveMinutes_leq: $end
+        }
+        limit: 10000
+        orderBy: [datetimeFiveMinutes_ASC]
+      ) {
+        quantiles {
+          handshakeDurationUsP50
+          handshakeDurationUsP95
+          handshakeDurationUsP99
+        }
+        count
+        dimensions {
+          datetimeFiveMinutes
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "start": "2026-04-04T08:00:00Z",  "end": "2026-04-06T14:00:00Z"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "start": "2026-04-04T08:00:00Z",
+  "end": "2026-04-06T14:00:00Z"
+}
 ```
 
 privacyProxyAuthMetricsAdaptiveGroups node
@@ -278,36 +575,118 @@ Auth volume by method
 
 Track daily authentication volume per method to understand adoption and spot anomalies.
 
-```
-query AuthVolumeByMethod(  $accountTag: String!  $startDate: Date!  $endDate: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyAuthMetricsAdaptiveGroups(        filter: {          date_geq: $startDate          date_leq: $endDate        }        limit: 10000        orderBy: [date_ASC]      ) {        count        dimensions {          date          authMethod        }      }    }  }}
+```graphql
+query AuthVolumeByMethod(
+  $accountTag: String!
+  $startDate: Date!
+  $endDate: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyAuthMetricsAdaptiveGroups(
+        filter: {
+          date_geq: $startDate
+          date_leq: $endDate
+        }
+        limit: 10000
+        orderBy: [date_ASC]
+      ) {
+        count
+        dimensions {
+          date
+          authMethod
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "startDate": "2026-04-04",  "endDate": "2026-04-06"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "startDate": "2026-04-04",
+  "endDate": "2026-04-06"
+}
 ```
 
 Auth failure spike detection
 
 Detect surges in authentication failures and identify which auth method is failing.
 
-```
-query AuthFailureSpike(  $accountTag: String!  $start: Time!  $end: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyAuthMetricsAdaptiveGroups(        filter: {          datetimeMinute_geq: $start          datetimeMinute_leq: $end          authResult: "failure"        }        limit: 10000        orderBy: [datetimeFiveMinutes_ASC]      ) {        count        dimensions {          datetimeFiveMinutes          authMethod        }      }    }  }}
+```graphql
+query AuthFailureSpike(
+  $accountTag: String!
+  $start: Time!
+  $end: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyAuthMetricsAdaptiveGroups(
+        filter: {
+          datetimeMinute_geq: $start
+          datetimeMinute_leq: $end
+          authResult: "failure"
+        }
+        limit: 10000
+        orderBy: [datetimeFiveMinutes_ASC]
+      ) {
+        count
+        dimensions {
+          datetimeFiveMinutes
+          authMethod
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "start": "2026-04-04T10:00:00Z",  "end": "2026-04-06T14:00:00Z"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "start": "2026-04-04T10:00:00Z",
+  "end": "2026-04-06T14:00:00Z"
+}
 ```
 
 Auth success rate
 
 Compare hourly success versus failure counts to compute auth success rate and spot degradation trends.
 
-```
-query AuthSuccessRate(  $accountTag: String!  $start: Time!  $end: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      privacyProxyAuthMetricsAdaptiveGroups(        filter: {          datetimeHour_geq: $start          datetimeHour_leq: $end        }        limit: 10000        orderBy: [datetimeHour_ASC]      ) {        count        dimensions {          datetimeHour          authResult        }      }    }  }}
+```graphql
+query AuthSuccessRate(
+  $accountTag: String!
+  $start: Time!
+  $end: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      privacyProxyAuthMetricsAdaptiveGroups(
+        filter: {
+          datetimeHour_geq: $start
+          datetimeHour_leq: $end
+        }
+        limit: 10000
+        orderBy: [datetimeHour_ASC]
+      ) {
+        count
+        dimensions {
+          datetimeHour
+          authResult
+        }
+      }
+    }
+  }
+}
 ```
 
-```
-{  "accountTag": "<YOUR_ACCOUNT_TAG>",  "start": "2026-04-04T00:00:00Z",  "end": "2026-04-06T23:59:59Z"}
+```json
+{
+  "accountTag": "<YOUR_ACCOUNT_TAG>",
+  "start": "2026-04-04T00:00:00Z",
+  "end": "2026-04-06T23:59:59Z"
+}
 ```
 
 ---

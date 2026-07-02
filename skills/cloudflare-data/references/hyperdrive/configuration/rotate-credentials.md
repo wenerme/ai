@@ -23,28 +23,46 @@ Creating a new Hyperdrive configuration to update your database credentials allo
 
 To create a Hyperdrive configuration that connects to an existing PostgreSQL or MySQL database, use the [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) CLI or the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive).
 
-Terminal window
-
-```
-# wrangler v3.11 and above requirednpx wrangler hyperdrive create my-updated-hyperdrive --connection-string="<YOUR_CONNECTION_STRING>"
+```sh
+# wrangler v3.11 and above required
+npx wrangler hyperdrive create my-updated-hyperdrive --connection-string="<YOUR_CONNECTION_STRING>"
 ```
 
 The command above will output the ID of your Hyperdrive. Set this ID in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-8740)
-* [  wrangler.toml ](#tab-panel-8741)
+* [  wrangler.jsonc ](#tab-panel-9031)
+* [  wrangler.toml ](#tab-panel-9032)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 To update your Worker to use the new Hyperdrive configuration, redeploy your Worker or use [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/).
@@ -53,10 +71,9 @@ To update your Worker to use the new Hyperdrive configuration, redeploy your Wor
 
 You can update the configuration of an existing Hyperdrive configuration using the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-Terminal window
-
-```
-# wrangler v3.11 and above requirednpx wrangler hyperdrive update <HYPERDRIVE_CONFIG_ID> --origin-host <YOUR_ORIGIN_HOST> --origin-password <YOUR_ORIGIN_PASSWORD> --origin-user <YOUR_ORIGIN_USERNAME> --database <YOUR_DATABASE> --origin-port <YOUR_ORIGIN_PORT>
+```sh
+# wrangler v3.11 and above required
+npx wrangler hyperdrive update <HYPERDRIVE_CONFIG_ID> --origin-host <YOUR_ORIGIN_HOST> --origin-password <YOUR_ORIGIN_PASSWORD> --origin-user <YOUR_ORIGIN_USERNAME> --database <YOUR_DATABASE> --origin-port <YOUR_ORIGIN_PORT>
 ```
 
 Note

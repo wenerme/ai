@@ -14,10 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Handlers are methods on Workers that can receive and process external inputs, and can be invoked from outside your Worker. For example, the `fetch()` handler receives an HTTP request, and can return a response:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response('Hello World!');
+  },
+};
 ```
 
 The following handlers are available within Workers:

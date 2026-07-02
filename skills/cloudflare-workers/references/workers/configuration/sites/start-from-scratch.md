@@ -22,19 +22,16 @@ This guide shows how to quickly start a new Workers Sites project from scratch.
 
 1. Ensure you have the latest version of [git ↗](https://git-scm.com/downloads) and [Node.js ↗](https://nodejs.org/en/download/) installed.
 2. In your terminal, clone the `worker-sites-template` starter repository. The following example creates a project called `my-site`:
-Terminal window
-```
+```sh
 git clone --depth=1 --branch=wrangler2 https://github.com/cloudflare/worker-sites-template my-site
 ```
 3. Run `npm install` to install all dependencies.
 4. You can preview your site by running the [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command:
-Terminal window
-```
+```sh
 wrangler dev
 ```
 5. Deploy your site to Cloudflare:
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -51,38 +48,52 @@ The template project contains the following files and directories:
 
 * Change the `name` property to the name of your project:
 
-  * [  wrangler.jsonc ](#tab-panel-11573)
-  * [  wrangler.toml ](#tab-panel-11574)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11868)
+  * [  wrangler.toml ](#tab-panel-11869)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-site"
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-site"}
-```
-TOML
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-site"
+
+**TOML**
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-site"
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:
 
-  * [  wrangler.jsonc ](#tab-panel-11575)
-  * [  wrangler.toml ](#tab-panel-11576)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11870)
+  * [  wrangler.toml ](#tab-panel-11871)
+
+**JSONC**
+```jsonc
+{
+  "compatibility_date": "yyyy-mm-dd"
+}
 ```
-{  "compatibility_date": "yyyy-mm-dd"}
-```
-TOML
-```
+
+**TOML**
+```toml
 compatibility_date = "yyyy-mm-dd"
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:
 
-  * [  wrangler.jsonc ](#tab-panel-11577)
-  * [  wrangler.toml ](#tab-panel-11578)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-11872)
+  * [  wrangler.toml ](#tab-panel-11873)
+
+**JSONC**
+```jsonc
+{
+  "route": "https://example.com/*"
+}
 ```
-{  "route": "https://example.com/*"}
-```
-TOML
-```
+
+**TOML**
+```toml
 route = "https://example.com/*"
 ```
 Note

@@ -25,16 +25,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkWaitingScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkWaitingScreen />;}
+
+
+function MyComponent() {
+  return <RtkWaitingScreen />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkWaitingScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkWaitingScreen      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkWaitingScreen
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

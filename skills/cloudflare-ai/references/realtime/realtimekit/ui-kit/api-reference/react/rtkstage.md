@@ -25,16 +25,29 @@ A component used as a stage that commonly houses the `grid` and `sidebar` compon
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkStage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkStage />;}
+
+
+function MyComponent() {
+  return <RtkStage />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkStage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkStage      iconPack={defaultIconPack}      t={rtki18n}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkStage
+      iconPack={defaultIconPack}
+      t={rtki18n}
+    />
+  );
+}
 ```
 
 ```json

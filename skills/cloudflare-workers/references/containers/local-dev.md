@@ -16,15 +16,15 @@ You can run both your container and your Worker locally by simply running [npx w
 
 To develop Container-enabled Workers locally, you will need to first ensure that a Docker compatible CLI tool and Engine are installed. For instance, you could use [Docker Desktop ↗](https://docs.docker.com/desktop/) or [Colima ↗](https://github.com/abiosoft/colima).
 
-When you start a dev session, your container image will be built or downloaded. If your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) sets the `image` attribute to a local path, the image will be built using the local Dockerfile. If the `image` attribute is set to an image reference, the image will be pulled from the referenced registry, such as the Cloudflare Registry, Docker Hub, or Amazon ECR.
+When you start a dev session, your container image will be built or downloaded. If your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) sets the `image` attribute to a local path, the image will be built using the local Dockerfile. If the `image` attribute is set to an image reference, the image will be pulled from the referenced registry, such as the Cloudflare Registry, Docker Hub, Amazon ECR, or Google Artifact Registry.
 
 Note
 
-With `wrangler dev`, image references from the Cloudflare Registry, Docker Hub, and Amazon ECR are supported in local development.
+With `wrangler dev`, image references from the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry are supported in local development.
 
-With `vite dev`, image references from external registries such as Docker Hub and Amazon ECR are supported, but `vite dev` cannot pull directly from the Cloudflare Registry.
+With `vite dev`, image references from external registries such as Docker Hub, Amazon ECR, and Google Artifact Registry are supported, but `vite dev` cannot pull directly from the Cloudflare Registry.
 
-If you use a private Docker Hub or ECR image with `vite dev`, authenticate to that registry locally, for example with `docker login`.
+If you use a private Docker Hub, Amazon ECR, or Google Artifact Registry image in local development, authenticate to that registry locally, for example with `docker login`.
 
 As a workaround for Cloudflare Registry images, point `vite dev` at a local Dockerfile that uses `FROM <IMAGE_REFERENCE>`. Docker then pulls the base image during the local build. Make sure to `EXPOSE` a port for local dev as well.
 
@@ -58,13 +58,13 @@ But for local development you will need to declare any ports you need to access 
 
 If you have not exposed any ports, you will see the following error in local development:
 
-```
+```txt
 The container "MyContainer" does not expose any ports. In your Dockerfile, please expose any ports you intend to connect to.
 ```
 
 And if you try to connect to any port that you have not exposed in your `Dockerfile` you will see the following error:
 
-```
+```txt
 connect(): Connection refused: container port not found. Make sure you exposed the port in your container definition.
 ```
 
@@ -82,8 +82,11 @@ To resolve this, you can either:
 
 * Disable the Cloudflare One Client or your VPN while running `wrangler dev` or `wrangler deploy`, then re-enable it afterwards.
 * Add the certificate to your Docker build context. The Cloudflare One Client exposes its certificate via the `NODE_EXTRA_CA_CERTS` and `SSL_CERT_FILE` environment variables on your host machine. You can pass the certificate into your Docker build as an environment variable, so that it is available during the build without being baked into the final image.
-```
-RUN if [ -n "$SSL_CERT_FILE" ]; then \    cp "$SSL_CERT_FILE" /usr/local/share/ca-certificates/Custom_CA.crt && \    update-ca-certificates; \    fi
+```dockerfile
+RUN if [ -n "$SSL_CERT_FILE" ]; then \
+    cp "$SSL_CERT_FILE" /usr/local/share/ca-certificates/Custom_CA.crt && \
+    update-ca-certificates; \
+    fi
 ```
 Note
 The above Dockerfile snippet is an example. Depending on your base image, the commands to install certificates may differ (for example, Alpine uses `apk add ca-certificates` and a different certificate path).
@@ -91,6 +94,6 @@ This snippet will store the certificate into the image. Depending on whether you
 Wrangler invokes Docker automatically when you run `wrangler dev` or `wrangler deploy`, so if you need to pass build secrets, you will need to build and push the image manually using `wrangler containers push`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/local-dev/#page","headline":"Local Development · Cloudflare Containers docs","description":"Learn how to run Container-enabled Workers locally with wrangler dev and vite dev.","url":"https://developers.cloudflare.com/containers/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/local-dev/#page","headline":"Local Development · Cloudflare Containers docs","description":"Learn how to run Container-enabled Workers locally with wrangler dev and vite dev.","url":"https://developers.cloudflare.com/containers/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/local-dev/","name":"Local Development"}}]}
 ```

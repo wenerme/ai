@@ -72,7 +72,7 @@ When configuring an Azure destination, the SAS (Shared Access Signature) token m
 
 If the SAS token uses different settings, you will receive the following error:
 
-```
+```plaintext
 signedResourceTypes must be Object only (srt=o)
 ```
 

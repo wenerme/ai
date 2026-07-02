@@ -30,16 +30,31 @@ Manages and renders modal dialogs for leave confirmation, settings, join stage c
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDialogManager } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkDialogManager meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkDialogManager meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDialogManager } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkDialogManager      meeting={meeting}      config={customConfig}      size="md"      onRtkStateUpdate={(e) => handleStateUpdate(e)}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDialogManager
+      meeting={meeting}
+      config={customConfig}
+      size="md"
+      onRtkStateUpdate={(e) => handleStateUpdate(e)}
+    />
+  );
+}
 ```
 
 ```json

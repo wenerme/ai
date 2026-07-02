@@ -18,7 +18,7 @@ The longitude associated with the client IP address.
 
 Example value:
 
-```
+```txt
 "-122.39055"
 ```
 

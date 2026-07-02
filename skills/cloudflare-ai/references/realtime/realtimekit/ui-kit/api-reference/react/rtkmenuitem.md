@@ -27,16 +27,29 @@ A menu item component.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMenuItem } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMenuItem />;}
+
+
+function MyComponent() {
+  return <RtkMenuItem />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMenuItem } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMenuItem      menuVariant={'primary' | 'secondary'}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMenuItem
+      menuVariant={'primary' | 'secondary'}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

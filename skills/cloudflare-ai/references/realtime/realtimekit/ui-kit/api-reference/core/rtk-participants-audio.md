@@ -27,19 +27,24 @@ A component which plays all the audio from participants and screenshares.
 
 ### Basic Usage
 
-```
+```html
 <rtk-participants-audio></rtk-participants-audio>
 ```
 
 ### With Properties
 
-```
-<rtk-participants-audio></rtk-participants-audio>
+```html
+<rtk-participants-audio>
+</rtk-participants-audio>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participants-audio");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participants-audio");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

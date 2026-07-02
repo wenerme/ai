@@ -45,14 +45,64 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account ruleset
+**Update an account ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",            "action": "challenge",            "description": "challenge GB and FR based on bot score"        },        {            "expression": "not http.request.uri.path matches \"^/api/.*$\"",            "action": "challenge",            "description": "challenge not /api"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+            "action": "challenge",
+            "description": "challenge GB and FR based on bot score"
+        },
+        {
+            "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+            "action": "challenge",
+            "description": "challenge not /api"
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<CUSTOM_RULESET_ID>",    "name": "Custom Ruleset 1",    "kind": "custom",    "version": "2",    "rules": [      {        "id": "<CUSTOM_RULE_ID_1>",        "version": "1",        "action": "challenge",        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",        "description": "challenge GB and FR based on bot score",        "last_updated": "2021-03-18T18:25:08.122758Z",        "ref": "<CUSTOM_RULE_REF_1>",        "enabled": true      },      {        "id": "<CUSTOM_RULE_ID_2>",        "version": "1",        "action": "challenge",        "expression": "not http.request.uri.path matches \"^/api/.*$\"",        "description": "challenge not /api",        "last_updated": "2021-03-18T18:25:08.122758Z",        "ref": "<CUSTOM_RULE_REF_2>",        "enabled": true      }    ],    "last_updated": "2021-03-18T18:25:08.122758Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<CUSTOM_RULESET_ID>",
+    "name": "Custom Ruleset 1",
+    "kind": "custom",
+    "version": "2",
+    "rules": [
+      {
+        "id": "<CUSTOM_RULE_ID_1>",
+        "version": "1",
+        "action": "challenge",
+        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+        "description": "challenge GB and FR based on bot score",
+        "last_updated": "2021-03-18T18:25:08.122758Z",
+        "ref": "<CUSTOM_RULE_REF_1>",
+        "enabled": true
+      },
+      {
+        "id": "<CUSTOM_RULE_ID_2>",
+        "version": "1",
+        "action": "challenge",
+        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+        "description": "challenge not /api",
+        "last_updated": "2021-03-18T18:25:08.122758Z",
+        "ref": "<CUSTOM_RULE_REF_2>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2021-03-18T18:25:08.122758Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Update rules
@@ -75,14 +125,63 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account ruleset
+**Update an account ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "id": "<CUSTOM_RULE_ID_2>",            "expression": "not http.request.uri.path matches \"^/api/.*$\"",            "action": "js_challenge",            "description": "js_challenge when not /api"        },        {            "id": "<CUSTOM_RULE_ID_1>"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "id": "<CUSTOM_RULE_ID_2>",
+            "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+            "action": "js_challenge",
+            "description": "js_challenge when not /api"
+        },
+        {
+            "id": "<CUSTOM_RULE_ID_1>"
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<CUSTOM_RULESET_ID>",    "name": "Custom Ruleset 1",    "kind": "custom",    "version": "3",    "rules": [      {        "id": "<CUSTOM_RULE_ID_2>",        "version": "2",        "action": "js_challenge",        "expression": "not http.request.uri.path matches \"^/api/.*$\"",        "description": "js_challenge when not /api",        "last_updated": "2021-03-18T18:30:08.122758Z",        "ref": "<CUSTOM_RULE_ID_2>",        "enabled": true      },      {        "id": "<CUSTOM_RULE_ID_1>",        "version": "1",        "action": "challenge",        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",        "description": "challenge GB and FR based on bot score",        "last_updated": "2021-03-18T18:25:08.122758Z",        "ref": "<CUSTOM_RULE_ID_1>",        "enabled": true      }    ],    "last_updated": "2021-03-18T18:30:08.122758Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<CUSTOM_RULESET_ID>",
+    "name": "Custom Ruleset 1",
+    "kind": "custom",
+    "version": "3",
+    "rules": [
+      {
+        "id": "<CUSTOM_RULE_ID_2>",
+        "version": "2",
+        "action": "js_challenge",
+        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+        "description": "js_challenge when not /api",
+        "last_updated": "2021-03-18T18:30:08.122758Z",
+        "ref": "<CUSTOM_RULE_ID_2>",
+        "enabled": true
+      },
+      {
+        "id": "<CUSTOM_RULE_ID_1>",
+        "version": "1",
+        "action": "challenge",
+        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+        "description": "challenge GB and FR based on bot score",
+        "last_updated": "2021-03-18T18:25:08.122758Z",
+        "ref": "<CUSTOM_RULE_ID_1>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2021-03-18T18:30:08.122758Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Warning

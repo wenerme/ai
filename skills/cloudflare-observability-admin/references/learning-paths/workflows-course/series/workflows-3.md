@@ -13,9 +13,9 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Use cron triggers to develop time-aware applications
 
-* [ Watch this episode ](#tab-panel-9428)
-* [ Step-by-step tutorial ](#tab-panel-9429)
-* [ Series overview ](#tab-panel-9430)
+* [ Watch this episode ](#tab-panel-9719)
+* [ Step-by-step tutorial ](#tab-panel-9720)
+* [ Series overview ](#tab-panel-9721)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
@@ -59,19 +59,35 @@ The episode repository uses the older pattern of a top-level `[triggers]` sectio
 
 In current Workflows projects, you can usually schedule the Workflow directly on its binding instead:
 
-* [  wrangler.jsonc ](#tab-panel-9426)
-* [  wrangler.toml ](#tab-panel-9427)
+* [  wrangler.jsonc ](#tab-panel-9717)
+* [  wrangler.toml ](#tab-panel-9718)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "workflows": [
+    {
+      "name": "leaderboard-workflow",
+      "binding": "LEADERBOARD_WORKFLOW",
+      "class_name": "LeaderboardWorkflow",
+      "schedules": [
+        "*/30 * * * *"
+      ]
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "workflows": [    {      "name": "leaderboard-workflow",      "binding": "LEADERBOARD_WORKFLOW",      "class_name": "LeaderboardWorkflow",      "schedules": [        "*/30 * * * *"      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[workflows]]name = "leaderboard-workflow"binding = "LEADERBOARD_WORKFLOW"class_name = "LeaderboardWorkflow"schedules = ["*/30 * * * *"]
+```toml
+[[workflows]]
+name = "leaderboard-workflow"
+binding = "LEADERBOARD_WORKFLOW"
+class_name = "LeaderboardWorkflow"
+schedules = ["*/30 * * * *"]
 ```
 
 Use a separate Cron Trigger and `scheduled` handler only when you need custom logic before deciding whether to create a Workflow instance. Use the latest Wrangler release when configuring Workflow schedules.
@@ -119,9 +135,7 @@ You can trigger workflows manually and inspect their execution status and output
 
 To trigger the `PuntificatorWorkflow` manually:
 
-Terminal window
-
-```
+```bash
 npx wrangler workflows trigger puntificator
 ```
 
@@ -129,9 +143,7 @@ This command will queue an instance of the workflow. You will receive a success 
 
 To describe the latest instance of a workflow:
 
-Terminal window
-
-```
+```bash
 npx wrangler workflows instances describe puntificator latest
 ```
 

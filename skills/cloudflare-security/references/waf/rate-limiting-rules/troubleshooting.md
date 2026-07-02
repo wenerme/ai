@@ -18,7 +18,7 @@ Cloudflare may count Workers subrequests on the same zone as separate requests, 
 
 To prevent this behavior, you must exclude any Workers subrequests coming from the same zone from your rate limiting rule using the [cf.worker.upstream\_zone](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream%5Fzone/) field. For example, you could add the following sub-expression to your [rate limiting rule expression](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#when-incoming-requests-match):
 
-```
+```txt
 and (cf.worker.upstream_zone == "" or cf.worker.upstream_zone != "<YOUR_ZONE>")
 ```
 

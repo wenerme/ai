@@ -34,16 +34,32 @@ A video tile for a single participant showing their video feed, name tag with au
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantTile } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkParticipantTile meeting={meeting} participant={participant} />;}
+
+
+function MyComponent() {
+  return <RtkParticipantTile meeting={meeting} participant={participant} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantTile } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkParticipantTile      meeting={meeting}      participant={participant}      nameTagPosition="bottom-left"      isPreview={false}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantTile
+      meeting={meeting}
+      participant={participant}
+      nameTagPosition="bottom-left"
+      isPreview={false}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

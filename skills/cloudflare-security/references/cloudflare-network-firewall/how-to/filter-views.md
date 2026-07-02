@@ -20,18 +20,34 @@ Use the filter examples below to filter your Network Firewall traffic to display
 
 The example below only displays fields relevant to Network Firewall, and the filter only displays events for disabled rules.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  ...  "output_options": {      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],  },  "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"pass\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"drop\"}]}]}}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  ...
+  "output_options": {
+      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],
+  },
+  "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"pass\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"drop\"}]}]}}"
+}'
 ```
 
 The example below only displays fields relevant to Network Firewall, and the filter only displays events for enabled rules.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  ...  "output_options": {      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],  },  "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"or\":[{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"drop\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"pass\"}]}]}]}}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  ...
+  "output_options": {
+      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],
+  },
+  "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"or\":[{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"drop\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"pass\"}]}]}]}}"
+}'
 ```
 
 ## Filter by allowed or blocked traffic
@@ -40,28 +56,52 @@ Use the filter examples below to filter your Network Firewall traffic to display
 
 The example below only displays fields relevant to Network Firewall, and the filter only displays events where no explicit action was taken, for example, a packet "fell through" Network Firewall. This example does not have any rules applied.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  ...  "output_options": {      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],  },  "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"eq\",\"value\":\"\"}]}}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  ...
+  "output_options": {
+      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],
+  },
+  "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"eq\",\"value\":\"\"}]}}"
+}'
 ```
 
 The example below only displays fields relevant to Network Firewall, and the filter only displays events where explicit action was taken. The example includes both enabled and disabled Network Firewall rules.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  ...  "output_options": {      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],  },  "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"}]}}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  ...
+  "output_options": {
+      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],
+  },
+  "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"}]}}"
+}'
 ```
 
 ## Filter by relevant fields to Network Firewall
 
 Use the examples below to filter out fields that are not relevant to traffic flowing through Network Firewall. The example below only includes Network Firewall events.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  ...  "output_options": {      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],  },  "filter": "{\"where\":{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"}}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  ...
+  "output_options": {
+      "field_names": ["ColoName", "Datetime", "Direction", "IPDestinationAddress", "IPDestinationSubnet", "IPProtocol","IPSourceAddress", "IPSourceSubnet", "Outcome", "RuleID", "RulesetID", "SampleInterval", "Verdict"],
+  },
+  "filter": "{\"where\":{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"}}"
+}'
 ```
 
 ```json

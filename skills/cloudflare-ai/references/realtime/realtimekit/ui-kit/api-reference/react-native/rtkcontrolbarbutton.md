@@ -32,16 +32,32 @@ A reusable button for the control bar with icon, label, loading state, and warni
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkControlbarButton } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkControlbarButton label="Mute" icon={muteIcon} />;}
+
+
+function MyComponent() {
+  return <RtkControlbarButton label="Mute" icon={muteIcon} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkControlbarButton } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkControlbarButton      label="Mute"      icon={muteIcon}      variant="horizontal"      size="md"      onClick={() => console.log("pressed")}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkControlbarButton
+      label="Mute"
+      icon={muteIcon}
+      variant="horizontal"
+      size="md"
+      onClick={() => console.log("pressed")}
+    />
+  );
+}
 ```
 
 ```json

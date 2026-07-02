@@ -27,19 +27,24 @@ A screen that handles the idle state, i.e; when you are waiting for data about t
 
 ### Basic Usage
 
-```
+```html
 <rtk-idle-screen></rtk-idle-screen>
 ```
 
 ### With Properties
 
-```
-<rtk-idle-screen></rtk-idle-screen>
+```html
+<rtk-idle-screen>
+</rtk-idle-screen>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-idle-screen");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-idle-screen");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

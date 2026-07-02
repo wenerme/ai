@@ -24,13 +24,13 @@ Authenticates the client to the proxy. Required for all requests.
 
 Pre-shared key format:
 
-```
+```http
 Proxy-Authorization: Preshared <key>
 ```
 
 Privacy Pass token format:
 
-```
+```http
 Proxy-Authorization: PrivateToken token=<base64-encoded-token>
 ```
 
@@ -47,7 +47,7 @@ When querying Privacy Proxy metrics via the GraphQL Analytics API, send a `POST`
 
 Specifies the client's geographic location for egress IP selection. Optional but recommended for accurate geolocation.
 
-```
+```http
 sec-ch-geohash: <geohash>-<country_code>
 ```
 
@@ -56,9 +56,9 @@ sec-ch-geohash: <geohash>-<country_code>
 | <geohash>       | A [geohash ↗](https://en.wikipedia.org/wiki/Geohash) string (typically 4-8 characters) |
 | <country\_code> | ISO 3166-1 alpha-2 country code                                                        |
 
-Example
+**Example**
 
-```
+```http
 sec-ch-geohash: u4pruydqqvj-GB
 ```
 
@@ -74,7 +74,7 @@ Privacy Proxy includes the following headers in responses.
 
 Provides timing information about proxy processing. This is part of the [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/) observability pipeline.
 
-```
+```http
 Server-Timing: proxy;dur=<milliseconds>
 ```
 
@@ -82,9 +82,9 @@ Server-Timing: proxy;dur=<milliseconds>
 | -------------- | ------------------------------------------------------- |
 | <milliseconds> | Processing time in milliseconds introduced by the proxy |
 
-Example
+**Example**
 
-```
+```http
 Server-Timing: proxy;dur=8.2
 ```
 
@@ -98,8 +98,11 @@ For response headers returned by the GraphQL API, refer to [GraphQL Analytics AP
 
 A complete `CONNECT` request to Privacy Proxy looks like this:
 
-```
-CONNECT example.com:443 HTTP/2Host: example.comProxy-Authorization: Preshared abc123xyzsec-ch-geohash: 9q8yy-US
+```http
+CONNECT example.com:443 HTTP/2
+Host: example.com
+Proxy-Authorization: Preshared abc123xyz
+sec-ch-geohash: 9q8yy-US
 ```
 
 The proxy responds with a status code indicating success or failure:

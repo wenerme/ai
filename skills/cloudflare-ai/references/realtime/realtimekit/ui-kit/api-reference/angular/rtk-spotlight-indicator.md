@@ -25,14 +25,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-spotlight-indicator></rtk-spotlight-indicator>
+```html
+<!-- component.html -->
+<rtk-spotlight-indicator></rtk-spotlight-indicator>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-spotlight-indicator [meeting]="meeting" size="md"></rtk-spotlight-indicator>
+```html
+<!-- component.html -->
+<rtk-spotlight-indicator
+ [meeting]="meeting"
+ size="md">
+</rtk-spotlight-indicator>
 ```
 
 ```json

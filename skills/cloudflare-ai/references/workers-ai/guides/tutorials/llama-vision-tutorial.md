@@ -25,10 +25,13 @@ Before you begin, ensure you have the following:
 
 The first time you use the [Llama 3.2 11B Vision Instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct) model, you need to agree to Meta's License and Acceptable Use Policy.
 
-curl
+**curl**
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-11b-vision-instruct \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "prompt": "agree" }'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-11b-vision-instruct \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "prompt": "agree" }'
 ```
 
 Replace `$CLOUDFLARE_ACCOUNT_ID` and `$CLOUDFLARE_AUTH_TOKEN` with your actual account ID and token.
@@ -63,8 +66,7 @@ For setup, select the following options:
 After completing the setup, a new directory called `llama-vision-tutorial` will be created.
 
 1. Navigate to your application directory Change into the project directory:
-Terminal window
-```
+```bash
 cd llama-vision-tutorial
 ```
 2. Project structure Your `llama-vision-tutorial` directory will include:
@@ -76,34 +78,63 @@ cd llama-vision-tutorial
 
 Edit the `src/index.ts` (or `index.js` if you are not using TypeScript) file and replace the content with the following code:
 
-JavaScript
+**JavaScript**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const messages = [      { role: "system", content: "You are a helpful assistant." },      { role: "user", content: "Describe the image I'm providing." },    ];
-    // Replace this with your image data encoded as base64 or a URL    const imageBase64 = "data:image/png;base64,IMAGE_DATA_HERE";
-    const response = await env.AI.run("@cf/meta/llama-3.2-11b-vision-instruct", {      messages,      image: imageBase64,    });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```javascript
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const messages = [
+      { role: "system", content: "You are a helpful assistant." },
+      { role: "user", content: "Describe the image I'm providing." },
+    ];
+
+
+    // Replace this with your image data encoded as base64 or a URL
+    const imageBase64 = "data:image/png;base64,IMAGE_DATA_HERE";
+
+
+    const response = await env.AI.run("@cf/meta/llama-3.2-11b-vision-instruct", {
+      messages,
+      image: imageBase64,
+    });
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## 4\. Bind Workers AI to your Worker
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11436)
-* [  wrangler.toml ](#tab-panel-11437)
+* [  wrangler.jsonc ](#tab-panel-11691)
+* [  wrangler.toml ](#tab-panel-11692)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {},
+  "ai": {
+    "binding": "AI"
+  }
+}
 ```
-{  "env": {},  "ai": {    "binding": "AI"  }}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 env = { }
-[ai]binding = "AI"
+
+
+[ai]
+binding = "AI"
 ```
 
 1. Save the file.
@@ -112,9 +143,7 @@ env = { }
 
 Run the following command to deploy your Worker:
 
-Terminal window
-
-```
+```bash
 wrangler deploy
 ```
 
@@ -123,10 +152,9 @@ wrangler deploy
 1. After deployment, you will receive a unique URL for your Worker (e.g., `https://llama-vision-tutorial.<your-subdomain>.workers.dev`).
 2. Use a tool like `curl` or Postman to send a request to your Worker:
 
-Terminal window
-
-```
-curl -X POST https://llama-vision-tutorial.<your-subdomain>.workers.dev \  -d '{ "image": "BASE64_ENCODED_IMAGE" }'
+```bash
+curl -X POST https://llama-vision-tutorial.<your-subdomain>.workers.dev \
+  -d '{ "image": "BASE64_ENCODED_IMAGE" }'
 ```
 
 Replace `BASE64_ENCODED_IMAGE` with an actual base64-encoded image string.
@@ -137,8 +165,10 @@ The response will include the output from the model, such as a description or an
 
 Example response:
 
-```
-{  "result": "This is a golden retriever sitting in a grassy park."}
+```json
+{
+  "result": "This is a golden retriever sitting in a grassy park."
+}
 ```
 
 ```json

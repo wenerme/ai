@@ -65,11 +65,15 @@ Take care to have sufficient gap between consecutive requests to avoid hitting r
 
 Here's a typical pattern for processing all vectors in an index:
 
-Terminal window
+```sh
+# Start iteration
+wrangler vectorize list-vectors my-index --count=1000
 
-```
-# Start iterationwrangler vectorize list-vectors my-index --count=1000
-# Continue with cursor from responsewrangler vectorize list-vectors my-index --count=1000 --cursor="<cursor-from-response>"
+
+# Continue with cursor from response
+wrangler vectorize list-vectors my-index --count=1000 --cursor="<cursor-from-response>"
+
+
 # Repeat until no more results
 ```
 

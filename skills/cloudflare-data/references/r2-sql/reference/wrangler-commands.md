@@ -20,25 +20,19 @@ R2 SQL is currently in open beta. Report R2 SQL bugs in [GitHub ↗](https://git
 
 Execute SQL query against R2 Data Catalog
 
-* [  npm ](#tab-panel-10049)
-* [  pnpm ](#tab-panel-10050)
-* [  yarn ](#tab-panel-10051)
+* [  npm ](#tab-panel-10128)
+* [  pnpm ](#tab-panel-10129)
+* [  yarn ](#tab-panel-10130)
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 sql query [WAREHOUSE] [QUERY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler r2 sql query [WAREHOUSE] [QUERY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler r2 sql query [WAREHOUSE] [QUERY]
 ```
 

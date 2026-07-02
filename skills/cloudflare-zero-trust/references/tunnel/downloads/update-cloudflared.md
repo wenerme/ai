@@ -18,60 +18,55 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-11057)
-* [ macOS ](#tab-panel-11058)
-* [ Debian ](#tab-panel-11059)
-* [ Red Hat ](#tab-panel-11060)
-* [ Docker ](#tab-panel-11061)
-* [ Other ](#tab-panel-11062)
+* [ Windows ](#tab-panel-11352)
+* [ macOS ](#tab-panel-11353)
+* [ Debian ](#tab-panel-11354)
+* [ Red Hat ](#tab-panel-11355)
+* [ Docker ](#tab-panel-11356)
+* [ Other ](#tab-panel-11357)
 
 Run the following command:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 cloudflared update
 ```
 
 After running `cloudflared update` to update `cloudflared`, you must restart the service for it to take effect. Run:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 net start cloudflared
 ```
 
 1. Update the `cloudflared` package:
 
-Terminal window
-
-```
+```sh
 brew upgrade cloudflared
 ```
 
 1. Restart the service:
 
-Terminal window
-
-```
-sudo launchctl stop com.cloudflare.cloudflaredsudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plistsudo launchctl load /Library/LaunchDaemons/com.cloudflare.cloudflared.plistsudo launchctl start com.cloudflare.cloudflared
+```sh
+sudo launchctl stop com.cloudflare.cloudflared
+sudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
+sudo launchctl load /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
+sudo launchctl start com.cloudflare.cloudflared
 ```
 
 **If installed via apt:**
 
 1. Update the `cloudflared` package:
 
-Terminal window
-
-```
+```sh
 sudo apt-get update && sudo apt-get install --only-upgrade cloudflared
 ```
 
 1. Restart the service:
 
-Terminal window
-
-```
+```sh
 sudo systemctl restart cloudflared.service
 ```
 
@@ -83,33 +78,25 @@ You can check if `cloudflared` was installed by a package manager by running `ls
 
 1. Update the `cloudflared` package:
 
-Terminal window
-
-```
+```sh
 curl --location --output cloudflared.deb "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$(dpkg --print-architecture).deb" && sudo dpkg -i cloudflared.deb
 ```
 
 1. Restart the service:
 
-Terminal window
-
-```
+```sh
 sudo systemctl restart cloudflared.service
 ```
 
 1. Update the `cloudflared` package:
 
-Terminal window
-
-```
+```sh
 sudo yum update cloudflared
 ```
 
 1. Restart the service:
 
-Terminal window
-
-```
+```sh
 sudo systemctl restart cloudflared.service
 ```
 
@@ -129,9 +116,7 @@ Cloudflare recommends creating remotely-managed tunnels when working with Docker
 
 **If you created a remotely or locally-managed tunnel using the API, run the following command:**
 
-Terminal window
-
-```
+```sh
 docker run --pull always cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TOKEN>
 ```
 
@@ -139,16 +124,13 @@ docker run --pull always cloudflare/cloudflared:latest tunnel --no-autoupdate ru
 
 1. Mount your local `.cloudflared` directory into the Docker container using a volume.
 2. Run the following command to update `cloudflared`:
-Terminal window
-```
+```sh
 docker run --pull always -v <PATH-TO-YOUR-LOCAL-CLOUDFLARED>:/home/nonroot/.cloudflared cloudflare/cloudflared:latest tunnel --no-autoupdate run <TUNNEL-ID>
 ```
 
 If you installed `cloudflared` from GitHub-provided binaries or from source, run the following command:
 
-Terminal window
-
-```
+```sh
 cloudflared update
 ```
 
@@ -186,18 +168,18 @@ Windows systems require services to have a unique name and display name. You can
 1. Install and configure `cloudflared`.
 2. Next, create a service with a unique name and point to the `cloudflared` executable and configuration file.
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 sc.exe create <unique-name> binPath='<path-to-exe>' --config '<path-to-config>' displayname="Unique Name"
 ```
 
 1. Proceed to create additional services with unique names.
 2. You can now start each unique service.
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 sc.exe start <unique-name>
 ```
 

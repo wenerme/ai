@@ -30,14 +30,50 @@ Refer the [blog post ↗](https://blog.cloudflare.com/announcing-cloudflare-rada
 
 #### Example: Get outages in the last 7 days
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/radar/annotations/outages?limit=5&offset=0&dateRange=7d&format=json" \
+--header "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/radar/annotations/outages?limit=5&offset=0&dateRange=7d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "success": true,  "errors": [],  "result": {    "annotations": [      {        "dataSource": "ALL",        "description": null,        "scope": "Multiple regions/cities",        "startDate": "2022-10-25T00:00:00Z",        "endDate": null,        "locations": ["UA"],        "asns": [],        "eventType": "OUTAGE",        "linkedUrl": "https://www.npr.org/2022/10/22/1130742768/ukraine-power-grid-outages-record-damage",        "outage": {          "outageCause": "POWER_OUTAGE",          "outageType": "REGIONAL"        }      },      {        "dataSource": "ALL",        "description": null,        "scope": "Multiple cities in Florida",        "startDate": "2022-09-28T19:00:00Z",        "endDate": "2022-11-02T00:00:00Z",        "locations": ["US"],        "asns": [],        "eventType": "OUTAGE",        "linkedUrl": "https://x.com/CloudflareRadar/status/1575229448353349632",        "outage": {          "outageCause": "WEATHER",          "outageType": "REGIONAL"        }      }    ]  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "result": {
+    "annotations": [
+      {
+        "dataSource": "ALL",
+        "description": null,
+        "scope": "Multiple regions/cities",
+        "startDate": "2022-10-25T00:00:00Z",
+        "endDate": null,
+        "locations": ["UA"],
+        "asns": [],
+        "eventType": "OUTAGE",
+        "linkedUrl": "https://www.npr.org/2022/10/22/1130742768/ukraine-power-grid-outages-record-damage",
+        "outage": {
+          "outageCause": "POWER_OUTAGE",
+          "outageType": "REGIONAL"
+        }
+      },
+      {
+        "dataSource": "ALL",
+        "description": null,
+        "scope": "Multiple cities in Florida",
+        "startDate": "2022-09-28T19:00:00Z",
+        "endDate": "2022-11-02T00:00:00Z",
+        "locations": ["US"],
+        "asns": [],
+        "eventType": "OUTAGE",
+        "linkedUrl": "https://x.com/CloudflareRadar/status/1575229448353349632",
+        "outage": {
+          "outageCause": "WEATHER",
+          "outageType": "REGIONAL"
+        }
+      }
+    ]
+  }
+}
 ```
 
 Refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/annotations/subresources/outages/methods/get/) for more information regarding this endpoint.

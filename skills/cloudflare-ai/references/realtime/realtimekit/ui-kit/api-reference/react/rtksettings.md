@@ -28,16 +28,29 @@ A settings component to see and change your audio/video devices as well as see y
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSettings } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSettings />;}
+
+
+function MyComponent() {
+  return <RtkSettings />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSettings } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSettings      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSettings
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

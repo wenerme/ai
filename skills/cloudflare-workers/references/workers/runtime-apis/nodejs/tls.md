@@ -18,13 +18,29 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:tls ↗](https://nodejs.org/api/tls.html) to create secure connections to external services using [TLS ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Transport%5FLayer%5FSecurity) (Transport Layer Security).
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { connect } from "node:tls";
-// ... in a request handler ...const connectionOptions = { key: env.KEY, cert: env.CERT };const socket = connect(url, connectionOptions, () => {  if (socket.authorized) {    console.log("Connection authorized");  }});
-socket.on("data", (data) => {  console.log(data);});
-socket.on("end", () => {  console.log("server ends connection");});
+
+
+// ... in a request handler ...
+const connectionOptions = { key: env.KEY, cert: env.CERT };
+const socket = connect(url, connectionOptions, () => {
+  if (socket.authorized) {
+    console.log("Connection authorized");
+  }
+});
+
+
+socket.on("data", (data) => {
+  console.log(data);
+});
+
+
+socket.on("end", () => {
+  console.log("server ends connection");
+});
 ```
 
 The following APIs are available:

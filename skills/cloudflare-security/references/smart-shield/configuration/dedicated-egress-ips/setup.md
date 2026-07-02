@@ -39,10 +39,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "aegis",    "value": {        "enabled": true,        "pool_id": "<EGRESS_POOL_ID>"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "id": "aegis",
+    "value": {
+        "enabled": true,
+        "pool_id": "<EGRESS_POOL_ID>"
+    }
+  }'
 ```
 
 ## Check DCEI status for a zone
@@ -53,10 +62,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-Get zone setting
+**Get zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Turn off DCEI for a zone
@@ -66,10 +77,18 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "aegis",    "value": {        "enabled": false    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "id": "aegis",
+    "value": {
+        "enabled": false
+    }
+  }'
 ```
 
 ## Check your IPs

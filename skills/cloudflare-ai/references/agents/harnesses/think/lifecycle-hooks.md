@@ -52,9 +52,9 @@ flowchart TD
 
 Called before `streamText`. Receives the fully assembled context — system prompt, converted messages, merged tools, and model. Return a `TurnConfig` to override any part, or void to accept defaults.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 beforeTurn(ctx: TurnContext): TurnConfig | void | Promise<TurnConfig | void>
 ```
 
@@ -93,44 +93,72 @@ All fields are optional. Return only what you want to change.
 
 Switch to a cheaper model for continuation turns:
 
-TypeScript
+**TypeScript**
 
-```
-beforeTurn(ctx: TurnContext) {  if (ctx.continuation) {    return { model: this.cheapModel };  }}
+```ts
+beforeTurn(ctx: TurnContext) {
+  if (ctx.continuation) {
+    return { model: this.cheapModel };
+  }
+}
 ```
 
 Restrict which tools the model can call:
 
-TypeScript
+**TypeScript**
 
-```
-beforeTurn(ctx: TurnContext) {  return { activeTools: ["read", "write", "getWeather"] };}
+```ts
+beforeTurn(ctx: TurnContext) {
+  return { activeTools: ["read", "write", "getWeather"] };
+}
 ```
 
 Add per-turn context from the client body:
 
-TypeScript
+**TypeScript**
 
-```
-beforeTurn(ctx: TurnContext) {  if (ctx.body?.selectedFile) {    return {      system: ctx.system + `\n\nUser is editing: ${ctx.body.selectedFile}`,    };  }}
+```ts
+beforeTurn(ctx: TurnContext) {
+  if (ctx.body?.selectedFile) {
+    return {
+      system: ctx.system + `\n\nUser is editing: ${ctx.body.selectedFile}`,
+    };
+  }
+}
 ```
 
 Hide reasoning for internal continuation turns:
 
-TypeScript
+**TypeScript**
 
-```
-beforeTurn(ctx: TurnContext) {  if (ctx.continuation) {    return { sendReasoning: false };  }}
+```ts
+beforeTurn(ctx: TurnContext) {
+  if (ctx.continuation) {
+    return { sendReasoning: false };
+  }
+}
 ```
 
 Force structured output for a turn:
 
-TypeScript
+**TypeScript**
 
-```
-import { Output } from "ai";import { z } from "zod";
+```ts
+import { Output } from "ai";
+import { z } from "zod";
+
+
 const ResultSchema = z.object({ severity: z.enum(["low", "high"]) });
-beforeTurn(ctx: TurnContext) {  if (ctx.body?.mode === "structured-answer") {    return {      output: Output.object({ schema: ResultSchema }),      activeTools: [],    };  }}
+
+
+beforeTurn(ctx: TurnContext) {
+  if (ctx.body?.mode === "structured-answer") {
+    return {
+      output: Output.object({ schema: ResultSchema }),
+      activeTools: [],
+    };
+  }
+}
 ```
 
 `output` is a turn-level setting only. The AI SDK's `prepareStep` does not accept an `output` override, so `beforeStep` cannot toggle structured output on a single step.
@@ -139,21 +167,34 @@ beforeTurn(ctx: TurnContext) {  if (ctx.body?.mode === "structured-answer") {   
 
 Called before each AI SDK step in the agentic loop. Think forwards this hook to `streamText` as `prepareStep`, so it receives the AI SDK's full prepare-step context and can return per-step overrides. Use `beforeTurn` for turn-wide assembly and `beforeStep` when the decision depends on the step number or previous step results.
 
-TypeScript
+**TypeScript**
 
-```
-beforeStep(ctx: PrepareStepContext): StepConfig | void {  if (ctx.stepNumber > 0) {    return { activeTools: [] };  }}
+```ts
+beforeStep(ctx: PrepareStepContext): StepConfig | void {
+  if (ctx.stepNumber > 0) {
+    return { activeTools: [] };
+  }
+}
 ```
 
 ## beforeToolCall
 
 Called before a server-side tool's `execute` function runs. Think wraps each server-side tool so the hook can allow, modify, block, or substitute the call before the model receives the tool result.
 
-TypeScript
+**TypeScript**
 
-```
-beforeToolCall(ctx: ToolCallContext): ToolCallDecision | void {  if (ctx.toolName === "delete" && this.isReadOnlyMode) {    return { action: "block", reason: "delete is disabled in read-only mode" };  }
-  if (ctx.toolName === "weather") {    const cached = this.weatherCache.get(JSON.stringify(ctx.input));    if (cached) return { action: "substitute", output: cached };  }}
+```ts
+beforeToolCall(ctx: ToolCallContext): ToolCallDecision | void {
+  if (ctx.toolName === "delete" && this.isReadOnlyMode) {
+    return { action: "block", reason: "delete is disabled in read-only mode" };
+  }
+
+
+  if (ctx.toolName === "weather") {
+    const cached = this.weatherCache.get(JSON.stringify(ctx.input));
+    if (cached) return { action: "substitute", output: cached };
+  }
+}
 ```
 
 | Field       | Type                     | Description                                |
@@ -179,11 +220,18 @@ If a wrapped tool returns an `AsyncIterable` for preliminary tool results, Think
 
 Called after a tool outcome is known. This includes real executions, blocked calls, substituted calls, and thrown tool errors.
 
-TypeScript
+**TypeScript**
 
-```
-afterToolCall(ctx: ToolCallResultContext) {  if (!ctx.success) return;
-  this.env.ANALYTICS.writeDataPoint({    blobs: [ctx.toolName],    doubles: [JSON.stringify(ctx.output).length],  });}
+```ts
+afterToolCall(ctx: ToolCallResultContext) {
+  if (!ctx.success) return;
+
+
+  this.env.ANALYTICS.writeDataPoint({
+    blobs: [ctx.toolName],
+    doubles: [JSON.stringify(ctx.output).length],
+  });
+}
 ```
 
 | Field      | Type             | Description                                          |
@@ -203,10 +251,15 @@ For blocked and substituted tool calls, `success` is `true` because the model re
 
 Called after each step completes in the agentic loop. `StepContext` is the AI SDK's step-finish event, so it includes the full step record: generated text, reasoning, files, sources, typed tool calls and results, usage, warnings, request and response metadata, and provider metadata.
 
-TypeScript
+**TypeScript**
 
-```
-onStepFinish(ctx: StepContext) {  console.log(    `Step ${ctx.stepNumber} (${ctx.finishReason}): ` +      `${ctx.usage.inputTokens}in/${ctx.usage.outputTokens}out`,  );}
+```ts
+onStepFinish(ctx: StepContext) {
+  console.log(
+    `Step ${ctx.stepNumber} (${ctx.finishReason}): ` +
+      `${ctx.usage.inputTokens}in/${ctx.usage.outputTokens}out`,
+  );
+}
 ```
 
 | Field            | Description                                       |
@@ -232,10 +285,14 @@ Called after a chat turn produces and persists an assistant message. The turn lo
 
 Fires for all turn paths that persist an assistant message: WebSocket, sub-agent RPC, `saveMessages`, and auto-continuation. If a turn fails before producing any assistant parts, `onChatError` handles the error instead.
 
-TypeScript
+**TypeScript**
 
-```
-onChatResponse(result: ChatResponseResult) {  if (result.status === "completed") {    console.log(`Turn ${result.requestId}: ${result.message.parts.length} parts`);  }}
+```ts
+onChatResponse(result: ChatResponseResult) {
+  if (result.status === "completed") {
+    console.log(`Turn ${result.requestId}: ${result.message.parts.length} parts`);
+  }
+}
 ```
 
 | Field        | Type                   | Description                            |                    |
@@ -250,9 +307,9 @@ onChatResponse(result: ChatResponseResult) {  if (result.status === "completed")
 
 Called when an error occurs during a chat turn. Return the error to propagate it, or return a different error. The optional context describes where the failure happened and whether user messages were already persisted. The partial assistant message (if any) is persisted before this hook fires.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 onChatError(error: unknown, ctx?: ChatErrorContext): unknown
 ```
 
@@ -267,19 +324,25 @@ onChatError(error: unknown, ctx?: ChatErrorContext): unknown
 
 Think also emits `chat:request:failed` on the `agents:chat` observability channel with the same stage and persistence information.
 
-TypeScript
+**TypeScript**
 
-```
-onChatError(error: unknown, ctx?: ChatErrorContext) {  console.error("Chat turn failed:", ctx?.stage, error);  if (ctx?.classification === "context_overflow") {    return new Error("This conversation is too long to continue. Please start a new one.");  }  return new Error("Something went wrong. Please try again.");}
+```ts
+onChatError(error: unknown, ctx?: ChatErrorContext) {
+  console.error("Chat turn failed:", ctx?.stage, error);
+  if (ctx?.classification === "context_overflow") {
+    return new Error("This conversation is too long to continue. Please start a new one.");
+  }
+  return new Error("Something went wrong. Please try again.");
+}
 ```
 
 ## classifyChatError
 
 Called when an error occurs during a turn, **before** `onChatError`. Maps a raw provider error into a provider-agnostic category so Think can react without baking provider-specific strings into the framework — the same split as the `tokenCounter` you pass to `compactAfter()`. The app owns the mapping because it knows which provider and model it talks to.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 classifyChatError(error: unknown, ctx?: ChatErrorContext): ChatErrorClassification | void
 ```
 
@@ -297,40 +360,67 @@ The second argument is a [ChatErrorContext](#onchaterror). During overflow recov
 
 For the common case, assign the bundled `defaultContextOverflowClassifier`, which matches the context-overflow errors of Anthropic, OpenAI, Google, Bedrock, and others:
 
-* [  JavaScript ](#tab-panel-5671)
-* [  TypeScript ](#tab-panel-5672)
+* [  JavaScript ](#tab-panel-5847)
+* [  TypeScript ](#tab-panel-5848)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think {  classifyChatError = defaultContextOverflowClassifier;}
+
+
+export class MyAgent extends Think {
+  classifyChatError = defaultContextOverflowClassifier;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think<Env> {  override classifyChatError = defaultContextOverflowClassifier;}
+
+
+export class MyAgent extends Think<Env> {
+  override classifyChatError = defaultContextOverflowClassifier;
+}
 ```
 
 Or write your own, optionally delegating to the bundled classifier:
 
-* [  JavaScript ](#tab-panel-5673)
-* [  TypeScript ](#tab-panel-5674)
+* [  JavaScript ](#tab-panel-5849)
+* [  TypeScript ](#tab-panel-5850)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think {  classifyChatError(error) {    if (error instanceof Error && /rate.?limit/i.test(error.message)) {      return "rate_limit";    }    return defaultContextOverflowClassifier(error);  }}
+
+
+export class MyAgent extends Think {
+  classifyChatError(error) {
+    if (error instanceof Error && /rate.?limit/i.test(error.message)) {
+      return "rate_limit";
+    }
+    return defaultContextOverflowClassifier(error);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import type { ChatErrorClassification } from "@cloudflare/think";import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think<Env> {  override classifyChatError(error: unknown): ChatErrorClassification | void {    if (error instanceof Error && /rate.?limit/i.test(error.message)) {      return "rate_limit";    }    return defaultContextOverflowClassifier(error);  }}
+```ts
+import type { ChatErrorClassification } from "@cloudflare/think";
+import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
+
+
+export class MyAgent extends Think<Env> {
+  override classifyChatError(error: unknown): ChatErrorClassification | void {
+    if (error instanceof Error && /rate.?limit/i.test(error.message)) {
+      return "rate_limit";
+    }
+    return defaultContextOverflowClassifier(error);
+  }
+}
 ```
 
 ```json

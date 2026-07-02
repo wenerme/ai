@@ -154,11 +154,17 @@ With bindings, your application can be fully integrated with the Cloudflare Deve
 
 Once you have configured the bindings in the Wrangler configuration file, they are then available within `context.cloudflare` in your loader or action functions:
 
-app/routes/home.tsx
+**app/routes/home.tsx**
 
-```
-export function loader({ context }: Route.LoaderArgs) {  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };}
-export default function Home({ loaderData }: Route.ComponentProps) {  return <Welcome message={loaderData.message} />;}
+```ts
+export function loader({ context }: Route.LoaderArgs) {
+  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
+}
+
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  return <Welcome message={loaderData.message} />;
+}
 ```
 
 As you have direct access to your Worker entry file (`workers/app.ts`), you can also add additional exports such as [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Workflows](https://developers.cloudflare.com/workflows/)
@@ -167,43 +173,96 @@ Example: Using Workflows
 
 Here is an example of how to set up a simple Workflow in your Worker entry file.
 
-workers/app.ts
+**workers/app.ts**
 
-```
-import { createRequestHandler } from "react-router";import { WorkflowEntrypoint, type WorkflowStep, type WorkflowEvent } from 'cloudflare:workers';
-declare global {  interface CloudflareEnvironment extends Env {}}
-type Env = {  MY_WORKFLOW: Workflow;};
-export class MyWorkflow extends WorkflowEntrypoint<Env> {  override async run(event: WorkflowEvent<{ hello: string }>, step: WorkflowStep) {    await step.do("first step", async () => {      return { output: "First step result" };    });
+```ts
+import { createRequestHandler } from "react-router";
+import { WorkflowEntrypoint, type WorkflowStep, type WorkflowEvent } from 'cloudflare:workers';
+
+
+declare global {
+  interface CloudflareEnvironment extends Env {}
+}
+
+
+type Env = {
+  MY_WORKFLOW: Workflow;
+};
+
+
+export class MyWorkflow extends WorkflowEntrypoint<Env> {
+  override async run(event: WorkflowEvent<{ hello: string }>, step: WorkflowStep) {
+    await step.do("first step", async () => {
+      return { output: "First step result" };
+    });
+
+
     await step.sleep("sleep", "1 second");
-    await step.do("second step", async () => {      return { output: "Second step result" };    });
-    return "Workflow output";  }}
-const requestHandler = createRequestHandler(  () => import("virtual:react-router/server-build"),  import.meta.env.MODE);
-export default {  async fetch(request, env, ctx) {    return requestHandler(request, {      cloudflare: { env, ctx },    });  },} satisfies ExportedHandler<CloudflareEnvironment>;
+
+
+    await step.do("second step", async () => {
+      return { output: "Second step result" };
+    });
+
+
+    return "Workflow output";
+  }
+}
+
+
+const requestHandler = createRequestHandler(
+  () => import("virtual:react-router/server-build"),
+  import.meta.env.MODE
+);
+
+
+export default {
+  async fetch(request, env, ctx) {
+    return requestHandler(request, {
+      cloudflare: { env, ctx },
+    });
+  },
+} satisfies ExportedHandler<CloudflareEnvironment>;
 ```
 
 Configure it in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11868)
-* [  wrangler.toml ](#tab-panel-11869)
+* [  wrangler.jsonc ](#tab-panel-12141)
+* [  wrangler.toml ](#tab-panel-12142)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "workflows": [
+    {
+      "name": "my-workflow",
+      "binding": "MY_WORKFLOW",
+      "class_name": "MyWorkflow"
+    }
+  ]
+}
 ```
-{  "workflows": [    {      "name": "my-workflow",      "binding": "MY_WORKFLOW",      "class_name": "MyWorkflow"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[workflows]]name = "my-workflow"binding = "MY_WORKFLOW"class_name = "MyWorkflow"
+```toml
+[[workflows]]
+name = "my-workflow"
+binding = "MY_WORKFLOW"
+class_name = "MyWorkflow"
 ```
 
 And then use it in your application:
 
-app/routes/home.tsx
+**app/routes/home.tsx**
 
-```
-export async function action({ context }: Route.ActionArgs) {  const env = context.cloudflare.env;  const instance = await env.MY_WORKFLOW.create({ params: { "hello": "world" } })  return { id: instance.id, details: await instance.status() };}
+```ts
+export async function action({ context }: Route.ActionArgs) {
+  const env = context.cloudflare.env;
+  const instance = await env.MY_WORKFLOW.create({ params: { "hello": "world" } })
+  return { id: instance.id, details: await instance.status() };
+}
 ```
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.

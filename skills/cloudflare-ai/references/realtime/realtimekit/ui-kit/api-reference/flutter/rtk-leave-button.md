@@ -27,20 +27,31 @@ A button widget for leaving a RealtimeKit meeting. Displays a confirmation dialo
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkLeaveButton(  meeting: yourMeetingInstance,)
+
+
+RtkLeaveButton(
+  meeting: yourMeetingInstance,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkLeaveButton(  meeting: yourMeetingInstance,  individualDesignToken: yourDesignToken,  height: 50.0,  width: 50.0,)
+
+
+RtkLeaveButton(
+  meeting: yourMeetingInstance,
+  individualDesignToken: yourDesignToken,
+  height: 50.0,
+  width: 50.0,
+)
 ```
 
 ```json

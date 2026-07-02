@@ -34,14 +34,30 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Create a new App
+**Create a new App**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "managed_app_id": "<APP_ID>",    "name": "<APP_NAME>",    "type": "<APP_TYPE>"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "managed_app_id": "<APP_ID>",
+    "name": "<APP_NAME>",
+    "type": "<APP_TYPE>"
+  }'
 ```
 
-```
-{  "result": {    "account_app_id": "eb09v665c0784618a3e4ba9809258fd4",    "name": "<APP_NAME>",    "type": "<APP_TYPE>",  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "account_app_id": "eb09v665c0784618a3e4ba9809258fd4",
+    "name": "<APP_NAME>",
+    "type": "<APP_TYPE>",
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 You can now add this new app to the Prioritized traffic list in your Cloudflare One Appliance.
@@ -50,8 +66,8 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-7834)
-* [ API ](#tab-panel-7835)
+* [ Dashboard ](#tab-panel-8087)
+* [ API ](#tab-panel-8088)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -75,12 +91,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Magic WAN Read`
   * `Magic Transit Read`
   * `Magic Transit Write`
-List Apps
+
+**List Apps**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-  {    "result": [      {        "managed_app_id": "<APP_ID>",        "name": "<APP_NAME>",        "type": "File Sharing",        "hostnames": [          "<app_name.com>",          "<app-name.info>"        ]      }    ]  }
+```json
+  {
+    "result": [
+      {
+        "managed_app_id": "<APP_ID>",
+        "name": "<APP_NAME>",
+        "type": "File Sharing",
+        "hostnames": [
+          "<app_name.com>",
+          "<app-name.info>"
+        ]
+      }
+    ]
+  }
 ```
 Take note of the `"managed_app_id"` value for any application you want to add.
 2. Send a `POST` request to add new apps to the Prioritized traffic policy.
@@ -88,18 +119,34 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic WAN Write`
   * `Magic Transit Write`
-Create a new App Config
+
+**Create a new App Config**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "managed_app_id": "<MANAGED_APP_ID>",
+    "breakout": true
+  }'
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "managed_app_id": "<MANAGED_APP_ID>",    "breakout": true  }'
-```
-```
-{  "result": {    "account_app_id": "<APP_ID>",    "name": "<APP_NAME>",    "type": "<BREAKOUT_OR_PRIORITY>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "account_app_id": "<APP_ID>",
+    "name": "<APP_NAME>",
+    "type": "<BREAKOUT_OR_PRIORITY>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-7832)
-* [ API ](#tab-panel-7833)
+* [ Dashboard ](#tab-panel-8085)
+* [ API ](#tab-panel-8086)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -122,21 +169,43 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Magic WAN Read`
   * `Magic Transit Read`
   * `Magic Transit Write`
-List App Configs
+
+**List App Configs**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-  {    "result": [      {        "id": "<APP_ID>",        "site_id": "<SITE_ID>",        "managed_app_id": "<APP_NAME>",        "breakout": true      }    ]  }
+```json
+  {
+    "result": [
+      {
+        "id": "<APP_ID>",
+        "site_id": "<SITE_ID>",
+        "managed_app_id": "<APP_NAME>",
+        "breakout": true
+      }
+    ]
+  }
 ```
 Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Prioritized traffic policy.
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \
+  --request DELETE
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \  --request DELETE
-```
-```
-{    "result": {        "id": "<APP_ID>",        "site_id": "<SITE_ID>",        "managed_app_id": "<APP_NAME>",        "breakout": true    },    "success": true,    "errors": [],    "messages": []}
+```json
+{
+    "result": {
+        "id": "<APP_ID>",
+        "site_id": "<SITE_ID>",
+        "managed_app_id": "<APP_NAME>",
+        "breakout": true
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+}
 ```
 
 ```json

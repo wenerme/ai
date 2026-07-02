@@ -19,8 +19,9 @@ Zaraz offers a debug mode to troubleshoot the events and triggers systems. To ac
 2. Copy your **Debug Key**.
 3. Open a web browser and access its Developer Tools. For example, to access Developer Tools in Google Chrome, select **View** \> **Developer** \> **Developer Tools**.
 4. Select the **Console** pane and enter the following command to create a debug cookie:
-JavaScript
-```
+
+**JavaScript**
+```js
 zaraz.debug("YOUR_DEBUG_KEY")
 ```
 

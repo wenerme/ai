@@ -18,7 +18,7 @@ The HTTP method, returned as a string of uppercase characters.
 
 Example value:
 
-```
+```txt
 "GET"
 ```
 

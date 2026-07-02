@@ -142,19 +142,27 @@ Scheduling and routing
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-9418)
-* [  TypeScript ](#tab-panel-9419)
+* [  JavaScript ](#tab-panel-9709)
+* [  TypeScript ](#tab-panel-9710)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response('Hello World!');
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    return new Response('Hello World!');  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    return new Response('Hello World!');
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object.

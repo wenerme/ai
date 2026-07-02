@@ -20,8 +20,9 @@ _No properties available._
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-header></rtk-chat-header>
+```html
+<!-- component.html -->
+<rtk-chat-header></rtk-chat-header>
 ```
 
 ```json

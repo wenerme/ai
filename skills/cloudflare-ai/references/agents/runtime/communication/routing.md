@@ -18,8 +18,11 @@ This guide explains how requests are routed to agents, how naming works, and pat
 
 When a request comes in, `routeAgentRequest()` examines the URL and routes it to the appropriate agent instance:
 
-```
-https://your-worker.dev/agents/{agent-name}/{instance-name}                               └────┬────┘   └─────┬─────┘                               Class name     Unique instance ID                              (kebab-case)
+```txt
+https://your-worker.dev/agents/{agent-name}/{instance-name}
+                               └────┬────┘   └─────┬─────┘
+                               Class name     Unique instance ID
+                              (kebab-case)
 ```
 
 **Example URLs:**
@@ -50,25 +53,53 @@ The router matches both the original name and kebab-case version, so you can use
 
 The `routeAgentRequest()` function is the main entry point for agent routing:
 
-* [  JavaScript ](#tab-panel-6009)
-* [  TypeScript ](#tab-panel-6010)
+* [  JavaScript ](#tab-panel-6173)
+* [  TypeScript ](#tab-panel-6174)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { routeAgentRequest } from "agents";
-export default {  async fetch(request, env, ctx) {    // Route to agents - returns Response or undefined    const agentResponse = await routeAgentRequest(request, env);
-    if (agentResponse) {      return agentResponse;    }
-    // No agent matched - handle other routes    return new Response("Not found", { status: 404 });  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // Route to agents - returns Response or undefined
+    const agentResponse = await routeAgentRequest(request, env);
+
+
+    if (agentResponse) {
+      return agentResponse;
+    }
+
+
+    // No agent matched - handle other routes
+    return new Response("Not found", { status: 404 });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { routeAgentRequest } from "agents";
-export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    // Route to agents - returns Response or undefined    const agentResponse = await routeAgentRequest(request, env);
-    if (agentResponse) {      return agentResponse;    }
-    // No agent matched - handle other routes    return new Response("Not found", { status: 404 });  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    // Route to agents - returns Response or undefined
+    const agentResponse = await routeAgentRequest(request, env);
+
+
+    if (agentResponse) {
+      return agentResponse;
+    }
+
+
+    // No agent matched - handle other routes
+    return new Response("Not found", { status: 404 });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Instance naming patterns
@@ -79,45 +110,62 @@ The instance name (the last part of the URL) determines which agent instance han
 
 Each user gets their own agent instance:
 
-* [  JavaScript ](#tab-panel-6003)
-* [  TypeScript ](#tab-panel-6004)
+* [  JavaScript ](#tab-panel-6167)
+* [  TypeScript ](#tab-panel-6168)
 
-JavaScript
+**JavaScript**
 
-```
-// Clientconst agent = useAgent({  agent: "UserProfile",  name: `user-${userId}`, // e.g., "user-abc123"});
-```
-
-TypeScript
-
-```
-// Clientconst agent = useAgent({  agent: "UserProfile",  name: `user-${userId}`, // e.g., "user-abc123"});
+```js
+// Client
+const agent = useAgent({
+  agent: "UserProfile",
+  name: `user-${userId}`, // e.g., "user-abc123"
+});
 ```
 
+**TypeScript**
+
+```ts
+// Client
+const agent = useAgent({
+  agent: "UserProfile",
+  name: `user-${userId}`, // e.g., "user-abc123"
+});
 ```
-/agents/user-profile/user-abc123 → User abc123's agent/agents/user-profile/user-xyz789 → User xyz789's agent (separate instance)
+
+```txt
+/agents/user-profile/user-abc123 → User abc123's agent
+/agents/user-profile/user-xyz789 → User xyz789's agent (separate instance)
 ```
 
 ### Shared rooms
 
 Multiple users share the same agent instance:
 
-* [  JavaScript ](#tab-panel-6005)
-* [  TypeScript ](#tab-panel-6006)
+* [  JavaScript ](#tab-panel-6169)
+* [  TypeScript ](#tab-panel-6170)
 
-JavaScript
+**JavaScript**
 
-```
-// Clientconst agent = useAgent({  agent: "ChatRoom",  name: roomId, // e.g., "general" or "room-42"});
-```
-
-TypeScript
-
-```
-// Clientconst agent = useAgent({  agent: "ChatRoom",  name: roomId, // e.g., "general" or "room-42"});
+```js
+// Client
+const agent = useAgent({
+  agent: "ChatRoom",
+  name: roomId, // e.g., "general" or "room-42"
+});
 ```
 
+**TypeScript**
+
+```ts
+// Client
+const agent = useAgent({
+  agent: "ChatRoom",
+  name: roomId, // e.g., "general" or "room-42"
+});
 ```
+
+```txt
 /agents/chat-room/general → All users in "general" share this agent
 ```
 
@@ -125,42 +173,82 @@ TypeScript
 
 A single instance for the entire application:
 
-* [  JavaScript ](#tab-panel-6007)
-* [  TypeScript ](#tab-panel-6008)
+* [  JavaScript ](#tab-panel-6171)
+* [  TypeScript ](#tab-panel-6172)
 
-JavaScript
+**JavaScript**
 
+```js
+// Client
+const agent = useAgent({
+  agent: "AppConfig",
+  name: "default", // Or any consistent name
+});
 ```
-// Clientconst agent = useAgent({  agent: "AppConfig",  name: "default", // Or any consistent name});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Clientconst agent = useAgent({  agent: "AppConfig",  name: "default", // Or any consistent name});
+```ts
+// Client
+const agent = useAgent({
+  agent: "AppConfig",
+  name: "default", // Or any consistent name
+});
 ```
 
 ### Dynamic naming
 
 Generate instance names based on context:
 
-* [  JavaScript ](#tab-panel-6013)
-* [  TypeScript ](#tab-panel-6014)
+* [  JavaScript ](#tab-panel-6177)
+* [  TypeScript ](#tab-panel-6178)
 
-JavaScript
+**JavaScript**
 
+```js
+// Per-session
+const agent = useAgent({
+  agent: "Session",
+  name: sessionId,
+});
+
+
+// Per-document
+const agent = useAgent({
+  agent: "Document",
+  name: `doc-${documentId}`,
+});
+
+
+// Per-game
+const agent = useAgent({
+  agent: "Game",
+  name: `game-${gameId}-${Date.now()}`,
+});
 ```
-// Per-sessionconst agent = useAgent({  agent: "Session",  name: sessionId,});
-// Per-documentconst agent = useAgent({  agent: "Document",  name: `doc-${documentId}`,});
-// Per-gameconst agent = useAgent({  agent: "Game",  name: `game-${gameId}-${Date.now()}`,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Per-sessionconst agent = useAgent({  agent: "Session",  name: sessionId,});
-// Per-documentconst agent = useAgent({  agent: "Document",  name: `doc-${documentId}`,});
-// Per-gameconst agent = useAgent({  agent: "Game",  name: `game-${gameId}-${Date.now()}`,});
+```ts
+// Per-session
+const agent = useAgent({
+  agent: "Session",
+  name: sessionId,
+});
+
+
+// Per-document
+const agent = useAgent({
+  agent: "Document",
+  name: `doc-${documentId}`,
+});
+
+
+// Per-game
+const agent = useAgent({
+  agent: "Game",
+  name: `game-${gameId}-${Date.now()}`,
+});
 ```
 
 ## Custom URL routing
@@ -171,19 +259,27 @@ For advanced use cases where you need control over the URL structure, you can by
 
 The `basePath` option lets clients connect to any URL path:
 
-* [  JavaScript ](#tab-panel-6011)
-* [  TypeScript ](#tab-panel-6012)
+* [  JavaScript ](#tab-panel-6175)
+* [  TypeScript ](#tab-panel-6176)
 
-JavaScript
+**JavaScript**
 
+```js
+// Client connects to /user instead of /agents/user-agent/...
+const agent = useAgent({
+  agent: "UserAgent", // Required but ignored when basePath is set
+  basePath: "user", // → connects to /user
+});
 ```
-// Client connects to /user instead of /agents/user-agent/...const agent = useAgent({  agent: "UserAgent", // Required but ignored when basePath is set  basePath: "user", // → connects to /user});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Client connects to /user instead of /agents/user-agent/...const agent = useAgent({  agent: "UserAgent", // Required but ignored when basePath is set  basePath: "user", // → connects to /user});
+```ts
+// Client connects to /user instead of /agents/user-agent/...
+const agent = useAgent({
+  agent: "UserAgent", // Required but ignored when basePath is set
+  basePath: "user", // → connects to /user
+});
 ```
 
 This is useful when:
@@ -196,103 +292,227 @@ This is useful when:
 
 When using `basePath`, the server must handle routing. Use `getAgentByName()` to get the agent instance, then forward the request with `fetch()`:
 
-* [  JavaScript ](#tab-panel-6023)
-* [  TypeScript ](#tab-panel-6024)
+* [  JavaScript ](#tab-panel-6187)
+* [  TypeScript ](#tab-panel-6188)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    // Custom routing - server determines instance from session
+    if (url.pathname.startsWith("/user/")) {
+      const session = await getSession(request);
+      const agent = await getAgentByName(env.UserAgent, session.userId);
+      return agent.fetch(request); // Forward request directly to agent
+    }
+
+
+    // Default routing for standard /agents/... paths
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    // Custom routing - server determines instance from session    if (url.pathname.startsWith("/user/")) {      const session = await getSession(request);      const agent = await getAgentByName(env.UserAgent, session.userId);      return agent.fetch(request); // Forward request directly to agent    }
-    // Default routing for standard /agents/... paths    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env) {    const url = new URL(request.url);
-    // Custom routing - server determines instance from session    if (url.pathname.startsWith("/user/")) {      const session = await getSession(request);      const agent = await getAgentByName(env.UserAgent, session.userId);      return agent.fetch(request); // Forward request directly to agent    }
-    // Default routing for standard /agents/... paths    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+
+
+    // Custom routing - server determines instance from session
+    if (url.pathname.startsWith("/user/")) {
+      const session = await getSession(request);
+      const agent = await getAgentByName(env.UserAgent, session.userId);
+      return agent.fetch(request); // Forward request directly to agent
+    }
+
+
+    // Default routing for standard /agents/... paths
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Custom path with dynamic instance
 
 Route different paths to different instances:
 
-* [  JavaScript ](#tab-panel-6017)
-* [  TypeScript ](#tab-panel-6018)
+* [  JavaScript ](#tab-panel-6181)
+* [  TypeScript ](#tab-panel-6182)
 
-JavaScript
+**JavaScript**
 
+```js
+// Route /chat/{room} to ChatRoom agent
+if (url.pathname.startsWith("/chat/")) {
+  const roomId = url.pathname.replace("/chat/", "");
+  const agent = await getAgentByName(env.ChatRoom, roomId);
+  return agent.fetch(request);
+}
+
+
+// Route /doc/{id} to Document agent
+if (url.pathname.startsWith("/doc/")) {
+  const docId = url.pathname.replace("/doc/", "");
+  const agent = await getAgentByName(env.Document, docId);
+  return agent.fetch(request);
+}
 ```
-// Route /chat/{room} to ChatRoom agentif (url.pathname.startsWith("/chat/")) {  const roomId = url.pathname.replace("/chat/", "");  const agent = await getAgentByName(env.ChatRoom, roomId);  return agent.fetch(request);}
-// Route /doc/{id} to Document agentif (url.pathname.startsWith("/doc/")) {  const docId = url.pathname.replace("/doc/", "");  const agent = await getAgentByName(env.Document, docId);  return agent.fetch(request);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Route /chat/{room} to ChatRoom agentif (url.pathname.startsWith("/chat/")) {  const roomId = url.pathname.replace("/chat/", "");  const agent = await getAgentByName(env.ChatRoom, roomId);  return agent.fetch(request);}
-// Route /doc/{id} to Document agentif (url.pathname.startsWith("/doc/")) {  const docId = url.pathname.replace("/doc/", "");  const agent = await getAgentByName(env.Document, docId);  return agent.fetch(request);}
+```ts
+// Route /chat/{room} to ChatRoom agent
+if (url.pathname.startsWith("/chat/")) {
+  const roomId = url.pathname.replace("/chat/", "");
+  const agent = await getAgentByName(env.ChatRoom, roomId);
+  return agent.fetch(request);
+}
+
+
+// Route /doc/{id} to Document agent
+if (url.pathname.startsWith("/doc/")) {
+  const docId = url.pathname.replace("/doc/", "");
+  const agent = await getAgentByName(env.Document, docId);
+  return agent.fetch(request);
+}
 ```
 
 ### Receiving the instance identity (client-side)
 
 When using `basePath`, the client does not know which instance it connected to until the server returns this information. The agent automatically sends its identity on connection:
 
-* [  JavaScript ](#tab-panel-6025)
-* [  TypeScript ](#tab-panel-6026)
+* [  JavaScript ](#tab-panel-6189)
+* [  TypeScript ](#tab-panel-6190)
 
-JavaScript
+**JavaScript**
 
+```js
+const agent = useAgent({
+  agent: "UserAgent",
+  basePath: "user",
+  onIdentity: (name, agentType) => {
+    console.log(`Connected to ${agentType} instance: ${name}`);
+    // e.g., "Connected to user-agent instance: user-123"
+  },
+});
+
+
+// Reactive state - re-renders when identity is received
+return (
+  <div>
+    {agent.identified ? `Connected to: ${agent.name}` : "Connecting..."}
+  </div>
+);
 ```
-const agent = useAgent({  agent: "UserAgent",  basePath: "user",  onIdentity: (name, agentType) => {    console.log(`Connected to ${agentType} instance: ${name}`);    // e.g., "Connected to user-agent instance: user-123"  },});
-// Reactive state - re-renders when identity is receivedreturn (  <div>    {agent.identified ? `Connected to: ${agent.name}` : "Connecting..."}  </div>);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const agent = useAgent({  agent: "UserAgent",  basePath: "user",  onIdentity: (name, agentType) => {    console.log(`Connected to ${agentType} instance: ${name}`);    // e.g., "Connected to user-agent instance: user-123"  },});
-// Reactive state - re-renders when identity is receivedreturn (  <div>    {agent.identified ? `Connected to: ${agent.name}` : "Connecting..."}  </div>);
+```ts
+const agent = useAgent({
+  agent: "UserAgent",
+  basePath: "user",
+  onIdentity: (name, agentType) => {
+    console.log(`Connected to ${agentType} instance: ${name}`);
+    // e.g., "Connected to user-agent instance: user-123"
+  },
+});
+
+
+// Reactive state - re-renders when identity is received
+return (
+  <div>
+    {agent.identified ? `Connected to: ${agent.name}` : "Connecting..."}
+  </div>
+);
 ```
 
 For `AgentClient`:
 
-* [  JavaScript ](#tab-panel-6027)
-* [  TypeScript ](#tab-panel-6028)
+* [  JavaScript ](#tab-panel-6191)
+* [  TypeScript ](#tab-panel-6192)
 
-JavaScript
+**JavaScript**
 
+```js
+const agent = new AgentClient({
+  agent: "UserAgent",
+  basePath: "user",
+  host: "example.com",
+  onIdentity: (name, agentType) => {
+    // Update UI with actual instance name
+    setInstanceName(name);
+  },
+});
+
+
+// Wait for identity before proceeding
+await agent.ready;
+console.log(agent.name); // Now has the server-determined name
 ```
-const agent = new AgentClient({  agent: "UserAgent",  basePath: "user",  host: "example.com",  onIdentity: (name, agentType) => {    // Update UI with actual instance name    setInstanceName(name);  },});
-// Wait for identity before proceedingawait agent.ready;console.log(agent.name); // Now has the server-determined name
-```
 
-TypeScript
+**TypeScript**
 
-```
-const agent = new AgentClient({  agent: "UserAgent",  basePath: "user",  host: "example.com",  onIdentity: (name, agentType) => {    // Update UI with actual instance name    setInstanceName(name);  },});
-// Wait for identity before proceedingawait agent.ready;console.log(agent.name); // Now has the server-determined name
+```ts
+const agent = new AgentClient({
+  agent: "UserAgent",
+  basePath: "user",
+  host: "example.com",
+  onIdentity: (name, agentType) => {
+    // Update UI with actual instance name
+    setInstanceName(name);
+  },
+});
+
+
+// Wait for identity before proceeding
+await agent.ready;
+console.log(agent.name); // Now has the server-determined name
 ```
 
 ### Handling identity changes on reconnect
 
 If the identity changes on reconnect (for example, session expired and user logs in as someone else), you can handle it with `onIdentityChange`:
 
-* [  JavaScript ](#tab-panel-6021)
-* [  TypeScript ](#tab-panel-6022)
+* [  JavaScript ](#tab-panel-6185)
+* [  TypeScript ](#tab-panel-6186)
 
-JavaScript
+**JavaScript**
 
+```js
+const agent = useAgent({
+  agent: "UserAgent",
+  basePath: "user",
+  onIdentityChange: (oldName, newName, oldAgent, newAgent) => {
+    console.log(`Session changed: ${oldName} → ${newName}`);
+    // Refresh state, show notification, etc.
+  },
+});
 ```
-const agent = useAgent({  agent: "UserAgent",  basePath: "user",  onIdentityChange: (oldName, newName, oldAgent, newAgent) => {    console.log(`Session changed: ${oldName} → ${newName}`);    // Refresh state, show notification, etc.  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const agent = useAgent({  agent: "UserAgent",  basePath: "user",  onIdentityChange: (oldName, newName, oldAgent, newAgent) => {    console.log(`Session changed: ${oldName} → ${newName}`);    // Refresh state, show notification, etc.  },});
+```ts
+const agent = useAgent({
+  agent: "UserAgent",
+  basePath: "user",
+  onIdentityChange: (oldName, newName, oldAgent, newAgent) => {
+    console.log(`Session changed: ${oldName} → ${newName}`);
+    // Refresh state, show notification, etc.
+  },
+});
 ```
 
 If `onIdentityChange` is not provided and identity changes, a warning is logged to help catch unexpected session changes.
@@ -301,19 +521,25 @@ If `onIdentityChange` is not provided and identity changes, a warning is logged 
 
 If your instance names contain sensitive data (session IDs, internal user IDs), you can disable identity sending:
 
-* [  JavaScript ](#tab-panel-6015)
-* [  TypeScript ](#tab-panel-6016)
+* [  JavaScript ](#tab-panel-6179)
+* [  TypeScript ](#tab-panel-6180)
 
-JavaScript
+**JavaScript**
 
+```js
+class SecureAgent extends Agent {
+  // Do not expose instance names to clients
+  static options = { sendIdentityOnConnect: false };
+}
 ```
-class SecureAgent extends Agent {  // Do not expose instance names to clients  static options = { sendIdentityOnConnect: false };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class SecureAgent extends Agent {  // Do not expose instance names to clients  static options = { sendIdentityOnConnect: false };}
+```ts
+class SecureAgent extends Agent {
+  // Do not expose instance names to clients
+  static options = { sendIdentityOnConnect: false };
+}
 ```
 
 When identity is disabled:
@@ -340,57 +566,89 @@ Both `routeAgentRequest()` and `getAgentByName()` accept options for customizing
 
 For cross-origin requests (common when your frontend is on a different domain):
 
-* [  JavaScript ](#tab-panel-6019)
-* [  TypeScript ](#tab-panel-6020)
+* [  JavaScript ](#tab-panel-6183)
+* [  TypeScript ](#tab-panel-6184)
 
-JavaScript
+**JavaScript**
 
+```js
+const response = await routeAgentRequest(request, env, {
+  cors: true, // Enable default CORS headers
+});
 ```
-const response = await routeAgentRequest(request, env, {  cors: true, // Enable default CORS headers});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const response = await routeAgentRequest(request, env, {  cors: true, // Enable default CORS headers});
+```ts
+const response = await routeAgentRequest(request, env, {
+  cors: true, // Enable default CORS headers
+});
 ```
 
 Or with custom CORS headers:
 
-* [  JavaScript ](#tab-panel-6029)
-* [  TypeScript ](#tab-panel-6030)
+* [  JavaScript ](#tab-panel-6193)
+* [  TypeScript ](#tab-panel-6194)
 
-JavaScript
+**JavaScript**
 
+```js
+const response = await routeAgentRequest(request, env, {
+  cors: {
+    "Access-Control-Allow-Origin": "https://myapp.com",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  },
+});
 ```
-const response = await routeAgentRequest(request, env, {  cors: {    "Access-Control-Allow-Origin": "https://myapp.com",    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",    "Access-Control-Allow-Headers": "Content-Type, Authorization",  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const response = await routeAgentRequest(request, env, {  cors: {    "Access-Control-Allow-Origin": "https://myapp.com",    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",    "Access-Control-Allow-Headers": "Content-Type, Authorization",  },});
+```ts
+const response = await routeAgentRequest(request, env, {
+  cors: {
+    "Access-Control-Allow-Origin": "https://myapp.com",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  },
+});
 ```
 
 ### Location hints
 
 For latency-sensitive applications, hint where the agent should run:
 
-* [  JavaScript ](#tab-panel-6031)
-* [  TypeScript ](#tab-panel-6032)
+* [  JavaScript ](#tab-panel-6195)
+* [  TypeScript ](#tab-panel-6196)
 
-JavaScript
+**JavaScript**
 
+```js
+// With getAgentByName
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  locationHint: "enam", // Eastern North America
+});
+
+
+// With routeAgentRequest (applies to all matched agents)
+const response = await routeAgentRequest(request, env, {
+  locationHint: "enam",
+});
 ```
-// With getAgentByNameconst agent = await getAgentByName(env.MyAgent, "instance-name", {  locationHint: "enam", // Eastern North America});
-// With routeAgentRequest (applies to all matched agents)const response = await routeAgentRequest(request, env, {  locationHint: "enam",});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// With getAgentByNameconst agent = await getAgentByName(env.MyAgent, "instance-name", {  locationHint: "enam", // Eastern North America});
-// With routeAgentRequest (applies to all matched agents)const response = await routeAgentRequest(request, env, {  locationHint: "enam",});
+```ts
+// With getAgentByName
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  locationHint: "enam", // Eastern North America
+});
+
+
+// With routeAgentRequest (applies to all matched agents)
+const response = await routeAgentRequest(request, env, {
+  locationHint: "enam",
+});
 ```
 
 Available location hints: `wnam`, `enam`, `sam`, `weur`, `eeur`, `apac`, `oc`, `afr`, `me`
@@ -399,76 +657,132 @@ Available location hints: `wnam`, `enam`, `sam`, `weur`, `eeur`, `apac`, `oc`, `
 
 For data residency requirements:
 
-* [  JavaScript ](#tab-panel-6035)
-* [  TypeScript ](#tab-panel-6036)
+* [  JavaScript ](#tab-panel-6199)
+* [  TypeScript ](#tab-panel-6200)
 
-JavaScript
+**JavaScript**
 
+```js
+// With getAgentByName
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  jurisdiction: "eu", // EU jurisdiction
+});
+
+
+// With routeAgentRequest (applies to all matched agents)
+const response = await routeAgentRequest(request, env, {
+  jurisdiction: "eu",
+});
 ```
-// With getAgentByNameconst agent = await getAgentByName(env.MyAgent, "instance-name", {  jurisdiction: "eu", // EU jurisdiction});
-// With routeAgentRequest (applies to all matched agents)const response = await routeAgentRequest(request, env, {  jurisdiction: "eu",});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// With getAgentByNameconst agent = await getAgentByName(env.MyAgent, "instance-name", {  jurisdiction: "eu", // EU jurisdiction});
-// With routeAgentRequest (applies to all matched agents)const response = await routeAgentRequest(request, env, {  jurisdiction: "eu",});
+```ts
+// With getAgentByName
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  jurisdiction: "eu", // EU jurisdiction
+});
+
+
+// With routeAgentRequest (applies to all matched agents)
+const response = await routeAgentRequest(request, env, {
+  jurisdiction: "eu",
+});
 ```
 
 ### Props
 
 Since agents are instantiated by the runtime rather than constructed directly, `props` provides a way to pass initialization arguments:
 
-* [  JavaScript ](#tab-panel-6033)
-* [  TypeScript ](#tab-panel-6034)
+* [  JavaScript ](#tab-panel-6197)
+* [  TypeScript ](#tab-panel-6198)
 
-JavaScript
+**JavaScript**
 
+```js
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  props: {
+    userId: session.userId,
+    config: { maxRetries: 3 },
+  },
+});
 ```
-const agent = await getAgentByName(env.MyAgent, "instance-name", {  props: {    userId: session.userId,    config: { maxRetries: 3 },  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const agent = await getAgentByName(env.MyAgent, "instance-name", {  props: {    userId: session.userId,    config: { maxRetries: 3 },  },});
+```ts
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  props: {
+    userId: session.userId,
+    config: { maxRetries: 3 },
+  },
+});
 ```
 
 Props are passed to the agent's `onStart` lifecycle method:
 
-* [  JavaScript ](#tab-panel-6037)
-* [  TypeScript ](#tab-panel-6038)
+* [  JavaScript ](#tab-panel-6201)
+* [  TypeScript ](#tab-panel-6202)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  userId;
+  config;
+
+
+  async onStart(props) {
+    this.userId = props?.userId;
+    this.config = props?.config;
+  }
+}
 ```
-class MyAgent extends Agent {  userId;  config;
-  async onStart(props) {    this.userId = props?.userId;    this.config = props?.config;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent<Env, State> {  private userId?: string;  private config?: { maxRetries: number };
-  async onStart(props?: { userId: string; config: { maxRetries: number } }) {    this.userId = props?.userId;    this.config = props?.config;  }}
+```ts
+class MyAgent extends Agent<Env, State> {
+  private userId?: string;
+  private config?: { maxRetries: number };
+
+
+  async onStart(props?: { userId: string; config: { maxRetries: number } }) {
+    this.userId = props?.userId;
+    this.config = props?.config;
+  }
+}
 ```
 
 When using `props` with `routeAgentRequest`, the same props are passed to whichever agent matches the URL. This works well for universal context like authentication:
 
-* [  JavaScript ](#tab-panel-6041)
-* [  TypeScript ](#tab-panel-6042)
+* [  JavaScript ](#tab-panel-6205)
+* [  TypeScript ](#tab-panel-6206)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const session = await getSession(request);
+    return routeAgentRequest(request, env, {
+      props: { userId: session.userId, role: session.role },
+    });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const session = await getSession(request);    return routeAgentRequest(request, env, {      props: { userId: session.userId, role: session.role },    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const session = await getSession(request);    return routeAgentRequest(request, env, {      props: { userId: session.userId, role: session.role },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env) {
+    const session = await getSession(request);
+    return routeAgentRequest(request, env, {
+      props: { userId: session.userId, role: session.role },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 For agent-specific initialization, use `getAgentByName` instead where you control exactly which agent receives the props.
@@ -481,19 +795,27 @@ For `McpAgent`, props are automatically stored and accessible via `this.props`. 
 
 Use `routingRetry` with `getAgentByName()` when server-side code should retry transient Durable Object routing failures:
 
-* [  JavaScript ](#tab-panel-6039)
-* [  TypeScript ](#tab-panel-6040)
+* [  JavaScript ](#tab-panel-6203)
+* [  TypeScript ](#tab-panel-6204)
 
-JavaScript
+**JavaScript**
 
+```js
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  routingRetry: {
+    maxAttempts: 3,
+  },
+});
 ```
-const agent = await getAgentByName(env.MyAgent, "instance-name", {  routingRetry: {    maxAttempts: 3,  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const agent = await getAgentByName(env.MyAgent, "instance-name", {  routingRetry: {    maxAttempts: 3,  },});
+```ts
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+  routingRetry: {
+    maxAttempts: 3,
+  },
+});
 ```
 
 This option is useful for request forwarding and RPC paths where a short-lived routing failure should be retried before returning an error to the caller.
@@ -502,19 +824,37 @@ This option is useful for request forwarding and RPC paths where a short-lived r
 
 `routeAgentRequest` supports hooks for intercepting requests before they reach agents:
 
-* [  JavaScript ](#tab-panel-6043)
-* [  TypeScript ](#tab-panel-6044)
+* [  JavaScript ](#tab-panel-6207)
+* [  TypeScript ](#tab-panel-6208)
 
-JavaScript
+**JavaScript**
 
+```js
+const response = await routeAgentRequest(request, env, {
+  onBeforeConnect: (req, lobby) => {
+    // Called before WebSocket connections
+    // Return a Response to reject, Request to modify, or void to continue
+  },
+  onBeforeRequest: (req, lobby) => {
+    // Called before HTTP requests
+    // Return a Response to reject, Request to modify, or void to continue
+  },
+});
 ```
-const response = await routeAgentRequest(request, env, {  onBeforeConnect: (req, lobby) => {    // Called before WebSocket connections    // Return a Response to reject, Request to modify, or void to continue  },  onBeforeRequest: (req, lobby) => {    // Called before HTTP requests    // Return a Response to reject, Request to modify, or void to continue  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const response = await routeAgentRequest(request, env, {  onBeforeConnect: (req, lobby) => {    // Called before WebSocket connections    // Return a Response to reject, Request to modify, or void to continue  },  onBeforeRequest: (req, lobby) => {    // Called before HTTP requests    // Return a Response to reject, Request to modify, or void to continue  },});
+```ts
+const response = await routeAgentRequest(request, env, {
+  onBeforeConnect: (req, lobby) => {
+    // Called before WebSocket connections
+    // Return a Response to reject, Request to modify, or void to continue
+  },
+  onBeforeRequest: (req, lobby) => {
+    // Called before HTTP requests
+    // Return a Response to reject, Request to modify, or void to continue
+  },
+});
 ```
 
 These hooks are useful for authentication and validation. Refer to [Cross-domain authentication](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/) for detailed examples.
@@ -523,25 +863,63 @@ These hooks are useful for authentication and validation. Refer to [Cross-domain
 
 You can access agents from your Worker code using `getAgentByName()` for RPC calls:
 
-* [  JavaScript ](#tab-panel-6049)
-* [  TypeScript ](#tab-panel-6050)
+* [  JavaScript ](#tab-panel-6213)
+* [  TypeScript ](#tab-panel-6214)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getAgentByName, routeAgentRequest } from "agents";
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    // API endpoint that interacts with an agent    if (url.pathname === "/api/increment") {      const counter = await getAgentByName(env.Counter, "global-counter");      const newCount = await counter.increment();      return Response.json({ count: newCount });    }
-    // Regular agent routing    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },};
+
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    // API endpoint that interacts with an agent
+    if (url.pathname === "/api/increment") {
+      const counter = await getAgentByName(env.Counter, "global-counter");
+      const newCount = await counter.increment();
+      return Response.json({ count: newCount });
+    }
+
+
+    // Regular agent routing
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getAgentByName, routeAgentRequest } from "agents";
-export default {  async fetch(request: Request, env: Env) {    const url = new URL(request.url);
-    // API endpoint that interacts with an agent    if (url.pathname === "/api/increment") {      const counter = await getAgentByName(env.Counter, "global-counter");      const newCount = await counter.increment();      return Response.json({ count: newCount });    }
-    // Regular agent routing    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+
+
+    // API endpoint that interacts with an agent
+    if (url.pathname === "/api/increment") {
+      const counter = await getAgentByName(env.Counter, "global-counter");
+      const newCount = await counter.increment();
+      return Response.json({ count: newCount });
+    }
+
+
+    // Regular agent routing
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 For options like `locationHint`, `jurisdiction`, and `props`, refer to [Routing options](#routing-options).
@@ -550,78 +928,171 @@ For options like `locationHint`, `jurisdiction`, and `props`, refer to [Routing 
 
 Requests can include sub-paths after the instance name. These are passed to your agent's `onRequest()` handler:
 
-```
-/agents/api/v1/users     → agent: "api", instance: "v1", path: "/users"/agents/api/v1/users/123 → agent: "api", instance: "v1", path: "/users/123"
+```txt
+/agents/api/v1/users     → agent: "api", instance: "v1", path: "/users"
+/agents/api/v1/users/123 → agent: "api", instance: "v1", path: "/users/123"
 ```
 
 Handle sub-paths in your agent:
 
-* [  JavaScript ](#tab-panel-6051)
-* [  TypeScript ](#tab-panel-6052)
+* [  JavaScript ](#tab-panel-6215)
+* [  TypeScript ](#tab-panel-6216)
 
-JavaScript
+**JavaScript**
 
+```js
+export class API extends Agent {
+  async onRequest(request) {
+    const url = new URL(request.url);
+
+
+    // url.pathname contains the full path including /agents/api/v1/...
+    // Extract the sub-path after your agent's base path
+    const path = url.pathname.replace(/^\/agents\/api\/[^/]+/, "");
+
+
+    if (request.method === "GET" && path === "/users") {
+      return Response.json(await this.getUsers());
+    }
+
+
+    if (request.method === "POST" && path === "/users") {
+      const data = await request.json();
+      return Response.json(await this.createUser(data));
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
 ```
-export class API extends Agent {  async onRequest(request) {    const url = new URL(request.url);
-    // url.pathname contains the full path including /agents/api/v1/...    // Extract the sub-path after your agent's base path    const path = url.pathname.replace(/^\/agents\/api\/[^/]+/, "");
-    if (request.method === "GET" && path === "/users") {      return Response.json(await this.getUsers());    }
-    if (request.method === "POST" && path === "/users") {      const data = await request.json();      return Response.json(await this.createUser(data));    }
-    return new Response("Not found", { status: 404 });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class API extends Agent {  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);
-    // url.pathname contains the full path including /agents/api/v1/...    // Extract the sub-path after your agent's base path    const path = url.pathname.replace(/^\/agents\/api\/[^/]+/, "");
-    if (request.method === "GET" && path === "/users") {      return Response.json(await this.getUsers());    }
-    if (request.method === "POST" && path === "/users") {      const data = await request.json();      return Response.json(await this.createUser(data));    }
-    return new Response("Not found", { status: 404 });  }}
+```ts
+export class API extends Agent {
+  async onRequest(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    // url.pathname contains the full path including /agents/api/v1/...
+    // Extract the sub-path after your agent's base path
+    const path = url.pathname.replace(/^\/agents\/api\/[^/]+/, "");
+
+
+    if (request.method === "GET" && path === "/users") {
+      return Response.json(await this.getUsers());
+    }
+
+
+    if (request.method === "POST" && path === "/users") {
+      const data = await request.json();
+      return Response.json(await this.createUser(data));
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
 ```
 
 ## Multiple agents
 
 You can have multiple agent classes in one project. Each gets its own namespace:
 
-* [  JavaScript ](#tab-panel-6047)
-* [  TypeScript ](#tab-panel-6048)
+* [  JavaScript ](#tab-panel-6211)
+* [  TypeScript ](#tab-panel-6212)
 
-JavaScript
+**JavaScript**
 
-```
-// server.tsexport { Counter } from "./agents/counter";export { ChatRoom } from "./agents/chat-room";export { UserProfile } from "./agents/user-profile";
-export default {  async fetch(request, env) {    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },};
-```
+```js
+// server.ts
+export { Counter } from "./agents/counter";
+export { ChatRoom } from "./agents/chat-room";
+export { UserProfile } from "./agents/user-profile";
 
-TypeScript
 
-```
-// server.tsexport { Counter } from "./agents/counter";export { ChatRoom } from "./agents/chat-room";export { UserProfile } from "./agents/user-profile";
-export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
-```
-
-* [  wrangler.jsonc ](#tab-panel-6001)
-* [  wrangler.toml ](#tab-panel-6002)
-
-JSONC
-
-```
-{  "durable_objects": {    "bindings": [      { "name": "Counter", "class_name": "Counter" },      { "name": "ChatRoom", "class_name": "ChatRoom" },      { "name": "UserProfile", "class_name": "UserProfile" },    ],  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["Counter", "ChatRoom", "UserProfile"],    },  ],}
+export default {
+  async fetch(request, env) {
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
 
-TOML
+**TypeScript**
 
+```ts
+// server.ts
+export { Counter } from "./agents/counter";
+export { ChatRoom } from "./agents/chat-room";
+export { UserProfile } from "./agents/user-profile";
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
-[[durable_objects.bindings]]name = "Counter"class_name = "Counter"
-[[durable_objects.bindings]]name = "ChatRoom"class_name = "ChatRoom"
-[[durable_objects.bindings]]name = "UserProfile"class_name = "UserProfile"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "Counter", "ChatRoom", "UserProfile" ]
+
+* [  wrangler.jsonc ](#tab-panel-6165)
+* [  wrangler.toml ](#tab-panel-6166)
+
+**JSONC**
+
+```jsonc
+{
+  "durable_objects": {
+    "bindings": [
+      { "name": "Counter", "class_name": "Counter" },
+      { "name": "ChatRoom", "class_name": "ChatRoom" },
+      { "name": "UserProfile", "class_name": "UserProfile" },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["Counter", "ChatRoom", "UserProfile"],
+    },
+  ],
+}
+```
+
+**TOML**
+
+```toml
+[[durable_objects.bindings]]
+name = "Counter"
+class_name = "Counter"
+
+
+[[durable_objects.bindings]]
+name = "ChatRoom"
+class_name = "ChatRoom"
+
+
+[[durable_objects.bindings]]
+name = "UserProfile"
+class_name = "UserProfile"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "Counter", "ChatRoom", "UserProfile" ]
 ```
 
 Each agent is accessed via its own path:
 
-```
-/agents/counter/.../agents/chat-room/.../agents/user-profile/...
+```txt
+/agents/counter/...
+/agents/chat-room/...
+/agents/user-profile/...
 ```
 
 ## Request flow
@@ -645,72 +1116,214 @@ There are several ways to authenticate requests before they reach your agent.
 
 The `routeAgentRequest()` function provides `onBeforeConnect` and `onBeforeRequest` hooks for authentication:
 
-* [  JavaScript ](#tab-panel-6057)
-* [  TypeScript ](#tab-panel-6058)
+* [  JavaScript ](#tab-panel-6221)
+* [  TypeScript ](#tab-panel-6222)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, routeAgentRequest } from "agents";
-export default {  async fetch(request, env) {    return (      (await routeAgentRequest(request, env, {        // Run before WebSocket connections        onBeforeConnect: async (request) => {          const token = new URL(request.url).searchParams.get("token");          if (!(await verifyToken(token, env))) {            // Return a response to reject the connection            return new Response("Unauthorized", { status: 401 });          }          // Return nothing to allow the connection        },        // Run before HTTP requests        onBeforeRequest: async (request) => {          const auth = request.headers.get("Authorization");          if (!auth || !(await verifyAuth(auth, env))) {            return new Response("Unauthorized", { status: 401 });          }        },        // Optional: prepend a prefix to agent instance names        prefix: "user-",      })) ?? new Response("Not found", { status: 404 })    );  },};
+
+
+export default {
+  async fetch(request, env) {
+    return (
+      (await routeAgentRequest(request, env, {
+        // Run before WebSocket connections
+        onBeforeConnect: async (request) => {
+          const token = new URL(request.url).searchParams.get("token");
+          if (!(await verifyToken(token, env))) {
+            // Return a response to reject the connection
+            return new Response("Unauthorized", { status: 401 });
+          }
+          // Return nothing to allow the connection
+        },
+        // Run before HTTP requests
+        onBeforeRequest: async (request) => {
+          const auth = request.headers.get("Authorization");
+          if (!auth || !(await verifyAuth(auth, env))) {
+            return new Response("Unauthorized", { status: 401 });
+          }
+        },
+        // Optional: prepend a prefix to agent instance names
+        prefix: "user-",
+      })) ?? new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, routeAgentRequest } from "agents";
-export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env, {        // Run before WebSocket connections        onBeforeConnect: async (request) => {          const token = new URL(request.url).searchParams.get("token");          if (!(await verifyToken(token, env))) {            // Return a response to reject the connection            return new Response("Unauthorized", { status: 401 });          }          // Return nothing to allow the connection        },        // Run before HTTP requests        onBeforeRequest: async (request) => {          const auth = request.headers.get("Authorization");          if (!auth || !(await verifyAuth(auth, env))) {            return new Response("Unauthorized", { status: 401 });          }        },        // Optional: prepend a prefix to agent instance names        prefix: "user-",      })) ?? new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env, {
+        // Run before WebSocket connections
+        onBeforeConnect: async (request) => {
+          const token = new URL(request.url).searchParams.get("token");
+          if (!(await verifyToken(token, env))) {
+            // Return a response to reject the connection
+            return new Response("Unauthorized", { status: 401 });
+          }
+          // Return nothing to allow the connection
+        },
+        // Run before HTTP requests
+        onBeforeRequest: async (request) => {
+          const auth = request.headers.get("Authorization");
+          if (!auth || !(await verifyAuth(auth, env))) {
+            return new Response("Unauthorized", { status: 401 });
+          }
+        },
+        // Optional: prepend a prefix to agent instance names
+        prefix: "user-",
+      })) ?? new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Manual authentication
 
 Check authentication before calling `routeAgentRequest()`:
 
-* [  JavaScript ](#tab-panel-6053)
-* [  TypeScript ](#tab-panel-6054)
+* [  JavaScript ](#tab-panel-6217)
+* [  TypeScript ](#tab-panel-6218)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    // Protect agent routes
+    if (url.pathname.startsWith("/agents/")) {
+      const user = await authenticate(request, env);
+      if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+      }
+
+
+      // Optionally, enforce that users can only access their own agents
+      const instanceName = url.pathname.split("/")[3];
+      if (instanceName !== `user-${user.id}`) {
+        return new Response("Forbidden", { status: 403 });
+      }
+    }
+
+
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    // Protect agent routes    if (url.pathname.startsWith("/agents/")) {      const user = await authenticate(request, env);      if (!user) {        return new Response("Unauthorized", { status: 401 });      }
-      // Optionally, enforce that users can only access their own agents      const instanceName = url.pathname.split("/")[3];      if (instanceName !== `user-${user.id}`) {        return new Response("Forbidden", { status: 403 });      }    }
-    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env) {    const url = new URL(request.url);
-    // Protect agent routes    if (url.pathname.startsWith("/agents/")) {      const user = await authenticate(request, env);      if (!user) {        return new Response("Unauthorized", { status: 401 });      }
-      // Optionally, enforce that users can only access their own agents      const instanceName = url.pathname.split("/")[3];      if (instanceName !== `user-${user.id}`) {        return new Response("Forbidden", { status: 403 });      }    }
-    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+
+
+    // Protect agent routes
+    if (url.pathname.startsWith("/agents/")) {
+      const user = await authenticate(request, env);
+      if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+      }
+
+
+      // Optionally, enforce that users can only access their own agents
+      const instanceName = url.pathname.split("/")[3];
+      if (instanceName !== `user-${user.id}`) {
+        return new Response("Forbidden", { status: 403 });
+      }
+    }
+
+
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Using a framework (Hono)
 
 If you are using a framework like [Hono ↗](https://hono.dev/), authenticate in middleware before calling the agent:
 
-* [  JavaScript ](#tab-panel-6055)
-* [  TypeScript ](#tab-panel-6056)
+* [  JavaScript ](#tab-panel-6219)
+* [  TypeScript ](#tab-panel-6220)
 
-JavaScript
+**JavaScript**
 
-```
-import { Agent, getAgentByName } from "agents";import { Hono } from "hono";
+```js
+import { Agent, getAgentByName } from "agents";
+import { Hono } from "hono";
+
+
 const app = new Hono();
-// Authentication middlewareapp.use("/agents/*", async (c, next) => {  const token = c.req.header("Authorization")?.replace("Bearer ", "");  if (!token || !(await verifyToken(token, c.env))) {    return c.json({ error: "Unauthorized" }, 401);  }  await next();});
-// Route to a specific agentapp.all("/agents/code-review/:id/*", async (c) => {  const id = c.req.param("id");  const agent = await getAgentByName(c.env.CodeReviewAgent, id);  return agent.fetch(c.req.raw);});
+
+
+// Authentication middleware
+app.use("/agents/*", async (c, next) => {
+  const token = c.req.header("Authorization")?.replace("Bearer ", "");
+  if (!token || !(await verifyToken(token, c.env))) {
+    return c.json({ error: "Unauthorized" }, 401);
+  }
+  await next();
+});
+
+
+// Route to a specific agent
+app.all("/agents/code-review/:id/*", async (c) => {
+  const id = c.req.param("id");
+  const agent = await getAgentByName(c.env.CodeReviewAgent, id);
+  return agent.fetch(c.req.raw);
+});
+
+
 export default app;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent, getAgentByName } from "agents";import { Hono } from "hono";
+```ts
+import { Agent, getAgentByName } from "agents";
+import { Hono } from "hono";
+
+
 const app = new Hono<{ Bindings: Env }>();
-// Authentication middlewareapp.use("/agents/*", async (c, next) => {  const token = c.req.header("Authorization")?.replace("Bearer ", "");  if (!token || !(await verifyToken(token, c.env))) {    return c.json({ error: "Unauthorized" }, 401);  }  await next();});
-// Route to a specific agentapp.all("/agents/code-review/:id/*", async (c) => {  const id = c.req.param("id");  const agent = await getAgentByName(c.env.CodeReviewAgent, id);  return agent.fetch(c.req.raw);});
+
+
+// Authentication middleware
+app.use("/agents/*", async (c, next) => {
+  const token = c.req.header("Authorization")?.replace("Bearer ", "");
+  if (!token || !(await verifyToken(token, c.env))) {
+    return c.json({ error: "Unauthorized" }, 401);
+  }
+  await next();
+});
+
+
+// Route to a specific agent
+app.all("/agents/code-review/:id/*", async (c) => {
+  const id = c.req.param("id");
+  const agent = await getAgentByName(c.env.CodeReviewAgent, id);
+  return agent.fetch(c.req.raw);
+});
+
+
 export default app;
 ```
 
@@ -811,19 +1424,23 @@ Static options for agent configuration:
 | sendIdentityOnConnect      | boolean | true    | Whether to send identity to clients on connect       |
 | hungScheduleTimeoutSeconds | number  | 30      | Timeout before a running schedule is considered hung |
 
-* [  JavaScript ](#tab-panel-6045)
-* [  TypeScript ](#tab-panel-6046)
+* [  JavaScript ](#tab-panel-6209)
+* [  TypeScript ](#tab-panel-6210)
 
-JavaScript
+**JavaScript**
 
+```js
+class SecureAgent extends Agent {
+  static options = { sendIdentityOnConnect: false };
+}
 ```
-class SecureAgent extends Agent {  static options = { sendIdentityOnConnect: false };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class SecureAgent extends Agent {  static options = { sendIdentityOnConnect: false };}
+```ts
+class SecureAgent extends Agent {
+  static options = { sendIdentityOnConnect: false };
+}
 ```
 
 ## Next steps

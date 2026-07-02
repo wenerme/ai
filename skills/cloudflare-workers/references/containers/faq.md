@@ -16,19 +16,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-7916)
-* [  wrangler.toml ](#tab-panel-7917)
+* [  wrangler.jsonc ](#tab-panel-8195)
+* [  wrangler.toml ](#tab-panel-8196)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "enabled": true
+  }
+}
 ```
-{  "observability": {    "enabled": true  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability]enabled = true
+```toml
+[observability]
+enabled = true
 ```
 
 Logs are subject to the same [limits as Worker logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#limits), which means that they are retained for 3 days on Free plans and 7 days on Paid plans.
@@ -116,20 +121,31 @@ Yes. Use the `docker:dind-rootless` base image since Containers run without root
 
 You must disable iptables when starting the Docker daemon because Containers do not support iptables manipulation:
 
-Dockerfile
+**Dockerfile**
 
-```
+```dockerfile
 FROM docker:dind-rootless
-# Start dockerd with iptables disabled, then run your appENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false & exec /path/to/your-app"]
+
+
+# Start dockerd with iptables disabled, then run your app
+ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false & exec /path/to/your-app"]
 ```
 
 If your application needs to wait for dockerd to become ready before using Docker, use an entrypoint script instead of the inline command above:
 
-entrypoint.sh
+**entrypoint.sh**
 
-```
-#!/bin/shset -eu
-# Wait for dockerd to be readyuntil docker version >/dev/null 2>&1; do  sleep 0.2done
+```sh
+#!/bin/sh
+set -eu
+
+
+# Wait for dockerd to be ready
+until docker version >/dev/null 2>&1; do
+  sleep 0.2
+done
+
+
 exec /path/to/your-app
 ```
 

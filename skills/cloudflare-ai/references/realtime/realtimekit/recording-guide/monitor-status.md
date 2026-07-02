@@ -32,10 +32,16 @@ There are two ways you can track what state a recording is in or view more detai
 
 RealtimeKit sends a `recording.statusUpdate` webhook when the recording transitions between states during its lifecycle. Add `recording.statusUpdate` to your webhook's `events` array to receive these notifications.
 
-Terminal window
-
-```
-curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "name": "Recording status webhook",    "url": "https://example.com/webhook",    "events": ["recording.statusUpdate"],    "enabled": true  }'
+```bash
+curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "name": "Recording status webhook",
+    "url": "https://example.com/webhook",
+    "events": ["recording.statusUpdate"],
+    "enabled": true
+  }'
 ```
 
 The webhook payload includes the current recording status, recording metadata, and associated meeting details. When the status is `UPLOADED`, the payload can include `downloadUrl`, `audioDownloadUrl`, and `downloadUrlExpiry` fields for accessing the uploaded files.

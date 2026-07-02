@@ -31,23 +31,60 @@ Alibaba's HappyHorse 1.1 reference-to-video model. Takes 1-9 reference images (c
 * [ TypeScript ](#tab-panel-36)
 * [ cURL ](#tab-panel-37)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1.1-r2v',  {    prompt:      'The person in image 1 walks through the futuristic city in image 2 and meets the person in image 3.',    images: [      'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg',      'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png',      'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg',    ],    duration: 8,    ratio: '16:9',    resolution: '1080P',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1.1-r2v',
+  {
+    prompt:
+      'The person in image 1 walks through the futuristic city in image 2 and meets the person in image 3.',
+    images: [
+      'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg',
+      'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png',
+      'https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg',
+    ],
+    duration: 8,
+    ratio: '16:9',
+    resolution: '1080P',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1.1-r2v",  "input": {    "prompt": "The person in image 1 walks through the futuristic city in image 2 and meets the person in image 3.",    "images": [      "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg",      "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png",      "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"    ],    "duration": 8,    "ratio": "16:9",    "resolution": "1080P"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1.1-r2v",
+  "input": {
+    "prompt": "The person in image 1 walks through the futuristic city in image 2 and meets the person in image 3.",
+    "images": [
+      "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg",
+      "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png",
+      "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"
+    ],
+    "duration": 8,
+    "ratio": "16:9",
+    "resolution": "1080P"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-34)
 * [ Raw response ](#tab-panel-35)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/alibaba/hh1.1-r2v/multi-image-reference.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/hh1.1-r2v/multi-image-reference.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters

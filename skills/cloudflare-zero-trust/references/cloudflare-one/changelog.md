@@ -14,6 +14,100 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-07-01
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Linux (version 2026.6.836.0)**
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This package is the same release as 2026.6.822.0, with a fix for our RPM package. Previously the repository served a single build to every OS version, so an install could pull a dependency that isn't available on that release. The repository now serves the correct build for each operating system version, so installs automatically pull the dependencies that version requires. Debian and Ubuntu were not affected.
+
+If you installed version 2026.6.822.0 on an RPM-based distribution, we recommend refreshing your repository configuration:
+
+```bash
+sudo curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+sudo dnf clean all
+sudo dnf install cloudflare-warp
+
+```
+
+## 2026-07-01
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Fix redirect URL fragment encoding for single-page applications**
+
+Access now correctly preserves URL fragment characters (`/`, `?`, `=`, `&`, `;`) when redirecting users back to an application after login. Previously, these characters were encoded with `encodeURIComponent`, which mangled fragment-based routes used by single-page applications (SPAs).
+
+For example, an SPA URL like `https://app.example.com/#/dashboard?tab=settings&view=advanced` would previously redirect to a broken URL after login. This is now handled correctly.
+
+If your SPA users were experiencing broken navigation after authenticating through Access, this fix resolves the issue without any configuration changes.
+
+## 2026-07-01
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Independent MFA for infrastructure applications**
+
+[Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) now supports independent multi-factor authentication (MFA) for SSH connections using YubiKey PIV keys. This adds a hardware-backed second factor to SSH access, ensuring that a compromised device session alone is not sufficient to reach your servers.
+
+With per-application and per-policy configuration, you can enforce PIV key authentication for sensitive usernames (for example, `root`) while applying different requirements for other usernames. You can also set an MFA session duration to control how often users must re-authenticate.
+
+#### Enrollment
+
+Users enroll their YubiKey PIV key through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). For enrollment instructions and SSH client setup, refer to [Enroll a PIV key for infrastructure apps](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps).
+
+#### Configuration
+
+For setup instructions, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
+
+## 2026-06-30
+
+[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)
+
+
+**New permissions and roles for Gateway policies and lists**
+
+You can now assign granular, resource-scoped roles for [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) firewall policies and [Zero Trust lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Administrators can delegate access to specific policy types or list management without granting account-wide or product-wide control.
+
+#### What is new
+
+When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the following resource-scoped roles are now available:
+
+| Role                                       | Description                                                                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Zero Trust Gateway Firewall Policies Admin | Can view and edit all Gateway firewall policies, including DNS, HTTP, and Network policies. |
+| Zero Trust Gateway DNS Policies Admin      | Can view and edit Gateway DNS policies.                                                     |
+| Zero Trust Gateway HTTP Policies Admin     | Can view and edit Gateway HTTP policies.                                                    |
+| Zero Trust Gateway Network Policies Admin  | Can view and edit Gateway Network policies.                                                 |
+| Zero Trust Gateway Egress Policies Admin   | Can view and edit Gateway Egress policies.                                                  |
+| Zero Trust Gateway Resolver Policies Admin | Can view and edit Gateway Resolver policies.                                                |
+| Zero Trust Gateway Policies Admin          | Can view and edit all Gateway policies.                                                     |
+| Zero Trust Gateway Policies Read           | Can view all Gateway policies.                                                              |
+| Zero Trust Gateway Read Only               | Can view all Gateway resources.                                                             |
+| Zero Trust DNS Locations Admin             | Can view and edit DNS locations.                                                            |
+| Zero Trust Proxy Endpoints Admin           | Can view and edit Gateway Proxy Endpoints.                                                  |
+| Zero Trust Account Lists Admin             | Can view and edit all Gateway and Access lists.                                             |
+| Zero Trust Account Lists Read              | Can view all Gateway and Access lists.                                                      |
+
+These roles allow you to:
+
+* Grant a network engineer write access to Network policies only, without exposing DNS or HTTP policy configuration.
+* Allow a security analyst to view all Gateway policies in read-only mode for auditing purposes.
+* Delegate list management to a team that maintains block and allow lists without giving them access to policy configuration.
+
+You can also now assign _Resource-scoped roles_. These roles are complementary to existing account-level roles, and allow you to grant access to a specific resource, like an individual Gateway policy or Cloudflare One list. **Existing account-level roles continue to work.** A member with the `Cloudflare Gateway` or `Cloudflare Zero Trust` role retains full access to all Gateway resources. This ensures backward compatibility for existing automation and API tokens.
+
+#### Get started
+
+* Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+* Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
+
 ## 2026-06-29
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -36,6 +130,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional Changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in Windows Accessibility settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -81,6 +176,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional Changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -121,8 +217,9 @@ This release introduces multiple features from our previous beta release into st
 
 **Additional changes and improvements**
 
+* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
 * Cloudflare Mesh functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-* Cloudflare Mesh now supports hostname-based routing for Cloudflare Tunnel.
+* Cloudflare Mesh now supports hostname-based routing.
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -145,6 +242,25 @@ For RHEL deployments, this release introduces a dependency on the [Extra Package
 **Known issues**
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+
+## 2026-06-26
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Service token support for MCP server portals**
+
+You can now connect autonomous agents and bots to an [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) using an [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). Service token sessions can reach upstream MCP servers through the portal without a browser-based OAuth flow.
+
+To set this up:
+
+* Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
+* Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
+* Turn **Require user auth** off (`on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
+
+The bot connects with `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers and sees the tools from every linked server it is authorized for. Servers that still require per-user OAuth are excluded from service token sessions because a service token cannot complete a per-user OAuth grant.
+
+For step-by-step setup, refer to [Connect with a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#connect-with-a-service-token).
 
 ## 2026-06-24
 
@@ -177,6 +293,21 @@ This release also introduces multiple fixes and improvements including:
 **Known issues**
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+
+## 2026-06-23
+
+[ Data Localization Suite ](https://developers.cloudflare.com/data-localization/)
+
+
+**Regionalized IP Bindings for Regional Services**
+
+Regional Services now supports **Regionalized IP Bindings**, letting you regionalize traffic at the IP layer for prefixes you bring to Cloudflare through [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/).
+
+Where [Regional Hostnames](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/) regionalize traffic by hostname, Regionalized IP Bindings let you bind a CIDR from one of your prefixes to a region — ideal for address-map deployments and any service you address by IP rather than hostname. Cloudflare then terminates TLS and processes traffic to those addresses only within the data centers in that region.
+
+Regionalized IP Bindings requires the Regional Services and Regional Services for BYOIP entitlements. Contact your account team to enable them.
+
+To get started, refer to [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/).
 
 ## 2026-06-19
 
@@ -271,34 +402,47 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7484)
-* [  wrangler.toml ](#tab-panel-7485)
+* [  wrangler.jsonc ](#tab-panel-7502)
+* [  wrangler.toml ](#tab-panel-7503)
 
-JSONC
+**JSONC**
 
-```
-{  "vpc_networks": [    {      "binding": "EGRESS",      "network_id": "cf1:network",      "remote": true,    },  ],}
-```
-
-TOML
-
-```
-[[vpc_networks]]binding = "EGRESS"network_id = "cf1:network"remote = true
-```
-
-* [  JavaScript ](#tab-panel-7486)
-* [  TypeScript ](#tab-panel-7487)
-
-JavaScript
-
-```
-// Egress to a public destination — subject to your Gateway policies and loggedconst response = await env.EGRESS.fetch("https://api.example.com/data");
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "EGRESS",
+      "network_id": "cf1:network",
+      "remote": true,
+    },
+  ],
+}
 ```
 
-TypeScript
+**TOML**
 
+```toml
+[[vpc_networks]]
+binding = "EGRESS"
+network_id = "cf1:network"
+remote = true
 ```
-// Egress to a public destination — subject to your Gateway policies and loggedconst response = await env.EGRESS.fetch("https://api.example.com/data");
+
+* [  JavaScript ](#tab-panel-7504)
+* [  TypeScript ](#tab-panel-7505)
+
+**JavaScript**
+
+```js
+// Egress to a public destination — subject to your Gateway policies and logged
+const response = await env.EGRESS.fetch("https://api.example.com/data");
+```
+
+**TypeScript**
+
+```ts
+// Egress to a public destination — subject to your Gateway policies and logged
+const response = await env.EGRESS.fetch("https://api.example.com/data");
 ```
 
 For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). For policy authoring, refer to [Cloudflare Gateway traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
@@ -1658,7 +1802,7 @@ The next stable release for Linux will introduce the new Cloudflare One Client U
 
 To return to the server selection page, ask your AI agent with a prompt like "take me back to the server selection page." The portal responds with an authorization URL via [MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) that you open in your browser:
 
-```
+```txt
 https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
 ```
 
@@ -1708,7 +1852,7 @@ When Code Mode is active, the portal exposes a single `code` tool instead of lis
 
 To use Code Mode, append `?codemode=search_and_execute` to your portal URL when connecting from an MCP client:
 
-```
+```txt
 https://<subdomain>.<domain>/mcp?codemode=search_and_execute
 ```
 
@@ -1727,7 +1871,7 @@ For more information, refer to [Code Mode](https://developers.cloudflare.com/clo
 
 Strips tool descriptions and input schemas from all upstream tools, leaving only their names. The portal exposes a special `query` tool that agents use to retrieve full definitions on demand. This provides up to 5x savings in token usage.
 
-```
+```txt
 https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 ```
 
@@ -1735,7 +1879,7 @@ https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 
 Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
 
-```
+```txt
 https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
 ```
 
@@ -3823,11 +3967,15 @@ If you need to retrieve deleted (or all) resources, please update your API calls
 
 To get a list of only deleted resources, you must now explicitly add the `is_deleted=true` query parameter to your request:
 
-Terminal window
+```bash
+# Example: Get ONLY deleted Tunnels
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tunnels?is_deleted=true" \
+     -H "Authorization: Bearer $API_TOKEN"
 
-```
-# Example: Get ONLY deleted Tunnelscurl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tunnels?is_deleted=true" \     -H "Authorization: Bearer $API_TOKEN"
-# Example: Get ONLY deleted Virtual Networkscurl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/virtual_networks?is_deleted=true" \     -H "Authorization: Bearer $API_TOKEN"
+
+# Example: Get ONLY deleted Virtual Networks
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/virtual_networks?is_deleted=true" \
+     -H "Authorization: Bearer $API_TOKEN"
 ```
 
 Following this change, retrieving a complete list of both active and deleted resources will require two separate API calls: one to get active items (by omitting the parameter or using `is_deleted=false`) and one to get deleted items (`is_deleted=true`).
@@ -4850,8 +4998,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7482)
-* [ Core Dashboard ](#tab-panel-7483)
+* [ Zero Trust Dashboard ](#tab-panel-7500)
+* [ Core Dashboard ](#tab-panel-7501)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -5059,8 +5207,15 @@ We're excited to announce that new logging capabilities for [Remote Browser Isol
 
 With these enhanced logs, administrators can gain visibility into end user behavior in the remote browser and track blocked data extraction attempts, along with the websites that triggered them, in an isolated session.
 
-```
-{  "AccountID": "$ACCOUNT_ID",  "Decision": "block",  "DomainName": "www.example.com",  "Timestamp": "2025-02-27T23:15:06Z",  "Type": "copy",  "UserID": "$USER_ID"}
+```json
+{
+  "AccountID": "$ACCOUNT_ID",
+  "Decision": "block",
+  "DomainName": "www.example.com",
+  "Timestamp": "2025-02-27T23:15:06Z",
+  "Type": "copy",
+  "UserID": "$USER_ID"
+}
 ```
 
 User Actions available:

@@ -34,14 +34,14 @@ Cloudflare issues the following **Edge Pathing Statuses**:
 
 For example:
 
-Terminal window
-
-```
+```bash
 jq -r .EdgePathingSrc logs.json | sort -n | uniq -c | sort -n | tail
 ```
 
-```
-1 err5 user93 macro
+```bash
+1 err
+5 user
+93 macro
 ```
 
 ### EdgePathingOp
@@ -53,14 +53,13 @@ jq -r .EdgePathingSrc logs.json | sort -n | uniq -c | sort -n | tail
 
 For example:
 
-Terminal window
-
-```
+```bash
 jq -r .EdgePathingOp logs.json | sort -n | uniq -c | sort -n | tail
 ```
 
-```
-1 errHost97 wl
+```bash
+1 errHost
+97 wl
 ```
 
 ### EdgePathingStatus
@@ -69,14 +68,14 @@ jq -r .EdgePathingOp logs.json | sort -n | uniq -c | sort -n | tail
 
 For example:
 
-Terminal window
-
-```
+```bash
 jq -r .EdgePathingStatus logs.json | sort -n | uniq -c | sort -n | tail
 ```
 
-```
-1 dnsErr5 ip92 nr
+```bash
+1 dnsErr
+5 ip
+92 nr
 ```
 
 ## How does pathing map to Threat Analytics?
@@ -108,14 +107,13 @@ This is how you can see where a request terminates. Requests with only an **edge
 
 For example, the following query shows the status code and pathing information for all requests that terminated at the Cloudflare edge:
 
-Terminal window
-
-```
+```bash
 jq -r 'select(.OriginResponseStatus == null) | select(.CacheResponseStatus == null) |"\(.EdgeResponseStatus) / \(.EdgePathingSrc) / \(.EdgePathingStatus) / \(.EdgePathingOp)"' logs.json | sort -n | uniq -c | sort -n
 ```
 
-```
-1 403 / macro / nr / wl1 409 / err / dnsErr / errHost
+```bash
+1 403 / macro / nr / wl
+1 409 / err / dnsErr / errHost
 ```
 
 The information stored is broken down based on the following categories:

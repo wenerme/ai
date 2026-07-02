@@ -25,16 +25,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLivestreamPlayer } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkLivestreamPlayer />;}
+
+
+function MyComponent() {
+  return <RtkLivestreamPlayer />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLivestreamPlayer } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkLivestreamPlayer      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLivestreamPlayer
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

@@ -25,16 +25,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkBroadcastMessageModal } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkBroadcastMessageModal />;}
+
+
+function MyComponent() {
+  return <RtkBroadcastMessageModal />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkBroadcastMessageModal } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkBroadcastMessageModal      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkBroadcastMessageModal
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

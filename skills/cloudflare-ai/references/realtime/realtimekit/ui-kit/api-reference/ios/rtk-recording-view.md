@@ -33,20 +33,29 @@ A blinking recording indicator displayed when the meeting is being recorded. Sho
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let recordingView = RtkRecordingView(meeting: rtkClient)view.addSubview(recordingView)
+
+
+let recordingView = RtkRecordingView(meeting: rtkClient)
+view.addSubview(recordingView)
 ```
 
 ### With custom title
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let recordingView = RtkRecordingView(    meeting: rtkClient,    title: "Recording")view.addSubview(recordingView)
+
+
+let recordingView = RtkRecordingView(
+    meeting: rtkClient,
+    title: "Recording"
+)
+view.addSubview(recordingView)
 ```
 
 ```json

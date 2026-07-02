@@ -29,20 +29,29 @@ Note
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkAudioIndicatorIconWidget(  participant: participant,)
+
+
+RtkAudioIndicatorIconWidget(
+  participant: participant,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkAudioIndicatorIconWidget(  participant: participant,  iconSize: 32.0,)
+
+
+RtkAudioIndicatorIconWidget(
+  participant: participant,
+  iconSize: 32.0,
+)
 ```
 
 ```json

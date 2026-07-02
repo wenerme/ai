@@ -40,10 +40,18 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: Mutual TLS Certificates Write`
 * `SSL and Certificates Write`
 
-Create SSL Configuration
+**Create SSL Configuration**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "certificate": "certificate",    "private_key": "<PRIVATE_KEY>",    "policy": "(country: US) and (region: EU)",    "type": "sni_custom"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "certificate": "certificate",
+    "private_key": "<PRIVATE_KEY>",
+    "policy": "(country: US) and (region: EU)",
+    "type": "sni_custom"
+  }'
 ```
 
 Store private keys in the E.U., but not in France
@@ -54,10 +62,18 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: Mutual TLS Certificates Write`
 * `SSL and Certificates Write`
 
-Create SSL Configuration
+**Create SSL Configuration**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "certificate": "certificate",    "private_key": "<PRIVATE_KEY>",    "policy": "(region: EU) and (not country: FR)",    "type": "sni_custom"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "certificate": "certificate",
+    "private_key": "<PRIVATE_KEY>",
+    "policy": "(region: EU) and (not country: FR)",
+    "type": "sni_custom"
+  }'
 ```
 
 Note
@@ -68,8 +84,8 @@ For more information on the `policy` field, refer to [Supported options](https:/
 
 The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
 
-* [ Dashboard ](#tab-panel-10740)
-* [ API ](#tab-panel-10741)
+* [ Dashboard ](#tab-panel-11035)
+* [ API ](#tab-panel-11036)
 
 To use Geo Key Manager in the dashboard:
 

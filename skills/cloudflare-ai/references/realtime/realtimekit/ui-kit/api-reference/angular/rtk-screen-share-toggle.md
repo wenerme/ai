@@ -29,14 +29,20 @@ A button which toggles your screenshare.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-screen-share-toggle></rtk-screen-share-toggle>
+```html
+<!-- component.html -->
+<rtk-screen-share-toggle></rtk-screen-share-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-screen-share-toggle [meeting]="meeting" size="md" variant="button"></rtk-screen-share-toggle>
+```html
+<!-- component.html -->
+<rtk-screen-share-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-screen-share-toggle>
 ```
 
 ```json

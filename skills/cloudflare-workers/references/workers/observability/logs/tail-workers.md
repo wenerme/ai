@@ -35,33 +35,87 @@ To configure a Tail Worker:
 1. [Create a Worker](https://developers.cloudflare.com/workers/get-started/guide) to serve as the Tail Worker.
 2. Add a [tail()](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/) handler to your Worker. The `tail()` handler is invoked every time the producer Worker to which a Tail Worker is connected is invoked. The following Worker code is a Tail Worker that sends its data to an HTTP endpoint:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async tail(events) {    fetch("https://example.com/endpoint", {      method: "POST",      body: JSON.stringify(events),    });  },};
+```js
+export default {
+  async tail(events) {
+    fetch("https://example.com/endpoint", {
+      method: "POST",
+      body: JSON.stringify(events),
+    });
+  },
+};
 ```
 
 The following Worker code is an example of what the `events` object may look like:
 
-```
-[  {    "scriptName": "Example script",    "outcome": "exception",    "eventTimestamp": 1587058642005,    "event": {      "request": {        "url": "https://example.com/some/requested/url",        "method": "GET",        "headers": {          "cf-ray": "57d55f210d7b95f3",          "x-custom-header-name": "my-header-value"        },        "cf": {          "colo": "SJC"        }      }    },    "logs": [      {        "message": ["string passed to console.log()"],        "level": "log",        "timestamp": 1587058642005      }    ],    "exceptions": [      {        "name": "Error",        "message": "Threw a sample exception",        "timestamp": 1587058642005      }    ],    "diagnosticsChannelEvents": [      {        "channel": "foo",        "message": "The diagnostic channel message",        "timestamp": 1587058642005      }    ]  }]
+```json
+[
+  {
+    "scriptName": "Example script",
+    "outcome": "exception",
+    "eventTimestamp": 1587058642005,
+    "event": {
+      "request": {
+        "url": "https://example.com/some/requested/url",
+        "method": "GET",
+        "headers": {
+          "cf-ray": "57d55f210d7b95f3",
+          "x-custom-header-name": "my-header-value"
+        },
+        "cf": {
+          "colo": "SJC"
+        }
+      }
+    },
+    "logs": [
+      {
+        "message": ["string passed to console.log()"],
+        "level": "log",
+        "timestamp": 1587058642005
+      }
+    ],
+    "exceptions": [
+      {
+        "name": "Error",
+        "message": "Threw a sample exception",
+        "timestamp": 1587058642005
+      }
+    ],
+    "diagnosticsChannelEvents": [
+      {
+        "channel": "foo",
+        "message": "The diagnostic channel message",
+        "timestamp": 1587058642005
+      }
+    ]
+  }
+]
 ```
 
 1. Add the following to the Wrangler file of the producer Worker:
 
-* [  wrangler.jsonc ](#tab-panel-12199)
-* [  wrangler.toml ](#tab-panel-12200)
+* [  wrangler.jsonc ](#tab-panel-12219)
+* [  wrangler.toml ](#tab-panel-12220)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "tail_consumers": [
+    {
+      "service": "<TAIL_WORKER_NAME>"
+    }
+  ]
+}
 ```
-{  "tail_consumers": [    {      "service": "<TAIL_WORKER_NAME>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[tail_consumers]]service = "<TAIL_WORKER_NAME>"
+```toml
+[[tail_consumers]]
+service = "<TAIL_WORKER_NAME>"
 ```
 
 Note
@@ -74,10 +128,20 @@ If you need aggregated analytics rather than individual log events, consider wri
 
 For example, you can use a Tail Worker to count errors by endpoint, track response times by customer, or build usage metrics, then write those aggregates to Analytics Engine for querying and visualization.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async tail(events, env) {    for (const event of events) {      env.ANALYTICS.writeDataPoint({        blobs: [event.scriptName, event.outcome],        doubles: [1],        indexes: [event.event?.request?.cf?.colo ?? "unknown"],      });    }  },};
+```js
+export default {
+  async tail(events, env) {
+    for (const event of events) {
+      env.ANALYTICS.writeDataPoint({
+        blobs: [event.scriptName, event.outcome],
+        doubles: [1],
+        indexes: [event.event?.request?.cf?.colo ?? "unknown"],
+      });
+    }
+  },
+};
 ```
 
 Refer to the [Analytics Engine documentation](https://developers.cloudflare.com/analytics/analytics-engine/) for more details on writing and querying data.

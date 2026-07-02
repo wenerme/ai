@@ -25,14 +25,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-waiting-screen></rtk-waiting-screen>
+```html
+<!-- component.html -->
+<rtk-waiting-screen></rtk-waiting-screen>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-waiting-screen [meeting]="meeting"></rtk-waiting-screen>
+```html
+<!-- component.html -->
+<rtk-waiting-screen
+ [meeting]="meeting">
+</rtk-waiting-screen>
 ```
 
 ```json

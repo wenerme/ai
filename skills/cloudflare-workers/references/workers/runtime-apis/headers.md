@@ -18,14 +18,25 @@ All HTTP request and response headers are available through the [Headers API ↗
 
 When a header name possesses multiple values, those values will be concatenated as a single, comma-delimited string value. This means that `Headers.get` will always return a string or a `null` value. This applies to all header names except for `Set-Cookie`, which requires `Headers.getAll`. This is documented below in [Differences](#differences).
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let headers = new Headers();
+
+
 headers.get('x-foo'); //=> null
-headers.set('x-foo', '123');headers.get('x-foo'); //=> "123"
-headers.set('x-foo', 'hello');headers.get('x-foo'); //=> "hello"
-headers.append('x-foo', 'world');headers.get('x-foo'); //=> "hello, world"
+
+
+headers.set('x-foo', '123');
+headers.get('x-foo'); //=> "123"
+
+
+headers.set('x-foo', 'hello');
+headers.get('x-foo'); //=> "hello"
+
+
+headers.append('x-foo', 'world');
+headers.get('x-foo'); //=> "hello, world"
 ```
 
 ## Differences
@@ -46,12 +57,18 @@ Any attempts to use `Headers.getAll` with other header names will throw an error
 
 Due to [RFC 6265 ↗](https://www.rfc-editor.org/rfc/rfc6265) prohibiting folding multiple `Set-Cookie` headers into a single header, the `Headers.append` method allows you to set multiple `Set-Cookie` response headers instead of appending the value onto the existing header.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const headers = new Headers();
-headers.append("Set-Cookie", "cookie1=value_for_cookie_1; Path=/; HttpOnly;");headers.append("Set-Cookie", "cookie2=value_for_cookie_2; Path=/; HttpOnly;");
-console.log(headers.getAll("Set-Cookie"));// Array(2) [ cookie1=value_for_cookie_1; Path=/; HttpOnly;, cookie2=value_for_cookie_2; Path=/; HttpOnly; ]
+
+
+headers.append("Set-Cookie", "cookie1=value_for_cookie_1; Path=/; HttpOnly;");
+headers.append("Set-Cookie", "cookie2=value_for_cookie_2; Path=/; HttpOnly;");
+
+
+console.log(headers.getAll("Set-Cookie"));
+// Array(2) [ cookie1=value_for_cookie_1; Path=/; HttpOnly;, cookie2=value_for_cookie_2; Path=/; HttpOnly; ]
 ```
 
 ### `USVString` return type

@@ -30,16 +30,31 @@ The top-level meeting component that orchestrates the entire meeting UI. Manages
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMeeting } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkMeeting meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkMeeting meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMeeting } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkMeeting      meeting={meeting}      applyDesignSystem={true}      showSetupScreen={true}      iOSScreenshareEnabled={false}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMeeting
+      meeting={meeting}
+      applyDesignSystem={true}
+      showSetupScreen={true}
+      iOSScreenshareEnabled={false}
+    />
+  );
+}
 ```
 
 ```json

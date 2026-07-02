@@ -27,20 +27,46 @@ A foundational widget that initializes and provides the RealtimeKit environment 
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkProvider(  meeting: yourMeetingInstance,  uiKitInfo: yourUiKitInfo,  child: MaterialApp(    home: YourAppHome(),  ),)
+
+
+RtkProvider(
+  meeting: yourMeetingInstance,
+  uiKitInfo: yourUiKitInfo,
+  child: MaterialApp(
+    home: YourAppHome(),
+  ),
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-class MyApp extends StatelessWidget {  @override  Widget build(BuildContext context) {    return RtkProvider(      meeting: RealtimekitClient(        // Client configuration      ),      uiKitInfo: RealtimeKitUIInfo(        // UI Kit information and design tokens      ),      observers: [MyProviderObserver()],      child: MaterialApp(        home: HomeScreen(),      ),    );  }}
+
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RtkProvider(
+      meeting: RealtimekitClient(
+        // Client configuration
+      ),
+      uiKitInfo: RealtimeKitUIInfo(
+        // UI Kit information and design tokens
+      ),
+      observers: [MyProviderObserver()],
+      child: MaterialApp(
+        home: HomeScreen(),
+      ),
+    );
+  }
+}
 ```
 
 Note

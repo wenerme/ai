@@ -49,10 +49,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/ddos_l7/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<HTTP_DDOS_RULESET_ID>",                "overrides": {                    "rules": [                        {                            "id": "<RULE_ID>",                            "sensitivity_level": "low"                        }                    ]                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/ddos_l7/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "expression": "true",
+            "action_parameters": {
+                "id": "<HTTP_DDOS_RULESET_ID>",
+                "overrides": {
+                    "rules": [
+                        {
+                            "id": "<RULE_ID>",
+                            "sensitivity_level": "low"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 ```json

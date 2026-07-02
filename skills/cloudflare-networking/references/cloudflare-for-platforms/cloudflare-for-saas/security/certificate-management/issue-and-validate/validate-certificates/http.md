@@ -72,19 +72,19 @@ At your origin, make the `http_body` available in a TXT record at the path speci
 
 Here is an example NGINX configuration that would return a token:
 
-```
-location "/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt" {       return 200 "ca3-be794c5f757b468eba805d1a705e44f6\n";}
+```txt
+location "/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt" {
+       return 200 "ca3-be794c5f757b468eba805d1a705e44f6\n";
+}
 ```
 
 Once your configuration is live, test that the DCV text file is in place with `curl`:
 
-Terminal window
-
-```
+```sh
 curl "http://http-preval.example.com/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt"
 ```
 
-```
+```txt
 ca3-be794c5f757b468eba805d1a705e44f6
 ```
 

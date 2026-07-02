@@ -24,22 +24,52 @@ To reduce security risks when using Any Hostname, monitor widget usage through [
 
 When using the Any Hostname feature, it is essential to implement additional validation in your server-side code to maintain security controls. Always validate the `hostname` field in Siteverify responses.
 
-Example response
+**Example response**
 
-```
-async function validateTurnstileWithHostname(token, expectedHostnames = []) {  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {    method: 'POST',    headers: { 'Content-Type': 'application/json' },    body: JSON.stringify({      secret: process.env.TURNSTILE_SECRET,      response: token    })  });
+```js
+async function validateTurnstileWithHostname(token, expectedHostnames = []) {
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      secret: process.env.TURNSTILE_SECRET,
+      response: token
+    })
+  });
+
+
   const result = await response.json();
-  if (!result.success) {    return { valid: false, error: 'Token validation failed' };  }
-  // Additional hostname validation when using Any Hostname  if (expectedHostnames.length > 0 && !expectedHostnames.includes(result.hostname)) {    return {      valid: false,      error: 'Hostname not in allowed list',      hostname: result.hostname    };  }
-  return { valid: true, data: result };}
+
+
+  if (!result.success) {
+    return { valid: false, error: 'Token validation failed' };
+  }
+
+
+  // Additional hostname validation when using Any Hostname
+  if (expectedHostnames.length > 0 && !expectedHostnames.includes(result.hostname)) {
+    return {
+      valid: false,
+      error: 'Hostname not in allowed list',
+      hostname: result.hostname
+    };
+  }
+
+
+  return { valid: true, data: result };
+}
 ```
 
 You should regularly review Turnstile Analytics for unexpected usage patterns and monitor the hostname field in Siteverify responses. You can set up alerts for widget usage on unexpected domains.
 
 Use `action` and `cData` parameters to track widget usage sources.
 
-```
-<!-- Widget with tracking information --><div class="cf-turnstile"     data-sitekey="your-site-key"     data-action="customer-portal"     data-cdata="tenant-123"></div>
+```html
+<!-- Widget with tracking information -->
+<div class="cf-turnstile"
+     data-sitekey="your-site-key"
+     data-action="customer-portal"
+     data-cdata="tenant-123"></div>
 ```
 
 ---

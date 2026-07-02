@@ -56,8 +56,19 @@ Previously, ingesting logs often meant taking an "all or nothing" approach to da
 
 When configuring a dataset via the dashboard or API, you can define a specific set of fields. The `Timestamp` field remains mandatory to ensure data indexability.
 
-```
-{  "dataset": "firewall_events",  "enabled": true,  "fields": [    "Timestamp",    "ClientRequestHost",    "ClientIP",    "Action",    "EdgeResponseStatus",    "OriginResponseStatus"  ]}
+```json
+{
+  "dataset": "firewall_events",
+  "enabled": true,
+  "fields": [
+    "Timestamp",
+    "ClientRequestHost",
+    "ClientIP",
+    "Action",
+    "EdgeResponseStatus",
+    "OriginResponseStatus"
+  ]
+}
 ```
 
 For more information, refer to the [Log Explorer documentation](https://developers.cloudflare.com/log-explorer/).

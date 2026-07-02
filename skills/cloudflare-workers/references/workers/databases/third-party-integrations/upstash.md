@@ -23,33 +23,33 @@ To set up an integration with Upstash:
 
   * Use the CLI directly from your Upstash console.
   * Alternatively, install [redis-cli ↗](https://redis.io/docs/getting-started/installation/) locally and run the following commands.
-Terminal window
-```
+```sh
 set GB "Ey up?"
 ```
-```
+```sh
 OK
 ```
-Terminal window
-```
+```sh
 set US "Yo, what’s up?"
 ```
-```
+```sh
 OK
 ```
-Terminal window
-```
+```sh
 set NL "Hoi, hoe gaat het?"
 ```
-```
+```sh
 OK
 ```
 3. Configure the Upstash Redis credentials in your Worker:
 You need to add your Upstash Redis database URL and token as secrets to your Worker. Get these from your [Upstash Console ↗](https://console.upstash.com) under your database details, then add them as secrets using Wrangler:
-Terminal window
-```
-# Add the Upstash Redis URL as a secretnpx wrangler secret put UPSTASH_REDIS_REST_URL# When prompted, paste your Upstash Redis REST URL
-# Add the Upstash Redis token as a secretnpx wrangler secret put UPSTASH_REDIS_REST_TOKEN# When prompted, paste your Upstash Redis REST token
+```sh
+# Add the Upstash Redis URL as a secret
+npx wrangler secret put UPSTASH_REDIS_REST_URL
+# When prompted, paste your Upstash Redis REST URL
+# Add the Upstash Redis token as a secret
+npx wrangler secret put UPSTASH_REDIS_REST_TOKEN
+# When prompted, paste your Upstash Redis REST token
 ```
 4. In your Worker, install the `@upstash/redis`, a HTTP client to connect to your database and start manipulating data:
  npm  yarn  pnpm  bun
@@ -66,12 +66,23 @@ pnpm add @upstash/redis
 bun add @upstash/redis
 ```
 5. The following example shows how to make a query to your Upstash database in a Worker. The credentials needed to connect to Upstash have been added as secrets to your Worker.
-JavaScript
-```
+
+**JavaScript**
+```js
 import { Redis } from "@upstash/redis/cloudflare";
-export default {  async fetch(request, env) {    const redis = Redis.fromEnv(env);
-    const country = request.headers.get("cf-ipcountry");    if (country) {      const greeting = await redis.get(country);      if (greeting) {        return new Response(greeting);      }    }
-    return new Response("Hello What's up!");  },};
+export default {
+  async fetch(request, env) {
+    const redis = Redis.fromEnv(env);
+    const country = request.headers.get("cf-ipcountry");
+    if (country) {
+      const greeting = await redis.get(country);
+      if (greeting) {
+        return new Response(greeting);
+      }
+    }
+    return new Response("Hello What's up!");
+  },
+};
 ```
 Note
 `Redis.fromEnv(env)` automatically picks up the default `url` and `token` names created in the integration.
@@ -86,9 +97,10 @@ To set up an integration with Upstash QStash:
 1. Configure the [publicly available HTTP endpoint ↗](https://docs.upstash.com/qstash#1-public-api) that you want to send your messages to.
 2. Configure the Upstash QStash credentials in your Worker:
 You need to add your Upstash QStash token as a secret to your Worker. Get your token from your [Upstash Console ↗](https://console.upstash.com) under QStash settings, then add it as a secret using Wrangler:
-Terminal window
-```
-# Add the QStash token as a secretnpx wrangler secret put QSTASH_TOKEN# When prompted, paste your QStash token
+```sh
+# Add the QStash token as a secret
+npx wrangler secret put QSTASH_TOKEN
+# When prompted, paste your QStash token
 ```
 3. In your Worker, install the `@upstash/qstash`, a HTTP client to connect to your database QStash endpoint:
  npm  yarn  pnpm  bun

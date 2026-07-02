@@ -26,13 +26,13 @@ When there are repeating headers, the array includes them in the order they appe
 
 Example value:
 
-```
+```txt
 {"server": ["nginx"]}
 ```
 
 Example usage:
 
-```
+```txt
 any(http.response.headers["server"][*] == "nginx")
 ```
 

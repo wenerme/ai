@@ -41,22 +41,46 @@ Base button class for control bar items. Supports normal and selected states, no
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let button = RtkControlBarButton(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "Mute")view.addSubview(button)
+
+
+let button = RtkControlBarButton(
+    image: RtkImage(image: UIImage(systemName: "mic")),
+    title: "Mute"
+)
+view.addSubview(button)
 ```
 
 ### With state changes
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let button = RtkControlBarButton(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "Mute")
-// Switch to selected statebutton.setSelected(    image: RtkImage(image: UIImage(systemName: "mic.slash")),    title: "Unmute")
-// Switch back to default statebutton.setDefault(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "Mute")view.addSubview(button)
+
+
+let button = RtkControlBarButton(
+    image: RtkImage(image: UIImage(systemName: "mic")),
+    title: "Mute"
+)
+
+
+// Switch to selected state
+button.setSelected(
+    image: RtkImage(image: UIImage(systemName: "mic.slash")),
+    title: "Unmute"
+)
+
+
+// Switch back to default state
+button.setDefault(
+    image: RtkImage(image: UIImage(systemName: "mic")),
+    title: "Mute"
+)
+view.addSubview(button)
 ```
 
 ```json

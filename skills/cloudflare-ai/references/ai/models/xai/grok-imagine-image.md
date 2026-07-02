@@ -28,112 +28,168 @@ xAI's Grok Imagine image model. Generates and edits images from text and referen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2002)
-* [ cURL ](#tab-panel-2003)
+* [ TypeScript ](#tab-panel-2050)
+* [ cURL ](#tab-panel-2051)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'xai/grok-imagine-image',  { prompt: 'A golden retriever puppy playing in autumn leaves' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image",  "input": {    "prompt": "A golden retriever puppy playing in autumn leaves"  }}'
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-image',
+  { prompt: 'A golden retriever puppy playing in autumn leaves' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-2000)
-* [ Raw response ](#tab-panel-2001)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-image",
+  "input": {
+    "prompt": "A golden retriever puppy playing in autumn leaves"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-2048)
+* [ Raw response ](#tab-panel-2049)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **Custom Aspect Ratio**  — Portrait orientation render at 2K resolution
 
-* [ TypeScript ](#tab-panel-2006)
-* [ cURL ](#tab-panel-2007)
+* [ TypeScript ](#tab-panel-2054)
+* [ cURL ](#tab-panel-2055)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-image',
+  {
+    prompt:
+      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',
+    aspect_ratio: '3:4',
+    resolution: '2k',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'xai/grok-imagine-image',  {    prompt:      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',    aspect_ratio: '3:4',    resolution: '2k',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-image",
+  "input": {
+    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
+    "aspect_ratio": "3:4",
+    "resolution": "2k"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image",  "input": {    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",    "aspect_ratio": "3:4",    "resolution": "2k"  }}'
-```
-
-* [ Output ](#tab-panel-2004)
-* [ Raw response ](#tab-panel-2005)
+* [ Output ](#tab-panel-2052)
+* [ Raw response ](#tab-panel-2053)
 
 ![Custom Aspect Ratio](https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Cinematic Landscape**  — Widescreen landscape at 2K resolution
 
-* [ TypeScript ](#tab-panel-2010)
-* [ cURL ](#tab-panel-2011)
+* [ TypeScript ](#tab-panel-2058)
+* [ cURL ](#tab-panel-2059)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-image',
+  {
+    prompt:
+      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
+    aspect_ratio: '16:9',
+    resolution: '2k',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'xai/grok-imagine-image',  {    prompt:      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',    aspect_ratio: '16:9',    resolution: '2k',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-image",
+  "input": {
+    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
+    "aspect_ratio": "16:9",
+    "resolution": "2k"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image",  "input": {    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",    "aspect_ratio": "16:9",    "resolution": "2k"  }}'
-```
-
-* [ Output ](#tab-panel-2008)
-* [ Raw response ](#tab-panel-2009)
+* [ Output ](#tab-panel-2056)
+* [ Raw response ](#tab-panel-2057)
 
 ![Cinematic Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png)
 
-```
-{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2012)
-* [ Output ](#tab-panel-2013)
-
-aspect\_ratio
-
-`string`enum: 1:1, 3:4, 4:3, 9:16, 16:9, 2:3, 3:2, 9:19.5, 19.5:9, 9:20, 20:9, 1:2, 2:1, auto
-
-▶image{}
-
-`object`
-
-▶images\[\]
-
-`array`maxItems: 10
-
-▶mask{}
-
-`object`
-
-n
-
-`integer`maximum: 10minimum: 1
+* [ Input ](#tab-panel-2060)
+* [ Output ](#tab-panel-2061)
 
 prompt
 
 `string`required
+
+n
+
+`integer`minimum: 1maximum: 10
+
+aspect\_ratio
+
+`string`enum: 1:1, 3:4, 4:3, 9:16, 16:9, 2:3, 3:2, 9:19.5, 19.5:9, 9:20, 20:9, 1:2, 2:1, auto
 
 quality
 
@@ -150,6 +206,18 @@ response\_format
 user
 
 `string`
+
+▶image{}
+
+`object`
+
+▶images\[\]
+
+`array`maxItems: 10
+
+▶mask{}
+
+`object`
 
 image
 

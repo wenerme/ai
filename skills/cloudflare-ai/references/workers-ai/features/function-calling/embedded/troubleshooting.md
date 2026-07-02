@@ -22,20 +22,43 @@ General [logging](https://developers.cloudflare.com/workers/observability/logs/)
 
 The invocations of tools can be logged as in any Worker using `console.log()`:
 
-Logging tool invocations
+**Logging tool invocations**
 
-```
-export default {  async fetch(request, env, ctx) {    const sum = (args: { a: number; b: number }): Promise<string> => {      const { a, b } = args;      // Logging from within embedded function invocations      console.log(`The sum function has been invoked with the arguments a: ${a} and b: ${b}`)      return Promise.resolve((a + b).toString());    };    ...  }}
+```ts
+export default {
+  async fetch(request, env, ctx) {
+    const sum = (args: { a: number; b: number }): Promise<string> => {
+      const { a, b } = args;
+      // Logging from within embedded function invocations
+      console.log(`The sum function has been invoked with the arguments a: ${a} and b: ${b}`)
+      return Promise.resolve((a + b).toString());
+    };
+    ...
+  }
+}
 ```
 
 ### Logging within `runWithTools`
 
 The `runWithTools` function has a `verbose` mode that emits helpful logs for debugging of function calls as well input and output statistics.
 
-Enabled verbose mode
+**Enabled verbose mode**
 
-```
-const response = await runWithTools(  env.AI,  '@hf/nousresearch/hermes-2-pro-mistral-7b',  {    messages: [      ...    ],    tools: [      ...    ],  },  // Enable verbose mode  { verbose: true });
+```ts
+const response = await runWithTools(
+  env.AI,
+  '@hf/nousresearch/hermes-2-pro-mistral-7b',
+  {
+    messages: [
+      ...
+    ],
+    tools: [
+      ...
+    ],
+  },
+  // Enable verbose mode
+  { verbose: true }
+);
 ```
 
 ## Performance
@@ -48,11 +71,35 @@ Consider the following to improve performance:
 * Reduce number of tools provided
 * Stream the final response to the end user (to minimize the time to interaction). See example below:
 
-Streamed response example
+**Streamed response example**
 
-```
-async fetch(request, env, ctx) {  const response = (await runWithTools(    env.AI,    '@hf/nousresearch/hermes-2-pro-mistral-7b',    {      messages: [        ...      ],      tools: [        ...      ],    },    {      // Enable response streaming      streamFinalResponse: true,    }  )) as ReadableStream;
-  // Set response headers for streaming  return new Response(response, {    headers: {      'content-type': 'text/event-stream',    },  });}
+```ts
+async fetch(request, env, ctx) {
+  const response = (await runWithTools(
+    env.AI,
+    '@hf/nousresearch/hermes-2-pro-mistral-7b',
+    {
+      messages: [
+        ...
+      ],
+      tools: [
+        ...
+      ],
+    },
+    {
+      // Enable response streaming
+      streamFinalResponse: true,
+    }
+  )) as ReadableStream;
+
+
+  // Set response headers for streaming
+  return new Response(response, {
+    headers: {
+      'content-type': 'text/event-stream',
+    },
+  });
+}
 ```
 
 ## Common Errors

@@ -24,19 +24,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-pinned-message-selector></rtk-pinned-message-selector>
 ```
 
 ### With Properties
 
-```
-<rtk-pinned-message-selector></rtk-pinned-message-selector>
+```html
+<rtk-pinned-message-selector>
+</rtk-pinned-message-selector>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-pinned-message-selector");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-pinned-message-selector");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

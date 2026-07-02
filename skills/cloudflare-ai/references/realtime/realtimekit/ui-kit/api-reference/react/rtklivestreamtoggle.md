@@ -26,16 +26,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLivestreamToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkLivestreamToggle />;}
+
+
+function MyComponent() {
+  return <RtkLivestreamToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLivestreamToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkLivestreamToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLivestreamToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

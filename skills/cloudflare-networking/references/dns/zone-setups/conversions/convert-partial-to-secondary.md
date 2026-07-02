@@ -99,10 +99,9 @@ This step is essential so that Cloudflare can keep the proxy status of the recor
 1. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `secondary`, to convert the zone type.
 You can verify if it answers as expected by querying the new assigned secondary nameservers. You can find your nameservers on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, and they should follow a format like `ns0123.secondary.cloudflare.com`.
 
-Terminal window
-
-```
-# Replace ns0123 with your actual Cloudflare nameserversdig example.com @ns0123.secondary.cloudflare.com
+```bash
+# Replace ns0123 with your actual Cloudflare nameservers
+dig example.com @ns0123.secondary.cloudflare.com
 ```
 
 1. At your registrar, [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to point to the Cloudflare nameservers.
@@ -119,8 +118,8 @@ If you keep any DNS records that still refer `cdn.cloudflare.net`, HTTP traffic 
 
 1. Enable outgoing zone transfers at your primary provider and create a peer DNS server on your Cloudflare account.
 
-* [ Dashboard ](#tab-panel-8207)
-* [ API ](#tab-panel-8208)
+* [ Dashboard ](#tab-panel-8488)
+* [ API ](#tab-panel-8489)
 
 To create a peer server using the dashboard:
 
@@ -140,8 +139,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 1. Link your Cloudflare zone to the peer DNS server you just created.
 
-* [ Dashboard ](#tab-panel-8205)
-* [ API ](#tab-panel-8206)
+* [ Dashboard ](#tab-panel-8486)
+* [ API ](#tab-panel-8487)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

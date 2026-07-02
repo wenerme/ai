@@ -25,16 +25,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMuteAllConfirmation } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMuteAllConfirmation />;}
+
+
+function MyComponent() {
+  return <RtkMuteAllConfirmation />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMuteAllConfirmation } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMuteAllConfirmation      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMuteAllConfirmation
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

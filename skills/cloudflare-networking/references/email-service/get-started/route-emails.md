@@ -44,8 +44,8 @@ Once your domain is onboarded, you can start routing emails.
 
 You can route your first email by setting up routing rules in the dashboard, or by processing emails with Workers.
 
-* [ Route to email ](#tab-panel-8594)
-* [ Route to Workers ](#tab-panel-8595)
+* [ Route to email ](#tab-panel-8885)
+* [ Route to Workers ](#tab-panel-8886)
 
 The simplest way to route emails is forwarding them to existing email addresses.
 
@@ -87,45 +87,91 @@ Use Workers to process emails with custom logic before forwarding or responding.
 ### Create an email processing Worker
 
 1. Create a new Worker project:
-Terminal window
-```
+```sh
 npm create cloudflare@latest email-processor
 ```
 When prompted, select **"Hello World" Worker** as the template. Then navigate to the project directory:
-Terminal window
-```
+```sh
 cd email-processor
 ```
 2. Install the required package for creating email replies:
-Terminal window
-```
+```sh
 npm install mimetext
 ```
 3. Add the `nodejs_compat` compatibility flag to your Wrangler configuration file. This is required for the `mimetext` package:
 
-  * [  wrangler.jsonc ](#tab-panel-8592)
-  * [  wrangler.toml ](#tab-panel-8593)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8883)
+  * [  wrangler.toml ](#tab-panel-8884)
+
+**JSONC**
+```jsonc
+{
+  "compatibility_flags": ["nodejs_compat"],
+}
 ```
-{  "compatibility_flags": ["nodejs_compat"],}
-```
-TOML
-```
+
+**TOML**
+```toml
 compatibility_flags = [ "nodejs_compat" ]
 ```
 4. Create your email handler in `src/index.ts`:
-TypeScript
-```
-import { EmailMessage } from "cloudflare:email";import { createMimeMessage } from "mimetext";
-// ============================================// Configuration - Update these values// ============================================const YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domainconst FORWARD_TO_EMAIL = "your-team@example.com"; // Replace with where you want emails forwarded
-export default {  async email(message, env, ctx): Promise<void> {    const sender = message.from;    const recipient = message.to;    const subject = message.headers.get("subject") || "";
-    console.log(      `Processing email from ${sender} to ${recipient} with subject ${subject}`,    );
-    // Route based on recipient    if (recipient.includes("support@")) {      // Send auto-reply      const msg = createMimeMessage();      const messageId = message.headers.get("Message-ID");      if (messageId) {        msg.setHeader("In-Reply-To", messageId);        msg.setHeader("References", messageId);      }      msg.setSender({        name: "Support Team",        addr: `support@${YOUR_DOMAIN}`,      });      msg.setRecipient(message.from);      msg.setSubject(`Re: ${subject}`);
-      // Add plain text version      msg.addMessage({        contentType: "text/plain",        data: "Thank you for contacting support. Your ticket number is 123.\n\nA member of our support team will get back to you shortly.",      });
-      // Add HTML version      msg.addMessage({        contentType: "text/html",        data: "<p>Thank you for contacting support. Your ticket number is <strong>123</strong>.</p><p>A member of our support team will get back to you shortly.</p>",      });
-      const replyMessage = new EmailMessage(        `support@${YOUR_DOMAIN}`,        message.from,        msg.asRaw(),      );
+
+**TypeScript**
+```ts
+import { EmailMessage } from "cloudflare:email";
+import { createMimeMessage } from "mimetext";
+// ============================================
+// Configuration - Update these values
+// ============================================
+const YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domain
+const FORWARD_TO_EMAIL = "your-team@example.com"; // Replace with where you want emails forwarded
+export default {
+  async email(message, env, ctx): Promise<void> {
+    const sender = message.from;
+    const recipient = message.to;
+    const subject = message.headers.get("subject") || "";
+    console.log(
+      `Processing email from ${sender} to ${recipient} with subject ${subject}`,
+    );
+    // Route based on recipient
+    if (recipient.includes("support@")) {
+      // Send auto-reply
+      const msg = createMimeMessage();
+      const messageId = message.headers.get("Message-ID");
+      if (messageId) {
+        msg.setHeader("In-Reply-To", messageId);
+        msg.setHeader("References", messageId);
+      }
+      msg.setSender({
+        name: "Support Team",
+        addr: `support@${YOUR_DOMAIN}`,
+      });
+      msg.setRecipient(message.from);
+      msg.setSubject(`Re: ${subject}`);
+      // Add plain text version
+      msg.addMessage({
+        contentType: "text/plain",
+        data: "Thank you for contacting support. Your ticket number is 123.\n\nA member of our support team will get back to you shortly.",
+      });
+      // Add HTML version
+      msg.addMessage({
+        contentType: "text/html",
+        data: "<p>Thank you for contacting support. Your ticket number is <strong>123</strong>.</p><p>A member of our support team will get back to you shortly.</p>",
+      });
+      const replyMessage = new EmailMessage(
+        `support@${YOUR_DOMAIN}`,
+        message.from,
+        msg.asRaw(),
+      );
       await message.reply(replyMessage);
-      // Forward to support team      await message.forward(FORWARD_TO_EMAIL);    } else {      // Default: forward to admin      await message.forward(FORWARD_TO_EMAIL);    }  },} satisfies ExportedHandler<Env>;
+      // Forward to support team
+      await message.forward(FORWARD_TO_EMAIL);
+    } else {
+      // Default: forward to admin
+      await message.forward(FORWARD_TO_EMAIL);
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 Update configuration
 Before deploying, update the constants at the top of the file:
@@ -133,8 +179,7 @@ Before deploying, update the constants at the top of the file:
   * `YOUR_DOMAIN`: Your verified domain from the Cloudflare dashboard
   * `FORWARD_TO_EMAIL`: The email address where you want to receive forwarded emails
 5. Deploy your Worker:
-Terminal window
-```
+```sh
 npm run deploy
 ```
 

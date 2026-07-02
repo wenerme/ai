@@ -16,10 +16,17 @@ Stream Live supports "DVR mode" on an opt-in basis to allow viewers to rewind, r
 
 ## Stream Player
 
-Stream Player embed format
+**Stream Player embed format**
 
-```
-<div style="position: relative; padding-top: 56.25%;">  <iframe    src="https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/iframe?dvrEnabled=true"    style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"    allowfullscreen="true"  ></iframe></div>
+```html
+<div style="position: relative; padding-top: 56.25%;">
+  <iframe
+    src="https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/iframe?dvrEnabled=true"
+    style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen="true"
+  ></iframe>
+</div>
 ```
 
 When DVR mode is enabled the Stream Player will:
@@ -30,9 +37,9 @@ When DVR mode is enabled the Stream Player will:
 
 ## HLS manifest for custom players
 
-HLS manifest URL format
+**HLS manifest URL format**
 
-```
+```text
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/manifest/video.m3u8?dvrEnabled=true
 ```
 

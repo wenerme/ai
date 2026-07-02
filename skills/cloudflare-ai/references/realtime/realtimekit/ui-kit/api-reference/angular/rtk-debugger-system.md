@@ -26,14 +26,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-debugger-system></rtk-debugger-system>
+```html
+<!-- component.html -->
+<rtk-debugger-system></rtk-debugger-system>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-debugger-system [meeting]="meeting" size="md"></rtk-debugger-system>
+```html
+<!-- component.html -->
+<rtk-debugger-system
+ [meeting]="meeting"
+ size="md">
+</rtk-debugger-system>
 ```
 
 ```json

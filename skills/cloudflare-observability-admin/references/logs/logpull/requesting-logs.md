@@ -37,17 +37,13 @@ The API expects endpoint parameters in the GET request query string. The followi
 
 `logs/received`
 
-Terminal window
-
-```
+```bash
 https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=<unix|rfc3339>&end=<unix|rfc3339>[&count=<int>][&sample=<float>][&fields=<FIELDS>][&timestamps=<string>][&CVE-2021-44228=<boolean>]
 ```
 
 `logs/rayids/{ray_id}`
 
-Terminal window
-
-```
+```bash
 https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/rayids/{ray_id}?[&fields=<FIELDS>][&timestamps=<string>]
 ```
 
@@ -75,18 +71,18 @@ The overlap will be handled correctly.
 
 `logs/received`
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2017-07-18T22:00:00Z&end=2017-07-18T22:01:00Z&count=1&fields=ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2017-07-18T22:00:00Z&end=2017-07-18T22:01:00Z&count=1&fields=ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 `logs/rayids/{ray_id}`
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/rayids/{ray_id}}?timestamps=rfc3339" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/rayids/{ray_id}}?timestamps=rfc3339" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 Note
@@ -103,11 +99,16 @@ The order in which fields are specified does not matter, and the order of fields
 
 Using bash subshell and `jq`, you can download the logs with all available fields without manually copying and pasting the fields into the request. For example:
 
-Terminal window
+```bash
+FIELDS=$(curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received/fields \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+| jq '. | to_entries[] | .key' -r | paste -sd "," -)
 
-```
-FIELDS=$(curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received/fields \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \| jq '. | to_entries[] | .key' -r | paste -sd "," -)
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2017-07-18T22:00:00Z&end=2017-07-18T22:01:00Z&count=1&fields=$FIELDS" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2017-07-18T22:00:00Z&end=2017-07-18T22:01:00Z&count=1&fields=$FIELDS" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.

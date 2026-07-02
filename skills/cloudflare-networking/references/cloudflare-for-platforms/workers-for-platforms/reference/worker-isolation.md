@@ -39,10 +39,14 @@ In trusted mode, Workers can potentially access cached responses from other Work
 
 To convert a namespace from untrusted to trusted:
 
-Terminal window
-
-```
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/dispatch/namespaces/{namespace_name}" \  -H "Authorization: Bearer {api_token}" \  -H "Content-Type: application/json" \  -d '{    "name": "{namespace_name}",    "trusted_workers": true  }'
+```bash
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/dispatch/namespaces/{namespace_name}" \
+  -H "Authorization: Bearer {api_token}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "{namespace_name}",
+    "trusted_workers": true
+  }'
 ```
 
 If you enable trusted mode for a namespace that already has deployed Workers, you'll need to redeploy those Workers for the `request.cf` object to become available. Any new Workers you deploy after enabling trusted mode will automatically have access to it.

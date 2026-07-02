@@ -31,13 +31,38 @@ Use Workflows to build reliable AI applications, process data pipelines, manage 
 
 An image processing workflow that fetches from R2, generates an AI description, waits for approval, then publishes:
 
-TypeScript
+**TypeScript**
 
-```
-export class ImageProcessingWorkflow extends WorkflowEntrypoint {  async run(event: WorkflowEvent, step: WorkflowStep) {    const imageData = await step.do('fetch image', async () => {      const object = await this.env.BUCKET.get(event.payload.imageKey);      return await object.arrayBuffer();    });
-    const description = await step.do('generate description', async () => {      const imageArray = Array.from(new Uint8Array(imageData));      return await this.env.AI.run('@cf/llava-hf/llava-1.5-7b-hf', {        image: imageArray,        prompt: 'Describe this image in one sentence',        max_tokens: 50,      });    });
-    await step.waitForEvent('await approval', {      event: 'approved',      timeout: '24 hours',    });
-    await step.do('publish', async () => {      await this.env.BUCKET.put(`public/${event.payload.imageKey}`, imageData);    });  }}
+```ts
+export class ImageProcessingWorkflow extends WorkflowEntrypoint {
+  async run(event: WorkflowEvent, step: WorkflowStep) {
+    const imageData = await step.do('fetch image', async () => {
+      const object = await this.env.BUCKET.get(event.payload.imageKey);
+      return await object.arrayBuffer();
+    });
+
+
+    const description = await step.do('generate description', async () => {
+      const imageArray = Array.from(new Uint8Array(imageData));
+      return await this.env.AI.run('@cf/llava-hf/llava-1.5-7b-hf', {
+        image: imageArray,
+        prompt: 'Describe this image in one sentence',
+        max_tokens: 50,
+      });
+    });
+
+
+    await step.waitForEvent('await approval', {
+      event: 'approved',
+      timeout: '24 hours',
+    });
+
+
+    await step.do('publish', async () => {
+      await this.env.BUCKET.put(`public/${event.payload.imageKey}`, imageData);
+    });
+  }
+}
 ```
 
 [ Get started ](https://developers.cloudflare.com/workflows/get-started/guide/) [ Browse the examples ](https://developers.cloudflare.com/workflows/examples/)

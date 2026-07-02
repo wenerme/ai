@@ -28,19 +28,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-join-stage></rtk-join-stage>
 ```
 
 ### With Properties
 
-```
-<rtk-join-stage size="md"></rtk-join-stage>
+```html
+<rtk-join-stage
+ size="md">
+</rtk-join-stage>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-join-stage");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-join-stage");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

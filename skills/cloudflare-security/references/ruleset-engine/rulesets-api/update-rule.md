@@ -41,14 +41,55 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Update an account ruleset rule
+**Update an account ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "js_challenge",    "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",    "description": "challenge GB and FR based on bot score"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "js_challenge",
+    "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+    "description": "challenge GB and FR based on bot score"
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Custom Ruleset 1",    "description": "My first custom ruleset",    "kind": "custom",    "version": "11",    "rules": [      {        "id": "<RULE_ID_1>",        "version": "2",        "action": "js_challenge",        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",        "description": "challenge GB and FR based on bot score",        "last_updated": "2023-03-22T12:54:58.144683Z",        "ref": "<RULE_REF_1>",        "enabled": true      },      {        "id": "<RULE_ID_2>",        "version": "1",        "action": "challenge",        "expression": "not http.request.uri.path matches \"^/api/.*$\"",        "last_updated": "2022-11-23T11:36:24.192361Z",        "ref": "<RULE_REF_2>",        "enabled": true      }    ],    "last_updated": "2023-03-22T12:54:58.144683Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Custom Ruleset 1",
+    "description": "My first custom ruleset",
+    "kind": "custom",
+    "version": "11",
+    "rules": [
+      {
+        "id": "<RULE_ID_1>",
+        "version": "2",
+        "action": "js_challenge",
+        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+        "description": "challenge GB and FR based on bot score",
+        "last_updated": "2023-03-22T12:54:58.144683Z",
+        "ref": "<RULE_REF_1>",
+        "enabled": true
+      },
+      {
+        "id": "<RULE_ID_2>",
+        "version": "1",
+        "action": "challenge",
+        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+        "last_updated": "2022-11-23T11:36:24.192361Z",
+        "ref": "<RULE_REF_2>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2023-03-22T12:54:58.144683Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Change the order of a rule in a ruleset
@@ -69,8 +110,15 @@ Reorder a rule without changing its definition by including only the `position` 
 
 The following examples build upon the following (abbreviated) ruleset:
 
-```
-{  "rules": [    { "id": "<RULE_ID_1>" },    { "id": "<RULE_ID_2>" },    { "id": "<RULE_ID_3>" },    { "id": "<RULE_ID_4>" }  ]}
+```json
+{
+  "rules": [
+    { "id": "<RULE_ID_1>" },
+    { "id": "<RULE_ID_2>" },
+    { "id": "<RULE_ID_3>" },
+    { "id": "<RULE_ID_4>" }
+  ]
+}
 ```
 
 #### Example 1
@@ -102,10 +150,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset rule
+**Update a zone ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_2" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "position": {        "before": ""    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_2" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "position": {
+        "before": ""
+    }
+  }'
 ```
 
 In this case, the new rule order would be:
@@ -141,10 +196,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset rule
+**Update a zone ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_2" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "position": {        "after": "<RULE_ID_3>"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_2" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "position": {
+        "after": "<RULE_ID_3>"
+    }
+  }'
 ```
 
 In this case, the new rule order would be:
@@ -180,10 +242,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset rule
+**Update a zone ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "position": {        "index": 3    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "position": {
+        "index": 3
+    }
+  }'
 ```
 
 In this case, the new rule order would be:

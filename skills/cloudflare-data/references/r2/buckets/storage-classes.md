@@ -83,10 +83,13 @@ Use the `x-amz-storage-class` header to change between `STANDARD` and `STANDARD_
 
 An example of switching an object from `STANDARD` to `STANDARD_IA` using `aws cli` is shown below:
 
-Terminal window
-
-```
-aws s3api copy-object \  --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \  --bucket bucket-name \  --key path/to/object.txt \  --copy-source /bucket-name/path/to/object.txt \  --storage-class STANDARD_IA
+```sh
+aws s3api copy-object \
+  --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
+  --bucket bucket-name \
+  --key path/to/object.txt \
+  --copy-source /bucket-name/path/to/object.txt \
+  --storage-class STANDARD_IA
 ```
 
 * Refer to [aws CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) for more information on using `aws CLI`.

@@ -34,21 +34,41 @@ Service Workers are deprecated, but still supported. We recommend using [Module 
 
 With the Service Worker syntax, the example Worker looks like:
 
-JavaScript
+**JavaScript**
 
-```
-async function handler(request) {  const base = 'https://example.com';  const statusCode = 301;
-  const destination = new URL(request.url, base);  return Response.redirect(destination.toString(), statusCode);}
-// Initialize WorkeraddEventListener('fetch', event => {  event.respondWith(handler(event.request));});
+```js
+async function handler(request) {
+  const base = 'https://example.com';
+  const statusCode = 301;
+
+
+  const destination = new URL(request.url, base);
+  return Response.redirect(destination.toString(), statusCode);
+}
+
+
+// Initialize Worker
+addEventListener('fetch', event => {
+  event.respondWith(handler(event.request));
+});
 ```
 
 Workers using ES modules format replace the `addEventListener` syntax with an object definition, which must be the file's default export (via `export default`). The previous example code becomes:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  fetch(request) {    const base = "https://example.com";    const statusCode = 301;
-    const source = new URL(request.url);    const destination = new URL(source.pathname, base);    return Response.redirect(destination.toString(), statusCode);  },};
+```js
+export default {
+  fetch(request) {
+    const base = "https://example.com";
+    const statusCode = 301;
+
+
+    const source = new URL(request.url);
+    const destination = new URL(source.pathname, base);
+    return Response.redirect(destination.toString(), statusCode);
+  },
+};
 ```
 
 ## Bindings
@@ -63,19 +83,28 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-11972)
-* [  wrangler.toml ](#tab-panel-11973)
+* [  wrangler.jsonc ](#tab-panel-12267)
+* [  wrangler.toml ](#tab-panel-12268)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "kv_namespaces": [
+    {
+      "binding": "TODO",
+      "id": "<ID>"
+    }
+  ]
+}
 ```
-{  "kv_namespaces": [    {      "binding": "TODO",      "id": "<ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[kv_namespaces]]binding = "TODO"id = "<ID>"
+```toml
+[[kv_namespaces]]
+binding = "TODO"
+id = "<ID>"
 ```
 
 In the following sections, you will use your binding in Service Worker and ES modules format.
@@ -88,12 +117,23 @@ To learn more about how to reference KV from Workers, refer to the [KV bindings 
 
 In Service Worker syntax, your `TODO` KV namespace binding is defined in the global scope of your Worker. Your `TODO` KV namespace binding is available to use anywhere in your Worker application's code.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", async (event) => {  return await getTodos()});
-async function getTodos() {  // Get the value for the "to-do:123" key  // NOTE: Relies on the TODO KV binding that maps to the "My Tasks" namespace.  let value = await TODO.get("to-do:123");
-  // Return the value, as is, for the Response  event.respondWith(new Response(value));}
+```js
+addEventListener("fetch", async (event) => {
+  return await getTodos()
+});
+
+
+async function getTodos() {
+  // Get the value for the "to-do:123" key
+  // NOTE: Relies on the TODO KV binding that maps to the "My Tasks" namespace.
+  let value = await TODO.get("to-do:123");
+
+
+  // Return the value, as is, for the Response
+  event.respondWith(new Response(value));
+}
 ```
 
 ### Bindings in ES modules format
@@ -102,19 +142,34 @@ In ES modules format, bindings are only available inside the `env` parameter tha
 
 To access the `TODO` KV namespace binding in your Worker code, the `env` parameter must be passed from the `fetch` handler in your Worker to the `getTodos` function.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getTodos } from './todos'
-export default {  async fetch(request, env, ctx) {    // Passing the env parameter so other functions    // can reference the bindings available in the Workers application    return await getTodos(env)  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // Passing the env parameter so other functions
+    // can reference the bindings available in the Workers application
+    return await getTodos(env)
+  },
+};
 ```
 
 The following code represents a `getTodos` function that calls the `get` function on the `TODO` KV binding.
 
-JavaScript
+**JavaScript**
 
-```
-async function getTodos(env) {  // NOTE: Relies on the TODO KV binding which has been provided inside of  // the env parameter of the `getTodos` function  let value = await env.TODO.get("to-do:123");  return new Response(value);}
+```js
+async function getTodos(env) {
+  // NOTE: Relies on the TODO KV binding which has been provided inside of
+  // the env parameter of the `getTodos` function
+  let value = await env.TODO.get("to-do:123");
+  return new Response(value);
+}
+
+
 export { getTodos }
 ```
 
@@ -124,61 +179,101 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11974)
-* [  wrangler.toml ](#tab-panel-11975)
+* [  wrangler.jsonc ](#tab-panel-12269)
+* [  wrangler.toml ](#tab-panel-12270)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker-dev",
+  // Define top-level environment variables
+  // using the {"vars": "key": "value"} format
+  "vars": {
+    "API_ACCOUNT_ID": "<EXAMPLE-ACCOUNT-ID>"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-dev",  // Define top-level environment variables  // using the {"vars": "key": "value"} format  "vars": {    "API_ACCOUNT_ID": "<EXAMPLE-ACCOUNT-ID>"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker-dev"
-[vars]API_ACCOUNT_ID = "<EXAMPLE-ACCOUNT-ID>"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-worker-dev"
+
+
+[vars]
+API_ACCOUNT_ID = "<EXAMPLE-ACCOUNT-ID>"
 ```
 
 ### Environment variables in Service Worker format
 
 In Service Worker format, the `API_ACCOUNT_ID` is defined in the global scope of your Worker application. Your `API_ACCOUNT_ID` environment variable is available to use anywhere in your Worker application's code.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", async (event) => {  console.log(API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"  return new Response("Hello, world!")})
+```js
+addEventListener("fetch", async (event) => {
+  console.log(API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"
+  return new Response("Hello, world!")
+})
 ```
 
 ### Environment variables in ES modules format
 
 In ES modules format, environment variables are available through the `env` parameter provided at the entrypoint to your Worker application:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    console.log(env.API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"    return new Response("Hello, world!")  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    console.log(env.API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"
+    return new Response("Hello, world!")
+  },
+};
 ```
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-11976)
-* [  TypeScript ](#tab-panel-11977)
+* [  JavaScript ](#tab-panel-12271)
+* [  TypeScript ](#tab-panel-12272)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { env } from "cloudflare:workers";
-// Access environment variables at the top levelconst accountId = env.API_ACCOUNT_ID;
-export default {  async fetch(request) {    console.log(accountId); // Logs "<EXAMPLE-ACCOUNT-ID>"    return new Response("Hello, world!");  },};
+
+
+// Access environment variables at the top level
+const accountId = env.API_ACCOUNT_ID;
+
+
+export default {
+  async fetch(request) {
+    console.log(accountId); // Logs "<EXAMPLE-ACCOUNT-ID>"
+    return new Response("Hello, world!");
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { env } from "cloudflare:workers";
-// Access environment variables at the top levelconst accountId = env.API_ACCOUNT_ID;
-export default {  async fetch(request: Request): Promise<Response> {    console.log(accountId) // Logs "<EXAMPLE-ACCOUNT-ID>"    return new Response("Hello, world!")  },};
+
+
+// Access environment variables at the top level
+const accountId = env.API_ACCOUNT_ID;
+
+
+export default {
+  async fetch(request: Request): Promise<Response> {
+    console.log(accountId) // Logs "<EXAMPLE-ACCOUNT-ID>"
+    return new Response("Hello, world!")
+  },
+};
 ```
 
 This approach is useful for initializing configuration or accessing environment variables from deeply nested functions without passing `env` through every function call. For more details, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
@@ -189,18 +284,24 @@ To handle a [Cron Trigger](https://developers.cloudflare.com/workers/configurati
 
 This example code:
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("scheduled", (event) => {  // ...});
+```js
+addEventListener("scheduled", (event) => {
+  // ...
+});
 ```
 
 Then becomes:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async scheduled(event, env, ctx) {    // ...  },};
+```js
+export default {
+  async scheduled(event, env, ctx) {
+    // ...
+  },
+};
 ```
 
 ## Access `event` or `context` data
@@ -209,20 +310,37 @@ Workers often need access to data not in the `request` object. For example, some
 
 This example code:
 
-JavaScript
+**JavaScript**
 
-```
-async function triggerEvent(event) {  // Fetch some data  console.log('cron processed', event.scheduledTime);}
-// Initialize WorkeraddEventListener('scheduled', event => {  event.waitUntil(triggerEvent(event));});
+```js
+async function triggerEvent(event) {
+  // Fetch some data
+  console.log('cron processed', event.scheduledTime);
+}
+
+
+// Initialize Worker
+addEventListener('scheduled', event => {
+  event.waitUntil(triggerEvent(event));
+});
 ```
 
 Then becomes:
 
-JavaScript
+**JavaScript**
 
-```
-async function triggerEvent(event) {  // Fetch some data  console.log('cron processed', event.scheduledTime);}
-export default {  async scheduled(event, env, ctx) {    ctx.waitUntil(triggerEvent(event));  },};
+```js
+async function triggerEvent(event) {
+  // Fetch some data
+  console.log('cron processed', event.scheduledTime);
+}
+
+
+export default {
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(triggerEvent(event));
+  },
+};
 ```
 
 ## Service Worker syntax
@@ -234,11 +352,19 @@ A Worker written in Service Worker syntax consists of two parts:
 
 When a request is received on one of Cloudflare’s global network servers for a URL matching a Worker, Cloudflare's server passes the request to the Workers runtime. This dispatches a `FetchEvent` in the [isolate](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates) where the Worker is running.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener('fetch', event => {  event.respondWith(handleRequest(event.request));});
-async function handleRequest(request) {  return new Response('Hello worker!', {    headers: { 'content-type': 'text/plain' },  });}
+```js
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request));
+});
+
+
+async function handleRequest(request) {
+  return new Response('Hello worker!', {
+    headers: { 'content-type': 'text/plain' },
+  });
+}
 ```
 
 Below is an example of the request response workflow:
@@ -277,12 +403,21 @@ If a `fetch` event handler does not call `respondWith`, the runtime delivers the
 
 If no `fetch` event handler calls `respondWith`, then the runtime forwards the request to the origin as if the Worker did not. However, if there is no origin – or the Worker itself is your origin server, which is always true for `*.workers.dev` domains – then you must call `respondWith` for a valid response.
 
-JavaScript
+**JavaScript**
 
-```
-// Format: Service WorkeraddEventListener('fetch', event => {  let { pathname } = new URL(event.request.url);
-  // Allow "/ignore/*" URLs to hit origin  if (pathname.startsWith('/ignore/')) return;
-  // Otherwise, respond with something  event.respondWith(handler(event));});
+```js
+// Format: Service Worker
+addEventListener('fetch', event => {
+  let { pathname } = new URL(event.request.url);
+
+
+  // Allow "/ignore/*" URLs to hit origin
+  if (pathname.startsWith('/ignore/')) return;
+
+
+  // Otherwise, respond with something
+  event.respondWith(handler(event));
+});
 ```
 
 ### `waitUntil`
@@ -293,14 +428,33 @@ With the Service Worker format, `waitUntil` is available within the `event` beca
 
 With the ES modules format, `waitUntil` is moved and available on the `context` parameter object.
 
-JavaScript
+**JavaScript**
 
-```
-// Format: Service WorkeraddEventListener('fetch', event => {  event.respondWith(handler(event));});
-async function handler(event) {  // Forward / Proxy original request  let res = await fetch(event.request);
-  // Add custom header(s)  res = new Response(res.body, res);  res.headers.set('x-foo', 'bar');
-  // Cache the response  // NOTE: Does NOT block / wait  event.waitUntil(caches.default.put(event.request, res.clone()));
-  // Done  return res;}
+```js
+// Format: Service Worker
+addEventListener('fetch', event => {
+  event.respondWith(handler(event));
+});
+
+
+async function handler(event) {
+  // Forward / Proxy original request
+  let res = await fetch(event.request);
+
+
+  // Add custom header(s)
+  res = new Response(res.body, res);
+  res.headers.set('x-foo', 'bar');
+
+
+  // Cache the response
+  // NOTE: Does NOT block / wait
+  event.waitUntil(caches.default.put(event.request, res.clone()));
+
+
+  // Done
+  return res;
+}
 ```
 
 ### `passThroughOnException`
@@ -313,10 +467,15 @@ With the Service Worker format, `passThroughOnException` is added to the `FetchE
 
 With the ES modules format, `passThroughOnException` is available on the `context` parameter object.
 
-JavaScript
+**JavaScript**
 
-```
-// Format: Service WorkeraddEventListener('fetch', event => {  // Proxy to origin on unhandled/uncaught exceptions  event.passThroughOnException();  throw new Error('Oops');});
+```js
+// Format: Service Worker
+addEventListener('fetch', event => {
+  // Proxy to origin on unhandled/uncaught exceptions
+  event.passThroughOnException();
+  throw new Error('Oops');
+});
 ```
 
 ```json

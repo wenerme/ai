@@ -32,19 +32,26 @@ A component which lists all participants, with ability to run privileged actions
 
 ### Basic Usage
 
-```
+```html
 <rtk-participants-stage-list></rtk-participants-stage-list>
 ```
 
 ### With Properties
 
-```
-<rtk-participants-stage-list search="example"></rtk-participants-stage-list>
+```html
+<rtk-participants-stage-list
+ search="example">
+</rtk-participants-stage-list>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participants-stage-list");
-  el.hideHeader= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participants-stage-list");
+
+
+  el.hideHeader= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

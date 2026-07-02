@@ -30,13 +30,13 @@ IDETerminalStandaloneCloud
 Download Cursor for macOS, Windows, or Linux from the [Cursor downloads page ↗](https://cursor.com/downloads). For additional information, see the [Cursor installation guide ↗](https://cursor.com/docs/get-started/installation).
 2. **Install the Cloudflare plugin**
 In Cursor, run the following command or install from the [Cursor Marketplace ↗](https://cursor.com/marketplace/cloudflare). This installs Cloudflare Skills and registers the Cloudflare MCP servers.
-```
+```txt
 /add-plugin cloudflare
 ```
 3. **Try a prompt**
 For example:
-```
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Cloudflare platform access

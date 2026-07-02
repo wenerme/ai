@@ -20,7 +20,7 @@ This field defaults to `""` if the connection does not use [mTLS authentication]
 
 Example value:
 
-```
+```txt
 "Mar 21 13:35:00 2023 GMT"
 ```
 

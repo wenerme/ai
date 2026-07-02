@@ -24,7 +24,7 @@ To obtain the complete endpoint, append the Advanced TCP Protection API endpoint
 
 The Cloudflare API base URL is:
 
-```
+```txt
 https://api.cloudflare.com/client/v4
 ```
 

@@ -28,16 +28,29 @@ A component which lists all available plugins from their preset, and ability to 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPlugins } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPlugins />;}
+
+
+function MyComponent() {
+  return <RtkPlugins />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPlugins } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPlugins      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPlugins
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

@@ -40,8 +40,10 @@ Tenant owners that want to [use their own IP prefix](https://developers.cloudfla
 If you are an account owner and your account is part of a tenant that has custom nameservers, do the following:
 
 1. Use the endpoint [Update DNS Settings for a Zone](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) and configure the `nameservers` object accordingly.
-```
-  "nameservers": {    "type": "custom.tenant"  }
+```txt
+  "nameservers": {
+    "type": "custom.tenant"
+  }
 ```
 Note
 If the parameter `ns_set` is omitted, the default set `1` will be assigned.
@@ -49,8 +51,12 @@ If the parameter `ns_set` is omitted, the default set `1` will be assigned.
 
 To make these TCNS the default namerservers for all new zones added to your account from now on, use the endpoint [Update DNS Settings for an Account](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/methods/edit/). Within the `zone_defaults` object, set the following:
 
-```
-"zone_defaults": {  "nameservers": {    "type": "custom.tenant"  }}
+```txt
+"zone_defaults": {
+  "nameservers": {
+    "type": "custom.tenant"
+  }
+}
 ```
 
 ### Disable tenant custom nameservers on a zone
@@ -66,10 +72,15 @@ If you are a tenant owner and you want to make TCNS available for accounts withi
 
 1. Observe the [conditions](#configuration-conditions) for `ns_name` and `ns_set`, and create TCNS in your tenant by using the following POST command:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/tenants/{tenant_id}/custom_ns \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "ns_name": "<NS_NAME>",  "ns_set": <SET>}'
+```bash
+curl https://api.cloudflare.com/client/v4/tenants/{tenant_id}/custom_ns \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "ns_name": "<NS_NAME>",
+  "ns_set": <SET>
+}'
 ```
 
 Note
@@ -87,10 +98,10 @@ If the parameter `ns_set` is omitted, the default set `1` will be assigned.
 
 To get a list of all TCNS names in your tenant account, use the following API request:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/tenants/{tenant_id}/custom_ns \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl https://api.cloudflare.com/client/v4/tenants/{tenant_id}/custom_ns \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 ```json

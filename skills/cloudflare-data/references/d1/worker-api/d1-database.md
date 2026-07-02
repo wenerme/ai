@@ -14,20 +14,27 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
-* [  JavaScript ](#tab-panel-8021)
-* [  Python ](#tab-panel-8022)
+* [  JavaScript ](#tab-panel-8302)
+* [  Python ](#tab-panel-8303)
 
-JavaScript
+**JavaScript**
 
+```js
+async fetch(request, env) {
+  // D1 database is 'env.DB', where "DB" is the binding name from the Wrangler configuration file.
+}
 ```
-async fetch(request, env) {  // D1 database is 'env.DB', where "DB" is the binding name from the Wrangler configuration file.}
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import WorkerEntrypoint
-class Default(WorkerEntrypoint):    async def fetch(self, request):        # D1 database is 'self.env.DB', where "DB" is the binding name from the Wrangler configuration file.        pass
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        # D1 database is 'self.env.DB', where "DB" is the binding name from the Wrangler configuration file.
+        pass
 ```
 
 A D1 binding has the type `D1Database`, and supports a number of methods, as listed below.
@@ -38,19 +45,21 @@ A D1 binding has the type `D1Database`, and supports a number of methods, as lis
 
 Prepares a query statement to be later executed.
 
-* [  JavaScript ](#tab-panel-8023)
-* [  Python ](#tab-panel-8024)
+* [  JavaScript ](#tab-panel-8304)
+* [  Python ](#tab-panel-8305)
 
-JavaScript
+**JavaScript**
 
+```js
+const someVariable = `Bs Beverages`;
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
 ```
-const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-```
 
-Python
+**Python**
 
-```
-some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
+```py
+some_variable = "Bs Beverages"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
 ```
 
 #### Parameters
@@ -69,26 +78,33 @@ You can use the `bind` method to dynamically bind a value into the query stateme
 
 * Example of a static statement without using `bind`:
 
-  * [  JavaScript ](#tab-panel-8025)
-  * [  Python ](#tab-panel-8026)
-JavaScript
+  * [  JavaScript ](#tab-panel-8306)
+  * [  Python ](#tab-panel-8307)
+
+**JavaScript**
+```js
+const stmt = db
+  .prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
 ```
-const stmt = db  .prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
-```
-Python
-```
+
+**Python**
+```py
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
 ```
 * Example of an ordered statement using `bind`:
 
-  * [  JavaScript ](#tab-panel-8027)
-  * [  Python ](#tab-panel-8028)
-JavaScript
+  * [  JavaScript ](#tab-panel-8308)
+  * [  Python ](#tab-panel-8309)
+
+**JavaScript**
+```js
+const stmt = db
+  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")
+  .bind("Alfreds Futterkiste", 1);
 ```
-const stmt = db  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")  .bind("Alfreds Futterkiste", 1);
-```
-Python
-```
+
+**Python**
+```py
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?").bind("Alfreds Futterkiste", 1)
 ```
 
@@ -102,19 +118,31 @@ Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang%5Ftran
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-* [  JavaScript ](#tab-panel-8029)
-* [  Python ](#tab-panel-8030)
+* [  JavaScript ](#tab-panel-8310)
+* [  Python ](#tab-panel-8311)
 
-JavaScript
+**JavaScript**
 
+```js
+const companyName1 = `Bs Beverages`;
+const companyName2 = `Around the Horn`;
+const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
+const batchResult = await env.DB.batch([
+  stmt.bind(companyName1),
+  stmt.bind(companyName2)
+]);
 ```
-const companyName1 = `Bs Beverages`;const companyName2 = `Around the Horn`;const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);const batchResult = await env.DB.batch([  stmt.bind(companyName1),  stmt.bind(companyName2)]);
-```
 
-Python
+**Python**
 
-```
-company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")batch_result = await self.env.DB.batch([    stmt.bind(company_name1),    stmt.bind(company_name2),])
+```py
+company_name1 = "Bs Beverages"
+company_name2 = "Around the Horn"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")
+batch_result = await self.env.DB.batch([
+    stmt.bind(company_name1),
+    stmt.bind(company_name2),
+])
 ```
 
 #### Parameters
@@ -130,77 +158,159 @@ company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.D
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8031)
-* [  Python ](#tab-panel-8032)
+* [  JavaScript ](#tab-panel-8312)
+* [  Python ](#tab-panel-8313)
 
-JavaScript
+**JavaScript**
 
+```js
+const companyName1 = `Bs Beverages`;
+const companyName2 = `Around the Horn`;
+const stmt = await env.DB.batch([
+  env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName1),
+  env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName2)
+]);
+return Response.json(stmt)
 ```
-const companyName1 = `Bs Beverages`;const companyName2 = `Around the Horn`;const stmt = await env.DB.batch([  env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName1),  env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName2)]);return Response.json(stmt)
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = await self.env.DB.batch([    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name1),    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name2),])return Response.json(stmt)
+
+
+company_name1 = "Bs Beverages"
+company_name2 = "Around the Horn"
+stmt = await self.env.DB.batch([
+    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name1),
+    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name2),
+])
+return Response.json(stmt)
 ```
 
-```
-[  {    "success": true,    "meta": {      "served_by": "miniflare.db",      "duration": 0,      "changes": 0,      "last_row_id": 0,      "changed_db": false,      "size_after": 8192,      "rows_read": 4,      "rows_written": 0    },    "results": [      {        "CustomerId": 11,        "CompanyName": "Bs Beverages",        "ContactName": "Victoria Ashworth"      },      {        "CustomerId": 13,        "CompanyName": "Bs Beverages",        "ContactName": "Random Name"      }    ]  },  {    "success": true,    "meta": {      "served_by": "miniflare.db",      "duration": 0,      "changes": 0,      "last_row_id": 0,      "changed_db": false,      "size_after": 8192,      "rows_read": 4,      "rows_written": 0    },    "results": [      {        "CustomerId": 4,        "CompanyName": "Around the Horn",        "ContactName": "Thomas Hardy"      }    ]  }]
+```json
+[
+  {
+    "success": true,
+    "meta": {
+      "served_by": "miniflare.db",
+      "duration": 0,
+      "changes": 0,
+      "last_row_id": 0,
+      "changed_db": false,
+      "size_after": 8192,
+      "rows_read": 4,
+      "rows_written": 0
+    },
+    "results": [
+      {
+        "CustomerId": 11,
+        "CompanyName": "Bs Beverages",
+        "ContactName": "Victoria Ashworth"
+      },
+      {
+        "CustomerId": 13,
+        "CompanyName": "Bs Beverages",
+        "ContactName": "Random Name"
+      }
+    ]
+  },
+  {
+    "success": true,
+    "meta": {
+      "served_by": "miniflare.db",
+      "duration": 0,
+      "changes": 0,
+      "last_row_id": 0,
+      "changed_db": false,
+      "size_after": 8192,
+      "rows_read": 4,
+      "rows_written": 0
+    },
+    "results": [
+      {
+        "CustomerId": 4,
+        "CompanyName": "Around the Horn",
+        "ContactName": "Thomas Hardy"
+      }
+    ]
+  }
+]
 ```
 
-* [  JavaScript ](#tab-panel-8033)
-* [  Python ](#tab-panel-8034)
+* [  JavaScript ](#tab-panel-8314)
+* [  Python ](#tab-panel-8315)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 console.log(stmt[1].results);
 ```
 
-Python
+**Python**
 
-```
+```py
 print(stmt[1].results.to_py())
 ```
 
-```
-[  {    "CustomerId": 4,    "CompanyName": "Around the Horn",    "ContactName": "Thomas Hardy"  }]
+```json
+[
+  {
+    "CustomerId": 4,
+    "CompanyName": "Around the Horn",
+    "ContactName": "Thomas Hardy"
+  }
+]
 ```
 
 #### Guidance
 
 * You can construct batches reusing the same prepared statement:
 
-  * [  JavaScript ](#tab-panel-8035)
-  * [  Python ](#tab-panel-8036)
-JavaScript
+  * [  JavaScript ](#tab-panel-8316)
+  * [  Python ](#tab-panel-8317)
+
+**JavaScript**
+```js
+const companyName1 = `Bs Beverages`;
+const companyName2 = `Around the Horn`;
+const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
+const batchResult = await env.DB.batch([
+  stmt.bind(companyName1),
+  stmt.bind(companyName2)
+]);
+return Response.json(batchResult);
 ```
-const companyName1 = `Bs Beverages`;const companyName2 = `Around the Horn`;const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);const batchResult = await env.DB.batch([  stmt.bind(companyName1),  stmt.bind(companyName2)]);return Response.json(batchResult);
-```
-Python
-```
+
+**Python**
+```py
 from workers import Response
-company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")batch_result = await self.env.DB.batch([    stmt.bind(company_name1),    stmt.bind(company_name2),])return Response.json(batch_result)
+company_name1 = "Bs Beverages"
+company_name2 = "Around the Horn"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")
+batch_result = await self.env.DB.batch([
+    stmt.bind(company_name1),
+    stmt.bind(company_name2),
+])
+return Response.json(batch_result)
 ```
 
 ### `exec()`
 
 Executes one or more queries directly without prepared statements or parameter bindings.
 
-* [  JavaScript ](#tab-panel-8037)
-* [  Python ](#tab-panel-8038)
+* [  JavaScript ](#tab-panel-8318)
+* [  Python ](#tab-panel-8319)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
 ```
 
-Python
+**Python**
 
-```
+```py
 return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"')
 ```
 
@@ -218,24 +328,31 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8039)
-* [  Python ](#tab-panel-8040)
+* [  JavaScript ](#tab-panel-8320)
+* [  Python ](#tab-panel-8321)
 
-JavaScript
+**JavaScript**
 
+```js
+const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
+return Response.json(returnValue);
 ```
-const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);return Response.json(returnValue);
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"')return Response.json(return_value)
+
+
+return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"')
+return Response.json(return_value)
 ```
 
-```
-{  "count": 1,  "duration": 1}
+```json
+{
+  "count": 1,
+  "duration": 1
+}
 ```
 
 #### Guidance
@@ -253,20 +370,29 @@ This API only works on databases created during D1's alpha period. Check which v
 
 Dumps the entire D1 database to an SQLite compatible file inside an ArrayBuffer.
 
-* [  JavaScript ](#tab-panel-8041)
-* [  Python ](#tab-panel-8042)
+* [  JavaScript ](#tab-panel-8322)
+* [  Python ](#tab-panel-8323)
 
-JavaScript
+**JavaScript**
 
+```js
+const dump = await db.dump();
+return new Response(dump, {
+  status: 200,
+  headers: {
+    "Content-Type": "application/octet-stream",
+  },
+});
 ```
-const dump = await db.dump();return new Response(dump, {  status: 200,  headers: {    "Content-Type": "application/octet-stream",  },});
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import Response
-dump = await db.dump()return Response(dump, status=200, headers={"Content-Type": "application/octet-stream"})
+
+
+dump = await db.dump()
+return Response(dump, status=200, headers={"Content-Type": "application/octet-stream"})
 ```
 
 #### Parameters
@@ -281,18 +407,18 @@ dump = await db.dump()return Response(dump, status=200, headers={"Content-Type":
 
 Starts a D1 session which maintains sequential consistency among queries executed on the returned `D1DatabaseSession` object.
 
-* [  JavaScript ](#tab-panel-8043)
-* [  Python ](#tab-panel-8044)
+* [  JavaScript ](#tab-panel-8324)
+* [  Python ](#tab-panel-8325)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const session = env.DB.withSession("<parameter>");
 ```
 
-Python
+**Python**
 
-```
+```py
 session = self.env.DB.withSession("<parameter>")
 ```
 
@@ -329,19 +455,29 @@ session = self.env.DB.withSession("<parameter>")
 
 Retrieves the latest `bookmark` from the D1 Session.
 
-* [  JavaScript ](#tab-panel-8045)
-* [  Python ](#tab-panel-8046)
+* [  JavaScript ](#tab-panel-8326)
+* [  Python ](#tab-panel-8327)
 
-JavaScript
+**JavaScript**
 
+```js
+const session = env.DB.withSession("first-primary");
+const result = await session
+  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
+  .run()
+const { bookmark } = session.getBookmark();
+  return bookmark;
 ```
-const session = env.DB.withSession("first-primary");const result = await session  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)  .run()const { bookmark } = session.getBookmark();  return bookmark;
-```
 
-Python
+**Python**
 
-```
-session = self.env.DB.withSession("first-primary")result = await session.prepare(    "SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'").run()
+```py
+session = self.env.DB.withSession("first-primary")
+result = await session.prepare(
+    "SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'"
+).run()
+
+
 bookmark = session.getBookmark()
 ```
 

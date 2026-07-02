@@ -28,19 +28,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-ai></rtk-ai>
 ```
 
 ### With Properties
 
-```
-<rtk-ai size="md"></rtk-ai>
+```html
+<rtk-ai
+ size="md">
+</rtk-ai>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-ai");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-ai");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -28,10 +28,30 @@ When debugging multiple Workers, you may need to allow your browser to open pop-
 
 To set up [VS Code ↗](https://code.visualstudio.com/) to support breakpoint debugging in your application, you should create a `.vscode/launch.json` file that contains the following configuration:
 
-.vscode/launch.json
+**.vscode/launch.json**
 
-```
-{  "configurations": [    {      "name": "<NAME_OF_WORKER>",      "type": "node",      "request": "attach",      "websocketAddress": "ws://localhost:9229/<NAME_OF_WORKER>",      "resolveSourceMapLocations": null,      "attachExistingChildren": false,      "autoAttachChildProcesses": false,      "sourceMaps": true    }  ],  "compounds": [    {      "name": "Debug Workers",      "configurations": ["<NAME_OF_WORKER>"],      "stopAll": true    }  ]}
+```json
+{
+  "configurations": [
+    {
+      "name": "<NAME_OF_WORKER>",
+      "type": "node",
+      "request": "attach",
+      "websocketAddress": "ws://localhost:9229/<NAME_OF_WORKER>",
+      "resolveSourceMapLocations": null,
+      "attachExistingChildren": false,
+      "autoAttachChildProcesses": false,
+      "sourceMaps": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Workers",
+      "configurations": ["<NAME_OF_WORKER>"],
+      "stopAll": true
+    }
+  ]
+}
 ```
 
 Here, `<NAME_OF_WORKER>` indicates the name of the Worker as specified in your Worker config file. If you have used the `inspectorPort` option to set a custom port then this should be the value provided in the `websocketaddress` field.

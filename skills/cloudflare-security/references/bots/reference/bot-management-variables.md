@@ -23,8 +23,8 @@ We also use additional validation methods, including checking ASN blocks and pub
 * **Serves Static Resource** (`cf.bot_management.static_resource`): An identifier that matches [file extensions](https://developers.cloudflare.com/bots/additional-configurations/static-resources/) for many types of static resources. Use this variable if you send emails that retrieve static images.
 * **ja3Hash** (`cf.bot_management.ja3_hash`) and **ja4** (`cf.bot_management.ja4`): A [**JA3/JA4 fingerprint**](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/) helps you profile specific SSL/TLS clients across different destination IPs, Ports, and X509 certificates.
 * **Bot Detection IDs** (`cf.bot_management.detection_ids`): List of IDs that correlate to the Bot Management heuristic detections made on a request (you can have multiple heuristic detections on the same request).
-* **Signed Agent** (`cf.bot_management.signed_agent`): A boolean value that indicates whether the request originated from a known [signed agent](https://developers.cloudflare.com/bots/concepts/bot/signed-agents/).
-* **Verified Bot Categories** (`cf.verified_bot_category`): A string that allows you to segment your verified bot traffic by its [type and purpose](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#categories).
+* **Signed Agent** (`cf.bot_management.signed_agent`): A boolean value that indicates whether the request originated from a known agent that self-identifies with Web Bot Auth. Such agents are now classified as [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) labeled as intermediary.
+* **Verified Bot Categories** (`cf.verified_bot_category`): A string that allows you to segment your verified bot traffic by its [type and purpose](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#legacy-categories).
 
 ## Workers variables
 
@@ -46,10 +46,13 @@ The Bot Management Corporate Proxy field contains identified cloud-based corpora
 
 You can access the Corporate Proxy field in [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), or [Workers](https://developers.cloudflare.com/workers/) to provide different security rules for traffic from these sources. You can also exempt them from rules using Bot Management scores.
 
-Example
+**Example**
 
-```
-not cf.bot_management.verified_botand not cf.bot_management.static_resourceand not  cf.bot_management.corporate_proxyand cf.bot_management.score lt 30
+```txt
+not cf.bot_management.verified_bot
+and not cf.bot_management.static_resource
+and not  cf.bot_management.corporate_proxy
+and cf.bot_management.score lt 30
 ```
 
 ## Log fields
@@ -62,6 +65,6 @@ Once you enable Bot Management, Cloudflare also surfaces bot information in its 
 * BotTags
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-management-variables/#page","headline":"Bot Management variables · Cloudflare bot solutions docs","description":"Ruleset Engine fields and Workers variables available for bot detection rules.","url":"https://developers.cloudflare.com/bots/reference/bot-management-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-management-variables/#page","headline":"Bot Management variables · Cloudflare bot solutions docs","description":"Ruleset Engine fields and Workers variables available for bot detection rules.","url":"https://developers.cloudflare.com/bots/reference/bot-management-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/bot-management-variables/","name":"Bot Management variables"}}]}
 ```

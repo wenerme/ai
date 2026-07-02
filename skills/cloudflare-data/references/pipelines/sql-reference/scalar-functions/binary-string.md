@@ -18,7 +18,7 @@ _Cloudflare Pipelines scalar function implementations are based on [Apache DataF
 
 Encode binary data into a textual representation.
 
-```
+```plaintext
 encode(expression, format)
 ```
 
@@ -33,7 +33,7 @@ encode(expression, format)
 
 Decode binary data from textual representation in string.
 
-```
+```plaintext
 decode(expression, format)
 ```
 

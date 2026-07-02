@@ -22,8 +22,16 @@ Cloudflare Fonts works by rewriting your webpage’s HTML. It removes Google Fon
 
 Cloudflare Fonts is compatible with browsers that support Unicode-range subsetting and WOFF or WOFF2 formats, including:
 
-```
-Chrome 36+Edge 16+Safari 10+Firefox 44+Opera 22+IE 9+Chrome for Android 115+Safari on iOS 10+Samsung Internet 5+
+```plaintext
+Chrome 36+
+Edge 16+
+Safari 10+
+Firefox 44+
+Opera 22+
+IE 9+
+Chrome for Android 115+
+Safari on iOS 10+
+Samsung Internet 5+
 ```
 
 ## Get started

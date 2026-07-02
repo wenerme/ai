@@ -18,7 +18,7 @@ The following request header transform rule removes the `cf-connecting-ip` heade
 
 Text in **Expression Editor**:
 
-```
+```txt
 starts_with(http.request.uri.path, "/private/")
 ```
 

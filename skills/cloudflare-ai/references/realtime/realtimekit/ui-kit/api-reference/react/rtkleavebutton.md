@@ -27,16 +27,29 @@ A button which toggles visilibility of the leave confirmation dialog.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLeaveButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkLeaveButton />;}
+
+
+function MyComponent() {
+  return <RtkLeaveButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLeaveButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkLeaveButton      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLeaveButton
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

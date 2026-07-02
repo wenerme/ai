@@ -26,14 +26,16 @@ A good tradeoff is to use a secure protocol such as [DNS over TLS](https://devel
 
 DNS64 is specifically for networks that already have NAT64 (Network Address Translation from IPv6 to IPv4) support. NAT64 translates IPv6 traffic to IPv4 at the network level, while DNS64 provides the corresponding translated addresses through DNS. If you are a network operator who has NAT64, you can test our DNS64 support by updating it to the following IP addresses:
 
-```
-2606:4700:4700::642606:4700:4700::6400
+```txt
+2606:4700:4700::64
+2606:4700:4700::6400
 ```
 
 Some devices use separate fields for all eight parts of IPv6 addresses and cannot accept the `::` IPv6 abbreviation syntax. For such fields enter:
 
-```
-2606:4700:4700:0:0:0:0:642606:4700:4700:0:0:0:0:6400
+```txt
+2606:4700:4700:0:0:0:0:64
+2606:4700:4700:0:0:0:0:6400
 ```
 
 ## Test DNS64

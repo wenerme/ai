@@ -20,9 +20,7 @@ DS records belong to your **registrar** (where the domain is registered), not to
 
 **To check for stale DS records:**
 
-Terminal window
-
-```
+```sh
 dig DS yourdomain.com
 ```
 

@@ -25,16 +25,29 @@ A component that lets you create a poll.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPollForm } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPollForm />;}
+
+
+function MyComponent() {
+  return <RtkPollForm />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPollForm } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPollForm      iconPack={defaultIconPack}      t={rtki18n}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPollForm
+      iconPack={defaultIconPack}
+      t={rtki18n}
+    />
+  );
+}
 ```
 
 ```json

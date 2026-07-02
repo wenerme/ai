@@ -32,9 +32,7 @@ Example host: `mtls-test.example.com`
 
 To generate and use your own CSR, you can run a command like the following:
 
-Terminal window
-
-```
+```sh
 openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'
 ```
 
@@ -52,9 +50,7 @@ An example is to [add both certificates to the Keychain ↗](https://support.app
 
 Another example is to generate a [PKCS12 (P12) certificate ↗](https://en.wikipedia.org/wiki/PKCS%5F12) file and then [add it to your browser ↗](https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/lifecycle-management/7.0.2?topic=dashboards-importing-certificates-configuring-browsers):
 
-Terminal window
-
-```
+```sh
 openssl pkcs12 -export -out certificate.p12 -inkey private-cert.pem -in cert.pem
 ```
 
@@ -62,9 +58,7 @@ Use the values from the previous step.
 
 Example using cURL command:
 
-Terminal window
-
-```
+```sh
 curl -v --cert cert.pem --key private-cert.pem <HOSTNAME>
 ```
 
@@ -92,26 +86,24 @@ Ensure you are not using a VPN that could interfere with certificates or TLS dec
 
 With the Public and Private Certificates in the same directory, with this cURL command, we will gain access:
 
-Terminal window
-
-```
+```sh
 curl -I --cert cert.pem --key private-cert.pem https://mtls-test.example.com/mtls-test
 ```
 
-```
-HTTP/2 200server: cloudflare
+```txt
+HTTP/2 200
+server: cloudflare
 ```
 
 Without the certificates, the terminal will display the following:
 
-Terminal window
-
-```
+```sh
 curl -I https://mtls-test.example.com/mtls-test
 ```
 
-```
-HTTP/2 403server: cloudflare
+```txt
+HTTP/2 403
+server: cloudflare
 ```
 
 ```json

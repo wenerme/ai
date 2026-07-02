@@ -66,13 +66,11 @@ Next, configure an automated script that will populate an Entra ID security grou
 To get started quickly, deploy our example Cloudflare Workers script by following the step-by-step instructions below. Alternatively, you can implement the script using [Azure Functions ↗](https://learn.microsoft.com/azure/azure-functions/functions-overview) or any other tool.
 
 1. Open a terminal and clone our example project.
-Terminal window
-```
+```sh
 npm create cloudflare@latest risky-users -- --template https://github.com/cloudflare/msft-risky-user-ad-sync
 ```
 2. Go to the project directory.
-Terminal window
-```
+```sh
 cd risky-users
 ```
 3. Modify the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include the following values:
@@ -81,17 +79,43 @@ cd risky-users
   * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).
   * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).
 
-  * [  wrangler.jsonc ](#tab-panel-7848)
-  * [  wrangler.toml ](#tab-panel-7849)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8061)
+  * [  wrangler.toml ](#tab-panel-8062)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "risky-users",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "src/index.js",
+  "workers_dev": false,
+  "account_id": "<ACCOUNT-ID>",
+  "vars": {
+    "AZURE_AD_TENANT_ID": "<TENANT-ID>",
+    "AZURE_AD_CLIENT_ID": "<CLIENT-ID>",
+  },
+  "triggers": {
+    "crons": ["* * * * *"],
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "risky-users",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "src/index.js",  "workers_dev": false,  "account_id": "<ACCOUNT-ID>",  "vars": {    "AZURE_AD_TENANT_ID": "<TENANT-ID>",    "AZURE_AD_CLIENT_ID": "<CLIENT-ID>",  },  "triggers": {    "crons": ["* * * * *"],  },}
-```
-TOML
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "risky-users"# Set this to today's datecompatibility_date = "2026-06-24"main = "src/index.js"workers_dev = falseaccount_id = "<ACCOUNT-ID>"
-[vars]AZURE_AD_TENANT_ID = "<TENANT-ID>"AZURE_AD_CLIENT_ID = "<CLIENT-ID>"
-[triggers]crons = [ "* * * * *" ]
+
+**TOML**
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "risky-users"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "src/index.js"
+workers_dev = false
+account_id = "<ACCOUNT-ID>"
+[vars]
+AZURE_AD_TENANT_ID = "<TENANT-ID>"
+AZURE_AD_CLIENT_ID = "<CLIENT-ID>"
+[triggers]
+crons = [ "* * * * *" ]
 ```
 
 Note
@@ -99,22 +123,18 @@ Note
 The [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) in this example schedules the script to run every minute. Learn more about [supported cron expressions](https://developers.cloudflare.com/workers/configuration/cron-triggers/#supported-cron-expressions).
 
 1. Deploy the Worker to Cloudflare's global network.
-Terminal window
-```
+```sh
 npx wrangler deploy
 ```
 2. Create a secret variable named `AZURE_AD_CLIENT_SECRET`.
-Terminal window
-```
+```sh
 wrangler secret put AZURE_AD_CLIENT_SECRET
 ```
 You will be prompted to input the secret's value. Enter the **Client secret** obtained when [setting up Microsoft Entra ID as an identity provider](#1-set-up-azure-ad-as-an-identity-provider).
 
 The Worker script will begin executing once per minute. To view realtime logs, run the following command and wait for the script to execute:
 
-Terminal window
-
-```
+```sh
 wrangler tail --format pretty
 ```
 

@@ -26,16 +26,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkDebuggerScreenshare } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkDebuggerScreenshare />;}
+
+
+function MyComponent() {
+  return <RtkDebuggerScreenshare />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkDebuggerScreenshare } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkDebuggerScreenshare      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkDebuggerScreenshare
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

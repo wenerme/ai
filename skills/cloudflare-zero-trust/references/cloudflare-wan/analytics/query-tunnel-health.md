@@ -20,19 +20,89 @@ The API call returns tunnel health check results by Cloudflare data center. Clou
 
 ## API Call
 
-Terminal window
-
-```
-echo '{ "query":  "query GetTunnelHealthCheckResults($accountTag: string, $datetimeStart: string, $datetimeEnd: string) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        magicTransitTunnelHealthChecksAdaptiveGroups(          limit: 100,          filter: {            datetime_geq: $datetimeStart,            datetime_lt:  $datetimeEnd,          }        ) {          avg {            tunnelState          }          dimensions {            tunnelName            edgeColoName          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "datetimeStart": "2022-08-04T00:00:00.000Z",    "datetimeEnd": "2022-08-04T01:00:00.000Z"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
+```bash
+echo '{ "query":
+  "query GetTunnelHealthCheckResults($accountTag: string, $datetimeStart: string, $datetimeEnd: string) {
+    viewer {
+      accounts(filter: {accountTag: $accountTag}) {
+        magicTransitTunnelHealthChecksAdaptiveGroups(
+          limit: 100,
+          filter: {
+            datetime_geq: $datetimeStart,
+            datetime_lt:  $datetimeEnd,
+          }
+        ) {
+          avg {
+            tunnelState
+          }
+          dimensions {
+            tunnelName
+            edgeColoName
+          }
+        }
+      }
+    }
+  }",
+  "variables": {
+    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
+    "datetimeStart": "2022-08-04T00:00:00.000Z",
+    "datetimeEnd": "2022-08-04T01:00:00.000Z"
+  }
+}' | tr -d '\n' | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @-
 ```
 
 The results are returned in JSON (as requested), so piping the output to `jq` formats them for easier parsing, as in the following example:
 
-Terminal window
+```bash
+... | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @- | jq .
 
-```
-... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
-## Example response:#=> {#=>   "data": {#=>     "viewer": {#=>       "accounts": [#=>         {#=>           "conduitEdgeTunnelHealthChecks": [#=>             {#=>               {#=>                 "avg": {#=>                   "tunnelState": 1#=>                 },#=>                 "dimensions": {#=>                   "edgeColoName": "mel01",#=>                   "tunnelName": "tunnel_01",#=>                   "tunnelState": 0.5#=>                 }#=>               },#=>               {#=>                 "avg": {#=>                   "tunnelState": 0.5#=>                 },#=>                 "count": 310,#=>                 "dimensions": {#=>                   "edgeColoName": "mel01",#=>                   "tunnelName": "tunnel_02",#=>                   "tunnelState": 0.5#=>                 }#=>               }#=>           ]#=>         }#=>       ]#=>     }#=>   },#=>   "errors": null#=> }
+
+## Example response:
+#=> {
+#=>   "data": {
+#=>     "viewer": {
+#=>       "accounts": [
+#=>         {
+#=>           "conduitEdgeTunnelHealthChecks": [
+#=>             {
+#=>               {
+#=>                 "avg": {
+#=>                   "tunnelState": 1
+#=>                 },
+#=>                 "dimensions": {
+#=>                   "edgeColoName": "mel01",
+#=>                   "tunnelName": "tunnel_01",
+#=>                   "tunnelState": 0.5
+#=>                 }
+#=>               },
+#=>               {
+#=>                 "avg": {
+#=>                   "tunnelState": 0.5
+#=>                 },
+#=>                 "count": 310,
+#=>                 "dimensions": {
+#=>                   "edgeColoName": "mel01",
+#=>                   "tunnelName": "tunnel_02",
+#=>                   "tunnelState": 0.5
+#=>                 }
+#=>               }
+#=>           ]
+#=>         }
+#=>       ]
+#=>     }
+#=>   },
+#=>   "errors": null
+#=> }
 ```
 
 ## Footnotes

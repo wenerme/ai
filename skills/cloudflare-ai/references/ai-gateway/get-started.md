@@ -25,10 +25,22 @@ Before making requests, you need two things:
 
 Run the following command to make your first request through AI Gateway. This example calls a Workers AI model, which requires the `@cf/` model prefix and the `cf-aig-gateway-id` header.
 
-Terminal window
-
-```
-# Run `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN,# and `wrangler whoami` to replace $CLOUDFLARE_ACCOUNT_ID.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "cf-aig-gateway-id: default" \  --header "Content-Type: application/json" \  --data '{    "model": "@cf/moonshotai/kimi-k2.6",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
+```bash
+# Run `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN,
+# and `wrangler whoami` to replace $CLOUDFLARE_ACCOUNT_ID.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "cf-aig-gateway-id: default" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "@cf/moonshotai/kimi-k2.6",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
 ```
 
 Note
@@ -39,8 +51,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-6662)
-* [ API ](#tab-panel-6663)
+* [ Dashboard ](#tab-panel-6858)
+* [ API ](#tab-panel-6859)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -72,10 +84,16 @@ Authenticate with your upstream AI provider using one of the following options:
 
 Call any model — whether hosted on Cloudflare or by a third-party provider — through the same Cloudflare API. No provider SDKs or API keys needed — authentication and billing are handled through your Cloudflare account. Three endpoints are available: `/ai/run` for all modalities, `/ai/v1/chat/completions` for OpenAI SDK compatibility, and `/ai/v1/responses` for agentic workflows.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "openai/gpt-4.1-mini",
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
+  }'
 ```
 
 Refer to [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) for details and examples.
@@ -84,7 +102,7 @@ Refer to [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/
 
 For direct integration with specific AI providers, use dedicated endpoints that maintain the original provider's API schema while adding AI Gateway features.
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/{provider}
 ```
 

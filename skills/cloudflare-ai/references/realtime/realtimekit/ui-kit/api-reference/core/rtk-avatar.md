@@ -28,19 +28,27 @@ Avatar component which renders a participant's image or their initials.
 
 ### Basic Usage
 
-```
+```html
 <rtk-avatar></rtk-avatar>
 ```
 
 ### With Properties
 
-```
-<rtk-avatar participant="example" size="md" variant="circular"></rtk-avatar>
+```html
+<rtk-avatar
+ participant="example"
+ size="md"
+ variant="circular">
+</rtk-avatar>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-avatar");
-  el.participant= {};</script>
+```html
+<script>
+  const el = document.querySelector("rtk-avatar");
+
+
+  el.participant= {};
+</script>
 ```
 
 ```json

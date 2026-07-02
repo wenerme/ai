@@ -168,8 +168,15 @@ Define Address Objects to represent the attribute/value pairs throughout the rem
 
 #### CLI
 
-```
-set address cf_wan_anycast_01 ip-netmask 162.159.135.1set address cf_wan_anycast_02 ip-netmask 172.64.135.1set address cf-wan-ipsec-vti-01-local ip-netmask 169.254.250.1/31set address cf-wan-ipsec-vti-02-local ip-netmask 169.254.250.3/31set address cf-wan-ipsec-vti-01-remote ip-netmask 169.254.250.0/32set address cf-wan-ipsec-vti-02-remote ip-netmask 169.254.250.2/32set address lan-net-192-168-125-0--24 ip-netmask 192.168.125.0/24set address internet_203-0-113-100--24 ip-netmask 203.0.113.100/24
+```txt
+set address cf_wan_anycast_01 ip-netmask 162.159.135.1
+set address cf_wan_anycast_02 ip-netmask 172.64.135.1
+set address cf-wan-ipsec-vti-01-local ip-netmask 169.254.250.1/31
+set address cf-wan-ipsec-vti-02-local ip-netmask 169.254.250.3/31
+set address cf-wan-ipsec-vti-01-remote ip-netmask 169.254.250.0/32
+set address cf-wan-ipsec-vti-02-remote ip-netmask 169.254.250.2/32
+set address lan-net-192-168-125-0--24 ip-netmask 192.168.125.0/24
+set address internet_203-0-113-100--24 ip-netmask 203.0.113.100/24
 ```
 
 #### Web UI
@@ -190,7 +197,7 @@ Allow the applicable network interfaces to respond to pings (ICMP Echo Request).
 
 #### CLI
 
-```
+```txt
 set network profiles interface-management-profile allow_ping ping yes
 ```
 
@@ -216,24 +223,29 @@ Note
 
 If you want to assign the tunnel interfaces to a Security Zone in this step, the Security Zone must already exist. This example assumes the Security Zone is created in the next step.
 
-```
-set network interface tunnel units tunnel.1 ip cf-wan-ipsec-vti-01-localset network interface tunnel units tunnel.1 interface-management-profile allow_ping
-set network interface tunnel units tunnel.2 ip cf-wan-ipsec-vti-02-localset network interface tunnel units tunnel.2 interface-management-profile allow_ping
+```txt
+set network interface tunnel units tunnel.1 ip cf-wan-ipsec-vti-01-local
+set network interface tunnel units tunnel.1 interface-management-profile allow_ping
+
+
+set network interface tunnel units tunnel.2 ip cf-wan-ipsec-vti-02-local
+set network interface tunnel units tunnel.2 interface-management-profile allow_ping
 ```
 
 #### CLI - Assign Tunnel Interfaces to the Virtual Router
 
 Assign both `tunnel` interfaces to the default Virtual Router:
 
-```
-set network virtual-router default interface tunnel.1set network virtual-router default interface tunnel.2
+```txt
+set network virtual-router default interface tunnel.1
+set network virtual-router default interface tunnel.2
 ```
 
 #### CLI - Assign Tunnel Interfaces to Security Zone
 
 Create the `cloudflare` security zone if it does not already exist and bind `tunnel.1` and `tunnel.2` interfaces.
 
-```
+```txt
 set zone cloudflare network layer3  [ tunnel.1 tunnel.2 ]
 ```
 
@@ -276,8 +288,11 @@ Define an IKE Crypto Profile with the following settings:
 
 ###### CLI
 
-```
-set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 hash sha256set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 dh-group group20set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 encryption aes-256-cbcset network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 lifetime hours 8
+```txt
+set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 hash sha256
+set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 dh-group group20
+set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 encryption aes-256-cbc
+set network ike crypto-profiles ike-crypto-profiles ike-aes256cbc-sha256-dh20 lifetime hours 8
 ```
 
 ###### Web UI
@@ -296,9 +311,39 @@ Each tunnel will have its own Pre-Shared Key and Local ID (FQDN/hostname) - ensu
 
 ###### CLI
 
-```
-set network ike gateway cf-wan-ike-gw-01 authentication pre-shared-key key "Cloudflare-WAN-T1-PSK-1234!"set network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-ppk enabled noset network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-ppk negotiation-mode preferredset network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-kem enable noset network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-kem block-vulnerable-cipher yesset network ike gateway cf-wan-ike-gw-01 protocol ikev2 ikev2-fragment enable noset network ike gateway cf-wan-ike-gw-01 protocol ikev2 dpd enable yesset network ike gateway cf-wan-ike-gw-01 protocol ikev2 ike-crypto-profile ike-aes256cbc-sha256-dh20set network ike gateway cf-wan-ike-gw-01 protocol ikev1 dpd enable yesset network ike gateway cf-wan-ike-gw-01 protocol version ikev2set network ike gateway cf-wan-ike-gw-01 local-address interface ethernet1/1 ip internet_203-0-113-100--24set network ike gateway cf-wan-ike-gw-01 protocol-common nat-traversal enable noset network ike gateway cf-wan-ike-gw-01 protocol-common fragmentation enable noset network ike gateway cf-wan-ike-gw-01 peer-address ip cf_wan_anycast_01set network ike gateway cf-wan-ike-gw-01 local-id type fqdn id "bf6c493d03<REDACTED>.ipsec.cloudflare.com"
-set network ike gateway cf-wan-ike-gw-02 authentication pre-shared-key key "Cloudflare-WAN-T2-PSK-1234!"set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-ppk enabled noset network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-ppk negotiation-mode preferredset network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-kem enable noset network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-kem block-vulnerable-cipher yesset network ike gateway cf-wan-ike-gw-02 protocol ikev2 ikev2-fragment enable noset network ike gateway cf-wan-ike-gw-02 protocol ikev2 dpd enable yesset network ike gateway cf-wan-ike-gw-02 protocol ikev2 ike-crypto-profile ike-aes256cbc-sha256-dh20set network ike gateway cf-wan-ike-gw-02 protocol ikev1 dpd enable yesset network ike gateway cf-wan-ike-gw-02 protocol version ikev2set network ike gateway cf-wan-ike-gw-02 local-address interface ethernet1/1 ip internet_203-0-113-100--24set network ike gateway cf-wan-ike-gw-02 protocol-common nat-traversal enable noset network ike gateway cf-wan-ike-gw-02 protocol-common fragmentation enable noset network ike gateway cf-wan-ike-gw-02 peer-address ip cf_wan_anycast_02set network ike gateway cf-wan-ike-gw-02 local-id type fqdn id "0287844e9d<REDACTED>.ipsec.cloudflare.com"
+```txt
+set network ike gateway cf-wan-ike-gw-01 authentication pre-shared-key key "Cloudflare-WAN-T1-PSK-1234!"
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-ppk enabled no
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-ppk negotiation-mode preferred
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-kem enable no
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 pq-kem block-vulnerable-cipher yes
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 ikev2-fragment enable no
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 dpd enable yes
+set network ike gateway cf-wan-ike-gw-01 protocol ikev2 ike-crypto-profile ike-aes256cbc-sha256-dh20
+set network ike gateway cf-wan-ike-gw-01 protocol ikev1 dpd enable yes
+set network ike gateway cf-wan-ike-gw-01 protocol version ikev2
+set network ike gateway cf-wan-ike-gw-01 local-address interface ethernet1/1 ip internet_203-0-113-100--24
+set network ike gateway cf-wan-ike-gw-01 protocol-common nat-traversal enable no
+set network ike gateway cf-wan-ike-gw-01 protocol-common fragmentation enable no
+set network ike gateway cf-wan-ike-gw-01 peer-address ip cf_wan_anycast_01
+set network ike gateway cf-wan-ike-gw-01 local-id type fqdn id "bf6c493d03<REDACTED>.ipsec.cloudflare.com"
+
+
+set network ike gateway cf-wan-ike-gw-02 authentication pre-shared-key key "Cloudflare-WAN-T2-PSK-1234!"
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-ppk enabled no
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-ppk negotiation-mode preferred
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-kem enable no
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-kem block-vulnerable-cipher yes
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 ikev2-fragment enable no
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 dpd enable yes
+set network ike gateway cf-wan-ike-gw-02 protocol ikev2 ike-crypto-profile ike-aes256cbc-sha256-dh20
+set network ike gateway cf-wan-ike-gw-02 protocol ikev1 dpd enable yes
+set network ike gateway cf-wan-ike-gw-02 protocol version ikev2
+set network ike gateway cf-wan-ike-gw-02 local-address interface ethernet1/1 ip internet_203-0-113-100--24
+set network ike gateway cf-wan-ike-gw-02 protocol-common nat-traversal enable no
+set network ike gateway cf-wan-ike-gw-02 protocol-common fragmentation enable no
+set network ike gateway cf-wan-ike-gw-02 peer-address ip cf_wan_anycast_02
+set network ike gateway cf-wan-ike-gw-02 local-id type fqdn id "0287844e9d<REDACTED>.ipsec.cloudflare.com"
 ```
 
 ##### Web UI
@@ -348,8 +393,11 @@ Define an IPsec Crypto Profile with the following settings:
 
 ###### CLI
 
-```
-set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 esp authentication sha256set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 esp encryption aes-256-cbcset network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 lifetime hours 8set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 dh-group group20
+```txt
+set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 esp authentication sha256
+set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 esp encryption aes-256-cbc
+set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 lifetime hours 8
+set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh20 dh-group group20
 ```
 
 ###### Web UI
@@ -369,9 +417,19 @@ set network ike crypto-profiles ipsec-crypto-profiles ipsec-aes256cbc-sha256-dh2
 
 * Tunnel 1
 
-```
-set network tunnel ipsec cf-wan-ipsec-tun-01 auto-key ike-gateway cf-wan-ike-gw-01set network tunnel ipsec cf-wan-ipsec-tun-01 auto-key ipsec-crypto-profile ipsec-aes256cbc-sha256-dh20set network tunnel ipsec cf-wan-ipsec-tun-01 tunnel-monitor enable noset network tunnel ipsec cf-wan-ipsec-tun-01 tunnel-interface tunnel.1set network tunnel ipsec cf-wan-ipsec-tun-01 anti-replay no
-set network tunnel ipsec cf-wan-ipsec-tun-02 auto-key ike-gateway cf-wan-ike-gw-02set network tunnel ipsec cf-wan-ipsec-tun-02 auto-key ipsec-crypto-profile ipsec-aes256cbc-sha256-dh20set network tunnel ipsec cf-wan-ipsec-tun-02 tunnel-monitor enable noset network tunnel ipsec cf-wan-ipsec-tun-02 tunnel-interface tunnel.2set network tunnel ipsec cf-wan-ipsec-tun-02 anti-replay no
+```txt
+set network tunnel ipsec cf-wan-ipsec-tun-01 auto-key ike-gateway cf-wan-ike-gw-01
+set network tunnel ipsec cf-wan-ipsec-tun-01 auto-key ipsec-crypto-profile ipsec-aes256cbc-sha256-dh20
+set network tunnel ipsec cf-wan-ipsec-tun-01 tunnel-monitor enable no
+set network tunnel ipsec cf-wan-ipsec-tun-01 tunnel-interface tunnel.1
+set network tunnel ipsec cf-wan-ipsec-tun-01 anti-replay no
+
+
+set network tunnel ipsec cf-wan-ipsec-tun-02 auto-key ike-gateway cf-wan-ike-gw-02
+set network tunnel ipsec cf-wan-ipsec-tun-02 auto-key ipsec-crypto-profile ipsec-aes256cbc-sha256-dh20
+set network tunnel ipsec cf-wan-ipsec-tun-02 tunnel-monitor enable no
+set network tunnel ipsec cf-wan-ipsec-tun-02 tunnel-interface tunnel.2
+set network tunnel ipsec cf-wan-ipsec-tun-02 anti-replay no
 ```
 
 ###### Web UI - Define IPsec Tunnels
@@ -433,8 +491,17 @@ Firewall rules added from the CLI will always be at the very bottom of the ruleb
 
 Use the `move rulebase security rules` `<RULE_NAME>` `[after|before|top|bottom]` `<RULE_NAME - Desired position>`
 
-```
-set rulebase security rules trust-to-cloudflare to cloudflareset rulebase security rules trust-to-cloudflare from trustset rulebase security rules trust-to-cloudflare source anyset rulebase security rules trust-to-cloudflare destination anyset rulebase security rules trust-to-cloudflare application anyset rulebase security rules trust-to-cloudflare service application-defaultset rulebase security rules trust-to-cloudflare action allowset rulebase security rules trust-to-cloudflare log-start noset rulebase security rules trust-to-cloudflare log-end yesset rulebase security rules trust-to-cloudflare rule-type universal
+```txt
+set rulebase security rules trust-to-cloudflare to cloudflare
+set rulebase security rules trust-to-cloudflare from trust
+set rulebase security rules trust-to-cloudflare source any
+set rulebase security rules trust-to-cloudflare destination any
+set rulebase security rules trust-to-cloudflare application any
+set rulebase security rules trust-to-cloudflare service application-default
+set rulebase security rules trust-to-cloudflare action allow
+set rulebase security rules trust-to-cloudflare log-start no
+set rulebase security rules trust-to-cloudflare log-end yes
+set rulebase security rules trust-to-cloudflare rule-type universal
 ```
 
 ### Web UI - Add Security Policy from `trust` to `cloudflare`
@@ -458,8 +525,17 @@ Firewall rules added from the CLI will always be at the very bottom of the ruleb
 
 Use the `move rulebase security rules` `<RULE_NAME>` `[after|before|top|bottom]` `<RULE_NAME - Desired position>`
 
-```
-set rulebase security rules cloudflare-to-trust to trustset rulebase security rules cloudflare-to-trust from cloudflareset rulebase security rules cloudflare-to-trust source anyset rulebase security rules cloudflare-to-trust destination anyset rulebase security rules cloudflare-to-trust application anyset rulebase security rules cloudflare-to-trust service application-defaultset rulebase security rules cloudflare-to-trust action allowset rulebase security rules cloudflare-to-trust log-start noset rulebase security rules cloudflare-to-trust log-end yesset rulebase security rules cloudflare-to-trust rule-type universal
+```txt
+set rulebase security rules cloudflare-to-trust to trust
+set rulebase security rules cloudflare-to-trust from cloudflare
+set rulebase security rules cloudflare-to-trust source any
+set rulebase security rules cloudflare-to-trust destination any
+set rulebase security rules cloudflare-to-trust application any
+set rulebase security rules cloudflare-to-trust service application-default
+set rulebase security rules cloudflare-to-trust action allow
+set rulebase security rules cloudflare-to-trust log-start no
+set rulebase security rules cloudflare-to-trust log-end yes
+set rulebase security rules cloudflare-to-trust rule-type universal
 ```
 
 ### Web UI - Add Security Policy from `cloudflare` to `trust`
@@ -491,14 +567,30 @@ Ensure any traffic flows processed by Policy Based Forwarding is exempted from N
 
 * Tunnel 1
 
-```
-set rulebase pbf rules cf-wan-to-internet-01 action forward nexthop ip-address cf-wan-ipsec-vti-01-remoteset rulebase pbf rules cf-wan-to-internet-01 action forward egress-interface tunnel.1set rulebase pbf rules cf-wan-to-internet-01 from zone trustset rulebase pbf rules cf-wan-to-internet-01 enforce-symmetric-return enabled noset rulebase pbf rules cf-wan-to-internet-01 source lan-net-192-168-125-0--24set rulebase pbf rules cf-wan-to-internet-01 destination anyset rulebase pbf rules cf-wan-to-internet-01 source-user anyset rulebase pbf rules cf-wan-to-internet-01 application anyset rulebase pbf rules cf-wan-to-internet-01 service any
+```txt
+set rulebase pbf rules cf-wan-to-internet-01 action forward nexthop ip-address cf-wan-ipsec-vti-01-remote
+set rulebase pbf rules cf-wan-to-internet-01 action forward egress-interface tunnel.1
+set rulebase pbf rules cf-wan-to-internet-01 from zone trust
+set rulebase pbf rules cf-wan-to-internet-01 enforce-symmetric-return enabled no
+set rulebase pbf rules cf-wan-to-internet-01 source lan-net-192-168-125-0--24
+set rulebase pbf rules cf-wan-to-internet-01 destination any
+set rulebase pbf rules cf-wan-to-internet-01 source-user any
+set rulebase pbf rules cf-wan-to-internet-01 application any
+set rulebase pbf rules cf-wan-to-internet-01 service any
 ```
 
 * Tunnel 2
 
-```
-set rulebase pbf rules cf-wan-to-internet-02 action forward nexthop ip-address cf-wan-ipsec-vti-02-remoteset rulebase pbf rules cf-wan-to-internet-02 action forward egress-interface tunnel.2set rulebase pbf rules cf-wan-to-internet-02 from zone trustset rulebase pbf rules cf-wan-to-internet-02 enforce-symmetric-return enabled noset rulebase pbf rules cf-wan-to-internet-02 source lan-net-192-168-125-0--24set rulebase pbf rules cf-wan-to-internet-02 destination anyset rulebase pbf rules cf-wan-to-internet-02 source-user anyset rulebase pbf rules cf-wan-to-internet-02 application anyset rulebase pbf rules cf-wan-to-internet-02 service any
+```txt
+set rulebase pbf rules cf-wan-to-internet-02 action forward nexthop ip-address cf-wan-ipsec-vti-02-remote
+set rulebase pbf rules cf-wan-to-internet-02 action forward egress-interface tunnel.2
+set rulebase pbf rules cf-wan-to-internet-02 from zone trust
+set rulebase pbf rules cf-wan-to-internet-02 enforce-symmetric-return enabled no
+set rulebase pbf rules cf-wan-to-internet-02 source lan-net-192-168-125-0--24
+set rulebase pbf rules cf-wan-to-internet-02 destination any
+set rulebase pbf rules cf-wan-to-internet-02 source-user any
+set rulebase pbf rules cf-wan-to-internet-02 application any
+set rulebase pbf rules cf-wan-to-internet-02 service any
 ```
 
 ### Web UI - Add Policy Based Forwarding Rules
@@ -542,13 +634,25 @@ If you have Cloudflare One configured to perform [HTTPS traffic inspection](http
 
 Use [show ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli) commands to display Phase 1 and Phase 2 security associations:
 
-```
+```txt
 admin@panfw01> show vpn ike-sa
-IKEv2 SAsGateway ID      Peer-Address       Gateway Name       Role SN    Algorithm             Established     Expiration      Xt Child  ST----------      ------------       ------------       ---- --    ---------             -----------     ----------      -- -----  --1               162.159.135.1      cf-wan-ike-gw-01   Init 46    PSK/DH14/A256/SHA256  Mar.22 23:14:24 Mar.23 07:14:24 0  1      Established2               172.64.135.1       cf-wan-ike-gw-02   Init 45    PSK/DH14/A256/SHA256  Mar.22 23:05:02 Mar.23 07:05:02 0  1      Established
+
+
+IKEv2 SAs
+Gateway ID      Peer-Address       Gateway Name       Role SN    Algorithm             Established     Expiration      Xt Child  ST
+----------      ------------       ------------       ---- --    ---------             -----------     ----------      -- -----  --
+1               162.159.135.1      cf-wan-ike-gw-01   Init 46    PSK/DH14/A256/SHA256  Mar.22 23:14:24 Mar.23 07:14:24 0  1      Established
+2               172.64.135.1       cf-wan-ike-gw-02   Init 45    PSK/DH14/A256/SHA256  Mar.22 23:05:02 Mar.23 07:05:02 0  1      Established
 ```
 
-```
-IKEv2 IPSec Child SAsGateway Name                   TnID     Tunnel                     ID       Parent   Role SPI(in)  SPI(out) MsgID    ST------------                   ----     ------                     --       ------   ---- -------  -------- -----    --cf-wan-ike-gw-01               1        cf-wan-ipsec-tun-01        452741   97       Init B7D055D3 4CB26B43 00000001 Maturecf-wan-ike-gw-02               2        cf-wan-ipsec-tun-02        452742   98       Init B4629A07 165D416C 00000001 Mature
+```txt
+IKEv2 IPSec Child SAs
+Gateway Name                   TnID     Tunnel                     ID       Parent   Role SPI(in)  SPI(out) MsgID    ST
+------------                   ----     ------                     --       ------   ---- -------  -------- -----    --
+cf-wan-ike-gw-01               1        cf-wan-ipsec-tun-01        452741   97       Init B7D055D3 4CB26B43 00000001 Mature
+cf-wan-ike-gw-02               2        cf-wan-ipsec-tun-02        452742   98       Init B4629A07 165D416C 00000001 Mature
+
+
 Show IKEv2 SA: Total 2 gateways found. 2 ike sa found.
 ```
 
@@ -556,18 +660,34 @@ Show IKEv2 SA: Total 2 gateways found. 2 ike sa found.
 
 Use [test ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli) commands to force Phase 1 and Phase 2 security associations:
 
-```
+```txt
 admin@panfw01> test vpn ike-sa gateway cf-wan-ike-gw-01
-Start time: Mar.30 21:23:23Initiate 1 IKE SA.
+
+
+Start time: Mar.30 21:23:23
+Initiate 1 IKE SA.
+
+
 admin@panfw01> test vpn ike-sa gateway cf-wan-ike-gw-02
-Start time: Mar.30 21:23:24Initiate 1 IKE SA.
+
+
+Start time: Mar.30 21:23:24
+Initiate 1 IKE SA.
 ```
 
-```
+```txt
 admin@panfw01> test vpn ipsec-sa tunnel cf-wan-ipsec-tun-01
-Start time: Mar.30 21:26:50Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-01.
+
+
+Start time: Mar.30 21:26:50
+Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-01.
+
+
 admin@panfw01> test vpn ipsec-sa tunnel cf-wan-ipsec-tun-02
-Start time: Mar.30 21:26:52Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-02.
+
+
+Start time: Mar.30 21:26:52
+Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-02.
 ```
 
 ### Palo Alto Networks Documentation

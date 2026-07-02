@@ -25,20 +25,33 @@ A label that displays the meeting title from the meeting metadata.
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let titleLabel = RtkMeetingTitleLabel(meeting: rtkClient)view.addSubview(titleLabel)
+
+
+let titleLabel = RtkMeetingTitleLabel(meeting: rtkClient)
+view.addSubview(titleLabel)
 ```
 
 ### With custom appearance
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let appearance = RtkTextAppearance(    font: UIFont.systemFont(ofSize: 18, weight: .bold),    textColor: .white)let titleLabel = RtkMeetingTitleLabel(    meeting: rtkClient,    appearance: appearance)view.addSubview(titleLabel)
+
+
+let appearance = RtkTextAppearance(
+    font: UIFont.systemFont(ofSize: 18, weight: .bold),
+    textColor: .white
+)
+let titleLabel = RtkMeetingTitleLabel(
+    meeting: rtkClient,
+    appearance: appearance
+)
+view.addSubview(titleLabel)
 ```
 
 ```json

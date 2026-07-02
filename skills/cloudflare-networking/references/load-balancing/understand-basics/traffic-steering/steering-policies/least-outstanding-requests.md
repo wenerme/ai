@@ -20,10 +20,12 @@ Least Outstanding Requests steering is best to use if your pools are easily over
 
 ## Configure via the API
 
-Load Balancers
+**Load Balancers**
 
-```
-{  "steering_policy": "least_outstanding_requests"}
+```json
+{
+  "steering_policy": "least_outstanding_requests"
+}
 ```
 
 Refer to the [API documentation](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/update/) for more information on the load balancer configuration.

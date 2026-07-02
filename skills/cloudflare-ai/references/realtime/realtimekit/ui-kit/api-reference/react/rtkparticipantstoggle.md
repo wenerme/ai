@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of participants. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSidebar: boolean; sidebar: 'participants' }
 ```
 
@@ -35,16 +35,30 @@ TypeScript
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkParticipantsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkParticipantsToggle />;}
+
+
+function MyComponent() {
+  return <RtkParticipantsToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkParticipantsToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkParticipantsToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantsToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

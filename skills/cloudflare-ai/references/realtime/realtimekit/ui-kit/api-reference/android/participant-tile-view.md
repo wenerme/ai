@@ -35,16 +35,21 @@ A component which plays a participant's video and allows for placement of compon
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.participanttile.RtkParticipantTileView    android:id="@+id/rtk_participant_tile"    android:layout_width="match_parent"    android:layout_height="200dp"    app:rtk_ptv_nameTagPosition="BOTTOM_LEFT" />
+```xml
+<com.cloudflare.realtimekit.ui.view.participanttile.RtkParticipantTileView
+    android:id="@+id/rtk_participant_tile"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    app:rtk_ptv_nameTagPosition="BOTTOM_LEFT" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val tile = findViewById<RtkParticipantTileView>(R.id.rtk_participant_tile)tile.activate(participant)
+```kotlin
+val tile = findViewById<RtkParticipantTileView>(R.id.rtk_participant_tile)
+tile.activate(participant)
 ```
 
 ```json

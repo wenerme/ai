@@ -26,29 +26,92 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-11817)
-* [  Hono ](#tab-panel-11818)
+* [  TypeScript ](#tab-panel-12050)
+* [  Hono ](#tab-panel-12051)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import OpenAI from "openai";
-export default {  async fetch(request, env, ctx): Promise<Response> {    const openai = new OpenAI({      apiKey: env.OPENAI_API_KEY,    });
-    // Create a TransformStream to handle streaming data    let { readable, writable } = new TransformStream();    let writer = writable.getWriter();    const textEncoder = new TextEncoder();
-    ctx.waitUntil(      (async () => {        const stream = await openai.chat.completions.create({          model: "gpt-4o-mini",          messages: [{ role: "user", content: "Tell me a story" }],          stream: true,        });
-        // loop over the data as it is streamed and write to the writeable        for await (const part of stream) {          writer.write(            textEncoder.encode(part.choices[0]?.delta?.content || ""),          );        }        writer.close();      })(),    );
-    // Send the readable back to the browser    return new Response(readable);  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const openai = new OpenAI({
+      apiKey: env.OPENAI_API_KEY,
+    });
+
+
+    // Create a TransformStream to handle streaming data
+    let { readable, writable } = new TransformStream();
+    let writer = writable.getWriter();
+    const textEncoder = new TextEncoder();
+
+
+    ctx.waitUntil(
+      (async () => {
+        const stream = await openai.chat.completions.create({
+          model: "gpt-4o-mini",
+          messages: [{ role: "user", content: "Tell me a story" }],
+          stream: true,
+        });
+
+
+        // loop over the data as it is streamed and write to the writeable
+        for await (const part of stream) {
+          writer.write(
+            textEncoder.encode(part.choices[0]?.delta?.content || ""),
+          );
+        }
+        writer.close();
+      })(),
+    );
+
+
+    // Send the readable back to the browser
+    return new Response(readable);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { streamText } from "hono/streaming";import OpenAI from "openai";
-interface Env {  OPENAI_API_KEY: string;}
+```ts
+import { Hono } from "hono";
+import { streamText } from "hono/streaming";
+import OpenAI from "openai";
+
+
+interface Env {
+  OPENAI_API_KEY: string;
+}
+
+
 const app = new Hono<{ Bindings: Env }>();
-app.get("*", async (c) => {  const openai = new OpenAI({    apiKey: c.env.OPENAI_API_KEY,  });
-  const chatStream = await openai.chat.completions.create({    model: "gpt-4o-mini",    messages: [{ role: "user", content: "Tell me a story" }],    stream: true,  });
-  return streamText(c, async (stream) => {    for await (const message of chatStream) {      await stream.write(message.choices[0].delta.content || "");    }    stream.close();  });});
+
+
+app.get("*", async (c) => {
+  const openai = new OpenAI({
+    apiKey: c.env.OPENAI_API_KEY,
+  });
+
+
+  const chatStream = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [{ role: "user", content: "Tell me a story" }],
+    stream: true,
+  });
+
+
+  return streamText(c, async (stream) => {
+    for await (const message of chatStream) {
+      await stream.write(message.choices[0].delta.content || "");
+    }
+    stream.close();
+  });
+});
+
+
 export default app;
 ```
 

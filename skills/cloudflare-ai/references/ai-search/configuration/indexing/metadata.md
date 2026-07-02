@@ -41,10 +41,14 @@ Custom metadata allows you to define additional fields for filtering search resu
 
 Before custom metadata can be extracted, define a schema in your AI Search configuration using the `custom_metadata` field. The schema specifies which fields to extract and their data types.
 
-TypeScript
+**TypeScript**
 
-```
-custom_metadata: [  { field_name: "category", data_type: "text" },  { field_name: "version", data_type: "number" },  { field_name: "is_public", data_type: "boolean" },];
+```ts
+custom_metadata: [
+  { field_name: "category", data_type: "text" },
+  { field_name: "version", data_type: "number" },
+  { field_name: "is_public", data_type: "boolean" },
+];
 ```
 
 **Schema constraints:**
@@ -83,8 +87,10 @@ When you modify the `custom_metadata` schema:
 
 If file metadata exceeds size limits, the metadata is replaced with an error indicator:
 
-```
-{  "file": { "error": "metadata is too large" }}
+```json
+{
+  "file": { "error": "metadata is too large" }
+}
 ```
 
 To avoid this, keep individual metadata values concise.

@@ -64,40 +64,97 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-6972)
-* [  wrangler.toml ](#tab-panel-6973)
+* [  wrangler.jsonc ](#tab-panel-7220)
+* [  wrangler.toml ](#tab-panel-7221)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "playwright-mcp-example",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "browser": {
+    "binding": "BROWSER",
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["PlaywrightMCP"],
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "PlaywrightMCP",
+      },
+    ],
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "playwright-mcp-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "BROWSER",  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["PlaywrightMCP"],    },  ],  "durable_objects": {    "bindings": [      {        "name": "MCP_OBJECT",        "class_name": "PlaywrightMCP",      },    ],  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "playwright-mcp-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[browser]binding = "BROWSER"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "PlaywrightMCP" ]
-[[durable_objects.bindings]]name = "MCP_OBJECT"class_name = "PlaywrightMCP"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "playwright-mcp-example"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[browser]
+binding = "BROWSER"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "PlaywrightMCP" ]
+
+
+[[durable_objects.bindings]]
+name = "MCP_OBJECT"
+class_name = "PlaywrightMCP"
 ```
 
 1. Edit the code.
 
-src/index.ts
+**src/index.ts**
 
-```
-import { env } from "cloudflare:workers";import { createMcpAgent } from "@cloudflare/playwright-mcp";
+```ts
+import { env } from "cloudflare:workers";
+import { createMcpAgent } from "@cloudflare/playwright-mcp";
+
+
 export const PlaywrightMCP = createMcpAgent(env.BROWSER);
-export default {  fetch(request: Request, env: Env, ctx: ExecutionContext) {    const { pathname } = new URL(request.url);
-    switch (pathname) {      case "/sse":      case "/sse/message":        return PlaywrightMCP.serveSSE("/sse").fetch(request, env, ctx);      case "/mcp":        return PlaywrightMCP.serve("/mcp").fetch(request, env, ctx);      default:        return new Response("Not Found", { status: 404 });    }  },};
+
+
+export default {
+  fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    const { pathname } = new URL(request.url);
+
+
+    switch (pathname) {
+      case "/sse":
+      case "/sse/message":
+        return PlaywrightMCP.serveSSE("/sse").fetch(request, env, ctx);
+      case "/mcp":
+        return PlaywrightMCP.serve("/mcp").fetch(request, env, ctx);
+      default:
+        return new Response("Not Found", { status: 404 });
+    }
+  },
+};
 ```
 
 1. Deploy the server.
 
-Terminal window
-
-```
+```bash
 npx wrangler deploy
 ```
 

@@ -58,9 +58,7 @@ This will create a new `hello-ai` directory. Your new `hello-ai` directory will 
 
 Go to your application directory:
 
-Terminal window
-
-```
+```sh
 cd hello-ai
 ```
 
@@ -70,19 +68,24 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11380)
-* [  wrangler.toml ](#tab-panel-11381)
+* [  wrangler.jsonc ](#tab-panel-11675)
+* [  wrangler.toml ](#tab-panel-11676)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "ai": {
+    "binding": "AI"
+  }
+}
 ```
-{  "ai": {    "binding": "AI"  }}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI"
+```toml
+[ai]
+binding = "AI"
 ```
 
 Your binding is [available in your Worker code](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#bindings-in-es-modules-format) on [env.AI](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
@@ -95,22 +98,44 @@ You are now ready to run an inference task in your Worker. In this case, you wil
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-11382)
-* [  TypeScript ](#tab-panel-11383)
+* [  JavaScript ](#tab-panel-11677)
+* [  TypeScript ](#tab-panel-11678)
 
-index.js
+**index.js**
 
+```js
+export default {
+  async fetch(request, env) {
+    const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+      prompt: "What is the origin of the phrase Hello, World",
+    });
+
+
+    return new Response(JSON.stringify(response));
+  },
+};
 ```
-export default {  async fetch(request, env) {    const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {      prompt: "What is the origin of the phrase Hello, World",    });
-    return new Response(JSON.stringify(response));  },};
-```
 
-index.ts
+**index.ts**
 
-```
-export interface Env {  // If you set another name in the Wrangler config file as the value for 'binding',  // replace "AI" with the variable name you defined.  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {      prompt: "What is the origin of the phrase Hello, World",    });
-    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  // If you set another name in the Wrangler config file as the value for 'binding',
+  // replace "AI" with the variable name you defined.
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+      prompt: "What is the origin of the phrase Hello, World",
+    });
+
+
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Up to this point, you have created an AI binding for your Worker and configured your Worker to be able to execute the Llama 3.1 model. You can now test your project locally before you deploy globally.
@@ -119,9 +144,7 @@ Up to this point, you have created an AI binding for your Worker and configured 
 
 While in your project directory, test Workers AI locally by running [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev):
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
@@ -131,17 +154,17 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 
 You will be prompted to log in after you run `wrangler dev`. When you run `npx wrangler dev`, Wrangler will give you a URL (most likely `localhost:8787`) to review your Worker. After you go to the URL Wrangler provides, a message will render that resembles the following example:
 
-```
-{  "response": "Ah, a most excellent question, my dear human friend! *adjusts glasses*\n\nThe origin of the phrase \"Hello, World\" is a fascinating tale that spans several decades and multiple disciplines. It all began in the early days of computer programming, when a young man named Brian Kernighan was tasked with writing a simple program to demonstrate the basics of a new programming language called C.\nKernighan, a renowned computer scientist and author, was working at Bell Labs in the late 1970s when he created the program. He wanted to showcase the language's simplicity and versatility, so he wrote a basic \"Hello, World!\" program that printed the familiar greeting to the console.\nThe program was included in Kernighan and Ritchie's influential book \"The C Programming Language,\" published in 1978. The book became a standard reference for C programmers, and the \"Hello, World!\" program became a sort of \"Hello, World!\" for the programming community.\nOver time, the phrase \"Hello, World!\" became a shorthand for any simple program that demonstrated the basics"}
+```json
+{
+  "response": "Ah, a most excellent question, my dear human friend! *adjusts glasses*\n\nThe origin of the phrase \"Hello, World\" is a fascinating tale that spans several decades and multiple disciplines. It all began in the early days of computer programming, when a young man named Brian Kernighan was tasked with writing a simple program to demonstrate the basics of a new programming language called C.\nKernighan, a renowned computer scientist and author, was working at Bell Labs in the late 1970s when he created the program. He wanted to showcase the language's simplicity and versatility, so he wrote a basic \"Hello, World!\" program that printed the familiar greeting to the console.\nThe program was included in Kernighan and Ritchie's influential book \"The C Programming Language,\" published in 1978. The book became a standard reference for C programmers, and the \"Hello, World!\" program became a sort of \"Hello, World!\" for the programming community.\nOver time, the phrase \"Hello, World!\" became a shorthand for any simple program that demonstrated the basics"
+}
 ```
 
 ## 5\. Deploy your AI Worker
 
 Before deploying your AI Worker globally, log in with your Cloudflare account by running:
 
-Terminal window
-
-```
+```sh
 npx wrangler login
 ```
 
@@ -149,13 +172,11 @@ You will be directed to a web page asking you to log in to the Cloudflare dashbo
 
 Finally, deploy your Worker to make your project accessible on the Internet. To deploy your Worker, run:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
-```
+```sh
 https://hello-ai.<YOUR_SUBDOMAIN>.workers.dev
 ```
 

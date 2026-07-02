@@ -28,16 +28,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatSearchResults } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatSearchResults />;}
+
+
+function MyComponent() {
+  return <RtkChatSearchResults />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatSearchResults } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatSearchResults      channelId="example"      meeting={meeting}      query="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatSearchResults
+      channelId="example"
+      meeting={meeting}
+      query="example"
+    />
+  );
+}
 ```
 
 ```json

@@ -26,27 +26,50 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2164)
-* [  curl ](#tab-panel-2165)
+* [  TypeScript ](#tab-panel-2212)
+* [  curl ](#tab-panel-2213)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const inputs = {      prompt: "cyberpunk cat",    };
-    const response = await env.AI.run(      "@cf/lykon/dreamshaper-8-lcm",      inputs    );
-    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const inputs = {
+      prompt: "cyberpunk cat",
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/lykon/dreamshaper-8-lcm",
+      inputs
+    );
+
+
+    return new Response(response, {
+      headers: {
+        "content-type": "image/jpg",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/lykon/dreamshaper-8-lcm  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/lykon/dreamshaper-8-lcm  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2166)
-* [ Output ](#tab-panel-2167)
+* [ Input ](#tab-panel-2214)
+* [ Output ](#tab-panel-2215)
 
 prompt
 

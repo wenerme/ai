@@ -24,14 +24,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-ai-transcriptions></rtk-ai-transcriptions>
+```html
+<!-- component.html -->
+<rtk-ai-transcriptions></rtk-ai-transcriptions>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-ai-transcriptions [initialTranscriptions]="[]" [meeting]="meeting"></rtk-ai-transcriptions>
+```html
+<!-- component.html -->
+<rtk-ai-transcriptions
+ [initialTranscriptions]="[]"
+ [meeting]="meeting">
+</rtk-ai-transcriptions>
 ```
 
 ```json

@@ -30,24 +30,34 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4795)
-* [  curl ](#tab-panel-4796)
+* [  TypeScript ](#tab-panel-4941)
+* [  curl ](#tab-panel-4942)
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {      const resp = await env.AI.run("@cf/deepgram/aura-1", {        "text":"Hello World!"      }, {        returnRawResponse: true      });
-      return resp;  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+      const resp = await env.AI.run("@cf/deepgram/aura-1", {
+        "text":"Hello World!"
+      }, {
+        returnRawResponse: true
+      });
+
+
+      return resp;
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/aura-1'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: application/json'   --data '{    "text":"Hello world!"}'
+```sh
+curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/aura-1'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: application/json'   --data '{
+    "text":"Hello world!"
+}'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4797)
-* [ Output ](#tab-panel-4798)
+* [ Input ](#tab-panel-4943)
+* [ Output ](#tab-panel-4944)
 
 speaker
 

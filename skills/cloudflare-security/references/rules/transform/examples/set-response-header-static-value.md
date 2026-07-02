@@ -18,7 +18,7 @@ The following response header transform rule sets a header named `X-Source` to a
 
 Text in **Expression Editor**:
 
-```
+```txt
 starts_with(http.request.uri.path, "/en/")
 ```
 

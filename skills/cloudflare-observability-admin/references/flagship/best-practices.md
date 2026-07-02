@@ -24,21 +24,35 @@ Use the [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/) when 
 
 Avoid evaluating the same flag repeatedly in a loop. Evaluate the flag once, store the result in a local variable, and reuse it for the rest of the request.
 
-TypeScript
+**TypeScript**
 
-```
-const enabled = await env.FLAGS.getBooleanValue("show-related-items", false, {  userId,});
-for (const item of items) {  if (enabled) {    item.related = await loadRelatedItems(item.id);  }}
+```ts
+const enabled = await env.FLAGS.getBooleanValue("show-related-items", false, {
+  userId,
+});
+
+
+for (const item of items) {
+  if (enabled) {
+    item.related = await loadRelatedItems(item.id);
+  }
+}
 ```
 
 ## Pass context consistently
 
 Targeting and percentage rollouts depend on the evaluation context you pass from your application. Use stable identifiers and the same attribute names everywhere.
 
-TypeScript
+**TypeScript**
 
-```
-const context = {  userId: session.user.id,  plan: session.user.plan,  country: request.cf?.country ?? "unknown",};
+```ts
+const context = {
+  userId: session.user.id,
+  plan: session.user.plan,
+  country: request.cf?.country ?? "unknown",
+};
+
+
 const enabled = await env.FLAGS.getBooleanValue("new-checkout", false, context);
 ```
 
@@ -54,11 +68,18 @@ For release flags, this is usually the existing experience. For configuration fl
 
 Use `*Details` methods when you need to understand why a value was returned. Details include the resolved value, variant, reason, and error metadata.
 
-TypeScript
+**TypeScript**
 
-```
-const details = await env.FLAGS.getBooleanDetails("new-checkout", false, {  userId: "user-42",});
-console.log(details.value);console.log(details.variant);console.log(details.reason);console.log(details.errorCode);
+```ts
+const details = await env.FLAGS.getBooleanDetails("new-checkout", false, {
+  userId: "user-42",
+});
+
+
+console.log(details.value);
+console.log(details.variant);
+console.log(details.reason);
+console.log(details.errorCode);
 ```
 
 ## Roll out progressively

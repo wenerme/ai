@@ -14,10 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A component which lets to manage your audio devices and audio preferences. Emits `rtkStateUpdate` event with data for muting notification sounds:
 
-TypeScript
+**TypeScript**
 
-```
-{ prefs: {   muteNotificationSounds: boolean }}
+```ts
+{
+ prefs: {
+   muteNotificationSounds: boolean
+ }
+}
 ```
 
 ## Properties
@@ -34,16 +38,30 @@ TypeScript
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMicrophoneSelector } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMicrophoneSelector />;}
+
+
+function MyComponent() {
+  return <RtkMicrophoneSelector />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMicrophoneSelector } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMicrophoneSelector      meeting={meeting}      size="md"      variant={'full' | 'inline'}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMicrophoneSelector
+      meeting={meeting}
+      size="md"
+      variant={'full' | 'inline'}
+    />
+  );
+}
 ```
 
 ```json

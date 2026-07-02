@@ -30,16 +30,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTabBar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkTabBar />;}
+
+
+function MyComponent() {
+  return <RtkTabBar />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTabBar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkTabBar      activeTab={tab}      layout={gridlayout1}      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTabBar
+      activeTab={tab}
+      layout={gridlayout1}
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

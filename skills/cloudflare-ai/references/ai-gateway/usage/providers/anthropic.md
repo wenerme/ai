@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 **Base URL**
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 ```
 
@@ -28,71 +28,142 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6648)
-* [ Unauthenticated Gateway ](#tab-panel-6649)
+* [ With Authenticated Gateway ](#tab-panel-6888)
+* [ Unauthenticated Gateway ](#tab-panel-6889)
 
-Terminal window
-
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \
+ --header 'x-api-key: {anthropic_api_key}' \
+ --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+ --header 'anthropic-version: 2023-06-01' \
+ --header 'Content-Type: application/json' \
+ --data  '{
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 1024,
+    "messages": [
+      {"role": "user", "content": "What is Cloudflare?"}
+    ]
+  }'
 ```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \ --header 'x-api-key: {anthropic_api_key}' \ --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \ --header 'anthropic-version: 2023-06-01' \ --header 'Content-Type: application/json' \ --data  '{    "model": "claude-sonnet-4-5",    "max_tokens": 1024,    "messages": [      {"role": "user", "content": "What is Cloudflare?"}    ]  }'
-```
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \ --header 'x-api-key: {anthropic_api_key}' \ --header 'anthropic-version: 2023-06-01' \ --header 'Content-Type: application/json' \ --data  '{    "model": "claude-sonnet-4-5",    "max_tokens": 1024,    "messages": [      {"role": "user", "content": "What is Cloudflare?"}    ]  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \
+ --header 'x-api-key: {anthropic_api_key}' \
+ --header 'anthropic-version: 2023-06-01' \
+ --header 'Content-Type: application/json' \
+ --data  '{
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 1024,
+    "messages": [
+      {"role": "user", "content": "What is Cloudflare?"}
+    ]
+  }'
 ```
 
 With Stored Keys (BYOK) / Unified Billing
 
-Terminal window
-
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \ --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \ --header 'anthropic-version: 2023-06-01' \ --header 'Content-Type: application/json' \ --data  '{    "model": "claude-sonnet-4-5",    "max_tokens": 1024,    "messages": [      {"role": "user", "content": "What is Cloudflare?"}    ]  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \
+ --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+ --header 'anthropic-version: 2023-06-01' \
+ --header 'Content-Type: application/json' \
+ --data  '{
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 1024,
+    "messages": [
+      {"role": "user", "content": "What is Cloudflare?"}
+    ]
+  }'
 ```
 
 ### Anthropic SDK
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6650)
-* [ Unauthenticated Gateway ](#tab-panel-6651)
+* [ With Authenticated Gateway ](#tab-panel-6890)
+* [ Unauthenticated Gateway ](#tab-panel-6891)
 
-```
+```js
 import Anthropic from "@anthropic-ai/sdk";
+
+
 const baseURL = `https://gateway.ai.cloudflare.com/v1/{accountId}/{gatewayId}/anthropic`;
-const anthropic = new Anthropic({  apiKey: "{ANTHROPIC_API_KEY}",  baseURL,  defaultHeaders: {    Authorization: `Bearer {cf_api_token}`,  },});
-const message = await anthropic.messages.create({  model: "claude-sonnet-4-5",  messages: [{ role: "user", content: "What is Cloudflare?" }],  max_tokens: 1024,});
+
+
+const anthropic = new Anthropic({
+  apiKey: "{ANTHROPIC_API_KEY}",
+  baseURL,
+  defaultHeaders: {
+    Authorization: `Bearer {cf_api_token}`,
+  },
+});
+
+
+const message = await anthropic.messages.create({
+  model: "claude-sonnet-4-5",
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  max_tokens: 1024,
+});
 ```
 
-```
+```js
 import Anthropic from "@anthropic-ai/sdk";
+
+
 const baseURL = `https://gateway.ai.cloudflare.com/v1/{accountId}/{gatewayId}/anthropic`;
-const anthropic = new Anthropic({  apiKey: "{ANTHROPIC_API_KEY}",  baseURL,});
-const message = await anthropic.messages.create({  model: "claude-sonnet-4-5",  messages: [{ role: "user", content: "What is Cloudflare?" }],  max_tokens: 1024,});
+
+
+const anthropic = new Anthropic({
+  apiKey: "{ANTHROPIC_API_KEY}",
+  baseURL,
+});
+
+
+const message = await anthropic.messages.create({
+  model: "claude-sonnet-4-5",
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  max_tokens: 1024,
+});
 ```
 
 With Stored Keys (BYOK) / Unified Billing
 
-```
+```js
 import Anthropic from "@anthropic-ai/sdk";
+
+
 const baseURL = `https://gateway.ai.cloudflare.com/v1/{accountId}/{gatewayId}/anthropic`;
-const anthropic = new Anthropic({  baseURL,  defaultHeaders: {    Authorization: `Bearer {cf_api_token}`,  },});
-const message = await anthropic.messages.create({  model: "claude-sonnet-4-5",  messages: [{ role: "user", content: "What is Cloudflare?" }],  max_tokens: 1024,});
+
+
+const anthropic = new Anthropic({
+  baseURL,
+  defaultHeaders: {
+    Authorization: `Bearer {cf_api_token}`,
+  },
+});
+
+
+const message = await anthropic.messages.create({
+  model: "claude-sonnet-4-5",
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  max_tokens: 1024,
+});
 ```
 
 ## OpenAI-Compatible Endpoint
 
 You can also access Anthropic models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 ```
 
 Specify:
 
-```
-{  "model": "anthropic/{model}"}
+```json
+{
+  "model": "anthropic/{model}"
+}
 ```
 
 ```json

@@ -16,9 +16,7 @@ You can use version overrides to send a request to a specific version of your Wo
 
 To specify a version override in your request, set the `Cloudflare-Workers-Version-Overrides` header on the request to your Worker. For example:
 
-Terminal window
-
-```
+```sh
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-name="dc8dcd28-271b-4367-9840-6c244f84cb40"'
 ```
 
@@ -58,9 +56,7 @@ Create a new deployment using [wrangler versions deploy](https://developers.clou
 
 Now test the new version with a version override before gradually progressing the new version to 100%:
 
-Terminal window
-
-```
+```sh
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-name="dc8dcd28-271b-4367-9840-6c244f84cb40"'
 ```
 
@@ -70,18 +66,34 @@ You can set the `Cloudflare-Workers-Version-Overrides` header when making a subr
 
 If you forward the original request object, the override header carries through automatically:
 
-JavaScript
+**JavaScript**
 
-```
-// The override header from the inbound request is forwarded to the downstream Worker.export default {  async fetch(request, env) {    return env.MY_SERVICE.fetch(request);  },};
+```js
+// The override header from the inbound request is forwarded to the downstream Worker.
+export default {
+  async fetch(request, env) {
+    return env.MY_SERVICE.fetch(request);
+  },
+};
 ```
 
 Alternatively, you can set an override header explicitly:
 
-JavaScript
+**JavaScript**
 
-```
-// Replace the version ID with the target version from `wrangler versions list`.export default {  async fetch(request, env) {    const response = await env.MY_SERVICE.fetch("https://example.com/", {      headers: {        "Cloudflare-Workers-Version-Overrides":          'my-downstream-worker="dc8dcd28-271b-4367-9840-6c244f84cb40"',      },    });    return response;  },};
+```js
+// Replace the version ID with the target version from `wrangler versions list`.
+export default {
+  async fetch(request, env) {
+    const response = await env.MY_SERVICE.fetch("https://example.com/", {
+      headers: {
+        "Cloudflare-Workers-Version-Overrides":
+          'my-downstream-worker="dc8dcd28-271b-4367-9840-6c244f84cb40"',
+      },
+    });
+    return response;
+  },
+};
 ```
 
 Note

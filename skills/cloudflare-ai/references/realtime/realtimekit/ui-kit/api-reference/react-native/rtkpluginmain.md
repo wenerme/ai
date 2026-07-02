@@ -26,16 +26,30 @@ Renders an active plugin in a WebView with fullscreen toggle and close button. H
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPluginMain } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPluginMain meeting={meeting} plugin={activePlugin} />;}
+
+
+function MyComponent() {
+  return <RtkPluginMain meeting={meeting} plugin={activePlugin} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPluginMain } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkPluginMain      meeting={meeting}      plugin={activePlugin}      iconPack={customIconPack}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPluginMain
+      meeting={meeting}
+      plugin={activePlugin}
+      iconPack={customIconPack}
+    />
+  );
+}
 ```
 
 ```json

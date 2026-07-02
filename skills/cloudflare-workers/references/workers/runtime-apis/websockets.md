@@ -22,19 +22,20 @@ If your application needs to coordinate among multiple WebSocket connections, su
 
 ## Constructor
 
-JavaScript
+**JavaScript**
 
-```
-// { 0: <WebSocket>, 1: <WebSocket> }let websocketPair = new WebSocketPair();
+```js
+// { 0: <WebSocket>, 1: <WebSocket> }
+let websocketPair = new WebSocketPair();
 ```
 
 The WebSocketPair returned from this constructor is an Object, with two WebSockets at keys `0` and `1`.
 
 These WebSockets are commonly referred to as `client` and `server`. The below example combines `Object.values` and ES6 destructuring to retrieve the WebSockets as `client` and `server`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let [client, server] = Object.values(new WebSocketPair());
 ```
 
@@ -144,22 +145,36 @@ With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com
 
 If you still call `close()` inside the `close` event handler, the call is silently ignored. Existing code that manually replies to Close frames will continue to work without changes.
 
-JavaScript
+**JavaScript**
 
-```
-server.addEventListener("close", (event) => {  // readyState is already CLOSED — no need to call server.close().  console.log(server.readyState); // WebSocket.CLOSED  console.log(event.code);        // 1000  console.log(event.wasClean);    // true});
+```js
+server.addEventListener("close", (event) => {
+  // readyState is already CLOSED — no need to call server.close().
+  console.log(server.readyState); // WebSocket.CLOSED
+  console.log(event.code);        // 1000
+  console.log(event.wasClean);    // true
+});
 ```
 
 ### Half-open mode for proxying
 
 The automatic close behavior can interfere with WebSocket proxying, where a Worker sits between a client and a backend and needs to coordinate the close on both sides independently. To support this, pass `{ allowHalfOpen: true }` to `accept()`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 server.accept({ allowHalfOpen: true });
-server.addEventListener("close", (event) => {  // readyState is still CLOSING here, giving you time  // to coordinate the close on the other side.  console.log(server.readyState); // WebSocket.CLOSING
-  // Manually close when ready.  server.close(event.code, "done");});
+
+
+server.addEventListener("close", (event) => {
+  // readyState is still CLOSING here, giving you time
+  // to coordinate the close on the other side.
+  console.log(server.readyState); // WebSocket.CLOSING
+
+
+  // Manually close when ready.
+  server.close(event.code, "done");
+});
 ```
 
 Note
@@ -180,12 +195,27 @@ With the [websocket\_standard\_binary\_type](https://developers.cloudflare.com/w
 
 The `binaryType` property itself is always available. To opt back into `ArrayBuffer` delivery for a single WebSocket, assign `binaryType` before calling `accept()`:
 
-JavaScript
+**JavaScript**
 
-```
-const resp = await fetch("https://example.com", {  headers: { Upgrade: "websocket" },});const ws = resp.webSocket;
-// Opt back into ArrayBuffer delivery for this WebSocket.ws.binaryType = "arraybuffer";ws.accept();
-ws.addEventListener("message", (event) => {  if (typeof event.data === "string") {    // Text frame.  } else {    // event.data is an ArrayBuffer because we set binaryType above.  }});
+```js
+const resp = await fetch("https://example.com", {
+  headers: { Upgrade: "websocket" },
+});
+const ws = resp.webSocket;
+
+
+// Opt back into ArrayBuffer delivery for this WebSocket.
+ws.binaryType = "arraybuffer";
+ws.accept();
+
+
+ws.addEventListener("message", (event) => {
+  if (typeof event.data === "string") {
+    // Text frame.
+  } else {
+    // event.data is an ArrayBuffer because we set binaryType above.
+  }
+});
 ```
 
 ### Reading binary payloads

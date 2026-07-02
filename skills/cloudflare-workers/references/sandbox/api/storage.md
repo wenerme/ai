@@ -20,10 +20,14 @@ Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem fo
 
 Mount an S3-compatible bucket to a local path in the sandbox.
 
-TypeScript
+**TypeScript**
 
-```
-await sandbox.mountBucket(  bucket: string,  mountPath: string,  options?: MountBucketOptions): Promise<void>
+```ts
+await sandbox.mountBucket(
+  bucket: string,
+  mountPath: string,
+  options?: MountBucketOptions
+): Promise<void>
 ```
 
 **Parameters**:
@@ -34,27 +38,77 @@ await sandbox.mountBucket(  bucket: string,  mountPath: string,  options?: Mount
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-10311)
-* [  TypeScript ](#tab-panel-10312)
+* [  JavaScript ](#tab-panel-10606)
+* [  TypeScript ](#tab-panel-10607)
 
-JavaScript
+**JavaScript**
 
+```js
+// Mount an R2 bucket by Worker binding name
+await sandbox.mountBucket("MY_BUCKET", "/data");
+
+
+// Read/write files directly
+const data = await sandbox.readFile("/data/config.json");
+await sandbox.writeFile("/data/results.json", JSON.stringify(data));
+
+
+// Mount a remote S3-compatible bucket, including explicit R2 endpoints
+await sandbox.mountBucket("my-bucket", "/storage", {
+  endpoint: "https://s3.amazonaws.com",
+  credentials: {
+    accessKeyId: env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+  },
+});
+
+
+// Mount an R2 bucket during local development with wrangler dev
+await sandbox.mountBucket("MY_BUCKET", "/local-data", {
+  localBucket: true,
+});
+
+
+// Mount a prefix from an R2 binding
+await sandbox.mountBucket("MY_BUCKET", "/user-data", {
+  prefix: "/users/user-123",
+  readOnly: true,
+});
 ```
-// Mount an R2 bucket by Worker binding nameawait sandbox.mountBucket("MY_BUCKET", "/data");
-// Read/write files directlyconst data = await sandbox.readFile("/data/config.json");await sandbox.writeFile("/data/results.json", JSON.stringify(data));
-// Mount a remote S3-compatible bucket, including explicit R2 endpointsawait sandbox.mountBucket("my-bucket", "/storage", {  endpoint: "https://s3.amazonaws.com",  credentials: {    accessKeyId: env.AWS_ACCESS_KEY_ID,    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,  },});
-// Mount an R2 bucket during local development with wrangler devawait sandbox.mountBucket("MY_BUCKET", "/local-data", {  localBucket: true,});
-// Mount a prefix from an R2 bindingawait sandbox.mountBucket("MY_BUCKET", "/user-data", {  prefix: "/users/user-123",  readOnly: true,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Mount an R2 bucket by Worker binding nameawait sandbox.mountBucket('MY_BUCKET', '/data');
-// Read/write files directlyconst data = await sandbox.readFile('/data/config.json');await sandbox.writeFile('/data/results.json', JSON.stringify(data));
-// Mount a remote S3-compatible bucket, including explicit R2 endpointsawait sandbox.mountBucket('my-bucket', '/storage', {  endpoint: 'https://s3.amazonaws.com',  credentials: {    accessKeyId: env.AWS_ACCESS_KEY_ID,    secretAccessKey: env.AWS_SECRET_ACCESS_KEY  }});
-// Mount an R2 bucket during local development with wrangler devawait sandbox.mountBucket('MY_BUCKET', '/local-data', {  localBucket: true});
-// Mount a prefix from an R2 bindingawait sandbox.mountBucket('MY_BUCKET', '/user-data', {  prefix: '/users/user-123',  readOnly: true});
+```ts
+// Mount an R2 bucket by Worker binding name
+await sandbox.mountBucket('MY_BUCKET', '/data');
+
+
+// Read/write files directly
+const data = await sandbox.readFile('/data/config.json');
+await sandbox.writeFile('/data/results.json', JSON.stringify(data));
+
+
+// Mount a remote S3-compatible bucket, including explicit R2 endpoints
+await sandbox.mountBucket('my-bucket', '/storage', {
+  endpoint: 'https://s3.amazonaws.com',
+  credentials: {
+    accessKeyId: env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: env.AWS_SECRET_ACCESS_KEY
+  }
+});
+
+
+// Mount an R2 bucket during local development with wrangler dev
+await sandbox.mountBucket('MY_BUCKET', '/local-data', {
+  localBucket: true
+});
+
+
+// Mount a prefix from an R2 binding
+await sandbox.mountBucket('MY_BUCKET', '/user-data', {
+  prefix: '/users/user-123',
+  readOnly: true
+});
 ```
 
 **Throws**:
@@ -78,9 +132,9 @@ See the [Mount Buckets guide](https://developers.cloudflare.com/sandbox/guides/m
 
 Unmount a previously mounted bucket.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.unmountBucket(mountPath: string): Promise<void>
 ```
 
@@ -88,21 +142,31 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-10309)
-* [  TypeScript ](#tab-panel-10310)
+* [  JavaScript ](#tab-panel-10604)
+* [  TypeScript ](#tab-panel-10605)
 
-JavaScript
+**JavaScript**
 
+```js
+// Mount, process, unmount
+await sandbox.mountBucket("MY_BUCKET", "/data");
+await sandbox.exec("python process.py");
+
+
+// Unmount
+await sandbox.unmountBucket("/data");
 ```
-// Mount, process, unmountawait sandbox.mountBucket("MY_BUCKET", "/data");await sandbox.exec("python process.py");
-// Unmountawait sandbox.unmountBucket("/data");
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Mount, process, unmountawait sandbox.mountBucket('MY_BUCKET', '/data');await sandbox.exec('python process.py');
-// Unmountawait sandbox.unmountBucket('/data');
+```ts
+// Mount, process, unmount
+await sandbox.mountBucket('MY_BUCKET', '/data');
+await sandbox.exec('python process.py');
+
+
+// Unmount
+await sandbox.unmountBucket('/data');
 ```
 
 Automatic cleanup
@@ -113,13 +177,39 @@ Mounted buckets are automatically unmounted when the container is destroyed.
 
 ### `MountBucketOptions`
 
-TypeScript
+**TypeScript**
 
-```
-interface RemoteMountBucketOptions {  endpoint: string;  provider?: BucketProvider;  credentials?: BucketCredentials;  credentialProxy?: boolean;  readOnly?: boolean;  s3fsOptions?: string[];  prefix?: string;}
-interface LocalMountBucketOptions {  localBucket: true;  prefix?: string;  readOnly?: boolean;}
-interface R2BindingMountBucketOptions {  endpoint?: never;  prefix?: string;  readOnly?: boolean;  s3fsOptions?: string[];}
-type MountBucketOptions =  | RemoteMountBucketOptions  | LocalMountBucketOptions  | R2BindingMountBucketOptions;
+```ts
+interface RemoteMountBucketOptions {
+  endpoint: string;
+  provider?: BucketProvider;
+  credentials?: BucketCredentials;
+  credentialProxy?: boolean;
+  readOnly?: boolean;
+  s3fsOptions?: string[];
+  prefix?: string;
+}
+
+
+interface LocalMountBucketOptions {
+  localBucket: true;
+  prefix?: string;
+  readOnly?: boolean;
+}
+
+
+interface R2BindingMountBucketOptions {
+  endpoint?: never;
+  prefix?: string;
+  readOnly?: boolean;
+  s3fsOptions?: string[];
+}
+
+
+type MountBucketOptions =
+  | RemoteMountBucketOptions
+  | LocalMountBucketOptions
+  | R2BindingMountBucketOptions;
 ```
 
 `mountBucket()` supports these three modes:
@@ -179,9 +269,9 @@ type MountBucketOptions =  | RemoteMountBucketOptions  | LocalMountBucketOptions
 
 Storage provider hint for automatic s3fs flag optimization.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 type BucketProvider = "r2" | "s3" | "gcs";
 ```
 

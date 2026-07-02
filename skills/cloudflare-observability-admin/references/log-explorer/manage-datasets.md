@@ -68,22 +68,39 @@ If you are using the API, Use the Log Explorer API to enable Log Explorer for ea
 
 The following `curl` command is an example for enabling the zone-level dataset `http_requests`, as well as the expected response when the command succeeds.
 
-Terminal window
+```bash
+curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets \
+--header "Authorization: Bearer <API_TOKEN>" \
+--json '{
+  "dataset": "http_requests"
+}'
+```
 
-```
-curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets \--header "Authorization: Bearer <API_TOKEN>" \--json '{  "dataset": "http_requests"}'
-```
-
-```
-{  "result": {    "dataset": "http_requests",    "object_type": "zone",    "object_id": "<ZONE ID>",    "created_at": "2025-06-03T14:33:16Z",    "updated_at": "2025-06-03T14:33:16Z",    "dataset_id": "01973635f7e273a1964a02f4d4502499",    "enabled": true  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "dataset": "http_requests",
+    "object_type": "zone",
+    "object_id": "<ZONE ID>",
+    "created_at": "2025-06-03T14:33:16Z",
+    "updated_at": "2025-06-03T14:33:16Z",
+    "dataset_id": "01973635f7e273a1964a02f4d4502499",
+    "enabled": true
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 To enable an account-level dataset, replace `zones/{zone_id}` with `accounts/{account_id}` in the `curl` command. For example:
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/datasets \--header "Authorization: Bearer <API_TOKEN>" \--json '{  "dataset": "access_requests"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/datasets \
+--header "Authorization: Bearer <API_TOKEN>" \
+--json '{
+  "dataset": "access_requests"
+}'
 ```
 
 ```json

@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
+```sql
 if(<condition>, <true_expression>, <false_expression>)
 ```
 
@@ -24,7 +24,7 @@ Returns `<true_expression>` if `<condition>` evaluates to true, else returns `<f
 
 Example:
 
-```
+```sql
 if(temp > 20, 'It is warm', 'Bring a jumper')
 ```
 

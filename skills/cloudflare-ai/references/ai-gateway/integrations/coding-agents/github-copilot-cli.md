@@ -27,19 +27,24 @@ Before you start, you need:
 1. Set the provider environment variables. GitHub Copilot CLI reads these on startup and appends `/chat/completions` to the base URL. The commands set these variables for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
 Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
 
-  * [ macOS / Linux ](#tab-panel-6628)
-  * [ Windows (PowerShell) ](#tab-panel-6629)
-Terminal window
+  * [ macOS / Linux ](#tab-panel-6868)
+  * [ Windows (PowerShell) ](#tab-panel-6869)
+```bash
+export COPILOT_PROVIDER_TYPE="openai"
+export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
+export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"
+export COPILOT_MODEL="openai/gpt-4.1"
 ```
-export COPILOT_PROVIDER_TYPE="openai"export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"export COPILOT_MODEL="openai/gpt-4.1"
-```
-PowerShell
-```
-$env:COPILOT_PROVIDER_TYPE = "openai"$env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"$env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"$env:COPILOT_MODEL = "openai/gpt-4.1"
+
+**PowerShell**
+```powershell
+$env:COPILOT_PROVIDER_TYPE = "openai"
+$env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
+$env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"
+$env:COPILOT_MODEL = "openai/gpt-4.1"
 ```
 2. Start GitHub Copilot CLI and send a prompt. Requests now route through AI Gateway.
-Terminal window
-```
+```bash
 copilot
 ```
 
@@ -47,10 +52,9 @@ Note
 
 GitHub Copilot CLI keeps a built-in catalog of known models and their token limits. If your selected model is not in the catalog, Copilot CLI prints a warning and falls back to default token limits. You can ignore the warning, or set the limits explicitly to match your model:
 
-Terminal window
-
-```
-export COPILOT_PROVIDER_MAX_PROMPT_TOKENS="200000"export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
+```bash
+export COPILOT_PROVIDER_MAX_PROMPT_TOKENS="200000"
+export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
 ```
 
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).

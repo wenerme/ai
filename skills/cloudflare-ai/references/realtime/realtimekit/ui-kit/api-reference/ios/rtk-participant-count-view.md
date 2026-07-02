@@ -25,20 +25,33 @@ A label that displays the current participant count. Automatically updates when 
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let countView = RtkParticipantCountView(meeting: rtkClient)view.addSubview(countView)
+
+
+let countView = RtkParticipantCountView(meeting: rtkClient)
+view.addSubview(countView)
 ```
 
 ### With custom appearance
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let appearance = RtkTextAppearance(    font: UIFont.systemFont(ofSize: 14, weight: .medium),    textColor: .lightGray)let countView = RtkParticipantCountView(    meeting: rtkClient,    appearance: appearance)view.addSubview(countView)
+
+
+let appearance = RtkTextAppearance(
+    font: UIFont.systemFont(ofSize: 14, weight: .medium),
+    textColor: .lightGray
+)
+let countView = RtkParticipantCountView(
+    meeting: rtkClient,
+    appearance: appearance
+)
+view.addSubview(countView)
 ```
 
 ```json

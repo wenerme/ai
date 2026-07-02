@@ -46,26 +46,149 @@ To be accessible over SSH, the Kubernetes deployment should manage both the Mong
 
  StatefulSet Configuration
 
-YAML
+**YAML**
 
-```
-apiVersion: apps/v1kind: StatefulSetmetadata:  name: mongodb-standalone  namespace: mongodbspec:  serviceName: database  replicas: 1  selector:    matchLabels:      app: database  template:    metadata:      labels:        app: database        selector: mongodb-standalone    spec:      containers:        - name: mongodb-standalone          image: mongo          command: ["mongod"]          args: ["--config=/config/mongod.conf"]          ports:            - containerPort: 27017              protocol: TCP              name: mongod          volumeMounts:            - name: mongodb-conf              mountPath: /config              readOnly: true            - name: mongodb-data              mountPath: /data/db            - name: tls              mountPath: /etc/tls            - name: mongodb-socket              mountPath: /socket        - name: ssh-proxy          image: ubuntu:20.04          command: ["/scripts/entrypoint.sh"]          ports:            - containerPort: 22              protocol: TCP              name: ssh-port          volumeMounts:            - name: mongodb-socket              mountPath: /socket            - name: scripts              mountPath: /scripts              readOnly: true            - name: ssh-authorized-keys              mountPath: /config/ssh              readOnly: true          resources:            requests:              cpu: 20m              memory: 32Mi      volumes:        - name: mongodb-socket          emptyDir: {}        - name: mongodb-conf          configMap:            name: mongodb-standalone            items:              - key: mongod.conf                path: mongod.conf        - name: tls          secret:            secretName: tls        - name: mongodb-data          persistentVolumeClaim:            claimName: mongodb-standalone        - name: scripts          configMap:            name: scripts            items:              - key: entrypoint.sh                path: entrypoint.sh                mode: 0744        - name: ssh-authorized-keys          configMap:            name: ssh-proxy-config            items:              - key: authorized_keys                path: authorized_keys                mode: 0400
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb-standalone
+  namespace: mongodb
+spec:
+  serviceName: database
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+        selector: mongodb-standalone
+    spec:
+      containers:
+        - name: mongodb-standalone
+          image: mongo
+          command: ["mongod"]
+          args: ["--config=/config/mongod.conf"]
+          ports:
+            - containerPort: 27017
+              protocol: TCP
+              name: mongod
+          volumeMounts:
+            - name: mongodb-conf
+              mountPath: /config
+              readOnly: true
+            - name: mongodb-data
+              mountPath: /data/db
+            - name: tls
+              mountPath: /etc/tls
+            - name: mongodb-socket
+              mountPath: /socket
+        - name: ssh-proxy
+          image: ubuntu:20.04
+          command: ["/scripts/entrypoint.sh"]
+          ports:
+            - containerPort: 22
+              protocol: TCP
+              name: ssh-port
+          volumeMounts:
+            - name: mongodb-socket
+              mountPath: /socket
+            - name: scripts
+              mountPath: /scripts
+              readOnly: true
+            - name: ssh-authorized-keys
+              mountPath: /config/ssh
+              readOnly: true
+          resources:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+      volumes:
+        - name: mongodb-socket
+          emptyDir: {}
+        - name: mongodb-conf
+          configMap:
+            name: mongodb-standalone
+            items:
+              - key: mongod.conf
+                path: mongod.conf
+        - name: tls
+          secret:
+            secretName: tls
+        - name: mongodb-data
+          persistentVolumeClaim:
+            claimName: mongodb-standalone
+        - name: scripts
+          configMap:
+            name: scripts
+            items:
+              - key: entrypoint.sh
+                path: entrypoint.sh
+                mode: 0744
+        - name: ssh-authorized-keys
+          configMap:
+            name: ssh-proxy-config
+            items:
+              - key: authorized_keys
+                path: authorized_keys
+                mode: 0400
 ```
 
 The corresponding service definition should also specify the ports and target ports for the containers (in this case, the database service and the SSH proxy service).
 
 Service Definition
 
-YAML
+**YAML**
 
-```
-apiVersion: v1kind: Servicemetadata:  name: database  namespace: mongodb  labels:    app: databasespec:  clusterIP: None  selector:    app: database  ports:    - protocol: TCP      port: 27017      targetPort: 27017---apiVersion: v1kind: Servicemetadata:  name: ssh-proxy  namespace: mongodb  labels:    app: databasespec:  selector:    app: database  ports:    - protocol: TCP      port: 22      targetPort: 22
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: database
+  namespace: mongodb
+  labels:
+    app: database
+spec:
+  clusterIP: None
+  selector:
+    app: database
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssh-proxy
+  namespace: mongodb
+  labels:
+    app: database
+spec:
+  selector:
+    app: database
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 22
 ```
 
 The MongoDB pod and the SSH jump host will share a Unix socket over an empty directory volume. The `entrypoint.sh` file run by the jump host, example below, will start an OpenSSH server.
 
-```
-#!/bin/shexport TZ=America/Chicagoln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezoneapt-get update -y && apt-get install -y openssh-servermkdir /root/.sshcp /config/ssh/authorized_keys /root/.ssh/authorized_keyschmod 400 /root/.ssh/authorized_keysservice ssh startwhile true;do sleep 30;done;
+```bash
+#!/bin/sh
+export TZ=America/Chicago
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+apt-get update -y && apt-get install -y openssh-server
+mkdir /root/.ssh
+cp /config/ssh/authorized_keys /root/.ssh/authorized_keys
+chmod 400 /root/.ssh/authorized_keys
+service ssh start
+while true;
+do sleep 30;
+done;
 ```
 
 ## Configure Cloudflare Tunnel
@@ -74,9 +197,7 @@ Next, you can use `cloudflared` to connect to Cloudflare's Edge using Cloudflare
 
 Once installed, run the following command to authenticate the instance of `cloudflared` into your Cloudflare account.
 
-Terminal window
-
-```
+```sh
 cloudflared login
 ```
 
@@ -116,20 +237,81 @@ The configuration below will run a single replica of `cloudflared` as an ingress
 
 `cloudflared` Configuration
 
-YAML
+**YAML**
 
-```
-apiVersion: apps/v1kind: Deploymentmetadata:  name: dashboard-tunnel  namespace: argotunnel  labels:    app: dashboard-tunnelspec:  replicas: 1  selector:    matchLabels:      app: dashboard-tunnel  template:    metadata:      labels:        app: dashboard-tunnel    spec:      containers:        - name: dashboard-tunnel          # Image from https://hub.docker.com/r/cloudflare/cloudflared          image: cloudflare/cloudflared:2020.11.11          command: ["cloudflared", "tunnel"]          args: ["--config", "/etc/tunnel/config.yaml", "run"]          ports:            - containerPort: 5000          livenessProbe:            tcpSocket:              port: 5000            initialDelaySeconds: 60            periodSeconds: 60          volumeMounts:            - name: dashboard-tunnel-config              mountPath: /etc/tunnel            - name: tunnel-credentials              mountPath: /etc/credentials      volumes:        - name: dashboard-tunnel-config          configMap:            name: dashboard-tunnel-config        - name: tunnel-credentials          secret:            secretName: tunnel-credentials---apiVersion: v1kind: ConfigMapmetadata:  name: dashboard-tunnel-config  namespace: argotunneldata:  config.yaml: |    tunnel: 9a00ef26-4997-4de2-83db-631efc74245c    credentials-file: /etc/credentials/k8s-dashboard.json    metrics: :5000    protocol: http2    no-autoupdate: true    ingress:    - hostname: mongodb.widgetcorp.tech      originRequest:        bastionMode: true    - service: http_status:404
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-tunnel
+  namespace: argotunnel
+  labels:
+    app: dashboard-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-tunnel
+  template:
+    metadata:
+      labels:
+        app: dashboard-tunnel
+    spec:
+      containers:
+        - name: dashboard-tunnel
+          # Image from https://hub.docker.com/r/cloudflare/cloudflared
+          image: cloudflare/cloudflared:2020.11.11
+          command: ["cloudflared", "tunnel"]
+          args: ["--config", "/etc/tunnel/config.yaml", "run"]
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+            tcpSocket:
+              port: 5000
+            initialDelaySeconds: 60
+            periodSeconds: 60
+          volumeMounts:
+            - name: dashboard-tunnel-config
+              mountPath: /etc/tunnel
+            - name: tunnel-credentials
+              mountPath: /etc/credentials
+      volumes:
+        - name: dashboard-tunnel-config
+          configMap:
+            name: dashboard-tunnel-config
+        - name: tunnel-credentials
+          secret:
+            secretName: tunnel-credentials
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dashboard-tunnel-config
+  namespace: argotunnel
+data:
+  config.yaml: |
+    tunnel: 9a00ef26-4997-4de2-83db-631efc74245c
+    credentials-file: /etc/credentials/k8s-dashboard.json
+    metrics: :5000
+    protocol: http2
+    no-autoupdate: true
+    ingress:
+    - hostname: mongodb.widgetcorp.tech
+      originRequest:
+        bastionMode: true
+    - service: http_status:404
 ```
 
 ## Connect from a client
 
 Once deployed, you can run `cloudflared` on the client side to connect to the MongoDB deployment. Add the following lines to your SSH configuration file, replacing the examples with your hostname and details. The `--destination` value should match the URL of the SSH Proxy service configured previously.
 
-Terminal window
-
-```
-Host mongodb  ProxyCommand /usr/local/bin/cloudflared access ssh --hostname mongodb.widgetcorp.tech --destination ssh-proxy.mongodb.svc.cluster.local:22  LocalForward 27000 /socket/mongodb-27017.sock  User root  IdentityFile /Users/username/.ssh/id_rsa
+```bash
+Host mongodb
+  ProxyCommand /usr/local/bin/cloudflared access ssh --hostname mongodb.widgetcorp.tech --destination ssh-proxy.mongodb.svc.cluster.local:22
+  LocalForward 27000 /socket/mongodb-27017.sock
+  User root
+  IdentityFile /Users/username/.ssh/id_rsa
 ```
 
 This is a one-time step. When you next attempt to make an SSH connection to the deployment, `cloudflared` will launch a browser window and prompt you to authenticate. Once authenticated, you will be connected if you have a valid session. Once the tunnel is established, all requests to `localhost:27000` on your machine will be forwarded to `/socket/mongodb-27017.sock` on the SSH proxy container.

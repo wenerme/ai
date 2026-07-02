@@ -36,7 +36,7 @@ All requests require an API token with **AI Search:Edit** and **AI Search:Run** 
 
 Include the token in the `Authorization` header for all requests:
 
-```
+```txt
 Authorization: Bearer <API_TOKEN>
 ```
 
@@ -62,32 +62,59 @@ The following operations are the same for both paths. For the namespace-scoped A
 
 Search a specific instance. The search endpoint also accepts a `query` string parameter. For the full specification, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "content": "What is Cloudflare?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 ### Chat completions
 
 Generate a response from a specific instance. For the full specification, refer to the [Chat completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "content": "What is Cloudflare?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 #### Streaming
 
 Set `stream` to `true` to receive responses as Server-Sent Events (SSE). The retrieved chunks are sent first as a `chunks` event, followed by the streamed response.
 
-```
-event: chunksdata: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
+```txt
+event: chunks
+data: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" document"}}]}
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" you provided doesn"}}]}
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":"'t contain"}}]}
+
+
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" information"}}]}
+
+
 data: [DONE]
 ```
 
@@ -95,10 +122,21 @@ data: [DONE]
 
 The search and chat completions APIs are also available at the namespace level. These work the same as the instance endpoints, but you pass an `instance_ids` array to specify which instances to query. Each chunk in the response includes an `instance_id` field identifying which instance it came from. For the full specification, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/).
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/<NAMESPACE>/search" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ],    "ai_search_options": {      "instance_ids": ["product-docs", "customer-abc123"]    }  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/<NAMESPACE>/search" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ],
+    "ai_search_options": {
+      "instance_ids": ["product-docs", "customer-abc123"]
+    }
+  }'
 ```
 
 ```json

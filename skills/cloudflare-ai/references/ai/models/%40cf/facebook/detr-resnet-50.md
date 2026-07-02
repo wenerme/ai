@@ -27,27 +27,48 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2155)
-* [  curl ](#tab-panel-2156)
+* [  TypeScript ](#tab-panel-2203)
+* [  curl ](#tab-panel-2204)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const res = await fetch("https://cataas.com/cat");    const blob = await res.arrayBuffer();
-    const inputs = {      image: [...new Uint8Array(blob)],    };
-    const response = await env.AI.run(      "@cf/facebook/detr-resnet-50",      inputs    );
-    return new Response(JSON.stringify({ inputs: { image: [] }, response }));  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const res = await fetch("https://cataas.com/cat");
+    const blob = await res.arrayBuffer();
+
+
+    const inputs = {
+      image: [...new Uint8Array(blob)],
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/facebook/detr-resnet-50",
+      inputs
+    );
+
+
+    return new Response(JSON.stringify({ inputs: { image: [] }, response }));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/facebook/detr-resnet-50  \    -X POST  \    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \    --data-binary "@pedestrian-boulevard-manhattan-crossing.jpg"
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/facebook/detr-resnet-50  \
+    -X POST  \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+    --data-binary "@pedestrian-boulevard-manhattan-crossing.jpg"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2157)
-* [ Output ](#tab-panel-2158)
+* [ Input ](#tab-panel-2205)
+* [ Output ](#tab-panel-2206)
 
 Option 1
 

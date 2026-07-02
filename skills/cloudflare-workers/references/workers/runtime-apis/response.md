@@ -18,9 +18,9 @@ The `Response` interface represents an HTTP response and is part of the Fetch AP
 
 ## Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let response = new Response(body, init);
 ```
 
@@ -112,11 +112,18 @@ The `Content-Length` header will be automatically set by the runtime based on wh
 
 A `FixedLengthStream` is an identity `TransformStream` that permits only a fixed number of bytes to be written to it.
 
-JavaScript
+**JavaScript**
 
-```
+```js
   const { writable, readable } = new FixedLengthStream(11);
-  const enc = new TextEncoder();  const writer = writable.getWriter();  writer.write(enc.encode("hello world"));  writer.end();
+
+
+  const enc = new TextEncoder();
+  const writer = writable.getWriter();
+  writer.write(enc.encode("hello world"));
+  writer.end();
+
+
   return new Response(readable);
 ```
 

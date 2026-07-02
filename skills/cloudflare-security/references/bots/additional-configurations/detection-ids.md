@@ -49,8 +49,8 @@ Detection tags are available in Security Analytics, but not in the Security Even
 
 ## Create or edit an expression
 
-* [  New dashboard ](#tab-panel-6896)
-* [ Old dashboard ](#tab-panel-6897)
+* [  New dashboard ](#tab-panel-7144)
+* [ Old dashboard ](#tab-panel-7145)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -71,18 +71,25 @@ Alternatively, if you have already created a custom rule, you can go to the exis
 
 ### Block requests that match a specific detection ID
 
-JavaScript
+**JavaScript**
 
-```
-any(cf.bot_management.detection_ids[*] eq 3355446)and not cf.bot_management.verified_botand http.request.uri.path eq "/login"and http.request.method eq "POST"
+```js
+any(cf.bot_management.detection_ids[*] eq 3355446)
+and not cf.bot_management.verified_bot
+and http.request.uri.path eq "/login"
+and http.request.method eq "POST"
 ```
 
 ### Run Bot Management without specific detection IDs
 
-JavaScript
+**JavaScript**
 
-```
-cf.bot_management.score lt 30and not cf.bot_management.verified_botand http.request.uri.path eq "/login"and http.request.method eq "POST"and not any(cf.bot_management.detection_ids[*] in {3355446 12577893})
+```js
+cf.bot_management.score lt 30
+and not cf.bot_management.verified_bot
+and http.request.uri.path eq "/login"
+and http.request.method eq "POST"
+and not any(cf.bot_management.detection_ids[*] in {3355446 12577893})
 ```
 
 ---
@@ -91,8 +98,8 @@ cf.bot_management.score lt 30and not cf.bot_management.verified_botand http.requ
 
 You can create or edit existing Logpush jobs to include the new Bot Detection IDs field which will provide an array of IDs for each request that has heuristics match on it. The `BotDetectionIDs` field is available as part of the HTTP Requests dataset and you can add it to new or existing jobs via the Logpush API or on the Cloudflare dashboard. This is the primary method to discover Detection IDs.
 
-* [ Dashboard ](#tab-panel-6898)
-* [ API ](#tab-panel-6899)
+* [ Dashboard ](#tab-panel-7146)
+* [ API ](#tab-panel-7147)
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
 [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)

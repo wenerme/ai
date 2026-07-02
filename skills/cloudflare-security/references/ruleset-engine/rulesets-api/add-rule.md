@@ -58,14 +58,55 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Create a zone ruleset rule
+**Create a zone ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "js_challenge",    "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",    "description": "challenge GB and FR based on bot score"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "js_challenge",
+    "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+    "description": "challenge GB and FR based on bot score"
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone Ruleset 1",    "description": "My phase entry point ruleset at the zone level",    "kind": "zone",    "version": "11",    "rules": [      {        "id": "<RULE_ID_1>",        "version": "1",        "action": "challenge",        "expression": "not http.request.uri.path matches \"^/api/.*$\"",        "last_updated": "2023-11-23T11:36:24.192361Z",        "ref": "<RULE_REF_1>",        "enabled": true      },      {        "id": "<NEW_RULE_ID>",        "version": "1",        "action": "js_challenge",        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",        "description": "challenge GB and FR based on bot score",        "last_updated": "2024-06-22T12:35:58.144683Z",        "ref": "<NEW_RULE_REF>",        "enabled": true      }    ],    "last_updated": "2024-06-22T12:35:58.144683Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone Ruleset 1",
+    "description": "My phase entry point ruleset at the zone level",
+    "kind": "zone",
+    "version": "11",
+    "rules": [
+      {
+        "id": "<RULE_ID_1>",
+        "version": "1",
+        "action": "challenge",
+        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
+        "last_updated": "2023-11-23T11:36:24.192361Z",
+        "ref": "<RULE_REF_1>",
+        "enabled": true
+      },
+      {
+        "id": "<NEW_RULE_ID>",
+        "version": "1",
+        "action": "js_challenge",
+        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+        "description": "challenge GB and FR based on bot score",
+        "last_updated": "2024-06-22T12:35:58.144683Z",
+        "ref": "<NEW_RULE_REF>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2024-06-22T12:35:58.144683Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Define the rule position in the ruleset

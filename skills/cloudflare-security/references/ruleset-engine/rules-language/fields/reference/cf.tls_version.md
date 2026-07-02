@@ -18,7 +18,7 @@ The TLS version of the connection to Cloudflare.
 
 Example value:
 
-```
+```txt
 "TLSv1.2"
 ```
 

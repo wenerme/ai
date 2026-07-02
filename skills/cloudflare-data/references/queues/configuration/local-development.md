@@ -26,15 +26,17 @@ To develop locally with Queues, you will need:
 
 Open your terminal and run the following commands to start a local development session:
 
-Terminal window
-
-```
+```sh
 npx wrangler@latest dev
 ```
 
-```
-------------------Your Worker and resources are simulated locally via Miniflare. For more information, see: https://developers.cloudflare.com/workers/testing/local-development.
-Your worker has access to the following bindings:- Queues: <QUEUE-NAME>
+```sh
+------------------
+Your Worker and resources are simulated locally via Miniflare. For more information, see: https://developers.cloudflare.com/workers/testing/local-development.
+
+
+Your worker has access to the following bindings:
+- Queues: <QUEUE-NAME>
 ```
 
 Local development sessions create a standalone, local-only environment that mirrors the production environment Queues runs in so you can test your Workers _before_ you deploy to production.
@@ -51,15 +53,18 @@ Support for running multiple Workers at once with one Wrangler command is experi
 
 For example, if your project has the following directory structure:
 
-```
-producer-worker/├── wrangler.jsonc├── index.ts└── consumer-worker/    ├── wrangler.jsonc    └── index.ts
+```plaintext
+producer-worker/
+├── wrangler.jsonc
+├── index.ts
+└── consumer-worker/
+    ├── wrangler.jsonc
+    └── index.ts
 ```
 
 You can start development servers for both workers with the following command:
 
-Terminal window
-
-```
+```sh
 npx wrangler@latest dev -c wrangler.jsonc -c consumer-worker/wrangler.jsonc --persist-to .wrangler/state
 ```
 

@@ -23,9 +23,7 @@ Once these two criteria are met, any newly created load balancer will be automat
 
 You can also create a load balancer by sending a `POST` request to the following endpoint. To deploy to the China Network with the API, the `networks` array in the API call must contain `jdcloud` as a value in addition to `cloudflare`. Refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/) for details on the required fields and their formats.
 
-Terminal window
-
-```
+```bash
 https://api.cloudflare.com/client/v4/zones/{zone_id}/load_balancers
 ```
 

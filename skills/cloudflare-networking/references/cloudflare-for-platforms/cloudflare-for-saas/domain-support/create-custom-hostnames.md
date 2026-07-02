@@ -20,8 +20,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-7089)
-* [ API ](#tab-panel-7090)
+* [ Dashboard ](#tab-panel-7337)
+* [ API ](#tab-panel-7338)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -64,8 +64,10 @@ The primary certificate uses a `P-256` key, is `SHA-2/ECDSA` signed, and will be
 
 The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you can set `cloudflare_branding` to `true` when creating your custom hostnames [via API](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/).
 
-```
-"ssl": {    "cloudflare_branding": true  }
+```txt
+"ssl": {
+    "cloudflare_branding": true
+  }
 ```
 
 Cloudflare branding means that `sni.cloudflaressl.com` will be added as the certificate Common Name (CN) and the long hostname will be included as a part of the Subject Alternative Name (SAN).

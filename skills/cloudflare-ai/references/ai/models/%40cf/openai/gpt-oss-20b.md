@@ -29,25 +29,51 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2251)
-* [  Python ](#tab-panel-2252)
-* [  curl ](#tab-panel-2253)
+* [  TypeScript ](#tab-panel-2299)
+* [  Python ](#tab-panel-2300)
+* [  curl ](#tab-panel-2301)
 
-```
-export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run('@cf/openai/gpt-oss-20b', {      instructions: 'You are a concise assistant.',      input: 'What is the origin of the phrase Hello, World?',    });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run('@cf/openai/gpt-oss-20b', {
+      instructions: 'You are a concise assistant.',
+      input: 'What is the origin of the phrase Hello, World?',
+    });
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
-ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1/responses",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "model": "@cf/openai/gpt-oss-20b",      "input": "Tell me all about PEP-8"    })result = response.json()print(result)
+```py
+import os
+import requests
+
+
+ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+prompt = "Tell me all about PEP-8"
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1/responses",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+      "model": "@cf/openai/gpt-oss-20b",
+      "input": "Tell me all about PEP-8"
+    }
+)
+result = response.json()
+print(result)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses   -H "Content-Type: application/json"   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN"   -d '{    "model": "@cf/openai/gpt-oss-20b",    "input": "What are the benefits of open-source models?"  }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses   -H "Content-Type: application/json"   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN"   -d '{
+    "model": "@cf/openai/gpt-oss-20b",
+    "input": "What are the benefits of open-source models?"
+  }'
 ```
 
 Multiple API format support
@@ -61,8 +87,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2254)
-* [ Output ](#tab-panel-2255)
+* [ Input ](#tab-panel-2302)
+* [ Output ](#tab-panel-2303)
 
 Input format
 
@@ -140,8 +166,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-2256)
-* [ Output ](#tab-panel-2257)
+* [ Input ](#tab-panel-2304)
+* [ Output ](#tab-panel-2305)
 
 Input format
 
@@ -227,8 +253,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2258)
-* [ Output ](#tab-panel-2259)
+* [ Input ](#tab-panel-2306)
+* [ Output ](#tab-panel-2307)
 
 ▶requests\[\]
 

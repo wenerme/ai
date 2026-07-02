@@ -36,58 +36,210 @@ These examples demonstrate all the available actions in Cache Response Rules usi
 
 Example: Strip response headers from JS files before caching
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "http.request.uri.path.extension eq \"js\"",            "description": "Strip caching headers from JS files",            "action": "set_cache_settings",            "action_parameters": {                "strip_etags": true,                "strip_set_cookie": true,                "strip_last_modified": true            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "http.request.uri.path.extension eq \"js\"",
+            "description": "Strip caching headers from JS files",
+            "action": "set_cache_settings",
+            "action_parameters": {
+                "strip_etags": true,
+                "strip_set_cookie": true,
+                "strip_last_modified": true
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Set static cache tags on API responses
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "http.request.uri.path starts_with \"/api/\"",            "description": "Tag API responses for targeted purging",            "action": "set_cache_tags",            "action_parameters": {                "operation": "set",                "values": [                    "api-response",                    "dynamic-content"                ]            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "http.request.uri.path starts_with \"/api/\"",
+            "description": "Tag API responses for targeted purging",
+            "action": "set_cache_tags",
+            "action_parameters": {
+                "operation": "set",
+                "values": [
+                    "api-response",
+                    "dynamic-content"
+                ]
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Add cache tags from a response header using an expression
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "any(http.response.headers.names[*] == \"Surrogate-Keys\")",            "description": "Extract cache tags from alternative CDN response header",            "action": "set_cache_tags",            "action_parameters": {                "operation": "add",                "expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 1)"            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "any(http.response.headers.names[*] == \"Surrogate-Keys\")",
+            "description": "Extract cache tags from alternative CDN response header",
+            "action": "set_cache_tags",
+            "action_parameters": {
+                "operation": "add",
+                "expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 1)"
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Override cache-control with max-age
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "http.response.code eq 200",            "description": "Override cache-control for successful responses",            "action": "set_cache_control",            "action_parameters": {                "max-age": {                    "operation": "set",                    "value": 3600,                    "cloudflare_only": true                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "http.response.code eq 200",
+            "description": "Override cache-control for successful responses",
+            "action": "set_cache_control",
+            "action_parameters": {
+                "max-age": {
+                    "operation": "set",
+                    "value": 3600,
+                    "cloudflare_only": true
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Set private directive with qualifiers
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "http.request.uri.path starts_with \"/user/\"",            "description": "Mark user content as private",            "action": "set_cache_control",            "action_parameters": {                "private": {                    "operation": "set",                    "qualifiers": [                        "X-User-Id",                        "X-Session-Token"                    ]                },                "no-cache": {                    "operation": "set"                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "http.request.uri.path starts_with \"/user/\"",
+            "description": "Mark user content as private",
+            "action": "set_cache_control",
+            "action_parameters": {
+                "private": {
+                    "operation": "set",
+                    "qualifiers": [
+                        "X-User-Id",
+                        "X-Session-Token"
+                    ]
+                },
+                "no-cache": {
+                    "operation": "set"
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Set immutable for static font assets
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "http.request.uri.path.extension in {\"woff2\" \"woff\" \"ttf\"}",            "description": "Mark fonts as immutable",            "action": "set_cache_control",            "action_parameters": {                "immutable": {                    "operation": "set"                },                "max-age": {                    "operation": "set",                    "value": 31536000                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "http.request.uri.path.extension in {\"woff2\" \"woff\" \"ttf\"}",
+            "description": "Mark fonts as immutable",
+            "action": "set_cache_control",
+            "action_parameters": {
+                "immutable": {
+                    "operation": "set"
+                },
+                "max-age": {
+                    "operation": "set",
+                    "value": 31536000
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Example: Multiple rules with strip headers, tag responses, and set cache control
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "http.response.code eq 200 and http.request.uri.path.extension eq \"html\"",            "description": "Strip tracking headers from HTML responses",            "action": "set_cache_settings",            "action_parameters": {                "strip_etags": true,                "strip_set_cookie": true            }        },        {            "expression": "http.request.uri.path starts_with \"/products/\"",            "description": "Tag product pages for purging",            "action": "set_cache_tags",            "action_parameters": {                "operation": "add",                "values": [                    "product-catalog",                    "storefront"                ]            }        },        {            "expression": "http.response.code eq 200",            "description": "Set cache control for all 200 responses",            "action": "set_cache_control",            "action_parameters": {                "s-maxage": {                    "operation": "set",                    "value": 86400,                    "cloudflare_only": true                },                "must-revalidate": {                    "operation": "set"                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "expression": "http.response.code eq 200 and http.request.uri.path.extension eq \"html\"",
+            "description": "Strip tracking headers from HTML responses",
+            "action": "set_cache_settings",
+            "action_parameters": {
+                "strip_etags": true,
+                "strip_set_cookie": true
+            }
+        },
+        {
+            "expression": "http.request.uri.path starts_with \"/products/\"",
+            "description": "Tag product pages for purging",
+            "action": "set_cache_tags",
+            "action_parameters": {
+                "operation": "add",
+                "values": [
+                    "product-catalog",
+                    "storefront"
+                ]
+            }
+        },
+        {
+            "expression": "http.response.code eq 200",
+            "description": "Set cache control for all 200 responses",
+            "action": "set_cache_control",
+            "action_parameters": {
+                "s-maxage": {
+                    "operation": "set",
+                    "value": 86400,
+                    "cloudflare_only": true
+                },
+                "must-revalidate": {
+                    "operation": "set"
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 ## Required API token permissions

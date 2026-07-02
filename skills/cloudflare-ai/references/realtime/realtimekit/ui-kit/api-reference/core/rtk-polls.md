@@ -28,19 +28,25 @@ A component which lists all available plugins a user can access with the ability
 
 ### Basic Usage
 
-```
+```html
 <rtk-polls></rtk-polls>
 ```
 
 ### With Properties
 
-```
-<rtk-polls size="md"></rtk-polls>
+```html
+<rtk-polls
+ size="md">
+</rtk-polls>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-polls");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-polls");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

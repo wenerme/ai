@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
 
-* [ Dashboard ](#tab-panel-10093)
-* [ API ](#tab-panel-10094)
+* [ Dashboard ](#tab-panel-10388)
+* [ API ](#tab-panel-10389)
 
 The following example rule will disable Brotli compression for all incoming requests of a given zone. The only available compression algorithm will be Gzip.
 
@@ -57,10 +57,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "always_use_gzip",            "expression": "true",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "gzip"                    }                ]            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "always_use_gzip",
+            "expression": "true",
+            "action": "compress_response",
+            "action_parameters": {
+                "algorithms": [
+                    {
+                        "name": "gzip"
+                    }
+                ]
+            }
+        }
+    ]
+  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

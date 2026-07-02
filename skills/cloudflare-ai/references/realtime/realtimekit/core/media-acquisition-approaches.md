@@ -43,31 +43,70 @@ Initialize the SDK first, then access media tracks from the meeting object. This
 
 **When to use**: You need to access media tracks after SDK initialization for logging, analysis, or integration with other services.
 
-TypeScript
+**TypeScript**
 
-```
-import { useEffect } from 'react';import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
-export default function App() {  const [meeting, initMeeting] = useRealtimeKitClient();
-    useEffect(() => {      initMeeting({ authToken: "<auth-token>" });    }, []);
-    useEffect(() => {        if(meeting){            console.log('audioTrack:: ', meeting.self.audioTrack);            console.log('videoTrack:: ', meeting.self.videoTrack);        }
+```ts
+import { useEffect } from 'react';
+import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
+
+
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+
+
+    useEffect(() => {
+      initMeeting({ authToken: "<auth-token>" });
+    }, []);
+
+
+    useEffect(() => {
+        if(meeting){
+            console.log('audioTrack:: ', meeting.self.audioTrack);
+            console.log('videoTrack:: ', meeting.self.videoTrack);
+        }
+
+
     }, [meeting])
+
+
     return <div>Your meeting component comes here</div>;
+
+
 }
 ```
 
-JavaScript
+**JavaScript**
 
-```
-const authToken = "<auth-token>";const meeting = await RealtimeKitClient.init({  authToken,});
-console.log("audioTrack:: ", meeting.self.audioTrack);console.log("videoTrack:: ", meeting.self.videoTrack);
+```js
+const authToken = "<auth-token>";
+const meeting = await RealtimeKitClient.init({
+  authToken,
+});
+
+
+console.log("audioTrack:: ", meeting.self.audioTrack);
+console.log("videoTrack:: ", meeting.self.videoTrack);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-class AppComponent {  title = "MyProject";  @ViewChild("myid") meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
-  async ngAfterViewInit() {    const meeting = await RealtimeKitClient.init({      authToken: "<auth-token>",    });
-    console.log("audioTrack:: ", meeting.self.audioTrack);    console.log("videoTrack:: ", meeting.self.videoTrack);  }}
+```ts
+class AppComponent {
+  title = "MyProject";
+  @ViewChild("myid") meetingComponent: RtkMeeting;
+  rtkMeeting: RealtimeKitClient;
+
+
+  async ngAfterViewInit() {
+    const meeting = await RealtimeKitClient.init({
+      authToken: "<auth-token>",
+    });
+
+
+    console.log("audioTrack:: ", meeting.self.audioTrack);
+    console.log("videoTrack:: ", meeting.self.videoTrack);
+  }
+}
 ```
 
 ## Approach 2: Media-first
@@ -83,17 +122,64 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 * Media tracks are automatically synchronized between your validation service and the SDK.
 * Acquire media early without the complexity of managing SDK connection state.
 
-TypeScript
+**TypeScript**
 
-```
-import { useEffect, useState } from 'react';import RealtimeKitClient from '@cloudflare/realtimekit';import type { RTKSelfMedia } from '@cloudflare/realtimekit';import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
-export default function App() {  const [meeting, initMeeting] = useRealtimeKitClient();    const [media, setMedia] = useState<RTKSelfMedia>();    const [readyToInitializeSDK, setReadyToInitializeSDK] = useState(false);
-    useEffect(() => {        async function initMediaWithoutSDKInitialization(){            const mediaFromSDK = await RealtimeKitClient.initMedia({              video : true,              audio: true,            });
+```ts
+import { useEffect, useState } from 'react';
+import RealtimeKitClient from '@cloudflare/realtimekit';
+import type { RTKSelfMedia } from '@cloudflare/realtimekit';
+import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
+
+
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+    const [media, setMedia] = useState<RTKSelfMedia>();
+    const [readyToInitializeSDK, setReadyToInitializeSDK] = useState(false);
+
+
+    useEffect(() => {
+        async function initMediaWithoutSDKInitialization(){
+            const mediaFromSDK = await RealtimeKitClient.initMedia({
+              video : true,
+              audio: true,
+            });
+
+
             setMedia(mediaFromSDK);
-            console.log('audioTrack', mediaFromSDK.audioTrack);            console.log('videoTrack', mediaFromSDK.videoTrack);
-            setTimeout(() => {                // Once you are ready to initialize the SDK, set this to true                // To mimic a real world scenario, we are setting it to true after 5 seconds                setReadyToInitializeSDK(true);            }, 5000);        }        if(!media){            initMediaWithoutSDKInitialization();        }    }, [media]);
-    useEffect(() => {        if(meeting){            return;        }        if(!readyToInitializeSDK){            return;        }        if(!media){            return;        }      initMeeting({ authToken: "<auth-token>", defaults: { mediaHandler: media } });    }, [meeting, readyToInitializeSDK, media]);
-    return <div>Your meeting component comes here</div>;}
+
+
+            console.log('audioTrack', mediaFromSDK.audioTrack);
+            console.log('videoTrack', mediaFromSDK.videoTrack);
+
+
+            setTimeout(() => {
+                // Once you are ready to initialize the SDK, set this to true
+                // To mimic a real world scenario, we are setting it to true after 5 seconds
+                setReadyToInitializeSDK(true);
+            }, 5000);
+        }
+        if(!media){
+            initMediaWithoutSDKInitialization();
+        }
+    }, [media]);
+
+
+    useEffect(() => {
+        if(meeting){
+            return;
+        }
+        if(!readyToInitializeSDK){
+            return;
+        }
+        if(!media){
+            return;
+        }
+      initMeeting({ authToken: "<auth-token>", defaults: { mediaHandler: media } });
+    }, [meeting, readyToInitializeSDK, media]);
+
+
+    return <div>Your meeting component comes here</div>;
+}
 ```
 
 Initialize the media handler first using `RealtimeKitClient.initMedia()`, then pass it to the SDK during initialization. The SDK reuses the acquired media tracks without requesting permissions again.
@@ -107,11 +193,26 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 * Media tracks are automatically synchronized between your validation service and the SDK.
 * Acquire media early without the complexity of managing SDK connection state.
 
-JavaScript
+**JavaScript**
 
-```
-const mediaFromSDK = await RealtimeKitClient.initMedia({  video: true,  audio: true,});
-setTimeout(() => {  const authToken = "<auth-token>";  RealtimeKitClient.init({    authToken,    defaults: {      mediaHandler: mediaFromSDK,    },  }).then((meeting) => {    // next - meeting.join();  });}, 5000);
+```js
+const mediaFromSDK = await RealtimeKitClient.initMedia({
+  video: true,
+  audio: true,
+});
+
+
+setTimeout(() => {
+  const authToken = "<auth-token>";
+  RealtimeKitClient.init({
+    authToken,
+    defaults: {
+      mediaHandler: mediaFromSDK,
+    },
+  }).then((meeting) => {
+    // next - meeting.join();
+  });
+}, 5000);
 ```
 
 Initialize the media handler first using `RealtimeKitClient.initMedia()`, then pass it to the SDK during initialization. The SDK reuses the acquired media tracks without requesting permissions again.
@@ -125,12 +226,35 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 * Media tracks are automatically synchronized between your validation service and the SDK.
 * Acquire media early without the complexity of managing SDK connection state.
 
-TypeScript
+**TypeScript**
 
-```
-class AppComponent {  title = "MyProject";  @ViewChild("myid") meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
-  async ngAfterViewInit() {    const mediaFromSDK = await RealtimeKitClient.initMedia({      video: true,      audio: true,    });
-    setTimeout(() => {      const authToken = "<auth-token>";      RealtimeKitClient.init({        authToken,        defaults: {          mediaHandler: mediaFromSDK,        },      }).then((meeting) => {        // next - meeting.join();      });    }, 5000);  }}
+```ts
+class AppComponent {
+  title = "MyProject";
+  @ViewChild("myid") meetingComponent: RtkMeeting;
+  rtkMeeting: RealtimeKitClient;
+
+
+  async ngAfterViewInit() {
+    const mediaFromSDK = await RealtimeKitClient.initMedia({
+      video: true,
+      audio: true,
+    });
+
+
+    setTimeout(() => {
+      const authToken = "<auth-token>";
+      RealtimeKitClient.init({
+        authToken,
+        defaults: {
+          mediaHandler: mediaFromSDK,
+        },
+      }).then((meeting) => {
+        // next - meeting.join();
+      });
+    }, 5000);
+  }
+}
 ```
 
 ## Approach 3: Self-managed (advanced)
@@ -147,31 +271,80 @@ Acquire and manage media tracks independently using browser APIs, then pass them
 
 Initialize the SDK with audio and video disabled, then enable them with your custom tracks:
 
-TypeScript
+**TypeScript**
 
-```
-import { useEffect } from 'react';import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
-export default function App() {  const [meeting, initMeeting] = useRealtimeKitClient();
-    useEffect(() => {      initMeeting({ authToken: "<auth-token>" });    }, []);
-    useEffect(() => {        async function setupMediaTracks(){            if (meeting) {                let audioTrack; // Put the audioTrack that you acquired from browser here                let videoTrack; // Put the videoTrack that you acquired from browser here                await meeting.self.enableAudio(audioTrack);                await meeting.self.enableVideo(videoTrack);                // await meeting.self.join();            }        }        setupMediaTracks();
+```ts
+import { useEffect } from 'react';
+import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
+
+
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+
+
+    useEffect(() => {
+      initMeeting({ authToken: "<auth-token>" });
+    }, []);
+
+
+    useEffect(() => {
+        async function setupMediaTracks(){
+            if (meeting) {
+                let audioTrack; // Put the audioTrack that you acquired from browser here
+                let videoTrack; // Put the videoTrack that you acquired from browser here
+                await meeting.self.enableAudio(audioTrack);
+                await meeting.self.enableVideo(videoTrack);
+                // await meeting.self.join();
+            }
+        }
+        setupMediaTracks();
+
+
     }, [meeting])
+
+
     return <div>Your meeting component comes here</div>;
+
+
 }
 ```
 
-JavaScript
+**JavaScript**
 
-```
-const authToken = "<auth-token>";const meeting = await RealtimeKitClient.init({  authToken,});
-let audioTrack; // Put the audioTrack that you acquired from browser herelet videoTrack; // Put the videoTrack that you acquired from browser hereawait meeting.self.enableAudio(audioTrack);await meeting.self.enableVideo(videoTrack);
+```js
+const authToken = "<auth-token>";
+const meeting = await RealtimeKitClient.init({
+  authToken,
+});
+
+
+let audioTrack; // Put the audioTrack that you acquired from browser here
+let videoTrack; // Put the videoTrack that you acquired from browser here
+await meeting.self.enableAudio(audioTrack);
+await meeting.self.enableVideo(videoTrack);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-class AppComponent {  title = "MyProject";  @ViewChild("myid") meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
-  async ngAfterViewInit() {    const meeting = await RealtimeKitClient.init({      authToken: "<auth-token>",    });
-    let audioTrack; // Put the audioTrack that you acquired from browser here    let videoTrack; // Put the videoTrack that you acquired from browser here    await meeting.self.enableAudio(audioTrack);    await meeting.self.enableVideo(videoTrack);  }}
+```ts
+class AppComponent {
+  title = "MyProject";
+  @ViewChild("myid") meetingComponent: RtkMeeting;
+  rtkMeeting: RealtimeKitClient;
+
+
+  async ngAfterViewInit() {
+    const meeting = await RealtimeKitClient.init({
+      authToken: "<auth-token>",
+    });
+
+
+    let audioTrack; // Put the audioTrack that you acquired from browser here
+    let videoTrack; // Put the videoTrack that you acquired from browser here
+    await meeting.self.enableAudio(audioTrack);
+    await meeting.self.enableVideo(videoTrack);
+  }
+}
 ```
 
 ```json

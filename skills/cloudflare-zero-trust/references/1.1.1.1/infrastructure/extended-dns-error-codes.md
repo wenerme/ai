@@ -16,9 +16,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 1.1.1.1 supports Extended DNS Error Codes. Below is a list of error codes 1.1.1.1 returns, what they mean, and steps you may want to take to resolve the issue. Many of these errors relate to DNSSEC (DNS Security Extensions) — the set of protocols that add cryptographic signatures to DNS records to prevent tampering. Extended DNS Error Codes appear automatically in the `OPT PSEUDOSECTION` of a `dig` response when the server includes them, for example:
 
-Terminal window
-
-```
+```sh
 dig @1.1.1.1 example.com A
 ```
 

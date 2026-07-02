@@ -24,16 +24,20 @@ A pre-built header for livestream meetings. Contains the livestream indicator, v
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkLivestreamHeaderView    android:id="@+id/rtk_livestream_header"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkLivestreamHeaderView
+    android:id="@+id/rtk_livestream_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val header = findViewById<RtkLivestreamHeaderView>(R.id.rtk_livestream_header)header.activate(meeting)
+```kotlin
+val header = findViewById<RtkLivestreamHeaderView>(R.id.rtk_livestream_header)
+header.activate(meeting)
 ```
 
 ```json

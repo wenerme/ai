@@ -30,16 +30,31 @@ Displays a participant's name with optional child content (such as an audio visu
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkNameTag } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkNameTag participant={participant} />;}
+
+
+function MyComponent() {
+  return <RtkNameTag participant={participant} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkNameTag } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkNameTag      participant={participant}      meeting={meeting}      size="md"      maxLength={25}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkNameTag
+      participant={participant}
+      meeting={meeting}
+      size="md"
+      maxLength={25}
+    />
+  );
+}
 ```
 
 ```json

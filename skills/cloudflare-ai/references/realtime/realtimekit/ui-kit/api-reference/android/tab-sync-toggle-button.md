@@ -24,16 +24,20 @@ A toggle button for syncing plugin tabs.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkTabSyncToggleButton    android:id="@+id/rtk_tab_sync"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkTabSyncToggleButton
+    android:id="@+id/rtk_tab_sync"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val tabSyncButton = findViewById<RtkTabSyncToggleButton>(R.id.rtk_tab_sync)tabSyncButton.isActivated = true
+```kotlin
+val tabSyncButton = findViewById<RtkTabSyncToggleButton>(R.id.rtk_tab_sync)
+tabSyncButton.isActivated = true
 ```
 
 ```json

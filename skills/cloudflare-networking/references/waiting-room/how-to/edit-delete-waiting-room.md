@@ -46,10 +46,18 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Waiting Rooms Write`
 
-Update waiting room
+**Update waiting room**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "webshop-waiting-room",    "host": "example.com",    "new_users_per_minute": 200,    "total_active_users": 300  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "webshop-waiting-room",
+    "host": "example.com",
+    "new_users_per_minute": 200,
+    "total_active_users": 300
+  }'
 ```
 
 [Update ↗](https://api.cloudflare.com#waiting-room-patch-waiting-room) a configured waiting room by appending the following endpoint to the Cloudflare API base URL.
@@ -59,10 +67,18 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Waiting Rooms Write`
 
-Patch waiting room
+**Patch waiting room**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "webshop-waiting-room",    "host": "example.com",    "new_users_per_minute": 200,    "total_active_users": 300  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "webshop-waiting-room",
+    "host": "example.com",
+    "new_users_per_minute": 200,
+    "total_active_users": 300
+  }'
 ```
 
 You only need to include the fields you want to update in the payload of the PATCH request.
@@ -76,10 +92,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Waiting Rooms Write`
 
-Delete waiting room
+**Delete waiting room**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

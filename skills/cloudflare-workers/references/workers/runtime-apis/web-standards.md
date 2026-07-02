@@ -150,11 +150,19 @@ The [unhandledrejection ↗](https://developer.mozilla.org/en-US/docs/Web/API/Wi
 
 The [rejectionhandled ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/rejectionhandled%5Fevent) event is emitted by the global scope when a JavaScript promise rejection is handled late (after a rejection handler is attached to the promise after an `unhandledrejection` event has already been emitted).
 
-worker.js
+**worker.js**
 
-```
-addEventListener("unhandledrejection", (event) => {  console.log(event.promise); // The promise that was rejected.  console.log(event.reason); // The value or Error with which the promise was rejected.});
-addEventListener("rejectionhandled", (event) => {  console.log(event.promise); // The promise that was rejected.  console.log(event.reason); // The value or Error with which the promise was rejected.});
+```js
+addEventListener("unhandledrejection", (event) => {
+  console.log(event.promise); // The promise that was rejected.
+  console.log(event.reason); // The value or Error with which the promise was rejected.
+});
+
+
+addEventListener("rejectionhandled", (event) => {
+  console.log(event.promise); // The promise that was rejected.
+  console.log(event.reason); // The value or Error with which the promise was rejected.
+});
 ```
 
 ---
@@ -165,17 +173,21 @@ When the [global\_navigator](https://developers.cloudflare.com/workers/configura
 
 For example, you can replace:
 
-JavaScript
+**JavaScript**
 
-```
-const promise = fetch("https://example.com", {  method: "POST",  body: "hello world",});ctx.waitUntil(promise);
+```js
+const promise = fetch("https://example.com", {
+  method: "POST",
+  body: "hello world",
+});
+ctx.waitUntil(promise);
 ```
 
 with `navigator.sendBeacon(...)`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 navigator.sendBeacon("https://example.com", "hello world");
 ```
 
@@ -183,13 +195,27 @@ navigator.sendBeacon("https://example.com", "hello world");
 
 When the `enable_web_file_system` compatibility flag is set, Workers supports the [Web File System Access API ↗](https://developer.mozilla.org/en-US/docs/Web/API/File%5FSystem%5FAccess%5FAPI), which allows you to read and write files and directories to a virtual file system within the Worker environment. This API provides access to the same in-memory virtual file system as the [node:fs module](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) but does not require Node.js compatibility to be enabled.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const root = await navigator.storage.getDirectory();
-export default {  async fetch(request) {    const fileHandle = await root.getFileHandle("hello.txt", { create: true });    const writable = await fileHandle.createWritable();    await writable.write("Hello, world!");    await writable.close();
-    const file = await fileHandle.getFile();    const contents = await file.text();
-    return new Response(contents, { status: 200 });  },};
+
+
+export default {
+  async fetch(request) {
+    const fileHandle = await root.getFileHandle("hello.txt", { create: true });
+    const writable = await fileHandle.createWritable();
+    await writable.write("Hello, world!");
+    await writable.close();
+
+
+    const file = await fileHandle.getFile();
+    const contents = await file.text();
+
+
+    return new Response(contents, { status: 200 });
+  },
+};
 ```
 
 Please refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/File%5FSystem%5FAccess%5FAPI) for more information on using this API, and to the [node:fs documentation](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) for details on the virtual file system structure and limitations.

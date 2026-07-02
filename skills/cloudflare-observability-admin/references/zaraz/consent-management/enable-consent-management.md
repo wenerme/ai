@@ -37,8 +37,10 @@ By default, the Zaraz Consent Management Platform will try to match the language
 
 Below is an example that forces the language shown to be American English.
 
-```
-<script>  zaraz.set('__zarazConsentLanguage', 'en-US')</script>
+```html
+<script>
+  zaraz.set('__zarazConsentLanguage', 'en-US')
+</script>
 ```
 
 ## Next steps

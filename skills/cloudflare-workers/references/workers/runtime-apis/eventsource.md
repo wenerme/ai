@@ -18,9 +18,9 @@ The [EventSource ↗](https://developer.mozilla.org/en-US/docs/Web/API/EventSour
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 let eventSource = new EventSource(url, options);
 ```
 
@@ -29,10 +29,15 @@ let eventSource = new EventSource(url, options);
 
 By default, the `EventSource` will use the global `fetch()` function under the covers to make requests. If you need to use a different fetch implementation as provided by a Cloudflare Workers binding, you can pass the `fetcher` option:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(req, env) {    let eventSource = new EventSource(url, { fetcher: env.MYFETCHER });    // ...  }};
+```js
+export default {
+  async fetch(req, env) {
+    let eventSource = new EventSource(url, { fetcher: env.MYFETCHER });
+    // ...
+  }
+};
 ```
 
 Note that the `fetcher` option is a Cloudflare Workers specific extension.

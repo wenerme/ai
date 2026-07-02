@@ -61,16 +61,26 @@ When a layer switch is requested (through updating `preferredRid`) with the `/tr
 
 For publishers (local tracks), you only need to include the simulcast attributes in your SDP. The SFU will automatically handle the simulcast configuration based on the SDP. For example, the SDP should contain a section like this:
 
-```
-a=simulcast:send f;h;qa=rid:f senda=rid:h senda=rid:q send
+```txt
+a=simulcast:send f;h;q
+a=rid:f send
+a=rid:h send
+a=rid:q send
 ```
 
 If the publisher endpoint is a browser you can include these by specifying `sendEncodings` when creating the transceiver like this:
 
-JavaScript
+**JavaScript**
 
-```
-const transceiver = peerConnection.addTransceiver(track, {  direction: "sendonly",  sendEncodings: [    { scaleResolutionDownBy: 1, rid: "f" },    { scaleResolutionDownBy: 2, rid: "h" },    { scaleResolutionDownBy: 4, rid: "q" },  ],});
+```js
+const transceiver = peerConnection.addTransceiver(track, {
+  direction: "sendonly",
+  sendEncodings: [
+    { scaleResolutionDownBy: 1, rid: "f" },
+    { scaleResolutionDownBy: 2, rid: "h" },
+    { scaleResolutionDownBy: 4, rid: "q" },
+  ],
+});
 ```
 
 ## Example

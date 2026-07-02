@@ -29,10 +29,24 @@ The `log_directory` field is optional. If set, Cloudflare will use it to fetch a
 
 This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/).
 
-Terminal window
-
-```
-curl 'https://plexi.key-transparency.cloudflare.com/namespaces' \          --header 'Content-Type: application/json' \          --data '{   "name": "your.new.log.com",   "root": "1/1111111111111111111111111111111111111111111111111111111111111111",   "log_directory": "https://your.new.log.com/path/to/proofs",  "signature_version": 1  }'{  "name": "your.new.log.com",  "log_directory": "https://your.new.log.com/path/to/proofs",  "root": "1/1111111111111111111111111111111111111111111111111111111111111111",  "status": "Initialization",  "reports_uri": "/namespaces/your.new.log.com/reports",  "audits_uri": "/namespaces/your.new.log.com/audits",  "signature_version": 1}
+```sh
+curl 'https://plexi.key-transparency.cloudflare.com/namespaces' \
+          --header 'Content-Type: application/json' \
+          --data '{
+   "name": "your.new.log.com",
+   "root": "1/1111111111111111111111111111111111111111111111111111111111111111",
+   "log_directory": "https://your.new.log.com/path/to/proofs",
+  "signature_version": 1
+  }'
+{
+  "name": "your.new.log.com",
+  "log_directory": "https://your.new.log.com/path/to/proofs",
+  "root": "1/1111111111111111111111111111111111111111111111111111111111111111",
+  "status": "Initialization",
+  "reports_uri": "/namespaces/your.new.log.com/reports",
+  "audits_uri": "/namespaces/your.new.log.com/audits",
+  "signature_version": 1
+}
 ```
 
 After publishing the first epoch, `status` will show `Online`. Possible statuses include:
@@ -45,10 +59,14 @@ After publishing the first epoch, `status` will show `Online`. Possible statuses
 
 Refer to the example below to get information about all public namespaces.
 
-Terminal window
-
-```
-curl 'https://plexi.key-transparency.cloudflare.com/namespaces'{   "namespaces": [       { "name": "your.new.log.com", "root": "1/abc", "reports_uri": "/namespaces/your.new.log.com/reports", "audits_uri": "/namespaces/your.new.log.com/audits", "log_directory": "https://your.new.log.com/path/to/proofs", "status": "online" },       { "name": "my.new.log.com", "reports_uri": "/namespaces/meta-bt-2024/reports", "audits_uri": "/namespaces/meta-bt-2024/audits", "status": "initialization" }   ]}
+```sh
+curl 'https://plexi.key-transparency.cloudflare.com/namespaces'
+{
+   "namespaces": [
+       { "name": "your.new.log.com", "root": "1/abc", "reports_uri": "/namespaces/your.new.log.com/reports", "audits_uri": "/namespaces/your.new.log.com/audits", "log_directory": "https://your.new.log.com/path/to/proofs", "status": "online" },
+       { "name": "my.new.log.com", "reports_uri": "/namespaces/meta-bt-2024/reports", "audits_uri": "/namespaces/meta-bt-2024/audits", "status": "initialization" }
+   ]
+}
 ```
 
 ## Disable a namespace
@@ -57,10 +75,21 @@ If a log state has been corrupted, lost, or needs to be sharded to be maintainab
 
 This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/).
 
-Terminal window
-
-```
-curl -X PATCH 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}' \          -H 'Content-Type: application/json' \          -d '{   "status": "Disabled"  }'{  "name": "your.new.log.com",  "log_directory": "https://your.new.log.com/path/to/proofs",  "root": "1/1111111111111111111111111111111111111111111111111111111111111111",  "status": "Disabled",  "reports_uri": "/namespaces/your.new.log.com/reports",  "audits_uri": "/namespaces/your.new.log.com/audits",  "signature_version": 1}
+```sh
+curl -X PATCH 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}' \
+          -H 'Content-Type: application/json' \
+          -d '{
+   "status": "Disabled"
+  }'
+{
+  "name": "your.new.log.com",
+  "log_directory": "https://your.new.log.com/path/to/proofs",
+  "root": "1/1111111111111111111111111111111111111111111111111111111111111111",
+  "status": "Disabled",
+  "reports_uri": "/namespaces/your.new.log.com/reports",
+  "audits_uri": "/namespaces/your.new.log.com/audits",
+  "signature_version": 1
+}
 ```
 
 ```json

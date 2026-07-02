@@ -37,30 +37,53 @@ Note
 
 For Rust Workers, add the following to your `Cargo.toml` to preserve [DWARF ↗](https://dwarfstd.org/) debug symbols (from [this comment ↗](https://github.com/rustwasm/wasm-pack/issues/1351#issuecomment-2100231587)):
 
-wrangler.toml
+**wrangler.toml**
 
-```
-[package.metadata.wasm-pack.profile.dev.wasm-bindgen]dwarf-debug-info = true
+```toml
+[package.metadata.wasm-pack.profile.dev.wasm-bindgen]
+dwarf-debug-info = true
 ```
 
 Then, update your `wrangler.toml` to configure wasm-pack (via worker-build) to use the `dev` [profile ↗](https://rustwasm.github.io/docs/wasm-pack/commands/build.html#profile) to preserve debug symbols.
 
-Cargo.toml
+**Cargo.toml**
 
-```
-[build]command = "cargo install -q worker-build && worker-build --dev"
+```toml
+[build]
+command = "cargo install -q worker-build && worker-build --dev"
 ```
 
 ## An Example Profile
 
 Let's look at an example to learn how to read a CPU profile. Imagine you have the following Worker:
 
-index.js
+**index.js**
 
-```
-const addNumbers = (body) => {  for (let i = 0; i < 5000; ++i) {    body = body + " " + i;  }  return body;};
-const moreAddition = (body) => {  for (let i = 5001; i < 15000; ++i) {    body = body + " " + i;  }  return body;};
-export default {  async fetch(request, env, ctx) {    let body = "Hello Profiler! - ";    body = addNumbers(body);    body = moreAddition(body);    return new Response(body);  },};
+```js
+const addNumbers = (body) => {
+  for (let i = 0; i < 5000; ++i) {
+    body = body + " " + i;
+  }
+  return body;
+};
+
+
+const moreAddition = (body) => {
+  for (let i = 5001; i < 15000; ++i) {
+    body = body + " " + i;
+  }
+  return body;
+};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    let body = "Hello Profiler! - ";
+    body = addNumbers(body);
+    body = moreAddition(body);
+    return new Response(body);
+  },
+};
 ```
 
 You want to find which part of the code causes slow response times. How do you use DevTool profiling to identify the CPU-heavy code and fix the issue?

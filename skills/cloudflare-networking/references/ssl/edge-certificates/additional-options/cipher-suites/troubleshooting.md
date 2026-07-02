@@ -26,9 +26,7 @@ To test supported TLS versions, attempt a request to your website or application
 
 For example, to test TLS 1.1, use the `curl` command below. Replace `www.example.com` with your Cloudflare domain and hostname.
 
-Terminal window
-
-```
+```sh
 curl https://www.example.com -svo /dev/null --tls-max 1.1
 ```
 

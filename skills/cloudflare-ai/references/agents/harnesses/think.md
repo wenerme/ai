@@ -24,76 +24,215 @@ If this is your first agent, start with the [Getting started tutorial](https://d
 
 ### Install
 
-Terminal window
-
-```
+```sh
 npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zod workers-ai-provider
 ```
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5755)
-* [  TypeScript ](#tab-panel-5756)
+* [  JavaScript ](#tab-panel-5787)
+* [  TypeScript ](#tab-panel-5788)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Think } from "@cloudflare/think";
+import { createWorkersAI } from "workers-ai-provider";
+import { routeAgentRequest } from "agents";
+
+
+export class MyAgent extends Think {
+  getModel() {
+    return createWorkersAI({ binding: this.env.AI })(
+      "@cf/moonshotai/kimi-k2.6",
+    );
+  }
+}
+
+
+export default {
+  async fetch(request, env) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
-import { Think } from "@cloudflare/think";import { createWorkersAI } from "workers-ai-provider";import { routeAgentRequest } from "agents";
-export class MyAgent extends Think {  getModel() {    return createWorkersAI({ binding: this.env.AI })(      "@cf/moonshotai/kimi-k2.6",    );  }}
-export default {  async fetch(request, env) {    return (      (await routeAgentRequest(request, env)) ||      new Response("Not found", { status: 404 })    );  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Think } from "@cloudflare/think";import { createWorkersAI } from "workers-ai-provider";import { routeAgentRequest } from "agents";
-export class MyAgent extends Think<Env> {  getModel() {    return createWorkersAI({ binding: this.env.AI })(      "@cf/moonshotai/kimi-k2.6",    );  }}
-export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env)) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+```ts
+import { Think } from "@cloudflare/think";
+import { createWorkersAI } from "workers-ai-provider";
+import { routeAgentRequest } from "agents";
+
+
+export class MyAgent extends Think<Env> {
+  getModel() {
+    return createWorkersAI({ binding: this.env.AI })(
+      "@cf/moonshotai/kimi-k2.6",
+    );
+  }
+}
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 That is it. Think handles the WebSocket chat protocol, message persistence, the agentic loop, message sanitization, stream resumption, client tool support, and workspace file tools.
 
 ### Client
 
-* [  JavaScript ](#tab-panel-5757)
-* [  TypeScript ](#tab-panel-5758)
+* [  JavaScript ](#tab-panel-5789)
+* [  TypeScript ](#tab-panel-5790)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { useAgentChat } from "@cloudflare/ai-chat/react";
+
+
+function Chat() {
+  const agent = useAgent({ agent: "MyAgent" });
+  const { messages, sendMessage, status } = useAgentChat({ agent });
+
+
+  return (
+    <div>
+      {messages.map((msg) => (
+        <div key={msg.id}>
+          <strong>{msg.role}:</strong>
+          {msg.parts.map((part, i) =>
+            part.type === "text" ? <span key={i}>{part.text}</span> : null,
+          )}
+        </div>
+      ))}
+
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const input = e.currentTarget.elements.namedItem("input");
+          sendMessage({ text: input.value });
+          input.value = "";
+        }}
+      >
+        <input name="input" placeholder="Send a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  );
+}
 ```
-import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
-function Chat() {  const agent = useAgent({ agent: "MyAgent" });  const { messages, sendMessage, status } = useAgentChat({ agent });
-  return (    <div>      {messages.map((msg) => (        <div key={msg.id}>          <strong>{msg.role}:</strong>          {msg.parts.map((part, i) =>            part.type === "text" ? <span key={i}>{part.text}</span> : null,          )}        </div>      ))}
-      <form        onSubmit={(e) => {          e.preventDefault();          const input = e.currentTarget.elements.namedItem("input");          sendMessage({ text: input.value });          input.value = "";        }}      >        <input name="input" placeholder="Send a message..." />        <button type="submit">Send</button>      </form>    </div>  );}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
-function Chat() {  const agent = useAgent({ agent: "MyAgent" });  const { messages, sendMessage, status } = useAgentChat({ agent });
-  return (    <div>      {messages.map((msg) => (        <div key={msg.id}>          <strong>{msg.role}:</strong>          {msg.parts.map((part, i) =>            part.type === "text" ? <span key={i}>{part.text}</span> : null,          )}        </div>      ))}
-      <form        onSubmit={(e) => {          e.preventDefault();          const input = e.currentTarget.elements.namedItem(            "input",          ) as HTMLInputElement;          sendMessage({ text: input.value });          input.value = "";        }}      >        <input name="input" placeholder="Send a message..." />        <button type="submit">Send</button>      </form>    </div>  );}
+```ts
+import { useAgent } from "agents/react";
+import { useAgentChat } from "@cloudflare/ai-chat/react";
+
+
+function Chat() {
+  const agent = useAgent({ agent: "MyAgent" });
+  const { messages, sendMessage, status } = useAgentChat({ agent });
+
+
+  return (
+    <div>
+      {messages.map((msg) => (
+        <div key={msg.id}>
+          <strong>{msg.role}:</strong>
+          {msg.parts.map((part, i) =>
+            part.type === "text" ? <span key={i}>{part.text}</span> : null,
+          )}
+        </div>
+      ))}
+
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const input = e.currentTarget.elements.namedItem(
+            "input",
+          ) as HTMLInputElement;
+          sendMessage({ text: input.value });
+          input.value = "";
+        }}
+      >
+        <input name="input" placeholder="Send a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  );
+}
 ```
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5751)
-* [  wrangler.toml ](#tab-panel-5752)
+* [  wrangler.jsonc ](#tab-panel-5783)
+* [  wrangler.toml ](#tab-panel-5784)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "ai": {
+    "binding": "AI"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "MyAgent",
+        "name": "MyAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": [
+        "MyAgent"
+      ],
+      "tag": "v1"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-26",  "compatibility_flags": [    "nodejs_compat"  ],  "ai": {    "binding": "AI"  },  "durable_objects": {    "bindings": [      {        "class_name": "MyAgent",        "name": "MyAgent"      }    ]  },  "migrations": [    {      "new_sqlite_classes": [        "MyAgent"      ],      "tag": "v1"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-# Set this to today's datecompatibility_date = "2026-06-26"compatibility_flags = ["nodejs_compat"]
-[ai]binding = "AI"
-[[durable_objects.bindings]]class_name = "MyAgent"name = "MyAgent"
-[[migrations]]new_sqlite_classes = ["MyAgent"]tag = "v1"
+```toml
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+
+
+[ai]
+binding = "AI"
+
+
+[[durable_objects.bindings]]
+class_name = "MyAgent"
+name = "MyAgent"
+
+
+[[migrations]]
+new_sqlite_classes = ["MyAgent"]
+tag = "v1"
 ```
 
 ## Think vs AIChatAgent
@@ -151,25 +290,87 @@ Experimental
 
 The `input` accepts a string, a `UIMessage`, an array of messages, or — in `wait` and `stream` modes — a function `(current) => UIMessage[]` evaluated at admission. (`submit` does not accept function input.)
 
-* [  JavaScript ](#tab-panel-5759)
-* [  TypeScript ](#tab-panel-5760)
+* [  JavaScript ](#tab-panel-5791)
+* [  TypeScript ](#tab-panel-5792)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Assistant extends Think {
+  async examples(inboundEventId) {
+    // wait — block for the result
+    const result = await this.runTurn({ input: "Summarize the latest thread" });
+    if (result.status === "completed") {
+      // result.message is the assistant message; result.continuation is false
+    }
+
+
+    // submit — durable acceptance, check status later
+    const submission = await this.runTurn({
+      mode: "submit",
+      input: "Process this webhook",
+      idempotencyKey: inboundEventId, // dedupe; safe to retry
+    });
+    // submission.accepted is true on first accept; submission.status is "pending"
+
+
+    // stream — drive a callback (the same surface as chat())
+    await this.runTurn({
+      mode: "stream",
+      input: "Stream me",
+      callback: {
+        onStart({ requestId }) {},
+        onEvent(json) {}, // UIMessageChunk JSON
+        onDone() {},
+        onError(error) {},
+      },
+    });
+
+
+    // continuation — continue the last assistant turn instead of sending input
+    await this.runTurn({ continuation: true });
+  }
+}
 ```
-export class Assistant extends Think {  async examples(inboundEventId) {    // wait — block for the result    const result = await this.runTurn({ input: "Summarize the latest thread" });    if (result.status === "completed") {      // result.message is the assistant message; result.continuation is false    }
-    // submit — durable acceptance, check status later    const submission = await this.runTurn({      mode: "submit",      input: "Process this webhook",      idempotencyKey: inboundEventId, // dedupe; safe to retry    });    // submission.accepted is true on first accept; submission.status is "pending"
-    // stream — drive a callback (the same surface as chat())    await this.runTurn({      mode: "stream",      input: "Stream me",      callback: {        onStart({ requestId }) {},        onEvent(json) {}, // UIMessageChunk JSON        onDone() {},        onError(error) {},      },    });
-    // continuation — continue the last assistant turn instead of sending input    await this.runTurn({ continuation: true });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class Assistant extends Think<Env> {  async examples(inboundEventId: string) {    // wait — block for the result    const result = await this.runTurn({ input: "Summarize the latest thread" });    if (result.status === "completed") {      // result.message is the assistant message; result.continuation is false    }
-    // submit — durable acceptance, check status later    const submission = await this.runTurn({      mode: "submit",      input: "Process this webhook",      idempotencyKey: inboundEventId, // dedupe; safe to retry    });    // submission.accepted is true on first accept; submission.status is "pending"
-    // stream — drive a callback (the same surface as chat())    await this.runTurn({      mode: "stream",      input: "Stream me",      callback: {        onStart({ requestId }) {},        onEvent(json) {}, // UIMessageChunk JSON        onDone() {},        onError(error) {},      },    });
-    // continuation — continue the last assistant turn instead of sending input    await this.runTurn({ continuation: true });  }}
+```ts
+export class Assistant extends Think<Env> {
+  async examples(inboundEventId: string) {
+    // wait — block for the result
+    const result = await this.runTurn({ input: "Summarize the latest thread" });
+    if (result.status === "completed") {
+      // result.message is the assistant message; result.continuation is false
+    }
+
+
+    // submit — durable acceptance, check status later
+    const submission = await this.runTurn({
+      mode: "submit",
+      input: "Process this webhook",
+      idempotencyKey: inboundEventId, // dedupe; safe to retry
+    });
+    // submission.accepted is true on first accept; submission.status is "pending"
+
+
+    // stream — drive a callback (the same surface as chat())
+    await this.runTurn({
+      mode: "stream",
+      input: "Stream me",
+      callback: {
+        onStart({ requestId }) {},
+        onEvent(json) {}, // UIMessageChunk JSON
+        onDone() {},
+        onError(error) {},
+      },
+    });
+
+
+    // continuation — continue the last assistant turn instead of sending input
+    await this.runTurn({ continuation: true });
+  }
+}
 ```
 
 Key behaviors:
@@ -203,19 +404,39 @@ Use `saveMessages()` when the caller owns the trigger and can wait for the turn 
 
 Use `addMessages()` to write to the transcript **without** starting a model turn — for importing prior history or injecting background context the next turn should see:
 
-* [  JavaScript ](#tab-panel-5753)
-* [  TypeScript ](#tab-panel-5754)
+* [  JavaScript ](#tab-panel-5785)
+* [  TypeScript ](#tab-panel-5786)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Assistant extends Think {
+  async importContext() {
+    await this.addMessages([
+      {
+        id: crypto.randomUUID(),
+        role: "user",
+        parts: [{ type: "text", text: "Imported context" }],
+      },
+    ]);
+  }
+}
 ```
-export class Assistant extends Think {  async importContext() {    await this.addMessages([      {        id: crypto.randomUUID(),        role: "user",        parts: [{ type: "text", text: "Imported context" }],      },    ]);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class Assistant extends Think<Env> {  async importContext() {    await this.addMessages([      {        id: crypto.randomUUID(),        role: "user",        parts: [{ type: "text", text: "Imported context" }],      },    ]);  }}
+```ts
+export class Assistant extends Think<Env> {
+  async importContext() {
+    await this.addMessages([
+      {
+        id: crypto.randomUUID(),
+        role: "user",
+        parts: [{ type: "text", text: "Imported context" }],
+      },
+    ]);
+  }
+}
 ```
 
 `addMessages()` appends (or upserts) into the Session tree:

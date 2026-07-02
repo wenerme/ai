@@ -35,8 +35,8 @@ Authentication logs do not capture the user's actions during a self-hosted or Sa
 
 #### View Access authentication logs
 
-* [ Dashboard ](#tab-panel-7498)
-* [ API ](#tab-panel-7499)
+* [ Dashboard ](#tab-panel-7516)
+* [ API ](#tab-panel-7517)
 
 To view logs for identity-based authentication events:
 
@@ -56,16 +56,36 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Audit Logs Read`
 
-Get Access authentication logs
+**Get Access authentication logs**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/logs/access_requests?limit=25&direction=desc&since=2020-07-01T05%3A20%3A00Z&until=2020-10-01T05%3A20%3A00Z" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/logs/access_requests?limit=25&direction=desc&since=2020-07-01T05%3A20%3A00Z&until=2020-10-01T05%3A20%3A00Z" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": [    {      "user_email": "michelle@example.com",      "ip_address": "198.41.129.166",      "app_uid": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",      "app_domain": "test.example.com/admin",      "action": "login",      "connection": "saml",      "allowed": false,      "created_at": "2014-01-01T05:20:00.12345Z",      "ray_id": "187d944c61940c77"    }  ]}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "user_email": "michelle@example.com",
+      "ip_address": "198.41.129.166",
+      "app_uid": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",
+      "app_domain": "test.example.com/admin",
+      "action": "login",
+      "connection": "saml",
+      "allowed": false,
+      "created_at": "2014-01-01T05:20:00.12345Z",
+      "ray_id": "187d944c61940c77"
+    }
+  ]
+}
 ```
 
 #### Explanation of the fields
@@ -117,8 +137,33 @@ Once a member of your team authenticates to reach an HTTP resource behind Access
 
 When a user requests a URL, Access appends the user identity from that token as a request header, which Cloudflare logs as the request passes through the network. Your team can collect these logs in your preferred third-party Security information and event management (SIEM) software or storage destination by using [Cloudflare Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). When enabled with the Access user identity field, the logs export to your systems as JSON similar to the example below.
 
-```
-{   "ClientIP": "198.51.100.206",   "ClientRequestHost": "jira.widgetcorp.tech",   "ClientRequestMethod": "GET",   "ClientRequestURI": "/secure/Dashboard/jspa",   "ClientRequestUserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",   "EdgeEndTimestamp": "2019-11-10T09:51:07Z",   "EdgeResponseBytes": 4600,   "EdgeResponseStatus": 200,   "EdgeStartTimestamp": "2019-11-10T09:51:07Z",   "RayID": "5y1250bcjd621y99",   "RequestHeaders":{"cf-access-user":"srhea"}},{   "ClientIP": "198.51.100.206",   "ClientRequestHost": "jira.widgetcorp.tech",   "ClientRequestMethod": "GET",   "ClientRequestURI": "/browse/EXP-12",   "ClientRequestUserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",   "EdgeEndTimestamp": "2019-11-10T09:51:27Z",   "EdgeResponseBytes": 4570,   "EdgeResponseStatus": 200,   "EdgeStartTimestamp": "2019-11-10T09:51:27Z",   "RayID": "yzrCqUhRd6DVz72a",   "RequestHeaders":{"cf-access-user":"srhea"}}
+```json
+{
+   "ClientIP": "198.51.100.206",
+   "ClientRequestHost": "jira.widgetcorp.tech",
+   "ClientRequestMethod": "GET",
+   "ClientRequestURI": "/secure/Dashboard/jspa",
+   "ClientRequestUserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",
+   "EdgeEndTimestamp": "2019-11-10T09:51:07Z",
+   "EdgeResponseBytes": 4600,
+   "EdgeResponseStatus": 200,
+   "EdgeStartTimestamp": "2019-11-10T09:51:07Z",
+   "RayID": "5y1250bcjd621y99",
+   "RequestHeaders":{"cf-access-user":"srhea"}
+},
+{
+   "ClientIP": "198.51.100.206",
+   "ClientRequestHost": "jira.widgetcorp.tech",
+   "ClientRequestMethod": "GET",
+   "ClientRequestURI": "/browse/EXP-12",
+   "ClientRequestUserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",
+   "EdgeEndTimestamp": "2019-11-10T09:51:27Z",
+   "EdgeResponseBytes": 4570,
+   "EdgeResponseStatus": 200,
+   "EdgeStartTimestamp": "2019-11-10T09:51:27Z",
+   "RayID": "yzrCqUhRd6DVz72a",
+   "RequestHeaders":{"cf-access-user":"srhea"}
+}
 ```
 
 ### Using the `cf-access-user` field

@@ -31,19 +31,25 @@ A component which plays a participant's screenshared video. It also allows for p
 
 ### Basic Usage
 
-```
+```html
 <rtk-screenshare-view></rtk-screenshare-view>
 ```
 
 ### With Properties
 
-```
-<rtk-screenshare-view></rtk-screenshare-view>
+```html
+<rtk-screenshare-view>
+</rtk-screenshare-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-screenshare-view");
-  el.hideFullScreenButton= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-screenshare-view");
+
+
+  el.hideFullScreenButton= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -49,18 +49,41 @@ To create a gateway using the API, send a [POST](https://developers.cloudflare.c
 
 If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "gateway.example.com",  "description": "This is my IPFS gateway.",  "target": "ipfs",  "dnslink": "/ipns/onboarding.ipfs.cloudflare.com"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "gateway.example.com",
+  "description": "This is my IPFS gateway.",
+  "target": "ipfs",
+  "dnslink": "/ipns/onboarding.ipfs.cloudflare.com"
+}'
 ```
 
 The response contains the complete definition of the new gateway.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "<WEB3_GATEWAY_ID>",    "name": "gateway.example.com",    "description": "This is my IPFS gateway.",    "status": "active",    "target": "ipfs",    "dnslink": "/ipns/onboarding.ipfs.cloudflare.com",    "created_on": "<CREATED_ON_DATE>",    "modified_on": "<MODIFIED_ON_DATE>"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "<WEB3_GATEWAY_ID>",
+    "name": "gateway.example.com",
+    "description": "This is my IPFS gateway.",
+    "status": "active",
+    "target": "ipfs",
+    "dnslink": "/ipns/onboarding.ipfs.cloudflare.com",
+    "created_on": "<CREATED_ON_DATE>",
+    "modified_on": "<MODIFIED_ON_DATE>"
+  }
+}
 ```
 
 When you create a gateway, Cloudflare automatically:

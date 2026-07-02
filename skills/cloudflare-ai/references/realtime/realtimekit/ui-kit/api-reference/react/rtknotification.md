@@ -28,16 +28,30 @@ A component which shows a notification. You need to remove the element after you
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkNotification } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkNotification />;}
+
+
+function MyComponent() {
+  return <RtkNotification />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkNotification } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkNotification      notification={notification}      paused={true}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkNotification
+      notification={notification}
+      paused={true}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

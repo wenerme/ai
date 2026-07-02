@@ -30,9 +30,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-11336)
-* [ Old dashboard ](#tab-panel-11337)
-* [ API ](#tab-panel-11338)
+* [  New dashboard ](#tab-panel-11631)
+* [ Old dashboard ](#tab-panel-11632)
+* [ API ](#tab-panel-11633)
 
 To disable **Email Address Obfuscation** in the dashboard:
 
@@ -58,7 +58,7 @@ To use this feature on specific hostnames - instead of across your entire zone -
 To prevent Cloudflare from obfuscating specific email addresses, you can:
 
 * Add the following comment in the page HTML code:
-```
+```html
 <!--email_off-->contact@example.com<!--/email_off-->
 ```
 * Return email addresses in JSON format for AJAX calls, making sure your web server returns a content type of `application/json`.

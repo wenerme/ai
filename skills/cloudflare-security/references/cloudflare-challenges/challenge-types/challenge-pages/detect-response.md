@@ -22,10 +22,16 @@ For the `cf-mitigated` header, `challenge` is the only valid value. The header i
 
 To illustrate, here is a JavaScript code snippet that demonstrates how to use the `cf-mitigated` header to detect whether a response was challenged:
 
-JavaScript
+**JavaScript**
 
-```
-fetch("/my-api-endpoint").then((response) => {  if (response.headers.get("cf-mitigated") === "challenge") {    // Handle challenged response  } else {    // Process response as usual  }});
+```js
+fetch("/my-api-endpoint").then((response) => {
+  if (response.headers.get("cf-mitigated") === "challenge") {
+    // Handle challenged response
+  } else {
+    // Process response as usual
+  }
+});
 ```
 
 ```json

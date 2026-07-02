@@ -31,18 +31,17 @@ Client-side `cloudflared` can be used in conjunction with [the Cloudflare One Cl
 
 1. [Install cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) on the client machine.
 2. Make a one-time change to your SSH configuration file:
-Terminal window
-```
+```sh
 vim ~/.ssh/config
 ```
 3. Input the following values; replacing `ssh.example.com` with the hostname you created.
-```
-Host ssh.example.comProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+```txt
+Host ssh.example.com
+ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
 ```
 The `cloudflared` path may be different depending on your OS and package manager. For example, if you installed `cloudflared` on macOS with Homebrew, check its path by running `brew --prefix cloudflared`.
 4. You can now test the connection by running a command to reach the service:
-Terminal window
-```
+```sh
 ssh <username>@ssh.example.com
 ```
 When the command is run, `cloudflared` will launch a browser window to prompt you to authenticate with your identity provider before establishing the connection from your terminal.

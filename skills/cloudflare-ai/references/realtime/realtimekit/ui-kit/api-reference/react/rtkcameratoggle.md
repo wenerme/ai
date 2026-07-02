@@ -28,16 +28,30 @@ A button which toggles your camera.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkCameraToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkCameraToggle />;}
+
+
+function MyComponent() {
+  return <RtkCameraToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkCameraToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkCameraToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkCameraToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

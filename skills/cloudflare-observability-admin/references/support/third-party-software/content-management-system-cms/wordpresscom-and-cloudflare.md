@@ -115,14 +115,14 @@ For more details, refer to [Understanding Automatic Platform Optimization (APO) 
 
 In a terminal, use the following cURL. The header `'accept: text/html'` is important
 
-Terminal window
-
-```
+```sh
 curl -svo /dev/null -A "CF" 'https://example.com/' -H 'accept: text/html' 2>&1 | grep 'cf-cache-status\|cf-edge\|cf-apo-via'
 ```
 
-```
-< cf-cache-status: HIT< cf-apo-via: cache< cf-edge-cache: cache,platform=wordpress
+```sh
+< cf-cache-status: HIT
+< cf-apo-via: cache
+< cf-edge-cache: cache,platform=wordpress
 ```
 
 As always, `cf-cache-status` displays if the asset hit the cache or was considered dynamic and served from the origin.

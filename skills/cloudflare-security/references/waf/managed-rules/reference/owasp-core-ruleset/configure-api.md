@@ -40,25 +40,102 @@ For example, to enable all the rules associated with Paranoia Level 2 (PL2), dis
 This example sets the Cloudflare OWASP Core Ruleset's paranoia level for a zone to PL2\. To perform this configuration, you must disable the tags associated with levels PL3 and PL4 (`paranoia-level-3` and `paranoia-level-4`) using tag overrides.
 
 1. Get the ID of the Cloudflare OWASP Core Ruleset using the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method, since WAF's managed rulesets exist at the account level. Alternatively, use the following ruleset ID directly: ...c25d2f1f .
-List account rulesets
+
+**List account rulesets**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-{  "result": [    {      "id": "4814384a9e5d4991b9815dcfc25d2f1f",      "name": "Cloudflare OWASP Core Ruleset",      "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core  Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official  code repository",      "source": "firewall_managed",      "kind": "managed",      "version": "35",      "last_updated": "2022-01-24T21:08:20.293196Z",      "phase": "http_request_firewall_managed"    }    // (...)  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+      "name": "Cloudflare OWASP Core Ruleset",
+      "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core  Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official  code repository",
+      "source": "firewall_managed",
+      "kind": "managed",
+      "version": "35",
+      "last_updated": "2022-01-24T21:08:20.293196Z",
+      "phase": "http_request_firewall_managed"
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 2. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f  ). This rule will only exist if you have already deployed the OWASP ruleset.
-Get a zone entry point ruleset
+
+**Get a zone entry point ruleset**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-{  "result": {    "id": "<ENTRY_POINT_RULESET_ID>",    "name": "zone",    "description": "",    "source": "firewall_managed",    "kind": "zone",    "version": "3",    "rules": [      // (...)      {        "id": "<EXECUTE_RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "4814384a9e5d4991b9815dcfc25d2f1f",          "version": "latest"        },        "expression": "true",        "last_updated": "2022-02-04T16:27:58.930927Z",        "ref": "<RULE_REF>",        "enabled": true      }      // (...)    ],    "last_updated": "2022-02-07T10:41:31.702744Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ENTRY_POINT_RULESET_ID>",
+    "name": "zone",
+    "description": "",
+    "source": "firewall_managed",
+    "kind": "zone",
+    "version": "3",
+    "rules": [
+      // (...)
+      {
+        "id": "<EXECUTE_RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "action_parameters": {
+          "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+          "version": "latest"
+        },
+        "expression": "true",
+        "last_updated": "2022-02-04T16:27:58.930927Z",
+        "ref": "<RULE_REF>",
+        "enabled": true
+      }
+      // (...)
+    ],
+    "last_updated": "2022-02-07T10:41:31.702744Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 3. Update the rule you identified using the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation, adding tag overrides that disable the rules with tags `paranoia-level-3` and `paranoia-level-4`.
-Update a zone ruleset rule
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules/$EXECUTE_RULE_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "4814384a9e5d4991b9815dcfc25d2f1f",        "overrides": {            "categories": [                {                    "category": "paranoia-level-3",                    "enabled": false                },                {                    "category": "paranoia-level-4",                    "enabled": false                }            ]        }    },    "expression": "true",    "enabled": true  }'
+
+**Update a zone ruleset rule**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules/$EXECUTE_RULE_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "execute",
+    "action_parameters": {
+        "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+        "overrides": {
+            "categories": [
+                {
+                    "category": "paranoia-level-3",
+                    "enabled": false
+                },
+                {
+                    "category": "paranoia-level-4",
+                    "enabled": false
+                }
+            ]
+        }
+    },
+    "expression": "true",
+    "enabled": true
+  }'
 ```
 
 For more information on creating overrides, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
@@ -75,36 +152,140 @@ To define the [score threshold](https://developers.cloudflare.com/waf/managed-ru
 This example configures the managed ruleset score threshold and the performed action by creating a rule override for the last rule of the managed ruleset.
 
 1. Get the ID of the Cloudflare OWASP Core Ruleset using the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method, since WAF's managed rulesets exist at the account level. Alternatively, use the following ruleset ID directly: ...c25d2f1f  .
-List account rulesets
+
+**List account rulesets**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-{  "result": [    {      "id": "4814384a9e5d4991b9815dcfc25d2f1f",      "name": "Cloudflare OWASP Core Ruleset",      "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",      "source": "firewall_managed",      "kind": "managed",      "version": "35",      "last_updated": "2022-01-24T21:08:20.293196Z",      "phase": "http_request_firewall_managed"    }    // (...)  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+      "name": "Cloudflare OWASP Core Ruleset",
+      "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",
+      "source": "firewall_managed",
+      "kind": "managed",
+      "version": "35",
+      "last_updated": "2022-01-24T21:08:20.293196Z",
+      "phase": "http_request_firewall_managed"
+    }
+    // (...)
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 2. Get the ID of the [last rule](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/) in the Cloudflare OWASP Core Ruleset. Use the [Get an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) method to obtain the list of rules in the ruleset. Alternatively, use the following rule ID directly: ...843b323c  .
-Get an account ruleset
+
+**Get an account ruleset**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$OWASP_RULESET_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$OWASP_RULESET_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-{  "result": {    "id": "4814384a9e5d4991b9815dcfc25d2f1f",    "name": "Cloudflare OWASP Core Ruleset",    "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",    "source": "firewall_managed",    "kind": "managed",    "version": "36",    "rules": [      // (...)      {        "id": "6179ae15870a4bb7b2d480d4843b323c",        "version": "35",        "action": "block",        "score_threshold": 40,        "description": "949110: Inbound Anomaly Score Exceeded",        "last_updated": "2022-02-08T16:11:18.236676Z",        "ref": "ad0beb2fce9f149e565ee78d6e659d47",        "enabled": true      }    ],    "last_updated": "2022-02-08T16:11:18.236676Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+    "name": "Cloudflare OWASP Core Ruleset",
+    "description": "Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. We routinely monitor for updates from OWASP based on the latest version available from the official code repository",
+    "source": "firewall_managed",
+    "kind": "managed",
+    "version": "36",
+    "rules": [
+      // (...)
+      {
+        "id": "6179ae15870a4bb7b2d480d4843b323c",
+        "version": "35",
+        "action": "block",
+        "score_threshold": 40,
+        "description": "949110: Inbound Anomaly Score Exceeded",
+        "last_updated": "2022-02-08T16:11:18.236676Z",
+        "ref": "ad0beb2fce9f149e565ee78d6e659d47",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2022-02-08T16:11:18.236676Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 3. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) (in this example, `<EXECUTE_RULE_ID>`). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f  ). This rule will only exist if you have already deployed the OWASP ruleset.
-Get a zone entry point ruleset
+
+**Get a zone entry point ruleset**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```
-{  "result": {    "id": "<ENTRY_POINT_RULESET_ID>",    "name": "zone",    "description": "",    "source": "firewall_managed",    "kind": "zone",    "version": "3",    "rules": [      // (...)      {        "id": "<EXECUTE_RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "4814384a9e5d4991b9815dcfc25d2f1f",          "version": "latest"        },        "expression": "true",        "last_updated": "2022-02-04T16:27:58.930927Z",        "ref": "<RULE_REF>",        "enabled": true      }      // (...)    ],    "last_updated": "2022-02-07T10:41:31.702744Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ENTRY_POINT_RULESET_ID>",
+    "name": "zone",
+    "description": "",
+    "source": "firewall_managed",
+    "kind": "zone",
+    "version": "3",
+    "rules": [
+      // (...)
+      {
+        "id": "<EXECUTE_RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "action_parameters": {
+          "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+          "version": "latest"
+        },
+        "expression": "true",
+        "last_updated": "2022-02-04T16:27:58.930927Z",
+        "ref": "<RULE_REF>",
+        "enabled": true
+      }
+      // (...)
+    ],
+    "last_updated": "2022-02-07T10:41:31.702744Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 4. Update the rule you identified in the entry point ruleset using the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation, adding a rule override for the last rule in the OWASP ruleset (identified in step 2) with the following properties and values:
 
   * `"score_threshold": 60`
   * `"action": "managed_challenge"`
-Update a zone ruleset rule
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules/$EXECUTE_RULE_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "4814384a9e5d4991b9815dcfc25d2f1f",        "overrides": {            "rules": [                {                    "id": "6179ae15870a4bb7b2d480d4843b323c",                    "score_threshold": 60,                    "action": "managed_challenge"                }            ]        }    },    "expression": "true",    "enabled": true  }'
+
+**Update a zone ruleset rule**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules/$EXECUTE_RULE_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "execute",
+    "action_parameters": {
+        "id": "4814384a9e5d4991b9815dcfc25d2f1f",
+        "overrides": {
+            "rules": [
+                {
+                    "id": "6179ae15870a4bb7b2d480d4843b323c",
+                    "score_threshold": 60,
+                    "action": "managed_challenge"
+                }
+            ]
+        }
+    },
+    "expression": "true",
+    "enabled": true
+  }'
 ```
 
 ## More resources

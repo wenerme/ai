@@ -37,14 +37,53 @@ If a user enables **Log DNS queries** in the Cloudflare One Client GUI (or runs 
 
 To enable multi-user support on Windows, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) onto the device with the `multi_user` key set to `true`. For example:
 
-```
-<dict>  <key>multi_user</key>  <true/>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>your-team-name</string>      <key>display_name</key>      <string>Default</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>multi_user</key>
+  <true/>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>your-team-name</string>
+      <key>display_name</key>
+      <string>Default</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 To use multi-user mode alongside the [Windows pre-login](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/) and [Switch between Zero Trust organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) options:
 
-```
-<dict>  <key>multi_user</key>  <true/>  <key>pre_login</key>  <dict>    <key>organization</key>    <string>mycompany</string>    <key>auth_client_id</key>    <string>88bf3b6d86161464f6509f7219099e57.access</string>    <key>auth_client_secret</key>    <string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>  </dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>mycompany</string>      <key>display_name</key>      <string>Production environment</string>    </dict>    <dict>      <key>organization</key>      <string>test-org</string>      <key>display_name</key>      <string>Test environment</string>    </dict>  </array></dict>
+```xml
+<dict>
+  <key>multi_user</key>
+  <true/>
+  <key>pre_login</key>
+  <dict>
+    <key>organization</key>
+    <string>mycompany</string>
+    <key>auth_client_id</key>
+    <string>88bf3b6d86161464f6509f7219099e57.access</string>
+    <key>auth_client_secret</key>
+    <string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
+  </dict>
+  <key>configs</key>
+  <array>
+    <dict>
+      <key>organization</key>
+      <string>mycompany</string>
+      <key>display_name</key>
+      <string>Production environment</string>
+    </dict>
+    <dict>
+      <key>organization</key>
+      <string>test-org</string>
+      <key>display_name</key>
+      <string>Test environment</string>
+    </dict>
+  </array>
+</dict>
 ```
 
 When enabling multi-user mode for the first time, users will need to re-register even if they had a previous registration.

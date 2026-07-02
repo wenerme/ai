@@ -29,27 +29,69 @@ This page covers connecting to MCP servers as a client. To create your own MCP s
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5795)
-* [  TypeScript ](#tab-panel-5796)
+* [  JavaScript ](#tab-panel-5971)
+* [  TypeScript ](#tab-panel-5972)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-export class MyAgent extends Agent {  async onRequest(request) {    // Add an MCP server    const result = await this.addMcpServer(      "github",      "https://mcp.github.com/mcp",    );
-    if (result.state === "authenticating") {      // Server requires OAuth - redirect user to authorize      return Response.redirect(result.authUrl);    }
-    // Server is ready - tools are now available    const state = this.getMcpServers();    console.log(`Connected! ${state.tools.length} tools available`);
-    return new Response("MCP server connected");  }}
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    // Add an MCP server
+    const result = await this.addMcpServer(
+      "github",
+      "https://mcp.github.com/mcp",
+    );
+
+
+    if (result.state === "authenticating") {
+      // Server requires OAuth - redirect user to authorize
+      return Response.redirect(result.authUrl);
+    }
+
+
+    // Server is ready - tools are now available
+    const state = this.getMcpServers();
+    console.log(`Connected! ${state.tools.length} tools available`);
+
+
+    return new Response("MCP server connected");
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent } from "agents";
-export class MyAgent extends Agent {  async onRequest(request: Request) {    // Add an MCP server    const result = await this.addMcpServer(      "github",      "https://mcp.github.com/mcp",    );
-    if (result.state === "authenticating") {      // Server requires OAuth - redirect user to authorize      return Response.redirect(result.authUrl);    }
-    // Server is ready - tools are now available    const state = this.getMcpServers();    console.log(`Connected! ${state.tools.length} tools available`);
-    return new Response("MCP server connected");  }}
+
+
+export class MyAgent extends Agent {
+  async onRequest(request: Request) {
+    // Add an MCP server
+    const result = await this.addMcpServer(
+      "github",
+      "https://mcp.github.com/mcp",
+    );
+
+
+    if (result.state === "authenticating") {
+      // Server requires OAuth - redirect user to authorize
+      return Response.redirect(result.authUrl);
+    }
+
+
+    // Server is ready - tools are now available
+    const state = this.getMcpServers();
+    console.log(`Connected! ${state.tools.length} tools available`);
+
+
+    return new Response("MCP server connected");
+  }
+}
 ```
 
 Connections persist in the agent's [SQL storage](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), and when an agent connects to an MCP server, all tools from that server become available automatically.
@@ -58,40 +100,62 @@ Connections persist in the agent's [SQL storage](https://developers.cloudflare.c
 
 Use `addMcpServer()` to connect to an MCP server. For non-OAuth servers, no options are needed:
 
-* [  JavaScript ](#tab-panel-5789)
-* [  TypeScript ](#tab-panel-5790)
+* [  JavaScript ](#tab-panel-5965)
+* [  TypeScript ](#tab-panel-5966)
 
-JavaScript
+**JavaScript**
 
+```js
+// Non-OAuth server — no options required
+await this.addMcpServer("notion", "https://mcp.notion.so/mcp");
+
+
+// OAuth server — callbackHost is auto-derived from the incoming request,
+// but you can set it explicitly if needed (e.g. custom domains)
+await this.addMcpServer("github", "https://mcp.github.com/mcp", {
+  callbackHost: "https://my-worker.workers.dev",
+});
 ```
-// Non-OAuth server — no options requiredawait this.addMcpServer("notion", "https://mcp.notion.so/mcp");
-// OAuth server — callbackHost is auto-derived from the incoming request,// but you can set it explicitly if needed (e.g. custom domains)await this.addMcpServer("github", "https://mcp.github.com/mcp", {  callbackHost: "https://my-worker.workers.dev",});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Non-OAuth server — no options requiredawait this.addMcpServer("notion", "https://mcp.notion.so/mcp");
-// OAuth server — callbackHost is auto-derived from the incoming request,// but you can set it explicitly if needed (e.g. custom domains)await this.addMcpServer("github", "https://mcp.github.com/mcp", {  callbackHost: "https://my-worker.workers.dev",});
+```ts
+// Non-OAuth server — no options required
+await this.addMcpServer("notion", "https://mcp.notion.so/mcp");
+
+
+// OAuth server — callbackHost is auto-derived from the incoming request,
+// but you can set it explicitly if needed (e.g. custom domains)
+await this.addMcpServer("github", "https://mcp.github.com/mcp", {
+  callbackHost: "https://my-worker.workers.dev",
+});
 ```
 
 ### Stable server IDs
 
 By default, each connection is assigned a generated `nanoid(8)` ID. Pass `id` for connector-style integrations so tools surface as readable keys instead of opaque connection IDs.
 
-* [  JavaScript ](#tab-panel-5787)
-* [  TypeScript ](#tab-panel-5788)
+* [  JavaScript ](#tab-panel-5963)
+* [  TypeScript ](#tab-panel-5964)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.addMcpServer("GitHub", env.MCP_SESSION, {
+  id: "github",
+  props: { token: "..." },
+});
+// tools surface as `tool_github_<name>`
 ```
-await this.addMcpServer("GitHub", env.MCP_SESSION, {  id: "github",  props: { token: "..." },});// tools surface as `tool_github_<name>`
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.addMcpServer("GitHub", env.MCP_SESSION, {  id: "github",  props: { token: "..." },});// tools surface as `tool_github_<name>`
+```ts
+await this.addMcpServer("GitHub", env.MCP_SESSION, {
+  id: "github",
+  props: { token: "..." },
+});
+// tools surface as `tool_github_<name>`
 ```
 
 When provided, this `id` replaces the generated value as the server's ID in storage, restore, `listServers()`, `listTools()`, `getAITools()`, and OAuth state. The supplied ID is normalized via the exported `normalizeServerId` helper, so values like `"GitHub MCP!"` become `"github-mcp"` — guaranteeing the ID is safe to embed in AI SDK tool names and storage keys.
@@ -102,19 +166,27 @@ Stable IDs are fully additive — no existing code breaks. If you add `{ id: "gi
 
 MCP supports multiple transport types:
 
-* [  JavaScript ](#tab-panel-5791)
-* [  TypeScript ](#tab-panel-5792)
+* [  JavaScript ](#tab-panel-5967)
+* [  TypeScript ](#tab-panel-5968)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.addMcpServer("server", "https://mcp.example.com/mcp", {
+  transport: {
+    type: "streamable-http",
+  },
+});
 ```
-await this.addMcpServer("server", "https://mcp.example.com/mcp", {  transport: {    type: "streamable-http",  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.addMcpServer("server", "https://mcp.example.com/mcp", {  transport: {    type: "streamable-http",  },});
+```ts
+await this.addMcpServer("server", "https://mcp.example.com/mcp", {
+  transport: {
+    type: "streamable-http",
+  },
+});
 ```
 
 | Transport       | Description                                         |
@@ -127,19 +199,35 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {  transport: {
 
 For servers behind authentication (like Cloudflare Access) or using bearer tokens:
 
-* [  JavaScript ](#tab-panel-5793)
-* [  TypeScript ](#tab-panel-5794)
+* [  JavaScript ](#tab-panel-5969)
+* [  TypeScript ](#tab-panel-5970)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.addMcpServer("internal", "https://internal-mcp.example.com/mcp", {
+  transport: {
+    headers: {
+      Authorization: "Bearer my-token",
+      "CF-Access-Client-Id": "...",
+      "CF-Access-Client-Secret": "...",
+    },
+  },
+});
 ```
-await this.addMcpServer("internal", "https://internal-mcp.example.com/mcp", {  transport: {    headers: {      Authorization: "Bearer my-token",      "CF-Access-Client-Id": "...",      "CF-Access-Client-Secret": "...",    },  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.addMcpServer("internal", "https://internal-mcp.example.com/mcp", {  transport: {    headers: {      Authorization: "Bearer my-token",      "CF-Access-Client-Id": "...",      "CF-Access-Client-Secret": "...",    },  },});
+```ts
+await this.addMcpServer("internal", "https://internal-mcp.example.com/mcp", {
+  transport: {
+    headers: {
+      Authorization: "Bearer my-token",
+      "CF-Access-Client-Id": "...",
+      "CF-Access-Client-Secret": "...",
+    },
+  },
+});
 ```
 
 ### URL security
@@ -186,30 +274,58 @@ sequenceDiagram
 
 ### Handling OAuth in your agent
 
-* [  JavaScript ](#tab-panel-5797)
-* [  TypeScript ](#tab-panel-5798)
+* [  JavaScript ](#tab-panel-5973)
+* [  TypeScript ](#tab-panel-5974)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async onRequest(request) {
+    const result = await this.addMcpServer(
+      "github",
+      "https://mcp.github.com/mcp",
+    );
+
+
+    if (result.state === "authenticating") {
+      // Redirect the user to the OAuth authorization page
+      return Response.redirect(result.authUrl);
+    }
+
+
+    return Response.json({ status: "connected", id: result.id });
+  }
+}
 ```
-class MyAgent extends Agent {  async onRequest(request) {    const result = await this.addMcpServer(      "github",      "https://mcp.github.com/mcp",    );
-    if (result.state === "authenticating") {      // Redirect the user to the OAuth authorization page      return Response.redirect(result.authUrl);    }
-    return Response.json({ status: "connected", id: result.id });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onRequest(request: Request) {    const result = await this.addMcpServer(      "github",      "https://mcp.github.com/mcp",    );
-    if (result.state === "authenticating") {      // Redirect the user to the OAuth authorization page      return Response.redirect(result.authUrl);    }
-    return Response.json({ status: "connected", id: result.id });  }}
+```ts
+class MyAgent extends Agent {
+  async onRequest(request: Request) {
+    const result = await this.addMcpServer(
+      "github",
+      "https://mcp.github.com/mcp",
+    );
+
+
+    if (result.state === "authenticating") {
+      // Redirect the user to the OAuth authorization page
+      return Response.redirect(result.authUrl);
+    }
+
+
+    return Response.json({ status: "connected", id: result.id });
+  }
+}
 ```
 
 ### OAuth callback
 
 The callback URL is automatically constructed:
 
-```
+```txt
 https://{host}/{agentsPrefix}/{agent-name}/{instance-name}/callback
 ```
 
@@ -221,35 +337,121 @@ OAuth tokens are securely stored in SQLite, and persist across agent restarts.
 
 When using `sendIdentityOnConnect: false` to hide sensitive instance names (like session IDs or user IDs), the default OAuth callback URL would expose the instance name. To prevent this security issue, you must provide a custom `callbackPath`.
 
-* [  JavaScript ](#tab-panel-5821)
-* [  TypeScript ](#tab-panel-5822)
+* [  JavaScript ](#tab-panel-5997)
+* [  TypeScript ](#tab-panel-5998)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, routeAgentRequest, getAgentByName } from "agents";
-export class SecureAgent extends Agent {  static options = { sendIdentityOnConnect: false };
-  async onRequest(request) {    // callbackPath is required when sendIdentityOnConnect is false    const result = await this.addMcpServer(      "github",      "https://mcp.github.com/mcp",      {        callbackPath: "mcp-oauth-callback", // Custom path without instance name      },    );
-    if (result.state === "authenticating") {      return Response.redirect(result.authUrl);    }
-    return new Response("Connected!");  }}
-// Route the custom callback path to the agentexport default {  async fetch(request, env) {    const url = new URL(request.url);
-    // Route custom MCP OAuth callback to agent instance    if (url.pathname.startsWith("/mcp-oauth-callback")) {      // Implement this to extract the instance name from your session/auth mechanism      const instanceName = await getInstanceNameFromSession(request);
-      const agent = await getAgentByName(env.SecureAgent, instanceName);      return agent.fetch(request);    }
-    // Standard agent routing    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },};
+
+
+export class SecureAgent extends Agent {
+  static options = { sendIdentityOnConnect: false };
+
+
+  async onRequest(request) {
+    // callbackPath is required when sendIdentityOnConnect is false
+    const result = await this.addMcpServer(
+      "github",
+      "https://mcp.github.com/mcp",
+      {
+        callbackPath: "mcp-oauth-callback", // Custom path without instance name
+      },
+    );
+
+
+    if (result.state === "authenticating") {
+      return Response.redirect(result.authUrl);
+    }
+
+
+    return new Response("Connected!");
+  }
+}
+
+
+// Route the custom callback path to the agent
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    // Route custom MCP OAuth callback to agent instance
+    if (url.pathname.startsWith("/mcp-oauth-callback")) {
+      // Implement this to extract the instance name from your session/auth mechanism
+      const instanceName = await getInstanceNameFromSession(request);
+
+
+      const agent = await getAgentByName(env.SecureAgent, instanceName);
+      return agent.fetch(request);
+    }
+
+
+    // Standard agent routing
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, routeAgentRequest, getAgentByName } from "agents";
-export class SecureAgent extends Agent {  static options = { sendIdentityOnConnect: false };
-  async onRequest(request: Request) {    // callbackPath is required when sendIdentityOnConnect is false    const result = await this.addMcpServer(      "github",      "https://mcp.github.com/mcp",      {        callbackPath: "mcp-oauth-callback", // Custom path without instance name      },    );
-    if (result.state === "authenticating") {      return Response.redirect(result.authUrl);    }
-    return new Response("Connected!");  }}
-// Route the custom callback path to the agentexport default {  async fetch(request: Request, env: Env) {    const url = new URL(request.url);
-    // Route custom MCP OAuth callback to agent instance    if (url.pathname.startsWith("/mcp-oauth-callback")) {      // Implement this to extract the instance name from your session/auth mechanism      const instanceName = await getInstanceNameFromSession(request);
-      const agent = await getAgentByName(env.SecureAgent, instanceName);      return agent.fetch(request);    }
-    // Standard agent routing    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+
+
+export class SecureAgent extends Agent {
+  static options = { sendIdentityOnConnect: false };
+
+
+  async onRequest(request: Request) {
+    // callbackPath is required when sendIdentityOnConnect is false
+    const result = await this.addMcpServer(
+      "github",
+      "https://mcp.github.com/mcp",
+      {
+        callbackPath: "mcp-oauth-callback", // Custom path without instance name
+      },
+    );
+
+
+    if (result.state === "authenticating") {
+      return Response.redirect(result.authUrl);
+    }
+
+
+    return new Response("Connected!");
+  }
+}
+
+
+// Route the custom callback path to the agent
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+
+
+    // Route custom MCP OAuth callback to agent instance
+    if (url.pathname.startsWith("/mcp-oauth-callback")) {
+      // Implement this to extract the instance name from your session/auth mechanism
+      const instanceName = await getInstanceNameFromSession(request);
+
+
+      const agent = await getAgentByName(env.SecureAgent, instanceName);
+      return agent.fetch(request);
+    }
+
+
+    // Standard agent routing
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 How callback matching works
@@ -260,23 +462,59 @@ OAuth callbacks are matched by the `state` query parameter (format: `{serverId}:
 
 Configure how OAuth completion is handled. By default, successful authentication redirects to your application origin, while failed authentication displays an HTML error page.
 
-* [  JavaScript ](#tab-panel-5809)
-* [  TypeScript ](#tab-panel-5810)
+* [  JavaScript ](#tab-panel-5985)
+* [  TypeScript ](#tab-panel-5986)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      // Redirect after successful auth
+      successRedirect: "https://myapp.com/success",
+
+
+      // Redirect on error with error message in query string
+      errorRedirect: "https://myapp.com/error",
+
+
+      // Or use a custom handler
+      customHandler: () => {
+        // Close popup window after auth completes
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+}
 ```
-export class MyAgent extends Agent {  onStart() {    this.mcp.configureOAuthCallback({      // Redirect after successful auth      successRedirect: "https://myapp.com/success",
-      // Redirect on error with error message in query string      errorRedirect: "https://myapp.com/error",
-      // Or use a custom handler      customHandler: () => {        // Close popup window after auth completes        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent {  onStart() {    this.mcp.configureOAuthCallback({      // Redirect after successful auth      successRedirect: "https://myapp.com/success",
-      // Redirect on error with error message in query string      errorRedirect: "https://myapp.com/error",
-      // Or use a custom handler      customHandler: () => {        // Close popup window after auth completes        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }}
+```ts
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      // Redirect after successful auth
+      successRedirect: "https://myapp.com/success",
+
+
+      // Redirect on error with error message in query string
+      errorRedirect: "https://myapp.com/error",
+
+
+      // Or use a custom handler
+      customHandler: () => {
+        // Close popup window after auth completes
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+}
 ```
 
 ## Using MCP capabilities
@@ -285,84 +523,158 @@ Once connected, access the server's capabilities:
 
 ### Getting available tools
 
-* [  JavaScript ](#tab-panel-5799)
-* [  TypeScript ](#tab-panel-5800)
+* [  JavaScript ](#tab-panel-5975)
+* [  TypeScript ](#tab-panel-5976)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const state = this.getMcpServers();
-// All tools from all connected serversfor (const tool of state.tools) {  console.log(`Tool: ${tool.name}`);  console.log(`  From server: ${tool.serverId}`);  console.log(`  Title: ${tool.title ?? tool.name}`);  console.log(`  Description: ${tool.description}`);}
+
+
+// All tools from all connected servers
+for (const tool of state.tools) {
+  console.log(`Tool: ${tool.name}`);
+  console.log(`  From server: ${tool.serverId}`);
+  console.log(`  Title: ${tool.title ?? tool.name}`);
+  console.log(`  Description: ${tool.description}`);
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const state = this.getMcpServers();
-// All tools from all connected serversfor (const tool of state.tools) {  console.log(`Tool: ${tool.name}`);  console.log(`  From server: ${tool.serverId}`);  console.log(`  Title: ${tool.title ?? tool.name}`);  console.log(`  Description: ${tool.description}`);}
+
+
+// All tools from all connected servers
+for (const tool of state.tools) {
+  console.log(`Tool: ${tool.name}`);
+  console.log(`  From server: ${tool.serverId}`);
+  console.log(`  Title: ${tool.title ?? tool.name}`);
+  console.log(`  Description: ${tool.description}`);
+}
 ```
 
 ### Resources and prompts
 
-* [  JavaScript ](#tab-panel-5805)
-* [  TypeScript ](#tab-panel-5806)
+* [  JavaScript ](#tab-panel-5981)
+* [  TypeScript ](#tab-panel-5982)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const state = this.getMcpServers();
-// Available resourcesfor (const resource of state.resources) {  console.log(`Resource: ${resource.name} (${resource.uri})`);}
-// Available promptsfor (const prompt of state.prompts) {  console.log(`Prompt: ${prompt.name}`);}
+
+
+// Available resources
+for (const resource of state.resources) {
+  console.log(`Resource: ${resource.name} (${resource.uri})`);
+}
+
+
+// Available prompts
+for (const prompt of state.prompts) {
+  console.log(`Prompt: ${prompt.name}`);
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const state = this.getMcpServers();
-// Available resourcesfor (const resource of state.resources) {  console.log(`Resource: ${resource.name} (${resource.uri})`);}
-// Available promptsfor (const prompt of state.prompts) {  console.log(`Prompt: ${prompt.name}`);}
+
+
+// Available resources
+for (const resource of state.resources) {
+  console.log(`Resource: ${resource.name} (${resource.uri})`);
+}
+
+
+// Available prompts
+for (const prompt of state.prompts) {
+  console.log(`Prompt: ${prompt.name}`);
+}
 ```
 
 ### Server status
 
-* [  JavaScript ](#tab-panel-5803)
-* [  TypeScript ](#tab-panel-5804)
+* [  JavaScript ](#tab-panel-5979)
+* [  TypeScript ](#tab-panel-5980)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const state = this.getMcpServers();
-for (const [id, server] of Object.entries(state.servers)) {  console.log(`${server.name}: ${server.state}`);  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"}
+
+
+for (const [id, server] of Object.entries(state.servers)) {
+  console.log(`${server.name}: ${server.state}`);
+  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const state = this.getMcpServers();
-for (const [id, server] of Object.entries(state.servers)) {  console.log(`${server.name}: ${server.state}`);  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"}
+
+
+for (const [id, server] of Object.entries(state.servers)) {
+  console.log(`${server.name}: ${server.state}`);
+  // state: "ready" | "authenticating" | "connecting" | "connected" | "discovering" | "failed"
+}
 ```
 
 ### Integration with AI SDK
 
 To use MCP tools with the AI SDK, use `this.mcp.getAITools()` which converts MCP tools to AI SDK format:
 
-* [  JavaScript ](#tab-panel-5811)
-* [  TypeScript ](#tab-panel-5812)
+* [  JavaScript ](#tab-panel-5987)
+* [  TypeScript ](#tab-panel-5988)
 
-JavaScript
+**JavaScript**
 
+```js
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const response = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "What's the weather in San Francisco?",
+      tools: this.mcp.getAITools(),
+    });
+
+
+    return new Response(response.text);
+  }
+}
 ```
-import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class MyAgent extends Agent {  async onRequest(request) {    const workersai = createWorkersAI({ binding: this.env.AI });    const response = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "What's the weather in San Francisco?",      tools: this.mcp.getAITools(),    });
-    return new Response(response.text);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class MyAgent extends Agent<Env> {  async onRequest(request: Request) {    const workersai = createWorkersAI({ binding: this.env.AI });    const response = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "What's the weather in San Francisco?",      tools: this.mcp.getAITools(),    });
-    return new Response(response.text);  }}
+```ts
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+    const response = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "What's the weather in San Francisco?",
+      tools: this.mcp.getAITools(),
+    });
+
+
+    return new Response(response.text);
+  }
+}
 ```
 
 Note
@@ -373,18 +685,18 @@ Note
 
 ### Removing a server
 
-* [  JavaScript ](#tab-panel-5801)
-* [  TypeScript ](#tab-panel-5802)
+* [  JavaScript ](#tab-panel-5977)
+* [  TypeScript ](#tab-panel-5978)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await this.removeMcpServer(serverId);
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await this.removeMcpServer(serverId);
 ```
 
@@ -400,48 +712,116 @@ MCP servers persist across agent restarts:
 
 ### Listing all servers
 
-* [  JavaScript ](#tab-panel-5807)
-* [  TypeScript ](#tab-panel-5808)
+* [  JavaScript ](#tab-panel-5983)
+* [  TypeScript ](#tab-panel-5984)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const state = this.getMcpServers();
-for (const [id, server] of Object.entries(state.servers)) {  console.log(`${id}: ${server.name} (${server.server_url})`);}
+
+
+for (const [id, server] of Object.entries(state.servers)) {
+  console.log(`${id}: ${server.name} (${server.server_url})`);
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const state = this.getMcpServers();
-for (const [id, server] of Object.entries(state.servers)) {  console.log(`${id}: ${server.name} (${server.server_url})`);}
+
+
+for (const [id, server] of Object.entries(state.servers)) {
+  console.log(`${id}: ${server.name} (${server.server_url})`);
+}
 ```
 
 ## Client-side integration
 
 Connected clients receive real-time MCP updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-5827)
-* [  TypeScript ](#tab-panel-5828)
+* [  JavaScript ](#tab-panel-6003)
+* [  TypeScript ](#tab-panel-6004)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { useState } from "react";
+
+
+function Dashboard() {
+  const [tools, setTools] = useState([]);
+  const [servers, setServers] = useState({});
+
+
+  const agent = useAgent({
+    agent: "MyAgent",
+    onMcpUpdate: (mcpState) => {
+      setTools(mcpState.tools);
+      setServers(mcpState.servers);
+    },
+  });
+
+
+  return (
+    <div>
+      <h2>Connected Servers</h2>
+      {Object.entries(servers).map(([id, server]) => (
+        <div key={id}>
+          {server.name}: {server.state}
+        </div>
+      ))}
+
+
+      <h2>Available Tools ({tools.length})</h2>
+      {tools.map((tool) => (
+        <div key={`${tool.serverId}-${tool.name}`}>{tool.name}</div>
+      ))}
+    </div>
+  );
+}
 ```
-import { useAgent } from "agents/react";import { useState } from "react";
-function Dashboard() {  const [tools, setTools] = useState([]);  const [servers, setServers] = useState({});
-  const agent = useAgent({    agent: "MyAgent",    onMcpUpdate: (mcpState) => {      setTools(mcpState.tools);      setServers(mcpState.servers);    },  });
-  return (    <div>      <h2>Connected Servers</h2>      {Object.entries(servers).map(([id, server]) => (        <div key={id}>          {server.name}: {server.state}        </div>      ))}
-      <h2>Available Tools ({tools.length})</h2>      {tools.map((tool) => (        <div key={`${tool.serverId}-${tool.name}`}>{tool.name}</div>      ))}    </div>  );}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { useState } from "react";
-function Dashboard() {  const [tools, setTools] = useState([]);  const [servers, setServers] = useState({});
-  const agent = useAgent({    agent: "MyAgent",    onMcpUpdate: (mcpState) => {      setTools(mcpState.tools);      setServers(mcpState.servers);    },  });
-  return (    <div>      <h2>Connected Servers</h2>      {Object.entries(servers).map(([id, server]) => (        <div key={id}>          {server.name}: {server.state}        </div>      ))}
-      <h2>Available Tools ({tools.length})</h2>      {tools.map((tool) => (        <div key={`${tool.serverId}-${tool.name}`}>{tool.name}</div>      ))}    </div>  );}
+```ts
+import { useAgent } from "agents/react";
+import { useState } from "react";
+
+
+function Dashboard() {
+  const [tools, setTools] = useState([]);
+  const [servers, setServers] = useState({});
+
+
+  const agent = useAgent({
+    agent: "MyAgent",
+    onMcpUpdate: (mcpState) => {
+      setTools(mcpState.tools);
+      setServers(mcpState.servers);
+    },
+  });
+
+
+  return (
+    <div>
+      <h2>Connected Servers</h2>
+      {Object.entries(servers).map(([id, server]) => (
+        <div key={id}>
+          {server.name}: {server.state}
+        </div>
+      ))}
+
+
+      <h2>Available Tools ({tools.length})</h2>
+      {tools.map((tool) => (
+        <div key={`${tool.serverId}-${tool.name}`}>{tool.name}</div>
+      ))}
+    </div>
+  );
+}
 ```
 
 ## API reference
@@ -456,11 +836,42 @@ If you call `addMcpServer` with the same name but a **different** URL, a new con
 
 URLs are normalized before comparison (trailing slashes, default ports, and hostname case are handled), so `https://MCP.Example.com` and `https://mcp.example.com/` are treated as the same URL.
 
-TypeScript
+**TypeScript**
 
-```
-// HTTP transport (Streamable HTTP, SSE)async addMcpServer(  serverName: string,  url: string,  options?: {    id?: string;    callbackHost?: string;    callbackPath?: string;    agentsPrefix?: string;    client?: ClientOptions;    transport?: {      headers?: HeadersInit;      type?: "sse" | "streamable-http" | "auto";    };    retry?: RetryOptions;  }): Promise<  | { id: string; state: "authenticating"; authUrl: string }  | { id: string; state: "ready" }>
-// RPC transport (Durable Object binding — no HTTP overhead)async addMcpServer(  serverName: string,  binding: DurableObjectNamespace,  options?: {    id?: string;    props?: Record<string, unknown>;    client?: ClientOptions;    retry?: RetryOptions;  }): Promise<{ id: string; state: "ready" }>
+```ts
+// HTTP transport (Streamable HTTP, SSE)
+async addMcpServer(
+  serverName: string,
+  url: string,
+  options?: {
+    id?: string;
+    callbackHost?: string;
+    callbackPath?: string;
+    agentsPrefix?: string;
+    client?: ClientOptions;
+    transport?: {
+      headers?: HeadersInit;
+      type?: "sse" | "streamable-http" | "auto";
+    };
+    retry?: RetryOptions;
+  }
+): Promise<
+  | { id: string; state: "authenticating"; authUrl: string }
+  | { id: string; state: "ready" }
+>
+
+
+// RPC transport (Durable Object binding — no HTTP overhead)
+async addMcpServer(
+  serverName: string,
+  binding: DurableObjectNamespace,
+  options?: {
+    id?: string;
+    props?: Record<string, unknown>;
+    client?: ClientOptions;
+    retry?: RetryOptions;
+  }
+): Promise<{ id: string; state: "ready" }>
 ```
 
 #### Parameters (HTTP transport)
@@ -508,9 +919,9 @@ A Promise that resolves to a discriminated union based on connection state:
 
 Disconnect from an MCP server and clean up its resources.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async removeMcpServer(id: string): Promise<void>
 ```
 
@@ -522,18 +933,41 @@ async removeMcpServer(id: string): Promise<void>
 
 Get the current state of all MCP server connections.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getMcpServers(): MCPServersState
 ```
 
 #### Returns
 
-TypeScript
+**TypeScript**
 
-```
-type MCPServersState = {  servers: Record<    string,    {      name: string;      server_url: string;      auth_url: string | null;      state:        | "authenticating"        | "connecting"        | "connected"        | "discovering"        | "ready"        | "failed";      capabilities: ServerCapabilities | null;      instructions: string | null;      error: string | null;    }  >;  tools: Array<Tool & { serverId: string }>;  prompts: Array<Prompt & { serverId: string }>;  resources: Array<Resource & { serverId: string }>;  resourceTemplates: Array<ResourceTemplate & { serverId: string }>;};
+```ts
+type MCPServersState = {
+  servers: Record<
+    string,
+    {
+      name: string;
+      server_url: string;
+      auth_url: string | null;
+      state:
+        | "authenticating"
+        | "connecting"
+        | "connected"
+        | "discovering"
+        | "ready"
+        | "failed";
+      capabilities: ServerCapabilities | null;
+      instructions: string | null;
+      error: string | null;
+    }
+  >;
+  tools: Array<Tool & { serverId: string }>;
+  prompts: Array<Prompt & { serverId: string }>;
+  resources: Array<Resource & { serverId: string }>;
+  resourceTemplates: Array<ResourceTemplate & { serverId: string }>;
+};
 ```
 
 The `state` field indicates the connection lifecycle:
@@ -551,10 +985,14 @@ The `error` field contains an error message when `state` is `"failed"`. Error me
 
 Configure OAuth callback behavior for MCP servers requiring authentication. This method allows you to customize what happens after a user completes OAuth authorization.
 
-TypeScript
+**TypeScript**
 
-```
-this.mcp.configureOAuthCallback(options: {  successRedirect?: string;  errorRedirect?: string;  customHandler?: () => Response | Promise<Response>;}): void
+```ts
+this.mcp.configureOAuthCallback(options: {
+  successRedirect?: string;
+  errorRedirect?: string;
+  customHandler?: () => Response | Promise<Response>;
+}): void
 ```
 
 #### Parameters
@@ -577,21 +1015,55 @@ If OAuth fails, the connection state becomes `"failed"` and the error message is
 
 Configure in `onStart()` before any OAuth flows begin:
 
-* [  JavaScript ](#tab-panel-5817)
-* [  TypeScript ](#tab-panel-5818)
+* [  JavaScript ](#tab-panel-5993)
+* [  TypeScript ](#tab-panel-5994)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Agent {
+  onStart() {
+    // Option 1: Simple redirects
+    this.mcp.configureOAuthCallback({
+      successRedirect: "/dashboard",
+      errorRedirect: "/auth-error",
+    });
+
+
+    // Option 2: Custom handler (e.g., for popup windows)
+    this.mcp.configureOAuthCallback({
+      customHandler: () => {
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+}
 ```
-export class MyAgent extends Agent {  onStart() {    // Option 1: Simple redirects    this.mcp.configureOAuthCallback({      successRedirect: "/dashboard",      errorRedirect: "/auth-error",    });
-    // Option 2: Custom handler (e.g., for popup windows)    this.mcp.configureOAuthCallback({      customHandler: () => {        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent {  onStart() {    // Option 1: Simple redirects    this.mcp.configureOAuthCallback({      successRedirect: "/dashboard",      errorRedirect: "/auth-error",    });
-    // Option 2: Custom handler (e.g., for popup windows)    this.mcp.configureOAuthCallback({      customHandler: () => {        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }}
+```ts
+export class MyAgent extends Agent {
+  onStart() {
+    // Option 1: Simple redirects
+    this.mcp.configureOAuthCallback({
+      successRedirect: "/dashboard",
+      errorRedirect: "/auth-error",
+    });
+
+
+    // Option 2: Custom handler (e.g., for popup windows)
+    this.mcp.configureOAuthCallback({
+      customHandler: () => {
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+}
 ```
 
 ## Custom OAuth provider
@@ -600,21 +1072,70 @@ Override the default OAuth provider used when connecting to MCP servers by imple
 
 The override is used for both new connections (`addMcpServer`) and restored connections after a Durable Object restart.
 
-* [  JavaScript ](#tab-panel-5823)
-* [  TypeScript ](#tab-panel-5824)
+* [  JavaScript ](#tab-panel-5999)
+* [  TypeScript ](#tab-panel-6000)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-export class MyAgent extends Agent {  createMcpOAuthProvider(callbackUrl) {    const env = this.env;    return {      get redirectUrl() {        return callbackUrl;      },      get clientMetadata() {        return {          client_id: env.MCP_CLIENT_ID,          client_secret: env.MCP_CLIENT_SECRET,          redirect_uris: [callbackUrl],        };      },      clientInformation() {        return {          client_id: env.MCP_CLIENT_ID,          client_secret: env.MCP_CLIENT_SECRET,        };      },    };  }}
+
+
+export class MyAgent extends Agent {
+  createMcpOAuthProvider(callbackUrl) {
+    const env = this.env;
+    return {
+      get redirectUrl() {
+        return callbackUrl;
+      },
+      get clientMetadata() {
+        return {
+          client_id: env.MCP_CLIENT_ID,
+          client_secret: env.MCP_CLIENT_SECRET,
+          redirect_uris: [callbackUrl],
+        };
+      },
+      clientInformation() {
+        return {
+          client_id: env.MCP_CLIENT_ID,
+          client_secret: env.MCP_CLIENT_SECRET,
+        };
+      },
+    };
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent } from "agents";import type { AgentMcpOAuthProvider } from "agents";
-export class MyAgent extends Agent<Env> {  createMcpOAuthProvider(callbackUrl: string): AgentMcpOAuthProvider {    const env = this.env;    return {      get redirectUrl() {        return callbackUrl;      },      get clientMetadata() {        return {          client_id: env.MCP_CLIENT_ID,          client_secret: env.MCP_CLIENT_SECRET,          redirect_uris: [callbackUrl],        };      },      clientInformation() {        return {          client_id: env.MCP_CLIENT_ID,          client_secret: env.MCP_CLIENT_SECRET,        };      },    };  }}
+```ts
+import { Agent } from "agents";
+import type { AgentMcpOAuthProvider } from "agents";
+
+
+export class MyAgent extends Agent<Env> {
+  createMcpOAuthProvider(callbackUrl: string): AgentMcpOAuthProvider {
+    const env = this.env;
+    return {
+      get redirectUrl() {
+        return callbackUrl;
+      },
+      get clientMetadata() {
+        return {
+          client_id: env.MCP_CLIENT_ID,
+          client_secret: env.MCP_CLIENT_SECRET,
+          redirect_uris: [callbackUrl],
+        };
+      },
+      clientInformation() {
+        return {
+          client_id: env.MCP_CLIENT_ID,
+          client_secret: env.MCP_CLIENT_SECRET,
+        };
+      },
+    };
+  }
+}
 ```
 
 If you do not override this method, the agent uses the default provider which performs [OAuth 2.0 Dynamic Client Registration ↗](https://datatracker.ietf.org/doc/html/rfc7591) with the MCP server.
@@ -623,21 +1144,42 @@ If you do not override this method, the agent uses the default provider which pe
 
 To keep the built-in OAuth logic (CSRF state, PKCE, nonce generation, token management) but route token storage to a different backend, import `DurableObjectOAuthClientProvider` and pass your own storage adapter:
 
-* [  JavaScript ](#tab-panel-5813)
-* [  TypeScript ](#tab-panel-5814)
+* [  JavaScript ](#tab-panel-5989)
+* [  TypeScript ](#tab-panel-5990)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, DurableObjectOAuthClientProvider } from "agents";
-export class MyAgent extends Agent {  createMcpOAuthProvider(callbackUrl) {    return new DurableObjectOAuthClientProvider(      myCustomStorage, // any DurableObjectStorage-compatible adapter      this.name,      callbackUrl,    );  }}
+
+
+export class MyAgent extends Agent {
+  createMcpOAuthProvider(callbackUrl) {
+    return new DurableObjectOAuthClientProvider(
+      myCustomStorage, // any DurableObjectStorage-compatible adapter
+      this.name,
+      callbackUrl,
+    );
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent, DurableObjectOAuthClientProvider } from "agents";import type { AgentMcpOAuthProvider } from "agents";
-export class MyAgent extends Agent {  createMcpOAuthProvider(callbackUrl: string): AgentMcpOAuthProvider {    return new DurableObjectOAuthClientProvider(      myCustomStorage, // any DurableObjectStorage-compatible adapter      this.name,      callbackUrl,    );  }}
+```ts
+import { Agent, DurableObjectOAuthClientProvider } from "agents";
+import type { AgentMcpOAuthProvider } from "agents";
+
+
+export class MyAgent extends Agent {
+  createMcpOAuthProvider(callbackUrl: string): AgentMcpOAuthProvider {
+    return new DurableObjectOAuthClientProvider(
+      myCustomStorage, // any DurableObjectStorage-compatible adapter
+      this.name,
+      callbackUrl,
+    );
+  }
+}
 ```
 
 ## Advanced: MCPClientManager
@@ -646,48 +1188,120 @@ For fine-grained control, use `this.mcp` directly:
 
 ### Step-by-step connection
 
-* [  JavaScript ](#tab-panel-5829)
-* [  TypeScript ](#tab-panel-5830)
+* [  JavaScript ](#tab-panel-6005)
+* [  TypeScript ](#tab-panel-6006)
 
-JavaScript
+**JavaScript**
 
+```js
+// 1. Register the server (saves to storage and creates in-memory connection)
+const id = "my-server";
+await this.mcp.registerServer(id, {
+  url: "https://mcp.example.com/mcp",
+  name: "My Server",
+  callbackUrl: "https://my-worker.workers.dev/agents/my-agent/default/callback",
+  transport: { type: "auto" },
+});
+
+
+// 2. Connect (initializes transport, handles OAuth if needed)
+const connectResult = await this.mcp.connectToServer(id);
+
+
+if (connectResult.state === "failed") {
+  console.error("Connection failed:", connectResult.error);
+  return;
+}
+
+
+if (connectResult.state === "authenticating") {
+  console.log("OAuth required:", connectResult.authUrl);
+  return;
+}
+
+
+// 3. Discover capabilities (transitions from "connected" to "ready")
+if (connectResult.state === "connected") {
+  const discoverResult = await this.mcp.discoverIfConnected(id);
+
+
+  if (!discoverResult?.success) {
+    console.error("Discovery failed:", discoverResult?.error);
+  }
+}
 ```
-// 1. Register the server (saves to storage and creates in-memory connection)const id = "my-server";await this.mcp.registerServer(id, {  url: "https://mcp.example.com/mcp",  name: "My Server",  callbackUrl: "https://my-worker.workers.dev/agents/my-agent/default/callback",  transport: { type: "auto" },});
-// 2. Connect (initializes transport, handles OAuth if needed)const connectResult = await this.mcp.connectToServer(id);
-if (connectResult.state === "failed") {  console.error("Connection failed:", connectResult.error);  return;}
-if (connectResult.state === "authenticating") {  console.log("OAuth required:", connectResult.authUrl);  return;}
-// 3. Discover capabilities (transitions from "connected" to "ready")if (connectResult.state === "connected") {  const discoverResult = await this.mcp.discoverIfConnected(id);
-  if (!discoverResult?.success) {    console.error("Discovery failed:", discoverResult?.error);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-// 1. Register the server (saves to storage and creates in-memory connection)const id = "my-server";await this.mcp.registerServer(id, {  url: "https://mcp.example.com/mcp",  name: "My Server",  callbackUrl: "https://my-worker.workers.dev/agents/my-agent/default/callback",  transport: { type: "auto" },});
-// 2. Connect (initializes transport, handles OAuth if needed)const connectResult = await this.mcp.connectToServer(id);
-if (connectResult.state === "failed") {  console.error("Connection failed:", connectResult.error);  return;}
-if (connectResult.state === "authenticating") {  console.log("OAuth required:", connectResult.authUrl);  return;}
-// 3. Discover capabilities (transitions from "connected" to "ready")if (connectResult.state === "connected") {  const discoverResult = await this.mcp.discoverIfConnected(id);
-  if (!discoverResult?.success) {    console.error("Discovery failed:", discoverResult?.error);  }}
+```ts
+// 1. Register the server (saves to storage and creates in-memory connection)
+const id = "my-server";
+await this.mcp.registerServer(id, {
+  url: "https://mcp.example.com/mcp",
+  name: "My Server",
+  callbackUrl: "https://my-worker.workers.dev/agents/my-agent/default/callback",
+  transport: { type: "auto" },
+});
+
+
+// 2. Connect (initializes transport, handles OAuth if needed)
+const connectResult = await this.mcp.connectToServer(id);
+
+
+if (connectResult.state === "failed") {
+  console.error("Connection failed:", connectResult.error);
+  return;
+}
+
+
+if (connectResult.state === "authenticating") {
+  console.log("OAuth required:", connectResult.authUrl);
+  return;
+}
+
+
+// 3. Discover capabilities (transitions from "connected" to "ready")
+if (connectResult.state === "connected") {
+  const discoverResult = await this.mcp.discoverIfConnected(id);
+
+
+  if (!discoverResult?.success) {
+    console.error("Discovery failed:", discoverResult?.error);
+  }
+}
 ```
 
 ### Event subscription
 
-* [  JavaScript ](#tab-panel-5815)
-* [  TypeScript ](#tab-panel-5816)
+* [  JavaScript ](#tab-panel-5991)
+* [  TypeScript ](#tab-panel-5992)
 
-JavaScript
+**JavaScript**
 
+```js
+// Listen for state changes (onServerStateChanged is an Event<void>)
+const disposable = this.mcp.onServerStateChanged(() => {
+  console.log("MCP server state changed");
+  this.broadcastMcpServers(); // Notify connected clients
+});
+
+
+// Clean up the subscription when no longer needed
+// disposable.dispose();
 ```
-// Listen for state changes (onServerStateChanged is an Event<void>)const disposable = this.mcp.onServerStateChanged(() => {  console.log("MCP server state changed");  this.broadcastMcpServers(); // Notify connected clients});
-// Clean up the subscription when no longer needed// disposable.dispose();
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Listen for state changes (onServerStateChanged is an Event<void>)const disposable = this.mcp.onServerStateChanged(() => {  console.log("MCP server state changed");  this.broadcastMcpServers(); // Notify connected clients});
-// Clean up the subscription when no longer needed// disposable.dispose();
+```ts
+// Listen for state changes (onServerStateChanged is an Event<void>)
+const disposable = this.mcp.onServerStateChanged(() => {
+  console.log("MCP server state changed");
+  this.broadcastMcpServers(); // Notify connected clients
+});
+
+
+// Clean up the subscription when no longer needed
+// disposable.dispose();
 ```
 
 Note
@@ -700,43 +1314,70 @@ MCP server list broadcasts (`cf_agent_mcp_servers`) are automatically filtered t
 
 Register a server without immediately connecting.
 
-TypeScript
+**TypeScript**
 
-```
-async registerServer(  id: string,  options: {    url: string;    name: string;    callbackUrl: string;    clientOptions?: ClientOptions;    transportOptions?: TransportOptions;  }): Promise<string>
+```ts
+async registerServer(
+  id: string,
+  options: {
+    url: string;
+    name: string;
+    callbackUrl: string;
+    clientOptions?: ClientOptions;
+    transportOptions?: TransportOptions;
+  }
+): Promise<string>
 ```
 
 #### `this.mcp.connectToServer()`
 
 Establish a connection to a previously registered server.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async connectToServer(id: string): Promise<MCPConnectionResult>
-type MCPConnectionResult =  | { state: "failed"; error: string }  | { state: "authenticating"; authUrl: string }  | { state: "connected" }
+
+
+type MCPConnectionResult =
+  | { state: "failed"; error: string }
+  | { state: "authenticating"; authUrl: string }
+  | { state: "connected" }
 ```
 
 #### `this.mcp.discoverIfConnected()`
 
 Check server capabilities if a connection is active.
 
-TypeScript
+**TypeScript**
 
-```
-async discoverIfConnected(  serverId: string,  options?: { timeoutMs?: number }): Promise<MCPDiscoverResult | undefined>
-type MCPDiscoverResult = {  success: boolean;  state: MCPConnectionState;  error?: string;}
+```ts
+async discoverIfConnected(
+  serverId: string,
+  options?: { timeoutMs?: number }
+): Promise<MCPDiscoverResult | undefined>
+
+
+type MCPDiscoverResult = {
+  success: boolean;
+  state: MCPConnectionState;
+  error?: string;
+}
 ```
 
 #### `this.mcp.waitForConnections()`
 
 Wait for all in-flight MCP connection and discovery operations to settle. This is useful when you need `this.mcp.getAITools()` to return the full set of tools immediately after the agent wakes from hibernation.
 
-TypeScript
+**TypeScript**
 
-```
-// Wait indefinitelyawait this.mcp.waitForConnections();
-// Wait with a timeout (milliseconds)await this.mcp.waitForConnections({ timeout: 10_000 });
+```ts
+// Wait indefinitely
+await this.mcp.waitForConnections();
+
+
+// Wait with a timeout (milliseconds)
+await this.mcp.waitForConnections({ timeout: 10_000 });
 ```
 
 Note
@@ -747,9 +1388,9 @@ Note
 
 Close the connection to a specific server while keeping it registered.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async closeConnection(id: string): Promise<void>
 ```
 
@@ -757,9 +1398,9 @@ async closeConnection(id: string): Promise<void>
 
 Close all active server connections while preserving registrations.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async closeAllConnections(): Promise<void>
 ```
 
@@ -767,9 +1408,9 @@ async closeAllConnections(): Promise<void>
 
 Get all discovered MCP tools in a format compatible with the AI SDK.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getAITools(filter?: MCPServerFilter): ToolSet
 ```
 
@@ -777,34 +1418,60 @@ Tools are automatically namespaced by server ID to prevent conflicts when multip
 
 Pass an `MCPServerFilter` to scope the returned tools to a subset of connected servers:
 
-* [  JavaScript ](#tab-panel-5819)
-* [  TypeScript ](#tab-panel-5820)
+* [  JavaScript ](#tab-panel-5995)
+* [  TypeScript ](#tab-panel-5996)
 
-JavaScript
+**JavaScript**
 
+```js
+// Tools from a specific server only
+const githubTools = this.mcp.getAITools({ serverId: "github" });
+
+
+// Tools from multiple servers
+const tools = this.mcp.getAITools({ serverId: ["github", "notion"] });
+
+
+// Tools from servers matching a name
+const tools = this.mcp.getAITools({ serverName: "GitHub" });
+
+
+// Only tools from servers that are ready
+const tools = this.mcp.getAITools({ state: "ready" });
 ```
-// Tools from a specific server onlyconst githubTools = this.mcp.getAITools({ serverId: "github" });
-// Tools from multiple serversconst tools = this.mcp.getAITools({ serverId: ["github", "notion"] });
-// Tools from servers matching a nameconst tools = this.mcp.getAITools({ serverName: "GitHub" });
-// Only tools from servers that are readyconst tools = this.mcp.getAITools({ state: "ready" });
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Tools from a specific server onlyconst githubTools = this.mcp.getAITools({ serverId: "github" });
-// Tools from multiple serversconst tools = this.mcp.getAITools({ serverId: ["github", "notion"] });
-// Tools from servers matching a nameconst tools = this.mcp.getAITools({ serverName: "GitHub" });
-// Only tools from servers that are readyconst tools = this.mcp.getAITools({ state: "ready" });
+```ts
+// Tools from a specific server only
+const githubTools = this.mcp.getAITools({ serverId: "github" });
+
+
+// Tools from multiple servers
+const tools = this.mcp.getAITools({ serverId: ["github", "notion"] });
+
+
+// Tools from servers matching a name
+const tools = this.mcp.getAITools({ serverName: "GitHub" });
+
+
+// Only tools from servers that are ready
+const tools = this.mcp.getAITools({ state: "ready" });
 ```
 
 The filter type is available from `agents/mcp/client`:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import type { MCPServerFilter } from "agents/mcp/client";
-type MCPServerFilter = {  serverId?: string | string[];  serverName?: string | string[];  state?: MCPConnectionState | MCPConnectionState[];};
+
+
+type MCPServerFilter = {
+  serverId?: string | string[];
+  serverName?: string | string[];
+  state?: MCPConnectionState | MCPConnectionState[];
+};
 ```
 
 All specified filter criteria are AND'd together. The same filter parameter is accepted by `listTools()`, `listPrompts()`, `listResources()`, and `listResourceTemplates()`.
@@ -813,21 +1480,51 @@ All specified filter criteria are AND'd together. The same filter parameter is a
 
 Use error detection utilities to handle connection errors:
 
-* [  JavaScript ](#tab-panel-5825)
-* [  TypeScript ](#tab-panel-5826)
+* [  JavaScript ](#tab-panel-6001)
+* [  TypeScript ](#tab-panel-6002)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { isUnauthorized, isTransportNotImplemented } from "agents";
-export class MyAgent extends Agent {  async onRequest(request) {    try {      await this.addMcpServer("Server", "https://mcp.example.com/mcp");    } catch (error) {      if (isUnauthorized(error)) {        return new Response("Authentication required", { status: 401 });      } else if (isTransportNotImplemented(error)) {        return new Response("Transport not supported", { status: 400 });      }      throw error;    }  }}
+
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    try {
+      await this.addMcpServer("Server", "https://mcp.example.com/mcp");
+    } catch (error) {
+      if (isUnauthorized(error)) {
+        return new Response("Authentication required", { status: 401 });
+      } else if (isTransportNotImplemented(error)) {
+        return new Response("Transport not supported", { status: 400 });
+      }
+      throw error;
+    }
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { isUnauthorized, isTransportNotImplemented } from "agents";
-export class MyAgent extends Agent {  async onRequest(request: Request) {    try {      await this.addMcpServer("Server", "https://mcp.example.com/mcp");    } catch (error) {      if (isUnauthorized(error)) {        return new Response("Authentication required", { status: 401 });      } else if (isTransportNotImplemented(error)) {        return new Response("Transport not supported", { status: 400 });      }      throw error;    }  }}
+
+
+export class MyAgent extends Agent {
+  async onRequest(request: Request) {
+    try {
+      await this.addMcpServer("Server", "https://mcp.example.com/mcp");
+    } catch (error) {
+      if (isUnauthorized(error)) {
+        return new Response("Authentication required", { status: 401 });
+      } else if (isTransportNotImplemented(error)) {
+        return new Response("Transport not supported", { status: 400 });
+      }
+      throw error;
+    }
+  }
+}
 ```
 
 ## Next steps

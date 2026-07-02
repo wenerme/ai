@@ -84,9 +84,7 @@ pnpm create cloudflare@latest my-svelte-app --framework=svelte
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-svelte-app
 ```
 

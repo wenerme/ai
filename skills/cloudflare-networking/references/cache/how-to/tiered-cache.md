@@ -99,10 +99,15 @@ You can enable Tiered Cache in the dashboard or via API.
 
 To enable Tiered Cache via API use the following cURL example:
 
-Patch Tiered Caching setting
+**Patch Tiered Caching setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/argo/tiered_caching" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/argo/tiered_caching" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "on"
+  }'
 ```
 
 You can also configure Tiered Cache Topology via API, for instance:
@@ -115,10 +120,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Patch Smart Tiered Cache setting
+**Patch Smart Tiered Cache setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/tiered_cache_smart_topology_enable" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/tiered_cache_smart_topology_enable" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "on"
+  }'
 ```
 
 Enable Regional Tiered Cache
@@ -129,10 +139,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-Change Regional Tiered Cache setting
+**Change Regional Tiered Cache setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/regional_tiered_cache" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/regional_tiered_cache" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "on"
+  }'
 ```
 
 For more API examples and configuration options for Tiered Cache, refer to the [API documentation](https://developers.cloudflare.com/api/resources/argo/subresources/tiered%5Fcaching/methods/get/).
@@ -154,18 +169,27 @@ Cloud region hints are available on all plan types (Free, Pro, Business, and Ent
 
 To see all available cloud providers and regions, use the supported regions endpoint:
 
-List supported cloud vendors and regions
+**List supported cloud vendors and regions**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions/supported_regions" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions/supported_regions" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### Set a cloud region hint via API
 
-Create or update an origin cloud region mapping
+**Create or update an origin cloud region mapping**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ip": "203.0.113.1",    "vendor": "aws",    "region": "us-east-1"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "ip": "203.0.113.1",
+    "vendor": "aws",
+    "region": "us-east-1"
+  }'
 ```
 
 Note

@@ -27,19 +27,25 @@ A component which indicates the recording status of a meeting. It will not rende
 
 ### Basic Usage
 
-```
+```html
 <rtk-recording-indicator></rtk-recording-indicator>
 ```
 
 ### With Properties
 
-```
-<rtk-recording-indicator size="md"></rtk-recording-indicator>
+```html
+<rtk-recording-indicator
+ size="md">
+</rtk-recording-indicator>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-recording-indicator");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-recording-indicator");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -44,8 +44,18 @@ Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more infor
 
 The following is a sample log with default fields:
 
-```
-{  "ClientIP": "89.163.242.206",  "ClientRequestHost": "www.theburritobot.com",  "ClientRequestMethod": "GET",  "ClientRequestURI": "/static/img/testimonial-hipster.png",  "EdgeEndTimestamp": 1506702504461999900,  "EdgeResponseBytes": 69045,  "EdgeResponseStatus": 200,  "EdgeStartTimestamp": 1506702504433000200,  "RayID": "3a6050bcbe121a87"}
+```json
+{
+  "ClientIP": "89.163.242.206",
+  "ClientRequestHost": "www.theburritobot.com",
+  "ClientRequestMethod": "GET",
+  "ClientRequestURI": "/static/img/testimonial-hipster.png",
+  "EdgeEndTimestamp": 1506702504461999900,
+  "EdgeResponseBytes": 69045,
+  "EdgeResponseStatus": 200,
+  "EdgeStartTimestamp": 1506702504433000200,
+  "RayID": "3a6050bcbe121a87"
+}
 ```
 
 ## Data retention period

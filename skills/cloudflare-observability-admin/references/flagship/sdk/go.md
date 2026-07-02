@@ -18,9 +18,7 @@ The Go SDK provides an OpenFeature-compatible server provider for Go application
 
 Install with `go get`:
 
-Terminal window
-
-```
+```sh
 go get github.com/cloudflare/flagship/sdks/go
 ```
 
@@ -28,24 +26,66 @@ go get github.com/cloudflare/flagship/sdks/go
 
 Configure the provider with your Flagship app ID, Cloudflare account ID, and an API token with Flagship Evaluate permission.
 
-```
+```go
 package main
-import (  "context"  "log"
-  flagship "github.com/cloudflare/flagship/sdks/go"  "github.com/open-feature/go-sdk/openfeature")
-func main() {  ctx := context.Background()
-  provider, err := flagship.NewProvider(flagship.Options{    AppID:     "<APP_ID>",    AccountID: "<ACCOUNT_ID>",    AuthToken: "<API_TOKEN>",  })  if err != nil {    log.Fatal(err)  }
-  if err := openfeature.SetProviderAndWait(provider); err != nil {    log.Fatal(err)  }  defer openfeature.Shutdown()
-  client := openfeature.NewDefaultClient()  evalCtx := openfeature.NewEvaluationContext("user-42", map[string]any{    "plan": "enterprise",  })
-  enabled, err := client.BooleanValue(ctx, "new-checkout", false, evalCtx)  if err != nil {    log.Fatal(err)  }
-  log.Println("new-checkout:", enabled)}
+
+
+import (
+  "context"
+  "log"
+
+
+  flagship "github.com/cloudflare/flagship/sdks/go"
+  "github.com/open-feature/go-sdk/openfeature"
+)
+
+
+func main() {
+  ctx := context.Background()
+
+
+  provider, err := flagship.NewProvider(flagship.Options{
+    AppID:     "<APP_ID>",
+    AccountID: "<ACCOUNT_ID>",
+    AuthToken: "<API_TOKEN>",
+  })
+  if err != nil {
+    log.Fatal(err)
+  }
+
+
+  if err := openfeature.SetProviderAndWait(provider); err != nil {
+    log.Fatal(err)
+  }
+  defer openfeature.Shutdown()
+
+
+  client := openfeature.NewDefaultClient()
+  evalCtx := openfeature.NewEvaluationContext("user-42", map[string]any{
+    "plan": "enterprise",
+  })
+
+
+  enabled, err := client.BooleanValue(ctx, "new-checkout", false, evalCtx)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+
+  log.Println("new-checkout:", enabled)
+}
 ```
 
 ## Flag types
 
 The Go SDK supports all OpenFeature server-side flag types.
 
-```
-enabled, _ := client.BooleanValue(ctx, "new-checkout", false, evalCtx)variant, _ := client.StringValue(ctx, "homepage-hero", "control", evalCtx)rate, _ := client.FloatValue(ctx, "sample-rate", 0.1, evalCtx)limit, _ := client.IntValue(ctx, "upload-limit", 10, evalCtx)config, _ := client.ObjectValue(ctx, "ui-config", map[string]any{"theme": "light"}, evalCtx)
+```go
+enabled, _ := client.BooleanValue(ctx, "new-checkout", false, evalCtx)
+variant, _ := client.StringValue(ctx, "homepage-hero", "control", evalCtx)
+rate, _ := client.FloatValue(ctx, "sample-rate", 0.1, evalCtx)
+limit, _ := client.IntValue(ctx, "upload-limit", 10, evalCtx)
+config, _ := client.ObjectValue(ctx, "ui-config", map[string]any{"theme": "light"}, evalCtx)
 ```
 
 Use the `*ValueDetails` methods when you need reason, variant, metadata, or error codes.
@@ -54,8 +94,14 @@ Use the `*ValueDetails` methods when you need reason, variant, metadata, or erro
 
 The provider can cache evaluations to avoid a network round-trip for repeated flag/context pairs. Caching is off by default and enabled by setting `CacheTTL`:
 
-```
-provider, err := flagship.NewProvider(flagship.Options{  AppID:        "<APP_ID>",  AccountID:    "<ACCOUNT_ID>",  AuthToken:    "<API_TOKEN>",  CacheTTL:     30 * time.Second, // values may be up to this stale  CacheMaxSize: 1000,             // LRU-evicted beyond this many entries})
+```go
+provider, err := flagship.NewProvider(flagship.Options{
+  AppID:        "<APP_ID>",
+  AccountID:    "<ACCOUNT_ID>",
+  AuthToken:    "<API_TOKEN>",
+  CacheTTL:     30 * time.Second, // values may be up to this stale
+  CacheMaxSize: 1000,             // LRU-evicted beyond this many entries
+})
 ```
 
 Each cache entry is keyed by flag key, flag type, and the full evaluation context, so distinct contexts never share a cached value. Cache hits resolve with `reason == openfeature.CachedReason`.

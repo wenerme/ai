@@ -53,9 +53,7 @@ For setup, select the following options:
 
 Now, you have a new project set up. Move into that project folder.
 
-Terminal window
-
-```
+```sh
 cd my-first-worker
 ```
 
@@ -73,9 +71,7 @@ What if I already have a project in a git repository?
 
 In addition to creating new projects from C3 templates, C3 also supports creating new projects from existing Git repositories. To create a new project from an existing Git repository, open your terminal and run:
 
-Terminal window
-
-```
+```sh
 npm create cloudflare@latest -- --template <SOURCE>
 ```
 
@@ -102,9 +98,7 @@ C3 installs [Wrangler](https://developers.cloudflare.com/workers/wrangler/instal
 
 After you have created your first Worker, run the [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command in the project directory to start a local server for developing your Worker. This will allow you to preview your Worker locally during development.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 
@@ -122,48 +116,68 @@ With your new project generated and running, you can begin to write and edit you
 
 Find the `src/index.js` file. `index.js` will be populated with the code below:
 
-Original index.js
+**Original index.js**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  },
+};
 ```
 
 Code explanation
 
 This code block consists of a few different parts.
 
-Updated index.js
+**Updated index.js**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  },
+};
 ```
 
 `export default` is JavaScript syntax required for defining [JavaScript modules ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#default%5Fexports%5Fversus%5Fnamed%5Fexports). Your Worker has to have a default export of an object, with properties corresponding to the events your Worker should handle.
 
-index.js
+**index.js**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  },
+};
 ```
 
 This [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) will be called when your Worker receives an HTTP request. You can define additional event handlers in the exported object to respond to different types of events. For example, add a [scheduled() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to respond to Worker invocations via a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/).
 
 Additionally, the `fetch` handler will always be passed three parameters: [request, env and context](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
 
-index.js
+**index.js**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  },
+};
 ```
 
 The Workers runtime expects `fetch` handlers to return a `Response` object or a Promise which resolves with a `Response` object. In this example, you will return a new `Response` with the string `"Hello World!"`.
 
 Replace the content in your current `index.js` file with the content below, which changes the text output.
 
-index.js
+**index.js**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello Worker!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello Worker!");
+  },
+};
 ```
 
 Then, save the file and reload the page. Your Worker's output will have changed to the new text.
@@ -180,9 +194,7 @@ If the output for your Worker does not change, make sure that:
 
 Deploy your Worker via Wrangler to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 

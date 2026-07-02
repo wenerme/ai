@@ -40,27 +40,37 @@ If you have not chosen a namespace strategy yet, use `default` in the examples t
 
 Use the same namespace name in your Wrangler binding:
 
-* [  wrangler.jsonc ](#tab-panel-6868)
-* [  wrangler.toml ](#tab-panel-6869)
+* [  wrangler.jsonc ](#tab-panel-7116)
+* [  wrangler.toml ](#tab-panel-7117)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "artifacts": [
+    {
+      "binding": "ARTIFACTS",
+      "namespace": "default"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "artifacts": [    {      "binding": "ARTIFACTS",      "namespace": "default"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[artifacts]]binding = "ARTIFACTS"namespace = "default"
+```toml
+[[artifacts]]
+binding = "ARTIFACTS"
+namespace = "default"
 ```
 
 Use that same namespace in your REST base URL:
 
-Terminal window
-
-```
-export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export ARTIFACTS_NAMESPACE="default"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
+```sh
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+export ARTIFACTS_NAMESPACE="default"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 ```
 
 ## Split namespaces when needed

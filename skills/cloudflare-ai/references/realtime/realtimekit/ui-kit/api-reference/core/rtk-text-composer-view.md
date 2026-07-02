@@ -32,19 +32,25 @@ A component which renders a text composer
 
 ### Basic Usage
 
-```
+```html
 <rtk-text-composer-view></rtk-text-composer-view>
 ```
 
 ### With Properties
 
-```
-<rtk-text-composer-view></rtk-text-composer-view>
+```html
+<rtk-text-composer-view>
+</rtk-text-composer-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-text-composer-view");
-  el.disabled= true;  el.maxLength= 42;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-text-composer-view");
+
+
+  el.disabled= true;
+  el.maxLength= 42;
+</script>
 ```
 
 ```json

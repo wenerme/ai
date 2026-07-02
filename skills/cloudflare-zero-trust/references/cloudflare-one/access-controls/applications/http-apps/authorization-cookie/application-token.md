@@ -26,8 +26,12 @@ Unless your application is connected to Access through Cloudflare Tunnel, your a
 
 ## Header
 
-```
-{  "alg": "RS256",  "kid": "9338abe1baf2fe492f646a736f25afbf7b025e35c627be4f60c414d4c73069b8",  "typ": "JWT"}
+```json
+{
+  "alg": "RS256",
+  "kid": "9338abe1baf2fe492f646a736f25afbf7b025e35c627be4f60c414d4c73069b8",
+  "typ": "JWT"
+}
 ```
 
 * `alg` identifies the encoding algorithm.
@@ -40,8 +44,19 @@ The payload contains the actual claim and user information to pass to the applic
 
 ### Identity-based authentication
 
-```
-{  "aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],  "email": "user@example.com",  "exp": 1659474457,  "iat": 1659474397,  "nbf": 1659474397,  "iss": "https://yourteam.cloudflareaccess.com",  "type": "app",  "identity_nonce": "6ei69kawdKzMIAPF",  "sub": "7335d417-61da-459d-899c-0a01c76a2f94",  "country": "US"}
+```json
+{
+  "aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],
+  "email": "user@example.com",
+  "exp": 1659474457,
+  "iat": 1659474397,
+  "nbf": 1659474397,
+  "iss": "https://yourteam.cloudflareaccess.com",
+  "type": "app",
+  "identity_nonce": "6ei69kawdKzMIAPF",
+  "sub": "7335d417-61da-459d-899c-0a01c76a2f94",
+  "country": "US"
+}
 ```
 
 | Field           | Description                                                                                                                                                                                                                                                                                                                              |
@@ -73,9 +88,7 @@ User identity is useful for checking application permissions. For example, your 
 
 Due to cookie size limits and bandwidth considerations, the application token only contains a subset of the user's identity. To get the user's full identity, send the `CF_Authorization` cookie to `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/get-identity`. Your request should be structured as follows:
 
-Terminal window
-
-```
+```sh
 curl -H 'cookie: CF_Authorization=<user-token>' https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/get-identity
 ```
 
@@ -104,8 +117,16 @@ Access will return a JSON structure containing the following data:
 
 ### Service token authentication
 
-```
-{  "type": "app",  "aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],  "exp": 1659474457,  "iss": "https://yourteam.cloudflareaccess.com",  "common_name": "e367826f93b8d71185e03fe518aff3b4.access",  "iat": 1659474397,  "sub": ""}
+```json
+{
+  "type": "app",
+  "aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],
+  "exp": 1659474457,
+  "iss": "https://yourteam.cloudflareaccess.com",
+  "common_name": "e367826f93b8d71185e03fe518aff3b4.access",
+  "iat": 1659474397,
+  "sub": ""
+}
 ```
 
 | Field        | Description                                                                                                                                                                                                     |

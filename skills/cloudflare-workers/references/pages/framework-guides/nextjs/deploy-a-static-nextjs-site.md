@@ -32,17 +32,13 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 If you already have a Next.js project that you wish to deploy, ensure that it is [configured for static exports ↗](https://nextjs.org/docs/app/building-your-application/deploying/static-exports), change to its directory, and proceed to the next step. Otherwise, use `create-next-app` to create a new Next.js project.
 
-Terminal window
-
-```
+```sh
 npx create-next-app --example with-static-export my-app
 ```
 
 After creating your project, a new `my-app` directory will be generated using the official [with-static-export ↗](https://github.com/vercel/next.js/tree/canary/examples/with-static-export) example as a template. Change to this directory to continue.
 
-Terminal window
-
-```
+```sh
 cd my-app
 ```
 
@@ -50,10 +46,10 @@ cd my-app
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git remote add origin https://github.com/<GH_USERNAME>/<REPOSITORY_NAME>.gitgit branch -M maingit push -u origin main
+```sh
+git remote add origin https://github.com/<GH_USERNAME>/<REPOSITORY_NAME>.git
+git branch -M main
+git push -u origin main
 ```
 
 ### Deploy your application to Cloudflare Pages

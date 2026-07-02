@@ -29,14 +29,20 @@ A button which toggles visibility of breakout rooms. You need to pass the `meeti
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-breakout-rooms-toggle></rtk-breakout-rooms-toggle>
+```html
+<!-- component.html -->
+<rtk-breakout-rooms-toggle></rtk-breakout-rooms-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-breakout-rooms-toggle [iconPack]="defaultIconPack" [meeting]="meeting" size="md"></rtk-breakout-rooms-toggle>
+```html
+<!-- component.html -->
+<rtk-breakout-rooms-toggle
+ [iconPack]="defaultIconPack"
+ [meeting]="meeting"
+ size="md">
+</rtk-breakout-rooms-toggle>
 ```
 
 ```json

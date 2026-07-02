@@ -20,19 +20,24 @@ To use Workers AI with Workers, you must create a Workers AI [binding](https://d
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11360)
-* [  wrangler.toml ](#tab-panel-11361)
+* [  wrangler.jsonc ](#tab-panel-11655)
+* [  wrangler.toml ](#tab-panel-11656)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "ai": {
+    "binding": "AI" // i.e. available in your Worker on env.AI
+  }
+}
 ```
-{  "ai": {    "binding": "AI" // i.e. available in your Worker on env.AI  }}
-```
 
-TOML
+**TOML**
 
-```
-[ai]binding = "AI"
+```toml
+[ai]
+binding = "AI"
 ```
 
 ## Pages Functions
@@ -47,10 +52,12 @@ To configure a Workers AI binding in your Pages Function, you must use the Cloud
 
 `async env.AI.run()` runs a model. Takes a model as the first parameter, and an object as the second parameter.
 
-JavaScript
+**JavaScript**
 
-```
-const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "What is the origin of the phrase 'Hello, World'"});
+```javascript
+const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+    prompt: "What is the origin of the phrase 'Hello, World'"
+});
 ```
 
 **Parameters**
@@ -64,11 +71,18 @@ const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "
   * `stream` ` boolean ` optional
     * Returns a stream of results as they are available.
 
-JavaScript
+**JavaScript**
 
-```
-const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "What is the origin of the phrase 'Hello, World'",    stream: true});
-return new Response(answer, {    headers: { "content-type": "text/event-stream" }});
+```javascript
+const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+    prompt: "What is the origin of the phrase 'Hello, World'",
+    stream: true
+});
+
+
+return new Response(answer, {
+    headers: { "content-type": "text/event-stream" }
+});
 ```
 
 ```json

@@ -66,11 +66,17 @@ bun add -d @cloudflare/vite-plugin wrangler
 
 ### Add the plugin to your Vite config
 
-vite.config.ts
+**vite.config.ts**
 
-```
-import { defineConfig } from "vite";import react from "@vitejs/plugin-react";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [react(), cloudflare()],});
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  plugins: [react(), cloudflare()],
+});
 ```
 
 The Cloudflare Vite plugin doesn't require any configuration by default and will look for a `wrangler.jsonc`, `wrangler.json` or `wrangler.toml` in the root of your application.
@@ -79,20 +85,34 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-12329)
-* [  wrangler.toml ](#tab-panel-12330)
+* [  wrangler.jsonc ](#tab-panel-12584)
+* [  wrangler.toml ](#tab-panel-12585)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-vite-tutorial",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "cloudflare-vite-tutorial",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "not_found_handling": "single-page-application"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "cloudflare-vite-tutorial"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]not_found_handling = "single-page-application"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "cloudflare-vite-tutorial"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+not_found_handling = "single-page-application"
 ```
 
 The [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) value has been set to `single-page-application`. This means that all not found requests will serve the `index.html` file. With the Cloudflare plugin, the `assets` routing configuration is used in place of Vite's default behavior. This ensures that your application's [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) works the same way while developing as it does when deployed to production.
@@ -107,10 +127,11 @@ When using the Cloudflare Vite plugin, the Worker config (for example, `wrangler
 
 When developing Workers, additional files are used and/or generated that should not be stored in git. Add the following lines to your `.gitignore` file:
 
-.gitignore
+**.gitignore**
 
-```
-.wrangler.dev.vars*
+```txt
+.wrangler
+.dev.vars*
 ```
 
 ### Run the development server
@@ -141,46 +162,88 @@ pnpm add -D @cloudflare/workers-types
 bun add -d @cloudflare/workers-types
 ```
 
-tsconfig.worker.json
+**tsconfig.worker.json**
 
-```
-{  "extends": "./tsconfig.node.json",  "compilerOptions": {    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",    "types": ["@cloudflare/workers-types/2023-07-01", "vite/client"],  },  "include": ["worker"],}
+```jsonc
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",
+    "types": ["@cloudflare/workers-types/2023-07-01", "vite/client"],
+  },
+  "include": ["worker"],
+}
 ```
 
-tsconfig.json
+**tsconfig.json**
 
-```
-{  "files": [],  "references": [    { "path": "./tsconfig.app.json" },    { "path": "./tsconfig.node.json" },    { "path": "./tsconfig.worker.json" },  ],}
+```jsonc
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.worker.json" },
+  ],
+}
 ```
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-12331)
-* [  wrangler.toml ](#tab-panel-12332)
+* [  wrangler.jsonc ](#tab-panel-12586)
+* [  wrangler.toml ](#tab-panel-12587)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-vite-tutorial",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  },
+  "main": "./worker/index.ts"
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "cloudflare-vite-tutorial",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "not_found_handling": "single-page-application"  },  "main": "./worker/index.ts"}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "cloudflare-vite-tutorial"# Set this to today's datecompatibility_date = "2026-06-24"main = "./worker/index.ts"
-[assets]not_found_handling = "single-page-application"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "cloudflare-vite-tutorial"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "./worker/index.ts"
+
+
+[assets]
+not_found_handling = "single-page-application"
 ```
 
 The `main` field specifies the entry file for your Worker code.
 
 ### Add your API Worker
 
-worker/index.ts
+**worker/index.ts**
 
-```
-export default {  fetch(request) {    const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) {      return Response.json({        name: "Cloudflare",      });    }
-    return new Response(null, { status: 404 });  },} satisfies ExportedHandler;
+```ts
+export default {
+  fetch(request) {
+    const url = new URL(request.url);
+
+
+    if (url.pathname.startsWith("/api/")) {
+      return Response.json({
+        name: "Cloudflare",
+      });
+    }
+
+
+    return new Response(null, { status: 404 });
+  },
+} satisfies ExportedHandler;
 ```
 
 The Worker above will be invoked for any non-navigation request that does not match a static asset. It returns a JSON response if the `pathname` starts with `/api/` and otherwise return a `404` response.
@@ -191,32 +254,106 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-12333)
-* [  wrangler.toml ](#tab-panel-12334)
+* [  wrangler.jsonc ](#tab-panel-12588)
+* [  wrangler.toml ](#tab-panel-12589)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-vite-tutorial",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "main": "./worker/index.ts"
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "cloudflare-vite-tutorial",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "not_found_handling": "single-page-application",    "run_worker_first": [      "/api/*"    ]  },  "main": "./worker/index.ts"}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "cloudflare-vite-tutorial"# Set this to today's datecompatibility_date = "2026-06-24"main = "./worker/index.ts"
-[assets]not_found_handling = "single-page-application"run_worker_first = [ "/api/*" ]
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "cloudflare-vite-tutorial"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "./worker/index.ts"
+
+
+[assets]
+not_found_handling = "single-page-application"
+run_worker_first = [ "/api/*" ]
 ```
 
 ### Call the API from the client
 
 Edit `src/App.tsx` so that it includes an additional button that calls the API and sets some state:
 
-src/App.tsx
+**src/App.tsx**
 
-```
-import { useState } from "react";import reactLogo from "./assets/react.svg";import viteLogo from "/vite.svg";import "./App.css";
-function App() {  const [count, setCount] = useState(0);  const [name, setName] = useState("unknown");
-  return (    <>16 collapsed lines      <div>        <a href="https://vite.dev" target="_blank">          <img src={viteLogo} className="logo" alt="Vite logo" />        </a>        <a href="https://react.dev" target="_blank">          <img src={reactLogo} className="logo react" alt="React logo" />        </a>      </div>      <h1>Vite + React</h1>      <div className="card">        <button          onClick={() => setCount((count) => count + 1)}          aria-label="increment"        >          count is {count}        </button>        <p>          Edit <code>src/App.tsx</code> and save to test HMR        </p>      </div>      <div className="card">        <button          onClick={() => {            fetch("/api/")              .then((res) => res.json() as Promise<{ name: string }>)              .then((data) => setName(data.name));          }}          aria-label="get name"        >          Name from API is: {name}        </button>        <p>          Edit <code>api/index.ts</code> to change the name        </p>      </div>      <p className="read-the-docs">        Click on the Vite and React logos to learn more      </p>    </>  );}
+```tsx
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+
+
+function App() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("unknown");
+
+
+  return (
+    <>
+16 collapsed lines
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button
+          onClick={() => setCount((count) => count + 1)}
+          aria-label="increment"
+        >
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <div className="card">
+        <button
+          onClick={() => {
+            fetch("/api/")
+              .then((res) => res.json() as Promise<{ name: string }>)
+              .then((data) => setName(data.name));
+          }}
+          aria-label="get name"
+        >
+          Name from API is: {name}
+        </button>
+        <p>
+          Edit <code>api/index.ts</code> to change the name
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  );
+}
+
+
 export default App;
 ```
 
@@ -230,9 +367,7 @@ With Vite and the Cloudflare plugin, you can iterate on the client and server pa
 
 Run `npm run build` to build your application.
 
-Terminal window
-
-```
+```sh
 npm run build
 ```
 
@@ -245,9 +380,7 @@ If you inspect the `dist` directory, you will see that it contains two subdirect
 
 Run `npm run preview` to validate that your application runs as expected.
 
-Terminal window
-
-```
+```sh
 npm run preview
 ```
 
@@ -257,9 +390,7 @@ This command will run your build output locally in the Workers runtime, closely 
 
 Run `npm exec wrangler deploy` to deploy your application to Cloudflare.
 
-Terminal window
-
-```
+```sh
 npm exec wrangler deploy
 ```
 

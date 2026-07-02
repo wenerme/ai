@@ -29,8 +29,22 @@ To setup VS Code for breakpoint debugging in your Worker project:
 1. Create a `.vscode` folder in your project's root folder if one does not exist.
 2. Within that folder, create a `launch.json` file with the following content:
 
-```
-{  "configurations": [    {      "name": "Wrangler",      "type": "node",      "request": "attach",      "port": 9229,      "cwd": "/",      "resolveSourceMapLocations": null,      "attachExistingChildren": false,      "autoAttachChildProcesses": false,      "sourceMaps": true // works with or without this line    }  ]}
+```json
+{
+  "configurations": [
+    {
+      "name": "Wrangler",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "cwd": "/",
+      "resolveSourceMapLocations": null,
+      "attachExistingChildren": false,
+      "autoAttachChildProcesses": false,
+      "sourceMaps": true // works with or without this line
+    }
+  ]
+}
 ```
 
 1. Open your project in VS Code, open a new terminal window from VS Code, and run `npx wrangler dev` to start the local dev server.

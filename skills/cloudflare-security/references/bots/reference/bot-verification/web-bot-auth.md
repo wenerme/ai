@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Web Bot Auth
 
-Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) and [signed agents](https://developers.cloudflare.com/bots/concepts/bot/signed-agents/).
+Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
 It relies on IETF drafts: a [directory draft ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03) allowing the crawler to share their public keys, and a [protocol draft ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture-02) defining how these keys should be used to attach the crawler's identity to HTTP requests.
 
@@ -25,19 +25,17 @@ You need to generate a signing key which will be used to authenticate your bot's
 1. Generate a unique [Ed25519 ↗](https://ed25519.cr.yp.to/) private key to sign your requests. This example uses the [OpenSSL ↗](https://openssl-library.org/) `genpkey` command:
 Note
 Cloudflare supports Ed25519 key algorithm.
-Terminal window
-```
+```sh
 openssl genpkey -algorithm ed25519 -out private-key.pem
 ```
 2. Extract your public key.
-Terminal window
-```
+```sh
 openssl pkey -in private-key.pem -pubout -out public-key.pem
 ```
 3. Convert the public key to JSON Web Key (JWK) using a tool of your choice. This example uses [jwker ↗](https://github.com/jphastings/jwker) command line application.
-Terminal window
-```
-go install github.com/jphastings/jwker/cmd/jwker@latestjwker public-key.pem public-key.jwk
+```sh
+go install github.com/jphastings/jwker/cmd/jwker@latest
+jwker public-key.pem public-key.jwk
 ```
 
 By following these steps, you have generated a private key and a public key, then converted the public key to a JWK.
@@ -69,9 +67,22 @@ You need to host a key directory which creates a way for your bot to authenticat
 | expires                        | This should be equal to a Unix timestamp associated with when Cloudflare should no longer attempt to verify the message.                                                                          |
 | @authority                     | This should be equal to the value of the Host header sent by the request. You should set the [req component parameter ↗](https://datatracker.ietf.org/doc/html/rfc9421#content-request-response). |
 The following example shows the annotated request and response with required headers against `https://example.com`. The value of `Signature` here is purely for illustrative purposes, and not the actual generated signature.
-```
-GET /.well-known/http-message-signatures-directory HTTP/1.1Host: example.comAccept: application/http-message-signatures-directory+json
-HTTP/1.1 200 OKContent-Type: application/http-message-signatures-directory+jsonSignature: sig1=:TD5arhV1ved6xtx63cUIFCMONT248cpDeVUAljLgkdozbjMNpJGr/WAx4PzHj+WeG0xMHQF1BOdFLDsfjdjvBA==:Signature-Input: sig1=("@authority";req);alg="ed25519";keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";nonce="ZO3/XMEZjrvSnLtAP9M7jK0WGQf3J+pbmQRUpKDhF9/jsNCWqUh2sq+TH4WTX3/GpNoSZUa8eNWMKqxWp2/c2g==";tag="http-message-signatures-directory";created=1750105829;expires=1750105839Cache-Control: max-age=86400{  "keys": [{    "kty": "OKP",    "crv": "Ed25519",    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs", // Base64 URL-encoded public key, with no padding  }]}
+```txt
+GET /.well-known/http-message-signatures-directory HTTP/1.1
+Host: example.com
+Accept: application/http-message-signatures-directory+json
+HTTP/1.1 200 OK
+Content-Type: application/http-message-signatures-directory+json
+Signature: sig1=:TD5arhV1ved6xtx63cUIFCMONT248cpDeVUAljLgkdozbjMNpJGr/WAx4PzHj+WeG0xMHQF1BOdFLDsfjdjvBA==:
+Signature-Input: sig1=("@authority";req);alg="ed25519";keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";nonce="ZO3/XMEZjrvSnLtAP9M7jK0WGQf3J+pbmQRUpKDhF9/jsNCWqUh2sq+TH4WTX3/GpNoSZUa8eNWMKqxWp2/c2g==";tag="http-message-signatures-directory";created=1750105829;expires=1750105839
+Cache-Control: max-age=86400
+{
+  "keys": [{
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs", // Base64 URL-encoded public key, with no padding
+  }]
+}
 ```
 
 Note
@@ -168,13 +179,45 @@ Attach these three headers to your bot's requests.
 
 An example request may look like this:
 
-```
-Signature-Agent: "https://signature-agent.test"Signature-Input: sig2=("@authority" "signature-agent") ;created=1735689600 ;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U" ;alg="ed25519" ;expires=1735693200 ;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg==" ;tag="web-bot-auth"Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:
+```txt
+Signature-Agent: "https://signature-agent.test"
+Signature-Input: sig2=("@authority" "signature-agent")
+ ;created=1735689600
+ ;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U"
+ ;alg="ed25519"
+ ;expires=1735693200
+ ;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg=="
+ ;tag="web-bot-auth"
+Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:
 ```
 
 Note
 
 You can test how Cloudflare interprets your signed requests against [https://crawltest.com/cdn-cgi/web-bot-auth ↗](https://crawltest.com/cdn-cgi/web-bot-auth). This endpoint returns an HTTP `401` if your message is formatted correctly but your key is unknown, an HTTP `200` if the key is known and your message is verified, and an HTTP `400` otherwise. You may also see an HTTP `401` if your key is known but the message failed to verify.
+
+---
+
+## Transitive trust and the `Forwarded` header
+
+An agent that reaches your site is often not operated by the company that built it. A platform can run automations on behalf of many different end users, so the operator and the end user are not the same party. Cloudflare refers to this chain — website owner → bot operator → end user — as **transitive trust**.
+
+To carry an operator's identity through that chain, Cloudflare is experimenting with the `Forwarded` header defined in [RFC 7239 ↗](https://www.rfc-editor.org/info/rfc7239). This works like `X-Forwarded-For` does for IP addresses: a preference to allow an operator holds whether that operator reaches you directly or through intermediaries that Cloudflare trusts.
+
+The operator is identified with the `for` parameter:
+
+```txt
+Forwarded: for="openai"
+```
+
+The header can also carry the [content-use](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#content-use-signal) value that the operator commits to for the content it accesses:
+
+```txt
+Forwarded: for="openai";use="reference"
+```
+
+Note
+
+Transitive trust and the `Forwarded` header are experimental and may change.
 
 ---
 
@@ -225,6 +268,6 @@ You may wish to refer to the following resources.
 * Cloudflare's [web-bot-auth npm package in Typescript ↗](https://www.npmjs.com/package/web-bot-auth).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/bot-verification/","name":"Bot verification methods"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/reference/bot-verification/web-bot-auth/","name":"Web Bot Auth"}}]}
 ```

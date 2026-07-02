@@ -14,13 +14,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Transcode an image from Workers AI before uploading to R2
 
-JavaScript
+**JavaScript**
 
-```
-const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {  prompt: YOUR_PROMPT_HERE,});
-// Convert to AVIFconst image = (  await env.IMAGES.input(stream).output({ format: "image/avif" })).response();
+```js
+const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {
+  prompt: YOUR_PROMPT_HERE,
+});
+
+
+// Convert to AVIF
+const image = (
+  await env.IMAGES.input(stream).output({ format: "image/avif" })
+).response();
+
+
 const fileName = "image.avif";
-// Upload to R2await env.R2.put(fileName, image.body);
+
+
+// Upload to R2
+await env.R2.put(fileName, image.body);
 ```
 
 ```json

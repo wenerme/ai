@@ -28,18 +28,23 @@ A poll component. Shows a poll where a user can vote.
 
 ### Basic Usage
 
-```
+```html
 <rtk-poll></rtk-poll>
 ```
 
 ### With Properties
 
-```
-<rtk-poll self="example"></rtk-poll>
+```html
+<rtk-poll
+ self="example">
+</rtk-poll>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-poll");
+```html
+<script>
+  const el = document.querySelector("rtk-poll");
+
+
 </script>
 ```
 

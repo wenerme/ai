@@ -76,9 +76,7 @@ Am I affected?
 
 Run the following command to check your Node.js version:
 
-Terminal window
-
-```
+```sh
 node --version
 ```
 
@@ -131,9 +129,7 @@ Check if you use any of these commands in scripts, CI/CD pipelines, or manual wo
 
 Search your codebase and CI/CD configs:
 
-Terminal window
-
-```
+```sh
 grep -rE "wrangler (kv|r2)" --include="*.sh" --include="*.yml" --include="*.yaml" --include="Makefile" --include="package.json" .
 ```
 
@@ -141,11 +137,13 @@ grep -rE "wrangler (kv|r2)" --include="*.sh" --include="*.yml" --include="*.yaml
 
 Add `--remote` to commands that should interact with your Cloudflare account:
 
-Terminal window
+```sh
+# Before (Wrangler v3 - queried remote by default)
+wrangler kv key get --binding MY_KV "my-key"
 
-```
-# Before (Wrangler v3 - queried remote by default)wrangler kv key get --binding MY_KV "my-key"
-# After (Wrangler v4 - must specify --remote)wrangler kv key get --binding MY_KV "my-key" --remote
+
+# After (Wrangler v4 - must specify --remote)
+wrangler kv key get --binding MY_KV "my-key" --remote
 ```
 
 ### Deprecated commands and configurations removed
@@ -162,26 +160,24 @@ Am I affected?
 
 **Check your Wrangler configuration file** (`wrangler.toml`, `wrangler.json`, or `wrangler.jsonc`) for deprecated settings:
 
-Terminal window
+```sh
+# For TOML files
+grep -E "(legacy_assets|node_compat|usage_model)\s*=" wrangler.toml
 
-```
-# For TOML filesgrep -E "(legacy_assets|node_compat|usage_model)\s*=" wrangler.toml
-# For JSON filesgrep -E "\"(legacy_assets|node_compat|usage_model)\"" wrangler.json wrangler.jsonc
+
+# For JSON files
+grep -E "\"(legacy_assets|node_compat|usage_model)\"" wrangler.json wrangler.jsonc
 ```
 
 **Check your commands and scripts** for deprecated flags:
 
-Terminal window
-
-```
+```sh
 grep -rE "wrangler.*(--legacy-assets|--node-compat)" --include="*.sh" --include="*.yml" --include="*.yaml" --include="Makefile" --include="package.json" .
 ```
 
 **Check for deprecated API usage** in your code:
 
-Terminal window
-
-```
+```sh
 grep -rE "getBindingsProxy" --include="*.js" --include="*.ts" --include="*.mjs" .
 ```
 

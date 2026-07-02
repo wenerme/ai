@@ -24,13 +24,13 @@ To normalize encoded forward slashes (`%2F`) to standard slashes (`/`) in the re
 
 Text in **Expression Editor**:
 
-```
+```txt
 (lower(raw.http.request.full_uri) wildcard "*%2f*")
 ```
 
 Text after **Path** \> **Rewrite to** \> _Dynamic_:
 
-```
+```txt
 url_decode(http.request.uri.path)
 ```
 

@@ -30,19 +30,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-tab-bar></rtk-tab-bar>
 ```
 
 ### With Properties
 
-```
-<rtk-tab-bar></rtk-tab-bar>
+```html
+<rtk-tab-bar>
+</rtk-tab-bar>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-tab-bar");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-tab-bar");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

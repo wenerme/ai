@@ -26,35 +26,69 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4957)
-* [  Python ](#tab-panel-4958)
-* [  curl ](#tab-panel-4959)
+* [  TypeScript ](#tab-panel-5103)
+* [  Python ](#tab-panel-5104)
+* [  curl ](#tab-panel-5105)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const response = await env.AI.run(      "@cf/ai4bharat/indictrans2-en-indic-1B",      {        text: "I'll have an order of the moule frites",        source_lang: "english", // defaults to english        target_lang: "french",      }    );
-    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const response = await env.AI.run(
+      "@cf/ai4bharat/indictrans2-en-indic-1B",
+      {
+        text: "I'll have an order of the moule frites",
+        source_lang: "english", // defaults to english
+        target_lang: "french",
+      }
+    );
+
+
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
+```py
 import requests
-API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"headers = {"Authorization": "Bearer {API_TOKEN}"}
-def run(model, input):    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)    return response.json()
-output = run('@cf/ai4bharat/indictrans2-en-indic-1B', {  "text": "I'll have an order of the moule frites",  "source_lang": "english",  "target_lang": "french"})
+
+
+API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
+headers = {"Authorization": "Bearer {API_TOKEN}"}
+
+
+def run(model, input):
+    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)
+    return response.json()
+
+
+output = run('@cf/ai4bharat/indictrans2-en-indic-1B', {
+  "text": "I'll have an order of the moule frites",
+  "source_lang": "english",
+  "target_lang": "french"
+})
+
+
 print(output)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B  \    -X POST  \    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \    -d '{ "text": "Ill have an order of the moule frites", "source_lang": "english", "target_lang": "french" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B  \
+    -X POST  \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+    -d '{ "text": "Ill have an order of the moule frites", "source_lang": "english", "target_lang": "french" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4960)
-* [ Output ](#tab-panel-4961)
+* [ Input ](#tab-panel-5106)
+* [ Output ](#tab-panel-5107)
 
 ▶text
 

@@ -18,14 +18,28 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 The [node:assert ↗](https://nodejs.org/docs/latest/api/assert.html) module in Node.js provides a number of useful assertions that are useful when building tests.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { strictEqual, deepStrictEqual, ok, doesNotReject } from "node:assert";
-strictEqual(1, 1); // ok!strictEqual(1, "1"); // fails! throws AssertionError
-deepStrictEqual({ a: { b: 1 } }, { a: { b: 1 } }); // ok!deepStrictEqual({ a: { b: 1 } }, { a: { b: 2 } }); // fails! throws AssertionError
-ok(true); // ok!ok(false); // fails! throws AssertionError
-await doesNotReject(async () => {}); // ok!await doesNotReject(async () => {  throw new Error("boom");}); // fails! throws AssertionError
+
+
+strictEqual(1, 1); // ok!
+strictEqual(1, "1"); // fails! throws AssertionError
+
+
+deepStrictEqual({ a: { b: 1 } }, { a: { b: 1 } }); // ok!
+deepStrictEqual({ a: { b: 1 } }, { a: { b: 2 } }); // fails! throws AssertionError
+
+
+ok(true); // ok!
+ok(false); // fails! throws AssertionError
+
+
+await doesNotReject(async () => {}); // ok!
+await doesNotReject(async () => {
+  throw new Error("boom");
+}); // fails! throws AssertionError
 ```
 
 Note

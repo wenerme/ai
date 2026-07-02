@@ -18,7 +18,7 @@ The postal code associated with the incoming request.
 
 Example value:
 
-```
+```txt
 "78701"
 ```
 

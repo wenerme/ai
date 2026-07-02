@@ -31,24 +31,41 @@ Make sure you have:
 
 Before importing the public key, extract it from the certificate provided by your CA. Place the contents of your private key in `privkey.pem` and then run the following (replacing certificate.pem with your actual certificate) to populate `pubkey.pm`.
 
-```
+```txt
 keyserver$ openssl x509 -pubkey -noout -in certificate.pem > pubkey.pem
 ```
 
 Log in to the CloudHSM using a previously created [crypto user ↗](https://docs.aws.amazon.com/cloudhsm/latest/userguide/hsm-users.html#crypto-user) (CU) account and generate a key encryption key that will be used to import your private key.
 
-```
-keyserver$ /opt/cloudhsm/bin/key_mgmt_utilCommand: loginHSM -u CU -s patrick -p donahueCommand: genSymKey -t 31 -s 16 -sess -l import-wrapping-key...Symmetric Key Created.  Key Handle: 658...
+```txt
+keyserver$ /opt/cloudhsm/bin/key_mgmt_util
+Command: loginHSM -u CU -s patrick -p donahue
+Command: genSymKey -t 31 -s 16 -sess -l import-wrapping-key
+...
+Symmetric Key Created.  Key Handle: 658
+...
 ```
 
 Referencing the key handle returned above, import the private and public key and then log out of the HSM:
 
-```
-Command: importPrivateKey -f privkey.pem -l mykey -id 1 -w 658...Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESSCfm3CreateUnwrapTemplate returned: 0x00 : HSM Return: SUCCESSCfm3UnWrapKey returned: 0x00 : HSM Return: SUCCESS...Private Key Unwrapped.  Key Handle: 658
+```txt
+Command: importPrivateKey -f privkey.pem -l mykey -id 1 -w 658
+...
+Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
+Cfm3CreateUnwrapTemplate returned: 0x00 : HSM Return: SUCCESS
+Cfm3UnWrapKey returned: 0x00 : HSM Return: SUCCESS
+...
+Private Key Unwrapped.  Key Handle: 658
 
-Command: importPubKey -f pubkey.pem -l mykey -id 1Cfm3CreatePublicKey returned: 0x00 : HSM Return: SUCCESS...Public Key Handle: 941
 
-Command: logoutHSMCommand: exit
+Command: importPubKey -f pubkey.pem -l mykey -id 1
+Cfm3CreatePublicKey returned: 0x00 : HSM Return: SUCCESS
+...
+Public Key Handle: 941
+
+
+Command: logoutHSM
+Command: exit
 ```
 
 ---
@@ -59,26 +76,26 @@ Now that the keys are in place, we need to modify the configuration file that th
 
 Open `/etc/keyless/gokeyless.yaml` and immediately after:
 
-YAML
+**YAML**
 
-```
-private_key_stores:  - dir: /etc/keyless/keys
+```yaml
+private_key_stores:
+  - dir: /etc/keyless/keys
 ```
 
 add:
 
-YAML
+**YAML**
 
-```
+```yaml
 - uri: pkcs11:token=cavium;object=mykey?module-path=/opt/cloudhsm/lib/libcloudhsm_pkcs11_standard.so&pin-value=patrick:donahue&max-sessions=1
 ```
 
 With the config file saved, restart `gokeyless` and verify it started successfully.
 
-Terminal window
-
-```
-sudo systemctl restart gokeyless.servicesudo systemctl status gokeyless.service -l
+```sh
+sudo systemctl restart gokeyless.service
+sudo systemctl status gokeyless.service -l
 ```
 
 ```json

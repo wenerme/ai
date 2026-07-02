@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock
 ```
 
@@ -35,7 +35,7 @@ When making requests to Amazon Bedrock, replace `https://bedrock-runtime.us-east
 
 For example, to invoke the Anthropic Claude model in `us-east-1`:
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock/bedrock-runtime/us-east-1/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke
 ```
 
@@ -63,15 +63,24 @@ The recommended approach is to store your AWS credentials using AI Gateway's [Br
 1. In the Cloudflare dashboard, go to **AI** \> **AI Gateway** \> your gateway > **Provider Keys**.
 2. Select **Add API Key** and choose **Amazon Bedrock** as the provider.
 3. Enter your AWS credentials as a JSON object with the following structure:
-```
-{  "accessKeyId": "AKIAIOSFODNN7EXAMPLE",  "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",  "region": "us-east-1"}
+```json
+{
+  "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+  "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+  "region": "us-east-1"
+}
 ```
 4. Select **Save**.
 
 If you are using temporary credentials from AWS STS (for example, from assuming an IAM role), include the `sessionToken` field:
 
-```
-{  "accessKeyId": "ASIAIOSFODNN7EXAMPLE",  "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",  "region": "us-east-1",  "sessionToken": "FwoGZXIvYXdzEBY..."}
+```json
+{
+  "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+  "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+  "region": "us-east-1",
+  "sessionToken": "FwoGZXIvYXdzEBY..."
+}
 ```
 
 With BYOK configured, you only need to include the `cf-aig-authorization` header in your requests. AI Gateway handles the AWS SigV4 signing automatically.
@@ -86,30 +95,98 @@ If you prefer to sign requests yourself, you can use the [aws4fetch ↗](https:/
 
 With your AWS credentials [stored as a provider key](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/), requests are simple — no AWS signing required:
 
-Terminal window
-
-```
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock/bedrock-runtime/us-east-1/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke" \  -H "cf-aig-authorization: Bearer {CF_AIG_TOKEN}" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ],    "max_tokens": 256,    "anthropic_version": "bedrock-2023-05-31"  }'
+```bash
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock/bedrock-runtime/us-east-1/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke" \
+  -H "cf-aig-authorization: Bearer {CF_AIG_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ],
+    "max_tokens": 256,
+    "anthropic_version": "bedrock-2023-05-31"
+  }'
 ```
 
 ### Client-side signing with aws4fetch
 
 If you are not using BYOK, you must sign the request before sending it through AI Gateway. The following example uses the `aws4fetch` library in a Cloudflare Worker:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { AwsClient } from "aws4fetch";
-interface Env {  accessKey: string;  secretAccessKey: string;}
-export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    const cfAccountId = "{account_id}";    const gatewayName = "{gateway_id}";    const region = "us-east-1";
-    const awsClient = new AwsClient({      accessKeyId: env.accessKey,      secretAccessKey: env.secretAccessKey,      region: region,      service: "bedrock",    });
-    const body = JSON.stringify({      messages: [{ role: "user", content: "What does ethereal mean?" }],      max_tokens: 256,      anthropic_version: "bedrock-2023-05-31",    });
-    // Sign against the original AWS URL    const awsUrl = `https://bedrock-runtime.${region}.amazonaws.com/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
-    const presignedRequest = await awsClient.sign(awsUrl, {      method: "POST",      headers: { "Content-Type": "application/json" },      body: body,    });
-    // Send through AI Gateway    const gatewayUrl = `https://gateway.ai.cloudflare.com/v1/${cfAccountId}/${gatewayName}/aws-bedrock/bedrock-runtime/${region}/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
-    const response = await fetch(gatewayUrl, {      method: "POST",      headers: presignedRequest.headers,      body: body,    });
-    if (      response.ok &&      response.headers.get("content-type")?.includes("application/json")    ) {      const data = await response.json();      return new Response(JSON.stringify(data));    }
-    return new Response("Invalid response", { status: 500 });  },};
+
+
+interface Env {
+  accessKey: string;
+  secretAccessKey: string;
+}
+
+
+export default {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
+    const cfAccountId = "{account_id}";
+    const gatewayName = "{gateway_id}";
+    const region = "us-east-1";
+
+
+    const awsClient = new AwsClient({
+      accessKeyId: env.accessKey,
+      secretAccessKey: env.secretAccessKey,
+      region: region,
+      service: "bedrock",
+    });
+
+
+    const body = JSON.stringify({
+      messages: [{ role: "user", content: "What does ethereal mean?" }],
+      max_tokens: 256,
+      anthropic_version: "bedrock-2023-05-31",
+    });
+
+
+    // Sign against the original AWS URL
+    const awsUrl = `https://bedrock-runtime.${region}.amazonaws.com/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
+
+
+    const presignedRequest = await awsClient.sign(awsUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: body,
+    });
+
+
+    // Send through AI Gateway
+    const gatewayUrl = `https://gateway.ai.cloudflare.com/v1/${cfAccountId}/${gatewayName}/aws-bedrock/bedrock-runtime/${region}/model/us.anthropic.claude-haiku-4-5-20251001-v1:0/invoke`;
+
+
+    const response = await fetch(gatewayUrl, {
+      method: "POST",
+      headers: presignedRequest.headers,
+      body: body,
+    });
+
+
+    if (
+      response.ok &&
+      response.headers.get("content-type")?.includes("application/json")
+    ) {
+      const data = await response.json();
+      return new Response(JSON.stringify(data));
+    }
+
+
+    return new Response("Invalid response", { status: 500 });
+  },
+};
 ```
 
 ## Using the Unified API (OpenAI compatible)
@@ -118,7 +195,7 @@ AI Gateway provides a [Unified API](https://developers.cloudflare.com/ai-gateway
 
 ### Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions
 ```
 
@@ -126,20 +203,47 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/compl
 
 With your AWS credentials [stored as a provider key](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/), specify the model using the `aws-bedrock/{model}` format:
 
-Terminal window
-
-```
-curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \  -H "cf-aig-authorization: Bearer {CF_AIG_TOKEN}" \  -H "Content-Type: application/json" \  -d '{    "model": "aws-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
+```bash
+curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions" \
+  -H "cf-aig-authorization: Bearer {CF_AIG_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "aws-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
 ```
 
 ### OpenAI SDK
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import OpenAI from "openai";
-const client = new OpenAI({  apiKey: "{CF_AIG_TOKEN}",  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",});
-const response = await client.chat.completions.create({  model: "aws-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",  messages: [    {      role: "user",      content: "What is Cloudflare?",    },  ],});
+
+
+const client = new OpenAI({
+  apiKey: "{CF_AIG_TOKEN}",
+  baseURL:
+    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+});
+
+
+const response = await client.chat.completions.create({
+  model: "aws-bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  messages: [
+    {
+      role: "user",
+      content: "What is Cloudflare?",
+    },
+  ],
+});
+
+
 console.log(response.choices[0].message.content);
 ```
 

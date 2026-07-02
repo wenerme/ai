@@ -24,16 +24,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkEmojiPickerButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkEmojiPickerButton />;}
+
+
+function MyComponent() {
+  return <RtkEmojiPickerButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkEmojiPickerButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkEmojiPickerButton      isActive={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkEmojiPickerButton
+      isActive={true}
+    />
+  );
+}
 ```
 
 ```json

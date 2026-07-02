@@ -44,33 +44,44 @@ To configure Workers Logpush for AI Gateway, follow these steps:
 
 You need to generate a key pair to encrypt and decrypt the logs. This script will output your RSA privateKey and publicKey. Keep the private key secure, as it will be used to decrypt the logs. Below is a sample script to generate the keys using Node.js and OpenSSL.
 
-* [ JavaScript ](#tab-panel-6640)
-* [ OpenSSL ](#tab-panel-6641)
+* [ JavaScript ](#tab-panel-6880)
+* [ OpenSSL ](#tab-panel-6881)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const crypto = require("crypto");
-const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {  modulusLength: 4096,  publicKeyEncoding: {    type: "spki",    format: "pem",  },  privateKeyEncoding: {    type: "pkcs8",    format: "pem",  },});
-console.log(publicKey);console.log(privateKey);
+
+
+const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
+  modulusLength: 4096,
+  publicKeyEncoding: {
+    type: "spki",
+    format: "pem",
+  },
+  privateKeyEncoding: {
+    type: "pkcs8",
+    format: "pem",
+  },
+});
+
+
+console.log(publicKey);
+console.log(privateKey);
 ```
 
 Run the script by executing the below code on your terminal. Replace `file name` with the name of your JavaScript file.
 
-Terminal window
-
-```
+```bash
 node {file name}
 ```
 
 1. Generate private key: Use the following command to generate a RSA private key:
-Terminal window
-```
+```bash
 openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:4096
 ```
 2. Generate public key: After generating the private key, you can extract the corresponding public key using:
-Terminal window
-```
+```bash
 openssl rsa -pubout -in private_key.pem -out public_key.pem
 ```
 
@@ -90,37 +101,121 @@ After configuring Workers Logpush, logs will be sent encrypted using the public 
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, you can use the following Node.js script or OpenSSL:
 
-* [ JavaScript ](#tab-panel-6642)
-* [ OpenSSL ](#tab-panel-6643)
+* [ JavaScript ](#tab-panel-6882)
+* [ OpenSSL ](#tab-panel-6883)
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, download the logs to a folder, in this case its named `my_log.log.gz`.
 
 Then copy this JavaScript file into the same folder and place your private key in the top variable.
 
-JavaScript
+**JavaScript**
 
-```
-const privateKeyStr = `-----BEGIN RSA PRIVATE KEY-----....-----END RSA PRIVATE KEY-----`;
-const crypto = require("crypto");const privateKey = crypto.createPrivateKey(privateKeyStr);
-const fs = require("fs");const zlib = require("zlib");const readline = require("readline");
-async function importAESGCMKey(keyBuffer) {  try {    // Ensure the key length is valid for AES    if ([128, 192, 256].includes(256)) {      return await crypto.webcrypto.subtle.importKey(        "raw",        keyBuffer,        {          name: "AES-GCM",          length: 256,        },        true, // Whether the key is extractable (true in this case to allow for export later if needed)        ["encrypt", "decrypt"], // Use for encryption and decryption      );    } else {      throw new Error("Invalid AES key length. Must be 128, 12, or 256 bits.");    }  } catch (error) {    console.error("Failed to import key:", error);    throw error;  }}
-async function decryptData(encryptedData, aesKey, iv) {  const decryptedData = await crypto.subtle.decrypt(    { name: "AES-GCM", iv: iv },    aesKey,    encryptedData,  );  return new TextDecoder().decode(decryptedData);}
-async function decryptBase64(privateKey, data) {  if (data.key === undefined) {    return data;  }
-  const aesKeyBuf = crypto.privateDecrypt(    {      key: privateKey,      oaepHash: "SHA256",    },    Buffer.from(data.key, "base64"),  );  const aesKey = await importAESGCMKey(aesKeyBuf);
-  const decryptedData = await decryptData(    Buffer.from(data.data, "base64"),    aesKey,    Buffer.from(data.iv, "base64"),  );
-  return decryptedData.toString();}
-async function run() {  let lineReader = readline.createInterface({    input: fs.createReadStream("my_log.log.gz").pipe(zlib.createGunzip()),  });
-  lineReader.on("line", async (line) => {    line = JSON.parse(line);
+```js
+const privateKeyStr = `-----BEGIN RSA PRIVATE KEY-----
+....
+-----END RSA PRIVATE KEY-----`;
+
+
+const crypto = require("crypto");
+const privateKey = crypto.createPrivateKey(privateKeyStr);
+
+
+const fs = require("fs");
+const zlib = require("zlib");
+const readline = require("readline");
+
+
+async function importAESGCMKey(keyBuffer) {
+  try {
+    // Ensure the key length is valid for AES
+    if ([128, 192, 256].includes(256)) {
+      return await crypto.webcrypto.subtle.importKey(
+        "raw",
+        keyBuffer,
+        {
+          name: "AES-GCM",
+          length: 256,
+        },
+        true, // Whether the key is extractable (true in this case to allow for export later if needed)
+        ["encrypt", "decrypt"], // Use for encryption and decryption
+      );
+    } else {
+      throw new Error("Invalid AES key length. Must be 128, 12, or 256 bits.");
+    }
+  } catch (error) {
+    console.error("Failed to import key:", error);
+    throw error;
+  }
+}
+
+
+async function decryptData(encryptedData, aesKey, iv) {
+  const decryptedData = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: iv },
+    aesKey,
+    encryptedData,
+  );
+  return new TextDecoder().decode(decryptedData);
+}
+
+
+async function decryptBase64(privateKey, data) {
+  if (data.key === undefined) {
+    return data;
+  }
+
+
+  const aesKeyBuf = crypto.privateDecrypt(
+    {
+      key: privateKey,
+      oaepHash: "SHA256",
+    },
+    Buffer.from(data.key, "base64"),
+  );
+  const aesKey = await importAESGCMKey(aesKeyBuf);
+
+
+  const decryptedData = await decryptData(
+    Buffer.from(data.data, "base64"),
+    aesKey,
+    Buffer.from(data.iv, "base64"),
+  );
+
+
+  return decryptedData.toString();
+}
+
+
+async function run() {
+  let lineReader = readline.createInterface({
+    input: fs.createReadStream("my_log.log.gz").pipe(zlib.createGunzip()),
+  });
+
+
+  lineReader.on("line", async (line) => {
+    line = JSON.parse(line);
+
+
     const { Metadata, RequestBody, ResponseBody, ...remaining } = line;
-    console.log({      ...remaining,      Metadata: await decryptBase64(privateKey, Metadata),      RequestBody: await decryptBase64(privateKey, RequestBody),      ResponseBody: await decryptBase64(privateKey, ResponseBody),    });    console.log("--");  });}
+
+
+    console.log({
+      ...remaining,
+      Metadata: await decryptBase64(privateKey, Metadata),
+      RequestBody: await decryptBase64(privateKey, RequestBody),
+      ResponseBody: await decryptBase64(privateKey, ResponseBody),
+    });
+    console.log("--");
+  });
+}
+
+
 run();
 ```
 
 Run the script by executing the below code on your terminal. Replace `file name` with the name of your JavaScript file.
 
-Terminal window
-
-```
+```bash
 node {file name}
 ```
 
@@ -132,9 +227,7 @@ Assuming that the logs were encrypted with the public key (for example `public_k
 
 For example, if the encrypted logs are in a file named `encrypted_logs.bin`, you can decrypt it like this:
 
-Terminal window
-
-```
+```bash
 openssl rsautl -decrypt -inkey private_key.pem -in encrypted_logs.bin -out decrypted_logs.txt
 ```
 
@@ -144,9 +237,7 @@ openssl rsautl -decrypt -inkey private_key.pem -in encrypted_logs.bin -out decry
 * `-out decrypted_logs.txt`decrypted logs will be saved into this file.
 1. View the decrypted logs Once decrypted, you can view the logs by simply running:
 
-Terminal window
-
-```
+```bash
 cat decrypted_logs.txt
 ```
 

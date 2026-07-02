@@ -30,24 +30,28 @@ Before you can upload a video using tus, you will need to download a tus client.
 
 For more information, refer to the [tus Python client ↗](https://github.com/tus/tus-py-client) which is available through pip, Python's package manager.
 
-Install Python client
+**Install Python client**
 
-```
+```python
 pip install -U tus.py
 ```
 
 ## Upload a video using tus
 
-Upload using tus
+**Upload using tus**
 
-```
-tus-upload --chunk-size 52428800 --header \Authorization "Bearer <API_TOKEN>"<PATH_TO_VIDEO> https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream
+```sh
+tus-upload --chunk-size 52428800 --header \
+Authorization "Bearer <API_TOKEN>"
+<PATH_TO_VIDEO> https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream
 ```
 
-tus response
+**tus response**
 
-```
-INFO Creating file endpointINFO Created: https://api.cloudflare.com/client/v4/accounts/d467d4f0fcbcd9791b613bc3a9599cdc/stream/dd5d531a12de0c724bd1275a3b2bc9c6...
+```sh
+INFO Creating file endpoint
+INFO Created: https://api.cloudflare.com/client/v4/accounts/d467d4f0fcbcd9791b613bc3a9599cdc/stream/dd5d531a12de0c724bd1275a3b2bc9c6
+...
 ```
 
 ### Golang example
@@ -56,31 +60,74 @@ Before you begin, import a tus client such as [go-tus ↗](https://github.com/ev
 
 The `go-tus` library does not return the response headers to the calling function, which makes it difficult to read the video ID from the `stream-media-id` header. As a workaround, create a [Direct Creator Upload](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads/) link. That API response will include the TUS endpoint as well as the video ID. Setting a Creator ID is not required.
 
-Upload with Golang
+**Upload with Golang**
 
-```
+```go
 package main
-import (  "net/http"  "os"
-  tus "github.com/eventials/go-tus")
-func main() {  accountID := "<ACCOUNT_ID>"
+
+
+import (
+  "net/http"
+  "os"
+
+
+  tus "github.com/eventials/go-tus"
+)
+
+
+func main() {
+  accountID := "<ACCOUNT_ID>"
+
+
   f, err := os.Open("videofile.mp4")
-  if err != nil {    panic(err)  }
+
+
+  if err != nil {
+    panic(err)
+  }
+
+
   defer f.Close()
-  headers := make(http.Header)  headers.Add("Authorization", "Bearer <API_TOKEN>")
-  config := &tus.Config{    ChunkSize:           50 * 1024 * 1024, // Required a minimum chunk size of 5 MB, here we use 50 MB.    Resume:              false,    OverridePatchMethod: false,    Store:               nil,    Header:              headers,    HttpClient:          nil,  }
+
+
+  headers := make(http.Header)
+  headers.Add("Authorization", "Bearer <API_TOKEN>")
+
+
+  config := &tus.Config{
+    ChunkSize:           50 * 1024 * 1024, // Required a minimum chunk size of 5 MB, here we use 50 MB.
+    Resume:              false,
+    OverridePatchMethod: false,
+    Store:               nil,
+    Header:              headers,
+    HttpClient:          nil,
+  }
+
+
   client, _ := tus.NewClient("https://api.cloudflare.com/client/v4/accounts/"+ accountID +"/stream", config)
+
+
   upload, _ := tus.NewUploadFromFile(f)
+
+
   uploader, _ := client.CreateUpload(upload)
-  uploader.Upload()}
+
+
+  uploader.Upload()
+}
 ```
 
 You can also get the progress of the upload if you are running the upload in a goroutine.
 
-Get progress of upload
+**Get progress of upload**
 
-```
-// returns the progress percentage.upload.Progress()
-// returns whether or not the upload is complete.upload.Finished()
+```go
+// returns the progress percentage.
+upload.Progress()
+
+
+// returns whether or not the upload is complete.
+upload.Finished()
 ```
 
 Refer to [go-tus ↗](https://github.com/eventials/go-tus) for functionality such as resuming uploads.
@@ -112,13 +159,58 @@ Create an `index.js` file and configure:
 * The API endpoint with your Cloudflare Account ID.
 * The request headers to include an API token.
 
-Configure index.js
+**Configure index.js**
 
-```
-var fs = require("fs");var tus = require("tus-js-client");
-// Specify location of file you would like to upload belowvar path = __dirname + "/test.mp4";var file = fs.createReadStream(path);var size = fs.statSync(path).size;var mediaId = "";
-var options = {  endpoint: "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream",  headers: {    Authorization: "Bearer <API_TOKEN>",  },  chunkSize: 50 * 1024 * 1024, // Required a minimum chunk size of 5 MB. Here we use 50 MB.  retryDelays: [0, 3000, 5000, 10000, 20000], // Indicates to tus-js-client the delays after which it will retry if the upload fails.  metadata: {    name: "test.mp4",    filetype: "video/mp4",    // Optional if you want to include a watermark    // watermark: '<WATERMARK_UID>',  },  uploadSize: size,  onError: function (error) {    throw error;  },  onProgress: function (bytesUploaded, bytesTotal) {    var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);    console.log(bytesUploaded, bytesTotal, percentage + "%");  },  onSuccess: function () {    console.log("Upload finished");  },  onAfterResponse: function (req, res) {    return new Promise((resolve) => {      var mediaIdHeader = res.getHeader("stream-media-id");      if (mediaIdHeader) {        mediaId = mediaIdHeader;      }      resolve();    });  },};
-var upload = new tus.Upload(file, options);upload.start();
+```js
+var fs = require("fs");
+var tus = require("tus-js-client");
+
+
+// Specify location of file you would like to upload below
+var path = __dirname + "/test.mp4";
+var file = fs.createReadStream(path);
+var size = fs.statSync(path).size;
+var mediaId = "";
+
+
+var options = {
+  endpoint: "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream",
+  headers: {
+    Authorization: "Bearer <API_TOKEN>",
+  },
+  chunkSize: 50 * 1024 * 1024, // Required a minimum chunk size of 5 MB. Here we use 50 MB.
+  retryDelays: [0, 3000, 5000, 10000, 20000], // Indicates to tus-js-client the delays after which it will retry if the upload fails.
+  metadata: {
+    name: "test.mp4",
+    filetype: "video/mp4",
+    // Optional if you want to include a watermark
+    // watermark: '<WATERMARK_UID>',
+  },
+  uploadSize: size,
+  onError: function (error) {
+    throw error;
+  },
+  onProgress: function (bytesUploaded, bytesTotal) {
+    var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+    console.log(bytesUploaded, bytesTotal, percentage + "%");
+  },
+  onSuccess: function () {
+    console.log("Upload finished");
+  },
+  onAfterResponse: function (req, res) {
+    return new Promise((resolve) => {
+      var mediaIdHeader = res.getHeader("stream-media-id");
+      if (mediaIdHeader) {
+        mediaId = mediaIdHeader;
+      }
+      resolve();
+    });
+  },
+};
+
+
+var upload = new tus.Upload(file, options);
+upload.start();
 ```
 
 ## Specify upload options
@@ -162,7 +254,7 @@ Instead, you should use the `stream-media-id` HTTP header in the response to ret
 
 For example, a request made to `https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream` with the tus protocol will contain a HTTP header like the following:
 
-```
+```plaintext
 stream-media-id: cab807e0c477d01baq20f66c3d1dfc26cf
 ```
 

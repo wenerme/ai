@@ -28,27 +28,50 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5116)
-* [  curl ](#tab-panel-5117)
+* [  TypeScript ](#tab-panel-5262)
+* [  curl ](#tab-panel-5263)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const inputs = {      prompt: "cyberpunk cat",    };
-    const response = await env.AI.run(      "@cf/leonardo/phoenix-1.0",      inputs    );
-    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const inputs = {
+      prompt: "cyberpunk cat",
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/leonardo/phoenix-1.0",
+      inputs
+    );
+
+
+    return new Response(response, {
+      headers: {
+        "content-type": "image/jpg",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/leonardo/phoenix-1.0  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/leonardo/phoenix-1.0  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5118)
-* [ Output ](#tab-panel-5119)
+* [ Input ](#tab-panel-5264)
+* [ Output ](#tab-panel-5265)
 
 prompt
 

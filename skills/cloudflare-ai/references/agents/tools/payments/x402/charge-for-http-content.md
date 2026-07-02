@@ -28,8 +28,20 @@ Deploy the x402-proxy template to your Cloudflare account:
 
 Define protected routes in `wrangler.jsonc`:
 
-```
-{  "vars": {    "PAY_TO": "0xYourWalletAddress",    "NETWORK": "base-sepolia",    "PROTECTED_PATTERNS": [      {        "pattern": "/api/premium/*",        "price": "$0.10",        "description": "Premium API access"      }    ]  }}
+```json
+{
+  "vars": {
+    "PAY_TO": "0xYourWalletAddress",
+    "NETWORK": "base-sepolia",
+    "PROTECTED_PATTERNS": [
+      {
+        "pattern": "/api/premium/*",
+        "price": "$0.10",
+        "description": "Premium API access"
+      }
+    ]
+  }
+}
 ```
 
 Note
@@ -40,8 +52,14 @@ Note
 
 With [Bot Management](https://developers.cloudflare.com/bots/), the proxy can charge crawlers while keeping the site free for humans:
 
-```
-{  "pattern": "/content/*",  "price": "$0.10",  "description": "Content access",  "bot_score_threshold": 30,  "except_detection_ids": [117479730]}
+```json
+{
+  "pattern": "/content/*",
+  "price": "$0.10",
+  "description": "Content access",
+  "bot_score_threshold": 30,
+  "except_detection_ids": [117479730]
+}
 ```
 
 Requests with a bot score at or below `bot_score_threshold` are directed to the paywall. Use `except_detection_ids` to allowlist specific crawlers by [detection ID](https://developers.cloudflare.com/ai-crawl-control/reference/bots/).
@@ -50,10 +68,11 @@ Requests with a bot score at or below `bot_score_threshold` are directed to the 
 
 Clone the template, edit `wrangler.jsonc`, and deploy:
 
-Terminal window
-
-```
-git clone https://github.com/cloudflare/templatescd templates/x402-proxy-templatenpm installnpx wrangler deploy
+```sh
+git clone https://github.com/cloudflare/templates
+cd templates/x402-proxy-template
+npm install
+npx wrangler deploy
 ```
 
 For full configuration options and Bot Management examples, refer to the [template README ↗](https://github.com/cloudflare/templates/tree/main/x402-proxy-template).
@@ -62,13 +81,34 @@ For full configuration options and Bot Management examples, refer to the [templa
 
 For more control, add x402 middleware directly to your Worker using Hono:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { paymentMiddleware } from "x402-hono";
+```ts
+import { Hono } from "hono";
+import { paymentMiddleware } from "x402-hono";
+
+
 const app = new Hono<{ Bindings: Env }>();
-app.use(  paymentMiddleware(    "0xYourWalletAddress" as `0x${string}`,    {      "/premium": {        price: "$0.10",        network: "base-sepolia",        config: { description: "Premium content" },      },    },    { url: "https://x402.org/facilitator" },  ),);
+
+
+app.use(
+  paymentMiddleware(
+    "0xYourWalletAddress" as `0x${string}`,
+    {
+      "/premium": {
+        price: "$0.10",
+        network: "base-sepolia",
+        config: { description: "Premium content" },
+      },
+    },
+    { url: "https://x402.org/facilitator" },
+  ),
+);
+
+
 app.get("/premium", (c) => c.json({ message: "Thanks for paying!" }));
+
+
 export default app;
 ```
 

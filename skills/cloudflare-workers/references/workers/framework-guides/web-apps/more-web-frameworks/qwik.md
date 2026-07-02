@@ -36,9 +36,7 @@ pnpm create cloudflare@latest my-qwik-app --framework=qwik
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-qwik-app
 ```
 

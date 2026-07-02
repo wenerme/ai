@@ -26,19 +26,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-virtualized-participant-list></rtk-virtualized-participant-list>
 ```
 
 ### With Properties
 
-```
-<rtk-virtualized-participant-list></rtk-virtualized-participant-list>
+```html
+<rtk-virtualized-participant-list>
+</rtk-virtualized-participant-list>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-virtualized-participant-list");
-  el.bufferedItemsCount= 42;  el.itemHeight= 42;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-virtualized-participant-list");
+
+
+  el.bufferedItemsCount= 42;
+  el.itemHeight= 42;
+</script>
 ```
 
 ```json

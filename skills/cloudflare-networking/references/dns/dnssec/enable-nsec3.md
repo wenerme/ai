@@ -25,10 +25,16 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Edit DNSSEC Status
+**Edit DNSSEC Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dnssec_use_nsec3": true,    "status": "active"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "dnssec_use_nsec3": true,
+    "status": "active"
+  }'
 ```
 
 ### Pre-signed DNSSEC
@@ -45,9 +51,7 @@ To validate that NSEC3 is being used, consider the following scenarios:
 
 A command like the following would trigger a signed negative response using NSEC3 for proof of non-existence. Look for NSEC3 records under the `Authority Section` of the response.
 
-Terminal window
-
-```
+```sh
 dig +dnssec doesnotexist.example.com
 ```
 
@@ -55,9 +59,7 @@ dig +dnssec doesnotexist.example.com
 
 If the name `www` exists but the type TXT does not, the example below would trigger a signed NODATA response using NSEC3\. Look for NSEC3 records under the `Authority Section` of the response.
 
-Terminal window
-
-```
+```sh
 dig +dnssec www.example.com TXT
 ```
 

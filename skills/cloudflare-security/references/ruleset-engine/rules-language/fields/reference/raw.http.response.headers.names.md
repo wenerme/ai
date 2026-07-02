@@ -20,13 +20,13 @@ This is the raw field version of the [http.response.headers.names](https://devel
 
 Example value:
 
-```
+```txt
 ["content-type"]
 ```
 
 Example usage:
 
-```
+```txt
 any(raw.http.response.headers.names[*] == "content-type")
 ```
 

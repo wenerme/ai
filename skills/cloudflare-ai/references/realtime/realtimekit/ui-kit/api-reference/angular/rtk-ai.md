@@ -28,14 +28,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-ai></rtk-ai>
+```html
+<!-- component.html -->
+<rtk-ai></rtk-ai>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-ai [meeting]="meeting" size="md" [view]="aiview"></rtk-ai>
+```html
+<!-- component.html -->
+<rtk-ai
+ [meeting]="meeting"
+ size="md"
+ [view]="aiview">
+</rtk-ai>
 ```
 
 ```json

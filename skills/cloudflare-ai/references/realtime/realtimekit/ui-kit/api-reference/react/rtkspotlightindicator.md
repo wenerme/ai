@@ -25,16 +25,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSpotlightIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSpotlightIndicator />;}
+
+
+function MyComponent() {
+  return <RtkSpotlightIndicator />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSpotlightIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSpotlightIndicator      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSpotlightIndicator
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

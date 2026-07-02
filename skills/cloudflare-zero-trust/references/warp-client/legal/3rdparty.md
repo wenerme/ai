@@ -270,8 +270,10 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
   * [wasm-bindgen-macro-support ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro-support)
   * [wasm-bindgen-shared ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared)
   * [web-sys ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/web-sys)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -304,7 +306,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -312,8 +314,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [adler ↗](https://github.com/jonas-schievink/adler.git)
-  ```
-                        Apache License                Version 2.0, January 2004             https://www.apache.org/licenses/LICENSE-2.0
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               https://www.apache.org/licenses/LICENSE-2.0
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -346,7 +350,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 https://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -376,8 +380,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [sha-1 ↗](https://github.com/RustCrypto/hashes)
   * [sha2 ↗](https://github.com/RustCrypto/hashes)
   * [sha2 ↗](https://github.com/RustCrypto/hashes)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -445,12 +451,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -462,8 +475,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [log ↗](https://github.com/rust-lang/log)
   * [safemem ↗](https://github.com/abonander/safemem)
   * [uuid ↗](https://github.com/uuid-rs/uuid)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -496,7 +511,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -560,48 +575,214 @@ Unless required by applicable law or agreed to in writing, software distributed 
 Rust-chrono is dual-licensed under The MIT License \[1\] and Apache 2.0 License \[2\]. Copyright (c) 2014--2017, Kang Seonghoon and contributors.
 Nota Bene: This is same as the Rust Project's own license.
 \[1\]: [http://opensource.org/licenses/MIT ↗](http://opensource.org/licenses/MIT), which is reproduced below:
-```
+```plaintext
 The MIT License (MIT)
 Copyright (c) 2014, Kang Seonghoon.
-Permission is hereby granted, free of charge, to any person obtaining a copyof this software and associated documentation files (the "Software"), to dealin the Software without restriction, including without limitation the rightsto use, copy, modify, merge, publish, distribute, sublicense, and/or sellcopies of the Software, and to permit persons to whom the Software isfurnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included inall copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS ORIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THEAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHERLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS INTHE SOFTWARE.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 ```
 \[2\]: [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0), which is reproduced below:
-```
-                              Apache License                        Version 2.0, January 2004                     http://www.apache.org/licenses/
+```plaintext
+                              Apache License
+                        Version 2.0, January 2004
+                     http://www.apache.org/licenses/
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+
 1. Definitions.
-   "License" shall mean the terms and conditions for use, reproduction,   and distribution as defined by Sections 1 through 9 of this document.
-   "Licensor" shall mean the copyright owner or entity authorized by   the copyright owner that is granting the License.
-   "Legal Entity" shall mean the union of the acting entity and all   other entities that control, are controlled by, or are under common   control with that entity. For the purposes of this definition,   "control" means (i) the power, direct or indirect, to cause the   direction or management of such entity, whether by contract or   otherwise, or (ii) ownership of fifty percent (50%) or more of the   outstanding shares, or (iii) beneficial ownership of such entity.
-   "You" (or "Your") shall mean an individual or Legal Entity   exercising permissions granted by this License.
-   "Source" form shall mean the preferred form for making modifications,   including but not limited to software source code, documentation   source, and configuration files.
-   "Object" form shall mean any form resulting from mechanical   transformation or translation of a Source form, including but   not limited to compiled object code, generated documentation,   and conversions to other media types.
-   "Work" shall mean the work of authorship, whether in Source or   Object form, made available under the License, as indicated by a   copyright notice that is included in or attached to the work   (an example is provided in the Appendix below).
-   "Derivative Works" shall mean any work, whether in Source or Object   form, that is based on (or derived from) the Work and for which the   editorial revisions, annotations, elaborations, or other modifications   represent, as a whole, an original work of authorship. For the purposes   of this License, Derivative Works shall not include works that remain   separable from, or merely link (or bind by name) to the interfaces of,   the Work and Derivative Works thereof.
-   "Contribution" shall mean any work of authorship, including   the original version of the Work and any modifications or additions   to that Work or Derivative Works thereof, that is intentionally   submitted to Licensor for inclusion in the Work by the copyright owner   or by an individual or Legal Entity authorized to submit on behalf of   the copyright owner. For the purposes of this definition, "submitted"   means any form of electronic, verbal, or written communication sent   to the Licensor or its representatives, including but not limited to   communication on electronic mailing lists, source code control systems,   and issue tracking systems that are managed by, or on behalf of, the   Licensor for the purpose of discussing and improving the Work, but   excluding communication that is conspicuously marked or otherwise   designated in writing by the copyright owner as "Not a Contribution."
-   "Contributor" shall mean Licensor and any individual or Legal Entity   on behalf of whom a Contribution has been received by Licensor and   subsequently incorporated within the Work.
-2. Grant of Copyright License. Subject to the terms and conditions of   this License, each Contributor hereby grants to You a perpetual,   worldwide, non-exclusive, no-charge, royalty-free, irrevocable   copyright license to reproduce, prepare Derivative Works of,   publicly display, publicly perform, sublicense, and distribute the   Work and such Derivative Works in Source or Object form.
-3. Grant of Patent License. Subject to the terms and conditions of   this License, each Contributor hereby grants to You a perpetual,   worldwide, non-exclusive, no-charge, royalty-free, irrevocable   (except as stated in this section) patent license to make, have made,   use, offer to sell, sell, import, and otherwise transfer the Work,   where such license applies only to those patent claims licensable   by such Contributor that are necessarily infringed by their   Contribution(s) alone or by combination of their Contribution(s)   with the Work to which such Contribution(s) was submitted. If You   institute patent litigation against any entity (including a   cross-claim or counterclaim in a lawsuit) alleging that the Work   or a Contribution incorporated within the Work constitutes direct   or contributory patent infringement, then any patent licenses   granted to You under this License for that Work shall terminate   as of the date such litigation is filed.
-4. Redistribution. You may reproduce and distribute copies of the   Work or Derivative Works thereof in any medium, with or without   modifications, and in Source or Object form, provided that You   meet the following conditions:
-   (a) You must give any other recipients of the Work or       Derivative Works a copy of this License; and
-   (b) You must cause any modified files to carry prominent notices       stating that You changed the files; and
-   (c) You must retain, in the Source form of any Derivative Works       that You distribute, all copyright, patent, trademark, and       attribution notices from the Source form of the Work,       excluding those notices that do not pertain to any part of       the Derivative Works; and
-   (d) If the Work includes a "NOTICE" text file as part of its       distribution, then any Derivative Works that You distribute must       include a readable copy of the attribution notices contained       within such NOTICE file, excluding those notices that do not       pertain to any part of the Derivative Works, in at least one       of the following places: within a NOTICE text file distributed       as part of the Derivative Works; within the Source form or       documentation, if provided along with the Derivative Works; or,       within a display generated by the Derivative Works, if and       wherever such third-party notices normally appear. The contents       of the NOTICE file are for informational purposes only and       do not modify the License. You may add Your own attribution       notices within Derivative Works that You distribute, alongside       or as an addendum to the NOTICE text from the Work, provided       that such additional attribution notices cannot be construed       as modifying the License.
-   You may add Your own copyright statement to Your modifications and   may provide additional or different license terms and conditions   for use, reproduction, or distribution of Your modifications, or   for any such Derivative Works as a whole, provided Your use,   reproduction, and distribution of the Work otherwise complies with   the conditions stated in this License.
-5. Submission of Contributions. Unless You explicitly state otherwise,   any Contribution intentionally submitted for inclusion in the Work   by You to the Licensor shall be under the terms and conditions of   this License, without any additional terms or conditions.   Notwithstanding the above, nothing herein shall supersede or modify   the terms of any separate license agreement you may have executed   with Licensor regarding such Contributions.
-6. Trademarks. This License does not grant permission to use the trade   names, trademarks, service marks, or product names of the Licensor,   except as required for reasonable and customary use in describing the   origin of the Work and reproducing the content of the NOTICE file.
-7. Disclaimer of Warranty. Unless required by applicable law or   agreed to in writing, Licensor provides the Work (and each   Contributor provides its Contributions) on an "AS IS" BASIS,   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or   implied, including, without limitation, any warranties or conditions   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A   PARTICULAR PURPOSE. You are solely responsible for determining the   appropriateness of using or redistributing the Work and assume any   risks associated with Your exercise of permissions under this License.
-8. Limitation of Liability. In no event and under no legal theory,   whether in tort (including negligence), contract, or otherwise,   unless required by applicable law (such as deliberate and grossly   negligent acts) or agreed to in writing, shall any Contributor be   liable to You for damages, including any direct, indirect, special,   incidental, or consequential damages of any character arising as a   result of this License or out of the use or inability to use the   Work (including but not limited to damages for loss of goodwill,   work stoppage, computer failure or malfunction, or any and all   other commercial damages or losses), even if such Contributor   has been advised of the possibility of such damages.
-9. Accepting Warranty or Additional Liability. While redistributing   the Work or Derivative Works thereof, You may choose to offer,   and charge a fee for, acceptance of support, warranty, indemnity,   or other liability obligations and/or rights consistent with this   License. However, in accepting such obligations, You may act only   on Your own behalf and on Your sole responsibility, not on behalf   of any other Contributor, and only if You agree to indemnify,   defend, and hold each Contributor harmless for any liability   incurred by, or claims asserted against, such Contributor by reason   of your accepting any such warranty or additional liability.
+   "License" shall mean the terms and conditions for use, reproduction,
+   and distribution as defined by Sections 1 through 9 of this document.
+   "Licensor" shall mean the copyright owner or entity authorized by
+   the copyright owner that is granting the License.
+   "Legal Entity" shall mean the union of the acting entity and all
+   other entities that control, are controlled by, or are under common
+   control with that entity. For the purposes of this definition,
+   "control" means (i) the power, direct or indirect, to cause the
+   direction or management of such entity, whether by contract or
+   otherwise, or (ii) ownership of fifty percent (50%) or more of the
+   outstanding shares, or (iii) beneficial ownership of such entity.
+   "You" (or "Your") shall mean an individual or Legal Entity
+   exercising permissions granted by this License.
+   "Source" form shall mean the preferred form for making modifications,
+   including but not limited to software source code, documentation
+   source, and configuration files.
+   "Object" form shall mean any form resulting from mechanical
+   transformation or translation of a Source form, including but
+   not limited to compiled object code, generated documentation,
+   and conversions to other media types.
+   "Work" shall mean the work of authorship, whether in Source or
+   Object form, made available under the License, as indicated by a
+   copyright notice that is included in or attached to the work
+   (an example is provided in the Appendix below).
+   "Derivative Works" shall mean any work, whether in Source or Object
+   form, that is based on (or derived from) the Work and for which the
+   editorial revisions, annotations, elaborations, or other modifications
+   represent, as a whole, an original work of authorship. For the purposes
+   of this License, Derivative Works shall not include works that remain
+   separable from, or merely link (or bind by name) to the interfaces of,
+   the Work and Derivative Works thereof.
+   "Contribution" shall mean any work of authorship, including
+   the original version of the Work and any modifications or additions
+   to that Work or Derivative Works thereof, that is intentionally
+   submitted to Licensor for inclusion in the Work by the copyright owner
+   or by an individual or Legal Entity authorized to submit on behalf of
+   the copyright owner. For the purposes of this definition, "submitted"
+   means any form of electronic, verbal, or written communication sent
+   to the Licensor or its representatives, including but not limited to
+   communication on electronic mailing lists, source code control systems,
+   and issue tracking systems that are managed by, or on behalf of, the
+   Licensor for the purpose of discussing and improving the Work, but
+   excluding communication that is conspicuously marked or otherwise
+   designated in writing by the copyright owner as "Not a Contribution."
+   "Contributor" shall mean Licensor and any individual or Legal Entity
+   on behalf of whom a Contribution has been received by Licensor and
+   subsequently incorporated within the Work.
+
+
+2. Grant of Copyright License. Subject to the terms and conditions of
+   this License, each Contributor hereby grants to You a perpetual,
+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+   copyright license to reproduce, prepare Derivative Works of,
+   publicly display, publicly perform, sublicense, and distribute the
+   Work and such Derivative Works in Source or Object form.
+
+
+3. Grant of Patent License. Subject to the terms and conditions of
+   this License, each Contributor hereby grants to You a perpetual,
+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+   (except as stated in this section) patent license to make, have made,
+   use, offer to sell, sell, import, and otherwise transfer the Work,
+   where such license applies only to those patent claims licensable
+   by such Contributor that are necessarily infringed by their
+   Contribution(s) alone or by combination of their Contribution(s)
+   with the Work to which such Contribution(s) was submitted. If You
+   institute patent litigation against any entity (including a
+   cross-claim or counterclaim in a lawsuit) alleging that the Work
+   or a Contribution incorporated within the Work constitutes direct
+   or contributory patent infringement, then any patent licenses
+   granted to You under this License for that Work shall terminate
+   as of the date such litigation is filed.
+
+
+4. Redistribution. You may reproduce and distribute copies of the
+   Work or Derivative Works thereof in any medium, with or without
+   modifications, and in Source or Object form, provided that You
+   meet the following conditions:
+   (a) You must give any other recipients of the Work or
+       Derivative Works a copy of this License; and
+   (b) You must cause any modified files to carry prominent notices
+       stating that You changed the files; and
+   (c) You must retain, in the Source form of any Derivative Works
+       that You distribute, all copyright, patent, trademark, and
+       attribution notices from the Source form of the Work,
+       excluding those notices that do not pertain to any part of
+       the Derivative Works; and
+   (d) If the Work includes a "NOTICE" text file as part of its
+       distribution, then any Derivative Works that You distribute must
+       include a readable copy of the attribution notices contained
+       within such NOTICE file, excluding those notices that do not
+       pertain to any part of the Derivative Works, in at least one
+       of the following places: within a NOTICE text file distributed
+       as part of the Derivative Works; within the Source form or
+       documentation, if provided along with the Derivative Works; or,
+       within a display generated by the Derivative Works, if and
+       wherever such third-party notices normally appear. The contents
+       of the NOTICE file are for informational purposes only and
+       do not modify the License. You may add Your own attribution
+       notices within Derivative Works that You distribute, alongside
+       or as an addendum to the NOTICE text from the Work, provided
+       that such additional attribution notices cannot be construed
+       as modifying the License.
+   You may add Your own copyright statement to Your modifications and
+   may provide additional or different license terms and conditions
+   for use, reproduction, or distribution of Your modifications, or
+   for any such Derivative Works as a whole, provided Your use,
+   reproduction, and distribution of the Work otherwise complies with
+   the conditions stated in this License.
+
+
+5. Submission of Contributions. Unless You explicitly state otherwise,
+   any Contribution intentionally submitted for inclusion in the Work
+   by You to the Licensor shall be under the terms and conditions of
+   this License, without any additional terms or conditions.
+   Notwithstanding the above, nothing herein shall supersede or modify
+   the terms of any separate license agreement you may have executed
+   with Licensor regarding such Contributions.
+
+
+6. Trademarks. This License does not grant permission to use the trade
+   names, trademarks, service marks, or product names of the Licensor,
+   except as required for reasonable and customary use in describing the
+   origin of the Work and reproducing the content of the NOTICE file.
+
+
+7. Disclaimer of Warranty. Unless required by applicable law or
+   agreed to in writing, Licensor provides the Work (and each
+   Contributor provides its Contributions) on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+   implied, including, without limitation, any warranties or conditions
+   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+   PARTICULAR PURPOSE. You are solely responsible for determining the
+   appropriateness of using or redistributing the Work and assume any
+   risks associated with Your exercise of permissions under this License.
+
+
+8. Limitation of Liability. In no event and under no legal theory,
+   whether in tort (including negligence), contract, or otherwise,
+   unless required by applicable law (such as deliberate and grossly
+   negligent acts) or agreed to in writing, shall any Contributor be
+   liable to You for damages, including any direct, indirect, special,
+   incidental, or consequential damages of any character arising as a
+   result of this License or out of the use or inability to use the
+   Work (including but not limited to damages for loss of goodwill,
+   work stoppage, computer failure or malfunction, or any and all
+   other commercial damages or losses), even if such Contributor
+   has been advised of the possibility of such damages.
+
+
+9. Accepting Warranty or Additional Liability. While redistributing
+   the Work or Derivative Works thereof, You may choose to offer,
+   and charge a fee for, acceptance of support, warranty, indemnity,
+   or other liability obligations and/or rights consistent with this
+   License. However, in accepting such obligations, You may act only
+   on Your own behalf and on Your sole responsibility, not on behalf
+   of any other Contributor, and only if You agree to indemnify,
+   defend, and hold each Contributor harmless for any liability
+   incurred by, or claims asserted against, such Contributor by reason
+   of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-   To apply the Apache License to your work, attach the following   boilerplate notice, with the fields enclosed by brackets "\[\]"   replaced with your own identifying information. (Don't include   the brackets!)  The text should be enclosed in the appropriate   comment syntax for the file format. We also recommend that a   file or class name and description of purpose be included on the   same "printed page" as the copyright notice for easier   identification within third-party archives.
+   To apply the Apache License to your work, attach the following
+   boilerplate notice, with the fields enclosed by brackets "\[\]"
+   replaced with your own identifying information. (Don't include
+   the brackets!)  The text should be enclosed in the appropriate
+   comment syntax for the file format. We also recommend that a
+   file or class name and description of purpose be included on the
+   same "printed page" as the copyright notice for easier
+   identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
-Licensed under the Apache License, Version 2.0 (the "License");you may not use this file except in compliance with the License.You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
   http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, softwaredistributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions andlimitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
 * ### Apache License 2.0
 #### Used by:
@@ -620,8 +801,10 @@ Unless required by applicable law or agreed to in writing, softwaredistributed u
   * [trust-dns-resolver ↗](https://github.com/bluejekyll/trust-dns)
   * [trust-dns-rustls ↗](https://github.com/bluejekyll/trust-dns)
   * [unreachable ↗](https://github.com/reem/rust-unreachable.git)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -651,12 +834,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright `{yyyy}` `{name of copyright owner}`
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -693,12 +883,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright `{yyyy}` `{name of copyright owner}`
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -736,12 +933,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright 2014-2018 David Henningsson [diwic@ubuntu.com](mailto:diwic@ubuntu.com) and other contributors
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -749,8 +953,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [deadqueue ↗](https://github.com/bikeshedder/deadqueue)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -780,12 +986,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright 2019 Michael P. Jung
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -795,8 +1008,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [diff ↗](https://github.com/utkarshkukreti/diff.rs)
   * [ipnetwork ↗](https://github.com/achanda/ipnetwork)
   * [winapi ↗](https://github.com/retep998/winapi-rs)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -826,12 +1041,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright `{yyyy}` `{name of copyright owner}`
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -842,8 +1064,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [dirs-next ↗](https://github.com/xdg-rs/dirs)
   * [dirs-sys ↗](https://github.com/dirs-dev/dirs-sys-rs)
   * [dirs-sys-next ↗](https://github.com/xdg-rs/dirs/tree/master/dirs-sys)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -876,8 +1100,10 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
   * [encoding\_rs ↗](https://github.com/hsivonen/encoding%5Frs)
   * [line-wrap ↗](https://bitbucket.org/marshallpierce/line-wrap-rs/src)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -907,12 +1133,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "\[\]"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "\[\]"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -920,8 +1153,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [err-derive ↗](https://gitlab.com/torkleyy/err-derive)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -951,12 +1186,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright 2018 Thomas Schaller
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -972,8 +1214,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [futures-sink ↗](https://github.com/rust-lang/futures-rs)
   * [futures-task ↗](https://github.com/rust-lang/futures-rs)
   * [futures-util ↗](https://github.com/rust-lang/futures-rs)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1006,7 +1250,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright (c) 2016 Alex Crichton Copyright (c) 2017 The Tokio Authors
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1023,8 +1267,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [rand\_core ↗](https://github.com/rust-random/rand)
   * [rand\_hc ↗](https://github.com/rust-random/rand)
   * [rand\_hc ↗](https://github.com/rust-random/rand)
-  ```
-                        Apache License                Version 2.0, January 2004             https://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               https://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1057,7 +1303,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 https://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1065,8 +1311,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [hkdf ↗](https://github.com/RustCrypto/KDFs/)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1105,8 +1353,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [http ↗](https://github.com/hyperium/http)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1139,7 +1389,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2017 http-rs authors
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1187,8 +1437,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [io-kit-sys ↗](https://github.com/jtakakura/io-kit-rs)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1218,12 +1470,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "\[\]"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "\[\]"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright (c) 2017-2018 Junji Takakura
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1231,8 +1490,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [ipnet ↗](https://github.com/krisprice/ipnet)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1262,12 +1523,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright 2017 Juniper Networks, Inc.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1275,8 +1543,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [keyring ↗](https://github.com/hwchen/keyring-rs.git)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1309,7 +1579,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[2017\] \[keyring developers\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1320,8 +1590,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [lru-cache ↗](https://github.com/contain-rs/lru-cache)
   * [process\_path ↗](https://github.com/wesleywiser/process%5Fpath)
   * [vec\_map ↗](https://github.com/contain-rs/vec-map)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1354,7 +1626,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1365,8 +1637,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [pin-project ↗](https://github.com/taiki-e/pin-project)
   * [pin-project-internal ↗](https://github.com/taiki-e/pin-project)
   * [pin-project-lite ↗](https://github.com/taiki-e/pin-project-lite)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1399,8 +1673,10 @@ END OF TERMS AND CONDITIONS
 #### Used by:
 
   * [ntapi ↗](https://github.com/MSxDOS/ntapi)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1430,12 +1706,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "\[\]"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "\[\]"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1443,8 +1726,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [pin-utils ↗](https://github.com/rust-lang-nursery/pin-utils)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1477,7 +1762,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2018 The pin-utils authors
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1485,8 +1770,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [ppv-lite86 ↗](https://github.com/cryptocorrosion/cryptocorrosion)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1525,8 +1812,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [proc-macro-error ↗](https://gitlab.com/CreepySkeleton/proc-macro-error)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1559,7 +1848,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2019-2020 CreepySkeleton [creepy-skeleton@yandex.ru](mailto:creepy-skeleton@yandex.ru)
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1567,8 +1856,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [proc-macro-error-attr ↗](https://gitlab.com/CreepySkeleton/proc-macro-error)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1601,7 +1892,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2019-2020 CreepySkeleton [creepy-skeleton@yandex.ru](mailto:creepy-skeleton@yandex.ru)
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1609,8 +1900,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [remove\_dir\_all ↗](https://github.com/XAMPPRocky/remove%5Fdir%5Fall.git)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1641,7 +1934,7 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 END OF TERMS AND CONDITIONS
 Copyright 2017 Aaron Power
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1653,55 +1946,223 @@ rolling-file is dual-licensed under The MIT License \[1\] and Apache 2.0 License
 Copyright (c) 2021 eFolder Inc dba Axcient and contributors.
 This is same as the Rust Project's own license.
 \[1\]: [http://opensource.org/licenses/MIT ↗](http://opensource.org/licenses/MIT), which is reproduced below:
-```
+```plaintext
 The MIT License (MIT)
 Copyright (c) 2021, eFolder Inc dba Axcient.
-Permission is hereby granted, free of charge, to any person obtaining a copyof this software and associated documentation files (the "Software"), to dealin the Software without restriction, including without limitation the rightsto use, copy, modify, merge, publish, distribute, sublicense, and/or sellcopies of the Software, and to permit persons to whom the Software isfurnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included inall copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS ORIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THEAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHERLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS INTHE SOFTWARE.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 ```
 \[2\]: [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0), which is reproduced below:
-```
-                              Apache License                        Version 2.0, January 2004                     http://www.apache.org/licenses/
+```plaintext
+                              Apache License
+                        Version 2.0, January 2004
+                     http://www.apache.org/licenses/
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+
 1. Definitions.
-   "License" shall mean the terms and conditions for use, reproduction,   and distribution as defined by Sections 1 through 9 of this document.
-   "Licensor" shall mean the copyright owner or entity authorized by   the copyright owner that is granting the License.
-   "Legal Entity" shall mean the union of the acting entity and all   other entities that control, are controlled by, or are under common   control with that entity. For the purposes of this definition,   "control" means (i) the power, direct or indirect, to cause the   direction or management of such entity, whether by contract or   otherwise, or (ii) ownership of fifty percent (50%) or more of the   outstanding shares, or (iii) beneficial ownership of such entity.
-   "You" (or "Your") shall mean an individual or Legal Entity   exercising permissions granted by this License.
-   "Source" form shall mean the preferred form for making modifications,   including but not limited to software source code, documentation   source, and configuration files.
-   "Object" form shall mean any form resulting from mechanical   transformation or translation of a Source form, including but   not limited to compiled object code, generated documentation,   and conversions to other media types.
-   "Work" shall mean the work of authorship, whether in Source or   Object form, made available under the License, as indicated by a   copyright notice that is included in or attached to the work   (an example is provided in the Appendix below).
-   "Derivative Works" shall mean any work, whether in Source or Object   form, that is based on (or derived from) the Work and for which the   editorial revisions, annotations, elaborations, or other modifications   represent, as a whole, an original work of authorship. For the purposes   of this License, Derivative Works shall not include works that remain   separable from, or merely link (or bind by name) to the interfaces of,   the Work and Derivative Works thereof.
-   "Contribution" shall mean any work of authorship, including   the original version of the Work and any modifications or additions   to that Work or Derivative Works thereof, that is intentionally   submitted to Licensor for inclusion in the Work by the copyright owner   or by an individual or Legal Entity authorized to submit on behalf of   the copyright owner. For the purposes of this definition, "submitted"   means any form of electronic, verbal, or written communication sent   to the Licensor or its representatives, including but not limited to   communication on electronic mailing lists, source code control systems,   and issue tracking systems that are managed by, or on behalf of, the   Licensor for the purpose of discussing and improving the Work, but   excluding communication that is conspicuously marked or otherwise   designated in writing by the copyright owner as "Not a Contribution."
-   "Contributor" shall mean Licensor and any individual or Legal Entity   on behalf of whom a Contribution has been received by Licensor and   subsequently incorporated within the Work.
-2. Grant of Copyright License. Subject to the terms and conditions of   this License, each Contributor hereby grants to You a perpetual,   worldwide, non-exclusive, no-charge, royalty-free, irrevocable   copyright license to reproduce, prepare Derivative Works of,   publicly display, publicly perform, sublicense, and distribute the   Work and such Derivative Works in Source or Object form.
-3. Grant of Patent License. Subject to the terms and conditions of   this License, each Contributor hereby grants to You a perpetual,   worldwide, non-exclusive, no-charge, royalty-free, irrevocable   (except as stated in this section) patent license to make, have made,   use, offer to sell, sell, import, and otherwise transfer the Work,   where such license applies only to those patent claims licensable   by such Contributor that are necessarily infringed by their   Contribution(s) alone or by combination of their Contribution(s)   with the Work to which such Contribution(s) was submitted. If You   institute patent litigation against any entity (including a   cross-claim or counterclaim in a lawsuit) alleging that the Work   or a Contribution incorporated within the Work constitutes direct   or contributory patent infringement, then any patent licenses   granted to You under this License for that Work shall terminate   as of the date such litigation is filed.
-4. Redistribution. You may reproduce and distribute copies of the   Work or Derivative Works thereof in any medium, with or without   modifications, and in Source or Object form, provided that You   meet the following conditions:
-   (a) You must give any other recipients of the Work or       Derivative Works a copy of this License; and
-   (b) You must cause any modified files to carry prominent notices       stating that You changed the files; and
-   (c) You must retain, in the Source form of any Derivative Works       that You distribute, all copyright, patent, trademark, and       attribution notices from the Source form of the Work,       excluding those notices that do not pertain to any part of       the Derivative Works; and
-   (d) If the Work includes a "NOTICE" text file as part of its       distribution, then any Derivative Works that You distribute must       include a readable copy of the attribution notices contained       within such NOTICE file, excluding those notices that do not       pertain to any part of the Derivative Works, in at least one       of the following places: within a NOTICE text file distributed       as part of the Derivative Works; within the Source form or       documentation, if provided along with the Derivative Works; or,       within a display generated by the Derivative Works, if and       wherever such third-party notices normally appear. The contents       of the NOTICE file are for informational purposes only and       do not modify the License. You may add Your own attribution       notices within Derivative Works that You distribute, alongside       or as an addendum to the NOTICE text from the Work, provided       that such additional attribution notices cannot be construed       as modifying the License.
-   You may add Your own copyright statement to Your modifications and   may provide additional or different license terms and conditions   for use, reproduction, or distribution of Your modifications, or   for any such Derivative Works as a whole, provided Your use,   reproduction, and distribution of the Work otherwise complies with   the conditions stated in this License.
-5. Submission of Contributions. Unless You explicitly state otherwise,   any Contribution intentionally submitted for inclusion in the Work   by You to the Licensor shall be under the terms and conditions of   this License, without any additional terms or conditions.   Notwithstanding the above, nothing herein shall supersede or modify   the terms of any separate license agreement you may have executed   with Licensor regarding such Contributions.
-6. Trademarks. This License does not grant permission to use the trade   names, trademarks, service marks, or product names of the Licensor,   except as required for reasonable and customary use in describing the   origin of the Work and reproducing the content of the NOTICE file.
-7. Disclaimer of Warranty. Unless required by applicable law or   agreed to in writing, Licensor provides the Work (and each   Contributor provides its Contributions) on an "AS IS" BASIS,   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or   implied, including, without limitation, any warranties or conditions   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A   PARTICULAR PURPOSE. You are solely responsible for determining the   appropriateness of using or redistributing the Work and assume any   risks associated with Your exercise of permissions under this License.
-8. Limitation of Liability. In no event and under no legal theory,   whether in tort (including negligence), contract, or otherwise,   unless required by applicable law (such as deliberate and grossly   negligent acts) or agreed to in writing, shall any Contributor be   liable to You for damages, including any direct, indirect, special,   incidental, or consequential damages of any character arising as a   result of this License or out of the use or inability to use the   Work (including but not limited to damages for loss of goodwill,   work stoppage, computer failure or malfunction, or any and all   other commercial damages or losses), even if such Contributor   has been advised of the possibility of such damages.
-9. Accepting Warranty or Additional Liability. While redistributing   the Work or Derivative Works thereof, You may choose to offer,   and charge a fee for, acceptance of support, warranty, indemnity,   or other liability obligations and/or rights consistent with this   License. However, in accepting such obligations, You may act only   on Your own behalf and on Your sole responsibility, not on behalf   of any other Contributor, and only if You agree to indemnify,   defend, and hold each Contributor harmless for any liability   incurred by, or claims asserted against, such Contributor by reason   of your accepting any such warranty or additional liability.
+   "License" shall mean the terms and conditions for use, reproduction,
+   and distribution as defined by Sections 1 through 9 of this document.
+   "Licensor" shall mean the copyright owner or entity authorized by
+   the copyright owner that is granting the License.
+   "Legal Entity" shall mean the union of the acting entity and all
+   other entities that control, are controlled by, or are under common
+   control with that entity. For the purposes of this definition,
+   "control" means (i) the power, direct or indirect, to cause the
+   direction or management of such entity, whether by contract or
+   otherwise, or (ii) ownership of fifty percent (50%) or more of the
+   outstanding shares, or (iii) beneficial ownership of such entity.
+   "You" (or "Your") shall mean an individual or Legal Entity
+   exercising permissions granted by this License.
+   "Source" form shall mean the preferred form for making modifications,
+   including but not limited to software source code, documentation
+   source, and configuration files.
+   "Object" form shall mean any form resulting from mechanical
+   transformation or translation of a Source form, including but
+   not limited to compiled object code, generated documentation,
+   and conversions to other media types.
+   "Work" shall mean the work of authorship, whether in Source or
+   Object form, made available under the License, as indicated by a
+   copyright notice that is included in or attached to the work
+   (an example is provided in the Appendix below).
+   "Derivative Works" shall mean any work, whether in Source or Object
+   form, that is based on (or derived from) the Work and for which the
+   editorial revisions, annotations, elaborations, or other modifications
+   represent, as a whole, an original work of authorship. For the purposes
+   of this License, Derivative Works shall not include works that remain
+   separable from, or merely link (or bind by name) to the interfaces of,
+   the Work and Derivative Works thereof.
+   "Contribution" shall mean any work of authorship, including
+   the original version of the Work and any modifications or additions
+   to that Work or Derivative Works thereof, that is intentionally
+   submitted to Licensor for inclusion in the Work by the copyright owner
+   or by an individual or Legal Entity authorized to submit on behalf of
+   the copyright owner. For the purposes of this definition, "submitted"
+   means any form of electronic, verbal, or written communication sent
+   to the Licensor or its representatives, including but not limited to
+   communication on electronic mailing lists, source code control systems,
+   and issue tracking systems that are managed by, or on behalf of, the
+   Licensor for the purpose of discussing and improving the Work, but
+   excluding communication that is conspicuously marked or otherwise
+   designated in writing by the copyright owner as "Not a Contribution."
+   "Contributor" shall mean Licensor and any individual or Legal Entity
+   on behalf of whom a Contribution has been received by Licensor and
+   subsequently incorporated within the Work.
+
+
+2. Grant of Copyright License. Subject to the terms and conditions of
+   this License, each Contributor hereby grants to You a perpetual,
+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+   copyright license to reproduce, prepare Derivative Works of,
+   publicly display, publicly perform, sublicense, and distribute the
+   Work and such Derivative Works in Source or Object form.
+
+
+3. Grant of Patent License. Subject to the terms and conditions of
+   this License, each Contributor hereby grants to You a perpetual,
+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+   (except as stated in this section) patent license to make, have made,
+   use, offer to sell, sell, import, and otherwise transfer the Work,
+   where such license applies only to those patent claims licensable
+   by such Contributor that are necessarily infringed by their
+   Contribution(s) alone or by combination of their Contribution(s)
+   with the Work to which such Contribution(s) was submitted. If You
+   institute patent litigation against any entity (including a
+   cross-claim or counterclaim in a lawsuit) alleging that the Work
+   or a Contribution incorporated within the Work constitutes direct
+   or contributory patent infringement, then any patent licenses
+   granted to You under this License for that Work shall terminate
+   as of the date such litigation is filed.
+
+
+4. Redistribution. You may reproduce and distribute copies of the
+   Work or Derivative Works thereof in any medium, with or without
+   modifications, and in Source or Object form, provided that You
+   meet the following conditions:
+   (a) You must give any other recipients of the Work or
+       Derivative Works a copy of this License; and
+   (b) You must cause any modified files to carry prominent notices
+       stating that You changed the files; and
+   (c) You must retain, in the Source form of any Derivative Works
+       that You distribute, all copyright, patent, trademark, and
+       attribution notices from the Source form of the Work,
+       excluding those notices that do not pertain to any part of
+       the Derivative Works; and
+   (d) If the Work includes a "NOTICE" text file as part of its
+       distribution, then any Derivative Works that You distribute must
+       include a readable copy of the attribution notices contained
+       within such NOTICE file, excluding those notices that do not
+       pertain to any part of the Derivative Works, in at least one
+       of the following places: within a NOTICE text file distributed
+       as part of the Derivative Works; within the Source form or
+       documentation, if provided along with the Derivative Works; or,
+       within a display generated by the Derivative Works, if and
+       wherever such third-party notices normally appear. The contents
+       of the NOTICE file are for informational purposes only and
+       do not modify the License. You may add Your own attribution
+       notices within Derivative Works that You distribute, alongside
+       or as an addendum to the NOTICE text from the Work, provided
+       that such additional attribution notices cannot be construed
+       as modifying the License.
+   You may add Your own copyright statement to Your modifications and
+   may provide additional or different license terms and conditions
+   for use, reproduction, or distribution of Your modifications, or
+   for any such Derivative Works as a whole, provided Your use,
+   reproduction, and distribution of the Work otherwise complies with
+   the conditions stated in this License.
+
+
+5. Submission of Contributions. Unless You explicitly state otherwise,
+   any Contribution intentionally submitted for inclusion in the Work
+   by You to the Licensor shall be under the terms and conditions of
+   this License, without any additional terms or conditions.
+   Notwithstanding the above, nothing herein shall supersede or modify
+   the terms of any separate license agreement you may have executed
+   with Licensor regarding such Contributions.
+
+
+6. Trademarks. This License does not grant permission to use the trade
+   names, trademarks, service marks, or product names of the Licensor,
+   except as required for reasonable and customary use in describing the
+   origin of the Work and reproducing the content of the NOTICE file.
+
+
+7. Disclaimer of Warranty. Unless required by applicable law or
+   agreed to in writing, Licensor provides the Work (and each
+   Contributor provides its Contributions) on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+   implied, including, without limitation, any warranties or conditions
+   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+   PARTICULAR PURPOSE. You are solely responsible for determining the
+   appropriateness of using or redistributing the Work and assume any
+   risks associated with Your exercise of permissions under this License.
+
+
+8. Limitation of Liability. In no event and under no legal theory,
+   whether in tort (including negligence), contract, or otherwise,
+   unless required by applicable law (such as deliberate and grossly
+   negligent acts) or agreed to in writing, shall any Contributor be
+   liable to You for damages, including any direct, indirect, special,
+   incidental, or consequential damages of any character arising as a
+   result of this License or out of the use or inability to use the
+   Work (including but not limited to damages for loss of goodwill,
+   work stoppage, computer failure or malfunction, or any and all
+   other commercial damages or losses), even if such Contributor
+   has been advised of the possibility of such damages.
+
+
+9. Accepting Warranty or Additional Liability. While redistributing
+   the Work or Derivative Works thereof, You may choose to offer,
+   and charge a fee for, acceptance of support, warranty, indemnity,
+   or other liability obligations and/or rights consistent with this
+   License. However, in accepting such obligations, You may act only
+   on Your own behalf and on Your sole responsibility, not on behalf
+   of any other Contributor, and only if You agree to indemnify,
+   defend, and hold each Contributor harmless for any liability
+   incurred by, or claims asserted against, such Contributor by reason
+   of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-   To apply the Apache License to your work, attach the following   boilerplate notice, with the fields enclosed by brackets "\[\]"   replaced with your own identifying information. (Don't include   the brackets!)  The text should be enclosed in the appropriate   comment syntax for the file format. We also recommend that a   file or class name and description of purpose be included on the   same "printed page" as the copyright notice for easier   identification within third-party archives.
+   To apply the Apache License to your work, attach the following
+   boilerplate notice, with the fields enclosed by brackets "\[\]"
+   replaced with your own identifying information. (Don't include
+   the brackets!)  The text should be enclosed in the appropriate
+   comment syntax for the file format. We also recommend that a
+   file or class name and description of purpose be included on the
+   same "printed page" as the copyright notice for easier
+   identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
-Licensed under the Apache License, Version 2.0 (the "License");you may not use this file except in compliance with the License.You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
   http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, softwaredistributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions andlimitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
 * ### Apache License 2.0
 #### Used by:
 
   * [ryu ↗](https://github.com/dtolnay/ryu)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1731,12 +2192,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "\[\]"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "\[\]"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1745,8 +2213,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
   * [serde\_urlencoded ↗](https://github.com/nox/serde%5Furlencoded)
   * [utf-8 ↗](https://github.com/SimonSapin/rust-utf8)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1779,8 +2249,10 @@ END OF TERMS AND CONDITIONS
 #### Used by:
 
   * [tinyvec ↗](https://github.com/Lokathor/tinyvec)
-  ```
-                           Apache License                   Version 2.0, January 2004                http://www.apache.org/licenses/
+  ```plaintext
+                           Apache License
+                     Version 2.0, January 2004
+                  http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1810,12 +2282,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "\[\]"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "\[\]"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1823,8 +2302,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [tokio-rustls ↗](https://github.com/tokio-rs/tls)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1857,7 +2338,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2017 quininer kel
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1865,8 +2346,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [typenum ↗](https://github.com/paholg/typenum)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1899,7 +2382,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2014 Paho Lurie-Gregg
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1909,14 +2392,16 @@ Unless required by applicable law or agreed to in writing, software distributed 
   * [webbrowser ↗](https://github.com/amodm/webbrowser-rs)
 Copyright (c) 2015 Amod Malviya
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ---
-```
-                          Apache License                    Version 2.0, January 2004                 http://www.apache.org/licenses/
+```plaintext
+                          Apache License
+                    Version 2.0, January 2004
+                 http://www.apache.org/licenses/
 ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1949,8 +2434,10 @@ END OF TERMS AND CONDITIONS
 #### Used by:
 
   * [widestring ↗](https://github.com/starkat99/widestring-rs.git)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1983,7 +2470,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright \[yyyy\] \[name of copyright owner\]
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -1991,8 +2478,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #### Used by:
 
   * [windows-service ↗](https://github.com/mullvad/windows-service-rs)
-  ```
-                        Apache License                Version 2.0, January 2004             http://www.apache.org/licenses/
+  ```plaintext
+                        Apache License
+                  Version 2.0, January 2004
+               http://www.apache.org/licenses/
   ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -2025,7 +2514,7 @@ APPENDIX: How to apply the Apache License to your work.
 To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "\[\]" replaced with your own identifying information. (Don't include the brackets!) The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
 Copyright 2018 Amagicom AB
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -2038,8 +2527,10 @@ This software is licensed under either of
   * Apache License, Version 2.0 ([http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0))
   * MIT license ([http://opensource.org/licenses/MIT ↗](http://opensource.org/licenses/MIT))
 at your option.
-```
-                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/
+```plaintext
+                             Apache License
+                       Version 2.0, January 2004
+                    http://www.apache.org/licenses/
 ```
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -2069,12 +2560,19 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
 APPENDIX: How to apply the Apache License to your work.
-```
-  To apply the Apache License to your work, attach the following  boilerplate notice, with the fields enclosed by brackets "{}"  replaced with your own identifying information. (Don't include  the brackets!)  The text should be enclosed in the appropriate  comment syntax for the file format. We also recommend that a  file or class name and description of purpose be included on the  same "printed page" as the copyright notice for easier  identification within third-party archives.
+```plaintext
+  To apply the Apache License to your work, attach the following
+  boilerplate notice, with the fields enclosed by brackets "{}"
+  replaced with your own identifying information. (Don't include
+  the brackets!)  The text should be enclosed in the appropriate
+  comment syntax for the file format. We also recommend that a
+  file or class name and description of purpose be included on the
+  same "printed page" as the copyright notice for easier
+  identification within third-party archives.
 ```
 Copyright 2018 Jeroen C. van Gelderen. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-```
+```plaintext
    http://www.apache.org/licenses/LICENSE-2.0
 ```
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -2133,8 +2631,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   * [boringtun ↗](https://github.com/cloudflare/boringtun)
 Copyright (c) 2019 Cloudflare, Inc. All rights reserved.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-```
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+```plaintext
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 ```
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * ### BSD 3-Clause "New" or "Revised" License
@@ -2711,9 +3211,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 1.4\. "Covered Software" means Source Code Form to which the initial Contributor has attached the notice in Exhibit A, the Executable Form of such Source Code Form, and Modifications of such Source Code Form, in each case including portions thereof.
 
 1.5\. "Incompatible With Secondary Licenses" means
-```
-(a) that the initial Contributor has attached the notice described    in Exhibit B to the Covered Software; or
-(b) that the Covered Software was made available under the terms of    version 1.1 or earlier of the License, but not also under the    terms of a Secondary License.
+```plaintext
+(a) that the initial Contributor has attached the notice described
+    in Exhibit B to the Covered Software; or
+(b) that the Covered Software was made available under the terms of
+    version 1.1 or earlier of the License, but not also under the
+    terms of a Secondary License.
 ```
 
 1.6\. "Executable Form" means any form of the work other than Source Code Form.
@@ -2725,9 +3228,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 1.9\. "Licensable" means having the right to grant, to the maximum extent possible, whether at the time of the initial grant or subsequently, any and all of the rights conveyed by this License.
 
 1.10\. "Modifications" means any of the following:
-```
-(a) any file in Source Code Form that results from an addition to,    deletion from, or modification of the contents of Covered    Software; or
-(b) any new file in Source Code Form that contains any Covered    Software.
+```plaintext
+(a) any file in Source Code Form that results from an addition to,
+    deletion from, or modification of the contents of Covered
+    Software; or
+(b) any new file in Source Code Form that contains any Covered
+    Software.
 ```
 
 1.11\. "Patent Claims" of a Contributor means any patent claim(s), including without limitation, method, process, and apparatus claims, in any patent Licensable by such Contributor that would be infringed, but for the grant of the License, by the making, using, selling, offering for sale, having made, import, or transfer of either its Contributions or its Contributor Version.
@@ -2855,7 +3361,7 @@ Mozilla Public License Version 2.0
 1.4\. "Covered Software" means Source Code Form to which the initial Contributor has attached the notice in Exhibit A, the Executable Form of such Source Code Form, and Modifications of such Source Code Form, in each case including portions thereof.
 
 1.5\. "Incompatible With Secondary Licenses" means
-  ```
+  ```plaintext
      (a) that the initial Contributor has attached the notice described in Exhibit B to the Covered Software; or
      (b) that the Covered Software was made available under the terms of version 1.1 or earlier of the License, but not also under the terms of a Secondary License.
   ```
@@ -2869,7 +3375,7 @@ Mozilla Public License Version 2.0
 1.9\. "Licensable" means having the right to grant, to the maximum extent possible, whether at the time of the initial grant or subsequently, any and all of the rights conveyed by this License.
 
 1.10\. "Modifications" means any of the following:
-  ```
+  ```plaintext
      (a) any file in Source Code Form that results from an addition to, deletion from, or modification of the contents of Covered Software; or
      (b) any new file in Source Code Form that contains any Covered Software.
   ```
@@ -2884,7 +3390,7 @@ Mozilla Public License Version 2.0
   2. License Grants and Conditions
 
 2.1\. Grants Each Contributor hereby grants You a world-wide, royalty-free, non-exclusive license:
-  ```
+  ```plaintext
      (a) under intellectual property rights (other than patent or trademark) Licensable by such Contributor to use, reproduce, make available, modify, display, perform, distribute, and otherwise exploit its Contributions, either on an unmodified basis, with Modifications, or as part of a Larger Work; and
      (b) under Patent Claims of such Contributor to make, use, sell, offer for sale, have made, import, and otherwise transfer either its Contributions or its Contributor Version.
   ```
@@ -2892,7 +3398,7 @@ Mozilla Public License Version 2.0
 2.2\. Effective Date The licenses granted in Section 2.1 with respect to any Contribution become effective for each Contribution on the date the Contributor first distributes such Contribution.
 
 2.3\. Limitations on Grant Scope The licenses granted in this Section 2 are the only rights granted under this License. No additional rights or licenses will be implied from the distribution or licensing of Covered Software under this License. Notwithstanding Section 2.1(b) above, no patent license is granted by a Contributor:
-  ```
+  ```plaintext
      (a) for any code that a Contributor has removed from Covered Software; or
      (b) for infringements caused by: (i) Your and any other third party's modifications of Covered Software, or (ii) the combination of its Contributions with other software (except as part of its Contributor Version); or
      (c) under Patent Claims infringed by Covered Software in the absence of its Contributions.
@@ -2911,7 +3417,7 @@ Mozilla Public License Version 2.0
 3.1\. Distribution of Source Form All distribution of Covered Software in Source Code Form, including any Modifications that You create or to which You contribute, must be under the terms of this License. You must inform recipients that the Source Code Form of the Covered Software is governed by the terms of this License, and how they can obtain a copy of this License. You may not attempt to alter or restrict the recipients' rights in the Source Code Form.
 
 3.2\. Distribution of Executable Form If You distribute Covered Software in Executable Form then:
-  ```
+  ```plaintext
      (a) such Covered Software must also be made available in Source Code Form, as described in Section 3.1, and You must inform recipients of the Executable Form how they can obtain a copy of such Source Code Form by reasonable means in a timely manner, at a charge no more than the cost of distribution to the recipient; and
      (b) You may distribute such Executable Form under the terms of this License, or sublicense it under different terms, provided that the license for the Executable Form does not attempt to limit or alter the recipients' rights in the Source Code Form under this License.
   ```
@@ -2943,13 +3449,13 @@ Mozilla Public License Version 2.0
 
 10.4\. Distributing Source Code Form that is Incompatible With Secondary Licenses If You choose to distribute Source Code Form that is Incompatible With Secondary Licenses under the terms of this version of the License, the notice described in Exhibit B of this License must be attached.
 Exhibit A - Source Code Form License Notice
-```
+```plaintext
  This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 ```
 If it is not possible or desirable to put the notice in a particular file, then You may include the notice in a location (such as a LICENSE file in a relevant directory) where a recipient would be likely to look for such a notice.
 You may add additional accurate notices of copyright ownership.
 Exhibit B - "Incompatible With Secondary Licenses" Notice
-```
+```plaintext
  This Source Code Form is "Incompatible With Secondary Licenses", as defined by the Mozilla Public License, v. 2.0.
 ```
 * ### OpenSSL License

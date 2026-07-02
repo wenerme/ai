@@ -47,14 +47,13 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-7812)
-* [ Windows ](#tab-panel-7813)
-* [ Linux ](#tab-panel-7814)
+* [ macOS ](#tab-panel-7830)
+* [ Windows ](#tab-panel-7831)
+* [ Linux ](#tab-panel-7832)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
-Terminal window
-```
+```sh
 warp-diag
 ```
 
@@ -62,8 +61,7 @@ This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
 
 1. Open a Command Prompt or PowerShell window.
 2. Run the `warp-diag` tool:
-Terminal window
-```
+```bash
 C:\Users\JohnDoe>warp-diag
 ```
 
@@ -71,8 +69,7 @@ This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
-Terminal window
-```
+```sh
 warp-diag
 ```
 
@@ -296,8 +293,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-7810)
-* [ Android/ChromeOS ](#tab-panel-7811)
+* [ iOS ](#tab-panel-7828)
+* [ Android/ChromeOS ](#tab-panel-7829)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

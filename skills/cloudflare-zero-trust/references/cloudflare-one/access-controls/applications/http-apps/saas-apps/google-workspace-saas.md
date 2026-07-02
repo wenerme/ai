@@ -47,8 +47,10 @@ When you put your Google Workspace behind Access, users will not be able to log 
 
 1. Copy and then paste your **Public key** into a text editor.
 2. Wrap the certificate in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`. For example,
-```
------BEGIN CERTIFICATE-----<PUBLIC_KEY>-----END CERTIFICATE-----
+```txt
+-----BEGIN CERTIFICATE-----
+<PUBLIC_KEY>
+-----END CERTIFICATE-----
 ```
 3. Set the file extension as `.crt` and save.
 

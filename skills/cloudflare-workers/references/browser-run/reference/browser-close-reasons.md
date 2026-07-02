@@ -36,18 +36,40 @@ Browser Run sessions are billed based on [usage](https://developers.cloudflare.c
 
 Sessions can close at any time due to infrastructure events, network issues, or browser crashes. Design your code to handle these cases by wrapping browser operations in a `try...catch` block and reconnecting when needed.
 
-JavaScript
+**JavaScript**
 
-```
-async function runBrowser(env) {  let browser;  try {    browser = await puppeteer.launch(env.MYBROWSER);    const page = await browser.newPage();    await page.goto("https://example.com");    // Your browser automation logic  } catch (error) {    console.error("Browser session ended unexpectedly:", error.message);    // Retry or return an error response  } finally {    await browser?.close();  }}
+```js
+async function runBrowser(env) {
+  let browser;
+  try {
+    browser = await puppeteer.launch(env.MYBROWSER);
+    const page = await browser.newPage();
+    await page.goto("https://example.com");
+    // Your browser automation logic
+  } catch (error) {
+    console.error("Browser session ended unexpectedly:", error.message);
+    // Retry or return an error response
+  } finally {
+    await browser?.close();
+  }
+}
 ```
 
 For long-running or critical workflows, consider adding retry logic:
 
-JavaScript
+**JavaScript**
 
-```
-async function runWithRetry(env, maxRetries = 3) {  for (let attempt = 1; attempt <= maxRetries; attempt++) {    try {      return await runBrowser(env);    } catch (error) {      if (attempt === maxRetries) throw error;      console.log(`Attempt ${attempt} failed, retrying...`);    }  }}
+```js
+async function runWithRetry(env, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await runBrowser(env);
+    } catch (error) {
+      if (attempt === maxRetries) throw error;
+      console.log(`Attempt ${attempt} failed, retrying...`);
+    }
+  }
+}
 ```
 
 ```json

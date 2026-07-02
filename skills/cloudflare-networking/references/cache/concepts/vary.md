@@ -38,16 +38,18 @@ Cloudflare does not vary every cached response just because Vary is configured i
 
 For example, assume the origin returns this response:
 
-```
-Vary: Accept-LanguageCache-Control: public, max-age=3600
+```txt
+Vary: Accept-Language
+Cache-Control: public, max-age=3600
 ```
 
 This tells Cloudflare that the value of the `Accept-Language` request header should be part of the cache key.
 
 With `accept-language` configured to `normalize`, these two requests can use the same cached version:
 
-```
-Accept-Language: en-US, fr;q=0.8Accept-Language: fr;q=0.8, en-GB
+```txt
+Accept-Language: en-US, fr;q=0.8
+Accept-Language: fr;q=0.8, en-GB
 ```
 
 Both request headers normalize to the same language preference order, `en,fr`. A request with a different normalized value, such as `Accept-Language: fr, en;q=0.8`, creates or selects a different cached version of the same URL.
@@ -72,8 +74,9 @@ Each configured header uses one of three actions:
 
 For example, these two `Accept` headers can normalize to the same value:
 
-```
-Accept: text/html, application/json;q=0.9Accept: application/json;q=0.9, text/html
+```txt
+Accept: text/html, application/json;q=0.9
+Accept: application/json;q=0.9, text/html
 ```
 
 ### Passthrough
@@ -82,8 +85,9 @@ Accept: text/html, application/json;q=0.9Accept: application/json;q=0.9, text/ht
 
 For example, under `passthrough`, these two requests select different cached versions:
 
-```
-Accept: text/html, application/jsonAccept: application/json, text/html
+```txt
+Accept: text/html, application/json
+Accept: application/json, text/html
 ```
 
 Use `passthrough` only when the exact header value matters to your origin and should matter to the cache.
@@ -94,7 +98,7 @@ Use `passthrough` only when the exact header value matters to your origin and sh
 
 For example, if your configuration sets `user-agent` to `bypass`, a response with this header is not cached:
 
-```
+```txt
 Vary: User-Agent
 ```
 
@@ -112,8 +116,9 @@ For `Accept`, `Accept-Language`, and `Accept-Encoding` with [Respect Strong ETag
 
 For example, if `accept-language` normalizes these two requests to `en,fr`, Cloudflare forwards `Accept-Language: en,fr` to the origin on a cache miss or revalidation:
 
-```
-Accept-Language: en-US, fr;q=0.8Accept-Language: fr;q=0.8, en-GB
+```txt
+Accept-Language: en-US, fr;q=0.8
+Accept-Language: fr;q=0.8, en-GB
 ```
 
 Forwarding the normalized value prevents Cloudflare from storing a response generated for one raw header value under a broader normalized value that another request could later reuse incorrectly.
@@ -189,8 +194,9 @@ Values are not reordered, lowercased, deduplicated, or otherwise altered, becaus
 
 For example, these two header field lines:
 
-```
-X-Custom-Header: Value2X-Custom-Header: Value1
+```txt
+X-Custom-Header: Value2
+X-Custom-Header: Value1
 ```
 
 When selecting a cached version, Cloudflare combines these values as `Value2,Value1`. The header forwarded to the origin is not rewritten.

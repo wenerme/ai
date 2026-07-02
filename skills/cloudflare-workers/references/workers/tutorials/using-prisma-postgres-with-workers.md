@@ -34,26 +34,26 @@ To follow this guide, ensure you have the following:
 
 Begin by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line:
 
-Terminal window
-
-```
+```sh
 npm create cloudflare@latest prisma-postgres-worker -- --type=hello-world --ts=true --git=true --deploy=false
 ```
 
 Then navigate into your project:
 
-Terminal window
-
-```
+```sh
 cd ./prisma-postgres-worker
 ```
 
 Your initial `src/index.ts` file currently contains a simple request handler:
 
-src/index.ts
+**src/index.ts**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    return new Response("Hello World!");  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    return new Response("Hello World!");
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## 2\. Setup Prisma in your project
@@ -156,9 +156,7 @@ Note that Cloudflare Workers do not support `.env` files. You will use a file ca
 
 Rename the `.env` file in the root of your application to `.dev.vars` file:
 
-Terminal window
-
-```
+```sh
 mv .env .dev.vars
 ```
 
@@ -166,27 +164,43 @@ mv .env .dev.vars
 
 Open the `schema.prisma` file in the `prisma` folder and add the following `User` model to your database:
 
-prisma/schema.prisma
+**prisma/schema.prisma**
 
-```
-generator client {  provider = "prisma-client-js"}
-datasource db {  provider = "postgresql"  url      = env("DATABASE_URL")}
-model User {  id  Int @id @default(autoincrement())  email String  name   String}
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id  Int @id @default(autoincrement())
+  email String
+  name   String
+}
 ```
 
 Next, add the following helper scripts to the `scripts` section of your `package.json`:
 
-package.json
+**package.json**
 
-```
-"scripts": {  "migrate": "dotenv -e .dev.vars -- npx prisma migrate dev",  "generate": "dotenv -e .dev.vars -- npx prisma generate --no-engine",  "studio": "dotenv -e .dev.vars -- npx prisma studio",  // Additional worker scripts...}
+```json
+"scripts": {
+  "migrate": "dotenv -e .dev.vars -- npx prisma migrate dev",
+  "generate": "dotenv -e .dev.vars -- npx prisma generate --no-engine",
+  "studio": "dotenv -e .dev.vars -- npx prisma studio",
+  // Additional worker scripts...
+}
 ```
 
 Run the migration script to apply changes to the database:
 
-Terminal window
-
-```
+```sh
 npm run migrate
 ```
 
@@ -198,31 +212,63 @@ After these steps are complete, Prisma ORM is fully set up and connected to your
 
 Modify the `src/index.ts` file and replace its contents with the following code:
 
-src/index.ts
+**src/index.ts**
 
-```
-import { PrismaClient } from "@prisma/client/edge";import { withAccelerate } from "@prisma/extension-accelerate";
-export interface Env {  DATABASE_URL: string;}
-export default {  async fetch(request, env, ctx): Promise<Response> {    const path = new URL(request.url).pathname;    if (path === "/favicon.ico")      return new Response("Resource not found", {        status: 404,        headers: {          "Content-Type": "text/plain",        },      });
-    const prisma = new PrismaClient({      datasourceUrl: env.DATABASE_URL,    }).$extends(withAccelerate());
-    const user = await prisma.user.create({      data: {        email: `Jon${Math.ceil(Math.random() * 1000)}@gmail.com`,        name: "Jon Doe",      },    });
+```ts
+import { PrismaClient } from "@prisma/client/edge";
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+
+export interface Env {
+  DATABASE_URL: string;
+}
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const path = new URL(request.url).pathname;
+    if (path === "/favicon.ico")
+      return new Response("Resource not found", {
+        status: 404,
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      });
+
+
+    const prisma = new PrismaClient({
+      datasourceUrl: env.DATABASE_URL,
+    }).$extends(withAccelerate());
+
+
+    const user = await prisma.user.create({
+      data: {
+        email: `Jon${Math.ceil(Math.random() * 1000)}@gmail.com`,
+        name: "Jon Doe",
+      },
+    });
+
+
     const userCount = await prisma.user.count();
-    return new Response(`\Created new user: ${user.name} (${user.email}).Number of users in the database: ${userCount}.    `);  },} satisfies ExportedHandler<Env>;
+
+
+    return new Response(`\
+Created new user: ${user.name} (${user.email}).
+Number of users in the database: ${userCount}.
+    `);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Run the development server:
 
-Terminal window
-
-```
+```sh
 npm run dev
 ```
 
 Visit [https://localhost:8787 ↗](https://localhost:8787) to see your app display the following output:
 
-Terminal window
-
-```
+```sh
 Number of users in the database: 1
 ```
 
@@ -232,25 +278,19 @@ Every time you refresh the page, a new user is created. The number displayed wil
 
 When the application is deployed to Cloudflare, it needs access to the `DATABASE_URL` environment variable that is defined locally in `.dev.vars`. You can use the [npx wrangler secret put](https://developers.cloudflare.com/workers/configuration/secrets/#adding-secrets-to-your-project) command to upload the `DATABASE_URL` to the deployment environment:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put DATABASE_URL
 ```
 
 When prompted, paste the `DATABASE_URL` value (from `.dev.vars`). If you are logged in via the Wrangler CLI, you will see a prompt asking if you'd like to create a new Worker. Confirm by choosing "yes":
 
-Terminal window
-
-```
+```sh
 ✔ There doesn't seem to be a Worker called "prisma-postgres-worker". Do you want to create a new Worker with that name and add secrets to it? … yes
 ```
 
 Then execute the following command to deploy your project to Cloudflare Workers:
 
-Terminal window
-
-```
+```sh
 npm run deploy
 ```
 

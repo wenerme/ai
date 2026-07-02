@@ -32,19 +32,25 @@ A component which handles the sidebar and you can customize which sections you w
 
 ### Basic Usage
 
-```
+```html
 <rtk-sidebar></rtk-sidebar>
 ```
 
 ### With Properties
 
-```
-<rtk-sidebar></rtk-sidebar>
+```html
+<rtk-sidebar>
+</rtk-sidebar>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-sidebar");
-  el.enabledSections= [];  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-sidebar");
+
+
+  el.enabledSections= [];
+  el.meeting= meeting
+</script>
 ```
 
 ```json

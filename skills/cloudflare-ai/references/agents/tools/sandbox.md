@@ -30,51 +30,135 @@ Use Sandbox for agents that need to:
 
 Bind the Sandbox Durable Object to your Worker, then access a sandbox from your agent methods with `getSandbox()`.
 
-* [  JavaScript ](#tab-panel-6589)
-* [  TypeScript ](#tab-panel-6590)
+* [  JavaScript ](#tab-panel-6825)
+* [  TypeScript ](#tab-panel-6826)
 
-JavaScript
+**JavaScript**
 
-```
-import { Agent, callable } from "agents";import { getSandbox } from "@cloudflare/sandbox";
+```js
+import { Agent, callable } from "agents";
+import { getSandbox } from "@cloudflare/sandbox";
+
+
 export { Sandbox } from "@cloudflare/sandbox";
-export class CodeAgent extends Agent {  @callable()  async runPython(code) {    const sandbox = getSandbox(this.env.Sandbox, this.name);
-    await sandbox.writeFile("/workspace/script.py", code);    const result = await sandbox.exec("python3 /workspace/script.py");
+
+
+export class CodeAgent extends Agent {
+  @callable()
+  async runPython(code) {
+    const sandbox = getSandbox(this.env.Sandbox, this.name);
+
+
+    await sandbox.writeFile("/workspace/script.py", code);
+    const result = await sandbox.exec("python3 /workspace/script.py");
+
+
     this.setState({ lastOutput: result.stdout });
-    return {      success: result.success,      stdout: result.stdout,      stderr: result.stderr,      exitCode: result.exitCode,    };  }}
+
+
+    return {
+      success: result.success,
+      stdout: result.stdout,
+      stderr: result.stderr,
+      exitCode: result.exitCode,
+    };
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent, callable } from "agents";import { getSandbox } from "@cloudflare/sandbox";import type { Sandbox } from "@cloudflare/sandbox";
+```ts
+import { Agent, callable } from "agents";
+import { getSandbox } from "@cloudflare/sandbox";
+import type { Sandbox } from "@cloudflare/sandbox";
+
+
 export { Sandbox } from "@cloudflare/sandbox";
-type Env = {  Sandbox: DurableObjectNamespace<Sandbox>;};
-export class CodeAgent extends Agent<Env, { lastOutput?: string }> {  @callable()  async runPython(code: string) {    const sandbox = getSandbox(this.env.Sandbox, this.name);
-    await sandbox.writeFile("/workspace/script.py", code);    const result = await sandbox.exec("python3 /workspace/script.py");
+
+
+type Env = {
+  Sandbox: DurableObjectNamespace<Sandbox>;
+};
+
+
+export class CodeAgent extends Agent<Env, { lastOutput?: string }> {
+  @callable()
+  async runPython(code: string) {
+    const sandbox = getSandbox(this.env.Sandbox, this.name);
+
+
+    await sandbox.writeFile("/workspace/script.py", code);
+    const result = await sandbox.exec("python3 /workspace/script.py");
+
+
     this.setState({ lastOutput: result.stdout });
-    return {      success: result.success,      stdout: result.stdout,      stderr: result.stderr,      exitCode: result.exitCode,    };  }}
+
+
+    return {
+      success: result.success,
+      stdout: result.stdout,
+      stderr: result.stderr,
+      exitCode: result.exitCode,
+    };
+  }
+}
 ```
 
 ## Configuration
 
 Configure the Sandbox container, Durable Object binding, and migration in `wrangler.jsonc`.
 
-* [  wrangler.jsonc ](#tab-panel-6587)
-* [  wrangler.toml ](#tab-panel-6588)
+* [  wrangler.jsonc ](#tab-panel-6823)
+* [  wrangler.toml ](#tab-panel-6824)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "class_name": "Sandbox",
+      "image": "./Dockerfile",
+      "instance_type": "lite",
+      "max_instances": 1
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "Sandbox",
+        "class_name": "Sandbox"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["Sandbox"]
+    }
+  ]
+}
 ```
-{  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",      "instance_type": "lite",      "max_instances": 1    }  ],  "durable_objects": {    "bindings": [      {        "name": "Sandbox",        "class_name": "Sandbox"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["Sandbox"]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]class_name = "Sandbox"image = "./Dockerfile"instance_type = "lite"max_instances = 1
-[[durable_objects.bindings]]name = "Sandbox"class_name = "Sandbox"
-[[migrations]]tag = "v1"new_sqlite_classes = [ "Sandbox" ]
+```toml
+[[containers]]
+class_name = "Sandbox"
+image = "./Dockerfile"
+instance_type = "lite"
+max_instances = 1
+
+
+[[durable_objects.bindings]]
+name = "Sandbox"
+class_name = "Sandbox"
+
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "Sandbox" ]
 ```
 
 ## Sandbox and agent state

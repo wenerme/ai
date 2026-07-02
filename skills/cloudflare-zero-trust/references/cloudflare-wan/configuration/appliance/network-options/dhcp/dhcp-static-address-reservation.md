@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 If you configure your Cloudflare One Appliance (formerly Magic WAN Connector) to be a DHCP server, you can also assign IP addresses to specific devices on your network. To reserve IP addresses:
 
-* [ Dashboard ](#tab-panel-7840)
-* [ API ](#tab-panel-7841)
+* [ Dashboard ](#tab-panel-8093)
+* [ API ](#tab-panel-8094)
 
 1. Configure your Cloudflare One Appliance to be a [DHCP server](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
 2. Select **Add DHCP Reservation**.
@@ -37,10 +37,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Update Site LAN
+**Update Site LAN**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "lan": {        "static_addressing": {            "dhcp_server": {                "reservations": {                    "<HARDWARE_MAC_ADDRESS>": "<IP_ADDRESS>",                    "<HARDWARE_MAC_ADDRESS_2>": "<IP_ADDRESS>"                }            }        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "lan": {
+        "static_addressing": {
+            "dhcp_server": {
+                "reservations": {
+                    "<HARDWARE_MAC_ADDRESS>": "<IP_ADDRESS>",
+                    "<HARDWARE_MAC_ADDRESS_2>": "<IP_ADDRESS>"
+                }
+            }
+        }
+    }
+  }'
 ```
 
 ```json

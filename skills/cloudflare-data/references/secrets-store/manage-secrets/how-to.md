@@ -22,8 +22,8 @@ You must have a [Super Administrator or Secrets Store Admin role](https://develo
 
 ## Create a secret
 
-* [ Dashboard ](#tab-panel-10662)
-* [ API ](#tab-panel-10663)
+* [ Dashboard ](#tab-panel-10957)
+* [ API ](#tab-panel-10958)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -41,18 +41,39 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Secrets Store Write`
 
-Create a secret
+**Create a secret**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '[    {        "name": "<MY_SECRET_NAME>",        "value": "<SECRET_VALUE>",        "scopes": [            "workers"        ],        "comment": ""    },    {        "name": "<MY_SECRET_NAME_2>",        "value": "<SECRET_VALUE>",        "scopes": [            "workers"        ],        "comment": ""    }  ]'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '[
+    {
+        "name": "<MY_SECRET_NAME>",
+        "value": "<SECRET_VALUE>",
+        "scopes": [
+            "workers"
+        ],
+        "comment": ""
+    },
+    {
+        "name": "<MY_SECRET_NAME_2>",
+        "value": "<SECRET_VALUE>",
+        "scopes": [
+            "workers"
+        ],
+        "comment": ""
+    }
+  ]'
 ```
 
 ## Duplicate a secret
 
 Duplicate a secret to keep the same secret value but change name, scope, or comments.
 
-* [ Dashboard ](#tab-panel-10656)
-* [ API ](#tab-panel-10657)
+* [ Dashboard ](#tab-panel-10951)
+* [ API ](#tab-panel-10952)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -65,10 +86,15 @@ Note
 
 A secret `name` cannot contain spaces. Refer to [Secrets Store API](https://developers.cloudflare.com/api/resources/secrets%5Fstore/) for the full API documentation.
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID/duplicate \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{    "name":"<NEW_DUPLICATE_NAME>",    "scopes":["workers"],    "comment":""}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID/duplicate \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{
+    "name":"<NEW_DUPLICATE_NAME>",
+    "scopes":["workers"],
+    "comment":""
+}'
 ```
 
 ## Edit a secret
@@ -81,8 +107,8 @@ This action will cause the replacement in all services using the secret.
 
 You can also edit the secret **Permission scope** and **Comment**.
 
-* [ Dashboard ](#tab-panel-10658)
-* [ API ](#tab-panel-10659)
+* [ Dashboard ](#tab-panel-10953)
+* [ API ](#tab-panel-10954)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -92,10 +118,16 @@ You can also edit the secret **Permission scope** and **Comment**.
 
 Refer to [Secrets Store API](https://developers.cloudflare.com/api/resources/secrets%5Fstore/) for the full API documentation.
 
-Terminal window
-
-```
-curl --request PATCH \https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{    "comment":"<NEW_COMMENT>",    "value":"<NEW_SECRET_VALUE>",    "scopes":["workers"]}'
+```bash
+curl --request PATCH \
+https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{
+    "comment":"<NEW_COMMENT>",
+    "value":"<NEW_SECRET_VALUE>",
+    "scopes":["workers"]
+}'
 ```
 
 ## Delete a secret
@@ -104,8 +136,8 @@ Warning
 
 Before deleting a secret, make sure it is not deployed in your [Workers applications ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
 
-* [ Dashboard ](#tab-panel-10660)
-* [ API ](#tab-panel-10661)
+* [ Dashboard ](#tab-panel-10955)
+* [ API ](#tab-panel-10956)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -120,10 +152,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Secrets Store Write`
 
-Delete a secret
+**Delete a secret**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID" \  --request DELETE \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID" \
+  --request DELETE \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ```json

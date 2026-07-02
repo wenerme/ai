@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 The format of the Content Security Policy (CSP) report-only HTTP header added by Cloudflare is the following:
 
-```
+```txt
 content-security-policy-report-only: script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?<QUERY_STRING>
 ```
 
 If you [configured the reporting endpoint](https://developers.cloudflare.com/client-side-security/reference/settings/#reporting-endpoint) to use the same hostname, the HTTP header will have the following format:
 
-```
+```txt
 content-security-policy-report-only: script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri <YOUR_HOSTNAME>/cdn-cgi/script_monitor/report?<QUERY_STRING>
 ```
 

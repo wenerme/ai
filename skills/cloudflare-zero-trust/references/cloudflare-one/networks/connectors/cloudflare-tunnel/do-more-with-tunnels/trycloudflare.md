@@ -24,9 +24,7 @@ Developers can use the TryCloudflare tool to experiment with Cloudflare Tunnel w
 2. Launch a web server that is available over localhost to `cloudflared`.
 3. Run the following terminal command to start a free tunnel.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel --url http://localhost:8080
 ```
 

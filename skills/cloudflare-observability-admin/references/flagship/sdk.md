@@ -81,17 +81,13 @@ bun add @cloudflare/flagship @openfeature/web-sdk
 
 For Python:
 
-Terminal window
-
-```
+```sh
 uv add cloudflare-flagship
 ```
 
 For Go:
 
-Terminal window
-
-```
+```sh
 go get github.com/cloudflare/flagship/sdks/go
 ```
 

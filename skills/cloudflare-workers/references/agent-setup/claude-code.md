@@ -28,25 +28,24 @@ TerminalStandaloneCloudExtension
 
 1. **Install Claude Code**
 Install the Claude Code CLI. For Windows, Homebrew, WinGet, or npm, see the [Claude Code setup guide ↗](https://docs.anthropic.com/en/docs/claude-code/setup).
-Terminal window
-```
+```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 2. **Launch Claude Code in your project**
 Start Claude Code from the root of your project, where `wrangler.jsonc` lives (if it already exists).
-Terminal window
-```
+```bash
 claude
 ```
 3. **Install the Cloudflare plugin**
 In Claude Code, run these two slash commands. This installs Cloudflare Skills and registers the Cloudflare MCP servers.
-```
-/plugin marketplace add cloudflare/skills/plugin install cloudflare@cloudflare
+```txt
+/plugin marketplace add cloudflare/skills
+/plugin install cloudflare@cloudflare
 ```
 4. **Try a prompt**
 For example:
-```
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Cloudflare platform access

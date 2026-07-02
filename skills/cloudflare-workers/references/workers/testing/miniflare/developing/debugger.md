@@ -26,8 +26,24 @@ The easiest way to debug a Worker in VSCode is to create a new configuration.
 
 Open the **Run and Debug** menu in the VSCode activity bar and create a `.vscode/launch.json` file that contains the following:
 
-```
----filename: .vscode/launch.json---{  "configurations": [    {      "name": "Miniflare",      "type": "node",      "request": "attach",      "port": 9229,      "cwd": "/",      "resolveSourceMapLocations": null,      "attachExistingChildren": false,      "autoAttachChildProcesses": false,    }  ]}
+```json
+---
+filename: .vscode/launch.json
+---
+{
+  "configurations": [
+    {
+      "name": "Miniflare",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "cwd": "/",
+      "resolveSourceMapLocations": null,
+      "attachExistingChildren": false,
+      "autoAttachChildProcesses": false,
+    }
+  ]
+}
 ```
 
 From the **Run and Debug** menu in the activity bar, select the `Miniflare`configuration, and click the green play button to start debugging.

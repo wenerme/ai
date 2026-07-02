@@ -22,9 +22,13 @@ This component does not accept any props. It reads the livestream URL from the m
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLiveStreamPlayer } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLiveStreamPlayer />;}
+
+
+function MyComponent() {
+  return <RtkLiveStreamPlayer />;
+}
 ```
 
 ```json

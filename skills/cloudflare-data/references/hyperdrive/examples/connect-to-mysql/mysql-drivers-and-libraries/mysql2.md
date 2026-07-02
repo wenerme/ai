@@ -40,32 +40,83 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8817)
-* [  wrangler.toml ](#tab-panel-8818)
+* [  wrangler.jsonc ](#tab-panel-9068)
+* [  wrangler.toml ](#tab-panel-9069)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
 
-TypeScript
+**TypeScript**
 
-```
-// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
-export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
-      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
-    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
-      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
+```ts
+// mysql2 v3.13.0 or later is required
+import { createConnection } from "mysql2/promise";
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    // Create a new connection on each request. Hyperdrive maintains the underlying
+    // database connection pool, so creating a new connection is fast.
+    const connection = await createConnection({
+      host: env.HYPERDRIVE.host,
+      user: env.HYPERDRIVE.user,
+      password: env.HYPERDRIVE.password,
+      database: env.HYPERDRIVE.database,
+      port: env.HYPERDRIVE.port,
+
+
+      // Required to enable mysql2 compatibility for Workers
+      disableEval: true,
+    });
+
+
+    try {
+      // Sample query
+      const [results, fields] = await connection.query("SHOW tables;");
+
+
+      // Return result rows as JSON
+      return Response.json({ results, fields });
+    } catch (e) {
+      console.error(e);
+      return Response.json(
+        { error: e instanceof Error ? e.message : e },
+        { status: 500 },
+      );
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Note

@@ -26,19 +26,34 @@ The `ssh.enabled` property only controls whether you can SSH into a Container th
 
 To SSH into a Container with Wrangler, add an `ssh-ed25519` public key to `authorized_keys` in your Container configuration. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7936)
-* [  wrangler.toml ](#tab-panel-7937)
+* [  wrangler.jsonc ](#tab-panel-8217)
+* [  wrangler.toml ](#tab-panel-8218)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      // other options here...
+      "authorized_keys": [
+        {
+          "name": "<NAME>",
+          "public_key": "<YOUR_PUBLIC_KEY_HERE>"
+        }
+      ]
+    }
+  ]
+}
 ```
-{  "containers": [    {      // other options here...      "authorized_keys": [        {          "name": "<NAME>",          "public_key": "<YOUR_PUBLIC_KEY_HERE>"        }      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]][[containers.authorized_keys]]name = "<NAME>"public_key = "<YOUR_PUBLIC_KEY_HERE>"
+```toml
+[[containers]]
+[[containers.authorized_keys]]
+name = "<NAME>"
+public_key = "<YOUR_PUBLIC_KEY_HERE>"
 ```
 
 For more information on configuring SSH, refer to [SSH configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#ssh).
@@ -47,9 +62,7 @@ Find the instance ID for your Container by running [wrangler containers instance
 
 Once SSH is configured and the Container is running, open the SSH connection with:
 
-Terminal window
-
-```
+```bash
 wrangler containers ssh <INSTANCE_ID>
 ```
 
@@ -57,9 +70,7 @@ wrangler containers ssh <INSTANCE_ID>
 
 You can use `wrangler containers ssh` as an OpenSSH `ProxyCommand`. This lets your local SSH client connect through Wrangler.
 
-Terminal window
-
-```
+```sh
 ssh -o ProxyCommand="wrangler containers ssh %h" cloudchamber@<INSTANCE_ID>
 ```
 

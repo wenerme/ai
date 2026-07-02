@@ -2422,7 +2422,11 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
                 See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-                - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+                - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                  - `"claude-sonnet-5"`
+
+                    High-performance model for coding and agents
 
                   - `"claude-fable-5"`
 
@@ -5224,7 +5228,11 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -5296,7 +5304,7 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
         What caused the `from` model to hand over at this hop.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -5307,8 +5315,6 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `type: "refusal"`
 
@@ -5439,7 +5445,7 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
     Structured information about a refusal.
 
-    - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+    - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
       The policy category that triggered a refusal.
 
@@ -5450,8 +5456,6 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `explanation: string | null`
 
@@ -5901,7 +5905,7 @@ console.log(betaMessage.id);
         "cache_creation_input_tokens": 0,
         "cache_read_input_tokens": 0,
         "input_tokens": 0,
-        "model": "claude-fable-5",
+        "model": "claude-sonnet-5",
         "output_tokens": 0,
         "type": "message"
       }
@@ -7020,7 +7024,11 @@ Learn more about token counting in our [user guide](https://platform.claude.com/
 
               See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-              - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+              - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                - `"claude-sonnet-5"`
+
+                  High-performance model for coding and agents
 
                 - `"claude-fable-5"`
 
@@ -8877,7 +8885,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -9017,7 +9029,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -11873,7 +11889,11 @@ console.log(betaMessageTokensCount.context_management);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -11945,7 +11965,7 @@ console.log(betaMessageTokensCount.context_management);
 
       What caused the `from` model to hand over at this hop.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -11956,8 +11976,6 @@ console.log(betaMessageTokensCount.context_management);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `type: "refusal"`
 
@@ -13000,7 +13018,11 @@ console.log(betaMessageTokensCount.context_management);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -13824,7 +13846,11 @@ console.log(betaMessageTokensCount.context_management);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -13896,7 +13922,7 @@ console.log(betaMessageTokensCount.context_management);
 
     What caused the `from` model to hand over at this hop.
 
-    - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+    - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
       The policy category that triggered a refusal.
 
@@ -13907,8 +13933,6 @@ console.log(betaMessageTokensCount.context_management);
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `type: "refusal"`
 
@@ -13946,7 +13970,11 @@ console.log(betaMessageTokensCount.context_management);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -14034,7 +14062,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -14110,7 +14142,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -14215,7 +14251,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -14306,7 +14346,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -14474,7 +14518,7 @@ console.log(betaMessageTokensCount.context_management);
 
   The `from` model declined for policy reasons.
 
-  - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+  - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
     The policy category that triggered a refusal.
 
@@ -14485,8 +14529,6 @@ console.log(betaMessageTokensCount.context_management);
     - `"frontier_llm"`
 
     - `"reasoning_extraction"`
-
-    - `"military_weapons"`
 
   - `type: "refusal"`
 
@@ -14655,7 +14697,11 @@ console.log(betaMessageTokensCount.context_management);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -16251,7 +16297,11 @@ console.log(betaMessageTokensCount.context_management);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -16323,7 +16373,7 @@ console.log(betaMessageTokensCount.context_management);
 
         What caused the `from` model to hand over at this hop.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -16334,8 +16384,6 @@ console.log(betaMessageTokensCount.context_management);
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `type: "refusal"`
 
@@ -16466,7 +16514,7 @@ console.log(betaMessageTokensCount.context_management);
 
     Structured information about a refusal.
 
-    - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+    - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
       The policy category that triggered a refusal.
 
@@ -16477,8 +16525,6 @@ console.log(betaMessageTokensCount.context_management);
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `explanation: string | null`
 
@@ -16891,7 +16937,11 @@ console.log(betaMessageTokensCount.context_management);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -17144,7 +17194,11 @@ console.log(betaMessageTokensCount.context_management);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -18255,7 +18309,11 @@ console.log(betaMessageTokensCount.context_management);
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-            - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+            - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+              - `"claude-sonnet-5"`
+
+                High-performance model for coding and agents
 
               - `"claude-fable-5"`
 
@@ -19734,7 +19792,11 @@ console.log(betaMessageTokensCount.context_management);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -19806,7 +19868,7 @@ console.log(betaMessageTokensCount.context_management);
 
         What caused the `from` model to hand over at this hop.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -19817,8 +19879,6 @@ console.log(betaMessageTokensCount.context_management);
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `type: "refusal"`
 
@@ -19926,7 +19986,7 @@ console.log(betaMessageTokensCount.context_management);
 
       Structured information about a refusal.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -19937,8 +19997,6 @@ console.log(betaMessageTokensCount.context_management);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string | null`
 
@@ -20091,7 +20149,11 @@ console.log(betaMessageTokensCount.context_management);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -21161,7 +21223,11 @@ console.log(betaMessageTokensCount.context_management);
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-            - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+            - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+              - `"claude-sonnet-5"`
+
+                High-performance model for coding and agents
 
               - `"claude-fable-5"`
 
@@ -21233,7 +21299,7 @@ console.log(betaMessageTokensCount.context_management);
 
           What caused the `from` model to hand over at this hop.
 
-          - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+          - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
             The policy category that triggered a refusal.
 
@@ -21244,8 +21310,6 @@ console.log(betaMessageTokensCount.context_management);
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `type: "refusal"`
 
@@ -21376,7 +21440,7 @@ console.log(betaMessageTokensCount.context_management);
 
       Structured information about a refusal.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -21387,8 +21451,6 @@ console.log(betaMessageTokensCount.context_management);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string | null`
 
@@ -22608,7 +22670,11 @@ console.log(betaMessageTokensCount.context_management);
 
               See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-              - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+              - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                - `"claude-sonnet-5"`
+
+                  High-performance model for coding and agents
 
                 - `"claude-fable-5"`
 
@@ -22680,7 +22746,7 @@ console.log(betaMessageTokensCount.context_management);
 
             What caused the `from` model to hand over at this hop.
 
-            - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+            - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
               The policy category that triggered a refusal.
 
@@ -22691,8 +22757,6 @@ console.log(betaMessageTokensCount.context_management);
               - `"frontier_llm"`
 
               - `"reasoning_extraction"`
-
-              - `"military_weapons"`
 
             - `type: "refusal"`
 
@@ -22823,7 +22887,7 @@ console.log(betaMessageTokensCount.context_management);
 
         Structured information about a refusal.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -22834,8 +22898,6 @@ console.log(betaMessageTokensCount.context_management);
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `explanation: string | null`
 
@@ -23449,7 +23511,7 @@ console.log(betaMessageTokensCount.context_management);
 
   Structured information about a refusal.
 
-  - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+  - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
     The policy category that triggered a refusal.
 
@@ -23460,8 +23522,6 @@ console.log(betaMessageTokensCount.context_management);
     - `"frontier_llm"`
 
     - `"reasoning_extraction"`
-
-    - `"military_weapons"`
 
   - `explanation: string | null`
 
@@ -27931,7 +27991,11 @@ console.log(betaMessageTokensCount.context_management);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -28371,7 +28435,11 @@ console.log(betaMessageTokensCount.context_management);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -31594,7 +31662,11 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
                   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-                  - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+                  - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                    - `"claude-sonnet-5"`
+
+                      High-performance model for coding and agents
 
                     - `"claude-fable-5"`
 
@@ -35386,7 +35458,11 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
                 See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-                - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+                - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                  - `"claude-sonnet-5"`
+
+                    High-performance model for coding and agents
 
                   - `"claude-fable-5"`
 
@@ -35458,7 +35534,7 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
               What caused the `from` model to hand over at this hop.
 
-              - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+              - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
                 The policy category that triggered a refusal.
 
@@ -35469,8 +35545,6 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
                 - `"frontier_llm"`
 
                 - `"reasoning_extraction"`
-
-                - `"military_weapons"`
 
               - `type: "refusal"`
 
@@ -35601,7 +35675,7 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
           Structured information about a refusal.
 
-          - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+          - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
             The policy category that triggered a refusal.
 
@@ -35612,8 +35686,6 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `explanation: string | null`
 
@@ -37169,7 +37241,11 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
                 See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-                - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+                - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                  - `"claude-sonnet-5"`
+
+                    High-performance model for coding and agents
 
                   - `"claude-fable-5"`
 
@@ -37241,7 +37317,7 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
               What caused the `from` model to hand over at this hop.
 
-              - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+              - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
                 The policy category that triggered a refusal.
 
@@ -37252,8 +37328,6 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
                 - `"frontier_llm"`
 
                 - `"reasoning_extraction"`
-
-                - `"military_weapons"`
 
               - `type: "refusal"`
 
@@ -37384,7 +37458,7 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
           Structured information about a refusal.
 
-          - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+          - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
             The policy category that triggered a refusal.
 
@@ -37395,8 +37469,6 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `explanation: string | null`
 
@@ -38744,7 +38816,11 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
               See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-              - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+              - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+                - `"claude-sonnet-5"`
+
+                  High-performance model for coding and agents
 
                 - `"claude-fable-5"`
 
@@ -38816,7 +38892,7 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
             What caused the `from` model to hand over at this hop.
 
-            - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+            - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
               The policy category that triggered a refusal.
 
@@ -38827,8 +38903,6 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
               - `"frontier_llm"`
 
               - `"reasoning_extraction"`
-
-              - `"military_weapons"`
 
             - `type: "refusal"`
 
@@ -38959,7 +39033,7 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
         Structured information about a refusal.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -38970,8 +39044,6 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `explanation: string | null`
 
@@ -40281,7 +40353,11 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-            - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+            - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+              - `"claude-sonnet-5"`
+
+                High-performance model for coding and agents
 
               - `"claude-fable-5"`
 
@@ -40353,7 +40429,7 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
           What caused the `from` model to hand over at this hop.
 
-          - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+          - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
             The policy category that triggered a refusal.
 
@@ -40364,8 +40440,6 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `type: "refusal"`
 
@@ -40496,7 +40570,7 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
 
       Structured information about a refusal.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -40507,8 +40581,6 @@ console.log(betaMessageBatchIndividualResponse.custom_id);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string | null`
 
@@ -40883,13 +40955,17 @@ Create Agent
 
     Body param: Model identifier. Accepts the [model string](https://platform.claude.com/docs/en/about-claude/models/overview#latest-models-comparison), e.g. `claude-opus-4-6`, or a `model_config` object for additional configuration control
 
-    - `BetaManagedAgentsModel = "claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more | (string & {})`
+    - `BetaManagedAgentsModel = "claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more | (string & {})`
 
       The model that will power your agent.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -41329,7 +41405,11 @@ Create Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -41810,7 +41890,11 @@ List Agents
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -42280,7 +42364,11 @@ Get Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -42668,13 +42756,17 @@ Update Agent
 
     Body param: Model identifier. Accepts the [model string](https://platform.claude.com/docs/en/about-claude/models/overview#latest-models-comparison), e.g. `claude-opus-4-6`, or a `model_config` object for additional configuration control. Omit to preserve. Cannot be cleared.
 
-    - `BetaManagedAgentsModel = "claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more | (string & {})`
+    - `BetaManagedAgentsModel = "claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more | (string & {})`
 
       The model that will power your agent.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -43090,7 +43182,11 @@ Update Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -43552,7 +43648,11 @@ Archive Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -43936,7 +44036,11 @@ console.log(betaManagedAgentsAgent.id);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -45038,13 +45142,17 @@ console.log(betaManagedAgentsAgent.id);
 
 ### Beta Managed Agents Model
 
-- `BetaManagedAgentsModel = "claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more | (string & {})`
+- `BetaManagedAgentsModel = "claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more | (string & {})`
 
   The model that will power your agent.
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+  - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+    - `"claude-sonnet-5"`
+
+      High-performance model for coding and agents
 
     - `"claude-fable-5"`
 
@@ -45104,7 +45212,11 @@ console.log(betaManagedAgentsAgent.id);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -45172,7 +45284,11 @@ console.log(betaManagedAgentsAgent.id);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -45330,7 +45446,11 @@ console.log(betaManagedAgentsAgent.id);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -45744,7 +45864,11 @@ List Agent Versions
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -48515,6 +48639,10 @@ Retrieve detailed information about a specific work item.
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -48579,6 +48707,7 @@ console.log(betaSelfHostedWork.id);
   "metadata": {
     "foo": "string"
   },
+  "secret": "secret",
   "started_at": "started_at",
   "state": "queued",
   "stop_requested_at": "stop_requested_at",
@@ -48721,6 +48850,10 @@ Long poll for work items in the queue.
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -48783,6 +48916,7 @@ console.log(betaSelfHostedWork.id);
   "metadata": {
     "foo": "string"
   },
+  "secret": "secret",
   "started_at": "started_at",
   "state": "queued",
   "stop_requested_at": "stop_requested_at",
@@ -48923,6 +49057,10 @@ Acknowledge receipt of a work item, transitioning it from 'queued' to 'starting'
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -48987,6 +49125,7 @@ console.log(betaSelfHostedWork.id);
   "metadata": {
     "foo": "string"
   },
+  "secret": "secret",
   "started_at": "started_at",
   "state": "queued",
   "stop_requested_at": "stop_requested_at",
@@ -49290,6 +49429,10 @@ Stop a work item, initiating graceful or forced shutdown.
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -49354,6 +49497,7 @@ console.log(betaSelfHostedWork.id);
   "metadata": {
     "foo": "string"
   },
+  "secret": "secret",
   "started_at": "started_at",
   "state": "queued",
   "stop_requested_at": "stop_requested_at",
@@ -49498,6 +49642,10 @@ List work items in an environment.
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -49565,6 +49713,7 @@ for await (const betaSelfHostedWork of client.beta.environments.work.list(
       "metadata": {
         "foo": "string"
       },
+      "secret": "secret",
       "started_at": "started_at",
       "state": "queued",
       "stop_requested_at": "stop_requested_at",
@@ -49712,6 +49861,10 @@ Update work item metadata with merge semantics.
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -49777,6 +49930,7 @@ console.log(betaSelfHostedWork.id);
   "metadata": {
     "foo": "string"
   },
+  "secret": "secret",
   "started_at": "started_at",
   "state": "queued",
   "stop_requested_at": "stop_requested_at",
@@ -49971,6 +50125,10 @@ console.log(betaSelfHostedWorkQueueStats.depth);
 
     User-provided metadata key-value pairs associated with this work item
 
+  - `secret: string | null`
+
+    Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
+
   - `started_at: string | null`
 
     RFC 3339 timestamp when work execution started
@@ -50088,6 +50246,10 @@ console.log(betaSelfHostedWorkQueueStats.depth);
     - `metadata: Record<string, string>`
 
       User-provided metadata key-value pairs associated with this work item
+
+    - `secret: string | null`
+
+      Credential payload used by the environment worker to execute this work item. May be populated when polling for work; null on all other retrieval paths.
 
     - `started_at: string | null`
 
@@ -50208,7 +50370,7 @@ Create Session
 
 - `params: SessionCreateParams`
 
-  - `agent: string | BetaManagedAgentsAgentParams`
+  - `agent: string | BetaManagedAgentsAgentParams | BetaManagedAgentsAgentWithOverridesParams`
 
     Body param: Agent identifier. Accepts the `agent` ID string, which pins the latest version for the session, or an `agent` object with both id and version specified.
 
@@ -50229,6 +50391,322 @@ Create Session
       - `version?: number`
 
         The specific `agent` version to use. Omit to use the latest version. Must be at least 1 if specified.
+
+    - `BetaManagedAgentsAgentWithOverridesParams`
+
+      Reference to an `agent` plus optional configuration overrides. Each provided field replaces the agent's value for the caller's use; the agent resource is unchanged.
+
+      - `id: string`
+
+        The `agent` ID.
+
+      - `type: "agent_with_overrides"`
+
+        - `"agent_with_overrides"`
+
+      - `mcp_servers?: Array<BetaManagedAgentsURLMCPServerParams>`
+
+        Replacement MCP server list. Full replacement: the provided array becomes the MCP servers. Send an empty array to clear; omit to preserve the agent's servers.
+
+        - `name: string`
+
+          Unique name for this server, referenced by mcp_toolset configurations. 1-255 characters.
+
+        - `type: "url"`
+
+          - `"url"`
+
+        - `url: string`
+
+          Endpoint URL for the MCP server.
+
+      - `model?: BetaManagedAgentsModel | BetaManagedAgentsModelConfigParams`
+
+        Replacement model. Accepts the model string, e.g. `claude-opus-4-6`, or a `model_config` object. Omit to use the agent's model.
+
+        - `BetaManagedAgentsModel = "claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more | (string & {})`
+
+          The model that will power your agent.
+
+          See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
+
+            - `"claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
+
+            - `"claude-opus-4-8"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `"claude-opus-4-7"`
+
+              Frontier intelligence for long-running agents and coding
+
+            - `"claude-opus-4-6"`
+
+              Most intelligent model for building agents and coding
+
+            - `"claude-sonnet-4-6"`
+
+              Best combination of speed and intelligence
+
+            - `"claude-haiku-4-5"`
+
+              Fastest model with near-frontier intelligence
+
+            - `"claude-haiku-4-5-20251001"`
+
+              Fastest model with near-frontier intelligence
+
+            - `"claude-opus-4-5"`
+
+              Premium model combining maximum intelligence with practical performance
+
+            - `"claude-opus-4-5-20251101"`
+
+              Premium model combining maximum intelligence with practical performance
+
+            - `"claude-sonnet-4-5"`
+
+              High-performance model for agents and coding
+
+            - `"claude-sonnet-4-5-20250929"`
+
+              High-performance model for agents and coding
+
+          - `(string & {})`
+
+        - `BetaManagedAgentsModelConfigParams`
+
+          An object that defines additional configuration control over model use
+
+          - `id: BetaManagedAgentsModel`
+
+            The model that will power your agent.
+
+            See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `speed?: "standard" | "fast" | null`
+
+            Inference speed mode. `fast` provides significantly faster output token generation at premium pricing. Not all models support `fast`; invalid combinations are rejected at create time.
+
+            - `"standard"`
+
+            - `"fast"`
+
+      - `skills?: Array<BetaManagedAgentsSkillParams>`
+
+        Replacement skill list. Full replacement: the provided array becomes the skills. Send an empty array to clear; omit to preserve the agent's skills.
+
+        - `BetaManagedAgentsAnthropicSkillParams`
+
+          An Anthropic-managed skill.
+
+          - `skill_id: string`
+
+            Identifier of the Anthropic skill (e.g., "xlsx").
+
+          - `type: "anthropic"`
+
+            - `"anthropic"`
+
+          - `version?: string | null`
+
+            Version to pin. Defaults to latest if omitted.
+
+        - `BetaManagedAgentsCustomSkillParams`
+
+          A user-created custom skill.
+
+          - `skill_id: string`
+
+            Tagged ID of the custom skill (e.g., "skill_01XJ5...").
+
+          - `type: "custom"`
+
+            - `"custom"`
+
+          - `version?: string | null`
+
+            Version to pin. Defaults to latest if omitted.
+
+      - `system?: string | null`
+
+        Replacement system prompt. Up to 100,000 characters. Set to null to clear the agent's system prompt; omit to preserve it.
+
+      - `tools?: Array<BetaManagedAgentsAgentToolset20260401Params | BetaManagedAgentsMCPToolsetParams | BetaManagedAgentsCustomToolParams>`
+
+        Replacement tool list. Full replacement: the provided array becomes the tool configuration. Send an empty array to clear; omit to preserve the agent's tools.
+
+        - `BetaManagedAgentsAgentToolset20260401Params`
+
+          Configuration for built-in agent tools. Use this to enable or disable groups of tools available to the agent.
+
+          - `type: "agent_toolset_20260401"`
+
+            - `"agent_toolset_20260401"`
+
+          - `configs?: Array<BetaManagedAgentsAgentToolConfigParams>`
+
+            Per-tool configuration overrides.
+
+            - `name: "bash" | "edit" | "read" | 5 more`
+
+              Built-in agent tool identifier.
+
+              - `"bash"`
+
+              - `"edit"`
+
+              - `"read"`
+
+              - `"write"`
+
+              - `"glob"`
+
+              - `"grep"`
+
+              - `"web_fetch"`
+
+              - `"web_search"`
+
+            - `enabled?: boolean | null`
+
+              Whether this tool is enabled and available to Claude. Overrides the default_config setting.
+
+            - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+              Permission policy for tool execution.
+
+              - `BetaManagedAgentsAlwaysAllowPolicy`
+
+                Tool calls are automatically approved without user confirmation.
+
+                - `type: "always_allow"`
+
+                  - `"always_allow"`
+
+              - `BetaManagedAgentsAlwaysAskPolicy`
+
+                Tool calls require user confirmation before execution.
+
+                - `type: "always_ask"`
+
+                  - `"always_ask"`
+
+          - `default_config?: BetaManagedAgentsAgentToolsetDefaultConfigParams | null`
+
+            Default configuration for all tools in a toolset.
+
+            - `enabled?: boolean | null`
+
+              Whether tools are enabled and available to Claude by default. Defaults to true if not specified.
+
+            - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+              Permission policy for tool execution.
+
+              - `BetaManagedAgentsAlwaysAllowPolicy`
+
+                Tool calls are automatically approved without user confirmation.
+
+              - `BetaManagedAgentsAlwaysAskPolicy`
+
+                Tool calls require user confirmation before execution.
+
+        - `BetaManagedAgentsMCPToolsetParams`
+
+          Configuration for tools from an MCP server defined in `mcp_servers`.
+
+          - `mcp_server_name: string`
+
+            Name of the MCP server. Must match a server name from the mcp_servers array. 1-255 characters.
+
+          - `type: "mcp_toolset"`
+
+            - `"mcp_toolset"`
+
+          - `configs?: Array<BetaManagedAgentsMCPToolConfigParams>`
+
+            Per-tool configuration overrides.
+
+            - `name: string`
+
+              Name of the MCP tool to configure. 1-128 characters.
+
+            - `enabled?: boolean | null`
+
+              Whether this tool is enabled. Overrides the `default_config` setting.
+
+            - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+              Permission policy for tool execution.
+
+              - `BetaManagedAgentsAlwaysAllowPolicy`
+
+                Tool calls are automatically approved without user confirmation.
+
+              - `BetaManagedAgentsAlwaysAskPolicy`
+
+                Tool calls require user confirmation before execution.
+
+          - `default_config?: BetaManagedAgentsMCPToolsetDefaultConfigParams | null`
+
+            Default configuration for all tools from an MCP server.
+
+            - `enabled?: boolean | null`
+
+              Whether tools are enabled by default. Defaults to true if not specified.
+
+            - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+              Permission policy for tool execution.
+
+              - `BetaManagedAgentsAlwaysAllowPolicy`
+
+                Tool calls are automatically approved without user confirmation.
+
+              - `BetaManagedAgentsAlwaysAskPolicy`
+
+                Tool calls require user confirmation before execution.
+
+        - `BetaManagedAgentsCustomToolParams`
+
+          A custom tool that is executed by the API client rather than the agent. When the agent calls this tool, an `agent.custom_tool_use` event is emitted and the session goes idle, waiting for the client to provide the result via a `user.custom_tool_result` event.
+
+          - `description: string`
+
+            Description of what the tool does, shown to the agent to help it decide when to use the tool. 1-1024 characters.
+
+          - `input_schema: BetaManagedAgentsCustomToolInputSchema`
+
+            JSON Schema for custom tool input parameters.
+
+            - `type: "object"`
+
+              - `"object"`
+
+            - `properties?: Record<string, unknown> | null`
+
+            - `required?: Array<string> | null`
+
+          - `name: string`
+
+            Unique name for the tool. 1-128 characters; letters, digits, underscores, and hyphens.
+
+          - `type: "custom"`
+
+            - `"custom"`
+
+      - `version?: number`
+
+        The specific `agent` version to use. Omit to use the latest version.
 
   - `environment_id: string`
 
@@ -50434,7 +50912,11 @@ Create Session
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -51123,7 +51605,7 @@ console.log(betaManagedAgentsSession.id);
 
 ## List Sessions
 
-`client.beta.sessions.list(SessionListParamsparams?, RequestOptionsoptions?): PageCursor<BetaManagedAgentsSession>`
+`client.beta.sessions.list(SessionListParamsparams?, RequestOptionsoptions?): BidirectionalPageCursor<BetaManagedAgentsSession>`
 
 **get** `/v1/sessions`
 
@@ -51297,7 +51779,11 @@ List Sessions
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -51983,7 +52469,8 @@ for await (const betaManagedAgentsSession of client.beta.sessions.list()) {
       "deployment_id": "deployment_id"
     }
   ],
-  "next_page": "page_MjAyNS0wNS0xNFQwMDowMDowMFo="
+  "next_page": "page_MjAyNS0wNS0xNFQwMDowMDowMFo=",
+  "prev_page": "page_MjAyNS0wNS0xM1QwMDowMDowMFo="
 }
 ```
 
@@ -52101,7 +52588,11 @@ Get Session
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -53097,7 +53588,11 @@ Update Session
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -54010,7 +54505,11 @@ Archive Session
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -54698,6 +55197,18 @@ console.log(betaManagedAgentsSession.id);
 
 ## Domain Types
 
+### Beta Managed Agents Agent Message Preview
+
+- `BetaManagedAgentsAgentMessagePreview`
+
+  - `id: string`
+
+    The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+  - `type: "agent.message"`
+
+    - `"agent.message"`
+
 ### Beta Managed Agents Agent Params
 
 - `BetaManagedAgentsAgentParams`
@@ -54715,6 +55226,336 @@ console.log(betaManagedAgentsSession.id);
   - `version?: number`
 
     The specific `agent` version to use. Omit to use the latest version. Must be at least 1 if specified.
+
+### Beta Managed Agents Agent Thinking Preview
+
+- `BetaManagedAgentsAgentThinkingPreview`
+
+  - `id: string`
+
+    The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+  - `type: "agent.thinking"`
+
+    - `"agent.thinking"`
+
+### Beta Managed Agents Agent With Overrides Params
+
+- `BetaManagedAgentsAgentWithOverridesParams`
+
+  Reference to an `agent` plus optional configuration overrides. Each provided field replaces the agent's value for the caller's use; the agent resource is unchanged.
+
+  - `id: string`
+
+    The `agent` ID.
+
+  - `type: "agent_with_overrides"`
+
+    - `"agent_with_overrides"`
+
+  - `mcp_servers?: Array<BetaManagedAgentsURLMCPServerParams>`
+
+    Replacement MCP server list. Full replacement: the provided array becomes the MCP servers. Send an empty array to clear; omit to preserve the agent's servers.
+
+    - `name: string`
+
+      Unique name for this server, referenced by mcp_toolset configurations. 1-255 characters.
+
+    - `type: "url"`
+
+      - `"url"`
+
+    - `url: string`
+
+      Endpoint URL for the MCP server.
+
+  - `model?: BetaManagedAgentsModel | BetaManagedAgentsModelConfigParams`
+
+    Replacement model. Accepts the model string, e.g. `claude-opus-4-6`, or a `model_config` object. Omit to use the agent's model.
+
+    - `BetaManagedAgentsModel = "claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more | (string & {})`
+
+      The model that will power your agent.
+
+      See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
+
+        - `"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
+
+        - `"claude-opus-4-8"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `"claude-opus-4-7"`
+
+          Frontier intelligence for long-running agents and coding
+
+        - `"claude-opus-4-6"`
+
+          Most intelligent model for building agents and coding
+
+        - `"claude-sonnet-4-6"`
+
+          Best combination of speed and intelligence
+
+        - `"claude-haiku-4-5"`
+
+          Fastest model with near-frontier intelligence
+
+        - `"claude-haiku-4-5-20251001"`
+
+          Fastest model with near-frontier intelligence
+
+        - `"claude-opus-4-5"`
+
+          Premium model combining maximum intelligence with practical performance
+
+        - `"claude-opus-4-5-20251101"`
+
+          Premium model combining maximum intelligence with practical performance
+
+        - `"claude-sonnet-4-5"`
+
+          High-performance model for agents and coding
+
+        - `"claude-sonnet-4-5-20250929"`
+
+          High-performance model for agents and coding
+
+      - `(string & {})`
+
+    - `BetaManagedAgentsModelConfigParams`
+
+      An object that defines additional configuration control over model use
+
+      - `id: BetaManagedAgentsModel`
+
+        The model that will power your agent.
+
+        See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `speed?: "standard" | "fast" | null`
+
+        Inference speed mode. `fast` provides significantly faster output token generation at premium pricing. Not all models support `fast`; invalid combinations are rejected at create time.
+
+        - `"standard"`
+
+        - `"fast"`
+
+  - `skills?: Array<BetaManagedAgentsSkillParams>`
+
+    Replacement skill list. Full replacement: the provided array becomes the skills. Send an empty array to clear; omit to preserve the agent's skills.
+
+    - `BetaManagedAgentsAnthropicSkillParams`
+
+      An Anthropic-managed skill.
+
+      - `skill_id: string`
+
+        Identifier of the Anthropic skill (e.g., "xlsx").
+
+      - `type: "anthropic"`
+
+        - `"anthropic"`
+
+      - `version?: string | null`
+
+        Version to pin. Defaults to latest if omitted.
+
+    - `BetaManagedAgentsCustomSkillParams`
+
+      A user-created custom skill.
+
+      - `skill_id: string`
+
+        Tagged ID of the custom skill (e.g., "skill_01XJ5...").
+
+      - `type: "custom"`
+
+        - `"custom"`
+
+      - `version?: string | null`
+
+        Version to pin. Defaults to latest if omitted.
+
+  - `system?: string | null`
+
+    Replacement system prompt. Up to 100,000 characters. Set to null to clear the agent's system prompt; omit to preserve it.
+
+  - `tools?: Array<BetaManagedAgentsAgentToolset20260401Params | BetaManagedAgentsMCPToolsetParams | BetaManagedAgentsCustomToolParams>`
+
+    Replacement tool list. Full replacement: the provided array becomes the tool configuration. Send an empty array to clear; omit to preserve the agent's tools.
+
+    - `BetaManagedAgentsAgentToolset20260401Params`
+
+      Configuration for built-in agent tools. Use this to enable or disable groups of tools available to the agent.
+
+      - `type: "agent_toolset_20260401"`
+
+        - `"agent_toolset_20260401"`
+
+      - `configs?: Array<BetaManagedAgentsAgentToolConfigParams>`
+
+        Per-tool configuration overrides.
+
+        - `name: "bash" | "edit" | "read" | 5 more`
+
+          Built-in agent tool identifier.
+
+          - `"bash"`
+
+          - `"edit"`
+
+          - `"read"`
+
+          - `"write"`
+
+          - `"glob"`
+
+          - `"grep"`
+
+          - `"web_fetch"`
+
+          - `"web_search"`
+
+        - `enabled?: boolean | null`
+
+          Whether this tool is enabled and available to Claude. Overrides the default_config setting.
+
+        - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+          Permission policy for tool execution.
+
+          - `BetaManagedAgentsAlwaysAllowPolicy`
+
+            Tool calls are automatically approved without user confirmation.
+
+            - `type: "always_allow"`
+
+              - `"always_allow"`
+
+          - `BetaManagedAgentsAlwaysAskPolicy`
+
+            Tool calls require user confirmation before execution.
+
+            - `type: "always_ask"`
+
+              - `"always_ask"`
+
+      - `default_config?: BetaManagedAgentsAgentToolsetDefaultConfigParams | null`
+
+        Default configuration for all tools in a toolset.
+
+        - `enabled?: boolean | null`
+
+          Whether tools are enabled and available to Claude by default. Defaults to true if not specified.
+
+        - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+          Permission policy for tool execution.
+
+          - `BetaManagedAgentsAlwaysAllowPolicy`
+
+            Tool calls are automatically approved without user confirmation.
+
+          - `BetaManagedAgentsAlwaysAskPolicy`
+
+            Tool calls require user confirmation before execution.
+
+    - `BetaManagedAgentsMCPToolsetParams`
+
+      Configuration for tools from an MCP server defined in `mcp_servers`.
+
+      - `mcp_server_name: string`
+
+        Name of the MCP server. Must match a server name from the mcp_servers array. 1-255 characters.
+
+      - `type: "mcp_toolset"`
+
+        - `"mcp_toolset"`
+
+      - `configs?: Array<BetaManagedAgentsMCPToolConfigParams>`
+
+        Per-tool configuration overrides.
+
+        - `name: string`
+
+          Name of the MCP tool to configure. 1-128 characters.
+
+        - `enabled?: boolean | null`
+
+          Whether this tool is enabled. Overrides the `default_config` setting.
+
+        - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+          Permission policy for tool execution.
+
+          - `BetaManagedAgentsAlwaysAllowPolicy`
+
+            Tool calls are automatically approved without user confirmation.
+
+          - `BetaManagedAgentsAlwaysAskPolicy`
+
+            Tool calls require user confirmation before execution.
+
+      - `default_config?: BetaManagedAgentsMCPToolsetDefaultConfigParams | null`
+
+        Default configuration for all tools from an MCP server.
+
+        - `enabled?: boolean | null`
+
+          Whether tools are enabled by default. Defaults to true if not specified.
+
+        - `permission_policy?: BetaManagedAgentsAlwaysAllowPolicy | BetaManagedAgentsAlwaysAskPolicy | null`
+
+          Permission policy for tool execution.
+
+          - `BetaManagedAgentsAlwaysAllowPolicy`
+
+            Tool calls are automatically approved without user confirmation.
+
+          - `BetaManagedAgentsAlwaysAskPolicy`
+
+            Tool calls require user confirmation before execution.
+
+    - `BetaManagedAgentsCustomToolParams`
+
+      A custom tool that is executed by the API client rather than the agent. When the agent calls this tool, an `agent.custom_tool_use` event is emitted and the session goes idle, waiting for the client to provide the result via a `user.custom_tool_result` event.
+
+      - `description: string`
+
+        Description of what the tool does, shown to the agent to help it decide when to use the tool. 1-1024 characters.
+
+      - `input_schema: BetaManagedAgentsCustomToolInputSchema`
+
+        JSON Schema for custom tool input parameters.
+
+        - `type: "object"`
+
+          - `"object"`
+
+        - `properties?: Record<string, unknown> | null`
+
+        - `required?: Array<string> | null`
+
+      - `name: string`
+
+        Unique name for the tool. 1-128 characters; letters, digits, underscores, and hyphens.
+
+      - `type: "custom"`
+
+        - `"custom"`
+
+  - `version?: number`
+
+    The specific `agent` version to use. Omit to use the latest version.
 
 ### Beta Managed Agents Branch Checkout
 
@@ -54765,6 +55606,78 @@ console.log(betaManagedAgentsSession.id);
   - `type: "session_deleted"`
 
     - `"session_deleted"`
+
+### Beta Managed Agents Delta Content
+
+- `BetaManagedAgentsDeltaContent`
+
+  - `content: BetaManagedAgentsTextBlock`
+
+    Regular text content.
+
+    - `text: string`
+
+      The text content.
+
+    - `type: "text"`
+
+      - `"text"`
+
+  - `type: "content_delta"`
+
+    - `"content_delta"`
+
+  - `index?: number`
+
+    Which entry in the previewed event's content array this fragment lands in. Insert content as that entry when the index is new; append to the existing entry otherwise.
+
+### Beta Managed Agents Delta Event
+
+- `BetaManagedAgentsDeltaEvent`
+
+  An incremental update to an event that is still being streamed. Deltas are best-effort and may stop early; when the buffered event with id == event_id is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no buffered event — its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+  - `delta: BetaManagedAgentsDeltaContent`
+
+    One fragment of the previewed event. The delta type is named for the previewed event's field it streams into: agent.message events stream content_delta fragments, each a partial element of the content array.
+
+    - `content: BetaManagedAgentsTextBlock`
+
+      Regular text content.
+
+      - `text: string`
+
+        The text content.
+
+      - `type: "text"`
+
+        - `"text"`
+
+    - `type: "content_delta"`
+
+      - `"content_delta"`
+
+    - `index?: number`
+
+      Which entry in the previewed event's content array this fragment lands in. Insert content as that entry when the index is new; append to the existing entry otherwise.
+
+  - `event_id: string`
+
+    The id of the event being previewed. Matches event.id on the corresponding event_start and the buffered event that reconciles the preview.
+
+  - `type: "event_delta"`
+
+    - `"event_delta"`
+
+### Beta Managed Agents Delta Type
+
+- `BetaManagedAgentsDeltaType = "agent.message" | "agent.thinking"`
+
+  EventDeltaType enum
+
+  - `"agent.message"`
+
+  - `"agent.thinking"`
 
 ### Beta Managed Agents File Resource Params
 
@@ -55020,7 +55933,11 @@ console.log(betaManagedAgentsSession.id);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -55552,7 +56469,11 @@ console.log(betaManagedAgentsSession.id);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -56060,7 +56981,11 @@ console.log(betaManagedAgentsSession.id);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -56354,7 +57279,11 @@ console.log(betaManagedAgentsSession.id);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -56679,6 +57608,64 @@ console.log(betaManagedAgentsSession.id);
   - `output_tokens?: number`
 
     Total output tokens generated across all turns.
+
+### Beta Managed Agents Start Event
+
+- `BetaManagedAgentsStartEvent`
+
+  Opens a preview of a buffered event. Carries the previewed event's type and id only. Followed by zero or more event_delta events with the same event id, normally concluded by the buffered event carrying that id. If the producing model request ends without that event (an error or interrupt mid-stream), its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+  - `event: BetaManagedAgentsStartEventPreview`
+
+    The previewed event's type and id. The event type determines which delta types the preview's event_delta events carry: agent.message events stream content_delta fragments; agent.thinking previews are start-only — no deltas follow, and the buffered agent.thinking with the same id concludes them.
+
+    - `BetaManagedAgentsAgentMessagePreview`
+
+      - `id: string`
+
+        The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+      - `type: "agent.message"`
+
+        - `"agent.message"`
+
+    - `BetaManagedAgentsAgentThinkingPreview`
+
+      - `id: string`
+
+        The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+      - `type: "agent.thinking"`
+
+        - `"agent.thinking"`
+
+  - `type: "event_start"`
+
+    - `"event_start"`
+
+### Beta Managed Agents Start Event Preview
+
+- `BetaManagedAgentsStartEventPreview = BetaManagedAgentsAgentMessagePreview | BetaManagedAgentsAgentThinkingPreview`
+
+  - `BetaManagedAgentsAgentMessagePreview`
+
+    - `id: string`
+
+      The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+    - `type: "agent.message"`
+
+      - `"agent.message"`
+
+  - `BetaManagedAgentsAgentThinkingPreview`
+
+    - `id: string`
+
+      The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+    - `type: "agent.thinking"`
+
+      - `"agent.thinking"`
 
 ### Beta Managed Agents System Content Block
 
@@ -58514,7 +59501,11 @@ List Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -59822,9 +60813,17 @@ Stream Events
 
 - `params: EventStreamParams`
 
+  - `event_deltas?: Array<BetaManagedAgentsDeltaType>`
+
+    Query param: When set, this connection also receives streaming deltas (`event_start`, `event_delta`) while an event is being produced, before the event itself arrives. Deltas are best-effort; when the final event is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no final event — its terminal `span.model_request_end` closes the preview. Accepts one or more event types to preview and may be repeated: `agent.message` streams `content_delta` fragments; `agent.thinking` is start-only — a signal that the agent has begun extended thinking, concluded by the `agent.thinking` event itself. Only previews of the requested event types are sent.
+
+    - `"agent.message"`
+
+    - `"agent.thinking"`
+
   - `betas?: Array<AnthropicBeta>`
 
-    Optional header to specify the beta version(s) you want to use.
+    Header param: Optional header to specify the beta version(s) you want to use.
 
     - `(string & {})`
 
@@ -59888,7 +60887,7 @@ Stream Events
 
 ### Returns
 
-- `BetaManagedAgentsStreamSessionEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
+- `BetaManagedAgentsStreamSessionEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 33 more`
 
   Server-sent event in the session stream.
 
@@ -61348,7 +62347,11 @@ Stream Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -61643,6 +62646,66 @@ Stream Events
     - `title?: string | null`
 
       The session's new title. Present only when the update changed it.
+
+  - `BetaManagedAgentsStartEvent`
+
+    Opens a preview of a buffered event. Carries the previewed event's type and id only. Followed by zero or more event_delta events with the same event id, normally concluded by the buffered event carrying that id. If the producing model request ends without that event (an error or interrupt mid-stream), its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `event: BetaManagedAgentsStartEventPreview`
+
+      The previewed event's type and id. The event type determines which delta types the preview's event_delta events carry: agent.message events stream content_delta fragments; agent.thinking previews are start-only — no deltas follow, and the buffered agent.thinking with the same id concludes them.
+
+      - `BetaManagedAgentsAgentMessagePreview`
+
+        - `id: string`
+
+          The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+        - `type: "agent.message"`
+
+          - `"agent.message"`
+
+      - `BetaManagedAgentsAgentThinkingPreview`
+
+        - `id: string`
+
+          The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+        - `type: "agent.thinking"`
+
+          - `"agent.thinking"`
+
+    - `type: "event_start"`
+
+      - `"event_start"`
+
+  - `BetaManagedAgentsDeltaEvent`
+
+    An incremental update to an event that is still being streamed. Deltas are best-effort and may stop early; when the buffered event with id == event_id is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no buffered event — its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `delta: BetaManagedAgentsDeltaContent`
+
+      One fragment of the previewed event. The delta type is named for the previewed event's field it streams into: agent.message events stream content_delta fragments, each a partial element of the content array.
+
+      - `content: BetaManagedAgentsTextBlock`
+
+        Regular text content.
+
+      - `type: "content_delta"`
+
+        - `"content_delta"`
+
+      - `index?: number`
+
+        Which entry in the previewed event's content array this fragment lands in. Insert content as that entry when the index is new; append to the existing entry otherwise.
+
+    - `event_id: string`
+
+      The id of the event being previewed. Matches event.id on the corresponding event_start and the buffered event that reconciles the preview.
+
+    - `type: "event_delta"`
+
+      - `"event_delta"`
 
   - `BetaManagedAgentsSystemMessageEvent`
 
@@ -65862,7 +66925,11 @@ console.log(betaManagedAgentsStreamSessionEvents);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -66698,7 +67765,7 @@ console.log(betaManagedAgentsStreamSessionEvents);
 
 ### Beta Managed Agents Stream Session Events
 
-- `BetaManagedAgentsStreamSessionEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
+- `BetaManagedAgentsStreamSessionEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 33 more`
 
   Server-sent event in the session stream.
 
@@ -68158,7 +69225,11 @@ console.log(betaManagedAgentsStreamSessionEvents);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -68453,6 +69524,66 @@ console.log(betaManagedAgentsStreamSessionEvents);
     - `title?: string | null`
 
       The session's new title. Present only when the update changed it.
+
+  - `BetaManagedAgentsStartEvent`
+
+    Opens a preview of a buffered event. Carries the previewed event's type and id only. Followed by zero or more event_delta events with the same event id, normally concluded by the buffered event carrying that id. If the producing model request ends without that event (an error or interrupt mid-stream), its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `event: BetaManagedAgentsStartEventPreview`
+
+      The previewed event's type and id. The event type determines which delta types the preview's event_delta events carry: agent.message events stream content_delta fragments; agent.thinking previews are start-only — no deltas follow, and the buffered agent.thinking with the same id concludes them.
+
+      - `BetaManagedAgentsAgentMessagePreview`
+
+        - `id: string`
+
+          The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+        - `type: "agent.message"`
+
+          - `"agent.message"`
+
+      - `BetaManagedAgentsAgentThinkingPreview`
+
+        - `id: string`
+
+          The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+        - `type: "agent.thinking"`
+
+          - `"agent.thinking"`
+
+    - `type: "event_start"`
+
+      - `"event_start"`
+
+  - `BetaManagedAgentsDeltaEvent`
+
+    An incremental update to an event that is still being streamed. Deltas are best-effort and may stop early; when the buffered event with id == event_id is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no buffered event — its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `delta: BetaManagedAgentsDeltaContent`
+
+      One fragment of the previewed event. The delta type is named for the previewed event's field it streams into: agent.message events stream content_delta fragments, each a partial element of the content array.
+
+      - `content: BetaManagedAgentsTextBlock`
+
+        Regular text content.
+
+      - `type: "content_delta"`
+
+        - `"content_delta"`
+
+      - `index?: number`
+
+        Which entry in the previewed event's content array this fragment lands in. Insert content as that entry when the index is new; append to the existing entry otherwise.
+
+    - `event_id: string`
+
+      The id of the event being previewed. Matches event.id on the corresponding event_start and the buffered event that reconciles the preview.
+
+    - `type: "event_delta"`
+
+      - `"event_delta"`
 
   - `BetaManagedAgentsSystemMessageEvent`
 
@@ -71254,7 +72385,11 @@ List Session Threads
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -71781,7 +72916,11 @@ Get Session Thread
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -72303,7 +73442,11 @@ Archive Session Thread
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -72745,7 +73888,11 @@ console.log(betaManagedAgentsSessionThread.id);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -73119,7 +74266,7 @@ console.log(betaManagedAgentsSessionThread.id);
 
 ### Beta Managed Agents Stream Session Thread Events
 
-- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
+- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 33 more`
 
   Server-sent event in a single thread's stream.
 
@@ -74579,7 +75726,11 @@ console.log(betaManagedAgentsSessionThread.id);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -74874,6 +76025,66 @@ console.log(betaManagedAgentsSessionThread.id);
     - `title?: string | null`
 
       The session's new title. Present only when the update changed it.
+
+  - `BetaManagedAgentsStartEvent`
+
+    Opens a preview of a buffered event. Carries the previewed event's type and id only. Followed by zero or more event_delta events with the same event id, normally concluded by the buffered event carrying that id. If the producing model request ends without that event (an error or interrupt mid-stream), its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `event: BetaManagedAgentsStartEventPreview`
+
+      The previewed event's type and id. The event type determines which delta types the preview's event_delta events carry: agent.message events stream content_delta fragments; agent.thinking previews are start-only — no deltas follow, and the buffered agent.thinking with the same id concludes them.
+
+      - `BetaManagedAgentsAgentMessagePreview`
+
+        - `id: string`
+
+          The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+        - `type: "agent.message"`
+
+          - `"agent.message"`
+
+      - `BetaManagedAgentsAgentThinkingPreview`
+
+        - `id: string`
+
+          The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+        - `type: "agent.thinking"`
+
+          - `"agent.thinking"`
+
+    - `type: "event_start"`
+
+      - `"event_start"`
+
+  - `BetaManagedAgentsDeltaEvent`
+
+    An incremental update to an event that is still being streamed. Deltas are best-effort and may stop early; when the buffered event with id == event_id is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no buffered event — its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `delta: BetaManagedAgentsDeltaContent`
+
+      One fragment of the previewed event. The delta type is named for the previewed event's field it streams into: agent.message events stream content_delta fragments, each a partial element of the content array.
+
+      - `content: BetaManagedAgentsTextBlock`
+
+        Regular text content.
+
+      - `type: "content_delta"`
+
+        - `"content_delta"`
+
+      - `index?: number`
+
+        Which entry in the previewed event's content array this fragment lands in. Insert content as that entry when the index is new; append to the existing entry otherwise.
+
+    - `event_id: string`
+
+      The id of the event being previewed. Matches event.id on the corresponding event_start and the buffered event that reconciles the preview.
+
+    - `type: "event_delta"`
+
+      - `"event_delta"`
 
   - `BetaManagedAgentsSystemMessageEvent`
 
@@ -76457,7 +77668,11 @@ List Session Thread Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -76904,7 +78119,7 @@ Stream Session Thread Events
 
 ### Returns
 
-- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
+- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 33 more`
 
   Server-sent event in a single thread's stream.
 
@@ -78364,7 +79579,11 @@ Stream Session Thread Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-opus-4-8" | "claude-opus-4-7" | 8 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-opus-4-8" | 9 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -78659,6 +79878,66 @@ Stream Session Thread Events
     - `title?: string | null`
 
       The session's new title. Present only when the update changed it.
+
+  - `BetaManagedAgentsStartEvent`
+
+    Opens a preview of a buffered event. Carries the previewed event's type and id only. Followed by zero or more event_delta events with the same event id, normally concluded by the buffered event carrying that id. If the producing model request ends without that event (an error or interrupt mid-stream), its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `event: BetaManagedAgentsStartEventPreview`
+
+      The previewed event's type and id. The event type determines which delta types the preview's event_delta events carry: agent.message events stream content_delta fragments; agent.thinking previews are start-only — no deltas follow, and the buffered agent.thinking with the same id concludes them.
+
+      - `BetaManagedAgentsAgentMessagePreview`
+
+        - `id: string`
+
+          The id the buffered agent.message will carry if it is emitted. Matches the event_id on this preview's event_delta events.
+
+        - `type: "agent.message"`
+
+          - `"agent.message"`
+
+      - `BetaManagedAgentsAgentThinkingPreview`
+
+        - `id: string`
+
+          The id the buffered agent.thinking will carry if it is emitted. Start-only — no event_delta events follow.
+
+        - `type: "agent.thinking"`
+
+          - `"agent.thinking"`
+
+    - `type: "event_start"`
+
+      - `"event_start"`
+
+  - `BetaManagedAgentsDeltaEvent`
+
+    An incremental update to an event that is still being streamed. Deltas are best-effort and may stop early; when the buffered event with id == event_id is produced it carries the complete content. A model request that ends early (an error or interrupt) produces no buffered event — its terminal span.model_request_end closes the preview. Only sent on stream connections that opt in via event_deltas; never appears in event history.
+
+    - `delta: BetaManagedAgentsDeltaContent`
+
+      One fragment of the previewed event. The delta type is named for the previewed event's field it streams into: agent.message events stream content_delta fragments, each a partial element of the content array.
+
+      - `content: BetaManagedAgentsTextBlock`
+
+        Regular text content.
+
+      - `type: "content_delta"`
+
+        - `"content_delta"`
+
+      - `index?: number`
+
+        Which entry in the previewed event's content array this fragment lands in. Insert content as that entry when the index is new; append to the existing entry otherwise.
+
+    - `event_id: string`
+
+      The id of the event being previewed. Matches event.id on the corresponding event_start and the buffered event that reconciles the preview.
+
+    - `type: "event_delta"`
+
+      - `"event_delta"`
 
   - `BetaManagedAgentsSystemMessageEvent`
 
@@ -89090,6 +90369,18 @@ Create Credential
 
         - `"environment_variable"`
 
+      - `injection_location?: BetaManagedAgentsInjectionLocationParams`
+
+        Where in the outbound request the secret value may be substituted.
+
+        - `body?: boolean`
+
+          Substitute when the placeholder appears in the request body.
+
+        - `header?: boolean`
+
+          Substitute when the placeholder appears in a request header value.
+
   - `display_name?: string | null`
 
     Body param: Human-readable name for the credential. Up to 255 characters.
@@ -89259,6 +90550,18 @@ Create Credential
     - `BetaManagedAgentsEnvironmentVariableAuthResponse`
 
       Environment variable credential details. The secret value is never returned.
+
+      - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+        Where in the outbound request the secret value is substituted.
+
+        - `body: boolean`
+
+          Whether the placeholder is substituted in the request body.
+
+        - `header: boolean`
+
+          Whether the placeholder is substituted in request header values.
 
       - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
@@ -89548,6 +90851,18 @@ List Credentials
 
       Environment variable credential details. The secret value is never returned.
 
+      - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+        Where in the outbound request the secret value is substituted.
+
+        - `body: boolean`
+
+          Whether the placeholder is substituted in the request body.
+
+        - `header: boolean`
+
+          Whether the placeholder is substituted in request header values.
+
       - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
         Outbound hosts the secret value is substituted on.
@@ -89827,6 +91142,18 @@ Get Credential
 
       Environment variable credential details. The secret value is never returned.
 
+      - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+        Where in the outbound request the secret value is substituted.
+
+        - `body: boolean`
+
+          Whether the placeholder is substituted in the request body.
+
+        - `header: boolean`
+
+          Whether the placeholder is substituted in request header values.
+
       - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
         Outbound hosts the secret value is substituted on.
@@ -90018,6 +91345,18 @@ Update Credential
       - `type: "environment_variable"`
 
         - `"environment_variable"`
+
+      - `injection_location?: BetaManagedAgentsInjectionLocationUpdateParams`
+
+        Updated injection location.
+
+        - `body?: boolean`
+
+          Substitute when the placeholder appears in the request body.
+
+        - `header?: boolean`
+
+          Substitute when the placeholder appears in a request header value.
 
       - `networking?: BetaManagedAgentsCredentialNetworkingParams | null`
 
@@ -90216,6 +91555,18 @@ Update Credential
     - `BetaManagedAgentsEnvironmentVariableAuthResponse`
 
       Environment variable credential details. The secret value is never returned.
+
+      - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+        Where in the outbound request the secret value is substituted.
+
+        - `body: boolean`
+
+          Whether the placeholder is substituted in the request body.
+
+        - `header: boolean`
+
+          Whether the placeholder is substituted in request header values.
 
       - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
@@ -90612,6 +91963,18 @@ Archive Credential
     - `BetaManagedAgentsEnvironmentVariableAuthResponse`
 
       Environment variable credential details. The secret value is never returned.
+
+      - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+        Where in the outbound request the secret value is substituted.
+
+        - `body: boolean`
+
+          Whether the placeholder is substituted in the request body.
+
+        - `header: boolean`
+
+          Whether the placeholder is substituted in request header values.
 
       - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
@@ -91021,6 +92384,18 @@ console.log(betaManagedAgentsCredentialValidation.credential_id);
 
       Environment variable credential details. The secret value is never returned.
 
+      - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+        Where in the outbound request the secret value is substituted.
+
+        - `body: boolean`
+
+          Whether the placeholder is substituted in the request body.
+
+        - `header: boolean`
+
+          Whether the placeholder is substituted in request header values.
+
       - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
         Outbound hosts the secret value is substituted on.
@@ -91219,6 +92594,18 @@ console.log(betaManagedAgentsCredentialValidation.credential_id);
 
   Environment variable credential details. The secret value is never returned.
 
+  - `injection_location: BetaManagedAgentsInjectionLocationResponse`
+
+    Where in the outbound request the secret value is substituted.
+
+    - `body: boolean`
+
+      Whether the placeholder is substituted in the request body.
+
+    - `header: boolean`
+
+      Whether the placeholder is substituted in request header values.
+
   - `networking: BetaManagedAgentsUnrestrictedCredentialNetworkingResponse | BetaManagedAgentsLimitedCredentialNetworkingResponse`
 
     Outbound hosts the secret value is substituted on.
@@ -91293,6 +92680,18 @@ console.log(betaManagedAgentsCredentialValidation.credential_id);
 
     - `"environment_variable"`
 
+  - `injection_location?: BetaManagedAgentsInjectionLocationParams`
+
+    Where in the outbound request the secret value may be substituted.
+
+    - `body?: boolean`
+
+      Substitute when the placeholder appears in the request body.
+
+    - `header?: boolean`
+
+      Substitute when the placeholder appears in a request header value.
+
 ### Beta Managed Agents Environment Variable Update Params
 
 - `BetaManagedAgentsEnvironmentVariableUpdateParams`
@@ -91302,6 +92701,18 @@ console.log(betaManagedAgentsCredentialValidation.credential_id);
   - `type: "environment_variable"`
 
     - `"environment_variable"`
+
+  - `injection_location?: BetaManagedAgentsInjectionLocationUpdateParams`
+
+    Updated injection location.
+
+    - `body?: boolean`
+
+      Substitute when the placeholder appears in the request body.
+
+    - `header?: boolean`
+
+      Substitute when the placeholder appears in a request header value.
 
   - `networking?: BetaManagedAgentsCredentialNetworkingParams | null`
 
@@ -91330,6 +92741,48 @@ console.log(betaManagedAgentsCredentialValidation.credential_id);
   - `secret_value?: string | null`
 
     Updated secret value.
+
+### Beta Managed Agents Injection Location Params
+
+- `BetaManagedAgentsInjectionLocationParams`
+
+  Where in the outbound request the secret value may be substituted.
+
+  - `body?: boolean`
+
+    Substitute when the placeholder appears in the request body.
+
+  - `header?: boolean`
+
+    Substitute when the placeholder appears in a request header value.
+
+### Beta Managed Agents Injection Location Response
+
+- `BetaManagedAgentsInjectionLocationResponse`
+
+  Where in the outbound request the secret value is substituted.
+
+  - `body: boolean`
+
+    Whether the placeholder is substituted in the request body.
+
+  - `header: boolean`
+
+    Whether the placeholder is substituted in request header values.
+
+### Beta Managed Agents Injection Location Update Params
+
+- `BetaManagedAgentsInjectionLocationUpdateParams`
+
+  Updated injection location.
+
+  - `body?: boolean`
+
+    Substitute when the placeholder appears in the request body.
+
+  - `header?: boolean`
+
+    Substitute when the placeholder appears in a request header value.
 
 ### Beta Managed Agents Limited Credential Networking Params
 
@@ -98505,6 +99958,284 @@ console.log(betaUserProfileEnrollmentURL.expires_at);
 
 ## Domain Types
 
+### Beta Webhook Agent Archived Event Data
+
+- `BetaWebhookAgentArchivedEventData`
+
+  - `id: string`
+
+    ID of the agent that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "agent.archived"`
+
+    - `"agent.archived"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Agent Created Event Data
+
+- `BetaWebhookAgentCreatedEventData`
+
+  - `id: string`
+
+    ID of the agent that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "agent.created"`
+
+    - `"agent.created"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Agent Deleted Event Data
+
+- `BetaWebhookAgentDeletedEventData`
+
+  - `id: string`
+
+    ID of the agent that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "agent.deleted"`
+
+    - `"agent.deleted"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Agent Updated Event Data
+
+- `BetaWebhookAgentUpdatedEventData`
+
+  - `id: string`
+
+    ID of the agent that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "agent.updated"`
+
+    - `"agent.updated"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Archived Event Data
+
+- `BetaWebhookDeploymentArchivedEventData`
+
+  - `id: string`
+
+    ID of the deployment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment.archived"`
+
+    - `"deployment.archived"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Created Event Data
+
+- `BetaWebhookDeploymentCreatedEventData`
+
+  - `id: string`
+
+    ID of the deployment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment.created"`
+
+    - `"deployment.created"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Deleted Event Data
+
+- `BetaWebhookDeploymentDeletedEventData`
+
+  - `id: string`
+
+    ID of the deployment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment.deleted"`
+
+    - `"deployment.deleted"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Paused Event Data
+
+- `BetaWebhookDeploymentPausedEventData`
+
+  - `id: string`
+
+    ID of the deployment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment.paused"`
+
+    - `"deployment.paused"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Run Failed Event Data
+
+- `BetaWebhookDeploymentRunFailedEventData`
+
+  - `id: string`
+
+    ID of the deployment run that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment_run.failed"`
+
+    - `"deployment_run.failed"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Run Started Event Data
+
+- `BetaWebhookDeploymentRunStartedEventData`
+
+  - `id: string`
+
+    ID of the deployment run that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment_run.started"`
+
+    - `"deployment_run.started"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Run Succeeded Event Data
+
+- `BetaWebhookDeploymentRunSucceededEventData`
+
+  - `id: string`
+
+    ID of the deployment run that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment_run.succeeded"`
+
+    - `"deployment_run.succeeded"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Unpaused Event Data
+
+- `BetaWebhookDeploymentUnpausedEventData`
+
+  - `id: string`
+
+    ID of the deployment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment.unpaused"`
+
+    - `"deployment.unpaused"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Deployment Updated Event Data
+
+- `BetaWebhookDeploymentUpdatedEventData`
+
+  - `id: string`
+
+    ID of the deployment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "deployment.updated"`
+
+    - `"deployment.updated"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Environment Archived Event Data
+
+- `BetaWebhookEnvironmentArchivedEventData`
+
+  - `id: string`
+
+    ID of the environment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "environment.archived"`
+
+    - `"environment.archived"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Environment Created Event Data
+
+- `BetaWebhookEnvironmentCreatedEventData`
+
+  - `id: string`
+
+    ID of the environment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "environment.created"`
+
+    - `"environment.created"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Environment Deleted Event Data
+
+- `BetaWebhookEnvironmentDeletedEventData`
+
+  - `id: string`
+
+    ID of the environment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: BetaWebhookEnvironmentDeletedEventType`
+
+    - `"environment.deleted"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Environment Deleted Event Type
+
+- `BetaWebhookEnvironmentDeletedEventType = "environment.deleted"`
+
+  - `"environment.deleted"`
+
+### Beta Webhook Environment Updated Event Data
+
+- `BetaWebhookEnvironmentUpdatedEventData`
+
+  - `id: string`
+
+    ID of the environment that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "environment.updated"`
+
+    - `"environment.updated"`
+
+  - `workspace_id: string`
+
 ### Beta Webhook Event
 
 - `BetaWebhookEvent`
@@ -98869,6 +100600,286 @@ console.log(betaUserProfileEnrollmentURL.expires_at);
 
       - `workspace_id: string`
 
+    - `BetaWebhookAgentCreatedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.created"`
+
+        - `"agent.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentArchivedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.archived"`
+
+        - `"agent.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentDeletedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.deleted"`
+
+        - `"agent.deleted"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentPausedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.paused"`
+
+        - `"deployment.paused"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentRunFailedEventData`
+
+      - `id: string`
+
+        ID of the deployment run that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment_run.failed"`
+
+        - `"deployment_run.failed"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentCreatedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.created"`
+
+        - `"deployment.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentUpdatedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.updated"`
+
+        - `"deployment.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentUnpausedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.unpaused"`
+
+        - `"deployment.unpaused"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentUpdatedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.updated"`
+
+        - `"agent.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentArchivedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.archived"`
+
+        - `"deployment.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentRunStartedEventData`
+
+      - `id: string`
+
+        ID of the deployment run that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment_run.started"`
+
+        - `"deployment_run.started"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentDeletedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.deleted"`
+
+        - `"deployment.deleted"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentRunSucceededEventData`
+
+      - `id: string`
+
+        ID of the deployment run that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment_run.succeeded"`
+
+        - `"deployment_run.succeeded"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentCreatedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "environment.created"`
+
+        - `"environment.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentUpdatedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "environment.updated"`
+
+        - `"environment.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentArchivedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "environment.archived"`
+
+        - `"environment.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentDeletedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: BetaWebhookEnvironmentDeletedEventType`
+
+        - `"environment.deleted"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookMemoryStoreCreatedEventData`
+
+      - `id: string`
+
+        ID of the memory store that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "memory_store.created"`
+
+        - `"memory_store.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookMemoryStoreArchivedEventData`
+
+      - `id: string`
+
+        ID of the memory store that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "memory_store.archived"`
+
+        - `"memory_store.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookMemoryStoreDeletedEventData`
+
+      - `id: string`
+
+        ID of the memory store that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "memory_store.deleted"`
+
+        - `"memory_store.deleted"`
+
+      - `workspace_id: string`
+
   - `type: "event"`
 
     Object type. Always `event` for webhook payloads.
@@ -98877,7 +100888,7 @@ console.log(betaUserProfileEnrollmentURL.expires_at);
 
 ### Beta Webhook Event Data
 
-- `BetaWebhookEventData = BetaWebhookSessionCreatedEventData | BetaWebhookSessionPendingEventData | BetaWebhookSessionRunningEventData | 20 more`
+- `BetaWebhookEventData = BetaWebhookSessionCreatedEventData | BetaWebhookSessionPendingEventData | BetaWebhookSessionRunningEventData | 40 more`
 
   - `BetaWebhookSessionCreatedEventData`
 
@@ -99228,6 +101239,334 @@ console.log(betaUserProfileEnrollmentURL.expires_at);
       - `"session.updated"`
 
     - `workspace_id: string`
+
+  - `BetaWebhookAgentCreatedEventData`
+
+    - `id: string`
+
+      ID of the agent that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "agent.created"`
+
+      - `"agent.created"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookAgentArchivedEventData`
+
+    - `id: string`
+
+      ID of the agent that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "agent.archived"`
+
+      - `"agent.archived"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookAgentDeletedEventData`
+
+    - `id: string`
+
+      ID of the agent that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "agent.deleted"`
+
+      - `"agent.deleted"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentPausedEventData`
+
+    - `id: string`
+
+      ID of the deployment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment.paused"`
+
+      - `"deployment.paused"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentRunFailedEventData`
+
+    - `id: string`
+
+      ID of the deployment run that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment_run.failed"`
+
+      - `"deployment_run.failed"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentCreatedEventData`
+
+    - `id: string`
+
+      ID of the deployment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment.created"`
+
+      - `"deployment.created"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentUpdatedEventData`
+
+    - `id: string`
+
+      ID of the deployment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment.updated"`
+
+      - `"deployment.updated"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentUnpausedEventData`
+
+    - `id: string`
+
+      ID of the deployment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment.unpaused"`
+
+      - `"deployment.unpaused"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookAgentUpdatedEventData`
+
+    - `id: string`
+
+      ID of the agent that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "agent.updated"`
+
+      - `"agent.updated"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentArchivedEventData`
+
+    - `id: string`
+
+      ID of the deployment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment.archived"`
+
+      - `"deployment.archived"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentRunStartedEventData`
+
+    - `id: string`
+
+      ID of the deployment run that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment_run.started"`
+
+      - `"deployment_run.started"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentDeletedEventData`
+
+    - `id: string`
+
+      ID of the deployment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment.deleted"`
+
+      - `"deployment.deleted"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookDeploymentRunSucceededEventData`
+
+    - `id: string`
+
+      ID of the deployment run that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "deployment_run.succeeded"`
+
+      - `"deployment_run.succeeded"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookEnvironmentCreatedEventData`
+
+    - `id: string`
+
+      ID of the environment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "environment.created"`
+
+      - `"environment.created"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookEnvironmentUpdatedEventData`
+
+    - `id: string`
+
+      ID of the environment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "environment.updated"`
+
+      - `"environment.updated"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookEnvironmentArchivedEventData`
+
+    - `id: string`
+
+      ID of the environment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "environment.archived"`
+
+      - `"environment.archived"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookEnvironmentDeletedEventData`
+
+    - `id: string`
+
+      ID of the environment that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: BetaWebhookEnvironmentDeletedEventType`
+
+      - `"environment.deleted"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookMemoryStoreCreatedEventData`
+
+    - `id: string`
+
+      ID of the memory store that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "memory_store.created"`
+
+      - `"memory_store.created"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookMemoryStoreArchivedEventData`
+
+    - `id: string`
+
+      ID of the memory store that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "memory_store.archived"`
+
+      - `"memory_store.archived"`
+
+    - `workspace_id: string`
+
+  - `BetaWebhookMemoryStoreDeletedEventData`
+
+    - `id: string`
+
+      ID of the memory store that triggered the event.
+
+    - `organization_id: string`
+
+    - `type: "memory_store.deleted"`
+
+      - `"memory_store.deleted"`
+
+    - `workspace_id: string`
+
+### Beta Webhook Memory Store Archived Event Data
+
+- `BetaWebhookMemoryStoreArchivedEventData`
+
+  - `id: string`
+
+    ID of the memory store that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "memory_store.archived"`
+
+    - `"memory_store.archived"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Memory Store Created Event Data
+
+- `BetaWebhookMemoryStoreCreatedEventData`
+
+  - `id: string`
+
+    ID of the memory store that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "memory_store.created"`
+
+    - `"memory_store.created"`
+
+  - `workspace_id: string`
+
+### Beta Webhook Memory Store Deleted Event Data
+
+- `BetaWebhookMemoryStoreDeletedEventData`
+
+  - `id: string`
+
+    ID of the memory store that triggered the event.
+
+  - `organization_id: string`
+
+  - `type: "memory_store.deleted"`
+
+    - `"memory_store.deleted"`
+
+  - `workspace_id: string`
 
 ### Beta Webhook Session Archived Event Data
 
@@ -99986,6 +102325,286 @@ console.log(betaUserProfileEnrollmentURL.expires_at);
       - `type: "session.updated"`
 
         - `"session.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentCreatedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.created"`
+
+        - `"agent.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentArchivedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.archived"`
+
+        - `"agent.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentDeletedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.deleted"`
+
+        - `"agent.deleted"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentPausedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.paused"`
+
+        - `"deployment.paused"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentRunFailedEventData`
+
+      - `id: string`
+
+        ID of the deployment run that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment_run.failed"`
+
+        - `"deployment_run.failed"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentCreatedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.created"`
+
+        - `"deployment.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentUpdatedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.updated"`
+
+        - `"deployment.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentUnpausedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.unpaused"`
+
+        - `"deployment.unpaused"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookAgentUpdatedEventData`
+
+      - `id: string`
+
+        ID of the agent that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "agent.updated"`
+
+        - `"agent.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentArchivedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.archived"`
+
+        - `"deployment.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentRunStartedEventData`
+
+      - `id: string`
+
+        ID of the deployment run that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment_run.started"`
+
+        - `"deployment_run.started"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentDeletedEventData`
+
+      - `id: string`
+
+        ID of the deployment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment.deleted"`
+
+        - `"deployment.deleted"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookDeploymentRunSucceededEventData`
+
+      - `id: string`
+
+        ID of the deployment run that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "deployment_run.succeeded"`
+
+        - `"deployment_run.succeeded"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentCreatedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "environment.created"`
+
+        - `"environment.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentUpdatedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "environment.updated"`
+
+        - `"environment.updated"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentArchivedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "environment.archived"`
+
+        - `"environment.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookEnvironmentDeletedEventData`
+
+      - `id: string`
+
+        ID of the environment that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: BetaWebhookEnvironmentDeletedEventType`
+
+        - `"environment.deleted"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookMemoryStoreCreatedEventData`
+
+      - `id: string`
+
+        ID of the memory store that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "memory_store.created"`
+
+        - `"memory_store.created"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookMemoryStoreArchivedEventData`
+
+      - `id: string`
+
+        ID of the memory store that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "memory_store.archived"`
+
+        - `"memory_store.archived"`
+
+      - `workspace_id: string`
+
+    - `BetaWebhookMemoryStoreDeletedEventData`
+
+      - `id: string`
+
+        ID of the memory store that triggered the event.
+
+      - `organization_id: string`
+
+      - `type: "memory_store.deleted"`
+
+        - `"memory_store.deleted"`
 
       - `workspace_id: string`
 

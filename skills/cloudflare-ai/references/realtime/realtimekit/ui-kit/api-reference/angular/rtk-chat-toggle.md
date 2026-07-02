@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of chat. You need to pass the `meeting` object to it to see the unread messages count badge. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSidebar: boolean; sidebar: 'chat' }
 ```
 
@@ -35,14 +35,20 @@ TypeScript
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-chat-toggle></rtk-chat-toggle>
+```html
+<!-- component.html -->
+<rtk-chat-toggle></rtk-chat-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-chat-toggle [meeting]="meeting" size="md" variant="button"></rtk-chat-toggle>
+```html
+<!-- component.html -->
+<rtk-chat-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-chat-toggle>
 ```
 
 ```json

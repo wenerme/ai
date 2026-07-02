@@ -24,16 +24,20 @@ A video indicator that shows a participant's camera status.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkParticipantVideoIndicator    android:id="@+id/video_indicator"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkParticipantVideoIndicator
+    android:id="@+id/video_indicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val videoIndicator = findViewById<RtkParticipantVideoIndicator>(R.id.video_indicator)videoIndicator.activate(participant)
+```kotlin
+val videoIndicator = findViewById<RtkParticipantVideoIndicator>(R.id.video_indicator)
+videoIndicator.activate(participant)
 ```
 
 ```json

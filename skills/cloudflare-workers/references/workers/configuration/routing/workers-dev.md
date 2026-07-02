@@ -57,18 +57,20 @@ To disable the `workers.dev` route for a Worker:
 
 To disable the `workers.dev` route for a Worker, include the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11557)
-* [  wrangler.toml ](#tab-panel-11558)
+* [  wrangler.jsonc ](#tab-panel-11852)
+* [  wrangler.toml ](#tab-panel-11853)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "workers_dev": false
+}
 ```
-{  "workers_dev": false}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 workers_dev = false
 ```
 

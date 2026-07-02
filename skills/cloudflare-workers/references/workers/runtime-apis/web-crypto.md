@@ -20,11 +20,20 @@ Performing cryptographic operations using the Web Crypto API is significantly fa
 
 The Web Crypto API is implemented through the `SubtleCrypto` interface, accessible via the global `crypto.subtle` binding. A simple example of calculating a digest (also known as a hash) is:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const myText = new TextEncoder().encode('Hello world!');
-const myDigest = await crypto.subtle.digest(  {    name: 'SHA-256',  },  myText // The data you want to hash as an ArrayBuffer);
+
+
+const myDigest = await crypto.subtle.digest(
+  {
+    name: 'SHA-256',
+  },
+  myText // The data you want to hash as an ArrayBuffer
+);
+
+
 console.log(new Uint8Array(myDigest));
 ```
 
@@ -50,21 +59,65 @@ The Web Crypto API differs significantly from the [Node.js Crypto API](https://d
 
 ### Usage
 
-* [  JavaScript ](#tab-panel-12139)
-* [  TypeScript ](#tab-panel-12140)
+* [  JavaScript ](#tab-panel-12434)
+* [  TypeScript ](#tab-panel-12435)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(req) {
+    // Fetch from origin
+    const res = await fetch(req);
+
+
+    // We need to read the body twice so we `tee` it (get two instances)
+    const [bodyOne, bodyTwo] = res.body.tee();
+    // Make a new response so we can set the headers (responses from `fetch` are immutable)
+    const newRes = new Response(bodyOne, res);
+    // Create a SHA-256 digest stream and pipe the body into it
+    const digestStream = new crypto.DigestStream("SHA-256");
+    bodyTwo.pipeTo(digestStream);
+    // Get the final result
+    const digest = await digestStream.digest;
+    // Turn it into a hex string
+    const hexString = [...new Uint8Array(digest)]
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+    // Set a header with the SHA-256 hash and return the response
+    newRes.headers.set("x-content-digest", `SHA-256=${hexString}`);
+    return newRes;
+  }
+}
 ```
-export default {  async fetch(req) {    // Fetch from origin    const res = await fetch(req);
-    // We need to read the body twice so we `tee` it (get two instances)    const [bodyOne, bodyTwo] = res.body.tee();    // Make a new response so we can set the headers (responses from `fetch` are immutable)    const newRes = new Response(bodyOne, res);    // Create a SHA-256 digest stream and pipe the body into it    const digestStream = new crypto.DigestStream("SHA-256");    bodyTwo.pipeTo(digestStream);    // Get the final result    const digest = await digestStream.digest;    // Turn it into a hex string    const hexString = [...new Uint8Array(digest)]      .map(b => b.toString(16).padStart(2, '0'))      .join('')    // Set a header with the SHA-256 hash and return the response    newRes.headers.set("x-content-digest", `SHA-256=${hexString}`);    return newRes;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(req): Promise<Response> {    // Fetch from origin    const res = await fetch(req);
-    // We need to read the body twice so we `tee` it (get two instances)    const [bodyOne, bodyTwo] = res.body.tee();    // Make a new response so we can set the headers (responses from `fetch` are immutable)    const newRes = new Response(bodyOne, res);    // Create a SHA-256 digest stream and pipe the body into it    const digestStream = new crypto.DigestStream("SHA-256");    bodyTwo.pipeTo(digestStream);    // Get the final result    const digest = await digestStream.digest;    // Turn it into a hex string    const hexString = [...new Uint8Array(digest)]      .map(b => b.toString(16).padStart(2, '0'))      .join('')    // Set a header with the SHA-256 hash and return the response    newRes.headers.set("x-content-digest", `SHA-256=${hexString}`);    return newRes;  }} satisfies ExportedHandler;
+```ts
+export default {
+  async fetch(req): Promise<Response> {
+    // Fetch from origin
+    const res = await fetch(req);
+
+
+    // We need to read the body twice so we `tee` it (get two instances)
+    const [bodyOne, bodyTwo] = res.body.tee();
+    // Make a new response so we can set the headers (responses from `fetch` are immutable)
+    const newRes = new Response(bodyOne, res);
+    // Create a SHA-256 digest stream and pipe the body into it
+    const digestStream = new crypto.DigestStream("SHA-256");
+    bodyTwo.pipeTo(digestStream);
+    // Get the final result
+    const digest = await digestStream.digest;
+    // Turn it into a hex string
+    const hexString = [...new Uint8Array(digest)]
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+    // Set a header with the SHA-256 hash and return the response
+    newRes.headers.set("x-content-digest", `SHA-256=${hexString}`);
+    return newRes;
+  }
+} satisfies ExportedHandler;
 ```
 
 ## Methods
@@ -161,9 +214,17 @@ These methods are all accessed via [crypto.subtle ↗](https://developer.mozilla
 * `generateKey(algorithm, extractable, keyUsages)` : Promise<CryptoKey> | Promise<CryptoKeyPair>
 
   * Returns a Promise that fulfills with a newly-generated `CryptoKey`, for symmetrical algorithms, or a `CryptoKeyPair`, containing two newly generated keys, for asymmetrical algorithms. For example, to generate a new AES-GCM key:
-JavaScript
-```
-let keyPair = await crypto.subtle.generateKey(  {    name: 'AES-GCM',    length: 256,  },  true,  ['encrypt', 'decrypt']);
+
+**JavaScript**
+```js
+let keyPair = await crypto.subtle.generateKey(
+  {
+    name: 'AES-GCM',
+    length: 256,
+  },
+  true,
+  ['encrypt', 'decrypt']
+);
 ```
 
 #### Parameters

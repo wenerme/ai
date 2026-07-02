@@ -32,13 +32,13 @@ When the HTTP request contains too many headers, this field may not contain the 
 
 Example value:
 
-```
+```txt
 ["content-type"]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.headers.names[*] == "content-type")
 ```
 

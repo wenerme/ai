@@ -18,9 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To begin, install Ember:
 
-Terminal window
-
-```
+```sh
 npm install -g ember-cli
 ```
 
@@ -28,18 +26,15 @@ npm install -g ember-cli
 
 Use the `ember new` command to create a new application:
 
-Terminal window
-
-```
+```sh
 npx ember new ember-quickstart --lang en
 ```
 
 After the application is generated, change the directory to your project and run your project by running the following commands:
 
-Terminal window
-
-```
-cd ember-quickstartnpm start
+```sh
+cd ember-quickstart
+npm start
 ```
 
 ## Before you continue
@@ -54,10 +49,10 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
+```sh
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

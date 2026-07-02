@@ -47,14 +47,17 @@ If your encoder shows a connection error such as "Failed to connect to server" o
 * Verify that your RTMPS URL, stream key, and encoder software are copied correctly into your broadcasting software.
 * Verify that the live input is enabled. A live input that is _disabled_ will reject all incoming connections. You can enable or disable a live input from the **Live inputs** page in the Dashboard or via the API using the `enabled` property.
 [ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-Terminal window
-```
-curl -X GET \--header "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id}
+```bash
+curl -X GET \
+--header "Authorization: Bearer <API_TOKEN>" \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id}
 ```
 If `enabled` is `false` in the response, update the live input to enable it:
-Terminal window
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \--header "Authorization: Bearer <API_TOKEN>" \--data '{"enabled": true}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"enabled": true}'
 ```
 * If you use [Live Webhooks](https://developers.cloudflare.com/stream/stream-live/webhooks/), check for a `live_input.errored` event. The webhook payload includes an [error code](https://developers.cloudflare.com/stream/stream-live/webhooks/#error-codes) that can help you troubleshoot the specific cause.
 

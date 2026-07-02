@@ -22,14 +22,15 @@ Returns `0` when L4 statistics are not available for the request.
 
 Example value:
 
-```
+```txt
 123456
 ```
 
 Example usage:
 
-```
-# Match requests where the delivery rate is below 100 KB/scf.edge.l4.delivery_rate < 100000
+```txt
+# Match requests where the delivery rate is below 100 KB/s
+cf.edge.l4.delivery_rate < 100000
 ```
 
 Categories:

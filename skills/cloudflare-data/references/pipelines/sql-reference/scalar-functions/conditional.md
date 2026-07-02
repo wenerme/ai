@@ -18,7 +18,7 @@ _Cloudflare Pipelines scalar function implementations are based on [Apache DataF
 
 Returns the first of its arguments that is not _null_. Returns _null_ if all arguments are _null_. This function is often used to substitute a default value for _null_ values.
 
-```
+```plaintext
 coalesce(expression1[, ..., expression_n])
 ```
 
@@ -30,7 +30,7 @@ coalesce(expression1[, ..., expression_n])
 
 Returns _null_ if _expression1_ equals _expression2_; otherwise it returns _expression1_. This can be used to perform the inverse operation of [coalesce](#coalesce).
 
-```
+```plaintext
 nullif(expression1, expression2)
 ```
 
@@ -43,7 +43,7 @@ nullif(expression1, expression2)
 
 Returns _expression2_ if _expression1_ is NULL; otherwise it returns _expression1_.
 
-```
+```plaintext
 nvl(expression1, expression2)
 ```
 
@@ -56,7 +56,7 @@ nvl(expression1, expression2)
 
 Returns _expression2_ if _expression1_ is not NULL; otherwise it returns _expression3_.
 
-```
+```plaintext
 nvl2(expression1, expression2, expression3)
 ```
 

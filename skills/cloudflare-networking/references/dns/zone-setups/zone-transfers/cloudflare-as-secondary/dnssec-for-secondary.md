@@ -32,8 +32,8 @@ If you use Cloudflare secondary nameservers as the only nameservers authoritativ
 
 In this setup, DNSSEC on your primary DNS provider does not need to be enabled.
 
-* [ Dashboard ](#tab-panel-8233)
-* [ API ](#tab-panel-8234)
+* [ Dashboard ](#tab-panel-8514)
+* [ API ](#tab-panel-8515)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -72,10 +72,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Edit DNSSEC Status
+**Edit DNSSEC Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "status": "active"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "status": "active"
+  }'
 ```
 
 1. Use the [DNSSEC Details endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/) to get the necessary values to create a **DS** record at your registrar.
@@ -125,8 +130,8 @@ Warning
 
 Pre-signed DNSSEC does not support [Secondary DNS Overrides](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) nor [Load Balancing](https://developers.cloudflare.com/load-balancing/). Once you enable pre-signed DNSSEC, Cloudflare will treat all your DNS records as DNS-only.
 
-* [ Dashboard ](#tab-panel-8231)
-* [ API ](#tab-panel-8232)
+* [ Dashboard ](#tab-panel-8512)
+* [ API ](#tab-panel-8513)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -139,10 +144,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Edit DNSSEC Status
+**Edit DNSSEC Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dnssec_presigned": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "dnssec_presigned": true
+  }'
 ```
 
 1. Make sure Cloudflare nameservers are added at your registrar. You can see your Cloudflare nameservers on the dashboard by going to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.

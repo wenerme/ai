@@ -46,20 +46,38 @@ When you deploy your project, Cloudflare deploys both your Worker code and your 
 
 The **assets directory** specified in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) is central to this design. During deployment, Wrangler automatically uploads the files from this directory to Cloudflare's infrastructure. Once deployed, requests for these assets are routed efficiently to locations closest to your users.
 
-* [  wrangler.jsonc ](#tab-panel-12145)
-* [  wrangler.toml ](#tab-panel-12146)
+* [  wrangler.jsonc ](#tab-panel-12440)
+* [  wrangler.toml ](#tab-panel-12441)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-spa",
+  "main": "src/index.js",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-spa",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "./dist",    "binding": "ASSETS"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-spa"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./dist"binding = "ASSETS"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-spa"
+main = "src/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
 ```
 
 Note
@@ -68,23 +86,47 @@ If you are using the [Cloudflare Vite plugin](https://developers.cloudflare.com/
 
 By adding an [**assets binding**](https://developers.cloudflare.com/workers/static-assets/binding/#binding), you can directly fetch and serve assets within your Worker code.
 
-* [  JavaScript ](#tab-panel-12141)
-* [  Python ](#tab-panel-12142)
+* [  JavaScript ](#tab-panel-12436)
+* [  Python ](#tab-panel-12437)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 // index.js
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) {      return new Response(JSON.stringify({ name: "Cloudflare" }), {        headers: { "Content-Type": "application/json" },      });    }
-    return env.ASSETS.fetch(request);  },};
+
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    if (url.pathname.startsWith("/api/")) {
+      return new Response(JSON.stringify({ name: "Cloudflare" }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+
+    return env.ASSETS.fetch(request);
+  },
+};
 ```
 
-Python
+**Python**
 
-```
-from workers import WorkerEntrypoint, Responsefrom urllib.parse import urlparse
-class Default(WorkerEntrypoint):  async def fetch(self, request):    # Example of serving static assets    url = urlparse(request.url)    if url.path.startswith("/api/):      return Response.json({"name": "Cloudflare"})
+```python
+from workers import WorkerEntrypoint, Response
+from urllib.parse import urlparse
+
+
+class Default(WorkerEntrypoint):
+  async def fetch(self, request):
+    # Example of serving static assets
+    url = urlparse(request.url)
+    if url.path.startswith("/api/):
+      return Response.json({"name": "Cloudflare"})
+
+
     return await self.env.ASSETS.fetch(request)
 ```
 
@@ -97,39 +139,66 @@ The default behavior for requests which don't match a static asset can be change
 * [not\_found\_handling = "single-page-application"](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/): Sets your application to return a `200 OK` response with `index.html` for requests which don't match a static asset. Use this if you have a Single Page Application. We recommend pairing this with selective routing using `run_worker_first` for [advanced routing control](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control).
 * [not\_found\_handling = "404-page"](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/#custom-404-pages): Sets your application to return a `404 Not Found` response with the nearest `404.html` for requests which don't match a static asset.
 
-* [  wrangler.jsonc ](#tab-panel-12143)
-* [  wrangler.toml ](#tab-panel-12144)
+* [  wrangler.jsonc ](#tab-panel-12438)
+* [  wrangler.toml ](#tab-panel-12439)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
 ```
-{  "assets": {    "directory": "./dist",    "not_found_handling": "single-page-application"  }}
-```
 
-TOML
+**TOML**
 
-```
-[assets]directory = "./dist"not_found_handling = "single-page-application"
+```toml
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"
 ```
 
 If you want the Worker code to execute before serving assets, you can use the `run_worker_first` option. This can be set to `true` to invoke the Worker script for all requests, or configured as an array of route patterns for selective Worker-script-first routing:
 
 **Invoking your Worker script on specific paths:**
 
-* [  wrangler.jsonc ](#tab-panel-12147)
-* [  wrangler.toml ](#tab-panel-12148)
+* [  wrangler.jsonc ](#tab-panel-12442)
+* [  wrangler.toml ](#tab-panel-12443)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-spa-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "main": "./src/index.ts",
+  "assets": {
+    "directory": "./dist/",
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "!/api/docs/*"]
+  }
+}
 ```
-{  "name": "my-spa-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "main": "./src/index.ts",  "assets": {    "directory": "./dist/",    "not_found_handling": "single-page-application",    "binding": "ASSETS",    "run_worker_first": ["/api/*", "!/api/docs/*"]  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-spa-worker"# Set this to today's datecompatibility_date = "2026-06-24"main = "./src/index.ts"
-[assets]directory = "./dist/"not_found_handling = "single-page-application"binding = "ASSETS"run_worker_first = [ "/api/*", "!/api/docs/*" ]
+```toml
+name = "my-spa-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+main = "./src/index.ts"
+
+
+[assets]
+directory = "./dist/"
+not_found_handling = "single-page-application"
+binding = "ASSETS"
+run_worker_first = [ "/api/*", "!/api/docs/*" ]
 ```
 
 For a more advanced pattern, refer to [SPA shell with bootstrap data](https://developers.cloudflare.com/workers/examples/spa-shell/), which uses HTMLRewriter to inject prefetched API data into the HTML stream.

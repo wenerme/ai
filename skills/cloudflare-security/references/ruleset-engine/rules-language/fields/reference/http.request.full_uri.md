@@ -20,7 +20,7 @@ The value will not include the `#fragment` part, which is not sent to web server
 
 Example value:
 
-```
+```txt
 "https://www.example.org/articles/index?section=539061&expand=comments"
 ```
 

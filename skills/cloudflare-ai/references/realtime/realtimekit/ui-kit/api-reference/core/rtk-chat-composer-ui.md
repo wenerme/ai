@@ -29,19 +29,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-composer-ui></rtk-chat-composer-ui>
 ```
 
 ### With Properties
 
-```
-<rtk-chat-composer-ui size="md"></rtk-chat-composer-ui>
+```html
+<rtk-chat-composer-ui
+ size="md">
+</rtk-chat-composer-ui>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat-composer-ui");
-  el.canSendFiles= true;  el.canSendTextMessage= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat-composer-ui");
+
+
+  el.canSendFiles= true;
+  el.canSendTextMessage= true;
+</script>
 ```
 
 ```json

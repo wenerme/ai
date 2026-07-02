@@ -28,110 +28,177 @@ xAI's video generation model. Generates, edits, and extends videos from text and
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2040)
-* [ cURL ](#tab-panel-2041)
+* [ TypeScript ](#tab-panel-2088)
+* [ cURL ](#tab-panel-2089)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-video',
+  {
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+    aspect_ratio: '16:9',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'xai/grok-imagine-video',  {    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',    aspect_ratio: '16:9',    duration: 5,    resolution: '720p',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-video",
+  "input": {
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-2084)
+* [ Raw response ](#tab-panel-2085)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-video",  "input": {    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",    "aspect_ratio": "16:9",    "duration": 5,    "resolution": "720p"  }}'
-```
-
-* [ Output ](#tab-panel-2036)
-* [ Raw response ](#tab-panel-2037)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video/simple-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video/simple-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Examples
 
 **Portrait Video**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-2044)
-* [ cURL ](#tab-panel-2045)
+* [ TypeScript ](#tab-panel-2092)
+* [ cURL ](#tab-panel-2093)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-video',
+  {
+    prompt: 'Slow-motion close-up of ink drops blooming through water against a black background',
+    aspect_ratio: '9:16',
+    duration: 5,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'xai/grok-imagine-video',  {    prompt: 'Slow-motion close-up of ink drops blooming through water against a black background',    aspect_ratio: '9:16',    duration: 5,    resolution: '720p',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-video",
+  "input": {
+    "prompt": "Slow-motion close-up of ink drops blooming through water against a black background",
+    "aspect_ratio": "9:16",
+    "duration": 5,
+    "resolution": "720p"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-2086)
+* [ Raw response ](#tab-panel-2087)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-video",  "input": {    "prompt": "Slow-motion close-up of ink drops blooming through water against a black background",    "aspect_ratio": "9:16",    "duration": 5,    "resolution": "720p"  }}'
-```
-
-* [ Output ](#tab-panel-2038)
-* [ Raw response ](#tab-panel-2039)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video/portrait-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video/portrait-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 **Cinematic Landscape**  — Widescreen cinematic shot at extended duration
 
-* [ TypeScript ](#tab-panel-2046)
-* [ cURL ](#tab-panel-2047)
+* [ TypeScript ](#tab-panel-2094)
+* [ cURL ](#tab-panel-2095)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'xai/grok-imagine-video',
+  {
+    prompt:
+      'A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds',
+    aspect_ratio: '16:9',
+    duration: 10,
+    resolution: '720p',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'xai/grok-imagine-video',  {    prompt:      'A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds',    aspect_ratio: '16:9',    duration: 10,    resolution: '720p',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "xai/grok-imagine-video",
+  "input": {
+    "prompt": "A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds",
+    "aspect_ratio": "16:9",
+    "duration": 10,
+    "resolution": "720p"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-2090)
+* [ Raw response ](#tab-panel-2091)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-video",  "input": {    "prompt": "A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds",    "aspect_ratio": "16:9",    "duration": 10,    "resolution": "720p"  }}'
-```
-
-* [ Output ](#tab-panel-2042)
-* [ Raw response ](#tab-panel-2043)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video/cinematic-landscape.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video/cinematic-landscape.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2048)
-* [ Output ](#tab-panel-2049)
+* [ Input ](#tab-panel-2096)
+* [ Output ](#tab-panel-2097)
 
 \_operation
 
 `string`enum: generate, edit, extend
 
-aspect\_ratio
-
-`string`enum: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3
-
-duration
-
-`integer`maximum: 15minimum: 1
-
-▶image{}
-
-`object`
-
-▶output{}
-
-`object`
-
 prompt
 
 `string`
 
-▶reference\_images\[\]
+duration
 
-`array`maxItems: 10
+`integer`minimum: 1maximum: 15
+
+aspect\_ratio
+
+`string`enum: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3
 
 resolution
 
@@ -141,13 +208,25 @@ size
 
 `string`enum: 848x480, 1696x960, 1280x720, 1920x1080
 
-user
+▶image{}
 
-`string`
+`object`
 
 ▶video{}
 
 `object`
+
+▶reference\_images\[\]
+
+`array`maxItems: 10
+
+▶output{}
+
+`object`
+
+user
+
+`string`
 
 video
 

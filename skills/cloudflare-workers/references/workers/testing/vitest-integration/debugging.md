@@ -18,9 +18,7 @@ This guide shows you how to debug your Workers tests with Vitest. This is availa
 
 To start debugging, run Vitest with the following command and attach a debugger to port `9229`:
 
-Terminal window
-
-```
+```sh
 vitest --inspect --no-file-parallelism
 ```
 
@@ -28,27 +26,70 @@ vitest --inspect --no-file-parallelism
 
 By default, the inspector will be opened on port `9229`. If you need to use a different port (for example, `3456`), you can run the following command:
 
-Terminal window
-
-```
+```sh
 vitest --inspect=3456 --no-file-parallelism
 ```
 
 Alternatively, you can define it in your Vitest configuration file:
 
-TypeScript
+**TypeScript**
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      // ...    }),  ],  test: {    inspector: {      port: 3456,    },  },});
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      // ...
+    }),
+  ],
+  test: {
+    inspector: {
+      port: 3456,
+    },
+  },
+});
 ```
 
 ## Setup VS Code to use breakpoints
 
 To setup VS Code for breakpoint debugging in your Worker tests, create a `.vscode/launch.json` file that contains the following configuration:
 
-```
-{  "configurations": [    {      "type": "node",      "request": "launch",      "name": "Open inspector with Vitest",      "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",      "console": "integratedTerminal",      "args": ["--inspect=9229", "--no-file-parallelism"]    },    {      "name": "Attach to Workers Runtime",      "type": "node",      "request": "attach",      "port": 9229,      "cwd": "/",      "resolveSourceMapLocations": null,      "attachExistingChildren": false,      "autoAttachChildProcesses": false    }  ],  "compounds": [    {      "name": "Debug Workers tests",      "configurations": [        "Open inspector with Vitest",        "Attach to Workers Runtime"      ],      "stopAll": true    }  ]}
+```json
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Open inspector with Vitest",
+      "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
+      "console": "integratedTerminal",
+      "args": ["--inspect=9229", "--no-file-parallelism"]
+    },
+    {
+      "name": "Attach to Workers Runtime",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "cwd": "/",
+      "resolveSourceMapLocations": null,
+      "attachExistingChildren": false,
+      "autoAttachChildProcesses": false
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Workers tests",
+      "configurations": [
+        "Open inspector with Vitest",
+        "Attach to Workers Runtime"
+      ],
+      "stopAll": true
+    }
+  ]
+}
 ```
 
 Select **Debug Workers tests** at the top of the **Run & Debug** panel to open an inspector with Vitest and attach a debugger to the Workers runtime. Then you can add breakpoints to your test files and start debugging.

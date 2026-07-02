@@ -28,30 +28,35 @@ TerminalStandaloneExtensionOpen Source
 
 1. **Install OpenCode**
 Install OpenCode. For npm, Homebrew, Bun, Scoop, or Windows options, see the [OpenCode install guide ↗](https://opencode.ai/docs/).
-Terminal window
-```
+```bash
 curl -fsSL https://opencode.ai/install | bash
 ```
 2. **Install Cloudflare Skills**
-Terminal window
-```
+```bash
 npx skills add https://github.com/cloudflare/skills
 ```
 3. **Add Cloudflare MCP servers**
 Add MCP servers to `.opencode.jsonc`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).
-```
-{  "mcp": {    "cloudflare": { "type": "remote", "url": "https://mcp.cloudflare.com/mcp", "enabled": true },    "cloudflare-docs": { "type": "remote", "url": "https://docs.mcp.cloudflare.com/mcp", "enabled": true },    "cloudflare-bindings": { "type": "remote", "url": "https://bindings.mcp.cloudflare.com/mcp", "enabled": true },    "cloudflare-builds": { "type": "remote", "url": "https://builds.mcp.cloudflare.com/mcp", "enabled": true },    "cloudflare-observability": { "type": "remote", "url": "https://observability.mcp.cloudflare.com/mcp", "enabled": true }  }}
+```json
+{
+  "mcp": {
+    "cloudflare": { "type": "remote", "url": "https://mcp.cloudflare.com/mcp", "enabled": true },
+    "cloudflare-docs": { "type": "remote", "url": "https://docs.mcp.cloudflare.com/mcp", "enabled": true },
+    "cloudflare-bindings": { "type": "remote", "url": "https://bindings.mcp.cloudflare.com/mcp", "enabled": true },
+    "cloudflare-builds": { "type": "remote", "url": "https://builds.mcp.cloudflare.com/mcp", "enabled": true },
+    "cloudflare-observability": { "type": "remote", "url": "https://observability.mcp.cloudflare.com/mcp", "enabled": true }
+  }
+}
 ```
 4. **Launch OpenCode**
 Start OpenCode from the root of your project, where `wrangler.jsonc` lives (if it already exists).
-Terminal window
-```
+```bash
 opencode
 ```
 5. **Try a prompt**
 For example:
-```
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Cloudflare platform access

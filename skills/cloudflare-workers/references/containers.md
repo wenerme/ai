@@ -28,33 +28,90 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-7866)
-* [ Worker Config ](#tab-panel-7867)
+* [ Worker Code ](#tab-panel-8119)
+* [ Worker Config ](#tab-panel-8120)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Container, getContainer } from "@cloudflare/containers";
-export class MyContainer extends Container {  defaultPort = 4000; // Port the container is listening on  sleepAfter = "10m"; // Stop the instance if requests not sent for 10 minutes}
-export default {  async fetch(request, env) {    const { "session-id": sessionId } = await request.json();    // Get the container instance for the given session ID    const containerInstance = getContainer(env.MY_CONTAINER, sessionId);    // Pass the request to the container instance on its default port    return containerInstance.fetch(request);  },};
+
+
+export class MyContainer extends Container {
+  defaultPort = 4000; // Port the container is listening on
+  sleepAfter = "10m"; // Stop the instance if requests not sent for 10 minutes
+}
+
+
+export default {
+  async fetch(request, env) {
+    const { "session-id": sessionId } = await request.json();
+    // Get the container instance for the given session ID
+    const containerInstance = getContainer(env.MY_CONTAINER, sessionId);
+    // Pass the request to the container instance on its default port
+    return containerInstance.fetch(request);
+  },
+};
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7864)
-* [  wrangler.toml ](#tab-panel-7865)
+* [  wrangler.jsonc ](#tab-panel-8117)
+* [  wrangler.toml ](#tab-panel-8118)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "container-starter",
+  "main": "src/index.js",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "containers": [
+    {
+      "class_name": "MyContainer",
+      "image": "./Dockerfile",
+      "max_instances": 5
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "MyContainer",
+        "name": "MY_CONTAINER"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": ["MyContainer"],
+      "tag": "v1"
+    }
+  ]
+}
 ```
-{  "name": "container-starter",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "containers": [    {      "class_name": "MyContainer",      "image": "./Dockerfile",      "max_instances": 5    }  ],  "durable_objects": {    "bindings": [      {        "class_name": "MyContainer",        "name": "MY_CONTAINER"      }    ]  },  "migrations": [    {      "new_sqlite_classes": ["MyContainer"],      "tag": "v1"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-name = "container-starter"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-24"
-[[containers]]class_name = "MyContainer"image = "./Dockerfile"max_instances = 5
-[[durable_objects.bindings]]class_name = "MyContainer"name = "MY_CONTAINER"
-[[migrations]]new_sqlite_classes = [ "MyContainer" ]tag = "v1"
+```toml
+name = "container-starter"
+main = "src/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[containers]]
+class_name = "MyContainer"
+image = "./Dockerfile"
+max_instances = 5
+
+
+[[durable_objects.bindings]]
+class_name = "MyContainer"
+name = "MY_CONTAINER"
+
+
+[[migrations]]
+new_sqlite_classes = [ "MyContainer" ]
+tag = "v1"
 ```
 
 [ Get started ](https://developers.cloudflare.com/containers/get-started/) [ Containers dashboard ](https://dash.cloudflare.com/?to=/:account/workers/containers)

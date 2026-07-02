@@ -22,8 +22,9 @@ Requires a Cloudflare Enterprise plan. You must also enable [AI Security for App
 
 Example usage:
 
-```
-# Matches requests where the prompt is highly relevant to the "competitors" custom topic:(cf.llm.prompt.custom_topic_categories["competitors"] lt 30)
+```txt
+# Matches requests where the prompt is highly relevant to the "competitors" custom topic:
+(cf.llm.prompt.custom_topic_categories["competitors"] lt 30)
 ```
 
 Categories:

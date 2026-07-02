@@ -22,14 +22,31 @@ Cloudflare publishes a list of IP addresses for JD Cloud data centers, used by C
 
 You can obtain the list of JD Cloud data center IP addresses via Cloudflare API. Use the [Cloudflare/JD Cloud IP Details](https://developers.cloudflare.com/api/resources/ips/methods/list/) operation with the `networks=jdcloud` query string parameter:
 
-Cloudflare/JD Cloud IP Details
+**Cloudflare/JD Cloud IP Details**
 
-```
-curl "https://api.cloudflare.com/client/v4/ips?networks=jdcloud" \  --request GET
+```bash
+curl "https://api.cloudflare.com/client/v4/ips?networks=jdcloud" \
+  --request GET
 ```
 
-```
-{  "result": {    "ipv4_cidrs": [      // (...)    ],    "ipv6_cidrs": [      // (...)    ],    "jdcloud_cidrs": [      // (...)    ],    "etag": "<ETAG>"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "ipv4_cidrs": [
+      // (...)
+    ],
+    "ipv6_cidrs": [
+      // (...)
+    ],
+    "jdcloud_cidrs": [
+      // (...)
+    ],
+    "etag": "<ETAG>"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 The `jdcloud_cidrs` array lists the IP addresses of JD Cloud data centers.

@@ -20,13 +20,13 @@ Requires a Cloudflare Enterprise plan.
 
 Example value:
 
-```
+```txt
 [["form-data; name=\"username\""], ["form-data; name=\"picture\""]]
 ```
 
 Example usage:
 
-```
+```txt
 any(http.request.body.multipart.content_dispositions[*][0] in {"form-data; name=\"username\"" "form-data; name=\"picture\""})
 ```
 

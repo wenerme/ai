@@ -38,19 +38,25 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10939)
-* [  wrangler.toml ](#tab-panel-10940)
+* [  wrangler.jsonc ](#tab-panel-11234)
+* [  wrangler.toml ](#tab-panel-11235)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "media": {
+    "binding": "MEDIA"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "media": {    "binding": "MEDIA"  }}
-```
 
-TOML
+**TOML**
 
-```
-[media]binding = "MEDIA" # available in your Worker on env.MEDIA
+```toml
+[media]
+binding = "MEDIA" # available in your Worker on env.MEDIA
 ```
 
 Within your Worker code, you can interact with this binding by using `env.MEDIA.input()` to build an object that can manipulate the video (passed as a `ReadableStream`).
@@ -108,78 +114,191 @@ Finally, after configuring the output, three methods are available to receive re
 
 Resize a video and extract a five-second clip:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = await env.R2_BUCKET.get("input.mp4");
-    const result = env.MEDIA.input(video.body)      .transform({ width: 480, height: 270 })      .output({ mode: "video", time: "0s", duration: "5s" });
-    return await result.response();  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    const result = env.MEDIA.input(video.body)
+      .transform({ width: 480, height: 270 })
+      .output({ mode: "video", time: "0s", duration: "5s" });
+
+
+    return await result.response();
+  },
+};
 ```
 
 ### Extract a still frame
 
 Extract a single frame as a JPEG thumbnail:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = await env.R2_BUCKET.get("input.mp4");
-    const result = env.MEDIA.input(video.body)      .transform({ width: 640, height: 360 })      .output({ mode: "frame", time: "2s", format: "jpg" });
-    return await result.response();  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    const result = env.MEDIA.input(video.body)
+      .transform({ width: 640, height: 360 })
+      .output({ mode: "frame", time: "2s", format: "jpg" });
+
+
+    return await result.response();
+  },
+};
 ```
 
 #### Identify content with Media Transformations and Workers AI
 
 Extract a frame (still image) from a video, then use a model like [UForm-Gen on Workers AI](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/) to generate a caption.
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    // First, load the video file from a source like R2 (or a fetch)
-    // Loading from R2    const video = await env.R2_BUCKET.get("input.mp4");
-    // Or using a fetch:    // const video = await fetch('https://example.com/video.mp4');
-    // Isolate a frame (still image)    const frame = await env.MEDIA.input(video.body)      .transform({ width: 720 })      .output({        mode: 'frame',        time: '3s',      })      .response();
-    // Set up the payload for Workers AI    const payload = {      image: [...new Uint8Array(await frame.arrayBuffer())],      prompt: "Generate a caption for this image",      max_tokens: 512,    };    const response = await env.AI.run(      "@cf/unum/uform-gen2-qwen-500m",      payload    );    return new Response(JSON.stringify(response));  }}
+```ts
+export default {
+  async fetch(request, env) {
+    // First, load the video file from a source like R2 (or a fetch)
+
+
+    // Loading from R2
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    // Or using a fetch:
+    // const video = await fetch('https://example.com/video.mp4');
+
+
+    // Isolate a frame (still image)
+    const frame = await env.MEDIA.input(video.body)
+      .transform({ width: 720 })
+      .output({
+        mode: 'frame',
+        time: '3s',
+      })
+      .response();
+
+
+    // Set up the payload for Workers AI
+    const payload = {
+      image: [...new Uint8Array(await frame.arrayBuffer())],
+      prompt: "Generate a caption for this image",
+      max_tokens: 512,
+    };
+    const response = await env.AI.run(
+      "@cf/unum/uform-gen2-qwen-500m",
+      payload
+    );
+    return new Response(JSON.stringify(response));
+  }
+}
 ```
 
 ### Extract audio
 
 Extract the audio track from a video as an M4A file. This example demonstrates skipping `.transform()` since no resizing is needed:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = await env.R2_BUCKET.get("input.mp4");
-    const result = env.MEDIA.input(video.body).output({      mode: "audio",      time: "0s",      duration: "30s",    });
-    return await result.response();  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    const result = env.MEDIA.input(video.body).output({
+      mode: "audio",
+      time: "0s",
+      duration: "30s",
+    });
+
+
+    return await result.response();
+  },
+};
 ```
 
 #### Transcribe audio with Media Transformations and Workers AI
 
 Extract audio, then transcribe using [Whisper on Workers AI](https://developers.cloudflare.com/workers-ai/models/whisper/).
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    // First, load the video file from a source like R2 (or a fetch)
-    // Loading from R2    const video = await env.R2_BUCKET.get("input.mp4");
-    // Or using a fetch:    // const video = await fetch('https://example.com/video.mp4');
-    // Extract audio using the media transformations binding:    const audio = await env.MEDIA.input(video.body)      .transform()      .output({        mode: 'audio',        })      .response();
-    // Prepare and run Workers AI inference    const payload = {      audio: [...new Uint8Array(await audio.arrayBuffer())],    };    const response = await env.AI.run(      "@cf/openai/whisper",      payload    );
-    // response will have props {text, word_count, vtt, words}    return new Response(      JSON.stringify(response, null, 2),      {        headers: {'Content-Type': 'application/json'}      }    );  }}
+```ts
+export default {
+  async fetch(request, env) {
+    // First, load the video file from a source like R2 (or a fetch)
+
+
+    // Loading from R2
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    // Or using a fetch:
+    // const video = await fetch('https://example.com/video.mp4');
+
+
+    // Extract audio using the media transformations binding:
+    const audio = await env.MEDIA.input(video.body)
+      .transform()
+      .output({
+        mode: 'audio',
+        })
+      .response();
+
+
+    // Prepare and run Workers AI inference
+    const payload = {
+      audio: [...new Uint8Array(await audio.arrayBuffer())],
+    };
+    const response = await env.AI.run(
+      "@cf/openai/whisper",
+      payload
+    );
+
+
+    // response will have props {text, word_count, vtt, words}
+    return new Response(
+      JSON.stringify(response, null, 2),
+      {
+        headers: {'Content-Type': 'application/json'}
+      }
+    );
+  }
+}
 ```
 
 ### Store transformed output in R2
 
 Transform a video and store the result directly in R2:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = await env.R2_BUCKET.get("input.mp4");
-    const result = env.MEDIA.input(video.body)      .transform({ width: 480, height: 270, fit: "contain" })      .output({ mode: "video", time: "0s", duration: "10s", audio: false });
-    // Store the transformed video directly in R2    await env.R2_BUCKET.put("output-480p.mp4", await result.media(), {      httpMetadata: { contentType: await result.contentType() },    });
-    return new Response("Video transformed and stored", { status: 200 });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    const result = env.MEDIA.input(video.body)
+      .transform({ width: 480, height: 270, fit: "contain" })
+      .output({ mode: "video", time: "0s", duration: "10s", audio: false });
+
+
+    // Store the transformed video directly in R2
+    await env.R2_BUCKET.put("output-480p.mp4", await result.media(), {
+      httpMetadata: { contentType: await result.contentType() },
+    });
+
+
+    return new Response("Video transformed and stored", { status: 200 });
+  },
+};
 ```
 
 ## Error handling
@@ -197,12 +316,32 @@ Errors throw a `MediaError`, which extends the standard `Error` interface with a
 
 Use a `try...catch` block to handle errors:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const video = await env.R2_BUCKET.get("input.mp4");
-    try {      const result = env.MEDIA.input(video.body)        .transform({ width: 480, height: 270 })        .output({ mode: "video", time: "0s", duration: "5s" });
-      return await result.response();    } catch (e) {      if (e instanceof Error && "code" in e) {        // Handle MediaError        return new Response(`Transformation failed: ${e.message}`, {          status: 500,        });      }      throw e;    }  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const video = await env.R2_BUCKET.get("input.mp4");
+
+
+    try {
+      const result = env.MEDIA.input(video.body)
+        .transform({ width: 480, height: 270 })
+        .output({ mode: "video", time: "0s", duration: "5s" });
+
+
+      return await result.response();
+    } catch (e) {
+      if (e instanceof Error && "code" in e) {
+        // Handle MediaError
+        return new Response(`Transformation failed: ${e.message}`, {
+          status: 500,
+        });
+      }
+      throw e;
+    }
+  },
+};
 ```
 
 ## Caching
@@ -219,26 +358,32 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10941)
-* [  wrangler.toml ](#tab-panel-10942)
+* [  wrangler.jsonc ](#tab-panel-11236)
+* [  wrangler.toml ](#tab-panel-11237)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "media": {
+    "binding": "MEDIA",
+    "remote": true
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "media": {    "binding": "MEDIA",    "remote": true  }}
-```
 
-TOML
+**TOML**
 
-```
-[media]binding = "MEDIA" # available in your Worker on env.MEDIAremote = true
+```toml
+[media]
+binding = "MEDIA" # available in your Worker on env.MEDIA
+remote = true
 ```
 
 Then run:
 
-Terminal window
-
-```
+```sh
 npx wrangler dev
 ```
 

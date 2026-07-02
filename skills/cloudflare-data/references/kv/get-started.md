@@ -49,8 +49,8 @@ New to Workers?
 
 Refer to [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) to learn about the Workers serverless execution model works. Go to the [Workers Get started guide](https://developers.cloudflare.com/workers/get-started/guide/) to set up your first Worker.
 
-* [ CLI ](#tab-panel-9134)
-* [ Dashboard ](#tab-panel-9135)
+* [ CLI ](#tab-panel-9385)
+* [ Dashboard ](#tab-panel-9386)
 
 Create a new Worker to read and write to your KV namespace.
 
@@ -92,8 +92,7 @@ Your new `kv-tutorial` directory includes:
   * A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) in `index.ts`.
   * A [wrangler.jsonc](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. `wrangler.jsonc` is how your `kv-tutorial` Worker accesses your kv database.
 2. Change into the directory you just created for your Worker project:
-Terminal window
-```
+```sh
 cd kv-tutorial
 ```
 Note
@@ -111,8 +110,8 @@ For example: `CI=true npm create cloudflare@latest kv-tutorial --type=simple --g
 
 A [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) is a key-value database replicated to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-9126)
-* [ Dashboard ](#tab-panel-9127)
+* [ CLI ](#tab-panel-9377)
+* [ Dashboard ](#tab-panel-9378)
 
 You can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to create a new KV namespace. You can also use it to perform operations such as put, list, get, and delete within your KV namespace.
 
@@ -123,18 +122,26 @@ KV operations are scoped to your account.
 To create a KV namespace via Wrangler:
 
 1. Open your terminal and run the following command:
-Terminal window
-```
+```sh
 npx wrangler kv namespace create <BINDING_NAME>
 ```
 The `npx wrangler kv namespace create <BINDING_NAME>` subcommand takes a new binding name as its argument. A KV namespace is created using a concatenation of your Worker's name (from your Wrangler file) and the binding name you provide. A `<BINDING_ID>` is randomly generated for you.
 For this tutorial, use the binding name `USERS_NOTIFICATION_CONFIG`.
-Terminal window
-```
+```sh
 npx wrangler kv namespace create USERS_NOTIFICATION_CONFIG
 ```
-```
-🌀 Creating namespace with title "USERS_NOTIFICATION_CONFIG"✨ Success!Add the following to your configuration file in your kv_namespaces array:{  "kv_namespaces": [    {      "binding": "USERS_NOTIFICATION_CONFIG",      "id": "<BINDING_ID>"    }  ]}
+```sh
+🌀 Creating namespace with title "USERS_NOTIFICATION_CONFIG"
+✨ Success!
+Add the following to your configuration file in your kv_namespaces array:
+{
+  "kv_namespaces": [
+    {
+      "binding": "USERS_NOTIFICATION_CONFIG",
+      "id": "<BINDING_ID>"
+    }
+  ]
+}
 ```
 
 1. In the Cloudflare dashboard, go to the **Workers KV** page.
@@ -155,20 +162,31 @@ Refer to [Environment](https://developers.cloudflare.com/kv/reference/environmen
 
 To bind your KV namespace to your Worker:
 
-* [ CLI ](#tab-panel-9138)
-* [ Dashboard ](#tab-panel-9139)
+* [ CLI ](#tab-panel-9389)
+* [ Dashboard ](#tab-panel-9390)
 
 1. In your Wrangler file, add the following with the values generated in your terminal from [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace):
 
-  * [  wrangler.jsonc ](#tab-panel-9136)
-  * [  wrangler.toml ](#tab-panel-9137)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-9387)
+  * [  wrangler.toml ](#tab-panel-9388)
+
+**JSONC**
+```jsonc
+{
+  "kv_namespaces": [
+    {
+      "binding": "USERS_NOTIFICATION_CONFIG",
+      "id": "<BINDING_ID>"
+    }
+  ]
+}
 ```
-{  "kv_namespaces": [    {      "binding": "USERS_NOTIFICATION_CONFIG",      "id": "<BINDING_ID>"    }  ]}
-```
-TOML
-```
-[[kv_namespaces]]binding = "USERS_NOTIFICATION_CONFIG"id = "<BINDING_ID>"
+
+**TOML**
+```toml
+[[kv_namespaces]]
+binding = "USERS_NOTIFICATION_CONFIG"
+id = "<BINDING_ID>"
 ```
 Binding names do not need to correspond to the namespace you created. Binding names are only a reference. Specifically:
 
@@ -190,22 +208,20 @@ You can interact with your KV namespace via [Wrangler](https://developers.cloudf
 
 ### 4.1\. Write a value
 
-* [ CLI ](#tab-panel-9128)
-* [ Dashboard ](#tab-panel-9129)
+* [ CLI ](#tab-panel-9379)
+* [ Dashboard ](#tab-panel-9380)
 
 To write a value to your empty KV namespace using Wrangler:
 
 1. Run the `wrangler kv key put` subcommand in your terminal, and input your key and value respectively. `<KEY>` and `<VALUE>` are values of your choice.
-Terminal window
-```
+```sh
 npx wrangler kv key put --binding=<BINDING_NAME> "<KEY>" "<VALUE>"
 ```
 In this tutorial, you will add a key `user_1` with value `enabled` to the KV namespace you created in [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace).
-Terminal window
-```
+```sh
 npx wrangler kv key put --binding=USERS_NOTIFICATION_CONFIG "user_1" "enabled"
 ```
-```
+```sh
 Writing the value "enabled" to key "user_1" on namespace <BINDING_ID>.
 ```
 
@@ -213,13 +229,11 @@ Using `--namespace-id`
 
 Instead of using `--binding`, you can also use `--namespace-id` to specify which KV namespace should receive the operation:
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key put --namespace-id=<BINDING_ID> "<KEY>" "<VALUE>"
 ```
 
-```
+```sh
 Writing the value "<VALUE>" to key "<KEY>" on namespace <BINDING_ID>.
 ```
 
@@ -227,9 +241,7 @@ Storing values in remote KV namespace
 
 By default, the values are written locally. To create a key and a value in your remote KV namespace, add the `--remote` flag at the end of the command:
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key put --namespace-id=xxxxxxxxxxxxxxxx "<KEY>" "<VALUE>" --remote
 ```
 
@@ -243,21 +255,19 @@ npx wrangler kv key put --namespace-id=xxxxxxxxxxxxxxxx "<KEY>" "<VALUE>" --remo
 
 ### 4.2\. Get a value
 
-* [ CLI ](#tab-panel-9132)
-* [ Dashboard ](#tab-panel-9133)
+* [ CLI ](#tab-panel-9383)
+* [ Dashboard ](#tab-panel-9384)
 
 To access the value from your KV namespace using Wrangler:
 
 1. Run the `wrangler kv key get` subcommand in your terminal, and input your key value:
-Terminal window
-```
+```sh
 npx wrangler kv key get --binding=<BINDING_NAME> "<KEY>"
 ```
 In this tutorial, you will get the value of the key `user_1` from the KV namespace you created in [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace).
 Note
 To view the value directly within the terminal, you use the `--text` flag.
-Terminal window
-```
+```sh
 npx wrangler kv key get --binding=USERS_NOTIFICATION_CONFIG "user_1" --text
 ```
 Similar to the `put` command, the `get` command can also be used to access a KV namespace in two ways - with `--binding` or `--namespace-id`:
@@ -277,8 +287,8 @@ You can view key-value pairs directly from the dashboard.
 
 ## 5\. Access your KV namespace from your Worker
 
-* [ CLI ](#tab-panel-9144)
-* [ Dashboard ](#tab-panel-9145)
+* [ CLI ](#tab-panel-9395)
+* [ Dashboard ](#tab-panel-9396)
 
 Note
 
@@ -289,37 +299,89 @@ To have `wrangler dev` connect to your Workers KV namespace running on Cloudflar
 Also refer to [KV binding docs](https://developers.cloudflare.com/kv/concepts/kv-bindings/#use-kv-bindings-when-developing-locally).
 
 1. In your Worker script, add your KV binding in the `Env` interface. If you have bootstrapped your project with JavaScript, this step is not required.
-TypeScript
-```
-interface Env {  USERS_NOTIFICATION_CONFIG: KVNamespace;  // ... other binding types}
+
+**TypeScript**
+```ts
+interface Env {
+  USERS_NOTIFICATION_CONFIG: KVNamespace;
+  // ... other binding types
+}
 ```
 2. Use the `put()` method on `USERS_NOTIFICATION_CONFIG` to create a new key-value pair. You will add a new key `user_2` with value `disabled` to your KV namespace.
-TypeScript
-```
+
+**TypeScript**
+```ts
 let value = await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");
 ```
 3. Use the KV `get()` method to fetch the data you stored in your KV namespace. You will fetch the value of the key `user_2` from your KV namespace.
-TypeScript
-```
+
+**TypeScript**
+```ts
 let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
 ```
 
 Your Worker code should look like this:
 
-* [  JavaScript ](#tab-panel-9140)
-* [  TypeScript ](#tab-panel-9141)
+* [  JavaScript ](#tab-panel-9391)
+* [  TypeScript ](#tab-panel-9392)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");
+      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
+      if (value === null) {
+        return new Response("Value not found", { status: 404 });
+      }
+      return new Response(value);
+    } catch (err) {
+      console.error(`KV returned error:`, err);
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "An unknown error occurred when accessing KV storage";
+      return new Response(errorMessage, {
+        status: 500,
+        headers: { "Content-Type": "text/plain" },
+      });
+    }
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    try {      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");      if (value === null) {        return new Response("Value not found", { status: 404 });      }      return new Response(value);    } catch (err) {      console.error(`KV returned error:`, err);      const errorMessage =        err instanceof Error          ? err.message          : "An unknown error occurred when accessing KV storage";      return new Response(errorMessage, {        status: 500,        headers: { "Content-Type": "text/plain" },      });    }  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  USERS_NOTIFICATION_CONFIG: KVNamespace;}
-export default {  async fetch(request, env, ctx): Promise<Response> {    try {      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");      if (value === null) {        return new Response("Value not found", { status: 404 });      }      return new Response(value);    } catch (err) {      console.error(`KV returned error:`, err);      const errorMessage =        err instanceof Error          ? err.message          : "An unknown error occurred when accessing KV storage";      return new Response(errorMessage, {        status: 500,        headers: { "Content-Type": "text/plain" },      });    }  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  USERS_NOTIFICATION_CONFIG: KVNamespace;
+}
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    try {
+      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");
+      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
+      if (value === null) {
+        return new Response("Value not found", { status: 404 });
+      }
+      return new Response(value);
+    } catch (err) {
+      console.error(`KV returned error:`, err);
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "An unknown error occurred when accessing KV storage";
+      return new Response(errorMessage, {
+        status: 500,
+        headers: { "Content-Type": "text/plain" },
+      });
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 The code above:
@@ -336,16 +398,62 @@ The code above:
 3. Select **Edit Code**.
 4. Clear the contents of the `workers.js` file, then paste the following code.
 
-  * [  JavaScript ](#tab-panel-9142)
-  * [  TypeScript ](#tab-panel-9143)
-JavaScript
+  * [  JavaScript ](#tab-panel-9393)
+  * [  TypeScript ](#tab-panel-9394)
+
+**JavaScript**
+```js
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");
+      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
+      if (value === null) {
+        return new Response("Value not found", { status: 404 });
+      }
+      return new Response(value);
+    } catch (err) {
+      console.error(`KV returned error:`, err);
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "An unknown error occurred when accessing KV storage";
+      return new Response(errorMessage, {
+        status: 500,
+        headers: { "Content-Type": "text/plain" },
+      });
+    }
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    try {      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");      if (value === null) {        return new Response("Value not found", { status: 404 });      }      return new Response(value);    } catch (err) {      console.error(`KV returned error:`, err);      const errorMessage =        err instanceof Error          ? err.message          : "An unknown error occurred when accessing KV storage";      return new Response(errorMessage, {        status: 500,        headers: { "Content-Type": "text/plain" },      });    }  },};
-```
-TypeScript
-```
-export interface Env {  USERS_NOTIFICATION_CONFIG: KVNamespace;}
-export default {  async fetch(request, env, ctx): Promise<Response> {    try {      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");      if (value === null) {        return new Response("Value not found", { status: 404 });      }      return new Response(value);    } catch (err) {      console.error(`KV returned error:`, err);      const errorMessage =        err instanceof Error          ? err.message          : "An unknown error occurred when accessing KV storage";      return new Response(errorMessage, {        status: 500,        headers: { "Content-Type": "text/plain" },      });    }  },} satisfies ExportedHandler<Env>;
+
+**TypeScript**
+```ts
+export interface Env {
+  USERS_NOTIFICATION_CONFIG: KVNamespace;
+}
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    try {
+      await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");
+      const value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
+      if (value === null) {
+        return new Response("Value not found", { status: 404 });
+      }
+      return new Response(value);
+    } catch (err) {
+      console.error(`KV returned error:`, err);
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "An unknown error occurred when accessing KV storage";
+      return new Response(errorMessage, {
+        status: 500,
+        headers: { "Content-Type": "text/plain" },
+      });
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 The code above:
 
@@ -359,12 +467,11 @@ The browser should simply return the `VALUE` corresponding to the `KEY` you have
 
 Deploy your Worker to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-9130)
-* [ Dashboard ](#tab-panel-9131)
+* [ CLI ](#tab-panel-9381)
+* [ Dashboard ](#tab-panel-9382)
 
 1. Run the following command to deploy KV to Cloudflare's global network:
-Terminal window
-```
+```sh
 npm run deploy
 ```
 2. Visit the URL for your newly created Workers KV application.

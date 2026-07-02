@@ -43,35 +43,68 @@ A helper class that wraps self-participant and meeting event listeners with clos
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
+
+
 let listener = RtkEventSelfListener(rtkClient: rtkClient)
-listener.observeSelfAudio { isEnabled in    print("Audio enabled: \(isEnabled)")}
-listener.observeSelfVideo { isEnabled in    print("Video enabled: \(isEnabled)")}
+
+
+listener.observeSelfAudio { isEnabled in
+    print("Audio enabled: \(isEnabled)")
+}
+
+
+listener.observeSelfVideo { isEnabled in
+    print("Video enabled: \(isEnabled)")
+}
 ```
 
 ### Toggle audio and video
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
+
+
 let listener = RtkEventSelfListener(rtkClient: rtkClient)
-listener.toggleLocalAudio { success in    print("Audio toggled: \(success)")}
-listener.toggleLocalVideo { success in    print("Video toggled: \(success)")}
+
+
+listener.toggleLocalAudio { success in
+    print("Audio toggled: \(success)")
+}
+
+
+listener.toggleLocalVideo { success in
+    print("Video toggled: \(success)")
+}
 ```
 
 ### Observe meeting end
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let listener = RtkEventSelfListener(    rtkClient: rtkClient,    identifier: "MeetingObserver")
-listener.observeSelfRemoved {    print("Removed from meeting")}
-listener.observeSelfMeetingEndForAll {    print("Meeting ended for all")}
+
+
+let listener = RtkEventSelfListener(
+    rtkClient: rtkClient,
+    identifier: "MeetingObserver"
+)
+
+
+listener.observeSelfRemoved {
+    print("Removed from meeting")
+}
+
+
+listener.observeSelfMeetingEndForAll {
+    print("Meeting ended for all")
+}
 ```
 
 ```json

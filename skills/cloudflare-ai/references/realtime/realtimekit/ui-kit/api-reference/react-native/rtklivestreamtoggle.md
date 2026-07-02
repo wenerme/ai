@@ -28,16 +28,24 @@ Toggle button to start or stop a livestream. Only visible for hosts with livestr
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLiveStreamToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLiveStreamToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkLiveStreamToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLiveStreamToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkLiveStreamToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkLiveStreamToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

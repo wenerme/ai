@@ -32,16 +32,30 @@ A component which handles the sidebar and you can customize which sections you w
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSidebar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSidebar />;}
+
+
+function MyComponent() {
+  return <RtkSidebar />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSidebar } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSidebar      defaultSection={rtksidebarsection}      enabledSections={[]}      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSidebar
+      defaultSection={rtksidebarsection}
+      enabledSections={[]}
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

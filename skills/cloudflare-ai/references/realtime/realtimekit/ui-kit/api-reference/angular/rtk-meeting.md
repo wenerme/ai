@@ -35,14 +35,20 @@ A single component which renders an entire meeting UI. It loads your preset and 
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-meeting></rtk-meeting>
+```html
+<!-- component.html -->
+<rtk-meeting></rtk-meeting>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-meeting [applyDesignSystem]="true" [config]="defaultUiConfig" [gridLayout]="gridlayout1"></rtk-meeting>
+```html
+<!-- component.html -->
+<rtk-meeting
+ [applyDesignSystem]="true"
+ [config]="defaultUiConfig"
+ [gridLayout]="gridlayout1">
+</rtk-meeting>
 ```
 
 ```json

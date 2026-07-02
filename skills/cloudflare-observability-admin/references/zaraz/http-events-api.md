@@ -32,8 +32,17 @@ To avoid getting the API used by unwanted actors, Cloudflare recommends choosing
 
 The endpoint you have configured for the API will receive `POST` requests with a JSON payload. Below, there is an example payload:
 
-```
-{  "events": [    {      "client": {        "__zarazTrack": "transaction successful",        "value": "200"      }    }  ]}
+```json
+{
+  "events": [
+    {
+      "client": {
+        "__zarazTrack": "transaction successful",
+        "value": "200"
+      }
+    }
+  ]
+}
 ```
 
 The payload must contain an `events` array. Each Event Object in this array corresponds to one event you want Zaraz to process. The above example is similar to calling `zaraz.track('transaction successful', { value: "200" })` using the Web API.
@@ -51,8 +60,27 @@ In addition to the `client` key, you can use the `system` key to include informa
 
 The same payload from before will resemble the following example, when we add the `system` information:
 
-```
-{  "events": [    {      "client": {        "__zarazTrack": "transaction successful",        "value": "200"      },      "system": {        "page": {          "url": "https://example.com",          "title": "My website"        },        "device": {          "language": "en-US",          "ip": "192.168.0.1"        }      }    }  ]}
+```json
+{
+  "events": [
+    {
+      "client": {
+        "__zarazTrack": "transaction successful",
+        "value": "200"
+      },
+      "system": {
+        "page": {
+          "url": "https://example.com",
+          "title": "My website"
+        },
+        "device": {
+          "language": "en-US",
+          "ip": "192.168.0.1"
+        }
+      }
+    }
+  ]
+}
 ```
 
 For all available system keys, refer to the table below:

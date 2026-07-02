@@ -28,16 +28,24 @@ Full polls panel showing all polls with voting and a create poll form for hosts.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPolls } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPolls meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkPolls meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPolls } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPolls meeting={meeting} size="md" config={customConfig} />;}
+
+
+function MyComponent() {
+  return <RtkPolls meeting={meeting} size="md" config={customConfig} />;
+}
 ```
 
 ```json

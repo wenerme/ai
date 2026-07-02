@@ -34,9 +34,9 @@ All Web Frameworks (Web Components, React, Angular) share the same error codes.
 * **Possible reason**: Indicates a problem with the RealtimeKitClient.
 * **Possible solution**: The `join()` method is used to join a meeting room in RealtimeKit. Try calling this method again on the RealtimeKitClient:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 await meeting.join();
 ```
 
@@ -48,9 +48,9 @@ Once the join room process completes, you'll see the `roomJoined` event is emitt
 * **Possible reason**: Indicates a problem with the RealtimeKitClient.
 * **Possible solution**: The `leave()` method is used to leave a meeting room in RealtimeKit. Try calling this method again on the RealtimeKitClient:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 await meeting.leave();
 ```
 

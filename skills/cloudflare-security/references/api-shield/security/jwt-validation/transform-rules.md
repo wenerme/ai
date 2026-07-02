@@ -18,7 +18,7 @@ Claims are available through the `http.request.jwt.claims` firewall fields.
 
 For example, the following expression will extract the user claim from a token processed by the token configuration with `TOKEN_CONFIGURATION_ID`:
 
-```
+```txt
 lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "claim_name")
 ```
 
@@ -35,7 +35,7 @@ As an example, to send the `x-send-jwt-claim-user` request header to the origin,
 4. Choose **Set dynamic**.
 5. Set the header name to `x-send-jwt-claim-user`.
 6. Set the value to:
-```
+```txt
 lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "claim_name")
 ```
 `<TOKEN_CONFIGURATION_ID>` is your token configuration ID found in JWT validation and `claim_name` is the JWT claim you want to add to the header.

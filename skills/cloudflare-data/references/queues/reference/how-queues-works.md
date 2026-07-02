@@ -43,12 +43,27 @@ A producer is the term for a client that is publishing or producing messages on 
 
 For example, if we bound a queue named `my-first-queue` to a binding of `MY_FIRST_QUEUE`, messages can be written to the queue by calling `send()` on the binding:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  readonly MY_FIRST_QUEUE: Queue;}
-export default {  async fetch(req, env, ctx): Promise<Response> {    const message = {      url: req.url,      method: req.method,      headers: Object.fromEntries(req.headers),    };
-    await env.MY_FIRST_QUEUE.send(message); // This will throw an exception if the send fails for any reason    return new Response("Sent!");  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  readonly MY_FIRST_QUEUE: Queue;
+}
+
+
+export default {
+  async fetch(req, env, ctx): Promise<Response> {
+    const message = {
+      url: req.url,
+      method: req.method,
+      headers: Object.fromEntries(req.headers),
+    };
+
+
+    await env.MY_FIRST_QUEUE.send(message); // This will throw an exception if the send fails for any reason
+    return new Response("Sent!");
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -67,20 +82,56 @@ Messages published to a queue can be published in different formats, depending o
 
 To explicitly set the content type or specify an alternative content type, pass the `contentType` option to the `send()` method of your queue:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  readonly MY_FIRST_QUEUE: Queue;}
-export default {  async fetch(req, env, ctx): Promise<Response> {    const message = {      url: req.url,      method: req.method,      headers: Object.fromEntries(req.headers),    };    try {      await env.MY_FIRST_QUEUE.send(message, { contentType: "json" }); // "json" is the default      return new Response("Sent!");    } catch (e) {      // Catch cases where send fails, including due to a mismatched content type      const msg = e instanceof Error ? e.message : "Unknown error";      return Response.json({ error: msg }, { status: 500 });    }  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  readonly MY_FIRST_QUEUE: Queue;
+}
+
+
+export default {
+  async fetch(req, env, ctx): Promise<Response> {
+    const message = {
+      url: req.url,
+      method: req.method,
+      headers: Object.fromEntries(req.headers),
+    };
+    try {
+      await env.MY_FIRST_QUEUE.send(message, { contentType: "json" }); // "json" is the default
+      return new Response("Sent!");
+    } catch (e) {
+      // Catch cases where send fails, including due to a mismatched content type
+      const msg = e instanceof Error ? e.message : "Unknown error";
+      return Response.json({ error: msg }, { status: 500 });
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 To only accept simple strings when writing to a queue, set `{ contentType: "text" }` instead:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  readonly MY_FIRST_QUEUE: Queue;}
-export default {  async fetch(req, env, ctx): Promise<Response> {    try {      // This will throw an exception (error) if you pass a non-string to the queue,      // such as a native JavaScript object or ArrayBuffer.      await env.MY_FIRST_QUEUE.send("hello there", { contentType: "text" }); // explicitly set 'text'      return new Response("Sent!");    } catch (e) {      const msg = e instanceof Error ? e.message : "Unknown error";      return Response.json({ error: msg }, { status: 500 });    }  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  readonly MY_FIRST_QUEUE: Queue;
+}
+
+
+export default {
+  async fetch(req, env, ctx): Promise<Response> {
+    try {
+      // This will throw an exception (error) if you pass a non-string to the queue,
+      // such as a native JavaScript object or ArrayBuffer.
+      await env.MY_FIRST_QUEUE.send("hello there", { contentType: "text" }); // explicitly set 'text'
+      return new Response("Sent!");
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Unknown error";
+      return Response.json({ error: msg }, { status: 500 });
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 The [QueuesContentType](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queuescontenttype) API documentation describes how each format is serialized to a queue.
@@ -98,28 +149,54 @@ A queue can only have one type of consumer configured.
 
 A consumer is the term for a client that is subscribing to or _consuming_ messages from a queue. In its most basic form, a consumer is defined by creating a `queue` handler in a Worker:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  // Add your bindings here, e.g. KV namespaces, R2 buckets, D1 databases}
-export default {  async queue(batch, env, ctx): Promise<void> {    // Do something with messages in the batch    // i.e. write to R2 storage, D1 database, or POST to an external API    for (const msg of batch.messages) {      // Process each message      console.log(msg.body);    }  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  // Add your bindings here, e.g. KV namespaces, R2 buckets, D1 databases
+}
+
+
+export default {
+  async queue(batch, env, ctx): Promise<void> {
+    // Do something with messages in the batch
+    // i.e. write to R2 storage, D1 database, or POST to an external API
+    for (const msg of batch.messages) {
+      // Process each message
+      console.log(msg.body);
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-10011)
-* [  wrangler.toml ](#tab-panel-10012)
+* [  wrangler.jsonc ](#tab-panel-10042)
+* [  wrangler.toml ](#tab-panel-10043)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "queues": {
+    "consumers": [
+      {
+        "queue": "<your-queue-name>",
+        "max_batch_size": 100, // optional
+        "max_batch_timeout": 30 // optional
+      }
+    ]
+  }
+}
 ```
-{  "queues": {    "consumers": [      {        "queue": "<your-queue-name>",        "max_batch_size": 100, // optional        "max_batch_timeout": 30 // optional      }    ]  }}
-```
 
-TOML
+**TOML**
 
-```
-[[queues.consumers]]queue = "<your-queue-name>"max_batch_size = 100max_batch_timeout = 30
+```toml
+[[queues.consumers]]
+queue = "<your-queue-name>"
+max_batch_size = 100
+max_batch_timeout = 30
 ```
 
 Importantly, each queue can only have one active consumer. This allows Cloudflare Queues to achieve at least once delivery and minimize the risk of duplicate messages beyond that.
@@ -135,11 +212,33 @@ Notably, you can use the same consumer with multiple queues. The queue handler t
 
 For example, a consumer configured to consume messages from multiple queues would resemble the following:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  // Add your bindings here}
-export default {  async queue(batch, env, ctx): Promise<void> {    // MessageBatch has a `queue` property we can switch on    switch (batch.queue) {      case "log-queue":        // Write the batch to R2        break;      case "debug-queue":        // Write the message to the console or to another queue        break;      case "email-reset":        // Trigger a password reset email via an external API        break;      default:        // Handle messages we haven't mentioned explicitly (write a log, push to a DLQ)        break;    }  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  // Add your bindings here
+}
+
+
+export default {
+  async queue(batch, env, ctx): Promise<void> {
+    // MessageBatch has a `queue` property we can switch on
+    switch (batch.queue) {
+      case "log-queue":
+        // Write the batch to R2
+        break;
+      case "debug-queue":
+        // Write the message to the console or to another queue
+        break;
+      case "email-reset":
+        // Trigger a password reset email via an external API
+        break;
+      default:
+        // Handle messages we haven't mentioned explicitly (write a log, push to a DLQ)
+        break;
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Remove a consumer

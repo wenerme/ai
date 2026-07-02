@@ -38,19 +38,23 @@ Storage isolation is per test file. The test runner will undo any writes to stor
 
 Always `await` all `Promise`s that read or write to storage services.
 
-TypeScript
+**TypeScript**
 
-```
-// Example: Seed databeforeAll(async () => {  await env.KV.put("message", "test message");  await env.R2.put("file", "hello-world");});
+```ts
+// Example: Seed data
+beforeAll(async () => {
+  await env.KV.put("message", "test message");
+  await env.R2.put("file", "hello-world");
+});
 ```
 
 #### Explicitly signal resource disposal
 
 When calling RPC methods of a Service Worker or Durable Object that return non-primitive values (such as objects or classes extending `RpcTarget`), use the `using` keyword to explicitly signal when resources can be disposed of. See [this example test ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/rpc/test/unit.test.ts#L155) and refer to [explicit-resource-management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle#explicit-resource-management) for more details.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 using result = await stub.getCounter();
 ```
 
@@ -58,11 +62,18 @@ using result = await stub.getCounter();
 
 When making requests via `fetch` or `R2.get()`, consume the entire response body, even if you are not asserting its content. For example:
 
-TypeScript
+**TypeScript**
 
-```
-test("check if file exists", async () => {  await env.R2.put("file", "hello-world");  const response = await env.R2.get("file");
-  expect(response).not.toBe(null);  // Consume the response body even if you are not asserting it  await response.text();});
+```ts
+test("check if file exists", async () => {
+  await env.R2.put("file", "hello-world");
+  const response = await env.R2.get("file");
+
+
+  expect(response).not.toBe(null);
+  // Consume the response body even if you are not asserting it
+  await response.text();
+});
 ```
 
 ### Missing properties on `ctx.exports`
@@ -71,21 +82,34 @@ The `ctx.exports` property provides access to the exports of the main Worker. Th
 
 For example, consider a Worker that re-exports an entrypoint from a virtual module using a wildcard export:
 
-TypeScript
+**TypeScript**
 
-```
-// index.tsexport * from "@virtual-module";
+```ts
+// index.ts
+export * from "@virtual-module";
 ```
 
 In this case, any exports from `@virtual-module` (such as `MyEntrypoint`) cannot be automatically inferred and will be missing from `ctx.exports`.
 
 To work around this, add the `additionalExports` option to your Vitest configuration:
 
-TypeScript
+**TypeScript**
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      wrangler: { configPath: "./wrangler.jsonc" },      additionalExports: {        MyEntrypoint: "WorkerEntrypoint",      },    }),  ],});
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      wrangler: { configPath: "./wrangler.jsonc" },
+      additionalExports: {
+        MyEntrypoint: "WorkerEntrypoint",
+      },
+    }),
+  ],
+});
 ```
 
 The `additionalExports` option is a map where keys are the export names and values are the type of export (`"WorkerEntrypoint"`, `"DurableObject"`, or `"WorkflowEntrypoint"`).
@@ -94,11 +118,30 @@ The `additionalExports` option is a map where keys are the export names and valu
 
 If you encounter module resolution issues such as: `Error: Cannot use require() to import an ES Module` or `Error: No such module`, you can bundle these dependencies using the [deps.optimizer ↗](https://vitest.dev/config/#deps-optimizer) option:
 
-TypeScript
+**TypeScript**
 
-```
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      // ...    }),  ],  test: {    deps: {      optimizer: {        ssr: {          enabled: true,          include: ["your-package-name"],        },      },    },  },});
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      // ...
+    }),
+  ],
+  test: {
+    deps: {
+      optimizer: {
+        ssr: {
+          enabled: true,
+          include: ["your-package-name"],
+        },
+      },
+    },
+  },
+});
 ```
 
 You can find an example in the [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) page.
@@ -107,20 +150,54 @@ You can find an example in the [Recipes](https://developers.cloudflare.com/worke
 
 Although Vitest is set up to resolve packages for the [workerd ↗](https://github.com/cloudflare/workerd) runtime, it runs your global setup file in the Node.js environment. This can cause issues when importing packages like [Postgres.js ↗](https://github.com/cloudflare/workers-sdk/issues/6465), which exports a non-Node version for `workerd`. To work around this, you can create a wrapper that uses Vite's SSR module loader to import the global setup file under the correct conditions. Then, adjust your Vitest configuration to point to this wrapper. For example:
 
-TypeScript
+**TypeScript**
 
-```
-// File: global-setup-wrapper.tsimport { createServer } from "vite";
-// Import the actual global setup file with the correct setupconst mod = await viteImport("./global-setup.ts");
+```ts
+// File: global-setup-wrapper.ts
+import { createServer } from "vite";
+
+
+// Import the actual global setup file with the correct setup
+const mod = await viteImport("./global-setup.ts");
+
+
 export default mod.default;
-// Helper to import the file with default node setupasync function viteImport(file: string) {  const server = await createServer({    root: import.meta.dirname,    configFile: false,    server: { middlewareMode: true, hmr: false, watch: null, ws: false },    optimizeDeps: { noDiscovery: true },    clearScreen: false,  });  const mod = await server.ssrLoadModule(file);  await server.close();  return mod;}
+
+
+// Helper to import the file with default node setup
+async function viteImport(file: string) {
+  const server = await createServer({
+    root: import.meta.dirname,
+    configFile: false,
+    server: { middlewareMode: true, hmr: false, watch: null, ws: false },
+    optimizeDeps: { noDiscovery: true },
+    clearScreen: false,
+  });
+  const mod = await server.ssrLoadModule(file);
+  await server.close();
+  return mod;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-// File: vitest.config.tsimport { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
-export default defineConfig({  plugins: [    cloudflareTest({      // ...    }),  ],  test: {    // Replace the globalSetup with the wrapper file    globalSetup: ["./global-setup-wrapper.ts"],  },});
+```ts
+// File: vitest.config.ts
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { defineConfig } from "vitest/config";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareTest({
+      // ...
+    }),
+  ],
+  test: {
+    // Replace the globalSetup with the wrapper file
+    globalSetup: ["./global-setup-wrapper.ts"],
+  },
+});
 ```
 
 ```json

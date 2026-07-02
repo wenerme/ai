@@ -52,9 +52,7 @@ To begin, install [npm ↗](https://docs.npmjs.com/getting-started). Then [insta
 
 Log in to Wrangler with the [wrangler login command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Then run the [pages project create command](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-project-create):
 
-Terminal window
-
-```
+```sh
 npx wrangler pages project create
 ```
 
@@ -66,9 +64,7 @@ Subsequent deployments will reuse both of these values (saved in your `node_modu
 
 From here, you have created an empty project and can now deploy your assets for your first deployment and for all subsequent deployments in your production environment. To do this, run the [wrangler pages deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages deploy <BUILD_OUTPUT_DIRECTORY>
 ```
 
@@ -82,9 +78,7 @@ Before using the `wrangler pages deploy` command, you will need to make sure you
 
 To deploy assets to a preview environment, run:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages deploy <OUTPUT_DIRECTORY> --branch=<BRANCH_NAME>
 ```
 
@@ -100,25 +94,19 @@ If you would like to streamline the project creation and asset deployment steps,
 
 If you would like to use Wrangler to obtain a list of all available projects for Direct Upload, use [pages project list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-project-list):
 
-Terminal window
-
-```
+```sh
 npx wrangler pages project list
 ```
 
 To get the output as JSON for programmatic use or scripting, use the `--json` flag:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages project list --json
 ```
 
 If you would like to use Wrangler to obtain a list of all unique preview URLs for a particular project, use [pages deployment list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list):
 
-Terminal window
-
-```
+```sh
 npx wrangler pages deployment list
 ```
 
@@ -157,10 +145,12 @@ If using the drag and drop method, a red warning symbol will appear next to an a
 
 If your project is a [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/) project, you will not have the option to configure production branch controls. To update your production branch, you will need to manually call the [Update Project](https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/edit/) endpoint in the API.
 
-Terminal window
-
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data "{\"production_branch\": \"main\"}"
+```bash
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data "{\"production_branch\": \"main\"}"
 ```
 
 ### Functions

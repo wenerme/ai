@@ -23,6 +23,10 @@ To access the Snowflake query editor:
 
 The query editor opens, where you can write SQL queries against your Snowflake data.
 
+> Tip
+>
+> You can also use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to build and run Snowflake SQL queries from natural language. Mention your Snowflake data source with the `@` symbol in your prompt to get started.
+
 You can also access the query editor when building a dashboard:
 
 1. Click **Dashboards** in the left-side menu.

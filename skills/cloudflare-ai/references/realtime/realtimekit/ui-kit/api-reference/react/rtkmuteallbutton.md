@@ -26,16 +26,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMuteAllButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMuteAllButton />;}
+
+
+function MyComponent() {
+  return <RtkMuteAllButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMuteAllButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMuteAllButton      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMuteAllButton
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

@@ -60,13 +60,12 @@ For setup, select the following options:
 
 The newly generated `i18n-example` project will contain two folders: `public` and `src` these contain files for a React application:
 
-Terminal window
+```sh
+cd i18n-example
+ls
+```
 
-```
-cd i18n-examplels
-```
-
-```
+```sh
 public src package.json
 ```
 
@@ -74,10 +73,10 @@ We have to make a few adjustments to the generated project, first we want to the
 
 Next, let's create a functions directory with an `index.js` file, this will be where the logic of the application will be written.
 
-Terminal window
-
-```
-mkdir functionscd functionstouch index.js
+```sh
+mkdir functions
+cd functions
+touch index.js
 ```
 
 Additionally, we'll remove the `src/` directory since its content isn't necessary for this project. With the static HTML for this project updated, you can focus on the script inside of the `functions` folder, at `index.js`.
@@ -92,9 +91,15 @@ The example website in this tutorial is a basic single-page HTML project that li
 
 What is unique about this page is the addition of [data attributes ↗](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use%5Fdata%5Fattributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
 
-```
+```html
 <!-- source clipped from i18n-example site -->
-<div class="inner">  <h1 data-i18n-key="headline">Example Site</h1>  <p data-i18n-key="subtitle">This is my example site. Depending o...</p>  <p data-i18n-key="disclaimer">Disclaimer: the initial translations...</p></div>
+
+
+<div class="inner">
+  <h1 data-i18n-key="headline">Example Site</h1>
+  <p data-i18n-key="subtitle">This is my example site. Depending o...</p>
+  <p data-i18n-key="disclaimer">Disclaimer: the initial translations...</p>
+</div>
 ```
 
 Using `HTMLRewriter`, you will parse the HTML within the `./public/index.html` page. When a `data-i18n-key` attribute is found, you should use the attribute's value to retrieve a matching translation from the `strings` object. With `HTMLRewriter`, you can query elements to accomplish tasks like finding a data attribute. However, as the name suggests, you can also rewrite elements by taking a translated string and directly inserting it into the HTML.
@@ -107,18 +112,26 @@ Begin with the `functions/index.js` file. Your application in this tutorial will
 
 Inside of this file, start by adding the default code for running a [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/#create-a-function).
 
-JavaScript
+**JavaScript**
 
-```
-export function onRequest(context) {  return new Response("Hello, world!");}
+```js
+export function onRequest(context) {
+  return new Response("Hello, world!");
+}
 ```
 
 The important part of the code lives in the `onRequest` function. To implement translations on the site, take the HTML response retrieved from `env.ASSETS.fetch(request)` this allows you to fetch a static asset from your Pages project and pass it into a new instance of `HTMLRewriter`. When instantiating `HTMLRewriter`, you can attach handlers using the `on` function. For this tutorial, you will use the `[data-i18n-key]` selector (refer to the [HTMLRewriter documentation](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) for more advanced usage) to locate all elements with the `data-i18n-key` attribute, which means that they must be translated. Any matching element will be passed to an instance of your `ElementHandler` class, which will contain the translation logic. With the created instance of `HTMLRewriter`, the `transform` function takes a `response` and can be returned to the client:
 
-JavaScript
+**JavaScript**
 
-```
-export async function onRequest(context) {  const { request, env } = context;  const response = await env.ASSETS.fetch(request);  return new HTMLRewriter()    .on("[data-i18n-key]", new ElementHandler(countryStrings))    .transform(response);}
+```js
+export async function onRequest(context) {
+  const { request, env } = context;
+  const response = await env.ASSETS.fetch(request);
+  return new HTMLRewriter()
+    .on("[data-i18n-key]", new ElementHandler(countryStrings))
+    .transform(response);
+}
 ```
 
 ## Transforming HTML
@@ -127,28 +140,53 @@ Your `ElementHandler` will receive every element parsed by the `HTMLRewriter` in
 
 In [How it works](#understanding-data-i18n-key), the documentation describes `data-i18n-key`, a custom data attribute that could be used to find a corresponding translated string for the website’s user interface. In `ElementHandler`, you can define an `element` function, which will be called as each element is parsed. Inside of the `element` function, you can query for the custom data attribute using `getAttribute`:
 
-JavaScript
+**JavaScript**
 
-```
-class ElementHandler {  element(element) {    const i18nKey = element.getAttribute("data-i18n-key");  }}
+```js
+class ElementHandler {
+  element(element) {
+    const i18nKey = element.getAttribute("data-i18n-key");
+  }
+}
 ```
 
 With `i18nKey` defined, you can use it to search for a corresponding translated string. You will now set up a `strings` object with key-value pairs corresponding to the `data-i18n-key` value. For now, you will define a single example string, `headline`, with a German `string`, `"Beispielseite"` (`"Example Site"`), and retrieve it in the `element` function:
 
-JavaScript
+**JavaScript**
 
-```
-const strings = {  headline: "Beispielseite",};
-class ElementHandler {  element(element) {    const i18nKey = element.getAttribute("data-i18n-key");    const string = strings[i18nKey];  }}
+```js
+const strings = {
+  headline: "Beispielseite",
+};
+
+
+class ElementHandler {
+  element(element) {
+    const i18nKey = element.getAttribute("data-i18n-key");
+    const string = strings[i18nKey];
+  }
+}
 ```
 
 Take your translated `string` and insert it into the original element, using the `setInnerContent` function:
 
-JavaScript
+**JavaScript**
 
-```
-const strings = {  headline: "Beispielseite",};
-class ElementHandler {  element(element) {    const i18nKey = element.getAttribute("data-i18n-key");    const string = strings[i18nKey];    if (string) {      element.setInnerContent(string);    }  }}
+```js
+const strings = {
+  headline: "Beispielseite",
+};
+
+
+class ElementHandler {
+  element(element) {
+    const i18nKey = element.getAttribute("data-i18n-key");
+    const string = strings[i18nKey];
+    if (string) {
+      element.setInnerContent(string);
+    }
+  }
+}
 ```
 
 To review that everything looks as expected, use the preview functionality built into Wrangler. Call [wrangler pages dev ./public](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to open up a live preview of your project. The command is refreshed after every code change that you make.
@@ -163,24 +201,96 @@ To implement this:
 
 To parse the `Accept-Language` header, install the [accept-language-parser ↗](https://www.npmjs.com/package/accept-language-parser) npm package:
 
-Terminal window
-
-```
+```sh
 npm i accept-language-parser
 ```
 
 Once imported into your code, use the package to parse the most relevant language for a client based on `Accept-Language` header, and pass it to `ElementHandler`. Your final code for the project, with an included sample translation for Germany and Japan (using Google Translate) looks like this:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import parser from "accept-language-parser";
-// do not set to true in production!const DEBUG = false;
-const strings = {  de: {    title: "Beispielseite",    headline: "Beispielseite",    subtitle:      "Dies ist meine Beispielseite. Abhängig davon, wo auf der Welt Sie diese Site besuchen, wird dieser Text in die entsprechende Sprache übersetzt.",    disclaimer:      "Haftungsausschluss: Die anfänglichen Übersetzungen stammen von Google Translate, daher sind sie möglicherweise nicht perfekt!",    tutorial:      "Das Tutorial für dieses Projekt finden Sie in der Cloudflare Workers-Dokumentation.",    copyright: "Design von HTML5 UP.",  },  ja: {    title: "サンプルサイト",    headline: "サンプルサイト",    subtitle:      "これは私の例のサイトです。 このサイトにアクセスする世界の場所に応じて、このテキストは対応する言語に翻訳されます。",    disclaimer:      "免責事項：最初の翻訳はGoogle翻訳からのものですので、完璧ではないかもしれません！",    tutorial:      "Cloudflare Workersのドキュメントでこのプロジェクトのチュートリアルを見つけてください。",    copyright: "HTML5 UPによる設計。",  },};
-class ElementHandler {  constructor(countryStrings) {    this.countryStrings = countryStrings;  }
-  element(element) {    const i18nKey = element.getAttribute("data-i18n-key");    if (i18nKey) {      const translation = this.countryStrings[i18nKey];      if (translation) {        element.setInnerContent(translation);      }    }  }}
-export async function onRequest(context) {  const { request, env } = context;  try {    let options = {};    if (DEBUG) {      options = {        cacheControl: {          bypassCache: true,        },      };    }    const languageHeader = request.headers.get("Accept-Language");    const language = parser.pick(["de", "ja"], languageHeader);    const countryStrings = strings[language] || {};
-    const response = await env.ASSETS.fetch(request);    return new HTMLRewriter()      .on("[data-i18n-key]", new ElementHandler(countryStrings))      .transform(response);  } catch (e) {    if (DEBUG) {      return new Response(e.message || e.toString(), {        status: 404,      });    } else {      return env.ASSETS.fetch(request);    }  }}
+
+
+// do not set to true in production!
+const DEBUG = false;
+
+
+const strings = {
+  de: {
+    title: "Beispielseite",
+    headline: "Beispielseite",
+    subtitle:
+      "Dies ist meine Beispielseite. Abhängig davon, wo auf der Welt Sie diese Site besuchen, wird dieser Text in die entsprechende Sprache übersetzt.",
+    disclaimer:
+      "Haftungsausschluss: Die anfänglichen Übersetzungen stammen von Google Translate, daher sind sie möglicherweise nicht perfekt!",
+    tutorial:
+      "Das Tutorial für dieses Projekt finden Sie in der Cloudflare Workers-Dokumentation.",
+    copyright: "Design von HTML5 UP.",
+  },
+  ja: {
+    title: "サンプルサイト",
+    headline: "サンプルサイト",
+    subtitle:
+      "これは私の例のサイトです。 このサイトにアクセスする世界の場所に応じて、このテキストは対応する言語に翻訳されます。",
+    disclaimer:
+      "免責事項：最初の翻訳はGoogle翻訳からのものですので、完璧ではないかもしれません！",
+    tutorial:
+      "Cloudflare Workersのドキュメントでこのプロジェクトのチュートリアルを見つけてください。",
+    copyright: "HTML5 UPによる設計。",
+  },
+};
+
+
+class ElementHandler {
+  constructor(countryStrings) {
+    this.countryStrings = countryStrings;
+  }
+
+
+  element(element) {
+    const i18nKey = element.getAttribute("data-i18n-key");
+    if (i18nKey) {
+      const translation = this.countryStrings[i18nKey];
+      if (translation) {
+        element.setInnerContent(translation);
+      }
+    }
+  }
+}
+
+
+export async function onRequest(context) {
+  const { request, env } = context;
+  try {
+    let options = {};
+    if (DEBUG) {
+      options = {
+        cacheControl: {
+          bypassCache: true,
+        },
+      };
+    }
+    const languageHeader = request.headers.get("Accept-Language");
+    const language = parser.pick(["de", "ja"], languageHeader);
+    const countryStrings = strings[language] || {};
+
+
+    const response = await env.ASSETS.fetch(request);
+    return new HTMLRewriter()
+      .on("[data-i18n-key]", new ElementHandler(countryStrings))
+      .transform(response);
+  } catch (e) {
+    if (DEBUG) {
+      return new Response(e.message || e.toString(), {
+        status: 404,
+      });
+    } else {
+      return env.ASSETS.fetch(request);
+    }
+  }
+}
 ```
 
 ## Deploy
@@ -189,32 +299,43 @@ Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-9607)
-* [  wrangler.toml ](#tab-panel-9608)
+* [  wrangler.jsonc ](#tab-panel-9858)
+* [  wrangler.toml ](#tab-panel-9859)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "i18n-example",
+  "pages_build_output_dir": "./public",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01"
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "i18n-example",  "pages_build_output_dir": "./public",  // Set this to today's date  "compatibility_date": "2026-06-24"}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "i18n-example"pages_build_output_dir = "./public"# Set this to today's datecompatibility_date = "2026-06-24"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "i18n-example"
+pages_build_output_dir = "./public"
+# Set this to today's date
+compatibility_date = "2026-07-01"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:
 
-```
-"scripts": {  "dev": "wrangler pages dev",  "deploy": "wrangler pages deploy"}
+```json
+"scripts": {
+  "dev": "wrangler pages dev",
+  "deploy": "wrangler pages deploy"
+}
 ```
 
 Using `wrangler`, deploy to Cloudflare’s network, using the `deploy` command:
 
-Terminal window
-
-```
+```sh
 npm run deploy
 ```
 

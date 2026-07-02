@@ -27,14 +27,19 @@ A component which shows count of total joined participants in a meeting.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participant-count></rtk-participant-count>
+```html
+<!-- component.html -->
+<rtk-participant-count></rtk-participant-count>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participant-count [meeting]="meeting" size="md"></rtk-participant-count>
+```html
+<!-- component.html -->
+<rtk-participant-count
+ [meeting]="meeting"
+ size="md">
+</rtk-participant-count>
 ```
 
 ```json

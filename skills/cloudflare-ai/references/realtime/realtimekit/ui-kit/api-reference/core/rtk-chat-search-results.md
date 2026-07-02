@@ -28,19 +28,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-search-results></rtk-chat-search-results>
 ```
 
 ### With Properties
 
-```
-<rtk-chat-search-results channelId="example" query="example"></rtk-chat-search-results>
+```html
+<rtk-chat-search-results
+ channelId="example"
+ query="example">
+</rtk-chat-search-results>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat-search-results");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat-search-results");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

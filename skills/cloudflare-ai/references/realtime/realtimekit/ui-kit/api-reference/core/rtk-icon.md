@@ -26,18 +26,25 @@ An icon component which accepts an svg string and renders it.
 
 ### Basic Usage
 
-```
+```html
 <rtk-icon></rtk-icon>
 ```
 
 ### With Properties
 
-```
-<rtk-icon icon="example" size="md" variant="primary"></rtk-icon>
+```html
+<rtk-icon
+ icon="example"
+ size="md"
+ variant="primary">
+</rtk-icon>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-icon");
+```html
+<script>
+  const el = document.querySelector("rtk-icon");
+
+
 </script>
 ```
 

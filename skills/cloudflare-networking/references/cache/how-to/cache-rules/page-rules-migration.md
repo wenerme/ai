@@ -22,8 +22,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-7039)
-* [ visual guide ](#tab-panel-7040)
+* [ Dashboard ](#tab-panel-7287)
+* [ visual guide ](#tab-panel-7288)
 
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
@@ -33,8 +33,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 2
 
-* [ Dashboard ](#tab-panel-7041)
-* [ visual guide ](#tab-panel-7042)
+* [ Dashboard ](#tab-panel-7289)
+* [ visual guide ](#tab-panel-7290)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.
@@ -45,7 +45,7 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 If you prefer, you can select **Edit expression** and paste the following expression:
 
-```
+```txt
 (http.request.uri.path.extension in {"7z" "avi" "avif" "apk" "bin" "bmp" "bz2" "class" "css" "csv" "doc" "docx" "dmg" "ejs" "eot" "eps" "exe" "flac" "gif" "gz" "ico" "iso" "jar" "jpg" "jpeg" "js" "mid" "midi" "mkv" "mp3" "mp4" "ogg" "otf" "pdf" "pict" "pls" "png" "ppt" "pptx" "ps" "rar" "svg" "svgz" "swf" "tar" "tif" "tiff" "ttf" "webm" "webp" "woff" "woff2" "xls" "xlsx" "zip" "zst"})
 ```
 

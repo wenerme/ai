@@ -26,16 +26,24 @@ Displays a message when device permissions (camera/microphone) are denied, with 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPermissionsMessage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPermissionsMessage meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkPermissionsMessage meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPermissionsMessage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPermissionsMessage meeting={meeting} iconPack={customIconPack} />;}
+
+
+function MyComponent() {
+  return <RtkPermissionsMessage meeting={meeting} iconPack={customIconPack} />;
+}
 ```
 
 ```json

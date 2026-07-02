@@ -36,17 +36,13 @@ You can also configure your global user with environment variables. This is the 
 
 To customize the authentication tokens that Wrangler uses, you may provide the `CF_ACCOUNT_ID` and `CF_API_TOKEN` environment variables when running any Wrangler command. The account ID may be obtained from the Cloudflare dashboard in **Overview** and you may [create or reuse an existing API token](#generate-tokens).
 
-Terminal window
-
-```
+```sh
 CF_ACCOUNT_ID=accountID CF_API_TOKEN=veryLongAPIToken wrangler publish
 ```
 
 Alternatively, you may use the `CF_EMAIL` and `CF_API_KEY` environment variable combination instead:
 
-Terminal window
-
-```
+```sh
 CF_EMAIL=cloudflareEmail CF_API_KEY=veryLongAPI wrangler publish
 ```
 
@@ -81,26 +77,26 @@ Warning
 
 After getting your token or key, you can set up your default credentials on your local machine by running `wrangler config`:
 
-Terminal window
-
-```
+```sh
 wrangler config
 ```
 
-```
-Enter API token:superlongapitoken
+```sh
+Enter API token:
+superlongapitoken
 ```
 
 Use the `--api-key` flag to instead configure with email and global API key:
 
-Terminal window
-
-```
+```sh
 wrangler config --api-key
 ```
 
-```
-Enter email:testuser@example.comEnter global API key:superlongapikey
+```sh
+Enter email:
+testuser@example.com
+Enter global API key:
+superlongapikey
 ```
 
 ```json

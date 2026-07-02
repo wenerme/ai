@@ -25,10 +25,11 @@ A component which allows you to leave a meeting or end meeting for all, if you h
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val endCallDialog = RtkLeaveMeetingView(context, meeting)endCallDialog.show()
+```kotlin
+val endCallDialog = RtkLeaveMeetingView(context, meeting)
+endCallDialog.show()
 ```
 
 ```json

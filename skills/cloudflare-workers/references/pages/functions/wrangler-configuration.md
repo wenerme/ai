@@ -35,22 +35,56 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 ## Example Wrangler file
 
-* [  wrangler.jsonc ](#tab-panel-9595)
-* [  wrangler.toml ](#tab-panel-9596)
+* [  wrangler.jsonc ](#tab-panel-9846)
+* [  wrangler.toml ](#tab-panel-9847)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-pages-app",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "northwind-demo",
+      "database_id": "<DATABASE_ID>"
+    }
+  ],
+  "vars": {
+    "API_KEY": "1234567asdf"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-pages-app",  "pages_build_output_dir": "./dist",  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ],  "d1_databases": [    {      "binding": "DB",      "database_name": "northwind-demo",      "database_id": "<DATABASE_ID>"    }  ],  "vars": {    "API_KEY": "1234567asdf"  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-pages-app"pages_build_output_dir = "./dist"
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
-[[d1_databases]]binding = "DB"database_name = "northwind-demo"database_id = "<DATABASE_ID>"
-[vars]API_KEY = "1234567asdf"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-pages-app"
+pages_build_output_dir = "./dist"
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
+
+
+[[d1_databases]]
+binding = "DB"
+database_name = "northwind-demo"
+database_id = "<DATABASE_ID>"
+
+
+[vars]
+API_KEY = "1234567asdf"
 ```
 
 ## Requirements
@@ -73,19 +107,28 @@ Before you could use the Wrangler configuration file to define your preview and 
 
 If you have been using a Wrangler configuration file for local development, you may already have a file in your Pages project that looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-9591)
-* [  wrangler.toml ](#tab-panel-9592)
+* [  wrangler.jsonc ](#tab-panel-9842)
+* [  wrangler.toml ](#tab-panel-9843)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ]
+}
 ```
-{  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
+```toml
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
 ```
 
 If you would like to use your existing Wrangler file for your Pages project configuration, you must:
@@ -105,25 +148,19 @@ You can continue to use your Wrangler file for local development without migrati
 
 If you have an existing Pages project with configuration set up via the Cloudflare dashboard and do not have an existing Wrangler file in your Project, run the `wrangler pages download config` command in your Pages project directory. The `wrangler pages download config` command will download your existing Cloudflare dashboard configuration and generate a valid Wrangler file in your Pages project directory.
 
-* [ npm ](#tab-panel-9588)
-* [ yarn ](#tab-panel-9589)
-* [ pnpm ](#tab-panel-9590)
+* [ npm ](#tab-panel-9839)
+* [ yarn ](#tab-panel-9840)
+* [ pnpm ](#tab-panel-9841)
 
-Terminal window
-
-```
+```sh
 npx wrangler pages download config <PROJECT_NAME>
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler pages download config <PROJECT_NAME>
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler pages download config <PROJECT_NAME>
 ```
 
@@ -154,20 +191,44 @@ With a Wrangler configuration file, you can quickly set configuration across you
 
 The Wrangler configuration file applies locally when using `wrangler pages dev`. This means that you can test out configuration changes quickly without a need to login to the Cloudflare dashboard. Refer to the following config file for an example:
 
-* [  wrangler.jsonc ](#tab-panel-9593)
-* [  wrangler.toml ](#tab-panel-9594)
+* [  wrangler.jsonc ](#tab-panel-9844)
+* [  wrangler.toml ](#tab-panel-9845)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-pages-app",
+  "pages_build_output_dir": "./dist",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-pages-app",  "pages_build_output_dir": "./dist",  // Set this to today's date  "compatibility_date": "2026-06-25",  "compatibility_flags": [    "nodejs_compat"  ],  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-pages-app"pages_build_output_dir = "./dist"# Set this to today's datecompatibility_date = "2026-06-25"compatibility_flags = [ "nodejs_compat" ]
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-pages-app"
+pages_build_output_dir = "./dist"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
 ```
 
 This Wrangler configuration file adds the `nodejs_compat` compatibility flag and a KV namespace binding to your Pages project. Running `wrangler pages dev` in a Pages project directory with this Wrangler configuration file will apply the `nodejs_compat` compatibility flag locally, and expose the `KV` binding in your Pages Function code at `context.env.KV`.
@@ -186,17 +247,13 @@ For the following commands, if you are using git it is important to remember the
 
 To use the example above as your configuration for production, make a new production deployment using:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages deploy
 ```
 
 or more specifically:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages deploy --branch <PRODUCTION BRANCH>
 ```
 
@@ -216,69 +273,213 @@ Unlike [Workers Environments](https://developers.cloudflare.com/workers/wrangler
 
 Refer to the following Wrangler configuration file for an example of how to override preview deployment configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9597)
-* [  wrangler.toml ](#tab-panel-9598)
+* [  wrangler.jsonc ](#tab-panel-9848)
+* [  wrangler.toml ](#tab-panel-9849)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-pages-site",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ],
+  "vars": {
+    "API_KEY": "1234567asdf"
+  },
+  "env": {
+    "preview": {
+      "kv_namespaces": [
+        {
+          "binding": "KV",
+          "id": "<PREVIEW_NAMESPACE_ID>"
+        }
+      ],
+      "vars": {
+        "API_KEY": "8901234bfgd"
+      }
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-pages-site",  "pages_build_output_dir": "./dist",  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ],  "vars": {    "API_KEY": "1234567asdf"  },  "env": {    "preview": {      "kv_namespaces": [        {          "binding": "KV",          "id": "<PREVIEW_NAMESPACE_ID>"        }      ],      "vars": {        "API_KEY": "8901234bfgd"      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-pages-site"pages_build_output_dir = "./dist"
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
-[vars]API_KEY = "1234567asdf"
-[[env.preview.kv_namespaces]]binding = "KV"id = "<PREVIEW_NAMESPACE_ID>"
-[env.preview.vars]API_KEY = "8901234bfgd"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-pages-site"
+pages_build_output_dir = "./dist"
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
+
+
+[vars]
+API_KEY = "1234567asdf"
+
+
+[[env.preview.kv_namespaces]]
+binding = "KV"
+id = "<PREVIEW_NAMESPACE_ID>"
+
+
+[env.preview.vars]
+API_KEY = "8901234bfgd"
 ```
 
 If you deployed this file via `wrangler pages deploy`, `name`, `pages_build_output_dir`, `kv_namespaces`, and `vars` would apply the configuration to local and production, while `env.preview` would override `kv_namespaces` and `vars` for preview deployments.
 
 If you wanted to have configuration values apply to local and preview, but override production, your file would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-9601)
-* [  wrangler.toml ](#tab-panel-9602)
+* [  wrangler.jsonc ](#tab-panel-9852)
+* [  wrangler.toml ](#tab-panel-9853)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-pages-site",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ],
+  "vars": {
+    "API_KEY": "1234567asdf"
+  },
+  "env": {
+    "production": {
+      "kv_namespaces": [
+        {
+          "binding": "KV",
+          "id": "<PRODUCTION_NAMESPACE_ID>"
+        }
+      ],
+      "vars": {
+        "API_KEY": "8901234bfgd"
+      }
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-pages-site",  "pages_build_output_dir": "./dist",  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ],  "vars": {    "API_KEY": "1234567asdf"  },  "env": {    "production": {      "kv_namespaces": [        {          "binding": "KV",          "id": "<PRODUCTION_NAMESPACE_ID>"        }      ],      "vars": {        "API_KEY": "8901234bfgd"      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-pages-site"pages_build_output_dir = "./dist"
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
-[vars]API_KEY = "1234567asdf"
-[[env.production.kv_namespaces]]binding = "KV"id = "<PRODUCTION_NAMESPACE_ID>"
-[env.production.vars]API_KEY = "8901234bfgd"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-pages-site"
+pages_build_output_dir = "./dist"
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
+
+
+[vars]
+API_KEY = "1234567asdf"
+
+
+[[env.production.kv_namespaces]]
+binding = "KV"
+id = "<PRODUCTION_NAMESPACE_ID>"
+
+
+[env.production.vars]
+API_KEY = "8901234bfgd"
 ```
 
 You can always be explicit and override both preview and production:
 
-* [  wrangler.jsonc ](#tab-panel-9603)
-* [  wrangler.toml ](#tab-panel-9604)
+* [  wrangler.jsonc ](#tab-panel-9854)
+* [  wrangler.toml ](#tab-panel-9855)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-pages-site",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ],
+  "vars": {
+    "API_KEY": "1234567asdf"
+  },
+  "env": {
+    "preview": {
+      "kv_namespaces": [
+        {
+          "binding": "KV",
+          "id": "<PREVIEW_NAMESPACE_ID>"
+        }
+      ],
+      "vars": {
+        "API_KEY": "8901234bfgd"
+      }
+    },
+    "production": {
+      "kv_namespaces": [
+        {
+          "binding": "KV",
+          "id": "<PRODUCTION_NAMESPACE_ID>"
+        }
+      ],
+      "vars": {
+        "API_KEY": "6567875fvgt"
+      }
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-pages-site",  "pages_build_output_dir": "./dist",  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ],  "vars": {    "API_KEY": "1234567asdf"  },  "env": {    "preview": {      "kv_namespaces": [        {          "binding": "KV",          "id": "<PREVIEW_NAMESPACE_ID>"        }      ],      "vars": {        "API_KEY": "8901234bfgd"      }    },    "production": {      "kv_namespaces": [        {          "binding": "KV",          "id": "<PRODUCTION_NAMESPACE_ID>"        }      ],      "vars": {        "API_KEY": "6567875fvgt"      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-pages-site"pages_build_output_dir = "./dist"
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
-[vars]API_KEY = "1234567asdf"
-[[env.preview.kv_namespaces]]binding = "KV"id = "<PREVIEW_NAMESPACE_ID>"
-[env.preview.vars]API_KEY = "8901234bfgd"
-[[env.production.kv_namespaces]]binding = "KV"id = "<PRODUCTION_NAMESPACE_ID>"
-[env.production.vars]API_KEY = "6567875fvgt"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-pages-site"
+pages_build_output_dir = "./dist"
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
+
+
+[vars]
+API_KEY = "1234567asdf"
+
+
+[[env.preview.kv_namespaces]]
+binding = "KV"
+id = "<PREVIEW_NAMESPACE_ID>"
+
+
+[env.preview.vars]
+API_KEY = "8901234bfgd"
+
+
+[[env.production.kv_namespaces]]
+binding = "KV"
+id = "<PRODUCTION_NAMESPACE_ID>"
+
+
+[env.production.vars]
+API_KEY = "6567875fvgt"
 ```
 
 ## Inheritable keys
@@ -316,22 +517,54 @@ Non-inheritable keys are configurable at the top-level, but, if any one non-inhe
 
 For example, this configuration will not work:
 
-* [  wrangler.jsonc ](#tab-panel-9599)
-* [  wrangler.toml ](#tab-panel-9600)
+* [  wrangler.jsonc ](#tab-panel-9850)
+* [  wrangler.toml ](#tab-panel-9851)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-pages-site",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "<NAMESPACE_ID>"
+    }
+  ],
+  "vars": {
+    "API_KEY": "1234567asdf"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "API_KEY": "8901234bfgd"
+      }
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-pages-site",  "pages_build_output_dir": "./dist",  "kv_namespaces": [    {      "binding": "KV",      "id": "<NAMESPACE_ID>"    }  ],  "vars": {    "API_KEY": "1234567asdf"  },  "env": {    "production": {      "vars": {        "API_KEY": "8901234bfgd"      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-pages-site"pages_build_output_dir = "./dist"
-[[kv_namespaces]]binding = "KV"id = "<NAMESPACE_ID>"
-[vars]API_KEY = "1234567asdf"
-[env.production.vars]API_KEY = "8901234bfgd"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-pages-site"
+pages_build_output_dir = "./dist"
+
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<NAMESPACE_ID>"
+
+
+[vars]
+API_KEY = "1234567asdf"
+
+
+[env.production.vars]
+API_KEY = "8901234bfgd"
 ```
 
 `[[env.production.vars]]` is set to override `[vars]`. Because of this `[[kv_namespaces]]` must also be overridden by defining `[[env.production.kv_namespaces]]`.

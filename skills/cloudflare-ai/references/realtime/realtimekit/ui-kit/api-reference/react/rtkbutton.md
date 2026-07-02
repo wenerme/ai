@@ -29,16 +29,30 @@ A button that follows RTK Design System.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkButton />;}
+
+
+function MyComponent() {
+  return <RtkButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkButton      disabled={true}      kind={buttonkind}      reverse={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkButton
+      disabled={true}
+      kind={buttonkind}
+      reverse={true}
+    />
+  );
+}
 ```
 
 ```json

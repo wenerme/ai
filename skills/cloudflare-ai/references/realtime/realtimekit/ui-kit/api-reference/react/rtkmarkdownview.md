@@ -23,16 +23,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMarkdownView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkMarkdownView />;}
+
+
+function MyComponent() {
+  return <RtkMarkdownView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMarkdownView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkMarkdownView      maxLength={42}      text="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkMarkdownView
+      maxLength={42}
+      text="example"
+    />
+  );
+}
 ```
 
 ```json

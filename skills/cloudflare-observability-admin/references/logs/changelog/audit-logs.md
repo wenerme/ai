@@ -44,9 +44,7 @@ Audit Logs v2 now supports organization-level audit logs. Org Admins can retriev
 
 To retrieve organization-level audit logs, use the following endpoint:
 
-Terminal window
-
-```
+```bash
 GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/audit
 ```
 
@@ -149,9 +147,9 @@ Availability: Audit logs (version 2) is now in Beta, with support limited to **A
 
 Use the following API endpoint to retrieve audit logs:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 GET https://api.cloudflare.com/client/v4/accounts/<account_id>/logs/audit?since=<date>&before=<date>
 ```
 

@@ -28,16 +28,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatSelector } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatSelector />;}
+
+
+function MyComponent() {
+  return <RtkChatSelector />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatSelector } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatSelector      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatSelector
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

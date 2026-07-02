@@ -39,9 +39,9 @@ Note
 
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
 
-* [ Wrangler ](#tab-panel-10653)
-* [ Dashboard ](#tab-panel-10654)
-* [ API ](#tab-panel-10655)
+* [ Wrangler ](#tab-panel-10948)
+* [ Dashboard ](#tab-panel-10949)
+* [ API ](#tab-panel-10950)
 
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
@@ -49,15 +49,17 @@ To use the following example, replace the store ID and secret name by your actua
 
 Note that a secret name cannot contain spaces.
 
-Terminal window
-
-```
+```sh
 npx wrangler secrets-store secret create <STORE_ID> --name MY_SECRET_NAME --scopes workers --remote
 ```
 
-```
+```sh
 ✓ Enter a secret value: › ***
-🔐 Creating secret... (Name: MY_SECRET_NAME, Value: REDACTED, Scopes: workers, Comment: undefined)✓ Select an account: › My account✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
+
+
+🔐 Creating secret... (Name: MY_SECRET_NAME, Value: REDACTED, Scopes: workers, Comment: undefined)
+✓ Select an account: › My account
+✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
 ```
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
@@ -76,10 +78,31 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Secrets Store Write`
 
-Create a secret
+**Create a secret**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '[    {        "name": "<MY_SECRET_NAME>",        "value": "<SECRET_VALUE>",        "scopes": [            "workers"        ],        "comment": ""    },    {        "name": "<MY_SECRET_NAME_2>",        "value": "<SECRET_VALUE>",        "scopes": [            "workers"        ],        "comment": ""    }  ]'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '[
+    {
+        "name": "<MY_SECRET_NAME>",
+        "value": "<SECRET_VALUE>",
+        "scopes": [
+            "workers"
+        ],
+        "comment": ""
+    },
+    {
+        "name": "<MY_SECRET_NAME_2>",
+        "value": "<SECRET_VALUE>",
+        "scopes": [
+            "workers"
+        ],
+        "comment": ""
+    }
+  ]'
 ```
 
 Refer to [manage account secrets](https://developers.cloudflare.com/secrets-store/manage-secrets/) for further options.
@@ -100,20 +123,34 @@ To bind an account secret to your Worker, you must have one of the following [ro
   * `store_id`: the corresponding Secrets Store ID where your account secret was created.
   * `secret_name`: the unique secret name, defined when your account secret was created.
 
-* [  wrangler.jsonc ](#tab-panel-10651)
-* [  wrangler.toml ](#tab-panel-10652)
+* [  wrangler.jsonc ](#tab-panel-10946)
+* [  wrangler.toml ](#tab-panel-10947)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "main": "./src/index.js",
+  "secrets_store_secrets": [
+    {
+      "binding": "<BINDING_VARIABLE>",
+      "store_id": "<STORE_ID>",
+      "secret_name": "<MY_SECRET_NAME>"
+    }
+  ]
+}
 ```
-{  "main": "./src/index.js",  "secrets_store_secrets": [    {      "binding": "<BINDING_VARIABLE>",      "store_id": "<STORE_ID>",      "secret_name": "<MY_SECRET_NAME>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 main = "./src/index.js"
-[[secrets_store_secrets]]binding = "<BINDING_VARIABLE>"store_id = "<STORE_ID>"secret_name = "<MY_SECRET_NAME>"
+
+
+[[secrets_store_secrets]]
+binding = "<BINDING_VARIABLE>"
+store_id = "<STORE_ID>"
+secret_name = "<MY_SECRET_NAME>"
 ```
 
 ### Via Dashboard
@@ -143,13 +180,31 @@ Local development mode
 
 You cannot access production secrets (created on the dashboard, via API, or with the `--remote` flag) from your local development setup. To use Secrets Store locally, you must use `secrets-store secret` [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/commands/) without the `--remote` flag.
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // Example of using the secret safely in an API request    const APIkey = await env.<BINDING_VARIABLE>.get()
-    const response = await fetch("https://api.example.com/data", {      headers: { "Authorization": `Bearer ${APIKey}` },    });
-    if (!response.ok) {      return new Response("Failed to fetch data", { status: response.status });    }
-    const data = await response.json();    return new Response(JSON.stringify(data), {      headers: { "Content-Type": "application/json" },    });  },};
+```js
+export default {
+  async fetch(request, env) {
+    // Example of using the secret safely in an API request
+    const APIkey = await env.<BINDING_VARIABLE>.get()
+
+
+    const response = await fetch("https://api.example.com/data", {
+      headers: { "Authorization": `Bearer ${APIKey}` },
+    });
+
+
+    if (!response.ok) {
+      return new Response("Failed to fetch data", { status: response.status });
+    }
+
+
+    const data = await response.json();
+    return new Response(JSON.stringify(data), {
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
 ```
 
 ```json

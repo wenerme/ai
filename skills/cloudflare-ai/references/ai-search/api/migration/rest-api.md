@@ -31,20 +31,31 @@ How to migrate from the AutoRAG `/ai-search` endpoint to the new `/chat/completi
 
 **Before (AutoRAG API):**
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/ai-search" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "query": "What is Cloudflare?"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/ai-search" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -d '{
+    "query": "What is Cloudflare?"
+  }'
 ```
 
 **After (AI Search API):**
 
 The new API uses the `messages` array format.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -d '{
+    "messages": [
+      {
+        "content": "What is Cloudflare?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 ## Search
@@ -53,20 +64,31 @@ How to migrate from the AutoRAG `/search` endpoint to the new `/search` endpoint
 
 **Before (AutoRAG API):**
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/search" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "query": "What is Cloudflare?"  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/search" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -d '{
+    "query": "What is Cloudflare?"
+  }'
 ```
 
 **After (AI Search API):**
 
 The new API uses the `messages` array format. The `query` string format is also supported.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -d '{
+    "messages": [
+      {
+        "content": "What is Cloudflare?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 ## Streaming behavior changes
@@ -102,14 +124,26 @@ Filter by a single metadata field using implicit equality:
 
 **Before (AutoRAG API):**
 
-```
-{  "filters": {    "type": "eq",    "key": "folder",    "value": "customer-a/"  }}
+```json
+{
+  "filters": {
+    "type": "eq",
+    "key": "folder",
+    "value": "customer-a/"
+  }
+}
 ```
 
 **After (AI Search API):**
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": { "folder": "customer-a/" }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": { "folder": "customer-a/" }
+    }
+  }
+}
 ```
 
 #### Compound filter (AND)
@@ -118,14 +152,31 @@ Combine multiple conditions where all must match:
 
 **Before (AutoRAG API):**
 
-```
-{  "filters": {    "type": "and",    "filters": [      { "type": "eq", "key": "folder", "value": "customer-a/" },      { "type": "gte", "key": "timestamp", "value": "1735689600000" }    ]  }}
+```json
+{
+  "filters": {
+    "type": "and",
+    "filters": [
+      { "type": "eq", "key": "folder", "value": "customer-a/" },
+      { "type": "gte", "key": "timestamp", "value": "1735689600000" }
+    ]
+  }
+}
 ```
 
 **After (AI Search API):**
 
-```
-{  "ai_search_options": {    "retrieval": {      "filters": {        "folder": "customer-a/",        "timestamp": { "$gte": 1735689600 }      }    }  }}
+```json
+{
+  "ai_search_options": {
+    "retrieval": {
+      "filters": {
+        "folder": "customer-a/",
+        "timestamp": { "$gte": 1735689600 }
+      }
+    }
+  }
+}
 ```
 
 ## API references

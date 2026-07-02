@@ -27,16 +27,30 @@ A component which renders a file message.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkFileMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkFileMessageView />;}
+
+
+function MyComponent() {
+  return <RtkFileMessageView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkFileMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkFileMessageView      name="example"      size={42}      url="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkFileMessageView
+      name="example"
+      size={42}
+      url="example"
+    />
+  );
+}
 ```
 
 ```json

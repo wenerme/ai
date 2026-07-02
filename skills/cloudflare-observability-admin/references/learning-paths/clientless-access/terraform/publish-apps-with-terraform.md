@@ -27,13 +27,11 @@ This guide covers how to use the [Cloudflare Terraform provider ↗](https://reg
 Terraform functions through a working directory that contains configuration files. You can store your configuration in multiple files or just one — Terraform will evaluate all of the configuration files in the directory as if they were in a single document.
 
 1. Create a folder for your Terraform configuration:
-Terminal window
-```
+```sh
 mkdir cloudflare-tf
 ```
 2. Change into the directory:
-Terminal window
-```
+```sh
 cd cloudflare-tf
 ```
 
@@ -48,13 +46,40 @@ Find the Tunnel ID
 2. Select the tunnel name.
 3. Copy the **Tunnel ID**.
 
-```
-terraform {  required_providers {    cloudflare = {      source = "cloudflare/cloudflare"      version = "~> 4.0"    }  }}
-provider "cloudflare" {  api_token = "<API-TOKEN>"}
-variable "account_id" {  default = "<ACCOUNT-ID>"}
-variable "zone_id" {  default = "<ZONE-ID>"}
-variable "zone_name" {  default = "mycompany.com"}
-variable "tunnel_id" {  default = "<TUNNEL-ID>"}
+```txt
+terraform {
+  required_providers {
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = "~> 4.0"
+    }
+  }
+}
+
+
+provider "cloudflare" {
+  api_token = "<API-TOKEN>"
+}
+
+
+variable "account_id" {
+  default = "<ACCOUNT-ID>"
+}
+
+
+variable "zone_id" {
+  default = "<ZONE-ID>"
+}
+
+
+variable "zone_name" {
+  default = "mycompany.com"
+}
+
+
+variable "tunnel_id" {
+  default = "<TUNNEL-ID>"
+}
 ```
 
 Warning
@@ -69,9 +94,31 @@ Add the following resources to your Terraform configuration.
 
 Using the [cloudflare\_tunnel\_config ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel%5Fconfig) resource, create an ingress rule that maps your application to a public DNS record. This example makes `localhost:8080` available on `app.mycompany.com`, sets the [Connect Timeout](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#connecttimeout), and enables [Access JWT validation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#access).
 
-```
-resource "cloudflare_tunnel_config" "example_config" {  account_id = var.cloudflare_account_id  tunnel_id  = var.tunnel_id
-  config {    ingress_rule {      hostname = "app.${var.zone_name}"      service  = "http://localhost:8080"      origin_request {        connect_timeout = "2m0s"        access {          required  = true          team_name = "myteam"          aud_tag   = [cloudflare_access_application.example_app.aud]        }      }    }    ingress_rule {      # Respond with a `404` status code when the request does not match any of the previous hostnames.      service  = "http_status:404"    }  }}
+```txt
+resource "cloudflare_tunnel_config" "example_config" {
+  account_id = var.cloudflare_account_id
+  tunnel_id  = var.tunnel_id
+
+
+  config {
+    ingress_rule {
+      hostname = "app.${var.zone_name}"
+      service  = "http://localhost:8080"
+      origin_request {
+        connect_timeout = "2m0s"
+        access {
+          required  = true
+          team_name = "myteam"
+          aud_tag   = [cloudflare_access_application.example_app.aud]
+        }
+      }
+    }
+    ingress_rule {
+      # Respond with a `404` status code when the request does not match any of the previous hostnames.
+      service  = "http_status:404"
+    }
+  }
+}
 ```
 
 Note
@@ -82,17 +129,35 @@ Published application configurations must include a catch-all ingress rule at th
 
 Using the [cloudflare\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access%5Fapplication) resource, add the application to Cloudflare Access.
 
-```
-resource "cloudflare_access_application" "example_app" {  zone_id                   = var.zone_id  name                      = "Example application"  domain                    = "app.${var.zone_name}"  type                      = "self_hosted"  session_duration          = "24h"  auto_redirect_to_identity = false}
+```txt
+resource "cloudflare_access_application" "example_app" {
+  zone_id                   = var.zone_id
+  name                      = "Example application"
+  domain                    = "app.${var.zone_name}"
+  type                      = "self_hosted"
+  session_duration          = "24h"
+  auto_redirect_to_identity = false
+}
 ```
 
 ### Create an Access policy
 
 Using the [cloudflare\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access%5Fapplication) resource, create a policy to secure the application. The following policy will only allow access to users who authenticate through your identity provider.
 
-```
-resource "cloudflare_access_policy" "example_policy" {  application_id    = cloudflare_access_application.example_app.id  zone_id           = var.zone_id  name              = "Example policy"  precedence        = "1"  decision          = "allow"
-  include {    login_method = ["<IDP-UUID>"]  }
+```txt
+resource "cloudflare_access_policy" "example_policy" {
+  application_id    = cloudflare_access_application.example_app.id
+  zone_id           = var.zone_id
+  name              = "Example policy"
+  precedence        = "1"
+  decision          = "allow"
+
+
+  include {
+    login_method = ["<IDP-UUID>"]
+  }
+
+
 }
 ```
 
@@ -101,18 +166,15 @@ resource "cloudflare_access_policy" "example_policy" {  application_id    = clou
 To deploy the configuration files:
 
 1. Initialize your configuration directory:
-Terminal window
-```
+```sh
 terraform init
 ```
 2. Preview everything that will be created:
-Terminal window
-```
+```sh
 terraform plan
 ```
 3. Apply the configuration:
-Terminal window
-```
+```sh
 terraform apply
 ```
 

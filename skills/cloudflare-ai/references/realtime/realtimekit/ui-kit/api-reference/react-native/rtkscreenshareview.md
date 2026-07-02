@@ -31,16 +31,32 @@ Renders a participant's screen share with fullscreen toggle, name tag, and audio
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkScreenshareView } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkScreenshareView participant={participant} meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkScreenshareView participant={participant} meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkScreenshareView } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkScreenshareView      participant={participant}      meeting={meeting}      nameTagPosition="bottom-left"      variant="solid"      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkScreenshareView
+      participant={participant}
+      meeting={meeting}
+      nameTagPosition="bottom-left"
+      variant="solid"
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

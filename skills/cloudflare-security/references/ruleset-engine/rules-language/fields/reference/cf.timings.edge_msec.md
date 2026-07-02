@@ -25,14 +25,15 @@ The value does not include:
 
 Example value:
 
-```
+```txt
 28
 ```
 
 Example usage:
 
-```
-# Matches requests where Cloudflare's edge processing time was greater than 500 millisecondscf.timings.edge_msec > 500
+```txt
+# Matches requests where Cloudflare's edge processing time was greater than 500 milliseconds
+cf.timings.edge_msec > 500
 ```
 
 Categories:

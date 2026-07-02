@@ -22,10 +22,15 @@ You will deploy your site to Cloudflare Pages. Refer to the [Get started guide](
 
 To begin, create a new React project on your local machine with `create-react-app`. Then create a [new GitHub repository ↗](https://repo.new/), and attach the GitHub location as a remote destination:
 
-Terminal window
-
-```
-# create new project with create-react-appnpx create-react-app new-app# enter new directorycd new-app# attach git remotegit remote add origin git@github.com:<username>/<repo>.git# change default branch namegit branch -M main
+```sh
+# create new project with create-react-app
+npx create-react-app new-app
+# enter new directory
+cd new-app
+# attach git remote
+git remote add origin git@github.com:<username>/<repo>.git
+# change default branch name
+git branch -M main
 ```
 
 You may now modify the React application in the `new-app` directory you created.
@@ -36,8 +41,13 @@ The starting point for `create-react-app` includes a simple Hello World website.
 
 First, create a new react component called `ContactForm.js` and place it in the `src` folder alongside `App.js`.
 
-```
-project-root/├─ package.json└─ src/   ├─ ContactForm.js   ├─ App.js   └─ ...
+```plaintext
+project-root/
+├─ package.json
+└─ src/
+   ├─ ContactForm.js
+   ├─ App.js
+   └─ ...
 ```
 
 Next, you will build the form component using a helper library from Formspree, [@formspree/react ↗](https://github.com/formspree/formspree-react). This library contains a `useForm` hook to simplify the process of handling form submission events and managing form state.
@@ -64,14 +74,43 @@ bun add @formspree/react
 
 Then paste the following code snippet into the `ContactForm.js` file:
 
-```
+```jsx
 import { useForm, ValidationError } from "@formspree/react";
-export default function ContactForm() {  const [state, handleSubmit] = useForm("YOUR_FORM_ID");
-  if (state.succeeded) {    return <p>Thanks for your submission!</p>;  }
-  return (    <form method="POST" onSubmit={handleSubmit}>      <label htmlFor="name">Full Name</label>      <input id="name" type="text" name="name" required />      <ValidationError prefix="Name" field="name" errors={state.errors} />
-      <label htmlFor="email">Email Address</label>      <input id="email" type="email" name="email" required />      <ValidationError prefix="Email" field="email" errors={state.errors} />
-      <label htmlFor="message">Message</label>      <textarea id="message" name="message" required></textarea>      <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <button type="submit" disabled={state.submitting}>        Submit      </button>      <ValidationError errors={state.errors} />    </form>  );}
+
+
+export default function ContactForm() {
+  const [state, handleSubmit] = useForm("YOUR_FORM_ID");
+
+
+  if (state.succeeded) {
+    return <p>Thanks for your submission!</p>;
+  }
+
+
+  return (
+    <form method="POST" onSubmit={handleSubmit}>
+      <label htmlFor="name">Full Name</label>
+      <input id="name" type="text" name="name" required />
+      <ValidationError prefix="Name" field="name" errors={state.errors} />
+
+
+      <label htmlFor="email">Email Address</label>
+      <input id="email" type="email" name="email" required />
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
+
+
+      <label htmlFor="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+      <ValidationError prefix="Message" field="message" errors={state.errors} />
+
+
+      <button type="submit" disabled={state.submitting}>
+        Submit
+      </button>
+      <ValidationError errors={state.errors} />
+    </form>
+  );
+}
 ```
 
 Currently, the form contains a placeholder `YOUR_FORM_ID`. You replace this with your own form endpoint later in this tutorial.
@@ -86,22 +125,50 @@ Note
 
 To add this form to your website, import the component:
 
-```
+```jsx
 import ContactForm from "./ContactForm";
 ```
 
 Then insert the form into the page as a react component:
 
-```
+```jsx
 <ContactForm />
 ```
 
 For example, you can update your `src/App.js` file to add the form:
 
-```
-import ContactForm from "./ContactForm"; // <-- import the form componentimport logo from "./logo.svg";import "./App.css";
-function App() {  return (    <div className="App">      <header className="App-header">        <img src={logo} className="App-logo" alt="logo" />        <p>          Edit <code>src/App.js</code> and save to reload.        </p>        <a          className="App-link"          href="https://reactjs.org"          target="_blank"          rel="noopener noreferrer"        >          Learn React        </a>
-        {/* your contact form component goes here */}        <ContactForm />      </header>    </div>  );}
+```jsx
+import ContactForm from "./ContactForm"; // <-- import the form component
+import logo from "./logo.svg";
+import "./App.css";
+
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+
+
+        {/* your contact form component goes here */}
+        <ContactForm />
+      </header>
+    </div>
+  );
+}
+
+
 export default App;
 ```
 
@@ -125,8 +192,10 @@ You will be presented with instructions on how to integrate your new form. Copy 
 
 Your component should now have a line like this:
 
-```
+```jsx
 const [state, handleSubmit] = useForm("mqldaqwx");
+
+
 /* replace the random-like string above with your own form's ID */
 ```
 
@@ -146,10 +215,13 @@ You are now ready to deploy your project.
 
 If you have not already done so, save your progress within `git` and then push the commit(s) to the GitHub repository:
 
-Terminal window
-
-```
-# Add all filesgit add -A# Commit w/ messagegit commit -m "working example"# Push commit(s) to remotegit push -u origin main
+```sh
+# Add all files
+git add -A
+# Commit w/ message
+git commit -m "working example"
+# Push commit(s) to remote
+git push -u origin main
 ```
 
 Your work now resides within the GitHub repository, which means that Pages is able to access it too.
@@ -172,7 +244,7 @@ To set up production and development forms first create a second form in Formspr
 
 Then change the `useForm` hook in your `ContactForm.js` file so that it is initialized with an environment variable, rather than a string:
 
-```
+```jsx
 const [state, handleSubmit] = useForm(process.env.REACT_APP_FORM_ID);
 ```
 

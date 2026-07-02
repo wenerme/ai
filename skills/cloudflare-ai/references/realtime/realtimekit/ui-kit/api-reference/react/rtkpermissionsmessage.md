@@ -27,16 +27,28 @@ A component which shows permission related troubleshooting information.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPermissionsMessage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPermissionsMessage />;}
+
+
+function MyComponent() {
+  return <RtkPermissionsMessage />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPermissionsMessage } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPermissionsMessage      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPermissionsMessage
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

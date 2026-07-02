@@ -28,14 +28,19 @@ You can use filters as an argument on the following resources:
 
 Allows querying zone-related data by zone ID (`zoneTag`).
 
-```
-zones(filter: {zoneTag: "your Zone ID"}) {    ...}
+```graphql
+zones(filter: {zoneTag: "your Zone ID"}) {
+    ...
+}
 ```
 
 The zone filter must conform to the following grammar:
 
-```
-filter    { zoneTag: t }    { zoneTag_gt: t }    { zoneTag_in: [t, ...] }
+```graphql
+filter
+    { zoneTag: t }
+    { zoneTag_gt: t }
+    { zoneTag_in: [t, ...] }
 ```
 
 Compound filters (comma-separated, `AND`, `OR`) are not supported.
@@ -60,8 +65,20 @@ Table filters require that you query at least one node. Use the `AND` operator t
 
 The following grammar describes the table filter, where `k` is the GraphQL node on which to filter and `op` is one of the supported operators for that node:
 
-```
-filter  { kvs }kvs  kv  kv, kvskv  k: v  k_op: v  AND: [filters]  OR: [filters]filters  filter  filter, filters
+```graphql
+filter
+  { kvs }
+kvs
+  kv
+  kv, kvs
+kv
+  k: v
+  k_op: v
+  AND: [filters]
+  OR: [filters]
+filters
+  filter
+  filter, filters
 ```
 
 ### Operators
@@ -103,11 +120,22 @@ Filtering times are based on event start timestamps, which means requests that e
 
 ### General example
 
-```
-query GeneralExample($zoneTag: string, $start: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      httpRequestsAdaptiveGroups(        filter: { datetime_gt: $start, clientCountryName: "GB" }        limit: 1      ) {        count      }    }  }}
+```graphql
+query GeneralExample($zoneTag: string, $start: Time) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      httpRequestsAdaptiveGroups(
+        filter: { datetime_gt: $start, clientCountryName: "GB" }
+        limit: 1
+      ) {
+        count
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlRtOGEAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg7jOGEAF8gA)
 
 ### Filter on a specific node
 
@@ -115,13 +143,15 @@ The following GraphQL example shows how to filter a specific node. The SQL equiv
 
 #### GraphQL
 
-```
-httpRequestsAdaptiveGroups(filter: {datetime: "2018-01-01T10:00:00Z"}) {    ...}
+```graphql
+httpRequestsAdaptiveGroups(filter: {datetime: "2018-01-01T10:00:00Z"}) {
+    ...
+}
 ```
 
 #### SQL
 
-```
+```sql
 WHERE datetime="2018-01-01T10:00:00Z"
 ```
 
@@ -131,13 +161,15 @@ The following GraphQL example shows how to apply a filter to multiple fields, in
 
 #### GraphQL
 
-```
-httpRequests1hGroups(filter: {datetime_gt: "2018-01-01T10:00:00Z", datetime_lt: "2018-01-01T11:00:00Z"}) {    ...}
+```graphql
+httpRequests1hGroups(filter: {datetime_gt: "2018-01-01T10:00:00Z", datetime_lt: "2018-01-01T11:00:00Z"}) {
+    ...
+}
 ```
 
 #### SQL
 
-```
+```sql
 WHERE (datetime > "2018-01-01T10:00:00Z") AND (datetime < "2018-01-01T10:00:00Z")
 ```
 
@@ -147,14 +179,20 @@ The following GraphQL example demonstrates using the `OR` operator in a filter. 
 
 #### GraphQL
 
-```
-httpRequestsAdaptiveGroups(        filter: {          datetime: "2018-01-01T10:00:00Z",          OR:[{clientCountryName: "US"}, {clientCountryName: "GB"}]) {    ...}
+```graphql
+httpRequestsAdaptiveGroups(
+        filter: {
+          datetime: "2018-01-01T10:00:00Z",
+          OR:[{clientCountryName: "US"}, {clientCountryName: "GB"}]) {
+    ...
+}
 ```
 
 #### SQL
 
-```
-WHERE datetime="2018-01-01T10:00:00Z"  AND ((clientCountryName = "US") OR (clientCountryName = "GB"))
+```sql
+WHERE datetime="2018-01-01T10:00:00Z"
+  AND ((clientCountryName = "US") OR (clientCountryName = "GB"))
 ```
 
 ### Filter an array by one value
@@ -163,13 +201,15 @@ The following GraphQL examples show how to filter an array field to only return 
 
 #### GraphQL
 
-```
-mnmFlowDataAdaptiveGroups(filter: {ruleIDs_has: "rule-id"}) {    ...}
+```graphql
+mnmFlowDataAdaptiveGroups(filter: {ruleIDs_has: "rule-id"}) {
+    ...
+}
 ```
 
 #### SQL
 
-```
+```sql
 WHERE has(ruleIDs, 'rule-id')
 ```
 
@@ -179,13 +219,15 @@ The following GraphQL examples show how to filter an array field to only return 
 
 #### GraphQL
 
-```
-mnmFlowDataAdaptiveGroups(filter: {ruleIDs_hasall: ["rule-id-1", "rule-id-2"]}) {    ...}
+```graphql
+mnmFlowDataAdaptiveGroups(filter: {ruleIDs_hasall: ["rule-id-1", "rule-id-2"]}) {
+    ...
+}
 ```
 
 #### SQL
 
-```
+```sql
 WHERE has(ruleIDs, 'rule-id-1') AND has(ruleIDs, 'rule-id-2')
 ```
 

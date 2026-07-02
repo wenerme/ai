@@ -18,25 +18,19 @@ Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services us
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-12794)
-* [  pnpm ](#tab-panel-12795)
-* [  yarn ](#tab-panel-12796)
+* [  npm ](#tab-panel-13089)
+* [  pnpm ](#tab-panel-13090)
+* [  yarn ](#tab-panel-13091)
 
-Terminal window
-
-```
+```sh
 npx wrangler vpc service create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vpc service create [NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vpc service create [NAME]
 ```
 
@@ -88,25 +82,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-12797)
-* [  pnpm ](#tab-panel-12798)
-* [  yarn ](#tab-panel-12799)
+* [  npm ](#tab-panel-13092)
+* [  pnpm ](#tab-panel-13093)
+* [  yarn ](#tab-panel-13094)
 
-Terminal window
-
-```
+```sh
 npx wrangler vpc service delete [SERVICE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vpc service delete [SERVICE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vpc service delete [SERVICE-ID]
 ```
 
@@ -136,25 +124,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a VPC service
 
-* [  npm ](#tab-panel-12800)
-* [  pnpm ](#tab-panel-12801)
-* [  yarn ](#tab-panel-12802)
+* [  npm ](#tab-panel-13095)
+* [  pnpm ](#tab-panel-13096)
+* [  yarn ](#tab-panel-13097)
 
-Terminal window
-
-```
+```sh
 npx wrangler vpc service get [SERVICE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vpc service get [SERVICE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vpc service get [SERVICE-ID]
 ```
 
@@ -184,25 +166,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List VPC services
 
-* [  npm ](#tab-panel-12803)
-* [  pnpm ](#tab-panel-12804)
-* [  yarn ](#tab-panel-12805)
+* [  npm ](#tab-panel-13098)
+* [  pnpm ](#tab-panel-13099)
+* [  yarn ](#tab-panel-13100)
 
-Terminal window
-
-```
+```sh
 npx wrangler vpc service list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vpc service list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vpc service list
 ```
 
@@ -229,25 +205,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a VPC service
 
-* [  npm ](#tab-panel-12806)
-* [  pnpm ](#tab-panel-12807)
-* [  yarn ](#tab-panel-12808)
+* [  npm ](#tab-panel-13101)
+* [  pnpm ](#tab-panel-13102)
+* [  yarn ](#tab-panel-13103)
 
-Terminal window
-
-```
+```sh
 npx wrangler vpc service update [SERVICE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler vpc service update [SERVICE-ID]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler vpc service update [SERVICE-ID]
 ```
 

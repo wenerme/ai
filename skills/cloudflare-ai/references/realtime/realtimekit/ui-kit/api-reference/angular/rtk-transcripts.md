@@ -27,14 +27,18 @@ A component which handles transcripts. You can configure which transcripts you w
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-transcripts></rtk-transcripts>
+```html
+<!-- component.html -->
+<rtk-transcripts></rtk-transcripts>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-transcripts [meeting]="meeting"></rtk-transcripts>
+```html
+<!-- component.html -->
+<rtk-transcripts
+ [meeting]="meeting">
+</rtk-transcripts>
 ```
 
 ```json

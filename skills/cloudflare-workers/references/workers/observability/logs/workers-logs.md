@@ -28,19 +28,26 @@ Minimum required Wrangler version: 3.78.6\. Check your version by running `wrang
 
 You must add the observability setting for your Worker to write logs to Workers Logs. Add the following setting to your Worker's Wrangler file and redeploy your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-12203)
-* [  wrangler.toml ](#tab-panel-12204)
+* [  wrangler.jsonc ](#tab-panel-12223)
+* [  wrangler.toml ](#tab-panel-12224)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1 // optional. default = 1.
+  }
+}
 ```
-{  "observability": {    "enabled": true,    "head_sampling_rate": 1 // optional. default = 1.  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability]enabled = truehead_sampling_rate = 1
+```toml
+[observability]
+enabled = true
+head_sampling_rate = 1
 ```
 
 [Head-based sampling](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#head-based-sampling) allows you set the percentage of Workers requests that are logged.
@@ -49,19 +56,30 @@ TOML
 
 [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) allow you to deploy the same Worker application with different configurations. For example, you may want to configure a different `head_sampling_rate` to staging and production. To configure observability for an environment named `staging`: 1\. Add the following configuration below `[env.staging]`
 
-* [  wrangler.jsonc ](#tab-panel-12207)
-* [  wrangler.toml ](#tab-panel-12208)
+* [  wrangler.jsonc ](#tab-panel-12227)
+* [  wrangler.toml ](#tab-panel-12228)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "staging": {
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1 // optional
+      }
+    }
+  }
+}
 ```
-{  "env": {    "staging": {      "observability": {        "enabled": true,        "head_sampling_rate": 1 // optional      }    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[env.staging.observability]enabled = truehead_sampling_rate = 1
+```toml
+[env.staging.observability]
+enabled = true
+head_sampling_rate = 1
 ```
 
 1. Deploy your Worker with `npx wrangler deploy -e staging`
@@ -100,19 +118,26 @@ In the Workers Logs UI, logs are presented with a localized timestamp and a mess
 
 Invocation logs can be disabled in wrangler by adding the `invocation_logs = false` configuration.
 
-* [  wrangler.jsonc ](#tab-panel-12205)
-* [  wrangler.toml ](#tab-panel-12206)
+* [  wrangler.jsonc ](#tab-panel-12225)
+* [  wrangler.toml ](#tab-panel-12226)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "logs": {
+      "invocation_logs": false
+    }
+  }
+}
 ```
-{  "observability": {    "logs": {      "invocation_logs": false    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.logs]invocation_logs = false
+```toml
+[observability.logs]
+invocation_logs = false
 ```
 
 | Invocation Handler                                                                        | Invocation Message     |
@@ -132,28 +157,56 @@ By default a Worker will emit [invocation logs](https://developers.cloudflare.co
 
 You can also add custom logs throughout your code. Any `console.log` statements within your Worker will be visible in Workers Logs. The following example demonstrates a custom `console.log` within a Worker request handler.
 
-* [  Module Worker ](#tab-panel-12201)
-* [  Service Worker ](#tab-panel-12202)
+* [  Module Worker ](#tab-panel-12221)
+* [  Service Worker ](#tab-panel-12222)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request) {    const { cf } = request;    const { city, country } = cf;
+```js
+export default {
+  async fetch(request) {
+    const { cf } = request;
+    const { city, country } = cf;
+
+
     console.log(`Request came from city: ${city} in country: ${country}`);
-    return new Response("Hello worker!", {      headers: { "content-type": "text/plain" },    });  },};
+
+
+    return new Response("Hello worker!", {
+      headers: { "content-type": "text/plain" },
+    });
+  },
+};
 ```
 
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (event) => {  event.respondWith(handleRequest(event.request));});
-/** * Respond with hello worker text * @param {Request} request */async function handleRequest(request) {  const { cf } = request;  const { city, country } = cf;
+```js
+addEventListener("fetch", (event) => {
+  event.respondWith(handleRequest(event.request));
+});
+
+
+/**
+ * Respond with hello worker text
+ * @param {Request} request
+ */
+async function handleRequest(request) {
+  const { cf } = request;
+  const { city, country } = cf;
+
+
   console.log(`Request came from city: ${city} in country: ${country}`);
-  return new Response("Hello worker!", {    headers: { "content-type": "text/plain" },  });}
+
+
+  return new Response("Hello worker!", {
+    headers: { "content-type": "text/plain" },
+  });
+}
 ```
 
 After you deploy the code above, view your Worker's logs in [the dashboard](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#view-logs-from-the-dashboard) or with [real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/).
@@ -164,19 +217,26 @@ Head-based sampling allows you to log a percentage of incoming requests to your 
 
 To enable head-based sampling, set `head_sampling_rate` within the observability configuration. The valid range is from 0 to 1, where 0 indicates zero out of one hundred requests are logged, and 1 indicates every request is logged. If `head_sampling_rate` is unspecified, it is configured to a default value of 1 (100%). In the example below, `head_sampling_rate` is set to 0.01, which means one out of every one hundred requests is logged.
 
-* [  wrangler.jsonc ](#tab-panel-12209)
-* [  wrangler.toml ](#tab-panel-12210)
+* [  wrangler.jsonc ](#tab-panel-12229)
+* [  wrangler.toml ](#tab-panel-12230)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.01 // 1% sampling rate
+  }
+}
 ```
-{  "observability": {    "enabled": true,    "head_sampling_rate": 0.01 // 1% sampling rate  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability]enabled = truehead_sampling_rate = 0.01
+```toml
+[observability]
+enabled = true
+head_sampling_rate = 0.01
 ```
 
 ## Limits

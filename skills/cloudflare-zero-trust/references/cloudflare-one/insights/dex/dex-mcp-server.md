@@ -53,8 +53,16 @@ You need a Claude Pro account (or higher subscription) to configure an MCP serve
 4. Under **Desktop app**, select **Developer** to show the **Local MCP servers** page.
 5. Select **Edit Config** and open the `claude_desktop_config.json` file in a text editor of your choice.
 6. Copy the JSON configuration for the DEX MCP server and paste it into `claude_desktop_config.json`. Save the file.
-```
-{  "globalShortcut": "",  "mcpServers": {    "cloudflare-dex-analysis": {      "command": "npx",      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]    }  }}
+```json
+{
+  "globalShortcut": "",
+  "mcpServers": {
+    "cloudflare-dex-analysis": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
+    }
+  }
+}
 ```
 7. Fully close Claude by using the task manager to stop any background processes related to Claude.
 8. Open Claude, and your DEX MCP server configuration should appear on the **Local MCP servers** page.
@@ -73,8 +81,16 @@ File path for the `settings.json` file
   * Windows: `%USERPROFILE%\.gemini\settings.json`
   * Mac and Linux: `~/.gemini/settings.json`
 3. Copy the JSON configuration for the DEX MCP server and paste it into **settings.json**. Save the file.
-```
-{  "globalShortcut": "",  "mcpServers": {    "cloudflare-dex-analysis": {      "command": "npx",      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]    }  }}
+```json
+{
+  "globalShortcut": "",
+  "mcpServers": {
+    "cloudflare-dex-analysis": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
+    }
+  }
+}
 ```
 4. Run Gemini in your CLI of choice.
 5. If everything is working as expected, the Gemini CLI will show the following message:

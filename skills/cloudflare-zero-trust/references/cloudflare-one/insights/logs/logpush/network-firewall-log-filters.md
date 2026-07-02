@@ -32,10 +32,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "<DESTINATION_CONF>",    "output_options": {        "field_names": [            "ColoName",            "Datetime",            "Direction",            "IPDestinationAddress",            "IPDestinationSubnet",            "IPProtocol",            "IPSourceAddress",            "IPSourceSubnet",            "Outcome",            "RuleID",            "RulesetID",            "SampleInterval",            "Verdict"        ]    },    "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"pass\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"drop\"}]}]}}"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "<DESTINATION_CONF>",
+    "output_options": {
+        "field_names": [
+            "ColoName",
+            "Datetime",
+            "Direction",
+            "IPDestinationAddress",
+            "IPDestinationSubnet",
+            "IPProtocol",
+            "IPSourceAddress",
+            "IPSourceSubnet",
+            "Outcome",
+            "RuleID",
+            "RulesetID",
+            "SampleInterval",
+            "Verdict"
+        ]
+    },
+    "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"pass\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"drop\"}]}]}}"
+  }'
 ```
 
 The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that only displays fields relevant to Cloudflare Network Firewall, and the filter only displays events for enabled rules.
@@ -45,10 +68,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "<DESTINATION_CONF>",    "output_options": {        "field_names": [            "ColoName",            "Datetime",            "Direction",            "IPDestinationAddress",            "IPDestinationSubnet",            "IPProtocol",            "IPSourceAddress",            "IPSourceSubnet",            "Outcome",            "RuleID",            "RulesetID",            "SampleInterval",            "Verdict"        ]    },    "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"or\":[{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"drop\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"pass\"}]}]}]}}"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "<DESTINATION_CONF>",
+    "output_options": {
+        "field_names": [
+            "ColoName",
+            "Datetime",
+            "Direction",
+            "IPDestinationAddress",
+            "IPDestinationSubnet",
+            "IPProtocol",
+            "IPSourceAddress",
+            "IPSourceSubnet",
+            "Outcome",
+            "RuleID",
+            "RulesetID",
+            "SampleInterval",
+            "Verdict"
+        ]
+    },
+    "filter": "{\"where\":{\"or\":[{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"},{\"or\":[{\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"drop\"},{\"key\":\"Verdict\",\"operator\":\"eq\",\"value\":\"pass\"}]}]}]}}"
+  }'
 ```
 
 ## Filter by allowed or blocked traffic
@@ -62,10 +108,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "<DESTINATION_CONF>",    "output_options": {        "field_names": [            "ColoName",            "Datetime",            "Direction",            "IPDestinationAddress",            "IPDestinationSubnet",            "IPProtocol",            "IPSourceAddress",            "IPSourceSubnet",            "Outcome",            "RuleID",            "RulesetID",            "SampleInterval",            "Verdict"        ]    },    "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"eq\",\"value\":\"\"}]}}"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "<DESTINATION_CONF>",
+    "output_options": {
+        "field_names": [
+            "ColoName",
+            "Datetime",
+            "Direction",
+            "IPDestinationAddress",
+            "IPDestinationSubnet",
+            "IPProtocol",
+            "IPSourceAddress",
+            "IPSourceSubnet",
+            "Outcome",
+            "RuleID",
+            "RulesetID",
+            "SampleInterval",
+            "Verdict"
+        ]
+    },
+    "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"eq\",\"value\":\"\"}]}}"
+  }'
 ```
 
 The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that only displays fields relevant to Cloudflare Network Firewall, and the filter only displays events where explicit action was taken. The example includes both enabled and disabled Cloudflare Network Firewall rules.
@@ -75,10 +144,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "<DESTINATION_CONF>",    "output_options": {        "field_names": [            "ColoName",            "Datetime",            "Direction",            "IPDestinationAddress",            "IPDestinationSubnet",            "IPProtocol",            "IPSourceAddress",            "IPSourceSubnet",            "Outcome",            "RuleID",            "RulesetID",            "SampleInterval",            "Verdict"        ]    },    "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"}]}}"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "<DESTINATION_CONF>",
+    "output_options": {
+        "field_names": [
+            "ColoName",
+            "Datetime",
+            "Direction",
+            "IPDestinationAddress",
+            "IPDestinationSubnet",
+            "IPProtocol",
+            "IPSourceAddress",
+            "IPSourceSubnet",
+            "Outcome",
+            "RuleID",
+            "RulesetID",
+            "SampleInterval",
+            "Verdict"
+        ]
+    },
+    "filter": "{\"where\":{\"and\":[{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"},{\"key\":\"RulesetID\",\"operator\":\"!eq\",\"value\":\"\"}]}}"
+  }'
 ```
 
 ## Filter to only Network Firewall events
@@ -90,10 +182,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "<DESTINATION_CONF>",    "output_options": {        "field_names": [            "ColoName",            "Datetime",            "Direction",            "IPDestinationAddress",            "IPDestinationSubnet",            "IPProtocol",            "IPSourceAddress",            "IPSourceSubnet",            "Outcome",            "RuleID",            "RulesetID",            "SampleInterval",            "Verdict"        ]    },    "filter": "{\"where\":{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"}}"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "<DESTINATION_CONF>",
+    "output_options": {
+        "field_names": [
+            "ColoName",
+            "Datetime",
+            "Direction",
+            "IPDestinationAddress",
+            "IPDestinationSubnet",
+            "IPProtocol",
+            "IPSourceAddress",
+            "IPSourceSubnet",
+            "Outcome",
+            "RuleID",
+            "RulesetID",
+            "SampleInterval",
+            "Verdict"
+        ]
+    },
+    "filter": "{\"where\":{\"key\":\"MitigationSystem\",\"operator\":\"eq\",\"value\":\"magic-firewall\"}}"
+  }'
 ```
 
 ```json

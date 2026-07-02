@@ -32,26 +32,26 @@ To continue with this tutorial, you’ll need:
 
 Start by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line, then, answer the prompts:
 
-Terminal window
-
-```
+```sh
 npm create cloudflare@latest
 ```
 
 Alternatively, you can use CLI arguments to speed things up:
 
-Terminal window
-
-```
+```sh
 npm create cloudflare@latest email-with-resend -- --type=hello-world --ts=false --git=true --deploy=false
 ```
 
 This creates a simple hello-world Worker having the following content:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  },
+};
 ```
 
 ## Add your domain to Resend
@@ -76,26 +76,37 @@ Lastly, navigate to `API Keys` with the side menu, to create an API key. Give yo
 
 The final step is putting it all together in a Worker. Open up a terminal in the directory of the Worker you created earlier. Then, install the Resend SDK:
 
-Terminal window
-
-```
+```sh
 npm i resend
 ```
 
 In your Worker, import and use the Resend library like so:
 
-```
+```jsx
 import { Resend } from "resend";
-export default {  async fetch(request, env, ctx) {    const resend = new Resend("your_resend_api_key");
-    const { data, error } = await resend.emails.send({      from: "hello@example.com",      to: "someone@example.com",      subject: "Hello World",      html: "<p>Hello from Workers</p>",    });
-    return Response.json({ data, error });  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const resend = new Resend("your_resend_api_key");
+
+
+    const { data, error } = await resend.emails.send({
+      from: "hello@example.com",
+      to: "someone@example.com",
+      subject: "Hello World",
+      html: "<p>Hello from Workers</p>",
+    });
+
+
+    return Response.json({ data, error });
+  },
+};
 ```
 
 To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
 
-Terminal window
-
-```
+```sh
 npm start
 ```
 
@@ -107,25 +118,40 @@ Sensitive information such as API keys and token should always be stored in secr
 
 To add secrets for local development, create a `.dev.vars` file which works exactly like a `.env` file:
 
-```
+```txt
 RESEND_API_KEY=your_resend_api_key
 ```
 
 Also ensure the secret is added to your deployed worker by running:
 
-Add secret to deployed Worker
+**Add secret to deployed Worker**
 
-```
+```sh
 npx wrangler secret put RESEND_API_KEY
 ```
 
 The added secret can be accessed on via the `env` parameter passed to your Worker’s fetch event handler:
 
-```
+```jsx
 import { Resend } from "resend";
-export default {  async fetch(request, env, ctx) {    const resend = new Resend(env.RESEND_API_KEY);
-    const { data, error } = await resend.emails.send({      from: "hello@example.com",      to: "someone@example.com",      subject: "Hello World",      html: "<p>Hello from Workers</p>",    });
-    return Response.json({ data, error });  },};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const resend = new Resend(env.RESEND_API_KEY);
+
+
+    const { data, error } = await resend.emails.send({
+      from: "hello@example.com",
+      to: "someone@example.com",
+      subject: "Hello World",
+      html: "<p>Hello from Workers</p>",
+    });
+
+
+    return Response.json({ data, error });
+  },
+};
 ```
 
 And finally, deploy this update with `npm run deploy`.

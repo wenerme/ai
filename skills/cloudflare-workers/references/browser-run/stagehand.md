@@ -38,7 +38,7 @@ If instead you want to skip the steps and get started right away, select **Deplo
 
 After you deploy, you can interact with the Worker using this URL pattern:
 
-```
+```plaintext
 https://<your-worker>.workers.dev
 ```
 
@@ -46,9 +46,7 @@ https://<your-worker>.workers.dev
 
 Install the necessary dependencies:
 
-Terminal window
-
-```
+```bash
 npm ci
 ```
 
@@ -60,38 +58,78 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-7017)
-* [  wrangler.toml ](#tab-panel-7018)
+* [  wrangler.jsonc ](#tab-panel-7265)
+* [  wrangler.toml ](#tab-panel-7266)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "stagehand-example",
+  "main": "src/index.ts",
+  "compatibility_flags": ["nodejs_compat"],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "observability": {
+    "enabled": true
+  },
+  "browser": {
+    "binding": "BROWSER"
+  },
+  "ai": {
+    "binding": "AI"
+  }
+}
 ```
-{  "name": "stagehand-example",  "main": "src/index.ts",  "compatibility_flags": ["nodejs_compat"],  // Set this to today's date  "compatibility_date": "2026-06-24",  "observability": {    "enabled": true  },  "browser": {    "binding": "BROWSER"  },  "ai": {    "binding": "AI"  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "stagehand-example"main = "src/index.ts"compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[observability]enabled = true
-[browser]binding = "BROWSER"
-[ai]binding = "AI"
+```toml
+name = "stagehand-example"
+main = "src/index.ts"
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[observability]
+enabled = true
+
+
+[browser]
+binding = "BROWSER"
+
+
+[ai]
+binding = "AI"
 ```
 
 If you are using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), you need to include the following [alias ↗](https://vite.dev/config/shared-options.html#resolve-alias) in `vite.config.ts`:
 
-TypeScript
+**TypeScript**
 
-```
-export default defineConfig({  // ...  resolve: {    alias: {      playwright: "@cloudflare/playwright",    },  },});
+```ts
+export default defineConfig({
+  // ...
+  resolve: {
+    alias: {
+      playwright: "@cloudflare/playwright",
+    },
+  },
+});
 ```
 
 If you are not using the Cloudflare Vite plugin, you need to include the following [module alias ↗](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) to the wrangler configuration:
 
-JSONC
+**JSONC**
 
-```
-{  // ...  "alias": {    "playwright": "@cloudflare/playwright",  },}
+```jsonc
+{
+  // ...
+  "alias": {
+    "playwright": "@cloudflare/playwright",
+  },
+}
 ```
 
 ### 3\. Write the Worker code
@@ -100,20 +138,66 @@ Copy [workersAIClient.ts ↗](https://github.com/cloudflare/playwright/blob/main
 
 Then, in your Worker code, import the `workersAIClient.ts` file and use it to configure a new `Stagehand` instance:
 
-src/index.ts
+**src/index.ts**
 
-```
-import { Stagehand } from "@browserbasehq/stagehand";import { z } from "zod";import { endpointURLString } from "@cloudflare/playwright";import { WorkersAIClient } from "./workersAIClient";
-export default {  async fetch(request: Request, env: Env) {    if (new URL(request.url).pathname !== "/")      return new Response("Not found", { status: 404 });
-    const stagehand = new Stagehand({      env: "LOCAL",      localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },      llmClient: new WorkersAIClient(env.AI),      verbose: 1,    });
-    await stagehand.init();    const page = stagehand.page;
+```ts
+import { Stagehand } from "@browserbasehq/stagehand";
+import { z } from "zod";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient";
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    if (new URL(request.url).pathname !== "/")
+      return new Response("Not found", { status: 404 });
+
+
+    const stagehand = new Stagehand({
+      env: "LOCAL",
+      localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+      llmClient: new WorkersAIClient(env.AI),
+      verbose: 1,
+    });
+
+
+    await stagehand.init();
+    const page = stagehand.page;
+
+
     await page.goto("https://demo.playwright.dev/movies");
-    // if search is a multi-step action, stagehand will return an array of actions it needs to act on    const actions = await page.observe('Search for "Furiosa"');    for (const action of actions) await page.act(action);
+
+
+    // if search is a multi-step action, stagehand will return an array of actions it needs to act on
+    const actions = await page.observe('Search for "Furiosa"');
+    for (const action of actions) await page.act(action);
+
+
     await page.act("Click the search result");
-    // normal playwright functions work as expected    await page.waitForSelector(".info-wrapper .cast");
-    let movieInfo = await page.extract({      instruction: "Extract movie information",      schema: z.object({        title: z.string(),        year: z.number(),        rating: z.number(),        genres: z.array(z.string()),        duration: z.number().describe("Duration in minutes"),      }),    });
+
+
+    // normal playwright functions work as expected
+    await page.waitForSelector(".info-wrapper .cast");
+
+
+    let movieInfo = await page.extract({
+      instruction: "Extract movie information",
+      schema: z.object({
+        title: z.string(),
+        year: z.number(),
+        rating: z.number(),
+        genres: z.array(z.string()),
+        duration: z.number().describe("Duration in minutes"),
+      }),
+    });
+
+
     await stagehand.close();
-    return Response.json(movieInfo);  },};
+
+
+    return Response.json(movieInfo);
+  },
+};
 ```
 
 Note
@@ -122,15 +206,22 @@ The snippet above requires [Zod v3 ↗](https://v3.zod.dev/) and is currently no
 
 Ensure your `package.json` has the following dependencies:
 
-```
-{  // ...  "dependencies": {    "@browserbasehq/stagehand": "2.5.x",    "@cloudflare/playwright": "^1.0.0",    "zod": "^3.25.76",    "zod-to-json-schema": "^3.24.6"    // ...  }}
+```json
+{
+  // ...
+  "dependencies": {
+    "@browserbasehq/stagehand": "2.5.x",
+    "@cloudflare/playwright": "^1.0.0",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.24.6"
+    // ...
+  }
+}
 ```
 
 ### 4\. Build the project
 
-Terminal window
-
-```
+```bash
 npm run build
 ```
 
@@ -138,13 +229,11 @@ npm run build
 
 After you deploy, you can interact with the Worker using this URL pattern:
 
-```
+```plaintext
 https://<your-worker>.workers.dev
 ```
 
-Terminal window
-
-```
+```bash
 npm run deploy
 ```
 
@@ -158,10 +247,18 @@ To use AI Gateway with a third-party model, first create a gateway in the **AI G
 
 In this example, we've named the gateway `stagehand-example-gateway`.
 
-TypeScript
+**TypeScript**
 
-```
-const stagehand = new Stagehand({  env: "LOCAL",  localBrowserLaunchOptions: { cdpUrl },  llmClient: new WorkersAIClient(env.AI, {    gateway: {      id: "stagehand-example-gateway",    },  }),});
+```typescript
+const stagehand = new Stagehand({
+  env: "LOCAL",
+  localBrowserLaunchOptions: { cdpUrl },
+  llmClient: new WorkersAIClient(env.AI, {
+    gateway: {
+      id: "stagehand-example-gateway",
+    },
+  }),
+});
 ```
 
 ## Use a third-party model
@@ -170,18 +267,23 @@ If you want to use a model outside of Workers AI, you can configure Stagehand to
 
 In this example, you will configure Stagehand to use [OpenAI ↗](https://openai.com/). You will need an OpenAI API key. Cloudflare recommends storing your API key as a [secret](https://developers.cloudflare.com/workers/configuration/secrets/).
 
-Terminal window
-
-```
+```bash
 npx wrangler secret put OPENAI_API_KEY
 ```
 
 Then, configure Stagehand with your provider, model, and API key.
 
-TypeScript
+**TypeScript**
 
-```
-const stagehand = new Stagehand({  env: "LOCAL",  localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },  modelName: "openai/gpt-4.1",  modelClientOptions: {    apiKey: env.OPENAI_API_KEY,  },});
+```typescript
+const stagehand = new Stagehand({
+  env: "LOCAL",
+  localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+  modelName: "openai/gpt-4.1",
+  modelClientOptions: {
+    apiKey: env.OPENAI_API_KEY,
+  },
+});
 ```
 
 ## Use Cloudflare AI Gateway with a third-party model
@@ -196,10 +298,18 @@ In this example, we are using [OpenAI with AI Gateway](https://developers.cloudf
 
 You must specify the `apiKey` in the `modelClientOptions`:
 
-TypeScript
+**TypeScript**
 
-```
-const stagehand = new Stagehand({  env: "LOCAL",  localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },  modelName: "openai/gpt-4.1",  modelClientOptions: {    apiKey: env.OPENAI_API_KEY,    baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai`,  },});
+```typescript
+const stagehand = new Stagehand({
+  env: "LOCAL",
+  localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+  modelName: "openai/gpt-4.1",
+  modelClientOptions: {
+    apiKey: env.OPENAI_API_KEY,
+    baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai`,
+  },
+});
 ```
 
 If you are using an authenticated AI Gateway, follow the instructions in [AI Gateway authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) and include `cf-aig-authorization` as a header.

@@ -48,13 +48,13 @@ In a [Partial (CNAME) setup](https://developers.cloudflare.com/ssl/edge-certific
 
 When using [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), exclude the `/.well-known/*` path from redirections by adding a condition to your rule:
 
-```
+```txt
 not starts_with(http.request.uri.path, "/.well-known/")
 ```
 
 For example, if you have a rule that redirects all HTTP traffic to HTTPS, modify the rule expression to:
 
-```
+```txt
 (http.request.scheme eq "http") and not starts_with(http.request.uri.path, "/.well-known/")
 ```
 
@@ -79,18 +79,16 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-10734)
-* [ Windows ](#tab-panel-10735)
+* [ macOS and Linux ](#tab-panel-11029)
+* [ Windows ](#tab-panel-11030)
 
-Terminal window
-
-```
+```bash
 dig example.com CAA +short
 ```
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Resolve-DnsName -Name example.com -Type CAA
 ```
 

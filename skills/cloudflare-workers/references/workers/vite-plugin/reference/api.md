@@ -16,11 +16,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `cloudflare` plugin should be included in the Vite `plugins` array:
 
-vite.config.ts
+**vite.config.ts**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [cloudflare()],});
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  plugins: [cloudflare()],
+});
 ```
 
 It accepts an optional `PluginConfig` parameter.
@@ -53,17 +58,33 @@ See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/
 Expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).
 Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.
 
-  * [  JavaScript ](#tab-panel-12319)
-  * [  TypeScript ](#tab-panel-12320)
-vite.config.js
+  * [  JavaScript ](#tab-panel-12574)
+  * [  TypeScript ](#tab-panel-12575)
+
+**vite.config.js**
+```js
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({
+  plugins: [
+    cloudflare({
+      tunnel: { name: "my-tunnel" },
+    }),
+  ],
+});
 ```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
-```
-vite.config.ts
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
+
+**vite.config.ts**
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({
+  plugins: [
+    cloudflare({
+      tunnel: { name: "my-tunnel" },
+    }),
+  ],
+});
 ```
 See [Share a local dev server](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/) for more information.
 * `auxiliaryWorkers` ` Array<AuxiliaryWorkerConfig> ` optional

@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
+```sql
 bin(<expression>)
 ```
 
@@ -24,15 +24,18 @@ bin(<expression>)
 
 Examples:
 
-```
--- get the binary representation of 1bin(1)-- get the binary representation of a string`bin('abc')
+```sql
+-- get the binary representation of 1
+bin(1)
+-- get the binary representation of a string`
+bin('abc')
 ```
 
 ## hex New
 
 Usage:
 
-```
+```sql
 hex(<expression>)
 ```
 
@@ -40,8 +43,11 @@ hex(<expression>)
 
 Examples:
 
-```
--- get the hexadecimal representation of 1hex(1)-- get the hexadecimal representation of a string`hex('abc')
+```sql
+-- get the hexadecimal representation of 1
+hex(1)
+-- get the hexadecimal representation of a string`
+hex('abc')
 ```
 
 ```json

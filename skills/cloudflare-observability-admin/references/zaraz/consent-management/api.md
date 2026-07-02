@@ -26,20 +26,24 @@ Using the Consent API, you can integrate Zaraz Consent preferences with an exter
 
 It can be useful to know when the Consent API is fully loaded on the page so that code interacting with its methods and properties is not called prematurely.
 
-JavaScript
+**JavaScript**
 
-```
-document.addEventListener("zarazConsentAPIReady", () => {  // do things with the Consent API});
+```js
+document.addEventListener("zarazConsentAPIReady", () => {
+  // do things with the Consent API
+});
 ```
 
 ### `Consent Choices Updated`
 
 This event is fired every time the user makes changes to their consent preferences. It can be used to act on changes to the consent, for example when updating a tool with the new consent preferences.
 
-JavaScript
+**JavaScript**
 
-```
-document.addEventListener("zarazConsentChoicesUpdated", () => {  // read the new consent preferences using `zaraz.consent.getAll();` and do things with it});
+```js
+document.addEventListener("zarazConsentChoicesUpdated", () => {
+  // read the new consent preferences using `zaraz.consent.getAll();` and do things with it
+});
 ```
 
 ---
@@ -64,9 +68,9 @@ The following are properties of the `zaraz.consent` object.
 
 ### `Get`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.get(purposeId);
 ```
 
@@ -86,9 +90,9 @@ Get the current consent status for a purpose using the purpose ID.
 
 ### `Set`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.set(consentPreferences);
 ```
 
@@ -104,9 +108,9 @@ Set the consent status for some purposes using the purpose ID.
 
 ### `Get All`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.getAll();
 ```
 
@@ -116,9 +120,9 @@ Returns an object with the consent status of all purposes.
 
 ### `Set All`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.setAll(consentStatus);
 ```
 
@@ -134,9 +138,9 @@ Set the consent status for all purposes at once.
 
 ### `Get All Checkboxes`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.getAllCheckboxes();
 ```
 
@@ -146,9 +150,9 @@ Returns an object with the checkbox status of all purposes.
 
 ### `Set Checkboxes`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.setCheckboxes(checkboxesStatus);
 ```
 
@@ -164,9 +168,9 @@ Set the consent status for some purposes using the purpose ID.
 
 ### `Set All Checkboxes`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.setAllCheckboxes(checkboxStatus);
 ```
 
@@ -182,9 +186,9 @@ Set the `checkboxStatus` status for all purposes in the consent modal at once.
 
 ### `Send queued events`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 zaraz.consent.sendQueuedEvents();
 ```
 
@@ -198,10 +202,34 @@ If some Pageview-based events were not sent due to a lack of consent, they can b
 
 You can combine multiple features of Zaraz to effectively disable Consent Management for some visitors. For example, if you would like to use it only for visitors from the EU, you can disable the automatic showing of the consent modal and add a Custom HTML tool with the following script:
 
-```
-<script>function getCookie(name) {  const value = `; ${document.cookie}`  return value?.split(`; ${name}=`)[1]?.split(";")[0]}
-function handleZarazConsentAPIReady() {  const consent_cookie = getCookie("cf_consent")  const isEUCountry = "{{system.device.location.isEUCountry}}" === "1"  if (!consent_cookie) {    if (isEUCountry) {      zaraz.consent.modal = true    } else {      zaraz.consent.setAll(true)      zaraz.consent.sendQueuedEvents()    }  }}
-if (zaraz.consent?.APIReady) {  handleZarazConsentAPIReady()} else {  document.addEventListener("zarazConsentAPIReady", handleZarazConsentAPIReady)}</script>
+```html
+<script>
+function getCookie(name) {
+  const value = `; ${document.cookie}`
+  return value?.split(`; ${name}=`)[1]?.split(";")[0]
+}
+
+
+function handleZarazConsentAPIReady() {
+  const consent_cookie = getCookie("cf_consent")
+  const isEUCountry = "{{system.device.location.isEUCountry}}" === "1"
+  if (!consent_cookie) {
+    if (isEUCountry) {
+      zaraz.consent.modal = true
+    } else {
+      zaraz.consent.setAll(true)
+      zaraz.consent.sendQueuedEvents()
+    }
+  }
+}
+
+
+if (zaraz.consent?.APIReady) {
+  handleZarazConsentAPIReady()
+} else {
+  document.addEventListener("zarazConsentAPIReady", handleZarazConsentAPIReady)
+}
+</script>
 ```
 
 Note: If you've customized the cookie name for the Consent Manager, use that customized name instead of "cf\_consent" in the snippet above.

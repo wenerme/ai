@@ -83,20 +83,39 @@ To configure your logs destination, click **Add destination** and configure the 
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11920)
-* [  wrangler.toml ](#tab-panel-11921)
+* [  wrangler.jsonc ](#tab-panel-12215)
+* [  wrangler.toml ](#tab-panel-12216)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["sentry-traces"]
+    },
+    "logs": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["sentry-logs"]
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["sentry-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["sentry-logs"]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truedestinations = [ "sentry-traces" ]
-[observability.logs]enabled = truedestinations = [ "sentry-logs" ]
+```toml
+[observability.traces]
+enabled = true
+destinations = [ "sentry-traces" ]
+
+
+[observability.logs]
+enabled = true
+destinations = [ "sentry-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

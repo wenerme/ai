@@ -26,14 +26,19 @@ Shows the time elapsed in a meeting.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-clock></rtk-clock>
+```html
+<!-- component.html -->
+<rtk-clock></rtk-clock>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-clock [meeting]="meeting" size="md"></rtk-clock>
+```html
+<!-- component.html -->
+<rtk-clock
+ [meeting]="meeting"
+ size="md">
+</rtk-clock>
 ```
 
 ```json

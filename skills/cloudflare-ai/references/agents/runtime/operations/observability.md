@@ -18,10 +18,16 @@ Agents emit structured events for every significant operation — RPC calls, sta
 
 Every event has these fields:
 
-TypeScript
+**TypeScript**
 
-```
-{  type: "rpc",                        // what happened  agent: "MyAgent",                   // which agent class emitted it  name: "user-123",                   // which agent instance (Durable Object name)  payload: { method: "getWeather" },  // details  timestamp: 1758005142787            // when (ms since epoch)}
+```ts
+{
+  type: "rpc",                        // what happened
+  agent: "MyAgent",                   // which agent class emitted it
+  name: "user-123",                   // which agent instance (Durable Object name)
+  payload: { method: "getWeather" },  // details
+  timestamp: 1758005142787            // when (ms since epoch)
+}
 ```
 
 `agent` and `name` identify the source agent — `agent` is the class name and `name` is the Durable Object instance name.
@@ -51,23 +57,51 @@ Events are routed to named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-6537)
-* [  TypeScript ](#tab-panel-6538)
+* [  JavaScript ](#tab-panel-6721)
+* [  TypeScript ](#tab-panel-6722)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { subscribe } from "agents/observability";
-const unsub = subscribe("rpc", (event) => {  if (event.type === "rpc") {    console.log(`RPC call: ${event.payload.method}`);  }  if (event.type === "rpc:error") {    console.error(      `RPC failed: ${event.payload.method} — ${event.payload.error}`,    );  }});
-// Clean up when doneunsub();
+
+
+const unsub = subscribe("rpc", (event) => {
+  if (event.type === "rpc") {
+    console.log(`RPC call: ${event.payload.method}`);
+  }
+  if (event.type === "rpc:error") {
+    console.error(
+      `RPC failed: ${event.payload.method} — ${event.payload.error}`,
+    );
+  }
+});
+
+
+// Clean up when done
+unsub();
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { subscribe } from "agents/observability";
-const unsub = subscribe("rpc", (event) => {  if (event.type === "rpc") {    console.log(`RPC call: ${event.payload.method}`);  }  if (event.type === "rpc:error") {    console.error(      `RPC failed: ${event.payload.method} — ${event.payload.error}`,    );  }});
-// Clean up when doneunsub();
+
+
+const unsub = subscribe("rpc", (event) => {
+  if (event.type === "rpc") {
+    console.log(`RPC call: ${event.payload.method}`);
+  }
+  if (event.type === "rpc:error") {
+    console.error(
+      `RPC failed: ${event.payload.method} — ${event.payload.error}`,
+    );
+  }
+});
+
+
+// Clean up when done
+unsub();
 ```
 
 The callback is fully typed — `event` is narrowed to only the event types that flow through that channel.
@@ -78,40 +112,68 @@ The typed helper uses camelCase keys, so agent-tool recovery is `subscribe("agen
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-6533)
-* [  TypeScript ](#tab-panel-6534)
+* [  JavaScript ](#tab-panel-6717)
+* [  TypeScript ](#tab-panel-6718)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { subscribe } from "node:diagnostics_channel";
-subscribe("agents:schedule", (event) => {  console.log(event);});
+
+
+subscribe("agents:schedule", (event) => {
+  console.log(event);
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { subscribe } from "node:diagnostics_channel";
-subscribe("agents:schedule", (event) => {  console.log(event);});
+
+
+subscribe("agents:schedule", (event) => {
+  console.log(event);
+});
 ```
 
 ## Tail Workers (production)
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-6539)
-* [  TypeScript ](#tab-panel-6540)
+* [  JavaScript ](#tab-panel-6723)
+* [  TypeScript ](#tab-panel-6724)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async tail(events) {
+    for (const event of events) {
+      for (const msg of event.diagnosticsChannelEvents) {
+        // msg.channel is "agents:rpc", "agents:workflow", etc.
+        // msg.message is the typed event payload
+        console.log(msg.timestamp, msg.channel, msg.message);
+      }
+    }
+  },
+};
 ```
-export default {  async tail(events) {    for (const event of events) {      for (const msg of event.diagnosticsChannelEvents) {        // msg.channel is "agents:rpc", "agents:workflow", etc.        // msg.message is the typed event payload        console.log(msg.timestamp, msg.channel, msg.message);      }    }  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async tail(events) {    for (const event of events) {      for (const msg of event.diagnosticsChannelEvents) {        // msg.channel is "agents:rpc", "agents:workflow", etc.        // msg.message is the typed event payload        console.log(msg.timestamp, msg.channel, msg.message);      }    }  },};
+```ts
+export default {
+  async tail(events) {
+    for (const event of events) {
+      for (const msg of event.diagnosticsChannelEvents) {
+        // msg.channel is "agents:rpc", "agents:workflow", etc.
+        // msg.message is the typed event payload
+        console.log(msg.timestamp, msg.channel, msg.message);
+      }
+    }
+  },
+};
 ```
 
 This gives you structured, filterable observability in production with zero overhead in the agent hot path.
@@ -120,42 +182,77 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-6541)
-* [  TypeScript ](#tab-panel-6542)
+* [  JavaScript ](#tab-panel-6725)
+* [  TypeScript ](#tab-panel-6726)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-const myObservability = {  emit(event) {    // Send to your logging service, filter events, etc.    if (event.type === "rpc:error") {      console.error(event.payload.method, event.payload.error);    }  },};
-class MyAgent extends Agent {  observability = myObservability;}
+
+
+const myObservability = {
+  emit(event) {
+    // Send to your logging service, filter events, etc.
+    if (event.type === "rpc:error") {
+      console.error(event.payload.method, event.payload.error);
+    }
+  },
+};
+
+
+class MyAgent extends Agent {
+  observability = myObservability;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent } from "agents";import type { Observability } from "agents/observability";
-const myObservability: Observability = {  emit(event) {    // Send to your logging service, filter events, etc.    if (event.type === "rpc:error") {      console.error(event.payload.method, event.payload.error);    }  },};
-class MyAgent extends Agent {  override observability = myObservability;}
+```ts
+import { Agent } from "agents";
+import type { Observability } from "agents/observability";
+
+
+const myObservability: Observability = {
+  emit(event) {
+    // Send to your logging service, filter events, etc.
+    if (event.type === "rpc:error") {
+      console.error(event.payload.method, event.payload.error);
+    }
+  },
+};
+
+
+class MyAgent extends Agent {
+  override observability = myObservability;
+}
 ```
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-6535)
-* [  TypeScript ](#tab-panel-6536)
+* [  JavaScript ](#tab-panel-6719)
+* [  TypeScript ](#tab-panel-6720)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-class MyAgent extends Agent {  observability = undefined;}
+
+
+class MyAgent extends Agent {
+  observability = undefined;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent } from "agents";
-class MyAgent extends Agent {  override observability = undefined;}
+
+
+class MyAgent extends Agent {
+  override observability = undefined;
+}
 ```
 
 ## Event reference

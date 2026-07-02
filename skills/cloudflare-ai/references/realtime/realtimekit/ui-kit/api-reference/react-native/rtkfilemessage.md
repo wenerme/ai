@@ -27,16 +27,26 @@ Renders a file message in chat with file name, size, extension, and download but
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkFileMessage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkFileMessage message={message} />;}
+
+
+function MyComponent() {
+  return <RtkFileMessage message={message} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkFileMessage } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkFileMessage message={message} isContinued={true} now={new Date()} />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkFileMessage message={message} isContinued={true} now={new Date()} />
+  );
+}
 ```
 
 ```json

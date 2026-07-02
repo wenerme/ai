@@ -30,39 +30,31 @@ Go to [Deploy with Cloudflare Pages](#deploy-with-cloudflare-pages) if you alrea
 
 Install the Hugo CLI, using the specific instructions for your operating system.
 
-* [ macos ](#tab-panel-9515)
-* [ windows ](#tab-panel-9516)
-* [ linux ](#tab-panel-9517)
+* [ macos ](#tab-panel-9806)
+* [ windows ](#tab-panel-9807)
+* [ linux ](#tab-panel-9808)
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Hugo:
 
-Terminal window
-
-```
+```sh
 brew install hugo
 ```
 
 If you use the package manager [Chocolatey ↗](https://chocolatey.org/), run the `choco install` command in your terminal to install Hugo:
 
-Terminal window
-
-```
+```sh
 choco install hugo --confirm
 ```
 
 If you use the package manager [Scoop ↗](https://scoop.sh/), run the `scoop install` command in your terminal to install Hugo:
 
-Terminal window
-
-```
+```sh
 scoop install hugo
 ```
 
 The package manager for your Linux distribution may include Hugo. If this is the case, install Hugo directly using the distribution's package manager — for instance, in Ubuntu, run the following command:
 
-Terminal window
-
-```
+```sh
 sudo apt-get install hugo
 ```
 
@@ -78,27 +70,24 @@ For more instruction on installing these releases, refer to [Hugo's documentatio
 
 With Hugo installed, refer to [Hugo's Quick Start ↗](https://gohugo.io/getting-started/quick-start/) to create your project or create a new project by running the `hugo new` command in your terminal:
 
-Terminal window
-
-```
+```sh
 hugo new site my-hugo-site
 ```
 
 Hugo sites use themes to customize the look and feel of the statically built HTML site. There are a number of themes available at [themes.gohugo.io ↗](https://themes.gohugo.io) — for now, use the [Ananke theme ↗](https://themes.gohugo.io/themes/gohugo-theme-ananke/) by running the following commands in your terminal:
 
-Terminal window
-
-```
-cd my-hugo-sitegit initgit submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/anankeecho "theme = 'ananke'" >> hugo.toml
+```sh
+cd my-hugo-site
+git init
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+echo "theme = 'ananke'" >> hugo.toml
 ```
 
 ## Create a post
 
 Create a new post to give your Hugo site some initial content. Run the `hugo new` command in your terminal to generate a new post:
 
-Terminal window
-
-```
+```sh
 hugo new content posts/hello-world.md
 ```
 
@@ -108,10 +97,10 @@ Inside of `hello-world.md`, add some initial content to create your post. Remove
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
+```sh
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages
@@ -139,9 +128,7 @@ Hugo allows you to configure the `baseURL` of your application. This allows you 
 
 Your final build command may look like this:
 
-Terminal window
-
-```
+```sh
 hugo -b $CF_PAGES_URL
 ```
 

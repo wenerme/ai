@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To create an OAuth client, you must have one of these roles for the associated account: Super Administrator, Administrator, or OAuth Client Write.
 
-* [ Dashboard ](#tab-panel-8685)
-* [ API ](#tab-panel-8686)
+* [ Dashboard ](#tab-panel-8976)
+* [ API ](#tab-panel-8977)
 
 1. Log in to the Cloudflare dashboard.
 2. Select your account.
@@ -37,10 +37,24 @@ To create an OAuth client, you must have one of these roles for the associated a
 
 To create OAuth clients with the Cloudflare API, create an API token with the `OAuth Clients Write` permission.
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN" \  -d '{    "client_name": "Cloudflare OAuth Client",    "grant_types": ["authorization_code"],    "redirect_uris": ["https://example.com/oauth/callback"],    "scopes": ["workers-platform.read"],    "post_logout_redirect_uris": ["https://example.com/logout"],    "response_types": ["code"],    "token_endpoint_auth_method": "client_secret_basic",    "logo_uri": "https://example.com/logo.png",    "policy_uri": "https://example.com/policy",    "tos_uri": "https://example.com/tos",    "client_uri": "https://example.com",    "allowed_cors_origins": ["https://example.com"]  }'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -d '{
+    "client_name": "Cloudflare OAuth Client",
+    "grant_types": ["authorization_code"],
+    "redirect_uris": ["https://example.com/oauth/callback"],
+    "scopes": ["workers-platform.read"],
+    "post_logout_redirect_uris": ["https://example.com/logout"],
+    "response_types": ["code"],
+    "token_endpoint_auth_method": "client_secret_basic",
+    "logo_uri": "https://example.com/logo.png",
+    "policy_uri": "https://example.com/policy",
+    "tos_uri": "https://example.com/tos",
+    "client_uri": "https://example.com",
+    "allowed_cors_origins": ["https://example.com"]
+  }'
 ```
 
 Note
@@ -51,17 +65,17 @@ After you create an OAuth client, Cloudflare displays the client secret if the c
 
 OAuth scope names correspond to Cloudflare API token permission names. Use the Cloudflare API documentation to identify the permissions your client needs.
 
-* [ Dashboard ](#tab-panel-8681)
-* [ API ](#tab-panel-8682)
+* [ Dashboard ](#tab-panel-8972)
+* [ API ](#tab-panel-8973)
 
 When you create or edit an OAuth client, all available scopes are displayed. Search for and select the scopes required for your client.
 
 Fetch the available scopes from the API. Use the scope ID when you create a client through the API.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/oauth/scopes" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/oauth/scopes" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ## Supported OAuth flows
@@ -118,18 +132,19 @@ Warning
 
 Setting a client's visibility to public is permanent. You cannot change the visibility back to private.
 
-* [ Dashboard ](#tab-panel-8687)
-* [ API ](#tab-panel-8688)
+* [ Dashboard ](#tab-panel-8978)
+* [ API ](#tab-panel-8979)
 
 1. Go to **Manage Account** \> **OAuth clients**.
 2. Open the action menu for your client.
 3. Select **Change Visibility**.
 [ Go to **OAuth clients** ](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
-Terminal window
-
-```
-curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN" \  -d '{ "visibility": "public" }'
+```bash
+curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -d '{ "visibility": "public" }'
 ```
 
 ## Client URL domain ownership verification
@@ -146,25 +161,26 @@ Cloudflare polls this DNS record until it is found or until the request times ou
 
 ### Restart verification
 
-* [ Dashboard ](#tab-panel-8683)
-* [ API ](#tab-panel-8684)
+* [ Dashboard ](#tab-panel-8974)
+* [ API ](#tab-panel-8975)
 
 If the verification process times out, select **Restart verification** in the client action menu.
 
 To restart a failed or timed out verification, send a `PATCH` request with the existing `client_uri` unchanged.
 
-Terminal window
-
-```
-curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN" \  -d '{ "client_uri": "https://example.com" }'
+```bash
+curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -d '{ "client_uri": "https://example.com" }'
 ```
 
 ## Rotate client secrets
 
 Each client can have two secrets. This lets you create a new secret, update your client to use the new secret, and delete the old secret.
 
-* [ Dashboard ](#tab-panel-8689)
-* [ API ](#tab-panel-8690)
+* [ Dashboard ](#tab-panel-8980)
+* [ API ](#tab-panel-8981)
 
 1. Go to **Manage Account** \> **OAuth clients**.
 2. Open the action menu for your client.
@@ -177,18 +193,18 @@ To check whether a client is in the middle of a secret rotation, look for `has_r
 
 #### Create a new secret
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID/rotate_secret" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID/rotate_secret" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 #### Delete the old secret
 
-Terminal window
-
-```
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID/rotate_secret" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID/rotate_secret" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ```json

@@ -61,10 +61,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Account DNS Settings Write`
 
-Update DNS Settings
+**Update DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enforce_dns_only": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enforce_dns_only": true
+  }'
 ```
 
 Once enabled, Cloudflare responds to DNS queries for all proxied records with the underlying record content — your configured origin IP addresses for `A` and `AAAA` records, and the configured CNAME target for `CNAME` records — instead of Cloudflare's anycast IPs.
@@ -78,10 +83,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Account DNS Settings Write`
 
-Update DNS Settings
+**Update DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enforce_dns_only": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enforce_dns_only": false
+  }'
 ```
 
 After you disable the setting, Cloudflare resumes responding to DNS queries with anycast IP addresses for proxied records and all proxy-based features are restored.
@@ -125,10 +135,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account DNS Settings Write`
 * `Account DNS Settings Read`
 
-Show DNS Settings
+**Show DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Related resources

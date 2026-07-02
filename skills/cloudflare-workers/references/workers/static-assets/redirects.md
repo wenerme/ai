@@ -26,7 +26,7 @@ Redirects defined in the `_redirects` file are not applied to requests served by
 
 Only one redirect can be defined per line and must follow this format, otherwise it will be ignored.
 
-```
+```txt
 [source] [destination] [code?]
 ```
 
@@ -57,8 +57,16 @@ In your `_redirects` file:
 
 A complete example with multiple redirects may look like the following:
 
-```
-/home301 / 301/home302 / 302/querystrings /?query=string 301/twitch https://twitch.tv/trailing /trailing/ 301/notrailing/ /nottrailing 301/page/ /page2/#fragment 301/blog/* https://blog.my.domain/:splat/products/:code/:name /products?code=:code&name=:name
+```txt
+/home301 / 301
+/home302 / 302
+/querystrings /?query=string 301
+/twitch https://twitch.tv
+/trailing /trailing/ 301
+/notrailing/ /nottrailing 301
+/page/ /page2/#fragment 301
+/blog/* https://blog.my.domain/:splat
+/products/:code/:name /products?code=:code&name=:name
 ```
 
 ## Advanced redirects
@@ -93,7 +101,7 @@ A placeholder can be defined with `:placeholder_name`. A colon (`:`) followed by
 
 Similarly, the matched value can be used in the redirect values with `:placeholder_name`.
 
-```
+```txt
 /movies/:title /media/:title
 ```
 
@@ -103,8 +111,9 @@ Proxying will only support relative URLs on your site. You cannot proxy external
 
 Only the first redirect in your file will apply. For example, in the following example, a request to `/a` will render `/b`, and a request to `/b` will render `/c`, but `/a` will not render `/c`.
 
-```
-/a /b 200/b /c 200
+```plaintext
+/a /b 200
+/b /c 200
 ```
 
 Note
@@ -113,8 +122,9 @@ Be aware that proxying pages can have an adverse effect on search engine optimiz
 
 For example, if you have added `/about/faq/* /about/faqs 200` to your `_redirects` file, you may want to add the following to your `_headers` file:
 
-```
-/about/faq/*  Link: </about/faqs>; rel="canonical"
+```txt
+/about/faq/*
+  Link: </about/faqs>; rel="canonical"
 ```
 
 ## Surpass `_redirects` limits

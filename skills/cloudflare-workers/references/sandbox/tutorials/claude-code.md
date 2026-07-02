@@ -48,9 +48,7 @@ yarn create cloudflare claude-code-sandbox --template=cloudflare/sandbox-sdk/exa
 pnpm create cloudflare@latest claude-code-sandbox --template=cloudflare/sandbox-sdk/examples/claude-code
 ```
 
-Terminal window
-
-```
+```sh
 cd claude-code-sandbox
 ```
 
@@ -58,9 +56,7 @@ cd claude-code-sandbox
 
 Create a `.dev.vars` file in your project root for local development:
 
-Terminal window
-
-```
+```sh
 echo "ANTHROPIC_API_KEY=your_api_key_here" > .dev.vars
 ```
 
@@ -74,9 +70,7 @@ The `.dev.vars` file is automatically gitignored and only used during local deve
 
 Start the development server:
 
-Terminal window
-
-```
+```sh
 npm run dev
 ```
 
@@ -86,33 +80,34 @@ First run builds the Docker container (2-3 minutes). Subsequent runs are much fa
 
 Test with curl:
 
-Terminal window
-
-```
-curl -X POST http://localhost:8787/ \  -d '{    "repo": "https://github.com/cloudflare/agents",    "task": "remove the emojis from the readme"  }'
+```sh
+curl -X POST http://localhost:8787/ \
+  -d '{
+    "repo": "https://github.com/cloudflare/agents",
+    "task": "remove the emojis from the readme"
+  }'
 ```
 
 Response:
 
-```
-{  "logs": "Done! I've removed the brain emoji from the README title. The heading now reads \"# Cloudflare Agents\" instead of \"# 🧠 Cloudflare Agents\".",  "diff": "diff --git a/README.md b/README.md\nindex 9296ac9..027c218 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# 🧠 Cloudflare Agents\n+# Cloudflare Agents\n \n ![npm install agents](assets/npm-install-agents.svg)\n "}
+```json
+{
+  "logs": "Done! I've removed the brain emoji from the README title. The heading now reads \"# Cloudflare Agents\" instead of \"# 🧠 Cloudflare Agents\".",
+  "diff": "diff --git a/README.md b/README.md\nindex 9296ac9..027c218 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# 🧠 Cloudflare Agents\n+# Cloudflare Agents\n \n ![npm install agents](assets/npm-install-agents.svg)\n "
+}
 ```
 
 ## 4\. Deploy
 
 Deploy your Worker:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
 Then set your Anthropic API key as a production secret:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put ANTHROPIC_API_KEY
 ```
 

@@ -11,6 +11,10 @@ Grafana provides a query editor for the Dynatrace data source, which is located 
 
 This document explains querying specific to the Dynatrace data source. For general documentation on querying data sources in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/). For options and functions common to all query editors, refer to [Query editors](/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
 
+> Tip
+>
+> You can also use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to build and run Dynatrace queries from natural language. Mention your Dynatrace data source with the `@` symbol in your prompt to get started.
+
 The query editor allows you to create multiple Dynatrace query types.
 
 ## Query

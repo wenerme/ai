@@ -66,10 +66,26 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "enable_email_obfuscation_bic",            "expression": "starts_with(http.request.uri.path, \"/contact-us/\")",            "description": "Obfuscates email addresses and enables BIC in contacts page",            "action": "set_config",            "action_parameters": {                "email_obfuscation": true,                "bic": true            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "enable_email_obfuscation_bic",
+            "expression": "starts_with(http.request.uri.path, \"/contact-us/\")",
+            "description": "Obfuscates email addresses and enables BIC in contacts page",
+            "action": "set_config",
+            "action_parameters": {
+                "email_obfuscation": true,
+                "bic": true
+            }
+        }
+    ]
+  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -103,10 +119,25 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "enable_under_attack_in_admin",            "expression": "http.host eq \"admin.example.com\"",            "description": "Turn on Under Attack mode for admin area",            "action": "set_config",            "action_parameters": {                "security_level": "under_attack"            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "enable_under_attack_in_admin",
+            "expression": "http.host eq \"admin.example.com\"",
+            "description": "Turn on Under Attack mode for admin area",
+            "action": "set_config",
+            "action_parameters": {
+                "security_level": "under_attack"
+            }
+        }
+    ]
+  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

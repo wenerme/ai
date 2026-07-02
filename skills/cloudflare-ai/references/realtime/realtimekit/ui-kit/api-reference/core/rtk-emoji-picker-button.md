@@ -24,19 +24,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-emoji-picker-button></rtk-emoji-picker-button>
 ```
 
 ### With Properties
 
-```
-<rtk-emoji-picker-button></rtk-emoji-picker-button>
+```html
+<rtk-emoji-picker-button>
+</rtk-emoji-picker-button>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-emoji-picker-button");
-  el.isActive= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-emoji-picker-button");
+
+
+  el.isActive= true;
+</script>
 ```
 
 ```json

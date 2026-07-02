@@ -25,16 +25,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLivestreamIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkLivestreamIndicator />;}
+
+
+function MyComponent() {
+  return <RtkLivestreamIndicator />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLivestreamIndicator } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkLivestreamIndicator      meeting={meeting}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLivestreamIndicator
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

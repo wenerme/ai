@@ -24,20 +24,33 @@ Ordering within nested structures is not supported.
 
 ### Raw data sorting
 
-```
-firewallEventsAdaptive (orderBy: [clientCountryName_ASC]) {    clientCountryName}
+```graphql
+firewallEventsAdaptive (orderBy: [clientCountryName_ASC]) {
+    clientCountryName
+}
 ```
 
 ### Raw data sorting using multiple fields
 
-```
-firewallEventsAdaptive (orderBy: [clientCountryName_ASC, datetime_DESC]) {    clientCountryName    datetime}
+```graphql
+firewallEventsAdaptive (orderBy: [clientCountryName_ASC, datetime_DESC]) {
+    clientCountryName
+    datetime
+}
 ```
 
 ### Group sorting by aggregation function
 
-```
-httpRequests1hGroups (orderBy: [sum_bytes_DESC]){    sum {        bytes        requests    }    dimensions {        datetime    }}
+```graphql
+httpRequests1hGroups (orderBy: [sum_bytes_DESC]){
+    sum {
+        bytes
+        requests
+    }
+    dimensions {
+        datetime
+    }
+}
 ```
 
 ```json

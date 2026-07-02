@@ -27,16 +27,28 @@ A screen that handles the idle state, i.e; when you are waiting for data about t
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkIdleScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkIdleScreen />;}
+
+
+function MyComponent() {
+  return <RtkIdleScreen />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkIdleScreen } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkIdleScreen      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkIdleScreen
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

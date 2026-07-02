@@ -29,19 +29,26 @@ A button which toggles recording state of a meeting. Only a privileged user can 
 
 ### Basic Usage
 
-```
+```html
 <rtk-recording-toggle></rtk-recording-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-recording-toggle size="md"></rtk-recording-toggle>
+```html
+<rtk-recording-toggle
+ size="md">
+</rtk-recording-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-recording-toggle");
-  el.disabled= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-recording-toggle");
+
+
+  el.disabled= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

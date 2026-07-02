@@ -26,21 +26,36 @@ The [embedding model](https://developers.cloudflare.com/ai-search/configuration/
 
 Vector search is the default index method for all instances. To switch to [keyword search](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) only, set `index_method.vector` to `false`. At least one of `vector` or `keyword` must be `true`.
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "my-instance",  index_method: {    vector: false,    keyword: true,  },});
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "my-instance",
+  index_method: {
+    vector: false,
+    keyword: true,
+  },
+});
 ```
 
 ## Per-request overrides
 
 You can force vector-only search on a per-request basis using `ai_search_options.retrieval.retrieval_type`, even if keyword search is also enabled on the instance.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      retrieval_type: "vector",    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      retrieval_type: "vector",
+    },
+  },
+});
 ```
 
 ## Scoring details

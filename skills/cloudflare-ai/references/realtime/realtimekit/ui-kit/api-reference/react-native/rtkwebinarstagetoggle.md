@@ -28,16 +28,24 @@ Toggle button for requesting to join or leave the webinar stage. Only visible in
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkWebinarStageToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkWebinarStageToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkWebinarStageToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkWebinarStageToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkWebinarStageToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkWebinarStageToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

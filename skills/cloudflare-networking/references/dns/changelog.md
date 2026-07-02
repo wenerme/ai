@@ -175,10 +175,30 @@ This allows users to query DNS analytics across multiple zones in their account,
 
 Here is an example to retrieve the most recent DNS queries across all zones in your account that resulted in an `NXDOMAIN` response over a given time frame. Please replace `a30f822fcd7c401984bf85d8f2a5111c` with your actual account ID.
 
-GraphQL example for account-level DNS analytics
+**GraphQL example for account-level DNS analytics**
 
-```
-query GetLatestNXDOMAINResponses {  viewer {    accounts(filter: { accountTag: "a30f822fcd7c401984bf85d8f2a5111c" }) {      dnsAnalyticsAdaptive(        filter: {          date_geq: "2025-06-16"          date_leq: "2025-06-18"          responseCode: "NXDOMAIN"        }        limit: 10000        orderBy: [datetime_DESC]      ) {        zoneTag        queryName        responseCode        queryType        datetime      }    }  }}
+```graphql
+query GetLatestNXDOMAINResponses {
+  viewer {
+    accounts(filter: { accountTag: "a30f822fcd7c401984bf85d8f2a5111c" }) {
+      dnsAnalyticsAdaptive(
+        filter: {
+          date_geq: "2025-06-16"
+          date_leq: "2025-06-18"
+          responseCode: "NXDOMAIN"
+        }
+        limit: 10000
+        orderBy: [datetime_DESC]
+      ) {
+        zoneTag
+        queryName
+        responseCode
+        queryType
+        datetime
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgGQIaLAZ0QOQBoAiA8gLICCAkjgEpYAOA9gHaZYwDeAUDDAG4CWYAO6QO3HjFQBjKQxBNEmABQAzfgBsMEAFwdJMuQoAqqAOa6ARKgDMABhUAOAExOVUgCYB2KQBZbARgBOBx8AI0cAVncHFSdUCP9EqQsYAF8ASjEJCXcWMiZUdShEfilMMndUOhLeMCVxbJ41TUhdLkbGyowAfVMwYEsnWycIgFpbADZR-wmLBo6YLrBu9X7B4bHJ6Yc5hYkIemZWAGEGdzBLfGJyKl2F1Pns9X4AW35EXX9bb9tHiQYIOcIAAhKC6ADaSxKL2WBAAogBlY4AXT+mXaCwAXswwCZTH8eKBIFAcKgYQSYAdMIwWGBTucKUToEYoHQwBSoa92R0HtleWlOKkgA&variables=N4XyA)
@@ -255,10 +275,36 @@ The affected fields are:
 
 An example record returned from the API would now look like the following:
 
-Updated API Response
+**Updated API Response**
 
-```
-{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "www.example.com",    "type": "A",    "content": "192.0.2.1",    "proxiable": true,    "proxied": false,    "ttl": 1,    "locked": false,    "meta": {      "auto_added": false,      "managed_by_apps": false,      "managed_by_argo_tunnel": false,      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2025-03-17T20:37:05.368097Z",    "modified_on": "2025-03-17T20:37:05.368097Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ID>",
+    "zone_id": "<ZONE_ID>",
+    "zone_name": "example.com",
+    "name": "www.example.com",
+    "type": "A",
+    "content": "192.0.2.1",
+    "proxiable": true,
+    "proxied": false,
+    "ttl": 1,
+    "locked": false,
+    "meta": {
+      "auto_added": false,
+      "managed_by_apps": false,
+      "managed_by_argo_tunnel": false,
+      "source": "primary"
+    },
+    "comment": null,
+    "tags": [],
+    "created_on": "2025-03-17T20:37:05.368097Z",
+    "modified_on": "2025-03-17T20:37:05.368097Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 For more guidance, refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/).

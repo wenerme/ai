@@ -28,8 +28,28 @@ The following example:
 * Replaces `date` with `datetime`
 * Uses the new `sampleInterval` field
 
-```
-query {  viewer {    zones(filter: { zoneTag: "your Zone ID" }) {      loadBalancingRequestsAdaptiveGroups(        filter: {          datetime_gt: "2021-06-12T04:00:00Z",          datetime_lt: "2021-06-13T06:00:00Z"        }      ) {        dimensions {          datetime          coloCode          ...        }        avg {          sampleInterval        }      }    }  }}
+```json
+query {
+  viewer {
+    zones(filter: { zoneTag: "your Zone ID" }) {
+      loadBalancingRequestsAdaptiveGroups(
+        filter: {
+          datetime_gt: "2021-06-12T04:00:00Z",
+          datetime_lt: "2021-06-13T06:00:00Z"
+        }
+      ) {
+        dimensions {
+          datetime
+          coloCode
+          ...
+        }
+        avg {
+          sampleInterval
+        }
+      }
+    }
+  }
+}
 ```
 
 ```json

@@ -19,19 +19,21 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Access to the default cache is enabled by default:
 
-JavaScript
+**JavaScript**
 
-```
-addEventListener("fetch", (e) => {  e.respondWith(caches.default.match("http://miniflare.dev"));});
+```js
+addEventListener("fetch", (e) => {
+  e.respondWith(caches.default.match("http://miniflare.dev"));
+});
 ```
 
 ## Named Caches
 
 You can access a namespaced cache using `open`. Note that you cannot name your cache `default`, trying to do so will throw an error:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await caches.open("cache_name");
 ```
 
@@ -39,45 +41,90 @@ await caches.open("cache_name");
 
 By default, cached data is stored in memory. It will persist between reloads, but not different `Miniflare` instances. To enable persistence to the file system, specify the cache persistence option:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  cachePersist: true, // Defaults to ./.mf/cache  cachePersist: "./data", // Custom path});
+```js
+const mf = new Miniflare({
+  cachePersist: true, // Defaults to ./.mf/cache
+  cachePersist: "./data", // Custom path
+});
 ```
 
 ## Manipulating Outside Workers
 
 For testing, it can be useful to put/match data from cache outside a Worker. You can do this with the `getCaches` method:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Miniflare, Response } from "miniflare";
-const mf = new Miniflare({  modules: true,  script: `  export default {    async fetch(request) {      const url = new URL(request.url);      const cache = caches.default;      if(url.pathname === "/put") {        await cache.put("https://miniflare.dev/", new Response("1", {          headers: { "Cache-Control": "max-age=3600" },        }));      }      return cache.match("https://miniflare.dev/");    }  }  `,});let res = await mf.dispatchFetch("http://localhost:8787/put");console.log(await res.text()); // 1
-const caches = await mf.getCaches(); // Gets the global caches objectconst cachedRes = await caches.default.match("https://miniflare.dev/");console.log(await cachedRes.text()); // 1
-await caches.default.put(  "https://miniflare.dev",  new Response("2", {    headers: { "Cache-Control": "max-age=3600" },  }),);res = await mf.dispatchFetch("http://localhost:8787");console.log(await res.text()); // 2
+
+
+const mf = new Miniflare({
+  modules: true,
+  script: `
+  export default {
+    async fetch(request) {
+      const url = new URL(request.url);
+      const cache = caches.default;
+      if(url.pathname === "/put") {
+        await cache.put("https://miniflare.dev/", new Response("1", {
+          headers: { "Cache-Control": "max-age=3600" },
+        }));
+      }
+      return cache.match("https://miniflare.dev/");
+    }
+  }
+  `,
+});
+let res = await mf.dispatchFetch("http://localhost:8787/put");
+console.log(await res.text()); // 1
+
+
+const caches = await mf.getCaches(); // Gets the global caches object
+const cachedRes = await caches.default.match("https://miniflare.dev/");
+console.log(await cachedRes.text()); // 1
+
+
+await caches.default.put(
+  "https://miniflare.dev",
+  new Response("2", {
+    headers: { "Cache-Control": "max-age=3600" },
+  }),
+);
+res = await mf.dispatchFetch("http://localhost:8787");
+console.log(await res.text()); // 2
 ```
 
 ## Purging
 
 You can programmatically purge all entries from a cache using the `purgeCache` method on the `Miniflare` instance. This is useful during development when cached assets need to be cleared without restarting the instance:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const mf = new Miniflare({ /* options */ });
-// Purge the default cache and get the number of entries purgedconst count = await mf.purgeCache();console.log(`Purged ${count} entries`);
-// Purge a specific named cacheawait mf.purgeCache("my-named-cache");
+
+
+// Purge the default cache and get the number of entries purged
+const count = await mf.purgeCache();
+console.log(`Purged ${count} entries`);
+
+
+// Purge a specific named cache
+await mf.purgeCache("my-named-cache");
 ```
 
 ## Disabling
 
 Both default and named caches can be disabled with the `disableCache` option. When disabled, the caches will still be available in the sandbox, they just won't cache anything. This may be useful during development:
 
-JavaScript
+**JavaScript**
 
-```
-const mf = new Miniflare({  cache: false,});
+```js
+const mf = new Miniflare({
+  cache: false,
+});
 ```
 
 ```json

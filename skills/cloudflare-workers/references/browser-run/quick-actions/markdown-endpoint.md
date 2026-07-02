@@ -23,7 +23,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 
 ## Endpoint
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown
 ```
 
@@ -44,50 +44,83 @@ You must provide either `url` or `html`:
 
 ### Convert a URL to Markdown
 
-* [ curl ](#tab-panel-6985)
-* [ TypeScript SDK ](#tab-panel-6986)
-* [ Workers binding ](#tab-panel-6987)
+* [ curl ](#tab-panel-7233)
+* [ TypeScript SDK ](#tab-panel-7234)
+* [ Workers binding ](#tab-panel-7235)
 
 This example fetches the Markdown representation of a webpage.
 
-Terminal window
+```bash
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -d '{
+    "url": "https://example.com"
+  }'
+```
 
-```
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \  -H 'Content-Type: application/json' \  -H 'Authorization: Bearer <apiToken>' \  -d '{    "url": "https://example.com"  }'
+```json
+{
+  "success": true,
+  "result": "# Example Domain\n\nThis domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.\n\n[More information...](https://www.iana.org/domains/example)"
+}
 ```
 
-```
-{  "success": true,  "result": "# Example Domain\n\nThis domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.\n\n[More information...](https://www.iana.org/domains/example)"}
-```
+**TypeScript**
 
-TypeScript
-
-```
+```typescript
 import Cloudflare from "cloudflare";
-const client = new Cloudflare({  apiToken: process.env["CLOUDFLARE_API_TOKEN"],});
-const markdown = await client.browserRendering.markdown.create({  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],  url: "https://developers.cloudflare.com/",});
+
+
+const client = new Cloudflare({
+  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+});
+
+
+const markdown = await client.browserRendering.markdown.create({
+  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+  url: "https://developers.cloudflare.com/",
+});
+
+
 console.log(markdown);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  BROWSER: BrowserRun;}
-export default {  async fetch(request, env): Promise<Response> {    return await env.BROWSER.quickAction("markdown", {      url: "https://example.com",    });  },} satisfies ExportedHandler<Env>;
+```typescript
+interface Env {
+  BROWSER: BrowserRun;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    return await env.BROWSER.quickAction("markdown", {
+      url: "https://example.com",
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Convert raw HTML to Markdown
 
 Instead of fetching the content by specifying the URL, you can provide raw HTML content directly.
 
-Terminal window
+```bash
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -d '{
+    "html": "<div>Hello World</div>"
+  }'
+```
 
-```
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \  -H 'Content-Type: application/json' \  -H 'Authorization: Bearer <apiToken>' \  -d '{    "html": "<div>Hello World</div>"  }'
-```
-
-```
-{  "success": true,  "result": "Hello World"}
+```json
+{
+  "success": true,
+  "result": "Hello World"
+}
 ```
 
 ## Advanced usage
@@ -100,14 +133,21 @@ Visit the [Browser Run API reference](https://developers.cloudflare.com/api/reso
 
 You can refine the Markdown extraction by using the `rejectRequestPattern` parameter. In this example, requests matching the given regex pattern (such as CSS files) are excluded.
 
-Terminal window
+```bash
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -d '{
+    "url": "https://example.com",
+    "rejectRequestPattern": ["/^.*\\.(css)/"]
+  }'
+```
 
-```
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \  -H 'Content-Type: application/json' \  -H 'Authorization: Bearer <apiToken>' \  -d '{    "url": "https://example.com",    "rejectRequestPattern": ["/^.*\\.(css)/"]  }'
-```
-
-```
-{  "success": true,  "result": "# Example Domain\n\nThis domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.\n\n[More information...](https://www.iana.org/domains/example)"}
+```json
+{
+  "success": true,
+  "result": "# Example Domain\n\nThis domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.\n\n[More information...](https://www.iana.org/domains/example)"
+}
 ```
 
 ### Handling JavaScript-heavy pages
@@ -116,8 +156,13 @@ For JavaScript-heavy pages or Single Page Applications (SPAs), the default page 
 
 The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `networkidle0` or `networkidle2`:
 
-```
-{  "url": "https://example.com",  "gotoOptions": {    "waitUntil": "networkidle0"  }}
+```json
+{
+  "url": "https://example.com",
+  "gotoOptions": {
+    "waitUntil": "networkidle0"
+  }
+}
 ```
 
 For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).

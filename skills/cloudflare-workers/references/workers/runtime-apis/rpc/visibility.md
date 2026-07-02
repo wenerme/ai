@@ -28,14 +28,32 @@ This security model is commonly known as Object Capabilities, or Capability-Base
 
 When you send an instance of an application-defined class, the recipient can only access methods and properties declared on the class, not properties of the instance. For example:
 
-JavaScript
+**JavaScript**
 
-```
-class Foo extends RpcTarget {  constructor() {    super();
-    // i CANNOT be accessed over RPC    this.i = 0;
-    // funcProp CANNOT be called over RPC    this.funcProp = () => {}  }
-  // value CAN be accessed over RPC  get value() {    return this.i;  }
-  // method CAN be called over RPC  method() {}}
+```js
+class Foo extends RpcTarget {
+  constructor() {
+    super();
+
+
+    // i CANNOT be accessed over RPC
+    this.i = 0;
+
+
+    // funcProp CANNOT be called over RPC
+    this.funcProp = () => {}
+  }
+
+
+  // value CAN be accessed over RPC
+  get value() {
+    return this.i;
+  }
+
+
+  // method CAN be called over RPC
+  method() {}
+}
 ```
 
 This behavior is intentional — it is intended to protect you from accidentally exposing private class internals. Generally, instance properties should be declared private, [by prefixing them with # ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private%5Fproperties). However, private properties are a relatively new feature of JavaScript, and are not yet widely used in the ecosystem.
@@ -48,10 +66,14 @@ These visibility rules apply only to objects that extend `RpcTarget`, `WorkerEnt
 
 When you pass a function over RPC, the caller can access the "own" properties of the function object itself.
 
-JavaScript
+**JavaScript**
 
-```
-someRpcMethod() {  let func = () => {};  func.prop = 123;  // `prop` is visible over RPC  return func;}
+```js
+someRpcMethod() {
+  let func = () => {};
+  func.prop = 123;  // `prop` is visible over RPC
+  return func;
+}
 ```
 
 Such properties on a function are accessed asynchronously, like class properties of an RpcTarget. But, unlike the `RpcTarget` example above, the function's instance properties that are accessible to the caller. In practice, properties are rarely added to functions.

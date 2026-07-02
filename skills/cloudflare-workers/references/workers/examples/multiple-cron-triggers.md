@@ -20,31 +20,112 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11814)
-* [  TypeScript ](#tab-panel-11815)
-* [  Hono ](#tab-panel-11816)
+* [  JavaScript ](#tab-panel-12047)
+* [  TypeScript ](#tab-panel-12048)
+* [  Hono ](#tab-panel-12049)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async scheduled(event, env, ctx) {
+    // Write code for updating your API
+    switch (event.cron) {
+      case "*/3 * * * *":
+        // Every three minutes
+        await updateAPI();
+        break;
+      case "*/10 * * * *":
+        // Every ten minutes
+        await updateAPI2();
+        break;
+      case "*/45 * * * *":
+        // Every forty-five minutes
+        await updateAPI3();
+        break;
+    }
+    console.log("cron processed");
+  },
+};
 ```
-export default {  async scheduled(event, env, ctx) {    // Write code for updating your API    switch (event.cron) {      case "*/3 * * * *":        // Every three minutes        await updateAPI();        break;      case "*/10 * * * *":        // Every ten minutes        await updateAPI2();        break;      case "*/45 * * * *":        // Every forty-five minutes        await updateAPI3();        break;    }    console.log("cron processed");  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    // Write code for updating your API    switch (controller.cron) {      case "*/3 * * * *":        // Every three minutes        await updateAPI();        break;      case "*/10 * * * *":        // Every ten minutes        await updateAPI2();        break;      case "*/45 * * * *":        // Every forty-five minutes        await updateAPI3();        break;    }    console.log("cron processed");  },};
-```
-
-TypeScript
-
-```
-import { Hono } from "hono";
+```ts
 interface Env {}
-// Create Hono appconst app = new Hono<{ Bindings: Env }>();
-// Regular routes for normal HTTP requestsapp.get("/", (c) => c.text("Multiple Cron Trigger Example"));
-// Export both the app and a scheduled functionexport default {  // The Hono app handles regular HTTP requests  fetch: app.fetch,
-  // The scheduled function handles Cron triggers  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    // Check which cron schedule triggered this execution    switch (controller.cron) {      case "*/3 * * * *":        // Every three minutes        await updateAPI();        break;      case "*/10 * * * *":        // Every ten minutes        await updateAPI2();        break;      case "*/45 * * * *":        // Every forty-five minutes        await updateAPI3();        break;    }    console.log("cron processed");  },};
+export default {
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    // Write code for updating your API
+    switch (controller.cron) {
+      case "*/3 * * * *":
+        // Every three minutes
+        await updateAPI();
+        break;
+      case "*/10 * * * *":
+        // Every ten minutes
+        await updateAPI2();
+        break;
+      case "*/45 * * * *":
+        // Every forty-five minutes
+        await updateAPI3();
+        break;
+    }
+    console.log("cron processed");
+  },
+};
+```
+
+**TypeScript**
+
+```ts
+import { Hono } from "hono";
+
+
+interface Env {}
+
+
+// Create Hono app
+const app = new Hono<{ Bindings: Env }>();
+
+
+// Regular routes for normal HTTP requests
+app.get("/", (c) => c.text("Multiple Cron Trigger Example"));
+
+
+// Export both the app and a scheduled function
+export default {
+  // The Hono app handles regular HTTP requests
+  fetch: app.fetch,
+
+
+  // The scheduled function handles Cron triggers
+  async scheduled(
+    controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    // Check which cron schedule triggered this execution
+    switch (controller.cron) {
+      case "*/3 * * * *":
+        // Every three minutes
+        await updateAPI();
+        break;
+      case "*/10 * * * *":
+        // Every ten minutes
+        await updateAPI2();
+        break;
+      case "*/45 * * * *":
+        // Every forty-five minutes
+        await updateAPI3();
+        break;
+    }
+    console.log("cron processed");
+  },
+};
 ```
 
 ## Test Cron Triggers using Wrangler
@@ -53,11 +134,13 @@ The recommended way of testing Cron Triggers is using Wrangler.
 
 Cron Triggers can be tested using Wrangler by passing in the `--test-scheduled` flag to [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). This will expose a `/__scheduled` (or `/cdn-cgi/handler/scheduled` for Python Workers) route which can be used to test using a HTTP request. To simulate different cron patterns, a `cron` query parameter can be passed in.
 
-Terminal window
-
-```
+```sh
 npx wrangler dev --test-scheduled
+
+
 curl "http://localhost:8787/__scheduled?cron=*%2F3+*+*+*+*"
+
+
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python Workers
 ```
 

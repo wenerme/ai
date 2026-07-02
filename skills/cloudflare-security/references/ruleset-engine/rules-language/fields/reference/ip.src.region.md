@@ -18,7 +18,7 @@ The region name associated with the incoming request.
 
 Example value:
 
-```
+```txt
 "Texas"
 ```
 

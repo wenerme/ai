@@ -18,9 +18,9 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-* [ Dashboard ](#tab-panel-7501)
-* [ API ](#tab-panel-7502)
-* [ Terraform (v5) ](#tab-panel-7503)
+* [ Dashboard ](#tab-panel-7751)
+* [ API ](#tab-panel-7752)
+* [ Terraform (v5) ](#tab-panel-7753)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.
@@ -43,19 +43,62 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zero Trust Write`
 
-Create a device settings profile
+**Create a device settings profile**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "allow_mode_switch": false,    "allow_updates": false,    "allowed_to_leave": false,    "auto_connect": 600,    "captive_portal": 180,    "description": "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/",    "disable_auto_fallback": true,    "enabled": true,    "exclude_office_ips": false,    "match": "identity.email in {\"jdoe@example.com\"} or any(identity.groups.name[*] in {\"developers\" \"admin\"}) and os.name == \"windows\"",    "name": "Example device profile",    "precedence": 101,    "service_mode_v2": {        "mode": "warp"    },    "support_url": "https://support.example.com",    "switch_locked": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "allow_mode_switch": false,
+    "allow_updates": false,
+    "allowed_to_leave": false,
+    "auto_connect": 600,
+    "captive_portal": 180,
+    "description": "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/",
+    "disable_auto_fallback": true,
+    "enabled": true,
+    "exclude_office_ips": false,
+    "match": "identity.email in {\"jdoe@example.com\"} or any(identity.groups.name[*] in {\"developers\" \"admin\"}) and os.name == \"windows\"",
+    "name": "Example device profile",
+    "precedence": 101,
+    "service_mode_v2": {
+        "mode": "warp"
+    },
+    "support_url": "https://support.example.com",
+    "switch_locked": true
+  }'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
 
   * `Zero Trust Write`
 2. Create a new profile using the [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile) resource:
-```
-resource "cloudflare_zero_trust_device_custom_profile" "example" {  account_id            = var.cloudflare_account_id  name                  = "Example device profile"  description           = "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/"  allow_mode_switch     = false  allow_updates         = false  allowed_to_leave      = false  auto_connect          = 600  captive_portal        = 180  disable_auto_fallback = true  enabled               = true  exclude_office_ips    = false  precedence            = 101  service_mode_v2       = {mode = "warp"}  support_url           = "https://support.example.com"  switch_locked         = true  tunnel_protocol       = "wireguard"
-  match = trimspace(replace(<<-EOT    identity.email in {"jdoe@example.com"}    or any(identity.groups.name[*] in {"developers" "admin"})    and os.name == "windows"  EOT  , "\n", " "))}
+```tf
+resource "cloudflare_zero_trust_device_custom_profile" "example" {
+  account_id            = var.cloudflare_account_id
+  name                  = "Example device profile"
+  description           = "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/"
+  allow_mode_switch     = false
+  allow_updates         = false
+  allowed_to_leave      = false
+  auto_connect          = 600
+  captive_portal        = 180
+  disable_auto_fallback = true
+  enabled               = true
+  exclude_office_ips    = false
+  precedence            = 101
+  service_mode_v2       = {mode = "warp"}
+  support_url           = "https://support.example.com"
+  switch_locked         = true
+  tunnel_protocol       = "wireguard"
+  match = trimspace(replace(<<-EOT
+    identity.email in {"jdoe@example.com"}
+    or any(identity.groups.name[*] in {"developers" "admin"})
+    and os.name == "windows"
+  EOT
+  , "\n", " "))
+}
 ```
 
 ## Edit profile settings
@@ -96,9 +139,7 @@ Alternatively, you can use [DEX remote captures](https://developers.cloudflare.c
 
 To check which device profile and profile settings are currently on a device, open a terminal and run:
 
-Terminal window
-
-```
+```sh
 warp-cli settings
 ```
 

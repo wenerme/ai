@@ -40,14 +40,28 @@ Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthchecks" \
+  --request POST \
+  --json '{
+    "check_type": "icmp",
+    "endpoint": "8.31.160.1",
+    "name": "Datacenter 1 - primary"
+  }'
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthchecks" \  --request POST \  --json '{    "check_type": "icmp",    "endpoint": "8.31.160.1",    "name": "Datacenter 1 - primary"  }'
-```
-
-```
-{    "result": {        "id": "<HEALTH_CHECK_ID>",        "check_type": "icmp",        "endpoint": "8.31.160.1",        "name": "Datacenter 1 - primary"    },    "success": true,    "errors": [],    "messages": []}
+```json
+{
+    "result": {
+        "id": "<HEALTH_CHECK_ID>",
+        "check_type": "icmp",
+        "endpoint": "8.31.160.1",
+        "name": "Datacenter 1 - primary"
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+}
 ```
 
 ## Query endpoint health checks with GraphQL
@@ -108,24 +122,97 @@ You can query the following dimensions in the `dimensions` field:
 
 The following example queries endpoint health check results for a specific account, returning probe counts aggregated in five-minute intervals. Replace `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and `<API_TOKEN>` with your [API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
 
-Terminal window
-
-```
-echo '{ "query":  "query GetEndpointHealthCheckResults($accountTag: string, $datetimeStart: string) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        magicEndpointHealthCheckAdaptiveGroups(          filter: {            datetime_geq: $datetimeStart          }          limit: 10        ) {          count          dimensions {            checkId            checkType            endpoint            datetimeFiveMinutes          }          sum {            failures            total          }        }      }    }  }",  "variables": {    "accountTag": "<ACCOUNT_ID>",    "datetimeStart": "2026-01-21T00:00:00Z"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
+```bash
+echo '{ "query":
+  "query GetEndpointHealthCheckResults($accountTag: string, $datetimeStart: string) {
+    viewer {
+      accounts(filter: {accountTag: $accountTag}) {
+        magicEndpointHealthCheckAdaptiveGroups(
+          filter: {
+            datetime_geq: $datetimeStart
+          }
+          limit: 10
+        ) {
+          count
+          dimensions {
+            checkId
+            checkType
+            endpoint
+            datetimeFiveMinutes
+          }
+          sum {
+            failures
+            total
+          }
+        }
+      }
+    }
+  }",
+  "variables": {
+    "accountTag": "<ACCOUNT_ID>",
+    "datetimeStart": "2026-01-21T00:00:00Z"
+  }
+}' | tr -d '\n' | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @-
 ```
 
 Pipe the output to `jq` to format the JSON response for easier reading:
 
-Terminal window
-
-```
-... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
+```bash
+... | curl --silent \
+https://api.cloudflare.com/client/v4/graphql \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Accept: application/json" \
+--header "Content-Type: application/json" \
+--data @- | jq .
 ```
 
 ### Example response
 
-```
-{  "data": {    "viewer": {      "accounts": [        {          "magicEndpointHealthCheckAdaptiveGroups": [            {              "count": 288,              "dimensions": {                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",                "checkType": "icmp",                "datetimeFiveMinutes": "2026-01-21T12:00:00Z",                "endpoint": "103.21.244.100"              },              "sum": {                "failures": 0,                "total": 288              }            },            {              "count": 288,              "dimensions": {                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",                "checkType": "icmp",                "datetimeFiveMinutes": "2026-01-21T12:05:00Z",                "endpoint": "103.21.244.100"              },              "sum": {                "failures": 2,                "total": 288              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "magicEndpointHealthCheckAdaptiveGroups": [
+            {
+              "count": 288,
+              "dimensions": {
+                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",
+                "checkType": "icmp",
+                "datetimeFiveMinutes": "2026-01-21T12:00:00Z",
+                "endpoint": "103.21.244.100"
+              },
+              "sum": {
+                "failures": 0,
+                "total": 288
+              }
+            },
+            {
+              "count": 288,
+              "dimensions": {
+                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",
+                "checkType": "icmp",
+                "datetimeFiveMinutes": "2026-01-21T12:05:00Z",
+                "endpoint": "103.21.244.100"
+              },
+              "sum": {
+                "failures": 2,
+                "total": 288
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 In this response, `sum.total` is the number of probes sent during the interval and `sum.failures` is the number that did not receive a reply. A `failures` value of `0` indicates the endpoint was fully reachable during that period.
@@ -136,14 +223,25 @@ You can set up alerts to be notified when the state of your endpoint's health is
 
 1. Make a `GET` request to get a list of IDs for all of the endpoint health checks configured:
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthchecks" \
+  --request GET
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthchecks" \  --request GET
-```
-
-```
-{    "result": [        {            "id": "<HEALTH_CHECK_ID>",            "check_type": "icmp",            "endpoint": "8.31.160.1",            "name": "Datacenter 1 - primary"        }    ],    "success": true,    "errors": [],    "messages": []}
+```json
+{
+    "result": [
+        {
+            "id": "<HEALTH_CHECK_ID>",
+            "check_type": "icmp",
+            "endpoint": "8.31.160.1",
+            "name": "Datacenter 1 - primary"
+        }
+    ],
+    "success": true,
+    "errors": [],
+    "messages": []
+}
 ```
 
 1. Take note of the `id` value for the endpoint you want to get alerts for.

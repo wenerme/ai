@@ -26,19 +26,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-debugger-audio></rtk-debugger-audio>
 ```
 
 ### With Properties
 
-```
-<rtk-debugger-audio size="md"></rtk-debugger-audio>
+```html
+<rtk-debugger-audio
+ size="md">
+</rtk-debugger-audio>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-debugger-audio");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-debugger-audio");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

@@ -26,19 +26,24 @@ Hosted image operations require a [paid Images plan with storage](https://develo
 
 To bind Images to your Worker, add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8981)
-* [  wrangler.toml ](#tab-panel-8982)
+* [  wrangler.jsonc ](#tab-panel-9272)
+* [  wrangler.toml ](#tab-panel-9273)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "images": {
+    "binding": "IMAGES", // available in your Worker on env.IMAGES
+  },
+}
 ```
-{  "images": {    "binding": "IMAGES", // available in your Worker on env.IMAGES  },}
-```
 
-TOML
+**TOML**
 
-```
-[images]binding = "IMAGES"
+```toml
+[images]
+binding = "IMAGES"
 ```
 
 Within your Worker code, you can manage hosted images using the `env.IMAGES.hosted` namespace.
@@ -103,158 +108,332 @@ Deletes an image. Returns `true` if the image was deleted or `false` if no image
 
 ### Upload an image from a request body
 
-* [  JavaScript ](#tab-panel-8983)
-* [  TypeScript ](#tab-panel-8984)
+* [  JavaScript ](#tab-panel-9274)
+* [  TypeScript ](#tab-panel-9275)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    if (!request.body) {
+      return new Response("Missing body", { status: 400 });
+    }
+
+
+    const image = await env.IMAGES.hosted.upload(request.body, {
+      filename: "upload.jpg",
+      metadata: { source: "worker" },
+      requireSignedURLs: false,
+    });
+
+
+    return Response.json(image);
+  },
+};
 ```
-export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
-    const image = await env.IMAGES.hosted.upload(request.body, {      filename: "upload.jpg",      metadata: { source: "worker" },      requireSignedURLs: false,    });
-    return Response.json(image);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
-    const image = await env.IMAGES.hosted.upload(request.body, {      filename: "upload.jpg",      metadata: { source: "worker" },      requireSignedURLs: false,    });
-    return Response.json(image);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    if (!request.body) {
+      return new Response("Missing body", { status: 400 });
+    }
+
+
+    const image = await env.IMAGES.hosted.upload(request.body, {
+      filename: "upload.jpg",
+      metadata: { source: "worker" },
+      requireSignedURLs: false,
+    });
+
+
+    return Response.json(image);
+  },
+};
 ```
 
 ### Upload a base64-encoded image
 
 Set `encoding: "base64"` and the binding will decode the body for you before uploading.
 
-* [  JavaScript ](#tab-panel-8987)
-* [  TypeScript ](#tab-panel-8988)
+* [  JavaScript ](#tab-panel-9278)
+* [  TypeScript ](#tab-panel-9279)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    if (!request.body) {
+      return new Response("Missing body", { status: 400 });
+    }
+
+
+    const image = await env.IMAGES.hosted.upload(request.body, {
+      encoding: "base64",
+      filename: "upload.png",
+    });
+
+
+    return Response.json(image);
+  },
+};
 ```
-export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
-    const image = await env.IMAGES.hosted.upload(request.body, {      encoding: "base64",      filename: "upload.png",    });
-    return Response.json(image);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
-    const image = await env.IMAGES.hosted.upload(request.body, {      encoding: "base64",      filename: "upload.png",    });
-    return Response.json(image);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    if (!request.body) {
+      return new Response("Missing body", { status: 400 });
+    }
+
+
+    const image = await env.IMAGES.hosted.upload(request.body, {
+      encoding: "base64",
+      filename: "upload.png",
+    });
+
+
+    return Response.json(image);
+  },
+};
 ```
 
 ### List images with pagination
 
-* [  JavaScript ](#tab-panel-8991)
-* [  TypeScript ](#tab-panel-8992)
+* [  JavaScript ](#tab-panel-9282)
+* [  TypeScript ](#tab-panel-9283)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    let cursor;
+    const ids = [];
+
+
+    do {
+      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
+      ids.push(...page.images.map((image) => image.id));
+      cursor = page.cursor;
+    } while (cursor);
+
+
+    return Response.json({ count: ids.length, ids });
+  },
+};
 ```
-export default {  async fetch(request, env) {    let cursor;    const ids = [];
-    do {      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });      ids.push(...page.images.map((image) => image.id));      cursor = page.cursor;    } while (cursor);
-    return Response.json({ count: ids.length, ids });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    let cursor: string | undefined;    const ids: string[] = [];
-    do {      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });      ids.push(...page.images.map((image) => image.id));      cursor = page.cursor;    } while (cursor);
-    return Response.json({ count: ids.length, ids });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    let cursor: string | undefined;
+    const ids: string[] = [];
+
+
+    do {
+      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
+      ids.push(...page.images.map((image) => image.id));
+      cursor = page.cursor;
+    } while (cursor);
+
+
+    return Response.json({ count: ids.length, ids });
+  },
+};
 ```
 
 ### Get the details for a single image
 
-* [  JavaScript ](#tab-panel-8985)
-* [  TypeScript ](#tab-panel-8986)
+* [  JavaScript ](#tab-panel-9276)
+* [  TypeScript ](#tab-panel-9277)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
+    if (!details) {
+      return new Response("Not found", { status: 404 });
+    }
+    return Response.json(details);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();    if (!details) {      return new Response("Not found", { status: 404 });    }    return Response.json(details);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();    if (!details) {      return new Response("Not found", { status: 404 });    }    return Response.json(details);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
+    if (!details) {
+      return new Response("Not found", { status: 404 });
+    }
+    return Response.json(details);
+  },
+};
 ```
 
 ### Stream the original bytes for an image
 
-* [  JavaScript ](#tab-panel-8989)
-* [  TypeScript ](#tab-panel-8990)
+* [  JavaScript ](#tab-panel-9280)
+* [  TypeScript ](#tab-panel-9281)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+    if (!bytes) {
+      return new Response("Not found", { status: 404 });
+    }
+    return new Response(bytes);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();    if (!bytes) {      return new Response("Not found", { status: 404 });    }    return new Response(bytes);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();    if (!bytes) {      return new Response("Not found", { status: 404 });    }    return new Response(bytes);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+    if (!bytes) {
+      return new Response("Not found", { status: 404 });
+    }
+    return new Response(bytes);
+  },
+};
 ```
 
 ### Update image metadata
 
-* [  JavaScript ](#tab-panel-8993)
-* [  TypeScript ](#tab-panel-8994)
+* [  JavaScript ](#tab-panel-9284)
+* [  TypeScript ](#tab-panel-9285)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
+      metadata: { reviewed: true },
+    });
+    return Response.json(updated);
+  },
+};
 ```
-export default {  async fetch(request, env) {    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({      metadata: { reviewed: true },    });    return Response.json(updated);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({      metadata: { reviewed: true },    });    return Response.json(updated);  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
+      metadata: { reviewed: true },
+    });
+    return Response.json(updated);
+  },
+};
 ```
 
 ### Delete an image
 
-* [  JavaScript ](#tab-panel-8995)
-* [  TypeScript ](#tab-panel-8996)
+* [  JavaScript ](#tab-panel-9286)
+* [  TypeScript ](#tab-panel-9287)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
+    return new Response(deleted ? "Deleted" : "Not found", {
+      status: deleted ? 200 : 404,
+    });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();    return new Response(deleted ? "Deleted" : "Not found", {      status: deleted ? 200 : 404,    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();    return new Response(deleted ? "Deleted" : "Not found", {      status: deleted ? 200 : 404,    });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
+    return new Response(deleted ? "Deleted" : "Not found", {
+      status: deleted ? 200 : 404,
+    });
+  },
+};
 ```
 
 ### Ingest a remote image into Images storage
 
 This example fetches an image from a remote URL, uploads it into your Images account, and returns the first variant URL.
 
-* [  JavaScript ](#tab-panel-8997)
-* [  TypeScript ](#tab-panel-8998)
+* [  JavaScript ](#tab-panel-9288)
+* [  TypeScript ](#tab-panel-9289)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env) {
+    const upstream = await fetch("https://example.com/photo.jpg");
+    if (!upstream.ok || !upstream.body) {
+      return new Response("Upstream fetch failed", { status: 502 });
+    }
+
+
+    const image = await env.IMAGES.hosted.upload(upstream.body, {
+      filename: "photo.jpg",
+      metadata: { source: "example.com" },
+    });
+
+
+    return Response.json({
+      id: image.id,
+      variant: image.variants[0],
+    });
+  },
+};
 ```
-export default {  async fetch(request, env) {    const upstream = await fetch("https://example.com/photo.jpg");    if (!upstream.ok || !upstream.body) {      return new Response("Upstream fetch failed", { status: 502 });    }
-    const image = await env.IMAGES.hosted.upload(upstream.body, {      filename: "photo.jpg",      metadata: { source: "example.com" },    });
-    return Response.json({      id: image.id,      variant: image.variants[0],    });  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const upstream = await fetch("https://example.com/photo.jpg");    if (!upstream.ok || !upstream.body) {      return new Response("Upstream fetch failed", { status: 502 });    }
-    const image = await env.IMAGES.hosted.upload(upstream.body, {      filename: "photo.jpg",      metadata: { source: "example.com" },    });
-    return Response.json({      id: image.id,      variant: image.variants[0],    });  },};
+```ts
+export default {
+  async fetch(request, env) {
+    const upstream = await fetch("https://example.com/photo.jpg");
+    if (!upstream.ok || !upstream.body) {
+      return new Response("Upstream fetch failed", { status: 502 });
+    }
+
+
+    const image = await env.IMAGES.hosted.upload(upstream.body, {
+      filename: "photo.jpg",
+      metadata: { source: "example.com" },
+    });
+
+
+    return Response.json({
+      id: image.id,
+      variant: image.variants[0],
+    });
+  },
+};
 ```
 
 ## Type definitions

@@ -71,8 +71,8 @@ Use a specific subdomain when you want to restrict the widget to a narrower scop
 
 ## Add hostnames
 
-* [ Dashboard ](#tab-panel-11075)
-* [ API ](#tab-panel-11076)
+* [ Dashboard ](#tab-panel-11370)
+* [ API ](#tab-panel-11371)
 
 Existing widget
 
@@ -92,10 +92,15 @@ New widget
 3. In the hostname field, enter your domain(s).
 4. If you have zones registered with Cloudflare, you can select from existing zones
 
-cURL command
+**cURL command**
 
-```
-  curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{  "domains": ["example.com", "app.example.com", "api.example.com"]  }'
+```bash
+  curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "domains": ["example.com", "app.example.com", "api.example.com"]
+  }'
 ```
 
 ---

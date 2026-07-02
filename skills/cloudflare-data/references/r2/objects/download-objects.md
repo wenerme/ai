@@ -26,10 +26,15 @@ You can download objects from R2 using the dashboard, Workers API, S3 API, or co
 
 Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in Workers to download objects:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    const object = await env.MY_BUCKET.get("image.png");    return new Response(object.body);  },} satisfies ExportedHandler<Env>;
+```ts
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    const object = await env.MY_BUCKET.get("image.png");
+    return new Response(object.body);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 For complete documentation, refer to [Workers API](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/).
@@ -38,23 +43,54 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to download objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-10005)
-* [ Python ](#tab-panel-10006)
+* [ JavaScript ](#tab-panel-10204)
+* [ Python ](#tab-panel-10205)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-const S3 = new S3Client({  region: "auto", // Required by SDK but not used by R2  // Provide your Cloudflare account ID  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  credentials: {    accessKeyId: '<ACCESS_KEY_ID>',    secretAccessKey: '<SECRET_ACCESS_KEY>',  },});
-const response = await S3.send(  new GetObjectCommand({    Bucket: "my-bucket",    Key: "image.png",  }),);
+
+
+const S3 = new S3Client({
+  region: "auto", // Required by SDK but not used by R2
+  // Provide your Cloudflare account ID
+  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
+  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+  credentials: {
+    accessKeyId: '<ACCESS_KEY_ID>',
+    secretAccessKey: '<SECRET_ACCESS_KEY>',
+  },
+});
+
+
+const response = await S3.send(
+  new GetObjectCommand({
+    Bucket: "my-bucket",
+    Key: "image.png",
+  }),
+);
 ```
 
-Python
+**Python**
 
-```
+```python
 import boto3
-s3 = boto3.client(  service_name="s3",  # Provide your Cloudflare account ID  endpoint_url=f"https://{ACCOUNT_ID}.r2.cloudflarestorage.com",  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  aws_access_key_id=ACCESS_KEY_ID,  aws_secret_access_key=SECRET_ACCESS_KEY,  region_name="auto", # Required by SDK but not used by R2)
-response = s3.get_object(Bucket="my-bucket", Key="image.png")image_data = response["Body"].read()
+
+
+s3 = boto3.client(
+  service_name="s3",
+  # Provide your Cloudflare account ID
+  endpoint_url=f"https://{ACCOUNT_ID}.r2.cloudflarestorage.com",
+  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+  aws_access_key_id=ACCESS_KEY_ID,
+  aws_secret_access_key=SECRET_ACCESS_KEY,
+  region_name="auto", # Required by SDK but not used by R2
+)
+
+
+response = s3.get_object(Bucket="my-bucket", Key="image.png")
+image_data = response["Body"].read()
 ```
 
 Refer to R2's [S3 API documentation](https://developers.cloudflare.com/r2/api/s3/api/) for all S3 API methods.
@@ -73,9 +109,7 @@ For details on generating and using presigned URLs, refer to [Presigned URLs](ht
 
 Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to download objects. Run the [r2 object get command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-get):
 
-Terminal window
-
-```
+```sh
 wrangler r2 object get test-bucket/image.png
 ```
 

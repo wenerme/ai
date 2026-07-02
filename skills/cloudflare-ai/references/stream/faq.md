@@ -72,19 +72,19 @@ If your website uses [Content Security Policy (CSP)](https://developer.mozilla.o
 
 If you use the provided [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/), `videodelivery.net` and `*.cloudflarestream.com` must be included in the `frame-src` or `default-src` directive to allow the player's `<iframe>` element to load.
 
-```
+```http
 Content-Security-Policy: frame-src 'self' videodelivery.net *.cloudflarestream.com
 ```
 
 If you use your **own** Player, add `*.videodelivery.net` and `*.cloudflarestream.com` to the `media-src`, `img-src` and `connect-src` CSP directives to allow video files and thumbnail images to load.
 
-```
+```http
 Content-Security-Policy: media-src 'self' videodelivery.net *.cloudflarestream.com; img-src 'self' *.videodelivery.net *.cloudflarestream.com; connect-src 'self' *.videodelivery.net *.cloudflarestream.com
 ```
 
 If you allow users to upload their own videos directly to Cloudflare Stream, add `*.videodelivery.net` and `*.cloudflarestream.com` to the `connect-src` CSP directive.
 
-```
+```http
 Content-Security-Policy: connect-src 'self' *.videodelivery.net *.cloudflarestream.com
 ```
 

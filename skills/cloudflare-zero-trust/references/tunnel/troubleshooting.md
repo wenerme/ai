@@ -24,8 +24,9 @@ When `cloudflared` cannot reach the Cloudflare network, it [logs](https://develo
 
 #### `edge discovery: error looking up Cloudflare edge IPs`
 
-```
-ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed    error="lookup _v2-origintunneld._tcp.argotunnel.com on 172.19.64.1:53: no such host"
+```txt
+ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed
+    error="lookup _v2-origintunneld._tcp.argotunnel.com on 172.19.64.1:53: no such host"
 ```
 
 This error means the DNS resolver configured on your machine cannot resolve the SRV records that `cloudflared` uses to discover the [Cloudflare Tunnel destination IPs](https://developers.cloudflare.com/tunnel/configuration/#firewall-rules). Common causes include corporate DNS resolvers that strip or block SRV records, and DNS resolvers that return compressed SRV records.
@@ -34,17 +35,13 @@ This error means the DNS resolver configured on your machine cannot resolve the 
 
 On the `cloudflared` host machine, run:
 
-Terminal window
-
-```
+```sh
 dig SRV _v2-origintunneld._tcp.argotunnel.com
 ```
 
 If you receive `SERVFAIL`, `NXDOMAIN`, or an empty answer, test against Cloudflare's public resolver:
 
-Terminal window
-
-```
+```sh
 dig SRV _v2-origintunneld._tcp.argotunnel.com @1.1.1.1
 ```
 
@@ -55,8 +52,10 @@ dig SRV _v2-origintunneld._tcp.argotunnel.com @1.1.1.1
 
 #### `DNS query failed ... i/o timeout`
 
-```
-ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed    error="lookup _v2-origintunneld._tcp.argotunnel.com on 127.0.0.11:53:    read udp 127.0.0.1:53467->127.0.0.11:53: i/o timeout"
+```txt
+ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed
+    error="lookup _v2-origintunneld._tcp.argotunnel.com on 127.0.0.11:53:
+    read udp 127.0.0.1:53467->127.0.0.11:53: i/o timeout"
 ```
 
 This variant means DNS queries from `cloudflared` are being blocked or dropped entirely — the resolver never responds. This is common in container environments (Docker, Kubernetes) where the internal DNS resolver (`127.0.0.11`) is unreachable or misconfigured.
@@ -71,15 +70,17 @@ This variant means DNS queries from `cloudflared` are being blocked or dropped e
 
 #### `Failed to dial a quic connection`
 
-```
-ERR Failed to dial a quic connection error="failed to dial to edge with quic:    timeout: handshake did not complete in time" connIndex=0 ip=198.41.192.227INF Retrying connection in up to 2s connIndex=0 ip=198.41.192.227
+```txt
+ERR Failed to dial a quic connection error="failed to dial to edge with quic:
+    timeout: handshake did not complete in time" connIndex=0 ip=198.41.192.227
+INF Retrying connection in up to 2s connIndex=0 ip=198.41.192.227
 ```
 
 This error means `cloudflared` resolved the [Cloudflare Tunnel destination IPs](https://developers.cloudflare.com/tunnel/configuration/#firewall-rules) but could not complete a QUIC handshake over UDP port `7844`. Your network or firewall is blocking outbound UDP traffic to Cloudflare.
 
 `cloudflared` retries with exponential backoff (2, 4, 8, 16, 32, up to 64 seconds). After exhausting retries, it falls back to HTTP/2 over TCP:
 
-```
+```txt
 INF Switching to fallback protocol http2 connIndex=0
 ```
 
@@ -89,9 +90,7 @@ If the fallback also fails, you will see a [TCP connection timeout](#tcp-connect
 
 On the `cloudflared` host machine, test connectivity on port `7844`:
 
-Terminal window
-
-```
+```sh
 nc -uvz -w 3 198.41.192.227 7844
 ```
 
@@ -106,8 +105,11 @@ Replace `198.41.192.227` with the IP shown in your [error message](#failed-to-di
 
 #### `DialContext error: dial tcp ... i/o timeout`
 
-```
-ERR Unable to establish connection with Cloudflare edge    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0ERR Serve tunnel error    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0
+```txt
+ERR Unable to establish connection with Cloudflare edge
+    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0
+ERR Serve tunnel error
+    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0
 ```
 
 This error means `cloudflared` cannot reach Cloudflare over TCP port `7844`. If you also see the [QUIC handshake timeout](#failed-to-dial-a-quic-connection) above it, both UDP and TCP are blocked — the tunnel cannot connect at all.
@@ -116,9 +118,7 @@ This error means `cloudflared` cannot reach Cloudflare over TCP port `7844`. If 
 
 As a quick test, run:
 
-Terminal window
-
-```
+```sh
 curl -v https://region1.v2.argotunnel.com:7844
 ```
 
@@ -126,9 +126,7 @@ If the connection hangs, traffic is being dropped between your host and Cloudfla
 
 To test if `cloudflared` can connect on port `7844`, run:
 
-Terminal window
-
-```
+```sh
 nc -vz -w 3 198.41.200.43 7844
 ```
 
@@ -151,14 +149,13 @@ If you are unable to save your tunnel's public hostname, choose a different host
 
 If you encounter the following error when running a tunnel, double check your `config.yml` file and ensure that the `credentials-file` points to the correct location. You may need to change `/root/` to your home directory.
 
-Terminal window
-
-```
+```sh
 cloudflared tunnel run
 ```
 
-```
-2021-06-04T06:21:16Z INF Starting tunnel tunnelID=928655cc-7f95-43f2-8539-2aba6cf3592dTunnel credentials file '/root/.cloudflared/928655cc-7f95-43f2-8539-2aba6cf3592d.json' doesn't exist or is not a file
+```sh
+2021-06-04T06:21:16Z INF Starting tunnel tunnelID=928655cc-7f95-43f2-8539-2aba6cf3592d
+Tunnel credentials file '/root/.cloudflared/928655cc-7f95-43f2-8539-2aba6cf3592d.json' doesn't exist or is not a file
 ```
 
 ## My tunnel fails to authenticate.
@@ -206,15 +203,13 @@ To identify the specific cause, review your [Tunnel logs](https://developers.clo
 
 If the origin service has stopped or never started, `cloudflared` logs will show an error similar to:
 
-```
+```txt
 error="dial tcp [::1]:8080: connect: connection refused"
 ```
 
 To resolve, verify the service is running and listening on the expected port:
 
-Terminal window
-
-```
+```sh
 curl -v http://localhost:8080
 ```
 
@@ -224,7 +219,7 @@ If the service is not running, start or restart it. You can confirm the service 
 
 If the origin expects HTTPS but the tunnel route specifies `http://`, or vice versa, `cloudflared` logs will show an error similar to:
 
-```
+```txt
 error="net/http: HTTP/1.x transport connection broken: malformed HTTP response \"\x15\x03\x01\x00\x02\x02\""
 ```
 
@@ -238,7 +233,7 @@ If the port in your tunnel route does not match the port your service is listeni
 
 If the origin presents a TLS certificate that `cloudflared` cannot verify, the logs will show an error similar to:
 
-```
+```txt
 error="x509: certificate is valid for example.com, not localhost"
 ```
 
@@ -247,24 +242,40 @@ This commonly occurs when the origin uses a self-signed certificate or when an S
 To resolve, use one of the following approaches:
 
 * Set [originServerName](https://developers.cloudflare.com/tunnel/configuration/#originservername) to the hostname on the origin certificate in your tunnel route. If you are using a locally-managed tunnel, here is an example of a [configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/):
-```
-ingress:  - hostname: app.example.com    service: https://localhost:443    originRequest:      originServerName: app.example.com
+```yml
+ingress:
+  - hostname: app.example.com
+    service: https://localhost:443
+    originRequest:
+      originServerName: app.example.com
 ```
 * Provide the CA certificate using [caPool](https://developers.cloudflare.com/tunnel/configuration/#capool):
-```
-ingress:  - hostname: app.example.com    service: https://localhost:443    originRequest:      caPool: /path/to/ca-cert.pem
+```yml
+ingress:
+  - hostname: app.example.com
+    service: https://localhost:443
+    originRequest:
+      caPool: /path/to/ca-cert.pem
 ```
 * As a last resort, disable TLS verification with [noTLSVerify](https://developers.cloudflare.com/tunnel/configuration/#notlsverify). This is not recommended for production environments.
-```
-ingress:  - hostname: app.example.com    service: https://localhost:443    originRequest:      noTLSVerify: true
+```yml
+ingress:
+  - hostname: app.example.com
+    service: https://localhost:443
+    originRequest:
+      noTLSVerify: true
 ```
 
 ## I see `ERR_TOO_MANY_REDIRECTS` when attempting to connect to an Access self-hosted app.
 
 This error occurs when `cloudflared` does not recognize the SSL/TLS certificate presented by your origin. To resolve the issue, set the [origin server name](https://developers.cloudflare.com/tunnel/configuration/#originservername) parameter to the hostname on your origin certificate. Here is an example of a locally-managed tunnel configuration:
 
-```
-ingress:  - hostname: test.example.com    service: https://localhost:443    originRequest:      originServerName: test.example.com
+```txt
+ingress:
+  - hostname: test.example.com
+    service: https://localhost:443
+    originRequest:
+      originServerName: test.example.com
 ```
 
 ## `cloudflared access` shows an error `websocket: bad handshake`.
@@ -295,21 +306,19 @@ This buffer size increase is reported by the [quic-go library ↗](https://githu
 To set the maximum receive buffer size on Linux:
 
 1. Create a new file under `/etc/sysctl.d/`:
-Terminal window
-```
+```sh
 sudo vi 98-core-rmem-max.conf
 ```
 2. In the file, define the desired buffer size:
-```
+```txt
 net.core.rmem_max=2500000
 ```
 3. Reboot the host machine running `cloudflared`.
 4. To validate that these changes have taken effect, use the `grep` command:
-Terminal window
-```
+```sh
 sudo sysctl -a | grep net.core.rmem_max
 ```
-```
+```sh
 net.core.rmem_max = 2500000
 ```
 
@@ -344,13 +353,11 @@ Acme Corp attempted to establish a tunnel connection on October 30, 2025, at app
 To capture verbose output for troubleshooting:
 
 * **Locally-managed tunnels**: Run `cloudflared` with the `--loglevel debug` flag:
-Terminal window
-```
+```sh
 cloudflared tunnel --loglevel debug run
 ```
 To persist logs to a file, add the `--logfile` flag:
-Terminal window
-```
+```sh
 cloudflared tunnel --loglevel debug --logfile /var/log/cloudflared/cloudflared.log run
 ```
 * **Remotely-managed tunnels** (created via the dashboard): Configure logging in the tunnel's [run parameters](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#loglevel). You can also stream logs in real time using the [remote log streaming](https://developers.cloudflare.com/tunnel/monitoring/#remote-log-streaming) feature.

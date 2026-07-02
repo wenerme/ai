@@ -73,10 +73,13 @@ The evaluation context is a set of key-value attributes that describe the curren
 
 You pass the context as the third argument to evaluation methods on the binding:
 
-TypeScript
+**TypeScript**
 
-```
-const value = await env.FLAGS.getBooleanValue("new-checkout", false, {  userId: "user-42",  country: "US",});
+```ts
+const value = await env.FLAGS.getBooleanValue("new-checkout", false, {
+  userId: "user-42",
+  country: "US",
+});
 ```
 
 When using the [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/), you pass context through the OpenFeature evaluation context object.

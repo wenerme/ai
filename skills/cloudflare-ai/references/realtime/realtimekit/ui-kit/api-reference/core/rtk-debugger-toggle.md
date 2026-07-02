@@ -27,19 +27,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-debugger-toggle></rtk-debugger-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-debugger-toggle size="md" variant"button"></rtk-debugger-toggle>
+```html
+<rtk-debugger-toggle
+ size="md"
+ variant"button">
+</rtk-debugger-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-debugger-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-debugger-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

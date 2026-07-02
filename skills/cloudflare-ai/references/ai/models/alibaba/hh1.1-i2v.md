@@ -31,23 +31,46 @@ Alibaba's HappyHorse 1.1 image-to-video model. Animates a reference image with a
 * [ TypeScript ](#tab-panel-30)
 * [ cURL ](#tab-panel-31)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1.1-i2v',  {    image:      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',    prompt: 'A gentle camera push-in on the scene with soft ambient lighting',  },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1.1-i2v',
+  {
+    image:
+      'https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png',
+    prompt: 'A gentle camera push-in on the scene with soft ambient lighting',
+  },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1.1-i2v",  "input": {    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",    "prompt": "A gentle camera push-in on the scene with soft ambient lighting"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1.1-i2v",
+  "input": {
+    "image": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+    "prompt": "A gentle camera push-in on the scene with soft ambient lighting"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-28)
 * [ Raw response ](#tab-panel-29)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/alibaba/hh1.1-i2v/simple-image-to-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/hh1.1-i2v/simple-image-to-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters

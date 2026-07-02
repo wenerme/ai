@@ -36,14 +36,43 @@ This affects tools like Google Analytics, which reads the referer from JavaScrip
 
 You can add tracking scripts, such as the Google Tag Manager Javascript, within an existing [Challenge Page](https://developers.cloudflare.com/rules/custom-errors/) to capture the correct referer header on the initial request.
 
-Example JavaScript
+**Example JavaScript**
 
-```
-<script>    (function () {      const gaIds = {        "<YOUR_DOMAIN>": "<GA_TRACKING_ID>",      };
+```js
+<script>
+    (function () {
+      const gaIds = {
+        "<YOUR_DOMAIN>": "<GA_TRACKING_ID>",
+      };
+
+
       const gaId = gaIds[window.location.hostname];
-      if (gaId) {        const src = "https://www.googletagmanager.com/gtag/js?id=";
-        const gaScript = document.createElement("script");        gaScript.src = src.concat(gaId);        document.body.appendChild(gaScript);
-        window.dataLayer = window.dataLayer || [];        function gtag() {          dataLayer.push(arguments);        }        gtag("js", new Date());        gtag("config", gaId);      } else {        console.warn(          "Google Analytics ID not found for host:",          window.location.hostname,        );      }    })();  </script></body>
+
+
+      if (gaId) {
+        const src = "https://www.googletagmanager.com/gtag/js?id=";
+
+
+        const gaScript = document.createElement("script");
+        gaScript.src = src.concat(gaId);
+        document.body.appendChild(gaScript);
+
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", gaId);
+      } else {
+        console.warn(
+          "Google Analytics ID not found for host:",
+          window.location.hostname,
+        );
+      }
+    })();
+  </script>
+</body>
 ```
 
 ### Cross-origin resource sharing (CORS) preflight requests

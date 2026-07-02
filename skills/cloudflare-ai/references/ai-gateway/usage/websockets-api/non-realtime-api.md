@@ -18,7 +18,7 @@ The Non-realtime WebSockets API allows you to establish persistent connections f
 
 1. Generate an AI Gateway token with appropriate AI Gateway Run and opt in to using an authenticated gateway.
 2. Use the `wss://` protocol to initiate a WebSocket connection:
-```
+```plaintext
 wss://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}
 ```
 3. Open a WebSocket connection authenticated with a Cloudflare token with the AI Gateway Run permission.
@@ -29,39 +29,115 @@ Alternatively, we also support authentication via the `sec-websocket-protocol` h
 
 ## Example request
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import WebSocket from "ws";
-const ws = new WebSocket(  "wss://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/",  {    headers: {      "cf-aig-authorization": "Bearer AI_GATEWAY_TOKEN",    },  },);
-ws.on("open", () => {  ws.send(    JSON.stringify({      type: "universal.create",      request: {        eventId: "my-request",        provider: "workers-ai",        endpoint: "@cf/meta/llama-3.1-8b-instruct",        headers: {          Authorization: "Bearer WORKERS_AI_TOKEN",          "Content-Type": "application/json",        },        query: {          prompt: "tell me a joke",        },      },    }),  );})
-ws.on("message", (message) => {  console.log(message.toString());});
+
+
+const ws = new WebSocket(
+  "wss://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/",
+  {
+    headers: {
+      "cf-aig-authorization": "Bearer AI_GATEWAY_TOKEN",
+    },
+  },
+);
+
+
+ws.on("open", () => {
+  ws.send(
+    JSON.stringify({
+      type: "universal.create",
+      request: {
+        eventId: "my-request",
+        provider: "workers-ai",
+        endpoint: "@cf/meta/llama-3.1-8b-instruct",
+        headers: {
+          Authorization: "Bearer WORKERS_AI_TOKEN",
+          "Content-Type": "application/json",
+        },
+        query: {
+          prompt: "tell me a joke",
+        },
+      },
+    }),
+  );
+})
+
+
+ws.on("message", (message) => {
+  console.log(message.toString());
+});
 ```
 
 ## Example response
 
-```
-{  "type": "universal.created",  "metadata": {    "cacheStatus": "MISS",    "eventId": "my-request",    "logId": "01JC3R94FRD97JBCBX3S0ZAXKW",    "step": "0",    "contentType": "application/json"  },  "response": {    "result": {      "response": "Why was the math book sad? Because it had too many problems. Would you like to hear another one?"    },    "success": true,    "errors": [],    "messages": []  }}
+```json
+{
+  "type": "universal.created",
+  "metadata": {
+    "cacheStatus": "MISS",
+    "eventId": "my-request",
+    "logId": "01JC3R94FRD97JBCBX3S0ZAXKW",
+    "step": "0",
+    "contentType": "application/json"
+  },
+  "response": {
+    "result": {
+      "response": "Why was the math book sad? Because it had too many problems. Would you like to hear another one?"
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+  }
+}
 ```
 
 ## Example streaming request
 
 For streaming requests, AI Gateway sends an initial message with request metadata indicating the stream is starting:
 
-```
-{  "type": "universal.created",  "metadata": {    "cacheStatus": "MISS",    "eventId": "my-request",    "logId": "01JC40RB3NGBE5XFRZGBN07572",    "step": "0",    "contentType": "text/event-stream"  }}
+```json
+{
+  "type": "universal.created",
+  "metadata": {
+    "cacheStatus": "MISS",
+    "eventId": "my-request",
+    "logId": "01JC40RB3NGBE5XFRZGBN07572",
+    "step": "0",
+    "contentType": "text/event-stream"
+  }
+}
 ```
 
 After this initial message, all streaming chunks are relayed in real-time to the WebSocket connection as they arrive from the inference provider. Only the `eventId` field is included in the metadata for these streaming chunks. The `eventId` allows AI Gateway to include a client-defined ID with each message, even in a streaming WebSocket environment.
 
-```
-{  "type": "universal.stream",  "metadata": {    "eventId": "my-request"  },  "response": {    "response": "would"  }}
+```json
+{
+  "type": "universal.stream",
+  "metadata": {
+    "eventId": "my-request"
+  },
+  "response": {
+    "response": "would"
+  }
+}
 ```
 
 Once all chunks for a request have been streamed, AI Gateway sends a final message to signal the completion of the request. For added flexibility, this message includes all the metadata again, even though it was initially provided at the start of the streaming process.
 
-```
-{  "type": "universal.done",  "metadata": {    "cacheStatus": "MISS",    "eventId": "my-request",    "logId": "01JC40RB3NGBE5XFRZGBN07572",    "step": "0",    "contentType": "text/event-stream"  }}
+```json
+{
+  "type": "universal.done",
+  "metadata": {
+    "cacheStatus": "MISS",
+    "eventId": "my-request",
+    "logId": "01JC40RB3NGBE5XFRZGBN07572",
+    "step": "0",
+    "contentType": "text/event-stream"
+  }
+}
 ```
 
 ```json

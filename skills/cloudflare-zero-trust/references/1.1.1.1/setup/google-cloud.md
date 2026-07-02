@@ -25,8 +25,9 @@ To configure 1.1.1.1 for your Google Cloud VPC network:
 3. Select **Create Policy**.
 4. Enter a name for your policy (for example, `cloudflare-1-1-1-1`) and select the VPC networks to apply it to.
 5. Under **Alternate DNS servers**, select **Add Item** and enter:
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 6. Select **Create**.
 

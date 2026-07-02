@@ -77,20 +77,38 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-6976)
-* [  wrangler.toml ](#tab-panel-6977)
+* [  wrangler.jsonc ](#tab-panel-7184)
+* [  wrangler.toml ](#tab-panel-7185)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "browser-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "browser": {
+    "binding": "MYBROWSER",
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-25",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER",  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-25"compatibility_flags = [ "nodejs_compat" ]
-[browser]binding = "MYBROWSER"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "browser-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[browser]
+binding = "MYBROWSER"
 ```
 
 ## 4\. Code
@@ -99,38 +117,175 @@ The script below starts by fetching the current running sessions. If there are a
 
 Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-run/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
 
-* [  JavaScript ](#tab-panel-6978)
-* [  TypeScript ](#tab-panel-6979)
+* [  JavaScript ](#tab-panel-7186)
+* [  TypeScript ](#tab-panel-7187)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import puppeteer from "@cloudflare/puppeteer";
-export default {  async fetch(request, env) {    const url = new URL(request.url);    let reqUrl = url.searchParams.get("url") || "https://example.com";    reqUrl = new URL(reqUrl).toString(); // normalize
-    // Pick random session from open sessions    let sessionId = await this.getRandomSession(env.MYBROWSER);    let browser, launched;    if (sessionId) {      try {        browser = await puppeteer.connect(env.MYBROWSER, sessionId);      } catch (e) {        // another worker may have connected first        console.log(`Failed to connect to ${sessionId}. Error ${e}`);      }    }    if (!browser) {      // No open sessions, launch new session      browser = await puppeteer.launch(env.MYBROWSER);      launched = true;    }
+
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    let reqUrl = url.searchParams.get("url") || "https://example.com";
+    reqUrl = new URL(reqUrl).toString(); // normalize
+
+
+    // Pick random session from open sessions
+    let sessionId = await this.getRandomSession(env.MYBROWSER);
+    let browser, launched;
+    if (sessionId) {
+      try {
+        browser = await puppeteer.connect(env.MYBROWSER, sessionId);
+      } catch (e) {
+        // another worker may have connected first
+        console.log(`Failed to connect to ${sessionId}. Error ${e}`);
+      }
+    }
+    if (!browser) {
+      // No open sessions, launch new session
+      browser = await puppeteer.launch(env.MYBROWSER);
+      launched = true;
+    }
+
+
     sessionId = browser.sessionId(); // get current session id
-    // Do your work here    const page = await browser.newPage();    const response = await page.goto(reqUrl);    const html = await response.text();
-    // All work done, so free connection (IMPORTANT!)    browser.disconnect();
-    return new Response(      `${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` + html,      {        headers: {          "content-type": "text/plain",        },      },    );  },
-  // Pick random free session  // Other custom logic could be used instead  async getRandomSession(endpoint) {    const sessions = await puppeteer.sessions(endpoint);    console.log(`Sessions: ${JSON.stringify(sessions)}`);    const sessionsIds = sessions      .filter((v) => {        return !v.connectionId; // remove sessions with workers connected to them      })      .map((v) => {        return v.sessionId;      });    if (sessionsIds.length === 0) {      return;    }
-    const sessionId =      sessionsIds[Math.floor(Math.random() * sessionsIds.length)];
-    return sessionId;  },};
+
+
+    // Do your work here
+    const page = await browser.newPage();
+    const response = await page.goto(reqUrl);
+    const html = await response.text();
+
+
+    // All work done, so free connection (IMPORTANT!)
+    browser.disconnect();
+
+
+    return new Response(
+      `${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` + html,
+      {
+        headers: {
+          "content-type": "text/plain",
+        },
+      },
+    );
+  },
+
+
+  // Pick random free session
+  // Other custom logic could be used instead
+  async getRandomSession(endpoint) {
+    const sessions = await puppeteer.sessions(endpoint);
+    console.log(`Sessions: ${JSON.stringify(sessions)}`);
+    const sessionsIds = sessions
+      .filter((v) => {
+        return !v.connectionId; // remove sessions with workers connected to them
+      })
+      .map((v) => {
+        return v.sessionId;
+      });
+    if (sessionsIds.length === 0) {
+      return;
+    }
+
+
+    const sessionId =
+      sessionsIds[Math.floor(Math.random() * sessionsIds.length)];
+
+
+    return sessionId;
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import puppeteer from "@cloudflare/puppeteer";
-interface Env {  MYBROWSER: Fetcher;}
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);    let reqUrl = url.searchParams.get("url") || "https://example.com";    reqUrl = new URL(reqUrl).toString(); // normalize
-    // Pick random session from open sessions    let sessionId = await this.getRandomSession(env.MYBROWSER);    let browser, launched;    if (sessionId) {      try {        browser = await puppeteer.connect(env.MYBROWSER, sessionId);      } catch (e) {        // another worker may have connected first        console.log(`Failed to connect to ${sessionId}. Error ${e}`);      }    }    if (!browser) {      // No open sessions, launch new session      browser = await puppeteer.launch(env.MYBROWSER);      launched = true;    }
+
+
+interface Env {
+  MYBROWSER: Fetcher;
+}
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    let reqUrl = url.searchParams.get("url") || "https://example.com";
+    reqUrl = new URL(reqUrl).toString(); // normalize
+
+
+    // Pick random session from open sessions
+    let sessionId = await this.getRandomSession(env.MYBROWSER);
+    let browser, launched;
+    if (sessionId) {
+      try {
+        browser = await puppeteer.connect(env.MYBROWSER, sessionId);
+      } catch (e) {
+        // another worker may have connected first
+        console.log(`Failed to connect to ${sessionId}. Error ${e}`);
+      }
+    }
+    if (!browser) {
+      // No open sessions, launch new session
+      browser = await puppeteer.launch(env.MYBROWSER);
+      launched = true;
+    }
+
+
     sessionId = browser.sessionId(); // get current session id
-    // Do your work here    const page = await browser.newPage();    const response = await page.goto(reqUrl);    const html = await response!.text();
-    // All work done, so free connection (IMPORTANT!)    browser.disconnect();
-    return new Response(      `${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` + html,      {        headers: {          "content-type": "text/plain",        },      },    );  },
-  // Pick random free session  // Other custom logic could be used instead  async getRandomSession(endpoint: puppeteer.BrowserWorker): Promise<string> {    const sessions: puppeteer.ActiveSession[] =      await puppeteer.sessions(endpoint);    console.log(`Sessions: ${JSON.stringify(sessions)}`);    const sessionsIds = sessions      .filter((v) => {        return !v.connectionId; // remove sessions with workers connected to them      })      .map((v) => {        return v.sessionId;      });    if (sessionsIds.length === 0) {      return;    }
-    const sessionId =      sessionsIds[Math.floor(Math.random() * sessionsIds.length)];
-    return sessionId!;  },};
+
+
+    // Do your work here
+    const page = await browser.newPage();
+    const response = await page.goto(reqUrl);
+    const html = await response!.text();
+
+
+    // All work done, so free connection (IMPORTANT!)
+    browser.disconnect();
+
+
+    return new Response(
+      `${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` + html,
+      {
+        headers: {
+          "content-type": "text/plain",
+        },
+      },
+    );
+  },
+
+
+  // Pick random free session
+  // Other custom logic could be used instead
+  async getRandomSession(endpoint: puppeteer.BrowserWorker): Promise<string> {
+    const sessions: puppeteer.ActiveSession[] =
+      await puppeteer.sessions(endpoint);
+    console.log(`Sessions: ${JSON.stringify(sessions)}`);
+    const sessionsIds = sessions
+      .filter((v) => {
+        return !v.connectionId; // remove sessions with workers connected to them
+      })
+      .map((v) => {
+        return v.sessionId;
+      });
+    if (sessionsIds.length === 0) {
+      return;
+    }
+
+
+    const sessionId =
+      sessionsIds[Math.floor(Math.random() * sessionsIds.length)];
+
+
+    return sessionId!;
+  },
+};
 ```
 
 Besides `puppeteer.sessions()`, we have added other methods to facilitate [Session Management](https://developers.cloudflare.com/browser-run/puppeteer/#session-management).
@@ -145,7 +300,7 @@ To interact with a real headless browser during local development, set `"remote"
 
 To test go to the following URL:
 
-```
+```plaintext
 <LOCAL_HOST_URL>/?url=https://example.com
 ```
 
@@ -153,7 +308,7 @@ To test go to the following URL:
 
 Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network and then to go to the following URL:
 
-```
+```plaintext
 <YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/?url=https://example.com
 ```
 

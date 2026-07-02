@@ -17,13 +17,27 @@ The Interactions API is available through the [Python](https://github.com/google
 
 ## 1. Get an API key
 
-To use the Gemini API, you need an [API key](https://ai.google.dev/gemini-api/docs/api-key). Create one for free to get started:
+To use the Gemini API, you need to have an API key to authenticate your requests, enforce security limits, and track usage to your account.
+
+- Google AI Studio automatically creates a project and API key for new users. You can copy it from the [API keys page](https://aistudio.google.com/api-keys).
+- If you need a new key, click **Create API key** in AI Studio and follow the dialog to add a new key-project pair.
 
 [Create a Gemini API Key](https://aistudio.google.com/apikey)
 
-Then set it as an environment variable:
+Set your key as an environment variable:
 
     export GEMINI_API_KEY="YOUR_API_KEY"
+
+### Upgrade to the paid tier
+
+Upgrading to the paid tier increases your rate limits and requires setting up
+Cloud Billing.
+
+- Click **Set up billing** on the AI Studio [API keys](https://aistudio.google.com/api-keys) or [Projects](https://aistudio.google.com/projects) pages.
+- Follow the Cloud Billing dialog to create or link a billing account, add a payment method, and prepay a minimum of $10 (or currency equivalent) in paid credits.
+- View your API usage in [Google AI Studio](https://aistudio.google.com/usage) under **Dashboard** \> **Usage**.
+
+See the [Billing page](https://ai.google.dev/gemini-api/docs/billing) for more information.
 
 ## 2. Install the SDK and make your first call
 

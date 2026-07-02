@@ -32,20 +32,35 @@ A control bar button that opens a bottom sheet menu with meeting actions such as
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let moreButton = RtkMoreButtonControlBar(    meeting: rtkClient,    presentingViewController: self)view.addSubview(moreButton)
+
+
+let moreButton = RtkMoreButtonControlBar(
+    meeting: rtkClient,
+    presentingViewController: self
+)
+view.addSubview(moreButton)
 ```
 
 ### With settings completion
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let moreButton = RtkMoreButtonControlBar(    meeting: rtkClient,    presentingViewController: self,    settingViewControllerCompletion: {        print("Settings dismissed")    })view.addSubview(moreButton)
+
+
+let moreButton = RtkMoreButtonControlBar(
+    meeting: rtkClient,
+    presentingViewController: self,
+    settingViewControllerCompletion: {
+        print("Settings dismissed")
+    }
+)
+view.addSubview(moreButton)
 ```
 
 ```json

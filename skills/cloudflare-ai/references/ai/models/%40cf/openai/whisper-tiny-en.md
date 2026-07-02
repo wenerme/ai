@@ -26,27 +26,50 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2496)
-* [  curl ](#tab-panel-2497)
+* [  TypeScript ](#tab-panel-2544)
+* [  curl ](#tab-panel-2545)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const res = await fetch(      "https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav"    );    const blob = await res.arrayBuffer();
-    const input = {      audio: [...new Uint8Array(blob)],    };
-    const response = await env.AI.run(      "@cf/openai/whisper-tiny-en",      input    );
-    return Response.json({ input: { audio: [] }, response });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const res = await fetch(
+      "https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav"
+    );
+    const blob = await res.arrayBuffer();
+
+
+    const input = {
+      audio: [...new Uint8Array(blob)],
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/openai/whisper-tiny-en",
+      input
+    );
+
+
+    return Response.json({ input: { audio: [] }, response });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper-tiny-en  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  --data-binary "@talking-llama.mp3"
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper-tiny-en  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  --data-binary "@talking-llama.mp3"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2498)
-* [ Output ](#tab-panel-2499)
+* [ Input ](#tab-panel-2546)
+* [ Output ](#tab-panel-2547)
 
 Option 1
 

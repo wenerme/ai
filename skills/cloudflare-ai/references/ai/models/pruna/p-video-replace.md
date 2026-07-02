@@ -27,48 +27,72 @@ Pruna's P-Video-Replace takes a source video and one or more identity reference 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1570)
-* [ cURL ](#tab-panel-1571)
+* [ TypeScript ](#tab-panel-1618)
+* [ cURL ](#tab-panel-1619)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'pruna/p-video-replace',
+  {
+    video: 'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4',
+    images: ['https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg'],
+    resolution: '720p',
+    target_fps: 'original',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'pruna/p-video-replace',  {    video: 'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4',    images: ['https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg'],    resolution: '720p',    target_fps: 'original',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "pruna/p-video-replace",
+  "input": {
+    "video": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+    "images": [
+      "https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg"
+    ],
+    "resolution": "720p",
+    "target_fps": "original"
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-1616)
+* [ Raw response ](#tab-panel-1617)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "pruna/p-video-replace",  "input": {    "video": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",    "images": [      "https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg"    ],    "resolution": "720p",    "target_fps": "original"  }}'
-```
-
-* [ Output ](#tab-panel-1568)
-* [ Raw response ](#tab-panel-1569)
-
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/pruna/p-video-replace/character-swap.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/pruna/p-video-replace/character-swap.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1572)
-* [ Output ](#tab-panel-1573)
+* [ Input ](#tab-panel-1620)
+* [ Output ](#tab-panel-1621)
 
-disable\_safety\_checker
+video
 
-`boolean`requireddefault: falseDisable safety checker for generated videos.
-
-ignore\_audio
-
-`boolean`requireddefault: falseIgnore source audio during generation.
+`string`requiredSource RGB video (.mp4) used as the motion and audio source. HTTP(S) URL or data URI.
 
 ▶images\[\]
 
-`array`requiredmaxItems: 3minItems: 1Identity reference image(s), 1 to 3, to place into the video. Each entry is an HTTP(S) URL or a data URI.
+`array`requiredminItems: 1maxItems: 3Identity reference image(s), 1 to 3, to place into the video. Each entry is an HTTP(S) URL or a data URI.
 
-instruction\_prompt
+turbo
 
-`string`requireddefault: Further instruction on how to place people from the reference images into the scene.
+`boolean`requireddefault: falseTurbo mode: faster generation for slightly lower quality.
 
 resolution
 
@@ -78,21 +102,25 @@ save\_audio
 
 `boolean`requireddefault: trueSave the video with audio.
 
-seed
+ignore\_audio
 
-`integer`maximum: 9007199254740991minimum: \-9007199254740991Random seed for reproducible generation.
+`boolean`requireddefault: falseIgnore source audio during generation.
 
 target\_fps
 
 `string`requireddefault: originalenum: 24, 48, originalTarget FPS for the working video.
 
-turbo
+instruction\_prompt
 
-`boolean`requireddefault: falseTurbo mode: faster generation for slightly lower quality.
+`string`requireddefault: Further instruction on how to place people from the reference images into the scene.
 
-video
+seed
 
-`string`requiredSource RGB video (.mp4) used as the motion and audio source. HTTP(S) URL or data URI.
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
+
+disable\_safety\_checker
+
+`boolean`requireddefault: falseDisable safety checker for generated videos.
 
 video
 

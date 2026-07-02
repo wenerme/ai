@@ -57,8 +57,30 @@ Customers can query Logpush job health metrics via the [GraphQL API](https://dev
 
 Here is a query to get the count of how many times jobs pushing to S3 failed.
 
-```
-query{  viewer  {    zones(filter: { zoneTag: $zoneTag})    {      logpushHealthAdaptiveGroups(filter: {        datetime_gt:"2022-08-15T00:00:00Z",        destinationType:"s3",        status_neq:200      },      limit:10)      {        count,        dimensions {          jobId,          status,          destinationType        }      }    }  }}
+```json
+query
+{
+  viewer
+  {
+    zones(filter: { zoneTag: $zoneTag})
+    {
+      logpushHealthAdaptiveGroups(filter: {
+        datetime_gt:"2022-08-15T00:00:00Z",
+        destinationType:"s3",
+        status_neq:200
+      },
+      limit:10)
+      {
+        count,
+        dimensions {
+          jobId,
+          status,
+          destinationType
+        }
+      }
+    }
+  }
+}
 ```
 
 Note

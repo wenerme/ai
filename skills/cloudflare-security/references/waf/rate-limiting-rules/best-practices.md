@@ -193,8 +193,9 @@ You can use rate limiting to limit the number of operations performed by a clien
 
 In this example, clients perform operations (such as looking up prices and adding to basket) on an ecommerce website using different query string parameters. For example, a typical request sent by a client could be similar to the following:
 
-```
-GET https://store.com/merchant?action=lookup_price&product_id=215Cookie: session_id=12345
+```txt
+GET https://store.com/merchant?action=lookup_price&product_id=215
+Cookie: session_id=12345
 ```
 
 Your security team might want to consider setting up a limit on the number of times a client can lookup prices to prevent bots — which may have eluded Cloudflare Bot Management — from scraping the store's entire catalog.
@@ -239,9 +240,16 @@ You could follow the same pattern of rate limiting rules to protect applications
 
 Consider an application that handles the operation and its parameters through the request body in JSON format. For example, the `lookup_price` operation could look like the following:
 
-```
-POST https://api.store.com/merchantCookie: session_id=12345
-Body:{  "action": "lookup_price",  "product_id": 215}
+```txt
+POST https://api.store.com/merchant
+Cookie: session_id=12345
+
+
+Body:
+{
+  "action": "lookup_price",
+  "product_id": 215
+}
 ```
 
 In this scenario, you could write a rule to limit the number of actions from individual sessions:
@@ -357,8 +365,9 @@ The counting characteristic can be any header, key, token, cookie, query paramet
 
 `GET` requests can also create excessive strain on an application or have an impact on costly resources, such as bandwidth. For example, consider an application with a large amount of stored files (such as images) where clients can download a file by accessing their specific URL:
 
-```
-GET https://api.store.com/files/<FILE_ID>Header: x-api-key=9375
+```txt
+GET https://api.store.com/files/<FILE_ID>
+Header: x-api-key=9375
 ```
 
 You probably wish to limit the number of downloads to avoid abuse, but you do not want to write individual rules for each file, given the size of the data storage. In this case, you could write a rule such as the following:
@@ -401,9 +410,20 @@ To prevent server overload, consider the following approaches:
 
 The following examples are based on an application that accepts reviews for movies. A GraphQL request could look like the following:
 
-```
-POST https://moviereviews.example.com/graphqlCookie: session_id=12345
-Body:{  "data": {    "createReview": {      "stars": 5,      "commentary": "This is a great movie!"    }  }}
+```txt
+POST https://moviereviews.example.com/graphql
+Cookie: session_id=12345
+
+
+Body:
+{
+  "data": {
+    "createReview": {
+      "stars": 5,
+      "commentary": "This is a great movie!"
+    }
+  }
+}
 ```
 
 ### Limit the number of operations

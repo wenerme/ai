@@ -47,33 +47,33 @@ Creates an instance of the `RealtimeKitRecording` class.
 
 ### Methods
 
-JavaScript
+**JavaScript**
 
-```
+```js
 init(client: RealtimeKitClient)
 ```
 
 Initiates the SDK by providing a `RealtimeKitClient` object. Call this after creating the meeting object and before calling `meeting.joinRoom()`.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 startRecording();
 ```
 
 Manually starts the recording. Ensure that `autoStart` is passed as true in the constructor options.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 stopRecording();
 ```
 
 Manually stops the recording. Ensure that `autoStop` is passed as true in the constructor options.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 cleanup();
 ```
 
@@ -85,25 +85,25 @@ Perform the following steps to create the recording app for your RealtimeKit mee
 
 ### Step 1: Install the SDK
 
-JavaScript
+**JavaScript**
 
-```
+```js
 npm i @cloudflare/realtimekit-recording-sdk
 ```
 
 ### Step 2: Import the `RealtimeKitRecording` object
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { RealtimeKitRecording } from '@cloudflare/realtimekit-recording-sdk';
 ```
 
 ### Step 3: Create the `RealtimeKitRecording` object
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const recordingSdk = new RealtimeKitRecording(options);
 ```
 
@@ -111,30 +111,33 @@ const recordingSdk = new RealtimeKitRecording(options);
 
 Call `init` after creating the meeting object and before `joinRoom` is called.
 
-JavaScript
+**JavaScript**
 
-```
-// Call this after you have called initMeetingawait recordingSdk.init();
+```js
+// Call this after you have called initMeeting
+await recordingSdk.init();
 ```
 
 ### (Optional) Step 5: Manually start the recording
 
 To manually start the recording, call the `startRecording()` function. For example, you want to start a recording after you have loaded your UI content in the app and `autoStart` is not set to true. In such cases, you can manually call the `startRecording()` function when you are ready to begin the recording.
 
-JavaScript
+**JavaScript**
 
-```
-// This throws an exception if autoStart is set to false.await recordingSdk.startRecording();
+```js
+// This throws an exception if autoStart is set to false.
+await recordingSdk.startRecording();
 ```
 
 ### (Optional) Step 6: Manually stop the recording
 
 To manually stop the recording, use `stopRecording`.
 
-JavaScript
+**JavaScript**
 
-```
-// This throws an exception if autoStop is set to false.await recordingSdk.stopRecording();
+```js
+// This throws an exception if autoStop is set to false.
+await recordingSdk.stopRecording();
 ```
 
 Once `stopRecording` is called, the recorder in your recording app will exit after a few seconds. After this point, you won't be able to perform any further actions within your recording app.

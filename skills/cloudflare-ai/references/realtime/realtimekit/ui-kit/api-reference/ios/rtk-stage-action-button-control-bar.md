@@ -32,11 +32,18 @@ A control bar button for webinar stage actions. Supports requesting to join, joi
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let stageButton = RtkStageActionButtonControlBar(    rtkClient: rtkClient,    buttonState: .requestToJoinStage,    presentingViewController: self)view.addSubview(stageButton)
+
+
+let stageButton = RtkStageActionButtonControlBar(
+    rtkClient: rtkClient,
+    buttonState: .requestToJoinStage,
+    presentingViewController: self
+)
+view.addSubview(stageButton)
 ```
 
 ```json

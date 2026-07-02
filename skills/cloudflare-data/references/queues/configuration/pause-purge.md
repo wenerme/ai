@@ -24,9 +24,7 @@ Pausing affects both [push-based consumer Workers](https://developers.cloudflare
 
 The following command will pause message delivery from your queue:
 
-Terminal window
-
-```
+```sh
 $ npx wrangler queues pause-delivery <QUEUE-NAME>
 ```
 
@@ -35,9 +33,7 @@ $ npx wrangler queues pause-delivery <QUEUE-NAME>
 
 The following command will resume message delivery:
 
-Terminal window
-
-```
+```sh
 $ npx wrangler queues resume-delivery <QUEUE-NAME>
 ```
 
@@ -62,10 +58,10 @@ Purging a queue is an irreversible operation. Make sure to use this operation ca
 
 The following command will purge messages from your queue. You will be prompted to enter the queue name to confirm the operation.
 
-Terminal window
-
-```
+```sh
 $ npx wrangler queues purge <QUEUE-NAME>
+
+
 This operation will permanently delete all the messages in Queue <QUEUE-NAME>. Type <QUEUE-NAME> to proceed.
 ```
 

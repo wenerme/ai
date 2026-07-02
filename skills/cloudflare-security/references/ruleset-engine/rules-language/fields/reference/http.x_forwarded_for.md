@@ -18,7 +18,7 @@ The full value of the `X-Forwarded-For` HTTP header.
 
 Example value:
 
-```
+```txt
 "203.0.113.195, 70.41.3.18"
 ```
 

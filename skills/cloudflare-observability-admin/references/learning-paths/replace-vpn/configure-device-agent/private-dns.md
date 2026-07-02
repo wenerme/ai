@@ -27,8 +27,8 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-9244)
-* [ Terraform (v5) ](#tab-panel-9245)
+* [ Dashboard ](#tab-panel-9535)
+* [ Terraform (v5) ](#tab-panel-9536)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -43,15 +43,77 @@ A Local Domain Fallback list is scoped to a specific [device profile](https://de
 
   * `Zero Trust Write`
 2. (Optional) Create a list of domains that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
-local-domains.local.tf
-```
-locals {  default_local_domains = [    # Default Local Domain Fallback entries recommended by Cloudflare    {  suffix = "corp"},{  suffix = "domain"},{  suffix = "home"},{  suffix = "home.arpa"},{  suffix = "host"},{  suffix = "internal"},{  suffix = "intranet"},{  suffix = "invalid"},{  suffix = "lan"},{  suffix = "local"},{  suffix = "localdomain"},{  suffix = "localhost"},{  suffix = "private"},{  suffix = "test"}  ]}
+
+**local-domains.local.tf**
+```tf
+locals {
+  default_local_domains = [
+    # Default Local Domain Fallback entries recommended by Cloudflare
+    {
+  suffix = "corp"
+},
+{
+  suffix = "domain"
+},
+{
+  suffix = "home"
+},
+{
+  suffix = "home.arpa"
+},
+{
+  suffix = "host"
+},
+{
+  suffix = "internal"
+},
+{
+  suffix = "intranet"
+},
+{
+  suffix = "invalid"
+},
+{
+  suffix = "lan"
+},
+{
+  suffix = "local"
+},
+{
+  suffix = "localdomain"
+},
+{
+  suffix = "localhost"
+},
+{
+  suffix = "private"
+},
+{
+  suffix = "test"
+}
+  ]
+}
 ```
 3. To configure Local Domain Fallback for the default device profile, use the [cloudflare\_zero\_trust\_device\_default\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile%5Flocal%5Fdomain%5Ffallback) resource. To configure Local Domain Fallback for a custom device profile, use[cloudflare\_zero\_trust\_device\_custom\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile%5Flocal%5Fdomain%5Ffallback). For example:
-device-profiles.tf
-```
-resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {  account_id = var.cloudflare_account_id  policy_id  = cloudflare_zero_trust_device_custom_profile.example.id  domains = concat(    # Global entries    local.default_local_domains,
-    # Profile-specific entries    [      {      suffix = "example.com"      description = "Domain for local development"      dns_server = ["1.1.1.1", "192.168.0.1"]      }    ]  )}
+
+**device-profiles.tf**
+```tf
+resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {
+  account_id = var.cloudflare_account_id
+  policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
+  domains = concat(
+    # Global entries
+    local.default_local_domains,
+    # Profile-specific entries
+    [
+      {
+      suffix = "example.com"
+      description = "Domain for local development"
+      dns_server = ["1.1.1.1", "192.168.0.1"]
+      }
+    ]
+  )
+}
 ```
 
 For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name.
@@ -86,8 +148,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-9242)
-* [ Terraform (v5) ](#tab-panel-9243)
+* [ Dashboard ](#tab-panel-9533)
+* [ Terraform (v5) ](#tab-panel-9534)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
@@ -109,8 +171,34 @@ Custom resolvers are saved to your account for future use. You can add up to 10 
 
   * `Zero Trust Write`
 2. Create a resolver policy using the [cloudflare\_zero\_trust\_gateway\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy) resource:
-```
-resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {  name        = "Example resolver policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "TERRAFORM MANAGED resolver policy"  action      = "resolve"  traffic     = "dns.fqdn in {\"internal.example.com\"}"  identity    = "identity.email in {\"jdoe@example.com\"}"  precedence  = 1  rule_settings = {      dns_resolvers = {      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.        ipv4 = [{          ip = "192.0.2.24"          port = 53          route_through_private_network = true          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id        }]        ipv6 = [{          ip = "2001:DB8::"          port = 53          route_through_private_network = true          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id        }]      }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
+  name        = "Example resolver policy"
+  enabled     = true
+  account_id  = var.cloudflare_account_id
+  description = "TERRAFORM MANAGED resolver policy"
+  action      = "resolve"
+  traffic     = "dns.fqdn in {\"internal.example.com\"}"
+  identity    = "identity.email in {\"jdoe@example.com\"}"
+  precedence  = 1
+  rule_settings = {
+      dns_resolvers = {
+      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
+        ipv4 = [{
+          ip = "192.0.2.24"
+          port = 53
+          route_through_private_network = true
+          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+        }]
+        ipv6 = [{
+          ip = "2001:DB8::"
+          port = 53
+          route_through_private_network = true
+          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+        }]
+      }
+  }
+}
 ```
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:

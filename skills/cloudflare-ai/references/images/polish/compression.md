@@ -44,7 +44,7 @@ WebP compression is quite effective on PNG images, reducing file sizes by approx
 
 The WebP version is served only when the `Accept` header from the browser includes WebP, and the WebP image is significantly smaller than the lossy or lossless recompression of the original format:
 
-```
+```txt
 Accept: image/avif,image/webp,image/*,*/*;q=0.8
 ```
 

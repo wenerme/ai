@@ -31,23 +31,41 @@ Alibaba's HappyHorse 1.1 text-to-video model. Generates videos from a text promp
 * [ TypeScript ](#tab-panel-42)
 * [ cURL ](#tab-panel-43)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'alibaba/hh1.1-t2v',  { prompt: 'A little girl walking on the road' },)console.log(response)
+```ts
+const response = await env.AI.run(
+  'alibaba/hh1.1-t2v',
+  { prompt: 'A little girl walking on the road' },
+)
+console.log(response)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/hh1.1-t2v",  "input": {    "prompt": "A little girl walking on the road"  }}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "alibaba/hh1.1-t2v",
+  "input": {
+    "prompt": "A little girl walking on the road"
+  }
+}'
 ```
 
 * [ Output ](#tab-panel-40)
 * [ Raw response ](#tab-panel-41)
 
-```
-{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/alibaba/hh1.1-t2v/simple-text-to-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/alibaba/hh1.1-t2v/simple-text-to-video.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
 ```
 
 ## Parameters

@@ -76,8 +76,9 @@ graph LR
 
 Media Transport Adapters are managed through the Realtime SFU API:
 
-```
-POST /v1/apps/{appId}/adapters/{adapterType}/newPOST /v1/apps/{appId}/adapters/{adapterType}/close
+```plaintext
+POST /v1/apps/{appId}/adapters/{adapterType}/new
+POST /v1/apps/{appId}/adapters/{adapterType}/close
 ```
 
 Each adapter type has specific configuration requirements and capabilities. Refer to individual adapter documentation for detailed API specifications.

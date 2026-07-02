@@ -22,16 +22,23 @@ Cloudflare also provides official SDKs for the REST API: [Node](https://develope
 
 Authenticate with a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) that has permission to send emails. Include it in the `Authorization` header:
 
-```
+```txt
 Authorization: Bearer <API_TOKEN>
 ```
 
 ## Send an email
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "recipient@example.com",    "from": "welcome@yourdomain.com",    "subject": "Welcome to our service!",    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",    "text": "Welcome! Thanks for signing up."  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": "recipient@example.com",
+    "from": "welcome@yourdomain.com",
+    "subject": "Welcome to our service!",
+    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+    "text": "Welcome! Thanks for signing up."
+  }'
 ```
 
 For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
@@ -40,10 +47,24 @@ For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](h
 
 Send files by including base64-encoded content in the `attachments` array. The total message size must not exceed **5 MiB** (including attachments).
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "customer@example.com",    "from": "invoices@yourdomain.com",    "subject": "Your Invoice",    "html": "<h1>Invoice attached</h1><p>Please find your invoice attached.</p>",    "attachments": [      {        "content": "JVBERi0xLjQKJeLjz9MK...",        "filename": "invoice-12345.pdf",        "type": "application/pdf",        "disposition": "attachment"      }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": "customer@example.com",
+    "from": "invoices@yourdomain.com",
+    "subject": "Your Invoice",
+    "html": "<h1>Invoice attached</h1><p>Please find your invoice attached.</p>",
+    "attachments": [
+      {
+        "content": "JVBERi0xLjQKJeLjz9MK...",
+        "filename": "invoice-12345.pdf",
+        "type": "application/pdf",
+        "disposition": "attachment"
+      }
+    ]
+  }'
 ```
 
 For inline images and file uploads, see [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
@@ -52,18 +73,38 @@ For inline images and file uploads, see [Email attachments](https://developers.c
 
 Set custom headers for threading, list management, or tracking. Refer to the [email headers reference](https://developers.cloudflare.com/email-service/reference/headers/) for the full list of allowed headers.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "user@example.com",    "from": "notifications@yourdomain.com",    "subject": "Your weekly digest",    "html": "<h1>Weekly Digest</h1>",    "headers": {      "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",      "X-Campaign-ID": "weekly-digest-2026-03"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": "user@example.com",
+    "from": "notifications@yourdomain.com",
+    "subject": "Your weekly digest",
+    "html": "<h1>Weekly Digest</h1>",
+    "headers": {
+      "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      "X-Campaign-ID": "weekly-digest-2026-03"
+    }
+  }'
 ```
 
 ## Response
 
 A successful response returns the delivery status for each recipient:
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "delivered": ["recipient@example.com"],    "permanent_bounces": [],    "queued": []  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "delivered": ["recipient@example.com"],
+    "permanent_bounces": [],
+    "queued": []
+  }
+}
 ```
 
 * `delivered` \- Email addresses to which the message was delivered immediately
@@ -78,8 +119,18 @@ The REST API returns recipient-grouped delivery status. The [Workers binding](ht
 
 The REST API returns standard Cloudflare API error responses. A failed request returns an `errors` array with numeric error codes and machine-readable messages:
 
-```
-{  "success": false,  "errors": [    {      "code": 10001,      "message": "email.sending.error.invalid_request_schema"    }  ],  "messages": [],  "result": null}
+```json
+{
+  "success": false,
+  "errors": [
+    {
+      "code": 10001,
+      "message": "email.sending.error.invalid_request_schema"
+    }
+  ],
+  "messages": [],
+  "result": null
+}
 ```
 
 REST API error codes:

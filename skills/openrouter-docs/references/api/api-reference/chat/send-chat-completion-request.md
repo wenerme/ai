@@ -2161,6 +2161,30 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    FilesServerToolConfig:
+      type: object
+      properties: {}
+      description: Configuration for the openrouter:files server tool
+      title: FilesServerToolConfig
+    FilesServerToolType:
+      type: string
+      enum:
+        - openrouter:files
+      title: FilesServerToolType
+    FilesServerTool:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/FilesServerToolConfig'
+        type:
+          $ref: '#/components/schemas/FilesServerToolType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: read, write, edit, and list workspace
+        files via the Files API. Requires the `x-openrouter-file-ids:
+        openrouter` request header.
+      title: FilesServerTool
     ImageGenerationServerToolConfig:
       type: object
       properties:
@@ -2599,6 +2623,7 @@ components:
         - $ref: '#/components/schemas/AdvisorServerTool_OpenRouter'
         - $ref: '#/components/schemas/BashServerTool'
         - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/FilesServerTool'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/SubagentServerTool_OpenRouter'

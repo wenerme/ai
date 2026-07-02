@@ -37,17 +37,13 @@ Before getting started, you will need:
 3. Log in to Wrangler with the [wrangler login command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login).
 4. Add a bucket lock rule to your bucket by running the [r2 bucket lock add command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lock-add).
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lock add <BUCKET_NAME> [OPTIONS]
 ```
 
 Alternatively, you can set the entire bucket lock configuration for a bucket from a JSON file using the [r2 bucket lock set command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lock-set).
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lock set <BUCKET_NAME> --file <FILE_PATH>
 ```
 
@@ -59,10 +55,31 @@ For information about getting started with the Cloudflare API, refer to [Make AP
 
 Below is an example of setting a bucket lock configuration (a collection of rules):
 
-Terminal window
-
-```
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>/lock" \    -H "Authorization: Bearer <API_TOKEN>" \    -H "Content-Type: application/json" \    -d '{        "rules": [            {                "id": "lock-logs-7d",                "enabled": true,                "prefix": "logs/",                "condition": {                    "type": "Age",                    "maxAgeSeconds": 604800                }            },            {                "id": "lock-images-indefinite",                "enabled": true,                "prefix": "images/",                "condition": {                    "type": "Indefinite"                }            }        ]    }'
+```bash
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>/lock" \
+    -H "Authorization: Bearer <API_TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{
+        "rules": [
+            {
+                "id": "lock-logs-7d",
+                "enabled": true,
+                "prefix": "logs/",
+                "condition": {
+                    "type": "Age",
+                    "maxAgeSeconds": 604800
+                }
+            },
+            {
+                "id": "lock-images-indefinite",
+                "enabled": true,
+                "prefix": "images/",
+                "condition": {
+                    "type": "Indefinite"
+                }
+            }
+        ]
+    }'
 ```
 
 This request creates two rules:
@@ -87,9 +104,7 @@ If your bucket is setup with [jurisdictional restrictions](https://developers.cl
 
 To list bucket lock rules, run the [r2 bucket lock list command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lock-list):
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lock list <BUCKET_NAME>
 ```
 
@@ -111,9 +126,7 @@ For more information on required parameters and examples of how to get bucket lo
 
 To remove a bucket lock rule, run the [r2 bucket lock remove command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lock-remove):
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket lock remove <BUCKET_NAME> --id <RULE_ID>
 ```
 

@@ -24,11 +24,14 @@ A control bar button that toggles the local camera on and off. Checks camera per
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let videoButton = RtkVideoButtonControlBar(rtkClient: rtkClient)view.addSubview(videoButton)
+
+
+let videoButton = RtkVideoButtonControlBar(rtkClient: rtkClient)
+view.addSubview(videoButton)
 ```
 
 ```json

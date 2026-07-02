@@ -25,19 +25,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-mute-all-confirmation></rtk-mute-all-confirmation>
 ```
 
 ### With Properties
 
-```
-<rtk-mute-all-confirmation></rtk-mute-all-confirmation>
+```html
+<rtk-mute-all-confirmation>
+</rtk-mute-all-confirmation>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-mute-all-confirmation");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-mute-all-confirmation");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

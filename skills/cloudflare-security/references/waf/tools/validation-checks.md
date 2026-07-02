@@ -28,8 +28,14 @@ The following example shows a request blocked by the Validation component due to
 
 In the downloaded JSON file for the event, the `ruleId` value indicates the detected issue — in this case, it was a Shellshock attack.
 
-```
-{  "action": "drop",  "ruleId": "sanity-shellshock",  "source": "sanitycheck",  "userAgent": "() { :;}; printf \\\\\"detection[%s]string\\\\\" \\\\\"TjcLLwVzBtLzvbN\\\\"  //...}
+```json
+{
+  "action": "drop",
+  "ruleId": "sanity-shellshock",
+  "source": "sanitycheck",
+  "userAgent": "() { :;}; printf \\\\\"detection[%s]string\\\\\" \\\\\"TjcLLwVzBtLzvbN\\\\"
+  //...
+}
 ```
 
 ```json

@@ -65,23 +65,57 @@ To start sending data to your destination, you'll need to create a destination i
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-11910)
-* [  wrangler.toml ](#tab-panel-11911)
+* [  wrangler.jsonc ](#tab-panel-12205)
+* [  wrangler.toml ](#tab-panel-12206)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      "destinations": ["tracing-destination-name"],
+
+
+      // traces sample rate of 5%
+      "head_sampling_rate": 0.05,
+
+
+      // (optional) set to false to only export traces to your
+      // destination without persisting them in the Cloudflare dashboard
+      "persist": false
+    },
+    "logs": {
+      "enabled": true,
+      "destinations": ["logs-destination-name"],
+      // logs sample rate of 60%
+      "head_sampling_rate": 0.6,
+
+
+      // (optional) set to false to only export logs to your
+      // destination without persisting them in the Cloudflare dashboard
+      "persist": false
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      "destinations": ["tracing-destination-name"],
-      // traces sample rate of 5%      "head_sampling_rate": 0.05,
-      // (optional) set to false to only export traces to your      // destination without persisting them in the Cloudflare dashboard      "persist": false    },    "logs": {      "enabled": true,      "destinations": ["logs-destination-name"],      // logs sample rate of 60%      "head_sampling_rate": 0.6,
-      // (optional) set to false to only export logs to your      // destination without persisting them in the Cloudflare dashboard      "persist": false    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truedestinations = [ "tracing-destination-name" ]head_sampling_rate = 0.05persist = false
-[observability.logs]enabled = truedestinations = [ "logs-destination-name" ]head_sampling_rate = 0.6persist = false
+```toml
+[observability.traces]
+enabled = true
+destinations = [ "tracing-destination-name" ]
+head_sampling_rate = 0.05
+persist = false
+
+
+[observability.logs]
+enabled = true
+destinations = [ "logs-destination-name" ]
+head_sampling_rate = 0.6
+persist = false
 ```
 
 `persist` and pricing

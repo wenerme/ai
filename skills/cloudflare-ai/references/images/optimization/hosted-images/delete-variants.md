@@ -29,10 +29,9 @@ Deleting a variant is a global action that will affect other images that contain
 
 Make a `DELETE` request to the delete variant endpoint.
 
-Terminal window
-
-```
-curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/variants/{variant_name} \--header "Authorization: Bearer <API_TOKEN>"
+```bash
+curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/variants/{variant_name} \
+--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 After the variant has been deleted, the response returns `"success": true.`

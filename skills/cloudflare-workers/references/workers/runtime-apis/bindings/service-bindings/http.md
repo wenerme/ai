@@ -16,61 +16,98 @@ Worker A that declares a Service binding to Worker B can forward a [Request](htt
 
 For example, consider the following Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
 
-* [  wrangler.jsonc ](#tab-panel-12012)
-* [  wrangler.toml ](#tab-panel-12013)
+* [  wrangler.jsonc ](#tab-panel-12307)
+* [  wrangler.toml ](#tab-panel-12308)
 
-JSONC
+**JSONC**
 
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_b",  "main": "./src/workerB.js"}
-```
-
-TOML
-
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_b"main = "./src/workerB.js"
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker_b",
+  "main": "./src/workerB.js"
+}
 ```
 
-JavaScript
+**TOML**
 
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker_b"
+main = "./src/workerB.js"
 ```
-export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  }}
+
+**JavaScript**
+
+```js
+export default {
+  async fetch(request, env, ctx) {
+    return new Response("Hello World!");
+  }
+}
 ```
 
 The following Worker declares a binding to the Worker above:
 
-* [  wrangler.jsonc ](#tab-panel-12014)
-* [  wrangler.toml ](#tab-panel-12015)
+* [  wrangler.jsonc ](#tab-panel-12309)
+* [  wrangler.toml ](#tab-panel-12310)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "worker_a",
+  "main": "./src/workerA.js",
+  "services": [
+    {
+      "binding": "WORKER_B",
+      "service": "worker_b"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_a",  "main": "./src/workerA.js",  "services": [    {      "binding": "WORKER_B",      "service": "worker_b"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_a"main = "./src/workerA.js"
-[[services]]binding = "WORKER_B"service = "worker_b"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "worker_a"
+main = "./src/workerA.js"
+
+
+[[services]]
+binding = "WORKER_B"
+service = "worker_b"
 ```
 
 And then can forward a request to it:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    return await env.WORKER_B.fetch(request);  },};
+```js
+export default {
+  async fetch(request, env) {
+    return await env.WORKER_B.fetch(request);
+  },
+};
 ```
 
 Note
 
 If you construct a new request manually, rather than forwarding an existing one, ensure that you provide a valid and fully-qualified URL with a hostname. For example:
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    // provide a valid URL    let newRequest = new Request("https://valid-url.com", { method: "GET" });    let response = await env.WORKER_B.fetch(newRequest);    return response;  }};
+```js
+export default {
+  async fetch(request, env) {
+    // provide a valid URL
+    let newRequest = new Request("https://valid-url.com", { method: "GET" });
+    let response = await env.WORKER_B.fetch(newRequest);
+    return response;
+  }
+};
 ```
 
 ```json

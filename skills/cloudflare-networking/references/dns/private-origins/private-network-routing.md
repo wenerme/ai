@@ -48,8 +48,8 @@ Virtual networks
 
 Traffic routes through your default virtual network. Selecting a specific virtual network is not supported.
 
-* [ Dashboard ](#tab-panel-8195)
-* [ API ](#tab-panel-8196)
+* [ Dashboard ](#tab-panel-8476)
+* [ API ](#tab-panel-8477)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -67,10 +67,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Create DNS Record
+**Create DNS Record**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "A",    "name": "app.example.com",    "content": "10.0.0.50",    "proxied": true,    "private_routing": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "A",
+    "name": "app.example.com",
+    "content": "10.0.0.50",
+    "proxied": true,
+    "private_routing": true
+  }'
 ```
 
 To enable private routing on an existing record, use a [PATCH request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/edit/):
@@ -80,10 +89,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Update DNS Record
+**Update DNS Record**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_RECORD_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "private_routing": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_RECORD_ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "private_routing": true
+  }'
 ```
 
 ### API field behavior

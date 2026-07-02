@@ -33,19 +33,25 @@ A component which plays a participants video and allows for placement of compone
 
 ### Basic Usage
 
-```
+```html
 <rtk-participant-tile></rtk-participant-tile>
 ```
 
 ### With Properties
 
-```
-<rtk-participant-tile></rtk-participant-tile>
+```html
+<rtk-participant-tile>
+</rtk-participant-tile>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participant-tile");
-  el.isPreview= true;  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participant-tile");
+
+
+  el.isPreview= true;
+  el.meeting= meeting
+</script>
 ```
 
 ```json

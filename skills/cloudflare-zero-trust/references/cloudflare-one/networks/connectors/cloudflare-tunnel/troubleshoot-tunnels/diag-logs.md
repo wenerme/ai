@@ -27,19 +27,16 @@ The steps for getting diagnostic logs depend on your `cloudflared` deployment en
 These instructions apply to remotely-managed and locally-managed tunnels running directly on the host machine.
 
 1. (Linux only) To include network diagnostics in the logs, allow the `cloudflared` user to create RAW and PACKET sockets without root permissions:
-Terminal window
-```
+```sh
 sudo setcap cap_net_raw+ep /usr/bin/traceroute && sudo setcap cap_net_raw+ep /usr/bin/traceroute
 ```
 If you do not set `cap_net_raw`, then traceroute data will be unavailable.
 2. Get diagnostic logs:
-Terminal window
-```
+```sh
 cloudflared tunnel diag
 ```
 If multiple instances of `cloudflared` are running on the same host, specify the [metrics server IP and port](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/metrics/#configure-the-metrics-server-address) for the instance you want to diagnose. For example:
-Terminal window
-```
+```sh
 cloudflared tunnel diag --metrics 127.0.0.1:20241
 ```
 
@@ -51,27 +48,33 @@ This command will output the status of each diagnostic task and place a `cloudfl
 
 1. Determine the [metrics server port](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/metrics/#default-metrics-server-address) for the `cloudflared` instance running in Docker.
 2. Ensure the container is deployed with port forwarding enabled. The diagnostic feature will request information from the Docker instance using local port `20241`, therefore you should forward port `20241` to the container port obtained in Step 1:
-Terminal window
-```
+```sh
 docker run -d -p 20241:<metrics_port> docker.io/cloudflare/cloudflared tunnel ...
 ```
 3. Verify that you can reach the metrics server address from the Docker host environment:
-Terminal window
-```
+```sh
 curl localhost:20241/diag/tunnel
 ```
 This command should return a JSON:
-```
-{  "tunnelID": "ef96b330-a7f5-4bce-a00e-827ce5be077f",  "connectorID": "d236670a-9f74-422f-adf1-030f5c5f0523",  "connections": [    { "isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.167"},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.113", "index": 1},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.47", "index": 2},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.73", "index": 3}  ],  "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]}
+```json
+{
+  "tunnelID": "ef96b330-a7f5-4bce-a00e-827ce5be077f",
+  "connectorID": "d236670a-9f74-422f-adf1-030f5c5f0523",
+  "connections": [
+    { "isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.167"},
+    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.113", "index": 1},
+    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.47", "index": 2},
+    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.73", "index": 3}
+  ],
+  "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]
+}
 ```
 4. Run the diagnostic using the Docker container ID:
-Terminal window
-```
+```sh
 cloudflared tunnel diag --diag-container-id=<containerID>
 ```
 Alternatively, you can specify the container's name instead of its ID:
-Terminal window
-```
+```sh
 cloudflared tunnel diag --diag-container-id=<containerName>
 ```
 Running the diagnostic command with the container ID allows `cloudflared` to collect information from the Docker environment such as logs and container details.
@@ -84,8 +87,7 @@ The diagnostic feature will request data from the [tunnel metrics server](https:
 
 1. Determine the tunnel's [metrics server port](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/metrics/#default-metrics-server-address).
 2. Enable port forwarding:
-Terminal window
-```
+```sh
 kubectl port-forward <pod> <diagnostic_port>:<metrics_port>
 ```
 
@@ -93,19 +95,16 @@ kubectl port-forward <pod> <diagnostic_port>:<metrics_port>
   * `<diagnostic_port>` is any local port in the range `20241` to `20245`.
   * `<metrics_port>` is the Kubernetes pod port for the `cloudflared` instance you want to diagnose (obtained in Step 1).
 For example, if you set the metrics server address to `0.0.0.0:12345`:
-Terminal window
-```
+```sh
 kubectl port-forward cloudflared-6d4897585b-r8kfz 20244:12345
 ```
 Connections made to local port `20244` are forwarded to port `12345` of the pod that is running the tunnel.
 3. Run the diagnostic:
-Terminal window
-```
+```sh
 cloudflared tunnel diag --diag-pod-id=<podID>
 ```
 If the pod has multiple applications/services running and `cloudflared` is not the first in the pod, you must specify either the container ID or name:
-Terminal window
-```
+```sh
 cloudflared tunnel diag --diag-pod-id=<podID> --diag-container-id=<containerName>
 ```
 

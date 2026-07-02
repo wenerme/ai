@@ -22,7 +22,7 @@ To configure Customer Metadata Boundary in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
-2. In **Customer Metadata Boundary**, select the region you want to use. You have the option to select `EU` or `US`. If you want to select both regions, select `Global` instead.
+2. In **Customer Metadata Boundary**, select the region you want to use: `eu` or `us`. Selecting `Global` applies no metadata boundary — the default — meaning Customer Logs may be stored in Cloudflare's core data centers globally.
 
 ## Configure Customer Metadata Boundary via API
 
@@ -42,10 +42,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Read`
 
-Get CMB config
+**Get CMB config**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb/config" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb/config" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Setting regions
@@ -57,10 +59,16 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Update CMB config
+**Update CMB config**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb/config" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "regions": "eu",    "allow_out_of_region_access": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb/config" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "regions": "eu",
+    "allow_out_of_region_access": false
+  }'
 ```
 
 This will overwrite any previous regions. Change will be in effect after several minutes.
@@ -74,10 +82,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Delete CMB config
+**Delete CMB config**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb/config" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb/config" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## View or change settings
@@ -90,6 +100,6 @@ To view or change your Customer Metadata Boundary setting:
 3. Locate the **Customer Metadata Boundary** section.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/#page","headline":"Get started · Cloudflare Data Localization Suite docs","description":"Configure Customer Metadata Boundary to select the region for your logs and analytics.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/#page","headline":"Get started · Cloudflare Data Localization Suite docs","description":"Configure Customer Metadata Boundary to select the region for your logs and analytics.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/metadata-boundary/","name":"Customer Metadata Boundary"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/metadata-boundary/get-started/","name":"Get started"}}]}
 ```

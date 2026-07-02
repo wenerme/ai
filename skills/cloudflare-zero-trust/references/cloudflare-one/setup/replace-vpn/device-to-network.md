@@ -59,8 +59,7 @@ Install the `cloudflared` connector on a device in your private network and run 
 1. Select your device's operating system and architecture.
 2. Copy the install command and run it on your device. For Windows, open Command Prompt as an administrator. For all other operating systems, use a terminal window.
 For macOS, the command looks similar to:
-Terminal window
-```
+```sh
 brew install cloudflared && sudo cloudflared service install <YOUR_TUNNEL_TOKEN>
 ```
 For Windows and Linux, the dashboard provides a download link and install command for your selected architecture. For more download options, refer to [Downloads](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/).

@@ -68,10 +68,23 @@ The following documents will help you get started with the Jira data source:
 - [Template variables](/docs/plugins/grafana-jira-datasource/latest/template-variables/)
 - [Troubleshooting](/docs/plugins/grafana-jira-datasource/latest/troubleshooting/)
 
+## Grafana Assistant
+
+You can use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to explore and query your Jira data using natural language. The Assistant discovers the projects and field values available in your Jira data source, builds and runs JQL queries, and visualizes the results on a dashboard.
+
+To query Jira, mention your Jira data source with the `@` symbol in your prompt. For example:
+
+- `What projects are available in @jira-ds?`
+- `Show open bugs in the PLATFORM project from @jira-ds, sorted by priority.`
+- `Query @jira-ds for issues assigned to me that are in progress.`
+
+For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
+
 ## Additional features
 
 Once you have configured the data source, you can:
 
+- Use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to query your Jira data with natural language.
 - Add [Annotations](/docs/plugins/grafana-jira-datasource/latest/annotations/) to overlay Jira events on your graphs.
 - Configure and use [Template variables](/docs/plugins/grafana-jira-datasource/latest/template-variables/) for dynamic dashboards.
 - Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).

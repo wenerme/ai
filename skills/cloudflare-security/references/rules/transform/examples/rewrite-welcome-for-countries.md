@@ -20,13 +20,13 @@ To have a welcome page in two languages, create two URL rewrite rules with a sta
 
 Text in **Expression Editor**:
 
-```
+```txt
 http.request.uri.path == "/welcome.html" && ip.src.country == "GB"
 ```
 
 Text after **Path** \> **Rewrite to** \> _Static_:
 
-```
+```txt
 /welcome-gb.html
 ```
 
@@ -34,13 +34,13 @@ Text after **Path** \> **Rewrite to** \> _Static_:
 
 Text in **Expression Editor**:
 
-```
+```txt
 http.request.uri.path == "/welcome.html" && ip.src.country == "PT"
 ```
 
 Text after **Path** \> **Rewrite to** \> _Static_:
 
-```
+```txt
 /welcome-pt.html
 ```
 

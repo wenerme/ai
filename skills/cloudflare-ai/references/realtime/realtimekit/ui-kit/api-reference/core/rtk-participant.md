@@ -30,19 +30,25 @@ A participant entry component used inside `rtk-participants` which shows data li
 
 ### Basic Usage
 
-```
+```html
 <rtk-participant></rtk-participant>
 ```
 
 ### With Properties
 
-```
-<rtk-participant></rtk-participant>
+```html
+<rtk-participant>
+</rtk-participant>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-participant");
-  el.meeting= meeting  el.participant= participant</script>
+```html
+<script>
+  const el = document.querySelector("rtk-participant");
+
+
+  el.meeting= meeting
+  el.participant= participant
+</script>
 ```
 
 ```json

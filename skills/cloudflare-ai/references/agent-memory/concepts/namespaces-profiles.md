@@ -32,8 +32,14 @@ Sessions are scoped to a profile. Two different profiles can use the same sessio
 
 Conceptually, memories are scoped as `namespace > profile > memory`. No data crosses these boundaries:
 
-```
-Namespace: my-assistant-prod  Profile: alice    Memories    Messages  Profile: bob    Memories    Messages
+```txt
+Namespace: my-assistant-prod
+  Profile: alice
+    Memories
+    Messages
+  Profile: bob
+    Memories
+    Messages
 ```
 
 A `recall()` on Alice's profile never returns memories from Bob's profile. Each profile is a self-contained memory system.

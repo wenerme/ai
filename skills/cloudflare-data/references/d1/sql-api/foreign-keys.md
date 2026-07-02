@@ -32,10 +32,17 @@ Calling `PRAGMA defer_foreign_keys = off` does not disable foreign key enforceme
 
 To defer foreign key enforcement, set `PRAGMA defer_foreign_keys = on` at the start of your transaction, or ahead of changes that would violate constraints:
 
-```
--- Defer foreign key enforcement in this transaction.PRAGMA defer_foreign_keys = on
--- Run your CREATE TABLE or ALTER TABLE / COLUMN statementsALTER TABLE users ...
--- This is implicit if not set by the end of the transaction.PRAGMA defer_foreign_keys = off
+```sql
+-- Defer foreign key enforcement in this transaction.
+PRAGMA defer_foreign_keys = on
+
+
+-- Run your CREATE TABLE or ALTER TABLE / COLUMN statements
+ALTER TABLE users ...
+
+
+-- This is implicit if not set by the end of the transaction.
+PRAGMA defer_foreign_keys = off
 ```
 
 You can also explicitly set `PRAGMA defer_foreign_keys = off` immediately after you have resolved outstanding foreign key constraints. If there are still outstanding foreign key constraints, you will receive a `FOREIGN KEY constraint failed` error and will need to resolve the violation.
@@ -54,9 +61,23 @@ This mapping is defined as `FOREIGN KEY`, which ensures that:
 * You cannot delete a row from the `users` table that would violate the foreign key constraint. This means that you cannot end up with orders that do not have a valid user to map back to.
 * `orders` are always defined against a valid `user_id`, mitigating the risk of creating orders that refer to invalid (or non-existent) users.
 
-```
-CREATE TABLE users (    user_id INTEGER PRIMARY KEY,    email_address TEXT,    name TEXT,    metadata TEXT)
-CREATE TABLE orders (    order_id INTEGER PRIMARY KEY,    status INTEGER,    item_desc TEXT,    shipped_date INTEGER,    user_who_ordered INTEGER,    FOREIGN KEY(user_who_ordered) REFERENCES users(user_id))
+```sql
+CREATE TABLE users (
+    user_id INTEGER PRIMARY KEY,
+    email_address TEXT,
+    name TEXT,
+    metadata TEXT
+)
+
+
+CREATE TABLE orders (
+    order_id INTEGER PRIMARY KEY,
+    status INTEGER,
+    item_desc TEXT,
+    shipped_date INTEGER,
+    user_who_ordered INTEGER,
+    FOREIGN KEY(user_who_ordered) REFERENCES users(user_id)
+)
 ```
 
 You can define multiple foreign key relationships per-table, and foreign key definitions can reference multiple tables within your overall database schema.
@@ -79,9 +100,20 @@ Although `CASCADE` can be the desired behavior in some cases, deleting child row
 
 In the following example, deleting a user from the `users` table will delete all related rows in the `scores` table as you have defined `ON DELETE CASCADE`. Delete all related rows in the `scores` table if you do not want to retain the scores for any users you have deleted entirely. This might mean that _other_ users can no longer look up or refer to scores that were still valid.
 
-```
-CREATE TABLE users (    user_id INTEGER PRIMARY KEY,    email_address TEXT,)
-CREATE TABLE scores (    score_id INTEGER PRIMARY KEY,    game TEXT,    score INTEGER,    player_id INTEGER,    FOREIGN KEY(player_id) REFERENCES users(user_id) ON DELETE CASCADE)
+```sql
+CREATE TABLE users (
+    user_id INTEGER PRIMARY KEY,
+    email_address TEXT,
+)
+
+
+CREATE TABLE scores (
+    score_id INTEGER PRIMARY KEY,
+    game TEXT,
+    score INTEGER,
+    player_id INTEGER,
+    FOREIGN KEY(player_id) REFERENCES users(user_id) ON DELETE CASCADE
+)
 ```
 
 ## Next Steps

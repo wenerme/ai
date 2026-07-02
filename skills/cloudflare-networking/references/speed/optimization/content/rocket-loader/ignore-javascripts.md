@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 You can have Rocket Loader ignore individual scripts by adding the `data-cfasync="false"` attribute to the relevant script tag:
 
-```
+```html
 <script data-cfasync="false" src="/javascript.js"></script>
 ```
 

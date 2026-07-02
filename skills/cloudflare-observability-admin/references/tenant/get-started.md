@@ -34,8 +34,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-10991)
-* [ API ](#tab-panel-10992)
+* [ Dashboard ](#tab-panel-11286)
+* [ API ](#tab-panel-11287)
 
 To create an account under your tenant using the dashboard:
 
@@ -81,34 +81,78 @@ All KYC parameters are text fields, have a 120 character limit, and are optional
 
   * (optional) External metadata for this account.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<ACCOUNT_NAME>",  "type": "standard"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<ACCOUNT_NAME>",
+  "type": "standard"
+}'
 ```
 
 A successful request will return an HTTP status of `200` and the following response body:
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "2bab6ace8c72ed3f09b9eca6db1396bb",    "name": "<ACCOUNT_NAME>",    "type": "standard",    "settings": {      "enforce_twofactor": false    }  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "2bab6ace8c72ed3f09b9eca6db1396bb",
+    "name": "<ACCOUNT_NAME>",
+    "type": "standard",
+    "settings": {
+      "enforce_twofactor": false
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 A request with a unit ID:
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<ACCOUNT_NAME>",  "type": "standard",  "unit": {    "id": "1a2b3c4d5e6f7g8h"  }}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<ACCOUNT_NAME>",
+  "type": "standard",
+  "unit": {
+    "id": "1a2b3c4d5e6f7g8h"
+  }
+}'
 ```
 
 A request with a unit ID and KYC:
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<ACCOUNT_NAME>",  "type": "standard",  "business_name": "Cloudflare",  "business_email": "email@business.com",  "business_address": "San Francisco",  "business_phone": "1234567890",  "external_metadata": "{'\''testKey'\'': '\''testValue'\''}",  "unit": {    "id": "1a2b3c4d5e6f7g8h"  }}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "<ACCOUNT_NAME>",
+  "type": "standard",
+  "business_name": "Cloudflare",
+  "business_email": "email@business.com",
+  "business_address": "San Francisco",
+  "business_phone": "1234567890",
+  "external_metadata": "{'\''testKey'\'': '\''testValue'\''}",
+  "unit": {
+    "id": "1a2b3c4d5e6f7g8h"
+  }
+}'
 ```
 
 ## Step 2 - Grant user access
@@ -129,10 +173,17 @@ If you want to give customers access to their individual accounts, it is the sam
 
 You can also grant access to the Cloudflare dashboard by using the API.
 
-Request
+**Request**
 
-```
-curl 'https://api.cloudflare.com/client/v4/accounts/<CUSTOMER_ACCOUNT_ID>/members' \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "email": "<CUSTOMER_EMAIL>",  "roles": ["<USER_ROLE>"]}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/accounts/<CUSTOMER_ACCOUNT_ID>/members' \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "email": "<CUSTOMER_EMAIL>",
+  "roles": ["<USER_ROLE>"]
+}'
 ```
 
 In most cases, you will want to create new users with a role of `Administrator` which always has the ID `05784afa30c1afe1440e79d9351c7430`.
@@ -151,16 +202,42 @@ This capability is not enabled by default. If you need this functionality, conta
 
 To grant access via an interface, you need to create a service user, as no one will log in to the dashboard with them. If you are planning to use this method, Cloudflare will enable you to see the API key in order to make API calls as this user.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/users" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "email": "<ID@example.com>"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/users" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "email": "<ID@example.com>"
+}'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "60758bd48392a06215ae817bc35084b6",    "email": "<ID@example.com>",    "first_name": null,    "last_name": null,    "username": "17bd2796b374cec14976ac3bced85c05",    "telephone": null,    "country": null,    "created_on": "2019-02-21T23:20:28.645256Z",    "modified_on": "2019-02-21T23:20:28.645256Z",    "two_factor_authentication": {      "enabled": false,      "locked": false    },    "api_key": "xxx"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "60758bd48392a06215ae817bc35084b6",
+    "email": "<ID@example.com>",
+    "first_name": null,
+    "last_name": null,
+    "username": "17bd2796b374cec14976ac3bced85c05",
+    "telephone": null,
+    "country": null,
+    "created_on": "2019-02-21T23:20:28.645256Z",
+    "modified_on": "2019-02-21T23:20:28.645256Z",
+    "two_factor_authentication": {
+      "enabled": false,
+      "locked": false
+    },
+    "api_key": "xxx"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Step 3 - Create a zone
@@ -169,10 +246,19 @@ Now that you have a customer account and customer users (or service users), you 
 
 To do this, send a [POST](https://developers.cloudflare.com/api/resources/zones/methods/create/) request to the `/zones` endpoint (including the customer account ID you received in [Step 1](#step-1---create-an-account)).
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "example.com",  "account": {    "id": "<CUSTOMER_ACCOUNT_ID>"  }}'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "example.com",
+  "account": {
+    "id": "<CUSTOMER_ACCOUNT_ID>"
+  }
+}'
 ```
 
 ## Step 4 - Create a zone plan subscription
@@ -191,16 +277,37 @@ To create a zone subscription, typically used to upgrade a zone's plan from `PAR
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-Request (without \`component\_values\`)
+**Request (without \`component\_values\`)**
 
-```
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "<RATE_PLAN>"  },  "frequency": "annual"}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "rate_plan": {
+    "id": "<RATE_PLAN>"
+  },
+  "frequency": "annual"
+}'
 ```
 
-Request (with \`component\_values\`)
+**Request (with \`component\_values\`)**
 
-```
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "PARTNERS_BIZ"  },  "component_values": [    {      "name": "page_rules",      "value": 50    }  ]}
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "rate_plan": {
+    "id": "PARTNERS_BIZ"
+  },
+  "component_values": [
+    {
+      "name": "page_rules",
+      "value": 50
+    }
+  ]
+}
 ```
 
 ## Step 5 - Create other subscriptions
@@ -219,10 +326,17 @@ To create an account subscription, send a [POST](https://developers.cloudflare.c
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-Request
+**Request**
 
-```
-curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "<RATE_PLAN_NAME>"  }}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{
+  "rate_plan": {
+    "id": "<RATE_PLAN_NAME>"
+  }
+}'
 ```
 
 ## Step 6 - Configure zone and services

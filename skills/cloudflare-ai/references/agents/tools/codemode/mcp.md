@@ -40,29 +40,72 @@ bun add @cloudflare/codemode
 2. **Create an MCP connector**
 Create the connector in its own file. It is a plain class with no special file name or import syntax.
 
-  * [  JavaScript ](#tab-panel-6609)
-  * [  TypeScript ](#tab-panel-6610)
-src/github-connector.js
-```
+  * [  JavaScript ](#tab-panel-6805)
+  * [  TypeScript ](#tab-panel-6806)
+
+**src/github-connector.js**
+```js
 import { McpConnector } from "@cloudflare/codemode";
-export class GithubConnector extends McpConnector {  connection;
-  constructor(ctx, env, connection) {    super(ctx, env);    this.connection = connection;  }
-  name() {    return "github";  }
-  instructions() {    return "Use for GitHub repositories, issues, and pull requests.";  }
-  createConnection() {    return this.connection;  }
-  tool(name, tool) {    if (name === "create_issue") {      return { ...tool, requiresApproval: true };    }
-    return tool;  }}
+export class GithubConnector extends McpConnector {
+  connection;
+  constructor(ctx, env, connection) {
+    super(ctx, env);
+    this.connection = connection;
+  }
+  name() {
+    return "github";
+  }
+  instructions() {
+    return "Use for GitHub repositories, issues, and pull requests.";
+  }
+  createConnection() {
+    return this.connection;
+  }
+  tool(name, tool) {
+    if (name === "create_issue") {
+      return { ...tool, requiresApproval: true };
+    }
+    return tool;
+  }
+}
 ```
-src/github-connector.ts
-```
-import {  McpConnector,  type ConnectorTool,  type McpConnectionLike,} from "@cloudflare/codemode";
-export class GithubConnector extends McpConnector<Env> {  private connection: McpConnectionLike;
-  constructor(    ctx: DurableObjectState | ExecutionContext,    env: Env,    connection: McpConnectionLike,  ) {    super(ctx, env);    this.connection = connection;  }
-  override name() {    return "github";  }
-  protected override instructions() {    return "Use for GitHub repositories, issues, and pull requests.";  }
-  protected override createConnection() {    return this.connection;  }
-  protected override tool(    name: string,    tool: ConnectorTool,  ): ConnectorTool {    if (name === "create_issue") {      return { ...tool, requiresApproval: true };    }
-    return tool;  }}
+
+**src/github-connector.ts**
+```ts
+import {
+  McpConnector,
+  type ConnectorTool,
+  type McpConnectionLike,
+} from "@cloudflare/codemode";
+export class GithubConnector extends McpConnector<Env> {
+  private connection: McpConnectionLike;
+  constructor(
+    ctx: DurableObjectState | ExecutionContext,
+    env: Env,
+    connection: McpConnectionLike,
+  ) {
+    super(ctx, env);
+    this.connection = connection;
+  }
+  override name() {
+    return "github";
+  }
+  protected override instructions() {
+    return "Use for GitHub repositories, issues, and pull requests.";
+  }
+  protected override createConnection() {
+    return this.connection;
+  }
+  protected override tool(
+    name: string,
+    tool: ConnectorTool,
+  ): ConnectorTool {
+    if (name === "create_issue") {
+      return { ...tool, requiresApproval: true };
+    }
+    return tool;
+  }
+}
 ```
 `createConnection()` returns the existing Agents SDK connection. `name()` defines the sandbox global, so this connector exposes methods under `github`. Use a unique connector name within each runtime.
 `McpConnector` creates one typed sandbox method for each discovered MCP tool. It derives the method types from the MCP schemas. Each method calls the original tool through `connection.client.callTool()`.
@@ -71,34 +114,86 @@ The `tool()` decoration hook receives each generated method by its sanitized nam
 3. **Add the connector to the runtime**
 In your Agent, find the existing MCP connection and pass it to the connector. Then include the connector when you create the Code Mode runtime:
 
-  * [  JavaScript ](#tab-panel-6607)
-  * [  TypeScript ](#tab-panel-6608)
-src/server.js
+  * [  JavaScript ](#tab-panel-6803)
+  * [  TypeScript ](#tab-panel-6804)
+
+**src/server.js**
+```js
+import { Agent } from "agents";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+import { GithubConnector } from "./github-connector";
+export class Chat extends Agent {
+  async codemodeRuntime() {
+    await this.mcp.waitForConnections();
+    const server = this.mcp
+      .listServers()
+      .find((server) => server.name === "github");
+    if (!server) {
+      throw new Error("GitHub MCP server is not registered.");
+    }
+    const connection = this.mcp.mcpConnections[server.id];
+    if (!connection) {
+      throw new Error("GitHub MCP connection is not available.");
+    }
+    return createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [new GithubConnector(this.ctx, this.env, connection)],
+    });
+  }
+}
 ```
-import { Agent } from "agents";import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { GithubConnector } from "./github-connector";
-export class Chat extends Agent {  async codemodeRuntime() {    await this.mcp.waitForConnections();
-    const server = this.mcp      .listServers()      .find((server) => server.name === "github");
-    if (!server) {      throw new Error("GitHub MCP server is not registered.");    }
-    const connection = this.mcp.mcpConnections[server.id];    if (!connection) {      throw new Error("GitHub MCP connection is not available.");    }
-    return createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [new GithubConnector(this.ctx, this.env, connection)],    });  }}
-```
-src/server.ts
-```
-import { Agent } from "agents";import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { GithubConnector } from "./github-connector";
-export class Chat extends Agent<Env> {  private async codemodeRuntime() {    await this.mcp.waitForConnections();
-    const server = this.mcp      .listServers()      .find((server) => server.name === "github");
-    if (!server) {      throw new Error("GitHub MCP server is not registered.");    }
-    const connection = this.mcp.mcpConnections[server.id];    if (!connection) {      throw new Error("GitHub MCP connection is not available.");    }
-    return createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [        new GithubConnector(this.ctx, this.env, connection),      ],    });  }}
+
+**src/server.ts**
+```ts
+import { Agent } from "agents";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+import { GithubConnector } from "./github-connector";
+export class Chat extends Agent<Env> {
+  private async codemodeRuntime() {
+    await this.mcp.waitForConnections();
+    const server = this.mcp
+      .listServers()
+      .find((server) => server.name === "github");
+    if (!server) {
+      throw new Error("GitHub MCP server is not registered.");
+    }
+    const connection = this.mcp.mcpConnections[server.id];
+    if (!connection) {
+      throw new Error("GitHub MCP connection is not available.");
+    }
+    return createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [
+        new GithubConnector(this.ctx, this.env, connection),
+      ],
+    });
+  }
+}
 ```
 Await `codemodeRuntime()`, then pass `runtime.tool()` to your model as the `codemode` tool. Await the helper again before calling approval, rejection, rollback, or snippet methods. This ensures MCP connections have finished restoring after hibernation.
 4. **Let the model discover and call tools**
 Tell the model to use `codemode.search()` and `codemode.describe()` before calling unfamiliar methods. Model-generated sandbox code can then discover and call the generated methods:
-JavaScript
-```
-async () => {  const matches = await codemode.search("open pull requests");  const docs = await codemode.describe(matches.results[0].path);
-  const pullRequests = await github.list_pull_requests({    owner: "cloudflare",    repo: "agents",    state: "open",  });
-  return { docs, pullRequests };};
+
+**JavaScript**
+```js
+async () => {
+  const matches = await codemode.search("open pull requests");
+  const docs = await codemode.describe(matches.results[0].path);
+  const pullRequests = await github.list_pull_requests({
+    owner: "cloudflare",
+    repo: "agents",
+    state: "open",
+  });
+  return { docs, pullRequests };
+};
 ```
 `codemode.search()` returns ranked connector methods. `codemode.describe()` returns TypeScript documentation for a connector or method. This lets the model load tool details only when needed.
 
@@ -108,23 +203,41 @@ When the model calls `github.create_issue()`, the runtime returns a paused execu
 
 For a smaller integration without durable approvals or `codemode.search()` and `codemode.describe()`, pass the Agents SDK tool collection directly to `createCodeTool()`:
 
-* [  JavaScript ](#tab-panel-6605)
-* [  TypeScript ](#tab-panel-6606)
+* [  JavaScript ](#tab-panel-6801)
+* [  TypeScript ](#tab-panel-6802)
 
-JavaScript
+**JavaScript**
 
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { createCodeTool } from "@cloudflare/codemode/ai";
+```js
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { createCodeTool } from "@cloudflare/codemode/ai";
+
+
 await this.mcp.waitForConnections();
-const executor = new DynamicWorkerExecutor({ loader: this.env.LOADER });const codemode = createCodeTool({  tools: this.mcp.getAITools(),  executor,});
+
+
+const executor = new DynamicWorkerExecutor({ loader: this.env.LOADER });
+const codemode = createCodeTool({
+  tools: this.mcp.getAITools(),
+  executor,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { createCodeTool } from "@cloudflare/codemode/ai";
+```ts
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { createCodeTool } from "@cloudflare/codemode/ai";
+
+
 await this.mcp.waitForConnections();
-const executor = new DynamicWorkerExecutor({ loader: this.env.LOADER });const codemode = createCodeTool({  tools: this.mcp.getAITools(),  executor,});
+
+
+const executor = new DynamicWorkerExecutor({ loader: this.env.LOADER });
+const codemode = createCodeTool({
+  tools: this.mcp.getAITools(),
+  executor,
+});
 ```
 
 This approach exposes the MCP tools under the default `codemode` namespace. It does not use the connector runtime's durable pause, approval, and resume flow. Use `McpConnector` when tools can cause side effects or when the model needs on-demand discovery.

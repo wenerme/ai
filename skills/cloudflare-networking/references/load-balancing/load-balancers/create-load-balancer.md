@@ -19,8 +19,8 @@ For more details about load balancers, refer to [Load balancers](https://develop
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-9443)
-* [ API ](#tab-panel-9444)
+* [ Dashboard ](#tab-panel-9734)
+* [ API ](#tab-panel-9735)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -93,18 +93,92 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancers Write`
 
-Create Load Balancer
+**Create Load Balancer**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Load Balancer for lb.example.com",    "name": "lb.example.com",    "enabled": true,    "ttl": 30,    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",    "default_pools": [        "17b5962d775c646f3f9725cbc7a53df4",        "9290f38c5d07c2e2f4df57b1f61d4196",        "00920f38ce07c2e2f4df50b1f61d4194"    ],    "proxied": true,    "steering_policy": "random_steering",    "session_affinity": "cookie",    "session_affinity_attributes": {        "samesite": "Auto",        "secure": "Auto",        "drain_duration": 100,        "zero_downtime_failover": "sticky"    },    "session_affinity_ttl": 5000,    "adaptive_routing": {        "failover_across_pools": true    },    "location_strategy": {        "prefer_ecs": "always",        "mode": "resolver_ip"    },    "random_steering": {        "pool_weights": {            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5        },        "default_weight": 0.2    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "description": "Load Balancer for lb.example.com",
+    "name": "lb.example.com",
+    "enabled": true,
+    "ttl": 30,
+    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+    "default_pools": [
+        "17b5962d775c646f3f9725cbc7a53df4",
+        "9290f38c5d07c2e2f4df57b1f61d4196",
+        "00920f38ce07c2e2f4df50b1f61d4194"
+    ],
+    "proxied": true,
+    "steering_policy": "random_steering",
+    "session_affinity": "cookie",
+    "session_affinity_attributes": {
+        "samesite": "Auto",
+        "secure": "Auto",
+        "drain_duration": 100,
+        "zero_downtime_failover": "sticky"
+    },
+    "session_affinity_ttl": 5000,
+    "adaptive_routing": {
+        "failover_across_pools": true
+    },
+    "location_strategy": {
+        "prefer_ecs": "always",
+        "mode": "resolver_ip"
+    },
+    "random_steering": {
+        "pool_weights": {
+            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+        },
+        "default_weight": 0.2
+    }
+  }'
 ```
 
 The response contains the complete definition of the new load balancer.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "699d98642c564d2e855e9661899b7252",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "description": "Load Balancer for lb.example.com",    "name": "lb.example.com",    "enabled": true,    "ttl": 30,    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",    "default_pools": [      "17b5962d775c646f3f9725cbc7a53df4",      "9290f38c5d07c2e2f4df57b1f61d4196",      "00920f38ce07c2e2f4df50b1f61d4194"    ],    "proxied": true,    "steering_policy": "random_steering",    "session_affinity": "cookie",    "session_affinity_attributes": {      "samesite": "Auto",      "secure": "Auto",      "drain_duration": 100,      "zero_downtime_failover": "sticky"    },    "session_affinity_ttl": 5000,    "random_steering": {      "pool_weights": {        "de90f38ced07c2e2f4df50b1f61d4194": 0.3,        "9290f38c5d07c2e2f4df57b1f61d4196": 0.5      },      "default_weight": 0.2    }  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "699d98642c564d2e855e9661899b7252",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "description": "Load Balancer for lb.example.com",
+    "name": "lb.example.com",
+    "enabled": true,
+    "ttl": 30,
+    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+    "default_pools": [
+      "17b5962d775c646f3f9725cbc7a53df4",
+      "9290f38c5d07c2e2f4df57b1f61d4196",
+      "00920f38ce07c2e2f4df50b1f61d4194"
+    ],
+    "proxied": true,
+    "steering_policy": "random_steering",
+    "session_affinity": "cookie",
+    "session_affinity_attributes": {
+      "samesite": "Auto",
+      "secure": "Auto",
+      "drain_duration": 100,
+      "zero_downtime_failover": "sticky"
+    },
+    "session_affinity_ttl": 5000,
+    "random_steering": {
+      "pool_weights": {
+        "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+        "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+      },
+      "default_weight": 0.2
+    }
+  }
+}
 ```
 
 ### Sharing your load balancer with other sites
@@ -121,8 +195,8 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-9439)
-* [ API ](#tab-panel-9440)
+* [ Dashboard ](#tab-panel-9730)
+* [ API ](#tab-panel-9731)
 
 To edit a load balancer in the dashboard:
 
@@ -141,8 +215,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
 
-* [ Dashboard ](#tab-panel-9441)
-* [ API ](#tab-panel-9442)
+* [ Dashboard ](#tab-panel-9732)
+* [ API ](#tab-panel-9733)
 
 To delete a load balancer in the dashboard:
 

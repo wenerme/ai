@@ -36,8 +36,12 @@ To add Zero Trust to your Terraform configuration:
 
   * `Access: Organizations, Identity Providers, and Groups Write`
 3. Add the [cloudflare\_zero\_trust\_organization ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Forganization) resource:
-```
-resource "cloudflare_zero_trust_organization" "<your-team-name>" {  account_id                         = var.cloudflare_account_id  name                               = "Acme Corporation"  auth_domain                        = "<your-team-name>.cloudflareaccess.com"}
+```terraform
+resource "cloudflare_zero_trust_organization" "<your-team-name>" {
+  account_id                         = var.cloudflare_account_id
+  name                               = "Acme Corporation"
+  auth_domain                        = "<your-team-name>.cloudflareaccess.com"
+}
 ```
 Replace `<your-team-name>` with the Zero Trust organization name selected during [onboarding](#sign-up-for-zero-trust). You can also view your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Settings** \> **Team name and domain**.
 

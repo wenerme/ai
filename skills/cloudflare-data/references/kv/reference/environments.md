@@ -16,20 +16,45 @@ KV namespaces can be used with [environments](https://developers.cloudflare.com/
 
 The following code in the Wrangler file shows you how to have two environments that have two different KV namespaces but the same binding name:
 
-* [  wrangler.jsonc ](#tab-panel-9106)
-* [  wrangler.toml ](#tab-panel-9107)
+* [  wrangler.jsonc ](#tab-panel-9397)
+* [  wrangler.toml ](#tab-panel-9398)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "env": {
+    "staging": {
+      "kv_namespaces": [
+        {
+          "binding": "MY_KV",
+          "id": "e29b263ab50e42ce9b637fa8370175e8"
+        }
+      ]
+    },
+    "production": {
+      "kv_namespaces": [
+        {
+          "binding": "MY_KV",
+          "id": "a825455ce00f4f7282403da85269f8ea"
+        }
+      ]
+    }
+  }
+}
 ```
-{  "env": {    "staging": {      "kv_namespaces": [        {          "binding": "MY_KV",          "id": "e29b263ab50e42ce9b637fa8370175e8"        }      ]    },    "production": {      "kv_namespaces": [        {          "binding": "MY_KV",          "id": "a825455ce00f4f7282403da85269f8ea"        }      ]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[[env.staging.kv_namespaces]]binding = "MY_KV"id = "e29b263ab50e42ce9b637fa8370175e8"
-[[env.production.kv_namespaces]]binding = "MY_KV"id = "a825455ce00f4f7282403da85269f8ea"
+```toml
+[[env.staging.kv_namespaces]]
+binding = "MY_KV"
+id = "e29b263ab50e42ce9b637fa8370175e8"
+
+
+[[env.production.kv_namespaces]]
+binding = "MY_KV"
+id = "a825455ce00f4f7282403da85269f8ea"
 ```
 
 Using the same binding name for two different KV namespaces keeps your Worker code more readable.
@@ -38,17 +63,13 @@ In the `staging` environment, `MY_KV.get("KEY")` will read from the namespace ID
 
 To insert a value into a `staging` KV namespace, run:
 
-Terminal window
-
-```
+```sh
 wrangler kv key put --env=staging --binding=<YOUR_BINDING> "<KEY>" "<VALUE>"
 ```
 
 Since `--namespace-id` is always unique (unlike binding names), you do not need to specify an `--env` argument:
 
-Terminal window
-
-```
+```sh
 wrangler kv key put --namespace-id=<YOUR_ID> "<KEY>" "<VALUE>"
 ```
 
@@ -62,31 +83,69 @@ Specifying an environment with the optional `--env` flag allows you to publish W
 
 For example, you could use separate staging and production KV namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9108)
-* [  wrangler.toml ](#tab-panel-9109)
+* [  wrangler.jsonc ](#tab-panel-9399)
+* [  wrangler.toml ](#tab-panel-9400)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "type": "webpack",
+  "name": "my-worker",
+  "account_id": "<account id here>",
+  "route": "staging.example.com/*",
+  "workers_dev": false,
+  "kv_namespaces": [
+    {
+      "binding": "MY_KV",
+      "id": "06779da6940b431db6e566b4846d64db"
+    }
+  ],
+  "env": {
+    "production": {
+      "route": "example.com/*",
+      "kv_namespaces": [
+        {
+          "binding": "MY_KV",
+          "id": "07bc1f3d1f2a4fd8a45a7e026e2681c6"
+        }
+      ]
+    }
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "type": "webpack",  "name": "my-worker",  "account_id": "<account id here>",  "route": "staging.example.com/*",  "workers_dev": false,  "kv_namespaces": [    {      "binding": "MY_KV",      "id": "06779da6940b431db6e566b4846d64db"    }  ],  "env": {    "production": {      "route": "example.com/*",      "kv_namespaces": [        {          "binding": "MY_KV",          "id": "07bc1f3d1f2a4fd8a45a7e026e2681c6"        }      ]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"type = "webpack"name = "my-worker"account_id = "<account id here>"route = "staging.example.com/*"workers_dev = false
-[[kv_namespaces]]binding = "MY_KV"id = "06779da6940b431db6e566b4846d64db"
-[env.production]route = "example.com/*"
-  [[env.production.kv_namespaces]]  binding = "MY_KV"  id = "07bc1f3d1f2a4fd8a45a7e026e2681c6"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+type = "webpack"
+name = "my-worker"
+account_id = "<account id here>"
+route = "staging.example.com/*"
+workers_dev = false
+
+
+[[kv_namespaces]]
+binding = "MY_KV"
+id = "06779da6940b431db6e566b4846d64db"
+
+
+[env.production]
+route = "example.com/*"
+
+
+  [[env.production.kv_namespaces]]
+  binding = "MY_KV"
+  id = "07bc1f3d1f2a4fd8a45a7e026e2681c6"
 ```
 
 With the Wrangler file above, you can specify `--env production` when you want to perform a KV action on the KV namespace `MY_KV` under `env.production`.
 
 For example, with the Wrangler file above, you can get a value out of a production KV instance with:
 
-Terminal window
-
-```
+```sh
 wrangler kv key get --binding "MY_KV" --env=production "<KEY>"
 ```
 

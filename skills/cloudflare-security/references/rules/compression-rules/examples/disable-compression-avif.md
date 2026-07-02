@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-* [ Dashboard ](#tab-panel-10095)
-* [ API ](#tab-panel-10096)
+* [ Dashboard ](#tab-panel-10390)
+* [ API ](#tab-panel-10391)
 
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 
@@ -56,10 +56,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "disable_compression_for_avif",            "expression": "http.response.content_type.media_type eq \"image/avif\" or http.request.uri.path.extension eq \"avif\"",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "none"                    }                ]            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "disable_compression_for_avif",
+            "expression": "http.response.content_type.media_type eq \"image/avif\" or http.request.uri.path.extension eq \"avif\"",
+            "action": "compress_response",
+            "action_parameters": {
+                "algorithms": [
+                    {
+                        "name": "none"
+                    }
+                ]
+            }
+        }
+    ]
+  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

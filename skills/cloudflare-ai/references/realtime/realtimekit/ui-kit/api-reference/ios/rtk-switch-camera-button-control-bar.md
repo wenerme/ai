@@ -24,11 +24,14 @@ A control bar button that switches between the front and rear cameras.
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let switchCameraButton = RtkSwitchCameraButtonControlBar(meeting: rtkClient)view.addSubview(switchCameraButton)
+
+
+let switchCameraButton = RtkSwitchCameraButtonControlBar(meeting: rtkClient)
+view.addSubview(switchCameraButton)
 ```
 
 ```json

@@ -56,9 +56,7 @@ Hugo build caching
 
 Hugo does not use `.cache` by default. To use build caching with Hugo, set `--cacheDir=$PWD/.cache` in your build command. For example:
 
-Terminal window
-
-```
+```sh
 hugo --minify --cacheDir=$PWD/.cache
 ```
 

@@ -18,7 +18,7 @@ The HTTP `Referer` request header, which contains the address of the web page th
 
 Example value:
 
-```
+```txt
 "https://developer.example.org/en-US/docs/Web/JavaScript"
 ```
 

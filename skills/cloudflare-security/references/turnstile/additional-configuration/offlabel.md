@@ -30,30 +30,44 @@ The widget will display with a clean, unbranded appearance that integrates seaml
 
 After your account team enables the Offlabel entitlement, you can activate it for specific widgets using the Cloudflare API.
 
-cURL command
+**cURL command**
 
-```
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \-H "Authorization: Bearer $API_TOKEN" \-H "Content-Type: application/json" \-d '{    "offlabel": true}'
+```bash
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
+-H "Authorization: Bearer $API_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+    "offlabel": true
+}'
 ```
 
 ### Create new widgets with Offlabel
 
 You can enable Offlabel when creating new widgets.
 
-cURL command
+**cURL command**
 
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \-H "Authorization: Bearer $API_TOKEN" \-H "Content-Type: application/json" \-d '{    "name": "Branded Widget",    "domains": ["example.com"],    "mode": "managed",    "offlabel": true}'
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
+-H "Authorization: Bearer $API_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "Branded Widget",
+    "domains": ["example.com"],
+    "mode": "managed",
+    "offlabel": true
+}'
 ```
 
 ### Verification
 
 Confirm Offlabel is enabled by checking your widget configuration.
 
-cURL command
+**cURL command**
 
-```
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \-H "Authorization: Bearer $API_TOKEN"
+```bash
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
+-H "Authorization: Bearer $API_TOKEN"
 ```
 
 The response will include `"offlabel": true` when the feature is active.

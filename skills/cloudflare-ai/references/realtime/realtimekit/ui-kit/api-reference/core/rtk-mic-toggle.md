@@ -28,19 +28,26 @@ A button which toggles your microphone.
 
 ### Basic Usage
 
-```
+```html
 <rtk-mic-toggle></rtk-mic-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-mic-toggle size="md" variant"button"></rtk-mic-toggle>
+```html
+<rtk-mic-toggle
+ size="md"
+ variant"button">
+</rtk-mic-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-mic-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-mic-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

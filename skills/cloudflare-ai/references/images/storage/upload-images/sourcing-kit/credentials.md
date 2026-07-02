@@ -18,8 +18,20 @@ To create the correct Sourcing Kit permissions:
 
 1. Log in to your AWS IAM account.
 2. Create a policy with the following format (replace `<BUCKET_NAME>` with the bucket you want to grant access to):
-```
-{  "Version": "2012-10-17",  "Statement": [    {      "Effect": "Allow",      "Action": ["s3:Get*", "s3:List*"],      "Resource": [        "arn:aws:s3:::<BUCKET_NAME>",        "arn:aws:s3:::<BUCKET_NAME>/*"      ]    }  ]}
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:Get*", "s3:List*"],
+      "Resource": [
+        "arn:aws:s3:::<BUCKET_NAME>",
+        "arn:aws:s3:::<BUCKET_NAME>/*"
+      ]
+    }
+  ]
+}
 ```
 3. Next, create a new user and attach the created policy to that user.
 

@@ -28,14 +28,19 @@ A component which lists all available plugins from their preset, and ability to 
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-plugins></rtk-plugins>
+```html
+<!-- component.html -->
+<rtk-plugins></rtk-plugins>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-plugins [meeting]="meeting" size="md"></rtk-plugins>
+```html
+<!-- component.html -->
+<rtk-plugins
+ [meeting]="meeting"
+ size="md">
+</rtk-plugins>
 ```
 
 ```json

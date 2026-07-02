@@ -27,20 +27,34 @@ Take the following directory structure:
 
 This will usually give you the desired behavior automatically: individual files (e.g. `foo.html`) will be served _without_ a trailing slash and folder index files (e.g. `foo/index.html`) will be served _with_ a trailing slash.
 
-* [  wrangler.jsonc ](#tab-panel-12199)
-* [  wrangler.toml ](#tab-panel-12200)
+* [  wrangler.jsonc ](#tab-panel-12494)
+* [  wrangler.toml ](#tab-panel-12495)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist/",
+    "html_handling": "auto-trailing-slash"
+  }
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "./dist/",    "html_handling": "auto-trailing-slash"  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./dist/"html_handling = "auto-trailing-slash"
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "./dist/"
+html_handling = "auto-trailing-slash"
 ```
 
 Based on the incoming requests, the following assets would be served:
@@ -62,20 +76,34 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-12201)
-* [  wrangler.toml ](#tab-panel-12202)
+* [  wrangler.jsonc ](#tab-panel-12496)
+* [  wrangler.toml ](#tab-panel-12497)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist/",
+    "html_handling": "force-trailing-slash"
+  }
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "./dist/",    "html_handling": "force-trailing-slash"  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./dist/"html_handling = "force-trailing-slash"
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "./dist/"
+html_handling = "force-trailing-slash"
 ```
 
 Based on the incoming requests, the following assets would be served:
@@ -97,20 +125,34 @@ Based on the incoming requests, the following assets would be served:
 
 Or you can drop trailing slashes (`drop-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-12203)
-* [  wrangler.toml ](#tab-panel-12204)
+* [  wrangler.jsonc ](#tab-panel-12498)
+* [  wrangler.toml ](#tab-panel-12499)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist/",
+    "html_handling": "drop-trailing-slash"
+  }
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "./dist/",    "html_handling": "drop-trailing-slash"  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./dist/"html_handling = "drop-trailing-slash"
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "./dist/"
+html_handling = "drop-trailing-slash"
 ```
 
 Based on the incoming requests, the following assets would be served:
@@ -132,20 +174,34 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, if you have bespoke needs, you can disable the built-in HTML handling entirely (`none`).
 
-* [  wrangler.jsonc ](#tab-panel-12205)
-* [  wrangler.toml ](#tab-panel-12206)
+* [  wrangler.jsonc ](#tab-panel-12500)
+* [  wrangler.toml ](#tab-panel-12501)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "name": "my-worker",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist/",
+    "html_handling": "none"
+  }
+}
 ```
-{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-24",  "assets": {    "directory": "./dist/",    "html_handling": "none"  }}
-```
 
-TOML
+**TOML**
 
-```
-name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-24"
-[assets]directory = "./dist/"html_handling = "none"
+```toml
+name = "my-worker"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[assets]
+directory = "./dist/"
+html_handling = "none"
 ```
 
 Based on the incoming requests, the following assets would be served:

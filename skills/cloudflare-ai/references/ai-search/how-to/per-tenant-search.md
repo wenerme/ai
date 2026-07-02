@@ -18,72 +18,198 @@ AI Search supports per-tenant search isolation. You can either create a separate
 
 Create isolated AI Search instances for each tenant at runtime using the [namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/). Each tenant gets its own instance with separate storage and a search index.
 
-* [  wrangler.jsonc ](#tab-panel-6701)
-* [  wrangler.toml ](#tab-panel-6702)
+* [  wrangler.jsonc ](#tab-panel-6949)
+* [  wrangler.toml ](#tab-panel-6950)
 
-JSONC
+**JSONC**
 
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai_search_namespaces": [    {      "binding": "TENANTS",      "namespace": "default"    }  ]}
-```
-
-TOML
-
-```
-[[ai_search_namespaces]]binding = "TENANTS"namespace = "default"
-```
-
-* [  JavaScript ](#tab-panel-6705)
-* [  TypeScript ](#tab-panel-6706)
-
-JavaScript
-
-```
-export default {  async fetch(request, env) {    const url = new URL(request.url);
-    // Identify the tenant from the request header    const tenantId = request.headers.get("x-tenant-id");
-    if (!tenantId) {      return new Response("Missing x-tenant-id header", { status: 400 });    }
-    // Create a new instance for the tenant    if (url.pathname === "/onboard" && request.method === "POST") {      const instance = await env.TENANTS.create({        id: `tenant-${tenantId}`,      });      return Response.json({ success: true, instance: await instance.info() });    }
-    // Upload a document to the tenant's instance    if (url.pathname === "/upload" && request.method === "POST") {      const formData = await request.formData();      const file = formData.get("file");
-      // Upload the file to the tenant's built-in storage      const item = await env.TENANTS.get(`tenant-${tenantId}`).items.upload(        file.name,        await file.arrayBuffer(),      );      return Response.json({ success: true, item });    }
-    // Search the tenant's instance    if (url.pathname === "/search") {      const query = url.searchParams.get("q") || "";
-      // Each tenant's search is isolated to their own instance      const results = await env.TENANTS.get(`tenant-${tenantId}`).search({        messages: [{ role: "user", content: query }],      });      return Response.json(results);    }
-    // Delete the tenant's instance and all its data    if (url.pathname === "/offboard" && request.method === "DELETE") {      await env.TENANTS.delete(`tenant-${tenantId}`);      return Response.json({ success: true });    }
-    return new Response("Not found", { status: 404 });  },};
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "ai_search_namespaces": [
+    {
+      "binding": "TENANTS",
+      "namespace": "default"
+    }
+  ]
+}
 ```
 
-TypeScript
+**TOML**
 
+```toml
+[[ai_search_namespaces]]
+binding = "TENANTS"
+namespace = "default"
 ```
-export type Env = {  TENANTS: AiSearchNamespace;};
-export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);
-    // Identify the tenant from the request header    const tenantId = request.headers.get("x-tenant-id");
-    if (!tenantId) {      return new Response("Missing x-tenant-id header", { status: 400 });    }
-    // Create a new instance for the tenant    if (url.pathname === "/onboard" && request.method === "POST") {      const instance = await env.TENANTS.create({        id: `tenant-${tenantId}`,      });      return Response.json({ success: true, instance: await instance.info() });    }
-    // Upload a document to the tenant's instance    if (url.pathname === "/upload" && request.method === "POST") {      const formData = await request.formData();      const file = formData.get("file") as File;
-      // Upload the file to the tenant's built-in storage      const item = await env.TENANTS.get(`tenant-${tenantId}`).items.upload(        file.name,        await file.arrayBuffer(),      );      return Response.json({ success: true, item });    }
-    // Search the tenant's instance    if (url.pathname === "/search") {      const query = url.searchParams.get("q") || "";
-      // Each tenant's search is isolated to their own instance      const results = await env.TENANTS.get(`tenant-${tenantId}`).search({        messages: [{ role: "user", content: query }],      });      return Response.json(results);    }
-    // Delete the tenant's instance and all its data    if (url.pathname === "/offboard" && request.method === "DELETE") {      await env.TENANTS.delete(`tenant-${tenantId}`);      return Response.json({ success: true });    }
-    return new Response("Not found", { status: 404 });  },} satisfies ExportedHandler<Env>;
+
+* [  JavaScript ](#tab-panel-6953)
+* [  TypeScript ](#tab-panel-6954)
+
+**JavaScript**
+
+```js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+
+    // Identify the tenant from the request header
+    const tenantId = request.headers.get("x-tenant-id");
+
+
+    if (!tenantId) {
+      return new Response("Missing x-tenant-id header", { status: 400 });
+    }
+
+
+    // Create a new instance for the tenant
+    if (url.pathname === "/onboard" && request.method === "POST") {
+      const instance = await env.TENANTS.create({
+        id: `tenant-${tenantId}`,
+      });
+      return Response.json({ success: true, instance: await instance.info() });
+    }
+
+
+    // Upload a document to the tenant's instance
+    if (url.pathname === "/upload" && request.method === "POST") {
+      const formData = await request.formData();
+      const file = formData.get("file");
+
+
+      // Upload the file to the tenant's built-in storage
+      const item = await env.TENANTS.get(`tenant-${tenantId}`).items.upload(
+        file.name,
+        await file.arrayBuffer(),
+      );
+      return Response.json({ success: true, item });
+    }
+
+
+    // Search the tenant's instance
+    if (url.pathname === "/search") {
+      const query = url.searchParams.get("q") || "";
+
+
+      // Each tenant's search is isolated to their own instance
+      const results = await env.TENANTS.get(`tenant-${tenantId}`).search({
+        messages: [{ role: "user", content: query }],
+      });
+      return Response.json(results);
+    }
+
+
+    // Delete the tenant's instance and all its data
+    if (url.pathname === "/offboard" && request.method === "DELETE") {
+      await env.TENANTS.delete(`tenant-${tenantId}`);
+      return Response.json({ success: true });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  },
+};
+```
+
+**TypeScript**
+
+```ts
+export type Env = {
+  TENANTS: AiSearchNamespace;
+};
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    // Identify the tenant from the request header
+    const tenantId = request.headers.get("x-tenant-id");
+
+
+    if (!tenantId) {
+      return new Response("Missing x-tenant-id header", { status: 400 });
+    }
+
+
+    // Create a new instance for the tenant
+    if (url.pathname === "/onboard" && request.method === "POST") {
+      const instance = await env.TENANTS.create({
+        id: `tenant-${tenantId}`,
+      });
+      return Response.json({ success: true, instance: await instance.info() });
+    }
+
+
+    // Upload a document to the tenant's instance
+    if (url.pathname === "/upload" && request.method === "POST") {
+      const formData = await request.formData();
+      const file = formData.get("file") as File;
+
+
+      // Upload the file to the tenant's built-in storage
+      const item = await env.TENANTS.get(`tenant-${tenantId}`).items.upload(
+        file.name,
+        await file.arrayBuffer(),
+      );
+      return Response.json({ success: true, item });
+    }
+
+
+    // Search the tenant's instance
+    if (url.pathname === "/search") {
+      const query = url.searchParams.get("q") || "";
+
+
+      // Each tenant's search is isolated to their own instance
+      const results = await env.TENANTS.get(`tenant-${tenantId}`).search({
+        messages: [{ role: "user", content: query }],
+      });
+      return Response.json(results);
+    }
+
+
+    // Delete the tenant's instance and all its data
+    if (url.pathname === "/offboard" && request.method === "DELETE") {
+      await env.TENANTS.delete(`tenant-${tenantId}`);
+      return Response.json({ success: true });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Shared instance with metadata filtering
 
 Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) at query time to ensure each tenant only retrieves their own documents.
 
-* [  wrangler.jsonc ](#tab-panel-6703)
-* [  wrangler.toml ](#tab-panel-6704)
+* [  wrangler.jsonc ](#tab-panel-6951)
+* [  wrangler.toml ](#tab-panel-6952)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "ai_search": [
+    {
+      "binding": "SHARED_INSTANCE",
+      "instance_name": "shared-instance"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai_search": [    {      "binding": "SHARED_INSTANCE",      "instance_name": "shared-instance"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[ai_search]]binding = "SHARED_INSTANCE"instance_name = "shared-instance"
+```toml
+[[ai_search]]
+binding = "SHARED_INSTANCE"
+instance_name = "shared-instance"
 ```
 
 Organize your content by tenant using unique folder paths:
@@ -99,10 +225,20 @@ Organize your content by tenant using unique folder paths:
 
 When searching, filter by the tenant's folder to restrict results:
 
-TypeScript
+**TypeScript**
 
-```
-// Filter results to only return documents from this tenant's folderconst results = await env.SHARED_INSTANCE.search({  messages: [{ role: "user", content: "When did I sign my agreement?" }],  ai_search_options: {    retrieval: {      filters: {        folder: { $gte: "customer-a/", $lt: "customer-a0" },      },    },  },});
+```ts
+// Filter results to only return documents from this tenant's folder
+const results = await env.SHARED_INSTANCE.search({
+  messages: [{ role: "user", content: "When did I sign my agreement?" }],
+  ai_search_options: {
+    retrieval: {
+      filters: {
+        folder: { $gte: "customer-a/", $lt: "customer-a0" },
+      },
+    },
+  },
+});
 ```
 
 This example uses a ["starts with" filter](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/#starts-with-filter-for-folders) to match all files under `customer-a/` including subfolders.

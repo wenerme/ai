@@ -26,9 +26,16 @@ If the HTTP header includes the language tag `*` it will not be stored in the ar
 
 Example usage:
 
-```
-# Example 1: Request with header "Accept-Language: fr-CH, fr;q=0.8, en;q=0.9, de;q=0.7, *;q=0.5".# In this case:http.request.accepted_languages[0] ==> "fr-CH"http.request.accepted_languages    ==> ["fr-CH", "en", "fr", "de"]
-# Example 2: Request without an `Accept-Language` HTTP header and a URI of "https://www.example.com/my-path".# In this case:concat("/", http.request.accepted_languages[0], http.request.uri.path) ==> "//my-path"
+```txt
+# Example 1: Request with header "Accept-Language: fr-CH, fr;q=0.8, en;q=0.9, de;q=0.7, *;q=0.5".
+# In this case:
+http.request.accepted_languages[0] ==> "fr-CH"
+http.request.accepted_languages    ==> ["fr-CH", "en", "fr", "de"]
+
+
+# Example 2: Request without an `Accept-Language` HTTP header and a URI of "https://www.example.com/my-path".
+# In this case:
+concat("/", http.request.accepted_languages[0], http.request.uri.path) ==> "//my-path"
 ```
 
 Categories:

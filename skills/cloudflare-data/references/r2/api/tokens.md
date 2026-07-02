@@ -84,7 +84,7 @@ Include a set of R2 buckets or all buckets in an account.
 
 A specific bucket is represented as:
 
-```
+```json
 "com.cloudflare.edge.r2.bucket.<ACCOUNT_ID>_<JURISDICTION>_<BUCKET_NAME>": "*"
 ```
 
@@ -94,8 +94,10 @@ A specific bucket is represented as:
 
 All buckets in an account are represented as:
 
-```
-"com.cloudflare.api.account.<ACCOUNT_ID>": {  "com.cloudflare.edge.r2.bucket.*": "*"}
+```json
+"com.cloudflare.api.account.<ACCOUNT_ID>": {
+  "com.cloudflare.edge.r2.bucket.*": "*"
+}
 ```
 
 * `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
@@ -114,8 +116,23 @@ Determine what [permission groups](https://developers.cloudflare.com/fundamental
 
 #### Example Access Policy
 
-```
-[  {    "id": "f267e341f3dd4697bd3b9f71dd96247f",    "effect": "allow",    "resources": {      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"    },    "permission_groups": [      {        "id": "6a018a9f2fc74eb6b293b0c548f38b39",        "name": "Workers R2 Storage Bucket Item Read"      }    ]  }]
+```json
+[
+  {
+    "id": "f267e341f3dd4697bd3b9f71dd96247f",
+    "effect": "allow",
+    "resources": {
+      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
+      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
+    },
+    "permission_groups": [
+      {
+        "id": "6a018a9f2fc74eb6b293b0c548f38b39",
+        "name": "Workers R2 Storage Bucket Item Read"
+      }
+    ]
+  }
+]
 ```
 
 ### Get S3 API credentials from an API token

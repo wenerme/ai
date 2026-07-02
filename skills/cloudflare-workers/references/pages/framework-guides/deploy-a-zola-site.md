@@ -22,9 +22,7 @@ First, [install ↗](https://www.getzola.org/documentation/getting-started/insta
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Zola:
 
-Terminal window
-
-```
+```sh
 brew install zola
 ```
 
@@ -32,9 +30,7 @@ brew install zola
 
 If you use the package manager [Chocolatey ↗](https://chocolatey.org/), run the `choco install` command in your terminal to install Zola:
 
-Terminal window
-
-```
+```sh
 choco install zola
 ```
 
@@ -42,9 +38,7 @@ choco install zola
 
 If you use the package manager [Scoop ↗](https://scoop.sh/), run the `scoop install` command in your terminal to install Zola:
 
-Terminal window
-
-```
+```sh
 scoop install zola
 ```
 
@@ -52,9 +46,7 @@ scoop install zola
 
 Your Linux distro's package manager may include Zola. If this is the case, you can install it directly using your distro's package manager -- for example, using `pkg`, run the following command in your terminal:
 
-Terminal window
-
-```
+```sh
 pkg install zola
 ```
 
@@ -70,9 +62,7 @@ For more instruction on installing these releases, refer to [Zola's install guid
 
 With Zola installed, create a new project by running the `zola init` command in your terminal using the default template:
 
-Terminal window
-
-```
+```sh
 zola init my-zola-project
 ```
 
@@ -95,10 +85,10 @@ Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/g
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
-Terminal window
-
-```
-git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
+```sh
+git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git branch -M main
+git push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages
@@ -124,10 +114,11 @@ You can now add that subdomain as the `base_url` in your `config.toml` file.
 
 For example:
 
-YAML
+**YAML**
 
-```
-# The URL the site will be built forbase_url = "https://my-zola-project.pages.dev"
+```yaml
+# The URL the site will be built for
+base_url = "https://my-zola-project.pages.dev"
 ```
 
 Every time you commit new code to your Zola site, Cloudflare Pages will automatically rebuild your project and deploy it. You will also get access to [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) on new pull requests, so you can preview how changes look to your site before deploying them to production.
@@ -138,9 +129,7 @@ When working with Cloudflare Pages, you might use preview deployments for testin
 
 To fix this, modify your build command in the Cloudflare Pages configuration to dynamically set the base URL depending on the environment:
 
-Terminal window
-
-```
+```sh
 if [ "$CF_PAGES_BRANCH" = "main" ]; then zola build; else zola build --base-url $CF_PAGES_URL; fi
 ```
 

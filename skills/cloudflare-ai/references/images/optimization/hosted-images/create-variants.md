@@ -29,10 +29,11 @@ Cloudflare Images can deliver SVG files but will not resize them because it is a
 
 Make a `POST` request to [create a variant](https://developers.cloudflare.com/api/resources/images/subresources/v1/subresources/variants/methods/create/).
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/variants" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{"id":"<NAME_OF_THE_VARIANT>","options":{"fit":"scale-down","metadata":"none","width":1366,"height":768},"neverRequireSignedURLs":true}
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/variants" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{"id":"<NAME_OF_THE_VARIANT>","options":{"fit":"scale-down","metadata":"none","width":1366,"height":768},"neverRequireSignedURLs":true}
 ```
 
 ## Fit options

@@ -42,13 +42,11 @@ To upgrade a compute account:
 4. Follow the instructions provided to validate your local Terraform and CLI configuration.
 5. Under **Step 2: Deploy Terraform Configuration**, copy the template to your local configuration. This template will be the most up to date version of the integration's Terraform configuration.
 6. In a local terminal, update the cached version of the CDS Terraform modules:
-Terminal window
-```
+```bash
 terraform init --upgrade
 ```
 7. Apply the upgraded Terraform configuration to your compute account:
-Terminal window
-```
+```bash
 terraform apply
 ```
 

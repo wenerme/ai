@@ -48,14 +48,34 @@ You can filter and view your logs via the Cloudflare dashboard or the API.
 
 For example, to find an HTTP request with a specific [Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/), go to **Custom SQL**, and enter the following SQL query:
 
-```
-SELECT  clientRequestScheme,  clientRequestHost,  clientRequestMethod,  edgeResponseStatus,  clientRequestUserAgentFROM http_requestsWHERE RayID = '806c30a3cec56817'LIMIT 1
+```sql
+SELECT
+  clientRequestScheme,
+  clientRequestHost,
+  clientRequestMethod,
+  edgeResponseStatus,
+  clientRequestUserAgent
+FROM http_requests
+WHERE RayID = '806c30a3cec56817'
+LIMIT 1
 ```
 
 As another example, to find Cloudflare Access requests with selected columns from a specific timeframe you could perform the following SQL query:
 
-```
-SELECT  CreatedAt,  AppDomain,  AppUUID,  Action,  Allowed,  Country,  RayID,  Email,  IPAddress,  UserUIDFROM access_requestsWHERE Date >= '2025-02-06' AND Date <= '2025-02-06' AND CreatedAt >= '2025-02-06T12:28:39Z' AND CreatedAt <= '2025-02-06T12:58:39Z'
+```sql
+SELECT
+  CreatedAt,
+  AppDomain,
+  AppUUID,
+  Action,
+  Allowed,
+  Country,
+  RayID,
+  Email,
+  IPAddress,
+  UserUID
+FROM access_requests
+WHERE Date >= '2025-02-06' AND Date <= '2025-02-06' AND CreatedAt >= '2025-02-06T12:28:39Z' AND CreatedAt <= '2025-02-06T12:58:39Z'
 ```
 
 ### Headers and cookies
@@ -64,10 +84,15 @@ To query request headers, response headers, and cookies you must first enable lo
 
 The example below shows how to query HTTP requests by date, timestamp, client country, and a custom request header. Be sure to log the specific headers or cookies you plan to query in advance.
 
-Terminal window
-
-```
-SELECT clientip, clientrequesthost, clientrequestmethod, edgeendtimestamp, edgestarttimestamp, rayid, clientcountry, requestheadersFROM http_requestsWHERE Date >= '2025-07-17'  AND Date <= '2025-07-17'  AND edgeendtimestamp >= '2025-07-17T07:54:19Z'  AND edgeendtimestamp <= '2025-07-18T07:54:19Z'  AND clientcountry = 'us'  AND requestheaders."x-test-header" like '%654AM%';
+```bash
+SELECT clientip, clientrequesthost, clientrequestmethod, edgeendtimestamp, edgestarttimestamp, rayid, clientcountry, requestheaders
+FROM http_requests
+WHERE Date >= '2025-07-17'
+  AND Date <= '2025-07-17'
+  AND edgeendtimestamp >= '2025-07-17T07:54:19Z'
+  AND edgeendtimestamp <= '2025-07-18T07:54:19Z'
+  AND clientcountry = 'us'
+  AND requestheaders."x-test-header" like '%654AM%';
 ```
 
 ### Save queries
@@ -86,8 +111,24 @@ All the tables supported by Log Explorer contain a special column called `date`,
 2. Go to **Log Explorer** \> **Log Search** \> **Custom SQL**.
 3. Enter the following SQL query:
 
-```
-SELECT  clientip,  clientrequesthost,  clientrequestmethod,  clientrequesturi,  edgeendtimestamp,  edgeresponsestatus,  originresponsestatus,  edgestarttimestamp,  rayid,  clientcountry,  clientrequestpath,  dateFROM  http_requestsWHERE  date = '2023-10-12' LIMIT 500
+```sql
+SELECT
+  clientip,
+  clientrequesthost,
+  clientrequestmethod,
+  clientrequesturi,
+  edgeendtimestamp,
+  edgeresponsestatus,
+  originresponsestatus,
+  edgestarttimestamp,
+  rayid,
+  clientcountry,
+  clientrequestpath,
+  date
+FROM
+  http_requests
+WHERE
+  date = '2023-10-12' LIMIT 500
 ```
 
 ### Additional query optimization tips

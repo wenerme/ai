@@ -56,16 +56,72 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Create a zone ruleset
+**Create a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Redirect rules ruleset",    "kind": "zone",    "phase": "http_request_dynamic_redirect",    "rules": [        {            "ref": "redirect_gb_fr_to_localized",            "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",            "description": "Redirect GB and FR users in home page to localized site.",            "action": "redirect",            "action_parameters": {                "from_value": {                    "target_url": {                        "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"                    },                    "status_code": 307,                    "preserve_query_string": true                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Redirect rules ruleset",
+    "kind": "zone",
+    "phase": "http_request_dynamic_redirect",
+    "rules": [
+        {
+            "ref": "redirect_gb_fr_to_localized",
+            "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+            "description": "Redirect GB and FR users in home page to localized site.",
+            "action": "redirect",
+            "action_parameters": {
+                "from_value": {
+                    "target_url": {
+                        "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+                    },
+                    "status_code": 307,
+                    "preserve_query_string": true
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Response
 
-```
-{  "result": {    "id": "528f4f03bf0da53a29907199625867be",    "name": "Redirect rules ruleset",    "kind": "zone",    "version": "1",    "rules": [      {        "ref": "redirect_gb_fr_to_localized",        "id": "235e557b92fd4e5e8753ee665a9ddd75",        "version": "1",        "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",        "description": "Redirect GB and FR users in home page to localized site.",        "action": "redirect",        "action_parameters": {          "from_value": {            "target_url": {              "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"            },            "status_code": 307,            "preserve_query_string": true          }        },        "last_updated": "2022-09-28T09:20:42Z"      }    ],    "last_updated": "2022-09-28T09:20:42Z",    "phase": "http_request_dynamic_redirect"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "528f4f03bf0da53a29907199625867be",
+    "name": "Redirect rules ruleset",
+    "kind": "zone",
+    "version": "1",
+    "rules": [
+      {
+        "ref": "redirect_gb_fr_to_localized",
+        "id": "235e557b92fd4e5e8753ee665a9ddd75",
+        "version": "1",
+        "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+        "description": "Redirect GB and FR users in home page to localized site.",
+        "action": "redirect",
+        "action_parameters": {
+          "from_value": {
+            "target_url": {
+              "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+            },
+            "status_code": 307,
+            "preserve_query_string": true
+          }
+        },
+        "last_updated": "2022-09-28T09:20:42Z"
+      }
+    ],
+    "last_updated": "2022-09-28T09:20:42Z",
+    "phase": "http_request_dynamic_redirect"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -97,16 +153,108 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Redirect rules ruleset",    "kind": "zone",    "phase": "http_request_dynamic_redirect",    "rules": [        {            "ref": "redirect_gb_fr_to_localized",            "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",            "description": "Redirect GB and FR users in home page to localized site.",            "action": "redirect",            "action_parameters": {                "from_value": {                    "target_url": {                        "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"                    },                    "status_code": 307,                    "preserve_query_string": true                }            }        },        {            "ref": "redirect_contacts_to_new_page",            "expression": "http.request.uri.path eq \"/contacts.html\"",            "description": "Redirect to new contacts page.",            "action": "redirect",            "action_parameters": {                "from_value": {                    "target_url": {                        "value": "https://example.com/contact-us/"                    },                    "status_code": 308                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Redirect rules ruleset",
+    "kind": "zone",
+    "phase": "http_request_dynamic_redirect",
+    "rules": [
+        {
+            "ref": "redirect_gb_fr_to_localized",
+            "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+            "description": "Redirect GB and FR users in home page to localized site.",
+            "action": "redirect",
+            "action_parameters": {
+                "from_value": {
+                    "target_url": {
+                        "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+                    },
+                    "status_code": 307,
+                    "preserve_query_string": true
+                }
+            }
+        },
+        {
+            "ref": "redirect_contacts_to_new_page",
+            "expression": "http.request.uri.path eq \"/contacts.html\"",
+            "description": "Redirect to new contacts page.",
+            "action": "redirect",
+            "action_parameters": {
+                "from_value": {
+                    "target_url": {
+                        "value": "https://example.com/contact-us/"
+                    },
+                    "status_code": 308
+                }
+            }
+        }
+    ]
+  }'
 ```
 
 Response
 
-```
-{  "result": {    "id": "528f4f03bf0da53a29907199625867be",    "name": "Redirect rules ruleset",    "description": "",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "redirect_gb_fr_to_localized",        "id": "235e557b92fd4e5e8753ee665a9ddd75",        "version": "1",        "action": "redirect",        "action_parameters": {          "from_value": {            "target_url": {              "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"            },            "status_code": 307,            "preserve_query_string": true          }        },        "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",        "description": "Redirect GB and FR users in home page to localized site.",        "last_updated": "2022-10-03T15:38:51.658387Z",        "ref": "235e557b92fd4e5e8753ee665a9ddd75",        "enabled": true      },      {        "ref": "redirect_contacts_to_new_page",        "id": "cfad5efbfcd1440fb5b30cf30f95ece3",        "version": "1",        "action": "redirect",        "action_parameters": {          "from_value": {            "target_url": {              "value": "https://example.com/contact-us/"            },            "status_code": 308          }        },        "expression": "http.request.uri.path eq \"/contacts.html\"",        "description": "Redirect to new contacts page.",        "last_updated": "2022-10-03T15:38:51.658387Z",        "ref": "cfad5efbfcd1440fb5b30cf30f95ece3",        "enabled": true      }    ],    "last_updated": "2022-10-03T15:38:51.658387Z",    "phase": "http_request_dynamic_redirect"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "528f4f03bf0da53a29907199625867be",
+    "name": "Redirect rules ruleset",
+    "description": "",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "ref": "redirect_gb_fr_to_localized",
+        "id": "235e557b92fd4e5e8753ee665a9ddd75",
+        "version": "1",
+        "action": "redirect",
+        "action_parameters": {
+          "from_value": {
+            "target_url": {
+              "expression": "lower(concat(\"https://\", ip.src.country, \".example.com\"))"
+            },
+            "status_code": 307,
+            "preserve_query_string": true
+          }
+        },
+        "expression": "(ip.src.country eq \"GB\" or ip.src.country eq \"FR\") and http.request.uri.path eq \"/\"",
+        "description": "Redirect GB and FR users in home page to localized site.",
+        "last_updated": "2022-10-03T15:38:51.658387Z",
+        "ref": "235e557b92fd4e5e8753ee665a9ddd75",
+        "enabled": true
+      },
+      {
+        "ref": "redirect_contacts_to_new_page",
+        "id": "cfad5efbfcd1440fb5b30cf30f95ece3",
+        "version": "1",
+        "action": "redirect",
+        "action_parameters": {
+          "from_value": {
+            "target_url": {
+              "value": "https://example.com/contact-us/"
+            },
+            "status_code": 308
+          }
+        },
+        "expression": "http.request.uri.path eq \"/contacts.html\"",
+        "description": "Redirect to new contacts page.",
+        "last_updated": "2022-10-03T15:38:51.658387Z",
+        "ref": "cfad5efbfcd1440fb5b30cf30f95ece3",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2022-10-03T15:38:51.658387Z",
+    "phase": "http_request_dynamic_redirect"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ---

@@ -15,13 +15,26 @@ image: https://developers.cloudflare.com/zt-preview.png
 ## Windows
 
 1. Create a script file with `.bat`, `.cmd`, and `.ps1` file formats to download, install and configure the Cloudflare One Client (formerly WARP) Windows application on the device. Listed below is a sample script with all of the configurable parameters:
-Python
-```
-<# Choose file name for downloading application #>$filename = filename.msi'
-<# Download URL of the installer. #>$url = 'https://downloads.cloudflareclient.com/v1/download/windows/ga'Write-Host 'Downloading App from' $urlInvoke-WebRequest -Uri $url -OutFile $filename
-<# Run the installer and wait for the installation to finish #>$arguments = "ORGANIZATION="exampleorg" SERVICE_MODE="warp" GATEWAY_UNIQUE_ID="fmxk762nrj" SUPPORT_URL="http://support.example.com""
+
+**Python**
+```python
+<# Choose file name for downloading application #>
+$filename = filename.msi'
+<# Download URL of the installer. #>
+$url = 'https://downloads.cloudflareclient.com/v1/download/windows/ga'
+Write-Host 'Downloading App from' $url
+Invoke-WebRequest -Uri $url -OutFile $filename
+<# Run the installer and wait for the installation to finish #>
+$arguments = "ORGANIZATION="exampleorg" SERVICE_MODE="warp" GATEWAY_UNIQUE_ID="fmxk762nrj" SUPPORT_URL="http://support.example.com""
 $installProcess = (Start-Process $filename -ArgumentList $arguments -PassThru -Wait)
-<# Check if installation was successful #>if ($installProcess.ExitCode -ne 0) {    Write-Host "Installation failed!"    exit $installProcess.ExitCode}else {    Write-Host "Installation completed successfully!"}
+<# Check if installation was successful #>
+if ($installProcess.ExitCode -ne 0) {
+    Write-Host "Installation failed!"
+    exit $installProcess.ExitCode
+}
+else {
+    Write-Host "Installation completed successfully!"
+}
 ```
 2. Push the script file to the devices using Hexnode.
 3. On your Hexnode console, go to **Manage** \> **Devices**.
@@ -40,8 +53,23 @@ After deploying the Cloudflare One Client, you can check its connection progress
 4. Add an app name, category and description.
 5. Upload the `Cloudflare_WARP_<VERSION>.pkg` file and select **Add**.
 6. Set up an XML file with the supported app configurations for the app. Here is a sample XML file with the accepted parameters.
-```
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>organization</key><string>organizationname</string><key>auto_connect</key><integer>1</integer><key>switch_locked</key><false /><key>service_mode</key><string>warp</string><key>support_url</key><string>https://support.example.com</string></dict></plist>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>organization</key>
+<string>organizationname</string>
+<key>auto_connect</key>
+<integer>1</integer>
+<key>switch_locked</key>
+<false />
+<key>service_mode</key>
+<string>warp</string>
+<key>support_url</key>
+<string>https://support.example.com</string>
+</dict>
+</plist>
 ```
 7. On your Hexnode console, go to **Policies**.
 8. Create a new policy and provide a policy name.
@@ -61,8 +89,19 @@ After deploying the Cloudflare One Client, you can check its connection progress
 2. Select _iOS_ as the app platform.
 3. Search for [**Cloudflare One Agent** ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492) and **Add** the app.
 4. Set up an XML file with the supported app configurations for the app. Refer this sample XML code to identify the supported arguments:
-```
-<dict><key>organization</key><string>yourorganization</string><key>auto_connect</key><integer>1</integer><key>switch_locked</key><false /><key>service_mode</key><string>warp</string><key>support_url</key<string>https://support.example.com</string></dict>
+```xml
+<dict>
+<key>organization</key>
+<string>yourorganization</string>
+<key>auto_connect</key>
+<integer>1</integer>
+<key>switch_locked</key>
+<false />
+<key>service_mode</key>
+<string>warp</string>
+<key>support_url</key
+<string>https://support.example.com</string>
+</dict>
 ```
 5. Upload the app configurations in Hexnode:
 

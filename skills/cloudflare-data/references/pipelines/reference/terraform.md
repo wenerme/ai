@@ -49,32 +49,143 @@ With [terraform ↗](https://developer.hashicorp.com/terraform/downloads) instal
 
 Create `variables.tf`:
 
-```
-terraform {  required_providers {    cloudflare = {      source  = "cloudflare/cloudflare"      version = "~> 5.19"    }  }}
-provider "cloudflare" {  api_token = var.cloudflare_api_token}
-variable "cloudflare_api_token" {  type      = string  sensitive = true}
-variable "cloudflare_account_id" {  type = string}
+```hcl
+terraform {
+  required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 5.19"
+    }
+  }
+}
+
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}
+
+
+variable "cloudflare_api_token" {
+  type      = string
+  sensitive = true
+}
+
+
+variable "cloudflare_account_id" {
+  type = string
+}
 ```
 
 ### 2\. Create the pipeline resources
 
 Create `main.tf`:
 
-```
+```hcl
 # --- R2 bucket and Data Catalog ---
-resource "cloudflare_r2_bucket" "pipeline_bucket" {  account_id = var.cloudflare_account_id  name       = "my-pipeline-bucket"}
-resource "cloudflare_r2_data_catalog" "pipeline_catalog" {  account_id  = var.cloudflare_account_id  bucket_name = cloudflare_r2_bucket.pipeline_bucket.name}
+
+
+resource "cloudflare_r2_bucket" "pipeline_bucket" {
+  account_id = var.cloudflare_account_id
+  name       = "my-pipeline-bucket"
+}
+
+
+resource "cloudflare_r2_data_catalog" "pipeline_catalog" {
+  account_id  = var.cloudflare_account_id
+  bucket_name = cloudflare_r2_bucket.pipeline_bucket.name
+}
+
+
 # --- Scoped API token for the sink ---
-data "cloudflare_account_api_token_permission_groups_list" "r2_bucket_item_write" {  account_id = var.cloudflare_account_id  name       = "Workers R2 Storage Bucket Item Write"}
-data "cloudflare_account_api_token_permission_groups_list" "r2_data_catalog_write" {  account_id = var.cloudflare_account_id  name       = "Workers R2 Data Catalog Write"}
-resource "cloudflare_account_token" "sink_token" {  name       = "pipeline-sink-token"  account_id = var.cloudflare_account_id
-  policies = [{    effect = "allow"    permission_groups = [      { id = data.cloudflare_account_api_token_permission_groups_list.r2_bucket_item_write.result[0].id },      { id = data.cloudflare_account_api_token_permission_groups_list.r2_data_catalog_write.result[0].id },    ]    resources = jsonencode({      "com.cloudflare.api.account.${var.cloudflare_account_id}" = "*"    })  }]}
+
+
+data "cloudflare_account_api_token_permission_groups_list" "r2_bucket_item_write" {
+  account_id = var.cloudflare_account_id
+  name       = "Workers R2 Storage Bucket Item Write"
+}
+
+
+data "cloudflare_account_api_token_permission_groups_list" "r2_data_catalog_write" {
+  account_id = var.cloudflare_account_id
+  name       = "Workers R2 Data Catalog Write"
+}
+
+
+resource "cloudflare_account_token" "sink_token" {
+  name       = "pipeline-sink-token"
+  account_id = var.cloudflare_account_id
+
+
+  policies = [{
+    effect = "allow"
+    permission_groups = [
+      { id = data.cloudflare_account_api_token_permission_groups_list.r2_bucket_item_write.result[0].id },
+      { id = data.cloudflare_account_api_token_permission_groups_list.r2_data_catalog_write.result[0].id },
+    ]
+    resources = jsonencode({
+      "com.cloudflare.api.account.${var.cloudflare_account_id}" = "*"
+    })
+  }]
+}
+
+
 # --- Stream ---
-resource "cloudflare_pipeline_stream" "my_stream" {  account_id = var.cloudflare_account_id  name       = "my_stream"  format = {    type = "json"  }  schema = {    fields = [{      name     = "value"      type     = "json"      required = true    }]  }  http = {    enabled        = true    authentication = false    cors           = {}  }  worker_binding = {    enabled = false  }}
+
+
+resource "cloudflare_pipeline_stream" "my_stream" {
+  account_id = var.cloudflare_account_id
+  name       = "my_stream"
+  format = {
+    type = "json"
+  }
+  schema = {
+    fields = [{
+      name     = "value"
+      type     = "json"
+      required = true
+    }]
+  }
+  http = {
+    enabled        = true
+    authentication = false
+    cors           = {}
+  }
+  worker_binding = {
+    enabled = false
+  }
+}
+
+
 # --- Sink (R2 Data Catalog) ---
-resource "cloudflare_pipeline_sink" "my_sink" {  account_id = var.cloudflare_account_id  name       = "my_sink"  type       = "r2_data_catalog"  format = {    type = "parquet"  }  schema = {    fields = []  }  config = {    account_id = var.cloudflare_account_id    bucket     = cloudflare_r2_bucket.pipeline_bucket.name    table_name = cloudflare_r2_data_catalog.pipeline_catalog.name    token      = cloudflare_account_token.sink_token.value  }}
+
+
+resource "cloudflare_pipeline_sink" "my_sink" {
+  account_id = var.cloudflare_account_id
+  name       = "my_sink"
+  type       = "r2_data_catalog"
+  format = {
+    type = "parquet"
+  }
+  schema = {
+    fields = []
+  }
+  config = {
+    account_id = var.cloudflare_account_id
+    bucket     = cloudflare_r2_bucket.pipeline_bucket.name
+    table_name = cloudflare_r2_data_catalog.pipeline_catalog.name
+    token      = cloudflare_account_token.sink_token.value
+  }
+}
+
+
 # --- Pipeline ---
-resource "cloudflare_pipeline" "my_pipeline" {  account_id = var.cloudflare_account_id  name       = "my_pipeline"  sql        = "INSERT INTO ${cloudflare_pipeline_sink.my_sink.name} SELECT * FROM ${cloudflare_pipeline_stream.my_stream.name}"}
+
+
+resource "cloudflare_pipeline" "my_pipeline" {
+  account_id = var.cloudflare_account_id
+  name       = "my_pipeline"
+  sql        = "INSERT INTO ${cloudflare_pipeline_sink.my_sink.name} SELECT * FROM ${cloudflare_pipeline_stream.my_stream.name}"
+}
 ```
 
 Use an R2 sink instead of R2 Data Catalog
@@ -83,15 +194,41 @@ To write raw Parquet or JSON files to R2 instead of Iceberg tables, replace the 
 
 Add variables for S3 credentials to `variables.tf`:
 
-```
-variable "r2_access_key_id" {  type      = string  sensitive = true}
-variable "r2_access_key_secret" {  type      = string  sensitive = true}
+```hcl
+variable "r2_access_key_id" {
+  type      = string
+  sensitive = true
+}
+
+
+variable "r2_access_key_secret" {
+  type      = string
+  sensitive = true
+}
 ```
 
 Replace the sink resource in `main.tf`:
 
-```
-resource "cloudflare_pipeline_sink" "my_sink" {  account_id = var.cloudflare_account_id  name       = "my_sink"  type       = "r2"  format = {    type = "json"  }  schema = {    fields = []  }  config = {    account_id = var.cloudflare_account_id    bucket     = cloudflare_r2_bucket.pipeline_bucket.name    credentials = {      access_key_id     = var.r2_access_key_id      secret_access_key = var.r2_access_key_secret    }  }}
+```hcl
+resource "cloudflare_pipeline_sink" "my_sink" {
+  account_id = var.cloudflare_account_id
+  name       = "my_sink"
+  type       = "r2"
+  format = {
+    type = "json"
+  }
+  schema = {
+    fields = []
+  }
+  config = {
+    account_id = var.cloudflare_account_id
+    bucket     = cloudflare_r2_bucket.pipeline_bucket.name
+    credentials = {
+      access_key_id     = var.r2_access_key_id
+      secret_access_key = var.r2_access_key_secret
+    }
+  }
+}
 ```
 
 When using an R2 sink, you can remove the `cloudflare_r2_data_catalog`, `cloudflare_account_token`, and the two `cloudflare_account_api_token_permission_groups_list` data sources from your configuration.
@@ -100,46 +237,57 @@ When using an R2 sink, you can remove the `cloudflare_r2_data_catalog`, `cloudfl
 
 Create `outputs.tf`:
 
-```
-output "pipeline_id" {  value = cloudflare_pipeline.my_pipeline.id}
-output "pipeline_status" {  value = cloudflare_pipeline.my_pipeline.status}
-output "stream_endpoint" {  value = cloudflare_pipeline_stream.my_stream.endpoint}
-output "sink_id" {  value = cloudflare_pipeline_sink.my_sink.id}
+```hcl
+output "pipeline_id" {
+  value = cloudflare_pipeline.my_pipeline.id
+}
+
+
+output "pipeline_status" {
+  value = cloudflare_pipeline.my_pipeline.status
+}
+
+
+output "stream_endpoint" {
+  value = cloudflare_pipeline_stream.my_stream.endpoint
+}
+
+
+output "sink_id" {
+  value = cloudflare_pipeline_sink.my_sink.id
+}
 ```
 
 ### 4\. Deploy
 
 Set your environment variables:
 
-Terminal window
-
-```
-export TF_VAR_cloudflare_api_token="<YOUR_API_TOKEN>"export TF_VAR_cloudflare_account_id="<YOUR_ACCOUNT_ID>"
+```bash
+export TF_VAR_cloudflare_api_token="<YOUR_API_TOKEN>"
+export TF_VAR_cloudflare_account_id="<YOUR_ACCOUNT_ID>"
 ```
 
 You can then use `terraform plan` to view the changes and `terraform apply` to apply them:
 
-Terminal window
-
-```
-terraform initterraform planterraform apply
+```bash
+terraform init
+terraform plan
+terraform apply
 ```
 
 After the apply completes, Terraform outputs the stream endpoint URL. Use it to send data to your pipeline:
 
-Terminal window
-
-```
-curl -X POST https://<STREAM_ENDPOINT> \  -H "Content-Type: application/json" \  -d '[{"value": {"event": "page_view", "user_id": "user_123"}}]'
+```bash
+curl -X POST https://<STREAM_ENDPOINT> \
+  -H "Content-Type: application/json" \
+  -d '[{"value": {"event": "page_view", "user_id": "user_123"}}]'
 ```
 
 ## Clean up
 
 To remove all resources created by this configuration:
 
-Terminal window
-
-```
+```bash
 terraform destroy
 ```
 

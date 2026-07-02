@@ -25,8 +25,14 @@ A [subdomain zone](https://developers.cloudflare.com/dns/zone-setups/subdomain-s
 
 Create a `cloudflare_zone` resource for the subdomain zone. The following example creates a zone for `subdomain.example.com`:
 
-```
-resource "cloudflare_zone" "subdomain_example_com" {  account = {    id = var.cloudflare_account_id  }  name = "subdomain.example.com"  type = "full"}
+```hcl
+resource "cloudflare_zone" "subdomain_example_com" {
+  account = {
+    id = var.cloudflare_account_id
+  }
+  name = "subdomain.example.com"
+  type = "full"
+}
 ```
 
 Terraform creates the zone in a **Pending** state. You must add NS delegation records to the parent zone before Cloudflare activates it.

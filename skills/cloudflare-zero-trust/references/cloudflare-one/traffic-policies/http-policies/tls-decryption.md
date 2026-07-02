@@ -28,8 +28,8 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-7731)
-* [ Terraform (v5) ](#tab-panel-7732)
+* [ Dashboard ](#tab-panel-7984)
+* [ Terraform (v5) ](#tab-panel-7985)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -38,8 +38,15 @@ To turn on TLS decryption:
 
   * `Zero Trust Write`
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
-```
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    tls_decrypt = {      enabled = true    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+  account_id = var.cloudflare_account_id
+  settings = {
+    tls_decrypt = {
+      enabled = true
+    }
+  }
+}
 ```
 
 ## Inspection limitations
@@ -76,9 +83,9 @@ Google Chrome can automatically upgrade HTTP requests to HTTPS requests, even wh
 
 You can turn off automatic HTTPS upgrades via a Gateway pass through policy, a Chrome browser flag, or a Chrome Enterprise policy.
 
-* [ Pass through policy ](#tab-panel-7728)
-* [ Chrome browser flag ](#tab-panel-7729)
-* [ Chrome enterprise policy ](#tab-panel-7730)
+* [ Pass through policy ](#tab-panel-7981)
+* [ Chrome browser flag ](#tab-panel-7982)
+* [ Chrome enterprise policy ](#tab-panel-7983)
 
 To disable automatic HTTPS upgrades for a URL across your Zero Trust organization, create a Gateway pass through policy.
 
@@ -119,8 +126,8 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 
 ### Enable FIPS compliance
 
-* [ Dashboard ](#tab-panel-7733)
-* [ Terraform (v5) ](#tab-panel-7734)
+* [ Dashboard ](#tab-panel-7986)
+* [ Terraform (v5) ](#tab-panel-7987)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -129,8 +136,15 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 
   * `Zero Trust Write`
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
-```
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    tls_decrypt = {      enabled = true    }  }}
+```tf
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+  account_id = var.cloudflare_account_id
+  settings = {
+    tls_decrypt = {
+      enabled = true
+    }
+  }
+}
 ```
 
 1. Select **Enable only cipher suites and TLS versions compliant with FIPS 140-3**.

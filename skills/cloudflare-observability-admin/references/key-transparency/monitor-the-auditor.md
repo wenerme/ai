@@ -32,9 +32,7 @@ In order to verify our work, you can use [Plexi ↗](https://github.com/cloudfla
 
 Use the `--help` option for more details about the commands and their options.
 
-Terminal window
-
-```
+```bash
 plexi [OPTIONS] <COMMAND>
 ```
 
@@ -56,10 +54,9 @@ If you have deployed your own auditor, you can add a remote by filing a [GitHub 
 
 An auditor monitors multiple Logs at once. To discover which Logs an auditor is monitoring, run the following:
 
-Terminal window
-
-```
-plexi ls --remote-url 'https://plexi.key-transparency.cloudflare.com'whatsapp.key-transparency.v1
+```shell
+plexi ls --remote-url 'https://plexi.key-transparency.cloudflare.com'
+whatsapp.key-transparency.v1
 ```
 
 ### Audit a signature
@@ -70,11 +67,19 @@ The Key Transparency Auditor vouches for Log validity by ensuring epoch uniquene
 
 For instance, to verify WhatsApp Log auditted by Cloudflare Auditor, run the following:
 
-Terminal window
+```shell
+> plexi audit --remote-url 'https://plexi.key-transparency.cloudflare.com' --namespace 'whatsapp.key-transparency.v1' --long
+Namespace
+  Name               : whatsapp.key-transparency.v1
+  Ciphersuite        : ed25519(protobuf)
 
-```
-> plexi audit --remote-url 'https://plexi.key-transparency.cloudflare.com' --namespace 'whatsapp.key-transparency.v1' --longNamespace  Name               : whatsapp.key-transparency.v1  Ciphersuite        : ed25519(protobuf)
-Signature (2024-09-23T16:53:45Z)  Epoch height        : 489193  Epoch digest        : cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe  Signature           : fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08  Signature verification: success  Proof verification  : success
+
+Signature (2024-09-23T16:53:45Z)
+  Epoch height        : 489193
+  Epoch digest        : cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe
+  Signature           : fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08
+  Signature verification: success
+  Proof verification  : success
 ```
 
 ```json

@@ -202,23 +202,46 @@ bun add -d wrangler@latest
 3. **Add a Wrangler configuration file**
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:
 
-  * [  wrangler.jsonc ](#tab-panel-11866)
-  * [  wrangler.toml ](#tab-panel-11867)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-12139)
+  * [  wrangler.toml ](#tab-panel-12140)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "my-app",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "main": ".open-next/worker.js",  "name": "my-app",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "assets": {    "directory": ".open-next/assets",    "binding": "ASSETS"  }}
-```
-TOML
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"main = ".open-next/worker.js"name = "my-app"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[assets]directory = ".open-next/assets"binding = "ASSETS"
+
+**TOML**
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+main = ".open-next/worker.js"
+name = "my-app"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
 ```
 Note
 As shown above, you must enable the [nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) _and_ set your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) to `2024-09-23` or later for your Next.js app to work with @opennextjs/cloudflare.
 4. **Add a configuration file for OpenNext**
 In your project root, create an OpenNext configuration file named `open-next.config.ts` with the following content:
-TypeScript
-```
+
+**TypeScript**
+```ts
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 export default defineCloudflareConfig();
 ```
@@ -226,8 +249,10 @@ Note
 `open-next.config.ts` is where you can configure the caching, see the [adapter documentation ↗](https://opennext.js.org/cloudflare/caching) for more information
 5. **Update `package.json`**
 You can add the following scripts to your `package.json`:
-```
-"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview","deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy","cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+```json
+"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
 ```
 Usage
 

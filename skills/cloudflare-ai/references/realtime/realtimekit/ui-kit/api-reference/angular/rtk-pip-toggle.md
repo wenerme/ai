@@ -28,14 +28,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-pip-toggle></rtk-pip-toggle>
+```html
+<!-- component.html -->
+<rtk-pip-toggle></rtk-pip-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-pip-toggle [meeting]="meeting" size="md" variant="button"></rtk-pip-toggle>
+```html
+<!-- component.html -->
+<rtk-pip-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-pip-toggle>
 ```
 
 ```json

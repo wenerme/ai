@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras
 ```
 
@@ -33,24 +33,37 @@ When making requests to Cerebras, ensure you have the following:
 
 ### cURL
 
-Example fetch request
+**Example fetch request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer CEREBRAS_TOKEN' \ --data '{    "model": "llama3.1-8b",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras/chat/completions \
+ --header 'content-type: application/json' \
+ --header 'Authorization: Bearer CEREBRAS_TOKEN' \
+ --data '{
+    "model": "llama3.1-8b",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is Cloudflare?"
+        }
+    ]
+}'
 ```
 
 ## OpenAI-Compatible Endpoint
 
 You can also access Cerebras models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 ```
 
 Specify:
 
-```
-{"model": "cerebras/{model}"}
+```json
+{
+"model": "cerebras/{model}"
+}
 ```
 
 ```json

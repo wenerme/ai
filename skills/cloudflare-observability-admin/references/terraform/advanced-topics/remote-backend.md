@@ -22,19 +22,18 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 
 Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
 
-* [ Wrangler ](#tab-panel-11035)
-* [ API ](#tab-panel-11036)
+* [ Wrangler ](#tab-panel-11330)
+* [ API ](#tab-panel-11331)
 
-Terminal window
-
-```
+```sh
 wrangler r2 bucket create <YOUR_BUCKET_NAME>
 ```
 
-Terminal window
-
-```
- curl https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{"name": "<YOUR_BUCKET_NAME>"}'
+```bash
+ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{"name": "<YOUR_BUCKET_NAME>"}'
 ```
 
 Note
@@ -62,8 +61,33 @@ Note
 
 Terraform code snippets below refer to the v4 SDK only.
 
-```
-terraform {  backend "s3" {    bucket = "<YOUR_BUCKET_NAME>"    key    = "/some/key/terraform.tfstate"    region                      = "auto"    skip_credentials_validation = true    skip_metadata_api_check     = true    skip_region_validation      = true    skip_requesting_account_id  = true    skip_s3_checksum            = true    use_path_style              = true    access_key = "<YOUR_R2_ACCESS_KEY>"    secret_key = "<YOUR_R2_ACCESS_SECRET>"    endpoints = { s3 = "https://<YOUR_ACCOUNT_ID>.r2.cloudflarestorage.com" }  }  required_providers {    cloudflare = {      source = "cloudflare/cloudflare"      version = "~> 4"    }  }}provider "cloudflare" {  # token pulled from $CLOUDFLARE_API_TOKEN}variable "account_id" { default = "<YOUR_ACCOUNT_ID>" }
+```tf
+terraform {
+  backend "s3" {
+    bucket = "<YOUR_BUCKET_NAME>"
+    key    = "/some/key/terraform.tfstate"
+    region                      = "auto"
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    skip_region_validation      = true
+    skip_requesting_account_id  = true
+    skip_s3_checksum            = true
+    use_path_style              = true
+    access_key = "<YOUR_R2_ACCESS_KEY>"
+    secret_key = "<YOUR_R2_ACCESS_SECRET>"
+    endpoints = { s3 = "https://<YOUR_ACCOUNT_ID>.r2.cloudflarestorage.com" }
+  }
+  required_providers {
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = "~> 4"
+    }
+  }
+}
+provider "cloudflare" {
+  # token pulled from $CLOUDFLARE_API_TOKEN
+}
+variable "account_id" { default = "<YOUR_ACCOUNT_ID>" }
 ```
 
 ## Migrate state file to R2 backend

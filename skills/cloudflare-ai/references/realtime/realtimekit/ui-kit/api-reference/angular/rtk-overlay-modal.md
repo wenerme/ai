@@ -27,14 +27,18 @@ A confirmation modal.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-overlay-modal></rtk-overlay-modal>
+```html
+<!-- component.html -->
+<rtk-overlay-modal></rtk-overlay-modal>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-overlay-modal [meeting]="meeting"></rtk-overlay-modal>
+```html
+<!-- component.html -->
+<rtk-overlay-modal
+ [meeting]="meeting">
+</rtk-overlay-modal>
 ```
 
 ```json

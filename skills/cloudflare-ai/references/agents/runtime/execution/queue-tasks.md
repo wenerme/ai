@@ -20,10 +20,16 @@ The queue system is built into the base `Agent` class. Tasks are stored in a SQL
 
 ## `QueueItem` type
 
-TypeScript
+**TypeScript**
 
-```
-type QueueItem<T> = {  id: string; // Unique identifier for the queued task  payload: T; // Data to pass to the callback function  callback: keyof Agent; // Name of the method to call  created_at: number; // Timestamp when the task was created  retry?: RetryOptions; // Retry options for this task};
+```ts
+type QueueItem<T> = {
+  id: string; // Unique identifier for the queued task
+  payload: T; // Data to pass to the callback function
+  callback: keyof Agent; // Name of the method to call
+  created_at: number; // Timestamp when the task was created
+  retry?: RetryOptions; // Retry options for this task
+};
 ```
 
 ## Core methods
@@ -32,10 +38,14 @@ type QueueItem<T> = {  id: string; // Unique identifier for the queued task  pay
 
 Adds a task to the queue for future execution.
 
-TypeScript
+**TypeScript**
 
-```
-async queue<T>(  callback: keyof this,  payload: T,  options?: { retry?: RetryOptions }): Promise<string>
+```ts
+async queue<T>(
+  callback: keyof this,
+  payload: T,
+  options?: { retry?: RetryOptions }
+): Promise<string>
 ```
 
 **Parameters:**
@@ -49,32 +59,62 @@ async queue<T>(  callback: keyof this,  payload: T,  options?: { retry?: RetryOp
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6119)
-* [  TypeScript ](#tab-panel-6120)
+* [  JavaScript ](#tab-panel-6299)
+* [  TypeScript ](#tab-panel-6300)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async processEmail(data) {
+    // Process the email
+    console.log(`Processing email: ${data.subject}`);
+  }
+
+
+  async onMessage(message) {
+    // Queue an email processing task
+    const taskId = await this.queue("processEmail", {
+      email: "user@example.com",
+      subject: "Welcome!",
+    });
+
+
+    console.log(`Queued task with ID: ${taskId}`);
+  }
+}
 ```
-class MyAgent extends Agent {  async processEmail(data) {    // Process the email    console.log(`Processing email: ${data.subject}`);  }
-  async onMessage(message) {    // Queue an email processing task    const taskId = await this.queue("processEmail", {      email: "user@example.com",      subject: "Welcome!",    });
-    console.log(`Queued task with ID: ${taskId}`);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async processEmail(data: { email: string; subject: string }) {    // Process the email    console.log(`Processing email: ${data.subject}`);  }
-  async onMessage(message: string) {    // Queue an email processing task    const taskId = await this.queue("processEmail", {      email: "user@example.com",      subject: "Welcome!",    });
-    console.log(`Queued task with ID: ${taskId}`);  }}
+```ts
+class MyAgent extends Agent {
+  async processEmail(data: { email: string; subject: string }) {
+    // Process the email
+    console.log(`Processing email: ${data.subject}`);
+  }
+
+
+  async onMessage(message: string) {
+    // Queue an email processing task
+    const taskId = await this.queue("processEmail", {
+      email: "user@example.com",
+      subject: "Welcome!",
+    });
+
+
+    console.log(`Queued task with ID: ${taskId}`);
+  }
+}
 ```
 
 ### `dequeue()`
 
 Removes a specific task from the queue by ID. This method is synchronous.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 dequeue(id: string): void
 ```
 
@@ -84,55 +124,59 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6109)
-* [  TypeScript ](#tab-panel-6110)
+* [  JavaScript ](#tab-panel-6289)
+* [  TypeScript ](#tab-panel-6290)
 
-JavaScript
+**JavaScript**
 
+```js
+// Remove a specific task
+agent.dequeue("abc123def");
 ```
-// Remove a specific taskagent.dequeue("abc123def");
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Remove a specific taskagent.dequeue("abc123def");
+```ts
+// Remove a specific task
+agent.dequeue("abc123def");
 ```
 
 ### `dequeueAll()`
 
 Removes all tasks from the queue. This method is synchronous.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 dequeueAll(): void
 ```
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6111)
-* [  TypeScript ](#tab-panel-6112)
+* [  JavaScript ](#tab-panel-6291)
+* [  TypeScript ](#tab-panel-6292)
 
-JavaScript
+**JavaScript**
 
+```js
+// Clear the entire queue
+agent.dequeueAll();
 ```
-// Clear the entire queueagent.dequeueAll();
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Clear the entire queueagent.dequeueAll();
+```ts
+// Clear the entire queue
+agent.dequeueAll();
 ```
 
 ### `dequeueAllByCallback()`
 
 Removes all tasks that match a specific callback method. This method is synchronous.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 dequeueAllByCallback(callback: string): void
 ```
 
@@ -142,28 +186,30 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6113)
-* [  TypeScript ](#tab-panel-6114)
+* [  JavaScript ](#tab-panel-6293)
+* [  TypeScript ](#tab-panel-6294)
 
-JavaScript
+**JavaScript**
 
+```js
+// Remove all email processing tasks
+agent.dequeueAllByCallback("processEmail");
 ```
-// Remove all email processing tasksagent.dequeueAllByCallback("processEmail");
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Remove all email processing tasksagent.dequeueAllByCallback("processEmail");
+```ts
+// Remove all email processing tasks
+agent.dequeueAllByCallback("processEmail");
 ```
 
 ### `getQueue()`
 
 Retrieves a specific queued task by ID. This method is synchronous.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getQueue<T>(id: string): QueueItem<T> | undefined
 ```
 
@@ -177,28 +223,36 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6117)
-* [  TypeScript ](#tab-panel-6118)
+* [  JavaScript ](#tab-panel-6297)
+* [  TypeScript ](#tab-panel-6298)
 
-JavaScript
+**JavaScript**
 
+```js
+const task = agent.getQueue("abc123def");
+if (task) {
+  console.log(`Task callback: ${task.callback}`);
+  console.log(`Task payload:`, task.payload);
+}
 ```
-const task = agent.getQueue("abc123def");if (task) {  console.log(`Task callback: ${task.callback}`);  console.log(`Task payload:`, task.payload);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const task = agent.getQueue("abc123def");if (task) {  console.log(`Task callback: ${task.callback}`);  console.log(`Task payload:`, task.payload);}
+```ts
+const task = agent.getQueue("abc123def");
+if (task) {
+  console.log(`Task callback: ${task.callback}`);
+  console.log(`Task payload:`, task.payload);
+}
 ```
 
 ### `getQueues()`
 
 Retrieves all queued tasks that match a specific key-value pair in their payload. This method is synchronous.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getQueues<T>(key: string, value: string): QueueItem<T>[]
 ```
 
@@ -213,19 +267,21 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6115)
-* [  TypeScript ](#tab-panel-6116)
+* [  JavaScript ](#tab-panel-6295)
+* [  TypeScript ](#tab-panel-6296)
 
-JavaScript
+**JavaScript**
 
+```js
+// Find all tasks for a specific user
+const userTasks = agent.getQueues("userId", "12345");
 ```
-// Find all tasks for a specific userconst userTasks = agent.getQueues("userId", "12345");
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Find all tasks for a specific userconst userTasks = agent.getQueues("userId", "12345");
+```ts
+// Find all tasks for a specific user
+const userTasks = agent.getQueues("userId", "12345");
 ```
 
 ## How queue processing works
@@ -242,94 +298,245 @@ TypeScript
 
 When defining callback methods for queued tasks, they must follow this signature:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 ```
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6123)
-* [  TypeScript ](#tab-panel-6124)
+* [  JavaScript ](#tab-panel-6303)
+* [  TypeScript ](#tab-panel-6304)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async sendNotification(payload, queueItem) {
+    console.log(`Processing task ${queueItem.id}`);
+    console.log(
+      `Sending notification to user ${payload.userId}: ${payload.message}`,
+    );
+
+
+    // Your notification logic here
+    await this.notificationService.send(payload.userId, payload.message);
+  }
+
+
+  async onUserSignup(userData) {
+    // Queue a welcome notification
+    await this.queue("sendNotification", {
+      userId: userData.id,
+      message: "Welcome to our platform!",
+    });
+  }
+}
 ```
-class MyAgent extends Agent {  async sendNotification(payload, queueItem) {    console.log(`Processing task ${queueItem.id}`);    console.log(      `Sending notification to user ${payload.userId}: ${payload.message}`,    );
-    // Your notification logic here    await this.notificationService.send(payload.userId, payload.message);  }
-  async onUserSignup(userData) {    // Queue a welcome notification    await this.queue("sendNotification", {      userId: userData.id,      message: "Welcome to our platform!",    });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async sendNotification(    payload: { userId: string; message: string },    queueItem: QueueItem<{ userId: string; message: string }>,  ) {    console.log(`Processing task ${queueItem.id}`);    console.log(      `Sending notification to user ${payload.userId}: ${payload.message}`,    );
-    // Your notification logic here    await this.notificationService.send(payload.userId, payload.message);  }
-  async onUserSignup(userData: any) {    // Queue a welcome notification    await this.queue("sendNotification", {      userId: userData.id,      message: "Welcome to our platform!",    });  }}
+```ts
+class MyAgent extends Agent {
+  async sendNotification(
+    payload: { userId: string; message: string },
+    queueItem: QueueItem<{ userId: string; message: string }>,
+  ) {
+    console.log(`Processing task ${queueItem.id}`);
+    console.log(
+      `Sending notification to user ${payload.userId}: ${payload.message}`,
+    );
+
+
+    // Your notification logic here
+    await this.notificationService.send(payload.userId, payload.message);
+  }
+
+
+  async onUserSignup(userData: any) {
+    // Queue a welcome notification
+    await this.queue("sendNotification", {
+      userId: userData.id,
+      message: "Welcome to our platform!",
+    });
+  }
+}
 ```
 
 ## Use cases
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-6121)
-* [  TypeScript ](#tab-panel-6122)
+* [  JavaScript ](#tab-panel-6301)
+* [  TypeScript ](#tab-panel-6302)
 
-JavaScript
+**JavaScript**
 
+```js
+class DataProcessor extends Agent {
+  async processLargeDataset(data) {
+    const results = await this.heavyComputation(data.datasetId);
+    await this.notifyUser(data.userId, results);
+  }
+
+
+  async onDataUpload(uploadData) {
+    // Queue the processing instead of doing it synchronously
+    await this.queue("processLargeDataset", {
+      datasetId: uploadData.id,
+      userId: uploadData.userId,
+    });
+
+
+    return { message: "Data upload received, processing started" };
+  }
+}
 ```
-class DataProcessor extends Agent {  async processLargeDataset(data) {    const results = await this.heavyComputation(data.datasetId);    await this.notifyUser(data.userId, results);  }
-  async onDataUpload(uploadData) {    // Queue the processing instead of doing it synchronously    await this.queue("processLargeDataset", {      datasetId: uploadData.id,      userId: uploadData.userId,    });
-    return { message: "Data upload received, processing started" };  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class DataProcessor extends Agent {  async processLargeDataset(data: { datasetId: string; userId: string }) {    const results = await this.heavyComputation(data.datasetId);    await this.notifyUser(data.userId, results);  }
-  async onDataUpload(uploadData: any) {    // Queue the processing instead of doing it synchronously    await this.queue("processLargeDataset", {      datasetId: uploadData.id,      userId: uploadData.userId,    });
-    return { message: "Data upload received, processing started" };  }}
+```ts
+class DataProcessor extends Agent {
+  async processLargeDataset(data: { datasetId: string; userId: string }) {
+    const results = await this.heavyComputation(data.datasetId);
+    await this.notifyUser(data.userId, results);
+  }
+
+
+  async onDataUpload(uploadData: any) {
+    // Queue the processing instead of doing it synchronously
+    await this.queue("processLargeDataset", {
+      datasetId: uploadData.id,
+      userId: uploadData.userId,
+    });
+
+
+    return { message: "Data upload received, processing started" };
+  }
+}
 ```
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-6125)
-* [  TypeScript ](#tab-panel-6126)
+* [  JavaScript ](#tab-panel-6305)
+* [  TypeScript ](#tab-panel-6306)
 
-JavaScript
+**JavaScript**
 
+```js
+class BatchProcessor extends Agent {
+  async processBatch(data) {
+    for (const item of data.items) {
+      await this.processItem(item);
+    }
+    console.log(`Completed batch ${data.batchId}`);
+  }
+
+
+  async onLargeRequest(items) {
+    // Split large requests into smaller batches
+    const batchSize = 10;
+    for (let i = 0; i < items.length; i += batchSize) {
+      const batch = items.slice(i, i + batchSize);
+      await this.queue("processBatch", {
+        items: batch,
+        batchId: `batch-${i / batchSize + 1}`,
+      });
+    }
+  }
+}
 ```
-class BatchProcessor extends Agent {  async processBatch(data) {    for (const item of data.items) {      await this.processItem(item);    }    console.log(`Completed batch ${data.batchId}`);  }
-  async onLargeRequest(items) {    // Split large requests into smaller batches    const batchSize = 10;    for (let i = 0; i < items.length; i += batchSize) {      const batch = items.slice(i, i + batchSize);      await this.queue("processBatch", {        items: batch,        batchId: `batch-${i / batchSize + 1}`,      });    }  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class BatchProcessor extends Agent {  async processBatch(data: { items: any[]; batchId: string }) {    for (const item of data.items) {      await this.processItem(item);    }    console.log(`Completed batch ${data.batchId}`);  }
-  async onLargeRequest(items: any[]) {    // Split large requests into smaller batches    const batchSize = 10;    for (let i = 0; i < items.length; i += batchSize) {      const batch = items.slice(i, i + batchSize);      await this.queue("processBatch", {        items: batch,        batchId: `batch-${i / batchSize + 1}`,      });    }  }}
+```ts
+class BatchProcessor extends Agent {
+  async processBatch(data: { items: any[]; batchId: string }) {
+    for (const item of data.items) {
+      await this.processItem(item);
+    }
+    console.log(`Completed batch ${data.batchId}`);
+  }
+
+
+  async onLargeRequest(items: any[]) {
+    // Split large requests into smaller batches
+    const batchSize = 10;
+    for (let i = 0; i < items.length; i += batchSize) {
+      const batch = items.slice(i, i + batchSize);
+      await this.queue("processBatch", {
+        items: batch,
+        batchId: `batch-${i / batchSize + 1}`,
+      });
+    }
+  }
+}
 ```
 
 ## Error handling
 
 Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
 
-* [  JavaScript ](#tab-panel-6127)
-* [  TypeScript ](#tab-panel-6128)
+* [  JavaScript ](#tab-panel-6307)
+* [  TypeScript ](#tab-panel-6308)
 
-JavaScript
+**JavaScript**
 
+```js
+class RobustAgent extends Agent {
+  async reliableTask(payload, queueItem) {
+    console.log(`Processing task ${queueItem.id}`);
+    const response = await fetch(payload.url);
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status}`);
+    }
+  }
+
+
+  async onMessage(connection, message) {
+    await this.queue(
+      "reliableTask",
+      { url: "https://api.example.com/data" },
+      {
+        retry: {
+          maxAttempts: 5,
+          baseDelayMs: 500,
+          maxDelayMs: 10_000,
+        },
+      },
+    );
+  }
+}
 ```
-class RobustAgent extends Agent {  async reliableTask(payload, queueItem) {    console.log(`Processing task ${queueItem.id}`);    const response = await fetch(payload.url);    if (!response.ok) {      throw new Error(`Request failed: ${response.status}`);    }  }
-  async onMessage(connection, message) {    await this.queue(      "reliableTask",      { url: "https://api.example.com/data" },      {        retry: {          maxAttempts: 5,          baseDelayMs: 500,          maxDelayMs: 10_000,        },      },    );  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class RobustAgent extends Agent {  async reliableTask(payload: { url: string }, queueItem: QueueItem) {    console.log(`Processing task ${queueItem.id}`);    const response = await fetch(payload.url);    if (!response.ok) {      throw new Error(`Request failed: ${response.status}`);    }  }
-  async onMessage(connection: Connection, message: WSMessage) {    await this.queue(      "reliableTask",      { url: "https://api.example.com/data" },      {        retry: {          maxAttempts: 5,          baseDelayMs: 500,          maxDelayMs: 10_000,        },      },    );  }}
+```ts
+class RobustAgent extends Agent {
+  async reliableTask(payload: { url: string }, queueItem: QueueItem) {
+    console.log(`Processing task ${queueItem.id}`);
+    const response = await fetch(payload.url);
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status}`);
+    }
+  }
+
+
+  async onMessage(connection: Connection, message: WSMessage) {
+    await this.queue(
+      "reliableTask",
+      { url: "https://api.example.com/data" },
+      {
+        retry: {
+          maxAttempts: 5,
+          baseDelayMs: 500,
+          maxDelayMs: 10_000,
+        },
+      },
+    );
+  }
+}
 ```
 
 If no `retry` option is provided, the class-level defaults from `static options.retry` are used (3 attempts, 100ms base delay, 3s max delay). Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for full details.

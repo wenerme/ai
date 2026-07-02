@@ -30,12 +30,12 @@ The following steps are specific to setting up JumpCloud with Cloudflare Access.
 8. In the **SSO** tab, configure the following settings:
 
   1. In **IdP Entity ID**, enter your Cloudflare team domain:
-  ```
+  ```txt
   https://<your-team-name>.cloudflareaccess.com/
   ```
   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
   2. Set both **SP Entity ID** and **ACS URL** to the following callback URL:
-  ```
+  ```txt
   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
   ```
   3. (Optional) Configure SAML attributes that you want to send to Cloudflare Access.
@@ -112,8 +112,19 @@ Provisioning attributes define the user and group properties that JumpCloud will
 
 ## Example API configuration
 
-```
-{  "config": {    "issuer_url": "jumpcloud",    "sso_target_url": "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",    "attributes": ["email", "name", "username"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"  },  "type": "saml",  "name": "jumpcloud saml example"}
+```json
+{
+  "config": {
+    "issuer_url": "jumpcloud",
+    "sso_target_url": "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+    "attributes": ["email", "name", "username"],
+    "email_attribute_name": "",
+    "sign_request": false,
+    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+  },
+  "type": "saml",
+  "name": "jumpcloud saml example"
+}
 ```
 
 ```json

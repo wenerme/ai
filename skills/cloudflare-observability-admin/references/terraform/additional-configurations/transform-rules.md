@@ -48,8 +48,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example creates a URL rewrite rule that rewrites requests for `example.com/old-folder` to `example.com/new-folder`:
 
-* [ Terraform (v5) ](#tab-panel-11011)
-* [ Terraform (v4) ](#tab-panel-11012)
+* [ Terraform (v5) ](#tab-panel-11306)
+* [ Terraform (v4) ](#tab-panel-11307)
 
 Required API token permissions
 
@@ -60,14 +60,54 @@ All of the following [token permissions](https://developers.cloudflare.com/funda
 
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
-```
-resource "cloudflare_ruleset" "transform_url_rewrite" {  zone_id     = var.cloudflare_zone_id  name        = "Transform Rule performing a static URL rewrite"  description = ""  kind        = "zone"  phase       = "http_request_transform"
-  rules = [{    ref         = "url_rewrite_old_folder"    description = "Example URL rewrite rule"    expression  = "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-folder\")"    action      = "rewrite"    action_parameters = {      uri = {        path = {          value = "/new-folder"        }      }    }  }]}
+```tf
+resource "cloudflare_ruleset" "transform_url_rewrite" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Transform Rule performing a static URL rewrite"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_transform"
+
+
+  rules = [{
+    ref         = "url_rewrite_old_folder"
+    description = "Example URL rewrite rule"
+    expression  = "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-folder\")"
+    action      = "rewrite"
+    action_parameters = {
+      uri = {
+        path = {
+          value = "/new-folder"
+        }
+      }
+    }
+  }]
+}
 ```
 
-```
-resource "cloudflare_ruleset" "transform_url_rewrite" {  zone_id     = "<ZONE_ID>"  name        = "Transform Rule performing a static URL rewrite"  description = ""  kind        = "zone"  phase       = "http_request_transform"
-  rules {    ref         = "url_rewrite_old_folder"    description = "Example URL rewrite rule"    expression  = "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-folder\")"    action      = "rewrite"    action_parameters {      uri {        path {          value = "/new-folder"        }      }    }  }}
+```tf
+resource "cloudflare_ruleset" "transform_url_rewrite" {
+  zone_id     = "<ZONE_ID>"
+  name        = "Transform Rule performing a static URL rewrite"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_transform"
+
+
+  rules {
+    ref         = "url_rewrite_old_folder"
+    description = "Example URL rewrite rule"
+    expression  = "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-folder\")"
+    action      = "rewrite"
+    action_parameters {
+      uri {
+        path {
+          value = "/new-folder"
+        }
+      }
+    }
+  }
+}
 ```
 
 To create another URL rewrite rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -85,8 +125,8 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the request with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the request, if it exists.
 
-* [ Terraform (v5) ](#tab-panel-11013)
-* [ Terraform (v4) ](#tab-panel-11014)
+* [ Terraform (v5) ](#tab-panel-11308)
+* [ Terraform (v4) ](#tab-panel-11309)
 
 Required API token permissions
 
@@ -97,14 +137,71 @@ All of the following [token permissions](https://developers.cloudflare.com/funda
 
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
-```
-resource "cloudflare_ruleset" "transform_modify_request_headers" {  zone_id     = var.cloudflare_zone_id  name        = "Transform Rule performing HTTP request header modifications"  description = ""  kind        = "zone"  phase       = "http_request_late_transform"
-  rules = [{    ref         = "modify_request_headers"    description = "Example request header transform rule"    expression  = "true"    action      = "rewrite"    action_parameters = {      headers = {        "my-header-1" = {          operation = "set"          value     = "Fixed value"        }        "my-header-2" = {          operation  = "set"          expression = "cf.zone.name"        }        "existing-header" = {          operation = "remove"        }      }    }  }]}
+```tf
+resource "cloudflare_ruleset" "transform_modify_request_headers" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Transform Rule performing HTTP request header modifications"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_late_transform"
+
+
+  rules = [{
+    ref         = "modify_request_headers"
+    description = "Example request header transform rule"
+    expression  = "true"
+    action      = "rewrite"
+    action_parameters = {
+      headers = {
+        "my-header-1" = {
+          operation = "set"
+          value     = "Fixed value"
+        }
+        "my-header-2" = {
+          operation  = "set"
+          expression = "cf.zone.name"
+        }
+        "existing-header" = {
+          operation = "remove"
+        }
+      }
+    }
+  }]
+}
 ```
 
-```
-resource "cloudflare_ruleset" "transform_modify_request_headers" {  zone_id     = "<ZONE_ID>"  name        = "Transform Rule performing HTTP request header modifications"  description = ""  kind        = "zone"  phase       = "http_request_late_transform"
-  rules {    ref         = "modify_request_headers"    description = "Example request header transform rule"    expression  = "true"    action      = "rewrite"    action_parameters {      headers {        name      = "my-header-1"        operation = "set"        value     = "Fixed value"      }      headers {        name       = "my-header-2"        operation  = "set"        expression = "cf.zone.name"      }      headers {        name      = "existing-header"        operation = "remove"      }    }  }}
+```tf
+resource "cloudflare_ruleset" "transform_modify_request_headers" {
+  zone_id     = "<ZONE_ID>"
+  name        = "Transform Rule performing HTTP request header modifications"
+  description = ""
+  kind        = "zone"
+  phase       = "http_request_late_transform"
+
+
+  rules {
+    ref         = "modify_request_headers"
+    description = "Example request header transform rule"
+    expression  = "true"
+    action      = "rewrite"
+    action_parameters {
+      headers {
+        name      = "my-header-1"
+        operation = "set"
+        value     = "Fixed value"
+      }
+      headers {
+        name       = "my-header-2"
+        operation  = "set"
+        expression = "cf.zone.name"
+      }
+      headers {
+        name      = "existing-header"
+        operation = "remove"
+      }
+    }
+  }
+}
 ```
 
 To create another request header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -121,8 +218,8 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the response with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the response, if it exists.
 
-* [ Terraform (v5) ](#tab-panel-11015)
-* [ Terraform (v4) ](#tab-panel-11016)
+* [ Terraform (v5) ](#tab-panel-11310)
+* [ Terraform (v4) ](#tab-panel-11311)
 
 Required API token permissions
 
@@ -133,14 +230,71 @@ All of the following [token permissions](https://developers.cloudflare.com/funda
 
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
-```
-resource "cloudflare_ruleset" "transform_modify_response_headers" {  zone_id     = var.cloudflare_zone_id  name        = "Transform Rule performing HTTP response header modifications"  description = ""  kind        = "zone"  phase       = "http_response_headers_transform"
-  rules = [{    ref         = "modify_response_headers"    description = "Example response header transform rule"    expression  = "true"    action      = "rewrite"    action_parameters = {      headers = {        "my-header-1" = {          operation = "set"          value     = "Fixed value"        }        "my-header-2" = {          operation  = "set"          expression = "cf.zone.name"        }        "existing-header" = {          operation = "remove"        }      }    }  }]}
+```tf
+resource "cloudflare_ruleset" "transform_modify_response_headers" {
+  zone_id     = var.cloudflare_zone_id
+  name        = "Transform Rule performing HTTP response header modifications"
+  description = ""
+  kind        = "zone"
+  phase       = "http_response_headers_transform"
+
+
+  rules = [{
+    ref         = "modify_response_headers"
+    description = "Example response header transform rule"
+    expression  = "true"
+    action      = "rewrite"
+    action_parameters = {
+      headers = {
+        "my-header-1" = {
+          operation = "set"
+          value     = "Fixed value"
+        }
+        "my-header-2" = {
+          operation  = "set"
+          expression = "cf.zone.name"
+        }
+        "existing-header" = {
+          operation = "remove"
+        }
+      }
+    }
+  }]
+}
 ```
 
-```
-resource "cloudflare_ruleset" "transform_modify_response_headers" {  zone_id     = "<ZONE_ID>"  name        = "Transform Rule performing HTTP response header modifications"  description = ""  kind        = "zone"  phase       = "http_response_headers_transform"
-  rules {    ref         = "modify_response_headers"    description = "Example response header transform rule"    expression  = "true"    action      = "rewrite"    action_parameters {      headers {        name      = "my-header-1"        operation = "set"        value     = "Fixed value"      }      headers {        name       = "my-header-2"        operation  = "set"        expression = "cf.zone.name"      }      headers {        name      = "existing-header"        operation = "remove"      }    }  }}
+```tf
+resource "cloudflare_ruleset" "transform_modify_response_headers" {
+  zone_id     = "<ZONE_ID>"
+  name        = "Transform Rule performing HTTP response header modifications"
+  description = ""
+  kind        = "zone"
+  phase       = "http_response_headers_transform"
+
+
+  rules {
+    ref         = "modify_response_headers"
+    description = "Example response header transform rule"
+    expression  = "true"
+    action      = "rewrite"
+    action_parameters {
+      headers {
+        name      = "my-header-1"
+        operation = "set"
+        value     = "Fixed value"
+      }
+      headers {
+        name       = "my-header-2"
+        operation  = "set"
+        expression = "cf.zone.name"
+      }
+      headers {
+        name      = "existing-header"
+        operation = "remove"
+      }
+    }
+  }
+}
 ```
 
 To create another response header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -151,8 +305,8 @@ For more information on modifying response headers, refer to [Response Header Tr
 
 ## Configure Managed Transforms
 
-* [ Terraform (v5) ](#tab-panel-11009)
-* [ Terraform (v4) ](#tab-panel-11010)
+* [ Terraform (v5) ](#tab-panel-11304)
+* [ Terraform (v4) ](#tab-panel-11305)
 
 Required API token permissions
 
@@ -163,16 +317,40 @@ All of the following [token permissions](https://developers.cloudflare.com/funda
 
 Configure the [cloudflare\_managed\_transforms ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed%5Ftransforms) resource:
 
-```
-resource "cloudflare_managed_transforms" "tf_example" {  zone_id = var.cloudflare_zone_id
-  managed_request_headers = [{    id      = "add_visitor_location_headers"    enabled = true  }]
-  managed_response_headers = [{    id      = "remove_x-powered-by_header"    enabled = true  }]}
+```tf
+resource "cloudflare_managed_transforms" "tf_example" {
+  zone_id = var.cloudflare_zone_id
+
+
+  managed_request_headers = [{
+    id      = "add_visitor_location_headers"
+    enabled = true
+  }]
+
+
+  managed_response_headers = [{
+    id      = "remove_x-powered-by_header"
+    enabled = true
+  }]
+}
 ```
 
-```
-resource "cloudflare_managed_headers" "tf_example" {  zone_id = "<ZONE_ID>"
-  managed_request_headers {    id      = "add_visitor_location_headers"    enabled = true  }
-  managed_response_headers {    id      = "remove_x-powered-by_header"    enabled = true  }}
+```tf
+resource "cloudflare_managed_headers" "tf_example" {
+  zone_id = "<ZONE_ID>"
+
+
+  managed_request_headers {
+    id      = "add_visitor_location_headers"
+    enabled = true
+  }
+
+
+  managed_response_headers {
+    id      = "remove_x-powered-by_header"
+    enabled = true
+  }
+}
 ```
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).

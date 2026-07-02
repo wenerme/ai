@@ -28,16 +28,27 @@ Make TTL changes a few days before the production update, and wait at least as l
 
 To check your existing TTL, open a terminal window and run the following command against your domain:
 
-Terminal window
-
-```
+```sh
 dig mx <YOUR_DOMAIN>
 ```
 
-```
-; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 4096;; QUESTION SECTION:;<YOUR_DOMAIN>.    IN  MX
-;; ANSWER SECTION:<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
+```txt
+; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938
+;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;<YOUR_DOMAIN>.    IN  MX
+
+
+;; ANSWER SECTION:
+<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.
+<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
 ```
 
 In the above example, TTL is shown in seconds as `300` (or five minutes).

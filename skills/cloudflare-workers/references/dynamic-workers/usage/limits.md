@@ -20,18 +20,28 @@ You can set limits for the maximum CPU time and number of subrequests per invoca
 
 Custom limits can be specified as part of the worker code:
 
-JavaScript
+**JavaScript**
 
-```
-const worker = env.LOADER.get("my-worker", async () => {  return {    compatibilityDate: "$today",    mainModule: "index.js",    modules: { "index.js": code },    limits: { cpuMs: 10, subRequests: 5 },  };});
+```js
+const worker = env.LOADER.get("my-worker", async () => {
+  return {
+    compatibilityDate: "$today",
+    mainModule: "index.js",
+    modules: { "index.js": code },
+    limits: { cpuMs: 10, subRequests: 5 },
+  };
+});
 ```
 
 They can also be specified as part of the `getEntrypoint()` call:
 
-JavaScript
+**JavaScript**
 
-```
-// get the worker's default entrypoint with custom limits// if limits were already specified as part of the worker code, the lower of the two limits is usedconst entrypoint = worker.getEntrypoint(null, { limits: { cpuMs: 10, subRequests: 5 } });await entrypoint.fetch(...);
+```js
+// get the worker's default entrypoint with custom limits
+// if limits were already specified as part of the worker code, the lower of the two limits is used
+const entrypoint = worker.getEntrypoint(null, { limits: { cpuMs: 10, subRequests: 5 } });
+await entrypoint.fetch(...);
 ```
 
 ```json

@@ -29,16 +29,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatComposerUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatComposerUi />;}
+
+
+function MyComponent() {
+  return <RtkChatComposerUi />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatComposerUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatComposerUi      canSendFiles={true}      canSendTextMessage={true}      size="md"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatComposerUi
+      canSendFiles={true}
+      canSendTextMessage={true}
+      size="md"
+    />
+  );
+}
 ```
 
 ```json

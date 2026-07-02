@@ -14,6 +14,46 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
+## 2026-06-30
+
+
+**New permissions and roles for Gateway policies and lists**
+
+You can now assign granular, resource-scoped roles for [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) firewall policies and [Zero Trust lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Administrators can delegate access to specific policy types or list management without granting account-wide or product-wide control.
+
+#### What is new
+
+When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the following resource-scoped roles are now available:
+
+| Role                                       | Description                                                                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Zero Trust Gateway Firewall Policies Admin | Can view and edit all Gateway firewall policies, including DNS, HTTP, and Network policies. |
+| Zero Trust Gateway DNS Policies Admin      | Can view and edit Gateway DNS policies.                                                     |
+| Zero Trust Gateway HTTP Policies Admin     | Can view and edit Gateway HTTP policies.                                                    |
+| Zero Trust Gateway Network Policies Admin  | Can view and edit Gateway Network policies.                                                 |
+| Zero Trust Gateway Egress Policies Admin   | Can view and edit Gateway Egress policies.                                                  |
+| Zero Trust Gateway Resolver Policies Admin | Can view and edit Gateway Resolver policies.                                                |
+| Zero Trust Gateway Policies Admin          | Can view and edit all Gateway policies.                                                     |
+| Zero Trust Gateway Policies Read           | Can view all Gateway policies.                                                              |
+| Zero Trust Gateway Read Only               | Can view all Gateway resources.                                                             |
+| Zero Trust DNS Locations Admin             | Can view and edit DNS locations.                                                            |
+| Zero Trust Proxy Endpoints Admin           | Can view and edit Gateway Proxy Endpoints.                                                  |
+| Zero Trust Account Lists Admin             | Can view and edit all Gateway and Access lists.                                             |
+| Zero Trust Account Lists Read              | Can view all Gateway and Access lists.                                                      |
+
+These roles allow you to:
+
+* Grant a network engineer write access to Network policies only, without exposing DNS or HTTP policy configuration.
+* Allow a security analyst to view all Gateway policies in read-only mode for auditing purposes.
+* Delegate list management to a team that maintains block and allow lists without giving them access to policy configuration.
+
+You can also now assign _Resource-scoped roles_. These roles are complementary to existing account-level roles, and allow you to grant access to a specific resource, like an individual Gateway policy or Cloudflare One list. **Existing account-level roles continue to work.** A member with the `Cloudflare Gateway` or `Cloudflare Zero Trust` role retains full access to all Gateway resources. This ensures backward compatibility for existing automation and API tokens.
+
+#### Get started
+
+* Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+* Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
+
 ## 2026-06-05
 
 
@@ -40,34 +80,47 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7256)
-* [  wrangler.toml ](#tab-panel-7257)
+* [  wrangler.jsonc ](#tab-panel-7506)
+* [  wrangler.toml ](#tab-panel-7507)
 
-JSONC
+**JSONC**
 
-```
-{  "vpc_networks": [    {      "binding": "EGRESS",      "network_id": "cf1:network",      "remote": true,    },  ],}
-```
-
-TOML
-
-```
-[[vpc_networks]]binding = "EGRESS"network_id = "cf1:network"remote = true
-```
-
-* [  JavaScript ](#tab-panel-7258)
-* [  TypeScript ](#tab-panel-7259)
-
-JavaScript
-
-```
-// Egress to a public destination — subject to your Gateway policies and loggedconst response = await env.EGRESS.fetch("https://api.example.com/data");
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "EGRESS",
+      "network_id": "cf1:network",
+      "remote": true,
+    },
+  ],
+}
 ```
 
-TypeScript
+**TOML**
 
+```toml
+[[vpc_networks]]
+binding = "EGRESS"
+network_id = "cf1:network"
+remote = true
 ```
-// Egress to a public destination — subject to your Gateway policies and loggedconst response = await env.EGRESS.fetch("https://api.example.com/data");
+
+* [  JavaScript ](#tab-panel-7508)
+* [  TypeScript ](#tab-panel-7509)
+
+**JavaScript**
+
+```js
+// Egress to a public destination — subject to your Gateway policies and logged
+const response = await env.EGRESS.fetch("https://api.example.com/data");
+```
+
+**TypeScript**
+
+```ts
+// Egress to a public destination — subject to your Gateway policies and logged
+const response = await env.EGRESS.fetch("https://api.example.com/data");
 ```
 
 For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). For policy authoring, refer to [Cloudflare Gateway traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).

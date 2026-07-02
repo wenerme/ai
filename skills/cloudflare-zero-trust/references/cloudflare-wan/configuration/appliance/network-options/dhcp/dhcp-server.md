@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
 
-* [ Dashboard ](#tab-panel-7838)
-* [ API ](#tab-panel-7839)
+* [ Dashboard ](#tab-panel-8091)
+* [ API ](#tab-panel-8092)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -43,10 +43,23 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Update Site LAN
+**Update Site LAN**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "lan": {        "static_addressing": {            "dhcp_server": {                "dhcp_pool_end": "<IP_ADDRESS>",                "dhcp_pool_start": "<IP_ADDRESS>",                "dns_server": "<IP_ADDRESS>"            }        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "lan": {
+        "static_addressing": {
+            "dhcp_server": {
+                "dhcp_pool_end": "<IP_ADDRESS>",
+                "dhcp_pool_start": "<IP_ADDRESS>",
+                "dns_server": "<IP_ADDRESS>"
+            }
+        }
+    }
+  }'
 ```
 
 ```json

@@ -23,19 +23,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-markdown-view></rtk-markdown-view>
 ```
 
 ### With Properties
 
-```
-<rtk-markdown-view text="example"></rtk-markdown-view>
+```html
+<rtk-markdown-view
+ text="example">
+</rtk-markdown-view>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-markdown-view");
-  el.maxLength= 42;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-markdown-view");
+
+
+  el.maxLength= 42;
+</script>
 ```
 
 ```json

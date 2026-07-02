@@ -20,9 +20,9 @@ Read, write, and manage files in the sandbox filesystem. All paths are absolute 
 
 Write content to a file.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.writeFile(path: string, content: string, options?: WriteFileOptions): Promise<void>
 ```
 
@@ -33,21 +33,27 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):
   * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-10245)
-* [  TypeScript ](#tab-panel-10246)
+* [  JavaScript ](#tab-panel-10540)
+* [  TypeScript ](#tab-panel-10541)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.writeFile("/workspace/app.js", `console.log('Hello!');`);
-// Binary dataawait sandbox.writeFile("/tmp/image.png", base64Data, { encoding: "base64" });
+
+
+// Binary data
+await sandbox.writeFile("/tmp/image.png", base64Data, { encoding: "base64" });
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.writeFile('/workspace/app.js', `console.log('Hello!');`);
-// Binary dataawait sandbox.writeFile('/tmp/image.png', base64Data, { encoding: 'base64' });
+
+
+// Binary data
+await sandbox.writeFile('/tmp/image.png', base64Data, { encoding: 'base64' });
 ```
 
 Base64 validation
@@ -58,19 +64,21 @@ When using `encoding: 'base64'`, content must contain only valid base64 characte
 
 When using the [rpc transport](https://developers.cloudflare.com/sandbox/configuration/transport/) the `writeFile()` method supports passing a `ReadableStream` as the `content` parameter. This allows binary data and files greater than [32 MiB](https://developers.cloudflare.com/workers/runtime-apis/rpc/#limitations) to be written to the sandbox. It replaces the `"base64"` encoding option.
 
-JavaScript
+**JavaScript**
 
-```
-// Requires SANDBOX_TRANSPORT to be "rpc" in wrangler.jsoncconst req = await fetch("https://example.com/archive.tar.gz");await sandbox.writeFile('/workspace/archive.tar.gz', req.body);
+```js
+// Requires SANDBOX_TRANSPORT to be "rpc" in wrangler.jsonc
+const req = await fetch("https://example.com/archive.tar.gz");
+await sandbox.writeFile('/workspace/archive.tar.gz', req.body);
 ```
 
 ### `readFile()`
 
 Read a file from the sandbox. By default returns the content as a string. This is useful for small text files. For larger files and binary data use `encoding: "none"` to get back a `ReadableStream` with the file data.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Promise<ReadFileResult | ReadFileStreamResult>
 ```
 
@@ -86,27 +94,72 @@ Encoding
 
 The `"none"` encoding property was added in 0.10.1 and aims to improve support for streaming binary data. When `encoding: "none"` is provided the `content` field will be a `ReadableStream<Uint8Array>`. It is only supported with the [RPC transport](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
-* [  JavaScript ](#tab-panel-10259)
-* [  TypeScript ](#tab-panel-10260)
+* [  JavaScript ](#tab-panel-10554)
+* [  TypeScript ](#tab-panel-10555)
 
-JavaScript
+**JavaScript**
 
+```js
+const file = await sandbox.readFile("/workspace/package.json");
+const pkg = JSON.parse(file.content);
+
+
+// Binary data (since 0.10.1 using `rpc` transport)
+const { content, size, mimeType } = await sandbox.readFile(
+  "/workspace/archive.tar.gz",
+  {
+    encoding: "none",
+  },
+);
+
+
+// Example 1: Store on R2:
+const stream = request.body.pipeThrough(new FixedLengthStream(size));
+await env.MY_BUCKET.put("/bucket/archive.tar.gz", stream, {
+  httpMetadata: { contentType: mimeType },
+});
+
+
+// Example 2: Stream an HTTP response:
+return new Response(content, { headers: { "Content-Type": mimeType } });
+
+
+// Older versions/transports used the base64 encoding for binary data:
+const archive = await sandbox.readFile("/workspace/archive.tar.gz", {
+  encoding: "base64",
+});
+console.log(archive.content); // => "<base64 encoded string>";
 ```
-const file = await sandbox.readFile("/workspace/package.json");const pkg = JSON.parse(file.content);
-// Binary data (since 0.10.1 using `rpc` transport)const { content, size, mimeType } = await sandbox.readFile(  "/workspace/archive.tar.gz",  {    encoding: "none",  },);
-// Example 1: Store on R2:const stream = request.body.pipeThrough(new FixedLengthStream(size));await env.MY_BUCKET.put("/bucket/archive.tar.gz", stream, {  httpMetadata: { contentType: mimeType },});
-// Example 2: Stream an HTTP response:return new Response(content, { headers: { "Content-Type": mimeType } });
-// Older versions/transports used the base64 encoding for binary data:const archive = await sandbox.readFile("/workspace/archive.tar.gz", {  encoding: "base64",});console.log(archive.content); // => "<base64 encoded string>";
-```
 
-TypeScript
+**TypeScript**
 
-```
-const file = await sandbox.readFile('/workspace/package.json');const pkg = JSON.parse(file.content);
-// Binary data (since 0.10.1 using `rpc` transport)const { content, size, mimeType } = await sandbox.readFile("/workspace/archive.tar.gz", {  encoding: "none"});
-// Example 1: Store on R2:const stream = request.body.pipeThrough(new FixedLengthStream(size));await env.MY_BUCKET.put('/bucket/archive.tar.gz', stream, {  httpMetadata: { contentType: mimeType }});
-// Example 2: Stream an HTTP response:return new Response(content, { headers: { "Content-Type": mimeType } });
-// Older versions/transports used the base64 encoding for binary data:const archive = await sandbox.readFile("/workspace/archive.tar.gz", {  encoding: "base64"});console.log(archive.content); // => "<base64 encoded string>";
+```ts
+const file = await sandbox.readFile('/workspace/package.json');
+const pkg = JSON.parse(file.content);
+
+
+// Binary data (since 0.10.1 using `rpc` transport)
+const { content, size, mimeType } = await sandbox.readFile("/workspace/archive.tar.gz", {
+  encoding: "none"
+});
+
+
+// Example 1: Store on R2:
+const stream = request.body.pipeThrough(new FixedLengthStream(size));
+await env.MY_BUCKET.put('/bucket/archive.tar.gz', stream, {
+  httpMetadata: { contentType: mimeType }
+});
+
+
+// Example 2: Stream an HTTP response:
+return new Response(content, { headers: { "Content-Type": mimeType } });
+
+
+// Older versions/transports used the base64 encoding for binary data:
+const archive = await sandbox.readFile("/workspace/archive.tar.gz", {
+  encoding: "base64"
+});
+console.log(archive.content); // => "<base64 encoded string>";
 ```
 
 Encoding behavior
@@ -117,9 +170,9 @@ When `encoding` is specified, it overrides MIME-based auto-detection. Without `e
 
 Check if a file or directory exists.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 ```
 
@@ -129,21 +182,41 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-10255)
-* [  TypeScript ](#tab-panel-10256)
+* [  JavaScript ](#tab-panel-10550)
+* [  TypeScript ](#tab-panel-10551)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await sandbox.exists("/workspace/package.json");
+if (result.exists) {
+  const file = await sandbox.readFile("/workspace/package.json");
+  // process file
+}
+
+
+// Check directory
+const dirResult = await sandbox.exists("/workspace/src");
+if (!dirResult.exists) {
+  await sandbox.mkdir("/workspace/src");
+}
 ```
-const result = await sandbox.exists("/workspace/package.json");if (result.exists) {  const file = await sandbox.readFile("/workspace/package.json");  // process file}
-// Check directoryconst dirResult = await sandbox.exists("/workspace/src");if (!dirResult.exists) {  await sandbox.mkdir("/workspace/src");}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await sandbox.exists('/workspace/package.json');if (result.exists) {  const file = await sandbox.readFile('/workspace/package.json');  // process file}
-// Check directoryconst dirResult = await sandbox.exists('/workspace/src');if (!dirResult.exists) {  await sandbox.mkdir('/workspace/src');}
+```ts
+const result = await sandbox.exists('/workspace/package.json');
+if (result.exists) {
+  const file = await sandbox.readFile('/workspace/package.json');
+  // process file
+}
+
+
+// Check directory
+const dirResult = await sandbox.exists('/workspace/src');
+if (!dirResult.exists) {
+  await sandbox.mkdir('/workspace/src');
+}
 ```
 
 Available on sessions
@@ -154,9 +227,9 @@ Both `sandbox.exists()` and `session.exists()` are supported.
 
 Create a directory.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 ```
 
@@ -166,30 +239,36 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):
   * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-10249)
-* [  TypeScript ](#tab-panel-10250)
+* [  JavaScript ](#tab-panel-10544)
+* [  TypeScript ](#tab-panel-10545)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.mkdir("/workspace/src");
-// Nested directoriesawait sandbox.mkdir("/workspace/src/components/ui", { recursive: true });
+
+
+// Nested directories
+await sandbox.mkdir("/workspace/src/components/ui", { recursive: true });
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.mkdir('/workspace/src');
-// Nested directoriesawait sandbox.mkdir('/workspace/src/components/ui', { recursive: true });
+
+
+// Nested directories
+await sandbox.mkdir('/workspace/src/components/ui', { recursive: true });
 ```
 
 ### `deleteFile()`
 
 Delete a file.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.deleteFile(path: string): Promise<void>
 ```
 
@@ -197,18 +276,18 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-10247)
-* [  TypeScript ](#tab-panel-10248)
+* [  JavaScript ](#tab-panel-10542)
+* [  TypeScript ](#tab-panel-10543)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.deleteFile("/workspace/temp.txt");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.deleteFile('/workspace/temp.txt');
 ```
 
@@ -216,9 +295,9 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 Rename a file.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 ```
 
@@ -227,18 +306,18 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-10251)
-* [  TypeScript ](#tab-panel-10252)
+* [  JavaScript ](#tab-panel-10546)
+* [  TypeScript ](#tab-panel-10547)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.renameFile("/workspace/draft.txt", "/workspace/final.txt");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.renameFile('/workspace/draft.txt', '/workspace/final.txt');
 ```
 
@@ -246,9 +325,9 @@ await sandbox.renameFile('/workspace/draft.txt', '/workspace/final.txt');
 
 Move a file to a different directory.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<void>
 ```
 
@@ -257,18 +336,18 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-10253)
-* [  TypeScript ](#tab-panel-10254)
+* [  JavaScript ](#tab-panel-10548)
+* [  TypeScript ](#tab-panel-10549)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.moveFile("/tmp/download.txt", "/workspace/data.txt");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.moveFile('/tmp/download.txt', '/workspace/data.txt');
 ```
 
@@ -276,9 +355,9 @@ await sandbox.moveFile('/tmp/download.txt', '/workspace/data.txt');
 
 Clone a git repository.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promise<void>
 ```
 
@@ -290,23 +369,45 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
   * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)
   * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-10257)
-* [  TypeScript ](#tab-panel-10258)
+* [  JavaScript ](#tab-panel-10552)
+* [  TypeScript ](#tab-panel-10553)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.gitCheckout("https://github.com/user/repo");
-// Specific branchawait sandbox.gitCheckout("https://github.com/user/repo", {  branch: "develop",  targetDir: "/workspace/my-project",});
-// Shallow clone (faster for large repositories)await sandbox.gitCheckout("https://github.com/facebook/react", {  depth: 1,});
+
+
+// Specific branch
+await sandbox.gitCheckout("https://github.com/user/repo", {
+  branch: "develop",
+  targetDir: "/workspace/my-project",
+});
+
+
+// Shallow clone (faster for large repositories)
+await sandbox.gitCheckout("https://github.com/facebook/react", {
+  depth: 1,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.gitCheckout('https://github.com/user/repo');
-// Specific branchawait sandbox.gitCheckout('https://github.com/user/repo', {  branch: 'develop',  targetDir: '/workspace/my-project'});
-// Shallow clone (faster for large repositories)await sandbox.gitCheckout('https://github.com/facebook/react', {  depth: 1});
+
+
+// Specific branch
+await sandbox.gitCheckout('https://github.com/user/repo', {
+  branch: 'develop',
+  targetDir: '/workspace/my-project'
+});
+
+
+// Shallow clone (faster for large repositories)
+await sandbox.gitCheckout('https://github.com/facebook/react', {
+  depth: 1
+});
 ```
 
 ## Related resources

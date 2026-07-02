@@ -41,7 +41,7 @@ To set up the Okta integration using the Okta Integration Network (OIN) App Cata
 5. Select **Add integration**.
 6. In **Application label**, enter a name for the application (for example, `Cloudflare Access`).
 7. In **Team domain**, enter your Cloudflare Zero Trust team name (only the subdomain prefix, do not include `.cloudflareaccess.com`):
-```
+```txt
 <your-team-name>
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -56,7 +56,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 ![Creating an OIDC application in Okta](https://developers.cloudflare.com/_astro/okta-1.BlGKmCip_Z24dx2X.webp)
 4. For the **Application type**, select **Web Application**. Select **Next**.
 5. Enter any name for the application. In the **Sign-in redirect URIs** field, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -159,8 +159,16 @@ New users must first [register the Cloudflare One Client](https://developers.clo
 
 ## Example API Configuration
 
-```
-{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "okta_account": "https://dev-abc123.oktapreview.com"  },  "type": "okta",  "name": "my example idp"}
+```json
+{
+  "config": {
+    "client_id": "<your client id>",
+    "client_secret": "<your client secret>",
+    "okta_account": "https://dev-abc123.oktapreview.com"
+  },
+  "type": "okta",
+  "name": "my example idp"
+}
 ```
 
 ## Troubleshooting
@@ -179,7 +187,7 @@ If Okta's [Enhanced Dynamic Zone ↗](https://help.okta.com/oie/en-us/content/to
 
 In the Okta system logs, this appears as:
 
-```
+```txt
 Blocked request from IP: <BLOCKED_IP>, IPServiceCategory: WARP_VPN
 ```
 

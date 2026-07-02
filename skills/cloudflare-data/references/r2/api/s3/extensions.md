@@ -44,8 +44,12 @@ If you are creating buckets on demand, you might initiate an upload with the ass
 
 To support sending an upload with a streaming body to a bucket that may not exist yet, upload operations such as `PutObject` or `CreateMultipartUpload` allow you to specify a header that will ensure the `NoSuchBucket` error is not returned. If the bucket does not exist at the time of upload, it is implicitly instantiated with the following `CreateBucket` request:
 
-```
-PUT / HTTP/1.1Host: bucket.account.r2.cloudflarestorage.com<CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">   <LocationConstraint>auto</LocationConstraint></CreateBucketConfiguration>
+```txt
+PUT / HTTP/1.1
+Host: bucket.account.r2.cloudflarestorage.com
+<CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <LocationConstraint>auto</LocationConstraint>
+</CreateBucketConfiguration>
 ```
 
 This is only useful if you are creating buckets on demand because you do not know the name of the bucket or the preferred access location ahead of time. For example, you have one bucket per one of your customers and the bucket is created on first upload to the bucket and not during account registration. In these cases, the [ListBuckets extension](#listbuckets), which supports accounts with more than 1,000 buckets, may also be useful.

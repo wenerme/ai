@@ -50,8 +50,26 @@ Once decompressed, the integration package includes:
 2. Create a new Lambda function and specify a _function name_ of your choice and the _Java-8 runtime_.
 3. Create or specify an execution role with the following permissions. You can also further restrict the resource permissions as desired for your specific set-up.
 
-```
-{  "Version": "2012-10-17",  "Statement": [    {      "Sid": "Policy",      "Effect": "Allow",      "Action": [        "logs:CreateLogGroup"        "s3:GetObject",        "logs:CreateLogStream",        "logs:PutLogEvents"      ],      "Resource": [        "arn:aws:logs:your-region:your-account-number:*",        "arn:aws:s3:your-region::cloudflare-bucket-name/*"      ]    }  ]}
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Policy",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup"
+        "s3:GetObject",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:your-region:your-account-number:*",
+        "arn:aws:s3:your-region::cloudflare-bucket-name/*"
+      ]
+    }
+  ]
+}
 ```
 
 **Note:** If your Graylog cluster is running in a VPC, you may need to add the _AWSLambdaVPCAccessExecutionRole_ managed role to allow the Lambda function to route traffic to the VPC.

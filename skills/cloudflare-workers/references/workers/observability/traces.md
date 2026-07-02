@@ -41,19 +41,29 @@ For more information, refer to [Custom spans](https://developers.cloudflare.com/
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-11940)
-* [  wrangler.toml ](#tab-panel-11941)
+* [  wrangler.jsonc ](#tab-panel-12235)
+* [  wrangler.toml ](#tab-panel-12236)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      // optional sampling rate (recommended for high-traffic workloads)
+      "head_sampling_rate": 0.05
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      // optional sampling rate (recommended for high-traffic workloads)      "head_sampling_rate": 0.05    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truehead_sampling_rate = 0.05
+```toml
+[observability.traces]
+enabled = true
+head_sampling_rate = 0.05
 ```
 
 Note
@@ -82,20 +92,39 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-11942)
-* [  wrangler.toml ](#tab-panel-11943)
+* [  wrangler.jsonc ](#tab-panel-12237)
+* [  wrangler.toml ](#tab-panel-12238)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      // set tracing sampling rate to 5%
+      "head_sampling_rate": 0.05
+    },
+    "logs": {
+      "enabled": true,
+      // set logging sampling rate to 60%
+      "head_sampling_rate": 0.6
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      // set tracing sampling rate to 5%      "head_sampling_rate": 0.05    },    "logs": {      "enabled": true,      // set logging sampling rate to 60%      "head_sampling_rate": 0.6    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truehead_sampling_rate = 0.05
-[observability.logs]enabled = truehead_sampling_rate = 0.6
+```toml
+[observability.traces]
+enabled = true
+head_sampling_rate = 0.05
+
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 0.6
 ```
 
 If you have `head_sampling_rate` configured for logs, you can also create a separate rate for traces.

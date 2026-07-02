@@ -51,7 +51,7 @@ Find the [URL ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-
 
 Then, [create a CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) in Cloudflare. For example, if the full host URL of the bucket is `files.example.com.s3.amazonaws.com`, you would add a `CNAME` record similar to the following:
 
-```
+```txt
 files  CNAME  files.example.com.s3.amazonaws.com
 ```
 

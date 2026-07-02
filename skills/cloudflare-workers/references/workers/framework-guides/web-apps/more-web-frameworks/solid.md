@@ -84,9 +84,7 @@ pnpm create cloudflare@latest my-solid-app --framework=solid --experimental
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-solid-app
 ```
 

@@ -27,16 +27,23 @@ Terraform code snippets below refer to the v5 SDK only.
 
 Create a new branch and add a DNS record for your Asia server:
 
-Terminal window
-
-```
+```bash
 git checkout -b step4-configure-load-balancing
 ```
 
 Add a DNS record for a second web server, located in Asia. For example purposes, the IP address for this server is `198.51.100.15`. Add the second DNS record to your `main.tf`:
 
-```
-# Asia origin serverresource "cloudflare_dns_record" "www_asia" {  zone_id = var.zone_id  name    = "www"  content = "198.51.100.15"  type    = "A"  ttl     = 300  proxied = true  comment = "Asia origin server"}
+```hcl
+# Asia origin server
+resource "cloudflare_dns_record" "www_asia" {
+  zone_id = var.zone_id
+  name    = "www"
+  content = "198.51.100.15"
+  type    = "A"
+  ttl     = 300
+  proxied = true
+  comment = "Asia origin server"
+}
 ```
 
 Note
@@ -45,24 +52,28 @@ Note that while the name of the `resource` is different because Terraform resour
 
 Apply this change to see basic round-robin behavior:
 
-Terminal window
-
-```
-terraform planterraform apply
+```bash
+terraform plan
+terraform apply
 ```
 
 Test the basic load distribution:
 
-Terminal window
-
-```
-# Make several requests to see both originsfor i in {1..4}; do  curl https://www.example.com  sleep 1done
+```bash
+# Make several requests to see both origins
+for i in {1..4}; do
+  curl https://www.example.com
+  sleep 1
+done
 ```
 
 Expected output:
 
-```
-Hello, this is 203.0.113.10!Hello, this is 203.0.113.10!Hello, this is 198.51.100.15!Hello, this is 203.0.113.10!
+```bash
+Hello, this is 203.0.113.10!
+Hello, this is 203.0.113.10!
+Hello, this is 198.51.100.15!
+Hello, this is 203.0.113.10!
 ```
 
 You'll see random distribution between your two origin servers. This basic DNS-based load balancing has limitations - no health checks, no geographic steering, and unpredictable distribution patterns. For more advanced scenarios like origins in different geographies or automatic failover, you'll want to use [Cloudflare's Load Balancing](https://developers.cloudflare.com/load-balancing/).
@@ -88,13 +99,62 @@ When you create a load balancer (LB), it will [replace any existing DNS records 
 
 To achieve the above, add the load balancing configuration to `main.tf`:
 
-```
-# Health check monitorresource "cloudflare_load_balancer_monitor" "health_check" {  account_id     = var.account_id  expected_body = "alive"  expected_codes = "2xx"  method         = "GET"  timeout        = 5  path           = "/health"  interval       = 60  retries        = 2  description    = "Health check for www origins"  type           = "https"
-  header = {    Host = ["${var.domain}"]  }}
-# Origin poolresource "cloudflare_load_balancer_pool" "www_pool" {  account_id = var.account_id  name       = "www-origins"  monitor    = cloudflare_load_balancer_monitor.health_check.id
-  origins = [{    name    = "www-us"    address = "203.0.113.10"    enabled = true  }, {    name    = "www-asia"    address = "198.51.100.15"    enabled = true  }]
-  description     = "Primary www server pool"  enabled         = true  minimum_origins = 1  notification_email = "<YOUR_EMAIL>"  check_regions   = ["WEU", "EEU", "WNAM", "ENAM", "SEAS", "NEAS"]}
-# Load balancerresource "cloudflare_load_balancer" "www_lb" {  zone_id       = var.zone_id  name          = "www.${var.domain}"  default_pools = [cloudflare_load_balancer_pool.www_pool.id]  fallback_pool = cloudflare_load_balancer_pool.www_pool.id  description   = "Load balancer for www.${var.domain}"  proxied       = true}
+```hcl
+# Health check monitor
+resource "cloudflare_load_balancer_monitor" "health_check" {
+  account_id     = var.account_id
+  expected_body = "alive"
+  expected_codes = "2xx"
+  method         = "GET"
+  timeout        = 5
+  path           = "/health"
+  interval       = 60
+  retries        = 2
+  description    = "Health check for www origins"
+  type           = "https"
+
+
+  header = {
+    Host = ["${var.domain}"]
+  }
+}
+
+
+# Origin pool
+resource "cloudflare_load_balancer_pool" "www_pool" {
+  account_id = var.account_id
+  name       = "www-origins"
+  monitor    = cloudflare_load_balancer_monitor.health_check.id
+
+
+  origins = [{
+    name    = "www-us"
+    address = "203.0.113.10"
+    enabled = true
+  }, {
+    name    = "www-asia"
+    address = "198.51.100.15"
+    enabled = true
+  }]
+
+
+  description     = "Primary www server pool"
+  enabled         = true
+  minimum_origins = 1
+  notification_email = "<YOUR_EMAIL>"
+  check_regions   = ["WEU", "EEU", "WNAM", "ENAM", "SEAS", "NEAS"]
+}
+
+
+# Load balancer
+resource "cloudflare_load_balancer" "www_lb" {
+  zone_id       = var.zone_id
+  name          = "www.${var.domain}"
+  default_pools = [cloudflare_load_balancer_pool.www_pool.id]
+  fallback_pool = cloudflare_load_balancer_pool.www_pool.id
+  description   = "Load balancer for www.${var.domain}"
+  proxied       = true
+}
 ```
 
 Note
@@ -103,34 +163,47 @@ The load balancer will automatically replace your existing DNS records with the 
 
 Preview and apply the changes:
 
-Terminal window
-
-```
-terraform planterraform apply
+```bash
+terraform plan
+terraform apply
 ```
 
 Test the improved load balancing:
 
-Terminal window
-
-```
-# Test load distribution with health monitoringfor i in {1..6}; do  echo "Request $i:"  curl -s https://www.example.com  sleep 2done
+```bash
+# Test load distribution with health monitoring
+for i in {1..6}; do
+  echo "Request $i:"
+  curl -s https://www.example.com
+  sleep 2
+done
 ```
 
 Expected output:
 
-```
-Request 1:Hello, this is 198.51.100.15!Request 2:Hello, this is 203.0.113.10!Request 3:Hello, this is 198.51.100.15!Request 4:Hello, this is 203.0.113.10!Request 5:Hello, this is 203.0.113.10!Request 6:Hello, this is 198.51.100.15!
+```bash
+Request 1:
+Hello, this is 198.51.100.15!
+Request 2:
+Hello, this is 203.0.113.10!
+Request 3:
+Hello, this is 198.51.100.15!
+Request 4:
+Hello, this is 203.0.113.10!
+Request 5:
+Hello, this is 203.0.113.10!
+Request 6:
+Hello, this is 198.51.100.15!
 ```
 
 You should now see more predictable load distribution with the added benefits of health monitoring and automatic failover.
 
 Merge and verify:
 
-Terminal window
-
-```
-git add main.tfgit commit -m "Step 4 - Create load balancer (LB) monitor, LB pool, and LB"git push
+```bash
+git add main.tf
+git commit -m "Step 4 - Create load balancer (LB) monitor, LB pool, and LB"
+git push
 ```
 
 Verify the configuration is working by checking the Cloudflare dashboard under **Traffic** \> **Load Balancing**. You should see your monitor, pool, and load balancer with health status indicators. Your load balancer will now:

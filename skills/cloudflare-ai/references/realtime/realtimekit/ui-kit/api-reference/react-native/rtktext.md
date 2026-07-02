@@ -28,16 +28,28 @@ Themed text component that applies the design system's colors, font family, and 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkText } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkText>Hello World</RtkText>;}
+
+
+function MyComponent() {
+  return <RtkText>Hello World</RtkText>;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkText } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkText size="lg" fontWeight="bold" onBrand={true}>      Meeting Title    </RtkText>  );}
+
+
+function MyComponent() {
+  return (
+    <RtkText size="lg" fontWeight="bold" onBrand={true}>
+      Meeting Title
+    </RtkText>
+  );
+}
 ```
 
 ```json

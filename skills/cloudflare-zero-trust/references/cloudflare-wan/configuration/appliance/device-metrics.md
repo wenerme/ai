@@ -20,8 +20,62 @@ Customers can query Cloudflare's GraphQL API to fetch their Cloudflare One Appli
 
 For example:
 
-```
-query telemetry(  $accountTag: string  $snapshotsFilter: AccountMconnTelemetrySnapshotsAdaptiveGroupsFilter_InputObject!  $snapshotMountsFilter: AccountMconnTelemetrySnapshotMountsAdaptiveGroupsFilter_InputObject!  $snapshotThermalsFilter: AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsFilter_InputObject!  $limit: int64!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      snapshots: mconnTelemetrySnapshots(        filter: $snapshotsFilter        limit: $limit        orderBy: [datetimeFiveMinutes_DESC]      ) {        max {          cpuCount          loadAverage1m          memoryFreeBytes          memoryTotalBytes        }        dimensions {          connectorId          datetimeFiveMinutes        }      }      snapshotMounts: mconnTelemetrySnapshotMounts(        filter: $snapshotMountsFilter        limit: $limit        orderBy: [datetimeFiveMinutes_DESC]      ) {        max {          availableBytes          totalBytes        }        dimensions {          connectorId          datetimeFiveMinutes        }      }      snapshotThermals: mconnTelemetrySnapshotThermals(        filter: $snapshotThermalsFilter        limit: $limit        orderBy: [datetimeFiveMinutes_DESC, connectorId_DESC]      ) {        max {          currentCelsius        }        dimensions {          connectorId          datetimeFiveMinutes        }      }    }  }}
+```graphql
+query telemetry(
+  $accountTag: string
+  $snapshotsFilter: AccountMconnTelemetrySnapshotsAdaptiveGroupsFilter_InputObject!
+  $snapshotMountsFilter: AccountMconnTelemetrySnapshotMountsAdaptiveGroupsFilter_InputObject!
+  $snapshotThermalsFilter: AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsFilter_InputObject!
+  $limit: int64!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      snapshots: mconnTelemetrySnapshots(
+        filter: $snapshotsFilter
+        limit: $limit
+        orderBy: [datetimeFiveMinutes_DESC]
+      ) {
+        max {
+          cpuCount
+          loadAverage1m
+          memoryFreeBytes
+          memoryTotalBytes
+        }
+        dimensions {
+          connectorId
+          datetimeFiveMinutes
+        }
+      }
+      snapshotMounts: mconnTelemetrySnapshotMounts(
+        filter: $snapshotMountsFilter
+        limit: $limit
+        orderBy: [datetimeFiveMinutes_DESC]
+      ) {
+        max {
+          availableBytes
+          totalBytes
+        }
+        dimensions {
+          connectorId
+          datetimeFiveMinutes
+        }
+      }
+      snapshotThermals: mconnTelemetrySnapshotThermals(
+        filter: $snapshotThermalsFilter
+        limit: $limit
+        orderBy: [datetimeFiveMinutes_DESC, connectorId_DESC]
+      ) {
+        max {
+          currentCelsius
+        }
+        dimensions {
+          connectorId
+          datetimeFiveMinutes
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBALmANmAtmO0AUAoGMAkAhgMbED2IAdnACqEDmAXDAM4YCWl9uBLlhABxYALMnBYAxdogQRmAQVIVqAWXKVKNJKnTQAyvyGjx8gCaC47AG5gA4hApCpMyAH0AkpQEg4AeQBGAFZgxHAAhDz4fIIiYirK4s6yCkpUcGpkGlrIaBhQBjHG8WksZhbWdg4gTtKyHl4+AcGhEXhRhrG0wpAohIiStZAp5GkZWdq5+h3GNN0Qvf1lApY29o4DLhD13n5BIeGRiOwo7HDMnHAAbAAsEQCUMADePFbsYADukE88eCQj1CxMAAzQZyJ4wP4JOhMAiQtLQmAAXwezzwaNY0zELGYKHUmgmunymPEOHR6JBm2Y7UKWKSkB+ZKOJzOBCZpwZ6LIEFMkAAQlBmABtcwISxoKQ2FScHxgFiuAAiAFE9ABhAC6HJgKM1eF6AA9vmSycRvCqEjq0YgyIRTPIbBAGGAAIwoC261BcqASCBgMD8hAsN0wNAoT00MR9f2yi2Ii2mY5gSgsdiZFiGo1ovH7LnuUxBkXoBMSsBSygywMZpGa2NG6JGOIJbHBvHZHR5Ar19KN0kZinJXjE4oAukQC1sln4ccWrk8iD8oUFsVgYul8sK5XqzXayv69OVwhWQjSQj+ZBRiuV+ARxDnmNxhNJlNJvcZrOhHN5y8wRdFiqrgN3kaNZknWnSzD0fRNrimT4jkhIdmBcwLICFp9kMA40l0EH9COY7HKcVJTpWM58gKMDCoQoq-pK0oBuuqoADQwG+cAfvRm5GtuGa7qil7ECAEA+tQKpIMmIAXkB95oI+qYvkaLEfvmlGFuKf60dGlbAeiWlVngsaIkAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAbASwFsXEsBGABl4C+QA)

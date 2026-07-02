@@ -27,13 +27,12 @@ This allows you to write to a Queue from any service or programming language tha
 
 To make sure you successfully authenticate and write a message to your queue, use `curl` on the command line:
 
-Terminal window
+```sh
+# Make sure to replace the placeholder with your shared secret
+curl -XPOST -H "Authorization: Bearer <paste-your-api-token-here>" "https://api.cloudflare.com/client/v4/accounts/<paste-your-account-id-here>/queues/<paste-your-queue-id-here>/messages" --data '{ "body": { "greeting": "hello" } }'
+```
 
-```
-# Make sure to replace the placeholder with your shared secretcurl -XPOST -H "Authorization: Bearer <paste-your-api-token-here>" "https://api.cloudflare.com/client/v4/accounts/<paste-your-account-id-here>/queues/<paste-your-queue-id-here>/messages" --data '{ "body": { "greeting": "hello" } }'
-```
-
-```
+```sh
 {"success":true}
 ```
 

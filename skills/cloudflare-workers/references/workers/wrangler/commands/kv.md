@@ -30,25 +30,19 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-12422)
-* [  pnpm ](#tab-panel-12423)
-* [  yarn ](#tab-panel-12424)
+* [  npm ](#tab-panel-12717)
+* [  pnpm ](#tab-panel-12718)
+* [  yarn ](#tab-panel-12719)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv namespace create [NAMESPACE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv namespace create [NAMESPACE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv namespace create [NAMESPACE]
 ```
 
@@ -86,25 +80,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-12425)
-* [  pnpm ](#tab-panel-12426)
-* [  yarn ](#tab-panel-12427)
+* [  npm ](#tab-panel-12720)
+* [  pnpm ](#tab-panel-12721)
+* [  yarn ](#tab-panel-12722)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv namespace list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv namespace list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv namespace list
 ```
 
@@ -131,25 +119,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-12428)
-* [  pnpm ](#tab-panel-12429)
-* [  yarn ](#tab-panel-12430)
+* [  npm ](#tab-panel-12723)
+* [  pnpm ](#tab-panel-12724)
+* [  yarn ](#tab-panel-12725)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv namespace delete [NAMESPACE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv namespace delete [NAMESPACE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv namespace delete [NAMESPACE]
 ```
 
@@ -187,25 +169,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-12431)
-* [  pnpm ](#tab-panel-12432)
-* [  yarn ](#tab-panel-12433)
+* [  npm ](#tab-panel-12726)
+* [  pnpm ](#tab-panel-12727)
+* [  yarn ](#tab-panel-12728)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv namespace rename [OLD-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv namespace rename [OLD-NAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv namespace rename [OLD-NAME]
 ```
 
@@ -251,25 +227,19 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-12434)
-* [  pnpm ](#tab-panel-12435)
-* [  yarn ](#tab-panel-12436)
+* [  npm ](#tab-panel-12729)
+* [  pnpm ](#tab-panel-12730)
+* [  yarn ](#tab-panel-12731)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key put [KEY] [VALUE]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv key put [KEY] [VALUE]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv key put [KEY] [VALUE]
 ```
 
@@ -321,25 +291,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-12437)
-* [  pnpm ](#tab-panel-12438)
-* [  yarn ](#tab-panel-12439)
+* [  npm ](#tab-panel-12732)
+* [  pnpm ](#tab-panel-12733)
+* [  yarn ](#tab-panel-12734)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key list
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv key list
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv key list
 ```
 
@@ -381,25 +345,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-12440)
-* [  pnpm ](#tab-panel-12441)
-* [  yarn ](#tab-panel-12442)
+* [  npm ](#tab-panel-12735)
+* [  pnpm ](#tab-panel-12736)
+* [  yarn ](#tab-panel-12737)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key get [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv key get [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv key get [KEY]
 ```
 
@@ -443,25 +401,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-12443)
-* [  pnpm ](#tab-panel-12444)
-* [  yarn ](#tab-panel-12445)
+* [  npm ](#tab-panel-12738)
+* [  pnpm ](#tab-panel-12739)
+* [  yarn ](#tab-panel-12740)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key delete [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv key delete [KEY]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv key delete [KEY]
 ```
 
@@ -515,25 +467,19 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-12446)
-* [  pnpm ](#tab-panel-12447)
-* [  yarn ](#tab-panel-12448)
+* [  npm ](#tab-panel-12741)
+* [  pnpm ](#tab-panel-12742)
+* [  yarn ](#tab-panel-12743)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv bulk get [FILENAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv bulk get [FILENAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv bulk get [FILENAME]
 ```
 
@@ -575,25 +521,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-12449)
-* [  pnpm ](#tab-panel-12450)
-* [  yarn ](#tab-panel-12451)
+* [  npm ](#tab-panel-12744)
+* [  pnpm ](#tab-panel-12745)
+* [  yarn ](#tab-panel-12746)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv bulk put [FILENAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv bulk put [FILENAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv bulk put [FILENAME]
 ```
 
@@ -641,25 +581,19 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-12452)
-* [  pnpm ](#tab-panel-12453)
-* [  yarn ](#tab-panel-12454)
+* [  npm ](#tab-panel-12747)
+* [  pnpm ](#tab-panel-12748)
+* [  yarn ](#tab-panel-12749)
 
-Terminal window
-
-```
+```sh
 npx wrangler kv bulk delete [FILENAME]
 ```
 
-Terminal window
-
-```
+```sh
 pnpm wrangler kv bulk delete [FILENAME]
 ```
 
-Terminal window
-
-```
+```sh
 yarn wrangler kv bulk delete [FILENAME]
 ```
 

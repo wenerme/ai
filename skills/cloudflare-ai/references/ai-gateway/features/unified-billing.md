@@ -61,10 +61,18 @@ Workers AI models (models prefixed with `@cf/`) routed through AI Gateway are no
 
 Call any model listed in the [model catalog](https://developers.cloudflare.com/ai/models/) using `env.AI.run()`. This includes both Workers AI models and third-party models from providers like OpenAI, Anthropic, and Google.
 
-TypeScript
+**TypeScript**
 
-```
-const resp = await env.AI.run(  "openai/gpt-4.1-mini",  {    messages: [{ role: "user", content: "What is Cloudflare?" }],  },  {    gateway: { id: "my-gateway" },  },);
+```typescript
+const resp = await env.AI.run(
+  "openai/gpt-4.1-mini",
+  {
+    messages: [{ role: "user", content: "What is Cloudflare?" }],
+  },
+  {
+    gateway: { id: "my-gateway" },
+  },
+);
 ```
 
 Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) for the full API surface.
@@ -77,10 +85,16 @@ Call a supported provider through the AI Gateway REST API without passing a prov
 
 Use the Cloudflare API to call third-party models. Pass your Cloudflare API token in the `Authorization` header:
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "openai/gpt-4.1-mini",
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
+  }'
 ```
 
 Refer to [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) for more details on all available endpoints.
@@ -117,8 +131,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-6620)
-* [ API ](#tab-panel-6621)
+* [ Dashboard ](#tab-panel-6856)
+* [ API ](#tab-panel-6857)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 
@@ -139,10 +153,24 @@ To set ZDR as the default for Unified Billing using the API:
 
 Use the `cf-aig-zdr` header to override the gateway default for a single Unified Billing request. Set it to `true` to force ZDR, or `false` to disable ZDR for the request.
 
-Unified Billing request with ZDR
+**Unified Billing request with ZDR**
 
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-zdr: true" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "Explain Zero Data Retention."      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --header "cf-aig-zdr: true" \
+  --data '{
+    "model": "openai/gpt-4.1-mini",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Explain Zero Data Retention."
+      }
+    ]
+  }'
 ```
 
 ```json

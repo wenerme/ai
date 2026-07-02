@@ -18,9 +18,7 @@ If you have issues sending or receiving mail, follow these troubleshooting steps
 
 To check that your MX records are resolving correctly, run the following `dig` command in your terminal (replace `example.com` with your domain):
 
-Terminal window
-
-```
+```sh
 dig example.com mx +short
 ```
 

@@ -75,16 +75,50 @@ To get account-level data, you can set up queries similar to the following:
 
 Get the last 10,000 queries resulting in NXDOMAIN
 
-```
-query GetLastNXDOMAINResponses {  viewer {    accounts(filter: { accountTag: "83a4527361bcdec24566fd7f837b6de5" }) {      dnsAnalyticsAdaptive(        limit: 10000        filter: {          date_geq: "2025-06-16",          responseCode: "NXDOMAIN",          date_leq: "2025-06-18"        }        orderBy: [datetime_DESC]      ) {        zoneTag        queryName        responseCode        queryType        datetime      }    }  }}
+```graphql
+query GetLastNXDOMAINResponses {
+  viewer {
+    accounts(filter: { accountTag: "83a4527361bcdec24566fd7f837b6de5" }) {
+      dnsAnalyticsAdaptive(
+        limit: 10000
+        filter: {
+          date_geq: "2025-06-16",
+          responseCode: "NXDOMAIN",
+          date_leq: "2025-06-18"
+        }
+        orderBy: [datetime_DESC]
+      ) {
+        zoneTag
+        queryName
+        responseCode
+        queryType
+        datetime
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgGQIYGdEDkAaARAeQFkBBASSwCUx0AHAewDt0aYBvAKBhgDcBLMAHdI7LtxioAxpPohGidAAoAZnwA2iSAC52E6bPkAVVAHMdAIgAcAZlQAWAKwAmAOzWAbAEYARpIAmYJJOju7uyn4uyjYu3u4BDuYwAL4AlKLi4n7MJIyoalCIfJLoJH6otIU8YIpiGdxqfAC2fIg6ngAMne21daoa2ul1GWWaAPomYMAWTu1ODgC07e7znu7mADQ9QxA0DMxgAML0ARa4hKQUG1t1I2CjapPTswtLK5bm19xJnzD0EAEQABCUB0AG1boVGnc8ABRADKBwAutc0pwhtwAF5MMDGEw-UCQKBYVBQn47OhMFhHAL48DQQxQWhgH4QprMobfDKc5IcJJAA&variables=N4XyA)
 
 Get the overall query count per account
 
-```
-query GetTotalDNSQueryCount {  viewer {    accounts(filter: { accountTag: "83a4527361bcdec24566fd7f837b6de5" }) {      dnsAnalyticsAdaptiveGroups(        filter: {          date_geq: "2025-05-01"          date_leq: "2025-05-30"        }        limit: 1      ) {        count      }    }  }}
+```graphql
+query GetTotalDNSQueryCount {
+  viewer {
+    accounts(filter: { accountTag: "83a4527361bcdec24566fd7f837b6de5" }) {
+      dnsAnalyticsAdaptiveGroups(
+        filter: {
+          date_geq: "2025-05-01"
+          date_leq: "2025-05-30"
+        }
+        limit: 1
+      ) {
+        count
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgFQPaIIYBsAiA5AZQEVxoBhVEAO0RgG8AoGGANwEswB3Sep5mDAGNBlGgGcAFADM2WRJABc9AcNEoMAcyUAiABwBmDABYArACYA7PoBsARgBGggCZhBZ09etSnFqQYv21i4m2jAAvgCUvPz8TlRiAIJU2FCIbIKJThgADmksYHAQlNmSfDHMMnKK0eUxWfIA+hpgwDpmAAxmJgC07T3tttpltTD1YA1YLW2d-T367UMj4cMxWGwAtmyISrYrMFGMSyLUiHthw+fM52FAA&variables=N4XyA)

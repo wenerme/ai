@@ -57,8 +57,13 @@ To fix this, use the `goToOptions.waitUntil` parameter with one of these values:
 
 Quick Actions example:
 
-```
-{  "url": "https://example.com",  "goToOptions": {    "waitUntil": "networkidle2"  }}
+```json
+{
+  "url": "https://example.com",
+  "goToOptions": {
+    "waitUntil": "networkidle2"
+  }
+}
 ```
 
 If content is still missing:
@@ -91,9 +96,7 @@ Not yet. Local development currently has the following limitation(s):
 
 You can also run Chrome in visible (headful) mode during local development to visually debug your automation scripts (experimental). Set the `X_BROWSER_HEADFUL` environment variable before starting your dev server:
 
-Terminal window
-
-```
+```sh
 X_BROWSER_HEADFUL=true npx wrangler dev
 ```
 
@@ -107,20 +110,40 @@ If the page you are rendering requires authentication, you can pass credentials 
 
 HTTP Basic Auth:
 
-```
-{  "authenticate": {    "username": "user",    "password": "pass"  }}
+```json
+{
+  "authenticate": {
+    "username": "user",
+    "password": "pass"
+  }
+}
 ```
 
 Cookie-based authentication:
 
-```
-{  "cookies": [    {      "name": "session_id",      "value": "abc123",      "domain": "example.com",      "path": "/",      "secure": true,      "httpOnly": true    }  ]}
+```json
+{
+  "cookies": [
+    {
+      "name": "session_id",
+      "value": "abc123",
+      "domain": "example.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true
+    }
+  ]
+}
 ```
 
 Token-based authentication:
 
-```
-{  "setExtraHTTPHeaders": {    "Authorization": "Bearer your-token"  }}
+```json
+{
+  "setExtraHTTPHeaders": {
+    "Authorization": "Bearer your-token"
+  }
+}
 ```
 
 For complete working examples of all three methods, refer to [Capture a screenshot of an authenticated page](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#capture-a-screenshot-of-an-authenticated-page).

@@ -29,16 +29,24 @@ Toggle button to open the chat sidebar panel. Hides if chat permissions are not 
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkChatToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkChatToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkChatToggle meeting={meeting} size="md" variant="button" />;}
+
+
+function MyComponent() {
+  return <RtkChatToggle meeting={meeting} size="md" variant="button" />;
+}
 ```
 
 ```json

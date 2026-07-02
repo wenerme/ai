@@ -42,38 +42,141 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 ```
 2. Add a Worker Loader binding and the `nodejs_compat` compatibility flag:
 
-  * [  wrangler.jsonc ](#tab-panel-5861)
-  * [  wrangler.toml ](#tab-panel-5862)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-6037)
+  * [  wrangler.toml ](#tab-panel-6038)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "codemode-mcp-server",
+  "main": "src/server.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "codemode-mcp-server",  "main": "src/server.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
-```
-TOML
-```
-name = "codemode-mcp-server"main = "src/server.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = ["nodejs_compat"]
-[[worker_loaders]]binding = "LOADER"
+
+**TOML**
+```toml
+name = "codemode-mcp-server"
+main = "src/server.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+[[worker_loaders]]
+binding = "LOADER"
 ```
 3. Create the upstream server and pass it to `codeMcpServer()`:
 
-  * [  JavaScript ](#tab-panel-5863)
-  * [  TypeScript ](#tab-panel-5864)
-src/server.js
+  * [  JavaScript ](#tab-panel-6039)
+  * [  TypeScript ](#tab-panel-6040)
+
+**src/server.js**
+```js
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { codeMcpServer } from "@cloudflare/codemode/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpHandler } from "agents/mcp";
+import { z } from "zod";
+function createOrderServer() {
+  const server = new McpServer({
+    name: "orders",
+    version: "1.0.0",
+  });
+  server.registerTool(
+    "get_order",
+    {
+      description: "Get an order by ID",
+      inputSchema: {
+        orderId: z.string().describe("Order ID"),
+      },
+    },
+    async ({ orderId }) => ({
+      structuredContent: {
+        id: orderId,
+        status: "processing",
+      },
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify({ id: orderId, status: "processing" }),
+        },
+      ],
+    }),
+  );
+  return server;
+}
+export default {
+  async fetch(request, env, ctx) {
+    const upstream = createOrderServer();
+    const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+    const server = await codeMcpServer({
+      server: upstream,
+      executor,
+    });
+    return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);
+  },
+};
 ```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { codeMcpServer } from "@cloudflare/codemode/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { createMcpHandler } from "agents/mcp";import { z } from "zod";
-function createOrderServer() {  const server = new McpServer({    name: "orders",    version: "1.0.0",  });
-  server.registerTool(    "get_order",    {      description: "Get an order by ID",      inputSchema: {        orderId: z.string().describe("Order ID"),      },    },    async ({ orderId }) => ({      structuredContent: {        id: orderId,        status: "processing",      },      content: [        {          type: "text",          text: JSON.stringify({ id: orderId, status: "processing" }),        },      ],    }),  );
-  return server;}
-export default {  async fetch(request, env, ctx) {    const upstream = createOrderServer();    const executor = new DynamicWorkerExecutor({ loader: env.LOADER });    const server = await codeMcpServer({      server: upstream,      executor,    });
-    return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);  },};
-```
-src/server.ts
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { codeMcpServer } from "@cloudflare/codemode/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { createMcpHandler } from "agents/mcp";import { z } from "zod";
-function createOrderServer() {  const server = new McpServer({    name: "orders",    version: "1.0.0",  });
-  server.registerTool(    "get_order",    {      description: "Get an order by ID",      inputSchema: {        orderId: z.string().describe("Order ID"),      },    },    async ({ orderId }) => ({      structuredContent: {        id: orderId,        status: "processing",      },      content: [        {          type: "text",          text: JSON.stringify({ id: orderId, status: "processing" }),        },      ],    }),  );
-  return server;}
-export default {  async fetch(request, env, ctx): Promise<Response> {    const upstream = createOrderServer();    const executor = new DynamicWorkerExecutor({ loader: env.LOADER });    const server = await codeMcpServer({      server: upstream,      executor,    });
-    return createMcpHandler(server, { route: "/mcp" })(      request,      env,      ctx,    );  },} satisfies ExportedHandler<Env>;
+
+**src/server.ts**
+```ts
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { codeMcpServer } from "@cloudflare/codemode/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpHandler } from "agents/mcp";
+import { z } from "zod";
+function createOrderServer() {
+  const server = new McpServer({
+    name: "orders",
+    version: "1.0.0",
+  });
+  server.registerTool(
+    "get_order",
+    {
+      description: "Get an order by ID",
+      inputSchema: {
+        orderId: z.string().describe("Order ID"),
+      },
+    },
+    async ({ orderId }) => ({
+      structuredContent: {
+        id: orderId,
+        status: "processing",
+      },
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify({ id: orderId, status: "processing" }),
+        },
+      ],
+    }),
+  );
+  return server;
+}
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const upstream = createOrderServer();
+    const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+    const server = await codeMcpServer({
+      server: upstream,
+      executor,
+    });
+    return createMcpHandler(server, { route: "/mcp" })(
+      request,
+      env,
+      ctx,
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 4. Deploy the Worker:
  npm  yarn  pnpm
@@ -90,10 +193,13 @@ pnpm wrangler deploy
 
 The model can use the generated `codemode` namespace inside the `code` tool:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const order = await codemode.get_order({ orderId: "order-123" });  return { id: order.id, status: order.status };};
+```js
+async () => {
+  const order = await codemode.get_order({ orderId: "order-123" });
+  return { id: order.id, status: order.status };
+};
 ```
 
 When an upstream tool returns `structuredContent`, Code Mode exposes that value directly. Text-only content is joined and parsed as JSON when possible. Upstream MCP errors become exceptions that model-written code can catch. Mixed text and binary content remains in its MCP result structure.

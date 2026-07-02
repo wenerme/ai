@@ -22,8 +22,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9143)
-* [ API ](#tab-panel-9144)
+* [ Dashboard ](#tab-panel-9434)
+* [ API ](#tab-panel-9435)
 
 To view members using the dashboard:
 
@@ -37,8 +37,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9145)
-* [ API ](#tab-panel-9146)
+* [ Dashboard ](#tab-panel-9436)
+* [ API ](#tab-panel-9437)
 
 To add a member to your account:
 
@@ -63,8 +63,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9147)
-* [ API ](#tab-panel-9148)
+* [ Dashboard ](#tab-panel-9438)
+* [ API ](#tab-panel-9439)
 
 To edit member permissions using the dashboard:
 
@@ -79,10 +79,23 @@ To edit member permissions using the API, get a [list of roles](https://develope
 
 Then, send a [PUT request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/update/) to edit their permissions.
 
-Request
+**Request**
 
-```
-curl --request PUT \  --url https://api.cloudflare.com/client/v4/accounts/{account_id}/members/{member_id} \  --header 'Authorization: Bearer <API_TOKEN>' \  --header 'Content-Type: application/json' \  --data '{    "roles": [          {              "id": "<ROLE_ID1>"          },          {              "id": "<ROLE_ID2>"          }      ]    }'
+```bash
+curl --request PUT \
+  --url https://api.cloudflare.com/client/v4/accounts/{account_id}/members/{member_id} \
+  --header 'Authorization: Bearer <API_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "roles": [
+          {
+              "id": "<ROLE_ID1>"
+          },
+          {
+              "id": "<ROLE_ID2>"
+          }
+      ]
+    }'
 ```
 
 ## Resend an invitation
@@ -102,8 +115,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9149)
-* [ API ](#tab-panel-9150)
+* [ Dashboard ](#tab-panel-9440)
+* [ API ](#tab-panel-9441)
 
 To revoke a member's access to your account:
 

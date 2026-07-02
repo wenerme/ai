@@ -78,16 +78,59 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "output_options": {        "output_type": "ndjson",        "timestamp_format": "rfc3339",        "batch_prefix": "[",        "batch_suffix": "]",        "record_prefix": "{\"applicationName\":\"ibm-platform-log\",\"subsystemName\":\"internet-svcs:logpush\",\"text\":{",        "record_suffix": "}}",        "record_delimiter": ","    },    "destination_conf": "ibmcl://<INSTANCE_ID>.ingress.<REGION>.logs.cloud.ibm.com/logs/v1/singles?ibm_api_key=<IBM_API_KEY>",    "max_upload_bytes": 2000000,    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+        "output_type": "ndjson",
+        "timestamp_format": "rfc3339",
+        "batch_prefix": "[",
+        "batch_suffix": "]",
+        "record_prefix": "{\"applicationName\":\"ibm-platform-log\",\"subsystemName\":\"internet-svcs:logpush\",\"text\":{",
+        "record_suffix": "}}",
+        "record_delimiter": ","
+    },
+    "destination_conf": "ibmcl://<INSTANCE_ID>.ingress.<REGION>.logs.cloud.ibm.com/logs/v1/singles?ibm_api_key=<IBM_API_KEY>",
+    "max_upload_bytes": 2000000,
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Response:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "max_upload_bytes": 2000000,    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "output_type": "ndjson",      "timestamp_format": "rfc3339",      "batch_prefix": "[",      "batch_suffix": "]",      "record_prefix": "{\"applicationName\":\"ibm-platform-log\",\"subsystemName\":\"internet-svcs:logpush\",\"text\":{",      "record_suffix": "}}",      "record_delimiter": ","    },    "destination_conf": "ibmcl://<INSTANCE_ID>.ingress.<REGION>.logs.cloud.ibm.com/logs/v1/singles?ibm_api_key=<IBM_API_KEY>",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "max_upload_bytes": 2000000,
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "output_type": "ndjson",
+      "timestamp_format": "rfc3339",
+      "batch_prefix": "[",
+      "batch_suffix": "]",
+      "record_prefix": "{\"applicationName\":\"ibm-platform-log\",\"subsystemName\":\"internet-svcs:logpush\",\"text\":{",
+      "record_suffix": "}}",
+      "record_delimiter": ","
+    },
+    "destination_conf": "ibmcl://<INSTANCE_ID>.ingress.<REGION>.logs.cloud.ibm.com/logs/v1/singles?ibm_api_key=<IBM_API_KEY>",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/) to update a job (including enabling and disabling).

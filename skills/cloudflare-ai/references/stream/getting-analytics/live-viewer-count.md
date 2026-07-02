@@ -14,15 +14,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The Stream player has full support for live viewer counts by default. To get the viewer count for live videos for use with third party players, make a `GET` request to the `/views` endpoint.
 
-Terminal window
-
-```
+```bash
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID>/views
 ```
 
 Below is a response for a live video with several active viewers:
 
-```
+```json
 { "liveViewers": 113 }
 ```
 

@@ -36,38 +36,99 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5044)
-* [  TypeScript ](#tab-panel-5045)
-* [  Python ](#tab-panel-5046)
-* [  curl ](#tab-panel-5047)
+* [  Worker (Streaming) ](#tab-panel-5190)
+* [  TypeScript ](#tab-panel-5191)
+* [  Python ](#tab-panel-5192)
+* [  curl ](#tab-panel-5193)
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
-    const stream = await env.AI.run("@cf/meta/llama-3.3-70b-instruct-fp8-fast", {      messages,      stream: true,    });
-    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+
+
+    const stream = await env.AI.run("@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+      messages,
+      stream: true,
+    });
+
+
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/meta/llama-3.3-70b-instruct-fp8-fast", { messages });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+    const response = await env.AI.run("@cf/meta/llama-3.3-70b-instruct-fp8-fast", { messages });
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
+```py
+import os
+import requests
+
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+prompt = "Tell me all about PEP-8"
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+      "messages": [
+        {"role": "system", "content": "You are a friendly assistant"},
+        {"role": "user", "content": prompt}
+      ]
+    }
+)
+result = response.json()
+print(result)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints
@@ -78,8 +139,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-5048)
-* [ Output ](#tab-panel-5049)
+* [ Input ](#tab-panel-5194)
+* [ Output ](#tab-panel-5195)
 
 prompt
 
@@ -147,8 +208,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-5050)
-* [ Output ](#tab-panel-5051)
+* [ Input ](#tab-panel-5196)
+* [ Output ](#tab-panel-5197)
 
 prompt
 
@@ -216,8 +277,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-5052)
-* [ Output ](#tab-panel-5053)
+* [ Input ](#tab-panel-5198)
+* [ Output ](#tab-panel-5199)
 
 ▶requests\[\]
 

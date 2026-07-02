@@ -20,8 +20,8 @@ You can connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.
 
 Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-11595)
-* [ PlanetScale serverless driver ](#tab-panel-11596)
+* [ Hyperdrive (recommended) ](#tab-panel-11890)
+* [ PlanetScale serverless driver ](#tab-panel-11891)
 
 To connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -41,10 +41,15 @@ Note
 
 To reduce latency, use a [Placement Hint](https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints) to run your Worker close to your PlanetScale database. This is especially useful when a single request makes multiple queries.
 
-wrangler.jsonc
+**wrangler.jsonc**
 
-```
-{  "placement": {    // Match to your PlanetScale region, for example "gcp:us-east4" or "aws:us-east-1"    "region": "gcp:us-east4",  },}
+```jsonc
+{
+  "placement": {
+    // Match to your PlanetScale region, for example "gcp:us-east4" or "aws:us-east-1"
+    "region": "gcp:us-east4",
+  },
+}
 ```
 
 ## 2\. Create a database configuration
@@ -58,7 +63,7 @@ To configure Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-```
+```txt
 mysql://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 ```
 
@@ -69,9 +74,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
 * Replace <NAME\_OF\_HYPERDRIVE\_CONFIG> with a name for your Hyperdrive configuration and paste the connection string provided from your database host, or,
 * Replace `user`, `password`, `HOSTNAME_OR_IP_ADDRESS`, `port`, and `database_name` placeholders with those specific to your database:
 
-Terminal window
-
-```
+```sh
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
 ```
 
@@ -81,20 +84,45 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11591)
-* [  wrangler.toml ](#tab-panel-11592)
+* [  wrangler.jsonc ](#tab-panel-11886)
+* [  wrangler.toml ](#tab-panel-11887)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hyperdrive-example",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "hyperdrive-example"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
 ## 3\. Use Hyperdrive from your Worker
@@ -125,32 +153,83 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-11593)
-* [  wrangler.toml ](#tab-panel-11594)
+* [  wrangler.jsonc ](#tab-panel-11888)
+* [  wrangler.toml ](#tab-panel-11889)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
 
-TypeScript
+**TypeScript**
 
-```
-// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
-export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
-      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
-    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
-      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
+```ts
+// mysql2 v3.13.0 or later is required
+import { createConnection } from "mysql2/promise";
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    // Create a new connection on each request. Hyperdrive maintains the underlying
+    // database connection pool, so creating a new connection is fast.
+    const connection = await createConnection({
+      host: env.HYPERDRIVE.host,
+      user: env.HYPERDRIVE.user,
+      password: env.HYPERDRIVE.password,
+      database: env.HYPERDRIVE.database,
+      port: env.HYPERDRIVE.port,
+
+
+      // Required to enable mysql2 compatibility for Workers
+      disableEval: true,
+    });
+
+
+    try {
+      // Sample query
+      const [results, fields] = await connection.query("SHOW tables;");
+
+
+      // Return result rows as JSON
+      return Response.json({ results, fields });
+    } catch (e) {
+      console.error(e);
+      return Response.json(
+        { error: e instanceof Error ? e.message : e },
+        { status: 500 },
+      );
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -173,20 +252,32 @@ To set up an integration with PlanetScale:
 
 1. You need to have an existing PlanetScale database to connect to. [Create a PlanetScale database ↗](https://planetscale.com/docs/tutorials/planetscale-quick-start-guide#create-a-database) or [import an existing database to PlanetScale ↗](https://planetscale.com/docs/imports/database-imports#overview).
 2. From the [PlanetScale web console ↗](https://planetscale.com/docs/concepts/web-console#get-started), create a `products` table with the following query:
-```
-CREATE TABLE products (  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,  name varchar(255) NOT NULL,  image_url varchar(255),  category_id INT,  KEY category_id_idx (category_id));
+```sql
+CREATE TABLE products (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(255) NOT NULL,
+  image_url varchar(255),
+  category_id INT,
+  KEY category_id_idx (category_id)
+);
 ```
 3. Insert some data in your newly created table. Run the following command to add a product and category to your table:
-```
-INSERT INTO products (name, image_url, category_id)VALUES ('Ballpoint pen', 'https://example.com/500x500', '1');
+```sql
+INSERT INTO products (name, image_url, category_id)
+VALUES ('Ballpoint pen', 'https://example.com/500x500', '1');
 ```
 4. Configure the PlanetScale database credentials in your Worker:
 You need to add your PlanetScale database credentials as secrets to your Worker. Get your connection details from the [PlanetScale Dashboard ↗](https://app.planetscale.com) by creating a connection string, then add them as secrets using Wrangler:
-Terminal window
-```
-# Add the database host as a secretnpx wrangler secret put DATABASE_HOST# When prompted, paste your PlanetScale host
-# Add the database username as a secretnpx wrangler secret put DATABASE_USERNAME# When prompted, paste your PlanetScale username
-# Add the database password as a secretnpx wrangler secret put DATABASE_PASSWORD# When prompted, paste your PlanetScale password
+```sh
+# Add the database host as a secret
+npx wrangler secret put DATABASE_HOST
+# When prompted, paste your PlanetScale host
+# Add the database username as a secret
+npx wrangler secret put DATABASE_USERNAME
+# When prompted, paste your PlanetScale username
+# Add the database password as a secret
+npx wrangler secret put DATABASE_PASSWORD
+# When prompted, paste your PlanetScale password
 ```
 5. In your Worker, install the `@planetscale/database` driver to connect to your PlanetScale database and start manipulating data:
  npm  yarn  pnpm  bun
@@ -203,11 +294,32 @@ pnpm add @planetscale/database
 bun add @planetscale/database
 ```
 6. The following example shows how to make a query to your PlanetScale database in a Worker. The credentials needed to connect to PlanetScale have been added as secrets to your Worker.
-JavaScript
-```
+
+**JavaScript**
+```js
 import { connect } from "@planetscale/database";
-export default {  async fetch(request, env) {    const config = {      host: env.DATABASE_HOST,      username: env.DATABASE_USERNAME,      password: env.DATABASE_PASSWORD,      // see https://github.com/cloudflare/workerd/issues/698      fetch: (url, init) => {        delete init["cache"];        return fetch(url, init);      },    };
-    const conn = connect(config);    const data = await conn.execute("SELECT * FROM products;");    return new Response(JSON.stringify(data.rows), {      status: 200,      headers: {        "Content-Type": "application/json",      },    });  },};
+export default {
+  async fetch(request, env) {
+    const config = {
+      host: env.DATABASE_HOST,
+      username: env.DATABASE_USERNAME,
+      password: env.DATABASE_PASSWORD,
+      // see https://github.com/cloudflare/workerd/issues/698
+      fetch: (url, init) => {
+        delete init["cache"];
+        return fetch(url, init);
+      },
+    };
+    const conn = connect(config);
+    const data = await conn.execute("SELECT * FROM products;");
+    return new Response(JSON.stringify(data.rows), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  },
+};
 ```
 
 To learn more about PlanetScale, refer to [PlanetScale's official documentation ↗](https://docs.planetscale.com/).

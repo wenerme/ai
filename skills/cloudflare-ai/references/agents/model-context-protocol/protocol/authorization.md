@@ -41,11 +41,22 @@ The [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-pro
 
 When you use a third-party OAuth provider, you must provide a handler to the `OAuthProvider` that implements the OAuth flow for the third-party provider.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import MyAuthHandler from "./auth-handler";
-export default new OAuthProvider({  apiRoute: "/mcp",  // Your MCP server:  apiHandler: MyMCPServer.serve("/mcp"),  // Replace this handler with your own handler for authentication and authorization with the third-party provider:  defaultHandler: MyAuthHandler,  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",});
+
+
+export default new OAuthProvider({
+  apiRoute: "/mcp",
+  // Your MCP server:
+  apiHandler: MyMCPServer.serve("/mcp"),
+  // Replace this handler with your own handler for authentication and authorization with the third-party provider:
+  defaultHandler: MyAuthHandler,
+  authorizeEndpoint: "/authorize",
+  tokenEndpoint: "/token",
+  clientRegistrationEndpoint: "/register",
+});
 ```
 
 Note that as [defined in the Model Context Protocol specification ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-flow-steps) when you use a third-party OAuth provider, the MCP Server (your Worker) generates and issues its own token to the MCP client:
@@ -125,10 +136,19 @@ The [Workers OAuth Provider Library ↗](https://github.com/cloudflare/workers-o
 
 You provide your own handlers for your MCP Server's API, and authentication and authorization logic, and URI paths for the OAuth endpoints, as shown below:
 
-TypeScript
+**TypeScript**
 
-```
-export default new OAuthProvider({  apiRoute: "/mcp",  // Your MCP server:  apiHandler: MyMCPServer.serve("/mcp"),  // Your handler for authentication and authorization:  defaultHandler: MyAuthHandler,  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",});
+```ts
+export default new OAuthProvider({
+  apiRoute: "/mcp",
+  // Your MCP server:
+  apiHandler: MyMCPServer.serve("/mcp"),
+  // Your handler for authentication and authorization:
+  defaultHandler: MyAuthHandler,
+  authorizeEndpoint: "/authorize",
+  tokenEndpoint: "/token",
+  clientRegistrationEndpoint: "/register",
+});
 ```
 
 Refer to the [getting started example](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) for a complete example of the `OAuthProvider` in use, with a mock authentication flow.
@@ -163,39 +183,102 @@ When a user authenticates through the OAuth Provider, their identity information
 
 The third type parameter on `McpAgent` defines the shape of the authentication context. Access it via `this.props` inside `init()` and tool handlers.
 
-TypeScript
+**TypeScript**
 
-```
-import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-type AuthContext = {  claims: { sub: string; name: string; email: string };  permissions: string[];};
-export class MyMCP extends McpAgent<Env, unknown, AuthContext> {  server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
-  async init() {    this.server.tool("whoami", "Get the current user", {}, async () => ({      content: [{ type: "text", text: `Hello, ${this.props.claims.name}!` }],    }));  }}
+```ts
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+
+type AuthContext = {
+  claims: { sub: string; name: string; email: string };
+  permissions: string[];
+};
+
+
+export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
+  server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
+
+
+  async init() {
+    this.server.tool("whoami", "Get the current user", {}, async () => ({
+      content: [{ type: "text", text: `Hello, ${this.props.claims.name}!` }],
+    }));
+  }
+}
 ```
 
 ### With createMcpHandler
 
 Use `getMcpAuthContext()` to access the same information from within a tool handler. This uses `AsyncLocalStorage` under the hood.
 
-TypeScript
+**TypeScript**
 
-```
-import { createMcpHandler, getMcpAuthContext } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-function createServer() {  const server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
-  server.tool("whoami", "Get the current user", {}, async () => {    const auth = getMcpAuthContext();    const name = (auth?.props?.name as string) ?? "anonymous";    return {      content: [{ type: "text", text: `Hello, ${name}!` }],    };  });
-  return server;}
+```ts
+import { createMcpHandler, getMcpAuthContext } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+
+function createServer() {
+  const server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
+
+
+  server.tool("whoami", "Get the current user", {}, async () => {
+    const auth = getMcpAuthContext();
+    const name = (auth?.props?.name as string) ?? "anonymous";
+    return {
+      content: [{ type: "text", text: `Hello, ${name}!` }],
+    };
+  });
+
+
+  return server;
+}
 ```
 
 ## Permission-based tool access
 
 You can control which tools are available based on user permissions. There are two approaches: check permissions inside the tool handler, or conditionally register tools.
 
-TypeScript
+**TypeScript**
 
-```
-export class MyMCP extends McpAgent<Env, unknown, AuthContext> {  server = new McpServer({ name: "Permissions Demo", version: "1.0.0" });
-  async init() {    this.server.tool("publicTool", "Available to all users", {}, async () => ({      content: [{ type: "text", text: "Public result" }],    }));
-    this.server.tool(      "adminAction",      "Requires admin permission",      {},      async () => {        if (!this.props.permissions?.includes("admin")) {          return {            content: [              { type: "text", text: "Permission denied: requires admin" },            ],          };        }        return {          content: [{ type: "text", text: "Admin action completed" }],        };      },    );
-    if (this.props.permissions?.includes("special_feature")) {      this.server.tool("specialTool", "Special feature", {}, async () => ({        content: [{ type: "text", text: "Special feature result" }],      }));    }  }}
+```ts
+export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
+  server = new McpServer({ name: "Permissions Demo", version: "1.0.0" });
+
+
+  async init() {
+    this.server.tool("publicTool", "Available to all users", {}, async () => ({
+      content: [{ type: "text", text: "Public result" }],
+    }));
+
+
+    this.server.tool(
+      "adminAction",
+      "Requires admin permission",
+      {},
+      async () => {
+        if (!this.props.permissions?.includes("admin")) {
+          return {
+            content: [
+              { type: "text", text: "Permission denied: requires admin" },
+            ],
+          };
+        }
+        return {
+          content: [{ type: "text", text: "Admin action completed" }],
+        };
+      },
+    );
+
+
+    if (this.props.permissions?.includes("special_feature")) {
+      this.server.tool("specialTool", "Special feature", {}, async () => ({
+        content: [{ type: "text", text: "Special feature result" }],
+      }));
+    }
+  }
+}
 ```
 
 Checking inside the handler returns an error message to the LLM, which can explain the denial to the user. Conditionally registering tools means the LLM never sees tools the user cannot access — it cannot attempt to call them at all.

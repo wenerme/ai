@@ -28,10 +28,10 @@ Note
 The OS version must be specified as a valid [Semver ↗](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
 5. (Optional) Configure additional OS-specific fields:
 
-  * [ Windows ](#tab-panel-7492)
-  * [ macOS ](#tab-panel-7493)
-  * [ Linux ](#tab-panel-7494)
-  * [ iOS ](#tab-panel-7495)
+  * [ Windows ](#tab-panel-7742)
+  * [ macOS ](#tab-panel-7743)
+  * [ Linux ](#tab-panel-7744)
+  * [ iOS ](#tab-panel-7745)
 To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.
 
   * **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).
@@ -54,8 +54,7 @@ Operating systems display version numbers in different ways. This section covers
 
 1. Open a terminal window.
 2. Use the `defaults` command to check for the value of `SystemVersionStampAsString`.
-Terminal window
-```
+```sh
 defaults read loginwindow SystemVersionStampAsString
 ```
 
@@ -71,14 +70,12 @@ To determine the Windows version on your device:
 
 1. Open a PowerShell window.
 2. Get the **Version** (Major.Minor.Build):
-Terminal window
-```
+```bash
 (Get-CimInstance Win32_OperatingSystem).version
 ```
 This returns the version in the format `Major.Minor.Build` (for example, `10.0.19045`).
 3. Get the **UBR** (Update Build Revision):
-Terminal window
-```
+```bash
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name UBR).UBR
 ```
 This returns the UBR value (for example, `3803`).
@@ -91,9 +88,9 @@ The Linux OS version check reads the system kernel version.
 
 1. Open a Terminal window.
 2. Run the `uname -r` command to get the complete kernel version. For example,
-Terminal window
-```
-$ uname -r5.14.0-25.el9.x86_64
+```sh
+$ uname -r
+5.14.0-25.el9.x86_64
 ```
 3. **Version** is the first three numbers of the output in SemVer format (`5.14.0`).
 4. **Patch Version** is the first number after the SemVer (`25`).
@@ -106,8 +103,7 @@ To determine the Linux distro version on your device:
 
 1. Open a Terminal window.
 2. Get the OS identification fields that contain `ID`:
-Terminal window
-```
+```sh
 cat /etc/os-release | grep "ID"
 ```
 3. If the output of the above command contained `ID=ubuntu` and `VERSION_ID=22.04`, **Distro name** would be `ubuntu` and **Distro revision** would be `22.04`. The Cloudflare One Client will check these strings for an exact match.

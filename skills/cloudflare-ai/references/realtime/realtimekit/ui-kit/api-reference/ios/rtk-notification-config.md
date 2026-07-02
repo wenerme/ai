@@ -36,22 +36,34 @@ Each `RtkNotification` instance contains the following properties:
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)// Access the default notification configlet notificationConfig = rtkUI.notification
+
+
+let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)
+// Access the default notification config
+let notificationConfig = rtkUI.notification
 ```
 
 ### Customize notifications
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
+
+
 let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)
-// Disable sound for participant join eventsrtkUI.notification.participantJoined.playSound = false
-// Disable toast for chat messagesrtkUI.notification.newChatArrived.showToast = false
+
+
+// Disable sound for participant join events
+rtkUI.notification.participantJoined.playSound = false
+
+
+// Disable toast for chat messages
+rtkUI.notification.newChatArrived.showToast = false
 ```
 
 ```json

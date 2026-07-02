@@ -36,10 +36,13 @@ The tunnel must be able to reach your database host and port from within the pri
 
 Create a VPC Service of type `tcp` that points to your database:
 
-Terminal window
-
-```
-npx wrangler vpc service create my-postgres-db \  --type tcp \  --tcp-port 5432 \  --app-protocol postgresql \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 <YOUR_DATABASE_IP>
+```sh
+npx wrangler vpc service create my-postgres-db \
+  --type tcp \
+  --tcp-port 5432 \
+  --app-protocol postgresql \
+  --tunnel-id <YOUR_TUNNEL_ID> \
+  --ipv4 <YOUR_DATABASE_IP>
 ```
 
 Replace `<YOUR_TUNNEL_ID>` with the tunnel ID from step 1 and `<YOUR_DATABASE_IP>` with the private IP address of your database (for example, `10.0.0.5`).
@@ -54,10 +57,13 @@ If your database uses a self-signed certificate, add `--cert-verification-mode v
 
 Use the `--service-id` flag to point Hyperdrive at the VPC Service you created:
 
-Terminal window
-
-```
-npx wrangler hyperdrive create my-vpc-database \  --service-id <YOUR_VPC_SERVICE_ID> \  --database <DATABASE_NAME> \  --user <DATABASE_USER> \  --password <DATABASE_PASSWORD> \  --scheme postgresql
+```sh
+npx wrangler hyperdrive create my-vpc-database \
+  --service-id <YOUR_VPC_SERVICE_ID> \
+  --database <DATABASE_NAME> \
+  --user <DATABASE_USER> \
+  --password <DATABASE_PASSWORD> \
+  --scheme postgresql
 ```
 
 Replace `<YOUR_VPC_SERVICE_ID>` with the service ID from step 2, and provide your database name, user, and password.
@@ -70,19 +76,28 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11414)
-* [  wrangler.toml ](#tab-panel-11415)
+* [  wrangler.jsonc ](#tab-panel-11709)
+* [  wrangler.toml ](#tab-panel-11710)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
+    }
+  ]
+}
 ```
-{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<YOUR_DATABASE_ID>"
+```toml
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<YOUR_DATABASE_ID>"
 ```
 
 Specifically:
@@ -93,19 +108,30 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-11416)
-* [  wrangler.toml ](#tab-panel-11417)
+* [  wrangler.jsonc ](#tab-panel-11711)
+* [  wrangler.toml ](#tab-panel-11712)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
+      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
+    }
+  ]
+}
 ```
-{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<YOUR_DATABASE_ID>"localConnectionString = "<LOCAL_DATABASE_CONNECTION_URI>"
+```toml
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<YOUR_DATABASE_ID>"
+localConnectionString = "<LOCAL_DATABASE_CONNECTION_URI>"
 ```
 
 Note
@@ -160,50 +186,97 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-11418)
-* [  wrangler.toml ](#tab-panel-11419)
+* [  wrangler.jsonc ](#tab-panel-11713)
+* [  wrangler.toml ](#tab-panel-11714)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 
-TypeScript
+**TypeScript**
 
-```
-// filepath: src/index.tsimport { Client } from "pg";
-export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a new client instance for each request. Hyperdrive maintains the    // underlying database connection pool, so creating a new client is fast.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
-    try {      // Connect to the database      await client.connect();
-      // Perform a simple query      const result = await client.query("SELECT * FROM pg_tables");
-      return Response.json({        success: true,        result: result.rows,      });    } catch (error: any) {      console.error("Database error:", error.message);
-      return new Response("Internal error occurred", { status: 500 });    }  },};
+```ts
+// filepath: src/index.ts
+import { Client } from "pg";
+
+
+export default {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
+    // Create a new client instance for each request. Hyperdrive maintains the
+    // underlying database connection pool, so creating a new client is fast.
+    const client = new Client({
+      connectionString: env.HYPERDRIVE.connectionString,
+    });
+
+
+    try {
+      // Connect to the database
+      await client.connect();
+
+
+      // Perform a simple query
+      const result = await client.query("SELECT * FROM pg_tables");
+
+
+      return Response.json({
+        success: true,
+        result: result.rows,
+      });
+    } catch (error: any) {
+      console.error("Database error:", error.message);
+
+
+      return new Response("Internal error occurred", { status: 500 });
+    }
+  },
+};
 ```
 
 ## 6\. Deploy and test
 
 Deploy your Worker:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
 Send a request to verify the connection:
 
-Terminal window
-
-```
+```sh
 curl https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev
 ```
 

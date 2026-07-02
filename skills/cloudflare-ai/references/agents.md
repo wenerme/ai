@@ -49,10 +49,10 @@ Agents on Cloudflare are composed from four parts:
 
 Three commands to a running agent. No API keys required — the starter uses [Workers AI](https://developers.cloudflare.com/workers-ai/) by default.
 
-Terminal window
-
-```
-npx create-cloudflare@latest --template cloudflare/agents-startercd agents-starter && npm installnpm run dev
+```sh
+npx create-cloudflare@latest --template cloudflare/agents-starter
+cd agents-starter && npm install
+npm run dev
 ```
 
 The starter includes streaming AI chat, server-side and client-side tools, human-in-the-loop approval, and task scheduling — a foundation you can build on or tear apart. You can also swap in [OpenAI, Anthropic, Google Gemini, or any other provider](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/).

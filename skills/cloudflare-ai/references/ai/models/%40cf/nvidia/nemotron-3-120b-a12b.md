@@ -36,38 +36,99 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2415)
-* [  TypeScript ](#tab-panel-2416)
-* [  Python ](#tab-panel-2417)
-* [  curl ](#tab-panel-2418)
+* [  Worker (Streaming) ](#tab-panel-2463)
+* [  TypeScript ](#tab-panel-2464)
+* [  Python ](#tab-panel-2465)
+* [  curl ](#tab-panel-2466)
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
-    const stream = await env.AI.run("@cf/nvidia/nemotron-3-120b-a12b", {      messages,      stream: true,    });
-    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+
+
+    const stream = await env.AI.run("@cf/nvidia/nemotron-3-120b-a12b", {
+      messages,
+      stream: true,
+    });
+
+
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/nvidia/nemotron-3-120b-a12b", { messages });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+    const response = await env.AI.run("@cf/nvidia/nemotron-3-120b-a12b", { messages });
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/nvidia/nemotron-3-120b-a12b",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
+```py
+import os
+import requests
+
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+prompt = "Tell me all about PEP-8"
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/nvidia/nemotron-3-120b-a12b",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+      "messages": [
+        {"role": "system", "content": "You are a friendly assistant"},
+        {"role": "user", "content": prompt}
+      ]
+    }
+)
+result = response.json()
+print(result)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/nvidia/nemotron-3-120b-a12b \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/nvidia/nemotron-3-120b-a12b \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints

@@ -20,15 +20,20 @@ This is the raw field version of the [http.response.headers.values](https://deve
 
 Example value:
 
-```
-Example 1: ["application/json"]Example 2: ["This header value is longer than 10 bytes"]
+```txt
+Example 1: ["application/json"]
+Example 2: ["This header value is longer than 10 bytes"]
 ```
 
 Example usage:
 
-```
-# Example 1: Check for specific header value.any(raw.http.response.headers.values[*] == "application/json")
-# Example 2: Match requests according to the specified operator and the length/size entered for the header value.any(len(raw.http.response.headers.values[*])[*] gt 10)
+```txt
+# Example 1: Check for specific header value.
+any(raw.http.response.headers.values[*] == "application/json")
+
+
+# Example 2: Match requests according to the specified operator and the length/size entered for the header value.
+any(len(raw.http.response.headers.values[*])[*] gt 10)
 ```
 
 Categories:

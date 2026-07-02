@@ -68,14 +68,65 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "rewrite_eu_to_emea",            "expression": "(http.request.uri.query contains \"eu\")",            "description": "My first static URL rewrite rule",            "action": "rewrite",            "action_parameters": {                "uri": {                    "path": {                        "value": "/emea.html"                    }                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "rewrite_eu_to_emea",
+            "expression": "(http.request.uri.query contains \"eu\")",
+            "description": "My first static URL rewrite rule",
+            "action": "rewrite",
+            "action_parameters": {
+                "uri": {
+                    "path": {
+                        "value": "/emea.html"
+                    }
+                }
+            }
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "ref": "rewrite_eu_to_emea",    "id": "<RULESET_ID>",    "name": "Zone-level Transform Ruleset",    "description": "Zone-level ruleset that will execute Transform Rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "rewrite",        "action_parameters": {          "uri": {            "path": {              "value": "/emea.html"            }          }        },        "expression": "(http.request.uri.query contains \"eu\")",        "description": "My first static URL rewrite rule",        "last_updated": "2021-04-14T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2021-04-14T14:42:04.219025Z",    "phase": "http_request_transform"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "ref": "rewrite_eu_to_emea",
+    "id": "<RULESET_ID>",
+    "name": "Zone-level Transform Ruleset",
+    "description": "Zone-level ruleset that will execute Transform Rules.",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "rewrite",
+        "action_parameters": {
+          "uri": {
+            "path": {
+              "value": "/emea.html"
+            }
+          }
+        },
+        "expression": "(http.request.uri.query contains \"eu\")",
+        "description": "My first static URL rewrite rule",
+        "last_updated": "2021-04-14T14:42:04.219025Z",
+        "ref": "<RULE_REF>"
+      }
+    ],
+    "last_updated": "2021-04-14T14:42:04.219025Z",
+    "phase": "http_request_transform"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -109,14 +160,65 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone ruleset
+**Update a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "rewrite_2012_to_archive",            "expression": "starts_with(http.request.uri.path, \"/news/2012/\")",            "description": "My first dynamic URL rewrite rule",            "action": "rewrite",            "action_parameters": {                "uri": {                    "path": {                        "expression": "concat(\"/archive\", http.request.uri.path)"                    }                }            }        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "ref": "rewrite_2012_to_archive",
+            "expression": "starts_with(http.request.uri.path, \"/news/2012/\")",
+            "description": "My first dynamic URL rewrite rule",
+            "action": "rewrite",
+            "action_parameters": {
+                "uri": {
+                    "path": {
+                        "expression": "concat(\"/archive\", http.request.uri.path)"
+                    }
+                }
+            }
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level Transform Ruleset",    "description": "Zone-level ruleset that will execute Transform Rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "rewrite_2012_to_archive",        "id": "<RULE_ID>",        "version": "1",        "action": "rewrite",        "action_parameters": {          "uri": {            "path": {              "expression": "concat(\"/archive\", http.request.uri.path)"            }          }        },        "expression": "starts_with(http.request.uri.path, \"/news/2012/\")",        "description": "My first dynamic URL rewrite rule",        "last_updated": "2021-04-14T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2021-04-14T14:42:04.219025Z",    "phase": "http_request_transform"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level Transform Ruleset",
+    "description": "Zone-level ruleset that will execute Transform Rules.",
+    "kind": "zone",
+    "version": "2",
+    "rules": [
+      {
+        "ref": "rewrite_2012_to_archive",
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "rewrite",
+        "action_parameters": {
+          "uri": {
+            "path": {
+              "expression": "concat(\"/archive\", http.request.uri.path)"
+            }
+          }
+        },
+        "expression": "starts_with(http.request.uri.path, \"/news/2012/\")",
+        "description": "My first dynamic URL rewrite rule",
+        "last_updated": "2021-04-14T14:42:04.219025Z",
+        "ref": "<RULE_REF>"
+      }
+    ],
+    "last_updated": "2021-04-14T14:42:04.219025Z",
+    "phase": "http_request_transform"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

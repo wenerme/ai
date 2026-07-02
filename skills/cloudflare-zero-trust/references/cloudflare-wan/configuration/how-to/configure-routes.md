@@ -37,8 +37,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-7858)
-* [ API ](#tab-panel-7859)
+* [ Dashboard ](#tab-panel-8111)
+* [ API ](#tab-panel-8112)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -69,20 +69,72 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Create a Route
+**Create a Route**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "nexthop": "<IP_NEXT_HOP>",    "prefix": "<YOUR_IP_PREFIX>",    "priority": 0,    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "description": "<ROUTE_DESCRIPTION>",    "scope": {        "colo_names": [            "den01"        ],        "colo_regions": [            "APAC"        ]    },    "weight": 0  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "nexthop": "<IP_NEXT_HOP>",
+    "prefix": "<YOUR_IP_PREFIX>",
+    "priority": 0,
+    "id": "023e105f4ecef8ad9ca31a8372d0c353",
+    "description": "<ROUTE_DESCRIPTION>",
+    "scope": {
+        "colo_names": [
+            "den01"
+        ],
+        "colo_regions": [
+            "APAC"
+        ]
+    },
+    "weight": 0
+  }'
 ```
 
-```
-{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "routes": [      {        "nexthop": "203.0.113.1",        "prefix": "192.0.2.0/24",        "priority": 0,        "id": "023e105f4ecef8ad9ca31a8372d0c353",        "description": "New route for new prefix 203.0.113.1",        "scope": {          "colo_names": [            "den01"          ],          "colo_regions": [            "APAC"          ]        },        "weight": 0      }    ]  },  "success": true}
+```json
+{
+  "errors": [
+    {
+      "code": 1000,
+      "message": "message"
+    }
+  ],
+  "messages": [
+    {
+      "code": 1000,
+      "message": "message"
+    }
+  ],
+  "result": {
+    "routes": [
+      {
+        "nexthop": "203.0.113.1",
+        "prefix": "192.0.2.0/24",
+        "priority": 0,
+        "id": "023e105f4ecef8ad9ca31a8372d0c353",
+        "description": "New route for new prefix 203.0.113.1",
+        "scope": {
+          "colo_names": [
+            "den01"
+          ],
+          "colo_regions": [
+            "APAC"
+          ]
+        },
+        "weight": 0
+      }
+    ]
+  },
+  "success": true
+}
 ```
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-7860)
-* [ API ](#tab-panel-7861)
+* [ Dashboard ](#tab-panel-8113)
+* [ API ](#tab-panel-8114)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -104,20 +156,71 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Update Route
+**Update Route**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "nexthop": "<IP_NEXT_HOP>",    "prefix": "<YOUR_IP_PREFIX>",    "priority": 0,    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "description": "<ROUTE_DESCRIPTION>",    "scope": {        "colo_names": [            "den01"        ],        "colo_regions": [            "APAC"        ]    },    "weight": 0  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "nexthop": "<IP_NEXT_HOP>",
+    "prefix": "<YOUR_IP_PREFIX>",
+    "priority": 0,
+    "id": "023e105f4ecef8ad9ca31a8372d0c353",
+    "description": "<ROUTE_DESCRIPTION>",
+    "scope": {
+        "colo_names": [
+            "den01"
+        ],
+        "colo_regions": [
+            "APAC"
+        ]
+    },
+    "weight": 0
+  }'
 ```
 
-```
-{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "modified": true,    "modified_route": {      "nexthop": "203.0.113.1",      "prefix": "192.0.2.0/24",      "priority": 0,      "id": "023e105f4ecef8ad9ca31a8372d0c353",      "description": "New route for new prefix 203.0.113.1",      "scope": {        "colo_names": [          "den01"        ],        "colo_regions": [          "APAC"        ]      },      "weight": 0    }  },  "success": true}
+```json
+{
+  "errors": [
+    {
+      "code": 1000,
+      "message": "message"
+    }
+  ],
+  "messages": [
+    {
+      "code": 1000,
+      "message": "message"
+    }
+  ],
+  "result": {
+    "modified": true,
+    "modified_route": {
+      "nexthop": "203.0.113.1",
+      "prefix": "192.0.2.0/24",
+      "priority": 0,
+      "id": "023e105f4ecef8ad9ca31a8372d0c353",
+      "description": "New route for new prefix 203.0.113.1",
+      "scope": {
+        "colo_names": [
+          "den01"
+        ],
+        "colo_regions": [
+          "APAC"
+        ]
+      },
+      "weight": 0
+    }
+  },
+  "success": true
+}
 ```
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-7854)
-* [ API ](#tab-panel-7855)
+* [ Dashboard ](#tab-panel-8107)
+* [ API ](#tab-panel-8108)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -137,14 +240,49 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Delete Route
+**Delete Route**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "deleted": true,    "deleted_route": {      "nexthop": "203.0.113.1",      "prefix": "192.0.2.0/24",      "priority": 0,      "id": "023e105f4ecef8ad9ca31a8372d0c353",      "description": "New route for new prefix 203.0.113.1",      "scope": {        "colo_names": [          "den01"        ],        "colo_regions": [          "APAC"        ]      },      "weight": 0    }  },  "success": true}
+```json
+{
+  "errors": [
+    {
+      "code": 1000,
+      "message": "message"
+    }
+  ],
+  "messages": [
+    {
+      "code": 1000,
+      "message": "message"
+    }
+  ],
+  "result": {
+    "deleted": true,
+    "deleted_route": {
+      "nexthop": "203.0.113.1",
+      "prefix": "192.0.2.0/24",
+      "priority": 0,
+      "id": "023e105f4ecef8ad9ca31a8372d0c353",
+      "description": "New route for new prefix 203.0.113.1",
+      "scope": {
+        "colo_names": [
+          "den01"
+        ],
+        "colo_regions": [
+          "APAC"
+        ]
+      },
+      "weight": 0
+    }
+  },
+  "success": true
+}
 ```
 
 ## Configure Automatic Return Routing (beta)
@@ -153,8 +291,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-7856)
-* [ API ](#tab-panel-7857)
+* [ Dashboard ](#tab-panel-8109)
+* [ API ](#tab-panel-8110)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.
@@ -168,10 +306,21 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Create an IPsec tunnel
+**Create an IPsec tunnel**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",    "interface_address": "<INTERFACE_ADDRESS>",    "name": "IPsec_1",    "customer_endpoint": "<CUSTOMER_ENDPOINT>",    "description": "Tunnel for ISP X",    "psk": "<PSK>",    "automatic_return_routing": "true"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",
+    "interface_address": "<INTERFACE_ADDRESS>",
+    "name": "IPsec_1",
+    "customer_endpoint": "<CUSTOMER_ENDPOINT>",
+    "description": "Tunnel for ISP X",
+    "psk": "<PSK>",
+    "automatic_return_routing": "true"
+  }'
 ```
 
 ## Configure BGP routes

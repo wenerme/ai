@@ -27,19 +27,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-chat-selector-ui></rtk-chat-selector-ui>
 ```
 
 ### With Properties
 
-```
-<rtk-chat-selector-ui selectedGroupId="example" selfUserId="example"></rtk-chat-selector-ui>
+```html
+<rtk-chat-selector-ui
+ selectedGroupId="example"
+ selfUserId="example">
+</rtk-chat-selector-ui>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-chat-selector-ui");
-  el.groups= [];</script>
+```html
+<script>
+  const el = document.querySelector("rtk-chat-selector-ui");
+
+
+  el.groups= [];
+</script>
 ```
 
 ```json

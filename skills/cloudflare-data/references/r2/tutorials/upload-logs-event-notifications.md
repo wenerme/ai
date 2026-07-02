@@ -29,19 +29,16 @@ You will need to create two R2 buckets:
 
 To create the buckets, run the following Wrangler commands:
 
-Terminal window
-
-```
-npx wrangler r2 bucket create example-upload-bucketnpx wrangler r2 bucket create example-log-sink-bucket
+```sh
+npx wrangler r2 bucket create example-upload-bucket
+npx wrangler r2 bucket create example-log-sink-bucket
 ```
 
 ## 3\. Create a queue
 
 Event notifications capture changes to data in `example-upload-bucket`. You will need to create a new queue to receive notifications:
 
-Terminal window
-
-```
+```sh
 npx wrangler queues create example-event-notification-queue
 ```
 
@@ -75,9 +72,7 @@ For setup, select the following options:
 
 Then, move into your newly created directory:
 
-Terminal window
-
-```
+```sh
 cd consumer-worker
 ```
 
@@ -85,43 +80,100 @@ cd consumer-worker
 
 In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)\](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-10098)
-* [  wrangler.toml ](#tab-panel-10099)
+* [  wrangler.jsonc ](#tab-panel-10353)
+* [  wrangler.toml ](#tab-panel-10354)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "event-notification-writer",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "queues": {
+    "consumers": [
+      {
+        "queue": "example-event-notification-queue",
+        "max_batch_size": 100,
+        "max_batch_timeout": 5
+      }
+    ]
+  },
+  "r2_buckets": [
+    {
+      "binding": "LOG_SINK",
+      "bucket_name": "example-log-sink-bucket"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "event-notification-writer",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "queues": {    "consumers": [      {        "queue": "example-event-notification-queue",        "max_batch_size": 100,        "max_batch_timeout": 5      }    ]  },  "r2_buckets": [    {      "binding": "LOG_SINK",      "bucket_name": "example-log-sink-bucket"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "event-notification-writer"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[[queues.consumers]]queue = "example-event-notification-queue"max_batch_size = 100max_batch_timeout = 5
-[[r2_buckets]]binding = "LOG_SINK"bucket_name = "example-log-sink-bucket"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "event-notification-writer"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[[queues.consumers]]
+queue = "example-event-notification-queue"
+max_batch_size = 100
+max_batch_timeout = 5
+
+
+[[r2_buckets]]
+binding = "LOG_SINK"
+bucket_name = "example-log-sink-bucket"
 ```
 
 ## 6\. Write event notification messages to R2
 
 Add a [queue handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) to `src/index.ts` to handle writing batches of notifications to our log sink bucket (you do not need a [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)):
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  LOG_SINK: R2Bucket;}
-export default {  async queue(batch, env): Promise<void> {    const batchId = new Date().toISOString().replace(/[:.]/g, "-");    const fileName = `upload-logs-${batchId}.json`;
-    // Serialize the entire batch of messages to JSON    const fileContent = new TextEncoder().encode(      JSON.stringify(batch.messages),    );
-    // Write the batch of messages to R2    await env.LOG_SINK.put(fileName, fileContent, {      httpMetadata: {        contentType: "application/json",      },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  LOG_SINK: R2Bucket;
+}
+
+
+export default {
+  async queue(batch, env): Promise<void> {
+    const batchId = new Date().toISOString().replace(/[:.]/g, "-");
+    const fileName = `upload-logs-${batchId}.json`;
+
+
+    // Serialize the entire batch of messages to JSON
+    const fileContent = new TextEncoder().encode(
+      JSON.stringify(batch.messages),
+    );
+
+
+    // Write the batch of messages to R2
+    await env.LOG_SINK.put(fileName, fileContent, {
+      httpMetadata: {
+        contentType: "application/json",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## 7\. Deploy your Worker
 
 To deploy your consumer Worker, run the [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -129,9 +181,7 @@ npx wrangler deploy
 
 Now that you have your consumer Worker ready to handle incoming event notification messages, you need to enable event notifications with the [wrangler r2 bucket notification create command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-notification-create) for `example-upload-bucket`:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket notification create example-upload-bucket --event-type object-create --queue example-event-notification-queue
 ```
 

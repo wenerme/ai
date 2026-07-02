@@ -65,16 +65,48 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Create DNS Record
+**Create DNS Record**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "A",    "name": "www.example.com",    "content": "192.0.2.1",    "ttl": 3600,    "proxied": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "A",
+    "name": "www.example.com",
+    "content": "192.0.2.1",
+    "ttl": 3600,
+    "proxied": false
+  }'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "www.example.com",    "type": "A",    "content": "192.0.2.1",    "proxiable": true,    "proxied": false,    "ttl": 1,    "locked": false,    "meta": {      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2023-01-17T20:37:05.368097Z",    "modified_on": "2023-01-17T20:37:05.368097Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ID>",
+    "zone_id": "<ZONE_ID>",
+    "zone_name": "example.com",
+    "name": "www.example.com",
+    "type": "A",
+    "content": "192.0.2.1",
+    "proxiable": true,
+    "proxied": false,
+    "ttl": 1,
+    "locked": false,
+    "meta": {
+      "source": "primary"
+    },
+    "comment": null,
+    "tags": [],
+    "created_on": "2023-01-17T20:37:05.368097Z",
+    "modified_on": "2023-01-17T20:37:05.368097Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### CNAME
@@ -136,16 +168,48 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Create DNS Record
+**Create DNS Record**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "CNAME",    "name": "www.example.com",    "content": "www.another-example.com",    "ttl": 3600,    "proxied": false  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "CNAME",
+    "name": "www.example.com",
+    "content": "www.another-example.com",
+    "ttl": 3600,
+    "proxied": false
+  }'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "www.example.com",    "type": "CNAME",    "content": "www.another-example.com",    "proxiable": true,    "proxied": false,    "ttl": 1,    "locked": false,    "meta": {      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2023-01-17T20:37:05.368097Z",    "modified_on": "2023-01-17T20:37:05.368097Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ID>",
+    "zone_id": "<ZONE_ID>",
+    "zone_name": "example.com",
+    "name": "www.example.com",
+    "type": "CNAME",
+    "content": "www.another-example.com",
+    "proxiable": true,
+    "proxied": false,
+    "ttl": 1,
+    "locked": false,
+    "meta": {
+      "source": "primary"
+    },
+    "comment": null,
+    "tags": [],
+    "created_on": "2023-01-17T20:37:05.368097Z",
+    "modified_on": "2023-01-17T20:37:05.368097Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ---
@@ -221,16 +285,61 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Create DNS Record
+**Create DNS Record**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "SRV",    "name": "_xmpp._tcp.example.com",    "data": {        "priority": 10,        "weight": 5,        "port": 5223,        "target": "server.example.com"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "SRV",
+    "name": "_xmpp._tcp.example.com",
+    "data": {
+        "priority": 10,
+        "weight": 5,
+        "port": 5223,
+        "target": "server.example.com"
+    }
+  }'
 ```
 
-Response
+**Response**
 
-```
-{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "_xmpp._tcp.example.com",    "type": "SRV",    "content": "5 5223 server.example.com",    "priority": 10,    "proxiable": false,    "proxied": false,    "ttl": 1,    "locked": false,    "data": {      "port": 5223,      "priority": 10,      "target": "server.example.com",      "weight": 5    },    "meta": {      "auto_added": false,      "managed_by_apps": false,      "managed_by_argo_tunnel": false,      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2022-11-08T15:57:39.585977Z",    "modified_on": "2022-11-08T15:57:39.585977Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ID>",
+    "zone_id": "<ZONE_ID>",
+    "zone_name": "example.com",
+    "name": "_xmpp._tcp.example.com",
+    "type": "SRV",
+    "content": "5 5223 server.example.com",
+    "priority": 10,
+    "proxiable": false,
+    "proxied": false,
+    "ttl": 1,
+    "locked": false,
+    "data": {
+      "port": 5223,
+      "priority": 10,
+      "target": "server.example.com",
+      "weight": 5
+    },
+    "meta": {
+      "auto_added": false,
+      "managed_by_apps": false,
+      "managed_by_argo_tunnel": false,
+      "source": "primary"
+    },
+    "comment": null,
+    "tags": [],
+    "created_on": "2022-11-08T15:57:39.585977Z",
+    "modified_on": "2022-11-08T15:57:39.585977Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### SVCB and HTTPS

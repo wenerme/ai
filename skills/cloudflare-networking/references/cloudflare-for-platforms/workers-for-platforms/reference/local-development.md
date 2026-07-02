@@ -28,19 +28,30 @@ This is helpful when:
 
 In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespace binding](https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms) to connect to the remote namespace by setting [remote = true](https://developers.cloudflare.com/workers/local-development/#remote-bindings):
 
-* [  wrangler.jsonc ](#tab-panel-7155)
-* [  wrangler.toml ](#tab-panel-7156)
+* [  wrangler.jsonc ](#tab-panel-7363)
+* [  wrangler.toml ](#tab-panel-7364)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "dispatch_namespaces": [
+    {
+      "binding": "DISPATCH_NAMESPACE",
+      "namespace": "production",
+      "remote": true
+    }
+  ]
+}
 ```
-{  "dispatch_namespaces": [    {      "binding": "DISPATCH_NAMESPACE",      "namespace": "production",      "remote": true    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[dispatch_namespaces]]binding = "DISPATCH_NAMESPACE"namespace = "production"remote = true
+```toml
+[[dispatch_namespaces]]
+binding = "DISPATCH_NAMESPACE"
+namespace = "production"
+remote = true
 ```
 
 This tells your dispatch Worker that's running locally to connect to the remote `production` namespace. When you run `wrangler dev`, your Dispatch Worker will route requests to the User Workers deployed in that namespace.

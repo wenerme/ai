@@ -27,19 +27,24 @@ A confirmation modal.
 
 ### Basic Usage
 
-```
+```html
 <rtk-confirmation-modal></rtk-confirmation-modal>
 ```
 
 ### With Properties
 
-```
-<rtk-confirmation-modal></rtk-confirmation-modal>
+```html
+<rtk-confirmation-modal>
+</rtk-confirmation-modal>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-confirmation-modal");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-confirmation-modal");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

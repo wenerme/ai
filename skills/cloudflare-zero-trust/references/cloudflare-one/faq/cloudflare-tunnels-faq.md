@@ -42,21 +42,20 @@ For a complete walkthrough of using Access with a partial CNAME setup, refer to 
 
 Tunnel can expose web applications to the Internet that sit behind a NAT or firewall. Thus, you can keep your web server otherwise completely locked down. To double check that your origin web server is not responding to requests outside Cloudflare while Tunnel is running you can run netcat in the command line:
 
-Terminal window
-
-```
-netcat -zv [your-server's-ip-address] 80netcat -zv [your-server's-ip-address] 443
+```sh
+netcat -zv [your-server's-ip-address] 80
+netcat -zv [your-server's-ip-address] 443
 ```
 
 If your server is still responding on those ports, you will see:
 
-```
+```txt
 [ip-address] 80 (http) open
 ```
 
 If your server is correctly locked down, you will see:
 
-```
+```txt
 [ip-address] 443 (https): Connection refused
 ```
 

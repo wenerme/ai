@@ -28,19 +28,25 @@ A settings component to see and change your audio/video devices as well as see y
 
 ### Basic Usage
 
-```
+```html
 <rtk-settings></rtk-settings>
 ```
 
 ### With Properties
 
-```
-<rtk-settings size="md"></rtk-settings>
+```html
+<rtk-settings
+ size="md">
+</rtk-settings>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-settings");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-settings");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

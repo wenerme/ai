@@ -29,14 +29,20 @@ A button that follows RTK Design System.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-button></rtk-button>
+```html
+<!-- component.html -->
+<rtk-button></rtk-button>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-button [disabled]="true" [kind]="buttonkind" [reverse]="true"></rtk-button>
+```html
+<!-- component.html -->
+<rtk-button
+ [disabled]="true"
+ [kind]="buttonkind"
+ [reverse]="true">
+</rtk-button>
 ```
 
 ```json

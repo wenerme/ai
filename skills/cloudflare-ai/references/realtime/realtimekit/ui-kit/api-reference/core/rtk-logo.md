@@ -27,19 +27,25 @@ A component which loads the logo from your config, or via the `logo-url` attribu
 
 ### Basic Usage
 
-```
+```html
 <rtk-logo></rtk-logo>
 ```
 
 ### With Properties
 
-```
-<rtk-logo logoUrl="example"></rtk-logo>
+```html
+<rtk-logo
+ logoUrl="example">
+</rtk-logo>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-logo");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-logo");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

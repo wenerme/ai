@@ -24,7 +24,7 @@ If you are issuing a [challenge](https://developers.cloudflare.com/cloudflare-ch
 
 For example, define a compound expression for your rule using the `and` operator and the [starts\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts%5Fwith) function:
 
-```
+```txt
 <OTHER_RULE_CONDITIONS> and not starts_with(http.request.uri, "/cdn-cgi/challenge-platform/")
 ```
 
@@ -47,7 +47,7 @@ If your rule expression is matching a hostname for which you have neither create
 
 If you choose to create a new DNS record, the new record will have a `rules` tag and the following associated comment:
 
-```
+```txt
 Created during Cloudflare Rules deployment process for <RULE_NAME>
 ```
 

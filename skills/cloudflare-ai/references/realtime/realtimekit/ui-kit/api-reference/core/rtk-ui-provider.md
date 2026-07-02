@@ -28,19 +28,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-ui-provider></rtk-ui-provider>
 ```
 
 ### With Properties
 
-```
-<rtk-ui-provider></rtk-ui-provider>
+```html
+<rtk-ui-provider>
+</rtk-ui-provider>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-ui-provider");
-  el.config= defaultUiConfig  el.mode= meeting  el.showSetupScreen= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-ui-provider");
+
+
+  el.config= defaultUiConfig
+  el.mode= meeting
+  el.showSetupScreen= true;
+</script>
 ```
 
 ```json

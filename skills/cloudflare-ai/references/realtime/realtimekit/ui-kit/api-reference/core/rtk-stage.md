@@ -25,19 +25,24 @@ A component used as a stage that commonly houses the `grid` and `sidebar` compon
 
 ### Basic Usage
 
-```
+```html
 <rtk-stage></rtk-stage>
 ```
 
 ### With Properties
 
-```
-<rtk-stage></rtk-stage>
+```html
+<rtk-stage>
+</rtk-stage>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-stage");
-  el.iconPack= defaultIconPack</script>
+```html
+<script>
+  const el = document.querySelector("rtk-stage");
+
+
+  el.iconPack= defaultIconPack
+</script>
 ```
 
 ```json

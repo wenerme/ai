@@ -72,9 +72,7 @@ pnpm create cloudflare@latest my-angular-app --framework=angular
 
 After setting up your project, change your directory by running the following command:
 
-Terminal window
-
-```
+```sh
 cd my-angular-app
 ```
 

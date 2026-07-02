@@ -122,8 +122,29 @@ You can query the matched operation and managed labels for individual requests u
 
 The following query returns the count of requests per operation ID and managed label set, filtered to requests where the matched operation carries the `cf-log-in` managed label.
 
-```
-query GetAdaptiveGroups($start: DateTime!, $end: DateTime!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      httpRequestsAdaptiveGroups(        filter: {          datetime_geq: $start          datetime_leq: $end          requestSource: "eyeball"          webAssetsLabelsManaged_hasany: ["cf-log-in"]        }        limit: 25        orderBy: [count_DESC]      ) {        count        dimensions {          webAssetsOperationId          webAssetsLabelsManaged        }      }    }  }}
+```graphql
+query GetAdaptiveGroups($start: DateTime!, $end: DateTime!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      httpRequestsAdaptiveGroups(
+        filter: {
+          datetime_geq: $start
+          datetime_leq: $end
+          requestSource: "eyeball"
+          webAssetsLabelsManaged_hasany: ["cf-log-in"]
+        }
+        limit: 25
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          webAssetsOperationId
+          webAssetsLabelsManaged
+        }
+      }
+    }
+  }
+}
 ```
 
 Replace `cf-log-in` with any [managed label](#managed-labels) or [risk label](#risk-labels). You can also omit the `webAssetsLabelsManaged_hasany` filter and use `webAssetsOperationId` as the sole dimension to group traffic by matched operation regardless of label.
@@ -136,8 +157,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-6759)
-* [ Old dashboard ](#tab-panel-6760)
+* [  New dashboard ](#tab-panel-7007)
+* [ Old dashboard ](#tab-panel-7008)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -177,8 +198,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-6761)
-* [ Old dashboard ](#tab-panel-6762)
+* [  New dashboard ](#tab-panel-7009)
+* [ Old dashboard ](#tab-panel-7010)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -196,8 +217,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-6757)
-* [ Old dashboard ](#tab-panel-6758)
+* [  New dashboard ](#tab-panel-7005)
+* [ Old dashboard ](#tab-panel-7006)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

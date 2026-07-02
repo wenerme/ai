@@ -26,13 +26,29 @@ To get started, you need have a JavaScript file ready for deployment, that expor
 
 In this guide, we will use a simple example of a Custom Managed Component that counts user visits and logs this data in the console:
 
-JavaScript
+**JavaScript**
 
-```
-// File: index.jsexport default async function (manager) {  // Add a pageview event  manager.addEventListener("pageview", event, () => {    const { client } = event;
-    // Get the variable "counter" from the client's cookies and increase by 1    let counter = parseInt(client.get("counter")) || 0;    counter += 1;
-    // Log the increased number    client.execute(`console.log('Views: ${counter}')`);
-    // Store the increased number for the next visit    client.set("counter", counter);  });}
+```javascript
+// File: index.js
+export default async function (manager) {
+  // Add a pageview event
+  manager.addEventListener("pageview", event, () => {
+    const { client } = event;
+
+
+    // Get the variable "counter" from the client's cookies and increase by 1
+    let counter = parseInt(client.get("counter")) || 0;
+    counter += 1;
+
+
+    // Log the increased number
+    client.execute(`console.log('Views: ${counter}')`);
+
+
+    // Store the increased number for the next visit
+    client.set("counter", counter);
+  });
+}
 ```
 
 ## Deploy a Managed Component to Cloudflare

@@ -29,16 +29,30 @@ A button which toggles your screenshare.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkScreenShareToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkScreenShareToggle />;}
+
+
+function MyComponent() {
+  return <RtkScreenShareToggle />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkScreenShareToggle } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkScreenShareToggle      meeting={meeting}      size="md"      variant="button"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkScreenShareToggle
+      meeting={meeting}
+      size="md"
+      variant="button"
+    />
+  );
+}
 ```
 
 ```json

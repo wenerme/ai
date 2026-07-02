@@ -26,14 +26,18 @@ A component which renders an image message.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-image-message-view></rtk-image-message-view>
+```html
+<!-- component.html -->
+<rtk-image-message-view></rtk-image-message-view>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-image-message-view url="example"></rtk-image-message-view>
+```html
+<!-- component.html -->
+<rtk-image-message-view
+ url="example">
+</rtk-image-message-view>
 ```
 
 ```json

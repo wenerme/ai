@@ -86,9 +86,7 @@ You may not be able to delete your Pages project if it has a high number (over 1
 
 As a workaround, you can use [wrangler pages deployment delete](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-delete) to delete deployments individually. After you delete your deployments, you will be able to delete your Pages project.
 
-Terminal window
-
-```
+```sh
 npx wrangler pages deployment delete <DEPLOYMENT_ID> --project-name <PROJECT_NAME>
 ```
 
@@ -96,10 +94,19 @@ Use the `--force` flag to skip the confirmation prompt and to force deletion of 
 
 To delete _all_ your deployments for a particular project name, you could run the following shell script:
 
-Terminal window
-
-```
-prod_id=""while :; do  ids=$(npx wrangler pages deployment list --project-name <PROJECT_NAME> --json | jq -r '.[].Id')  to_delete=$(echo "$ids" | grep -v -F -x "$prod_id" | grep .)  [ -z "$to_delete" ] && { echo "Done. Production: $prod_id"; break; }  echo "Deleting $(echo "$to_delete" | wc -l | tr -d ' ') deployments..."  while IFS= read -r id; do    if ! npx wrangler pages deployment delete "$id" --project-name <PROJECT_NAME> --force 2>&1 | tee /tmp/wrangler-del.log | grep -q "Successfully deleted"; then      grep -q "active production deployment" /tmp/wrangler-del.log && prod_id="$id"    fi  done <<< "$to_delete"done
+```sh
+prod_id=""
+while :; do
+  ids=$(npx wrangler pages deployment list --project-name <PROJECT_NAME> --json | jq -r '.[].Id')
+  to_delete=$(echo "$ids" | grep -v -F -x "$prod_id" | grep .)
+  [ -z "$to_delete" ] && { echo "Done. Production: $prod_id"; break; }
+  echo "Deleting $(echo "$to_delete" | wc -l | tr -d ' ') deployments..."
+  while IFS= read -r id; do
+    if ! npx wrangler pages deployment delete "$id" --project-name <PROJECT_NAME> --force 2>&1 | tee /tmp/wrangler-del.log | grep -q "Successfully deleted"; then
+      grep -q "active production deployment" /tmp/wrangler-del.log && prod_id="$id"
+    fi
+  done <<< "$to_delete"
+done
 ```
 
 Note that this will not delete the active production deployment if one exists.

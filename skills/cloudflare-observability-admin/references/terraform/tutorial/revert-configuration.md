@@ -24,29 +24,26 @@ Terraform code snippets below refer to the v5 SDK only.
 
 Before determining how far back to revert, review your Git history:
 
-Terminal window
-
-```
+```sh
 git log --oneline
 ```
 
-```
-f1a2b3c Step 5 - Add two Page Rulesd4e5f6g Step 4 - Create load balancer (LB) monitor, LB pool, and LBa7b8c9d Step 3 - Enable TLS 1.3, automatic HTTPS rewrites, and strict SSLe1f2g3h Step 2 - Initial Terraform v5 configuration
+```sh
+f1a2b3c Step 5 - Add two Page Rules
+d4e5f6g Step 4 - Create load balancer (LB) monitor, LB pool, and LB
+a7b8c9d Step 3 - Enable TLS 1.3, automatic HTTPS rewrites, and strict SSL
+e1f2g3h Step 2 - Initial Terraform v5 configuration
 ```
 
 Another benefit of storing your Cloudflare configuration in Git is that you can see who made the change. You can also see who reviewed and approved the change if you peer-review pull requests.
 
-Terminal window
-
-```
+```sh
 git log
 ```
 
 Check when the last change was made:
 
-Terminal window
-
-```
+```sh
 git show
 ```
 
@@ -62,16 +59,16 @@ While you can always edit the config file directly and delete those entries, you
 
 Use Git to create a revert commit that undoes the Page Rules changes:
 
-Terminal window
-
-```
+```sh
 git revert HEAD
 ```
 
 Git will open your default editor with a commit message. Save and close to accept the default message, or customize it:
 
-```
+```sh
 Revert "Add Page Rules for security and redirects"
+
+
 This reverts commit f1a2b3c4d5e6f7a8b9c0d1e2f3g4h5i6j7k8l9m0.
 ```
 
@@ -79,18 +76,21 @@ This reverts commit f1a2b3c4d5e6f7a8b9c0d1e2f3g4h5i6j7k8l9m0.
 
 Check what Terraform will do with the reverted configuration:
 
-Terminal window
-
-```
+```sh
 terraform plan
 ```
 
 Expected output:
 
-```
+```sh
 Plan: 0 to add, 0 to change, 2 to destroy.
+
+
 Terraform will perform the following actions:
-  # cloudflare_page_rule.expensive_endpoint_security will be destroyed  # cloudflare_page_rule.legacy_redirect will be destroyed
+
+
+  # cloudflare_page_rule.expensive_endpoint_security will be destroyed
+  # cloudflare_page_rule.legacy_redirect will be destroyed
 ```
 
 As expected, Terraform will remove the two Page Rules that were added in tutorial 5.
@@ -99,14 +99,17 @@ As expected, Terraform will remove the two Page Rules that were added in tutoria
 
 Apply the changes to remove the Page Rules from your Cloudflare zone:
 
-Terminal window
-
-```
+```sh
 terraform apply --auto-approve
 ```
 
-```
-cloudflare_page_rule.expensive_endpoint_security: Destroying...cloudflare_page_rule.legacy_redirect: Destroying...cloudflare_page_rule.expensive_endpoint_security: Destruction complete after 1scloudflare_page_rule.legacy_redirect: Destruction complete after 1s
+```sh
+cloudflare_page_rule.expensive_endpoint_security: Destroying...
+cloudflare_page_rule.legacy_redirect: Destroying...
+cloudflare_page_rule.expensive_endpoint_security: Destruction complete after 1s
+cloudflare_page_rule.legacy_redirect: Destruction complete after 1s
+
+
 Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
 ```
 
@@ -116,11 +119,13 @@ Two resources were destroyed, as expected, and you have rolled back to the previ
 
 Test that the Page Rules are no longer active:
 
-Terminal window
+```bash
+# This should now return 404 (no redirect)
+curl -I https://www.example.com/old-location.php
 
-```
-# This should now return 404 (no redirect)curl -I https://www.example.com/old-location.php
-# This should return normal response (no Under Attack mode)curl -I https://www.example.com/expensive-db-call
+
+# This should return normal response (no Under Attack mode)
+curl -I https://www.example.com/expensive-db-call
 ```
 
 Your configuration has been successfully reverted. The Page Rules are removed, and your zone settings are back to the previous state. Git's version control ensures you can always recover or revert changes safely.

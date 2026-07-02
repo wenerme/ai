@@ -22,8 +22,8 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-9449)
-* [ API ](#tab-panel-9450)
+* [ Dashboard ](#tab-panel-9740)
+* [ API ](#tab-panel-9741)
 
 **Set up the monitor**
 
@@ -100,18 +100,77 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Create Monitor
+**Create Monitor**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "https",    "description": "Login page monitor",    "method": "GET",    "path": "/health",    "header": {        "Host": [            "example.com"        ],        "X-App-ID": [            "abc123"        ]    },    "port": 8080,    "timeout": 3,    "retries": 0,    "interval": 90,    "expected_body": "alive",    "expected_codes": "2xx",    "follow_redirects": true,    "allow_insecure": true,    "consecutive_up": 3,    "consecutive_down": 2,    "probe_zone": "example.com"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "type": "https",
+    "description": "Login page monitor",
+    "method": "GET",
+    "path": "/health",
+    "header": {
+        "Host": [
+            "example.com"
+        ],
+        "X-App-ID": [
+            "abc123"
+        ]
+    },
+    "port": 8080,
+    "timeout": 3,
+    "retries": 0,
+    "interval": 90,
+    "expected_body": "alive",
+    "expected_codes": "2xx",
+    "follow_redirects": true,
+    "allow_insecure": true,
+    "consecutive_up": 3,
+    "consecutive_down": 2,
+    "probe_zone": "example.com"
+  }'
 ```
 
 The response contains the complete definition of the new monitor.
 
-Response
+**Response**
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": ":monitor-id",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "type": "https",    "description": "Login page monitor",    "method": "GET",    "path": "/health",    "header": {      "Host": [        "example.com"      ],      "X-App-ID": [        "abc123"      ]    },    "port": 8080,    "timeout": 3,    "retries": 0,    "interval": 90,    "expected_body": "alive",    "expected_codes": "2xx",    "follow_redirects": true,    "allow_insecure": true,    "consecutive_up": 3,    "consecutive_down": 2,    "probe_zone": "example.com"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": ":monitor-id",
+    "created_on": "2021-01-01T05:20:00.12345Z",
+    "modified_on": "2021-01-01T05:20:00.12345Z",
+    "type": "https",
+    "description": "Login page monitor",
+    "method": "GET",
+    "path": "/health",
+    "header": {
+      "Host": [
+        "example.com"
+      ],
+      "X-App-ID": [
+        "abc123"
+      ]
+    },
+    "port": 8080,
+    "timeout": 3,
+    "retries": 0,
+    "interval": 90,
+    "expected_body": "alive",
+    "expected_codes": "2xx",
+    "follow_redirects": true,
+    "allow_insecure": true,
+    "consecutive_up": 3,
+    "consecutive_down": 2,
+    "probe_zone": "example.com"
+  }
+}
 ```
 
 **Prepare your servers**
@@ -132,8 +191,8 @@ Once your monitor is created, save its `id` property. Include this value in the 
 
 ## Edit a monitor
 
-* [ Dashboard ](#tab-panel-9445)
-* [ API ](#tab-panel-9446)
+* [ Dashboard ](#tab-panel-9736)
+* [ API ](#tab-panel-9737)
 
 To edit a monitor in the dashboard:
 
@@ -151,8 +210,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-9447)
-* [ API ](#tab-panel-9448)
+* [ Dashboard ](#tab-panel-9738)
+* [ API ](#tab-panel-9739)
 
 To delete a monitor in the dashboard:
 

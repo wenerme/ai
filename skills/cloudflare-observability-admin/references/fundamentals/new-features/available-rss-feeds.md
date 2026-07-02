@@ -55,6 +55,8 @@ Included products
 
 * [API Shield](https://developers.cloudflare.com/api-shield/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/api-shield.xml)
+* [Bots](https://developers.cloudflare.com/bots/)
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/bots.xml)
 * [Secrets Store](https://developers.cloudflare.com/secrets-store/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/secrets-store.xml)
 * [Security Center](https://developers.cloudflare.com/security-center/)
@@ -97,6 +99,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-tunnel-sase.xml)
 * [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-wan.xml)
+* [Data Localization Suite](https://developers.cloudflare.com/data-localization/)
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/data-localization.xml)
 * [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dex.xml)
 * [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)

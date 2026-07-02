@@ -34,7 +34,7 @@ The error budget is the amount of unsuccessful events that can happen over the c
 
 The SLO is a target percentage, and the error budget equals 100% minus the SLO. For example, assume that during 30 days there were one million tunnel health checks in your account, and your SLO is set to 99.9%. The error budget for this case would be:
 
-```
+```txt
 number of events x (1 - SLO) = 1,000,000 x (1-0.999) = 1,000
 ```
 

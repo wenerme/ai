@@ -24,21 +24,32 @@ In addition to TypeScript and JavaScript, the following module types are automat
 
 For example, with the following import, `text` will be a string containing the contents of `example.txt`:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import text from "./example.txt";
 ```
 
 This is also the basis for importing Wasm, as in the following example:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import wasm from "./example.wasm";
-// Instantiate Wasm modules in the module scopeconst instance = await WebAssembly.instantiate(wasm);
-export default {  fetch() {    const result = instance.exports.exported_func();
-    return new Response(result);  },};
+
+
+// Instantiate Wasm modules in the module scope
+const instance = await WebAssembly.instantiate(wasm);
+
+
+export default {
+  fetch() {
+    const result = instance.exports.exported_func();
+
+
+    return new Response(result);
+  },
+};
 ```
 
 Note

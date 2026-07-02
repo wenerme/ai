@@ -27,14 +27,19 @@ A menu item component.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-menu-item></rtk-menu-item>
+```html
+<!-- component.html -->
+<rtk-menu-item></rtk-menu-item>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-menu-item [menuVariant]="'primary' | 'secondary'" size="md"></rtk-menu-item>
+```html
+<!-- component.html -->
+<rtk-menu-item
+ [menuVariant]="'primary' | 'secondary'"
+ size="md">
+</rtk-menu-item>
 ```
 
 ```json

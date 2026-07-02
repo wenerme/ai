@@ -26,9 +26,9 @@ Copy the SRT Playback URL for your live input from either:
 
 Paste it into the URL below, replacing `<SRT_PLAYBACK_URL>`:
 
-SRT playback with ffplay
+**SRT playback with ffplay**
 
-```
+```sh
 ffplay -analyzeduration 1 -fflags -nobuffer -probesize 32 -sync ext '<SRT_PLAYBACK_URL>'
 ```
 

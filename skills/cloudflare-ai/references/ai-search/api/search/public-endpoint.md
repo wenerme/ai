@@ -32,10 +32,17 @@ For configuration options like rate limiting and CORS, refer to [Public endpoint
 
 The `/chat/completions` endpoint searches your data source and generates a response using the model and retrieved context. It uses the same OpenAI-compatible format as the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/#chat-completions).
 
-Terminal window
-
-```
-curl https://<INSTANCE_ID>.search.ai.cloudflare.com/chat/completions \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "How do I configure AI Search?",        "role": "user"      }    ]  }'
+```bash
+curl https://<INSTANCE_ID>.search.ai.cloudflare.com/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "content": "How do I configure AI Search?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 For the full list of options, refer to the [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
@@ -44,10 +51,17 @@ For the full list of options, refer to the [Chat Completions API reference](http
 
 The `/search` endpoint returns relevant chunks from your data source without generating a response. It uses the same format as the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/#search).
 
-Terminal window
-
-```
-curl https://<INSTANCE_ID>.search.ai.cloudflare.com/search \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "How do I configure AI Search?",        "role": "user"      }    ]  }'
+```bash
+curl https://<INSTANCE_ID>.search.ai.cloudflare.com/search \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "content": "How do I configure AI Search?",
+        "role": "user"
+      }
+    ]
+  }'
 ```
 
 For the full list of options, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).

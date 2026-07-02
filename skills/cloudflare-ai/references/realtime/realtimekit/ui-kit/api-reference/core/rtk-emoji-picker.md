@@ -26,19 +26,24 @@ A very simple emoji picker component.
 
 ### Basic Usage
 
-```
+```html
 <rtk-emoji-picker></rtk-emoji-picker>
 ```
 
 ### With Properties
 
-```
-<rtk-emoji-picker></rtk-emoji-picker>
+```html
+<rtk-emoji-picker>
+</rtk-emoji-picker>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-emoji-picker");
-  el.focusWhenOpened= true;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-emoji-picker");
+
+
+  el.focusWhenOpened= true;
+</script>
 ```
 
 ```json

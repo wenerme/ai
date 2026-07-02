@@ -18,30 +18,59 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-8294)
-* [  TypeScript ](#tab-panel-8295)
-* [  Python ](#tab-panel-8296)
+* [  JavaScript ](#tab-panel-8577)
+* [  TypeScript ](#tab-panel-8578)
+* [  Python ](#tab-panel-8579)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// Durable Objectexport class MyDurableObject extends DurableObject {  // DurableObjectState is accessible via the ctx instance property  constructor(ctx, env) {    super(ctx, env);  }  ...}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  // DurableObjectState is accessible via the ctx instance property
+  constructor(ctx, env) {
+    super(ctx, env);
+  }
+  ...
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
-// Durable Objectexport class MyDurableObject extends DurableObject {  // DurableObjectState is accessible via the ctx instance property  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }  ...}
+
+
+export interface Env {
+  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
+}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  // DurableObjectState is accessible via the ctx instance property
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+  ...
+}
 ```
 
-Python
+**Python**
 
-```
+```python
 from workers import DurableObject
-# Durable Objectclass MyDurableObject(DurableObject):  # DurableObjectState is accessible via the ctx instance property  def __init__(self, ctx, env):    super().__init__(ctx, env)  # ...
+
+
+# Durable Object
+class MyDurableObject(DurableObject):
+  # DurableObjectState is accessible via the ctx instance property
+  def __init__(self, ctx, env):
+    super().__init__(ctx, env)
+  # ...
 ```
 
 ## Methods and Properties
@@ -87,22 +116,45 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-8297)
-* [  Python ](#tab-panel-8298)
+* [  JavaScript ](#tab-panel-8580)
+* [  Python ](#tab-panel-8581)
 
-JavaScript
+**JavaScript**
 
+```js
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  initialized = false;
+
+
+  constructor(ctx, env) {
+    super(ctx, env);
+
+
+    // blockConcurrencyWhile will ensure that initialized will always be true
+    this.ctx.blockConcurrencyWhile(async () => {
+      this.initialized = true;
+    });
+  }
+  ...
+}
 ```
-// Durable Objectexport class MyDurableObject extends DurableObject {  initialized = false;
-  constructor(ctx, env) {    super(ctx, env);
-    // blockConcurrencyWhile will ensure that initialized will always be true    this.ctx.blockConcurrencyWhile(async () => {      this.initialized = true;    });  }  ...}
-```
 
-Python
+**Python**
 
-```
-# Durable Objectclass MyDurableObject(DurableObject):  def __init__(self, ctx, env):    super().__init__(ctx, env)    self.initialized = False
-    # blockConcurrencyWhile will ensure that initialized will always be true    async def set_initialized():      self.initialized = True    self.ctx.blockConcurrencyWhile(set_initialized)  # ...
+```python
+# Durable Object
+class MyDurableObject(DurableObject):
+  def __init__(self, ctx, env):
+    super().__init__(ctx, env)
+    self.initialized = False
+
+
+    # blockConcurrencyWhile will ensure that initialized will always be true
+    async def set_initialized():
+      self.initialized = True
+    self.ctx.blockConcurrencyWhile(set_initialized)
+  # ...
 ```
 
 #### Parameters
@@ -246,21 +298,38 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-8299)
-* [  Python ](#tab-panel-8300)
+* [  TypeScript ](#tab-panel-8582)
+* [  Python ](#tab-panel-8583)
 
-JavaScript
+**JavaScript**
 
+```js
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  async sayHello() {
+    // Error: Hello, World! will be logged
+    this.ctx.abort("Hello, World!");
+  }
+}
 ```
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  async sayHello() {    // Error: Hello, World! will be logged    this.ctx.abort("Hello, World!");  }}
-```
 
-Python
+**Python**
 
-```
-# Durable Objectclass MyDurableObject(DurableObject):  def __init__(self, ctx, env):    super().__init__(ctx, env)
-  async def say_hello(self):    # Error: Hello, World! will be logged    self.ctx.abort("Hello, World!")
+```python
+# Durable Object
+class MyDurableObject(DurableObject):
+  def __init__(self, ctx, env):
+    super().__init__(ctx, env)
+
+
+  async def say_hello(self):
+    # Error: Hello, World! will be logged
+    self.ctx.abort("Hello, World!")
 ```
 
 Not available in local development

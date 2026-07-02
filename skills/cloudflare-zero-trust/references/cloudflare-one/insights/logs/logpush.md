@@ -74,8 +74,20 @@ Logpush logs the following fields for each DNS query:
 
 Logpush provides DNS response data in two formats. `ResourceRecords` contains the raw DNS response in [Base64-encoded binary format ↗](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.3), which is compact but requires decoding before it is human-readable. `ResourceRecordsJSON` contains the same data in JSON, with the record name, type, class, TTL, and response data already parsed. For example:
 
-```
-{  "ResourceRecords": [    {      "type": "5",      "data": "d3d3LmV4YW1wbGUuY29tAAABAAUAAABleGFtcGxlLmNvbQ=="    },    {      "type": "1",      "data": "ZXhhbXBsZS5jb20AAAEAAQAAAQIDBAUGBwgJ"    }  ],  "ResourceRecordsJSON": "[{\"name\":\"www.example.com\",\"type\":\"CNAME\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"example.com.\"},{\"name\":\"example.com\",\"type\":\"A\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"203.0.113.0\"}]"}
+```json
+{
+  "ResourceRecords": [
+    {
+      "type": "5",
+      "data": "d3d3LmV4YW1wbGUuY29tAAABAAUAAABleGFtcGxlLmNvbQ=="
+    },
+    {
+      "type": "1",
+      "data": "ZXhhbXBsZS5jb20AAAEAAQAAAQIDBAUGBwgJ"
+    }
+  ],
+  "ResourceRecordsJSON": "[{\"name\":\"www.example.com\",\"type\":\"CNAME\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"example.com.\"},{\"name\":\"example.com\",\"type\":\"A\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"203.0.113.0\"}]"
+}
 ```
 
 ## Additional Logpush guides

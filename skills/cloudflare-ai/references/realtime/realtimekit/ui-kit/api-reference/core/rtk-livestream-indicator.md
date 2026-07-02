@@ -25,19 +25,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-livestream-indicator></rtk-livestream-indicator>
 ```
 
 ### With Properties
 
-```
-<rtk-livestream-indicator size="md"></rtk-livestream-indicator>
+```html
+<rtk-livestream-indicator
+ size="md">
+</rtk-livestream-indicator>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-livestream-indicator");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-livestream-indicator");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

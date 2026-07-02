@@ -18,19 +18,29 @@ Use the Workers API to access Agent Memory from your [Worker](https://developers
 
 Add an `agent_memory` entry to your Wrangler configuration. The `binding` field is the variable name you use in Worker code, and the `namespace` field is the Agent Memory namespace to bind to.
 
-* [  wrangler.jsonc ](#tab-panel-5189)
-* [  wrangler.toml ](#tab-panel-5190)
+* [  wrangler.jsonc ](#tab-panel-5335)
+* [  wrangler.toml ](#tab-panel-5336)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "agent_memory": [
+    {
+      "binding": "MEMORY",
+      "namespace": "<NAMESPACE_NAME>"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "agent_memory": [    {      "binding": "MEMORY",      "namespace": "<NAMESPACE_NAME>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[agent_memory]]binding = "MEMORY"namespace = "<NAMESPACE_NAME>"
+```toml
+[[agent_memory]]
+binding = "MEMORY"
+namespace = "<NAMESPACE_NAME>"
 ```
 
 To bind multiple namespaces, add multiple entries to the `agent_memory` array.
@@ -39,10 +49,12 @@ To bind multiple namespaces, add multiple entries to the `agent_memory` array.
 
 Run `npx wrangler types` to generate the binding type in `worker-configuration.d.ts`:
 
-worker-configuration.d.ts
+**worker-configuration.d.ts**
 
-```
-interface Env {  MEMORY: AgentMemoryNamespace;}
+```ts
+interface Env {
+  MEMORY: AgentMemoryNamespace;
+}
 ```
 
 ## Namespace methods
@@ -69,10 +81,18 @@ Marks a profile and all its memories and messages for deletion.
 
 Call profile methods after you get a profile from the binding.
 
-TypeScript
+**TypeScript**
 
-```
-type AgentMemoryMemory = {  id: string;  type: "fact" | "event" | "instruction" | "task";  summary: string;  content: string;  sessionId: string | null;  createdAt: Date;  updatedAt: Date;};
+```ts
+type AgentMemoryMemory = {
+  id: string;
+  type: "fact" | "event" | "instruction" | "task";
+  summary: string;
+  content: string;
+  sessionId: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
 ```
 
 ### `ingest(messages, options?)`
@@ -83,10 +103,14 @@ Processes a conversation and extracts structured memories from it. Agent Memory 
 * `options.sessionId` ` string | null ` optional: Identifier for the conversation session. Maximum 64 characters. If omitted, Agent Memory derives one from the message content.
 * Returns ` Promise<void> `
 
-TypeScript
+**TypeScript**
 
-```
-type AgentMemoryMessage = {  role: "system" | "user" | "assistant";  content: string; // Max 32 KB  timestamp?: Date;};
+```ts
+type AgentMemoryMessage = {
+  role: "system" | "user" | "assistant";
+  content: string; // Max 32 KB
+  timestamp?: Date;
+};
 ```
 
 `ingest()` is idempotent. Re-ingesting the same conversation does not create duplicate memories.
@@ -109,11 +133,22 @@ Searches stored memories in the profile and returns a synthesized answer grounde
 * `options.referenceDate` ` Date | string ` optional: Temporal anchor for date-relative queries.
 * Returns ` Promise<AgentMemoryRecallResult> `
 
-TypeScript
+**TypeScript**
 
-```
-type AgentMemoryRecallResult = {  count: number;  answer: string;  candidates: AgentMemoryScoredCandidate[];};
-type AgentMemoryScoredCandidate = {  id: string;  summary: string;  sessionId: string | null;  score: number;};
+```ts
+type AgentMemoryRecallResult = {
+  count: number;
+  answer: string;
+  candidates: AgentMemoryScoredCandidate[];
+};
+
+
+type AgentMemoryScoredCandidate = {
+  id: string;
+  summary: string;
+  sessionId: string | null;
+  score: number;
+};
 ```
 
 If no memories match the query, `recall()` returns an empty answer.
@@ -128,11 +163,16 @@ Lists memories stored in the profile. Returns a paginated, filterable view of st
 * `options.type` ` "fact" | "event" | "instruction" | "task" ` optional: Exact-match memory-type filter.
 * Returns ` Promise<AgentMemoryListMemoriesResult> `
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 type AgentMemoryMemoryListEntry = Omit<AgentMemoryMemory, "content">;
-type AgentMemoryListMemoriesResult = {  memories: AgentMemoryMemoryListEntry[];  cursor?: string;};
+
+
+type AgentMemoryListMemoriesResult = {
+  memories: AgentMemoryMemoryListEntry[];
+  cursor?: string;
+};
 ```
 
 List entries omit `content`. Use `get(memoryId)` to retrieve the full memory.
@@ -169,10 +209,12 @@ Generates a structured Markdown summary of everything stored in a memory profile
 * `options.sessionId` ` string | null ` optional: Session ID to scope the "Last Session" section of the summary. If omitted, Agent Memory uses the most recent session.
 * Returns ` Promise<AgentMemoryGetSummaryResponse> `
 
-TypeScript
+**TypeScript**
 
-```
-type AgentMemoryGetSummaryResponse = {  summary: string;};
+```ts
+type AgentMemoryGetSummaryResponse = {
+  summary: string;
+};
 ```
 
 ## Limits

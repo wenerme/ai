@@ -59,21 +59,47 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-11852)
-* [  wrangler.toml ](#tab-panel-11853)
+* [  wrangler.jsonc ](#tab-panel-12125)
+* [  wrangler.toml ](#tab-panel-12126)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "my-project",
+  "main": "dist/_worker.js/index.js",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "dist",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}
 ```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "my-project",  "main": "dist/_worker.js/index.js",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": ["nodejs_compat"],  "assets": {    "binding": "ASSETS",    "directory": "dist",  },  "observability": {    "enabled": true,  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "node_modules/wrangler/config-schema.json"name = "my-project"main = "dist/_worker.js/index.js"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = [ "nodejs_compat" ]
-[assets]binding = "ASSETS"directory = "dist"
-[observability]enabled = true
+```toml
+"$schema" = "node_modules/wrangler/config-schema.json"
+name = "my-project"
+main = "dist/_worker.js/index.js"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = [ "nodejs_compat" ]
+
+
+[assets]
+binding = "ASSETS"
+directory = "dist"
+
+
+[observability]
+enabled = true
 ```
 
 The exact configuration varies based on your framework.
@@ -82,24 +108,34 @@ The exact configuration varies based on your framework.
 
 New scripts are added to your `package.json`:
 
-```
-{  "scripts": {    "deploy": "npm run build && wrangler deploy",    "preview": "npm run build && wrangler dev",    "cf-typegen": "wrangler types"  }}
+```json
+{
+  "scripts": {
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev",
+    "cf-typegen": "wrangler types"
+  }
+}
 ```
 
 ### `.gitignore`
 
 Wrangler-specific entries are added:
 
-```
-# wrangler files.wrangler.dev.vars*!.dev.vars.example
+```txt
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
 ```
 
 ### `.assetsignore`
 
 For frameworks that generate worker files in the output directory, an `.assetsignore` file is created to exclude them from static asset uploads:
 
-```
-_worker.js_routes.json
+```txt
+_worker.js
+_routes.json
 ```
 
 ## Using automatic configuration

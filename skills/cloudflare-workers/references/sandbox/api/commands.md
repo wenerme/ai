@@ -20,9 +20,9 @@ Execute commands and manage background processes in the sandbox's isolated conta
 
 Execute a command and return the complete result.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await sandbox.exec(command: string, options?: ExecOptions): Promise<ExecuteResponse>
 ```
 
@@ -39,29 +39,95 @@ const result = await sandbox.exec(command: string, options?: ExecOptions): Promi
 
 **Returns**: `Promise<ExecuteResponse>` with `success`, `stdout`, `stderr`, `exitCode`
 
-* [  JavaScript ](#tab-panel-10235)
-* [  TypeScript ](#tab-panel-10236)
+* [  JavaScript ](#tab-panel-10530)
+* [  TypeScript ](#tab-panel-10531)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const result = await sandbox.exec("npm run build");
-if (result.success) {  console.log("Build output:", result.stdout);} else {  console.error("Build failed:", result.stderr);}
-// With streamingawait sandbox.exec("npm install", {  stream: true,  onOutput: (stream, data) => console.log(`[${stream}] ${data}`),});
-// With environment variables (undefined values are skipped)await sandbox.exec("node app.js", {  env: {    NODE_ENV: "production",    PORT: "3000",    DEBUG_MODE: undefined, // Skipped, uses container default or unset  },});
-// Pass input via stdin (no shell injection risks)const result = await sandbox.exec("cat", {  stdin: "Hello, world!",});console.log(result.stdout); // "Hello, world!"
-// Process user input safelyconst userInput = "user@example.com\nsecret123";await sandbox.exec("python process_login.py", {  stdin: userInput,});
+
+
+if (result.success) {
+  console.log("Build output:", result.stdout);
+} else {
+  console.error("Build failed:", result.stderr);
+}
+
+
+// With streaming
+await sandbox.exec("npm install", {
+  stream: true,
+  onOutput: (stream, data) => console.log(`[${stream}] ${data}`),
+});
+
+
+// With environment variables (undefined values are skipped)
+await sandbox.exec("node app.js", {
+  env: {
+    NODE_ENV: "production",
+    PORT: "3000",
+    DEBUG_MODE: undefined, // Skipped, uses container default or unset
+  },
+});
+
+
+// Pass input via stdin (no shell injection risks)
+const result = await sandbox.exec("cat", {
+  stdin: "Hello, world!",
+});
+console.log(result.stdout); // "Hello, world!"
+
+
+// Process user input safely
+const userInput = "user@example.com\nsecret123";
+await sandbox.exec("python process_login.py", {
+  stdin: userInput,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await sandbox.exec('npm run build');
-if (result.success) {  console.log('Build output:', result.stdout);} else {  console.error('Build failed:', result.stderr);}
-// With streamingawait sandbox.exec('npm install', {  stream: true,  onOutput: (stream, data) => console.log(`[${stream}] ${data}`)});
-// With environment variables (undefined values are skipped)await sandbox.exec('node app.js', {  env: {    NODE_ENV: 'production',    PORT: '3000',    DEBUG_MODE: undefined // Skipped, uses container default or unset  }});
-// Pass input via stdin (no shell injection risks)const result = await sandbox.exec('cat', {  stdin: 'Hello, world!'});console.log(result.stdout); // "Hello, world!"
-// Process user input safelyconst userInput = 'user@example.com\nsecret123';await sandbox.exec('python process_login.py', {  stdin: userInput});
+
+
+if (result.success) {
+  console.log('Build output:', result.stdout);
+} else {
+  console.error('Build failed:', result.stderr);
+}
+
+
+// With streaming
+await sandbox.exec('npm install', {
+  stream: true,
+  onOutput: (stream, data) => console.log(`[${stream}] ${data}`)
+});
+
+
+// With environment variables (undefined values are skipped)
+await sandbox.exec('node app.js', {
+  env: {
+    NODE_ENV: 'production',
+    PORT: '3000',
+    DEBUG_MODE: undefined // Skipped, uses container default or unset
+  }
+});
+
+
+// Pass input via stdin (no shell injection risks)
+const result = await sandbox.exec('cat', {
+  stdin: 'Hello, world!'
+});
+console.log(result.stdout); // "Hello, world!"
+
+
+// Process user input safely
+const userInput = 'user@example.com\nsecret123';
+await sandbox.exec('python process_login.py', {
+  stdin: userInput
+});
 ```
 
 Timeout behavior
@@ -74,9 +140,9 @@ Timeout precedence: per-command `timeout` on `exec()` \> session-level `commandT
 
 Execute a command and return a Server-Sent Events stream for real-time processing.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const stream = await sandbox.execStream(command: string, options?: ExecOptions): Promise<ReadableStream>
 ```
 
@@ -87,36 +153,93 @@ const stream = await sandbox.execStream(command: string, options?: ExecOptions):
 
 **Returns**: `Promise<ReadableStream>` emitting `ExecEvent` objects (`start`, `stdout`, `stderr`, `complete`, `error`)
 
-* [  JavaScript ](#tab-panel-10231)
-* [  TypeScript ](#tab-panel-10232)
+* [  JavaScript ](#tab-panel-10526)
+* [  TypeScript ](#tab-panel-10527)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { parseSSEStream } from "@cloudflare/sandbox";
+
+
 const stream = await sandbox.execStream("npm run build");
-for await (const event of parseSSEStream(stream)) {  switch (event.type) {    case "stdout":      console.log("Output:", event.data);      break;    case "complete":      console.log("Exit code:", event.exitCode);      break;    case "error":      console.error("Failed:", event.error);      break;  }}
-// Stream with stdin inputconst inputStream = await sandbox.execStream(  'python -c "import sys; print(sys.stdin.read())"',  {    stdin: "Data from Workers!",  },);
-for await (const event of parseSSEStream(inputStream)) {  if (event.type === "stdout") {    console.log("Python received:", event.data);  }}
+
+
+for await (const event of parseSSEStream(stream)) {
+  switch (event.type) {
+    case "stdout":
+      console.log("Output:", event.data);
+      break;
+    case "complete":
+      console.log("Exit code:", event.exitCode);
+      break;
+    case "error":
+      console.error("Failed:", event.error);
+      break;
+  }
+}
+
+
+// Stream with stdin input
+const inputStream = await sandbox.execStream(
+  'python -c "import sys; print(sys.stdin.read())"',
+  {
+    stdin: "Data from Workers!",
+  },
+);
+
+
+for await (const event of parseSSEStream(inputStream)) {
+  if (event.type === "stdout") {
+    console.log("Python received:", event.data);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { parseSSEStream, type ExecEvent } from '@cloudflare/sandbox';
+
+
 const stream = await sandbox.execStream('npm run build');
-for await (const event of parseSSEStream<ExecEvent>(stream)) {  switch (event.type) {    case 'stdout':      console.log('Output:', event.data);      break;    case 'complete':      console.log('Exit code:', event.exitCode);      break;    case 'error':      console.error('Failed:', event.error);      break;  }}
-// Stream with stdin inputconst inputStream = await sandbox.execStream('python -c "import sys; print(sys.stdin.read())"', {  stdin: 'Data from Workers!'});
-for await (const event of parseSSEStream<ExecEvent>(inputStream)) {  if (event.type === 'stdout') {    console.log('Python received:', event.data);  }}
+
+
+for await (const event of parseSSEStream<ExecEvent>(stream)) {
+  switch (event.type) {
+    case 'stdout':
+      console.log('Output:', event.data);
+      break;
+    case 'complete':
+      console.log('Exit code:', event.exitCode);
+      break;
+    case 'error':
+      console.error('Failed:', event.error);
+      break;
+  }
+}
+
+
+// Stream with stdin input
+const inputStream = await sandbox.execStream('python -c "import sys; print(sys.stdin.read())"', {
+  stdin: 'Data from Workers!'
+});
+
+
+for await (const event of parseSSEStream<ExecEvent>(inputStream)) {
+  if (event.type === 'stdout') {
+    console.log('Python received:', event.data);
+  }
+}
 ```
 
 ### `startProcess()`
 
 Start a long-running background process.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const process = await sandbox.startProcess(command: string, options?: ProcessOptions): Promise<Process>
 ```
 
@@ -145,59 +268,91 @@ const process = await sandbox.startProcess(command: string, options?: ProcessOpt
 * `waitForLog()` \- Wait for pattern in process output
 * `waitForExit()` \- Wait for process to terminate and return exit code
 
-* [  JavaScript ](#tab-panel-10215)
-* [  TypeScript ](#tab-panel-10216)
+* [  JavaScript ](#tab-panel-10510)
+* [  TypeScript ](#tab-panel-10511)
 
-JavaScript
+**JavaScript**
 
+```js
+const server = await sandbox.startProcess("python -m http.server 8000");
+console.log("Started with PID:", server.pid);
+
+
+// With custom environment
+const app = await sandbox.startProcess("node app.js", {
+  cwd: "/workspace/my-app",
+  env: { NODE_ENV: "production", PORT: "3000" },
+});
+
+
+// Start process with stdin input (useful for interactive applications)
+const interactive = await sandbox.startProcess("python interactive_app.py", {
+  stdin: "initial_config\nstart_mode\n",
+});
 ```
-const server = await sandbox.startProcess("python -m http.server 8000");console.log("Started with PID:", server.pid);
-// With custom environmentconst app = await sandbox.startProcess("node app.js", {  cwd: "/workspace/my-app",  env: { NODE_ENV: "production", PORT: "3000" },});
-// Start process with stdin input (useful for interactive applications)const interactive = await sandbox.startProcess("python interactive_app.py", {  stdin: "initial_config\nstart_mode\n",});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const server = await sandbox.startProcess('python -m http.server 8000');console.log('Started with PID:', server.pid);
-// With custom environmentconst app = await sandbox.startProcess('node app.js', {  cwd: '/workspace/my-app',  env: { NODE_ENV: 'production', PORT: '3000' }});
-// Start process with stdin input (useful for interactive applications)const interactive = await sandbox.startProcess('python interactive_app.py', {  stdin: 'initial_config\nstart_mode\n'});
+```ts
+const server = await sandbox.startProcess('python -m http.server 8000');
+console.log('Started with PID:', server.pid);
+
+
+// With custom environment
+const app = await sandbox.startProcess('node app.js', {
+  cwd: '/workspace/my-app',
+  env: { NODE_ENV: 'production', PORT: '3000' }
+});
+
+
+// Start process with stdin input (useful for interactive applications)
+const interactive = await sandbox.startProcess('python interactive_app.py', {
+  stdin: 'initial_config\nstart_mode\n'
+});
 ```
 
 ### `listProcesses()`
 
 List all running processes.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const processes = await sandbox.listProcesses(): Promise<ProcessInfo[]>
 ```
 
-* [  JavaScript ](#tab-panel-10211)
-* [  TypeScript ](#tab-panel-10212)
+* [  JavaScript ](#tab-panel-10506)
+* [  TypeScript ](#tab-panel-10507)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const processes = await sandbox.listProcesses();
-for (const proc of processes) {  console.log(`${proc.id}: ${proc.command} (PID ${proc.pid})`);}
+
+
+for (const proc of processes) {
+  console.log(`${proc.id}: ${proc.command} (PID ${proc.pid})`);
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const processes = await sandbox.listProcesses();
-for (const proc of processes) {  console.log(`${proc.id}: ${proc.command} (PID ${proc.pid})`);}
+
+
+for (const proc of processes) {
+  console.log(`${proc.id}: ${proc.command} (PID ${proc.pid})`);
+}
 ```
 
 ### `killProcess()`
 
 Terminate a specific process and all of its child processes.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.killProcess(processId: string, signal?: string): Promise<void>
 ```
 
@@ -208,45 +363,59 @@ await sandbox.killProcess(processId: string, signal?: string): Promise<void>
 
 Sends the signal to the entire process group, ensuring that both the main process and any child processes it spawned are terminated. This prevents orphaned processes from continuing to run after the parent is killed.
 
-* [  JavaScript ](#tab-panel-10217)
-* [  TypeScript ](#tab-panel-10218)
+* [  JavaScript ](#tab-panel-10512)
+* [  TypeScript ](#tab-panel-10513)
 
-JavaScript
+**JavaScript**
 
+```js
+const server = await sandbox.startProcess("python -m http.server 8000");
+await sandbox.killProcess(server.id);
+
+
+// Example with a process that spawns children
+const script = await sandbox.startProcess(
+  'bash -c "sleep 10 & sleep 10 & wait"',
+);
+// killProcess terminates both sleep commands and the bash process
+await sandbox.killProcess(script.id);
 ```
-const server = await sandbox.startProcess("python -m http.server 8000");await sandbox.killProcess(server.id);
-// Example with a process that spawns childrenconst script = await sandbox.startProcess(  'bash -c "sleep 10 & sleep 10 & wait"',);// killProcess terminates both sleep commands and the bash processawait sandbox.killProcess(script.id);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const server = await sandbox.startProcess('python -m http.server 8000');await sandbox.killProcess(server.id);
-// Example with a process that spawns childrenconst script = await sandbox.startProcess('bash -c "sleep 10 & sleep 10 & wait"');// killProcess terminates both sleep commands and the bash processawait sandbox.killProcess(script.id);
+```ts
+const server = await sandbox.startProcess('python -m http.server 8000');
+await sandbox.killProcess(server.id);
+
+
+// Example with a process that spawns children
+const script = await sandbox.startProcess('bash -c "sleep 10 & sleep 10 & wait"');
+// killProcess terminates both sleep commands and the bash process
+await sandbox.killProcess(script.id);
 ```
 
 ### `killAllProcesses()`
 
 Terminate all running processes.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.killAllProcesses(): Promise<void>
 ```
 
-* [  JavaScript ](#tab-panel-10213)
-* [  TypeScript ](#tab-panel-10214)
+* [  JavaScript ](#tab-panel-10508)
+* [  TypeScript ](#tab-panel-10509)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 await sandbox.killAllProcesses();
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await sandbox.killAllProcesses();
 ```
 
@@ -254,9 +423,9 @@ await sandbox.killAllProcesses();
 
 Stream logs from a running process in real-time.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const stream = await sandbox.streamProcessLogs(processId: string): Promise<ReadableStream>
 ```
 
@@ -266,34 +435,52 @@ const stream = await sandbox.streamProcessLogs(processId: string): Promise<Reada
 
 **Returns**: `Promise<ReadableStream>` emitting `LogEvent` objects
 
-* [  JavaScript ](#tab-panel-10221)
-* [  TypeScript ](#tab-panel-10222)
+* [  JavaScript ](#tab-panel-10516)
+* [  TypeScript ](#tab-panel-10517)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { parseSSEStream } from "@cloudflare/sandbox";
-const server = await sandbox.startProcess("node server.js");const logStream = await sandbox.streamProcessLogs(server.id);
-for await (const log of parseSSEStream(logStream)) {  console.log(`[${log.timestamp}] ${log.data}`);
-  if (log.data.includes("Server started")) break;}
+
+
+const server = await sandbox.startProcess("node server.js");
+const logStream = await sandbox.streamProcessLogs(server.id);
+
+
+for await (const log of parseSSEStream(logStream)) {
+  console.log(`[${log.timestamp}] ${log.data}`);
+
+
+  if (log.data.includes("Server started")) break;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
-const server = await sandbox.startProcess('node server.js');const logStream = await sandbox.streamProcessLogs(server.id);
-for await (const log of parseSSEStream<LogEvent>(logStream)) {  console.log(`[${log.timestamp}] ${log.data}`);
-  if (log.data.includes('Server started')) break;}
+
+
+const server = await sandbox.startProcess('node server.js');
+const logStream = await sandbox.streamProcessLogs(server.id);
+
+
+for await (const log of parseSSEStream<LogEvent>(logStream)) {
+  console.log(`[${log.timestamp}] ${log.data}`);
+
+
+  if (log.data.includes('Server started')) break;
+}
 ```
 
 ### `getProcessLogs()`
 
 Get accumulated logs from a process.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const logs = await sandbox.getProcessLogs(processId: string): Promise<string>
 ```
 
@@ -303,21 +490,29 @@ const logs = await sandbox.getProcessLogs(processId: string): Promise<string>
 
 **Returns**: `Promise<string>` with all accumulated output
 
-* [  JavaScript ](#tab-panel-10219)
-* [  TypeScript ](#tab-panel-10220)
+* [  JavaScript ](#tab-panel-10514)
+* [  TypeScript ](#tab-panel-10515)
 
-JavaScript
+**JavaScript**
 
+```js
+const server = await sandbox.startProcess("node server.js");
+await new Promise((resolve) => setTimeout(resolve, 5000));
+
+
+const logs = await sandbox.getProcessLogs(server.id);
+console.log("Server logs:", logs);
 ```
-const server = await sandbox.startProcess("node server.js");await new Promise((resolve) => setTimeout(resolve, 5000));
-const logs = await sandbox.getProcessLogs(server.id);console.log("Server logs:", logs);
-```
 
-TypeScript
+**TypeScript**
 
-```
-const server = await sandbox.startProcess('node server.js');await new Promise(resolve => setTimeout(resolve, 5000));
-const logs = await sandbox.getProcessLogs(server.id);console.log('Server logs:', logs);
+```ts
+const server = await sandbox.startProcess('node server.js');
+await new Promise(resolve => setTimeout(resolve, 5000));
+
+
+const logs = await sandbox.getProcessLogs(server.id);
+console.log('Server logs:', logs);
 ```
 
 ## Standard input (stdin)
@@ -334,77 +529,123 @@ When you provide the `stdin` option:
 
 This approach prevents shell injection attacks that could occur when embedding user data directly in commands.
 
-* [  JavaScript ](#tab-panel-10223)
-* [  TypeScript ](#tab-panel-10224)
+* [  JavaScript ](#tab-panel-10518)
+* [  TypeScript ](#tab-panel-10519)
 
-JavaScript
+**JavaScript**
 
+```js
+// Safe: User input goes through stdin, not shell parsing
+const userInput = "user@domain.com; rm -rf /";
+const result = await sandbox.exec("python validate_email.py", {
+  stdin: userInput,
+});
+
+
+// Instead of unsafe: `python validate_email.py "${userInput}"`
+// which could execute the embedded `rm -rf /` command
 ```
-// Safe: User input goes through stdin, not shell parsingconst userInput = "user@domain.com; rm -rf /";const result = await sandbox.exec("python validate_email.py", {  stdin: userInput,});
-// Instead of unsafe: `python validate_email.py "${userInput}"`// which could execute the embedded `rm -rf /` command
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Safe: User input goes through stdin, not shell parsingconst userInput = 'user@domain.com; rm -rf /';const result = await sandbox.exec('python validate_email.py', {  stdin: userInput});
-// Instead of unsafe: `python validate_email.py "${userInput}"`// which could execute the embedded `rm -rf /` command
+```ts
+// Safe: User input goes through stdin, not shell parsing
+const userInput = 'user@domain.com; rm -rf /';
+const result = await sandbox.exec('python validate_email.py', {
+  stdin: userInput
+});
+
+
+// Instead of unsafe: `python validate_email.py "${userInput}"`
+// which could execute the embedded `rm -rf /` command
 ```
 
 ### Common patterns
 
 **Processing form data:**
 
-* [  JavaScript ](#tab-panel-10227)
-* [  TypeScript ](#tab-panel-10228)
+* [  JavaScript ](#tab-panel-10522)
+* [  TypeScript ](#tab-panel-10523)
 
-JavaScript
+**JavaScript**
 
+```js
+const formData = JSON.stringify({
+  username: "john_doe",
+  email: "john@example.com",
+});
+
+
+const result = await sandbox.exec("python process_form.py", {
+  stdin: formData,
+});
 ```
-const formData = JSON.stringify({  username: "john_doe",  email: "john@example.com",});
-const result = await sandbox.exec("python process_form.py", {  stdin: formData,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const formData = JSON.stringify({  username: 'john_doe',  email: 'john@example.com'});
-const result = await sandbox.exec('python process_form.py', {  stdin: formData});
+```ts
+const formData = JSON.stringify({
+  username: 'john_doe',
+  email: 'john@example.com'
+});
+
+
+const result = await sandbox.exec('python process_form.py', {
+  stdin: formData
+});
 ```
 
 **Interactive command-line tools:**
 
-* [  JavaScript ](#tab-panel-10225)
-* [  TypeScript ](#tab-panel-10226)
+* [  JavaScript ](#tab-panel-10520)
+* [  TypeScript ](#tab-panel-10521)
 
-JavaScript
+**JavaScript**
 
+```js
+// Simulate user responses to prompts
+const responses = "yes\nmy-app\n1.0.0\n";
+const result = await sandbox.exec("npm init", {
+  stdin: responses,
+});
 ```
-// Simulate user responses to promptsconst responses = "yes\nmy-app\n1.0.0\n";const result = await sandbox.exec("npm init", {  stdin: responses,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Simulate user responses to promptsconst responses = 'yes\nmy-app\n1.0.0\n';const result = await sandbox.exec('npm init', {  stdin: responses});
+```ts
+// Simulate user responses to prompts
+const responses = 'yes\nmy-app\n1.0.0\n';
+const result = await sandbox.exec('npm init', {
+  stdin: responses
+});
 ```
 
 **Data transformation:**
 
-* [  JavaScript ](#tab-panel-10229)
-* [  TypeScript ](#tab-panel-10230)
+* [  JavaScript ](#tab-panel-10524)
+* [  TypeScript ](#tab-panel-10525)
 
-JavaScript
+**JavaScript**
 
-```
-const csvData = "name,age,city\nJohn,30,NYC\nJane,25,LA";const result = await sandbox.exec("python csv_processor.py", {  stdin: csvData,});
+```js
+const csvData = "name,age,city\nJohn,30,NYC\nJane,25,LA";
+const result = await sandbox.exec("python csv_processor.py", {
+  stdin: csvData,
+});
+
+
 console.log("Processed data:", result.stdout);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const csvData = 'name,age,city\nJohn,30,NYC\nJane,25,LA';const result = await sandbox.exec('python csv_processor.py', {  stdin: csvData});
+```ts
+const csvData = 'name,age,city\nJohn,30,NYC\nJane,25,LA';
+const result = await sandbox.exec('python csv_processor.py', {
+  stdin: csvData
+});
+
+
 console.log('Processed data:', result.stdout);
 ```
 
@@ -416,9 +657,9 @@ The `Process` object returned by `startProcess()` includes methods to wait for t
 
 Wait for a process to listen on a port.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 await process.waitForPort(port: number, options?: WaitForPortOptions): Promise<void>
 ```
 
@@ -434,42 +675,74 @@ await process.waitForPort(port: number, options?: WaitForPortOptions): Promise<v
 
 **HTTP mode** (default) makes an HTTP GET request and checks the response status:
 
-* [  JavaScript ](#tab-panel-10237)
-* [  TypeScript ](#tab-panel-10238)
+* [  JavaScript ](#tab-panel-10532)
+* [  TypeScript ](#tab-panel-10533)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const server = await sandbox.startProcess("node server.js");
-// Wait for server to be ready (HTTP mode)await server.waitForPort(3000);
-// Check specific endpoint and statusawait server.waitForPort(8080, {  path: "/health",  status: { min: 200, max: 299 },  timeout: 30000,});
+
+
+// Wait for server to be ready (HTTP mode)
+await server.waitForPort(3000);
+
+
+// Check specific endpoint and status
+await server.waitForPort(8080, {
+  path: "/health",
+  status: { min: 200, max: 299 },
+  timeout: 30000,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const server = await sandbox.startProcess('node server.js');
-// Wait for server to be ready (HTTP mode)await server.waitForPort(3000);
-// Check specific endpoint and statusawait server.waitForPort(8080, {  path: '/health',  status: { min: 200, max: 299 },  timeout: 30000});
+
+
+// Wait for server to be ready (HTTP mode)
+await server.waitForPort(3000);
+
+
+// Check specific endpoint and status
+await server.waitForPort(8080, {
+  path: '/health',
+  status: { min: 200, max: 299 },
+  timeout: 30000
+});
 ```
 
 **TCP mode** checks if the port accepts connections:
 
-* [  JavaScript ](#tab-panel-10233)
-* [  TypeScript ](#tab-panel-10234)
+* [  JavaScript ](#tab-panel-10528)
+* [  TypeScript ](#tab-panel-10529)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const db = await sandbox.startProcess("redis-server");
-// Wait for database to accept connectionsawait db.waitForPort(6379, {  mode: "tcp",  timeout: 10000,});
+
+
+// Wait for database to accept connections
+await db.waitForPort(6379, {
+  mode: "tcp",
+  timeout: 10000,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const db = await sandbox.startProcess('redis-server');
-// Wait for database to accept connectionsawait db.waitForPort(6379, {  mode: 'tcp',  timeout: 10000});
+
+
+// Wait for database to accept connections
+await db.waitForPort(6379, {
+  mode: 'tcp',
+  timeout: 10000
+});
 ```
 
 **Throws**:
@@ -481,9 +754,9 @@ const db = await sandbox.startProcess('redis-server');
 
 Wait for a pattern to appear in process output.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await process.waitForLog(pattern: string | RegExp, timeout?: number): Promise<WaitForLogResult>
 ```
 
@@ -497,25 +770,47 @@ const result = await process.waitForLog(pattern: string | RegExp, timeout?: numb
 * `line` \- The matching line of output
 * `matches` \- Array of capture groups (for RegExp patterns)
 
-* [  JavaScript ](#tab-panel-10241)
-* [  TypeScript ](#tab-panel-10242)
+* [  JavaScript ](#tab-panel-10536)
+* [  TypeScript ](#tab-panel-10537)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const server = await sandbox.startProcess("node server.js");
-// Wait for string patternconst result = await server.waitForLog("Server listening");console.log("Ready:", result.line);
-// Wait for RegExp with capture groupsconst result = await server.waitForLog(/Server listening on port (\d+)/);console.log("Port:", result.matches[1]); // Extracted port number
-// With timeoutawait server.waitForLog("Ready", 30000);
+
+
+// Wait for string pattern
+const result = await server.waitForLog("Server listening");
+console.log("Ready:", result.line);
+
+
+// Wait for RegExp with capture groups
+const result = await server.waitForLog(/Server listening on port (\d+)/);
+console.log("Port:", result.matches[1]); // Extracted port number
+
+
+// With timeout
+await server.waitForLog("Ready", 30000);
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const server = await sandbox.startProcess('node server.js');
-// Wait for string patternconst result = await server.waitForLog('Server listening');console.log('Ready:', result.line);
-// Wait for RegExp with capture groupsconst result = await server.waitForLog(/Server listening on port (\d+)/);console.log('Port:', result.matches[1]); // Extracted port number
-// With timeoutawait server.waitForLog('Ready', 30000);
+
+
+// Wait for string pattern
+const result = await server.waitForLog('Server listening');
+console.log('Ready:', result.line);
+
+
+// Wait for RegExp with capture groups
+const result = await server.waitForLog(/Server listening on port (\d+)/);
+console.log('Port:', result.matches[1]); // Extracted port number
+
+
+// With timeout
+await server.waitForLog('Ready', 30000);
 ```
 
 **Throws**:
@@ -527,9 +822,9 @@ const server = await sandbox.startProcess('node server.js');
 
 Wait for a process to terminate and return the exit code.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const result = await process.waitForExit(timeout?: number): Promise<WaitForExitResult>
 ```
 
@@ -541,23 +836,37 @@ const result = await process.waitForExit(timeout?: number): Promise<WaitForExitR
 
 * `exitCode` \- The process exit code
 
-* [  JavaScript ](#tab-panel-10239)
-* [  TypeScript ](#tab-panel-10240)
+* [  JavaScript ](#tab-panel-10534)
+* [  TypeScript ](#tab-panel-10535)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const build = await sandbox.startProcess("npm run build");
-// Wait for build to completeconst result = await build.waitForExit();console.log("Build finished with exit code:", result.exitCode);
-// With timeoutconst result = await build.waitForExit(60000); // 60 second timeout
+
+
+// Wait for build to complete
+const result = await build.waitForExit();
+console.log("Build finished with exit code:", result.exitCode);
+
+
+// With timeout
+const result = await build.waitForExit(60000); // 60 second timeout
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const build = await sandbox.startProcess('npm run build');
-// Wait for build to completeconst result = await build.waitForExit();console.log('Build finished with exit code:', result.exitCode);
-// With timeoutconst result = await build.waitForExit(60000); // 60 second timeout
+
+
+// Wait for build to complete
+const result = await build.waitForExit();
+console.log('Build finished with exit code:', result.exitCode);
+
+
+// With timeout
+const result = await build.waitForExit(60000); // 60 second timeout
 ```
 
 **Throws**:

@@ -24,10 +24,11 @@ A component which lists all participants, with the ability to run privileged act
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val rtkParticipantsFragment = RtkParticipantsFragment()rtkParticipantsFragment.show(fragmentManager, "PARTICIPANTS_TAG")
+```kotlin
+val rtkParticipantsFragment = RtkParticipantsFragment()
+rtkParticipantsFragment.show(fragmentManager, "PARTICIPANTS_TAG")
 ```
 
 ```json

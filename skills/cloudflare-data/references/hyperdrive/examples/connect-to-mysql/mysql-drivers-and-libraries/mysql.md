@@ -36,32 +36,84 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8815)
-* [  wrangler.toml ](#tab-panel-8816)
+* [  wrangler.jsonc ](#tab-panel-9066)
+* [  wrangler.toml ](#tab-panel-9067)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new connection and pass the Hyperdrive parameters:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createConnection } from "mysql";
-export default {  async fetch(request, env, ctx): Promise<Response> {    const result = await new Promise<any>((resolve) => {      // Create a connection using the mysql driver with the Hyperdrive credentials (only accessible from your Worker).      const connection = createConnection({        host: env.HYPERDRIVE.host,        user: env.HYPERDRIVE.user,        password: env.HYPERDRIVE.password,        database: env.HYPERDRIVE.database,        port: env.HYPERDRIVE.port,      });
-      connection.connect((error: { message: string }) => {        if (error) {          throw new Error(error.message);        }
-        // Sample query        connection.query("SHOW tables;", [], (error, rows, fields) => {          resolve({ fields, rows });        });      });    });
-    // Return result  as JSON    return new Response(JSON.stringify(result), {      headers: {        "Content-Type": "application/json",      },    });  },} satisfies ExportedHandler<Env>;
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const result = await new Promise<any>((resolve) => {
+      // Create a connection using the mysql driver with the Hyperdrive credentials (only accessible from your Worker).
+      const connection = createConnection({
+        host: env.HYPERDRIVE.host,
+        user: env.HYPERDRIVE.user,
+        password: env.HYPERDRIVE.password,
+        database: env.HYPERDRIVE.database,
+        port: env.HYPERDRIVE.port,
+      });
+
+
+      connection.connect((error: { message: string }) => {
+        if (error) {
+          throw new Error(error.message);
+        }
+
+
+        // Sample query
+        connection.query("SHOW tables;", [], (error, rows, fields) => {
+          resolve({ fields, rows });
+        });
+      });
+    });
+
+
+    // Return result  as JSON
+    return new Response(JSON.stringify(result), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

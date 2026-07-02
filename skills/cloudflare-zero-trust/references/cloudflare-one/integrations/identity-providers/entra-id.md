@@ -32,7 +32,7 @@ To retrieve those values:
 4. Name your application.
 5. Select **Register an application to integrate with Microsoft Entra ID (App you're developing)**. If offered, do not select any of the gallery applications. Select **Create**.
 6. Under **Redirect URI**, select the _Web_ platform and enter the following URL.
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -73,9 +73,9 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-7288)
-* [ API ](#tab-panel-7289)
-* [ Terraform ](#tab-panel-7290)
+* [ Dashboard ](#tab-panel-7538)
+* [ API ](#tab-panel-7539)
+* [ Terraform ](#tab-panel-7540)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -99,10 +99,22 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-Add an Access identity provider
+**Add an Access identity provider**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Entra ID example",    "type": "azureAD",    "config": {        "client_id": "<your client id>",        "client_secret": "<your client secret>",        "directory_id": "<your azure directory uuid>",        "support_groups": true    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Entra ID example",
+    "type": "azureAD",
+    "config": {
+        "client_id": "<your client id>",
+        "client_secret": "<your client secret>",
+        "directory_id": "<your azure directory uuid>",
+        "support_groups": true
+    }
+  }'
 ```
 
 Provider versions
@@ -113,8 +125,18 @@ The following example requires Cloudflare provider version `4.40.0` or greater.
 
   * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
-```
-resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {  account_id = var.cloudflare_account_id  name       = "Entra ID example"  type       = "azureAD"  config      = {    client_id                  = var.entra_id_client_id    client_secret              = var.entra_id_client_secret    directory_id               = var.entra_id_directory_id    support_groups             = true    }}
+```tf
+resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {
+  account_id = var.cloudflare_account_id
+  name       = "Entra ID example"
+  type       = "azureAD"
+  config      = {
+    client_id                  = var.entra_id_client_id
+    client_secret              = var.entra_id_client_secret
+    directory_id               = var.entra_id_directory_id
+    support_groups             = true
+    }
+}
 ```
 
 #### UPN and email
@@ -253,17 +275,47 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Organizations, Identity Providers, and Groups Write`
   * `Access: Organizations, Identity Providers, and Groups Read`
-Get an Access identity provider
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+**Get an Access identity provider**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. [Update the Entra ID identity provider](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/methods/update/) using a `PUT` request. In the request body, include all existing configurations and set the `prompt` parameter to either `login` or `select_account`. For example:
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Organizations, Identity Providers, and Groups Write`
-Update an Access identity provider
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",    "type": "azureAD",    "uid": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",    "name": "Entra ID",    "version": "31e74e9b4f033e16b604552091a72295",    "config": {        "azure_cloud": "default",        "client_id": "<CLIENT_ID>",        "conditional_access_enabled": false,        "directory_id": "<AZURE_DIRECTORY_ID>",        "redirect_url": "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/callback",        "prompt": "login",        "support_groups": true    },    "scim_config": {        "enabled": true,        "user_deprovision": true,        "seat_deprovision": false,        "group_member_deprovision": false,        "identity_update_behavior": "automatic"    },    "scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"  }'
+
+**Update an Access identity provider**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    "type": "azureAD",
+    "uid": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    "name": "Entra ID",
+    "version": "31e74e9b4f033e16b604552091a72295",
+    "config": {
+        "azure_cloud": "default",
+        "client_id": "<CLIENT_ID>",
+        "conditional_access_enabled": false,
+        "directory_id": "<AZURE_DIRECTORY_ID>",
+        "redirect_url": "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/callback",
+        "prompt": "login",
+        "support_groups": true
+    },
+    "scim_config": {
+        "enabled": true,
+        "user_deprovision": true,
+        "seat_deprovision": false,
+        "group_member_deprovision": false,
+        "identity_update_behavior": "automatic"
+    },
+    "scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"
+  }'
 ```
 
 ```json

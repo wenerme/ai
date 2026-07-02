@@ -43,21 +43,49 @@ A composite view for displaying plugins and screen share content. Includes a tab
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let viewModel = VideoPeerViewModel(    meeting: rtkClient,    participant: participant,    showSelfPreviewVideo: false)let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)view.addSubview(pluginsView)
+
+
+let viewModel = VideoPeerViewModel(
+    meeting: rtkClient,
+    participant: participant,
+    showSelfPreviewVideo: false
+)
+let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)
+view.addSubview(pluginsView)
 ```
 
 ### With tab buttons
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let viewModel = VideoPeerViewModel(    meeting: rtkClient,    participant: participant,    showSelfPreviewVideo: false)let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)
-let buttons = [    RtkPluginScreenShareTabButton(image: nil, title: "Screen Share"),    RtkPluginScreenShareTabButton(image: nil, title: "Whiteboard")]pluginsView.setButtons(    buttons: buttons,    selectedIndex: 0,    clickAction: { index in        print("Selected tab: \(index)")    })view.addSubview(pluginsView)
+
+
+let viewModel = VideoPeerViewModel(
+    meeting: rtkClient,
+    participant: participant,
+    showSelfPreviewVideo: false
+)
+let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)
+
+
+let buttons = [
+    RtkPluginScreenShareTabButton(image: nil, title: "Screen Share"),
+    RtkPluginScreenShareTabButton(image: nil, title: "Whiteboard")
+]
+pluginsView.setButtons(
+    buttons: buttons,
+    selectedIndex: 0,
+    clickAction: { index in
+        print("Selected tab: \(index)")
+    }
+)
+view.addSubview(pluginsView)
 ```
 
 ```json

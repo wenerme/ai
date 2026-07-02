@@ -29,118 +29,231 @@ Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1772)
-* [ cURL ](#tab-panel-1773)
+* [ TypeScript ](#tab-panel-1820)
+* [ cURL ](#tab-panel-1821)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-pro',
+  {
+    prompt:
+      'A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-pro',  {    prompt:      'A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-pro",
+  "input": {
+    "prompt": "A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-pro",  "input": {    "prompt": "A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style"  }}'
-```
-
-* [ Output ](#tab-panel-1770)
-* [ Raw response ](#tab-panel-1771)
+* [ Output ](#tab-panel-1818)
+* [ Raw response ](#tab-panel-1819)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Large Format Art**  — Large canvas digital art
 
-* [ TypeScript ](#tab-panel-1776)
-* [ cURL ](#tab-panel-1777)
+* [ TypeScript ](#tab-panel-1824)
+* [ cURL ](#tab-panel-1825)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-pro',
+  {
+    prompt:
+      'A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands',
+    size: '2048x2048',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-pro',  {    prompt:      'A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands',    size: '2048x2048',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-pro",
+  "input": {
+    "prompt": "A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands",
+    "size": "2048x2048"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-pro",  "input": {    "prompt": "A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands",    "size": "2048x2048"  }}'
-```
-
-* [ Output ](#tab-panel-1774)
-* [ Raw response ](#tab-panel-1775)
+* [ Output ](#tab-panel-1822)
+* [ Raw response ](#tab-panel-1823)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Brand Asset**  — Professional brand asset with controlled colors
 
-* [ TypeScript ](#tab-panel-1784)
-* [ cURL ](#tab-panel-1785)
+* [ TypeScript ](#tab-panel-1832)
+* [ cURL ](#tab-panel-1833)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-pro',
+  {
+    prompt:
+      'A modern, clean illustration of a shield with a checkmark inside, representing security and trust',
+    controls: {
+      background_color: { rgb: [15, 23, 42] },
+      colors: [{ rgb: [46, 117, 182] }, { rgb: [255, 255, 255] }],
+    },
+    size: '2048x2048',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-pro',  {    prompt:      'A modern, clean illustration of a shield with a checkmark inside, representing security and trust',    controls: {      background_color: { rgb: [15, 23, 42] },      colors: [{ rgb: [46, 117, 182] }, { rgb: [255, 255, 255] }],    },    size: '2048x2048',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-pro",
+  "input": {
+    "prompt": "A modern, clean illustration of a shield with a checkmark inside, representing security and trust",
+    "controls": {
+      "background_color": {
+        "rgb": [
+          15,
+          23,
+          42
+        ]
+      },
+      "colors": [
+        {
+          "rgb": [
+            46,
+            117,
+            182
+          ]
+        },
+        {
+          "rgb": [
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    "size": "2048x2048"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-pro",  "input": {    "prompt": "A modern, clean illustration of a shield with a checkmark inside, representing security and trust",    "controls": {      "background_color": {        "rgb": [          15,          23,          42        ]      },      "colors": [        {          "rgb": [            46,            117,            182          ]        },        {          "rgb": [            255,            255,            255          ]        }      ]    },    "size": "2048x2048"  }}'
-```
-
-* [ Output ](#tab-panel-1778)
-* [ Raw response ](#tab-panel-1779)
+* [ Output ](#tab-panel-1826)
+* [ Raw response ](#tab-panel-1827)
 
 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Editorial Illustration**  — Magazine-quality editorial illustration
 
-* [ TypeScript ](#tab-panel-1782)
-* [ cURL ](#tab-panel-1783)
+* [ TypeScript ](#tab-panel-1830)
+* [ cURL ](#tab-panel-1831)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-pro',
+  {
+    prompt:
+      'A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-pro',  {    prompt:      'A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-pro",
+  "input": {
+    "prompt": "A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-pro",  "input": {    "prompt": "A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves"  }}'
-```
-
-* [ Output ](#tab-panel-1780)
-* [ Raw response ](#tab-panel-1781)
+* [ Output ](#tab-panel-1828)
+* [ Raw response ](#tab-panel-1829)
 
 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1786)
-* [ Output ](#tab-panel-1787)
-
-▶controls{}
-
-`object`
+* [ Input ](#tab-panel-1834)
+* [ Output ](#tab-panel-1835)
 
 prompt
 
@@ -157,6 +270,10 @@ style
 substyle
 
 `string`
+
+▶controls{}
+
+`object`
 
 image
 

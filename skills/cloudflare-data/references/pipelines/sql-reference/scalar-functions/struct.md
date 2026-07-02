@@ -18,15 +18,29 @@ _Cloudflare Pipelines scalar function implementations are based on [Apache DataF
 
 Returns an Arrow struct using the specified input expressions. Fields in the returned struct use the `cN` naming convention. For example: `c0`, `c1`, `c2`, etc.
 
-```
+```plaintext
 struct(expression1[, ..., expression_n])
 ```
 
 For example, this query converts two columns `a` and `b` to a single column with a struct type of fields `c0` and `c1`:
 
-```
-select * from t;+---+---+| a | b |+---+---+| 1 | 2 || 3 | 4 |+---+---+
-select struct(a, b) from t;+-----------------+| struct(t.a,t.b) |+-----------------+| {c0: 1, c1: 2}  || {c0: 3, c1: 4}  |+-----------------+
+```plaintext
+select * from t;
++---+---+
+| a | b |
++---+---+
+| 1 | 2 |
+| 3 | 4 |
++---+---+
+
+
+select struct(a, b) from t;
++-----------------+
+| struct(t.a,t.b) |
++-----------------+
+| {c0: 1, c1: 2}  |
+| {c0: 3, c1: 4}  |
++-----------------+
 ```
 
 #### Arguments

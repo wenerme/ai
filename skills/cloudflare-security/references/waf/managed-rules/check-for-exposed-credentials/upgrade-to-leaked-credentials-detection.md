@@ -28,8 +28,8 @@ This upgrade guide applies to customers changing from Exposed Credentials Check 
 
 If you had deployed the Cloudflare Exposed Credentials Check managed ruleset:
 
-* [  New dashboard ](#tab-panel-11273)
-* [ Old dashboard ](#tab-panel-11274)
+* [  New dashboard ](#tab-panel-11568)
+* [ Old dashboard ](#tab-panel-11569)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -48,10 +48,10 @@ While Exposed Credentials Check and leaked credentials detection can work side b
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-11275)
-* [ Old dashboard ](#tab-panel-11276)
-* [ API ](#tab-panel-11277)
-* [ Terraform ](#tab-panel-11278)
+* [  New dashboard ](#tab-panel-11570)
+* [ Old dashboard ](#tab-panel-11571)
+* [ API ](#tab-panel-11572)
+* [ Terraform ](#tab-panel-11573)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -70,16 +70,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Set Leaked Credential Checks Status
+**Set Leaked Credential Checks Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enabled": true
+  }'
 ```
 
 Use the `cloudflare_leaked_credential_check` resource to enable leaked credentials detection for a zone. For example:
 
-```
-resource "cloudflare_leaked_credential_check" "zone_lcc_example" {  zone_id = var.cloudflare_zone_id  enabled = true}
+```terraform
+resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
+  zone_id = var.cloudflare_zone_id
+  enabled = true
+}
 ```
 
 ## 3\. Configure the actions to take

@@ -99,10 +99,11 @@ pnpm wrangler versions deploy
 
 Run a cURL command on your Worker to test the split deployment.
 
-Terminal window
-
-```
-for j in {0..10}do    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.devdone
+```bash
+for j in {0..10}
+do
+    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.dev
+done
 ```
 
 You should see 10 responses. Responses will reflect the content returned by the versions in your deployment. Responses will vary depending on the percentages configured in [step #3](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#3-create-a-new-deployment).
@@ -137,10 +138,11 @@ pnpm wrangler versions deploy
 5. Create a new deployment that splits traffic between the two versions created in step 3 and 5 by going to **Deployments** and selecting **Deploy Version**.
 6. cURL your Worker to test the split deployment.
 
-Terminal window
-
-```
-for j in {0..10}do    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.devdone
+```bash
+for j in {0..10}
+do
+    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.dev
+done
 ```
 
 You should see 10 responses. Responses will reflect the content returned by the versions in your deployment. Responses will vary depending on the percentages configured in step #6.
@@ -159,9 +161,7 @@ You may want requests associated with a particular identifier (such as user, ses
 
 You can do this by setting the `Cloudflare-Workers-Version-Key` header on the incoming request to your Worker. For example:
 
-Terminal window
-
-```
+```sh
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Key: foo'
 ```
 
@@ -177,7 +177,7 @@ For example, if your worker serves video assets under the URI path `/assets/` an
 
 Text in **Expression Editor**:
 
-```
+```txt
 starts_with(http.request.uri.path, "/asset/")
 ```
 
@@ -262,16 +262,29 @@ When using gradual deployments, you may want to attribute Workers invocations to
 
 A new `ScriptVersion` object is available in [Workers Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/). `ScriptVersion` can only be added through the Logpush API right now. Sample API call:
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs' \-H 'Authorization: Bearer <TOKEN>' \-H 'Content-Type: application/json' \-d '{"name": "workers-logpush","output_options": {    "field_names": ["Event", "EventTimestampMs", "Outcome", "Logs", "ScriptName", "ScriptVersion"],},"destination_conf": "<DESTINATION_URL>","dataset": "workers_trace_events","enabled": true}'| jq .
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs' \
+-H 'Authorization: Bearer <TOKEN>' \
+-H 'Content-Type: application/json' \
+-d '{
+"name": "workers-logpush",
+"output_options": {
+    "field_names": ["Event", "EventTimestampMs", "Outcome", "Logs", "ScriptName", "ScriptVersion"],
+},
+"destination_conf": "<DESTINATION_URL>",
+"dataset": "workers_trace_events",
+"enabled": true
+}'| jq .
 ```
 
 `ScriptVersion` is an object with the following structure:
 
-```
-scriptVersion: {    id: "<UUID>",    message: "<MESSAGE>",    tag: "<TAG>"}
+```json
+scriptVersion: {
+    id: "<UUID>",
+    message: "<MESSAGE>",
+    tag: "<TAG>"
+}
 ```
 
 ### Runtime binding

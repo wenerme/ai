@@ -47,20 +47,41 @@ When you specify both `jurisdiction` and `regions`, the regions must be valid fo
 
 Set placement constraints in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7932)
-* [  wrangler.toml ](#tab-panel-7933)
+* [  wrangler.jsonc ](#tab-panel-8213)
+* [  wrangler.toml ](#tab-panel-8214)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "containers": [
+    {
+      "name": "my-container",
+      "image": "docker.io/my-org/my-image:latest",
+      "constraints": {
+        "regions": [
+          "ENAM",
+          "WNAM"
+        ],
+        "jurisdiction": "fedramp"
+      }
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "containers": [    {      "name": "my-container",      "image": "docker.io/my-org/my-image:latest",      "constraints": {        "regions": [          "ENAM",          "WNAM"        ],        "jurisdiction": "fedramp"      }    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]name = "my-container"image = "docker.io/my-org/my-image:latest"
-[containers.constraints]regions = ["ENAM", "WNAM"]jurisdiction = "fedramp"
+```toml
+[[containers]]
+name = "my-container"
+image = "docker.io/my-org/my-image:latest"
+
+
+[containers.constraints]
+regions = ["ENAM", "WNAM"]
+jurisdiction = "fedramp"
 ```
 
 Refer to [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/) for more details on how placement affects container startup and routing.

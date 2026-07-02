@@ -26,16 +26,29 @@ Form for creating a new poll with question, dynamic options, anonymous voting, a
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPollForm } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkPollForm onRtkCreatePoll={(data) => handleCreatePoll(data)} />;}
+
+
+function MyComponent() {
+  return <RtkPollForm onRtkCreatePoll={(data) => handleCreatePoll(data)} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPollForm } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return (    <RtkPollForm      onRtkCreatePoll={(data) => handleCreatePoll(data)}      iconPack={customIconPack}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPollForm
+      onRtkCreatePoll={(data) => handleCreatePoll(data)}
+      iconPack={customIconPack}
+    />
+  );
+}
 ```
 
 ```json

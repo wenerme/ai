@@ -108,10 +108,36 @@ API configuration object name: `"edge_ttl"`.
 | bypass\_by\_default | Use cache control-header if present, bypass cache if not.                                                                                                        |
 |                     |                                                                                                                                                                  |
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {    "cache": true,    "edge_ttl": {        "status_code_ttl": [            {                "status_code_range": {                    "to": 299                },                "value": 86400            },            {                "status_code_range": {                    "from": 300,                    "to": 499                },                "value": 0  // no-cache            },            {                "status_code_range": {                    "from": 500                },                "value": -1  // no-store            }        ],        "mode": "respect_origin"    }}
+```json
+"action_parameters": {
+    "cache": true,
+    "edge_ttl": {
+        "status_code_ttl": [
+            {
+                "status_code_range": {
+                    "to": 299
+                },
+                "value": 86400
+            },
+            {
+                "status_code_range": {
+                    "from": 300,
+                    "to": 499
+                },
+                "value": 0  // no-cache
+            },
+            {
+                "status_code_range": {
+                    "from": 500
+                },
+                "value": -1  // no-store
+            }
+        ],
+        "mode": "respect_origin"
+    }
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -130,10 +156,16 @@ API values for the `"mode"` property: `"respect_origin"`, `"override_origin"`, `
 
 API values for the `"default"` property (integer): values available depend on your plan. Refer to [Browser Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#browser-cache-ttl).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "browser_ttl" : {    "mode": "override_origin",    "default": 1000  }}
+```json
+"action_parameters": {
+  "cache": true,
+  "browser_ttl" : {
+    "mode": "override_origin",
+    "default": 1000
+  }
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -174,10 +206,50 @@ API configuration object name: `"cache_key"`.
 
 API values: `"ignore_query_strings_order"`, `"cache_deception_armor"`, `"cache_by_device_type"`, `"custom_key"` (`"header"`, `"cookie"`, `"host"`, `"query_string"`, `"user"`).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "cache_key": {    "ignore_query_strings_order": true,    "cache_deception_armor": true,    "custom_key": {      "query_string": {        "include": [          "*"        ]      },      "header": {        "include": [          "header1"        ],        "check_presence": [          "header_1"        ],        "contains": {          "accept-encoding": ["br", "zstd"]        }      },      "cookie": {        "include": [          "cookieName1"        ],        "check_presence": [          "cookie_1"        ]      },      "user": {        "device_type": true,        "geo": true,        "lang": true      },      "host": {        "resolved": false      }    }  }}
+```json
+"action_parameters": {
+  "cache": true,
+  "cache_key": {
+    "ignore_query_strings_order": true,
+    "cache_deception_armor": true,
+    "custom_key": {
+      "query_string": {
+        "include": [
+          "*"
+        ]
+      },
+      "header": {
+        "include": [
+          "header1"
+        ],
+        "check_presence": [
+          "header_1"
+        ],
+        "contains": {
+          "accept-encoding": ["br", "zstd"]
+        }
+      },
+      "cookie": {
+        "include": [
+          "cookieName1"
+        ],
+        "check_presence": [
+          "cookie_1"
+        ]
+      },
+      "user": {
+        "device_type": true,
+        "geo": true,
+        "lang": true
+      },
+      "host": {
+        "resolved": false
+      }
+    }
+  }
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -198,10 +270,16 @@ API configuration object name: `"cache_reserve"`.
 
 API property name for enabling Cache Reserve: `"eligible"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true  "cache_reserve": {    "eligible": true,    "minimum_file_size": 100000  }}
+```json
+"action_parameters": {
+  "cache": true
+  "cache_reserve": {
+    "eligible": true,
+    "minimum_file_size": 100000
+  }
+}
 ```
 
 Note
@@ -222,10 +300,14 @@ API information
 
 API configuration property name: `"additional_cacheable_ports"` (array of integer values).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {    "cache": true    "additional_cacheable_ports": [8443, 8080]  }}
+```json
+"action_parameters": {
+    "cache": true
+    "additional_cacheable_ports": [8443, 8080]
+  }
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -238,10 +320,13 @@ API information
 
 API configuration property name: `"read_timeout"` (integer).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "read_timeout": 900}
+```json
+"action_parameters": {
+  "cache": true,
+  "read_timeout": 900
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -254,10 +339,15 @@ API information
 
 API configuration property name: `"serve_stale"` \> `"disable_stale_while_updating"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "serve_stale": {    "disable_stale_while_updating": true  }}
+```json
+"action_parameters": {
+  "cache": true,
+  "serve_stale": {
+    "disable_stale_while_updating": true
+  }
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -270,10 +360,13 @@ API information
 
 API configuration property name: `"respect_strong_etags"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "respect_strong_etags": true}
+```json
+"action_parameters": {
+  "cache": true,
+  "respect_strong_etags": true
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -286,10 +379,13 @@ API information
 
 API configuration property name: `"origin_error_page_passthru"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "origin_error_page_passthru": true}
+```json
+"action_parameters": {
+  "cache": true,
+  "origin_error_page_passthru": true
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -302,10 +398,13 @@ API information
 
 API configuration property name: `"origin_cache_control"` (boolean).
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true  "origin_cache_control": true}
+```json
+"action_parameters": {
+  "cache": true
+  "origin_cache_control": true
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -359,10 +458,27 @@ API configuration object name: `"vary"`.
 
 The following example normalizes `accept` and `accept-language`, and bypasses cache for any other header in the origin `Vary` response:
 
-API configuration example
+**API configuration example**
 
-```
-"action_parameters": {  "cache": true,  "vary": {    "default": {      "action": "bypass"    },    "headers": {      "accept": {        "action": "normalize",        "media_types": ["text/html", "application/json"]      },      "accept-language": {        "action": "normalize",        "languages": ["en", "fr", "de"]      }    }  }}
+```json
+"action_parameters": {
+  "cache": true,
+  "vary": {
+    "default": {
+      "action": "bypass"
+    },
+    "headers": {
+      "accept": {
+        "action": "normalize",
+        "media_types": ["text/html", "application/json"]
+      },
+      "accept-language": {
+        "action": "normalize",
+        "languages": ["en", "fr", "de"]
+      }
+    }
+  }
+}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples, or to the [Terraform example](https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/).

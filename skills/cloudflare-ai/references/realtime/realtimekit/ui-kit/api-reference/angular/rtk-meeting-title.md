@@ -26,14 +26,18 @@ Displays the title of the meeting.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-meeting-title></rtk-meeting-title>
+```html
+<!-- component.html -->
+<rtk-meeting-title></rtk-meeting-title>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-meeting-title [meeting]="meeting"></rtk-meeting-title>
+```html
+<!-- component.html -->
+<rtk-meeting-title
+ [meeting]="meeting">
+</rtk-meeting-title>
 ```
 
 ```json

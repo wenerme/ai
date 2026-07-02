@@ -24,16 +24,20 @@ A button which toggles visibility of the leave confirmation dialog.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton    android:id="@+id/rtk_leave_button"    android:layout_width="48dp"    android:layout_height="48dp" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton
+    android:id="@+id/rtk_leave_button"
+    android:layout_width="48dp"
+    android:layout_height="48dp" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val leaveButton = findViewById<RtkLeaveButton>(R.id.rtk_leave_button)leaveButton.activate(meeting)
+```kotlin
+val leaveButton = findViewById<RtkLeaveButton>(R.id.rtk_leave_button)
+leaveButton.activate(meeting)
 ```
 
 ```json

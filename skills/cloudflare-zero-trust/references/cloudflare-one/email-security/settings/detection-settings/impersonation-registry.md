@@ -44,8 +44,10 @@ You can upload a file no larger than 150 KB containing all variables of potentia
 
 An example file would look like this:
 
-```
-Display Name, EmailStar Phish, star@nophish.comPhish Ee, phishee@nophish.com
+```txt
+Display Name, Email
+Star Phish, star@nophish.com
+Phish Ee, phishee@nophish.com
 ```
 
 ## Edit users

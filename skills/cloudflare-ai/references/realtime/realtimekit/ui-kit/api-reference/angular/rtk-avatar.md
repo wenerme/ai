@@ -28,14 +28,20 @@ Avatar component which renders a participant's image or their initials.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-avatar></rtk-avatar>
+```html
+<!-- component.html -->
+<rtk-avatar></rtk-avatar>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-avatar participant="example" size="md" variant="circular"></rtk-avatar>
+```html
+<!-- component.html -->
+<rtk-avatar
+ participant="example"
+ size="md"
+ variant="circular">
+</rtk-avatar>
 ```
 
 ```json

@@ -31,8 +31,11 @@ A typical query against the Cloudflare GraphQL schema is made up of four main co
 
 The query to Cloudflare GraphQL API must be sent over HTTP POST request with payload in JSON format that consists of these fields:
 
-```
-{  "query": "",  "variables": {}}
+```json
+{
+  "query": "",
+  "variables": {}
+}
 ```
 
 From the above structure, the `query` field must contain a GraphQL query formatted as a **single line** string (meaning all newline symbols should be stripped / escaped), when `variables` is an object that contains all values of used placeholders in the query itself.
@@ -41,52 +44,186 @@ From the above structure, the `query` field must contain a GraphQL query formatt
 
 In the following example, the GraphQL query fetches a `datetime`, `action`, and client request HTTP host as `host` field of 2 WAF events from zone-scoped `firewallEventsAdaptive` dataset.
 
-A GraphQL query
+**A GraphQL query**
 
-```
-query ASingleDatasetExample($zoneTag: string, $start: Time, $end: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      firewallEventsAdaptive(        filter: { datetime_gt: $start, datetime_lt: $end }        limit: 2        orderBy: [datetime_DESC]      ) {        action        datetime        host: clientRequestHTTPHost      }    }  }}
+```graphql
+query ASingleDatasetExample($zoneTag: string, $start: Time, $end: Time) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      firewallEventsAdaptive(
+        filter: { datetime_gt: $start, datetime_lt: $end }
+        limit: 2
+        orderBy: [datetime_DESC]
+      ) {
+        action
+        datetime
+        host: clientRequestHTTPHost
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggZQJYDsDmAbMARAhgF1wGcx8BRAD1wFsAHLACgBIAvAexTABVc0AuGEXwRUaADQwmQ3BHwCuSamAlMwKACbzFYAJQwA3gCgYMAG5IwAd0gHjJmO05EGAMyQZ8kAfocduvAVY-HjQYAF89I3t7NwgrXAwMMlM1fCI4dVxafCQUhjtokzcPLwMYTM8cpQB9NDlJaVkJCtJtao9AtXVwgsKMRSR6gCZe6LYIdUgAISgBAG0WqrBq7DIEAGEAXVGYSJ2TXABjHI598oJWpTOACzYhAUP+1IAlMFAwIQAJLi4ABU+7vgdmFeiCTCCwkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlRtOGCiBhQAJs3ZdeAtsMGCJ02fIC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggZQJYDsDmAbMARAhgF1wGcx8BRAD1wFsAHLACgBIAvAexTABVc0AuGEXwRUaADQwmQ3BHwCuSamAlMwKACbzFYAJQwA3gCgYMAG5IwAd0gHjJmO05EGAMyQZ8kAfocduvAVY-HjQYAF89I3t7NwgrXAwMMlM1fCI4dVxafCQUhjtokzcPLwMYTM8cpQB9NDlJaVkJCtJtao9AtXVwgsKMRSR6gCZe6LYIdUgAISgBAG0WqrBq7DIEAGEAXVGYSJ2TXABjHI598oJWpTOACzYhAUP+1IAlMFAwIQAJLi4ABU+7vgdmFeiCTCCwkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg7jOGCiBhQAJs3ZdeAtsJYBmcS0nSAvkA)
 
 In the query above, we have variable placeholders: $zoneTag, $start, and $end. We provide values for those placeholders alongside the query by placing them into `variables` field of the payload. Note that the examples below use the UTC timezone, indicated by the letter "Z".
 
-A set of variables
+**A set of variables**
 
-```
-{  "zoneTag": "<zone-tag>",  "start": "2020-08-03T02:07:05Z",  "end": "2020-08-03T17:07:05Z"}
+```json
+{
+  "zoneTag": "<zone-tag>",
+  "start": "2020-08-03T02:07:05Z",
+  "end": "2020-08-03T17:07:05Z"
+}
 ```
 
 There are multiple ways to send your query to Cloudflare GraphQL API. You can use you favourite GraphQL client or CLI to send a request via curl. We have a [how-to guide](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/) about using GraphiQL client, also check a guide on how to execute a query with a curl [here](https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/).
 
-A sample of a response for a query above
+**A sample of a response for a query above**
 
-```
-{  "data": {    "viewer": {      "zones": [        {          "firewallEventsAdaptive": [            {              "action": "log",              "host": "cloudflare.guru",              "datetime": "2020-08-03T17:07:03Z"            },            {              "action": "log",              "host": "cloudflare.guru",              "datetime": "2020-08-03T17:07:01Z"            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "firewallEventsAdaptive": [
+            {
+              "action": "log",
+              "host": "cloudflare.guru",
+              "datetime": "2020-08-03T17:07:03Z"
+            },
+            {
+              "action": "log",
+              "host": "cloudflare.guru",
+              "datetime": "2020-08-03T17:07:01Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ## Query multiple datasets in a single GraphQL API request
 
 As previously mentioned, a query might contain one or multiple nodes (datasets). At the API level, the data extraction would be done simultaneously, but the response would be delayed until all dataset queries got their results. If any fails during the execution, the entire query will be terminated, and the error will be returned.
 
-A sample query for two datasets in a one go
+**A sample query for two datasets in a one go**
 
+```graphql
+query MultipleDatasetsExample(
+  $zoneTag: string
+  $start: Time
+  $end: Time
+  $ts: Date
+) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      last10Events: firewallEventsAdaptive(
+        filter: { datetime_gt: $start, datetime_lt: $end }
+        limit: 10
+        orderBy: [datetime_DESC]
+      ) {
+        action
+        datetime
+        host: clientRequestHTTPHost
+      }
+      top3DeviceTypes: httpRequestsAdaptiveGroups(
+        filter: { date: $ts }
+        limit: 10
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          device: clientDeviceType
+        }
+      }
+    }
+  }
+}
 ```
-query MultipleDatasetsExample(  $zoneTag: string  $start: Time  $end: Time  $ts: Date) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      last10Events: firewallEventsAdaptive(        filter: { datetime_gt: $start, datetime_lt: $end }        limit: 10        orderBy: [datetime_DESC]      ) {        action        datetime        host: clientRequestHTTPHost      }      top3DeviceTypes: httpRequestsAdaptiveGroups(        filter: { date: $ts }        limit: 10        orderBy: [count_DESC]      ) {        count        dimensions {          device: clientDeviceType        }      }    }  }}
+
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsiANgFwJYAdFgCIENm4DOYyhAogB64C2mYAFAFAwwAkAXgPYB2YAKrgDmALhiFkEVN0HM243BGSi+qamFmsw3ACbLV6lq1Ki8ydQEoYAb1kA3VGADuka7JZdehegDNUKSKJWMB78QqIcPKGCMAC+ljYsiTCIRMgAjAAMZLZaxjC+EE64iIjZuYQAgtq46Gg5TElJvv4QgTDVZmhqAPqCSnIEigA07fgk+t0o4VrasW6NiKqo-ZnzSZwQ2pAAQlCiANod4z3YZADKAMIAumsw8bcsuADGaDwPo5367wAWnOKiT0WuQASmBQGBxAAJPh8AAKkL+yFuMVuyE46AAzNgwPYnvwoOgIaJvshkOhQeDxJVqrVUDkAOIQTggdBed7NMytawfMDhUhzRqJRbUZaiVaClgbLYQXYHJ7M7jIbqnS43QX3CUweUgRXvbT6biEVA8QiuTUsLa43laoGK7FWvgEgwSlGC12Jd0omJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4gvqg7jOGCiBhQAJs3ZdeAtsJYBmcS0nTKNKko49+QkAF8gA)
+
+**A set of variables for the query above**
+
+```json
+{
+  "zoneTag": "<zone-tag>",
+  "start": "2022-10-02T00:26:49Z",
+  "end": "2022-10-04T14:26:49Z",
+  "ts": "2022-10-04"
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsiANgFwJYAdFgCIENm4DOYyhAogB64C2mYAFAFAwwAkAXgPYB2YAKrgDmALhiFkEVN0HM243BGSi+qamFmsw3ACbLV6lq1Ki8ydQEoYAb1kA3VGADuka7JZdehegDNUKSKJWMB78QqIcPKGCMAC+ljYsiTCIRMgAjAAMZLZaxjC+EE64iIjZuYQAgtq46Gg5TElJvv4QgTDVZmhqAPqCSnIEigA07fgk+t0o4VrasW6NiKqo-ZnzSZwQ2pAAQlCiANod4z3YZADKAMIAumsw8bcsuADGaDwPo5367wAWnOKiT0WuQASmBQGBxAAJPh8AAKkL+yFuMVuyE46AAzNgwPYnvwoOgIaJvshkOhQeDxJVqrVUDkAOIQTggdBed7NMytawfMDhUhzRqJRbUZaiVaClgbLYQXYHJ7M7jIbqnS43QX3CUweUgRXvbT6biEVA8QiuTUsLa43laoGK7FWvgEgwSlGC12Jd0omJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2XgEY4bAKyoWADlRtOGCiBhQAJs3ZdeAtsMGCJ02fMo0qajj35CQAXyA)
+**A sample response for the query with variables above**
 
-A set of variables for the query above
-
-```
-{  "zoneTag": "<zone-tag>",  "start": "2022-10-02T00:26:49Z",  "end": "2022-10-04T14:26:49Z",  "ts": "2022-10-04"}
-```
-
-A sample response for the query with variables above
-
-```
-{  "data": {    "viewer": {      "zones": [        {          "last10Events": [            {              "action": "block",              "country": "TR",              "datetime": "2022-10-04T08:41:09Z"            },            {              "action": "block",              "country": "TR",              "datetime": "2022-10-04T08:41:09Z"            },            {              "action": "block",              "country": "RU",              "datetime": "2022-10-04T01:09:36Z"            },            {              "action": "block",              "country": "US",              "datetime": "2022-10-03T14:26:49Z"            },            {              "action": "block",              "country": "US",              "datetime": "2022-10-03T14:26:46Z"            },            {              "action": "block",              "country": "CN",              "datetime": "2022-10-02T23:51:26Z"            },            {              "action": "block",              "country": "TR",              "datetime": "2022-10-02T23:39:41Z"            },            {              "action": "block",              "country": "TR",              "datetime": "2022-10-02T23:39:41Z"            }          ],          "top3DeviceTypes": [            {              "count": 4580,              "dimensions": {                "device": "desktop"              }            }          ]        }      ]    }  },  "errors": null}
+```json
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "last10Events": [
+            {
+              "action": "block",
+              "country": "TR",
+              "datetime": "2022-10-04T08:41:09Z"
+            },
+            {
+              "action": "block",
+              "country": "TR",
+              "datetime": "2022-10-04T08:41:09Z"
+            },
+            {
+              "action": "block",
+              "country": "RU",
+              "datetime": "2022-10-04T01:09:36Z"
+            },
+            {
+              "action": "block",
+              "country": "US",
+              "datetime": "2022-10-03T14:26:49Z"
+            },
+            {
+              "action": "block",
+              "country": "US",
+              "datetime": "2022-10-03T14:26:46Z"
+            },
+            {
+              "action": "block",
+              "country": "CN",
+              "datetime": "2022-10-02T23:51:26Z"
+            },
+            {
+              "action": "block",
+              "country": "TR",
+              "datetime": "2022-10-02T23:39:41Z"
+            },
+            {
+              "action": "block",
+              "country": "TR",
+              "datetime": "2022-10-02T23:39:41Z"
+            }
+          ],
+          "top3DeviceTypes": [
+            {
+              "count": 4580,
+              "dimensions": {
+                "device": "desktop"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}
 ```
 
 ## Helpful Resources

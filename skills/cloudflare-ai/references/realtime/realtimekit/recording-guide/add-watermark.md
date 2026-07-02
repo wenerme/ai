@@ -20,8 +20,19 @@ RealtimeKit's watermark feature enables you to include an image as a watermark i
 | Position      | Specify the placement of the watermark, you have the flexibility to choose between left top, right top, left bottom, or right bottom. The default position is set to left top. |
 | Size          | Specify the height and width of the watermark in pixels.                                                                                                                       |
 
-```
-{  "video_config": {    "watermark": {      "url": "https://test.io/images/client-logos-6.webp",      "position": "left top",      "size": {        "height": 20,        "width": 100      }    }  }}
+```json
+{
+  "video_config": {
+    "watermark": {
+      "url": "https://test.io/images/client-logos-6.webp",
+      "position": "left top",
+      "size": {
+        "height": 20,
+        "width": 100
+      }
+    }
+  }
+}
 ```
 
 ```json

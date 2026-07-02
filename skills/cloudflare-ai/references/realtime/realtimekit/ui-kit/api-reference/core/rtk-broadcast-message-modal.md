@@ -25,19 +25,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-broadcast-message-modal></rtk-broadcast-message-modal>
 ```
 
 ### With Properties
 
-```
-<rtk-broadcast-message-modal></rtk-broadcast-message-modal>
+```html
+<rtk-broadcast-message-modal>
+</rtk-broadcast-message-modal>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-broadcast-message-modal");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-broadcast-message-modal");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

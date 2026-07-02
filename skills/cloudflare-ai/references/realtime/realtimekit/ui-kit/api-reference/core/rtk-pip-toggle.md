@@ -28,19 +28,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-pip-toggle></rtk-pip-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-pip-toggle size="md" variant"button"></rtk-pip-toggle>
+```html
+<rtk-pip-toggle
+ size="md"
+ variant"button">
+</rtk-pip-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-pip-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-pip-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

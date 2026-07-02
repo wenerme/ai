@@ -66,8 +66,9 @@ Requires a Cloudflare Enterprise plan. You must also enable [AI Security for App
 
 Example usage:
 
-```
-# Matches requests where PII categorized as "EMAIL_ADDRESS" or "IBAN_CODE" was detected:(cf.llm.prompt.pii_detected and any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS" "IBAN_CODE"}))
+```txt
+# Matches requests where PII categorized as "EMAIL_ADDRESS" or "IBAN_CODE" was detected:
+(cf.llm.prompt.pii_detected and any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS" "IBAN_CODE"}))
 ```
 
 Categories:

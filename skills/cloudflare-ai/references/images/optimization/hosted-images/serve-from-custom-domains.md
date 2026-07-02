@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Image delivery is supported from all customer domains under the same Cloudflare account. To serve images through custom domains, an image URL should be adjusted to the following format:
 
-```
+```txt
 https://example.com/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/<IMAGE_ID>/<VARIANT_NAME>
 ```
 
 Example with a custom domain:
 
-```
+```txt
 https://example.com/cdn-cgi/imagedelivery/ZWd9g1K7eljCn_KDTu_MWA/083eb7b2-5392-4565-b69e-aff66acddd00/public
 ```
 
@@ -48,7 +48,7 @@ To create a rule:
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Next to **URL Rewrite Rules**, select **Create rule**.
 3. Under **If incoming requests match**, select **Wildcard pattern** and enter the following **Request URL** (update with your own domain):
-```
+```txt
 https://example.com/images/*
 ```
 4. Under **Then rewrite the path and/or query** \> **Path**, enter the following values (using your account hash):
@@ -75,8 +75,12 @@ To create a rule:
 5. Under **Path**, select **Rewrite to**.
 6. Select _Dynamic_ and enter the following in the text field.
 
-```
-regex_replace(  http.request.uri.path,  "^/images/(.*)\\?w([0-9]+)&h([0-9]+)$",  "/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}/width=${2},height=${3}")
+```txt
+regex_replace(
+  http.request.uri.path,
+  "^/images/(.*)\\?w([0-9]+)&h([0-9]+)$",
+  "/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}/width=${2},height=${3}"
+)
 ```
 
 ## Limitations

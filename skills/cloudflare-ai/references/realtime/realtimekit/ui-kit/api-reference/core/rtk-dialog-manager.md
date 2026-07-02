@@ -35,19 +35,25 @@ A component which handles all dialog elements in a component such as:
 
 ### Basic Usage
 
-```
+```html
 <rtk-dialog-manager></rtk-dialog-manager>
 ```
 
 ### With Properties
 
-```
-<rtk-dialog-manager size="md"></rtk-dialog-manager>
+```html
+<rtk-dialog-manager
+ size="md">
+</rtk-dialog-manager>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-dialog-manager");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-dialog-manager");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

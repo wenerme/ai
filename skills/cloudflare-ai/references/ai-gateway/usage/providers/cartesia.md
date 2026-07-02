@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia
 ```
 
@@ -37,10 +37,26 @@ When making requests to Cartesia, ensure you have the following:
 
 ### cURL
 
-Request
+**Request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia/tts/bytes \  --header 'Content-Type: application/json' \  --header 'Cartesia-Version: 2024-06-10' \  --header 'X-API-Key: {cartesia_api_token}' \  --data '{    "transcript": "Welcome to Cloudflare - AI Gateway!",    "model_id": "sonic-english",    "voice": {        "mode": "id",        "id": "694f9389-aac1-45b6-b726-9d9369183238"    },    "output_format": {        "container": "wav",        "encoding": "pcm_f32le",        "sample_rate": 44100    }}
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia/tts/bytes \
+  --header 'Content-Type: application/json' \
+  --header 'Cartesia-Version: 2024-06-10' \
+  --header 'X-API-Key: {cartesia_api_token}' \
+  --data '{
+    "transcript": "Welcome to Cloudflare - AI Gateway!",
+    "model_id": "sonic-english",
+    "voice": {
+        "mode": "id",
+        "id": "694f9389-aac1-45b6-b726-9d9369183238"
+    },
+    "output_format": {
+        "container": "wav",
+        "encoding": "pcm_f32le",
+        "sample_rate": 44100
+    }
+}
 ```
 
 ```json

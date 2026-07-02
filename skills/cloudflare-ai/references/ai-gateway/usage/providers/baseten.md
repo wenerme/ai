@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten
 ```
 
@@ -35,22 +35,53 @@ Baseten provides an OpenAI-compatible chat completions API for supported models.
 
 ### cURL
 
-Example fetch request
+**Example fetch request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/v1/chat/completions \  --header 'Authorization: Bearer {baseten_api_token}' \  --header 'Content-Type: application/json' \  --data '{    "model": "openai/gpt-oss-120b",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/v1/chat/completions \
+  --header 'Authorization: Bearer {baseten_api_token}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "model": "openai/gpt-oss-120b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
 ```
 
 ### Use OpenAI SDK with JavaScript
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import OpenAI from "openai";
-const apiKey = "{baseten_api_token}";const accountId = "{account_id}";const gatewayId = "{gateway_id}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/baseten`;
-const openai = new OpenAI({  apiKey,  baseURL,});
-const model = "openai/gpt-oss-120b";const messages = [{ role: "user", content: "What is Cloudflare?" }];
-const chatCompletion = await openai.chat.completions.create({  model,  messages,});
+
+
+const apiKey = "{baseten_api_token}";
+const accountId = "{account_id}";
+const gatewayId = "{gateway_id}";
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/baseten`;
+
+
+const openai = new OpenAI({
+  apiKey,
+  baseURL,
+});
+
+
+const model = "openai/gpt-oss-120b";
+const messages = [{ role: "user", content: "What is Cloudflare?" }];
+
+
+const chatCompletion = await openai.chat.completions.create({
+  model,
+  messages,
+});
+
+
 console.log(chatCompletion);
 ```
 
@@ -58,14 +89,16 @@ console.log(chatCompletion);
 
 You can also access Baseten models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 ```
 
 Specify:
 
-```
-{"model": "baseten/{model}"}
+```json
+{
+"model": "baseten/{model}"
+}
 ```
 
 ## Model-specific endpoints
@@ -74,20 +107,45 @@ For models that don't use the OpenAI-compatible API, you can access them through
 
 ### cURL
 
-Example fetch request
+**Example fetch request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/model/{model_id} \  --header 'Authorization: Bearer {baseten_api_token}' \  --header 'Content-Type: application/json' \  --data '{    "prompt": "What is Cloudflare?",    "max_tokens": 100  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/model/{model_id} \
+  --header 'Authorization: Bearer {baseten_api_token}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "prompt": "What is Cloudflare?",
+    "max_tokens": 100
+  }'
 ```
 
 ### Use with JavaScript
 
-JavaScript
+**JavaScript**
 
-```
-const accountId = "{account_id}";const gatewayId = "{gateway_id}";const basetenApiToken = "{baseten_api_token}";const modelId = "{model_id}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/baseten`;
-const response = await fetch(`${baseURL}/model/${modelId}`, {  method: "POST",  headers: {    "Authorization": `Bearer ${basetenApiToken}`,    "Content-Type": "application/json",  },  body: JSON.stringify({    prompt: "What is Cloudflare?",    max_tokens: 100,  }),});
-const result = await response.json();console.log(result);
+```js
+const accountId = "{account_id}";
+const gatewayId = "{gateway_id}";
+const basetenApiToken = "{baseten_api_token}";
+const modelId = "{model_id}";
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/baseten`;
+
+
+const response = await fetch(`${baseURL}/model/${modelId}`, {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${basetenApiToken}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    prompt: "What is Cloudflare?",
+    max_tokens: 100,
+  }),
+});
+
+
+const result = await response.json();
+console.log(result);
 ```
 
 ```json

@@ -24,30 +24,82 @@ By writing a Durable Object class which inherits from the built-in type `Durable
 
 All RPC calls are [asynchronous](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/), accept and return [serializable types](https://developers.cloudflare.com/workers/runtime-apis/rpc/), and [propagate exceptions](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) to the caller without a stack trace. Refer to [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/) for complete details.
 
-* [  JavaScript ](#tab-panel-8313)
-* [  TypeScript ](#tab-panel-8314)
+* [  JavaScript ](#tab-panel-8596)
+* [  TypeScript ](#tab-panel-8597)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
-  async sayHello() {    return "Hello, World!";  }}
-// Workerexport default {  async fetch(request, env) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-    // Methods on the Durable Object are invoked via the stub    const rpcResponse = await stub.sayHello();
-    return new Response(rpcResponse);  },};
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+  }
+
+
+  async sayHello() {
+    return "Hello, World!";
+  }
+}
+
+
+// Worker
+export default {
+  async fetch(request, env) {
+    // A stub is a client used to invoke methods on the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+
+
+    // Methods on the Durable Object are invoked via the stub
+    const rpcResponse = await stub.sayHello();
+
+
+    return new Response(rpcResponse);
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  async sayHello(): Promise<string> {    return "Hello, World!";  }}
-// Workerexport default {  async fetch(request, env) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-    // Methods on the Durable Object are invoked via the stub    const rpcResponse = await stub.sayHello();
-    return new Response(rpcResponse);  },} satisfies ExportedHandler<Env>;
+
+
+export interface Env {
+  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
+}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  async sayHello(): Promise<string> {
+    return "Hello, World!";
+  }
+}
+
+
+// Worker
+export default {
+  async fetch(request, env) {
+    // A stub is a client used to invoke methods on the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+
+
+    // Methods on the Durable Object are invoked via the stub
+    const rpcResponse = await stub.sayHello();
+
+
+    return new Response(rpcResponse);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -60,66 +112,212 @@ Refer to [Build a Counter](https://developers.cloudflare.com/durable-objects/exa
 
 If your project is stuck on a compatibility date before [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc), or has the need to send a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object and return a `Response` object, then you should send requests to a Durable Object via the fetch handler.
 
-* [  JavaScript ](#tab-panel-8309)
-* [  TypeScript ](#tab-panel-8310)
+* [  JavaScript ](#tab-panel-8592)
+* [  TypeScript ](#tab-panel-8593)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
-  async fetch(request) {    return new Response("Hello, World!");  }}
-// Workerexport default {  async fetch(request, env) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-    // Methods on the Durable Object are invoked via the stub    const response = await stub.fetch(request);
-    return response;  },};
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+  }
+
+
+  async fetch(request) {
+    return new Response("Hello, World!");
+  }
+}
+
+
+// Worker
+export default {
+  async fetch(request, env) {
+    // A stub is a client used to invoke methods on the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+
+
+    // Methods on the Durable Object are invoked via the stub
+    const response = await stub.fetch(request);
+
+
+    return response;
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  async fetch(request: Request): Promise<Response> {    return new Response("Hello, World!");  }}
-// Workerexport default {  async fetch(request, env) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-    // Methods on the Durable Object are invoked via the stub    const response = await stub.fetch(request);
-    return response;  },} satisfies ExportedHandler<Env>;
+
+
+export interface Env {
+  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
+}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  async fetch(request: Request): Promise<Response> {
+    return new Response("Hello, World!");
+  }
+}
+
+
+// Worker
+export default {
+  async fetch(request, env) {
+    // A stub is a client used to invoke methods on the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+
+
+    // Methods on the Durable Object are invoked via the stub
+    const response = await stub.fetch(request);
+
+
+    return response;
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 The `URL` associated with the [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object passed to the `fetch()` handler of your Durable Object must be a well-formed URL, but does not have to be a publicly-resolvable hostname.
 
 Without RPC, customers frequently construct requests which corresponded to private methods on the Durable Object and dispatch requests from the `fetch` handler. RPC is obviously more ergonomic in this example.
 
-* [  JavaScript ](#tab-panel-8311)
-* [  TypeScript ](#tab-panel-8312)
+* [  JavaScript ](#tab-panel-8594)
+* [  TypeScript ](#tab-panel-8595)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { DurableObject } from "cloudflare:workers";
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  private hello(name) {    return new Response(`Hello, ${name}!`);  }
-  private goodbye(name) {    return new Response(`Goodbye, ${name}!`);  }
-  async fetch(request) {    const url = new URL(request.url);    let name = url.searchParams.get("name");    if (!name) {      name = "World";    }
-    switch (url.pathname) {      case "/hello":        return this.hello(name);      case "/goodbye":        return this.goodbye(name);      default:        return new Response("Bad Request", { status: 400 });    }  }}
-// Workerexport default {  async fetch(_request, env, _ctx) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-    // Invoke the fetch handler on the Durable Object stub    let response = await stub.fetch("http://do/hello?name=World");
-    return response;  },};
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  private hello(name) {
+    return new Response(`Hello, ${name}!`);
+  }
+
+
+  private goodbye(name) {
+    return new Response(`Goodbye, ${name}!`);
+  }
+
+
+  async fetch(request) {
+    const url = new URL(request.url);
+    let name = url.searchParams.get("name");
+    if (!name) {
+      name = "World";
+    }
+
+
+    switch (url.pathname) {
+      case "/hello":
+        return this.hello(name);
+      case "/goodbye":
+        return this.goodbye(name);
+      default:
+        return new Response("Bad Request", { status: 400 });
+    }
+  }
+}
+
+
+// Worker
+export default {
+  async fetch(_request, env, _ctx) {
+    // A stub is a client used to invoke methods on the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+
+
+    // Invoke the fetch handler on the Durable Object stub
+    let response = await stub.fetch("http://do/hello?name=World");
+
+
+    return response;
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
-// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  private hello(name: string) {    return new Response(`Hello, ${name}!`);  }
-  private goodbye(name: string) {    return new Response(`Goodbye, ${name}!`);  }
-  async fetch(request: Request): Promise<Response> {    const url = new URL(request.url);    let name = url.searchParams.get("name");    if (!name) {      name = "World";    }
-    switch (url.pathname) {      case "/hello":        return this.hello(name);      case "/goodbye":        return this.goodbye(name);      default:        return new Response("Bad Request", { status: 400 });    }  }}
-// Workerexport default {  async fetch(_request, env, _ctx) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-    // Invoke the fetch handler on the Durable Object stub    let response = await stub.fetch("http://do/hello?name=World");
-    return response;  },} satisfies ExportedHandler<Env>;
+
+
+export interface Env {
+  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
+}
+
+
+// Durable Object
+export class MyDurableObject extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  private hello(name: string) {
+    return new Response(`Hello, ${name}!`);
+  }
+
+
+  private goodbye(name: string) {
+    return new Response(`Goodbye, ${name}!`);
+  }
+
+
+  async fetch(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+    let name = url.searchParams.get("name");
+    if (!name) {
+      name = "World";
+    }
+
+
+    switch (url.pathname) {
+      case "/hello":
+        return this.hello(name);
+      case "/goodbye":
+        return this.goodbye(name);
+      default:
+        return new Response("Bad Request", { status: 400 });
+    }
+  }
+}
+
+
+// Worker
+export default {
+  async fetch(_request, env, _ctx) {
+    // A stub is a client used to invoke methods on the Durable Object
+    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+
+
+    // Invoke the fetch handler on the Durable Object stub
+    let response = await stub.fetch("http://do/hello?name=World");
+
+
+    return response;
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

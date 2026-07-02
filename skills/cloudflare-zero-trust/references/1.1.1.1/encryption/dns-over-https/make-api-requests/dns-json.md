@@ -35,26 +35,45 @@ JSON formatted queries are sent using a `GET` request. When making requests usin
 
 Example request and response:
 
-Terminal window
-
-```
+```sh
 curl --header "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=example.com&type=AAAA"
 ```
 
-```
-{  "Status": 0,  "TC": false,  "RD": true,  "RA": true,  "AD": true,  "CD": false,  "Question": [    {      "name": "example.com.",      "type": 28    }  ],  "Answer": [    {      "name": "example.com.",      "type": 28,      "TTL": 1726,      "data": "2606:2800:220:1:248:1893:25c8:1946"    }  ]}
+```json
+{
+  "Status": 0,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": true,
+  "CD": false,
+  "Question": [
+    {
+      "name": "example.com.",
+      "type": 28
+    }
+  ],
+  "Answer": [
+    {
+      "name": "example.com.",
+      "type": 28,
+      "TTL": 1726,
+      "data": "2606:2800:220:1:248:1893:25c8:1946"
+    }
+  ]
+}
 ```
 
 In the case of an invalid request a `400 Bad Request` error is returned:
 
-Terminal window
-
-```
+```sh
 curl --header "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=example.com&cd=2"
 ```
 
-```
-{  "error": "Invalid CD flag `2`. Expected to be empty or one of `0`, `false`, `1`, or `true`."}
+```json
+{
+  "error": "Invalid CD flag `2`. Expected to be empty or one of `0`, `false`, `1`, or `true`."
+}
 ```
 
 ## Response fields

@@ -52,9 +52,7 @@ yarn create cloudflare ai-code-executor --template=cloudflare/sandbox-sdk/exampl
 pnpm create cloudflare@latest ai-code-executor --template=cloudflare/sandbox-sdk/examples/minimal
 ```
 
-Terminal window
-
-```
+```sh
 cd ai-code-executor
 ```
 
@@ -84,24 +82,99 @@ bun add @anthropic-ai/sdk
 
 Replace the contents of `src/index.ts`:
 
-TypeScript
+**TypeScript**
 
-```
-import { getSandbox, type Sandbox } from '@cloudflare/sandbox';import Anthropic from '@anthropic-ai/sdk';
+```typescript
+import { getSandbox, type Sandbox } from '@cloudflare/sandbox';
+import Anthropic from '@anthropic-ai/sdk';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-interface Env {  Sandbox: DurableObjectNamespace<Sandbox>;  ANTHROPIC_API_KEY: string;}
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    if (request.method !== 'POST' || new URL(request.url).pathname !== '/execute') {      return new Response('POST /execute with { "question": "your question" }');    }
-    try {      const { question } = await request.json();
-      if (!question) {        return Response.json({ error: 'Question is required' }, { status: 400 });      }
-      // Use Claude to generate Python code      const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });      const codeGeneration = await anthropic.messages.create({        model: 'claude-sonnet-4-5',        max_tokens: 1024,        messages: [{          role: 'user',          content: `Generate Python code to answer: "${question}"
-Requirements:- Use only Python standard library- Print the result using print()- Keep code simple and safe
-Return ONLY the code, no explanations.`        }],      });
-      const generatedCode = codeGeneration.content[0]?.type === 'text'        ? codeGeneration.content[0].text        : '';
-      if (!generatedCode) {        return Response.json({ error: 'Failed to generate code' }, { status: 500 });      }
-      // Strip markdown code fences if present      const cleanCode = generatedCode        .replace(/^```python?\n?/, '')        .replace(/\n?```\s*$/, '')        .trim();
-      // Execute the code in a sandbox      const sandbox = getSandbox(env.Sandbox, 'demo-user');      await sandbox.writeFile('/tmp/code.py', cleanCode);      const result = await sandbox.exec('python /tmp/code.py');
-      return Response.json({        success: result.success,        question,        code: generatedCode,        output: result.stdout,        error: result.stderr      });
-    } catch (error: any) {      return Response.json(        { error: 'Internal server error', message: error.message },        { status: 500 }      );    }  },};
+
+
+interface Env {
+  Sandbox: DurableObjectNamespace<Sandbox>;
+  ANTHROPIC_API_KEY: string;
+}
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    if (request.method !== 'POST' || new URL(request.url).pathname !== '/execute') {
+      return new Response('POST /execute with { "question": "your question" }');
+    }
+
+
+    try {
+      const { question } = await request.json();
+
+
+      if (!question) {
+        return Response.json({ error: 'Question is required' }, { status: 400 });
+      }
+
+
+      // Use Claude to generate Python code
+      const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+      const codeGeneration = await anthropic.messages.create({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 1024,
+        messages: [{
+          role: 'user',
+          content: `Generate Python code to answer: "${question}"
+
+
+Requirements:
+- Use only Python standard library
+- Print the result using print()
+- Keep code simple and safe
+
+
+Return ONLY the code, no explanations.`
+        }],
+      });
+
+
+      const generatedCode = codeGeneration.content[0]?.type === 'text'
+        ? codeGeneration.content[0].text
+        : '';
+
+
+      if (!generatedCode) {
+        return Response.json({ error: 'Failed to generate code' }, { status: 500 });
+      }
+
+
+      // Strip markdown code fences if present
+      const cleanCode = generatedCode
+        .replace(/^```python?\n?/, '')
+        .replace(/\n?```\s*$/, '')
+        .trim();
+
+
+      // Execute the code in a sandbox
+      const sandbox = getSandbox(env.Sandbox, 'demo-user');
+      await sandbox.writeFile('/tmp/code.py', cleanCode);
+      const result = await sandbox.exec('python /tmp/code.py');
+
+
+      return Response.json({
+        success: result.success,
+        question,
+        code: generatedCode,
+        output: result.stdout,
+        error: result.stderr
+      });
+
+
+    } catch (error: any) {
+      return Response.json(
+        { error: 'Internal server error', message: error.message },
+        { status: 500 }
+      );
+    }
+  },
+};
 ```
 
 **How it works:**
@@ -116,9 +189,7 @@ Return ONLY the code, no explanations.`        }],      });
 
 Create a `.dev.vars` file in your project root for local development:
 
-Terminal window
-
-```
+```sh
 echo "ANTHROPIC_API_KEY=your_api_key_here" > .dev.vars
 ```
 
@@ -132,9 +203,7 @@ The `.dev.vars` file is automatically gitignored and only used during local deve
 
 Start the development server:
 
-Terminal window
-
-```
+```sh
 npm run dev
 ```
 
@@ -144,33 +213,35 @@ First run builds the Docker container (2-3 minutes). Subsequent runs are much fa
 
 Test with curl:
 
-Terminal window
-
-```
-curl -X POST http://localhost:8787/execute \  -H "Content-Type: application/json" \  -d '{"question": "What is the 10th Fibonacci number?"}'
+```sh
+curl -X POST http://localhost:8787/execute \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is the 10th Fibonacci number?"}'
 ```
 
 Response:
 
-```
-{  "success": true,  "question": "What is the 10th Fibonacci number?",  "code": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\nprint(fibonacci(10))",  "output": "55\n",  "error": ""}
+```json
+{
+  "success": true,
+  "question": "What is the 10th Fibonacci number?",
+  "code": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\nprint(fibonacci(10))",
+  "output": "55\n",
+  "error": ""
+}
 ```
 
 ## 6\. Deploy
 
 Deploy your Worker:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
 Then set your Anthropic API key as a production secret:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put ANTHROPIC_API_KEY
 ```
 
@@ -184,12 +255,23 @@ After first deployment, wait 2-3 minutes for container provisioning. Check statu
 
 Try different questions:
 
-Terminal window
+```sh
+# Factorial
+curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Calculate the factorial of 5"}'
 
-```
-# Factorialcurl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \  -H "Content-Type: application/json" \  -d '{"question": "Calculate the factorial of 5"}'
-# Statisticscurl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \  -H "Content-Type: application/json" \  -d '{"question": "What is the mean of [10, 20, 30, 40, 50]?"}'
-# String manipulationcurl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \  -H "Content-Type: application/json" \  -d '{"question": "Reverse the string \"Hello World\""}'
+
+# Statistics
+curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is the mean of [10, 20, 30, 40, 50]?"}'
+
+
+# String manipulation
+curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Reverse the string \"Hello World\""}'
 ```
 
 ## What you built

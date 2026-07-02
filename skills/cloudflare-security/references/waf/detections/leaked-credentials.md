@@ -75,7 +75,7 @@ The default scan covers [common web applications](#default-scan-locations), but 
 
 For example, if the JSON body of an HTTP request authenticating a user looks like the following:
 
-```
+```json
 { "user": "<username>", "secret": "<password>" }
 ```
 

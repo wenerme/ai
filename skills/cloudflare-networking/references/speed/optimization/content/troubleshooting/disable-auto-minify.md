@@ -25,14 +25,23 @@ You will need an [API token](https://developers.cloudflare.com/fundamentals/api/
 
 To check your zone's Auto Minify status, send a `GET` request to the `/zones/{zone_id}/settings/minify` endpoint.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/minify" \
+--header "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/minify" \--header "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "result": {    "id": "minify",    "value": { "css": "off", "html": "off", "js": "off" },    "modified_on": null,    "editable": true  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "minify",
+    "value": { "css": "off", "html": "off", "js": "off" },
+    "modified_on": null,
+    "editable": true
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 If any of the values in the highlighted line are `"on"`, then you need to turn them off.
@@ -41,14 +50,26 @@ If any of the values in the highlighted line are `"on"`, then you need to turn t
 
 To turn off Auto Minify for your zone, send a `PATCH` request to the `/zones/{zone_id}/settings/minify` endpoint. The value for `success` in the response should be `true`.
 
-Terminal window
+```bash
+curl --request PATCH \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/minify" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "Content-Type: application/json" \
+--data '{ "value": { "css": "off","html": "off","js": "off" } }'
+```
 
-```
-curl --request PATCH \"https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/minify" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{ "value": { "css": "off","html": "off","js": "off" } }'
-```
-
-```
-{  "result": {    "id": "minify",    "value": { "js": "off", "css": "off", "html": "off" },    "modified_on": "2024-11-15T19:32:20.882640Z",    "editable": true  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "minify",
+    "value": { "js": "off", "css": "off", "html": "off" },
+    "modified_on": "2024-11-15T19:32:20.882640Z",
+    "editable": true
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

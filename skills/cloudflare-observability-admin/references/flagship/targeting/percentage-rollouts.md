@@ -22,8 +22,18 @@ When a rule has a percentage rollout, the rule only serves its variant when both
 
 For example, a rule can target users on the `enterprise` plan, then serve the new experience to only 10% of those users. Users outside the 10% continue through the rest of the rule list.
 
-```
-{  "priority": 1,  "conditions": [    { "attribute": "plan", "operator": "equals", "value": "enterprise" }  ],  "serve_variation": "on",  "rollout": {    "percentage": 10,    "attribute": "userId"  }}
+```json
+{
+  "priority": 1,
+  "conditions": [
+    { "attribute": "plan", "operator": "equals", "value": "enterprise" }
+  ],
+  "serve_variation": "on",
+  "rollout": {
+    "percentage": 10,
+    "attribute": "userId"
+  }
+}
 ```
 
 The `reason` in evaluation details is `SPLIT` when a percentage rollout serves the variant.
@@ -95,8 +105,27 @@ For a 30% / 40% / 30% split across variants A, B, and C:
 | B       | 40%   | 70                   |
 | C       | 30%   | 100                  |
 
-```
-[  {    "priority": 1,    "conditions": [],    "serve_variation": "variant-a",    "rollout": { "percentage": 30, "attribute": "targetingKey" }  },  {    "priority": 2,    "conditions": [],    "serve_variation": "variant-b",    "rollout": { "percentage": 70, "attribute": "targetingKey" }  },  {    "priority": 3,    "conditions": [],    "serve_variation": "variant-c",    "rollout": { "percentage": 100, "attribute": "targetingKey" }  }]
+```json
+[
+  {
+    "priority": 1,
+    "conditions": [],
+    "serve_variation": "variant-a",
+    "rollout": { "percentage": 30, "attribute": "targetingKey" }
+  },
+  {
+    "priority": 2,
+    "conditions": [],
+    "serve_variation": "variant-b",
+    "rollout": { "percentage": 70, "attribute": "targetingKey" }
+  },
+  {
+    "priority": 3,
+    "conditions": [],
+    "serve_variation": "variant-c",
+    "rollout": { "percentage": 100, "attribute": "targetingKey" }
+  }
+]
 ```
 
 In API-managed configurations, the first rule covers buckets 0-30\. The second rule covers buckets 31-70\. The final rule catches the remaining buckets through 100\. Always set the final rule to 100 when every eligible context should receive a variant.
@@ -111,8 +140,33 @@ For targeted A/B/n tests, repeat the same audience condition on each variant rul
 
 For a premium-only split where 20% receive variant A, 40% receive variant B, and the remaining 40% receive variant C, use thresholds of 20, 60, and 100:
 
-```
-[  {    "priority": 1,    "conditions": [      { "attribute": "plan", "operator": "equals", "value": "premium" }    ],    "serve_variation": "variant-a",    "rollout": { "percentage": 20, "attribute": "targetingKey" }  },  {    "priority": 2,    "conditions": [      { "attribute": "plan", "operator": "equals", "value": "premium" }    ],    "serve_variation": "variant-b",    "rollout": { "percentage": 60, "attribute": "targetingKey" }  },  {    "priority": 3,    "conditions": [      { "attribute": "plan", "operator": "equals", "value": "premium" }    ],    "serve_variation": "variant-c",    "rollout": { "percentage": 100, "attribute": "targetingKey" }  }]
+```json
+[
+  {
+    "priority": 1,
+    "conditions": [
+      { "attribute": "plan", "operator": "equals", "value": "premium" }
+    ],
+    "serve_variation": "variant-a",
+    "rollout": { "percentage": 20, "attribute": "targetingKey" }
+  },
+  {
+    "priority": 2,
+    "conditions": [
+      { "attribute": "plan", "operator": "equals", "value": "premium" }
+    ],
+    "serve_variation": "variant-b",
+    "rollout": { "percentage": 60, "attribute": "targetingKey" }
+  },
+  {
+    "priority": 3,
+    "conditions": [
+      { "attribute": "plan", "operator": "equals", "value": "premium" }
+    ],
+    "serve_variation": "variant-c",
+    "rollout": { "percentage": 100, "attribute": "targetingKey" }
+  }
+]
 ```
 
 Users who do not match `plan equals "premium"` skip all three rules and receive the flag's default variant, unless a later rule matches them.
@@ -131,10 +185,12 @@ If the same user receives different values across requests, the evaluation conte
 
 Pass the same stable identifier on every evaluation:
 
-TypeScript
+**TypeScript**
 
-```
-const enabled = await env.FLAGS.getBooleanValue("gradual-rollout", false, {  userId: session.user.id,});
+```ts
+const enabled = await env.FLAGS.getBooleanValue("gradual-rollout", false, {
+  userId: session.user.id,
+});
 ```
 
 Then configure the rollout to bucket by `userId`.

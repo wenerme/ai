@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Endpoint
 
-```
+```txt
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram
 ```
 
@@ -33,20 +33,44 @@ When making requests to Ideogram, ensure you have the following:
 
 ### cURL
 
-Example fetch request
+**Example fetch request**
 
-```
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/ideogram-v3/generate \  --header 'Api-Key: {ideogram_api_key}' \  --header 'Content-Type: application/json' \  --data '{    "prompt": "A serene landscape with mountains and a lake at sunset",    "model": "V_3"  }'
+```bash
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/ideogram-v3/generate \
+  --header 'Api-Key: {ideogram_api_key}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "prompt": "A serene landscape with mountains and a lake at sunset",
+    "model": "V_3"
+  }'
 ```
 
 ### Use with JavaScript
 
-JavaScript
+**JavaScript**
 
-```
-const accountId = "{account_id}";const gatewayId = "{gateway_id}";const ideogramApiKey = "{ideogram_api_key}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/ideogram`;
-const response = await fetch(`${baseURL}/v1/ideogram-v3/generate`, {  method: "POST",  headers: {    "Api-Key": ideogramApiKey,    "Content-Type": "application/json",  },  body: JSON.stringify({    prompt: "A serene landscape with mountains and a lake at sunset",    model: "V_3",  }),});
-const result = await response.json();console.log(result);
+```js
+const accountId = "{account_id}";
+const gatewayId = "{gateway_id}";
+const ideogramApiKey = "{ideogram_api_key}";
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/ideogram`;
+
+
+const response = await fetch(`${baseURL}/v1/ideogram-v3/generate`, {
+  method: "POST",
+  headers: {
+    "Api-Key": ideogramApiKey,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    prompt: "A serene landscape with mountains and a lake at sunset",
+    model: "V_3",
+  }),
+});
+
+
+const result = await response.json();
+console.log(result);
 ```
 
 ```json

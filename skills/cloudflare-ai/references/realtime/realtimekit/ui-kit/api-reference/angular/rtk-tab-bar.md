@@ -30,14 +30,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-tab-bar></rtk-tab-bar>
+```html
+<!-- component.html -->
+<rtk-tab-bar></rtk-tab-bar>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-tab-bar [activeTab]="tab" [layout]="gridlayout1" [meeting]="meeting"></rtk-tab-bar>
+```html
+<!-- component.html -->
+<rtk-tab-bar
+ [activeTab]="tab"
+ [layout]="gridlayout1"
+ [meeting]="meeting">
+</rtk-tab-bar>
 ```
 
 ```json

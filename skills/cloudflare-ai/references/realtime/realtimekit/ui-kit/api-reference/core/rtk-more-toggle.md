@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of a more menu. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeMoreMenu: boolean; }
 ```
 
@@ -33,18 +33,23 @@ TypeScript
 
 ### Basic Usage
 
-```
+```html
 <rtk-more-toggle></rtk-more-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-more-toggle size="md"></rtk-more-toggle>
+```html
+<rtk-more-toggle
+ size="md">
+</rtk-more-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-more-toggle");
+```html
+<script>
+  const el = document.querySelector("rtk-more-toggle");
+
+
 </script>
 ```
 

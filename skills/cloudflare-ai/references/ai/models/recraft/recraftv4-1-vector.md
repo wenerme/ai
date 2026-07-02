@@ -29,118 +29,226 @@ Generate production-ready SVG vector graphics from text prompts with high aesthe
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1754)
-* [ cURL ](#tab-panel-1755)
+* [ TypeScript ](#tab-panel-1802)
+* [ cURL ](#tab-panel-1803)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'recraft/recraftv4-1-vector',  { prompt: 'A simple flat icon of a coffee cup with steam rising' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-vector",  "input": {    "prompt": "A simple flat icon of a coffee cup with steam rising"  }}'
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-vector',
+  { prompt: 'A simple flat icon of a coffee cup with steam rising' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-1752)
-* [ Raw response ](#tab-panel-1753)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-vector",
+  "input": {
+    "prompt": "A simple flat icon of a coffee cup with steam rising"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-1800)
+* [ Raw response ](#tab-panel-1801)
 
 ![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/simple-icon.jpg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/simple-icon.jpg"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/simple-icon.jpg"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **App Icon**  — Mobile app icon in vector format
 
-* [ TypeScript ](#tab-panel-1758)
-* [ cURL ](#tab-panel-1759)
+* [ TypeScript ](#tab-panel-1806)
+* [ cURL ](#tab-panel-1807)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-vector',
+  {
+    prompt: 'A colorful gradient app icon featuring a chat bubble with a sparkle effect',
+    size: '1024x1024',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-vector',  {    prompt: 'A colorful gradient app icon featuring a chat bubble with a sparkle effect',    size: '1024x1024',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-vector",
+  "input": {
+    "prompt": "A colorful gradient app icon featuring a chat bubble with a sparkle effect",
+    "size": "1024x1024"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-vector",  "input": {    "prompt": "A colorful gradient app icon featuring a chat bubble with a sparkle effect",    "size": "1024x1024"  }}'
-```
-
-* [ Output ](#tab-panel-1756)
-* [ Raw response ](#tab-panel-1757)
+* [ Output ](#tab-panel-1804)
+* [ Raw response ](#tab-panel-1805)
 
 ![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/app-icon.jpg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/app-icon.jpg"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/app-icon.jpg"
+  },
+  "state": "Completed"
+}
 ```
 
 **Illustration**  — Vector illustration for web use
 
-* [ TypeScript ](#tab-panel-1762)
-* [ cURL ](#tab-panel-1763)
+* [ TypeScript ](#tab-panel-1810)
+* [ cURL ](#tab-panel-1811)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-vector',
+  {
+    prompt:
+      'A flat vector illustration of a person working at a desk with a computer, plants, and a window showing a city view',
+    size: '1024x1024',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-vector',  {    prompt:      'A flat vector illustration of a person working at a desk with a computer, plants, and a window showing a city view',    size: '1024x1024',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-vector",
+  "input": {
+    "prompt": "A flat vector illustration of a person working at a desk with a computer, plants, and a window showing a city view",
+    "size": "1024x1024"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-vector",  "input": {    "prompt": "A flat vector illustration of a person working at a desk with a computer, plants, and a window showing a city view",    "size": "1024x1024"  }}'
-```
-
-* [ Output ](#tab-panel-1760)
-* [ Raw response ](#tab-panel-1761)
+* [ Output ](#tab-panel-1808)
+* [ Raw response ](#tab-panel-1809)
 
 ![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/illustration.jpg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/illustration.jpg"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/illustration.jpg"
+  },
+  "state": "Completed"
+}
 ```
 
 **With Brand Colors**  — Vector with specific color palette
 
-* [ TypeScript ](#tab-panel-1766)
-* [ cURL ](#tab-panel-1767)
+* [ TypeScript ](#tab-panel-1814)
+* [ cURL ](#tab-panel-1815)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'recraft/recraftv4-1-vector',
+  {
+    prompt: 'A badge or seal design with a star in the center, suitable for a certification mark',
+    controls: {
+      background_color: { rgb: [255, 255, 255] },
+      colors: [{ rgb: [0, 119, 182] }, { rgb: [255, 209, 102] }],
+    },
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'recraft/recraftv4-1-vector',  {    prompt: 'A badge or seal design with a star in the center, suitable for a certification mark',    controls: {      background_color: { rgb: [255, 255, 255] },      colors: [{ rgb: [0, 119, 182] }, { rgb: [255, 209, 102] }],    },  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "recraft/recraftv4-1-vector",
+  "input": {
+    "prompt": "A badge or seal design with a star in the center, suitable for a certification mark",
+    "controls": {
+      "background_color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ]
+      },
+      "colors": [
+        {
+          "rgb": [
+            0,
+            119,
+            182
+          ]
+        },
+        {
+          "rgb": [
+            255,
+            209,
+            102
+          ]
+        }
+      ]
+    }
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-vector",  "input": {    "prompt": "A badge or seal design with a star in the center, suitable for a certification mark",    "controls": {      "background_color": {        "rgb": [          255,          255,          255        ]      },      "colors": [        {          "rgb": [            0,            119,            182          ]        },        {          "rgb": [            255,            209,            102          ]        }      ]    }  }}'
-```
-
-* [ Output ](#tab-panel-1764)
-* [ Raw response ](#tab-panel-1765)
+* [ Output ](#tab-panel-1812)
+* [ Raw response ](#tab-panel-1813)
 
 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/with-brand-colors.jpg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/with-brand-colors.jpg"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-vector/with-brand-colors.jpg"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1768)
-* [ Output ](#tab-panel-1769)
-
-▶controls{}
-
-`object`
+* [ Input ](#tab-panel-1816)
+* [ Output ](#tab-panel-1817)
 
 prompt
 
@@ -157,6 +265,10 @@ style
 substyle
 
 `string`
+
+▶controls{}
+
+`object`
 
 image
 

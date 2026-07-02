@@ -20,15 +20,30 @@ Create a `.sh` file in your project directory. You can choose your file's name, 
 
 In the following script, you will use the `CF_PAGES_BRANCH` environment variable to check which branch is currently being built. Populate your `.sh` file with the following:
 
-Terminal window
-
-```
+```bash
 # !/bin/bash
-if [ "$CF_PAGES_BRANCH" == "production" ]; then  # Run the "production" script in `package.json` on the "production" branch  # "production" should be replaced with the name of your Production branch
+
+
+if [ "$CF_PAGES_BRANCH" == "production" ]; then
+  # Run the "production" script in `package.json` on the "production" branch
+  # "production" should be replaced with the name of your Production branch
+
+
   npm run production
-elif [ "$CF_PAGES_BRANCH" == "staging" ]; then  # Run the "staging" script in `package.json` on the "staging" branch  # "staging" should be replaced with the name of your specific branch
+
+
+elif [ "$CF_PAGES_BRANCH" == "staging" ]; then
+  # Run the "staging" script in `package.json` on the "staging" branch
+  # "staging" should be replaced with the name of your specific branch
+
+
   npm run staging
-else  # Else run the dev script  npm run devfi
+
+
+else
+  # Else run the dev script
+  npm run dev
+fi
 ```
 
 ## Publish your changes

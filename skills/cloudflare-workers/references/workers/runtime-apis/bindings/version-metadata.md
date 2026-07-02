@@ -18,39 +18,69 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12048)
-* [  wrangler.toml ](#tab-panel-12049)
+* [  wrangler.jsonc ](#tab-panel-12343)
+* [  wrangler.toml ](#tab-panel-12344)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA"
+  }
+}
 ```
-{  "version_metadata": {    "binding": "CF_VERSION_METADATA"  }}
-```
 
-TOML
+**TOML**
 
-```
-[version_metadata]binding = "CF_VERSION_METADATA"
+```toml
+[version_metadata]
+binding = "CF_VERSION_METADATA"
 ```
 
 ### Interface
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
 
-* [  JavaScript ](#tab-panel-12046)
-* [  TypeScript ](#tab-panel-12047)
+* [  JavaScript ](#tab-panel-12341)
+* [  TypeScript ](#tab-panel-12342)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const { id: versionId, tag: versionTag, timestamp: versionTimestamp } = env.CF_VERSION_METADATA;
+    env.WAE.writeDataPoint({
+      indexes: [versionId],
+      blobs: [versionTag, versionTimestamp],
+      //...
+    });
+    //...
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    const { id: versionId, tag: versionTag, timestamp: versionTimestamp } = env.CF_VERSION_METADATA;    env.WAE.writeDataPoint({      indexes: [versionId],      blobs: [versionTag, versionTimestamp],      //...    });    //...  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Environment {  CF_VERSION_METADATA: WorkerVersionMetadata;  WAE: AnalyticsEngineDataset;}
-export default {  async fetch(request, env, ctx) {    const { id: versionId, tag: versionTag } = env.CF_VERSION_METADATA;    env.WAE.writeDataPoint({      indexes: [versionId],      blobs: [versionTag],      //...    });    //...  },} satisfies ExportedHandler<Env>;
+```ts
+interface Environment {
+  CF_VERSION_METADATA: WorkerVersionMetadata;
+  WAE: AnalyticsEngineDataset;
+}
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const { id: versionId, tag: versionTag } = env.CF_VERSION_METADATA;
+    env.WAE.writeDataPoint({
+      indexes: [versionId],
+      blobs: [versionTag],
+      //...
+    });
+    //...
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

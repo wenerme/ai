@@ -32,20 +32,39 @@ The Workers binding uses the `artifacts` binding you configure in Wrangler. Your
 
 Add the binding in your Wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-6888)
-* [  wrangler.toml ](#tab-panel-6889)
+* [  wrangler.jsonc ](#tab-panel-7136)
+* [  wrangler.toml ](#tab-panel-7137)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "artifacts-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "artifacts": [
+    {
+      "binding": "ARTIFACTS",
+      "namespace": "default"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "artifacts-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "artifacts": [    {      "binding": "ARTIFACTS",      "namespace": "default"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-name = "artifacts-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[[artifacts]]binding = "ARTIFACTS"namespace = "default"
+```toml
+name = "artifacts-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[artifacts]]
+binding = "ARTIFACTS"
+namespace = "default"
 ```
 
 At runtime, deployed Workers use the configured binding directly. For local Wrangler commands such as `wrangler dev`, `wrangler deploy`, or `wrangler types`, authenticate Wrangler first. For local OAuth authentication, refer to [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). For CI or headless environments, refer to [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
@@ -54,26 +73,29 @@ At runtime, deployed Workers use the configured binding directly. For local Wran
 
 The REST API uses a Cloudflare API token in the `Authorization` header.
 
-Terminal window
-
-```
-export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export ARTIFACTS_NAMESPACE="default"export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
+```sh
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+export ARTIFACTS_NAMESPACE="default"
+export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 ```
 
 Read repo metadata:
 
-Terminal window
-
-```
-curl "$ARTIFACTS_BASE_URL/repos/starter-repo" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "$ARTIFACTS_BASE_URL/repos/starter-repo" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Create a repo:
 
-Terminal window
-
-```
-curl --request POST "$ARTIFACTS_BASE_URL/repos" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "name": "starter-repo"  }'
+```bash
+curl --request POST "$ARTIFACTS_BASE_URL/repos" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "name": "starter-repo"
+  }'
 ```
 
 ## Authenticate the Git protocol
@@ -87,25 +109,19 @@ Git uses repo-scoped Artifacts tokens, not Cloudflare API tokens. Mint these tok
 
 Use the exact repo `remote` value returned by the Workers binding or REST API:
 
-Terminal window
-
-```
+```sh
 export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_CREATE_OR_GET_RESPONSE>"
 ```
 
 Use a read token to clone:
 
-Terminal window
-
-```
+```sh
 git -c http.extraHeader="Authorization: Bearer <YOUR_READ_TOKEN>" clone "$ARTIFACTS_REMOTE" artifacts-clone
 ```
 
 Use a write token to push:
 
-Terminal window
-
-```
+```sh
 git -c http.extraHeader="Authorization: Bearer <YOUR_WRITE_TOKEN>" push "$ARTIFACTS_REMOTE" HEAD:main
 ```
 

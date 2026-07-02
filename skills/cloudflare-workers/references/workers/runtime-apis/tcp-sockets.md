@@ -30,14 +30,35 @@ The `connect()` function returns a TCP socket, with both a [readable](https://de
 
 `connect()` is provided as a [Runtime API](https://developers.cloudflare.com/workers/runtime-apis/), and is accessed by importing the `connect` function from `cloudflare:sockets`. This process is similar to how one imports built-in modules in Node.js. Refer to the following codeblock for an example of creating a TCP socket, writing to it, and returning the readable side of the socket as a response:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { connect } from 'cloudflare:sockets';
-export default {  async fetch(req): Promise<Response> {    const gopherAddr = { hostname: "gopher.floodgap.com", port: 70 };    const url = new URL(req.url);
-    try {      const socket = connect(gopherAddr);
-      const writer = socket.writable.getWriter()      const encoder = new TextEncoder();      const encoded = encoder.encode(url.pathname + "\r\n");      await writer.write(encoded);      await writer.close();
-      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });    } catch (error) {      return new Response("Socket connection failed: " + error, { status: 500 });    }  }} satisfies ExportedHandler;
+
+
+export default {
+  async fetch(req): Promise<Response> {
+    const gopherAddr = { hostname: "gopher.floodgap.com", port: 70 };
+    const url = new URL(req.url);
+
+
+    try {
+      const socket = connect(gopherAddr);
+
+
+      const writer = socket.writable.getWriter()
+      const encoder = new TextEncoder();
+      const encoded = encoder.encode(url.pathname + "\r\n");
+      await writer.write(encoded);
+      await writer.close();
+
+
+      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
+    } catch (error) {
+      return new Response("Socket connection failed: " + error, { status: 500 });
+    }
+  }
+} satisfies ExportedHandler;
 ```
 
 * `connect(address: SocketAddress | string, options?: optional SocketOptions)` : `Socket`
@@ -100,11 +121,18 @@ export default {  async fetch(req): Promise<Response> {    const gopherAddr = { 
 
 Many TCP-based systems, including databases and email servers, require that clients use opportunistic TLS (otherwise known as [StartTLS ↗](https://en.wikipedia.org/wiki/Opportunistic%5FTLS)) when connecting. In this pattern, the client first creates an insecure TCP socket, without TLS, and then upgrades it to a secure TCP socket, that uses TLS. The `connect()` API simplifies this by providing a method, `startTls()`, which returns a new `Socket` instance that uses TLS:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { connect } from "cloudflare:sockets"
-const address = {  hostname: "example-postgres-db.com",  port: 5432};const socket = connect(address, { secureTransport: "starttls" });const secureSocket = socket.startTls();
+
+
+const address = {
+  hostname: "example-postgres-db.com",
+  port: 5432
+};
+const socket = connect(address, { secureTransport: "starttls" });
+const secureSocket = socket.startTls();
 ```
 
 * `startTls()` can only be called if `secureTransport` is set to `starttls` when creating the initial TCP socket.
@@ -115,23 +143,48 @@ const address = {  hostname: "example-postgres-db.com",  port: 5432};const socke
 
 To handle errors when creating a new TCP socket, reading from a socket, or writing to a socket, wrap these calls inside [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement blocks. The following example opens a connection to Google.com, initiates a HTTP request, and returns the response. If this fails and throws an exception, it returns a [500](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-500/) response:
 
-TypeScript
+**TypeScript**
 
-```
-import { connect } from 'cloudflare:sockets';const connectionUrl = { hostname: "google.com", port: 80 };export interface Env { }export default {  async fetch(req, env, ctx): Promise<Response> {    try {      const socket = connect(connectionUrl);      const writer = socket.writable.getWriter();      const encoder = new TextEncoder();      const encoded = encoder.encode("GET / HTTP/1.0\r\n\r\n");      await writer.write(encoded);      await writer.close();
-      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });    } catch (error) {      return new Response(`Socket connection failed: ${error}`, { status: 500 });    }  }} satisfies ExportedHandler<Env>;
+```typescript
+import { connect } from 'cloudflare:sockets';
+const connectionUrl = { hostname: "google.com", port: 80 };
+export interface Env { }
+export default {
+  async fetch(req, env, ctx): Promise<Response> {
+    try {
+      const socket = connect(connectionUrl);
+      const writer = socket.writable.getWriter();
+      const encoder = new TextEncoder();
+      const encoded = encoder.encode("GET / HTTP/1.0\r\n\r\n");
+      await writer.write(encoded);
+      await writer.close();
+
+
+      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
+    } catch (error) {
+      return new Response(`Socket connection failed: ${error}`, { status: 500 });
+    }
+  }
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Close TCP connections
 
 You can close a TCP connection by calling `close()` on the socket. This will close both the readable and writable sides of the socket.
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import { connect } from "cloudflare:sockets"
-const socket = connect({ hostname: "my-url.com", port: 70 });const reader = socket.readable.getReader();socket.close();
-// After close() is called, you can no longer read from the readable side of the socketconst reader = socket.readable.getReader(); // This fails
+
+
+const socket = connect({ hostname: "my-url.com", port: 70 });
+const reader = socket.readable.getReader();
+socket.close();
+
+
+// After close() is called, you can no longer read from the readable side of the socket
+const reader = socket.readable.getReader(); // This fails
 ```
 
 ## Considerations

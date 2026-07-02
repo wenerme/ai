@@ -16,27 +16,72 @@ Customers with a Bot Management and a [Workers](https://developers.cloudflare.co
 
 The template sets a minimum and maximum delay, and delays requests where the bot score is less than 30 and the URI path starts with `/exampleURI`.
 
-* [  JavaScript ](#tab-panel-6930)
-* [  TypeScript ](#tab-panel-6931)
+* [  JavaScript ](#tab-panel-7178)
+* [  TypeScript ](#tab-panel-7179)
 
-JavaScript
+**JavaScript**
 
+```js
+// Configurable Variables
+const PATH_START = "/exampleURI";
+const DELAY_FROM = 5; // in seconds
+const DELAY_TO = 10; // in seconds
+
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    const botScore = request.cf.botManagement.score;
+
+
+    if (url.pathname.startsWith(PATH_START) && botScore < 30) {
+      // Random delay between DELAY_FROM and DELAY_TO seconds
+      const delay =
+        Math.floor(Math.random() * (DELAY_TO - DELAY_FROM + 1)) + DELAY_FROM;
+      await new Promise((resolve) => setTimeout(resolve, delay * 1000));
+
+
+      // Fetch the original request
+      return fetch(request);
+    }
+
+
+    // Fetch the original request without delay
+    return fetch(request);
+  },
+};
 ```
-// Configurable Variablesconst PATH_START = "/exampleURI";const DELAY_FROM = 5; // in secondsconst DELAY_TO = 10; // in seconds
-export default {  async fetch(request, env, ctx) {    const url = new URL(request.url);    const botScore = request.cf.botManagement.score;
-    if (url.pathname.startsWith(PATH_START) && botScore < 30) {      // Random delay between DELAY_FROM and DELAY_TO seconds      const delay =        Math.floor(Math.random() * (DELAY_TO - DELAY_FROM + 1)) + DELAY_FROM;      await new Promise((resolve) => setTimeout(resolve, delay * 1000));
-      // Fetch the original request      return fetch(request);    }
-    // Fetch the original request without delay    return fetch(request);  },};
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Configurable Variablesconst PATH_START = '/exampleURI';const DELAY_FROM = 5; // in secondsconst DELAY_TO = 10; // in seconds
-export default {  async fetch(request, env, ctx): Promise<Response> {    const url = new URL(request.url);    const botScore = request.cf.botManagement.score
-    if (url.pathname.startsWith(PATH_START) && botScore < 30) {      // Random delay between DELAY_FROM and DELAY_TO seconds      const delay = Math.floor(Math.random() * (DELAY_TO - DELAY_FROM + 1)) + DELAY_FROM;      await new Promise(resolve => setTimeout(resolve, delay * 1000));
-      // Fetch the original request      return fetch(request);    }
-    // Fetch the original request without delay    return fetch(request);  },} satisfies ExportedHandler<Env>;
+```ts
+// Configurable Variables
+const PATH_START = '/exampleURI';
+const DELAY_FROM = 5; // in seconds
+const DELAY_TO = 10; // in seconds
+
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const url = new URL(request.url);
+    const botScore = request.cf.botManagement.score
+
+
+    if (url.pathname.startsWith(PATH_START) && botScore < 30) {
+      // Random delay between DELAY_FROM and DELAY_TO seconds
+      const delay = Math.floor(Math.random() * (DELAY_TO - DELAY_FROM + 1)) + DELAY_FROM;
+      await new Promise(resolve => setTimeout(resolve, delay * 1000));
+
+
+      // Fetch the original request
+      return fetch(request);
+    }
+
+
+    // Fetch the original request without delay
+    return fetch(request);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

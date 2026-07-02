@@ -35,11 +35,17 @@ Custom logs are `console.log()` statements that you can add yourself inside your
 
 Below is an example of a custom `console.log` statement inside a Pages Function:
 
-JavaScript
+**JavaScript**
 
-```
-export async function onRequest(context) {  console.log(    `[LOGGING FROM /hello]: Request came from ${context.request.url}`,  );
-  return new Response("Hello, world!");}
+```js
+export async function onRequest(context) {
+  console.log(
+    `[LOGGING FROM /hello]: Request came from ${context.request.url}`,
+  );
+
+
+  return new Response("Hello, world!");
+}
 ```
 
 After you deploy the code above, run `wrangler pages deployment tail` in your terminal. Then access the route at which your Function lives. Your terminal will display:
@@ -58,10 +64,35 @@ To get started, run `wrangler pages deployment tail` in your Pages project direc
 
 The output of each `wrangler pages deployment tail` log is a structured JSON object:
 
-JavaScript
+**JavaScript**
 
-```
-{  "outcome": "ok",  "scriptName": null,  "exceptions": [    {      "stack": "    at src/routes/index.tsx17:4\n    at new Promise (<anonymous>)\n",      "name": "Error",      "message": "An error has occurred",      "timestamp": 1668542036110    }  ],  "logs": [],  "eventTimestamp": 1668542036104,  "event": {    "request": {      "url": "https://pages-fns.pages.dev",      "method": "GET",      "headers": {},      "cf": {}    },    "response": {      "status": 200    }  },  "id": 0}
+```js
+{
+  "outcome": "ok",
+  "scriptName": null,
+  "exceptions": [
+    {
+      "stack": "    at src/routes/index.tsx17:4\n    at new Promise (<anonymous>)\n",
+      "name": "Error",
+      "message": "An error has occurred",
+      "timestamp": 1668542036110
+    }
+  ],
+  "logs": [],
+  "eventTimestamp": 1668542036104,
+  "event": {
+    "request": {
+      "url": "https://pages-fns.pages.dev",
+      "method": "GET",
+      "headers": {},
+      "cf": {}
+    },
+    "response": {
+      "status": 200
+    }
+  },
+  "id": 0
+}
 ```
 
 `wrangler pages deployment tail` allows you to customize a logging session to better suit your needs. Refer to the [wrangler pages deployment tail documentation](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail) for available configuration options.

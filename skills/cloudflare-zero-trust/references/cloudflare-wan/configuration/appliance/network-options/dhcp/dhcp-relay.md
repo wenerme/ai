@@ -39,8 +39,8 @@ DHCP relay will not work if your DHCP server is behind a [Cloudflare Tunnel](htt
 
 To configure DHCP relay:
 
-* [ Dashboard ](#tab-panel-7836)
-* [ API ](#tab-panel-7837)
+* [ Dashboard ](#tab-panel-8089)
+* [ API ](#tab-panel-8090)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -67,10 +67,23 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-Update Site LAN
+**Update Site LAN**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "lan": {        "static_addressing": {            "dhcp_relay": {                "server_addresses": [                    "192.0.2.1"                ]            }        }    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "lan": {
+        "static_addressing": {
+            "dhcp_relay": {
+                "server_addresses": [
+                    "192.0.2.1"
+                ]
+            }
+        }
+    }
+  }'
 ```
 
 ```json

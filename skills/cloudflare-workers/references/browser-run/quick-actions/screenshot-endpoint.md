@@ -23,7 +23,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 
 ## Endpoint
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot
 ```
 
@@ -43,40 +43,78 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-6994)
-* [ TypeScript SDK ](#tab-panel-6995)
-* [ Workers binding ](#tab-panel-6996)
+* [ curl ](#tab-panel-7242)
+* [ TypeScript SDK ](#tab-panel-7243)
+* [ Workers binding ](#tab-panel-7244)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 
-Terminal window
-
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "html": "Hello World!",
+    "screenshotOptions": {
+      "omitBackground": true
+    }
+  }' \
+  --output "screenshot.png"
 ```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "html": "Hello World!",    "screenshotOptions": {      "omitBackground": true    }  }' \  --output "screenshot.png"
-```
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 import Cloudflare from "cloudflare";
-const client = new Cloudflare({  apiToken: process.env["CLOUDFLARE_API_TOKEN"],});
-const screenshot = await client.browserRendering.screenshot.create({  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],  html: "Hello World!",  screenshotOptions: {    omitBackground: true,  },});
+
+
+const client = new Cloudflare({
+  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+});
+
+
+const screenshot = await client.browserRendering.screenshot.create({
+  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+  html: "Hello World!",
+  screenshotOptions: {
+    omitBackground: true,
+  },
+});
+
+
 console.log(screenshot.status);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  BROWSER: BrowserRun;}
-export default {  async fetch(request, env): Promise<Response> {    return await env.BROWSER.quickAction("screenshot", {      html: "Hello World!",      screenshotOptions: {        omitBackground: true,      },    });  },} satisfies ExportedHandler<Env>;
+```typescript
+interface Env {
+  BROWSER: BrowserRun;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    return await env.BROWSER.quickAction("screenshot", {
+      html: "Hello World!",
+      screenshotOptions: {
+        omitBackground: true,
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Take a screenshot from a URL
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com"  }' \  --output "screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com"
+  }' \
+  --output "screenshot.png"
 ```
 
 For more options to control the final screenshot, like `clip`, `captureBeyondViewport`, `fullPage` and others, check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/screenshot/methods/create/).
@@ -100,40 +138,82 @@ Some webpages require authentication before you can view their content. Browser 
 
 Provide valid session cookies to access pages that require login:
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/protected-page",    "cookies": [      {        "name": "session_id",        "value": "your-session-cookie-value",        "domain": "example.com",        "path": "/"      }    ]  }' \  --output "authenticated-screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/protected-page",
+    "cookies": [
+      {
+        "name": "session_id",
+        "value": "your-session-cookie-value",
+        "domain": "example.com",
+        "path": "/"
+      }
+    ]
+  }' \
+  --output "authenticated-screenshot.png"
 ```
 
 #### HTTP Basic Auth
 
 Use the `authenticate` parameter for pages behind HTTP Basic Authentication:
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/protected-page",    "authenticate": {      "username": "user",      "password": "pass"    }  }' \  --output "authenticated-screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/protected-page",
+    "authenticate": {
+      "username": "user",
+      "password": "pass"
+    }
+  }' \
+  --output "authenticated-screenshot.png"
 ```
 
 #### Token-based authentication
 
 Add custom authorization headers using `setExtraHTTPHeaders`:
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/protected-page",    "setExtraHTTPHeaders": {      "Authorization": "Bearer your-token"    }  }' \  --output "authenticated-screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/protected-page",
+    "setExtraHTTPHeaders": {
+      "Authorization": "Bearer your-token"
+    }
+  }' \
+  --output "authenticated-screenshot.png"
 ```
 
 ### Navigate and capture a full-page screenshot
 
 Navigate to `https://cloudflare.com/`, change the page size (`viewport`) and wait until there are no active network connections (`waitUntil`) or up to a maximum of `4500ms` (`timeout`) before capturing a `fullPage` screenshot.
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://cloudflare.com/",    "screenshotOptions": {       "fullPage": true    },    "viewport": {      "width": 1280,      "height": 720    },    "gotoOptions": {      "waitUntil": "networkidle0",      "timeout": 45000    }  }' \  --output "advanced-screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://cloudflare.com/",
+    "screenshotOptions": {
+       "fullPage": true
+    },
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "gotoOptions": {
+      "waitUntil": "networkidle0",
+      "timeout": 45000
+    }
+  }' \
+  --output "advanced-screenshot.png"
 ```
 
 ### Improve blurry screenshot resolution
@@ -142,28 +222,59 @@ If you set a large viewport width and height, your screenshot may appear blurry 
 
 To fix this, increase the value of the `deviceScaleFactor`.
 
-```
-{  "url": "https://cloudflare.com/",  "viewport": {    "width": 3600,    "height": 2400,    "deviceScaleFactor": 2  }}
+```json
+{
+  "url": "https://cloudflare.com/",
+  "viewport": {
+    "width": 3600,
+    "height": 2400,
+    "deviceScaleFactor": 2
+  }
+}
 ```
 
 ### Customize CSS and embed custom JavaScript
 
 Instruct the browser to go to `https://example.com`, embed custom JavaScript (`addScriptTag`) and add extra styles (`addStyleTag`), both inline (`addStyleTag.content`) and by loading an external stylesheet (`addStyleTag.url`).
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/",    "addScriptTag": [      { "content": "document.querySelector(`h1`).innerText = `Hello World!!!`" }    ],    "addStyleTag": [      {        "content": "div { background: linear-gradient(45deg, #2980b9  , #82e0aa  ); }"      },      {        "url": "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"      }    ]  }' \  --output "screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com/",
+    "addScriptTag": [
+      { "content": "document.querySelector(`h1`).innerText = `Hello World!!!`" }
+    ],
+    "addStyleTag": [
+      {
+        "content": "div { background: linear-gradient(45deg, #2980b9  , #82e0aa  ); }"
+      },
+      {
+        "url": "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      }
+    ]
+  }' \
+  --output "screenshot.png"
 ```
 
 ### Capture a specific element using the selector option
 
 To capture a screenshot of a specific element on a webpage, use the `selector` option with a valid CSS selector. You can also configure the `viewport` to control the page dimensions during rendering.
 
-Terminal window
-
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com",    "selector": "#example_element_name",    "viewport": {      "width": 1200,      "height": 1600    }  }' \  --output "screenshot.png"
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com",
+    "selector": "#example_element_name",
+    "viewport": {
+      "width": 1200,
+      "height": 1600
+    }
+  }' \
+  --output "screenshot.png"
 ```
 
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/screenshot/methods/create/) for all available parameters.
@@ -174,8 +285,13 @@ For JavaScript-heavy pages or Single Page Applications (SPAs), the default page 
 
 The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `networkidle0` or `networkidle2`:
 
-```
-{  "url": "https://example.com",  "gotoOptions": {    "waitUntil": "networkidle0"  }}
+```json
+{
+  "url": "https://example.com",
+  "gotoOptions": {
+    "waitUntil": "networkidle0"
+  }
+}
 ```
 
 For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).

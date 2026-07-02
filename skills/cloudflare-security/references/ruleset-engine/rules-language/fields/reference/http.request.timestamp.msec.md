@@ -20,7 +20,7 @@ To obtain the complete timestamp, use both [http.request.timestamp.sec](https://
 
 Example value:
 
-```
+```txt
 857
 ```
 

@@ -20,7 +20,7 @@ For examples of API calls, refer to [Common API calls](https://developers.cloudf
 
 To obtain the complete endpoint, append the Advanced DNS Protection API endpoints listed below to the Cloudflare API base URL:
 
-```
+```txt
 https://api.cloudflare.com/client/v4
 ```
 

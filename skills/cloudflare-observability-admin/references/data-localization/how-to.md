@@ -27,15 +27,11 @@ Learn how to configure Cloudflare products with the Data Localization Suite, inc
 
 In order to verify that Regional Services is working, customers can confirm the behavior by executing one of the following `curl` commands on a regionalized hostname:
 
-Terminal window
-
-```
+```bash
 curl -X GET -I https://<HOSTNAME>/ 2>&1 | grep cf-ray
 ```
 
-Terminal window
-
-```
+```bash
 curl -s https://<HOSTNAME>/cdn-cgi/trace | grep "colo="
 ```
 

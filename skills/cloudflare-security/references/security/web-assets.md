@@ -30,14 +30,16 @@ An operation is a group of HTTP requests that serve the same purpose in your app
 
 For example, Web Assets can group requests to product detail pages into one operation:
 
-```
+```txt
 GET example.com/products/{var1}
 ```
 
 The operation can match requests such as:
 
-```
-GET https://example.com/products/shoesGET https://example.com/products/hatsGET https://example.com/products/jackets
+```txt
+GET https://example.com/products/shoes
+GET https://example.com/products/hats
+GET https://example.com/products/jackets
 ```
 
 This lets Cloudflare identify requests that serve the same purpose in your application.

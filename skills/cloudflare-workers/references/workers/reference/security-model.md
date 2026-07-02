@@ -270,10 +270,14 @@ Supporting native code would limit choice in future mitigation techniques. There
 
 In Workers, you can get the current time using the JavaScript Date API by calling `Date.now()`. However, the time value returned is not the current time. `Date.now()` returns the time of the last I/O. It does not advance during code execution. For example, if an attacker writes:
 
-JavaScript
+**JavaScript**
 
-```
-let start = Date.now();for (let i = 0; i < 1e6; i++) {  doSpectreAttack();}let end = Date.now();
+```js
+let start = Date.now();
+for (let i = 0; i < 1e6; i++) {
+  doSpectreAttack();
+}
+let end = Date.now();
 ```
 
 The values of `start` and `end` will always be exactly the same. The attacker cannot use `Date` to measure the execution time of their code, which they would need to do to carry out an attack.

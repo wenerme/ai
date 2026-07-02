@@ -24,9 +24,7 @@ Before troubleshooting, disable VPNs and proxies. These can interfere with the m
 
 On your terminal, use the following command to check whether an SSL/TLS connection can be established successfully between the client and the API endpoint.
 
-Terminal window
-
-```
+```sh
 curl --verbose --cert /path/to/certificate.pem --key /path/to/key.pem https://your-api-endpoint.com
 ```
 
@@ -51,7 +49,7 @@ To review mTLS rules, consider the steps below. For further guidance refer to [C
 
   * The Expression Preview is correct.
   * The hostname, if defined, matches your API endpoint. For example, for the API endpoint `api.trackers.ninja/time`, the rule should look like:
-  ```
+  ```txt
   (http.host in {"api.trackers.ninja"} and not cf.tls_client_auth.cert_verified)
   ```
 4. To edit the rule, either use the user interface or select **Edit expression**.
@@ -63,25 +61,40 @@ To review mTLS rules, consider the steps below. For further guidance refer to [C
 You can use [Cloudflare Workers](https://developers.cloudflare.com/workers/) to debug client certificate validation failures.
 
 1. Create a Worker to debug print [cf.properties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties):
-JavaScript
-```
-export default {  async fetch(request, env, ctx) {    console.info({ message: JSON.stringify(request.cf, null, 2) });    return new Response(JSON.stringify(request.cf, null, 2))  }};
+
+**JavaScript**
+```js
+export default {
+  async fetch(request, env, ctx) {
+    console.info({ message: JSON.stringify(request.cf, null, 2) });
+    return new Response(JSON.stringify(request.cf, null, 2))
+  }
+};
 ```
 2. Associate the Worker with the hostname where mTLS is enabled using a [Worker route](https://developers.cloudflare.com/workers/configuration/routing/routes/) or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 3. Make requests to the hostname and/or path configured, with and without sending the mTLS client certificate.
 4. View your logs on the [Observability](https://developers.cloudflare.com/workers/observability/) dashboard and compare the responses against the expected values listed below.
 [ Go to **Observability** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 * Valid certificate
-```
-"tlsClientAuth": {  "certPresented": "1",  "certVerified": "SUCCESS",},
+```json
+"tlsClientAuth": {
+  "certPresented": "1",
+  "certVerified": "SUCCESS",
+},
 ```
 * Invalid certificate (for example, self-signed certificates)
-```
-"tlsClientAuth": {  "certPresented": "1",  "certVerified": "FAILED:self signed certificate",},
+```json
+"tlsClientAuth": {
+  "certPresented": "1",
+  "certVerified": "FAILED:self signed certificate",
+},
 ```
 * No certificate
-```
-"tlsClientAuth": {  "certPresented": "0",  "certVerified": "NONE",},
+```json
+"tlsClientAuth": {
+  "certPresented": "0",
+  "certVerified": "NONE",
+},
 ```
 
 ```json

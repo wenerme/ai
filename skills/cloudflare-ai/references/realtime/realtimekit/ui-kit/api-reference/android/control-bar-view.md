@@ -24,8 +24,11 @@ A base container for control bar buttons. Provides design token support and back
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbars.RtkControlBarView    android:id="@+id/rtk_control_bar"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbars.RtkControlBarView
+    android:id="@+id/rtk_control_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ```json

@@ -29,126 +29,228 @@ MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice c
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-922)
-* [ cURL ](#tab-panel-923)
+* [ TypeScript ](#tab-panel-970)
+* [ cURL ](#tab-panel-971)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-turbo',
+  {
+    format: 'mp3',
+    pitch: 0,
+    speed: 1,
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-turbo',  {    format: 'mp3',    pitch: 0,    speed: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-turbo",
+  "input": {
+    "format": "mp3",
+    "pitch": 0,
+    "speed": 1,
+    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-966)
+* [ Raw response ](#tab-panel-967)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-turbo",  "input": {    "format": "mp3",    "pitch": 0,    "speed": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-918)
-* [ Raw response ](#tab-panel-919)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/simple-speech.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/simple-speech.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Fast Narration**  — Speed up narration for quick playback
 
-* [ TypeScript ](#tab-panel-926)
-* [ cURL ](#tab-panel-927)
+* [ TypeScript ](#tab-panel-974)
+* [ cURL ](#tab-panel-975)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-turbo',
+  {
+    format: 'mp3',
+    pitch: 0,
+    speed: 1.5,
+    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-turbo',  {    format: 'mp3',    pitch: 0,    speed: 1.5,    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-turbo",
+  "input": {
+    "format": "mp3",
+    "pitch": 0,
+    "speed": 1.5,
+    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-968)
+* [ Raw response ](#tab-panel-969)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-turbo",  "input": {    "format": "mp3",    "pitch": 0,    "speed": 1.5,    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-920)
-* [ Raw response ](#tab-panel-921)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/fast-narration.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/fast-narration.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation
 
-* [ TypeScript ](#tab-panel-930)
-* [ cURL ](#tab-panel-931)
+* [ TypeScript ](#tab-panel-978)
+* [ cURL ](#tab-panel-979)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-turbo',
+  {
+    emotion: 'calm',
+    format: 'mp3',
+    pitch: 0,
+    speed: 0.8,
+    text: 'Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-turbo',  {    emotion: 'calm',    format: 'mp3',    pitch: 0,    speed: 0.8,    text: 'Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-turbo",
+  "input": {
+    "emotion": "calm",
+    "format": "mp3",
+    "pitch": 0,
+    "speed": 0.8,
+    "text": "Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-972)
+* [ Raw response ](#tab-panel-973)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-turbo",  "input": {    "emotion": "calm",    "format": "mp3",    "pitch": 0,    "speed": 0.8,    "text": "Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-924)
-* [ Raw response ](#tab-panel-925)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/calm-tone.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/calm-tone.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice
 
-* [ TypeScript ](#tab-panel-932)
-* [ cURL ](#tab-panel-933)
+* [ TypeScript ](#tab-panel-980)
+* [ cURL ](#tab-panel-981)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'minimax/speech-2.8-turbo',
+  {
+    format: 'mp3',
+    pitch: -6,
+    speed: 1,
+    text: 'Good evening. Tonight we explore the mysteries of the deep ocean and the creatures that live in total darkness.',
+    voice_id: 'English_expressive_narrator',
+    volume: 1,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'minimax/speech-2.8-turbo',  {    format: 'mp3',    pitch: -6,    speed: 1,    text: 'Good evening. Tonight we explore the mysteries of the deep ocean and the creatures that live in total darkness.',    voice_id: 'English_expressive_narrator',    volume: 1,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "minimax/speech-2.8-turbo",
+  "input": {
+    "format": "mp3",
+    "pitch": -6,
+    "speed": 1,
+    "text": "Good evening. Tonight we explore the mysteries of the deep ocean and the creatures that live in total darkness.",
+    "voice_id": "English_expressive_narrator",
+    "volume": 1
+  }
+}'
 ```
 
-Terminal window
+* [ Output ](#tab-panel-976)
+* [ Raw response ](#tab-panel-977)
 
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/speech-2.8-turbo",  "input": {    "format": "mp3",    "pitch": -6,    "speed": 1,    "text": "Good evening. Tonight we explore the mysteries of the deep ocean and the creatures that live in total darkness.",    "voice_id": "English_expressive_narrator",    "volume": 1  }}'
-```
-
-* [ Output ](#tab-panel-928)
-* [ Raw response ](#tab-panel-929)
-
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/adjusted-pitch.mp3"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/adjusted-pitch.mp3"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-934)
-* [ Output ](#tab-panel-935)
-
-emotion
-
-`string`enum: happy, sad, angry, fearful, disgusted, surprised, calm, fluentEmotion control for synthesized speech
-
-format
-
-`string`requireddefault: mp3enum: mp3, flac, wavOutput audio format
-
-pitch
-
-`integer`requireddefault: 0maximum: 12minimum: \-12Pitch adjustment (-12 to 12)
-
-▶sample\_rate
-
-`one of`
-
-speed
-
-`number`requireddefault: 1maximum: 2minimum: 0.5Speech speed (0.5 to 2)
+* [ Input ](#tab-panel-982)
+* [ Output ](#tab-panel-983)
 
 text
 
@@ -158,9 +260,29 @@ voice\_id
 
 `string`requireddefault: English\_expressive\_narratorThe voice ID to use for synthesis
 
+speed
+
+`number`requireddefault: 1minimum: 0.5maximum: 2Speech speed (0.5 to 2)
+
 volume
 
-`number`requireddefault: 1maximum: 10minimum: 0Speech volume (0 to 10)
+`number`requireddefault: 1minimum: 0maximum: 10Speech volume (0 to 10)
+
+pitch
+
+`integer`requireddefault: 0minimum: \-12maximum: 12Pitch adjustment (-12 to 12)
+
+emotion
+
+`string`enum: happy, sad, angry, fearful, disgusted, surprised, calm, fluentEmotion control for synthesized speech
+
+format
+
+`string`requireddefault: mp3enum: mp3, flac, wavOutput audio format
+
+▶sample\_rate
+
+`one of`
 
 audio
 

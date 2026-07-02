@@ -20,22 +20,38 @@ If a domain name is not resolving correctly, test DNS resolution against 1.1.1.1
 
 ### Linux/macOS
 
-Terminal window
+```sh
+# Test DNS resolution
+dig example.com @1.1.1.1
+dig example.com @1.0.0.1
+dig example.com @8.8.8.8
 
-```
-# Test DNS resolutiondig example.com @1.1.1.1dig example.com @1.0.0.1dig example.com @8.8.8.8
-# Check connected nameserverdig +short CHAOS TXT id.server @1.1.1.1dig +short CHAOS TXT id.server @1.0.0.1
-# Optional: Network informationdig @ns3.cloudflare.com whoami.cloudflare.com txt +short
+
+# Check connected nameserver
+dig +short CHAOS TXT id.server @1.1.1.1
+dig +short CHAOS TXT id.server @1.0.0.1
+
+
+# Optional: Network information
+dig @ns3.cloudflare.com whoami.cloudflare.com txt +short
 ```
 
 ### Windows
 
-Terminal window
+```sh
+# Test DNS resolution
+nslookup example.com 1.1.1.1
+nslookup example.com 1.0.0.1
+nslookup example.com 8.8.8.8
 
-```
-# Test DNS resolutionnslookup example.com 1.1.1.1nslookup example.com 1.0.0.1nslookup example.com 8.8.8.8
-# Check connected nameservernslookup -class=chaos -type=txt id.server 1.1.1.1nslookup -class=chaos -type=txt id.server 1.0.0.1
-# Optional: Network informationnslookup -type=txt whoami.cloudflare.com ns3.cloudflare.com
+
+# Check connected nameserver
+nslookup -class=chaos -type=txt id.server 1.1.1.1
+nslookup -class=chaos -type=txt id.server 1.0.0.1
+
+
+# Optional: Network information
+nslookup -type=txt whoami.cloudflare.com ns3.cloudflare.com
 ```
 
 Warning
@@ -55,22 +71,38 @@ Before reporting connectivity issues:
 
 ### Linux/macOS
 
-Terminal window
+```sh
+# Basic connectivity tests
+traceroute 1.1.1.1
+traceroute 1.0.0.1
 
-```
-# Basic connectivity teststraceroute 1.1.1.1traceroute 1.0.0.1
-# If reachable, check nameserver identitydig +short CHAOS TXT id.server @1.1.1.1dig +short CHAOS TXT id.server @1.0.0.1
-# TCP connection testsdig +tcp @1.1.1.1 id.server CH TXTdig +tcp @1.0.0.1 id.server CH TXT
+
+# If reachable, check nameserver identity
+dig +short CHAOS TXT id.server @1.1.1.1
+dig +short CHAOS TXT id.server @1.0.0.1
+
+
+# TCP connection tests
+dig +tcp @1.1.1.1 id.server CH TXT
+dig +tcp @1.0.0.1 id.server CH TXT
 ```
 
 ### Windows
 
-Terminal window
+```sh
+# Basic connectivity tests
+tracert 1.1.1.1
+tracert 1.0.0.1
 
-```
-# Basic connectivity teststracert 1.1.1.1tracert 1.0.0.1
-# If reachable, check nameserver identitynslookup -class=chaos -type=txt id.server 1.1.1.1nslookup -class=chaos -type=txt id.server 1.0.0.1
-# TCP connection testsnslookup -vc -class=chaos -type=txt id.server 1.1.1.1nslookup -vc -class=chaos -type=txt id.server 1.0.0.1
+
+# If reachable, check nameserver identity
+nslookup -class=chaos -type=txt id.server 1.1.1.1
+nslookup -class=chaos -type=txt id.server 1.0.0.1
+
+
+# TCP connection tests
+nslookup -vc -class=chaos -type=txt id.server 1.1.1.1
+nslookup -vc -class=chaos -type=txt id.server 1.0.0.1
 ```
 
 ## DNS-over-TLS (DoT) troubleshooting
@@ -79,11 +111,15 @@ DNS over TLS encrypts DNS queries using TLS on port `853`. If your DoT connectio
 
 ### Linux/macOS
 
-Terminal window
+```sh
+# Test TLS connectivity
+openssl s_client -connect 1.1.1.1:853
+openssl s_client -connect 1.0.0.1:853
 
-```
-# Test TLS connectivityopenssl s_client -connect 1.1.1.1:853openssl s_client -connect 1.0.0.1:853
-# Test DNS resolution over TLSkdig +tls @1.1.1.1 id.server CH TXTkdig +tls @1.0.0.1 id.server CH TXT
+
+# Test DNS resolution over TLS
+kdig +tls @1.1.1.1 id.server CH TXT
+kdig +tls @1.0.0.1 id.server CH TXT
 ```
 
 ### Windows
@@ -96,17 +132,15 @@ DNS over HTTPS sends DNS queries as HTTPS requests. If your DoH connection is no
 
 ### Linux/macOS
 
-Terminal window
-
-```
+```sh
 curl -H 'accept: application/dns-json' 'https://cloudflare-dns.com/dns-query?name=cloudflare.com&type=AAAA'
 ```
 
 ### Windows
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 (Invoke-WebRequest -Uri 'https://cloudflare-dns.com/dns-query?name=cloudflare.com&type=AAAA').RawContent
 ```
 

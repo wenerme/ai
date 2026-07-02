@@ -35,11 +35,16 @@ All code within a single sandbox shares resources:
 
 For complete isolation, use separate sandboxes per user:
 
-TypeScript
+**TypeScript**
 
-```
-// Good - Each user in separate sandboxconst userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
-// Bad - Users sharing one sandboxconst shared = getSandbox(env.Sandbox, 'shared');// Users can read each other's files!
+```typescript
+// Good - Each user in separate sandbox
+const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
+
+
+// Bad - Users sharing one sandbox
+const shared = getSandbox(env.Sandbox, 'shared');
+// Users can read each other's files!
 ```
 
 ## Input validation
@@ -48,12 +53,23 @@ TypeScript
 
 Always validate user input before using it in commands:
 
-TypeScript
+**TypeScript**
 
-```
-// Dangerous - user input directly in commandconst filename = userInput;await sandbox.exec(`cat ${filename}`);// User could input: "file.txt; rm -rf /"
-// Safe - validate inputconst filename = userInput.replace(/[^a-zA-Z0-9._-]/g, '');await sandbox.exec(`cat ${filename}`);
-// Better - use file APIawait sandbox.writeFile('/tmp/input', userInput);await sandbox.exec('cat /tmp/input');
+```typescript
+// Dangerous - user input directly in command
+const filename = userInput;
+await sandbox.exec(`cat ${filename}`);
+// User could input: "file.txt; rm -rf /"
+
+
+// Safe - validate input
+const filename = userInput.replace(/[^a-zA-Z0-9._-]/g, '');
+await sandbox.exec(`cat ${filename}`);
+
+
+// Better - use file API
+await sandbox.writeFile('/tmp/input', userInput);
+await sandbox.exec('cat /tmp/input');
 ```
 
 ## Authentication
@@ -62,11 +78,22 @@ TypeScript
 
 Sandbox IDs provide basic access control but aren't cryptographically secure. Add application-level authentication:
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const userId = await authenticate(request);    if (!userId) {      return new Response('Unauthorized', { status: 401 });    }
-    // User can only access their sandbox    const sandbox = getSandbox(env.Sandbox, userId);    return Response.json({ authorized: true });  }};
+```typescript
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const userId = await authenticate(request);
+    if (!userId) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+
+    // User can only access their sandbox
+    const sandbox = getSandbox(env.Sandbox, userId);
+    return Response.json({ authorized: true });
+  }
+};
 ```
 
 ### Preview URLs
@@ -75,9 +102,9 @@ Preview URLs include randomly generated tokens. Anyone with the URL can access t
 
 To revoke access, unexpose the port:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 await sandbox.unexposePort(8080);
 ```
 
@@ -85,40 +112,68 @@ await sandbox.unexposePort(8080);
 
 Quick tunnels (`sandbox.tunnels.get(port)`) return a `*.trycloudflare.com` URL with a random hostname assigned by Cloudflare — there is no separate access token. The hostname itself is the access control: anyone who knows the URL can reach the service. To revoke access, destroy the tunnel:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 await sandbox.tunnels.destroy(8080);
 ```
 
 URLs do not survive a container restart, so a restart effectively rotates the hostname. As with preview URLs, add application-level authentication for any sensitive service. See the [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) for details.
 
-Python
+**Python**
 
-```
-from flask import Flask, request, abortimport os
+```python
+from flask import Flask, request, abort
+import os
+
+
 app = Flask(__name__)
-def check_auth():    token = request.headers.get('Authorization')    if token != f"Bearer {os.environ['AUTH_TOKEN']}":        abort(401)
-@app.route('/api/data')def get_data():    check_auth()    return {'data': 'protected'}
+
+
+def check_auth():
+    token = request.headers.get('Authorization')
+    if token != f"Bearer {os.environ['AUTH_TOKEN']}":
+        abort(401)
+
+
+@app.route('/api/data')
+def get_data():
+    check_auth()
+    return {'data': 'protected'}
 ```
 
 ## Secrets management
 
 Use environment variables, not hardcoded secrets:
 
-TypeScript
+**TypeScript**
 
-```
-// Bad - hardcoded in fileawait sandbox.writeFile('/workspace/config.js', `  const API_KEY = 'sk_live_abc123';`);
-// Good - use environment variablesawait sandbox.startProcess('node app.js', {  env: {    API_KEY: env.API_KEY,  // From Worker environment binding  }});
+```typescript
+// Bad - hardcoded in file
+await sandbox.writeFile('/workspace/config.js', `
+  const API_KEY = 'sk_live_abc123';
+`);
+
+
+// Good - use environment variables
+await sandbox.startProcess('node app.js', {
+  env: {
+    API_KEY: env.API_KEY,  // From Worker environment binding
+  }
+});
 ```
 
 Clean up temporary sensitive data:
 
-TypeScript
+**TypeScript**
 
-```
-try {  await sandbox.writeFile('/tmp/sensitive.txt', secretData);  await sandbox.exec('python process.py /tmp/sensitive.txt');} finally {  await sandbox.deleteFile('/tmp/sensitive.txt');}
+```typescript
+try {
+  await sandbox.writeFile('/tmp/sensitive.txt', secretData);
+  await sandbox.exec('python process.py /tmp/sensitive.txt');
+} finally {
+  await sandbox.deleteFile('/tmp/sensitive.txt');
+}
 ```
 
 ## Proxying external API requests
@@ -127,7 +182,7 @@ Passing credentials directly to a sandbox — via environment variables or files
 
 The flow works as follows:
 
-```
+```plaintext
 Sandbox (short-lived JWT) → Worker proxy (validates JWT, injects real credentials) → External API
 ```
 
@@ -152,34 +207,42 @@ This pattern is useful when accessing GitHub for private repository operations, 
 
 **Use separate sandboxes for isolation**:
 
-TypeScript
+**TypeScript**
 
-```
+```typescript
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 ```
 
 **Validate all inputs**:
 
-TypeScript
+**TypeScript**
 
-```
-const safe = input.replace(/[^a-zA-Z0-9._-]/g, '');await sandbox.exec(`command ${safe}`);
+```typescript
+const safe = input.replace(/[^a-zA-Z0-9._-]/g, '');
+await sandbox.exec(`command ${safe}`);
 ```
 
 **Use environment variables for secrets**:
 
-TypeScript
+**TypeScript**
 
-```
-await sandbox.startProcess('node app.js', {  env: { API_KEY: env.API_KEY }});
+```typescript
+await sandbox.startProcess('node app.js', {
+  env: { API_KEY: env.API_KEY }
+});
 ```
 
 **Clean up temporary resources**:
 
-TypeScript
+**TypeScript**
 
-```
-try {  const sandbox = getSandbox(env.Sandbox, sessionId);  await sandbox.exec('npm test');} finally {  await sandbox.destroy();}
+```typescript
+try {
+  const sandbox = getSandbox(env.Sandbox, sessionId);
+  await sandbox.exec('npm test');
+} finally {
+  await sandbox.destroy();
+}
 ```
 
 ## Related resources

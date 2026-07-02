@@ -22,10 +22,12 @@ Cloudflare Workers provides an implementation of a subset of the Node.js [AsyncL
 
 ## Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncLocalStorage } from "node:async_hooks";
+
+
 const asyncLocalStorage = new AsyncLocalStorage();
 ```
 
@@ -57,59 +59,134 @@ const asyncLocalStorage = new AsyncLocalStorage();
 
 ### Fetch Listener
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncLocalStorage } from 'node:async_hooks';
-const asyncLocalStorage = new AsyncLocalStorage();let idSeq = 0;
-export default {  async fetch(req) {    return asyncLocalStorage.run(idSeq++, () => {      // Simulate some async activity...      await scheduler.wait(1000);      return new Response(asyncLocalStorage.getStore());    });  }};
+
+
+const asyncLocalStorage = new AsyncLocalStorage();
+let idSeq = 0;
+
+
+export default {
+  async fetch(req) {
+    return asyncLocalStorage.run(idSeq++, () => {
+      // Simulate some async activity...
+      await scheduler.wait(1000);
+      return new Response(asyncLocalStorage.getStore());
+    });
+  }
+};
 ```
 
 ### Multiple stores
 
 The API supports multiple `AsyncLocalStorage` instances to be used concurrently.
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncLocalStorage } from 'node:async_hooks';
-const als1 = new AsyncLocalStorage();const als2 = new AsyncLocalStorage();
-export default {  async fetch(req) {    return als1.run(123, () => {      return als2.run(321, () => {        // Simulate some async activity...        await scheduler.wait(1000);        return new Response(`${als1.getStore()}-${als2.getStore()}`);      });    });  }};
+
+
+const als1 = new AsyncLocalStorage();
+const als2 = new AsyncLocalStorage();
+
+
+export default {
+  async fetch(req) {
+    return als1.run(123, () => {
+      return als2.run(321, () => {
+        // Simulate some async activity...
+        await scheduler.wait(1000);
+        return new Response(`${als1.getStore()}-${als2.getStore()}`);
+      });
+    });
+  }
+};
 ```
 
 ### Unhandled Rejections
 
 When a `Promise` rejects and the rejection is unhandled, the async context propagates to the `'unhandledrejection'` event handler:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncLocalStorage } from "node:async_hooks";
-const asyncLocalStorage = new AsyncLocalStorage();let idSeq = 0;
-addEventListener("unhandledrejection", (event) => {  console.log(asyncLocalStorage.getStore(), "unhandled rejection!");});
-export default {  async fetch(req) {    return asyncLocalStorage.run(idSeq++, () => {      // Cause an unhandled rejection!      throw new Error("boom");    });  },};
+
+
+const asyncLocalStorage = new AsyncLocalStorage();
+let idSeq = 0;
+
+
+addEventListener("unhandledrejection", (event) => {
+  console.log(asyncLocalStorage.getStore(), "unhandled rejection!");
+});
+
+
+export default {
+  async fetch(req) {
+    return asyncLocalStorage.run(idSeq++, () => {
+      // Cause an unhandled rejection!
+      throw new Error("boom");
+    });
+  },
+};
 ```
 
 ### `AsyncLocalStorage.bind()` and `AsyncLocalStorage.snapshot()`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncLocalStorage } from "node:async_hooks";
+
+
 const als = new AsyncLocalStorage();
-function foo() {  console.log(als.getStore());}function bar() {  console.log(als.getStore());}
-const oneFoo = als.run(123, () => AsyncLocalStorage.bind(foo));oneFoo(); // prints 123
-const snapshot = als.run("abc", () => AsyncLocalStorage.snapshot());snapshot(foo); // prints 'abc'snapshot(bar); // prints 'abc'
+
+
+function foo() {
+  console.log(als.getStore());
+}
+function bar() {
+  console.log(als.getStore());
+}
+
+
+const oneFoo = als.run(123, () => AsyncLocalStorage.bind(foo));
+oneFoo(); // prints 123
+
+
+const snapshot = als.run("abc", () => AsyncLocalStorage.snapshot());
+snapshot(foo); // prints 'abc'
+snapshot(bar); // prints 'abc'
 ```
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncLocalStorage } from "node:async_hooks";
+
+
 const als = new AsyncLocalStorage();
-class MyResource {  #runInAsyncScope = AsyncLocalStorage.snapshot();
-  doSomething() {    this.#runInAsyncScope(() => {      return als.getStore();    });  }}
-const myResource = als.run(123, () => new MyResource());console.log(myResource.doSomething()); // prints 123
+
+
+class MyResource {
+  #runInAsyncScope = AsyncLocalStorage.snapshot();
+
+
+  doSomething() {
+    this.#runInAsyncScope(() => {
+      return als.getStore();
+    });
+  }
+}
+
+
+const myResource = als.run(123, () => new MyResource());
+console.log(myResource.doSomething()); // prints 123
 ```
 
 ## `AsyncResource`
@@ -120,14 +197,32 @@ Note that `AsyncLocalStorage.snapshot()` and `AsyncLocalStorage.bind()` provide 
 
 ### Constructor
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { AsyncResource, AsyncLocalStorage } from "node:async_hooks";
+
+
 const als = new AsyncLocalStorage();
-class MyResource extends AsyncResource {  constructor() {    // The type string is required by Node.js but unused in Workers.    super("MyResource");  }
-  doSomething() {    this.runInAsyncScope(() => {      return als.getStore();    });  }}
-const myResource = als.run(123, () => new MyResource());console.log(myResource.doSomething()); // prints 123
+
+
+class MyResource extends AsyncResource {
+  constructor() {
+    // The type string is required by Node.js but unused in Workers.
+    super("MyResource");
+  }
+
+
+  doSomething() {
+    this.runInAsyncScope(() => {
+      return als.getStore();
+    });
+  }
+}
+
+
+const myResource = als.run(123, () => new MyResource());
+console.log(myResource.doSomething()); // prints 123
 ```
 
 * `new AsyncResource(typestring, optionsAsyncResourceOptions)` : AsyncResource

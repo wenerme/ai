@@ -29,28 +29,57 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2469)
-* [  curl ](#tab-panel-2470)
+* [  TypeScript ](#tab-panel-2517)
+* [  curl ](#tab-panel-2518)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {
-    // Picture of a dog    const exampleInputImage = await fetch(      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"    );
-    const inputs = {      prompt: "Change to a lion",      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],    };
-    const response = await env.AI.run(      "@cf/runwayml/stable-diffusion-v1-5-img2img",      inputs    );
-    return new Response(response, {      headers: {        "content-type": "image/png",      },    });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+
+    // Picture of a dog
+    const exampleInputImage = await fetch(
+      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"
+    );
+
+
+    const inputs = {
+      prompt: "Change to a lion",
+      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],
+    };
+
+
+    const response = await env.AI.run(
+      "@cf/runwayml/stable-diffusion-v1-5-img2img",
+      inputs
+    );
+
+
+    return new Response(response, {
+      headers: {
+        "content-type": "image/png",
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-img2img  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-img2img  \
+  -X POST  \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
+  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2471)
-* [ Output ](#tab-panel-2472)
+* [ Input ](#tab-panel-2519)
+* [ Output ](#tab-panel-2520)
 
 prompt
 

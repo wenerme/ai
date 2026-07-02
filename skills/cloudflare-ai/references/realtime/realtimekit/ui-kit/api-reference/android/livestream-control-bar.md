@@ -24,16 +24,20 @@ A pre-built control bar for livestream meetings. Contains mic toggle, camera tog
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbars.RtkLivestreamControlBarView    android:id="@+id/rtk_livestream_control_bar"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbars.RtkLivestreamControlBarView
+    android:id="@+id/rtk_livestream_control_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val controlBar = findViewById<RtkLivestreamControlBarView>(R.id.rtk_livestream_control_bar)controlBar.activate(meeting)
+```kotlin
+val controlBar = findViewById<RtkLivestreamControlBarView>(R.id.rtk_livestream_control_bar)
+controlBar.activate(meeting)
 ```
 
 ```json

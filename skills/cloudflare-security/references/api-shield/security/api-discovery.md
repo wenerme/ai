@@ -27,14 +27,21 @@ Both paths serve a similar purpose — retrieving user profiles — but they are
 
 API Discovery runs this process across all your traffic, generating a simple map of endpoints that might look like:
 
-```
-/api/login/{customer_identifier}/api/auth/api/account/{customer_identifier}/api/password_reset/api/logout
+```plaintext
+/api/login/{customer_identifier}
+/api/auth
+/api/account/{customer_identifier}
+/api/password_reset
+/api/logout
 ```
 
 Similarly, if you have multiple subdomains that share the same set of endpoints, Cloudflare consolidates subdomains:
 
-```
-us-api.example.com/api/v1/users/{var1}de-api.example.com/api/v1/users/{var1}fr-api.example.com/api/v1/users/{var1}jp-api.example.com/api/v1/users/{var1}
+```txt
+us-api.example.com/api/v1/users/{var1}
+de-api.example.com/api/v1/users/{var1}
+fr-api.example.com/api/v1/users/{var1}
+jp-api.example.com/api/v1/users/{var1}
 ```
 
 Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
@@ -67,8 +74,8 @@ Your API endpoints are discovered with both session identifier-based discovery a
 
 To access machine learning-based discovery:
 
-* [  New dashboard ](#tab-panel-6991)
-* [ Old dashboard ](#tab-panel-6992)
+* [  New dashboard ](#tab-panel-7027)
+* [ Old dashboard ](#tab-panel-7028)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

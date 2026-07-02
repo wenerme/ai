@@ -36,8 +36,16 @@ Wildcard URL redirects are regular [dynamic URL redirects](#dynamic-url-redirect
 
 The full syntax of the `"action_parameters"` field for a redirect rule performing a wildcard URL redirect is the following:
 
-```
-"action_parameters": {  "from_value": {    "target_url": {      "expression": "wildcard_replace(http.request.full_uri, r\"<REQUEST_URL_PATTERN>\", r\"<TARGET_URL_PATTERN>\")"    },    "status_code": <STATUS_CODE>,    "preserve_query_string": <BOOLEAN_VALUE>  }}
+```json
+"action_parameters": {
+  "from_value": {
+    "target_url": {
+      "expression": "wildcard_replace(http.request.full_uri, r\"<REQUEST_URL_PATTERN>\", r\"<TARGET_URL_PATTERN>\")"
+    },
+    "status_code": <STATUS_CODE>,
+    "preserve_query_string": <BOOLEAN_VALUE>
+  }
+}
 ```
 
 The required parameters are `<REQUEST_URL_PATTERN>` and `<TARGET_URL_PATTERN>`.
@@ -70,8 +78,16 @@ API information
 
 The full syntax of the `"action_parameters"` field for a redirect rule performing a static URL redirect is the following:
 
-```
-"action_parameters": {  "from_value": {    "target_url": {      "value": "<STATIC_URL_VALUE>"    },    "status_code": <STATUS_CODE>,    "preserve_query_string": <BOOLEAN_VALUE>  }}
+```json
+"action_parameters": {
+  "from_value": {
+    "target_url": {
+      "value": "<STATIC_URL_VALUE>"
+    },
+    "status_code": <STATUS_CODE>,
+    "preserve_query_string": <BOOLEAN_VALUE>
+  }
+}
 ```
 
 The only required parameter is `<STATIC_URL_VALUE>`.
@@ -104,8 +120,16 @@ API information
 
 The full syntax of the `"action_parameters"` field for a redirect rule performing a dynamic URL redirect is the following:
 
-```
-"action_parameters": {  "from_value": {    "target_url": {      "expression": "<DYNAMIC_URL_EXPRESSION>"    },    "status_code": <STATUS_CODE>,    "preserve_query_string": <BOOLEAN_VALUE>  }}
+```json
+"action_parameters": {
+  "from_value": {
+    "target_url": {
+      "expression": "<DYNAMIC_URL_EXPRESSION>"
+    },
+    "status_code": <STATUS_CODE>,
+    "preserve_query_string": <BOOLEAN_VALUE>
+  }
+}
 ```
 
 The only required parameter is `<DYNAMIC_URL_EXPRESSION>`.

@@ -27,11 +27,15 @@ Cloudflare Workers provides a first-class Python experience, including support f
 
 A Python Worker can be as simple as four lines of code:
 
-Python
+**Python**
 
-```
+```python
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello World!")
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response("Hello World!")
 ```
 
 Similar to other Workers, the main entry point for a Python worker is the [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming requests sent to the Worker.
@@ -52,25 +56,19 @@ To set it up, first, ensure [uv ↗](https://docs.astral.sh/uv/#installation) an
 
 Then set up your development environment:
 
-Terminal window
-
-```
+```bash
 uvx --from workers-py pywrangler init
 ```
 
 This will create a `pyproject.toml` file with `workers-py` as a development dependency. `pywrangler init` will create a wrangler config file. You can then run `pywrangler` with:
 
-Terminal window
-
-```
+```bash
 uv run pywrangler dev
 ```
 
 To deploy a Python Worker to Cloudflare, run `pywrangler deploy`:
 
-Terminal window
-
-```
+```bash
 uv run pywrangler deploy
 ```
 
@@ -78,18 +76,15 @@ uv run pywrangler deploy
 
 When you initialize a new Python Worker project and select from one of many templates:
 
-Terminal window
-
-```
+```bash
 uv run pywrangler init
 ```
 
 Or you can clone the examples repository to explore more options:
 
-Terminal window
-
-```
-git clone https://github.com/cloudflare/python-workers-examplescd python-workers-examples/01-hello
+```bash
+git clone https://github.com/cloudflare/python-workers-examples
+cd python-workers-examples/01-hello
 ```
 
 ## Next Up

@@ -22,19 +22,28 @@ Worker bindings provide a secure way to send data to streams from [Workers](http
 
 Add a pipeline binding to your Wrangler file that points to your stream:
 
-* [  wrangler.jsonc ](#tab-panel-9615)
-* [  wrangler.toml ](#tab-panel-9616)
+* [  wrangler.jsonc ](#tab-panel-9910)
+* [  wrangler.toml ](#tab-panel-9911)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "pipelines": [
+    {
+      "binding": "STREAM",
+      "stream": "<STREAM_ID>"
+    }
+  ]
+}
 ```
-{  "pipelines": [    {      "binding": "STREAM",      "stream": "<STREAM_ID>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[pipelines]]binding = "STREAM"stream = "<STREAM_ID>"
+```toml
+[[pipelines]]
+binding = "STREAM"
+stream = "<STREAM_ID>"
 ```
 
 Note
@@ -49,23 +58,39 @@ The pipeline binding exposes a method for sending data to your stream:
 
 Sends an array of JSON-serializable records to the stream. Returns a Promise that resolves when records are confirmed as ingested.
 
-* [  JavaScript ](#tab-panel-9617)
-* [  TypeScript ](#tab-panel-9618)
+* [  JavaScript ](#tab-panel-9912)
+* [  TypeScript ](#tab-panel-9913)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env, ctx) {    const events = await request.json();
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const events = await request.json();
+
+
     await env.STREAM.send(events);
-    return new Response("Events sent");  },};
+
+
+    return new Response("Events sent");
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    const events = await request.json<Record<string, unknown>[]>();
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const events = await request.json<Record<string, unknown>[]>();
+
+
     await env.STREAM.send(events);
-    return new Response("Events sent");  },} satisfies ExportedHandler<Env>;
+
+
+    return new Response("Events sent");
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ### Typed pipeline bindings
@@ -78,10 +103,20 @@ After running `wrangler types`, the generated `worker-configuration.d.ts` file c
 
 Below is an example of what generated types look like in `worker-configuration.d.ts` for a stream named `ecommerce_stream`:
 
-TypeScript
+**TypeScript**
 
-```
-declare namespace Cloudflare {  type EcommerceStreamRecord = {    user_id: string;    event_type: string;    product_id?: string;    amount?: number;  };  interface Env {    STREAM: import("cloudflare:pipelines").Pipeline<Cloudflare.EcommerceStreamRecord>;  }}
+```typescript
+declare namespace Cloudflare {
+  type EcommerceStreamRecord = {
+    user_id: string;
+    event_type: string;
+    product_id?: string;
+    amount?: number;
+  };
+  interface Env {
+    STREAM: import("cloudflare:pipelines").Pipeline<Cloudflare.EcommerceStreamRecord>;
+  }
+}
 ```
 
 #### Fallback behavior
@@ -100,15 +135,13 @@ Each stream provides an optional HTTP endpoint for ingesting data from external 
 
 HTTP endpoints follow this format:
 
-```
+```txt
 https://{stream-id}.ingest.cloudflare.com
 ```
 
 Find your stream's endpoint URL in the Cloudflare dashboard under **Pipelines** \> **Streams** or using the Wrangler CLI with either the stream ID or stream name:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines streams get <STREAM_NAME_OR_ID>
 ```
 
@@ -116,20 +149,28 @@ npx wrangler pipelines streams get <STREAM_NAME_OR_ID>
 
 Send events as JSON arrays via POST requests:
 
-Terminal window
-
-```
-curl -X POST https://{stream-id}.ingest.cloudflare.com \  -H "Content-Type: application/json" \  -d '[    {      "user_id": "12345",      "event_type": "purchase",      "product_id": "widget-001",      "amount": 29.99    }  ]'
+```bash
+curl -X POST https://{stream-id}.ingest.cloudflare.com \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "user_id": "12345",
+      "event_type": "purchase",
+      "product_id": "widget-001",
+      "amount": 29.99
+    }
+  ]'
 ```
 
 ### Authentication
 
 When authentication is enabled for your stream, include the API token in the `Authorization` header:
 
-Terminal window
-
-```
-curl -X POST https://{stream-id}.ingest.cloudflare.com \  -H "Content-Type: application/json" \  -H "Authorization: Bearer YOUR_API_TOKEN" \  -d '[{"event": "test"}]'
+```bash
+curl -X POST https://{stream-id}.ingest.cloudflare.com \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -d '[{"event": "test"}]'
 ```
 
 The API token must have **Workers Pipeline Send** permission. To learn more, refer to the [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) documentation.

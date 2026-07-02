@@ -26,14 +26,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-file-picker-button></rtk-file-picker-button>
+```html
+<!-- component.html -->
+<rtk-file-picker-button></rtk-file-picker-button>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-file-picker-button filter="example" [icon]="defaultIconPack" label="example"></rtk-file-picker-button>
+```html
+<!-- component.html -->
+<rtk-file-picker-button
+ filter="example"
+ [icon]="defaultIconPack"
+ label="example">
+</rtk-file-picker-button>
 ```
 
 ```json

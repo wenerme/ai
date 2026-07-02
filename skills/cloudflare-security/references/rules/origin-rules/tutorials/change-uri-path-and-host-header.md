@@ -31,13 +31,13 @@ By following these steps, you can effectively manage both URI paths and `Host` h
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **If incoming requests match**, select **Custom filter expression**, select **Edit expression**, and enter the following expression:
 Text in **Expression Editor**:
-```
+```txt
 raw.http.request.uri.path matches "^/uploads/.*"
 ```
 5. Under **Set Rewrite parameters**, select **Path** \> **Rewrite to**, and select _Dynamic_.
 6. Define the action for your rewrite URL rule:
 Text after **Path** \> **Rewrite to** \> _Dynamic_:
-```
+```txt
 regex_replace(raw.http.request.uri.path, "^/uploads/", "/")
 ```
 The [regex\_replace()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#regex%5Freplace) function replaces the `/uploads/` part of the path with `/`, changing `/uploads/example.jpg` to `/example.jpg`.
@@ -55,19 +55,19 @@ If you are routing traffic to an object storage bucket, use [Cloud Connector](ht
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **When incoming requests match**, define the rule expression:
 Text in **Expression Editor**:
-```
+```txt
 raw.http.request.uri.path matches "^/uploads/.*"
 ```
 5. Under **Set origin parameters**, select **Host Header** \> **Rewrite to**.
 6. Configure the rule to modify the `Host` header to desired hostname:
 Text after **Host Header** \> **Rewrite to**:
-```
+```txt
 example.com
 ```
 This will set the [Host header](https://developers.cloudflare.com/rules/origin-rules/features/#host-header) to `example.com` for matching requests. Make sure to replace `example.com` with your actual hostname.
 7. (Optional) To route requests to a different origin (DNS target), use [DNS override](https://developers.cloudflare.com/rules/origin-rules/features/#dns-record):
 Text after **DNS Record** \> **Override to**:
-```
+```txt
 example.com
 ```
 This will route requests to the DNS target of `example.com` instead of your default [DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).

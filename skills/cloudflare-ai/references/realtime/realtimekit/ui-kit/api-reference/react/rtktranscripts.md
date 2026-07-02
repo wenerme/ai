@@ -27,16 +27,28 @@ A component which handles transcripts. You can configure which transcripts you w
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTranscripts } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkTranscripts />;}
+
+
+function MyComponent() {
+  return <RtkTranscripts />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTranscripts } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkTranscripts      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTranscripts
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

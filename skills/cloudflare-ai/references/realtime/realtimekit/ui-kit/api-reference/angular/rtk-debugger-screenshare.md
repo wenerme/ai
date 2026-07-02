@@ -26,14 +26,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-debugger-screenshare></rtk-debugger-screenshare>
+```html
+<!-- component.html -->
+<rtk-debugger-screenshare></rtk-debugger-screenshare>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-debugger-screenshare [meeting]="meeting" size="md"></rtk-debugger-screenshare>
+```html
+<!-- component.html -->
+<rtk-debugger-screenshare
+ [meeting]="meeting"
+ size="md">
+</rtk-debugger-screenshare>
 ```
 
 ```json

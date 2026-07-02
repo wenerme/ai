@@ -33,18 +33,36 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-Edit DNSSEC Status
+**Edit DNSSEC Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "status": "active",    "dnssec_multi_signer": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "status": "active",
+    "dnssec_multi_signer": true
+  }'
 ```
 
 1. Add the ZSK(s) of your external provider(s) to Cloudflare by creating a DNSKEY record on your zone.
 
-Terminal window
-
-```
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records' \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "type": "DNSKEY",  "name": "<ZONE_NAME>",  "data": {    "flags": 256,    "protocol": 3,    "algorithm": 13,    "public_key": "<PUBLIC_KEY>"  },  "ttl": 3600}'
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records' \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "Content-Type: application/json" \
+--data '{
+  "type": "DNSKEY",
+  "name": "<ZONE_NAME>",
+  "data": {
+    "flags": 256,
+    "protocol": 3,
+    "algorithm": 13,
+    "public_key": "<PUBLIC_KEY>"
+  },
+  "ttl": 3600
+}'
 ```
 
 1. Once the DNSKEY record is transferred out from Cloudflare to your secondary provider, get Cloudflare's ZSK and manually add it to the DNSKEY record.
@@ -52,17 +70,15 @@ Currently, the ZSK is not automatically transferred out. You can use either the 
 
 API example:
 
-Terminal window
-
-```
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/dnssec/zsk' \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
+```bash
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/dnssec/zsk' \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>"
 ```
 
 Command line query example:
 
-Terminal window
-
-```
+```sh
 $ dig <ZONE_NAME> dnskey @<CLOUDFLARE_NAMESERVER> +noall +answer | grep 256
 ```
 

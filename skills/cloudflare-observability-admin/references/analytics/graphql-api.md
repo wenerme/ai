@@ -20,7 +20,7 @@ GraphQL models a business domain as a graph using a schema. In the schema, there
 
 GraphQL differs from a traditional API: it has one single endpoint:
 
-```
+```txt
 https://api.cloudflare.com/client/v4/graphql
 ```
 

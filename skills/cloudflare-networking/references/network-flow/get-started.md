@@ -88,9 +88,13 @@ AWS VPC flow logs can only be configured through the Cloudflare API for Network 
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic Network Monitoring Admin`
-Generate authentication token for VPC flow logs export.
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/vpc-flows/token" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+
+**Generate authentication token for VPC flow logs export.**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/vpc-flows/token" \
+  --request POST \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 2. In your AWS Firehose stream configuration, set the `HTTP Headers - X-Amz-Firehose-Access-Key` to the authorization token generated in the previous step.
 3. Send your AWS Firehose VPC flow log stream towards `https://aws-flow-logs.cloudflare.com/`.

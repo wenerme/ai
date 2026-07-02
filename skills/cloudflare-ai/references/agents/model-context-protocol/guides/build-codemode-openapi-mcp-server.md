@@ -45,56 +45,185 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 ```
 2. Add a Worker Loader binding and the `nodejs_compat` compatibility flag:
 
-  * [  wrangler.jsonc ](#tab-panel-5865)
-  * [  wrangler.toml ](#tab-panel-5866)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-6041)
+  * [  wrangler.toml ](#tab-panel-6042)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "openapi-codemode-mcp",
+  "main": "src/server.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "openapi-codemode-mcp",  "main": "src/server.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
-```
-TOML
-```
-name = "openapi-codemode-mcp"main = "src/server.ts"# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = ["nodejs_compat"]
-[[worker_loaders]]binding = "LOADER"
+
+**TOML**
+```toml
+name = "openapi-codemode-mcp"
+main = "src/server.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+[[worker_loaders]]
+binding = "LOADER"
 ```
 3. Load the OpenAPI document on the host. Create the MCP server with an authenticated `request` function:
 
-  * [  JavaScript ](#tab-panel-5867)
-  * [  TypeScript ](#tab-panel-5868)
-src/server.js
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { openApiMcpServer } from "@cloudflare/codemode/mcp";import { createMcpHandler } from "agents/mcp";
-const SPEC_URL = "https://api.example.com/openapi.json";const API_ORIGIN = "https://api.example.com";
+  * [  JavaScript ](#tab-panel-6043)
+  * [  TypeScript ](#tab-panel-6044)
+
+**src/server.js**
+```js
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { openApiMcpServer } from "@cloudflare/codemode/mcp";
+import { createMcpHandler } from "agents/mcp";
+const SPEC_URL = "https://api.example.com/openapi.json";
+const API_ORIGIN = "https://api.example.com";
 let specCache;
-async function loadSpec() {  if (specCache) return specCache;
-  const response = await fetch(SPEC_URL);  if (!response.ok) {    throw new Error(`OpenAPI request failed: ${response.status}`);  }
-  specCache = await response.json();  return specCache;}
-export default {  async fetch(request, env, ctx) {    const authorization = request.headers.get("Authorization");    if (!authorization?.startsWith("Bearer ")) {      return new Response("Bearer token required", { status: 401 });    }
-    const server = openApiMcpServer({      spec: await loadSpec(),      executor: new DynamicWorkerExecutor({ loader: env.LOADER }),      name: "example-api",      version: "1.0.0",      request: async (options) => {        if (!options.path.startsWith("/")) {          throw new Error("API path must start with a slash");        }
-        const url = new URL(`${API_ORIGIN}${options.path}`);        for (const [key, value] of Object.entries(options.query ?? {})) {          if (value !== undefined) {            url.searchParams.set(key, String(value));          }        }
-        const headers = { Authorization: authorization };        if (options.contentType) {          headers["Content-Type"] = options.contentType;        } else if (options.body !== undefined) {          headers["Content-Type"] = "application/json";        }
-        const response = await fetch(url, {          method: options.method,          headers,          body:            options.body === undefined              ? undefined              : options.rawBody                ? options.body                : JSON.stringify(options.body),        });
+async function loadSpec() {
+  if (specCache) return specCache;
+  const response = await fetch(SPEC_URL);
+  if (!response.ok) {
+    throw new Error(`OpenAPI request failed: ${response.status}`);
+  }
+  specCache = await response.json();
+  return specCache;
+}
+export default {
+  async fetch(request, env, ctx) {
+    const authorization = request.headers.get("Authorization");
+    if (!authorization?.startsWith("Bearer ")) {
+      return new Response("Bearer token required", { status: 401 });
+    }
+    const server = openApiMcpServer({
+      spec: await loadSpec(),
+      executor: new DynamicWorkerExecutor({ loader: env.LOADER }),
+      name: "example-api",
+      version: "1.0.0",
+      request: async (options) => {
+        if (!options.path.startsWith("/")) {
+          throw new Error("API path must start with a slash");
+        }
+        const url = new URL(`${API_ORIGIN}${options.path}`);
+        for (const [key, value] of Object.entries(options.query ?? {})) {
+          if (value !== undefined) {
+            url.searchParams.set(key, String(value));
+          }
+        }
+        const headers = { Authorization: authorization };
+        if (options.contentType) {
+          headers["Content-Type"] = options.contentType;
+        } else if (options.body !== undefined) {
+          headers["Content-Type"] = "application/json";
+        }
+        const response = await fetch(url, {
+          method: options.method,
+          headers,
+          body:
+            options.body === undefined
+              ? undefined
+              : options.rawBody
+                ? options.body
+                : JSON.stringify(options.body),
+        });
         if (response.status === 204) return null;
-        const responseType = response.headers.get("Content-Type") ?? "";        const result = responseType.includes("application/json")          ? await response.json()          : await response.text();
-        if (!response.ok) {          throw new Error(`API request failed: ${response.status}`);        }        return result;      },    });
-    return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);  },};
+        const responseType = response.headers.get("Content-Type") ?? "";
+        const result = responseType.includes("application/json")
+          ? await response.json()
+          : await response.text();
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.status}`);
+        }
+        return result;
+      },
+    });
+    return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);
+  },
+};
 ```
-src/server.ts
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { openApiMcpServer } from "@cloudflare/codemode/mcp";import { createMcpHandler } from "agents/mcp";
-const SPEC_URL = "https://api.example.com/openapi.json";const API_ORIGIN = "https://api.example.com";
+
+**src/server.ts**
+```ts
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { openApiMcpServer } from "@cloudflare/codemode/mcp";
+import { createMcpHandler } from "agents/mcp";
+const SPEC_URL = "https://api.example.com/openapi.json";
+const API_ORIGIN = "https://api.example.com";
 let specCache: Record<string, unknown> | undefined;
-async function loadSpec(): Promise<Record<string, unknown>> {  if (specCache) return specCache;
-  const response = await fetch(SPEC_URL);  if (!response.ok) {    throw new Error(`OpenAPI request failed: ${response.status}`);  }
-  specCache = (await response.json()) as Record<string, unknown>;  return specCache;}
-export default {  async fetch(request, env, ctx): Promise<Response> {    const authorization = request.headers.get("Authorization");    if (!authorization?.startsWith("Bearer ")) {      return new Response("Bearer token required", { status: 401 });    }
-    const server = openApiMcpServer({      spec: await loadSpec(),      executor: new DynamicWorkerExecutor({ loader: env.LOADER }),      name: "example-api",      version: "1.0.0",      request: async (options) => {        if (!options.path.startsWith("/")) {          throw new Error("API path must start with a slash");        }
-        const url = new URL(`${API_ORIGIN}${options.path}`);        for (const [key, value] of Object.entries(options.query ?? {})) {          if (value !== undefined) {            url.searchParams.set(key, String(value));          }        }
-        const headers: Record<string, string> = { Authorization: authorization };        if (options.contentType) {          headers["Content-Type"] = options.contentType;        } else if (options.body !== undefined) {          headers["Content-Type"] = "application/json";        }
-        const response = await fetch(url, {          method: options.method,          headers,          body:            options.body === undefined              ? undefined              : options.rawBody                ? (options.body as string)                : JSON.stringify(options.body),        });
+async function loadSpec(): Promise<Record<string, unknown>> {
+  if (specCache) return specCache;
+  const response = await fetch(SPEC_URL);
+  if (!response.ok) {
+    throw new Error(`OpenAPI request failed: ${response.status}`);
+  }
+  specCache = (await response.json()) as Record<string, unknown>;
+  return specCache;
+}
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const authorization = request.headers.get("Authorization");
+    if (!authorization?.startsWith("Bearer ")) {
+      return new Response("Bearer token required", { status: 401 });
+    }
+    const server = openApiMcpServer({
+      spec: await loadSpec(),
+      executor: new DynamicWorkerExecutor({ loader: env.LOADER }),
+      name: "example-api",
+      version: "1.0.0",
+      request: async (options) => {
+        if (!options.path.startsWith("/")) {
+          throw new Error("API path must start with a slash");
+        }
+        const url = new URL(`${API_ORIGIN}${options.path}`);
+        for (const [key, value] of Object.entries(options.query ?? {})) {
+          if (value !== undefined) {
+            url.searchParams.set(key, String(value));
+          }
+        }
+        const headers: Record<string, string> = { Authorization: authorization };
+        if (options.contentType) {
+          headers["Content-Type"] = options.contentType;
+        } else if (options.body !== undefined) {
+          headers["Content-Type"] = "application/json";
+        }
+        const response = await fetch(url, {
+          method: options.method,
+          headers,
+          body:
+            options.body === undefined
+              ? undefined
+              : options.rawBody
+                ? (options.body as string)
+                : JSON.stringify(options.body),
+        });
         if (response.status === 204) return null;
-        const responseType = response.headers.get("Content-Type") ?? "";        const result = responseType.includes("application/json")          ? await response.json()          : await response.text();
-        if (!response.ok) {          throw new Error(`API request failed: ${response.status}`);        }        return result;      },    });
-    return createMcpHandler(server, { route: "/mcp" })(      request,      env,      ctx,    );  },} satisfies ExportedHandler<Env>;
+        const responseType = response.headers.get("Content-Type") ?? "";
+        const result = responseType.includes("application/json")
+          ? await response.json()
+          : await response.text();
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.status}`);
+        }
+        return result;
+      },
+    });
+    return createMcpHandler(server, { route: "/mcp" })(
+      request,
+      env,
+      ctx,
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 4. Deploy the Worker:
  npm  yarn  pnpm
@@ -114,10 +243,18 @@ pnpm wrangler deploy
 
 Call `search` before `execute`. Search code can inspect the document without making API requests:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const spec = await codemode.spec();  return Object.entries(spec.paths)    .filter(([path]) => path.includes("/orders"))    .map(([path, operations]) => ({      path,      methods: Object.keys(operations),    }));};
+```js
+async () => {
+  const spec = await codemode.spec();
+  return Object.entries(spec.paths)
+    .filter(([path]) => path.includes("/orders"))
+    .map(([path, operations]) => ({
+      path,
+      methods: Object.keys(operations),
+    }));
+};
 ```
 
 Local OpenAPI `$ref` values resolve inside the sandbox when code calls `codemode.spec()`. External references remain unresolved.
@@ -126,11 +263,19 @@ Local OpenAPI `$ref` values resolve inside the sandbox when code calls `codemode
 
 The `execute` tool includes the same `codemode.spec()` method and the host-provided `codemode.request()` method:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const response = await codemode.request({    method: "GET",    path: "/orders",    query: { status: "processing", limit: 20 },  });
-  return response.items.map(({ id, status }) => ({ id, status }));};
+```js
+async () => {
+  const response = await codemode.request({
+    method: "GET",
+    path: "/orders",
+    query: { status: "processing", limit: 20 },
+  });
+
+
+  return response.items.map(({ id, status }) => ({ id, status }));
+};
 ```
 
 The host callback receives `method`, `path`, optional `query`, optional `body`, optional `contentType`, and optional `rawBody` fields. For exact types, refer to the [openApiMcpServer() API](https://developers.cloudflare.com/agents/tools/codemode/api-reference/#openapimcpserver).

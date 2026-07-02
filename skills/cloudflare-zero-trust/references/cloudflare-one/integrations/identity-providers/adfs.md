@@ -53,7 +53,7 @@ To create a Relying Party Trust:
 12. Select **Next**. The **Configure URL** step displays.
 13. Select the **Enable support for the SAML 2.0 WebSSO protocol** option.
 14. In the **Relying party SAML 2.0 SSO service URL** field, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -123,9 +123,7 @@ Note the file path for later.
 
 To ensure that AD FS signs the full response when communicating with Cloudflare, open your local **PowerShell** and enter the following command:
 
-Terminal window
-
-```
+```bash
 Set-ADFSRelyingPartyTrust -TargetName "Name of RPT Display Name" -SamlResponseSignature "MessageAndAssertion"
 ```
 
@@ -138,12 +136,12 @@ To enable Cloudflare One to accept the claims and assertions sent from AD FS, fo
 3. Select **SAML**.
 4. Enter an IdP **Name**.
 5. Under **Single Sign On URL** enter:
-```
+```txt
 https://hostnameOfADFS/adfs/ls/
 ```
 This is the default location. You can find your federation service identifier in AD FS.
 6. In the **IdP Entity ID or Issuer URL** field, enter your Cloudflare Zero Trust team domain and include this callback at the end of the path: `/cdn-cgi/access/callback`. For example:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 7. Under **Signing certificate**, paste the exported certificate.
@@ -159,7 +157,7 @@ Some IdPs allow administrators to upload metadata files from their SP (service p
 To get your Cloudflare metadata file:
 
 1. Download your unique SAML metadata file at the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 ```
 In Cloudflare Access, you can find a link to this URL in the **Edit a SAML identity provider** dialog. The link returns a web page with your SAML SP data in XML format.
@@ -168,8 +166,19 @@ In Cloudflare Access, you can find a link to this URL in the **Edit a SAML ident
 
 ## Example API Configuration
 
-```
-{  "config": {    "issuer_url": "https://<your-team-name>.cloudflareaccess.com/",    "sso_target_url": "https://adfs.example.com/adfs/ls/",    "attributes": ["email"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"  },  "type": "saml",  "name": "adfs saml example"}
+```json
+{
+  "config": {
+    "issuer_url": "https://<your-team-name>.cloudflareaccess.com/",
+    "sso_target_url": "https://adfs.example.com/adfs/ls/",
+    "attributes": ["email"],
+    "email_attribute_name": "",
+    "sign_request": false,
+    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+  },
+  "type": "saml",
+  "name": "adfs saml example"
+}
 ```
 
 ```json

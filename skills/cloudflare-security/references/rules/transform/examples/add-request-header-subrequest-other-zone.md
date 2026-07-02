@@ -18,7 +18,7 @@ The following request header transform rule adds an HTTP header to Workers subre
 
 Text in **Expression Editor** (replace `myappexample.com` with your domain):
 
-```
+```txt
 (cf.worker.upstream_zone != "" and cf.worker.upstream_zone != "myappexample.com")
 ```
 

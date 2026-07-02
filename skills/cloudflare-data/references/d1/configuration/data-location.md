@@ -45,16 +45,17 @@ Jurisdictions can only be set on database creation and cannot be added or update
 
 ### Use wrangler
 
-Terminal window
-
-```
+```sh
 npx wrangler@latest d1 create db-with-jurisdiction --jurisdiction=eu
 ```
 
 ### Use REST API
 
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/d1/database" \     -H "Authorization: Bearer $TOKENn" \     -H "Content-Type: application/json" \     --data '{"name": "db-with-jurisdiction", "jurisdiction": "eu" }'
+```curl
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/d1/database" \
+     -H "Authorization: Bearer $TOKENn" \
+     -H "Content-Type: application/json" \
+     --data '{"name": "db-with-jurisdiction", "jurisdiction": "eu" }'
 ```
 
 ## Provide a location hint
@@ -84,9 +85,7 @@ To install wrangler, the command-line interface for D1 and Workers, refer to [In
 
 To provide a location hint when creating a new database, pass the `--location` flag with a valid location hint:
 
-Terminal window
-
-```
+```sh
 wrangler d1 create new-database --location=weur
 ```
 

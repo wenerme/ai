@@ -200,18 +200,24 @@ Routes are specified in the [Wrangler configuration file](https://developers.clo
 * Cloudflare dashboard-defined routes will not be added alongside Wrangler-defined routes. Wrangler-defined routes are the `route` or `routes` key in your `wrangler.toml`. If both are defined, only routes defined in `wrangler.toml` will be valid. To manage routes via the Cloudflare dashboard only, remove any `route` and `routes` keys from and add `workers_dev = false` to your Wrangler file.
 * Wrangler will no longer use `index.js` in the directory where `wrangler dev` is called as the entry point to a Worker. Use the `main` configuration field, or explicitly pass it as a command line argument, for example: `wrangler dev index.js`.
 * Wrangler will no longer assume that bare specifiers are file names if they are not represented as a path. For example, in a folder like so:
-```
-project├── index.js└── some-dependency.js
+```plaintext
+project
+├── index.js
+└── some-dependency.js
 ```
 where the content of `index.js` is:
-JavaScript
-```
+
+**JavaScript**
+```js
 import SomeDependency from "some-dependency.js";
-addEventListener("fetch", (event) => {  // ...});
+addEventListener("fetch", (event) => {
+  // ...
+});
 ```
 Wrangler v1 would resolve `import SomeDependency from "some-dependency.js";` to the file `some-dependency.js`. This will also work in Wrangler v2, but will also log a deprecation warning. In the future, this will break with an error. Instead, you should rewrite the import to specify that it is a relative path, like so:
-```
-import SomeDependency from "some-dependency.js";import SomeDependency from "./some-dependency.js";
+```diff
+import SomeDependency from "some-dependency.js";
+import SomeDependency from "./some-dependency.js";
 ```
 
 ### Wrangler v1 and v2 comparison tables

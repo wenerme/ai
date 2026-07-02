@@ -16,14 +16,23 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Ensure the token has been verified by running the following `curl` command and confirming that the response returns `"status": "active"`.
 
-Terminal window
+```bash
+curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+--header "Authorization: Bearer <API_TOKEN>"
+```
 
-```
-curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \--header "Authorization: Bearer <API_TOKEN>"
-```
-
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "f267e341f3dd4697bd3b9f71dd96247f",    "status": "active",    "not_before": "2018-07-01T05:20:00Z",    "expires_on": "2020-01-01T00:00:00Z"  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "f267e341f3dd4697bd3b9f71dd96247f",
+    "status": "active",
+    "not_before": "2018-07-01T05:20:00Z",
+    "expires_on": "2020-01-01T00:00:00Z"
+  }
+}
 ```
 
 ## The token has incorrect permissions

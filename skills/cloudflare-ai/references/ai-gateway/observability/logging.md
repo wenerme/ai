@@ -41,10 +41,22 @@ The `cf-aig-collect-log` header allows you to bypass the default log setting for
 
 In the example below, we use `cf-aig-collect-log` to bypass the default setting to avoid saving the log.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-collect-log: false" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "What is the email address and phone number of user123?"      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --header "cf-aig-collect-log: false" \
+  --data '{
+    "model": "openai/gpt-4.1-mini",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the email address and phone number of user123?"
+      }
+    ]
+  }'
 ```
 
 ### Collect log payload (`cf-aig-collect-log-payload`)
@@ -60,10 +72,22 @@ This is useful when you want to maintain visibility into usage metrics and reque
 
 In the example below, we use `cf-aig-collect-log-payload` to skip storing the request and response bodies while keeping the metadata log.
 
-Terminal window
-
-```
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-collect-log-payload: false" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "What is the email address and phone number of user123?"      }    ]  }'
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --header "cf-aig-collect-log-payload: false" \
+  --data '{
+    "model": "openai/gpt-4.1-mini",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the email address and phone number of user123?"
+      }
+    ]
+  }'
 ```
 
 Note

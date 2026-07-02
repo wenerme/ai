@@ -20,9 +20,9 @@ Connect browser-based terminal UIs to sandbox shells via WebSocket. The server-s
 
 Proxy a WebSocket upgrade request to create a terminal connection.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const response = await sandbox.terminal(request: Request, options?: PtyOptions): Promise<Response>
 ```
 
@@ -35,38 +35,50 @@ const response = await sandbox.terminal(request: Request, options?: PtyOptions):
 
 **Returns**: `Promise<Response>` — WebSocket upgrade response
 
-* [  JavaScript ](#tab-panel-10313)
-* [  TypeScript ](#tab-panel-10314)
+* [  JavaScript ](#tab-panel-10608)
+* [  TypeScript ](#tab-panel-10609)
 
-JavaScript
+**JavaScript**
 
+```js
+// In your Worker's fetch handler
+return await sandbox.terminal(request, { cols: 120, rows: 30 });
 ```
-// In your Worker's fetch handlerreturn await sandbox.terminal(request, { cols: 120, rows: 30 });
-```
 
-TypeScript
+**TypeScript**
 
-```
-// In your Worker's fetch handlerreturn await sandbox.terminal(request, { cols: 120, rows: 30 });
+```ts
+// In your Worker's fetch handler
+return await sandbox.terminal(request, { cols: 120, rows: 30 });
 ```
 
 Works with both [default and explicitly created sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/):
 
-* [  JavaScript ](#tab-panel-10315)
-* [  TypeScript ](#tab-panel-10316)
+* [  JavaScript ](#tab-panel-10610)
+* [  TypeScript ](#tab-panel-10611)
 
-JavaScript
+**JavaScript**
 
+```js
+// Default session
+return await sandbox.terminal(request);
+
+
+// Specific session
+const session = await sandbox.getSession("dev");
+return await session.terminal(request);
 ```
-// Default sessionreturn await sandbox.terminal(request);
-// Specific sessionconst session = await sandbox.getSession("dev");return await session.terminal(request);
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Default sessionreturn await sandbox.terminal(request);
-// Specific sessionconst session = await sandbox.getSession('dev');return await session.terminal(request);
+```ts
+// Default session
+return await sandbox.terminal(request);
+
+
+// Specific session
+const session = await sandbox.getSession('dev');
+return await session.terminal(request);
 ```
 
 ## Client-side addon
@@ -75,10 +87,12 @@ The `@cloudflare/sandbox/xterm` module provides `SandboxAddon` for xterm.js, whi
 
 ### `SandboxAddon`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { SandboxAddon } from '@cloudflare/sandbox/xterm';
+
+
 const addon = new SandboxAddon(options: SandboxAddonOptions);
 ```
 
@@ -91,34 +105,70 @@ const addon = new SandboxAddon(options: SandboxAddonOptions);
 * `reconnect` \- Enable automatic reconnection with exponential backoff (default: `true`)
 * `onStateChange(state, error?)` \- Callback for connection state changes
 
-* [  JavaScript ](#tab-panel-10317)
-* [  TypeScript ](#tab-panel-10318)
+* [  JavaScript ](#tab-panel-10612)
+* [  TypeScript ](#tab-panel-10613)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Terminal } from "@xterm/xterm";
+import { SandboxAddon } from "@cloudflare/sandbox/xterm";
+
+
+const terminal = new Terminal({ cursorBlink: true });
+terminal.open(document.getElementById("terminal"));
+
+
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+    const params = new URLSearchParams({ id: sandboxId });
+    if (sessionId) params.set("session", sessionId);
+    return `${origin}/ws/terminal?${params}`;
+  },
+  onStateChange: (state, error) => {
+    console.log(`Terminal ${state}`, error);
+  },
+});
+
+
+terminal.loadAddon(addon);
+addon.connect({ sandboxId: "my-sandbox" });
 ```
-import { Terminal } from "@xterm/xterm";import { SandboxAddon } from "@cloudflare/sandbox/xterm";
-const terminal = new Terminal({ cursorBlink: true });terminal.open(document.getElementById("terminal"));
-const addon = new SandboxAddon({  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {    const params = new URLSearchParams({ id: sandboxId });    if (sessionId) params.set("session", sessionId);    return `${origin}/ws/terminal?${params}`;  },  onStateChange: (state, error) => {    console.log(`Terminal ${state}`, error);  },});
-terminal.loadAddon(addon);addon.connect({ sandboxId: "my-sandbox" });
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Terminal } from '@xterm/xterm';import { SandboxAddon } from '@cloudflare/sandbox/xterm';
-const terminal = new Terminal({ cursorBlink: true });terminal.open(document.getElementById('terminal'));
-const addon = new SandboxAddon({  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {    const params = new URLSearchParams({ id: sandboxId });    if (sessionId) params.set('session', sessionId);    return `${origin}/ws/terminal?${params}`;  },  onStateChange: (state, error) => {    console.log(`Terminal ${state}`, error);  }});
-terminal.loadAddon(addon);addon.connect({ sandboxId: 'my-sandbox' });
+```ts
+import { Terminal } from '@xterm/xterm';
+import { SandboxAddon } from '@cloudflare/sandbox/xterm';
+
+
+const terminal = new Terminal({ cursorBlink: true });
+terminal.open(document.getElementById('terminal'));
+
+
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+    const params = new URLSearchParams({ id: sandboxId });
+    if (sessionId) params.set('session', sessionId);
+    return `${origin}/ws/terminal?${params}`;
+  },
+  onStateChange: (state, error) => {
+    console.log(`Terminal ${state}`, error);
+  }
+});
+
+
+terminal.loadAddon(addon);
+addon.connect({ sandboxId: 'my-sandbox' });
 ```
 
 ### `connect()`
 
 Establish a connection to a sandbox terminal.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 addon.connect(target: ConnectionTarget): void
 ```
 
@@ -134,9 +184,9 @@ Calling `connect()` with a new target disconnects from the current target and co
 
 Close the connection and stop any reconnection attempts.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 addon.disconnect(): void
 ```
 
@@ -166,7 +216,7 @@ Send JSON text frames to control the terminal.
 
 **Resize** — update terminal dimensions (both `cols` and `rows` must be positive):
 
-```
+```json
 { "type": "resize", "cols": 120, "rows": 30 }
 ```
 
@@ -176,31 +226,51 @@ The server sends JSON text frames for lifecycle events.
 
 **Ready** — the PTY is initialized. Buffered output (if any) has already been sent:
 
-```
+```json
 { "type": "ready" }
 ```
 
 **Exit** — the shell process has terminated:
 
-```
+```json
 { "type": "exit", "code": 0, "signal": "SIGTERM" }
 ```
 
 **Error** — an error occurred (for example, invalid control message or session not found):
 
-```
+```json
 { "type": "error", "message": "Session not found" }
 ```
 
 ## Types
 
-TypeScript
+**TypeScript**
 
-```
-interface PtyOptions {  cols?: number;  rows?: number;}
+```ts
+interface PtyOptions {
+  cols?: number;
+  rows?: number;
+}
+
+
 type ConnectionState = "disconnected" | "connecting" | "connected";
-interface ConnectionTarget {  sandboxId: string;  sessionId?: string;}
-interface SandboxAddonOptions {  getWebSocketUrl: (params: {    sandboxId: string;    sessionId?: string;    origin: string;  }) => string;  reconnect?: boolean;  onStateChange?: (state: ConnectionState, error?: Error) => void;}
+
+
+interface ConnectionTarget {
+  sandboxId: string;
+  sessionId?: string;
+}
+
+
+interface SandboxAddonOptions {
+  getWebSocketUrl: (params: {
+    sandboxId: string;
+    sessionId?: string;
+    origin: string;
+  }) => string;
+  reconnect?: boolean;
+  onStateChange?: (state: ConnectionState, error?: Error) => void;
+}
 ```
 
 ## Related resources

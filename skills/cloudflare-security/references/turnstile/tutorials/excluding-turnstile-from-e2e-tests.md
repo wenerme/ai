@@ -35,30 +35,55 @@ Never use test credentials in production. Always ensure:
 
 The key to implementing test-environment detection is identifying test requests server-side. Here is a simple approach:
 
-TypeScript
+**TypeScript**
 
-```
-// Detect test environments using IP addresses or headersfunction isTestEnvironment(request) {  const testIPs = ['127.0.0.1', '::1'];  const isTestIP = testIPs.includes(request.ip);  const hasTestHeader = request.headers['x-test-environment'] === 'secret-token';
-  return isTestIP || hasTestHeader;}
-// Use the appropriate credentials based on the environmentfunction getTurnstileCredentials(request) {  if (isTestEnvironment(request)) {    return {      sitekey: '1x00000000000000000000AA',      secretKey: '1x0000000000000000000000000000000AA'    };  }
-  return {    sitekey: process.env.TURNSTILE_SITE_KEY,    secretKey: process.env.TURNSTILE_SECRET_KEY  };}
+```typescript
+// Detect test environments using IP addresses or headers
+function isTestEnvironment(request) {
+  const testIPs = ['127.0.0.1', '::1'];
+  const isTestIP = testIPs.includes(request.ip);
+  const hasTestHeader = request.headers['x-test-environment'] === 'secret-token';
+
+
+  return isTestIP || hasTestHeader;
+}
+
+
+// Use the appropriate credentials based on the environment
+function getTurnstileCredentials(request) {
+  if (isTestEnvironment(request)) {
+    return {
+      sitekey: '1x00000000000000000000AA',
+      secretKey: '1x0000000000000000000000000000000AA'
+    };
+  }
+
+
+  return {
+    sitekey: process.env.TURNSTILE_SITE_KEY,
+    secretKey: process.env.TURNSTILE_SECRET_KEY
+  };
+}
 ```
 
 ## Server-side integration
 
 When rendering your page, inject the appropriate sitekey based on the environment:
 
-TypeScript
+**TypeScript**
 
-```
-app.get('/your-form', (req, res) => {  const { sitekey } = getTurnstileCredentials(req);  res.render('form', { sitekey });});
+```typescript
+app.get('/your-form', (req, res) => {
+  const { sitekey } = getTurnstileCredentials(req);
+  res.render('form', { sitekey });
+});
 ```
 
 ## Client-side integration
 
 Your template can then use the injected sitekey:
 
-```
+```html
 <div class="turnstile" data-sitekey="<%= sitekey %>"></div>
 ```
 
@@ -90,11 +115,23 @@ Your template can then use the injected sitekey:
 
 For Cypress or similar E2E testing frameworks:
 
-TypeScript
+**TypeScript**
 
-```
-// Set test header for all test requestsbeforeEach(() => {  cy.intercept('*', (req) => {    req.headers['x-test-environment'] = 'secret-token';  });});
-// Your test can now interact with the form normallyit('submits form successfully', () => {  cy.visit('/your-form');  cy.get('form').submit();  // Turnstile will automatically pass verification});
+```typescript
+// Set test header for all test requests
+beforeEach(() => {
+  cy.intercept('*', (req) => {
+    req.headers['x-test-environment'] = 'secret-token';
+  });
+});
+
+
+// Your test can now interact with the form normally
+it('submits form successfully', () => {
+  cy.visit('/your-form');
+  cy.get('form').submit();
+  // Turnstile will automatically pass verification
+});
 ```
 
 ## Conclusion

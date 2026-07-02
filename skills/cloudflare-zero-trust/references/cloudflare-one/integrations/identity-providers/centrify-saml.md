@@ -29,7 +29,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
 8. In the middle menu pane, select **Trust**.
 9. Choose the **Manual Configuration** option.
 10. In the **SP Entity ID** and **Assertion Consumer Service (ACS) URL fields**, enter the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -64,7 +64,7 @@ Some IdPs allow administrators to upload metadata files from their SP (service p
 To get your Cloudflare metadata file:
 
 1. Download your unique SAML metadata file at the following URL:
-```
+```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 ```
 2. Save the file in XML format.
@@ -72,8 +72,19 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 
 ## Example API configuration
 
-```
-{  "config": {    "issuer_url": "https://abc123.my.centrify.com/baaa2117-0ec0-4d76-84cc-abccb551a123",    "sso_target_url": "https://abc123.my.centrify.com/applogin/appKey/baaa2117-0ec0-4d76-84cc-abccb551a123/customerId/abc123",    "attributes": ["email"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"  },  "type": "saml",  "name": "centrify saml example"}
+```json
+{
+  "config": {
+    "issuer_url": "https://abc123.my.centrify.com/baaa2117-0ec0-4d76-84cc-abccb551a123",
+    "sso_target_url": "https://abc123.my.centrify.com/applogin/appKey/baaa2117-0ec0-4d76-84cc-abccb551a123/customerId/abc123",
+    "attributes": ["email"],
+    "email_attribute_name": "",
+    "sign_request": false,
+    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+  },
+  "type": "saml",
+  "name": "centrify saml example"
+}
 ```
 
 ```json

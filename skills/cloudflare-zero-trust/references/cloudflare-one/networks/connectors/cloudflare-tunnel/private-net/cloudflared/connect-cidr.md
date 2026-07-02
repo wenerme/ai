@@ -42,8 +42,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
 
-  * [ Exclude IPs and domains ](#tab-panel-7362)
-  * [ Include IPs and domains ](#tab-panel-7363)
+  * [ Exclude IPs and domains ](#tab-panel-7612)
+  * [ Include IPs and domains ](#tab-panel-7613)
 If you are using **Exclude** mode:
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.
@@ -68,8 +68,8 @@ By default, all devices enrolled in your Zero Trust organization can connect to 
 
 ### Enable the Gateway proxy
 
-* [ Dashboard ](#tab-panel-7360)
-* [ Terraform (v5) ](#tab-panel-7361)
+* [ Dashboard ](#tab-panel-7610)
+* [ Terraform (v5) ](#tab-panel-7611)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -81,8 +81,12 @@ By default, all devices enrolled in your Zero Trust organization can connect to 
 
   * `Zero Trust Write`
 2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-```
-resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  account_id            = var.cloudflare_account_id  gateway_proxy_enabled = true  gateway_udp_proxy_enabled = true}
+```tf
+resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
+  account_id            = var.cloudflare_account_id
+  gateway_proxy_enabled = true
+  gateway_udp_proxy_enabled = true
+}
 ```
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).

@@ -53,14 +53,50 @@ Instances that are in a `waiting` state — either sleeping via `step.sleep`, wa
 
 For example, consider a Workflow that does some work, waits for 30 days, and then continues with more work:
 
-src/index.ts
+**src/index.ts**
 
-```
-import {  WorkflowEntrypoint,  WorkflowStep,  WorkflowEvent,} from "cloudflare:workers";
-type Env = {  MY_WORKFLOW: Workflow;};
-export class MyWorkflow extends WorkflowEntrypoint<Env> {  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {    await step.do("initial work", async () => {      let resp = await fetch("https://api.cloudflare.com/client/v4/ips");      return await resp.json<any>();    });
+```ts
+import {
+  WorkflowEntrypoint,
+  WorkflowStep,
+  WorkflowEvent,
+} from "cloudflare:workers";
+
+
+type Env = {
+  MY_WORKFLOW: Workflow;
+};
+
+
+export class MyWorkflow extends WorkflowEntrypoint<Env> {
+  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
+    await step.do("initial work", async () => {
+      let resp = await fetch("https://api.cloudflare.com/client/v4/ips");
+      return await resp.json<any>();
+    });
+
+
     await step.sleep("wait 30 days", "30 days");
-    await step.do(      "make a call to write that could maybe, just might, fail",      {        retries: {          limit: 5,          delay: "5 seconds",          backoff: "exponential",        },        timeout: "15 minutes",      },      async () => {        if (Math.random() > 0.5) {          throw new Error("API call to $STORAGE_SYSTEM failed");        }      },    );  }}
+
+
+    await step.do(
+      "make a call to write that could maybe, just might, fail",
+      {
+        retries: {
+          limit: 5,
+          delay: "5 seconds",
+          backoff: "exponential",
+        },
+        timeout: "15 minutes",
+      },
+      async () => {
+        if (Math.random() > 0.5) {
+          throw new Error("API call to $STORAGE_SYSTEM failed");
+        }
+      },
+    );
+  }
+}
 ```
 
 While a given Workflow instance is waiting for 30 days, it will transition to the `waiting` state, allowing other `queued` instances to run if concurrency limits are reached.
@@ -88,7 +124,7 @@ Workflows are Worker scripts, and share the same [per invocation CPU limits](htt
 
 If your Workflow exceeds its CPU time limit, it will throw the following error:
 
-```
+```txt
 Error: Worker exceeded CPU time limit.
 ```
 
@@ -96,19 +132,26 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-13145)
-* [  wrangler.toml ](#tab-panel-13146)
+* [  wrangler.jsonc ](#tab-panel-13440)
+* [  wrangler.toml ](#tab-panel-13441)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // ...rest of your configuration...
+  "limits": {
+    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
+  },
+  // ...rest of your configuration...
+}
 ```
-{  // ...rest of your configuration...  "limits": {    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes  },  // ...rest of your configuration...}
-```
 
-TOML
+**TOML**
 
-```
-[limits]cpu_ms = 300_000
+```toml
+[limits]
+cpu_ms = 300_000
 ```
 
 To learn more about CPU time and limits, [review the Workers documentation](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).
@@ -119,7 +162,7 @@ A subrequest is any request that a Workflow makes to either Internet resources u
 
 If your Workflow exceeds its subrequest limit, it will throw the following error:
 
-```
+```txt
 Error: Too many subrequests.
 ```
 
@@ -127,19 +170,26 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-13147)
-* [  wrangler.toml ](#tab-panel-13148)
+* [  wrangler.jsonc ](#tab-panel-13442)
+* [  wrangler.toml ](#tab-panel-13443)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // ...rest of your configuration...
+  "limits": {
+    "subrequests": 10000000, // 10 million (maximum)
+  },
+  // ...rest of your configuration...
+}
 ```
-{  // ...rest of your configuration...  "limits": {    "subrequests": 10000000, // 10 million (maximum)  },  // ...rest of your configuration...}
-```
 
-TOML
+**TOML**
 
-```
-[limits]subrequests = 10_000_000
+```toml
+[limits]
+subrequests = 10_000_000
 ```
 
 Workers on the free plan remain limited to 50 external subrequests and 1,000 subrequests to Cloudflare services per invocation.

@@ -25,16 +25,24 @@ Screen displayed while waiting to join (waitlist, kicked, disconnected states).
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkWaitingScreen } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkWaitingScreen />;}
+
+
+function MyComponent() {
+  return <RtkWaitingScreen />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkWaitingScreen } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkWaitingScreen config={customConfig} />;}
+
+
+function MyComponent() {
+  return <RtkWaitingScreen config={customConfig} />;
+}
 ```
 
 ```json

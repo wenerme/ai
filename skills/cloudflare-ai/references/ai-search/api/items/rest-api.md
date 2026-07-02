@@ -36,7 +36,7 @@ All requests require an API token with **AI Search:Edit** and **AI Search:Run** 
 
 Include the token in the `Authorization` header for all requests:
 
-```
+```txt
 Authorization: Bearer <API_TOKEN>
 ```
 
@@ -67,20 +67,19 @@ Upload, list, get, delete, and download items within an instance. For the full s
 
 Upload a file to an instance:
 
-Terminal window
-
-```
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \  -H "Authorization: Bearer <API_TOKEN>" \  -F "file=@/path/to/your/file.pdf"
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -F "file=@/path/to/your/file.pdf"
 ```
 
 ### Example: List items
 
 List all items in an instance:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \  -H "Authorization: Bearer <API_TOKEN>"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \
+  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```json

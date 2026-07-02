@@ -48,45 +48,45 @@ To verify your download, use a terminal to check that the downloaded certificate
 
 ### SHA1
 
-SHA1 .crt example
+**SHA1 .crt example**
 
-```
+```sh
 openssl x509 -noout -fingerprint -sha1 -inform der -in <certificate.crt>
 ```
 
-```
+```sh
 SHA1 Fingerprint=BB:2D:B6:3D:6B:DE:DA:06:4E:CA:CB:40:F6:F2:61:40:B7:10:F0:6C
 ```
 
-SHA1 .pem example
+**SHA1 .pem example**
 
-```
+```sh
 openssl x509 -noout -fingerprint -sha1 -inform pem -in <certificate.pem>
 ```
 
-```
+```sh
 SHA1 Fingerprint=BB:2D:B6:3D:6B:DE:DA:06:4E:CA:CB:40:F6:F2:61:40:B7:10:F0:6C
 ```
 
 ### SHA256
 
-SHA256 .crt example
+**SHA256 .crt example**
 
-```
+```sh
 openssl x509 -noout -fingerprint -sha256 -inform der -in <certificate.crt>
 ```
 
-```
+```sh
 sha256 Fingerprint=F5:E1:56:C4:89:78:77:AD:79:3A:1E:83:FA:77:83:F1:9C:B0:C6:1B:58:2C:2F:50:11:B3:37:72:7C:62:3D:EF
 ```
 
-SHA256 .pem example
+**SHA256 .pem example**
 
-```
+```sh
 openssl x509 -noout -fingerprint -sha256 -inform pem -in <certificate.pem>
 ```
 
-```
+```sh
 sha256 Fingerprint=F5:E1:56:C4:89:78:77:AD:79:3A:1E:83:FA:77:83:F1:9C:B0:C6:1B:58:2C:2F:50:11:B3:37:72:7C:62:3D:EF
 ```
 
@@ -94,22 +94,22 @@ sha256 Fingerprint=F5:E1:56:C4:89:78:77:AD:79:3A:1E:83:FA:77:83:F1:9C:B0:C6:1B:5
 
 Some applications require a certificate formatted in the `.cer` file type. You can convert your downloaded certificate using [OpenSSL ↗](https://www.openssl.org/):
 
-* [  macOS and Linux ](#tab-panel-7601)
-* [  Windows ](#tab-panel-7602)
+* [  macOS and Linux ](#tab-panel-7854)
+* [  Windows ](#tab-panel-7855)
 
 1. [Install OpenSSL ↗](https://wiki.openssl.org/index.php/Compilation%5Fand%5FInstallation).
 2. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 3. In a terminal, convert the certificate to DER format with the `.cer` file type:
-Terminal window
-```
+```sh
 openssl x509 -inform PEM -in ~/Downloads/certificate.pem -outform DER -out ~/Downloads/certificate.cer
 ```
 
 1. [Install OpenSSL for Windows ↗](https://slproweb.com/products/Win32OpenSSL.html).
 2. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 3. In a PowerShell terminal, convert the certificate to DER format with the `.cer` file type:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 openssl x509 -inform PEM -in "$HOME\Downloads\certificate.pem" -outform DER -out "$HOME\Downloads\certificate.cer"
 ```
 
@@ -131,8 +131,8 @@ In macOS, you can choose the keychain in which you want to install the certifica
 
 To install a Cloudflare certificate in macOS, you can use either the Keychain Access application or a terminal. Both methods require you to [download a certificate](#download-a-cloudflare-root-certificate) in `.crt` format.
 
-* [ Keychain Access ](#tab-panel-7634)
-* [ Terminal ](#tab-panel-7635)
+* [ Keychain Access ](#tab-panel-7887)
+* [ Terminal ](#tab-panel-7888)
 
 1. Download a Cloudflare certificate.
   1. Open the `.crt` file in Keychain Access. If prompted, enter your local password.
@@ -146,9 +146,7 @@ The root certificate is now installed and ready to be used.
 2. Open Terminal.
 3. Add the certificate to your keychain:
 
-Terminal window
-
-```
+```sh
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <path-to-certificate.crt>
 ```
 
@@ -156,9 +154,7 @@ This keychain will allow all users on the system access to the certificate. If y
 
 1. Update the OpenSSL CA Store to include the Cloudflare certificate:
 
-Terminal window
-
-```
+```sh
 echo | sudo tee -a /etc/ssl/cert.pem < certificate.pem
 ```
 
@@ -196,26 +192,23 @@ If your certificate is installed in the **Local Machine Store**, the [device pos
 
 The location where the root certificate should be installed is different depending on your Linux distribution. Follow the specific instructions for your distribution.
 
-* [  Debian-based ](#tab-panel-7603)
-* [  Red Hat-based ](#tab-panel-7604)
-* [  NixOS ](#tab-panel-7605)
+* [  Debian-based ](#tab-panel-7856)
+* [  Red Hat-based ](#tab-panel-7857)
+* [  NixOS ](#tab-panel-7858)
 
 The following procedure applies to Debian-based systems, such as Debian, Ubuntu, and Kali Linux.
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Install the `ca-certificates` package.
-Terminal window
-```
+```sh
 sudo apt-get install ca-certificates
 ```
 3. Copy the certificate to the system, changing the file extension to `.crt`.
-Terminal window
-```
+```sh
 sudo cp certificate.pem /usr/share/ca-certificates/certificate.crt
 ```
 4. Import the certificate.
-Terminal window
-```
+```sh
 sudo dpkg-reconfigure ca-certificates
 ```
 
@@ -223,18 +216,15 @@ The following procedure applies to Red Hat-based systems, such as CentOS and Red
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in both `.crt` and `.pem` format.
 2. Install the `ca-certificates` package.
-Terminal window
-```
+```sh
 sudo dnf install ca-certificates
 ```
 3. Copy both certificates to the trust store.
-Terminal window
-```
+```sh
 sudo cp certificate.crt certificate.pem /etc/pki/ca-trust/source/anchors
 ```
 4. Import the certificate.
-Terminal window
-```
+```sh
 sudo update-ca-trust
 ```
 
@@ -270,8 +260,8 @@ The root certificate is now installed and ready to be used.
 
 ChromeOS devices use different methods to store and deploy root certificates. Certificates may fall under the **VPN and apps** or **CA certificate** settings. Follow the procedure that corresponds with your device.
 
-* [ VPN and apps ](#tab-panel-7636)
-* [ CA certificate ](#tab-panel-7637)
+* [ VPN and apps ](#tab-panel-7889)
+* [ CA certificate ](#tab-panel-7890)
 
 1. [Download a Cloudflare certificate](#download-the-cloudflare-root-certificate) in `.crt` format.
 2. Go to **Settings** \> **Apps** \> **Google Play Store**.
@@ -399,49 +389,54 @@ Programming language runtimes often maintain their own certificate stores or use
 
 Depending on which version of Python you have installed and your configuration, you may need to use either the `python` or `python3` command. If you use [virtual environments ↗](https://docs.python.org/3/library/venv.html), you will need to repeat the following steps within each virtual environment.
 
-* [  Windows ](#tab-panel-7606)
-* [  macOS and Linux ](#tab-panel-7607)
+* [  Windows ](#tab-panel-7859)
+* [  macOS and Linux ](#tab-panel-7860)
 
 The command to install the certificate with Python on Windows automatically includes `pip` and `certifi` (the default certificate bundle for certificate validation).
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.crt` format.
 2. In a PowerShell terminal, install the `certifi` package:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 python -m pip install certifi
 ```
 3. Identify the Python CA store:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 $CERT_PATH = python -c "import certifi; print(certifi.where())"
 ```
 4. Update the bundle to include the Cloudflare certificate:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 gc "$env:USERPROFILE\Downloads\certificate.crt" | ac $CERT_PATH
 ```
 5. (Optional) Configure your system variables to point to the CA store by adding them to PowerShell's configuration file:
-PowerShell
-```
-[System.Environment]::SetEnvironmentVariable('CERT_PATH', $CERT_PATH, 'Machine')[System.Environment]::SetEnvironmentVariable('SSL_CERT_FILE', $CERT_PATH, 'Machine')[System.Environment]::SetEnvironmentVariable('REQUESTS_CA_BUNDLE', $CERT_PATH, 'Machine')
+
+**PowerShell**
+```powershell
+[System.Environment]::SetEnvironmentVariable('CERT_PATH', $CERT_PATH, 'Machine')
+[System.Environment]::SetEnvironmentVariable('SSL_CERT_FILE', $CERT_PATH, 'Machine')
+[System.Environment]::SetEnvironmentVariable('REQUESTS_CA_BUNDLE', $CERT_PATH, 'Machine')
 ```
 6. Restart your terminal.
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. In a terminal, install the `certifi` package:
-Terminal window
-```
+```sh
 python -m pip install certifi
 ```
 3. Append the Cloudflare certificate to this CA store by running:
-Terminal window
-```
+```sh
 echo | cat - certificate.pem >> $(python -m certifi)
 ```
 4. (Optional) Configure your system variables to point to the CA store by adding them to your shell's configuration file (such as `~/.zshrc` or `~/.bash_profile`). For example:
-Terminal window
-```
-echo 'export CERT_PATH=$(python -c "import certifi; print(certifi.where())")export SSL_CERT_FILE=${CERT_PATH}export REQUESTS_CA_BUNDLE=${CERT_PATH}' >> ~/.zshrc
+```sh
+echo 'export CERT_PATH=$(python -c "import certifi; print(certifi.where())")
+export SSL_CERT_FILE=${CERT_PATH}
+export REQUESTS_CA_BUNDLE=${CERT_PATH}' >> ~/.zshrc
 ```
 5. Restart your terminal.
 
@@ -451,31 +446,31 @@ Java may have multiple certificate keystore locations depending on different ins
 
 To install a Cloudflare root certificate in the system JVM, follow the procedure for your operating system. These steps require you to [download a .pem certificate](#download-a-cloudflare-root-certificate).
 
-* [  macOS and Linux ](#tab-panel-7608)
-* [  Windows ](#tab-panel-7609)
+* [  macOS and Linux ](#tab-panel-7861)
+* [  Windows ](#tab-panel-7862)
 
 1. Install [OpenSSL ↗](https://www.openssl.org/).
 2. In a terminal, format the Cloudflare certificate for Java.
-Terminal window
-```
+```sh
 openssl x509 -in Cloudflare_CA.pem -inform pem -out Cloudflare_CA.der -outform der
 ```
 3. Import the converted certificate into the Java keystore.
-Terminal window
-```
+```sh
 sudo $JAVA_HOME/bin/keytool -import -trustcacerts -alias 'Cloudflare Root CA' -file Cloudflare_CA.der -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -noprompt 2>&1
 ```
 4. Restart any instances of Java.
 
 1. Install [OpenSSL for Windows ↗](https://slproweb.com/products/Win32OpenSSL.html).
 2. In an administrator PowerShell terminal, format the Cloudflare certificate for Java.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 openssl x509 -in Cloudflare_CA.pem -inform pem -out Cloudflare_CA.der -outform der
 ```
 3. Import the converted certificate into the Java keystore.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 "%JAVA_HOME%\bin\keytool" -import -trustcacerts -alias "Cloudflare Root CA" -file Cloudflare_CA.der -keystore "%JAVA_HOME%\jre\lib\security\cacerts" -storepass changeit -noprompt
 ```
 4. Restart any instances of Java.
@@ -484,61 +479,63 @@ PowerShell
 
 To trust a Cloudflare root certificate in RubyGems, follow the procedure for your operating system. These steps require you to [download a .pem certificate](#download-a-cloudflare-root-certificate).
 
-* [  macOS and Linux ](#tab-panel-7610)
-* [  Windows ](#tab-panel-7611)
+* [  macOS and Linux ](#tab-panel-7863)
+* [  Windows ](#tab-panel-7864)
 
 1. Install [OpenSSL ↗](https://www.openssl.org/).
 2. In a terminal, format the Cloudflare certificate for Ruby.
-Terminal window
-```
+```sh
 openssl x509 -in ~/Downloads/certificate.pem -out ~/Downloads/ruby-root-ca.crt
 ```
 3. Create a RubyGems certificate directory in your home folder.
-Terminal window
-```
+```sh
 mkdir -p ~/.gem/ssl
 ```
 4. Copy the Cloudflare certificate to your RubyGems certificate store.
-Terminal window
-```
+```sh
 cp ~/Downloads/ruby-root-ca.crt ~/.gem/ssl/rubygems.org.pem
 ```
 5. Configure RubyGems to use the certificate.
-Terminal window
-```
+```sh
 gem sources --add-trusted-cert ~/.gem/ssl/rubygems.org.pem
 ```
 Alternatively, add the following line to your RubyGems configuration file located in `~/.gemrc` file to globally trust the certificate:
-YAML
-```
+
+**YAML**
+```yaml
 :ssl_cert: ~/.gem/ssl/rubygems.org.pem
 ```
 6. Restart any terminal sessions.
 
 1. Install [OpenSSL for Windows ↗](https://slproweb.com/products/Win32OpenSSL.html).
 2. In a PowerShell terminal, format the Cloudflare certificate for Ruby.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 openssl x509 -in %UserProfile%\Downloads\certificate.pem -out %UserProfile%\Downloads\ruby-root-ca.crt
 ```
 3. Create a RubyGems certificate directory in your home folder.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 mkdir -Force "$env:USERPROFILE\.gem\ssl"
 ```
 4. Copy the Cloudflare certificate to your RubyGems certificate store.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Copy-Item "$env:USERPROFILE\Downloads\ruby-root-ca.crt" "$env:USERPROFILE\.gem\ssl\rubygems.org.pem"
 ```
 5. Configure RubyGems to use the certificate.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 gem sources --add-trusted-cert "$env:USERPROFILE\.gem\ssl\rubygems.org.pem"
 ```
 Alternatively, add the following line to your RubyGems configuration file located in `$HOME\.gemrc` to globally trust the certificate:
-YAML
-```
+
+**YAML**
+```yaml
 :ssl_cert: C:/Users/<username>/.gem/ssl/rubygems.org.pem
 ```
 6. Restart any terminal sessions.
@@ -547,39 +544,41 @@ YAML
 
 Rust's package manager Cargo uses the system certificate store by default on most platforms. However, you may need to configure it explicitly in some cases.
 
-* [  Windows ](#tab-panel-7612)
-* [  macOS and Linux ](#tab-panel-7613)
+* [  Windows ](#tab-panel-7865)
+* [  macOS and Linux ](#tab-panel-7866)
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Set the `CARGO_HTTP_CAINFO` environment variable to point to the certificate. In PowerShell:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 [System.Environment]::SetEnvironmentVariable('CARGO_HTTP_CAINFO', "$HOME\Downloads\certificate.pem", 'User')
 ```
 3. Restart your terminal.
 
 Alternatively, you can configure this in your Cargo configuration file at `%USERPROFILE%\.cargo\config.toml`:
 
-TOML
+**TOML**
 
-```
-[http]cainfo = "C:\\Users\\<username>\\Downloads\\certificate.pem"
+```toml
+[http]
+cainfo = "C:\\Users\\<username>\\Downloads\\certificate.pem"
 ```
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Set the `CARGO_HTTP_CAINFO` environment variable by adding it to your shell's configuration file (such as `~/.zshrc` or `~/.bash_profile`):
-Terminal window
-```
+```sh
 export CARGO_HTTP_CAINFO="$HOME/Downloads/certificate.pem"
 ```
 3. Restart your terminal.
 
 Alternatively, you can configure this in your Cargo configuration file at `~/.cargo/config.toml`:
 
-TOML
+**TOML**
 
-```
-[http]cainfo = "/path/to/certificate.pem"
+```toml
+[http]
+cainfo = "/path/to/certificate.pem"
 ```
 
 ### Development tools and package managers
@@ -588,30 +587,46 @@ Development tools and package managers often require certificate configuration f
 
 #### Git
 
-* [  Windows ](#tab-panel-7614)
-* [  macOS and Linux ](#tab-panel-7615)
+* [  Windows ](#tab-panel-7867)
+* [  macOS and Linux ](#tab-panel-7868)
 
 1. Open PowerShell.
 2. Run the following command:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 git config -l
 ```
 This command will output:
-```
-core.symlinks=falsecore.autocrlf=truecore.fscache=truecolor.diff=autocolor.status=autocolor.branch=autocolor.interactive=truehelp.format=htmlrebase.autosquash=truehttp.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crthttp.sslbackend=openssldiff.astextplain.textconv=astextplainfilter.lfs.clean=git-lfs clean -- %ffilter.lfs.smudge=git-lfs smudge -- %ffilter.lfs.process=git-lfs filter-processfilter.lfs.required=truecredential.helper=manager
+```txt
+core.symlinks=false
+core.autocrlf=true
+core.fscache=true
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+help.format=html
+rebase.autosquash=true
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+http.sslbackend=openssl
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+credential.helper=manager
 ```
 3. The `http.sslcainfo` defines the CA Certificate store. To append the Cloudflare certificate to the CA bundle, update `http.sslcainfo`.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 gc .\certificate.pem | ac $(git config --get http.sslcainfo)
 ```
 
 To configure Git to trust a Cloudflare certificate, run the following command:
 
-Terminal window
-
-```
+```sh
 git config --global http.sslcainfo [PATH_TO_CLOUDFLARE_CERT]
 ```
 
@@ -619,16 +634,13 @@ git config --global http.sslcainfo [PATH_TO_CLOUDFLARE_CERT]
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Set the `cafile` configuration to use the Cloudflare certificate:
-Terminal window
-```
+```sh
 npm config set cafile [PATH_TO_CLOUDFLARE_CERT.pem]
 ```
 
 On some systems you may need to set the following in your path/export list:
 
-Terminal window
-
-```
+```sh
 export NODE_EXTRA_CA_CERTS='[PATH_TO_CLOUDFLARE_CERT.pem]'
 ```
 
@@ -636,9 +648,7 @@ export NODE_EXTRA_CA_CERTS='[PATH_TO_CLOUDFLARE_CERT.pem]'
 
 The command below will set the [cafile ↗](https://getcomposer.org/doc/06-config.md#cafile) configuration inside of `composer.json` to use the Cloudflare root certificate. Make sure to [download a certificate](#download-a-cloudflare-root-certificate) in the `.pem` file type.
 
-Terminal window
-
-```
+```sh
 composer config cafile [PATH_TO_CLOUDFLARE_CERT.pem]
 ```
 
@@ -650,81 +660,121 @@ To install a certificate for use in a Docker container:
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Create a directory for certificates in your Docker project:
-Terminal window
-```
-cd docker-projectmkdir certsmv /path/to/downloaded/certificate.pem certs/
+```sh
+cd docker-project
+mkdir certs
+mv /path/to/downloaded/certificate.pem certs/
 ```
 3. Verify the certificate was moved to the directory correctly. Your project should have the following structure:
-Terminal window
-```
-docker-project/├── Dockerfile└── certs/    └── certificate.pem
+```sh
+docker-project/
+├── Dockerfile
+└── certs/
+    └── certificate.pem
 ```
 4. Add the certificate to your Docker image:
 
-  * [ During build process ](#tab-panel-7616)
-  * [ During runtime ](#tab-panel-7617)
+  * [ During build process ](#tab-panel-7869)
+  * [ During runtime ](#tab-panel-7870)
 To add the certificate to your Dockerfile to install it during the build process:
 
   1. Add the certificate install directions to your Dockerfile. For example:
-  Red Hat-based images
+
+**Red Hat-based images**
+  ```docker
+  FROM registry.access.redhat.com/ubi9/ubi:latest
+  # Or FROM centos:7 or FROM fedora:38
+  # Install necessary certificates package
+  RUN dnf install -y ca-certificates
+  # Copy and add Cloudflare root certificate
+  COPY certs/certificate.pem /etc/pki/ca-trust/source/anchors/certificate.crt
+  RUN update-ca-trust extract
   ```
-  FROM registry.access.redhat.com/ubi9/ubi:latest# Or FROM centos:7 or FROM fedora:38
-  # Install necessary certificates packageRUN dnf install -y ca-certificates
-  # Copy and add Cloudflare root certificateCOPY certs/certificate.pem /etc/pki/ca-trust/source/anchors/certificate.crtRUN update-ca-trust extract
+
+**Debian-based images**
+  ```docker
+  FROM debian:12
+  # Or FROM ubuntu:22.04
+  # Install necessary certificates package
+  RUN apt-get update && apt-get install -y ca-certificates
+  # Copy and add Cloudflare root certificate
+  COPY certs/certificate.pem /usr/local/share/ca-certificates/certificate.crt
+  RUN update-ca-certificates
   ```
-  Debian-based images
-  ```
-  FROM debian:12# Or FROM ubuntu:22.04
-  # Install necessary certificates packageRUN apt-get update && apt-get install -y ca-certificates
-  # Copy and add Cloudflare root certificateCOPY certs/certificate.pem /usr/local/share/ca-certificates/certificate.crtRUN update-ca-certificates
-  ```
-  Alpine-based images
-  ```
+
+**Alpine-based images**
+  ```docker
   FROM alpine:3.18
-  # Install necessary certificates packageRUN apk add --no-cache ca-certificates
-  # Copy and add Cloudflare root certificateCOPY certs/certificate.pem /usr/local/share/ca-certificates/certificate.crtRUN update-ca-certificates
+  # Install necessary certificates package
+  RUN apk add --no-cache ca-certificates
+  # Copy and add Cloudflare root certificate
+  COPY certs/certificate.pem /usr/local/share/ca-certificates/certificate.crt
+  RUN update-ca-certificates
   ```
   2. Build the Docker image:
-  Terminal window
-  ```
+  ```sh
   docker build -t <your-container-name> .
   ```
   3. Verify the certificate was installed:
-  Red Hat-based images
-  ```
+
+**Red Hat-based images**
+  ```sh
   docker run --rm your-image-name sh -c "cat /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem | grep Cloudflare"
   ```
-  Debian and Alpine-based images
-  ```
+
+**Debian and Alpine-based images**
+  ```sh
   docker run --rm your-image-name sh -c "cat /etc/ssl/certs/certificate.pem"
   ```
 To add the certificate to your Docker Compose file to install it during runtime:
 
   1. Add the certificate install directions to your `docker-compose.yml` file. For example:
-  Red Hat-based containers
+
+**Red Hat-based containers**
+  ```yaml
+  version: '3'
+  services:
+    redhat-app:
+      image: registry.access.redhat.com/ubi9/ubi:latest
+       volumes:
+       - certs/certificate.pem:/etc/pki/ca-trust/source/anchors/certificate.pem
+       entrypoint: /bin/sh -c "dnf install -y ca-certificates && update-ca-trust extract && app start"
   ```
-  version: '3'services:  redhat-app:    image: registry.access.redhat.com/ubi9/ubi:latest     volumes:       - certs/certificate.pem:/etc/pki/ca-trust/source/anchors/certificate.pem     entrypoint: /bin/sh -c "dnf install -y ca-certificates && update-ca-trust extract && app start"
+
+**Debian-based containers**
+  ```yaml
+  version: '3'
+  services:
+    debian-app:
+      image: debian:12
+       volumes:
+       - certs/certificate.pem:/usr/local/share/ca-certificates/certificate.crt
+       entrypoint: /bin/sh -c "apt-get update && apt-get install -y ca-certificates && update-ca-certificates && app start"
   ```
-  Debian-based containers
-  ```
-  version: '3'services:  debian-app:    image: debian:12     volumes:       - certs/certificate.pem:/usr/local/share/ca-certificates/certificate.crt     entrypoint: /bin/sh -c "apt-get update && apt-get install -y ca-certificates && update-ca-certificates && app start"
-  ```
-  Alpine-based containers
-  ```
-  version: '3'services:  alpine-app:    image: alpine:3.18     volumes:       - certs/certificate.pem:/usr/local/share/ca-certificates/certificate.pem     entrypoint: /bin/sh -c "apk add --no-cache ca-certificates && update-ca-certificates && app start"
+
+**Alpine-based containers**
+  ```yaml
+  version: '3'
+  services:
+    alpine-app:
+      image: alpine:3.18
+       volumes:
+       - certs/certificate.pem:/usr/local/share/ca-certificates/certificate.pem
+       entrypoint: /bin/sh -c "apk add --no-cache ca-certificates && update-ca-certificates && app start"
   ```
   2. Run the container:
-  Terminal window
-  ```
+  ```sh
   docker-compose up
   ```
   3. Verify the certificate was installed:
-  Red Hat-based containers
-  ```
+
+**Red Hat-based containers**
+  ```sh
   docker exec -it <container-name> sh -c "cat /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem | grep Cloudflare"
   ```
-  Debian and Alpine-based containers
-  ```
+
+**Debian and Alpine-based containers**
+  ```sh
   docker exec -it <container-name> sh -c "cat /etc/ssl/certs/ca-certificates.crt | grep Cloudflare"
   ```
 
@@ -736,13 +786,13 @@ Command-line tools typically use the system certificate store but may require sp
 
 By default, cURL will use your operating system's native certificate store. To force cURL to use your default certificate, add the `--ca-native` flag to the command. For example:
 
-```
+```curl
 curl --ca-native https://example.com
 ```
 
-* [  macOS ](#tab-panel-7618)
-* [  Windows ](#tab-panel-7619)
-* [  Linux ](#tab-panel-7620)
+* [  macOS ](#tab-panel-7871)
+* [  Windows ](#tab-panel-7872)
+* [  Linux ](#tab-panel-7873)
 
 To use a Cloudflare root certificate with cURL on macOS, [install the certificate to the operating system keychain](#macos). cURL will use the macOS root certificate by default.
 
@@ -754,9 +804,9 @@ To use a Cloudflare root certificate with cURL on Linux, [install the certificat
 
 By default, GNU Wget will use your operating system's native certificate store. To force Wget to use your default certificate, add the `--ca-certificate` flag to the command.
 
-* [  macOS ](#tab-panel-7621)
-* [  Windows ](#tab-panel-7622)
-* [  Linux ](#tab-panel-7623)
+* [  macOS ](#tab-panel-7874)
+* [  Windows ](#tab-panel-7875)
+* [  Linux ](#tab-panel-7876)
 
 To use a Cloudflare root certificate with Wget on macOS, [install the certificate to the operating system keychain](#macos). Wget will use the macOS root certificate by default.
 
@@ -766,17 +816,13 @@ To use a Cloudflare root certificate with Wget on Linux, [install the certificat
 
 Alternatively, you can specify a certificate file directly:
 
-Terminal window
-
-```
+```sh
 wget --ca-certificate=[PATH_TO_CLOUDFLARE_CERT.pem] https://example.com
 ```
 
 To make this permanent, add the following to your `~/.wgetrc` file:
 
-Terminal window
-
-```
+```sh
 ca_certificate = [PATH_TO_CLOUDFLARE_CERT.pem]
 ```
 
@@ -793,34 +839,34 @@ Android Studio uses its own JVM and certificate store. To install a Cloudflare r
 
   1. In Android Studio, go to **Help** \> **About** (or **Android Studio** \> **About Android Studio** on macOS).
   2. Copy the JRE path shown in the dialog. For example:
-  ```
+  ```txt
   /Applications/Android Studio.app/Contents/jbr/Contents/Home
   ```
 3. Add the Cloudflare certificate to Android Studio's JVM:
 
-* [  macOS and Linux ](#tab-panel-7624)
-* [  Windows ](#tab-panel-7625)
+* [  macOS and Linux ](#tab-panel-7877)
+* [  Windows ](#tab-panel-7878)
 
 1. In a terminal, add the JRE path you copied as an environment variable.
-Terminal window
-```
+```sh
 export JAVA_HOME="/path/to/jre"
 ```
 2. Run `keytool` to install and trust the Cloudflare certificate.
-Terminal window
-```
+```sh
 "$JAVA_HOME/bin/keytool" -import -file ~/Downloads/certificate.crt -alias CloudflareRootCA -keystore "$JAVA_HOME/lib/security/cacerts" -storepass changeit -trustcacerts -noprompt
 ```
 3. Restart Android Studio.
 
 1. In an administrator PowerShell terminal, add the JRE path you copied as an environment variable.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 $env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
 ```
 2. Run `keytool` to install and trust the Cloudflare certificate.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 & "$env:JAVA_HOME\bin\keytool.exe" -import -file "$env:USERPROFILE\Downloads\certificate.crt" -alias CloudflareRootCA -keystore "$env:JAVA_HOME\lib\security\cacerts" -storepass changeit -trustcacerts -noprompt
 ```
 3. Restart Android Studio.
@@ -852,36 +898,37 @@ To install a Cloudflare root certificate on Eclipse IDE for Java Developers, you
   1. In Eclipse, go to **Eclipse** \> **About Eclipse** (or **Help** \> **About Eclipse IDE** on Windows and Linux)
   2. Select **Installation Details**, then go to **Configuration**.
   3. Search for `java.home`, then locate the value. For example:
-```
-*** System properties:java.home=/Users/<username>/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.aarch64_17.0.8.v20230831-1047/jre
+```txt
+*** System properties:
+java.home=/Users/<username>/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.aarch64_17.0.8.v20230831-1047/jre
 ```
 
   1. Copy the full path after `java.home=`.
 3. Add the Cloudflare certificate to Eclipse's JVM:
 
-* [  macOS and Linux ](#tab-panel-7626)
-* [  Windows ](#tab-panel-7627)
+* [  macOS and Linux ](#tab-panel-7879)
+* [  Windows ](#tab-panel-7880)
 
 1. In a terminal, add the `java.home` value you copied as an environment variable.
-Terminal window
-```
+```sh
 export JAVA_HOME=$(echo /path/to/java.home)
 ```
 2. Run `keytool` to install and trust the Cloudflare certificate.
-Terminal window
-```
+```sh
 "$JAVA_HOME/bin/keytool" -import -file ~/Downloads/certificate.crt -alias CloudflareRootCA -keystore "$JAVA_HOME/lib/security/cacerts" -storepass changeit -trustcacerts -noprompt
 ```
 3. Restart Eclipse.
 
 1. In a terminal, add the `java.home` value you copied as an environment variable.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 set JAVA_HOME="\path\to\java.home"
 ```
 2. Run `keytool` to install and trust the Cloudflare certificate.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 "%JAVA_HOME%\bin\keytool.exe" -import -file "%UserProfile%\Downloads\Cloudflare_CA.crt" -alias CloudflareRootCA -keystore "%JAVA_HOME%\lib\security\cacerts" -storepass changeit -trustcacerts -noprompt
 ```
 3. Restart Eclipse.
@@ -899,19 +946,16 @@ Cloud service providers and infrastructure tools often require certificate confi
 The commands below will set the Google Cloud SDK to use a Cloudflare certificate. For more information on configuring the Google Cloud SDK, refer to the [Google Cloud documentation ↗](https://cloud.google.com/sdk/docs/proxy-settings).
 
 1. Get curl's `cacert` bundle.
-Terminal window
-```
+```sh
 curl --remote-name https://curl.se/ca/cacert.pem
 ```
 2. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 3. Combine the certs into a single `.pem` file.
-Terminal window
-```
+```sh
 cat cacert.pem certificate.pem > ~/ca.pem
 ```
 4. Configure Google Cloud to use the combined `.pem`.
-Terminal window
-```
+```sh
 gcloud config set core/custom_ca_certs_file ~/ca.pem
 ```
 
@@ -936,9 +980,11 @@ To persistently set the location of the certificate:
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Locate and open your [AWS configuration file ↗](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html#cli-configure-files-where).
 3. Configure the [ca\_bundle setting ↗](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html#cli-configure-files-settings) with the location of your certificate. For example:
-.aws/config
-```
-[default]region = us-west-1
+
+**.aws/config**
+```ini
+[default]
+region = us-west-1
 ca_bundle = /path/to/certificate.pem
 ```
 4. Restart your terminal.
@@ -960,22 +1006,20 @@ To persistently set the location of the certificate:
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Set the `REQUESTS_CA_BUNDLE` environment variable to point to your certificate depending on your operating system.
 
-* [  macOS and Linux ](#tab-panel-7628)
-* [  Windows ](#tab-panel-7629)
+* [  macOS and Linux ](#tab-panel-7881)
+* [  Windows ](#tab-panel-7882)
 
 Add the following to your shell's configuration file (such as `~/.zshrc` or `~/.bash_profile`):
 
-Terminal window
-
-```
+```sh
 export REQUESTS_CA_BUNDLE="$HOME/Downloads/certificate.pem"
 ```
 
 In PowerShell:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 [System.Environment]::SetEnvironmentVariable('REQUESTS_CA_BUNDLE', "$HOME\Downloads\certificate.pem", 'User')
 ```
 
@@ -987,8 +1031,7 @@ To set the location of the certificate for a single command:
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Set the `REQUESTS_CA_BUNDLE` environment variable when running the command:
-Terminal window
-```
+```sh
 REQUESTS_CA_BUNDLE=/path/to/certificate.pem az <command>
 ```
 
@@ -1005,22 +1048,20 @@ To set the location of the certificate using an environment variable:
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Set the `AWS_CA_BUNDLE` environment variable depending on your operating system.
 
-* [  macOS and Linux ](#tab-panel-7630)
-* [  Windows ](#tab-panel-7631)
+* [  macOS and Linux ](#tab-panel-7883)
+* [  Windows ](#tab-panel-7884)
 
 Add the following to your shell's configuration file (such as `~/.zshrc` or `~/.bash_profile`):
 
-Terminal window
-
-```
+```sh
 export AWS_CA_BUNDLE="$HOME/Downloads/certificate.pem"
 ```
 
 In PowerShell:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 [System.Environment]::SetEnvironmentVariable('AWS_CA_BUNDLE', "$HOME\Downloads\certificate.pem", 'User')
 ```
 
@@ -1033,9 +1074,11 @@ To persistently set the location of the certificate in your AWS configuration:
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Locate and open your [AWS configuration file ↗](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html#cli-configure-files-where).
 3. Configure the [ca\_bundle setting ↗](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html#cli-configure-files-settings) with the location of your certificate. For example:
-.aws/config
-```
-[default]region = us-west-1
+
+**.aws/config**
+```ini
+[default]
+region = us-west-1
 ca_bundle = /path/to/certificate.pem
 ```
 
@@ -1045,10 +1088,14 @@ To specify the certificate directly in your Python code:
 
 1. [Download a Cloudflare certificate](#download-a-cloudflare-root-certificate) in `.pem` format.
 2. Pass the certificate path when creating a Boto3 client or resource:
-Python
-```
+
+**Python**
+```python
 import boto3
-client = boto3.client(    's3',    verify='/path/to/certificate.pem')
+client = boto3.client(
+    's3',
+    verify='/path/to/certificate.pem'
+)
 ```
 
 For more information, refer to the [Boto3 documentation ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html).
@@ -1061,54 +1108,52 @@ Enterprise desktop applications and specialized tools may require custom certifi
 
 To trust a Cloudflare root certificate in the Google Drive desktop application, follow the procedure for your operating system. These steps require you to [download a .pem certificate](#download-a-cloudflare-root-certificate).
 
-* [  macOS ](#tab-panel-7632)
-* [  Windows ](#tab-panel-7633)
+* [  macOS ](#tab-panel-7885)
+* [  Windows ](#tab-panel-7886)
 
 1. In a terminal, copy the contents of the Google Drive certificate file to a new certificate file in a permanent location, such as your Documents folder. For example:
-Terminal window
-```
+```sh
 cat /Applications/"Google Drive.app"/Contents/Resources/roots.pem > ~/Documents/gdrivecerts.pem
 ```
 2. Append the contents of the downloaded certificate to the end of the new file. For example:
-Terminal window
-```
+```sh
 cat ~/Downloads/certificate.pem >> ~/Documents/gdrivecerts.pem
 ```
 3. Apply the newly created root certificate to your Google Drive application. For example:
-Terminal window
-```
+```sh
 sudo defaults write /Library/Preferences/com.google.drivefs.settings TrustedRootCertsFile "/Users/$(whoami)/Documents/gdrivecerts.pem"
 ```
 
 You can verify the update with the following command.
 
-Terminal window
-
-```
+```sh
 defaults read /Library/Preferences/com.google.drivefs.settings
 ```
 
 1. In an administrator PowerShell terminal, copy the contents of the Google Drive certificate file to a new certificate file in a permanent location, such as your Documents folder. For example:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Get-Content "C:\Program Files\Google\Drive File Stream\roots.pem" | Set-Content "$HOME\Documents\gdrivecerts.pem"
 ```
 2. Append the contents of the downloaded certificate to the end of the new file. For example:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Get-Content "$HOME\Downloads\certificate.pem" | Add-Content "$HOME\Documents\gdrivecerts.pem"
 ```
 3. Apply the newly created root certificate to your Google Drive application. For example:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Google\DriveFS" -Name "TrustedRootCertsFile" -Value "$HOME\Documents\gdrivecerts.pem"
 ```
 
 You can verify the update with the following command.
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Get-ItemProperty -Path "HKLM:\SOFTWARE\Google\DriveFS" | Select-Object TrustedRootCertsFile
 ```
 

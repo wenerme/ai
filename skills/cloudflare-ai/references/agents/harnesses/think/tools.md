@@ -49,85 +49,185 @@ To keep tool calls bounded, the Bash tool snapshots up to 1,000 workspace files 
 
 Disable the default Bash tool for conservative deployments:
 
-* [  JavaScript ](#tab-panel-5727)
-* [  TypeScript ](#tab-panel-5728)
+* [  JavaScript ](#tab-panel-5903)
+* [  TypeScript ](#tab-panel-5904)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  workspaceBash = false;
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
-export class MyAgent extends Think {  workspaceBash = false;
-  getModel() {    /* ... */  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Think<Env> {  workspaceBash = false;
-  getModel() {    /* ... */  }}
+```ts
+export class MyAgent extends Think<Env> {
+  workspaceBash = false;
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
 
 ### R2 spillover
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-5735)
-* [  TypeScript ](#tab-panel-5736)
+* [  JavaScript ](#tab-panel-5911)
+* [  TypeScript ](#tab-panel-5912)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Think } from "@cloudflare/think";
+import { Workspace } from "@cloudflare/shell";
+
+
+export class MyAgent extends Think {
+  workspace = new Workspace({
+    sql: this.ctx.storage.sql,
+    r2: this.env.R2,
+    name: () => this.name,
+  });
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
-import { Think } from "@cloudflare/think";import { Workspace } from "@cloudflare/shell";
-export class MyAgent extends Think {  workspace = new Workspace({    sql: this.ctx.storage.sql,    r2: this.env.R2,    name: () => this.name,  });
-  getModel() {    /* ... */  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Think } from "@cloudflare/think";import { Workspace } from "@cloudflare/shell";
-export class MyAgent extends Think<Env> {  override workspace = new Workspace({    sql: this.ctx.storage.sql,    r2: this.env.R2,    name: () => this.name,  });
-  getModel() {    /* ... */  }}
+```ts
+import { Think } from "@cloudflare/think";
+import { Workspace } from "@cloudflare/shell";
+
+
+export class MyAgent extends Think<Env> {
+  override workspace = new Workspace({
+    sql: this.ctx.storage.sql,
+    r2: this.env.R2,
+    name: () => this.name,
+  });
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-5723)
-* [  wrangler.toml ](#tab-panel-5724)
+* [  wrangler.jsonc ](#tab-panel-5899)
+* [  wrangler.toml ](#tab-panel-5900)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "agent-files"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "r2_buckets": [    {      "binding": "R2",      "bucket_name": "agent-files"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[r2_buckets]]binding = "R2"bucket_name = "agent-files"
+```toml
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "agent-files"
 ```
 
 ## Custom tools
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-5749)
-* [  TypeScript ](#tab-panel-5750)
+* [  JavaScript ](#tab-panel-5925)
+* [  TypeScript ](#tab-panel-5926)
 
-JavaScript
+**JavaScript**
 
-```
-import { Think } from "@cloudflare/think";import { tool } from "ai";
+```js
+import { Think } from "@cloudflare/think";
+import { tool } from "ai";
+
+
 import { z } from "zod";
-export class MyAgent extends Think {  getModel() {    /* ... */  }
-  getTools() {    return {      getWeather: tool({        description: "Get the current weather for a city",        inputSchema: z.object({          city: z.string().describe("City name"),        }),        execute: async ({ city }) => {          const res = await fetch(            `https://api.weather.com/v1/current?q=${city}&key=${this.env.WEATHER_KEY}`,          );          return res.json();        },      }),    };  }}
+
+
+export class MyAgent extends Think {
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      getWeather: tool({
+        description: "Get the current weather for a city",
+        inputSchema: z.object({
+          city: z.string().describe("City name"),
+        }),
+        execute: async ({ city }) => {
+          const res = await fetch(
+            `https://api.weather.com/v1/current?q=${city}&key=${this.env.WEATHER_KEY}`,
+          );
+          return res.json();
+        },
+      }),
+    };
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-import { Think } from "@cloudflare/think";import { tool } from "ai";import type { ToolSet } from "ai";import { z } from "zod";
-export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
-  getTools(): ToolSet {    return {      getWeather: tool({        description: "Get the current weather for a city",        inputSchema: z.object({          city: z.string().describe("City name"),        }),        execute: async ({ city }) => {          const res = await fetch(            `https://api.weather.com/v1/current?q=${city}&key=${this.env.WEATHER_KEY}`,          );          return res.json();        },      }),    };  }}
+```ts
+import { Think } from "@cloudflare/think";
+import { tool } from "ai";
+import type { ToolSet } from "ai";
+import { z } from "zod";
+
+
+export class MyAgent extends Think<Env> {
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools(): ToolSet {
+    return {
+      getWeather: tool({
+        description: "Get the current weather for a city",
+        inputSchema: z.object({
+          city: z.string().describe("City name"),
+        }),
+        execute: async ({ city }) => {
+          const res = await fetch(
+            `https://api.weather.com/v1/current?q=${city}&key=${this.env.WEATHER_KEY}`,
+          );
+          return res.json();
+        },
+      }),
+    };
+  }
+}
 ```
 
 Custom tools are merged with workspace tools automatically. If a custom tool has the same name as a workspace tool, the custom tool wins.
@@ -136,10 +236,22 @@ Custom tools are merged with workspace tools automatically. If a custom tool has
 
 Tools can require user approval before execution using the `needsApproval` option:
 
-TypeScript
+**TypeScript**
 
-```
-getTools(): ToolSet {  return {    deleteFile: tool({      description: "Delete a file from the system",      inputSchema: z.object({ path: z.string() }),      needsApproval: async ({ path }) => path.startsWith("/important/"),      execute: async ({ path }) => {        await this.workspace.rm(path);        return { deleted: path };      },    }),  };}
+```ts
+getTools(): ToolSet {
+  return {
+    deleteFile: tool({
+      description: "Delete a file from the system",
+      inputSchema: z.object({ path: z.string() }),
+      needsApproval: async ({ path }) => path.startsWith("/important/"),
+      execute: async ({ path }) => {
+        await this.workspace.rm(path);
+        return { deleted: path };
+      },
+    }),
+  };
+}
 ```
 
 When `needsApproval` returns `true`, the tool call is sent to the client for approval. The conversation pauses until the client responds with `CF_AGENT_TOOL_APPROVAL`.
@@ -152,10 +264,15 @@ Inside the [code execution tool](#code-execution-tool)'s sandbox, `needsApproval
 
 The `beforeTurn` hook can restrict or add tools for a specific turn:
 
-TypeScript
+**TypeScript**
 
-```
-beforeTurn(ctx: TurnContext) {  return {    activeTools: ["read", "write", "getWeather"],    tools: { emergencyTool: this.createEmergencyTool() },  };}
+```ts
+beforeTurn(ctx: TurnContext) {
+  return {
+    activeTools: ["read", "write", "getWeather"],
+    tools: { emergencyTool: this.createEmergencyTool() },
+  };
+}
 ```
 
 `activeTools` limits which tools the model can call. `tools` adds extra tools for this turn only (merged on top of existing tools).
@@ -166,108 +283,198 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-5731)
-* [  TypeScript ](#tab-panel-5732)
+* [  JavaScript ](#tab-panel-5907)
+* [  TypeScript ](#tab-panel-5908)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  waitForMcpConnections = true; // default 10s timeout
+  // or: waitForMcpConnections = { timeout: 5000 };
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
-export class MyAgent extends Think {  waitForMcpConnections = true; // default 10s timeout  // or: waitForMcpConnections = { timeout: 5000 };
-  getModel() {    /* ... */  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Think<Env> {  waitForMcpConnections = true; // default 10s timeout  // or: waitForMcpConnections = { timeout: 5000 };
-  getModel() {    /* ... */  }}
+```ts
+export class MyAgent extends Think<Env> {
+  waitForMcpConnections = true; // default 10s timeout
+  // or: waitForMcpConnections = { timeout: 5000 };
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-5743)
-* [  TypeScript ](#tab-panel-5744)
+* [  JavaScript ](#tab-panel-5919)
+* [  TypeScript ](#tab-panel-5920)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { callable } from "agents";
-export class MyAgent extends Think {  getModel() {    /* ... */  }
-  @callable()  async addServer(name, url) {    return await this.addMcpServer(name, url);  }
-  @callable()  async removeServer(serverId) {    await this.removeMcpServer(serverId);  }}
+
+
+export class MyAgent extends Think {
+  getModel() {
+    /* ... */
+  }
+
+
+  @callable()
+  async addServer(name, url) {
+    return await this.addMcpServer(name, url);
+  }
+
+
+  @callable()
+  async removeServer(serverId) {
+    await this.removeMcpServer(serverId);
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { callable } from "agents";
-export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
-  @callable()  async addServer(name: string, url: string) {    return await this.addMcpServer(name, url);  }
-  @callable()  async removeServer(serverId: string) {    await this.removeMcpServer(serverId);  }}
+
+
+export class MyAgent extends Think<Env> {
+  getModel() {
+    /* ... */
+  }
+
+
+  @callable()
+  async addServer(name: string, url: string) {
+    return await this.addMcpServer(name, url);
+  }
+
+
+  @callable()
+  async removeServer(serverId: string) {
+    await this.removeMcpServer(serverId);
+  }
+}
 ```
 
 ## Code execution tool
 
 Let the LLM write and run JavaScript in a sandboxed Worker, recorded on a durable Code Mode runtime (abort-and-replay, human approvals, audit trail, reusable snippets). Requires `@cloudflare/codemode` and a `worker_loaders` binding.
 
-Terminal window
-
-```
+```sh
 npm install @cloudflare/codemode
 ```
 
 The one-liner infers everything from the agent — `state.*` from `this.workspace`, the executor from `env.LOADER`, and a live browser (`cdp.*`) from `env.BROWSER` if bound:
 
-* [  JavaScript ](#tab-panel-5739)
-* [  TypeScript ](#tab-panel-5740)
+* [  JavaScript ](#tab-panel-5915)
+* [  TypeScript ](#tab-panel-5916)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Think } from "@cloudflare/think";
+import { createExecuteTool } from "@cloudflare/think/tools/execute";
+
+
+export class MyAgent extends Think {
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      execute: createExecuteTool(this),
+    };
+  }
+}
 ```
-import { Think } from "@cloudflare/think";import { createExecuteTool } from "@cloudflare/think/tools/execute";
-export class MyAgent extends Think {  getModel() {    /* ... */  }
-  getTools() {    return {      execute: createExecuteTool(this),    };  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Think } from "@cloudflare/think";import { createExecuteTool } from "@cloudflare/think/tools/execute";
-export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
-  getTools() {    return {      execute: createExecuteTool(this),    };  }}
+```ts
+import { Think } from "@cloudflare/think";
+import { createExecuteTool } from "@cloudflare/think/tools/execute";
+
+
+export class MyAgent extends Think<Env> {
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      execute: createExecuteTool(this),
+    };
+  }
+}
 ```
 
 Setup checklist:
 
-* [  wrangler.jsonc ](#tab-panel-5725)
-* [  wrangler.toml ](#tab-panel-5726)
+* [  wrangler.jsonc ](#tab-panel-5901)
+* [  wrangler.toml ](#tab-panel-5902)
 
-JSONC
+**JSONC**
 
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "worker_loaders": [    {      "binding": "LOADER"    }  ],  "browser": {    "binding": "BROWSER"  }}
-```
-
-TOML
-
-```
-[[worker_loaders]]binding = "LOADER"
-[browser]binding = "BROWSER" # optional — enables cdp.*
-```
-
-* [  JavaScript ](#tab-panel-5737)
-* [  TypeScript ](#tab-panel-5738)
-
-JavaScript
-
-```
-// worker entry — the runtime lives in a Durable Object facet, so the class// must be exported (the @cloudflare/codemode/vite plugin does this// automatically; the Think framework's generated entry already includes it)export { CodemodeRuntime } from "@cloudflare/codemode";
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ],
+  "browser": {
+    "binding": "BROWSER"
+  }
+}
 ```
 
-TypeScript
+**TOML**
 
+```toml
+[[worker_loaders]]
+binding = "LOADER"
+
+
+[browser]
+binding = "BROWSER" # optional — enables cdp.*
 ```
-// worker entry — the runtime lives in a Durable Object facet, so the class// must be exported (the @cloudflare/codemode/vite plugin does this// automatically; the Think framework's generated entry already includes it)export { CodemodeRuntime } from "@cloudflare/codemode";
+
+* [  JavaScript ](#tab-panel-5913)
+* [  TypeScript ](#tab-panel-5914)
+
+**JavaScript**
+
+```js
+// worker entry — the runtime lives in a Durable Object facet, so the class
+// must be exported (the @cloudflare/codemode/vite plugin does this
+// automatically; the Think framework's generated entry already includes it)
+export { CodemodeRuntime } from "@cloudflare/codemode";
+```
+
+**TypeScript**
+
+```ts
+// worker entry — the runtime lives in a Durable Object facet, so the class
+// must be exported (the @cloudflare/codemode/vite plugin does this
+// automatically; the Think framework's generated entry already includes it)
+export { CodemodeRuntime } from "@cloudflare/codemode";
 ```
 
 Each missing piece fails with an error naming the step.
@@ -281,38 +488,54 @@ Inside the sandbox the model sees typed namespaces plus the platform SDK:
 
 Pass overrides for anything beyond the defaults — for example, custom `tools.*` alongside the agent-derived state:
 
-* [  JavaScript ](#tab-panel-5733)
-* [  TypeScript ](#tab-panel-5734)
+* [  JavaScript ](#tab-panel-5909)
+* [  TypeScript ](#tab-panel-5910)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 execute: createExecuteTool(this, { tools: myDomainTools });
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 execute: createExecuteTool(this, { tools: myDomainTools });
 ```
 
 Or fully explicit options (no agent inference):
 
-* [  JavaScript ](#tab-panel-5745)
-* [  TypeScript ](#tab-panel-5746)
+* [  JavaScript ](#tab-panel-5921)
+* [  TypeScript ](#tab-panel-5922)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createWorkspaceStateBackend } from "@cloudflare/shell";
-createExecuteTool({  ctx: this.ctx,  tools: myDomainTools,  state: createWorkspaceStateBackend(this.workspace),  browser: this.env.BROWSER,  loader: this.env.LOADER,});
+
+
+createExecuteTool({
+  ctx: this.ctx,
+  tools: myDomainTools,
+  state: createWorkspaceStateBackend(this.workspace),
+  browser: this.env.BROWSER,
+  loader: this.env.LOADER,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createWorkspaceStateBackend } from "@cloudflare/shell";
-createExecuteTool({  ctx: this.ctx,  tools: myDomainTools,  state: createWorkspaceStateBackend(this.workspace),  browser: this.env.BROWSER,  loader: this.env.LOADER,});
+
+
+createExecuteTool({
+  ctx: this.ctx,
+  tools: myDomainTools,
+  state: createWorkspaceStateBackend(this.workspace),
+  browser: this.env.BROWSER,
+  loader: this.env.LOADER,
+});
 ```
 
 ### Approvals (human-in-the-loop)
@@ -333,60 +556,118 @@ For a working approval card, refer to the [assistant example ↗](https://github
 
 `createExecuteRuntime` returns the moving parts when the host needs more than the tool — and the handle is also assigned to `this.codemode` when created from an agent:
 
-* [  JavaScript ](#tab-panel-5741)
-* [  TypeScript ](#tab-panel-5742)
+* [  JavaScript ](#tab-panel-5917)
+* [  TypeScript ](#tab-panel-5918)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createExecuteRuntime } from "@cloudflare/think/tools/execute";
-const { runtime, connectors, tool } = createExecuteRuntime(this);await runtime.executions(); // audit trailawait runtime.expirePaused(); // reclaim stale never-approved pauses (call from a scheduled task)await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
+
+
+const { runtime, connectors, tool } = createExecuteRuntime(this);
+await runtime.executions(); // audit trail
+await runtime.expirePaused(); // reclaim stale never-approved pauses (call from a scheduled task)
+await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createExecuteRuntime } from "@cloudflare/think/tools/execute";
-const { runtime, connectors, tool } = createExecuteRuntime(this);await runtime.executions(); // audit trailawait runtime.expirePaused(); // reclaim stale never-approved pauses (call from a scheduled task)await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
+
+
+const { runtime, connectors, tool } = createExecuteRuntime(this);
+await runtime.executions(); // audit trail
+await runtime.expirePaused(); // reclaim stale never-approved pauses (call from a scheduled task)
+await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
 ```
 
 ## Browser tools
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-5753)
-* [  TypeScript ](#tab-panel-5754)
+* [  JavaScript ](#tab-panel-5929)
+* [  TypeScript ](#tab-panel-5930)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Think } from "@cloudflare/think";
+import { createBrowserTools } from "@cloudflare/think/tools/browser";
+
+
+export class MyAgent extends Think {
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      ...createBrowserTools({
+        ctx: this.ctx,
+        browser: this.env.BROWSER,
+        loader: this.env.LOADER,
+      }),
+    };
+  }
+}
 ```
-import { Think } from "@cloudflare/think";import { createBrowserTools } from "@cloudflare/think/tools/browser";
-export class MyAgent extends Think {  getModel() {    /* ... */  }
-  getTools() {    return {      ...createBrowserTools({        ctx: this.ctx,        browser: this.env.BROWSER,        loader: this.env.LOADER,      }),    };  }}
+
+**TypeScript**
+
+```ts
+import { Think } from "@cloudflare/think";
+import { createBrowserTools } from "@cloudflare/think/tools/browser";
+
+
+export class MyAgent extends Think<Env> {
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      ...createBrowserTools({
+        ctx: this.ctx,
+        browser: this.env.BROWSER,
+        loader: this.env.LOADER,
+      }),
+    };
+  }
+}
 ```
 
-TypeScript
+* [  wrangler.jsonc ](#tab-panel-5905)
+* [  wrangler.toml ](#tab-panel-5906)
 
+**JSONC**
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "browser": {
+    "binding": "BROWSER"
+  },
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ]
+}
 ```
-import { Think } from "@cloudflare/think";import { createBrowserTools } from "@cloudflare/think/tools/browser";
-export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
-  getTools() {    return {      ...createBrowserTools({        ctx: this.ctx,        browser: this.env.BROWSER,        loader: this.env.LOADER,      }),    };  }}
-```
 
-* [  wrangler.jsonc ](#tab-panel-5729)
-* [  wrangler.toml ](#tab-panel-5730)
+**TOML**
 
-JSONC
+```toml
+[browser]
+binding = "BROWSER"
 
-```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "browser": {    "binding": "BROWSER"  },  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
-```
 
-TOML
-
-```
-[browser]binding = "BROWSER"
-[[worker_loaders]]binding = "LOADER"
+[[worker_loaders]]
+binding = "LOADER"
 ```
 
 This adds the durable CDP tool plus stateless [Quick Action](https://developers.cloudflare.com/agents/tools/browser/#quick-actions) tools when a `browser` binding is present:
@@ -411,19 +692,27 @@ The simplest setup is the unified execute tool in [Code execution tool](#code-ex
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-5747)
-* [  TypeScript ](#tab-panel-5748)
+* [  JavaScript ](#tab-panel-5923)
+* [  TypeScript ](#tab-panel-5924)
 
-JavaScript
+**JavaScript**
 
+```js
+createBrowserTools({
+  ctx: this.ctx,
+  cdpUrl: "http://localhost:9222",
+  loader: this.env.LOADER,
+});
 ```
-createBrowserTools({  ctx: this.ctx,  cdpUrl: "http://localhost:9222",  loader: this.env.LOADER,});
-```
 
-TypeScript
+**TypeScript**
 
-```
-createBrowserTools({  ctx: this.ctx,  cdpUrl: "http://localhost:9222",  loader: this.env.LOADER,});
+```ts
+createBrowserTools({
+  ctx: this.ctx,
+  cdpUrl: "http://localhost:9222",
+  loader: this.env.LOADER,
+});
 ```
 
 For the full CDP connector API, refer to [Browse the web](https://developers.cloudflare.com/agents/tools/browser/).
@@ -434,46 +723,116 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-5751)
-* [  TypeScript ](#tab-panel-5752)
+* [  JavaScript ](#tab-panel-5927)
+* [  TypeScript ](#tab-panel-5928)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Think } from "@cloudflare/think";
-export class MyAgent extends Think {  extensionLoader = this.env.LOADER;
-  getModel() {    /* ... */  }}
+
+
+export class MyAgent extends Think {
+  extensionLoader = this.env.LOADER;
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Think } from "@cloudflare/think";
-export class MyAgent extends Think<Env> {  extensionLoader = this.env.LOADER;
-  getModel() {    /* ... */  }}
+
+
+export class MyAgent extends Think<Env> {
+  extensionLoader = this.env.LOADER;
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
 
 ### Static extensions
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-5763)
-* [  TypeScript ](#tab-panel-5764)
+* [  JavaScript ](#tab-panel-5939)
+* [  TypeScript ](#tab-panel-5940)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  extensionLoader = this.env.LOADER;
+
+
+  getModel() {
+    /* ... */
+  }
+
+
+  getExtensions() {
+    return [
+      {
+        manifest: {
+          name: "math",
+          version: "1.0.0",
+          permissions: { network: false },
+        },
+        source: `({
+          tools: {
+            add: {
+              description: "Add two numbers",
+              parameters: { a: { type: "number" }, b: { type: "number" } },
+              execute: async ({ a, b }) => ({ result: a + b })
+            }
+          }
+        })`,
+      },
+    ];
+  }
+}
 ```
-export class MyAgent extends Think {  extensionLoader = this.env.LOADER;
-  getModel() {    /* ... */  }
-  getExtensions() {    return [      {        manifest: {          name: "math",          version: "1.0.0",          permissions: { network: false },        },        source: `({          tools: {            add: {              description: "Add two numbers",              parameters: { a: { type: "number" }, b: { type: "number" } },              execute: async ({ a, b }) => ({ result: a + b })            }          }        })`,      },    ];  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Think<Env> {  extensionLoader = this.env.LOADER;
-  getModel() {    /* ... */  }
-  getExtensions() {    return [      {        manifest: {          name: "math",          version: "1.0.0",          permissions: { network: false },        },        source: `({          tools: {            add: {              description: "Add two numbers",              parameters: { a: { type: "number" }, b: { type: "number" } },              execute: async ({ a, b }) => ({ result: a + b })            }          }        })`,      },    ];  }}
+```ts
+export class MyAgent extends Think<Env> {
+  extensionLoader = this.env.LOADER;
+
+
+  getModel() {
+    /* ... */
+  }
+
+
+  getExtensions() {
+    return [
+      {
+        manifest: {
+          name: "math",
+          version: "1.0.0",
+          permissions: { network: false },
+        },
+        source: `({
+          tools: {
+            add: {
+              description: "Add two numbers",
+              parameters: { a: { type: "number" }, b: { type: "number" } },
+              execute: async ({ a, b }) => ({ result: a + b })
+            }
+          }
+        })`,
+      },
+    ];
+  }
+}
 ```
 
 Extension tools are namespaced — a `math` extension with an `add` tool becomes `math_add` in the model's tool set.
@@ -482,25 +841,55 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-5761)
-* [  TypeScript ](#tab-panel-5762)
+* [  JavaScript ](#tab-panel-5937)
+* [  TypeScript ](#tab-panel-5938)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createExtensionTools } from "@cloudflare/think/tools/extensions";
-export class MyAgent extends Think {  extensionLoader = this.env.LOADER;
-  getModel() {    /* ... */  }
-  getTools() {    return {      ...createExtensionTools({ manager: this.extensionManager }),      ...this.extensionManager.getTools(),    };  }}
+
+
+export class MyAgent extends Think {
+  extensionLoader = this.env.LOADER;
+
+
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      ...createExtensionTools({ manager: this.extensionManager }),
+      ...this.extensionManager.getTools(),
+    };
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createExtensionTools } from "@cloudflare/think/tools/extensions";
-export class MyAgent extends Think<Env> {  extensionLoader = this.env.LOADER;
-  getModel() {    /* ... */  }
-  getTools() {    return {      ...createExtensionTools({ manager: this.extensionManager! }),      ...this.extensionManager!.getTools(),    };  }}
+
+
+export class MyAgent extends Think<Env> {
+  extensionLoader = this.env.LOADER;
+
+
+  getModel() {
+    /* ... */
+  }
+
+
+  getTools() {
+    return {
+      ...createExtensionTools({ manager: this.extensionManager! }),
+      ...this.extensionManager!.getTools(),
+    };
+  }
+}
 ```
 
 This gives the model two tools:
@@ -512,10 +901,22 @@ This gives the model two tools:
 
 Extensions can declare context blocks in their manifest. These are automatically registered with the Session:
 
-TypeScript
+**TypeScript**
 
-```
-getExtensions() {  return [{    manifest: {      name: "notes",      version: "1.0.0",      permissions: { network: false },      context: [        { label: "scratchpad", description: "Extension scratch space", maxTokens: 500 },      ],    },    source: `({ tools: { /* ... */ } })`,  }];}
+```ts
+getExtensions() {
+  return [{
+    manifest: {
+      name: "notes",
+      version: "1.0.0",
+      permissions: { network: false },
+      context: [
+        { label: "scratchpad", description: "Extension scratch space", maxTokens: 500 },
+      ],
+    },
+    source: `({ tools: { /* ... */ } })`,
+  }];
+}
 ```
 
 The context block is registered as `notes_scratchpad` (namespaced by extension name).
@@ -524,58 +925,98 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-5755)
-* [  TypeScript ](#tab-panel-5756)
+* [  JavaScript ](#tab-panel-5931)
+* [  TypeScript ](#tab-panel-5932)
 
-JavaScript
+**JavaScript**
 
+```js
+import {
+  createReadTool,
+  createWriteTool,
+  createEditTool,
+  createListTool,
+  createFindTool,
+  createGrepTool,
+  createDeleteTool,
+  createWorkspaceTools,
+} from "@cloudflare/think/tools/workspace";
 ```
-import {  createReadTool,  createWriteTool,  createEditTool,  createListTool,  createFindTool,  createGrepTool,  createDeleteTool,  createWorkspaceTools,} from "@cloudflare/think/tools/workspace";
-```
 
-TypeScript
+**TypeScript**
 
-```
-import {  createReadTool,  createWriteTool,  createEditTool,  createListTool,  createFindTool,  createGrepTool,  createDeleteTool,  createWorkspaceTools,} from "@cloudflare/think/tools/workspace";
+```ts
+import {
+  createReadTool,
+  createWriteTool,
+  createEditTool,
+  createListTool,
+  createFindTool,
+  createGrepTool,
+  createDeleteTool,
+  createWorkspaceTools,
+} from "@cloudflare/think/tools/workspace";
 ```
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-5757)
-* [  TypeScript ](#tab-panel-5758)
+* [  JavaScript ](#tab-panel-5933)
+* [  TypeScript ](#tab-panel-5934)
 
-JavaScript
+**JavaScript**
 
-```
-const myReadOps = {  readFile: async (path) => fetchFromMyStorage(path),  stat: async (path) => getFileInfo(path),};
+```js
+const myReadOps = {
+  readFile: async (path) => fetchFromMyStorage(path),
+  stat: async (path) => getFileInfo(path),
+};
+
+
 const readTool = createReadTool({ ops: myReadOps });
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import type { ReadOperations } from "@cloudflare/think/tools/workspace";
-const myReadOps: ReadOperations = {  readFile: async (path) => fetchFromMyStorage(path),  stat: async (path) => getFileInfo(path),};
+
+
+const myReadOps: ReadOperations = {
+  readFile: async (path) => fetchFromMyStorage(path),
+  stat: async (path) => getFileInfo(path),
+};
+
+
 const readTool = createReadTool({ ops: myReadOps });
 ```
 
 Or create the full set from a `Workspace`, optionally disabling the Bash tool:
 
-* [  JavaScript ](#tab-panel-5759)
-* [  TypeScript ](#tab-panel-5760)
+* [  JavaScript ](#tab-panel-5935)
+* [  TypeScript ](#tab-panel-5936)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
-const tools = createWorkspaceTools(myCustomWorkspace);const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {  bash: false,});
+
+
+const tools = createWorkspaceTools(myCustomWorkspace);
+const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {
+  bash: false,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
-const tools = createWorkspaceTools(myCustomWorkspace);const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {  bash: false,});
+
+
+const tools = createWorkspaceTools(myCustomWorkspace);
+const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {
+  bash: false,
+});
 ```
 
 ```json

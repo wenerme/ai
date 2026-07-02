@@ -18,10 +18,13 @@ The main meeting activity that manages the full meeting lifecycle. Handles trans
 
 ### Basic Usage
 
-Kotlin
+**Kotlin**
 
-```
-val meetingInfo = RtkMeetingInfo(authToken = authToken, baseUrl = baseUrl)val realtimeKitUIInfo = RealtimeKitUIInfo(activity = this, rtkMeetingInfo = meetingInfo)val realtimeKitUI = RealtimeKitUIBuilder.build(realtimeKitUIInfo)realtimeKitUI.startMeeting()
+```kotlin
+val meetingInfo = RtkMeetingInfo(authToken = authToken, baseUrl = baseUrl)
+val realtimeKitUIInfo = RealtimeKitUIInfo(activity = this, rtkMeetingInfo = meetingInfo)
+val realtimeKitUI = RealtimeKitUIBuilder.build(realtimeKitUIInfo)
+realtimeKitUI.startMeeting()
 ```
 
 ```json

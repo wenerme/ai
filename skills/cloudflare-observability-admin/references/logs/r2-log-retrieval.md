@@ -74,10 +74,12 @@ Stream logs stored in R2 that match the provided query parameters, using the end
 
 ### Example API request
 
-Terminal window
-
-```
-curl --globoff "https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/retrieve?start=2022-06-01T16:00:00Z&end=2022-06-01T16:05:00Z&bucket=cloudflare-logs&prefix=http_requests/example.com/{DATE}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "R2-Access-Key-Id: R2_ACCESS_KEY_ID" \--header "R2-Secret-Access-Key: R2_SECRET_ACCESS_KEY"
+```bash
+curl --globoff "https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/retrieve?start=2022-06-01T16:00:00Z&end=2022-06-01T16:05:00Z&bucket=cloudflare-logs&prefix=http_requests/example.com/{DATE}" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+--header "R2-Access-Key-Id: R2_ACCESS_KEY_ID" \
+--header "R2-Secret-Access-Key: R2_SECRET_ACCESS_KEY"
 ```
 
 Results can be piped to a file using `> logs.json`.
@@ -98,10 +100,18 @@ Before executing your query, you can specify the time range you would like to in
 
 ### Example API request
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/rayids/index \--header "Authorization: Bearer <API_TOKEN>" \--header "R2-Access-Key-Id: <R2_ACCESS_KEY_ID>" \--header "R2-Secret-Access-Key: <R2_SECRET_ACCESS_KEY>" \--header "Content-Type: application/json" \--data-raw '{  "start": "2022-08-16T20:30:00Z",  "end": "2022-08-16T20:31:00",  "bucket": "cloudflare-logs",  "prefix": "http_requests/example.com/{DATE}"}'
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/rayids/index \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "R2-Access-Key-Id: <R2_ACCESS_KEY_ID>" \
+--header "R2-Secret-Access-Key: <R2_SECRET_ACCESS_KEY>" \
+--header "Content-Type: application/json" \
+--data-raw '{
+  "start": "2022-08-16T20:30:00Z",
+  "end": "2022-08-16T20:31:00",
+  "bucket": "cloudflare-logs",
+  "prefix": "http_requests/example.com/{DATE}"
+}'
 ```
 
 ## Lookup a RayID
@@ -110,10 +120,11 @@ After indexing a time range, perform a `GET` request with the RayID. If a matchi
 
 ### Example API request
 
-Terminal window
-
-```
-curl --globoff "https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/rayids/<RAY_ID>?bucket=cloudflare-logs&prefix=http_requests/example.com/{DATE}" \--header "Authorization: Bearer <API_TOKEN>" \--header "R2-Access-Key-Id: <R2_ACCESS_KEY_ID>" \--header "R2-Secret-Access-Key: <R2_SECRET_ACCESS_KEY>"
+```bash
+curl --globoff "https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/rayids/<RAY_ID>?bucket=cloudflare-logs&prefix=http_requests/example.com/{DATE}" \
+--header "Authorization: Bearer <API_TOKEN>" \
+--header "R2-Access-Key-Id: <R2_ACCESS_KEY_ID>" \
+--header "R2-Secret-Access-Key: <R2_SECRET_ACCESS_KEY>"
 ```
 
 ## Troubleshooting

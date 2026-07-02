@@ -20,13 +20,13 @@ This is the raw field version of the [http.response.headers](https://developers.
 
 Example value:
 
-```
+```txt
 {"server": ["nginx"]}
 ```
 
 Example usage:
 
-```
+```txt
 any(raw.http.response.headers["server"][*] == "nginx")
 ```
 

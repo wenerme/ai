@@ -38,16 +38,22 @@ A skeleton component used for composing custom controlbar buttons.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkControlBarButton    android:id="@+id/rtk_control_bar_button"    android:layout_width="wrap_content"    android:layout_height="wrap_content"    app:rtk_cbb_showText="true"    app:rtk_cbb_variant="button" />
+```xml
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkControlBarButton
+    android:id="@+id/rtk_control_bar_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:rtk_cbb_showText="true"
+    app:rtk_cbb_variant="button" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val buttonView = findViewById<RtkControlBarButton>(R.id.rtk_control_bar_button)buttonView.setOnClickListener { }
+```kotlin
+val buttonView = findViewById<RtkControlBarButton>(R.id.rtk_control_bar_button)
+buttonView.setOnClickListener { }
 ```
 
 ```json

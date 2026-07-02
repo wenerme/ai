@@ -20,9 +20,27 @@ Terraform code snippets below refer to the v4 SDK only.
 
 The following example defines a single configuration rule for a zone using Terraform. The rule disables Email Obfuscation and Browser Integrity Check for API requests.
 
-```
-# Disable a couple of Cloudflare settings for API requestsresource "cloudflare_ruleset" "http_config_rules_example" {  zone_id     = "<ZONE_ID>"  name        = "Config rules ruleset"  description = "Set configuration rules for incoming requests"  kind        = "zone"  phase       = "http_config_settings"
-  rules {    ref         = "disable_obfuscation_bic"    description = "Disable email obfuscation and BIC for API requests"    expression  = "(http.request.uri.path matches \"^/api/\")"    action      = "set_config"    action_parameters {      email_obfuscation = false      bic               = false    }  }}
+```tf
+# Disable a couple of Cloudflare settings for API requests
+resource "cloudflare_ruleset" "http_config_rules_example" {
+  zone_id     = "<ZONE_ID>"
+  name        = "Config rules ruleset"
+  description = "Set configuration rules for incoming requests"
+  kind        = "zone"
+  phase       = "http_config_settings"
+
+
+  rules {
+    ref         = "disable_obfuscation_bic"
+    description = "Disable email obfuscation and BIC for API requests"
+    expression  = "(http.request.uri.path matches \"^/api/\")"
+    action      = "set_config"
+    action_parameters {
+      email_obfuscation = false
+      bic               = false
+    }
+  }
+}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

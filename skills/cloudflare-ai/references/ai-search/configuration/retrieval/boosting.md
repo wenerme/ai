@@ -65,10 +65,18 @@ Specify `boost_by` as an array of up to 3 objects when creating or updating an i
 | field     | string | Yes      | Metadata field name or timestamp. Must match your schema. Case-insensitive. |
 | direction | string | No       | One of asc, desc, exists, not\_exists. Defaults by type.                    |
 
-TypeScript
+**TypeScript**
 
-```
-const instance = await env.AI_SEARCH.create({  id: "my-instance",  retrieval_options: {    boost_by: [      { field: "timestamp", direction: "desc" },      { field: "priority", direction: "desc" },    ],  },});
+```ts
+const instance = await env.AI_SEARCH.create({
+  id: "my-instance",
+  retrieval_options: {
+    boost_by: [
+      { field: "timestamp", direction: "desc" },
+      { field: "priority", direction: "desc" },
+    ],
+  },
+});
 ```
 
 To remove boosting, set `boost_by` to an empty array when updating the instance.
@@ -77,19 +85,35 @@ To remove boosting, set `boost_by` to an empty array when updating the instance.
 
 You can override `boost_by` on individual requests using `ai_search_options.retrieval`. Per-request values fully replace the instance-level default.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const instance = env.AI_SEARCH.get("my-instance");
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      boost_by: [{ field: "timestamp", direction: "desc" }],    },  },});
+
+
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      boost_by: [{ field: "timestamp", direction: "desc" }],
+    },
+  },
+});
 ```
 
 To disable boosting for a single request, pass an empty array:
 
-TypeScript
+**TypeScript**
 
-```
-const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      boost_by: [],    },  },});
+```ts
+const results = await instance.search({
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+  ai_search_options: {
+    retrieval: {
+      boost_by: [],
+    },
+  },
+});
 ```
 
 ## Common patterns

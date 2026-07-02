@@ -36,18 +36,20 @@ This individualized zone cache object differs from Cloudflare’s Global CDN. Fo
 
 The `caches.default` API is strongly influenced by the web browsers’ Cache API, but there are some important differences. For instance, Cloudflare Workers runtime exposes a single global cache object.
 
-JavaScript
+**JavaScript**
 
-```
-let cache = caches.default;await cache.match(request);
+```js
+let cache = caches.default;
+await cache.match(request);
 ```
 
 You may create and manage additional Cache instances via the [caches.open ↗](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open) method.
 
-JavaScript
+**JavaScript**
 
-```
-let myCache = await caches.open('custom:cache');await myCache.match(request);
+```js
+let myCache = await caches.open('custom:cache');
+await myCache.match(request);
 ```
 
 ---
@@ -81,9 +83,9 @@ Use the `Cache-Control` method to store the response without the `Set-Cookie` he
 
 ### `Put`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 cache.put(request, response);
 ```
 
@@ -127,9 +129,9 @@ This is a cache-poisoning mitigation. To cache redirect responses with query str
 
 ### `Match`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 cache.match(request, options);
 ```
 
@@ -176,9 +178,9 @@ If you use Cloudflare Logs, you may see these `504` responses with the `RequestS
 
 ### `Delete`
 
-JavaScript
+**JavaScript**
 
-```
+```js
 cache.delete(request, options);
 ```
 

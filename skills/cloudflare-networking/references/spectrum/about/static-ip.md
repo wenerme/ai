@@ -35,10 +35,31 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Create Spectrum application using a name for the origin
+**Create Spectrum application using a name for the origin**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "protocol": "tcp/80",    "dns": {        "type": "ADDRESS",        "name": "www.example.com"    },    "origin_direct": [        "tcp://192.0.2.1:80"    ],    "tls": "off",    "traffic_type": "http",    "edge_ips": {        "type": "static",        "ips": [            "198.51.100.10",            "2001:DB8::1"        ]    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "protocol": "tcp/80",
+    "dns": {
+        "type": "ADDRESS",
+        "name": "www.example.com"
+    },
+    "origin_direct": [
+        "tcp://192.0.2.1:80"
+    ],
+    "tls": "off",
+    "traffic_type": "http",
+    "edge_ips": {
+        "type": "static",
+        "ips": [
+            "198.51.100.10",
+            "2001:DB8::1"
+        ]
+    }
+  }'
 ```
 
 ## Check your static IPs

@@ -44,8 +44,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-7778)
-* [ Version 2026.1 and earlier ](#tab-panel-7779)
+* [ Version 2026.2+ ](#tab-panel-8031)
+* [ Version 2026.1 and earlier ](#tab-panel-8032)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -215,14 +215,13 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-7782)
-* [ Windows ](#tab-panel-7783)
-* [ Linux ](#tab-panel-7784)
+* [ macOS ](#tab-panel-8035)
+* [ Windows ](#tab-panel-8036)
+* [ Linux ](#tab-panel-8037)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
-Terminal window
-```
+```sh
 warp-diag
 ```
 
@@ -230,8 +229,7 @@ This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
 
 1. Open a Command Prompt or PowerShell window.
 2. Run the `warp-diag` tool:
-Terminal window
-```
+```bash
 C:\Users\JohnDoe>warp-diag
 ```
 
@@ -239,8 +237,7 @@ This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
-Terminal window
-```
+```sh
 warp-diag
 ```
 
@@ -287,7 +284,7 @@ Chapters
 
 Open the `warp-status.txt` file to review the status of the Cloudflare One Client connection when the `warp-diag` was collected. A connected Cloudflare One Client will appear as:
 
-```
+```plaintext
 Ok(Connected)
 ```
 
@@ -301,9 +298,38 @@ After you have checked client status, review the Cloudflare One Client's setting
 
 Find the client diagnostic logs on your desktop, and open the `warp-settings.txt` file. Review the following example `warp-settings.txt` file and the descriptions of its content below.
 
-```
-Merged configuration:(derived)   Always On: true(network policy)    Switch Locked: false # If false, does not allow the user to turn off the WARP toggle and disconnect the WARP client(network policy)    Mode: WarpWithDnsOverHttps # The device's WARP mode, this mode is WARP with Gateway mode(network policy)    WARP tunnel protocol: WireGuard(default)   Disabled for Wifi: false(default)   Disabled for Ethernet: false(reg defaults)  Resolve via: 1xx0x1011xx000000000f0x00000x11.cloudflare-gateway.com @ [1xx.1xx.1x.1, 1x01:1x00:1x00::1xx1] # The SNI Cloudflare will use and the IP address for DNS-over-HTTPS (DoH) requests(user set)  qlog logging: Enabled(default)   Onboarding: true # If true, the user sees an onboarding prompt when they first install the WARP client(network policy)    Exclude mode, with hosts/ips: # Split tunnel configuration  1xx.1xx.1xx.1xx/25 (zoom)...  cname.user.net
-(network policy)    Fallback domains: # Local domain fallback configuration  intranet...  test(not set)   Daemon Teams Auth: false(network policy)    Disable Auto Fallback: false(network policy)    Captive Portal: 180(network policy)    Support URL: my-organizations-support-portal.com # Your organization's support portal or IT help desk(user set)  Organization: Organization-Name(network policy)    Allow Mode Switch: true  # The user is allowed to switch between WARP modes(network policy)    Allow Updates: false # WARP client will not perform update checks(network policy)    Allowed to Leave Org: true(api defaults)  Known apple connectivity check IPs: xx.xxx.0.0/16;(network policy)    LAN Access Settings: Allowed until reconnect on a /24 subnet # The maximum size of network that will be allowed when Access Lan is clicked.(network policy)    Profile ID: 000000x1-00x1-1xx0-1xx1-11101x1axx11
+```txt
+Merged configuration:
+(derived)   Always On: true
+(network policy)    Switch Locked: false # If false, does not allow the user to turn off the WARP toggle and disconnect the WARP client
+(network policy)    Mode: WarpWithDnsOverHttps # The device's WARP mode, this mode is WARP with Gateway mode
+(network policy)    WARP tunnel protocol: WireGuard
+(default)   Disabled for Wifi: false
+(default)   Disabled for Ethernet: false
+(reg defaults)  Resolve via: 1xx0x1011xx000000000f0x00000x11.cloudflare-gateway.com @ [1xx.1xx.1x.1, 1x01:1x00:1x00::1xx1] # The SNI Cloudflare will use and the IP address for DNS-over-HTTPS (DoH) requests
+(user set)  qlog logging: Enabled
+(default)   Onboarding: true # If true, the user sees an onboarding prompt when they first install the WARP client
+(network policy)    Exclude mode, with hosts/ips: # Split tunnel configuration
+  1xx.1xx.1xx.1xx/25 (zoom)
+...
+  cname.user.net
+
+
+(network policy)    Fallback domains: # Local domain fallback configuration
+  intranet
+...
+  test
+(not set)   Daemon Teams Auth: false
+(network policy)    Disable Auto Fallback: false
+(network policy)    Captive Portal: 180
+(network policy)    Support URL: my-organizations-support-portal.com # Your organization's support portal or IT help desk
+(user set)  Organization: Organization-Name
+(network policy)    Allow Mode Switch: true  # The user is allowed to switch between WARP modes
+(network policy)    Allow Updates: false # WARP client will not perform update checks
+(network policy)    Allowed to Leave Org: true
+(api defaults)  Known apple connectivity check IPs: xx.xxx.0.0/16;
+(network policy)    LAN Access Settings: Allowed until reconnect on a /24 subnet # The maximum size of network that will be allowed when Access Lan is clicked.
+(network policy)    Profile ID: 000000x1-00x1-1xx0-1xx1-11101x1axx11
 ```
 
 Quick debugging
@@ -318,7 +344,7 @@ Review the meanings of the fields in `warp-settings.txt` that are relevant to tr
 
 Refers to the current state of the connection toggle in the GUI. In the example file, the toggle is switched on.
 
-```
+```txt
 Always On: true
 ```
 
@@ -326,7 +352,7 @@ Always On: true
 
 Refers to the [Lock device client switch](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#lock-device-client-switch) which allows the user to use the client's connection toggle and disconnect the client. In the example file, the value is `false` meaning the user is able to connect or disconnect at their discretion.
 
-```
+```txt
 Switch Locked: false
 ```
 
@@ -336,7 +362,7 @@ When **Lock device client switch** is enabled (`true`), users will need an [admi
 
 Refers to the [client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) the device is using. In the example file, the client mode is `WarpWithDnsOverHttps` which is Traffic and DNS mode. Refer to the [client modes comparison matrix](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) to match your `warp-settings.txt` file's value with the mode name.
 
-```
+```txt
 Mode: WarpWithDnsOverHttps
 ```
 
@@ -344,8 +370,11 @@ Mode: WarpWithDnsOverHttps
 
 Refers to your [split tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) settings. In the example file, the Cloudflare One Client is running in Exclude mode, meaning all traffic except for the traffic destined for these hosts and IPs will be sent through the WARP tunnel. The host `cname.user.net` and the IP `1xx.1xx.1xx.1xx/25 ` are both excluded from the WARP tunnel.
 
-```
-Exclude mode, with hosts/ips:  1xx.1xx.1xx.1xx/25 (zoom)...  cname.user.net
+```txt
+Exclude mode, with hosts/ips:
+  1xx.1xx.1xx.1xx/25 (zoom)
+...
+  cname.user.net
 ```
 
 Exclude mode versus Include mode
@@ -358,15 +387,17 @@ Exclude mode versus Include mode
 
 Refers to your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) settings. In the example file, the Cloudflare One Client lists `intranet` as a domain that will not be sent to Gateway for processing and will instead be sent directly to the configured fallback servers.
 
-```
-(network policy)    Fallback domains:  intranet...
+```txt
+(network policy)    Fallback domains:
+  intranet
+...
 ```
 
 ##### Allow Mode Switch
 
 Refers to the [Mode switch](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#mode-switch) setting. In the example file, the mode switch is enabled (`true`) which means the user has the option to switch between [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) mode and [Gateway with DNS-over-HTTPS (DoH)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) mode.
 
-```
+```txt
 Allow Mode Switch: true
 ```
 
@@ -374,7 +405,7 @@ Allow Mode Switch: true
 
 Refers to the [Allow updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-updates) setting. In the example file, the allow updates setting is set to `false` meaning that the user will not receive update notifications when a new version of the Cloudflare One Client is available and cannot update the client without administrator approval.
 
-```
+```txt
 Allow Updates: false
 ```
 
@@ -382,7 +413,7 @@ Allow Updates: false
 
 Refers to the [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) setting. In the example file, the value is set to `true` meaning the user can log out from your Zero Trust organization.
 
-```
+```txt
 Allowed to Leave Org: true
 ```
 
@@ -390,7 +421,7 @@ Allowed to Leave Org: true
 
 Refers to the [Allow users to enable local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) setting. When enabled, it allows users to temporarily access local devices (like printers) by excluding the detected local subnet from the WARP tunnel. This example indicates access is allowed until the next client reconnection, and only for subnets up to `/24`.
 
-```
+```txt
 LAN Access Settings: Allowed until reconnect on a /24 subnet
 ```
 
@@ -398,7 +429,7 @@ LAN Access Settings: Allowed until reconnect on a /24 subnet
 
 Refers to the [Device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) a device is using. In this example, the ID is `000000x1-00x1-1xx0-1xx1-11101x1axx11`.
 
-```
+```txt
 Profile ID: 000000x1-00x1-1xx0-1xx1-11101x1axx11
 ```
 
@@ -451,12 +482,11 @@ When troubleshooting the Cloudflare One Client for managed network issues:
 1. Verify the endpoint is reachable.
 The Cloudflare One Client connects to the TLS endpoint to identify the network. If the endpoint is down or unreachable, the Cloudflare One Client will fail to detect the network and apply the wrong profile.
 To test connectivity and obtain the SHA-256 fingerprint of a remote server:
-Terminal window
-```
+```sh
 openssl s_client -connect <private-server-IP>:443 < /dev/null 2> /dev/null | openssl x509 -noout -fingerprint -sha256 | tr -d :
 ```
 The output will look something like:
-```
+```txt
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
 ```
 If the endpoint is down, you will receive a `Could not find certificate from <stdin>` response.
@@ -548,8 +578,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-7780)
-* [ Version 2026.1 and earlier ](#tab-panel-7781)
+* [ Version 2026.2+ ](#tab-panel-8033)
+* [ Version 2026.1 and earlier ](#tab-panel-8034)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -577,8 +607,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-7785)
-* [ Version 2026.1 and earlier ](#tab-panel-7786)
+* [ Version 2026.2+ ](#tab-panel-8038)
+* [ Version 2026.1 and earlier ](#tab-panel-8039)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**

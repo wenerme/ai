@@ -26,8 +26,8 @@ Credentials sent over plain HTTP are visible to anyone on the network path betwe
 
 Always Use HTTPS redirects all visitor requests from `http` to `https` for all subdomains and hosts.
 
-* [ Dashboard ](#tab-panel-11136)
-* [ API ](#tab-panel-11137)
+* [ Dashboard ](#tab-panel-11431)
+* [ API ](#tab-panel-11432)
 
 To enable **Always Use HTTPS** in the dashboard:
 
@@ -58,8 +58,8 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
-* [  New dashboard ](#tab-panel-11138)
-* [ Old dashboard ](#tab-panel-11139)
+* [  New dashboard ](#tab-panel-11433)
+* [ Old dashboard ](#tab-panel-11434)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -86,8 +86,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-11140)
-* [ Old dashboard ](#tab-panel-11141)
+* [  New dashboard ](#tab-panel-11435)
+* [ Old dashboard ](#tab-panel-11436)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -158,9 +158,20 @@ You need both the sitekey and secret key in the following steps.
 
 Add the Turnstile script and widget container to your login form. Replace `<YOUR-SITE-KEY>` with the sitekey from the previous step.
 
-```
-<form id="login-form">  <input type="text" id="username" placeholder="Username" required />  <input type="password" id="password" placeholder="Password" autocomplete="off" required />  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>  <button type="submit">Log in</button></form>
-<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js"  async  defer></script>
+```html
+<form id="login-form">
+  <input type="text" id="username" placeholder="Username" required />
+  <input type="password" id="password" placeholder="Password" autocomplete="off" required />
+  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
+  <button type="submit">Log in</button>
+</form>
+
+
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
 ```
 
 The widget renders inside the `div` and produces a token when the visitor passes the challenge. When the form is submitted, a `cf-turnstile-response` token is included in the form data.
@@ -169,12 +180,37 @@ The widget renders inside the `div` and produces a token when the visitor passes
 
 Before processing the form submission, send the token to the Turnstile siteverify endpoint to confirm the visitor passed the challenge.
 
-server.js
+**server.js**
 
-```
+```js
 const SECRET_KEY = "<YOUR-SECRET-KEY>";
-async function validateTurnstile(token, remoteip) {  try {    const response = await fetch(      "https://challenges.cloudflare.com/turnstile/v0/siteverify",      {        method: "POST",        headers: {          "Content-Type": "application/json",        },        body: JSON.stringify({          secret: SECRET_KEY,          response: token,          remoteip: remoteip,        }),      },    );
-    const result = await response.json();    return result;  } catch (error) {    console.error("Turnstile validation error:", error);    return { success: false, "error-codes": ["internal-error"] };  }}
+
+
+async function validateTurnstile(token, remoteip) {
+  try {
+    const response = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          secret: SECRET_KEY,
+          response: token,
+          remoteip: remoteip,
+        }),
+      },
+    );
+
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Turnstile validation error:", error);
+    return { success: false, "error-codes": ["internal-error"] };
+  }
+}
 ```
 
 Replace `"<YOUR-SECRET-KEY>"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
@@ -219,7 +255,7 @@ Note
 
 (Optional) To count only failed login attempts instead of all matching requests, Business plan and above users can add a separate counting expression under **Increment counter when**:
 
-```
+```txt
 http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}
 ```
 
@@ -253,10 +289,10 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-11142)
-* [ Old dashboard ](#tab-panel-11143)
-* [ API ](#tab-panel-11144)
-* [ Terraform ](#tab-panel-11145)
+* [  New dashboard ](#tab-panel-11437)
+* [ Old dashboard ](#tab-panel-11438)
+* [ API ](#tab-panel-11439)
+* [ Terraform ](#tab-panel-11440)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -275,16 +311,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-Set Leaked Credential Checks Status
+**Set Leaked Credential Checks Status**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enabled": true
+  }'
 ```
 
 Use the `cloudflare_leaked_credential_check` resource to enable leaked credentials detection for a zone. For example:
 
-```
-resource "cloudflare_leaked_credential_check" "zone_lcc_example" {  zone_id = var.cloudflare_zone_id  enabled = true}
+```terraform
+resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
+  zone_id = var.cloudflare_zone_id
+  enabled = true
+}
 ```
 
 After turning on the detection, your origin server can receive leaked credential status via the `Exposed-Credential-Check` request header. To forward this header, turn on the [Add leaked credentials checks header](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#add-leaked-credentials-checks-header) managed transform. Your origin can then trigger a password reset for affected users.
@@ -302,7 +346,7 @@ Before deploying rules that challenge or block login traffic, create a skip rule
 2. Select **Create rule** and choose **Custom rules**.
 3. Enter a name for the rule (for example, "Skip login rules for known clients").
 4. Select **Edit expression** and enter an expression that matches your legitimate automated traffic. For example, to skip verified bots and a specific monitoring service IP:
-```
+```txt
 (cf.client.bot) or (ip.src eq 198.51.100.1)
 ```
 Replace `198.51.100.1` with the IP address of your monitoring service. Add additional conditions for other known clients.
@@ -325,7 +369,7 @@ The Application Security Managed Ruleset includes rules for empty user-agents, b
 2. Select **Create rule** and choose **Custom rules**.
 3. Enter a name for the rule (for example, "Challenge empty UA on login").
 4. Select **Edit expression** and enter:
-```
+```txt
 (http.request.uri.path eq "/login" and http.request.method eq "POST" and len(http.user_agent) eq 0)
 ```
 Replace `/login` with your login endpoint path.
@@ -340,7 +384,7 @@ Combine rate limiting with leaked credentials detection to throttle login attemp
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Enter a name for the rule (for example, "Rate limit leaked credentials").
 3. Under **When incoming requests match**, enter the following expression:
-```
+```txt
 http.request.uri.path eq "/login" and http.request.method eq "POST" and cf.waf.credential_check.password_leaked
 ```
 Replace `/login` with your login endpoint path.
@@ -390,7 +434,7 @@ Bot traffic analytics show bot score distribution on your login endpoint over ti
 
 Cloudflare classifies bot traffic into categories based on bot scores and verification status:
 
-* **Verified bots**: Crawlers and services that Cloudflare has confirmed as legitimate, such as Googlebot, Bingbot, and uptime monitors. Cloudflare maintains a [verified bot list](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/policy/) with strict requirements.
+* **Verified bots**: Crawlers and services that Cloudflare has confirmed as legitimate, such as Googlebot, Bingbot, and uptime monitors. Cloudflare maintains a [verified bot list](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) with strict requirements.
 * **Automated** (score 1): Cloudflare is quite certain the request is automated.
 * **Likely automated** (scores 2-29): Probably a bot. This category and Automated are the primary targets for security rules, including scrapers, credential stuffing tools, and spam submitters.
 * **Likely human** (scores 30-99): These requests appear to come from real users. Do not challenge or block this traffic.

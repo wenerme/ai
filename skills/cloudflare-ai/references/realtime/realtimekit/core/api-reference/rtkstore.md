@@ -16,9 +16,9 @@ This module represents a single global store. The store can be accessed from the
 **Returns**: An instance of RTKStore.
 **Example**
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const handRaiseRTKStore = meeting.stores.stores.get('handRaise');
 ```
 

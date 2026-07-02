@@ -16,29 +16,26 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To estimate the amount of data for a zone per day (the number of log lines and the amount of bytes they take up), request a 1% or 10% sample of data for a 1-hour period (use 10% if your volume is low). Note that `start=2018-12-15T00:00:00Z` and `end=2018-12-15T01:00:00Z` span a 1-hour period, and `sample=0.1`.
 
-Terminal window
-
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2018-12-15T00:00:00Z&end=2018-12-15T01:00:00Z&sample=0.1" \
+--header "X-Auth-Email: <EMAIL>" \
+--header "X-Auth-Key: <API_KEY>" \
+> sample.log
 ```
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2018-12-15T00:00:00Z&end=2018-12-15T01:00:00Z&sample=0.1" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \> sample.log
-```
 
-Terminal window
-
-```
+```bash
 wc -l sample.log
 ```
 
-```
+```bash
 83 sample.log
 ```
 
-Terminal window
-
-```
+```bash
 ls -lh sample.log
 ```
 
-```
+```bash
 -rw-r--r-- 1 mik mik 25K Dec 17 15:49 sample.log
 ```
 

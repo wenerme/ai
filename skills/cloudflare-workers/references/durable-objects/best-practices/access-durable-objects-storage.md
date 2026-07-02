@@ -38,19 +38,30 @@ Only Durable Object classes with a SQLite storage backend can access SQL API.
 
 Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8307)
-* [  wrangler.toml ](#tab-panel-8308)
+* [  wrangler.jsonc ](#tab-panel-8590)
+* [  wrangler.toml ](#tab-panel-8591)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "migrations": [
+    {
+      "tag": "v1", // Should be unique for each entry
+      "new_sqlite_classes": [ // Array of new classes
+        "MyDurableObject"
+      ]
+    }
+  ]
+}
 ```
-{  "migrations": [    {      "tag": "v1", // Should be unique for each entry      "new_sqlite_classes": [ // Array of new classes        "MyDurableObject"      ]    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[migrations]]tag = "v1"new_sqlite_classes = [ "MyDurableObject" ]
+```toml
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "MyDurableObject" ]
 ```
 
 [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) is available on `ctx.storage.sql` parameter passed to the Durable Object constructor.
@@ -61,14 +72,33 @@ SQLite-backed Durable Objects also offer [point-in-time recovery API](https://de
 
 A common pattern is to initialize a Durable Object from [persistent storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) and set instance variables the first time it is accessed. Since future accesses are routed to the same Durable Object, it is then possible to return any initialized values without making further calls to persistent storage.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export class Counter extends DurableObject {  value: number;
-  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);
-    // `blockConcurrencyWhile()` ensures no requests are delivered until    // initialization completes.    ctx.blockConcurrencyWhile(async () => {      // After initialization, future reads do not need to access storage.      this.value = (await ctx.storage.get("value")) || 0;    });  }
-  async getCounterValue() {    return this.value;  }}
+
+
+export class Counter extends DurableObject {
+  value: number;
+
+
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+
+
+    // `blockConcurrencyWhile()` ensures no requests are delivered until
+    // initialization completes.
+    ctx.blockConcurrencyWhile(async () => {
+      // After initialization, future reads do not need to access storage.
+      this.value = (await ctx.storage.get("value")) || 0;
+    });
+  }
+
+
+  async getCounterValue() {
+    return this.value;
+  }
+}
 ```
 
 ### Remove a Durable Object's storage
@@ -77,95 +107,168 @@ A Durable Object fully ceases to exist if, when it shuts down, its storage is em
 
 However if you ever write using [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), including setting alarms, then you must explicitly call [storage.deleteAll()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall) to empty storage and [storage.deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deletealarm) if you've configured an alarm. It is not sufficient to simply delete the specific data that you wrote, such as deleting a key or dropping a table, as some metadata may remain. The only way to remove all storage is to call `deleteAll()`. Calling `deleteAll()` ensures that a Durable Object will not be billed for storage.
 
-TypeScript
+**TypeScript**
 
-```
-export class MyDurableObject extends DurableObject<Env> {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-  // Clears Durable Object storage  async clearDo(): Promise<void> {    // If you've configured a Durable Object alarm    await this.ctx.storage.deleteAlarm();
-    // This will delete all the storage associated with this Durable Object instance    // This will also delete the Durable Object instance itself    await this.ctx.storage.deleteAll();  }}
+```ts
+export class MyDurableObject extends DurableObject<Env> {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+  // Clears Durable Object storage
+  async clearDo(): Promise<void> {
+    // If you've configured a Durable Object alarm
+    await this.ctx.storage.deleteAlarm();
+
+
+    // This will delete all the storage associated with this Durable Object instance
+    // This will also delete the Durable Object instance itself
+    await this.ctx.storage.deleteAll();
+  }
+}
 ```
 
 ## SQL API Examples
 
 [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) examples below use the following SQL schema:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export class MyDurableObject extends DurableObject {  sql: SqlStorage  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);    this.sql = ctx.storage.sql;
-    this.sql.exec(`CREATE TABLE IF NOT EXISTS artist(      artistid    INTEGER PRIMARY KEY,      artistname  TEXT    );INSERT INTO artist (artistid, artistname) VALUES      (123, 'Alice'),      (456, 'Bob'),      (789, 'Charlie');`    );  }}
+
+
+export class MyDurableObject extends DurableObject {
+  sql: SqlStorage
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.sql = ctx.storage.sql;
+
+
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS artist(
+      artistid    INTEGER PRIMARY KEY,
+      artistname  TEXT
+    );INSERT INTO artist (artistid, artistname) VALUES
+      (123, 'Alice'),
+      (456, 'Bob'),
+      (789, 'Charlie');`
+    );
+  }
+}
 ```
 
 Iterate over query results as row objects:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
   let cursor = this.sql.exec("SELECT * FROM artist;");
-  for (let row of cursor) {    // Iterate over row object and do something  }
+
+
+  for (let row of cursor) {
+    // Iterate over row object and do something
+  }
 ```
 
 Convert query results to an array of row objects:
 
-TypeScript
+**TypeScript**
 
-```
-  // Return array of row objects: [{"artistid":123,"artistname":"Alice"},{"artistid":456,"artistname":"Bob"},{"artistid":789,"artistname":"Charlie"}]  let resultsArray1 = this.sql.exec("SELECT * FROM artist;").toArray();  // OR  let resultsArray2 = Array.from(this.sql.exec("SELECT * FROM artist;"));  // OR  let resultsArray3 = [...this.sql.exec("SELECT * FROM artist;")]; // JavaScript spread syntax
+```ts
+  // Return array of row objects: [{"artistid":123,"artistname":"Alice"},{"artistid":456,"artistname":"Bob"},{"artistid":789,"artistname":"Charlie"}]
+  let resultsArray1 = this.sql.exec("SELECT * FROM artist;").toArray();
+  // OR
+  let resultsArray2 = Array.from(this.sql.exec("SELECT * FROM artist;"));
+  // OR
+  let resultsArray3 = [...this.sql.exec("SELECT * FROM artist;")]; // JavaScript spread syntax
 ```
 
 Convert query results to an array of row values arrays:
 
-TypeScript
+**TypeScript**
 
-```
-  // Returns [[123,"Alice"],[456,"Bob"],[789,"Charlie"]]  let cursor = this.sql.exec("SELECT * FROM artist;");  let resultsArray = cursor.raw().toArray();
-  // Returns ["artistid","artistname"]  let columnNameArray = this.sql.exec("SELECT * FROM artist;").columnNames.toArray();
+```ts
+  // Returns [[123,"Alice"],[456,"Bob"],[789,"Charlie"]]
+  let cursor = this.sql.exec("SELECT * FROM artist;");
+  let resultsArray = cursor.raw().toArray();
+
+
+  // Returns ["artistid","artistname"]
+  let columnNameArray = this.sql.exec("SELECT * FROM artist;").columnNames.toArray();
 ```
 
 Get first row object of query results:
 
-TypeScript
+**TypeScript**
 
-```
-  // Returns {"artistid":123,"artistname":"Alice"}  let firstRow = this.sql.exec("SELECT * FROM artist ORDER BY artistname DESC;").toArray()[0];
+```ts
+  // Returns {"artistid":123,"artistname":"Alice"}
+  let firstRow = this.sql.exec("SELECT * FROM artist ORDER BY artistname DESC;").toArray()[0];
 ```
 
 Check if query results have exactly one row:
 
-TypeScript
+**TypeScript**
 
-```
-  // returns error  this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;").one();
-  // returns { artistid: 123, artistname: 'Alice' }  let oneRow = this.sql.exec("SELECT * FROM artist WHERE artistname = ?;", "Alice").one()
+```ts
+  // returns error
+  this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;").one();
+
+
+  // returns { artistid: 123, artistname: 'Alice' }
+  let oneRow = this.sql.exec("SELECT * FROM artist WHERE artistname = ?;", "Alice").one()
 ```
 
 Returned cursor behavior:
 
-TypeScript
+**TypeScript**
 
-```
-  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");  let result = cursor.next();  if (!result.done) {    console.log(result.value); // prints { artistid: 123, artistname: 'Alice' }  } else {    // query returned zero results  }
-  let remainingRows = cursor.toArray();  console.log(remainingRows); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
+```ts
+  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
+  let result = cursor.next();
+  if (!result.done) {
+    console.log(result.value); // prints { artistid: 123, artistname: 'Alice' }
+  } else {
+    // query returned zero results
+  }
+
+
+  let remainingRows = cursor.toArray();
+  console.log(remainingRows); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 Returned cursor and `raw()` iterator iterate over the same query results:
 
-TypeScript
+**TypeScript**
 
-```
-  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");  let result = cursor.raw().next();
-  if (!result.done) {    console.log(result.value); // prints [ 123, 'Alice' ]  } else {    // query returned zero results  }
+```ts
+  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
+  let result = cursor.raw().next();
+
+
+  if (!result.done) {
+    console.log(result.value); // prints [ 123, 'Alice' ]
+  } else {
+    // query returned zero results
+  }
+
+
   console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 `sql.exec().rowsRead()`:
 
-TypeScript
+**TypeScript**
 
-```
-  let cursor = this.sql.exec("SELECT * FROM artist;");  cursor.next()  console.log(cursor.rowsRead); // prints 1
-  cursor.toArray(); // consumes remaining cursor  console.log(cursor.rowsRead); // prints 3
+```ts
+  let cursor = this.sql.exec("SELECT * FROM artist;");
+  cursor.next()
+  console.log(cursor.rowsRead); // prints 1
+
+
+  cursor.toArray(); // consumes remaining cursor
+  console.log(cursor.rowsRead); // prints 3
 ```
 
 ## TypeScript and query results
@@ -180,22 +283,63 @@ Your type must conform to the shape of a TypeScript [Record ↗](https://www.typ
 
 For example,
 
-TypeScript
+**TypeScript**
 
-```
-type User = {  id: string;  name: string;  email_address: string;  version: number;};
+```ts
+type User = {
+  id: string;
+  name: string;
+  email_address: string;
+  version: number;
+};
 ```
 
 This type can then be passed as the type parameter to a `sql.exec()` call:
 
-TypeScript
+**TypeScript**
 
-```
-// The type parameter is passed between angle brackets before the function argument:const result = this.ctx.storage.sql  .exec<User>(    "SELECT id, name, email_address, version FROM users WHERE id = ?",    user_id,  )  .one();// result will now have a type of "User"
-// Alternatively, if you are iterating over results using a cursorlet cursor = this.sql.exec<User>(  "SELECT id, name, email_address, version FROM users WHERE id = ?",  user_id,);for (let row of cursor) {  // Each row object will be of type User}
-// Or, if you are using raw() to convert results into an array, define an array type:type UserRow = [  id: string,  name: string,  email_address: string,  version: number,];
-// ... and then pass it as the type argument to the raw() method:let cursor = sql  .exec(    "SELECT id, name, email_address, version FROM users WHERE id = ?",    user_id,  )  .raw<UserRow>();
-for (let row of cursor) {  // row is of type User}
+```ts
+// The type parameter is passed between angle brackets before the function argument:
+const result = this.ctx.storage.sql
+  .exec<User>(
+    "SELECT id, name, email_address, version FROM users WHERE id = ?",
+    user_id,
+  )
+  .one();
+// result will now have a type of "User"
+
+
+// Alternatively, if you are iterating over results using a cursor
+let cursor = this.sql.exec<User>(
+  "SELECT id, name, email_address, version FROM users WHERE id = ?",
+  user_id,
+);
+for (let row of cursor) {
+  // Each row object will be of type User
+}
+
+
+// Or, if you are using raw() to convert results into an array, define an array type:
+type UserRow = [
+  id: string,
+  name: string,
+  email_address: string,
+  version: number,
+];
+
+
+// ... and then pass it as the type argument to the raw() method:
+let cursor = sql
+  .exec(
+    "SELECT id, name, email_address, version FROM users WHERE id = ?",
+    user_id,
+  )
+  .raw<UserRow>();
+
+
+for (let row of cursor) {
+  // row is of type User
+}
 ```
 
 You can represent the shape of any result type you wish, including more complex types. If you are performing a `JOIN` across multiple tables, you can compose a type that reflects the results of your queries.

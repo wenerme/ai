@@ -62,21 +62,39 @@ Run `vite dev`, then press `t + Enter` to start or close the tunnel. Add `tunnel
 
 To use a named tunnel with stable hostnames:
 
-* [  JavaScript ](#tab-panel-11942)
-* [  TypeScript ](#tab-panel-11943)
+* [  JavaScript ](#tab-panel-12197)
+* [  TypeScript ](#tab-panel-12198)
 
-vite.config.js
+**vite.config.js**
 
+```js
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflare({
+      tunnel: { name: "my-tunnel" },
+    }),
+  ],
+});
 ```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
-```
 
-vite.config.ts
+**vite.config.ts**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  plugins: [
+    cloudflare({
+      tunnel: { name: "my-tunnel" },
+    }),
+  ],
+});
 ```
 
 If you want the tunnel to open automatically when Vite starts, set `tunnel.autoStart` to `true`.
@@ -88,21 +106,55 @@ When using `vite preview`, Vite's preview host validation still applies:
 
 For example:
 
-* [  JavaScript ](#tab-panel-11944)
-* [  TypeScript ](#tab-panel-11945)
+* [  JavaScript ](#tab-panel-12199)
+* [  TypeScript ](#tab-panel-12200)
 
-vite.config.js
+**vite.config.js**
 
+```js
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  preview: {
+    allowedHosts: [
+      // For Quick tunnels:
+      ".trycloudflare.com",
+      // For named tunnels:
+      ".my-domain.com",
+    ],
+  },
+  plugins: [
+    cloudflare({
+      tunnel: { name: "my-tunnel" },
+    }),
+  ],
+});
 ```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  preview: {    allowedHosts: [      // For Quick tunnels:      ".trycloudflare.com",      // For named tunnels:      ".my-domain.com",    ],  },  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
-```
 
-vite.config.ts
+**vite.config.ts**
 
-```
-import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
-export default defineConfig({  preview: {    allowedHosts: [      // For Quick tunnels:      ".trycloudflare.com",      // For named tunnels:      ".my-domain.com"    ],  },  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+  preview: {
+    allowedHosts: [
+      // For Quick tunnels:
+      ".trycloudflare.com",
+      // For named tunnels:
+      ".my-domain.com"
+    ],
+  },
+  plugins: [
+    cloudflare({
+      tunnel: { name: "my-tunnel" },
+    }),
+  ],
+});
 ```
 
 ## Security considerations

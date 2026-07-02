@@ -57,7 +57,7 @@ For setup, select the following options:
   * For _Do you want to use git for version control?_, choose `Yes`.
   * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
 2. Change into your new project directory to start developing:
-```
+```sh
 cd d1-http
 ```
 
@@ -86,13 +86,13 @@ You need an API key to make authenticated calls to the API. To ensure that the A
 
 1. For local development, create a `.dev.vars` file in the root directory of `d1-http`.
 2. Add your API key in the file as follows.
-.dev.vars
-```
+
+**.dev.vars**
+```bash
 API_KEY="YOUR_API_KEY"
 ```
 Replace `YOUR_API_KEY` with a valid string value. You can also generate this value using the following command.
-Terminal window
-```
+```sh
 openssl rand -base64 32
 ```
 
@@ -108,23 +108,39 @@ To initialize the application, you need to import the required packages, initial
 * [Logger ↗](https://hono.dev/docs/middleware/builtin/logger): Allows monitoring the flow of requests and responses.
 * [Pretty JSON ↗](https://hono.dev/docs/middleware/builtin/pretty-json): Enables "JSON pretty print" for JSON response bodies.
 1. Replace the contents of the `src/index.ts` file with the code below.
-src/index.ts
-```
-import { Hono } from "hono";import { bearerAuth } from "hono/bearer-auth";import { logger } from "hono/logger";import { prettyJSON } from "hono/pretty-json";
-type Bindings = {  API_KEY: string;};
+
+**src/index.ts**
+```ts
+import { Hono } from "hono";
+import { bearerAuth } from "hono/bearer-auth";
+import { logger } from "hono/logger";
+import { prettyJSON } from "hono/pretty-json";
+type Bindings = {
+  API_KEY: string;
+};
 const app = new Hono<{ Bindings: Bindings }>();
-app.use("*", prettyJSON(), logger(), async (c, next) => {  const auth = bearerAuth({ token: c.env.API_KEY });  return auth(c, next);});
+app.use("*", prettyJSON(), logger(), async (c, next) => {
+  const auth = bearerAuth({ token: c.env.API_KEY });
+  return auth(c, next);
+});
 ```
 
 ## 5\. Add API endpoints
 
 1. Add the following snippet into your `src/index.ts`.
-src/index.ts
-```
+
+**src/index.ts**
+```ts
 // Paste this code at the end of the src/index.ts file
-app.post("/api/all", async (c) => {  return c.text("/api/all endpoint");});
-app.post("/api/exec", async (c) => {  return c.text("/api/exec endpoint");});
-app.post("/api/batch", async (c) => {  return c.text("/api/batch endpoint");});
+app.post("/api/all", async (c) => {
+  return c.text("/api/all endpoint");
+});
+app.post("/api/exec", async (c) => {
+  return c.text("/api/exec endpoint");
+});
+app.post("/api/batch", async (c) => {
+  return c.text("/api/batch endpoint");
+});
 export default app;
 ```
 This adds the following endpoints:
@@ -145,11 +161,11 @@ pnpm run dev
 ```
 3. To test the API locally, open a second terminal.
 4. In the second terminal, execute the below cURL command. Replace `YOUR_API_KEY` with the value you set in the `.dev.vars` file.
-```
+```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "http://localhost:8787/api/all" --data '{}'
 ```
 You should get the following output:
-```
+```txt
 /api/all endpoint
 ```
 5. Stop the local server from running by pressing `x` in the first terminal.
@@ -161,13 +177,17 @@ The Hono application is now set up. You can test the other endpoints and add mor
 If you do not have a D1 database already, you can create a new database with `wrangler d1 create`.
 
 1. In your terminal, run:
-```
+```sh
 npx wrangler d1 create d1-http-example
 ```
 You may be asked to login to your Cloudflare account. Once logged in, the command will create a new D1 database. You should see a similar output in your terminal.
-```
-✅ Successfully created DB 'd1-http-example' in region EEURCreated your new D1 database.
-[[d1_databases]]binding = "DB" # i.e. available in your Worker on env.DBdatabase_name = "d1-http-example"database_id = "1234567890"
+```sh
+✅ Successfully created DB 'd1-http-example' in region EEUR
+Created your new D1 database.
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "d1-http-example"
+database_id = "1234567890"
 ```
 
 Make a note of the displayed `database_name` and `database_id`. You will use this to reference the database by creating a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/).
@@ -177,20 +197,37 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.
 
-  * [  wrangler.jsonc ](#tab-panel-8051)
-  * [  wrangler.toml ](#tab-panel-8052)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-8292)
+  * [  wrangler.toml ](#tab-panel-8293)
+
+**JSONC**
+```jsonc
+{
+  "d1_databases": [
+    {
+      "binding": "DB", // i.e. available in your Worker on env.DB
+      "database_name": "d1-http-example",
+      "database_id": "1234567890"
+    }
+  ]
+}
 ```
-{  "d1_databases": [    {      "binding": "DB", // i.e. available in your Worker on env.DB      "database_name": "d1-http-example",      "database_id": "1234567890"    }  ]}
-```
-TOML
-```
-[[d1_databases]]binding = "DB"database_name = "d1-http-example"database_id = "1234567890"
+
+**TOML**
+```toml
+[[d1_databases]]
+binding = "DB"
+database_name = "d1-http-example"
+database_id = "1234567890"
 ```
 3. In your `src/index.ts` file, update the `Bindings` type by adding `DB: D1Database`.
-TypeScript
-```
-type Bindings = {  DB: D1Database;  API_KEY: string;};
+
+**TypeScript**
+```ts
+type Bindings = {
+  DB: D1Database;
+  API_KEY: string;
+};
 ```
 
 You can now access the database in the Hono application.
@@ -201,13 +238,22 @@ To create a table in your newly created database:
 
 1. Create a new folder called `schemas` inside your `d1-http` folder.
 2. Create a new file called `schema.sql`, and paste the following SQL statement into the file.
-schema.sql
-```
-DROP TABLE IF EXISTS posts;CREATE TABLE IF NOT EXISTS posts (  id integer PRIMARY KEY AUTOINCREMENT,  author text NOT NULL,  title text NOT NULL,  body text NOT NULL,  post_slug text NOT NULL);INSERT INTO posts (author, title, body, post_slug) VALUES ('Harshil', 'D1 HTTP API', 'Learn to create an API to query your D1 database.','d1-http-api');
+
+**schema.sql**
+```sql
+DROP TABLE IF EXISTS posts;
+CREATE TABLE IF NOT EXISTS posts (
+  id integer PRIMARY KEY AUTOINCREMENT,
+  author text NOT NULL,
+  title text NOT NULL,
+  body text NOT NULL,
+  post_slug text NOT NULL
+);
+INSERT INTO posts (author, title, body, post_slug) VALUES ('Harshil', 'D1 HTTP API', 'Learn to create an API to query your D1 database.','d1-http-api');
 ```
 The code drops any table named `posts` if it exists, then creates a new table `posts` with the field `id`, `author`, `title`, `body`, and `post_slug`. It then uses an INSERT statement to populate the table.
 3. In your terminal, execute the following command to create this table:
-```
+```sh
 npx wrangler d1 execute d1-http-example --file=./schemas/schema.sql
 ```
 
@@ -222,16 +268,66 @@ The table will be created in the local instance of the database. If you want to 
 Your application can now access the D1 database. In this step, you will update the API endpoints to query the database and return the result.
 
 1. In your `src/index.ts` file, update the code as follow.
-src/index.ts
-```
+
+**src/index.ts**
+```ts
 // Update the API routes
-/*** Executes the `stmt.run()` method.* https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run*/
-app.post('/api/all', async (c) => {    return c.text("/api/all endpoint");  try {    let { query, params } = await c.req.json();    let stmt = c.env.DB.prepare(query);    if (params) {      stmt = stmt.bind(params);    }
-    const result = await stmt.run();    return c.json(result);  } catch (err) {    return c.json({ error: `Failed to run query: ${err}` }, 500);  }});
-/*** Executes the `db.exec()` method.* https://developers.cloudflare.com/d1/worker-api/d1-database/#exec*/
-app.post('/api/exec', async (c) => {    return c.text("/api/exec endpoint");  try {    let { query } = await c.req.json();    let result = await c.env.DB.exec(query);    return c.json(result);  } catch (err) {    return c.json({ error: `Failed to run query: ${err}` }, 500);  }});
-/*** Executes the `db.batch()` method.* https://developers.cloudflare.com/d1/worker-api/d1-database/#batch*/
-app.post('/api/batch', async (c) => {    return c.text("/api/batch endpoint");  try {    let { batch } = await c.req.json();    let stmts = [];    for (let query of batch) {      let stmt = c.env.DB.prepare(query.query);      if (query.params) {        stmts.push(stmt.bind(query.params));      } else {        stmts.push(stmt);      }    }    const results = await c.env.DB.batch(stmts);    return c.json(results);  } catch (err) {    return c.json({ error: `Failed to run query: ${err}` }, 500);  }});...
+/**
+* Executes the `stmt.run()` method.
+* https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run
+*/
+app.post('/api/all', async (c) => {
+    return c.text("/api/all endpoint");
+  try {
+    let { query, params } = await c.req.json();
+    let stmt = c.env.DB.prepare(query);
+    if (params) {
+      stmt = stmt.bind(params);
+    }
+    const result = await stmt.run();
+    return c.json(result);
+  } catch (err) {
+    return c.json({ error: `Failed to run query: ${err}` }, 500);
+  }
+});
+/**
+* Executes the `db.exec()` method.
+* https://developers.cloudflare.com/d1/worker-api/d1-database/#exec
+*/
+app.post('/api/exec', async (c) => {
+    return c.text("/api/exec endpoint");
+  try {
+    let { query } = await c.req.json();
+    let result = await c.env.DB.exec(query);
+    return c.json(result);
+  } catch (err) {
+    return c.json({ error: `Failed to run query: ${err}` }, 500);
+  }
+});
+/**
+* Executes the `db.batch()` method.
+* https://developers.cloudflare.com/d1/worker-api/d1-database/#batch
+*/
+app.post('/api/batch', async (c) => {
+    return c.text("/api/batch endpoint");
+  try {
+    let { batch } = await c.req.json();
+    let stmts = [];
+    for (let query of batch) {
+      let stmt = c.env.DB.prepare(query.query);
+      if (query.params) {
+        stmts.push(stmt.bind(query.params));
+      } else {
+        stmts.push(stmt);
+      }
+    }
+    const results = await c.env.DB.batch(stmts);
+    return c.json(results);
+  } catch (err) {
+    return c.json({ error: `Failed to run query: ${err}` }, 500);
+  }
+});
+...
 ```
 
 In the above code, the endpoints are updated to receive `query` and `params`. These queries and parameters are passed to the respective functions to interact with the database.
@@ -255,16 +351,19 @@ yarn run dev
 pnpm run dev
 ```
 2. In a new terminal window, execute the following cURL commands. Make sure to replace `YOUR_API_KEY` with the correct value.
-/api/all
-```
+
+**/api/all**
+```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "http://localhost:8787/api/all" --data '{"query": "SELECT title FROM posts WHERE id=?", "params":1}'
 ```
-/api/batch
-```
+
+**/api/batch**
+```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "http://localhost:8787/api/batch" --data '{"batch": [ {"query": "SELECT title FROM posts WHERE id=?", "params":1},{"query": "SELECT id FROM posts"}]}'
 ```
-/api/exec
-```
+
+**/api/exec**
+```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "localhost:8787/api/exec" --data '{"query": "INSERT INTO posts (author, title, body, post_slug) VALUES ('\''Harshil'\'', '\''D1 HTTP API'\'', '\''Learn to create an API to query your D1 database.'\'','\''d1-http-api'\'')" }'
 ```
 
@@ -275,48 +374,55 @@ If everything is implemented correctly, the above commands should result success
 Now that everything is working as expected, the last step is to deploy it to the Cloudflare network. You will use Wrangler to deploy the API.
 
 1. To use the API in production instead of using it locally, you need to add the table to your remote (production) database. To add the table to your production database, run the following command:
-```
+```sh
 npx wrangler d1 execute d1-http-example --file=./schemas/schema.sql --remote
 ```
 You should now be able to view the table on the [Cloudflare dashboard > **Storage & Databases** \> **D1**. ↗](https://dash.cloudflare.com/?to=/:account/workers/d1/)
 2. To deploy the application to the Cloudflare network, run the following command:
-```
+```sh
 npx wrangler deploy
 ```
-```
- ⛅️ wrangler 3.78.4 (update available 3.78.5)-------------------------------------------------------
-Total Upload: 53.00 KiB / gzip: 13.16 KiBYour worker has access to the following bindings:- D1 Databases:  - DB: d1-http-example (DATABASE_ID)Uploaded d1-http (4.29 sec)Deployed d1-http triggers (5.57 sec)  [DEPLOYED_APP_LINK]Current Version ID: [BINDING_ID]
+```sh
+ ⛅️ wrangler 3.78.4 (update available 3.78.5)
+-------------------------------------------------------
+Total Upload: 53.00 KiB / gzip: 13.16 KiB
+Your worker has access to the following bindings:
+- D1 Databases:
+  - DB: d1-http-example (DATABASE_ID)
+Uploaded d1-http (4.29 sec)
+Deployed d1-http triggers (5.57 sec)
+  [DEPLOYED_APP_LINK]
+Current Version ID: [BINDING_ID]
 ```
 Upon successful deployment, you will get the link of the deployed app in the terminal (`DEPLOYED_APP_LINK`). Make a note of it.
 3. Generate a new API key to use in production.
-Terminal window
-```
+```sh
 openssl rand -base64 32
 ```
-```
+```sh
 [YOUR_API_KEY]
 ```
 4. Execute the `wrangler secret put` command to add an API to the deployed project.
-```
+```sh
 npx wrangler secret put API_KEY
 ```
-```
+```sh
 ✔ Enter a secret value:
 ```
 The terminal will prompt you to enter a secret value.
 5. Enter the value of your API key (`YOUR_API_KEY`). Your API key will now be added to your project. Using this value you can make secure API calls to your deployed API.
-Terminal window
-```
+```sh
 ✔ Enter a secret value: [YOUR_API_KEY]
 ```
-```
-🌀 Creating the secret for the Worker "d1-http"✨ Success! Uploaded secret API_KEY
+```sh
+🌀 Creating the secret for the Worker "d1-http"
+✨ Success! Uploaded secret API_KEY
 ```
 6. To test it, run the following cURL command with the correct `YOUR_API_KEY` and `DEPLOYED_APP_LINK`.
 
   * Use the `YOUR_API_KEY` you have generated as the secret API key.
   * You can also find your `DEPLOYED_APP_LINK` from the Cloudflare dashboard > **Workers & Pages** \> **`d1-http`** \> **Settings** \> **Domains & Routes**.
-```
+```sh
 curl -H "Authorization: Bearer YOUR_API_KEY" "https://DEPLOYED_APP_LINK/api/exec" --data '{"query": "SELECT 1"}'
 ```
 

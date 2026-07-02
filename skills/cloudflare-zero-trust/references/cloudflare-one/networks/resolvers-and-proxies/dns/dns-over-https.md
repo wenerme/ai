@@ -20,7 +20,7 @@ Location-based policies require that you send DNS requests to a [location-specif
 
 Location-based policies require that you send DNS queries to a unique DoH endpoint assigned to the location:
 
-```
+```txt
 https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query
 ```
 
@@ -83,14 +83,16 @@ Windows 11
 1. Obtain the `A` and `AAAA` record values associated with your location's DoH endpoint.
 
   1. Run the following command to obtain your `A` record values:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 nslookup -type=A <your-subdomain>.cloudflare-gateway.com
 ```
 
   1. Obtain your `AAAA` record values.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
 ```
 
@@ -98,14 +100,16 @@ nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
 2. Add the addresses to your list of known DoH servers.
 
   1. Run the following command for each address:
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Add-DnsClientDohServerAddress -ServerAddress <IP-address> -DohTemplate https://<your-subdomain>.cloudflare-gateway.com/dns-query -AllowFallbackToUdp $False -AutoUpgrade $False
 ```
 
   1. Confirm the addresses were added.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Get-DnsClientDohServerAddress
 ```
 3. In Windows, go to **Settings** \> **Network & internet** \> your active Internet connection. This option may be either **Ethernet** or **Wi-Fi**.
@@ -122,17 +126,17 @@ Obtain the `A` and `AAAA` record values associated with your location's DoH endp
 
 1. Run the following command to obtain your `A` record values:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 nslookup -type=A <your-subdomain>.cloudflare-gateway.com
 ```
 
 1. Obtain your `AAAA` record values.
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
 ```
 
@@ -146,8 +150,11 @@ For more information, refer to [Microsoft's DoH guide ↗](https://learn.microso
 
 You can send DoH requests to the generic Cloudflare DoH endpoint, `dns.cloudflare-gateway.com`. To specify a location in your request, include a header named `cf-dns-location` with a value of your location's DoH subdomain. For example:
 
-```
-GET /dns-query?name=example.com&type=A HTTP/2Host: dns.cloudflare-gateway.comcf-dns-location: 9y65g5srsmAccept: application/dns-message
+```http
+GET /dns-query?name=example.com&type=A HTTP/2
+Host: dns.cloudflare-gateway.com
+cf-dns-location: 9y65g5srsm
+Accept: application/dns-message
 ```
 
 ## Filter DoH requests by user
@@ -160,26 +167,40 @@ Currently, authentication tokens can only be generated through the API. You can 
 
 Each Cloudflare account can only have one active Access [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) authorized for DNS over HTTPS (DoH) at a time.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{"name":"ACME Corporation service token"}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{"name":"ACME Corporation service token"}'
 ```
 
 Save the service token's `client_id`, `client_secret`, and `id`.
 
 Example response
 
-```
-{  "result": {    "client_id": "88bf3b6d86161464f6509f7219099e57.access",    "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",    "created_at": "2022-06-09T01:59:17Z",    "expires_at": "2023-06-09T01:59:17Z",    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",    "name": "ACME Corporation service token",    "updated_at": "2022-06-09T01:59:17Z"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "client_id": "88bf3b6d86161464f6509f7219099e57.access",
+    "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+    "created_at": "2022-06-09T01:59:17Z",
+    "expires_at": "2023-06-09T01:59:17Z",
+    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    "name": "ACME Corporation service token",
+    "updated_at": "2022-06-09T01:59:17Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### 2\. Enable DoH functionality for the service token
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations/doh/$SERVICE_TOKEN_ID" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations/doh/$SERVICE_TOKEN_ID" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 If you get an `access.api.error.service_token_not_found` error, check that `$SERVICE_TOKEN_ID` is the value of `id` and not `client_id`.
@@ -190,26 +211,65 @@ Although you can create multiple valid service tokens, only one service token ca
 
 Example response
 
-```
-{  "result": {    "client_id": "88bf3b6d86161464f6509f7219099e57.access",    "created_at": "2022-06-09T01:59:17Z",    "expires_at": "2023-06-09T01:59:17Z",    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",    "name": "ACME Corporation service token",    "updated_at": "2022-06-09T01:59:17Z",    "duration": "8760h"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "client_id": "88bf3b6d86161464f6509f7219099e57.access",
+    "created_at": "2022-06-09T01:59:17Z",
+    "expires_at": "2023-06-09T01:59:17Z",
+    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    "name": "ACME Corporation service token",
+    "updated_at": "2022-06-09T01:59:17Z",
+    "duration": "8760h"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### 3\. Create a user
 
 Create a new user and optionally add them to a group.
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "name": "John Doe",  "email": "jdoe@acme.com",  "custom": {"groups":[{"id": "02fk6b3p3majl10", "email": "finance@acme.com", "name": "Finance"}]}}'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--header "Content-Type: application/json" \
+--data '{
+  "name": "John Doe",
+  "email": "jdoe@acme.com",
+  "custom": {"groups":[{"id": "02fk6b3p3majl10", "email": "finance@acme.com", "name": "Finance"}]}
+}'
 ```
 
 Save the user's `id` returned in the response.
 
 Example response
 
-```
-{  "result": {    "id": "54d425de-7a78-4186-9975-d43c88ee7899",    "created_at": "2022-03-16T21:18:39.93598Z",    "updated_at": "2022-05-17T23:50:39.598345Z",    "uid": "54d425de-7a78-4186-9975-d43c88ee7899",    "name": "John Doe",    "email": "jdoe@acme.com",    "custom": {      "groups": [        {          "email": "finance@acme.com",          "id": "02fk6b3p3majl10",          "name": "Finance"        }      ]    }  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "54d425de-7a78-4186-9975-d43c88ee7899",
+    "created_at": "2022-03-16T21:18:39.93598Z",
+    "updated_at": "2022-05-17T23:50:39.598345Z",
+    "uid": "54d425de-7a78-4186-9975-d43c88ee7899",
+    "name": "John Doe",
+    "email": "jdoe@acme.com",
+    "custom": {
+      "groups": [
+        {
+          "email": "finance@acme.com",
+          "id": "02fk6b3p3majl10",
+          "name": "Finance"
+        }
+      ]
+    }
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Note
@@ -220,36 +280,59 @@ Steps 1-3 above only need to be completed once, while Steps 4-5 below would occu
 
 Request a DoH token for the user, using your service token to authenticate into your team domain.
 
-Terminal window
-
-```
-curl "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/doh-token?account-id=<ACCOUNT_ID>&user-id=<USER_ID>&auth-domain=<TEAM_NAME>.cloudflareaccess.com" \--header "Cf-Access-Client-Id: <CLIENT_ID>" \--header "Cf-Access-Client-Secret: <CLIENT_SECRET>"
+```bash
+curl "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/doh-token?account-id=<ACCOUNT_ID>&user-id=<USER_ID>&auth-domain=<TEAM_NAME>.cloudflareaccess.com" \
+--header "Cf-Access-Client-Id: <CLIENT_ID>" \
+--header "Cf-Access-Client-Secret: <CLIENT_SECRET>"
 ```
 
 The response contains a unique DoH token associated with the user. This token expires in 24 hours. We recommend setting up a refresh flow for the DoH token instead of generating a new one for every DoH query.
 
 Example response
 
-```
-{  "token": "y2khbGciOiJSUzI1NiIsImtpZCI6ImJlZjVkYjg4ZTEwMjk3ZDEwNzhkMmEyYjE0MjMxZTljYTQwMjQ2NjAwOTQzNmJhOTQwOGJkODY3ZmI4OWFiOGQifQ.eyJ0eXBlIjoiZG9oIiwiYXVkIjoiY2xvdWRmbGFyZS1nYXRld2F5LmNvbSIsImlhdCI6MTY1NDc1MTg3NSwiZXhwIjoxNjU0ODM4Mjc1LCJhY2NvdW50LWlkIjoiMTA4MDM0OGIyZGYzYmQwN2QxZmI1MjM3Y2Q1ZDU5M2EiLCJ1c2VyLWlkIjoiNTRkNDI1ZGUtN2E3OC00MTg2LTk5NzUtZDQzYzg4ZWU3ODk5In0.I5p4WsH2dPhQ8vwy84zF05PsoBHCsUSXAaMpNhEH36oFZ3tXcs9ksLz7OzpZ_x3HxUfO3n57LlpAF1VehaBt2i94XCkvSgtHpYcwd_qZydLp-BGtcyfU1LbdXQC3m6zxKcIWu5VySi8I-J25UYlpyJhYgZ4DQUZIpqbSSt6WcVRKvA7OBa7xjkTux4OcqWAViO_ZS-GLwl-fqhvolmiwk37seBD3YuV1zG06VeWXfrMkZ5MbhooHD1DZDBHOZpTtmN8MbeKeI4tlY1mb_O3-jE-um6F9Hrl4NQm89MKFzsum-_Rywi5m4PTSlDza7fjdJs7RzFgJd3VWgzG-jgyQKw"}
+```json
+{
+  "token": "y2khbGciOiJSUzI1NiIsImtpZCI6ImJlZjVkYjg4ZTEwMjk3ZDEwNzhkMmEyYjE0MjMxZTljYTQwMjQ2NjAwOTQzNmJhOTQwOGJkODY3ZmI4OWFiOGQifQ.eyJ0eXBlIjoiZG9oIiwiYXVkIjoiY2xvdWRmbGFyZS1nYXRld2F5LmNvbSIsImlhdCI6MTY1NDc1MTg3NSwiZXhwIjoxNjU0ODM4Mjc1LCJhY2NvdW50LWlkIjoiMTA4MDM0OGIyZGYzYmQwN2QxZmI1MjM3Y2Q1ZDU5M2EiLCJ1c2VyLWlkIjoiNTRkNDI1ZGUtN2E3OC00MTg2LTk5NzUtZDQzYzg4ZWU3ODk5In0.I5p4WsH2dPhQ8vwy84zF05PsoBHCsUSXAaMpNhEH36oFZ3tXcs9ksLz7OzpZ_x3HxUfO3n57LlpAF1VehaBt2i94XCkvSgtHpYcwd_qZydLp-BGtcyfU1LbdXQC3m6zxKcIWu5VySi8I-J25UYlpyJhYgZ4DQUZIpqbSSt6WcVRKvA7OBa7xjkTux4OcqWAViO_ZS-GLwl-fqhvolmiwk37seBD3YuV1zG06VeWXfrMkZ5MbhooHD1DZDBHOZpTtmN8MbeKeI4tlY1mb_O3-jE-um6F9Hrl4NQm89MKFzsum-_Rywi5m4PTSlDza7fjdJs7RzFgJd3VWgzG-jgyQKw"
+}
 ```
 
 ### 5\. Send an authenticated DoH query
 
 Send DoH queries to the resolver at `https://<ACCOUNT_ID>.cloudflare-gateway.com/dns-query`, making sure to include the user's DoH token in the `CF-Authorization` header.
 
-Terminal window
-
-```
-curl --silent "https://<ACCOUNT_ID>.cloudflare-gateway.com/dns-query?name=example.com" \--header "accept: application/dns-json" \--header "CF-Authorization: <USER_DOH_TOKEN>" | jq
+```bash
+curl --silent "https://<ACCOUNT_ID>.cloudflare-gateway.com/dns-query?name=example.com" \
+--header "accept: application/dns-json" \
+--header "CF-Authorization: <USER_DOH_TOKEN>" | jq
 ```
 
 If the site is blocked and you have turned on the [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#configure-policy-block-behavior) for the policy, the query will return `162.159.36.12` (the IP address of the Gateway block page). If the block page is disabled, the response will be `0.0.0.0`.
 
 Example response
 
-```
-{  "Status": 0,  "TC": false,  "RD": true,  "RA": true,  "AD": false,  "CD": false,  "Question": [    {      "name": "example.com",      "type": 1    }  ],  "Answer": [    {      "name": "example.com",      "type": 1,      "TTL": 60,      "data": "162.159.36.12"    }  ]}
+```json
+{
+  "Status": 0,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+    {
+      "name": "example.com",
+      "type": 1
+    }
+  ],
+  "Answer": [
+    {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 60,
+      "data": "162.159.36.12"
+    }
+  ]
+}
 ```
 
 You can verify that the request was associated with the correct user email by checking your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). To filter these requests, build a DNS policy using any of the Gateway [identity-based selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/).

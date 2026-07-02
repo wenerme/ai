@@ -36,11 +36,18 @@ bun add @cloudflare/pages-plugin-stytch
 
 ## Usage
 
-TypeScript
+**TypeScript**
 
-```
-import stytchPlugin from "@cloudflare/pages-plugin-stytch";import { envs } from "@cloudflare/pages-plugin-stytch/api";
-export const onRequest: PagesFunction = stytchPlugin({  project_id: "YOUR_STYTCH_PROJECT_ID",  secret: "YOUR_STYTCH_PROJECT_SECRET",  env: envs.live,});
+```typescript
+import stytchPlugin from "@cloudflare/pages-plugin-stytch";
+import { envs } from "@cloudflare/pages-plugin-stytch/api";
+
+
+export const onRequest: PagesFunction = stytchPlugin({
+  project_id: "YOUR_STYTCH_PROJECT_ID",
+  secret: "YOUR_STYTCH_PROJECT_SECRET",
+  env: envs.live,
+});
 ```
 
 We recommend storing your secret in KV rather than in plain text as above.

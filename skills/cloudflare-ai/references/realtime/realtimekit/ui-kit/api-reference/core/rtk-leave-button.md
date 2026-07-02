@@ -27,18 +27,24 @@ A button which toggles visilibility of the leave confirmation dialog.
 
 ### Basic Usage
 
-```
+```html
 <rtk-leave-button></rtk-leave-button>
 ```
 
 ### With Properties
 
-```
-<rtk-leave-button size="md" variant"button"></rtk-leave-button>
+```html
+<rtk-leave-button
+ size="md"
+ variant"button">
+</rtk-leave-button>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-leave-button");
+```html
+<script>
+  const el = document.querySelector("rtk-leave-button");
+
+
 </script>
 ```
 

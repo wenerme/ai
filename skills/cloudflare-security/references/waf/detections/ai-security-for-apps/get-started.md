@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ## 1\. Turn on AI Security for Apps
 
-* [  New dashboard ](#tab-panel-11235)
-* [ API ](#tab-panel-11236)
+* [  New dashboard ](#tab-panel-11530)
+* [ API ](#tab-panel-11531)
 
 Note
 
@@ -28,10 +28,11 @@ AI Security for Apps (formerly Firewall for AI) is only available in the new [ap
 
 Enable the feature using a `PUT` request similar to the following:
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/settings" \--request PUT \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--json '{ "enabled": true }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/settings" \
+--request PUT \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+--json '{ "enabled": true }'
 ```
 
 ## 2\. Save or add an LLM-related endpoint
@@ -40,8 +41,8 @@ Once you have [onboarded your domain](https://developers.cloudflare.com/fundamen
 
 Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/) once it has been discovered, or add the endpoint manually.
 
-* [  New dashboard ](#tab-panel-11233)
-* [ Old dashboard ](#tab-panel-11234)
+* [  New dashboard ](#tab-panel-11528)
+* [ Old dashboard ](#tab-panel-11529)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -55,8 +56,8 @@ Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management
 
 If you did not find the endpoint in the **Discovery** tab, you can add it manually:
 
-* [  New dashboard ](#tab-panel-11231)
-* [ Old dashboard ](#tab-panel-11232)
+* [  New dashboard ](#tab-panel-11526)
+* [ Old dashboard ](#tab-panel-11527)
 
 1. Go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -80,8 +81,8 @@ You must [label endpoints](https://developers.cloudflare.com/api-shield/manageme
 
 Add the `cf-llm` label to the endpoint you added:
 
-* [  New dashboard ](#tab-panel-11237)
-* [ Old dashboard ](#tab-panel-11238)
+* [  New dashboard ](#tab-panel-11532)
+* [ Old dashboard ](#tab-panel-11533)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -105,10 +106,10 @@ You may need to issue some `POST` requests to the endpoint so that there is some
 
 For example, the following command sends a `POST` request to the API endpoint you previously added (`/v1/messages` in this example) in your zone with an LLM prompt requesting PII:
 
-Terminal window
-
-```
-curl "https://<YOUR_HOSTNAME>/v1/messages" \--header "Authorization: Bearer <TOKEN>" \--json '{ "prompt": "Provide the phone number for the person associated with example@example.com" }'
+```sh
+curl "https://<YOUR_HOSTNAME>/v1/messages" \
+--header "Authorization: Bearer <TOKEN>" \
+--json '{ "prompt": "Provide the phone number for the person associated with example@example.com" }'
 ```
 
 The PII category for this request would be `EMAIL_ADDRESS`.

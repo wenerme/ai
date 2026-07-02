@@ -69,19 +69,36 @@ To configure how Cloudflare responds to preflight requests:
 3. Go to **Advanced settings** \> **Cross-Origin Resource Sharing (CORS) settings**.
 4. Configure these [CORS settings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#the%5Fhttp%5Fresponse%5Fheaders) to match the response headers sent by your origin.
 For example, if you have configured `api.mysite.com`to return the following headers:
-```
-headers: {  'Access-Control-Allow-Origin': 'https://example.com',  'Access-Control-Allow-Credentials' : true,  'Access-Control-Allow-Methods': 'GET, OPTIONS',  'Access-Control-Allow-Headers': 'office',  'Content-Type': 'application/json',}
+```txt
+headers: {
+  'Access-Control-Allow-Origin': 'https://example.com',
+  'Access-Control-Allow-Credentials' : true,
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'office',
+  'Content-Type': 'application/json',
+}
 ```
 then go to `api.mysite.com` in Access and configure **Access-Control-Allow-Origin**, **Access-Control-Allow-Credentials**, **Access-Control-Allow-Methods**, and **Access-Control-Allow-Headers**. ![Example CORS settings configuration in Cloudflare One](https://developers.cloudflare.com/_astro/CORS-settings.C9-43Ja__Zwvcyt.webp)
 5. Select **Save**.
 6. (Optional) You can check your configuration by sending an OPTIONS request to the origin with `curl`. For example,
-Terminal window
-```
-curl --head --request OPTIONS https://api.mysite.com \--header 'origin: https://example.com' \--header 'access-control-request-method: GET'
+```bash
+curl --head --request OPTIONS https://api.mysite.com \
+--header 'origin: https://example.com' \
+--header 'access-control-request-method: GET'
 ```
 should return a response similar to:
-```
-HTTP/2 200date: Tue, 24 May 2022 21:51:21 GMTvary: Origin, Access-Control-Request-Method, Access-Control-Request-Headersaccess-control-allow-origin: https://example.comaccess-control-allow-methods: GETaccess-control-allow-credentials: trueexpect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=A%2FbOOWJio%2B%2FjuJv5NC%2FE3%2Bo1zBl2UdjzJssw8gJLC4lE1lzIUPQKqJoLRTaVtFd21JK1d4g%2BnlEGNpx0mGtsR6jerNfr2H5mlQdO6u2RdOaJ6n%2F%2BS%2BF9%2Fa12UromVLcHsSA5Y%2Fj72tM%3D"}],"group":"cf-nel","max_age":604800}nel: {"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}server: cloudflarecf-ray: 7109408e6b84efe4-EWR
+```txt
+HTTP/2 200
+date: Tue, 24 May 2022 21:51:21 GMT
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+access-control-allow-origin: https://example.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=A%2FbOOWJio%2B%2FjuJv5NC%2FE3%2Bo1zBl2UdjzJssw8gJLC4lE1lzIUPQKqJoLRTaVtFd21JK1d4g%2BnlEGNpx0mGtsR6jerNfr2H5mlQdO6u2RdOaJ6n%2F%2BS%2BF9%2Fa12UromVLcHsSA5Y%2Fj72tM%3D"}],"group":"cf-nel","max_age":604800}
+nel: {"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}
+server: cloudflare
+cf-ray: 7109408e6b84efe4-EWR
 ```
 
 ## Send authentication token with Cloudflare Worker
@@ -141,33 +158,66 @@ For setup, select the following options:
 
 Go to your project directory.
 
-Terminal window
-
-```
+```sh
 cd authentication-worker
 ```
 
 Open `/src/index.js` and delete the existing code and paste in the following example:
 
-JavaScript
+**JavaScript**
 
-```
-// The hostname where your API livesconst originalAPIHostname = "api.mysite.com";
-export default {  async fetch(request, env) {    // Change just the host. If the request comes in on example.com/api/name, the new URL is api.mysite.com/api/name    const url = new URL(request.url);    url.hostname = originalAPIHostname;
-    // If your API is located on api.mysite.com/anyname (without "api/" in the path),    // remove the "api/" part of example.com/api/name
+```js
+// The hostname where your API lives
+const originalAPIHostname = "api.mysite.com";
+
+
+export default {
+  async fetch(request, env) {
+    // Change just the host. If the request comes in on example.com/api/name, the new URL is api.mysite.com/api/name
+    const url = new URL(request.url);
+    url.hostname = originalAPIHostname;
+
+
+    // If your API is located on api.mysite.com/anyname (without "api/" in the path),
+    // remove the "api/" part of example.com/api/name
+
+
     // url.pathname = url.pathname.substring(4)
-    // Best practice is to always use the original request to construct the new request    // to clone all the attributes. Applying the URL also requires a constructor    // since once a Request has been constructed, its URL is immutable.    const newRequest = new Request(url.toString(), request);
-    newRequest.headers.set("cf-access-client-id", env.CF_ACCESS_CLIENT_ID);    newRequest.headers.set("cf-access-client-secret", env.CF_ACCESS_CLIENT_SECRET);    try {      const response = await fetch(newRequest);
-      // Copy over the response      const modifiedResponse = new Response(response.body, response);
-      // Delete the set-cookie from the response so it doesn't override existing cookies      modifiedResponse.headers.delete("set-cookie");
-      return modifiedResponse;    } catch (e) {      return new Response(JSON.stringify({ error: e.message }), {        status: 500,      });    }  },};
+
+
+    // Best practice is to always use the original request to construct the new request
+    // to clone all the attributes. Applying the URL also requires a constructor
+    // since once a Request has been constructed, its URL is immutable.
+    const newRequest = new Request(url.toString(), request);
+
+
+    newRequest.headers.set("cf-access-client-id", env.CF_ACCESS_CLIENT_ID);
+    newRequest.headers.set("cf-access-client-secret", env.CF_ACCESS_CLIENT_SECRET);
+    try {
+      const response = await fetch(newRequest);
+
+
+      // Copy over the response
+      const modifiedResponse = new Response(response.body, response);
+
+
+      // Delete the set-cookie from the response so it doesn't override existing cookies
+      modifiedResponse.headers.delete("set-cookie");
+
+
+      return modifiedResponse;
+    } catch (e) {
+      return new Response(JSON.stringify({ error: e.message }), {
+        status: 500,
+      });
+    }
+  },
+};
 ```
 
 Then, deploy the Worker to your Cloudflare account:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 

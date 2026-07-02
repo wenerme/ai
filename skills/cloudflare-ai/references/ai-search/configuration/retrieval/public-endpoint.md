@@ -30,7 +30,7 @@ For details on how to use these endpoints, refer to [Public endpoint usage](http
 
 When enabled, public endpoints are accessible at:
 
-```
+```plaintext
 https://<hash>.search.ai.cloudflare.com/<endpoint>
 ```
 
@@ -82,8 +82,11 @@ The **Tool Description** field allows you to customize how your AI Search instan
 
 For example:
 
-```
-Search the Acme product documentation for information aboutinstallation, configuration, API references, and troubleshootingguides. Use this tool when users ask questions about how to set upor use Acme products.
+```txt
+Search the Acme product documentation for information about
+installation, configuration, API references, and troubleshooting
+guides. Use this tool when users ask questions about how to set up
+or use Acme products.
 ```
 
 ## Security considerations

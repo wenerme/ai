@@ -43,14 +43,35 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-Create an account ruleset
+**Create an account ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (account)",    "kind": "custom",    "phase": "http_request_firewall_custom"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Custom Ruleset 1",
+    "description": "My First Custom Ruleset (account)",
+    "kind": "custom",
+    "phase": "http_request_firewall_custom"
+  }'
 ```
 
-```
-{  "result": {    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (account)",    "kind": "custom",    "version": "1",    "last_updated": "2025-08-09T10:27:30.636197Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+    "name": "Custom Ruleset 1",
+    "description": "My First Custom Ruleset (account)",
+    "kind": "custom",
+    "version": "1",
+    "last_updated": "2025-08-09T10:27:30.636197Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.
@@ -84,14 +105,35 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Create a zone ruleset
+**Create a zone ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (zone)",    "kind": "custom",    "phase": "http_request_firewall_custom"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "Custom Ruleset 1",
+    "description": "My First Custom Ruleset (zone)",
+    "kind": "custom",
+    "phase": "http_request_firewall_custom"
+  }'
 ```
 
-```
-{  "result": {    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (zone)",    "kind": "custom",    "version": "1",    "last_updated": "2025-08-09T10:27:30.636197Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
+    "name": "Custom Ruleset 1",
+    "description": "My First Custom Ruleset (zone)",
+    "kind": "custom",
+    "version": "1",
+    "last_updated": "2025-08-09T10:27:30.636197Z",
+    "phase": "http_request_firewall_custom"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.

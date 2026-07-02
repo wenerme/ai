@@ -76,35 +76,137 @@ Examples of how to explore your Hyperdrive metrics.
 
 ### Get the number of queries handled via your Hyperdrive config by cache status
 
-```
-query HyperdriveQueries(  $accountTag: string!  $configId: string!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      hyperdriveQueriesAdaptiveGroups(        limit: 10000        filter: {          configId: $configId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        count        dimensions {          cacheStatus        }      }    }  }}
+```graphql
+query HyperdriveQueries(
+  $accountTag: string!
+  $configId: string!
+  $datetimeStart: Time!
+  $datetimeEnd: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      hyperdriveQueriesAdaptiveGroups(
+        limit: 10000
+        filter: {
+          configId: $configId
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+        }
+      ) {
+        count
+        dimensions {
+          cacheStatus
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAElADpAJhAlgNzARXBsAZwAoAoGGAEgEMBjWgexADsAXAFWoHMAuGQ1hmZcAhOSqNmAM3RcAkij4Cho8ZRTVWYVugC2YAMqtqEVn3Z6wYius3bLAUWaKYF-WICUMAN7jM6MAB3SB9xCjpGFlYSGQAbLQg+bxgIpjZOXipUqIyYAF8vXwpimAALJFQMbDxIAMIAQQ1EHWwAcQgmRBIwkphYvXQzGABGAAZx0Z6SuISkqd7JGXkXSkXZBXmSjS0dfQB9LjBgPlsdyyMTVk3i7ft92KOT292wJxRrvPnC68i2a5RLMxCOgGEDQr0FnRSoZjKwQIQPvNPiVkflSHkgA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozAdlsBGZGYCsmEwA5MAZgCcAFoMIMpqGtoC8DzY5la2DmbOjo4e3v5BAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAElADpAJhAlgNzARXBsAZwAoAoGGAEgEMBjWgexADsAXAFWoHMAuGQ1hmZcAhOSqNmAM3RcAkij4Cho8ZRTVWYVugC2YAMqtqEVn3Z6wYius3bLAUWaKYF-WICUMAN7jM6MAB3SB9xCjpGFlYSGQAbLQg+bxgIpjZOXipUqIyYAF8vXwpimAALJFQMbDxIAMIAQQ1EHWwAcQgmRBIwkphYvXQzGABGAAZx0Z6SuISkqd7JGXkXSkXZBXmSjS0dfQB9LjBgPlsdyyMTVk3i7ft92KOT292wJxRrvPnC68i2a5RLMxCOgGEDQr0FnRSoZjKwQIQPvNPiVkflSHkgA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozAdlsBGZI7uYLmAMwBOAFoMQZTUNbQF4HmxzK1sHM2cTT3cTLz8QAF8gA)
 
 ### Get the average query and connection latency for queries handled via your Hyperdrive config within a range of time, excluding queries that failed due to an error
 
-```
-query AverageHyperdriveLatencies(  $accountTag: string!  $configId: string!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      hyperdriveQueriesAdaptiveGroups(        limit: 10000        filter: {          configId: $configId          eventStatus: "complete"          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        avg {          connectionLatency          queryLatency        }      }    }  }}
+```graphql
+query AverageHyperdriveLatencies(
+  $accountTag: string!
+  $configId: string!
+  $datetimeStart: Time!
+  $datetimeEnd: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      hyperdriveQueriesAdaptiveGroups(
+        limit: 10000
+        filter: {
+          configId: $configId
+          eventStatus: "complete"
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+        }
+      ) {
+        avg {
+          connectionLatency
+          queryLatency
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggN0gQwOZgBJQA6QCYQCWSAMsgC5gB2AxoWAM4AUAUDDACTI00D2IVcgBU0ALhgNyRKqgCEbTnyoAzQqgCSecZOlyFHPBTDlCAWzABlcsgjlxQs2HnsDRk+YCiVLTAfn5AJQwAN4KCPQA7pAhCuzcfALkzKoANpQQ4sEw8fyCIqjiXDy5wmgwAL5Boew1MAAWOPhESACK4ESMcIbYJkgA4hD82MyxtTApZoR2MACMAAwLc6O1qemZy2NKqho+HFtqmhu1YEiCVhQgDOIARHym2CnGYNdHNYaU7mAA+ujAhe-GRznWyvdgAz5fR5-TjgxxePCvcobKqvZAIVAxMabXhUKhgGgmHFkSi0KCgmCgSBQYnUGhkrHsJFYpk1FlI8pAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozAdlsBGZGYCsmEwA5MAZgCcAFoMIMpqGtoC8DzY5la2DmbOjo4e3v5BAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggN0gQwOZgBJQA6QCYQCWSAMsgC5gB2AxoWAM4AUAUDDACTI00D2IVcgBU0ALhgNyRKqgCEbTnyoAzQqgCSecZOlyFHPBTDlCAWzABlcsgjlxQs2HnsDRk+YCiVLTAfn5AJQwAN4KCPQA7pAhCuzcfALkzKoANpQQ4sEw8fyCIqjiXDy5wmgwAL5Boew1MAAWOPhESACK4ESMcIbYJkgA4hD82MyxtTApZoR2MACMAAwLc6O1qemZy2NKqho+HFtqmhu1YEiCVhQgDOIARHym2CnGYNdHNYaU7mAA+ujAhe-GRznWyvdgAz5fR5-TjgxxePCvcobKqvZAIVAxMabXhUKhgGgmHFkSi0KCgmCgSBQYnUGhkrHsJFYpk1FlI8pAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozAdlsBGZI7uYLmAMwBOAFoMQZTUNbQF4HmxzK1sHM2cTT3cTLz8QAF8gA)
 
 ### Get the total amount of query and result bytes flowing through your Hyperdrive config
 
-```
-query HyperdriveQueryAndResultBytesForSuccessfulQueries(  $accountTag: string!  $configId: string!  $datetimeStart: Date!  $datetimeEnd: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      hyperdriveQueriesAdaptiveGroups(        limit: 10000        filter: {          configId: $configId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        sum {          queryBytes          resultBytes        }      }    }  }}
+```graphql
+query HyperdriveQueryAndResultBytesForSuccessfulQueries(
+  $accountTag: string!
+  $configId: string!
+  $datetimeStart: Date!
+  $datetimeEnd: Date!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      hyperdriveQueriesAdaptiveGroups(
+        limit: 10000
+        filter: {
+          configId: $configId
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+        }
+      ) {
+        sum {
+          queryBytes
+          resultBytes
+        }
+      }
+    }
+  }
+}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAElADpAJhAlgNzARXNAQQDsUAlMAZxABsAXAISlsoDEB7CAZRAGMfKKAMxp5I6SgAoAUDBgASAIZ82IIrQAqCgOYAuGBVoYiWgIQz5PNkUHotASRR6DR0+bkoFzWugC2YTrQKELR6ACKeYGay7hHefgCiJGERZgCUMADe5pjiAO6QmeaySpaqtBQSNnSQehkwJSpqmrryDWXNMAC+6VmyfTAAFkioGNiiGJQEHoje2ADiECqIFUX9MNS+6CEwAIwADAd7q-1VzBC1x2uW1rYOenLXNvYol-0eXr5gAPpaYMD37zAcX8gWCrz6gOBX2ofwBsU+iReaz6nUuPXBVB8hWR-VAkCgjGYFHBsgglBoDCYlHBqORtJR5lRnSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozNgMxmGIZWo3aB8HtnNXbAdlsARhAAXyA)
 
 ### Get the pool size metrics for your Hyperdrive config
 
-```
-query HyperdrivePoolSizes(  $accountTag: string!  $configId: string!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      hyperdrivePoolSizesAdaptiveGroups(        limit: 10000        filter: {          configId: $configId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        avg {          currentPoolSize          availablePoolSlots          waitingClients        }        max {          maxPoolSize          currentPoolSize          waitingClients        }        dimensions {          coloCode        }      }    }  }}
+```graphql
+query HyperdrivePoolSizes(
+  $accountTag: string!
+  $configId: string!
+  $datetimeStart: Time!
+  $datetimeEnd: Time!
+) {
+  viewer {
+    accounts(filter: { accountTag: $accountTag }) {
+      hyperdrivePoolSizesAdaptiveGroups(
+        limit: 10000
+        filter: {
+          configId: $configId
+          datetime_geq: $datetimeStart
+          datetime_leq: $datetimeEnd
+        }
+      ) {
+        avg {
+          currentPoolSize
+          availablePoolSlots
+          waitingClients
+        }
+        max {
+          maxPoolSize
+          currentPoolSize
+          waitingClients
+        }
+        dimensions {
+          coloCode
+        }
+      }
+    }
+  }
+}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAElADpAJhAlgNzABQPZ4A2AyugF5gDOAFAFAwwAkAhgMat4gB2ALgCrMA5gC4YlHhi6CAhPSYcuAM3SCAkilHjJMuYxTMeYHugC2YYj2YQeovqbCyGeg0fsBRLhph2zsgJQwAN5ymOhgAO6QQXIMbBzcPDTKhIYQooEwcZy8AiJMWQm5MAC+AcEMFTAAFkioGNj4RKQUlACC+ojG2ADiEJyINDGVMISm6DYwAIwADLPTQ5XJqekLwwrKal6M6yrqq5X6hsZmAPqCYMCizkf2FlY8+xWHrqeEF1fPx2AeKI-Fq2VHsxMIJosM1iAIBAwLxGiRyGBHrFMMx0IRmAAjN5w4iEPCJJEwcKo4xSADCoxhBPBDH+NJgJmYAA8wfSGcycQjCaxIdDYQR4RRCcTxuhyZTeJQ-o8UPYuJR0Hh5az6Rw8WS8ChEfS6cNdbS5P9ikA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozAdlsBGZGYCsmEwA5MAZgCcAFoMIMpqGtoC8DzY5la2DmbOjo4e3v5BAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAElADpAJhAlgNzABQPZ4A2AyugF5gDOAFAFAwwAkAhgMat4gB2ALgCrMA5gC4YlHhi6CAhPSYcuAM3SCAkilHjJMuYxTMeYHugC2YYj2YQeovqbCyGeg0fsBRLhph2zsgJQwAN5ymOhgAO6QQXIMbBzcPDTKhIYQooEwcZy8AiJMWQm5MAC+AcEMFTAAFkioGNj4RKQUlACC+ojG2ADiEJyINDGVMISm6DYwAIwADLPTQ5XJqekLwwrKal6M6yrqq5X6hsZmAPqCYMCizkf2FlY8+xWHrqeEF1fPx2AeKI-Fq2VHsxMIJosM1iAIBAwLxGiRyGBHrFMMx0IRmAAjN5w4iEPCJJEwcKo4xSADCoxhBPBDH+NJgJmYAA8wfSGcycQjCaxIdDYQR4RRCcTxuhyZTeJQ-o8UPYuJR0Hh5az6Rw8WS8ChEfS6cNdbS5P9ikA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQZ4AzASzSoBMsQAlAKIAFADL4BFAOpVkACWp1GXMIgCmiNgFtVAZURgATol4AmAAwmAbAFozAdlsBGZI7uYLmAMwBOAFoMQZTUNbQF4HmxzK1sHM2cTT3cTLz8QAF8gA)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/observability/metrics/#page","headline":"Metrics and analytics · Cloudflare Hyperdrive docs","description":"Inspect query volume, latency, cache hit ratios, and connection pool sizes for your Hyperdrive configurations.","url":"https://developers.cloudflare.com/hyperdrive/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

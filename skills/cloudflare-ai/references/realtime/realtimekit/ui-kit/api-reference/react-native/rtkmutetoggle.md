@@ -27,16 +27,24 @@ Button to mute all participants' audio. Only visible for hosts with mute-all per
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkMuteToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkMuteToggle meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkMuteToggle meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkMuteToggle } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkMuteToggle meeting={meeting} size="md" />;}
+
+
+function MyComponent() {
+  return <RtkMuteToggle meeting={meeting} size="md" />;
+}
 ```
 
 ```json

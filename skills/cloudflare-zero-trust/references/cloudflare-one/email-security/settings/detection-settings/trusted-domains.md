@@ -60,8 +60,10 @@ You can upload a file no larger than 150 KB of multiple trusted domains. The fil
 
 An example file would look like this:
 
-```
-Domain, Proximity, New, Notesmydomain.com, true, true, First Persontestdomain.com, false, true, New Hire
+```txt
+Domain, Proximity, New, Notes
+mydomain.com, true, true, First Person
+testdomain.com, false, true, New Hire
 ```
 
 ## Export trusted domains

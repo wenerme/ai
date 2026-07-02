@@ -948,7 +948,11 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -2921,7 +2925,11 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -2997,7 +3005,7 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
     Structured information about a refusal.
 
-    - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+    - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
       The policy category that triggered a refusal.
 
@@ -3008,8 +3016,6 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `explanation: string | null`
 
@@ -4160,7 +4166,11 @@ Learn more about token counting in our [user guide](https://platform.claude.com/
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -9795,7 +9805,11 @@ console.log(messageTokensCount.input_tokens);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+    - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+      - `"claude-sonnet-5"`
+
+        High-performance model for coding and agents
 
       - `"claude-fable-5"`
 
@@ -9871,7 +9885,7 @@ console.log(messageTokensCount.input_tokens);
 
     Structured information about a refusal.
 
-    - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+    - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
       The policy category that triggered a refusal.
 
@@ -9882,8 +9896,6 @@ console.log(messageTokensCount.input_tokens);
       - `"frontier_llm"`
 
       - `"reasoning_extraction"`
-
-      - `"military_weapons"`
 
     - `explanation: string | null`
 
@@ -12048,13 +12060,17 @@ console.log(messageTokensCount.input_tokens);
 
 ### Model
 
-- `Model = "claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more | (string & {})`
+- `Model = "claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more | (string & {})`
 
   The model that will complete your prompt.
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+  - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+    - `"claude-sonnet-5"`
+
+      High-performance model for coding and agents
 
     - `"claude-fable-5"`
 
@@ -13171,7 +13187,7 @@ console.log(messageTokensCount.input_tokens);
 
       Structured information about a refusal.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -13182,8 +13198,6 @@ console.log(messageTokensCount.input_tokens);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string | null`
 
@@ -13966,7 +13980,11 @@ console.log(messageTokensCount.input_tokens);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -14042,7 +14060,7 @@ console.log(messageTokensCount.input_tokens);
 
       Structured information about a refusal.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -14053,8 +14071,6 @@ console.log(messageTokensCount.input_tokens);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string | null`
 
@@ -14898,7 +14914,11 @@ console.log(messageTokensCount.input_tokens);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -14974,7 +14994,7 @@ console.log(messageTokensCount.input_tokens);
 
         Structured information about a refusal.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -14985,8 +15005,6 @@ console.log(messageTokensCount.input_tokens);
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `explanation: string | null`
 
@@ -15328,7 +15346,7 @@ console.log(messageTokensCount.input_tokens);
 
   Structured information about a refusal.
 
-  - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+  - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
     The policy category that triggered a refusal.
 
@@ -15339,8 +15357,6 @@ console.log(messageTokensCount.input_tokens);
     - `"frontier_llm"`
 
     - `"reasoning_extraction"`
-
-    - `"military_weapons"`
 
   - `explanation: string | null`
 
@@ -21747,7 +21763,11 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -24382,7 +24402,11 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -24458,7 +24482,7 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
           Structured information about a refusal.
 
-          - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+          - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
             The policy category that triggered a refusal.
 
@@ -24469,8 +24493,6 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `explanation: string | null`
 
@@ -25648,7 +25670,11 @@ console.log(messageBatchIndividualResponse.custom_id);
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+          - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+            - `"claude-sonnet-5"`
+
+              High-performance model for coding and agents
 
             - `"claude-fable-5"`
 
@@ -25724,7 +25750,7 @@ console.log(messageBatchIndividualResponse.custom_id);
 
           Structured information about a refusal.
 
-          - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+          - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
             The policy category that triggered a refusal.
 
@@ -25735,8 +25761,6 @@ console.log(messageBatchIndividualResponse.custom_id);
             - `"frontier_llm"`
 
             - `"reasoning_extraction"`
-
-            - `"military_weapons"`
 
           - `explanation: string | null`
 
@@ -26708,7 +26732,11 @@ console.log(messageBatchIndividualResponse.custom_id);
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+        - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+          - `"claude-sonnet-5"`
+
+            High-performance model for coding and agents
 
           - `"claude-fable-5"`
 
@@ -26784,7 +26812,7 @@ console.log(messageBatchIndividualResponse.custom_id);
 
         Structured information about a refusal.
 
-        - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+        - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
           The policy category that triggered a refusal.
 
@@ -26795,8 +26823,6 @@ console.log(messageBatchIndividualResponse.custom_id);
           - `"frontier_llm"`
 
           - `"reasoning_extraction"`
-
-          - `"military_weapons"`
 
         - `explanation: string | null`
 
@@ -27730,7 +27756,11 @@ console.log(messageBatchIndividualResponse.custom_id);
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `"claude-fable-5" | "claude-mythos-5" | "claude-opus-4-8" | 12 more`
+      - `"claude-sonnet-5" | "claude-fable-5" | "claude-mythos-5" | 13 more`
+
+        - `"claude-sonnet-5"`
+
+          High-performance model for coding and agents
 
         - `"claude-fable-5"`
 
@@ -27806,7 +27836,7 @@ console.log(messageBatchIndividualResponse.custom_id);
 
       Structured information about a refusal.
 
-      - `category: "cyber" | "bio" | "frontier_llm" | 2 more | null`
+      - `category: "cyber" | "bio" | "frontier_llm" | "reasoning_extraction" | null`
 
         The policy category that triggered a refusal.
 
@@ -27817,8 +27847,6 @@ console.log(messageBatchIndividualResponse.custom_id);
         - `"frontier_llm"`
 
         - `"reasoning_extraction"`
-
-        - `"military_weapons"`
 
       - `explanation: string | null`
 

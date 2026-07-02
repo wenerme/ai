@@ -33,17 +33,13 @@ Streams are made available to pipelines as SQL tables using the stream name (for
 
 To create a stream, run the [pipelines streams create](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-create) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines streams create <STREAM_NAME>
 ```
 
 Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [pipelines setup](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines setup
 ```
 
@@ -56,16 +52,52 @@ Streams support two approaches for handling data:
 
 To create a structured stream, provide a schema file:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines streams create my-stream --schema-file schema.json
 ```
 
 Example schema file:
 
-```
-{  "fields": [    {      "name": "user_id",      "type": "string",      "required": true    },    {      "name": "amount",      "type": "float64",      "required": false    },    {      "name": "tags",      "type": "list",      "required": false,      "items": {        "type": "string"      }    },    {      "name": "metadata",      "type": "struct",      "required": false,      "fields": [        {          "name": "source",          "type": "string",          "required": false        },        {          "name": "priority",          "type": "int32",          "required": false        }      ]    }  ]}
+```json
+{
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "amount",
+      "type": "float64",
+      "required": false
+    },
+    {
+      "name": "tags",
+      "type": "list",
+      "required": false,
+      "items": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "metadata",
+      "type": "struct",
+      "required": false,
+      "fields": [
+        {
+          "name": "source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "priority",
+          "type": "int32",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
 ```
 
 **Supported data types:**
@@ -95,17 +127,13 @@ Events that do not match the defined schema are accepted during ingestion but wi
 
 To view a specific stream, run the [pipelines streams get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-get) command with either the stream ID or stream name:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines streams get <STREAM_NAME_OR_ID>
 ```
 
 To list all streams in your account, run the [pipelines streams list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-list) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines streams list
 ```
 
@@ -138,9 +166,7 @@ For details on configuring authentication tokens and making authenticated reques
 
 To delete a stream, run the [pipelines streams delete](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-delete) command:
 
-Terminal window
-
-```
+```bash
 npx wrangler pipelines streams delete <STREAM_ID>
 ```
 

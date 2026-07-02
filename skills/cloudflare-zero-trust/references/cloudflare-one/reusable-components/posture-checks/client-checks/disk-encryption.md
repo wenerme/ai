@@ -38,21 +38,21 @@ The following commands will return the disk encryption status on various operati
 
 1. Open a terminal window.
 2. Run the `/usr/sbin/system_profiler SPStorageDataType` command to return a list of drivers on the system and note the value of **Mount Point**.
-Terminal window
-```
+```sh
 /usr/sbin/system_profiler SPStorageDataType
 ```
-```
+```sh
 Storage:
    Data:
-     Free: 428.52 GB (428,519,702,528 bytes)     Capacity: 494.38 GB (494,384,795,648 bytes)     Mount Point: /System/Volumes/Data
+     Free: 428.52 GB (428,519,702,528 bytes)
+     Capacity: 494.38 GB (494,384,795,648 bytes)
+     Mount Point: /System/Volumes/Data
 ```
 3. Run the `diskutil info` command for a specific **Mount Point** and look for the value returned for **FileVault**. It must show **Yes** for the disk to be considered encrypted.
-Terminal window
-```
+```sh
 diskutil info /System/Volumes/Data | grep FileVault
 ```
-```
+```sh
  FileVault:                 Yes
 ```
 
@@ -66,14 +66,19 @@ diskutil info /System/Volumes/Data | grep FileVault
 
 List all hard drives on the system:
 
-Terminal window
-
-```
+```sh
 lsblk
 ```
 
-```
-NAME                        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTnvme0n1                     259:0    0 476.9G  0 disk├─nvme0n1p1                 259:1    0   512M  0 part  /boot/efi├─nvme0n1p2                 259:2    0   488M  0 part  /boot└─nvme0n1p3                 259:3    0   476G  0 part  └─nvme0n1p3_crypt         253:0    0 475.9G  0 crypt    ├─my--vg-root   253:1            0 474.9G  0 lvm   /    └─my--vg-swap_1 253:2            0   976M  0 lvm   [SWAP]
+```sh
+NAME                        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
+nvme0n1                     259:0    0 476.9G  0 disk
+├─nvme0n1p1                 259:1    0   512M  0 part  /boot/efi
+├─nvme0n1p2                 259:2    0   488M  0 part  /boot
+└─nvme0n1p3                 259:3    0   476G  0 part
+  └─nvme0n1p3_crypt         253:0    0 475.9G  0 crypt
+    ├─my--vg-root   253:1            0 474.9G  0 lvm   /
+    └─my--vg-swap_1 253:2            0   976M  0 lvm   [SWAP]
 ```
 
 On Linux, encryption is reported per mounted partition, not physical drive. In the example above, the root and swap partitions are considered encrypted because they are located within a `crypt` container. The `/boot` and `/boot/efi` partitions remain unencrypted.

@@ -29,27 +29,69 @@ The MCP client uses a built-in `DurableObjectOAuthClientProvider` to manage OAut
 
 When connecting to an OAuth-protected server, check if `authUrl` is returned. If present, redirect your user to complete authorization:
 
-* [  JavaScript ](#tab-panel-5871)
-* [  TypeScript ](#tab-panel-5872)
+* [  JavaScript ](#tab-panel-6055)
+* [  TypeScript ](#tab-panel-6056)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const url = new URL(request.url);
+
+
+    if (url.pathname.endsWith("/connect") && request.method === "POST") {
+      const { id, authUrl } = await this.addMcpServer(
+        "Cloudflare Observability",
+        "https://observability.mcp.cloudflare.com/mcp",
+      );
+
+
+      if (authUrl) {
+        // OAuth required - redirect user to authorize
+        return Response.redirect(authUrl, 302);
+      }
+
+
+      // Already authenticated - connection complete
+      return Response.json({ serverId: id, status: "connected" });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
 ```
-export class MyAgent extends Agent {  async onRequest(request) {    const url = new URL(request.url);
-    if (url.pathname.endsWith("/connect") && request.method === "POST") {      const { id, authUrl } = await this.addMcpServer(        "Cloudflare Observability",        "https://observability.mcp.cloudflare.com/mcp",      );
-      if (authUrl) {        // OAuth required - redirect user to authorize        return Response.redirect(authUrl, 302);      }
-      // Already authenticated - connection complete      return Response.json({ serverId: id, status: "connected" });    }
-    return new Response("Not found", { status: 404 });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent<Env> {  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);
-    if (url.pathname.endsWith("/connect") && request.method === "POST") {      const { id, authUrl } = await this.addMcpServer(        "Cloudflare Observability",        "https://observability.mcp.cloudflare.com/mcp",      );
-      if (authUrl) {        // OAuth required - redirect user to authorize        return Response.redirect(authUrl, 302);      }
-      // Already authenticated - connection complete      return Response.json({ serverId: id, status: "connected" });    }
-    return new Response("Not found", { status: 404 });  }}
+```ts
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    if (url.pathname.endsWith("/connect") && request.method === "POST") {
+      const { id, authUrl } = await this.addMcpServer(
+        "Cloudflare Observability",
+        "https://observability.mcp.cloudflare.com/mcp",
+      );
+
+
+      if (authUrl) {
+        // OAuth required - redirect user to authorize
+        return Response.redirect(authUrl, 302);
+      }
+
+
+      // Already authenticated - connection complete
+      return Response.json({ serverId: id, status: "connected" });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
 ```
 
 ### Alternative approaches
@@ -68,19 +110,33 @@ After OAuth completes, the provider redirects back to your Agent's callback URL.
 
 Redirect users back to your application after OAuth completes:
 
-* [  JavaScript ](#tab-panel-5867)
-* [  TypeScript ](#tab-panel-5868)
+* [  JavaScript ](#tab-panel-6051)
+* [  TypeScript ](#tab-panel-6052)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      successRedirect: "/dashboard",
+      errorRedirect: "/auth-error",
+    });
+  }
+}
 ```
-export class MyAgent extends Agent {  onStart() {    this.mcp.configureOAuthCallback({      successRedirect: "/dashboard",      errorRedirect: "/auth-error",    });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent<Env> {  onStart() {    this.mcp.configureOAuthCallback({      successRedirect: "/dashboard",      errorRedirect: "/auth-error",    });  }}
+```ts
+export class MyAgent extends Agent<Env> {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      successRedirect: "/dashboard",
+      errorRedirect: "/auth-error",
+    });
+  }
+}
 ```
 
 Users return to `/dashboard` on success or `/auth-error?error=<message>` on failure.
@@ -89,21 +145,47 @@ Users return to `/dashboard` on success or `/auth-error?error=<message>` on fail
 
 If you opened OAuth in a popup, close it automatically when complete:
 
-* [  JavaScript ](#tab-panel-5869)
-* [  TypeScript ](#tab-panel-5870)
+* [  JavaScript ](#tab-panel-6053)
+* [  TypeScript ](#tab-panel-6054)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-export class MyAgent extends Agent {  onStart() {    this.mcp.configureOAuthCallback({      customHandler: () => {        // Close the popup after OAuth completes        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }}
+
+
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      customHandler: () => {
+        // Close the popup after OAuth completes
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent } from "agents";
-export class MyAgent extends Agent<Env> {  onStart() {    this.mcp.configureOAuthCallback({      customHandler: () => {        // Close the popup after OAuth completes        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }}
+
+
+export class MyAgent extends Agent<Env> {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      customHandler: () => {
+        // Close the popup after OAuth completes
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+}
 ```
 
 Your main application can detect the popup closing and refresh the connection status. If OAuth fails, the connection state becomes `"failed"` and the error message is stored in `server.error` for display in your UI.
@@ -114,25 +196,100 @@ Your main application can detect the popup closing and refresh the connection st
 
 Use the `useAgent` hook for real-time updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-5875)
-* [  TypeScript ](#tab-panel-5876)
+* [  JavaScript ](#tab-panel-6059)
+* [  TypeScript ](#tab-panel-6060)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { useState } from "react";
+
+
+function App() {
+  const [mcpState, setMcpState] = useState({
+    prompts: [],
+    resources: [],
+    servers: {},
+    tools: [],
+  });
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    name: "session-id",
+    onMcpUpdate: (mcpServers) => {
+      // Automatically called when MCP state changes!
+      setMcpState(mcpServers);
+    },
+  });
+
+
+  return (
+    <div>
+      {Object.entries(mcpState.servers).map(([id, server]) => (
+        <div key={id}>
+          <strong>{server.name}</strong>: {server.state}
+          {server.state === "authenticating" && server.auth_url && (
+            <button onClick={() => window.open(server.auth_url, "_blank")}>
+              Authorize
+            </button>
+          )}
+          {server.state === "failed" && server.error && (
+            <p className="error">{server.error}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
-import { useAgent } from "agents/react";import { useState } from "react";
-function App() {  const [mcpState, setMcpState] = useState({    prompts: [],    resources: [],    servers: {},    tools: [],  });
-  const agent = useAgent({    agent: "my-agent",    name: "session-id",    onMcpUpdate: (mcpServers) => {      // Automatically called when MCP state changes!      setMcpState(mcpServers);    },  });
-  return (    <div>      {Object.entries(mcpState.servers).map(([id, server]) => (        <div key={id}>          <strong>{server.name}</strong>: {server.state}          {server.state === "authenticating" && server.auth_url && (            <button onClick={() => window.open(server.auth_url, "_blank")}>              Authorize            </button>          )}          {server.state === "failed" && server.error && (            <p className="error">{server.error}</p>          )}        </div>      ))}    </div>  );}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { useState } from "react";import type { MCPServersState } from "agents";
-function App() {  const [mcpState, setMcpState] = useState<MCPServersState>({    prompts: [],    resources: [],    servers: {},    tools: [],  });
-  const agent = useAgent({    agent: "my-agent",    name: "session-id",    onMcpUpdate: (mcpServers: MCPServersState) => {      // Automatically called when MCP state changes!      setMcpState(mcpServers);    },  });
-  return (    <div>      {Object.entries(mcpState.servers).map(([id, server]) => (        <div key={id}>          <strong>{server.name}</strong>: {server.state}          {server.state === "authenticating" && server.auth_url && (            <button onClick={() => window.open(server.auth_url, "_blank")}>              Authorize            </button>          )}          {server.state === "failed" && server.error && (            <p className="error">{server.error}</p>          )}        </div>      ))}    </div>  );}
+```ts
+import { useAgent } from "agents/react";
+import { useState } from "react";
+import type { MCPServersState } from "agents";
+
+
+function App() {
+  const [mcpState, setMcpState] = useState<MCPServersState>({
+    prompts: [],
+    resources: [],
+    servers: {},
+    tools: [],
+  });
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    name: "session-id",
+    onMcpUpdate: (mcpServers: MCPServersState) => {
+      // Automatically called when MCP state changes!
+      setMcpState(mcpServers);
+    },
+  });
+
+
+  return (
+    <div>
+      {Object.entries(mcpState.servers).map(([id, server]) => (
+        <div key={id}>
+          <strong>{server.name}</strong>: {server.state}
+          {server.state === "authenticating" && server.auth_url && (
+            <button onClick={() => window.open(server.auth_url, "_blank")}>
+              Authorize
+            </button>
+          )}
+          {server.state === "failed" && server.error && (
+            <p className="error">{server.error}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
 The `onMcpUpdate` callback fires automatically when MCP state changes — no polling needed.
@@ -141,27 +298,79 @@ The `onMcpUpdate` callback fires automatically when MCP state changes — no pol
 
 Poll the connection status via an endpoint:
 
-* [  JavaScript ](#tab-panel-5873)
-* [  TypeScript ](#tab-panel-5874)
+* [  JavaScript ](#tab-panel-6057)
+* [  TypeScript ](#tab-panel-6058)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Agent {
+  async onRequest(request) {
+    const url = new URL(request.url);
+
+
+    if (
+      url.pathname.endsWith("connection-status") &&
+      request.method === "GET"
+    ) {
+      const mcpState = this.getMcpServers();
+
+
+      const connections = Object.entries(mcpState.servers).map(
+        ([id, server]) => ({
+          serverId: id,
+          name: server.name,
+          state: server.state,
+          isReady: server.state === "ready",
+          needsAuth: server.state === "authenticating",
+          authUrl: server.auth_url,
+        }),
+      );
+
+
+      return Response.json(connections);
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
 ```
-export class MyAgent extends Agent {  async onRequest(request) {    const url = new URL(request.url);
-    if (      url.pathname.endsWith("connection-status") &&      request.method === "GET"    ) {      const mcpState = this.getMcpServers();
-      const connections = Object.entries(mcpState.servers).map(        ([id, server]) => ({          serverId: id,          name: server.name,          state: server.state,          isReady: server.state === "ready",          needsAuth: server.state === "authenticating",          authUrl: server.auth_url,        }),      );
-      return Response.json(connections);    }
-    return new Response("Not found", { status: 404 });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Agent<Env> {  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);
-    if (      url.pathname.endsWith("connection-status") &&      request.method === "GET"    ) {      const mcpState = this.getMcpServers();
-      const connections = Object.entries(mcpState.servers).map(        ([id, server]) => ({          serverId: id,          name: server.name,          state: server.state,          isReady: server.state === "ready",          needsAuth: server.state === "authenticating",          authUrl: server.auth_url,        }),      );
-      return Response.json(connections);    }
-    return new Response("Not found", { status: 404 });  }}
+```ts
+export class MyAgent extends Agent<Env> {
+  async onRequest(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    if (
+      url.pathname.endsWith("connection-status") &&
+      request.method === "GET"
+    ) {
+      const mcpState = this.getMcpServers();
+
+
+      const connections = Object.entries(mcpState.servers).map(
+        ([id, server]) => ({
+          serverId: id,
+          name: server.name,
+          state: server.state,
+          isReady: server.state === "ready",
+          needsAuth: server.state === "authenticating",
+          authUrl: server.auth_url,
+        }),
+      );
+
+
+      return Response.json(connections);
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
 ```
 
 Connection states flow: `authenticating` (needs OAuth) → `connecting` (completing setup) → `ready` (available for use)
@@ -170,29 +379,138 @@ Connection states flow: `authenticating` (needs OAuth) → `connecting` (complet
 
 When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. Display this error in your UI and allow users to retry:
 
-* [  JavaScript ](#tab-panel-5877)
-* [  TypeScript ](#tab-panel-5878)
+* [  JavaScript ](#tab-panel-6061)
+* [  TypeScript ](#tab-panel-6062)
 
-JavaScript
+**JavaScript**
 
+```js
+import { useAgent } from "agents/react";
+import { useState } from "react";
+
+
+function App() {
+  const [mcpState, setMcpState] = useState({
+    prompts: [],
+    resources: [],
+    servers: {},
+    tools: [],
+  });
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    name: "session-id",
+    onMcpUpdate: setMcpState,
+  });
+
+
+  const handleRetry = async (serverId, serverUrl, name) => {
+    // Remove failed connection
+    await fetch(`/agents/my-agent/session-id/disconnect`, {
+      method: "POST",
+      body: JSON.stringify({ serverId }),
+    });
+
+
+    // Retry connection
+    const response = await fetch(`/agents/my-agent/session-id/connect`, {
+      method: "POST",
+      body: JSON.stringify({ serverUrl, name }),
+    });
+    const { authUrl } = await response.json();
+    if (authUrl) window.open(authUrl, "_blank");
+  };
+
+
+  return (
+    <div>
+      {Object.entries(mcpState.servers).map(([id, server]) => (
+        <div key={id}>
+          <strong>{server.name}</strong>: {server.state}
+          {server.state === "failed" && (
+            <div>
+              {server.error && <p className="error">{server.error}</p>}
+              <button
+                onClick={() => handleRetry(id, server.server_url, server.name)}
+              >
+                Retry Connection
+              </button>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
-import { useAgent } from "agents/react";import { useState } from "react";
-function App() {  const [mcpState, setMcpState] = useState({    prompts: [],    resources: [],    servers: {},    tools: [],  });
-  const agent = useAgent({    agent: "my-agent",    name: "session-id",    onMcpUpdate: setMcpState,  });
-  const handleRetry = async (serverId, serverUrl, name) => {    // Remove failed connection    await fetch(`/agents/my-agent/session-id/disconnect`, {      method: "POST",      body: JSON.stringify({ serverId }),    });
-    // Retry connection    const response = await fetch(`/agents/my-agent/session-id/connect`, {      method: "POST",      body: JSON.stringify({ serverUrl, name }),    });    const { authUrl } = await response.json();    if (authUrl) window.open(authUrl, "_blank");  };
-  return (    <div>      {Object.entries(mcpState.servers).map(([id, server]) => (        <div key={id}>          <strong>{server.name}</strong>: {server.state}          {server.state === "failed" && (            <div>              {server.error && <p className="error">{server.error}</p>}              <button                onClick={() => handleRetry(id, server.server_url, server.name)}              >                Retry Connection              </button>            </div>          )}        </div>      ))}    </div>  );}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { useAgent } from "agents/react";import { useState } from "react";import type { MCPServersState } from "agents";
-function App() {  const [mcpState, setMcpState] = useState<MCPServersState>({    prompts: [],    resources: [],    servers: {},    tools: [],  });
-  const agent = useAgent({    agent: "my-agent",    name: "session-id",    onMcpUpdate: setMcpState,  });
-  const handleRetry = async (    serverId: string,    serverUrl: string,    name: string,  ) => {    // Remove failed connection    await fetch(`/agents/my-agent/session-id/disconnect`, {      method: "POST",      body: JSON.stringify({ serverId }),    });
-    // Retry connection    const response = await fetch(`/agents/my-agent/session-id/connect`, {      method: "POST",      body: JSON.stringify({ serverUrl, name }),    });    const { authUrl } = await response.json();    if (authUrl) window.open(authUrl, "_blank");  };
-  return (    <div>      {Object.entries(mcpState.servers).map(([id, server]) => (        <div key={id}>          <strong>{server.name}</strong>: {server.state}          {server.state === "failed" && (            <div>              {server.error && <p className="error">{server.error}</p>}              <button                onClick={() => handleRetry(id, server.server_url, server.name)}              >                Retry Connection              </button>            </div>          )}        </div>      ))}    </div>  );}
+```ts
+import { useAgent } from "agents/react";
+import { useState } from "react";
+import type { MCPServersState } from "agents";
+
+
+function App() {
+  const [mcpState, setMcpState] = useState<MCPServersState>({
+    prompts: [],
+    resources: [],
+    servers: {},
+    tools: [],
+  });
+
+
+  const agent = useAgent({
+    agent: "my-agent",
+    name: "session-id",
+    onMcpUpdate: setMcpState,
+  });
+
+
+  const handleRetry = async (
+    serverId: string,
+    serverUrl: string,
+    name: string,
+  ) => {
+    // Remove failed connection
+    await fetch(`/agents/my-agent/session-id/disconnect`, {
+      method: "POST",
+      body: JSON.stringify({ serverId }),
+    });
+
+
+    // Retry connection
+    const response = await fetch(`/agents/my-agent/session-id/connect`, {
+      method: "POST",
+      body: JSON.stringify({ serverUrl, name }),
+    });
+    const { authUrl } = await response.json();
+    if (authUrl) window.open(authUrl, "_blank");
+  };
+
+
+  return (
+    <div>
+      {Object.entries(mcpState.servers).map(([id, server]) => (
+        <div key={id}>
+          <strong>{server.name}</strong>: {server.state}
+          {server.state === "failed" && (
+            <div>
+              {server.error && <p className="error">{server.error}</p>}
+              <button
+                onClick={() => handleRetry(id, server.server_url, server.name)}
+              >
+                Retry Connection
+              </button>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
 Common failure reasons:
@@ -208,38 +526,176 @@ Failed connections remain in state until removed with `removeMcpServer(serverId)
 
 This example demonstrates a complete OAuth integration with Cloudflare Observability. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
 
-* [  JavaScript ](#tab-panel-5879)
-* [  TypeScript ](#tab-panel-5880)
+* [  JavaScript ](#tab-panel-6063)
+* [  TypeScript ](#tab-panel-6064)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent, routeAgentRequest } from "agents";
-export class MyAgent extends Agent {  onStart() {    this.mcp.configureOAuthCallback({      customHandler: () => {        // Close popup after OAuth completes (success or failure)        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }
-  async onRequest(request) {    const url = new URL(request.url);
-    // Connect to MCP server    if (url.pathname.endsWith("/connect") && request.method === "POST") {      const { id, authUrl } = await this.addMcpServer(        "Cloudflare Observability",        "https://observability.mcp.cloudflare.com/mcp",      );
-      if (authUrl) {        return Response.json({          serverId: id,          authUrl: authUrl,          message: "Please authorize access",        });      }
-      return Response.json({ serverId: id, status: "connected" });    }
-    // Check connection status    if (url.pathname.endsWith("/status") && request.method === "GET") {      const mcpState = this.getMcpServers();      const connections = Object.entries(mcpState.servers).map(        ([id, server]) => ({          serverId: id,          name: server.name,          state: server.state,          authUrl: server.auth_url,        }),      );      return Response.json(connections);    }
-    // Disconnect    if (url.pathname.endsWith("/disconnect") && request.method === "POST") {      const { serverId } = await request.json();      await this.removeMcpServer(serverId);      return Response.json({ message: "Disconnected" });    }
-    return new Response("Not found", { status: 404 });  }}
-export default {  async fetch(request, env) {    return (      (await routeAgentRequest(request, env, { cors: true })) ||      new Response("Not found", { status: 404 })    );  },};
+
+
+export class MyAgent extends Agent {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      customHandler: () => {
+        // Close popup after OAuth completes (success or failure)
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+
+
+  async onRequest(request) {
+    const url = new URL(request.url);
+
+
+    // Connect to MCP server
+    if (url.pathname.endsWith("/connect") && request.method === "POST") {
+      const { id, authUrl } = await this.addMcpServer(
+        "Cloudflare Observability",
+        "https://observability.mcp.cloudflare.com/mcp",
+      );
+
+
+      if (authUrl) {
+        return Response.json({
+          serverId: id,
+          authUrl: authUrl,
+          message: "Please authorize access",
+        });
+      }
+
+
+      return Response.json({ serverId: id, status: "connected" });
+    }
+
+
+    // Check connection status
+    if (url.pathname.endsWith("/status") && request.method === "GET") {
+      const mcpState = this.getMcpServers();
+      const connections = Object.entries(mcpState.servers).map(
+        ([id, server]) => ({
+          serverId: id,
+          name: server.name,
+          state: server.state,
+          authUrl: server.auth_url,
+        }),
+      );
+      return Response.json(connections);
+    }
+
+
+    // Disconnect
+    if (url.pathname.endsWith("/disconnect") && request.method === "POST") {
+      const { serverId } = await request.json();
+      await this.removeMcpServer(serverId);
+      return Response.json({ message: "Disconnected" });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
+
+
+export default {
+  async fetch(request, env) {
+    return (
+      (await routeAgentRequest(request, env, { cors: true })) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent, routeAgentRequest } from "agents";
-type Env = {  MyAgent: DurableObjectNamespace<MyAgent>;};
-export class MyAgent extends Agent<Env> {  onStart() {    this.mcp.configureOAuthCallback({      customHandler: () => {        // Close popup after OAuth completes (success or failure)        return new Response("<script>window.close();</script>", {          headers: { "content-type": "text/html" },        });      },    });  }
-  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);
-    // Connect to MCP server    if (url.pathname.endsWith("/connect") && request.method === "POST") {      const { id, authUrl } = await this.addMcpServer(        "Cloudflare Observability",        "https://observability.mcp.cloudflare.com/mcp",      );
-      if (authUrl) {        return Response.json({          serverId: id,          authUrl: authUrl,          message: "Please authorize access",        });      }
-      return Response.json({ serverId: id, status: "connected" });    }
-    // Check connection status    if (url.pathname.endsWith("/status") && request.method === "GET") {      const mcpState = this.getMcpServers();      const connections = Object.entries(mcpState.servers).map(        ([id, server]) => ({          serverId: id,          name: server.name,          state: server.state,          authUrl: server.auth_url,        }),      );      return Response.json(connections);    }
-    // Disconnect    if (url.pathname.endsWith("/disconnect") && request.method === "POST") {      const { serverId } = (await request.json()) as { serverId: string };      await this.removeMcpServer(serverId);      return Response.json({ message: "Disconnected" });    }
-    return new Response("Not found", { status: 404 });  }}
-export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env, { cors: true })) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
+
+
+type Env = {
+  MyAgent: DurableObjectNamespace<MyAgent>;
+};
+
+
+export class MyAgent extends Agent<Env> {
+  onStart() {
+    this.mcp.configureOAuthCallback({
+      customHandler: () => {
+        // Close popup after OAuth completes (success or failure)
+        return new Response("<script>window.close();</script>", {
+          headers: { "content-type": "text/html" },
+        });
+      },
+    });
+  }
+
+
+  async onRequest(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+
+
+    // Connect to MCP server
+    if (url.pathname.endsWith("/connect") && request.method === "POST") {
+      const { id, authUrl } = await this.addMcpServer(
+        "Cloudflare Observability",
+        "https://observability.mcp.cloudflare.com/mcp",
+      );
+
+
+      if (authUrl) {
+        return Response.json({
+          serverId: id,
+          authUrl: authUrl,
+          message: "Please authorize access",
+        });
+      }
+
+
+      return Response.json({ serverId: id, status: "connected" });
+    }
+
+
+    // Check connection status
+    if (url.pathname.endsWith("/status") && request.method === "GET") {
+      const mcpState = this.getMcpServers();
+      const connections = Object.entries(mcpState.servers).map(
+        ([id, server]) => ({
+          serverId: id,
+          name: server.name,
+          state: server.state,
+          authUrl: server.auth_url,
+        }),
+      );
+      return Response.json(connections);
+    }
+
+
+    // Disconnect
+    if (url.pathname.endsWith("/disconnect") && request.method === "POST") {
+      const { serverId } = (await request.json()) as { serverId: string };
+      await this.removeMcpServer(serverId);
+      return Response.json({ message: "Disconnected" });
+    }
+
+
+    return new Response("Not found", { status: 404 });
+  }
+}
+
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env, { cors: true })) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Related

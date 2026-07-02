@@ -23,7 +23,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 
 ## Endpoint
 
-```
+```txt
 https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scrape
 ```
 
@@ -43,36 +43,101 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-6991)
-* [ TypeScript SDK ](#tab-panel-6992)
-* [ Workers binding ](#tab-panel-6993)
+* [ curl ](#tab-panel-7239)
+* [ TypeScript SDK ](#tab-panel-7240)
+* [ Workers binding ](#tab-panel-7241)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 
-Terminal window
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scrape' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "url": "https://example.com/",
+  "elements": [{
+    "selector": "h1"
+  },
+  {
+    "selector": "a"
+  }]
+}'
+```
 
-```
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scrape' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{  "url": "https://example.com/",  "elements": [{    "selector": "h1"  },  {    "selector": "a"  }]}'
+```json
+{
+  "success": true,
+  "result": [
+    {
+      "results": [
+        {
+          "attributes": [],
+          "height": 39,
+          "html": "Example Domain",
+          "left": 100,
+          "text": "Example Domain",
+          "top": 133.4375,
+          "width": 600
+        }
+      ],
+      "selector": "h1"
+    },
+    {
+      "results": [
+        {
+          "attributes": [
+            { "name": "href", "value": "https://www.iana.org/domains/example" }
+          ],
+          "height": 20,
+          "html": "More information...",
+          "left": 100,
+          "text": "More information...",
+          "top": 249.875,
+          "width": 142
+        }
+      ],
+      "selector": "a"
+    }
+  ]
+}
 ```
 
-```
-{  "success": true,  "result": [    {      "results": [        {          "attributes": [],          "height": 39,          "html": "Example Domain",          "left": 100,          "text": "Example Domain",          "top": 133.4375,          "width": 600        }      ],      "selector": "h1"    },    {      "results": [        {          "attributes": [            { "name": "href", "value": "https://www.iana.org/domains/example" }          ],          "height": 20,          "html": "More information...",          "left": 100,          "text": "More information...",          "top": 249.875,          "width": 142        }      ],      "selector": "a"    }  ]}
-```
+**TypeScript**
 
-TypeScript
-
-```
+```typescript
 import Cloudflare from "cloudflare";
-const client = new Cloudflare({  apiToken: process.env["CLOUDFLARE_API_TOKEN"],});
-const scrapes = await client.browserRendering.scrape.create({  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],  elements: [{ selector: "h1" }, { selector: "a" }],});
+
+
+const client = new Cloudflare({
+  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+});
+
+
+const scrapes = await client.browserRendering.scrape.create({
+  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+  elements: [{ selector: "h1" }, { selector: "a" }],
+});
+
+
 console.log(scrapes);
 ```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  BROWSER: BrowserRun;}
-export default {  async fetch(request, env): Promise<Response> {    return await env.BROWSER.quickAction("scrape", {      url: "https://example.com/",      elements: [{ selector: "h1" }, { selector: "a" }],    });  },} satisfies ExportedHandler<Env>;
+```typescript
+interface Env {
+  BROWSER: BrowserRun;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    return await env.BROWSER.quickAction("scrape", {
+      url: "https://example.com/",
+      elements: [{ selector: "h1" }, { selector: "a" }],
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters.
@@ -99,8 +164,13 @@ For JavaScript-heavy pages or Single Page Applications (SPAs), the default page 
 
 The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `networkidle0` or `networkidle2`:
 
-```
-{  "url": "https://example.com",  "gotoOptions": {    "waitUntil": "networkidle0"  }}
+```json
+{
+  "url": "https://example.com",
+  "gotoOptions": {
+    "waitUntil": "networkidle0"
+  }
+}
 ```
 
 For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).

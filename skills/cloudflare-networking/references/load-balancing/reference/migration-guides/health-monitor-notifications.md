@@ -32,16 +32,35 @@ With code
 
 Use the [Cloudflare API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/list/) to list all your pools and then look for whether each pool has a value for the `notification_email` parameter.
 
-Request
+**Request**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/pools" \--header "Authorization: Bearer <API_TOKEN>" \| jq '[.result[] | select(.notification_email != "") | {name, notification_email}]'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/pools" \
+--header "Authorization: Bearer <API_TOKEN>" \
+| jq '[.result[] | select(.notification_email != "") | {name, notification_email}]'
 ```
 
-Response
+**Response**
 
-```
-[    {        "name": "pool-1",        "notification_email": "user@example.com"    },    {        "name": "pool-2",        "notification_email": "user@example.com"    },    {        "name": "pool-3",        "notification_email": "user@example.com"    },    {        "name": "pool-4",        "notification_email": "user@example.com"    }]
+```json
+[
+    {
+        "name": "pool-1",
+        "notification_email": "user@example.com"
+    },
+    {
+        "name": "pool-2",
+        "notification_email": "user@example.com"
+    },
+    {
+        "name": "pool-3",
+        "notification_email": "user@example.com"
+    },
+    {
+        "name": "pool-4",
+        "notification_email": "user@example.com"
+    }
+]
 ```
 
 No code
@@ -62,8 +81,13 @@ With code
 
 If using the Cloudflare API, [re-create all your existing notifications](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
 
-```
-"alert_type": "load_balancing_health_alert","filters": {    "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,    "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],    "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]}
+```json
+"alert_type": "load_balancing_health_alert",
+"filters": {
+    "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,
+    "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],
+    "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]
+}
 ```
 
 No code
@@ -85,10 +109,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-Patch Pools
+**Patch Pools**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "notification_email": ""  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "notification_email": ""
+  }'
 ```
 
 This API call supports the standard pagination query parameters, either `limit/offset` or `per_page/page`, so by default it only updates the first 25 pools listed. To make sure you update all your pools, you may want to adjust your API call so it loops through various pages or includes a larger number of pools with each request.

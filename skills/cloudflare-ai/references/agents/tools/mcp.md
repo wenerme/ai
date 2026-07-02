@@ -27,27 +27,67 @@ To build an MCP server instead, refer to [Model Context Protocol (MCP)](https://
 
 Call `addMcpServer()` to connect to a remote MCP server, then pass `this.mcp.getAITools()` to the AI SDK.
 
-* [  JavaScript ](#tab-panel-6625)
-* [  TypeScript ](#tab-panel-6626)
+* [  JavaScript ](#tab-panel-6821)
+* [  TypeScript ](#tab-panel-6822)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Agent } from "agents";
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class ToolAgent extends Agent {
+  async onStart() {
+    await this.addMcpServer("github", "https://mcp.github.com/mcp");
+  }
+
+
+  async onRequest(request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+
+
+    const response = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "Use available tools to summarize the latest issue activity.",
+      tools: this.mcp.getAITools(),
+    });
+
+
+    return new Response(response.text);
+  }
+}
 ```
-import { Agent } from "agents";import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class ToolAgent extends Agent {  async onStart() {    await this.addMcpServer("github", "https://mcp.github.com/mcp");  }
-  async onRequest(request) {    const workersai = createWorkersAI({ binding: this.env.AI });
-    const response = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "Use available tools to summarize the latest issue activity.",      tools: this.mcp.getAITools(),    });
-    return new Response(response.text);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Agent } from "agents";import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
-export class ToolAgent extends Agent<Env> {  async onStart() {    await this.addMcpServer("github", "https://mcp.github.com/mcp");  }
-  async onRequest(request: Request) {    const workersai = createWorkersAI({ binding: this.env.AI });
-    const response = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "Use available tools to summarize the latest issue activity.",      tools: this.mcp.getAITools(),    });
-    return new Response(response.text);  }}
+```ts
+import { Agent } from "agents";
+import { generateText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+
+export class ToolAgent extends Agent<Env> {
+  async onStart() {
+    await this.addMcpServer("github", "https://mcp.github.com/mcp");
+  }
+
+
+  async onRequest(request: Request) {
+    const workersai = createWorkersAI({ binding: this.env.AI });
+
+
+    const response = await generateText({
+      model: workersai("@cf/zai-org/glm-4.7-flash"),
+      prompt: "Use available tools to summarize the latest issue activity.",
+      tools: this.mcp.getAITools(),
+    });
+
+
+    return new Response(response.text);
+  }
+}
 ```
 
 If the server requires OAuth, `addMcpServer()` returns an authentication state and authorization URL. The connection is persisted in the agent's [SQL storage](https://developers.cloudflare.com/agents/runtime/lifecycle/state/).
@@ -58,19 +98,35 @@ For public MCP servers, no binding configuration is required. Store server URLs,
 
 For MCP servers that require bearer tokens or Cloudflare Access headers, pass custom transport headers when connecting.
 
-* [  JavaScript ](#tab-panel-6623)
-* [  TypeScript ](#tab-panel-6624)
+* [  JavaScript ](#tab-panel-6819)
+* [  TypeScript ](#tab-panel-6820)
 
-JavaScript
+**JavaScript**
 
+```js
+await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
+  transport: {
+    headers: {
+      Authorization: `Bearer ${this.env.MCP_TOKEN}`,
+      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
+      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
+    },
+  },
+});
 ```
-await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {  transport: {    headers: {      Authorization: `Bearer ${this.env.MCP_TOKEN}`,      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,    },  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {  transport: {    headers: {      Authorization: `Bearer ${this.env.MCP_TOKEN}`,      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,    },  },});
+```ts
+await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
+  transport: {
+    headers: {
+      Authorization: `Bearer ${this.env.MCP_TOKEN}`,
+      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
+      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
+    },
+  },
+});
 ```
 
 ## Related resources

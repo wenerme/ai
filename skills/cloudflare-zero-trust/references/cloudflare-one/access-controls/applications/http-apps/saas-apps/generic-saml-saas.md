@@ -114,24 +114,106 @@ JSONata transformations are not compatible with [SAML attribute statements](#sam
 
 For example, the following JSONata script merges group names into a list and adds an `eduPersonPrincipalName` field which maps to the user email.
 
-JSONata expression
+**JSONata expression**
 
-```
+```txt
 $merge([$, {"groups": groups.name, 'eduPersonPrincipalName': email}])
 ```
 
 Here is an example of a user identity before applying the JSONata transform:
 
-User identity before JSONata transform
+**User identity before JSONata transform**
 
-```
-{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    {      "id": "12fdf91a-fb23-41b3-995a-de2f72c61d0e",      "name": "IdentityProtection-RiskyUser-RiskLevel-low"    },    {      "id": "12348f47-8234-4860-a03f-c2a1513f267b",      "name": "Global Administrator"    },    {      "id": "11235980-87d7-4917-b0aa-74c01914c40e",      "name": "Application Administrator"    }  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
+```json
+{
+  "account_id": "699d98642c564d2e855e9661899b7252",
+  "amr": [
+    "pwd"
+  ],
+  "auth_status": "NONE",
+  "common_name": "",
+  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
+  "device_sessions": {
+    "49e653db-991e-11ee-af26-2243bf8c3428": {
+      "last_authenticated": 1703004275
+    }
+  },
+  "devicePosture": {
+    "8534a230-e85e-4183-8964-a4b7dcf72986": {
+      "rule_name": "Warp",
+      "success": true,
+      "type": "warp"
+    }
+  },
+  "email": "jdoe@company.com",
+  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
+  "geo": {
+    "country": "US"
+  },
+  "groups": [
+    {
+      "id": "12fdf91a-fb23-41b3-995a-de2f72c61d0e",
+      "name": "IdentityProtection-RiskyUser-RiskLevel-low"
+    },
+    {
+      "id": "12348f47-8234-4860-a03f-c2a1513f267b",
+      "name": "Global Administrator"
+    },
+    {
+      "id": "11235980-87d7-4917-b0aa-74c01914c40e",
+      "name": "Application Administrator"
+    }
+  ],
+  "iat": 1659474397,
+  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
+  "idp": {
+    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
+    "type": "azureAD"
+  }
+}
 ```
 
 Result after applying the example JSONata script:
 
-```
-{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    "IdentityProtection-RiskyUser-RiskLevel-low",    "Global Administrator",    "Application Administrator"  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  },  "eduPersonPrincipalName": "jdoe@company.com"}
+```json
+{
+  "account_id": "699d98642c564d2e855e9661899b7252",
+  "amr": [
+    "pwd"
+  ],
+  "auth_status": "NONE",
+  "common_name": "",
+  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
+  "device_sessions": {
+    "49e653db-991e-11ee-af26-2243bf8c3428": {
+      "last_authenticated": 1703004275
+    }
+  },
+  "devicePosture": {
+    "8534a230-e85e-4183-8964-a4b7dcf72986": {
+      "rule_name": "Warp",
+      "success": true,
+      "type": "warp"
+    }
+  },
+  "email": "jdoe@company.com",
+  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
+  "geo": {
+    "country": "US"
+  },
+  "groups": [
+    "IdentityProtection-RiskyUser-RiskLevel-low",
+    "Global Administrator",
+    "Application Administrator"
+  ],
+  "iat": 1659474397,
+  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
+  "idp": {
+    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
+    "type": "azureAD"
+  },
+  "eduPersonPrincipalName": "jdoe@company.com"
+}
 ```
 
 For more JSONata transform use cases, refer to the following examples.
@@ -140,48 +222,178 @@ Remove groups attribute
 
 The following JSONata script removes the `groups` SAML attribute. This can be useful if your SaaS application does not need to receive user group information.
 
-JSONata expression
+**JSONata expression**
 
-```
+```txt
 $ ~> |$|{}, ['groups']|
 ```
 
 Result after applying the JSONata transform:
 
-```
-{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
+```json
+{
+  "account_id": "699d98642c564d2e855e9661899b7252",
+  "amr": [
+    "pwd"
+  ],
+  "auth_status": "NONE",
+  "common_name": "",
+  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
+  "device_sessions": {
+    "49e653db-991e-11ee-af26-2243bf8c3428": {
+      "last_authenticated": 1703004275
+    }
+  },
+  "devicePosture": {
+    "8534a230-e85e-4183-8964-a4b7dcf72986": {
+      "rule_name": "Warp",
+      "success": true,
+      "type": "warp"
+    }
+  },
+  "email": "jdoe@company.com",
+  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
+  "geo": {
+    "country": "US"
+  },
+  "iat": 1659474397,
+  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
+  "idp": {
+    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
+    "type": "azureAD"
+  }
+}
 ```
 
 Rename groups field and remove group ID
 
 The following JSONata script changes the `groups.name` field from `name` to `group_name` and removes the `groups.id` field:
 
-JSONata expression
+**JSONata expression**
 
-```
-{  "account_id": account_id,  "amr": amr,  "auth_status": auth_status,  "common_name": common_name,  "devicePosture": devicePosture,  "device_id": device_id,  "device_sessions": device_sessions,  "email": email,  "gateway_account_id": gateway_account_id,  "geo": geo,  "groups": $map($.groups, function($group) {    {"group_name": $group.name}}),  "iat": iat,  "id": id,  "idp": idp}
+```txt
+{
+  "account_id": account_id,
+  "amr": amr,
+  "auth_status": auth_status,
+  "common_name": common_name,
+  "devicePosture": devicePosture,
+  "device_id": device_id,
+  "device_sessions": device_sessions,
+  "email": email,
+  "gateway_account_id": gateway_account_id,
+  "geo": geo,
+  "groups": $map($.groups, function($group) {
+    {"group_name": $group.name}}),
+  "iat": iat,
+  "id": id,
+  "idp": idp
+}
 ```
 
 Result after applying the JSONata transform:
 
-```
-{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2210bf8c3428": {      "last_authenticated": 1703004275    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    {      "group_name": "IdentityProtection-RiskyUser-RiskLevel-low"    },    {      "group_name": "Global Administrator"    },    {      "group_name": "Application Administrator"    }  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
+```json
+{
+  "account_id": "699d98642c564d2e855e9661899b7252",
+  "amr": [
+    "pwd"
+  ],
+  "auth_status": "NONE",
+  "common_name": "",
+  "devicePosture": {
+    "8534a230-e85e-4183-8964-a4b7dcf72986": {
+      "rule_name": "Warp",
+      "success": true,
+      "type": "warp"
+    }
+  },
+  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
+  "device_sessions": {
+    "49e653db-991e-11ee-af26-2210bf8c3428": {
+      "last_authenticated": 1703004275
+    }
+  },
+  "email": "jdoe@company.com",
+  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
+  "geo": {
+    "country": "US"
+  },
+  "groups": [
+    {
+      "group_name": "IdentityProtection-RiskyUser-RiskLevel-low"
+    },
+    {
+      "group_name": "Global Administrator"
+    },
+    {
+      "group_name": "Application Administrator"
+    }
+  ],
+  "iat": 1659474397,
+  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
+  "idp": {
+    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
+    "type": "azureAD"
+  }
+}
 ```
 
 Filter groups by name
 
 The following JSONata script filters groups to those that match a regular expression.
 
-JSONata expression
+**JSONata expression**
 
-```
+```txt
 $merge([$, { "groups": $filter(groups, function($v) { $contains($v.name, /Administrator/) }) }])
 ```
 
 Result after applying the JSONata transform:
 
-```
-{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    {      "id": "12348f47-8234-4860-a03f-c2a1513f267b",      "name": "Global Administrator"    },    {      "id": "11235980-87d7-4917-b0aa-74c01914c40e",      "name": "Application Administrator"    }  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
+```json
+{
+  "account_id": "699d98642c564d2e855e9661899b7252",
+  "amr": [
+    "pwd"
+  ],
+  "auth_status": "NONE",
+  "common_name": "",
+  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
+  "device_sessions": {
+    "49e653db-991e-11ee-af26-2243bf8c3428": {
+      "last_authenticated": 1703004275
+    }
+  },
+  "devicePosture": {
+    "8534a230-e85e-4183-8964-a4b7dcf72986": {
+      "rule_name": "Warp",
+      "success": true,
+      "type": "warp"
+    }
+  },
+  "email": "jdoe@company.com",
+  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
+  "geo": {
+    "country": "US"
+  },
+  "groups": [
+    {
+      "id": "12348f47-8234-4860-a03f-c2a1513f267b",
+      "name": "Global Administrator"
+    },
+    {
+      "id": "11235980-87d7-4917-b0aa-74c01914c40e",
+      "name": "Application Administrator"
+    }
+  ],
+  "iat": 1659474397,
+  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
+  "idp": {
+    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
+    "type": "azureAD"
+  }
+}
 ```
 
 ### NameID transform
@@ -196,10 +408,19 @@ The NameID transform is only available through the API. To configure it, update 
 
 For example, to modify the user's email so that it includes a `+sandbox` suffix (useful when connecting multiple instances of the same SaaS app):
 
-Set a NameID transform via the API
+**Set a NameID transform via the API**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \--header "Authorization: Bearer {api_token}" \--header "Content-Type: application/json" \--data '{  "saas_app": {    "auth_type": "saml",    "name_id_transform_jsonata": "$substringBefore(email, '\''@'\'') & '\''+sandbox@'\'' & $substringAfter(email, '\''@'\'')"  }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+--header "Authorization: Bearer {api_token}" \
+--header "Content-Type: application/json" \
+--data '{
+  "saas_app": {
+    "auth_type": "saml",
+    "name_id_transform_jsonata": "$substringBefore(email, '\''@'\'') & '\''+sandbox@'\'' & $substringAfter(email, '\''@'\'')"
+  }
+}'
 ```
 
 Given a user with the email `jdoe@company.com`, this expression produces a `NameID` of `jdoe+sandbox@company.com`.
@@ -208,10 +429,19 @@ Use employee ID as NameID
 
 To send a non-email attribute such as an employee ID, reference the attribute name directly in the JSONata expression. The attribute must be available in the user's identity from the IdP.
 
-Set employee\_id as NameID
+**Set employee\_id as NameID**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \--header "Authorization: Bearer {api_token}" \--header "Content-Type: application/json" \--data '{  "saas_app": {    "auth_type": "saml",    "name_id_transform_jsonata": "employee_id"  }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+--header "Authorization: Bearer {api_token}" \
+--header "Content-Type: application/json" \
+--data '{
+  "saas_app": {
+    "auth_type": "saml",
+    "name_id_transform_jsonata": "employee_id"
+  }
+}'
 ```
 
 Given a user identity that contains `"employee_id": "efgh5678"`, the `NameID` sent in the SAML assertion will be `efgh5678`.
@@ -220,10 +450,19 @@ Remove NameID transform
 
 To revert to the default behavior (sending the user's email as the `NameID`), set the field to an empty string:
 
-Remove NameID transform
+**Remove NameID transform**
 
-```
-curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \--header "Authorization: Bearer {api_token}" \--header "Content-Type: application/json" \--data '{  "saas_app": {    "auth_type": "saml",    "name_id_transform_jsonata": ""  }}'
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+--header "Authorization: Bearer {api_token}" \
+--header "Content-Type: application/json" \
+--data '{
+  "saas_app": {
+    "auth_type": "saml",
+    "name_id_transform_jsonata": ""
+  }
+}'
 ```
 
 ```json

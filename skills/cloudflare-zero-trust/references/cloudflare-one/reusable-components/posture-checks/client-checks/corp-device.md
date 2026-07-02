@@ -39,8 +39,7 @@ You can use the following commands to check the serial number of your device. Th
 
 1. Open a terminal window.
 2. Use the `system_profiler` command to check for the value of `SPHardwareDataType` and retrieve the serial number.
-Terminal window
-```
+```sh
 system_profiler SPHardwareDataType | grep 'Serial Number'
 ```
 
@@ -48,8 +47,9 @@ system_profiler SPHardwareDataType | grep 'Serial Number'
 
 1. Open a PowerShell window.
 2. Use the `Get-CimInstance` command to get the SerialNumber property of the `Win32_BIOS` class.
-PowerShell
-```
+
+**PowerShell**
+```powershell
 Get-CimInstance Win32_BIOS
 ```
 
@@ -57,8 +57,7 @@ Get-CimInstance Win32_BIOS
 
 1. Open a Terminal Window
 2. Use the `dmidecode` command to get the version property `system-serial-number`.
-Terminal window
-```
+```sh
 sudo dmidecode -s system-serial-number
 ```
 

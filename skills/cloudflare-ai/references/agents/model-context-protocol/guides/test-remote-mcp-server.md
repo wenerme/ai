@@ -21,12 +21,12 @@ This guide will show you options for how to start using your remote MCP server w
 The [@modelcontextprotocol/inspector package ↗](https://github.com/modelcontextprotocol/inspector) is a visual testing tool for MCP servers.
 
 1. Open a terminal and run the following command:
-Terminal window
-```
+```sh
 npx @modelcontextprotocol/inspector
 ```
-```
-🚀 MCP Inspector is up and running at:  http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3
+```sh
+🚀 MCP Inspector is up and running at:
+  http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3
 🌐 Opening browser...
 ```
 The MCP Inspector will launch in your web browser. You can also launch it manually by opening a browser and going to `http://localhost:<PORT>`. Check the command output for the local port where MCP Inspector is running. In this example, MCP Inspector is served on port `5173`.
@@ -51,8 +51,15 @@ You can use the [mcp-remote local proxy ↗](https://www.npmjs.com/package/mcp-r
 1. Open Claude Desktop and navigate to Settings -> Developer -> Edit Config. This opens the configuration file that controls which MCP servers Claude can access.
 2. Replace the content with a configuration like this:
 
-```
-{  "mcpServers": {    "my-server": {      "command": "npx",      "args": ["mcp-remote", "http://my-mcp-server.my-account.workers.dev/mcp"]    }  }}
+```json
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://my-mcp-server.my-account.workers.dev/mcp"]
+    }
+  }
+}
 ```
 
 1. Save the file and restart Claude Desktop (command/ctrl + R). When Claude restarts, a browser window will open showing your OAuth login page. Complete the authorization flow to grant Claude access to your MCP server.
@@ -63,16 +70,28 @@ Once authenticated, you'll be able to see your tools by clicking the tools icon 
 
 Connect [Cursor ↗](https://cursor.com/docs/context/mcp) to your remote MCP server by editing the project's `.cursor/mcp.json` file or a global `~/.cursor/mcp.json` file and adding the following configuration:
 
-```
-{  "mcpServers": {    "my-server": {      "url": "http://my-mcp-server.my-account.workers.dev/mcp"    }  }}
+```json
+{
+  "mcpServers": {
+    "my-server": {
+      "url": "http://my-mcp-server.my-account.workers.dev/mcp"
+    }
+  }
+}
 ```
 
 ## Connect your remote MCP server to Windsurf
 
 You can connect your remote MCP server to [Windsurf ↗](https://docs.windsurf.com) by editing the [mcp\_config.json file ↗](https://docs.windsurf.com/windsurf/cascade/mcp), and adding the following configuration:
 
-```
-{  "mcpServers": {    "my-server": {      "serverUrl": "http://my-mcp-server.my-account.workers.dev/mcp"    }  }}
+```json
+{
+  "mcpServers": {
+    "my-server": {
+      "serverUrl": "http://my-mcp-server.my-account.workers.dev/mcp"
+    }
+  }
+}
 ```
 
 ```json

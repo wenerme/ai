@@ -26,19 +26,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```html
 <rtk-livestream-toggle></rtk-livestream-toggle>
 ```
 
 ### With Properties
 
-```
-<rtk-livestream-toggle size="md" variant"button"></rtk-livestream-toggle>
+```html
+<rtk-livestream-toggle
+ size="md"
+ variant"button">
+</rtk-livestream-toggle>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-livestream-toggle");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-livestream-toggle");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

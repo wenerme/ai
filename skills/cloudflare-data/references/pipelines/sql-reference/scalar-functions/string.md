@@ -18,7 +18,7 @@ _Cloudflare Pipelines scalar function implementations are based on [Apache DataF
 
 Returns the ASCII value of the first character in a string.
 
-```
+```plaintext
 ascii(str)
 ```
 
@@ -32,7 +32,7 @@ ascii(str)
 
 Returns the bit length of a string.
 
-```
+```plaintext
 bit_length(str)
 ```
 
@@ -46,7 +46,7 @@ bit_length(str)
 
 Trims the specified trim string from the start and end of a string. If no trim string is provided, all whitespace is removed from the start and end of the input string.
 
-```
+```plaintext
 btrim(str[, trim_str])
 ```
 
@@ -73,7 +73,7 @@ _Alias of [length](#length)._
 
 Concatenates multiple strings together.
 
-```
+```plaintext
 concat(str[, ..., str_n])
 ```
 
@@ -88,7 +88,7 @@ concat(str[, ..., str_n])
 
 Concatenates multiple strings together with a specified separator.
 
-```
+```plaintext
 concat(separator, str[, ..., str_n])
 ```
 
@@ -104,7 +104,7 @@ concat(separator, str[, ..., str_n])
 
 Returns the character with the specified ASCII or Unicode code value.
 
-```
+```plaintext
 chr(expression)
 ```
 
@@ -118,7 +118,7 @@ chr(expression)
 
 Tests if a string ends with a substring.
 
-```
+```plaintext
 ends_with(str, substr)
 ```
 
@@ -131,7 +131,7 @@ ends_with(str, substr)
 
 Capitalizes the first character in each word in the input string. Words are delimited by non-alphanumeric characters.
 
-```
+```plaintext
 initcap(str)
 ```
 
@@ -154,7 +154,7 @@ _Alias of [strpos](#strpos)._
 
 Returns a specified number of characters from the left side of a string.
 
-```
+```plaintext
 left(str, n)
 ```
 
@@ -169,7 +169,7 @@ left(str, n)
 
 Returns the number of characters in a string.
 
-```
+```plaintext
 length(str)
 ```
 
@@ -188,7 +188,7 @@ length(str)
 
 Converts a string to lower-case.
 
-```
+```plaintext
 lower(str)
 ```
 
@@ -202,7 +202,7 @@ lower(str)
 
 Pads the left side of a string with another string to a specified string length.
 
-```
+```plaintext
 lpad(str, n[, padding_str])
 ```
 
@@ -218,7 +218,7 @@ lpad(str, n[, padding_str])
 
 Trims the specified trim string from the beginning of a string. If no trim string is provided, all whitespace is removed from the start of the input string.
 
-```
+```plaintext
 ltrim(str[, trim_str])
 ```
 
@@ -233,7 +233,7 @@ ltrim(str[, trim_str])
 
 Returns the length of a string in bytes.
 
-```
+```plaintext
 octet_length(str)
 ```
 
@@ -247,7 +247,7 @@ octet_length(str)
 
 Returns a string with an input string repeated a specified number.
 
-```
+```plaintext
 repeat(str, n)
 ```
 
@@ -260,7 +260,7 @@ repeat(str, n)
 
 Replaces all occurrences of a specified substring in a string with a new substring.
 
-```
+```plaintext
 replace(str, substr, replacement)
 ```
 
@@ -274,7 +274,7 @@ replace(str, substr, replacement)
 
 Reverses the character order of a string.
 
-```
+```plaintext
 reverse(str)
 ```
 
@@ -286,7 +286,7 @@ reverse(str)
 
 Returns a specified number of characters from the right side of a string.
 
-```
+```plaintext
 right(str, n)
 ```
 
@@ -301,7 +301,7 @@ right(str, n)
 
 Pads the right side of a string with another string to a specified string length.
 
-```
+```plaintext
 rpad(str, n[, padding_str])
 ```
 
@@ -317,7 +317,7 @@ rpad(str, n[, padding_str])
 
 Trims the specified trim string from the end of a string. If no trim string is provided, all whitespace is removed from the end of the input string.
 
-```
+```plaintext
 rtrim(str[, trim_str])
 ```
 
@@ -332,7 +332,7 @@ rtrim(str[, trim_str])
 
 Splits a string based on a specified delimiter and returns the substring in the specified position.
 
-```
+```plaintext
 split_part(str, delimiter, pos)
 ```
 
@@ -346,7 +346,7 @@ split_part(str, delimiter, pos)
 
 Tests if a string starts with a substring.
 
-```
+```plaintext
 starts_with(str, substr)
 ```
 
@@ -359,7 +359,7 @@ starts_with(str, substr)
 
 Returns the starting position of a specified substring in a string. Positions begin at 1\. If the substring does not exist in the string, the function returns 0.
 
-```
+```plaintext
 strpos(str, substr)
 ```
 
@@ -376,7 +376,7 @@ strpos(str, substr)
 
 Extracts a substring of a specified number of characters from a specific starting position in a string.
 
-```
+```plaintext
 substr(str, start_pos[, length])
 ```
 
@@ -390,7 +390,7 @@ substr(str, start_pos[, length])
 
 Translates characters in a string to specified translation characters.
 
-```
+```plaintext
 translate(str, chars, translation)
 ```
 
@@ -402,7 +402,7 @@ translate(str, chars, translation)
 
 Converts an integer to a hexadecimal string.
 
-```
+```plaintext
 to_hex(int)
 ```
 
@@ -418,7 +418,7 @@ _Alias of [btrim](#btrim)._
 
 Converts a string to upper-case.
 
-```
+```plaintext
 upper(str)
 ```
 
@@ -432,7 +432,7 @@ upper(str)
 
 Returns UUID v4 string value which is unique per row.
 
-```
+```plaintext
 uuid()
 ```
 
@@ -440,7 +440,7 @@ uuid()
 
 Returns the string which is replaced by another string from the specified position and specified count length. For example, `overlay('Txxxxas' placing 'hom' from 2 for 4) → Thomas`
 
-```
+```plaintext
 overlay(str PLACING substr FROM pos [FOR count])
 ```
 
@@ -455,7 +455,7 @@ overlay(str PLACING substr FROM pos [FOR count])
 
 Returns the Levenshtein distance between the two given strings. For example, `levenshtein('kitten', 'sitting') = 3`
 
-```
+```plaintext
 levenshtein(str1, str2)
 ```
 
@@ -468,7 +468,7 @@ levenshtein(str1, str2)
 
 Returns the substring from str before count occurrences of the delimiter delim. If count is positive, everything to the left of the final delimiter (counting from the left) is returned. If count is negative, everything to the right of the final delimiter (counting from the right) is returned. For example, `substr_index('www.apache.org', '.', 1) = www`, `substr_index('www.apache.org', '.', -1) = org`
 
-```
+```plaintext
 substr_index(str, delim, count)
 ```
 
@@ -482,7 +482,7 @@ substr_index(str, delim, count)
 
 Returns a value in the range of 1 to N if the string str is in the string list strlist consisting of N substrings. For example, `find_in_set('b', 'a,b,c,d') = 2`
 
-```
+```plaintext
 find_in_set(str, strlist)
 ```
 

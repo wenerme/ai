@@ -63,10 +63,12 @@ After selecting **Save and Test**, your webhook should now be configured as a de
 
 When Cloudflare sends you a webhook, it will have the following schema:
 
-Example schema
+**Example schema**
 
-```
-{  "text": "Hello World! This is a test message sent from https://cloudflare.com. If you can see this, your webhook is configured properly."}
+```json
+{
+  "text": "Hello World! This is a test message sent from https://cloudflare.com. If you can see this, your webhook is configured properly."
+}
 ```
 
 For the full payload structure and examples for different alert types, refer to the [webhook payload schema reference](https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/).
@@ -165,10 +167,15 @@ When creating a Google Chat, Slack, Discord, or Feishu webhook, the secret is pa
 
 This can be useful when defining your webhook infrastructure as code using Terraform since the URL will not be modified by Cloudflare.
 
-Terraform example
+**Terraform example**
 
-```
-resource "cloudflare_notification_policy_webhooks" "example" {  account_id = "<ACCOUNT_ID>"  name       = "Slack Webhook"  url        = "https://hooks.slack.com/services/T00000000/B00000000"  secret     = "<secret>"}
+```tf
+resource "cloudflare_notification_policy_webhooks" "example" {
+  account_id = "<ACCOUNT_ID>"
+  name       = "Slack Webhook"
+  url        = "https://hooks.slack.com/services/T00000000/B00000000"
+  secret     = "<secret>"
+}
 ```
 
 ```json

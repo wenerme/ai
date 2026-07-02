@@ -31,8 +31,13 @@ A button that follows the RealtimeKit design system.
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.button.RtkButton    android:id="@+id/btn_id"    android:layout_width="200dp"    android:layout_height="48dp"    android:text="Text on Button"    app:rtk_btn_variant="primary" />
+```xml
+<com.cloudflare.realtimekit.ui.view.button.RtkButton
+    android:id="@+id/btn_id"
+    android:layout_width="200dp"
+    android:layout_height="48dp"
+    android:text="Text on Button"
+    app:rtk_btn_variant="primary" />
 ```
 
 ```json

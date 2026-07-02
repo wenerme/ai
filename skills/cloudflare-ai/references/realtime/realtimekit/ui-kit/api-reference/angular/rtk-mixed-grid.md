@@ -37,14 +37,20 @@ A grid component which handles screenshares, plugins and participants.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-mixed-grid></rtk-mixed-grid>
+```html
+<!-- component.html -->
+<rtk-mixed-grid></rtk-mixed-grid>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-mixed-grid aspectRatio="example" gap="42" gridSize="md"></rtk-mixed-grid>
+```html
+<!-- component.html -->
+<rtk-mixed-grid
+ aspectRatio="example"
+ gap="42"
+ gridSize="md">
+</rtk-mixed-grid>
 ```
 
 ```json

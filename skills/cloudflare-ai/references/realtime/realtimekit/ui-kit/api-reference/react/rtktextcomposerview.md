@@ -32,16 +32,30 @@ A component which renders a text composer
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTextComposerView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkTextComposerView />;}
+
+
+function MyComponent() {
+  return <RtkTextComposerView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTextComposerView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkTextComposerView      disabled={true}      keyDownHandler={(e: keyboardevent)}      maxLength={42}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTextComposerView
+      disabled={true}
+      keyDownHandler={(e: keyboardevent)}
+      maxLength={42}
+    />
+  );
+}
 ```
 
 ```json

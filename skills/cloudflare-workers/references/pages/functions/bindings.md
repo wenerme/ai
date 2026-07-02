@@ -38,20 +38,30 @@ To configure a KV namespace binding via the Cloudflare dashboard:
 
 Below is an example of how to use KV in your Function. In the following example, your KV namespace binding is called `TODO_LIST` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9562)
-* [  TypeScript ](#tab-panel-9563)
+* [  JavaScript ](#tab-panel-9813)
+* [  TypeScript ](#tab-panel-9814)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequest(context) {
+  const task = await context.env.TODO_LIST.get("Task:123");
+  return new Response(task);
+}
 ```
-export async function onRequest(context) {  const task = await context.env.TODO_LIST.get("Task:123");  return new Response(task);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  TODO_LIST: KVNamespace;}
-export const onRequest: PagesFunction<Env> = async (context) => {  const task = await context.env.TODO_LIST.get("Task:123");  return new Response(task);};
+```ts
+interface Env {
+  TODO_LIST: KVNamespace;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const task = await context.env.TODO_LIST.get("Task:123");
+  return new Response(task);
+};
 ```
 
 ### Interact with your KV namespaces locally
@@ -63,9 +73,7 @@ You can interact with your KV namespace bindings locally in one of two ways:
 
 To interact with your KV namespace binding locally by passing arguments to the Wrangler CLI, add `-k <BINDING_NAME>` or `--kv=<BINDING_NAME>` to the `wrangler pages dev` command. For example, if your KV namespace is bound your Function via the `TODO_LIST` binding, access the KV namespace in local development by running:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev <OUTPUT_DIR> --kv=TODO_LIST
 ```
 
@@ -93,22 +101,38 @@ To configure a Durable Object binding via the Cloudflare dashboard:
 
 Below is an example of how to use Durable Objects in your Function. In the following example, your DO binding is called `DURABLE_OBJECT` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9564)
-* [  TypeScript ](#tab-panel-9565)
+* [  JavaScript ](#tab-panel-9815)
+* [  TypeScript ](#tab-panel-9816)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequestGet(context) {
+  const id = context.env.DURABLE_OBJECT.newUniqueId();
+  const stub = context.env.DURABLE_OBJECT.get(id);
+
+
+  // Pass the request down to the durable object
+  return stub.fetch(context.request);
+}
 ```
-export async function onRequestGet(context) {  const id = context.env.DURABLE_OBJECT.newUniqueId();  const stub = context.env.DURABLE_OBJECT.get(id);
-  // Pass the request down to the durable object  return stub.fetch(context.request);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  DURABLE_OBJECT: DurableObjectNamespace;}
-export const onRequestGet: PagesFunction<Env> = async (context) => {  const id = context.env.DURABLE_OBJECT.newUniqueId();  const stub = context.env.DURABLE_OBJECT.get(id);
-  // Pass the request down to the durable object  return stub.fetch(context.request);};
+```ts
+interface Env {
+  DURABLE_OBJECT: DurableObjectNamespace;
+}
+
+
+export const onRequestGet: PagesFunction<Env> = async (context) => {
+  const id = context.env.DURABLE_OBJECT.newUniqueId();
+  const stub = context.env.DURABLE_OBJECT.get(id);
+
+
+  // Pass the request down to the durable object
+  return stub.fetch(context.request);
+};
 ```
 
 ### Interact with your Durable Object namespaces locally
@@ -146,20 +170,36 @@ To configure a R2 bucket binding via the Cloudflare dashboard:
 
 Below is an example of how to use R2 buckets in your Function. In the following example, your R2 bucket binding is called `BUCKET` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9566)
-* [  TypeScript ](#tab-panel-9567)
+* [  JavaScript ](#tab-panel-9817)
+* [  TypeScript ](#tab-panel-9818)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequest(context) {
+  const obj = await context.env.BUCKET.get("some-key");
+  if (obj === null) {
+    return new Response("Not found", { status: 404 });
+  }
+  return new Response(obj.body);
+}
 ```
-export async function onRequest(context) {  const obj = await context.env.BUCKET.get("some-key");  if (obj === null) {    return new Response("Not found", { status: 404 });  }  return new Response(obj.body);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  BUCKET: R2Bucket;}
-export const onRequest: PagesFunction<Env> = async (context) => {  const obj = await context.env.BUCKET.get("some-key");  if (obj === null) {    return new Response("Not found", { status: 404 });  }  return new Response(obj.body);};
+```ts
+interface Env {
+  BUCKET: R2Bucket;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const obj = await context.env.BUCKET.get("some-key");
+  if (obj === null) {
+    return new Response("Not found", { status: 404 });
+  }
+  return new Response(obj.body);
+};
 ```
 
 ### Interact with your R2 buckets locally
@@ -175,9 +215,7 @@ By default, Wrangler automatically persists data to local storage. For more info
 
 To interact with an R2 bucket locally via the Wrangler CLI, add `--r2=<BINDING_NAME>` to the `wrangler pages dev` command. If your R2 bucket is bound to your Function with the `BUCKET` binding, access this R2 bucket in local development by running:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev <OUTPUT_DIR> --r2=BUCKET
 ```
 
@@ -205,22 +243,38 @@ To configure a D1 database binding via the Cloudflare dashboard:
 
 Below is an example of how to use D1 in your Function. In the following example, your D1 database binding is `NORTHWIND_DB` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9568)
-* [  TypeScript ](#tab-panel-9569)
+* [  JavaScript ](#tab-panel-9819)
+* [  TypeScript ](#tab-panel-9820)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequest(context) {
+  // Create a prepared statement with our query
+  const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");
+  const data = await ps.first();
+
+
+  return Response.json(data);
+}
 ```
-export async function onRequest(context) {  // Create a prepared statement with our query  const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");  const data = await ps.first();
-  return Response.json(data);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  NORTHWIND_DB: D1Database;}
-export const onRequest: PagesFunction<Env> = async (context) => {  // Create a prepared statement with our query  const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");  const data = await ps.first();
-  return Response.json(data);};
+```ts
+interface Env {
+  NORTHWIND_DB: D1Database;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  // Create a prepared statement with our query
+  const ps = context.env.NORTHWIND_DB.prepare("SELECT * from users");
+  const data = await ps.first();
+
+
+  return Response.json(data);
+};
 ```
 
 ### Interact with your D1 databases locally
@@ -234,9 +288,7 @@ To interact with a D1 database via the Wrangler CLI while [developing locally](h
 
 If your D1 database is bound to your Pages Function via the `NORTHWIND_DB` binding and the `database_id` in your Wrangler file is `xxxx-xxxx-xxxx-xxxx-xxxx`, access this database in local development by running:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev <OUTPUT_DIR> --d1 NORTHWIND_DB=xxxx-xxxx-xxxx-xxxx-xxxx
 ```
 
@@ -273,26 +325,128 @@ To configure a Vectorize index binding via the Cloudflare dashboard:
 
 To use Vectorize index in your Pages Function, you can access your Vectorize index binding in your Pages Function code. In the following example, your Vectorize index binding is called `VECTORIZE_INDEX` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-9570)
-* [  TypeScript ](#tab-panel-9571)
+* [  JavaScript ](#tab-panel-9821)
+* [  TypeScript ](#tab-panel-9822)
 
-JavaScript
+**JavaScript**
 
+```js
+// Sample vectors: 3 dimensions wide.
+//
+// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
+// wide (or wider still).
+const sampleVectors = [
+  {
+    id: "1",
+    values: [32.4, 74.1, 3.2],
+    metadata: { url: "/products/sku/13913913" },
+  },
+  {
+    id: "2",
+    values: [15.1, 19.2, 15.8],
+    metadata: { url: "/products/sku/10148191" },
+  },
+  {
+    id: "3",
+    values: [0.16, 1.2, 3.8],
+    metadata: { url: "/products/sku/97913813" },
+  },
+  {
+    id: "4",
+    values: [75.1, 67.1, 29.9],
+    metadata: { url: "/products/sku/418313" },
+  },
+  {
+    id: "5",
+    values: [58.8, 6.7, 3.4],
+    metadata: { url: "/products/sku/55519183" },
+  },
+];
+
+
+export async function onRequest(context) {
+  let path = new URL(context.request.url).pathname;
+  if (path.startsWith("/favicon")) {
+    return new Response("", { status: 404 });
+  }
+
+
+  // You only need to insert vectors into your index once
+  if (path.startsWith("/insert")) {
+    // Insert some sample vectors into your index
+    // In a real application, these vectors would be the output of a machine learning (ML) model,
+    // such as Workers AI, OpenAI, or Cohere.
+    let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
+
+
+    // Return the number of IDs we successfully inserted
+    return Response.json(inserted);
+  }
+}
 ```
-// Sample vectors: 3 dimensions wide.//// Vectors from a machine-learning model are typically ~100 to 1536 dimensions// wide (or wider still).const sampleVectors = [  {    id: "1",    values: [32.4, 74.1, 3.2],    metadata: { url: "/products/sku/13913913" },  },  {    id: "2",    values: [15.1, 19.2, 15.8],    metadata: { url: "/products/sku/10148191" },  },  {    id: "3",    values: [0.16, 1.2, 3.8],    metadata: { url: "/products/sku/97913813" },  },  {    id: "4",    values: [75.1, 67.1, 29.9],    metadata: { url: "/products/sku/418313" },  },  {    id: "5",    values: [58.8, 6.7, 3.4],    metadata: { url: "/products/sku/55519183" },  },];
-export async function onRequest(context) {  let path = new URL(context.request.url).pathname;  if (path.startsWith("/favicon")) {    return new Response("", { status: 404 });  }
-  // You only need to insert vectors into your index once  if (path.startsWith("/insert")) {    // Insert some sample vectors into your index    // In a real application, these vectors would be the output of a machine learning (ML) model,    // such as Workers AI, OpenAI, or Cohere.    let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
-    // Return the number of IDs we successfully inserted    return Response.json(inserted);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  // This makes our vector index methods available on context.env.VECTORIZE_INDEX.*  // For example, context.env.VECTORIZE_INDEX.insert() or query()  VECTORIZE_INDEX: VectorizeIndex;}
-// Sample vectors: 3 dimensions wide.//// Vectors from a machine-learning model are typically ~100 to 1536 dimensions// wide (or wider still).const sampleVectors: Array<VectorizeVector> = [  {    id: "1",    values: [32.4, 74.1, 3.2],    metadata: { url: "/products/sku/13913913" },  },  {    id: "2",    values: [15.1, 19.2, 15.8],    metadata: { url: "/products/sku/10148191" },  },  {    id: "3",    values: [0.16, 1.2, 3.8],    metadata: { url: "/products/sku/97913813" },  },  {    id: "4",    values: [75.1, 67.1, 29.9],    metadata: { url: "/products/sku/418313" },  },  {    id: "5",    values: [58.8, 6.7, 3.4],    metadata: { url: "/products/sku/55519183" },  },];
-export const onRequest: PagesFunction<Env> = async (context) => {  let path = new URL(context.request.url).pathname;  if (path.startsWith("/favicon")) {    return new Response("", { status: 404 });  }
-  // You only need to insert vectors into your index once  if (path.startsWith("/insert")) {    // Insert some sample vectors into your index    // In a real application, these vectors would be the output of a machine learning (ML) model,    // such as Workers AI, OpenAI, or Cohere.    let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
-    // Return the number of IDs we successfully inserted    return Response.json(inserted);  }};
+```ts
+export interface Env {
+  // This makes our vector index methods available on context.env.VECTORIZE_INDEX.*
+  // For example, context.env.VECTORIZE_INDEX.insert() or query()
+  VECTORIZE_INDEX: VectorizeIndex;
+}
+
+
+// Sample vectors: 3 dimensions wide.
+//
+// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
+// wide (or wider still).
+const sampleVectors: Array<VectorizeVector> = [
+  {
+    id: "1",
+    values: [32.4, 74.1, 3.2],
+    metadata: { url: "/products/sku/13913913" },
+  },
+  {
+    id: "2",
+    values: [15.1, 19.2, 15.8],
+    metadata: { url: "/products/sku/10148191" },
+  },
+  {
+    id: "3",
+    values: [0.16, 1.2, 3.8],
+    metadata: { url: "/products/sku/97913813" },
+  },
+  {
+    id: "4",
+    values: [75.1, 67.1, 29.9],
+    metadata: { url: "/products/sku/418313" },
+  },
+  {
+    id: "5",
+    values: [58.8, 6.7, 3.4],
+    metadata: { url: "/products/sku/55519183" },
+  },
+];
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  let path = new URL(context.request.url).pathname;
+  if (path.startsWith("/favicon")) {
+    return new Response("", { status: 404 });
+  }
+
+
+  // You only need to insert vectors into your index once
+  if (path.startsWith("/insert")) {
+    // Insert some sample vectors into your index
+    // In a real application, these vectors would be the output of a machine learning (ML) model,
+    // such as Workers AI, OpenAI, or Cohere.
+    let inserted = await context.env.VECTORIZE_INDEX.insert(sampleVectors);
+
+
+    // Return the number of IDs we successfully inserted
+    return Response.json(inserted);
+  }
+};
 ```
 
 ## Workers AI
@@ -316,24 +470,46 @@ To configure a Workers AI binding via the Cloudflare dashboard:
 
 To use Workers AI in your Pages Function, you can access your Workers AI binding in your Pages Function code. In the following example, your Workers AI binding is called `AI` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-9572)
-* [  TypeScript ](#tab-panel-9573)
+* [  JavaScript ](#tab-panel-9823)
+* [  TypeScript ](#tab-panel-9824)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequest(context) {
+  const input = { prompt: "What is the origin of the phrase Hello, World" };
+
+
+  const answer = await context.env.AI.run(
+    "@cf/meta/llama-3.1-8b-instruct",
+    input,
+  );
+
+
+  return Response.json(answer);
+}
 ```
-export async function onRequest(context) {  const input = { prompt: "What is the origin of the phrase Hello, World" };
-  const answer = await context.env.AI.run(    "@cf/meta/llama-3.1-8b-instruct",    input,  );
-  return Response.json(answer);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  AI: Ai;}
-export const onRequest: PagesFunction<Env> = async (context) => {  const input = { prompt: "What is the origin of the phrase Hello, World" };
-  const answer = await context.env.AI.run(    "@cf/meta/llama-3.1-8b-instruct",    input,  );
-  return Response.json(answer);};
+```ts
+interface Env {
+  AI: Ai;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const input = { prompt: "What is the origin of the phrase Hello, World" };
+
+
+  const answer = await context.env.AI.run(
+    "@cf/meta/llama-3.1-8b-instruct",
+    input,
+  );
+
+
+  return Response.json(answer);
+};
 ```
 
 ### Interact with your Workers AI binding locally
@@ -349,9 +525,7 @@ You can interact with your Workers AI bindings locally in one of two ways:
 
 To interact with a Workers AI binding via the Wrangler CLI while developing locally, run:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev --ai=<BINDING_NAME>
 ```
 
@@ -377,20 +551,28 @@ To configure a Service binding via the Cloudflare dashboard:
 
 Below is an example of how to use Service bindings in your Function. In the following example, your Service binding is called `SERVICE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9574)
-* [  TypeScript ](#tab-panel-9575)
+* [  JavaScript ](#tab-panel-9825)
+* [  TypeScript ](#tab-panel-9826)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequestGet(context) {
+  return context.env.SERVICE.fetch(context.request);
+}
 ```
-export async function onRequestGet(context) {  return context.env.SERVICE.fetch(context.request);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  SERVICE: Fetcher;}
-export const onRequest: PagesFunction<Env> = async (context) => {  return context.env.SERVICE.fetch(context.request);};
+```ts
+interface Env {
+  SERVICE: Fetcher;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  return context.env.SERVICE.fetch(context.request);
+};
 ```
 
 ### Interact with your Service bindings locally
@@ -434,22 +616,42 @@ To configure a queue producer binding via the Cloudflare dashboard:
 
 Below is an example of how to use a queue producer binding in your Function. In this example, the binding is named `MY_QUEUE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9576)
-* [  TypeScript ](#tab-panel-9577)
+* [  JavaScript ](#tab-panel-9827)
+* [  TypeScript ](#tab-panel-9828)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequest(context) {
+  await context.env.MY_QUEUE.send({
+    url: request.url,
+    method: request.method,
+    headers: Object.fromEntries(request.headers),
+  });
+
+
+  return new Response("Sent!");
+}
 ```
-export async function onRequest(context) {  await context.env.MY_QUEUE.send({    url: request.url,    method: request.method,    headers: Object.fromEntries(request.headers),  });
-  return new Response("Sent!");}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  MY_QUEUE: Queue<any>;}
-export const onRequest: PagesFunction<Env> = async (context) => {  await context.env.MY_QUEUE.send({    url: request.url,    method: request.method,    headers: Object.fromEntries(request.headers),  });
-  return new Response("Sent!");};
+```ts
+interface Env {
+  MY_QUEUE: Queue<any>;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  await context.env.MY_QUEUE.send({
+    url: request.url,
+    method: request.method,
+    headers: Object.fromEntries(request.headers),
+  });
+
+
+  return new Response("Sent!");
+};
 ```
 
 ### Interact with your Queue Producer binding locally
@@ -462,19 +664,27 @@ Note
 
 PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
-* [  wrangler.jsonc ](#tab-panel-9584)
-* [  wrangler.toml ](#tab-panel-9585)
+* [  wrangler.jsonc ](#tab-panel-9835)
+* [  wrangler.toml ](#tab-panel-9836)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01"
+}
 ```
-{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-25"}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-25"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -493,27 +703,63 @@ To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 Below is an example of how to use Hyperdrive in your Function. In the following example, your Hyperdrive config is named `HYPERDRIVE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9578)
-* [  TypeScript ](#tab-panel-9579)
+* [  JavaScript ](#tab-panel-9829)
+* [  TypeScript ](#tab-panel-9830)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import postgres from "postgres";
-export async function onRequest(context) {  // create connection to postgres database  const sql = postgres(context.env.HYPERDRIVE.connectionString);
-  try {    const result = await sql`SELECT id, name, value FROM records`;
-    return Response.json({result: result})  } catch (e) {    return Response.json({error: e.message, {status: 500}});  }}
+
+
+export async function onRequest(context) {
+  // create connection to postgres database
+  const sql = postgres(context.env.HYPERDRIVE.connectionString);
+
+
+  try {
+    const result = await sql`SELECT id, name, value FROM records`;
+
+
+    return Response.json({result: result})
+  } catch (e) {
+    return Response.json({error: e.message, {status: 500}});
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import postgres from "postgres";
-interface Env {  HYPERDRIVE: Hyperdrive;}
-type MyRecord = {  id: number;  name: string;  value: string;};
-export const onRequest: PagesFunction<Env> = async (context) => {  // create connection to postgres database  const sql = postgres(context.env.HYPERDRIVE.connectionString);
-  try {    const result = await sql<MyRecord[]>`SELECT id, name, value FROM records`;
-    return Response.json({result: result})  } catch (e) {    return Response.json({error: e.message, {status: 500}});  }};
+
+
+interface Env {
+  HYPERDRIVE: Hyperdrive;
+}
+
+
+type MyRecord = {
+  id: number;
+  name: string;
+  value: string;
+};
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  // create connection to postgres database
+  const sql = postgres(context.env.HYPERDRIVE.connectionString);
+
+
+  try {
+    const result = await sql<MyRecord[]>`SELECT id, name, value FROM records`;
+
+
+    return Response.json({result: result})
+  } catch (e) {
+    return Response.json({error: e.message, {status: 500}});
+  }
+};
 ```
 
 ### Interact with your Hyperdrive binding locally
@@ -538,24 +784,48 @@ To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 Below is an example of how to use an Analytics Engine binding in your Function. In the following example, the binding is called `ANALYTICS_ENGINE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-9580)
-* [  TypeScript ](#tab-panel-9581)
+* [  JavaScript ](#tab-panel-9831)
+* [  TypeScript ](#tab-panel-9832)
 
-JavaScript
+**JavaScript**
 
+```js
+export async function onRequest(context) {
+  const url = new URL(context.request.url);
+
+
+  context.env.ANALYTICS_ENGINE.writeDataPoint({
+    indexes: [],
+    blobs: [url.hostname, url.pathname],
+    doubles: [],
+  });
+
+
+  return new Response("Logged analytic");
+}
 ```
-export async function onRequest(context) {  const url = new URL(context.request.url);
-  context.env.ANALYTICS_ENGINE.writeDataPoint({    indexes: [],    blobs: [url.hostname, url.pathname],    doubles: [],  });
-  return new Response("Logged analytic");}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  ANALYTICS_ENGINE: AnalyticsEngineDataset;}
-export const onRequest: PagesFunction<Env> = async (context) => {  const url = new URL(context.request.url);
-  context.env.ANALYTICS_ENGINE.writeDataPoint({    indexes: [],    blobs: [url.hostname, url.pathname],    doubles: [],  });
-  return new Response("Logged analytic");};
+```ts
+interface Env {
+  ANALYTICS_ENGINE: AnalyticsEngineDataset;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const url = new URL(context.request.url);
+
+
+  context.env.ANALYTICS_ENGINE.writeDataPoint({
+    indexes: [],
+    blobs: [url.hostname, url.pathname],
+    doubles: [],
+  });
+
+
+  return new Response("Logged analytic");
+};
 ```
 
 ### Interact with your Analytics Engine binding locally
@@ -578,20 +848,36 @@ To configure an environment variable via the Cloudflare dashboard:
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
 
-* [  JavaScript ](#tab-panel-9582)
-* [  TypeScript ](#tab-panel-9583)
+* [  JavaScript ](#tab-panel-9833)
+* [  TypeScript ](#tab-panel-9834)
 
-JavaScript
+**JavaScript**
 
+```js
+export function onRequest(context) {
+  if (context.env.ENVIRONMENT === "development") {
+    return new Response("This is a local environment!");
+  } else {
+    return new Response("This is a live environment");
+  }
+}
 ```
-export function onRequest(context) {  if (context.env.ENVIRONMENT === "development") {    return new Response("This is a local environment!");  } else {    return new Response("This is a live environment");  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  ENVIRONMENT: string;}
-export const onRequest: PagesFunction<Env> = async (context) => {  if (context.env.ENVIRONMENT === "development") {    return new Response("This is a local environment!");  } else {    return new Response("This is a live environment");  }};
+```ts
+interface Env {
+  ENVIRONMENT: string;
+}
+
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  if (context.env.ENVIRONMENT === "development") {
+    return new Response("This is a local environment!");
+  } else {
+    return new Response("This is a live environment");
+  }
+};
 ```
 
 ### Interact with your environment variables locally
@@ -603,9 +889,7 @@ You can interact with your environment variables locally in one of two ways:
 
 To interact with your environment variables locally via the Wrangler CLI, add `--binding=<ENVIRONMENT_VARIABLE_NAME>=<ENVIRONMENT_VARIABLE_VALUE>` to the `wrangler pages dev` command:
 
-Terminal window
-
-```
+```sh
 npx wrangler pages dev --binding=<ENVIRONMENT_VARIABLE_NAME>=<ENVIRONMENT_VARIABLE_VALUE>
 ```
 
@@ -641,10 +925,11 @@ Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.v
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
-.dev.vars / .env
+**.dev.vars / .env**
 
-```
-SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+```bash
+SECRET_KEY="value"
+API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git

@@ -20,9 +20,13 @@ _No properties available._
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatHeader } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatHeader />;}
+
+
+function MyComponent() {
+  return <RtkChatHeader />;
+}
 ```
 
 ```json

@@ -14,6 +14,51 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/access.xml)
 
+## 2026-07-01
+
+
+**Fix redirect URL fragment encoding for single-page applications**
+
+Access now correctly preserves URL fragment characters (`/`, `?`, `=`, `&`, `;`) when redirecting users back to an application after login. Previously, these characters were encoded with `encodeURIComponent`, which mangled fragment-based routes used by single-page applications (SPAs).
+
+For example, an SPA URL like `https://app.example.com/#/dashboard?tab=settings&view=advanced` would previously redirect to a broken URL after login. This is now handled correctly.
+
+If your SPA users were experiencing broken navigation after authenticating through Access, this fix resolves the issue without any configuration changes.
+
+## 2026-07-01
+
+
+**Independent MFA for infrastructure applications**
+
+[Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) now supports independent multi-factor authentication (MFA) for SSH connections using YubiKey PIV keys. This adds a hardware-backed second factor to SSH access, ensuring that a compromised device session alone is not sufficient to reach your servers.
+
+With per-application and per-policy configuration, you can enforce PIV key authentication for sensitive usernames (for example, `root`) while applying different requirements for other usernames. You can also set an MFA session duration to control how often users must re-authenticate.
+
+#### Enrollment
+
+Users enroll their YubiKey PIV key through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). For enrollment instructions and SSH client setup, refer to [Enroll a PIV key for infrastructure apps](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps).
+
+#### Configuration
+
+For setup instructions, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
+
+## 2026-06-26
+
+
+**Service token support for MCP server portals**
+
+You can now connect autonomous agents and bots to an [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) using an [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). Service token sessions can reach upstream MCP servers through the portal without a browser-based OAuth flow.
+
+To set this up:
+
+* Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
+* Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
+* Turn **Require user auth** off (`on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
+
+The bot connects with `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers and sees the tools from every linked server it is authorized for. Servers that still require per-user OAuth are excluded from service token sessions because a service token cannot complete a per-user OAuth grant.
+
+For step-by-step setup, refer to [Connect with a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#connect-with-a-service-token).
+
 ## 2026-06-18
 
 
@@ -200,7 +245,7 @@ To get started with Independent MFA, refer to [Independent MFA](https://develope
 
 To return to the server selection page, ask your AI agent with a prompt like "take me back to the server selection page." The portal responds with an authorization URL via [MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) that you open in your browser:
 
-```
+```txt
 https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
 ```
 
@@ -246,7 +291,7 @@ When Code Mode is active, the portal exposes a single `code` tool instead of lis
 
 To use Code Mode, append `?codemode=search_and_execute` to your portal URL when connecting from an MCP client:
 
-```
+```txt
 https://<subdomain>.<domain>/mcp?codemode=search_and_execute
 ```
 
@@ -263,7 +308,7 @@ For more information, refer to [Code Mode](https://developers.cloudflare.com/clo
 
 Strips tool descriptions and input schemas from all upstream tools, leaving only their names. The portal exposes a special `query` tool that agents use to retrieve full definitions on demand. This provides up to 5x savings in token usage.
 
-```
+```txt
 https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 ```
 
@@ -271,7 +316,7 @@ https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 
 Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
 
-```
+```txt
 https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
 ```
 

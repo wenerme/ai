@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A button which toggles visibility of participants. When clicked it emits a `rtkStateUpdate` event with the data:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 { activeSidebar: boolean; sidebar: 'participants' }
 ```
 
@@ -35,14 +35,20 @@ TypeScript
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-participants-toggle></rtk-participants-toggle>
+```html
+<!-- component.html -->
+<rtk-participants-toggle></rtk-participants-toggle>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-participants-toggle [meeting]="meeting" size="md" variant="button"></rtk-participants-toggle>
+```html
+<!-- component.html -->
+<rtk-participants-toggle
+ [meeting]="meeting"
+ size="md"
+ variant="button">
+</rtk-participants-toggle>
 ```
 
 ```json

@@ -26,17 +26,30 @@ MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 
 ## Usage
 
-TypeScript
+**TypeScript**
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const { audio } = await env.AI.run('@cf/myshell-ai/melotts', {      prompt: 'Hello world',      lang: 'en',    });    // Returns the base64 encoded MP3 audio    return Response.json({ audio });  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const { audio } = await env.AI.run('@cf/myshell-ai/melotts', {
+      prompt: 'Hello world',
+      lang: 'en',
+    });
+    // Returns the base64 encoded MP3 audio
+    return Response.json({ audio });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2393)
-* [ Output ](#tab-panel-2394)
+* [ Input ](#tab-panel-2441)
+* [ Output ](#tab-panel-2442)
 
 prompt
 

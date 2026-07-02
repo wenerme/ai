@@ -34,131 +34,297 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-10629)
-* [  TypeScript ](#tab-panel-10630)
+* [  JavaScript ](#tab-panel-10924)
+* [  TypeScript ](#tab-panel-10925)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox, parseSSEStream } from "@cloudflare/sandbox";
+
+
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+
+
 const stream = await sandbox.execStream("npm run build");
-for await (const event of parseSSEStream(stream)) {  switch (event.type) {    case "stdout":      console.log(event.data);      break;
-    case "stderr":      console.error(event.data);      break;
-    case "complete":      console.log("Exit code:", event.exitCode);      break;
-    case "error":      console.error("Failed:", event.error);      break;  }}
+
+
+for await (const event of parseSSEStream(stream)) {
+  switch (event.type) {
+    case "stdout":
+      console.log(event.data);
+      break;
+
+
+    case "stderr":
+      console.error(event.data);
+      break;
+
+
+    case "complete":
+      console.log("Exit code:", event.exitCode);
+      break;
+
+
+    case "error":
+      console.error("Failed:", event.error);
+      break;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox, parseSSEStream, type ExecEvent } from '@cloudflare/sandbox';
+
+
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
+
+
 const stream = await sandbox.execStream('npm run build');
-for await (const event of parseSSEStream<ExecEvent>(stream)) {  switch (event.type) {    case 'stdout':      console.log(event.data);      break;
-    case 'stderr':      console.error(event.data);      break;
-    case 'complete':      console.log('Exit code:', event.exitCode);      break;
-    case 'error':      console.error('Failed:', event.error);      break;  }}
+
+
+for await (const event of parseSSEStream<ExecEvent>(stream)) {
+  switch (event.type) {
+    case 'stdout':
+      console.log(event.data);
+      break;
+
+
+    case 'stderr':
+      console.error(event.data);
+      break;
+
+
+    case 'complete':
+      console.log('Exit code:', event.exitCode);
+      break;
+
+
+    case 'error':
+      console.error('Failed:', event.error);
+      break;
+  }
+}
 ```
 
 ## Stream to client
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-10625)
-* [  TypeScript ](#tab-panel-10626)
+* [  JavaScript ](#tab-panel-10920)
+* [  TypeScript ](#tab-panel-10921)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { getSandbox } from "@cloudflare/sandbox";
+
+
 export { Sandbox } from "@cloudflare/sandbox";
-export default {  async fetch(request, env) {    const sandbox = getSandbox(env.Sandbox, "builder");
+
+
+export default {
+  async fetch(request, env) {
+    const sandbox = getSandbox(env.Sandbox, "builder");
+
+
     const stream = await sandbox.execStream("npm run build");
-    return new Response(stream, {      headers: {        "Content-Type": "text/event-stream",        "Cache-Control": "no-cache",      },    });  },};
+
+
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+      },
+    });
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { getSandbox } from '@cloudflare/sandbox';
+
+
 export { Sandbox } from '@cloudflare/sandbox';
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'builder');
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'builder');
+
+
     const stream = await sandbox.execStream('npm run build');
-    return new Response(stream, {      headers: {        'Content-Type': 'text/event-stream',        'Cache-Control': 'no-cache'      }    });  }};
+
+
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache'
+      }
+    });
+  }
+};
 ```
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-10623)
-* [  TypeScript ](#tab-panel-10624)
+* [  JavaScript ](#tab-panel-10918)
+* [  TypeScript ](#tab-panel-10919)
 
-JavaScript
+**JavaScript**
 
+```js
+// Browser JavaScript
+const eventSource = new EventSource("/build");
+
+
+eventSource.addEventListener("stdout", (event) => {
+  const data = JSON.parse(event.data);
+  console.log(data.data);
+});
+
+
+eventSource.addEventListener("complete", (event) => {
+  const data = JSON.parse(event.data);
+  console.log("Exit code:", data.exitCode);
+  eventSource.close();
+});
 ```
-// Browser JavaScriptconst eventSource = new EventSource("/build");
-eventSource.addEventListener("stdout", (event) => {  const data = JSON.parse(event.data);  console.log(data.data);});
-eventSource.addEventListener("complete", (event) => {  const data = JSON.parse(event.data);  console.log("Exit code:", data.exitCode);  eventSource.close();});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Browser JavaScriptconst eventSource = new EventSource('/build');
-eventSource.addEventListener('stdout', (event) => {  const data = JSON.parse(event.data);  console.log(data.data);});
-eventSource.addEventListener('complete', (event) => {  const data = JSON.parse(event.data);  console.log('Exit code:', data.exitCode);  eventSource.close();});
+```ts
+// Browser JavaScript
+const eventSource = new EventSource('/build');
+
+
+eventSource.addEventListener('stdout', (event) => {
+  const data = JSON.parse(event.data);
+  console.log(data.data);
+});
+
+
+eventSource.addEventListener('complete', (event) => {
+  const data = JSON.parse(event.data);
+  console.log('Exit code:', data.exitCode);
+  eventSource.close();
+});
 ```
 
 ## Stream process logs
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-10627)
-* [  TypeScript ](#tab-panel-10628)
+* [  JavaScript ](#tab-panel-10922)
+* [  TypeScript ](#tab-panel-10923)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { parseSSEStream } from "@cloudflare/sandbox";
+
+
 const process = await sandbox.startProcess("node server.js");
+
+
 const logStream = await sandbox.streamProcessLogs(process.id);
-for await (const log of parseSSEStream(logStream)) {  console.log(log.data);
-  if (log.data.includes("Server listening")) {    console.log("Server is ready");    break;  }}
+
+
+for await (const log of parseSSEStream(logStream)) {
+  console.log(log.data);
+
+
+  if (log.data.includes("Server listening")) {
+    console.log("Server is ready");
+    break;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
+
+
 const process = await sandbox.startProcess('node server.js');
+
+
 const logStream = await sandbox.streamProcessLogs(process.id);
-for await (const log of parseSSEStream<LogEvent>(logStream)) {  console.log(log.data);
-  if (log.data.includes('Server listening')) {    console.log('Server is ready');    break;  }}
+
+
+for await (const log of parseSSEStream<LogEvent>(logStream)) {
+  console.log(log.data);
+
+
+  if (log.data.includes('Server listening')) {
+    console.log('Server is ready');
+    break;
+  }
+}
 ```
 
 ## Handle errors
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-10631)
-* [  TypeScript ](#tab-panel-10632)
+* [  JavaScript ](#tab-panel-10926)
+* [  TypeScript ](#tab-panel-10927)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const stream = await sandbox.execStream("npm run build");
-for await (const event of parseSSEStream(stream)) {  switch (event.type) {    case "stdout":      console.log(event.data);      break;
-    case "error":      throw new Error(`Build failed: ${event.error}`);
-    case "complete":      if (event.exitCode !== 0) {        throw new Error(`Build failed with exit code ${event.exitCode}`);      }      break;  }}
+
+
+for await (const event of parseSSEStream(stream)) {
+  switch (event.type) {
+    case "stdout":
+      console.log(event.data);
+      break;
+
+
+    case "error":
+      throw new Error(`Build failed: ${event.error}`);
+
+
+    case "complete":
+      if (event.exitCode !== 0) {
+        throw new Error(`Build failed with exit code ${event.exitCode}`);
+      }
+      break;
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const stream = await sandbox.execStream('npm run build');
-for await (const event of parseSSEStream<ExecEvent>(stream)) {  switch (event.type) {    case 'stdout':      console.log(event.data);      break;
-    case 'error':      throw new Error(`Build failed: ${event.error}`);
-    case 'complete':      if (event.exitCode !== 0) {        throw new Error(`Build failed with exit code ${event.exitCode}`);      }      break;  }}
+
+
+for await (const event of parseSSEStream<ExecEvent>(stream)) {
+  switch (event.type) {
+    case 'stdout':
+      console.log(event.data);
+      break;
+
+
+    case 'error':
+      throw new Error(`Build failed: ${event.error}`);
+
+
+    case 'complete':
+      if (event.exitCode !== 0) {
+        throw new Error(`Build failed with exit code ${event.exitCode}`);
+      }
+      break;
+  }
+}
 ```
 
 ## Best practices

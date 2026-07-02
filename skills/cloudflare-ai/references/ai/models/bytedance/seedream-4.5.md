@@ -27,168 +27,305 @@ Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-398)
-* [ cURL ](#tab-panel-399)
+* [ TypeScript ](#tab-panel-424)
+* [ cURL ](#tab-panel-425)
 
-TypeScript
+**TypeScript**
 
-```
-const response = await env.AI.run(  'bytedance/seedream-4.5',  { prompt: 'A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair' },)console.log(response)
-```
-
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedream-4.5",  "input": {    "prompt": "A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair"  }}'
+```ts
+const response = await env.AI.run(
+  'bytedance/seedream-4.5',
+  { prompt: 'A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair' },
+)
+console.log(response)
 ```
 
-* [ Output ](#tab-panel-400)
-* [ Raw response ](#tab-panel-401)
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedream-4.5",
+  "input": {
+    "prompt": "A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair"
+  }
+}'
+```
+
+* [ Output ](#tab-panel-426)
+* [ Raw response ](#tab-panel-427)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "images": [      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052077481386b9a8ed856c57501cfa946ce34c9865285c_0.jpeg"    ]  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "images": [
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052077481386b9a8ed856c57501cfa946ce34c9865285c_0.jpeg"
+    ]
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **High Resolution**  — 4K quality image generation
 
-* [ TypeScript ](#tab-panel-404)
-* [ cURL ](#tab-panel-405)
+* [ TypeScript ](#tab-panel-430)
+* [ cURL ](#tab-panel-431)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'bytedance/seedream-4.5',
+  {
+    prompt:
+      'A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting',
+    aspect_ratio: '4:3',
+    size: '4K',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'bytedance/seedream-4.5',  {    prompt:      'A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting',    aspect_ratio: '4:3',    size: '4K',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedream-4.5",
+  "input": {
+    "prompt": "A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting",
+    "aspect_ratio": "4:3",
+    "size": "4K"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedream-4.5",  "input": {    "prompt": "A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting",    "aspect_ratio": "4:3",    "size": "4K"  }}'
-```
-
-* [ Output ](#tab-panel-402)
-* [ Raw response ](#tab-panel-403)
+* [ Output ](#tab-panel-428)
+* [ Raw response ](#tab-panel-429)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "images": [      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052077581386b9a8ed856c57501cfa946ce34c985dabe3_0.jpeg"    ]  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "images": [
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052077581386b9a8ed856c57501cfa946ce34c985dabe3_0.jpeg"
+    ]
+  },
+  "state": "Completed"
+}
 ```
 
 **Image-to-Image**  — Edit using reference images
 
-* [ TypeScript ](#tab-panel-408)
-* [ cURL ](#tab-panel-409)
+* [ TypeScript ](#tab-panel-434)
+* [ cURL ](#tab-panel-435)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'bytedance/seedream-4.5',
+  {
+    prompt: 'Transform this scene into a winter wonderland with snow covering everything',
+    aspect_ratio: 'match_input_image',
+    image_input: [
+      'https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg',
+    ],
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'bytedance/seedream-4.5',  {    prompt: 'Transform this scene into a winter wonderland with snow covering everything',    aspect_ratio: 'match_input_image',    image_input: [      'https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg',    ],  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedream-4.5",
+  "input": {
+    "prompt": "Transform this scene into a winter wonderland with snow covering everything",
+    "aspect_ratio": "match_input_image",
+    "image_input": [
+      "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"
+    ]
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedream-4.5",  "input": {    "prompt": "Transform this scene into a winter wonderland with snow covering everything",    "aspect_ratio": "match_input_image",    "image_input": [      "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"    ]  }}'
-```
-
-* [ Output ](#tab-panel-406)
-* [ Raw response ](#tab-panel-407)
+* [ Output ](#tab-panel-432)
+* [ Raw response ](#tab-panel-433)
 
 ![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "images": [      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052176861386b9a8ed856c57501cfa946ce34c98846458_0.jpeg"    ]  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "images": [
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052176861386b9a8ed856c57501cfa946ce34c98846458_0.jpeg"
+    ]
+  },
+  "state": "Completed"
+}
 ```
 
 **Sequential Generation**  — Generate multiple related images
 
-* [ TypeScript ](#tab-panel-412)
-* [ cURL ](#tab-panel-413)
+* [ TypeScript ](#tab-panel-438)
+* [ cURL ](#tab-panel-439)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'bytedance/seedream-4.5',
+  {
+    prompt: 'A character design sheet for a fantasy warrior: front view, side view, and back view',
+    aspect_ratio: '16:9',
+    max_images: 3,
+    sequential_image_generation: 'auto',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'bytedance/seedream-4.5',  {    prompt: 'A character design sheet for a fantasy warrior: front view, side view, and back view',    aspect_ratio: '16:9',    max_images: 3,    sequential_image_generation: 'auto',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedream-4.5",
+  "input": {
+    "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",
+    "aspect_ratio": "16:9",
+    "max_images": 3,
+    "sequential_image_generation": "auto"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedream-4.5",  "input": {    "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",    "aspect_ratio": "16:9",    "max_images": 3,    "sequential_image_generation": "auto"  }}'
-```
-
-* [ Output ](#tab-panel-410)
-* [ Raw response ](#tab-panel-411)
+* [ Output ](#tab-panel-436)
+* [ Raw response ](#tab-panel-437)
 
 ![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "images": [      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052291261386b9a8ed856c57501cfa946ce34c98481db1_0.jpeg"    ]  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "images": [
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052291261386b9a8ed856c57501cfa946ce34c98481db1_0.jpeg"
+    ]
+  },
+  "state": "Completed"
+}
 ```
 
 **Multi-Image Edit**  — Combine multiple reference images
 
-* [ TypeScript ](#tab-panel-416)
-* [ cURL ](#tab-panel-417)
+* [ TypeScript ](#tab-panel-442)
+* [ cURL ](#tab-panel-443)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'bytedance/seedream-4.5',
+  {
+    prompt: 'Combine the style of the first image with the subject from the second image',
+    image_input: [
+      'https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg',
+      'https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg',
+    ],
+    size: '2K',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'bytedance/seedream-4.5',  {    prompt: 'Combine the style of the first image with the subject from the second image',    image_input: [      'https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg',      'https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg',    ],    size: '2K',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedream-4.5",
+  "input": {
+    "prompt": "Combine the style of the first image with the subject from the second image",
+    "image_input": [
+      "https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg",
+      "https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg"
+    ],
+    "size": "2K"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedream-4.5",  "input": {    "prompt": "Combine the style of the first image with the subject from the second image",    "image_input": [      "https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg",      "https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg"    ],    "size": "2K"  }}'
-```
-
-* [ Output ](#tab-panel-414)
-* [ Raw response ](#tab-panel-415)
+* [ Output ](#tab-panel-440)
+* [ Raw response ](#tab-panel-441)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "images": [      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052323791386b9a8ed856c57501cfa946ce34c98b2f132_0.jpeg"    ]  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "images": [
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052323791386b9a8ed856c57501cfa946ce34c98b2f132_0.jpeg"
+    ]
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-418)
-* [ Output ](#tab-panel-419)
-
-aspect\_ratio
-
-`string`enum: match\_input\_image, 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9
-
-disable\_safety\_checker
-
-`boolean`
-
-▶image\_input\[\]
-
-`array`format: uri
-
-max\_images
-
-`integer`maximum: 15minimum: 1
+* [ Input ](#tab-panel-444)
+* [ Output ](#tab-panel-445)
 
 prompt
 
 `string`required
 
-sequential\_image\_generation
+▶image\_input\[\]
 
-`string`enum: disabled, auto
+`array`format: uri
 
 size
 
 `string`enum: 2K, 4K
+
+aspect\_ratio
+
+`string`enum: match\_input\_image, 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9
+
+sequential\_image\_generation
+
+`string`enum: disabled, auto
+
+max\_images
+
+`integer`minimum: 1maximum: 15
+
+disable\_safety\_checker
+
+`boolean`
 
 ▶images\[\]
 

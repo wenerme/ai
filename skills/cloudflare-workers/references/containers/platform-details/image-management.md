@@ -18,19 +18,26 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-7920)
-* [  wrangler.toml ](#tab-panel-7921)
+* [  wrangler.jsonc ](#tab-panel-8199)
+* [  wrangler.toml ](#tab-panel-8200)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "image": "./Dockerfile"
+    }
+  ]
+}
 ```
-{  "containers": [    {      "image": "./Dockerfile"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]image = "./Dockerfile"
+```toml
+[[containers]]
+image = "./Dockerfile"
 ```
 
 And deploy your Worker with `wrangler deploy`. No other image management is necessary.
@@ -43,13 +50,13 @@ Docker or a Docker-compatible CLI tool must be running for Wrangler to build and
 
 ## Use pre-built container images
 
-Containers support images from the Cloudflare managed registry at `registry.cloudflare.com`, [Docker Hub ↗](https://hub.docker.com/), and [Amazon ECR ↗](https://aws.amazon.com/ecr/).
+Containers support images from the Cloudflare managed registry at `registry.cloudflare.com`, [Docker Hub ↗](https://hub.docker.com/), [Amazon ECR ↗](https://aws.amazon.com/ecr/), and [Google Artifact Registry ↗](https://cloud.google.com/artifact-registry).
 
 Note
 
-Cloudflare does not cache images pulled from Docker Hub or Amazon ECR.
+Cloudflare does not cache images pulled from Docker Hub, Amazon ECR, or Google Artifact Registry.
 
-Docker Hub pulls may be subject to Docker Hub pull limits or fair-use restrictions. Pulling images from Amazon ECR may incur AWS egress charges.
+Docker Hub pulls may be subject to Docker Hub pull limits or fair-use restrictions. Pulling images from Amazon ECR or Google Artifact Registry may incur cloud provider egress charges.
 
 ### Use public Docker Hub images
 
@@ -57,19 +64,26 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-7922)
-* [  wrangler.toml ](#tab-panel-7923)
+* [  wrangler.jsonc ](#tab-panel-8201)
+* [  wrangler.toml ](#tab-panel-8202)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "image": "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
+    }
+  ]
+}
 ```
-{  "containers": [    {      "image": "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]image = "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
+```toml
+[[containers]]
+image = "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
 ```
 
 Public Docker Hub images do not require registry configuration.
@@ -84,7 +98,7 @@ Official Docker Hub images use the `library` namespace. For example, use `docker
 
 ### Configure private registry credentials
 
-To use a private image from Docker Hub or Amazon ECR, run [wrangler containers registries configure](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-registries-configure) for the registry domain.
+To use a private image from Docker Hub, Amazon ECR, or Google Artifact Registry, run [wrangler containers registries configure](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-registries-configure) for the registry domain.
 
 Wrangler prompts for the secret and stores it in [Secrets Store](https://developers.cloudflare.com/secrets-store). If you do not already have a Secrets Store store, Wrangler prompts you to create one first.
 
@@ -123,9 +137,7 @@ pnpm wrangler containers registries configure docker.io --dockerhub-username=<YO
 
 CI or scripts:
 
-Terminal window
-
-```
+```bash
 printf '%s' "$DOCKERHUB_PAT" | npx wrangler containers registries configure docker.io --dockerhub-username=<YOUR_DOCKERHUB_USERNAME> --secret-name=<SECRET_NAME> --skip-confirmation
 ```
 
@@ -141,8 +153,30 @@ Configure Amazon ECR in Wrangler using these values:
 
 Public ECR images are not supported. To generate the required credentials, create an IAM user with a read-only policy. The following example grants access to all image repositories in AWS account `123456789012` in `us-east-1`.
 
-```
-{  "Version": "2012-10-17",  "Statement": [    {      "Action": ["ecr:GetAuthorizationToken"],      "Effect": "Allow",      "Resource": "*"    },    {      "Effect": "Allow",      "Action": [        "ecr:BatchCheckLayerAvailability",        "ecr:GetDownloadUrlForLayer",        "ecr:BatchGetImage"      ],      // arn:${Partition}:ecr:${Region}:${Account}:repository/${Repository-name}      "Resource": [        "arn:aws:ecr:us-east-1:123456789012:repository/*"        // "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"      ]    }  ]}
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": ["ecr:GetAuthorizationToken"],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage"
+      ],
+      // arn:${Partition}:ecr:${Region}:${Account}:repository/${Repository-name}
+      "Resource": [
+        "arn:aws:ecr:us-east-1:123456789012:repository/*"
+        // "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"
+      ]
+    }
+  ]
+}
 ```
 
 After you create the IAM user, use its credentials to [configure the registry in Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-registries-configure). Wrangler prompts you to create a Secrets Store store if one does not already exist, then stores the secret there.
@@ -165,37 +199,118 @@ pnpm wrangler containers registries configure <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGI
 
 CI or scripts:
 
-Terminal window
-
-```
+```bash
 printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries configure <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com --aws-access-key-id=<AWS_ACCESS_KEY_ID> --secret-name=<SECRET_NAME> --skip-confirmation
 ```
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7924)
-* [  wrangler.toml ](#tab-panel-7925)
+* [  wrangler.jsonc ](#tab-panel-8203)
+* [  wrangler.toml ](#tab-panel-8204)
 
-JSONC
+**JSONC**
+
+```jsonc
+{
+  "containers": [
+    {
+      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
+    }
+  ]
+}
+```
+
+**TOML**
+
+```toml
+[[containers]]
+image = "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
+```
+
+### Use private Google Artifact Registry images
+
+Configure Google Artifact Registry in Wrangler using these values:
+
+* registry domain: `<REGION>-docker.pkg.dev`
+* Google service account email flag: `--gar-email=<SERVICE_ACCOUNT_EMAIL>`
+* secret: the service account JSON key
+
+The public credential is the service account email, supplied with `--gar-email`. It must match the `client_email` field in the service account key.
+
+The private credential is the service account JSON key. Provide it through `stdin` (a file path, raw JSON, or base64) or the interactive prompt (a file path or base64). Wrangler stores the key base64-encoded in Secrets Store.
+
+Warning
+
+Only `*-docker.pkg.dev` hosts are supported. Container Registry hosts such as `gcr.io` and `*.gcr.io` are not supported, because Google has shut down Container Registry.
+
+To generate the required credentials, create a service account with the **Artifact Registry Reader** role and download its JSON key:
+
+1. In the [Google Cloud console ↗](https://console.cloud.google.com), go to **IAM & Admin** \> **Service Accounts**.
+2. Select **Create service account**, then enter a name, ID, and optional description.
+3. Grant the service account the **Artifact Registry Reader** role, then select **Done**.
+4. Select the service account, then open the **Keys** tab.
+5. Select **Add key** \> **Create new key**, choose **JSON**, then select **Create**. The key file downloads to your machine.
+
+Interactive: Wrangler prompts for the key, where you enter a file path or base64-encoded JSON:
+
+ npm  yarn  pnpm
 
 ```
-{  "containers": [    {      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"    }  ]}
+npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL>
 ```
 
-TOML
+```
+yarn wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL>
+```
 
 ```
-[[containers]]image = "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
+pnpm wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL>
+```
+
+CI or scripts: Pipe the key through `stdin` (the key contents as raw JSON or base64, or a path to the key file)
+
+```bash
+cat <PATH_TO_KEY> | npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL> --secret-name=<SECRET_NAME> --skip-confirmation
+```
+
+If you have already stored the key in Secrets Store, reference the existing secret and omit the key:
+
+```bash
+npx wrangler containers registries configure <REGION>-docker.pkg.dev --gar-email=<SERVICE_ACCOUNT_EMAIL> --secret-name=<EXISTING_SECRET_NAME> --skip-confirmation
+```
+
+After you configure the registry, use the fully qualified Google Artifact Registry image reference in your Wrangler configuration:
+
+* [  wrangler.jsonc ](#tab-panel-8205)
+* [  wrangler.toml ](#tab-panel-8206)
+
+**JSONC**
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "containers": [
+    {
+      "image": "<REGION>-docker.pkg.dev/<PROJECT_ID>/<REPOSITORY>/<IMAGE>:<TAG>"
+    }
+  ]
+}
+```
+
+**TOML**
+
+```toml
+[[containers]]
+image = "<REGION>-docker.pkg.dev/<PROJECT_ID>/<REPOSITORY>/<IMAGE>:<TAG>"
 ```
 
 ### Use images from other registries
 
 If you want to use a pre-built image from another registry provider, first make sure it exists locally, then push it to the Cloudflare Registry:
 
-Terminal window
-
-```
-docker pull <PUBLIC_IMAGE>docker tag <PUBLIC_IMAGE> <IMAGE>:<TAG>
+```bash
+docker pull <PUBLIC_IMAGE>
+docker tag <PUBLIC_IMAGE> <IMAGE>:<TAG>
 ```
 
 Wrangler provides a command to push images to the Cloudflare Registry:
@@ -232,28 +347,35 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7926)
-* [  wrangler.toml ](#tab-panel-7927)
+* [  wrangler.jsonc ](#tab-panel-8207)
+* [  wrangler.toml ](#tab-panel-8208)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "containers": [
+    {
+      "image": "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
+    }
+  ]
+}
 ```
-{  "containers": [    {      "image": "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[containers]]image = "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
+```toml
+[[containers]]
+image = "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
 ```
 
 Note
 
-With `wrangler dev`, image references from the Cloudflare Registry, Docker Hub, and Amazon ECR are supported in local development.
+With `wrangler dev`, image references from the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry are supported in local development.
 
-With `vite dev`, image references from external registries such as Docker Hub and Amazon ECR are supported, but `vite dev` cannot pull directly from the Cloudflare Registry.
+With `vite dev`, image references from external registries such as Docker Hub, Amazon ECR, and Google Artifact Registry are supported, but `vite dev` cannot pull directly from the Cloudflare Registry.
 
-If you use a private Docker Hub or ECR image with `vite dev`, authenticate to that registry locally, for example with `docker login`.
+If you use a private Docker Hub, Amazon ECR, or Google Artifact Registry image in local development, authenticate to that registry locally, for example with `docker login`.
 
 ## Push images with CI
 
@@ -266,6 +388,6 @@ Images are limited in size by available disk of the configured [instance type](h
 Delete images with `wrangler containers images delete` to free up space, but reverting a Worker to a previous version that uses a deleted image will then error.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/image-management/","name":"Image Management"}}]}
 ```

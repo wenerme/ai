@@ -31,11 +31,15 @@ To enable Logpush to BigQuery:
   5. Save the Application Credentials JSON file. You will need to use this when setting up a new Logpush job.
 5. In BigQuery, create a dataset and table. Refer to [instructions from BigQuery ↗](https://cloud.google.com/bigquery/docs/tables). For example, using `schema.json` and `bq` command:
 
-Terminal window
-
-```
+```bash
 gcloud auth activate-service-account --key-file=${KEY_FILE}
-PROJECT_ID=<PROJECT_ID>DATASET_ID=<DATASET_ID>TABLE_ID=<TABLE_ID>
+
+
+PROJECT_ID=<PROJECT_ID>
+DATASET_ID=<DATASET_ID>
+TABLE_ID=<TABLE_ID>
+
+
 bq mk --table "${PROJECT_ID}:${DATASET_ID}.${TABLE_ID}" schema.json
 ```
 
@@ -91,9 +95,7 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
   * **<PROJECT\_ID>**, **<DATASET\_ID>**, **<TABLE\_ID>**: Project ID, Dataset ID, and table ID of the designated BigQuery table.
   * **<ENCODED\_VALUE>**: The encoded value of Application Credentials JSON as `credentials`, either base64-encoded with `base64:` prefix, or URL-encoded with `url:` prefix.
 
-Terminal window
-
-```
+```bash
 "bq://projects/<PROJECT_ID>/datasets/<DATASET_ID>/tables/<TABLE_ID>?credentials=<ENCODED_VALUE>"
 ```
 
@@ -108,16 +110,61 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "bq://projects/<PROJECT_ID>/datasets/<DATASET_ID>/tables/<TABLE_ID>?credentials=<ENCODED_VALUE>",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "max_upload_bytes": 5000000,    "max_upload_records": 50000,    "dataset": "http_requests",    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "bq://projects/<PROJECT_ID>/datasets/<DATASET_ID>/tables/<TABLE_ID>?credentials=<ENCODED_VALUE>",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "max_upload_bytes": 5000000,
+    "max_upload_records": 50000,
+    "dataset": "http_requests",
+    "enabled": true
+  }'
 ```
 
 Response:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "max_upload_bytes": 5000000,    "max_upload_records": 50000,    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp", "EdgeResponseBytes", "EdgeResponseStatus" ,"EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "bq://projects/<PROJECT_ID>/datasets/<DATASET_ID>/tables/<TABLE_ID>?credentials=<ENCODED_VALUE>",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "max_upload_bytes": 5000000,
+    "max_upload_records": 50000,
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp", "EdgeResponseBytes", "EdgeResponseStatus" ,"EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "bq://projects/<PROJECT_ID>/datasets/<DATASET_ID>/tables/<TABLE_ID>?credentials=<ENCODED_VALUE>",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 This will make a test upload with an empty content to verify that Logpush can upload, and you may see a row with empty data.

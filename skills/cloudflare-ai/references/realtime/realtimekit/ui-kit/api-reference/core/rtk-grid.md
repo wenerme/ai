@@ -34,19 +34,26 @@ The main grid component which abstracts all the grid handling logic and renders 
 
 ### Basic Usage
 
-```
+```html
 <rtk-grid></rtk-grid>
 ```
 
 ### With Properties
 
-```
-<rtk-grid aspectRatio="example" gridSize="md"></rtk-grid>
+```html
+<rtk-grid
+ aspectRatio="example"
+ gridSize="md">
+</rtk-grid>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-grid");
-  el.gap= 42;</script>
+```html
+<script>
+  const el = document.querySelector("rtk-grid");
+
+
+  el.gap= 42;
+</script>
 ```
 
 ```json

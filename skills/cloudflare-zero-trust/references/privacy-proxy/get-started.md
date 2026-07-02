@@ -34,10 +34,11 @@ Privacy Proxy accepts connections over HTTP/2 and HTTP/3 using the HTTP CONNECT 
 
 For quick tests, use curl with the `--proxy` and `--proxy-header` flags to pass authentication directly:
 
-Terminal window
-
-```
-curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  https://example.com
+```sh
+curl -v \
+  --proxy https://your-proxy.example.com \
+  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
+  https://example.com
 ```
 
 ### Use Chaussette
@@ -45,13 +46,13 @@ curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Autho
 [Chaussette](https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/#chaussette) is a local SOCKS5 proxy that handles authentication and forwards requests to Privacy Proxy.
 
 1. Start Chaussette with your PSK and proxy endpoint:
-Terminal window
-```
-MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \  --listen 127.0.0.1:1987 \  --proxy https://your-proxy.example.com:443
+```sh
+MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \
+  --listen 127.0.0.1:1987 \
+  --proxy https://your-proxy.example.com:443
 ```
 2. Configure your browser to use the local SOCKS5 proxy:
-Terminal window
-```
+```sh
 google-chrome --proxy-server="socks5://127.0.0.1:1987"
 ```
 
@@ -61,18 +62,28 @@ google-chrome --proxy-server="socks5://127.0.0.1:1987"
 
 To confirm that traffic is routing through Privacy Proxy, check your apparent IP address:
 
-Terminal window
-
-```
-curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  https://cloudflare.com/cdn-cgi/trace
+```sh
+curl -v \
+  --proxy https://your-proxy.example.com \
+  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
+  https://cloudflare.com/cdn-cgi/trace
 ```
 
 The response includes connection metadata. Look for the `ip` field, which should show a Cloudflare egress IP address rather than your real IP.
 
-Example response
+**Example response**
 
-```
-fl=123f456h=cloudflare.comip=162.159.xxx.xxxts=1234567890.123visit_scheme=httpsuag=curl/8.0.0colo=SJChttp=http/2loc=UStls=TLSv1.3
+```txt
+fl=123f456
+h=cloudflare.com
+ip=162.159.xxx.xxx
+ts=1234567890.123
+visit_scheme=https
+uag=curl/8.0.0
+colo=SJC
+http=http/2
+loc=US
+tls=TLSv1.3
 ```
 
 The `ip` value confirms the egress IP address used by the proxy.
@@ -83,10 +94,12 @@ The `ip` value confirms the egress IP address used by the proxy.
 
 Privacy Proxy preserves user geolocation by selecting egress IP addresses based on the client's location. You can specify a geohash to test this behavior:
 
-Terminal window
-
-```
-curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  --proxy-header "sec-ch-geohash: xn76c-JP" \  https://cloudflare.com/cdn-cgi/trace
+```sh
+curl -v \
+  --proxy https://your-proxy.example.com \
+  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
+  --proxy-header "sec-ch-geohash: xn76c-JP" \
+  https://cloudflare.com/cdn-cgi/trace
 ```
 
 The `sec-ch-geohash` header provides a [geohash ↗](https://en.wikipedia.org/wiki/Geohash) that the proxy uses to select an appropriate egress IP. The format is `<geohash>-<country_code>`.

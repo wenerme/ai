@@ -25,16 +25,20 @@ A text view that displays the meeting title. It automatically updates when the m
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.RtkMeetingTitleView    android:id="@+id/rtk_meeting_title"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
+```xml
+<com.cloudflare.realtimekit.ui.view.RtkMeetingTitleView
+    android:id="@+id/rtk_meeting_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val titleView = findViewById<RtkMeetingTitleView>(R.id.rtk_meeting_title)titleView.activate(meeting)
+```kotlin
+val titleView = findViewById<RtkMeetingTitleView>(R.id.rtk_meeting_title)
+titleView.activate(meeting)
 ```
 
 ```json

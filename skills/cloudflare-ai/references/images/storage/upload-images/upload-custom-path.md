@@ -26,16 +26,31 @@ Images with custom ID paths cannot be made private using [signed URL tokens](htt
 
 Make a `POST` request using the example below as reference. You can use custom ID paths when you upload via a URL or with a direct file upload.
 
-Terminal window
-
-```
-curl --request POST https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1 \--header "Authorization: Bearer <API_TOKEN>" \--form 'url=https://<REMOTE_PATH_TO_IMAGE>' \--form 'id=<PATH_TO_YOUR_IMAGE>'
+```bash
+curl --request POST https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1 \
+--header "Authorization: Bearer <API_TOKEN>" \
+--form 'url=https://<REMOTE_PATH_TO_IMAGE>' \
+--form 'id=<PATH_TO_YOUR_IMAGE>'
 ```
 
 After successfully uploading the image, you will receive a response similar to the example below.
 
-```
-{  "result": {    "id": "<PATH_TO_YOUR_IMAGE>",    "filename": "<YOUR_IMAGE>",    "uploaded": "2022-04-20T09:51:09.559Z",    "requireSignedURLs": false,    "variants": [      "https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/<PATH_TO_YOUR_IMAGE>/public"    ]  },  "result_info": null,  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<PATH_TO_YOUR_IMAGE>",
+    "filename": "<YOUR_IMAGE>",
+    "uploaded": "2022-04-20T09:51:09.559Z",
+    "requireSignedURLs": false,
+    "variants": [
+      "https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/<PATH_TO_YOUR_IMAGE>/public"
+    ]
+  },
+  "result_info": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

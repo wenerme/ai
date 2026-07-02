@@ -29,19 +29,26 @@ TerminalCloudExtension
 1. **Install GitHub Copilot**
 Install the GitHub Copilot extension in VS Code from the [Visual Studio Marketplace ↗](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot). For JetBrains IDEs, Visual Studio, or Xcode, see the [Install the Copilot extension ↗](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-extension) guide.
 2. **Install Cloudflare Skills**
-Terminal window
-```
+```bash
 npx skills add https://github.com/cloudflare/skills
 ```
 3. **Configure Cloudflare MCP servers**
 For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json` for user-level configuration or `.mcp.json` or `.github/mcp.json` for project-level configuration. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).
-```
-{  "mcpServers": {    "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" },    "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" },    "cloudflare-bindings": { "url": "https://bindings.mcp.cloudflare.com/mcp" },    "cloudflare-builds": { "url": "https://builds.mcp.cloudflare.com/mcp" },    "cloudflare-observability": { "url": "https://observability.mcp.cloudflare.com/mcp" }  }}
+```json
+{
+  "mcpServers": {
+    "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" },
+    "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" },
+    "cloudflare-bindings": { "url": "https://bindings.mcp.cloudflare.com/mcp" },
+    "cloudflare-builds": { "url": "https://builds.mcp.cloudflare.com/mcp" },
+    "cloudflare-observability": { "url": "https://observability.mcp.cloudflare.com/mcp" }
+  }
+}
 ```
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
-```
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Cloudflare platform access

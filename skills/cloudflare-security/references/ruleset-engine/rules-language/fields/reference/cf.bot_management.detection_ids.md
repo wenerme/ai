@@ -22,7 +22,7 @@ Requires a Cloudflare Enterprise plan with [Bot Management](https://developers.c
 
 Example usage:
 
-```
+```txt
 any(cf.bot_management.detection_ids[*] eq 33554817)
 ```
 

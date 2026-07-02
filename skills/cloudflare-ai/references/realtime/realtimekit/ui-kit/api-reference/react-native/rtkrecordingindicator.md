@@ -27,16 +27,24 @@ Displays a blinking recording indicator when the meeting is being recorded.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkRecordingIndicator } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkRecordingIndicator meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkRecordingIndicator meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkRecordingIndicator } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkRecordingIndicator meeting={meeting} size="md" />;}
+
+
+function MyComponent() {
+  return <RtkRecordingIndicator meeting={meeting} size="md" />;
+}
 ```
 
 ```json

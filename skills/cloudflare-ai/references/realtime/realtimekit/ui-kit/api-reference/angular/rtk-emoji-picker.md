@@ -26,14 +26,18 @@ A very simple emoji picker component.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-emoji-picker></rtk-emoji-picker>
+```html
+<!-- component.html -->
+<rtk-emoji-picker></rtk-emoji-picker>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-emoji-picker [focusWhenOpened]="true"></rtk-emoji-picker>
+```html
+<!-- component.html -->
+<rtk-emoji-picker
+ [focusWhenOpened]="true">
+</rtk-emoji-picker>
 ```
 
 ```json

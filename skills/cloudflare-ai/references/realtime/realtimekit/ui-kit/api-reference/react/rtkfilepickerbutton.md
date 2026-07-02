@@ -26,16 +26,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkFilePickerButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkFilePickerButton />;}
+
+
+function MyComponent() {
+  return <RtkFilePickerButton />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkFilePickerButton } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkFilePickerButton      filter="example"      icon={defaultIconPack}      label="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkFilePickerButton
+      filter="example"
+      icon={defaultIconPack}
+      label="example"
+    />
+  );
+}
 ```
 
 ```json

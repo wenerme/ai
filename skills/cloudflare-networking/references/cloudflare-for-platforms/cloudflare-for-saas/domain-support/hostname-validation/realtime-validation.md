@@ -34,7 +34,7 @@ The exact record depends on your Cloudflare for SaaS setup.
 
 Most customers will have a `CNAME` target, which requires their customers to create a `CNAME` record similar to:
 
-```
+```txt
 mystore.com CNAME customers.saasprovider.com
 ```
 
@@ -42,7 +42,7 @@ mystore.com CNAME customers.saasprovider.com
 
 With [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/), SaaS customers need to create an `A` record for their hostname that points to the IP prefix allocated to the SaaS provider's account.
 
-```
+```txt
 example.com.  60  IN  A   192.0.2.1
 ```
 

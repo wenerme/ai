@@ -43,8 +43,8 @@ To avoid downtime, replace your Universal SSL certificates with an [advanced cer
 
 1. Export a zone file
 
-  * [ Dashboard ](#tab-panel-8199)
-  * [ API ](#tab-panel-8200)
+  * [ Dashboard ](#tab-panel-8480)
+  * [ API ](#tab-panel-8481)
 To export records using the dashboard:
 
   1. In the Cloudflare dashboard, go to the **DNS Records** page.
@@ -56,22 +56,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Read`
   * `DNS Write`
-Export DNS Records
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+**Export DNS Records**
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Import the zone file into your new primary DNS provider.
 3. At your new authoritative DNS provider, create or update records so that you have CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.
 Example CNAME record at authoritative DNS provider
 The CNAME record for `www.example.com` would be:
-```
+```txt
 www.example.com CNAME www.example.com.cdn.cloudflare.net
 ```
 
 ## 2\. Convert the zone
 
-* [ Dashboard ](#tab-panel-8197)
-* [ API ](#tab-panel-8198)
+* [ Dashboard ](#tab-panel-8478)
+* [ API ](#tab-panel-8479)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.

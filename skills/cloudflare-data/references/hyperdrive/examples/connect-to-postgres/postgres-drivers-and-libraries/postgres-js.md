@@ -44,33 +44,86 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8923)
-* [  wrangler.toml ](#tab-panel-8924)
+* [  wrangler.jsonc ](#tab-panel-9174)
+* [  wrangler.toml ](#tab-panel-9175)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  // required for database drivers to function
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<your-hyperdrive-id-here>"
+    }
+  ]
+}
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-24",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-24"
-[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id-here>"
 ```
 
 Create a Worker that connects to your PostgreSQL database via Hyperdrive:
 
-TypeScript
+**TypeScript**
 
-```
-// filepath: src/index.tsimport postgres from "postgres";
-export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a database client that connects to your database via Hyperdrive.    // Hyperdrive maintains the underlying database connection pool,    // so creating a new client on each request is fast and recommended.    const sql = postgres(env.HYPERDRIVE.connectionString, {      // Limit the connections for the Worker request to 5 due to Workers' limits on concurrent external connections      max: 5,      // If you are not using array types in your Postgres schema, disable `fetch_types` to avoid an additional round-trip (unnecessary latency)      fetch_types: false,
-      // This is set to true by default, but certain query generators such as Kysely or queries using sql.unsafe() will set this to false. Hyperdrive will not cache prepared statements when this option is set to false and will require additional round-trips.      prepare: true,    });
-    try {      // A very simple test query      const result = await sql`select * from pg_tables`;
-      // Return result rows as JSON      return Response.json({ success: true, result: result });    } catch (e: any) {      console.error("Database error:", e.message);
-      return Response.error();    }  },} satisfies ExportedHandler<Env>;
+```ts
+// filepath: src/index.ts
+import postgres from "postgres";
+
+
+export default {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
+    // Create a database client that connects to your database via Hyperdrive.
+    // Hyperdrive maintains the underlying database connection pool,
+    // so creating a new client on each request is fast and recommended.
+    const sql = postgres(env.HYPERDRIVE.connectionString, {
+      // Limit the connections for the Worker request to 5 due to Workers' limits on concurrent external connections
+      max: 5,
+      // If you are not using array types in your Postgres schema, disable `fetch_types` to avoid an additional round-trip (unnecessary latency)
+      fetch_types: false,
+
+
+      // This is set to true by default, but certain query generators such as Kysely or queries using sql.unsafe() will set this to false. Hyperdrive will not cache prepared statements when this option is set to false and will require additional round-trips.
+      prepare: true,
+    });
+
+
+    try {
+      // A very simple test query
+      const result = await sql`select * from pg_tables`;
+
+
+      // Return result rows as JSON
+      return Response.json({ success: true, result: result });
+    } catch (e: any) {
+      console.error("Database error:", e.message);
+
+
+      return Response.error();
+    }
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ```json

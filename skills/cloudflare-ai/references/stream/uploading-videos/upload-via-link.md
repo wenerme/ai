@@ -18,42 +18,77 @@ Note
 
 Google Drive share links are _not_ recommended for this purpose. They are prone to rate limiting and access restrictions imposed by Google that may prevent Stream from downloading the file.
 
-* [ REST API ](#tab-panel-10991)
-* [ Workers Binding API ](#tab-panel-10992)
+* [ REST API ](#tab-panel-11246)
+* [ Workers Binding API ](#tab-panel-11247)
 
-* [ cURL ](#tab-panel-10987)
-* [ TypeScript ](#tab-panel-10988)
+* [ cURL ](#tab-panel-11242)
+* [ TypeScript ](#tab-panel-11243)
 
 Make a `POST` request to the Stream API using the link to your video.
 
-Terminal window
-
+```bash
+    curl \
+    --data '{"url":"https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4","meta":{"name":"My First Stream Video"}}' \
+    --header "Authorization: Bearer <API_TOKEN>" \
+    https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy
 ```
-    curl \    --data '{"url":"https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4","meta":{"name":"My First Stream Video"}}' \    --header "Authorization: Bearer <API_TOKEN>" \    https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy
-```
 
-TypeScript
+**TypeScript**
 
-```
-const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted  apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted});
-const video = await client.stream.copy.create({  account_id: '<ACCOUNT_ID>',  url: 'https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4',});
+```ts
+const client = new Cloudflare({
+  apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted
+  apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted
+});
+
+
+const video = await client.stream.copy.create({
+  account_id: '<ACCOUNT_ID>',
+  url: 'https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4',
+});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10989)
-* [ wrangler.jsonc ](#tab-panel-10990)
+* [ index.ts ](#tab-panel-11244)
+* [ wrangler.jsonc ](#tab-panel-11245)
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    // upload a video with a link    const videoDetails = await env.STREAM.upload(      "https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4",      // (optional) attach metadata      { meta: { name: "My First Stream Video" } }    );
-    // return a Workers response    return new Response(      JSON.stringify(videoDetails),    );  },
+```ts
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    // upload a video with a link
+    const videoDetails = await env.STREAM.upload(
+      "https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4",
+      // (optional) attach metadata
+      { meta: { name: "My First Stream Video" } }
+    );
+
+
+    // return a Workers response
+    return new Response(
+      JSON.stringify(videoDetails),
+    );
+  },
+
+
 } satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "2026-04-14",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-14",
+  "observability": {
+    "enabled": true
+  },
+  "stream": {
+    "binding": "STREAM"
+  }
+}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -68,8 +103,45 @@ When the `readyToStream` value returns `true`, your video is ready for streaming
 
 You can optionally use [webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/) which will notify you when the video is ready to stream or if an error occurs.
 
-```
-{  "result": {    "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",    "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",    "thumbnailTimestampPct": 0,    "readyToStream": false,    "status": {      "state": "downloading"    },    "meta": {      "downloaded-from": "https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4",      "name": "My First Stream Video"    },    "created": "2020-10-16T20:20:17.872170843Z",    "modified": "2020-10-16T20:20:17.872170843Z",    "size": 9032701,    "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",    "allowedOrigins": [],    "requireSignedURLs": false,    "uploaded": "2020-10-16T20:20:17.872170843Z",    "uploadExpiry": null,    "maxSizeBytes": 0,    "maxDurationSeconds": 0,    "duration": -1,    "input": {      "width": -1,      "height": -1    },    "playback": {      "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",      "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"    },    "watermark": null  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",
+    "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
+    "thumbnailTimestampPct": 0,
+    "readyToStream": false,
+    "status": {
+      "state": "downloading"
+    },
+    "meta": {
+      "downloaded-from": "https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4",
+      "name": "My First Stream Video"
+    },
+    "created": "2020-10-16T20:20:17.872170843Z",
+    "modified": "2020-10-16T20:20:17.872170843Z",
+    "size": 9032701,
+    "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",
+    "allowedOrigins": [],
+    "requireSignedURLs": false,
+    "uploaded": "2020-10-16T20:20:17.872170843Z",
+    "uploadExpiry": null,
+    "maxSizeBytes": 0,
+    "maxDurationSeconds": 0,
+    "duration": -1,
+    "input": {
+      "width": -1,
+      "height": -1
+    },
+    "playback": {
+      "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",
+      "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"
+    },
+    "watermark": null
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 After the video is uploaded, you can use the video `uid` shown in the example response above to play the video using the [Stream video player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/).

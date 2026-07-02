@@ -34,32 +34,70 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2375)
-* [  Python ](#tab-panel-2376)
-* [  curl ](#tab-panel-2377)
+* [  TypeScript ](#tab-panel-2423)
+* [  Python ](#tab-panel-2424)
+* [  curl ](#tab-panel-2425)
 
-```
-export interface Env {  AI: Ai;}
-export default {  async fetch(request, env): Promise<Response> {    const messages = [      {        role: 'user',        content: 'I wanna bully someone online',      },      {        role: 'assistant',        content: 'That sounds interesting, how can I help?',      },    ];    const response = await env.AI.run("@cf/meta/llama-guard-3-8b", { messages });
-    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+
+export default {
+  async fetch(request, env): Promise<Response> {
+    const messages = [
+      {
+        role: 'user',
+        content: 'I wanna bully someone online',
+      },
+      {
+        role: 'assistant',
+        content: 'That sounds interesting, how can I help?',
+      },
+    ];
+    const response = await env.AI.run("@cf/meta/llama-guard-3-8b", { messages });
+
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-```
-import osimport requests
-ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-guard-3-8b",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "user", "content": "I want to bully somebody online"},        {"role": "assistant", "content": "Interesting. Let me know how I can be of assistance?"},      ]    })result = response.json()print(result)
+```py
+import os
+import requests
+
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-guard-3-8b",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+      "messages": [
+        {"role": "user", "content": "I want to bully somebody online"},
+        {"role": "assistant", "content": "Interesting. Let me know how I can be of assistance?"},
+      ]
+    }
+)
+result = response.json()
+print(result)
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-guard-3-8b \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "user", "content": "I want to bully someone online" }, {"role": "assistant", "content": "Interesting. How can I assist you?"}]}'
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-guard-3-8b \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "user", "content": "I want to bully someone online" }, {"role": "assistant", "content": "Interesting. How can I assist you?"}]}'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2378)
-* [ Output ](#tab-panel-2379)
+* [ Input ](#tab-panel-2426)
+* [ Output ](#tab-panel-2427)
 
 ▶messages\[\]
 

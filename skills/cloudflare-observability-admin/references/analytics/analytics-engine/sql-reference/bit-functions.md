@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
+```sql
 bitAnd(a, b)
 ```
 
@@ -24,15 +24,18 @@ bitAnd(a, b)
 
 Examples:
 
-```
--- perform 0b1 & 0b11bitAnd(1, 3)-- extract the least significant bit of the integer value of double1bitAnd(toUInt8(double1), 1)
+```sql
+-- perform 0b1 & 0b11
+bitAnd(1, 3)
+-- extract the least significant bit of the integer value of double1
+bitAnd(toUInt8(double1), 1)
 ```
 
 ## bitCount New
 
 Usage:
 
-```
+```sql
 bitCount(a)
 ```
 
@@ -40,15 +43,20 @@ bitCount(a)
 
 Examples:
 
-```
--- get the number of 1 bits in the binary representation of the float `double1`bitCount(double1)-- get the number of 1 bits in the binary representation of `double1` as an integerbitCount(toUInt32(double1))-- select rows where at least 5 bits are 1SELECT * WHERE bitCount(double1) > 5
+```sql
+-- get the number of 1 bits in the binary representation of the float `double1`
+bitCount(double1)
+-- get the number of 1 bits in the binary representation of `double1` as an integer
+bitCount(toUInt32(double1))
+-- select rows where at least 5 bits are 1
+SELECT * WHERE bitCount(double1) > 5
 ```
 
 ## bitHammingDistance New
 
 Usage:
 
-```
+```sql
 bitHammingDistance(x, y)
 ```
 
@@ -56,15 +64,18 @@ bitHammingDistance(x, y)
 
 Examples:
 
-```
--- returns zerobitHammingDistance(1, 1)-- returns 2bitHammingDistance(3, 0)
+```sql
+-- returns zero
+bitHammingDistance(1, 1)
+-- returns 2
+bitHammingDistance(3, 0)
 ```
 
 ## bitNot New
 
 Usage:
 
-```
+```sql
 bitNot(a)
 ```
 
@@ -72,7 +83,7 @@ bitNot(a)
 
 Examples:
 
-```
+```sql
 bitNot(1)
 ```
 
@@ -80,7 +91,7 @@ bitNot(1)
 
 Usage:
 
-```
+```sql
 bitOr(a, b)
 ```
 
@@ -88,15 +99,16 @@ bitOr(a, b)
 
 Examples:
 
-```
--- returns 3bitOr(1, 2)
+```sql
+-- returns 3
+bitOr(1, 2)
 ```
 
 ## bitRotateLeft New
 
 Usage:
 
-```
+```sql
 bitRotateLeft(a, n)
 ```
 
@@ -104,15 +116,18 @@ bitRotateLeft(a, n)
 
 Examples:
 
-```
--- returns 2bitRotateLeft(1, 1)-- returns 1bitRotateLeft(128, 1)
+```sql
+-- returns 2
+bitRotateLeft(1, 1)
+-- returns 1
+bitRotateLeft(128, 1)
 ```
 
 ## bitRotateRight New
 
 Usage:
 
-```
+```sql
 bitRotateRight(a, n)
 ```
 
@@ -120,15 +135,18 @@ bitRotateRight(a, n)
 
 Examples:
 
-```
--- returns 128bitRotateRight(1, 1)-- returns 3bitRotateRight(12, 2)
+```sql
+-- returns 128
+bitRotateRight(1, 1)
+-- returns 3
+bitRotateRight(12, 2)
 ```
 
 ## bitShiftLeft New
 
 Usage:
 
-```
+```sql
 bitShiftLeft(a, n)
 ```
 
@@ -136,15 +154,18 @@ bitShiftLeft(a, n)
 
 Examples:
 
-```
--- returns 2bitShiftLeft(1, 1)-- returns 0bitShiftLeft(128, 1)
+```sql
+-- returns 2
+bitShiftLeft(1, 1)
+-- returns 0
+bitShiftLeft(128, 1)
 ```
 
 ## bitShiftRight New
 
 Usage:
 
-```
+```sql
 bitShiftRight(a, n)
 ```
 
@@ -152,15 +173,18 @@ bitShiftRight(a, n)
 
 Examples:
 
-```
--- returns 0bitShiftRight(1, 1)-- returns 3bitShiftRight(12, 2)
+```sql
+-- returns 0
+bitShiftRight(1, 1)
+-- returns 3
+bitShiftRight(12, 2)
 ```
 
 ## bitTest New
 
 Usage:
 
-```
+```sql
 bitTest(a, n)
 ```
 
@@ -168,15 +192,20 @@ bitTest(a, n)
 
 Examples:
 
-```
--- returns 1bitTest(3, 1)-- return 0bitTest(2, 1)-- select rows where a particular bit is 1SELECT * WHERE bitTest(double1, 2)
+```sql
+-- returns 1
+bitTest(3, 1)
+-- return 0
+bitTest(2, 1)
+-- select rows where a particular bit is 1
+SELECT * WHERE bitTest(double1, 2)
 ```
 
 ## bitXor New
 
 Usage:
 
-```
+```sql
 bitXor(a, b)
 ```
 
@@ -184,8 +213,11 @@ bitXor(a, b)
 
 Examples:
 
-```
--- returns 3bitXor(1, 2)-- returns 0bitXor(3, 3)
+```sql
+-- returns 3
+bitXor(1, 2)
+-- returns 0
+bitXor(3, 3)
 ```
 
 ```json

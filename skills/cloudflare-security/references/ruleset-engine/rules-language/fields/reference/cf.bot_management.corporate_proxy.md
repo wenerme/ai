@@ -20,8 +20,11 @@ Requires a Cloudflare Enterprise plan with [Bot Management](https://developers.c
 
 Example usage:
 
-```
-not cf.bot_management.verified_botand not cf.bot_management.static_resourceand not cf.bot_management.corporate_proxyand cf.bot_management.score lt 30
+```txt
+not cf.bot_management.verified_bot
+and not cf.bot_management.static_resource
+and not cf.bot_management.corporate_proxy
+and cf.bot_management.score lt 30
 ```
 
 Categories:

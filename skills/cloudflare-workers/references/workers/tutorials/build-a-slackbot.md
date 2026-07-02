@@ -119,21 +119,31 @@ Follow these steps to create a Hono project.
 
 Go to the `slack-bot` directory:
 
-Terminal window
-
-```
+```sh
 cd slack-bot
 ```
 
 Open `src/index.ts` in an editor to find the following code.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Hono } from "hono";
-type Bindings = {  [key in keyof CloudflareBindings]: CloudflareBindings[key];};
+
+
+type Bindings = {
+  [key in keyof CloudflareBindings]: CloudflareBindings[key];
+};
+
+
 const app = new Hono<{ Bindings: Bindings }>();
-app.get("/", (c) => {  return c.text("Hello Hono!");});
+
+
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+
 export default app;
 ```
 
@@ -173,23 +183,37 @@ You can create your application in several files instead of writing all endpoint
 
 For example, imagine the following Web API application.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Hono } from "hono";
+
+
 const app = new Hono();
-app.get("/posts", (c) => c.text("Posts!"));app.post("/posts", (c) => c.text("Created!", 201));
+
+
+app.get("/posts", (c) => c.text("Posts!"));
+app.post("/posts", (c) => c.text("Created!", 201));
+
+
 export default app;
 ```
 
 You can add the routes under `/api/v1`.
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import api from "./api";
+```ts
+import { Hono } from "hono";
+import api from "./api";
+
+
 const app = new Hono();
+
+
 app.route("/api/v1", api);
+
+
 export default app;
 ```
 
@@ -202,20 +226,31 @@ The Slack bot will have two child applications called "route" each.
 
 Create the route files in a directory named `routes`.
 
-Create new folders and files
+**Create new folders and files**
 
-```
-mkdir -p src/routestouch src/routes/lookup.tstouch src/routes/webhook.ts
+```sh
+mkdir -p src/routes
+touch src/routes/lookup.ts
+touch src/routes/webhook.ts
 ```
 
 Then update the main application.
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import lookup from "./routes/lookup";import webhook from "./routes/webhook";
+```ts
+import { Hono } from "hono";
+import lookup from "./routes/lookup";
+import webhook from "./routes/webhook";
+
+
 const app = new Hono();
-app.route("/lookup", lookup);app.route("/webhook", webhook);
+
+
+app.route("/lookup", lookup);
+app.route("/webhook", webhook);
+
+
 export default app;
 ```
 
@@ -223,23 +258,45 @@ export default app;
 
 Before implementing the actual functions, you need to define the TypeScript types you will use in this project. Create a new file in the application at `src/types.ts` and write the code. `Bindings` is a type that describes the Cloudflare Workers environment variables. `Issue` is a type for a GitHub issue and `User` is a type for a GitHub user. You will need these later.
 
-TypeScript
+**TypeScript**
 
-```
-export type Bindings = {  SLACK_WEBHOOK_URL: string;};
-export type Issue = {  html_url: string;  title: string;  body: string;  state: string;  created_at: string;  number: number;  user: User;};
-type User = {  html_url: string;  login: string;  avatar_url: string;};
+```ts
+export type Bindings = {
+  SLACK_WEBHOOK_URL: string;
+};
+
+
+export type Issue = {
+  html_url: string;
+  title: string;
+  body: string;
+  state: string;
+  created_at: string;
+  number: number;
+  user: User;
+};
+
+
+type User = {
+  html_url: string;
+  login: string;
+  avatar_url: string;
+};
 ```
 
 ### Creating the lookup route
 
 Start creating the lookup route in `src/routes/lookup.ts`.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Hono } from "hono";
+
+
 const app = new Hono();
+
+
 export default app;
 ```
 
@@ -247,8 +304,20 @@ To understand how you should design this function, you need to understand how Sl
 
 According to the [documentation for Slack slash commands ↗](https://api.slack.com/interactivity/slash-commands), Slack sends an HTTP POST request to your specified URL, with a `application/x-www-form-urlencoded` content type. For example, if someone were to type `/issue cloudflare/wrangler#1`, you could expect a data payload in the format:
 
-```
-token=gIkuvaNzQIHg97ATvDxqgjtO&team_id=T0001&team_domain=example&enterprise_id=E0001&enterprise_name=Globular%20Construct%20Inc&channel_id=C2147483705&channel_name=test&user_id=U2147483697&user_name=Steve&command=/issue&text=cloudflare/wrangler#1&response_url=https://hooks.slack.com/commands/1234/5678&trigger_id=13345224609.738474920.8088930838d88f008e0
+```txt
+token=gIkuvaNzQIHg97ATvDxqgjtO
+&team_id=T0001
+&team_domain=example
+&enterprise_id=E0001
+&enterprise_name=Globular%20Construct%20Inc
+&channel_id=C2147483705
+&channel_name=test
+&user_id=U2147483697
+&user_name=Steve
+&command=/issue
+&text=cloudflare/wrangler#1
+&response_url=https://hooks.slack.com/commands/1234/5678
+&trigger_id=13345224609.738474920.8088930838d88f008e0
 ```
 
 Given this payload body, you need to parse it, and get the value of the `text` key. With that `text`, for example, `cloudflare/wrangler#1`, you can parse that string into known piece of data (`owner`, `repo`, and `issue_number`), and use it to make a request to GitHub’s API, to retrieve the issue data.
@@ -259,12 +328,23 @@ With Slack slash commands, you can respond to a slash command by returning struc
 
 To begin, the `lookup` route should parse the messages coming from Slack. As previously mentioned, the Slack API sends an HTTP POST in URL Encoded format. You can get the variable `text` by parsing it with `c.req.json()`.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Hono } from "hono";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { text } = await c.req.parseBody();  if (typeof text !== "string") {    return c.notFound();  }});
+
+
+app.post("/", async (c) => {
+  const { text } = await c.req.parseBody();
+  if (typeof text !== "string") {
+    return c.notFound();
+  }
+});
+
+
 export default app;
 ```
 
@@ -272,22 +352,42 @@ Given a `text` variable, that contains text like `cloudflare/wrangler#1`, you sh
 
 To do this, create a new file in your application, at `src/utils/github.ts`. This file will contain a number of “utility” functions for working with GitHub’s API. The first of these will be a string parser, called `parseGhIssueString`:
 
-TypeScript
+**TypeScript**
 
-```
-const ghIssueRegex =  /(?<owner>[\w.-]*)\/(?<repo>[\w.-]*)\#(?<issue_number>\d*)/;
-export const parseGhIssueString = (text: string) => {  const match = text.match(ghIssueRegex);  return match ? (match.groups ?? {}) : {};};
+```ts
+const ghIssueRegex =
+  /(?<owner>[\w.-]*)\/(?<repo>[\w.-]*)\#(?<issue_number>\d*)/;
+
+
+export const parseGhIssueString = (text: string) => {
+  const match = text.match(ghIssueRegex);
+  return match ? (match.groups ?? {}) : {};
+};
 ```
 
 `parseGhIssueString` takes in a `text` input, matches it against `ghIssueRegex`, and if a match is found, returns the `groups` object from that match, making use of the `owner`, `repo`, and `issue_number` capture groups defined in the regex. By exporting this function from `src/utils/github.ts`, you can make use of it back in `src/handlers/lookup.ts`:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { parseGhIssueString } from "../utils/github";
+```ts
+import { Hono } from "hono";
+import { parseGhIssueString } from "../utils/github";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { text } = await c.req.parseBody();  if (typeof text !== "string") {    return c.notFound();  }
-  const { owner, repo, issue_number } = parseGhIssueString(text);});
+
+
+app.post("/", async (c) => {
+  const { text } = await c.req.parseBody();
+  if (typeof text !== "string") {
+    return c.notFound();
+  }
+
+
+  const { owner, repo, issue_number } = parseGhIssueString(text);
+});
+
+
 export default app;
 ```
 
@@ -295,23 +395,56 @@ export default app;
 
 With this data, you can make your first API lookup to GitHub. Again, make a new function in `src/utils/github.ts`, to make a `fetch` request to the GitHub API for the issue data:
 
-TypeScript
+**TypeScript**
 
-```
-const ghIssueRegex =  /(?<owner>[\w.-]*)\/(?<repo>[\w.-]*)\#(?<issue_number>\d*)/;
-export const parseGhIssueString = (text: string) => {  const match = text.match(ghIssueRegex);  return match ? (match.groups ?? {}) : {};};
-export const fetchGithubIssue = (  owner: string,  repo: string,  issue_number: string,) => {  const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}`;  const headers = { "User-Agent": "simple-worker-slack-bot" };  return fetch(url, { headers });};
+```ts
+const ghIssueRegex =
+  /(?<owner>[\w.-]*)\/(?<repo>[\w.-]*)\#(?<issue_number>\d*)/;
+
+
+export const parseGhIssueString = (text: string) => {
+  const match = text.match(ghIssueRegex);
+  return match ? (match.groups ?? {}) : {};
+};
+
+
+export const fetchGithubIssue = (
+  owner: string,
+  repo: string,
+  issue_number: string,
+) => {
+  const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}`;
+  const headers = { "User-Agent": "simple-worker-slack-bot" };
+  return fetch(url, { headers });
+};
 ```
 
 Back in `src/handlers/lookup.ts`, use `fetchGitHubIssue` to make a request to GitHub’s API, and parse the response:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { fetchGithubIssue, parseGhIssueString } from "../utils/github";import { Issue } from "../types";
+```ts
+import { Hono } from "hono";
+import { fetchGithubIssue, parseGhIssueString } from "../utils/github";
+import { Issue } from "../types";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { text } = await c.req.parseBody();  if (typeof text !== "string") {    return c.notFound();  }
-  const { owner, repo, issue_number } = parseGhIssueString(text);  const response = await fetchGithubIssue(owner, repo, issue_number);  const issue = await response.json<Issue>();});
+
+
+app.post("/", async (c) => {
+  const { text } = await c.req.parseBody();
+  if (typeof text !== "string") {
+    return c.notFound();
+  }
+
+
+  const { owner, repo, issue_number } = parseGhIssueString(text);
+  const response = await fetchGithubIssue(owner, repo, issue_number);
+  const issue = await response.json<Issue>();
+});
+
+
 export default app;
 ```
 
@@ -332,12 +465,29 @@ The previously mentioned [Block Kit ↗](https://api.slack.com/block-kit) framew
 
 Create another file, `src/utils/slack.ts`, to contain the function `constructGhIssueSlackMessage`, a function for taking issue data, and turning it into a collection of blocks. Blocks are JavaScript objects that Slack will use to format the message:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Issue } from "../types";
-export const constructGhIssueSlackMessage = (  issue: Issue,  issue_string: string,  prefix_text?: string,) => {  const issue_link = `<${issue.html_url}|${issue_string}>`;  const user_link = `<${issue.user.html_url}|${issue.user.login}>`;  const date = new Date(Date.parse(issue.created_at)).toLocaleDateString();
-  const text_lines = [    prefix_text,    `*${issue.title} - ${issue_link}*`,    issue.body,    `*${issue.state}* - Created by ${user_link} on ${date}`,  ];};
+
+
+export const constructGhIssueSlackMessage = (
+  issue: Issue,
+  issue_string: string,
+  prefix_text?: string,
+) => {
+  const issue_link = `<${issue.html_url}|${issue_string}>`;
+  const user_link = `<${issue.user.html_url}|${issue.user.login}>`;
+  const date = new Date(Date.parse(issue.created_at)).toLocaleDateString();
+
+
+  const text_lines = [
+    prefix_text,
+    `*${issue.title} - ${issue_link}*`,
+    issue.body,
+    `*${issue.state}* - Created by ${user_link} on ${date}`,
+  ];
+};
 ```
 
 Slack messages accept a variant of Markdown, which supports bold text via asterisks (`*bolded text*`), and links in the format `<https://yoururl.com|Display Text>`.
@@ -352,27 +502,83 @@ With those variables in place, `text_lines` is an array of each line of text for
 
 With the text constructed, you can finally construct your Slack message, returning an array of blocks for Slack’s [Block Kit ↗](https://api.slack.com/block-kit). In this case, there is only have one block: a [section ↗](https://api.slack.com/reference/messaging/blocks#section) block with Markdown text, and an accessory image of the user who created the issue. Return that single block inside of an array, to complete the `constructGhIssueSlackMessage` function:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Issue } from "../types";
-export const constructGhIssueSlackMessage = (  issue: Issue,  issue_string: string,  prefix_text?: string,) => {  const issue_link = `<${issue.html_url}|${issue_string}>`;  const user_link = `<${issue.user.html_url}|${issue.user.login}>`;  const date = new Date(Date.parse(issue.created_at)).toLocaleDateString();
-  const text_lines = [    prefix_text,    `*${issue.title} - ${issue_link}*`,    issue.body,    `*${issue.state}* - Created by ${user_link} on ${date}`,  ];
-  return [    {      type: "section",      text: {        type: "mrkdwn",        text: text_lines.join("\n"),      },      accessory: {        type: "image",        image_url: issue.user.avatar_url,        alt_text: issue.user.login,      },    },  ];};
+
+
+export const constructGhIssueSlackMessage = (
+  issue: Issue,
+  issue_string: string,
+  prefix_text?: string,
+) => {
+  const issue_link = `<${issue.html_url}|${issue_string}>`;
+  const user_link = `<${issue.user.html_url}|${issue.user.login}>`;
+  const date = new Date(Date.parse(issue.created_at)).toLocaleDateString();
+
+
+  const text_lines = [
+    prefix_text,
+    `*${issue.title} - ${issue_link}*`,
+    issue.body,
+    `*${issue.state}* - Created by ${user_link} on ${date}`,
+  ];
+
+
+  return [
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: text_lines.join("\n"),
+      },
+      accessory: {
+        type: "image",
+        image_url: issue.user.avatar_url,
+        alt_text: issue.user.login,
+      },
+    },
+  ];
+};
 ```
 
 #### Finishing the lookup route
 
 In `src/handlers/lookup.ts`, use `constructGhIssueSlackMessage` to construct `blocks`, and return them as a new response with `c.json()` when the slash command is called:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { fetchGithubIssue, parseGhIssueString } from "../utils/github";import { constructGhIssueSlackMessage } from "../utils/slack";import { Issue } from "../types";
+```ts
+import { Hono } from "hono";
+import { fetchGithubIssue, parseGhIssueString } from "../utils/github";
+import { constructGhIssueSlackMessage } from "../utils/slack";
+import { Issue } from "../types";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { text } = await c.req.parseBody();  if (typeof text !== "string") {    return c.notFound();  }
-  const { owner, repo, issue_number } = parseGhIssueString(text);  const response = await fetchGithubIssue(owner, repo, issue_number);  const issue = await response.json<Issue>();  const blocks = constructGhIssueSlackMessage(issue, text);
-  return c.json({    blocks,    response_type: "in_channel",  });});
+
+
+app.post("/", async (c) => {
+  const { text } = await c.req.parseBody();
+  if (typeof text !== "string") {
+    return c.notFound();
+  }
+
+
+  const { owner, repo, issue_number } = parseGhIssueString(text);
+  const response = await fetchGithubIssue(owner, repo, issue_number);
+  const issue = await response.json<Issue>();
+  const blocks = constructGhIssueSlackMessage(issue, text);
+
+
+  return c.json({
+    blocks,
+    response_type: "in_channel",
+  });
+});
+
+
 export default app;
 ```
 
@@ -384,15 +590,46 @@ If you would like the messages to remain private, remove the `response_type` lin
 
 The `lookup` route is almost complete, but there are a number of errors that can occur in the route, such as parsing the body from Slack, getting the issue from GitHub, or constructing the Slack message itself. Although Hono applications can handle errors without having to do anything, you can customize the response returned in the following way.
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { fetchGithubIssue, parseGhIssueString } from "../utils/github";import { constructGhIssueSlackMessage } from "../utils/slack";import { Issue } from "../types";
+```ts
+import { Hono } from "hono";
+import { fetchGithubIssue, parseGhIssueString } from "../utils/github";
+import { constructGhIssueSlackMessage } from "../utils/slack";
+import { Issue } from "../types";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { text } = await c.req.parseBody();  if (typeof text !== "string") {    return c.notFound();  }
-  const { owner, repo, issue_number } = parseGhIssueString(text);  const response = await fetchGithubIssue(owner, repo, issue_number);  const issue = await response.json<Issue>();  const blocks = constructGhIssueSlackMessage(issue, text);
-  return c.json({    blocks,    response_type: "in_channel",  });});
-app.onError((_e, c) => {  return c.text(    "Uh-oh! We couldn't find the issue you provided. " +      "We can only find public issues in the following format: `owner/repo#issue_number`.",  );});
+
+
+app.post("/", async (c) => {
+  const { text } = await c.req.parseBody();
+  if (typeof text !== "string") {
+    return c.notFound();
+  }
+
+
+  const { owner, repo, issue_number } = parseGhIssueString(text);
+  const response = await fetchGithubIssue(owner, repo, issue_number);
+  const issue = await response.json<Issue>();
+  const blocks = constructGhIssueSlackMessage(issue, text);
+
+
+  return c.json({
+    blocks,
+    response_type: "in_channel",
+  });
+});
+
+
+app.onError((_e, c) => {
+  return c.text(
+    "Uh-oh! We couldn't find the issue you provided. " +
+      "We can only find public issues in the following format: `owner/repo#issue_number`.",
+  );
+});
+
+
 export default app;
 ```
 
@@ -404,11 +641,16 @@ At the beginning of this tutorial, you configured a GitHub webhook to track any 
 
 In `src/routes/webhook.ts`, define a blank Hono application. The difference from the `lookup` route is that the `Bindings` is passed as a generics for the `new Hono()`. This is necessary to give the appropriate TypeScript type to `SLACK_WEBHOOK_URL` which will be used later.
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { Bindings } from "../types";
+```ts
+import { Hono } from "hono";
+import { Bindings } from "../types";
+
+
 const app = new Hono<{ Bindings: Bindings }>();
+
+
 export default app;
 ```
 
@@ -422,12 +664,23 @@ Compare this message format to the format returned when a user uses the `/issue`
 
 To start filling out the route, parse the request body formatted JSON into an object and construct some helper variables:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { constructGhIssueSlackMessage } from "../utils/slack";
+```ts
+import { Hono } from "hono";
+import { constructGhIssueSlackMessage } from "../utils/slack";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { action, issue, repository } = await c.req.json();  const prefix_text = `An issue was ${action}:`;  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;});
+
+
+app.post("/", async (c) => {
+  const { action, issue, repository } = await c.req.json();
+  const prefix_text = `An issue was ${action}:`;
+  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;
+});
+
+
 export default app;
 ```
 
@@ -439,12 +692,24 @@ Use `c.req.json()` to convert the payload body of the request from JSON into a p
 
 The messages your Slack bot sends back to your Slack channel from the `lookup` and `webhook` routes are incredibly similar. Because of this, you can re-use the existing `constructGhIssueSlackMessage` to continue populating `src/handlers/webhook.ts`. Import the function from `src/utils/slack.ts`, and pass the issue data into it:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { constructGhIssueSlackMessage } from "../utils/slack";
+```ts
+import { Hono } from "hono";
+import { constructGhIssueSlackMessage } from "../utils/slack";
+
+
 const app = new Hono();
-app.post("/", async (c) => {  const { action, issue, repository } = await c.req.json();  const prefix_text = `An issue was ${action}:`;  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;  const blocks = constructGhIssueSlackMessage(issue, issue_string, prefix_text);});
+
+
+app.post("/", async (c) => {
+  const { action, issue, repository } = await c.req.json();
+  const prefix_text = `An issue was ${action}:`;
+  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;
+  const blocks = constructGhIssueSlackMessage(issue, issue_string, prefix_text);
+});
+
+
 export default app;
 ```
 
@@ -452,26 +717,81 @@ Importantly, the usage of `constructGhIssueSlackMessage` in this handler adds on
 
 Add a utility function, `compact`, which takes an array, and filters out any `null` or `undefined` values from it. This function will be used to remove `prefix_text` from `text_lines` if it has not actually been passed in to the function, such as when called from `src/handlers/lookup.ts`. The full (and final) version of the `src/utils/slack.ts` looks like this:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Issue } from "../types";
+
+
 const compact = (array: unknown[]) => array.filter((el) => el);
-export const constructGhIssueSlackMessage = (  issue: Issue,  issue_string: string,  prefix_text?: string,) => {  const issue_link = `<${issue.html_url}|${issue_string}>`;  const user_link = `<${issue.user.html_url}|${issue.user.login}>`;  const date = new Date(Date.parse(issue.created_at)).toLocaleDateString();
-  const text_lines = [    prefix_text,    `*${issue.title} - ${issue_link}*`,    issue.body,    `*${issue.state}* - Created by ${user_link} on ${date}`,  ];
-  return [    {      type: "section",      text: {        type: "mrkdwn",        text: compact(text_lines).join("\n"),      },      accessory: {        type: "image",        image_url: issue.user.avatar_url,        alt_text: issue.user.login,      },    },  ];};
+
+
+export const constructGhIssueSlackMessage = (
+  issue: Issue,
+  issue_string: string,
+  prefix_text?: string,
+) => {
+  const issue_link = `<${issue.html_url}|${issue_string}>`;
+  const user_link = `<${issue.user.html_url}|${issue.user.login}>`;
+  const date = new Date(Date.parse(issue.created_at)).toLocaleDateString();
+
+
+  const text_lines = [
+    prefix_text,
+    `*${issue.title} - ${issue_link}*`,
+    issue.body,
+    `*${issue.state}* - Created by ${user_link} on ${date}`,
+  ];
+
+
+  return [
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: compact(text_lines).join("\n"),
+      },
+      accessory: {
+        type: "image",
+        image_url: issue.user.avatar_url,
+        alt_text: issue.user.login,
+      },
+    },
+  ];
+};
 ```
 
 Back in `src/handlers/webhook.ts`, the `blocks` that are returned from `constructGhIssueSlackMessage` become the body in a new `fetch` request, an HTTP POST request to a Slack webhook URL. Once that request completes, return a response with status code `200`, and the body text `"OK"`:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { constructGhIssueSlackMessage } from "../utils/slack";import { Bindings } from "../types";
+```ts
+import { Hono } from "hono";
+import { constructGhIssueSlackMessage } from "../utils/slack";
+import { Bindings } from "../types";
+
+
 const app = new Hono<{ Bindings: Bindings }>();
-app.post("/", async (c) => {  const { action, issue, repository } = await c.req.json();  const prefix_text = `An issue was ${action}:`;  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;  const blocks = constructGhIssueSlackMessage(issue, issue_string, prefix_text);
-  const fetchResponse = await fetch(c.env.SLACK_WEBHOOK_URL, {    body: JSON.stringify({ blocks }),    method: "POST",    headers: { "Content-Type": "application/json" },  });
-  return c.text("OK");});
+
+
+app.post("/", async (c) => {
+  const { action, issue, repository } = await c.req.json();
+  const prefix_text = `An issue was ${action}:`;
+  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;
+  const blocks = constructGhIssueSlackMessage(issue, issue_string, prefix_text);
+
+
+  const fetchResponse = await fetch(c.env.SLACK_WEBHOOK_URL, {
+    body: JSON.stringify({ blocks }),
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+
+  return c.text("OK");
+});
+
+
 export default app;
 ```
 
@@ -483,13 +803,13 @@ Since this webhook allows developers to post directly to your Slack channel, kee
 
 To use this constant inside of your codebase, use the [wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command:
 
-Set the SLACK\_WEBHOOK\_URL secret
+**Set the SLACK\_WEBHOOK\_URL secret**
 
-```
+```sh
 npx wrangler secret put SLACK_WEBHOOK_URL
 ```
 
-```
+```sh
 Enter a secret value: https://hooks.slack.com/services/abc123
 ```
 
@@ -499,16 +819,48 @@ Similarly to the `lookup` route, the `webhook` route should include some basic e
 
 To do this, write the custom error handler with `app.onError()` and return a new response with a status code of `500`. The final version of `src/routes/webhook.ts` looks like this:
 
-TypeScript
+**TypeScript**
 
-```
-import { Hono } from "hono";import { constructGhIssueSlackMessage } from "../utils/slack";import { Bindings } from "../types";
+```ts
+import { Hono } from "hono";
+import { constructGhIssueSlackMessage } from "../utils/slack";
+import { Bindings } from "../types";
+
+
 const app = new Hono<{ Bindings: Bindings }>();
-app.post("/", async (c) => {  const { action, issue, repository } = await c.req.json();  const prefix_text = `An issue was ${action}:`;  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;  const blocks = constructGhIssueSlackMessage(issue, issue_string, prefix_text);
-  const fetchResponse = await fetch(c.env.SLACK_WEBHOOK_URL, {    body: JSON.stringify({ blocks }),    method: "POST",    headers: { "Content-Type": "application/json" },  });
+
+
+app.post("/", async (c) => {
+  const { action, issue, repository } = await c.req.json();
+  const prefix_text = `An issue was ${action}:`;
+  const issue_string = `${repository.owner.login}/${repository.name}#${issue.number}`;
+  const blocks = constructGhIssueSlackMessage(issue, issue_string, prefix_text);
+
+
+  const fetchResponse = await fetch(c.env.SLACK_WEBHOOK_URL, {
+    body: JSON.stringify({ blocks }),
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+
   if (!fetchResponse.ok) throw new Error();
-  return c.text("OK");});
-app.onError((_e, c) => {  return c.json(    {      message: "Unable to handle webhook",    },    500,  );});
+
+
+  return c.text("OK");
+});
+
+
+app.onError((_e, c) => {
+  return c.json(
+    {
+      message: "Unable to handle webhook",
+    },
+    500,
+  );
+});
+
+
 export default app;
 ```
 

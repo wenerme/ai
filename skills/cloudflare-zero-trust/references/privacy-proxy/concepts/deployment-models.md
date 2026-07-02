@@ -18,8 +18,11 @@ Privacy Proxy supports two deployment architectures: single-hop and double-hop. 
 
 In a single-hop deployment, Cloudflare operates the entire proxy infrastructure. Clients connect directly to Cloudflare's Privacy Proxy, which handles authentication, proxying, and egress.
 
-```
-┌────────┐      ┌─────────────────┐      ┌─────────────┐│ Client │ ───▶ │  Privacy Proxy  │ ───▶ │ Destination ││        │      │  (Cloudflare)   │      │   Server    │└────────┘      └─────────────────┘      └─────────────┘
+```plaintext
+┌────────┐      ┌─────────────────┐      ┌─────────────┐
+│ Client │ ───▶ │  Privacy Proxy  │ ───▶ │ Destination │
+│        │      │  (Cloudflare)   │      │   Server    │
+└────────┘      └─────────────────┘      └─────────────┘
 ```
 
 ### How it works
@@ -47,8 +50,11 @@ Single-hop deployment works well when:
 
 In a double-hop deployment, you operate the first proxy (Proxy A), and Cloudflare operates the second proxy (Proxy B). This creates stronger privacy separation because no single party sees both user identity and destination.
 
-```
-┌────────┐      ┌─────────────┐      ┌─────────────────┐      ┌─────────────┐│ Client │ ───▶ │   Proxy A   │ ───▶ │    Proxy B      │ ───▶ │ Destination ││        │      │    (You)    │      │  (Cloudflare)   │      │   Server    │└────────┘      └─────────────┘      └─────────────────┘      └─────────────┘
+```plaintext
+┌────────┐      ┌─────────────┐      ┌─────────────────┐      ┌─────────────┐
+│ Client │ ───▶ │   Proxy A   │ ───▶ │    Proxy B      │ ───▶ │ Destination │
+│        │      │    (You)    │      │  (Cloudflare)   │      │   Server    │
+└────────┘      └─────────────┘      └─────────────────┘      └─────────────┘
 ```
 
 ### How it works

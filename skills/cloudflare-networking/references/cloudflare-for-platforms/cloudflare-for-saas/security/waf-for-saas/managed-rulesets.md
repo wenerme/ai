@@ -53,7 +53,7 @@ Account-level WAF requires an Enterprise plan with a paid add-on.
 7. Select **Custom filter expression**.
 8. Select **Edit expression** to switch to the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor).
 9. The basic expression should look like this, plus any logic you would like to add (like filtering by a specific custom hostname with `http.host eq "<HOSTNAME>"`):
-```
+```txt
 (lookup_json_string(cf.hostname.metadata, "security_tag") eq "low") and (cf.zone.plan eq "ENT")
 ```
 Note

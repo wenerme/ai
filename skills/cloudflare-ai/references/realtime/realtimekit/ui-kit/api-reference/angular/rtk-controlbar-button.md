@@ -32,14 +32,20 @@ A skeleton component used for composing custom controlbar buttons.
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-controlbar-button></rtk-controlbar-button>
+```html
+<!-- component.html -->
+<rtk-controlbar-button></rtk-controlbar-button>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-controlbar-button [brandIcon]="true" [disabled]="true" icon="example"></rtk-controlbar-button>
+```html
+<!-- component.html -->
+<rtk-controlbar-button
+ [brandIcon]="true"
+ [disabled]="true"
+ icon="example">
+</rtk-controlbar-button>
 ```
 
 ```json

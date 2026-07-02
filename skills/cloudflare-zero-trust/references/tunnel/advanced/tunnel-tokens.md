@@ -18,8 +18,8 @@ A remotely-managed tunnel only requires a token to run. Anyone with the token ca
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-11045)
-* [ API ](#tab-panel-11046)
+* [ Dashboard ](#tab-panel-11340)
+* [ API ](#tab-panel-11341)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -34,10 +34,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
 
-Get a Cloudflare Tunnel token
+**Get a Cloudflare Tunnel token**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Rotate a token
@@ -50,9 +52,9 @@ Rotate tokens regularly to reduce the risk of compromise. For tunnels with multi
 3. Select **Rotate token**. After rotating the token, `cloudflared` cannot establish new connections with the old token. Existing connectors remain active until restarted.
 4. Select **Add replica** and copy the new `cloudflared` installation command.
 5. On each replica, reinstall the `cloudflared` service using the new token:
-Terminal window
-```
-sudo cloudflared service uninstallsudo cloudflared service install <NEW_TOKEN>
+```sh
+sudo cloudflared service uninstall
+sudo cloudflared service install <NEW_TOKEN>
 ```
 
 Rotate a compromised token
@@ -66,10 +68,12 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
 
-Clean up Cloudflare Tunnel connections
+**Clean up Cloudflare Tunnel connections**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Then reinstall the `cloudflared` service on all replicas using the new token.

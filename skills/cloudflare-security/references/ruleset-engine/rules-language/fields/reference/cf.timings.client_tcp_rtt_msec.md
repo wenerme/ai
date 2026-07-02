@@ -20,14 +20,15 @@ This field is only populated for TCP (HTTP/1, HTTP/2) connections. For QUIC conn
 
 Example value:
 
-```
+```txt
 20
 ```
 
 Example usage:
 
-```
-# Match requests over TCP where the RTT exceeds 200 mscf.timings.client_quic_rtt_msec > 200
+```txt
+# Match requests over TCP where the RTT exceeds 200 ms
+cf.timings.client_quic_rtt_msec > 200
 ```
 
 Categories:

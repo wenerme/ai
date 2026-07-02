@@ -24,21 +24,75 @@ Every Think agent always has an implicit `web` channel (the WebSocket chat your 
 
 Override `configureChannels()` to return a map of channel id to `ChannelDefinition`. The id is how you select the channel on a turn:
 
-* [  JavaScript ](#tab-panel-5785)
-* [  TypeScript ](#tab-panel-5786)
+* [  JavaScript ](#tab-panel-5817)
+* [  TypeScript ](#tab-panel-5818)
 
-JavaScript
+**JavaScript**
 
+```js
+import { Think, messengerChannel } from "@cloudflare/think";
+import { telegram } from "@chat-adapter/telegram";
+
+
+export class Assistant extends Think {
+  configureChannels() {
+    return {
+      // Override policy for the built-in web channel.
+      web: {
+        kind: "web",
+        ingress: { transport: "websocket" },
+        instructions: "You are chatting in a web app. Use markdown freely.",
+      },
+      // A voice channel with tighter limits.
+      voice: {
+        kind: "voice",
+        ingress: { transport: "voice" },
+        instructions: "Keep replies short and speakable. No markdown.",
+        maxTurns: 3,
+      },
+      // A messenger channel (Chat SDK webhook).
+      telegram: messengerChannel(
+        telegram({
+          /* adapter config */
+        }),
+      ),
+    };
+  }
+}
 ```
-import { Think, messengerChannel } from "@cloudflare/think";import { telegram } from "@chat-adapter/telegram";
-export class Assistant extends Think {  configureChannels() {    return {      // Override policy for the built-in web channel.      web: {        kind: "web",        ingress: { transport: "websocket" },        instructions: "You are chatting in a web app. Use markdown freely.",      },      // A voice channel with tighter limits.      voice: {        kind: "voice",        ingress: { transport: "voice" },        instructions: "Keep replies short and speakable. No markdown.",        maxTurns: 3,      },      // A messenger channel (Chat SDK webhook).      telegram: messengerChannel(        telegram({          /* adapter config */        }),      ),    };  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { Think, messengerChannel } from "@cloudflare/think";import { telegram } from "@chat-adapter/telegram";
-export class Assistant extends Think<Env> {  configureChannels() {    return {      // Override policy for the built-in web channel.      web: {        kind: "web",        ingress: { transport: "websocket" },        instructions: "You are chatting in a web app. Use markdown freely.",      },      // A voice channel with tighter limits.      voice: {        kind: "voice",        ingress: { transport: "voice" },        instructions: "Keep replies short and speakable. No markdown.",        maxTurns: 3,      },      // A messenger channel (Chat SDK webhook).      telegram: messengerChannel(        telegram({          /* adapter config */        }),      ),    };  }}
+```ts
+import { Think, messengerChannel } from "@cloudflare/think";
+import { telegram } from "@chat-adapter/telegram";
+
+
+export class Assistant extends Think<Env> {
+  configureChannels() {
+    return {
+      // Override policy for the built-in web channel.
+      web: {
+        kind: "web",
+        ingress: { transport: "websocket" },
+        instructions: "You are chatting in a web app. Use markdown freely.",
+      },
+      // A voice channel with tighter limits.
+      voice: {
+        kind: "voice",
+        ingress: { transport: "voice" },
+        instructions: "Keep replies short and speakable. No markdown.",
+        maxTurns: 3,
+      },
+      // A messenger channel (Chat SDK webhook).
+      telegram: messengerChannel(
+        telegram({
+          /* adapter config */
+        }),
+      ),
+    };
+  }
+}
 ```
 
 A `ChannelDefinition` has these fields:
@@ -77,19 +131,27 @@ Channel policy is applied as an **overridable default** before [beforeTurn](http
 
 Pass `channel` to [runTurn()](https://developers.cloudflare.com/agents/harnesses/think/#runturn) (or `chat()`) to run a turn on a specific channel. The channel id is stamped onto the user message, so a continued or recovered turn re-resolves the same channel and re-applies its policy:
 
-* [  JavaScript ](#tab-panel-5779)
-* [  TypeScript ](#tab-panel-5780)
+* [  JavaScript ](#tab-panel-5811)
+* [  TypeScript ](#tab-panel-5812)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Assistant extends Think {
+  async speak() {
+    await this.runTurn({ input: "Read this out loud", channel: "voice" });
+  }
+}
 ```
-export class Assistant extends Think {  async speak() {    await this.runTurn({ input: "Read this out loud", channel: "voice" });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class Assistant extends Think<Env> {  async speak() {    await this.runTurn({ input: "Read this out loud", channel: "voice" });  }}
+```ts
+export class Assistant extends Think<Env> {
+  async speak() {
+    await this.runTurn({ input: "Read this out loud", channel: "voice" });
+  }
+}
 ```
 
 Inside a turn, the active channel is available as `this.activeChannel` (a `ChannelContext` with `channelId`, `kind`, and messenger details when relevant). A turn with no `channel` runs without a channel context and applies no channel policy.
@@ -98,27 +160,48 @@ Inside a turn, the active channel is available as `this.activeChannel` (a `Chann
 
 `deliverNotice()` sends a message to a channel **without** starting a model turn. Use it for status updates ("your import finished") or to surface an action's [reply attachment](https://developers.cloudflare.com/agents/harnesses/think/actions/#reply-attachments) — it does not run inference, does not enter the turn queue, and is therefore safe to call from inside a tool's `execute`:
 
-* [  JavaScript ](#tab-panel-5781)
-* [  TypeScript ](#tab-panel-5782)
+* [  JavaScript ](#tab-panel-5813)
+* [  TypeScript ](#tab-panel-5814)
 
-JavaScript
+**JavaScript**
 
+```js
+export class Assistant extends Think {
+  async notify() {
+    await this.deliverNotice("Your export is ready to download.");
+
+
+    await this.deliverNotice("Background research finished.", {
+      informModel: true, // also record it in the transcript so the next turn knows
+    });
+  }
+}
 ```
-export class Assistant extends Think {  async notify() {    await this.deliverNotice("Your export is ready to download.");
-    await this.deliverNotice("Background research finished.", {      informModel: true, // also record it in the transcript so the next turn knows    });  }}
+
+**TypeScript**
+
+```ts
+export class Assistant extends Think<Env> {
+  async notify() {
+    await this.deliverNotice("Your export is ready to download.");
+
+
+    await this.deliverNotice("Background research finished.", {
+      informModel: true, // also record it in the transcript so the next turn knows
+    });
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
-export class Assistant extends Think<Env> {  async notify() {    await this.deliverNotice("Your export is ready to download.");
-    await this.deliverNotice("Background research finished.", {      informModel: true, // also record it in the transcript so the next turn knows    });  }}
-```
-
-TypeScript
-
-```
-type DeliverNoticeOptions = {  channel?: string; // defaults to the active turn's channel, else "web"  informModel?: boolean; // also write to the model-visible transcript (default false)  kind?: "final" | "interim" | "notice" | "command"; // wire tag (default "notice")  thread?: string; // required for out-of-turn delivery to a multi-thread messenger};
+```ts
+type DeliverNoticeOptions = {
+  channel?: string; // defaults to the active turn's channel, else "web"
+  informModel?: boolean; // also write to the model-visible transcript (default false)
+  kind?: "final" | "interim" | "notice" | "command"; // wire tag (default "notice")
+  thread?: string; // required for out-of-turn delivery to a multi-thread messenger
+};
 ```
 
 Behavior depends on the target channel:
@@ -137,21 +220,37 @@ Override `renderAttachment(attachment)` to turn an action reply attachment into 
 
 Channel activity is reported on the `channel` observability channel:
 
-* [  JavaScript ](#tab-panel-5783)
-* [  TypeScript ](#tab-panel-5784)
+* [  JavaScript ](#tab-panel-5815)
+* [  TypeScript ](#tab-panel-5816)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { subscribe } from "agents/observability";
-const unsubscribe = subscribe("channel", (event) => {  // event.type is one of:  //   "channel:resolved"  — a turn resolved a registered channel  //   "channel:delivered" — a turn's final reply was delivered  //   "notice:delivered"  — deliverNotice() succeeded  //   "notice:failed"     — deliverNotice() threw});
+
+
+const unsubscribe = subscribe("channel", (event) => {
+  // event.type is one of:
+  //   "channel:resolved"  — a turn resolved a registered channel
+  //   "channel:delivered" — a turn's final reply was delivered
+  //   "notice:delivered"  — deliverNotice() succeeded
+  //   "notice:failed"     — deliverNotice() threw
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { subscribe } from "agents/observability";
-const unsubscribe = subscribe("channel", (event) => {  // event.type is one of:  //   "channel:resolved"  — a turn resolved a registered channel  //   "channel:delivered" — a turn's final reply was delivered  //   "notice:delivered"  — deliverNotice() succeeded  //   "notice:failed"     — deliverNotice() threw});
+
+
+const unsubscribe = subscribe("channel", (event) => {
+  // event.type is one of:
+  //   "channel:resolved"  — a turn resolved a registered channel
+  //   "channel:delivered" — a turn's final reply was delivered
+  //   "notice:delivered"  — deliverNotice() succeeded
+  //   "notice:failed"     — deliverNotice() threw
+});
 ```
 
 ## Reference

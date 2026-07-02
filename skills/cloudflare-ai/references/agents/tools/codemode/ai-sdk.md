@@ -41,57 +41,141 @@ bun add @cloudflare/codemode agents ai zod
 ```
 2. Add a Worker Loader binding for `DynamicWorkerExecutor`:
 
-  * [  wrangler.jsonc ](#tab-panel-6571)
-  * [  wrangler.toml ](#tab-panel-6572)
-JSONC
+  * [  wrangler.jsonc ](#tab-panel-6767)
+  * [  wrangler.toml ](#tab-panel-6768)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "worker_loaders": [
+    {
+      "binding": "LOADER"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
-```
-TOML
-```
-# Set this to today's datecompatibility_date = "2026-06-24"compatibility_flags = ["nodejs_compat"]
-[[worker_loaders]]binding = "LOADER"
+
+**TOML**
+```toml
+# Set this to today's date
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+[[worker_loaders]]
+binding = "LOADER"
 ```
 3. Define executable AI SDK tools. Code Mode uses their schemas to generate types and validate arguments before calling `execute`.
 
-  * [  JavaScript ](#tab-panel-6575)
-  * [  TypeScript ](#tab-panel-6576)
-src/tools.js
+  * [  JavaScript ](#tab-panel-6771)
+  * [  TypeScript ](#tab-panel-6772)
+
+**src/tools.js**
+```js
+import { tool } from "ai";
+import { z } from "zod";
+export const weatherTools = {
+  getWeather: tool({
+    description: "Get the weather for a city",
+    inputSchema: z.object({
+      city: z.string().describe("City name"),
+    }),
+    outputSchema: z.object({
+      city: z.string(),
+      conditions: z.string(),
+    }),
+    execute: async ({ city }) => ({
+      city,
+      conditions: "sunny",
+    }),
+  }),
+};
 ```
-import { tool } from "ai";import { z } from "zod";
-export const weatherTools = {  getWeather: tool({    description: "Get the weather for a city",    inputSchema: z.object({      city: z.string().describe("City name"),    }),    outputSchema: z.object({      city: z.string(),      conditions: z.string(),    }),    execute: async ({ city }) => ({      city,      conditions: "sunny",    }),  }),};
-```
-src/tools.ts
-```
-import { tool } from "ai";import { z } from "zod";
-export const weatherTools = {  getWeather: tool({    description: "Get the weather for a city",    inputSchema: z.object({      city: z.string().describe("City name")    }),    outputSchema: z.object({      city: z.string(),      conditions: z.string()    }),    execute: async ({ city }) => ({      city,      conditions: "sunny"    })  })};
+
+**src/tools.ts**
+```ts
+import { tool } from "ai";
+import { z } from "zod";
+export const weatherTools = {
+  getWeather: tool({
+    description: "Get the weather for a city",
+    inputSchema: z.object({
+      city: z.string().describe("City name")
+    }),
+    outputSchema: z.object({
+      city: z.string(),
+      conditions: z.string()
+    }),
+    execute: async ({ city }) => ({
+      city,
+      conditions: "sunny"
+    })
+  })
+};
 ```
 Each sandbox-callable tool needs an `execute` function. Client-side or provider-executed tools cannot run through this server-side executor.
 4. Create the Code Mode tool and pass it to an AI SDK model call:
 
-  * [  JavaScript ](#tab-panel-6579)
-  * [  TypeScript ](#tab-panel-6580)
-src/index.js
+  * [  JavaScript ](#tab-panel-6775)
+  * [  TypeScript ](#tab-panel-6776)
+
+**src/index.js**
+```js
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { createCodeTool } from "@cloudflare/codemode/ai";
+import { generateText, stepCountIs } from "ai";
+import { model } from "./model";
+import { weatherTools } from "./tools";
+export default {
+  async fetch(request, env) {
+    const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+    const codemode = createCodeTool({ tools: weatherTools, executor });
+    const response = await generateText({
+      model,
+      prompt: await request.text(),
+      tools: { codemode },
+      stopWhen: stepCountIs(5),
+    });
+    return new Response(response.text);
+  },
+};
 ```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { createCodeTool } from "@cloudflare/codemode/ai";import { generateText, stepCountIs } from "ai";import { model } from "./model";import { weatherTools } from "./tools";
-export default {  async fetch(request, env) {    const executor = new DynamicWorkerExecutor({ loader: env.LOADER });    const codemode = createCodeTool({ tools: weatherTools, executor });
-    const response = await generateText({      model,      prompt: await request.text(),      tools: { codemode },      stopWhen: stepCountIs(5),    });
-    return new Response(response.text);  },};
-```
-src/index.ts
-```
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { createCodeTool } from "@cloudflare/codemode/ai";import { generateText, stepCountIs } from "ai";import { model } from "./model";import { weatherTools } from "./tools";
-export default {   async fetch(request, env): Promise<Response> {     const executor = new DynamicWorkerExecutor({ loader: env.LOADER });     const codemode = createCodeTool({ tools: weatherTools, executor });
-     const response = await generateText({       model,       prompt: await request.text(),       tools: { codemode },       stopWhen: stepCountIs(5),     });
-     return new Response(response.text);   },} satisfies ExportedHandler<Env>;
+
+**src/index.ts**
+```ts
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { createCodeTool } from "@cloudflare/codemode/ai";
+import { generateText, stepCountIs } from "ai";
+import { model } from "./model";
+import { weatherTools } from "./tools";
+export default {
+   async fetch(request, env): Promise<Response> {
+     const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+     const codemode = createCodeTool({ tools: weatherTools, executor });
+     const response = await generateText({
+       model,
+       prompt: await request.text(),
+       tools: { codemode },
+       stopWhen: stepCountIs(5),
+     });
+     return new Response(response.text);
+   },
+} satisfies ExportedHandler<Env>;
 ```
 
 The example uses `generateText()` for a completed response. You can pass the same `codemode` tool to `streamText()` for streaming. The generated tool description includes TypeScript definitions for `getWeather`. The model still writes JavaScript, such as:
 
-JavaScript
+**JavaScript**
 
-```
-async () => {  const weather = await codemode.getWeather({ city: "Lisbon" });  return weather.conditions;};
+```js
+async () => {
+  const weather = await codemode.getWeather({ city: "Lisbon" });
+  return weather.conditions;
+};
 ```
 
 The default namespace is `codemode`. `createCodeTool()` also accepts a custom `description`. Include `{{types}}` in that description where Code Mode should insert the generated definitions.
@@ -120,44 +204,92 @@ pnpm add @cloudflare/shell
 bun add @cloudflare/shell
 ```
 
-* [  JavaScript ](#tab-panel-6577)
-* [  TypeScript ](#tab-panel-6578)
+* [  JavaScript ](#tab-panel-6773)
+* [  TypeScript ](#tab-panel-6774)
 
-JavaScript
+**JavaScript**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { aiTools, createCodeTool } from "@cloudflare/codemode/ai";
+import { Workspace } from "@cloudflare/shell";
+import { stateTools } from "@cloudflare/shell/workers";
+import { weatherTools } from "./tools";
+
+
+export class Chat extends AIChatAgent {
+  workspace = new Workspace({ sql: this.ctx.storage.sql });
+
+
+  codemodeTool() {
+    return createCodeTool({
+      tools: [aiTools(weatherTools), stateTools(this.workspace)],
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+    });
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { aiTools, createCodeTool } from "@cloudflare/codemode/ai";import { Workspace } from "@cloudflare/shell";import { stateTools } from "@cloudflare/shell/workers";import { weatherTools } from "./tools";
-export class Chat extends AIChatAgent {  workspace = new Workspace({ sql: this.ctx.storage.sql });
-  codemodeTool() {    return createCodeTool({      tools: [aiTools(weatherTools), stateTools(this.workspace)],      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),    });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import { DynamicWorkerExecutor } from "@cloudflare/codemode";import { aiTools, createCodeTool } from "@cloudflare/codemode/ai";import { Workspace } from "@cloudflare/shell";import { stateTools } from "@cloudflare/shell/workers";import { weatherTools } from "./tools";
-export class Chat extends AIChatAgent<Env> {  workspace = new Workspace({ sql: this.ctx.storage.sql });
-  codemodeTool() {    return createCodeTool({      tools: [aiTools(weatherTools), stateTools(this.workspace)],      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),    });  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+import { aiTools, createCodeTool } from "@cloudflare/codemode/ai";
+import { Workspace } from "@cloudflare/shell";
+import { stateTools } from "@cloudflare/shell/workers";
+import { weatherTools } from "./tools";
+
+
+export class Chat extends AIChatAgent<Env> {
+  workspace = new Workspace({ sql: this.ctx.storage.sql });
+
+
+  codemodeTool() {
+    return createCodeTool({
+      tools: [aiTools(weatherTools), stateTools(this.workspace)],
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+    });
+  }
+}
 ```
 
 This example exposes AI SDK tools as `codemode.*` and workspace tools as `state.*`.
 
 To assign custom namespaces, pass provider objects instead:
 
-* [  JavaScript ](#tab-panel-6573)
-* [  TypeScript ](#tab-panel-6574)
+* [  JavaScript ](#tab-panel-6769)
+* [  TypeScript ](#tab-panel-6770)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
-const codemode = createCodeTool({  tools: [    { name: "weather", tools: weatherTools },    { name: "notifications", tools: notificationTools },  ],  executor,});
+
+
+const codemode = createCodeTool({
+  tools: [
+    { name: "weather", tools: weatherTools },
+    { name: "notifications", tools: notificationTools },
+  ],
+  executor,
+});
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
-const codemode = createCodeTool({  tools: [    { name: "weather", tools: weatherTools },    { name: "notifications", tools: notificationTools },  ],  executor,});
+
+
+const codemode = createCodeTool({
+  tools: [
+    { name: "weather", tools: weatherTools },
+    { name: "notifications", tools: notificationTools },
+  ],
+  executor,
+});
 ```
 
 The generated code can then call `weather.getWeather()` and `notifications.send()`. Provider names must be unique, valid JavaScript identifiers.
@@ -168,29 +300,99 @@ Use `ToolSetConnector` or its `toolSetConnector()` convenience function when run
 
 Create the connector from inside an Agent or another Durable Object:
 
-* [  JavaScript ](#tab-panel-6581)
-* [  TypeScript ](#tab-panel-6582)
+* [  JavaScript ](#tab-panel-6777)
+* [  TypeScript ](#tab-panel-6778)
 
-src/server.js
+**src/server.js**
 
+```js
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+import { toolSetConnector } from "@cloudflare/codemode/ai";
+import { convertToModelMessages, streamText } from "ai";
+import { model } from "./model";
+import { operationTools } from "./tools";
+
+
+// Export this manually when the @cloudflare/codemode/vite plugin is not configured.
+export { CodemodeRuntime } from "@cloudflare/codemode";
+
+
+export class OperationsAgent extends AIChatAgent {
+  async onChatMessage() {
+    const operations = toolSetConnector(this.ctx, {
+      name: "operations",
+      instructions: "Use these tools to manage customer requests.",
+      tools: operationTools,
+    });
+
+
+    const runtime = createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [operations],
+    });
+
+
+    const result = streamText({
+      model,
+      messages: await convertToModelMessages(this.messages),
+      tools: { codemode: runtime.tool() },
+    });
+
+
+    return result.toUIMessageStreamResponse();
+  }
+}
 ```
-import { AIChatAgent } from "@cloudflare/ai-chat";import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { toolSetConnector } from "@cloudflare/codemode/ai";import { convertToModelMessages, streamText } from "ai";import { model } from "./model";import { operationTools } from "./tools";
-// Export this manually when the @cloudflare/codemode/vite plugin is not configured.export { CodemodeRuntime } from "@cloudflare/codemode";
-export class OperationsAgent extends AIChatAgent {  async onChatMessage() {    const operations = toolSetConnector(this.ctx, {      name: "operations",      instructions: "Use these tools to manage customer requests.",      tools: operationTools,    });
-    const runtime = createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [operations],    });
-    const result = streamText({      model,      messages: await convertToModelMessages(this.messages),      tools: { codemode: runtime.tool() },    });
-    return result.toUIMessageStreamResponse();  }}
-```
 
-src/server.ts
+**src/server.ts**
 
-```
-import { AIChatAgent } from "@cloudflare/ai-chat";import {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { toolSetConnector } from "@cloudflare/codemode/ai";import { convertToModelMessages, streamText } from "ai";import { model } from "./model";import { operationTools } from "./tools";
-// Export this manually when the @cloudflare/codemode/vite plugin is not configured.export { CodemodeRuntime } from "@cloudflare/codemode";
-export class OperationsAgent extends AIChatAgent<Env> {  async onChatMessage() {    const operations = toolSetConnector(this.ctx, {      name: "operations",      instructions: "Use these tools to manage customer requests.",      tools: operationTools,    });
-    const runtime = createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [operations],    });
-    const result = streamText({      model,      messages: await convertToModelMessages(this.messages),      tools: { codemode: runtime.tool() },    });
-    return result.toUIMessageStreamResponse();  }}
+```ts
+import { AIChatAgent } from "@cloudflare/ai-chat";
+import {
+  createCodemodeRuntime,
+  DynamicWorkerExecutor,
+} from "@cloudflare/codemode";
+import { toolSetConnector } from "@cloudflare/codemode/ai";
+import { convertToModelMessages, streamText } from "ai";
+import { model } from "./model";
+import { operationTools } from "./tools";
+
+
+// Export this manually when the @cloudflare/codemode/vite plugin is not configured.
+export { CodemodeRuntime } from "@cloudflare/codemode";
+
+
+export class OperationsAgent extends AIChatAgent<Env> {
+  async onChatMessage() {
+    const operations = toolSetConnector(this.ctx, {
+      name: "operations",
+      instructions: "Use these tools to manage customer requests.",
+      tools: operationTools,
+    });
+
+
+    const runtime = createCodemodeRuntime({
+      ctx: this.ctx,
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+      connectors: [operations],
+    });
+
+
+    const result = streamText({
+      model,
+      messages: await convertToModelMessages(this.messages),
+      tools: { codemode: runtime.tool() },
+    });
+
+
+    return result.toUIMessageStreamResponse();
+  }
+}
 ```
 
 The example exports `CodemodeRuntime` manually. If you configure the Code Mode Vite plugin as described in [Create a durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/), remove that manual export because the plugin adds it.

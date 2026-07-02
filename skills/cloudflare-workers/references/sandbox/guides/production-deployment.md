@@ -55,20 +55,40 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10611)
-* [  wrangler.toml ](#tab-panel-10612)
+* [  wrangler.jsonc ](#tab-panel-10906)
+* [  wrangler.toml ](#tab-panel-10907)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-sandbox-app",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-07-01",
+  "routes": [
+    {
+      "pattern": "*.yourdomain.com/*",
+      "zone_name": "yourdomain.com"
+    }
+  ]
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-sandbox-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "routes": [    {      "pattern": "*.yourdomain.com/*",      "zone_name": "yourdomain.com"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-sandbox-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-24"
-[[routes]]pattern = "*.yourdomain.com/*"zone_name = "yourdomain.com"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "my-sandbox-app"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-07-01"
+
+
+[[routes]]
+pattern = "*.yourdomain.com/*"
+zone_name = "yourdomain.com"
 ```
 
 Replace `yourdomain.com` with your actual domain. This routes all subdomain requests to your Worker and enables Cloudflare to provision SSL certificates automatically.
@@ -77,9 +97,7 @@ Replace `yourdomain.com` with your actual domain. This routes all subdomain requ
 
 Deploy your Worker:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 
@@ -87,12 +105,20 @@ npx wrangler deploy
 
 Test that preview URLs work:
 
-TypeScript
+**TypeScript**
 
-```
-// Extract hostname from requestconst { hostname } = new URL(request.url);
-const sandbox = getSandbox(env.Sandbox, 'test-sandbox');await sandbox.startProcess('python -m http.server 8080');const exposed = await sandbox.exposePort(8080, { hostname });
-console.log(exposed.url);// https://8080-test-sandbox.yourdomain.com
+```typescript
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+
+const sandbox = getSandbox(env.Sandbox, 'test-sandbox');
+await sandbox.startProcess('python -m http.server 8080');
+const exposed = await sandbox.exposePort(8080, { hostname });
+
+
+console.log(exposed.url);
+// https://8080-test-sandbox.yourdomain.com
 ```
 
 Visit the URL in your browser to confirm your service is accessible.

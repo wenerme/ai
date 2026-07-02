@@ -27,19 +27,24 @@ A confirmation modal.
 
 ### Basic Usage
 
-```
+```html
 <rtk-overlay-modal></rtk-overlay-modal>
 ```
 
 ### With Properties
 
-```
-<rtk-overlay-modal></rtk-overlay-modal>
+```html
+<rtk-overlay-modal>
+</rtk-overlay-modal>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-overlay-modal");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-overlay-modal");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

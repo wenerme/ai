@@ -51,14 +51,69 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "<MANAGED_RULESET_ID_1>"            },            "expression": "true"        },        {            "action": "execute",            "action_parameters": {                "id": "<MANAGED_RULESET_ID_2>"            },            "expression": "true"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID_1>"
+            },
+            "expression": "true"
+        },
+        {
+            "action": "execute",
+            "action_parameters": {
+                "id": "<MANAGED_RULESET_ID_2>"
+            },
+            "expression": "true"
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Default",    "description": "",    "kind": "zone",    "version": "1",    "rules": [      {        "id": "<RULE_ID_1>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID_1>"        },        "last_updated": "2021-06-17T15:42:37.917815Z"      },      {        "id": "<RULE_ID_2>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID_2>"        },        "last_updated": "2021-06-17T15:42:37.917815Z"      }    ],    "last_updated": "2021-06-17T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Default",
+    "description": "",
+    "kind": "zone",
+    "version": "1",
+    "rules": [
+      {
+        "id": "<RULE_ID_1>",
+        "version": "1",
+        "action": "execute",
+        "expression": "true",
+        "action_parameters": {
+          "id": "<MANAGED_RULESET_ID_1>"
+        },
+        "last_updated": "2021-06-17T15:42:37.917815Z"
+      },
+      {
+        "id": "<RULE_ID_2>",
+        "version": "1",
+        "action": "execute",
+        "expression": "true",
+        "action_parameters": {
+          "id": "<MANAGED_RULESET_ID_2>"
+        },
+        "last_updated": "2021-06-17T15:42:37.917815Z"
+      }
+    ],
+    "last_updated": "2021-06-17T15:42:37.917815Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ## Example: Add a single rule to a phase entry point ruleset at the zone level
@@ -90,14 +145,58 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Create a zone ruleset rule
+**Create a zone ruleset rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "<MANAGED_RULESET_ID>"    },    "expression": "true"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "execute",
+    "action_parameters": {
+        "id": "<MANAGED_RULESET_ID>"
+    },
+    "expression": "true"
+  }'
 ```
 
-```
-{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point ruleset",    "description": "",    "kind": "root",    "version": "2",    "rules": [      {        "id": "<EXISTING_RULE_ID>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<ANOTHER_MANAGED_RULESET_ID>"        },        "last_updated": "2021-03-17T15:42:37.917815Z"      },      {        "id": "<NEW_RULE_ID>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>"        },        "last_updated": "2021-06-30T15:42:37.917815Z"      }    ],    "last_updated": "2021-06-30T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<RULESET_ID>",
+    "name": "Zone-level phase entry point ruleset",
+    "description": "",
+    "kind": "root",
+    "version": "2",
+    "rules": [
+      {
+        "id": "<EXISTING_RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "expression": "true",
+        "action_parameters": {
+          "id": "<ANOTHER_MANAGED_RULESET_ID>"
+        },
+        "last_updated": "2021-03-17T15:42:37.917815Z"
+      },
+      {
+        "id": "<NEW_RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "expression": "true",
+        "action_parameters": {
+          "id": "<MANAGED_RULESET_ID>"
+        },
+        "last_updated": "2021-06-30T15:42:37.917815Z"
+      }
+    ],
+    "last_updated": "2021-06-30T15:42:37.917815Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ```json

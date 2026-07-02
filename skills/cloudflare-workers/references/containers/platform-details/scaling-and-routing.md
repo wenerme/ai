@@ -20,11 +20,20 @@ This section uses helpers from the [Container class](https://developers.cloudfla
 
 Today, Containers are scaled manually by getting containers with a unique ID, then starting the container. Note that getting a container does not automatically start it.
 
-TypeScript
+**TypeScript**
 
-```
-// get and start two container instancesconst containerOne = getContainer(  env.MY_CONTAINER,  idOne,).startAndWaitForPorts();
-const containerTwo = getContainer(  env.MY_CONTAINER,  idTwo,).startAndWaitForPorts();
+```typescript
+// get and start two container instances
+const containerOne = getContainer(
+  env.MY_CONTAINER,
+  idOne,
+).startAndWaitForPorts();
+
+
+const containerTwo = getContainer(
+  env.MY_CONTAINER,
+  idTwo,
+).startAndWaitForPorts();
 ```
 
 Each instance will run until its `sleepAfter` time has elapsed, or until it is manually stopped.
@@ -35,13 +44,27 @@ This behavior is very useful when you want explicit control over the lifecycle o
 
 If you want to run multiple instances of a container and route requests between them, use the `getRandom` helper function:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 import { Container, getRandom } from "@cloudflare/containers";
+
+
 const INSTANCE_COUNT = 3;
-class Backend extends Container {  defaultPort = 8080;  sleepAfter = "2h";}
-export default {  async fetch(request: Request, env: Env): Promise<Response> {    const containerInstance = await getRandom(env.BACKEND, INSTANCE_COUNT);    return containerInstance.fetch(request);  },};
+
+
+class Backend extends Container {
+  defaultPort = 8080;
+  sleepAfter = "2h";
+}
+
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const containerInstance = await getRandom(env.BACKEND, INSTANCE_COUNT);
+    return containerInstance.fetch(request);
+  },
+};
 ```
 
 Use `getRandom` to route to multiple stateless container instances. It randomly selects one of N instances for each request, which means:

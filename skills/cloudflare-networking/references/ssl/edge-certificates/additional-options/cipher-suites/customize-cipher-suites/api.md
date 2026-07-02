@@ -43,28 +43,39 @@ Below you will find samples covering the recommended ciphers [by security level]
 3. Get the Zone ID from the [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/) of the domain you want to specify cipher suites for.
 4. Make an API call to either the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint or the [Edit TLS setting for hostname](https://developers.cloudflare.com/api/resources/hostnames/subresources/settings/subresources/tls/methods/update/) endpoint, specifying `ciphers` in the URL. List your array of chosen cipher suites in the `value` field.
 
-* [ modern ](#tab-panel-10712)
-* [ compatible ](#tab-panel-10713)
-* [ pci dss ](#tab-panel-10714)
-* [ fips-140-3 ](#tab-panel-10715)
+* [ modern ](#tab-panel-11007)
+* [ compatible ](#tab-panel-11008)
+* [ pci dss ](#tab-panel-11009)
+* [ fips-140-3 ](#tab-panel-11010)
 
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": [        "ECDHE-ECDSA-AES128-GCM-SHA256",        "ECDHE-ECDSA-CHACHA20-POLY1305",        "ECDHE-RSA-AES128-GCM-SHA256",        "ECDHE-RSA-CHACHA20-POLY1305",        "ECDHE-ECDSA-AES256-GCM-SHA384",        "ECDHE-RSA-AES256-GCM-SHA384"    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": [
+        "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "ECDHE-ECDSA-CHACHA20-POLY1305",
+        "ECDHE-RSA-AES128-GCM-SHA256",
+        "ECDHE-RSA-CHACHA20-POLY1305",
+        "ECDHE-ECDSA-AES256-GCM-SHA384",
+        "ECDHE-RSA-AES256-GCM-SHA384"
+    ]
+  }'
 ```
 
 To configure cipher suites per hostname, replace the first two lines by the following:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
 ```
 
 Required API token permissions
@@ -72,18 +83,33 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": [        "ECDHE-ECDSA-AES128-GCM-SHA256",        "ECDHE-ECDSA-CHACHA20-POLY1305",        "ECDHE-RSA-AES128-GCM-SHA256",        "ECDHE-RSA-CHACHA20-POLY1305",        "ECDHE-ECDSA-AES256-GCM-SHA384",        "ECDHE-RSA-AES256-GCM-SHA384",        "ECDHE-ECDSA-AES128-SHA256",        "ECDHE-RSA-AES128-SHA256",        "ECDHE-ECDSA-AES256-SHA384",        "ECDHE-RSA-AES256-SHA384"    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": [
+        "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "ECDHE-ECDSA-CHACHA20-POLY1305",
+        "ECDHE-RSA-AES128-GCM-SHA256",
+        "ECDHE-RSA-CHACHA20-POLY1305",
+        "ECDHE-ECDSA-AES256-GCM-SHA384",
+        "ECDHE-RSA-AES256-GCM-SHA384",
+        "ECDHE-ECDSA-AES128-SHA256",
+        "ECDHE-RSA-AES128-SHA256",
+        "ECDHE-ECDSA-AES256-SHA384",
+        "ECDHE-RSA-AES256-SHA384"
+    ]
+  }'
 ```
 
 To configure cipher suites per hostname, replace the first two lines by the following:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
 ```
 
 Note
@@ -95,18 +121,29 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": [        "ECDHE-ECDSA-AES128-GCM-SHA256",        "ECDHE-RSA-AES128-GCM-SHA256",        "ECDHE-ECDSA-AES256-GCM-SHA384",        "ECDHE-RSA-AES256-GCM-SHA384",        "ECDHE-ECDSA-CHACHA20-POLY1305",        "ECDHE-RSA-CHACHA20-POLY1305"    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": [
+        "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "ECDHE-RSA-AES128-GCM-SHA256",
+        "ECDHE-ECDSA-AES256-GCM-SHA384",
+        "ECDHE-RSA-AES256-GCM-SHA384",
+        "ECDHE-ECDSA-CHACHA20-POLY1305",
+        "ECDHE-RSA-CHACHA20-POLY1305"
+    ]
+  }'
 ```
 
 To configure cipher suites per hostname, replace the first two lines by the following:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
 ```
 
 Required API token permissions
@@ -114,24 +151,46 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": [        "AES128-GCM-SHA256",        "AES128-SHA",        "AES128-SHA256",        "AES256-SHA",        "AES256-SHA256",        "DES-CBC3-SHA",        "ECDHE-ECDSA-AES128-GCM-SHA256",        "ECDHE-ECDSA-AES128-SHA",        "ECDHE-ECDSA-AES128-SHA256",        "ECDHE-ECDSA-AES256-GCM-SHA384",        "ECDHE-ECDSA-AES256-SHA384",        "ECDHE-RSA-AES128-GCM-SHA256",        "ECDHE-RSA-AES128-SHA",        "ECDHE-RSA-AES128-SHA256",        "ECDHE-RSA-AES256-GCM-SHA384",        "ECDHE-RSA-AES256-SHA",        "ECDHE-RSA-AES256-SHA384"    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": [
+        "AES128-GCM-SHA256",
+        "AES128-SHA",
+        "AES128-SHA256",
+        "AES256-SHA",
+        "AES256-SHA256",
+        "DES-CBC3-SHA",
+        "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "ECDHE-ECDSA-AES128-SHA",
+        "ECDHE-ECDSA-AES128-SHA256",
+        "ECDHE-ECDSA-AES256-GCM-SHA384",
+        "ECDHE-ECDSA-AES256-SHA384",
+        "ECDHE-RSA-AES128-GCM-SHA256",
+        "ECDHE-RSA-AES128-SHA",
+        "ECDHE-RSA-AES128-SHA256",
+        "ECDHE-RSA-AES256-GCM-SHA384",
+        "ECDHE-RSA-AES256-SHA",
+        "ECDHE-RSA-AES256-SHA384"
+    ]
+  }'
 ```
 
 To configure cipher suites per hostname, replace the first two lines by the following:
 
-Terminal window
-
-```
-curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
+```bash
+curl --request PUT \
+"https://api.cloudflare.com/client/v4/zones/{zone_id}/hostnames/settings/ciphers/{hostname}" \
 ```
 
 ### Reset to default values
 
-* [ zone ](#tab-panel-10710)
-* [ per-hostname ](#tab-panel-10711)
+* [ zone ](#tab-panel-11005)
+* [ per-hostname ](#tab-panel-11006)
 
 To reset to the default cipher suites at zone level, use the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint, specifying `ciphers` as the setting name in the URL, and send an empty array in the `value` field.
 
@@ -140,10 +199,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": []  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": []
+  }'
 ```
 
 For specific hostname settings, use the [Delete TLS setting for hostname](https://developers.cloudflare.com/api/resources/hostnames/subresources/settings/subresources/tls/methods/delete/) endpoint.
@@ -153,10 +217,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-Delete TLS setting for hostname
+**Delete TLS setting for hostname**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/ciphers/$HOSTNAME" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/ciphers/$HOSTNAME" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 For guidance around custom hostnames, refer to [TLS settings - Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#cipher-suites).

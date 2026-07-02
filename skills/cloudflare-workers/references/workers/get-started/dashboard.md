@@ -40,21 +40,28 @@ To get started with a new Workers application:
 
 Applications started in the dashboard are set up with Git to help kickstart your development workflow. To continue developing on your repository, you can run:
 
-Terminal window
+```bash
+# clone your repository locally
+git clone <git repo URL>
 
-```
-# clone your repository locallygit clone <git repo URL>
-# make sure you are in the root directorycd <directory>
+
+# make sure you are in the root directory
+cd <directory>
 ```
 
 Now, you can preview and test your changes by [running Wrangler in your local development environment](https://developers.cloudflare.com/workers/local-development/). Once you are ready to deploy you can run:
 
-Terminal window
+```bash
+# adds the files to git tracking
+git add .
 
-```
-# adds the files to git trackinggit add .
-# commits the changesgit commit -m "your message"
-# push the changes to your Git providergit push origin main
+
+# commits the changes
+git commit -m "your message"
+
+
+# push the changes to your Git provider
+git push origin main
 ```
 
 To do more:

@@ -46,8 +46,8 @@ API token configuration
 
 ## 1\. Set up your internal DNS zone
 
-* [ Dashboard ](#tab-panel-8159)
-* [ API ](#tab-panel-8160)
+* [ Dashboard ](#tab-panel-8440)
+* [ API ](#tab-panel-8441)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -93,10 +93,19 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
-Create Zone
+**Create Zone**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "account": {        "id": "<ACCOUNT_ID>"    },    "name": "<ZONE_NAME>",    "type": "internal"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "account": {
+        "id": "<ACCOUNT_ID>"
+    },
+    "name": "<ZONE_NAME>",
+    "type": "internal"
+  }'
 ```
 
 1. Add DNS records to your internal zone using your preferred option:
@@ -110,8 +119,8 @@ During an [internal DNS query resolution](https://developers.cloudflare.com/dns/
 
 For details, refer to [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
-* [ Dashboard ](#tab-panel-8161)
-* [ API ](#tab-panel-8162)
+* [ Dashboard ](#tab-panel-8442)
+* [ API ](#tab-panel-8443)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -130,18 +139,25 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone DNS Settings Write`
 * `DNS Write`
 
-Update DNS Settings
+**Update DNS Settings**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "internal_dns": {        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "internal_dns": {
+        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"
+    }
+  }'
 ```
 
 ## 2\. Link your internal zone to a view
 
 Since the resolver policy will require a [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to internal zones.
 
-* [ Dashboard ](#tab-panel-8157)
-* [ API ](#tab-panel-8158)
+* [ Dashboard ](#tab-panel-8438)
+* [ API ](#tab-panel-8439)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -180,8 +196,8 @@ The Gateway configuration must exist within the same Cloudflare account where th
 
 Besides selecting an internal DNS view when setting up your resolver policies, you can also enable the **fallback through public DNS** option.
 
-* [ Dashboard ](#tab-panel-8155)
-* [ API ](#tab-panel-8156)
+* [ Dashboard ](#tab-panel-8436)
+* [ API ](#tab-panel-8437)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.

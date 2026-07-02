@@ -24,20 +24,32 @@ A themed label that uses design token colors and fonts from the RTK Design Syste
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let label = RtkLabel()label.text = "Meeting Room"view.addSubview(label)
+
+
+let label = RtkLabel()
+label.text = "Meeting Room"
+view.addSubview(label)
 ```
 
 ### With custom appearance
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let appearance = RtkTextAppearance(    font: UIFont.systemFont(ofSize: 16, weight: .semibold),    textColor: .white)let label = RtkLabel(appearance: appearance)label.text = "Meeting Room"view.addSubview(label)
+
+
+let appearance = RtkTextAppearance(
+    font: UIFont.systemFont(ofSize: 16, weight: .semibold),
+    textColor: .white
+)
+let label = RtkLabel(appearance: appearance)
+label.text = "Meeting Room"
+view.addSubview(label)
 ```
 
 ```json

@@ -25,20 +25,33 @@ A label that displays the elapsed meeting time in `HH:MM:SS` format. Updates eve
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let clockView = RtkClockView(meeting: rtkClient)view.addSubview(clockView)
+
+
+let clockView = RtkClockView(meeting: rtkClient)
+view.addSubview(clockView)
 ```
 
 ### With custom appearance
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let appearance = RtkTextAppearance(    font: UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular),    textColor: .white)let clockView = RtkClockView(    meeting: rtkClient,    appearance: appearance)view.addSubview(clockView)
+
+
+let appearance = RtkTextAppearance(
+    font: UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular),
+    textColor: .white
+)
+let clockView = RtkClockView(
+    meeting: rtkClient,
+    appearance: appearance
+)
+view.addSubview(clockView)
 ```
 
 ```json

@@ -50,13 +50,33 @@ To generate a sample root CA for testing, refer to [Generate mTLS certificates](
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Account: SSL and Certificates Write`
-Upload mTLS certificate
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mtls_certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "example_ca_cert",    "certificates": "-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----",    "private_key": "-----BEGIN PRIVATE KEY-----\nXXXXX\n-----END PRIVATE KEY-----",    "ca": true  }'
+
+**Upload mTLS certificate**
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mtls_certificates" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "example_ca_cert",
+    "certificates": "-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nXXXXX\n-----END PRIVATE KEY-----",
+    "ca": true
+  }'
 ```
 The response will return a UUID for the certificate. For example:
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",    "name": "example_ca_cert",    "issuer": "O=Example Inc.,L=California,ST=San Francisco,C=US",    "signature": "SHA256WithRSA",    ...  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+    "name": "example_ca_cert",
+    "issuer": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+    "signature": "SHA256WithRSA",
+    ...
+  }
+}
 ```
 2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
@@ -89,61 +109,97 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-7489)
-* [ macOS ](#tab-panel-7490)
-* [ Linux ](#tab-panel-7491)
+* [ Windows ](#tab-panel-7739)
+* [ macOS ](#tab-panel-7740)
+* [ Linux ](#tab-panel-7741)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Get-ChildItem Cert:\LocalMachine\My\ | where{$_.Subject -like "*<COMMON_NAME>*"}
 ```
 
 1. To search the user trust store for a certificate with a specific common name, run the following command:
 
-PowerShell
+**PowerShell**
 
-```
+```powershell
 Get-ChildItem Cert:\CurrentUser\My\ | where{$_.Subject -like "*<COMMON_NAME>*"}
 ```
 
 1. Open Terminal.
 2. To search System Keychain for a certificate with a specific common name, run the following command:
 
-Terminal window
-
-```
+```sh
 /usr/bin/security find-certificate -c "<COMMON_NAME>" -p /Library/Keychains/System.keychain
 ```
 
 1. Open Terminal.
 2. To list all client certificates in NSSDB, run the following command:
 
-Terminal window
-
-```
+```sh
 certutil -L -d /etc/pki/nssdb
 ```
 
-```
-Certificate Nickname                                         Trust Attributes                                                             SSL,S/MIME,JAR/XPI
-meow                                                         CTu,Cu,CunoPrivateKey                                                 CT,,
+```sh
+Certificate Nickname                                         Trust Attributes
+                                                             SSL,S/MIME,JAR/XPI
+
+
+meow                                                         CTu,Cu,Cu
+noPrivateKey                                                 CT,,
 ```
 
 1. Open your desired certificate using its certificate nickname. The common name will appear in the line `Subject: "CN=123456.mycompany"`.
 
-Terminal window
-
-```
+```sh
 certutil -L -d /etc/pki/nssdb -n meow
 ```
 
-```
-Certificate:    Data:        Version: 3 (0x2)        Serial Number: 236 (0xec)        Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption        Issuer: "CN=123456.mycompany"        Validity:            Not Before: Tue Jul 02 17:20:40 2024            Not After : Sun Jul 02 17:20:40 2034        Subject: "CN=123456.mycompany"        Subject Public Key Info:            Public Key Algorithm: PKCS #1 RSA Encryption            RSA Public Key:                Modulus:                    <redacted>                Exponent: 65537 (0x10001)    Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption    Signature:        <redacted>    Fingerprint (SHA-256):        <redacted>    Fingerprint (SHA1):        <redacted>
-    Mozilla-CA-Policy: false (attribute missing)    Certificate Trust Flags:        SSL Flags:            Valid CA            Trusted CA            User            Trusted Client CA        Email Flags:            Valid CA            Trusted CA            User        Object Signing Flags:            Valid CA            Trusted CA            User
+```sh
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 236 (0xec)
+        Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption
+        Issuer: "CN=123456.mycompany"
+        Validity:
+            Not Before: Tue Jul 02 17:20:40 2024
+            Not After : Sun Jul 02 17:20:40 2034
+        Subject: "CN=123456.mycompany"
+        Subject Public Key Info:
+            Public Key Algorithm: PKCS #1 RSA Encryption
+            RSA Public Key:
+                Modulus:
+                    <redacted>
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption
+    Signature:
+        <redacted>
+    Fingerprint (SHA-256):
+        <redacted>
+    Fingerprint (SHA1):
+        <redacted>
+
+
+    Mozilla-CA-Policy: false (attribute missing)
+    Certificate Trust Flags:
+        SSL Flags:
+            Valid CA
+            Trusted CA
+            User
+            Trusted Client CA
+        Email Flags:
+            Valid CA
+            Trusted CA
+            User
+        Object Signing Flags:
+            Valid CA
+            Trusted CA
+            User
 ```
 
 For the posture check to pass, a certificate must appear in the output that validates against the uploaded signing certificate.

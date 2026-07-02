@@ -18,8 +18,9 @@ These steps configure 1.1.1.1 as the DNS resolver for an Azure Virtual Network (
 2. From the Azure portal side menu, select **Virtual Networks**.
 3. Select the virtual network you want to configure.
 4. Select **DNS Servers** \> **Custom**, and add two entries:
-```
-1.1.1.11.0.0.1
+```txt
+1.1.1.1
+1.0.0.1
 ```
 5. Select **Save**.
 

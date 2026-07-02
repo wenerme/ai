@@ -18,116 +18,227 @@ Email Service lets you specify recipients in several ways — multiple recipient
 
 ## Multiple recipients
 
-* [ Workers ](#tab-panel-8574)
-* [ API ](#tab-panel-8575)
-* [ SMTP ](#tab-panel-8576)
+* [ Workers ](#tab-panel-8865)
+* [ API ](#tab-panel-8866)
+* [ SMTP ](#tab-panel-8867)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.EMAIL.send({
+  to: ["user1@example.com", "user2@example.com", "user3@example.com"],
+  from: { email: "newsletter@yourdomain.com", name: "Newsletter Team" },
+  subject: "Monthly Newsletter",
+  html: "<h1>This month's updates</h1>",
+  text: "This month's updates",
+});
 ```
-const response = await env.EMAIL.send({  to: ["user1@example.com", "user2@example.com", "user3@example.com"],  from: { email: "newsletter@yourdomain.com", name: "Newsletter Team" },  subject: "Monthly Newsletter",  html: "<h1>This month's updates</h1>",  text: "This month's updates",});
-```
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": ["user1@example.com", "user2@example.com"],    "from": { "address": "newsletter@yourdomain.com", "name": "Newsletter Team" },    "subject": "Monthly Newsletter",    "html": "<h1>This month'\''s updates</h1>",    "text": "This month'\''s updates"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": ["user1@example.com", "user2@example.com"],
+    "from": { "address": "newsletter@yourdomain.com", "name": "Newsletter Team" },
+    "subject": "Monthly Newsletter",
+    "html": "<h1>This month'\''s updates</h1>",
+    "text": "This month'\''s updates"
+  }'
 ```
 
 List every recipient in the `To` header and pass one `--mail-rcpt` flag per address.
 
-Terminal window
+```sh
+cat > mail.txt <<EOF
+From: Newsletter Team <newsletter@yourdomain.com>
+To: user1@example.com, user2@example.com
+Subject: Monthly Newsletter
 
-```
-cat > mail.txt <<EOFFrom: Newsletter Team <newsletter@yourdomain.com>To: user1@example.com, user2@example.comSubject: Monthly Newsletter
-This month's updatesEOF
-curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "newsletter@yourdomain.com" \  --mail-rcpt "user1@example.com" \  --mail-rcpt "user2@example.com" \  --upload-file mail.txt
+
+This month's updates
+EOF
+
+
+curl --ssl-reqd \
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+  --user "api_token:<API_TOKEN>" \
+  --mail-from "newsletter@yourdomain.com" \
+  --mail-rcpt "user1@example.com" \
+  --mail-rcpt "user2@example.com" \
+  --upload-file mail.txt
 ```
 
 ## CC and BCC
 
-* [ Workers ](#tab-panel-8577)
-* [ API ](#tab-panel-8578)
-* [ SMTP ](#tab-panel-8579)
+* [ Workers ](#tab-panel-8868)
+* [ API ](#tab-panel-8869)
+* [ SMTP ](#tab-panel-8870)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.EMAIL.send({
+  to: "customer@example.com",
+  cc: ["manager@example.com"],
+  bcc: ["archive@example.com"],
+  from: "orders@yourdomain.com",
+  replyTo: "support@yourdomain.com",
+  subject: "Order Confirmation #12345",
+  html: "<h1>Your order is confirmed</h1>",
+  text: "Your order is confirmed",
+});
 ```
-const response = await env.EMAIL.send({  to: "customer@example.com",  cc: ["manager@example.com"],  bcc: ["archive@example.com"],  from: "orders@yourdomain.com",  replyTo: "support@yourdomain.com",  subject: "Order Confirmation #12345",  html: "<h1>Your order is confirmed</h1>",  text: "Your order is confirmed",});
-```
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "customer@example.com",    "cc": ["manager@example.com"],    "bcc": ["archive@example.com"],    "from": "orders@yourdomain.com",    "reply_to": "support@yourdomain.com",    "subject": "Order Confirmation #12345",    "html": "<h1>Your order is confirmed</h1>",    "text": "Your order is confirmed"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": "customer@example.com",
+    "cc": ["manager@example.com"],
+    "bcc": ["archive@example.com"],
+    "from": "orders@yourdomain.com",
+    "reply_to": "support@yourdomain.com",
+    "subject": "Order Confirmation #12345",
+    "html": "<h1>Your order is confirmed</h1>",
+    "text": "Your order is confirmed"
+  }'
 ```
 
 Add a `Cc` header for CC recipients. BCC recipients are added as `--mail-rcpt` flags but omitted from the headers.
 
-Terminal window
+```sh
+cat > mail.txt <<EOF
+From: orders@yourdomain.com
+To: customer@example.com
+Cc: manager@example.com
+Reply-To: support@yourdomain.com
+Subject: Order Confirmation #12345
 
-```
-cat > mail.txt <<EOFFrom: orders@yourdomain.comTo: customer@example.comCc: manager@example.comReply-To: support@yourdomain.comSubject: Order Confirmation #12345
-Your order is confirmedEOF
-curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "orders@yourdomain.com" \  --mail-rcpt "customer@example.com" \  --mail-rcpt "manager@example.com" \  --mail-rcpt "archive@example.com" \  --upload-file mail.txt
+
+Your order is confirmed
+EOF
+
+
+curl --ssl-reqd \
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+  --user "api_token:<API_TOKEN>" \
+  --mail-from "orders@yourdomain.com" \
+  --mail-rcpt "customer@example.com" \
+  --mail-rcpt "manager@example.com" \
+  --mail-rcpt "archive@example.com" \
+  --upload-file mail.txt
 ```
 
 ## Named recipients
 
 Provide a display name alongside the address for the sender and recipients.
 
-* [ Workers ](#tab-panel-8580)
-* [ API ](#tab-panel-8581)
-* [ SMTP ](#tab-panel-8582)
+* [ Workers ](#tab-panel-8871)
+* [ API ](#tab-panel-8872)
+* [ SMTP ](#tab-panel-8873)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.EMAIL.send({
+  to: { email: "jane@example.com", name: "Jane Doe" },
+  from: { email: "support@yourdomain.com", name: "Support Team" },
+  subject: "Welcome!",
+  html: "<h1>Thanks for joining!</h1>",
+  text: "Thanks for joining!",
+});
 ```
-const response = await env.EMAIL.send({  to: { email: "jane@example.com", name: "Jane Doe" },  from: { email: "support@yourdomain.com", name: "Support Team" },  subject: "Welcome!",  html: "<h1>Thanks for joining!</h1>",  text: "Thanks for joining!",});
-```
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": { "address": "jane@example.com", "name": "Jane Doe" },    "from": { "address": "support@yourdomain.com", "name": "Support Team" },    "subject": "Welcome!",    "html": "<h1>Thanks for joining!</h1>",    "text": "Thanks for joining!"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": { "address": "jane@example.com", "name": "Jane Doe" },
+    "from": { "address": "support@yourdomain.com", "name": "Support Team" },
+    "subject": "Welcome!",
+    "html": "<h1>Thanks for joining!</h1>",
+    "text": "Thanks for joining!"
+  }'
 ```
 
 Use the `Display Name <address>` form in the `From` and `To` headers.
 
-Terminal window
+```sh
+cat > mail.txt <<EOF
+From: Support Team <support@yourdomain.com>
+To: Jane Doe <jane@example.com>
+Subject: Welcome!
 
-```
-cat > mail.txt <<EOFFrom: Support Team <support@yourdomain.com>To: Jane Doe <jane@example.com>Subject: Welcome!
-Thanks for joining!EOF
-curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "support@yourdomain.com" \  --mail-rcpt "jane@example.com" \  --upload-file mail.txt
+
+Thanks for joining!
+EOF
+
+
+curl --ssl-reqd \
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+  --user "api_token:<API_TOKEN>" \
+  --mail-from "support@yourdomain.com" \
+  --mail-rcpt "jane@example.com" \
+  --upload-file mail.txt
 ```
 
 ## Mixed plain and named recipients
 
 Combine plain addresses and named addresses in the same `to` field.
 
-* [ Workers ](#tab-panel-8583)
-* [ API ](#tab-panel-8584)
-* [ SMTP ](#tab-panel-8585)
+* [ Workers ](#tab-panel-8874)
+* [ API ](#tab-panel-8875)
+* [ SMTP ](#tab-panel-8876)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.EMAIL.send({
+  to: ["plain@example.com", { email: "jane@example.com", name: "Jane Doe" }],
+  from: "support@yourdomain.com",
+  subject: "Team update",
+  html: "<h1>Monthly update</h1>",
+  text: "Monthly update",
+});
 ```
-const response = await env.EMAIL.send({  to: ["plain@example.com", { email: "jane@example.com", name: "Jane Doe" }],  from: "support@yourdomain.com",  subject: "Team update",  html: "<h1>Monthly update</h1>",  text: "Monthly update",});
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": [
+      "plain@example.com",
+      { "address": "jane@example.com", "name": "Jane Doe" }
+    ],
+    "from": "support@yourdomain.com",
+    "subject": "Team update",
+    "html": "<h1>Monthly update</h1>",
+    "text": "Monthly update"
+  }'
 ```
 
-Terminal window
+```sh
+cat > mail.txt <<EOF
+From: support@yourdomain.com
+To: plain@example.com, Jane Doe <jane@example.com>
+Subject: Team update
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": [      "plain@example.com",      { "address": "jane@example.com", "name": "Jane Doe" }    ],    "from": "support@yourdomain.com",    "subject": "Team update",    "html": "<h1>Monthly update</h1>",    "text": "Monthly update"  }'
-```
 
-Terminal window
+Monthly update
+EOF
 
-```
-cat > mail.txt <<EOFFrom: support@yourdomain.comTo: plain@example.com, Jane Doe <jane@example.com>Subject: Team update
-Monthly updateEOF
-curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "support@yourdomain.com" \  --mail-rcpt "plain@example.com" \  --mail-rcpt "jane@example.com" \  --upload-file mail.txt
+
+curl --ssl-reqd \
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+  --user "api_token:<API_TOKEN>" \
+  --mail-from "support@yourdomain.com" \
+  --mail-rcpt "plain@example.com" \
+  --mail-rcpt "jane@example.com" \
+  --upload-file mail.txt
 ```
 
 ## Next steps

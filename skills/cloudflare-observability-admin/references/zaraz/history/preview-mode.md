@@ -35,8 +35,9 @@ Now that you have Zaraz working in preview mode, you can open your website and t
 2. Navigate to the website where you want to test your new settings.
 3. Access the browser’s developer tools. For example, to access developer tools in Google Chrome, select **View** \> **Developer** \> **Developer Tools**.
 4. Select the **Console** pane and enter the following command to start Zaraz’s preview mode:
-JavaScript
-```
+
+**JavaScript**
+```js
 zaraz.preview("<YOUR_DEBUG_KEY>");
 ```
 5. Your website will reload along with Zaraz debugger, and Zaraz will use the most recent changes in preview mode.

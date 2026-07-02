@@ -18,8 +18,25 @@ This page describes the JSON objects used in API requests creating or updating r
 
 A fully populated ruleset object has the following JSON structure.
 
-```
-{  "id": "6a359df138c442b385d20140d4d96919",  "name": "Example Ruleset",  "description": "Description of Example Ruleset",  "kind": "custom",  "version": "2",  "phase": "http_request_firewall_custom",  "rules": [    {      "id": "fdb0dd271f3f40b19679cc5d91396024",      "version": "2",      "action": "block",      "expression": "cf.zone.name eq \"example.com\" ",      "last_updated": "2022-07-20T10:44:29.124515Z"    }  ],  "last_updated": "2022-07-20T10:44:29.124515Z"}
+```json
+{
+  "id": "6a359df138c442b385d20140d4d96919",
+  "name": "Example Ruleset",
+  "description": "Description of Example Ruleset",
+  "kind": "custom",
+  "version": "2",
+  "phase": "http_request_firewall_custom",
+  "rules": [
+    {
+      "id": "fdb0dd271f3f40b19679cc5d91396024",
+      "version": "2",
+      "action": "block",
+      "expression": "cf.zone.name eq \"example.com\" ",
+      "last_updated": "2022-07-20T10:44:29.124515Z"
+    }
+  ],
+  "last_updated": "2022-07-20T10:44:29.124515Z"
+}
 ```
 
 For details on the properties of rules items in the `rules` array, refer to the [Rule object structure and properties](#rule-object-structure-and-properties) section.
@@ -61,8 +78,21 @@ The ruleset object has the following properties:
 
 A fully populated rule JSON object has the following structure:
 
-```
-{  "id": "fdb0dd271f3f40b19679cc5d91396024",  "version": "2",  "ref": "<REF>",  "description": "<DESCRIPTION>",  "action": "block",  "action_parameters": [    // action parameters vary according to the action  ],  "categories": ["<CATEGORY_1>", "<CATEGORY_2>"],  "expression": "cf.zone.name eq \"example.com\"",  "last_updated": "2025-07-20T10:44:29.124515Z",  "enabled": true}
+```json
+{
+  "id": "fdb0dd271f3f40b19679cc5d91396024",
+  "version": "2",
+  "ref": "<REF>",
+  "description": "<DESCRIPTION>",
+  "action": "block",
+  "action_parameters": [
+    // action parameters vary according to the action
+  ],
+  "categories": ["<CATEGORY_1>", "<CATEGORY_2>"],
+  "expression": "cf.zone.name eq \"example.com\"",
+  "last_updated": "2025-07-20T10:44:29.124515Z",
+  "enabled": true
+}
 ```
 
 The JSON object properties for a rule are defined as follows:

@@ -100,14 +100,36 @@ In the following example, the rule triggers when the **combined** packet traffic
 
 You can also [configure rule IP prefixes at scale using the API](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/).
 
-```
-{  "rules": [    {      "name": "Too many packets",      "prefixes": ["192.168.0.0/24", "172.118.0.0/24"],      "packet_threshold": 10000,      "automatic_advertisement": true,      "duration": "1m0s",      "type": "threshold"    }  ]}
+```json
+{
+  "rules": [
+    {
+      "name": "Too many packets",
+      "prefixes": ["192.168.0.0/24", "172.118.0.0/24"],
+      "packet_threshold": 10000,
+      "automatic_advertisement": true,
+      "duration": "1m0s",
+      "type": "threshold"
+    }
+  ]
+}
 ```
 
 To set a threshold for a single prefix, create a separate rule:
 
-```
-{  "rules": [    {      "name": "Too many packets",      "prefixes": ["172.118.0.0/24"],      "packet_threshold": 1000,      "automatic_advertisement": true,      "duration": "1m0s",      "type": "threshold"    }  ]}
+```json
+{
+  "rules": [
+    {
+      "name": "Too many packets",
+      "prefixes": ["172.118.0.0/24"],
+      "packet_threshold": 1000,
+      "automatic_advertisement": true,
+      "duration": "1m0s",
+      "type": "threshold"
+    }
+  ]
+}
 ```
 
 ```json

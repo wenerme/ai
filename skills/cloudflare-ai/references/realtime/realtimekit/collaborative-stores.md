@@ -30,34 +30,37 @@ You can create a realtime store (changes are synced with other users):
 
 To create a store:
 
-TypeScript
+**TypeScript**
 
-```
-const stores = useRealtimeKitSelector((m) => m.stores);const store = stores.create('myStore');
+```ts
+const stores = useRealtimeKitSelector((m) => m.stores);
+const store = stores.create('myStore');
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const store = meeting.stores.create('myStore');
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const store = meeting.stores.create('myStore');
 ```
 
-Kotlin
+**Kotlin**
 
-```
-val meeting = RealtimeKitMeetingBuilder.build(activity)val store = meeting.stores.create("myStore")
+```kotlin
+val meeting = RealtimeKitMeetingBuilder.build(activity)
+val store = meeting.stores.create("myStore")
 ```
 
-Swift
+**Swift**
 
-```
-let meeting = RealtimeKitiOSClientBuilder().build()let store = meeting.stores.create(name: "myStore")
+```swift
+let meeting = RealtimeKitiOSClientBuilder().build()
+let store = meeting.stores.create(name: "myStore")
 ```
 
 This feature is not currently supported in the Flutter SDK
@@ -75,62 +78,86 @@ You can add, update or delete entries in a store:
 | key   | string     | Unique identifier used to store/update a value in the store | Yes      |
 | value | StoreValue | Value that can be stored against a key                      | Yes      |
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 type StoreValue = string | number | object | array;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const stores = useRealtimeKitSelector((m) => m.stores.stores);const store = stores.get("myStore");
+```ts
+const stores = useRealtimeKitSelector((m) => m.stores.stores);
+const store = stores.get("myStore");
+
+
 await store.set("user", { name: "John Doe" });
+
+
 await store.update("user", { age: 34 }); // { name: 'John Doe', age: 34 }
+
+
 await store.delete("user");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 type StoreValue = string | number | object | array;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const { stores } = meeting.stores;const store = stores.get("myStore");
+```ts
+const { stores } = meeting.stores;
+const store = stores.get("myStore");
+
+
 await store.set("user", { name: "John Doe" });
+
+
 await store.update("user", { age: 34 }); // { name: 'John Doe', age: 34 }
+
+
 await store.delete("user");
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 type StoreValue = string | number | object | array;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const { stores } = meeting.stores;const store = stores.get("myStore");
+```ts
+const { stores } = meeting.stores;
+const store = stores.get("myStore");
+
+
 await store.set("user", { name: "John Doe" });
+
+
 await store.update("user", { age: 34 }); // { name: 'John Doe', age: 34 }
+
+
 await store.delete("user");
 ```
 
-Kotlin
+**Kotlin**
 
-```
+```kotlin
 val store = meeting.stores.get("myStore")
+
+
 store.set("user", mapOf("name" to "John Doe"))
 ```
 
-Swift
+**Swift**
 
-```
-let store = meeting.stores.get(name: "myStore")store.set("user", ["name": "John Doe"])
+```swift
+let store = meeting.stores.get(name: "myStore")
+store.set("user", ["name": "John Doe"])
 ```
 
 Note
@@ -143,43 +170,98 @@ For example, if the stored value is `['a', 'b']` and you call `update` with `['c
 
 You can attach event listeners on a store's key, which fire when the value changes.
 
-TypeScript
+**TypeScript**
 
-```
-const stores = useRealtimeKitSelector((m) => m.stores.stores);const store = stores.get('myStore');store.subscribe('key', (data) => {    console.log(data);});
-// subscribe to all keys of a storestore.subscribe('\*', (data) => {console.log(data);});
+```ts
+const stores = useRealtimeKitSelector((m) => m.stores.stores);
+const store = stores.get('myStore');
+store.subscribe('key', (data) => {
+    console.log(data);
+});
+
+
+// subscribe to all keys of a store
+store.subscribe('\*', (data) => {
+console.log(data);
+});
+
+
 store.unsubscribe('key');
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const { stores } = meeting.stores;const store = stores.get('myStore');store.subscribe('key', (data) => {    console.log(data);});
-// subscribe to all keys of a storestore.subscribe('\*', (data) => {console.log(data);});
+```ts
+const { stores } = meeting.stores;
+const store = stores.get('myStore');
+store.subscribe('key', (data) => {
+    console.log(data);
+});
+
+
+// subscribe to all keys of a store
+store.subscribe('\*', (data) => {
+console.log(data);
+});
+
+
 store.unsubscribe('key');
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const { stores } = meeting.stores;const store = stores.get('myStore');store.subscribe('key', (data) => {    console.log(data);});
-// subscribe to all keys of a storestore.subscribe('\*', (data) => {console.log(data);});
+```ts
+const { stores } = meeting.stores;
+const store = stores.get('myStore');
+store.subscribe('key', (data) => {
+    console.log(data);
+});
+
+
+// subscribe to all keys of a store
+store.subscribe('\*', (data) => {
+console.log(data);
+});
+
+
 store.unsubscribe('key');
 ```
 
-Kotlin
+**Kotlin**
 
-```
-val store = meeting.stores.create("myStore")val keyChangeCallback = { key: String, value: Any? ->  println(value)}store.subscribe("key", keyChangeCallback)
-// Subscribe to all keysstore.subscribe(RtkStore.WILDCARD_KEY) { key, value ->  println(value)}
+```kotlin
+val store = meeting.stores.create("myStore")
+val keyChangeCallback = { key: String, value: Any? ->
+  println(value)
+}
+store.subscribe("key", keyChangeCallback)
+
+
+// Subscribe to all keys
+store.subscribe(RtkStore.WILDCARD_KEY) { key, value ->
+  println(value)
+}
+
+
 store.unsubscribe("key", keyChangeCallback)
 ```
 
-Swift
+**Swift**
 
-```
-let store = meeting.stores.create(name: "myStore")let keyChangeCallback: ((String, (Any?)) -> Void) = { key, value in    print(value ?? "null")}store.subscribe(key: "key", onChange: keyChangeCallback)
-// Subscribe to all keysstore.subscribe(key: RtkStore.Companion().WILDCARD_KEY) { key, value in    print(value ?? "null")}
+```swift
+let store = meeting.stores.create(name: "myStore")
+let keyChangeCallback: ((String, (Any?)) -> Void) = { key, value in
+    print(value ?? "null")
+}
+store.subscribe(key: "key", onChange: keyChangeCallback)
+
+
+// Subscribe to all keys
+store.subscribe(key: RtkStore.Companion().WILDCARD_KEY) { key, value in
+    print(value ?? "null")
+}
+
+
 store.unsubscribe(key: "key", onChange: keyChangeCallback)
 ```
 
@@ -187,44 +269,77 @@ store.unsubscribe(key: "key", onChange: keyChangeCallback)
 
 You can fetch the data stored in the store:
 
-TypeScript
+**TypeScript**
 
-```
-const stores = useRealtimeKitSelector((m) => m.stores.stores);const store = stores.get('myStore');
-// fetch value for a specific keyconst data = store.get('key');
-// fetch all the data in the storeconst data = store.getAll();
-```
+```ts
+const stores = useRealtimeKitSelector((m) => m.stores.stores);
+const store = stores.get('myStore');
 
-TypeScript
 
-```
-const { stores } = meeting.stores;const store = stores.get('myStore');
-// fetch value for a specific keyconst data = store.get('key');
-// fetch all the data in the storeconst data = store.getAll();
-```
+// fetch value for a specific key
+const data = store.get('key');
 
-TypeScript
 
-```
-const { stores } = meeting.stores;const store = stores.get('myStore');
-// fetch value for a specific keyconst data = store.get('key');
-// fetch all the data in the storeconst data = store.getAll();
+// fetch all the data in the store
+const data = store.getAll();
 ```
 
-Kotlin
+**TypeScript**
 
+```ts
+const { stores } = meeting.stores;
+const store = stores.get('myStore');
+
+
+// fetch value for a specific key
+const data = store.get('key');
+
+
+// fetch all the data in the store
+const data = store.getAll();
 ```
+
+**TypeScript**
+
+```ts
+const { stores } = meeting.stores;
+const store = stores.get('myStore');
+
+
+// fetch value for a specific key
+const data = store.get('key');
+
+
+// fetch all the data in the store
+const data = store.getAll();
+```
+
+**Kotlin**
+
+```kotlin
 val store = meeting.stores.create("myStore")
-// fetch value for a specific keyval data = store.get("key")
-// fetch all the data in the storeval data = store.getAll()
+
+
+// fetch value for a specific key
+val data = store.get("key")
+
+
+// fetch all the data in the store
+val data = store.getAll()
 ```
 
-Swift
+**Swift**
 
-```
+```swift
 let store = meeting.stores.create(name: "myStore")
-// fetch value for a specific keystore.get(key: "key")
-// fetch all the data in the storestore.getAll()
+
+
+// fetch value for a specific key
+store.get(key: "key")
+
+
+// fetch all the data in the store
+store.getAll()
 ```
 
 ```json

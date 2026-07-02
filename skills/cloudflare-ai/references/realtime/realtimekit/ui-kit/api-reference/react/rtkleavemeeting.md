@@ -27,16 +27,28 @@ A component which allows you to leave a meeting or end meeting for all, if you h
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkLeaveMeeting } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkLeaveMeeting />;}
+
+
+function MyComponent() {
+  return <RtkLeaveMeeting />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkLeaveMeeting } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkLeaveMeeting      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkLeaveMeeting
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

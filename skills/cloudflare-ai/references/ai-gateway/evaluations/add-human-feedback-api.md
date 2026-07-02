@@ -39,8 +39,16 @@ The steps below outline how to do this.
 
 In the example below, the `cf-aig-log-id` is `01JADMCQQQBWH3NXZ5GCRN98DP`.
 
-```
-{  "status": "success",  "headers": {    "cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"  },  "data": {    "response": "Sample response data"  }}
+```json
+{
+  "status": "success",
+  "headers": {
+    "cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"
+  },
+  "data": {
+    "response": "Sample response data"
+  }
+}
 ```
 
 ### Method 2: Retrieve the `cf-aig-log-id` via API (GET request)
@@ -55,24 +63,62 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `AI Gateway Write`
 * `AI Gateway Read`
 
-List Gateway Logs
+**List Gateway Logs**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-```
-{  "result": [    {      "id": "01JADMCQQQBWH3NXZ5GCRN98DP",      "cached": true,      "created_at": "2019-08-24T14:15:22Z",      "custom_cost": true,      "duration": 0,      "id": "string",      "metadata": "string",      "model": "string",      "model_type": "string",      "path": "string",      "provider": "string",      "request_content_type": "string",      "request_type": "string",      "response_content_type": "string",      "status_code": 0,      "step": 0,      "success": true,      "tokens_in": 0,      "tokens_out": 0    }  ]}
+```json
+{
+  "result": [
+    {
+      "id": "01JADMCQQQBWH3NXZ5GCRN98DP",
+      "cached": true,
+      "created_at": "2019-08-24T14:15:22Z",
+      "custom_cost": true,
+      "duration": 0,
+      "id": "string",
+      "metadata": "string",
+      "model": "string",
+      "model_type": "string",
+      "path": "string",
+      "provider": "string",
+      "request_content_type": "string",
+      "request_type": "string",
+      "response_content_type": "string",
+      "status_code": 0,
+      "step": 0,
+      "success": true,
+      "tokens_in": 0,
+      "tokens_out": 0
+    }
+  ]
+}
 ```
 
 ### Method 3: Retrieve the `cf-aig-log-id` via a binding
 
 You can also retrieve the `cf-aig-log-id` using a binding, which streamlines the process. Here's how to retrieve the log ID directly:
 
-JavaScript
+**JavaScript**
 
-```
-const resp = await env.AI.run(  "@cf/meta/llama-3-8b-instruct",  {    prompt: "tell me a joke",  },  {    gateway: {      id: "my_gateway_id",    },  },);
+```js
+const resp = await env.AI.run(
+  "@cf/meta/llama-3-8b-instruct",
+  {
+    prompt: "tell me a joke",
+  },
+  {
+    gateway: {
+      id: "my_gateway_id",
+    },
+  },
+);
+
+
 const myLogId = env.AI.aiGatewayLogId;
 ```
 
@@ -89,16 +135,23 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `AI Gateway Write`
 
-Patch Gateway Log
+**Patch Gateway Log**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs/$ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "feedback": 1  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs/$ID" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "feedback": 1
+  }'
 ```
 
 If you had negative feedback, adjust the body of the request to be `-1`.
 
-```
-{  "feedback": -1}
+```json
+{
+  "feedback": -1
+}
 ```
 
 ## 4\. Verify the feedback submission

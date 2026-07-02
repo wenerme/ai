@@ -31,16 +31,46 @@ The following example shows you how to define a Remix [loader ↗](https://remix
 * Bindings are passed through on the `context.cloudflare.env` parameter passed to a `LoaderFunction`.
 * If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `context.cloudflare.env.DB`.
 
-* [  TypeScript ](#tab-panel-8002)
+* [  TypeScript ](#tab-panel-8243)
 
-TypeScript
+**TypeScript**
 
-```
-import type { LoaderFunction } from "@remix-run/cloudflare";import { json } from "@remix-run/cloudflare";import { useLoaderData } from "@remix-run/react";
-interface Env {  DB: D1Database;}
-export const loader: LoaderFunction = async ({ context, params }) => {  let env = context.cloudflare.env as Env;
-  try {    let { results } = await env.DB.prepare("SELECT * FROM users LIMIT 5").run();    return json(results);  } catch (error) {    return json({ error: "Failed to fetch users" }, { status: 500 });  }};
-export default function Index() {  const results = useLoaderData<typeof loader>();  return (    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>      <h1>Welcome to Remix</h1>      <div>        A value from D1:        <pre>{JSON.stringify(results)}</pre>      </div>    </div>  );}
+```ts
+import type { LoaderFunction } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
+import { useLoaderData } from "@remix-run/react";
+
+
+interface Env {
+  DB: D1Database;
+}
+
+
+export const loader: LoaderFunction = async ({ context, params }) => {
+  let env = context.cloudflare.env as Env;
+
+
+  try {
+    let { results } = await env.DB.prepare("SELECT * FROM users LIMIT 5").run();
+    return json(results);
+  } catch (error) {
+    return json({ error: "Failed to fetch users" }, { status: 500 });
+  }
+};
+
+
+export default function Index() {
+  const results = useLoaderData<typeof loader>();
+  return (
+    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+      <h1>Welcome to Remix</h1>
+      <div>
+        A value from D1:
+        <pre>{JSON.stringify(results)}</pre>
+      </div>
+    </div>
+  );
+}
 ```
 
 ```json

@@ -57,11 +57,17 @@ Setup requires a basic understanding of [Git ↗](https://git-scm.com/). If you 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
 
-Terminal window
+```sh
+# Skip the following three commands if you have built your application
+# using C3 or already committed your changes
+git init
+git add .
+git commit -m "Initial commit"
 
-```
-# Skip the following three commands if you have built your application# using C3 or already committed your changesgit initgit add .git commit -m "Initial commit"
-git branch -M maingit remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>git push -u origin main
+
+git branch -M main
+git remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>
+git push -u origin main
 ```
 
 ### Create a Pages project

@@ -25,20 +25,29 @@ A dialog widget for confirming the action of leaving a RealtimeKit meeting. Prov
 
 ### Basic Usage
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkLeaveMeetingDialog(  meeting: yourMeetingInstance,)
+
+
+RtkLeaveMeetingDialog(
+  meeting: yourMeetingInstance,
+)
 ```
 
 ### With Properties
 
-Dart
+**Dart**
 
-```
+```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-RtkLeaveMeetingDialog(  meeting: yourMeetingInstance,  designToken: yourDesignToken,)
+
+
+RtkLeaveMeetingDialog(
+  meeting: yourMeetingInstance,
+  designToken: yourDesignToken,
+)
 ```
 
 ```json

@@ -36,19 +36,24 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8918)
-* [  wrangler.toml ](#tab-panel-8919)
+* [  wrangler.jsonc ](#tab-panel-9209)
+* [  wrangler.toml ](#tab-panel-9210)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "images": {
+    "binding": "IMAGES", // i.e. available in your Worker on env.IMAGES
+  },
+}
 ```
-{  "images": {    "binding": "IMAGES", // i.e. available in your Worker on env.IMAGES  },}
-```
 
-TOML
+**TOML**
 
-```
-[images]binding = "IMAGES"
+```toml
+[images]
+binding = "IMAGES"
 ```
 
 Within your Worker code, use `env.IMAGES.input()` to build an object that can manipulate the image (passed as a `ReadableStream`).
@@ -65,23 +70,48 @@ Creates an optimization handle for an image. All operations begin with this meth
 
 Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls.
 
-* [  JavaScript ](#tab-panel-8924)
-* [  TypeScript ](#tab-panel-8925)
+* [  JavaScript ](#tab-panel-9215)
+* [  TypeScript ](#tab-panel-9216)
 
-JavaScript
+**JavaScript**
 
-```
-export default {  async fetch(request, env) {    const imageURL = "https://example.com/photo.jpg";
+```js
+export default {
+  async fetch(request, env) {
+    const imageURL = "https://example.com/photo.jpg";
+
+
     const response = await fetch(imageURL);
-    return (      await env.IMAGES.input(response.body)        .transform({ width: 800 })        .output({ format: "image/webp" })    ).response();  },};
+
+
+    return (
+      await env.IMAGES.input(response.body)
+        .transform({ width: 800 })
+        .output({ format: "image/webp" })
+    ).response();
+  },
+};
 ```
 
-TypeScript
+**TypeScript**
 
-```
-export default {  async fetch(request, env) {    const imageURL = "https://example.com/photo.jpg";
+```ts
+export default {
+  async fetch(request, env) {
+    const imageURL = "https://example.com/photo.jpg";
+
+
     const response = await fetch(imageURL);
-    return (      await env.IMAGES        .input(response.body)        .transform({ width: 800 })        .output({ format: "image/webp" })    ).response();  },};
+
+
+    return (
+      await env.IMAGES
+        .input(response.body)
+        .transform({ width: 800 })
+        .output({ format: "image/webp" })
+    ).response();
+  },
+};
 ```
 
 ### `.transform(options)`
@@ -92,22 +122,42 @@ For the full list of parameters, refer to [Features](https://developers.cloudfla
 
 The example below shows how you can resize an image that is [stored in Images](https://developers.cloudflare.com/images/storage/binding/) by getting the image bytes:
 
-* [  JavaScript ](#tab-panel-8920)
-* [  TypeScript ](#tab-panel-8921)
+* [  JavaScript ](#tab-panel-9211)
+* [  TypeScript ](#tab-panel-9212)
 
-JavaScript
+**JavaScript**
 
-```
-// Get the raw bytes of a hosted imageconst bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
-// Resize and transcode the imageconst response = (  await env.IMAGES.input(bytes)    .transform({ width: 400 })    .output({ format: "image/webp" })).response();
+```js
+// Get the raw bytes of a hosted image
+const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+
+
+// Resize and transcode the image
+const response = (
+  await env.IMAGES.input(bytes)
+    .transform({ width: 400 })
+    .output({ format: "image/webp" })
+).response();
+
+
 return response;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-// Get the raw bytes of a hosted imageconst bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
-// Resize and transcode the imageconst response = (  await env.IMAGES.input(bytes)    .transform({ width: 400 })    .output({ format: "image/webp" })).response();
+```ts
+// Get the raw bytes of a hosted image
+const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+
+
+// Resize and transcode the image
+const response = (
+  await env.IMAGES.input(bytes)
+    .transform({ width: 400 })
+    .output({ format: "image/webp" })
+).response();
+
+
 return response;
 ```
 
@@ -129,20 +179,36 @@ Accepts the following options:
 * `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
 * `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
 
-* [  JavaScript ](#tab-panel-8922)
-* [  TypeScript ](#tab-panel-8923)
+* [  JavaScript ](#tab-panel-9213)
+* [  TypeScript ](#tab-panel-9214)
 
-JavaScript
+**JavaScript**
 
-```
-const response = (  await env.IMAGES.input(stream)    .transform({ rotate: 90 })    .transform({ width: 128 })    .transform({ blur: 20 })    .output({ format: "image/avif" })).response();
+```js
+const response = (
+  await env.IMAGES.input(stream)
+    .transform({ rotate: 90 })
+    .transform({ width: 128 })
+    .transform({ blur: 20 })
+    .output({ format: "image/avif" })
+).response();
+
+
 return response;
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const response = (  await env.IMAGES.input(stream)    .transform({ rotate: 90 })    .transform({ width: 128 })    .transform({ blur: 20 })    .output({ format: "image/avif" })).response();
+```ts
+const response = (
+  await env.IMAGES.input(stream)
+    .transform({ rotate: 90 })
+    .transform({ width: 128 })
+    .transform({ blur: 20 })
+    .output({ format: "image/avif" })
+).response();
+
+
 return response;
 ```
 
@@ -161,7 +227,7 @@ Wrangler supports two different versions of the Images API:
 
 To test the low-fidelity version of Images, you can run `wrangler dev`:
 
-```
+```txt
 npx wrangler dev
 ```
 
@@ -169,7 +235,7 @@ Currently, this version supports only `width`, `height`, `rotate`, and `format`.
 
 To test the high-fidelity remote version of Images, you can use the `--remote` flag:
 
-```
+```txt
 npx wrangler dev --remote
 ```
 

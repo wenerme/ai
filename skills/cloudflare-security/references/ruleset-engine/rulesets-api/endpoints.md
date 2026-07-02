@@ -16,19 +16,19 @@ For some operations, you can use specific endpoints provided by the Rulesets API
 
 For example, instead of using the following endpoint:
 
-```
+```txt
 PUT /zones/{zone_id}/rulesets/{ruleset_id}
 ```
 
 You can use the following endpoint:
 
-```
+```txt
 PUT /zones/{zone_id}/rulesets/phases/{phase_name}/entrypoint
 ```
 
 To invoke a Rulesets API operation, append the endpoint to the Cloudflare API base URL:
 
-```
+```txt
 https://api.cloudflare.com/client/v4
 ```
 

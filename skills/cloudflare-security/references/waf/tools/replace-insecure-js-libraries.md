@@ -38,8 +38,8 @@ The feature is available in all Cloudflare plans, and is turned on by default on
 
 ## Configure
 
-* [ Dashboard ](#tab-panel-11334)
-* [ API ](#tab-panel-11335)
+* [ Dashboard ](#tab-panel-11629)
+* [ API ](#tab-panel-11630)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -52,10 +52,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-Edit zone setting
+**Edit zone setting**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/replace_insecure_js" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/replace_insecure_js" \
+  --request PATCH \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "value": "on"
+  }'
 ```
 
 ---

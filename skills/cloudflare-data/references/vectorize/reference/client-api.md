@@ -18,10 +18,14 @@ This page covers the Vectorize API available within [Cloudflare Workers](https:/
 
 ### Insert vectors
 
-TypeScript
+**TypeScript**
 
-```
-let vectorsToInsert = [  { id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },  { id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },];let inserted = await env.YOUR_INDEX.insert(vectorsToInsert);
+```ts
+let vectorsToInsert = [
+  { id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },
+  { id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },
+];
+let inserted = await env.YOUR_INDEX.insert(vectorsToInsert);
 ```
 
 Inserts vectors into the index. Vectorize inserts are asynchronous and the insert operation returns a mutation identifier unique for that operation. It typically takes a few seconds for inserted vectors to be available for querying in a Vectorize index.
@@ -32,10 +36,15 @@ If you need to update existing vectors, use the [upsert](#upsert-vectors) operat
 
 ### Upsert vectors
 
-TypeScript
+**TypeScript**
 
-```
-let vectorsToUpsert = [  { id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },  { id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },  { id: "768", values: [29.1, 5.7, 12.9, 15.4, 1.1] },];let upserted = await env.YOUR_INDEX.upsert(vectorsToUpsert);
+```ts
+let vectorsToUpsert = [
+  { id: "123", values: [32.4, 6.5, 11.2, 10.3, 87.9] },
+  { id: "456", values: [2.5, 7.8, 9.1, 76.9, 8.5] },
+  { id: "768", values: [29.1, 5.7, 12.9, 15.4, 1.1] },
+];
+let upserted = await env.YOUR_INDEX.upsert(vectorsToUpsert);
 ```
 
 Upserts vectors into an index. Vectorize upserts are asynchronous and the upsert operation returns a mutation identifier unique for that operation. It typically takes a few seconds for upserted vectors to be available for querying in a Vectorize index.
@@ -46,10 +55,11 @@ Upserting does not merge or combine the values or metadata of an existing vector
 
 ### Query vectors
 
-TypeScript
+**TypeScript**
 
-```
-let queryVector = [32.4, 6.55, 11.2, 10.3, 87.9];let matches = await env.YOUR_INDEX.query(queryVector);
+```ts
+let queryVector = [32.4, 6.55, 11.2, 10.3, 87.9];
+let matches = await env.YOUR_INDEX.query(queryVector);
 ```
 
 Query an index with the provided vector, returning the score(s) of the closest vectors based on the configured distance metric.
@@ -58,10 +68,14 @@ Query an index with the provided vector, returning the score(s) of the closest v
 * Return vector values by setting `returnValues: true` (default: false)
 * Return vector metadata by setting `returnMetadata: 'indexed'` or `returnMetadata: 'all'` (default: 'none')
 
-TypeScript
+**TypeScript**
 
-```
-let matches = await env.YOUR_INDEX.query(queryVector, {  topK: 5,  returnValues: true,  returnMetadata: "all",});
+```ts
+let matches = await env.YOUR_INDEX.query(queryVector, {
+  topK: 5,
+  returnValues: true,
+  returnMetadata: "all",
+});
 ```
 
 #### topK
@@ -82,9 +96,9 @@ For legacy Vectorize (V1) indexes, `topK` is limited to 20, and the `returnMetad
 
 ### Query vectors by ID
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 let matches = await env.YOUR_INDEX.queryById("some-vector-id");
 ```
 
@@ -92,37 +106,43 @@ Query an index using a vector that is already present in the index.
 
 Query options remain the same as the query operation described above.
 
-TypeScript
+**TypeScript**
 
-```
-let matches = await env.YOUR_INDEX.queryById("some-vector-id", {  topK: 5,  returnValues: true,  returnMetadata: "all",});
+```ts
+let matches = await env.YOUR_INDEX.queryById("some-vector-id", {
+  topK: 5,
+  returnValues: true,
+  returnMetadata: "all",
+});
 ```
 
 ### Get vectors by ID
 
-TypeScript
+**TypeScript**
 
-```
-let ids = ["11", "22", "33", "44"];const vectors = await env.YOUR_INDEX.getByIds(ids);
+```ts
+let ids = ["11", "22", "33", "44"];
+const vectors = await env.YOUR_INDEX.getByIds(ids);
 ```
 
 Retrieves the specified vectors by their ID, including values and metadata.
 
 ### Delete vectors by ID
 
-TypeScript
+**TypeScript**
 
-```
-let idsToDelete = ["11", "22", "33", "44"];const deleted = await env.YOUR_INDEX.deleteByIds(idsToDelete);
+```ts
+let idsToDelete = ["11", "22", "33", "44"];
+const deleted = await env.YOUR_INDEX.deleteByIds(idsToDelete);
 ```
 
 Deletes the vector IDs provided from the current index. Vectorize deletes are asynchronous and the delete operation returns a mutation identifier unique for that operation. It typically takes a few seconds for vectors to be removed from the Vectorize index.
 
 ### Retrieve index details
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const details = await env.YOUR_INDEX.describe();
 ```
 
@@ -136,9 +156,7 @@ The `client.vectorize.indexes.list_vectors()` method is not yet available in the
 
 List all vector identifiers in an index using paginated requests, returning up to 1000 vector identifiers per page.
 
-Terminal window
-
-```
+```sh
 wrangler vectorize list-vectors <index-name> [--count=<number>] [--cursor=<cursor-string>]
 ```
 
@@ -160,9 +178,7 @@ Vectorize V2 requires [wrangler](https://developers.cloudflare.com/workers/wrang
 
 Run the following `wrangler vectorize` command:
 
-Terminal window
-
-```
+```sh
 wrangler vectorize create-metadata-index <index-name> --property-name='some-prop' --type='string'
 ```
 
@@ -176,9 +192,7 @@ Vectorize V2 requires [wrangler](https://developers.cloudflare.com/workers/wrang
 
 Run the following `wrangler vectorize` command:
 
-Terminal window
-
-```
+```sh
 wrangler vectorize delete-metadata-index <index-name> --property-name='some-prop'
 ```
 
@@ -192,9 +206,7 @@ Vectorize V2 requires [wrangler](https://developers.cloudflare.com/workers/wrang
 
 Run the following `wrangler vectorize` command:
 
-Terminal window
-
-```
+```sh
 wrangler vectorize list-metadata-index <index-name>
 ```
 
@@ -208,9 +220,7 @@ Vectorize V2 requires [wrangler](https://developers.cloudflare.com/workers/wrang
 
 Run the following `wrangler vectorize` command:
 
-Terminal window
-
-```
+```sh
 wrangler vectorize info <index-name>
 ```
 
@@ -223,10 +233,18 @@ A vector represents the vector embedding output from a machine learning model.
 * `values` \- an array of `number`, `Float32Array`, or `Float64Array` as the vector embedding itself. This must be a dense array, and the length of this array must match the `dimensions` configured on the index.
 * `metadata` \- an optional set of key-value pairs that can be used to store additional metadata alongside a vector.
 
-TypeScript
+**TypeScript**
 
-```
-let vectorExample = {  id: "12345",  values: [32.4, 6.55, 11.2, 10.3, 87.9],  metadata: {    key: "value",    hello: "world",    url: "r2://bucket/some/object.json",  },};
+```ts
+let vectorExample = {
+  id: "12345",
+  values: [32.4, 6.55, 11.2, 10.3, 87.9],
+  metadata: {
+    key: "value",
+    hello: "world",
+    url: "r2://bucket/some/object.json",
+  },
+};
 ```
 
 ## Binding to a Worker
@@ -237,19 +255,28 @@ Bindings are defined in either the [Wrangler configuration file](https://develop
 
 Vectorize indexes are bound by name. A binding for an index named `production-doc-search` would resemble the below:
 
-* [  wrangler.jsonc ](#tab-panel-11170)
-* [  wrangler.toml ](#tab-panel-11171)
+* [  wrangler.jsonc ](#tab-panel-11465)
+* [  wrangler.toml ](#tab-panel-11466)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "vectorize": [
+    {
+      "binding": "PROD_SEARCH", // the index will be available as env.PROD_SEARCH in your Worker
+      "index_name": "production-doc-search",
+    },
+  ],
+}
 ```
-{  "vectorize": [    {      "binding": "PROD_SEARCH", // the index will be available as env.PROD_SEARCH in your Worker      "index_name": "production-doc-search",    },  ],}
-```
 
-TOML
+**TOML**
 
-```
-[[vectorize]]binding = "PROD_SEARCH"index_name = "production-doc-search"
+```toml
+[[vectorize]]
+binding = "PROD_SEARCH"
+index_name = "production-doc-search"
 ```
 
 Refer to the [bindings documentation](https://developers.cloudflare.com/workers/wrangler/configuration/#vectorize-indexes) for more details.

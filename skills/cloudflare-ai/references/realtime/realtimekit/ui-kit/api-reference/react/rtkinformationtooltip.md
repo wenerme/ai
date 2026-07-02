@@ -22,16 +22,28 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkInformationTooltip } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkInformationTooltip />;}
+
+
+function MyComponent() {
+  return <RtkInformationTooltip />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkInformationTooltip } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkInformationTooltip      iconPack={defaultIconPack}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkInformationTooltip
+      iconPack={defaultIconPack}
+    />
+  );
+}
 ```
 
 ```json

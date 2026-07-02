@@ -137,10 +137,14 @@ It can take between 15 minutes to several hours for data to appear on Facebook's
 
 Conversion ID and Conversion Label are usually provided by Google Ads as a "gtag script". Here's an example for a $1 USD conversion:
 
-JavaScript
+**JavaScript**
 
-```
-gtag("event", "conversion", {  send_to: "AW-123456789/AbC-D_efG-h12_34-567",  value: 1.0,  currency: "USD",});
+```js
+gtag("event", "conversion", {
+  send_to: "AW-123456789/AbC-D_efG-h12_34-567",
+  value: 1.0,
+  currency: "USD",
+});
 ```
 
 The Conversion ID is the first part of `send_to` parameter, without the `AW-`. In the above example it would be `123456789`. The Conversion Label is the second part of the `send_to` parameter, therefore `AbC-D_efG-h12_34-567` in the above example. When setting up your Google Ads conversions through Zaraz, take the information from the original scripts you were asked to implement.

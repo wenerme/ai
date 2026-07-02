@@ -91,25 +91,21 @@ Since proxying mail traffic through Cloudflare would break your mail services, C
 
 You can verify this behavior by querying your domain's MX records (replace `example.com` with your domain):
 
-Terminal window
-
-```
+```sh
 dig example.com mx +short
 ```
 
-```
+```sh
 100 _dc-mx.a1b2c3d4e5f6.example.com.
 ```
 
 The `_dc-mx` record resolves directly to your origin IP:
 
-Terminal window
-
-```
+```sh
 dig _dc-mx.a1b2c3d4e5f6.example.com a +short
 ```
 
-```
+```sh
 192.0.2.1
 ```
 

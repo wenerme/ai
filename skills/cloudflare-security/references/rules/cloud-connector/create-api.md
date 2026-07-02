@@ -28,7 +28,7 @@ A token with this permission is only valid for the Cloud Connector endpoints des
 
 To obtain the complete endpoint, append the Cloud Connector endpoints listed below to the Cloudflare API base URL:
 
-```
+```txt
 https://api.cloudflare.com/client/v4
 ```
 
@@ -53,14 +53,33 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloud Connector Read`
 * `Cloud Connector Write`
 
-Rules
+**Rules**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
+  --request GET \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
-```
-{  "result": [    {      "id": "<RULE_1_ID>",      "provider": "aws_s3",      "expression": "http.request.uri.path wildcard \"/images/*\"",      "description": "Connect to S3 bucket containing images",      "enabled": true,      "parameters": {        "host": "examplebucketwithimages.s3.north-eu.amazonaws.com"      }    }  ],  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": [
+    {
+      "id": "<RULE_1_ID>",
+      "provider": "aws_s3",
+      "expression": "http.request.uri.path wildcard \"/images/*\"",
+      "description": "Connect to S3 bucket containing images",
+      "enabled": true,
+      "parameters": {
+        "host": "examplebucketwithimages.s3.north-eu.amazonaws.com"
+      }
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 ### Create/update/delete Cloud Connector rules
@@ -76,10 +95,23 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cloud Connector Write`
 
-Put Rules
+**Put Rules**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '[    {        "expression": "http.request.uri.path wildcard \"/images/*\"",        "provider": "cloudflare_r2",        "description": "Connect to R2 bucket containing images",        "parameters": {            "host": "mybucketcustomdomain.example.com"        }    }  ]'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
+  --request PUT \
+  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+  --json '[
+    {
+        "expression": "http.request.uri.path wildcard \"/images/*\"",
+        "provider": "cloudflare_r2",
+        "description": "Connect to R2 bucket containing images",
+        "parameters": {
+            "host": "mybucketcustomdomain.example.com"
+        }
+    }
+  ]'
 ```
 
 The required body parameters for each rule are: `expression`, `provider`, and `parameters.host`.

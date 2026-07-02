@@ -55,14 +55,57 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-Update a zone entry point ruleset
+**Update a zone entry point ruleset**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "efb7b8c949ac4650a09736fc376e9aee"            },            "expression": "true",            "description": "Execute Cloudflare Managed Ruleset on my zone ruleset"        }    ]  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "rules": [
+        {
+            "action": "execute",
+            "action_parameters": {
+                "id": "efb7b8c949ac4650a09736fc376e9aee"
+            },
+            "expression": "true",
+            "description": "Execute Cloudflare Managed Ruleset on my zone ruleset"
+        }
+    ]
+  }'
 ```
 
-```
-{  "result": {    "id": "<ZONE_PHASE_RULESET_ID>",    "name": "Zone-level Ruleset 1",    "description": "",    "kind": "zone",    "version": "latest",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "efb7b8c949ac4650a09736fc376e9aee",          "version": "3"        },        "expression": "true",        "description": "Execute Cloudflare Managed Ruleset on my zone ruleset",        "last_updated": "2021-03-18T18:08:14.003361Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2021-03-18T18:08:14.003361Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
+```json
+{
+  "result": {
+    "id": "<ZONE_PHASE_RULESET_ID>",
+    "name": "Zone-level Ruleset 1",
+    "description": "",
+    "kind": "zone",
+    "version": "latest",
+    "rules": [
+      {
+        "id": "<RULE_ID>",
+        "version": "1",
+        "action": "execute",
+        "action_parameters": {
+          "id": "efb7b8c949ac4650a09736fc376e9aee",
+          "version": "3"
+        },
+        "expression": "true",
+        "description": "Execute Cloudflare Managed Ruleset on my zone ruleset",
+        "last_updated": "2021-03-18T18:08:14.003361Z",
+        "ref": "<RULE_REF>",
+        "enabled": true
+      }
+    ],
+    "last_updated": "2021-03-18T18:08:14.003361Z",
+    "phase": "http_request_firewall_managed"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
 ```
 
 Warning

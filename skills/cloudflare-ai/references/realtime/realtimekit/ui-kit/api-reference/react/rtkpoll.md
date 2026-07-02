@@ -28,16 +28,30 @@ A poll component. Shows a poll where a user can vote.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkPoll } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkPoll />;}
+
+
+function MyComponent() {
+  return <RtkPoll />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkPoll } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkPoll      permissions={rtkpermissionspreset}      poll={poll}      self="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkPoll
+      permissions={rtkpermissionspreset}
+      poll={poll}
+      self="example"
+    />
+  );
+}
 ```
 
 ```json

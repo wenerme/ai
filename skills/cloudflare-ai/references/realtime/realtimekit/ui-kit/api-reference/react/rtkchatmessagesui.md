@@ -30,16 +30,30 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkChatMessagesUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkChatMessagesUi />;}
+
+
+function MyComponent() {
+  return <RtkChatMessagesUi />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkChatMessagesUi } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkChatMessagesUi      canPinMessages={true}      messages={[]}      selectedGroup="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkChatMessagesUi
+      canPinMessages={true}
+      messages={[]}
+      selectedGroup="example"
+    />
+  );
+}
 ```
 
 ```json

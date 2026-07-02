@@ -24,22 +24,75 @@ Importantly, your Wrangler file must be updated to include the `KV` binding defi
 
 ## Worker code
 
-Embedded function calling example with KV API
+**Embedded function calling example with KV API**
 
-```
+```ts
 import { runWithTools } from "@cloudflare/ai-utils";
-type Env = {  AI: Ai;  KV: KVNamespace;};
-export default {  async fetch(request, env, ctx) {    // Define function    const updateKvValue = async ({      key,      value,    }: {      key: string;      value: string;    }) => {      const response = await env.KV.put(key, value);      return `Successfully updated key-value pair in database: ${response}`;    };
-    // Run AI inference with function calling    const response = await runWithTools(      env.AI,      "@hf/nousresearch/hermes-2-pro-mistral-7b",      {        messages: [          { role: "system", content: "Put user given values in KV" },          { role: "user", content: "Set the value of banana to yellow." },        ],        tools: [          {            name: "KV update",            description: "Update a key-value pair in the database",            parameters: {              type: "object",              properties: {                key: {                  type: "string",                  description: "The key to update",                },                value: {                  type: "string",                  description: "The value to update",                },              },              required: ["key", "value"],            },            function: updateKvValue,          },        ],      },    );    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
+
+
+type Env = {
+  AI: Ai;
+  KV: KVNamespace;
+};
+
+
+export default {
+  async fetch(request, env, ctx) {
+    // Define function
+    const updateKvValue = async ({
+      key,
+      value,
+    }: {
+      key: string;
+      value: string;
+    }) => {
+      const response = await env.KV.put(key, value);
+      return `Successfully updated key-value pair in database: ${response}`;
+    };
+
+
+    // Run AI inference with function calling
+    const response = await runWithTools(
+      env.AI,
+      "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      {
+        messages: [
+          { role: "system", content: "Put user given values in KV" },
+          { role: "user", content: "Set the value of banana to yellow." },
+        ],
+        tools: [
+          {
+            name: "KV update",
+            description: "Update a key-value pair in the database",
+            parameters: {
+              type: "object",
+              properties: {
+                key: {
+                  type: "string",
+                  description: "The key to update",
+                },
+                value: {
+                  type: "string",
+                  description: "The value to update",
+                },
+              },
+              required: ["key", "value"],
+            },
+            function: updateKvValue,
+          },
+        ],
+      },
+    );
+    return new Response(JSON.stringify(response));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Verify results
 
 To verify the results, run the following command
 
-Terminal window
-
-```
+```sh
 npx wrangler kv key get banana --binding KV --local
 ```
 

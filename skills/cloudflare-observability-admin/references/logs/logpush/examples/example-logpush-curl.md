@@ -29,10 +29,15 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Get ownership challenge
+**Get ownership challenge**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
+  }'
 ```
 
 ### Parameters
@@ -43,8 +48,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \  
 
 A challenge file will be written to the destination, and the filename will be in the response (the filename may be expressed as a path if appropriate for your destination). For example:
 
-```
-{  "success": true,  "errors": [],  "messages": [],  "result": {    "filename": "burritobot/logs/ownership-challenge.txt",    "valid": true,    "message": ""  }}
+```json
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "filename": "burritobot/logs/ownership-challenge.txt",
+    "valid": true,
+    "message": ""
+  }
+}
 ```
 
 You will need to provide the token contained in this file when creating a job in the next step.
@@ -60,10 +74,32 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Create Logpush job
+**Create Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<DOMAIN_NAME>",    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "dataset": "http_requests",    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    },    "ownership_challenge": "<OWNERSHIP_CHALLENGE_TOKEN>"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "<DOMAIN_NAME>",
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "dataset": "http_requests",
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    },
+    "ownership_challenge": "<OWNERSHIP_CHALLENGE_TOKEN>"
+  }'
 ```
 
 ### Parameters
@@ -84,8 +120,27 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --req
 
 In the response, you get a newly-created job ID. For example:
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": false,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": false,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 ## Step 3 - Enable (update) a job
@@ -97,16 +152,37 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Get Logpush job details
+**Get Logpush job details**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": false,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": false,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Note that by default a job is not enabled (`"enabled": false`).
@@ -118,10 +194,12 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-List Logpush jobs
+**List Logpush jobs**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Next, to enable the job, send an update request:
@@ -131,16 +209,40 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Update Logpush job
+**Update Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "enabled": true
+  }'
 ```
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "last_complete": null,    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "last_complete": null,
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Once the job is enabled, you will start receiving logs within a few minutes and then in batches as soon as possible until you disable the job. For zones with very high request volume, it may take several hours before you start receiving logs for the first time.
@@ -156,16 +258,37 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Get Logpush job details
+**Get Logpush job details**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "last_complete": "2018-08-09T21:26:00Z",    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "last_complete": "2018-08-09T21:26:00Z",
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 ## Optional - Delete a job
@@ -175,18 +298,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Delete Logpush job
+**Delete Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request DELETE \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Be careful when deleting a job because this action cannot be reversed.
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": {},  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {},
+  "success": true
+}
 ```
 
 ## Optional - Retrieve your job
@@ -198,16 +328,39 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Get Logpush job details
+**Get Logpush job details**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": [    {      "id": <JOB_ID>,      "dataset": "http_requests",      "kind": "",      "enabled": true,      "name": "<DOMAIN_NAME>",      "output_options": {        "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],        "timestamp_format": "rfc3339"      },      "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",      "last_complete": null,      "last_error": null,      "error_message": null    }  ],  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": <JOB_ID>,
+      "dataset": "http_requests",
+      "kind": "",
+      "enabled": true,
+      "name": "<DOMAIN_NAME>",
+      "output_options": {
+        "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+        "timestamp_format": "rfc3339"
+      },
+      "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+      "last_complete": null,
+      "last_error": null,
+      "error_message": null
+    }
+  ],
+  "success": true
+}
 ```
 
 Retrieve all jobs for all datasets:
@@ -217,16 +370,52 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-List Logpush jobs
+**List Logpush jobs**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": [    {      "id": <JOB_ID>,      "dataset": "spectrum_events",      "kind": "",      "enabled": true,      "name": "<DOMAIN_NAME>",      "output_options": {        "field_names": ["Application", "ClientAsn", "ClientIP", "ColoCode", "Event", "OriginIP", "Status"],      },      "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",      "last_complete": "2019-10-01T00:25:00Z",      "last_error": null,      "error_message": null    },    {      "id": <JOB_ID>,      "dataset": "http_requests",      "kind": "",      "enabled": false,      "name": "<DOMAIN_NAME>",      "output_options": {        "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],        "timestamp_format": "rfc3339"      },      "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",      "last_complete": "2019-09-24T21:15:00Z",      "last_error": null,      "error_message": null    }  ]}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": <JOB_ID>,
+      "dataset": "spectrum_events",
+      "kind": "",
+      "enabled": true,
+      "name": "<DOMAIN_NAME>",
+      "output_options": {
+        "field_names": ["Application", "ClientAsn", "ClientIP", "ColoCode", "Event", "OriginIP", "Status"],
+      },
+      "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+      "last_complete": "2019-10-01T00:25:00Z",
+      "last_error": null,
+      "error_message": null
+    },
+    {
+      "id": <JOB_ID>,
+      "dataset": "http_requests",
+      "kind": "",
+      "enabled": false,
+      "name": "<DOMAIN_NAME>",
+      "output_options": {
+        "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+        "timestamp_format": "rfc3339"
+      },
+      "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+      "last_complete": "2019-09-24T21:15:00Z",
+      "last_error": null,
+      "error_message": null
+    }
+  ]
+}
 ```
 
 ## Optional - Update **output\_options**
@@ -238,16 +427,37 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Get Logpush job details
+**Get Logpush job details**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request GET \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": "<DOMAIN_NAME>",    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "last_complete": "2021-12-14T19:56:49Z",    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": "<DOMAIN_NAME>",
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "last_complete": "2021-12-14T19:56:49Z",
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 Next, edit the **output\_options** as desired and create a `PUT` request. The following example enables the **CVE-2021-44228** redaction option.
@@ -257,18 +467,55 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-Update Logpush job
+**Update Logpush job**
 
-```
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "output_options": {        "field_names": [            "ClientIP",            "ClientRequestHost",            "ClientRequestMethod",            "ClientRequestURI",            "EdgeEndTimestamp",            "EdgeResponseBytes",            "EdgeResponseStatus",            "EdgeStartTimestamp",            "RayID"        ],        "timestamp_format": "rfc3339"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
+  --request PUT \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "output_options": {
+        "field_names": [
+            "ClientIP",
+            "ClientRequestHost",
+            "ClientRequestMethod",
+            "ClientRequestURI",
+            "EdgeEndTimestamp",
+            "EdgeResponseBytes",
+            "EdgeResponseStatus",
+            "EdgeStartTimestamp",
+            "RayID"
+        ],
+        "timestamp_format": "rfc3339"
+    }
+  }'
 ```
 
 Note that at this time, the **CVE-2021-44228** option is not available through the UI, and updating your Logpush job through the UI will remove this option.
 
 ### Response
 
-```
-{  "errors": [],  "messages": [],  "result": {    "id": <JOB_ID>,    "dataset": "http_requests",    "kind": "",    "enabled": true,    "name": null,    "output_options": {      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],      "timestamp_format": "rfc3339"    },    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",    "last_complete": "2021-12-14T20:02:19Z",    "last_error": null,    "error_message": null  },  "success": true}
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": <JOB_ID>,
+    "dataset": "http_requests",
+    "kind": "",
+    "enabled": true,
+    "name": null,
+    "output_options": {
+      "field_names": ["ClientIP", "ClientRequestHost", "ClientRequestMethod", "ClientRequestURI", "EdgeEndTimestamp","EdgeResponseBytes", "EdgeResponseStatus", "EdgeStartTimestamp", "RayID"],
+      "timestamp_format": "rfc3339"
+    },
+    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2",
+    "last_complete": "2021-12-14T20:02:19Z",
+    "last_error": null,
+    "error_message": null
+  },
+  "success": true
+}
 ```
 
 ```json

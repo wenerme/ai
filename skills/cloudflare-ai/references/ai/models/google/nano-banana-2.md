@@ -29,142 +29,241 @@ Google's second-generation image generation model with improved quality and spee
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-628)
-* [ cURL ](#tab-panel-629)
+* [ TypeScript ](#tab-panel-676)
+* [ cURL ](#tab-panel-677)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana-2',
+  {
+    prompt:
+      'A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights',
+    aspect_ratio: '16:9',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana-2',  {    prompt:      'A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights',    aspect_ratio: '16:9',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana-2",
+  "input": {
+    "prompt": "A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights",
+    "aspect_ratio": "16:9"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana-2",  "input": {    "prompt": "A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights",    "aspect_ratio": "16:9"  }}'
-```
-
-* [ Output ](#tab-panel-626)
-* [ Raw response ](#tab-panel-627)
+* [ Output ](#tab-panel-674)
+* [ Raw response ](#tab-panel-675)
 
 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Abstract Art**  — Modern abstract expressionist painting
 
-* [ TypeScript ](#tab-panel-632)
-* [ cURL ](#tab-panel-633)
+* [ TypeScript ](#tab-panel-680)
+* [ cURL ](#tab-panel-681)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana-2',
+  {
+    prompt:
+      'An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas',
+    aspect_ratio: '1:1',
+    output_format: 'png',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana-2',  {    prompt:      'An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas',    aspect_ratio: '1:1',    output_format: 'png',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana-2",
+  "input": {
+    "prompt": "An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas",
+    "aspect_ratio": "1:1",
+    "output_format": "png"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana-2",  "input": {    "prompt": "An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas",    "aspect_ratio": "1:1",    "output_format": "png"  }}'
-```
-
-* [ Output ](#tab-panel-630)
-* [ Raw response ](#tab-panel-631)
+* [ Output ](#tab-panel-678)
+* [ Raw response ](#tab-panel-679)
 
 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **With Google Search**  — Use web search grounding for current events
 
-* [ TypeScript ](#tab-panel-636)
-* [ cURL ](#tab-panel-637)
+* [ TypeScript ](#tab-panel-684)
+* [ cURL ](#tab-panel-685)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana-2',
+  {
+    prompt: 'An illustration of the latest Mars rover exploring the Martian surface',
+    aspect_ratio: '16:9',
+    google_search: true,
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana-2',  {    prompt: 'An illustration of the latest Mars rover exploring the Martian surface',    aspect_ratio: '16:9',    google_search: true,  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana-2",
+  "input": {
+    "prompt": "An illustration of the latest Mars rover exploring the Martian surface",
+    "aspect_ratio": "16:9",
+    "google_search": true
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana-2",  "input": {    "prompt": "An illustration of the latest Mars rover exploring the Martian surface",    "aspect_ratio": "16:9",    "google_search": true  }}'
-```
-
-* [ Output ](#tab-panel-634)
-* [ Raw response ](#tab-panel-635)
+* [ Output ](#tab-panel-682)
+* [ Raw response ](#tab-panel-683)
 
 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio
 
-* [ TypeScript ](#tab-panel-640)
-* [ cURL ](#tab-panel-641)
+* [ TypeScript ](#tab-panel-688)
+* [ cURL ](#tab-panel-689)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana-2',
+  {
+    prompt:
+      'A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry',
+    aspect_ratio: '3:4',
+    output_format: 'jpg',
+    resolution: '4K',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana-2',  {    prompt:      'A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry',    aspect_ratio: '3:4',    output_format: 'jpg',    resolution: '4K',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana-2",
+  "input": {
+    "prompt": "A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry",
+    "aspect_ratio": "3:4",
+    "output_format": "jpg",
+    "resolution": "4K"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana-2",  "input": {    "prompt": "A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry",    "aspect_ratio": "3:4",    "output_format": "jpg",    "resolution": "4K"  }}'
-```
-
-* [ Output ](#tab-panel-638)
-* [ Raw response ](#tab-panel-639)
+* [ Output ](#tab-panel-686)
+* [ Raw response ](#tab-panel-687)
 
 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-642)
-* [ Output ](#tab-panel-643)
-
-aspect\_ratio
-
-`string`enum: match\_input\_image, 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-
-google\_search
-
-`boolean`
-
-▶image\_input\[\]
-
-`array`maxItems: 3
-
-image\_search
-
-`boolean`
-
-output\_format
-
-`string`enum: jpg, png
+* [ Input ](#tab-panel-690)
+* [ Output ](#tab-panel-691)
 
 prompt
 
 `string`required
 
+▶image\_input\[\]
+
+`array`maxItems: 3
+
+aspect\_ratio
+
+`string`enum: match\_input\_image, 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
+
+output\_format
+
+`string`enum: jpg, png
+
 resolution
 
 `string`enum: 1K, 2K, 4K
+
+google\_search
+
+`boolean`
+
+image\_search
+
+`boolean`
 
 image
 

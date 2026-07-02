@@ -34,29 +34,44 @@ Renders a participant's video stream. Supports self-preview, remote participant 
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let videoView = RtkVideoView(participant: participant)view.addSubview(videoView)
+
+
+let videoView = RtkVideoView(participant: participant)
+view.addSubview(videoView)
 ```
 
 ### Self-preview
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let previewView = RtkVideoView(    participant: localParticipant,    showSelfPreview: true)view.addSubview(previewView)
+
+
+let previewView = RtkVideoView(
+    participant: localParticipant,
+    showSelfPreview: true
+)
+view.addSubview(previewView)
 ```
 
 ### Screen share
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let screenShareView = RtkVideoView(    participant: participant,    showScreenShare: true)view.addSubview(screenShareView)
+
+
+let screenShareView = RtkVideoView(
+    participant: participant,
+    showScreenShare: true
+)
+view.addSubview(screenShareView)
 ```
 
 ```json

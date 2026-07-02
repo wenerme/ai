@@ -84,20 +84,39 @@ Axiom provides separate OTLP endpoints for traces and logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11912)
-* [  wrangler.toml ](#tab-panel-11913)
+* [  wrangler.jsonc ](#tab-panel-12207)
+* [  wrangler.toml ](#tab-panel-12208)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["axiom-traces"]
+    },
+    "logs": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["axiom-logs"]
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["axiom-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["axiom-logs"]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truedestinations = [ "axiom-traces" ]
-[observability.logs]enabled = truedestinations = [ "axiom-logs" ]
+```toml
+[observability.traces]
+enabled = true
+destinations = [ "axiom-traces" ]
+
+
+[observability.logs]
+enabled = true
+destinations = [ "axiom-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

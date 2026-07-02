@@ -37,11 +37,18 @@ The maximum number of participants in the `active` map is one less than the grid
 
 Use `lastActiveSpeaker` to show the most recently active participant in your UI. Access the current active speaker with the `useRealtimeKitSelector` hook:
 
-TypeScript
+**TypeScript**
 
-```
-const activeSpeaker = useRealtimeKitSelector((meeting) => {  const activeSpeakerId = meeting.participants.lastActiveSpeaker;  return meeting.participants.joined.get(activeSpeakerId);});
-if (activeSpeaker) {  // Render the active speaker video}
+```ts
+const activeSpeaker = useRealtimeKitSelector((meeting) => {
+  const activeSpeakerId = meeting.participants.lastActiveSpeaker;
+  return meeting.participants.joined.get(activeSpeakerId);
+});
+
+
+if (activeSpeaker) {
+  // Render the active speaker video
+}
 ```
 
 The `useRealtimeKitSelector` hook automatically updates your component when the active speaker changes.
@@ -50,94 +57,131 @@ Refer to [Display participant videos](https://developers.cloudflare.com/realtime
 
 The SDK also emits an `activeSpeaker` event on `meeting.participants` when a different participant becomes the active speaker. For imperative updates or side effects, listen to this event:
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.on("activeSpeaker", ({ peerId, volume }) => {  const activeSpeaker = meeting.participants.joined.get(peerId);  // Update your UI or trigger side effects});
-```
-
-Use `lastActiveSpeaker` to show the most recently active participant in your UI.
-
-Access the `lastActiveSpeaker` property to get the participant ID, then retrieve the participant object from the joined participants map:
-
-TypeScript
-
-```
-const activeSpeakerId = meeting.participants.lastActiveSpeaker;const activeSpeaker = meeting.participants.joined.get(activeSpeakerId);
-if (activeSpeaker) {  // Render the active speaker video}
-```
-
-Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
-
-The SDK emits an `activeSpeaker` event on `meeting.participants` when a different participant becomes the active speaker:
-
-TypeScript
-
-```
-meeting.participants.on("activeSpeaker", ({ peerId, volume }) => {  const activeSpeaker = meeting.participants.joined.get(peerId);  // Update your UI to display the new active speaker});
+```ts
+meeting.participants.on("activeSpeaker", ({ peerId, volume }) => {
+  const activeSpeaker = meeting.participants.joined.get(peerId);
+  // Update your UI or trigger side effects
+});
 ```
 
 Use `lastActiveSpeaker` to show the most recently active participant in your UI.
 
 Access the `lastActiveSpeaker` property to get the participant ID, then retrieve the participant object from the joined participants map:
 
-TypeScript
+**TypeScript**
 
-```
-const activeSpeakerId = meeting.participants.lastActiveSpeaker;const activeSpeaker = meeting.participants.joined.get(activeSpeakerId);
-if (activeSpeaker) {  // Render the active speaker video}
+```ts
+const activeSpeakerId = meeting.participants.lastActiveSpeaker;
+const activeSpeaker = meeting.participants.joined.get(activeSpeakerId);
+
+
+if (activeSpeaker) {
+  // Render the active speaker video
+}
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits an `activeSpeaker` event on `meeting.participants` when a different participant becomes the active speaker:
 
-TypeScript
+**TypeScript**
 
+```ts
+meeting.participants.on("activeSpeaker", ({ peerId, volume }) => {
+  const activeSpeaker = meeting.participants.joined.get(peerId);
+  // Update your UI to display the new active speaker
+});
 ```
-meeting.participants.on("activeSpeaker", ({ peerId, volume }) => {  const activeSpeaker = meeting.participants.joined.get(peerId);  // Update your UI to display the new active speaker});
+
+Use `lastActiveSpeaker` to show the most recently active participant in your UI.
+
+Access the `lastActiveSpeaker` property to get the participant ID, then retrieve the participant object from the joined participants map:
+
+**TypeScript**
+
+```ts
+const activeSpeakerId = meeting.participants.lastActiveSpeaker;
+const activeSpeaker = meeting.participants.joined.get(activeSpeakerId);
+
+
+if (activeSpeaker) {
+  // Render the active speaker video
+}
+```
+
+Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
+
+The SDK emits an `activeSpeaker` event on `meeting.participants` when a different participant becomes the active speaker:
+
+**TypeScript**
+
+```ts
+meeting.participants.on("activeSpeaker", ({ peerId, volume }) => {
+  const activeSpeaker = meeting.participants.joined.get(peerId);
+  // Update your UI to display the new active speaker
+});
 ```
 
 Use `activeSpeaker` to show the most recently active participant in your UI.
 
 Access the `activeSpeaker` property to get the current active speaker:
 
-Kotlin
+**Kotlin**
 
-```
+```kotlin
 val activeSpeaker = meeting.participants.activeSpeaker
-if (activeSpeaker != null) {  // Render the active speaker video}
+
+
+if (activeSpeaker != null) {
+  // Render the active speaker video
+}
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits an event when a different participant becomes the active speaker. Listen to this event using `RtkParticipantsEventListener`:
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {    // Update your UI to display the new active speaker  }})
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {
+    // Update your UI to display the new active speaker
+  }
+})
 ```
 
 Use `activeSpeaker` to show the most recently active participant in your UI.
 
 Access the `activeSpeaker` property to get the current active speaker:
 
-Swift
+**Swift**
 
-```
+```swift
 let activeSpeaker = meeting.participants.activeSpeaker
-if let activeSpeaker = activeSpeaker {  // Render the active speaker video}
+
+
+if let activeSpeaker = activeSpeaker {
+  // Render the active speaker video
+}
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits an event when a different participant becomes the active speaker. Listen to this event by implementing `RtkParticipantsEventListener`:
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {    // Update your UI to display the new active speaker  }}
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onActiveSpeakerChanged(participant: RtkRemoteParticipant?) {
+    // Update your UI to display the new active speaker
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
@@ -145,10 +189,19 @@ Use `activeSpeaker` to show the most recently active participant in your UI.
 
 The Flutter SDK tracks active speakers through the `onActiveSpeakerChanged` event listener:
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onActiveSpeakerChanged(RtkRemoteParticipant? participant) {    if (participant != null) {      // Update your UI to display the new active speaker    }  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onActiveSpeakerChanged(RtkRemoteParticipant? participant) {
+    if (participant != null) {
+      // Update your UI to display the new active speaker
+    }
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
@@ -156,9 +209,16 @@ Refer to [Display participant videos](https://developers.cloudflare.com/realtime
 
 Use `lastActiveSpeaker` to show the most recently active participant in your UI. Access the current active speaker with the `useRealtimeKitSelector` hook:
 
-```
-const activeSpeaker = useRealtimeKitSelector((meeting) => {  const activeSpeakerId = meeting.participants.lastActiveSpeaker;  return meeting.participants.joined.get(activeSpeakerId);});
-if (activeSpeaker) {  // Render the active speaker video}
+```tsx
+const activeSpeaker = useRealtimeKitSelector((meeting) => {
+  const activeSpeakerId = meeting.participants.lastActiveSpeaker;
+  return meeting.participants.joined.get(activeSpeakerId);
+});
+
+
+if (activeSpeaker) {
+  // Render the active speaker video
+}
 ```
 
 The `useRealtimeKitSelector` hook automatically updates your component when the active speaker changes.
@@ -167,20 +227,31 @@ Refer to [Display participant videos](https://developers.cloudflare.com/realtime
 
 The SDK also emits an `activeSpeaker` event on `meeting.participants` when a different participant becomes the active speaker. For imperative updates or side effects, listen to this event:
 
-```
-meeting.participants.on("activeSpeaker", (participant) => {  // Update your UI or trigger side effects});
+```tsx
+meeting.participants.on("activeSpeaker", (participant) => {
+  // Update your UI or trigger side effects
+});
 ```
 
 ## Display multiple active speakers
 
 Use the `active` map to show multiple participants with prominent audio activity, typically in a grid layout. Access the current active participants with the `useRealtimeKitSelector` hook:
 
-TypeScript
+**TypeScript**
 
-```
-const activeMap = useRealtimeKitSelector(  (meeting) => meeting.participants.active,);
+```ts
+const activeMap = useRealtimeKitSelector(
+  (meeting) => meeting.participants.active,
+);
+
+
 const activeParticipants = activeMap.toArray();
-// Render active participants in your gridactiveParticipants.forEach((participant) => {  // Render participant video tile});
+
+
+// Render active participants in your grid
+activeParticipants.forEach((participant) => {
+  // Render participant video tile
+});
 ```
 
 The `useRealtimeKitSelector` hook automatically updates your component when the set of active speakers changes.
@@ -189,142 +260,220 @@ Refer to [Display participant videos](https://developers.cloudflare.com/realtime
 
 The SDK also emits a `participantsUpdate` event on the `active` map when the set of active speakers changes. For imperative updates or side effects when the `active` map changes, listen to this event:
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.active.on("participantsUpdate", () => {  const activeParticipants = meeting.participants.active.toArray();  // Perform side effects});
+```ts
+meeting.participants.active.on("participantsUpdate", () => {
+  const activeParticipants = meeting.participants.active.toArray();
+  // Perform side effects
+});
 ```
 
 (Optional) If your application needs to respond when a specific participant is added to or removed from the active map, listen for `participantJoined` and `participantLeft` on `meeting.participants.active` map.
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.active.on("participantJoined", (participant) => {  console.log("Participant added to active map:", participant.id);});
-meeting.participants.active.on("participantLeft", (participant) => {  console.log("Participant removed from active map:", participant.id);});
+```ts
+meeting.participants.active.on("participantJoined", (participant) => {
+  console.log("Participant added to active map:", participant.id);
+});
+
+
+meeting.participants.active.on("participantLeft", (participant) => {
+  console.log("Participant removed from active map:", participant.id);
+});
 ```
 
 Use the `active` map to show multiple participants with prominent audio activity, typically in a grid layout.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const activeParticipants = meeting.participants.active.toArray();
-// Render active participants in your gridactiveParticipants.forEach((participant) => {  // Render participant video tile});
+
+
+// Render active participants in your grid
+activeParticipants.forEach((participant) => {
+  // Render participant video tile
+});
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits a `participantsUpdate` event on the `active` map when the set of active speakers changes. Listen to this event, retrieve the updated array, and re-render your grid:
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.active.on("participantsUpdate", () => {  const activeParticipants = meeting.participants.active.toArray();  // Update your grid UI with the new active participants});
+```ts
+meeting.participants.active.on("participantsUpdate", () => {
+  const activeParticipants = meeting.participants.active.toArray();
+  // Update your grid UI with the new active participants
+});
 ```
 
 (Optional) If your application needs to respond when a specific participant is added to or removed from the active map, listen for `participantJoined` and `participantLeft` on `meeting.participants.active` map.
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.active.on("participantJoined", (participant) => {  console.log("Participant added to active map:", participant.id);});
-meeting.participants.active.on("participantLeft", (participant) => {  console.log("Participant removed from active map:", participant.id);});
+```ts
+meeting.participants.active.on("participantJoined", (participant) => {
+  console.log("Participant added to active map:", participant.id);
+});
+
+
+meeting.participants.active.on("participantLeft", (participant) => {
+  console.log("Participant removed from active map:", participant.id);
+});
 ```
 
 Use the `active` map to show multiple participants with prominent audio activity, typically in a grid layout.
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const activeParticipants = meeting.participants.active.toArray();
-// Render active participants in your gridactiveParticipants.forEach((participant) => {  // Render participant video tile});
+
+
+// Render active participants in your grid
+activeParticipants.forEach((participant) => {
+  // Render participant video tile
+});
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits a `participantsUpdate` event on the `active` map when the set of active speakers changes. Listen to this event, retrieve the updated array, and re-render your grid:
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.active.on("participantsUpdate", () => {  const activeParticipants = meeting.participants.active.toArray();  // Update your grid UI with the new active participants});
+```ts
+meeting.participants.active.on("participantsUpdate", () => {
+  const activeParticipants = meeting.participants.active.toArray();
+  // Update your grid UI with the new active participants
+});
 ```
 
 (Optional) If your application needs to respond when a specific participant is added to or removed from the active map, listen for `participantJoined` and `participantLeft` on `meeting.participants.active` map.
 
-TypeScript
+**TypeScript**
 
-```
-meeting.participants.active.on("participantJoined", (participant) => {  console.log("Participant added to active map:", participant.id);});
-meeting.participants.active.on("participantLeft", (participant) => {  console.log("Participant removed from active map:", participant.id);});
+```ts
+meeting.participants.active.on("participantJoined", (participant) => {
+  console.log("Participant added to active map:", participant.id);
+});
+
+
+meeting.participants.active.on("participantLeft", (participant) => {
+  console.log("Participant removed from active map:", participant.id);
+});
 ```
 
 Use the `active` list to show multiple participants with prominent audio activity, in a grid layout:
 
-Kotlin
+**Kotlin**
 
-```
+```kotlin
 val activeParticipants = meeting.participants.active
-// Render active participants in your gridactiveParticipants.forEach { participant ->  // Render participant video tile}
+
+
+// Render active participants in your grid
+activeParticipants.forEach { participant ->
+  // Render participant video tile
+}
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits an event when the set of active speakers changes. Listen to this event using `RtkParticipantsEventListener`:
 
-Kotlin
+**Kotlin**
 
-```
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onActiveParticipantsChanged(active: List<RtkRemoteParticipant>) {    // Update your grid UI with the new active participants  }})
+```kotlin
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
+  override fun onActiveParticipantsChanged(active: List<RtkRemoteParticipant>) {
+    // Update your grid UI with the new active participants
+  }
+})
 ```
 
 Use the `active` list to show multiple participants with prominent audio activity, typically in a grid layout:
 
-Swift
+**Swift**
 
-```
+```swift
 let activeParticipants = meeting.participants.active
-// Render active participants in your gridfor participant in activeParticipants {  // Render participant video tile}
+
+
+// Render active participants in your grid
+for participant in activeParticipants {
+  // Render participant video tile
+}
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits an event when the set of active speakers changes. Listen to this event by implementing `RtkParticipantsEventListener`:
 
-Swift
+**Swift**
 
-```
-extension MeetingViewModel: RtkParticipantsEventListener {  func onActiveParticipantsChanged(active: [RtkRemoteParticipant]) {    // Update your grid UI with the new active participants  }}
+```swift
+extension MeetingViewModel: RtkParticipantsEventListener {
+  func onActiveParticipantsChanged(active: [RtkRemoteParticipant]) {
+    // Update your grid UI with the new active participants
+  }
+}
+
+
 meeting.addParticipantsEventListener(self)
 ```
 
 Use the `active` list to show multiple participants with prominent audio activity, typically in a grid layout:
 
-Dart
+**Dart**
 
-```
+```dart
 final activeParticipants = meeting.participants.active;
-// Render active participants in your gridfor (var participant in activeParticipants) {  // Render participant video tile}
+
+
+// Render active participants in your grid
+for (var participant in activeParticipants) {
+  // Render participant video tile
+}
 ```
 
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 The SDK emits an event when the set of active speakers changes. Listen to this event using `RtkParticipantsEventListener`:
 
-Dart
+**Dart**
 
-```
-class ParticipantsNotifier extends RtkParticipantsEventListener {  @override  void onActiveParticipantsChanged(List<RtkRemoteParticipant> active) {    // Update your grid UI with the new active participants  }}
+```dart
+class ParticipantsNotifier extends RtkParticipantsEventListener {
+  @override
+  void onActiveParticipantsChanged(List<RtkRemoteParticipant> active) {
+    // Update your grid UI with the new active participants
+  }
+}
+
+
 meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
 Use the `active` map to show multiple participants with prominent audio activity, typically in a grid layout. Access the current active participants with the `useRealtimeKitSelector` hook:
 
-```
-const activeMap = useRealtimeKitSelector(  (meeting) => meeting.participants.active,);
+```tsx
+const activeMap = useRealtimeKitSelector(
+  (meeting) => meeting.participants.active,
+);
+
+
 const activeParticipants = activeMap.toArray();
-// Render active participants in your gridactiveParticipants.forEach((participant) => {  // Render participant video tile});
+
+
+// Render active participants in your grid
+activeParticipants.forEach((participant) => {
+  // Render participant video tile
+});
 ```
 
 The `useRealtimeKitSelector` hook automatically updates your component when the set of active speakers changes.
@@ -333,15 +482,24 @@ Refer to [Display participant videos](https://developers.cloudflare.com/realtime
 
 The SDK also emits a `participantsUpdate` event on the `active` map when the set of active speakers changes. For imperative updates or side effects when the `active` map changes, listen to this event:
 
-```
-meeting.participants.active.on("participantsUpdate", () => {  const activeParticipants = meeting.participants.active.toArray();  // Perform side effects});
+```tsx
+meeting.participants.active.on("participantsUpdate", () => {
+  const activeParticipants = meeting.participants.active.toArray();
+  // Perform side effects
+});
 ```
 
 (Optional) If your application needs to respond when a specific participant is added to or removed from the active map, listen for `participantJoined` and `participantLeft` on `meeting.participants.active` map:
 
-```
-meeting.participants.active.on("participantJoined", (participant) => {  console.log("Participant added to active map:", participant.id);});
-meeting.participants.active.on("participantLeft", (participant) => {  console.log("Participant removed from active map:", participant.id);});
+```tsx
+meeting.participants.active.on("participantJoined", (participant) => {
+  console.log("Participant added to active map:", participant.id);
+});
+
+
+meeting.participants.active.on("participantLeft", (participant) => {
+  console.log("Participant removed from active map:", participant.id);
+});
 ```
 
 ## Visualize audio activity

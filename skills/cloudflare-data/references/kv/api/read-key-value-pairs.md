@@ -14,21 +14,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get the value for a given key, call the `get()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9041)
-* [  Python ](#tab-panel-9042)
+* [  JavaScript ](#tab-panel-9332)
+* [  Python ](#tab-panel-9333)
 
-JavaScript
+**JavaScript**
 
+```js
+// Read individual key
+env.NAMESPACE.get(key);
+
+
+// Read multiple keys
+env.NAMESPACE.get(keys);
 ```
-// Read individual keyenv.NAMESPACE.get(key);
-// Read multiple keysenv.NAMESPACE.get(keys);
-```
 
-Python
+**Python**
 
-```
-# Read individual keyself.env.NAMESPACE.get(key)
-# Read multiple keysself.env.NAMESPACE.get(keys)
+```py
+# Read individual key
+self.env.NAMESPACE.get(key)
+
+
+# Read multiple keys
+self.env.NAMESPACE.get(keys)
 ```
 
 The `get()` method returns a promise you can `await` on to get the value.
@@ -37,28 +45,77 @@ If you request a single key as a string, you will get a single response in the p
 
 You can also request an array of keys. The return value with be a `Map` of the key-value pairs found, with keys not found having `null` values.
 
-* [  JavaScript ](#tab-panel-9043)
-* [  Python ](#tab-panel-9044)
+* [  JavaScript ](#tab-panel-9334)
+* [  Python ](#tab-panel-9335)
 
-JavaScript
+**JavaScript**
 
+```js
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      // Read single key, returns value or null
+      const value = await env.NAMESPACE.get("first-key");
+
+
+      // Read multiple keys, returns Map of values
+      const values = await env.NAMESPACE.get(["first-key", "second-key"]);
+
+
+      // Read single key with metadata, returns value or null
+      const valueWithMetadata = await env.NAMESPACE.getWithMetadata("first-key");
+
+
+      // Read multiple keys with metadata, returns Map of values
+      const valuesWithMetadata = await env.NAMESPACE.getWithMetadata(["first-key", "second-key"]);
+
+
+      return new Response({
+        value: value,
+        values: Object.fromEntries(values),
+        valueWithMetadata: valueWithMetadata,
+        valuesWithMetadata: Object.fromEntries(valuesWithMetadata)
+      });
+    } catch (e) {
+      return new Response(e.message, { status: 500 });
+    }
+  },
+};
 ```
-export default {  async fetch(request, env, ctx) {    try {      // Read single key, returns value or null      const value = await env.NAMESPACE.get("first-key");
-      // Read multiple keys, returns Map of values      const values = await env.NAMESPACE.get(["first-key", "second-key"]);
-      // Read single key with metadata, returns value or null      const valueWithMetadata = await env.NAMESPACE.getWithMetadata("first-key");
-      // Read multiple keys with metadata, returns Map of values      const valuesWithMetadata = await env.NAMESPACE.getWithMetadata(["first-key", "second-key"]);
-      return new Response({        value: value,        values: Object.fromEntries(values),        valueWithMetadata: valueWithMetadata,        valuesWithMetadata: Object.fromEntries(valuesWithMetadata)      });    } catch (e) {      return new Response(e.message, { status: 500 });    }  },};
-```
 
-Python
+**Python**
 
-```
+```py
 from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def fetch(self, request):        try:            # Read single key, returns value or None            value = await self.env.NAMESPACE.get("first-key")
-            # Read multiple keys, returns dict of values            values = await self.env.NAMESPACE.get(["first-key", "second-key"])
-            # Read single key with metadata            value_with_metadata = await self.env.NAMESPACE.getWithMetadata("first-key")
-            # Read multiple keys with metadata            values_with_metadata = await self.env.NAMESPACE.getWithMetadata(["first-key", "second-key"])
-            return Response.json({                "value": value,                "values": values,                "valueWithMetadata": value_with_metadata,                "valuesWithMetadata": values_with_metadata,            })        except Exception as e:            return Response(str(e), status=500)
+
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        try:
+            # Read single key, returns value or None
+            value = await self.env.NAMESPACE.get("first-key")
+
+
+            # Read multiple keys, returns dict of values
+            values = await self.env.NAMESPACE.get(["first-key", "second-key"])
+
+
+            # Read single key with metadata
+            value_with_metadata = await self.env.NAMESPACE.getWithMetadata("first-key")
+
+
+            # Read multiple keys with metadata
+            values_with_metadata = await self.env.NAMESPACE.getWithMetadata(["first-key", "second-key"])
+
+
+            return Response.json({
+                "value": value,
+                "values": values,
+                "valueWithMetadata": value_with_metadata,
+                "valuesWithMetadata": values_with_metadata,
+            })
+        except Exception as e:
+            return Response(str(e), status=500)
 ```
 
 Note
@@ -83,19 +140,23 @@ Use the `get()` method to get a single value, or multiple values if given multip
 
 To get the value for a single key, call the `get()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9045)
-* [  Python ](#tab-panel-9046)
+* [  JavaScript ](#tab-panel-9336)
+* [  Python ](#tab-panel-9337)
 
-JavaScript
+**JavaScript**
 
+```js
+env.NAMESPACE.get(key, type?);
+// OR
+env.NAMESPACE.get(key, options?);
 ```
-env.NAMESPACE.get(key, type?);// ORenv.NAMESPACE.get(key, options?);
-```
 
-Python
+**Python**
 
-```
-self.env.NAMESPACE.get(key, type)# ORself.env.NAMESPACE.get(key, options)
+```py
+self.env.NAMESPACE.get(key, type)
+# OR
+self.env.NAMESPACE.get(key, options)
 ```
 
 ##### Parameters
@@ -120,19 +181,23 @@ self.env.NAMESPACE.get(key, type)# ORself.env.NAMESPACE.get(key, options)
 
 To get the values for multiple keys, call the `get()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9047)
-* [  Python ](#tab-panel-9048)
+* [  JavaScript ](#tab-panel-9338)
+* [  Python ](#tab-panel-9339)
 
-JavaScript
+**JavaScript**
 
+```js
+env.NAMESPACE.get(keys, type?);
+// OR
+env.NAMESPACE.get(keys, options?);
 ```
-env.NAMESPACE.get(keys, type?);// ORenv.NAMESPACE.get(keys, options?);
-```
 
-Python
+**Python**
 
-```
-self.env.NAMESPACE.get(keys, type)# ORself.env.NAMESPACE.get(keys, options)
+```py
+self.env.NAMESPACE.get(keys, type)
+# OR
+self.env.NAMESPACE.get(keys, options)
 ```
 
 ##### Parameters
@@ -168,19 +233,23 @@ Use the `getWithMetadata()` method to get a single value along with its metadata
 
 To get the value for a given key along with its metadata, call the `getWithMetadata()` method on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9049)
-* [  Python ](#tab-panel-9050)
+* [  JavaScript ](#tab-panel-9340)
+* [  Python ](#tab-panel-9341)
 
-JavaScript
+**JavaScript**
 
+```js
+env.NAMESPACE.getWithMetadata(key, type?);
+// OR
+env.NAMESPACE.getWithMetadata(key, options?);
 ```
-env.NAMESPACE.getWithMetadata(key, type?);// ORenv.NAMESPACE.getWithMetadata(key, options?);
-```
 
-Python
+**Python**
 
-```
-self.env.NAMESPACE.getWithMetadata(key, type)# ORself.env.NAMESPACE.getWithMetadata(key, options)
+```py
+self.env.NAMESPACE.getWithMetadata(key, type)
+# OR
+self.env.NAMESPACE.getWithMetadata(key, options)
 ```
 
 Metadata is a serializable value you append to each KV entry.
@@ -210,19 +279,23 @@ If there is no metadata associated with the requested key-value pair, `null` wil
 
 To get the values for a given set of keys along with their metadata, call the `getWithMetadata()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9051)
-* [  Python ](#tab-panel-9052)
+* [  JavaScript ](#tab-panel-9342)
+* [  Python ](#tab-panel-9343)
 
-JavaScript
+**JavaScript**
 
+```js
+env.NAMESPACE.getWithMetadata(keys, type?);
+// OR
+env.NAMESPACE.getWithMetadata(keys, options?);
 ```
-env.NAMESPACE.getWithMetadata(keys, type?);// ORenv.NAMESPACE.getWithMetadata(keys, options?);
-```
 
-Python
+**Python**
 
-```
-self.env.NAMESPACE.getWithMetadata(keys, type)# ORself.env.NAMESPACE.getWithMetadata(keys, options)
+```py
+self.env.NAMESPACE.getWithMetadata(keys, type)
+# OR
+self.env.NAMESPACE.getWithMetadata(keys, options)
 ```
 
 ##### Parameters
@@ -289,14 +362,20 @@ If you have a set of related key-value pairs that have a mixed usage pattern (so
 
 One coalescing technique is to make all the keys and values part of a super key-value object. An example is shown below.
 
-```
-key1: value1key2: value2key3: value3
+```plaintext
+key1: value1
+key2: value2
+key3: value3
 ```
 
 becomes
 
-```
-coalesced: {  key1: value1,  key2: value2,  key3: value3,}
+```plaintext
+coalesced: {
+  key1: value1,
+  key2: value2,
+  key3: value3,
+}
 ```
 
 By coalescing the values, the cold keys benefit from being kept warm in the cache because of access patterns of the warmer keys.

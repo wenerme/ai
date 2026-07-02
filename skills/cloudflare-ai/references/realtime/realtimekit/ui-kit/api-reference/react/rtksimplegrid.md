@@ -32,16 +32,30 @@ A grid component which renders only the participants in a simple grid.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSimpleGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSimpleGrid />;}
+
+
+function MyComponent() {
+  return <RtkSimpleGrid />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSimpleGrid } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSimpleGrid      aspectRatio="example"      gap={42}      meeting={meeting}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSimpleGrid
+      aspectRatio="example"
+      gap={42}
+      meeting={meeting}
+    />
+  );
+}
 ```
 
 ```json

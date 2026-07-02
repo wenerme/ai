@@ -32,21 +32,31 @@ A circular avatar view that displays a participant's profile image or name initi
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let avatarView = RtkAvatarView(participant: participant)view.addSubview(avatarView)
+
+
+let avatarView = RtkAvatarView(participant: participant)
+view.addSubview(avatarView)
 ```
 
 ### Update participant
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let avatarView = RtkAvatarView(participant: participant)view.addSubview(avatarView)
-// Update to a different participantavatarView.set(participant: newParticipant)avatarView.refresh()
+
+
+let avatarView = RtkAvatarView(participant: participant)
+view.addSubview(avatarView)
+
+
+// Update to a different participant
+avatarView.set(participant: newParticipant)
+avatarView.refresh()
 ```
 
 ```json

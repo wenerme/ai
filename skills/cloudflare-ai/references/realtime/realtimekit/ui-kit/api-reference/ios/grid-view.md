@@ -35,21 +35,48 @@ A generic grid layout view that arranges child views in a responsive grid. Suppo
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let gridView = GridView(    maxItems: 6,    showingCurrently: 4,    getChildView: {        return CellContainerView()    })view.addSubview(gridView)
+
+
+let gridView = GridView(
+    maxItems: 6,
+    showingCurrently: 4,
+    getChildView: {
+        return CellContainerView()
+    }
+)
+view.addSubview(gridView)
 ```
 
 ### Update layout
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let gridView = GridView(    maxItems: 9,    showingCurrently: 3,    getChildView: {        return CellContainerView()    })view.addSubview(gridView)
-// Update layout with animationgridView.settingFrames(    visibleItemCount: 4,    animation: true,    completion: {        print("Layout updated")    })
+
+
+let gridView = GridView(
+    maxItems: 9,
+    showingCurrently: 3,
+    getChildView: {
+        return CellContainerView()
+    }
+)
+view.addSubview(gridView)
+
+
+// Update layout with animation
+gridView.settingFrames(
+    visibleItemCount: 4,
+    animation: true,
+    completion: {
+        print("Layout updated")
+    }
+)
 ```
 
 ```json

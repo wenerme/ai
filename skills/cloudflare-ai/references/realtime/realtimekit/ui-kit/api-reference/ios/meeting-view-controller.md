@@ -41,23 +41,55 @@ Implement this protocol to provide custom UI sections within the meeting screen.
 
 ### Basic Usage
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let meetingVC = MeetingViewController(    meeting: rtkClient,    completion: {        self.dismiss(animated: true)    })meetingVC.modalPresentationStyle = .fullScreenself.present(meetingVC, animated: true)
+
+
+let meetingVC = MeetingViewController(
+    meeting: rtkClient,
+    completion: {
+        self.dismiss(animated: true)
+    }
+)
+meetingVC.modalPresentationStyle = .fullScreen
+self.present(meetingVC, animated: true)
 ```
 
 ### With custom data source
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-class CustomDataSource: MeetingViewControllerDataSource {    func getTopbar(viewController: MeetingViewController) -> RtkMeetingHeaderView? {        return RtkMeetingHeaderView(meeting: rtkClient)    }
-    func getMiddleView(viewController: MeetingViewController) -> UIView? {        return nil    }
-    func getBottomTabbar(viewController: MeetingViewController) -> RtkMeetingControlBar? {        return nil    }}
-let meetingVC = MeetingViewController(    meeting: rtkClient,    completion: {        self.dismiss(animated: true)    })meetingVC.dataSource = CustomDataSource()self.present(meetingVC, animated: true)
+
+
+class CustomDataSource: MeetingViewControllerDataSource {
+    func getTopbar(viewController: MeetingViewController) -> RtkMeetingHeaderView? {
+        return RtkMeetingHeaderView(meeting: rtkClient)
+    }
+
+
+    func getMiddleView(viewController: MeetingViewController) -> UIView? {
+        return nil
+    }
+
+
+    func getBottomTabbar(viewController: MeetingViewController) -> RtkMeetingControlBar? {
+        return nil
+    }
+}
+
+
+let meetingVC = MeetingViewController(
+    meeting: rtkClient,
+    completion: {
+        self.dismiss(animated: true)
+    }
+)
+meetingVC.dataSource = CustomDataSource()
+self.present(meetingVC, animated: true)
 ```
 
 ```json

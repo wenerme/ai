@@ -26,21 +26,47 @@ A stream-stall watchdog abort (`chatStreamStallTimeoutMs`) is treated as just an
 
 Configure bounded recovery by setting `chatRecovery` to an object:
 
-* [  JavaScript ](#tab-panel-5695)
-* [  TypeScript ](#tab-panel-5696)
+* [  JavaScript ](#tab-panel-5871)
+* [  TypeScript ](#tab-panel-5872)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  chatRecovery = {
+    maxAttempts: 6,
+    stableTimeoutMs: 10_000,
+    terminalMessage: "The assistant was interrupted and could not recover.",
+    async onExhausted(ctx) {
+      console.warn("Chat recovery exhausted", ctx.incidentId);
+    },
+  };
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
-export class MyAgent extends Think {  chatRecovery = {    maxAttempts: 6,    stableTimeoutMs: 10_000,    terminalMessage: "The assistant was interrupted and could not recover.",    async onExhausted(ctx) {      console.warn("Chat recovery exhausted", ctx.incidentId);    },  };
-  getModel() {    /* ... */  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Think<Env> {  override chatRecovery = {    maxAttempts: 6,    stableTimeoutMs: 10_000,    terminalMessage: "The assistant was interrupted and could not recover.",    async onExhausted(ctx) {      console.warn("Chat recovery exhausted", ctx.incidentId);    },  };
-  getModel() {    /* ... */  }}
+```ts
+export class MyAgent extends Think<Env> {
+  override chatRecovery = {
+    maxAttempts: 6,
+    stableTimeoutMs: 10_000,
+    terminalMessage: "The assistant was interrupted and could not recover.",
+    async onExhausted(ctx) {
+      console.warn("Chat recovery exhausted", ctx.incidentId);
+    },
+  };
+
+
+  getModel() {
+    /* ... */
+  }
+}
 ```
 
 The same recovery events are available through `agents/observability` on the `chat` channel; transcript repairs are emitted on the `transcript` channel. Refer to [Observability](https://developers.cloudflare.com/agents/runtime/operations/observability/#chat-recovery-events).
@@ -49,22 +75,49 @@ The same recovery events are available through `agents/observability` on the `ch
 
 Override `onChatRecovery` when you need provider-specific recovery, such as retrieving a stored OpenAI Responses result instead of issuing a new model call:
 
-* [  JavaScript ](#tab-panel-5699)
-* [  TypeScript ](#tab-panel-5700)
+* [  JavaScript ](#tab-panel-5875)
+* [  TypeScript ](#tab-panel-5876)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  chatRecovery = {
+    maxAttempts: 10,
+    terminalMessage: "The assistant was interrupted. Please try again.",
+  };
+
+
+  async onChatRecovery(ctx) {
+    console.log("Recovering chat turn", ctx.incidentId, ctx.attempt);
+    return {}; // persist partial output and continue/retry when possible
+  }
+}
 ```
-export class MyAgent extends Think {  chatRecovery = {    maxAttempts: 10,    terminalMessage: "The assistant was interrupted. Please try again.",  };
-  async onChatRecovery(ctx) {    console.log("Recovering chat turn", ctx.incidentId, ctx.attempt);    return {}; // persist partial output and continue/retry when possible  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import type {  ChatRecoveryContext,  ChatRecoveryOptions,} from "@cloudflare/think";
-export class MyAgent extends Think<Env> {  override chatRecovery = {    maxAttempts: 10,    terminalMessage: "The assistant was interrupted. Please try again.",  };
-  override async onChatRecovery(    ctx: ChatRecoveryContext,  ): Promise<ChatRecoveryOptions> {    console.log("Recovering chat turn", ctx.incidentId, ctx.attempt);    return {}; // persist partial output and continue/retry when possible  }}
+```ts
+import type {
+  ChatRecoveryContext,
+  ChatRecoveryOptions,
+} from "@cloudflare/think";
+
+
+export class MyAgent extends Think<Env> {
+  override chatRecovery = {
+    maxAttempts: 10,
+    terminalMessage: "The assistant was interrupted. Please try again.",
+  };
+
+
+  override async onChatRecovery(
+    ctx: ChatRecoveryContext,
+  ): Promise<ChatRecoveryOptions> {
+    console.log("Recovering chat turn", ctx.incidentId, ctx.attempt);
+    return {}; // persist partial output and continue/retry when possible
+  }
+}
 ```
 
 ### ChatRecoveryContext
@@ -96,10 +149,15 @@ With `persist: true`, the partial message is saved. With `continue: true`, Think
 
 For pre-stream interruptions, where `ctx.streamId === ""` and `ctx.partialText === ""` but the latest persisted message is still the unanswered user message, Think retries that turn automatically unless `continue` is `false`.
 
-TypeScript
+**TypeScript**
 
-```
-onChatRecovery(ctx: ChatRecoveryContext): ChatRecoveryOptions {  if (!ctx.streamId && !ctx.partialText) {    console.log("Recovering a pre-stream interruption");  }  return {};}
+```ts
+onChatRecovery(ctx: ChatRecoveryContext): ChatRecoveryOptions {
+  if (!ctx.streamId && !ctx.partialText) {
+    console.log("Recovering a pre-stream interruption");
+  }
+  return {};
+}
 ```
 
 Use `ctx.createdAt` to skip stale recoveries. For example, if the interrupted turn is older than a few minutes, return `{ continue: false }` so the partial response is preserved without starting an old continuation.
@@ -108,19 +166,53 @@ Use `ctx.createdAt` to skip stale recoveries. For example, if the interrupted tu
 
 Instead of `chatRecovery = true`, assign an object to tune how long recovery is allowed to run and when it is given up on. A turn that keeps making forward progress is never terminated by the framework on its own — duration is not a bound. Recovery is only sealed by one of the limits in the following table.
 
-* [  JavaScript ](#tab-panel-5703)
-* [  TypeScript ](#tab-panel-5704)
+* [  JavaScript ](#tab-panel-5879)
+* [  TypeScript ](#tab-panel-5880)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  chatRecovery = {
+    maxAttempts: 10,
+    noProgressTimeoutMs: 5 * 60 * 1000,
+    maxRecoveryWork: Infinity,
+    terminalMessage: "The assistant was interrupted and could not recover.",
+    // Consulted from the second recovery attempt onward. Return false to stop.
+    // Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the
+    // agent instance — track real token/cost spend in your own store keyed by
+    // `ctx.recoveryRootRequestId`.
+    async shouldKeepRecovering(ctx) {
+      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;
+    },
+    async onExhausted(ctx) {
+      console.warn("Recovery exhausted", ctx.incidentId, ctx.reason);
+    },
+  };
+}
 ```
-export class MyAgent extends Think {  chatRecovery = {    maxAttempts: 10,    noProgressTimeoutMs: 5 * 60 * 1000,    maxRecoveryWork: Infinity,    terminalMessage: "The assistant was interrupted and could not recover.",    // Consulted from the second recovery attempt onward. Return false to stop.    // Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the    // agent instance — track real token/cost spend in your own store keyed by    // `ctx.recoveryRootRequestId`.    async shouldKeepRecovering(ctx) {      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;    },    async onExhausted(ctx) {      console.warn("Recovery exhausted", ctx.incidentId, ctx.reason);    },  };}
-```
 
-TypeScript
+**TypeScript**
 
-```
-export class MyAgent extends Think<Env> {  override chatRecovery = {    maxAttempts: 10,    noProgressTimeoutMs: 5 * 60 * 1000,    maxRecoveryWork: Infinity,    terminalMessage: "The assistant was interrupted and could not recover.",    // Consulted from the second recovery attempt onward. Return false to stop.    // Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the    // agent instance — track real token/cost spend in your own store keyed by    // `ctx.recoveryRootRequestId`.    async shouldKeepRecovering(ctx) {      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;    },    async onExhausted(ctx) {      console.warn("Recovery exhausted", ctx.incidentId, ctx.reason);    },  };}
+```ts
+export class MyAgent extends Think<Env> {
+  override chatRecovery = {
+    maxAttempts: 10,
+    noProgressTimeoutMs: 5 * 60 * 1000,
+    maxRecoveryWork: Infinity,
+    terminalMessage: "The assistant was interrupted and could not recover.",
+    // Consulted from the second recovery attempt onward. Return false to stop.
+    // Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the
+    // agent instance — track real token/cost spend in your own store keyed by
+    // `ctx.recoveryRootRequestId`.
+    async shouldKeepRecovering(ctx) {
+      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;
+    },
+    async onExhausted(ctx) {
+      console.warn("Recovery exhausted", ctx.incidentId, ctx.reason);
+    },
+  };
+}
 ```
 
 | Field                | Default          | Description                                                                                                                                                                     |
@@ -141,20 +233,46 @@ When a turn is interrupted mid-flight, the transcript can contain a tool call wi
 
 Override `repairInterruptedToolPart` to customize the repaired shape. The common case is a client-resolved tool — for example an `ask_user` question that has no server `execute` and is normally answered by the user's next message. Converting it to a plain text part lets the model treat it as ordinary conversation rather than a tool error, and keeps the question verbatim through compaction:
 
-* [  JavaScript ](#tab-panel-5705)
-* [  TypeScript ](#tab-panel-5706)
+* [  JavaScript ](#tab-panel-5881)
+* [  TypeScript ](#tab-panel-5882)
 
-JavaScript
+**JavaScript**
 
+```js
+export class MyAgent extends Think {
+  repairInterruptedToolPart(part) {
+    const record = part;
+    if (record.type === "tool-ask_user") {
+      const input = record.input;
+      if (input?.prompt) {
+        return { type: "text", text: input.prompt };
+      }
+    }
+    return super.repairInterruptedToolPart(part);
+  }
+}
 ```
-export class MyAgent extends Think {  repairInterruptedToolPart(part) {    const record = part;    if (record.type === "tool-ask_user") {      const input = record.input;      if (input?.prompt) {        return { type: "text", text: input.prompt };      }    }    return super.repairInterruptedToolPart(part);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import type { UIMessage } from "ai";
-export class MyAgent extends Think<Env> {  protected override repairInterruptedToolPart(    part: UIMessage["parts"][number],  ): UIMessage["parts"][number] {    const record = part as Record<string, unknown>;    if (record.type === "tool-ask_user") {      const input = record.input as { prompt?: string } | undefined;      if (input?.prompt) {        return { type: "text", text: input.prompt };      }    }    return super.repairInterruptedToolPart(part);  }}
+
+
+export class MyAgent extends Think<Env> {
+  protected override repairInterruptedToolPart(
+    part: UIMessage["parts"][number],
+  ): UIMessage["parts"][number] {
+    const record = part as Record<string, unknown>;
+    if (record.type === "tool-ask_user") {
+      const input = record.input as { prompt?: string } | undefined;
+      if (input?.prompt) {
+        return { type: "text", text: input.prompt };
+      }
+    }
+    return super.repairInterruptedToolPart(part);
+  }
+}
 ```
 
 This runs during transcript repair — before the repaired transcript is persisted and sent to the model — so the conversion shapes the current turn, not just the next one. The `input` is already normalized to a valid object. A returned tool part must carry a settled result (`output-available`, `output-error`, or `output-denied`); returning a non-tool part such as text is also fine.
@@ -167,44 +285,80 @@ Think recovers from this with two opt-in, provider-agnostic layers, both configu
 
 **1\. Reactive backstop — `contextOverflow.reactive`.** When a turn fails with an error you classify as `"context_overflow"`, Think discards the truncated partial, runs `session.compact()`, and re-runs the turn from the compacted history. The partial is not persisted: the turn restarts from scratch, so keeping the cut-off assistant message would orphan it beside the recovered answer. It is bounded by `contextOverflow.maxRetries` (default `1`); if compaction cannot shorten history or the budget is spent, the overflow surfaces terminally through `onChatError` with `classification: "context_overflow"` — it never loops or ends silently.
 
-* [  JavaScript ](#tab-panel-5697)
-* [  TypeScript ](#tab-panel-5698)
+* [  JavaScript ](#tab-panel-5873)
+* [  TypeScript ](#tab-panel-5874)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think {  contextOverflow = { reactive: true };
-  // The bundled classifier covers the common providers (Anthropic, OpenAI,  // Google, Bedrock, …). Assign it directly, or write your own.  classifyChatError = defaultContextOverflowClassifier;}
+
+
+export class MyAgent extends Think {
+  contextOverflow = { reactive: true };
+
+
+  // The bundled classifier covers the common providers (Anthropic, OpenAI,
+  // Google, Bedrock, …). Assign it directly, or write your own.
+  classifyChatError = defaultContextOverflowClassifier;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think<Env> {  override contextOverflow = { reactive: true };
-  // The bundled classifier covers the common providers (Anthropic, OpenAI,  // Google, Bedrock, …). Assign it directly, or write your own.  override classifyChatError = defaultContextOverflowClassifier;}
+
+
+export class MyAgent extends Think<Env> {
+  override contextOverflow = { reactive: true };
+
+
+  // The bundled classifier covers the common providers (Anthropic, OpenAI,
+  // Google, Bedrock, …). Assign it directly, or write your own.
+  override classifyChatError = defaultContextOverflowClassifier;
+}
 ```
 
 **2\. Proactive guard — `contextOverflow.proactive`.** Heads off the provider error before it happens. Before each step, Think reads the previous step's model-reported `usage.inputTokens` (provider-agnostic) and, if it crosses `maxInputTokens * (headroom ?? 0.9)`, compacts in place and feeds the recompacted history into the upcoming step. If a provider omits `inputTokens`, it falls back to `usage.totalTokens` (a safe over-approximation — it compacts slightly early rather than missing the threshold). It compacts at most `proactive.maxCompactions` times per turn (default `1`) — independent of the reactive `maxRetries` budget — so a history that cannot shorten does not compact on every step.
 
-* [  JavaScript ](#tab-panel-5701)
-* [  TypeScript ](#tab-panel-5702)
+* [  JavaScript ](#tab-panel-5877)
+* [  TypeScript ](#tab-panel-5878)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think {  contextOverflow = {    reactive: true,    // Compact mid-turn once a step approaches 90% of a 200K window.    proactive: { maxInputTokens: 200_000 },  };
-  classifyChatError = defaultContextOverflowClassifier;}
+
+
+export class MyAgent extends Think {
+  contextOverflow = {
+    reactive: true,
+    // Compact mid-turn once a step approaches 90% of a 200K window.
+    proactive: { maxInputTokens: 200_000 },
+  };
+
+
+  classifyChatError = defaultContextOverflowClassifier;
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
-export class MyAgent extends Think<Env> {  override contextOverflow = {    reactive: true,    // Compact mid-turn once a step approaches 90% of a 200K window.    proactive: { maxInputTokens: 200_000 },  };
-  override classifyChatError = defaultContextOverflowClassifier;}
+
+
+export class MyAgent extends Think<Env> {
+  override contextOverflow = {
+    reactive: true,
+    // Compact mid-turn once a step approaches 90% of a 200K window.
+    proactive: { maxInputTokens: 200_000 },
+  };
+
+
+  override classifyChatError = defaultContextOverflowClassifier;
+}
 ```
 
 Use either layer alone, or both together: the proactive guard avoids most overflows, and the reactive backstop catches any that still slip through (for example, a turn that starts already over budget, or a single tool result so large that compaction cannot help — in which case it terminalizes cleanly). Both apply to every turn entry path (WebSocket, sub-agent `chat()`, and programmatic `saveMessages()` / `submitMessages()`), and both emit a `chat:context:compacted` [observability event](https://developers.cloudflare.com/agents/runtime/operations/observability/#chat-context-events).
@@ -223,9 +377,9 @@ Think provides methods to check if the agent is in a stable state — no pending
 
 Returns `true` if any assistant message has pending tool calls (tools without results or pending approvals).
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 protected hasPendingInteraction(): boolean
 ```
 
@@ -233,19 +387,37 @@ protected hasPendingInteraction(): boolean
 
 Returns a promise that resolves to `true` when the agent reaches a stable state, or `false` if the timeout is exceeded.
 
-* [  JavaScript ](#tab-panel-5707)
-* [  TypeScript ](#tab-panel-5708)
+* [  JavaScript ](#tab-panel-5883)
+* [  TypeScript ](#tab-panel-5884)
 
-JavaScript
+**JavaScript**
 
+```js
+const stable = await this.waitUntilStable({ timeout: 30_000 });
+if (stable) {
+  await this.saveMessages([
+    {
+      id: crypto.randomUUID(),
+      role: "user",
+      parts: [{ type: "text", text: "Now that you are done, summarize." }],
+    },
+  ]);
+}
 ```
-const stable = await this.waitUntilStable({ timeout: 30_000 });if (stable) {  await this.saveMessages([    {      id: crypto.randomUUID(),      role: "user",      parts: [{ type: "text", text: "Now that you are done, summarize." }],    },  ]);}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const stable = await this.waitUntilStable({ timeout: 30_000 });if (stable) {  await this.saveMessages([    {      id: crypto.randomUUID(),      role: "user",      parts: [{ type: "text", text: "Now that you are done, summarize." }],    },  ]);}
+```ts
+const stable = await this.waitUntilStable({ timeout: 30_000 });
+if (stable) {
+  await this.saveMessages([
+    {
+      id: crypto.randomUUID(),
+      role: "user",
+      parts: [{ type: "text", text: "Now that you are done, summarize." }],
+    },
+  ]);
+}
 ```
 
 ```json

@@ -24,9 +24,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-7300)
-* [ API ](#tab-panel-7301)
-* [ Terraform (v5) ](#tab-panel-7302)
+* [ Dashboard ](#tab-panel-7550)
+* [ API ](#tab-panel-7551)
+* [ Terraform (v5) ](#tab-panel-7552)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -39,18 +39,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-Add an Access identity provider
+**Add an Access identity provider**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "One-time PIN login",    "type": "onetimepin",    "config": {}  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "One-time PIN login",
+    "type": "onetimepin",
+    "config": {}
+  }'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
 
   * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
-```
-resource "cloudflare_zero_trust_access_identity_provider" "onetimepin_login" {  account_id = var.cloudflare_account_id  name       = "One-time PIN login"  type       = "onetimepin"  config      = {}}
+```tf
+resource "cloudflare_zero_trust_access_identity_provider" "onetimepin_login" {
+  account_id = var.cloudflare_account_id
+  name       = "One-time PIN login"
+  type       = "onetimepin"
+  config      = {}
+}
 ```
 
 Tip

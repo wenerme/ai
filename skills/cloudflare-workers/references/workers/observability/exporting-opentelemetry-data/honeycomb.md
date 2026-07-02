@@ -86,20 +86,39 @@ Repeat the process for logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11916)
-* [  wrangler.toml ](#tab-panel-11917)
+* [  wrangler.jsonc ](#tab-panel-12211)
+* [  wrangler.toml ](#tab-panel-12212)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "observability": {
+    "traces": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["honeycomb-traces"]
+    },
+    "logs": {
+      "enabled": true,
+      // Must match the destination name in the dashboard
+      "destinations": ["honeycomb-logs"]
+    }
+  }
+}
 ```
-{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["honeycomb-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["honeycomb-logs"]    }  }}
-```
 
-TOML
+**TOML**
 
-```
-[observability.traces]enabled = truedestinations = [ "honeycomb-traces" ]
-[observability.logs]enabled = truedestinations = [ "honeycomb-logs" ]
+```toml
+[observability.traces]
+enabled = true
+destinations = [ "honeycomb-traces" ]
+
+
+[observability.logs]
+enabled = true
+destinations = [ "honeycomb-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

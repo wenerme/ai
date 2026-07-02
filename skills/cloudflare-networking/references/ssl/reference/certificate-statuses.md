@@ -84,9 +84,7 @@ For more details on certificate validation, refer to [Issue and validate certifi
 
 To view certificates, use `openssl` or your browser. The command below can be used in advance of your customer pointing the `app.example.com` hostname to the edge ([provided validation was completed](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/)).
 
-Terminal window
-
-```
+```sh
 openssl s_client -servername app.example.com -connect $CNAME_TARGET:443 </dev/null 2>/dev/null | openssl x509 -noout -text | grep app.example.com
 ```
 

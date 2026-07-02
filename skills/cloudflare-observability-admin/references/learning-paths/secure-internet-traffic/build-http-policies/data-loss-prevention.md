@@ -69,18 +69,31 @@ If your organization is most concerned about general data patterns that fit exis
 
 To help this better match the needs of your organization, you can also build a complex profile that matches data to both an existing library and a custom string detection or database. For example:
 
-* [ Dashboard ](#tab-panel-9320)
-* [ API ](#tab-panel-9321)
+* [ Dashboard ](#tab-panel-9611)
+* [ API ](#tab-panel-9612)
 
 | Selector    | Operator | Value                     | Logic | Action |
 | ----------- | -------- | ------------------------- | ----- | ------ |
 | DLP Profile | in       | _Credentials and Secrets_ | Or    | Block  |
 | DLP Profile | in       | _AWS Key Dataset_         |       |        |
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "block",    "description": "Detect secrets and AWS keys",    "enabled": true,    "filters": [        "http"    ],    "name": "Secrets and AWS keys",    "precedence": 0,    "traffic": "any(dlp.profiles[*] in <CREDENTIALS_DLP_PROFILE_UUID>) or any(dlp.profiles[*] in <AWS_DLP_PROFILE_UUID>)"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "block",
+    "description": "Detect secrets and AWS keys",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Secrets and AWS keys",
+    "precedence": 0,
+    "traffic": "any(dlp.profiles[*] in <CREDENTIALS_DLP_PROFILE_UUID>) or any(dlp.profiles[*] in <AWS_DLP_PROFILE_UUID>)"
+  }'
 ```
 
 #### Assorted data patterns
@@ -95,8 +108,8 @@ To validate your regex, use [Rustexp ↗](https://rustexp.lpil.uk/).
 
 For example, you can use a custom expression to detect when your users share product SKUs in the format `CF1234-56789`:
 
-* [ Dashboard ](#tab-panel-9322)
-* [ API ](#tab-panel-9323)
+* [ Dashboard ](#tab-panel-9613)
+* [ API ](#tab-panel-9614)
 
 1. [Build a custom profile](#build-a-custom-profile) with the following custom entry:
 
@@ -110,10 +123,24 @@ For example, you can use a custom expression to detect when your users share pro
 | DLP Profile | in            | _Product SKUs_               | And   | Block  |
 | User Email  | matches regex | \[a-z0-9\]{0,15}@example.com |       |        |
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "block",    "description": "Detect product SKUs shared by users in organization",    "enabled": true,    "filters": [        "http"    ],    "name": "Detect product SKU leaks",    "precedence": 0,    "traffic": "any(dlp.profiles[*] in <SKU_DLP_PROFILE_UUID>)",    "identity": "identity.email matches \"[a-z0-9]{0,15}@example.com\""  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "block",
+    "description": "Detect product SKUs shared by users in organization",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Detect product SKU leaks",
+    "precedence": 0,
+    "traffic": "any(dlp.profiles[*] in <SKU_DLP_PROFILE_UUID>)",
+    "identity": "identity.email matches \"[a-z0-9]{0,15}@example.com\""
+  }'
 ```
 
 #### DLP datasets
@@ -144,18 +171,31 @@ The best way to start applying data loss prevention to your traffic, minimize th
 
 Many organizations want to detect and log financial information egressing from user devices to critical SaaS applications. To limit the risk of false positives and to filter out logging noise, Cloudflare recommends building your first series of policies to specify both target data and target destination. For example, you can block financial information from being sent to AI chatbots, such as ChatGPT and Gemini:
 
-* [ Dashboard ](#tab-panel-9324)
-* [ API ](#tab-panel-9325)
+* [ Dashboard ](#tab-panel-9615)
+* [ API ](#tab-panel-9616)
 
 | Selector           | Operator | Value                     | Logic | Action |
 | ------------------ | -------- | ------------------------- | ----- | ------ |
 | DLP Profile        | in       | _Financial Information_   | And   | Block  |
 | Content Categories | in       | _Artificial Intelligence_ |       |        |
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "block",    "description": "Prevent financial information from being shared with AI tools",    "enabled": true,    "filters": [        "http"    ],    "name": "Block AI financial info",    "precedence": 0,    "traffic": "any(dlp.profiles[*] in <FINANCIAL_INFO_DLP_PROFILE_UUID>) and any(http.request.uri.content_category[*] in {184})"  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "action": "block",
+    "description": "Prevent financial information from being shared with AI tools",
+    "enabled": true,
+    "filters": [
+        "http"
+    ],
+    "name": "Block AI financial info",
+    "precedence": 0,
+    "traffic": "any(dlp.profiles[*] in <FINANCIAL_INFO_DLP_PROFILE_UUID>) and any(http.request.uri.content_category[*] in {184})"
+  }'
 ```
 
 Once you have analyzed the flow and magnitude of data from the known sources, you can begin focusing on more specialized or explicit datasets for more generalized sources. You may want to allow sources that are known internal locations where sensitive data is intentionally transferred.

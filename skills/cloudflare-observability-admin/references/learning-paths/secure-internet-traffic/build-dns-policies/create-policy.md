@@ -18,9 +18,9 @@ You can filter DNS traffic based on query or response parameters (such as domain
 
 To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-9279)
-* [ API ](#tab-panel-9280)
-* [ Terraform ](#tab-panel-9281)
+* [ Dashboard ](#tab-panel-9570)
+* [ API ](#tab-panel-9571)
+* [ Terraform ](#tab-panel-9572)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
@@ -37,16 +37,46 @@ For more information, refer to [DNS policies](https://developers.cloudflare.com/
 
 To create a new DNS policy using cURL:
 
-Create a Zero Trust Gateway rule
+**Create a Zero Trust Gateway rule**
 
-```
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "All-DNS-SecurityCategories-Blocklist",    "description": "Block known security risks based on Cloudflare'\''s threat intelligence",    "precedence": 0,    "enabled": true,    "action": "block",    "filters": [        "dns"    ],    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "rule_settings": {        "block_page_enabled": true,        "block_reason": "This domain was blocked due to being classified as a security risk to your organization"    }  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
+  --request POST \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --json '{
+    "name": "All-DNS-SecurityCategories-Blocklist",
+    "description": "Block known security risks based on Cloudflare'\''s threat intelligence",
+    "precedence": 0,
+    "enabled": true,
+    "action": "block",
+    "filters": [
+        "dns"
+    ],
+    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+    "rule_settings": {
+        "block_page_enabled": true,
+        "block_reason": "This domain was blocked due to being classified as a security risk to your organization"
+    }
+  }'
 ```
 
 To create a new DNS policy using **Terraform**:
 
-```
-resource "cloudflare_zero_trust_gateway_policy" "security_risks_dns_policy" {  account_id  = var.cloudflare_account_id  name        = "All-DNS-SecurityCategories-Blocklist"  description = "Block known security risks based on Cloudflare's threat intelligence"  precedence  = 0  enabled     = true  action      = "block"  filters     = ["dns"]  traffic     = "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})"  rule_settings {      block_page_enabled = true      block_page_reason = "This domain was blocked due to being classified as a security risk to your organization"    }}
+```tf
+resource "cloudflare_zero_trust_gateway_policy" "security_risks_dns_policy" {
+  account_id  = var.cloudflare_account_id
+  name        = "All-DNS-SecurityCategories-Blocklist"
+  description = "Block known security risks based on Cloudflare's threat intelligence"
+  precedence  = 0
+  enabled     = true
+  action      = "block"
+  filters     = ["dns"]
+  traffic     = "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})"
+  rule_settings {
+      block_page_enabled = true
+      block_page_reason = "This domain was blocked due to being classified as a security risk to your organization"
+    }
+}
 ```
 
 ```json

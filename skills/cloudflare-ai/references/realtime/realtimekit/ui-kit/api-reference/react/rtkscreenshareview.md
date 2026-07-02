@@ -31,16 +31,35 @@ A component which plays a participant's screenshared video. It also allows for p
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkScreenshareView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkScreenshareView />;}
+
+
+function MyComponent() {
+  return <RtkScreenshareView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkScreenshareView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkScreenshareView      hideFullScreenButton={true}      meeting={meeting}      nameTagPosition={| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkScreenshareView
+      hideFullScreenButton={true}
+      meeting={meeting}
+      nameTagPosition={| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'}
+    />
+  );
+}
 ```
 
 ```json

@@ -35,46 +35,117 @@ Together, these two features make it possible for you to send and receive emails
 
 Access Email Service directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), from any platform using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or over [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/):
 
-* [ Workers ](#tab-panel-8539)
-* [ API ](#tab-panel-8540)
-* [ SMTP ](#tab-panel-8541)
+* [ Workers ](#tab-panel-8830)
+* [ API ](#tab-panel-8831)
+* [ SMTP ](#tab-panel-8832)
 
 Send emails with the `EMAIL` binding and handle incoming emails with the `email()` handler in `src/index.ts`:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  EMAIL: SendEmail;}
-export default {  // Handle HTTP requests (Email Sending)  async fetch(request, env, ctx): Promise<Response> {    // Send a welcome email    await env.EMAIL.send({      to: "user@example.com",      from: "welcome@yourdomain.com",      subject: "Welcome to our service!",      html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",      text: "Welcome! Thanks for signing up.",    });
-    return new Response("Email sent successfully");  },
-  // Handle incoming emails (Email Routing)  async email(message, env, ctx): Promise<void> {    // Forward to support team    if (message.to.includes("support@yourdomain.com")) {      await message.forward("team@yourdomain.com");    }
-    // Send auto-reply    await env.EMAIL.send({      to: message.from,      from: "noreply@yourdomain.com",      subject: "We received your message",      html: "<h1>Thank you!</h1><p>We'll get back to you soon.</p>",    });  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  EMAIL: SendEmail;
+}
+
+
+export default {
+  // Handle HTTP requests (Email Sending)
+  async fetch(request, env, ctx): Promise<Response> {
+    // Send a welcome email
+    await env.EMAIL.send({
+      to: "user@example.com",
+      from: "welcome@yourdomain.com",
+      subject: "Welcome to our service!",
+      html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+      text: "Welcome! Thanks for signing up.",
+    });
+
+
+    return new Response("Email sent successfully");
+  },
+
+
+  // Handle incoming emails (Email Routing)
+  async email(message, env, ctx): Promise<void> {
+    // Forward to support team
+    if (message.to.includes("support@yourdomain.com")) {
+      await message.forward("team@yourdomain.com");
+    }
+
+
+    // Send auto-reply
+    await env.EMAIL.send({
+      to: message.from,
+      from: "noreply@yourdomain.com",
+      subject: "We received your message",
+      html: "<h1>Thank you!</h1><p>We'll get back to you soon.</p>",
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 Add the bindings to your Wrangler configuration file:
 
-JSONC
+**JSONC**
 
-```
-{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",
-  // Email sending  "send_email": [    {      "name": "EMAIL"    }  ],
-  // Email routing  "email": [    {      "name": "EMAIL_HANDLER"    }  ]}
+```jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<ENTER_WORKER_NAME>",
+  "main": "src/index.ts",
+  "compatibility_date": "$today",
+
+
+  // Email sending
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
+
+
+  // Email routing
+  "email": [
+    {
+      "name": "EMAIL_HANDLER"
+    }
+  ]
+}
 ```
 
-Terminal window
-
-```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "user@example.com",    "from": "welcome@yourdomain.com",    "subject": "Welcome to our service!",    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",    "text": "Welcome! Thanks for signing up."  }'
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+  --header "Authorization: Bearer <API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "to": "user@example.com",
+    "from": "welcome@yourdomain.com",
+    "subject": "Welcome to our service!",
+    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+    "text": "Welcome! Thanks for signing up."
+  }'
 ```
 
 Cloudflare also provides official SDKs for the REST API: [Node](https://developers.cloudflare.com/api/node/), [Python](https://developers.cloudflare.com/api/python/), and [Go](https://developers.cloudflare.com/api/go/).
 
-Terminal window
+```sh
+cat > mail.txt <<EOF
+From: welcome@yourdomain.com
+To: user@example.com
+Subject: Welcome to our service!
 
-```
-cat > mail.txt <<EOFFrom: welcome@yourdomain.comTo: user@example.comSubject: Welcome to our service!
-Thanks for signing up.EOF
-curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "welcome@yourdomain.com" \  --mail-rcpt "user@example.com" \  --upload-file mail.txt
+
+Thanks for signing up.
+EOF
+
+
+curl --ssl-reqd \
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+  --user "api_token:<API_TOKEN>" \
+  --mail-from "welcome@yourdomain.com" \
+  --mail-rcpt "user@example.com" \
+  --upload-file mail.txt
 ```
 
 See the full [API reference](https://developers.cloudflare.com/email-service/api/send-emails/) for the REST API, Workers binding, and SMTP.

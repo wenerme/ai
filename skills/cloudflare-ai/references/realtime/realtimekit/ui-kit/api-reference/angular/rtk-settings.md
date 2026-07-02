@@ -28,14 +28,19 @@ A settings component to see and change your audio/video devices as well as see y
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-settings></rtk-settings>
+```html
+<!-- component.html -->
+<rtk-settings></rtk-settings>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-settings [meeting]="meeting" size="md"></rtk-settings>
+```html
+<!-- component.html -->
+<rtk-settings
+ [meeting]="meeting"
+ size="md">
+</rtk-settings>
 ```
 
 ```json

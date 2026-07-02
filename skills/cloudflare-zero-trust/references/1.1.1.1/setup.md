@@ -77,13 +77,13 @@ To configure an encrypted DoH connection to 1.1.1.1 for Families, enter one of t
 
 Block malware
 
-```
+```txt
 https://security.cloudflare-dns.com/dns-query
 ```
 
 Block malware and adult content
 
-```
+```txt
 https://family.cloudflare-dns.com/dns-query
 ```
 
@@ -95,13 +95,13 @@ To configure an encrypted DoT connection to 1.1.1.1 for Families, enter one of t
 
 Block malware
 
-```
+```txt
 security.cloudflare-dns.com
 ```
 
 Block malware and adult content
 
-```
+```txt
 family.cloudflare-dns.com
 ```
 

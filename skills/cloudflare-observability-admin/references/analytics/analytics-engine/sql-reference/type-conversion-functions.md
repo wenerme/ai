@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Usage:
 
-```
+```sql
 toUInt8(<expression>)
 ```
 
@@ -28,7 +28,7 @@ Behaviour for negative numbers is undefined.
 
 Usage:
 
-```
+```sql
 toUInt32(<expression>)
 ```
 

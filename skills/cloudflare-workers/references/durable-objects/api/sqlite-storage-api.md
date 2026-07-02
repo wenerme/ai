@@ -56,31 +56,64 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-8291)
-* [  TypeScript ](#tab-panel-8292)
-* [  Python ](#tab-panel-8293)
+* [  JavaScript ](#tab-panel-8574)
+* [  TypeScript ](#tab-panel-8575)
+* [  Python ](#tab-panel-8576)
 
-JavaScript
+**JavaScript**
 
-```
-export class Counter extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
-  async increment() {    let value = (await this.ctx.storage.get("value")) || 0;    value += 1;    await this.ctx.storage.put("value", value);    return value;  }}
-```
+```js
+export class Counter extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+  }
 
-TypeScript
 
-```
-export class Counter extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
-    async increment(): Promise<number> {      let value: number = (await this.ctx.storage.get('value')) || 0;      value += 1;      await this.ctx.storage.put('value', value);      return value;    }
+  async increment() {
+    let value = (await this.ctx.storage.get("value")) || 0;
+    value += 1;
+    await this.ctx.storage.put("value", value);
+    return value;
+  }
 }
 ```
 
-Python
+**TypeScript**
 
+```ts
+export class Counter extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+  }
+
+
+    async increment(): Promise<number> {
+      let value: number = (await this.ctx.storage.get('value')) || 0;
+      value += 1;
+      await this.ctx.storage.put('value', value);
+      return value;
+    }
+
+
+}
 ```
+
+**Python**
+
+```python
 from workers import DurableObject
-class Counter(DurableObject):  def __init__(self, ctx, env):    super().__init__(ctx, env)
-  async def increment(self):    value = (await self.ctx.storage.get('value')) or 0    value += 1    await self.ctx.storage.put('value', value)    return value
+
+
+class Counter(DurableObject):
+  def __init__(self, ctx, env):
+    super().__init__(ctx, env)
+
+
+  async def increment(self):
+    value = (await self.ctx.storage.get('value')) or 0
+    value += 1
+    await self.ctx.storage.put('value', value)
+    return value
 ```
 
 JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
@@ -91,23 +124,58 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-8283)
-* [  Python ](#tab-panel-8284)
+* [  TypeScript ](#tab-panel-8566)
+* [  Python ](#tab-panel-8567)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export class MyDurableObject extends DurableObject {  sql: SqlStorage;  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);    this.sql = ctx.storage.sql;
-    this.sql.exec(`      CREATE TABLE IF NOT EXISTS artist(        artistid    INTEGER PRIMARY KEY,        artistname  TEXT      );      INSERT INTO artist (artistid, artistname) VALUES        (123, 'Alice'),        (456, 'Bob'),        (789, 'Charlie');    `);  }}
+
+
+export class MyDurableObject extends DurableObject {
+  sql: SqlStorage;
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.sql = ctx.storage.sql;
+
+
+    this.sql.exec(`
+      CREATE TABLE IF NOT EXISTS artist(
+        artistid    INTEGER PRIMARY KEY,
+        artistname  TEXT
+      );
+      INSERT INTO artist (artistid, artistname) VALUES
+        (123, 'Alice'),
+        (456, 'Bob'),
+        (789, 'Charlie');
+    `);
+  }
+}
 ```
 
-Python
+**Python**
 
-```
+```python
 from workers import DurableObject
-class MyDurableObject(DurableObject):  def __init__(self, ctx, env):    super().__init__(ctx, env)    self.sql = ctx.storage.sql
-    self.sql.exec("""      CREATE TABLE IF NOT EXISTS artist(        artistid    INTEGER PRIMARY KEY,        artistname  TEXT      );      INSERT INTO artist (artistid, artistname) VALUES        (123, 'Alice'),        (456, 'Bob'),        (789, 'Charlie');    """)
+
+
+class MyDurableObject(DurableObject):
+  def __init__(self, ctx, env):
+    super().__init__(ctx, env)
+    self.sql = ctx.storage.sql
+
+
+    self.sql.exec("""
+      CREATE TABLE IF NOT EXISTS artist(
+        artistid    INTEGER PRIMARY KEY,
+        artistname  TEXT
+      );
+      INSERT INTO artist (artistid, artistname) VALUES
+        (123, 'Alice'),
+        (456, 'Bob'),
+        (789, 'Charlie');
+    """)
 ```
 
 * SQL API methods accessed with `ctx.storage.sql` are only allowed on [Durable Object classes with SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) and will return an error if called on Durable Object classes with a KV-storage backend.
@@ -143,16 +211,23 @@ Although a cursor object can technically be held across an `await`, it does not 
 
 For predictable behavior, fully consume cursors synchronously before the next `await`, for example with `.toArray()` or `Array.from(cursor)`. Treat cursors that cross `await` boundaries as having no snapshot isolation guarantees.
 
-TypeScript
+**TypeScript**
 
-```
-// ✅ Safe: cursor is fully consumed before any awaitconst rows = this.ctx.storage.sql.exec("SELECT * FROM users").toArray();const result = await fetch("https://example.com", { method: "POST", body: JSON.stringify(rows) });
+```ts
+// ✅ Safe: cursor is fully consumed before any await
+const rows = this.ctx.storage.sql.exec("SELECT * FROM users").toArray();
+const result = await fetch("https://example.com", { method: "POST", body: JSON.stringify(rows) });
 ```
 
-TypeScript
+**TypeScript**
 
-```
-// ⚠️ No snapshot isolation: cursor may reflect changes made after it was createdconst cursor = this.ctx.storage.sql.exec("SELECT * FROM users");await fetch("https://example.com/notify");// Rows returned here may include writes that occurred during the await,// including uncommitted data from a later implicit transaction.const rows = cursor.toArray();
+```ts
+// ⚠️ No snapshot isolation: cursor may reflect changes made after it was created
+const cursor = this.ctx.storage.sql.exec("SELECT * FROM users");
+await fetch("https://example.com/notify");
+// Rows returned here may include writes that occurred during the await,
+// including uncommitted data from a later implicit transaction.
+const rows = cursor.toArray();
 ```
 
 `SqlStorageCursor` supports the following methods:
@@ -168,22 +243,40 @@ TypeScript
   * Returned Iterator supports `next()` and `toArray()` methods above.
   * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-8285)
-* [  Python ](#tab-panel-8286)
+* [  TypeScript ](#tab-panel-8568)
+* [  Python ](#tab-panel-8569)
 
-TypeScript
+**TypeScript**
 
-```
-let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");let rawResult = cursor.raw().next();
-if (!rawResult.done) {  console.log(rawResult.value); // prints [ 123, 'Alice' ]} else {  // query returned zero results}
+```ts
+let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
+let rawResult = cursor.raw().next();
+
+
+if (!rawResult.done) {
+  console.log(rawResult.value); // prints [ 123, 'Alice' ]
+} else {
+  // query returned zero results
+}
+
+
 console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
-Python
+**Python**
 
-```
-cursor = self.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;")raw_result = cursor.raw().next()
-if not raw_result.done:  print(raw_result.value)  # prints [ 123, 'Alice' ]else:  # query returned zero results  pass
+```python
+cursor = self.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;")
+raw_result = cursor.raw().next()
+
+
+if not raw_result.done:
+  print(raw_result.value)  # prints [ 123, 'Alice' ]
+else:
+  # query returned zero results
+  pass
+
+
 print(cursor.toArray())  # prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
@@ -205,83 +298,142 @@ Note that `sql.exec()` cannot execute transaction-related statements like `BEGIN
 
 [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) examples below use the following SQL schema:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { DurableObject } from "cloudflare:workers";
-export class MyDurableObject extends DurableObject {  sql: SqlStorage  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);    this.sql = ctx.storage.sql;
-    this.sql.exec(`CREATE TABLE IF NOT EXISTS artist(      artistid    INTEGER PRIMARY KEY,      artistname  TEXT    );INSERT INTO artist (artistid, artistname) VALUES      (123, 'Alice'),      (456, 'Bob'),      (789, 'Charlie');`    );  }}
+
+
+export class MyDurableObject extends DurableObject {
+  sql: SqlStorage
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.sql = ctx.storage.sql;
+
+
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS artist(
+      artistid    INTEGER PRIMARY KEY,
+      artistname  TEXT
+    );INSERT INTO artist (artistid, artistname) VALUES
+      (123, 'Alice'),
+      (456, 'Bob'),
+      (789, 'Charlie');`
+    );
+  }
+}
 ```
 
 Iterate over query results as row objects:
 
-TypeScript
+**TypeScript**
 
-```
+```ts
   let cursor = this.sql.exec("SELECT * FROM artist;");
-  for (let row of cursor) {    // Iterate over row object and do something  }
+
+
+  for (let row of cursor) {
+    // Iterate over row object and do something
+  }
 ```
 
 Convert query results to an array of row objects:
 
-TypeScript
+**TypeScript**
 
-```
-  // Return array of row objects: [{"artistid":123,"artistname":"Alice"},{"artistid":456,"artistname":"Bob"},{"artistid":789,"artistname":"Charlie"}]  let resultsArray1 = this.sql.exec("SELECT * FROM artist;").toArray();  // OR  let resultsArray2 = Array.from(this.sql.exec("SELECT * FROM artist;"));  // OR  let resultsArray3 = [...this.sql.exec("SELECT * FROM artist;")]; // JavaScript spread syntax
+```ts
+  // Return array of row objects: [{"artistid":123,"artistname":"Alice"},{"artistid":456,"artistname":"Bob"},{"artistid":789,"artistname":"Charlie"}]
+  let resultsArray1 = this.sql.exec("SELECT * FROM artist;").toArray();
+  // OR
+  let resultsArray2 = Array.from(this.sql.exec("SELECT * FROM artist;"));
+  // OR
+  let resultsArray3 = [...this.sql.exec("SELECT * FROM artist;")]; // JavaScript spread syntax
 ```
 
 Convert query results to an array of row values arrays:
 
-TypeScript
+**TypeScript**
 
-```
-  // Returns [[123,"Alice"],[456,"Bob"],[789,"Charlie"]]  let cursor = this.sql.exec("SELECT * FROM artist;");  let resultsArray = cursor.raw().toArray();
-  // Returns ["artistid","artistname"]  let columnNameArray = this.sql.exec("SELECT * FROM artist;").columnNames.toArray();
+```ts
+  // Returns [[123,"Alice"],[456,"Bob"],[789,"Charlie"]]
+  let cursor = this.sql.exec("SELECT * FROM artist;");
+  let resultsArray = cursor.raw().toArray();
+
+
+  // Returns ["artistid","artistname"]
+  let columnNameArray = this.sql.exec("SELECT * FROM artist;").columnNames.toArray();
 ```
 
 Get first row object of query results:
 
-TypeScript
+**TypeScript**
 
-```
-  // Returns {"artistid":123,"artistname":"Alice"}  let firstRow = this.sql.exec("SELECT * FROM artist ORDER BY artistname DESC;").toArray()[0];
+```ts
+  // Returns {"artistid":123,"artistname":"Alice"}
+  let firstRow = this.sql.exec("SELECT * FROM artist ORDER BY artistname DESC;").toArray()[0];
 ```
 
 Check if query results have exactly one row:
 
-TypeScript
+**TypeScript**
 
-```
-  // returns error  this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;").one();
-  // returns { artistid: 123, artistname: 'Alice' }  let oneRow = this.sql.exec("SELECT * FROM artist WHERE artistname = ?;", "Alice").one()
+```ts
+  // returns error
+  this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;").one();
+
+
+  // returns { artistid: 123, artistname: 'Alice' }
+  let oneRow = this.sql.exec("SELECT * FROM artist WHERE artistname = ?;", "Alice").one()
 ```
 
 Returned cursor behavior:
 
-TypeScript
+**TypeScript**
 
-```
-  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");  let result = cursor.next();  if (!result.done) {    console.log(result.value); // prints { artistid: 123, artistname: 'Alice' }  } else {    // query returned zero results  }
-  let remainingRows = cursor.toArray();  console.log(remainingRows); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
+```ts
+  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
+  let result = cursor.next();
+  if (!result.done) {
+    console.log(result.value); // prints { artistid: 123, artistname: 'Alice' }
+  } else {
+    // query returned zero results
+  }
+
+
+  let remainingRows = cursor.toArray();
+  console.log(remainingRows); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 Returned cursor and `raw()` iterator iterate over the same query results:
 
-TypeScript
+**TypeScript**
 
-```
-  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");  let result = cursor.raw().next();
-  if (!result.done) {    console.log(result.value); // prints [ 123, 'Alice' ]  } else {    // query returned zero results  }
+```ts
+  let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
+  let result = cursor.raw().next();
+
+
+  if (!result.done) {
+    console.log(result.value); // prints [ 123, 'Alice' ]
+  } else {
+    // query returned zero results
+  }
+
+
   console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{ artistid: 789, artistname: 'Charlie' }]
 ```
 
 `sql.exec().rowsRead()`:
 
-TypeScript
+**TypeScript**
 
-```
-  let cursor = this.sql.exec("SELECT * FROM artist;");  cursor.next()  console.log(cursor.rowsRead); // prints 1
-  cursor.toArray(); // consumes remaining cursor  console.log(cursor.rowsRead); // prints 3
+```ts
+  let cursor = this.sql.exec("SELECT * FROM artist;");
+  cursor.next()
+  console.log(cursor.rowsRead); // prints 1
+
+
+  cursor.toArray(); // consumes remaining cursor
+  console.log(cursor.rowsRead); // prints 3
 ```
 
 ### `databaseSize`
@@ -292,18 +444,18 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-8287)
-* [  Python ](#tab-panel-8288)
+* [  TypeScript ](#tab-panel-8570)
+* [  Python ](#tab-panel-8571)
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 let size = ctx.storage.sql.databaseSize;
 ```
 
-Python
+**Python**
 
-```
+```python
 size = ctx.storage.sql.databaseSize
 ```
 
@@ -333,20 +485,28 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-8289)
-* [  Python ](#tab-panel-8290)
+* [  TypeScript ](#tab-panel-8572)
+* [  Python ](#tab-panel-8573)
 
-TypeScript
+**TypeScript**
 
+```ts
+const DAY_MS = 24*60*60*1000;
+// restore to 2 days ago
+let bookmark = ctx.storage.getBookmarkForTime(Date.now() - 2 * DAYS_MS);
+ctx.storage.onNextSessionRestoreBookmark(bookmark);
 ```
-const DAY_MS = 24*60*60*1000;// restore to 2 days agolet bookmark = ctx.storage.getBookmarkForTime(Date.now() - 2 * DAYS_MS);ctx.storage.onNextSessionRestoreBookmark(bookmark);
-```
 
-Python
+**Python**
 
-```
+```python
 from datetime import datetime, timedelta
-now = datetime.now()# restore to 2 days agobookmark = ctx.storage.getBookmarkForTime(now - timedelta(days=2))ctx.storage.onNextSessionRestoreBookmark(bookmark)
+
+
+now = datetime.now()
+# restore to 2 days ago
+bookmark = ctx.storage.getBookmarkForTime(now - timedelta(days=2))
+ctx.storage.onNextSessionRestoreBookmark(bookmark)
 ```
 
 ## Synchronous KV API

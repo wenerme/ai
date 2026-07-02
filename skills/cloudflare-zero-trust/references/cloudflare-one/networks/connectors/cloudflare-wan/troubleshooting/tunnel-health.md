@@ -249,8 +249,10 @@ Enable replay protection in the Cloudflare dashboard. This routes all tunnel tra
 
 Enable ISAKMP invalid SPI recovery to help the router resynchronize Security Associations:
 
-```
-configure terminalcrypto isakmp invalid-spi-recoveryexit
+```txt
+configure terminal
+crypto isakmp invalid-spi-recovery
+exit
 ```
 
 Warning

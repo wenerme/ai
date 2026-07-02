@@ -25,16 +25,29 @@ A component which renders a text message from chat.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkTextMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkTextMessageView />;}
+
+
+function MyComponent() {
+  return <RtkTextMessageView />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkTextMessageView } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkTextMessageView      isMarkdown={true}      text="example"    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkTextMessageView
+      isMarkdown={true}
+      text="example"
+    />
+  );
+}
 ```
 
 ```json

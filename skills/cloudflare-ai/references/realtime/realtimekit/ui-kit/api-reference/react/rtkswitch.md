@@ -28,16 +28,30 @@ A switch component which follows RTK Design System.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkSwitch } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return <RtkSwitch />;}
+
+
+function MyComponent() {
+  return <RtkSwitch />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkSwitch } from '@cloudflare/realtimekit-react-ui';
-function MyComponent() {  return (    <RtkSwitch      checked={true}      disabled={true}      readonly={true}    />  );}
+
+
+function MyComponent() {
+  return (
+    <RtkSwitch
+      checked={true}
+      disabled={true}
+      readonly={true}
+    />
+  );
+}
 ```
 
 ```json

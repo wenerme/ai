@@ -40,9 +40,7 @@ bun install wrangler
 
 Create a new instance.
 
-Terminal window
-
-```
+```sh
 wrangler ai-search create my-instance
 ```
 
@@ -56,9 +54,7 @@ You can optionally connect a website or R2 bucket when creating the instance.
 
 Automatically crawl and index a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) that you own.
 
-Terminal window
-
-```
+```sh
 wrangler ai-search create my-instance --type web-crawler --source developers.cloudflare.com
 ```
 
@@ -66,9 +62,7 @@ wrangler ai-search create my-instance --type web-crawler --source developers.clo
 
 Index documents stored in an [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/).
 
-Terminal window
-
-```
+```sh
 wrangler ai-search create my-instance --type r2 --source my-bucket
 ```
 
@@ -76,9 +70,7 @@ wrangler ai-search create my-instance --type r2 --source my-bucket
 
 Check if your content has finished indexing by running the `stats` command.
 
-Terminal window
-
-```
+```sh
 wrangler ai-search stats my-instance
 ```
 
@@ -86,9 +78,7 @@ wrangler ai-search stats my-instance
 
 Once indexing is complete, run a search query against your instance.
 
-Terminal window
-
-```
+```sh
 wrangler ai-search search my-instance --query "What is Cloudflare?"
 ```
 

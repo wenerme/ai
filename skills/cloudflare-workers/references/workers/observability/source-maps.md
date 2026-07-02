@@ -22,18 +22,20 @@ Source maps translate compiled and minified code back to the original code that 
 
 To enable source maps, add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11938)
-* [  wrangler.toml ](#tab-panel-11939)
+* [  wrangler.jsonc ](#tab-panel-12233)
+* [  wrangler.toml ](#tab-panel-12234)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "upload_source_maps": true
+}
 ```
-{  "upload_source_maps": true}
-```
 
-TOML
+**TOML**
 
-```
+```toml
 upload_source_maps = true
 ```
 

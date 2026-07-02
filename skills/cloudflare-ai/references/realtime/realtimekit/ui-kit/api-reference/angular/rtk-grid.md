@@ -34,14 +34,20 @@ The main grid component which abstracts all the grid handling logic and renders 
 
 ### Basic Usage
 
-```
-<!-- component.html --><rtk-grid></rtk-grid>
+```html
+<!-- component.html -->
+<rtk-grid></rtk-grid>
 ```
 
 ### With Properties
 
-```
-<!-- component.html --><rtk-grid aspectRatio="example" gap="42" gridSize="md"></rtk-grid>
+```html
+<!-- component.html -->
+<rtk-grid
+ aspectRatio="example"
+ gap="42"
+ gridSize="md">
+</rtk-grid>
 ```
 
 ```json

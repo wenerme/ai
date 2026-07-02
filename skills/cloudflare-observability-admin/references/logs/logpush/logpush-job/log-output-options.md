@@ -18,14 +18,32 @@ Jobs in Logpush now have a new key, **output\_options**, which replaces **logpul
 
 Previously, Logpush jobs could be customized by specifying the list of fields, sampling rate, and timestamp format in **logpull\_options** as [URL-encoded parameters](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#options). For example:
 
-```
-{  "id": <JOB_ID>,  "dataset": "http_requests",  "enabled": false,  "name": "<DOMAIN_NAME>",  "logpull_options": "fields=ClientIP,EdgeStartTimestamp,RayID&sample=0.1&timestamps=rfc3339",  "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"}
+```json
+{
+  "id": <JOB_ID>,
+  "dataset": "http_requests",
+  "enabled": false,
+  "name": "<DOMAIN_NAME>",
+  "logpull_options": "fields=ClientIP,EdgeStartTimestamp,RayID&sample=0.1&timestamps=rfc3339",
+  "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
+}
 ```
 
 We have replaced this with **output\_options** as it is used for both Logpull and Logpush.
 
-```
-{  "id": <JOB_ID>,  "dataset": "http_requests",  "enabled": false,  "name": "<DOMAIN_NAME>",  "output_options": {    "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],    "sample_rate": 0.1,    "timestamp_format": "rfc3339"  },  "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"}
+```json
+{
+  "id": <JOB_ID>,
+  "dataset": "http_requests",
+  "enabled": false,
+  "name": "<DOMAIN_NAME>",
+  "output_options": {
+    "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+    "sample_rate": 0.1,
+    "timestamp_format": "rfc3339"
+  },
+  "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2"
+}
 ```
 
 Updates replace output\_options in full
@@ -72,34 +90,49 @@ Specifying **field\_names** and **output\_type** will result in the remaining op
 
 Default output\_options for `ndjson`
 
-```
-{  "record_prefix": "{",  "record_suffix": "}\n",  "field_delimiter": ","}
+```json
+{
+  "record_prefix": "{",
+  "record_suffix": "}\n",
+  "field_delimiter": ","
+}
 ```
 
 Example output\_options
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "output_type": "ndjson"}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "output_type": "ndjson"
+}
 ```
 
 Example output
 
-```
-{"ClientIP":"89.163.242.206","EdgeStartTimestamp":1506702504433000200,"RayID":"3a6050bcbe121a87"}{"ClientIP":"89.163.242.207","EdgeStartTimestamp":1506702504433000300,"RayID":"3a6050bcbe121a88"}{"ClientIP":"89.163.242.208","EdgeStartTimestamp":1506702504433000400,"RayID":"3a6050bcbe121a89"}
+```json
+{"ClientIP":"89.163.242.206","EdgeStartTimestamp":1506702504433000200,"RayID":"3a6050bcbe121a87"}
+{"ClientIP":"89.163.242.207","EdgeStartTimestamp":1506702504433000300,"RayID":"3a6050bcbe121a88"}
+{"ClientIP":"89.163.242.208","EdgeStartTimestamp":1506702504433000400,"RayID":"3a6050bcbe121a89"}
 ```
 
 * `ndjson` with different field names:
 
 Example output\_options
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "output_type": "ndjson",  "record_template": "\"client-ip\":{{.ClientIP}},\"timestamp\":{{.EdgeStartTimestamp}},\"ray-id\":{{.RayID}}"}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "output_type": "ndjson",
+  "record_template": "\"client-ip\":{{.ClientIP}},\"timestamp\":{{.EdgeStartTimestamp}},\"ray-id\":{{.RayID}}"
+}
 ```
 
 Example output
 
-```
-{"client-ip":"89.163.242.206","timestamp":1506702504433000200,"ray-id":"3a6050bcbe121a87"}{"client-ip":"89.163.242.207","timestamp":1506702504433000300,"ray-id":"3a6050bcbe121a88"}{"client-ip":"89.163.242.208","timestamp":1506702504433000400,"ray-id":"3a6050bcbe121a89"}
+```json
+{"client-ip":"89.163.242.206","timestamp":1506702504433000200,"ray-id":"3a6050bcbe121a87"}
+{"client-ip":"89.163.242.207","timestamp":1506702504433000300,"ray-id":"3a6050bcbe121a88"}
+{"client-ip":"89.163.242.208","timestamp":1506702504433000400,"ray-id":"3a6050bcbe121a89"}
 ```
 
 Literal with double curly-braces `({{}})`, that is, `"double{{curly}}braces"`, can be inserted following go text/template convention, that is, `"{{`doublecurlybraces`}}"`.
@@ -108,20 +141,28 @@ Literal with double curly-braces `({{}})`, that is, `"double{{curly}}braces"`, c
 
 Default output\_options for CSV
 
-```
-{  "record_suffix": "\n",  "field_delimiter": ","}
+```json
+{
+  "record_suffix": "\n",
+  "field_delimiter": ","
+}
 ```
 
 Example output\_options
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "output_type": "csv"}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "output_type": "csv"
+}
 ```
 
 Example output
 
-```
-"89.163.242.206",1506702504433000200,"3a6050bcbe121a87""89.163.242.207",1506702504433000300,"3a6050bcbe121a88""89.163.242.208",1506702504433000400,"3a6050bcbe121a89"
+```csv
+"89.163.242.206",1506702504433000200,"3a6050bcbe121a87"
+"89.163.242.207",1506702504433000300,"3a6050bcbe121a88"
+"89.163.242.208",1506702504433000400,"3a6050bcbe121a89"
 ```
 
 ### csv/json variants
@@ -132,42 +173,89 @@ Based on above, other formats similar to csv or json are also supported:
 
 Example output\_options
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "output_type": "csv",  "batch_prefix": "ClientIP,EdgeStartTimestamp,RayID\n"}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "output_type": "csv",
+  "batch_prefix": "ClientIP,EdgeStartTimestamp,RayID\n"
+}
 ```
 
 Example output
 
-```
-ClientIP,EdgeStartTimestamp,RayID"89.163.242.206",1506702504433000200,"3a6050bcbe121a87""89.163.242.207",1506702504433000300,"3a6050bcbe121a88""89.163.242.208",1506702504433000400,"3a6050bcbe121a89"
+```csv
+ClientIP,EdgeStartTimestamp,RayID
+"89.163.242.206",1506702504433000200,"3a6050bcbe121a87"
+"89.163.242.207",1506702504433000300,"3a6050bcbe121a88"
+"89.163.242.208",1506702504433000400,"3a6050bcbe121a89"
 ```
 
 * tsv with header:
 
 Example output\_options
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "output_type": "csv",  "batch_prefix": "ClientIP\tEdgeStartTimestamp\tRayID\n",  "field_delimiter": "\t"}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "output_type": "csv",
+  "batch_prefix": "ClientIP\tEdgeStartTimestamp\tRayID\n",
+  "field_delimiter": "\t"
+}
 ```
 
 Example output
 
-```
-ClientIP EdgeStartTimestamp  RayID"89.163.242.206"    1506702504433000200 "3a6050bcbe121a87""89.163.242.207"    1506702504433000300 "3a6050bcbe121a88""89.163.242.208"    1506702504433000400 "3a6050bcbe121a89"
+```csv
+ClientIP EdgeStartTimestamp  RayID
+"89.163.242.206"    1506702504433000200 "3a6050bcbe121a87"
+"89.163.242.207"    1506702504433000300 "3a6050bcbe121a88"
+"89.163.242.208"    1506702504433000400 "3a6050bcbe121a89"
 ```
 
 * json with nested object:
 
 Example output\_options
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "output_type": "ndjson",  "batch_prefix": "{\"events\":[",  "batch_suffix": "\n]}\n",  "record_prefix": "\n  {\"info\":{",  "record_suffix": "}}",  "record_delimiter": ","}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "output_type": "ndjson",
+  "batch_prefix": "{\"events\":[",
+  "batch_suffix": "\n]}\n",
+  "record_prefix": "\n  {\"info\":{",
+  "record_suffix": "}}",
+  "record_delimiter": ","
+}
 ```
 
 Example output
 
-```
-{  "events": [    {      "info": {        "ClientIP": "89.163.242.206",        "EdgeStartTimestamp": 1506702504433000200,        "RayID": "3a6050bcbe121a87"      }    },    {      "info": {        "ClientIP": "89.163.242.207",        "EdgeStartTimestamp": 1506702504433000300,        "RayID": "3a6050bcbe121a88"      }    },    {      "info": {        "ClientIP": "89.163.242.208",        "EdgeStartTimestamp": 1506702504433000400,        "RayID": "3a6050bcbe121a89"      }    }  ]}
+```json
+{
+  "events": [
+    {
+      "info": {
+        "ClientIP": "89.163.242.206",
+        "EdgeStartTimestamp": 1506702504433000200,
+        "RayID": "3a6050bcbe121a87"
+      }
+    },
+    {
+      "info": {
+        "ClientIP": "89.163.242.207",
+        "EdgeStartTimestamp": 1506702504433000300,
+        "RayID": "3a6050bcbe121a88"
+      }
+    },
+    {
+      "info": {
+        "ClientIP": "89.163.242.208",
+        "EdgeStartTimestamp": 1506702504433000400,
+        "RayID": "3a6050bcbe121a89"
+      }
+    }
+  ]
+}
 ```
 
 ## How to migrate
@@ -181,8 +269,13 @@ In order to migrate your jobs from using **logpull\_options** to the new **outpu
 
 For example, if logpull\_options are `fields=ClientIP,EdgeStartTimestamp,RayID&sample=0.1&timestamps=rfc3339&CVE-2021-44228=true`, the output\_options would be:
 
-```
-"output_options": {  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],  "sample_rate": 0.1,  "timestamp_format": "rfc3339",  "CVE-2021-44228": true}
+```json
+"output_options": {
+  "field_names": ["ClientIP", "EdgeStartTimestamp", "RayID"],
+  "sample_rate": 0.1,
+  "timestamp_format": "rfc3339",
+  "CVE-2021-44228": true
+}
 ```
 
 ```json

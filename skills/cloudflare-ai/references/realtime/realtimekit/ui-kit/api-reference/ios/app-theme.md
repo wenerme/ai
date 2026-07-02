@@ -16,9 +16,9 @@ The application theme singleton that provides pre-configured appearance objects 
 
 ## Access
 
-Swift
+**Swift**
 
-```
+```swift
 let theme = AppTheme.shared
 ```
 
@@ -32,21 +32,32 @@ let theme = AppTheme.shared
 
 ### Access default theme
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-let theme = AppTheme.sharedlet titleAppearance = theme.meetingTitleAppearancelet clockAppearance = theme.clockViewAppearance
+
+
+let theme = AppTheme.shared
+let titleAppearance = theme.meetingTitleAppearance
+let clockAppearance = theme.clockViewAppearance
 ```
 
 ### Apply a custom theme
 
-Swift
+**Swift**
 
-```
+```swift
 import RealtimeKitUI
-class CustomTheme: AppThemeProtocol {    // Implement required appearance properties}
-let customTheme = CustomTheme()AppTheme.shared.setUp(theme: customTheme)
+
+
+class CustomTheme: AppThemeProtocol {
+    // Implement required appearance properties
+}
+
+
+let customTheme = CustomTheme()
+AppTheme.shared.setUp(theme: customTheme)
 ```
 
 ```json

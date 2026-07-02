@@ -29,160 +29,279 @@ Google's fast image generation model producing high-quality images from text pro
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-606)
-* [ cURL ](#tab-panel-607)
+* [ TypeScript ](#tab-panel-654)
+* [ cURL ](#tab-panel-655)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana',
+  {
+    prompt:
+      'A cozy coffee shop interior with warm lighting, plants hanging from the ceiling, and a cat sleeping on a velvet armchair by the window',
+    aspect_ratio: '16:9',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana',  {    prompt:      'A cozy coffee shop interior with warm lighting, plants hanging from the ceiling, and a cat sleeping on a velvet armchair by the window',    aspect_ratio: '16:9',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana",
+  "input": {
+    "prompt": "A cozy coffee shop interior with warm lighting, plants hanging from the ceiling, and a cat sleeping on a velvet armchair by the window",
+    "aspect_ratio": "16:9"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana",  "input": {    "prompt": "A cozy coffee shop interior with warm lighting, plants hanging from the ceiling, and a cat sleeping on a velvet armchair by the window",    "aspect_ratio": "16:9"  }}'
-```
-
-* [ Output ](#tab-panel-604)
-* [ Raw response ](#tab-panel-605)
+* [ Output ](#tab-panel-652)
+* [ Raw response ](#tab-panel-653)
 
 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Examples
 
 **Vintage Tokyo Poster**  — Retro travel poster style illustration
 
-* [ TypeScript ](#tab-panel-610)
-* [ cURL ](#tab-panel-611)
+* [ TypeScript ](#tab-panel-658)
+* [ cURL ](#tab-panel-659)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana',
+  {
+    prompt:
+      'A vintage travel poster for Tokyo, Japan in the style of 1960s airline advertisements, with Mount Fuji in the background and cherry blossoms framing the scene',
+    aspect_ratio: '9:16',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana',  {    prompt:      'A vintage travel poster for Tokyo, Japan in the style of 1960s airline advertisements, with Mount Fuji in the background and cherry blossoms framing the scene',    aspect_ratio: '9:16',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana",
+  "input": {
+    "prompt": "A vintage travel poster for Tokyo, Japan in the style of 1960s airline advertisements, with Mount Fuji in the background and cherry blossoms framing the scene",
+    "aspect_ratio": "9:16"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana",  "input": {    "prompt": "A vintage travel poster for Tokyo, Japan in the style of 1960s airline advertisements, with Mount Fuji in the background and cherry blossoms framing the scene",    "aspect_ratio": "9:16"  }}'
-```
-
-* [ Output ](#tab-panel-608)
-* [ Raw response ](#tab-panel-609)
+* [ Output ](#tab-panel-656)
+* [ Raw response ](#tab-panel-657)
 
 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Dewdrops Macro**  — Photorealistic macro photography
 
-* [ TypeScript ](#tab-panel-614)
-* [ cURL ](#tab-panel-615)
+* [ TypeScript ](#tab-panel-662)
+* [ cURL ](#tab-panel-663)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana',
+  {
+    prompt:
+      'A photorealistic macro shot of dewdrops on a spider web at sunrise, with rainbow light refracting through each droplet',
+    aspect_ratio: '1:1',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana',  {    prompt:      'A photorealistic macro shot of dewdrops on a spider web at sunrise, with rainbow light refracting through each droplet',    aspect_ratio: '1:1',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana",
+  "input": {
+    "prompt": "A photorealistic macro shot of dewdrops on a spider web at sunrise, with rainbow light refracting through each droplet",
+    "aspect_ratio": "1:1"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana",  "input": {    "prompt": "A photorealistic macro shot of dewdrops on a spider web at sunrise, with rainbow light refracting through each droplet",    "aspect_ratio": "1:1"  }}'
-```
-
-* [ Output ](#tab-panel-612)
-* [ Raw response ](#tab-panel-613)
+* [ Output ](#tab-panel-660)
+* [ Raw response ](#tab-panel-661)
 
 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **Pixel Art Marketplace**  — Isometric pixel art scene
 
-* [ TypeScript ](#tab-panel-618)
-* [ cURL ](#tab-panel-619)
+* [ TypeScript ](#tab-panel-666)
+* [ cURL ](#tab-panel-667)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana',
+  {
+    prompt:
+      'An isometric pixel art scene of a bustling medieval marketplace with merchants, knights, and a dragon perched on the town hall roof',
+    aspect_ratio: '1:1',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana',  {    prompt:      'An isometric pixel art scene of a bustling medieval marketplace with merchants, knights, and a dragon perched on the town hall roof',    aspect_ratio: '1:1',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana",
+  "input": {
+    "prompt": "An isometric pixel art scene of a bustling medieval marketplace with merchants, knights, and a dragon perched on the town hall roof",
+    "aspect_ratio": "1:1"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana",  "input": {    "prompt": "An isometric pixel art scene of a bustling medieval marketplace with merchants, knights, and a dragon perched on the town hall roof",    "aspect_ratio": "1:1"  }}'
-```
-
-* [ Output ](#tab-panel-616)
-* [ Raw response ](#tab-panel-617)
+* [ Output ](#tab-panel-664)
+* [ Raw response ](#tab-panel-665)
 
 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png"
+  },
+  "state": "Completed"
+}
 ```
 
 **High Resolution Landscape**  — Generate a high-resolution 4K landscape image
 
-* [ TypeScript ](#tab-panel-622)
-* [ cURL ](#tab-panel-623)
+* [ TypeScript ](#tab-panel-670)
+* [ cURL ](#tab-panel-671)
 
-TypeScript
+**TypeScript**
 
+```ts
+const response = await env.AI.run(
+  'google/nano-banana',
+  {
+    prompt:
+      'A dramatic mountain landscape at golden hour with snow-capped peaks and a crystal clear alpine lake',
+    aspect_ratio: '16:9',
+    image_size: '4K',
+    output_format: 'png',
+  },
+)
+console.log(response)
 ```
-const response = await env.AI.run(  'google/nano-banana',  {    prompt:      'A dramatic mountain landscape at golden hour with snow-capped peaks and a crystal clear alpine lake',    aspect_ratio: '16:9',    image_size: '4K',    output_format: 'png',  },)console.log(response)
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/nano-banana",
+  "input": {
+    "prompt": "A dramatic mountain landscape at golden hour with snow-capped peaks and a crystal clear alpine lake",
+    "aspect_ratio": "16:9",
+    "image_size": "4K",
+    "output_format": "png"
+  }
+}'
 ```
 
-Terminal window
-
-```
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/nano-banana",  "input": {    "prompt": "A dramatic mountain landscape at golden hour with snow-capped peaks and a crystal clear alpine lake",    "aspect_ratio": "16:9",    "image_size": "4K",    "output_format": "png"  }}'
-```
-
-* [ Output ](#tab-panel-620)
-* [ Raw response ](#tab-panel-621)
+* [ Output ](#tab-panel-668)
+* [ Raw response ](#tab-panel-669)
 
 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png)
 
-```
-{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png"  },  "state": "Completed"}
+```json
+{
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  },
+  "result": {
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png"
+  },
+  "state": "Completed"
+}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-624)
-* [ Output ](#tab-panel-625)
+* [ Input ](#tab-panel-672)
+* [ Output ](#tab-panel-673)
 
-aspect\_ratio
+prompt
 
-`string`enum: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
+`string`required
 
 ▶image\_input\[\]
 
 `array`maxItems: 3
 
-image\_size
+aspect\_ratio
 
-`string`enum: 1K, 2K, 4K
+`string`enum: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
 
 output\_format
 
 `string`enum: jpg, png, webp
 
-prompt
+image\_size
 
-`string`required
+`string`enum: 1K, 2K, 4K
 
 image
 

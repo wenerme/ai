@@ -31,33 +31,99 @@ Under the hood, scheduling uses [Durable Object alarms](https://developers.cloud
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-6235)
-* [  TypeScript ](#tab-panel-6236)
+* [  JavaScript ](#tab-panel-6417)
+* [  TypeScript ](#tab-panel-6418)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { Agent } from "agents";
-export class ReminderAgent extends Agent {  async onRequest(request) {    const url = new URL(request.url);
-    // Schedule in 30 seconds    await this.schedule(30, "sendReminder", {      message: "Check your email",    });
-    // Schedule at specific time    await this.schedule(new Date("2025-02-01T09:00:00Z"), "sendReminder", {      message: "Monthly report due",    });
-    // Schedule recurring (every day at 8am)    await this.schedule("0 8 * * *", "dailyDigest", {      userId: url.searchParams.get("userId"),    });
-    return new Response("Scheduled!");  }
-  async sendReminder(payload) {    console.log(`Reminder: ${payload.message}`);    // Send notification, email, etc.  }
-  async dailyDigest(payload) {    console.log(`Sending daily digest to ${payload.userId}`);    // Generate and send digest  }}
+
+
+export class ReminderAgent extends Agent {
+  async onRequest(request) {
+    const url = new URL(request.url);
+
+
+    // Schedule in 30 seconds
+    await this.schedule(30, "sendReminder", {
+      message: "Check your email",
+    });
+
+
+    // Schedule at specific time
+    await this.schedule(new Date("2025-02-01T09:00:00Z"), "sendReminder", {
+      message: "Monthly report due",
+    });
+
+
+    // Schedule recurring (every day at 8am)
+    await this.schedule("0 8 * * *", "dailyDigest", {
+      userId: url.searchParams.get("userId"),
+    });
+
+
+    return new Response("Scheduled!");
+  }
+
+
+  async sendReminder(payload) {
+    console.log(`Reminder: ${payload.message}`);
+    // Send notification, email, etc.
+  }
+
+
+  async dailyDigest(payload) {
+    console.log(`Sending daily digest to ${payload.userId}`);
+    // Generate and send digest
+  }
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { Agent } from "agents";
-export class ReminderAgent extends Agent {  async onRequest(request: Request) {    const url = new URL(request.url);
-    // Schedule in 30 seconds    await this.schedule(30, "sendReminder", {      message: "Check your email",    });
-    // Schedule at specific time    await this.schedule(new Date("2025-02-01T09:00:00Z"), "sendReminder", {      message: "Monthly report due",    });
-    // Schedule recurring (every day at 8am)    await this.schedule("0 8 * * *", "dailyDigest", {      userId: url.searchParams.get("userId"),    });
-    return new Response("Scheduled!");  }
-  async sendReminder(payload: { message: string }) {    console.log(`Reminder: ${payload.message}`);    // Send notification, email, etc.  }
-  async dailyDigest(payload: { userId: string }) {    console.log(`Sending daily digest to ${payload.userId}`);    // Generate and send digest  }}
+
+
+export class ReminderAgent extends Agent {
+  async onRequest(request: Request) {
+    const url = new URL(request.url);
+
+
+    // Schedule in 30 seconds
+    await this.schedule(30, "sendReminder", {
+      message: "Check your email",
+    });
+
+
+    // Schedule at specific time
+    await this.schedule(new Date("2025-02-01T09:00:00Z"), "sendReminder", {
+      message: "Monthly report due",
+    });
+
+
+    // Schedule recurring (every day at 8am)
+    await this.schedule("0 8 * * *", "dailyDigest", {
+      userId: url.searchParams.get("userId"),
+    });
+
+
+    return new Response("Scheduled!");
+  }
+
+
+  async sendReminder(payload: { message: string }) {
+    console.log(`Reminder: ${payload.message}`);
+    // Send notification, email, etc.
+  }
+
+
+  async dailyDigest(payload: { userId: string }) {
+    console.log(`Sending daily digest to ${payload.userId}`);
+    // Generate and send digest
+  }
+}
 ```
 
 ## Scheduling modes
@@ -66,23 +132,37 @@ export class ReminderAgent extends Agent {  async onRequest(request: Request) { 
 
 Pass a number to schedule a task to run after a delay in **seconds**:
 
-* [  JavaScript ](#tab-panel-6215)
-* [  TypeScript ](#tab-panel-6216)
+* [  JavaScript ](#tab-panel-6397)
+* [  TypeScript ](#tab-panel-6398)
 
-JavaScript
+**JavaScript**
 
+```js
+// Run in 10 seconds
+await this.schedule(10, "processTask", { taskId: "123" });
+
+
+// Run in 5 minutes (300 seconds)
+await this.schedule(300, "sendFollowUp", { email: "user@example.com" });
+
+
+// Run in 1 hour
+await this.schedule(3600, "checkStatus", { orderId: "abc" });
 ```
-// Run in 10 secondsawait this.schedule(10, "processTask", { taskId: "123" });
-// Run in 5 minutes (300 seconds)await this.schedule(300, "sendFollowUp", { email: "user@example.com" });
-// Run in 1 hourawait this.schedule(3600, "checkStatus", { orderId: "abc" });
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Run in 10 secondsawait this.schedule(10, "processTask", { taskId: "123" });
-// Run in 5 minutes (300 seconds)await this.schedule(300, "sendFollowUp", { email: "user@example.com" });
-// Run in 1 hourawait this.schedule(3600, "checkStatus", { orderId: "abc" });
+```ts
+// Run in 10 seconds
+await this.schedule(10, "processTask", { taskId: "123" });
+
+
+// Run in 5 minutes (300 seconds)
+await this.schedule(300, "sendFollowUp", { email: "user@example.com" });
+
+
+// Run in 1 hour
+await this.schedule(3600, "checkStatus", { orderId: "abc" });
 ```
 
 **Use cases:**
@@ -96,23 +176,49 @@ TypeScript
 
 Pass a `Date` object to schedule a task at a specific time:
 
-* [  JavaScript ](#tab-panel-6219)
-* [  TypeScript ](#tab-panel-6220)
+* [  JavaScript ](#tab-panel-6401)
+* [  TypeScript ](#tab-panel-6402)
 
-JavaScript
+**JavaScript**
 
+```js
+// Run tomorrow at noon
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+tomorrow.setHours(12, 0, 0, 0);
+await this.schedule(tomorrow, "sendReminder", { message: "Meeting time!" });
+
+
+// Run at a specific timestamp
+await this.schedule(new Date("2025-06-15T14:30:00Z"), "triggerEvent", {
+  eventId: "conference-2025",
+});
+
+
+// Run in 2 hours using Date math
+const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+await this.schedule(twoHoursFromNow, "checkIn", {});
 ```
-// Run tomorrow at noonconst tomorrow = new Date();tomorrow.setDate(tomorrow.getDate() + 1);tomorrow.setHours(12, 0, 0, 0);await this.schedule(tomorrow, "sendReminder", { message: "Meeting time!" });
-// Run at a specific timestampawait this.schedule(new Date("2025-06-15T14:30:00Z"), "triggerEvent", {  eventId: "conference-2025",});
-// Run in 2 hours using Date mathconst twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);await this.schedule(twoHoursFromNow, "checkIn", {});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Run tomorrow at noonconst tomorrow = new Date();tomorrow.setDate(tomorrow.getDate() + 1);tomorrow.setHours(12, 0, 0, 0);await this.schedule(tomorrow, "sendReminder", { message: "Meeting time!" });
-// Run at a specific timestampawait this.schedule(new Date("2025-06-15T14:30:00Z"), "triggerEvent", {  eventId: "conference-2025",});
-// Run in 2 hours using Date mathconst twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);await this.schedule(twoHoursFromNow, "checkIn", {});
+```ts
+// Run tomorrow at noon
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+tomorrow.setHours(12, 0, 0, 0);
+await this.schedule(tomorrow, "sendReminder", { message: "Meeting time!" });
+
+
+// Run at a specific timestamp
+await this.schedule(new Date("2025-06-15T14:30:00Z"), "triggerEvent", {
+  eventId: "conference-2025",
+});
+
+
+// Run in 2 hours using Date math
+const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+await this.schedule(twoHoursFromNow, "checkIn", {});
 ```
 
 **Use cases:**
@@ -126,27 +232,53 @@ TypeScript
 
 Pass a cron expression string for recurring schedules:
 
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
+* [  JavaScript ](#tab-panel-6407)
+* [  TypeScript ](#tab-panel-6408)
 
-JavaScript
+**JavaScript**
 
+```js
+// Every day at 8:00 AM
+await this.schedule("0 8 * * *", "dailyReport", {});
+
+
+// Every hour
+await this.schedule("0 * * * *", "hourlyCheck", {});
+
+
+// Every Monday at 9:00 AM
+await this.schedule("0 9 * * 1", "weeklySync", {});
+
+
+// Every 15 minutes
+await this.schedule("*/15 * * * *", "pollForUpdates", {});
+
+
+// First day of every month at midnight
+await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 ```
-// Every day at 8:00 AMawait this.schedule("0 8 * * *", "dailyReport", {});
-// Every hourawait this.schedule("0 * * * *", "hourlyCheck", {});
-// Every Monday at 9:00 AMawait this.schedule("0 9 * * 1", "weeklySync", {});
-// Every 15 minutesawait this.schedule("*/15 * * * *", "pollForUpdates", {});
-// First day of every month at midnightawait this.schedule("0 0 1 * *", "monthlyCleanup", {});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Every day at 8:00 AMawait this.schedule("0 8 * * *", "dailyReport", {});
-// Every hourawait this.schedule("0 * * * *", "hourlyCheck", {});
-// Every Monday at 9:00 AMawait this.schedule("0 9 * * 1", "weeklySync", {});
-// Every 15 minutesawait this.schedule("*/15 * * * *", "pollForUpdates", {});
-// First day of every month at midnightawait this.schedule("0 0 1 * *", "monthlyCleanup", {});
+```ts
+// Every day at 8:00 AM
+await this.schedule("0 8 * * *", "dailyReport", {});
+
+
+// Every hour
+await this.schedule("0 * * * *", "hourlyCheck", {});
+
+
+// Every Monday at 9:00 AM
+await this.schedule("0 9 * * 1", "weeklySync", {});
+
+
+// Every 15 minutes
+await this.schedule("*/15 * * * *", "pollForUpdates", {});
+
+
+// First day of every month at midnight
+await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 ```
 
 **Cron syntax:** `minute hour day month weekday`
@@ -161,19 +293,31 @@ TypeScript
 
 **Common patterns:**
 
-* [  JavaScript ](#tab-panel-6217)
-* [  TypeScript ](#tab-panel-6218)
+* [  JavaScript ](#tab-panel-6399)
+* [  TypeScript ](#tab-panel-6400)
 
-JavaScript
+**JavaScript**
 
+```js
+"* * * * *"; // Every minute
+"*/5 * * * *"; // Every 5 minutes
+"0 * * * *"; // Every hour (on the hour)
+"0 0 * * *"; // Every day at midnight
+"0 8 * * 1-5"; // Weekdays at 8am
+"0 0 * * 0"; // Every Sunday at midnight
+"0 0 1 * *"; // First of every month
 ```
-"* * * * *"; // Every minute"*/5 * * * *"; // Every 5 minutes"0 * * * *"; // Every hour (on the hour)"0 0 * * *"; // Every day at midnight"0 8 * * 1-5"; // Weekdays at 8am"0 0 * * 0"; // Every Sunday at midnight"0 0 1 * *"; // First of every month
-```
 
-TypeScript
+**TypeScript**
 
-```
-"* * * * *"; // Every minute"*/5 * * * *"; // Every 5 minutes"0 * * * *"; // Every hour (on the hour)"0 0 * * *"; // Every day at midnight"0 8 * * 1-5"; // Weekdays at 8am"0 0 * * 0"; // Every Sunday at midnight"0 0 1 * *"; // First of every month
+```ts
+"* * * * *"; // Every minute
+"*/5 * * * *"; // Every 5 minutes
+"0 * * * *"; // Every hour (on the hour)
+"0 0 * * *"; // Every day at midnight
+"0 8 * * 1-5"; // Weekdays at 8am
+"0 0 * * 0"; // Every Sunday at midnight
+"0 0 1 * *"; // First of every month
 ```
 
 **Use cases:**
@@ -190,23 +334,37 @@ Cron schedules are idempotent by default — calling `schedule()` with the same 
 
 Use `scheduleEvery()` to run a task at fixed intervals (in seconds). Unlike cron, intervals support sub-minute precision and arbitrary durations:
 
-* [  JavaScript ](#tab-panel-6221)
-* [  TypeScript ](#tab-panel-6222)
+* [  JavaScript ](#tab-panel-6403)
+* [  TypeScript ](#tab-panel-6404)
 
-JavaScript
+**JavaScript**
 
+```js
+// Poll every 30 seconds
+await this.scheduleEvery(30, "poll", { source: "api" });
+
+
+// Health check every 45 seconds
+await this.scheduleEvery(45, "healthCheck", {});
+
+
+// Sync every 90 seconds (1.5 minutes - cannot be expressed in cron)
+await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
 ```
-// Poll every 30 secondsawait this.scheduleEvery(30, "poll", { source: "api" });
-// Health check every 45 secondsawait this.scheduleEvery(45, "healthCheck", {});
-// Sync every 90 seconds (1.5 minutes - cannot be expressed in cron)await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Poll every 30 secondsawait this.scheduleEvery(30, "poll", { source: "api" });
-// Health check every 45 secondsawait this.scheduleEvery(45, "healthCheck", {});
-// Sync every 90 seconds (1.5 minutes - cannot be expressed in cron)await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
+```ts
+// Poll every 30 seconds
+await this.scheduleEvery(30, "poll", { source: "api" });
+
+
+// Health check every 45 seconds
+await this.scheduleEvery(45, "healthCheck", {});
+
+
+// Sync every 90 seconds (1.5 minutes - cannot be expressed in cron)
+await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
 ```
 
 **Key differences from cron:**
@@ -222,19 +380,29 @@ TypeScript
 
 `scheduleEvery()` is idempotent on the combination of callback name, interval, and payload — calling it multiple times with the same arguments does not create duplicate schedules. This makes it safe to call in `onStart()`, which runs on every Durable Object wake:
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
+* [  JavaScript ](#tab-panel-6405)
+* [  TypeScript ](#tab-panel-6406)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async onStart() {
+    // Safe to call on every wake — only one schedule is created
+    await this.scheduleEvery(30, "poll", { source: "api" });
+  }
+}
 ```
-class MyAgent extends Agent {  async onStart() {    // Safe to call on every wake — only one schedule is created    await this.scheduleEvery(30, "poll", { source: "api" });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onStart() {    // Safe to call on every wake — only one schedule is created    await this.scheduleEvery(30, "poll", { source: "api" });  }}
+```ts
+class MyAgent extends Agent {
+  async onStart() {
+    // Safe to call on every wake — only one schedule is created
+    await this.scheduleEvery(30, "poll", { source: "api" });
+  }
+}
 ```
 
 A different interval or payload creates a new, independent schedule.
@@ -243,26 +411,46 @@ A different interval or payload creates a new, independent schedule.
 
 If a callback takes longer than the interval, the next execution is skipped (not queued). This prevents runaway resource usage:
 
-* [  JavaScript ](#tab-panel-6229)
-* [  TypeScript ](#tab-panel-6230)
+* [  JavaScript ](#tab-panel-6411)
+* [  TypeScript ](#tab-panel-6412)
 
-JavaScript
+**JavaScript**
 
+```js
+class PollingAgent extends Agent {
+  async poll() {
+    // If this takes 45 seconds and interval is 30 seconds,
+    // the next poll is skipped (with a warning logged)
+    const data = await slowExternalApi();
+    await this.processData(data);
+  }
+}
+
+
+// Set up 30-second interval
+await this.scheduleEvery(30, "poll", {});
 ```
-class PollingAgent extends Agent {  async poll() {    // If this takes 45 seconds and interval is 30 seconds,    // the next poll is skipped (with a warning logged)    const data = await slowExternalApi();    await this.processData(data);  }}
-// Set up 30-second intervalawait this.scheduleEvery(30, "poll", {});
-```
 
-TypeScript
+**TypeScript**
 
-```
-class PollingAgent extends Agent {  async poll() {    // If this takes 45 seconds and interval is 30 seconds,    // the next poll is skipped (with a warning logged)    const data = await slowExternalApi();    await this.processData(data);  }}
-// Set up 30-second intervalawait this.scheduleEvery(30, "poll", {});
+```ts
+class PollingAgent extends Agent {
+  async poll() {
+    // If this takes 45 seconds and interval is 30 seconds,
+    // the next poll is skipped (with a warning logged)
+    const data = await slowExternalApi();
+    await this.processData(data);
+  }
+}
+
+
+// Set up 30-second interval
+await this.scheduleEvery(30, "poll", {});
 ```
 
 When a skip occurs, you will see a warning in logs:
 
-```
+```txt
 Skipping interval schedule abc123: previous execution still running
 ```
 
@@ -270,19 +458,33 @@ Skipping interval schedule abc123: previous execution still running
 
 If the callback throws an error, the interval continues — only that execution fails:
 
-* [  JavaScript ](#tab-panel-6227)
-* [  TypeScript ](#tab-panel-6228)
+* [  JavaScript ](#tab-panel-6409)
+* [  TypeScript ](#tab-panel-6410)
 
-JavaScript
+**JavaScript**
 
+```js
+class SyncAgent extends Agent {
+  async syncData() {
+    // Even if this throws, the interval keeps running
+    const response = await fetch("https://api.example.com/data");
+    if (!response.ok) throw new Error("Sync failed");
+    // ...
+  }
+}
 ```
-class SyncAgent extends Agent {  async syncData() {    // Even if this throws, the interval keeps running    const response = await fetch("https://api.example.com/data");    if (!response.ok) throw new Error("Sync failed");    // ...  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class SyncAgent extends Agent {  async syncData() {    // Even if this throws, the interval keeps running    const response = await fetch("https://api.example.com/data");    if (!response.ok) throw new Error("Sync failed");    // ...  }}
+```ts
+class SyncAgent extends Agent {
+  async syncData() {
+    // Even if this throws, the interval keeps running
+    const response = await fetch("https://api.example.com/data");
+    if (!response.ok) throw new Error("Sync failed");
+    // ...
+  }
+}
 ```
 
 **Use cases:**
@@ -298,129 +500,303 @@ class SyncAgent extends Agent {  async syncData() {    // Even if this throws, t
 
 Retrieve a scheduled task by its ID:
 
-* [  JavaScript ](#tab-panel-6231)
-* [  TypeScript ](#tab-panel-6232)
+* [  JavaScript ](#tab-panel-6413)
+* [  TypeScript ](#tab-panel-6414)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const schedule = await this.getScheduleById(scheduleId);
-if (schedule) {  console.log(    `Task ${schedule.id} will run at ${new Date(schedule.time * 1000)}`,  );  console.log(`Callback: ${schedule.callback}`);  console.log(`Type: ${schedule.type}`); // "scheduled" | "delayed" | "cron" | "interval"} else {  console.log("Schedule not found");}
+
+
+if (schedule) {
+  console.log(
+    `Task ${schedule.id} will run at ${new Date(schedule.time * 1000)}`,
+  );
+  console.log(`Callback: ${schedule.callback}`);
+  console.log(`Type: ${schedule.type}`); // "scheduled" | "delayed" | "cron" | "interval"
+} else {
+  console.log("Schedule not found");
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const schedule = await this.getScheduleById(scheduleId);
-if (schedule) {  console.log(    `Task ${schedule.id} will run at ${new Date(schedule.time * 1000)}`,  );  console.log(`Callback: ${schedule.callback}`);  console.log(`Type: ${schedule.type}`); // "scheduled" | "delayed" | "cron" | "interval"} else {  console.log("Schedule not found");}
+
+
+if (schedule) {
+  console.log(
+    `Task ${schedule.id} will run at ${new Date(schedule.time * 1000)}`,
+  );
+  console.log(`Callback: ${schedule.callback}`);
+  console.log(`Type: ${schedule.type}`); // "scheduled" | "delayed" | "cron" | "interval"
+} else {
+  console.log("Schedule not found");
+}
 ```
 
 ### List schedules
 
 Query scheduled tasks with optional filters:
 
-* [  JavaScript ](#tab-panel-6241)
-* [  TypeScript ](#tab-panel-6242)
+* [  JavaScript ](#tab-panel-6423)
+* [  TypeScript ](#tab-panel-6424)
 
-JavaScript
+**JavaScript**
 
+```js
+// Get all scheduled tasks
+const allSchedules = await this.listSchedules();
+
+
+// Get only cron jobs
+const cronJobs = await this.listSchedules({ type: "cron" });
+
+
+// Get tasks in the next hour
+const upcoming = await this.listSchedules({
+  timeRange: {
+    start: new Date(),
+    end: new Date(Date.now() + 60 * 60 * 1000),
+  },
+});
+
+
+// Get a specific task by ID
+const specific = await this.listSchedules({ id: "abc123" });
+
+
+// Combine filters
+const upcomingCronJobs = await this.listSchedules({
+  type: "cron",
+  timeRange: {
+    start: new Date(),
+    end: new Date(Date.now() + 24 * 60 * 60 * 1000),
+  },
+});
 ```
-// Get all scheduled tasksconst allSchedules = await this.listSchedules();
-// Get only cron jobsconst cronJobs = await this.listSchedules({ type: "cron" });
-// Get tasks in the next hourconst upcoming = await this.listSchedules({  timeRange: {    start: new Date(),    end: new Date(Date.now() + 60 * 60 * 1000),  },});
-// Get a specific task by IDconst specific = await this.listSchedules({ id: "abc123" });
-// Combine filtersconst upcomingCronJobs = await this.listSchedules({  type: "cron",  timeRange: {    start: new Date(),    end: new Date(Date.now() + 24 * 60 * 60 * 1000),  },});
-```
 
-TypeScript
+**TypeScript**
 
-```
-// Get all scheduled tasksconst allSchedules = await this.listSchedules();
-// Get only cron jobsconst cronJobs = await this.listSchedules({ type: "cron" });
-// Get tasks in the next hourconst upcoming = await this.listSchedules({  timeRange: {    start: new Date(),    end: new Date(Date.now() + 60 * 60 * 1000),  },});
-// Get a specific task by IDconst specific = await this.listSchedules({ id: "abc123" });
-// Combine filtersconst upcomingCronJobs = await this.listSchedules({  type: "cron",  timeRange: {    start: new Date(),    end: new Date(Date.now() + 24 * 60 * 60 * 1000),  },});
+```ts
+// Get all scheduled tasks
+const allSchedules = await this.listSchedules();
+
+
+// Get only cron jobs
+const cronJobs = await this.listSchedules({ type: "cron" });
+
+
+// Get tasks in the next hour
+const upcoming = await this.listSchedules({
+  timeRange: {
+    start: new Date(),
+    end: new Date(Date.now() + 60 * 60 * 1000),
+  },
+});
+
+
+// Get a specific task by ID
+const specific = await this.listSchedules({ id: "abc123" });
+
+
+// Combine filters
+const upcomingCronJobs = await this.listSchedules({
+  type: "cron",
+  timeRange: {
+    start: new Date(),
+    end: new Date(Date.now() + 24 * 60 * 60 * 1000),
+  },
+});
 ```
 
 ### Cancel a schedule
 
 Remove a scheduled task before it executes:
 
-* [  JavaScript ](#tab-panel-6233)
-* [  TypeScript ](#tab-panel-6234)
+* [  JavaScript ](#tab-panel-6415)
+* [  TypeScript ](#tab-panel-6416)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const cancelled = await this.cancelSchedule(scheduleId);
-if (cancelled) {  console.log("Schedule cancelled successfully");} else {  console.log("Schedule not found (may have already executed)");}
+
+
+if (cancelled) {
+  console.log("Schedule cancelled successfully");
+} else {
+  console.log("Schedule not found (may have already executed)");
+}
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const cancelled = await this.cancelSchedule(scheduleId);
-if (cancelled) {  console.log("Schedule cancelled successfully");} else {  console.log("Schedule not found (may have already executed)");}
+
+
+if (cancelled) {
+  console.log("Schedule cancelled successfully");
+} else {
+  console.log("Schedule not found (may have already executed)");
+}
 ```
 
 **Example: Cancellable reminders**
 
-* [  JavaScript ](#tab-panel-6255)
-* [  TypeScript ](#tab-panel-6256)
+* [  JavaScript ](#tab-panel-6437)
+* [  TypeScript ](#tab-panel-6438)
 
-JavaScript
+**JavaScript**
 
+```js
+class ReminderAgent extends Agent {
+  async setReminder(userId, message, delaySeconds) {
+    const schedule = await this.schedule(delaySeconds, "sendReminder", {
+      userId,
+      message,
+    });
+
+
+    // Store the schedule ID so user can cancel later
+    this.sql`
+      INSERT INTO user_reminders (user_id, schedule_id, message)
+      VALUES (${userId}, ${schedule.id}, ${message})
+    `;
+
+
+    return schedule.id;
+  }
+
+
+  async cancelReminder(scheduleId) {
+    const cancelled = await this.cancelSchedule(scheduleId);
+
+
+    if (cancelled) {
+      this.sql`DELETE FROM user_reminders WHERE schedule_id = ${scheduleId}`;
+    }
+
+
+    return cancelled;
+  }
+
+
+  async sendReminder(payload) {
+    // Send the reminder...
+
+
+    // Clean up the record
+    this.sql`DELETE FROM user_reminders WHERE user_id = ${payload.userId}`;
+  }
+}
 ```
-class ReminderAgent extends Agent {  async setReminder(userId, message, delaySeconds) {    const schedule = await this.schedule(delaySeconds, "sendReminder", {      userId,      message,    });
-    // Store the schedule ID so user can cancel later    this.sql`      INSERT INTO user_reminders (user_id, schedule_id, message)      VALUES (${userId}, ${schedule.id}, ${message})    `;
-    return schedule.id;  }
-  async cancelReminder(scheduleId) {    const cancelled = await this.cancelSchedule(scheduleId);
-    if (cancelled) {      this.sql`DELETE FROM user_reminders WHERE schedule_id = ${scheduleId}`;    }
-    return cancelled;  }
-  async sendReminder(payload) {    // Send the reminder...
-    // Clean up the record    this.sql`DELETE FROM user_reminders WHERE user_id = ${payload.userId}`;  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class ReminderAgent extends Agent {  async setReminder(userId: string, message: string, delaySeconds: number) {    const schedule = await this.schedule(delaySeconds, "sendReminder", {      userId,      message,    });
-    // Store the schedule ID so user can cancel later    this.sql`      INSERT INTO user_reminders (user_id, schedule_id, message)      VALUES (${userId}, ${schedule.id}, ${message})    `;
-    return schedule.id;  }
-  async cancelReminder(scheduleId: string) {    const cancelled = await this.cancelSchedule(scheduleId);
-    if (cancelled) {      this.sql`DELETE FROM user_reminders WHERE schedule_id = ${scheduleId}`;    }
-    return cancelled;  }
-  async sendReminder(payload: { userId: string; message: string }) {    // Send the reminder...
-    // Clean up the record    this.sql`DELETE FROM user_reminders WHERE user_id = ${payload.userId}`;  }}
+```ts
+class ReminderAgent extends Agent {
+  async setReminder(userId: string, message: string, delaySeconds: number) {
+    const schedule = await this.schedule(delaySeconds, "sendReminder", {
+      userId,
+      message,
+    });
+
+
+    // Store the schedule ID so user can cancel later
+    this.sql`
+      INSERT INTO user_reminders (user_id, schedule_id, message)
+      VALUES (${userId}, ${schedule.id}, ${message})
+    `;
+
+
+    return schedule.id;
+  }
+
+
+  async cancelReminder(scheduleId: string) {
+    const cancelled = await this.cancelSchedule(scheduleId);
+
+
+    if (cancelled) {
+      this.sql`DELETE FROM user_reminders WHERE schedule_id = ${scheduleId}`;
+    }
+
+
+    return cancelled;
+  }
+
+
+  async sendReminder(payload: { userId: string; message: string }) {
+    // Send the reminder...
+
+
+    // Clean up the record
+    this.sql`DELETE FROM user_reminders WHERE user_id = ${payload.userId}`;
+  }
+}
 ```
 
 ## The Schedule object
 
 When you create or retrieve a schedule, you get a `Schedule` object:
 
-TypeScript
+**TypeScript**
 
-```
-type Schedule<T> = {  id: string; // Unique identifier  callback: string; // Method name to call  payload: T; // Data passed to the callback  time: number; // Unix timestamp (seconds) of next execution} & (  | { type: "scheduled" } // One-time at specific date  | { type: "delayed"; delayInSeconds: number } // One-time after delay  | { type: "cron"; cron: string } // Recurring (cron expression)  | { type: "interval"; intervalSeconds: number } // Recurring (fixed interval));
+```ts
+type Schedule<T> = {
+  id: string; // Unique identifier
+  callback: string; // Method name to call
+  payload: T; // Data passed to the callback
+  time: number; // Unix timestamp (seconds) of next execution
+} & (
+  | { type: "scheduled" } // One-time at specific date
+  | { type: "delayed"; delayInSeconds: number } // One-time after delay
+  | { type: "cron"; cron: string } // Recurring (cron expression)
+  | { type: "interval"; intervalSeconds: number } // Recurring (fixed interval)
+);
 ```
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-6237)
-* [  TypeScript ](#tab-panel-6238)
+* [  JavaScript ](#tab-panel-6419)
+* [  TypeScript ](#tab-panel-6420)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const schedule = await this.schedule(60, "myTask", { foo: "bar" });
-console.log(schedule);// {//   id: "abc123xyz",//   callback: "myTask",//   payload: { foo: "bar" },//   time: 1706745600,//   type: "delayed",//   delayInSeconds: 60// }
+
+
+console.log(schedule);
+// {
+//   id: "abc123xyz",
+//   callback: "myTask",
+//   payload: { foo: "bar" },
+//   time: 1706745600,
+//   type: "delayed",
+//   delayInSeconds: 60
+// }
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 const schedule = await this.schedule(60, "myTask", { foo: "bar" });
-console.log(schedule);// {//   id: "abc123xyz",//   callback: "myTask",//   payload: { foo: "bar" },//   time: 1706745600,//   type: "delayed",//   delayInSeconds: 60// }
+
+
+console.log(schedule);
+// {
+//   id: "abc123xyz",
+//   callback: "myTask",
+//   payload: { foo: "bar" },
+//   time: 1706745600,
+//   type: "delayed",
+//   delayInSeconds: 60
+// }
 ```
 
 ## Patterns
@@ -429,73 +805,215 @@ console.log(schedule);// {//   id: "abc123xyz",//   callback: "myTask",//   payl
 
 For dynamic recurring schedules, schedule the next run from within the callback:
 
-* [  JavaScript ](#tab-panel-6253)
-* [  TypeScript ](#tab-panel-6254)
+* [  JavaScript ](#tab-panel-6435)
+* [  TypeScript ](#tab-panel-6436)
 
-JavaScript
+**JavaScript**
 
+```js
+class PollingAgent extends Agent {
+  async startPolling(intervalSeconds) {
+    await this.schedule(intervalSeconds, "poll", { interval: intervalSeconds });
+  }
+
+
+  async poll(payload) {
+    try {
+      const data = await fetch("https://api.example.com/updates");
+      await this.processUpdates(await data.json());
+    } catch (error) {
+      console.error("Polling failed:", error);
+    }
+
+
+    // Schedule the next poll (regardless of success/failure)
+    await this.schedule(payload.interval, "poll", payload);
+  }
+
+
+  async stopPolling() {
+    // Cancel all polling schedules
+    const schedules = await this.listSchedules({ type: "delayed" });
+    for (const schedule of schedules) {
+      if (schedule.callback === "poll") {
+        await this.cancelSchedule(schedule.id);
+      }
+    }
+  }
+}
 ```
-class PollingAgent extends Agent {  async startPolling(intervalSeconds) {    await this.schedule(intervalSeconds, "poll", { interval: intervalSeconds });  }
-  async poll(payload) {    try {      const data = await fetch("https://api.example.com/updates");      await this.processUpdates(await data.json());    } catch (error) {      console.error("Polling failed:", error);    }
-    // Schedule the next poll (regardless of success/failure)    await this.schedule(payload.interval, "poll", payload);  }
-  async stopPolling() {    // Cancel all polling schedules    const schedules = await this.listSchedules({ type: "delayed" });    for (const schedule of schedules) {      if (schedule.callback === "poll") {        await this.cancelSchedule(schedule.id);      }    }  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class PollingAgent extends Agent {  async startPolling(intervalSeconds: number) {    await this.schedule(intervalSeconds, "poll", { interval: intervalSeconds });  }
-  async poll(payload: { interval: number }) {    try {      const data = await fetch("https://api.example.com/updates");      await this.processUpdates(await data.json());    } catch (error) {      console.error("Polling failed:", error);    }
-    // Schedule the next poll (regardless of success/failure)    await this.schedule(payload.interval, "poll", payload);  }
-  async stopPolling() {    // Cancel all polling schedules    const schedules = await this.listSchedules({ type: "delayed" });    for (const schedule of schedules) {      if (schedule.callback === "poll") {        await this.cancelSchedule(schedule.id);      }    }  }}
+```ts
+class PollingAgent extends Agent {
+  async startPolling(intervalSeconds: number) {
+    await this.schedule(intervalSeconds, "poll", { interval: intervalSeconds });
+  }
+
+
+  async poll(payload: { interval: number }) {
+    try {
+      const data = await fetch("https://api.example.com/updates");
+      await this.processUpdates(await data.json());
+    } catch (error) {
+      console.error("Polling failed:", error);
+    }
+
+
+    // Schedule the next poll (regardless of success/failure)
+    await this.schedule(payload.interval, "poll", payload);
+  }
+
+
+  async stopPolling() {
+    // Cancel all polling schedules
+    const schedules = await this.listSchedules({ type: "delayed" });
+    for (const schedule of schedules) {
+      if (schedule.callback === "poll") {
+        await this.cancelSchedule(schedule.id);
+      }
+    }
+  }
+}
 ```
 
 ### Exponential backoff retry
 
-* [  JavaScript ](#tab-panel-6257)
-* [  TypeScript ](#tab-panel-6258)
+* [  JavaScript ](#tab-panel-6439)
+* [  TypeScript ](#tab-panel-6440)
 
-JavaScript
+**JavaScript**
 
+```js
+class RetryAgent extends Agent {
+  async attemptTask(payload) {
+    try {
+      await this.doWork(payload.taskId);
+      console.log(
+        `Task ${payload.taskId} succeeded on attempt ${payload.attempt}`,
+      );
+    } catch (error) {
+      if (payload.attempt >= payload.maxAttempts) {
+        console.error(
+          `Task ${payload.taskId} failed after ${payload.maxAttempts} attempts`,
+        );
+        return;
+      }
+
+
+      // Exponential backoff: 2^attempt seconds (2s, 4s, 8s, 16s...)
+      const delaySeconds = Math.pow(2, payload.attempt);
+
+
+      await this.schedule(delaySeconds, "attemptTask", {
+        ...payload,
+        attempt: payload.attempt + 1,
+      });
+
+
+      console.log(`Retrying task ${payload.taskId} in ${delaySeconds}s`);
+    }
+  }
+
+
+  async doWork(taskId) {
+    // Your actual work here
+  }
+}
 ```
-class RetryAgent extends Agent {  async attemptTask(payload) {    try {      await this.doWork(payload.taskId);      console.log(        `Task ${payload.taskId} succeeded on attempt ${payload.attempt}`,      );    } catch (error) {      if (payload.attempt >= payload.maxAttempts) {        console.error(          `Task ${payload.taskId} failed after ${payload.maxAttempts} attempts`,        );        return;      }
-      // Exponential backoff: 2^attempt seconds (2s, 4s, 8s, 16s...)      const delaySeconds = Math.pow(2, payload.attempt);
-      await this.schedule(delaySeconds, "attemptTask", {        ...payload,        attempt: payload.attempt + 1,      });
-      console.log(`Retrying task ${payload.taskId} in ${delaySeconds}s`);    }  }
-  async doWork(taskId) {    // Your actual work here  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class RetryAgent extends Agent {  async attemptTask(payload: {    taskId: string;    attempt: number;    maxAttempts: number;  }) {    try {      await this.doWork(payload.taskId);      console.log(        `Task ${payload.taskId} succeeded on attempt ${payload.attempt}`,      );    } catch (error) {      if (payload.attempt >= payload.maxAttempts) {        console.error(          `Task ${payload.taskId} failed after ${payload.maxAttempts} attempts`,        );        return;      }
-      // Exponential backoff: 2^attempt seconds (2s, 4s, 8s, 16s...)      const delaySeconds = Math.pow(2, payload.attempt);
-      await this.schedule(delaySeconds, "attemptTask", {        ...payload,        attempt: payload.attempt + 1,      });
-      console.log(`Retrying task ${payload.taskId} in ${delaySeconds}s`);    }  }
-  async doWork(taskId: string) {    // Your actual work here  }}
+```ts
+class RetryAgent extends Agent {
+  async attemptTask(payload: {
+    taskId: string;
+    attempt: number;
+    maxAttempts: number;
+  }) {
+    try {
+      await this.doWork(payload.taskId);
+      console.log(
+        `Task ${payload.taskId} succeeded on attempt ${payload.attempt}`,
+      );
+    } catch (error) {
+      if (payload.attempt >= payload.maxAttempts) {
+        console.error(
+          `Task ${payload.taskId} failed after ${payload.maxAttempts} attempts`,
+        );
+        return;
+      }
+
+
+      // Exponential backoff: 2^attempt seconds (2s, 4s, 8s, 16s...)
+      const delaySeconds = Math.pow(2, payload.attempt);
+
+
+      await this.schedule(delaySeconds, "attemptTask", {
+        ...payload,
+        attempt: payload.attempt + 1,
+      });
+
+
+      console.log(`Retrying task ${payload.taskId} in ${delaySeconds}s`);
+    }
+  }
+
+
+  async doWork(taskId: string) {
+    // Your actual work here
+  }
+}
 ```
 
 ### Self-destructing agents
 
 You can safely call `this.destroy()` from within a scheduled callback:
 
-* [  JavaScript ](#tab-panel-6243)
-* [  TypeScript ](#tab-panel-6244)
+* [  JavaScript ](#tab-panel-6425)
+* [  TypeScript ](#tab-panel-6426)
 
-JavaScript
+**JavaScript**
 
+```js
+class TemporaryAgent extends Agent {
+  async onStart() {
+    // Self-destruct in 24 hours
+    await this.schedule(24 * 60 * 60, "cleanup", {});
+  }
+
+
+  async cleanup() {
+    // Perform final cleanup
+    console.log("Agent lifetime expired, cleaning up...");
+
+
+    // This is safe to call from a scheduled callback
+    await this.destroy();
+  }
+}
 ```
-class TemporaryAgent extends Agent {  async onStart() {    // Self-destruct in 24 hours    await this.schedule(24 * 60 * 60, "cleanup", {});  }
-  async cleanup() {    // Perform final cleanup    console.log("Agent lifetime expired, cleaning up...");
-    // This is safe to call from a scheduled callback    await this.destroy();  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class TemporaryAgent extends Agent {  async onStart() {    // Self-destruct in 24 hours    await this.schedule(24 * 60 * 60, "cleanup", {});  }
-  async cleanup() {    // Perform final cleanup    console.log("Agent lifetime expired, cleaning up...");
-    // This is safe to call from a scheduled callback    await this.destroy();  }}
+```ts
+class TemporaryAgent extends Agent {
+  async onStart() {
+    // Self-destruct in 24 hours
+    await this.schedule(24 * 60 * 60, "cleanup", {});
+  }
+
+
+  async cleanup() {
+    // Perform final cleanup
+    console.log("Agent lifetime expired, cleaning up...");
+
+
+    // This is safe to call from a scheduled callback
+    await this.destroy();
+  }
+}
 ```
 
 Note
@@ -510,52 +1028,164 @@ The SDK includes utilities for parsing natural language scheduling requests with
 
 Returns a system prompt for parsing natural language into scheduling parameters:
 
-* [  JavaScript ](#tab-panel-6259)
-* [  TypeScript ](#tab-panel-6260)
+* [  JavaScript ](#tab-panel-6441)
+* [  TypeScript ](#tab-panel-6442)
 
-JavaScript
+**JavaScript**
 
+```js
+import { getSchedulePrompt, scheduleSchema } from "agents";
+import { generateObject } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+class SmartScheduler extends Agent {
+  async parseScheduleRequest(userInput) {
+    const result = await generateObject({
+      model: openai("gpt-4o"),
+      system: getSchedulePrompt({ date: new Date() }),
+      prompt: userInput,
+      schema: scheduleSchema,
+    });
+
+
+    return result.object;
+  }
+
+
+  async handleUserRequest(input) {
+    // Parse: "remind me to call mom tomorrow at 3pm"
+    const parsed = await this.parseScheduleRequest(input);
+
+
+    // parsed = {
+    //   description: "call mom",
+    //   when: {
+    //     type: "scheduled",
+    //     date: "2025-01-30T15:00:00Z"
+    //   }
+    // }
+
+
+    if (parsed.when.type === "scheduled" && parsed.when.date) {
+      await this.schedule(new Date(parsed.when.date), "sendReminder", {
+        message: parsed.description,
+      });
+    } else if (parsed.when.type === "delayed" && parsed.when.delayInSeconds) {
+      await this.schedule(parsed.when.delayInSeconds, "sendReminder", {
+        message: parsed.description,
+      });
+    } else if (parsed.when.type === "cron" && parsed.when.cron) {
+      await this.schedule(parsed.when.cron, "sendReminder", {
+        message: parsed.description,
+      });
+    }
+  }
+
+
+  async sendReminder(payload) {
+    console.log(`Reminder: ${payload.message}`);
+  }
+}
 ```
-import { getSchedulePrompt, scheduleSchema } from "agents";import { generateObject } from "ai";import { openai } from "@ai-sdk/openai";
-class SmartScheduler extends Agent {  async parseScheduleRequest(userInput) {    const result = await generateObject({      model: openai("gpt-4o"),      system: getSchedulePrompt({ date: new Date() }),      prompt: userInput,      schema: scheduleSchema,    });
-    return result.object;  }
-  async handleUserRequest(input) {    // Parse: "remind me to call mom tomorrow at 3pm"    const parsed = await this.parseScheduleRequest(input);
-    // parsed = {    //   description: "call mom",    //   when: {    //     type: "scheduled",    //     date: "2025-01-30T15:00:00Z"    //   }    // }
-    if (parsed.when.type === "scheduled" && parsed.when.date) {      await this.schedule(new Date(parsed.when.date), "sendReminder", {        message: parsed.description,      });    } else if (parsed.when.type === "delayed" && parsed.when.delayInSeconds) {      await this.schedule(parsed.when.delayInSeconds, "sendReminder", {        message: parsed.description,      });    } else if (parsed.when.type === "cron" && parsed.when.cron) {      await this.schedule(parsed.when.cron, "sendReminder", {        message: parsed.description,      });    }  }
-  async sendReminder(payload) {    console.log(`Reminder: ${payload.message}`);  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-import { getSchedulePrompt, scheduleSchema } from "agents";import { generateObject } from "ai";import { openai } from "@ai-sdk/openai";
-class SmartScheduler extends Agent {  async parseScheduleRequest(userInput: string) {    const result = await generateObject({      model: openai("gpt-4o"),      system: getSchedulePrompt({ date: new Date() }),      prompt: userInput,      schema: scheduleSchema,    });
-    return result.object;  }
-  async handleUserRequest(input: string) {    // Parse: "remind me to call mom tomorrow at 3pm"    const parsed = await this.parseScheduleRequest(input);
-    // parsed = {    //   description: "call mom",    //   when: {    //     type: "scheduled",    //     date: "2025-01-30T15:00:00Z"    //   }    // }
-    if (parsed.when.type === "scheduled" && parsed.when.date) {      await this.schedule(new Date(parsed.when.date), "sendReminder", {        message: parsed.description,      });    } else if (parsed.when.type === "delayed" && parsed.when.delayInSeconds) {      await this.schedule(parsed.when.delayInSeconds, "sendReminder", {        message: parsed.description,      });    } else if (parsed.when.type === "cron" && parsed.when.cron) {      await this.schedule(parsed.when.cron, "sendReminder", {        message: parsed.description,      });    }  }
-  async sendReminder(payload: { message: string }) {    console.log(`Reminder: ${payload.message}`);  }}
+```ts
+import { getSchedulePrompt, scheduleSchema } from "agents";
+import { generateObject } from "ai";
+import { openai } from "@ai-sdk/openai";
+
+
+class SmartScheduler extends Agent {
+  async parseScheduleRequest(userInput: string) {
+    const result = await generateObject({
+      model: openai("gpt-4o"),
+      system: getSchedulePrompt({ date: new Date() }),
+      prompt: userInput,
+      schema: scheduleSchema,
+    });
+
+
+    return result.object;
+  }
+
+
+  async handleUserRequest(input: string) {
+    // Parse: "remind me to call mom tomorrow at 3pm"
+    const parsed = await this.parseScheduleRequest(input);
+
+
+    // parsed = {
+    //   description: "call mom",
+    //   when: {
+    //     type: "scheduled",
+    //     date: "2025-01-30T15:00:00Z"
+    //   }
+    // }
+
+
+    if (parsed.when.type === "scheduled" && parsed.when.date) {
+      await this.schedule(new Date(parsed.when.date), "sendReminder", {
+        message: parsed.description,
+      });
+    } else if (parsed.when.type === "delayed" && parsed.when.delayInSeconds) {
+      await this.schedule(parsed.when.delayInSeconds, "sendReminder", {
+        message: parsed.description,
+      });
+    } else if (parsed.when.type === "cron" && parsed.when.cron) {
+      await this.schedule(parsed.when.cron, "sendReminder", {
+        message: parsed.description,
+      });
+    }
+  }
+
+
+  async sendReminder(payload: { message: string }) {
+    console.log(`Reminder: ${payload.message}`);
+  }
+}
 ```
 
 ### `scheduleSchema`
 
 A Zod schema for validating parsed scheduling data. Uses a discriminated union on `when.type` so each variant only contains the fields it needs:
 
-* [  JavaScript ](#tab-panel-6247)
-* [  TypeScript ](#tab-panel-6248)
+* [  JavaScript ](#tab-panel-6429)
+* [  TypeScript ](#tab-panel-6430)
 
-JavaScript
+**JavaScript**
 
-```
+```js
 import { scheduleSchema } from "agents";
-// The schema is a discriminated union:// {//   description: string,//   when://     | { type: "scheduled", date: string }       // ISO 8601 date string//     | { type: "delayed", delayInSeconds: number }//     | { type: "cron", cron: string }//     | { type: "no-schedule" }// }
+
+
+// The schema is a discriminated union:
+// {
+//   description: string,
+//   when:
+//     | { type: "scheduled", date: string }       // ISO 8601 date string
+//     | { type: "delayed", delayInSeconds: number }
+//     | { type: "cron", cron: string }
+//     | { type: "no-schedule" }
+// }
 ```
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 import { scheduleSchema } from "agents";
-// The schema is a discriminated union:// {//   description: string,//   when://     | { type: "scheduled", date: string }       // ISO 8601 date string//     | { type: "delayed", delayInSeconds: number }//     | { type: "cron", cron: string }//     | { type: "no-schedule" }// }
+
+
+// The schema is a discriminated union:
+// {
+//   description: string,
+//   when:
+//     | { type: "scheduled", date: string }       // ISO 8601 date string
+//     | { type: "delayed", delayInSeconds: number }
+//     | { type: "cron", cron: string }
+//     | { type: "no-schedule" }
+// }
 ```
 
 Note
@@ -597,10 +1227,15 @@ Use Workflows when:
 
 ### `schedule()`
 
-TypeScript
+**TypeScript**
 
-```
-async schedule<T>(  when: Date | string | number,  callback: keyof this,  payload?: T,  options?: { retry?: RetryOptions; idempotent?: boolean }): Promise<Schedule<T>>
+```ts
+async schedule<T>(
+  when: Date | string | number,
+  callback: keyof this,
+  payload?: T,
+  options?: { retry?: RetryOptions; idempotent?: boolean }
+): Promise<Schedule<T>>
 ```
 
 Schedule a task for future execution.
@@ -621,19 +1256,29 @@ Cron schedules are idempotent by default — calling `schedule("0 * * * *", "tic
 
 For delayed and Date-based schedules, set `idempotent: true` to opt in to the same dedup behavior (matched on callback + payload). This is especially useful when calling `schedule()` in `onStart()` to avoid accumulating duplicate rows across Durable Object restarts:
 
-* [  JavaScript ](#tab-panel-6239)
-* [  TypeScript ](#tab-panel-6240)
+* [  JavaScript ](#tab-panel-6421)
+* [  TypeScript ](#tab-panel-6422)
 
-JavaScript
+**JavaScript**
 
+```js
+class MyAgent extends Agent {
+  async onStart() {
+    // Without idempotent: true, this creates a new row on every DO restart
+    await this.schedule(3600, "hourlyCleanup", {}, { idempotent: true });
+  }
+}
 ```
-class MyAgent extends Agent {  async onStart() {    // Without idempotent: true, this creates a new row on every DO restart    await this.schedule(3600, "hourlyCleanup", {}, { idempotent: true });  }}
-```
 
-TypeScript
+**TypeScript**
 
-```
-class MyAgent extends Agent {  async onStart() {    // Without idempotent: true, this creates a new row on every DO restart    await this.schedule(3600, "hourlyCleanup", {}, { idempotent: true });  }}
+```ts
+class MyAgent extends Agent {
+  async onStart() {
+    // Without idempotent: true, this creates a new row on every DO restart
+    await this.schedule(3600, "hourlyCleanup", {}, { idempotent: true });
+  }
+}
 ```
 
 Warning
@@ -642,10 +1287,15 @@ Tasks that set a callback for a method that does not exist will throw an excepti
 
 ### `scheduleEvery()`
 
-TypeScript
+**TypeScript**
 
-```
-async scheduleEvery<T>(  intervalSeconds: number,  callback: keyof this,  payload?: T,  options?: { retry?: RetryOptions }): Promise<Schedule<T>>
+```ts
+async scheduleEvery<T>(
+  intervalSeconds: number,
+  callback: keyof this,
+  payload?: T,
+  options?: { retry?: RetryOptions }
+): Promise<Schedule<T>>
 ```
 
 Schedule a task to run repeatedly at a fixed interval.
@@ -668,9 +1318,9 @@ Schedule a task to run repeatedly at a fixed interval.
 
 ### `getScheduleById()`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async getScheduleById(id: string): Promise<Schedule<unknown> | undefined>
 ```
 
@@ -678,19 +1328,23 @@ Get a scheduled task by ID. Returns `undefined` if not found. This method works 
 
 ### `listSchedules()`
 
-TypeScript
+**TypeScript**
 
-```
-async listSchedules(criteria?: {  id?: string;  type?: "scheduled" | "delayed" | "cron" | "interval";  timeRange?: { start?: Date; end?: Date };}): Promise<Schedule<unknown>[]>
+```ts
+async listSchedules(criteria?: {
+  id?: string;
+  type?: "scheduled" | "delayed" | "cron" | "interval";
+  timeRange?: { start?: Date; end?: Date };
+}): Promise<Schedule<unknown>[]>
 ```
 
 Get scheduled tasks matching the criteria. This method works in both top-level agents and sub-agents.
 
 ### `getSchedule()`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 getSchedule<T>(id: string): Schedule<T> | undefined
 ```
 
@@ -698,19 +1352,23 @@ Deprecated. Get a scheduled task by ID synchronously. This method only works in 
 
 ### `getSchedules()`
 
-TypeScript
+**TypeScript**
 
-```
-getSchedules<T>(criteria?: {  id?: string;  type?: "scheduled" | "delayed" | "cron" | "interval";  timeRange?: { start?: Date; end?: Date };}): Schedule<T>[]
+```ts
+getSchedules<T>(criteria?: {
+  id?: string;
+  type?: "scheduled" | "delayed" | "cron" | "interval";
+  timeRange?: { start?: Date; end?: Date };
+}): Schedule<T>[]
 ```
 
 Deprecated. Get scheduled tasks matching the criteria synchronously. This method only works in top-level agents. Use `await this.listSchedules(criteria)` instead.
 
 ### `cancelSchedule()`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async cancelSchedule(id: string): Promise<boolean>
 ```
 
@@ -718,9 +1376,9 @@ Cancel a scheduled task. Returns `true` if cancelled, `false` if not found.
 
 ### `keepAlive()`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async keepAlive(): Promise<() => void>
 ```
 
@@ -728,26 +1386,40 @@ Prevent the Durable Object from being evicted due to inactivity by holding a 30-
 
 Always call the disposer when the work is done — otherwise the heartbeat continues indefinitely.
 
-* [  JavaScript ](#tab-panel-6249)
-* [  TypeScript ](#tab-panel-6250)
+* [  JavaScript ](#tab-panel-6431)
+* [  TypeScript ](#tab-panel-6432)
 
-JavaScript
+**JavaScript**
 
+```js
+const dispose = await this.keepAlive();
+try {
+  // Long-running work that must not be interrupted
+  const result = await longRunningComputation();
+  await sendResults(result);
+} finally {
+  dispose();
+}
 ```
-const dispose = await this.keepAlive();try {  // Long-running work that must not be interrupted  const result = await longRunningComputation();  await sendResults(result);} finally {  dispose();}
-```
 
-TypeScript
+**TypeScript**
 
-```
-const dispose = await this.keepAlive();try {  // Long-running work that must not be interrupted  const result = await longRunningComputation();  await sendResults(result);} finally {  dispose();}
+```ts
+const dispose = await this.keepAlive();
+try {
+  // Long-running work that must not be interrupted
+  const result = await longRunningComputation();
+  await sendResults(result);
+} finally {
+  dispose();
+}
 ```
 
 ### `keepAliveWhile()`
 
-TypeScript
+**TypeScript**
 
-```
+```ts
 async keepAliveWhile<T>(fn: () => Promise<T>): Promise<T>
 ```
 
@@ -755,19 +1427,25 @@ Run an async function while keeping the Durable Object alive. The heartbeat is a
 
 This is the recommended way to use `keepAlive` — it guarantees cleanup.
 
-* [  JavaScript ](#tab-panel-6245)
-* [  TypeScript ](#tab-panel-6246)
+* [  JavaScript ](#tab-panel-6427)
+* [  TypeScript ](#tab-panel-6428)
 
-JavaScript
+**JavaScript**
 
+```js
+const result = await this.keepAliveWhile(async () => {
+  const data = await longRunningComputation();
+  return data;
+});
 ```
-const result = await this.keepAliveWhile(async () => {  const data = await longRunningComputation();  return data;});
-```
 
-TypeScript
+**TypeScript**
 
-```
-const result = await this.keepAliveWhile(async () => {  const data = await longRunningComputation();  return data;});
+```ts
+const result = await this.keepAliveWhile(async () => {
+  const data = await longRunningComputation();
+  return data;
+});
 ```
 
 ## Keeping the agent alive
@@ -785,22 +1463,36 @@ Durable Objects are evicted after a period of inactivity (typically 70-140 secon
 
 Each `keepAlive()` call returns an independent disposer:
 
-* [  JavaScript ](#tab-panel-6251)
-* [  TypeScript ](#tab-panel-6252)
+* [  JavaScript ](#tab-panel-6433)
+* [  TypeScript ](#tab-panel-6434)
 
-JavaScript
+**JavaScript**
 
-```
-const dispose1 = await this.keepAlive();const dispose2 = await this.keepAlive();
-// Both heartbeats are activedispose1(); // Only cancels the first heartbeat// Agent is still alive via dispose2's heartbeat
+```js
+const dispose1 = await this.keepAlive();
+const dispose2 = await this.keepAlive();
+
+
+// Both heartbeats are active
+dispose1(); // Only cancels the first heartbeat
+// Agent is still alive via dispose2's heartbeat
+
+
 dispose2(); // Now the agent can go idle
 ```
 
-TypeScript
+**TypeScript**
 
-```
-const dispose1 = await this.keepAlive();const dispose2 = await this.keepAlive();
-// Both heartbeats are activedispose1(); // Only cancels the first heartbeat// Agent is still alive via dispose2's heartbeat
+```ts
+const dispose1 = await this.keepAlive();
+const dispose2 = await this.keepAlive();
+
+
+// Both heartbeats are active
+dispose1(); // Only cancels the first heartbeat
+// Agent is still alive via dispose2's heartbeat
+
+
 dispose2(); // Now the agent can go idle
 ```
 

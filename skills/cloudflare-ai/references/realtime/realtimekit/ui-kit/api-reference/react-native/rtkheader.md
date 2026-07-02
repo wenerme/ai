@@ -28,16 +28,24 @@ The meeting header bar that renders logo, title, participant count, clock, and o
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkHeader } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkHeader meeting={meeting} />;}
+
+
+function MyComponent() {
+  return <RtkHeader meeting={meeting} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkHeader } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkHeader meeting={meeting} config={customConfig} states={states} />;}
+
+
+function MyComponent() {
+  return <RtkHeader meeting={meeting} config={customConfig} states={states} />;
+}
 ```
 
 ```json

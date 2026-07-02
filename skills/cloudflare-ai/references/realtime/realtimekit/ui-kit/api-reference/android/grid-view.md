@@ -27,16 +27,20 @@ The main grid component which handles the participant grid layout, pagination, a
 
 ### Basic Usage
 
-```
-<com.cloudflare.realtimekit.ui.view.grid.RtkGridView    android:id="@+id/rtk_grid"    android:layout_width="match_parent"    android:layout_height="match_parent" />
+```xml
+<com.cloudflare.realtimekit.ui.view.grid.RtkGridView
+    android:id="@+id/rtk_grid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 ```
 
 ### With Methods
 
-Kotlin
+**Kotlin**
 
-```
-val grid = findViewById<RtkGridView>(R.id.rtk_grid)grid.activate(meeting)
+```kotlin
+val grid = findViewById<RtkGridView>(R.id.rtk_grid)
+grid.activate(meeting)
 ```
 
 ```json

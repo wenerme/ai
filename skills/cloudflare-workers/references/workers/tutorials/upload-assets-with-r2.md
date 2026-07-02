@@ -50,9 +50,7 @@ For setup, select the following options:
 
 Move into your newly created directory:
 
-Terminal window
-
-```
+```sh
 cd upload-r2-assets
 ```
 
@@ -60,17 +58,13 @@ cd upload-r2-assets
 
 Before you integrate R2 bucket access into your Worker application, an R2 bucket must be created:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket create <YOUR_BUCKET_NAME>
 ```
 
 Replace `<YOUR_BUCKET_NAME>` with the name you want to assign to your bucket. List your account's R2 buckets to verify that a new bucket has been added:
 
-Terminal window
-
-```
+```sh
 npx wrangler r2 bucket list
 ```
 
@@ -80,19 +74,28 @@ After your new R2 bucket is ready, use it inside your Worker application.
 
 Use your R2 bucket inside your Worker project by modifying the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include an R2 bucket [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Add the following R2 bucket binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12313)
-* [  wrangler.toml ](#tab-panel-12314)
+* [  wrangler.jsonc ](#tab-panel-12568)
+* [  wrangler.toml ](#tab-panel-12569)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "r2_buckets": [
+    {
+      "binding": "MY_BUCKET",
+      "bucket_name": "<YOUR_BUCKET_NAME>"
+    }
+  ]
+}
 ```
-{  "r2_buckets": [    {      "binding": "MY_BUCKET",      "bucket_name": "<YOUR_BUCKET_NAME>"    }  ]}
-```
 
-TOML
+**TOML**
 
-```
-[[r2_buckets]]binding = "MY_BUCKET"bucket_name = "<YOUR_BUCKET_NAME>"
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "<YOUR_BUCKET_NAME>"
 ```
 
 Give your R2 bucket binding name. Replace `<YOUR_BUCKET_NAME>` with the name of the R2 bucket you created earlier.
@@ -105,13 +108,36 @@ After setting up an R2 bucket binding, you will implement the functionalities fo
 
 To fetch files from the R2 bucket, use the `BINDING.get` function. In the below example, the R2 bucket binding is called `MY_BUCKET`. Using `.get(key)`, you can retrieve an asset based on the URL pathname as the key. In this example, the URL pathname is `/image.png`, and the asset key is `image.png`.
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  MY_BUCKET: R2Bucket;}export default {  async fetch(request, env): Promise<Response> {    // For example, the request URL my-worker.account.workers.dev/image.png    const url = new URL(request.url);    const key = url.pathname.slice(1);    // Retrieve the key "image.png"    const object = await env.MY_BUCKET.get(key);
-    if (object === null) {      return new Response("Object Not Found", { status: 404 });    }
-    const headers = new Headers();    object.writeHttpMetadata(headers);    headers.set("etag", object.httpEtag);
-    return new Response(object.body, {      headers,    });  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  MY_BUCKET: R2Bucket;
+}
+export default {
+  async fetch(request, env): Promise<Response> {
+    // For example, the request URL my-worker.account.workers.dev/image.png
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+    // Retrieve the key "image.png"
+    const object = await env.MY_BUCKET.get(key);
+
+
+    if (object === null) {
+      return new Response("Object Not Found", { status: 404 });
+    }
+
+
+    const headers = new Headers();
+    object.writeHttpMetadata(headers);
+    headers.set("etag", object.httpEtag);
+
+
+    return new Response(object.body, {
+      headers,
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 The code written above fetches and returns data from the R2 bucket when a `GET` request is made to the Worker application using a specific URL path.
@@ -122,21 +148,43 @@ Next, you will add the ability to upload to your R2 bucket using authentication.
 
 Create a secret value of your choice -- for instance, a random string or password. Using the Wrangler CLI, add the secret to your project as `AUTH_SECRET`:
 
-Terminal window
-
-```
+```sh
 npx wrangler secret put AUTH_SECRET
 ```
 
 Now, add a new code path that handles a `PUT` HTTP request. This new code will check that the previously uploaded secret is correctly used for authentication, and then upload to R2 using `MY_BUCKET.put(key, data)`:
 
-TypeScript
+**TypeScript**
 
-```
-interface Env {  MY_BUCKET: R2Bucket;  AUTH_SECRET: string;}export default {  async fetch(request, env): Promise<Response> {    if (request.method === "PUT") {      // Note that you could require authentication for all requests      // by moving this code to the top of the fetch function.      const auth = request.headers.get("Authorization");      const expectedAuth = `Bearer ${env.AUTH_SECRET}`;
-      if (!auth || auth !== expectedAuth) {        return new Response("Unauthorized", { status: 401 });      }
-      const url = new URL(request.url);      const key = url.pathname.slice(1);      await env.MY_BUCKET.put(key, request.body);      return new Response(`Object ${key} uploaded successfully!`);    }
-    // include the previous code here...  },} satisfies ExportedHandler<Env>;
+```ts
+interface Env {
+  MY_BUCKET: R2Bucket;
+  AUTH_SECRET: string;
+}
+export default {
+  async fetch(request, env): Promise<Response> {
+    if (request.method === "PUT") {
+      // Note that you could require authentication for all requests
+      // by moving this code to the top of the fetch function.
+      const auth = request.headers.get("Authorization");
+      const expectedAuth = `Bearer ${env.AUTH_SECRET}`;
+
+
+      if (!auth || auth !== expectedAuth) {
+        return new Response("Unauthorized", { status: 401 });
+      }
+
+
+      const url = new URL(request.url);
+      const key = url.pathname.slice(1);
+      await env.MY_BUCKET.put(key, request.body);
+      return new Response(`Object ${key} uploaded successfully!`);
+    }
+
+
+    // include the previous code here...
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
 This approach ensures that only clients who provide a valid bearer token, via the `Authorization` header equal to the `AUTH_SECRET` value, will be permitted to upload to the R2 bucket. If you used a different binding name than `AUTH_SECRET`, replace it in the code above.
@@ -145,9 +193,7 @@ This approach ensures that only clients who provide a valid bearer token, via th
 
 After completing your Cloudflare Worker project, deploy it to Cloudflare. Make sure you are in your Worker application directory that you created for this tutorial, then run:
 
-Terminal window
-
-```
+```sh
 npx wrangler deploy
 ```
 

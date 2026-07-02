@@ -290,9 +290,9 @@ the amount of reasoning effort based on the complexity of the request. You can c
 |---|---|---|
 | gemini-3.1-pro-preview | On (high) | low, medium, high |
 | gemini-3.1-flash-lite-image | On (minimal) | minimal, high |
-| gemini-3-flash-preview | On (high) | low, medium, high |
+| gemini-3-flash-preview | On (high) | minimal, low, medium, high |
 | gemini-3-pro-preview | On (high) | low, high |
-| gemini-3.5-flash | On (medium) | low, medium, high |
+| gemini-3.5-flash | On (medium) | minimal, low, medium, high |
 | gemini-2.5-pro | On | low, medium, high |
 | gemini-2.5-flash | On | low, medium, high |
 | gemini-2.5-flash-lite | Off | low, medium, high |
@@ -390,7 +390,7 @@ Use thinking models efficiently by following these guidelines.
 
 - **Review reasoning**: Analyze thought summaries to understand failures and improve prompts.
 - **Control thinking budget**: Prompt the model to think less for lengthy outputs to save tokens.
-- **Simple tasks**: Use low thinking for fact retrieval or classification (e.g., "Where was DeepMind founded?").
+- **Simple tasks**: Use minimal or low thinking for fact retrieval or classification (e.g., "Where was DeepMind founded?").
 - **Moderate tasks**: Use default thinking for comparing concepts or creative reasoning (e.g., Compare electric and hybrid cars).
 - **Complex tasks**: Use maximum thinking for advanced coding, math, or multi-step planning (e.g., Solve AIME math problems).
 

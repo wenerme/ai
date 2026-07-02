@@ -16,10 +16,12 @@ This section describes the lifecycle of a [Durable Object](https://developers.cl
 
 To use a Durable Object you need to create a [Durable Object Stub](https://developers.cloudflare.com/durable-objects/api/stub/). Simply creating the Durable Object Stub does not send a request to the Durable Object, and therefore the Durable Object is not yet instantiated. A request is sent to the Durable Object and its lifecycle begins only once a method is invoked on the Durable Object Stub.
 
-JavaScript
+**JavaScript**
 
-```
-const stub = env.MY_DURABLE_OBJECT.getByName("foo");// Now the request is sent to the remote Durable Object.const rpcResponse = await stub.sayHello();
+```js
+const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+// Now the request is sent to the remote Durable Object.
+const rpcResponse = await stub.sayHello();
 ```
 
 ## Durable Object Lifecycle state transitions
@@ -113,10 +115,17 @@ Instead of relying on shutdown hooks, you can regularly write to storage to reco
 
 For example, if you are processing a stream of data and need to save your progress, write your position to storage as you go rather than waiting to persist it at the end:
 
-JavaScript
+**JavaScript**
 
-```
-// Good: Write progress as you goasync processData(data) {  data.forEach(async (item, index) => {    await this.processItem(item);    // Save progress frequently    await this.ctx.storage.put("lastProcessedIndex", index);  });}
+```js
+// Good: Write progress as you go
+async processData(data) {
+  data.forEach(async (item, index) => {
+    await this.processItem(item);
+    // Save progress frequently
+    await this.ctx.storage.put("lastProcessedIndex", index);
+  });
+}
 ```
 
 While this may feel unintuitive, Durable Object storage writes are fast and synchronous, so you can persist state with minimal performance concerns.

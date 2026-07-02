@@ -18,17 +18,15 @@ Many external services provide libraries and SDKs to interact with their APIs. W
 
 If your service requires authentication, use Wrangler secrets to securely store your credentials. To do this, create a secret in your Cloudflare Workers project using the following [wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command:
 
-Terminal window
-
-```
+```sh
 wrangler secret put SECRET_NAME
 ```
 
 Then, retrieve the secret value in your code using the following code snippet:
 
-JavaScript
+**JavaScript**
 
-```
+```js
 const secretValue = env.SECRET_NAME;
 ```
 

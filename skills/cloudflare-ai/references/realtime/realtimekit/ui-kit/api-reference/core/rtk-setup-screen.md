@@ -29,19 +29,25 @@ A screen shown before joining the meeting, where you can edit your display name,
 
 ### Basic Usage
 
-```
+```html
 <rtk-setup-screen></rtk-setup-screen>
 ```
 
 ### With Properties
 
-```
-<rtk-setup-screen size="md"></rtk-setup-screen>
+```html
+<rtk-setup-screen
+ size="md">
+</rtk-setup-screen>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-setup-screen");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-setup-screen");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json

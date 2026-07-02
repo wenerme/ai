@@ -30,27 +30,44 @@ Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-7043)
-* [  wrangler.toml ](#tab-panel-7044)
+* [  wrangler.jsonc ](#tab-panel-7251)
+* [  wrangler.toml ](#tab-panel-7252)
 
-JSONC
+**JSONC**
 
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Top-level configuration
+  "name": "browser-rendering",
+  "main": "src/index.ts",
+  "workers_dev": true,
+  "compatibility_flags": ["nodejs_compat_v2"],
+  "browser": {
+    "binding": "MYBROWSER",
+  },
+}
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  // Top-level configuration  "name": "browser-rendering",  "main": "src/index.ts",  "workers_dev": true,  "compatibility_flags": ["nodejs_compat_v2"],  "browser": {    "binding": "MYBROWSER",  },}
-```
 
-TOML
+**TOML**
 
-```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-rendering"main = "src/index.ts"workers_dev = truecompatibility_flags = [ "nodejs_compat_v2" ]
-[browser]binding = "MYBROWSER"
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "browser-rendering"
+main = "src/index.ts"
+workers_dev = true
+compatibility_flags = [ "nodejs_compat_v2" ]
+
+
+[browser]
+binding = "MYBROWSER"
 ```
 
 After the binding is declared, access the DevTools endpoint using `env.MYBROWSER` in your Worker code:
 
-JavaScript
+**JavaScript**
 
-```
+```javascript
 const browser = await puppeteer.launch(env.MYBROWSER);
 ```
 
@@ -58,20 +75,27 @@ Quick Actions compatibility
 
 The browser binding's `.quickAction()` method requires a compatibility date of `2026-03-24` or later. Ensure your `wrangler.json` includes:
 
-JSONC
+**JSONC**
 
-```
-{  "compatibility_date": "2026-03-24"}
+```jsonc
+{
+  "compatibility_date": "2026-03-24"
+}
 ```
 
 Quick Actions require remote mode for local development
 
 The `.quickAction()` method is not yet supported in local development mode. When using `wrangler dev`, you must run with `--remote` or set `"remote": true` in your browser binding configuration:
 
-JSONC
+**JSONC**
 
-```
-{  "browser": {    "binding": "MYBROWSER",    "remote": true  }}
+```jsonc
+{
+  "browser": {
+    "binding": "MYBROWSER",
+    "remote": true
+  }
+}
 ```
 
 Without remote mode, calls to `.quickAction()` will fail with: `The RPC receiver does not implement the method "quickAction"`.
@@ -82,9 +106,7 @@ For Puppeteer, Playwright, or CDP-based Workers, run `npx wrangler dev` to test 
 
 By default, local development runs Chrome in headless mode. To launch Chrome in visible (headful) mode for debugging, set the `X_BROWSER_HEADFUL` environment variable:
 
-Terminal window
-
-```
+```sh
 X_BROWSER_HEADFUL=true npx wrangler dev
 ```
 

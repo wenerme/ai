@@ -29,16 +29,24 @@ Image viewer with fullscreen toggle and download functionality for chat images.
 
 ### Basic Usage
 
-```
+```tsx
 import { RtkImageViewer } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkImageViewer image={imageMessage} />;}
+
+
+function MyComponent() {
+  return <RtkImageViewer image={imageMessage} />;
+}
 ```
 
 ### With Properties
 
-```
+```tsx
 import { RtkImageViewer } from "@cloudflare/realtimekit-react-native-ui";
-function MyComponent() {  return <RtkImageViewer image={imageMessage} size="md" _id="viewer-1" />;}
+
+
+function MyComponent() {
+  return <RtkImageViewer image={imageMessage} size="md" _id="viewer-1" />;
+}
 ```
 
 ```json

@@ -27,19 +27,24 @@ A component which handles transcripts. You can configure which transcripts you w
 
 ### Basic Usage
 
-```
+```html
 <rtk-transcripts></rtk-transcripts>
 ```
 
 ### With Properties
 
-```
-<rtk-transcripts></rtk-transcripts>
+```html
+<rtk-transcripts>
+</rtk-transcripts>
 ```
 
-```
-<script>  const el = document.querySelector("rtk-transcripts");
-  el.meeting= meeting</script>
+```html
+<script>
+  const el = document.querySelector("rtk-transcripts");
+
+
+  el.meeting= meeting
+</script>
 ```
 
 ```json
