@@ -20,7 +20,7 @@ Note
 
 A response containing `Vary: *` always bypasses cache, regardless of your Vary configuration.
 
-This page explains how Vary affects caching. To configure it, refer to [Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) in the Cache Rules settings.
+This page explains how Vary affects caching. To configure Vary, use [Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) in Cache Rules settings, or [cf.vary](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property) for Workers subrequests.
 
 This feature is distinct from [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/), which serves image format variants based on the `Accept` header through a separate cache variants rule.
 
@@ -208,6 +208,6 @@ Purging a URL purges all cached versions for that URL. You do not need to send a
 Changing Vary configuration does not itself purge cached content. Because a new Vary configuration can change how cached versions are selected, requests may miss and refill under the new cache keys until the old cached entries expire or are purged.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/vary/#page","headline":"Vary · Cloudflare Cache (CDN) docs","description":"Cache multiple versions of the same URL based on the request headers your origin varies on.","url":"https://developers.cloudflare.com/cache/concepts/vary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/vary/#page","headline":"Vary · Cloudflare Cache (CDN) docs","description":"Cache multiple versions of the same URL based on the request headers your origin varies on.","url":"https://developers.cloudflare.com/cache/concepts/vary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/vary/","name":"Vary"}}]}
 ```

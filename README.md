@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26768 files, 287 MiB total
+> 106 skills, 26770 files, 287 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1248,7 +1248,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 775 | 6.1 MiB |
+| `mastra-docs` | 776 | 6.1 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1281,7 +1281,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `tmux-session-manager` | 1 | 1.7 KiB |
 | `transformers-docs` | 165 | 1.2 MiB |
 | `ui-ux-pro-max` | 35 | 1.7 MiB |
-| `ultralytics-docs` | 484 | 4.1 MiB |
+| `ultralytics-docs` | 485 | 4.1 MiB |
 | `vite-docs` | 58 | 539 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
 | `vllm-docs` | 170 | 1.3 MiB |
