@@ -1,20 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
-description: "通过 Comfy Cloud MCP 服务器，在 Claude Code 和 Claude Desktop 中使用 Comfy Cloud：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
-translationSourceHash: 8e911aa0
+description: "从 Claude Code、Claude Desktop、Cursor、Codex 或任何兼容 MCP 的代理连接 Comfy Cloud MCP：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
+translationSourceHash: 01763e3c
 translationFrom: agent-tools/cloud.mdx
 translationBlockHashes:
   "_intro": b1c56a40
-  "Overview": 48a88d56
+  "Overview": 4b68a7b5
+  "Install Comfy Cloud MCP": ca5e817e
   "What your agent can do": 2c2a22e6
   "MCP tools": a9211dee
   "Credits and spending": 20e94ef0
-  "Install": 445ca642
   "Outputs and downloads": a2c8c12f
   "Related resources": 58e75560
   "Feedback": 6872768e
-  "Known limitations": 52477743
-  "FAQ": 7b3bdcef
+  "Known limitations": 2f9e13ba
+  "FAQ": 920ab7b8
 ---
 
 <CloudFeature/>
@@ -27,19 +27,300 @@ translationBlockHashes:
 
 服务器远程运行在 `cloud.comfy.org/mcp`。工作流在 Comfy Cloud GPU 上执行，因此你无需本地 GPU。你的代理通过 HTTPS 与服务器通信；服务器将工具调用转换为经过身份验证的请求，代表你发送给 Comfy Cloud。
 
-目前支持范围限于 **Claude Code** 和 **Claude Desktop**，它们通过 **OAuth** 登录（一次性的浏览器登录）。更多客户端支持即将推出。
+任何 **MCP 兼容客户端**都可以连接到相同的服务器 URL。**Claude Code**、**Claude Desktop**、**Cursor** 和 **Codex** 在下方有优先设置指导。**Windsurf**、**Amp** 和其他代理使用相同的 URL，搭配 OAuth 或 API 密钥。
 
-## 你的代理能做什么
+<a id="install-comfy-cloud-mcp"></a>
 
-你无需自己调用 MCP 工具。你的代理会根据你的请求自动选择合适的工具。斜杠命令和提示词（见下文）是将代理导向常用使用例的快捷键，但自然语言同样有效（例如“生成一张猫宇航员的图像”、“放大这张照片”、“找一个 Wan万相 2.2 视频模板”）。
+## 安装 Comfy Cloud MCP
+
+  你需要有一个 [Comfy Cloud](https://cloud.comfy.org) 账户才能连接。如果你还没有，请[注册](https://cloud.comfy.org)。设置期间的 OAuth 登录会使用你的 Comfy 账户。
+
+Comfy Cloud MCP 运行于：
+
+```
+https://cloud.comfy.org/mcp
+```
+
+选择你的客户端：
+
+  
+    安装 **comfy-cloud** 插件。它将 MCP 连接和斜杠指令集成为一步操作。该插件通过 [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) 仓库发布，该仓库托管了 Claude Code 插件以及适用于 Comfy 的社区代理技能。
+
+    
+      
+        添加 Comfy Skills 插件市场（只需一次）：
+
+        ```
+        /plugin marketplace add Comfy-Org/comfy-skills
+        ```
+      
+      
+        ```
+        /plugin install comfy-cloud@comfy-skills
+        ```
+      
+      
+        运行 `/mcp`，选择 **comfy-cloud** → **Authenticate**。你的浏览器会打开并登录，令牌会自动刷新。
+      
+    
+
+    该插件添加了以下斜杠指令：
+
+    | 指令 | 作用 |
+    | --- | --- |
+    | `/comfy-cloud:generate-image` | 生成、编辑或修改图像 |
+    | `/comfy-cloud:generate-video` | 生成、编辑或扩展视频 |
+    | `/comfy-cloud:generate-audio` | 生成音频、音乐或音效 |
+    | `/comfy-cloud:generate-3d` | 从文本或图像生成 3D 模型 |
+    | `/comfy-cloud:remove-background` | 从图像中移除背景 |
+    | `/comfy-cloud:upscale-image` | 将图像放大到更高分辨率 |
+    | `/comfy-cloud:search-templates` | 在 [comfy.org](https://comfy.org) 上查找预构建的工作流模板 |
+    | `/comfy-cloud:search-models` | 搜索可用模型 |
+    | `/comfy-cloud:search-nodes` | 搜索节点并获取连接建议 |
+    | `/comfy-cloud:help` | 查看你可以用 ComfyUI Cloud 做什么 |
+
+    
+      直接添加服务器：
+
+      ```bash
+      claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp
+      ```
+
+      然后运行 `/mcp`，选择 **comfy-cloud** → **Authenticate**。添加 `-s user` 使其在你所有项目中可用。
+
+      此路径仍然会暴露与 MCP 提示词相同的工作流：`/mcp__comfy-cloud__generate-image`、`/mcp__comfy-cloud__search-models` 等（`/mcp__<name>__` 前缀使用你传递给 `claude mcp add` 的名称）。推荐使用上面的插件，因为它将这些封装为更友好的 `/comfy-cloud:*` 指令。
+    
+  
+
+  
+    Claude Desktop 通过其 UI 将 Comfy Cloud 添加为**自定义连接器**，然后运行 OAuth 登录。
+
+    <video
+      controls
+      className="w-full aspect-video rounded-xl"
+      src="/images/agent_tools/Claude_desktop.mp4"
+    ></video>
+
+    
+      
+        在侧边栏中，点击 **Customize**（标记为 **1**）。
+
+        [Claude Desktop — 打开自定义]
+      
+      
+        点击 **Connectors**（标记为 **2**）。
+
+        [Claude Desktop — 打开连接器]
+      
+      
+        1. 点击连接器标题中的 **+** 按钮（标记为 **3**）。
+        2. 选择 **Add custom connector**（标记为 **4**）。
+
+        [Claude Desktop — 添加自定义连接器]
+      
+      
+        1. 在 **Name** 字段中输入一个名称，例如 **Comfy Cloud MCP**（标记为 **5**）。
+        2. 将 **Remote MCP server URL** 设置为 `https://cloud.comfy.org/mcp`（标记为 **6**）。
+        3. 点击 **Add**（标记为 **7**）。
+
+        [Claude Desktop — 连接器详情]
+      
+      
+        1. 当浏览器打开时，选择你的工作区（例如**个人工作区**）。
+        2. 点击**继续**以授权连接器。你已连接。
+
+        [Comfy Cloud MCP 授权]
+      
+    
+
+    Claude Desktop 不支持 Claude Code 斜杠指令。相反，打开**提示词选择器**以使用相同的工作流：
+
+    | 提示词 | 描述 |
+    | --- | --- |
+    | `generate-image` | 根据文本描述生成图像 |
+    | `generate-video` | 从文本或图像生成视频 |
+    | `generate-audio` | 生成音频、音乐或音效 |
+    | `generate-3d` | 从文本或图像生成 3D 模型 |
+    | `upscale-image` | 将图像放大到更高分辨率 |
+    | `remove-background` | 从图像中移除背景 |
+    | `search-templates` | 查找预构建的工作流模板 |
+    | `search-models` | 搜索模型（checkpoint、LoRA、VAE） |
+    | `search-nodes` | 搜索节点并获取连接建议 |
+    | `help` | 查看你可以用 ComfyUI Cloud 做什么 |
+
+    你也可以跳过提示词，直接用自然语言提问。MCP 工具的工作方式相同。
+  
+
+  
+    Cursor 通过 HTTP 连接到远程 MCP 服务器。Cursor 目前**不**支持 MCP OAuth。在 MCP 配置中使用 Comfy Cloud API 密钥添加 Comfy Cloud。
+
+    
+      
+        点击右上角的设置齿轮（标记为 **1**）。
+
+        [Cursor — 打开设置]
+      
+      
+        1. 在侧边栏中，点击 **Tools & MCPs**（标记为 **2**）。
+        2. 点击 **+ New MCP Server**（标记为 **3**）→ **Add a Custom MCP Server**。
+
+        [Cursor — Tools & MCPs]
+      
+      
+        编辑 `~/.cursor/mcp.json`（全局）或 `.cursor/mcp.json`（项目）。设置服务器 URL 并在 `X-API-Key` 标头中传递你的 Comfy Cloud API 密钥。在 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) 创建密钥（以 `comfyui-` 开头）：
+
+        ```json
+        {
+          "mcpServers": {
+            "comfy-cloud": {
+              "url": "https://cloud.comfy.org/mcp",
+              "headers": {
+                "X-API-Key": "${env:COMFY_API_KEY}"
+              }
+            }
+          }
+        }
+        ```
+
+        在你的 shell 或系统环境中设置 `COMFY_API_KEY`。推荐使用 `${env:COMFY_API_KEY}` 而不是在可能提交到 git 的文件中硬编码密钥。
+
+        [Cursor — 带有 API 密钥的 mcp.json]
+      
+      
+        用自然语言提问（"生成一张猫宇航员的图像"、"找一个 Wan 2.2 视频模板"）。Cursor 会代表你调用 MCP 工具。
+      
+    
+  
+
+  
+    [Codex](https://developers.openai.com/codex/cli) 通过 Streamable HTTP 连接到 Comfy Cloud。在设置中添加服务器，然后使用 OAuth 登录。
+
+    <video
+      controls
+      className="w-full aspect-video rounded-xl"
+      src="/images/agent_tools/CodeX_Oauth_mcp.mp4"
+    ></video>
+
+    
+      
+        1. 在 *Logged in with API key* 下点击 **Settings**（标记为 **1**）。
+        2. 点击 **Settings**（标记为 **2**）打开完整设置面板。
+
+        [Codex 设置面板 — 步骤 1]
+      
+      
+        1. 在设置列表中点击 **MCP servers**（标记为 **3**）。
+        2. 点击 **+ Add server**（标记为 **4**）添加新的 MCP 服务器。
+
+        [Codex MCP 服务器 — 步骤 2]
+      
+      
+        1. 选择 **Streamable HTTP** 作为连接类型。
+        2. 在 **Name** 字段中输入一个名称，例如 **Comfy Cloud MCP**（标记为 **5**）。
+        3. 在 **URL** 字段中输入 URL `https://cloud.comfy.org/mcp`（标记为 **6**）。
+        4. 点击 **Save**（标记为 **7**）。
+
+        [Codex 添加 MCP 服务器 — 步骤 3]
+      
+      
+        1. 点击已保存服务器条目上的 **Authenticate**（标记为 **8**）。
+
+        [Codex 认证 MCP 服务器 — 步骤 4]
+
+        2. 在浏览器弹窗中，选择你的工作区并点击**继续**完成登录。你已连接。
+
+        [Comfy Cloud MCP 授权]
+      
+    
+
+    用自然语言提问（"生成一张猫宇航员的图像"、"找一个 Wan 2.2 视频模板"）。Codex 会代表你调用 MCP 工具。
+
+    
+      从终端注册并登录：
+
+      ```bash
+      codex mcp add comfy-cloud --url https://cloud.comfy.org/mcp
+      codex mcp login comfy-cloud
+      ```
+
+      这会将条目写入 `~/.codex/config.toml`（或受信任项目中的 `.codex/config.toml`）。
+    
+
+    
+      当没有浏览器可用时，添加带有从环境变量读取的标头的服务器。在 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) 创建一个密钥（以 `comfyui-` 开头），然后添加到 `~/.codex/config.toml`：
+
+      ```toml
+      [mcp_servers.comfy-cloud]
+      url = "https://cloud.comfy.org/mcp"
+      env_http_headers = { "X-API-Key" = "COMFY_API_KEY" }
+      ```
+
+      在你的 shell 或系统环境中设置 `COMFY_API_KEY`。不要将密钥提交到版本控制。
+    
+  
+
+  
+    任何支持**远程 HTTP** 传输的 MCP 客户端都可以连接到 Comfy Cloud。服务器 URL 始终是 `https://cloud.comfy.org/mcp`。
+
+    
+      
+        添加一个指向 `https://cloud.comfy.org/mcp` 的远程 MCP 条目。大多数客户端使用带有 `url` 字段的 JSON 配置：
+
+        ```json
+        {
+          "mcpServers": {
+            "comfy-cloud": {
+              "url": "https://cloud.comfy.org/mcp"
+            }
+          }
+        }
+        ```
+
+        **Windsurf** 使用 `serverUrl` 代替 `url`。**Amp** 在 **Settings → MCP Servers** 或 `~/.config/amp/settings.json` 中使用相同的 `mcpServers` 结构。
+      
+      
+        如果你的客户端支持 MCP OAuth，在提示时通过浏览器登录。否则，添加 API 密钥标头（见下文）。
+      
+      
+        重新启动你的客户端。你应该会看到 Comfy Cloud 工具（`search_templates`、`submit_workflow`、`get_output` 等）在 **comfy-cloud** 服务器下注册。
+      
+    
+
+    **无界面 / CI (API 密钥)：** 当 OAuth 不可用时，在 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) 创建一个密钥，并将其作为 `X-API-Key` 标头传递：
+
+    ```json
+    {
+      "mcpServers": {
+        "comfy-cloud": {
+          "url": "https://cloud.comfy.org/mcp",
+          "headers": {
+            "X-API-Key": "comfyui-…"
+          }
+        }
+      }
+    }
+    ```
+
+    对于 Claude Code 终端：
+
+    ```bash
+    claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp -H "X-API-Key: comfyui-…"
+    ```
+
+    推荐使用 `${env:COMFY_API_KEY}` 或你的客户端的密钥插值，而不是在你提交到 git 的配置文件中硬编码密钥。
+  
+
+## 您的代理能做什么
+
+您无需自行调用 MCP 工具。您的代理会根据您的请求自动选择合适的工具。斜杠命令和提示（如下所示）是引导代理完成常见使用例的快捷键，但自然语言也同样有效（例如“生成一张猫宇航员的图像”、“放大这张照片”、“找一份 Wan 2.2 视频模板”）。
 
 典型流程：
 
-1. **探索**可用内容（`search_templates`、`search_models`、`search_nodes`，或适用于图形类问题的 `cql`）。
-2. **运行**生成：有匹配的预构建模板时使用 `run_template`，自定义工作流使用 `submit_workflow`（需要输入图像时配合 `upload_file`），Flux、Grok、Gemini、OpenAI、Ideogram、Seedance 等合作伙伴模型则使用 `partner_generate`。
-3. **等待并检索**输出（`wait_for_job` 等待作业完成，随后 `get_output` 会返回一条下载指令，你的代理会在你的 Shell 中执行）。
+1. **发现**可用资源（使用 `search_templates`、`search_models`、`search_nodes`，或对画面风格的问题使用 `cql`）。
+2. **运行**生成任务：如果找到匹配的预构建模板则使用 `run_template`，自定义工作流则使用 `submit_workflow`（需要输入图像时配合 `upload_file`），或使用 `partner_generate` 调用 Flux、Grok、Gemini、OpenAI、Ideogram、Seedance 等合作伙伴模型。
+3. **等待并获取输出**（`wait_for_job`，然后 `get_output` 返回一条下载指令，由您的代理在 shell 中运行）。
 
-服务器会优先匹配[预构建模板](https://comfy.org/workflows)，然后才从头构建工作流，这样通常能更快得到更好的结果。
+服务器倾向于优先匹配 [预构建模板](https://comfy.org/workflows)，而不是从头构建工作流，这样往往能更快地获得更好的结果。
 
 ## MCP 工具
 
@@ -116,134 +397,15 @@ translationBlockHashes:
 | `submit_feedback` | 获取测试版反馈调查问卷链接 |
 | `report_session_summary` | 与 Comfy 团队分享匿名化的会话摘要——**仅在你明确同意的情况下**；代理必须先征求你的同意，且摘要中不包含任何提示词、文件路径或个人信息 |
 
+<a id="credits-and-spending"></a>
+
 ## 积分与消费
 
-探索是免费的：`search_templates`、`search_models` 和 `search_nodes` 只需一个 [Comfy 账户](https://cloud.comfy.org)即可使用。运行生成会消耗 Comfy Cloud 积分，需要订阅或积分余额。
+探索功能免费：`search_templates`、`search_models` 和 `search_nodes` 只需一个 [Comfy 账户](https://cloud.comfy.org) 即可使用。运行生成会消耗 Comfy Cloud 积分，且需要订阅或积分余额。
 
-会产生实际花费的工具受**消费确认**保护。当一次生成使用付费合作伙伴模型（`partner_generate`），或使用包含付费 API 节点的工作流/模板（`run_template`、`run_saved_workflow`、`submit_batch`）时，服务器会阻止执行，直到你的代理确认你同意消耗积分——因此在这些运行之前，代理会先与你确认。免费、仅使用本地节点的工作流不会触发确认。
+实际花费金钱的工具是**消费门槛限定**的。当生成使用付费合作伙伴模型（`partner_generate`）或包含付费 API 节点的工作流/模板（`run_template`、`run_saved_workflow`、`submit_batch`）时，服务器会阻止执行，直到你的智能体确认你同意花费积分——因此，在这些运行之前，智能体会先与你确认。免费的本地工作流永远不会提示。
 
-你可以随时向代理询问余额（“我还有多少积分？”）——它会通过 `get_billing_status` 来回答。
-
-## 安装
-
-选择你的客户端：
-
-  
-    安装插件。连接和指令一步完成。
-  
-  
-    在应用中添加自定义连接器，然后登录。
-  
-
-### <span style={{ marginRight: "0.6rem" }}></span> Claude Code
-
-安装 **comfy-cloud** 插件。它一步添加 MCP 连接和斜杠指令。该插件通过 [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) 仓库发布，该仓库托管 Claude Code 插件和 Comfy 的社区代理技能。
-
-  
-    注册 Comfy Skills 市场（一次性）：
-
-    ```
-    /plugin marketplace add Comfy-Org/comfy-skills
-    ```
-  
-  
-    ```
-    /plugin install comfy-cloud@comfy-skills
-    ```
-  
-  
-    运行 `/mcp`，选择 **comfy-cloud** → **认证**。浏览器将打开让你登录，令牌会自动刷新。
-  
-
-该插件添加以下斜杠指令：
-
-| 指令 | 功能 |
-| --- | --- |
-| `/comfy-cloud:generate-image` | 生成、编辑或修改图像 |
-| `/comfy-cloud:generate-video` | 生成、编辑或扩展视频 |
-| `/comfy-cloud:generate-audio` | 生成音频、音乐或音效 |
-| `/comfy-cloud:generate-3d` | 根据文本或图像生成 3D 模型 |
-| `/comfy-cloud:remove-background` | 移除图像背景 |
-| `/comfy-cloud:upscale-image` | 将图像放大到更高分辨率 |
-| `/comfy-cloud:search-templates` | 在 [comfy.org](https://comfy.org) 上查找预构建的工作流模板 |
-| `/comfy-cloud:search-models` | 搜索可用模型 |
-| `/comfy-cloud:search-nodes` | 搜索节点并获取接线建议 |
-| `/comfy-cloud:help` | 查看你可以用 ComfyUI Cloud 做什么 |
-
-  直接添加服务器：
-
-  ```bash
-  claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp
-  ```
-
-  然后运行 `/mcp`，选择 **comfy-cloud** → **认证**。添加 `-s user` 使其在你所有项目中可用。
-
-  此路径仍然暴露与 MCP 提示相同的工作流：`/mcp__comfy-cloud__generate-image`、`/mcp__comfy-cloud__search-models` 等（`/mcp__<名称>__` 前缀使用你传递给 `claude mcp add` 的名称）。推荐使用上面的插件，因为它将这些包装为更友好的 `/comfy-cloud:*` 指令。
-
-### <span style={{ marginRight: "0.6rem" }}></span> Claude Desktop
-
-Claude Desktop 通过其 UI 将 Comfy Cloud 添加为自定义连接器，然后运行 OAuth 登录。
-
-<video
-  controls
-  className="w-full aspect-video rounded-xl"
-  src="/images/agent_tools/Claude_desktop.mp4"
-></video>
-
-  
-    在 Claude Desktop 中，打开 **自定义**，然后选择 **连接器**。
-
-    [Claude Desktop 连接器]
-  
-  
-    点击 **+** 按钮，然后选择 **添加自定义连接器**。
-
-    [添加自定义连接器]
-  
-  
-    将其命名为任意名称（例如 *Comfy Cloud*），并将 **远程 MCP 服务器 URL** 设置为：
-
-    ```
-    https://cloud.comfy.org/mcp
-    ```
-
-    [连接器详情]
-  
-  
-    点击 **添加**，然后按提示通过 Claude Desktop 登录。你即连接成功。
-
-    [通过 Claude Desktop 登录]
-  
-
-Claude Desktop 不支持 Claude Code 斜杠指令。取而代之，打开 **提示选择器** 以使用相同的工作流：
-
-| 提示 | 描述 |
-| --- | --- |
-| `generate-image` | 从文本描述生成图像 |
-| `generate-video` | 从文本或图像生成视频 |
-| `generate-audio` | 生成音频、音乐或音效 |
-| `generate-3d` | 从文本或图像生成 3D 模型 |
-| `upscale-image` | 将图像放大到更高分辨率 |
-| `remove-background` | 移除图像背景 |
-| `search-templates` | 查找预构建的工作流模板 |
-| `search-models` | 搜索模型（检查点、LoRA、VAE 等） |
-| `search-nodes` | 搜索节点并获取接线建议 |
-| `help` | 查看你可以用 ComfyUI Cloud 做什么 |
-
-你还可以跳过提示，直接用自然语言提问。MCP 工具的工作方式相同。
-
-### 无头 / CI（API 密钥）
-
-Claude Code 和 Claude Desktop 使用 OAuth，因此你不需要 API 密钥。对于**无头或 CI** 环境（无法使用浏览器）的情况，请改用 API 密钥进行身份验证：
-
-  
-    前往 [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys)，点击 **新建 API 密钥** 并复制它（它以 `comfyui-` 开头）。
-  
-  
-    ```bash
-    claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp -H "X-API-Key: comfyui-…"
-    ```
-  
+你可以随时向智能体询问你的余额（“我还有多少积分？”）——它会通过 `get_billing_status` 回答。
 
 ## 输出与下载
 
@@ -280,7 +442,7 @@ Comfy Cloud MCP 为早期版本。以下为已知的限制，团队正在努力�
 **工作流**
 
 - **编辑器格式到可执行格式的转换尚不完善。** 已保存的工作流可以通过 `run_saved_workflow` 按文件名运行（服务器会自动转换），但某些节点配置的转换仍不够完美。
-- **通过 `submit_workflow` 生成的资源可能未嵌入工作流元数据。** 在 ComfyUI 中打开时，可能无法恢复其原始工作流。
+- **通过 `submit_workflow` 生成的资产可能未嵌入工作流元数据。** 在 ComfyUI 中打开时，可能无法重新打开其原始工作流。
 - **工作流构建依赖于智能体的准确性。** 复杂的多节点工作流可能需要重试或优化。
 
 **文件处理**
@@ -290,18 +452,18 @@ Comfy Cloud MCP 为早期版本。以下为已知的限制，团队正在努力�
 
 **身份验证**
 
-- **OAuth 或 API 密钥。** Claude Code 和 Claude Desktop 使用一次性浏览器 OAuth 流程。无头客户端可以通过 `X-API-Key` 标头传递 Comfy Cloud API 密钥作为替代。计划为无法打开浏览器的客户端提供设备码 OAuth 流程。
+- **OAuth 或 API 密钥。** Claude Code 和 Claude Desktop 使用一次性浏览器 OAuth 流程。**Cursor** 需要你在 MCP 配置中提供 Comfy Cloud API 密钥（不支持 OAuth）。其他无头客户端可以通过 `X-API-Key` 标头传递 Comfy Cloud API 密钥作为替代。计划为无法打开浏览器的客户端提供设备码 OAuth 流程。
 
 ## 常见问题
 
   
-    目前支持 Claude Code 和 Claude Desktop，两者均通过 OAuth 登录。未来将支持更多客户端。
+    任何支持远程 HTTP 传输的 MCP 兼容客户端都可以连接到 `https://cloud.comfy.org/mcp`。我们为 **Claude Code**、**Claude Desktop**、**Cursor** 和 **Codex** 提供了最优先的配置说明。**Windsurf**、**Amp**、**OpenClaw** 和其他代理使用相同的 URL，通过 OAuth 或 API 密钥连接。参见[安装 Comfy Cloud MCP](#install-comfy-cloud-mcp)。
   
   
-    Claude Code 和 Claude Desktop 不需要，它们使用 OAuth。仅在没有浏览器的无头或 CI 环境中才需要 API 密钥。
+    对于支持 OAuth 的交互式客户端（Claude Code、Claude Desktop、Codex 等）不需要。**Cursor** 需要在你的 MCP 配置中提供 Comfy Cloud API 密钥。在没有浏览器的无头或 CI 环境中也需要 API 密钥。请参见[安装 Comfy Cloud MCP](#install-comfy-cloud-mcp) 下的 **Cursor** 标签或 **其他客户端** 标签。
   
   
-    付费生成受消费确认保护：当一次运行会消耗 Comfy Cloud 积分时（使用合作伙伴模型，或包含付费 API 节点的工作流/模板），服务器会要求你明确同意后才执行。请参阅[积分与消费](#积分与消费)。
+    付费生成受消费确认保护：当一次运行会消耗 Comfy Cloud 积分时（使用合作伙伴模型，或包含付费 API 节点的工作流/模板），服务器会要求你明确同意后才执行。请参阅[积分与消费](#credits-and-spending)。
   
   
     不能。斜杠指令是 Claude Code 插件的一部分。Claude Desktop 可以连接到同一个 MCP 服务器（如果你用自然语言提问或使用提示选择器，这些工具也能正常工作），但它不支持 Claude Code 插件或斜杠指令。
