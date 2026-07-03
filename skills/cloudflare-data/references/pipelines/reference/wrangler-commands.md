@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-9868)
-* [  pnpm ](#tab-panel-9869)
-* [  yarn ](#tab-panel-9870)
+* [  npm ](#tab-panel-9907)
+* [  pnpm ](#tab-panel-9908)
+* [  yarn ](#tab-panel-9909)
 
 ```sh
 npx wrangler pipelines setup
@@ -52,15 +52,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines create`
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-9871)
-* [  pnpm ](#tab-panel-9872)
-* [  yarn ](#tab-panel-9873)
+* [  npm ](#tab-panel-9910)
+* [  pnpm ](#tab-panel-9911)
+* [  yarn ](#tab-panel-9912)
 
 ```sh
 npx wrangler pipelines create [PIPELINE]
@@ -98,15 +100,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines list`
 
 List all pipelines
 
-* [  npm ](#tab-panel-9874)
-* [  pnpm ](#tab-panel-9875)
-* [  yarn ](#tab-panel-9876)
+* [  npm ](#tab-panel-9913)
+* [  pnpm ](#tab-panel-9914)
+* [  yarn ](#tab-panel-9915)
 
 ```sh
 npx wrangler pipelines list
@@ -144,15 +148,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines get`
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-9877)
-* [  pnpm ](#tab-panel-9878)
-* [  yarn ](#tab-panel-9879)
+* [  npm ](#tab-panel-9916)
+* [  pnpm ](#tab-panel-9917)
+* [  yarn ](#tab-panel-9918)
 
 ```sh
 npx wrangler pipelines get [PIPELINE]
@@ -188,15 +194,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines update`
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-9880)
-* [  pnpm ](#tab-panel-9881)
-* [  yarn ](#tab-panel-9882)
+* [  npm ](#tab-panel-9919)
+* [  pnpm ](#tab-panel-9920)
+* [  yarn ](#tab-panel-9921)
 
 ```sh
 npx wrangler pipelines update [PIPELINE]
@@ -254,15 +262,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines delete`
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-9883)
-* [  pnpm ](#tab-panel-9884)
-* [  yarn ](#tab-panel-9885)
+* [  npm ](#tab-panel-9922)
+* [  pnpm ](#tab-panel-9923)
+* [  yarn ](#tab-panel-9924)
 
 ```sh
 npx wrangler pipelines delete [PIPELINE]
@@ -298,15 +308,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines streams create`
 
 Create a new stream
 
-* [  npm ](#tab-panel-9886)
-* [  pnpm ](#tab-panel-9887)
-* [  yarn ](#tab-panel-9888)
+* [  npm ](#tab-panel-9925)
+* [  pnpm ](#tab-panel-9926)
+* [  yarn ](#tab-panel-9927)
 
 ```sh
 npx wrangler pipelines streams create [STREAM]
@@ -348,15 +360,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines streams list`
 
 List all streams
 
-* [  npm ](#tab-panel-9889)
-* [  pnpm ](#tab-panel-9890)
-* [  yarn ](#tab-panel-9891)
+* [  npm ](#tab-panel-9928)
+* [  pnpm ](#tab-panel-9929)
+* [  yarn ](#tab-panel-9930)
 
 ```sh
 npx wrangler pipelines streams list
@@ -396,15 +410,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines streams get`
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-9892)
-* [  pnpm ](#tab-panel-9893)
-* [  yarn ](#tab-panel-9894)
+* [  npm ](#tab-panel-9931)
+* [  pnpm ](#tab-panel-9932)
+* [  yarn ](#tab-panel-9933)
 
 ```sh
 npx wrangler pipelines streams get [STREAM]
@@ -440,15 +456,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines streams delete`
 
 Delete a stream
 
-* [  npm ](#tab-panel-9895)
-* [  pnpm ](#tab-panel-9896)
-* [  yarn ](#tab-panel-9897)
+* [  npm ](#tab-panel-9934)
+* [  pnpm ](#tab-panel-9935)
+* [  yarn ](#tab-panel-9936)
 
 ```sh
 npx wrangler pipelines streams delete [STREAM]
@@ -484,15 +502,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines sinks create`
 
 Create a new sink
 
-* [  npm ](#tab-panel-9898)
-* [  pnpm ](#tab-panel-9899)
-* [  yarn ](#tab-panel-9900)
+* [  npm ](#tab-panel-9937)
+* [  pnpm ](#tab-panel-9938)
+* [  yarn ](#tab-panel-9939)
 
 ```sh
 npx wrangler pipelines sinks create [SINK]
@@ -554,15 +574,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines sinks list`
 
 List all sinks
 
-* [  npm ](#tab-panel-9901)
-* [  pnpm ](#tab-panel-9902)
-* [  yarn ](#tab-panel-9903)
+* [  npm ](#tab-panel-9940)
+* [  pnpm ](#tab-panel-9941)
+* [  yarn ](#tab-panel-9942)
 
 ```sh
 npx wrangler pipelines sinks list
@@ -602,15 +624,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines sinks get`
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-9904)
-* [  pnpm ](#tab-panel-9905)
-* [  yarn ](#tab-panel-9906)
+* [  npm ](#tab-panel-9943)
+* [  pnpm ](#tab-panel-9944)
+* [  yarn ](#tab-panel-9945)
 
 ```sh
 npx wrangler pipelines sinks get [SINK]
@@ -646,15 +670,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pipelines sinks delete`
 
 Delete a sink
 
-* [  npm ](#tab-panel-9907)
-* [  pnpm ](#tab-panel-9908)
-* [  yarn ](#tab-panel-9909)
+* [  npm ](#tab-panel-9946)
+* [  pnpm ](#tab-panel-9947)
+* [  yarn ](#tab-panel-9948)
 
 ```sh
 npx wrangler pipelines sinks delete [SINK]
@@ -690,7 +716,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Pipelines Docs","description":"Wrangler CLI commands for managing Pipelines streams, sinks, and pipelines.","url":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

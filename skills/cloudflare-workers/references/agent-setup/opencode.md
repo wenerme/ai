@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Cloudflare platform access

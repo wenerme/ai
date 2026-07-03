@@ -49,6 +49,8 @@ You can safely ignore these warnings, since they are related to the reports that
 
 ## I get rule violation reports for a domain I allowlisted
 
+### Redirects to other domains
+
 Rule violations reported via CSP's [report-only directive](https://developers.cloudflare.com/client-side-security/reference/csp-header/) do not take into consideration any redirects or redirect HTTP status codes. This is [by design ↗](https://www.w3.org/TR/CSP3/#create-violation-for-request) for security reasons.
 
 Some third-party services you may want to cover in your allow rules perform redirects. An example of such a service is Google Ads, which [does not work well with CSP policies ↗](https://support.google.com/adsense/thread/102839782?hl=en&msgid=103611259).
@@ -56,6 +58,14 @@ Some third-party services you may want to cover in your allow rules perform redi
 For example, if you add the `adservice.google.com` domain to an allow rule, you could get rule violation reports for this domain due to redirects to a different domain (not present in your allow rule). In this case, the violation report would still mention the original domain, and not the domain of the redirected destination, which can cause some confusion.
 
 To try to solve this issue, add the domain of the redirected destination to your allow rule. You may need to add several domains to your rule due to redirects.
+
+### Ad-blocking browser extensions
+
+If the violation reports reference domains that belong to user consent management or behavioral tracking services, an ad-blocking browser extension installed on the visitor's browser is a likely cause.
+
+These extensions commonly block requests to such domains, often by redirecting them to a local resource instead of letting them reach the destination. Since the violation report mentions the original domain requested by the page, not this blocked or redirected destination, you may see violation reports for a domain you already allowlisted.
+
+Because only visitors with these extensions installed trigger this behavior, the violation reports are sparse compared to your site's overall traffic volume.
 
 ## I get scoped alerts for hostnames I do not manage on a SaaS root zone
 
@@ -124,6 +134,6 @@ Follow these steps to troubleshoot this issue:
 | Different CSP headers for different paths    | Use content security rule conditions to target specific paths, and avoid overlapping Transform Rules.                        |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/troubleshooting/#page","headline":"Troubleshooting · Client-side security docs","description":"Resolve common issues with client-side resource monitoring and script detection.","url":"https://developers.cloudflare.com/client-side-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP","Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/troubleshooting/#page","headline":"Troubleshooting · Client-side security docs","description":"Resolve common issues with client-side resource monitoring and script detection.","url":"https://developers.cloudflare.com/client-side-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP","Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/troubleshooting/","name":"Troubleshooting"}}]}
 ```

@@ -18,9 +18,9 @@ Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wra
 
 Develop your full-stack Pages application locally
 
-* [  npm ](#tab-panel-12750)
-* [  pnpm ](#tab-panel-12751)
-* [  yarn ](#tab-panel-12752)
+* [  npm ](#tab-panel-12806)
+* [  pnpm ](#tab-panel-12807)
+* [  yarn ](#tab-panel-12808)
 
 ```sh
 npx wrangler pages dev [DIRECTORY] [COMMAND]
@@ -102,15 +102,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages functions build`
 
 Compile a folder of Pages Functions into a single Worker
 
-* [  npm ](#tab-panel-12753)
-* [  pnpm ](#tab-panel-12754)
-* [  yarn ](#tab-panel-12755)
+* [  npm ](#tab-panel-12809)
+* [  pnpm ](#tab-panel-12810)
+* [  yarn ](#tab-panel-12811)
 
 ```sh
 npx wrangler pages functions build [DIRECTORY]
@@ -176,15 +178,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages project list`
 
 List your Cloudflare Pages projects
 
-* [  npm ](#tab-panel-12756)
-* [  pnpm ](#tab-panel-12757)
-* [  yarn ](#tab-panel-12758)
+* [  npm ](#tab-panel-12812)
+* [  pnpm ](#tab-panel-12813)
+* [  yarn ](#tab-panel-12814)
 
 ```sh
 npx wrangler pages project list
@@ -218,15 +222,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages project create`
 
 Create a new Cloudflare Pages project
 
-* [  npm ](#tab-panel-12759)
-* [  pnpm ](#tab-panel-12760)
-* [  yarn ](#tab-panel-12761)
+* [  npm ](#tab-panel-12815)
+* [  pnpm ](#tab-panel-12816)
+* [  yarn ](#tab-panel-12817)
 
 ```sh
 npx wrangler pages project create [PROJECT-NAME]
@@ -266,15 +272,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages project delete`
 
 Delete a Cloudflare Pages project
 
-* [  npm ](#tab-panel-12762)
-* [  pnpm ](#tab-panel-12763)
-* [  yarn ](#tab-panel-12764)
+* [  npm ](#tab-panel-12818)
+* [  pnpm ](#tab-panel-12819)
+* [  yarn ](#tab-panel-12820)
 
 ```sh
 npx wrangler pages project delete [PROJECT-NAME]
@@ -310,15 +318,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages deployment list`
 
 List deployments in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-12765)
-* [  pnpm ](#tab-panel-12766)
-* [  yarn ](#tab-panel-12767)
+* [  npm ](#tab-panel-12821)
+* [  pnpm ](#tab-panel-12822)
+* [  yarn ](#tab-panel-12823)
 
 ```sh
 npx wrangler pages deployment list
@@ -356,15 +366,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages deployment tail`
 
 Start a tailing session for a project's deployment and livestream logs from your Functions
 
-* [  npm ](#tab-panel-12768)
-* [  pnpm ](#tab-panel-12769)
-* [  yarn ](#tab-panel-12770)
+* [  npm ](#tab-panel-12824)
+* [  pnpm ](#tab-panel-12825)
+* [  yarn ](#tab-panel-12826)
 
 ```sh
 npx wrangler pages deployment tail [DEPLOYMENT]
@@ -416,15 +428,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages deployment delete`
 
 Delete a deployment in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-12771)
-* [  pnpm ](#tab-panel-12772)
-* [  yarn ](#tab-panel-12773)
+* [  npm ](#tab-panel-12827)
+* [  pnpm ](#tab-panel-12828)
+* [  yarn ](#tab-panel-12829)
 
 ```sh
 npx wrangler pages deployment delete [DEPLOYMENT-ID]
@@ -462,15 +476,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages deploy`
 
 Deploy a directory of static assets as a Pages deployment
 
-* [  npm ](#tab-panel-12774)
-* [  pnpm ](#tab-panel-12775)
-* [  yarn ](#tab-panel-12776)
+* [  npm ](#tab-panel-12830)
+* [  pnpm ](#tab-panel-12831)
+* [  yarn ](#tab-panel-12832)
 
 ```sh
 npx wrangler pages deploy [DIRECTORY]
@@ -520,15 +536,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages secret put`
 
 Create or update a secret variable for a Pages project
 
-* [  npm ](#tab-panel-12777)
-* [  pnpm ](#tab-panel-12778)
-* [  yarn ](#tab-panel-12779)
+* [  npm ](#tab-panel-12833)
+* [  pnpm ](#tab-panel-12834)
+* [  yarn ](#tab-panel-12835)
 
 ```sh
 npx wrangler pages secret put [KEY]
@@ -564,15 +582,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages secret bulk`
 
 Bulk upload secrets for a Pages project
 
-* [  npm ](#tab-panel-12780)
-* [  pnpm ](#tab-panel-12781)
-* [  yarn ](#tab-panel-12782)
+* [  npm ](#tab-panel-12836)
+* [  pnpm ](#tab-panel-12837)
+* [  yarn ](#tab-panel-12838)
 
 ```sh
 npx wrangler pages secret bulk [FILE]
@@ -608,15 +628,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages secret delete`
 
 Delete a secret variable from a Pages project
 
-* [  npm ](#tab-panel-12783)
-* [  pnpm ](#tab-panel-12784)
-* [  yarn ](#tab-panel-12785)
+* [  npm ](#tab-panel-12839)
+* [  pnpm ](#tab-panel-12840)
+* [  yarn ](#tab-panel-12841)
 
 ```sh
 npx wrangler pages secret delete [KEY]
@@ -652,15 +674,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages secret list`
 
 List all secrets for a Pages project
 
-* [  npm ](#tab-panel-12786)
-* [  pnpm ](#tab-panel-12787)
-* [  yarn ](#tab-panel-12788)
+* [  npm ](#tab-panel-12842)
+* [  pnpm ](#tab-panel-12843)
+* [  yarn ](#tab-panel-12844)
 
 ```sh
 npx wrangler pages secret list
@@ -694,7 +718,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `pages download config`
 
@@ -703,9 +729,9 @@ Experimental
 
 Download your Pages project config as a Wrangler configuration file
 
-* [  npm ](#tab-panel-12789)
-* [  pnpm ](#tab-panel-12790)
-* [  yarn ](#tab-panel-12791)
+* [  npm ](#tab-panel-12845)
+* [  pnpm ](#tab-panel-12846)
+* [  yarn ](#tab-panel-12847)
 
 ```sh
 npx wrangler pages download config [PROJECTNAME]
@@ -741,7 +767,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/pages/#page","headline":"Pages · Cloudflare Workers docs","description":"Wrangler commands for configuring Cloudflare Pages.","url":"https://developers.cloudflare.com/workers/wrangler/commands/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-6957)
-* [  pnpm ](#tab-panel-6958)
-* [  yarn ](#tab-panel-6959)
+* [  npm ](#tab-panel-6977)
+* [  pnpm ](#tab-panel-6978)
+* [  yarn ](#tab-panel-6979)
 
 ```sh
 npx wrangler ai-search list
@@ -58,15 +58,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search create`
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-6960)
-* [  pnpm ](#tab-panel-6961)
-* [  yarn ](#tab-panel-6962)
+* [  npm ](#tab-panel-6980)
+* [  pnpm ](#tab-panel-6981)
+* [  yarn ](#tab-panel-6982)
 
 ```sh
 npx wrangler ai-search create [NAME]
@@ -88,6 +90,8 @@ The namespace to create the instance in.
 Data source identifier (R2 bucket name or web URL).
 * `--type` ` string `
 The source type for the instance.
+* `--source-jurisdiction` ` string `
+The R2 jurisdiction of the source bucket (e.g. eu, fedramp). Only valid with --type r2; omit for no specific jurisdiction.
 * `--embedding-model` ` string `
 Embedding model to use.
 * `--generation-model` ` string `
@@ -138,15 +142,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search get`
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-6963)
-* [  pnpm ](#tab-panel-6964)
-* [  yarn ](#tab-panel-6965)
+* [  npm ](#tab-panel-6983)
+* [  pnpm ](#tab-panel-6984)
+* [  yarn ](#tab-panel-6985)
 
 ```sh
 npx wrangler ai-search get [NAME]
@@ -184,15 +190,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search update`
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-6966)
-* [  pnpm ](#tab-panel-6967)
-* [  yarn ](#tab-panel-6968)
+* [  npm ](#tab-panel-6986)
+* [  pnpm ](#tab-panel-6987)
+* [  yarn ](#tab-panel-6988)
 
 ```sh
 npx wrangler ai-search update [NAME]
@@ -252,15 +260,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search delete`
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-6969)
-* [  pnpm ](#tab-panel-6970)
-* [  yarn ](#tab-panel-6971)
+* [  npm ](#tab-panel-6989)
+* [  pnpm ](#tab-panel-6990)
+* [  yarn ](#tab-panel-6991)
 
 ```sh
 npx wrangler ai-search delete [NAME]
@@ -298,15 +308,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search stats`
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-6972)
-* [  pnpm ](#tab-panel-6973)
-* [  yarn ](#tab-panel-6974)
+* [  npm ](#tab-panel-6992)
+* [  pnpm ](#tab-panel-6993)
+* [  yarn ](#tab-panel-6994)
 
 ```sh
 npx wrangler ai-search stats [NAME]
@@ -344,15 +356,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search search`
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-6975)
-* [  pnpm ](#tab-panel-6976)
-* [  yarn ](#tab-panel-6977)
+* [  npm ](#tab-panel-6995)
+* [  pnpm ](#tab-panel-6996)
+* [  yarn ](#tab-panel-6997)
 
 ```sh
 npx wrangler ai-search search [NAME]
@@ -400,15 +414,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search namespace list`
 
 List all AI Search namespaces
 
-* [  npm ](#tab-panel-6978)
-* [  pnpm ](#tab-panel-6979)
-* [  yarn ](#tab-panel-6980)
+* [  npm ](#tab-panel-6998)
+* [  pnpm ](#tab-panel-6999)
+* [  yarn ](#tab-panel-7000)
 
 ```sh
 npx wrangler ai-search namespace list
@@ -448,15 +464,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search namespace create`
 
 Create a new AI Search namespace
 
-* [  npm ](#tab-panel-6981)
-* [  pnpm ](#tab-panel-6982)
-* [  yarn ](#tab-panel-6983)
+* [  npm ](#tab-panel-7001)
+* [  pnpm ](#tab-panel-7002)
+* [  yarn ](#tab-panel-7003)
 
 ```sh
 npx wrangler ai-search namespace create [NAME]
@@ -494,15 +512,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search namespace get`
 
 Get details of an AI Search namespace
 
-* [  npm ](#tab-panel-6984)
-* [  pnpm ](#tab-panel-6985)
-* [  yarn ](#tab-panel-6986)
+* [  npm ](#tab-panel-7004)
+* [  pnpm ](#tab-panel-7005)
+* [  yarn ](#tab-panel-7006)
 
 ```sh
 npx wrangler ai-search namespace get [NAME]
@@ -538,15 +558,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search namespace update`
 
 Update an AI Search namespace
 
-* [  npm ](#tab-panel-6987)
-* [  pnpm ](#tab-panel-6988)
-* [  yarn ](#tab-panel-6989)
+* [  npm ](#tab-panel-7007)
+* [  pnpm ](#tab-panel-7008)
+* [  yarn ](#tab-panel-7009)
 
 ```sh
 npx wrangler ai-search namespace update [NAME]
@@ -584,15 +606,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `ai-search namespace delete`
 
 Delete an AI Search namespace
 
-* [  npm ](#tab-panel-6990)
-* [  pnpm ](#tab-panel-6991)
-* [  yarn ](#tab-panel-6992)
+* [  npm ](#tab-panel-7010)
+* [  pnpm ](#tab-panel-7011)
+* [  yarn ](#tab-panel-7012)
 
 ```sh
 npx wrangler ai-search namespace delete [NAME]
@@ -628,7 +652,265 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+## `ai-search jobs list`
+
+List indexing jobs for an AI Search instance
+
+* [  npm ](#tab-panel-7013)
+* [  pnpm ](#tab-panel-7014)
+* [  yarn ](#tab-panel-7015)
+
+```sh
+npx wrangler ai-search jobs list [NAME]
+```
+
+```sh
+pnpm wrangler ai-search jobs list [NAME]
+```
+
+```sh
+yarn wrangler ai-search jobs list [NAME]
+```
+
+* `[NAME]` ` string ` required
+The name of the AI Search instance.
+* `--namespace` ` string ` alias: --n default: default
+The namespace the instance belongs to.
+* `--json` ` boolean ` default: false
+Return output as clean JSON
+* `--page` ` number ` default: 1
+Page number of the results, can configure page size using "per-page"
+* `--per-page` ` number `
+Number of jobs to show per page
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+## `ai-search jobs create`
+
+Trigger a new indexing job for an AI Search instance
+
+* [  npm ](#tab-panel-7016)
+* [  pnpm ](#tab-panel-7017)
+* [  yarn ](#tab-panel-7018)
+
+```sh
+npx wrangler ai-search jobs create [NAME]
+```
+
+```sh
+pnpm wrangler ai-search jobs create [NAME]
+```
+
+```sh
+yarn wrangler ai-search jobs create [NAME]
+```
+
+* `[NAME]` ` string ` required
+The name of the AI Search instance.
+* `--namespace` ` string ` alias: --n default: default
+The namespace the instance belongs to.
+* `--description` ` string `
+Optional description for the indexing job.
+* `--json` ` boolean ` default: false
+Return output as clean JSON
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+## `ai-search jobs get`
+
+Get details of an AI Search indexing job
+
+* [  npm ](#tab-panel-7019)
+* [  pnpm ](#tab-panel-7020)
+* [  yarn ](#tab-panel-7021)
+
+```sh
+npx wrangler ai-search jobs get [NAME] [JOB-ID]
+```
+
+```sh
+pnpm wrangler ai-search jobs get [NAME] [JOB-ID]
+```
+
+```sh
+yarn wrangler ai-search jobs get [NAME] [JOB-ID]
+```
+
+* `[NAME]` ` string ` required
+The name of the AI Search instance.
+* `[JOB-ID]` ` string ` required
+The ID of the indexing job.
+* `--namespace` ` string ` alias: --n default: default
+The namespace the instance belongs to.
+* `--json` ` boolean ` default: false
+Return output as clean JSON
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+## `ai-search jobs cancel`
+
+Cancel an in-progress AI Search indexing job
+
+* [  npm ](#tab-panel-7022)
+* [  pnpm ](#tab-panel-7023)
+* [  yarn ](#tab-panel-7024)
+
+```sh
+npx wrangler ai-search jobs cancel [NAME] [JOB-ID]
+```
+
+```sh
+pnpm wrangler ai-search jobs cancel [NAME] [JOB-ID]
+```
+
+```sh
+yarn wrangler ai-search jobs cancel [NAME] [JOB-ID]
+```
+
+* `[NAME]` ` string ` required
+The name of the AI Search instance.
+* `[JOB-ID]` ` string ` required
+The ID of the indexing job to cancel.
+* `--namespace` ` string ` alias: --n default: default
+The namespace the instance belongs to.
+* `--force` ` boolean ` alias: --y default: false
+Skip confirmation
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+## `ai-search jobs logs`
+
+List log entries for an AI Search indexing job
+
+* [  npm ](#tab-panel-7025)
+* [  pnpm ](#tab-panel-7026)
+* [  yarn ](#tab-panel-7027)
+
+```sh
+npx wrangler ai-search jobs logs [NAME] [JOB-ID]
+```
+
+```sh
+pnpm wrangler ai-search jobs logs [NAME] [JOB-ID]
+```
+
+```sh
+yarn wrangler ai-search jobs logs [NAME] [JOB-ID]
+```
+
+* `[NAME]` ` string ` required
+The name of the AI Search instance.
+* `[JOB-ID]` ` string ` required
+The ID of the indexing job.
+* `--namespace` ` string ` alias: --n default: default
+The namespace the instance belongs to.
+* `--json` ` boolean ` default: false
+Return output as clean JSON
+* `--page` ` number ` default: 1
+Page number of the results, can configure page size using "per-page"
+* `--per-page` ` number `
+Number of log entries to show per page
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare AI Search docs","description":"Manage AI Search instances from the command line using Wrangler.","url":"https://developers.cloudflare.com/ai-search/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

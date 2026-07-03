@@ -14,6 +14,36 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-07-02
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Hostname routing for Cloudflare Mesh**
+
+You can now add [hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to a Cloudflare Mesh node, in addition to CIDR routes.
+
+1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+Requests `wiki.internal.local`
+2. DNS query ↓
+3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+Returns a token IP, then rewrites the destination to the real private IP.
+`100.80.0.0/16`
+4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) ↓
+5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+Forwards traffic to the host on the local network
+6. ↓
+7. Private host
+`wiki.internal.local` · `10.0.0.50`
+
+Instead of managing IP ranges, you can attract traffic for a hostname to a Mesh node:
+
+* **Private hostname** (for example, `wiki.internal.local`) — reach an internal application by name, which is useful when it has an unknown or ephemeral IP. On Mesh you do not need to run a DNS server; a local hosts-file entry on the node is enough, or you can use a Gateway resolver policy for split DNS.
+* **Public hostname** (for example, `www.example.com`) — route that hostname's traffic through the node and egress via the node's public IP.
+[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+
+For setup steps, prerequisites, and DNS options, refer to [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
+
 ## 2026-07-01
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -218,8 +248,8 @@ This release introduces multiple features from our previous beta release into st
 **Additional changes and improvements**
 
 * Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
-* Cloudflare Mesh functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-* Cloudflare Mesh now supports hostname-based routing.
+* [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
+* Cloudflare Mesh now supports [hostname-based routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
 * Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 * Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
 * Path MTU Discovery (PMTUD) is now enabled by default.
@@ -402,8 +432,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7502)
-* [  wrangler.toml ](#tab-panel-7503)
+* [  wrangler.jsonc ](#tab-panel-7537)
+* [  wrangler.toml ](#tab-panel-7538)
 
 **JSONC**
 
@@ -428,8 +458,8 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7504)
-* [  TypeScript ](#tab-panel-7505)
+* [  JavaScript ](#tab-panel-7539)
+* [  TypeScript ](#tab-panel-7540)
 
 **JavaScript**
 
@@ -4998,8 +5028,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7500)
-* [ Core Dashboard ](#tab-panel-7501)
+* [ Zero Trust Dashboard ](#tab-panel-7535)
+* [ Core Dashboard ](#tab-panel-7536)
 
 To update your view preference in the Zero Trust dashboard:
 

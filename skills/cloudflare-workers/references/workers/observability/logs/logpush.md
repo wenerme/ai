@@ -76,8 +76,8 @@ In Logpush, you can configure [filters](https://developers.cloudflare.com/logs/l
 
 Enable logging on your Worker by adding a new property, `logpush = true`, to your Wrangler file. This can be added either in the top-level configuration or under an [environment](https://developers.cloudflare.com/workers/wrangler/environments/). Any new Workers with this property will automatically get picked up by the Logpush job.
 
-* [  wrangler.jsonc ](#tab-panel-12235)
-* [  wrangler.toml ](#tab-panel-12236)
+* [  wrangler.jsonc ](#tab-panel-12258)
+* [  wrangler.toml ](#tab-panel-12259)
 
 **JSONC**
 
@@ -88,7 +88,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
   "name": "my-worker",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-02",
+  "compatibility_date": "2026-07-03",
   "workers_dev": false,
   "logpush": true,
   "route": {
@@ -105,7 +105,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-02"
+compatibility_date = "2026-07-03"
 workers_dev = false
 logpush = true
 

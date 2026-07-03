@@ -6,7 +6,7 @@
 
 [oRPC OpenTelemetry Integration Preview]
 
-> **info**: See the complete example in our [Bun WebSocket + OpenTelemetry Playground](/docs/playgrounds).
+> **info**: See the complete example in our [playgrounds](/docs/playgrounds).
 
 ## Installation
 

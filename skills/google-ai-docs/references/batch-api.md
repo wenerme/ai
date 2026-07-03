@@ -1,5 +1,3 @@
-# Batch API
-
 > [!NOTE]
 > **Note:** This feature is currently only available with the generateContent API. Please follow the content on this page for more information.
 
@@ -800,6 +798,8 @@ complete.
 
 Once the job status indicates your batch job has succeeded, the results are
 available in the `response` field.
+By default, batch job results are stored and available for download for 6 weeks,
+before they are permanently deleted.
 
 ### Python
 

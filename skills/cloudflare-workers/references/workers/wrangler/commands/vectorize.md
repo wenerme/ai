@@ -18,9 +18,9 @@ Interact with a [Vectorize](https://developers.cloudflare.com/vectorize/) vector
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-13047)
-* [  pnpm ](#tab-panel-13048)
-* [  yarn ](#tab-panel-13049)
+* [  npm ](#tab-panel-13103)
+* [  pnpm ](#tab-panel-13104)
+* [  yarn ](#tab-panel-13105)
 
 ```sh
 npx wrangler vectorize create [NAME]
@@ -72,15 +72,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize delete`
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-13050)
-* [  pnpm ](#tab-panel-13051)
-* [  yarn ](#tab-panel-13052)
+* [  npm ](#tab-panel-13106)
+* [  pnpm ](#tab-panel-13107)
+* [  yarn ](#tab-panel-13108)
 
 ```sh
 npx wrangler vectorize delete [NAME]
@@ -118,15 +120,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize get`
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-13053)
-* [  pnpm ](#tab-panel-13054)
-* [  yarn ](#tab-panel-13055)
+* [  npm ](#tab-panel-13109)
+* [  pnpm ](#tab-panel-13110)
+* [  yarn ](#tab-panel-13111)
 
 ```sh
 npx wrangler vectorize get [NAME]
@@ -164,15 +168,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize list`
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-13056)
-* [  pnpm ](#tab-panel-13057)
-* [  yarn ](#tab-panel-13058)
+* [  npm ](#tab-panel-13112)
+* [  pnpm ](#tab-panel-13113)
+* [  yarn ](#tab-panel-13114)
 
 ```sh
 npx wrangler vectorize list
@@ -208,15 +214,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize list-vectors`
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-13059)
-* [  pnpm ](#tab-panel-13060)
-* [  yarn ](#tab-panel-13061)
+* [  npm ](#tab-panel-13115)
+* [  pnpm ](#tab-panel-13116)
+* [  yarn ](#tab-panel-13117)
 
 ```sh
 npx wrangler vectorize list-vectors [NAME]
@@ -256,15 +264,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize query`
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-13062)
-* [  pnpm ](#tab-panel-13063)
-* [  yarn ](#tab-panel-13064)
+* [  npm ](#tab-panel-13118)
+* [  pnpm ](#tab-panel-13119)
+* [  yarn ](#tab-panel-13120)
 
 ```sh
 npx wrangler vectorize query [NAME]
@@ -312,15 +322,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize insert`
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-13065)
-* [  pnpm ](#tab-panel-13066)
-* [  yarn ](#tab-panel-13067)
+* [  npm ](#tab-panel-13121)
+* [  pnpm ](#tab-panel-13122)
+* [  yarn ](#tab-panel-13123)
 
 ```sh
 npx wrangler vectorize insert [NAME]
@@ -362,15 +374,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize upsert`
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-13068)
-* [  pnpm ](#tab-panel-13069)
-* [  yarn ](#tab-panel-13070)
+* [  npm ](#tab-panel-13124)
+* [  pnpm ](#tab-panel-13125)
+* [  yarn ](#tab-panel-13126)
 
 ```sh
 npx wrangler vectorize upsert [NAME]
@@ -410,15 +424,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize get-vectors`
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-13071)
-* [  pnpm ](#tab-panel-13072)
-* [  yarn ](#tab-panel-13073)
+* [  npm ](#tab-panel-13127)
+* [  pnpm ](#tab-panel-13128)
+* [  yarn ](#tab-panel-13129)
 
 ```sh
 npx wrangler vectorize get-vectors [NAME]
@@ -454,15 +470,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize delete-vectors`
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-13074)
-* [  pnpm ](#tab-panel-13075)
-* [  yarn ](#tab-panel-13076)
+* [  npm ](#tab-panel-13130)
+* [  pnpm ](#tab-panel-13131)
+* [  yarn ](#tab-panel-13132)
 
 ```sh
 npx wrangler vectorize delete-vectors [NAME]
@@ -498,15 +516,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize info`
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-13077)
-* [  pnpm ](#tab-panel-13078)
-* [  yarn ](#tab-panel-13079)
+* [  npm ](#tab-panel-13133)
+* [  pnpm ](#tab-panel-13134)
+* [  yarn ](#tab-panel-13135)
 
 ```sh
 npx wrangler vectorize info [NAME]
@@ -542,15 +562,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize create-metadata-index`
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-13080)
-* [  pnpm ](#tab-panel-13081)
-* [  yarn ](#tab-panel-13082)
+* [  npm ](#tab-panel-13136)
+* [  pnpm ](#tab-panel-13137)
+* [  yarn ](#tab-panel-13138)
 
 ```sh
 npx wrangler vectorize create-metadata-index [NAME]
@@ -588,15 +610,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize list-metadata-index`
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-13083)
-* [  pnpm ](#tab-panel-13084)
-* [  yarn ](#tab-panel-13085)
+* [  npm ](#tab-panel-13139)
+* [  pnpm ](#tab-panel-13140)
+* [  yarn ](#tab-panel-13141)
 
 ```sh
 npx wrangler vectorize list-metadata-index [NAME]
@@ -632,15 +656,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vectorize delete-metadata-index`
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-13086)
-* [  pnpm ](#tab-panel-13087)
-* [  yarn ](#tab-panel-13088)
+* [  npm ](#tab-panel-13142)
+* [  pnpm ](#tab-panel-13143)
+* [  yarn ](#tab-panel-13144)
 
 ```sh
 npx wrangler vectorize delete-metadata-index [NAME]
@@ -676,7 +702,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/vectorize/#page","headline":"Vectorize · Cloudflare Workers docs","description":"Wrangler commands for interacting with Vectorize vector databases.","url":"https://developers.cloudflare.com/workers/wrangler/commands/vectorize/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -1,0 +1,170 @@
+---
+title: Authentication profiles
+description: Maintain separate logins and switch accounts per directory.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+[Skip to content](#%5Ftop)
+
+# Authentication profiles
+
+Wrangler authenticates as one user at a time. A profile is a named OAuth login that you scope to a chosen set of accounts can bind to a directory.
+
+Use profiles to switch between accounts for different projects without re-running [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Profiles live under [wrangler auth](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth).
+
+Note
+
+Authentication profiles are in beta. The commands and their behavior may change.
+
+## When to use profiles
+
+Use profiles when you work across more than one Cloudflare account on the same machine:
+
+* **Agency and client work** — keep a separate login for each client account and bind it to that client's project directory. Commands run in each directory use the matching profile automatically.
+* **Account-separated environments** — keep staging and production in different accounts, then bind a profile to each. Pair a profile with an `account_id` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) so a command cannot reach the wrong account.
+
+## How profiles work
+
+A profile combines two things:
+
+* A login, created through OAuth. During the OAuth flow you choose which accounts the profile may reach. One profile can hold access to several accounts that your user holds.
+* A directory binding. When you activate a profile in a directory, that directory and its subdirectories use the profile.
+
+### Resolution order
+
+For each command, Wrangler selects a profile in this order, highest priority first:
+
+1. The [CLOUDFLARE\_API\_TOKEN](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) environment variable. When set, it overrides all profiles.
+2. The [\--profile](#switch-profiles-for-a-single-command) flag, which applies to a single command run.
+3. The nearest activated ancestor directory. Wrangler resolves from the directory containing the configuration file when you pass `--config`, otherwise from the working directory.
+4. The default profile, managed by `wrangler login` and `wrangler logout`.
+
+### Account selection
+
+Within the resolved profile, Wrangler selects the target account in this order:
+
+1. The `account_id` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys), or the [CLOUDFLARE\_ACCOUNT\_ID](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) environment variable.
+2. Otherwise, the account selected for the profile during login.
+
+If a command targets an account that the active profile cannot reach, Wrangler fails with an error that names the account and profile. Wrangler does not fall back to another account.
+
+## Create a profile
+
+Run [wrangler auth create](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-create) with a name. Wrangler starts the OAuth flow, where you choose which accounts the profile may reach.
+
+```sh
+wrangler auth create work
+```
+
+Run the command again with the same name to re-authenticate an existing profile, for example after its token expires.
+
+## Activate a profile in a directory
+
+Run [wrangler auth activate](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-activate) to bind a profile to a directory. The binding applies to that directory and its subdirectories. The directory defaults to the current working directory.
+
+```sh
+wrangler auth activate work ~/projects/work
+```
+
+A subdirectory can override the profile bound above it by activating a different profile.
+
+## Work across multiple client accounts
+
+This example sets up one profile per client for agency work.
+
+1. Create a profile for the first client. During the OAuth flow, choose the accounts this profile may reach.
+```sh
+wrangler auth create client-a
+```
+2. Bind the profile to the client's project directory.
+```sh
+wrangler auth activate client-a ~/clients/client-a
+```
+3. Repeat for the second client.
+```sh
+wrangler auth create client-b
+wrangler auth activate client-b ~/clients/client-b
+```
+
+Commands run in `~/clients/client-a` now use the `client-a` profile, and commands in `~/clients/client-b` use the `client-b` profile. You do not need to log in again to switch between them.
+
+## Separate staging and production accounts
+
+When staging and production live in different accounts, bind a profile to each environment's directory and pin the account in each project's configuration. The `account_id` acts as a failsafe, so a command cannot deploy to the wrong account even if the profile can reach both.
+
+1. Create and activate a profile for each environment.
+```sh
+wrangler auth create staging
+wrangler auth activate staging ~/projects/staging
+wrangler auth create production
+wrangler auth activate production ~/projects/production
+```
+2. Set the matching `account_id` in each project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
+
+  * [  wrangler.jsonc ](#tab-panel-13406)
+  * [  wrangler.toml ](#tab-panel-13407)
+
+**JSONC**
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  "account_id": "<PRODUCTION_ACCOUNT_ID>"
+}
+```
+
+**TOML**
+```toml
+name = "my-worker"
+account_id = "<PRODUCTION_ACCOUNT_ID>"
+```
+
+## Switch profiles for a single command
+
+Use the `--profile` flag to run one command with a specific profile, without changing any directory binding.
+
+```sh
+wrangler deploy --profile staging
+```
+
+The `--profile` flag is not supported by the `auth`, `login`, `logout`, and `whoami` commands.
+
+## List profiles
+
+Run [wrangler auth list](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-list) to see every profile and the directories bound to it.
+
+```sh
+wrangler auth list
+```
+
+## Remove a binding or a profile
+
+To stop a directory from using a profile, run [wrangler auth deactivate](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-deactivate) in that directory. The directory returns to the profile bound above it, or to the default profile.
+
+```sh
+wrangler auth deactivate ~/projects/staging
+```
+
+To remove a profile and all of its directory bindings, run [wrangler auth delete](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-delete).
+
+```sh
+wrangler auth delete staging
+```
+
+## Profiles and environment variables
+
+Profiles are a local-machine convenience. They do not apply in CI, containers, or other automated environments, which authenticate per environment with [CLOUDFLARE\_API\_TOKEN](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables). For more information, refer to [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
+
+Two rules apply when environment variables are present:
+
+* When `CLOUDFLARE_API_TOKEN` is set, Wrangler uses it instead of any profile. You cannot create, activate, deactivate, or delete profiles while it is set.
+* `CLOUDFLARE_ACCOUNT_ID` and an `account_id` in your Wrangler configuration file are always respected, including within an active profile.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/profiles/","name":"Authentication profiles"}}]}
+```

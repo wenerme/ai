@@ -20,9 +20,9 @@ To manage mTLS client certificates and CA chain certificates used by Hyperdrive,
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-12702)
-* [  pnpm ](#tab-panel-12703)
-* [  yarn ](#tab-panel-12704)
+* [  npm ](#tab-panel-12758)
+* [  pnpm ](#tab-panel-12759)
+* [  yarn ](#tab-panel-12760)
 
 ```sh
 npx wrangler hyperdrive create [NAME]
@@ -94,15 +94,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `hyperdrive delete`
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-12705)
-* [  pnpm ](#tab-panel-12706)
-* [  yarn ](#tab-panel-12707)
+* [  npm ](#tab-panel-12761)
+* [  pnpm ](#tab-panel-12762)
+* [  yarn ](#tab-panel-12763)
 
 ```sh
 npx wrangler hyperdrive delete [ID]
@@ -136,15 +138,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `hyperdrive get`
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-12708)
-* [  pnpm ](#tab-panel-12709)
-* [  yarn ](#tab-panel-12710)
+* [  npm ](#tab-panel-12764)
+* [  pnpm ](#tab-panel-12765)
+* [  yarn ](#tab-panel-12766)
 
 ```sh
 npx wrangler hyperdrive get [ID]
@@ -178,15 +182,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `hyperdrive list`
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-12711)
-* [  pnpm ](#tab-panel-12712)
-* [  yarn ](#tab-panel-12713)
+* [  npm ](#tab-panel-12767)
+* [  pnpm ](#tab-panel-12768)
+* [  yarn ](#tab-panel-12769)
 
 ```sh
 npx wrangler hyperdrive list
@@ -217,15 +223,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `hyperdrive update`
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-12714)
-* [  pnpm ](#tab-panel-12715)
-* [  yarn ](#tab-panel-12716)
+* [  npm ](#tab-panel-12770)
+* [  pnpm ](#tab-panel-12771)
+* [  yarn ](#tab-panel-12772)
 
 ```sh
 npx wrangler hyperdrive update [ID]
@@ -295,7 +303,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/#page","headline":"Hyperdrive · Cloudflare Workers docs","description":"Wrangler commands for managing Hyperdrive database configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

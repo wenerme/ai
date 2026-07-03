@@ -1,5 +1,5 @@
 ---
-title: Wrangler commands
+title: CLI
 description: Create and manage AI Search instances from the command line.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-# Wrangler commands
+# CLI
 
 This guide walks you through creating an AI Search instance using the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/).
 
@@ -91,6 +91,6 @@ For the full list of available commands, refer to [Wrangler commands](https://de
 [ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/) Query AI Search using HTTP requests.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/wrangler/#page","headline":"Wrangler commands · Cloudflare AI Search docs","description":"Create and manage AI Search instances from the command line.","url":"https://developers.cloudflare.com/ai-search/get-started/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/get-started/wrangler/","name":"Wrangler commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/wrangler/#page","headline":"CLI · Cloudflare AI Search docs","description":"Create and manage AI Search instances from the command line.","url":"https://developers.cloudflare.com/ai-search/get-started/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/get-started/wrangler/","name":"CLI"}}]}
 ```

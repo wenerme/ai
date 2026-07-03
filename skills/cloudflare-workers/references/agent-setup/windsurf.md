@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Cloudflare platform access

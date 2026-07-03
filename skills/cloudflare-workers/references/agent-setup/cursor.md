@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Cloudflare platform access

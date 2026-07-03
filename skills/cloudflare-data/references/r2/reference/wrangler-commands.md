@@ -24,9 +24,9 @@ The `r2 bucket` commands allow you to manage application data in the Cloudflare 
 
 Create a new R2 bucket
 
-* [  npm ](#tab-panel-10228)
-* [  pnpm ](#tab-panel-10229)
-* [  yarn ](#tab-panel-10230)
+* [  npm ](#tab-panel-10267)
+* [  pnpm ](#tab-panel-10268)
+* [  yarn ](#tab-panel-10269)
 
 ```sh
 npx wrangler r2 bucket create [NAME]
@@ -72,15 +72,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket info`
 
 Get information about an R2 bucket
 
-* [  npm ](#tab-panel-10231)
-* [  pnpm ](#tab-panel-10232)
-* [  yarn ](#tab-panel-10233)
+* [  npm ](#tab-panel-10270)
+* [  pnpm ](#tab-panel-10271)
+* [  yarn ](#tab-panel-10272)
 
 ```sh
 npx wrangler r2 bucket info [BUCKET]
@@ -118,15 +120,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket delete`
 
 Delete an R2 bucket
 
-* [  npm ](#tab-panel-10234)
-* [  pnpm ](#tab-panel-10235)
-* [  yarn ](#tab-panel-10236)
+* [  npm ](#tab-panel-10273)
+* [  pnpm ](#tab-panel-10274)
+* [  yarn ](#tab-panel-10275)
 
 ```sh
 npx wrangler r2 bucket delete [BUCKET]
@@ -162,15 +166,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket list`
 
 List R2 buckets
 
-* [  npm ](#tab-panel-10237)
-* [  pnpm ](#tab-panel-10238)
-* [  yarn ](#tab-panel-10239)
+* [  npm ](#tab-panel-10276)
+* [  pnpm ](#tab-panel-10277)
+* [  yarn ](#tab-panel-10278)
 
 ```sh
 npx wrangler r2 bucket list
@@ -204,15 +210,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket catalog enable`
 
 Enable the data catalog on an R2 bucket
 
-* [  npm ](#tab-panel-10240)
-* [  pnpm ](#tab-panel-10241)
-* [  yarn ](#tab-panel-10242)
+* [  npm ](#tab-panel-10279)
+* [  pnpm ](#tab-panel-10280)
+* [  yarn ](#tab-panel-10281)
 
 ```sh
 npx wrangler r2 bucket catalog enable [BUCKET]
@@ -246,15 +254,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket catalog disable`
 
 Disable the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-10243)
-* [  pnpm ](#tab-panel-10244)
-* [  yarn ](#tab-panel-10245)
+* [  npm ](#tab-panel-10282)
+* [  pnpm ](#tab-panel-10283)
+* [  yarn ](#tab-panel-10284)
 
 ```sh
 npx wrangler r2 bucket catalog disable [BUCKET]
@@ -288,15 +298,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket catalog get`
 
 Get the status of the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-10246)
-* [  pnpm ](#tab-panel-10247)
-* [  yarn ](#tab-panel-10248)
+* [  npm ](#tab-panel-10285)
+* [  pnpm ](#tab-panel-10286)
+* [  yarn ](#tab-panel-10287)
 
 ```sh
 npx wrangler r2 bucket catalog get [BUCKET]
@@ -330,15 +342,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket catalog compaction enable`
 
 Enable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10249)
-* [  pnpm ](#tab-panel-10250)
-* [  yarn ](#tab-panel-10251)
+* [  npm ](#tab-panel-10288)
+* [  pnpm ](#tab-panel-10289)
+* [  yarn ](#tab-panel-10290)
 
 ```sh
 npx wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
@@ -380,7 +394,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 Examples:
 
@@ -397,9 +413,9 @@ npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table
 
 Disable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10252)
-* [  pnpm ](#tab-panel-10253)
-* [  yarn ](#tab-panel-10254)
+* [  npm ](#tab-panel-10291)
+* [  pnpm ](#tab-panel-10292)
+* [  yarn ](#tab-panel-10293)
 
 ```sh
 npx wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
@@ -437,7 +453,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 Examples:
 
@@ -454,9 +472,9 @@ npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-tabl
 
 Enable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10255)
-* [  pnpm ](#tab-panel-10256)
-* [  yarn ](#tab-panel-10257)
+* [  npm ](#tab-panel-10294)
+* [  pnpm ](#tab-panel-10295)
+* [  yarn ](#tab-panel-10296)
 
 ```sh
 npx wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
@@ -500,15 +518,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket catalog snapshot-expiration disable`
 
 Disable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10258)
-* [  pnpm ](#tab-panel-10259)
-* [  yarn ](#tab-panel-10260)
+* [  npm ](#tab-panel-10297)
+* [  pnpm ](#tab-panel-10298)
+* [  yarn ](#tab-panel-10299)
 
 ```sh
 npx wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
@@ -548,15 +568,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket cors set`
 
 Set the CORS configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-10261)
-* [  pnpm ](#tab-panel-10262)
-* [  yarn ](#tab-panel-10263)
+* [  npm ](#tab-panel-10300)
+* [  pnpm ](#tab-panel-10301)
+* [  yarn ](#tab-panel-10302)
 
 ```sh
 npx wrangler r2 bucket cors set [BUCKET]
@@ -596,15 +618,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket cors delete`
 
 Clear the CORS configuration for an R2 bucket
 
-* [  npm ](#tab-panel-10264)
-* [  pnpm ](#tab-panel-10265)
-* [  yarn ](#tab-panel-10266)
+* [  npm ](#tab-panel-10303)
+* [  pnpm ](#tab-panel-10304)
+* [  yarn ](#tab-panel-10305)
 
 ```sh
 npx wrangler r2 bucket cors delete [BUCKET]
@@ -642,15 +666,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket cors list`
 
 List the CORS rules for an R2 bucket
 
-* [  npm ](#tab-panel-10267)
-* [  pnpm ](#tab-panel-10268)
-* [  yarn ](#tab-panel-10269)
+* [  npm ](#tab-panel-10306)
+* [  pnpm ](#tab-panel-10307)
+* [  yarn ](#tab-panel-10308)
 
 ```sh
 npx wrangler r2 bucket cors list [BUCKET]
@@ -686,15 +712,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket dev-url enable`
 
 Enable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-10270)
-* [  pnpm ](#tab-panel-10271)
-* [  yarn ](#tab-panel-10272)
+* [  npm ](#tab-panel-10309)
+* [  pnpm ](#tab-panel-10310)
+* [  yarn ](#tab-panel-10311)
 
 ```sh
 npx wrangler r2 bucket dev-url enable [BUCKET]
@@ -732,15 +760,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket dev-url disable`
 
 Disable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-10273)
-* [  pnpm ](#tab-panel-10274)
-* [  yarn ](#tab-panel-10275)
+* [  npm ](#tab-panel-10312)
+* [  pnpm ](#tab-panel-10313)
+* [  yarn ](#tab-panel-10314)
 
 ```sh
 npx wrangler r2 bucket dev-url disable [BUCKET]
@@ -778,15 +808,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket dev-url get`
 
 Get the r2.dev URL and status for an R2 bucket
 
-* [  npm ](#tab-panel-10276)
-* [  pnpm ](#tab-panel-10277)
-* [  yarn ](#tab-panel-10278)
+* [  npm ](#tab-panel-10315)
+* [  pnpm ](#tab-panel-10316)
+* [  yarn ](#tab-panel-10317)
 
 ```sh
 npx wrangler r2 bucket dev-url get [BUCKET]
@@ -822,15 +854,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket domain add`
 
 Connect a custom domain to an R2 bucket
 
-* [  npm ](#tab-panel-10279)
-* [  pnpm ](#tab-panel-10280)
-* [  yarn ](#tab-panel-10281)
+* [  npm ](#tab-panel-10318)
+* [  pnpm ](#tab-panel-10319)
+* [  yarn ](#tab-panel-10320)
 
 ```sh
 npx wrangler r2 bucket domain add [BUCKET]
@@ -874,15 +908,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket domain remove`
 
 Remove a custom domain from an R2 bucket
 
-* [  npm ](#tab-panel-10282)
-* [  pnpm ](#tab-panel-10283)
-* [  yarn ](#tab-panel-10284)
+* [  npm ](#tab-panel-10321)
+* [  pnpm ](#tab-panel-10322)
+* [  yarn ](#tab-panel-10323)
 
 ```sh
 npx wrangler r2 bucket domain remove [BUCKET]
@@ -922,15 +958,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket domain update`
 
 Update settings for a custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-10285)
-* [  pnpm ](#tab-panel-10286)
-* [  yarn ](#tab-panel-10287)
+* [  npm ](#tab-panel-10324)
+* [  pnpm ](#tab-panel-10325)
+* [  yarn ](#tab-panel-10326)
 
 ```sh
 npx wrangler r2 bucket domain update [BUCKET]
@@ -970,15 +1008,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket domain get`
 
 Get custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-10288)
-* [  pnpm ](#tab-panel-10289)
-* [  yarn ](#tab-panel-10290)
+* [  npm ](#tab-panel-10327)
+* [  pnpm ](#tab-panel-10328)
+* [  yarn ](#tab-panel-10329)
 
 ```sh
 npx wrangler r2 bucket domain get [BUCKET]
@@ -1016,15 +1056,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket domain list`
 
 List custom domains for an R2 bucket
 
-* [  npm ](#tab-panel-10291)
-* [  pnpm ](#tab-panel-10292)
-* [  yarn ](#tab-panel-10293)
+* [  npm ](#tab-panel-10330)
+* [  pnpm ](#tab-panel-10331)
+* [  yarn ](#tab-panel-10332)
 
 ```sh
 npx wrangler r2 bucket domain list [BUCKET]
@@ -1060,15 +1102,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lifecycle add`
 
 Add a lifecycle rule to an R2 bucket
 
-* [  npm ](#tab-panel-10294)
-* [  pnpm ](#tab-panel-10295)
-* [  yarn ](#tab-panel-10296)
+* [  npm ](#tab-panel-10333)
+* [  pnpm ](#tab-panel-10334)
+* [  yarn ](#tab-panel-10335)
 
 ```sh
 npx wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
@@ -1120,15 +1164,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lifecycle remove`
 
 Remove a lifecycle rule from an R2 bucket
 
-* [  npm ](#tab-panel-10297)
-* [  pnpm ](#tab-panel-10298)
-* [  yarn ](#tab-panel-10299)
+* [  npm ](#tab-panel-10336)
+* [  pnpm ](#tab-panel-10337)
+* [  yarn ](#tab-panel-10338)
 
 ```sh
 npx wrangler r2 bucket lifecycle remove [BUCKET]
@@ -1166,15 +1212,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lifecycle list`
 
 List lifecycle rules for an R2 bucket
 
-* [  npm ](#tab-panel-10300)
-* [  pnpm ](#tab-panel-10301)
-* [  yarn ](#tab-panel-10302)
+* [  npm ](#tab-panel-10339)
+* [  pnpm ](#tab-panel-10340)
+* [  yarn ](#tab-panel-10341)
 
 ```sh
 npx wrangler r2 bucket lifecycle list [BUCKET]
@@ -1210,15 +1258,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lifecycle set`
 
 Set the lifecycle configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-10303)
-* [  pnpm ](#tab-panel-10304)
-* [  yarn ](#tab-panel-10305)
+* [  npm ](#tab-panel-10342)
+* [  pnpm ](#tab-panel-10343)
+* [  yarn ](#tab-panel-10344)
 
 ```sh
 npx wrangler r2 bucket lifecycle set [BUCKET]
@@ -1258,15 +1308,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lock add`
 
 Add a lock rule to an R2 bucket
 
-* [  npm ](#tab-panel-10306)
-* [  pnpm ](#tab-panel-10307)
-* [  yarn ](#tab-panel-10308)
+* [  npm ](#tab-panel-10345)
+* [  pnpm ](#tab-panel-10346)
+* [  yarn ](#tab-panel-10347)
 
 ```sh
 npx wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
@@ -1314,15 +1366,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lock remove`
 
 Remove a bucket lock rule from an R2 bucket
 
-* [  npm ](#tab-panel-10309)
-* [  pnpm ](#tab-panel-10310)
-* [  yarn ](#tab-panel-10311)
+* [  npm ](#tab-panel-10348)
+* [  pnpm ](#tab-panel-10349)
+* [  yarn ](#tab-panel-10350)
 
 ```sh
 npx wrangler r2 bucket lock remove [BUCKET]
@@ -1360,15 +1414,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lock list`
 
 List lock rules for an R2 bucket
 
-* [  npm ](#tab-panel-10312)
-* [  pnpm ](#tab-panel-10313)
-* [  yarn ](#tab-panel-10314)
+* [  npm ](#tab-panel-10351)
+* [  pnpm ](#tab-panel-10352)
+* [  yarn ](#tab-panel-10353)
 
 ```sh
 npx wrangler r2 bucket lock list [BUCKET]
@@ -1404,15 +1460,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket lock set`
 
 Set the lock configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-10315)
-* [  pnpm ](#tab-panel-10316)
-* [  yarn ](#tab-panel-10317)
+* [  npm ](#tab-panel-10354)
+* [  pnpm ](#tab-panel-10355)
+* [  yarn ](#tab-panel-10356)
 
 ```sh
 npx wrangler r2 bucket lock set [BUCKET]
@@ -1452,15 +1510,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket notification create`
 
 Create an event notification rule for an R2 bucket
 
-* [  npm ](#tab-panel-10318)
-* [  pnpm ](#tab-panel-10319)
-* [  yarn ](#tab-panel-10320)
+* [  npm ](#tab-panel-10357)
+* [  pnpm ](#tab-panel-10358)
+* [  yarn ](#tab-panel-10359)
 
 ```sh
 npx wrangler r2 bucket notification create [BUCKET]
@@ -1506,15 +1566,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket notification delete`
 
 Delete an event notification rule from an R2 bucket
 
-* [  npm ](#tab-panel-10321)
-* [  pnpm ](#tab-panel-10322)
-* [  yarn ](#tab-panel-10323)
+* [  npm ](#tab-panel-10360)
+* [  pnpm ](#tab-panel-10361)
+* [  yarn ](#tab-panel-10362)
 
 ```sh
 npx wrangler r2 bucket notification delete [BUCKET]
@@ -1554,15 +1616,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket notification list`
 
 List event notification rules for an R2 bucket
 
-* [  npm ](#tab-panel-10324)
-* [  pnpm ](#tab-panel-10325)
-* [  yarn ](#tab-panel-10326)
+* [  npm ](#tab-panel-10363)
+* [  pnpm ](#tab-panel-10364)
+* [  yarn ](#tab-panel-10365)
 
 ```sh
 npx wrangler r2 bucket notification list [BUCKET]
@@ -1598,15 +1662,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket sippy enable`
 
 Enable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-10327)
-* [  pnpm ](#tab-panel-10328)
-* [  yarn ](#tab-panel-10329)
+* [  npm ](#tab-panel-10366)
+* [  pnpm ](#tab-panel-10367)
+* [  yarn ](#tab-panel-10368)
 
 ```sh
 npx wrangler r2 bucket sippy enable [NAME]
@@ -1661,15 +1727,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket sippy disable`
 
 Disable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-10330)
-* [  pnpm ](#tab-panel-10331)
-* [  yarn ](#tab-panel-10332)
+* [  npm ](#tab-panel-10369)
+* [  pnpm ](#tab-panel-10370)
+* [  yarn ](#tab-panel-10371)
 
 ```sh
 npx wrangler r2 bucket sippy disable [NAME]
@@ -1705,15 +1773,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 bucket sippy get`
 
 Check the status of Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-10333)
-* [  pnpm ](#tab-panel-10334)
-* [  yarn ](#tab-panel-10335)
+* [  npm ](#tab-panel-10372)
+* [  pnpm ](#tab-panel-10373)
+* [  yarn ](#tab-panel-10374)
 
 ```sh
 npx wrangler r2 bucket sippy get [NAME]
@@ -1749,7 +1819,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `r2 object`
 
@@ -1763,9 +1835,9 @@ The `r2 object` commands allow you to manage application data in the Cloudflare 
 
 Fetch an object from an R2 bucket
 
-* [  npm ](#tab-panel-10336)
-* [  pnpm ](#tab-panel-10337)
-* [  yarn ](#tab-panel-10338)
+* [  npm ](#tab-panel-10375)
+* [  pnpm ](#tab-panel-10376)
+* [  yarn ](#tab-panel-10377)
 
 ```sh
 npx wrangler r2 object get [OBJECTPATH]
@@ -1811,15 +1883,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 object put`
 
 Create an object in an R2 bucket
 
-* [  npm ](#tab-panel-10339)
-* [  pnpm ](#tab-panel-10340)
-* [  yarn ](#tab-panel-10341)
+* [  npm ](#tab-panel-10378)
+* [  pnpm ](#tab-panel-10379)
+* [  yarn ](#tab-panel-10380)
 
 ```sh
 npx wrangler r2 object put [OBJECTPATH]
@@ -1881,15 +1955,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `r2 object delete`
 
 Delete an object in an R2 bucket
 
-* [  npm ](#tab-panel-10342)
-* [  pnpm ](#tab-panel-10343)
-* [  yarn ](#tab-panel-10344)
+* [  npm ](#tab-panel-10381)
+* [  pnpm ](#tab-panel-10382)
+* [  yarn ](#tab-panel-10383)
 
 ```sh
 npx wrangler r2 object delete [OBJECTPATH]
@@ -1933,7 +2009,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare R2 docs","description":"Wrangler CLI commands for managing R2 buckets and objects.","url":"https://developers.cloudflare.com/r2/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

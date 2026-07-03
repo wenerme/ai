@@ -28,9 +28,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-9401)
-* [  pnpm ](#tab-panel-9402)
-* [  yarn ](#tab-panel-9403)
+* [  npm ](#tab-panel-9440)
+* [  pnpm ](#tab-panel-9441)
+* [  yarn ](#tab-panel-9442)
 
 ```sh
 npx wrangler kv namespace create [NAMESPACE]
@@ -72,15 +72,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv namespace list`
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-9404)
-* [  pnpm ](#tab-panel-9405)
-* [  yarn ](#tab-panel-9406)
+* [  npm ](#tab-panel-9443)
+* [  pnpm ](#tab-panel-9444)
+* [  yarn ](#tab-panel-9445)
 
 ```sh
 npx wrangler kv namespace list
@@ -111,15 +113,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv namespace delete`
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-9407)
-* [  pnpm ](#tab-panel-9408)
-* [  yarn ](#tab-panel-9409)
+* [  npm ](#tab-panel-9446)
+* [  pnpm ](#tab-panel-9447)
+* [  yarn ](#tab-panel-9448)
 
 ```sh
 npx wrangler kv namespace delete [NAMESPACE]
@@ -161,15 +165,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv namespace rename`
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-9410)
-* [  pnpm ](#tab-panel-9411)
-* [  yarn ](#tab-panel-9412)
+* [  npm ](#tab-panel-9449)
+* [  pnpm ](#tab-panel-9450)
+* [  yarn ](#tab-panel-9451)
 
 ```sh
 npx wrangler kv namespace rename [OLD-NAME]
@@ -207,7 +213,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `kv key`
 
@@ -225,9 +233,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-9413)
-* [  pnpm ](#tab-panel-9414)
-* [  yarn ](#tab-panel-9415)
+* [  npm ](#tab-panel-9452)
+* [  pnpm ](#tab-panel-9453)
+* [  yarn ](#tab-panel-9454)
 
 ```sh
 npx wrangler kv key put [KEY] [VALUE]
@@ -283,15 +291,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv key list`
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-9416)
-* [  pnpm ](#tab-panel-9417)
-* [  yarn ](#tab-panel-9418)
+* [  npm ](#tab-panel-9455)
+* [  pnpm ](#tab-panel-9456)
+* [  yarn ](#tab-panel-9457)
 
 ```sh
 npx wrangler kv key list
@@ -337,15 +347,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv key get`
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-9419)
-* [  pnpm ](#tab-panel-9420)
-* [  yarn ](#tab-panel-9421)
+* [  npm ](#tab-panel-9458)
+* [  pnpm ](#tab-panel-9459)
+* [  yarn ](#tab-panel-9460)
 
 ```sh
 npx wrangler kv key get [KEY]
@@ -393,15 +405,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv key delete`
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-9422)
-* [  pnpm ](#tab-panel-9423)
-* [  yarn ](#tab-panel-9424)
+* [  npm ](#tab-panel-9461)
+* [  pnpm ](#tab-panel-9462)
+* [  yarn ](#tab-panel-9463)
 
 ```sh
 npx wrangler kv key delete [KEY]
@@ -447,7 +461,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `kv bulk`
 
@@ -465,9 +481,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-9425)
-* [  pnpm ](#tab-panel-9426)
-* [  yarn ](#tab-panel-9427)
+* [  npm ](#tab-panel-9464)
+* [  pnpm ](#tab-panel-9465)
+* [  yarn ](#tab-panel-9466)
 
 ```sh
 npx wrangler kv bulk get [FILENAME]
@@ -513,15 +529,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv bulk put`
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-9428)
-* [  pnpm ](#tab-panel-9429)
-* [  yarn ](#tab-panel-9430)
+* [  npm ](#tab-panel-9467)
+* [  pnpm ](#tab-panel-9468)
+* [  yarn ](#tab-panel-9469)
 
 ```sh
 npx wrangler kv bulk put [FILENAME]
@@ -573,15 +591,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `kv bulk delete`
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-9431)
-* [  pnpm ](#tab-panel-9432)
-* [  yarn ](#tab-panel-9433)
+* [  npm ](#tab-panel-9470)
+* [  pnpm ](#tab-panel-9471)
+* [  yarn ](#tab-panel-9472)
 
 ```sh
 npx wrangler kv bulk delete [FILENAME]
@@ -629,7 +649,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## Deprecations
 

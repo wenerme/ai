@@ -28,9 +28,9 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12633)
-* [  pnpm ](#tab-panel-12634)
-* [  yarn ](#tab-panel-12635)
+* [  npm ](#tab-panel-12674)
+* [  pnpm ](#tab-panel-12675)
+* [  yarn ](#tab-panel-12676)
 
 ```sh
 npx wrangler mtls-certificate upload
@@ -68,7 +68,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `upload` command to upload an mTLS certificate.
 
@@ -86,8 +88,8 @@ Expires: 1/01/2025
 
 You can then add this certificate as a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12654)
-* [  wrangler.toml ](#tab-panel-12655)
+* [  wrangler.jsonc ](#tab-panel-12695)
+* [  wrangler.toml ](#tab-panel-12696)
 
 **JSONC**
 
@@ -116,9 +118,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12636)
-* [  pnpm ](#tab-panel-12637)
-* [  yarn ](#tab-panel-12638)
+* [  npm ](#tab-panel-12677)
+* [  pnpm ](#tab-panel-12678)
+* [  yarn ](#tab-panel-12679)
 
 ```sh
 npx wrangler mtls-certificate list
@@ -149,7 +151,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `list` command to upload an mTLS certificate.
 
@@ -175,9 +179,9 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12639)
-* [  pnpm ](#tab-panel-12640)
-* [  yarn ](#tab-panel-12641)
+* [  npm ](#tab-panel-12680)
+* [  pnpm ](#tab-panel-12681)
+* [  yarn ](#tab-panel-12682)
 
 ```sh
 npx wrangler mtls-certificate delete
@@ -213,7 +217,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `delete` command to delete an mTLS certificate.
 
@@ -240,9 +246,9 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12642)
-* [  pnpm ](#tab-panel-12643)
-* [  yarn ](#tab-panel-12644)
+* [  npm ](#tab-panel-12683)
+* [  pnpm ](#tab-panel-12684)
+* [  yarn ](#tab-panel-12685)
 
 ```sh
 npx wrangler cert upload mtls-certificate
@@ -280,7 +286,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `upload` command to upload an mTLS certificate.
 
@@ -302,9 +310,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
-* [  npm ](#tab-panel-12645)
-* [  pnpm ](#tab-panel-12646)
-* [  yarn ](#tab-panel-12647)
+* [  npm ](#tab-panel-12686)
+* [  pnpm ](#tab-panel-12687)
+* [  yarn ](#tab-panel-12688)
 
 ```sh
 npx wrangler cert upload certificate-authority
@@ -340,7 +348,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `upload` command to upload an CA certificate.
 
@@ -360,9 +370,9 @@ Expires: 1/01/2025
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12648)
-* [  pnpm ](#tab-panel-12649)
-* [  yarn ](#tab-panel-12650)
+* [  npm ](#tab-panel-12689)
+* [  pnpm ](#tab-panel-12690)
+* [  yarn ](#tab-panel-12691)
 
 ```sh
 npx wrangler cert list
@@ -393,7 +403,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `list` command to upload an mTLS or CA certificate.
 
@@ -419,9 +431,9 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12651)
-* [  pnpm ](#tab-panel-12652)
-* [  yarn ](#tab-panel-12653)
+* [  npm ](#tab-panel-12692)
+* [  pnpm ](#tab-panel-12693)
+* [  yarn ](#tab-panel-12694)
 
 ```sh
 npx wrangler cert delete
@@ -457,7 +469,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `delete` command to delete an mTLS or CA certificate.
 

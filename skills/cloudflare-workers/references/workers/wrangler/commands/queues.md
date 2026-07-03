@@ -18,9 +18,9 @@ Manage your Workers [Queues](https://developers.cloudflare.com/queues/) configur
 
 List queues
 
-* [  npm ](#tab-panel-12834)
-* [  pnpm ](#tab-panel-12835)
-* [  yarn ](#tab-panel-12836)
+* [  npm ](#tab-panel-12890)
+* [  pnpm ](#tab-panel-12891)
+* [  yarn ](#tab-panel-12892)
 
 ```sh
 npx wrangler queues list
@@ -54,15 +54,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues create`
 
 Create a queue
 
-* [  npm ](#tab-panel-12837)
-* [  pnpm ](#tab-panel-12838)
-* [  yarn ](#tab-panel-12839)
+* [  npm ](#tab-panel-12893)
+* [  pnpm ](#tab-panel-12894)
+* [  yarn ](#tab-panel-12895)
 
 ```sh
 npx wrangler queues create [NAME]
@@ -100,15 +102,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues update`
 
 Update a queue
 
-* [  npm ](#tab-panel-12840)
-* [  pnpm ](#tab-panel-12841)
-* [  yarn ](#tab-panel-12842)
+* [  npm ](#tab-panel-12896)
+* [  pnpm ](#tab-panel-12897)
+* [  yarn ](#tab-panel-12898)
 
 ```sh
 npx wrangler queues update [NAME]
@@ -146,15 +150,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues delete`
 
 Delete a queue
 
-* [  npm ](#tab-panel-12843)
-* [  pnpm ](#tab-panel-12844)
-* [  yarn ](#tab-panel-12845)
+* [  npm ](#tab-panel-12899)
+* [  pnpm ](#tab-panel-12900)
+* [  yarn ](#tab-panel-12901)
 
 ```sh
 npx wrangler queues delete [NAME]
@@ -188,15 +194,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues info`
 
 Get queue information
 
-* [  npm ](#tab-panel-12846)
-* [  pnpm ](#tab-panel-12847)
-* [  yarn ](#tab-panel-12848)
+* [  npm ](#tab-panel-12902)
+* [  pnpm ](#tab-panel-12903)
+* [  yarn ](#tab-panel-12904)
 
 ```sh
 npx wrangler queues info [NAME]
@@ -230,15 +238,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer add`
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12849)
-* [  pnpm ](#tab-panel-12850)
-* [  yarn ](#tab-panel-12851)
+* [  npm ](#tab-panel-12905)
+* [  pnpm ](#tab-panel-12906)
+* [  yarn ](#tab-panel-12907)
 
 ```sh
 npx wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
@@ -286,15 +296,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer remove`
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12852)
-* [  pnpm ](#tab-panel-12853)
-* [  yarn ](#tab-panel-12854)
+* [  npm ](#tab-panel-12908)
+* [  pnpm ](#tab-panel-12909)
+* [  yarn ](#tab-panel-12910)
 
 ```sh
 npx wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
@@ -330,15 +342,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer list`
 
 List consumers for a queue
 
-* [  npm ](#tab-panel-12855)
-* [  pnpm ](#tab-panel-12856)
-* [  yarn ](#tab-panel-12857)
+* [  npm ](#tab-panel-12911)
+* [  pnpm ](#tab-panel-12912)
+* [  yarn ](#tab-panel-12913)
 
 ```sh
 npx wrangler queues consumer list [QUEUE-NAME]
@@ -374,15 +388,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer http add`
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-12858)
-* [  pnpm ](#tab-panel-12859)
-* [  yarn ](#tab-panel-12860)
+* [  npm ](#tab-panel-12914)
+* [  pnpm ](#tab-panel-12915)
+* [  yarn ](#tab-panel-12916)
 
 ```sh
 npx wrangler queues consumer http add [QUEUE-NAME]
@@ -426,15 +442,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer http remove`
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-12861)
-* [  pnpm ](#tab-panel-12862)
-* [  yarn ](#tab-panel-12863)
+* [  npm ](#tab-panel-12917)
+* [  pnpm ](#tab-panel-12918)
+* [  yarn ](#tab-panel-12919)
 
 ```sh
 npx wrangler queues consumer http remove [QUEUE-NAME]
@@ -468,15 +486,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer http list`
 
 List HTTP pull consumers for a queue
 
-* [  npm ](#tab-panel-12864)
-* [  pnpm ](#tab-panel-12865)
-* [  yarn ](#tab-panel-12866)
+* [  npm ](#tab-panel-12920)
+* [  pnpm ](#tab-panel-12921)
+* [  yarn ](#tab-panel-12922)
 
 ```sh
 npx wrangler queues consumer http list [QUEUE-NAME]
@@ -512,15 +532,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer worker add`
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12867)
-* [  pnpm ](#tab-panel-12868)
-* [  yarn ](#tab-panel-12869)
+* [  npm ](#tab-panel-12923)
+* [  pnpm ](#tab-panel-12924)
+* [  yarn ](#tab-panel-12925)
 
 ```sh
 npx wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
@@ -568,15 +590,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer worker remove`
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-12870)
-* [  pnpm ](#tab-panel-12871)
-* [  yarn ](#tab-panel-12872)
+* [  npm ](#tab-panel-12926)
+* [  pnpm ](#tab-panel-12927)
+* [  yarn ](#tab-panel-12928)
 
 ```sh
 npx wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
@@ -612,15 +636,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues consumer worker list`
 
 List worker consumers for a queue
 
-* [  npm ](#tab-panel-12873)
-* [  pnpm ](#tab-panel-12874)
-* [  yarn ](#tab-panel-12875)
+* [  npm ](#tab-panel-12929)
+* [  pnpm ](#tab-panel-12930)
+* [  yarn ](#tab-panel-12931)
 
 ```sh
 npx wrangler queues consumer worker list [QUEUE-NAME]
@@ -656,15 +682,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues pause-delivery`
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-12876)
-* [  pnpm ](#tab-panel-12877)
-* [  yarn ](#tab-panel-12878)
+* [  npm ](#tab-panel-12932)
+* [  pnpm ](#tab-panel-12933)
+* [  yarn ](#tab-panel-12934)
 
 ```sh
 npx wrangler queues pause-delivery [NAME]
@@ -698,15 +726,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues resume-delivery`
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-12879)
-* [  pnpm ](#tab-panel-12880)
-* [  yarn ](#tab-panel-12881)
+* [  npm ](#tab-panel-12935)
+* [  pnpm ](#tab-panel-12936)
+* [  yarn ](#tab-panel-12937)
 
 ```sh
 npx wrangler queues resume-delivery [NAME]
@@ -740,15 +770,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues purge`
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-12882)
-* [  pnpm ](#tab-panel-12883)
-* [  yarn ](#tab-panel-12884)
+* [  npm ](#tab-panel-12938)
+* [  pnpm ](#tab-panel-12939)
+* [  yarn ](#tab-panel-12940)
 
 ```sh
 npx wrangler queues purge [NAME]
@@ -784,15 +816,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues subscription create`
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-12885)
-* [  pnpm ](#tab-panel-12886)
-* [  yarn ](#tab-panel-12887)
+* [  npm ](#tab-panel-12941)
+* [  pnpm ](#tab-panel-12942)
+* [  yarn ](#tab-panel-12943)
 
 ```sh
 npx wrangler queues subscription create [QUEUE]
@@ -840,15 +874,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues subscription list`
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-12888)
-* [  pnpm ](#tab-panel-12889)
-* [  yarn ](#tab-panel-12890)
+* [  npm ](#tab-panel-12944)
+* [  pnpm ](#tab-panel-12945)
+* [  yarn ](#tab-panel-12946)
 
 ```sh
 npx wrangler queues subscription list [QUEUE]
@@ -888,15 +924,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues subscription get`
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-12891)
-* [  pnpm ](#tab-panel-12892)
-* [  yarn ](#tab-panel-12893)
+* [  npm ](#tab-panel-12947)
+* [  pnpm ](#tab-panel-12948)
+* [  yarn ](#tab-panel-12949)
 
 ```sh
 npx wrangler queues subscription get [QUEUE]
@@ -934,15 +972,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues subscription delete`
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-12894)
-* [  pnpm ](#tab-panel-12895)
-* [  yarn ](#tab-panel-12896)
+* [  npm ](#tab-panel-12950)
+* [  pnpm ](#tab-panel-12951)
+* [  yarn ](#tab-panel-12952)
 
 ```sh
 npx wrangler queues subscription delete [QUEUE]
@@ -980,15 +1020,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `queues subscription update`
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-12897)
-* [  pnpm ](#tab-panel-12898)
-* [  yarn ](#tab-panel-12899)
+* [  npm ](#tab-panel-12953)
+* [  pnpm ](#tab-panel-12954)
+* [  yarn ](#tab-panel-12955)
 
 ```sh
 npx wrangler queues subscription update [QUEUE]
@@ -1032,7 +1074,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/queues/#page","headline":"Queues · Cloudflare Workers docs","description":"Wrangler commands for managing Workers Queues configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/queues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

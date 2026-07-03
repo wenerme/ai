@@ -58,13 +58,13 @@ Feature availability
 
 ### Private network connectivity
 
-Private hostname routing only works for applications connected with `cloudflared`. Other traffic off-ramps require IP-based routes.
+Private hostname routing works with the off-ramps below. Other traffic off-ramps require IP-based routes.
 
-| Connector                                                                                                                      | Compatibility | Minimum version |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------- |
-| [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) | ✅             | 2025.7.0        |
-| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                       | ❌             |                 |
-| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                              | ❌             |                 |
+| Connector                                                                                                                       | Compatibility | Minimum version      |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------------- |
+| [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/)  | ✅             | 2025.7.0             |
+| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) | ✅             | 2026.6.822.0 (Linux) |
+| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                               | ❌             |                      |
 
 ## Connect a private hostname
 
@@ -74,8 +74,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-7614)
-* [ Terraform (v5) ](#tab-panel-7615)
+* [ Dashboard ](#tab-panel-7653)
+* [ Terraform (v5) ](#tab-panel-7654)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -118,8 +118,7 @@ Cloudflare One Clients
 
 Cloudflare Mesh
 
-1. In your [mesh node device profile](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), ensure that the initial resolved IP listed above route through the tunnel.
-2. Depending on where you installed the mesh node, you may also need to route those destination IPs through the node and point your DNS resolver to Cloudflare Gateway. Refer to [Routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/).
+To attract a hostname's traffic to a Mesh node instead of a `cloudflared` tunnel, add a [hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to the node. The initial resolved IP listed above must route through Cloudflare on both the Mesh node and client device profiles, and — for a private hostname — the node must be able to resolve the hostname (via its local hosts file or a Gateway resolver policy). Refer to [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
 
 Cloudflare WAN
 
@@ -289,6 +288,6 @@ To avoid this issue, choose one of the following options:
 * **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to _Disabled_. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/","name":"Private networks"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/","name":"Connect with cloudflared"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","name":"Connect a private hostname"}}]}
 ```

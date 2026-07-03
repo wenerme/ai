@@ -18,9 +18,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-12696)
-* [  pnpm ](#tab-panel-12697)
-* [  yarn ](#tab-panel-12698)
+* [  npm ](#tab-panel-12737)
+* [  pnpm ](#tab-panel-12738)
+* [  yarn ](#tab-panel-12739)
 
 ```sh
 npx wrangler docs [SEARCH]
@@ -56,7 +56,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `login`
 
@@ -178,6 +180,8 @@ If you are using `CLOUDFLARE_API_TOKEN` instead of OAuth, and you can logout by 
 
 ## `auth`
 
+Manage authentication, including named [authentication profiles](https://developers.cloudflare.com/workers/wrangler/profiles/) for working across multiple accounts.
+
 ### `auth token`
 
 Retrieve your current authentication token or credentials for use with other tools and scripts.
@@ -223,15 +227,257 @@ The following global flags work on every command:
 * `--cwd` ` string `
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
+### `auth create`
+
+
+Experimental
+
+Create or re-authenticate a named auth profile
+
+* [  npm ](#tab-panel-12740)
+* [  pnpm ](#tab-panel-12741)
+* [  yarn ](#tab-panel-12742)
+
+```sh
+npx wrangler auth create [NAME]
+```
+
+```sh
+pnpm wrangler auth create [NAME]
+```
+
+```sh
+yarn wrangler auth create [NAME]
+```
+
+* `[NAME]` ` string ` required
+Name for the auth profile
+* `--browser` ` boolean ` default: true
+Automatically open the OAuth link in a browser
+* `--scopes` ` string `
+Pick the set of applicable OAuth scopes when logging in
+* `--callback-host` ` string ` default: localhost
+Use the ip or host address for the temporary login callback server.
+* `--callback-port` ` number ` default: 8976
+Use the port for the temporary login callback server.
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+### `auth activate`
+
+
+Experimental
+
+Bind a named auth profile to a directory
+
+* [  npm ](#tab-panel-12743)
+* [  pnpm ](#tab-panel-12744)
+* [  yarn ](#tab-panel-12745)
+
+```sh
+npx wrangler auth activate [NAME] [DIR]
+```
+
+```sh
+pnpm wrangler auth activate [NAME] [DIR]
+```
+
+```sh
+yarn wrangler auth activate [NAME] [DIR]
+```
+
+* `[NAME]` ` string ` required
+Name of the auth profile to activate
+* `[DIR]` ` string `
+Directory to bind the profile to (defaults to current directory)
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+### `auth deactivate`
+
+
+Experimental
+
+Remove the auth profile binding from a directory
+
+* [  npm ](#tab-panel-12746)
+* [  pnpm ](#tab-panel-12747)
+* [  yarn ](#tab-panel-12748)
+
+```sh
+npx wrangler auth deactivate [DIR]
+```
+
+```sh
+pnpm wrangler auth deactivate [DIR]
+```
+
+```sh
+yarn wrangler auth deactivate [DIR]
+```
+
+* `[DIR]` ` string `
+Directory to unbind (defaults to current directory). Must be the exact directory the profile was bound to.
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+### `auth list`
+
+
+Experimental
+
+List all auth profiles
+
+* [  npm ](#tab-panel-12749)
+* [  pnpm ](#tab-panel-12750)
+* [  yarn ](#tab-panel-12751)
+
+```sh
+npx wrangler auth list
+```
+
+```sh
+pnpm wrangler auth list
+```
+
+```sh
+yarn wrangler auth list
+```
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
+### `auth delete`
+
+
+Experimental
+
+Delete a named auth profile
+
+* [  npm ](#tab-panel-12752)
+* [  pnpm ](#tab-panel-12753)
+* [  yarn ](#tab-panel-12754)
+
+```sh
+npx wrangler auth delete [NAME]
+```
+
+```sh
+pnpm wrangler auth delete [NAME]
+```
+
+```sh
+yarn wrangler auth delete [NAME]
+```
+
+* `[NAME]` ` string ` required
+Name of the auth profile to delete
+
+Global flags
+
+* `--v` ` boolean ` alias: --version
+Show version number
+* `--cwd` ` string `
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
+
 ---
 
 ## `whoami`
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-12699)
-* [  pnpm ](#tab-panel-12700)
-* [  yarn ](#tab-panel-12701)
+* [  npm ](#tab-panel-12755)
+* [  pnpm ](#tab-panel-12756)
+* [  yarn ](#tab-panel-12757)
 
 ```sh
 npx wrangler whoami
@@ -267,7 +513,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ---
 
@@ -329,10 +577,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-12692)
-* [ Zsh ](#tab-panel-12693)
-* [ Fish ](#tab-panel-12694)
-* [ PowerShell ](#tab-panel-12695)
+* [ Bash ](#tab-panel-12733)
+* [ Zsh ](#tab-panel-12734)
+* [ Fish ](#tab-panel-12735)
+* [ PowerShell ](#tab-panel-12736)
 
 ```sh
 wrangler complete bash >> ~/.bashrc
@@ -379,6 +627,6 @@ The following global flags work on every command:
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/general/","name":"General commands"}}]}
 ```

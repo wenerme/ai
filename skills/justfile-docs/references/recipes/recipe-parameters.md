@@ -122,6 +122,21 @@ test +FLAGS='-q':
   cargo test {{FLAGS}}
 ```
 
+The number of arguments a variadic parameter accepts may be limited with the
+`[arg(ARG, min=MIN)]` and `[arg(ARG, max=MAX)]` attributes<sup>master</sup>,
+which require lists to be enabled:
+
+```just
+set unstable
+set lists
+
+[arg('FILES', min='2', max='4')]
+backup +FILES:
+  scp {{FILES}} me@server.com:
+```
+
+`min` and `max` also apply to default values.
+
 `{{…}}` substitutions may need to be quoted if they contain spaces. For
 example, if you have the following recipe:
 

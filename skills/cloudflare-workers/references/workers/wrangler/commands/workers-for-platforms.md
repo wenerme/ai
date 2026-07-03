@@ -18,9 +18,9 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-13152)
-* [  pnpm ](#tab-panel-13153)
-* [  yarn ](#tab-panel-13154)
+* [  npm ](#tab-panel-13208)
+* [  pnpm ](#tab-panel-13209)
+* [  yarn ](#tab-panel-13210)
 
 ```sh
 npx wrangler dispatch-namespace list
@@ -51,15 +51,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `dispatch-namespace get`
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-13155)
-* [  pnpm ](#tab-panel-13156)
-* [  yarn ](#tab-panel-13157)
+* [  npm ](#tab-panel-13211)
+* [  pnpm ](#tab-panel-13212)
+* [  yarn ](#tab-panel-13213)
 
 ```sh
 npx wrangler dispatch-namespace get [NAME]
@@ -93,15 +95,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `dispatch-namespace create`
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-13158)
-* [  pnpm ](#tab-panel-13159)
-* [  yarn ](#tab-panel-13160)
+* [  npm ](#tab-panel-13214)
+* [  pnpm ](#tab-panel-13215)
+* [  yarn ](#tab-panel-13216)
 
 ```sh
 npx wrangler dispatch-namespace create [NAME]
@@ -135,15 +139,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `dispatch-namespace delete`
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-13161)
-* [  pnpm ](#tab-panel-13162)
-* [  yarn ](#tab-panel-13163)
+* [  npm ](#tab-panel-13217)
+* [  pnpm ](#tab-panel-13218)
+* [  yarn ](#tab-panel-13219)
 
 ```sh
 npx wrangler dispatch-namespace delete [NAME]
@@ -177,7 +183,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 Note
 
@@ -187,9 +195,9 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-13164)
-* [  pnpm ](#tab-panel-13165)
-* [  yarn ](#tab-panel-13166)
+* [  npm ](#tab-panel-13220)
+* [  pnpm ](#tab-panel-13221)
+* [  yarn ](#tab-panel-13222)
 
 ```sh
 npx wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
@@ -225,7 +233,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare Workers docs","description":"Wrangler commands for managing Workers for Platforms dispatch namespaces.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

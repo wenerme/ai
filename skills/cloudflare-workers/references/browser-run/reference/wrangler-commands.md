@@ -18,9 +18,9 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 Create a new Browser Run session
 
-* [  npm ](#tab-panel-7253)
-* [  pnpm ](#tab-panel-7254)
-* [  yarn ](#tab-panel-7255)
+* [  npm ](#tab-panel-7288)
+* [  pnpm ](#tab-panel-7289)
+* [  yarn ](#tab-panel-7290)
 
 ```sh
 npx wrangler browser create
@@ -60,15 +60,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `browser close`
 
 Close a Browser Run session
 
-* [  npm ](#tab-panel-7256)
-* [  pnpm ](#tab-panel-7257)
-* [  yarn ](#tab-panel-7258)
+* [  npm ](#tab-panel-7291)
+* [  pnpm ](#tab-panel-7292)
+* [  yarn ](#tab-panel-7293)
 
 ```sh
 npx wrangler browser close [SESSIONID]
@@ -104,15 +106,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `browser list`
 
 List active Browser Run sessions
 
-* [  npm ](#tab-panel-7259)
-* [  pnpm ](#tab-panel-7260)
-* [  yarn ](#tab-panel-7261)
+* [  npm ](#tab-panel-7294)
+* [  pnpm ](#tab-panel-7295)
+* [  yarn ](#tab-panel-7296)
 
 ```sh
 npx wrangler browser list
@@ -146,15 +150,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `browser view`
 
 View a live browser session
 
-* [  npm ](#tab-panel-7262)
-* [  pnpm ](#tab-panel-7263)
-* [  yarn ](#tab-panel-7264)
+* [  npm ](#tab-panel-7297)
+* [  pnpm ](#tab-panel-7298)
+* [  yarn ](#tab-panel-7299)
 
 ```sh
 npx wrangler browser view [SESSIONID]
@@ -194,7 +200,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Browser Run docs","description":"Manage Browser Run sessions from the command line using Wrangler.","url":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
