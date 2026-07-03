@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Cloudflare platform access

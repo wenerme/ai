@@ -1,11 +1,11 @@
 ---
 title: "Tencent TokenHub | Models"
-description: "Use Tencent TokenHub models with Mastra. 1 model available."
+description: "Use Tencent TokenHub models with Mastra. 2 models available."
 ---
 
 # [Tencent TokenHub logo]Tencent TokenHub
 
-Access 1 Tencent TokenHub model through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKENHUB_API_KEY` environment variable.
+Access 2 Tencent TokenHub models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKENHUB_API_KEY` environment variable.
 
 Learn more in the [Tencent TokenHub documentation](https://cloud.tencent.com/document/product/1823/130050).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "tencent-tokenhub/hy3-preview"
+  model: "tencent-tokenhub/hy3"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "tencent-tokenhub/hy3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 64000,
+    "inputCost": null,
+    "outputCost": null
+  },
   {
     "model": "tencent-tokenhub/hy3-preview",
     "imageInput": false,
@@ -64,7 +76,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://tokenhub.tencentmaas.com/v1",
-    id: "tencent-tokenhub/hy3-preview",
+    id: "tencent-tokenhub/hy3",
     apiKey: process.env.TENCENT_TOKENHUB_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -83,7 +95,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "tencent-tokenhub/hy3-preview"
-      : "tencent-tokenhub/hy3-preview";
+      : "tencent-tokenhub/hy3";
   }
 });
 ```

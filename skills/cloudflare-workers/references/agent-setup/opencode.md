@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Cloudflare platform access

@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26770 files, 288 MiB total
+> 106 skills, 26775 files, 288 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1224,7 +1224,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 278 | 1.8 MiB |
+| `evalscope-docs` | 284 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
@@ -1233,7 +1233,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 89 | 2.0 MiB |
-| `grafana-docs` | 625 | 6.0 MiB |
+| `grafana-docs` | 625 | 6.1 MiB |
 | `grafana-plugin-docs` | 612 | 3.8 MiB |
 | `hono-docs` | 86 | 354 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
@@ -1248,8 +1248,8 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 778 | 6.1 MiB |
-| `mihomo-docs` | 150 | 358 KiB |
+| `mastra-docs` | 777 | 6.1 MiB |
+| `mihomo-docs` | 150 | 370 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
 | `model-reference` | 17 | 64 KiB |

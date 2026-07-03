@@ -1,20 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
-description: "Comfy Cloud MCP サーバー経由で Claude Code と Claude Desktop から Comfy Cloud を利用: 画像・動画・音声・3D の生成、モデルとノードの検索、ワークフローの実行。"
-translationSourceHash: 8e911aa0
+description: "Claude Code、Claude Desktop、Cursor、Codex、またはMCP互換エージェントからComfy Cloud MCPに接続: 画像・ビデオ・オーディオ・3Dの生成、モデルとノードの検索、ワークフローの実行。"
+translationSourceHash: 01763e3c
 translationFrom: agent-tools/cloud.mdx
 translationBlockHashes:
   "_intro": b1c56a40
-  "Overview": 48a88d56
+  "Overview": 4b68a7b5
+  "Install Comfy Cloud MCP": ca5e817e
   "What your agent can do": 2c2a22e6
   "MCP tools": a9211dee
   "Credits and spending": 20e94ef0
-  "Install": 445ca642
   "Outputs and downloads": a2c8c12f
   "Related resources": 58e75560
   "Feedback": 6872768e
-  "Known limitations": 52477743
-  "FAQ": 7b3bdcef
+  "Known limitations": 2f9e13ba
+  "FAQ": 920ab7b8
 ---
 
 <CloudFeature/>
@@ -27,223 +27,385 @@ translationBlockHashes:
 
 サーバーは `cloud.comfy.org/mcp` でリモート実行されます。ワークフローは Comfy Cloud の GPU 上で実行されるため、ローカル GPU は不要です。エージェントは HTTPS 経由でサーバーと通信し、サーバーはツール呼び出しを認証済みのリクエストとして Comfy Cloud に代行送信します。
 
-現在のサポート範囲は **Claude Code** と **Claude Desktop** に限定されており、どちらも **OAuth**（ブラウザで一度きりのログイン）でログインします。今後、他のクライアントにも対応予定です。
+MCP 互換のクライアントはいずれも同じサーバー URL に接続できます。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex** については、以下にファーストクラスのセットアップ手順があります。**Windsurf**、**Amp**、およびその他のエージェントは、OAuth または APIキーを使用して同じ URL から利用できます。
 
-## エージェントにできること
+<a id="install-comfy-cloud-mcp"></a>
 
-MCPツールを自分で呼び出す必要はありません。エージェントがあなたの指示に基づいて適切なツールを選択します。スラッシュコマンドやプロンプト（後述）は、エージェントを一般的なタスクに誘導するショートカットですが、プレーンな言葉でも機能します（「猫の宇宙飛行士の画像を生成して」「この写真をアップスケールして」「Wan 2.2のビデオテンプレートを探して」など）。
+## Comfy Cloud MCP のインストール
+
+  接続する前に[Comfy Cloud](https://cloud.comfy.org)アカウントが必要です。まだお持ちでない場合は[サインアップ](https://cloud.comfy.org)してください。セットアップ時のOAuthログインはComfyアカウントを使用します。
+
+Comfy Cloud MCPは以下で実行されます：
+
+```
+https://cloud.comfy.org/mcp
+```
+
+クライアントを選択:
+
+  
+    **comfy-cloud**プラグインをインストールします。これにより、MCP接続とスラッシュコマンドが一度に追加されます。このプラグインは、[Comfy Skills](https://github.com/Comfy-Org/comfy-skills/)リポジトリを通じて公開されています。このリポジトリにはClaude CodeプラグインとComfy向けのコミュニティエージェントスキルがホストされています。
+
+    
+      
+        Comfy Skillsマーケットプレイスを登録します（1回のみ）：
+
+        ```
+        /plugin marketplace add Comfy-Org/comfy-skills
+        ```
+      
+      
+        ```
+        /plugin install comfy-cloud@comfy-skills
+        ```
+      
+      
+        `/mcp`を実行し、**comfy-cloud** → **認証**を選択します。ブラウザが開いてログインし、トークンは自動的に更新されます。
+      
+    
+
+    このプラグインは以下のスラッシュコマンドを追加します：
+
+    | コマンド | 説明 |
+    | --- | --- |
+    | `/comfy-cloud:generate-image` | 画像の生成、編集、修正 |
+    | `/comfy-cloud:generate-video` | 動画の生成、編集、拡張 |
+    | `/comfy-cloud:generate-audio` | オーディオ、音楽、効果音の生成 |
+    | `/comfy-cloud:generate-3d` | テキストまたは画像から3Dモデルを生成 |
+    | `/comfy-cloud:remove-background` | 画像から背景を削除 |
+    | `/comfy-cloud:upscale-image` | 画像を高解像度にアップスケール |
+    | `/comfy-cloud:search-templates` | [comfy.org](https://comfy.org) で事前構築されたワークフローテンプレートを検索 |
+    | `/comfy-cloud:search-models` | 利用可能なモデルを検索 |
+    | `/comfy-cloud:search-nodes` | ノードを検索し、配線の提案を取得 |
+    | `/comfy-cloud:help` | ComfyUI Cloudでできることを確認 |
+
+    
+      サーバーを直接追加：
+
+      ```bash
+      claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp
+      ```
+
+      その後、`/mcp`を実行し、**comfy-cloud** → **認証**を選択します。`-s user`を追加すると、すべてのプロジェクトで利用可能になります。
+
+      この方法でも、MCPプロンプトとして同じワークフローが公開されます：`/mcp__comfy-cloud__generate-image`、`/mcp__comfy-cloud__search-models`など（`/mcp__<名前>__`プレフィックスは、`claude mcp add`に渡した名前を使用します）。上記のプラグインは、これらをより親しみやすい`/comfy-cloud:*`コマンドとしてラップするため、推奨されます。
+    
+  
+
+  
+    Claude Desktopは、UIを通じてComfy Cloudを**カスタムコネクタ**として追加し、OAuthログインを実行します。
+
+    <video
+      controls
+      className="w-full aspect-video rounded-xl"
+      src="/images/agent_tools/Claude_desktop.mp4"
+    ></video>
+
+    
+      
+        サイドバーで**カスタマイズ**（ラベル**1**）をクリックします。
+
+        [Claude Desktop — カスタマイズを開く]
+      
+      
+        **コネクタ**（ラベル**2**）をクリックします。
+
+        [Claude Desktop — コネクタを開く]
+      
+      
+        1. コネクタヘッダーの**+**ボタン（ラベル**3**）をクリックします。
+        2. **カスタムコネクタを追加**（ラベル**4**）を選択します。
+
+        [Claude Desktop — カスタムコネクタを追加]
+      
+      
+        1. **名前**フィールド（ラベル**5**）に、**Comfy Cloud MCP**などの名前を入力します。
+        2. **Remote MCP server URL**を`https://cloud.comfy.org/mcp`に設定します（ラベル**6**）。
+        3. **追加**（ラベル**7**）をクリックします。
+
+        [Claude Desktop — コネクタの詳細]
+      
+      
+        1. ブラウザが開いたら、ワークスペースを選択します（例：**個人ワークスペース**）。
+        2. **続ける**をクリックしてコネクタを承認します。接続されます。
+
+        [Comfy Cloud MCP認証]
+      
+    
+
+    Claude DesktopはClaude Codeのスラッシュコマンドをサポートしていません。代わりに、同じワークフローに対して**プロンプトピッカー**を開きます：
+
+    | プロンプト | 説明 |
+    | --- | --- |
+    | `generate-image` | テキスト説明から画像を生成 |
+    | `generate-video` | テキストまたは画像から動画を生成 |
+    | `generate-audio` | オーディオ、音楽、効果音を生成 |
+    | `generate-3d` | テキストまたは画像から3Dモデルを生成 |
+    | `upscale-image` | 画像を高解像度にアップスケール |
+    | `remove-background` | 画像から背景を削除 |
+    | `search-templates` | 事前構築されたワークフローテンプレートを検索 |
+    | `search-models` | モデル（チェックポイント、LoRA、VAE）を検索 |
+    | `search-nodes` | ノードを検索し、配線の提案を取得 |
+    | `help` | ComfyUI Cloudでできることを確認 |
+
+    プロンプトをスキップして、平易な言語で質問することもできます。MCPツールは同様に機能します。
+  
+
+  
+    CursorはリモートMCPサーバーにHTTPで接続します。Cursorは現在MCP OAuthをサポートしていません。MCP設定にComfy Cloud APIキーを指定してComfy Cloudを追加します。
+
+    
+      
+        右上隅の**設定**歯車アイコン（ラベル**1**）をクリックします。
+
+        [Cursor — 設定を開く]
+      
+      
+        1. サイドバーで**Tools & MCPs**（ラベル**2**）をクリックします。
+        2. **+ New MCP Server**（ラベル**3**）→ **Add a Custom MCP Server**をクリックします。
+
+        [Cursor — Tools & MCPs]
+      
+      
+        `~/.cursor/mcp.json`（グローバル）または `.cursor/mcp.json`（プロジェクト）を編集します。サーバーURLを設定し、`X-API-Key`ヘッダーでComfy Cloud APIキーを渡します。[platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys)でキーを作成します（`comfyui-`で始まります）：
+
+        ```json
+        {
+          "mcpServers": {
+            "comfy-cloud": {
+              "url": "https://cloud.comfy.org/mcp",
+              "headers": {
+                "X-API-Key": "${env:COMFY_API_KEY}"
+              }
+            }
+          }
+        }
+        ```
+
+        シェルまたはシステム環境に`COMFY_API_KEY`を設定します。キーをgitにコミットする可能性のあるファイルに直接記述するよりも、`${env:COMFY_API_KEY}`を推奨します。
+
+        [Cursor — APIキーを含むmcp.json]
+      
+      
+        平易な言葉で質問します（「猫の宇宙飛行士の画像を生成して」「Wan 2.2の動画テンプレートを探して」）。Cursorがあなたに代わってMCPツールを呼び出します。
+      
+    
+  
+
+  
+    [Codex](https://developers.openai.com/codex/cli)は、Streamable HTTPを介してComfy Cloudに接続します。設定でサーバーを追加し、OAuthでログインします。
+
+    <video
+      controls
+      className="w-full aspect-video rounded-xl"
+      src="/images/agent_tools/CodeX_Oauth_mcp.mp4"
+    ></video>
+
+    
+      
+        1. *Logged in with API key*の下にある**設定**（ラベル**1**）をクリックします。
+        2. **設定**（ラベル**2**）をクリックして、設定パネル全体を開きます。
+
+        [Codex設定パネル — ステップ1]
+      
+      
+        1. 設定リストの**MCPサーバー**（ラベル**3**）をクリックします。
+        2. **+ サーバーを追加**（ラベル**4**）をクリックして、新しいMCPサーバーを追加します。
+
+        [Codex MCPサーバー — ステップ2]
+      
+      
+        1. 接続タイプとして**Streamable HTTP**を選択します。
+        2. **名前**フィールド（ラベル**5**）に**Comfy Cloud MCP**などの名前を入力します。
+        3. **URL**フィールド（ラベル**6**）に`https://cloud.comfy.org/mcp`を入力します。
+        4. **保存**（ラベル**7**）をクリックします。
+
+        [Codex MCPサーバー追加 — ステップ3]
+      
+      
+        1. 保存したサーバーエントリで**認証**（ラベル**8**）をクリックします。
+
+        [Codex MCPサーバー認証 — ステップ4]
+
+        2. ブラウザのポップアップでワークスペースを選択し、**続ける**をクリックしてログインを完了します。接続されます。
+
+        [Comfy Cloud MCP認証]
+      
+    
+
+    平易な言葉で質問します（「猫の宇宙飛行士の画像を生成して」「Wan 2.2の動画テンプレートを探して」）。Codexがあなたに代わってMCPツールを呼び出します。
+
+    
+      ターミナルから登録してログイン：
+
+      ```bash
+      codex mcp add comfy-cloud --url https://cloud.comfy.org/mcp
+      codex mcp login comfy-cloud
+      ```
+
+      これにより、`~/.codex/config.toml`（または信頼するプロジェクトの`.codex/config.toml`）にエントリが書き込まれます。
+    
+
+    
+      ブラウザが利用できない場合は、環境変数からヘッダーを取得するサーバーを追加します。[platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys)でキーを作成し（`comfyui-`で始まります）、`~/.codex/config.toml`に追加します：
+
+      ```toml
+      [mcp_servers.comfy-cloud]
+      url = "https://cloud.comfy.org/mcp"
+      env_http_headers = { "X-API-Key" = "COMFY_API_KEY" }
+      ```
+
+      シェルまたはシステム環境に`COMFY_API_KEY`を設定します。キーをバージョン管理にコミットしないでください。
+    
+  
+
+  
+    **リモートHTTP**トランスポートをサポートするMCPクライアントは、Comfy Cloudに接続できます。サーバーURLは常に`https://cloud.comfy.org/mcp`です。
+
+    
+      
+        `https://cloud.comfy.org/mcp`を指すリモートMCPエントリを追加します。ほとんどのクライアントは`url`フィールドを持つJSON設定を使用します：
+
+        ```json
+        {
+          "mcpServers": {
+            "comfy-cloud": {
+              "url": "https://cloud.comfy.org/mcp"
+            }
+          }
+        }
+        ```
+
+        **Windsurf**は`url`の代わりに`serverUrl`を使用します。**Amp**は**設定 → MCPサーバー**または`~/.config/amp/settings.json`で同じ`mcpServers`構造を使用します。
+      
+      
+        クライアントがMCP OAuthをサポートしている場合は、ブラウザからログインします。それ以外の場合は、APIキーヘッダーを追加します（下記参照）。
+      
+      
+        クライアントを再起動します。**comfy-cloud**サーバーにComfy Cloudツール（`search_templates`、`submit_workflow`、`get_output`など）が登録されているはずです。
+      
+    
+
+    **ヘッドレス/CI（APIキー）：** OAuthが利用できない場合は、[platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys)でキーを作成し、`X-API-Key`ヘッダーとして渡します：
+
+    ```json
+    {
+      "mcpServers": {
+        "comfy-cloud": {
+          "url": "https://cloud.comfy.org/mcp",
+          "headers": {
+            "X-API-Key": "comfyui-…"
+          }
+        }
+      }
+    }
+    ```
+
+    ターミナルからClaude Codeを使用する場合：
+
+    ```bash
+    claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp -H "X-API-Key: comfyui-…"
+    ```
+
+    設定ファイルにキーを直接記述するのではなく、`${env:COMFY_API_KEY}`またはクライアントのシークレット補間を使用することをお勧めします（gitにコミットする設定ファイルで）。
+  
+
+## エージェントができること
+
+MCPツールを自分で呼び出す必要はありません。エージェントはリクエスト内容に基づいて適切なツールを選択します。スラッシュコマンドやプロンプト（下記）は、エージェントを一般的なタスクに誘導するショートカットですが、平易な言葉でも動作します（「猫の宇宙飛行士の画像を生成して」「この写真をアップスケールして」「Wan 2.2のビデオテンプレートを探して」など）。
 
 典型的な流れ:
 
-1. **発見**：利用可能なものを検索します（`search_templates`、`search_models`、`search_nodes`、またはグラフ形式の質問には`cql`）。
-2. **実行**：生成を実行します。一致する事前構築済みテンプレートには`run_template`、カスタムワークフローには`submit_workflow`（入力画像が必要な場合は`upload_file`を併用）、Flux、Grok、Gemini、OpenAI、Ideogram、Seedance などのパートナーモデルには`partner_generate`を使用します。
-3. **待機と出力の取得**：`wait_for_job`でジョブの完了を待ち、`get_output`が、エージェントがシェルで実行するダウンロードコマンドを返します。
+1. **発見** – 利用可能なものを調べます（`search_templates`、`search_models`、`search_nodes`、またはグラフ形式の質問には`cql`）。
+2. **生成を実行** – 一致する事前構築済みテンプレートには`run_template`、カスタムワークフローには`submit_workflow`（入力画像が必要な場合は`upload_file`も併用）、またはFlux、Grok、Gemini、OpenAI、Ideogram、Seedanceなどのパートナーモデルには`partner_generate`を使用します。
+3. **待機して出力を取得** – `wait_for_job`で待機し、`get_output`でダウンロードコマンドを取得します（エージェントがシェルで実行します）。
 
-サーバーは、ゼロからワークフローを構築する前に、[プリビルトテンプレート](https://comfy.org/workflows)とのマッチングを優先します。これにより、より速く良い結果が得られる傾向があります。
+サーバーは、ワークフローをゼロから構築する前に、[事前構築済みテンプレート](https://comfy.org/workflows)を優先してマッチングします。これにより、より速く、より良い結果が得られる傾向があります。
 
 ## MCP ツール
 
-以下はエージェントが接続後にアクセスできるツールです。名前は MCP クライアントのログやデバッグに表示されるものと一致します。
+これらは、エージェントが接続後にアクセスできるツールです。名前は MCP クライアントのログやデバッグに表示されるものと一致します。
 
 ### 検索
 
 | ツール | 説明 |
 | --- | --- |
-| `search_templates` | [comfy.org](https://comfy.org/workflows) から、テキスト、タグ、メディア種類、モデルで事前構築済みワークフローテンプレートを検索します。 |
-| `get_template` | テンプレートの完全なワークフロー JSON を取得し、検査や手動編集に利用します。 |
-| `get_template_schema` | テンプレートのどのパラメータが実行時にオーバーライド可能かを確認します。 |
-| `search_models` | モデルカタログをテキスト、種類、ベースモデル、ソースで検索します。 |
-| `search_nodes` | 利用可能なノードをテキスト、カテゴリ、入出力タイプで検索します。また、**サブグラフブループリント**（テキストから画像へ、背景を削除 など、あらかじめ配線されたノードグループ）も表示します。 |
-| `get_node` | 特定ノードの完全な入力仕様（全オプションリストを含む）を取得します。 |
-| `cql` | 構造的な質問（例：どのノードが画像を生成するか、ノードタイプ間のパスなど）に対して [CQL](https://github.com/Comfy-Org/cql) グラフクエリを実行します。特定ノードの完全な入力仕様が必要な場合は `search_nodes` を使用してください。 |
-| `get_prompting_guide` | モデルファミリーごとのプロンプトスタイルと推奨設定（steps、cfg、sampler、解像度）を取得します。 |
+| `search_templates` | [comfy.org](https://comfy.org/workflows) からテキスト、タグ、メディアタイプ、またはモデルで事前構築済みのワークフローテンプレートを検索します |
+| `get_template` | テンプレートの完全なワークフロー JSON を取得し、検査や手動編集を行えます |
+| `get_template_schema` | テンプレートのどのパラメータが実行時にオーバーライド可能かを確認します |
+| `search_models` | テキスト、タイプ、ベースモデル、またはソースでモデルカタログを検索します |
+| `search_nodes` | テキスト、カテゴリ、入力/出力タイプで利用可能なノードを検索します。また、**サブグラフブループリント**（テキストから画像へや背景を削除などの事前配線済みノードグループ）も表示します |
+| `get_node` | 特定のノードの完全な入力仕様を取得します（全オプションリストを含む） |
+| `cql` | 構造的な質問を行うために [CQL](https://github.com/Comfy-Org/cql) グラフクエリを実行します（例：どのノードが画像を生成するか、ノードタイプ間のパスなど）。特定のノードの完全な入力仕様が必要な場合は `search_nodes` を使用してください |
+| `get_prompting_guide` | モデルファミリーごとのプロンプトスタイルと推奨設定（ステップ数、CFG、サンプラー、解像度） |
 
 ### 生成
 
 | ツール | 説明 |
 | --- | --- |
-| `run_template` | 事前構築済みテンプレートを名前で実行します（オプションでパラメータのオーバーライドが可能）。テンプレートが一致する場合はこちらが推奨される方法です。 |
-| `submit_workflow` | ComfyUI API 形式のワークフローを Comfy Cloud で実行するために送信します。 |
-| `partner_generate` | パートナー API モデル（Flux/BFL、Grok、Gemini、OpenAI、Ideogram、Seedream/Seedance など）で生成します。 |
-| `upload_file` | ワークフローで使用する入力画像やファイルをアップロードします（例：LoadImage ノード用）。 |
-| `apply_slots` | ワークフロー内部の値にパラメータオーバーライドを適用し、変更後のワークフローを返します。 |
+| `run_template` | 名前を指定して事前構築済みテンプレートを実行します。オプションでパラメータのオーバーライドが可能。テンプレートが一致する場合の推奨パスです |
+| `submit_workflow` | ComfyUI API 形式のワークフローを Comfy Cloud での実行用に送信します |
+| `partner_generate` | パートナー API モデル（Flux/BFL、Grok、Gemini、OpenAI、Ideogram、Seedream/Seedance など）で生成します |
+| `upload_file` | ワークフローで使用する入力画像やファイルをアップロードします（例：LoadImage を使用する場合） |
+| `apply_slots` | ワークフローの内部値にパラメータのオーバーライドを適用し、変更後のワークフローを返します |
 
 ### ジョブとバッチ
 
 | ツール | 説明 |
 | --- | --- |
-| `get_job_status` | 送信したワークフローの実行ステータスをポーリングします。 |
-| `wait_for_job` | 繰り返しポーリングする代わりに、ジョブが完了するまで待機します。 |
-| `get_output` | 完了したワークフローから出力画像、動画、オーディオを取得します。 |
-| `use_previous_output` | ある実行の出力を別の実行の入力として再利用し、ワークフローを連鎖させます。 |
-| `cancel_job` | 保留中または実行中のジョブをキャンセルします。 |
-| `get_queue` | 実行中および保留中のジョブ数を確認します。 |
-| `submit_batch`、`get_batch_status`、`get_batch_output`、`wait_for_batch` | 多数の生成を1回の呼び出しで送信し、後でまとめて回収します。バッチ ID はセッションをまたいで有効です。 |
+| `get_job_status` | 送信したワークフローの実行ステータスをポーリングします |
+| `wait_for_job` | 繰り返しポーリングする代わりに、ジョブが完了するまで待機します |
+| `get_output` | 完了したワークフローから出力画像、動画、音声を取得します |
+| `use_previous_output` | ある実行の出力を別の実行の入力として再利用し、ワークフローを連鎖させます |
+| `cancel_job` | 保留中または実行中のジョブをキャンセルします |
+| `get_queue` | 実行中および保留中のジョブの数を確認します |
+| `submit_batch`、`get_batch_status`、`get_batch_output`、`wait_for_batch` | 一度の呼び出しで多くの生成を送信し、後でまとめて収集します。バッチ ID はセッションをまたいで有効です |
 
 ### 保存済みワークフロー
 
 | ツール | 説明 |
 | --- | --- |
-| `list_saved_workflows` | Comfy Cloud に保存されたワークフローをブラウズします。 |
-| `get_saved_workflow` | 保存済みワークフローのノード、入力、カスタマイズ可能な設定を検査します。 |
-| `save_workflow` | ワークフローを Comfy Cloud アカウントに保存します。 |
-| `update_workflow` | 既存のワークフローを新しいバージョンとしてその場で更新します（以前のバージョンは復元可能なまま残ります）。 |
-| `run_saved_workflow` | 保存済みワークフローをファイル名で実行します。サーバーがエディタ形式から実行可能形式へ自動的に変換します。 |
+| `list_saved_workflows` | Comfy Cloud に保存されたワークフローをブラウズします |
+| `get_saved_workflow` | 保存済みワークフローのノード、入力、カスタマイズ可能な設定を検査します |
+| `save_workflow` | ワークフローを Comfy Cloud アカウントに保存します |
+| `update_workflow` | 既存のワークフローを新しいバージョンとしてその場で更新します（以前のバージョンは復元可能なまま保持されます） |
+| `run_saved_workflow` | ファイル名を指定して保存済みワークフローを実行します。サーバーがエディタ形式から実行可能形式に自動変換します |
 
 ### ワークフローの共有
 
 | ツール | 説明 |
 | --- | --- |
-| `share_workflow` | 保存済みワークフローを公開し、誰でも開ける `?share=<id>` URL を返します。 |
-| `import_shared_workflow` | 共有 URL または bare な共有 ID を解決してワークフロー JSON を取得し、オプションでアカウントに保存します。 |
+| `share_workflow` | 保存済みワークフローを公開し、誰でも開ける `?share=<id>` URL を返します |
+| `import_shared_workflow` | 共有 URL または共有 ID をワークフロー JSON に解決し、オプションでアカウントに保存します |
 
-**ハブ URL の共有 ID:** `comfy.org/workflows/<slug>-<hex>` のようなハブ URL 内の末尾のハイフン区切り16進トークンが共有 ID です。例えば、`comfy.org/workflows/topaz-starlight-upscale-1c77e82713b7` の共有 ID は `1c77e82713b7` です。このトークンを `import_shared_workflow` の `share_id` に渡してください。`share_url` パラメータは `?share=<id>` クエリ形式の URL（例：`https://cloud.comfy.org/?share=...`）のみを受け付け、ハブページ URL は受け付けません。
+**Hub URL 共有 ID：** `comfy.org/workflows/<slug>-<hex>` ハブ URL 内の末尾のハイフン区切り16進トークンが共有 ID です。たとえば、`comfy.org/workflows/topaz-starlight-upscale-1c77e82713b7` の共有 ID は `1c77e82713b7` です。そのトークンを `share_id` として `import_shared_workflow` に渡します。`share_url` パラメータは `https://cloud.comfy.org/?share=...` のような `?share=<id>` クエリ URL のみを受け付け、ハブページ URL は受け付けません。
 
 ### アプリとリンク
 
 | ツール | 説明 |
 | --- | --- |
-| `create_app` | 保存済みワークフローを App Mode アプリに変換します。選択した入力と出力だけを備えた、シンプルな「このワークフローを実行する」ビューです。 |
-| `get_app_mode_url` | ワークフローを実行可能なアプリとして開く、安定したリンクを取得します。 |
-| `get_workflow_canvas_url` | ワークフローを Comfy Cloud のキャンバス上で直接開くリンクを取得します。そのまま閲覧、編集、実行できます。 |
+| `create_app` | 保存済みワークフローをアプリモードのアプリに変換します。選択した入力と出力を持つ簡略化された「このワークフローを実行」ビューです |
+| `get_app_mode_url` | ワークフローを実行可能なアプリとして開く安定したリンクを取得します |
+| `get_workflow_canvas_url` | ワークフローを直接 Comfy Cloud のキャンバスで開き、表示、編集、実行できるリンクを取得します |
 
 ### アカウントとセッション
 
 | ツール | 説明 |
 | --- | --- |
-| `get_billing_status` | クレジット残高、サブスクリプションのプラン、請求リンクを確認します。 |
-| `get_server_info` | エージェントが接続したサーバーを確認します（環境、ホスト、バージョン、認証状態）。 |
-| `submit_feedback` | ベータ版フィードバックアンケートのリンクを取得します。 |
-| `report_session_summary` | 匿名化されたセッションサマリーを Comfy チームに共有します — **明示的な同意がある場合のみ**。エージェントは必ず事前に確認し、プロンプト、ファイルパス、個人情報は含まれません。 |
+| `get_billing_status` | あなたのクレジット残高、サブスクリプション階層、請求リンクを確認します |
+| `get_server_info` | エージェントが到達したサーバーを確認します（環境、ホスト、バージョン、認証状態） |
+| `submit_feedback` | ベータ版フィードバック調査のリンクを取得します |
+| `report_session_summary` | 匿名化されたセッションサマリーを Comfy チームと共有します。**あなたの明示的な同意がある場合のみ**。エージェントは事前に許可を求める必要があり、プロンプト、ファイルパス、個人情報は含まれません |
+
+<a id="credits-and-spending"></a>
 
 ## クレジットと支出
 
-検索は無料です：`search_templates`、`search_models`、`search_nodes` は [Comfy アカウント](https://cloud.comfy.org) だけで利用できます。生成の実行は Comfy Cloud のクレジットを消費し、サブスクリプションまたはクレジット残高が必要です。
+検索は無料です: `search_templates`、`search_models`、`search_nodes` は [Comfy アカウント](https://cloud.comfy.org) だけで動作します。生成の実行は Comfy Cloud のクレジットを消費し、サブスクリプションまたはクレジット残高が必要です。
 
-実際にお金を消費するツールは**支出ゲート（spend-gated）**の対象です。生成が有料のパートナーモデル（`partner_generate`）や、有料 API ノードを含むワークフロー/テンプレート（`run_template`、`run_saved_workflow`、`submit_batch`）を使用する場合、サーバーは、クレジットの消費にあなたが同意したことをエージェントが確認するまで実行をブロックします。そのため、これらの実行前にはエージェントから確認を求められます。有料 API ノードを含まない無料のローカル実行のみのワークフローで確認が求められることはありません。
+実際にお金を使うツールは **出費制限付き** です。生成で有料パートナーモデル (`partner_generate`) や有料 API ノードを含むワークフロー/テンプレート (`run_template`、`run_saved_workflow`、`submit_batch`) を使用する場合、サーバーはエージェントがクレジットを消費することに同意したことを確認するまで実行をブロックします。そのため、それらの実行前にエージェントが確認を求めます。無料のローカルのみのワークフローはプロンプトを表示しません。
 
-残高はいつでもエージェントに尋ねられます（「クレジットはいくら残っている？」など）。エージェントは `get_billing_status` を使って回答します。
-
-## インストール
-
-クライアントを選択してください:
-
-  
-    プラグインをインストールします。接続とコマンドがワンステップで完了します。
-  
-  
-    アプリでカスタムコネクターを追加し、ログインします。
-  
-
-### <span style={{ marginRight: "0.6rem" }}></span> Claude Code
-
-**comfy-cloud** プラグインをインストールします。MCP接続とスラッシュコマンドをワンステップで追加します。このプラグインは、Claude CodeプラグインとComfy用のコミュニティエージェントスキルをホストする [Comfy Skills](https://github.com/Comfy-Org/comfy-skills/) リポジトリを通じて公開されています。
-
-  
-    Comfy Skillsマーケットプレイスを登録します（一度だけ）:
-
-    ```
-    /plugin marketplace add Comfy-Org/comfy-skills
-    ```
-  
-  
-    ```
-    /plugin install comfy-cloud@comfy-skills
-    ```
-  
-  
-    `/mcp` を実行し、**comfy-cloud** → **Authenticate** を選択します。ブラウザが開いてログインし、トークンは自動的に更新されます。
-  
-
-このプラグインは以下のスラッシュコマンドを追加します:
-
-| コマンド | 機能 |
-| --- | --- |
-| `/comfy-cloud:generate-image` | 画像を生成、編集、または修正します |
-| `/comfy-cloud:generate-video` | ビデオを生成、編集、または拡張します |
-| `/comfy-cloud:generate-audio` | オーディオ、音楽、または効果音を生成します |
-| `/comfy-cloud:generate-3d` | テキストまたは画像から3Dモデルを生成します |
-| `/comfy-cloud:remove-background` | 画像から背景を削除します |
-| `/comfy-cloud:upscale-image` | 画像を高解像度にアップスケールします |
-| `/comfy-cloud:search-templates` | [comfy.org](https://comfy.org) で事前構築済みのワークフローテンプレートを検索します |
-| `/comfy-cloud:search-models` | 利用可能なモデルを検索します |
-| `/comfy-cloud:search-nodes` | ノードを検索し、配線の提案を取得します |
-| `/comfy-cloud:help` | ComfyUI Cloud でできることを確認します |
-
-  サーバーを直接追加します:
-
-  ```bash
-  claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp
-  ```
-
-  次に `/mcp` を実行し、**comfy-cloud** → **Authenticate** を選択します。`-s user` を追加すると、すべてのプロジェクトで利用可能になります。
-
-  この方法でも、同じワークフローがMCPプロンプトとして公開されます: `/mcp__comfy-cloud__generate-image`、`/mcp__comfy-cloud__search-models` など（`/mcp__<name>__` プレフィックスは `claude mcp add` に渡した名前を使用します）。上記のプラグインは、これらをより使いやすい `/comfy-cloud:*` コマンドとしてラップするため、推奨されます。
-
-### <span style={{ marginRight: "0.6rem" }}></span> Claude Desktop
-
-Claude Desktopは、UIを通じてComfy Cloudを**カスタムコネクター**として追加し、OAuthログインを実行します。
-
-<video
-  controls
-  className="w-full aspect-video rounded-xl"
-  src="/images/agent_tools/Claude_desktop.mp4"
-></video>
-
-  
-    Claude Desktopで **カスタマイズ** を開き、**コネクター** を選択します。
-
-    [Claude Desktop コネクター]
-  
-  
-    **+** ボタンをクリックし、**カスタムコネクターを追加** を選択します。
-
-    [カスタムコネクターを追加]
-  
-  
-    任意の名前を付け（例: *Comfy Cloud*）、**Remote MCP server URL** を次のように設定します:
-
-    ```
-    https://cloud.comfy.org/mcp
-    ```
-
-    [コネクター詳細]
-  
-  
-    **Add** をクリックし、プロンプトに従ってClaude Desktopからログインします。接続が完了します。
-
-    [Claude Desktopからログイン]
-  
-
-Claude DesktopはClaude Codeのスラッシュコマンドをサポートしていません。代わりに、**プロンプトピッカー** を開いて同じワークフローにアクセスします:
-
-| プロンプト | 説明 |
-| --- | --- |
-| `generate-image` | テキスト説明から画像を生成 |
-| `generate-video` | テキストまたは画像からビデオを生成 |
-| `generate-audio` | オーディオ、音楽、または効果音を生成 |
-| `generate-3d` | テキストまたは画像から3Dモデルを生成 |
-| `upscale-image` | 画像を高解像度にアップスケール |
-| `remove-background` | 画像から背景を削除 |
-| `search-templates` | 事前構築済みのワークフローテンプレートを検索 |
-| `search-models` | モデルを検索（チェックポイント、LoRA、VAE） |
-| `search-nodes` | ノードを検索し、配線の提案を取得 |
-| `help` | ComfyUI Cloud でできることを確認 |
-
-プロンプトをスキップして、平易な言葉で質問することもできます。MCPツールは同じように動作します。
-
-### ヘッドレス / CI (APIキー)
-
-Claude CodeとClaude DesktopはOAuthを使用するため、APIキーは必要ありません。ブラウザが利用できない**ヘッドレスまたはCI**環境では、代わりにAPIキーで認証します:
-
-  
-    [platform.comfy.org/profile/api-keys](https://platform.comfy.org/profile/api-keys) にアクセスし、**New API Key** をクリックしてコピーします（`comfyui-` で始まります）。
-  
-  
-    ```bash
-    claude mcp add --transport http comfy-cloud https://cloud.comfy.org/mcp -H "X-API-Key: comfyui-…"
-    ```
-  
+いつでもエージェントに残高を尋ねることができます（「クレジットはいくつありますか？」）。エージェントは `get_billing_status` を通じて回答します。
 
 ## 出力とダウンロード
 
@@ -290,18 +452,18 @@ Comfy Cloud MCP は初期リリースです。以下の制限事項は既知で�
 
 **認証**
 
-- **OAuth または API キー。** Claude Code および Claude Desktop は、1回限りのブラウザ OAuth フローを使用します。ヘッドレスクライアントは、代わりに `X-API-Key` ヘッダー経由で Comfy Cloud API キーを渡すことができます。ブラウザを開けないクライアント向けのデバイスコード OAuth フローが計画されています。
+- **OAuth または API キー。** Claude Code および Claude Desktop は、1回限りのブラウザ OAuth フローを使用します。**Cursor** は、MCP 設定で Comfy Cloud API キーを必要とします（OAuth なし）。その他のヘッドレスクライアントは、代わりに `X-API-Key` ヘッダー経由で Comfy Cloud API キーを渡すことができます。ブラウザを開けないクライアント向けのデバイスコード OAuth フローが計画されています。
 
 ## FAQ
 
   
-    Claude Code と Claude Desktop が現在対応しており、どちらも OAuth でサインインします。さらに多くのクライアントへの対応も予定しています。
+    MCP に対応し、リモート HTTP トランスポートをサポートしているクライアントはすべて `https://cloud.comfy.org/mcp` に接続できます。**Claude Code**、**Claude Desktop**、**Cursor**、**Codex** のセットアップ方法を文書化しています。**Windsurf**、**Amp**、**OpenClaw** などの他のエージェントも、同じ URL に OAuth または APIキーで接続します。詳細は [Comfy Cloud MCP のインストール](#install-comfy-cloud-mcp) を参照してください。
   
   
-    Claude Code や Claude Desktop では不要です。これらは OAuth を使用します。APIキーは、ブラウザがないヘッドレスまたはCI環境でのみ必要です。
+    OAuth に対応した対話型クライアント（Claude Code、Claude Desktop、Codex など）では不要です。**Cursor** では、MCP 設定に Comfy Cloud の APIキーが必要です。APIキーは、ブラウザのないヘッドレス環境や CI 環境でも必要です。詳細は [Comfy Cloud MCP のインストール](#install-comfy-cloud-mcp) の **Cursor** タブまたは **その他のクライアント** タブを参照してください。
   
   
-    有料の生成は支出ゲートの対象です：実行が Comfy Cloud のクレジットを消費する場合（パートナーモデル、または有料 API ノードを含むワークフロー/テンプレート）、サーバーは実行前に明示的な同意を必要とします。詳細は「クレジットと支出」セクションを参照してください。
+    有料の生成は支出ゲートの対象です：実行が Comfy Cloud のクレジットを消費する場合（パートナーモデル、または有料 API ノードを含むワークフロー/テンプレート）、サーバーは実行前に明示的な同意を必要とします。詳細は [クレジットと支出](#credits-and-spending) を参照してください。
   
   
     いいえ。スラッシュコマンドは Claude Code プラグインに含まれています。Claude Desktop は同じ MCP サーバーに接続します（ツールはプレーン言語で質問するか、プロンプトピッカーを使えば機能します）が、Claude Code プラグインやスラッシュコマンドはサポートしていません。
@@ -309,8 +471,8 @@ Comfy Cloud MCP は初期リリースです。以下の制限事項は既知で�
   
     `/comfy` や `/cloud` というコマンドはありません。コマンドは、接続方法に応じて2つのプレフィックスのいずれかに表示されます。
 
-    - **プラグイン（推奨）：** `/comfy-cloud:generate-image`、`/comfy-cloud:generate-video` ... — すべて表示するには `/comfy-cloud:` と入力してください。
-    - **直接接続（プラグインなし）：** `/mcp__comfy-cloud__generate-image` ... — 表示するには `/mcp__` と入力してください。
+    - **プラグイン（推奨）：** `/comfy-cloud:generate-image`、`/comfy-cloud:generate-video` … — すべて表示するには `/comfy-cloud:` と入力してください。
+    - **直接接続（プラグインなし）：** `/mcp__comfy-cloud__generate-image` … — 表示するには `/mcp__` と入力してください。
 
     どちらの場合でも、プレーン言語で質問するだけでも構いません（「...の画像を生成して」など）。MCP ツールはモデルによって呼び出されるため、スラッシュコマンドは必要ありません。
   
