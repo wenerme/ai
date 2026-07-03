@@ -46,6 +46,8 @@ fetch(imageURL, {
 
 These typings are also available in [our Workers TypeScript definitions library ↗](https://github.com/cloudflare/workers-types).
 
+`cf.image` is available on any zone that hosts a Worker, including `*.workers.dev` subdomains. Each transformation is billed to the account that owns the Worker.
+
 ## Configure a Worker
 
 Create a new script in the Workers section of the Cloudflare dashboard. Scope your Worker script to a path dedicated to serving assets, such as `/images/*` or `/assets/*`. Only supported image formats can be resized. Attempting to resize any other type of resource (CSS, HTML) will result in an error.
@@ -86,6 +88,12 @@ Note
 Image transformations are not simulated in the preview of the Workers dashboard editor.
 
 The script preview of the Worker editor ignores `fetch()` options, and will always fetch unresized images. To see the effect of image transformations you must deploy the Worker script and use it outside of the editor.
+
+## Local development
+
+When running `wrangler dev`, `cf.image` transformations are applied locally using a low fidelity mock.
+
+A subset of options are supported, including resize, rotate, format, and background colour. Unsupported options are ignored.
 
 ## Error handling
 
@@ -217,6 +225,6 @@ Resized images are always cached. They are cached as additional variants under a
 If you use the `cacheKey` fetch option to unify the caches of multiple source URLs, do not include any resizing options in the `cacheKey`. Doing so will fragment the cache and hurt caching performance. The `cacheKey` should reference only the full-size source image URL, not any of its resized versions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch · Cloudflare Images docs","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch · Cloudflare Images docs","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/transform-via-workers/","name":"Transform via fetch"}}]}
 ```

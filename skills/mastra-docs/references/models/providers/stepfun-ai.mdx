@@ -1,11 +1,11 @@
 ---
 title: "StepFun AI | Models"
-description: "Use StepFun AI models with Mastra. 2 models available."
+description: "Use StepFun AI models with Mastra. 8 models available."
 ---
 
 # [StepFun AI logo]StepFun AI
 
-Access 2 StepFun AI models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
+Access 8 StepFun AI models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
 
 Learn more in the [StepFun AI documentation](https://platform.stepfun.ai/docs/en/step-plan/integrations/open-code).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "stepfun-ai/step-3.5-flash"
+  model: "stepfun-ai/step-1-32k"
 });
 
 // Generate a response
@@ -39,6 +39,30 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "stepfun-ai/step-1-32k",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 32768,
+    "maxOutput": 32768,
+    "inputCost": 2.05,
+    "outputCost": 9.59
+  },
+  {
+    "model": "stepfun-ai/step-2-16k",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 16384,
+    "maxOutput": 8192,
+    "inputCost": 5.21,
+    "outputCost": 16.44
+  },
   {
     "model": "stepfun-ai/step-3.5-flash",
     "imageInput": false,
@@ -62,6 +86,54 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.1,
     "outputCost": 0.3
+  },
+  {
+    "model": "stepfun-ai/step-3.7-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.2,
+    "outputCost": 1.15
+  },
+  {
+    "model": "stepfun-ai/step-tts-2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "stepfun-ai/stepaudio-2.5-asr",
+    "imageInput": false,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "stepfun-ai/stepaudio-2.5-tts",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -76,7 +148,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.stepfun.ai/step_plan/v1",
-    id: "stepfun-ai/step-3.5-flash",
+    id: "stepfun-ai/step-1-32k",
     apiKey: process.env.STEPFUN_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -94,8 +166,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "stepfun-ai/step-3.5-flash-2603"
-      : "stepfun-ai/step-3.5-flash";
+      ? "stepfun-ai/stepaudio-2.5-tts"
+      : "stepfun-ai/step-1-32k";
   }
 });
 ```

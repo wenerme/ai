@@ -14,12 +14,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 When you deploy User Workers through Workers for Platforms, you can attach [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to give them access to resources like [KV namespaces](https://developers.cloudflare.com/kv/), [D1 databases](https://developers.cloudflare.com/d1/), [R2 buckets](https://developers.cloudflare.com/r2/), and more. This enables your end customers to build more powerful applications without you having to build the infrastructure components yourself.
 
-With bindings, each of your users can have their own:
+With bindings, each User Worker can extend functionality to:
 
-* [KV namespace](https://developers.cloudflare.com/kv/) that they can use to store and retrieve data
-* [R2 bucket](https://developers.cloudflare.com/r2/) that they can use to store files and assets
-* [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) dataset that they can use to collect observability data
-* [Durable Objects](https://developers.cloudflare.com/durable-objects/) class that they can use for stateful coordination
+* **Store data** with [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), [D1](https://developers.cloudflare.com/d1/), or [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+* **Process work asynchronously** with [Queues](https://developers.cloudflare.com/queues/) and [Workflows](https://developers.cloudflare.com/workflows/)
+* **Run containers** with [Containers](https://developers.cloudflare.com/containers/) (bound as a [Durable Object](https://developers.cloudflare.com/durable-objects/))
+* **Connect to private networks** with [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/), and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+* **Collect metrics** with [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
 
 #### Resource isolation
 
@@ -65,7 +66,7 @@ curl -X PUT \
   -F 'worker.js=@/path/to/worker.js'
 ```
 
-Now, the User Worker has can access the `USER_KV` binding through the `env` argument using `env.USER_DATA.get()`, `env.USER_DATA.put()`, and other KV methods.
+Now, the User Worker can access the `USER_KV` binding through the `env` argument using `env.USER_KV.get()`, `env.USER_KV.put()`, and other KV methods.
 
 Note: If you plan to add new bindings to the Worker, use the `keep_bindings` parameter to ensure existing bindings are preserved while adding new ones.
 
@@ -87,6 +88,6 @@ curl -X PUT \
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/#page","headline":"Bindings · Cloudflare for Platforms docs","description":"Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/#page","headline":"Bindings · Cloudflare for Platforms docs","description":"Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/","name":"Configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/","name":"Bindings"}}]}
 ```

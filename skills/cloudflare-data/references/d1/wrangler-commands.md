@@ -20,9 +20,9 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8362)
-* [  pnpm ](#tab-panel-8363)
-* [  yarn ](#tab-panel-8364)
+* [  npm ](#tab-panel-8401)
+* [  pnpm ](#tab-panel-8402)
+* [  yarn ](#tab-panel-8403)
 
 ```sh
 npx wrangler d1 create [NAME]
@@ -66,7 +66,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 info`
 
@@ -74,9 +76,9 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8365)
-* [  pnpm ](#tab-panel-8366)
-* [  yarn ](#tab-panel-8367)
+* [  npm ](#tab-panel-8404)
+* [  pnpm ](#tab-panel-8405)
+* [  yarn ](#tab-panel-8406)
 
 ```sh
 npx wrangler d1 info [NAME]
@@ -112,7 +114,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 list`
 
@@ -120,9 +124,9 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8368)
-* [  pnpm ](#tab-panel-8369)
-* [  yarn ](#tab-panel-8370)
+* [  npm ](#tab-panel-8407)
+* [  pnpm ](#tab-panel-8408)
+* [  yarn ](#tab-panel-8409)
 
 ```sh
 npx wrangler d1 list
@@ -156,7 +160,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 delete`
 
@@ -164,9 +170,9 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8371)
-* [  pnpm ](#tab-panel-8372)
-* [  yarn ](#tab-panel-8373)
+* [  npm ](#tab-panel-8410)
+* [  pnpm ](#tab-panel-8411)
+* [  yarn ](#tab-panel-8412)
 
 ```sh
 npx wrangler d1 delete [NAME]
@@ -202,7 +208,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 execute`
 
@@ -210,9 +218,9 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-8374)
-* [  pnpm ](#tab-panel-8375)
-* [  yarn ](#tab-panel-8376)
+* [  npm ](#tab-panel-8413)
+* [  pnpm ](#tab-panel-8414)
+* [  yarn ](#tab-panel-8415)
 
 ```sh
 npx wrangler d1 execute [DATABASE]
@@ -262,15 +270,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 export`
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-8377)
-* [  pnpm ](#tab-panel-8378)
-* [  yarn ](#tab-panel-8379)
+* [  npm ](#tab-panel-8416)
+* [  pnpm ](#tab-panel-8417)
+* [  yarn ](#tab-panel-8418)
 
 ```sh
 npx wrangler d1 export [NAME]
@@ -318,7 +328,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 time-travel info`
 
@@ -328,9 +340,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-8380)
-* [  pnpm ](#tab-panel-8381)
-* [  yarn ](#tab-panel-8382)
+* [  npm ](#tab-panel-8419)
+* [  pnpm ](#tab-panel-8420)
+* [  yarn ](#tab-panel-8421)
 
 ```sh
 npx wrangler d1 time-travel info [DATABASE]
@@ -368,7 +380,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 time-travel restore`
 
@@ -378,9 +392,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-8383)
-* [  pnpm ](#tab-panel-8384)
-* [  yarn ](#tab-panel-8385)
+* [  npm ](#tab-panel-8422)
+* [  pnpm ](#tab-panel-8423)
+* [  yarn ](#tab-panel-8424)
 
 ```sh
 npx wrangler d1 time-travel restore [DATABASE]
@@ -420,7 +434,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 migrations create`
 
@@ -435,9 +451,9 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-8386)
-* [  pnpm ](#tab-panel-8387)
-* [  yarn ](#tab-panel-8388)
+* [  npm ](#tab-panel-8425)
+* [  pnpm ](#tab-panel-8426)
+* [  yarn ](#tab-panel-8427)
 
 ```sh
 npx wrangler d1 migrations create [DATABASE] [MESSAGE]
@@ -473,15 +489,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 migrations list`
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-8389)
-* [  pnpm ](#tab-panel-8390)
-* [  yarn ](#tab-panel-8391)
+* [  npm ](#tab-panel-8428)
+* [  pnpm ](#tab-panel-8429)
+* [  yarn ](#tab-panel-8430)
 
 ```sh
 npx wrangler d1 migrations list [DATABASE]
@@ -523,7 +541,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 migrations apply`
 
@@ -537,9 +557,9 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-8392)
-* [  pnpm ](#tab-panel-8393)
-* [  yarn ](#tab-panel-8394)
+* [  npm ](#tab-panel-8431)
+* [  pnpm ](#tab-panel-8432)
+* [  yarn ](#tab-panel-8433)
 
 ```sh
 npx wrangler d1 migrations apply [DATABASE]
@@ -581,7 +601,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `d1 insights`
 
@@ -592,9 +614,9 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-8395)
-* [  pnpm ](#tab-panel-8396)
-* [  yarn ](#tab-panel-8397)
+* [  npm ](#tab-panel-8434)
+* [  pnpm ](#tab-panel-8435)
+* [  yarn ](#tab-panel-8436)
 
 ```sh
 npx wrangler d1 insights [NAME]
@@ -640,7 +662,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare D1 docs","description":"Use Wrangler CLI commands to create, manage, and query D1 databases.","url":"https://developers.cloudflare.com/d1/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -1,19 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
 description: "Comfy Cloud MCP サーバー経由で Claude Code と Claude Desktop から Comfy Cloud を利用: 画像・動画・音声・3D の生成、モデルとノードの検索、ワークフローの実行。"
-translationSourceHash: 148cada3
+translationSourceHash: 8e911aa0
 translationFrom: agent-tools/cloud.mdx
 translationBlockHashes:
   "_intro": b1c56a40
   "Overview": 48a88d56
-  "What your agent can do": 379c77d6
-  "MCP tools": 9cd21290
+  "What your agent can do": 2c2a22e6
+  "MCP tools": a9211dee
+  "Credits and spending": 20e94ef0
   "Install": 445ca642
   "Outputs and downloads": a2c8c12f
   "Related resources": 58e75560
   "Feedback": 6872768e
-  "Known limitations": d67fe8eb
-  "FAQ": 27c018c0
+  "Known limitations": 52477743
+  "FAQ": 7b3bdcef
 ---
 
 <CloudFeature/>
@@ -35,8 +36,8 @@ MCPツールを自分で呼び出す必要はありません。エージェン�
 典型的な流れ:
 
 1. **発見**：利用可能なものを検索します（`search_templates`、`search_models`、`search_nodes`、またはグラフ形式の質問には`cql`）。
-2. **実行**：生成またはワークフローを実行します（`submit_workflow`。入力画像が必要な場合は`upload_file`を併用）。
-3. **出力の取得**：`get_output`が、エージェントがシェルで実行するダウンロードコマンドを返します。
+2. **実行**：生成を実行します。一致する事前構築済みテンプレートには`run_template`、カスタムワークフローには`submit_workflow`（入力画像が必要な場合は`upload_file`を併用）、Flux、Grok、Gemini、OpenAI、Ideogram、Seedance などのパートナーモデルには`partner_generate`を使用します。
+3. **待機と出力の取得**：`wait_for_job`でジョブの完了を待ち、`get_output`が、エージェントがシェルで実行するダウンロードコマンドを返します。
 
 サーバーは、ゼロからワークフローを構築する前に、[プリビルトテンプレート](https://comfy.org/workflows)とのマッチングを優先します。これにより、より速く良い結果が得られる傾向があります。
 
@@ -49,31 +50,45 @@ MCPツールを自分で呼び出す必要はありません。エージェン�
 | ツール | 説明 |
 | --- | --- |
 | `search_templates` | [comfy.org](https://comfy.org/workflows) から、テキスト、タグ、メディア種類、モデルで事前構築済みワークフローテンプレートを検索します。 |
+| `get_template` | テンプレートの完全なワークフロー JSON を取得し、検査や手動編集に利用します。 |
+| `get_template_schema` | テンプレートのどのパラメータが実行時にオーバーライド可能かを確認します。 |
 | `search_models` | モデルカタログをテキスト、種類、ベースモデル、ソースで検索します。 |
 | `search_nodes` | 利用可能なノードをテキスト、カテゴリ、入出力タイプで検索します。また、**サブグラフブループリント**（テキストから画像へ、背景を削除 など、あらかじめ配線されたノードグループ）も表示します。 |
+| `get_node` | 特定ノードの完全な入力仕様（全オプションリストを含む）を取得します。 |
 | `cql` | 構造的な質問（例：どのノードが画像を生成するか、ノードタイプ間のパスなど）に対して [CQL](https://github.com/Comfy-Org/cql) グラフクエリを実行します。特定ノードの完全な入力仕様が必要な場合は `search_nodes` を使用してください。 |
+| `get_prompting_guide` | モデルファミリーごとのプロンプトスタイルと推奨設定（steps、cfg、sampler、解像度）を取得します。 |
 
-### 実行
+### 生成
 
 | ツール | 説明 |
 | --- | --- |
+| `run_template` | 事前構築済みテンプレートを名前で実行します（オプションでパラメータのオーバーライドが可能）。テンプレートが一致する場合はこちらが推奨される方法です。 |
 | `submit_workflow` | ComfyUI API 形式のワークフローを Comfy Cloud で実行するために送信します。 |
+| `partner_generate` | パートナー API モデル（Flux/BFL、Grok、Gemini、OpenAI、Ideogram、Seedream/Seedance など）で生成します。 |
 | `upload_file` | ワークフローで使用する入力画像やファイルをアップロードします（例：LoadImage ノード用）。 |
+| `apply_slots` | ワークフロー内部の値にパラメータオーバーライドを適用し、変更後のワークフローを返します。 |
+
+### ジョブとバッチ
+
+| ツール | 説明 |
+| --- | --- |
 | `get_job_status` | 送信したワークフローの実行ステータスをポーリングします。 |
+| `wait_for_job` | 繰り返しポーリングする代わりに、ジョブが完了するまで待機します。 |
 | `get_output` | 完了したワークフローから出力画像、動画、オーディオを取得します。 |
 | `use_previous_output` | ある実行の出力を別の実行の入力として再利用し、ワークフローを連鎖させます。 |
 | `cancel_job` | 保留中または実行中のジョブをキャンセルします。 |
 | `get_queue` | 実行中および保留中のジョブ数を確認します。 |
+| `submit_batch`、`get_batch_status`、`get_batch_output`、`wait_for_batch` | 多数の生成を1回の呼び出しで送信し、後でまとめて回収します。バッチ ID はセッションをまたいで有効です。 |
 
 ### 保存済みワークフロー
 
 | ツール | 説明 |
 | --- | --- |
 | `list_saved_workflows` | Comfy Cloud に保存されたワークフローをブラウズします。 |
-| `get_saved_workflow` | 保存済みワークフローのノード、入力、設定を検査します。 |
+| `get_saved_workflow` | 保存済みワークフローのノード、入力、カスタマイズ可能な設定を検査します。 |
 | `save_workflow` | ワークフローを Comfy Cloud アカウントに保存します。 |
-
-  保存済みワークフローのブラウズや検査は可能ですが、現時点ではエージェントは ID で直接実行できません。保存済みワークフローは ComfyUI グラフ形式であり、実行前に API 形式に変換する必要があります。詳細は「既知の制限」を参照してください。
+| `update_workflow` | 既存のワークフローを新しいバージョンとしてその場で更新します（以前のバージョンは復元可能なまま残ります）。 |
+| `run_saved_workflow` | 保存済みワークフローをファイル名で実行します。サーバーがエディタ形式から実行可能形式へ自動的に変換します。 |
 
 ### ワークフローの共有
 
@@ -83,6 +98,31 @@ MCPツールを自分で呼び出す必要はありません。エージェン�
 | `import_shared_workflow` | 共有 URL または bare な共有 ID を解決してワークフロー JSON を取得し、オプションでアカウントに保存します。 |
 
 **ハブ URL の共有 ID:** `comfy.org/workflows/<slug>-<hex>` のようなハブ URL 内の末尾のハイフン区切り16進トークンが共有 ID です。例えば、`comfy.org/workflows/topaz-starlight-upscale-1c77e82713b7` の共有 ID は `1c77e82713b7` です。このトークンを `import_shared_workflow` の `share_id` に渡してください。`share_url` パラメータは `?share=<id>` クエリ形式の URL（例：`https://cloud.comfy.org/?share=...`）のみを受け付け、ハブページ URL は受け付けません。
+
+### アプリとリンク
+
+| ツール | 説明 |
+| --- | --- |
+| `create_app` | 保存済みワークフローを App Mode アプリに変換します。選択した入力と出力だけを備えた、シンプルな「このワークフローを実行する」ビューです。 |
+| `get_app_mode_url` | ワークフローを実行可能なアプリとして開く、安定したリンクを取得します。 |
+| `get_workflow_canvas_url` | ワークフローを Comfy Cloud のキャンバス上で直接開くリンクを取得します。そのまま閲覧、編集、実行できます。 |
+
+### アカウントとセッション
+
+| ツール | 説明 |
+| --- | --- |
+| `get_billing_status` | クレジット残高、サブスクリプションのプラン、請求リンクを確認します。 |
+| `get_server_info` | エージェントが接続したサーバーを確認します（環境、ホスト、バージョン、認証状態）。 |
+| `submit_feedback` | ベータ版フィードバックアンケートのリンクを取得します。 |
+| `report_session_summary` | 匿名化されたセッションサマリーを Comfy チームに共有します — **明示的な同意がある場合のみ**。エージェントは必ず事前に確認し、プロンプト、ファイルパス、個人情報は含まれません。 |
+
+## クレジットと支出
+
+検索は無料です：`search_templates`、`search_models`、`search_nodes` は [Comfy アカウント](https://cloud.comfy.org) だけで利用できます。生成の実行は Comfy Cloud のクレジットを消費し、サブスクリプションまたはクレジット残高が必要です。
+
+実際にお金を消費するツールは**支出ゲート（spend-gated）**の対象です。生成が有料のパートナーモデル（`partner_generate`）や、有料 API ノードを含むワークフロー/テンプレート（`run_template`、`run_saved_workflow`、`submit_batch`）を使用する場合、サーバーは、クレジットの消費にあなたが同意したことをエージェントが確認するまで実行をブロックします。そのため、これらの実行前にはエージェントから確認を求められます。有料 API ノードを含まない無料のローカル実行のみのワークフローで確認が求められることはありません。
+
+残高はいつでもエージェントに尋ねられます（「クレジットはいくら残っている？」など）。エージェントは `get_billing_status` を使って回答します。
 
 ## インストール
 
@@ -239,8 +279,8 @@ Comfy Cloud MCP は初期リリースです。以下の制限事項は既知で�
 
 **ワークフロー**
 
-- **保存済みワークフローは ID で実行できません。** エージェントは保存済みワークフローの一覧表示と検査は可能ですが、実行前にそれらを再構築するか API 形式に変換する必要があります。
-- **生成されたアセットにワークフローメタデータが埋め込まれない場合があります。** MCP 経由で作成された画像は、ComfyUI で開いたときにワークフローが復元されない可能性があります。
+- **エディタ形式から実行可能形式への変換にはまだ粗い部分があります。** 保存済みワークフローは `run_saved_workflow` によりファイル名で実行できます（サーバーが自動的に変換します）が、一部のノード構成では変換が不完全な場合があります。
+- **`submit_workflow` 経由で生成されたアセットにはワークフローメタデータが埋め込まれない場合があります。** ComfyUI で開いたときに元のワークフローが復元されない可能性があります。
 - **ワークフローの構築はエージェントの精度に依存します。** 複雑なマルチノードワークフローでは、リトライや微調整が必要になる場合があります。
 
 **ファイル処理**
@@ -259,6 +299,9 @@ Comfy Cloud MCP は初期リリースです。以下の制限事項は既知で�
   
   
     Claude Code や Claude Desktop では不要です。これらは OAuth を使用します。APIキーは、ブラウザがないヘッドレスまたはCI環境でのみ必要です。
+  
+  
+    有料の生成は支出ゲートの対象です：実行が Comfy Cloud のクレジットを消費する場合（パートナーモデル、または有料 API ノードを含むワークフロー/テンプレート）、サーバーは実行前に明示的な同意を必要とします。詳細は「クレジットと支出」セクションを参照してください。
   
   
     いいえ。スラッシュコマンドは Claude Code プラグインに含まれています。Claude Desktop は同じ MCP サーバーに接続します（ツールはプレーン言語で質問するか、プロンプトピッカーを使えば機能します）が、Claude Code プラグインやスラッシュコマンドはサポートしていません。

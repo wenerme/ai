@@ -18,9 +18,9 @@ Use `wrangler artifacts` commands to manage Artifacts namespaces, repositories, 
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-7089)
-* [  pnpm ](#tab-panel-7090)
-* [  yarn ](#tab-panel-7091)
+* [  npm ](#tab-panel-7124)
+* [  pnpm ](#tab-panel-7125)
+* [  yarn ](#tab-panel-7126)
 
 ```sh
 npx wrangler artifacts namespaces list
@@ -54,15 +54,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `artifacts namespaces get`
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-7092)
-* [  pnpm ](#tab-panel-7093)
-* [  yarn ](#tab-panel-7094)
+* [  npm ](#tab-panel-7127)
+* [  pnpm ](#tab-panel-7128)
+* [  yarn ](#tab-panel-7129)
 
 ```sh
 npx wrangler artifacts namespaces get [NAME]
@@ -98,15 +100,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `artifacts repos create`
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-7095)
-* [  pnpm ](#tab-panel-7096)
-* [  yarn ](#tab-panel-7097)
+* [  npm ](#tab-panel-7130)
+* [  pnpm ](#tab-panel-7131)
+* [  yarn ](#tab-panel-7132)
 
 ```sh
 npx wrangler artifacts repos create [NAME]
@@ -150,15 +154,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `artifacts repos list`
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-7098)
-* [  pnpm ](#tab-panel-7099)
-* [  yarn ](#tab-panel-7100)
+* [  npm ](#tab-panel-7133)
+* [  pnpm ](#tab-panel-7134)
+* [  yarn ](#tab-panel-7135)
 
 ```sh
 npx wrangler artifacts repos list
@@ -194,15 +200,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `artifacts repos get`
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-7101)
-* [  pnpm ](#tab-panel-7102)
-* [  yarn ](#tab-panel-7103)
+* [  npm ](#tab-panel-7136)
+* [  pnpm ](#tab-panel-7137)
+* [  yarn ](#tab-panel-7138)
 
 ```sh
 npx wrangler artifacts repos get [NAME]
@@ -240,15 +248,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `artifacts repos delete`
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-7104)
-* [  pnpm ](#tab-panel-7105)
-* [  yarn ](#tab-panel-7106)
+* [  npm ](#tab-panel-7139)
+* [  pnpm ](#tab-panel-7140)
+* [  yarn ](#tab-panel-7141)
 
 ```sh
 npx wrangler artifacts repos delete [NAME]
@@ -288,15 +298,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `artifacts repos issue-token`
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-7107)
-* [  pnpm ](#tab-panel-7108)
-* [  yarn ](#tab-panel-7109)
+* [  npm ](#tab-panel-7142)
+* [  pnpm ](#tab-panel-7143)
+* [  yarn ](#tab-panel-7144)
 
 ```sh
 npx wrangler artifacts repos issue-token [REPO]
@@ -338,7 +350,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/wrangler/#page","headline":"Wrangler commands · Cloudflare Artifacts docs","description":"Manage Artifacts namespaces, repositories, and repo tokens from the command line using Wrangler.","url":"https://developers.cloudflare.com/artifacts/api/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

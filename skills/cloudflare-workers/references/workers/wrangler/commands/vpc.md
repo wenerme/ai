@@ -18,9 +18,9 @@ Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services us
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-13089)
-* [  pnpm ](#tab-panel-13090)
-* [  yarn ](#tab-panel-13091)
+* [  npm ](#tab-panel-13145)
+* [  pnpm ](#tab-panel-13146)
+* [  yarn ](#tab-panel-13147)
 
 ```sh
 npx wrangler vpc service create [NAME]
@@ -76,15 +76,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vpc service delete`
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-13092)
-* [  pnpm ](#tab-panel-13093)
-* [  yarn ](#tab-panel-13094)
+* [  npm ](#tab-panel-13148)
+* [  pnpm ](#tab-panel-13149)
+* [  yarn ](#tab-panel-13150)
 
 ```sh
 npx wrangler vpc service delete [SERVICE-ID]
@@ -118,15 +120,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vpc service get`
 
 Get a VPC service
 
-* [  npm ](#tab-panel-13095)
-* [  pnpm ](#tab-panel-13096)
-* [  yarn ](#tab-panel-13097)
+* [  npm ](#tab-panel-13151)
+* [  pnpm ](#tab-panel-13152)
+* [  yarn ](#tab-panel-13153)
 
 ```sh
 npx wrangler vpc service get [SERVICE-ID]
@@ -160,15 +164,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vpc service list`
 
 List VPC services
 
-* [  npm ](#tab-panel-13098)
-* [  pnpm ](#tab-panel-13099)
-* [  yarn ](#tab-panel-13100)
+* [  npm ](#tab-panel-13154)
+* [  pnpm ](#tab-panel-13155)
+* [  yarn ](#tab-panel-13156)
 
 ```sh
 npx wrangler vpc service list
@@ -199,15 +205,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `vpc service update`
 
 Update a VPC service
 
-* [  npm ](#tab-panel-13101)
-* [  pnpm ](#tab-panel-13102)
-* [  yarn ](#tab-panel-13103)
+* [  npm ](#tab-panel-13157)
+* [  pnpm ](#tab-panel-13158)
+* [  yarn ](#tab-panel-13159)
 
 ```sh
 npx wrangler vpc service update [SERVICE-ID]
@@ -265,7 +273,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/vpc/#page","headline":"VPC · Cloudflare Workers docs","description":"Wrangler commands for managing Workers VPC services.","url":"https://developers.cloudflare.com/workers/wrangler/commands/vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

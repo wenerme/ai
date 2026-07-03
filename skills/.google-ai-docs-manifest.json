@@ -500,8 +500,8 @@
   "google-ai-docs/batch-api.md": {
     "url": "https://ai.google.dev/gemini-api/docs/batch-api",
     "skill": "google-ai-docs",
-    "size": 57635,
-    "updatedAt": "2026-06-24T01:22:31.318Z"
+    "size": 57740,
+    "updatedAt": "2026-07-03T04:14:36.799Z"
   },
   "google-ai-docs/deprecations.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deprecations",

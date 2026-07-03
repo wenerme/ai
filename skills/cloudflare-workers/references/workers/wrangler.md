@@ -17,6 +17,7 @@ Wrangler, the Cloudflare Developer Platform command-line interface (CLI), allows
 * [ API ](https://developers.cloudflare.com/workers/wrangler/api/) :  A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.
 * [ Bundling ](https://developers.cloudflare.com/workers/wrangler/bundling/) :  Review Wrangler's default bundling.
 * [ Commands ](https://developers.cloudflare.com/workers/wrangler/commands/) :  Create, develop, and deploy your Cloudflare Workers with Wrangler commands.
+* [ Authentication profiles ](https://developers.cloudflare.com/workers/wrangler/profiles/) :  Maintain separate logins and switch accounts per directory.
 * [ Configuration ](https://developers.cloudflare.com/workers/wrangler/configuration/) :  Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.
 * [ Custom builds ](https://developers.cloudflare.com/workers/wrangler/custom-builds/) :  Customize how your code is compiled, before being processed by Wrangler.
 * [ Deprecations ](https://developers.cloudflare.com/workers/wrangler/deprecations/) :  The differences between Wrangler versions, specifically deprecations and breaking changes.

@@ -26,9 +26,9 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-13020)
-* [  pnpm ](#tab-panel-13021)
-* [  yarn ](#tab-panel-13022)
+* [  npm ](#tab-panel-13076)
+* [  pnpm ](#tab-panel-13077)
+* [  yarn ](#tab-panel-13078)
 
 ```sh
 npx wrangler secrets-store secret create [STORE-ID]
@@ -74,7 +74,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `create` command to create an account-level secret.
 
@@ -95,9 +97,9 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-13023)
-* [  pnpm ](#tab-panel-13024)
-* [  yarn ](#tab-panel-13025)
+* [  npm ](#tab-panel-13079)
+* [  pnpm ](#tab-panel-13080)
+* [  yarn ](#tab-panel-13081)
 
 ```sh
 npx wrangler secrets-store secret update [STORE-ID]
@@ -143,15 +145,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `secrets-store secret duplicate`
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-13026)
-* [  pnpm ](#tab-panel-13027)
-* [  yarn ](#tab-panel-13028)
+* [  npm ](#tab-panel-13082)
+* [  pnpm ](#tab-panel-13083)
+* [  yarn ](#tab-panel-13084)
 
 ```sh
 npx wrangler secrets-store secret duplicate [STORE-ID]
@@ -197,15 +201,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `secrets-store secret get`
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-13029)
-* [  pnpm ](#tab-panel-13030)
-* [  yarn ](#tab-panel-13031)
+* [  npm ](#tab-panel-13085)
+* [  pnpm ](#tab-panel-13086)
+* [  yarn ](#tab-panel-13087)
 
 ```sh
 npx wrangler secrets-store secret get [STORE-ID]
@@ -245,7 +251,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example with the expected output:
 
@@ -265,9 +273,9 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-13032)
-* [  pnpm ](#tab-panel-13033)
-* [  yarn ](#tab-panel-13034)
+* [  npm ](#tab-panel-13088)
+* [  pnpm ](#tab-panel-13089)
+* [  yarn ](#tab-panel-13090)
 
 ```sh
 npx wrangler secrets-store secret delete [STORE-ID]
@@ -307,15 +315,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `secrets-store secret list`
 
 List secrets within a store
 
-* [  npm ](#tab-panel-13035)
-* [  pnpm ](#tab-panel-13036)
-* [  yarn ](#tab-panel-13037)
+* [  npm ](#tab-panel-13091)
+* [  pnpm ](#tab-panel-13092)
+* [  yarn ](#tab-panel-13093)
 
 ```sh
 npx wrangler secrets-store secret list [STORE-ID]
@@ -357,7 +367,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `secrets-store store`
 
@@ -371,9 +383,9 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-13038)
-* [  pnpm ](#tab-panel-13039)
-* [  yarn ](#tab-panel-13040)
+* [  npm ](#tab-panel-13094)
+* [  pnpm ](#tab-panel-13095)
+* [  yarn ](#tab-panel-13096)
 
 ```sh
 npx wrangler secrets-store store create [NAME]
@@ -409,7 +421,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `create` command to create a store.
 
@@ -426,9 +440,9 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-13041)
-* [  pnpm ](#tab-panel-13042)
-* [  yarn ](#tab-panel-13043)
+* [  npm ](#tab-panel-13097)
+* [  pnpm ](#tab-panel-13098)
+* [  yarn ](#tab-panel-13099)
 
 ```sh
 npx wrangler secrets-store store delete [STORE-ID]
@@ -464,7 +478,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `delete` command to delete a store.
 
@@ -481,9 +497,9 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-13044)
-* [  pnpm ](#tab-panel-13045)
-* [  yarn ](#tab-panel-13046)
+* [  npm ](#tab-panel-13100)
+* [  pnpm ](#tab-panel-13101)
+* [  yarn ](#tab-panel-13102)
 
 ```sh
 npx wrangler secrets-store store list
@@ -521,7 +537,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of using the `list` command to list stores.
 

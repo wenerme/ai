@@ -327,9 +327,9 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-13104)
-* [  pnpm ](#tab-panel-13105)
-* [  yarn ](#tab-panel-13106)
+* [  npm ](#tab-panel-13160)
+* [  pnpm ](#tab-panel-13161)
+* [  yarn ](#tab-panel-13162)
 
 ```sh
 npx wrangler setup
@@ -367,7 +367,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 This command configures your project for Cloudflare Workers without deploying. It performs the same [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) as `wrangler deploy`, but does not deploy. This is useful when you want to review the generated configuration before deploying.
 
@@ -383,9 +385,9 @@ This action creates a new [version](https://developers.cloudflare.com/workers/co
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-13107)
-* [  pnpm ](#tab-panel-13108)
-* [  yarn ](#tab-panel-13109)
+* [  npm ](#tab-panel-13163)
+* [  pnpm ](#tab-panel-13164)
+* [  yarn ](#tab-panel-13165)
 
 ```sh
 npx wrangler secret put [KEY]
@@ -421,7 +423,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 When running this command, you will be prompted to input the secret's value:
 
@@ -445,9 +449,9 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-13110)
-* [  pnpm ](#tab-panel-13111)
-* [  yarn ](#tab-panel-13112)
+* [  npm ](#tab-panel-13166)
+* [  pnpm ](#tab-panel-13167)
+* [  yarn ](#tab-panel-13168)
 
 ```sh
 npx wrangler secret delete [KEY]
@@ -483,15 +487,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `secret list`
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-13113)
-* [  pnpm ](#tab-panel-13114)
-* [  yarn ](#tab-panel-13115)
+* [  npm ](#tab-panel-13169)
+* [  pnpm ](#tab-panel-13170)
+* [  yarn ](#tab-panel-13171)
 
 ```sh
 npx wrangler secret list
@@ -527,7 +533,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 The following is an example of listing the secrets for the current Worker.
 
@@ -550,9 +558,9 @@ npx wrangler secret list
 
 Create, update, or delete multiple secrets for a Worker in a single request, with up to 100 secrets per command.
 
-* [  npm ](#tab-panel-13116)
-* [  pnpm ](#tab-panel-13117)
-* [  yarn ](#tab-panel-13118)
+* [  npm ](#tab-panel-13172)
+* [  pnpm ](#tab-panel-13173)
+* [  yarn ](#tab-panel-13174)
 
 ```sh
 npx wrangler secret bulk [FILE]
@@ -588,7 +596,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 Note
 
@@ -626,9 +636,9 @@ Finished processing secrets file:
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-13119)
-* [  pnpm ](#tab-panel-13120)
-* [  yarn ](#tab-panel-13121)
+* [  npm ](#tab-panel-13175)
+* [  pnpm ](#tab-panel-13176)
+* [  yarn ](#tab-panel-13177)
 
 ```sh
 npx wrangler tail [WORKER]
@@ -678,7 +688,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 After starting `wrangler tail`, you will receive a live feed of console and exception logs for each request your Worker receives.
 
@@ -702,9 +714,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-13122)
-* [  pnpm ](#tab-panel-13123)
-* [  yarn ](#tab-panel-13124)
+* [  npm ](#tab-panel-13178)
+* [  pnpm ](#tab-panel-13179)
+* [  yarn ](#tab-panel-13180)
 
 ```sh
 npx wrangler versions upload [PATH]
@@ -762,6 +774,8 @@ Compile a project and run checks without actually uploading the Worker
 Path to a file containing secrets to upload with the version (JSON or .env format). Applies additively with secrets from previous deployments - omitted secrets will not be deleted.
 * `--keep-vars` ` boolean ` default: false
 When not used (or set to false), Wrangler will delete all vars before setting those found in the Wrangler configuration. When used (and set to true), the environment variables are not deleted before the deployment. If you set variables via the dashboard you probably want to use this flag. Note that secrets are never deleted by deployments.
+* `--strict` ` boolean ` default: false
+Enables strict mode, which prevents uploads when there are conflicting remote changes.
 * `--preview-alias` ` string `
 Name of an alias for this Worker version
 
@@ -782,15 +796,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `versions deploy`
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-13125)
-* [  pnpm ](#tab-panel-13126)
-* [  yarn ](#tab-panel-13127)
+* [  npm ](#tab-panel-13181)
+* [  pnpm ](#tab-panel-13182)
+* [  yarn ](#tab-panel-13183)
 
 ```sh
 npx wrangler versions deploy [VERSION-SPECS]
@@ -838,7 +854,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 Note
 
@@ -850,9 +868,9 @@ For example: `wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-13128)
-* [  pnpm ](#tab-panel-13129)
-* [  yarn ](#tab-panel-13130)
+* [  npm ](#tab-panel-13184)
+* [  pnpm ](#tab-panel-13185)
+* [  yarn ](#tab-panel-13186)
 
 ```sh
 npx wrangler versions list
@@ -888,15 +906,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `versions view`
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-13131)
-* [  pnpm ](#tab-panel-13132)
-* [  yarn ](#tab-panel-13133)
+* [  npm ](#tab-panel-13187)
+* [  pnpm ](#tab-panel-13188)
+* [  yarn ](#tab-panel-13189)
 
 ```sh
 npx wrangler versions view [VERSION-ID]
@@ -934,15 +954,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `versions secret put`
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-13134)
-* [  pnpm ](#tab-panel-13135)
-* [  yarn ](#tab-panel-13136)
+* [  npm ](#tab-panel-13190)
+* [  pnpm ](#tab-panel-13191)
+* [  yarn ](#tab-panel-13192)
 
 ```sh
 npx wrangler versions secret put [KEY]
@@ -982,15 +1004,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `versions secret delete`
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-13137)
-* [  pnpm ](#tab-panel-13138)
-* [  yarn ](#tab-panel-13139)
+* [  npm ](#tab-panel-13193)
+* [  pnpm ](#tab-panel-13194)
+* [  yarn ](#tab-panel-13195)
 
 ```sh
 npx wrangler versions secret delete [KEY]
@@ -1030,15 +1054,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `versions secret bulk`
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-13140)
-* [  pnpm ](#tab-panel-13141)
-* [  yarn ](#tab-panel-13142)
+* [  npm ](#tab-panel-13196)
+* [  pnpm ](#tab-panel-13197)
+* [  yarn ](#tab-panel-13198)
 
 ```sh
 npx wrangler versions secret bulk [FILE]
@@ -1078,7 +1104,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ---
 
@@ -1095,9 +1123,9 @@ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-13143)
-* [  pnpm ](#tab-panel-13144)
-* [  yarn ](#tab-panel-13145)
+* [  npm ](#tab-panel-13199)
+* [  pnpm ](#tab-panel-13200)
+* [  yarn ](#tab-panel-13201)
 
 ```sh
 npx wrangler triggers deploy
@@ -1137,7 +1165,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ---
 
@@ -1153,9 +1183,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-13146)
-* [  pnpm ](#tab-panel-13147)
-* [  yarn ](#tab-panel-13148)
+* [  npm ](#tab-panel-13202)
+* [  pnpm ](#tab-panel-13203)
+* [  yarn ](#tab-panel-13204)
 
 ```sh
 npx wrangler deployments list
@@ -1191,15 +1221,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ### `deployments status`
 
 View the current state of your production
 
-* [  npm ](#tab-panel-13149)
-* [  pnpm ](#tab-panel-13150)
-* [  yarn ](#tab-panel-13151)
+* [  npm ](#tab-panel-13205)
+* [  pnpm ](#tab-panel-13206)
+* [  yarn ](#tab-panel-13207)
 
 ```sh
 npx wrangler deployments status
@@ -1235,7 +1267,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `rollback`
 

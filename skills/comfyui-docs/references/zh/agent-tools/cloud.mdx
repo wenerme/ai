@@ -1,19 +1,20 @@
 ---
 title: "Comfy Cloud MCP"
 description: "通过 Comfy Cloud MCP 服务器，在 Claude Code 和 Claude Desktop 中使用 Comfy Cloud：生成图像、视频、音频和 3D，搜索模型与节点，并运行工作流。"
-translationSourceHash: 148cada3
+translationSourceHash: 8e911aa0
 translationFrom: agent-tools/cloud.mdx
 translationBlockHashes:
   "_intro": b1c56a40
   "Overview": 48a88d56
-  "What your agent can do": 379c77d6
-  "MCP tools": 9cd21290
+  "What your agent can do": 2c2a22e6
+  "MCP tools": a9211dee
+  "Credits and spending": 20e94ef0
   "Install": 445ca642
   "Outputs and downloads": a2c8c12f
   "Related resources": 58e75560
   "Feedback": 6872768e
-  "Known limitations": d67fe8eb
-  "FAQ": 27c018c0
+  "Known limitations": 52477743
+  "FAQ": 7b3bdcef
 ---
 
 <CloudFeature/>
@@ -35,8 +36,8 @@ translationBlockHashes:
 典型流程：
 
 1. **探索**可用内容（`search_templates`、`search_models`、`search_nodes`，或适用于图形类问题的 `cql`）。
-2. **运行**生成或工作流（`submit_workflow`，需要输入图像时配合 `upload_file`）。
-3. **检索**输出（`get_output` 会返回一条下载指令，你的代理会在你的 Shell 中执行）。
+2. **运行**生成：有匹配的预构建模板时使用 `run_template`，自定义工作流使用 `submit_workflow`（需要输入图像时配合 `upload_file`），Flux、Grok、Gemini、OpenAI、Ideogram、Seedance 等合作伙伴模型则使用 `partner_generate`。
+3. **等待并检索**输出（`wait_for_job` 等待作业完成，随后 `get_output` 会返回一条下载指令，你的代理会在你的 Shell 中执行）。
 
 服务器会优先匹配[预构建模板](https://comfy.org/workflows)，然后才从头构建工作流，这样通常能更快得到更好的结果。
 
@@ -49,31 +50,45 @@ translationBlockHashes:
 | 工具 | 描述 |
 | --- | --- |
 | `search_templates` | 按文本、标签、媒体类型或模型从 [comfy.org](https://comfy.org/workflows) 搜索预构建的工作流模板 |
+| `get_template` | 获取模板的完整工作流 JSON，用于检查或手动编辑 |
+| `get_template_schema` | 查看模板的哪些参数可以在运行时覆盖 |
 | `search_models` | 按文本、类型、基础模型或来源搜索模型目录 |
 | `search_nodes` | 按文本、类别或输入/输出类型搜索可用节点。还能列出**子图蓝图**（预连线的节点组，如文本转图像或移除背景） |
+| `get_node` | 获取特定节点的完整输入说明，包括完整的选项列表 |
 | `cql` | 运行 [CQL](https://github.com/Comfy-Org/cql) 图查询以回答结构性问题（例如，哪些节点生成图像，或节点类型之间的路径）。当需要特定节点的完整输入说明时，请使用 `search_nodes` |
+| `get_prompting_guide` | 各模型系列的提示词风格与推荐设置（步数、cfg、采样器、分辨率） |
 
-### 执行
+### 生成
 
 | 工具 | 描述 |
 | --- | --- |
+| `run_template` | 按名称运行预构建模板，可选择覆盖参数——有匹配模板时的首选路径 |
 | `submit_workflow` | 提交 ComfyUI API 格式的工作流在 Comfy Cloud 上执行 |
+| `partner_generate` | 使用合作伙伴 API 模型生成（Flux/BFL、Grok、Gemini、OpenAI、Ideogram、Seedream/Seedance 等） |
 | `upload_file` | 上传输入图像或文件用于工作流中（例如，与 LoadImage 配合使用） |
+| `apply_slots` | 将参数覆盖应用到工作流的内部值，并返回修改后的工作流 |
+
+### 作业与批处理
+
+| 工具 | 描述 |
+| --- | --- |
 | `get_job_status` | 轮询已提交工作流的执行状态 |
+| `wait_for_job` | 等待作业完成，而无需反复轮询 |
 | `get_output` | 从已完成的工作流中检索输出的图像、视频或音频 |
 | `use_previous_output` | 通过将一个运行的输出重用作另一个运行的输入来串联工作流 |
 | `cancel_job` | 取消待定或正在运行的作业 |
 | `get_queue` | 检查正在运行和待定的作业数量 |
+| `submit_batch`、`get_batch_status`、`get_batch_output`、`wait_for_batch` | 在一次调用中提交多个生成任务，稍后统一收集结果——批处理 ID 在多个会话间保持有效 |
 
 ### 已保存的工作流
 
 | 工具 | 描述 |
 | --- | --- |
 | `list_saved_workflows` | 浏览您保存在 Comfy Cloud 中的工作流 |
-| `get_saved_workflow` | 检查已保存工作流的节点、输入和配置 |
+| `get_saved_workflow` | 检查已保存工作流的节点、输入和可自定义的设置 |
 | `save_workflow` | 将工作流保存到您的 Comfy Cloud 账户 |
-
-  您可以浏览和检查已保存的工作流，但代理目前无法直接通过 ID 运行它们。已保存的工作流使用 ComfyUI 图格式，在执行前必须转换为 API 格式。请参阅<a href="#known-limitations">已知限制</a>。
+| `update_workflow` | 就地更新现有工作流并生成新版本（早期版本仍可恢复） |
+| `run_saved_workflow` | 按文件名运行已保存的工作流——服务器会自动将其从编辑器格式转换为可执行格式 |
 
 ### 共享工作流
 
@@ -83,6 +98,31 @@ translationBlockHashes:
 | `import_shared_workflow` | 将分享链接或纯分享 ID 解析为工作流 JSON，可选择保存到您的账户 |
 
 **Hub 链接分享 ID：** `comfy.org/workflows/<slug>-<hex>` Hub 链接中尾部的连字符分隔的十六进制令牌就是分享 ID。例如，`comfy.org/workflows/topaz-starlight-upscale-1c77e82713b7` 的分享 ID 是 `1c77e82713b7`。将该令牌作为 `share_id` 传给 `import_shared_workflow`。`share_url` 参数只接受类似 `https://cloud.comfy.org/?share=...` 的 `?share=<id>` 查询参数链接，不接受 Hub 页面链接。
+
+### 应用与链接
+
+| 工具 | 描述 |
+| --- | --- |
+| `create_app` | 将已保存的工作流转换为应用模式（App Mode）应用——带有选定输入和输出、简化的“运行此工作流”视图 |
+| `get_app_mode_url` | 获取一个稳定链接，可将工作流作为可运行的应用打开 |
+| `get_workflow_canvas_url` | 获取一个直接在 Comfy Cloud 画布上打开工作流的链接，随时可查看、编辑或运行 |
+
+### 账户与会话
+
+| 工具 | 描述 |
+| --- | --- |
+| `get_billing_status` | 查看你的积分余额、订阅等级和账单链接 |
+| `get_server_info` | 确认代理连接到的是哪台服务器：环境、主机、版本和认证状态 |
+| `submit_feedback` | 获取测试版反馈调查问卷链接 |
+| `report_session_summary` | 与 Comfy 团队分享匿名化的会话摘要——**仅在你明确同意的情况下**；代理必须先征求你的同意，且摘要中不包含任何提示词、文件路径或个人信息 |
+
+## 积分与消费
+
+探索是免费的：`search_templates`、`search_models` 和 `search_nodes` 只需一个 [Comfy 账户](https://cloud.comfy.org)即可使用。运行生成会消耗 Comfy Cloud 积分，需要订阅或积分余额。
+
+会产生实际花费的工具受**消费确认**保护。当一次生成使用付费合作伙伴模型（`partner_generate`），或使用包含付费 API 节点的工作流/模板（`run_template`、`run_saved_workflow`、`submit_batch`）时，服务器会阻止执行，直到你的代理确认你同意消耗积分——因此在这些运行之前，代理会先与你确认。免费、仅使用本地节点的工作流不会触发确认。
+
+你可以随时向代理询问余额（“我还有多少积分？”）——它会通过 `get_billing_status` 来回答。
 
 ## 安装
 
@@ -239,8 +279,8 @@ Comfy Cloud MCP 为早期版本。以下为已知的限制，团队正在努力�
 
 **工作流**
 
-- **保存的工作流无法通过 ID 运行。** 您的智能体可以列出和检查保存的工作流，但在执行之前必须重新构建或将其转换为 API 格式。
-- **生成的资源可能未嵌入工作流元数据。** 通过 MCP 创建的图像在 ComfyUI 中打开时，可能无法恢复对应的工作流。
+- **编辑器格式到可执行格式的转换尚不完善。** 已保存的工作流可以通过 `run_saved_workflow` 按文件名运行（服务器会自动转换），但某些节点配置的转换仍不够完美。
+- **通过 `submit_workflow` 生成的资源可能未嵌入工作流元数据。** 在 ComfyUI 中打开时，可能无法恢复其原始工作流。
 - **工作流构建依赖于智能体的准确性。** 复杂的多节点工作流可能需要重试或优化。
 
 **文件处理**
@@ -259,6 +299,9 @@ Comfy Cloud MCP 为早期版本。以下为已知的限制，团队正在努力�
   
   
     Claude Code 和 Claude Desktop 不需要，它们使用 OAuth。仅在没有浏览器的无头或 CI 环境中才需要 API 密钥。
+  
+  
+    付费生成受消费确认保护：当一次运行会消耗 Comfy Cloud 积分时（使用合作伙伴模型，或包含付费 API 节点的工作流/模板），服务器会要求你明确同意后才执行。请参阅[积分与消费](#积分与消费)。
   
   
     不能。斜杠指令是 Claude Code 插件的一部分。Claude Desktop 可以连接到同一个 MCP 服务器（如果你用自然语言提问或使用提示选择器，这些工具也能正常工作），但它不支持 Claude Code 插件或斜杠指令。

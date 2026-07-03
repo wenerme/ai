@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-13444)
-* [  pnpm ](#tab-panel-13445)
-* [  yarn ](#tab-panel-13446)
+* [  npm ](#tab-panel-13502)
+* [  pnpm ](#tab-panel-13503)
+* [  yarn ](#tab-panel-13504)
 
 ```sh
 npx wrangler workflows list
@@ -58,15 +58,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows describe`
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-13447)
-* [  pnpm ](#tab-panel-13448)
-* [  yarn ](#tab-panel-13449)
+* [  npm ](#tab-panel-13505)
+* [  pnpm ](#tab-panel-13506)
+* [  yarn ](#tab-panel-13507)
 
 ```sh
 npx wrangler workflows describe [NAME]
@@ -104,15 +106,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows delete`
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-13450)
-* [  pnpm ](#tab-panel-13451)
-* [  yarn ](#tab-panel-13452)
+* [  npm ](#tab-panel-13508)
+* [  pnpm ](#tab-panel-13509)
+* [  yarn ](#tab-panel-13510)
 
 ```sh
 npx wrangler workflows delete [NAME]
@@ -150,15 +154,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows trigger`
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-13453)
-* [  pnpm ](#tab-panel-13454)
-* [  yarn ](#tab-panel-13455)
+* [  npm ](#tab-panel-13511)
+* [  pnpm ](#tab-panel-13512)
+* [  yarn ](#tab-panel-13513)
 
 ```sh
 npx wrangler workflows trigger [NAME] [PARAMS]
@@ -200,15 +206,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances list`
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-13456)
-* [  pnpm ](#tab-panel-13457)
-* [  yarn ](#tab-panel-13458)
+* [  npm ](#tab-panel-13514)
+* [  pnpm ](#tab-panel-13515)
+* [  yarn ](#tab-panel-13516)
 
 ```sh
 npx wrangler workflows instances list [NAME]
@@ -254,15 +262,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances describe`
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-13459)
-* [  pnpm ](#tab-panel-13460)
-* [  yarn ](#tab-panel-13461)
+* [  npm ](#tab-panel-13517)
+* [  pnpm ](#tab-panel-13518)
+* [  yarn ](#tab-panel-13519)
 
 ```sh
 npx wrangler workflows instances describe [NAME] [ID]
@@ -306,15 +316,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances send-event`
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-13462)
-* [  pnpm ](#tab-panel-13463)
-* [  yarn ](#tab-panel-13464)
+* [  npm ](#tab-panel-13520)
+* [  pnpm ](#tab-panel-13521)
+* [  yarn ](#tab-panel-13522)
 
 ```sh
 npx wrangler workflows instances send-event [NAME] [ID]
@@ -358,15 +370,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances terminate`
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-13465)
-* [  pnpm ](#tab-panel-13466)
-* [  yarn ](#tab-panel-13467)
+* [  npm ](#tab-panel-13523)
+* [  pnpm ](#tab-panel-13524)
+* [  yarn ](#tab-panel-13525)
 
 ```sh
 npx wrangler workflows instances terminate [NAME] [ID]
@@ -406,15 +420,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances restart`
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-13468)
-* [  pnpm ](#tab-panel-13469)
-* [  yarn ](#tab-panel-13470)
+* [  npm ](#tab-panel-13526)
+* [  pnpm ](#tab-panel-13527)
+* [  yarn ](#tab-panel-13528)
 
 ```sh
 npx wrangler workflows instances restart [NAME] [ID]
@@ -460,15 +476,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances pause`
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-13471)
-* [  pnpm ](#tab-panel-13472)
-* [  yarn ](#tab-panel-13473)
+* [  npm ](#tab-panel-13529)
+* [  pnpm ](#tab-panel-13530)
+* [  yarn ](#tab-panel-13531)
 
 ```sh
 npx wrangler workflows instances pause [NAME] [ID]
@@ -508,15 +526,17 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ## `workflows instances resume`
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-13474)
-* [  pnpm ](#tab-panel-13475)
-* [  yarn ](#tab-panel-13476)
+* [  npm ](#tab-panel-13532)
+* [  pnpm ](#tab-panel-13533)
+* [  yarn ](#tab-panel-13534)
 
 ```sh
 npx wrangler workflows instances resume [NAME] [ID]
@@ -556,7 +576,9 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
 Automatically provision draft bindings with new resources
 * `--install-skills` ` boolean ` default: false
-Install Cloudflare agents skills, if not already present, without asking the user for confirmation
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` ` string `
+Use a specific auth profile
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workflows docs","description":"Wrangler CLI commands for managing, deploying, and interacting with Cloudflare Workflows.","url":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26770 files, 287 MiB total
+> 106 skills, 26770 files, 288 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1209,22 +1209,22 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 121 | 4.2 MiB |
-| `clickhouse-docs` | 1090 | 10.0 MiB |
-| `cloudflare-ai` | 1506 | 11 MiB |
+| `claude-code-docs` | 121 | 4.3 MiB |
+| `clickhouse-docs` | 1091 | 10.0 MiB |
+| `cloudflare-ai` | 1509 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 826 | 5.0 MiB |
 | `cloudflare-observability-admin` | 1230 | 8.2 MiB |
 | `cloudflare-security` | 1005 | 5.6 MiB |
-| `cloudflare-workers` | 770 | 7.1 MiB |
+| `cloudflare-workers` | 771 | 7.1 MiB |
 | `cloudflare-zero-trust` | 929 | 9.6 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4652 | 14 MiB |
+| `comfyui-docs` | 4632 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 276 | 1.8 MiB |
+| `evalscope-docs` | 278 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
 | `ghostty-docs` | 103 | 554 KiB |
@@ -1233,14 +1233,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `glab-docs` | 290 | 452 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 89 | 2.0 MiB |
-| `grafana-docs` | 623 | 6.0 MiB |
-| `grafana-plugin-docs` | 606 | 3.7 MiB |
+| `grafana-docs` | 625 | 6.0 MiB |
+| `grafana-plugin-docs` | 612 | 3.8 MiB |
 | `hono-docs` | 86 | 354 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
 | `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 77 | 482 KiB |
-| `justfile-docs` | 112 | 163 KiB |
+| `justfile-docs` | 112 | 164 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 1 | 2.8 KiB |
@@ -1248,7 +1248,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 776 | 6.1 MiB |
+| `mastra-docs` | 778 | 6.1 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
@@ -1261,7 +1261,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `opencode-docs` | 53 | 455 KiB |
 | `openobserve-docs` | 444 | 2.3 MiB |
 | `openrouter-docs` | 500 | 6.4 MiB |
-| `orpc-docs` | 75 | 299 KiB |
+| `orpc-docs` | 75 | 306 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |
@@ -1279,8 +1279,8 @@ Use when implementing React state management with Zustand, including context-sco
 | `threejs-docs` | 798 | 2.0 MiB |
 | `threejs-guide` | 11 | 134 KiB |
 | `tmux-session-manager` | 1 | 1.7 KiB |
-| `transformers-docs` | 165 | 1.2 MiB |
-| `ui-ux-pro-max` | 35 | 1.7 MiB |
+| `transformers-docs` | 167 | 1.2 MiB |
+| `ui-ux-pro-max` | 36 | 1.7 MiB |
 | `ultralytics-docs` | 485 | 4.1 MiB |
 | `vite-docs` | 58 | 539 KiB |
 | `vitest-docs` | 220 | 1.3 MiB |
