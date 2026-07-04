@@ -1203,6 +1203,7 @@ npx skills add wenerme/ai --skill zustand-mutative-pattern
 Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions namespace patterns
 
 </details>
+
 ## Stats
 
 > 108 skills, 27341 files, 295 MiB total
