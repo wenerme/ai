@@ -1205,7 +1205,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 108 skills, 27305 files, 295 MiB total
+> 108 skills, 27341 files, 295 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1239,12 +1239,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-networking` | 826 | 5.0 MiB |
 | `cloudflare-observability-admin` | 1230 | 8.2 MiB |
 | `cloudflare-security` | 1005 | 5.6 MiB |
-| `cloudflare-workers` | 769 | 7.1 MiB |
-| `cloudflare-zero-trust` | 916 | 9.5 MiB |
+| `cloudflare-workers` | 773 | 7.1 MiB |
+| `cloudflare-zero-trust` | 929 | 9.6 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
-| `doris-docs` | 1583 | 9.5 MiB |
+| `doris-docs` | 1584 | 9.5 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
 | `evalscope-docs` | 284 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
@@ -1253,15 +1253,15 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 102 | 693 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 289 | 451 KiB |
+| `glab-docs` | 290 | 453 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 89 | 2.0 MiB |
-| `grafana-docs` | 624 | 6.0 MiB |
+| `grafana-docs` | 625 | 6.1 MiB |
 | `grafana-plugin-docs` | 588 | 3.7 MiB |
 | `hono-docs` | 86 | 354 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 77 | 482 KiB |
 | `justfile-docs` | 112 | 164 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1282,7 +1282,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 455 KiB |
-| `openobserve-docs` | 431 | 2.3 MiB |
+| `openobserve-docs` | 447 | 2.4 MiB |
 | `openrouter-docs` | 500 | 6.4 MiB |
 | `orpc-docs` | 75 | 307 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |

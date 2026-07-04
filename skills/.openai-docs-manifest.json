@@ -874,10 +874,10 @@
   "openai-docs/guides/secure-mcp-tunnels.md": {
     "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels.md",
     "skill": "openai-docs",
-    "etag": "W/\"9f5d72b31e178768daac75bfef7a400b\"",
-    "lastModified": "Wed, 24 Jun 2026 00:36:14 GMT",
-    "size": 14974,
-    "updatedAt": "2026-06-24T00:36:14.099Z"
+    "etag": "W/\"69bbc9ee5e51900ec762df056eb11e9f\"",
+    "lastModified": "Sat, 04 Jul 2026 21:09:59 GMT",
+    "size": 15560,
+    "updatedAt": "2026-07-04T21:09:59.910Z"
   },
   "openai-docs/guides/speech-to-text.md": {
     "url": "https://developers.openai.com/api/docs/guides/speech-to-text.md",

@@ -151,6 +151,7 @@ Use this when you need to reach a small set of private REST endpoints without ex
 
 ## Troubleshooting
 
+- **“Tunnels access required” in Platform tunnel settings:** Tunnel permissions are organization-level, not project-level. Select the intended Platform organization, then ask an organization owner or RBAC administrator to add you to a role or group with **Read** to view tunnels, or **Read** + **Manage** to create, edit, or delete them. If no matching role exists, they can create one, assign it to a group, and add you to that group. You also need **Use** to run `tunnel-client` or select a tunnel in connector settings. Allow up to 30 minutes for a new role assignment to propagate.
 - **Tunnel not visible in ChatGPT:** Check that the tunnel includes the target ChatGPT workspace, not only a Platform organization; then check the connector operator's Tunnels **Use** permission. If the workspace cannot be linked automatically for an enterprise account, contact your OpenAI account team for a reviewed manual association override.
 - **Connector discovery or tool calls fail:** Confirm that `tunnel-client run ...` is still running, then re-run `tunnel-client doctor --profile <name> --explain`.
 - **You can inspect a tunnel but cannot edit it:** The operator likely has Tunnels **Read** but not Tunnels **Manage**.
