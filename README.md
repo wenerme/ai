@@ -14,114 +14,114 @@ npx skills add wenerme/ai --skill <skill-name>
 
 | Skill | Description | Source |
 |-------|-------------|--------|
-| `agent-browser` | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
-| `ai-sdk` | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
-| `aliyun-cli-docs` | Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure`... | [help.aliyun.com](https://help.aliyun.com/zh/cli/) |
-| `alpine-aports-docs` | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... | [alpinelinux/aports](https://gitlab.alpinelinux.org/alpinelinux/aports) |
-| `ant-design-docs` | Use when working with Ant Design React (`antd`) official docs in Chinese: getting started, ConfigProvider, theme tokens,... | [ant-design/ant-design/docs](https://github.com/ant-design/ant-design/tree/master/docs) |
-| `anthropic-agent-sdk` | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
-| `anthropic-api` | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... | [docs.anthropic.com](https://docs.anthropic.com) |
-| `anthropic-docs` | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... | [docs.anthropic.com](https://docs.anthropic.com) |
-| `anthropic-sdk-csharp` | Use when writing C# code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-csharp](https://github.com/anthropics/anthropic-sdk-csharp) |
-| `anthropic-sdk-go` | Use when writing Go code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-go](https://github.com/anthropics/anthropic-sdk-go) |
-| `anthropic-sdk-java` | Use when writing Java code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-java](https://github.com/anthropics/anthropic-sdk-java) |
-| `anthropic-sdk-python` | Use when writing Python code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
-| `anthropic-sdk-ruby` | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-ruby](https://github.com/anthropics/anthropic-sdk-ruby) |
-| `anthropic-sdk-typescript` | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript) |
-| `argocd-cli-guide` | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
-| `biome-docs` | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... | [biomejs/website](https://github.com/biomejs/website) |
-| `biome-lint` | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
-| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... | [obra/superpowers](https://github.com/obra/superpowers) |
-| `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... | [oven-sh/bun](https://github.com/oven-sh/bun) |
-| `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
-| `caddy-docs` | USE THIS SKILL WHEN working with the Caddy web server: Caddyfile configuration, reverse_proxy, automatic HTTPS, TLS,... | [caddyserver.com](https://caddyserver.com/docs) |
-| `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
-| `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
-| `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
-| `cloudflare-ai` | Use when working with Cloudflare AI and media products: Workers AI, AI Gateway, Agents, Agent Memory, AI Search, AI... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-data` | Use when working with Cloudflare data and storage products: D1, R2, R2 SQL, KV, Queues, Hyperdrive, Vectorize,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-docs` | Use when a Cloudflare question is broad or you need to choose the right Cloudflare skill. Routes to Cloudflare Workers,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-networking` | Use when working with Cloudflare networking products: DNS, SSL/TLS, cache, load balancing, Magic Transit, Spectrum,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-observability-admin` | Use when working with Cloudflare observability and account administration: Analytics, Logs, Logpush, Log Explorer,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-security` | Use when working with Cloudflare security products: WAF, DDoS protection, Bot Management, API Shield, Turnstile, Rules,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-workers` | Use when working with Cloudflare Workers platform: Workers runtime APIs, Wrangler deployment, Pages, Durable Objects,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `cloudflare-zero-trust` | Use when working with Cloudflare Zero Trust: Cloudflare One, Access, Gateway, WARP, Tunnel, device posture, DEX, CASB,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
-| `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... | [openai/codex](https://github.com/openai/codex) |
-| `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
-| `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
-| `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
-| `evalscope-cli` | LLM evaluation & inference performance testing via the evalscope CLI. Translates natural language requests into... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
-| `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
-| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
-| `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) |
-| `gemini-enterprise-agent-platform-docs` | Use when working with Google Cloud Gemini Enterprise Agent Platform: Agent Studio, Agent Runtime, Managed Agents API,... | [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform) |
-| `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... | [ghostty-org/website](https://github.com/ghostty-org/website) |
-| `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... | [gitea.com](https://gitea.com/gitea/docs) |
-| `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
-| `glab-docs` | glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines,... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
-| `google-ai-api` | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
-| `google-ai-docs` | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
-| `grafana-docs` | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
-| `grafana-plugin-docs` | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
-| `hono-docs` | Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request... | [honojs/website/docs](https://github.com/honojs/website/tree/main/docs) |
-| `huggingface-docs` | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
-| `humanizer` | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
-| `image-prompt-guide` | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
-| `immich-docs` | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... | [immich-app/immich](https://github.com/immich-app/immich) |
-| `justfile-docs` | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
-| `k3s-docs` | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... | [k3s-io/docs](https://github.com/k3s-io/docs) |
-| `lark-node-sdk` | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... | [larksuite/node-sdk](https://github.com/larksuite/node-sdk) |
-| `litellm-docs` | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... | [BerriAI/litellm](https://github.com/BerriAI/litellm) |
-| `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) |
-| `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... | [hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory) |
-| `luanti-docs` | Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting... | [luanti-org/luanti](https://github.com/luanti-org/luanti) |
-| `mastra` | Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
-| `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... | [mastra-ai/mastra](https://github.com/mastra-ai/mastra) |
-| `mihomo-docs` | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... | [MetaCubeX/Meta-Docs](https://github.com/MetaCubeX/Meta-Docs) |
-| `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
-| `mikroorm-docs` | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... | [mikro-orm/mikro-orm](https://github.com/mikro-orm/mikro-orm) |
-| `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... | [docs.anthropic.com](https://docs.anthropic.com) |
-| `nats-docs` | Use when working with NATS: core messaging, subjects, request-reply, queue groups, JetStream streams/consumers/KV/object... | [nats-io/nats.docs](https://github.com/nats-io/nats.docs) |
-| `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... | [platform.openai.com](https://platform.openai.com/docs) |
-| `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... | [platform.openai.com](https://platform.openai.com/docs) |
-| `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-python](https://github.com/openai/openai-python) |
-| `openai-sdk-typescript` | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-node](https://github.com/openai/openai-node) |
-| `opencode-docs` | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... | [anomalyco/opencode](https://github.com/anomalyco/opencode) |
-| `openobserve-docs` | OpenObserve documentation — open-source observability platform for logs, metrics, traces, and RUM. Covers architecture,... | [openobserve/openobserve-docs](https://github.com/openobserve/openobserve-docs) |
-| `openrouter-docs` | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... | [openrouter.ai](https://openrouter.ai/docs) |
-| `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... | [unnoq/orpc](https://github.com/unnoq/orpc) |
-| `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
-| `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
-| `peekaboo` | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
-| `powerdns-docs` | Use when working with PowerDNS Authoritative Server: pdns.conf settings, backends, DNSSEC, primary/secondary operation,... | [PowerDNS/pdns/docs](https://github.com/PowerDNS/pdns/tree/master/docs) |
-| `pytorch-docs` | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
-| `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
-| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
-| `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
-| `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
-| `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
-| `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
-| `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
-| `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
-| `tencent-cls` | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
-| `terraform-docs` | Use when working with the terraform-docs CLI for generating Terraform module documentation:... | [terraform-docs/terraform-docs/docs](https://github.com/terraform-docs/terraform-docs/tree/master/docs) |
-| `threejs-docs` | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... | [mrdoob/three.js](https://github.com/mrdoob/three.js) |
-| `threejs-guide` | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
-| `tmux-session-manager` | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
-| `transformers-docs` | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... | [huggingface/transformers](https://github.com/huggingface/transformers) |
-| `ui-ux-pro-max` | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
-| `ultralytics-docs` | Use when working with Ultralytics YOLO, including YOLO26/YOLO11/YOLOv8 models, detect/segment/classify/pose/OBB tasks,... | [ultralytics/ultralytics/docs](https://github.com/ultralytics/ultralytics/tree/main/docs) |
-| `vite-docs` | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... | [vitejs/vite](https://github.com/vitejs/vite) |
-| `vitest-docs` | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
-| `vllm-docs` | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
-| `wails-docs` | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... | [wailsapp/wails](https://github.com/wailsapp/wails) |
-| `waku-docs` | Use when working with Waku, the React 19 framework for React Server Components: file-system routing, createPages... | [wakujs/waku/docs](https://github.com/wakujs/waku/tree/main/docs) |
-| `wode-db-schema-pattern` | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
-| `wode-emittery-pattern` | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
-| `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
-| `zellij-docs` | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... | [zellij-org/zellij-org.github.io/docs](https://github.com/zellij-org/zellij-org.github.io/tree/main/docs) |
-| `zellij-session-manager` | Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces... |  |
-| `zustand-mutative-pattern` | Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions... |  |
+| [agent-browser](./skills/agent-browser/SKILL.md) | Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages,... | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
+| [ai-sdk](./skills/ai-sdk/SKILL.md) | Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK... | [vercel/ai](https://github.com/vercel/ai) |
+| [aliyun-cli-docs](./skills/aliyun-cli-docs/SKILL.md) | Use when working with Alibaba Cloud CLI (`aliyun`): installing/updating, plugin commands, `aliyun configure`... | [help.aliyun.com](https://help.aliyun.com/zh/cli/) |
+| [alpine-aports-docs](./skills/alpine-aports-docs/SKILL.md) | USE THIS SKILL WHEN maintaining Alpine Linux packages (aports): writing APKBUILDs, abuild workflow, apk package... | [alpinelinux/aports](https://gitlab.alpinelinux.org/alpinelinux/aports) |
+| [ant-design-docs](./skills/ant-design-docs/SKILL.md) | Use when working with Ant Design React (`antd`) official docs in Chinese: getting started, ConfigProvider, theme tokens,... | [ant-design/ant-design/docs](https://github.com/ant-design/ant-design/tree/master/docs) |
+| [anthropic-agent-sdk](./skills/anthropic-agent-sdk/SKILL.md) | Use when building AI agents with the Anthropic Agent SDK (Claude Code SDK): TypeScript or Python agent setup, streaming,... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
+| [anthropic-api](./skills/anthropic-api/SKILL.md) | Use when working with the Anthropic REST API: Messages API, Batches API, Token Counting, Models API, Files API, Skills... | [docs.anthropic.com](https://docs.anthropic.com) |
+| [anthropic-docs](./skills/anthropic-docs/SKILL.md) | Use when learning about Claude models, capabilities, pricing, prompt engineering, extended thinking, effort levels,... | [docs.anthropic.com](https://docs.anthropic.com) |
+| [anthropic-sdk-csharp](./skills/anthropic-sdk-csharp/SKILL.md) | Use when writing C# code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-csharp](https://github.com/anthropics/anthropic-sdk-csharp) |
+| [anthropic-sdk-go](./skills/anthropic-sdk-go/SKILL.md) | Use when writing Go code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-go](https://github.com/anthropics/anthropic-sdk-go) |
+| [anthropic-sdk-java](./skills/anthropic-sdk-java/SKILL.md) | Use when writing Java code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-java](https://github.com/anthropics/anthropic-sdk-java) |
+| [anthropic-sdk-python](./skills/anthropic-sdk-python/SKILL.md) | Use when writing Python code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) |
+| [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-ruby](https://github.com/anthropics/anthropic-sdk-ruby) |
+| [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript) |
+| [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
+| [biome-docs](./skills/biome-docs/SKILL.md) | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... | [biomejs/website](https://github.com/biomejs/website) |
+| [biome-lint](./skills/biome-lint/SKILL.md) | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
+| [brainstorming](./skills/brainstorming/SKILL.md) | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... | [obra/superpowers](https://github.com/obra/superpowers) |
+| [bun-docs](./skills/bun-docs/SKILL.md) | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... | [oven-sh/bun](https://github.com/oven-sh/bun) |
+| [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
+| [caddy-docs](./skills/caddy-docs/SKILL.md) | USE THIS SKILL WHEN working with the Caddy web server: Caddyfile configuration, reverse_proxy, automatic HTTPS, TLS,... | [caddyserver.com](https://caddyserver.com/docs) |
+| [chrome-devtools](./skills/chrome-devtools/SKILL.md) | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
+| [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
+| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | Use when working with Cloudflare AI and media products: Workers AI, AI Gateway, Agents, Agent Memory, AI Search, AI... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | Use when working with Cloudflare data and storage products: D1, R2, R2 SQL, KV, Queues, Hyperdrive, Vectorize,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | Use when a Cloudflare question is broad or you need to choose the right Cloudflare skill. Routes to Cloudflare Workers,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | Use when working with Cloudflare networking products: DNS, SSL/TLS, cache, load balancing, Magic Transit, Spectrum,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | Use when working with Cloudflare observability and account administration: Analytics, Logs, Logpush, Log Explorer,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | Use when working with Cloudflare security products: WAF, DDoS protection, Bot Management, API Shield, Turnstile, Rules,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | Use when working with Cloudflare Workers platform: Workers runtime APIs, Wrangler deployment, Pages, Durable Objects,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | Use when working with Cloudflare Zero Trust: Cloudflare One, Access, Gateway, WARP, Tunnel, device posture, DEX, CASB,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
+| [codex-docs](./skills/codex-docs/SKILL.md) | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... | [openai/codex](https://github.com/openai/codex) |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
+| [daisyui-v5](./skills/daisyui-v5/SKILL.md) | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
+| [doris-docs](./skills/doris-docs/SKILL.md) | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
+| [evalscope-cli](./skills/evalscope-cli/SKILL.md) | LLM evaluation & inference performance testing via the evalscope CLI. Translates natural language requests into... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
+| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
+| [find-skills](./skills/find-skills/SKILL.md) | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
+| [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) |
+| [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | Use when working with Google Cloud Gemini Enterprise Agent Platform: Agent Studio, Agent Runtime, Managed Agents API,... | [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform) |
+| [ghostty-docs](./skills/ghostty-docs/SKILL.md) | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... | [ghostty-org/website](https://github.com/ghostty-org/website) |
+| [gitea-docs](./skills/gitea-docs/SKILL.md) | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... | [gitea.com](https://gitea.com/gitea/docs) |
+| [glab-cli](./skills/glab-cli/SKILL.md) | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
+| [glab-docs](./skills/glab-docs/SKILL.md) | glab CLI documentation — GitLab's official command-line tool. Covers merge requests, issues, CI/CD pipelines,... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | Use when working with the Gemini REST API: generateContent, streamGenerateContent, embedContent, caching, file uploads,... | [ai.google.dev](https://ai.google.dev) |
+| [google-ai-docs](./skills/google-ai-docs/SKILL.md) | Use when learning about Gemini model capabilities, guides, and concepts: text generation, thinking/reasoning, vision,... | [ai.google.dev](https://ai.google.dev) |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | Use when working with Grafana: dashboards, panels, visualizations, alerting, data sources (Prometheus, Loki,... | [grafana/grafana](https://github.com/grafana/grafana) |
+| [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
+| [hono-docs](./skills/hono-docs/SKILL.md) | Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request... | [honojs/website/docs](https://github.com/honojs/website/tree/main/docs) |
+| [huggingface-docs](./skills/huggingface-docs/SKILL.md) | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
+| [humanizer](./skills/humanizer/SKILL.md) | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
+| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
+| [immich-docs](./skills/immich-docs/SKILL.md) | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... | [immich-app/immich](https://github.com/immich-app/immich) |
+| [justfile-docs](./skills/justfile-docs/SKILL.md) | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
+| [k3s-docs](./skills/k3s-docs/SKILL.md) | K3s documentation — lightweight Kubernetes for IoT/edge. Covers installation (air-gap, private registry, HA),... | [k3s-io/docs](https://github.com/k3s-io/docs) |
+| [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | Use when developing with Lark/Feishu Open Platform using @larksuiteoapi/node-sdk, including API calls, event handling,... | [larksuite/node-sdk](https://github.com/larksuite/node-sdk) |
+| [litellm-docs](./skills/litellm-docs/SKILL.md) | LiteLLM documentation — unified Python SDK and proxy server for 100+ LLM providers (OpenAI, Anthropic, Google, Azure,... | [BerriAI/litellm](https://github.com/BerriAI/litellm) |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) |
+| [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... | [hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory) |
+| [luanti-docs](./skills/luanti-docs/SKILL.md) | Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting... | [luanti-org/luanti](https://github.com/luanti-org/luanti) |
+| [mastra](./skills/mastra/SKILL.md) | Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... | [mastra-ai/mastra](https://github.com/mastra-ai/mastra) |
+| [mihomo-docs](./skills/mihomo-docs/SKILL.md) | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... | [MetaCubeX/Meta-Docs](https://github.com/MetaCubeX/Meta-Docs) |
+| [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
+| [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... | [mikro-orm/mikro-orm](https://github.com/mikro-orm/mikro-orm) |
+| [model-reference](./skills/model-reference/SKILL.md) | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... | [docs.anthropic.com](https://docs.anthropic.com) |
+| [nats-docs](./skills/nats-docs/SKILL.md) | Use when working with NATS: core messaging, subjects, request-reply, queue groups, JetStream streams/consumers/KV/object... | [nats-io/nats.docs](https://github.com/nats-io/nats.docs) |
+| [openai-api](./skills/openai-api/SKILL.md) | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... | [platform.openai.com](https://platform.openai.com/docs) |
+| [openai-docs](./skills/openai-docs/SKILL.md) | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... | [platform.openai.com](https://platform.openai.com/docs) |
+| [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-python](https://github.com/openai/openai-python) |
+| [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | Use when writing TypeScript code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-node](https://github.com/openai/openai-node) |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | Use when working with OpenCode (anomalyco/opencode): terminal AI coding agent, configuration, model providers (Claude,... | [anomalyco/opencode](https://github.com/anomalyco/opencode) |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | OpenObserve documentation — open-source observability platform for logs, metrics, traces, and RUM. Covers architecture,... | [openobserve/openobserve-docs](https://github.com/openobserve/openobserve-docs) |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | Use when working with the OpenRouter API: model routing, provider selection, model variants (free/nitro/thinking), tool... | [openrouter.ai](https://openrouter.ai/docs) |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... | [unnoq/orpc](https://github.com/unnoq/orpc) |
+| [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
+| [papermc-docs](./skills/papermc-docs/SKILL.md) | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
+| [peekaboo](./skills/peekaboo/SKILL.md) | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
+| [powerdns-docs](./skills/powerdns-docs/SKILL.md) | Use when working with PowerDNS Authoritative Server: pdns.conf settings, backends, DNSSEC, primary/secondary operation,... | [PowerDNS/pdns/docs](https://github.com/PowerDNS/pdns/tree/master/docs) |
+| [pytorch-docs](./skills/pytorch-docs/SKILL.md) | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
+| [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
+| [shadcn](./skills/shadcn/SKILL.md) | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
+| [skill-writer](./skills/skill-writer/SKILL.md) | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
+| [sling-cli](./skills/sling-cli/SKILL.md) | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
+| [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
+| [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
+| [tea-cli](./skills/tea-cli/SKILL.md) | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
+| [tencent-cls](./skills/tencent-cls/SKILL.md) | Use when querying or analyzing Tencent Cloud CLS (Cloud Log Service) logs: writing CQL search queries, performing SQL... | [cloud.tencent.com](https://cloud.tencent.com/document/product/614) |
+| [terraform-docs](./skills/terraform-docs/SKILL.md) | Use when working with the terraform-docs CLI for generating Terraform module documentation:... | [terraform-docs/terraform-docs/docs](https://github.com/terraform-docs/terraform-docs/tree/master/docs) |
+| [threejs-docs](./skills/threejs-docs/SKILL.md) | Three.js API reference documentation — 769 class/module docs covering Scene, Camera (Perspective/Orthographic/Array),... | [mrdoob/three.js](https://github.com/mrdoob/three.js) |
+| [threejs-guide](./skills/threejs-guide/SKILL.md) | Comprehensive Three.js development guide covering scene setup, cameras, renderer, geometry, materials, PBR, shaders,... |  |
+| [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | Use when executing commands, running builds, starting services, or monitoring logs in a visible tmux pane |  |
+| [transformers-docs](./skills/transformers-docs/SKILL.md) | USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning pretrained models, Pipeline API, text... | [huggingface/transformers](https://github.com/huggingface/transformers) |
+| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product... | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | Use when working with Ultralytics YOLO, including YOLO26/YOLO11/YOLOv8 models, detect/segment/classify/pose/OBB tasks,... | [ultralytics/ultralytics/docs](https://github.com/ultralytics/ultralytics/tree/main/docs) |
+| [vite-docs](./skills/vite-docs/SKILL.md) | Vite documentation — next-generation frontend build tool. Covers configuration (shared, server, build, preview, SSR, dep... | [vitejs/vite](https://github.com/vitejs/vite) |
+| [vitest-docs](./skills/vitest-docs/SKILL.md) | Vitest documentation — next-generation testing framework powered by Vite. Covers test API (describe, test, expect, vi,... | [vitest-dev/vitest](https://github.com/vitest-dev/vitest) |
+| [vllm-docs](./skills/vllm-docs/SKILL.md) | Use when working with vLLM inference engine: OpenAI-compatible serving, model deployment, quantization (AWQ, GPTQ, FP8,... | [vllm-project/vllm](https://github.com/vllm-project/vllm) |
+| [wails-docs](./skills/wails-docs/SKILL.md) | Wails documentation — build desktop applications using Go and web technologies (HTML/CSS/JS). Covers installation,... | [wailsapp/wails](https://github.com/wailsapp/wails) |
+| [waku-docs](./skills/waku-docs/SKILL.md) | Use when working with Waku, the React 19 framework for React Server Components: file-system routing, createPages... | [wakujs/waku/docs](https://github.com/wakujs/waku/tree/main/docs) |
+| [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | Use when designing, creating, or modifying PostgreSQL table schemas in the Wode project, including ID strategy,... |  |
+| [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
+| [writing-skills](./skills/writing-skills/SKILL.md) | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
+| [zellij-docs](./skills/zellij-docs/SKILL.md) | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... | [zellij-org/zellij-org.github.io/docs](https://github.com/zellij-org/zellij-org.github.io/tree/main/docs) |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces... |  |
+| [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions... |  |
 
 <details>
 <summary><code>agent-browser</code></summary>
@@ -1209,114 +1209,114 @@ Use when implementing React state management with Zustand, including context-sco
 
 | Skill | Files | Size |
 |-------|-------|------|
-| `agent-browser` | 1 | 3.2 KiB |
-| `ai-sdk` | 1 | 5.4 KiB |
-| `aliyun-cli-docs` | 27 | 183 KiB |
-| `alpine-aports-docs` | 7 | 41 KiB |
-| `ant-design-docs` | 102 | 552 KiB |
-| `anthropic-agent-sdk` | 30 | 614 KiB |
-| `anthropic-api` | 353 | 16 MiB |
-| `anthropic-docs` | 187 | 5.6 MiB |
-| `anthropic-sdk-csharp` | 159 | 8.8 MiB |
-| `anthropic-sdk-go` | 159 | 11 MiB |
-| `anthropic-sdk-java` | 159 | 9.0 MiB |
-| `anthropic-sdk-python` | 159 | 8.9 MiB |
-| `anthropic-sdk-ruby` | 159 | 8.5 MiB |
-| `anthropic-sdk-typescript` | 159 | 8.6 MiB |
-| `argocd-cli-guide` | 2 | 7.5 KiB |
-| `biome-docs` | 604 | 7.5 MiB |
-| `biome-lint` | 4 | 13 KiB |
-| `brainstorming` | 1 | 4.6 KiB |
-| `bun-docs` | 318 | 1.6 MiB |
-| `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
-| `caddy-docs` | 82 | 667 KiB |
-| `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 121 | 4.4 MiB |
-| `clickhouse-docs` | 1092 | 10 MiB |
-| `cloudflare-ai` | 1509 | 11 MiB |
-| `cloudflare-data` | 395 | 3.0 MiB |
-| `cloudflare-docs` | 3 | 30 KiB |
-| `cloudflare-networking` | 826 | 5.0 MiB |
-| `cloudflare-observability-admin` | 1230 | 8.2 MiB |
-| `cloudflare-security` | 1005 | 5.6 MiB |
-| `cloudflare-workers` | 773 | 7.1 MiB |
-| `cloudflare-zero-trust` | 929 | 9.6 MiB |
-| `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4632 | 14 MiB |
-| `daisyui-v5` | 3 | 60 KiB |
-| `doris-docs` | 1584 | 9.5 MiB |
-| `evalscope-cli` | 6 | 31 KiB |
-| `evalscope-docs` | 284 | 1.8 MiB |
-| `find-skills` | 1 | 4.5 KiB |
-| `gemini-cli-docs` | 90 | 802 KiB |
-| `gemini-enterprise-agent-platform-docs` | 427 | 5.9 MiB |
-| `ghostty-docs` | 103 | 554 KiB |
-| `gitea-docs` | 102 | 693 KiB |
-| `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 453 KiB |
-| `google-ai-api` | 13 | 682 KiB |
-| `google-ai-docs` | 89 | 2.0 MiB |
-| `grafana-docs` | 625 | 6.1 MiB |
-| `grafana-plugin-docs` | 588 | 3.7 MiB |
-| `hono-docs` | 86 | 354 KiB |
-| `huggingface-docs` | 358 | 2.0 MiB |
-| `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 323 KiB |
-| `immich-docs` | 77 | 482 KiB |
-| `justfile-docs` | 112 | 164 KiB |
-| `k3s-docs` | 58 | 1.8 MiB |
-| `lark-node-sdk` | 1 | 5.8 KiB |
-| `litellm-docs` | 1 | 2.8 KiB |
-| `llamacpp-docs` | 46 | 420 KiB |
-| `llamafactory-docs` | 20 | 152 KiB |
-| `luanti-docs` | 176 | 1.7 MiB |
-| `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 777 | 6.1 MiB |
-| `mihomo-docs` | 150 | 370 KiB |
-| `mikro-orm-v6-to-v7` | 5 | 37 KiB |
-| `mikroorm-docs` | 84 | 1.3 MiB |
-| `model-reference` | 17 | 64 KiB |
-| `nats-docs` | 6 | 42 KiB |
-| `openai-api` | 508 | 19 MiB |
-| `openai-docs` | 156 | 2.2 MiB |
-| `openai-sdk-python` | 508 | 15 MiB |
-| `openai-sdk-typescript` | 508 | 15 MiB |
-| `opencode-docs` | 53 | 455 KiB |
-| `openobserve-docs` | 447 | 2.4 MiB |
-| `openrouter-docs` | 500 | 6.4 MiB |
-| `orpc-docs` | 75 | 307 KiB |
-| `orpc-implementation-sops` | 2 | 7.4 KiB |
-| `papermc-docs` | 192 | 877 KiB |
-| `peekaboo` | 1 | 15 KiB |
-| `powerdns-docs` | 157 | 1.4 MiB |
-| `pytorch-docs` | 313 | 2.0 MiB |
-| `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
-| `requesting-code-review` | 2 | 7.9 KiB |
-| `shadcn` | 15 | 94 KiB |
-| `skill-writer` | 4 | 23 KiB |
-| `sling-cli` | 3 | 14 KiB |
-| `slopus-happy-docs` | 75 | 716 KiB |
-| `swift-ms-docs` | 67 | 1.2 MiB |
-| `tea-cli` | 26 | 81 KiB |
-| `tencent-cls` | 4 | 12 KiB |
-| `terraform-docs` | 43 | 166 KiB |
-| `threejs-docs` | 798 | 2.0 MiB |
-| `threejs-guide` | 11 | 134 KiB |
-| `tmux-session-manager` | 1 | 1.7 KiB |
-| `transformers-docs` | 167 | 1.2 MiB |
-| `ui-ux-pro-max` | 36 | 1.7 MiB |
-| `ultralytics-docs` | 485 | 4.1 MiB |
-| `vite-docs` | 58 | 539 KiB |
-| `vitest-docs` | 220 | 1.3 MiB |
-| `vllm-docs` | 170 | 1.3 MiB |
-| `wails-docs` | 56 | 314 KiB |
-| `waku-docs` | 24 | 152 KiB |
-| `wode-db-schema-pattern` | 2 | 8.8 KiB |
-| `wode-emittery-pattern` | 2 | 9.8 KiB |
-| `writing-skills` | 7 | 105 KiB |
-| `zellij-docs` | 83 | 458 KiB |
-| `zellij-session-manager` | 1 | 10 KiB |
-| `zustand-mutative-pattern` | 2 | 12 KiB |
+| [agent-browser](./skills/agent-browser/SKILL.md) | 1 | 3.2 KiB |
+| [ai-sdk](./skills/ai-sdk/SKILL.md) | 1 | 5.4 KiB |
+| [aliyun-cli-docs](./skills/aliyun-cli-docs/SKILL.md) | 27 | 183 KiB |
+| [alpine-aports-docs](./skills/alpine-aports-docs/SKILL.md) | 7 | 41 KiB |
+| [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 102 | 552 KiB |
+| [anthropic-agent-sdk](./skills/anthropic-agent-sdk/SKILL.md) | 30 | 614 KiB |
+| [anthropic-api](./skills/anthropic-api/SKILL.md) | 353 | 16 MiB |
+| [anthropic-docs](./skills/anthropic-docs/SKILL.md) | 187 | 5.6 MiB |
+| [anthropic-sdk-csharp](./skills/anthropic-sdk-csharp/SKILL.md) | 159 | 8.8 MiB |
+| [anthropic-sdk-go](./skills/anthropic-sdk-go/SKILL.md) | 159 | 11 MiB |
+| [anthropic-sdk-java](./skills/anthropic-sdk-java/SKILL.md) | 159 | 9.0 MiB |
+| [anthropic-sdk-python](./skills/anthropic-sdk-python/SKILL.md) | 159 | 8.9 MiB |
+| [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | 159 | 8.5 MiB |
+| [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
+| [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
+| [biome-docs](./skills/biome-docs/SKILL.md) | 604 | 7.5 MiB |
+| [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
+| [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
+| [bun-docs](./skills/bun-docs/SKILL.md) | 318 | 1.6 MiB |
+| [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
+| [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
+| [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 121 | 4.4 MiB |
+| [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1092 | 10 MiB |
+| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1509 | 11 MiB |
+| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 3.0 MiB |
+| [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 30 KiB |
+| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 826 | 5.0 MiB |
+| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1230 | 8.2 MiB |
+| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1005 | 5.6 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 773 | 7.1 MiB |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 929 | 9.6 MiB |
+| [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4632 | 14 MiB |
+| [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1584 | 9.5 MiB |
+| [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
+| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 284 | 1.8 MiB |
+| [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
+| [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 90 | 802 KiB |
+| [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
+| [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 554 KiB |
+| [gitea-docs](./skills/gitea-docs/SKILL.md) | 102 | 693 KiB |
+| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 290 | 453 KiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 682 KiB |
+| [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 89 | 2.0 MiB |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | 625 | 6.1 MiB |
+| [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 588 | 3.7 MiB |
+| [hono-docs](./skills/hono-docs/SKILL.md) | 86 | 354 KiB |
+| [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 358 | 2.0 MiB |
+| [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
+| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
+| [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 482 KiB |
+| [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 164 KiB |
+| [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
+| [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
+| [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 46 | 420 KiB |
+| [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 152 KiB |
+| [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
+| [mastra](./skills/mastra/SKILL.md) | 10 | 51 KiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 777 | 6.1 MiB |
+| [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 150 | 370 KiB |
+| [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
+| [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
+| [model-reference](./skills/model-reference/SKILL.md) | 17 | 64 KiB |
+| [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
+| [openai-api](./skills/openai-api/SKILL.md) | 508 | 19 MiB |
+| [openai-docs](./skills/openai-docs/SKILL.md) | 156 | 2.2 MiB |
+| [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 508 | 15 MiB |
+| [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 508 | 15 MiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 455 KiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 447 | 2.4 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 500 | 6.4 MiB |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | 75 | 307 KiB |
+| [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
+| [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
+| [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
+| [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 157 | 1.4 MiB |
+| [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 313 | 2.0 MiB |
+| [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 7.9 KiB |
+| [shadcn](./skills/shadcn/SKILL.md) | 15 | 94 KiB |
+| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
+| [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
+| [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
+| [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | 67 | 1.2 MiB |
+| [tea-cli](./skills/tea-cli/SKILL.md) | 26 | 81 KiB |
+| [tencent-cls](./skills/tencent-cls/SKILL.md) | 4 | 12 KiB |
+| [terraform-docs](./skills/terraform-docs/SKILL.md) | 43 | 166 KiB |
+| [threejs-docs](./skills/threejs-docs/SKILL.md) | 798 | 2.0 MiB |
+| [threejs-guide](./skills/threejs-guide/SKILL.md) | 11 | 134 KiB |
+| [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
+| [transformers-docs](./skills/transformers-docs/SKILL.md) | 167 | 1.2 MiB |
+| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 36 | 1.7 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 485 | 4.1 MiB |
+| [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 539 KiB |
+| [vitest-docs](./skills/vitest-docs/SKILL.md) | 220 | 1.3 MiB |
+| [vllm-docs](./skills/vllm-docs/SKILL.md) | 170 | 1.3 MiB |
+| [wails-docs](./skills/wails-docs/SKILL.md) | 56 | 314 KiB |
+| [waku-docs](./skills/waku-docs/SKILL.md) | 24 | 152 KiB |
+| [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |
+| [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
+| [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |
+| [zellij-docs](./skills/zellij-docs/SKILL.md) | 83 | 458 KiB |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 10 KiB |
+| [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | 2 | 12 KiB |
 
 <!--endregion-->
 
