@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Rollbacks
 
-You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. Rolling back to a previous version of your Worker will immediately create a new [deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#deployments) with the version specified and become the active deployment across all your deployed routes and domains.
+You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. Rolling back to a previous version of your Worker will immediately create a new [deployment](https://developers.cloudflare.com/workers/versions-and-deployments/#deployments) with the version specified and become the active deployment across all your deployed routes and domains.
 
 You can roll back from any deployment, including:
 
 * A single-version deployment (rolling back replaces the current version with the selected version).
-* A [split deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) with two versions (rolling back replaces both versions with the selected version at 100% traffic).
+* A [split deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) with two versions (rolling back replaces both versions with the selected version at 100% traffic).
 
 ## Via Wrangler
 
@@ -34,7 +34,7 @@ To roll back to a specified version of your Worker via the Cloudflare dashboard:
 
 ## Rolling back from a split deployment
 
-If you are using a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) with two versions splitting traffic, rolling back will:
+If you are using a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) with two versions splitting traffic, rolling back will:
 
 1. Replace the split deployment with a single-version deployment.
 2. Route 100% of traffic to the version you selected for rollback.
@@ -71,6 +71,6 @@ You cannot roll back to a previous version of your Worker if the [Cloudflare Dev
 * If the target deployment has a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to an R2 bucket, KV namespace, or queue that no longer exists.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks/#page","headline":"Rollbacks · Cloudflare Workers docs","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/versions-and-deployments/","name":"Versions & Deployments"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/versions-and-deployments/rollbacks/","name":"Rollbacks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#page","headline":"Rollbacks · Cloudflare Workers docs","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/rollbacks/","name":"Rollbacks"}}]}
 ```

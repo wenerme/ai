@@ -12,21 +12,23 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Version overrides
 
-You can use version overrides to send a request to a specific version of your Worker in your [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/).
+You can use version overrides to send a request to a specific version of your Worker in the current deployment, even those set to serve 0% of traffic.
 
-To specify a version override in your request, set the `Cloudflare-Workers-Version-Overrides` header on the request to your Worker. For example:
+## How to set version overrides
+
+To specify a version override in your request, set the `Cloudflare-Workers-Version-Overrides` header on the request to your Worker. `Cloudflare-Workers-Version-Overrides` is a [Dictionary Structured Header ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries) that can contain multiple key-value pairs. Each **key** indicates the name of the Worker the override should be applied to. The **value** indicates the version ID that should be used and must be a [String ↗](https://www.rfc-editor.org/rfc/rfc8941#name-strings). For example:
 
 ```sh
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-name="dc8dcd28-271b-4367-9840-6c244f84cb40"'
 ```
 
-`Cloudflare-Workers-Version-Overrides` is a [Dictionary Structured Header ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries).
-
-The dictionary can contain multiple key-value pairs. Each key indicates the name of the Worker the override should be applied to. The value indicates the version ID that should be used and must be a [String ↗](https://www.rfc-editor.org/rfc/rfc8941#name-strings).
+Version must be in current deployment
 
 A version override will only be applied if the specified version is in the current deployment. The versions in the current deployment can be found using the [wrangler deployments list](https://developers.cloudflare.com/workers/wrangler/commands/general/#deployments-list) command or on the [**Workers & Pages** page of the Cloudflare dashboard > select your Worker > **Deployments** \> **Active Deployment** ↗](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/deployments).
 
-Verifying that the version override was applied
+Workers currently only supports serving **two** different versions in one deployment. Follow the instructions for [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#use-gradual-deployments) to ensure the requested version is in the current deployment. You can set the new version to 0% traffic to avoid normal traffic being routed to it.
+
+### Verify that version overrides were applied
 
 There are a number of reasons why a request's version override may not be applied. For example:
 
@@ -37,7 +39,7 @@ In the case that a request's version override is not applied, the request will b
 
 You can observe the version of your Worker that was invoked using [Observability ↗](https://developers.cloudflare.com/workers/observability/), including in features such as [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/). Alternatively, if you want to inform clients about the version they ran (e.g. for faster and more transparent debugging), you could use the [version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) and return the version ID in the Worker's response.
 
-## Example
+## Smoke test example
 
 You may want to test a new version in production before gradually deploying it to an increasing proportion of external traffic. This is commonly referred to as a "smoke test".
 
@@ -66,6 +68,9 @@ You can set the `Cloudflare-Workers-Version-Overrides` header when making a subr
 
 If you forward the original request object, the override header carries through automatically:
 
+* [  JavaScript ](#tab-panel-12615)
+* [  TypeScript ](#tab-panel-12616)
+
 **JavaScript**
 
 ```js
@@ -77,7 +82,21 @@ export default {
 };
 ```
 
+**TypeScript**
+
+```ts
+// The override header from the inbound request is forwarded to the downstream Worker.
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    return env.MY_SERVICE.fetch(request);
+  },
+};
+```
+
 Alternatively, you can set an override header explicitly:
+
+* [  JavaScript ](#tab-panel-12617)
+* [  TypeScript ](#tab-panel-12618)
 
 **JavaScript**
 
@@ -96,17 +115,35 @@ export default {
 };
 ```
 
+**TypeScript**
+
+```ts
+// Replace the version ID with the target version from `wrangler versions list`.
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const response = await env.MY_SERVICE.fetch("https://example.com/", {
+      headers: {
+        "Cloudflare-Workers-Version-Overrides":
+          'my-downstream-worker="dc8dcd28-271b-4367-9840-6c244f84cb40"',
+      },
+    });
+    return response;
+  },
+};
+```
+
 Note
 
 Version overrides only apply to `fetch()`\-based service binding calls. There is currently no way to specify version overrides when calling a service binding via RPC (`env.MY_SERVICE.someMethod()`), because RPC calls do not support attaching headers.
 
 ## Related resources
 
-* [Gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) — Learn how percentage-based traffic splitting works, including version affinity and observability.
-* [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) — How Workers communicate with each other.
-* [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) — Access version ID and tag from within your Worker.
+* [Version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) \- Use cookies & headers to pin users to a specific version during a gradual deployment.
+* [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) \- Learn how percentage-based traffic splitting works.
+* [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) \- How Workers communicate with each other.
+* [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) \- Access version ID and tag from within your Worker.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/versions-and-deployments/version-overrides/#page","headline":"Version overrides · Cloudflare Workers docs","description":"Send requests to a specific version of your Worker in a gradual deployment using version overrides.","url":"https://developers.cloudflare.com/workers/configuration/versions-and-deployments/version-overrides/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/versions-and-deployments/","name":"Versions & Deployments"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/versions-and-deployments/version-overrides/","name":"Version overrides"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/#page","headline":"Version overrides · Cloudflare Workers docs","description":"Send requests to a specific version of your Worker in a gradual deployment using version overrides.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/version-overrides/","name":"Version overrides"}}]}
 ```

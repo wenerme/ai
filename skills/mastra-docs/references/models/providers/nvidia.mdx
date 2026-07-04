@@ -1,11 +1,11 @@
 ---
 title: "Nvidia | Models"
-description: "Use Nvidia models with Mastra. 83 models available."
+description: "Use Nvidia models with Mastra. 84 models available."
 ---
 
 # [Nvidia logo]Nvidia
 
-Access 83 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 84 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -1034,6 +1034,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "nvidia/z-ai/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -1066,7 +1078,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "nvidia/upstage/solar-10_7b-instruct"
+      ? "nvidia/z-ai/glm-5.2"
       : "nvidia/abacusai/dracarys-llama-3_1-70b-instruct";
   }
 });

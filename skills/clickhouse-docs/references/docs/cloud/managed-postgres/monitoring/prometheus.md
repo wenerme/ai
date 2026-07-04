@@ -110,7 +110,7 @@ deadlocks.
 
 #### Download the dashboard JSON {#download}
 
-<TrackedLink href={useBaseUrl('/examples/managed-postgres-grafana-dashboard.json')} download="managed-postgres-grafana-dashboard.json" eventName="docs.managed_postgres_grafana_dashboard.download">Download the dashboard JSON</TrackedLink>.
+<TrackedLink href={'https://clickhouse-docs-assets.s3.us-east-1.amazonaws.com/examples/managed-postgres-grafana-dashboard.json'} download="managed-postgres-grafana-dashboard.json" eventName="docs.managed_postgres_grafana_dashboard.download">Download the dashboard JSON</TrackedLink>.
 
 #### Open the import flow in Grafana {#open-import}
 

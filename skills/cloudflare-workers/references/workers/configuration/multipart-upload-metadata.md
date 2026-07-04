@@ -75,7 +75,7 @@ At a minimum, the `main_module` key is required to upload a Worker.
 
 ## Additional attributes: [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/)
 
-For [immediately deployed uploads](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#upload-a-new-version-and-deploy-it-immediately), the following **additional** attributes are configurable at the top-level.
+For [immediately deployed uploads](https://developers.cloudflare.com/workers/versions-and-deployments/#upload-a-new-version-and-deploy-it-immediately), the following **additional** attributes are configurable at the top-level.
 
 Note
 
@@ -101,7 +101,7 @@ Except for `annotations`, these attributes are **not available** for version upl
 
 ## Additional attributes: [Version Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/versions/methods/create/)
 
-For [version uploads](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#upload-a-new-version-to-be-gradually-deployed-or-deployed-at-a-later-time), the following **additional** attributes are configurable at the top-level.
+For [version uploads](https://developers.cloudflare.com/workers/versions-and-deployments/#upload-a-new-version-to-be-gradually-deployed-or-deployed-at-a-later-time), the following **additional** attributes are configurable at the top-level.
 
 * `annotations` ` object ` optional
   * Annotations object specific to the Worker version.
@@ -198,6 +198,6 @@ Workers can interact with resources on the Cloudflare Developer Platform using [
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#page","headline":"Multipart upload metadata · Cloudflare Workers docs","description":"Define Workers configuration in JSON metadata for multipart form-data script uploads.","url":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#page","headline":"Multipart upload metadata · Cloudflare Workers docs","description":"Define Workers configuration in JSON metadata for multipart form-data script uploads.","url":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/multipart-upload-metadata/","name":"Multipart upload metadata"}}]}
 ```

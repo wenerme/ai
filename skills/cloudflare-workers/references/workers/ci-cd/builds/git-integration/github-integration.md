@@ -24,7 +24,7 @@ If a commit is on a pull request, Cloudflare will automatically post a comment o
 
 ![GitHub pull request comment](https://developers.cloudflare.com/_astro/github-pull-request-comment.DIkAC8Yh_yF45V.webp)
 
-A [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) will be provided for any builds which perform `wrangler versions upload`. This is particularly useful when reviewing your pull request, as it allows you to compare the code changes alongside an updated version of your Worker.
+A [preview URL](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) will be provided for any builds which perform `wrangler versions upload`. This is particularly useful when reviewing your pull request, as it allows you to compare the code changes alongside an updated version of your Worker.
 
 Comment history reveals any builds completed earlier while the PR was open.
 
@@ -94,6 +94,6 @@ When encountering Git integration related issues, one potential troubleshooting 
 5. Attempt to make a new deployment with your project which was previously broken.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Workers docs","description":"Learn how to manage your GitHub integration for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Workers docs","description":"Learn how to manage your GitHub integration for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/git-integration/","name":"Git integration"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/ci-cd/builds/git-integration/github-integration/","name":"GitHub integration"}}]}
 ```

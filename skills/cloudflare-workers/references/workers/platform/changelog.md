@@ -215,7 +215,7 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 ## 2024-07-19
 
-* Workers with the [mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/) binding now support [Gradual Deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/).
+* Workers with the [mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/) binding now support [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/).
 
 ## 2024-07-18
 
@@ -233,7 +233,7 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 ## 2024-07-01
 
-* When using [Gradual Deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), you can now use [version overrides](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-overrides) to send a request to a specific version of your Worker.
+* When using [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), you can now use [version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) to send a request to a specific version of your Worker.
 
 ## 2024-06-28
 
@@ -258,7 +258,7 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 ## 2024-06-03
 
-* Workers with [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) enabled now support [Gradual Deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/).
+* Workers with [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) enabled now support [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/).
 
 ## 2024-05-17
 

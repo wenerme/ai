@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Preview URLs
 
-# Overview
-
 Preview URLs allow you to preview new versions of your Worker without deploying it to production.
 
 There are two types of preview URLs:
@@ -29,7 +27,7 @@ Preview URLs can be:
 * Used for collaboration between teams to test code changes in a live environment and verify updates.
 * Used to test new API endpoints, validate data formats, and ensure backward compatibility with existing services.
 
-When testing zone level performance or security features for a version, we recommend using [version overrides](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/version-overrides/) so that your zone's performance and security settings apply.
+When testing zone level performance or security features for a version, we recommend using [version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) so that your zone's performance and security settings apply.
 
 Note
 
@@ -39,7 +37,7 @@ Preview URLs are only available for Worker versions uploaded after 2024-09-25.
 
 ### Versioned Preview URLs
 
-Every time you create a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker, a unique static version preview URL is generated automatically. These URLs use a version prefix and follow the format `<VERSION_PREFIX>-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`.
+Every time you create a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker, a unique static version preview URL is generated automatically. These URLs use a version prefix and follow the format `<VERSION_PREFIX>-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`.
 
 New versions of a Worker are created when you run:
 
@@ -55,7 +53,7 @@ Minimum required Wrangler version: 3.74.0\. Check your version by running `wrang
 
 #### View versioned preview URLs using Wrangler
 
-The [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command uploads a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker and returns a preview URL for each version uploaded.
+The [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command uploads a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker and returns a preview URL for each version uploaded.
 
 #### View versioned preview URLs on the Workers dashboard
 
@@ -135,8 +133,8 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11838)
-* [  wrangler.toml ](#tab-panel-11839)
+* [  wrangler.jsonc ](#tab-panel-12611)
+* [  wrangler.toml ](#tab-panel-12612)
 
 **JSONC**
 
@@ -152,8 +150,8 @@ To toggle Preview URLs for a Worker, include any of the following in your Worker
 preview_urls = true
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11840)
-* [  wrangler.toml ](#tab-panel-11841)
+* [  wrangler.jsonc ](#tab-panel-12613)
+* [  wrangler.toml ](#tab-panel-12614)
 
 **JSONC**
 
@@ -183,6 +181,6 @@ If you enable or disable Preview URLs in the Cloudflare dashboard, but do not up
 * You cannot view logs for Preview URLs today, this includes Workers Logs, Wrangler tail and Logpush.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/previews/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/configuration/previews/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/previews/","name":"Preview URLs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/preview-urls/","name":"Preview URLs"}}]}
 ```

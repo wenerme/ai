@@ -25,10 +25,8 @@ For more information on Wrangler, refer to [Wrangler](https://developers.cloudfl
 * [ Multipart upload metadata ](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/)
 * [ Page Rules ](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/)
 * [ Placement ](https://developers.cloudflare.com/workers/configuration/placement/)
-* [ Preview URLs ](https://developers.cloudflare.com/workers/configuration/previews/)
 * [ Routes and domains ](https://developers.cloudflare.com/workers/configuration/routing/)
 * [ Secrets ](https://developers.cloudflare.com/workers/configuration/secrets/)
-* [ Versions & Deployments ](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/)
 * [ Workers Sites ](https://developers.cloudflare.com/workers/configuration/sites/)
 
 ```json

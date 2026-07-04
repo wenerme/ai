@@ -64,7 +64,7 @@ Examples of other deploy commands you can set include:
 
 The non-production branch deploy command is only applicable when you have enabled [non-production branch builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds).
 
-It defaults to `npx wrangler versions upload`, producing a [preview URL](https://developers.cloudflare.com/workers/configuration/previews/). Like the build and deploy commands, it can be customized to instead run anything.
+It defaults to `npx wrangler versions upload`, producing a [preview URL](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/). Like the build and deploy commands, it can be customized to instead run anything.
 
 Examples of other non-production branch deploy commands you can set include:
 
@@ -130,8 +130,8 @@ It is recommended to consistently use the same API token across all uploads and 
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-11788)
-* [ Wrangler ](#tab-panel-11789)
+* [ Dashboard ](#tab-panel-11827)
+* [ Wrangler ](#tab-panel-11828)
 
 To add environment variables via the dashboard:
 
@@ -142,8 +142,8 @@ To add environment variables via the dashboard:
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-11786)
-* [  wrangler.toml ](#tab-panel-11787)
+* [  wrangler.jsonc ](#tab-panel-11825)
+* [  wrangler.toml ](#tab-panel-11826)
 
 **JSONC**
 
@@ -192,6 +192,6 @@ The following system environment variables are injected by default (but can be o
 | WORKERS\_CI\_BRANCH      | <branch-name-from-push-event  | Customizing build based on branch, for example, disabling debug logging on production |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/configuration/","name":"Configuration"}}]}
 ```

@@ -38,8 +38,8 @@ To apply a Create migration:
 
 1. Add the following lines to your Wrangler configuration file:
 
-  * [  wrangler.jsonc ](#tab-panel-8754)
-  * [  wrangler.toml ](#tab-panel-8755)
+  * [  wrangler.jsonc ](#tab-panel-8793)
+  * [  wrangler.toml ](#tab-panel-8794)
 
 **JSONC**
 ```jsonc
@@ -72,8 +72,8 @@ Create migration example
 
 To create a new Durable Object binding `DURABLE_OBJECT_A`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-8760)
-* [  wrangler.toml ](#tab-panel-8761)
+* [  wrangler.jsonc ](#tab-panel-8799)
+* [  wrangler.toml ](#tab-panel-8800)
 
 **JSONC**
 
@@ -125,8 +125,8 @@ The [key-value storage backend](https://developers.cloudflare.com/durable-object
 
 Use `new_classes` on the migration in your Worker's Wrangler file to create a Durable Object class with the key-value storage backend:
 
-* [  wrangler.jsonc ](#tab-panel-8756)
-* [  wrangler.toml ](#tab-panel-8757)
+* [  wrangler.jsonc ](#tab-panel-8795)
+* [  wrangler.toml ](#tab-panel-8796)
 
 **JSONC**
 
@@ -175,8 +175,8 @@ To apply a Delete migration:
 2. Remove references for the class you wish to delete from your Worker code.
 3. Add the following lines to your Wrangler configuration file.
 
-  * [  wrangler.jsonc ](#tab-panel-8758)
-  * [  wrangler.toml ](#tab-panel-8759)
+  * [  wrangler.jsonc ](#tab-panel-8797)
+  * [  wrangler.toml ](#tab-panel-8798)
 
 **JSONC**
 ```jsonc
@@ -208,8 +208,8 @@ Delete migration example
 
 To delete a Durable Object binding `DEPRECATED_OBJECT`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-8762)
-* [  wrangler.toml ](#tab-panel-8763)
+* [  wrangler.jsonc ](#tab-panel-8801)
+* [  wrangler.toml ](#tab-panel-8802)
 
 **JSONC**
 
@@ -249,8 +249,8 @@ To apply a Rename migration:
 
 1. Update the previous class name to the new class name by editing your Wrangler configuration file in the following way:
 
-  * [  wrangler.jsonc ](#tab-panel-8764)
-  * [  wrangler.toml ](#tab-panel-8765)
+  * [  wrangler.jsonc ](#tab-panel-8803)
+  * [  wrangler.toml ](#tab-panel-8804)
 
 **JSONC**
 ```jsonc
@@ -301,8 +301,8 @@ Rename migration example
 
 To rename a Durable Object class, from `OldName` to `UpdatedName`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-8766)
-* [  wrangler.toml ](#tab-panel-8767)
+* [  wrangler.jsonc ](#tab-panel-8805)
+* [  wrangler.toml ](#tab-panel-8806)
 
 **JSONC**
 
@@ -364,8 +364,8 @@ To apply a Transfer migration:
 
 1. Edit your Wrangler configuration file in the following way:
 
-  * [  wrangler.jsonc ](#tab-panel-8768)
-  * [  wrangler.toml ](#tab-panel-8769)
+  * [  wrangler.jsonc ](#tab-panel-8807)
+  * [  wrangler.toml ](#tab-panel-8808)
 
 **JSONC**
 ```jsonc
@@ -419,8 +419,8 @@ Transfer migration example
 
 You can transfer stored Durable Objects from `DurableObjectExample` to `TransferredClass` from a Worker script named `OldWorkerScript`. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-8770)
-* [  wrangler.toml ](#tab-panel-8771)
+* [  wrangler.jsonc ](#tab-panel-8809)
+* [  wrangler.toml ](#tab-panel-8810)
 
 **JSONC**
 
@@ -514,9 +514,9 @@ You cannot enable a SQLite storage backend on an existing, deployed Durable Obje
 
 Important
 
-Durable Object migrations are atomic operations and cannot be gradually deployed. To provide early feedback to developers, new Worker versions with new migrations cannot be uploaded. Refer to [Gradual deployments for Durable Objects](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects) for more information.
+Durable Object migrations are atomic operations and cannot be gradually deployed. To provide early feedback to developers, new Worker versions with new migrations cannot be uploaded. Refer to [Gradual deployments for Durable Objects](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#page","headline":"Durable Objects migrations · Cloudflare Durable Objects docs","description":"Configure Wrangler migrations to create, rename, delete, or transfer Durable Object classes.","url":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#page","headline":"Durable Objects migrations · Cloudflare Durable Objects docs","description":"Configure Wrangler migrations to create, rename, delete, or transfer Durable Object classes.","url":"https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/durable-objects-migrations/","name":"Durable Objects migrations"}}]}
 ```

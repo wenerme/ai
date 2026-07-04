@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Learn how to configure advanced routing options for the static assets of your Worker.
 
-* [ Gradual rollouts ](https://developers.cloudflare.com/workers/static-assets/routing/advanced/gradual-rollouts/)
+* [ Gradual rollouts ](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/#static-assets)
 * [ HTML handling ](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/)
 * [ Serving a subdirectory ](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/)
 
