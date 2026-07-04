@@ -165,6 +165,7 @@ const lines = [
       `</details>`,
     ].join("\n"),
   ),
+  "",
   "## Stats",
   "",
   `> ${skills.length} skills, ${totalFiles} files, ${formatBytes(totalSizeBytes)} total`,
