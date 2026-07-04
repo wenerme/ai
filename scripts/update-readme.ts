@@ -123,6 +123,7 @@ const skills = readdirSync(skillsDir, { withFileTypes: true })
 
 // Summary line for description in table
 const shortDesc = (s: SkillMeta) => truncate(s.description.split("\n")[0].trim(), 120);
+const skillLink = (s: SkillMeta) => `[${s.name}](./skills/${s.name}/SKILL.md)`;
 
 function formatBytes(bytes: number): string {
   const units = ["B", "KiB", "MiB", "GiB"];
@@ -148,7 +149,7 @@ const lines = [
   "",
   "| Skill | Description | Source |",
   "|-------|-------------|--------|",
-  ...skills.map((s) => `| \`${s.name}\` | ${shortDesc(s)} | ${s.source} |`),
+  ...skills.map((s) => `| ${skillLink(s)} | ${shortDesc(s)} | ${s.source} |`),
   "",
   ...skills.map((s) =>
     [
@@ -170,7 +171,7 @@ const lines = [
   "",
   "| Skill | Files | Size |",
   "|-------|-------|------|",
-  ...skills.map((s) => `| \`${s.name}\` | ${s.files} | ${formatBytes(s.sizeBytes)} |`),
+  ...skills.map((s) => `| ${skillLink(s)} | ${s.files} | ${formatBytes(s.sizeBytes)} |`),
   "",
 ];
 
