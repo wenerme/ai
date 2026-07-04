@@ -16,6 +16,10 @@ TypeScript is a first-class language on Cloudflare Workers. All APIs provided in
 
 We recommend you generate types for your Worker by running [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types). Cloudflare also publishes type definitions to [GitHub ↗](https://github.com/cloudflare/workers-types) and [npm ↗](https://www.npmjs.com/package/@cloudflare/workers-types) (`npm install -D @cloudflare/workers-types`).
 
+Version 5 and later
+
+`@cloudflare/workers-types` version 5 exposes only the latest runtime types. The dated entrypoints, such as `@cloudflare/workers-types/2022-11-30`, are removed. Import from `@cloudflare/workers-types` for the latest stable types, or from `@cloudflare/workers-types/experimental` for APIs behind experimental compatibility flags. To match types to a specific compatibility date and flags, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
+
 ###
 
 Generate types that match your Worker's configuration
@@ -180,9 +184,9 @@ Most projects will have existing build and development scripts, as well as some 
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
 
-* [ npm ](#tab-panel-12173)
-* [ yarn ](#tab-panel-12174)
-* [ pnpm ](#tab-panel-12175)
+* [ npm ](#tab-panel-12210)
+* [ yarn ](#tab-panel-12211)
+* [ pnpm ](#tab-panel-12212)
 
 **YAML**
 
@@ -210,9 +214,9 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-12176)
-* [ yarn ](#tab-panel-12177)
-* [ pnpm ](#tab-panel-12178)
+* [ npm ](#tab-panel-12213)
+* [ yarn ](#tab-panel-12214)
+* [ pnpm ](#tab-panel-12215)
 
 **YAML**
 
@@ -248,6 +252,6 @@ This fails the CI job if the committed types file is out-of-date, prompting deve
 * [TypeScript Examples](https://developers.cloudflare.com/workers/examples/?languages=TypeScript)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"Write Cloudflare Workers in TypeScript · Cloudflare Workers docs","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"Write Cloudflare Workers in TypeScript · Cloudflare Workers docs","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/typescript/","name":"TypeScript"}}]}
 ```

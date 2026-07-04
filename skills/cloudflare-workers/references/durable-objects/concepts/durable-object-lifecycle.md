@@ -88,7 +88,7 @@ A Durable Object incurs charges only when it is **actively running in-memory**, 
 
 Durable Objects will occasionally shut down and objects are restarted, which will run your Durable Object class constructor. This can happen for various reasons, including:
 
-* New Worker [deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/) with code updates
+* New Worker [deployments](https://developers.cloudflare.com/workers/versions-and-deployments/) with code updates
 * Lack of requests to an object following the state transitions documented above
 * Cloudflare updates to the Workers runtime system
 * Workers runtime decisions on where to host objects
@@ -133,6 +133,6 @@ While this may feel unintuitive, Durable Object storage writes are fast and sync
 This approach ensures your Durable Object can safely resume from any point, even if it shuts down unexpectedly.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#page","headline":"Lifecycle of a Durable Object · Cloudflare Durable Objects docs","description":"Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.","url":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#page","headline":"Lifecycle of a Durable Object · Cloudflare Durable Objects docs","description":"Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.","url":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/concepts/durable-object-lifecycle/","name":"Lifecycle of a Durable Object"}}]}
 ```

@@ -924,135 +924,15 @@
     "size": 2599,
     "updatedAt": "2026-06-25T05:42:28.489Z"
   },
-  "grafana-ml-app/billing.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/billing.md",
-    "size": 1415,
-    "updatedAt": "2026-06-25T05:42:28.850Z"
-  },
-  "grafana-ml-app/dynamic-alerting.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting.md",
-    "size": 1054,
-    "updatedAt": "2026-06-25T05:42:29.210Z"
-  },
-  "grafana-ml-app/dynamic-alerting/forecasting.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting.md",
-    "size": 3957,
-    "updatedAt": "2026-06-25T05:42:29.575Z"
-  },
-  "grafana-ml-app/dynamic-alerting/forecasting/config.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting/config.md",
-    "size": 4298,
-    "updatedAt": "2026-06-25T05:42:29.925Z"
-  },
-  "grafana-ml-app/dynamic-alerting/forecasting/holidays.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting/holidays.md",
-    "size": 5124,
-    "updatedAt": "2026-06-25T05:42:30.286Z"
-  },
-  "grafana-ml-app/dynamic-alerting/forecasting/models.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/forecasting/models.md",
-    "size": 6666,
-    "updatedAt": "2026-06-25T05:42:30.645Z"
-  },
-  "grafana-ml-app/dynamic-alerting/outlier-detection.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/outlier-detection.md",
-    "size": 7474,
-    "updatedAt": "2026-06-25T05:42:31.009Z"
-  },
-  "grafana-ml-app/dynamic-alerting/querying.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/querying.md",
-    "size": 5262,
-    "updatedAt": "2026-06-25T05:42:31.374Z"
-  },
-  "grafana-ml-app/dynamic-alerting/rbac.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/dynamic-alerting/rbac.md",
-    "size": 2112,
-    "updatedAt": "2026-06-25T05:42:31.738Z"
-  },
   "grafana-ml-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest.md",
-    "size": 2624,
-    "updatedAt": "2026-06-25T05:42:32.088Z"
-  },
-  "grafana-ml-app/intro.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/intro.md",
-    "size": 3769,
-    "updatedAt": "2026-06-25T05:42:32.447Z"
-  },
-  "grafana-ml-app/llm.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/llm.md",
     "size": 2646,
-    "updatedAt": "2026-06-25T05:42:32.790Z"
+    "updatedAt": "2026-07-04T04:08:27.377Z"
   },
-  "grafana-ml-app/llm/llm-setup.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/llm/llm-setup.md",
+  "grafana-ml-app/llm-setup.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/llm-setup.md",
     "size": 3187,
-    "updatedAt": "2026-06-25T05:42:33.155Z"
-  },
-  "grafana-ml-app/sift.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift.md",
-    "size": 1813,
-    "updatedAt": "2026-06-25T05:42:33.509Z"
-  },
-  "grafana-ml-app/sift/analyses.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses.md",
-    "size": 2070,
-    "updatedAt": "2026-06-25T05:42:33.864Z"
-  },
-  "grafana-ml-app/sift/analyses/error-pattern-logs.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/error-pattern-logs.md",
-    "size": 2521,
-    "updatedAt": "2026-06-25T05:42:34.266Z"
-  },
-  "grafana-ml-app/sift/analyses/http-error-series.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/http-error-series.md",
-    "size": 3222,
-    "updatedAt": "2026-06-25T05:42:34.621Z"
-  },
-  "grafana-ml-app/sift/analyses/kube-crashes.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/kube-crashes.md",
-    "size": 2009,
-    "updatedAt": "2026-06-25T05:42:34.983Z"
-  },
-  "grafana-ml-app/sift/analyses/log-query.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/log-query.md",
-    "size": 2956,
-    "updatedAt": "2026-06-25T06:16:06.541Z"
-  },
-  "grafana-ml-app/sift/analyses/metric-query.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/metric-query.md",
-    "size": 2536,
-    "updatedAt": "2026-06-25T05:42:35.681Z"
-  },
-  "grafana-ml-app/sift/analyses/noisy-neighbors.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/noisy-neighbors.md",
-    "size": 1792,
-    "updatedAt": "2026-06-25T05:42:36.026Z"
-  },
-  "grafana-ml-app/sift/analyses/recent-deployments.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/recent-deployments.md",
-    "size": 1247,
-    "updatedAt": "2026-06-25T05:42:36.444Z"
-  },
-  "grafana-ml-app/sift/analyses/resource-contentions.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/analyses/resource-contentions.md",
-    "size": 1627,
-    "updatedAt": "2026-06-25T05:42:36.791Z"
-  },
-  "grafana-ml-app/sift/sift-config.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/sift-config.md",
-    "size": 3935,
-    "updatedAt": "2026-06-25T05:42:37.135Z"
-  },
-  "grafana-ml-app/sift/sift-panel.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/sift-panel.md",
-    "size": 2514,
-    "updatedAt": "2026-06-25T05:42:37.514Z"
-  },
-  "grafana-ml-app/sift/sift.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest/sift/sift.md",
-    "size": 5579,
-    "updatedAt": "2026-06-25T05:42:37.868Z"
+    "updatedAt": "2026-07-04T04:08:27.527Z"
   },
   "grafana-mock-datasource/configuration.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mock-datasource/latest/configuration.md",
@@ -1916,8 +1796,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8898,
-    "updatedAt": "2026-07-02T01:40:02.944Z"
+    "size": 8872,
+    "updatedAt": "2026-07-04T04:08:54.267Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

@@ -27,6 +27,14 @@ stdout.
 Note that formatting is not covered by any backwards compatibility guarantee
 and is subject to change from time to time.
 
+Recipe bodies are indented with four spaces by default. This can be changed
+with the `--indentation` command-line option, the `JUST_INDENTATION`
+environment variable, or the `indentation` setting:
+
+```just
+set indentation := "  "
+```
+
 Invoking `just --fmt --check` runs `--fmt` in check mode. Instead of
 overwriting the `justfile`, `just` will exit with an exit code of 0 if it is
 formatted correctly, and will exit with 1 and print a diff if it is not.

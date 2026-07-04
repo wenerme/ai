@@ -158,8 +158,8 @@
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
     "skill": "google-ai-docs",
-    "size": 8668,
-    "updatedAt": "2026-07-01T01:37:26.555Z"
+    "size": 8563,
+    "updatedAt": "2026-07-04T04:07:04.777Z"
   },
   "google-ai-docs/openai.md": {
     "url": "https://ai.google.dev/gemini-api/docs/openai",

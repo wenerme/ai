@@ -49,8 +49,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-11854)
-* [  TypeScript ](#tab-panel-11855)
+* [  JavaScript ](#tab-panel-11889)
+* [  TypeScript ](#tab-panel-11890)
 
 **JavaScript**
 
@@ -167,7 +167,7 @@ Secrets can be added through [wrangler secret put](https://developers.cloudflare
 npx wrangler secret put <KEY>
 ```
 
-If using [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret put` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
+If using [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret put` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
 
 Note
 
@@ -215,7 +215,7 @@ Secrets can be deleted through [wrangler secret delete](https://developers.cloud
 npx wrangler secret delete <KEY>
 ```
 
-If using [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret delete` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
+If using [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret delete` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
 
 ```sh
 npx wrangler versions secret delete <KEY>
@@ -248,6 +248,6 @@ Do not use plaintext environment variables to store sensitive information. Use [
 * [Cloudflare Secrets Store](https://developers.cloudflare.com/secrets-store/) \- Encrypt and store sensitive information as secrets that are securely reusable across your account.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets · Cloudflare Workers docs","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets · Cloudflare Workers docs","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/secrets/","name":"Secrets"}}]}
 ```

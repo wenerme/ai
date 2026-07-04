@@ -1183,7 +1183,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26775 files, 288 MiB total
+> 106 skills, 26754 files, 288 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1210,14 +1210,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
 | `claude-code-docs` | 121 | 4.3 MiB |
-| `clickhouse-docs` | 1091 | 10.0 MiB |
+| `clickhouse-docs` | 1092 | 10 MiB |
 | `cloudflare-ai` | 1509 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 30 KiB |
 | `cloudflare-networking` | 826 | 5.0 MiB |
 | `cloudflare-observability-admin` | 1230 | 8.2 MiB |
 | `cloudflare-security` | 1005 | 5.6 MiB |
-| `cloudflare-workers` | 771 | 7.1 MiB |
+| `cloudflare-workers` | 773 | 7.1 MiB |
 | `cloudflare-zero-trust` | 929 | 9.6 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4632 | 14 MiB |
@@ -1230,11 +1230,11 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 102 | 693 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 290 | 452 KiB |
+| `glab-docs` | 290 | 453 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 89 | 2.0 MiB |
 | `grafana-docs` | 625 | 6.1 MiB |
-| `grafana-plugin-docs` | 612 | 3.8 MiB |
+| `grafana-plugin-docs` | 588 | 3.7 MiB |
 | `hono-docs` | 86 | 354 KiB |
 | `huggingface-docs` | 358 | 2.0 MiB |
 | `humanizer` | 1 | 15 KiB |
@@ -1261,7 +1261,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `opencode-docs` | 53 | 455 KiB |
 | `openobserve-docs` | 444 | 2.3 MiB |
 | `openrouter-docs` | 500 | 6.4 MiB |
-| `orpc-docs` | 75 | 306 KiB |
+| `orpc-docs` | 75 | 307 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |

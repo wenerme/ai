@@ -1,11 +1,11 @@
 ---
 title: "Alibaba (China) | Models"
-description: "Use Alibaba (China) models with Mastra. 83 models available."
+description: "Use Alibaba (China) models with Mastra. 84 models available."
 ---
 
 # [Alibaba (China) logo]Alibaba (China)
 
-Access 83 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
+Access 84 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
 
 Learn more in the [Alibaba (China) documentation](https://www.alibabacloud.com/help/en/model-studio/models).
 
@@ -218,6 +218,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.87,
     "outputCost": 3.48
+  },
+  {
+    "model": "alibaba-cn/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 1.1,
+    "outputCost": 3.851
   },
   {
     "model": "alibaba-cn/kimi-k2-thinking",

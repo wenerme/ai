@@ -17,7 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Data security ](https://developers.cloudflare.com/durable-objects/reference/data-security/)
 * [ Data location ](https://developers.cloudflare.com/durable-objects/reference/data-location/)
 * [ Environments ](https://developers.cloudflare.com/durable-objects/reference/environments/)
-* [ Gradual Deployments ](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects)
+* [ Gradual Deployments ](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects)
 * [ FAQs ](https://developers.cloudflare.com/durable-objects/reference/faq/)
 * [ Glossary ](https://developers.cloudflare.com/durable-objects/reference/glossary/)
 

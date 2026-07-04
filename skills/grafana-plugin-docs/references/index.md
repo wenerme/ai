@@ -12,7 +12,6 @@ description: "Documentation for data source and app plugins built and maintained
 Documentation for data source and app plugins built and maintained by Grafana Labs. This documentation includes guidance on setting up, querying, and using the features specific to these plugins.
 
 - [Adobe Analytics data source](/docs/plugins/grafana-adobeanalytics-datasource/latest/ "Adobe Analytics data source")
-- [AI and machine learning](/docs/plugins/grafana-ml-app/latest/ "AI and machine learning")
 - [Amazon Athena data source](/docs/plugins/grafana-athena-datasource/latest/ "Amazon Athena data source")
 - [Amazon Aurora data source](/docs/plugins/grafana-aurora-datasource/latest/ "Amazon Aurora data source")
 - [Amazon CloudWatch data source](/docs/plugins/cloudwatch/latest/ "Amazon CloudWatch data source")
@@ -61,6 +60,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Jenkins data source for Grafana](/docs/plugins/grafana-jenkins-datasource/latest/ "Jenkins data source for Grafana")
 - [Jira data source](/docs/plugins/grafana-jira-datasource/latest/ "Jira data source")
 - [JSON API data source for Grafana](/docs/plugins/marcusolsson-json-datasource/latest/ "JSON API data source for Grafana")
+- [LLM plugin](/docs/plugins/grafana-ml-app/latest/ "LLM plugin")
 - [LogicMonitor Devices data source](/docs/plugins/grafana-logicmonitor-datasource/latest/ "LogicMonitor Devices data source")
 - [Looker data source plugin for Grafana](/docs/plugins/grafana-looker-datasource/latest/ "Looker data source plugin for Grafana")
 - [Mock data source for Grafana](/docs/plugins/grafana-mock-datasource/latest/ "Mock data source for Grafana")

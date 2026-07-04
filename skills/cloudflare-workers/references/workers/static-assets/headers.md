@@ -128,7 +128,7 @@ To enable other domains to fetch every static asset from your Worker, the follow
   Access-Control-Allow-Origin: *
 ```
 
-This applies the \`Access-Control-Allow-Origin\` header to any incoming URL. Note that the CORS specification only allows \`\*\`, \`null\`, or an exact origin as valid \`Access-Control-Allow-Origin\` values — wildcard patterns within origins are not supported. To allow CORS from specific [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/), you will need to handle this dynamically in your Worker code rather than through the \`\_headers\` file.
+This applies the \`Access-Control-Allow-Origin\` header to any incoming URL. Note that the CORS specification only allows \`\*\`, \`null\`, or an exact origin as valid \`Access-Control-Allow-Origin\` values — wildcard patterns within origins are not supported. To allow CORS from specific [preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/), you will need to handle this dynamically in your Worker code rather than through the \`\_headers\` file.
 
 ##### Prevent your workers.dev URLs showing in search results
 
