@@ -69,6 +69,7 @@
     "orpc-docs": { "repo": "unnoq/orpc" },
     "papermc-docs": { "repo": "PaperMC/docs" },
     "peekaboo": { "repo": "steipete/peekaboo" },
+    "powerdns-docs": { "repo": "PowerDNS/pdns", "path": "docs", "ref": "master" },
     "pytorch-docs": { "repo": "pytorch/pytorch", "path": "docs" },
     "sling-cli": { "url": "https://docs.slingdata.io" },
     "slopus-happy-docs": { "repo": "slopus/happy" },

@@ -1,0 +1,737 @@
+Changelogs for 4.4.x
+====================
+.. changelog::
+  :version: 4.4.3
+  :released: 25th of March 2022
+
+  This is a security fix release for :doc:`PowerDNS Security Advisory 2022-01 <../security-advisories/powerdns-advisory-2022-01>`.
+  Additionally, because CentOS 8 is End Of Life now, we have switched those builds to Oracle Linux 8. The resulting packages are compatible with RHEL and all derivatives.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 11453
+
+    Fix validation of incremental zone transfers (IXFRs).
+
+.. changelog::
+  :version: 4.4.2
+  :released: 25th of November 2021
+
+  This is version 4.4.2 of the Authoritative Server.
+  It fixes one issue.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 11004
+
+    RFC2136/nsupdate: apply new TTL to whole RRset, not only to the added record
+
+.. changelog::
+  :version: 4.4.1
+  :released: 8th of February 2021
+
+  This is version 4.4.1 of the Authoritative Server.
+  This releases fixes several small issues discovered since the release of 4.4.0.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 10008
+
+    fix TCP answer counters
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9965
+
+    debian packaging update
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 10039
+
+    run deleteDomain() inside a transaction
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9985
+
+    lmdb: do not reuse backend that has seen corrupted data
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9953
+
+    dockerfiles: do not claim equivs-dummy is built from the pdns source package
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9952
+
+    Fix missing #include for gcc-11
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9949
+
+    lmdb: serialise LMDBBackend construction to ensure only a single schema upgrade is attempted
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9946
+
+    lmdb: Do a mdb_readers_check to clean up stale readers on database load
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9923
+
+    backport some asan/ubsan fixes
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9912
+
+    pdnsutil edit-zone: do not exit on ZoneParser exception
+
+.. changelog::
+  :version: 4.4.0
+  :released: 18th of December 2020
+
+  This is version 4.4.0 of the Authoritative Server.
+
+  This release drops GSS/TSIG support, please see :doc:`PowerDNS Security Advisory 2020-06 <../security-advisories/powerdns-advisory-2020-06>`.
+
+  Version 4.4.0 brings a bunch of exciting changes:
+
+  * the LMDB backend now supports long record content, making it production ready for everybody
+  * the SVCB and HTTPS record types are supported, with limited additional processing
+  * transaction handling in the 2136 handler and the HTTP API was again improved a lot, avoiding various spurious issues users may have noticed if they do a lot of changes
+  * a new setting (:ref:`setting-consistent-backends`) offers a roughly 30% speedup, subject to conditions
+  * we finally emit Prometheus metrics!
+
+  We want to specifically thank Robin Geuze, Kees Monshouwer, Mischan Toosarani-Hausberger, Chris Hofstaedtler, and Kevin Fleming for their contributions to this release.
+  We are also grateful to all other reporters of bugs, issues, feature requests, and submitters of smaller fixes and features.
+
+  Please make sure to read the :doc:`upgrade notes <../upgrading>` before upgrading.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9884
+
+    clear the LMDB set state when performing a new lookup or list to prevent corruption cases (Robin Geuze)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9878
+
+    SVCB: Correctly parse and print unknown params
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9873
+
+    fix direct-dnskey in AXFR-out (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9866
+
+    don't log trusted-notification-proxy notify at error level (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9853
+
+    Stop using incbin and use od & sed to generate constant string data.
+
+.. changelog::
+  :version: 4.4.0-rc1
+  :released: 7th of December 2020
+
+  This is the first Release Candidate for version 4.4.0 of the Authoritative Server.
+  If no trouble surfaces, we will release the actual 4.4.0 within a few weeks.
+
+  This release drops GSS/TSIG support, please see :doc:`PowerDNS Security Advisory 2020-06 <../security-advisories/powerdns-advisory-2020-06>`.
+
+  Version 4.4.0 brings a bunch of exciting changes:
+
+  * the LMDB backend now supports long record content, making it production ready for everybody
+  * the SVCB and HTTPS record types are supported, with limited additional processing
+  * transaction handling in the 2136 handler and the HTTP API was again improved a lot, avoiding various spurious issues users may have noticed if they do a lot of changes
+  * a new setting (:ref:`setting-consistent-backends`) offers a roughly 30% speedup, subject to conditions
+  * we finally emit Prometheus metrics!
+
+  We want to specifically thank Robin Geuze, Kees Monshouwer, Mischan Toosarani-Hausberger, Chris Hofstaedtler, and Kevin Fleming for their contributions to this release.
+  We are also grateful to all other reporters of bugs, issues, feature requests, and submitters of smaller fixes and features.
+
+  Please make sure to read the :doc:`upgrade notes <../upgrading>` before upgrading.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9816
+
+    geoip: set netmask on all string formatting types (Kees Monshouwer)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9800
+
+    api-swagger.json: do not depend on .venv target
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9798
+
+    Ensure socket-dir matches runtime dir on old systemd
+
+  .. change::
+    :tags: Improvements
+    :issues: 9730
+
+    pdnsutil add-record: notice when backend does not support replaceRRSet
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9765
+
+    add remote to default axfr logging (Kees Monshouwer)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9785
+
+    fix rounding inaccuracy in latency statistics (Kees Monshouwer)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9773
+
+    APL records: fix endianness problem
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9761
+
+    Fix the DNSName move assignment operator
+
+.. changelog::
+  :version: 4.4.0-beta1
+  :released: 23rd of November 2020
+
+  This is version 4.4.0-beta1 of the Authoritative Server.
+
+  This release drops GSS/TSIG support, please see :doc:`PowerDNS Security Advisory 2020-06 <../security-advisories/powerdns-advisory-2020-06>`.
+
+  Version 4.4.0 brings a bunch of exciting changes:
+
+  * the LMDB backend now supports long record content, making it production ready for everybody
+  * the SVCB and HTTPS record types are supported, with limited additional processing
+  * transaction handling in the 2136 handler and the HTTP API was again improved a lot, avoiding various spurious issues users may have noticed if they do a lot of changes
+  * a new setting (:ref:`setting-consistent-backends`) offers a roughly 30% speedup, subject to conditions
+  * we finally emit Prometheus metrics!
+
+  We want to specifically thank Robin Geuze, Kees Monshouwer, Mischan Toosarani-Hausberger, Chris Hofstaedtler, and Kevin Fleming for their contributions to this release.
+  We are also grateful to all other reporters of bugs, issues, feature requests, and submitters of smaller fixes and features.
+
+  Please make sure to read the :doc:`upgrade notes <../upgrading>` before upgrading.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9735
+
+    pdnsutil check-zone: DNAME fixes
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9704
+
+    nxdomain performance (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9731
+
+    logging: put quotes around some IPs to make messages easier to read
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9713
+
+    allow ip ranges as trusted-notification-proxy
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 8707
+
+    lmdb: fill di.serial (this fixes the 'serial=0' API bug)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9714
+
+    disable mysql automatic charset detection (see :doc:`upgrade notes <../upgrading>`)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9712
+
+    Use Python 3 in build system (Kevin Fleming)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 8911
+
+    Add '/api/docs' endpoint to Auth server (Kevin Fleming)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9688
+
+    adjust AXFR, IXFR events loglevels (Kees Monshouwer)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 8608
+
+    geoipbackend: accept custom lookup mapping (criteo-forks)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9692
+
+    pdnsutil zone key improvements (Chris Hofstaedtler)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9693
+
+    make it possible to replace now supported TYPExx records (Kees Monshouwer)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9174
+
+    tinydnsbackend: Ignore duplicate SOA in getAllDomains()
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9685
+    :issues: 9675
+
+    add some missing counters. Fixes #9675
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9239
+
+    Add pdns_control command to the list of XFR domains in queue
+
+.. changelog::
+  :version: 4.4.0-alpha3
+  :released: 5th of November 2020
+
+  This is version 4.4.0-alpha3 of the Authoritative Server.
+
+  Alpha 2 was not released due to the LMDB encoding bug mentioned below, found shortly after starting the Alpha 2 release process.
+
+  This release drops GSS/TSIG support, please see :doc:`PowerDNS Security Advisory 2020-06 <../security-advisories/powerdns-advisory-2020-06>`.
+
+  Version 4.4.0 brings a bunch of exciting changes:
+
+  * the LMDB backend now supports long record content, making it production ready for everybody
+  * the SVCB and HTTPS record types are supported, with limited additional processing
+  * transaction handling in the 2136 handler and the HTTP API was again improved a lot, avoiding various spurious issues users may have noticed if they do a lot of changes
+  * a new setting (:ref:`setting-consistent-backends`) offers a roughly 30% speedup, subject to conditions
+  * we finally emit Prometheus metrics!
+
+  We want to specifically thank Robin Geuze, Kees Monshouwer, Mischan Toosarani-Hausberger, and Chris Hofstaedtler for their contributions to this release.
+  We are also grateful to all other reporters of bugs, issues, feature requests, and submitters of smaller fixes and features.
+
+  Please make sure to read the :doc:`upgrade notes <../upgrading>` before upgrading.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9664, 9665
+
+    LMDB: Fix encoding of deleted RRsets (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9656, 9483
+
+    When :ref:`setting-consistent-backends` is enabled, use ANY queries toward backends whenever possible. (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9625, 9552
+
+    Deprecate :ref:`setting-local-ipv6` and :ref:`setting-query-local-address6`, to prepare for removal in 4.5.0 (Chris Hofstaedtler, Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9611
+
+    pdns: bind-backend speedup feedRecord() (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9568
+
+    auth: Speedup presigned signature lookups. (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9645
+
+    auth: bindbackend: 'rediscover' changes to 'type' (Roald Stolte)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9647
+
+    auth lmdb: fill di.backend in getUnfreshSlaveInfos and getAllDomains (this makes the right serial appear in API calls)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9623
+
+    gsql,bind: allow seamless serving of newly-supported TYPExx records (Chris Hofstaedtler)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9631
+
+    auth: add support for dnssec removal to CDS/CDNSKEY (Kees Monshouwer)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9627
+
+    auth: change "misconfigured" SOA MNAME to not mention powerdns and be RFC6761 compliant
+
+  .. change::
+    :tags: Removed Features
+    :pullreq: 9593
+
+    Auth: remove SOA autofilling, remove set-ptr feature from API (Kees Monshouwer)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9613
+
+    LUA records: handle a potentially uncaught exception
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9580, 9550
+
+    Fixes for APL records pointing to fe80 (Chris Hofstaedtler)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9549
+
+    pdns_control: add show <prefix> (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9544
+
+    svc-records: Initialize d_port
+
+.. changelog::
+  :version: 4.4.0-alpha1
+  :released: 30th of September 2020
+
+  This is version 4.4.0-alpha1 of the Authoritative Server.
+  This release drops GSS/TSIG support, please see :doc:`PowerDNS Security Advisory 2020-06 <../security-advisories/powerdns-advisory-2020-06>`.
+
+  Version 4.4.0 brings a bunch of exciting changes:
+
+  * the LMDB backend now supports long record content, making it production ready for everybody
+  * the SVCB and HTTPS record types are supported, with limited additional processing
+  * transaction handling in the 2136 handler and the HTTP API was again improved a lot, avoiding various spurious issues users may have noticed if they do a lot of changes
+  * we finally emit Prometheus metrics!
+
+  We want to specifically thank Robin Geuze, Kees Monshouwer, Mischan Toosarani-Hausberger, and Chris Hofstaedtler for their contributions to this release.
+  We are also grateful to all other reporters of bugs, issues, feature requests, and submitters of smaller fixes and features.
+
+  Please make sure to read the :doc:`upgrade notes <../upgrading>` before upgrading.
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9369, 8638, 9337
+
+    New RRtypes: SVCB, HTTPS, APL.
+    Fixed RRtypes: IPSECKEY.
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9389
+
+    LMDB: new schema that supports long records (Robin Geuze)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9518, 9427, 9409, 9407
+
+    Improved transaction handling, especially around the metadata cache (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9524
+
+    bindbackend: 'rediscover' changes to master and also-notifies (Matti Hiljanen)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9496
+
+    ignore cryptokeys in presigned zones (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9039
+
+    quote/escape PG connection parameters
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8942
+
+    lua: add backtraces to errors
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9478
+
+    remove a '// HACK FIXME400' and fix the bugs it was hiding (Kees Monshouwer)
+
+  .. change::
+    :tags: Removed Features
+    :pullreq: 9385
+
+    Remove GSS/TSIG support
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8993
+
+    Skip EDNS Cookies in the packet cache
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8969
+
+    Use more of systemd's sandboxing options when available
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9387
+
+    auth slave: log successful NOTIFY (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9439
+
+    Fix the sample 'geoip.conf' for Debian-based packages
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9419, 9430
+
+    sdig: Increment the DNS message IDs when pipelining, report ID mismatches
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9408
+
+    Fix building with LLVM11 (RvdE)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9157
+
+    Add support for FreeBSD's SO_REUSEPORT_LB
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9101
+
+    LUA records: two improvements to createForward
+
+  .. change::
+    :tags: New Features
+    :pullreq: 8824
+
+    Allow forced secondary zone retrieval
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 8928
+
+    Ensure qtype is set before calling setContent() in axfrfilter()
+
+  .. change::
+    :tags: New Features
+    :pullreq: 7963
+
+    Add a new command to add a super-master to SQL backends (Godwottery)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8564, 8565
+
+    geoipbackend: top looking after first weighted match, propagate weighted rounding gap fix (criteo-forks)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8623
+
+    Make a combination of delete and replace for rrset possible (jonathaneen)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9340
+
+    Auth API: Allow removal of NSEC3PARAM metadata
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9218
+
+    log more pdns_control actions (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9318
+
+    gsqlbackend: allow backend-specific queries (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9265
+
+    add used master address to slave check logs (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9280
+
+    immediately fill account, kind, masters on zone create (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9169
+
+    fetch all metadata at once (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9252
+
+    Add version 'statistic' to prometheus
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9253
+    :issues: 4973
+
+    pdnsutil: make sure we let all destructors run.
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9215
+
+    PKCS11 improvements
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9189
+
+    gpgsqlbackend: add parameters to query logging (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9187
+
+    Set SyslogIdentifier for multiple instances (Chris Hofstaedtler)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9183
+
+    API: Allow rectifying Slave zones (Chris Hofstaedtler)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 9182
+
+    Implemented prometheus metrics-endpoint for auth (supervacuus)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9163
+
+    Optimize IXFR-to-AXFR fallback path (Chris Hofstaedtler)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 8943
+
+    Remote Backend: Throw DBException in functions that allow it
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9073
+
+    Ensure runtime dirs for virtual services differ
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9080
+
+    better (actual) fix for mem leak in SSQLite3::execute()
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9069
+
+    Avoid "pthread_rwlock_destroy on rwlock with waiters!" on OpenBSD
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 9060
+
+    BIND-DOMAIN-EXTENDED-STATUS: don't look for a domain called BIND-DOMAIN-EXTENDED-STATUS
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 9024
+
+    auth smysql: mimic error message format from mysql tooling
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8975
+
+    improve sql schema updates (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8939, 8925
+
+    NSEC fixes for unpublished DNSKEY (RobinGeuze)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8929
+
+    make sure we look at 10% of all cached items during cleanup (Kees Monshouwer)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 8714
+
+    Reduce the number of temporary memory allocations

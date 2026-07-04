@@ -1,0 +1,20 @@
+Searching
+=========
+
+The API allows searching for data in :json:schema:`Zones <Zone>`, :json:schema:`Comments <Comment>` and :json:schema:`RRSets <RRSet>`.
+
+.. note::
+
+  Not all backends support searching in records or comments.
+
+
+Endpoints
+---------
+
+.. openapi:: openapi/authoritative-api-openapi.yaml
+  :paths: /servers/{server_id}/search-data
+  :examples:
+
+Objects
+-------
+.. json:schema:: SearchResult

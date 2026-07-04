@@ -1,0 +1,975 @@
+Changelogs for 5.0.x
+====================
+
+.. changelog::
+  :version: 5.0.6
+  :released: 25th of June 2026
+
+  This is release 5.0.6 of the Authoritative Server.
+  It contains a security fix only.
+
+  Please review the :doc:`Upgrade Notes <../upgrading>` before upgrading from versions < 5.0.x.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17590
+
+    Fix PowerDNS Security Advisory 2026-07 for PowerDNS Authoritative Server
+
+.. changelog::
+  :version: 5.0.5
+  :released: 20th of May 2026
+
+  This is release 5.0.5 of the Authoritative Server.
+  It contains bug fixes and security fixes.
+
+  Please review the :doc:`Upgrade Notes <../upgrading>` before upgrading from versions < 5.0.x.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17443
+
+    Fix PowerDNS Security Advisory 2026-06 for PowerDNS Authoritative Server: Multiple Issues
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17296
+    :tickets: 17284
+
+    use less inefficient code in web server
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17294
+    :tickets: 17240
+
+    harden xfr*BitInt writers
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17259
+    :tickets: 16636
+
+    perform axfr immediately when creating an autosecondary domain
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17261
+    :tickets: 16671
+
+    Actually install binaries when building with meson
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17263
+    :tickets: 16731
+
+    web: stricter control of statistics rings changes
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17264
+    :tickets: 16831
+
+    stricter handing of the Lua DNS update policy
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17266
+    :tickets: 17000
+
+    correctly delete ENT records from the API
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17268
+    :tickets: 17126
+
+    lua: one more bad case of createForward
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17270
+    :tickets: 17130
+
+    minor pdns_control bugfixes
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17273
+    :tickets: 17149
+
+    webserver: correctly split the basic authorization cookie
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17275
+    :tickets: 17152
+
+    fixes to AXFR in Bind backend
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17277
+    :tickets: 17155
+
+    dnsupdate handling buglet
+
+.. changelog::
+  :version: 5.0.4
+  :released: 22th of April 2026
+
+  This is release 5.0.4 of the Authoritative Server.
+  It contains security fixes only.
+
+  Please review the :doc:`Upgrade Notes <../upgrading>` before upgrading from versions < 5.0.x.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 17191
+
+    Fix PowerDNS Security Advisory 2026-05 for PowerDNS Authoritative Server: Multiple Issues
+
+.. changelog::
+  :version: 5.0.3
+  :released: 20th of February 2026
+
+  This is release 5.0.3 of the Authoritative Server.
+  It contains bug fixes only.
+
+  Please review the :doc:`Upgrade Notes <../upgrading>` before upgrading from versions < 5.0.x.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16878
+
+    fix stupid logic error in lmdb-write-update-notification=no
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16876
+
+    Stricter timestamp checks
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16874
+
+    Correctly compute public key exponent length when larger than 255.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16685
+
+    fix geoip_mmdb backend MMDB_open error handling
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16683
+
+    more robustness in createReverse*
+
+.. changelog::
+  :version: 5.0.2
+  :released: 11th of December 2025
+
+  This is release 5.0.2 of the Authoritative Server.
+  It contains bug fixes and a minor feature.
+
+  Please review the :doc:`Upgrade Notes <../upgrading>` before upgrading from versions < 5.0.x.
+
+  .. change::
+    :tags: New Features
+    :pullreq: 16599
+    :tickets: 16589
+
+    allow finer-grained rrset changes through the API
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16603
+    :tickets: 16538
+
+    m4/pdns_check_libcrypto: fix ecdsa/eddsa includedir (famfo)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16566
+    :tickets: 16564
+
+    add missing catch block for STL exceptions in createForward
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16532
+    :tickets: 16059
+
+    REST API: bring back 404 errors
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16512
+    :tickets: 15894, 16499
+
+    Give backends the ability to perform extra actions during zone rectify
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16486
+    :tickets: 16401
+
+    meson build: restore original binary names
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16466
+    :tickets: 16398
+
+    sdist: copy files as files, not as new dirs
+
+.. changelog::
+  :version: 5.0.1
+  :released: 30th of October 2025
+
+  This is release 5.0.1 of the Authoritative Server.
+  It contains minor bugfixes and improvements over the 5.0.0
+  release, and one new feature for LMDB users.
+
+  Please review the :doc:`Upgrade Notes <../upgrading>` before upgrading from versions < 5.0.x.
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16360
+
+    api: relax zone name check in view removal
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16359
+
+    Prevent a potential race condition in cache cleaning
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 16358
+
+    Allow selecting a specific version of Lua with meson
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 16357, 16211
+
+    add missing meson build machinery files to auth source tarballs
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16356
+
+    pdnsutil: fix b2b-migrate from sql to non-sql
+
+  .. change::
+    :tags: New Features
+    :pullreq: 16355, 16147
+
+    lmdb: optional memory-only freshness check and notification timestamps
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16354
+
+    LUA shared exec: reset exec limit for every invocation
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16353
+
+    Fix EDNS Cookie & Proxy protocol
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 16210
+
+    auth views: perform character set validation of view names
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 16143
+
+    Fix Boost system lib dependency: it is no longer available since 1.89
+
+.. changelog::
+  :version: 5.0.0
+  :released: 22nd of August 2025
+
+  This is release 5.0.0 of the Authoritative Server.
+  It contains minor bugfixes and improvements over the 5.0.0-beta1
+  release.
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15948
+    :tickets: 15941
+
+    Auth: random edns cookies
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14927
+
+    Update pdnsutil.bash_completion.d (Cybertinus)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15603
+
+    SVCB: allow parsing keys in generic format without value (Chris Hofstaedtler)
+
+.. changelog::
+  :version: 5.0.0-beta1
+  :released: 24th of July 2025
+
+  This is release 5.0.0-beta1 of the Authoritative Server.
+  It contains various bugfixes and improvements over the 5.0.0-alpha1
+  release, as well as RFC2136 support for the LMDB backend.
+
+  .. change::
+    :tags: New Features, API
+    :pullreq: 15867
+
+    Provide record timestamps in the API
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15865
+
+    Remove old FSF address (Chris Hofstaedtler)
+
+  .. change::
+    :tags: New Features, Tools
+    :pullreq: 15704
+
+    Rework pdnsutil command syntax for more consistency and future flexibility
+
+  .. change::
+    :tags: New Features, Tools
+    :pullreq: 15855
+
+    Delete existing matching zones during (re)import (Jamie (Bear) Murphy )
+
+  .. change::
+    :tags: New Features
+    :pullreq: 14074,15863
+
+    Auth feature: RFC9615 (authenticated DNSSEC bootstrapping) (Peter Thomassen)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15834
+
+    Fix INCEPTION-INCREMENT documentation to match code behavior (@Darwin4053)
+
+  .. change::
+    :tags: Bug Fixes, Tools
+    :pullreq: 15854
+
+    Fixes zone2sql include with a comment (replacement PR) (Jamie (Bear) Murphy )
+
+  .. change::
+    :tags: New Features, API
+    :pullreq: 15827
+    :tickets: 14079
+
+    Add record search capability to the LMDB backend
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15836
+
+    Docs: zone: `modified_at` is a separate property when updating RRSets (Uwe Kleine-König)
+
+  .. change::
+    :tags: New Features, Tools
+    :pullreq: 14984, 15849
+
+    Pdnsutil {add-record,delete-rrset}: require NAME to be absolute (Uwe Kleine-König)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15786
+    :tickets: 11611, 11612
+
+    Lmdb rfc2136 support
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15798, 15791, 15767
+    :tickets: 11612, 11611, 15767
+
+    Lmdb NSEC3 record handling hygiene bugfixes
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15793
+
+    Pdns: Fix pdnsutil cross-references (Bagas Sanjaya)
+
+  .. change::
+    :tags: Improvements, Internals
+    :pullreq: 15763
+
+    Auth: Use arc4random in TSIG generation
+
+  .. change::
+    :tags: Improvements, Tools
+    :pullreq: 15417
+    :tickets: 9096
+
+    [tools] Let pdnsutil always set up a SOA-EDIT-API metadata when creating zones
+
+  .. change::
+    :tags: Improvements, API, Tools
+    :pullreq: 15669
+    :tickets: 11733
+
+    Increase zone serial number after zone key operations
+
+  .. change::
+    :tags: Bug Fixes, Internals
+    :pullreq: 15677
+    :tickets: 12901
+
+    LMDB: honour map-size for all files
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15594
+
+    Auth docker: avoid crash on --version caused by doubly loaded modules
+
+  .. change::
+    :tags: Improvements, Internals
+    :pullreq: 15698
+
+    Auth LMDB: attempt to have predictable IDs
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15686
+    :tickets: 15674
+
+    Rec and auth: implement stop command as alias for quit(-nicely)
+
+  .. change::
+    :tags: Bug Fixes, Internals
+    :pullreq: 15679
+    :tickets: 8060
+
+    Provide an IP_OFFMASK value for systems lacking it
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15221
+    :tickets: 10558
+
+    Compute LOC text representation without using floating point for latitude and longitude
+
+  .. change::
+    :tags: Bug Fixes, Internals
+    :pullreq: 15609
+
+    Packet Cache fixes for views
+
+  .. change::
+    :tags: Bug Fixes, Tools
+    :pullreq: 15665
+
+    Pdnsutil: clarify provenance of default TTL (Jan-Piet Mens)
+
+  .. change::
+    :tags: Bug Fixes, Tools
+    :pullreq: 15389
+    :tickets: 8494
+
+    [tools] Honour default-ttl in pdnsutil load-zone
+
+  .. change::
+    :tags: Improvements, Tools
+    :pullreq: 15581
+
+    Do not use system(3) in pdnsutil
+
+  .. change::
+    :tags: Improvements, Tools
+    :pullreq: 15604
+
+    Suggest create-zone after view-add-zone of a nonexisting zone
+
+.. changelog::
+  :version: 5.0.0-alpha1
+  :released: 27th of May 2025
+
+  This is release 5.0.0-alpha1 of the Authoritative Server.
+  The major new feature in 5.0.0 is :ref:`views` support.
+  Besides that, this release also contains a long list of other improvements.
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15393, 15441, 15421, 15470, 15512
+
+    new feature: :ref:`views`
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15570
+
+    Trust inet_pton to validate IPv6 addresses and nothing more
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15520
+
+    Fix building with GCC 15.1: missing `cstdint` include
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15474
+
+    Use a unique type for domain ids
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15451
+
+    Better behaviour with non-working DNSSEC configurations
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15443
+
+    Add a quiet option to pdnsutil
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15390
+
+    Log DNS packet parse errors
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15353
+
+    fix log string in case there are notifies needed
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15334
+
+    [geoip] Try and be more helpful in YAML error exceptions
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15299
+
+    API: allow fetching disabled RRsets
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15265
+
+    webserver Unix socket support (tacerus)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15238
+
+    Fix list-all-zones in multi-backend configuration involving LMDB
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15222
+
+    Damage control in Lua createForward()
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15207
+
+    [pdnsutil] Command aliases
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15197
+
+    [pdnsutil] Suggest increase-serial after create-zone
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15176
+
+    lmdb-safe: add prefix() cursor; use it in list/lookup/get
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15175
+
+    Improve LMDBBackend reliability
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15170
+
+    [pdnsutil] dedup in add-record
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15160
+
+    [pdnsutil] Better error message when disk full
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15152
+
+    Make the record representation of ALIAS match CNAME
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15147
+
+    Low-hanging LMDB fruits
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15140
+
+    sdig: implement cookie support
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15133
+
+    [pdnsutil] Do not allow increase-serial on secondary zones
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15131
+
+    [pdnsutil] Let add-zone-key use defaults from pdns.conf
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15127
+
+    lua records: new option to set the http status code to match in ifurlup function
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15105
+
+    Let pdnsutil warn when creating local files
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15103
+
+    Grow tinydnsbackend capabilities a bit
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15098
+
+    Add a "failOnIncompleteCheck" option to if\*up Lua functions
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 15090
+
+    Avoid LMDB exception during recursive lookup
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15086
+
+    try to find ldap libs in case pkg-config is missing (happens on debian11)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 15083, 15253
+
+    Provide additional answers in NAPTR queries
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15082
+
+    More helpful pdnsutil help output
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15080
+
+    pdnsutil: check for key presence after import
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15072
+
+    Adjust Content-Type header for Prometheus endpoint to include version (Woutifier)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15063
+
+    Include cstdint to get uint64_t
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15049
+
+    Correctly report SQL insertion errors
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15041
+
+    Exit gracefully on ^D on control-console
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 15004
+
+    [lmdb] Ignore unreachable TSIG keys in getTSIGKeys
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14996
+
+    Lua up checks: finer control
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14993
+
+    createForward and createForward6 will use the zone_record as base (BozhanL)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14975
+
+    prevent createReverse6 from generating illegal IDN record  (BozhanL)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14931
+
+    Fix ipv\*hint=auto on lmdb backend
+
+  .. change::
+    :tags: Removed Features
+    :pullreq: 14926
+
+    [feature] remove support for libdecaf
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14913
+
+    [bugfix] Reject hexadecimal blobs with odd number of characters
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14900
+
+    pdnsutil edit-zone: Emit the updated SOA serial (ukleinek)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14897
+
+    fix register type race
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14842
+
+    don't log absence of GSS-TSIG functionality at such a high level, use DEBUG
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14823
+
+    SVCB parser: allow quotes around port=
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14782
+
+    Rework MDBIn/OutVal
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14781
+
+    pdns: allow empty string in version-string (Bertrand Jacquin)
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14676
+
+    don't build .so for non-dyn modules
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14670
+
+    webserver.cc: try to pass exception text with 500 errors
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14665
+
+    sdig: some improvements for stdin mode
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14642
+
+    more and better thread names
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14625
+
+    Fix leak of MDB_env object
+
+  .. change::
+    :tags: New Features
+    :pullreq: 14604
+
+    allow turning off across-zone resolving (zeha)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14591
+
+    dnsproxy: make local port range configurable (zeha)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 14581
+
+    added a new config for direct queries of dnskey signature (d-wibowo)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14576
+
+    ssqlite3: use "begin immediate" to avoid later fights over upgrading to write
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14561
+
+    Add doc reference to oversized chunk message (Josh Soref)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 14505
+
+    `pdnsutil`: Add `backend-lookup` subcommand
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14500
+
+    fix domain ordering in query for mysql and odbc-sqlite, and test it
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14454
+
+    catalogs SQL: force order of domains to avoid spurious rehashes
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 14419
+
+    Fix compile error on OPENSSL_VERSION_MAJOR < 3
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14368
+
+    allow -lodbc in a non-standard location
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 14218
+
+    web: make request/response timeout configurable (Samir Aguiar)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13980
+
+    Do shuffle TCP responses except \*XFRs (Karel Bilek)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13959
+
+    Add Meson as a build system for auth
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13951
+
+    deprecate output of SHA1, GOST hashes
+
+  .. change::
+    :tags: Bug Fixes
+    :pullreq: 13949
+
+    ixfrdist: use IPV6_V6ONLY on listening sockets, closes #13878
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13930
+
+    sdig: remove xpf handling
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13879
+
+    LUA: support returning empty set in filterForward
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13867
+
+    on OpenBSD, try harder to send on a non-blocking socket
+
+  .. change::
+    :tags: New Features
+    :pullreq: 13770
+
+    Add setting to make TSIG required for DNS updates (Assumeru)
+
+  .. change::
+    :tags: Improvements
+    :pullreq: 13060
+
+    gmysql: modernise implementation of gmysql-ssl flag
+
+  .. change::
+    :tags: New Features
+    :pullreq: 11678
+
+    Lua global include (cmouse)
+
+  .. change::
+    :tags: New Features
+    :pullreq: 10692
+
+    added self weighted lua function (n0tlu5)

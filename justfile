@@ -193,6 +193,10 @@ update-glab-docs:
 update-terraform-docs:
     bun scripts/sync-terraform-docs.ts
 
+# Sync PowerDNS Authoritative Server docs from local PowerDNS/pdns clone
+update-powerdns-docs:
+    bun scripts/sync-powerdns-docs.ts
+
 # Sync tea CLI docs from local gitea/tea clone
 update-tea-cli-docs:
     bun scripts/sync-tea-cli-docs.ts
@@ -230,6 +234,7 @@ update:
     -just update-orpc-docs
     -just update-ultralytics-docs
     -just update-pytorch-docs
+    -just update-powerdns-docs
     -just update-hono-docs
     -just update-huggingface-docs
     -just update-transformers-docs
