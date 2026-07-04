@@ -1,0 +1,2558 @@
+{
+  "agent-studio.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3777,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agent-studio/agent-studio-capabilities.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio/agent-studio-capabilities",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5194,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agent-studio/deploy-vais-prompt.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio/deploy-vais-prompt",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 22438,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agent-studio/design-agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio/design-agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9570,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agent-studio/quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio/quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5262,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14713,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agents/google/deep-research.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agents/google/deep-research",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4379,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agents/quickstart-adk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agents/quickstart-adk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7680,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "agents/use-deep-research.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agents/use-deep-research",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18461,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5306,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/adk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/adk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1524,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/agent-garden.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/agent-garden",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5645,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/managed-agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7933,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/managed-agents/create-manage.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents/create-manage",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 47346,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/managed-agents/interact-with-agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents/interact-with-agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 26775,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/managed-agents/sandbox-environment.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents/sandbox-environment",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8153,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/fine-tune-rag-transformations.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/fine-tune-rag-transformations",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1428,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/layout-parser-integration.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/layout-parser-integration",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12337,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/llm-parser.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/llm-parser",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13273,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/manage-your-rag-corpus.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/manage-your-rag-corpus",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6028,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/rag-engine-billing.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/rag-engine-billing",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6794,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/rag-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/rag-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7108,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/rag-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/rag-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10909,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/rag-supports-cmek.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/rag-supports-cmek",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1743,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/retrieval-and-ranking.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/retrieval-and-ranking",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11571,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/supported-documents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/supported-documents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 48,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/supported-rag-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/supported-rag-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2426,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/understanding-ragmanageddb.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/understanding-ragmanageddb",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5522,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-data-ingestion.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-data-ingestion",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15365,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-embedding-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-embedding-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12192,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-feature-store-with-rag.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-feature-store-with-rag",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13507,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-pinecone.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-pinecone",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13639,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-rag-in-multimodal-live.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-rag-in-multimodal-live",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7441,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-ragmanageddb-with-rag.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-ragmanageddb-with-rag",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15611,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-vertexai-search.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-vertexai-search",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7460,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-vertexai-vector-search.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-vertexai-vector-search",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14653,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/use-weaviate-db.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/use-weaviate-db",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 53218,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/rag-engine/vector-db-choices.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/rag-engine/vector-db-choices",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5001,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 19166,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-a-custom-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-a-custom-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 33042,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-a-langchain-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-a-langchain-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 38823,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-a-langgraph-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-a-langgraph-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 38787,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-a-llamaindex-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-a-llamaindex-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 37271,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-an-a2a-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-an-a2a-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14537,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-an-adk-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-an-adk-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 21229,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-an-ag2-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-an-ag2-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18388,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/create-an-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/create-an-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4924,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/quickstart-adk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/quickstart-adk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7432,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13537,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/runtime/setup.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime/setup",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 23587,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/skill-registry.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/skill-registry",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3897,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/skill-registry/create-manage.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/skill-registry/create-manage",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 25881,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/about-hybrid-search.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/about-hybrid-search",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 27657,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/configuring-indexes.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/configuring-indexes",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5553,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/create-manage-index.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/create-manage-index",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 65890,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/deploy-index-public.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/deploy-index-public",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 75201,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/deploy-index-vpc.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/deploy-index-vpc",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 77880,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/filtering.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/filtering",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14776,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/format-structure.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/format-structure",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12121,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/monitor.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/monitor",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1282,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/notebooks.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/notebooks",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3134,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 28645,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/private-service-connect.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/private-service-connect",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 25962,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/query-index-public-endpoint.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/query-index-public-endpoint",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16403,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/query-index-vpc.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/query-index-vpc",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12546,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16119,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/setup.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/setup",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4102,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/support.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/support",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1598,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/try-it.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/try-it",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8804,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/update-rebuild-index.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/update-rebuild-index",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 44677,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "build/vector-search/vpc.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search/vpc",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2918,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5489,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/agent-identity-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/agent-identity-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12143,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/agent-registry.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/agent-registry",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2517,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/configure-model-armor.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/configure-model-armor",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17232,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/gateways/agent-gateway-ge-deploy.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/agent-gateway-ge-deploy",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14585,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/gateways/agent-gateway-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/agent-gateway-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13943,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/gateways/delegate-authorization.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/delegate-authorization",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 27896,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/gateways/monitor-agent-gateway.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/monitor-agent-gateway",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5307,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/gateways/set-up-agent-gateway.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/set-up-agent-gateway",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 26410,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/gateways/set-up-vpc-connectivity.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/set-up-vpc-connectivity",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6699,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/monitor-content-security.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/monitor-content-security",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10918,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/assign-identity-iam.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/assign-identity-iam",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 24722,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/best-practices.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/best-practices",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5954,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/configure-semantic-governance.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/configure-semantic-governance",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 32600,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/govern-agent-skills.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/govern-agent-skills",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4716,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/iam-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/iam-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6721,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2788,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/semantic-governance-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/semantic-governance-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13565,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/policies/test-policies.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/test-policies",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2470,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/safety.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/safety",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10439,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/share-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/share-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5676,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/view-model-armor-spans.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/view-model-armor-spans",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10146,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "govern/view-security-findings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/view-security-findings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11446,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "index.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4716,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6426,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/abuse-monitoring.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/abuse-monitoring",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6597,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/access-control.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/access-control",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3505,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/ai-content-detection.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/ai-content-detection",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2099,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/bounding-box-detection.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/bounding-box-detection",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 25790,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/add-labels-to-api-calls.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/add-labels-to-api-calls",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16048,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/audio-understanding.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/audio-understanding",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 49604,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/batch-inference.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/batch-inference",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8708,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/batch-prediction-from-bigquery.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/batch-prediction-from-bigquery",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18217,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/batch-prediction-from-cloud-storage.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/batch-prediction-from-cloud-storage",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18567,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/batch-prediction-gemini.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/batch-prediction-gemini",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8402,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/configure-safety-filters.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/configure-safety-filters",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 42894,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/content-generation-parameters.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/content-generation-parameters",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13962,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/control-generated-output.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/control-generated-output",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 55547,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/datasets.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/datasets",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 23325,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/design-multimodal-prompts.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/design-multimodal-prompts",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 19577,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/document-understanding.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/document-understanding",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 31230,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/gemini-edit-images.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/gemini-edit-images",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 19798,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/gemini-for-filtering-and-moderation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/gemini-for-filtering-and-moderation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6640,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/gemini-image-generation-best-practices.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/gemini-image-generation-best-practices",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2136,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/gemini-image-generation-limitations.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/gemini-image-generation-limitations",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 229,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/gemini-image-responsible-ai.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/gemini-image-responsible-ai",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4389,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/get-token-count.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/get-token-count",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 21496,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/image-generation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/image-generation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 32105,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/image-understanding.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/image-understanding",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 59010,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/list-token.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/list-token",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20484,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/process-blocked-responses.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/process-blocked-responses",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2130,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/request-response-logging.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/request-response-logging",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 37396,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/safety-system-instructions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/safety-system-instructions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7908,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/send-chat-prompts-gemini.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/send-chat-prompts-gemini",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 24740,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/video-to-image-generation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/video-to-image-generation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13197,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/capabilities/video-understanding.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/video-understanding",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 48424,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/chat/chat-prompts.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/chat/chat-prompts",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6427,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/computer-use.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/computer-use",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 55087,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/configure-judge-model.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/configure-judge-model",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5261,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/content-credentials.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/content-credentials",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5633,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/context-cache/context-cache-create.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-create",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 30917,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/context-cache/context-cache-delete.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-delete",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10122,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/context-cache/context-cache-getinfo.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-getinfo",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 21773,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/context-cache/context-cache-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10488,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/context-cache/context-cache-update.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-update",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 19484,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/context-cache/context-cache-use.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-use",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17504,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/control-model-access.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/control-model-access",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9045,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/deploy/consumption-options.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/deploy/consumption-options",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11809,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/deploy/error-code-429.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/deploy/error-code-429",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3429,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/deploy/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/deploy/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9067,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/deprecations/genai-vertexai-sdk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/deprecations/genai-vertexai-sdk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 76217,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/determine-eval.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/determine-eval",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13390,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/embeddings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6687,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/embeddings/batch-prediction-genai-embeddings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/batch-prediction-genai-embeddings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20316,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/embeddings/get-multimodal-embeddings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/get-multimodal-embeddings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 82803,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/embeddings/get-text-embeddings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/get-text-embeddings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 19740,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/embeddings/task-types.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/task-types",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15924,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/enable-audit-logs.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/enable-audit-logs",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1390,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluate-judge-model.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluate-judge-model",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4179,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluation-agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12753,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluation-dataset.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-dataset",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8836,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluation-genai-console.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-genai-console",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4234,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluation-genai-sdk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-genai-sdk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4887,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluation-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18436,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/evaluation-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5257,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/faq.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/faq",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12744,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/flex-paygo.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/flex-paygo",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14787,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-preference-tuning-prepare.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-preference-tuning-prepare",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2376,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-preference-tuning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-preference-tuning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5032,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-supervised-tuning-prepare.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-supervised-tuning-prepare",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8660,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-supervised-tuning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-supervised-tuning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14844,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-use-continuous-tuning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-use-continuous-tuning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12272,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-use-preference-tuning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-use-preference-tuning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15759,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini-use-supervised-tuning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini-use-supervised-tuning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 60711,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-0-flash-lite.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-0-flash-lite",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5520,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-0-flash.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-0-flash",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5707,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-5-flash-image.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-5-flash-image",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5059,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-5-flash-lite.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-5-flash-lite",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10794,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-5-flash-live-api.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-5-flash-live-api",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12155,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-5-flash.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-5-flash",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11535,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/2-5-pro.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-5-pro",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5806,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-1-flash-image-preview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-image-preview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6013,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-1-flash-image.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-image",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6329,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-1-flash-lite-image.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-lite-image",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5652,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-1-flash-lite.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-lite",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6152,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-1-pro.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-pro",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7330,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-5-flash.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-flash",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6534,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-flash.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-flash",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6175,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-pro-image-preview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-pro-image-preview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6232,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-pro-image.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-pro-image",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6349,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/3-pro.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-pro",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9647,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/embedding-2.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/embedding-2",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3648,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/gemini/omni-flash-preview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/omni-flash-preview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6079,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/getting-help.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/getting-help",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 904,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/google-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/google-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15931,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/ground-responses-using-rag.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/ground-responses-using-rag",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2517,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/grounding-with-elasticsearch.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-elasticsearch",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16356,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/grounding-with-google-maps.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-google-maps",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 31520,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/grounding-with-google-search.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-google-search",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 34439,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/grounding-with-parallel.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-parallel",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15390,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/grounding-with-vertex-ai-search.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-vertex-ai-search",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17277,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/grounding-with-your-search-api.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-your-search-api",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 21781,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4237,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/grounding/web-grounding-enterprise.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/web-grounding-enterprise",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12285,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5714,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/best-practices.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/best-practices",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 21930,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/configure-gemini-capabilities.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/configure-gemini-capabilities",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15014,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/configure-language-voice.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/configure-language-voice",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4625,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/get-started-adk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/get-started-adk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6240,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/get-started-sdk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/get-started-sdk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4041,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/get-started-websocket.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/get-started-websocket",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3082,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/send-audio-video-streams.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/send-audio-video-streams",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4703,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/live-api/start-manage-session.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/live-api/start-manage-session",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17410,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/long-context.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/long-context",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12622,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/lyria/lyria-002.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/lyria/lyria-002",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1402,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/lyria/lyria-3.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/lyria/lyria-3",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7107,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/call-open-model-apis.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/call-open-model-apis",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17109,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/capabilities/batch-prediction.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/capabilities/batch-prediction",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18020,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/capabilities/function-calling.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/capabilities/function-calling",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12381,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/capabilities/structured-output.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/capabilities/structured-output",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10532,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/capabilities/thinking.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/capabilities/thinking",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 32971,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/deepseek/deepseek-ocr.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/deepseek/deepseek-ocr",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 947,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/deepseek/deepseek-v32.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/deepseek/deepseek-v32",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 936,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/deepseek/r1-0528.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/deepseek/r1-0528",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2141,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/google/gemma-4-26b-a4b-it.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/google/gemma-4-26b-a4b-it",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 806,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/grant-access-open-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/grant-access-open-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4513,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/kimi/kimi-k2-thinking.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/kimi/kimi-k2-thinking",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 939,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/minimax/minimax-m2.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/minimax/minimax-m2",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 926,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/openai/gpt-oss-120b.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/openai/gpt-oss-120b",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 952,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/openai/gpt-oss-20b.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/openai/gpt-oss-20b",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 929,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/qwen/qwen3-235b.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/qwen/qwen3-235b",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 982,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/qwen/qwen3-coder.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/qwen/qwen3-coder",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1221,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/qwen/qwen3-next-instruct.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/qwen/qwen3-next-instruct",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 963,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/qwen/qwen3-next-thinking.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/qwen/qwen3-next-thinking",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 963,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/use-open-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/use-open-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10615,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/zaiorg/glm-47.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/zaiorg/glm-47",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 712,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/maas/zaiorg/glm-5.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/zaiorg/glm-5",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 712,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/metrics-templates.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/metrics-templates",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 73934,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/migrate.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 28985,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/migrate/migrate-google-ai.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/migrate-google-ai",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6571,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/migrate/openai/auth-and-credentials.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/openai/auth-and-credentials",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7191,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/migrate/openai/examples.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/openai/examples",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 27512,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/migrate/openai/migrate-code.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/openai/migrate-code",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8311,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/migrate/openai/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/openai/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14551,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-garden/deploy-and-inference-tutorial.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-garden/deploy-and-inference-tutorial",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 66423,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-garden/deploy-models-with-custom-weights.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-garden/deploy-models-with-custom-weights",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 25979,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-garden/explore-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-garden/explore-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8719,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-garden/quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-garden/quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10728,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-garden/self-deployed-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-garden/self-deployed-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4944,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-garden/use-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-garden/use-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 62765,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-observability.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-observability",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5861,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/model-versions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5170,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/music/generate-music.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/music/generate-music",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7463,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/music/music-gen-prompt-guide.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/music/music-gen-prompt-guide",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13130,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/choose-serving-option.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/choose-serving-option",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6027,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/deploy-custom-vllm.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/deploy-custom-vllm",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20003,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/deploy-model-garden.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/deploy-model-garden",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7566,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/use-gemma.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-gemma",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17048,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/use-hex-llm.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-hex-llm",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 29103,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/use-hugging-face-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-hugging-face-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10438,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/use-llama.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-llama",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7184,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/use-maas.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-maas",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3508,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/use-prebuilt-containers.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-prebuilt-containers",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5918,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/vllm/use-vllm-tpu.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/vllm/use-vllm-tpu",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3753,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/vllm/use-vllm.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/vllm/use-vllm",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 56332,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/open-models/xdit.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/xdit",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16459,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6426,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/claude.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/claude",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 23266,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/claude/use-claude.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/claude/use-claude",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 28238,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/deploy-partner-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/deploy-partner-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4011,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4492,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/capabilities/function-calling.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/capabilities/function-calling",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 22231,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/capabilities/reasoning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/capabilities/reasoning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2275,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/capabilities/structured-output.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/capabilities/structured-output",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20374,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/grok-4-1-fast.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/grok-4-1-fast",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3850,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/grok-4-20.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/grok-4-20",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3353,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/grok-4-3.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/grok-4-3",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2006,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/grok/responses.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/grok/responses",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7476,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/llama.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/llama",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5051,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/llama/llama3-3.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/llama/llama3-3",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2258,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/llama/llama4-maverick.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/llama/llama4-maverick",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2482,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/llama/llama4-scout.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/llama/llama4-scout",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2444,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/llama/use-llama.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/llama/use-llama",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15073,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/mistral.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/mistral",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 19360,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/partner-models/use-partner-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/use-partner-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 24199,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/priority-paygo.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/priority-paygo",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13052,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompt-sharing.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompt-sharing",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3575,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/adjust-parameter-values.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/adjust-parameter-values",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2872,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/break-down-prompts.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/break-down-prompts",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5350,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/clear-instructions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/clear-instructions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3085,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/contextual-information.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/contextual-information",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3869,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/data-driven-optimizer.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/data-driven-optimizer",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 43111,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/explain-reasoning.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/explain-reasoning",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3503,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/few-shot-examples.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/few-shot-examples",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1988,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/few-shot-optimizer.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/few-shot-optimizer",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5452,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/introduction-prompt-design.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/introduction-prompt-design",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8526,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/prompt-design-strategies.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-design-strategies",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15211,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/prompt-iteration.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-iteration",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7020,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/prompt-optimizer.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-optimizer",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6725,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/prompt-templates.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-templates",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1610,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/structure-prompts.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/structure-prompts",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2539,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/system-instruction-introduction.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/system-instruction-introduction",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9522,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/system-instructions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/system-instructions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 25802,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/prompts/zero-shot-optimizer.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/zero-shot-optimizer",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4486,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1645,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/live-api.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/live-api",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5526,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/measure-provisioned-throughput.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/measure-provisioned-throughput",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8731,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1645,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/purchase-provisioned-throughput.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 23326,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/supported-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/supported-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 35293,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/szpt.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/szpt",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3537,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/provisioned-throughput/use-provisioned-throughput.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/use-provisioned-throughput",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 30165,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/quickstart-sdk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/quickstart-sdk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4623,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/quotas.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/quotas",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11430,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/resources/throughput-quota.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/resources/throughput-quota",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2533,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/responsible-ai.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/responsible-ai",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7172,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/retry-strategy.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/retry-strategy",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9472,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/rubric-metric-details.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/rubric-metric-details",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 22491,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/run-evaluation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/run-evaluation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7992,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/safety-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/safety-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10694,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/sdks/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/sdks/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14397,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/security-controls.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/security-controls",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3603,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/standard-paygo.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/standard-paygo",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11506,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 34801,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/api-keys.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/api-keys",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5001,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/express-mode/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/express-mode/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13081,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/express-mode/vertex-ai-express-mode-api-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/express-mode/vertex-ai-express-mode-api-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8287,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/express-mode/vertex-ai-studio-express-mode-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/express-mode/vertex-ai-studio-express-mode-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5246,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/gcp-auth.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/gcp-auth",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1997,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/gemini-3-prompting-guide.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/gemini-3-prompting-guide",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8833,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/get-started-with-gemini-3.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/get-started-with-gemini-3",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 37040,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/libraries.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/libraries",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4727,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/start/openai.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/openai",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15336,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/thinking.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/thinking",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 63098,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/thought-signatures.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/thought-signatures",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 31476,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tools/code-execution.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tools/code-execution",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 26649,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tools/function-calling.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tools/function-calling",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 93378,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune_gemini/audio_tune.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune_gemini/audio_tune",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3618,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune_gemini/doc_tune.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune_gemini/doc_tune",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6207,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune_gemini/image_tune.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune_gemini/image_tune",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6741,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune_gemini/text_tune.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune_gemini/text_tune",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3980,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune_gemini/video_tune.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune_gemini/video_tune",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9045,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune-embeddings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune-embeddings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 39638,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune-function-calling.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune-function-calling",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9036,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tune-models.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tune-models",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10487,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning-checkpoints.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning-checkpoints",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16096,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning/audio.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/audio",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2554,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning/function-calling.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/function-calling",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3304,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning/image.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/image",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4958,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning/supervised-tuning/use.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/supervised-tuning/use",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 39147,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning/text.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/text",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2843,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/tuning/video.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/video",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5662,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/url-context.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/url-context",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14619,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/veo/2-0-generate.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/2-0-generate",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3482,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/veo/3-0-generate.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-0-generate",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13485,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/veo/3-1-generate.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15352,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/best-practice.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/best-practice",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1033,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/extend-a-veo-video.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/extend-a-veo-video",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 16721,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/generate-videos-from-an-image.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/generate-videos-from-an-image",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 26695,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/generate-videos-from-first-and-last-frames.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/generate-videos-from-first-and-last-frames",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17439,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/generate-videos-from-text.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/generate-videos-from-text",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 23961,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/insert-objects-into-videos.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/insert-objects-into-videos",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17558,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4776,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/remove-objects-from-videos.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/remove-objects-from-videos",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17221,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/responsible-ai-and-usage-guidelines.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/responsible-ai-and-usage-guidelines",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3926,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/turn-the-prompt-rewriter-off.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/turn-the-prompt-rewriter-off",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10878,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/use-reference-images-to-guide-video-generation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/use-reference-images-to-guide-video-generation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 32634,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/video/video-gen-prompt-guide.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/video-gen-prompt-guide",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 28339,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "models/view-evaluation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/view-evaluation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6125,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/agent-evaluation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/agent-evaluation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8046,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/evaluate-agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/evaluate-agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5655,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/evaluate-offline.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/evaluate-offline",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6230,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/evaluate-online.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/evaluate-online",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7916,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/evaluate-simulated.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/evaluate-simulated",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5022,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/optimize-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/optimize-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 1600,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/evaluation/view-results.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/view-results",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 12476,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/example-store/create-examplestore.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/example-store/create-examplestore",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5192,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/example-store/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/example-store/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7461,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/example-store/quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/example-store/quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9721,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/example-store/retrieve-examples.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/example-store/retrieve-examples",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7153,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/example-store/upload-examples.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/example-store/upload-examples",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7220,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/observability/overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/observability/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6271,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/observability/topology.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/observability/topology",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7036,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "optimize/observability/traces.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/observability/traces",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5609,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8661,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/agent-locations.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/agent-locations",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4518,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/agent-quotas.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/agent-quotas",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9236,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/agent-support.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/agent-support",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2182,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/data-residency.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/data-residency",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 6828,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/locations.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 89740,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/supported-capabilities.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/supported-capabilities",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4352,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "resources/zero-data-retention.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/zero-data-retention",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10484,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9053,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11592,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/adk-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/adk-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 30727,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/api-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/api-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17482,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/fetch-memories.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/fetch-memories",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11844,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/generate-memories.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/generate-memories",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 31768,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/iam-conditions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/iam-conditions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20695,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/ingest-events.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/ingest-events",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9528,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/profiles.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/profiles",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13557,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/revisions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/revisions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 13300,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/memory-bank/setup.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/setup",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 45952,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/agent-gateway-runtime-deploy.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/agent-gateway-runtime-deploy",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 21443,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/agent-identity.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/agent-identity",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20986,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/bidirectional-streaming.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/bidirectional-streaming",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 14811,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/deploy-an-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/deploy-an-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 44081,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/logging.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/logging",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15395,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/manage-agent-access.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/manage-agent-access",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 33775,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/manage-deployed-agents.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/manage-deployed-agents",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20696,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/manage-revisions-and-traffic.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/manage-revisions-and-traffic",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 31181,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/monitoring.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/monitoring",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 28319,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/optimize-and-scale.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/optimize-and-scale",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4842,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/private-service-connect-interface.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/private-service-connect-interface",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7899,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/tracing.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/tracing",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 10094,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-a-custom-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-a-custom-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17587,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-a-langchain-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-a-langchain-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11734,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-a-langgraph-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-a-langgraph-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 18016,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-a-llamaindex-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-a-llamaindex-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 7518,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-an-a2a-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-an-a2a-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 11169,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-an-adk-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-an-adk-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 24512,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-an-ag2-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-an-ag2-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8244,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/runtime/use-an-agent.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/use-an-agent",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 8202,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/sandbox/code-execution-overview.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/sandbox/code-execution-overview",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17377,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/sandbox/code-execution-quickstart.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/sandbox/code-execution-quickstart",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 9292,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/sessions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/sessions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2364,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/sessions/iam-conditions.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/sessions/iam-conditions",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 17316,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/sessions/manage-with-adk.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/sessions/manage-with-adk",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 15627,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "scale/sessions/manage-with-api.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/sessions/manage-with-api",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 28177,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "security-findings.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/security-findings",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2772,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "troubleshooting/agent-creation.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/troubleshooting/agent-creation",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 2184,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "troubleshooting/code-execution.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/troubleshooting/code-execution",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 3176,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "troubleshooting/memory-bank.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/troubleshooting/memory-bank",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 5539,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "troubleshooting/troubleshoot-agent-gateway.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/troubleshooting/troubleshoot-agent-gateway",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 20077,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  },
+  "tutorials/base64-encode.md": {
+    "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/tutorials/base64-encode",
+    "skill": "gemini-enterprise-agent-platform-docs",
+    "size": 4656,
+    "updatedAt": "2026-07-04T06:44:11.399Z"
+  }
+}

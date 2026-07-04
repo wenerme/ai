@@ -34,6 +34,7 @@
     "evalscope-docs": { "repo": "modelscope/evalscope" },
     "find-skills": { "repo": "vercel-labs/skills" },
     "gemini-cli-docs": { "repo": "google-gemini/gemini-cli" },
+    "gemini-enterprise-agent-platform-docs": { "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform" },
     "ghostty-docs": { "repo": "ghostty-org/website" },
     "gitea-docs": { "url": "https://gitea.com/gitea/docs" },
     "glab-cli": { "repo": "gitlab-org/cli" },

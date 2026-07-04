@@ -28,6 +28,11 @@ update-openrouter-docs:
 update-google-ai-docs:
     bun scripts/fetch-google-ai-docs.ts
 
+# Fetch Google Cloud Gemini Enterprise Agent Platform docs manually.
+# Google Cloud can return broad 429s for this docs tree, so keep it out of `just update`.
+update-gemini-enterprise-agent-platform-docs:
+    bun scripts/fetch-gemini-enterprise-agent-platform-docs.ts
+
 # Fetch Alibaba Cloud CLI docs from help.aliyun.com
 update-aliyun-cli-docs:
     bun scripts/fetch-aliyun-cli-docs.ts
