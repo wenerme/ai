@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 106 skills available
+> 107 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -54,6 +54,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) |
+| `gemini-enterprise-agent-platform-docs` | Use when working with Google Cloud Gemini Enterprise Agent Platform: Agent Studio, Agent Runtime, Managed Agents API,... | [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform) |
 | `ghostty-docs` | Ghostty terminal emulator documentation — fast, native, cross-platform GPU-accelerated terminal. Covers configuration... | [ghostty-org/website](https://github.com/ghostty-org/website) |
 | `gitea-docs` | Gitea documentation — self-hosted Git service (lightweight GitHub/GitLab alternative) written in Go. Covers installation... | [gitea.com](https://gitea.com/gitea/docs) |
 | `glab-cli` | Use when interacting with GitLab via the glab CLI: creating/reviewing merge requests, managing issues, monitoring CI/CD... | [gitlab-org/cli](https://github.com/gitlab-org/cli) |
@@ -519,6 +520,16 @@ npx skills add wenerme/ai --skill gemini-cli-docs
 ```
 
 Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model selection, keyboard shortcuts, GEMINI.md project instructions, tools (shell, file system, web search, web fetch, MCP servers, memory, todos), hooks, extensions, IDE integration, checkpointing, or troubleshooting Gemini CLI issues.
+
+</details>
+<details>
+<summary><code>gemini-enterprise-agent-platform-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill gemini-enterprise-agent-platform-docs
+```
+
+Use when working with Google Cloud Gemini Enterprise Agent Platform: Agent Studio, Agent Runtime, Managed Agents API, ADK deployment, RAG Engine, Vector Search, Skill Registry, Agent Gateway, Memory Bank, Gemini/partner/open models, grounding, tuning, evaluation, governance, IAM, quotas, locations, and agent troubleshooting.
 
 </details>
 <details>
@@ -1183,7 +1194,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 106 skills, 26754 files, 288 MiB total
+> 107 skills, 27181 files, 294 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1209,7 +1220,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 121 | 4.3 MiB |
+| `claude-code-docs` | 121 | 4.4 MiB |
 | `clickhouse-docs` | 1092 | 10 MiB |
 | `cloudflare-ai` | 1509 | 11 MiB |
 | `cloudflare-data` | 395 | 3.0 MiB |
@@ -1227,6 +1238,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `evalscope-docs` | 284 | 1.8 MiB |
 | `find-skills` | 1 | 4.5 KiB |
 | `gemini-cli-docs` | 90 | 802 KiB |
+| `gemini-enterprise-agent-platform-docs` | 427 | 5.9 MiB |
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 102 | 693 KiB |
 | `glab-cli` | 5 | 21 KiB |
