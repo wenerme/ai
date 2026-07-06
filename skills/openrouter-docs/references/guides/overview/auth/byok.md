@@ -1,8 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # BYOK
+
+> Bring your own provider API keys
+
+export const openRouterBYOKFee = {
+  fraction: '5'
+};
+
+export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
 
 ## Bring your own API Keys
 
@@ -19,11 +27,11 @@ Your provider keys are securely encrypted and used for all requests routed throu
 Manage keys in your [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
 The cost of using custom provider keys on OpenRouter is
-**{bn(openRouterBYOKFee.fraction).times(100).toString()}%
+**{openRouterBYOKFee.fraction}%
 of what the same model/provider would cost normally on
 OpenRouter** and will be deducted from your OpenRouter
 credits.
-This fee is waived for the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK requests per-month.
+This fee is waived for the first {BYOK_FEE_MONTHLY_REQUEST_THRESHOLD} BYOK requests per-month.
 
 ### Key Priority and Fallback
 
@@ -59,13 +67,13 @@ matching key before falling back to shared capacity.
 
 ### BYOK with Provider Ordering
 
-When you combine BYOK keys with [provider ordering](/docs/guides/routing/provider-selection#ordering-specific-providers), OpenRouter **always prioritizes BYOK endpoints first**, regardless of where that provider appears in your specified order. After all BYOK endpoints are exhausted, OpenRouter falls back to shared capacity in the order you specified.
+When you combine BYOK keys with [provider ordering](/guides/routing/provider-selection#ordering-specific-providers), OpenRouter **always prioritizes BYOK endpoints first**, regardless of where that provider appears in your specified order. After all BYOK endpoints are exhausted, OpenRouter falls back to shared capacity in the order you specified.
 
 This means BYOK keys effectively override your provider ordering for the initial routing attempts. There is currently no way to change this behavior.
 
 For example, if you have BYOK keys for Amazon Bedrock, Google Vertex AI, and Anthropic, and you send a request with:
 
-```json
+```json lines theme={null}
 {
   "provider": {
     "allow_fallbacks": true,
@@ -87,7 +95,7 @@ The routing order will be:
 
 If you only have a BYOK key for some of the providers in your order, the BYOK provider is still tried first. For example, if you specify `order: ["amazon-bedrock", "google-vertex"]` but only have a BYOK key for Google Vertex AI:
 
-```json
+```json lines theme={null}
 {
   "provider": {
     "allow_fallbacks": true,
@@ -169,7 +177,7 @@ Azure has two resource types, each using a different domain:
 
 The simplest way to configure Azure BYOK is with a Foundry configuration. Provide your API key, resource name, and resource type:
 
-```json
+```json lines theme={null}
 [
   {
     "api_key": "your-azure-api-key",
@@ -189,7 +197,7 @@ This configuration works for all models available in your Azure resource — no 
 
 For more control, you can specify individual deployments with full endpoint URLs:
 
-```json
+```json lines theme={null}
 [
   {
     "model_slug": "mistralai/mistral-large",
@@ -223,7 +231,7 @@ To use Amazon Bedrock with OpenRouter, you can authenticate using either Bedrock
 
 Amazon Bedrock API keys provide a simpler authentication method. Simply provide your Bedrock API key as a string:
 
-```
+```lines theme={null}
 your-bedrock-api-key-here
 ```
 
@@ -235,7 +243,7 @@ You can generate Bedrock API keys in the AWS Management Console. Learn more in t
 
 Alternatively, you can use traditional AWS credentials in JSON format. This option allows you to specify the region and provides more flexibility:
 
-```json
+```json lines theme={null}
 {
   "accessKeyId": "your-aws-access-key-id",
   "secretAccessKey": "your-aws-secret-access-key",
@@ -258,7 +266,7 @@ Make sure your AWS IAM user or role has the necessary permissions to access Amaz
 
 Example IAM policy:
 
-```json
+```json lines theme={null}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -282,7 +290,7 @@ Learn more in the [AWS Bedrock Getting Started with the API](https://docs.aws.am
 
 To use Google Vertex AI with OpenRouter, you'll need to provide your Google Cloud service account key in JSON format. The service account key should include all standard Google Cloud service account fields, with an optional `region` field for specifying the deployment region.
 
-```json
+```json lines theme={null}
 {
   "type": "service_account",
   "project_id": "your-project-id",
@@ -311,7 +319,7 @@ Make sure your service account has the necessary permissions to access Vertex AI
 
 Example IAM policy:
 
-```json
+```json lines theme={null}
 {
   "bindings": [
     {

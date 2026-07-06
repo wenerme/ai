@@ -1,18 +1,22 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Automatic Code Review
 
-A reference implementation is available at
-[**redline**](https://github.com/alexanderatallah/redline).
-Key features:
+> Automatic code review for Claude Code using hooks and OpenRouter — async, non-blocking reviews from a second model while you keep working
 
-* Claude (or you) decides when a review is necessary
-* Claude Code is in full control of the reviewer agent — it runs as an async background process
-* Both agents are observable, customizable, and cost-monitored on [OpenRouter](https://openrouter.ai)
-* Log into both agents with one command: `redline login`
-* Implemented as a single Claude Code stop hook, providing transparency and customizability on the agent and model(s) used
+<Info>
+  A reference implementation is available at
+  [**redline**](https://github.com/alexanderatallah/redline).
+  Key features:
+
+  * Claude (or you) decides when a review is necessary
+  * Claude Code is in full control of the reviewer agent — it runs as an async background process
+  * Both agents are observable, customizable, and cost-monitored on [OpenRouter](https://openrouter.ai)
+  * Log into both agents with one command: `redline login`
+  * Implemented as a single Claude Code stop hook, providing transparency and customizability on the agent and model(s) used
+</Info>
 
 ## What This Achieves
 
@@ -23,7 +27,7 @@ workflow. You keep working while the review runs. When
 it finishes, Claude reads the output and presents the
 findings.
 
-```text
+```text lines theme={null}
 Claude Code Stop event
   → redline check              (fast, <1s)
   → git diff --stat HEAD       (any uncommitted changes?)
@@ -65,30 +69,32 @@ Set these environment variables in your shell profile
 (`~/.zshrc`, `~/.bashrc`). **Do not** use a `.env`
 file — Claude Code doesn't read them.
 
-```bash
+```bash lines theme={null}
 export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
 export ANTHROPIC_AUTH_TOKEN="sk-or-..."
 export ANTHROPIC_API_KEY=""
 ```
 
-The base URL is `https://openrouter.ai/api` — **no
-`/v1` suffix**. This is OpenRouter's Anthropic Skin,
-which speaks the native Anthropic protocol. Using
-`/v1` causes model-not-found errors.
-`ANTHROPIC_API_KEY` must be explicitly empty to
-prevent Claude Code from authenticating directly
-with Anthropic.
+<Warning>
+  The base URL is `https://openrouter.ai/api` — **no
+  `/v1` suffix**. This is OpenRouter's Anthropic Skin,
+  which speaks the native Anthropic protocol. Using
+  `/v1` causes model-not-found errors.
+  `ANTHROPIC_API_KEY` must be explicitly empty to
+  prevent Claude Code from authenticating directly
+  with Anthropic.
+</Warning>
 
 Verify by running `/status` in a Claude Code session.
 See the full
-[Claude Code integration guide](/docs/cookbook/coding-agents/claude-code-integration)
+[Claude Code integration guide](/cookbook/coding-agents/claude-code-integration)
 for details.
 
 ### Codex CLI
 
 Create or edit `~/.codex/config.toml`:
 
-```toml
+```toml lines theme={null}
 [model_providers.openrouter]
 name = "openrouter"
 base_url = "https://openrouter.ai/api/v1"
@@ -97,7 +103,7 @@ env_key = "OPENROUTER_API_KEY"
 
 Then set the API key:
 
-```bash
+```bash lines theme={null}
 export OPENROUTER_API_KEY="sk-or-..."
 ```
 
@@ -105,19 +111,21 @@ At runtime, pass
 `-c 'model_provider="openrouter"'` to select the
 OpenRouter provider.
 
-Common pitfalls:
+<Warning>
+  Common pitfalls:
 
-* Codex CLI does **not** have a `--provider` flag —
-  use `-c` for all runtime config overrides
-* The TOML section is `[model_providers.openrouter]`,
-  **not** `[provider.openrouter]`
-* Codex uses `https://openrouter.ai/api/v1` (with
-  `/v1`), while Claude uses
-  `https://openrouter.ai/api` (without `/v1`) —
-  they use different protocol skins
+  * Codex CLI does **not** have a `--provider` flag —
+    use `-c` for all runtime config overrides
+  * The TOML section is `[model_providers.openrouter]`,
+    **not** `[provider.openrouter]`
+  * Codex uses `https://openrouter.ai/api/v1` (with
+    `/v1`), while Claude uses
+    `https://openrouter.ai/api` (without `/v1`) —
+    they use different protocol skins
+</Warning>
 
 See the full
-[Codex CLI integration guide](/docs/cookbook/coding-agents/codex-cli)
+[Codex CLI integration guide](/cookbook/coding-agents/codex-cli)
 for details.
 
 ## Understanding the Stop Hook
@@ -165,7 +173,7 @@ hook so it doesn't affect other collaborators.
 
 ### Hook configuration
 
-```json
+```json lines theme={null}
 {
   "hooks": {
     "Stop": [
@@ -222,7 +230,7 @@ actual work, spawned by Claude as a background task).
 The check command runs on every Stop event and must
 complete in under a second.
 
-```typescript
+```typescript expandable lines theme={null}
 import { execSync } from "child_process";
 import {
   existsSync,
@@ -325,7 +333,7 @@ The review command is spawned by Claude as a
 background task. It streams Codex output in real-time
 for progress visibility, then prints a final summary.
 
-```typescript
+```typescript expandable lines theme={null}
 import { spawn } from "child_process";
 import { readFileSync, unlinkSync } from "fs";
 import { join } from "path";
@@ -405,7 +413,7 @@ Key details:
 The check command's `reason` field includes the diff
 stat and lets Claude decide whether to review:
 
-```text
+```text lines theme={null}
 Redline: Here is a summary of uncommitted changes
 since the last review:
 
@@ -439,7 +447,7 @@ install and remove the hook from
 
 ### Install
 
-```bash
+```bash lines theme={null}
 redline install
 ```
 
@@ -453,7 +461,7 @@ your hooks by command prefix (commands starting with
 
 The resulting file:
 
-```json
+```json lines theme={null}
 {
   "hooks": {
     "Stop": [
@@ -473,7 +481,7 @@ The resulting file:
 
 ### Remove
 
-```bash
+```bash lines theme={null}
 redline off
 ```
 
@@ -484,7 +492,7 @@ empty).
 
 ### Implementation
 
-```typescript
+```typescript expandable lines theme={null}
 import {
   readFileSync,
   writeFileSync,
@@ -595,7 +603,7 @@ function removeHook(): void {
 
 The full CLI has four commands:
 
-```bash
+```bash lines theme={null}
 # Install the hook
 redline install
 
@@ -614,7 +622,7 @@ redline check
 
 ### Full CLI entry point
 
-```typescript
+```typescript expandable lines theme={null}
 const args = process.argv.slice(2);
 const command = args[0];
 
@@ -658,7 +666,7 @@ switch (command) {
 
 ### Verify hook installation
 
-```bash
+```bash lines theme={null}
 redline install
 cat .claude/settings.local.json
 ```
@@ -670,7 +678,7 @@ You should see the Stop hook entry with the
 
 Ensure your working tree is clean, then:
 
-```bash
+```bash lines theme={null}
 redline check
 ```
 
@@ -681,7 +689,7 @@ no uncommitted changes.
 
 Make a small change to any file, then:
 
-```bash
+```bash lines theme={null}
 redline check
 ```
 
@@ -691,7 +699,7 @@ review instructions.
 
 ### Test review
 
-```bash
+```bash lines theme={null}
 redline review
 ```
 
@@ -740,6 +748,6 @@ baseline snapshot taken before Claude's response).
 ## Resources
 
 * [Reference implementation (redline)](https://github.com/alexanderatallah/redline)
-* [Claude Code integration](/docs/cookbook/coding-agents/claude-code-integration)
-* [Codex CLI integration](/docs/cookbook/coding-agents/codex-cli)
+* [Claude Code integration](/cookbook/coding-agents/claude-code-integration)
+* [Codex CLI integration](/cookbook/coding-agents/codex-cli)
 * [OpenRouter Activity Dashboard](https://openrouter.ai/activity)

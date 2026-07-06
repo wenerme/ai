@@ -1,0 +1,31 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# OpenResponsesReasoningConfig - TypeScript SDK
+
+> OpenResponsesReasoningConfig method reference
+
+<Warning>
+  The TypeScript SDK and docs are currently in beta.
+  Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
+</Warning>
+
+Configuration for reasoning mode in the response
+
+## Example Usage
+
+```typescript lines theme={null}
+import { OpenResponsesReasoningConfig } from "@openrouter/sdk/models";
+
+let value: OpenResponsesReasoningConfig = {};
+```
+
+## Fields
+
+| Field       | Type                                                                                                 | Required             | Description |
+| ----------- | ---------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
+| `effort`    | [models.OpenAIResponsesReasoningEffort](/agent-sdk/typescript/models/openairesponsesreasoningeffort) | :heavy\_minus\_sign: | N/A         |
+| `summary`   | [models.ReasoningSummaryVerbosity](/agent-sdk/typescript/models/reasoningsummaryverbosity)           | :heavy\_minus\_sign: | N/A         |
+| `maxTokens` | *number*                                                                                             | :heavy\_minus\_sign: | N/A         |
+| `enabled`   | *boolean*                                                                                            | :heavy\_minus\_sign: | N/A         |

@@ -1,0 +1,31 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# CostDetails - TypeScript SDK
+
+> CostDetails method reference
+
+<Warning>
+  The TypeScript SDK and docs are currently in beta.
+  Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
+</Warning>
+
+## Example Usage
+
+```typescript lines theme={null}
+import { CostDetails } from "@openrouter/sdk/models";
+
+let value: CostDetails = {
+  upstreamInferenceInputCost: 5717.43,
+  upstreamInferenceOutputCost: 5806.85,
+};
+```
+
+## Fields
+
+| Field                         | Type     | Required             | Description |
+| ----------------------------- | -------- | -------------------- | ----------- |
+| `upstreamInferenceCost`       | *number* | :heavy\_minus\_sign: | N/A         |
+| `upstreamInferenceInputCost`  | *number* | :heavy\_check\_mark: | N/A         |
+| `upstreamInferenceOutputCost` | *number* | :heavy\_check\_mark: | N/A         |

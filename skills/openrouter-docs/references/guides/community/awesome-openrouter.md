@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Awesome OpenRouter
+
+> Community-curated list of projects built with OpenRouter
 
 Awesome OpenRouter is a community-curated list of projects, tools, and applications built with OpenRouter. It showcases the diverse ecosystem of apps that leverage OpenRouter's unified API for accessing AI models.
 

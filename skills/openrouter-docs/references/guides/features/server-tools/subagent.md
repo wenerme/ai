@@ -1,10 +1,18 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Subagent
 
-Server tools are currently in beta. The API and behavior may change.
+> Delegate tasks to a smaller, faster model as a server tool
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+<Note>
+  **Beta**
+
+  Server tools are currently in beta. The API and behavior may change.
+</Note>
 
 The `openrouter:subagent` server tool lets a model delegate self-contained tasks to a smaller, cheaper, faster **worker model** mid-generation. When your model has a piece of work that doesn't need its full capability — summarizing a document, extracting structured data, drafting boilerplate, reformatting text — it invokes the tool with a `task_name` and a `task_description`. The worker model executes the task and returns its result as the tool's `outcome`, and your model continues, integrating the result.
 
@@ -12,61 +20,70 @@ The worker can be **any OpenRouter model**, and it can optionally run as a **sub
 
 ## Quick start
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Audit this release: summarize the changelog, list breaking changes, and draft the announcement.',
+<Template
+  data={{
+API_KEY_REF,
+MODEL: '~anthropic/claude-opus-latest',
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" expandable lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
       },
-    ],
-    tools: [
-      {
-        type: 'openrouter:subagent',
-        parameters: { model: '~anthropic/claude-haiku-latest' },
-      },
-    ],
-  }),
-});
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: 'Audit this release: summarize the changelog, list breaking changes, and draft the announcement.',
+          },
+        ],
+        tools: [
+          {
+            type: 'openrouter:subagent',
+            parameters: { model: '~anthropic/claude-haiku-latest' },
+          },
+        ],
+      }),
+    });
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-```
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
 
-```python title="Python"
-import requests
+    ```python title="Python" expandable lines theme={null}
+    import requests
 
-response = requests.post(
-  "https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Audit this release: summarize the changelog, list breaking changes, and draft the announcement.",
+    response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
       },
-    ],
-    "tools": [
-      {
-        "type": "openrouter:subagent",
-        "parameters": {"model": "~anthropic/claude-haiku-latest"},
+      json={
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Audit this release: summarize the changelog, list breaking changes, and draft the announcement.",
+          },
+        ],
+        "tools": [
+          {
+            "type": "openrouter:subagent",
+            "parameters": {"model": "~anthropic/claude-haiku-latest"},
+          },
+        ],
       },
-    ],
-  },
-)
-print(response.json()["choices"][0]["message"]["content"])
-```
+    )
+    print(response.json()["choices"][0]["message"]["content"])
+    ```
+  </CodeGroup>
+</Template>
 
 ## Choosing the worker model
 
@@ -75,7 +92,7 @@ The worker model is resolved with the following precedence:
 1. `parameters.model` on the tool definition, if set.
 2. The model from the outer API request, as a fallback.
 
-Unlike the [advisor tool](/docs/guides/features/server-tools/advisor), the delegating model does not choose its worker per call — the worker is fixed by the tool definition. The subagent tool itself can never be the worker model.
+Unlike the [advisor tool](/guides/features/server-tools/advisor), the delegating model does not choose its worker per call — the worker is fixed by the tool definition. The subagent tool itself can never be the worker model.
 
 ## When does the model invoke it?
 
@@ -85,7 +102,7 @@ The tool's description steers the model to delegate focused sub-tasks that don't
 
 Pass an optional `parameters` object on the tool entry:
 
-```json
+```json lines theme={null}
 {
   "tools": [
     {
@@ -123,7 +140,7 @@ When invoking the tool, the model passes:
 
 On success the tool result contains the outcome text, the task name, and the model that produced it:
 
-```json
+```json lines theme={null}
 {
   "status": "ok",
   "model": "anthropic/claude-haiku-4.5",
@@ -134,7 +151,7 @@ On success the tool result contains the outcome text, the task name, and the mod
 
 On failure the result has `status: "error"` with a message; the calling model continues without the outcome:
 
-```json
+```json lines theme={null}
 {
   "status": "error",
   "task_name": "summarize-changelog",
@@ -159,6 +176,6 @@ Task executions are also capped per request to bound cost and latency.
 
 ## Related
 
-* [Advisor server tool](/docs/guides/features/server-tools/advisor) — consult a stronger model for guidance
-* [Fusion server tool](/docs/guides/features/server-tools/fusion) — multi-model deliberation
-* [Web Search server tool](/docs/guides/features/server-tools/web-search)
+* [Advisor server tool](/guides/features/server-tools/advisor) — consult a stronger model for guidance
+* [Fusion server tool](/guides/features/server-tools/fusion) — multi-model deliberation
+* [Web Search server tool](/guides/features/server-tools/web-search)

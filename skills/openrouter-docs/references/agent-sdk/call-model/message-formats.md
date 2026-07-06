@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Message Formats
+
+> The OpenRouter SDK provides helper functions to convert between popular message formats. This makes it easy to migrate existing code or integrate with different APIs.
 
 ## OpenAI Chat Format
 
@@ -10,7 +12,7 @@
 
 Convert OpenAI chat-style messages to OpenResponses input:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter, fromChatMessages } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -37,7 +39,7 @@ const text = await result.getText();
 
 Convert an OpenResponses response to chat message format:
 
-```typescript
+```typescript lines theme={null}
 import { toChatMessage } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -67,7 +69,7 @@ console.log(chatMessage.content); // Response text
 
 Tool responses are converted to function call outputs:
 
-```typescript
+```typescript lines theme={null}
 const chatMessages = [
   { role: 'user', content: 'What is the weather?' },
   {
@@ -95,7 +97,7 @@ const input = fromChatMessages(chatMessages);
 
 Convert Anthropic Claude-style messages to OpenResponses input:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter, fromClaudeMessages } from '@openrouter/agent';
 
 // Claude format
@@ -115,7 +117,7 @@ const result = openrouter.callModel({
 
 Convert an OpenResponses response to Claude message format:
 
-```typescript
+```typescript lines theme={null}
 import { toClaudeMessage } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -133,7 +135,7 @@ const claudeMessage = toClaudeMessage(response);
 
 Claude's content block format is supported:
 
-```typescript
+```typescript lines theme={null}
 const claudeMessages = [
   {
     role: 'user',
@@ -157,7 +159,7 @@ const input = fromClaudeMessages(claudeMessages);
 
 Claude's tool use format is converted:
 
-```typescript
+```typescript expandable lines theme={null}
 const claudeMessages = [
   { role: 'user', content: 'What is the weather?' },
   {
@@ -190,7 +192,7 @@ const input = fromClaudeMessages(claudeMessages);
 
 Both URL and base64 images are supported:
 
-```typescript
+```typescript lines theme={null}
 const claudeMessages = [
   {
     role: 'user',
@@ -220,7 +222,7 @@ These features are Claude-specific and not supported by OpenRouter.
 
 ### From OpenAI SDK
 
-```typescript
+```typescript expandable lines theme={null}
 // Before: OpenAI SDK
 import OpenAI from 'openai';
 
@@ -250,7 +252,7 @@ const text = await result.getText();
 
 ### From Anthropic SDK
 
-```typescript
+```typescript expandable lines theme={null}
 // Before: Anthropic SDK
 import Anthropic from '@anthropic-ai/sdk';
 
@@ -282,7 +284,7 @@ const text = await result.getText();
 
 Accumulate messages across multiple calls:
 
-```typescript
+```typescript expandable lines theme={null}
 import { fromChatMessages, toChatMessage } from '@openrouter/agent';
 
 // Start with initial message
@@ -313,6 +315,6 @@ result = openrouter.callModel({
 
 ## Next Steps
 
-* **[Text Generation](/docs/sdks/call-model/text-generation)** - Input formats and parameters
-* **[Tools](/docs/sdks/call-model/tools)** - Add tool capabilities
-* **[Streaming](/docs/sdks/call-model/streaming)** - Stream format-converted responses
+* **[Text Generation](/agent-sdk/call-model/text-generation)** - Input formats and parameters
+* **[Tools](/agent-sdk/call-model/tools)** - Add tool capabilities
+* **[Streaming](/agent-sdk/call-model/streaming)** - Stream format-converted responses

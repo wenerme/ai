@@ -1,16 +1,19 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Generate and Download a Video from Text
+
+> Submit a text-to-video job, poll for completion, and save the generated MP4
 
 Use this guide when you need to add text-to-video generation to an app with OpenRouter.
 
 By the end, your implementation should submit a video job, poll for completion,
 and download the generated MP4.
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+<Tip>
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
 
 ## Before you start
 
@@ -20,22 +23,24 @@ You need:
 * Node.js 20 or newer
 * A video model slug, such as `google/veo-3.1-lite`
 
-If you have not chosen a model yet, read
-[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-so you can select one based on your clip duration, output shape, input type,
-audio, provider controls, and cost requirements.
+<Tip>
+  If you have not chosen a model yet, read
+  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  so you can select one based on your clip duration, output shape, input type,
+  audio, provider controls, and cost requirements.
+</Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/docs/api/api-reference/video-generation/create-videos)
-* [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
-* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
+* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
 
 Before wiring the submit path, confirm that the selected model supports the
 duration, resolution, and aspect ratio you plan to send. For example, the model
 used below returned this metadata during QA:
 
-```bash
+```bash lines theme={null}
 node --input-type=module <<'EOF'
 const { data } = await fetch(
   "https://openrouter.ai/api/v1/videos/models",
@@ -58,7 +63,7 @@ EOF
 
 Model metadata output:
 
-```json
+```json lines theme={null}
 {
   "durations": [8, 4, 6],
   "resolutions": ["720p", "1080p"],
@@ -66,8 +71,10 @@ Model metadata output:
 }
 ```
 
-Submitting `POST /api/v1/videos` starts a real video generation job and may
-spend OpenRouter credits.
+<Warning>
+  Submitting `POST /api/v1/videos` starts a real video generation job and may
+  spend OpenRouter credits.
+</Warning>
 
 ## Step 1: Submit the video job
 
@@ -78,7 +85,7 @@ object because the next step needs its `id`, `status`, and `polling_url`.
 Adapt this submit shape in the server route, queue, or worker that owns video
 generation:
 
-```ts
+```ts expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
 
 if (!apiKey) {
@@ -121,7 +128,7 @@ console.log(`Submitted video job: ${job.id}`);
 
 A successful submit returns a job id. The QA run produced this shape:
 
-```text
+```text lines theme={null}
 Submitted video job: y34x1YREG4Pkdcj7f02v
 ```
 
@@ -133,7 +140,7 @@ errors, and keep a bounded retry limit so the worker cannot run forever.
 
 Polling logic:
 
-```ts
+```ts expandable lines theme={null}
 let status = job;
 
 for (let attempt = 1; attempt <= 60; attempt += 1) {
@@ -175,7 +182,7 @@ if (status.status !== "completed") {
 
 Completed poll output:
 
-```text
+```text lines theme={null}
 Status: completed
 ```
 
@@ -189,7 +196,7 @@ OpenRouter API.
 In Node.js, import `writeFile` from `node:fs/promises` or replace the file write
 with the storage layer your app uses.
 
-```ts
+```ts lines theme={null}
 const videoResponse = await fetch(
   `https://openrouter.ai/api/v1/videos/${job.id}/content?index=0`,
   {
@@ -209,14 +216,14 @@ console.log("Saved greenhouse.mp4");
 
 The QA run saved the finished video after polling completed:
 
-```text
+```text lines theme={null}
 Saved greenhouse.mp4
 ```
 
 If your completed job includes `unsigned_urls`, this is the adaptable download
 shape:
 
-```ts
+```ts lines theme={null}
 const videoUrl = status.unsigned_urls?.[0];
 
 const downloadUrl =
@@ -244,7 +251,7 @@ Keep the submit, poll, and download steps in the part of your app that owns
 long-running work. This complete example keeps the pieces together so you can
 adapt the sequence into a server route, queue, or worker:
 
-```ts
+```ts expandable lines theme={null}
 import { writeFile } from "node:fs/promises";
 
 const apiKey = process.env.OPENROUTER_API_KEY;

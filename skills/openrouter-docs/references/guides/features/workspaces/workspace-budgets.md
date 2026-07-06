@@ -1,12 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Workspace Budgets
 
+> Set spending limits per workspace with automatic enforcement
+
 Workspace budgets let you cap how much a workspace can spend on OpenRouter inference. Set a dollar limit on any combination of intervals — daily, weekly, monthly, or lifetime — and OpenRouter blocks requests automatically once a limit is reached.
 
-Workspace budgets are available on the **Enterprise** plan. Only **Organization Administrators** can create, edit, or delete budgets — other workspace members can view budgets and current spend but cannot modify them. Contact [sales](https://openrouter.ai/contact/sales) to get started.
+<Note>
+  Workspace budgets are available on the **Enterprise** plan. Only **Organization Administrators** can create, edit, or delete budgets — other workspace members can view budgets and current spend but cannot modify them. Contact [sales](https://openrouter.ai/contact/sales) to get started.
+</Note>
 
 ## How It Works
 
@@ -45,24 +49,26 @@ For example, if your monthly budget is $1,000, the weekly budget must be less th
 4. Repeat for additional intervals
 5. Click **Save**
 
-![Workspace budgets section in the Settings dashboard](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/e2ab2689f15d9c9542b85d9e7f48425653f9e694f2a85b2e1629e7fd358590c9/content/assets/workspace-budgets.png)
+<img src="https://mintcdn.com/openrouter-d02e98a0/vKv_Fe97IEm3a1mW/assets/guides/features/workspaces/workspace-budgets.png?fit=max&auto=format&n=vKv_Fe97IEm3a1mW&q=85&s=9d317b499bdd02e6d9db826a2f8848be" alt="Workspace budgets section in the Settings dashboard" width="1024" height="512" data-path="assets/guides/features/workspaces/workspace-budgets.png" />
 
 Each budget row shows a progress bar with current-period spend against the limit. If spend already exceeds a limit, the bar turns red and a warning appears.
 
-These steps require the **Organization Administrator** role.
+<Note>
+  These steps require the **Organization Administrator** role.
+</Note>
 
 ## Setting Budgets via the API
 
-You can also manage budgets programmatically using a [management API key](/docs/guides/overview/auth/management-api-keys). The endpoints live under `/api/v1/workspaces/{id}/budgets`.
+You can also manage budgets programmatically using a [management API key](/guides/overview/auth/management-api-keys). The endpoints live under `/api/v1/workspaces/{id}/budgets`.
 
 ### List Budgets
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets \
   -H "Authorization: Bearer $MANAGEMENT_KEY"
 ```
 
-```json
+```json lines theme={null}
 {
   "data": [
     {
@@ -81,7 +87,7 @@ curl https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets \
 
 Use `PUT` with the interval in the path. If a budget for that interval already exists, it's updated.
 
-```bash
+```bash lines theme={null}
 curl -X PUT https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets/monthly \
   -H "Authorization: Bearer $MANAGEMENT_KEY" \
   -H "Content-Type: application/json" \
@@ -99,12 +105,12 @@ the monthly limit ($500) must be greater than the weekly limit ($600).
 
 ### Delete a Budget
 
-```bash
+```bash lines theme={null}
 curl -X DELETE https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets/monthly \
   -H "Authorization: Bearer $MANAGEMENT_KEY"
 ```
 
-```json
+```json lines theme={null}
 {
   "deleted": true
 }
@@ -125,12 +131,24 @@ Enterprise org admins can also set budgets when creating a new workspace. The wo
 
 ## FAQ
 
-Budget checks run before the request is routed to a provider. In-flight requests that were already dispatched will complete, so actual spend may slightly exceed the budget limit. The next request after the overage is detected will be blocked.
+<AccordionGroup>
+  <Accordion title="What happens to in-flight requests when a budget is exceeded?">
+    Budget checks run before the request is routed to a provider. In-flight requests that were already dispatched will complete, so actual spend may slightly exceed the budget limit. The next request after the overage is detected will be blocked.
+  </Accordion>
 
-Workspace budgets apply to OpenRouter-billed spend. BYOK requests that are routed with your own provider key and don't consume OpenRouter credits are not counted against workspace budgets.
+  <Accordion title="Do BYOK (Bring Your Own Key) requests count against workspace budgets?">
+    Workspace budgets apply to OpenRouter-billed spend. BYOK requests that are routed with your own provider key and don't consume OpenRouter credits are not counted against workspace budgets.
+  </Accordion>
 
-Yes. Every workspace — including the Default workspace — can have budgets configured.
+  <Accordion title="Can I set budgets on the Default workspace?">
+    Yes. Every workspace — including the Default workspace — can have budgets configured.
+  </Accordion>
 
-Users receive a `403 Forbidden` error on the blocked request with a message naming the exceeded budget. There are no proactive email or webhook notifications yet — budget status is visible in the workspace settings dashboard.
+  <Accordion title="Who gets notified when a budget is exceeded?">
+    Users receive a `403 Forbidden` error on the blocked request with a message naming the exceeded budget. There are no proactive email or webhook notifications yet — budget status is visible in the workspace settings dashboard.
+  </Accordion>
 
-No. Only organization admins can modify budgets. Members whose requests are blocked should contact their org admin to raise the limit.
+  <Accordion title="Can workspace members override a budget?">
+    No. Only organization admins can modify budgets. Members whose requests are blocked should contact their org admin to raise the limit.
+  </Accordion>
+</AccordionGroup>

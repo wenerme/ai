@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenCode
+
+> Use OpenCode with OpenRouter
 
 ## What is OpenCode?
 
@@ -12,17 +14,25 @@
 
 ### Step 1: Install OpenCode
 
-```bash
-curl -fsSL https://opencode.ai/install | bash
-```
+<Tabs>
+  <Tab title="Install Script">
+    ```bash lines theme={null}
+    curl -fsSL https://opencode.ai/install | bash
+    ```
+  </Tab>
 
-```bash
-npm install -g opencode-ai
-```
+  <Tab title="npm">
+    ```bash lines theme={null}
+    npm install -g opencode-ai
+    ```
+  </Tab>
 
-```bash
-brew install anomalyco/tap/opencode
-```
+  <Tab title="Homebrew">
+    ```bash lines theme={null}
+    brew install anomalyco/tap/opencode
+    ```
+  </Tab>
+</Tabs>
 
 For additional installation methods (Bun, pnpm, Yarn, Arch Linux, Windows), see the [OpenCode installation docs](https://opencode.ai/docs).
 
@@ -39,14 +49,14 @@ OpenCode supports OpenRouter as a built-in provider. Use the interactive `/conne
 
 1. Start OpenCode in your project directory:
 
-   ```bash
+   ```bash lines theme={null}
    cd /path/to/your/project
    opencode
    ```
 
 2. Run the `/connect` command and select **OpenRouter**:
 
-   ```text
+   ```text lines theme={null}
    /connect
    ```
 
@@ -54,7 +64,7 @@ OpenCode supports OpenRouter as a built-in provider. Use the interactive `/conne
 
 4. Run `/models` to select a model:
 
-   ```text
+   ```text lines theme={null}
    /models
    ```
 
@@ -64,7 +74,7 @@ Your requests will now be routed through OpenRouter.
 
 You can also configure OpenRouter directly in your `opencode.json` config file:
 
-```json
+```json lines theme={null}
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
@@ -80,7 +90,7 @@ You can also configure OpenRouter directly in your `opencode.json` config file:
 
 Set your API key via the `/connect` command or by adding it to `~/.local/share/opencode/auth.json`:
 
-```json
+```json lines theme={null}
 {
   "openrouter": {
     "type": "api",
@@ -93,7 +103,7 @@ Set your API key via the `/connect` command or by adding it to `~/.local/share/o
 
 When using OpenRouter, you can control which upstream providers handle your requests by adding `options.provider` to individual models in your config:
 
-```json
+```json lines theme={null}
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
@@ -113,7 +123,7 @@ When using OpenRouter, you can control which upstream providers handle your requ
 }
 ```
 
-For a full breakdown of routing options, see the [Provider Routing docs](/docs/guides/routing/provider-selection).
+For a full breakdown of routing options, see the [Provider Routing docs](/guides/routing/provider-selection).
 
 ## Why Use OpenRouter with OpenCode?
 

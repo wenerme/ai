@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Migrating to @openrouter/agent
+
+> Move agent toolkit imports from @openrouter/sdk to the standalone @openrouter/agent package
 
 The agent toolkit (`callModel`, `tool`, stop conditions, etc.)
 has moved from `@openrouter/sdk` to a standalone
@@ -29,21 +31,23 @@ If you only use the REST API client for non-agent features
 
 ## Step 1: Install the new package
 
-```bash npm
-npm install @openrouter/agent
-```
+<CodeGroup>
+  ```bash npm lines theme={null}
+  npm install @openrouter/agent
+  ```
 
-```bash pnpm
-pnpm add @openrouter/agent
-```
+  ```bash pnpm lines theme={null}
+  pnpm add @openrouter/agent
+  ```
 
-```bash yarn
-yarn add @openrouter/agent
-```
+  ```bash yarn lines theme={null}
+  yarn add @openrouter/agent
+  ```
 
-```bash bun
-bun add @openrouter/agent
-```
+  ```bash bun lines theme={null}
+  bun add @openrouter/agent
+  ```
+</CodeGroup>
 
 ## Step 2: Update imports
 
@@ -56,7 +60,7 @@ the equivalent `@openrouter/agent` subpath.
 you can drop the `@openrouter/sdk` dependency entirely if
 you only use agent features:
 
-```diff
+```diff lines theme={null}
 - import OpenRouter from '@openrouter/sdk';
 - import { callModel } from '@openrouter/sdk/funcs/call-model';
 + import { OpenRouter } from '@openrouter/agent';
@@ -74,13 +78,13 @@ you only use agent features:
 
 You can also import the client from a direct subpath:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/agent/client';
 ```
 
 ### Core imports
 
-```diff
+```diff lines theme={null}
 - import { callModel } from '@openrouter/sdk/funcs/call-model';
 + import { callModel } from '@openrouter/agent/call-model';
 
@@ -93,7 +97,7 @@ import { OpenRouter } from '@openrouter/agent/client';
 
 ### Tool types and guards
 
-```diff
+```diff lines theme={null}
 - import type { Tool } from '@openrouter/sdk/lib/tool-types';
 + import type { Tool } from '@openrouter/agent/tool-types';
 
@@ -109,7 +113,7 @@ import { OpenRouter } from '@openrouter/agent/client';
 
 ### Stop conditions
 
-```diff
+```diff lines theme={null}
 - import {
 -   stepCountIs,
 -   hasToolCall,
@@ -124,7 +128,7 @@ import { OpenRouter } from '@openrouter/agent/client';
 
 ### Async parameters
 
-```diff
+```diff lines theme={null}
 - import type {
 -   CallModelInput,
 - } from '@openrouter/sdk/lib/async-params';
@@ -138,7 +142,7 @@ import { OpenRouter } from '@openrouter/agent/client';
 Conversation helpers and message format converters are
 available from the package barrel:
 
-```diff
+```diff lines theme={null}
 - import {
 -   createInitialState,
 -   updateState,
@@ -158,7 +162,7 @@ available from the package barrel:
 Run your type checker and tests to confirm everything
 resolves correctly:
 
-```bash
+```bash lines theme={null}
 npx tsc --noEmit
 npm test
 ```
@@ -187,7 +191,7 @@ your code. See the [Client class](#client-class) and
 [Conversation state](#conversation-state-and-message-formats)
 sections above for the correct replacements.
 
-```bash
+```bash lines theme={null}
 # Using sed (macOS)
 find src -name '*.ts' -o -name '*.tsx' | xargs sed -i '' \
   -e "s|@openrouter/sdk/funcs/call-model|@openrouter/agent/call-model|g" \
@@ -198,7 +202,7 @@ find src -name '*.ts' -o -name '*.tsx' | xargs sed -i '' \
   -e "s|@openrouter/sdk/lib/async-params|@openrouter/agent/async-params|g"
 ```
 
-```bash
+```bash lines theme={null}
 # Using sed (Linux)
 find src -name '*.ts' -o -name '*.tsx' | xargs sed -i \
   -e "s|@openrouter/sdk/funcs/call-model|@openrouter/agent/call-model|g" \
@@ -209,11 +213,13 @@ find src -name '*.ts' -o -name '*.tsx' | xargs sed -i \
   -e "s|@openrouter/sdk/lib/async-params|@openrouter/agent/async-params|g"
 ```
 
-The `tool-types` replacement runs before `tool` to avoid
-partial matches. After running the script, search your
-codebase for any remaining `from '@openrouter/sdk'` (without
-a `/` subpath) to find barrel and client imports that need
-manual updates.
+<Note>
+  The `tool-types` replacement runs before `tool` to avoid
+  partial matches. After running the script, search your
+  codebase for any remaining `from '@openrouter/sdk'` (without
+  a `/` subpath) to find barrel and client imports that need
+  manual updates.
+</Note>
 
 ## FAQ
 
@@ -231,7 +237,7 @@ Yes. They are designed to work side by side. Use
 `@openrouter/sdk` for REST API features and
 `@openrouter/agent` for the agent toolkit:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/sdk';
 import { callModel } from '@openrouter/agent/call-model';
 import { tool } from '@openrouter/agent/tool';

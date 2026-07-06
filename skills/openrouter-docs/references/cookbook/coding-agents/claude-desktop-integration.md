@@ -1,10 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Claude Desktop
 
-Claude Desktop with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Desktop.
+> Use Claude Desktop with OpenRouter
+
+<Warning>
+  Claude Desktop with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/guides/routing/provider-selection) when using Claude Desktop.
+</Warning>
 
 ## Why Use OpenRouter with Claude Desktop?
 
@@ -41,13 +45,17 @@ OpenRouter exposes an API that is compatible with the Anthropic Messages API.
 
 Launch Claude Desktop — you do not need to sign in. Open **Help > Troubleshooting** and click **Enable Developer Mode**. This adds a **Developer** menu to your menu bar.
 
-![Claude Desktop Help menu showing Troubleshooting submenu with Enable Developer Mode highlighted](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/d07be11e2b515a9575dc4667a7f3c6e4e19cc9491e2bfaf6fc50eaa0f54863fd/content/pages/guides/claude-desktop-enable-developer-mode.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-enable-developer-mode.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=b356225fcd78b146e03cac4816f2489c" alt="Claude Desktop Help menu showing Troubleshooting submenu with Enable Developer Mode highlighted" width="1969" height="1304" data-path="assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-enable-developer-mode.png" />
+</Frame>
 
 ### Step 2: Open the Third-Party Inference Panel
 
 Click **Developer > Configure Third-Party Inference…** in the menu bar.
 
-![Claude Desktop Developer menu with Configure Third-Party Inference highlighted](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/93b45d112cba582a417b1d1798d5a57ad56eac712774d06131123c30250627fa/content/pages/guides/claude-desktop-configure-third-party.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-configure-third-party.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=4feee5b27952c053aa04d5448c6adc48" alt="Claude Desktop Developer menu with Configure Third-Party Inference highlighted" width="1154" height="1274" data-path="assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-configure-third-party.png" />
+</Frame>
 
 ### Step 3: Enter Gateway Credentials
 
@@ -59,7 +67,9 @@ Set the backend to **Gateway (Anthropic-compatible)** and enter your OpenRouter 
 | **Gateway API key**     | Your OpenRouter API key (e.g. `sk-or-v1-...`) |
 | **Gateway auth scheme** | `bearer`                                      |
 
-![Claude Desktop third-party inference configuration panel showing Gateway selected with OpenRouter credentials](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ae05b883473a13b42e19a1894a4bb64f108562b8566818ddd113bfb49009156f/content/pages/guides/claude-desktop-gateway-credentials.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-gateway-credentials.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=cdec4906d217428012c38a98fee8f18a" alt="Claude Desktop third-party inference configuration panel showing Gateway selected with OpenRouter credentials" width="1897" height="1136" data-path="assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-gateway-credentials.png" />
+</Frame>
 
 Click **Apply locally** to save your settings.
 
@@ -73,7 +83,7 @@ The model picker will now display the models available through your OpenRouter c
 
 ## Claude Code
 
-Claude Code is Anthropic's separate CLI-based coding agent that also works with OpenRouter. If you prefer a terminal workflow, see our dedicated [Claude Code integration guide](/docs/cookbook/coding-agents/claude-code-integration) for environment variable setup, model configuration, fast mode, and GitHub Action integration.
+Claude Code is Anthropic's separate CLI-based coding agent that also works with OpenRouter. If you prefer a terminal workflow, see our dedicated [Claude Code integration guide](/cookbook/coding-agents/claude-code-integration) for environment variable setup, model configuration, fast mode, and GitHub Action integration.
 
 ## Troubleshooting
 

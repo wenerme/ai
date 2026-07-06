@@ -1,10 +1,18 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Advisor
 
-Server tools are currently in beta. The API and behavior may change.
+> Consult a stronger model mid-generation as a server tool
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+<Note>
+  **Beta**
+
+  Server tools are currently in beta. The API and behavior may change.
+</Note>
 
 The `openrouter:advisor` server tool lets a model consult a higher-intelligence **advisor model** mid-generation. When your model hits a decision point — before committing to an approach, when it's stuck, or before declaring a task done — it invokes the tool with a `prompt`. The advisor model thinks, returns its guidance as the tool result, and your model continues, informed by the advice.
 
@@ -16,61 +24,70 @@ Each advisor also **remembers its own prior consultations across requests** when
 
 ## Quick start
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Build a concurrent worker pool in Go with graceful shutdown.',
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/gpt-4o-mini',
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" expandable lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
       },
-    ],
-    tools: [
-      {
-        type: 'openrouter:advisor',
-        parameters: { model: '~anthropic/claude-opus-latest' },
-      },
-    ],
-  }),
-});
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: 'Build a concurrent worker pool in Go with graceful shutdown.',
+          },
+        ],
+        tools: [
+          {
+            type: 'openrouter:advisor',
+            parameters: { model: '~anthropic/claude-opus-latest' },
+          },
+        ],
+      }),
+    });
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-```
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
 
-```python title="Python"
-import requests
+    ```python title="Python" expandable lines theme={null}
+    import requests
 
-response = requests.post(
-  "https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Build a concurrent worker pool in Go with graceful shutdown.",
+    response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
       },
-    ],
-    "tools": [
-      {
-        "type": "openrouter:advisor",
-        "parameters": {"model": "~anthropic/claude-opus-latest"},
+      json={
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Build a concurrent worker pool in Go with graceful shutdown.",
+          },
+        ],
+        "tools": [
+          {
+            "type": "openrouter:advisor",
+            "parameters": {"model": "~anthropic/claude-opus-latest"},
+          },
+        ],
       },
-    ],
-  },
-)
-print(response.json()["choices"][0]["message"]["content"])
-```
+    )
+    print(response.json()["choices"][0]["message"]["content"])
+    ```
+  </CodeGroup>
+</Template>
 
 ## Choosing the advisor model
 
@@ -91,7 +108,7 @@ The tool's description steers the model to consult the advisor before substantiv
 
 Pass an optional `parameters` object on the tool entry:
 
-```json
+```json lines theme={null}
 {
   "tools": [
     {
@@ -133,7 +150,7 @@ When invoking the tool, the model passes:
 
 To offer the model a choice of advisors, include **multiple `openrouter:advisor` entries** in the `tools` array — one per advisor. Give each its own `name` (plus its own `model`, `instructions`, and the other advisor fields); the model sees one distinct tool per named advisor and calls whichever fits the task:
 
-```json
+```json lines theme={null}
 {
   "tools": [
     {
@@ -164,7 +181,11 @@ Rules for advisor entries:
 
 A single advisor is just one entry — name it, or leave `name` off to keep it as the default. Each advisor's result reports the model it consulted, so you can tell the advisors apart in the response.
 
-Forcing the advisor with `tool_choice` (e.g. `tool_choice: "required"`, or selecting the `openrouter:advisor` tool) targets the **first** advisor entry. Forcing a specific named advisor via `tool_choice` is not yet supported.
+<Note>
+  **tool\_choice and named advisors**
+
+  Forcing the advisor with `tool_choice` (e.g. `tool_choice: "required"`, or selecting the `openrouter:advisor` tool) targets the **first** advisor entry. Forcing a specific named advisor via `tool_choice` is not yet supported.
+</Note>
 
 ## Cross-request memory
 
@@ -176,17 +197,21 @@ This works on all three APIs; the only requirement is that you **replay the advi
 * **Responses API**: include the `openrouter:advisor` output items from prior responses in `input`, unchanged.
 * **Anthropic Messages API**: include the assistant message's advisor `server_tool_use` and `advisor_tool_result` content blocks from prior turns.
 
-Memory is **per advisor**: in a multi-advisor setup, each advisor recalls only its own prior exchanges — a "reviewer" advisor never sees what the "architect" was told. There is no fixed limit on the number of replayed exchanges; if the history exceeds the advisor model's context window, it is compressed with the [middle-out transform](/docs/guides/features/message-transforms), which trims the middle of the conversation and keeps the oldest and newest exchanges.
+Memory is **per advisor**: in a multi-advisor setup, each advisor recalls only its own prior exchanges — a "reviewer" advisor never sees what the "architect" was told. There is no fixed limit on the number of replayed exchanges; if the history exceeds the advisor model's context window, it is compressed with the [middle-out transform](/guides/features/message-transforms), which trims the middle of the conversation and keeps the oldest and newest exchanges.
 
 Memory applies to prompt-mode consultations. With `forward_transcript: true` the advisor already sees the full parent conversation, so prior exchanges are not separately replayed.
 
-Advisor identity is positional — derived from the entry's index in the request `tools` array. Keep the order of advisor entries stable across the requests of a conversation (and echo the `instance_name` field on replayed Responses items unchanged). Reordering or inserting advisor entries between requests shifts identities, and each advisor reconstructs another's memory.
+<Note>
+  **Keep advisor entry order stable**
+
+  Advisor identity is positional — derived from the entry's index in the request `tools` array. Keep the order of advisor entries stable across the requests of a conversation (and echo the `instance_name` field on replayed Responses items unchanged). Reordering or inserting advisor entries between requests shifts identities, and each advisor reconstructs another's memory.
+</Note>
 
 ## Streaming advice
 
 By default the advice arrives only once the advisor has finished — as a single tool result. Set `parameters.stream` to `true` to have the advice stream out incrementally as the advisor model produces it:
 
-```json
+```json lines theme={null}
 {
   "tools": [
     {
@@ -210,7 +235,7 @@ Streaming has **no effect on the Chat Completions API** (the advice arrives only
 
 On success the tool result contains the advice text and the model that produced it:
 
-```json
+```json lines theme={null}
 {
   "status": "ok",
   "model": "anthropic/claude-opus-4.8",
@@ -220,7 +245,7 @@ On success the tool result contains the advice text and the model that produced 
 
 On failure the result has `status: "error"` with a message; the calling model continues without the advice:
 
-```json
+```json lines theme={null}
 {
   "status": "error",
   "error": "Advisor call failed: ..."
@@ -231,7 +256,7 @@ On failure the result has `status: "error"` with a message; the calling model co
 
 On `/api/v1/messages`, request the advisor with the native Anthropic tool shape — and it works with **any executor model**, not just Anthropic ones:
 
-```json
+```json lines theme={null}
 {
   "model": "anthropic/claude-haiku-4.5",
   "max_tokens": 1024,
@@ -250,7 +275,7 @@ On `/api/v1/messages`, request the advisor with the native Anthropic tool shape 
 
 The response carries the advisor consultation as the official Anthropic block shapes — a `server_tool_use` block with `name: "advisor"` for the call, followed by an `advisor_tool_result` block with the advice:
 
-```json
+```json lines theme={null}
 {
   "content": [
     {
@@ -294,6 +319,6 @@ Consultations are also capped per request to bound cost and latency.
 
 ## Related
 
-* [Fusion server tool](/docs/guides/features/server-tools/fusion) — multi-model deliberation
-* [Web Search server tool](/docs/guides/features/server-tools/web-search)
-* [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)
+* [Fusion server tool](/guides/features/server-tools/fusion) — multi-model deliberation
+* [Web Search server tool](/guides/features/server-tools/web-search)
+* [Web Fetch server tool](/guides/features/server-tools/web-fetch)

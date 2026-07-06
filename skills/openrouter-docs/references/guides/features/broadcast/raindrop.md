@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Raindrop
+
+> Send traces to Raindrop
 
 [Raindrop](https://raindrop.ai) is an AI observability platform for monitoring and evaluating LLM applications. With Raindrop, you can track conversations, analyze model performance, and debug AI workflows.
 
@@ -18,7 +20,7 @@ In Raindrop, navigate to your project settings:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
 
 ## Step 3: Configure Raindrop
 
@@ -35,7 +37,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 
 Make an API request through OpenRouter and view the event in your Raindrop dashboard under **Events**.
 
-![Raindrop Event View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/41b2e80f64527015ac49e6511f555536f7a7d5b6d0cf542852d1908eff15a519/content/pages/features/broadcast/broadcast-raindrop-trace.png)
+<img src="https://mintcdn.com/openrouter-d02e98a0/vKv_Fe97IEm3a1mW/assets/guides/features/broadcast/broadcast-raindrop-trace.png?fit=max&auto=format&n=vKv_Fe97IEm3a1mW&q=85&s=d85967fd883ab6dd038def008fc099b8" alt="Raindrop Event View" width="3176" height="1994" data-path="assets/guides/features/broadcast/broadcast-raindrop-trace.png" />
 
 Each event includes:
 
@@ -56,7 +58,7 @@ Raindrop receives events with custom metadata included as event properties. Use 
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "anthropic/claude-sonnet-4",
   "messages": [{ "role": "user", "content": "What time is it?" }],
@@ -79,4 +81,4 @@ Every key inside `trace` that is not in the table above is forwarded as-is (e.g.
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, the `input` and `output` fields are excluded from events. All other event data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, the `input` and `output` fields are excluded from events. All other event data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Next Turn Params
+
+> Build encapsulated, context-aware tools with `nextTurnParams`. Create skills systems, plugins, and adaptive multi-turn agents.
 
 ## Why nextTurnParams?
 
@@ -17,7 +19,7 @@ With `nextTurnParams`, tools can modify any `callModel` parameter for the next t
 
 ## Basic Example
 
-```typescript
+```typescript expandable lines theme={null}
 import { tool } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -53,7 +55,7 @@ EXPERT MODE ENABLED for ${params.domain}:
 
 This example shows how to recreate Claude Code's skills system as a single encapsulated tool:
 
-```typescript
+```typescript expandable lines theme={null}
 import { tool } from '@openrouter/agent';
 import { readFileSync } from 'fs';
 import { z } from 'zod';
@@ -125,7 +127,7 @@ const result = openrouter.callModel({
 
 Understanding when `nextTurnParams` runs is crucial:
 
-```
+```lines theme={null}
 1. Model generates tool calls
    ↓
 2. All tool `execute` functions run
@@ -145,7 +147,7 @@ Understanding when `nextTurnParams` runs is crucial:
 
 The validated input parameters that were passed to the tool:
 
-```typescript
+```typescript lines theme={null}
 nextTurnParams: {
   instructions: (params, context) => {
     // params is typed based on inputSchema
@@ -174,7 +176,7 @@ The current request context, including:
 
 You can modify `CallModelInput` parameters:
 
-```typescript
+```typescript lines theme={null}
 nextTurnParams: {
   // Modify message history
   input: (params, ctx) => [...ctx.input, newMessage],
@@ -197,7 +199,7 @@ nextTurnParams: {
 
 Build up context as research progresses:
 
-```typescript
+```typescript lines theme={null}
 const researchTool = tool({
   name: "research",
   inputSchema: z.object({ topic: z.string() }),
@@ -224,7 +226,7 @@ Build upon these findings in your response.`;
 
 Upgrade to better models when needed:
 
-```typescript
+```typescript expandable lines theme={null}
 const complexityAnalyzer = tool({
   name: "analyze_complexity",
   inputSchema: z.object({ code: z.string() }),
@@ -254,7 +256,7 @@ const complexityAnalyzer = tool({
 
 Load multiple skills at once:
 
-```typescript
+```typescript expandable lines theme={null}
 const multiSkillLoader = tool({
   name: 'load_skills',
   description: 'Load multiple skills at once',
@@ -309,7 +311,7 @@ const multiSkillLoader = tool({
 
 Adapt to user language preferences:
 
-```typescript
+```typescript expandable lines theme={null}
 const languageTool = tool({
   name: 'set_language',
   inputSchema: z.object({
@@ -342,7 +344,7 @@ const languageTool = tool({
 
 Always check if context was already added:
 
-```typescript
+```typescript lines theme={null}
 nextTurnParams: {
   input: (params, context) => {
     const marker = `[Context: ${params.id}]`;
@@ -364,7 +366,7 @@ nextTurnParams: {
 
 Use proper typing for context access:
 
-```typescript
+```typescript lines theme={null}
 nextTurnParams: {
   instructions: (params, context) => {
     // Safe access with fallback
@@ -378,7 +380,7 @@ nextTurnParams: {
 
 Only modify what's necessary:
 
-```typescript
+```typescript lines theme={null}
 // Good: Minimal, targeted change
 nextTurnParams: {
   temperature: (params) => params.needsPrecision ? 0.2 : undefined,
@@ -394,6 +396,6 @@ nextTurnParams: {
 
 ## See Also
 
-* **[Skills Loader Example](/docs/sdks/typescript/call-model/examples/skills-loader)** - Complete implementation
-* **[Dynamic Parameters](/docs/sdks/typescript/call-model/dynamic-parameters)** - Async parameter functions
-* **[Stop Conditions](/docs/sdks/typescript/call-model/stop-conditions)** - Execution control
+* **[Skills Loader Example](/agent-sdk/call-model/examples/skills-loader)** - Complete implementation
+* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Async parameter functions
+* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Execution control

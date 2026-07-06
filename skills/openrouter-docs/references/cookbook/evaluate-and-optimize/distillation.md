@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Distillation
+
+> Ensure compliance with provider and model creator policies for distillation
 
 Model distillation is the process of training a smaller, more efficient model using outputs from a larger model. While this technique is powerful for creating specialized models, it's important to respect the terms of service set by model providers and creators.
 
@@ -14,7 +16,9 @@ When you use model outputs to train or fine-tune other models, you need to ensur
 
 OpenRouter tracks which models allow their outputs to be used for training purposes through the `is_trainable_text` property. Models where the author has explicitly allowed text distillation are marked as distillable.
 
-OpenRouter provides distillation information on a best-effort basis. You should always verify the specific license terms for your use case, as licensing requirements may vary depending on how you intend to use the model outputs.
+<Tip>
+  OpenRouter provides distillation information on a best-effort basis. You should always verify the specific license terms for your use case, as licensing requirements may vary depending on how you intend to use the model outputs.
+</Tip>
 
 ## Finding Distillable Models on the Model Page
 
@@ -37,75 +41,77 @@ When `enforce_distillable_text` is set to `true`, the request will only be route
 
 ### Example: Enforcing Distillable Models
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-});
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
 
-const completion = await openRouter.chat.send({
-  model: 'meta-llama/llama-3.1-70b-instruct',
-  messages: [{ role: 'user', content: 'Explain quantum computing' }],
-  provider: {
-    enforceDistillableText: true,
-  },
-  stream: false,
-});
-```
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.1-70b-instruct',
+    messages: [{ role: 'user', content: 'Explain quantum computing' }],
+    provider: {
+      enforceDistillableText: true,
+    },
+    stream: false,
+  });
+  ```
 
-```typescript title="TypeScript (fetch)"
-fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
+  ```typescript title="TypeScript (fetch)" lines theme={null}
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-OpenRouter-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.1-70b-instruct',
+      messages: [{ role: 'user', content: 'Explain quantum computing' }],
+      provider: {
+        enforce_distillable_text: true,
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python" lines theme={null}
+  import requests
+
+  headers = {
     'Authorization': 'Bearer <OPENROUTER_API_KEY>',
     'HTTP-Referer': '<YOUR_SITE_URL>',
     'X-OpenRouter-Title': '<YOUR_SITE_NAME>',
     'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'meta-llama/llama-3.1-70b-instruct',
-    messages: [{ role: 'user', content: 'Explain quantum computing' }],
-    provider: {
-      enforce_distillable_text: true,
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.1-70b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Explain quantum computing' }],
+    'provider': {
+      'enforce_distillable_text': True,
     },
-  }),
-});
-```
+  })
+  ```
 
-```python title="Python"
-import requests
-
-headers = {
-  'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-  'HTTP-Referer': '<YOUR_SITE_URL>',
-  'X-OpenRouter-Title': '<YOUR_SITE_NAME>',
-  'Content-Type': 'application/json',
-}
-
-response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-  'model': 'meta-llama/llama-3.1-70b-instruct',
-  'messages': [{ 'role': 'user', 'content': 'Explain quantum computing' }],
-  'provider': {
-    'enforce_distillable_text': True,
-  },
-})
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer <OPENROUTER_API_KEY>" \
-  -H "HTTP-Referer: <YOUR_SITE_URL>" \
-  -H "X-OpenRouter-Title: <YOUR_SITE_NAME>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "meta-llama/llama-3.1-70b-instruct",
-    "messages": [{"role": "user", "content": "Explain quantum computing"}],
-    "provider": {
-      "enforce_distillable_text": true
-    }
-  }'
-```
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer <OPENROUTER_API_KEY>" \
+    -H "HTTP-Referer: <YOUR_SITE_URL>" \
+    -H "X-OpenRouter-Title: <YOUR_SITE_NAME>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "meta-llama/llama-3.1-70b-instruct",
+      "messages": [{"role": "user", "content": "Explain quantum computing"}],
+      "provider": {
+        "enforce_distillable_text": true
+      }
+    }'
+  ```
+</CodeGroup>
 
 ## Use Cases
 
@@ -119,5 +125,5 @@ The distillable filter is particularly useful for:
 
 ## Related Documentation
 
-* [Provider Routing](/docs/guides/routing/provider-selection) - Learn more about the `enforce_distillable_text` parameter and other provider routing options
-* [Models](/docs/overview/models) - Browse all available models and their capabilities
+* [Provider Routing](/guides/routing/provider-selection) - Learn more about the `enforce_distillable_text` parameter and other provider routing options
+* [Models](/guides/overview/models) - Browse all available models and their capabilities

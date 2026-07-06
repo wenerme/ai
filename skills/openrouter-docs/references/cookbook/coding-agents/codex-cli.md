@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Codex CLI
+
+> Use Codex CLI with OpenRouter
 
 ## What is Codex CLI?
 
@@ -25,7 +27,7 @@ Follow the [Codex CLI installation instructions](https://github.com/openai/codex
 
 Codex uses a `config.toml` file, typically located at `~/.codex/config.toml`. Create or edit this file with the following configuration:
 
-```toml
+```toml lines theme={null}
 model_provider = "openrouter"
 model_reasoning_effort = "high"
 model="~openai/gpt-latest"
@@ -41,18 +43,20 @@ env_key="OPENROUTER_API_KEY"
 
 Export your OpenRouter API key in your shell profile:
 
-```bash
+```bash lines theme={null}
 # Add to ~/.zshrc, ~/.bashrc, or ~/.config/fish/config.fish
 export OPENROUTER_API_KEY="sk-or-..."
 ```
 
-Codex reads the API key from the environment variable specified in `env_key` (default: `OPENROUTER_API_KEY`). Ensure this is set before starting Codex.
+<Note>
+  Codex reads the API key from the environment variable specified in `env_key` (default: `OPENROUTER_API_KEY`). Ensure this is set before starting Codex.
+</Note>
 
 ### Step 5: Start Codex
 
 Navigate to your project directory and run:
 
-```bash
+```bash lines theme={null}
 cd /path/to/your/project
 codex
 ```
@@ -73,7 +77,7 @@ Your requests will now be routed through OpenRouter.
 
 ### OpenRouter Provider Block
 
-```toml
+```toml lines theme={null}
 [model_providers.openrouter]
 name = "openrouter"
 base_url = "https://openrouter.ai/api/v1"
@@ -87,7 +91,7 @@ env_key = "OPENROUTER_API_KEY"
 
 Codex supports per-project trust levels. Add project paths to control what the agent can access:
 
-```toml
+```toml lines theme={null}
 [projects."/path/to/trusted/project"]
 trust_level = "trusted"
 

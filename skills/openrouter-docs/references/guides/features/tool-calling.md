@@ -1,8 +1,54 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tool & Function Calling
+
+> Use tools in your prompts
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const Model = {
+  GPT_4_Omni: 'openai/gpt-4o'
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 Tool calls (also known as function calls) give an LLM access to external tools. The LLM does not call the tools directly. Instead, it suggests the tool to call. The user then calls the tool separately and provides the results back to the LLM. Finally, the LLM formats the response into an answer to the user's original question.
 
@@ -18,7 +64,7 @@ Tool calling with OpenRouter involves three key steps. Here are the essential re
 
 ### Step 1: Inference Request with Tools
 
-```json
+```json expandable lines theme={null}
 {
   "model": "google/gemini-3-flash-preview",
   "messages": [
@@ -54,14 +100,14 @@ Tool calling with OpenRouter involves three key steps. Here are the essential re
 
 After receiving the model's response with `tool_calls`, execute the requested tool locally and prepare the result:
 
-```javascript
+```javascript lines theme={null}
 // Model responds with tool_calls, you execute the tool locally
 const toolResult = await searchGutenbergBooks(["James", "Joyce"]);
 ```
 
 ### Step 3: Inference Request with Tool Results
 
-```json
+```json expandable lines theme={null}
 {
   "model": "google/gemini-3-flash-preview",
   "messages": [
@@ -120,173 +166,191 @@ Here is Python code that gives LLMs the ability to call an external API -- in th
 
 First, let's do some basic setup:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-3-flash-preview'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" expandable lines theme={null}
+    import { OpenRouter } from '@openrouter/sdk';
 
-const OPENROUTER_API_KEY = "{{API_KEY_REF}}";
+    const OPENROUTER_API_KEY = "{{API_KEY_REF}}";
 
-// You can use any model that supports tool calling
-const MODEL = "{{MODEL}}";
+    // You can use any model that supports tool calling
+    const MODEL = "{{MODEL}}";
 
-const openRouter = new OpenRouter({
-  apiKey: OPENROUTER_API_KEY,
-});
+    const openRouter = new OpenRouter({
+      apiKey: OPENROUTER_API_KEY,
+    });
 
-const task = "What are the titles of some James Joyce books?";
+    const task = "What are the titles of some James Joyce books?";
 
-const messages = [
-  {
-    role: "system",
-    content: "You are a helpful assistant."
-  },
-  {
-    role: "user",
-    content: task,
-  }
-];
-```
-
-```python
-import json, requests
-from openai import OpenAI
-
-OPENROUTER_API_KEY = f"{{API_KEY_REF}}"
-
-# You can use any model that supports tool calling
-MODEL = "{{MODEL}}"
-
-openai_client = OpenAI(
-  base_url="https://openrouter.ai/api/v1",
-  api_key=OPENROUTER_API_KEY,
-)
-
-task = "What are the titles of some James Joyce books?"
-
-messages = [
-  {
-    "role": "system",
-    "content": "You are a helpful assistant."
-  },
-  {
-    "role": "user",
-    "content": task,
-  }
-]
-
-```
-
-```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer {{API_KEY_REF}}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      { role: 'system', content: 'You are a helpful assistant.' },
+    const messages = [
       {
-        role: 'user',
-        content: 'What are the titles of some James Joyce books?',
+        role: "system",
+        content: "You are a helpful assistant."
       },
-    ],
-  }),
-});
-```
+      {
+        role: "user",
+        content: task,
+      }
+    ];
+    ```
+
+    ```python Python expandable lines theme={null}
+    import json, requests
+    from openai import OpenAI
+
+    OPENROUTER_API_KEY = f"{{API_KEY_REF}}"
+
+    # You can use any model that supports tool calling
+    MODEL = "{{MODEL}}"
+
+    openai_client = OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      api_key=OPENROUTER_API_KEY,
+    )
+
+    task = "What are the titles of some James Joyce books?"
+
+    messages = [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": task,
+      }
+    ]
+
+    ```
+
+    ```typescript title="TypeScript (fetch)" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          { role: 'system', content: 'You are a helpful assistant.' },
+          {
+            role: 'user',
+            content: 'What are the titles of some James Joyce books?',
+          },
+        ],
+      }),
+    });
+    ```
+  </CodeGroup>
+</Template>
 
 ### Define the Tool
 
 Next, we define the tool that we want to call. Remember, the tool is going to get *requested* by the LLM, but the code we are writing here is ultimately responsible for executing the call and returning the results to the LLM.
 
-```typescript title="TypeScript SDK"
-async function searchGutenbergBooks(searchTerms: string[]): Promise<Book[]> {
-  const searchQuery = searchTerms.join(' ');
-  const url = 'https://gutendex.com/books';
-  const response = await fetch(`${url}?search=${searchQuery}`);
-  const data = await response.json();
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-3-flash-preview'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" expandable lines theme={null}
+    async function searchGutenbergBooks(searchTerms: string[]): Promise<Book[]> {
+      const searchQuery = searchTerms.join(' ');
+      const url = 'https://gutendex.com/books';
+      const response = await fetch(`${url}?search=${searchQuery}`);
+      const data = await response.json();
 
-  return data.results.map((book: any) => ({
-    id: book.id,
-    title: book.title,
-    authors: book.authors,
-  }));
-}
+      return data.results.map((book: any) => ({
+        id: book.id,
+        title: book.title,
+        authors: book.authors,
+      }));
+    }
 
-const tools = [
-  {
-    type: 'function',
-    function: {
-      name: 'searchGutenbergBooks',
-      description:
-        'Search for books in the Project Gutenberg library based on specified search terms',
-      parameters: {
-        type: 'object',
-        properties: {
-          search_terms: {
-            type: 'array',
-            items: {
-              type: 'string',
+    const tools = [
+      {
+        type: 'function',
+        function: {
+          name: 'searchGutenbergBooks',
+          description:
+            'Search for books in the Project Gutenberg library based on specified search terms',
+          parameters: {
+            type: 'object',
+            properties: {
+              search_terms: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                },
+                description:
+                  "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)",
+              },
             },
-            description:
-              "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)",
+            required: ['search_terms'],
           },
         },
-        required: ['search_terms'],
       },
-    },
-  },
-];
+    ];
 
-const TOOL_MAPPING = {
-  searchGutenbergBooks,
-};
-```
+    const TOOL_MAPPING = {
+      searchGutenbergBooks,
+    };
+    ```
 
-```python
-def search_gutenberg_books(search_terms):
-    search_query = " ".join(search_terms)
-    url = "https://gutendex.com/books"
-    response = requests.get(url, params={"search": search_query})
+    ```python Python expandable lines theme={null}
+    def search_gutenberg_books(search_terms):
+        search_query = " ".join(search_terms)
+        url = "https://gutendex.com/books"
+        response = requests.get(url, params={"search": search_query})
 
-    simplified_results = []
-    for book in response.json().get("results", []):
-        simplified_results.append({
-            "id": book.get("id"),
-            "title": book.get("title"),
-            "authors": book.get("authors")
-        })
+        simplified_results = []
+        for book in response.json().get("results", []):
+            simplified_results.append({
+                "id": book.get("id"),
+                "title": book.get("title"),
+                "authors": book.get("authors")
+            })
 
-    return simplified_results
+        return simplified_results
 
-tools = [
-  {
-    "type": "function",
-    "function": {
-      "name": "search_gutenberg_books",
-      "description": "Search for books in the Project Gutenberg library based on specified search terms",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "search_terms": {
-            "type": "array",
-            "items": {
-              "type": "string"
+    tools = [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_gutenberg_books",
+          "description": "Search for books in the Project Gutenberg library based on specified search terms",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "search_terms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)"
+              }
             },
-            "description": "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)"
+            "required": ["search_terms"]
           }
-        },
-        "required": ["search_terms"]
+        }
       }
+    ]
+
+    TOOL_MAPPING = {
+        "search_gutenberg_books": search_gutenberg_books
     }
-  }
-]
 
-TOOL_MAPPING = {
-    "search_gutenberg_books": search_gutenberg_books
-}
-
-```
+    ```
+  </CodeGroup>
+</Template>
 
 Note that the "tool" is just a normal function. We then write a JSON "spec" compatible with the OpenAI function calling parameter. We'll pass that spec to the LLM so that it knows this tool is available and how to use it. It will request the tool when needed, along with any arguments. We'll then marshal the tool call locally, make the function call, and return the results to the LLM.
 
@@ -294,87 +358,105 @@ Note that the "tool" is just a normal function. We then write a JSON "spec" comp
 
 Let's make the first OpenRouter API call to the model:
 
-```typescript title="TypeScript SDK"
-const result = await openRouter.chat.send({
-  model: '{{MODEL}}',
-  tools,
-  messages,
-  stream: false,
-});
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-3-flash-preview'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" lines theme={null}
+    const result = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      tools,
+      messages,
+      stream: false,
+    });
 
-const response_1 = result.choices[0].message;
-```
+    const response_1 = result.choices[0].message;
+    ```
 
-```python
-request_1 = {
-    "model": {{MODEL}},
-    "tools": tools,
-    "messages": messages
-}
+    ```python Python lines theme={null}
+    request_1 = {
+        "model": {{MODEL}},
+        "tools": tools,
+        "messages": messages
+    }
 
-response_1 = openai_client.chat.completions.create(**request_1).message
-```
+    response_1 = openai_client.chat.completions.create(**request_1).message
+    ```
 
-```typescript title="TypeScript (fetch)"
-const request_1 = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer {{API_KEY_REF}}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    tools,
-    messages,
-  }),
-});
+    ```typescript title="TypeScript (fetch)" lines theme={null}
+    const request_1 = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        tools,
+        messages,
+      }),
+    });
 
-const data = await request_1.json();
-const response_1 = data.choices[0].message;
-```
+    const data = await request_1.json();
+    const response_1 = data.choices[0].message;
+    ```
+  </CodeGroup>
+</Template>
 
 The LLM responds with a finish reason of `tool_calls`, and a `tool_calls` array. In a generic LLM response-handler, you would want to check the `finish_reason` before processing tool calls, but here we will assume it's the case. Let's keep going, by processing the tool call:
 
-```typescript title="TypeScript SDK"
-// Append the response to the messages array so the LLM has the full context
-// It's easy to forget this step!
-messages.push(response_1);
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-3-flash-preview'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" lines theme={null}
+    // Append the response to the messages array so the LLM has the full context
+    // It's easy to forget this step!
+    messages.push(response_1);
 
-// Now we process the requested tool calls, and use our book lookup tool
-for (const toolCall of response_1.tool_calls) {
-  const toolName = toolCall.function.name;
-  const { search_params } = JSON.parse(toolCall.function.arguments);
-  const toolResponse = await TOOL_MAPPING[toolName](search_params);
-  messages.push({
-    role: 'tool',
-    toolCallId: toolCall.id,
-    name: toolName,
-    content: JSON.stringify(toolResponse),
-  });
-}
-```
+    // Now we process the requested tool calls, and use our book lookup tool
+    for (const toolCall of response_1.tool_calls) {
+      const toolName = toolCall.function.name;
+      const { search_params } = JSON.parse(toolCall.function.arguments);
+      const toolResponse = await TOOL_MAPPING[toolName](search_params);
+      messages.push({
+        role: 'tool',
+        toolCallId: toolCall.id,
+        name: toolName,
+        content: JSON.stringify(toolResponse),
+      });
+    }
+    ```
 
-```python
-# Append the response to the messages array so the LLM has the full context
-# It's easy to forget this step!
-messages.append(response_1)
+    ```python Python lines theme={null}
+    # Append the response to the messages array so the LLM has the full context
+    # It's easy to forget this step!
+    messages.append(response_1)
 
-# Now we process the requested tool calls, and use our book lookup tool
-for tool_call in response_1.tool_calls:
-    '''
-    In this case we only provided one tool, so we know what function to call.
-    When providing multiple tools, you can inspect `tool_call.function.name`
-    to figure out what function you need to call locally.
-    '''
-    tool_name = tool_call.function.name
-    tool_args = json.loads(tool_call.function.arguments)
-    tool_response = TOOL_MAPPING[tool_name](**tool_args)
-    messages.append({
-      "role": "tool",
-      "tool_call_id": tool_call.id,
-      "content": json.dumps(tool_response),
-    })
-```
+    # Now we process the requested tool calls, and use our book lookup tool
+    for tool_call in response_1.tool_calls:
+        '''
+        In this case we only provided one tool, so we know what function to call.
+        When providing multiple tools, you can inspect `tool_call.function.name`
+        to figure out what function you need to call locally.
+        '''
+        tool_name = tool_call.function.name
+        tool_args = json.loads(tool_call.function.arguments)
+        tool_response = TOOL_MAPPING[tool_name](**tool_args)
+        messages.append({
+          "role": "tool",
+          "tool_call_id": tool_call.id,
+          "content": json.dumps(tool_response),
+        })
+    ```
+  </CodeGroup>
+</Template>
 
 The messages array now has:
 
@@ -384,50 +466,59 @@ The messages array now has:
 
 Now, we can make a second OpenRouter API call, and hopefully get our result!
 
-```typescript title="TypeScript SDK"
-const response_2 = await openRouter.chat.send({
-  model: '{{MODEL}}',
-  messages,
-  tools,
-  stream: false,
-});
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-3-flash-preview'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" lines theme={null}
+    const response_2 = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      messages,
+      tools,
+      stream: false,
+    });
 
-console.log(response_2.choices[0].message.content);
-```
+    console.log(response_2.choices[0].message.content);
+    ```
 
-```python
-request_2 = {
-  "model": MODEL,
-  "messages": messages,
-  "tools": tools
-}
+    ```python Python lines theme={null}
+    request_2 = {
+      "model": MODEL,
+      "messages": messages,
+      "tools": tools
+    }
 
-response_2 = openai_client.chat.completions.create(**request_2)
+    response_2 = openai_client.chat.completions.create(**request_2)
 
-print(response_2.choices[0].message.content)
-```
+    print(response_2.choices[0].message.content)
+    ```
 
-```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer {{API_KEY_REF}}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages,
-    tools,
-  }),
-});
+    ```typescript title="TypeScript (fetch)" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages,
+        tools,
+      }),
+    });
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-```
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
+  </CodeGroup>
+</Template>
 
 The output will be something like:
 
-```text
+```text lines theme={null}
 Here are some books by James Joyce:
 
 *   *Ulysses*
@@ -460,7 +551,7 @@ Here's an example showing how a model might use interleaved thinking to research
 
 **Initial Request:**
 
-```json
+```json expandable lines theme={null}
 {
   "model": "anthropic/claude-sonnet-4.5",
   "messages": [
@@ -542,100 +633,108 @@ In the example above, the calls are made explicitly and sequentially. To handle 
 
 Here's an example of a simple agentic loop (using the same `tools` and initial `messages` as above):
 
-```typescript title="TypeScript SDK"
-async function callLLM(messages: Message[]): Promise<ChatResponse> {
-  const result = await openRouter.chat.send({
-    model: '{{MODEL}}',
-    tools,
-    messages,
-    stream: false,
-  });
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-3-flash-preview'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK" expandable lines theme={null}
+    async function callLLM(messages: Message[]): Promise<ChatResponse> {
+      const result = await openRouter.chat.send({
+        model: '{{MODEL}}',
+        tools,
+        messages,
+        stream: false,
+      });
 
-  messages.push(result.choices[0].message);
-  return result;
-}
-
-async function getToolResponse(response: ChatResponse): Promise<Message> {
-  const toolCall = response.choices[0].message.toolCalls[0];
-  const toolName = toolCall.function.name;
-  const toolArgs = JSON.parse(toolCall.function.arguments);
-
-  // Look up the correct tool locally, and call it with the provided arguments
-  // Other tools can be added without changing the agentic loop
-  const toolResult = await TOOL_MAPPING[toolName](toolArgs);
-
-  return {
-    role: 'tool',
-    toolCallId: toolCall.id,
-    content: toolResult,
-  };
-}
-
-const maxIterations = 10;
-let iterationCount = 0;
-
-while (iterationCount < maxIterations) {
-  iterationCount++;
-  const response = await callLLM(messages);
-
-  if (response.choices[0].message.toolCalls) {
-    messages.push(await getToolResponse(response));
-  } else {
-    break;
-  }
-}
-
-if (iterationCount >= maxIterations) {
-  console.warn("Warning: Maximum iterations reached");
-}
-
-console.log(messages[messages.length - 1].content);
-```
-
-```python
-
-def call_llm(msgs):
-    resp = openai_client.chat.completions.create(
-        model={{MODEL}},
-        tools=tools,
-        messages=msgs
-    )
-    msgs.append(resp.choices[0].message.dict())
-    return resp
-
-def get_tool_response(response):
-    tool_call = response.choices[0].message.tool_calls[0]
-    tool_name = tool_call.function.name
-    tool_args = json.loads(tool_call.function.arguments)
-
-    # Look up the correct tool locally, and call it with the provided arguments
-    # Other tools can be added without changing the agentic loop
-    tool_result = TOOL_MAPPING[tool_name](**tool_args)
-
-    return {
-        "role": "tool",
-        "tool_call_id": tool_call.id,
-        "content": tool_result,
+      messages.push(result.choices[0].message);
+      return result;
     }
 
-max_iterations = 10
-iteration_count = 0
+    async function getToolResponse(response: ChatResponse): Promise<Message> {
+      const toolCall = response.choices[0].message.toolCalls[0];
+      const toolName = toolCall.function.name;
+      const toolArgs = JSON.parse(toolCall.function.arguments);
 
-while iteration_count < max_iterations:
-    iteration_count += 1
-    resp = call_llm(_messages)
+      // Look up the correct tool locally, and call it with the provided arguments
+      // Other tools can be added without changing the agentic loop
+      const toolResult = await TOOL_MAPPING[toolName](toolArgs);
 
-    if resp.choices[0].message.tool_calls is not None:
-        messages.append(get_tool_response(resp))
-    else:
-        break
+      return {
+        role: 'tool',
+        toolCallId: toolCall.id,
+        content: toolResult,
+      };
+    }
 
-if iteration_count >= max_iterations:
-    print("Warning: Maximum iterations reached")
+    const maxIterations = 10;
+    let iterationCount = 0;
 
-print(messages[-1]['content'])
+    while (iterationCount < maxIterations) {
+      iterationCount++;
+      const response = await callLLM(messages);
 
-```
+      if (response.choices[0].message.toolCalls) {
+        messages.push(await getToolResponse(response));
+      } else {
+        break;
+      }
+    }
+
+    if (iterationCount >= maxIterations) {
+      console.warn("Warning: Maximum iterations reached");
+    }
+
+    console.log(messages[messages.length - 1].content);
+    ```
+
+    ```python Python expandable lines theme={null}
+    def call_llm(msgs):
+        resp = openai_client.chat.completions.create(
+            model={{MODEL}},
+            tools=tools,
+            messages=msgs
+        )
+        msgs.append(resp.choices[0].message.dict())
+        return resp
+
+    def get_tool_response(response):
+        tool_call = response.choices[0].message.tool_calls[0]
+        tool_name = tool_call.function.name
+        tool_args = json.loads(tool_call.function.arguments)
+
+        # Look up the correct tool locally, and call it with the provided arguments
+        # Other tools can be added without changing the agentic loop
+        tool_result = TOOL_MAPPING[tool_name](**tool_args)
+
+        return {
+            "role": "tool",
+            "tool_call_id": tool_call.id,
+            "content": tool_result,
+        }
+
+    max_iterations = 10
+    iteration_count = 0
+
+    while iteration_count < max_iterations:
+        iteration_count += 1
+        resp = call_llm(_messages)
+
+        if resp.choices[0].message.tool_calls is not None:
+            messages.append(get_tool_response(resp))
+        else:
+            break
+
+    if iteration_count >= max_iterations:
+        print("Warning: Maximum iterations reached")
+
+    print(messages[-1]['content'])
+
+    ```
+  </CodeGroup>
+</Template>
 
 ## Best Practices and Advanced Patterns
 
@@ -645,19 +744,19 @@ When defining tools for LLMs, follow these best practices:
 
 **Clear and Descriptive Names**: Use descriptive function names that clearly indicate the tool's purpose.
 
-```json
+```json lines theme={null}
 // Good: Clear and specific
 { "name": "get_weather_forecast" }
 ```
 
-```json
+```json lines theme={null}
 // Avoid: Too vague
 { "name": "weather" }
 ```
 
 **Comprehensive Descriptions**: Provide detailed descriptions that help the model understand when and how to use the tool.
 
-```json
+```json lines theme={null}
 {
   "description": "Get current weather conditions and 5-day forecast for a specific location. Supports cities, zip codes, and coordinates.",
   "parameters": {
@@ -683,7 +782,7 @@ When defining tools for LLMs, follow these best practices:
 
 When using streaming responses with tool calls, handle the different content types appropriately:
 
-```typescript
+```typescript expandable lines theme={null}
 const stream = await fetch('/api/chat/completions', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
@@ -730,17 +829,17 @@ while (true) {
 
 Control tool usage with the `tool_choice` parameter:
 
-```json
+```json lines theme={null}
 // Let model decide (default)
 { "tool_choice": "auto" }
 ```
 
-```json
+```json lines theme={null}
 // Disable tool usage
 { "tool_choice": "none" }
 ```
 
-```json
+```json lines theme={null}
 // Force specific tool
 {
   "tool_choice": {
@@ -754,7 +853,7 @@ Control tool usage with the `tool_choice` parameter:
 
 Control whether multiple tools can be called simultaneously with the `parallel_tool_calls` parameter (default is true for most models):
 
-```json
+```json lines theme={null}
 // Disable parallel tool calls - tools will be called sequentially
 { "parallel_tool_calls": false }
 ```
@@ -765,7 +864,7 @@ When `parallel_tool_calls` is `false`, the model will only request one tool call
 
 Design tools that work well together:
 
-```json
+```json expandable lines theme={null}
 {
   "tools": [
     {
@@ -797,6 +896,6 @@ This allows the model to naturally chain operations: search → get details → 
 
 ### Reliability Tracking
 
-OpenRouter tracks how reliably each provider completes tool calls and surfaces this as the **Tool Call Error Rate** on the Performance tab of every model page. The same signal drives [Auto Exacto](/docs/guides/routing/auto-exacto) provider ordering on tool-calling requests. For the exact validator, JSON Schema draft, regex semantics, and per-tool-call classification, see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured).
+OpenRouter tracks how reliably each provider completes tool calls and surfaces this as the **Tool Call Error Rate** on the Performance tab of every model page. The same signal drives [Auto Exacto](/guides/routing/auto-exacto) provider ordering on tool-calling requests. For the exact validator, JSON Schema draft, regex semantics, and per-tool-call classification, see [How Tool-Calling Success Rate Is Measured](/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured).
 
-For more details on OpenRouter's message format and tool parameters, see the [API Reference](https://openrouter.ai/docs/api-reference/overview).
+For more details on OpenRouter's message format and tool parameters, see the [API Reference](/api/reference/overview).

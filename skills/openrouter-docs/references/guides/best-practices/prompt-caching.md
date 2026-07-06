@@ -1,8 +1,32 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prompt Caching
+
+> Cache prompt messages
+
+export const MOONSHOT_CACHE_READ_MULTIPLIER = '0.25';
+
+export const GROQ_CACHE_READ_MULTIPLIER = '0.5';
+
+export const GROK_CACHE_READ_MULTIPLIER = '0.25';
+
+export const GOOGLE_CACHE_READ_MULTIPLIER = '0.25';
+
+export const GOOGLE_CACHE_MIN_TOKENS_2_5_PRO = '4096';
+
+export const GOOGLE_CACHE_MIN_TOKENS_2_5_FLASH = '1024';
+
+export const DEEPSEEK_CACHE_READ_MULTIPLIER = '0.1';
+
+export const ANTHROPIC_CACHE_WRITE_MULTIPLIER = '1.25';
+
+export const ANTHROPIC_CACHE_READ_MULTIPLIER = '0.1';
+
+export const ALIBABA_CACHE_WRITE_MULTIPLIER = '1.25';
+
+export const ALIBABA_CACHE_READ_MULTIPLIER = '0.1';
 
 To save on inference costs, you can enable prompt caching on supported providers and models.
 
@@ -21,7 +45,7 @@ To maximize cache hit rates, OpenRouter uses **provider sticky routing** to rout
 * Subsequent requests for the same model are routed to the same provider, keeping your cache warm.
 * Sticky routing only activates when the provider's cache read pricing is cheaper than regular prompt pricing, ensuring you always benefit from cost savings.
 * If the sticky provider becomes unavailable, OpenRouter automatically falls back to the next-best provider.
-* Sticky routing is not used when you specify a manual [provider order](/docs/api-reference/provider-preferences) via `provider.order` — in that case, your explicit ordering takes priority.
+* Sticky routing is not used when you specify a manual [provider order](/api-reference/provider-preferences) via `provider.order` — in that case, your explicit ordering takes priority.
 
 **Sticky routing granularity:**
 
@@ -38,7 +62,7 @@ You can provide `session_id` in two ways:
 
 The `session_id` must be at most 256 characters.
 
-```json
+```json lines theme={null}
 {
   "model": "anthropic/claude-sonnet-4",
   "session_id": "my-agent-session-abc123",
@@ -53,23 +77,29 @@ The `session_id` must be at most 256 characters.
 
 When `session_id` is set, sticky routing activates on any successful request — even before cache usage is observed — so that subsequent requests in the same session benefit from prompt caching from the start. Without `session_id`, sticky routing only activates after a cache hit is detected.
 
-When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
+<Info>
+  When using router models like [Auto Router](/guides/routing/routers/auto-router) or [Pareto Router](/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/guides/routing/routers/auto-router#session-stickiness) for details.
+</Info>
 
 ## Inspecting cache usage
 
 To see how much caching saved on each generation, you can:
 
-1. Click the detail button on the [Activity](/activity) page
-2. Use the `/api/v1/generation` API, [documented here](/docs/api/api-reference/generations/get-generation)
-3. Check the `prompt_tokens_details` object in the [usage response](/docs/cookbook/administration/usage-accounting) included with every API response
+1. Click the detail button on the [Activity](https://openrouter.ai/activity) page
+2. Use the `/api/v1/generation` API, [documented here](/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation)
+3. Check the `prompt_tokens_details` object in the [usage response](/cookbook/administration/usage-accounting) included with every API response
 
 The `cache_discount` field in the response body will tell you how much the response saved on cache usage. Some providers, like Anthropic, will have a negative discount on cache writes, but a positive discount (which reduces total cost) on cache reads.
+
+<Info>
+  When using router models like [Auto Router](/guides/routing/routers/auto-router) or [Pareto Router](/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/guides/routing/routers/auto-router#session-stickiness) for details.
+</Info>
 
 ### Usage object fields
 
 The usage object in API responses includes detailed cache metrics in the `prompt_tokens_details` field:
 
-```json
+```json lines theme={null}
 {
   "usage": {
     "prompt_tokens": 10339,
@@ -154,7 +184,7 @@ support explicit caching.
 
 ### Example
 
-```json
+```json expandable lines theme={null}
 {
   "model": "qwen/qwen3-coder-plus",
   "messages": [
@@ -195,9 +225,13 @@ There are two ways to enable prompt caching with Anthropic:
 * **Automatic caching**: Add a single `cache_control` field at the top level of your request. The system automatically applies the cache breakpoint to the last cacheable block and advances it forward as conversations grow. Best for multi-turn conversations.
 * **Explicit cache breakpoints**: Place `cache_control` directly on individual content blocks for fine-grained control over exactly what gets cached. There is a limit of four explicit breakpoints. It is recommended to reserve the cache breakpoints for large bodies of text, such as character cards, CSV data, RAG data, book chapters, etc.
 
-**Automatic caching** (top-level `cache_control`) is only supported when requests are routed to the **Anthropic** provider directly. Amazon Bedrock and Google Vertex AI currently do not support top-level `cache_control` — when it is present, OpenRouter will only route to the Anthropic provider and exclude Bedrock and Vertex endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
+<Note>
+  **Automatic caching** (top-level `cache_control`) is only supported when requests are routed to the **Anthropic** provider directly. Amazon Bedrock and Google Vertex AI currently do not support top-level `cache_control` — when it is present, OpenRouter will only route to the Anthropic provider and exclude Bedrock and Vertex endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
+</Note>
 
-**Responses API support:** The [Responses API](/docs/api-reference/responses/create-a-model-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/docs/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/docs/api-reference/messages/create-a-message) API if you need fine-grained breakpoints.
+<Note>
+  **Responses API support:** The [Responses API](/api/api-reference/responses/create-a-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/api/api-reference/anthropic-messages/create-a-message) API if you need fine-grained breakpoints.
+</Note>
 
 By default, the cache expires after 5 minutes, but you can extend this to 1 hour by specifying `"ttl": "1h"` in the `cache_control` object.
 
@@ -228,7 +262,7 @@ The 1-hour TTL is useful for longer sessions where you want to maintain cached c
 
 With automatic caching, add `cache_control` at the top level of the request. The system automatically caches all content up to the last cacheable block:
 
-```json
+```json lines theme={null}
 {
   "model": "~anthropic/claude-sonnet-latest",
   "cache_control": { "type": "ephemeral" },
@@ -249,7 +283,7 @@ As the conversation grows, the cache breakpoint automatically advances to cover 
 
 Automatic caching with 1-hour TTL:
 
-```json
+```json lines theme={null}
 {
   "model": "~anthropic/claude-sonnet-latest",
   "cache_control": { "type": "ephemeral", "ttl": "1h" },
@@ -270,7 +304,7 @@ Automatic caching with 1-hour TTL:
 
 System message caching example (default 5-minute TTL):
 
-```json
+```json expandable lines theme={null}
 {
   "messages": [
     {
@@ -304,7 +338,7 @@ System message caching example (default 5-minute TTL):
 
 User message caching example with 1-hour TTL:
 
-```json
+```json expandable lines theme={null}
 {
   "messages": [
     {
@@ -356,15 +390,17 @@ Note that the TTL is on average 3-5 minutes, but will vary. There is a minimum o
 
 [Official announcement from Google](https://developers.googleblog.com/en/gemini-2-5-models-now-support-implicit-caching/)
 
-To maximize implicit cache hits, keep the initial portion of your message
-arrays consistent between requests. Push variations (such as user questions or
-dynamic context elements) toward the end of your prompt/requests.
+<Tip>
+  To maximize implicit cache hits, keep the initial portion of your message
+  arrays consistent between requests. Push variations (such as user questions or
+  dynamic context elements) toward the end of your prompt/requests.
+</Tip>
 
 ### Pricing Changes for Cached Requests:
 
 * **Cache Writes:** Charged at the input token cost plus 5 minutes of cache storage, calculated as follows:
 
-```
+```lines theme={null}
 Cache write cost = Input token price + (Cache storage price × (5 minutes / 60 minutes))
 ```
 
@@ -389,25 +425,29 @@ OpenRouter simplifies Gemini cache management, abstracting away complexities:
 
 Gemini caching in OpenRouter requires you to insert `cache_control` breakpoints explicitly within message content, similar to Anthropic. We recommend using caching primarily for large content pieces (such as CSV files, lengthy character cards, retrieval augmented generation (RAG) data, or extensive textual sources).
 
-There is not a limit on the number of `cache_control` breakpoints you can
-include in your request. OpenRouter will use only the last breakpoint for
-Gemini caching across normal message content. Including multiple breakpoints
-is safe and can help maintain compatibility with Anthropic, but only the
-final one will be used for Gemini.
+<Tip>
+  There is not a limit on the number of `cache_control` breakpoints you can
+  include in your request. OpenRouter will use only the last breakpoint for
+  Gemini caching across normal message content. Including multiple breakpoints
+  is safe and can help maintain compatibility with Anthropic, but only the
+  final one will be used for Gemini.
+</Tip>
 
-Gemini has a single `systemInstruction` field, and cached Gemini content
-treats that `systemInstruction` as immutable. On OpenRouter, this means
-`cache_control` inside the first `system` or `developer` message can cache
-the normalized system prompt, but it cannot preserve an uncached dynamic tail
-inside that same message. If you need part of your prompt to stay dynamic,
-move that dynamic content into a later `user` message instead of appending it
-after a cached block in the first `system` message.
+<Note>
+  Gemini has a single `systemInstruction` field, and cached Gemini content
+  treats that `systemInstruction` as immutable. On OpenRouter, this means
+  `cache_control` inside the first `system` or `developer` message can cache
+  the normalized system prompt, but it cannot preserve an uncached dynamic tail
+  inside that same message. If you need part of your prompt to stay dynamic,
+  move that dynamic content into a later `user` message instead of appending it
+  after a cached block in the first `system` message.
+</Note>
 
 ### Examples:
 
 #### System Message Caching Example
 
-```json
+```json expandable lines theme={null}
 {
   "messages": [
     {
@@ -445,7 +485,7 @@ than as uncached trailing content in the first `system` message.
 
 #### User Message Caching Example
 
-```json
+```json expandable lines theme={null}
 {
   "messages": [
     {

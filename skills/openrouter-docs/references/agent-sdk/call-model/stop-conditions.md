@@ -1,12 +1,14 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Stop Conditions
 
+> Control multi-turn execution with `stopWhen`. Use built-in helpers or custom conditions to stop by step count, tool calls, cost, or tokens.
+
 ## Basic Usage
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter, stepCountIs } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -27,7 +29,7 @@ const result = openrouter.callModel({
 
 Stop after a specific number of steps:
 
-```typescript
+```typescript lines theme={null}
 import { stepCountIs } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -42,7 +44,7 @@ const result = openrouter.callModel({
 
 Stop when a specific tool is called:
 
-```typescript
+```typescript lines theme={null}
 import { hasToolCall } from '@openrouter/agent';
 
 const finishTool = tool({
@@ -66,7 +68,7 @@ const result = openrouter.callModel({
 
 Stop after using a certain number of tokens:
 
-```typescript
+```typescript lines theme={null}
 import { maxTokensUsed } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -81,7 +83,7 @@ const result = openrouter.callModel({
 
 Stop after reaching a cost threshold:
 
-```typescript
+```typescript lines theme={null}
 import { maxCost } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -96,7 +98,7 @@ const result = openrouter.callModel({
 
 Stop on a specific finish reason:
 
-```typescript
+```typescript lines theme={null}
 import { finishReasonIs } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -111,7 +113,7 @@ const result = openrouter.callModel({
 
 Pass an array to stop on any condition:
 
-```typescript
+```typescript lines theme={null}
 import { stepCountIs, hasToolCall, maxCost } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -132,7 +134,7 @@ Execution stops when **any** condition is met.
 
 Create custom conditions with a function:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Process data',
@@ -163,7 +165,7 @@ Custom functions receive:
 
 Each step contains:
 
-```typescript
+```typescript lines theme={null}
 interface StepResult {
   response: Response;
   toolCalls?: ParsedToolCall[];
@@ -183,7 +185,7 @@ interface StepResult {
 
 Stop after a time limit:
 
-```typescript
+```typescript lines theme={null}
 const startTime = Date.now();
 const maxDuration = 30000; // 30 seconds
 
@@ -201,7 +203,7 @@ const result = openrouter.callModel({
 
 Stop based on response content:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Search until you find the answer',
@@ -221,7 +223,7 @@ const result = openrouter.callModel({
 
 Stop when results meet quality threshold:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Improve this text until it scores above 0.9',
@@ -244,7 +246,7 @@ const result = openrouter.callModel({
 
 Combine conditions for complex logic:
 
-```typescript
+```typescript expandable lines theme={null}
 import { stepCountIs, maxCost } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -272,7 +274,7 @@ const result = openrouter.callModel({
 
 If you were using `maxToolRounds`, migrate to `stopWhen`:
 
-```typescript
+```typescript lines theme={null}
 // Before: maxToolRounds
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -302,7 +304,7 @@ If `stopWhen` is not specified, the default is `stepCountIs(5)`.
 
 Always include a hard limit to prevent runaway execution:
 
-```typescript
+```typescript lines theme={null}
 stopWhen: [
   stepCountIs(100),    // Hard limit
   maxCost(10.00),      // Budget limit
@@ -314,7 +316,7 @@ stopWhen: [
 
 Track why execution stopped:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Task',
@@ -338,7 +340,7 @@ const result = openrouter.callModel({
 
 Verify conditions work as expected:
 
-```typescript
+```typescript lines theme={null}
 // Test with low limits first
 const testResult = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -350,6 +352,6 @@ const testResult = openrouter.callModel({
 
 ## See Also
 
-* **[Tools](/docs/sdks/call-model/tools)** - Multi-turn orchestration
-* **[Dynamic Parameters](/docs/sdks/call-model/dynamic-parameters)** - Adaptive behavior
-* **[nextTurnParams](/docs/sdks/call-model/next-turn-params)** - Tool-driven modifications
+* **[Tools](/agent-sdk/call-model/tools)** - Multi-turn orchestration
+* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Adaptive behavior
+* **[nextTurnParams](/agent-sdk/call-model/next-turn-params)** - Tool-driven modifications

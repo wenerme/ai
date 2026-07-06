@@ -1,5 +1,229 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Vercel AI SDK
+
+> Using OpenRouter with Vercel AI SDK
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+## Vercel AI SDK
+
+You can use the [Vercel AI SDK](https://www.npmjs.com/package/ai) to integrate OpenRouter with your Next.js app. To get started, install [@openrouter/ai-sdk-provider](https://github.com/OpenRouterTeam/ai-sdk-provider):
+
+```bash lines theme={null}
+npm install @openrouter/ai-sdk-provider
+```
+
+And then you can use [streamText()](https://sdk.vercel.ai/docs/reference/ai-sdk-core/stream-text) API to stream text from OpenRouter.
+
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { streamText } from 'ai';
+  import { z } from 'zod';
+
+  export const getLasagnaRecipe = async (modelName: string) => {
+    const openrouter = createOpenRouter({
+      apiKey: '<OPENROUTER_API_KEY>',
+    });
+
+    const response = streamText({
+      model: openrouter(modelName),
+      prompt: 'Write a vegetarian lasagna recipe for 4 people.',
+    });
+
+    await response.consumeStream();
+    return response.text;
+  };
+
+  export const getWeather = async (modelName: string) => {
+    const openrouter = createOpenRouter({
+      apiKey: '<OPENROUTER_API_KEY>',
+    });
+
+    const response = streamText({
+      model: openrouter(modelName),
+      prompt: 'What is the weather in San Francisco, CA in Fahrenheit?',
+      tools: {
+        getCurrentWeather: {
+          description: 'Get the current weather in a given location',
+          parameters: z.object({
+            location: z
+              .string()
+              .describe('The city and state, e.g. San Francisco, CA'),
+            unit: z.enum(['celsius', 'fahrenheit']).optional(),
+          }),
+          execute: async ({ location, unit = 'celsius' }) => {
+            // Mock response for the weather
+            const weatherData = {
+              'Boston, MA': {
+                celsius: '15°C',
+                fahrenheit: '59°F',
+              },
+              'San Francisco, CA': {
+                celsius: '18°C',
+                fahrenheit: '64°F',
+              },
+            };
+
+            const weather = weatherData[location];
+            if (!weather) {
+              return `Weather data for ${location} is not available.`;
+            }
+
+            return `The current weather in ${location} is ${weather[unit]}.`;
+          },
+        },
+      },
+    });
+
+    await response.consumeStream();
+    return response.text;
+  };
+  ```
+</CodeGroup>
+
+## Video Generation
+
+OpenRouter supports [video generation](/guides/overview/multimodal/video-generation) through the AI SDK's [`experimental_generateVideo`](https://sdk.vercel.ai/docs/reference/ai-sdk-core/generate-video) API. The provider handles the asynchronous submit-poll-download workflow automatically.
+
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { experimental_generateVideo as generateVideo } from 'ai';
+
+  const openrouter = createOpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const { video } = await generateVideo({
+    model: openrouter.videoModel('google/veo-3.1'),
+    prompt: 'A golden retriever playing fetch on a sunny beach with waves crashing in the background',
+    aspectRatio: '16:9',
+    duration: 4,
+  });
+
+  console.log(video.mediaType); // 'video/mp4'
+  console.log(video.uint8Array.byteLength); // video size in bytes
+  ```
+</CodeGroup>
+
+### Passthrough Options
+
+Each video model supports model-specific parameters that can be passed through via `provider.options` in `extraBody`, keyed by provider slug. See the [video generation docs](/guides/overview/multimodal/video-generation#via-the-video-models-api) for the full list of `allowed_passthrough_parameters` per model.
+
+<CodeGroup>
+  ```typescript title="TypeScript (Veo 3.1)" expandable lines theme={null}
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { experimental_generateVideo as generateVideo } from 'ai';
+
+  const openrouter = createOpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const { video } = await generateVideo({
+    model: openrouter.videoModel('google/veo-3.1', {
+      generateAudio: true,
+      extraBody: {
+        provider: {
+          options: {
+            'google-vertex': {
+              parameters: {
+                personGeneration: 'allow_all',
+                enhancePrompt: true,
+              },
+            },
+          },
+        },
+      },
+    }),
+    prompt: 'A timelapse of a flower blooming in a sunlit garden',
+    aspectRatio: '16:9',
+  });
+  ```
+
+  ```typescript title="TypeScript (Wan 2.7)" expandable lines theme={null}
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { experimental_generateVideo as generateVideo } from 'ai';
+
+  const openrouter = createOpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const { video } = await generateVideo({
+    model: openrouter.videoModel('alibaba/wan-2.7', {
+      extraBody: {
+        provider: {
+          options: {
+            'atlas-cloud': {
+              negative_prompt: 'blurry, low quality, distorted, watermark',
+            },
+          },
+        },
+      },
+    }),
+    prompt: 'A character walking through a forest',
+    aspectRatio: '16:9',
+    duration: 4,
+  });
+  ```
+</CodeGroup>
+
+### Video Model Settings
+
+| Setting          | Type    | Default  | Description                                                      |
+| ---------------- | ------- | -------- | ---------------------------------------------------------------- |
+| `generateAudio`  | boolean | `false`  | Whether to generate audio alongside the video                    |
+| `pollIntervalMs` | number  | `2000`   | Polling interval in milliseconds when waiting for generation     |
+| `maxPollTimeMs`  | number  | `600000` | Maximum time in milliseconds to wait before timing out           |
+| `extraBody`      | object  | —        | Default body parameters merged into every request for this model |
+
+### Image-to-Video
+
+You can pass a reference image to guide the video generation:
+
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { experimental_generateVideo as generateVideo } from 'ai';
+
+  const openrouter = createOpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const { video } = await generateVideo({
+    model: openrouter.videoModel('alibaba/wan-2.7'),
+    prompt: 'A character walking through a forest',
+    image: new URL('https://example.com/first-frame.png'),
+    resolution: '1920x1080',
+  });
+  ```
+</CodeGroup>
+
+### Provider Metadata
+
+The response includes OpenRouter-specific metadata accessible via `providerMetadata`:
+
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { experimental_generateVideo as generateVideo } from 'ai';
+
+  const openrouter = createOpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const result = await generateVideo({
+    model: openrouter.videoModel('google/veo-3.1'),
+    prompt: 'A slow pan across a calm mountain lake at sunrise',
+    aspectRatio: '16:9',
+  });
+
+  console.log(result.providerMetadata?.openrouter);
+  // { generationId: 'gen-...', cost: 0.25 }
+  ```
+</CodeGroup>
+
+For the full list of supported models, resolutions, aspect ratios, and provider-specific options, see the [Video Generation documentation](/guides/overview/multimodal/video-generation).

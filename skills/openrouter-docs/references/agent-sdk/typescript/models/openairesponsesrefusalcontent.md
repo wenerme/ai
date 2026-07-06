@@ -1,0 +1,30 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# OpenAIResponsesRefusalContent - TypeScript SDK
+
+> OpenAIResponsesRefusalContent method reference
+
+<Warning>
+  The TypeScript SDK and docs are currently in beta.
+  Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
+</Warning>
+
+## Example Usage
+
+```typescript lines theme={null}
+import { OpenAIResponsesRefusalContent } from "@openrouter/sdk/models";
+
+let value: OpenAIResponsesRefusalContent = {
+  type: "refusal",
+  refusal: "I'm sorry, I cannot assist with that request",
+};
+```
+
+## Fields
+
+| Field     | Type        | Required             | Description |
+| --------- | ----------- | -------------------- | ----------- |
+| `type`    | *"refusal"* | :heavy\_check\_mark: | N/A         |
+| `refusal` | *string*    | :heavy\_check\_mark: | N/A         |

@@ -1,0 +1,121 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Endpoints
+
+> Endpoint information
+
+## Overview
+
+Endpoint information
+
+### Available Operations
+
+* [ListZdrEndpoints](#listzdrendpoints) - Preview the impact of ZDR on the available endpoints
+* [List](#list) - List all endpoints for a model
+
+## ListZdrEndpoints
+
+Preview the impact of ZDR on the available endpoints
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Endpoints.ListZdrEndpoints(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                       | Required             | Description                         |
+| --------- | ---------------------------------------------------------- | -------------------- | ----------------------------------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request. |
+| `opts`    | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.       |
+
+### Response
+
+**[\*operations.ListEndpointsZdrResponse](../../models/operations/listendpointszdrresponse.mdx), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## List
+
+List all endpoints for a model
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Endpoints.List(ctx, "<value>", "<value>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                       | Required             | Description                          | Example |
+| --------- | ---------------------------------------------------------- | -------------------- | ------------------------------------ | ------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.  |         |
+| `author`  | `string`                                                   | :heavy\_check\_mark: | The author/organization of the model | openai  |
+| `slug`    | `string`                                                   | :heavy\_check\_mark: | The model slug                       | gpt-4   |
+| `opts`    | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.        |         |
+
+### Response
+
+**[\*operations.ListEndpointsResponse](../../models/operations/listendpointsresponse.mdx), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |

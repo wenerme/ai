@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Latest Model Resolution
+
+> Always target the newest version of a model family with a single slug
 
 `~author/family-latest` slugs always resolve to the newest concrete model in a given family, so you can ship code against a stable alias and pick up new releases without redeploying.
 
@@ -20,36 +22,15 @@ This is ideal for:
 
 Send a chat completion request with a `~author/family-latest` slug as the model:
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-});
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
 
-const completion = await openRouter.chat.send({
-  model: '~anthropic/claude-opus-latest',
-  messages: [
-    {
-      role: 'user',
-      content: 'Summarize this in one sentence: ...',
-    },
-  ],
-});
-
-console.log(completion.choices[0].message.content);
-// The `model` field reflects the concrete version that served the request.
-console.log('Resolved to:', completion.model);
-```
-
-```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
+  const completion = await openRouter.chat.send({
     model: '~anthropic/claude-opus-latest',
     messages: [
       {
@@ -57,53 +38,76 @@ const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         content: 'Summarize this in one sentence: ...',
       },
     ],
-  }),
-});
+  });
 
-const data = await response.json();
-console.log('Resolved to:', data.model);
-```
+  console.log(completion.choices[0].message.content);
+  // The `model` field reflects the concrete version that served the request.
+  console.log('Resolved to:', completion.model);
+  ```
 
-```python title="Python"
-import requests
-import json
+  ```typescript title="TypeScript (fetch)" lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: '~anthropic/claude-opus-latest',
+      messages: [
+        {
+          role: 'user',
+          content: 'Summarize this in one sentence: ...',
+        },
+      ],
+    }),
+  });
 
-response = requests.post(
-  url="https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": "Bearer <OPENROUTER_API_KEY>",
-    "Content-Type": "application/json",
-  },
-  data=json.dumps({
-    "model": "~anthropic/claude-opus-latest",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Summarize this in one sentence: ..."
-      }
-    ]
-  })
-)
+  const data = await response.json();
+  console.log('Resolved to:', data.model);
+  ```
 
-data = response.json()
-print('Resolved to:', data['model'])
-```
+  ```python title="Python" expandable lines theme={null}
+  import requests
+  import json
 
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "~anthropic/claude-opus-latest",
-    "messages": [{"role": "user", "content": "Hello!"}]
-  }'
-```
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "~anthropic/claude-opus-latest",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarize this in one sentence: ..."
+        }
+      ]
+    })
+  )
+
+  data = response.json()
+  print('Resolved to:', data['model'])
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "~anthropic/claude-opus-latest",
+      "messages": [{"role": "user", "content": "Hello!"}]
+    }'
+  ```
+</CodeGroup>
 
 ## Response
 
 The response's `model` field reflects the concrete model that actually served the request, not the alias you sent. This makes it trivial to log or alert on version rollovers:
 
-```json
+```json lines theme={null}
 {
   "id": "gen-...",
   "model": "anthropic/claude-opus-4.8",
@@ -160,7 +164,7 @@ When a new model is promoted to "latest", these fields update automatically.
 
 When you need reproducibility, bypass latest resolution by calling the concrete model slug directly:
 
-```json
+```json lines theme={null}
 {
   "model": "anthropic/claude-opus-4.8"
 }
@@ -170,7 +174,7 @@ You can see the exact slug your last request resolved to in the response's `mode
 
 ## Related
 
-* [Auto Router](/docs/guides/routing/routers/auto-router) - Cross-model intelligent selection (paid models)
-* [Free Models Router](/docs/guides/routing/routers/free-router) - Route to available free models
-* [Model Variants](/docs/guides/routing/model-variants) - `:free`, `:nitro`, `:thinking`, and other suffixes
-* [API Reference: Chat Completions](/docs/api-reference/chat/create-chat-completion)
+* [Auto Router](/guides/routing/routers/auto-router) - Cross-model intelligent selection (paid models)
+* [Free Models Router](/guides/routing/routers/free-router) - Route to available free models
+* [Model Variants](/guides/routing/model-variants) - `:free`, `:nitro`, `:thinking`, and other suffixes
+* [API Reference: Chat Completions](/api/api-reference/chat/create-a-chat-completion)

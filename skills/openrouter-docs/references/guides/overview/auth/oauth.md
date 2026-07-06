@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OAuth PKCE
+
+> Connect your users to OpenRouter
 
 Users can connect to OpenRouter in one click using [Proof Key for Code Exchange (PKCE)](https://oauth.net/2/pkce/).
 
@@ -14,51 +16,63 @@ Here's a step-by-step guide:
 
 To start the PKCE flow, send your user to OpenRouter's `/auth` URL with a `callback_url` parameter pointing back to your site:
 
-```txt title="With S256 Code Challenge (Recommended)" wordWrap
-https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256
-```
+<CodeGroup>
+  ```txt title="With S256 Code Challenge (Recommended)" wrap lines theme={null}
+  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256
+  ```
 
-```txt title="With Plain Code Challenge" wordWrap
-https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=plain
-```
+  ```txt title="With Plain Code Challenge" wrap lines theme={null}
+  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=plain
+  ```
 
-```txt title="Without Code Challenge" wordWrap
-https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>
-```
+  ```txt title="Without Code Challenge" wrap lines theme={null}
+  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>
+  ```
+</CodeGroup>
 
 The `code_challenge` parameter is optional but recommended.
 
 Your user will be prompted to log in to OpenRouter and authorize your app. After authorization, they will be redirected back to your site with a `code` parameter in the URL:
 
-![Alt text](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5c315bc747b843ac0f3c7fd78ef45b58e9b00397e0685020ff6ac837884c8a71/content/pages/auth/auth-request.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/overview/auth/oauth/auth-request.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=15dba3246f0072ad883418114aeec7a1" alt="Alt text" width="1422" height="1220" data-path="assets/guides/overview/auth/oauth/auth-request.png" />
+</Frame>
 
-For maximum security, set `code_challenge_method` to `S256`, and set `code_challenge` to the base64 encoding of the sha256 hash of `code_verifier`.
+<Tip>
+  **Use SHA-256 for Maximum Security**
 
-For more info, [visit Auth0's docs](https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#parameters).
+  For maximum security, set `code_challenge_method` to `S256`, and set `code_challenge` to the base64 encoding of the sha256 hash of `code_verifier`.
+
+  For more info, [visit Auth0's docs](https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#parameters).
+</Tip>
 
 #### How to Generate a Code Challenge
 
 The following example leverages the Web Crypto API and the Buffer API to generate a code challenge for the S256 method. You will need a bundler to use the Buffer API in the web browser:
 
-```typescript title="Generate Code Challenge"
-import { Buffer } from 'buffer';
+<CodeGroup>
+  ```typescript title="Generate Code Challenge" lines theme={null}
+  import { Buffer } from 'buffer';
 
-async function createSHA256CodeChallenge(input: string) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(input);
-  const hash = await crypto.subtle.digest('SHA-256', data);
-  return Buffer.from(hash).toString('base64url');
-}
+  async function createSHA256CodeChallenge(input: string) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(input);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Buffer.from(hash).toString('base64url');
+  }
 
-const codeVerifier = 'your-random-string';
-const generatedCodeChallenge = await createSHA256CodeChallenge(codeVerifier);
-```
+  const codeVerifier = 'your-random-string';
+  const generatedCodeChallenge = await createSHA256CodeChallenge(codeVerifier);
+  ```
+</CodeGroup>
 
 #### Localhost Apps
 
 Localhost callbacks are supported on **any port**. This is useful for CLI tools and local-first apps that bind to an arbitrary free OS port for the OAuth callback (e.g. `http://localhost:51423/callback`).
 
-Localhost apps are assigned a fixed title matching the host and port (e.g. `localhost:3000`) but will not appear in the OpenRouter marketplace or rankings. If you want a custom app name and marketplace presence, use a public URL as the callback instead.
+<Note>
+  Localhost apps are assigned a fixed title matching the host and port (e.g. `localhost:3000`) but will not appear in the OpenRouter marketplace or rankings. If you want a custom app name and marketplace presence, use a public URL as the callback instead.
+</Note>
 
 When moving to production, replace the localhost callback URL with a public URL (your project website or a GitHub repo link) to get full app attribution.
 
@@ -66,78 +80,86 @@ When moving to production, replace the localhost callback URL with a public URL 
 
 After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:
 
-![Alt text](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/7c5e0e22334f718612a4a2e88168d104d9a4a3f97c40cb344aa27bb4e335188a/content/pages/auth/code-challenge.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/overview/auth/oauth/code-challenge.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=10315413fb904ebcc3df28e2e9ccb0c1" alt="Alt text" width="1850" height="296" data-path="assets/guides/overview/auth/oauth/code-challenge.png" />
+</Frame>
 
 Extract this code using the browser API:
 
-```typescript title="Extract Code"
-const urlParams = new URLSearchParams(window.location.search);
-const code = urlParams.get('code');
-```
+<CodeGroup>
+  ```typescript title="Extract Code" lines theme={null}
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  ```
+</CodeGroup>
 
 Then use it to make an API call to `https://openrouter.ai/api/v1/auth/keys` to exchange the code for a user-controlled API key:
 
-```typescript title="Exchange Code"
-const response = await fetch('https://openrouter.ai/api/v1/auth/keys', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    code: '<CODE_FROM_QUERY_PARAM>',
-    code_verifier: '<CODE_VERIFIER>', // If code_challenge was used
-    code_challenge_method: '<CODE_CHALLENGE_METHOD>', // If code_challenge was used
-  }),
-});
+<CodeGroup>
+  ```typescript title="Exchange Code" lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/auth/keys', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      code: '<CODE_FROM_QUERY_PARAM>',
+      code_verifier: '<CODE_VERIFIER>', // If code_challenge was used
+      code_challenge_method: '<CODE_CHALLENGE_METHOD>', // If code_challenge was used
+    }),
+  });
 
-const { key } = await response.json();
-```
+  const { key } = await response.json();
+  ```
+</CodeGroup>
 
 And that's it for the PKCE flow!
 
 ### Step 3: Use the API key
 
-Store the API key securely within the user's browser or in your own database, and use it to [make OpenRouter requests](/docs/api/reference/overview).
+Store the API key securely within the user's browser or in your own database, and use it to [make OpenRouter requests](/api/reference/overview).
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: key, // The key from Step 2
-});
+  const openRouter = new OpenRouter({
+    apiKey: key, // The key from Step 2
+  });
 
-const completion = await openRouter.chat.send({
-  model: 'openai/gpt-5.2',
-  messages: [
-    {
-      role: 'user',
-      content: 'Hello!',
-    },
-  ],
-  stream: false,
-});
-
-console.log(completion.choices[0].message);
-```
-
-```typescript title="TypeScript (fetch)"
-fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${key}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/gpt-5.2',
+  const completion = await openRouter.chat.send({
+    model: '~openai/gpt-latest',
     messages: [
       {
         role: 'user',
         content: 'Hello!',
       },
     ],
-  }),
-});
-```
+    stream: false,
+  });
+
+  console.log(completion.choices[0].message);
+  ```
+
+  ```typescript title="TypeScript (fetch)" lines theme={null}
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: '~openai/gpt-latest',
+      messages: [
+        {
+          role: 'user',
+          content: 'Hello!',
+        },
+      ],
+    }),
+  });
+  ```
+</CodeGroup>
 
 ## Error Codes
 

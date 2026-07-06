@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Custom Classifiers
+
+> Automatically categorize every LLM generation in your workspace
 
 Custom classifiers let you define a structured taxonomy and use a model of your choosing (OpenRouter will recommend fast, inexpensive models during classifier setup) to tag and classify your prompts. The classifier model runs asynchronously after each request completes (zero added latency), tagging generations with dimensions like department, task type, complexity, or anything you can think of. The tags show up in your [activity logs](/logs) so you can understand how AI is being used across your organization, and will soon appear in roll-up reporting in the activity explorer.
 
@@ -16,7 +18,9 @@ Custom classifiers let you define a structured taxonomy and use a model of your 
 
 Generations in that workspace will now be classified by the selected model. Open any generation in your [logs](/logs) to see its classification tags.
 
-Only workspace admins can create and manage classifiers. Each workspace has its own independent classifier.
+<Note>
+  Only workspace admins can create and manage classifiers. Each workspace has its own independent classifier.
+</Note>
 
 ## Classification Presets
 
@@ -84,7 +88,7 @@ Filter and analyze your classified generations in the [Activity](/activity) and 
 
 ## Workspace Scoping
 
-Each classifier is scoped to a single [workspace](/docs/guides/features/workspaces). Different workspaces can have different classifiers (or none at all). This lets you run a department classifier on your org-wide workspace while a specific project workspace uses a task-type classifier.
+Each classifier is scoped to a single [workspace](/guides/features/workspaces). Different workspaces can have different classifiers (or none at all). This lets you run a department classifier on your org-wide workspace while a specific project workspace uses a task-type classifier.
 
 ## Tips
 

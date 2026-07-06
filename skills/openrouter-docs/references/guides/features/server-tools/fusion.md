@@ -1,78 +1,135 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Fusion
 
-Server tools are currently in beta. The API and behavior may change.
+> Multi-model deliberation as a server tool
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+<Badge color="blue">Beta</Badge>
+
+<Note>
+  **Beta**
+
+  Server tools are currently in beta. The API and behavior may change.
+</Note>
 
 The `openrouter:fusion` server tool gives any model access to multi-model deliberation. When your model decides a prompt benefits from multiple perspectives, it invokes this tool — a panel of models answers in parallel, a judge compares their responses, and the structured analysis comes back to your model for the final answer.
 
-This is the same pipeline behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router) and the [`fusion` plugin](/docs/guides/features/plugins/fusion). Using the server tool directly gives you the most control: choose your own outer model, combine it with other tools, and configure the panel and judge independently.
+This is the same pipeline behind the [`openrouter/fusion` model alias](/guides/routing/routers/fusion-router) and the [`fusion` plugin](/guides/features/plugins/fusion). Using the server tool directly gives you the most control: choose your own outer model, combine it with other tools, and configure the panel and judge independently.
 
 ## Quick start
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
+<Template
+  data={{
+API_KEY_REF,
+MODEL: '~anthropic/claude-opus-latest',
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" expandable lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
       },
-    ],
-    tools: [
-      { type: 'openrouter:fusion' },
-    ],
-  }),
-});
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
+          },
+        ],
+        tools: [
+          { type: 'openrouter:fusion' },
+        ],
+      }),
+    });
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-```
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
 
-```python title="Python"
-import requests
+    ```python title="Python" expandable lines theme={null}
+    import requests
 
-response = requests.post(
-  "https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Survey the strongest arguments for and against a carbon tax. Where do experts disagree?",
+    response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
       },
-    ],
-    "tools": [
-      {"type": "openrouter:fusion"},
-    ],
-  },
-)
-print(response.json()["choices"][0]["message"]["content"])
-```
+      json={
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Survey the strongest arguments for and against a carbon tax. Where do experts disagree?",
+          },
+        ],
+        "tools": [
+          {"type": "openrouter:fusion"},
+        ],
+      },
+    )
+    print(response.json()["choices"][0]["message"]["content"])
+    ```
+  </CodeGroup>
+</Template>
 
 ## When does the model invoke it?
 
 The tool's description tells the model to call `openrouter:fusion` only when a task genuinely benefits from multiple perspectives — research questions, multi-domain critique, "compare and contrast" prompts, or anything where being wrong is expensive. Simple tactical prompts won't trigger it.
 
-To **force** fusion on every request, set `tool_choice: "required"`. See [Forcing fusion on every request](/docs/guides/routing/routers/fusion-router#forcing-fusion-on-every-request).
+To **force** fusion on every request, set `tool_choice: "required"`. See [Forcing fusion on every request](/guides/routing/routers/fusion-router#forcing-fusion-on-every-request).
 
 ## Parameters
 
 Pass an optional `parameters` object on the tool entry to override defaults:
 
-```json
+```json lines theme={null}
 {
   "tools": [
     {
@@ -97,13 +154,13 @@ Pass an optional `parameters` object on the tool entry to override defaults:
 | `max_tool_calls`        | `8`                                                                                                 | Max tool-calling steps each panel model and the judge may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16. |
 | `max_completion_tokens` | Provider default                                                                                    | Max output tokens (including reasoning) per inner panel/judge call. Keeps reasoning-heavy models from exhausting their budget before producing visible text.            |
 | `reasoning`             | Provider default                                                                                    | Reasoning config forwarded to the panel and judge calls — an object with optional `effort` and `max_tokens`.                                                            |
-| `temperature`           | Provider default                                                                                    | Sampling temperature (`0`–`2`) forwarded to the panel and judge calls.                                                                                                  |
+| `temperature`           | Provider default                                                                                    | Temperature (`0`–`2`) forwarded to the panel calls. The judge always runs at temperature 0.                                                                             |
 
 ## What the tool returns
 
 On success, the tool result contains the structured analysis and the raw panel responses:
 
-```json
+```json expandable lines theme={null}
 {
   "status": "ok",
   "analysis": {
@@ -133,7 +190,7 @@ When some panel models error but at least one succeeds, the result still has `st
 
 If the **panel** succeeds but the **judge** fails — an upstream error, an empty completion, or output that isn't valid analysis JSON — the tool does **not** error. It returns `status: "ok"` with the raw panel `responses` and simply **omits** `analysis`. Your model can still write the final answer from the panel responses:
 
-```json
+```json lines theme={null}
 {
   "status": "ok",
   "responses": [
@@ -146,7 +203,7 @@ If the **panel** succeeds but the **judge** fails — an upstream error, an empt
 
 The tool only returns `status: "error"` when it can't produce any useful output. In that case it includes a typed `failure_reason`:
 
-```json
+```json lines theme={null}
 {
   "status": "error",
   "error": "all panel models failed",
@@ -174,8 +231,8 @@ Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge 
 
 ## Related
 
-* [Fusion Router (`openrouter/fusion`)](/docs/guides/routing/routers/fusion-router)
-* [Fusion plugin](/docs/guides/features/plugins/fusion)
-* [Web Search server tool](/docs/guides/features/server-tools/web-search)
-* [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)
-* [`/labs/fusion`](/labs/fusion) — interactive playground
+* [Fusion Router (`openrouter/fusion`)](/guides/routing/routers/fusion-router)
+* [Fusion plugin](/guides/features/plugins/fusion)
+* [Web Search server tool](/guides/features/server-tools/web-search)
+* [Web Fetch server tool](/guides/features/server-tools/web-fetch)
+* [`/labs/fusion`](https://openrouter.ai/fusion/) — interactive playground

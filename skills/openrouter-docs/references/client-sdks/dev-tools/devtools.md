@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # DevTools
+
+> SDK Development Tools for telemetry capture and visualization
 
 The OpenRouter DevTools provide a comprehensive solution for SDK telemetry capture and visualization during development. Monitor your AI application's requests, responses, token usage, and errors in real-time with a beautiful web interface.
 
@@ -28,7 +30,9 @@ Launch a web-based interface to visualize your SDK telemetry:
 * **Multi-run comparison** - Compare different SDK runs side-by-side
 * **Dark/Light mode** - Full theme support with automatic system preference detection
 
-![DevTools Interface](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c42509db3b19a615dbca8c54a76514ef70ad33ee9f814a0546c2188b90bbfc54/content/assets/sdk-devtools-dark.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/sdk-devtools-dark.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=31e8a7d3861f46564eed7f30b6c8579b" alt="DevTools Interface" width="2872" height="2198" data-path="assets/sdk-devtools-dark.png" />
+</Frame>
 
 ### SDK Telemetry Hooks
 
@@ -45,7 +49,7 @@ Developer-friendly hooks that automatically capture:
 
 Install the DevTools package as a development dependency:
 
-```bash
+```bash lines theme={null}
 npm install @openrouter/devtools --save-dev
 ```
 
@@ -57,7 +61,7 @@ Integrate DevTools hooks into your SDK client to start capturing telemetry:
 
 ### Basic Usage
 
-```typescript
+```typescript lines theme={null}
 import { createOpenRouterDevtools } from '@openrouter/devtools';
 import { OpenRouter } from '@openrouter/sdk';
 
@@ -77,7 +81,7 @@ const response = await sdk.chat.send({
 
 ### Custom Configuration
 
-```typescript
+```typescript lines theme={null}
 const sdk = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
   hooks: createOpenRouterDevtools({
@@ -91,7 +95,7 @@ const sdk = new OpenRouter({
 
 Launch the DevTools web interface to visualize captured telemetry:
 
-```bash
+```bash lines theme={null}
 openrouter devtools
 ```
 
@@ -125,7 +129,7 @@ The viewer automatically refreshes when new telemetry data is captured.
 
 By default, telemetry is stored in:
 
-```
+```lines theme={null}
 .devtools/openrouter-generations.json
 ```
 
@@ -150,7 +154,7 @@ When calling `createOpenRouterDevtools()`, you can customize:
 
 The DevTools viewer runs on port 4983 by default. This can be configured in your OpenRouter CLI configuration at `~/.openrouter/claude-code-proxy.json`:
 
-```json
+```json lines theme={null}
 {
   "DEVTOOLS_PORT": 4983
 }
@@ -197,7 +201,7 @@ For each SDK operation, DevTools captures:
 
 DevTools will throw an error if initialized when `NODE_ENV === 'production'`:
 
-```typescript
+```typescript lines theme={null}
 // This will throw an error in production
 const sdk = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -215,7 +219,7 @@ const sdk = new OpenRouter({
 
 DevTools failures are handled gracefully:
 
-```typescript
+```typescript lines theme={null}
 // If DevTools fails, your SDK call still works
 try {
   await sdk.chat.send({ /* ... */ });
@@ -231,13 +235,13 @@ try {
 
 If port 4983 is already in use:
 
-```bash
+```bash lines theme={null}
 Error: listen EADDRINUSE: address already in use :::4983
 ```
 
 **Solution:** Either stop the process using port 4983, or configure a different port in `~/.openrouter/claude-code-proxy.json`:
 
-```json
+```json lines theme={null}
 {
   "DEVTOOLS_PORT": 5000
 }
@@ -245,7 +249,7 @@ Error: listen EADDRINUSE: address already in use :::4983
 
 Then update your hook configuration:
 
-```typescript
+```typescript lines theme={null}
 hooks: createOpenRouterDevtools({
   serverUrl: 'http://localhost:5000/api/notify'
 })
@@ -272,13 +276,13 @@ If the viewer doesn't show new requests:
 
 **Issue:** DevTools package not found
 
-```bash
+```bash lines theme={null}
 Cannot find module '@openrouter/devtools'
 ```
 
 **Solution:** Install the package:
 
-```bash
+```bash lines theme={null}
 npm install @openrouter/devtools --save-dev
 ```
 
@@ -286,13 +290,13 @@ npm install @openrouter/devtools --save-dev
 
 **Issue:** Accidental production usage
 
-```bash
+```bash lines theme={null}
 Error: DevTools should not be used in production
 ```
 
 **Solution:** Only initialize DevTools in development:
 
-```typescript
+```typescript lines theme={null}
 const hooks = process.env.NODE_ENV === 'development'
   ? createOpenRouterDevtools()
   : undefined;

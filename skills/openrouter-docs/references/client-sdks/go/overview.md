@@ -1,19 +1,23 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Go SDK
+# OpenRouter Go SDK
 
-The Go SDK and docs are currently in beta.
-Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
+> Go SDK for building AI features against 400+ models through OpenRouter.
 
-The OpenRouter Go SDK is a type-safe client for building AI applications with access to 400+ language models through a unified API.
+The OpenRouter Go SDK gives you type-safe access to 400+ models across providers
+through a single unified API.
 
-## Why use the OpenRouter SDK?
+## Installation
 
-Integrating AI models into applications involves handling different provider APIs, managing model-specific requirements, and avoiding common implementation mistakes. The OpenRouter SDK standardizes these integrations with idiomatic Go types, retries, and typed errors.
+```bash theme={null}
+go get github.com/OpenRouterTeam/go-sdk
+```
 
-```go
+## Quickstart
+
+```go theme={null}
 package main
 
 import (
@@ -23,7 +27,6 @@ import (
 
 	openrouter "github.com/OpenRouterTeam/go-sdk"
 	"github.com/OpenRouterTeam/go-sdk/models/components"
-	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
 )
 
 func main() {
@@ -34,103 +37,27 @@ func main() {
 	)
 
 	res, err := s.Chat.Send(ctx, components.ChatRequest{
-		Model: openrouter.Pointer("openai/gpt-4o"),
 		Messages: []components.ChatMessages{
 			components.CreateChatMessagesUser(
 				components.ChatUserMessage{
-					Role: components.ChatUserMessageRoleUser,
 					Content: components.CreateChatUserMessageContentStr(
-						"Explain quantum computing",
+						"What is the capital of France?",
 					),
+					Role: components.ChatUserMessageRoleUser,
 				},
 			),
 		},
-		Temperature: optionalnullable.From(openrouter.Pointer(0.7)),
 	}, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil && res.ChatResult != nil {
-		log.Println(res.ChatResult.Choices)
+	if res != nil {
+		// handle response
 	}
 }
 ```
 
-The SDK provides three core benefits:
+## API reference
 
-### Auto-generated from API specifications
-
-The SDK is automatically generated from OpenRouter's OpenAPI specs and updated with every API change. New models, parameters, and features appear in generated types and docs immediately.
-
-```go
-res, err := s.Chat.Send(ctx, components.ChatRequest{
-	Model: openrouter.Pointer("openai/gpt-4o"),
-	// ...
-}, nil)
-```
-
-### Type-safe by default
-
-Request and response types live under `models/components` and `models/operations`. API errors are mapped to typed values under `models/sdkerrors`.
-
-```go
-res, err := s.Chat.Send(ctx, components.ChatRequest{
-	Model: openrouter.Pointer("openai/gpt-4o"),
-	Messages: []components.ChatMessages{
-		components.CreateChatMessagesUser(
-			components.ChatUserMessage{
-				Role: components.ChatUserMessageRoleUser,
-				Content: components.CreateChatUserMessageContentStr("Hello"),
-			},
-		),
-	},
-}, nil)
-```
-
-### Streaming and platform APIs
-
-Use the same client for streaming chat completions, embeddings, rerank, TTS, video generation, and platform APIs such as API keys, credits, models, guardrails, and workspaces.
-
-```go
-res, err := s.Chat.Send(ctx, components.ChatRequest{
-	Model:  openrouter.Pointer("openai/gpt-4o"),
-	Messages: []components.ChatMessages{ /* ... */ },
-	Stream:   openrouter.Pointer(true),
-}, nil)
-if res != nil && res.EventStream != nil {
-	defer res.EventStream.Close()
-	for res.EventStream.Next() {
-		chunk := res.EventStream.Value()
-		if chunk == nil {
-			continue
-		}
-		for _, choice := range chunk.Data.Choices {
-			if text, ok := choice.Delta.Content.Get(); ok && text != nil {
-				_ = *text
-			}
-		}
-	}
-}
-```
-
-See [examples/chat-stream](examples/chat-stream) for a runnable streaming chat example.
-
-## Installation
-
-```bash
-go get github.com/OpenRouterTeam/go-sdk
-```
-
-For beta releases, pin an explicit version:
-
-```bash
-go get github.com/OpenRouterTeam/go-sdk@v0.5.0
-```
-
-**Requirements:** Go 1.25 or higher
-
-Get your API key from [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
-
-## Quick start
-
-See [examples/README.md](examples/README) for runnable examples, starting with [examples/chat](examples/chat), or the [API Reference](https://openrouter.ai/docs/sdks/go/api-reference) for the full method list.
+Browse the API reference for each resource in the sidebar. Type definitions for
+every request, response, and model are linked inline from each resource page.

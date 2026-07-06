@@ -1,417 +1,386 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Download file content
 
-GET https://openrouter.ai/api/v1/files/{file_id}/content
+> Downloads the raw bytes of a file. Only files created server-side are downloadable; uploaded files return 400.
 
-Downloads the raw bytes of a file. Only files created server-side are downloadable; uploaded files return 400.
 
-Reference: https://openrouter.ai/docs/api/api-reference/files/download-file-content
 
-## OpenAPI Specification
+## OpenAPI
 
-```yaml
+````yaml /openapi/openapi.yaml get /files/{file_id}/content
 openapi: 3.1.0
 info:
+  contact:
+    email: support@openrouter.ai
+    name: OpenRouter Support
+    url: https://openrouter.ai/docs
+  description: OpenAI-compatible API with additional OpenRouter features
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
   title: OpenRouter API
   version: 1.0.0
+servers:
+  - description: Production server
+    url: https://openrouter.ai/api/v1
+    x-speakeasy-server-id: production
+security:
+  - apiKey: []
+tags:
+  - description: API key management endpoints
+    name: API Keys
+  - description: Analytics and usage endpoints
+    name: Analytics
+  - description: Anthropic Messages endpoints
+    name: Anthropic Messages
+  - description: BYOK endpoints
+    name: BYOK
+  - description: Benchmarks endpoints
+    name: Benchmarks
+  - description: Chat completion endpoints
+    name: Chat
+  - description: Task classification market-share endpoints
+    name: Classifications
+  - description: Credit management endpoints
+    name: Credits
+  - description: Datasets endpoints
+    name: Datasets
+  - description: Text embedding endpoints
+    name: Embeddings
+  - description: Endpoint information
+    name: Endpoints
+  - description: Files endpoints
+    name: Files
+  - description: Generation history endpoints
+    name: Generations
+  - description: Guardrails endpoints
+    name: Guardrails
+  - description: Images endpoints
+    name: Images
+  - description: Model information endpoints
+    name: Models
+  - description: OAuth authentication endpoints
+    name: OAuth
+  - description: Observability endpoints
+    name: Observability
+  - description: Organization endpoints
+    name: Organization
+  - description: Presets endpoints
+    name: Presets
+  - description: Provider information endpoints
+    name: Providers
+  - description: Rerank endpoints
+    name: Rerank
+  - description: Speech-to-text endpoints
+    name: STT
+    x-displayName: Transcriptions
+  - description: Text-to-speech endpoints
+    name: TTS
+    x-displayName: Speech
+  - description: Video Generation endpoints
+    name: Video Generation
+  - description: Workspaces endpoints
+    name: Workspaces
+  - description: beta.Analytics endpoints
+    name: beta.Analytics
+  - description: beta.responses endpoints
+    name: beta.responses
+externalDocs:
+  description: OpenRouter Documentation
+  url: https://openrouter.ai/docs
 paths:
   /files/{file_id}/content:
     get:
-      operationId: download-file-content
+      tags:
+        - Files
       summary: Download file content
       description: >-
         Downloads the raw bytes of a file. Only files created server-side are
         downloadable; uploaded files return 400.
-      tags:
-        - subpackage_files
+      operationId: downloadFileContent
       parameters:
-        - name: file_id
-          in: path
+        - in: path
+          name: file_id
           required: true
           schema:
+            example: file_011CNha8iCJcU1wXNR6q4V8w
             type: string
-        - name: workspace_id
-          in: query
-          description: >-
+        - description: >-
             Workspace to scope the request to. Defaults to the caller’s default
             workspace.
+          in: query
+          name: workspace_id
           required: false
           schema:
-            type: string
+            description: >-
+              Workspace to scope the request to. Defaults to the caller’s
+              default workspace.
+            example: a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7
             format: uuid
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
             type: string
       responses:
         '200':
-          description: The raw file content.
           content:
             application/octet-stream:
+              example: binary file contents
               schema:
-                type: string
                 format: binary
+                type: string
+          description: The raw file content.
         '400':
-          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
+              example:
+                error:
+                  code: 400
+                  message: Invalid request parameters
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request - Invalid request parameters or malformed input
         '401':
-          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
+              example:
+                error:
+                  code: 401
+                  message: Missing Authentication header
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+          description: Unauthorized - Authentication required or invalid credentials
         '404':
-          description: Not Found - Resource does not exist
           content:
             application/json:
+              example:
+                error:
+                  code: 404
+                  message: Resource not found
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
+          description: Not Found - Resource does not exist
         '429':
-          description: Too Many Requests - Rate limit exceeded
           content:
             application/json:
+              example:
+                error:
+                  code: 429
+                  message: Rate limit exceeded
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
+          description: Too Many Requests - Rate limit exceeded
         '500':
-          description: Internal Server Error - Unexpected server error
           content:
             application/json:
+              example:
+                error:
+                  code: 500
+                  message: Internal Server Error
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
-servers:
-  - url: https://openrouter.ai/api/v1
-    description: Production server
+          description: Internal Server Error - Unexpected server error
 components:
   schemas:
-    BadRequestResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for BadRequestResponse
-      title: BadRequestResponseErrorData
     BadRequestResponse:
-      type: object
+      description: Bad Request - Invalid request parameters or malformed input
+      example:
+        error:
+          code: 400
+          message: Invalid request parameters
       properties:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
         openrouter_metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
         user_id:
-          type:
-            - string
-            - 'null'
+          nullable: true
+          type: string
       required:
         - error
-      description: Bad Request - Invalid request parameters or malformed input
-      title: BadRequestResponse
-    UnauthorizedResponseErrorData:
       type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for UnauthorizedResponse
-      title: UnauthorizedResponseErrorData
     UnauthorizedResponse:
-      type: object
+      description: Unauthorized - Authentication required or invalid credentials
+      example:
+        error:
+          code: 401
+          message: Missing Authentication header
       properties:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
         openrouter_metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
         user_id:
-          type:
-            - string
-            - 'null'
+          nullable: true
+          type: string
       required:
         - error
-      description: Unauthorized - Authentication required or invalid credentials
-      title: UnauthorizedResponse
-    NotFoundResponseErrorData:
       type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for NotFoundResponse
-      title: NotFoundResponseErrorData
     NotFoundResponse:
-      type: object
+      description: Not Found - Resource does not exist
+      example:
+        error:
+          code: 404
+          message: Resource not found
       properties:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
         openrouter_metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
         user_id:
-          type:
-            - string
-            - 'null'
+          nullable: true
+          type: string
       required:
         - error
-      description: Not Found - Resource does not exist
-      title: NotFoundResponse
-    TooManyRequestsResponseErrorData:
       type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for TooManyRequestsResponse
-      title: TooManyRequestsResponseErrorData
     TooManyRequestsResponse:
-      type: object
+      description: Too Many Requests - Rate limit exceeded
+      example:
+        error:
+          code: 429
+          message: Rate limit exceeded
       properties:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
         openrouter_metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
         user_id:
-          type:
-            - string
-            - 'null'
+          nullable: true
+          type: string
       required:
         - error
-      description: Too Many Requests - Rate limit exceeded
-      title: TooManyRequestsResponse
-    InternalServerResponseErrorData:
       type: object
+    InternalServerResponse:
+      description: Internal Server Error - Unexpected server error
+      example:
+        error:
+          code: 500
+          message: Internal Server Error
+      properties:
+        error:
+          $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+        user_id:
+          nullable: true
+          type: string
+      required:
+        - error
+      type: object
+    BadRequestResponseErrorData:
+      description: Error data for BadRequestResponse
+      example:
+        code: 400
+        message: Invalid request parameters
       properties:
         code:
           type: integer
         message:
           type: string
         metadata:
-          type:
-            - object
-            - 'null'
           additionalProperties:
-            description: Any type
+            nullable: true
+          nullable: true
+          type: object
       required:
         - code
         - message
-      description: Error data for InternalServerResponse
-      title: InternalServerResponseErrorData
-    InternalServerResponse:
       type: object
+    UnauthorizedResponseErrorData:
+      description: Error data for UnauthorizedResponse
+      example:
+        code: 401
+        message: Missing Authentication header
       properties:
-        error:
-          $ref: '#/components/schemas/InternalServerResponseErrorData'
-        openrouter_metadata:
-          type:
-            - object
-            - 'null'
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
           additionalProperties:
-            description: Any type
-        user_id:
-          type:
-            - string
-            - 'null'
+            nullable: true
+          nullable: true
+          type: object
       required:
-        - error
-      description: Internal Server Error - Unexpected server error
-      title: InternalServerResponse
+        - code
+        - message
+      type: object
+    NotFoundResponseErrorData:
+      description: Error data for NotFoundResponse
+      example:
+        code: 404
+        message: Resource not found
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    TooManyRequestsResponseErrorData:
+      description: Error data for TooManyRequestsResponse
+      example:
+        code: 429
+        message: Rate limit exceeded
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
+    InternalServerResponseErrorData:
+      description: Error data for InternalServerResponse
+      example:
+        code: 500
+        message: Internal Server Error
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
+      required:
+        - code
+        - message
+      type: object
   securitySchemes:
     apiKey:
-      type: http
-      scheme: bearer
       description: API key as bearer token in Authorization header
+      scheme: bearer
+      type: http
 
-```
-
-## Examples
-
-
-
-**SDK Code**
-
-```python
-import requests
-
-url = "https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content"
-
-headers = {"Authorization": "Bearer <token>"}
-
-response = requests.get(url, headers=headers)
-
-print(response.json())
-```
-
-```javascript
-const url = 'https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["Authorization"] = 'Bearer <token>'
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content")
-  .header("Authorization", "Bearer <token>")
-  .asString();
-```
-
-```php
-<?php
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content', [
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp
-using RestSharp;
-
-var client = new RestClient("https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content");
-var request = new RestRequest(Method.GET);
-request.AddHeader("Authorization", "Bearer <token>");
-IRestResponse response = client.Execute(request);
-```
-
-```swift
-import Foundation
-
-let headers = ["Authorization": "Bearer <token>"]
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/files/file_011CNha8iCJcU1wXNR6q4V8w/content")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "GET"
-request.allHTTPHeaderFields = headers
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
+````

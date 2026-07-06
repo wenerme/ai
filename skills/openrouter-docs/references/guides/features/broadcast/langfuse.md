@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Langfuse
+
+> Send traces to Langfuse
 
 [Langfuse](https://langfuse.com) is an open-source LLM engineering platform for tracing, evaluating, and debugging LLM applications.
 
@@ -10,13 +12,17 @@
 
 In Langfuse, go to your project's **Settings > API Keys** and create a new key pair. Copy both the Secret Key and Public Key.
 
-![Langfuse API Keys](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2fda0df2def9f2d969130c4704f72937461f4cbb8bb9435aa2245bb07391a35e/content/pages/features/broadcast/broadcast-langfuse-keys.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/langfuse/broadcast-langfuse-keys.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=1c9c1bd8e373efa73f7b2f9aead2aa2b" alt="Langfuse API Keys" width="1034" height="723" data-path="assets/guides/features/broadcast/langfuse/broadcast-langfuse-keys.png" />
+</Frame>
 
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Langfuse
 
@@ -26,19 +32,25 @@ Click the edit icon next to **Langfuse** and enter:
 * **Public Key**: Your Langfuse Public Key
 * **Base URL** (optional): Default is `https://us.cloud.langfuse.com`. Change for other regions or self-hosted instances
 
-![Langfuse Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/10178cb9915dae07364910b865f4dbdbfc18936d91ca39ab0a9f9f1d9892ad79/content/pages/features/broadcast/broadcast-langfuse-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/langfuse/broadcast-langfuse-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=fcaee0f3e0cea161f94fdad09f7d9575" alt="Langfuse Configuration" width="1268" height="1004" data-path="assets/guides/features/broadcast/langfuse/broadcast-langfuse-config.png" />
+</Frame>
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Langfuse Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/77277ddb0cd573d0efe91338a32735d6b710c4c7ecfdcd610f0750d0262b4202/content/pages/features/broadcast/broadcast-langfuse-configured.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/langfuse/broadcast-langfuse-configured.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=09f10b77fb79d490b87fd9fdc0a4f8e0" alt="Langfuse Configured" width="1269" height="716" data-path="assets/guides/features/broadcast/langfuse/broadcast-langfuse-configured.png" />
+</Frame>
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Langfuse.
 
-![Langfuse Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/cbd93fc215244ec3906102bdfb3a46c4938c7dd92b076c6a3f3510cc701a9487/content/pages/features/broadcast/broadcast-langfuse-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/langfuse/broadcast-langfuse-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=13dabf857ed6c929a0a35f9a87aef539" alt="Langfuse Trace" width="1331" height="1168" data-path="assets/guides/features/broadcast/langfuse/broadcast-langfuse-trace.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -58,7 +70,7 @@ Langfuse supports rich trace hierarchies and metadata. Use the `trace` field to 
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Summarize this document..." }],
@@ -78,7 +90,7 @@ Langfuse supports rich trace hierarchies and metadata. Use the `trace` field to 
 
 This creates a hierarchical trace structure in Langfuse:
 
-```
+```lines theme={null}
 Document Processing Pipeline (trace)
 └── Summarization Step (span)
     └── Generate Summary (generation)
@@ -92,4 +104,4 @@ Document Processing Pipeline (trace)
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

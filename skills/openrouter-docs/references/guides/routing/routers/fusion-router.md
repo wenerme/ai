@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Fusion Router
+
+> Multi-model deliberation as a model slug
 
 The [Fusion Router](https://openrouter.ai/openrouter/fusion) (`openrouter/fusion`) gives your model access to a multi-model deliberation tool. When invoked, a panel of models answers your prompt in parallel, then a judge model compares their responses and returns structured analysis — consensus, contradictions, coverage gaps, unique insights, and blind spots. Your model uses that analysis to write a better final answer.
 
@@ -12,11 +14,11 @@ Use Fusion when a single model isn't enough — research questions, expert criti
 
 ## How it works
 
-```mermaid
+```mermaid lines theme={null}
 flowchart LR
   request[Your request] --> model[Your model]
-  model -- calls openrouter:fusion --> panel[Panel<br />up to 8 models<br />+ web_search + web_fetch]
-  panel --> judge[Judge / analysis<br />+ web_search + web_fetch<br />structured JSON]
+  model -- calls openrouter:fusion --> panel[Panel<br/>up to 8 models<br/>+ web_search + web_fetch]
+  panel --> judge[Judge / analysis<br/>+ web_search + web_fetch<br/>structured JSON]
   judge -- analysis --> model
   model --> answer[Final answer]
 ```
@@ -31,64 +33,91 @@ flowchart LR
 
 ## Two ways to use it
 
-```json title="Model alias (tool auto-injected)"
-{
-  "model": "openrouter/fusion",
-  "messages": [
-    { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
-  ]
-}
-```
+<CodeGroup>
+  ```json title="Model alias (tool auto-injected)" lines theme={null}
+  {
+    "model": "openrouter/fusion",
+    "messages": [
+      { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
+    ]
+  }
+  ```
 
-```json title="Server tool (explicit)"
-{
-  "model": "~anthropic/claude-opus-latest",
-  "messages": [
-    { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
-  ],
-  "tools": [
-    { "type": "openrouter:fusion" }
-  ]
-}
-```
+  ```json title="Server tool (explicit)" lines theme={null}
+  {
+    "model": "~anthropic/claude-opus-latest",
+    "messages": [
+      { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
+    ],
+    "tools": [
+      { "type": "openrouter:fusion" }
+    ]
+  }
+  ```
+</CodeGroup>
 
 Both hit the same pipeline. The model alias is simpler — it auto-injects the tool so you don't have to declare it. The server tool form gives you more control (choose your own outer model, combine fusion with other tools).
 
 In both cases, the model decides when to call `openrouter:fusion`. For prompts that don't need deliberation, it answers directly — including invoking any other tools you've defined. Add `tool_choice: "required"` to force fusion on every request.
 
+## Fast preset model: `openrouter/fusion-flash`
+
+`openrouter/fusion-flash` is a separately-listed model that runs the fusion pipeline with the `general-fast` preset pre-selected — a latency-homogeneous panel tuned for fast agentic turns. When you don't pin your own fusion config, these two requests behave the same:
+
+<CodeGroup>
+  ```json title="Fusion Flash" theme={null}
+  {
+    "model": "openrouter/fusion-flash",
+    "messages": [{ "role": "user", "content": "..." }]
+  }
+  ```
+
+  ```json title="Explicit preset" theme={null}
+  {
+    "model": "openrouter/fusion",
+    "plugins": [{ "id": "fusion", "preset": "general-fast" }],
+    "messages": [{ "role": "user", "content": "..." }]
+  }
+  ```
+</CodeGroup>
+
+The model pins the preset as a default and gets its own entry in `/api/v1/models` and its own usage attribution in your activity feed. Anything you pass explicitly wins: a `fusion` plugin config with its own `preset`, `analysis_models`, or `model` overrides the implied `general-fast`. Variant suffixes (`openrouter/fusion-flash:free`) parse the same way they do on `openrouter/fusion`.
+
 ## Quick start
 
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  import { OpenRouter } from '@openrouter/sdk';
 
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-});
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
 
-const completion = await openRouter.chat.send({
-  model: 'openrouter/fusion',
-  messages: [
-    {
-      role: 'user',
-      content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
-    },
-  ],
-});
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/fusion',
+    messages: [
+      {
+        role: 'user',
+        content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
+      },
+    ],
+  });
 
-console.log(completion.choices[0].message.content);
-```
+  console.log(completion.choices[0].message.content);
+  ```
 
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openrouter/fusion",
-    "messages": [
-      {"role": "user", "content": "Survey the strongest arguments for and against a carbon tax. Where do experts disagree?"}
-    ]
-  }'
-```
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openrouter/fusion",
+      "messages": [
+        {"role": "user", "content": "Survey the strongest arguments for and against a carbon tax. Where do experts disagree?"}
+      ]
+    }'
+  ```
+</CodeGroup>
 
 ## Configuration
 
@@ -96,67 +125,15 @@ Override the default panel and judge via the `plugins` array or the `tools` arra
 
 ### Plugin config (recommended with the model slug)
 
-Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the same pattern the [Pareto Router](/docs/guides/routing/routers/pareto-router) uses for `min_coding_score`.
+Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the same pattern the [Pareto Router](/guides/routing/routers/pareto-router) uses for `min_coding_score`.
 
-```typescript title="TypeScript SDK"
-const completion = await openRouter.chat.send({
-  model: 'openrouter/fusion',
-  plugins: [
-    {
-      id: 'fusion',
-      analysis_models: [
-        '~anthropic/claude-opus-latest',
-        '~openai/gpt-latest',
-        '~google/gemini-pro-latest',
-      ],
-      model: '~openai/gpt-latest',
-    },
-  ],
-  messages: [
-    {
-      role: 'user',
-      content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
-    },
-  ],
-});
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openrouter/fusion",
-    "plugins": [
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/fusion',
+    plugins: [
       {
-        "id": "fusion",
-        "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-latest", "~google/gemini-pro-latest"],
-        "model": "~openai/gpt-latest"
-      }
-    ],
-    "messages": [
-      {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
-    ]
-  }'
-```
-
-### Tool config (when using your own outer model)
-
-When you bring your own model and add `openrouter:fusion` as a server tool, configure it via the `tools` array instead:
-
-```typescript title="TypeScript SDK"
-const completion = await openRouter.chat.send({
-  model: '~anthropic/claude-opus-latest',
-  messages: [
-    {
-      role: 'user',
-      content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
-    },
-  ],
-  tools: [
-    {
-      type: 'openrouter:fusion',
-      parameters: {
+        id: 'fusion',
         analysis_models: [
           '~anthropic/claude-opus-latest',
           '~openai/gpt-latest',
@@ -164,31 +141,87 @@ const completion = await openRouter.chat.send({
         ],
         model: '~openai/gpt-latest',
       },
-    },
-  ],
-});
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "~anthropic/claude-opus-latest",
-    "messages": [
-      {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
     ],
-    "tools": [
+    messages: [
       {
-        "type": "openrouter:fusion",
-        "parameters": {
+        role: 'user',
+        content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
+      },
+    ],
+  });
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openrouter/fusion",
+      "plugins": [
+        {
+          "id": "fusion",
           "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-latest", "~google/gemini-pro-latest"],
           "model": "~openai/gpt-latest"
         }
-      }
-    ]
-  }'
-```
+      ],
+      "messages": [
+        {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
+      ]
+    }'
+  ```
+</CodeGroup>
+
+### Tool config (when using your own outer model)
+
+When you bring your own model and add `openrouter:fusion` as a server tool, configure it via the `tools` array instead:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK" expandable lines theme={null}
+  const completion = await openRouter.chat.send({
+    model: '~anthropic/claude-opus-latest',
+    messages: [
+      {
+        role: 'user',
+        content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
+      },
+    ],
+    tools: [
+      {
+        type: 'openrouter:fusion',
+        parameters: {
+          analysis_models: [
+            '~anthropic/claude-opus-latest',
+            '~openai/gpt-latest',
+            '~google/gemini-pro-latest',
+          ],
+          model: '~openai/gpt-latest',
+        },
+      },
+    ],
+  });
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "~anthropic/claude-opus-latest",
+      "messages": [
+        {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
+      ],
+      "tools": [
+        {
+          "type": "openrouter:fusion",
+          "parameters": {
+            "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-latest", "~google/gemini-pro-latest"],
+            "model": "~openai/gpt-latest"
+          }
+        }
+      ]
+    }'
+  ```
+</CodeGroup>
 
 | Field                   | Default                                                                                             | Description                                                                                                                                                             |
 | ----------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -197,37 +230,39 @@ curl https://openrouter.ai/api/v1/chat/completions \
 | `max_tool_calls`        | `8`                                                                                                 | Max tool-calling steps each panel model and the judge may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16. |
 | `max_completion_tokens` | Provider default                                                                                    | Max output tokens (including reasoning) per inner panel/judge call. Keeps reasoning-heavy models from exhausting their budget before producing visible text.            |
 | `reasoning`             | Provider default                                                                                    | Reasoning config forwarded to the panel and judge calls — an object with optional `effort` and `max_tokens`.                                                            |
-| `temperature`           | Provider default                                                                                    | Sampling temperature (`0`–`2`) forwarded to the panel and judge calls.                                                                                                  |
+| `temperature`           | Provider default                                                                                    | Temperature (`0`–`2`) forwarded to the panel calls. The judge always runs at temperature 0.                                                                             |
 
 ## Forcing fusion on every request
 
 By default, the model decides when to call `openrouter:fusion`. To guarantee it runs on every request, set `tool_choice: "required"`:
 
-```typescript title="TypeScript SDK"
-const completion = await openRouter.chat.send({
-  model: 'openrouter/fusion',
-  messages: [
-    {
-      role: 'user',
-      content: 'Compare ridge, lasso, and elastic-net regression.',
-    },
-  ],
-  tool_choice: 'required',
-});
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openrouter/fusion",
-    "messages": [
-      {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/fusion',
+    messages: [
+      {
+        role: 'user',
+        content: 'Compare ridge, lasso, and elastic-net regression.',
+      },
     ],
-    "tool_choice": "required"
-  }'
-```
+    tool_choice: 'required',
+  });
+  ```
+
+  ```bash title="cURL" lines theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openrouter/fusion",
+      "messages": [
+        {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
+      ],
+      "tool_choice": "required"
+    }'
+  ```
+</CodeGroup>
 
 Because `openrouter/fusion` only injects one tool (`openrouter:fusion`), requiring *some* tool call effectively forces fusion. If your request also includes other tools, the model may pick one of those instead.
 
@@ -235,7 +270,7 @@ Because `openrouter/fusion` only injects one tool (`openrouter:fusion`), requiri
 
 The response `model` field reports the **concrete model** that handled the request — not the `openrouter/fusion` alias:
 
-```json
+```json lines theme={null}
 {
   "id": "gen-...",
   "model": "anthropic/claude-opus-4.5",
@@ -250,9 +285,9 @@ The response `model` field reports the **concrete model** that handled the reque
 }
 ```
 
-To confirm a generation went through the Fusion Router, check the [generation metadata](/docs/api/api-reference/generations/get-generation). The `router` field reports `openrouter/fusion`:
+To confirm a generation went through the Fusion Router, check the [generation metadata](/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation). The `router` field reports `openrouter/fusion`:
 
-```json
+```json lines theme={null}
 {
   "data": {
     "id": "gen-...",
@@ -272,8 +307,8 @@ Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge 
 
 ## Related
 
-* [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion)
-* [Fusion plugin](/docs/guides/features/plugins/fusion)
-* [Auto Router](/docs/guides/routing/routers/auto-router)
-* [Pareto Router](/docs/guides/routing/routers/pareto-router)
-* [`/labs/fusion`](/labs/fusion) — interactive playground
+* [`openrouter:fusion` server tool](/guides/features/server-tools/fusion)
+* [Fusion plugin](/guides/features/plugins/fusion)
+* [Auto Router](/guides/routing/routers/auto-router)
+* [Pareto Router](/guides/routing/routers/pareto-router)
+* [`/labs/fusion`](https://openrouter.ai/fusion/) — interactive playground

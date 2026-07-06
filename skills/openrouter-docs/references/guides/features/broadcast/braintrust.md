@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Braintrust
+
+> Send traces to Braintrust
 
 [Braintrust](https://www.braintrust.dev) is an end-to-end platform for evaluating, monitoring, and improving LLM applications.
 
@@ -10,13 +12,17 @@
 
 In Braintrust, go to your [Account Settings](https://www.braintrust.dev/app/settings) to create an API key, and find your Project ID in your project's settings.
 
-![Braintrust Project ID](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ae8543a6d27222b8f750e4e9510f7205c32f1a999073400ef14fd0a88ba649b1/content/pages/features/broadcast/braintrust-project-id-example.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/braintrust/braintrust-project-id-example.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=3b18fca4cb53dc492c555f2361a169b3" alt="Braintrust Project ID" width="2574" height="742" data-path="assets/guides/features/broadcast/braintrust/braintrust-project-id-example.png" />
+</Frame>
 
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Braintrust
 
@@ -26,19 +32,25 @@ Click the edit icon next to **Braintrust** and enter:
 * **Project Id**: Your Braintrust project ID
 * **Base Url** (optional): Default is `https://api.braintrust.dev`
 
-![Braintrust Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2e424e28cce938fe94f28acee1c34fc83695c7c0085d98bcbc2cc9434f695cd9/content/pages/features/broadcast/broadcast-braintrust-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/braintrust/broadcast-braintrust-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a81d4af386bbcd1e931d2df214c2d332" alt="Braintrust Configuration" width="956" height="971" data-path="assets/guides/features/broadcast/braintrust/broadcast-braintrust-config.png" />
+</Frame>
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Braintrust Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/447023a4f5241b7d572d70b210fadd341824c4ee7a97d6e0a87bd8d45692457d/content/pages/features/broadcast/broadcast-braintrust-configured.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/braintrust/broadcast-braintrust-configured.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=da941548285d8cfcfb045ed0743e7b03" alt="Braintrust Configured" width="1265" height="696" data-path="assets/guides/features/broadcast/braintrust/broadcast-braintrust-configured.png" />
+</Frame>
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Braintrust.
 
-![Braintrust Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/0ef5e7f7e6f1632eac10774e85b4570829e4a4236592049b3b8d0e7dbc745c19/content/pages/features/broadcast/broadcast-braintrust-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/braintrust/broadcast-braintrust-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=bd78dfd89730174c4f32b62e1d0682e3" alt="Braintrust Trace" width="926" height="922" data-path="assets/guides/features/broadcast/braintrust/broadcast-braintrust-trace.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -55,7 +67,7 @@ Braintrust supports custom metadata, tags, and nested span structures for organi
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Generate a summary..." }],
@@ -90,4 +102,4 @@ Braintrust receives detailed metrics for each LLM call:
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

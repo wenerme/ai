@@ -1,0 +1,30 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# PDFParserEngine - TypeScript SDK
+
+> PDFParserEngine method reference
+
+<Warning>
+  The TypeScript SDK and docs are currently in beta.
+  Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
+</Warning>
+
+The engine to use for parsing PDF files.
+
+## Example Usage
+
+```typescript lines theme={null}
+import { PDFParserEngine } from "@openrouter/sdk/models";
+
+let value: PDFParserEngine = "native";
+```
+
+## Values
+
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+```typescript lines theme={null}
+"mistral-ocr" | "pdf-text" | "native" | Unrecognized<string>
+```

@@ -1,12 +1,22 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Error Handling
 
-This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
+> Understanding and handling errors in the Responses API Beta
 
-This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
+<Warning>
+  **Beta API**
+
+  This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
+</Warning>
+
+<Info>
+  **Stateless Only**
+
+  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
+</Info>
 
 The Responses API Beta returns structured error responses that follow a consistent format.
 
@@ -14,7 +24,7 @@ The Responses API Beta returns structured error responses that follow a consiste
 
 All errors follow this structure:
 
-```json
+```json lines theme={null}
 {
   "error": {
     "code": "invalid_prompt",
@@ -35,13 +45,13 @@ The API uses the following error codes:
 | `image_content_policy_violation` | Input or output flagged by a content filter                                                | 400                    |
 | `server_error`                   | Internal server error, authentication failure, provider overloaded/unavailable, or timeout | 500+                   |
 
-These codes are a reduced mapping of the [internal typed error codes](/docs/api/reference/errors#typed-error-codes). Multiple internal error types collapse into each Responses API code — for example, `context_length_exceeded` and `invalid_request` both surface as `invalid_prompt` here.
+These codes are a reduced mapping of the [internal typed error codes](/api/reference/errors#typed-error-codes). Multiple internal error types collapse into each Responses API code — for example, `context_length_exceeded` and `invalid_request` both surface as `invalid_prompt` here.
 
 ### Canonical `error_type` Field
 
 Because the native `error.code` vocabulary is lossy (many distinct errors collapse to `server_error`), failed responses also include a top-level `error_type` field that carries the precise canonical error type:
 
-```json
+```json lines theme={null}
 {
   "id": "resp_abc123",
   "status": "failed",
@@ -50,4 +60,4 @@ Because the native `error.code` vocabulary is lossy (many distinct errors collap
 }
 ```
 
-The `error_type` value matches one of the [typed error codes](/docs/api/reference/errors#typed-error-codes) and is stable across all OpenRouter API formats. Use it to programmatically distinguish error categories when the native `code` is ambiguous.
+The `error_type` value matches one of the [typed error codes](/api/reference/errors#typed-error-codes) and is stable across all OpenRouter API formats. Use it to programmatically distinguish error categories when the native `code` is ambiguous.

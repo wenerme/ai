@@ -20,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12052)
-* [  TypeScript ](#tab-panel-12053)
-* [  Python ](#tab-panel-12054)
-* [  Hono ](#tab-panel-12055)
+* [  JavaScript ](#tab-panel-12175)
+* [  TypeScript ](#tab-panel-12176)
+* [  Python ](#tab-panel-12177)
+* [  Hono ](#tab-panel-12178)
 
 **JavaScript**
 
@@ -137,16 +137,9 @@ export default {
 
 ```py
 import json
-from workers import WorkerEntrypoint
-from pyodide.ffi import to_js as _to_js
-from js import Object, fetch, Response, Headers
+from workers import WorkerEntrypoint, Response, fetch
 
 
-def to_js(obj):
-    return _to_js(obj, dict_converter=Object.fromEntries)
-
-
-# gather_response returns both content-type & response body as a string
 async def gather_response(response):
     headers = response.headers
     content_type = headers["content-type"] or ""
@@ -159,31 +152,26 @@ async def gather_response(response):
 
 class Default(WorkerEntrypoint):
     async def fetch(self, _request):
-    url = "https://jsonplaceholder.typicode.com/todos/1"
+        url = "https://jsonplaceholder.typicode.com/todos/1"
 
 
-    body = {
-    "results": ["default data to send"],
-    "errors": None,
-    "msg": "I sent this to the fetch",
-    }
+        body = {
+            "results": ["default data to send"],
+            "errors": None,
+            "msg": "I sent this to the fetch",
+        }
 
 
-    options = {
-    "body": json.dumps(body),
-    "method": "POST",
-    "headers": {
-      "content-type": "application/json;charset=UTF-8",
-    },
-    }
+        response = await fetch(
+            url,
+            method="POST",
+            body=json.dumps(body),
+            headers={"content-type": "application/json;charset=UTF-8"},
+        )
+        content_type, result = await gather_response(response)
 
 
-    response = await fetch(url, to_js(options))
-    content_type, result = await gather_response(response)
-
-
-    headers = Headers.new({"content-type": content_type}.items())
-    return Response.new(result, headers=headers)
+        return Response(result, headers={"content-type": content_type})
 ```
 
 **TypeScript**
@@ -255,6 +243,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/post-json/#page","headline":"Post JSON · Cloudflare Workers docs","description":"Send a POST request with JSON data. Use to share data with external servers.","url":"https://developers.cloudflare.com/workers/examples/post-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/post-json/#page","headline":"Post JSON · Cloudflare Workers docs","description":"Send a POST request with JSON data. Use to share data with external servers.","url":"https://developers.cloudflare.com/workers/examples/post-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/post-json/","name":"Post JSON"}}]}
 ```

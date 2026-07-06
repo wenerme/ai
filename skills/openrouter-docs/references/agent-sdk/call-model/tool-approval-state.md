@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tool Approval & State Persistence
+
+> Add human-in-the-loop approval gates for sensitive tools and persist conversation state across callModel invocations.
 
 ## Why Approval Gates?
 
@@ -19,7 +21,7 @@ Add `requireApproval` directly on a tool definition. It accepts a boolean or a f
 
 ### Always Require Approval
 
-```typescript
+```typescript lines theme={null}
 import { tool } from '@openrouter/agent';
 import { z } from 'zod';
 
@@ -44,7 +46,7 @@ const sendEmailTool = tool({
 
 Pass a function to require approval only in certain cases:
 
-```typescript
+```typescript lines theme={null}
 const deleteRecordTool = tool({
   name: 'delete_record',
   description: 'Delete a record from the database',
@@ -70,7 +72,7 @@ The function receives the parsed tool arguments and a `TurnContext`, and can ret
 
 Override tool-level settings with a `requireApproval` callback on `callModel` itself:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-4o',
   input: 'Send an email and search for documents',
@@ -102,7 +104,7 @@ When tools with approval gates are called by the model, the SDK follows this flo
 
 The `StateAccessor` interface enables any storage backend:
 
-```typescript
+```typescript lines theme={null}
 import type { StateAccessor, ConversationState } from '@openrouter/agent';
 
 interface StateAccessor<TTools> {
@@ -115,7 +117,7 @@ interface StateAccessor<TTools> {
 
 ### In-Memory Implementation
 
-```typescript
+```typescript lines theme={null}
 const conversations = new Map<string, ConversationState>();
 
 function createStateAccessor(conversationId: string): StateAccessor {
@@ -149,19 +151,19 @@ The state object tracks everything needed to resume a conversation:
 
 ### Status Values
 
-| Status                | Meaning                                                                                                                                                                                                   |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `'in_progress'`       | Conversation is actively processing                                                                                                                                                                       |
-| `'awaiting_approval'` | Paused, waiting for tool call approval/rejection                                                                                                                                                          |
-| `'awaiting_hitl'`     | Paused by a [HITL tool](/docs/sdks/typescript/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call |
-| `'complete'`          | Conversation finished normally                                                                                                                                                                            |
-| `'interrupted'`       | Conversation was interrupted and can be resumed                                                                                                                                                           |
+| Status                | Meaning                                                                                                                                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'in_progress'`       | Conversation is actively processing                                                                                                                                                            |
+| `'awaiting_approval'` | Paused, waiting for tool call approval/rejection                                                                                                                                               |
+| `'awaiting_hitl'`     | Paused by a [HITL tool](/agent-sdk/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call |
+| `'complete'`          | Conversation finished normally                                                                                                                                                                 |
+| `'interrupted'`       | Conversation was interrupted and can be resumed                                                                                                                                                |
 
 ## Complete Example
 
 Here is an end-to-end example showing approval gates with state persistence:
 
-```typescript
+```typescript expandable lines theme={null}
 import { OpenRouter, tool } from '@openrouter/agent';
 import type { ConversationState, StateAccessor } from '@openrouter/agent';
 import { z } from 'zod';
@@ -246,7 +248,7 @@ if (await result.requiresApproval()) {
 
 When the state has `status: 'awaiting_approval'`, pass `approveToolCalls` and/or `rejectToolCalls` to resume:
 
-```typescript
+```typescript lines theme={null}
 // Load existing state
 const loaded = await state.load();
 
@@ -270,7 +272,7 @@ if (loaded?.status === 'awaiting_approval') {
 
 If a conversation was interrupted (`status: 'interrupted'`), calling `callModel` with the same state resumes automatically. The SDK clears the interruption flag and continues where it left off:
 
-```typescript
+```typescript lines theme={null}
 const loaded = await state.load();
 
 if (loaded?.status === 'interrupted') {
@@ -290,7 +292,7 @@ if (loaded?.status === 'interrupted') {
 
 Messages accumulate automatically across `callModel` runs that share the same `StateAccessor`. Each run appends its input and response to the state's message history:
 
-```typescript
+```typescript expandable lines theme={null}
 const state: StateAccessor = createStateAccessor('conv-456');
 
 // Turn 1
@@ -326,7 +328,7 @@ console.log(await r3.getText());
 
 ## Next Steps
 
-* **[Tools](/docs/sdks/typescript/call-model/tools)** - Tool definitions and the `tool()` helper
-* **[Stop Conditions](/docs/sdks/typescript/call-model/stop-conditions)** - Control when tool execution loops terminate
-* **[Dynamic Parameters](/docs/sdks/typescript/call-model/dynamic-parameters)** - Adjust parameters between turns
-* **[Examples](/docs/sdks/typescript/call-model/examples/weather-tool)** - Complete tool implementations
+* **[Tools](/agent-sdk/call-model/tools)** - Tool definitions and the `tool()` helper
+* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Control when tool execution loops terminate
+* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Adjust parameters between turns
+* **[Examples](/agent-sdk/call-model/examples/weather-tool)** - Complete tool implementations

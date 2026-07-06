@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # New Relic
+
+> Send traces to New Relic
 
 [New Relic](https://newrelic.com) is a full-stack observability platform for monitoring applications, infrastructure, and digital experiences.
 
@@ -18,7 +20,9 @@ In New Relic, navigate to your API keys:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure New Relic
 
@@ -36,7 +40,9 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in New Relic's
 distributed tracing view.
 
-![New Relic Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2adbb2978a900052552bdbf3d13e6a1a58f5205f4439ae5a57b0d7d4d2b07939/content/pages/features/broadcast/broadcast-newrelic-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/newrelic/broadcast-newrelic-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=81ce45c7222705e5cd135e2e482c1922" alt="New Relic Trace View" width="3366" height="2064" data-path="assets/guides/features/broadcast/newrelic/broadcast-newrelic-trace.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -54,7 +60,7 @@ New Relic receives traces via the OTLP protocol. Custom metadata from the `trace
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Summarize this report..." }],
@@ -87,4 +93,4 @@ In New Relic's distributed tracing view, you can:
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

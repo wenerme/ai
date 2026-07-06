@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Use Provider-Specific Video Options
+
+> Inspect allowed passthrough parameters and send provider-specific video controls safely
 
 Use this guide when you need to add video model controls that are not part of
 OpenRouter's normalized video schema.
@@ -10,8 +12,9 @@ OpenRouter's normalized video schema.
 By the end, your implementation should inspect a model's allowed passthrough
 parameters and send one through `provider.options`.
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+<Tip>
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
 
 ## Before you start
 
@@ -22,21 +25,25 @@ You need:
   the video job
 * A target video model for the provider-specific options you want to send
 
-If you are not already targeting a specific provider model, read
-[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-so you can select one based on your clip duration, output shape, input type,
-audio, provider controls, and cost requirements.
+<Tip>
+  If you are not already targeting a specific provider model, read
+  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  so you can select one based on your clip duration, output shape, input type,
+  audio, provider controls, and cost requirements.
+</Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/docs/api/api-reference/video-generation/create-videos)
-* [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
-* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
+* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
 
 Provider-specific options can change by model and provider. Always check `allowed_passthrough_parameters` before relying on one.
 
-Submitting `POST /api/v1/videos` starts a real video generation job and may
-spend OpenRouter credits.
+<Warning>
+  Submitting `POST /api/v1/videos` starts a real video generation job and may
+  spend OpenRouter credits.
+</Warning>
 
 ## Step 1: Inspect allowed passthrough parameters
 
@@ -46,7 +53,7 @@ hard-coding unsupported request keys.
 
 Example metadata check:
 
-```js
+```js lines theme={null}
 const response = await fetch("https://openrouter.ai/api/v1/videos/models");
 
 if (!response.ok) {
@@ -68,7 +75,7 @@ console.log(veo.allowed_passthrough_parameters);
 
 Example output:
 
-```json
+```json lines theme={null}
 [
   "personGeneration",
   "aspectRatio",
@@ -86,7 +93,7 @@ values when a parameter has an enum.
 Before submitting a paid job, assert that every passthrough key you plan to send
 is allowed for the selected model:
 
-```js
+```js lines theme={null}
 const providerParameters = {
   negativePrompt: "blurry, low quality, distorted petals",
   enhancePrompt: true,
@@ -107,7 +114,7 @@ console.log("All provider parameters are supported.");
 
 Metadata assertion output:
 
-```text
+```text lines theme={null}
 All provider parameters are supported.
 ```
 
@@ -119,7 +126,7 @@ provider are forwarded. For the Google Vertex video endpoint, use the
 
 Example request shape:
 
-```js
+```js expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
 
 if (!apiKey) {
@@ -160,7 +167,7 @@ console.log(await response.json());
 The submit call returns the job fields immediately. In the QA run, the submitted
 job later completed and downloaded with this final summary:
 
-```json
+```json lines theme={null}
 {
   "id": "2hAwXrT31ZpCI8MsjBEe",
   "status": "completed",
@@ -171,7 +178,7 @@ job later completed and downloaded with this final summary:
 ```
 
 To wait for the playable MP4, use the polling and download helper from
-[Generate and Download a Video from Text](/docs/cookbook/video-generation/text-to-video)
+[Generate and Download a Video from Text](/cookbook/video-generation/text-to-video)
 after submission.
 
 ## Step 3: Keep a fallback without passthrough options
@@ -179,7 +186,7 @@ after submission.
 If your app can route across multiple video models, keep the normalized request
 separate from model-specific options:
 
-```js
+```js expandable lines theme={null}
 const baseRequest = {
   prompt: "A short cinematic product shot of a white orchid blooming",
   duration: 4,
@@ -214,7 +221,7 @@ const requestBody =
 
 Request shape for `google/veo-3.1-lite`:
 
-```json
+```json lines theme={null}
 {
   "prompt": "A short cinematic product shot of a white orchid blooming",
   "duration": 4,

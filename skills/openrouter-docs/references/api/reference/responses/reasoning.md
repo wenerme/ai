@@ -1,10 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Reasoning
 
-This API is in **beta stage** and may have breaking changes.
+> Advanced reasoning capabilities with the Responses API Beta
+
+<Warning>
+  **Beta API**
+
+  This API is in **beta stage** and may have breaking changes.
+</Warning>
 
 The Responses API Beta supports advanced reasoning capabilities, allowing models to show their internal reasoning process with configurable effort levels.
 
@@ -12,63 +18,65 @@ The Responses API Beta supports advanced reasoning capabilities, allowing models
 
 Configure reasoning behavior using the `reasoning` parameter:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: 'What is the meaning of life?',
-    reasoning: {
-      effort: 'high'
+<CodeGroup>
+  ```typescript title="TypeScript" lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    max_output_tokens: 9000,
-  }),
-});
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: 'What is the meaning of life?',
+      reasoning: {
+        effort: 'high'
+      },
+      max_output_tokens: 9000,
+    }),
+  });
 
-const result = await response.json();
-console.log(result);
-```
+  const result = await response.json();
+  console.log(result);
+  ```
 
-```python title="Python"
-import requests
+  ```python title="Python" lines theme={null}
+  import requests
 
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': 'What is the meaning of life?',
-        'reasoning': {
-            'effort': 'high'
-        },
-        'max_output_tokens': 9000,
-    }
-)
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': 'What is the meaning of life?',
+          'reasoning': {
+              'effort': 'high'
+          },
+          'max_output_tokens': 9000,
+      }
+  )
 
-result = response.json()
-print(result)
-```
+  result = response.json()
+  print(result)
+  ```
 
-```bash title="cURL"
-curl -X POST https://openrouter.ai/api/v1/responses \
-  -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/o4-mini",
-    "input": "What is the meaning of life?",
-    "reasoning": {
-      "effort": "high"
-    },
-    "max_output_tokens": 9000
-  }'
-```
+  ```bash title="cURL" lines theme={null}
+  curl -X POST https://openrouter.ai/api/v1/responses \
+    -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openai/o4-mini",
+      "input": "What is the meaning of life?",
+      "reasoning": {
+        "effort": "high"
+      },
+      "max_output_tokens": 9000
+    }'
+  ```
+</CodeGroup>
 
 ## Reasoning Effort Levels
 
@@ -85,280 +93,286 @@ The `effort` parameter controls how much computational effort the model puts int
 
 For complex mathematical or logical problems:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: [
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'Was 1995 30 years ago? Please show your reasoning.',
-          },
-        ],
-      },
-    ],
-    reasoning: {
-      effort: 'high'
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    max_output_tokens: 9000,
-  }),
-});
-
-const result = await response.json();
-console.log(result);
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': [
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: [
+        {
+          type: 'message',
+          role: 'user',
+          content: [
             {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'Was 1995 30 years ago? Please show your reasoning.',
-                    },
-                ],
+              type: 'input_text',
+              text: 'Was 1995 30 years ago? Please show your reasoning.',
             },
-        ],
-        'reasoning': {
-            'effort': 'high'
+          ],
         },
-        'max_output_tokens': 9000,
-    }
-)
+      ],
+      reasoning: {
+        effort: 'high'
+      },
+      max_output_tokens: 9000,
+    }),
+  });
 
-result = response.json()
-print(result)
-```
+  const result = await response.json();
+  console.log(result);
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  import requests
+
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': [
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'Was 1995 30 years ago? Please show your reasoning.',
+                      },
+                  ],
+              },
+          ],
+          'reasoning': {
+              'effort': 'high'
+          },
+          'max_output_tokens': 9000,
+      }
+  )
+
+  result = response.json()
+  print(result)
+  ```
+</CodeGroup>
 
 ## Reasoning in Conversation Context
 
 Include reasoning in multi-turn conversations:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: [
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'What is your favorite color?',
-          },
-        ],
-      },
-      {
-        type: 'message',
-        role: 'assistant',
-        id: 'msg_abc123',
-        status: 'completed',
-        content: [
-          {
-            type: 'output_text',
-            text: "I don't have a favorite color.",
-            annotations: []
-          }
-        ]
-      },
-      {
-        type: 'message',
-        role: 'user',
-        content: [
-          {
-            type: 'input_text',
-            text: 'How many Earths can fit on Mars?',
-          },
-        ],
-      },
-    ],
-    reasoning: {
-      effort: 'high'
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    max_output_tokens: 9000,
-  }),
-});
-
-const result = await response.json();
-console.log(result);
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': [
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: [
+        {
+          type: 'message',
+          role: 'user',
+          content: [
             {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'What is your favorite color?',
-                    },
-                ],
+              type: 'input_text',
+              text: 'What is your favorite color?',
             },
-            {
-                'type': 'message',
-                'role': 'assistant',
-                'id': 'msg_abc123',
-                'status': 'completed',
-                'content': [
-                    {
-                        'type': 'output_text',
-                        'text': "I don't have a favorite color.",
-                        'annotations': []
-                    }
-                ]
-            },
-            {
-                'type': 'message',
-                'role': 'user',
-                'content': [
-                    {
-                        'type': 'input_text',
-                        'text': 'How many Earths can fit on Mars?',
-                    },
-                ],
-            },
-        ],
-        'reasoning': {
-            'effort': 'high'
+          ],
         },
-        'max_output_tokens': 9000,
-    }
-)
+        {
+          type: 'message',
+          role: 'assistant',
+          id: 'msg_abc123',
+          status: 'completed',
+          content: [
+            {
+              type: 'output_text',
+              text: "I don't have a favorite color.",
+              annotations: []
+            }
+          ]
+        },
+        {
+          type: 'message',
+          role: 'user',
+          content: [
+            {
+              type: 'input_text',
+              text: 'How many Earths can fit on Mars?',
+            },
+          ],
+        },
+      ],
+      reasoning: {
+        effort: 'high'
+      },
+      max_output_tokens: 9000,
+    }),
+  });
 
-result = response.json()
-print(result)
-```
+  const result = await response.json();
+  console.log(result);
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  import requests
+
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': [
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'What is your favorite color?',
+                      },
+                  ],
+              },
+              {
+                  'type': 'message',
+                  'role': 'assistant',
+                  'id': 'msg_abc123',
+                  'status': 'completed',
+                  'content': [
+                      {
+                          'type': 'output_text',
+                          'text': "I don't have a favorite color.",
+                          'annotations': []
+                      }
+                  ]
+              },
+              {
+                  'type': 'message',
+                  'role': 'user',
+                  'content': [
+                      {
+                          'type': 'input_text',
+                          'text': 'How many Earths can fit on Mars?',
+                      },
+                  ],
+              },
+          ],
+          'reasoning': {
+              'effort': 'high'
+          },
+          'max_output_tokens': 9000,
+      }
+  )
+
+  result = response.json()
+  print(result)
+  ```
+</CodeGroup>
 
 ## Streaming Reasoning
 
 Enable streaming to see reasoning develop in real-time:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'openai/o4-mini',
-    input: 'Solve this step by step: If a train travels 60 mph for 2.5 hours, how far does it go?',
-    reasoning: {
-      effort: 'medium'
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+      'Content-Type': 'application/json',
     },
-    stream: true,
-    max_output_tokens: 9000,
-  }),
-});
+    body: JSON.stringify({
+      model: 'openai/o4-mini',
+      input: 'Solve this step by step: If a train travels 60 mph for 2.5 hours, how far does it go?',
+      reasoning: {
+        effort: 'medium'
+      },
+      stream: true,
+      max_output_tokens: 9000,
+    }),
+  });
 
-const reader = response.body?.getReader();
-const decoder = new TextDecoder();
+  const reader = response.body?.getReader();
+  const decoder = new TextDecoder();
 
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) break;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
 
-  const chunk = decoder.decode(value);
-  const lines = chunk.split('\n');
+    const chunk = decoder.decode(value);
+    const lines = chunk.split('\n');
 
-  for (const line of lines) {
-    if (line.startsWith('data: ')) {
-      const data = line.slice(6);
-      if (data === '[DONE]') return;
+    for (const line of lines) {
+      if (line.startsWith('data: ')) {
+        const data = line.slice(6);
+        if (data === '[DONE]') return;
 
-      try {
-        const parsed = JSON.parse(data);
-        if (parsed.type === 'response.reasoning.delta') {
-          console.log('Reasoning:', parsed.delta);
+        try {
+          const parsed = JSON.parse(data);
+          if (parsed.type === 'response.reasoning.delta') {
+            console.log('Reasoning:', parsed.delta);
+          }
+        } catch (e) {
+          // Skip invalid JSON
         }
-      } catch (e) {
-        // Skip invalid JSON
       }
     }
   }
-}
-```
+  ```
 
-```python title="Python"
-import requests
-import json
+  ```python title="Python" expandable lines theme={null}
+  import requests
+  import json
 
-response = requests.post(
-    'https://openrouter.ai/api/v1/responses',
-    headers={
-        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-        'Content-Type': 'application/json',
-    },
-    json={
-        'model': 'openai/o4-mini',
-        'input': 'Solve this step by step: If a train travels 60 mph for 2.5 hours, how far does it go?',
-        'reasoning': {
-            'effort': 'medium'
-        },
-        'stream': True,
-        'max_output_tokens': 9000,
-    },
-    stream=True
-)
+  response = requests.post(
+      'https://openrouter.ai/api/v1/responses',
+      headers={
+          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+          'Content-Type': 'application/json',
+      },
+      json={
+          'model': 'openai/o4-mini',
+          'input': 'Solve this step by step: If a train travels 60 mph for 2.5 hours, how far does it go?',
+          'reasoning': {
+              'effort': 'medium'
+          },
+          'stream': True,
+          'max_output_tokens': 9000,
+      },
+      stream=True
+  )
 
-for line in response.iter_lines():
-    if line:
-        line_str = line.decode('utf-8')
-        if line_str.startswith('data: '):
-            data = line_str[6:]
-            if data == '[DONE]':
-                break
-            try:
-                parsed = json.loads(data)
-                if parsed.get('type') == 'response.reasoning.delta':
-                    print(f"Reasoning: {parsed.get('delta', '')}")
-            except json.JSONDecodeError:
-                continue
-```
+  for line in response.iter_lines():
+      if line:
+          line_str = line.decode('utf-8')
+          if line_str.startswith('data: '):
+              data = line_str[6:]
+              if data == '[DONE]':
+                  break
+              try:
+                  parsed = json.loads(data)
+                  if parsed.get('type') == 'response.reasoning.delta':
+                      print(f"Reasoning: {parsed.get('delta', '')}")
+              except json.JSONDecodeError:
+                  continue
+  ```
+</CodeGroup>
 
 ## Response with Reasoning
 
 When reasoning is enabled, the response includes reasoning information:
 
-```json
+```json expandable lines theme={null}
 {
   "id": "resp_1234567890",
   "object": "response",

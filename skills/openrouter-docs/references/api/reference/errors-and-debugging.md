@@ -1,12 +1,88 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Errors and Debugging
 
+> API Errors and Debugging
+
+export const HTTPStatus = {
+  S100_Continue: 100,
+  S101_Switching_Protocols: 101,
+  S102_Processing: 102,
+  S200_OK: 200,
+  S201_Created: 201,
+  S202_Accepted: 202,
+  S203_Non_Authoritative_Information: 203,
+  S204_No_Content: 204,
+  S205_Reset_Content: 205,
+  S206_Partial_Content: 206,
+  S207_Multi_Status: 207,
+  S208_Already_Reported: 208,
+  S300_Multiple_Choices: 300,
+  S301_Moved_Permanently: 301,
+  S302_Found: 302,
+  S303_See_Other: 303,
+  S304_Not_Modified: 304,
+  S305_Use_Proxy: 305,
+  S307_Temporary_Redirect: 307,
+  S308_Permanent_Redirect: 308,
+  S400_Bad_Request: 400,
+  S401_Unauthorized: 401,
+  S402_Payment_Required: 402,
+  S403_Forbidden: 403,
+  S404_Not_Found: 404,
+  S405_Method_Not_Allowed: 405,
+  S406_Not_Acceptable: 406,
+  S407_Proxy_Authentication_Required: 407,
+  S408_Request_Timeout: 408,
+  S409_Conflict: 409,
+  S410_Gone: 410,
+  S411_Length_Required: 411,
+  S412_Precondition_Failed: 412,
+  S413_Payload_Too_Large: 413,
+  S414_URI_Too_Long: 414,
+  S415_Unsupported_Media_Type: 415,
+  S416_Range_Not_Satisfiable: 416,
+  S417_Expectation_Failed: 417,
+  S418_Im_a_teapot: 418,
+  S421_Misdirected_Request: 421,
+  S422_Unprocessable_Entity: 422,
+  S423_Locked: 423,
+  S424_Failed_Dependency: 424,
+  S425_Too_Early: 425,
+  S426_Upgrade_Required: 426,
+  S428_Precondition_Required: 428,
+  S429_Too_Many_Requests: 429,
+  S431_Request_Header_Fields_Too_Large: 431,
+  S451_Unavailable_For_Legal_Reasons: 451,
+  S498_Invalid_Token: 498,
+  S499_Client_Closed_Request: 499,
+  S500_Internal_Server_Error: 500,
+  S501_Not_Implemented: 501,
+  S502_Bad_Gateway: 502,
+  S503_Service_Unavailable: 503,
+  S504_Gateway_Timeout: 504,
+  S505_HTTP_Version_Not_Supported: 505,
+  S506_Variant_Also_Negotiates: 506,
+  S507_Insufficient_Storage: 507,
+  S508_Loop_Detected: 508,
+  S510_Not_Extended: 510,
+  S511_Network_Authentication_Required: 511,
+  S520_Web_Server_Returned_Unknown_Error: 520,
+  S521_Web_Server_Is_Down: 521,
+  S522_Connection_Timed_Out: 522,
+  S523_Origin_Unreachable: 523,
+  S524_A_Timeout_Occurred: 524,
+  S525_SSL_Handshake_Failed: 525,
+  S526_Invalid_SSL_Certificate: 526,
+  S529_Overloaded: 529,
+  S530_Origin_DNS_Error: 530
+};
+
 For errors, OpenRouter returns a JSON response with the following shape:
 
-```typescript
+```typescript lines theme={null}
 type ErrorResponse = {
   error: {
     code: number;
@@ -25,7 +101,7 @@ Otherwise, the returned HTTP response status will be <code>{HTTPStatus.S200_OK}<
 
 Example code for printing errors in JavaScript:
 
-```typescript
+```typescript lines theme={null}
 const request = await fetch('https://openrouter.ai/...');
 console.log(request.status); // Will be an error code unless the model started processing your request
 const response = await request.json();
@@ -48,14 +124,14 @@ console.error(response.error?.message);
 
 On <code>{HTTPStatus.S429_Too_Many_Requests}</code> and <code>{HTTPStatus.S503_Service_Unavailable}</code> responses, OpenRouter may include a standard HTTP `Retry-After` response header indicating how many seconds to wait before retrying.
 
-```http
+```http lines theme={null}
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
 ```
 
 The OpenAI SDK, Anthropic SDK, Vercel AI SDK, and OpenRouter SDK already respect this header for backoff. If you're using `fetch` directly, honor it before retrying:
 
-```typescript
+```typescript lines theme={null}
 const res = await fetch('https://openrouter.ai/api/v1/chat/completions', { ... });
 if (res.status === 429 || res.status === 503) {
   const retryAfter = Number(res.headers.get('Retry-After'));
@@ -70,7 +146,7 @@ if (res.status === 429 || res.status === 503) {
 
 If your input was flagged, the `error.metadata` will contain information about the issue. The shape of the metadata is as follows:
 
-```typescript
+```typescript lines theme={null}
 type ModerationErrorMetadata = {
   reasons: string[]; // Why your input was flagged
   flagged_input: string; // The text segment that was flagged, limited to 100 characters. If the flagged input is longer than 100 characters, it will be truncated in the middle and replaced with ...
@@ -81,9 +157,9 @@ type ModerationErrorMetadata = {
 
 ## Guardrail Errors
 
-On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason:
+On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason:
 
-```json
+```json lines theme={null}
 {
   "error": {
     "code": 403,
@@ -95,9 +171,9 @@ On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a reque
 }
 ```
 
-When you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
+When you opt in to [router metadata](/guides/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
 
-```json
+```json expandable lines theme={null}
 {
   "error": {
     "code": 403,
@@ -138,7 +214,7 @@ When you opt in to [router metadata](/docs/features/router-metadata) via the `X-
 }
 ```
 
-The `openrouter_metadata` object follows the same shape as on successful responses — see [Pipeline Stages](/docs/features/router-metadata#pipeline-stages) for the full stage type and field reference.
+The `openrouter_metadata` object follows the same shape as on successful responses — see [Pipeline Stages](/guides/features/router-metadata#pipeline-stages) for the full stage type and field reference.
 
 ## Provider Errors
 
@@ -153,7 +229,7 @@ rely on across all of them.
 For Chat Completions, a provider error that interrupts generation carries
 `error_type` inside `error.metadata`:
 
-```json
+```json lines theme={null}
 {
   "error": {
     "code": 429,
@@ -182,7 +258,7 @@ provider was selected, fallback attempts, etc.) is carried in the
 `openrouter_metadata` object when the request sets `X-OpenRouter-Metadata`
 — it follows the same shape as on successful responses (routing-summary
 fields only; see
-[Pipeline Stages](/docs/features/router-metadata#pipeline-stages)).
+[Pipeline Stages](/features/router-metadata#pipeline-stages)).
 
 ## When No Content is Generated
 
@@ -206,7 +282,7 @@ When using streaming mode (`stream: true`), errors are handled differently depen
 Errors that occur before any tokens are sent follow the standard error format above, with appropriate HTTP status codes. At this stage the HTTP response hasn't been committed yet, so OpenRouter can:
 
 * Return a proper HTTP error status (4xx/5xx)
-* Silently retry with a different provider endpoint if [fallback routing](/docs/guides/features/provider-routing) is enabled
+* Silently retry with a different provider endpoint if [fallback routing](/guides/features/provider-routing) is enabled
 * Apply rate-limit or auth checks before any work begins
 
 You'll see pre-stream errors for issues like invalid API keys, malformed requests, or when every available provider endpoint is exhausted before streaming starts.
@@ -223,11 +299,13 @@ Common causes of mid-stream errors:
 * **Output content filter** — a content moderation system flags generated text after some of it was already streamed
 * **Provider overload** — the upstream returns a rate-limit or capacity error after beginning to stream
 
-If an error occurs before any tokens are written — even on a streaming request — OpenRouter can still retry with a backup provider transparently. Mid-stream errors only happen when partial content has already been committed to your stream, making failover impossible.
+<Note>
+  If an error occurs before any tokens are written — even on a streaming request — OpenRouter can still retry with a backup provider transparently. Mid-stream errors only happen when partial content has already been committed to your stream, making failover impossible.
+</Note>
 
 Mid-stream errors are sent as Server-Sent Events (SSE) with a unified structure that includes both the error details and a completion choice:
 
-```typescript
+```typescript expandable lines theme={null}
 type MidStreamError = {
   id: string;
   object: 'chat.completion.chunk';
@@ -253,7 +331,7 @@ type MidStreamError = {
 
 Example SSE data:
 
-```text
+```text lines theme={null}
 data: {"id":"gen-abc123","object":"chat.completion.chunk","created":1234567890,"model":"openai/gpt-4o","provider":"OpenAI","error":{"code":429,"message":"Rate limit exceeded","metadata":{"error_type":"rate_limit_exceeded"}},"choices":[{"index":0,"delta":{"content":""},"finish_reason":"error"}]}
 ```
 
@@ -297,11 +375,11 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 
 ### Authentication and Authorization
 
-| `error_type`        | HTTP Status                        | Description                                                                                                                       |
-| ------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `authentication`    | {HTTPStatus.S401_Unauthorized}     | The API key is missing, invalid, or revoked.                                                                                      |
-| `permission_denied` | {HTTPStatus.S403_Forbidden}        | The key is valid but lacks the required permission or the request was blocked by a [guardrail](/docs/guides/features/guardrails). |
-| `payment_required`  | {HTTPStatus.S402_Payment_Required} | The account or API key has insufficient credits. [Add credits](https://openrouter.ai/credits) and retry.                          |
+| `error_type`        | HTTP Status                        | Description                                                                                                                  |
+| ------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `authentication`    | {HTTPStatus.S401_Unauthorized}     | The API key is missing, invalid, or revoked.                                                                                 |
+| `permission_denied` | {HTTPStatus.S403_Forbidden}        | The key is valid but lacks the required permission or the request was blocked by a [guardrail](/guides/features/guardrails). |
+| `payment_required`  | {HTTPStatus.S402_Payment_Required} | The account or API key has insufficient credits. [Add credits](https://openrouter.ai/credits) and retry.                     |
 
 ### Rate Limiting and Availability
 
@@ -358,7 +436,7 @@ Mid-stream errors appear as a `chat.completion.chunk` with a top-level `error` o
 
 For non-streaming requests where a provider error occurs, the error is embedded in the final response alongside any partial content:
 
-```json
+```json lines theme={null}
 {
   "choices": [{
     "message": { "role": "assistant", "content": "partial output..." },
@@ -386,7 +464,7 @@ The Responses API maps internal error types to the OpenAI Responses error code s
 
 Both the streaming terminal event and the non-streaming JSON body carry the canonical `error_type` at the top level of the response object. For example, an authentication failure collapses to the native `server_error` code but keeps `error_type: "authentication"`:
 
-```json
+```json lines theme={null}
 {
   "id": "resp_abc123",
   "status": "failed",
@@ -398,7 +476,7 @@ Both the streaming terminal event and the non-streaming JSON body carry the cano
 Streaming errors surface as one of three SSE event types, each wrapping the same response object:
 
 1. **`response.failed`** — terminal event when the response could not complete:
-   ```json
+   ```json lines theme={null}
    {
      "type": "response.failed",
      "response": {
@@ -411,7 +489,7 @@ Streaming errors surface as one of three SSE event types, each wrapping the same
    ```
 
 2. **`response.error`** — error during response generation:
-   ```json
+   ```json lines theme={null}
    {
      "type": "response.error",
      "error": { "code": "rate_limit_exceeded", "message": "Rate limit exceeded" }
@@ -419,7 +497,7 @@ Streaming errors surface as one of three SSE event types, each wrapping the same
    ```
 
 3. **`error`** — plain error event (matches upstream OpenAI behavior):
-   ```json
+   ```json lines theme={null}
    {
      "type": "error",
      "error": { "code": "invalid_api_key", "message": "Invalid API key provided" }
@@ -456,7 +534,7 @@ Because the native `error.type` is lossy (many internal types collapse to `api_e
 
 Non-streaming error envelope:
 
-```json
+```json lines theme={null}
 {
   "type": "error",
   "error": {
@@ -469,7 +547,7 @@ Non-streaming error envelope:
 
 Mid-stream errors are emitted as an SSE `error` event with the same shape:
 
-```json
+```json lines theme={null}
 {
   "type": "error",
   "error": {
@@ -488,7 +566,7 @@ OpenRouter provides a `debug` option that allows you to inspect the exact reques
 
 The debug option is an object with the following shape:
 
-```typescript
+```typescript lines theme={null}
 type DebugOptions = {
   echo_upstream_body?: boolean; // If true, returns the transformed request body sent to the provider
 };
@@ -500,137 +578,141 @@ To enable debug output, include the `debug` parameter in your request:
 
 #### Chat Completions
 
-```typescript title="TypeScript"
-fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'anthropic/claude-haiku-4.5',
-    stream: true, // Debug only works with streaming
-    messages: [
-      { role: 'system', content: 'You are a helpful assistant.' },
-      { role: 'user', content: 'Hello!' },
-    ],
-    debug: {
-      echo_upstream_body: true,
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
     },
-  }),
-});
+    body: JSON.stringify({
+      model: 'anthropic/claude-haiku-4.5',
+      stream: true, // Debug only works with streaming
+      messages: [
+        { role: 'system', content: 'You are a helpful assistant.' },
+        { role: 'user', content: 'Hello!' },
+      ],
+      debug: {
+        echo_upstream_body: true,
+      },
+    }),
+  });
 
-const text = await response.text();
+  const text = await response.text();
 
-for (const line of text.split('\n')) {
-  if (!line.startsWith('data: ')) continue;
+  for (const line of text.split('\n')) {
+    if (!line.startsWith('data: ')) continue;
 
-  const data = line.slice(6);
-  if (data === '[DONE]') break;
+    const data = line.slice(6);
+    if (data === '[DONE]') break;
 
-  const parsed = JSON.parse(data);
+    const parsed = JSON.parse(data);
 
-  if (parsed.debug?.echo_upstream_body) {
-    console.log('\nDebug:', JSON.stringify(parsed.debug.echo_upstream_body, null, 2));
-  }
-
-  process.stdout.write(parsed.choices?.[0]?.delta?.content ?? '');
-}
-```
-
-```python title="Python"
-import requests
-import json
-
-response = requests.post(
-  url="https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": "Bearer <OPENROUTER_API_KEY>",
-    "Content-Type": "application/json",
-  },
-  data=json.dumps({
-    "model": "anthropic/claude-haiku-4.5",
-    "stream": True,
-    "messages": [
-      { "role": "system", "content": "You are a helpful assistant." },
-      { "role": "user", "content": "Hello!" }
-    ],
-    "debug": {
-      "echo_upstream_body": True
+    if (parsed.debug?.echo_upstream_body) {
+      console.log('\nDebug:', JSON.stringify(parsed.debug.echo_upstream_body, null, 2));
     }
-  }),
-  stream=True
-)
 
-for line in response.iter_lines():
-  if line:
-    text = line.decode('utf-8')
-    if 'echo_upstream_body' in text:
-      print(text)
-```
+    process.stdout.write(parsed.choices?.[0]?.delta?.content ?? '');
+  }
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  import requests
+  import json
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "anthropic/claude-haiku-4.5",
+      "stream": True,
+      "messages": [
+        { "role": "system", "content": "You are a helpful assistant." },
+        { "role": "user", "content": "Hello!" }
+      ],
+      "debug": {
+        "echo_upstream_body": True
+      }
+    }),
+    stream=True
+  )
+
+  for line in response.iter_lines():
+    if line:
+      text = line.decode('utf-8')
+      if 'echo_upstream_body' in text:
+        print(text)
+  ```
+</CodeGroup>
 
 #### Responses API
 
-```typescript title="TypeScript"
-fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'anthropic/claude-haiku-4.5',
-    stream: true,
-    input: 'Hello!',
-    debug: {
-      echo_upstream_body: true,
+<CodeGroup>
+  ```typescript title="TypeScript" expandable lines theme={null}
+  fetch('https://openrouter.ai/api/v1/responses', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
     },
-  }),
-});
+    body: JSON.stringify({
+      model: 'anthropic/claude-haiku-4.5',
+      stream: true,
+      input: 'Hello!',
+      debug: {
+        echo_upstream_body: true,
+      },
+    }),
+  });
 
-const text = await response.text();
+  const text = await response.text();
 
-for (const line of text.split('\n')) {
-  if (!line.startsWith('data: ')) continue;
+  for (const line of text.split('\n')) {
+    if (!line.startsWith('data: ')) continue;
 
-  const data = line.slice(6);
-  if (data === '[DONE]') break;
+    const data = line.slice(6);
+    if (data === '[DONE]') break;
 
-  const parsed = JSON.parse(data);
+    const parsed = JSON.parse(data);
 
-  if (parsed.type === 'response.debug') {
-    console.log('\nDebug:', JSON.stringify(parsed.debug, null, 2));
-  }
-}
-```
-
-```python title="Python"
-import requests
-import json
-
-response = requests.post(
-  url="https://openrouter.ai/api/v1/responses",
-  headers={
-    "Authorization": "Bearer <OPENROUTER_API_KEY>",
-    "Content-Type": "application/json",
-  },
-  data=json.dumps({
-    "model": "anthropic/claude-haiku-4.5",
-    "stream": True,
-    "input": "Hello!",
-    "debug": {
-      "echo_upstream_body": True
+    if (parsed.type === 'response.debug') {
+      console.log('\nDebug:', JSON.stringify(parsed.debug, null, 2));
     }
-  }),
-  stream=True
-)
+  }
+  ```
 
-for line in response.iter_lines():
-  if line:
-    text = line.decode('utf-8')
-    if 'response.debug' in text:
-      print(text)
-```
+  ```python title="Python" expandable lines theme={null}
+  import requests
+  import json
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/responses",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "anthropic/claude-haiku-4.5",
+      "stream": True,
+      "input": "Hello!",
+      "debug": {
+        "echo_upstream_body": True
+      }
+    }),
+    stream=True
+  )
+
+  for line in response.iter_lines():
+    if line:
+      text = line.decode('utf-8')
+      if 'response.debug' in text:
+        print(text)
+  ```
+</CodeGroup>
 
 ### Debug Response Format
 
@@ -638,7 +720,7 @@ for line in response.iter_lines():
 
 When `debug.echo_upstream_body` is set to `true`, OpenRouter sends a debug chunk as the **first chunk** in the streaming response. This chunk has an empty `choices` array and includes a `debug` field with the transformed request body:
 
-```json
+```json expandable lines theme={null}
 {
   "id": "gen-xxxxx",
   "provider": "Anthropic",
@@ -667,7 +749,7 @@ When `debug.echo_upstream_body` is set to `true`, OpenRouter sends a debug chunk
 
 On the Responses API, debug data arrives as a `response.debug` SSE event:
 
-```json
+```json lines theme={null}
 {
   "type": "response.debug",
   "debug": {
@@ -687,9 +769,17 @@ On the Responses API, debug data arrives as a `response.debug` SSE event:
 
 ### Important Notes
 
-The debug option **only works with streaming mode** (`stream: true`). Non-streaming requests will ignore the debug parameter.
+<Warning>
+  **Streaming Only**
 
-The debug flag should **not be used in production environments**. It is intended for development and debugging purposes only, as it may potentially return sensitive information included in the request that was not intended to be visible elsewhere.
+  The debug option **only works with streaming mode** (`stream: true`). Non-streaming requests will ignore the debug parameter.
+</Warning>
+
+<Warning>
+  **Not for Production**
+
+  The debug flag should **not be used in production environments**. It is intended for development and debugging purposes only, as it may potentially return sensitive information included in the request that was not intended to be visible elsewhere.
+</Warning>
 
 ### Use Cases
 

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Call Model (Typescript)
+
+> A unified API for calling any LLM with automatic tool execution and multiple consumption patterns
 
 ## Why callModel?
 
@@ -21,7 +23,7 @@
 
 ## Quick Start
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -45,7 +47,7 @@ the response:
 
 ### Text Methods
 
-```typescript
+```typescript lines theme={null}
 // Get just the text content
 const text = await result.getText();
 
@@ -56,7 +58,7 @@ console.log(response.usage); // { inputTokens, outputTokens, cachedTokens }
 
 ### Streaming Methods
 
-```typescript
+```typescript lines theme={null}
 // Stream text deltas
 for await (const delta of result.getTextStream()) {
   process.stdout.write(delta);
@@ -80,7 +82,7 @@ for await (const event of result.getFullResponsesStream()) {
 
 ### Tool Methods
 
-```typescript
+```typescript lines theme={null}
 // Get all tool calls from the response
 const toolCalls = await result.getToolCalls();
 
@@ -103,7 +105,7 @@ for await (const event of result.getToolStream()) {
 
 callModel accepts multiple input formats:
 
-```typescript
+```typescript lines theme={null}
 // Simple string
 const result1 = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -130,28 +132,28 @@ const result3 = openrouter.callModel({
 
 Explore the guides to learn more about specific features:
 
-* **[Working with Items](/docs/sdks/typescript/call-model/items)** - Understand
+* **[Working with Items](/agent-sdk/call-model/items)** - Understand
   the items-based streaming paradigm
-* **[Text Generation](/docs/sdks/typescript/call-model/text-generation)** -
+* **[Text Generation](/agent-sdk/call-model/text-generation)** -
   Input formats, model selection, and response handling
-* **[Streaming](/docs/sdks/typescript/call-model/streaming)** - All streaming
+* **[Streaming](/agent-sdk/call-model/streaming)** - All streaming
   methods and patterns
-* **[Tools](/docs/sdks/typescript/call-model/tools)** - Creating typed tools
+* **[Tools](/agent-sdk/call-model/tools)** - Creating typed tools
   with Zod schemas and multi-turn orchestration
-* **[nextTurnParams](/docs/sdks/typescript/call-model/next-turn-params)** -
+* **[nextTurnParams](/agent-sdk/call-model/next-turn-params)** -
   Tool-driven context injection for skills and plugins
-* **[Message Formats](/docs/sdks/typescript/call-model/message-formats)** -
+* **[Message Formats](/agent-sdk/call-model/message-formats)** -
   Converting to/from OpenAI and Claude formats
-* **[Dynamic Parameters](/docs/sdks/typescript/call-model/dynamic-parameters)**
+* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)**
   \- Async functions for adaptive behavior
-* **[Stop Conditions](/docs/sdks/typescript/call-model/stop-conditions)** -
+* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** -
   Intelligent execution control
-* **[API Reference](/docs/sdks/typescript/call-model/api-reference)** - Complete
+* **[API Reference](/agent-sdk/call-model/api-reference)** - Complete
   type definitions and method signatures
 
 ### Example Tools
 
 Ready-to-use tool implementations:
 
-* **[Weather Tool](/docs/sdks/typescript/call-model/examples/weather-tool)** - Basic API integration
-* **[Skills Loader](/docs/sdks/typescript/call-model/examples/skills-loader)** - Claude Code skills pattern
+* **[Weather Tool](/agent-sdk/call-model/examples/weather-tool)** - Basic API integration
+* **[Skills Loader](/agent-sdk/call-model/examples/skills-loader)** - Claude Code skills pattern

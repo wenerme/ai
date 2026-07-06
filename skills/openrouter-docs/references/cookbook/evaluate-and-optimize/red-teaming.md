@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Red Teaming
+
+> Policy for red teaming and adversarial testing on OpenRouter
 
 Red teaming (testing AI applications and/or models for prompt injection, jailbreaking, or other adversarial scenarios) is a valuable part of AI safety research, but may also violate model terms-of-service.
 
@@ -24,7 +26,7 @@ If you have a legitimate use case for adversarial testing, we encourage you to r
 
 ## Compatibility with Zero Data Retention
 
-Note that certain types of safety classifiers are run online (while the prompt is in-flight and in-memory). Prompts may therefore be flagged by classifiers even with full ZDR configured. These classifiers operate independently of data retention policies and are fully compatible with [Zero Data Retention (ZDR)](/docs/guides/features/zdr).
+Note that certain types of safety classifiers are run online (while the prompt is in-flight and in-memory). Prompts may therefore be flagged by classifiers even with full ZDR configured. These classifiers operate independently of data retention policies and are fully compatible with [Zero Data Retention (ZDR)](/guides/features/zdr).
 
 ## Request Approval
 
@@ -35,4 +37,6 @@ To request red teaming approval, email [safety@openrouter.ai](mailto:safety@open
 * The types of adversarial techniques you plan to use
 * Your expected timeline
 
-Approval generally takes **5 business days**. Approval is not guaranteed and is granted at OpenRouter's discretion based on the details of your use case.
+<Note>
+  Approval generally takes **5 business days**. Approval is not guaranteed and is granted at OpenRouter's discretion based on the details of your use case.
+</Note>

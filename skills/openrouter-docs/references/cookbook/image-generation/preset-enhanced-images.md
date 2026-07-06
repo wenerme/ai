@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Enhance Image Generation with Presets
+
+> Pair a text model with the image generation server tool so every request gets a refined prompt automatically
 
 **Goal:** Create a preset that wraps a text model around the `openrouter:image_generation` server tool. The text model rewrites vague user requests into detailed image prompts, then calls the tool. You get better images from a single API call.
 
@@ -17,11 +19,13 @@ You need:
 
 Use these references for exact schemas:
 
-* [Presets feature](/docs/guides/features/presets)
-* [Image generation server tool](/docs/guides/features/server-tools/image-generation)
+* [Presets feature](/guides/features/presets)
+* [Image generation server tool](/guides/features/server-tools/image-generation)
 * [Available image models](https://openrouter.ai/models?output_modalities=image)
 
-Each request through this preset makes two model calls: one to the text model (for prompt refinement) and one to the image model (for generation). The text model call is cheap; the image generation cost depends on the image model you configure. Check pricing on the [image model's page](https://openrouter.ai/models?output_modalities=image) before routing production traffic.
+<Warning>
+  Each request through this preset makes two model calls: one to the text model (for prompt refinement) and one to the image model (for generation). The text model call is cheap; the image generation cost depends on the image model you configure. Check pricing on the [image model's page](https://openrouter.ai/models?output_modalities=image) before routing production traffic.
+</Warning>
 
 ## How the pattern works
 
@@ -29,9 +33,9 @@ A standard image generation call looks like this: your user says "make a waterme
 
 The difference is visible. Here's the same concept, with and without prompt enhancement:
 
-| Bare prompt: "make a watermelon hippo"                                                                                  | Preset-enhanced prompt                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Bare prompt result: generic watermelon-textured hippo on white background](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/e710fd0768c68c393e09654474dd011f771e754d45b1265e700cf4be75524e3a/content/assets/cookbook/bare-prompt-watermelon-hippo.png) | ![Enhanced prompt result: photorealistic watermelon hippo sculpture standing in a river at golden hour](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c053f19a62dd1b99614031907a10efbcb2a11135c2b7bf32f48c0a861c4d1d51/content/assets/cookbook/enhanced-prompt-watermelon-hippo.png) |
+| Bare prompt: "make a watermelon hippo"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Preset-enhanced prompt                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://mintcdn.com/openrouter-d02e98a0/vKv_Fe97IEm3a1mW/assets/cookbook/image-generation/bare-prompt-watermelon-hippo.png?fit=max&auto=format&n=vKv_Fe97IEm3a1mW&q=85&s=40d1ce6026a3f566258a0c03215cd9f0" alt="Bare prompt result: generic watermelon-textured hippo on white background" width="1024" height="1024" data-path="assets/cookbook/image-generation/bare-prompt-watermelon-hippo.png" /> | <img src="https://mintcdn.com/openrouter-d02e98a0/vKv_Fe97IEm3a1mW/assets/cookbook/image-generation/enhanced-prompt-watermelon-hippo.png?fit=max&auto=format&n=vKv_Fe97IEm3a1mW&q=85&s=d20f2157369a4820a9b64d7a1cb67589" alt="Enhanced prompt result: photorealistic watermelon hippo sculpture standing in a river at golden hour" width="1024" height="1024" data-path="assets/cookbook/image-generation/enhanced-prompt-watermelon-hippo.png" /> |
 
 The bare prompt produces a literal interpretation. The preset's orchestrator expands it into a detailed scene with materials, lighting, and environment before the image model touches it.
 
@@ -49,7 +53,7 @@ The text model handles the creative interpretation. The image model handles the 
 
 The fastest way to create the preset is to POST a request body to the preset creation endpoint. This captures the model, system prompt, tools, and parameters in one call:
 
-```bash
+```bash expandable lines theme={null}
 curl https://openrouter.ai/api/v1/presets/image-enhancer/chat/completions \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -76,7 +80,7 @@ curl https://openrouter.ai/api/v1/presets/image-enhancer/chat/completions \
 
 The response confirms your preset was created:
 
-```json
+```json expandable lines theme={null}
 {
   "data": {
     "id": "650e8400-e29b-41d4-a716-446655440001",
@@ -106,7 +110,9 @@ The response confirms your preset was created:
 }
 ```
 
-The response shown above is abbreviated. The full response includes additional fields like `workspace_id`, `description`, and timestamps. See the [Presets API reference](/docs/sdks/typescript/api-reference/presets) for the complete schema.
+<Info>
+  The response shown above is abbreviated. The full response includes additional fields like `workspace_id`, `description`, and timestamps. See the [Presets API reference](/sdks/typescript/api-reference/presets) for the complete schema.
+</Info>
 
 You can also create or edit presets from the [Presets dashboard](https://openrouter.ai/settings/presets), which has a visual server tools editor.
 
@@ -114,7 +120,7 @@ You can also create or edit presets from the [Presets dashboard](https://openrou
 
 Send requests to your preset slug as if it were a model:
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -135,7 +141,7 @@ The text model receives your message, crafts a detailed prompt, calls the image 
 
 The response looks like a normal chat completion. The text model's message contains the generated image URL (typically as a markdown image or inline URL) plus any commentary it added:
 
-```json
+```json lines theme={null}
 {
   "id": "gen-...",
   "model": "anthropic/claude-opus-4.8",
@@ -180,7 +186,7 @@ The system prompt controls how aggressively the orchestrator rewrites. Some patt
 
 ### Image tool parameters
 
-The tool's `parameters` object accepts `model` plus all `image_config` fields (quality, aspect\_ratio, size, background, output\_format, output\_compression, moderation). See the [image generation server tool reference](/docs/guides/features/server-tools/image-generation) for the full list and model-specific defaults.
+The tool's `parameters` object accepts `model` plus all `image_config` fields (quality, aspect\_ratio, size, background, output\_format, output\_compression, moderation). See the [image generation server tool reference](/guides/features/server-tools/image-generation) for the full list and model-specific defaults.
 
 ### Using different image models for different scenarios
 
@@ -195,8 +201,8 @@ To create a new version via API, POST to the same endpoint again with your updat
 ## Next steps
 
 * Explore [available image models](https://openrouter.ai/models?output_modalities=image) and compare pricing, quality, and speed
-* Read about [presets](/docs/guides/features/presets) for version management, team sharing, and the preset field merge behavior
-* Use the [OpenRouter TypeScript SDK](/docs/sdks/typescript) or [Python SDK](/docs/sdks/python) for typed preset interactions in your app
-* Add [web search](/docs/guides/features/server-tools/web-search) to the preset's tools so the orchestrator can reference current visual trends or specific art styles
-* Track image generation costs with the [Analytics guide](/docs/cookbook/administration/analytics-cost-control) to monitor per-preset spend
+* Read about [presets](/guides/features/presets) for version management, team sharing, and the preset field merge behavior
+* Use the [OpenRouter TypeScript SDK](/sdks/typescript) or [Python SDK](/sdks/python) for typed preset interactions in your app
+* Add [web search](/guides/features/server-tools/web-search) to the preset's tools so the orchestrator can reference current visual trends or specific art styles
+* Track image generation costs with the [Analytics guide](/cookbook/administration/analytics-cost-control) to monitor per-preset spend
 * Handle multi-turn conversations where the user refines images iteratively (pass previous messages to the preset to maintain context)

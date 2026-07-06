@@ -26,7 +26,7 @@ All [Pages Functions](https://developers.cloudflare.com/pages/functions/) are bi
 
 Users on the Workers Paid plan have access to the Standard usage model. Workers Enterprise accounts are billed based on the usage model specified in their contract. To switch to the Standard usage model, contact your Account Manager.
 
-|              | Requests1, 2, 3                                              | Duration                        | CPU time                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|              | Requests1, 2, 3, 4                                           | Duration                        | CPU time                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------ | ------------------------------------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Free**     | 100,000 per day                                              | No charge for duration          | 10 milliseconds of CPU time per invocation                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **Standard** | 10 million included per month  +$0.30 per additional million | No charge or limit for duration | 30 million CPU milliseconds included per month +$0.02 per additional million CPU milliseconds Max of [5 minutes of CPU time](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) per invocation (default: 30 seconds) Max of 15 minutes of CPU time per [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) or [Queue Consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) invocation |
@@ -36,6 +36,8 @@ Users on the Workers Paid plan have access to the Standard usage model. Workers 
 2 WebSocket connections made to a Worker are charged as a request, representing the initial `Upgrade` connection made to establish the WebSocket. WebSocket messages routed through a Worker do not count as requests.
 
 3 Requests to static assets are free and unlimited.
+
+4 When [Workers Caching](https://developers.cloudflare.com/workers/cache/) is enabled, requests served from the Worker's cache are billed at the same per-request rate as requests that invoke the Worker. This includes requests to [static assets](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) and [worker-to-worker invocations](https://developers.cloudflare.com/workers/platform/pricing/#service-bindings). CPU time is only billed when the Worker runs (on a cache miss or bypass).
 
 ### Example pricing
 
@@ -92,6 +94,19 @@ A high traffic Worker that serves 100 million requests per month, and uses an av
 | **Requests**     | $27.00        | (100,000,000 requests - 10,000,000 included requests) / 1,000,000 \* $0.30                                 |
 | **CPU time**     | $13.40        | ((7 ms of CPU time per request \* 100,000,000 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
 | **Total**        | $45.40        |                                                                                                            |
+
+#### Example 5: Worker with caching
+
+The same Worker as Example 4, but with [Workers Caching](https://developers.cloudflare.com/workers/cache/) enabled and an 80% cache hit rate. 80 million requests are served from cache and 20 million invoke the Worker. Cache hits count as requests but do not consume CPU time.
+
+|                  | Monthly Costs | Formula                                                                                                   |
+| ---------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| **Subscription** | $5.00         |                                                                                                           |
+| **Requests**     | $27.00        | (100,000,000 requests - 10,000,000 included requests) / 1,000,000 \* $0.30                                |
+| **CPU time**     | $2.20         | ((7 ms of CPU time per request \* 20,000,000 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
+| **Total**        | $34.20        |                                                                                                           |
+
+For details on what is cached and how to enable caching, refer to [Cache](https://developers.cloudflare.com/workers/cache/).
 
 Custom limits
 
@@ -434,6 +449,6 @@ Workers Paid plan is separate from any other Cloudflare plan (Free, Professional
 Only requests that hit a Worker will count against your limits and your bill. Since Cloudflare Workers runs before the Cloudflare cache, the caching of a request still incurs costs. Refer to [Limits](https://developers.cloudflare.com/workers/platform/limits/) to review definitions and behavior after a limit is hit.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing · Cloudflare Workers docs","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing · Cloudflare Workers docs","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/pricing/","name":"Pricing"}}]}
 ```

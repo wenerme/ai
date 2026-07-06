@@ -1,0 +1,49 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# BYOKKey - TypeScript SDK
+
+> BYOKKey type definition
+
+<Warning>
+  The TypeScript SDK and docs are currently in beta.
+  Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
+</Warning>
+
+## Example Usage
+
+```typescript lines theme={null}
+import { BYOKKey } from "@openrouter/sdk/models";
+
+let value: BYOKKey = {
+  allowedApiKeyHashes: null,
+  allowedModels: null,
+  allowedUserIds: null,
+  createdAt: "2025-08-24T10:30:00Z",
+  disabled: false,
+  id: "11111111-2222-3333-4444-555555555555",
+  isFallback: false,
+  label: "sk-...AbCd",
+  provider: "openai",
+  sortOrder: 0,
+  workspaceId: "550e8400-e29b-41d4-a716-446655440000",
+};
+```
+
+## Fields
+
+| Field                 | Type                                                                                   | Required             | Description                                                                                                                      | Example                                                                           |
+| --------------------- | -------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `allowedApiKeyHashes` | *string*\[]                                                                            | :heavy\_check\_mark: | Optional allowlist of OpenRouter API key hashes (`api_keys.hash`) that may use this credential. `null` means no restriction.     | \[<br />"f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"<br />] |
+| `allowedModels`       | *string*\[]                                                                            | :heavy\_check\_mark: | Optional allowlist of model slugs this credential may be used for. `null` means no restriction.                                  | `<nil>`                                                                           |
+| `allowedUserIds`      | *string*\[]                                                                            | :heavy\_check\_mark: | Optional allowlist of user IDs that may use this credential. `null` means no restriction.                                        | `<nil>`                                                                           |
+| `createdAt`           | *string*                                                                               | :heavy\_check\_mark: | ISO timestamp of when the credential was created.                                                                                | 2025-08-24T10:30:00Z                                                              |
+| `disabled`            | *boolean*                                                                              | :heavy\_check\_mark: | Whether this credential is currently disabled.                                                                                   | false                                                                             |
+| `id`                  | *string*                                                                               | :heavy\_check\_mark: | Stable public identifier for this BYOK credential.                                                                               | 11111111-2222-3333-4444-555555555555                                              |
+| `isFallback`          | *boolean*                                                                              | :heavy\_check\_mark: | Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried.      | false                                                                             |
+| `label`               | *string*                                                                               | :heavy\_check\_mark: | Short masked snippet of the key (e.g. the first/last few characters) used to identify it in the UI.                              | sk-...AbCd                                                                        |
+| `name`                | *string*                                                                               | :heavy\_minus\_sign: | Optional human-readable name for the credential.                                                                                 | Production OpenAI Key                                                             |
+| `provider`            | [models.BYOKProviderSlug](/agent-sdk/typescript/api-reference/models/byokproviderslug) | :heavy\_check\_mark: | The upstream provider this credential authenticates against, as a lowercase slug (e.g. `openai`, `anthropic`, `amazon-bedrock`). | openai                                                                            |
+| `sortOrder`           | *number*                                                                               | :heavy\_check\_mark: | Position within the provider — credentials are tried in ascending sort order.                                                    | 0                                                                                 |
+| `workspaceId`         | *string*                                                                               | :heavy\_check\_mark: | ID of the workspace this credential belongs to.                                                                                  | 550e8400-e29b-41d4-a716-446655440000                                              |

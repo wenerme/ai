@@ -174,16 +174,7 @@ class Default(WorkerEntrypoint):
 **Python**
 
 ```python
-from js import Object
-from pyodide.ffi import to_js as _to_js
-
-
 from workers import WorkerEntrypoint, Response
-
-
-# to_js converts between Python dictionaries and JavaScript Objects
-def to_js(obj):
-   return _to_js(obj, dict_converter=Object.fromEntries)
 
 
 class Default(WorkerEntrypoint):
@@ -196,10 +187,9 @@ class Default(WorkerEntrypoint):
         # We can also pass plain text strings
         await self.env.QUEUE.send("hello", contentType="text")
         # Send a JSON payload
-        await self.env.QUEUE.send(to_js({"hello": "world"}))
+        await self.env.QUEUE.send({"hello": "world"})
 
 
-        # Return a response
         return Response.json({"write": "success"})
 ```
 
@@ -226,7 +216,6 @@ Refer to [Query D1 from Python Workers](https://developers.cloudflare.com/d1/exa
 
 ```python
 from workers import WorkerEntrypoint, Response, DurableObject
-from pyodide.ffi import to_js
 
 
 class List(DurableObject):
@@ -238,7 +227,7 @@ class List(DurableObject):
     async def add_message(self, message):
         messages = await self.get_messages()
         messages.append(message)
-        await self.ctx.storage.put("messages", to_js(messages))
+        await self.ctx.storage.put("messages", messages)
         return
 
 
@@ -312,6 +301,6 @@ git clone https://github.com/cloudflare/python-workers-examples
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/examples/#page","headline":"Python Worker Examples · Cloudflare Workers docs","description":"Python code examples demonstrating modules, bindings, and SDK usage in Workers.","url":"https://developers.cloudflare.com/workers/languages/python/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/examples/#page","headline":"Python Worker Examples · Cloudflare Workers docs","description":"Python code examples demonstrating modules, bindings, and SDK usage in Workers.","url":"https://developers.cloudflare.com/workers/languages/python/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/examples/","name":"Examples"}}]}
 ```

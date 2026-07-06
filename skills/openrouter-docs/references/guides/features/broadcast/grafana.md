@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Grafana Cloud
+
+> Send traces to Grafana Cloud
 
 [Grafana Cloud](https://grafana.com/products/cloud/) is a fully-managed observability platform that includes Grafana Tempo for distributed tracing. OpenRouter sends traces via the standard OTLP HTTP/JSON endpoint.
 
@@ -21,7 +23,9 @@ You'll need three values from your Grafana Cloud portal:
 3. Search for **OpenTelemetry (OTLP)** and select it
 4. On the configuration page, you'll find your **OTLP endpoint URL**
 
-The base URL should be the OTLP gateway endpoint, not your main Grafana dashboard URL. The format is `https://otlp-gateway-prod-{region}.grafana.net`.
+<Tip>
+  The base URL should be the OTLP gateway endpoint, not your main Grafana dashboard URL. The format is `https://otlp-gateway-prod-{region}.grafana.net`.
+</Tip>
 
 ### Finding your Instance ID
 
@@ -40,7 +44,9 @@ The base URL should be the OTLP gateway endpoint, not your main Grafana dashboar
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure Grafana Cloud
 
@@ -50,19 +56,25 @@ Click the edit icon next to **Grafana Cloud** and enter:
 * **Instance ID**: Your numeric Grafana Cloud instance ID
 * **API Key**: Your Grafana Cloud API token with write permissions
 
-![Grafana Cloud Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/fa14bcff103da58aff86580b2b1688d8b3063c8ce569a49e895817879d3ea04b/content/pages/features/broadcast/broadcast-grafana-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/grafana/broadcast-grafana-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=950e62f6502ce724922c066e296cace6" alt="Grafana Cloud Configuration" width="2034" height="1856" data-path="assets/guides/features/broadcast/grafana/broadcast-grafana-config.png" />
+</Frame>
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Grafana Cloud Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/f7f2a36e64d3fd307cc64d9a24df2adefb2d84f966610318aff853369fc75652/content/pages/features/broadcast/broadcast-grafana-configured.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/grafana/broadcast-grafana-configured.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=c3aa7c8fba3a8a92a52a1f4ad93d53e7" alt="Grafana Cloud Configured" width="1572" height="682" data-path="assets/guides/features/broadcast/grafana/broadcast-grafana-configured.png" />
+</Frame>
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Grafana Cloud.
 
-![Grafana Cloud Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/f8e17b78a38b87ffb5b6a8c0adacc196271797dff3486747e84b685eaf5f4715/content/pages/features/broadcast/broadcast-grafana-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/grafana/broadcast-grafana-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=13c0de4b7d2be5813d57d298690d7894" alt="Grafana Cloud Trace" width="3192" height="1820" data-path="assets/guides/features/broadcast/grafana/broadcast-grafana-trace.png" />
+</Frame>
 
 ## Viewing your traces
 
@@ -76,13 +88,13 @@ Once configured, you can view traces in Grafana Cloud in two ways:
 4. Switch to the **TraceQL** tab
 5. Run this query to see all OpenRouter traces:
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" }
 ```
 
 You can also filter by specific attributes:
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && span.gen_ai.request.model = "openai/gpt-4-turbo" }
 ```
 
@@ -134,7 +146,7 @@ Grafana Cloud receives traces via the OTLP protocol. Custom metadata from the `t
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Analyze this metric..." }],
@@ -154,11 +166,11 @@ Grafana Cloud receives traces via the OTLP protocol. Custom metadata from the `t
 
 Custom metadata keys are available as span attributes under `trace.metadata.*`:
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && span.trace.metadata.environment = "production" }
 ```
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && span.trace.metadata.alert_id = "alert_789" }
 ```
 
@@ -173,25 +185,25 @@ Custom metadata keys are available as span attributes under `trace.metadata.*`:
 
 ### Find slow requests (> 5 seconds)
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && duration > 5s }
 ```
 
 ### Find requests by user
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && span.user.id = "user_abc123" }
 ```
 
 ### Find errors
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && status = error }
 ```
 
 ### Find requests by model
 
-```traceql
+```traceql lines theme={null}
 { resource.service.name = "openrouter" && span.gen_ai.request.model =~ ".*gpt-4.*" }
 ```
 
@@ -216,4 +228,4 @@ If you don't see any traces, make sure you've selected the correct Tempo data so
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

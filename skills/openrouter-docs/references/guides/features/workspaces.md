@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Workspaces
+
+> Organize your projects, teams, and agents into separate environments
 
 Workspaces let you organize your OpenRouter projects into separate environments, each with its own API keys, routing defaults, guardrails, and observability. Use them to isolate teams, projects, or deployment stages (e.g. staging vs. production) under a single account.
 
@@ -18,9 +20,13 @@ For organizations, all members are automatically added to the Default workspace.
 2. Click the workspace picker and select **[Create Workspace](https://openrouter.ai/workspaces/new)**
 3. Name your workspace and add a description
 
-Only organization admins can create and delete workspaces.
+<Note>
+  Only organization admins can create and delete workspaces.
+</Note>
 
-You can also create and manage workspaces programmatically using the [management API](https://openrouter.ai/docs/api/api-reference/workspaces/list-workspaces).
+<Tip>
+  You can also create and manage workspaces programmatically using the [management API](https://openrouter.ai/docs/api/api-reference/workspaces/list-workspaces).
+</Tip>
 
 ## What's Scoped to Each Workspace
 
@@ -34,6 +40,7 @@ Each workspace has independent settings for:
 * **[Plugins](https://openrouter.ai/workspaces/default/plugins)** — Configure default plugin behavior for API requests in each workspace.
 * **[Observability](https://openrouter.ai/workspaces/default/observability)** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
 * **[Members](https://openrouter.ai/workspaces/default/members)** — Control which team members have access to each workspace.
+* **[Budgets](/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace (Enterprise plan).
 
 ## Account Level Settings
 
@@ -54,14 +61,28 @@ Some settings apply globally across all workspaces:
 
 ## Frequently Asked Questions
 
-Within a workspace, members can create and manage their own API keys, and view other members and their roles. Members can belong to multiple workspaces. All org members automatically have access to the Default workspace. At the account level, members can view Activity and Logs.
+<AccordionGroup>
+  <Accordion title="What can my workspace members see about a workspace?">
+    Within a workspace, members can create and manage their own API keys, and view other members and their roles. Members can belong to multiple workspaces. All org members automatically have access to the Default workspace. At the account level, members can view Activity and Logs.
+  </Accordion>
 
-Org admins have admin permissions across all workspaces: they can view and manage everything in every workspace, including API keys, guardrails, BYOK, routing, presets, plugins, observability, members, and settings. Only org admins can create or delete workspaces and control members' access to each workspace. At the account level, org admins manage billing and credits, organization membership and roles, management API keys, and account-level data policies and allowed providers/models.
+  <Accordion title="What can my organization admins see? What can they edit?">
+    Org admins have admin permissions across all workspaces: they can view and manage everything in every workspace, including API keys, guardrails, BYOK, routing, presets, plugins, observability, members, and settings. Only org admins can create or delete workspaces and control members' access to each workspace. At the account level, org admins manage billing and credits, organization membership and roles, management API keys, and account-level data policies and allowed providers/models.
+  </Accordion>
 
-Yes. Management keys operate at the account level and can be used to perform administrative actions across all workspaces via the [management API](https://openrouter.ai/docs/api/api-reference/workspaces/list-workspaces).
+  <Accordion title="Can management keys be used across workspaces?">
+    Yes. Management keys operate at the account level and can be used to perform administrative actions across all workspaces via the [management API](https://openrouter.ai/docs/api/api-reference/workspaces/list-workspaces).
+  </Accordion>
 
-Workspaces inherit account-level data policies and allowed providers/models. Within those constraints, each workspace can set more granular guardrails to further restrict API key and member activity. The account-level policy is the ceiling; individual workspaces can only be more restrictive.
+  <Accordion title="Can workspaces have different data policies?">
+    Workspaces inherit account-level data policies and allowed providers/models. Within those constraints, each workspace can set more granular guardrails to further restrict API key and member activity. The account-level policy is the ceiling; individual workspaces can only be more restrictive.
+  </Accordion>
 
-When a member is removed from a workspace, they lose access to it. Before removing them, you must first delete any API keys they created in that workspace. Their access to other workspaces is unaffected. Note: all org members retain access to the Default workspace as long as they remain in the org.
+  <Accordion title="What happens when I remove someone from a workspace?">
+    When a member is removed from a workspace, they lose access to it. Before removing them, you must first delete any API keys they created in that workspace. Their access to other workspaces is unaffected. Note: all org members retain access to the Default workspace as long as they remain in the org.
+  </Accordion>
 
-Yes. All chatroom and fusion usage is in the Default workspace.
+  <Accordion title="Is my chatroom/fusion usage in a workspace?">
+    Yes. All chatroom and fusion usage is in the Default workspace.
+  </Accordion>
+</AccordionGroup>

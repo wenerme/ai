@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # W&B Weave
+
+> Send traces to W&B Weave
 
 [Weights & Biases Weave](https://wandb.ai/site/weave) is an observability platform for tracking and evaluating LLM applications.
 
@@ -14,7 +16,9 @@ In W\&B, go to your [User Settings](https://wandb.ai/settings) and copy your API
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/arize/broadcast-enable.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=a48ecd5df85b4e6f3982c8402671f631" alt="Enable Broadcast" width="2692" height="1296" data-path="assets/guides/features/broadcast/arize/broadcast-enable.png" />
+</Frame>
 
 ## Step 3: Configure W\&B Weave
 
@@ -25,19 +29,25 @@ Click the edit icon next to **W\&B Weave** and enter:
 * **Project**: The project name where traces will be logged
 * **Base Url** (optional): Default is `https://trace.wandb.ai`
 
-![W\&B Weave Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/8c4641a48f3473f905b4d002f888f3a3b678fd7d3b08123d28bf18e38b99567a/content/pages/features/broadcast/broadcast-weave-config.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/weave/broadcast-weave-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=227008d3e015dd7d20c6078230a3a12a" alt="W&B Weave Configuration" width="1219" height="1109" data-path="assets/guides/features/broadcast/weave/broadcast-weave-config.png" />
+</Frame>
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![W\&B Weave Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/7c23542342bffc7801e184bcd62f793991109b9ba4d68415e657de7584500c46/content/pages/features/broadcast/broadcast-weave-configured.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/weave/broadcast-weave-configured.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=7682bbb7d3e5256aff3f3082c84be586" alt="W&B Weave Configured" width="1228" height="709" data-path="assets/guides/features/broadcast/weave/broadcast-weave-configured.png" />
+</Frame>
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in W\&B Weave.
 
-![W\&B Weave Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5d0b78b2857428ab3e847836b9081d0eb7e6eb55e5d82ad9e32f21014c3ffc5f/content/pages/features/broadcast/broadcast-weave-trace.png)
+<Frame>
+  <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/weave/broadcast-weave-trace.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=95b0964189a2d422d6b2aadd731b6a16" alt="W&B Weave Trace" width="1108" height="1185" data-path="assets/guides/features/broadcast/weave/broadcast-weave-trace.png" />
+</Frame>
 
 ## Custom Metadata
 
@@ -53,7 +63,7 @@ W\&B Weave supports custom attributes and structured inputs for organizing and a
 
 ### Example
 
-```json
+```json lines theme={null}
 {
   "model": "openai/gpt-4o",
   "messages": [{ "role": "user", "content": "Write a poem about AI..." }],
@@ -85,4 +95,4 @@ Weave organizes trace data into:
 
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.

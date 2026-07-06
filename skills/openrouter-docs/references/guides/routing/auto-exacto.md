@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Auto Exacto
+
+> Automatic tool-calling provider optimization
 
 Auto Exacto is a routing step that automatically optimizes provider ordering for all requests that include tools. It runs by default on every tool-calling request, requiring no configuration.
 
@@ -24,7 +26,7 @@ The tool-calling success rate signal is derived from the **Tool Call Error Rate*
 
 Tool call `arguments` are validated against the corresponding `tools[].function.parameters` schema using [`@cfworker/json-schema`](https://www.npmjs.com/package/@cfworker/json-schema), pinned to **JSON Schema Draft 7**:
 
-```ts
+```ts lines theme={null}
 new Validator(parameters, '7')
 ```
 
@@ -46,7 +48,7 @@ Each tool call is bucketed into one of three error categories, or counted as val
 
 A request is flagged as errored if **any** of its tool calls falls into one of the three buckets above. The Tool Call Error Rate displayed per endpoint per day is then computed at the **request** level -- both the numerator and the denominator are counts of requests, not counts of individual tool calls:
 
-```
+```lines theme={null}
 requests_with_tool_call_errors / requests_where_finish_reason_is_tool_calls
 ```
 
@@ -63,12 +65,12 @@ We have observed notable improvements in [tau-bench](https://github.com/sierra-r
 
 ## Opting Out
 
-Without Auto Exacto, OpenRouter's default routing is primarily [price-weighted](/docs/guides/routing/provider-selection#price-based-load-balancing-default-strategy) -- requests are load balanced across providers with a strong preference for lower cost. Auto Exacto changes this for tool-calling requests by reordering providers based on quality signals instead of price.
+Without Auto Exacto, OpenRouter's default routing is primarily [price-weighted](/guides/routing/provider-selection#price-based-load-balancing-default-strategy) -- requests are load balanced across providers with a strong preference for lower cost. Auto Exacto changes this for tool-calling requests by reordering providers based on quality signals instead of price.
 
 If you want to restore the previous price-weighted behavior for tool-calling requests, you can opt out by explicitly sorting by price using any of the following methods:
 
-* **`provider.sort` parameter** -- set `sort` to `"price"` in the `provider` object of your request body. See [Provider Sorting](/docs/guides/routing/provider-selection#provider-sorting) for details.
-* **`:floor` virtual variant** -- append `:floor` to any model slug (e.g. `openai/gpt-4o:floor`) to sort by price. See [Floor Price Shortcut](/docs/guides/routing/provider-selection#floor-price-shortcut).
+* **`provider.sort` parameter** -- set `sort` to `"price"` in the `provider` object of your request body. See [Provider Sorting](/guides/routing/provider-selection#provider-sorting) for details.
+* **`:floor` virtual variant** -- append `:floor` to any model slug (e.g. `openai/gpt-4o:floor`) to sort by price. See [Floor Price Shortcut](/guides/routing/provider-selection#floor-price-shortcut).
 * **Default sort in account settings** -- set your default provider sort to price in your [account settings](https://openrouter.ai/settings/preferences) to apply price sorting across all requests.
 
 Any of these will bypass Auto Exacto and return to the standard price-weighted provider ordering.

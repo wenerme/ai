@@ -1,14 +1,70 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Apply Patch
 
-Server tools are currently in beta. The API and behavior may change.
+> Let models propose file changes via V4A diffs
 
-The apply patch server tool is only available through the [Responses API](/docs/api-reference/responses). It is not supported via the Chat Completions API.
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
 
-Only OpenAI models stream apply patch results incrementally via `response.apply_patch_call_operation_diff.delta` events. All other models return the complete patch as a single tool output.
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+<Badge color="blue">Beta</Badge>
+
+<Note>
+  **Beta**
+
+  Server tools are currently in beta. The API and behavior may change.
+</Note>
+
+<Warning>
+  **Responses API only**
+
+  The apply patch server tool is only available through the [Responses API](/api/reference/responses). It is not supported via the Chat Completions API.
+</Warning>
+
+<Note>
+  **Streaming behavior**
+
+  Only OpenAI models stream apply patch results incrementally via `response.apply_patch_call_operation_diff.delta` events. All other models return the complete patch as a single tool output.
+</Note>
 
 The `openrouter:apply_patch` server tool enables models to propose file changes using [V4A diff](https://github.com/openai/codex/blob/main/codex-rs/core/src/patch/v4a.md) patches. This is the building block for coding agents — the model generates a patch describing file creates, updates, or deletes, OpenRouter validates the diff syntax, and your application applies it.
 
@@ -24,64 +80,73 @@ This is a **human-in-the-loop** tool: OpenRouter validates the diff but never ap
 
 ## Quick Start
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    input: 'Create a hello.py file that prints "Hello, world!"',
-    tools: [
-      { type: 'openrouter:apply_patch' }
-    ]
-  }),
-});
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/codex-mini'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/responses', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        input: 'Create a hello.py file that prints "Hello, world!"',
+        tools: [
+          { type: 'openrouter:apply_patch' }
+        ]
+      }),
+    });
 
-const data = await response.json();
-// The response contains an apply_patch_call output item
-// with the operation (create_file, update_file, or delete_file)
-console.log(data.output);
-```
+    const data = await response.json();
+    // The response contains an apply_patch_call output item
+    // with the operation (create_file, update_file, or delete_file)
+    console.log(data.output);
+    ```
 
-```python title="Python"
-import requests
+    ```python title="Python" expandable lines theme={null}
+    import requests
 
-response = requests.post(
-  "https://openrouter.ai/api/v1/responses",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "input": "Create a hello.py file that prints 'Hello, world!'",
-    "tools": [
-      {"type": "openrouter:apply_patch"}
-    ]
-  }
-)
+    response = requests.post(
+      "https://openrouter.ai/api/v1/responses",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
+      },
+      json={
+        "model": "{{MODEL}}",
+        "input": "Create a hello.py file that prints 'Hello, world!'",
+        "tools": [
+          {"type": "openrouter:apply_patch"}
+        ]
+      }
+    )
 
-data = response.json()
-# The response contains an apply_patch_call output item
-# with the operation (create_file, update_file, or delete_file)
-print(data["output"])
-```
+    data = response.json()
+    # The response contains an apply_patch_call output item
+    # with the operation (create_file, update_file, or delete_file)
+    print(data["output"])
+    ```
 
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/responses \
-  -H "Authorization: Bearer {{API_KEY_REF}}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "{{MODEL}}",
-    "input": "Create a hello.py file that prints \"Hello, world!\"",
-    "tools": [
-      {"type": "openrouter:apply_patch"}
-    ]
-  }'
-```
+    ```bash title="cURL" lines theme={null}
+    curl https://openrouter.ai/api/v1/responses \
+      -H "Authorization: Bearer {{API_KEY_REF}}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "{{MODEL}}",
+        "input": "Create a hello.py file that prints \"Hello, world!\"",
+        "tools": [
+          {"type": "openrouter:apply_patch"}
+        ]
+      }'
+    ```
+  </CodeGroup>
+</Template>
 
 ## Patch Operations
 
@@ -91,7 +156,7 @@ The tool supports three operation types, each carried as the `operation` field o
 
 Creates a new file. Every content line in the diff must start with `+`:
 
-```json
+```json lines theme={null}
 {
   "type": "apply_patch_call",
   "call_id": "call_abc123",
@@ -108,7 +173,7 @@ Creates a new file. Every content line in the diff must start with `+`:
 
 Updates an existing file using a V4A diff with context lines (` ` prefix), additions (`+`), and deletions (`-`):
 
-```json
+```json lines theme={null}
 {
   "type": "apply_patch_call",
   "call_id": "call_def456",
@@ -125,7 +190,7 @@ Updates an existing file using a V4A diff with context lines (` ` prefix), addit
 
 Deletes a file. No diff is needed — only the file path:
 
-```json
+```json lines theme={null}
 {
   "type": "apply_patch_call",
   "call_id": "call_ghi789",
@@ -141,7 +206,7 @@ Deletes a file. No diff is needed — only the file path:
 
 After your application applies (or rejects) the patch, send the result back on the next turn as an `apply_patch_call_output` input item:
 
-```json
+```json lines theme={null}
 {
   "model": "openai/codex-mini",
   "input": [
@@ -168,7 +233,7 @@ After your application applies (or rejects) the patch, send the result back on t
 
 The apply patch tool accepts an optional `engine` parameter:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:apply_patch",
   "parameters": {
@@ -192,7 +257,7 @@ The apply patch tool has no additional cost beyond standard token usage.
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
+* [Web Search](/guides/features/server-tools/web-search) — Search the web for real-time information
+* [Datetime](/guides/features/server-tools/datetime) — Get the current date and time
+* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling

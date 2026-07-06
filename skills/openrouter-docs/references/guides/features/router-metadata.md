@@ -1,8 +1,50 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Router Metadata
+
+> Surface routing decisions on every response with a single opt-in header
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 OpenRouter's router runs every request through a multi-stage pipeline: it picks a provider, may compress context, may run guardrails, may invoke server-side tools, and may retry against fallbacks. By default, none of that is visible on the response.
 
@@ -12,48 +54,52 @@ Router metadata is a **per-request opt-in** that adds an `openrouter_metadata` f
 
 Opt in by sending the `X-OpenRouter-Metadata` request header with the value `enabled`:
 
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer {{API_KEY_REF}}" \
-  -H "Content-Type: application/json" \
-  -H "X-OpenRouter-Metadata: enabled" \
-  -d '{
-    "model": "openai/gpt-4o-mini",
-    "messages": [{ "role": "user", "content": "Hello" }]
-  }'
-```
+<Template data={{ API_KEY_REF }}>
+  <CodeGroup>
+    ```bash title="cURL" lines theme={null}
+    curl https://openrouter.ai/api/v1/chat/completions \
+      -H "Authorization: Bearer {{API_KEY_REF}}" \
+      -H "Content-Type: application/json" \
+      -H "X-OpenRouter-Metadata: enabled" \
+      -d '{
+        "model": "openai/gpt-4o-mini",
+        "messages": [{ "role": "user", "content": "Hello" }]
+      }'
+    ```
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer {{API_KEY_REF}}`,
-    'Content-Type': 'application/json',
-    'X-OpenRouter-Metadata': 'enabled',
-  },
-  body: JSON.stringify({
-    model: 'openai/gpt-4o-mini',
-    messages: [{ role: 'user', content: 'Hello' }],
-  }),
-});
-```
-
-```python title="Python"
-import requests
-
-response = requests.post(
-    'https://openrouter.ai/api/v1/chat/completions',
-    headers={
-        'Authorization': f'Bearer {{API_KEY_REF}}',
+    ```typescript title="TypeScript" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
         'Content-Type': 'application/json',
         'X-OpenRouter-Metadata': 'enabled',
-    },
-    json={
-        'model': 'openai/gpt-4o-mini',
-        'messages': [{'role': 'user', 'content': 'Hello'}],
-    },
-)
-```
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-4o-mini',
+        messages: [{ role: 'user', content: 'Hello' }],
+      }),
+    });
+    ```
+
+    ```python title="Python" lines theme={null}
+    import requests
+
+    response = requests.post(
+        'https://openrouter.ai/api/v1/chat/completions',
+        headers={
+            'Authorization': f'Bearer {{API_KEY_REF}}',
+            'Content-Type': 'application/json',
+            'X-OpenRouter-Metadata': 'enabled',
+        },
+        json={
+            'model': 'openai/gpt-4o-mini',
+            'messages': [{'role': 'user', 'content': 'Hello'}],
+        },
+    )
+    ```
+  </CodeGroup>
+</Template>
 
 ### Accepted Values
 
@@ -81,7 +127,7 @@ Both **streaming** and **non-streaming** requests carry the field when opted in.
 
 When opted in, successful responses include an `openrouter_metadata` object alongside the rest of the response payload:
 
-```json
+```json expandable lines theme={null}
 {
   "id": "gen-...",
   "model": "openai/gpt-4o-mini",
@@ -138,7 +184,7 @@ When opted in, successful responses include an `openrouter_metadata` object alon
 | `attempts`  | `Attempt[]`         | Optional. Per-attempt provider/model/status when the router retried against fallbacks.                                    |
 | `pipeline`  | `PipelineStage[]`   | Optional. Plugins that materially altered the request or response (compression, guardrails, healing, server tools, etc.). |
 
-The full schema is documented under [`OpenRouterMetadata`](/docs/api-reference) in the OpenAPI spec, including SDK type definitions for [TypeScript](/docs/sdks/typescript) and other generated clients.
+The full schema is documented under [`OpenRouterMetadata`](/agent-sdk/call-model/api-reference) in the OpenAPI spec, including SDK type definitions for [TypeScript](/client-sdks/typescript/overview.mdx) and other generated clients.
 
 ## Pipeline Stages
 
@@ -166,7 +212,7 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
 
 ### No Providers Available (404)
 
-```json
+```json expandable lines theme={null}
 {
   "error": {
     "code": 404,
@@ -192,9 +238,9 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
 
 ### Guardrail Blocked (403)
 
-When a request is blocked before reaching a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails) — the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
+When a request is blocked before reaching a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/guides/features/guardrails) — the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
 
-```json
+```json expandable lines theme={null}
 {
   "error": {
     "code": 403,
@@ -242,7 +288,7 @@ A few things to know:
 * **`attempt` reflects how far the router got.** A value of `0` means the request never reached a provider — typically because every candidate was filtered out before submission (e.g. `provider.only` excluded the last endpoint, or an allowed-providers / max-price filter rejected everything). Values `≥ 1` mean every attempted provider failed and fallbacks were exhausted.
 * **No endpoint is marked `selected` on failure.** None of the `endpoints.available[].selected` flags are `true` because no endpoint actually served a 200.
 * **Internal-error masking still applies.** Responses with a `500` status are scrubbed to a generic message, and `openrouter_metadata` is omitted from those envelopes by design — we don't surface internal routing details on errors whose cause is already hidden. Other 5xx classes (`502`, `503`, `504`, `529`) still include the metadata when the client opted in.
-* **Some failure modes won't carry it.** Authentication / rate-limit failures and other errors that fire before the router has usable routing state (for example, validation rejections at the API edge) will not include the field. If you need post-mortem routing context for a request that completed past the API edge but before the router materialised state, fetch the generation record via [`GET /api/v1/generation`](/docs/api-reference) using the `X-Generation-Id` response header.
+* **Some failure modes won't carry it.** Authentication / rate-limit failures and other errors that fire before the router has usable routing state (for example, validation rejections at the API edge) will not include the field. If you need post-mortem routing context for a request that completed past the API edge but before the router materialised state, fetch the generation record via [`GET /api/v1/generation`](/agent-sdk/call-model/api-reference) using the `X-Generation-Id` response header.
 
 ## Stability
 

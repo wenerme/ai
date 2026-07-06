@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Streaming
+
+> Stream responses in real-time with multiple consumption patterns. All streams are built on a reusable stream architecture that supports concurrent consumers.
 
 ## Text Streaming
 
@@ -10,7 +12,7 @@
 
 Stream text content as it's generated:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -36,7 +38,7 @@ Each iteration yields a small chunk of text (typically a few characters or a wor
 For models that support reasoning (like o1 or Claude with thinking), stream the
 reasoning process:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/o1-preview',
   input: 'Solve this step by step: If x + 5 = 12, what is x?',
@@ -59,10 +61,10 @@ console.log(text);
 Stream complete items as they update. This is the **recommended way** to handle
 streaming when you need structured access to all output types (messages, tool
 calls, reasoning, etc.). See
-[Working with Items](/docs/sdks/typescript/call-model/items) for the full
+[Working with Items](/agent-sdk/call-model/items) for the full
 paradigm explanation.
 
-```typescript
+```typescript expandable lines theme={null}
 import type { StreamableOutputItem } from '@openrouter/agent';
 
 const result = openrouter.callModel({
@@ -108,12 +110,14 @@ This stream yields all item types:
 
 ### getNewMessagesStream()
 
-`getNewMessagesStream()` is deprecated. Use `getItemsStream()` instead, which
-includes all item types and follows the items-based paradigm.
+<Warning>
+  `getNewMessagesStream()` is deprecated. Use `getItemsStream()` instead, which
+  includes all item types and follows the items-based paradigm.
+</Warning>
 
 Stream cumulative message snapshots in the OpenResponses format:
 
-```typescript
+```typescript lines theme={null}
 // Deprecated - use getItemsStream() instead
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -142,7 +146,7 @@ This stream yields:
 
 Stream all response events including tool preliminary results:
 
-```typescript
+```typescript expandable lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Search for documents',
@@ -201,7 +205,7 @@ The full stream includes these event types:
 
 Stream structured tool calls as they complete:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is the weather in Paris and Tokyo?',
@@ -220,7 +224,7 @@ for await (const toolCall of result.getToolCallsStream()) {
 
 Stream tool deltas and preliminary results:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Search for TypeScript tutorials',
@@ -242,7 +246,7 @@ for await (const event of result.getToolStream()) {
 
 Multiple consumers can read from the same result:
 
-```typescript
+```typescript expandable lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Write a story.',
@@ -273,7 +277,7 @@ The underlying `ReusableReadableStream` ensures each consumer receives all event
 
 Cancel a stream to stop generation:
 
-```typescript
+```typescript expandable lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Write a very long essay...',
@@ -302,7 +306,7 @@ console.log('\nCancelled!');
 
 ### React Example
 
-```typescript
+```typescript expandable lines theme={null}
 import { useState, useEffect } from 'react';
 
 function ChatResponse({ prompt }: { prompt: string }) {
@@ -340,7 +344,7 @@ function ChatResponse({ prompt }: { prompt: string }) {
 
 ### Server-Sent Events (SSE)
 
-```typescript
+```typescript expandable lines theme={null}
 import { Hono } from 'hono';
 import { streamSSE } from 'hono/streaming';
 
@@ -370,7 +374,7 @@ app.get('/stream', (c) => {
 
 ## Next Steps
 
-* **[Working with Items](/docs/sdks/typescript/call-model/items)** - Understand
+* **[Working with Items](/agent-sdk/call-model/items)** - Understand
   the items-based streaming paradigm
-* **[Tools](/docs/sdks/typescript/call-model/tools)** - Create tools and
+* **[Tools](/agent-sdk/call-model/tools)** - Create tools and
   multi-turn streaming with tools

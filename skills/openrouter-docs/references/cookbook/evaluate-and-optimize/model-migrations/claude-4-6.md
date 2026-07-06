@@ -1,10 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Claude 4.6 Migration Guide
 
-As of June 22, 2026, OpenRouter maps `reasoning.effort` to Anthropic's `output_config.effort` on Claude 4.6 and newer models — previously it was ignored. `verbosity` is unchanged: it still sets `output_config.effort`, and wins if both are passed.
+> Migrate to Claude 4.6 with adaptive thinking and max effort level
+
+<Note>
+  **Update · June 22, 2026**
+
+  As of June 22, 2026, OpenRouter maps `reasoning.effort` to Anthropic's `output_config.effort` on Claude 4.6 and newer models — previously it was ignored. `verbosity` is unchanged: it still sets `output_config.effort`, and wins if both are passed.
+</Note>
 
 ## What's New
 
@@ -30,7 +36,7 @@ For Claude 4.6 Opus and 4.6 Sonnet, OpenRouter now uses adaptive thinking (`thin
 * If you explicitly set `reasoning.max_tokens`, budget-based thinking is used
 * If you pass the raw Anthropic `thinking` parameter directly
 
-```json
+```json lines theme={null}
 // Adaptive thinking (recommended for 4.6)
 {
   "model": "anthropic/claude-4.6-opus",  // or "anthropic/claude-4.6-sonnet"
@@ -38,7 +44,7 @@ For Claude 4.6 Opus and 4.6 Sonnet, OpenRouter now uses adaptive thinking (`thin
 }
 ```
 
-```json
+```json lines theme={null}
 // Budget-based thinking (still supported)
 {
   "model": "anthropic/claude-4.6-opus",  // or "anthropic/claude-4.6-sonnet"
@@ -50,14 +56,16 @@ For Claude 4.6 Opus and 4.6 Sonnet, OpenRouter now uses adaptive thinking (`thin
 
 A new `'max'` effort level is available for Claude 4.6 Opus and 4.6 Sonnet via the `verbosity` parameter. See Anthropic's [effort documentation](https://platform.claude.com/docs/en/build-with-claude/effort) for details on how effort controls response thoroughness and token usage.
 
-```json
+```json lines theme={null}
 {
   "model": "anthropic/claude-4.6-opus",  // or "anthropic/claude-4.6-sonnet"
   "verbosity": "max"
 }
 ```
 
-`'max'` is only supported on Claude 4.6 Opus and 4.6 Sonnet. For other models, it automatically falls back to `'high'`.
+<Note>
+  `'max'` is only supported on Claude 4.6 Opus and 4.6 Sonnet. For other models, it automatically falls back to `'high'`.
+</Note>
 
 ## Verbosity vs Reasoning Effort
 
@@ -74,12 +82,12 @@ Details:
 * `reasoning.effort: 'minimal'` maps to `'low'` (Anthropic's lowest level); `'none'` disables reasoning entirely, so no `output_config.effort` is sent.
 * Thinking itself stays adaptive either way. On 4.6, `reasoning.effort` no longer influences a thinking token budget.
 
-```json
+```json lines theme={null}
 // verbosity works - controls response detail
 { "model": "anthropic/claude-4.6-opus", "verbosity": "max" }  // also works with anthropic/claude-4.6-sonnet
 ```
 
-```json
+```json lines theme={null}
 // reasoning.effort maps to output_config.effort (thinking stays adaptive)
 { "model": "anthropic/claude-4.6-opus", "reasoning": { "enabled": true, "effort": "low" } }  // also applies to anthropic/claude-4.6-sonnet
 ```

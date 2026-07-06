@@ -1,8 +1,25 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Choose a Video Generation Model
+
+> Select an OpenRouter video model by matching clip requirements and scoring priorities
+
+export const CopyPromptButton = ({prompt, buttonLabel = "Copy prompt"}) => {
+  const [isCopied, setIsCopied] = useState(false);
+  const handleClick = () => {
+    navigator.clipboard.writeText(prompt).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
+  return <div className="mt-3">
+      <button type="button" onClick={handleClick} className="border-border inline-flex items-center gap-2 rounded-lg border px-3 py-2 font-semibold cursor-pointer border-green-200 dark:border-green-900">
+        {isCopied ? "Copied" : buttonLabel}
+      </button>
+    </div>;
+};
 
 Use this guide when you need to add video model selection based on the clip
 your app needs to generate.
@@ -11,10 +28,43 @@ By the end, your implementation should have a small model-selection helper that
 filters models by capability and scores them by priority before submitting a
 video job.
 
-Not sure what model to use? Copy this prompt to run a model-selection process.
+<Tip>
+  Not sure what model to use? Copy this prompt to run a model-selection process.
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+
+  <CopyPromptButton
+    prompt={`You are helping me choose the best OpenRouter video generation model for my app.
+
+If Agent Skills are available, first check whether the OpenRouter video skill is installed. If it is not installed, tell me I can install it with:
+gh skill install OpenRouterTeam/skills openrouter-video
+
+Use this OpenRouter cookbook guide as your primary workflow:
+https://openrouter.ai/docs/cookbook/video-generation/choose-video-model
+
+Use these OpenRouter docs as source-of-truth references when you need exact fields or implementation details:
+- Video model metadata API: https://openrouter.ai/docs/api/api-reference/video-generation/list-all-video-generation-models
+- Video generation request API: https://openrouter.ai/docs/api/api-reference/video-generation/submit-a-video-generation-request
+- Video generation overview: https://openrouter.ai/docs/guides/overview/multimodal/video-generation
+- OpenRouter video skill: https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video
+- TypeScript SDK video generation reference, if I am using the SDK: https://openrouter.ai/docs/client-sdks/typescript/api-reference/videogeneration
+
+Start by asking me for a brief description of what I want to make with video generation.
+
+Use that description to infer the likely video requirements: generation mode, duration, resolution, aspect ratio, whether audio matters, whether image/frame/reference inputs are needed, and whether speed, cost, or output quality should matter most. Ask a follow-up question only if a missing detail would materially change the model recommendation.
+
+After I answer, run this model-selection process:
+1. Fetch the current model list from GET https://openrouter.ai/api/v1/videos/models.
+2. Filter out models that do not satisfy hard requirements. Use supported_durations, supported_resolutions, supported_aspect_ratios, supported_frame_images, generate_audio, and allowed_passthrough_parameters.
+3. Score the remaining models with weighted priorities:
+- speed: prefer models with fast, lite, or std in the model slug. Replace this heuristic with real latency telemetry if available.
+- cost: prefer lower estimated cost from pricing_skus. Inspect SKU units before making production routing decisions.
+- quality: prefer higher supported resolution, especially 1080p or 4K, and consider provider or model tier when relevant.
+4. Use fast-and-cheap weights when I care about previews or low latency: speed 0.55, cost 0.35, quality 0.10.
+5. Use quality-and-cost weights when I care about final output quality: quality 0.55, cost 0.30, speed 0.15.
+6. Return the selected model slug, a ranked shortlist, the reason for the choice, any assumptions you made, and the exact raw API or SDK video request body you would submit.`}
+  />
+</Tip>
 
 ## Before you start
 
@@ -28,19 +78,21 @@ You need:
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/docs/api/api-reference/video-generation/create-videos)
-* [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
-* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
+* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
 
-Submitting `POST /api/v1/videos` starts a real video generation job and may
-spend OpenRouter credits. Use the model-selection and request-preview steps
-first, then submit only when the request is ready.
+<Warning>
+  Submitting `POST /api/v1/videos` starts a real video generation job and may
+  spend OpenRouter credits. Use the model-selection and request-preview steps
+  first, then submit only when the request is ready.
+</Warning>
 
 ## Step 1: Fetch the video model list
 
 Call the dedicated video model endpoint:
 
-```js
+```js lines theme={null}
 const response = await fetch("https://openrouter.ai/api/v1/videos/models");
 
 if (!response.ok) {
@@ -55,7 +107,7 @@ console.log(models.map((model) => model.id));
 
 Actual output from the model-list call:
 
-```text
+```text lines theme={null}
 [
   "kwaivgi/kling-v3.0-pro",
   "kwaivgi/kling-v3.0-std",
@@ -75,10 +127,10 @@ Actual output from the model-list call:
 
 Each model includes the values you need for routing decisions. Use the
 [List video generation models API
-reference](/docs/api/api-reference/video-generation/list-videos-models) as the
+reference](/api/api-reference/video-generation/list-all-video-generation-models) as the
 source of truth for the endpoint response and model metadata fields. If your app
 uses the TypeScript SDK, see the generated [`listVideosModels` SDK
-reference](/docs/client-sdks/typescript/api-reference/videogeneration#listvideosmodels)
+reference](/client-sdks/typescript/api-reference/videogeneration#listvideosmodels)
 for the SDK method shape.
 
 ## Step 2: Filter by the job you want to run
@@ -91,7 +143,7 @@ inspect before filtering.
 For example, this helper finds models that can generate a 720p, vertical,
 image-to-video clip with first-frame support:
 
-```js
+```js expandable lines theme={null}
 function findVideoModels(models) {
   return models.filter((model) => {
     const supportsRequest =
@@ -134,7 +186,7 @@ console.log(
 
 Example output:
 
-```json
+```json expandable lines theme={null}
 [
   {
     "id": "bytedance/seedance-1-5-pro",
@@ -180,7 +232,7 @@ Use weighted priorities to make the final choice. For example, a draft workflow
 might prioritize speed and cost, while a production render might prioritize
 quality and cost:
 
-```js
+```js expandable lines theme={null}
 const priorityProfiles = {
   fastAndCheap: {
     speed: 0.55,
@@ -303,7 +355,7 @@ console.log(`Use ${model.id}`);
 
 Actual output from the scoring helper:
 
-```json
+```json expandable lines theme={null}
 {
   "fast_and_cheap": [
     {
@@ -376,7 +428,7 @@ Actual output from the scoring helper:
 }
 ```
 
-```text
+```text lines theme={null}
 Use bytedance/seedance-2.0-fast
 ```
 
@@ -393,7 +445,7 @@ treat the helper as a quick starting point and inspect the matching model's
 Before submitting, have the implementation build the exact request body it will
 send. This makes capability mismatches visible before starting a paid job:
 
-```js
+```js expandable lines theme={null}
 const firstFrameUrl = process.env.FIRST_FRAME_URL;
 
 if (!firstFrameUrl) {
@@ -424,20 +476,20 @@ console.log(JSON.stringify(requestBody, null, 2));
 Before submitting, check that your image URL returns `200` with an image
 content type:
 
-```bash
+```bash lines theme={null}
 curl -I "$FIRST_FRAME_URL"
 ```
 
 Example output:
 
-```text
+```text lines theme={null}
 HTTP/2 200
 content-type: image/jpeg
 ```
 
 ## Step 5: Submit when ready
 
-```js
+```js lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
 
 if (!apiKey) {
@@ -463,7 +515,7 @@ console.log(await generation.json());
 The submission response contains the job `id`, `polling_url`, and an initial
 status. In a completed run, that submitted job later reached this final state:
 
-```json
+```json lines theme={null}
 {
   "id": "S2wge1oFOBzIj1PpFcFu",
   "status": "completed",
@@ -478,4 +530,4 @@ Before submission, you should see a request body whose model supports every
 capability you filtered for. If you submit the request, you should see a
 response with a video job `id`, a `polling_url`, and an initial status such as
 `pending`. To wait for the playable MP4, use the polling and download helper
-from [Generate and Download a Video from Text](/docs/cookbook/video-generation/text-to-video).
+from [Generate and Download a Video from Text](/cookbook/video-generation/text-to-video).

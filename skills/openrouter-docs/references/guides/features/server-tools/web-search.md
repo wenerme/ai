@@ -1,10 +1,58 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Web Search
 
-Server tools are currently in beta. The API and behavior may change.
+> Give any model access to real-time web information
+
+export const Template = ({children, data}) => {
+  const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
+  const leafText = node => typeof node === 'string' ? node : node?.$$typeof && typeof node.props?.children === 'string' ? node.props.children : null;
+  const collapseTokens = nodes => {
+    const out = [];
+    let i = 0;
+    while (i < nodes.length) {
+      const ta = leafText(nodes[i]);
+      const tb = leafText(nodes[i + 1]);
+      const tc = leafText(nodes[i + 2]);
+      if (ta != null && tb != null && tc != null) {
+        const m = (ta + tb + tc).match(/^([\s\S]*)\{\{(\w+)\}\}([\s\S]*)$/);
+        if (m && (m[2] in data)) {
+          out.push(m[1] + data[m[2]] + m[3]);
+          i += 3;
+          continue;
+        }
+      }
+      out.push(nodes[i]);
+      i++;
+    }
+    return out;
+  };
+  const process = node => {
+    if (typeof node === 'string') return replace(node);
+    if (Array.isArray(node)) return collapseTokens(node.map(process));
+    if (node && typeof node === 'object') {
+      if (node.$$typeof) return {
+        ...node,
+        props: process(node.props)
+      };
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, process(v)]));
+    }
+    return node;
+  };
+  return <>{process(children)}</>;
+};
+
+export const API_KEY_REF = '<OPENROUTER_API_KEY>';
+
+<Badge color="blue">Beta</Badge>
+
+<Note>
+  **Beta**
+
+  Server tools are currently in beta. The API and behavior may change.
+</Note>
 
 The `openrouter:web_search` server tool gives any model on OpenRouter access to real-time web information. When the model determines it needs current information, it calls the tool with a search query. OpenRouter executes the search and returns results that the model uses to formulate a grounded, cited response.
 
@@ -18,81 +66,90 @@ The `openrouter:web_search` server tool gives any model on OpenRouter access to 
 
 ## Quick Start
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'What were the major AI announcements this week?'
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/gpt-5.2'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" expandable lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: 'What were the major AI announcements this week?'
+          }
+        ],
+        tools: [
+          { type: 'openrouter:web_search' }
+        ]
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
+
+    ```python title="Python" expandable lines theme={null}
+    import requests
+
+    response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
+      },
+      json={
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What were the major AI announcements this week?"
+          }
+        ],
+        "tools": [
+          {"type": "openrouter:web_search"}
+        ]
       }
-    ],
-    tools: [
-      { type: 'openrouter:web_search' }
-    ]
-  }),
-});
+    )
 
-const data = await response.json();
-console.log(data.choices[0].message.content);
-```
+    data = response.json()
+    print(data["choices"][0]["message"]["content"])
+    ```
 
-```python title="Python"
-import requests
-
-response = requests.post(
-  "https://openrouter.ai/api/v1/chat/completions",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "What were the major AI announcements this week?"
-      }
-    ],
-    "tools": [
-      {"type": "openrouter:web_search"}
-    ]
-  }
-)
-
-data = response.json()
-print(data["choices"][0]["message"]["content"])
-```
-
-```bash title="cURL"
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer {{API_KEY_REF}}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "{{MODEL}}",
-    "messages": [
-      {
-        "role": "user",
-        "content": "What were the major AI announcements this week?"
-      }
-    ],
-    "tools": [
-      {"type": "openrouter:web_search"}
-    ]
-  }'
-```
+    ```bash title="cURL" lines theme={null}
+    curl https://openrouter.ai/api/v1/chat/completions \
+      -H "Authorization: Bearer {{API_KEY_REF}}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "{{MODEL}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What were the major AI announcements this week?"
+          }
+        ],
+        "tools": [
+          {"type": "openrouter:web_search"}
+        ]
+      }'
+    ```
+  </CodeGroup>
+</Template>
 
 ## Configuration
 
 The web search tool accepts optional `parameters` to customize search behavior:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:web_search",
   "parameters": {
@@ -121,7 +178,7 @@ The web search tool accepts optional `parameters` to customize search behavior:
 
 Pass an approximate user location to bias search results geographically:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:web_search",
   "parameters": {
@@ -148,7 +205,9 @@ When `engine` is `"auto"` (the default) or `"native"`, OpenRouter uses the provi
 * **[xAI](https://docs.x.ai/docs/guides/web-search)** — Grok 4 and later (includes both web search and X search)
 * **[Perplexity](https://docs.perplexity.ai/api-reference/chat-completions-post)** — all Perplexity models (search is core to their API)
 
-Older OpenAI models — including GPT-4o, GPT-4o Mini, and GPT-4 Turbo — do **not** support native web search. If you set `engine: "native"` with these models, the server tool will fall back to Exa search. Use `engine: "auto"` (or omit the field) for equivalent behavior.
+<Note>
+  Older OpenAI models — including GPT-4o, GPT-4o Mini, and GPT-4 Turbo — do **not** support native web search. If you set `engine: "native"` with these models, the server tool will fall back to Exa search. Use `engine: "auto"` (or omit the field) for equivalent behavior.
+</Note>
 
 You can check whether a specific model supports native search on its [model page](https://openrouter.ai/models) — look for the "Web Search" capability badge. For models without native search, set `engine` to one of the other supported options ([Exa](https://exa.ai), [Firecrawl](https://firecrawl.dev), [Parallel](https://parallel.ai), or [Perplexity](https://docs.perplexity.ai)) — or leave it as `"auto"` to default to Exa.
 
@@ -193,7 +252,7 @@ By default, Exa selects an adaptive highlight size per query and document — ty
 
 **Exact value via `max_characters`** — pass any integer (1–100,000) to set a precise per-result content budget. Supported by Exa, Parallel, and Perplexity. When both `max_characters` and `search_context_size` are set, `max_characters` takes precedence.
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:web_search",
   "parameters": {
@@ -205,7 +264,7 @@ By default, Exa selects an adaptive highlight size per query and document — ty
 
 When neither `max_characters` nor `search_context_size` is set, OpenRouter lets Exa pick the highlight size adaptively and Parallel uses its default of 1,500 characters per result. The selected excerpts are returned to the model on each result and surfaced to API callers via `url_citation` annotations. Within a single result, excerpts that come from different parts of the page are separated by Exa's `[...]` markers, so the `content` field of a `url_citation` annotation may look like:
 
-```
+```lines theme={null}
 First excerpt drawn from the page.
 [...]
 Second excerpt drawn from elsewhere in the same page.
@@ -237,7 +296,7 @@ Firecrawl supports domain filtering (`allowed_domains` / `excluded_domains`), bu
 
 Restrict which domains appear in search results using `allowed_domains` and `excluded_domains`:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:web_search",
   "parameters": {
@@ -262,7 +321,7 @@ Restrict which domains appear in search results using `allowed_domains` and `exc
 
 When the model searches multiple times in a single request, use `max_total_results` to cap the cumulative number of results:
 
-```json
+```json lines theme={null}
 {
   "type": "openrouter:web_search",
   "parameters": {
@@ -278,53 +337,62 @@ Once the limit is reached, subsequent search calls return a message telling the 
 
 The web search server tool also works with the Responses API:
 
-```typescript title="TypeScript"
-const response = await fetch('https://openrouter.ai/api/v1/responses', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer {{API_KEY_REF}}',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    input: 'What is the current price of Bitcoin?',
-    tools: [
-      { type: 'openrouter:web_search', parameters: { max_results: 3 } }
-    ]
-  }),
-});
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'openai/gpt-5.2'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript" lines theme={null}
+    const response = await fetch('https://openrouter.ai/api/v1/responses', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        input: 'What is the current price of Bitcoin?',
+        tools: [
+          { type: 'openrouter:web_search', parameters: { max_results: 3 } }
+        ]
+      }),
+    });
 
-const data = await response.json();
-console.log(data);
-```
+    const data = await response.json();
+    console.log(data);
+    ```
 
-```python title="Python"
-import requests
+    ```python title="Python" lines theme={null}
+    import requests
 
-response = requests.post(
-  "https://openrouter.ai/api/v1/responses",
-  headers={
-    "Authorization": f"Bearer {{API_KEY_REF}}",
-    "Content-Type": "application/json",
-  },
-  json={
-    "model": "{{MODEL}}",
-    "input": "What is the current price of Bitcoin?",
-    "tools": [
-      {"type": "openrouter:web_search", "parameters": {"max_results": 3}}
-    ]
-  }
-)
+    response = requests.post(
+      "https://openrouter.ai/api/v1/responses",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
+      },
+      json={
+        "model": "{{MODEL}}",
+        "input": "What is the current price of Bitcoin?",
+        "tools": [
+          {"type": "openrouter:web_search", "parameters": {"max_results": 3}}
+        ]
+      }
+    )
 
-data = response.json()
-print(data)
-```
+    data = response.json()
+    print(data)
+    ```
+  </CodeGroup>
+</Template>
 
 ## Usage Tracking
 
 Web search usage is reported in the response `usage` object:
 
-```json
+```json lines theme={null}
 {
   "usage": {
     "input_tokens": 105,
@@ -352,7 +420,9 @@ All pricing is in addition to standard LLM token costs for processing the search
 
 ## Migrating from the Web Search Plugin
 
-The [web search plugin](/docs/guides/features/plugins/web-search) (`plugins: [{ id: "web" }]`) and the [`:online` variant](/docs/guides/routing/model-variants/online) are deprecated. Use the `openrouter:web_search` server tool instead.
+<Note>
+  The [web search plugin](/guides/features/plugins/web-search) (`plugins: [{ id: "web" }]`) and the [`:online` variant](/guides/routing/model-variants/online) are deprecated. Use the `openrouter:web_search` server tool instead.
+</Note>
 
 The key differences:
 
@@ -369,7 +439,7 @@ The key differences:
 
 ### Migration example
 
-```json
+```json lines theme={null}
 // Before (deprecated)
 {
   "model": "openai/gpt-5.2",
@@ -387,7 +457,7 @@ The key differences:
 }
 ```
 
-```json
+```json expandable lines theme={null}
 // Before (deprecated) — engine and domain filtering
 {
   "model": "openai/gpt-5.2",
@@ -415,7 +485,7 @@ The key differences:
 }
 ```
 
-```json
+```json lines theme={null}
 // Before (deprecated) — :online variant
 {
   "model": "openai/gpt-5.2:online"
@@ -430,6 +500,6 @@ The key differences:
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
+* [Datetime](/guides/features/server-tools/datetime) — Get the current date and time
+* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling

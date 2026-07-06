@@ -1,14 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Text Generation
+
+> Generate text with callModel using various input formats and model configurations. Supports multiple consumption patterns including text, streaming, and structured output.
 
 ## Basic Usage
 
 The simplest way to generate text:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
@@ -31,7 +33,7 @@ callModel accepts several input formats to match your use case.
 
 The simplest format - a single string becomes a user message:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'What is the speed of light?',
@@ -42,7 +44,7 @@ const result = openrouter.callModel({
 
 For multi-turn conversations, pass an array of messages:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: [
@@ -57,7 +59,7 @@ const result = openrouter.callModel({
 
 For rich content including images:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5.2',
   input: [
@@ -81,7 +83,7 @@ const result = openrouter.callModel({
 
 Set the model's behavior with the `instructions` parameter:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   instructions: 'You are a helpful coding assistant. Be concise and provide working code examples.',
@@ -95,7 +97,7 @@ const result = openrouter.callModel({
 
 Specify a model by its OpenRouter ID:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4.5',
   input: 'Hello!',
@@ -106,7 +108,7 @@ const result = openrouter.callModel({
 
 Provide multiple models for automatic fallback:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   models: ['anthropic/claude-sonnet-4.5', 'openai/gpt-5.2', 'google/gemini-pro'],
   input: 'Hello!',
@@ -121,7 +123,7 @@ The SDK will try each model in order until one succeeds.
 
 Returns just the text content after tool execution completes:
 
-```typescript
+```typescript lines theme={null}
 const text = await result.getText();
 console.log(text); // "The speed of light is approximately 299,792 km/s."
 ```
@@ -130,7 +132,7 @@ console.log(text); // "The speed of light is approximately 299,792 km/s."
 
 Returns the full response object including usage data:
 
-```typescript
+```typescript lines theme={null}
 const response = await result.getResponse();
 
 console.log(response.output);     // Full output array
@@ -146,7 +148,7 @@ console.log(response.usage);      // Token usage information
 
 Control the generation behavior:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'Write a creative story.',
@@ -166,7 +168,7 @@ const result = openrouter.callModel({
 
 Request structured output:
 
-```typescript
+```typescript lines theme={null}
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
   input: 'List three programming languages.',
@@ -185,7 +187,7 @@ const data = JSON.parse(text);
 
 Handle common error cases:
 
-```typescript
+```typescript lines theme={null}
 try {
   const result = openrouter.callModel({
     model: 'openai/gpt-5-nano',
@@ -212,7 +214,7 @@ try {
 
 Each callModel invocation is independent:
 
-```typescript
+```typescript lines theme={null}
 const [result1, result2, result3] = await Promise.all([
   openrouter.callModel({ model: 'openai/gpt-5-nano', input: 'Question 1' }).getText(),
   openrouter.callModel({ model: 'openai/gpt-5-nano', input: 'Question 2' }).getText(),
@@ -222,6 +224,6 @@ const [result1, result2, result3] = await Promise.all([
 
 ## Next Steps
 
-* **[Streaming](/docs/sdks/call-model/streaming)** - Stream responses in real-time
-* **[Tools](/docs/sdks/call-model/tools)** - Add tool capabilities to your generation
-* **[Message Formats](/docs/sdks/call-model/message-formats)** - Convert from OpenAI/Claude formats
+* **[Streaming](/agent-sdk/call-model/streaming)** - Stream responses in real-time
+* **[Tools](/agent-sdk/call-model/tools)** - Add tool capabilities to your generation
+* **[Message Formats](/agent-sdk/call-model/message-formats)** - Convert from OpenAI/Claude formats

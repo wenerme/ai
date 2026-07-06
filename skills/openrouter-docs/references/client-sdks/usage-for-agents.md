@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Usage for Agents
+
+> Add OpenRouter Client SDKs skills to your AI coding assistant
 
 Give your AI coding assistant the knowledge to work with the OpenRouter Client SDKs
 by installing our official `openrouter-typescript-sdk` skill from the
@@ -16,7 +18,7 @@ model listing, chat completions, credits, OAuth, and API key management.
 
 ### Claude Code
 
-```bash
+```bash lines theme={null}
 /plugin marketplace add OpenRouterTeam/skills
 /plugin install openrouter@openrouter
 ```
@@ -29,7 +31,7 @@ Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterT
 
 Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
 
-```bash
+```bash lines theme={null}
 gh skill install OpenRouterTeam/skills openrouter-typescript-sdk
 ```
 
@@ -70,7 +72,7 @@ After installing the skill, your AI assistant can help you with tasks like:
 
 The assistant will know to use:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/sdk';
 
 const client = new OpenRouter();
@@ -87,7 +89,7 @@ const completion = await client.chat.send({
 
 The assistant understands the streaming API:
 
-```typescript
+```typescript lines theme={null}
 import { OpenRouter } from '@openrouter/sdk';
 
 const client = new OpenRouter();
@@ -103,7 +105,9 @@ for await (const chunk of stream) {
 }
 ```
 
-If you need higher-level primitives for building agents — multi-turn loops, tool definitions, stop conditions — see the [Agent SDK](/docs/agent-sdk/overview) instead.
+<Note>
+  If you need higher-level primitives for building agents — multi-turn loops, tool definitions, stop conditions — see the [Agent SDK](/agent-sdk/overview) instead.
+</Note>
 
 ## Repository
 

@@ -1,8 +1,10 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Turn an Image into a Video
+
+> Use frame images to control the first or last frame of an OpenRouter video
 
 Use this guide when you need to add image-to-video generation where an image
 becomes the first or last frame of a generated video.
@@ -10,8 +12,9 @@ becomes the first or last frame of a generated video.
 By the end, your implementation should submit an image-to-video job with
 `frame_images` and download the finished clip.
 
-For reusable agent knowledge across projects, install the
-[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+<Tip>
+  For reusable agent knowledge across projects, install the [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
 
 ## Before you start
 
@@ -22,19 +25,23 @@ You need:
 * A public HTTPS image URL available as `FIRST_FRAME_URL`
 * A model that supports `frame_images`, confirmed with `GET /api/v1/videos/models`
 
-If you have not chosen a model yet, read
-[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-so you can select one based on your clip duration, output shape, input type,
-audio, provider controls, and cost requirements.
+<Tip>
+  If you have not chosen a model yet, read
+  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  so you can select one based on your clip duration, output shape, input type,
+  audio, provider controls, and cost requirements.
+</Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/docs/api/api-reference/video-generation/create-videos)
-* [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
-* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
+* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/client-sdks/typescript/api-reference/videogeneration)
 
-Submitting `POST /api/v1/videos` starts a real video generation job and may
-spend OpenRouter credits.
+<Warning>
+  Submitting `POST /api/v1/videos` starts a real video generation job and may
+  spend OpenRouter credits.
+</Warning>
 
 `frame_images` is for exact frame control. If you provide both `frame_images` and `input_references`, OpenRouter treats the request as image-to-video.
 
@@ -43,13 +50,13 @@ Use a stable, directly downloadable image URL. Some providers cannot fetch image
 Before submitting, check that your image URL returns `200` with an image
 content type:
 
-```bash
+```bash lines theme={null}
 curl -I "$FIRST_FRAME_URL"
 ```
 
 Example output:
 
-```text
+```text lines theme={null}
 HTTP/2 200
 content-type: image/jpeg
 ```
@@ -59,13 +66,13 @@ content-type: image/jpeg
 Fetch the model list and choose a model whose `supported_frame_images` includes
 the frame type you want:
 
-```bash
+```bash lines theme={null}
 curl https://openrouter.ai/api/v1/videos/models
 ```
 
 Example model output excerpt:
 
-```json
+```json lines theme={null}
 {
   "id": "google/veo-3.1-lite",
   "supported_durations": [8, 4, 6],
@@ -85,7 +92,7 @@ exact frame. This example uses a first frame, but the same request shape
 belongs in whatever server route, queue, or worker owns video generation in your
 app.
 
-```js
+```js expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
 const firstFrameUrl = process.env.FIRST_FRAME_URL;
 
@@ -134,7 +141,7 @@ console.log(job);
 The submit call returns the job fields immediately. In the QA run, the submitted
 job later completed and downloaded with this final summary:
 
-```json
+```json lines theme={null}
 {
   "id": "kBJZL5kI6gO33dfKN76A",
   "status": "completed",
@@ -148,7 +155,7 @@ job later completed and downloaded with this final summary:
 If the selected model supports `last_frame`, add both frames so the model can
 move from a known starting composition to a known ending composition:
 
-```js
+```js lines theme={null}
 const lastFrameUrl = process.env.LAST_FRAME_URL;
 
 if (!lastFrameUrl) {
@@ -175,7 +182,7 @@ Then set `frame_images` in the request body to `frameImages`.
 
 Request shape for the optional last-frame path:
 
-```json
+```json lines theme={null}
 [
   {
     "type": "image_url",
@@ -200,7 +207,7 @@ then download the completed video.
 
 Example polling and download helper:
 
-```js
+```js expandable lines theme={null}
 import { writeFile } from "node:fs/promises";
 
 async function waitForVideo(job) {
@@ -268,7 +275,7 @@ console.log("Saved image-video.mp4");
 
 The QA run saved the finished video after polling completed:
 
-```text
+```text lines theme={null}
 Saved image-video.mp4
 ```
 

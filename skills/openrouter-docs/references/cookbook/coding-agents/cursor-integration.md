@@ -1,10 +1,16 @@
-> For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cursor
 
-The Cursor integration is currently in beta. Behavior may change as Cursor updates their client.
+> Use Cursor with OpenRouter
+
+<Note>
+  **Beta**
+
+  The Cursor integration is currently in beta. Behavior may change as Cursor updates their client.
+</Note>
 
 ## What is Cursor?
 
@@ -31,11 +37,13 @@ Cursor supports OpenRouter through its **Override OpenAI Base URL** feature. Thi
    * Paste your OpenRouter API key into the **OpenAI API Key** field
    * Toggle on **Override OpenAI Base URL** and set it to:
 
-     ```text
+     ```text lines theme={null}
      https://openrouter.ai/api/v1/cursor
      ```
 
-The base URL must be `https://openrouter.ai/api/v1/cursor` (not `/api/v1`). This dedicated endpoint handles Cursor's request format correctly.
+<Warning>
+  The base URL must be `https://openrouter.ai/api/v1/cursor` (not `/api/v1`). This dedicated endpoint handles Cursor's request format correctly.
+</Warning>
 
 ### Step 3: Add Models
 
@@ -72,13 +80,13 @@ For teams, OpenRouter provides centralized budget management. Set spending limit
 
 Track which models your team uses, monitor costs in real-time, and understand usage patterns from a single dashboard, regardless of the underlying provider. See the [Activity page](https://openrouter.ai/activity) for a breakdown by model, user, and cost.
 
-You can also control which upstream providers handle your requests. See the [Provider Routing docs](/docs/guides/routing/provider-selection) for details on routing suffixes like `:nitro` and `:floor`.
+You can also control which upstream providers handle your requests. See the [Provider Routing docs](/guides/routing/provider-selection) for details on routing suffixes like `:nitro` and `:floor`.
 
 ## Limitations
 
 * **Tab completions** are not affected by BYOK settings; they always use Cursor's built-in models.
 * **Auto and Composer 2 modes** may not be routed through your API key. Check [Cursor's docs](https://cursor.com/help/models-and-usage/api-keys) for current behavior.
-* Only models accessible via OpenRouter's [OpenAI-compatible endpoint](/docs/api/reference/overview#openapi-specification) will work. Most chat and reasoning models are supported.
+* Only models accessible via OpenRouter's [OpenAI-compatible endpoint](/api/reference/overview#openapi-specification) will work. Most chat and reasoning models are supported.
 
 ## Troubleshooting
 
@@ -92,4 +100,4 @@ You can also control which upstream providers handle your requests. See the [Pro
 * [Cursor Documentation](https://cursor.com/docs)
 * [Cursor BYOK Help](https://cursor.com/help/models-and-usage/api-keys)
 * [OpenRouter Models](https://openrouter.ai/models)
-* [Provider Routing](/docs/guides/routing/provider-selection)
+* [Provider Routing](/guides/routing/provider-selection)
